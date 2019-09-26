@@ -11,10 +11,10 @@ defaults:
         version_url: https://design.swedbankpay.com/v/4.1.0
       topbar:
         navigation:
-        - url: /page1
-          title: Top 1
-        - url: /page2
-          title: Top 2
+        - url: /checkout/
+          title: Checkout
+        - url: /payments/
+          title: Payments
       sidebar:
         search:
           enabled: true
