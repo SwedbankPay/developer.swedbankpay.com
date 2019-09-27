@@ -102,7 +102,7 @@ resource. To get an [introduction to **hypermedia**, please watch this 20 minute
 When a `POST` or `PATCH` request is performed the whole target resource
 representation is returned in the response, as when performing a `GET`
 request after the initial request. This is an economic approach that
-limits the number of necessary `GET` requests. 
+limits the number of necessary `GET` requests.
 
 ### Expansion
 
@@ -138,7 +138,7 @@ manner across the entire API Platform.
 #### Currency
 
 All currencies are expressed according to the [ISO 4217][iso-4217] standard,
-e.g `SEK`, `EUR`, `NOK`. 
+e.g `SEK`, `EUR`, `NOK`.
 
 #### Dates
 
@@ -172,7 +172,7 @@ operations that can be performed on it. Which operations that are available
 in a given state varies depending on payment instrument used, what the access
 token is authorized to do, etc. A subset of possible operations are described
 below. Visit the technical reference page of a payment instrument for
-instrument specific operations. 
+instrument specific operations.
 
 {:.code-header}
 **JSON with Operations**
@@ -254,6 +254,7 @@ The callback functionality is similar for all payment methods and work like
   5. 864000 ms
   6. 1265464 ms
 * The callback is sent from the following IP address: `82.115.146.1`
+* The response to the callback must have the HTTP status code `200 OK`.
 
 The sequence diagram below shows the HTTP `POST` you will receive from
 Swedbank Pay, and the two `GET` requests that you make to get the updated
@@ -263,21 +264,21 @@ resources.
 sequenceDiagram
     participant Merchant
     participant SwedbankPay
-    
+
     activate SwedbankPay
-        SwedbankPay->>Merchant: POST <callbackUrl>
-        activate Merchant
-            note right of SwedbankPay: Callback POST by SwedbankPay
-            Merchant->>SwedbankPay: Callback response
-        deactivate Merchant
+      SwedbankPay->>Merchant: POST <callbackUrl>
+      activate Merchant
+        Note right of SwedbankPay: Callback POST by SwedbankPay
+        Merchant->>SwedbankPay: Callback response
+      deactivate Merchant
     deactivate SwedbankPay
 
     activate Merchant
-        Merchant->>SwedbankPay: GET <payment instrument> payment
-        note left of Merchant: First API request
-        activate SwedbankPay
-            SwedbankPay-->>Merchant: payment resource
-        deactivate SwedbankPay
+      Merchant->>SwedbankPay: GET <payment instrument> payment
+      activate SwedbankPay
+        Note left of Merchant: First API request
+        SwedbankPay-->>Merchant: Updated resource
+      deactivate SwedbankPay
     deactivate Merchant
 ```
 
@@ -291,6 +292,8 @@ message will follow the same structure as specified in the
 
 The structure of a problem message will look like this:
 
+{:.code-header}
+**Problem Example**
 ```js
 {
     "type": "https://api.payex.com/psp/<error_type>",
@@ -306,40 +309,53 @@ The structure of a problem message will look like this:
 }
 ```
 
-**Properties**
+#### Problem Properties
 
-(% class="table-bordered table-striped" %)
-|=Parameter|=Data type|=Description
-|`type##|##string`|The URI that identifies the error type. This is the **only property usable for programmatic identification** of the type of error! When dereferenced, it might lead you to a human readable description of the error and how it can be recovered from.
-|`title##|##string`|The title contains a human readable description of the error.
-|`detail##|##string`|A detailed, human readable description of the error.
-|`instance##|##string`|The identifier of the error instance. This might be of use to Swedbank Pay support personnel in order to find the exact error and the context it occurred in.
-|`status##|##integer`|The HTTP status code that the problem was served with.
-|`action##|##string##|The ##action` indicates how the error can be recovered from.
-|`problems##|##array`|The array of problem detail objects.
-|`problems[].name##|##string`|The name of the property, header, object, entity or likewise that was erroneous.
-|`problems[].description##|##string##|The description of what was wrong with the property, header, object, entity or likewise identified by ##name`.
+{:.table .table-striped}
+| Property   | Data type | Description |
+|:----------:|:----------|:------------|
+| `type`     | `string`  | The URI that identifies the error type. This is the **only property usable for programmatic identification** of the type of error! When dereferenced, it might lead you to a human readable description of the error and how it can be recovered from. |
+| `title`    | `string`  | The title contains a human readable description of the error. |
+| `detail`   | `string`  | A detailed, human readable description of the error and how you can recover from it. |
+| `instance` | `string`  | The identifier of the error instance. This might be of use to Swedbank Pay support personnel in order to find the exact error and the context it occurred in. |
+| `status`   | `integer` | The HTTP status code that the problem was served with. |
+| `action`   | `string`  | The `action` indicates how the error can be recovered from.
+| `problems` | `array`   | The array of problem detail objects. Contains Problems Objects described below.
 
-=== Common Problems ===
+#### Problems Object
 
-All common problem types will have a URI in the format `https://api.payex.com/psp/<error-type>`. The **URI is an identifier** and is currently not possible to dereference, although that might be possible in the future.
+{:.table .table-striped}
+| Property      | Data type | Description |
+|:-------------:|:----------|:------------|
+| `name`        | `string`  | The name of the property, header, object, entity or likewise that was erroneous. |
+| `description` | `string`  | The description of what was wrong with the property, header, object, entity or likewise identified by `name`. |
 
-(% class="table-bordered table-striped" %)
-|**Type**|**Status**|**Notes**
-|`inputerror`|400|The server cannot or will not process the request due to an apparent client error (e.g. malformed request syntax, size to large, invalid request).
-|`forbidden`|403|The request was valid, but the server is refusing the action. The necessary permissions to access the resource might be lacking.
-|`notfound`|404|The requested resource could not be found, but may be available in the future. Subsequent requests are permissible.
-|`systemerror`|500|A generic error message.
-|`configurationerror`|500|A error relating to configuration issues.
+#### Common Problems
 
-=== Payment Instrument Specific Problems ===
+All common problem types will have a URI in the format
+`https://api.payex.com/psp/<error-type>`. The **URI is an identifier** that you
+can hard-code and implement logic around. It is currently not not possible to
+dereference this URI, although that might be possible in the future.
 
-Problem types for a specific payment instrument will have a URI in the format `https://api.payex.com/psp/<payment-instrument>/<error-type>`. You can read more about the payment instrument specific problem messages below:
+{:.table .table-striped}
+| Type                 | Status    | Description |
+|:--------------------:|:----------|:------------|
+| `inputerror`         | `400`     | The server cannot or will not process the request due to an apparent client error (e.g. malformed request syntax, size to large, invalid request). |
+| `forbidden`          | `403`     | The request was valid, but the server is refusing the action. The necessary permissions to access the resource might be lacking. |
+| `notfound`           | `404`     | The requested resource could not be found, but may be available in the future. Subsequent requests are permissible. |
+| `systemerror`        | `500`     | A generic error message. |
+| `configurationerror` | `500`     | A error relating to configuration issues. |
 
-* [[Card Payments>>doc:.core-payment-resources.card-payments.WebHome||anchor="HProblemmessages"]]
-* [[**Invoice**>>doc:.core-payment-resources.invoice-payments.WebHome||anchor="HProblemmessages"]]
-* [[**Swish**>>doc:.core-payment-resources.swish-payments.WebHome||anchor="HProblemmessages"]]
-* [[**Vipps**>>doc:.core-payment-resources.vipps-payments.WebHome||anchor="HProblemmessages"]]
+#### Payment Instrument Specific Problems
+
+Problem types for a specific payment instrument will have a URI in the format
+`https://api.payex.com/psp/<payment-instrument>/<error-type>`. You can read
+more about the payment instrument specific problem messages below:
+
+* [Card Payments][card-problems]
+* [Invoice Payments][invoice-problems]
+* [Swish Payments][swish-problems]
+* [Vipps Payments][vipps-problems]
 
   [java-tls]: https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default
   [php-curl-tls]: https://stackoverflow.com/a/32926813/61818
@@ -363,3 +379,7 @@ Problem types for a specific payment instrument will have a URI in the format `h
   [production]: https://api.payex.com/
   [the-rest-and-then-some]: https://www.youtube.com/watch?v=QIv9YR1bMwY
   [settlement]: #
+  [card-problems]: #
+  [invoice-problems]: #
+  [swish-problems]: #
+  [vipps-problems]: #
