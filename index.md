@@ -7,14 +7,17 @@ title: Swedbank Pay Developer Portal
                       header="Site under development"
                       body="The Developer Portal is under construction and should not be used to integrate against Swedbank Pay's APIs yet." %}
 
-{% include jumbotron.html body="Welcome to the **Swedbank Pay Developer Portal**. Please make your choice of product to integrate below or read on for more general information about Swedbank Pay's API platform. If you are new to Swedbank Pay's API Platform, you are strongly advised to **read this entire page to the end**." %}
+Welcome to the **Swedbank Pay Developer Portal**. Please make your choice of
+product to integrate below or read on for more general information about
+Swedbank Pay's API platform. If you are new to Swedbank Pay's API Platform,
+you are strongly advised to **read this entire page to the end**.
 
 <div class="row">
   <div class="col-12 col-md-6 pt-3 pt-md-0 d-flex">
     <div class="doc-card card card-plain">
       <div class="card-body text-center d-flex flex-column">
         <img src="{{ page.design_guide.version_url }}/img/swedbankpay-logo.svg" alt="Swedbank Pay" height="120">
-        <h2>Checkout</h2>
+        <h3>Checkout</h3>
         <p>Speed up checkout by allowing your customers to check-in with Swedbank Pay and pay with their favorite payment methods through our payment menu.</p>
         <a class="btn btn-guiding btn-outline btn-block mt-auto" href="/checkout/">Checkout Documentation</a>
       </div>
@@ -24,7 +27,7 @@ title: Swedbank Pay Developer Portal
     <div class="doc-card card card-plain">
       <div class="card-body text-center d-flex flex-column">
         <img src="{{ page.design_guide.version_url }}/img/swedbankpay-logo.svg" alt="Swedbank Pay" height="120">
-        <h2>Payments</h2>
+        <h3>Payments</h3>
         <p>You identify the customer, we take care of the payment. Chose from our uniform and wide selection of payment instruments.</p>
         <a class="btn btn-guiding btn-outline btn-block mt-auto" href="/payments/">Payments Documentation</a>
       </div>
@@ -32,11 +35,9 @@ title: Swedbank Pay Developer Portal
   </div>
 </div>
 
-## API Platform
+{% include jumbotron.html body="**Swedbank Pay's API Platform** is built using the [REST architectural style](https://en.wikipedia.org/wiki/Representational_state_transfer) and the request and responses come in the [JSON](http://json.org/) format. The API has predictable, resource-oriented URIs and use default HTTP features, like HTTP authentication (using OAuth 2), HTTP methods and headers. These techniques are widely used and understood by most HTTP client libraries." %}
 
-{% include jumbotron.html body="Swedbank Pay's API platform is built using the [REST architectural style](https://en.wikipedia.org/wiki/Representational_state_transfer) and the request and responses come in the [JSON](http://json.org/) format. The API has predictable, resource-oriented URIs and use default HTTP features, like HTTP authentication (using OAuth 2), HTTP methods and headers. These techniques are widely used and understood by most HTTP client libraries." %}
-
-### Connection and Protocol
+## Connection and Protocol
 
 All requests towards Swedbank Pay API Platform are made with **HTTP/1.1** over
 a secure a **TLS 1.1** (or higher) connection. Older HTTP clients running on
@@ -52,7 +53,7 @@ and environments ([Java][java-tls], [PHP Curl][php-curl-tls],
 You can inspect [Swedbank Pay's TLS and cipher suite][ssllabs] support at
 SSL Labs. Support for HTTP/2 in our APIs is being investigated.
 
-### Headers
+## Headers
 
 All requests against the API Platform should have a few common headers:
 
@@ -76,7 +77,7 @@ Forwarded: for=82.115.151.177; host=example.com; proto=https
 | | **`Session-Id`**    | A trace identifier used to trace calls through the API Platform (ref [RFC 7329][rfc-7329]). Each request must mint a new [GUID/UUID][uuid]. If no `Session-Id` is provided, Swedbank Pay will generate one for the request.
 | | **`Forwarded`**     | The IP address of the consumer as well as the host and protocol of the consumer-facing web page. When the header is present, only the `for` parameter containing the consumer IP address is required, the other parameters are optional. See [RFC 7239][rfc-7239] for details.
 
-### URI usage
+## URI usage
 
 The base URIs of the API Platform are:
 
@@ -96,15 +97,14 @@ resource. To get an [introduction to **hypermedia**, please watch this 20 minute
                       header="Don't build URIs"
                       body="It is very important that only the base URIs of Swedbank Pay's APIs are stored in your system. All other URIs are returned dynamically in the response. Swedbank Pay cannot guarantee that your implementation will remain working if you store any other URIs in your system. When performing requests, please make sure to use the complete URIs that are returned in the response. Do not attempt to parse or build upon the returned data - you should not put any special significance to the information you might glean from an URI. URIs should be treated as identifiers you can use to retrieve the identified resource – nothing more, nothing less. If you don't follow this advice, your integration most assuredly will break when Swedbank Pay makes updates in the future." %}
 
-
-### POST and PATCH requests and responses
+## POST and PATCH requests and responses
 
 When a `POST` or `PATCH` request is performed the whole target resource
 representation is returned in the response, as when performing a `GET`
 request after the initial request. This is an economic approach that
 limits the number of necessary `GET` requests.
 
-### Expansion
+## Expansion
 
 The payment resource contain the ID of related sub-resources in its response
 properties. These sub-resources can be expanded inline by using the request
@@ -130,28 +130,28 @@ Host: api.payex.com
 To avoid unnecessary overhead, you should only expand the nodes you need info
 about.
 
-### Data Types
+## Data Types
 
 Some datatypes, like currency, dates and amounts, are managed in a coherent
 manner across the entire API Platform.
 
-#### Currency
+### Currency
 
 All currencies are expressed according to the [ISO 4217][iso-4217] standard,
 e.g `SEK`, `EUR`, `NOK`.
 
-#### Dates
+### Dates
 
 All dates are expressed according to the [ISO 8601][iso-8601] standard that
 combine dates, time and timezone data into a string, e.g. `2018-09-14T13:21:57.6627579Z`.
 
-#### Locale
+### Locale
 
 When defining locale, we use the combination of language
 ([ISO 639-1][iso-639-1]) and country codes ([ISO 3166][iso-3166]), e.g.
 `nb-NO`, `sv-SE`, `en-US`.
 
-#### Monetary Amounts
+### Monetary Amounts
 
 All monetary amounts are entered in the lowest momentary units of the selected
 currency. The amount of SEK and NOK are in ören/ører, and EUR is in cents.
@@ -165,7 +165,7 @@ amount is multiplied by 100.
 |   SEK 50.00 |      `5000` |
 |     € 10.00 |      `1000` |
 
-### Operations
+## Operations
 
 When a resource is created and during its lifetime, it will have a set of
 operations that can be performed on it. Which operations that are available
@@ -268,21 +268,21 @@ sequenceDiagram
     activate SwedbankPay
       SwedbankPay->>Merchant: POST <callbackUrl>
       activate Merchant
-        Note right of SwedbankPay: Callback POST by SwedbankPay
+        Note left of SwedbankPay: Callback POST by SwedbankPay
         Merchant->>SwedbankPay: Callback response
       deactivate Merchant
     deactivate SwedbankPay
 
     activate Merchant
-      Merchant->>SwedbankPay: GET <payment instrument> payment
+      Merchant->>SwedbankPay: GET <updated resource>
       activate SwedbankPay
-        Note left of Merchant: First API request
+        Note right of Merchant: Request for updated resource
         SwedbankPay-->>Merchant: Updated resource
       deactivate SwedbankPay
     deactivate Merchant
 ```
 
-### Problems
+## Problems
 
 When performing operations against the API, it will respond with a problem
 message that contain details of the error type if the request could not be
@@ -309,7 +309,7 @@ The structure of a problem message will look like this:
 }
 ```
 
-#### Problem Properties
+### Problem Properties
 
 {:.table .table-striped}
 | Property   | Data type | Description |
@@ -322,7 +322,7 @@ The structure of a problem message will look like this:
 | `action`   | `string`  | The `action` indicates how the error can be recovered from.
 | `problems` | `array`   | The array of problem detail objects. Contains Problems Objects described below.
 
-#### Problems Object
+### Problems Object
 
 {:.table .table-striped}
 | Property      | Data type | Description |
@@ -330,7 +330,7 @@ The structure of a problem message will look like this:
 | `name`        | `string`  | The name of the property, header, object, entity or likewise that was erroneous. |
 | `description` | `string`  | The description of what was wrong with the property, header, object, entity or likewise identified by `name`. |
 
-#### Common Problems
+### Common Problems
 
 All common problem types will have a URI in the format
 `https://api.payex.com/psp/<error-type>`. The **URI is an identifier** that you
@@ -346,7 +346,7 @@ dereference this URI, although that might be possible in the future.
 | `systemerror`        | `500`     | A generic error message. |
 | `configurationerror` | `500`     | A error relating to configuration issues. |
 
-#### Payment Instrument Specific Problems
+### Payment Instrument Specific Problems
 
 Problem types for a specific payment instrument will have a URI in the format
 `https://api.payex.com/psp/<payment-instrument>/<error-type>`. You can read
