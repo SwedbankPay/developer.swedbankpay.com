@@ -59,6 +59,7 @@ All requests against the API Platform should have a few common headers:
 
 {:.code-header}
 **HTTP request**
+
 ```http
 POST /some/resource HTTP/1.1
 Content-Type: application/json; charset=utf-8
@@ -69,13 +70,13 @@ Forwarded: for=82.115.151.177; host=example.com; proto=https
 ```
 
 {:.table .table-striped}
-| ✔︎︎︎︎︎        | Header              | Description |
-|:--------:|:--------------------|:------------|
-| ✔︎        | **`Content-Type`**  | The [content type][content-type] of the body of the HTTP request. Usually set to `application/json`. |
-| ✔︎        | **`Accept`**        | The [content type][content-type] accepted by the client. Usually set to `application/json` and `application/problem+json` so both regular responses as well as errors can be received properly. |
-| ✔︎        | **`Authorization`** | The OAuth 2 Access Token is generated in [Swedbank Pay Admin][admin]. See the [admin guide][admin-guide] on how to get started.
-| | **`Session-Id`**    | A trace identifier used to trace calls through the API Platform (ref [RFC 7329][rfc-7329]). Each request must mint a new [GUID/UUID][uuid]. If no `Session-Id` is provided, Swedbank Pay will generate one for the request.
-| | **`Forwarded`**     | The IP address of the consumer as well as the host and protocol of the consumer-facing web page. When the header is present, only the `for` parameter containing the consumer IP address is required, the other parameters are optional. See [RFC 7239][rfc-7239] for details.
+| ✔︎︎︎︎︎ | Header              | Description |
+|:--:|:--------------------|:------------|
+| ✔︎ | **`Content-Type`**  | The [content type][content-type] of the body of the HTTP request. Usually set to `application/json`.
+| ✔︎ | **`Accept`**        | The [content type][content-type] accepted by the client. Usually set to `application/json` and `application/problem+json` so both regular responses as well as errors can be received properly.
+| ✔︎ | **`Authorization`** | The OAuth 2 Access Token is generated in [Swedbank Pay Admin][admin]. See the [admin guide][admin-guide] on how to get started.
+|   | **`Session-Id`**    | A trace identifier used to trace calls through the API Platform (ref [RFC 7329][rfc-7329]). Each request must mint a new [GUID/UUID][uuid]. If no `Session-Id` is provided, Swedbank Pay will generate one for the request.
+|   | **`Forwarded`**     | The IP address of the consumer as well as the host and protocol of the consumer-facing web page. When the header is present, only the `for` parameter containing the consumer IP address is required, the other parameters are optional. See [RFC 7239][rfc-7239] for details.
 
 ## URI usage
 
@@ -122,6 +123,7 @@ response, enabling you to access information from these sub-resources.
 
 {:.code-header}
 **HTTP request with expansion**
+
 ```http
 GET /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c?$expand=urls,authorizations HTTP/1.1
 Host: api.payex.com
@@ -176,6 +178,7 @@ instrument specific operations.
 
 {:.code-header}
 **JSON with Operations**
+
 ```js
 {
     "payment": {},
@@ -294,9 +297,10 @@ The structure of a problem message will look like this:
 
 {:.code-header}
 **Problem Example**
+
 ```js
 {
-    "type": "https://api.payex.com/psp/<error_type>",
+    "type": "https://api.payex.com/psp/inputerror",
     "title": "There was an input error",
     "detail": "Please correct the errors and retry the request",
     "instance": "9a20d737-670d-42bf-9a9a-d36736de8721",
@@ -304,7 +308,7 @@ The structure of a problem message will look like this:
     "action": "RetryNewData",
     "problems": [{
         "name": "CreditCardParameters.Issuer",
-        "description": "minimum one issuer must be enabled "
+        "description": "minimum one issuer must be enabled"
     }]
 }
 ```
@@ -312,23 +316,17 @@ The structure of a problem message will look like this:
 ### Problem Properties
 
 {:.table .table-striped}
-| Property   | Data type | Description |
-|:----------:|:----------|:------------|
-| `type`     | `string`  | The URI that identifies the error type. This is the **only property usable for programmatic identification** of the type of error! When dereferenced, it might lead you to a human readable description of the error and how it can be recovered from. |
-| `title`    | `string`  | The title contains a human readable description of the error. |
-| `detail`   | `string`  | A detailed, human readable description of the error and how you can recover from it. |
-| `instance` | `string`  | The identifier of the error instance. This might be of use to Swedbank Pay support personnel in order to find the exact error and the context it occurred in. |
-| `status`   | `integer` | The HTTP status code that the problem was served with. |
-| `action`   | `string`  | The `action` indicates how the error can be recovered from.
-| `problems` | `array`   | The array of problem detail objects. Contains Problems Objects described below.
-
-### Problems Object
-
-{:.table .table-striped}
-| Property      | Data type | Description |
-|:-------------:|:----------|:------------|
-| `name`        | `string`  | The name of the property, header, object, entity or likewise that was erroneous. |
-| `description` | `string`  | The description of what was wrong with the property, header, object, entity or likewise identified by `name`. |
+| Property              | Data type | Description |
+|:----------------------|:----------|:------------|
+| `type`                | `string`  | The URI that identifies the error type. This is the **only property usable for programmatic identification** of the type of error! When dereferenced, it might lead you to a human readable description of the error and how it can be recovered from.
+| `title`               | `string`  | The title contains a human readable description of the error.
+| `detail`              | `string`  | A detailed, human readable description of the error and how you can recover from it.
+| `instance`            | `string`  | The identifier of the error instance. This might be of use to Swedbank Pay support personnel in order to find the exact error and the context it occurred in.
+| `status`              | `integer` | The HTTP status code that the problem was served with.
+| `action`              | `string`  | The `action` indicates how the error can be recovered from.
+| `problems`            | `array`   | The array of problem detail objects.
+| ↳&nbsp;`name`        | `string`  | The name of the property, header, object, entity or likewise that was erroneous.
+| ↳&nbsp;`description` | `string`  | The description of what was wrong with the property, header, object, entity or likewise identified by `name`.
 
 ### Common Problems
 
@@ -339,7 +337,7 @@ dereference this URI, although that might be possible in the future.
 
 {:.table .table-striped}
 | Type                 | Status    | Description |
-|:--------------------:|:----------|:------------|
+|:---------------------|:----------|:------------|
 | `inputerror`         | `400`     | The server cannot or will not process the request due to an apparent client error (e.g. malformed request syntax, size to large, invalid request). |
 | `forbidden`          | `403`     | The request was valid, but the server is refusing the action. The necessary permissions to access the resource might be lacking. |
 | `notfound`           | `404`     | The requested resource could not be found, but may be available in the future. Subsequent requests are permissible. |

@@ -165,6 +165,7 @@ the identification process becomes for the payer.
 
 {:.code-header}
 **Request**
+
 ```http
 POST /psp/consumers HTTP/1.1
 Host: api.externalintegration.payex.com
@@ -190,20 +191,15 @@ Content-Type: application/json
 |   | `msisdn`              | `string` | The [MSISDN][msisdn] (mobile phone number) of the payer. Format Sweden: `+46707777777`. Format Norway: `+4799999999`.
 |   | `email`               | `string` | The e-mail address of the payer.
 |   | `consumerCountryCode` | `string` | Consumers country of residence. Used by the consumerUi for validation on all input fields.
-|   | `nationalIdentifier`  | `object` | The object containing information about the national identifier of the consumer, described in detail in the table below.
-
-**`nationalIdentifier` Properties**
-
-{:.table .table-striped}
-| ✔︎︎︎︎︎ | Property              | Type     |  Description |
-|:-:|:-----------------------|----------|:-------------|
-|   | `socialSecurityNumber` | `string` | The social security number of the payer. Format: Norway `DDMMYYXXXXX`, Sweden: `YYYYMMDDXXXX`.
-|   | `countryCode`          | `string` | The country code, denoting the origin of the issued social security number. Required if `nationalIdentifier.socialSecurityNumber` is set.
+|   | `nationalIdentifier`  | `object` | The object containing information about the national identifier of the consumer.
+|   | ↳ `socialSecurityNumber` | `string` | The social security number of the payer. Format: Norway `DDMMYYXXXXX`, Sweden: `YYYYMMDDXXXX`.
+|   | ↳ `countryCode`          | `string` | The country code, denoting the origin of the issued social security number. Required if `nationalIdentifier.socialSecurityNumber` is set.
 
 When the request has been sent, a response containing an array of operations that can be acted upon will be returned.
 
 {:.code-header}
 **Response**
+
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
@@ -239,12 +235,16 @@ Content-Type: application/json
 
 ### Checkin Front End
 
-The response from the `POST` of consumer information contains a few operations. The combination of `rel`, `method` and `contentType` should give you a clue how the operation should be performed. The `view-consumer-identification` operation and its `application/javascript` content type gives us a clue that the operation is meant to be embedded in a `<script>` element in an HTML document. [[See the technical reference for details>>doc:Main.ecommerce.payex-checkout-main.payex-checkout-standard-setup.technical-reference.WebHome||anchor="HViewConsumerIdentification"]].
-
-You also can [[customize the styling>>doc:Main.ecommerce.technical-reference.consumers-resource.WebHome||anchor="HConsumerViewStyling"]] of the Checkin by adding style properties to the JavaScript call.
+The response from the `POST` of consumer information contains a few operations.
+The combination of `rel`, `method` and `contentType` should give you a clue how
+the operation should be performed. The `view-consumer-identification` operation
+and its `application/javascript` content type gives us a clue that the
+operation is meant to be embedded in a `<script>` element in an HTML document.
+[See the technical reference for details][view-consumer-identification].
 
 {:.code-header}
 **HTML**
+
 ```html
 <!DOCTYPE html>
 <html>
@@ -273,15 +273,21 @@ You also can [[customize the styling>>doc:Main.ecommerce.technical-reference.con
 </html>
 ```
 
-Note that the `<script>` element is added after the `<div>` container the Checkin will be hosted in. When this is set up, something along the following should appear:
+Note that the `<script>` element is added after the `<div>` container the
+Checkin will be hosted in. When this is set up, something along the
+following should appear:
 
 (% style="text-align:center" %)
 [[image:Consumer.PNG||alt="Consumer UI"]]
 
-As you can see, the payer's information is prefilled as provided by the initial `POST`. When the payer completes the checkin, the events `onConsumerIdentified` and `onShippingDetailsAvailable` will be raised with the following argument objects:
+As you can see, the payer's information is pre-filled as provided by the
+initial `POST`. When the payer completes the checkin, the events
+`onConsumerIdentified` and `onShippingDetailsAvailable` will be raised with
+the following argument objects:
 
 {:.code-header}
 **Consumer Identified Event Argument Object**
+
 ```json
 {
     "actionType": "OnConsumerIdentified",
@@ -291,6 +297,7 @@ As you can see, the payer's information is prefilled as provided by the initial 
 
 {:.code-header}
 **Shipping Details Available Event Argument Object**
+
 ```json
 {
     "actionType": "OnShippingDetailsAvailable",
@@ -298,18 +305,23 @@ As you can see, the payer's information is prefilled as provided by the initial 
 }
 ```
 
-With a `consumerProfileRef` safely tucked into our pocket, the Checkin is complete and we can move on to checkout.
+With a `consumerProfileRef` safely tucked into our pocket, the Checkin is
+complete and we can move on to checkout.
 
-== Payment Menu ==
+## Payment Menu
 
-Payment Menu begins where checkin left off, in much the same way that the checkin process progressed.
+Payment Menu begins where checkin left off, in much the same way that the
+checkin process progressed.
 
-=== Payment Menu Back End ===
+### Payment Menu Back End
 
-We start by performing a `POST` request towards the `paymentorder` resource with the `consumerProfileRef` we obtained in the checkin process described above. [[See the technical reference for details>>doc:Main.ecommerce.payex-checkout-main.payex-checkout-standard-setup.technical-reference.WebHome||anchor="HPaymentOrders"]].
+We start by performing a `POST` request towards the `paymentorder` resource
+with the `consumerProfileRef` we obtained in the checkin process described
+above. [See the technical reference for details][payment-order].
 
 {:.code-header}
 **Request**
+
 ```http
 POST /psp/paymentorders HTTP/1.1
 Host: api.externalintegration.payex.com
@@ -378,8 +390,6 @@ Content-Type: application/json
     }
 }
 ```
-
-**Request Properties**
 
 (% class="table-bordered table-striped" %)
 |=Property|=Type|=(% style="text-align:center" %)Required|=Description
@@ -843,4 +853,5 @@ A completed integration against Swedbank Pay Checkout standard setup should adhe
   [https]: /#connection-and-protocol
   [payment-order]: #
   [initiate-consumer-session]: #
+  [view-consumer-identification]: #
   [msisdn]: https://en.wikipedia.org/wiki/MSISDN
