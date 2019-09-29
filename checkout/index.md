@@ -2,6 +2,11 @@
 title: Swedbank Pay Checkout
 ---
 
+{% include alert.html type="warning"
+                      icon="warning"
+                      header="Site under development"
+                      body="The Developer Portal is under construction and should not be used to integrate against Swedbank Pay's APIs yet." %}
+
 {% include jumbotron.html body="**Swedbank Pay Checkout** is a complete reimagination
 of the checkout experience, integrating seamlessly into the merchant website
 through highly customizable and flexible components.
