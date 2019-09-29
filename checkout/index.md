@@ -197,8 +197,8 @@ Content-Type: application/json
 |   | `email`               | `string` | The e-mail address of the payer.
 |   | `consumerCountryCode` | `string` | Consumers country of residence. Used by the consumerUi for validation on all input fields.
 |   | `nationalIdentifier`  | `object` | The object containing information about the national identifier of the consumer.
-|   | ↳ `socialSecurityNumber` | `string` | The social security number of the payer. Format: Norway `DDMMYYXXXXX`, Sweden: `YYYYMMDDXXXX`.
-|   | ↳ `countryCode`          | `string` | The country code, denoting the origin of the issued social security number. Required if `nationalIdentifier.socialSecurityNumber` is set.
+|   | └➔ `socialSecurityNumber` | `string` | The social security number of the payer. Format: Norway `DDMMYYXXXXX`, Sweden: `YYYYMMDDXXXX`.
+|   | └➔ `countryCode`          | `string` | The country code, denoting the origin of the issued social security number. Required if `nationalIdentifier.socialSecurityNumber` is set.
 
 When the request has been sent, a response containing an array of operations that can be acted upon will be returned.
 
@@ -282,7 +282,7 @@ Note that the `<script>` element is added after the `<div>` container the
 Checkin will be hosted in. When this is set up, something along the
 following should appear:
 
-(% style="text-align:center" %)
+
 [[image:Consumer.PNG||alt="Consumer UI"]]
 
 As you can see, the payer's information is pre-filled as provided by the
@@ -396,49 +396,54 @@ Content-Type: application/json
 }
 ```
 
-(% class="table-bordered table-striped" %)
-|=Property|=Type|=(% style="text-align:center" %)Required|=Description
-|`paymentorder`|`object`|(% style="text-align:center" %)Y|The payment order object.
-|`paymentorder.operation`|`string`|(% style="text-align:center" %)Y|The operation that the payment order is supposed to perform.
-|`paymentorder.currency`|`string`|(% style="text-align:center" %)Y|The currency of the payment.
-|`paymentorder.amount`|`integer`|(% style="text-align:center" %)Y|The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.
-|`paymentorder.vatAmount`|`integer`|(% style="text-align:center" %)Y|The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.
-|`paymentorder.description`|`string`|(% style="text-align:center" %)Y|The description of the payment order.
-|`paymentorder.userAgent`|`string`|(% style="text-align:center" %)Y|The user agent of the payer.
-|`paymentorder.language`|`string`|(% style="text-align:center" %)Y|The language of the payer.
-|`paymentorder.urls.hostUrls`|`array`|(% style="text-align:center" %)Y|The array of URIs valid for embedding of Swedbank Pay Hosted Views.
-|`paymentorder.urls.completeUrl`|`string`|(% style="text-align:center" %)Y|The URI to redirect the payer to once the payment is completed.
-|`paymentorder.urls.cancelUrl`|`string`|(% style="text-align:center" %)N|The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only `cancelUrl` or `paymentUrl` can be used, not both.
-|`paymentorder.urls.paymentUrl`|`string`|(% style="text-align:center" %)N|The URI that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. Only used in hosted views. Can not be used simultaneously with `cancelUrl`; only `cancelUrl` or `paymentUrl` can be used, not both.
-|`paymentorder.urls.callbackUrl`|`string`|(% style="text-align:center" %)N|The URI to the API endpoint receiving `POST` requests on transaction activity related to the payment order.
-|`paymentorder.urls.termsOfServiceUrl`|`string`|(% style="text-align:center" %)Y|The URI to the terms of service document the payer must accept in order to complete the payment. Requires `https`.
-|`paymentorder.payeeInfo.payeeId`|`string`|(% style="text-align:center" %)Y|The ID of the payee, usually the merchant ID.
-|`paymentorder.payeeInfo.payeeReference`|`string(30)`|(% style="text-align:center" %)Y|A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [[payeeReference>>doc:Main.ecommerce.technical-reference.WebHome||anchor="HPayeeReference"]] for details.
-|`paymentorder.payeeInfo.payeeName`|`string`|(% style="text-align:center" %)N|The name of the payee, usually the name of the merchant.
-|`paymentorder.payeeInfo.productCategory`|`string`|(% style="text-align:center" %)N|A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.
-|`paymentorder.payeeInfo.orderReference`|`string(50)`|(% style="text-align:center" %)N|The order reference should reflect the order reference found in the merchant's systems.
-|`paymentorder.payer.consumerProfileRef`|`string`|(% style="text-align:center" %)N|The consumer profile reference as obtained through the [[Consumers>>doc:Main.ecommerce.technical-reference.consumers-resource.WebHome]] API.
-|`paymentorder.orderItems`|`array`|(% style="text-align:center" %)N|The array of items being purchased with the order. Used to print on invoices if the payer chooses to pay with invoice, among other things
-|`paymentorder.orderItems[].reference`|`string`|(% style="text-align:center" %)Y|A reference that identifies the order item.
-|`paymentorder.orderItems[].name`|`string`|(% style="text-align:center" %)Y|The name of the order item.
-|`paymentorder.orderItems[].type`|`string`|(% style="text-align:center" %)Y|`PRODUCT`, `SERVICE`, `SHIPPING_FEE`, `DISCOUNT`, `VALUE_CODE` or `OTHER`. The type of the order item.
-|`paymentorder.orderItems[].class`|`string`|(% style="text-align:center" %)Y|The classification of the order item. Can be used for assigning the order item to a specific product category, for instance. Swedbank Pay has no use for this value itself, but it's useful for some payment instruments and integrations.
-|`paymentorder.orderItems[].itemUrl`|`string`|(% style="text-align:center" %)N|The URL to a page that contains a human readable description of the order item, or similar.
-|`paymentorder.orderItems[].imageUrl`|`string`|(% style="text-align:center" %)N|The URL to an image of the order item.
-|`paymentorder.orderItems[].description`|`string`|(% style="text-align:center" %)N|The human readable description of the order item.
-|`paymentorder.orderItems[].discountDescription`|`string`|(% style="text-align:center" %)N|The human readable description of the possible discount.
-|`paymentorder.orderItems[].quantity`|`integer`|(% style="text-align:center" %)Y|The quantity of order items being purchased.
-|`paymentorder.orderItems[].quantityUnit`|`string`|(% style="text-align:center" %)Y|The unit of the quantity, such as `pcs`, `grams`, or similar.
-|`paymentorder.orderItems[].unitPrice`|`integer`|(% style="text-align:center" %)Y|The price per unit of order item.
-|`paymentorder.orderItems[].discountPrice`|`integer`|(% style="text-align:center" %)N|If the order item is purchased at a discounted price, this property should contain that price.
-|`paymentorder.orderItems[].vatPercent`|`integer`|(% style="text-align:center" %)Y|The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.
-|`paymentorder.orderItems[].amount`|`integer`|(% style="text-align:center" %)Y|The total amount including VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `500`0 equals `50.00 NOK`.
-|`paymentorder.oredrItems[].vatAmount`|`integer`|(% style="text-align:center" %)Y|The total amount of VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `500`0 equals `50.00 NOK`.
+{:.table .table-striped}
+| ✔︎︎︎︎︎ | Property                     | Type         |  Description |
+|:-:|:-----------------------------|--------------|:-------------|
+| ✔︎︎︎︎︎ | `paymentorder`               | `object`     | The payment order object.
+| ✔︎︎︎︎︎ | `operation`                  | `string`     | The operation that the payment order is supposed to perform.
+| ✔︎︎︎︎︎ | └➔&nbsp;`currency`           | `string`      | The currency of the payment.
+| ✔︎︎︎︎︎ | └➔&nbsp;`amount`             | `integer`     | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.
+| ✔︎︎︎︎︎ | └➔&nbsp;`vatAmount`          | `integer`     | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.
+| ✔︎︎︎︎︎ | └➔&nbsp;`description`        | `string`      | The description of the payment order.
+| ✔︎︎︎︎︎ | └➔&nbsp;`userAgent`          | `string`      | The user agent of the payer.
+| ✔︎︎︎︎︎ | └➔&nbsp;`language`           | `string`      | The language of the payer.
+| ✔︎︎︎︎︎ | └➔&nbsp;`urls`               | `object`      | The `urls` object, containing the URLs relevant for the payment order.
+| ✔︎︎︎︎︎ | └─➔&nbsp;`hostUrls`          | `array`       | The array of URIs valid for embedding of Swedbank Pay Hosted Views.
+| ✔︎︎︎︎︎ | └─➔&nbsp;`completeUrl`       | `string`      | The URI to redirect the payer to once the payment is completed.
+|   | └─➔&nbsp;`cancelUrl`         | `string`       | The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only `cancelUrl` or `paymentUrl` can be used, not both.
+|   | └─➔&nbsp;`paymentUrl`        | `string`       | The URI that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. Only used in hosted views. Can not be used simultaneously with `cancelUrl`; only `cancelUrl` or `paymentUrl` can be used, not both.
+| ✔︎︎︎︎︎ | └─➔&nbsp;`callbackUrl`       | `string`       | The URI to the API endpoint receiving `POST` requests on transaction activity related to the payment order.
+| ✔︎︎︎︎︎ | └─➔&nbsp;`termsOfServiceUrl` | `string`       | The URI to the terms of service document the payer must accept in order to complete the payment. Requires `https`.
+| ✔︎︎︎︎︎ | └➔&nbsp;`payeeInfo`           | `string`      | The `payeeInfo` object, containing information about the payee.
+| ✔︎︎︎︎︎ | └─➔&nbsp;`payeeId`           | `string`       | The ID of the payee, usually the merchant ID.
+| ✔︎︎︎︎︎ | └─➔&nbsp;`payeeReference`    | `string(30)`   | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.
+|   | └─➔&nbsp;`payeeName`           | `string`     | The name of the payee, usually the name of the merchant.
+|   | └─➔&nbsp;`productCategory`     | `string`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.
+|   | └─➔&nbsp;`orderReference`      | `string(50)`  | The order reference should reflect the order reference found in the merchant's systems.
+|   | └➔&nbsp;`payer`                | `object`      | The `payer` object containing information about the payer relevant for the payment order.
+| ︎︎︎  | └─➔&nbsp;`consumerProfileRef`  | `string`      | The consumer profile reference as obtained through [initiating a consumer session][initiate-consumer-session].
+|   | └➔&nbsp;`orderItems`           | `array`       | The array of items being purchased with the order. Used to print on invoices if the payer chooses to pay with invoice, among other things
+| ✔︎︎︎︎︎ | └─➔&nbsp;`reference`           | `string`       | A reference that identifies the order item.
+| ✔︎︎︎︎︎ | └─➔&nbsp;`name`                | `string`       | The name of the order item.
+| ✔︎︎︎︎︎ | └─➔&nbsp;`type`                | `string`       | `PRODUCT`, `SERVICE`, `SHIPPING_FEE`, `DISCOUNT`, `VALUE_CODE` or `OTHER`. The type of the order item.
+| ✔︎︎︎︎︎ | └─➔&nbsp;`class`               | `string`       | The classification of the order item. Can be used for assigning the order item to a specific product category, for instance. Swedbank Pay has no use for this value itself, but it's useful for some payment instruments and integrations.
+| ︎︎︎  | └─➔&nbsp;`itemUrl`             | `string`       | The URL to a page that contains a human readable description of the order item, or similar.
+| ︎︎︎  | └─➔&nbsp;`imageUrl`            | `string`       | The URL to an image of the order item.
+| ︎︎︎  | └─➔&nbsp;`description`         | `string`       | The human readable description of the order item.
+| ︎︎︎  | └─➔&nbsp;`discountDescription` | `string`       | The human readable description of the possible discount.
+| ✔︎︎︎︎︎ | └─➔&nbsp;`quantity`            | `integer`      | The quantity of order items being purchased.
+| ✔︎︎︎︎︎ | └─➔&nbsp;`quantityUnit`        | `string`       | The unit of the quantity, such as `pcs`, `grams`, or similar.
+| ✔︎︎︎︎︎ | └─➔&nbsp;`unitPrice`           | `integer`      | The price per unit of order item.
+| ︎︎︎  | └─➔&nbsp;`discountPrice`       | `integer`       | If the order item is purchased at a discounted price, this property should contain that price.
+| ✔︎︎︎︎︎ | └─➔&nbsp;`vatPercent`          | `integer`      | The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.
+| ✔︎︎︎︎︎ | └─➔&nbsp;`amount`              | `integer`      | The total amount including VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `500`0 equals `50.00 NOK`.
+| ✔︎︎︎︎︎ | └─➔&nbsp;`vatAmount`           | `integer`      | The total amount of VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `500`0 equals `50.00 NOK`.
 
 The response back should look something like this (abbreviated for brevity):
 
 {:.code-header}
 **Response**
+
 ```http
 HTTP/1.1 201 Created
 Content-Type: application/json
@@ -458,28 +463,37 @@ Content-Type: application/json
 }
 ```
 
-**Response Properties**
+{:.table .table-striped}
+| Property       | Type     |  Description |
+|:---------------|----------|:-------------|
+| `paymentorder` | `object` | The payment order object.|
+| └➔&nbsp;`id`   | `string` | The relative URI to the payment order.|
+| `operations`   | `array`  | The array of possible operations to perform, given the state of the payment order.
 
-(% class="table-bordered table-striped" %)
-|=Property|=Type|=Description|=
-|`paymentorder`|`object`|The payment order object.|
-|`paymentorder.id`|`string`|The relative URI to the payment order.|
-|`paymentorder.operations`|`array`|(((
-The array of possible operations to perform, given the state of the payment order.
-)))
+The `paymentorder` object is abbreviated since it's just the `id` and
+`operations` we are interested in. Store the `id` of the Payment Order
+in your system to look up status on the completed payment later.
 
-The `paymentorder` object is abbreviated since it's just the `id` and `operations` we are interested in. Store the `id` of the Payment Order in your system to look up status on the completed payment later.
+Then find the `view-paymentorder` operation and embed its `href` a `<script>`.
+That script will then load the hosted view for the Payment Menu. We will look
+into how to hook that up next.
 
-Then find the `view-paymentorder` operation and embed its `href` a `<script>`. That script will then load the hosted view for the Payment Menu. We will look into how to hook that up next.
+### Payment Menu Front End
 
-=== Payment Menu Front End ===
+To load the payment menu from the JavaScript URL obtained in the back end API
+response, it needs to be set as a `script` element's `src` attribute. You can
+cause a page reload and do this with static HTML or you can avoid the page
+refresh by invoking the POST to create the payment order through Ajax and then
+create the script element with JavaScript, all inside the event handler for
+`onConsumerIdentified`.
+[See the technical reference for details][consumer-events].
 
-To load the payment menu from the JavaScript URL obtained in the back end API response, it needs to be set as a `script` element's `src` attribute. You can cause a page reload and do this with static HTML or you can avoid the page refresh by invoking the POST to create the payment order through Ajax and then create the script element with JavaScript, all inside the event handler for `onConsumerIdentified`. [[See the technical reference for details>>doc:Main.ecommerce.payex-checkout-main.payex-checkout-standard-setup.technical-reference.WebHome||anchor="HViewPaymentOrder"]].
-
-You also can [[customize the styling>>doc:Main.ecommerce.technical-reference.payment-orders-resource.WebHome||anchor="HPaymentMenuStyling"]] of the Payment Menu by adding style properties to the JavaScript function call.
+You also can [customize the styling][payment-menu-styling] of the Payment Menu
+by adding style properties to the JavaScript function call.
 
 {:.code-header}
 **HTML**
+
 ```html
 <!DOCTYPE html>
 <html>
@@ -536,36 +550,56 @@ You also can [[customize the styling>>doc:Main.ecommerce.technical-reference.pay
 
 This should bring up the Payment Menu in a hosted view, looking something like this:
 
-(% style="text-align:center" %)
 [[image:1551693185782-957.png||width="458" height="629"]]
 
+When the consumer completes the payment, the Payment Menu script will be
+signaled and a full redirect to the `completeUrl` sent in with the
+Payment Order will be performed. When the `completeUrl` on your server is hit,
+you can inspect the status on the stored `paymentorder.id` on the server, and
+perform capture – unless the goods are sent physically to the payer; then you
+should await capture until after the goods have been sent.
 
-When the consumer completes the payment, the Payment Menu script will be signalled and a full redirect to the `completeUrl` sent in with the Payment Order will be performed. When the `completeUrl` on your server is hit, you can inspect the status on the stored `paymentorder.id` on the server, and perform capture – unless the goods are sent physically to the payer; then you should await capture until after the goods have been sent.
+You may open and close the payment menu using `.open()` and `.close()`
+functions. You can also invoke `.refresh()` to
+[update the Payment Menu][payment-order-operations] after any changes to the
+order.
 
-You may open and close the payment menu using `.open()` and `.close()` functions. You can also invoke `.refresh()` to [[update the Payment Menu>>doc:Main.ecommerce.technical-reference.payment-orders-resource.WebHome||anchor="HOperations"]] after any changes to the order.
+## Operations
 
-== Operations ==
+When a payment order is created and especially after the payment is complete on
+the consumer's end, you need to implement the relevant order management
+operations in your order system. Most payment methods are two-phase payments –
+in which a successful paymentorder will result in an authorized transaction –
+that must be followed up by a capture or cancellation transaction in a later
+stage. One-phase payments like Swish are settled directly without the option to
+capture or cancel. For a full list of the available operations, see the
+[techincal reference][payment-order-operations].
 
-When a payment order is created and especially after the payment is complete on the consumer's end, you need to implement the relevant order management operations in your order system. Most payment methods are two-phase payments - in which a successful paymentorder will result in an authorized transaction, that must be followed up by a capture or cancellation transaction in a later stage. One-phase payments like Swish are settled directly without the option to capture or cancel. For a full list of the available operations, see the [[techincal reference>>doc:Main.ecommerce.technical-reference.payment-orders-resource.WebHome||anchor="HOperations"]].
-
-(% class="table-bordered table-striped" %)
-|**Operation**|**Description**
-|`update-paymentorder-updateorder`|[[Updates the order>>.||anchor="HUpdateOrder"]] with a change in the `amount` and/or `vatAmount`.
-|`create-paymentorder-capture`|The second part of a two-phase transaction where the authorized amount is sent from the payer to the payee. It is possible to do a part-capture on a subset of the authorized amount. Several captures on the same payment are possible, up to the total authorization amount.
-|`create-paymentorder-cancellation`|Used to cancel authorized and not yet captured transactions. If a cancellation is performed after doing a part-capture, it will only affect the not yet captured authorization amount.
-|`create-paymentorder-reversal`|Used to reverse a payment. It is only possible to reverse a payment that has been captured and not yet reversed.
+{:.table .table-striped}
+| Operation                          | Description |
+|:-----------------------------------|:------------|
+| `update-paymentorder-updateorder`  | [Updates the order][#update-order] with a change in the `amount` and/or `vatAmount`.
+| `create-paymentorder-capture`      | The second part of a two-phase transaction where the authorized amount is sent from the payer to the payee. It is possible to do a part-capture on a subset of the authorized amount. Several captures on the same payment are possible, up to the total authorization amount.
+| `create-paymentorder-cancellation` | Used to cancel authorized and not yet captured transactions. If a cancellation is performed after doing a part-capture, it will only affect the not yet captured authorization amount.
+| `create-paymentorder-reversal`     | Used to reverse a payment. It is only possible to reverse a payment that has been captured and not yet reversed.
 
 To identify the operations that are available we need to do a `GET` request against the URL of `paymentorder.id`:
 
-{{code language="http" title="**Request**" cssClass="http"}}
+{:.code-header}
+**Request**
+
+```http
 GET /psp/paymentorders/b80be381-b572-4f1e-9691-08d5dd095bc4 HTTP/1.1
 Authorization: Bearer <MerchantToken>
 ```
 
-The (abbreviated) response containing an `updateorder`, `capture`, `cancellation`, and `reversal` operation should look similar to the response below:
+The (abbreviated) response containing an `updateorder`, `capture`,
+`cancellation`, and `reversal` operation should look similar to the response
+below:
 
 {:.code-header}
 **Response**
+
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
@@ -601,23 +635,24 @@ Content-Type: application/json
         }
     ]
 }
-
 ```
 
-**Response Properties**
+{:.table .table-striped}
+| Property       | Type     |  Description |
+|:---------------|----------|:-------------|
+| `paymentorder` | `object` | The payment order object.
+| └➔&nbsp;`id`  | `string`  | The relative URI to the payment order.
+| `operations`   | `array`  | The array of possible operations to perform, given the state of the payment order.
 
-(% class="table-bordered table-striped" %)
-|=Property|=Type|=Description
-|`paymentorder`|`object`|The payment order object.
-|`paymentorder.id`|`string`|The relative URI to the payment order.
-|`paymentorder.operations`|`array`|The array of possible operations to perform, given the state of the payment order.
+### Update Order
 
-=== Update Order ===
-
-Change amount and vat amount on a payment order. If you implement `updateorder` **you need to `refresh()`** the [[Payment Menu front end>>doc:Main.ecommerce.payex-checkout-main.payex-checkout-standard-setup.WebHome||anchor="HPaymentMenuFrontEnd"]] so the new amount is shown to the end customer.
+Change amount and vat amount on a payment order. If you implement `updateorder`
+**you need to `refresh()`** the [Payment Menu front end][#payment-menu-front-end]
+so the new amount is shown to the end customer.
 
 {:.code-header}
 **Request**
+
 ```http
 PATCH /psp/paymentorders/b80be381-b572-4f1e-9691-08d5dd095bc4 HTTP/1.1
 Authorization: Bearer <MerchantToken>
@@ -634,16 +669,25 @@ Content-Type: application/json
 
 **Response**
 
-The response given when changing a payment order is equivalent to a {{code}}GET``` request towards the {{code}}paymentorders``` resource, [[as displayed above>>doc:Main.ecommerce.technical-reference.payment-orders-resource.WebHome||anchor="HPaymentOrders"]]. Remember to call .refresh() on the Payment Menu in JavaScript
+The response given when changing a payment order is equivalent to a `POST`
+or `GET` request towards the `paymentorders` resource,
+[as displayed above][#payment-menu-back-end]. Remember to call `.refresh()`
+on the Payment Menu in JavaScript after updating the Payment Order.
 
-=== Capture ===
+### Capture
 
-Capture can only be done on a payment with a successful authorized transaction. It is possible to do a part-capture where you only capture a smaller amount than the authorized amount. You can later do more captures on the same payment up to the total authorization amount.
+Capture can only be done on a payment with a successful authorized transaction.
+It is possible to do a part-capture where you only capture a smaller amount
+than the authorized amount. You can later do more captures on the same payment
+up to the total authorization amount.
 
-To capture the authorized payment, we need to perform `create-paymentorder-capture `against the accompanying href returned in the` operations `list. See the abbreviated request and response below:
+To capture the authorized payment, we need to perform
+`create-paymentorder-capture` against the accompanying href returned in the
+`operations` list. See the abbreviated request and response below:
 
 {:.code-header}
 **Request**
+
 ```http
 POST /psp/paymentorders/b80be381-b572-4f1e-9691-08d5dd095bc4/captures HTTP/1.1
 Host: api.externalintegration.payex.com
@@ -656,28 +700,72 @@ Content-Type: application/json
         "amount": 15610,
         "vatAmount": 3122,
         "payeeReference": "AB832"
+        "orderItems": [
+             {
+                "reference": "P1",
+                "name": "Product1",
+                "type": "PRODUCT",
+                "class": "ProductGroup1",
+                "itemUrl": "https://www.example.com/shop/id=666",
+                "imageUrl": "https://www.example.com/product1.jpg",
+                "description": "Product 1 description",
+                "discountDescription": "Volume discount",
+                "quantity": 4,
+                "quantityUnit": "pcs",
+                "unitPrice": 300,
+                "discountPrice": 200,
+                "vatPercent": 2500,
+                "amount": 1000,
+                "vatAmount": 250
+            },
+            {
+                "reference": "P2",
+                "name": "Product2",
+                "type": "SERVICE",
+                "class": "ProductGroup1",
+                "description": "Product 2 description",
+                "quantity": 1,
+                "quantityUnit": "pcs",
+                "unitPrice": 500,
+                "vatPercent": 2500,
+                "amount": 500,
+                "vatAmount": 125
+            }
+        ],
     }
 }
 ```
 
-**Request Properties**
-
-(% class="table-bordered table-striped" %)
-|=Property|=Type|=(% style="text-align:center" %)Required|=Description
-|`transaction`|`object`|(% style="text-align:center" %)Y|The transaction object.
-|`transaction.description`|`string`|(% style="text-align:center" %)Y|The description of the capture transaction.
-|`transaction.amount`|`integer`|(% style="text-align:center" %)Y|The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.
-|`transaction.vatAmount`|`integer`|(% style="text-align:center" %)Y|The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.
-|`transaction.payeeReference`|`string(30)`|(% style="text-align:center" %)Y|A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [[payeeReference>>doc:Main.ecommerce.technical-reference.WebHome||anchor="HPayeeReference"]] for details.
-|`transaction.vatSummary`|`array`|(% style="text-align:center" %)Y|The array of VAT summaries to be printed on an invoice if the payer chooses to pay with invoice. One VAT summary object per VAT rate should be supplied.
-|`transaction.vatSummary[].amount`|`integer`|(% style="text-align:center" %)Y|The total amount for all items having the VAT rate specified in `vatPercent`, including VAT in the lowest monetary unit of the currency.
-|`transaction.vatSummary[].vatAmount`|`integer`|(% style="text-align:center" %)Y|The total amount of VAT for all items having the VAT rate specified in `vatPercent`, in the lowest monetary unit of the currency.
-|`transaction.vatSummary[].vatPercent`|`integer`|(% style="text-align:center" %)Y|The VAT rate specified as an integer; e.g. `2500` equals 25%.
+{:.table .table-striped}
+| ✔︎︎︎︎︎ | Property                     | Type         |  Description |
+|:-:|:-----------------------------|--------------|:-------------|
+| ✔︎︎︎︎︎ | `transaction`                | `object`     | The transaction object.
+| ✔︎︎︎︎︎ | └➔&nbsp;`description`        | `string`     | The description of the capture transaction.
+| ✔︎︎︎︎︎ | └➔&nbsp;`amount`             | `integer`    | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.
+| ✔︎︎︎︎︎ | └➔&nbsp;`vatAmount`          | `integer`    | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.
+| ✔︎︎︎︎︎ | └➔&nbsp;`payeeReference`     | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.
+|   | └➔&nbsp;`orderItems`           | `array`       | The array of items being purchased with the order. Used to print on invoices if the payer chooses to pay with invoice, among other things. Optional in `capture` requests if already sent with the initial creation of the Payment Order.
+| ✔︎︎︎︎︎ | └─➔&nbsp;`reference`           | `string`       | A reference that identifies the order item.
+| ✔︎︎︎︎︎ | └─➔&nbsp;`name`                | `string`       | The name of the order item.
+| ✔︎︎︎︎︎ | └─➔&nbsp;`type`                | `string`       | `PRODUCT`, `SERVICE`, `SHIPPING_FEE`, `DISCOUNT`, `VALUE_CODE` or `OTHER`. The type of the order item.
+| ✔︎︎︎︎︎ | └─➔&nbsp;`class`               | `string`       | The classification of the order item. Can be used for assigning the order item to a specific product category, for instance. Swedbank Pay has no use for this value itself, but it's useful for some payment instruments and integrations.
+| ︎︎︎  | └─➔&nbsp;`itemUrl`             | `string`       | The URL to a page that contains a human readable description of the order item, or similar.
+| ︎︎︎  | └─➔&nbsp;`imageUrl`            | `string`       | The URL to an image of the order item.
+| ︎︎︎  | └─➔&nbsp;`description`         | `string`       | The human readable description of the order item.
+| ︎︎︎  | └─➔&nbsp;`discountDescription` | `string`       | The human readable description of the possible discount.
+| ✔︎︎︎︎︎ | └─➔&nbsp;`quantity`            | `integer`      | The quantity of order items being purchased.
+| ✔︎︎︎︎︎ | └─➔&nbsp;`quantityUnit`        | `string`       | The unit of the quantity, such as `pcs`, `grams`, or similar.
+| ✔︎︎︎︎︎ | └─➔&nbsp;`unitPrice`           | `integer`      | The price per unit of order item.
+| ︎︎︎  | └─➔&nbsp;`discountPrice`       | `integer`       | If the order item is purchased at a discounted price, this property should contain that price.
+| ✔︎︎︎︎︎ | └─➔&nbsp;`vatPercent`          | `integer`      | The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.
+| ✔︎︎︎︎︎ | └─➔&nbsp;`amount`              | `integer`      | The total amount including VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `500`0 equals `50.00 NOK`.
+| ✔︎︎︎︎︎ | └─➔&nbsp;`vatAmount`           | `integer`      | The total amount of VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `500`0 equals `50.00 NOK`.
 
 If the capture succeeds, it should respond with something like the following:
 
 {:.code-header}
 **Response**
+
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
@@ -699,23 +787,37 @@ Content-Type: application/json
 }
 ```
 
-**Response Properties**
+{:.table .table-striped}
+| Property                  | Type      |  Description |
+|:--------------------------|-----------|:-------------|
+| `payment`                 | `string`  | The relative URI of the payment this capture transaction belongs to.
+| `capture`                 | `object`  | The capture object, containing the information about the capture transaction.
+| └➔&nbsp;`id`              | `string`  | The relative URI of the created capture transaction.
+| └➔&nbsp;`transaction`     | `object`  | The transaction object, containing information about the current transaction.
+| └─➔&nbsp;`id`             | `string`  | The relative URI of the current `transaction` resource.
+| └─➔&nbsp;`created`        | `string`  | The ISO-8601 date and time of when the transaction was created.
+| └─➔&nbsp;`updated`        | `string`  | The ISO-8601 date and time of when the transaction was created.
+| └─➔&nbsp;`type`           | `string`  | Indicates the transaction type.
+| └─➔&nbsp;`state`          | `string`  | `Initialized`, `Completed` or `Failed`. Indicates the state of the transaction.
+| └─➔&nbsp;`number`         | `string`  | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead.
+| └─➔&nbsp;`amount`         | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` = 100.00 NOK, `5000` = 50.00 SEK.
+| └─➔&nbsp;`vatAmount`      | `integer` | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.
+| └─➔&nbsp;`description`    | `string`  | A human readable description of maximum 40 characters of the transaction.
+| └─➔&nbsp;`payeeReference` | `string`  | A unique reference for the transaction. See [`payeeReference`][payee-reference] for details.
 
-(% class="table-bordered table-striped" %)
-|=Property|=Data type|=Description
-|`payment`|`string`|The relative URI of the payment this capture transaction belongs to.
-|`capture.id`|`string`|The relative URI of the created capture transaction.
-|`capture.transaction`|`object`|The object representation of the generic [[`transaction` resource>>doc:Main.ecommerce.technical-reference.core-payment-resources.WebHome||anchor="HTransactions"]].
+**Et voilà!** Checkout should now be complete, the payment should be secure and
+everyone should be happy. But, sometimes you also need to implement the
+cancellation and reversal operations described below.
 
-(% class="wikigeneratedid" %)
-**Et voilà! **Checkout should now be complete, the payment should be secure and everyone should be happy. But, sometimes you also need to implement the cancellation and reversal operations described below.
+### Cancel
 
-=== Cancel ===
-
-If we want to cancel up to the total authorized (not captured) amount, we need to perform `create-paymentorder-cancel `against the accompanying href returned in the` operations `list. See the abbreviated request and response below:
+If we want to cancel up to the total authorized (not captured) amount, we need
+to perform `create-paymentorder-cancel` against the accompanying href returned
+in the `operations` list. See the abbreviated request and response below:
 
 {:.code-header}
 **Request**
+
 ```http
 POST /psp/paymentorders/b80be381-b572-4f1e-9691-08d5dd095bc4/cancellations HTTP/1.1
 Host: api.externalintegration.payex.com
@@ -730,17 +832,19 @@ Content-Type: application/json
 }
 ```
 
-**Request Properties**
+{:.table .table-striped}
+| ✔︎︎︎︎︎ | Property                     | Type         |  Description |
+|:-:|:-----------------------------|--------------|:-------------|
+| ✔︎︎︎︎︎ | `transaction`                | `object`     | The transaction object.
+| ✔︎︎︎︎︎ | └➔&nbsp;`payeeReference`     | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.
+| ✔︎︎︎︎︎ | └➔&nbsp;`description`        | `string`     | A textual description of why the transaction is cancelled.
 
-(% class="table-bordered table-striped" %)
-|=Property|=Type|=(% style="text-align:center" %)Required|=Description
-|`transaction.payeeReference`|`string(30)`|(% style="text-align:center" %)Y|A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [[payeeReference>>doc:Main.ecommerce.technical-reference.WebHome||anchor="HPayeeReference"]] for details.
-|`transaction.description`|`string`|(% style="text-align:center" %)Y|A textual description of why the transaction is cancelled.
-
-If the cancellation request succeeds, the response should be similar to the example below:
+If the cancellation request succeeds, the response should be similar to the
+example below:
 
 {:.code-header}
 **Response**
+
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
@@ -762,20 +866,33 @@ Content-Type: application/json
 }
 ```
 
-**Response Properties**
+{:.table .table-striped}
+| Property              | Type     |  Description |
+|:----------------------|----------|:-------------|
+| `payment`             | `string` | The relative URI of the payment this cancellation transaction belongs to.
+| `cancellation`        | `object` | The cancellation object, containing information about the cancellation transaction.
+| └➔&nbsp;`id`          | `string` | The relative URI of the cancellation transaction.
+| └➔&nbsp;`transaction`     | `object`  | The transaction object, containing information about the current transaction.
+| └─➔&nbsp;`id`             | `string`  | The relative URI of the current `transaction` resource.
+| └─➔&nbsp;`created`        | `string`  | The ISO-8601 date and time of when the transaction was created.
+| └─➔&nbsp;`updated`        | `string`  | The ISO-8601 date and time of when the transaction was created.
+| └─➔&nbsp;`type`           | `string`  | Indicates the transaction type.
+| └─➔&nbsp;`state`          | `string`  | `Initialized`, `Completed` or `Failed`. Indicates the state of the transaction.
+| └─➔&nbsp;`number`         | `string`  | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead.
+| └─➔&nbsp;`amount`         | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` = 100.00 NOK, `5000` = 50.00 SEK.
+| └─➔&nbsp;`vatAmount`      | `integer` | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.
+| └─➔&nbsp;`description`    | `string`  | A human readable description of maximum 40 characters of the transaction.
+| └─➔&nbsp;`payeeReference` | `string`  | A unique reference for the transaction. See [`payeeReference`][payee-reference] for details.
 
-(% class="table-bordered table-striped" %)
-|=Property|=Data type|=Description
-|`payment`|`string`|The relative URI of the payment this capture transaction belongs to.
-|`cancellation.id`|`string`|The relative URI of the created capture transaction.
-|`cancellation.transaction`|`object`|The object representation of the generic [[`transaction` resource>>doc:Main.ecommerce.technical-reference.core-payment-resources.WebHome||anchor="HTransactions"]].
+### Reversal
 
-=== Reversal ===
-
-If we want to reverse a previously captured amount, we need to perform `create-paymentorder-reversal `against the accompanying href returned in the` operations `list. See the abbreviated request and response below:
+If we want to reverse a previously captured amount, we need to perform
+`create-paymentorder-reversal` against the accompanying href returned in the
+`operations` list. See the abbreviated request and response below:
 
 {:.code-header}
 **Request**
+
 ```http
 POST /psp/paymentorders/b80be381-b572-4f1e-9691-08d5dd095bc4/reversals HTTP/1.1
 Host: api.externalintegration.payex.com
@@ -792,19 +909,20 @@ Content-Type: application/json
 }
 ```
 
-**Request Properties**
-
-(% class="table-bordered table-striped" %)
-|=Property|=Type|=(% style="text-align:center" %)Required|=Description
-|`transaction.amount`|`integer`|(% style="text-align:center" %)Y|The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.
-|`transaction.vatAmount`|`integer`|(% style="text-align:center" %)Y|The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.
-|`transaction.payeeReference`|`string(30)`|(% style="text-align:center" %)Y|A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [[payeeReference>>doc:Main.ecommerce.technical-reference.WebHome||anchor="HPayeeReference"]] for details.
-|`transaction.description`|`string`|(% style="text-align:center" %)Y|Textual description of why the transaction is reversed.
+{:.table .table-striped}
+| ✔︎︎︎︎︎ | Property                     | Type         |  Description |
+|:-:|:-----------------------------|--------------|:-------------|
+| ✔︎︎︎︎︎ | `transaction`                | `object`     | The transaction object.
+| ✔︎︎︎︎︎ | └➔&nbsp;`amount`             | `integer`    | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.
+| ✔︎︎︎︎︎ | └➔&nbsp;`vatAmount`          | `integer`    | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.
+| ✔︎︎︎︎︎ | └➔&nbsp;`payeeReference`     | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.
+| ✔︎︎︎︎︎ | └➔&nbsp;`description`        | `string`     | Textual description of why the transaction is reversed.
 
 If the reversal request succeeds, the response should be similar to the example below:
 
 {:.code-header}
 **Response**
+
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
@@ -826,37 +944,78 @@ Content-Type: application/json
 }
 ```
 
-**Response Properties**
+{:.table .table-striped}
+| Property                  | Type     |  Description |
+|:--------------------------|----------|:-------------|
+| `payment`                 | `string` | The relative URI of the payment this reversal transaction belongs to.
+| `reversals`               | `object` | The reversal object, containing information about the reversal transaction.
+| └➔&nbsp;`id`              | `string` | The relative URI of the reversal transaction.
+| └➔&nbsp;`transaction`     | `object`  | The transaction object, containing information about the current transaction.
+| └─➔&nbsp;`id`             | `string`  | The relative URI of the current `transaction` resource.
+| └─➔&nbsp;`created`        | `string`  | The ISO-8601 date and time of when the transaction was created.
+| └─➔&nbsp;`updated`        | `string`  | The ISO-8601 date and time of when the transaction was created.
+| └─➔&nbsp;`type`           | `string`  | Indicates the transaction type.
+| └─➔&nbsp;`state`          | `string`  | `Initialized`, `Completed` or `Failed`. Indicates the state of the transaction.
+| └─➔&nbsp;`number`         | `string`  | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead.
+| └─➔&nbsp;`amount`         | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` = 100.00 NOK, `5000` = 50.00 SEK.
+| └─➔&nbsp;`vatAmount`      | `integer` | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.
+| └─➔&nbsp;`description`    | `string`  | A human readable description of maximum 40 characters of the transaction.
+| └─➔&nbsp;`payeeReference` | `string`  | A unique reference for the transaction. See [`payeeReference`][payee-reference] for details.
 
-(% class="table-bordered table-striped" %)
-|=Property|=Data type|=Description
-|`payment`|`string`|The relative URI of the payment this reversal transaction belongs to.
-|`reversal.id`|`string`|The relative URI of the created reversal transaction.
-|`reversal.transaction`|`object`|The object representation of the generic [[`transaction` resource>>doc:Main.ecommerce.technical-reference.core-payment-resources.WebHome||anchor="HTransactions"]].
 
-== Best Practices ==
+## Best Practices
 
-A completed integration against Swedbank Pay Checkout standard setup should adhere to a set of best practice criteria in order to successfully go through Swedbank Pay' integration validation procedure.
+A completed integration against Swedbank Pay Checkout standard setup should
+adhere to a set of best practice criteria in order to successfully go
+through Swedbank Pay' integration validation procedure.
 
-=== Must Haves ===
+### Must Haves
 
-* The Checkin and Payment Menu components (the two `<iframe>` elements) must be separate (one must not replace the other).
-* The Checkin must be completed before any shipping details are finalized, as the Checkin component provides shipping address via the `onShippingDetailsAvailable` event.
-* A button in the webshop or merchant web site needs to exist that allows the user to not perform Checkin ("Shop anonymously"). See [[Anonymous Payments>>Main.ecommerce.payex-checkout-main.payex-checkout-anonymous-payments.WebHome]] for details.
-* If a browser refresh is performed after the payer has checked in, the payment menu must be shown even though `onConsumerIdentified` is not invoked.
-* The `consumerProfileRef` returned in the response from the `POST` request to the `consumers` resource must be included in the `POST` request to the `paymentorders` resource.
-* When the contents of the shopping cart changes or anything else that affects the amount occurs, the `paymentorder` must be updated and the Payment Menu must be `refresh`ed.
-* Features not described on this page must not be used, although they are available in the API. Flags that can be turned to `true` must be kept `false` as described in this standard setup documentation.
-* When the payer is checked in, he or she must be identified appropriately in the Payment Menu (stored credit cards must be visible for the credit card payment instrument, for instance).
-* `orderReference` must be sent as a part of the `POST` request to `paymentorders` and must represent the order ID of the webshop or merchant website.
+* The Checkin and Payment Menu components (the two `<iframe>` elements) must be
+  separate (one must not replace the other).
+* The Checkin must be completed before any shipping details are finalized, as
+  the Checkin component provides shipping address via the
+  `onShippingDetailsAvailable` event.
+* A button in the webshop or merchant web site needs to exist that allows the
+  user to not perform Checkin ("Shop anonymously"). See
+  [guest payments][guest-payments] for details.
+* If a browser refresh is performed after the payer has checked in, the payment
+  menu must be shown even though `onConsumerIdentified` is not invoked.
+* The `consumerProfileRef` returned in the response from the `POST` request to
+  the `consumers` resource must be included in the `POST` request to the
+  `paymentorders` resource.
+* When the contents of the shopping cart changes or anything else that affects
+  the amount occurs, the `paymentorder` must be updated and the Payment Menu
+  must be `refresh`ed.
+* Features not described on this page must not be used, although they are
+  available in the API. Flags that can be turned to `true` must be kept
+  `false` as described in this standard setup documentation.
+* When the payer is checked in, he or she must be identified appropriately in
+  the Payment Menu (stored credit cards must be visible for the credit card
+  payment instrument, for instance).
+* `orderReference` must be sent as a part of the `POST` request to
+  `paymentorders` and must represent the order ID of the webshop or merchant
+  website.
 * The integration needs to handle both one and two phase purchases correctly.
 * All of the operations `Cancel`, `Capture` and `Reversal` must be implemented.
-* The [[transaction callback>>doc:Main.ecommerce.technical-reference.WebHome||anchor="HCallback"]] must be handled appropriately.
-* [[Proplems>>doc:Main.ecommerce.technical-reference.WebHome||anchor="HProblems"]] that may occur in Swedbank Pay' API must be handled appropriately.
-* Your integration must be resilient to change. Properties, operations, headers, etc., that aren't understood in any response **must be ignored**. Failing due to a something occurring in a response that your implementation haven't seen before is a major malfunction of your integration and must be fixed.
+* The [transaction callback][callback must be handled appropriately.
+* [Proplems][/#problems] that may occur in Swedbank Pay' API must be handled
+  appropriately.
+* Your integration must be resilient to change. Properties, operations,
+  headers, etc., that aren't understood in any response **must be ignored**.
+  Failing due to a something occurring in a response that your implementation
+  haven't seen before is a major malfunction of your integration and must be
+  fixed.
 
   [https]: /#connection-and-protocol
   [payment-order]: #
   [initiate-consumer-session]: #
   [view-consumer-identification]: #
   [msisdn]: https://en.wikipedia.org/wiki/MSISDN
+  [payee-reference]: #
+  [consumer-events]: #
+  [payment-menu-styling]: #
+  [payment-order-operations]: #
+  [transactions]: #
+  [guest-payments]: #
+  [callback]: #

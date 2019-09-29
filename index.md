@@ -325,8 +325,8 @@ The structure of a problem message will look like this:
 | `status`              | `integer` | The HTTP status code that the problem was served with.
 | `action`              | `string`  | The `action` indicates how the error can be recovered from.
 | `problems`            | `array`   | The array of problem detail objects.
-| ↳&nbsp;`name`        | `string`  | The name of the property, header, object, entity or likewise that was erroneous.
-| ↳&nbsp;`description` | `string`  | The description of what was wrong with the property, header, object, entity or likewise identified by `name`.
+| └➔&nbsp;`name`        | `string`  | The name of the property, header, object, entity or likewise that was erroneous.
+| └➔&nbsp;`description` | `string`  | The description of what was wrong with the property, header, object, entity or likewise identified by `name`.
 
 ### Common Problems
 
