@@ -3,12 +3,18 @@ remote_theme: SwedbankPay/swedbank-pay-design-guide-jekyll-theme
 exclude: ["Gemfile*", "Rakefile"]
 plugins:
   - "jekyll-github-metadata"
+tipue_search:
+  include:
+    pages: true
 defaults:
   - values:
       layout: default
       design_guide:
         base_url: https://design.swedbankpay.com
         version_url: https://design.swedbankpay.com/v/4.1.0
+      search:
+        enabled: true
+        url: /search
       topbar:
         navigation:
         - url: /checkout/
@@ -16,8 +22,6 @@ defaults:
         - url: /payments/
           title: Payments
       sidebar:
-        search:
-          enabled: true
         navigation:
           - title: Checkout
             items:
