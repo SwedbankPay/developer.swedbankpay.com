@@ -21,17 +21,3 @@ defaults:
           title: Checkout
         - url: /payments/
           title: Payments
-      sidebar:
-        navigation:
-          - title: Checkout
-            items:
-            - url: /checkout/
-              title: Side 1
-            - url: /page2
-              title: Side 2
-          - title: Payments
-            items:
-            - url: /page1
-              title: Side 3
-            - url: /page2
-              title: Side 4
