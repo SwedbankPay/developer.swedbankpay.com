@@ -98,12 +98,12 @@ resource. To get an [introduction to **hypermedia**, please watch this 20 minute
                       header="Don't build URIs"
                       body="It is very important that only the base URIs of Swedbank Pay's APIs are stored in your system. All other URIs are returned dynamically in the response. Swedbank Pay cannot guarantee that your implementation will remain working if you store any other URIs in your system. When performing requests, please make sure to use the complete URIs that are returned in the response. Do not attempt to parse or build upon the returned data - you should not put any special significance to the information you might glean from an URI. URIs should be treated as identifiers you can use to retrieve the identified resource – nothing more, nothing less. If you don't follow this advice, your integration most assuredly will break when Swedbank Pay makes updates in the future." %}
 
-## POST and PATCH requests and responses
+## Uniform Responses
 
-When a `POST` or `PATCH` request is performed the whole target resource
+When a `POST` or `PATCH` request is performed, the whole target resource
 representation is returned in the response, as when performing a `GET`
-request after the initial request. This is an economic approach that
-limits the number of necessary `GET` requests.
+request on the resource URI. This is an economic approach that limits the
+number of necessary `GET` requests.
 
 ## Expansion
 
