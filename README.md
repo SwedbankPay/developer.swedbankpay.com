@@ -1,5 +1,7 @@
 # developer.swedbankpay.com
 
+[![Swedbank Pay Developer Portal][dev-portal-image]][dev-portal]
+
 This is the repository for [Swedbank Pay Developer Portal][1]. It is run as a
 [Jekyll][2] website on [GitHub Pages][3].
 
@@ -40,3 +42,5 @@ This website is available as open source under the terms of the
 [9]: http://contributor-covenant.org
 [10]: https://developer.payex.com/xwiki/wiki/developer/view/Main/guidelines/open-source-development-guidelines/
 [11]: https://opensource.org/licenses/MIT
+[dev-portal-image]: ./assets/img/swedbank-pay-developer-portal.png
+[dev-portal]: https://developer.swedbankpay.com/
