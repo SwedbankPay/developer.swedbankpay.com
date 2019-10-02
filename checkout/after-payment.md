@@ -39,7 +39,7 @@ capture or cancel. For a full list of the available operations, see the
 | `create-paymentorder-cancellation` | Used to cancel authorized and not yet captured transactions. If a cancellation is performed after doing a part-capture, it will only affect the not yet captured authorization amount.
 | `create-paymentorder-reversal`     | Used to reverse a payment. It is only possible to reverse a payment that has been captured and not yet reversed.
 
-To identify the operations that are available we need to do a `GET` request against the URL of `paymentorder.id`:
+To identify the operations that are available we need to do a `GET` request against the URI of `paymentorder.id`:
 
 {:.code-header}
 **Request**
