@@ -1,5 +1,7 @@
 ---
 title: Swedbank Pay Checkout – Introduction
+opengraph:
+    description: Introduction to Swedbank Pay Checkout
 sidebar:
   navigation:
   - title: Checkout

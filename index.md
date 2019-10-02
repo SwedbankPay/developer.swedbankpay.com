@@ -2,6 +2,10 @@
 title: Swedbank Pay Developer Portal
 ---
 
+{% assign design_guide_base_url = design_guide_version_url | default: 'https://design.swedbankpay.com' %}
+{% assign design_guide_version = site.design_guide.version | default: '4.1.0' %}
+{% assign design_guide_version_url = design_guide_base_url | append: '/v/' | append: design_guide_version %}
+
 {% include alert.html type="warning"
                       icon="warning"
                       header="Site under development"
@@ -16,7 +20,7 @@ you are strongly advised to **read this entire page to the end**.
   <div class="col-12 col-md-6 pt-3 pt-md-0 d-flex">
     <div class="doc-card card card-plain">
       <div class="card-body text-center d-flex flex-column">
-        <img src="{{ page.design_guide.version_url }}/img/swedbankpay-logo.svg" alt="Swedbank Pay" height="120">
+        <img src="{{ design_guide_version_url }}/img/swedbankpay-logo.svg" alt="Swedbank Pay" height="120">
         <h3>Checkout</h3>
         <p>Speed up checkout by allowing your customers to check-in with Swedbank Pay and pay with their favorite payment methods through our payment menu.</p>
         <a class="btn btn-guiding btn-outline btn-block mt-auto" href="/checkout/">Checkout Documentation</a>
@@ -26,7 +30,7 @@ you are strongly advised to **read this entire page to the end**.
   <div class="col-12 col-md-6 pt-3 pt-md-0 d-flex">
     <div class="doc-card card card-plain">
       <div class="card-body text-center d-flex flex-column">
-        <img src="{{ page.design_guide.version_url }}/img/swedbankpay-logo.svg" alt="Swedbank Pay" height="120">
+        <img src="{{ design_guide_version_url }}/img/swedbankpay-logo.svg" alt="Swedbank Pay" height="120">
         <h3>Payments</h3>
         <p>You identify the customer, we take care of the payment. Chose from our uniform and wide selection of payment instruments.</p>
         <a class="btn btn-guiding btn-outline btn-block mt-auto" href="/payments/">Payments Documentation</a>
