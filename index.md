@@ -78,7 +78,7 @@ Forwarded: for=82.115.151.177; host=example.com; proto=https
 |   | **`Session-Id`**    | A trace identifier used to trace calls through the API Platform (ref [RFC 7329][rfc-7329]). Each request must mint a new [GUID/UUID][uuid]. If no `Session-Id` is provided, Swedbank Pay will generate one for the request.
 |   | **`Forwarded`**     | The IP address of the consumer as well as the host and protocol of the consumer-facing web page. When the header is present, only the `for` parameter containing the consumer IP address is required, the other parameters are optional. See [RFC 7239][rfc-7239] for details.
 
-## URI usage
+## URI Usage
 
 The base URIs of the API Platform are:
 
