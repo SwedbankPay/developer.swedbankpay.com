@@ -33,7 +33,7 @@ capture or cancel. For a full list of the available operations, see the
 {:.table .table-striped}
 | Operation                          | Description |
 |:-----------------------------------|:------------|
-| `update-paymentorder-updateorder`  | [Updates the order][#update-order] with a change in the `amount` and/or `vatAmount`.
+| `update-paymentorder-updateorder`  | [Updates the order](#update-order) with a change in the `amount` and/or `vatAmount`.
 | `create-paymentorder-capture`      | The second part of a two-phase transaction where the authorized amount is sent from the payer to the payee. It is possible to do a part-capture on a subset of the authorized amount. Several captures on the same payment are possible, up to the total authorization amount.
 | `create-paymentorder-cancellation` | Used to cancel authorized and not yet captured transactions. If a cancellation is performed after doing a part-capture, it will only affect the not yet captured authorization amount.
 | `create-paymentorder-reversal`     | Used to reverse a payment. It is only possible to reverse a payment that has been captured and not yet reversed.
