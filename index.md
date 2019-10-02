@@ -322,10 +322,8 @@ The structure of a problem message will look like this:
 }
 ```
 
-### Problem Properties
-
 {:.table .table-striped}
-| Property              | Data type | Description |
+| Property              | Data&nbsp;type | Description |
 |:----------------------|:----------|:------------|
 | `type`                | `string`  | The URI that identifies the error type. This is the **only property usable for programmatic identification** of the type of error! When dereferenced, it might lead you to a human readable description of the error and how it can be recovered from.
 | `title`               | `string`  | The title contains a human readable description of the error.
@@ -335,7 +333,7 @@ The structure of a problem message will look like this:
 | `action`              | `string`  | The `action` indicates how the error can be recovered from.
 | `problems`            | `array`   | The array of problem detail objects.
 | └➔&nbsp;`name`        | `string`  | The name of the property, header, object, entity or likewise that was erroneous.
-| └➔&nbsp;`description` | `string`  | The description of what was wrong with the property, header, object, entity or likewise identified by `name`.
+| └➔&nbsp;`description` | `string`  | The human readable description of what was wrong with the property, header, object, entity or likewise identified by `name`.
 
 ### Common Problems
 
