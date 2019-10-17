@@ -3,6 +3,7 @@
 [![Swedbank Pay Developer Portal][dev-portal-image]][dev-portal]
 
 [![GitHub Actions Status][gh-actions-badge]][gh-actions]
+![Last Master Commit][last-commit-badge]
 
 This is the repository for [Swedbank Pay Developer Portal][1]. It is run as a
 [Jekyll][2] website on [GitHub Pages][3].
@@ -48,3 +49,4 @@ This website is available as open source under the terms of the
 [dev-portal]: https://developer.swedbankpay.com/
 [gh-actions-badge]: https://github.com/SwedbankPay/developer.swedbankpay.com/workflows/jekyll-build/badge.svg
 [gh-actions]: https://github.com/SwedbankPay/developer.swedbankpay.com/actions
+[last-commit-badge]: https://img.shields.io/github/last-commit/SwedbankPay/developer.swedbankpay.com/master
