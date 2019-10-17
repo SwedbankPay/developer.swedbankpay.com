@@ -12,6 +12,8 @@ sidebar:
       title: Payment
     - url: /checkout/after-payment
       title: After Payment
+    - url: /checkout/3DS2-documentation
+      title: 3DS2 Documentation
   - title: Resources
     items:
     - url: /resources/
