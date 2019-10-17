@@ -4,14 +4,6 @@ opengraph:
     description: Introduction to Swedbank Pay Resources
 sidebar:
   navigation:
-  - title: Checkout
-    items:
-    - url: /checkout/
-      title: Introduction
-    - url: /checkout/payment
-      title: Payment
-    - url: /checkout/after-payment
-      title: After Payment
   - title: Resources
     items:
     - url: /resources/
