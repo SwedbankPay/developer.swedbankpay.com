@@ -21,6 +21,8 @@ topbar:
     title: Checkout
   - url: /payments/
     title: Payments
+  - url: /resources/
+    title: Resources
 defaults:
   - values:
       layout: default
