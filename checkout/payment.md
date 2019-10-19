@@ -38,8 +38,8 @@ Checkin. Obviously! To check in, the payer needs to be identified.
 The payer will be identified with the `consumers` resource and will be
 persisted to streamline future Payment Menu processes. Payer identification
 is done through the `initiate-consumer-session` operation. In the request body,
-all properties are optional. The more information that is provided, the easier
-the identification process becomes for the payer.
+most properties are optional. However, the more information that is provided,
+the easier the identification process becomes for the payer.
 [See the technical reference for details][initiate-consumer-session].
 
 {:.code-header}
