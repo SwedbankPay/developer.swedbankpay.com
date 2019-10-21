@@ -50,42 +50,62 @@ Or:
  In some cases you may need to make a reversal of captured funds. This is achieved by creating a reversal transaction.
 
 
-One-phase payments (Direct Debit, Swish, Card * )
+*One-phase payments* ([Direct Debit](/payments/direct-debit), [Swish](/payments/swish), [Card](/payments/credit-card))
 
-If you use a one-phase method (like Direct Bank Debit or Swish) a Sales transaction will be created and the consumer charged right away. 
+If you use a one-phase method (like Direct Bank Debit or [Swish](/payments/swish)) a Sales transaction will be created and the consumer charged right away. 
 
-* One-phase card payments is enabled with autocapture.
-
-
-
-### <a name="creating-a-payment-object">Creating a payment object</a>.
-The payment is the container object that holds all transactions that will be created during the payment process. When PayEx receives the payment request body (in JSON format), a payment  is created and you will be given a unique paymentID in return. The response also include  (in a true RESTful way) the URIs to possible further actions, given the state of the payment. It is possible to abort a payment before the end user has fulfilled the payment process.
-Settle funds directly with a Sales transaction.  
-Pick and choose between the payment methods best suited for your business. Take advantage of our easy-to-use PCI compliant platforms Redirect and PayEx Hosted View - or use PayEx Direct API to integrate directly. Our payment methods and their platform availability are listed in the table below.
-
-
-Payment method 	Hosted View	Redirect	Direct API	Region
+* _One-phase card payments is enabled with autocapture._
 
 ```
 Add image
 ```
-PayEx Payment Instruments Platforms
-PayEx Hosted view and Redirect offer easy-to-use PCI compliant platforms, available from both web and mobile browsers. Either let your customers access the platform directly, embedded on your site, or by redirection to a separate hosted payment page.
 
-Hosted View implementation
-With the Hosted View you can initiate the payment process directly in an iframe on your site. A hostUrl needs to be defined in the first POST request in order to enable the hosted view operation. See details of the request here.
+### <a name="creating-a-payment-object">Creating a payment object</a>.
+The `payment` is the container object that holds all transactions that will be created during the payment process. When PayEx receives the payment request body (in JSON format), a payment  is created and you will be given a unique paymentID in return. The response also include  (in a true RESTful way) the URIs to possible further actions, given the state of the payment. It is possible to abort a payment before the end user has fulfilled the payment process.
+Settle funds directly with a Sales transaction.  
+```
+Pick and choose between the payment methods best suited for your business. Take advantage of our easy-to-use PCI compliant platforms Redirect and PayEx Hosted View - or use PayEx Direct API to integrate directly. Our payment methods and their platform availability are listed in the table below.
+```
 
-
-Please visit our demoshop to view our Payment Menu and Redirect implementation in action. Use the configuration below:
-
-
-
-Getting started
-When implementing Hosted view, you need to locate the operation that is returned from your API request, which contains the URL of the JavaScript that you need to embed on your Front End side. This will load the payment page on a subset of your own webpage.  
-
-The properties of the operation containing the script URL should be similar to the example below. The href attribute refers to a script of the contentType application/javascript and the rel description view-payment indicate that the hosted view scenario will generate a one-phased sales transaction. A two-phase credit card payment would during the same scenario generate an authorization transaction, and the rel description would in that case be view-authorization. 
+{:.table .table-striped}
+|  | Payment method | Hosted View | Redirect | Direct API | Region |
+| CardIcon | [Credit card](payment/credit-card/) | ✔︎︎︎︎︎ | ✔︎︎︎︎︎ | ✔︎︎︎︎︎ | EarthIcon |
+| InvoiceIcon | [PayEx Invoice](payment/invoice/) | ✔︎︎︎︎︎ | ✔︎︎︎︎︎ | ✔︎︎︎︎︎ | NordicCountries |
+| EnvelopeIcon | [PayEx Web Invoice](payment/credit-account) | ✔︎︎︎︎︎ | ✔︎︎︎︎︎ | ✔︎ ︎| SwedenNorway|
+| KeypadIcon | [Direct Debit](payment/direct-debit)| X | ✔︎︎︎︎︎ | X | BalticNordic |
+| Vipps | [Vipps](payment/vipps) | ✔︎︎︎︎︎ | ✔︎︎︎︎︎ | X | Norway |
+| Swish | [Swish](payments/swish) | ✔︎︎︎︎︎ | ✔︎︎︎︎︎ | ✔︎︎︎︎︎  ︎| Sweden |
+| MobilePay | [Mobile Pay](payments/mobile-pay) | X | ✔︎︎︎︎︎ | X | Denmark |
 
 ```
+Add image
+```
+## PayEx Payment Instruments Platforms
+PayEx Hosted view and Redirect offer easy-to-use PCI compliant platforms, available from both web and mobile browsers. Either let your customers access the platform directly, embedded on your site, or by redirection to a separate hosted payment page.
+
+### Hosted View implementation
+With the Hosted View you can initiate the payment process directly in an iframe on your site. A hostUrl needs to be defined in the first POST request in order to enable the hosted view operation. See details of the request [here](https://developer.payex.com/xwiki/wiki/developer/view/Main/ecommerce/technical-reference/core-payment-resources/card-payments/#HPurchase).
+
+```
+TODO: Add diagram showing hosted view payment flow.
+```
+
+Please visit our [demoshop](https://ecom.externalintegration.payex.com/pspdemoshop) to view our Payment Menu and Redirect implementation in action. Use the configuration below:
+
+```
+TODO: Insert pickture from demoshop showing the following configuration:  
+PayEx Payment Pages  
+Hosted View  
+Norway  
+English
+```
+
+#### Getting started
+When implementing Hosted view, you need to locate the operation that is returned from your [API request](https://developer.payex.com/xwiki/wiki/developer/view/Main/ecommerce/technical-reference/), which contains the URL of the JavaScript that you need to embed on your Front End side. This will load the payment page on a subset of your own webpage.  
+
+The properties of the operation containing the script URL should be similar to the example below. The href attribute refers to a script of the contentType application/javascript and the rel description view-payment indicate that the hosted view scenario will generate a one-phased sales transaction. A two-phase credit card payment would during the same scenario generate an authorization transaction, and the rel description would in that case be `view-authorization`. 
+
+```JS
 Operations
 {
    "operations": [
@@ -101,35 +121,46 @@ Operations
 ```
 To intregrate the payment page script, you need to prepare you front end:
 
-You need to create a container that will contain  the Hosted View iframe:  `<div id="payex-hosted-payment-page">`.
-You also need to create a `<script>` source within the container, using the href value you obtained when submitting your initial POST. As mentioned above, all Hosted View operations have a rel description beginning with  "view-". The example below is taken from the view-payment operation, above - enabling Swish payments through Hosted View.
+1. You need to create a container that will contain  the Hosted View iframe:  `<div id="payex-hosted-payment-page">`.
+2. You also need to create a `<script>` source within the container, using the href value you obtained when submitting your initial POST. As mentioned above, all Hosted View operations have a rel description beginning with  `"view-"`. The example below is taken from the view-payment operation, above - enabling Swish payments through Hosted View.
+
 ```HTML
 <script id="paymentPageScript" src="https://ecom.stage.payex.com/swish/core/scripts/client/px.swish.client.js?
                                     token=bcff0db777d5bcf21a210235342921f46da993efa5e91340f713c8cedf4aac38"></script>
 ```
-1. Lastly, you must initiate the Hosted View with a JavaScript call to open the Hosted View iframe embedded on you site.
+3. Lastly, you must initiate the Hosted View with a JavaScript call to open the Hosted View iframe embedded on you site.
 
+```HTML
 JavaScript Call
 <script language="javascript">
     payex.hostedView.page(configuration).open();
 </script>
+```
 See the technical overview of each payment method and the technical reference for more specific information.
 
-Redirect implementation
+### Redirect implementation
 The Redirect implementation lets you redirect your customer to an easy-to-use PCI compliant payment platform, hosted by PayEx and available from both web and mobile browsers. The consumer selects a payment method and proceeds to hosted payment pages.
 
+```
+TODO: Insert image showing the flow of redirect implementation
+```
 
-Please visit our demoshop to view our Payment Menu and Redirect implementation in action. Use the configuration below:
+Please visit our [demoshop](https://ecom.externalintegration.payex.com/pspdemoshop) to view our Payment Menu and Redirect implementation in action. Use the configuration below:
 
+```
+TODO: Insert pickture from demoshop showing the following configuration:  
+PayEx Payment Pages  
+Redirect  
+Norway  
+English
+```
 
-
-Getting started
+#### Getting started
 To start using the Redirect platform, you need to implement the appropriate operation returned from the initial API Request, containing the URL that the customer's browser needs to be redirected to.
 
-The combination of properties should be similar to all payment methods. In the example below, the href attribute refers to the redirect URL and the rel description redirect-sale indicate that the redirect scenario will generate a one-phased sales transaction. A two-phase credit card payment would during the same scenario generate an authorization transaction, and the  rel description would in that case be redirect-authorization.
+The combination of properties should be similar to all payment methods. In the example below, the href attribute refers to the redirect URL and the rel description redirect-sale indicate that the redirect scenario will generate a one-phased sales transaction. A two-phase credit card payment would during the same scenario generate an authorization transaction, and the  rel description would in that case be `"redirect-authorization"`.
 
-
-
+```JS
 {
    "operations": [
         {
@@ -140,7 +171,8 @@ The combination of properties should be similar to all payment methods. In the e
         }
     ]
 }
-  See the technical overview of each payment method and the technical reference for more specific information.
+```
+See the technical overview of each payment method and the technical reference for more specific information.
 
 Redirect implementation
 The Redirect implementation lets you redirect your customer to an easy-to-use PCI compliant payment platform, hosted by PayEx and available from both web and mobile browsers. The consumer selects a payment method and proceeds to hosted payment pages.
