@@ -174,68 +174,41 @@ The combination of properties should be similar to all payment methods. In the e
 ```
 See the technical overview of each payment method and the technical reference for more specific information.
 
-Redirect implementation
-The Redirect implementation lets you redirect your customer to an easy-to-use PCI compliant payment platform, hosted by PayEx and available from both web and mobile browsers. The consumer selects a payment method and proceeds to hosted payment pages.
-
-
-Please visit our demoshop to view our Payment Menu and Redirect implementation in action. Use the configuration below:
-
-
-
-Getting started
-To start using the Redirect platform, you need to implement the appropriate operation returned from the initial API Request, containing the URL that the customer's browser needs to be redirected to.
-
-The combination of properties should be similar to all payment methods. In the example below, the href attribute refers to the redirect URL and the rel description redirect-sale indicate that the redirect scenario will generate a one-phased sales transaction. A two-phase credit card payment would during the same scenario generate an authorization transaction, and the  rel description would in that case be redirect-authorization.
-
-
-
-{
-   "operations": [
-        {
-           "method": "GET",
-           "href": "https://ecom.externalintegration.payex.com/swish/payments/sales
-                     /993b479653da83671c074316c7455da05fced9d634431edbb64f3c5f80a863f0",
-           "rel": "redirect-sale"
-        }
-    ]
-}
-  See the technical overview of each payment method and the technical reference for more specific information.
-
-The Payment Process
+## <a name="the-payment-process">The Payment Process</a>
 
 
 The core payment process of the eCommerce APIs are the same across all payment instruments.
 
-1. Creating a payment
-The payment is the container object that holds all transactions that will be created during the payment process. You specify which payment instrument to use, i.e. if you want to initiate a credit card payment, an invoice payment or a Swish payment, etc. This is managed by specific instrument calls to PayEx's API Platform, where you need to include all necessary payment details - like amount, description, references to your system, etc. This example shows a card payment post.
-When PayEx receives this information, a payment  will be created and you will be given a unique paymentID in return. The response also include  (in a true RESTful way) the URI's to possible further actions, given the state of the payment.
- A successfully created payment is in a Ready state.If something has gone wrong along the way, the state is set to Failed. 
-2. Creating an Authorization or Sales transaction
-A successful payment is Ready for authorization. An authoriation  transaction is often created through a Redirect scenario, where you transfer the consumer to a hosted payment page, or by enable the process to take place directly on your own site, through Hosted View.
-If you use a one-phase method (like Direct bank debit or Swish) a Sales transaction will be created and the consumer be charged right away. A two-phase payment method like credit card needs to be capture the authorized funds in a later step. 
-The  authorize transaction will have one of the below states when created.
-Initialized	Something unexpeced occured.. It is impossible to determine the exact status (network failure etc.) and the transaction will remain Initialized. The corresponding state of the payment will be set to pending and no further actions can be taken on this payment (no more transactions can be created).  
-Completed	Everything went ok! Financial funds is reserved. A capture transaction needs to be created in order to charge the consumer.
-Failed 	The transaction has failed (maybe the card got declined).. The transactional state is final, but it is still possible to retry and create another authorization transaction on this payment (the consumer tries another credit card). If the maximum amount of retries has been reached the payment state itself will be set to failed.
-3. Checking the transaction state
-By this time, the payment might containt several associated transactions, making it vital that you verify the state of the latest transaction. PayEx keeps all payment transactions to enable a full transaction history of each payment. 
-4. Creating a capture transaction - two-phase payments only
-Later on (when you deliver the merchandise, if physical content), you need to create a capture transaction to ensure that the money is charged from the consumer credit card (or that the invoice is created properly). You now have a least two connected transactions (one authorization and one capture).
-The capture transaction will have one of the below states when created.
-Initialized	Something unexpeced occured.. It is impossible to determine the exact status (network failure etc.) and the transaction will remain Initialized. The corresponding state of the payment will be set to pending andno further actions can be taken on this payment (no more transactions can be created).  
-Completed	Everything went ok! The consumer's card has been charged (or billed by invoice).
-Failed 	The transaction has failed (maybe the card error relating to the acquiring bank). The transactional state is final, but it is still possible to retry and create another capture transaction  (the consumer tries another credit card, yet again). If the maximum amount of retries has been reached the payment state itself will be set to failed.
-4.1  Cancelling an authorized amount
-Funds that are authorized but not yet captured can be released back to the consumer. This is done by creating a cancel transaction. 
-A cancel transaction follow the same structure as all transactions and can have the same states (Initialized, completed and failed). 
-5. Creating a reversal transaction - optional
-In some cases you may need to make a reversal of captured funds. This is done by creating a reversal transaction. A two-phase payment will during this step have at least three connected transactions (one authorization, one capture, and one reversal).
-6. Aborting the payment - optional
-It is possible for the merchant to abort a payment before the end user has fulfilled the payment process. If the merchant calls the PATCH function (see PATCH method for Payments), the payment will be aborted.
-This can only happen if there exist no final transactions (like captures) on the payment with a successful status. Once the payment is aborted, no more transactions/operations can be done. If the consumer has been redirected to a hosted payment page when this happens, the end user will be redirected back to your merchant page.
-7. Payment is set to Failed
-During some circumstances the payment state might be set to Failed. This happens if an antifraud pattern triggers or if the number of tries are exceeded during the authorization phase, as mentioned above.  No more transactions can be created on a failed payment. If the consumer has been redirected to a payment page when this happens,  she will be redirected back to your store.
+1. ### Creating a payment
+    * The payment is the container object that holds all transactions that will be created during the payment process. You specify which payment instrument to use, i.e. if you want to initiate a credit card payment, an invoice payment or a Swish payment, etc. This is managed by specific instrument calls to PayEx's API Platform, where you need to include all necessary payment details - like amount, description, references to your system, etc. This example shows a card payment post.  
+    * When PayEx receives this information, a payment  will be created and you will be given a unique paymentID in return. The response also include  (in a true RESTful way) the URI's to possible further actions, given the state of the payment.  
+    *  A successfully created payment is in a Ready state.If something has gone wrong along the way, the state is set to Failed. 
+1. ### Creating an Authorization or Sales transaction
+    * A successful payment is `Ready` for authorization. An authoriation  transaction is often created through a Redirect scenario, where you transfer the consumer to a hosted payment page, or by enable the process to take place directly on your own site, through Hosted View.  
+    * If you use a *one-phase method* (like Direct bank debit or Swish) a `Sales` transaction will be created and the consumer be charged right away. A `two-phase` payment method like credit card needs to be capture the authorized funds in a later step.  
+    * The `authorize` transaction will have one of the below states when created.
 
-
-
- For technical questions, please contact PayEx Technical Support
+    {:.table .table-striped}
+    | Initialized |	Something unexpeced occured.. It is impossible to determine the exact status (network failure etc.) and the transaction will remain Initialized. The corresponding state of the payment will be set to pending and no further actions can be taken on this payment (no more transactions can be created).|
+    | Completed |	Everything went ok! Financial funds is reserved. A capture transaction needs to be created in order to charge the consumer.|
+    | Failed |	The transaction has failed (maybe the card got declined).. The transactional state is final, but it is still possible to retry and create another authorization transaction on this payment (the consumer tries another credit card). If the maximum amount of retries has been reached the payment state itself will be set to failed.|
+1. ### Checking the transaction state  
+    * By this time, the payment might containt several associated transactions, making it vital that you verify the state of the latest transaction. PayEx keeps all payment transactions to enable a full transaction history of each payment. 
+1. ### Creating a capture transaction - two-phase payments only
+    * Later on (when you deliver the merchandise, if physical content), you need to create a `capture` transaction to ensure that the money is charged from the consumer credit card (or that the invoice is created properly). You now have a least two connected transactions (one authorization and one capture).
+    * The `capture` transaction will have one of the below states when created.
+  
+    {:.table .table-striped} 
+    | Initialized |	Something unexpeced occured.. It is impossible to determine the exact status (network failure etc.) and the transaction will remain Initialized. The corresponding state of the payment will be set to pending andno further actions can be taken on this payment (no more transactions can be created).|
+    | Completed |	Everything went ok! The consumer's card has been charged (or billed by invoice).|
+    | Failed |The transaction has failed (maybe the card error relating to the acquiring bank). The transactional state is final, but it is still possible to retry and create another capture transaction  (the consumer tries another credit card, yet again). If the maximum amount of retries has been reached the payment state itself will be set to failed.|
+1. ### Cancelling an authorized amount  
+    * Funds that are authorized but not yet captured can be released back to the consumer. This is done by creating a cancel transaction.  
+    * A cancel transaction follow the same structure as all transactions and can have the same states (Initialized, completed and failed). 
+2. ### Creating a reversal transaction - optional
+    * In some cases you may need to make a reversal of captured funds. This is done by creating a reversal transaction. A two-phase payment will during this step have at least three connected transactions (one authorization, one capture, and one reversal).
+1. ### Aborting the payment - optional
+    * It is possible for the merchant to abort a payment before the end user has fulfilled the payment process. If the merchant calls the `PATCH` function (see PATCH method for Payments), the payment will be aborted.
+    * This can only happen if there exist no final transactions (like captures) on the payment with a successful status. Once the payment is aborted, no more transactions/operations can be done. If the consumer has been redirected to a hosted payment page when this happens, the end user will be redirected back to your merchant page.
+1. ### Payment is set to Failed
+    * During some circumstances the payment state might be set to Failed. This happens if an antifraud pattern triggers or if the number of tries are exceeded during the authorization phase, as mentioned above.  No more transactions can be created on a failed payment. If the consumer has been redirected to a payment page when this happens,  she will be redirected back to your store.
