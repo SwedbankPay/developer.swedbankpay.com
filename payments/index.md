@@ -12,6 +12,8 @@ sidebar:
       title: Credit Card Payments
     - url: /payments/invoice
       title: Invoice Payments
+    - url: /payments/direct-debit
+      title: Direct Debit Payments
     - url: /payments/mobile-pay
       title: Mobile Pay Payments
     - url: /payments/swish
@@ -34,13 +36,20 @@ A two-phase payment is managed in two steps - first reserving funds that will be
 
 
 
-Creating a payment object. The payment is the container object that holds all transactions that will be created during the payment process.  When PayEx receives the payment request body (in JSON format), a payment  is created and you will be given a unique paymentID in return. The response also include  (in a true RESTful way) the URIs to possible further actions, given the state of the payment.
-Authorize funds. An authorization transaction reserves the funds necessary funds . It is possible to abort a payment before the end user has fulfilled the payment process.
-And either:
-Capture funds. Before delivering the merchandise you need to create a capture transaction to ensure that the money is charged from the consumer credit card or properly billed by invoice.
-Or:
-Cancel the authorized amount. Funds that are authorized but not yet captured can be released back to the consumer. This is done by creating a cancel transaction. 
-Reverse captured funds. In some cases you may need to make a reversal of captured funds. This is achieved by creating a reversal transaction.
++ [Creating a payment object](#creating-a-payment-object).  
+The payment is the container object that holds all transactions that will be created during the payment process.  When PayEx receives the payment request body (in JSON format), a payment  is created and you will be given a unique paymentID in return. The response also include  (in a true RESTful way) the URIs to possible further actions, given the state of the payment.
++ Authorize funds.  
+  An authorization transaction reserves the funds necessary funds . It is possible to abort a payment before the end user has fulfilled the payment process.  
+And either:  
++ Capture funds.  
+  Before delivering the merchandise you need to create a capture transaction to ensure that the money is charged from the consumer credit card or properly billed by invoice.  
+Or:  
++ Cancel the authorized amount.  
+ Funds that are authorized but not yet captured can be released back to the consumer. This is done by creating a cancel transaction. 
++ Reverse captured funds.  
+ In some cases you may need to make a reversal of captured funds. This is achieved by creating a reversal transaction.
+
+
 One-phase payments (Direct Debit, Swish, Card * )
 
 If you use a one-phase method (like Direct Bank Debit or Swish) a Sales transaction will be created and the consumer charged right away. 
@@ -49,7 +58,8 @@ If you use a one-phase method (like Direct Bank Debit or Swish) a Sales transact
 
 
 
-Creating a payment object. The payment is the container object that holds all transactions that will be created during the payment process. When PayEx receives the payment request body (in JSON format), a payment  is created and you will be given a unique paymentID in return. The response also include  (in a true RESTful way) the URIs to possible further actions, given the state of the payment. It is possible to abort a payment before the end user has fulfilled the payment process.
+### <a name="creating-a-payment-object">Creating a payment object</a>.
+The payment is the container object that holds all transactions that will be created during the payment process. When PayEx receives the payment request body (in JSON format), a payment  is created and you will be given a unique paymentID in return. The response also include  (in a true RESTful way) the URIs to possible further actions, given the state of the payment. It is possible to abort a payment before the end user has fulfilled the payment process.
 Settle funds directly with a Sales transaction.  
 Pick and choose between the payment methods best suited for your business. Take advantage of our easy-to-use PCI compliant platforms Redirect and PayEx Hosted View - or use PayEx Direct API to integrate directly. Our payment methods and their platform availability are listed in the table below.
 
