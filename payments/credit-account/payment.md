@@ -28,9 +28,9 @@ sidebar:
                       icon="warning"
                       header="Site under development"
                       body="The Developer Portal is under construction and should not be used to integrate against Swedbank Pay's APIs yet." %}
-```
-PayEx Credit Account is an online payment instrument allowing payers to split a purchase into several payments.
-```
+
+> PayEx Credit Account is an online payment instrument allowing payers to split a purchase into several payments.
+
 {% include alert.html type="info"
                       icon="info"
                       body="PayEx Credit Account is only available as a payment instrument in PayEx Checkout and Sweden at the moment." %}

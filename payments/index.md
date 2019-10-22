@@ -27,14 +27,12 @@ sidebar:
                       header="Site under development"
                       body="The Developer Portal is under construction and should not be used to integrate against Swedbank Pay's APIs yet." %}
 # The Fundamentals
-```
-eCommerce APIs share a common foundation with a similar payment process for all payment methods, which reduce complexity and enable a more straightforward integration.
-```
+
+>eCommerce APIs share a common foundation with a similar payment process for all payment methods, which reduce complexity and enable a more straightforward integration.
+
 *Two-phase payments* ([Card](/payments/credit-card), [Invoice](/payments/invoice), [MobilePay](/payments/invoice), [Vipps](/payments/vipps/))
 
 A two-phase payment is managed in two steps - first reserving funds that will be captured in the next step. The most common payment instrument using two-phase payments is card payments.
-
-
 
 + [Creating a payment object](#creating-a-payment-object).  
 The payment is the container object that holds all transactions that will be created during the payment process.  When PayEx receives the payment request body (in JSON format), a payment  is created and you will be given a unique paymentID in return. The response also include  (in a true RESTful way) the URIs to possible further actions, given the state of the payment.
@@ -56,9 +54,7 @@ If you use a one-phase method (like Direct Bank Debit or [Swish](/payments/swish
 
 * _One-phase card payments is enabled with autocapture._
 
-```
-Add image
-```
+>Add image
 
 ### <a name="creating-a-payment-object">Creating a payment object</a>.
 The `payment` is the container object that holds all transactions that will be created during the payment process. When PayEx receives the payment request body (in JSON format), a payment  is created and you will be given a unique paymentID in return. The response also include  (in a true RESTful way) the URIs to possible further actions, given the state of the payment. It is possible to abort a payment before the end user has fulfilled the payment process.
@@ -77,9 +73,8 @@ Pick and choose between the payment methods best suited for your business. Take 
 | Swish | [Swish](payments/swish) | ✔︎︎︎︎︎ | ✔︎︎︎︎︎ | ✔︎︎︎︎︎  ︎| Sweden |
 | MobilePay | [Mobile Pay](payments/mobile-pay) | X | ✔︎︎︎︎︎ | X | Denmark |
 
-```
-Add image
-```
+>Add image
+
 ## PayEx Payment Instruments Platforms
 PayEx Hosted view and Redirect offer easy-to-use PCI compliant platforms, available from both web and mobile browsers. Either let your customers access the platform directly, embedded on your site, or by redirection to a separate hosted payment page.
 

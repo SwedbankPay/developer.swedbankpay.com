@@ -27,9 +27,9 @@ sidebar:
                       header="Site under development"
                       body="The Developer Portal is under construction and should not be used to integrate against Swedbank Pay's APIs yet." %}
 
-```
-The basic redirect purchase scenario is the most common way to implement card payments.
-```
+
+>The basic redirect purchase scenario is the most common way to implement card payments.
+
 # Card Payment Pages
 
 ## Introduction
@@ -108,9 +108,7 @@ Reversal can only be done on a payment where there are some captured amount not 
 
 # Card Payment Pages in Mobile Apps
 
-```
-The implementation sequence for this scenario is identical to the standard Redirect scenario, but also includes explanations of how to include this redirect in mobile apps or in mobile web pages.
-```
+>The implementation sequence for this scenario is identical to the standard Redirect scenario, but also includes explanations of how to include this redirect in mobile apps or in mobile web pages.
 
 ## Introduction
 
@@ -200,11 +198,9 @@ Reversal can only be done on a payment where there are some captured amount not 
 
 # Direct Card Payments
 
-## Introduction
+>The direct payment scenario **is used by customers that are compliant with PCI-DSS regulations**, and is a way to implement card payments without using PayEx Hosted payment pages.  
 
-```
-The direct payment scenario **is used by customers that are compliant with PCI-DSS regulations**, and is a way to implement card payments without using PayEx Hosted payment pages.  
-```
+## Introduction
 
 {% include alert.html type="error"
                       icon="error"
@@ -284,9 +280,7 @@ One-Click Payments utilize a previously generated payment token to prefill payme
 
 # One-Click Payments
 
-```
-One-Click Payments utilize a previously generated payment token to prefill payment details for credit card or invoice payments pages - which means that the payer don't need to enter these details for every purchase.  
-```
+>One-Click Payments utilize a previously generated payment token to prefill payment details for credit card or invoice payments pages - which means that the payer don't need to enter these details for every purchase.  
 
 ## Introduction
 
@@ -388,9 +382,7 @@ Please see [Delete payment token](https://developer.payex.com/xwiki/wiki/develop
 
 # Payout to Card
 
-```
-"Payout to Card" is an add-on service that enable you to deposit winnings directly to your end-users' credit cards. This without  the need to collect card details from the end-user a second time. 
-```
+>"Payout to Card" is an add-on service that enable you to deposit winnings directly to your end-users' credit cards. This without  the need to collect card details from the end-user a second time. 
 
 ## Introduction
 
@@ -477,12 +469,9 @@ The Verify operation lets you post verification payments, which are used to con
 
 # Verifications
 
-```
-The Verify operation lets you post verification payments, which are used to confirm validity of card information without reserving or charging any amount.
-```
+>The Verify operation lets you post verification payments, which are used to confirm validity of card information without reserving or charging any amount.
 
-Introduction
-------------
+## Introduction
 
 This option is commonly used when initiating a subsequent [One-click card payment](/xwiki/wiki/developer/view/Main/ecommerce/payex-payment-instruments/card-payments/one-click-card-payments/) or a [recurring card payment](/xwiki/wiki/developer/view/Main/ecommerce/payex-payment-instruments/card-payments/recurring-card-payments/) flow - where you do not want to charge the consumer right away.
 
