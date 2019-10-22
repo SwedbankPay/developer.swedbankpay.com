@@ -73,7 +73,7 @@ When dealing with credit card payments, 3D-Secure authentication of the cardhold
 
 * 3D-Secure enabled - by default, 3D-secure should be enabled, and PayEx will check if the card is enrolled with 3D-secure. This depends on the issuer of the card. If the card is not enrolled with 3D-Secure, no authentication of the cardholder is done.
 * Card supports 3D-Secure - if the card is enrolled with 3D-Secure, PayEx will redirect the cardholder to the autentication mechanism that is decided by the issuing bank. Normally this will be done using BankID or Mobile BankID.
-* No 3D-Secure - if this is specified in the request (see options above), no authentication is requested.
+
 
 <embed src="https://developer.payex.com/xwiki/wiki/developer/get/Main/ecommerce/payex-payment-instruments/card-payments/card-payment-pages/WebHome?xpage=plain&amp;uml=1" style="max-width:100%">
 
@@ -162,7 +162,6 @@ When dealing with credit card payments, 3D-Secure authentication of the cardhold
 
 * 3D-Secure enabled - by default, 3D-secure should be enabled, and PayEx will check if the card is enrolled with 3D-secure. This depends on the issuer of the card. If the card is not enrolled with 3D-Secure, no authentication of the cardholder is done.
 * Card supports 3D-Secure - if the card is enrolled with 3D-Secure, PayEx will redirect the cardholder to the autentication mechanism that is decided by the issuing bank. Normally this will be done using BankID or Mobile BankID. 
-* No 3D-Secure - if this is specified in the request (see options above), no authentication is requested.
 
 <embed src="https://developer.payex.com/xwiki/wiki/developer/get/Main/ecommerce/payex-payment-instruments/card-payments/card-payment-pages-in-mobile-apps/WebHome?xpage=plain&amp;uml=1" style="max-width:100%">
 
@@ -244,7 +243,6 @@ When dealing with credit card payments, 3D-Secure authentication of the cardhold
 
 * 3D-Secure enabled - by default, 3D-secure should be enabled, and PayEx will check if the card is enrolled with 3D-secure. This depends on the issuer of the card. If the card is not enrolled with 3D-Secure, no authentication of the cardholder is done.
 * Card supports 3D-Secure - if the card is enrolled with 3D-Secure, PayEx will redirect the cardholder to the autentication mechanism that is decided by the issuing bank. Normally this will be done using BankID or Mobile BankID.
-* No 3D-Secure - if this is specified in the request (see options above), no authentication is requested.
 
 <embed src="https://developer.payex.com/xwiki/wiki/developer/get/Main/ecommerce/payex-payment-instruments/card-payments/direct-card-payments/WebHome?xpage=plain&amp;uml=1" style="max-width:100%">
 
@@ -294,17 +292,8 @@ With paymentUrl in place, the retry process becomes much more convenient for bot
 
 ## API requests to generate paymentToken
 
-When making the initial purchase request, you need to generate a `paymentToken`. You can do this either by by setting `generatePaymentToken` to `true` when doing a card purchase, or set the initial operation to `Verify`.
+When making the initial purchase request, a `paymentToken` is generated. 
 
-{:.table .table-striped}
-
-| **Instrument** | **Operation** | **paymentToken**|
-| Credit card |	Purchase or Verify | If Purchase, generatePaymentToken must be set to true. A verification payment generates a paymentToken automatically. |
-
-```
-generatePaymentToken property
-"generatePaymentToken": "true"
-```
 
 When the purchase is followed through a `paymentToken` will linked to the payment.  You can return the value by making a `GET` request payment resource ([expanding](/xwiki/wiki/developer/view/Main/ecommerce/technical-reference/#HExpansion) either the authorizations or verifications sub-resource), after the consumer successfully has completed the purchase.
 
@@ -322,7 +311,7 @@ You need to store the paymentToken in your system and keep track of the correspo
 
 ## Returning purchases
 
-When a known consumer (where you have attained a consumer-ID or similar) returns to your system, you can use the payment token, using already stored payment data, to initiate enable one-click payments. You will need to make a standard redirect purchase, following the sequence as specified in the Redirect scenarios for  [credit-card](/xwiki/wiki/developer/view/Main/ecommerce/payex-payment-instruments/card-payments/card-payment-pages/) and [financing invoice](/xwiki/wiki/developer/view/Main/ecommerce/payex-payment-instruments/invoice-payments/financing-invoice-redirect/). When making the first `POSTrequest you insert the `paymentToken attribute. This must be the  `paymentToken you received in the initial purchase, where you specified the `generatePaymentToken to <span style="font-family:monospace">true.
+When a known consumer (where you have attained a consumer-ID or similar) returns to your system, you can use the payment token, using already stored payment data, to initiate enable one-click payments. You will need to make a standard redirect purchase, following the sequence as specified in the Redirect scenarios for  [credit-card](/xwiki/wiki/developer/view/Main/ecommerce/payex-payment-instruments/card-payments/card-payment-pages/) and [financing invoice](/xwiki/wiki/developer/view/Main/ecommerce/payex-payment-instruments/invoice-payments/financing-invoice-redirect/). When making the first `POSTrequest you insert the `paymentToken attribute. This must be the  `paymentToken you received in the initial purchase.
 
 See the technical reference, for how to create a [card](/xwiki/wiki/developer/view/Main/ecommerce/technical-reference/core-payment-resources/card-payments/#HCreatePayment) and [invoice](/xwiki/wiki/developer/view/Main/ecommerce/technical-reference/core-payment-resources/invoice-payments/#HCreatePayment) payment.
 
@@ -342,7 +331,6 @@ Content-Type: application/json
     "payerReference": "AB1234",
     "userAgent": "Mozilla/5.0...",
     "language": "nb-NO",
-    "generatePaymentToken": true,
     "generateRecurrenceToken": false,
     "urls": {
       "hostUrls": ["http://test-dummy.net"],
@@ -513,7 +501,6 @@ When dealing with credit card payments, 3D-Secure authentication of the cardhold
 
 * 3D-Secure enabled - by default, 3D-secure should be enabled, and PayEx will check if the card is enrolled with 3D-secure. This depends on the issuer of the card. If the card is not enrolled with 3D-Secure, no authentication of the cardholder is done.
 * Card supports 3D-Secure - if the card is enrolled with 3D-Secure, PayEx will redirect the cardholder to the autentication mechanism that is decided by the issuing bank. Normally this will be done using BankID or Mobile BankID.
-* No 3D-Secure - if this is specified in the request (see options above), no authentication is requested.
 
 ### Options after posting a payment
 

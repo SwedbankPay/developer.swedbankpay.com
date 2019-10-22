@@ -169,7 +169,6 @@ When dealing with credit card payments, 3D-Secure authentication of the cardhold
 
 * 3D-Secure enabled - by default, 3D-secure should be enabled, and PayEx will check if the card is enrolled with 3D-secure. This depends on the issuer of the card. If the card is not enrolled with 3D-Secure, no authentication of the cardholder is done.
 * Card supports 3D-Secure - if the card is enrolled with 3D-Secure, PayEx will redirect the cardholder to the autentication mechanism that is decided by the issuing bank. Normally this will be done using BankID or Mobile BankID. 
-* No 3D-Secure - if this is specified in the request (see options above), no authentication is requested.
 
 <embed src="https://developer.payex.com/xwiki/wiki/developer/get/Main/ecommerce/payex-payment-instruments/common-payment-scenarios/payment-link/WebHome?xpage=plain&amp;uml=1" style="max-width:100%">
 
