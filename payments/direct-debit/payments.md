@@ -444,7 +444,7 @@ Content-Type: application/json
            "description": "Test transaction",  
            "payeeReference": "AH123456",  
            "isOperational": "TRUE|FALSE",  
-           "operations": \[\]  
+           "operations": []  
         }  
     }  
 }

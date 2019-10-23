@@ -30,8 +30,6 @@ sidebar:
 
 >The basic redirect purchase scenario is the most common way to implement card payments.
 
-# Card Payment Pages
-
 ## Introduction
 
 * When properly set up in your merchant/webshop site and the payer starts the purchase process, you need to make a POST request towards PayEx with your Purchase information. This will generate a payment object with a unique paymentID. You either receive a Redirect URL to a hosted page or a JavaScript source in response.
@@ -74,10 +72,66 @@ When dealing with credit card payments, 3D-Secure authentication of the cardhold
 * 3D-Secure enabled - by default, 3D-secure should be enabled, and PayEx will check if the card is enrolled with 3D-secure. This depends on the issuer of the card. If the card is not enrolled with 3D-Secure, no authentication of the cardholder is done.
 * Card supports 3D-Secure - if the card is enrolled with 3D-Secure, PayEx will redirect the cardholder to the autentication mechanism that is decided by the issuing bank. Normally this will be done using BankID or Mobile BankID.
 
+```mermaid
+sequenceDiagram
+    Consumer->+Merchant: start purchase
+    Merchant->+PayEx: POST [operation=PURCHASE](payments/credit-card/payments)
+    Note left of PayEx: First API Request
+    PayEx-->>-Merchant: payment resource
+    Merchant-->>-Consumer: authorization page
+    note left of consumer: redirect to PayEx (If Redirect scenario)
 
-<embed src="https://developer.payex.com/xwiki/wiki/developer/get/Main/ecommerce/payex-payment-instruments/card-payments/card-payment-pages/WebHome?xpage=plain&amp;uml=1" style="max-width:100%">
+    Consumer->+Merchant: access merchant page
+    Merchant->+PayEx: GET [payments/credit-card/payments](payments/credit-card/payments)
+    note left of Merchant: Second API request
+    PayEx-->-Merchant: payment resource
+    Merchant-->-Consumer: display purchase result
+```
 
-<embed src="https://developer.payex.com/xwiki/wiki/developer/get/Main/ecommerce/payex-payment-instruments/card-payments/card-payment-pages/WebHome?xpage=plain&amp;uml=2" style="max-width:100%">
+```mermaid
+sequenceDiagram
+  Consumer->+Merchant: start purchase
+  Merchant->+PayEx: POST [operation=PURCHASE](payments/credit-card/payments)
+  note left of Consumer: First API request
+  PayEx-->Merchant: payment resource
+  deactivate PayEx
+  Merchant-->Consumer: authorization page
+  deactivate Merchant
+
+  Consumer->+PayEx: access authorization page
+  note left of Consumer: redirect to PayEx\n(If Redirect scenario)
+  PayEx-->Consumer: display purchase information
+  deactivate PayEx
+
+  Consumer->Consumer: input creditcard information
+  Consumer->+PayEx: submit creditcard information
+  
+  opt Card supports 3-D Secure
+    PayEx-->Consumer: redirect to IssuingBank
+    deactivate PayEx
+    Consumer->IssuingBank: 3-D Secure authentication process
+    Consumer->+PayEx: access authentication page
+  end
+  
+  PayEx-->Consumer: redirect to merchant 
+  deactivate PayEx
+  note left of Consumer: redirect back to merchant\n(If Redirect scenario)
+  
+  Consumer->+Merchant: access merchant page
+  Merchant->+PayEx: GET [payments/credit-card/payments](payments/credit-card/payments)
+  note left of Merchant: Second API request
+  PayEx-->Merchant: payment resource
+  deactivate PayEx
+  Merchant-->Consumer: display purchase result
+  deactivate Merchant
+
+  opt Callback is set
+    PayEx->PayEx: Payment is updated
+    activate PayEx
+    PayEx->Merchant: send [Callback request](#)
+    deactivate PayEx
+  end
+```
 
 ### Options after posting a payment
 
