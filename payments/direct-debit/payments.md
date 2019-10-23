@@ -58,7 +58,7 @@ The API requests are displayed in the [purchase flow](#purchase-flow). The optio
 
 ### Options before posting a payment
 
-All valid options when posting a payment with operation equal to Purchase, are described in [direct-debit-technical-reference][the technical reference].
+All valid options when posting a payment with operation equal to Purchase, are described in [the technical reference][direct-debit-technical-reference].
 
 #### Type of authorization (Intent).
 
@@ -66,7 +66,7 @@ All valid options when posting a payment with operation equal to Purchase, are d
 
 #### General
 
-*   **Defining CallbackURL**: When implementing a scenario, it is optional to set a [callbackurl-reference][CallbackURL] in the `POST` request. If callbackURL is set PayEx will send a postback request to this URL when the consumer has fulfilled the payment. [technical-reference-callbackurl][See the Callback API description here].
+*   **Defining CallbackURL**: When implementing a scenario, it is optional to set a [CallbackURL][callbackurl-reference] in the `POST` request. If callbackURL is set PayEx will send a postback request to this URL when the consumer has fulfilled the payment. [See the Callback API description here][technical-reference-callbackurl].
 
 ## Purchase flow
 
@@ -76,7 +76,7 @@ The sequence diagram below shows the two requests you have to send to PayEx to m
 sequenceDiagram
   Consumer->Merchant: start purchase
   Activate Merchant
-  Merchant->PayEx: POST [technical-reference-create-direct-debit] [directdebit payments] (operation=PURCHASE)
+  Merchant->PayEx: POST [directdebit payments][technical-reference-create-direct-debit]  (operation=PURCHASE)
   note left of Merchant: First API request
   Activate PayEx
   PayEx-->Merchant: payment resource (Rel redirect-sale).
@@ -101,7 +101,7 @@ sequenceDiagram
   Activate Merchant
   Consumer->Merchant : Redirect
   note left of Merchant: Second API request 
-  Merchant->PayEx: GET [direct-debit-technical-reference][directdebit payments]
+  Merchant->PayEx: GET [directdebit payments][direct-debit-technical-reference]
   PayEx-->Merchant: payment resource
   Deactivate PayEx
   Merchant-->Consumer: Display purchase result
@@ -110,9 +110,9 @@ sequenceDiagram
 
 ## Options after posting a payment
 
-*   **Abort:** It is possible to [technical-reference-abort-payment][abort a payment] if the payment has no successful transactions.
+*   **Abort:** It is possible to [abort a payment][technical-reference-abort-payment] if the payment has no successful transactions.
 *   For reversals, you will need to implement the Reversal request.
-*   **If CallbackURL is set:** Whenever changes to the payment occur a [technical-reference-callbackurl][Callback request] will be posted to the [callbackurl-reference][CallbackURL], which was generated when the payment was created.
+*   **If CallbackURL is set:** Whenever changes to the payment occur a [Callback request][technical-reference-callbackurl] will be posted to the [CallbackURL][callbackurl-reference], which was generated when the payment was created.
 
 ### Reversal Sequence
 
@@ -121,7 +121,7 @@ Reversal can only be done on a payment where there are some captured amount not 
 ```mermaid
 sequenceDiagram
   Participant PayEx
-  Merchant->PayEx: POST [direct-debit-payment-post-reversal][direct debit reversals]
+  Merchant->PayEx: POST [direct debit reversals][direct-debit-payment-post-reversal]
   Activate Merchant
   Activate PayEx
   PayEx-->Merchant: transaction resource
@@ -133,13 +133,13 @@ sequenceDiagram
 
 ## Payment Resource
 
-The payment resource and all general sub-resources can be found in the [direct-debit-technical-reference][core payment resources] section.
+The payment resource and all general sub-resources can be found in the [core payment resources][direct-debit-technical-reference] section.
 
 ## Create Payment
 
-To create a Direct Debit payment, you perform an HTTP `POST` against the `/psp/directdebit/payments` resource. Please read the [technical-reference][general information] on how to compose a valid HTTP request before proceeding.
+To create a Direct Debit payment, you perform an HTTP `POST` against the `/psp/directdebit/payments` resource. Please read the [general information][technical-reference] on how to compose a valid HTTP request before proceeding.
 
-An example of a payment creation request is provided below. Each individual Property of the JSON document is described in the following section. Use the [technical-reference-expansion][expand] request parameter to get a response that includes one or more expanded sub-resources inlined.
+An example of a payment creation request is provided below. Each individual Property of the JSON document is described in the following section. Use the [expand][technical-reference-expansion] request parameter to get a response that includes one or more expanded sub-resources inlined.
 
 
 ```HTTP
@@ -191,20 +191,20 @@ Content-Type: application/json
 | payment.operation |string | ✔︎︎︎︎︎ | Purchase is the only type used for direct debit payments. |
 | payment.intent |string |✔︎︎︎︎︎  |Sale is the only type used for direct debit payments. |
 | payment.currency |string | ✔︎︎︎︎︎ |The currency used. |
-| payment.prices.type | string | ✔︎︎︎︎︎ | Use the generic type Directdebit if you want to enable all bank types supported by merchant contract, otherwise specify a specific bank type. [technical-reference-price-object][See the Prices object types for more information.]. |
+| payment.prices.type | string | ✔︎︎︎︎︎ | Use the generic type Directdebit if you want to enable all bank types supported by merchant contract, otherwise specify a specific bank type. [See the Prices object types for more information.][technical-reference-price-object]. |
 | payment.prices.amount | integer | ✔︎︎︎︎︎ | Amount is entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 SEK 5000 = 50.00 SEK. |
 | payment.prices.vatAmount | integer | ✔︎︎︎︎︎ | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant. |
 | payment.description |string(40) | ✔︎︎︎︎ | A textual description max 40 characters of the purchase. |
 | payment.payerReference | string | X | The reference to the payer (consumer/end-user) from the merchant system, like mobile number, customer number etc. |
-| payment.userAgent | string | ✔︎︎︎︎ | The user agent reference of the consumer's browser - [user-agent][see user agent definition]. |
+| payment.userAgent | string | ✔︎︎︎︎ | The user agent reference of the consumer's browser - [see user agent definition][user-agent]. |
 | payment.language | string | ✔︎︎︎︎ | nb-NO, sv-SE or en-US. |
 | payment.urls.completeUrl | string | ✔︎︎︎︎ | The URI that PayEx will redirect back to when the payment is followed through. |
 | payment.urls.cancelUrl | string | ✔︎︎︎︎ | The URI that PayEx will redirect back to when the user presses the cancel button in the payment page. |
-| payment.urls.callbackUrl | string | X | The URI that PayEx will perform an HTTP POST against every time a transaction is created on the payment. See [technical-reference-callbackurl][callback] for details. |
+| payment.urls.callbackUrl | string | X | The URI that PayEx will perform an HTTP POST against every time a transaction is created on the payment. See [callback][technical-reference-callbackurl] for details. |
 | payment.urls.logoUrl | string | X | The URI that will be used for showing the customer logo. Must be a picture with at most 50px height and 400px width. Require https. |
 | payment.urls.termsOfServiceUrl | string | X | A URI that contains your terms and conditions for the payment, to be linked on the payment page. Require https. |
 | payeeInfo.payeeId | string | ✔︎︎︎︎ | This is the unique id that identifies this payee (like merchant) set by PayEx. |
-| payeeInfo.payeeReference | string(35) | ✔︎︎︎︎ | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [technical-reference-payeereference][payeeReference] for details. |
+| payeeInfo.payeeReference | string(35) | ✔︎︎︎︎ | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][technical-reference-payeereference] for details. |
 | payeeInfo.payeeName | string | X | The payee name (like merchant name) that will be displayed to consumer when redirected to PayEx. |
 | payeeInfo.productCategory | string | X | A product category or number sent in from the payee/merchant. This is not validated by PayEx, but will be passed through the payment process and may be used in the settlement process. |
 | payeeInfo.orderReference | string(50) | X | The order reference should reflect the order reference found in the merchant's systems. |
@@ -288,12 +288,12 @@ A payment resource has a set of operations that can be performed on it, from its
 The operations should be performed as described in each response and not as described here in the documentation. Always use the `href` and `method` as specified in the response by finding the appropriate operation based on its `rel` value. The only thing that should be hard coded in the client is the value of the `rel` and the request that will be sent in the HTTP body of the request for the given operation.
 
 | **Operation** | **Description** |
-| _update-payment-abort_ | [technical-reference-abort-payment][Aborts] the payment before any financial transactions are performed. |
+| _update-payment-abort_ | [Aborts][technical-reference-abort-payment] the payment before any financial transactions are performed. |
 | _redirect-sale_ | Contains the redirect-URI that redirects the consumer to a PayEx hosted payments page prior to creating a sales transaction. |
 
 ## Direct Debit transactions
 
-All Direct Debit specific transactions are described below. Read more about the general transaction resource [technical-reference-transactions][here].
+All Direct Debit specific transactions are described below. Read more about the general transaction resource [here][technical-reference-transactions].
 
 ### Sales
 
@@ -463,7 +463,7 @@ Content-Type: application/json
 | transaction.amount | integer | ✔︎︎︎︎︎ | Amount entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 SEK, 5000 = 50.00 SEK. |
 | transaction.vatAmount | integer | ✔︎︎︎︎︎ | Amount entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 SEK, 5000 = 50.00 SEK. |
 | transaction.description | string | ✔︎︎︎︎︎ | A textual description of the capture. |
-| transaction.payeeReference | string(35) | ✔︎︎︎︎︎ | A  reference that must match the  payeeReference of the sales transaction you want to reverse. See [technical-reference-payeereference][payeeReference] for details. |
+| transaction.payeeReference | string(35) | ✔︎︎︎︎︎ | A  reference that must match the  payeeReference of the sales transaction you want to reverse. See [payeeReference][technical-reference-payeereference] for details. |
 
 **Response**
 
@@ -499,11 +499,11 @@ Content-Type: application/json
 | **Property** | **Data type** | **Description** |
 | payment | string | The relative URI of the payment this capture transaction belongs to. |
 | reversal.id | string | The relative URI of the created capture transaction. 
-| reversal.transaction | object | The object representation of the generic [technical-reference-transactions][transaction resource]. |
+| reversal.transaction | object | The object representation of the generic [transaction resource][technical-reference-transactions]. |
 
 ## Callback
 
-When a change or update from the back-end system are made on a payment or transaction, PayEx will perform a callback to inform the payee (merchant) about this update. Callback functionality is explaned in more detail [technical-reference-callbackurl][here].
+When a change or update from the back-end system are made on a payment or transaction, PayEx will perform a callback to inform the payee (merchant) about this update. Callback functionality is explaned in more detail [here][technical-reference-callbackurl].
 
 ```mermaid
 sequenceDiagram
