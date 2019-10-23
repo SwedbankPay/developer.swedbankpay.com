@@ -37,14 +37,154 @@ sidebar:
 
 ## Sequence with unsigned CreditAccount  
 Payment sequence when signing is required.
+
+```mermaid
+sequenceDiagram
+  Payer -> Merchant: Request purchase
+  activate Merchant
+  Merchant -> ecomAPI: POST [payments-post-reference][/psp/creditaccount/payments]
+  activate ecomAPI
+      ecomAPI ->> ecomAPI: validate input
+      ecomAPI ->> ecomAPI: get contract
+      ecomAPI ->> ecomAPI: get customer (merchant)
+      ecomAPI ->> ecomAPI: create payment
+      ecomAPI --> Merchant: RedirectURL
+  deactivate ecomAPI
+  Merchant ->> Payer: Redirect to RedirectURL
+  deactivate Merchant
+
+  Payer ->> ecomUI: Access paymentpage
+    activate ecomUI
+    ecomUI ->> ecomAPI: GET [payments-get-reference][/psp/creditaccount/payments/] (PaymentId retrieved from token)
+    activate ecomAPI
+    ecomAPI --> ecomUI: Payment response
+    deactivate ecomAPI
+    Payer --> ecomUI: Payer enter SSN and ZIP
+    ecomUI -> ecomAPI: PATCH [payments-patch-reference][/psp/creditaccount/payments/<paymentId>/] (Operation: ConsumerData)
+    activate ecomAPI
+    ecomAPI -> PxR: GetAddressbyPaymentMethod
+    activate PxR
+    PxR --> ecomAPI: address response
+    deactivate PxR
+    ecomAPI --> ecomUI: masked address response
+    deactivate ecomAPI
+
+    Payer -> ecomUI: Payer approves address info
+
+    ecomUI -> ecomAPI: POST [payments-post-authorizations][/psp/creditaccount/payments/<paymentId>/authorizations]
+    activate ecomAPI
+    ecomAPI -> PxR: PurchaseCreditAccountOrder
+        activate PxR
+        PxR --> ecomAPI: RedirectURL
+        deactivate PxR
+    ecomAPI --> ecomUI: RedirectUrl
+    deactivate ecomAPI
+
+    ecomUI --> Payer: Redirect signing
+    deactivate ecomUI
+    Payer -> PxR: Access signing page
+    activate PxR
+    opt Signing
+        PxR -> Signing: Request signing
+        activate Signing
+        Payer -> Signing: Sign with BankId
+    Signing-->PxR: Signing OK
+    deactivate Signing
+    end
+    PxR-->Payer: redirect
+    deactivate PxR
+
+    Payer -> ecomUI: Access payment page
+    activate ecomUI
+
+    ecomUI -> ecomAPI: GET [payments-get-reference][/psp/creditaccount/payments/] (PaymentId retrieved from token)
+    activate ecomAPI
+    ecomAPI -> PxR: PurchaseCreditAccountStatus
+    activate PxR
+    PxR --> ecomAPI: Status
+    deactivate PxR
+
+    ecomAPI --> ecomUI: CompleteURL
+    deactivate ecomAPI
+    ecomUI --> Payer: Redirect CompleteURL
+    deactivate ecomUI
+  Payer -> Merchant: CompleteURL
+
+  activate Merchant
+  Merchant -> ecomAPI: GET [payments-get-paymentid][/psp/creditaccount/payments/<paymentId>]
+  activate ecomAPI
+  ecomAPI --> Merchant: payment resource
+  deactivate ecomAPI
+  Merchant --> Payer: Display purchase result
+  deactivate Merchant
 ```
-TODO: Replace the following image
-``` 
-<embed src="https://developer.payex.com/xwiki/wiki/developer/get/Main/ecommerce/payex-payment-instruments/payex-credit-account/WebHome?xpage=plain&amp;uml=1" style="max-width:100%">
 
 ## Sequence with signed CreditAccount  
 Payment sequence when signing is not required.
+
+```mermaid
+sequenceDiagram
+  Payer -> Merchant: Request purchase
+  activate Merchant
+  Merchant -> ecomAPI: POST [creditaccount-post-payments][/psp/creditaccount/payments]
+  activate ecomAPI
+      ecomAPI -> ecomAPI: validate input
+      ecomAPI -> ecomAPI: get contract
+      ecomAPI -> ecomAPI: get customer (merchant)
+      ecomAPI -> ecomAPI: create payment
+      Merchant --> ecomAPI: RedirectURL
+  deactivate ecomAPI
+  Payer --> Merchant: Redirect to RedirectURL
+  deactivate Merchant
+
+
+  Payer -> ecomUI: Access paymentpage
+      activate ecomUI
+      ecomUI -> ecomAPI: GET [creditaccount-get-payments][/psp/creditaccount/payments/] (PaymentId retrieved from token)
+      activate ecomAPI
+      ecomUI --> ecomAPI: Payment response
+      deactivate ecomAPI
+
+      Payer -> ecomUI: Payer enter SSN and ZIP
+
+      ecomUI -> ecomAPI: PATCH [creditaccount-patch-payment][/psp/creditaccount/payments/<paymentId>/] (Operation: ConsumerData)
+      activate ecomAPI
+      ecomAPI -> PxR: GetAddressbyPaymentMethod
+      activate PxR
+      PxR --> ecomAPI: address response
+      deactivate PxR
+      ecomAPI --> ecomUI: masked address response
+      deactivate ecomAPI
+
+      Payer -> ecomUI: Payer approves address info
+
+      ecomUI -> ecomAPI:  POST [credditaccount-post-payments][/psp/creditaccount/payments/<paymentId>/authorizations]
+      activate ecomAPI
+      ecomAPI -> PxR: PurchaseCreditAccountOrder
+          activate PxR
+          PxR --> ecomAPI: Purchase OK
+          deactivate PxR
+      ecomAPI --> ecomUI: CompleteURL
+      deactivate ecomAPI
+      ecomUI --> Payer: Redirect to CompleteURL
+      deactivate ecomUI
+  Payer -> Merchant: CompleteURL
+
+  activate Merchant
+  Merchant -> ecomAPI: GET [creditaccount-get-paymentId][/psp/creditaccount/payments/<paymentId>]
+  activate ecomAPI
+  ecomAPI --> Merchant: Payment resource
+  deactivate ecomAPI
+  Merchant --> Payer: Display purchase result
+  deactivate Merchant
 ```
-TODO: Replace the following image
-``` 
-<embed src="https://developer.payex.com/xwiki/wiki/developer/get/Main/ecommerce/payex-payment-instruments/payex-credit-account/WebHome?xpage=plain&amp;uml=2" style="max-width:100%">
+
+[payments-post-reference]: #
+[payments-get-reference]: #
+[payments-patch-reference]: #
+[payments-post-authorizations]: #
+[payments-get-paymentid]: #
+[creditaccount-post-payments]: #
+[creditaccount-get-payments]: #
+[creditaccount-patch-payment]: #
+[creditaccount-get-paymentId]: #
