@@ -45,7 +45,7 @@ Cancel can only be done on a authorized transaction. If you do cancel after doin
 
 ```mermaid
 sequenceDiagram
-  Merchant->PayEx: POST [[/xwiki/wiki/developer/view/Main/ecommerce/technical-reference/core-payment-resources/card-payments/#HCancellations creditcard cancellations]]
+  Merchant->PayEx: POST [creditcard cancellactions][creditcard-cancellactions]
   Activate Merchant
   Activate PayEx
   PayEx-->Merchant: transaction resource
@@ -59,7 +59,7 @@ Reversal can only be done on a payment where there are some captured amount not 
 
 ```mermaid
 sequenceDiagram
-  Merchant->PayEx: POST [[/xwiki/wiki/developer/view/Main/ecommerce/technical-reference/core-payment-resources/card-payments/#HReversals creditcard reversals]]
+  Merchant->PayEx: POST [creditcard reversals][creditcard-reversals]
   Activate Merchant
   Activate PayEx
   PayEx-->Merchant: transaction resource
@@ -163,8 +163,13 @@ You have the following options after a server-to-server Recur payment `POST`.
 
 #### Autorization (intent)
 
-* **Authorization (two-phase):** If you want the credit card to reserve the amount, you will have to specify that the intent of the purchase is Authorization. The amount will be reserved but not charged. You will later (i.e. when you are ready to ship the purchased products) have to make a [Capture](/xwiki/wiki/developer/view/Main/ecommerce/technical-reference/core-payment-resources/card-payments/#HCaptures) or [Cancel](/xwiki/wiki/developer/view/Main/ecommerce/technical-reference/core-payment-resources/card-payments/#HCancellations) request.
+* **Authorization (two-phase):** If you want the credit card to reserve the amount, you will have to specify that the intent of the purchase is Authorization. The amount will be reserved but not charged. You will later (i.e. when you are ready to ship the purchased products) have to make a [Capture][technical-reference-credit-card-captures] or [Cancel][technical-reference-credit-card-cancellations] request.
 
 #### Capture (intent)
 
 * **AutoCapture (one-phase): **If you want the credit card to be charged right away, you will have to specify that the intent of the purchase is AutoCapture. The credit card will be charged and you don't need to do any more financial operations to this purchase.​​​​​
+
+[creditcard-cancellactions]: #
+[creditcard-reversals]: #
+[technical-reference-credit-card-captures]: /xwiki/wiki/developer/view/Main/ecommerce/technical-reference/core-payment-resources/card-payments/#HCaptures
+[technical-reference-credit-card-cancellations]: #
