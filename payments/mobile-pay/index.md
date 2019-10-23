@@ -89,7 +89,6 @@ sequenceDiagram
   
   PayEx-->Consumer: redirect to merchant
   note left of PayEx: redirect back to merchant
-  Deactivate PayEx
   
   Consumer->Merchant: access merchant page
   Activate Merchant
