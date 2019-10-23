@@ -524,15 +524,15 @@ sequenceDiagram
   Deactivate Merchant
 ```
 
-[technical-reference]: https://developer.payex.com/xwiki/wiki/developer/view/Main/ecommerce/technical-reference/
-[direct-debit-technical-reference]: https://developer.payex.com/xwiki/wiki/developer/view/Main/ecommerce/technical-reference/core-payment-resources/direct-debit-payments/
-[callbackurl-reference]: https://developer.payex.com/xwiki/wiki/developer/view/Main/ecommerce/technical-reference/core-payment-resources/#HURLs
-[technical-reference-callbackurl]:https://developer.payex.com/xwiki/wiki/developer/view/Main/ecommerce/technical-reference/#HCallback
-[technical-reference-create-direct-debit]: /xwiki/wiki/developer/view/Main/ecommerce/technical-reference/core-payment-resources/direct-debit-payments/#HCreatePayment
-[technical-reference-abort-payment]: https://developer.payex.com/xwiki/wiki/developer/view/Main/ecommerce/technical-reference/#HAbort
-[direct-debit-payment-post-reversal]: /xwiki/wiki/developer/view/Main/ecommerce/technical-reference/core-payment-resources/direct-debit-payments/#HReversals
-[technical-reference-expansion]: https://developer.payex.com/xwiki/wiki/developer/view/Main/ecommerce/technical-reference/#HExpansion
-[technical-reference-price-object]: https://developer.payex.com/xwiki/wiki/developer/view/Main/ecommerce/technical-reference/core-payment-resources/#HPricesobjecttypes
+[technical-reference]: #
+[direct-debit-technical-reference]: #
+[callbackurl-reference]: #
+[technical-reference-callbackurl]: #
+[technical-reference-create-direct-debit]: #
+[technical-reference-abort-payment]: #
+[direct-debit-payment-post-reversal]: #
+[technical-reference-expansion]: #
+[technical-reference-price-object]: #
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
-[technical-reference-payeereference]: https://developer.payex.com/xwiki/wiki/developer/view/Main/ecommerce/technical-reference/#HPayeeReference
-[technical-reference-transactions]: https://developer.payex.com/xwiki/wiki/developer/view/Main/ecommerce/technical-reference/core-payment-resources/#HTransactions
+[technical-reference-payeereference]: #
+[technical-reference-transactions]: #
