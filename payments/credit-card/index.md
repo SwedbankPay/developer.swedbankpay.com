@@ -145,22 +145,45 @@ sequenceDiagram
 
 Capture can only be done on a authorized transaction. It is possible to do a part-capture where you only capture a part of the authorization amount. You can later do more captures on the same payment up to the total authorization amount.
 
-<embed src="https://developer.payex.com/xwiki/wiki/developer/get/Main/ecommerce/payex-payment-instruments/card-payments/card-payment-pages/WebHome?xpage=plain&amp;uml=3" style="max-width:100%">
+```mermaid
+sequenceDiagram
+  Merchant->PayEx: POST [Credit card captures](payments/credit-card/payments)
+  Activate Merchant
+  Activate PayEx
+  PayEx-->Merchant: transaction resource
+  Deactivate PayEx
+  Deactivate Merchant
+```
 
 #### Cancel Sequence
 
 Cancel can only be done on a authorized transaction. If you do cancel after doing a part-capture you will cancel the different between the capture amount and the authorization amount.
 
-<embed src="https://developer.payex.com/xwiki/wiki/developer/get/Main/ecommerce/payex-payment-instruments/card-payments/card-payment-pages/WebHome?xpage=plain&amp;uml=4" style="max-width:100%">
+```mermaid
+sequenceDiagram
+  Merchant->PayEx: POST [[/xwiki/wiki/developer/view/Main/ecommerce/technical-reference/core-payment-resources/card-payments/#HCancellations creditcard cancellations]]
+  Activate Merchant
+  Activate PayEx
+  PayEx-->Merchant: transaction resource
+  Deactivate PayEx
+  Deactivate Merchant
+```
 
 #### Reversal Sequence
 
 Reversal can only be done on a payment where there are some captured amount not yet reversed.
 
-<embed src="https://developer.payex.com/xwiki/wiki/developer/get/Main/ecommerce/payex-payment-instruments/card-payments/card-payment-pages/WebHome?xpage=plain&amp;uml=5" style="max-width:100%">
+```mermaid
+sequenceDiagram
+  Merchant->PayEx: POST [[/xwiki/wiki/developer/view/Main/ecommerce/technical-reference/core-payment-resources/card-payments/#HReversals creditcard reversals]]
+  Activate Merchant
+  Activate PayEx
+  PayEx-->Merchant: transaction resource
+  Deactivate PayEx
+  Deactivate Merchant
+```
 
-
-# Card Payment Pages in Mobile Apps
+## Card Payment Pages in Mobile Apps
 
 >The implementation sequence for this scenario is identical to the standard Redirect scenario, but also includes explanations of how to include this redirect in mobile apps or in mobile web pages.
 
@@ -218,11 +241,89 @@ When dealing with credit card payments, 3D-Secure authentication of the cardhold
 * Card supports 3D-Secure - if the card is enrolled with 3D-Secure, PayEx will redirect the cardholder to the autentication mechanism that is decided by the issuing bank. Normally this will be done using BankID or Mobile BankID. 
 * No 3D-Secure - if this is specified in the request (see options above), no authentication is requested.
 
-<embed src="https://developer.payex.com/xwiki/wiki/developer/get/Main/ecommerce/payex-payment-instruments/card-payments/card-payment-pages-in-mobile-apps/WebHome?xpage=plain&amp;uml=1" style="max-width:100%">
+```mermaid
+sequenceDiagram
+  Consumer->Merchant: start purchase
+  Activate Merchant
+  Merchant->PayEx: POST [operation=PURCHASE](payments/credit-card/payments)
+  note left of Merchant: First API request
+  Activate PayEx
+  PayEx-->Merchant: payment resource
+  Deactivate PayEx
+  Merchant-->Consumer: authorization page
+  Deactivate Merchant
+  
+  note left of Merchant: redirect to PayEx
+  Consumer->PayEx: enter card info
+  Activate PayEx
+  PayEx-->Consumer: redirect to merchant
+  note left of Consumer: redirect back to merchant
+  Deactivate PayEx
+  
+  Consumer->Merchant: access merchant page
+  Activate Merchant
+  Merchant->PayEx: GET [payments/credit-card/payments](payments/credit-card/payments)
+  note left of Merchant: Second API request
+  Activate PayEx
+  PayEx-->Merchant: payment resource
+  Deactivate PayEx
+  Merchant-->Consumer: display purchase result
+  Deactivate Merchant
+```
 
 ### Detailed Sequence Diagram enabing 3D-secure authentication
 
-<embed src="https://developer.payex.com/xwiki/wiki/developer/get/Main/ecommerce/payex-payment-instruments/card-payments/card-payment-pages-in-mobile-apps/WebHome?xpage=plain&amp;uml=2" style="max-width:100%">
+```mermaid
+sequenceDiagram
+  Consumer->Merchant: start purchase
+  Activate Merchant
+  Merchant->PayEx: POST [operation=PURCHASE](payments/credit-card/payments)
+  note left of Merchant: First API request
+  Activate PayEx
+  PayEx-->Merchant: payment resource
+  Deactivate PayEx
+  Merchant-->Consumer: authorization page
+  Deactivate Merchant
+  
+  Consumer->PayEx: access authorization page
+  note left of Consumer: redirect to PayEx\n(if Redirect scenario)
+  Activate PayEx
+  PayEx-->Consumer: display purchase information
+  Deactivate PayEx
+  
+  Consumer->Consumer: input creditcard information
+  Consumer->PayEx: submit creditcard information
+  Activate PayEx
+
+  opt Card supports 3-D Secure
+  PayEx-->Consumer: redirect to IssuingBank
+  Deactivate PayEx
+  Consumer<->IssuingBank: 3-D Secure authentication process
+  Consumer->PayEx: access authentication page
+  Activate PayEx
+  end
+  
+  PayEx-->Consumer: redirect to merchant
+  note left of Consumer: redirect back to merchant\n(if Redirect scenario)
+  Deactivate PayEx
+  
+  Consumer->Merchant: access merchant page
+  Activate Merchant
+  Merchant->PayEx: GET [payments/credit-card/payments](payments/credit-card/payments)
+  note left of Merchant: Second API request
+  Activate PayEx
+  PayEx-->Merchant: payment resource
+  Deactivate PayEx
+  Merchant-->Consumer: display purchase result
+  Deactivate Merchant
+  
+  opt Callback is set
+  PayEx->PayEx: Payment is updated
+  Activate PayEx
+  PayEx->Merchant: send [Callback request](#)
+  deactivate PayEx
+  end
+```
 
 ## Options after posting a payment
 
@@ -236,21 +337,46 @@ When dealing with credit card payments, 3D-Secure authentication of the cardhold
 
 Capture can only be done on a authorized transaction. It is possible to do a part-capture where you only capture a smaller amount than the authorization amount. You can later do more captures on the sam payment upto the total authorization amount.
 
-<embed src="https://developer.payex.com/xwiki/wiki/developer/get/Main/ecommerce/payex-payment-instruments/card-payments/card-payment-pages-in-mobile-apps/WebHome?xpage=plain&amp;uml=3" style="max-width:100%">
+```mermaid
+sequenceDiagram
+  Merchant->PayEx: POST [credit card capture](payments/credit-card/payments)
+  Activate Merchant
+  Activate PayEx
+  PayEx-->Merchant: transaction resource
+  Deactivate PayEx
+  Deactivate Merchant
+```
 
 ### Cancel Sequence
 
 Cancel can only be done on a authorized transaction. If you do cancel after doing a part-capture you will cancel the different between the capture amount and the authorization amount.
 
-<embed src="https://developer.payex.com/xwiki/wiki/developer/get/Main/ecommerce/payex-payment-instruments/card-payments/card-payment-pages-in-mobile-apps/WebHome?xpage=plain&amp;uml=4" style="max-width:100%">
+```mermaid
+sequenceDiagram
+  Merchant->PayEx: POST [credit card cancel](payments/credit-card/payments)
+  Activate Merchant
+  Activate PayEx
+  PayEx-->Merchant: transaction resource
+  Deactivate PayEx
+  Deactivate Merchant
+```
+
 
 ### Reversal Sequence
 
 Reversal can only be done on a payment where there are some captured amount not yet reversed.
 
-<embed src="https://developer.payex.com/xwiki/wiki/developer/get/Main/ecommerce/payex-payment-instruments/card-payments/card-payment-pages-in-mobile-apps/WebHome?xpage=plain&amp;uml=5" style="max-width:100%">
+```mermaid
+sequenceDiagram
+  Merchant->PayEx: POST [credit card reversal](payments/credit-card/payments)
+  Activate Merchant
+  Activate PayEx
+  PayEx-->Merchant: transaction resource
+  Deactivate PayEx
+  Deactivate Merchant
+```
 
-# Direct Card Payments
+## Direct Card Payments
 
 >The direct payment scenario **is used by customers that are compliant with PCI-DSS regulations**, and is a way to implement card payments without using PayEx Hosted payment pages.  
 
@@ -300,9 +426,58 @@ When dealing with credit card payments, 3D-Secure authentication of the cardhold
 * Card supports 3D-Secure - if the card is enrolled with 3D-Secure, PayEx will redirect the cardholder to the autentication mechanism that is decided by the issuing bank. Normally this will be done using BankID or Mobile BankID.
 * No 3D-Secure - if this is specified in the request (see options above), no authentication is requested.
 
-<embed src="https://developer.payex.com/xwiki/wiki/developer/get/Main/ecommerce/payex-payment-instruments/card-payments/direct-card-payments/WebHome?xpage=plain&amp;uml=1" style="max-width:100%">
+```mermaid
+sequenceDiagram
+  Consumer->Merchant: start purchase
+  Activate Merchant
+  Merchant->PayEx: POST [operation=PURCHASE](payments/credit-card/payments)
+  note left of Merchant: First API request
+  Activate PayEx
+  PayEx-->Merchant: payment resource
 
-<embed src="https://developer.payex.com/xwiki/wiki/developer/get/Main/ecommerce/payex-payment-instruments/card-payments/direct-card-payments/WebHome?xpage=plain&amp;uml=2" style="max-width:100%">
+  Merchant -> PayEx: POST [Credit card direct authroization](#)
+  note left of Merchant: Second API request
+  PayEx --> Merchant: transaction resource
+
+  Deactivate PayEx
+  Merchant-->Consumer: display purchase result
+  Deactivate Merchant
+```
+
+```mermaid
+sequenceDiagram
+  Consumer->Merchant: start purchase
+  Activate Merchant
+  Merchant->PayEx: POST [operation=PURCHASE](payments/credit-card/payments)
+  note left of Merchant: First API request
+  Activate PayEx
+  PayEx-->Merchant: payment resource
+
+  Merchant -> PayEx: POST [Direct authorization](payments/credit-card/payments)
+  note left of Merchant: Second API request
+  PayEx --> Merchant: transaction resource\n(operation redirect-authentication for 3DS)
+
+  Deactivate PayEx
+  Merchant-->Consumer: redirect to 3D-secure page
+  Deactivate Merchant
+  
+  note left of Consumer: redirect to card issuing bank
+  Consumer -> IssuingBank: 3D-secure authentication
+  Activate IssuingBank
+  IssuingBank-->Consumer: redirect to merchant
+  note left of Consumer: redirect back to merchant
+  Deactivate IssuingBank
+  
+  Consumer->Merchant: access merchant page
+  Activate Merchant
+  Merchant->PayEx: GET [payments/credit-card/payments](payments/credit-card/payments)
+  note left of Merchant: Third API request
+  Activate PayEx
+  PayEx-->Merchant: payment resource
+  Deactivate PayEx
+  Merchant-->Consumer: display purchase result
+  Deactivate Merchant
+```
 
 ## Options after posting a purchase payment
 
@@ -316,21 +491,43 @@ When dealing with credit card payments, 3D-Secure authentication of the cardhold
 
 Capture can only be done on a authorized transaction. It is possible to do a part-capture where you only capture a smaller amount than the authorization amount. You can later do more captures on the sam payment upto the total authorization amount.
 
-<embed src="https://developer.payex.com/xwiki/wiki/developer/get/Main/ecommerce/payex-payment-instruments/card-payments/direct-card-payments/WebHome?xpage=plain&amp;uml=3" style="max-width:100%">
+```mermaid
+sequenceDiagram
+  Merchant->PayEx: POST [credit card capture](payments/credit-card/payments)
+  Activate Merchant
+  Activate PayEx
+  PayEx-->Merchant: transaction resource
+  Deactivate PayEx
+  Deactivate Merchant
+```
 
 ### Cancel Sequence
 
 Cancel can only be done on a authorized transaction. If you do cancel after doing a part-capture you will cancel the different between the capture amount and the authorization amount.
 
-<embed src="https://developer.payex.com/xwiki/wiki/developer/get/Main/ecommerce/payex-payment-instruments/card-payments/direct-card-payments/WebHome?xpage=plain&amp;uml=4" style="max-width:100%">
+```mermaid
+sequenceDiagram
+  Merchant->PayEx: POST [credit card cancellations](payments/credit-card/payments)
+  Activate Merchant
+  Activate PayEx
+  PayEx-->Merchant: transaction resource
+  Deactivate PayEx
+  Deactivate Merchant
+```
 
 ### Reversal Sequence
 
 Reversal can only be done on a payment where there are some captured amount not yet reversed.
 
-<embed src="https://developer.payex.com/xwiki/wiki/developer/get/Main/ecommerce/payex-payment-instruments/card-payments/direct-card-payments/WebHome?xpage=plain&amp;uml=5" style="max-width:100%">
-
-One-Click Payments utilize a previously generated payment token to prefill payment details for credit card or invoice payments pages - which means that the payer don't need to enter these details for every purchase. 
+```mermaid
+sequenceDiagram
+  Merchant->PayEx: POST [credit card reversals](payments/credit-card/payments)
+  Activate Merchant
+  Activate PayEx
+  PayEx-->Merchant: transaction resource
+  Deactivate PayEx
+  Deactivate Merchant
+```
 
 # One-Click Payments
 
@@ -456,7 +653,17 @@ The general REST based API model is described [here](/xwiki/wiki/developer/view/
 
 You must set `Operation` to `Payout` in the initial `POST` request. 
 
-<embed src="https://developer.payex.com/xwiki/wiki/developer/get/Main/ecommerce/payex-payment-instruments/card-payments/payout-to-card/WebHome?xpage=plain&amp;uml=1" style="max-width:100%">
+```mermaid
+sequenceDiagram
+  Activate Merchant
+  Activate PayEx
+  Consumer->Merchant: Start payout
+  Merchant->PayEx: POST [credit card payouts](payments/credit-card/payments)
+  PayEx-->Merchant: Payment resource
+  Merchant-->Consumer: Display Payout result
+  Deactivate PayEx
+  Deactivate Merchant
+```
 
 # Recurring Card Payments
 
