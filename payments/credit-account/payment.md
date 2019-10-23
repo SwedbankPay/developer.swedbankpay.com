@@ -42,7 +42,7 @@ Payment sequence when signing is required.
 sequenceDiagram
   Payer -> Merchant: Request purchase
   activate Merchant
-  Merchant -> ecomAPI: POST [payments-post-reference][/psp/creditaccount/payments]
+  Merchant -> ecomAPI: POST [/psp/creditaccount/payments][payments-post-reference]
   activate ecomAPI
       ecomAPI ->> ecomAPI: validate input
       ecomAPI ->> ecomAPI: get contract
@@ -55,12 +55,12 @@ sequenceDiagram
 
   Payer ->> ecomUI: Access paymentpage
     activate ecomUI
-    ecomUI ->> ecomAPI: GET [payments-get-reference][/psp/creditaccount/payments/] (PaymentId retrieved from token)
+    ecomUI ->> ecomAPI: GET [/psp/creditaccount/payments/][payments-get-reference] (PaymentId retrieved from token)
     activate ecomAPI
     ecomAPI --> ecomUI: Payment response
     deactivate ecomAPI
     Payer --> ecomUI: Payer enter SSN and ZIP
-    ecomUI -> ecomAPI: PATCH [payments-patch-reference][/psp/creditaccount/payments/<paymentId>/] (Operation: ConsumerData)
+    ecomUI -> ecomAPI: PATCH [/psp/creditaccount/payments/<paymentId>/][payments-patch-reference] (Operation: ConsumerData)
     activate ecomAPI
     ecomAPI -> PxR: GetAddressbyPaymentMethod
     activate PxR
@@ -71,7 +71,7 @@ sequenceDiagram
 
     Payer -> ecomUI: Payer approves address info
 
-    ecomUI -> ecomAPI: POST [payments-post-authorizations][/psp/creditaccount/payments/<paymentId>/authorizations]
+    ecomUI -> ecomAPI: POST [/psp/creditaccount/payments/<paymentId>/authorizations][payments-post-authorizations]
     activate ecomAPI
     ecomAPI -> PxR: PurchaseCreditAccountOrder
         activate PxR
@@ -97,7 +97,7 @@ sequenceDiagram
     Payer -> ecomUI: Access payment page
     activate ecomUI
 
-    ecomUI -> ecomAPI: GET [payments-get-reference][/psp/creditaccount/payments/] (PaymentId retrieved from token)
+    ecomUI -> ecomAPI: GET [/psp/creditaccount/payments/][payments-get-reference] (PaymentId retrieved from token)
     activate ecomAPI
     ecomAPI -> PxR: PurchaseCreditAccountStatus
     activate PxR
@@ -126,7 +126,7 @@ Payment sequence when signing is not required.
 sequenceDiagram
   Payer -> Merchant: Request purchase
   activate Merchant
-  Merchant -> ecomAPI: POST [creditaccount-post-payments][/psp/creditaccount/payments]
+  Merchant -> ecomAPI: POST [/psp/creditaccount/payments][creditaccount-post-payments]
   activate ecomAPI
       ecomAPI -> ecomAPI: validate input
       ecomAPI -> ecomAPI: get contract
@@ -140,14 +140,14 @@ sequenceDiagram
 
   Payer -> ecomUI: Access paymentpage
       activate ecomUI
-      ecomUI -> ecomAPI: GET [creditaccount-get-payments][/psp/creditaccount/payments/] (PaymentId retrieved from token)
+      ecomUI -> ecomAPI: GET [/psp/creditaccount/payments/][creditaccount-get-payments] (PaymentId retrieved from token)
       activate ecomAPI
       ecomUI --> ecomAPI: Payment response
       deactivate ecomAPI
 
       Payer -> ecomUI: Payer enter SSN and ZIP
 
-      ecomUI -> ecomAPI: PATCH [creditaccount-patch-payment][/psp/creditaccount/payments/<paymentId>/] (Operation: ConsumerData)
+      ecomUI -> ecomAPI: PATCH [/psp/creditaccount/payments/<paymentId>/][creditaccount-patch-payment] (Operation: ConsumerData)
       activate ecomAPI
       ecomAPI -> PxR: GetAddressbyPaymentMethod
       activate PxR
@@ -158,7 +158,7 @@ sequenceDiagram
 
       Payer -> ecomUI: Payer approves address info
 
-      ecomUI -> ecomAPI:  POST [credditaccount-post-payments][/psp/creditaccount/payments/<paymentId>/authorizations]
+      ecomUI -> ecomAPI:  POST [/psp/creditaccount/payments/<paymentId>/authorizations][credditaccount-post-payments]
       activate ecomAPI
       ecomAPI -> PxR: PurchaseCreditAccountOrder
           activate PxR
@@ -171,7 +171,7 @@ sequenceDiagram
   Payer -> Merchant: CompleteURL
 
   activate Merchant
-  Merchant -> ecomAPI: GET [creditaccount-get-paymentId][/psp/creditaccount/payments/<paymentId>]
+  Merchant -> ecomAPI: GET [/psp/creditaccount/payments/<paymentId>][creditaccount-get-paymentId]
   activate ecomAPI
   ecomAPI --> Merchant: Payment resource
   deactivate ecomAPI
