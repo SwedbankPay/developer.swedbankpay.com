@@ -12,14 +12,6 @@ sidebar:
       title: Payment
     - url: /checkout/after-payment
       title: After Payment
-  - title: Resources
-    items:
-    - url: /resources/
-      title: Introduction
-    - url: /resources/test-data
-      title: Test Data
-    - url: /resources/demoshop
-      title: Demoshop
 ---
 
 {% include alert.html type="warning"
