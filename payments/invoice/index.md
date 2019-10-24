@@ -190,7 +190,7 @@ The API requests are displayed in the [invoice flow](#HInvoiceflow). The options
 All valid options when posting a payment with operation equal to FinancingConsumer, are described in [the technical reference](https://developer.payex.com/xwiki/wiki/developer/view/Main/ecommerce/technical-reference/core-payment-resources/invoice-payments/).
 
 {:.table .table-striped}
-| **POST Request** |	**Sweden** ![se.png](https://developer.payex.com/xwiki/wiki/developer/download/Main/ecommerce/payex-payment-instruments/WebHome/se.png) |	**Norway** ![no.png](https://developer.payex.com/xwiki/wiki/developer/download/Main/ecommerce/payex-payment-instruments/WebHome/no.png) |	**FInland** ![Finland](https://developer.payex.com/xwiki/wiki/developer/download/Main/ecommerce/payex-payment-instruments/WebHome/fi.png) |
+| **POST Request** |	**Sweden** ![Swedish flag][se-png] |	**Norway** ![Norwegian flag][no-png] |	**FInland** ![Finish flag][fi-png] |
 | **Operation** |	FinancingConsumer	| FinancingConsumer |	FinancingConsumer |
 | **Intent** |	Authorization |	Authorization |	Authorization |
 | **Currency** |	SEK |	NOK |	EUR |

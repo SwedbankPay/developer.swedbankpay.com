@@ -38,39 +38,39 @@ We recommend that you apply for Swish as part of  [PayEx Settlement Service][se
 ## Implementation models and commerce flows:
 
 PayEx supports both e-commerce and m-commerce flows (as a Merchant you should implement both) - through PayEx Payment Pages or PayEx Direct API integration.
-![swish-image]
+![swish logo][swish-image]
 
 ### Swish m-commerce, Redirect to payment pages
-_Available in ![se-image]_
+_Available in ![swedish flag][se-image]_
 
 Swish payments from a mobile device made either through an app or via a mobile browser on the mobile device that hosts the Swish app. The flow redirects the payment dialogue to PayEx Payment Pages, that will handle the required user dialogue.
 
 
 ### Swish e-commerce, Redirect to payment pages
 
-_Available in ![se-image]_
+_Available in ![swedish flag][se-image]_
 
 Swish payments initiated by the consumer in a browser in equipment other than the mobile device that hosts the Swish app. The flow redirects the payment dialogue to PayEx Payment Pages, that will handle the required user dialogue / mobile number input.
 
 
 ### Swish m-commerce, Direct API integration
 
-_Available in ![se-image]_
+_Available in ![swedish flag][se-image]_
 Swish payments from a mobile device made either through an app or via a mobile browser on the same mobile device.
 
 ### Swish e-commerce, Direct API integration
-_Available in ![se-image]_
+_Available in ![swedish flag][se-image]_
 
 Swish payments initiated by the consumer in a browser in equipment other than the mobile device that hosts the Swish app.
 
 ### Payment Link
-_Available in ![se-image]_
+_Available in ![swedish flag][se-image]_
 
 Generate a Payment Link that can be sent to the consumer via e-mail or SMS, so the consumer may pay at a later moment. Payment links can be implemented for all payment methods supporting Redirect to hosted payment pages
 
 ### Technical Reference
 
-_Available in ![se-image]_
+_Available in ![swedish flag][se-image]_
 
 Technical reference for Swish API resources and their properties.
 
@@ -188,7 +188,7 @@ sequenceDiagram
 
 The consumer/end-user is redirected to PayEx hosted pages and prompted to insert her phone number to initiate the sales transaction.
 
-![1551695199059-994.png]
+![Consumer paying with Swish using PayEx][1551695199059-994.png]
 
 ## API Requests
 
@@ -377,7 +377,7 @@ sequenceDiagram
 
 The payer is redirected to PayEx hosted pages and prompted to initiate the sales transaction.
 
-![1551695460586-802.png]
+![User being promted to initiate a sales transaction][1551695460586-802.png]
 
 ## API Requests
 
@@ -465,7 +465,7 @@ sequenceDiagram
 {:height="50px" width="50px"}
 [1551695199059-994.png]: /assets/img/1551695199059-994.png
 {:width="467px" height="364px"}
-[1551695460586-802.png]: #
+[1551695460586-802.png]: /assets/img/1551695460586-802.png
 {:width="400px" height="711px"}
 [settlement-service]: #
 [payex-mailto]: mailto:sales@payex.com
