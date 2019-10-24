@@ -236,7 +236,7 @@ sequenceDiagram
   Swish_API-->PayEx: Payment status
   PayEx-->Swish_API: Callback response
   Deactivate Swish_API
-  PayEx--zMerchant: Transaction callback
+  PayEx--xMerchant: Transaction callback
   end
   PayEx-->Browser: Redirect to merchant (If Redirect scenario)
   Deactivate PayEx
@@ -304,12 +304,12 @@ sequenceDiagram
   Mobile_App->Merchant: start purchase
   Activate Merchant
   Merchant->PayEx: POST [Create payment][create-payment] (operation=PURCHASE)
-  note left: First API request
+  note left of Merchant: First API request
   Activate PayEx
   PayEx-->Merchant: payment resource
 
   Merchant-->PayEx: POST [Create Sales Transaction][create-sale] (operation=create-sale)
-  note left: POST not containing MSISDN
+  note left of PayEx: POST not containing MSISDN
   PayEx-->Merchant: sales resource
   Deactivate PayEx
   
@@ -328,13 +328,13 @@ sequenceDiagram
   Activate Swish_App
   Swish_API->Swish_App: Start redirect
   Deactivate Swish_API
-  group Redirect and Payment Status
+
   Swish_App--xMobile_App: Redirect
   Deactivate Swish_App
   Merchant->PayEx: GET [Sales transaction][swish-payments]
   PayEx-->Merchant: Payment response
   Merchant-->Mobile_App: Payment Status  
-  end
+  
   Deactivate Merchant 
   Deactivate Mobile_App
   Deactivate PayEx
@@ -408,7 +408,7 @@ sequenceDiagram
   Merchant-->Mobile_App: redirect to payments page
   Deactivate Merchant
   
-  note left: redirect to PayEx (If Redirect scenario)
+  note left of Merchant: redirect to PayEx (If Redirect scenario)
   Mobile_App-->PayEx: Identify m-commerce flow
   Activate PayEx
   
