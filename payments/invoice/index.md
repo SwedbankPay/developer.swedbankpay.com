@@ -238,7 +238,7 @@ The API requests are displayed in the [invoice flow](#invoice-flow). The options
 All valid options when posting a payment with operation equal to FinancingConsumer, are described in [the technical reference][technical-reference].
 
 {:.table .table-striped}
-| **POST Request** |	**Sweden** ![se.png][se-png] |	**Norway** ![no.png][no-png] |	**FInland** ![Finland][fi-png] |
+| **POST Request** |	**Sweden** ![Swedish flag][se-png] |	**Norway** ![Norwegian flag][no-png] |	**FInland** ![Finish flag][fi-png] |
 | **Operation** |	FinancingConsumer	| FinancingConsumer |	FinancingConsumer |
 | **Intent** |	Authorization |	Authorization |	Authorization |
 | **Currency** |	SEK |	NOK |	EUR |

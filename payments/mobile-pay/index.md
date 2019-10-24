@@ -51,9 +51,9 @@ sidebar:
 
 ## Screenshots
 
-![mobilepay-screenshot-1]
+![mobilepay enter number][mobilepay-screenshot-1]
 
-![mobilepay-screenshot-2]
+![mobilepay approve payment][mobilepay-screenshot-2]
 ## API Requests
 
 The API requests are displayed in the [purchase flow](#purchase-flow). The options you can choose from when creating a payment with key operation set to Value Purchase are listed below. The general REST based API model is described in the [technical reference][technical-reference].
@@ -149,7 +149,7 @@ The API-requests depend on the payment method you are using when implementing th
 
 When clicking the payment link, the consumer will be directed to a payment page, similar to the examples below, where payment information can be entered.
 
-![1551694498854-650]
+![Payex payment menu][1551694498854-650]
 
 ### Options
 

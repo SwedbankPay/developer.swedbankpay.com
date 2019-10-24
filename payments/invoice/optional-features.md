@@ -44,7 +44,7 @@ The API requests are displayed in the [invoice flow][invoice-flow]. The options 
 ### Options before posting a payment
 
 {:.table .table-striped}
-| **POST Request** |	Finland ![fi.png][fi-png]  |
+| **POST Request** |	Finland ![Finish flag][fi-png]  |
 | **Operation** |	FinancingConsumer |
 | **Intent** | Authorization |
 | **Currency** | EUR |
@@ -58,7 +58,7 @@ The API requests are displayed in the [invoice flow][invoice-flow]. The options 
 
 ---------------------------------------------------------------------
 
-[fi-png]: \assets\img\fi.png
+[fi-png]: /assets/img/fi.png
 [invoice-flow]: /payments/invoice/index/#invoice-flow
 [technical-reference]: #
 [callback-url]: #
