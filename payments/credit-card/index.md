@@ -167,7 +167,7 @@ With paymentUrl in place, the retry process becomes much more convenient for bot
 
 You will redirect the consumer/end-user to PayEx hosted pages to collect the credit card information.
 
-![redirect-image]
+![Merchant implemented redirect][redirect-image]
 
 ## API-requests
 
@@ -489,7 +489,7 @@ When redirecting to PayEx (as specified in [the Redirect scenario][redirect]) th
 
 ## Screenshots
 
-![1551694133222-896.png]
+![Merchant implemnted redirect scenario][creditcard-image-2]
 
 ## Delete payment token
 
@@ -602,7 +602,7 @@ Screenshots
 
 You will redirect the consumer/end-user to PayEx hosted pages to collect the credit card information.
 
-![1551694389702-244.png]
+![Merchant implementing redirect][redirect-image]
 
 API Requests
 ------------
@@ -640,7 +640,7 @@ You find the full technical reference [technical-reference][here].
 
 [Screnshot-1]: /assets/img/creditcard-image-1.png
 {:height="711px" width="400px"}
-[1551694389702-244.png]: /assets/img/creditcard-image-2.png
+[creditcard-image-2]: /assets/img/creditcard-image-2.png
 {:height="711px" width="400px"}
 [redirect-image]: /assets/img/creditcard-image-3.png
 {:height="711px" width="400px"}
@@ -671,7 +671,6 @@ You find the full technical reference [technical-reference][here].
 [financing invoice]: #
 [card]: #
 [invoice]: #
-[1551694133222-896.png]: #
 [delete-payment-token]: #
 [card-payment-pages]: #
 [card-verification]: #
