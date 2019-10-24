@@ -18,6 +18,14 @@ sidebar:
       title: Mobile Pay Payments
     - url: /payments/swish
       title: Swish Payments
+    - url: /payments/swish/redirect
+      title: Swish Redirect
+    - url: /payments/swish/seamless-view
+      title: Swish Seamless View
+    - url: /payments/swish/after-payment
+      title: Swish After After Payment
+    - url: /payments/swish/optional-features
+      title: Swish Optional Features
     - url: /payments/vipps
       title: Vipps Payments
 ---
