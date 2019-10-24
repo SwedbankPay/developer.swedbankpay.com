@@ -29,8 +29,6 @@ sidebar:
                       header="Site under development"
                       body="The Developer Portal is under construction and should not be used to integrate against Swedbank Pay's APIs yet." %}
 
-# Direct Debit Payment Pages
-
 >PayEx offer Direct debit bank payments for the Baltics (Estonia, Latvia and Lithuania).
 
 {:.table .table-striped}
