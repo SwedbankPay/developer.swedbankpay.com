@@ -1,5 +1,5 @@
 ---
-title: Swedbank Pay Payments Invoice
+title: Swedbank Pay Payments Invoice After Payments
 sidebar:
   navigation:
   - title: Payments
@@ -12,6 +12,14 @@ sidebar:
       title: Credit Card Payments
     - url: /payments/invoice
       title: Invoice Payments
+    - url: /payments/invoice/redirect
+      title: Invoice Payments Redirect
+    - url: /payments/invoice/seamless-view
+      title: Invoice Payments Seamless View
+    - url: /payments/invoice/after-payment
+      title: Invoice Payments After Payment
+    - url: /payments/invoice/optional-features
+      title: Invoice Payments Optional Features
     - url: /payments/direct-debit
       title: Direct Debit Payments
     - url: /payments/mobile-pay
@@ -51,19 +59,9 @@ Prior to launching PayEx Faktura at your site, make sure that you have done the 
 
 ## API requests
 
-The API requests are displayed in the [invoice flow](#HInvoiceflow). The options you can choose from when creating a payment with key operation set to Value FinancingConsumer are listed below. The general REST based API model is described in the [technical reference](https://developer.payex.com/xwiki/wiki/developer/view/Main/ecommerce/technical-reference/).
+The API requests are displayed in the [invoice flow](#invoice-flow). The options you can choose from when creating a payment with key operation set to Value FinancingConsumer are listed [here][optional-features]. The general REST based API model is described in the [technical reference].
 
-### Options before posting a payment
 
-{:.table .table-striped}
-| **POST Request** |	Finland ![Finland](https://developer.payex.com/xwiki/wiki/developer/download/Main/ecommerce/payex-payment-instruments/WebHome/fi.png) |
-| **Operation** |	FinancingConsumer |
-| **Intent** | Authorization |
-| **Currency** | EUR |
-| **InvoiceType** |	PayExFinancingFI |
-
-*   An invoice payment is always two-phased based -  you create an Authorize transaction, that is followed by a Capture or Cancel request.
-*   **Defining CallbackURL**: When implementing a scenario, it is optional to set a [CallbackURL ](https://developer.payex.com/xwiki/wiki/developer/view/Main/ecommerce/technical-reference/core-payment-resources/#HURLs)in the `POST` request. If callbackURL is set PayEx will send a postback request to this URL when the consumer has fulfilled the payment. [See the Callback API description here.](https://developer.payex.com/xwiki/wiki/developer/view/Main/ecommerce/technical-reference/#HCallback)
 
 # Invoice flow
 
@@ -71,28 +69,28 @@ The sequence diagram below shows the high level description of the invoice proce
 
 <embed src="https://developer.payex.com/xwiki/wiki/developer/get/Main/ecommerce/payex-payment-instruments/invoice-payments/financing-invoice-direct-api-fi/WebHome?xpage=plain&amp;uml=1" style="max-width:100%">
 
-## Options after posting a payment
 
-*   **Abort:** It is possible to abort the process, if the payment has no successful transactions. [See the PATCH payment description](https://developer.payex.com/xwiki/wiki/developer/view/Main/ecommerce/technical-reference/#HAbort).
-*   You must always follow up an Invoice Authorization with a Capture or Cancel request.
-*   For reversals, you will need to implement the Reversal request.
-*   **If CallbackURL is set:** Whenever changes to the payment occur a [Callback request](https://developer.payex.com/xwiki/wiki/developer/view/Main/ecommerce/technical-reference/technical-glossary/#HCallback) will be posted to the callbackUrl, which was generated when the payment was created.
+```mermaid
+sequenceDiagram
+    Consumer->>+Merchant: start purchase
+    note left of Merchant: First API request 
+    Merchant->>+PayEx: POST [Invoice Payments][invoice-payments] (operation=FinancingConsumer)
+    PayEx-->>-Merchant: payment resource
+    Merchant-->>-Consumer: Display All detail and final price
+    Consumer-->>Consumer: Input consumer data
+    Consumer->>Merchant: Confirm purchase
+    Activate Merchant
+    note left of Merchant: Second API request
+    Merchant->>+PayEx: Post [Invoice autorizations][invoice-authorizations] (Transaction Activity=FinancingConsumer)
+    PayEx->>-Merchant: Tranaction result
+    note left of Merchant: Third API request
+    Merchant->>+PayEx: GET [Invoice payments][invoice-payments]
+    PayEx-->>-Merchant: payment resource
+    Merchant-->>Consumer: Display result
+    Deactivate Merchant
+```
 
-### Capture Sequence
 
-[Capture](https://developer.payex.com/xwiki/wiki/developer/view/Main/ecommerce/technical-reference/core-payment-resources/invoice-payments/#HCaptures) can only be done on a successfully authorized transaction. It is possible to do a part-capture where you only capture a part of the authorization amount. You can later do more captures on the same payment up to the total authorization amount.
-
-<embed src="https://developer.payex.com/xwiki/wiki/developer/get/Main/ecommerce/payex-payment-instruments/invoice-payments/financing-invoice-direct-api-fi/WebHome?xpage=plain&amp;uml=2" style="max-width:100%">
-
-### Cancel Sequence
-
-[Cancel](https://developer.payex.com/xwiki/wiki/developer/view/Main/ecommerce/technical-reference/core-payment-resources/invoice-payments/#HCancellations) can only be done on a successfully authorized transaction, not yet captured. If you do cancel after doing a part-capture you will cancel the not yet captured amount only.
-
-<embed src="https://developer.payex.com/xwiki/wiki/developer/get/Main/ecommerce/payex-payment-instruments/invoice-payments/financing-invoice-direct-api-fi/WebHome?xpage=plain&amp;uml=3" style="max-width:100%">
-
-### Reversal Sequence
-
-[Reversals](https://developer.payex.com/xwiki/wiki/developer/view/Main/ecommerce/technical-reference/core-payment-resources/invoice-payments/#HReversals) can only be done on an captured transaction where there are some captured amount not yet reversed.
 
 <embed src="https://developer.payex.com/xwiki/wiki/developer/get/Main/ecommerce/payex-payment-instruments/invoice-payments/financing-invoice-direct-api-fi/WebHome?xpage=plain&amp;uml=4" style="max-width:100%">
 
@@ -228,6 +226,43 @@ The sequence diagram below shows the two requests you have to send to PayEx to m
 
 ### Reversal Sequence
 
-[Reversal](https://developer.payex.com/xwiki/wiki/developer/view/Main/ecommerce/technical-reference/core-payment-resources/invoice-payments/#HReversals) can only be done on a payment where there are some captured amount not yet reversed.
+[Reversal][reversals] can only be done on an captured transaction where there are some captured amount not yet reversed.
 
-<embed src="https://developer.payex.com/xwiki/wiki/developer/get/Main/ecommerce/payex-payment-instruments/invoice-payments/financing-invoice-redirect/WebHome?xpage=plain&amp;uml=4" style="max-width:100%">
+```mermaid
+sequenceDiagram
+    Merchant->>PayEx: Post [Invoice reversals][invoice-reversals]
+    Activate Merchant
+    Activate PayEx
+    PayEx->>Merchant: transaction resource
+    Deactivate Merchant 
+    Deactivate PayEx
+```
+
+
+
+---------------------------------------------------------------
+
+[technical-reference]: #
+[fi-png]: \assets\img\fi.png
+[callback-url]: #
+[callback-api]: #
+[invoice-payments]: #
+[see-the-PATCH-payment-description]: /payments/credit-card/after-payment
+[callback-request]: #
+[invoice-captures]: #
+[cancel]:#
+[invoice-cancellations]: #
+[invoice-reversals]: #
+[reversals]: #
+[setup-mail]: mailto:setup.ecom@PayEx.com
+[optional-features]: /payments/invoice/optional-features
+[se-png]: \assets\img\se.png
+[no-png]: \assets\img\no.png
+[approved-legal-address]: #
+[invoice-authorization]: #
+[callback-request]: #
+[capture]: #
+[redirect]: #
+[hosted-view]: /payments/#hosted-view-implementation
+[financing-invoice-1-png]: \assets\img\financing-invoice-1.png
+[financing-invoice-2-png]: \assets\img\financing-invoice-2.png
