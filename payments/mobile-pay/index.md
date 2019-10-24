@@ -16,8 +16,14 @@ sidebar:
       title: Direct Debit Payments
     - url: /payments/mobile-pay
       title: Mobile Pay Payments
+    - url: /payments/mobile-pay/redirect
+      title: Mobile Pay Redirect
+    - url: /payments/mobile-pay/seamless-view
+      title: Mobile Pay Seamless View
     - url: /payments/mobile-pay/after-payment
       title: Mobile Pay After Payment
+    - url: /payments/mobile-pay/optional-features
+      title: Mobile Pay Optional Features
     - url: /payments/swish
       title: Swish Payments
     - url: /payments/vipps
