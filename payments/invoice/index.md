@@ -121,7 +121,7 @@ The API requests are displayed in the [invoice flow](#invoice-flow). The options
 **POST Request**
 
 {:.table .table-striped}
-| **POST Request** |	Sweden ![se.png][se-png]|	Norway ![no.png][no-png]
+| **POST Request** |	Sweden ![Sweedish flag][se-png]|	Norway ![Norwegian flag][no-png]
 | **Operation** |	FinancingConsumer |	FinancingConsumer |
 | **Intent** | Authorization | Authorization |
 | **Currency** | SEK | NOK |
@@ -328,7 +328,6 @@ sequenceDiagram
 ---------------------------------------------------------------
 
 [technical-reference]: #
-[fi-png]: \assets\img\fi.png
 [callback-url]: #
 [callback-api]: #
 [invoice-payments]: #
