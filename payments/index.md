@@ -78,13 +78,13 @@ Settle funds directly with a Sales transaction.
 PayEx Hosted view and Redirect offer easy-to-use PCI compliant platforms, available from both web and mobile browsers. Either let your customers access the platform directly, embedded on your site, or by redirection to a separate hosted payment page.
 
 ### Hosted View implementation
-With the Hosted View you can initiate the payment process directly in an iframe on your site. A hostUrl needs to be defined in the first POST request in order to enable the hosted view operation. See details of the request [here](https://developer.payex.com/xwiki/wiki/developer/view/Main/ecommerce/technical-reference/core-payment-resources/card-payments/#HPurchase).
+With the Hosted View you can initiate the payment process directly in an iframe on your site. A hostUrl needs to be defined in the first POST request in order to enable the hosted view operation. See details of the request [here][card-payments-purchase].
 
 ```
 TODO: Add diagram showing hosted view payment flow.
 ```
 
-Please visit our [demoshop](https://ecom.externalintegration.payex.com/pspdemoshop) to view our Payment Menu and Redirect implementation in action. Use the configuration below:
+Please visit our [demoshop][demoshop] to view our Payment Menu and Redirect implementation in action. Use the configuration below:
 
 ```
 TODO: Insert pickture from demoshop showing the following configuration:  
@@ -95,7 +95,7 @@ English
 ```
 
 #### Getting started
-When implementing Hosted view, you need to locate the operation that is returned from your [API request](https://developer.payex.com/xwiki/wiki/developer/view/Main/ecommerce/technical-reference/), which contains the URL of the JavaScript that you need to embed on your Front End side. This will load the payment page on a subset of your own webpage.  
+When implementing Hosted view, you need to locate the operation that is returned from your [API request][technical-reference], which contains the URL of the JavaScript that you need to embed on your Front End side. This will load the payment page on a subset of your own webpage.  
 
 The properties of the operation containing the script URL should be similar to the example below. The href attribute refers to a script of the contentType application/javascript and the rel description view-payment indicate that the hosted view scenario will generate a one-phased sales transaction. A two-phase credit card payment would during the same scenario generate an authorization transaction, and the rel description would in that case be `view-authorization`. 
 
@@ -139,7 +139,7 @@ The Redirect implementation lets you redirect your customer to an easy-to-use PC
 TODO: Insert image showing the flow of redirect implementation
 ```
 
-Please visit our [demoshop](https://ecom.externalintegration.payex.com/pspdemoshop) to view our Payment Menu and Redirect implementation in action. Use the configuration below:
+Please visit our [demoshop][demoshop] to view our Payment Menu and Redirect implementation in action. Use the configuration below:
 
 ```
 TODO: Insert pickture from demoshop showing the following configuration:  
@@ -205,3 +205,7 @@ The core payment process of the eCommerce APIs are the same across all payment i
     * This can only happen if there exist no final transactions (like captures) on the payment with a successful status. Once the payment is aborted, no more transactions/operations can be done. If the consumer has been redirected to a hosted payment page when this happens, the end user will be redirected back to your merchant page.
 ### Payment is set to Failed
     * During some circumstances the payment state might be set to Failed. This happens if an antifraud pattern triggers or if the number of tries are exceeded during the authorization phase, as mentioned above.  No more transactions can be created on a failed payment. If the consumer has been redirected to a payment page when this happens,  she will be redirected back to your store.
+
+[card-payments-purchase]: /payments/credit-card/#purchase-flow-1
+[demoshop]: https://ecom.externalintegration.payex.com/pspdemoshop
+[technical-reference]: #
