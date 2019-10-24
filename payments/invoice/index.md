@@ -1,5 +1,5 @@
 ---
-title: Swedbank Pay Payments Invoice
+title: Swedbank Pay Payments Invoice After Payments
 sidebar:
   navigation:
   - title: Payments
@@ -12,6 +12,14 @@ sidebar:
       title: Credit Card Payments
     - url: /payments/invoice
       title: Invoice Payments
+    - url: /payments/invoice/redirect
+      title: Invoice Payments Redirect
+    - url: /payments/invoice/seamless-view
+      title: Invoice Payments Seamless View
+    - url: /payments/invoice/after-payment
+      title: Invoice Payments After Payment
+    - url: /payments/invoice/optional-features
+      title: Invoice Payments Optional Features
     - url: /payments/direct-debit
       title: Direct Debit Payments
     - url: /payments/mobile-pay
@@ -51,19 +59,9 @@ Prior to launching PayEx Faktura at your site, make sure that you have done the 
 
 ## API requests
 
-The API requests are displayed in the [invoice flow](#invoice-flow). The options you can choose from when creating a payment with key operation set to Value FinancingConsumer are listed below. The general REST based API model is described in the [technical reference].
+The API requests are displayed in the [invoice flow](#invoice-flow). The options you can choose from when creating a payment with key operation set to Value FinancingConsumer are listed [here][optional-features]. The general REST based API model is described in the [technical reference].
 
-### Options before posting a payment
 
-{:.table .table-striped}
-| **POST Request** |	Finland ![fi.png][fi-png]  |
-| **Operation** |	FinancingConsumer |
-| **Intent** | Authorization |
-| **Currency** | EUR |
-| **InvoiceType** |	PayExFinancingFI |
-
-*   An invoice payment is always two-phased based -  you create an Authorize transaction, that is followed by a Capture or Cancel request.
-*   **Defining CallbackURL**: When implementing a scenario, it is optional to set a [CallbackURL][callback-url] in the `POST` request. If callbackURL is set PayEx will send a postback request to this URL when the consumer has fulfilled the payment. [See the Callback API description here.][callback-api]
 
 # Invoice flow
 
@@ -91,58 +89,7 @@ sequenceDiagram
 ```
 
 
-## Options after posting a payment
 
-*   **Abort:** It is possible to abort the process, if the payment has no successful transactions. [See the PATCH payment description][see-the-PATCH-payment-description].
-*   You must always follow up an Invoice Authorization with a Capture or Cancel request.
-*   For reversals, you will need to implement the Reversal request.
-*   **If CallbackURL is set:** Whenever changes to the payment occur a [Callback request][callback-request] will be posted to the callbackUrl, which was generated when the payment was created.
-
-### Capture Sequence
-
-[Capture] can only be done on a successfully authorized transaction. It is possible to do a part-capture where you only capture a part of the authorization amount. You can later do more captures on the same payment up to the total authorization amount.
-
-
-```mermaid
-sequenceDiagram
-
-Merchant->>PayEx: Post [Invoice captures][invoice-captures]
-Activate Merchant
-Activate PayEx
-PayEx-->>Merchant: transaction resource
-Deactivate Merchant
-Deactivate PayEx
-```
-
-### Cancel Sequence
-
-[Cancel] can only be done on a successfully authorized transaction, not yet captured. If you do cancel after doing a part-capture you will cancel the not yet captured amount only.
-
-
-```mermaid
-sequenceDiagram
-Merchant->>PayEx: Post [Invoice cancellations][invoice-cancellations]
-Activate Merchant
-Activate PayEx
-PayEx-->>Merchant: transaction resource
-Deactivate Merchant
-Deactivate PayEx
-```
-
-### Reversal Sequence
-
-[Reversals][reversals] can only be done on an captured transaction where there are some captured amount not yet reversed.
-
-
-```mermaid
-sequenceDiagram
-Merchant->>PayEx: Post [Invoice reversals][invoice-reversals]
-Activate Merchant
-Activate PayEx
-PayEx-->>Merchant: transaction resource
-Deactivate Merchant
-Deactivate PayEx
-```
 
 
 # Financing Invoice Direct API (SE and NO)
@@ -393,6 +340,7 @@ sequenceDiagram
 [invoice-reversals]: #
 [reversals]: #
 [setup-mail]: mailto:setup.ecom@PayEx.com
+[optional-features]: /payments/invoice/optional-features
 [se-png]: \assets\img\se.png
 [no-png]: \assets\img\no.png
 [approved-legal-address]: #
