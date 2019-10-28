@@ -39,9 +39,9 @@ sidebar:
 ### Options after posting a payment
 
 * **Abort:** It is possible to [abort a payment][technical-reference-abort] if the payment has no successful transactions.
-* If the payment shown above is done as a twophase (`authorization`), you will need to implement the Capture and Cancel requests.
-* For reversals, you will need to implement the Reversal request.
-* **If CallbackURL is set:** Whenever changes to the payment occur  a [Callback request][technical-reference-callback] will be posted to the callbackUrl, generated when the payment was created.
+* If the payment shown above is done as a two-phase (`authorization`), you will need to implement the `Capture` and `Cancel` requests.
+* For reversals, you will need to implement the `Reversal` request.
+* **If CallbackURL is set:** Whenever changes to the payment occur  a [Callback request][technical-reference-callback] will be posted to the `callbackUrl`, generated when the payment was created.
 
 
 ## Capture
@@ -308,6 +308,122 @@ PayEx-->Merchant: transaction resource
 Deactivate PayEx
 Deactivate Merchant
 ```
+## Reversals
+The `reversals` resource lists the reversal transactions performed on a specific payment.
+
+{:.code-header}
+**Request**
+```HTTP
+GET /psp/mobilepay/payments/e7919b4f-81a2-4ffb-ec40-08d617d580a2/reversals HTTP/1.1
+Host: api.payex.com
+Authorization: Bearer <MerchantToken>
+Content-Type: application/json
+```
+
+{:.code-header}
+**Response**
+```HTTP
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "payment": "/psp/mobilepay/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "reversals": {
+        "id": "/psp/mobilepay/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversal",
+        "reversalList": [{
+            "id": "/psp/mobilepay/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversal/12345678-1234-1234-1234-123456789012",
+            "transaction": {
+                "id": "/psp/mobilepay/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
+                "created": "2016-09-14T01:01:01.01Z",
+                "updated": "2016-09-14T01:01:01.03Z",
+                "type": "Reversal",
+                "state": "Completed",
+                "number": 1234567890,
+                "amount": 1000,
+                "vatAmount": 250,
+                "description": "Test transaction",
+                "payeeReference": "AH123456",
+                "failedReason": "",
+                "isOperational": false,
+                "operations": []
+            }
+        }]
+    }
+}
+```
+
+{:.table .table-striped}
+| **Property**       | **Type**   | **Description**    
+| payment        | string | The relative URI of the payment that the reversal transactions belong to.                            |
+| id             | string | The relative URI of the created reversal transaction.                                                |
+| reversalList   | array  | The array of reversal transaction objects.                                                           |
+| reversalList[] | object | The reversal transaction object representation of the reversal transaction resource described below. |
+
+
+### Create reversal transaction
+The `create-reversal` operation reverses a previously created and captured payment.
+
+{:.code-header}
+**Request**
+```HTTP
+POST /psp/mobilepay/payments/e7919b4f-81a2-4ffb-ec40-08d617d580a2/reversals HTTP/1.1
+Host: api.payex.com
+Authorization: Bearer <MerchantToken>
+Content-Type: application/json
+
+{
+    "transaction": {
+        "amount": 1000,
+        "vatAmount": 0,
+        "description" : "Test Reversal",
+        "payeeReference": "DEF456"
+    }
+}
+```
+
+{:.table .table-striped}
+| **Property**                   | **Data type**  | **Required** | **Description** 
+| transaction.amount         | integer    | Y        | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 DKK, 5000 = 50.00 DKK. |
+| transaction.vatAmount      | integer    | Y        | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 DKK, 5000 = 50.00 DKK. |
+| transaction.description    | string     | Y        | A textual description of the capture                                                                              |
+| transaction.payeeReference | string(50) | Y        | A unique reference for the reversal transaction. See [payeeReference][payee-reference] for details.                                  |
+
+
+The `reversal` resource contains information about a reversal transaction made against a payment. You can return a specific reversal transaction by adding the transaction id to the `GET` request.
+
+{:.code-header}
+**Response**
+```HTTP
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "payment": "/psp/mobilepay/payments/6c742993-0aaa-478e-ec41-08d617d580a2",
+    "reversal": {
+        "id": "/psp/mobilepay/payments/6c742993-0aaa-478e-ec41-08d617d580a2/reversals/55c52694-fdb0-4134-ed4b-08d617e0d7e9",
+        "transaction": {
+            "id": "/psp/mobilepay/payments/6c742993-0aaa-478e-ec41-08d617d580a2/transactions/55c52694-fdb0-4134-ed4b-08d617e0d7e9",
+            "created": "2018-09-11T12:25:54.339611Z",
+            "updated": "2018-09-11T12:25:54.5738079Z",
+            "type": "Reversal",
+            "state": "Completed",
+            "number": 75100000128,
+            "amount": 1000,
+            "vatAmount": 0,
+            "description": "Test Reversal",
+            "payeeReference": "DEF456",
+            "isOperational": false,
+            "operations": []
+        }
+    }
+}
+```
+
+{:.table .table-striped}
+| Property             | Data type | Description                            
+| payment              | string    | The relative URI of the payment this capture transaction belongs to. |
+| reversal.id          | string    | The relative URI of the created capture transaction.                 |
+| reversal.transaction | object    | The object representation of the generic transaction resource.       |
 
 ### Reversal Sequence
 
@@ -323,57 +439,7 @@ sequenceDiagram
   Deactivate Merchant
 ```
 
-## Payment Link
 
-### Options after posting a payment with Payment Link
-
-*  If the payment enable a two-phase flow (Authorize), you will need to implement the Capture and Cancel requests.
-*  It is possible to "abort" the validity of the Payment Link by making a PATCH on the payment. [See the PATCH payment description][technical-reference-abort].
-*  For reversals, you will need to implement the Reversal request.
-*  If you did a PreAuthorization, you will have to send a Finalize to the transaction using [PATCH on the Authorization][technical-reference-card-payments].
-*  When implementing the Payment Link scenario, it is optional to set a CallbackURL in the POST request. If CallbackURL is set PayEx will send a postback request to this URL when the consumer as fulfilled the payment. [See the Callback API description here.][technical-reference-callback]
-
-### Capture Sequence
-
-Capture can only be perfomed on a payment with a successfully authorized transaction. It is possible to do a part-capture where you only capture a smaller amount than the authorized amount. You can later do more captures on the same payment up to the total authorization amount.
-
-```mermaid
-sequenceDiagram
-  Merchant->PayEx: POST [creditcard captures][credit-card-capture]
-  Activate Merchant
-  Activate PayEx
-  PayEx-->Merchant: transaction resource
-  Deactivate PayEx
-  Deactivate Merchant
-```
-
-### Cancel Sequence
-
-Cancel can only be done on a authorized transaction. If you do cancel after doing a part-capture you will cancel the difference between the captured amount and the authorized amount.
-
-```mermaid
-sequenceDiagram
-  Merchant->PayEx: POST [creditcard cancellations][credit-card-cancel]
-  Activate Merchant
-  Activate PayEx
-  PayEx-->Merchant: transaction resource
-  Deactivate PayEx
-  Deactivate Merchant
-```
-
-### Reversal Sequence
-
-Reversal can only be done on a payment where there are some captured amount not yet reversed.
-
-```mermaid
-sequenceDiagram
-  Merchant->PayEx: POST [creditcard reversals][credit-card-reversal]
-  Activate Merchant
-  Activate PayEx
-  PayEx-->Merchant: transaction resource
-  Deactivate PayEx
-  Deactivate Merchant
-```
 
 [credit-card-capture]: #
 [credit-card-cancel]: #
