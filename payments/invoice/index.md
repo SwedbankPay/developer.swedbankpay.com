@@ -250,7 +250,6 @@ All valid options when posting a payment with operation equal to FinancingConsum
 
 The sequence diagram below shows the two requests you have to send to PayEx to make a purchase. The diagram also shows in high level, the sequence of the process of a complete purchase.
 
-<embed src="https://developer.payex.com/xwiki/wiki/developer/get/Main/ecommerce/payex-payment-instruments/invoice-payments/financing-invoice-redirect/WebHome?xpage=plain&amp;uml=1" style="max-width:100%">
 
 ```mermaid
 sequenceDiagram
