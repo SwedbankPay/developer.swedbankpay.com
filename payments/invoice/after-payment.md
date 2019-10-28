@@ -326,7 +326,127 @@ Deactivate Merchant
 Deactivate PayEx
 ```
 
-### Reversal Sequence
+### Reversals  
+
+The `reversals` resource will list the reversal transactions (one or more) on a specific payment.
+
+***Request***
+
+```HTTP
+GET /psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals HTTP/1.1
+Host: api.payex.com
+Authorization: Bearer <MerchantToken>
+Content-Type: application/json
+```
+
+***Response***
+
+```HTTP
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "payment": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "reversal": [{
+        "transaction": {
+            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
+            "created": "2016-09-14T01:01:01.01Z",
+            "updated": "2016-09-14T01:01:01.03Z",
+            "type": "Reversal",
+            "state": "Completed",
+            "number": 1234567890,
+            "amount": 1000,
+            "vatAmount": 250,
+            "description": "Test transaction",
+            "payeeReference": "AH123456",
+            "failedReason": "",
+            "isOperational": false,
+            "operations": []
+        }
+    }]
+}
+```
+
+***Properties***
+
+{:.table .table-striped}
+| Property | Type | Description
+| payment | string | The relative URI of the payment that the reversal transactions belong to.
+| reversalList | array | The array of reversal transaction objects.
+| reversalList[] | object | The reversal transaction object representation of the reversal transaction resource described below.
+
+#### Create reversal transaction
+
+The `create-reversal` operation will reverse a previously captured payment. To reverse a payment, perform the `create-reversal` operation. The HTTP body of the request should look like the following.
+
+***Request***
+
+```HTTP
+POST /psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals HTTP/1.1
+Host: api.payex.com
+Authorization: Bearer <MerchantToken>
+Content-Type: application/json
+
+{
+    "transaction": {
+        "activity": "FinancingConsumer",
+        "amount": 1500,
+        "vatAmount": 0,
+        "payeeReference": "customer reference-unique",
+        "description": "description for transaction"
+    }
+}
+```
+
+***Properties***
+
+{:.table .table-striped}
+| Property | Data type | Required | Description
+| transaction.activity | string | Y| `FinancingConsumer`.
+| transaction.amount | integer | Y | Amount Entered in the lowest momentary units of the selected currency. E.g. *10000* = 100.00 NOK, *5000* = 50.00 SEK.
+| transaction.vatAmount | integer | Y | Amount Entered in the lowest momentary units of the selected currency. E.g. *10000* = 100.00 NOK, *5000* = 50.00 SEK.
+| transaction.payeeReference | string(50 | Y | A **unique **reference max 50 characters set by the merchant system) - this must be unique for each operation! The `payeeReference` must follow the regex pattern `[\w]* (a-zA-Z0-9_)`.
+| transaction.description | string | Y | A textual description of the reversal.
+
+The `reversal` resource will be returned, containing information about the newly created reversal transaction.
+
+***Response***
+
+```HTTP
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "payment": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "reversal": {
+        "transaction": {
+            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
+            "created": "2016-09-14T01:01:01.01Z",
+            "updated": "2016-09-14T01:01:01.03Z",
+            "type": "Reversal",
+            "state": "Completed",
+            "number": 1234567890,
+            "amount": 1000,
+            "vatAmount": 250,
+            "description": "Test transaction",
+            "payeeReference": "AH123456",
+            "failedReason": "",
+            "isOperational": false,
+            "operations": []
+        }
+    }
+}
+```
+
+***Properties***
+
+{:.table .table-striped}
+| Property | Data type | Description
+| payment | string | The relative URI of the payment this capture transaction belongs to.
+| reversal.id | string | The relative URI of the created capture transaction.
+| reversal.transaction | object | The object representation of the generic [transaction][technical-reference-transaction].
+
+#### Reversal Sequence
 
 `Reversal` can only be done on an captured transaction where there are some captured amount not yet reversed.
 
