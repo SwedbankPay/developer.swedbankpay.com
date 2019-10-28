@@ -586,6 +586,10 @@ Swish does not support `capture`.
 
 Swish does not support `cancel`.
 
+### Recurring
+
+Swish does not support `recurring` payments.
+
 [technical-reference-callback]: #
 [payex-admin-portal]: #
 [reversal-reference]: #
