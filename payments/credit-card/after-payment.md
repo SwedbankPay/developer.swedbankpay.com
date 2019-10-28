@@ -37,8 +37,8 @@ sidebar:
 
 ## After payment options for Credit card
 
-## Capture  
-The captures resource list the capture transactions (one or more) on a specific payment.
+### Capture  
+The `captures` resource list the capture transactions (one or more) on a specific payment.
 
 ***Request***
 ```HTTP
@@ -164,6 +164,126 @@ sequenceDiagram
   Deactivate PayEx
   Deactivate Merchant
 ```
+
+### Cancellations 
+
+The `cancellations` resource lists the cancellation transactions on a specific payment.
+
+***Request***
+
+```HTTP
+GET /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/cancellations HTTP/1.1
+Host: api.payex.com
+Authorization: Bearer <MerchantToken>
+Content-Type: application/json
+```
+
+***Response***
+
+```HTTP
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "payment": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "cancellations": {
+        "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/cancellations",
+        "cancellationList": [{
+            "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/cancellations/12345678-1234-1234-1234-123456789012",
+            "transaction": {
+                "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
+                "created": "2016-09-14T01:01:01.01Z",
+                "updated": "2016-09-14T01:01:01.03Z",
+                "type": "Cancellation",
+                "state": "Completed",
+                "number": 1234567890,
+                "amount": 1000,
+                "vatAmount": 250,
+                "description": "Test transaction",
+                "payeeReference": "AH123456",
+                "failedReason": "",
+                "isOperational": false,
+                "operations": []
+            }
+        }]
+    }
+}
+```
+
+***Properties***
+
+{:.table .table-striped}
+| Property | Data type | Description
+| payment | string |The relative URI of the payment this list of cancellation transactions belong to.
+| cancellations.id | string | The relative URI of the current `cancellations` resource.
+| cancellations.cancellationList | array | The array of the cancellation transaction objects.
+| cancellations.cancellationList[] | object | The object representation of the cancellation transaction resource described below.
+
+### Create cancellation transaction
+
+Perform the `create-cancel` operation to cancel a previously created - and not yet captured - payment.
+
+***Request***
+
+```HTTP
+POST /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/cancellations HTTP/1.1
+Host: api.payex.com
+Authorization: Bearer <MerchantToken>
+Content-Type: application/json
+
+{
+    "transaction": {
+        "description": "Test Cancellation",
+        "payeeReference": "ABC123"
+    }
+}
+```
+
+***Properties***
+
+{:.table .table-striped}
+| Property | Data type | Required | Description
+| transaction.description | string | Y | A textual description of the reason for the cancellation.
+| transaction.payeeReference | string(30*) | Y | A unique reference for the cancellation transaction. See [payeeReference][payeeReference] for details.
+
+The `cancel` resource contains information about a cancellation transaction made against a payment.
+
+***Response***
+
+```HTTP
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "payment": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "cancellation": {
+        "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/cancellations/12345678-1234-1234-1234-123456789012",
+        "transaction": {
+            "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
+            "created": "2016-09-14T01:01:01.01Z",
+            "updated": "2016-09-14T01:01:01.03Z",
+            "type": "Cancellation",
+            "state": "Initialized",
+            "number": 1234567890,
+            "amount": 1000,
+            "vatAmount": 250,
+            "description": "Test Cancellation",
+            "payeeReference": "ABC123",
+            "failedReason": "",
+            "isOperational": false,
+            "operations": []
+        }
+    }
+}
+```
+
+***Properties***
+
+{:.table .table-striped}
+| Property | Data type | Description
+| payment | string | The relative URI of the payment this cancellation transaction belongs to.
+| cancellation.id | string | The relative URI of the current cancellation transaction resource.
+| cancellation.transaction | object | The object representation of the generic [transaction resource][transaction-resource].
 
 #### Cancel Sequence
 
