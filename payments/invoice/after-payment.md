@@ -202,7 +202,116 @@ Deactivate Merchant
 Deactivate PayEx
 ```
 
-### Cancel Sequence
+### Cancellations
+
+The `cancellations` resource lists the cancellation transactions made on a specific payment.
+
+***Request***
+
+```HTTP
+Request
+GET /psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/cancellations HTTP/1.1
+Host: api.payex.com
+Authorization: Bearer <MerchantToken>
+Content-Type: application/json
+```
+
+***Response***
+```HTTP
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "payment": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "cancellations": [{
+        "transaction": {
+            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/5adc265f-f87f-4313-577e-08d3dca1a26c",
+            "created": "2016-09-14T01:01:01.01Z",
+            "updated": "2016-09-14T01:01:01.03Z",
+            "type": "Cancellation",
+            "state": "Failed",
+            "number": 1234567890,
+            "amount": 1000,
+            "vatAmount": 250,
+            "description": "Test transaction",
+            "payeeReference": "AH123456",
+            "failedReason": "",
+            "isOperational": false,
+            "operations": []
+        }
+    }]
+}
+```
+
+{:.table .table-striped}
+| Property | Data type | Description
+| payment | string | The relative URI of the payment this list of cancellation transactions belong to.
+| cancellations.id | string | The relative URI of the current `cancellations` resource.
+| cancellations.cancellationList | array | The array of the cancellation transaction objects.
+| cancellations.cancellationList[] | object | The object representation of the cancellation transaction resource described below.
+
+#### Create cancellation transaction
+
+Perform the `create-cancellation` operation to cancel a previously created - and not yet captured - invoice payment.
+
+***Request***
+```HTTP
+POST /psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/cancellations HTTP/1.1
+Host: api.payex.com
+Authorization: Bearer <MerchantToken>
+Content-Type: application/json
+
+{
+    "transaction": {
+        "activity": "FinancingConsumer",
+        "payeeReference": "customer order reference-unique",
+        "description": "description for transaction"
+    }
+}
+```
+
+{:.table .table-striped}
+| Parameter name | Datatype | Required | Value (with description)
+| transaction.activity | string | Y | `FinancingConsumer`.
+| transaction.payeeReference | string | Y | A **unique **reference max 50 characters set by the merchant system) - this must be unique for each operation! The [payeeReference][technical-reference-payeeReference] must follow the regex pattern `[\w]* (a-zA-Z0-9_)`. 
+| transaction.description | string(50) | Y | A textual description for the cancellation.
+
+The `cancel` resource will be returned, containing information about the newly created cancellation transaction.
+
+***Response***
+
+```HTTP
+{
+    "payment": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "cancellation": {
+        "transaction": {
+            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
+            "created": "2016-09-14T01:01:01.01Z",
+            "updated": "2016-09-14T01:01:01.03Z",
+            "type": "Cancellation",
+            "state": "Completed",
+            "number": 1234567890,
+            "amount": 1000,
+            "vatAmount": 250,
+            "description": "Test transaction",
+            "payeeReference": "AH123456",
+            "failedReason": "",
+            "isOperational": false,
+            "operations": []
+        }
+    }
+}
+```
+
+***Properties***
+
+{:.table .table-striped}
+| Property | Data type | Description
+| payment | string | The relative URI of the payment this capture transaction belongs to.
+| reversal.id | string | The relative URI of the created capture transaction.
+| reversal.transaction | object | The object representation of the generic [transaction][technical-reference-transaction].
+
+#### Cancel Sequence
 
 `Cancel` can only be done on a successfully authorized transaction, not yet captured. If you do cancel after doing a part-capture you will cancel the not yet captured amount only.
 
@@ -244,3 +353,4 @@ Deactivate PayEx
 [invoice-cancellations]: #
 [invoice-reversals]: #
 [technical-reference-transaction]: #
+[technical-reference-payeeReference]: #

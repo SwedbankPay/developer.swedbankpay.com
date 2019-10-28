@@ -30,7 +30,7 @@ Content-Type: application/json
             }  
         \],  
        "description": "Vipps Test",  
-       "payerReference": "AB{{$timestamp}}",  
+       "payerReference": "ABtimestamp",  
        "userAgent": "Mozilla/5.0",  
        "language": "nb-NO",  
        "urls": {  
@@ -45,7 +45,7 @@ Content-Type: application/json
         },  
        "payeeInfo": {  
            "payeeId": "3387e01f-a323-428b-a954-8c1e2baf7186",  
-           "payeeReference": "Postman{{$timestamp}}",  
+           "payeeReference": "payeeReference",  
            "payeeName": "Merchant1",  
            "productCategory": "A123",  
            "orderReference": "or-12456",  
@@ -385,7 +385,7 @@ Content-Type: application/json
    "transaction": {  
        "amount": 1500,  
        "vatAmount": 250,  
-       "payeeReference": "cpt{{$timestamp}}",  
+       "payeeReference": "cpttimestamp",  
        "description" : "description for transaction"  
     }  
 }
@@ -619,7 +619,7 @@ Content-Type: application/json
    "transaction": {  
        "amount": 1500,  
        "vatAmount": 250,  
-       "payeeReference": "cpt{{$timestamp}}",  
+       "payeeReference": "cpttimestamp",  
        "description" : "description for transaction"  
     }  
 }
