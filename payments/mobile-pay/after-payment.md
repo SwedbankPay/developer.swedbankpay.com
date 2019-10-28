@@ -43,9 +43,131 @@ sidebar:
 * For reversals, you will need to implement the Reversal request.
 * **If CallbackURL is set:** Whenever changes to the payment occur  a [Callback request][technical-reference-callback] will be posted to the callbackUrl, generated when the payment was created.
 
+
+### Captures
+
+The `captures` resource lists the capture transactions performed on a specific payment.
+
+{:.code-header}
+**Request**
+```HTTP
+GET /psp/mobilepay/payments/e7919b4f-81a2-4ffb-ec40-08d617d580a2/captures HTTP/1.1
+Host: api.payex.com
+Authorization: Bearer <MerchantToken>
+Content-Type: application/json
+```
+
+{:.code-header}
+**Response**
+```HTTP
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "payment": "/psp/mobilepay/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "captures": {
+        "id": "/psp/mobilepay/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures",
+        "captureList": [{
+            "id": "/psp/mobilepay/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures/12345678-1234-1234-1234-123456789012",
+            "transaction": {
+                "id": "/psp/mobilepay/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
+                "created": "2016-09-14T01:01:01.01Z",
+                "updated": "2016-09-14T01:01:01.03Z",
+                "type": "Capture",
+                "state": "Completed",
+                "number": 1234567890,
+                "amount": 1000,
+                "vatAmount": 250,
+                "description": "Test transaction",
+                "payeeReference": "AH123456",
+                "failedReason": "",
+                "isOperational": false,
+                "operations": []
+            }
+        }]
+    }
+}
+```
+
+{:.table .table-striped}
+| **Property**            | **Data type** | **Description**                                                          |
+| payment             | string    | The relative URI of the payment this capture transaction belongs to. |
+| capture.id          | string    | The relative URI of the created capture transaction.                 |
+| capture.transaction | object    | The object representation of the generic transaction resource.       |
+
+### Create capture transaction
+A `capture` transaction - to withdraw money from the payer's mobilepay - can be created after a completed authorization by performing the `create-capture` operation.
+
+{:.code-header}
+**Request**
+```HTTP
+POST /psp/mobilepay/payments/e7919b4f-81a2-4ffb-ec40-08d617d580a2/captures HTTP/1.1
+Host: api.payex.com
+Authorization: Bearer <MerchantToken>
+Content-Type: application/json
+
+{
+    "transaction": {
+        "amount": 1000,
+        "vatAmount": 250,
+        "payeeReference": 1234,
+        "description" : "description for transaction"
+    }
+}
+```
+
+{:.table .table-striped}
+| **Property**               | **Data type**  | **Required** | **Description**                                                                                                       |
+| capture.amount         | integer    | Y        | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 DKK, 5000 = 50.00 DKK. |
+| capture.vatAmount      | integer    | Y        | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 DKK, 5000 = 50.00 DKK. |
+| capture.description    | string     | Y        | A textual description of the capture transaction.                                                                 |
+| capture.payeeReference | string(50) | Y        | A unique reference for the capture transaction. See [payeeReference][payee-reference] for details.                                   |
+
+The `capture` resource contains information about the capture transaction made against a MobilePay payment. You can return a specific capture transaction by adding the transaction id to the `GET` request.
+
+{:.code-header}
+**Response**
+```HTTP
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "payment": "/psp/mobilepay/payments/6c742993-0aaa-478e-ec41-08d617d580a2",
+    "captures": {
+        "id": "/psp/mobilepay/payments/6c742993-0aaa-478e-ec41-08d617d580a2/captures",
+        "captureList": [
+            {
+                "id": "/psp/mobilepay/payments/6c742993-0aaa-478e-ec41-08d617d580a2/captures/6f978046-ad7d-4a7e-8ac9-08d617e01a6f",
+                "transaction": {
+                    "id": "/psp/mobilepay/payments/6c742993-0aaa-478e-ec41-08d617d580a2/transactions/6f978046-ad7d-4a7e-8ac9-08d617e01a6f",
+                    "created": "2018-09-11T12:14:20.3155727Z",
+                    "updated": "2018-09-11T12:14:21.3834204Z",
+                    "type": "Capture",
+                    "state": "Completed",
+                    "number": 75100000126,
+                    "amount": 1000,
+                    "vatAmount": 250,
+                    "description": "description for transaction",
+                    "payeeReference": "1234",
+                    "isOperational": false,
+                    "operations": []
+                }
+            }
+        ]
+    }
+}
+```
+
+{:.table .table-striped}
+| **Property**            | **Data type** | **Description**                                                          |
+| payment             | string    | The relative URI of the payment this capture transaction belongs to. |
+| capture.id          | string    | The relative URI of the created capture transaction.                 |
+| capture.transaction | object    | The object representation of the generic [transaction resource][transaction-resource].       |
+
+
 ### Capture Sequence
 
-Capture can only be done on a authorized transaction. It is possible to do a part-capture where you only capture a smaller amount than the authorization amount. You can later do more captures on the sam payment upto the total authorization amount.
+`Capture` can only be done on a authorized transaction. It is possible to do a part-capture where you only capture a smaller amount than the authorization amount. You can later do more captures on the sam payment upto the total authorization amount.
 
 ```mermaid
 sequenceDiagram
@@ -141,6 +263,8 @@ sequenceDiagram
 [credit-card-cancel]: #
 [credit-card-reversal]: #
 [mobilepay-capture]: #
+[payee-reference]: #
+[transaction-resource]: #
 [mobilepay-cancel]: #
 [mobilepay-reversal]: #
 [technical-reference-abort]: #
