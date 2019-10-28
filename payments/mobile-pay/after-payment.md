@@ -44,7 +44,7 @@ sidebar:
 * **If CallbackURL is set:** Whenever changes to the payment occur  a [Callback request][technical-reference-callback] will be posted to the callbackUrl, generated when the payment was created.
 
 
-### Captures
+## Capture
 
 The `captures` resource lists the capture transactions performed on a specific payment.
 
@@ -178,6 +178,122 @@ sequenceDiagram
   Deactivate PayEx
   Deactivate Merchant
 ```
+
+
+
+## Cancellations
+The `cancellations` resource lists the cancellation transactions on a specific payment.
+
+{:.code-header}
+**Request**
+```HTTP
+GET /psp/mobilepay/payments/e7919b4f-81a2-4ffb-ec40-08d617d580a2/cancellations HTTP/1.1
+Host: api.payex.com
+Authorization: Bearer <MerchantToken>
+Content-Type: application/json
+```
+
+{:.code-header}
+**Response**
+```HTTP
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "payment": "/psp/mobilepay/payments/6c742993-0aaa-478e-ec41-08d617d580a2",
+    "cancellations": {
+        "id": "/psp/mobilepay/payments/6c742993-0aaa-478e-ec41-08d617d580a2/cancellations",
+        "cancellationList": [
+            {
+                "id": "/psp/mobilepay/payments/6c742993-0aaa-478e-ec41-08d617d580a2/cancellations/c72f2a42-2222-4f91-ed4a-08d617e0d7e9",
+                "transaction": {
+                    "id": "/psp/mobilepay/payments/6c742993-0aaa-478e-ec41-08d617d580a2/transactions/c72f2a42-2222-4f91-ed4a-08d617e0d7e9",
+                    "created": "2018-09-11T12:19:38.1247314Z",
+                    "updated": "2018-09-11T12:19:38.3059149Z",
+                    "type": "Cancellation",
+                    "state": "Completed",
+                    "number": 75100000127,
+                    "amount": 500,
+                    "vatAmount": 0,
+                    "description": "Test Cancellation",
+                    "payeeReference": "ABC123",
+                    "isOperational": false,
+                    "operations": []
+                }
+            }
+        ]
+    }
+}
+```
+
+{:.table .table-striped}
+| **Property**                         | **Data type** | **Description**                                                                         |
+| payment                          | string    | The relative URI of the payment this list of cancellation transactions belong to.   |
+| cancellations.id                 | string    | The relative URI of the current cancellations resource.                             |
+| cancellations.cancellationList   | array     | The array of the cancellation transaction objects.                                  |
+| cancellations.cancellationList[] | object    | The object representation of the cancellation transaction resource described below. |
+
+
+### Create cancellation transaction
+Perform the `create-cancel` operation to cancel a previously created payment. You can only cancel a payment - or part of payment - not yet captured.
+
+{:.code-header}
+**Request**
+```HTTP
+POST /psp/mobilepay/payments/e7919b4f-81a2-4ffb-ec40-08d617d580a2/cancellations HTTP/1.1
+Host: api.payex.com
+Authorization: Bearer <MerchantToken>
+Content-Type: application/json
+
+{
+    "transaction": {
+        "description": "Test Cancellation",
+        "payeeReference": "ABC123"
+    }
+}
+```
+
+{:.table .table-striped}
+| **Property**                    | **Data type**  | **Required** | **Description**          
+| cancellation.description    | string     | Y        | A textual description of the reason for the cancellation.                            |
+| cancellation.payeeReference | string(50) | Y        | A unique reference for the cancellation transaction. See [payeeReference][payee-reference] for details. |
+
+
+The `cancel` resource contains information about a cancellation transaction made against a payment. You can return a specific cancellation transaction by adding the transaction id to the `GET` request.
+
+{:.code-header}
+**Response**
+```HTTP
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "payment": "/psp/mobilepay/payments/6c742993-0aaa-478e-ec41-08d617d580a2",
+    "cancellation": {
+        "id": "/psp/mobilepay/payments/6c742993-0aaa-478e-ec41-08d617d580a2/cancellations/c72f2a42-2222-4f91-ed4a-08d617e0d7e9",
+        "transaction": {
+            "id": "/psp/mobilepay/payments/6c742993-0aaa-478e-ec41-08d617d580a2/transactions/c72f2a42-2222-4f91-ed4a-08d617e0d7e9",
+            "created": "2018-09-11T12:19:38.1247314Z",
+            "updated": "2018-09-11T12:19:38.3059149Z",
+            "type": "Cancellation",
+            "state": "Completed",
+            "number": 75100000127,
+            "amount": 500,
+            "vatAmount": 0,
+            "description": "Test Cancellation",
+            "payeeReference": "ABC123",
+            "isOperational": false,
+            "operations": []
+        }
+    }
+}
+```
+
+{:.table .table-striped}
+| **Property**                 | **Data type** | **Description**
+| payment                  | string    | The relative URI of the payment this cancellation transaction belongs to. |
+| cancellation.id          | string    | The relative URI of the current cancellation transaction resource.        |
+| cancellation.transaction | object    | The object representation of the generic [transaction resource][transaction-resource].            |
 
 ### Cancel Sequence
 
