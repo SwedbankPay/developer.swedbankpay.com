@@ -1,5 +1,7 @@
 ---
-title: Swedbank Pay Checkout – After Payment
+title: Swedbank Pay Checkout – Introduction
+opengraph:
+    description: Introduction to Swedbank Pay Checkout
 sidebar:
   navigation:
   - title: Checkout
@@ -7,9 +9,11 @@ sidebar:
     - url: /checkout/
       title: Introduction
     - url: /checkout/payment
-      title: Payment
+      title: Checkout Payment
     - url: /checkout/after-payment
-      title: After Payment
+      title: Checkout After Payment
+    - url: /checkout/other-features
+      title: Checkout Other Features
 ---
 
 {% include alert.html type="warning"
@@ -151,44 +155,44 @@ Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 
 {
-    "transaction": {
-        "description": "Capturing the authorized payment",
-        "amount": 15610,
-        "vatAmount": 3122,
-        "payeeReference": "AB832"
-        "orderItems": [
-             {
-                "reference": "P1",
-                "name": "Product1",
-                "type": "PRODUCT",
-                "class": "ProductGroup1",
-                "itemUrl": "https://www.example.com/shop/id=666",
-                "imageUrl": "https://www.example.com/product1.jpg",
-                "description": "Product 1 description",
-                "discountDescription": "Volume discount",
-                "quantity": 4,
-                "quantityUnit": "pcs",
-                "unitPrice": 300,
-                "discountPrice": 200,
-                "vatPercent": 2500,
-                "amount": 1000,
-                "vatAmount": 250
-            },
-            {
-                "reference": "P2",
-                "name": "Product2",
-                "type": "SERVICE",
-                "class": "ProductGroup1",
-                "description": "Product 2 description",
-                "quantity": 1,
-                "quantityUnit": "pcs",
-                "unitPrice": 500,
-                "vatPercent": 2500,
-                "amount": 500,
-                "vatAmount": 125
-            }
-        ],
-    }
+  "transaction": {
+    "description": "Capturing the authorized payment",
+    "amount": 15610,
+    "vatAmount": 3122,
+    "payeeReference": "AB832"
+    "orderItems": [
+        {
+            "reference": "P1",
+            "name": "Product1",
+            "type": "PRODUCT",
+            "class": "ProductGroup1",
+            "itemUrl": "https://www.example.com/shop/id=666",
+            "imageUrl": "https://www.example.com/product1.jpg",
+            "description": "Product 1 description", 
+            "discountDescription": "Volume discount",
+            "quantity": 4,
+            "quantityUnit": "pcs",
+            "unitPrice": 300,
+            "discountPrice": 200,
+            "vatPercent": 2500,
+            "amount": 1000,
+            "vatAmount": 250
+        },
+        {
+            "reference": "P2",
+            "name": "Product2",
+            "type": "SERVICE",
+            "class": "ProductGroup1",
+            "description": "Product 2 description",
+            "quantity": 1,
+            "quantityUnit": "pcs",
+            "unitPrice": 500,
+            "vatPercent": 2500,
+            "amount": 500,
+            "vatAmount": 125
+        }
+    ],
+  }
 }
 ```
 

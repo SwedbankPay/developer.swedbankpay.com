@@ -19,6 +19,8 @@ sidebar:
 
 ## Checkin
 
+ 
+
 As mentioned, Swedbank Pay Checkout consists of two parts: **Checkin** and
 **Payment Menu**. In the sections that follow you'll find examples of the
 HTTP requests, responses and HTML code you will need to implement in order to

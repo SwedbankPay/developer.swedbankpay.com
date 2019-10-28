@@ -91,7 +91,6 @@ sequenceDiagram
 
 
 
-
 # Financing Invoice Direct API (SE and NO)
 
 >PayEx Invoice (PayEx Faktura) is a payment service where PayEx helps improve cashflow by purchasing merchant invoices. PayEx receives invoice data, which is used to produce and distribute invoices to the consumer/end-user.  

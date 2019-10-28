@@ -9,9 +9,11 @@ sidebar:
     - url: /checkout/
       title: Introduction
     - url: /checkout/payment
-      title: Payment
+      title: Checkout Payment
     - url: /checkout/after-payment
-      title: After Payment
+      title: Checkout After Payment
+    - url: /checkout/other-features
+      title: Checkout Other Features
 ---
 
 {% include alert.html type="warning"
