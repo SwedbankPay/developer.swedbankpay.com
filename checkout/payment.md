@@ -192,7 +192,9 @@ checkin process progressed.
 
 We start by performing a `POST` request towards the `paymentorder` resource
 with the `consumerProfileRef` we obtained in the checkin process described
-above. [See the technical reference for details][payment-order].
+above. 
+**Notice** that the `orderItems`property object is optional. If the `POST` request has `orderItems` in the `paymentorder`, remember to include `orderItems` in the [capture operation][capture-operation].
+[See the technical reference for more details][payment-order].
 
 {:.code-header}
 **Request**
@@ -222,7 +224,7 @@ Content-Type: application/json
         },
         "payeeInfo": {
             "payeeId": "12345678-1234-1234-1234-123456789012",
-            "payeeReference": "CD1234",
+            "payeeReference": "AB832",
             "payeeName": "Merchant1",
             "productCategory": "A123",
             "orderReference" : "or-123456"
@@ -439,6 +441,7 @@ order.
   [payment-order]: #
   [initiate-consumer-session]: #
   [view-consumer-identification]: #
+  [capture-operation]: /checkout/after-payment/#capture
   [msisdn]: https://en.wikipedia.org/wiki/MSISDN
   [payee-reference]: #
   [consumer-events]: #
