@@ -36,6 +36,121 @@ sidebar:
                       body="The Developer Portal is under construction and should not be used to integrate against Swedbank Pay's APIs yet." %}
 
 ## After payment options for Credit card
+
+## Capture  
+The captures resource list the capture transactions (one or more) on a specific payment.
+
+***Request***
+```HTTP
+GET /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures HTTP/1.1
+Host: api.payex.com
+Authorization: Bearer <MerchantToken>
+Content-Type: application/json
+```
+***Response***
+```HTTP
+HTTP/1.1 200 OK
+Content-Type: application/json
+{
+    "payment": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "captures": {
+            "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures",
+            "captureList": [{
+                    "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures/12345678-1234-1234-1234-123456789012",
+                    "transaction": {
+                            "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
+                            "created": "2016-09-14T01:01:01.01Z",
+                            "updated": "2016-09-14T01:01:01.03Z",
+                            "type": "Capture",
+                            "state": "Completed",
+                            "number": 1234567890,
+                            "amount": 1000,
+                            "vatAmount": 250,
+                            "description": "Test transaction",
+                            "payeeReference": "AH123456",
+                            "failedReason": "",
+                            "isOperational": false,
+                            "operations": []
+                    }
+            }]
+    }
+}
+```
+
+***Properties***
+
+{:.table .table-striped}
+| Property | Data type | Description
+| payment | string |The relative URI of the payment this list of capture transactions belong to.
+| captures.id | string |The relative URI of the current  captures  resource.
+| captures.captureList | array |The array of capture transaction objects.
+| captures.captureList[] | object |The capture transaction object described in the  capture  resource below.
+
+#### Create capture transaction
+To create a capture transaction to withdraw money from the payer's card, you need to perform the create-capture operation.
+
+***Request***
+```HTTP
+POST /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures HTTP/1.1
+Host: api.payex.com
+Authorization: Bearer <MerchantToken>
+Content-Type: application/json
+
+{
+    "transaction": {
+        "amount": 1500,
+        "vatAmount": 250,
+        "description": "Test Capture",
+        "payeeReference": "ABC123"
+    }
+}
+```
+
+***Properties***
+
+{:.table .table-striped}
+| Property | Data type | Required | Description
+| transaction.amount | integer |Y|Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 100.00 NOK, 5000 50.00 SEK.
+| transaction.vatAmount | integer |Y|Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 100.00 NOK, 5000 50.00 SEK.
+| transaction.description | string |Y|A textual description of the capture transaction.
+| transaction.payeeReference | string(30*) |Y|A unique reference for the capture transaction. See [payeeReference][payeeReference] for details.
+
+***Response***
+
+```HTTP
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "payment": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "capture": {
+            "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures/12345678-1234-1234-1234-123456789012",
+            "transaction": {
+                   "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
+                   "created": "2016-09-14T01:01:01.01Z",
+                   "updated": "2016-09-14T01:01:01.03Z",
+                   "type": "Capture",
+                   "state": "Completed",
+                   "number": 1234567890,
+                   "amount": 1500,
+                   "vatAmount": 250,
+                   "description": "Test Capture",
+                   "payeeReference": "ABC123",
+                   "isOperational": false,
+                   "operations": []
+            }
+    }
+}
+```
+
+***Properties***
+
+{:.table .table-striped}
+| Property | Data type | Description
+| payment | string |The relative URI of the payment this capture transaction belongs to.
+| capture.id | string | The relative URI of the created capture transaction.
+| capture.transaction | object |The object representation of the generic [transaction resource][transaction-resource].
+
 #### Capture Sequence
 
 Capture can only be done on a authorized transaction. It is possible to do a part-capture where you only capture a part of the authorization amount. You can later do more captures on the same payment up to the total authorization amount.
@@ -184,3 +299,5 @@ You have the following options after a server-to-server Recur payment `POST`.
 [creditcard-reversals]: #
 [technical-reference-credit-card-captures]: /xwiki/wiki/developer/view/Main/ecommerce/technical-reference/core-payment-resources/card-payments/#HCaptures
 [technical-reference-credit-card-cancellations]: #
+[transaction-resource]: #
+[payeeReference]: #
