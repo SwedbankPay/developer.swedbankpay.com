@@ -35,8 +35,6 @@ sidebar:
                       header="Site under development"
                       body="The Developer Portal is under construction and should not be used to integrate against Swedbank Pay's APIs yet." %}
 
-
-
 ## API requests
 
 The API requests are displayed in the [invoice flow][invoice-flow]. The options you can choose from when creating a payment with key operation set to Value FinancingConsumer are listed below. The general REST based API model is described in the [technical reference][technical-reference].
@@ -81,6 +79,8 @@ All invoice error types will have the following URI in front of type: `https://a
 {% include settlement-reconcilliation.md %}
 
 {% include one-click-payments.md %}
+
+{% include payment-link.md %}
 
 [fi-png]: /assets/img/fi.png
 [invoice-flow]: /payments/invoice/index/#invoice-flow
