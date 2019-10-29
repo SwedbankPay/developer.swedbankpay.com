@@ -14,6 +14,8 @@ sidebar:
       title: Credit Card After Payments
     - url: /payments/credit-card/other-features
       title: Credit Card Other Features
+    - url: /payments/credit-card/seamless-view
+      title: Credit Card Seamless View
     - url: /payments/invoice
       title: Invoice Payments
     - url: /payments/direct-debit
