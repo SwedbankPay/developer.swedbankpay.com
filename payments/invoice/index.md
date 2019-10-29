@@ -272,57 +272,6 @@ sequenceDiagram
     Deactivate Merchant
 ```
 
-### Options after posting a payment
-
-*   **Abort:** It is possible to abort the process, if the payment has no successful transactions. [See the PATCH payment description][see-the-PATCH-payment-description].
-*   You must always follow up an Invoice Authorization with a Capture or Cancel request.
-*   For reversals, you will need to implement the Reversal request.
-*   **If CallbackURL is set:** Whenever changes to the payment occur a [Callback request][callback-request] will be posted to the callbackUrl, which was generated when the payment was created.
-
-### Capture Sequence
-
-[Capture][capture] can only be done on a successfully authorized transaction. It is possible to do a part-capture where you only capture a part of the authorization amount. You can later do more captures on the same payment up to the total authorization amount.
-
-```mermaid
-sequenceDiagram
-    Merchant->>PayEx: Post [Invoice captures][invoice-captures]
-    Activate Merchant
-    Activate PayEx
-    PayEx->>Merchant: transaction resource
-    Deactivate Merchant 
-    Deactivate PayEx
-```
-
-### Cancel Sequence
-
-[Cancel][cancel] can only be done on a successfully authorized transaction, not yet captured. If you do cancel after doing a part-capture you will cancel the not yet captured amount only.
-
-
-```mermaid
-sequenceDiagram
-    Merchant->>PayEx: Post [Invoice cancellations][invoice-cancellations]
-    Activate Merchant
-    Activate PayEx
-    Deactivate Merchant 
-    Deactivate PayEx
-```
-
-### Reversal Sequence
-
-[Reversal][reversals] can only be done on an captured transaction where there are some captured amount not yet reversed.
-
-```mermaid
-sequenceDiagram
-    Merchant->>PayEx: Post [Invoice reversals][invoice-reversals]
-    Activate Merchant
-    Activate PayEx
-    PayEx->>Merchant: transaction resource
-    Deactivate Merchant 
-    Deactivate PayEx
-```
-
-
-
 ---------------------------------------------------------------
 
 [technical-reference]: #
