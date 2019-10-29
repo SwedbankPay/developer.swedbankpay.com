@@ -80,6 +80,8 @@ All invoice error types will have the following URI in front of type: `https://a
 
 {% include settlement-reconcilliation.md %}
 
+{% include one-click-payments.md %}
+
 [fi-png]: /assets/img/fi.png
 [invoice-flow]: /payments/invoice/index/#invoice-flow
 [technical-reference]: #
