@@ -1,5 +1,5 @@
 ---
-title: Swedbank Pay Payments Vipps Other Features
+title: Swedbank Pay Payments Vipps Optional Features
 sidebar:
   navigation:
   - title: Payments
@@ -34,9 +34,22 @@ sidebar:
       title: Vipps Seamless View
     - url: /payments/vipps/after-payment
       title: Vipps After After Payment
-    - url: /payments/vipps/optional-features
+    - url: /payments/vipps/optional-features    
       title: Vipps Optional Features
 ---
 
+{% include alert.html type="warning"
+                      icon="warning"
+                      header="Site under development"
+                      body="The Developer Portal is under construction and should not be used to integrate against Swedbank Pay's APIs yet." %}
+
+
+{% include payment-menu-styling.md %}
 
 {% include settlement-reconcilliation.md %}
+
+{% include one-click-payments.md %}
+
+{% include payment-link.md %}
+
+{% include recurring-card-payments.md %}

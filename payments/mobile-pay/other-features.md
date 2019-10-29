@@ -1,5 +1,5 @@
 ---
-title: Swedbank Pay Payments Mobile Pay
+title: Swedbank Pay Payments Mobile Pay Other Features
 sidebar:
   navigation:
   - title: Payments
@@ -89,3 +89,13 @@ sequenceDiagram
   Deactivate PayEx
   Deactivate Merchant
 ```
+
+{% include payment-menu-styling.md %}
+
+{% include settlement-reconcilliation.md %}
+
+{% include one-click-payments.md %}
+
+{% include payment-link.md %}
+
+{% include recurring-card-payments.md %}

@@ -1,5 +1,5 @@
 ---
-title: Swedbank Pay Payments Credit Account
+title: Swedbank Pay Payments Credit Card Optional Features
 sidebar:
   navigation:
   - title: Payments
@@ -7,15 +7,7 @@ sidebar:
     - url: /payments/
       title: Introduction
     - url: /payments/credit-account
-      title: Credit Account
-    - url: /payments/credit-account/redirect
-      title: Credit Account Redirect
-    - url: /payments/credit-account/seamless-view
-      title: Credit Account Seamless View
-    - url: /payments/credit-account/after-payment
-      title: Credit Account After Payment
-    - url: /payments/credit-account/optional-features
-      title: Credit Account Optional Features
+      title: Credit Account Payments
     - url: /payments/credit-card
       title: Credit Card Payments
     - url: /payments/invoice
@@ -26,8 +18,24 @@ sidebar:
       title: Mobile Pay Payments
     - url: /payments/swish
       title: Swish Payments
+    - url: /payments/swish/redirect
+      title: Swish Redirect
+    - url: /payments/swish/seamless-view
+      title: Swish Seamless View
+    - url: /payments/swish/after-payment
+      title: Swish After After Payment
+    - url: /payments/swish/optional-features
+      title: Swish Optional Features
     - url: /payments/vipps
       title: Vipps Payments
+    - url: /payments/vipps/redirect
+      title: Vipps Redirect
+    - url: /payments/vipps/seamless-view
+      title: Vipps Seamless View
+    - url: /payments/vipps/after-payment
+      title: Vipps After After Payment
+    - url: /payments/vipps/optional-features
+      title: Vipps Optional Features
 ---
 
 {% include alert.html type="warning"
@@ -40,4 +48,8 @@ sidebar:
 
 {% include settlement-reconcilliation.md %}
 
+{% include one-click-payments.md %}
+
 {% include payment-link.md %}
+
+{% include recurring-card-payments.md %}
