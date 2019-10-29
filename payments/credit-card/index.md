@@ -16,6 +16,8 @@ sidebar:
       title: Credit Card Other Features
     - url: /payments/credit-card/seamless-view
       title: Credit Card Seamless View
+    - url: /payments/credit-card/redirect
+      title: Credit Card Redirect
     - url: /payments/invoice
       title: Invoice Payments
     - url: /payments/direct-debit
@@ -59,7 +61,7 @@ The API requests are displayed in the [purchase flow](#purchase-flow). The optio
 All valid options when posting in a payment with se, are described in the [technical reference][technical-reference].
 
 #### Type of authorization - Intent
-* *PreAuthorization*: A purchase with PreAuthorization intent is handled in a similar manner as the ordinary authorization procedure. The notable difference is that the funds are put on hold for 30 days (for an ordinary authorization the funds are reserved for 7 days). Also, with a PreAuthorization, the captured amount can be higher than the preauthorized amount. The amount captured should not be higher than 20% of the original amount, due to card brand rules. You complete the purchase by [finalizing-the-transaction][finalizing the transaction].
+* *PreAuthorization*: A purchase with PreAuthorization intent is handled in a similar manner as the ordinary authorization procedure. The notable difference is that the funds are put on hold for 30 days (for an ordinary authorization the funds are reserved for 7 days). Also, with a PreAuthorization, the captured amount can be higher than the preauthorized amount. The amount captured should not be higher than 20% of the original amount, due to card brand rules. You complete the purchase by [finalizing the transaction][finalizing-the-transaction].
 * *Authorization (two-phase)*: If you want the credit card to reserve the amount, you will have to specify that the intent of the purchase is Authorization. The amount will be reserved but not charged. You will later (i.e. when you are ready to ship the purchased products) have to make a [Capture] or [Cancel] request.
 
 #### General
@@ -155,7 +157,7 @@ sequenceDiagram
 ## Introduction
 
 * When properly set up in your merchant/webshop site and the payer starts the purchase process in your merchant/webshop site, you need to make a POST request towards PayEx with your Purchase information. This will generate a payment object with a unique paymentID. You either receive a redirect URL to a hosted page or a JavaScript source in response.  
-* You need to [redirect][reditect] the payer to the Redirect payment page or embed the script source on you site to create a [Hosted View] in an iFrame;  so that she can enter credit card details in a secure PayEx hosted environment.  
+* You need to [redirect][redirect] the payer to the Redirect payment page or embed the script source on you site to create a [Hosted View][hosted-view] in an iFrame;  so that she can enter credit card details in a secure PayEx hosted environment.  
 * PayEx will handle 3D-secure authentication when this is required.  
 * PayEx will redirect the payer's browser to - or display directly in  the iFrame - one of two specified URLs, depending on whether the payment session is followed through completely or cancelled beforehand. Please note that both a successful and rejected payment reach completion, in contrast to a cancelled payment.  
 * When you detect that the payer reach your completeUrl , you need to do a `GET` request, containing the paymentID generated in the first step, to receive the state of the transaction.  
@@ -292,7 +294,7 @@ sequenceDiagram
 ## Options after posting a payment
 
 * If the payment shown above is done as a two-phase (Authorize), you will need to implement the Capture and Cancel requests.
-* **Abort:** It is possible to [abort][abort a payment] if the payment has no successful transactions.
+* **Abort:** It is possible to [abort a payment][abort] if the payment has no successful transactions.
 * For reversals, you will need to implement the Reversal request.
 * If you did a `PreAuthorization`, you will have to send a `Finalize` to the transaction using [PATCH on the Authorization][finalize-request].
 * **Callback from PayEx:** Whenever changes to the payment occur  a [Callback request] will be posted to the `callbackUrl`, generated when the payment was created.
@@ -350,7 +352,7 @@ When dealing with credit card payments, 3D-Secure authentication of the cardhold
 sequenceDiagram
   Consumer->Merchant: start purchase
   Activate Merchant
-  Merchant->PayEx: POST [purchase-operation-link][operation=PURCHASE]
+  Merchant->PayEx: POST [operation=PURCHASE][purchase-operation-link]
   note left of Merchant: First API request
   Activate PayEx
   PayEx-->Merchant: payment resource
@@ -413,7 +415,7 @@ sequenceDiagram
 
 ## Introduction
 
-The main purchase flow and implementation is exactly the same as described in the [Eedirect][eedirect] and [Hosted View][hosted-view] scenarios for [card][creditcard] and [financing invoice][financing-invoice] payments, the difference being the use of a paymentToken. The details in this section describe explicitly the parameters that must be set to enable one-click purchases.
+The main purchase flow and implementation is exactly the same as described in the [Redirect][redirect] and [Hosted View][hosted-view] scenarios for [card][credit-card] and [financing invoice][financing-invoice] payments, the difference being the use of a paymentToken. The details in this section describe explicitly the parameters that must be set to enable one-click purchases.
 
 ### Payment Url
 
@@ -426,7 +428,7 @@ With paymentUrl in place, the retry process becomes much more convenient for bot
 When making the initial purchase request, a `paymentToken` is generated. 
 
 
-When the purchase is followed through a `paymentToken` will linked to the payment.  You can return the value by making a `GET` request payment resource ([expanding][read up on expanding here]) either the authorizations or verifications sub-resource), after the consumer successfully has completed the purchase.
+When the purchase is followed through a `paymentToken` will linked to the payment.  You can return the value by making a `GET` request payment resource ([read up on expanding here][expanding]) either the authorizations or verifications sub-resource), after the consumer successfully has completed the purchase.
 
 ```HTTP
 GET https://api.payex.com/psp/creditcard/payments/d23a0e69-3c35-4e6b-cb3c-08d73b3d9f95?$expand=[authorizations|verifications] HTTP/1.1
@@ -442,7 +444,7 @@ You need to store the paymentToken in your system and keep track of the correspo
 
 ## Returning purchases
 
-When a known consumer (where you have attained a consumer-ID or similar) returns to your system, you can use the payment token, using already stored payment data, to initiate enable one-click payments. You will need to make a standard redirect purchase, following the sequence as specified in the Redirect scenarios for  [credit-card][credit card api] and [financing invoice api][financing invoice] financing-invoice-redirect/). When making the first `POST` request you insert the `paymentToken` attribute. This must be the `paymentToken` you received in the initial purchase.
+When a known consumer (where you have attained a consumer-ID or similar) returns to your system, you can use the payment token, using already stored payment data, to initiate enable one-click payments. You will need to make a standard redirect purchase, following the sequence as specified in the Redirect scenarios for  [credit card api][credit-card] and [financing invoice api][financing-invoice] financing-invoice-redirect/). When making the first `POST` request you insert the `paymentToken` attribute. This must be the `paymentToken` you received in the initial purchase.
 
 See the technical reference, for how to create a [card] and [invoice] payment.
 
@@ -571,7 +573,7 @@ The recurrence token can then be retrieved by doing a `GET` request against the 
 
 ### Delete Recurrence Token
 
-You can delete a created recurrence token with a `PATCH`\-request. Please see technical reference for details [remove-payment-token][here]
+You can delete a created recurrence token with a `PATCH`\-request. Please see technical reference for details [here][remove-payment-token].
 
 Recurring purchases
 -------------------
@@ -595,7 +597,7 @@ This option is commonly used when initiating a subsequent [One-click card paymen
 #### Verification through PayEx Payment Pages
 
 * When properly set up in your merchant/webshop site and the payer initiates a verification operation, you make a `POST` request towards PayEx with your Verify information. This will generate a payment object with a unique paymentID. You either receive a Redirect URL to a hosted page or a JavaScript source in response.
-* You need to [redirect] the payer's browser to that specified URL, or embed the script source on your site to create a [hosted-view][Hosted View] in an iFrame; so that she can enter the credit card details in a secure PayEx hosted environment.
+* You need to [redirect] the payer's browser to that specified URL, or embed the script source on your site to create a [Hosted View][hosted-view] in an iFrame; so that she can enter the credit card details in a secure PayEx hosted environment.
 * PayEx will handle 3D-secure authentication when this is required.
 * PayEx will redirect the payer's browser to - or display directly in the iFrame - one of two specified URLs, depending on whether the payment session is followed through completely or cancelled beforehand. Please note that both a successful and rejected payment reach completion, in contrast to a cancelled payment.
 * When you detect that the payer reach your completeUrl , you need to do a `GET` request to receive the state of the transaction.
@@ -633,14 +635,13 @@ When dealing with credit card payments, 3D-Secure authentication of the cardhold
 
 ### Options after posting a payment
 
-* Do a `GET` [technical-reference][request] to view the paymentToken that is created automatically when posting a verification.
-* **Abort:** It is possible to [abort-a-payment][abort a payment] if the payment has no successful transactions.
-* Be prepared to [callback][receive a Callback from PayEx].
+* Do a `GET` [request][technical-reference] to view the paymentToken that is created automatically when posting a verification.
+* **Abort:** It is possible to [abort a payment][abort-a-payment] if the payment has no successful transactions.
+* Be prepared to [receive a Callback from PayEx][callback].
 
-Technical reference
--------------------
+### Technical reference
 
-You find the full technical reference [technical-reference][here].
+You find the full technical reference [here][technical-reference].
 
 [Screnshot-1]: /assets/img/creditcard-image-1.png
 {:height="711px" width="400px"}
@@ -658,7 +659,6 @@ You find the full technical reference [technical-reference][here].
 [finalize-request]: /payments/credit-card/after-payment
 [callback-request]: /payments/credit-card/after-payment
 [redirect]: #
-[Hosted View]: /..
 [hosted-view]: /..
 [finalize-request]: #
 [credit-Card-API]: #
@@ -669,10 +669,8 @@ You find the full technical reference [technical-reference][here].
 [direct-authorization-reference]: #
 [get-payment-response]: payments/credit-card/payments
 [hosted-view]: #
-[Credit Card API]: #
 [expanding]: #
 [credit-card]: #
-[financing invoice]: #
 [card]: #
 [invoice]: #
 [delete-payment-token]: #
@@ -686,7 +684,6 @@ You find the full technical reference [technical-reference][here].
 [recurring-card-payment]: #
 [one-click-payments]: #
 [recurring-server-to-server-based-payments]: #
-[Verification flow]: #
 [abort-a-payment]: #
 [credit-card-auth-direct]: #
 [purchace-operation-link]: #
@@ -695,3 +692,4 @@ You find the full technical reference [technical-reference][here].
 [purchase-payment]: #
 [recurring-card-payment]: #
 [technical-reference]: #
+[callback]: #
