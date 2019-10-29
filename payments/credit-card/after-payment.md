@@ -10,14 +10,10 @@ sidebar:
       title: Credit Account Payments
     - url: /payments/credit-card
       title: Credit Card Payments
-    - url: /payments/credit-card/redirect
-      title: Credit Card Redirect
-    - url: /payments/credit-card/seamless-view
-      title: Credit Card Seamless View
     - url: /payments/credit-card/after-payment
       title: Credit Card After Payments
-    - url: /payments/credit-card/optional-features
-      title: Credit Card Optional Features
+    - url: /payments/credit-card/other-features
+      title: Credit Card Other Features
     - url: /payments/invoice
       title: Invoice Payments
     - url: /payments/direct-debit
@@ -40,7 +36,8 @@ sidebar:
 ### Capture  
 The `captures` resource list the capture transactions (one or more) on a specific payment.
 
-***Request***
+{:.code-header}
+**Request**
 
 ```HTTP
 GET /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures HTTP/1.1
@@ -49,7 +46,8 @@ Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 ```
 
-***Response***
+{.:code-header}
+**Response**
 
 ```HTTP
 HTTP/1.1 200 OK
@@ -80,10 +78,9 @@ Content-Type: application/json
 }
 ```
 
-***Properties***
 
 {:.table .table-striped}
-| Property | Data type | Description
+| **Property** | **Data type** | **Description**
 | payment | string |The relative URI of the payment this list of capture transactions belong to.
 | captures.id | string |The relative URI of the current  captures  resource.
 | captures.captureList | array |The array of capture transaction objects.
