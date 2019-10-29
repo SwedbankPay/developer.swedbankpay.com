@@ -460,8 +460,8 @@ Content-Type: application/json
   "comment": "Comment on why the deletion is happening"
 }
 ```
-
-***Response***
+{:.code-header}
+**Response**
 
 ```HTTP
 HTTP/1.1 200 OK
