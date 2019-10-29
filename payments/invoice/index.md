@@ -62,11 +62,9 @@ Prior to launching PayEx Faktura at your site, make sure that you have done the 
 The API requests are displayed in the [invoice flow](#invoice-flow). The options you can choose from when creating a payment with key operation set to Value FinancingConsumer are listed [here][optional-features]. The general REST based API model is described in the [technical reference].
 
 
-
 # Invoice flow
 
 The sequence diagram below shows the high level description of the invoice process, including the three requests you have to send to PayEx to create an authorize transaction. **Note that the invoice will not be created/distributed before you have made a Capture request.** The Capture/Cancel/Reversal opions are described below under "Options after posting a payment". The links will take you directly to the API description for the specific request. 
-
 
 ```mermaid
 sequenceDiagram
@@ -87,9 +85,6 @@ sequenceDiagram
     Merchant-->>Consumer: Display result
     Deactivate Merchant
 ```
-
-
-
 
 # Financing Invoice Direct API (SE and NO)
 
@@ -115,7 +110,6 @@ Prior to launching PayEx Faktura at your site, make sure that you have done the 
 The API requests are displayed in the [invoice flow](#invoice-flow). The options you can choose from when creating a payment with key operation set to Value FinancingConsumer are listed below. The general REST based API model is described in the [technical reference][technical-reference].
 
 ### Options before posting a payment
-
 
 **POST Request**
 
@@ -289,6 +283,7 @@ sequenceDiagram
 [optional-features]: /payments/invoice/optional-features
 [se-png]: \assets\img\se.png
 [no-png]: \assets\img\no.png
+[fi-png]: /assets/img/fi.png
 [approved-legal-address]: #
 [invoice-authorization]: #
 [callback-request]: #
