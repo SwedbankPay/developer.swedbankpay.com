@@ -74,6 +74,8 @@ Content-Type: application/json
 
 {% include one-click-payments.md %}
 
+{% include payment-menu-styling.md %}
+
 
 
 [expansion]: #
