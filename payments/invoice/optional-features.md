@@ -76,6 +76,8 @@ All invoice error types will have the following URI in front of type: `https://a
 | `externalerror` | 502 | 9999 - ServerOtherServer
 | `forbidden` | 403 | Any other error code
 
+{% include payment-menu-styling.md %}
+
 {% include settlement-reconcilliation.md %}
 
 [fi-png]: /assets/img/fi.png
