@@ -82,6 +82,8 @@ All invoice error types will have the following URI in front of type: `https://a
 
 {% include payment-link.md %}
 
+{% include recurring-card-payments.md %}
+
 [fi-png]: /assets/img/fi.png
 [invoice-flow]: /payments/invoice/index/#invoice-flow
 [technical-reference]: #
