@@ -131,7 +131,7 @@ A payment resource has a set of operations that can be performed on it, from its
 {:.code-header}
 **Operations**
 
-```JSON
+```JS
 {
     "operations": [
         {

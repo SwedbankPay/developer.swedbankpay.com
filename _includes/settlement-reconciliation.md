@@ -117,7 +117,7 @@ deactivate Merchant
 
 A credit card transaction is made when you either make a capture or a reversal. In the input data for making a capture, you will set thepayeeReference##. The unique value of this field is the same as the field calledOrderID## in the reconciliation file.
 
-```JSON
+```JS
 {
     "transaction": {
         "amount": 1500,
@@ -130,7 +130,7 @@ A credit card transaction is made when you either make a capture or a reversal. 
 
 When you receive the response from PayEx, the response will includetransaction.number##. This is the same as the field calledTransactionNo## in the reconciliation file.
 
-```JSON
+```JS
 {
     "payment": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
     "capture": {

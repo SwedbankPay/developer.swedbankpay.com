@@ -184,7 +184,7 @@ Posting a payment (operation purchase) returns the options of aborting the payme
 {:.code-header}
 **Request**
 
-```JSON
+```JS
 {  
    "payment": {  
        "operation": "Purchase"  
@@ -199,7 +199,7 @@ When a payment resource is created and during its lifetime, it will have a set o
 {:.code-header}
 **Operations**
 
-```JSON
+```JS
 {  
    "payment": {},  
    "operations": [  

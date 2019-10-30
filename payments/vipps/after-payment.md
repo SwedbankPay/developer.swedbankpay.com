@@ -181,7 +181,7 @@ Content-Type: application/json
 Posting a payment (operation purchase) returns the options of aborting the payment altogether or creating an authorization transaction through the `redirect-authorization` hyperlink. 
 
 ***Request***
-```JSON
+```JS
 {
     "payment": {
         "operation": "Purchase"
@@ -194,7 +194,7 @@ Posting a payment (operation purchase) returns the options of aborting the payme
 When a payment resource is created and during its lifetime, it will have a set of operations that can be performed on it. Which operations are available will vary depending on the state of the payment resource, what the access token is authorized to do, etc. A list of possible operations and their explanation is given below.
 
 ***Operations***
-```JSON
+```JS
 {
     "payment": {},
     "operations": [

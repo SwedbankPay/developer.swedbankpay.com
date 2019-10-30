@@ -163,7 +163,7 @@ the following argument objects:
 {:.code-header}
 **Consumer Identified Event Argument Object**
 
-```json
+```JS
 {
     "actionType": "OnConsumerIdentified",
     "consumerProfileRef": "7d5788219e5bc43350e75ac633e0480ab30ad20f96797a12b96e54da869714c4"
@@ -173,7 +173,7 @@ the following argument objects:
 {:.code-header}
 **Shipping Details Available Event Argument Object**
 
-```json
+```JS
 {
     "actionType": "OnShippingDetailsAvailable",
     "url": "https://api.externalintegration.payex.com/psp/consumers/<consumerProfileRef>/shipping-details"
