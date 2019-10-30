@@ -102,24 +102,24 @@ Content-Type: application/json
 {:.table .table-striped}
 | **Property** | **Data type** | **Required** | **Description** |
 | payment.operation | string | Y| Purchase | 
-| payment.intent | string | Y | Authorization |
-| payment.currency | string | Y | NOK |
-| payment.prices.type | string | Y | vipps
-| payment.prices.amount | integer | Y | Amount is entered in the lowest momentary units of the selected currency. <br> E.g. 10000 = 100.00 NOK, 5000 = 50.00 NOK. |
-| payment.prices.vatAmount | integer | Y | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant. |
-| payment.description | string(40) | Y | A textual description max 40 characters of the purchase. |
+| payment.intent | string | ✔︎ | Authorization |
+| payment.currency | string | ✔︎ | NOK |
+| payment.prices.type | string | ✔︎ | vipps
+| payment.prices.amount | integer | ✔︎ | Amount is entered in the lowest momentary units of the selected currency. <br> E.g. 10000 = 100.00 NOK, 5000 = 50.00 NOK. |
+| payment.prices.vatAmount | integer | ✔︎ | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant. |
+| payment.description | string(40) | ✔︎ | A textual description max 40 characters of the purchase. |
 | payment.payerReference | string | N | The reference to the payer (consumer/end-user) from the merchant system, like mobile number, customer number etc. |
-| payment.userAgent | string | Y | The user agent reference of the consumer's browser - [see user agent definition][see-user-agent-definition] | 
-| payment.language | string | Y | nb-NO, sv-SE or en-US. |
-| payment.urls.hostUrls | array | Y | The array of URIs valid for embedding of PayEx Hosted Views. | 
-| payment.urls.completeUrl | string | Y | The URI that PayEx will redirect back to when the payment page is completed. | 
+| payment.userAgent | string | ✔︎ | The user agent reference of the consumer's browser - [see user agent definition][see-user-agent-definition] | 
+| payment.language | string | ✔︎ | nb-NO, sv-SE or en-US. |
+| payment.urls.hostUrls | array | ✔︎ | The array of URIs valid for embedding of PayEx Hosted Views. | 
+| payment.urls.completeUrl | string | ✔︎ | The URI that PayEx will redirect back to when the payment page is completed. | 
 | payment.urls.cancelUrl | string | N | The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with paymentUrl; only cancelUrl or paymentUrl can be used, not both. |
 | payment.urls.paymentUrl | string | N | The URI that PayEx will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. Only used in hosted views. Can not be used simultaneously with cancelUrl; only cancelUrl or paymentUrl can be used, not both. |
 | payment.urls.callbackUrl | string | N | The URI that PayEx will perform an HTTP POST against every time a transaction is created on the payment. See [callback][callback] |
 | payment.urls.logoUrl | string | N | The URI that will be used for showing the customer logo. Must be a picture with at most 50px height and 400px width. Requires https. | 
 | payment.urls.termsOfServiceUrl | string | N | A URI that contains your terms and conditions for the payment, to be linked on the payment page. Requires https. | 
-| payeeInfo.payeeId | string | Y | This is the unique id that identifies this payee (like merchant) set by PayEx. |
-| payeeInfo.payeeReference | string(30) | Y | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payeeReference] for details. |
+| payeeInfo.payeeId | string | ✔︎ | This is the unique id that identifies this payee (like merchant) set by PayEx. |
+| payeeInfo.payeeReference | string(30) | ✔︎ | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payeeReference] for details. |
 | payeeInfo.payeeName | string | N | The payee name (like merchant name) that will be displayed to consumer when redirected to PayEx. | 
 | payeeInfo.productCategory | string | N | A product category or number sent in from the payee/merchant. This is not validated by PayEx, but will be passed through the payment process and may be used in the settlement process. |
 | payeeInfo.orderReference | string(50) | N | The order reference should reflet the order reference found in the merchant's systems. | 
@@ -442,10 +442,10 @@ Content-Type: application/json
 
 {:.table .table-striped}
 | **Property** | **Data type** | **Required** | **Description** |
-| capture.amount | integer | Y | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 NOK. |
-| capture.vatAmount | integer | Y | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 NOK. |
-| capture.description | string | Y | A textual description of the capture transaction. |
-| capture.payeeReference | string(50) | Y | A unique reference for the capture transaction. See [payeeReference][payeeReference] for details.
+| capture.amount | integer | ✔︎ | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 NOK. |
+| capture.vatAmount | integer | ✔︎ | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 NOK. |
+| capture.description | string | ✔︎ | A textual description of the capture transaction. |
+| capture.payeeReference | string(50) | ✔︎ | A unique reference for the capture transaction. See [payeeReference][payeeReference] for details.
 
 The capture resource contains information about the capture transaction made against a Vipps payment. You can return a specific capture transaction by adding the transaction id to the GET request.
 
@@ -562,8 +562,8 @@ Content-Type: application/json
 
 {:.table .table-striped}
 | **Property** | **Data type** | **Required** | **Description** |
-| cancellation.description | string | Y | A textual description of the reason for the cancellation. |
-| cancellation.payeeReference | string(50) | Y | A unique reference for the cancellation transaction. See [payeeReference][payeeReference] for details. |
+| cancellation.description | string | ✔︎ | A textual description of the reason for the cancellation. |
+| cancellation.payeeReference | string(50) | ✔︎ | A unique reference for the cancellation transaction. See [payeeReference][payeeReference] for details. |
 
 The cancel resource contains information about a cancellation transaction made against a payment. You can return a specific cancellation transaction by adding the transaction id to the GET request.
 
@@ -681,10 +681,10 @@ Content-Type: application/json
 
 {:.table .table-striped}
 | **Property** | **Data type** | **Required** | **Description** |
-| transaction.amount | integer | Y | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 NOK. |
-| transaction.vatAmount | integer | Y | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 NOK. |
-| transaction.description | string | Y | A textual description of the capture |
-| transaction.payeeReference | string(50) | Y | A unique reference for the reversal transaction. See [payeeReference][payeeReference]. |
+| transaction.amount | integer | ✔︎ | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 NOK. |
+| transaction.vatAmount | integer | ✔︎ | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 NOK. |
+| transaction.description | string | ✔︎ | A textual description of the capture |
+| transaction.payeeReference | string(50) | ✔︎ | A unique reference for the reversal transaction. See [payeeReference][payeeReference]. |
 
 The reversal resource contains information about a reversal transaction made against a payment. You can return a specific reversal transaction by adding the transaction id to the GET request.
 

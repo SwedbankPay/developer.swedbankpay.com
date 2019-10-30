@@ -250,8 +250,8 @@ Content-Type: application/json
 
 {:.table .table-striped}
 | **Property** | **Data type** | **Required** | **Description**
-| transaction.description | string | Y | A textual description of the reason for the cancellation.
-| transaction.payeeReference | string(30*) | Y | A unique reference for the cancellation transaction. See [payeeReference][payeeReference] for details.
+| transaction.description | string | ✔︎ | A textual description of the reason for the cancellation.
+| transaction.payeeReference | string(30*) | ✔︎ | A unique reference for the cancellation transaction. See [payeeReference][payeeReference] for details.
 
 The `cancel` resource contains information about a cancellation transaction made against a payment.
 
@@ -387,10 +387,10 @@ Content-Type: application/json
 
 {:.table .table-striped}
 | **Property** | **Data type** | **Required** | **Description**
-| transaction.amount | integer | Y | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.
-| transaction.vatAmount | integer | Y | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.
-| transaction.description | string | Y | A textual description of the capture
-| transaction.payeeReference | string(30*) | Y | A unique reference for the reversal transaction. See [payeeReference][payeeReference] for details.
+| transaction.amount | integer | ✔︎ | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.
+| transaction.vatAmount | integer | ✔︎ | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.
+| transaction.description | string | ✔︎ | A textual description of the capture
+| transaction.payeeReference | string(30*) | ✔︎ | A unique reference for the reversal transaction. See [payeeReference][payeeReference] for details.
 
 The `reversal` resource contains information about the newly created reversal transaction.
 

@@ -97,10 +97,10 @@ Content-Type: application/json
 
 {:.table .table-striped}
 | Property| Data type| Required| Description
-| payment.operation | string | Y | `Purchase`
-| payment.intent | string | Y | `Sale`
+| payment.operation | string | ✔︎ | `Purchase`
+| payment.intent | string | ✔︎ | `Sale`
 | payment.currency |string| Y | `SEK`
-| payment.prices.type | string | Y | `Swish`
+| payment.prices.type | string | ✔︎ | `Swish`
 | payment.prices.amount | integer | Y |Amount is entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 SEK 5000 = 50.00 SEK.
 | payment.prices.vatAmount | integer | Y |If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.
 | payment.description | string(40) | Y |A textual description max 40 characters of the purchase.

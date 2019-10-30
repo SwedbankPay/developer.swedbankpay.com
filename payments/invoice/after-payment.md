@@ -131,16 +131,16 @@ Content-Type: application/json
 
 {:.table .table-striped}
 | Parameter name | Datatype | Required | Value (with description)
-| transaction.activity | string | Y | FinancingConsumer.
-| transaction.Amount | integer | Y | Amount entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.
-| transaction.vatAmount | integer | Y | Amount entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.
-| transaction.payeeReference | string(50) | Y | A **unique **reference max 50 characters set by the merchant system) - this must be unique for each operation! The `payeeReference` must follow the regex pattern `[\w]* (a-zA-Z0-9_)`.
-| transaction.description | string | Y | A textual description of the capture
-| itemDescriptions.amount | integer | Y | Total price for this order line - entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.
-| itemDescriptions.description | string | Y | A textual description of this product
-| vatSummary.amount | integer | Y | Total price for this order line - entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.
-| vatSummary.vatAmount | integer | Y | VAT Amount entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.
-| vatSummary.vatPercent | string | Y | The VAT in percent. Supported values : "0.00", "6.00", "8.00", "10.00", "12.00", "14.00", "15.00", "22.00", "24.00", "25.00"
+| transaction.activity | string | ✔︎ | FinancingConsumer.
+| transaction.Amount | integer | ✔︎ | Amount entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.
+| transaction.vatAmount | integer | ✔︎ | Amount entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.
+| transaction.payeeReference | string(50) | ✔︎ | A **unique **reference max 50 characters set by the merchant system) - this must be unique for each operation! The `payeeReference` must follow the regex pattern `[\w]* (a-zA-Z0-9_)`.
+| transaction.description | string | ✔︎ | A textual description of the capture
+| itemDescriptions.amount | integer | ✔︎ | Total price for this order line - entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.
+| itemDescriptions.description | string | ✔︎ | A textual description of this product
+| vatSummary.amount | integer | ✔︎ | Total price for this order line - entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.
+| vatSummary.vatAmount | integer | ✔︎ | VAT Amount entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.
+| vatSummary.vatPercent | string | ✔︎ | The VAT in percent. Supported values : "0.00", "6.00", "8.00", "10.00", "12.00", "14.00", "15.00", "22.00", "24.00", "25.00"
 
 Notes on `FinancingConsumer` captures:
 
@@ -272,9 +272,9 @@ Content-Type: application/json
 
 {:.table .table-striped}
 | Parameter name | Datatype | Required | Value (with description)
-| transaction.activity | string | Y | `FinancingConsumer`.
-| transaction.payeeReference | string | Y | A **unique **reference max 50 characters set by the merchant system) - this must be unique for each operation! The [payeeReference][technical-reference-payeeReference] must follow the regex pattern `[\w]* (a-zA-Z0-9_)`. 
-| transaction.description | string(50) | Y | A textual description for the cancellation.
+| transaction.activity | string | ✔︎ | `FinancingConsumer`.
+| transaction.payeeReference | string | ✔︎ | A **unique **reference max 50 characters set by the merchant system) - this must be unique for each operation! The [payeeReference][technical-reference-payeeReference] must follow the regex pattern `[\w]* (a-zA-Z0-9_)`. 
+| transaction.description | string(50) | ✔︎ | A textual description for the cancellation.
 
 The `cancel` resource will be returned, containing information about the newly created cancellation transaction.
 
@@ -403,10 +403,10 @@ Content-Type: application/json
 {:.table .table-striped}
 | Property | Data type | Required | Description
 | transaction.activity | string | Y| `FinancingConsumer`.
-| transaction.amount | integer | Y | Amount Entered in the lowest momentary units of the selected currency. E.g. *10000* = 100.00 NOK, *5000* = 50.00 SEK.
-| transaction.vatAmount | integer | Y | Amount Entered in the lowest momentary units of the selected currency. E.g. *10000* = 100.00 NOK, *5000* = 50.00 SEK.
-| transaction.payeeReference | string(50 | Y | A **unique **reference max 50 characters set by the merchant system) - this must be unique for each operation! The `payeeReference` must follow the regex pattern `[\w]* (a-zA-Z0-9_)`.
-| transaction.description | string | Y | A textual description of the reversal.
+| transaction.amount | integer | ✔︎ | Amount Entered in the lowest momentary units of the selected currency. E.g. *10000* = 100.00 NOK, *5000* = 50.00 SEK.
+| transaction.vatAmount | integer | ✔︎ | Amount Entered in the lowest momentary units of the selected currency. E.g. *10000* = 100.00 NOK, *5000* = 50.00 SEK.
+| transaction.payeeReference | string(50 | ✔︎ | A **unique **reference max 50 characters set by the merchant system) - this must be unique for each operation! The `payeeReference` must follow the regex pattern `[\w]* (a-zA-Z0-9_)`.
+| transaction.description | string | ✔︎ | A textual description of the reversal.
 
 The `reversal` resource will be returned, containing information about the newly created reversal transaction.
 

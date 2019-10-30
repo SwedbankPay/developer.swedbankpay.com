@@ -67,10 +67,10 @@ Settle funds directly with a Sales transaction.
 | CardIcon | [Credit card](payment/credit-card/) | ✔︎︎︎︎︎ | ✔︎︎︎︎︎ | ✔︎︎︎︎︎ | EarthIcon |
 | InvoiceIcon | [PayEx Invoice](payment/invoice/) | ✔︎︎︎︎︎ | ✔︎︎︎︎︎ | ✔︎︎︎︎︎ | NordicCountries |
 | EnvelopeIcon | [PayEx Web Invoice](payment/credit-account) | ✔︎︎︎︎︎ | ✔︎︎︎︎︎ | ✔︎ ︎| SwedenNorway|
-| KeypadIcon | [Direct Debit](payment/direct-debit)| X | ✔︎︎︎︎︎ | X | BalticNordic |
-| Vipps | [Vipps](payment/vipps) | ✔︎︎︎︎︎ | ✔︎︎︎︎︎ | X | Norway |
+| KeypadIcon | [Direct Debit](payment/direct-debit)| X | ✔︎︎︎︎︎ | | BalticNordic |
+| Vipps | [Vipps](payment/vipps) | ✔︎︎︎︎︎ | ✔︎︎︎︎︎ | | Norway |
 | Swish | [Swish](payments/swish) | ✔︎︎︎︎︎ | ✔︎︎︎︎︎ | ✔︎︎︎︎︎  ︎| Sweden |
-| MobilePay | [Mobile Pay](payments/mobile-pay) | X | ✔︎︎︎︎︎ | X | Denmark |
+| MobilePay | [Mobile Pay](payments/mobile-pay) | | ✔︎︎︎︎︎ | | Denmark |
 
 >Add image
 

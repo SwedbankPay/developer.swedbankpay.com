@@ -59,7 +59,7 @@ Content-Type: application/json
 
 {:.table .table-striped}
 | **Property** | **Data type** | **Required** | **Description** 
-| capture.amount | integer | Y | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.
+| capture.amount | integer | ✔︎ | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.
 | capture.vatAmount | integer | Y |Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.
 | capture.description | string |Y|A textual description of the capture transaction.
 | capture.payeeReference | string(30*) |Y| A unique reference for the capture transaction. See [payeeReference][payee-reference] for details.
