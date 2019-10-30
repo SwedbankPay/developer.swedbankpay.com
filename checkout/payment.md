@@ -441,7 +441,6 @@ order.
 {:width="458px" :height="629px"}
 [consumer-image]: /assets/img/Consumer.PNG
 
-[https]: /#connection-and-protocol
 [payment-order]: #
 [initiate-consumer-session]: #
 [view-consumer-identification]: #
@@ -451,7 +450,4 @@ order.
 [consumer-events]: #
 [payment-menu-styling]: #
 [payment-order-operations]: #
-[transactions]: #
-[guest-payments]: #
-[callback]: #
 
