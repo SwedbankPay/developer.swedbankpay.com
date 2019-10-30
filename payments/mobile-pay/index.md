@@ -22,7 +22,7 @@ sidebar:
       title: Mobile Pay Seamless View
     - url: /payments/mobile-pay/after-payment
       title: Mobile Pay After Payment
-    - url: /payments/mobile-pay/optional-features
+    - url: /payments/mobile-pay/other-features
       title: Mobile Pay Optional Features
     - url: /payments/swish
       title: Swish Payments
