@@ -34,3 +34,15 @@ sidebar:
                       icon="warning"
                       header="Site under development"
                       body="The Developer Portal is under construction and should not be used to integrate against Swedbank Pay's APIs yet." %}
+
+{% include payment-menu-styling.md %}
+
+{% include settlement-reconciliation.md %}
+
+{% include one-click-payments.md %}
+
+{% include payment-link.md %}
+
+{% include recurring-card-payments.md %}
+
+{% include subsite.md %}
