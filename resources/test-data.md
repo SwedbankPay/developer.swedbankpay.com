@@ -30,8 +30,7 @@ To test a logged in user in the Demo Shop, please use the following test data:
 ### Norway
 
 {:.table .table-striped}
-| Type      | Data     |  Description
-|:----------------------|----------|:-------------|
+| **Type**      | **Data**     |  **Description**
 | `Email`               | `olivia.nyhuus@payex.com` | The e-mail address of the payer.
 | `Mobile number`       | `+47 98765432` | The mobile phone number of the payer. Format Norway: +4799999999.
 | `SSN`                 | `26026708248` | The social security number of the payer. Format: Norway DDMMYYXXXXX
@@ -40,8 +39,7 @@ To test a logged in user in the Demo Shop, please use the following test data:
 ### Sweden
 
 {:.table .table-striped}
-| Type              | Data       |  Description |
-|:------------------|:----------:|:-------------|
+| **Type**              | **Data**       |  **Description** |
 | `Email`           | `leia.ahlstrom@payex.com` | The e-mail address of the payer.
 | `Mobile number`   | `+46 739000001` | The mobile phone number of the payer. Format Sweden: +46707777777.
 | `SSN`             | `971020-2392` | The social security number of the payer. Sweden: YYYYMMDDXXXX.
@@ -53,8 +51,7 @@ To test a logged in user in the Demo Shop, please use the following test data:
 ### Visa
 
 {:.table .table-striped}
-| Card number   | Expiry       |  CVC | Type of test data
-|:-------|:----------:|:-------------|:---
+| **Card number**   | **Expiry**       |  **CVC** | **Type of test data**
 | `4925000000000004`| After the current month | Any | Loopback only
 | `4581097032723517`| After the current month | Any | Loopback only
 | `4581099940323133`| After the current month | Any | Loopback only
@@ -66,44 +63,38 @@ To test a logged in user in the Demo Shop, please use the following test data:
 ### American Express
 
 {:.table .table-striped}
-| Card number              | Expiry       |  CVC | Type of test data
-|:------------------|:----------:|:-------------|:---
+| **Card number**              | **Expiry**       |  **CVC** | **Type of test data**
 | `377601000000000`           | After the current month | `525` | Amex & loopback
 
 ### JCB
 
 {:.table .table-striped}
-| Card number              | Expiry       |  CVC |
-|:-------------------------|:----------:--|:-----|
-| `3569990010082211`       | After the current month | `123` |
+| **Card number**             | **Expiry**       |  **CVC** |
+| `3569990010082211`| After the current month | `123` |
 
 ### Diners
 
 {:.table .table-striped}
-| Card number              | Expiry       |  CVC |
-|:-------------------------|:----------:--|:-----|
+| **Card number**             | **Expiry**       |  **CVC** |
 | `6148201829798`       | After the current month | `832` |
 
 ### Maestro
 
 {:.table .table-striped}
-| Card number              | Expiry       |  CVC | Type of test data
-|:-------------------------|:----------:--|:-----|:-------
+| **Card number**              | **Expiry**       |  **CVC** | **Type of test data**
 | `6764429999947470`       | 03/17        | `066` | Evry & loopback
 
 ### Dankort
 
 {:.table .table-striped}
-| Card number              | Expiry       |  CVC | Type of test data
-|:-------------------------|:----------:--|:-----|:-------
-| `5019994016316467`       | 10/23        | `375` | NETS & loopback
-| `5019994001307083`       | 05/21        | `615` | NETS & loopback
+| **Card number**              | **Expiry**       |  **CVC** | **Type of test data**
+| `5019994016316467` | 10/23| `375` | NETS & loopback
+| `5019994001307083` | 05/21 | `615` | NETS & loopback
 
 ### Visa/DanKort
 
 {:.table .table-striped}
-| Card number              | Expiry       |  CVC | Type of test data
-|:-------------------------|:----------:--|:-----|:-------
+| **Card number**              | **Expiry**       |  **CVC** | **Type of test data**
 | `4571994016401817`       | 10/17        | `212` | NETS & loopback
 | `4571994016471869`       | 01/19        | `829` | NETS & loopback
 
@@ -118,10 +109,9 @@ First, POST a Payment (operation purchase) and enter the link to the payment pag
 Fill the data for either the Visa or MasterCard as shown below.
 
 {:.table .table-striped}
-| Card type                | Card number              | Expiry       |  CVC | Type of test data
-|:-------------------------|:----------:--|:-----|:-------|:---
-| Visa | `4761739001010416`       | 12/22        | `268` | 3DS enrolled, ECI 5, Evry & loopback
-| MasterCard | `5226612199533406`       | 09/28        | `602` | 3DS enrolled, ECI 6, Evry & loopback
+| **Card type**| **Card number**| **Expiry**|  **CVC** | **Type of test data**
+| Visa | `4761739001010416`| 12/22 | `268` | 3DS enrolled, ECI 5, Evry & loopback
+| MasterCard | `5226612199533406` | 09/28  | `602` | 3DS enrolled, ECI 6, Evry & loopback
 
 After pressing the purchase button you will then be taken to a menu where you can select Authentication status, menu is displayed in the picture under:
 
@@ -136,8 +126,7 @@ We have some preset amounts that can be used to produce error codes. When making
 The amounts that can be used and produce error codes (transactionThirdPartyError):
 
 {:.table .table-striped}
-| Number    | Error message
-|:----       |:------------
+| **Number**    | **Error message**
 |900313     |REJECTED_BY_ACQUIRER_INVALID_AMOUNT
 |900330     |REJECTED_BY_ACQUIRER_FORMAT_ERROR
 |900334     |REJECTED_BY_ACQUIRER_POSSIBLE_FRAUD
@@ -154,8 +143,7 @@ The amounts that can be used and produce error codes (transactionThirdPartyError
 ### Norway
 
 {:.table .table-striped}
-| Type      | Data     |
-|:----------|----------|
+| **Type**      | **Data**     |
 | SSN       | 26026708248 |
 | Name      | Olivia Nyhuus |
 | Adress    | SaltnesToppen 43 |
@@ -164,8 +152,7 @@ The amounts that can be used and produce error codes (transactionThirdPartyError
 ### Sweden
 
 {:.table .table-striped}
-| Type      | Data     | Alternative data
-|:----------|----------|:---
+| **Type**      | **Data**     | **Alternative data**
 | SSN       | 600307-1161	 | 971020-2392
 | Name      | Azra Oliveira	 | Leia Ahlstrom
 | Adress    | Helgestavägen 9 | Helgestavägen 9
@@ -176,8 +163,7 @@ The amounts that can be used and produce error codes (transactionThirdPartyError
 ### Finland
 
 {:.table .table-striped}
-| Type      | Data     |
-|:----------|----------|
+| **Type**      | **Data**     |
 | SSN       | 100584-451P |
 | Name      | Järvilehto Kimmo |
 | Adress    | Kiannonkatu 88 |
@@ -190,8 +176,7 @@ Use any name, adress etc.
 For testing a positive purchase (in our external integration test environment), please use any mobile number, except within the range: 99999991-99999999, as these will trigger error messages. The error messages are documented in the table below. There will be no user dialog at the mobile phone when testing Vipps.
 
 {:.table .table-striped}
-| Mobile number    | Error message
-|:----       |:------------
+| **Mobile number**    | **Error message**
 |99999991     |Vipps internal error
 |99999992     |Request Validation error message on paticular request parameter
 |99999993     |Transaction Id already exists in vipps
@@ -204,19 +189,17 @@ For testing a positive purchase (in our external integration test environment), 
 Since there is no user dialog when testing Vipps in external integration, the following mobile numbers can be used to simulate consumer action/behaviour in Vipps application.
 
 {:.table .table-striped}
-| Mobile number      | Simulation     |
-|:----------|----------|
+| **Mobile number**      | **Simulation**     |
 | 99999990       | Timeout, i.e. the consumer does not confirm the payment in the Vipps app in time.|
 | 99999989      | Cancellation by consumer in app. |
 
 ## Swish Test Data
 For testing a positive purchase (in our external integration test environment), please use any mobile number. E.g: +46 739000001
 
-To simulate an error message, set description in POST Create Payment or Create Payment Order to one of the following values:
+To simulate an error message, set description in `POST` Create Payment or `Create` Payment Order to one of the following values:
 
 {:.table .table-striped}
-| Description      | Simulates     |
-|:----------|----------|
+| **Description**      | **Simulates**     |
 | RF07      | Transaction declined |
 | TM01	    | Swish timed out before the payment was started |
 | BANKIDCL  | Payer cancelled BankId signing |
@@ -224,9 +207,8 @@ To simulate an error message, set description in POST Create Payment or Create P
 ## Callback Test Data
 
 {:.table .table-striped}
-| URL      | Response     |
-|:----------|----------|
-| https://api.internaltest.payex.com/psp/fakecallback      | 200 OK |
-| https://api.internaltest.payex.com/psp/fakecallback/notfound    | 404 Not Found |
-| https://api.internaltest.payex.com/psp/fakecallback/badrequest  | 400 Bad Request |
-| https://api.internaltest.payex.com/psp/fakecallback/random | 200 OK, 404 Not Found or 400 Bad Request at random |
+| **URL**      | **Response**     |
+| https://api.internaltest.payex.com/psp/fakecallback      | `200 OK` |
+| https://api.internaltest.payex.com/psp/fakecallback/notfound    | `404 Not Found` |
+| https://api.internaltest.payex.com/psp/fakecallback/badrequest  | `400 Bad Request` |
+| https://api.internaltest.payex.com/psp/fakecallback/random | `200 OK, 404 Not Found or 400 Bad Request at random` |

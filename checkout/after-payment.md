@@ -1,5 +1,7 @@
 ---
-title: Swedbank Pay Checkout – After Payment
+title: Swedbank Pay Checkout – Introduction
+opengraph:
+    description: Introduction to Swedbank Pay Checkout
 sidebar:
   navigation:
   - title: Checkout
@@ -7,17 +9,11 @@ sidebar:
     - url: /checkout/
       title: Introduction
     - url: /checkout/payment
-      title: Payment
+      title: Checkout Payment
     - url: /checkout/after-payment
-      title: After Payment
-  - title: Resources
-    items:
-    - url: /resources/
-      title: Introduction
-    - url: /resources/test-data
-      title: Test Data
-    - url: /resources/demoshop
-      title: Demoshop
+      title: Checkout After Payment
+    - url: /checkout/other-features
+      title: Checkout Other Features
 ---
 
 {% include alert.html type="warning"
@@ -145,6 +141,9 @@ It is possible to do a part-capture where you only capture a smaller amount
 than the authorized amount. You can later do more captures on the same payment
 up to the total authorization amount.
 
+**Notice** that the `orderItems`property object is optional. If the `POST` request has `orderItems` in the `paymentorder`, remember to include `orderItems` in the `capture` operation.
+If the `paymentorder` is without `orderItems`, remember to leave this out in the `capture` operation.
+
 To capture the authorized payment, we need to perform
 `create-paymentorder-capture` against the accompanying href returned in the
 `operations` list. See the abbreviated request and response below:
@@ -159,44 +158,44 @@ Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 
 {
-    "transaction": {
-        "description": "Capturing the authorized payment",
-        "amount": 15610,
-        "vatAmount": 3122,
-        "payeeReference": "AB832"
-        "orderItems": [
-             {
-                "reference": "P1",
-                "name": "Product1",
-                "type": "PRODUCT",
-                "class": "ProductGroup1",
-                "itemUrl": "https://www.example.com/shop/id=666",
-                "imageUrl": "https://www.example.com/product1.jpg",
-                "description": "Product 1 description",
-                "discountDescription": "Volume discount",
-                "quantity": 4,
-                "quantityUnit": "pcs",
-                "unitPrice": 300,
-                "discountPrice": 200,
-                "vatPercent": 2500,
-                "amount": 1000,
-                "vatAmount": 250
-            },
-            {
-                "reference": "P2",
-                "name": "Product2",
-                "type": "SERVICE",
-                "class": "ProductGroup1",
-                "description": "Product 2 description",
-                "quantity": 1,
-                "quantityUnit": "pcs",
-                "unitPrice": 500,
-                "vatPercent": 2500,
-                "amount": 500,
-                "vatAmount": 125
-            }
-        ],
-    }
+  "transaction": {
+    "description": "Capturing the authorized payment",
+    "amount": 15610,
+    "vatAmount": 3122,
+    "payeeReference": "AB832"
+    "orderItems": [
+        {
+            "reference": "P1",
+            "name": "Product1",
+            "type": "PRODUCT",
+            "class": "ProductGroup1",
+            "itemUrl": "https://example.com/products/123",
+            "imageUrl": "https://example.com/product123.jpg",
+            "description": "Product 1 description", 
+            "discountDescription": "Volume discount",
+            "quantity": 4,
+            "quantityUnit": "pcs",
+            "unitPrice": 300,
+            "discountPrice": 200,
+            "vatPercent": 2500,
+            "amount": 1000,
+            "vatAmount": 250
+        },
+        {
+            "reference": "P2",
+            "name": "Product2",
+            "type": "PRODUCT",
+            "class": "ProductGroup1",
+            "description": "Product 2 description",
+            "quantity": 1,
+            "quantityUnit": "pcs",
+            "unitPrice": 500,
+            "vatPercent": 2500,
+            "amount": 500,
+            "vatAmount": 125
+        }
+    ],
+  }
 }
 ```
 
@@ -208,7 +207,7 @@ Content-Type: application/json
 | ✔︎︎︎︎︎ | └➔&nbsp;`amount`             | `integer`    | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.
 | ✔︎︎︎︎︎ | └➔&nbsp;`vatAmount`          | `integer`    | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.
 | ✔︎︎︎︎︎ | └➔&nbsp;`payeeReference`     | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.
-|   | └➔&nbsp;`orderItems`           | `array`       | The array of items being purchased with the order. Used to print on invoices if the payer chooses to pay with invoice, among other things. Optional in `capture` requests if already sent with the initial creation of the Payment Order.
+|   | └➔&nbsp;`orderItems`           | `array`       | The array of items being purchased with the order. Used to print on invoices if the payer chooses to pay with invoice, among other things. Required in `capture` requests if already sent with the initial creation of the Payment Order.
 | ✔︎︎︎︎︎ | └─➔&nbsp;`reference`           | `string`       | A reference that identifies the order item.
 | ✔︎︎︎︎︎ | └─➔&nbsp;`name`                | `string`       | The name of the order item.
 | ✔︎︎︎︎︎ | └─➔&nbsp;`type`                | `string`       | `PRODUCT`, `SERVICE`, `SHIPPING_FEE`, `DISCOUNT`, `VALUE_CODE` or `OTHER`. The type of the order item.
