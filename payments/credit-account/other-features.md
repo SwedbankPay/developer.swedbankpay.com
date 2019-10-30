@@ -8,14 +8,10 @@ sidebar:
       title: Introduction
     - url: /payments/credit-account
       title: Credit Account
-    - url: /payments/credit-account/redirect
-      title: Credit Account Redirect
-    - url: /payments/credit-account/seamless-view
-      title: Credit Account Seamless View
     - url: /payments/credit-account/after-payment
       title: Credit Account After Payment
-    - url: /payments/credit-account/optional-features
-      title: Credit Account Optional Features
+    - url: /payments/credit-account/other-features
+      title: Credit Account Other Features
     - url: /payments/credit-card
       title: Credit Card Payments
     - url: /payments/invoice
