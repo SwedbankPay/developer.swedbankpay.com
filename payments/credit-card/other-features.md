@@ -74,6 +74,8 @@ Content-Type: application/json
 
 {% include one-click-payments.md %}
 
+{% include payment-link.md %}
+
 {% include payment-menu-styling.md %}
 
 {% include subsite.md %}
