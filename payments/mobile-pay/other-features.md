@@ -36,18 +36,6 @@ sidebar:
                       body="The Developer Portal is under construction and should not be used to integrate against Swedbank Pay's APIs yet." %}
 
 
-
-
-## Payment Link
-
-### Options after posting a payment with Payment Link
-
-*  If the payment enable a two-phase flow (Authorize), you will need to implement the Capture and Cancel requests.
-*  It is possible to "abort" the validity of the Payment Link by making a PATCH on the payment. [See the PATCH payment description][technical-reference-abort].
-*  For reversals, you will need to implement the Reversal request.
-*  If you did a PreAuthorization, you will have to send a Finalize to the transaction using [PATCH on the Authorization][technical-reference-card-payments].
-*  When implementing the Payment Link scenario, it is optional to set a CallbackURL in the POST request. If CallbackURL is set PayEx will send a postback request to this URL when the consumer as fulfilled the payment. [See the Callback API description here.][technical-reference-callback]
-
 ### Capture Sequence
 
 Capture can only be perfomed on a payment with a successfully authorized transaction. It is possible to do a part-capture where you only capture a smaller amount than the authorized amount. You can later do more captures on the same payment up to the total authorization amount.
