@@ -14,7 +14,7 @@ To view this website, browse to [developer.swedbankpay.com][1]. If you'd like
 to host it locally on your computer, you need to do the following:
 
 1. [Clone this repository][4].
-2. Jekyll is written in [Ruby][5], so you'll need to download and install that.
+2. Jekyll is written in [Ruby][5], so you'll need to download and install that. If you're installing on Windows, choose setup with DevKit.
 3. To install the [Ruby Gems][6] this web site requires, you first need to
    install [Bundler][7].
 4. Once Ruby and Bundler is in place, type `bundle install` inside the root
