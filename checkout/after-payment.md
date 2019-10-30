@@ -36,9 +36,8 @@ capture or cancel. For a full list of the available operations, see the
 [techincal reference][payment-order-operations].
 
 {:.table .table-striped}
-| Operation                          | Description                                                                                                                                                                                                                                                                    |
-| :--------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `update-paymentorder-updateorder`  | [Updates the order](#update-order) with a change in the `amount` and/or `vatAmount`.                                                                                                                                                                                           |
+| **Operation**                          | **Description**        |
+| `update-paymentorder-updateorder`  | [Updates the order](#update-order) with a change in the `amount` and/or `vatAmount`.       |
 | `create-paymentorder-capture`      | The second part of a two-phase transaction where the authorized amount is sent from the payer to the payee. It is possible to do a part-capture on a subset of the authorized amount. Several captures on the same payment are possible, up to the total authorization amount. |
 | `create-paymentorder-cancellation` | Used to cancel authorized and not yet captured transactions. If a cancellation is performed after doing a part-capture, it will only affect the not yet captured authorization amount.                                                                                         |
 | `create-paymentorder-reversal`     | Used to reverse a payment. It is only possible to reverse a payment that has been captured and not yet reversed.                                                                                                                                                               |
@@ -98,8 +97,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property       | Type     | Description                                                                        |
-| :------------- | -------- | :--------------------------------------------------------------------------------- |
+| **Property**       | **Type**     | **Description**               |
 | `paymentorder` | `object` | The payment order object.                                                          |
 | └➔&nbsp;`id`   | `string` | The relative URI to the payment order.                                             |
 | `operations`   | `array`  | The array of possible operations to perform, given the state of the payment order. |
@@ -200,8 +198,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| ✔︎︎︎︎︎ | Property                       | Type         | Description                                                                                                                                                                                                                                |
-| :----: | :----------------------------- | ------------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ✔︎︎︎︎︎ | **Property**                       | **Type**         | **Description**                          |
 | ✔︎︎︎︎︎ | `transaction`                  | `object`     | The transaction object.                                                                                                                                                                                                                    |
 | ✔︎︎︎︎︎ | └➔&nbsp;`description`          | `string`     | The description of the capture transaction.                                                                                                                                                                                                |
 | ✔︎︎︎︎︎ | └➔&nbsp;`amount`               | `integer`    | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.                                                                                                          |
@@ -251,8 +248,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property                  | Type      | Description                                                                                                                                                                                                  |
-| :------------------------ | --------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Property**                  | **Type**      | **Description**      |
 | `payment`                 | `string`  | The relative URI of the payment this capture transaction belongs to.                                                                                                                                         |
 | `capture`                 | `object`  | The capture object, containing the information about the capture transaction.                                                                                                                                |
 | └➔&nbsp;`id`              | `string`  | The relative URI of the created capture transaction.                                                                                                                                                         |
@@ -296,9 +292,8 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| ✔︎︎︎︎︎ | Property                 | Type         | Description                                                                                                                                                                              |
-| :----: | :----------------------- | ------------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ✔︎︎︎︎︎ | `transaction`            | `object`     | The transaction object.                                                                                                                                                                  |
+| ✔︎︎︎︎︎ | **Property**                 | **Type**         | **Description**  |
+| ✔︎︎︎︎︎ | `transaction`            | `object`     | The transaction object.    |
 | ✔︎︎︎︎︎ | └➔&nbsp;`payeeReference` | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details. |
 | ✔︎︎︎︎︎ | └➔&nbsp;`description`    | `string`     | A textual description of why the transaction is cancelled.                                                                                                                               |
 
@@ -330,8 +325,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property                  | Type      | Description                                                                                                                                                                                                  |
-| :------------------------ | --------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Property**                  | **Type**      | **Description**           |
 | `payment`                 | `string`  | The relative URI of the payment this cancellation transaction belongs to.                                                                                                                                    |
 | `cancellation`            | `object`  | The cancellation object, containing information about the cancellation transaction.                                                                                                                          |
 | └➔&nbsp;`id`              | `string`  | The relative URI of the cancellation transaction.                                                                                                                                                            |
@@ -373,9 +367,8 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| ✔︎︎︎︎︎ | Property                 | Type         | Description                                                                                                                                                                              |
-| :----: | :----------------------- | ------------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ✔︎︎︎︎︎ | `transaction`            | `object`     | The transaction object.                                                                                                                                                                  |
+| ✔︎︎︎︎︎ | **Property**                 | **Type**         | **Description**  |
+| ✔︎︎︎︎︎ | `transaction`            | `object`     | The transaction object.        |
 | ✔︎︎︎︎︎ | └➔&nbsp;`amount`         | `integer`    | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.                                                        |
 | ✔︎︎︎︎︎ | └➔&nbsp;`vatAmount`      | `integer`    | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.                                                               |
 | ✔︎︎︎︎︎ | └➔&nbsp;`payeeReference` | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details. |
@@ -408,8 +401,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property                  | Type      | Description                                                                                                                                                                                                  |
-| :------------------------ | --------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Property**                  | **Type**      | **Description**                   |
 | `payment`                 | `string`  | The relative URI of the payment this reversal transaction belongs to.                                                                                                                                        |
 | `reversals`               | `object`  | The reversal object, containing information about the reversal transaction.                                                                                                                                  |
 | └➔&nbsp;`id`              | `string`  | The relative URI of the reversal transaction.                                                                                                                                                                |

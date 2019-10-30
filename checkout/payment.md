@@ -60,8 +60,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| ✔︎︎︎︎︎ | Property             | Type     |  Description |
-|:-:|:----------------------|----------|:-------------|
+| ✔︎︎︎︎︎ | **Property**             | **Type**     |  **Description** |
 | ✔︎︎︎︎︎ | `operation`          | `string` | `initiate-consumer-session`, the operation to perform.
 |   | `msisdn`              | `string` | The [MSISDN][msisdn] (mobile phone number) of the payer. Format Sweden: `+46707777777`. Format Norway: `+4799999999`.
 |   | `email`               | `string` | The e-mail address of the payer.
@@ -93,20 +92,13 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property             | Type     |  Description |
-|:---------------------|----------|:-------------|
+| **Property**             | **Type**     |  **Description** |
 | `token`              | `string` | A session token used to initiate Checkout UI.
 | `operations`         | `array`  | The array of operation objects to choose from, described in detail in the table below.
-
-**`operations` Object Properties**
-
-{:.table .table-striped}
-| Property      | Type     |  Description |
-|:--------------|----------|:-------------|
-| `rel`         | `string` | The relational name of the operation, used as a programmatic identifier to find the correct operation given the current state of the application.
-| `method`      | `string` | The HTTP method to use when performing the operation.
-| `contentType` | `string` | The HTTP content type of the target URI. Indicates what sort of resource is to be found at the URI, how it is expected to be used and behave.
-| `href`        | `string` | The target URI of the operation.
+| └➔&nbsp;`rel`             | `string`     | The relational name of the operation, used as a programmatic identifier to find the correct operation given the current state of the application.
+| └➔&nbsp;`method`             | `string`     | The HTTP method to use when performing the operation.
+| └➔&nbsp;`contentType`             | `string`     | The HTTP content type of the target URI. Indicates what sort of resource is to be found at the URI, how it is expected to be used and behave.
+| └➔&nbsp;`href`             | `string`     | The target URI of the operation.
 
 ### Checkin Front End
 
@@ -231,12 +223,9 @@ Content-Type: application/json
             "orderReference" : "or-123456"
         },
         "payer": {
-            "email": "{{consumerEmail}}",
-            "msisdn": "{{msisdn}}",
-            "workPhoneNumber" : "",  
-            "homePhoneNumber" : ""   
-        "orderItems": [
+             "consumerProfileRef": "7d5788219e5bc43350e75ac633e0480ab30ad20f96797a12b96e54da869714c4" 
         },
+        "orderItems": [
             {
                 "reference": "P1",
                 "name": "Product1",
@@ -267,14 +256,30 @@ Content-Type: application/json
                 "amount": 500,
                 "vatAmount": 125
             }
-        ]
+        ],
+        "riskIndicator" : {
+            "deliveryEmailAddress" : "string",              
+            "deliveryTimeFrameindicator" : "01",   
+            "preOrderDate" : "YYYYMMDD",                    
+            "preOrderPurchaseIndicator" : "01",          
+            "shipIndicator" : "01",        
+            "giftCardPurchase" : "false",               
+            "reOrderPurchaseIndicator" : "01",           
+            "pickUpAddress" : {                            
+                "name" : "companyname",                    
+                "streetAddress" : "string",                 
+                "coAddress" : "string",                   
+                "city" : "string",
+                "zipCode" : "string",
+                "countryCode" : "string"
+            }
+        },
     }
 }
 ```
 
 {:.table .table-striped}
-| ✔︎︎︎︎︎ | Property                     | Type         |  Description |
-|:-:|:-----------------------------|--------------|:-------------|
+| ✔︎︎︎︎︎ | **Property**                     | **Type**         |  **Description** |
 | ✔︎︎︎︎︎ | `paymentorder`               | `object`     | The payment order object.
 | ✔︎︎︎︎︎ | `operation`                  | `string`     | The operation that the payment order is supposed to perform.
 | ✔︎︎︎︎︎ | └➔&nbsp;`currency`           | `string`      | The currency of the payment.
@@ -283,6 +288,7 @@ Content-Type: application/json
 | ✔︎︎︎︎︎ | └➔&nbsp;`description`        | `string`      | The description of the payment order.
 | ✔︎︎︎︎︎ | └➔&nbsp;`userAgent`          | `string`      | The user agent of the payer.
 | ✔︎︎︎︎︎ | └➔&nbsp;`language`           | `string`      | The language of the payer.
+| ✔︎︎︎︎︎ | └➔&nbsp;`generateRecurrenceToken`           | `string`      | Token for recurring payments.
 | ✔︎︎︎︎︎ | └➔&nbsp;`urls`               | `object`      | The `urls` object, containing the URLs relevant for the payment order.
 | ✔︎︎︎︎︎ | └─➔&nbsp;`hostUrls`          | `array`       | The array of URIs valid for embedding of Swedbank Pay Hosted Views.
 | ✔︎︎︎︎︎ | └─➔&nbsp;`completeUrl`       | `string`      | The URI to redirect the payer to once the payment is completed.
@@ -314,6 +320,22 @@ Content-Type: application/json
 | ✔︎︎︎︎︎ | └─➔&nbsp;`vatPercent`          | `integer`      | The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.
 | ✔︎︎︎︎︎ | └─➔&nbsp;`amount`              | `integer`      | The total amount including VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `500`0 equals `50.00 NOK`.
 | ✔︎︎︎︎︎ | └─➔&nbsp;`vatAmount`           | `integer`      | The total amount of VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `500`0 equals `50.00 NOK`.
+|   | └➔&nbsp;`riskIndicator`           | `array`       | This **optional** array consist of information that helps verifying the payer. 
+|  | └─➔&nbsp;`deliveryEmailAdress`           | `string`      | For electronic delivery, the email address to which the merchandise was delivered.
+|  | └─➔&nbsp;`deliveryTimeFrameIndicator`           | `string`      | Indicates the merchandise delivery timeframe. <br>01 (Electronic Delivery) <br>02 (Same day shipping) <br>03 (Overnight shipping) <br>04 (Two-day or more shipping)
+|  | └─➔&nbsp;`preOrderDate`           | `string`      | For a pre-ordered purchase. The expected date that the merchandise will be available. <br>FORMAT: "YYYYMMDD"
+|  | └─➔&nbsp;`preOrderPurchaseIndicator`           | `string`      | Indicates whether Cardholder is placing an order for merchandise with a future availability or release date. <br>01 (Merchandise available) <br>02 (Future availability)
+|  | └─➔&nbsp;`shipIndicator`           | `string`      | Indicates shipping method chosen for the transaction. <br> 01 (Ship to cardholder's billing address) <br>02 (Ship to another verified address on file with merchant)<br>03 (Ship to address that is different than cardholder's billing address)<br> 04 (Ship to Store / Pick-up at local store. Store address shall be populated in shipping address fields)<br> 05 (Digital goods, includes online services, electronic giftcards and redemption codes) <br>06 (Travel and Event tickets, not shipped) <br>07 (Other, e.g. gaming, digital service)
+|  | └─➔&nbsp;`giftCardPurchase`           | `boolean`      | true if this is a purchase of a gift card.
+|  | └─➔&nbsp;`reOrderPurchaseIndicator`           | `string`      | Indicates whether Cardholder is placing an order for merchandise with a future availability or release date. <br>01 (Merchandise available) <br>02 (Future availability)
+|  | └➔&nbsp;`pickUpAddress`           | `object`      | If shipIndicator set to 4, then prefil this.
+|  | └─➔&nbsp;`name`           | `string`      | If shipIndicator set to 4, then prefil this.
+|  | └─➔&nbsp;`streetAddress`           | `string`      | If shipIndicator set to 4, then prefil this.
+|  | └─➔&nbsp;`coAddress`           | `string`      | If shipIndicator set to 4, then prefil this.
+|  | └─➔&nbsp;`city`           | `string`      | If shipIndicator set to 4, then prefil this.
+|  | └─➔&nbsp;`zipCode`           | `string`      | If shipIndicator set to 4, then prefil this.
+|  | └─➔&nbsp;`countryCode`           | `string`      | If shipIndicator set to 4, then prefil this.
+
 
 The response back should look something like this (abbreviated for brevity):
 
@@ -340,8 +362,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property       | Type     |  Description |
-|:---------------|----------|:-------------|
+| **Property**       | **Type**     |  **Description** |
 | `paymentorder` | `object` | The payment order object.|
 | └➔&nbsp;`id`   | `string` | The relative URI to the payment order.|
 | `operations`   | `array`  | The array of possible operations to perform, given the state of the payment order.
