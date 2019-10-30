@@ -471,18 +471,11 @@ through Swedbank Pay' integration validation procedure.
   fixed.
 
 [https]: /#connection-and-protocol
-[payment-order]: #
-[initiate-consumer-session]: #
-[view-consumer-identification]: #
 [msisdn]: https://en.wikipedia.org/wiki/MSISDN
 [payee-reference]: #
-[consumer-events]: #
-[payment-menu-styling]: #
 [payment-order-operations]: #
-[transactions]: #
 [guest-payments]: #
 [callback]: #
 [payment-menu-back-end]: #
 [payment-menu-front-end]: #
 [problems]: #
-[callback]: #

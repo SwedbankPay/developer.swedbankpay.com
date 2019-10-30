@@ -153,7 +153,7 @@ Checkin will be hosted in. When this is set up, something along the
 following should appear:
 
 
-[[image:Consumer.PNG||alt="Consumer UI"]]
+![Consumer UI][consumer-image]
 
 As you can see, the payer's information is pre-filled as provided by the
 initial `POST`. When the payer completes the checkin, the events
@@ -441,19 +441,17 @@ functions. You can also invoke `.refresh()` to
 order.
 
 
-  [1551693185782-957.png]: /assets/img/1551693185782-957.png
-  {:width="458px" :height="629px"}
-  [https]: /#connection-and-protocol
-  [payment-order]: #
-  [initiate-consumer-session]: #
-  [view-consumer-identification]: #
-  [capture-operation]: /checkout/after-payment/#capture
-  [msisdn]: https://en.wikipedia.org/wiki/MSISDN
-  [payee-reference]: #
-  [consumer-events]: #
-  [payment-menu-styling]: #
-  [payment-order-operations]: #
-  [transactions]: #
-  [guest-payments]: #
-  [callback]: #
+[1551693185782-957.png]: /assets/img/1551693185782-957.png
+{:width="458px" :height="629px"}
+[consumer-image]: /assets/img/Consumer.PNG
+
+[payment-order]: #
+[initiate-consumer-session]: #
+[view-consumer-identification]: #
+[capture-operation]: /checkout/after-payment/#capture
+[msisdn]: https://en.wikipedia.org/wiki/MSISDN
+[payee-reference]: #
+[consumer-events]: #
+[payment-menu-styling]: #
+[payment-order-operations]: #
 
