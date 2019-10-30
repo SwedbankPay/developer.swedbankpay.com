@@ -55,7 +55,7 @@ The API requests are displayed in the [purchase flow](#purchase-flow). The optio
 All valid options when posting in a payment with se, are described in the [technical reference][technical-reference].
 
 #### Type of authorization - Intent
-* *PreAuthorization*: A purchase with PreAuthorization intent is handled in a similar manner as the ordinary authorization procedure. The notable difference is that the funds are put on hold for 30 days (for an ordinary authorization the funds are reserved for 7 days). Also, with a PreAuthorization, the captured amount can be higher than the preauthorized amount. The amount captured should not be higher than 20% of the original amount, due to card brand rules. You complete the purchase by [finalizing-the-transaction][finalizing the transaction].
+* *PreAuthorization*: A purchase with PreAuthorization intent is handled in a similar manner as the ordinary authorization procedure. The notable difference is that the funds are put on hold for 30 days (for an ordinary authorization the funds are reserved for 7 days). Also, with a PreAuthorization, the captured amount can be higher than the preauthorized amount. The amount captured should not be higher than 20% of the original amount, due to card brand rules. You complete the purchase by [finalizing the transaction][finalizing-the-transaction].
 * *Authorization (two-phase)*: If you want the credit card to reserve the amount, you will have to specify that the intent of the purchase is Authorization. The amount will be reserved but not charged. You will later (i.e. when you are ready to ship the purchased products) have to make a [Capture] or [Cancel] request.
 
 #### General
@@ -149,47 +149,12 @@ sequenceDiagram
 {:height="711px" width="400px"}
 [redirect-image]: /assets/img/creditcard-image-3.png
 {:height="711px" width="400px"}
-[abort-a-payment]: #
-[abort]: /payments/credit-card/after-payment
-[approved-legal-address]: #
-[before-you-finalize-the-transaction]: /payments/credit-card/after-payment
 [callback-API-description]: #
 [callback-api]: #
-[callback-request]: /payments/credit-card/after-payment
-[callback-url]: #
 [CallbackURL]: #
 [Cancel]: /payments/credit-card/after-after-payment
 [Capture]: /payments/credit-card/after-after-payment
-[card-payment-pages]: #
-[card-verification]: #
-[card]: #
-[Credit Card API]: #
-[credit-card-auth-direct]: #
-[credit-card]: #
-[creditcard]: #
-[delete-payment-token]: #
-[direct-authorization-reference]: #
-[expanding]: #
-[finalize-request]: /payments/credit-card/after-payment
 [finalizing-the-transaction]: /payments/credit-card/after-after-payment
-[financing invoice]: #
-[get-payment-response]: payments/credit-card/payments
-[hosted-view]: /..
-[invoice-payments]: #
-[invoice]: #
-[no-png]: /assets/img/no.png
-[one-click-card-payment]: #
-[one-click-payments]: #
-[PCI-link]: https://www.pcisecuritystandards.org/
-[purchace-operation-link]: #
-[purchase-payment]: #
-[recurring-card-payment]: #
-[recurring-payment]: #
-[recurring-server-to-server-based-payments]: #
 [redirect]: #
-[remove-payment-token]: #
 [see-the-PATCH-payment-description]: /payments/credit-card/after-payment
-[setup-mail]: mailto:setup.ecom@PayEx.com
 [technical-reference]: #
-[Verification flow]: #
-[verify-payment]: #

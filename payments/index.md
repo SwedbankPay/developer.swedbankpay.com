@@ -113,6 +113,7 @@ Operations
     ]
 }
 ```
+
 To intregrate the payment page script, you need to prepare you front end:
 
 1. You need to create a container that will contain  the Hosted View iframe:  `<div id="payex-hosted-payment-page">`.
@@ -122,6 +123,7 @@ To intregrate the payment page script, you need to prepare you front end:
 <script id="paymentPageScript" src="https://ecom.stage.payex.com/swish/core/scripts/client/px.swish.client.js?
                                     token=bcff0db777d5bcf21a210235342921f46da993efa5e91340f713c8cedf4aac38"></script>
 ```
+
 3. Lastly, you must initiate the Hosted View with a JavaScript call to open the Hosted View iframe embedded on you site.
 
 ```HTML
@@ -130,6 +132,7 @@ JavaScript Call
     payex.hostedView.page(configuration).open();
 </script>
 ```
+
 See the technical overview of each payment method and the technical reference for more specific information.
 
 ### Redirect implementation
@@ -166,6 +169,7 @@ The combination of properties should be similar to all payment methods. In the e
     ]
 }
 ```
+
 See the technical overview of each payment method and the technical reference for more specific information.
 
 ## The Payment Process

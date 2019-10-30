@@ -64,15 +64,15 @@ All invoice error types will have the following URI in front of type: `https://a
 
 {:.table .table-striped}
 | **Type** | **Status** | 
-| `externalerror` | 500 | No error code
-| `inputerror` | 400 | 10 - ValidationWarning
-| `inputerror` | 400 | 30 - ValidationError
-| `inputerror` | 400 | 3010 - ClientRequestInvalid
-| `externalerror` | 502 | 40 - Error
-| `externalerror` | 502 | 60 - SystemError
-| `externalerror` | 502 | 50 - SystemConfigurationError
-| `externalerror` | 502 | 9999 - ServerOtherServer
-| `forbidden` | 403 | Any other error code
+| *externalerror* | 500 | No error code
+| *inputerror* | 400 | 10 - ValidationWarning
+| *inputerror* | 400 | 30 - ValidationError
+| *inputerror* | 400 | 3010 - ClientRequestInvalid
+| *externalerror* | 502 | 40 - Error
+| *externalerror* | 502 | 60 - SystemError
+| *externalerror* | 502 | 50 - SystemConfigurationError
+| *externalerror* | 502 | 9999 - ServerOtherServer
+| *forbidden* | 403 | Any other error code
 
 {% include payment-menu-styling.md %}
 
@@ -80,9 +80,9 @@ All invoice error types will have the following URI in front of type: `https://a
 
 {% include payment-link.md %}
 
+[callback-api]: #
+[callback-url]: #
 [fi-png]: /assets/img/fi.png
 [invoice-flow]: /payments/invoice/index/#invoice-flow
-[technical-reference]: #
-[callback-url]: #
-[callback-api]: #
 [technical-reference-problem-details]: #
+[technical-reference]: #

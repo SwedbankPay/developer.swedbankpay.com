@@ -40,11 +40,11 @@ sidebar:
 All valid options when posting a payment with operation equal to FinancingConsumer, are described in [the technical reference][technical-reference].
 
 {:.table .table-striped}
-| **POST Request** |	**Sweden** ![Swedish flag][se-png] |	**Norway** ![Norwegian flag][no-png] |	**FInland** ![Finish flag][fi-png] |
-| **Operation** |	FinancingConsumer	| FinancingConsumer |	FinancingConsumer |
-| **Intent** |	Authorization |	Authorization |	Authorization |
-| **Currency** |	SEK |	NOK |	EUR |
-| **InvoiceType** |	PayExFinancingSE |	PayExFinancingNO |	PayExFinancingFI |
+| *POST Request* |	**Sweden** ![Swedish flag][se-png] |	**Norway** ![Norwegian flag][no-png] |	**FInland** ![Finish flag][fi-png] |
+| *Operation* |	FinancingConsumer	| FinancingConsumer |	FinancingConsumer |
+| *Intent* |	Authorization |	Authorization |	Authorization |
+| *Currency* |	SEK |	NOK |	EUR |
+| *InvoiceType* |	PayExFinancingSE |	PayExFinancingNO |	PayExFinancingFI |
 
 *   An invoice payment is always two-phased based - you create an Authorize transaction, that is followed by a Capture or Cancel request.
 *   **Defining CallbackURL**: When implementing a scenario, it is optional to set a [CallbackURL ][callback-url]in the `POST` request. If callbackURL is set PayEx will send a postback request to this URL when the consumer has fulfilled the payment. [See the Callback API description here.][callback-api]
@@ -80,6 +80,6 @@ sequenceDiagram
 Head over to [after payment][after-payment] to see what you can do when a payment is completed.  
 Here you will also find info on `Capture`, `Cancel`, and `Reversal`.
 
-[se-png]: /assets/img/se.png
-[no-png]: /assets/img/no.png
 [after-payment]: /payments/invoice/after-payment
+[no-png]: /assets/img/no.png
+[se-png]: /assets/img/se.png

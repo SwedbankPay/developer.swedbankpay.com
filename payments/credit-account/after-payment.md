@@ -131,9 +131,5 @@ Content-Type: application/json
 |capture.id|string|The relative URI of the created capture transaction.
 |capture.transaction|object|The object representation of the generic [transaction resource][transaction-resource]
 
-
-
-
-
 [payee-reference]: #
 [transaction-resource]: #

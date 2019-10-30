@@ -123,9 +123,9 @@ sequenceDiagram
   Deactivate Merchant
 ```
 
-[technical-reference]: #
-[technical-reference-callback]: #
-[swish-payments]: #
 [create-payment]: #
-[sales-transaction]: #
 [payex-admin-portal]: #
+[sales-transaction]: #
+[swish-payments]: #
+[technical-reference-callback]: #
+[technical-reference]: #

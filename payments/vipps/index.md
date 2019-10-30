@@ -237,9 +237,9 @@ When a payment resource is created and during its lifetime, it will have a set o
 
 {:.table .table-striped}
 | **Property** | **Description** |
-| href | The target URI to perform the operation against. |
-| rel | The name of the relation the operation has to the current resource. |
-| method | The HTTP method to use when performing the operation. |
+| *href* | The target URI to perform the operation against. |
+| *rel* | The name of the relation the operation has to the current resource. |
+| *method* | The HTTP method to use when performing the operation. |
 
 The operations should be performed as described in each response and not as described here in the documentation. Always use the href and method as specified in the response by finding the appropriate operation based on its rel value. The only thing that should be hard coded in the client is the value of the rel and the request that will be sent in the HTTP body of the request for the given operation.
 
@@ -727,27 +727,12 @@ Content-Type: application/json
 
 When a change or update from the back-end system are made on a payment or transaction, PayEx will perform a callback to inform the payee (merchant) about this update. Callback functionality is explaned in more detail [here][callback].
 
-[payment-resource]: #payment-resource
-[create-payment]: #create-payment
-[purchase]: #purchase
-[operations]: #operations
-[vipps-transactions]: #vipps-transactions
-[authorizations]: #authorizations
-[captures]: #captures
-[create-capture-transaction]: #create-capture-transaction
-[cancellations]: #cancellations
-[create-cancellation-transaction]: #create-cancellation-transaction
-[reversals]: #reversals
-[create-reversal-transaction]: #create-reversal-transaction
+[abort]: #
 [callback]: #callback
 [core-payments-resources]: #
 [expand]: #
 [general-information]: #
-[see-user-agent-definition]: https://en.wikipedia.org/wiki/User_agent
-[callback]: #
-[payeeReference]: #
 [general-transaction-resource]: #
-[abort]: #
-[transaction-resource]: #
 [payeeReference]: #
-[error-handling-and-problem-details]: #
+[see-user-agent-definition]: https://en.wikipedia.org/wiki/User_agent
+[transaction-resource]: #
