@@ -1,5 +1,5 @@
 ---
-title: Swedbank Pay Payments Credit Card
+title: Swedbank Pay Payments Credit Card Seamless View
 sidebar:
   navigation:
   - title: Payments
@@ -10,6 +10,10 @@ sidebar:
       title: Credit Account Payments
     - url: /payments/credit-card
       title: Credit Card Payments
+    - url: /payments/credit-card/redirect
+      title: Credit Card Redirect
+    - url: /payments/credit-card/seamless-view
+      title: Credit Card Seamless View
     - url: /payments/credit-card/after-payment
       title: Credit Card After Payments
     - url: /payments/credit-card/other-features
@@ -46,7 +50,7 @@ Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 ```
 
-{.:code-header}
+{:.code-header}
 **Response**
 
 ```HTTP
@@ -89,7 +93,9 @@ Content-Type: application/json
 #### Create capture transaction
 To create a capture transaction to withdraw money from the payer's card, you need to perform the create-capture operation.
 
-***Request***
+{:.code-header}
+**Request**
+
 ```HTTP
 POST /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures HTTP/1.1
 Host: api.payex.com
@@ -106,16 +112,17 @@ Content-Type: application/json
 }
 ```
 
-***Properties***
+
 
 {:.table .table-striped}
-| Property | Data type | Required | Description
+| **Property** | **Data type** | **Required** | **Description**
 | transaction.amount | integer |Y|Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 100.00 NOK, 5000 50.00 SEK.
 | transaction.vatAmount | integer |Y|Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 100.00 NOK, 5000 50.00 SEK.
 | transaction.description | string |Y|A textual description of the capture transaction.
 | transaction.payeeReference | string(30*) |Y|A unique reference for the capture transaction. See [payeeReference][payeeReference] for details.
 
-***Response***
+{:.code-header}
+**Response**
 
 ```HTTP
 HTTP/1.1 200 OK
@@ -143,10 +150,9 @@ Content-Type: application/json
 }
 ```
 
-***Properties***
 
 {:.table .table-striped}
-| Property | Data type | Description
+| **Property** | **Data type** | **Description**
 | payment | string |The relative URI of the payment this capture transaction belongs to.
 | capture.id | string | The relative URI of the created capture transaction.
 | capture.transaction | object |The object representation of the generic [transaction resource][transaction-resource].
@@ -169,7 +175,8 @@ sequenceDiagram
 
 The `cancellations` resource lists the cancellation transactions on a specific payment.
 
-***Request***
+{:.code-header}
+**Request**
 
 ```HTTP
 GET /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/cancellations HTTP/1.1
@@ -178,7 +185,8 @@ Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 ```
 
-***Response***
+{:.code-header}
+**Response**
 
 ```HTTP
 HTTP/1.1 200 OK
@@ -210,10 +218,9 @@ Content-Type: application/json
 }
 ```
 
-***Properties***
 
 {:.table .table-striped}
-| Property | Data type | Description
+| **Property** | **Data type** | **Description**
 | payment | string |The relative URI of the payment this list of cancellation transactions belong to.
 | cancellations.id | string | The relative URI of the current `cancellations` resource.
 | cancellations.cancellationList | array | The array of the cancellation transaction objects.
@@ -223,7 +230,8 @@ Content-Type: application/json
 
 Perform the `create-cancel` operation to cancel a previously created - and not yet captured - payment.
 
-***Request***
+{:.code-header}
+**Request**
 
 ```HTTP
 POST /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/cancellations HTTP/1.1
@@ -239,16 +247,16 @@ Content-Type: application/json
 }
 ```
 
-***Properties***
 
 {:.table .table-striped}
-| Property | Data type | Required | Description
+| **Property** | **Data type** | **Required** | **Description**
 | transaction.description | string | Y | A textual description of the reason for the cancellation.
 | transaction.payeeReference | string(30*) | Y | A unique reference for the cancellation transaction. See [payeeReference][payeeReference] for details.
 
 The `cancel` resource contains information about a cancellation transaction made against a payment.
 
-***Response***
+{:.code-header}
+**Response**
 
 ```HTTP
 HTTP/1.1 200 OK
@@ -277,10 +285,9 @@ Content-Type: application/json
 }
 ```
 
-***Properties***
 
 {:.table .table-striped}
-| Property | Data type | Description
+| **Property** | **Data type** | **Description**
 | payment | string | The relative URI of the payment this cancellation transaction belongs to.
 | cancellation.id | string | The relative URI of the current cancellation transaction resource.
 | cancellation.transaction | object | The object representation of the generic [transaction resource][transaction-resource].
@@ -303,7 +310,8 @@ sequenceDiagram
 
 The `reversals` resource lists the reversal transactions (one or more) on a specific payment.
 
-***Request***
+{:.code-header}
+**Request**
 
 ```HTTP
 GET /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals HTTP/1.1
@@ -312,7 +320,8 @@ Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 ```
 
-***Response***
+{:.code-header}
+**Response**
 
 ```HTTP
 HTTP/1.1 200 OK
@@ -344,10 +353,9 @@ Content-Type: application/json
 }
 ```
 
-***Properties***
 
 {:.table .table-striped}
-| Property | Type | Description
+| **Property** | **Type** | **Description**
 | payment | string | The relative URI of the payment that the reversal transactions belong to.
 | id | string | The relative URI of the created reversal transaction.
 | reversalList | array | The array of reversal transaction objects.
@@ -357,7 +365,8 @@ Content-Type: application/json
 
 The `create-reversal` operation will reverse a previously captured payment.
 
-***Request***
+{:.code-header}
+**Request**
 
 ```HTTP
 POST /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals HTTP/1.1
@@ -375,10 +384,9 @@ Content-Type: application/json
 }
 ```
 
-***Properties***
 
 {:.table .table-striped}
-| Property | Data type | Required | Description
+| **Property** | **Data type** | **Required** | **Description**
 | transaction.amount | integer | Y | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.
 | transaction.vatAmount | integer | Y | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.
 | transaction.description | string | Y | A textual description of the capture
@@ -386,7 +394,8 @@ Content-Type: application/json
 
 The `reversal` resource contains information about the newly created reversal transaction.
 
-***Response***
+{:.code-header}
+**Response**
 
 ```HTTP
 HTTP/1.1 200 OK
@@ -415,10 +424,9 @@ Content-Type: application/json
 }
 ```
 
-***Properties***
 
 {:.table .table-striped}
-| Property | Data type | Description
+| **Property** | **Data type** | **Description**
 | payment | string | The relative URI of the payment this reversal transaction belongs to.
 | reversal.id | string | The relative URI of the created reversal transaction.
 | reversal.transaction | object | The object representation of the generic [transaction resource][transaction-resource].
@@ -443,7 +451,8 @@ If you, for any reason, need to delete a paymentToken you use the `Delete paymen
 
 >Please note that this call does not erase the card number stored at PayEx. A card number is automatically deleted six months after a successful `Delete payment token` request. If you want to remove card information beforehand, you need to contact support.ecom@payex.com; and supply them with the relevant transaction reference or payment token.
 
-***Request***
+{:.code-header}
+**Request**
 
 ```HTTP
 PATCH /psp/creditcard/payments/instrumentData/<paymentToken> HTTP/1.1
@@ -457,6 +466,7 @@ Content-Type: application/json
   "comment": "Comment on why the deletion is happening"
 }
 ```
+
 {:.code-header}
 **Response**
 

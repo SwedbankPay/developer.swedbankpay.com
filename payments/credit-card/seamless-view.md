@@ -10,6 +10,10 @@ sidebar:
       title: Credit Account Payments
     - url: /payments/credit-card
       title: Credit Card Payments
+    - url: /payments/credit-card/redirect
+      title: Credit Card Redirect
+    - url: /payments/credit-card/seamless-view
+      title: Credit Card Seamless View
     - url: /payments/credit-card/after-payment
       title: Credit Card After Payments
     - url: /payments/credit-card/other-features
