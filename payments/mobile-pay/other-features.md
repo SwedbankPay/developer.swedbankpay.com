@@ -92,7 +92,7 @@ sequenceDiagram
 
 {% include payment-menu-styling.md %}
 
-{% include settlement-reconcilliation.md %}
+{% include settlement-reconciliation.md %}
 
 {% include one-click-payments.md %}
 

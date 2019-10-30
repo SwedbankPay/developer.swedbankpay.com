@@ -76,7 +76,7 @@ All invoice error types will have the following URI in front of type: `https://a
 
 {% include payment-menu-styling.md %}
 
-{% include settlement-reconcilliation.md %}
+{% include settlement-reconciliation.md %}
 
 {% include payment-link.md %}
 
