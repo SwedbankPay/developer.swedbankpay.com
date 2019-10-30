@@ -214,6 +214,7 @@ Content-Type: application/json
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",
+        "generateRecurrenceToken": true
         "urls": {
             "hostUrls": ["https://example.com", "https://example.net"],
             "completeUrl": "https://example.com/payment-completed",
@@ -230,9 +231,12 @@ Content-Type: application/json
             "orderReference" : "or-123456"
         },
         "payer": {
-            "consumerProfileRef": "7d5788219e5bc43350e75ac633e0480ab30ad20f96797a12b96e54da869714c4"
-        },
+            "email": "{{consumerEmail}}",
+            "msisdn": "{{msisdn}}",
+            "workPhoneNumber" : "",  
+            "homePhoneNumber" : ""   
         "orderItems": [
+        },
             {
                 "reference": "P1",
                 "name": "Product1",
