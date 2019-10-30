@@ -145,11 +145,12 @@ sequenceDiagram
 * If you did a PreAuthorization, you will have to send a Finalize to the transaction using [PATCH on the Authorization][finalizing-the-transaction].
 * **Callback from PayEx:** Whenever changes to the payment occur a [Callback request][callback-request] will be posted to the `callbackUrl`, generated when the payment was created.
 
-[Capture]: /payments/credit-card/after-after-payment
-[Cancel]: /payments/credit-card/after-after-payment
-[finalize-request]: /payments/credit-card/after-payment
-[CallbackURL]: #
-[callback-API-description]: #
 [abort]: /payments/credit-card/after-payment
-[finalizing-the-transaction]: /payments/credit-card/after-after-payment
+[callback-API-description]: #
 [callback-request]: /payments/credit-card/after-payment
+[CallbackURL]: #
+[Cancel]: /payments/credit-card/after-after-payment
+[Capture]: /payments/credit-card/after-after-payment
+[finalize-request]: /payments/credit-card/after-payment
+[finalizing-the-transaction]: /payments/credit-card/after-after-payment
+[PCI-link]: https://www.pcisecuritystandards.org/

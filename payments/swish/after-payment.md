@@ -45,7 +45,8 @@ To create a Swish payment, you perform an HTTP ##POST## against the ##/psp/swish
 
 An example of a payment creation request is provided below. Each individual Property of the JSON document is described in the following section. Use the [expand][technical-reference-expand] request parameter to get a response that includes one or more expanded sub-resources inlined.
 
-***Request***
+{:.code-header}
+**Request**
 
 ```HTTP
 POST /psp/swish/payments HTTP/1.1
@@ -93,8 +94,6 @@ Content-Type: application/json
 }
 ```
 
-**Properties**
-
 {:.table .table-striped}
 | Property| Data type| Required| Description
 | payment.operation | string | ✔︎ | `Purchase`
@@ -122,8 +121,8 @@ Content-Type: application/json
 | payment.prefillInfo.msisdn | string | N |Number will be prefilled on payment page, if valid.
 | payment.swish.ecomOnlyEnabled | boolean | N |If true you trigger the redirect payment scenario by default.
  
-
-***Response***
+{:.code-header}
+**Response**
 
 ```HTTP
 HTTP/1.1 200 OK
@@ -172,7 +171,8 @@ Content-Type: application/json
 
 A payment resource has a set of operations that can be performed on it, from its creation to its completion. The operations available at any given time vary between payment methods and depends on the current state of the payment resource. A list of possible operations for Swish Payments and their explanation is given below.
 
-***Operations***
+{:.code-header}
+**Operations**
 
 ```JS
 {
@@ -202,8 +202,6 @@ A payment resource has a set of operations that can be performed on it, from its
 }
 ```
 
-**Properties**
-
 {:.table .table-striped}
 | Property| Description
 | href |The target URI to perform the operation against.
@@ -227,7 +225,8 @@ All card specific transactions are described below. Read more about the general 
 
 The `Sales` resource lists the sales transactions (one or more) on a specific payment.
 
-***Request***
+{:.code-header}
+**Request**
 
 ```HTTP
 GET /psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/sales HTTP/1.1
@@ -236,7 +235,8 @@ Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 ```
 
-***Response***
+{:.code-header}
+**Response**
 
 ```HTTP
 HTTP/1.1 200 OK
@@ -278,7 +278,9 @@ Content-Type: application/json
 
 In e-commerce the consumer/end-user's `msisdn`(mobile number) is required. This is managed either by sending a `POST` request as seen below, or by redirecting the end-user to the hosted payment pages. The `msisdn` is only required for e-commerce. In the m-commerce flow, the consumer uses the device that hosts the Swish app to manage the purchase, making `msisdn` unneccessary.
 
-***e-commerce Request***
+{:.code-header}
+**e-commerce Request**
+
 ```HTTP
 POST /psp/swish/payments/<paymentId>/sales HTTP/1.1
 Host: api.payex.com
@@ -292,7 +294,8 @@ Content-Type: application/json
 }
 ``` 
 
-***e-commerce Response***
+{:.code-header}
+**e-commerce Response**
 
 ```HTTP
 HTTP/1.1 200 OK
@@ -321,8 +324,8 @@ Content-Type: application/json
     }
 }
 ```
-
-***m-commerce Request***
+{:.code-header}
+**m-commerce Request**
 
 ```HTTP
 POST /psp/swish/payments/<paymentId>/sales HTTP/1.1
@@ -336,7 +339,8 @@ Content-Type: application/json
 }
 ```
 
-***m-commerce Response***
+{:.code-header}
+**m-commerce Response**
 
 ```HTTP
 HTTP/1.1 200 OK
@@ -381,7 +385,8 @@ The payment now contains a sale transaction with the status (state) `AwaitingAct
 
 The `Reversals` resource list the reversals transactions (one or more) on a specific payment.
 
-***Request***
+{:.code-header}
+**Request**
 
 ```HTTP
 GET /psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals HTTP/1.1
@@ -390,7 +395,8 @@ Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 ```
 
-***Response***
+{:.code-header}
+**Response**
 
 ```HTTP
 HTTP/1.1 200 OK
@@ -423,8 +429,6 @@ Content-Type: application/json
 }
 ```
 
-**Properties**
-
 {:.table .table-striped}
 | Property| Type| Description
 | payment | string |The relative URI of the payment that the reversal transactions belong to.
@@ -435,7 +439,8 @@ Content-Type: application/json
 
 You can create a reversal transaction against a completed sales transaction by adding that transaction's ##payeeReference## in the request body.  A callback request will follow from PayEx. 
 
-***Request***
+{:.code-header}
+**Request**
 
 ```HTTP
 POST /psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals HTTP/1.1
@@ -453,8 +458,6 @@ Content-Type: application/json
 }
 ```
 
-**Properties**
-
 {:.table .table-striped}
 | Property| Data type| Required| Description
 | transaction.amount | integer |Y|Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 SEK, 5000 = 50.00 SEK.
@@ -462,7 +465,8 @@ Content-Type: application/json
 | transaction.description | string |Y|A textual description of the capture
 | transaction.payeeReference | string(35) |Y|A  reference that must match the  `payeeReference` of the sales transaction you want to reverse. See [payeeReference][technical-reference-payeeReference] for details.
 
-***Response***
+{:.code-header}
+**Response**
 
 ```HTTP
 HTTP/1.1 200 OK
@@ -489,8 +493,6 @@ Content-Type: application/json
     }
 }
 ```
-
-**Properties**
 
 {:.table .table-striped}
 | Property| Data type| Description
@@ -534,29 +536,29 @@ All Swish error types will have the following URI in front of type: `https://api
 
 {:.table .table-striped}
 | Type| Status| **Error code**| **Details**
-| externalerror | 500 | No error code | 
-| inputerror | 400 | FF08 | Input validation failed (PayeeReference) 
-| inputerror | 400 | BE18 | Input validation failed (Msisdn) 
-| inputerror | 400 | PA02 | Input validation failed (Amount) 
-| inputerror | 400 | AM06 | Input validation failed (Amount) 
-| inputerror | 400 | AM02 | Input validation failed (Amount)
-| inputerror | 400 | AM03 | Input validation failed (Currency) 
-| inputerror |500|RP02|Input validation failed (Description)
-| configurationerror | 403 | RP01 | Configuration of contract is not correct, or missing settings
-| configurationerror | 403 | ACMT07 | Configuration of contract is not correct, or missing settings 
-| systemerror | 500 | RP03 | Unable to complete operation (Invalid callback url) 
-| swishdeclined | 403 | RP06 | Third party returned error (Duplicate swish payment request) 
-| swishdeclined | 403 | ACMT03 | Third party returned error (Swish msisdn not enrolled)
-| swishdeclined | 403 | ACMT01 | Third party returned error (Swish msisdn not enrolled)
-| swishdeclined | 403 | RF02 | Third party returned error (Reversal declined due to Sale transaction being over 13 months old)
-| swishdeclined | 403 | RF04 | Third party returned error (Msisdn has changed owner (organization) between sale and reversal)
-| swishdeclined | 403 | RF06 | Third party returned error (Msisdn has changed owener (SSN) between sale and reversal)
-| swishdeclined | 403 | RF07 | Third party returned error (Swish rejected transaction)
-| swishdeclined | 403 | FF10 | Third party returned error (Bank rejected transaction)
-| usercancelled | 403 | BANKIDCL | Cancelled by user 
-| swishdeclined | 403 | TM01 | Payment timed out (User din't confirm payment in app)
-| swishdeclined | 403 | DS24| Payment timed out (Bank didn't respond).
-| systemerror | 500 | Any other error code |  
+| *externalerror* | 500 | No error code | 
+| *inputerror* | 400 | FF08 | Input validation failed (PayeeReference) 
+| *inputerror* | 400 | BE18 | Input validation failed (Msisdn) 
+| *inputerror* | 400 | PA02 | Input validation failed (Amount) 
+| *inputerror* | 400 | AM06 | Input validation failed (Amount) 
+| *inputerror* | 400 | AM02 | Input validation failed (Amount)
+| *inputerror* | 400 | AM03 | Input validation failed (Currency) 
+| *inputerror* |500|RP02|Input validation failed (Description)
+| *configurationerror* | 403 | RP01 | Configuration of contract is not correct, or missing settings
+| *configurationerror* | 403 | ACMT07 | Configuration of contract is not correct, or missing settings 
+| *systemerror* | 500 | RP03 | Unable to complete operation (Invalid callback url) 
+| *swishdeclined* | 403 | RP06 | Third party returned error (Duplicate swish payment request) 
+| *swishdeclined* | 403 | ACMT03 | Third party returned error (Swish msisdn not enrolled)
+| *swishdeclined* | 403 | ACMT01 | Third party returned error (Swish msisdn not enrolled)
+| *swishdeclined* | 403 | RF02 | Third party returned error (Reversal declined due to Sale transaction being over 13 months old)
+| *swishdeclined* | 403 | RF04 | Third party returned error (Msisdn has changed owner (organization) between sale and reversal)
+| *swishdeclined* | 403 | RF06 | Third party returned error (Msisdn has changed owener (SSN) between sale and reversal)
+| *swishdeclined* | 403 | RF07 | Third party returned error (Swish rejected transaction)
+| *swishdeclined* | 403 | FF10 | Third party returned error (Bank rejected transaction)
+| *usercancelled* | 403 | BANKIDCL | Cancelled by user 
+| *swishdeclined* | 403 | TM01 | Payment timed out (User din't confirm payment in app)
+| *swishdeclined* | 403 | DS24| Payment timed out (Bank didn't respond).
+| *systemerror* | 500 | Any other error code |  
 
 
 ## Options after posting a payment
@@ -590,12 +592,12 @@ Swish does not support `cancel`.
 
 Swish does not support `recurring` payments.
 
-[technical-reference-callback]: #
+[core-payment-resources]: /payments
 [payex-admin-portal]: #
 [reversal-reference]: #
-[technical-reference-problemmessages]: #
+[technical-reference-abort]: #
+[technical-reference-callback]: #
 [technical-reference-expand]: #
 [technical-reference-payeeReference]: #
-[technical-reference-abort]: #
-[core-payment-resources]: /payments
+[technical-reference-problemmessages]: #
 [technical-reference-transaction]: #

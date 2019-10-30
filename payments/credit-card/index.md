@@ -149,7 +149,6 @@ sequenceDiagram
 * If you did a `PreAuthorization`, you will have to send a [Finalize request] to finalize the transaction.  
 * *If CallbackURL is set:* Whenever changes to the payment occur a [Callback request] will be posted to the callbackUrl, which was generated when the payment was created.  
 
-
 ## Card Payment Pages in Mobile Apps
 
 >The implementation sequence for this scenario is identical to the standard Redirect scenario, but also includes explanations of how to include this redirect in mobile apps or in mobile web pages.
@@ -166,7 +165,6 @@ sequenceDiagram
 
 For our hosted view, the URL property called paymentUrl will be used if the consumer is redirected out of the hosted view frame through our [Credit Card API]. The consumer is redirected out of frame when at the 3d secure verification for credit card payments. The URL should represent the page of where the payment hosted view was hosted originally, such as the checkout page, shopping cart page, or similar. Basically, paymentUrl should be set to the same URL as that of the page where the JavaScript for the hosted payment view was added to in order to initiate the payment. Please note that the paymentUrl must be able to invoke the same JavaScript URL from the same Payment as the one that initiated the payment originally, so it should include some sort of state identifier in the URL. The state identifier is the ID of the order, shopping cart or similar that has the URL of the Payment stored.
 
-
 With paymentUrl in place, the retry process becomes much more convenient for both the integration and the payer.
 
 ## Screenshots
@@ -178,7 +176,6 @@ You will redirect the consumer/end-user to PayEx hosted pages to collect the cre
 ## API-requests
 
 The API requests are displayed in the [purchase flow](#purchase-flow-1). The options you can choose from when creating a payment with key operation set to Value Purchase are listed below. The general REST based API model is described in the [technical reference].
-
 
 ### Options before posting a payment
 
@@ -539,8 +536,7 @@ sequenceDiagram
 
 A recurring payment enables you to charge a credit card without any consumer interaction. When an initial payment token is generated subsequent payments is made through server-to-server requests. 
 
-Prerequisites
--------------
+### Prerequisites
 
 Prior to making any server-to-server requests, you need to supply the payment instrument details and a payment token to PayEx by initial purchase or [card verification][card-verification].
 
@@ -554,8 +550,10 @@ There are two ways to initiate recurring payments procedures, depending on if yo
 
 * When posting a Purchase payment, you need to make sure that the attribute generateRecurrenceToken is set to true
 
+{:.code-header}
 **Attribute**
-```
+
+```JS
 "generateRecurrenceToken": "true"
 ```
 
@@ -575,8 +573,7 @@ The recurrence token can then be retrieved by doing a `GET` request against the 
 
 You can delete a created recurrence token with a `PATCH`\-request. Please see technical reference for details [here][remove-payment-token].
 
-Recurring purchases
--------------------
+### Recurring purchases
 
 When you have a Recurrence token stored away. You can use the same token in a subsequent [recurring payment] `POST`. This will be a server-to-server affair, as we have both payment instrument details and recurrence token from the initial payment. Please note that this POSTrequest is made directly on the payment level, and will not create a payment order.
 
@@ -603,15 +600,13 @@ This option is commonly used when initiating a subsequent [One-click card paymen
 * When you detect that the payer reach your completeUrl , you need to do a `GET` request to receive the state of the transaction.
 * Finally you will make a `GET` request towards PayEx with the paymentID received in the first step, which will return the payment result and a paymentToken that can be used for subsequent [One-Click Payments][one-click-payments] and [recurring server-to-server based payments][recurring-server-to-server-based-payments].
 
-Screenshots
------------
+### Screenshots
 
 You will redirect the consumer/end-user to PayEx hosted pages to collect the credit card information.
 
 ![Merchant implementing redirect][redirect-image]
 
-API Requests
-------------
+### API Requests
 
 The API requests are displayed in the [Verification flow]. The options you can choose from when creating a payment with key operation set to Value Verify are listed below. The general REST based API model is described in the [technical reference].
 
@@ -624,8 +619,7 @@ All valid options when posting in a payment with operation equal to `Verify`, ar
 * **No 3D Secure and card acceptance**: There are optional paramers that can be used in relation to 3d-secure and card acceptance. By default, most credit card agreements with an acquirer will require that you use 3D-Secure for card holder authentication. However, if your agreement allows you to make a card payment without this authentication, or that specific cards can be declined, you may adjust these optional parameters when posting in the payment. This is specified in the technical reference section for creating credit card payments  - you will find the link in the sequence diagram below.
 * **Defining CallbackURL**: When implementing a scenario, it is optional to set a [CallbackURL] in the `POST` request. If callbackURL is set PayEx will send a postback request to this URL when the consumer has fulfilled the payment. [See the Callback API description here][callback-request].
 
-Verification flow
------------------
+### Verification flow
 
 The sequence diagram below shows the two requests you have to send to PayEx to make a purchase. The links will take you directly to the API description for the specific request. The diagram also shows in high level, the sequence of the process of a complete purchase.  
 When dealing with credit card payments, 3D-Secure authentication of the cardholder is an essential topic. There are three alternative outcome of a credit card payment:
@@ -649,47 +643,38 @@ You find the full technical reference [here][technical-reference].
 {:height="711px" width="400px"}
 [redirect-image]: /assets/img/creditcard-image-3.png
 {:height="711px" width="400px"}
-[reditect]: #
 [finalizing-the-transaction]: /payments/credit-card/after-after-payment
-[Capture]: /payments/credit-card/after-after-payment
-[Cancel]: /payments/credit-card/after-after-payment
-[CallbackURL]: #
-[callback-API-description]: #
-[see-the-PATCH-payment-description]: /payments/credit-card/after-payment
-[finalize-request]: /payments/credit-card/after-payment
-[callback-request]: /payments/credit-card/after-payment
-[redirect]: #
-[hosted-view]: /..
-[finalize-request]: #
-[credit-Card-API]: #
-[before-you-finalize-the-transaction]: /payments/credit-card/after-payment
-[abort]: /payments/credit-card/after-payment
-[PCI-link]: https://www.pcisecuritystandards.org/
-[purchase-operation-link]: #
-[direct-authorization-reference]: #
-[get-payment-response]: payments/credit-card/payments
-[hosted-view]: #
-[expanding]: #
-[credit-card]: #
-[card]: #
-[invoice]: #
-[delete-payment-token]: #
-[card-payment-pages]: #
-[card-verification]: #
-[purchase-payment]: #
-[verify-payment]: #
-[remove-payment-token]: #
-[recurring-payment]: #
-[one-click-card-payment]: #
-[recurring-card-payment]: #
-[one-click-payments]: #
-[recurring-server-to-server-based-payments]: #
 [abort-a-payment]: #
+[abort]: /payments/credit-card/after-payment
+[before-you-finalize-the-transaction]: /payments/credit-card/after-payment
+[callback-API-description]: #
+[callback-request]: /payments/credit-card/after-payment
+[callback]: #
+[CallbackURL]: #
+[Cancel]: /payments/credit-card/after-after-payment
+[Capture]: /payments/credit-card/after-after-payment
+[card-verification]: #
+[card]: #
 [credit-card-auth-direct]: #
-[purchace-operation-link]: #
-[financing-invoice]: #
+[credit-card]: #
 [creditcard]: #
+[delete-payment-token]: #
+[direct-authorization-reference]: #
+[expanding]: #
+[finalize-request]: /payments/credit-card/after-payment
+[financing-invoice]: #
+[get-payment-response]: payments/credit-card/payments
+[hosted-view]: /..
+[invoice]: #
+[one-click-payments]: #
+[PCI-link]: https://www.pcisecuritystandards.org/
+[purchace-operation-link]: #
+[purchase-operation-link]: #
 [purchase-payment]: #
 [recurring-card-payment]: #
+[recurring-server-to-server-based-payments]: #
+[redirect]: #
+[remove-payment-token]: #
+[see-the-PATCH-payment-description]: /payments/credit-card/after-payment
 [technical-reference]: #
-[callback]: #
+[verify-payment]: #

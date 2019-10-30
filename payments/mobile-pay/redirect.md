@@ -106,9 +106,9 @@ sequenceDiagram
 
 [mobilepay-screenshot-1]: /assets/img/mobilepay-screenshot-1.png
 [mobilepay-screenshot-2]: /assets/img/mobilepay-screenshot-2.png
-[technical-reference]: #
-[technical-reference-mobilepay]: #
-[mobilepay-capture]: #
 [mobilepay-cancel]: #
-[technical-reference-callbackurl]: #
+[mobilepay-capture]: #
 [technical-reference-callback]: #
+[technical-reference-callbackurl]: #
+[technical-reference-mobilepay]: #
+[technical-reference]: #

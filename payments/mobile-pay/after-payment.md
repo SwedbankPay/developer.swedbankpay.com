@@ -50,6 +50,7 @@ The `captures` resource lists the capture transactions performed on a specific p
 
 {:.code-header}
 **Request**
+
 ```HTTP
 GET /psp/mobilepay/payments/e7919b4f-81a2-4ffb-ec40-08d617d580a2/captures HTTP/1.1
 Host: api.payex.com
@@ -59,6 +60,7 @@ Content-Type: application/json
 
 {:.code-header}
 **Response**
+
 ```HTTP
 HTTP/1.1 200 OK
 Content-Type: application/json
@@ -100,6 +102,7 @@ A `capture` transaction - to withdraw money from the payer's mobilepay - can be 
 
 {:.code-header}
 **Request**
+
 ```HTTP
 POST /psp/mobilepay/payments/e7919b4f-81a2-4ffb-ec40-08d617d580a2/captures HTTP/1.1
 Host: api.payex.com
@@ -127,6 +130,7 @@ The `capture` resource contains information about the capture transaction made a
 
 {:.code-header}
 **Response**
+
 ```HTTP
 HTTP/1.1 200 OK
 Content-Type: application/json
@@ -179,13 +183,12 @@ sequenceDiagram
   Deactivate Merchant
 ```
 
-
-
 ## Cancellations
 The `cancellations` resource lists the cancellation transactions on a specific payment.
 
 {:.code-header}
 **Request**
+
 ```HTTP
 GET /psp/mobilepay/payments/e7919b4f-81a2-4ffb-ec40-08d617d580a2/cancellations HTTP/1.1
 Host: api.payex.com
@@ -195,6 +198,7 @@ Content-Type: application/json
 
 {:.code-header}
 **Response**
+
 ```HTTP
 HTTP/1.1 200 OK
 Content-Type: application/json
@@ -239,6 +243,7 @@ Perform the `create-cancel` operation to cancel a previously created payment. Yo
 
 {:.code-header}
 **Request**
+
 ```HTTP
 POST /psp/mobilepay/payments/e7919b4f-81a2-4ffb-ec40-08d617d580a2/cancellations HTTP/1.1
 Host: api.payex.com
@@ -263,6 +268,7 @@ The `cancel` resource contains information about a cancellation transaction made
 
 {:.code-header}
 **Response**
+
 ```HTTP
 HTTP/1.1 200 OK
 Content-Type: application/json
@@ -313,6 +319,7 @@ The `reversals` resource lists the reversal transactions performed on a specific
 
 {:.code-header}
 **Request**
+
 ```HTTP
 GET /psp/mobilepay/payments/e7919b4f-81a2-4ffb-ec40-08d617d580a2/reversals HTTP/1.1
 Host: api.payex.com
@@ -322,6 +329,7 @@ Content-Type: application/json
 
 {:.code-header}
 **Response**
+
 ```HTTP
 HTTP/1.1 200 OK
 Content-Type: application/json
@@ -365,6 +373,7 @@ The `create-reversal` operation reverses a previously created and captured payme
 
 {:.code-header}
 **Request**
+
 ```HTTP
 POST /psp/mobilepay/payments/e7919b4f-81a2-4ffb-ec40-08d617d580a2/reversals HTTP/1.1
 Host: api.payex.com
@@ -393,6 +402,7 @@ The `reversal` resource contains information about a reversal transaction made a
 
 {:.code-header}
 **Response**
+
 ```HTTP
 HTTP/1.1 200 OK
 Content-Type: application/json
@@ -440,15 +450,10 @@ sequenceDiagram
 ```
 
 
-
-[credit-card-capture]: #
-[credit-card-cancel]: #
-[credit-card-reversal]: #
-[mobilepay-capture]: #
-[payee-reference]: #
-[transaction-resource]: #
 [mobilepay-cancel]: #
+[mobilepay-capture]: #
 [mobilepay-reversal]: #
+[payee-reference]: #
 [technical-reference-abort]: #
 [technical-reference-callback]: #
-[technical-reference-card-payments]: #
+[transaction-resource]: #

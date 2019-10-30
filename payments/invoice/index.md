@@ -268,27 +268,25 @@ sequenceDiagram
 
 ---------------------------------------------------------------
 
-[technical-reference]: #
-[callback-url]: #
-[callback-api]: #
-[invoice-payments]: #
-[see-the-PATCH-payment-description]: /payments/credit-card/after-payment
-[callback-request]: #
-[invoice-captures]: #
-[cancel]:#
-[invoice-cancellations]: #
-[invoice-reversals]: #
-[reversals]: #
-[setup-mail]: mailto:setup.ecom@PayEx.com
-[optional-features]: /payments/invoice/optional-features
-[se-png]: \assets\img\se.png
-[no-png]: \assets\img\no.png
-[fi-png]: /assets/img/fi.png
-[approved-legal-address]: #
-[invoice-authorization]: #
-[callback-request]: #
-[capture]: #
-[redirect]: #
-[hosted-view]: /payments/#hosted-view-implementation
 [financing-invoice-1-png]: \assets\img\financing-invoice-1.png
 [financing-invoice-2-png]: \assets\img\financing-invoice-2.png
+[approved-legal-address]: #
+[callback-api]: #
+[callback-request]: #
+[callback-url]: #
+[cancel]:#
+[capture]: #
+[fi-png]: /assets/img/fi.png
+[hosted-view]: /payments/#hosted-view-implementation
+[invoice-cancellations]: #
+[invoice-captures]: #
+[invoice-payments]: #
+[invoice-reversals]: #
+[no-png]: \assets\img\no.png
+[optional-features]: /payments/invoice/optional-features
+[redirect]: #
+[reversals]: #
+[se-png]: \assets\img\se.png
+[see-the-PATCH-payment-description]: /payments/credit-card/after-payment
+[setup-mail]: mailto:setup.ecom@PayEx.com
+[technical-reference]: #

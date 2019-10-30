@@ -133,10 +133,10 @@ sequenceDiagram
 
 [1551695199059-994.png]: /assets/img/1551695199059-994.png
 {:width="467px" height="364px"}
-[redirect]: #
-[hosted-view]: #
-[technical-reference]: #
-[swish-payments]: #
 [callback-url]: #
-[technical-reference-callback]: #
+[hosted-view]: #
 [payex-admin-portal]: #
+[redirect]: #
+[swish-payments]: #
+[technical-reference-callback]: #
+[technical-reference]: #

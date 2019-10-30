@@ -369,6 +369,7 @@ sequenceDiagram
   Deactivate PayEx
   Deactivate Merchant
 ```
+
 # Swish m-commerce Redirect
 
 >Swish is an one-phase payment method supported by the major Swedish banks. In the redirect m-commerce scenario, PayEx performs a payment that the payer confirms directly through the Swish mobile app.
@@ -457,30 +458,30 @@ sequenceDiagram
 {:width="467px" height="364px"}
 [1551695460586-802.png]: /assets/img/1551695460586-802.png
 {:width="400px" height="711px"}
-[settlement-service]: #
-[payex-mailto]: mailto:sales@payex.com
-[support-mailto]: mailto:support.ecom@payex.com
-[danske-bank]: https://danskebank.se/sv-se/foretag/medelstora-foretag/onlinetjanster/pages/swish-handel.aspx
-[swedbank-swish]: https://www.swedbank.se/foretag/betala-och-ta-betalt/ta-betalt/swish/swish-handel/index.htm
-[SEB-swish]: https://seb.se/foretag/digitala-tjanster/swish-handel
-[Länsförsäkringar]: https://www.lansforsakringar.se/stockholm/foretag/bank/lopande-ekonomi/betalningstjanster/swish-handel/
-[sparbanken-syd]: https://www.sparbankensyd.se/vardagstjanster/betala/swish-foretag/
-[sparbanken-oresund]: https://www.sparbankenskane.se/foretag/digitala-tjanster/swish/swish-for-handel/index.htm
-[nordea]: https://www.nordea.se/foretag/produkter/betala/swish-handel.html
-[handelsbanken]: https://www.handelsbanken.se/sv/foretag/konton-betalningar/ta-betalt/swish-for-foretag
-[swish-certificate-management-system]: https://comcert.getswish.net/cert-mgmt-web/authentication.html
-[MSS]: https://developer.getswish.se/faq/which-test-tools-are-available/
-[testverktyg-pdf]: https://www.getswish.se/dokument/Guide_Testverktyg_20151210.pdf
-[technical-reference]: #
-[swish-payments]: #
-[callback-url]: #
-[technical-reference-callback]: #
-[create-payment]: #
-[sales-transaction]: #
-[payex-admin-portal]: #
-[reversal-reference]: #
-[redirect]: #
-[hosted-view]: #
-[create-sale]: #
 [admin-portal]: #
+[callback-url]: #
+[create-payment]: #
+[create-sale]: #
+[danske-bank]: https://danskebank.se/sv-se/foretag/medelstora-foretag/onlinetjanster/pages/swish-handel.aspx
+[handelsbanken]: https://www.handelsbanken.se/sv/foretag/konton-betalningar/ta-betalt/swish-for-foretag
+[hosted-view]: #
+[Länsförsäkringar]: https://www.lansforsakringar.se/stockholm/foretag/bank/lopande-ekonomi/betalningstjanster/swish-handel/
+[MSS]: https://developer.getswish.se/faq/which-test-tools-are-available/
+[nordea]: https://www.nordea.se/foretag/produkter/betala/swish-handel.html
+[payex-admin-portal]: #
+[payex-mailto]: mailto:sales@payex.com
+[redirect]: #
+[reversal-reference]: #
+[sales-transaction]: #
+[SEB-swish]: https://seb.se/foretag/digitala-tjanster/swish-handel
+[settlement-service]: #
+[sparbanken-oresund]: https://www.sparbankenskane.se/foretag/digitala-tjanster/swish/swish-for-handel/index.htm
+[sparbanken-syd]: https://www.sparbankensyd.se/vardagstjanster/betala/swish-foretag/
+[support-mailto]: mailto:support.ecom@payex.com
+[swedbank-swish]: https://www.swedbank.se/foretag/betala-och-ta-betalt/ta-betalt/swish/swish-handel/index.htm
+[swish-certificate-management-system]: https://comcert.getswish.net/cert-mgmt-web/authentication.html
 [swish-create-payment]: #
+[swish-payments]: #
+[technical-reference-callback]: #
+[technical-reference]: #
+[testverktyg-pdf]: https://www.getswish.se/dokument/Guide_Testverktyg_20151210.pdf

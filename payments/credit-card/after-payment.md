@@ -82,7 +82,6 @@ Content-Type: application/json
 }
 ```
 
-
 {:.table .table-striped}
 | **Property** | **Data type** | **Description**
 | payment | string |The relative URI of the payment this list of capture transactions belong to.
@@ -111,8 +110,6 @@ Content-Type: application/json
     }
 }
 ```
-
-
 
 {:.table .table-striped}
 | **Property** | **Data type** | **Required** | **Description**
@@ -149,7 +146,6 @@ Content-Type: application/json
     }
 }
 ```
-
 
 {:.table .table-striped}
 | **Property** | **Data type** | **Description**
@@ -218,7 +214,6 @@ Content-Type: application/json
 }
 ```
 
-
 {:.table .table-striped}
 | **Property** | **Data type** | **Description**
 | payment | string |The relative URI of the payment this list of cancellation transactions belong to.
@@ -246,7 +241,6 @@ Content-Type: application/json
     }
 }
 ```
-
 
 {:.table .table-striped}
 | **Property** | **Data type** | **Required** | **Description**
@@ -284,7 +278,6 @@ Content-Type: application/json
     }
 }
 ```
-
 
 {:.table .table-striped}
 | **Property** | **Data type** | **Description**
@@ -353,7 +346,6 @@ Content-Type: application/json
 }
 ```
 
-
 {:.table .table-striped}
 | **Property** | **Type** | **Description**
 | payment | string | The relative URI of the payment that the reversal transactions belong to.
@@ -383,7 +375,6 @@ Content-Type: application/json
     }
 }
 ```
-
 
 {:.table .table-striped}
 | **Property** | **Data type** | **Required** | **Description**
@@ -423,7 +414,6 @@ Content-Type: application/json
     }
 }
 ```
-
 
 {:.table .table-striped}
 | **Property** | **Data type** | **Description**
@@ -541,7 +531,6 @@ sequenceDiagram
   Deactivate PayEx
   Deactivate Merchant
 ```
-
 
 ### Reversal Sequence
 

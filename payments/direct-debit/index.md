@@ -61,7 +61,7 @@ Screenshots  will be available at a later date.
 
 ## API Requests
 
-The API requests are displayed in the [purchase flow](#purchase-flow). The options you can choose from when creating a payment with key operation set to Value Purchase are listed below. The general REST based API model is described in the [technical-reference].
+The API requests are displayed in the [purchase flow](#purchase-flow). The options you can choose from when creating a payment with key operation set to Value Purchase are listed below. The general REST based API model is described in the [technical reference][technical-reference].
 
 ### Options before posting a payment
 
@@ -136,13 +136,13 @@ sequenceDiagram
   Deactivate Merchant
 ```
 
-# Payment Resources Direct Debit Payments
+## Payment Resources Direct Debit Payments
 
-## Payment Resource
+### Payment Resource
 
 The payment resource and all general sub-resources can be found in the [core payment resources][direct-debit-technical-reference] section.
 
-## Create Payment
+### Create Payment
 
 To create a Direct Debit payment, you perform an HTTP `POST` against the `/psp/directdebit/payments` resource. Please read the [general information][technical-reference] on how to compose a valid HTTP request before proceeding.
 
@@ -191,8 +191,6 @@ Content-Type: application/json
 }   
 ```
 
-**Properties**
-
 {:.table .table-striped}
 | Property | Data type | Required |Description |
 | payment.operation |string | ✔︎︎︎︎︎ | Purchase is the only type used for direct debit payments. |
@@ -217,6 +215,7 @@ Content-Type: application/json
 | payeeInfo.orderReference | string(50) | | The order reference should reflect the order reference found in the merchant's systems. |
 | payeeInfo.subsite | String(40) | | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with PayEx reconciliation before being used. |
 
+{:.code-header}
 **Response**
 
 ```HTTP
@@ -266,7 +265,9 @@ Content-Type: application/json
 
 A payment resource has a set of operations that can be performed on it, from its creation to its end. The operations available at any given time vary between payment methods and depends on the current state of the payment resource. A list of possible operations for Direct Debit Payments and their explanation is given below.
 
+{:.code-header}
 **Operations**
+
 ```JS
 {  
    "operations": [  
@@ -283,8 +284,6 @@ A payment resource has a set of operations that can be performed on it, from its
     ]  
 }
 ```
-
-**Properties**
 
 {:.table .table-striped}
 | **Property** | **Description** |
@@ -306,6 +305,7 @@ All Direct Debit specific transactions are described below. Read more about the 
 
 The `Sales` resource lists the sales transactions (one or more) on a specific payment.
 
+{:.code-header}
 **Request**
 
 ```HTTP
@@ -315,6 +315,7 @@ Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 ```
 
+{:.code-header}
 **Response**
 
 ```HTTP
@@ -392,7 +393,9 @@ The sales transaction This is managed either by by redirecting the end-user to t
 
 The `Reversals` resource list the reversals transactions (one or more) on a specific payment.
 
+{:.code-header}
 **Request**
+
 ```HTTP
 GET /psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals HTTP/1.1  
 Host: api.payex.com  
@@ -400,6 +403,7 @@ Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 ```
 
+{:.code-header}
 **Response**
 
 ```HTTP  
@@ -433,8 +437,6 @@ Content-Type: application/json
 }
 ```
 
-**Properties**
-
 {:.table .table-striped}
 | **Property** | **Type** | **Description** |
 | payment | string | The relative URI of the payment that the reversal transactions belong to. |
@@ -445,6 +447,7 @@ Content-Type: application/json
 
 You can create a reversal transaction against a completed sales transaction by adding that transaction's payeeReference in the request body.  A callback request will follow from PayEx. 
 
+{:.code-header}
 **Request**
 
 ```HTTP
@@ -463,8 +466,6 @@ Content-Type: application/json
 }
 ```
 
-**Properties**
-
 {:.table .table-striped}
 | **Property** | **Data type** | **Required** | **Description** |
 | transaction.amount | integer | ✔︎︎︎︎︎ | Amount entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 SEK, 5000 = 50.00 SEK. |
@@ -472,6 +473,7 @@ Content-Type: application/json
 | transaction.description | string | ✔︎︎︎︎︎ | A textual description of the capture. |
 | transaction.payeeReference | string(35) | ✔︎︎︎︎︎ | A  reference that must match the  payeeReference of the sales transaction you want to reverse. See [payeeReference][technical-reference-payeereference] for details. |
 
+{:.code-header}
 **Response**
 
 ```HTTP
@@ -499,8 +501,6 @@ Content-Type: application/json
     }  
 }
 ```
-
-**Properties**
 
 {:.table .table-striped}
 | **Property** | **Data type** | **Description** |
@@ -531,15 +531,15 @@ sequenceDiagram
   Deactivate Merchant
 ```
 
-[technical-reference]: #
-[direct-debit-technical-reference]: #
 [callbackurl-reference]: #
+[direct-debit-payment-post-reversal]: #
+[direct-debit-technical-reference]: #
+[technical-reference-abort-payment]: #
 [technical-reference-callbackurl]: #
 [technical-reference-create-direct-debit]: #
-[technical-reference-abort-payment]: #
-[direct-debit-payment-post-reversal]: #
 [technical-reference-expansion]: #
-[technical-reference-price-object]: #
-[user-agent]: https://en.wikipedia.org/wiki/User_agent
 [technical-reference-payeereference]: #
+[technical-reference-price-object]: #
 [technical-reference-transactions]: #
+[technical-reference]: #
+[user-agent]: https://en.wikipedia.org/wiki/User_agent
