@@ -422,7 +422,7 @@ by adding style properties to the JavaScript function call.
 
 This should bring up the Payment Menu in a hosted view, looking something like this:
 
-[[image:1551693185782-957.png||width="458" height="629"]]
+![1551693185782-957.png]
 
 When the consumer completes the payment, the Payment Menu script will be
 signaled and a full redirect to the `completeUrl` sent in with the
@@ -437,6 +437,8 @@ functions. You can also invoke `.refresh()` to
 order.
 
 
+  [1551693185782-957.png]: /assets/img/1551693185782-957.png
+  {:width="458px" :height="629px"}
   [https]: /#connection-and-protocol
   [payment-order]: #
   [initiate-consumer-session]: #
@@ -450,3 +452,4 @@ order.
   [transactions]: #
   [guest-payments]: #
   [callback]: #
+
