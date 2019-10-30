@@ -24,8 +24,8 @@ sidebar:
       title: Swish Seamless View
     - url: /payments/swish/after-payment
       title: Swish After After Payment
-    - url: /payments/swish/optional-features
-      title: Swish Optional Features
+    - url: /payments/swish/other-features
+      title: Swish Other Features
     - url: /payments/vipps
       title: Vipps Payments
 ---
