@@ -1,33 +1,19 @@
 ---
-title: Swedbank Pay Payments Direct Debit
+title: Swedbank Pay Payments Direct Debit Seamless View
 sidebar:
   navigation:
-  - title: Payments
+  - title: Direct Debit Payments
     items:
-    - url: /payments/
-      title: Introduction
-    - url: /payments/credit-account
-      title: Credit Account Payments
-    - url: /payments/credit-card
-      title: Credit Card Payments
-    - url: /payments/invoice
-      title: Invoice Payments
     - url: /payments/direct-debit
-      title: Direct Debit Payments
+      title: Introduction
     - url: /payments/direct-debit/redirect
-      title: Direct Debit Redirect
+      title: Redirect
     - url: /payments/direct-debit/seamless-view
-      title: Direct Debit Seamless View
+      title: Seamless View
     - url: /payments/direct-debit/after-payment
-      title: Direct Debit After Payments
-    - url: /payments/direct-debit/optional-features
-      title: Direct Debit Optional Features
-    - url: /payments/mobile-pay
-      title: Mobile Pay Payments
-    - url: /payments/swish
-      title: Swish Payments
-    - url: /payments/vipps
-      title: Vipps Payments
+      title: After Payments
+    - url: /payments/direct-debit/other-features
+      title: Other Features
 ---
 
 {% include alert.html type="warning"

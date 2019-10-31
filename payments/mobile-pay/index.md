@@ -2,39 +2,24 @@
 title: Swedbank Pay Payments Mobile Pay
 sidebar:
   navigation:
-  - title: Payments
+  - title: MobilePay Payments
     items:
-    - url: /payments/
-      title: Introduction
-    - url: /payments/credit-account
-      title: Credit Account Payments
-    - url: /payments/credit-card
-      title: Credit Card Payments
-    - url: /payments/invoice
-      title: Invoice Payments
-    - url: /payments/direct-debit
-      title: Direct Debit Payments
     - url: /payments/mobile-pay
-      title: Mobile Pay Payments
+      title: Introduction
     - url: /payments/mobile-pay/redirect
-      title: Mobile Pay Redirect
+      title: Redirect
     - url: /payments/mobile-pay/seamless-view
-      title: Mobile Pay Seamless View
+      title: Seamless View
     - url: /payments/mobile-pay/after-payment
-      title: Mobile Pay After Payment
+      title: After Payment
     - url: /payments/mobile-pay/other-features
-      title: Mobile Pay Optional Features
-    - url: /payments/swish
-      title: Swish Payments
-    - url: /payments/vipps
-      title: Vipps Payments
+      title: Other Features
 ---
 
 {% include alert.html type="warning"
                       icon="warning"
                       header="Site under development"
                       body="The Developer Portal is under construction and should not be used to integrate against Swedbank Pay's APIs yet." %}
-# MobilePay Online Payments
 
 >Add MobilePay Online to your PayEx payment methods and take advantage of [payex-reconciliation-and-settlement][PayEx Settlement Service] to get consolidated payments and reporting, for all your payment methods.
 
@@ -161,25 +146,17 @@ sequenceDiagram
   Deactivate Merchant
 ```
 
-[payex-reconciliation-and-settlement]: #
-[mobilepay-screenshot-1]: /assets/img/mobilepay-screenshot-1.png
-[mobilepay-screenshot-2]: /assets/img/mobilepay-screenshot-2.png
-[technical-reference]: #
-[technical-reference-mobilepay]: #
-[mobilepay-capture]: #
-[mobilepay-cancel]: #
-[technical-reference-callbackurl]: #
-[technical-reference-callback]: #
-[technical-reference-purchase]: #
-[technical-reference-abort]: #
-[mobilepay-reversal]: #
-[redirect-implementation]: #
+
+[1551694498854-650]: /assets/img/1551694498854-650.png
 [credit-card]: #
 [mobile-pay]: #
-[swish-m-commerce]: #
-[swish-e-commerce]: #
-[vipps]: #
+[payex-reconciliation-and-settlement]: #
 [paymentlink-pdf]: #
-[1551694498854-650]: /assets/img/1551694498854-650.png
+[redirect-implementation]: #
+[swish-e-commerce]: #
+[swish-m-commerce]: #
+[technical-reference-callback]: #
+[technical-reference-callbackurl]: #
+[technical-reference]: #
 [tecnical-reference-finalize]: #
-[technical-reference-card-payments]: #
+[vipps]: #

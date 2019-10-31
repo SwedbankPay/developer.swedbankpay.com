@@ -1,7 +1,5 @@
 ---
-title: Swedbank Pay Resources – Introduction
-opengraph:
-    description: Introduction to Swedbank Pay Resources
+title: Swedbank Pay Resources Test Data
 sidebar:
   navigation:
   - title: Resources

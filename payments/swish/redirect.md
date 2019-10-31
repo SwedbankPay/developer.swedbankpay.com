@@ -1,33 +1,19 @@
 ---
-title: Swedbank Pay Payments Swish
+title: Swedbank Pay Payments Swish Redirect
 sidebar:
   navigation:
-  - title: Payments
+  - title: Swish Payments
     items:
-    - url: /payments/
-      title: Introduction
-    - url: /payments/credit-account
-      title: Credit Account Payments
-    - url: /payments/credit-card
-      title: Credit Card Payments
-    - url: /payments/invoice
-      title: Invoice Payments
-    - url: /payments/direct-debit
-      title: Direct Debit Payments
-    - url: /payments/mobile-pay
-      title: Mobile Pay Payments
     - url: /payments/swish
-      title: Swish Payments
+      title: Introduction
     - url: /payments/swish/redirect
-      title: Swish Redirect
+      title: Redirect
     - url: /payments/swish/seamless-view
-      title: Swish Seamless View
+      title: Seamless View
     - url: /payments/swish/after-payment
-      title: Swish After After Payment
+      title: After Payment
     - url: /payments/swish/other-features
-      title: Swish Other Features
-    - url: /payments/vipps
-      title: Vipps Payments
+      title: Other Features
 ---
 
 {% include alert.html type="warning"
@@ -133,10 +119,10 @@ sequenceDiagram
 
 [1551695199059-994.png]: /assets/img/1551695199059-994.png
 {:width="467px" height="364px"}
-[redirect]: #
-[hosted-view]: #
-[technical-reference]: #
-[swish-payments]: #
 [callback-url]: #
-[technical-reference-callback]: #
+[hosted-view]: #
 [payex-admin-portal]: #
+[redirect]: #
+[swish-payments]: #
+[technical-reference-callback]: #
+[technical-reference]: #

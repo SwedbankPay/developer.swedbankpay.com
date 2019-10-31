@@ -1,5 +1,5 @@
 ---
-title: Swedbank Pay Payments Direct Debit After Payment
+title: Swedbank Pay Payments Direct Debit Other Features
 sidebar:
   navigation:
   - title: Direct Debit Payments
@@ -20,3 +20,7 @@ sidebar:
                       icon="warning"
                       header="Site under development"
                       body="The Developer Portal is under construction and should not be used to integrate against Swedbank Pay's APIs yet." %}
+
+{% include settlement-reconciliation.md %}
+
+{% include payment-link.md %}

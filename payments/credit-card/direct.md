@@ -1,33 +1,19 @@
 ---
-title: Swedbank Pay Payments Credit Card Seamless View
+title: Swedbank Pay Payments Credit Card Direct
 sidebar:
   navigation:
-  - title: Payments
+  - title: Credit Card Payments
     items:
-    - url: /payments/
+    - url: /payments/credit-card/
       title: Introduction
-    - url: /payments/credit-account
-      title: Credit Account Payments
-    - url: /payments/credit-card
-      title: Credit Card Payments
     - url: /payments/credit-card/redirect
-      title: Credit Card Redirect
-    - url: /payments/credit-card/seamless-view
-      title: Credit Card Seamless View
+      title: Redirect
+    - url: /payments/credit-card/direct
+      title: Direct
     - url: /payments/credit-card/after-payment
-      title: Credit Card After Payments
+      title: After Payment
     - url: /payments/credit-card/other-features
-      title: Credit Card Other Features
-    - url: /payments/invoice
-      title: Invoice Payments
-    - url: /payments/direct-debit
-      title: Direct Debit Payments
-    - url: /payments/mobile-pay
-      title: Mobile Pay Payments
-    - url: /payments/swish
-      title: Swish Payments
-    - url: /payments/vipps
-      title: Vipps Payments
+      title: Other Features
 ---
 
 {% include alert.html type="warning"
@@ -35,17 +21,14 @@ sidebar:
                       header="Site under development"
                       body="The Developer Portal is under construction and should not be used to integrate against Swedbank Pay's APIs yet." %}
 
-## Introduction
-
-{% include alert.html type="error"
+{% include alert.html type="warning"
                       icon="error"
                       header="PCI-DSS Complicance"
                       body="The direct integration option requires you to collect the card data on your website, which means it must be [PCI-DSS Compliant][PCI-link]." %}
 
->The seamless view payment scenario **is used by customers that are compliant with PCI-DSS regulations**, and is a way to implement card payments without using PayEx Hosted payment pages.  
-
-
-                      
+{% include jumbotron.html body="The Direct Payment scenario **is used by
+customers that are compliant with PCI-DSS regulations**, and is a way to
+implement card payments without using PayEx Hosted payment pages.  " %}
 
 * The payer places an order and you make a `POST` request towards PayEx with gathered `Purchase` information. The action taken next is the `direct-authorization` operation that is returned in the first request. 
 * You `POST` the payer's card data to the URL in the [`direct-authorization` operation](#options-before-posting-a-payment-1).
@@ -145,11 +128,12 @@ sequenceDiagram
 * If you did a PreAuthorization, you will have to send a Finalize to the transaction using [PATCH on the Authorization][finalizing-the-transaction].
 * **Callback from PayEx:** Whenever changes to the payment occur a [Callback request][callback-request] will be posted to the `callbackUrl`, generated when the payment was created.
 
-[Capture]: /payments/credit-card/after-after-payment
-[Cancel]: /payments/credit-card/after-after-payment
-[finalize-request]: /payments/credit-card/after-payment
-[CallbackURL]: #
-[callback-API-description]: #
 [abort]: /payments/credit-card/after-payment
-[finalizing-the-transaction]: /payments/credit-card/after-after-payment
+[callback-API-description]: #
 [callback-request]: /payments/credit-card/after-payment
+[CallbackURL]: #
+[Cancel]: /payments/credit-card/after-after-payment
+[Capture]: /payments/credit-card/after-after-payment
+[finalize-request]: /payments/credit-card/after-payment
+[finalizing-the-transaction]: /payments/credit-card/after-after-payment
+[PCI-link]: https://www.pcisecuritystandards.org/

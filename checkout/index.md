@@ -1,7 +1,5 @@
 ---
-title: Swedbank Pay Checkout – Introduction
-opengraph:
-    description: Introduction to Swedbank Pay Checkout
+title: Swedbank Pay Checkout - Introduction
 sidebar:
   navigation:
   - title: Checkout
@@ -9,11 +7,11 @@ sidebar:
     - url: /checkout/
       title: Introduction
     - url: /checkout/payment
-      title: Checkout Payment
+      title: Payment
     - url: /checkout/after-payment
-      title: Checkout After Payment
+      title: After Payment
     - url: /checkout/other-features
-      title: Checkout Other Features
+      title: Other Features
 ---
 
 {% include alert.html type="warning"
@@ -165,15 +163,5 @@ be performed again.
 With `paymentUrl` in place, the retry process becomes much more convenient for
 both the integration and the payer.
 
-  [https]: /#connection-and-protocol
-  [payment-order]: #
-  [initiate-consumer-session]: #
-  [view-consumer-identification]: #
-  [msisdn]: https://en.wikipedia.org/wiki/MSISDN
-  [payee-reference]: #
-  [consumer-events]: #
-  [payment-menu-styling]: #
-  [payment-order-operations]: #
-  [transactions]: #
-  [guest-payments]: #
-  [callback]: #
+[https]: /#connection-and-protocol
+[payment-order]: #

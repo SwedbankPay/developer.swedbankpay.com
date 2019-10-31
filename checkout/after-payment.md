@@ -1,7 +1,5 @@
 ---
-title: Swedbank Pay Checkout – Introduction
-opengraph:
-    description: Introduction to Swedbank Pay Checkout
+title: Swedbank Pay Checkout After Payment
 sidebar:
   navigation:
   - title: Checkout
@@ -9,11 +7,11 @@ sidebar:
     - url: /checkout/
       title: Introduction
     - url: /checkout/payment
-      title: Checkout Payment
+      title: Payment
     - url: /checkout/after-payment
-      title: Checkout After Payment
+      title: After Payment
     - url: /checkout/other-features
-      title: Checkout Other Features
+      title: Other Features
 ---
 
 {% include alert.html type="warning"
@@ -36,12 +34,11 @@ capture or cancel. For a full list of the available operations, see the
 [techincal reference][payment-order-operations].
 
 {:.table .table-striped}
-| Operation                          | Description |
-|:-----------------------------------|:------------|
-| `update-paymentorder-updateorder`  | [Updates the order](#update-order) with a change in the `amount` and/or `vatAmount`.
-| `create-paymentorder-capture`      | The second part of a two-phase transaction where the authorized amount is sent from the payer to the payee. It is possible to do a part-capture on a subset of the authorized amount. Several captures on the same payment are possible, up to the total authorization amount.
-| `create-paymentorder-cancellation` | Used to cancel authorized and not yet captured transactions. If a cancellation is performed after doing a part-capture, it will only affect the not yet captured authorization amount.
-| `create-paymentorder-reversal`     | Used to reverse a payment. It is only possible to reverse a payment that has been captured and not yet reversed.
+| **Operation**                          | **Description**        |
+| `update-paymentorder-updateorder`  | [Updates the order](#update-order) with a change in the `amount` and/or `vatAmount`.       |
+| `create-paymentorder-capture`      | The second part of a two-phase transaction where the authorized amount is sent from the payer to the payee. It is possible to do a part-capture on a subset of the authorized amount. Several captures on the same payment are possible, up to the total authorization amount. |
+| `create-paymentorder-cancellation` | Used to cancel authorized and not yet captured transactions. If a cancellation is performed after doing a part-capture, it will only affect the not yet captured authorization amount.                                                                                         |
+| `create-paymentorder-reversal`     | Used to reverse a payment. It is only possible to reverse a payment that has been captured and not yet reversed.                                                                                                                                                               |
 
 To identify the operations that are available we need to do a `GET` request against the URI of `paymentorder.id`:
 
@@ -98,16 +95,15 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property       | Type     |  Description |
-|:---------------|----------|:-------------|
-| `paymentorder` | `object` | The payment order object.
-| └➔&nbsp;`id`  | `string`  | The relative URI to the payment order.
-| `operations`   | `array`  | The array of possible operations to perform, given the state of the payment order.
+| **Property**       | **Type**     | **Description**               |
+| `paymentorder` | `object` | The payment order object.                                                          |
+| └➔&nbsp;`id`   | `string` | The relative URI to the payment order.                                             |
+| `operations`   | `array`  | The array of possible operations to perform, given the state of the payment order. |
 
 ## Update Order
 
 Change amount and vat amount on a payment order. If you implement `updateorder`
-**you need to `refresh()`** the [Payment Menu front end][#payment-menu-front-end]
+**you need to `refresh()`** the [Payment Menu front end][payment-menu-front-end]
 so the new amount is shown to the end customer.
 
 {:.code-header}
@@ -131,7 +127,7 @@ Content-Type: application/json
 
 The response given when changing a payment order is equivalent to a `POST`
 or `GET` request towards the `paymentorders` resource,
-[as displayed above][#payment-menu-back-end]. Remember to call `.refresh()`
+[as displayed above][payment-menu-back-end]. Remember to call `.refresh()`
 on the Payment Menu in JavaScript after updating the Payment Order.
 
 ## Capture
@@ -200,29 +196,28 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| ✔︎︎︎︎︎ | Property                     | Type         |  Description |
-|:-:|:-----------------------------|--------------|:-------------|
-| ✔︎︎︎︎︎ | `transaction`                | `object`     | The transaction object.
-| ✔︎︎︎︎︎ | └➔&nbsp;`description`        | `string`     | The description of the capture transaction.
-| ✔︎︎︎︎︎ | └➔&nbsp;`amount`             | `integer`    | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.
-| ✔︎︎︎︎︎ | └➔&nbsp;`vatAmount`          | `integer`    | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.
-| ✔︎︎︎︎︎ | └➔&nbsp;`payeeReference`     | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.
-|   | └➔&nbsp;`orderItems`           | `array`       | The array of items being purchased with the order. Used to print on invoices if the payer chooses to pay with invoice, among other things. Required in `capture` requests if already sent with the initial creation of the Payment Order.
-| ✔︎︎︎︎︎ | └─➔&nbsp;`reference`           | `string`       | A reference that identifies the order item.
-| ✔︎︎︎︎︎ | └─➔&nbsp;`name`                | `string`       | The name of the order item.
-| ✔︎︎︎︎︎ | └─➔&nbsp;`type`                | `string`       | `PRODUCT`, `SERVICE`, `SHIPPING_FEE`, `DISCOUNT`, `VALUE_CODE` or `OTHER`. The type of the order item.
-| ✔︎︎︎︎︎ | └─➔&nbsp;`class`               | `string`       | The classification of the order item. Can be used for assigning the order item to a specific product category, for instance. Swedbank Pay has no use for this value itself, but it's useful for some payment instruments and integrations.
-| ︎︎︎  | └─➔&nbsp;`itemUrl`             | `string`       | The URL to a page that contains a human readable description of the order item, or similar.
-| ︎︎︎  | └─➔&nbsp;`imageUrl`            | `string`       | The URL to an image of the order item.
-| ︎︎︎  | └─➔&nbsp;`description`         | `string`       | The human readable description of the order item.
-| ︎︎︎  | └─➔&nbsp;`discountDescription` | `string`       | The human readable description of the possible discount.
-| ✔︎︎︎︎︎ | └─➔&nbsp;`quantity`            | `integer`      | The quantity of order items being purchased.
-| ✔︎︎︎︎︎ | └─➔&nbsp;`quantityUnit`        | `string`       | The unit of the quantity, such as `pcs`, `grams`, or similar.
-| ✔︎︎︎︎︎ | └─➔&nbsp;`unitPrice`           | `integer`      | The price per unit of order item.
-| ︎︎︎  | └─➔&nbsp;`discountPrice`       | `integer`       | If the order item is purchased at a discounted price, this property should contain that price.
-| ✔︎︎︎︎︎ | └─➔&nbsp;`vatPercent`          | `integer`      | The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.
-| ✔︎︎︎︎︎ | └─➔&nbsp;`amount`              | `integer`      | The total amount including VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `500`0 equals `50.00 NOK`.
-| ✔︎︎︎︎︎ | └─➔&nbsp;`vatAmount`           | `integer`      | The total amount of VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `500`0 equals `50.00 NOK`.
+| ✔︎︎︎︎︎ | **Property**                       | **Type**         | **Description**                          |
+| ✔︎︎︎︎︎ | `transaction`                  | `object`     | The transaction object.                                                                                                                                                                                                                    |
+| ✔︎︎︎︎︎ | └➔&nbsp;`description`          | `string`     | The description of the capture transaction.                                                                                                                                                                                                |
+| ✔︎︎︎︎︎ | └➔&nbsp;`amount`               | `integer`    | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.                                                                                                          |
+| ✔︎︎︎︎︎ | └➔&nbsp;`vatAmount`            | `integer`    | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.                                                                                                                 |
+| ✔︎︎︎︎︎ | └➔&nbsp;`payeeReference`       | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.                                                   |
+|        | └➔&nbsp;`orderItems`           | `array`      | The array of items being purchased with the order. Used to print on invoices if the payer chooses to pay with invoice, among other things. Required in `capture` requests if already sent with the initial creation of the Payment Order.  |
+| ✔︎︎︎︎︎ | └─➔&nbsp;`reference`           | `string`     | A reference that identifies the order item.                                                                                                                                                                                                |
+| ✔︎︎︎︎︎ | └─➔&nbsp;`name`                | `string`     | The name of the order item.                                                                                                                                                                                                                |
+| ✔︎︎︎︎︎ | └─➔&nbsp;`type`                | `string`     | `PRODUCT`, `SERVICE`, `SHIPPING_FEE`, `DISCOUNT`, `VALUE_CODE` or `OTHER`. The type of the order item.                                                                                                                                     |
+| ✔︎︎︎︎︎ | └─➔&nbsp;`class`               | `string`     | The classification of the order item. Can be used for assigning the order item to a specific product category, for instance. Swedbank Pay has no use for this value itself, but it's useful for some payment instruments and integrations. |
+|  ︎︎︎   | └─➔&nbsp;`itemUrl`             | `string`     | The URL to a page that contains a human readable description of the order item, or similar.                                                                                                                                                |
+|  ︎︎︎   | └─➔&nbsp;`imageUrl`            | `string`     | The URL to an image of the order item.                                                                                                                                                                                                     |
+|  ︎︎︎   | └─➔&nbsp;`description`         | `string`     | The human readable description of the order item.                                                                                                                                                                                          |
+|  ︎︎︎   | └─➔&nbsp;`discountDescription` | `string`     | The human readable description of the possible discount.                                                                                                                                                                                   |
+| ✔︎︎︎︎︎ | └─➔&nbsp;`quantity`            | `integer`    | The quantity of order items being purchased.                                                                                                                                                                                               |
+| ✔︎︎︎︎︎ | └─➔&nbsp;`quantityUnit`        | `string`     | The unit of the quantity, such as `pcs`, `grams`, or similar.                                                                                                                                                                              |
+| ✔︎︎︎︎︎ | └─➔&nbsp;`unitPrice`           | `integer`    | The price per unit of order item.                                                                                                                                                                                                          |
+|  ︎︎︎   | └─➔&nbsp;`discountPrice`       | `integer`    | If the order item is purchased at a discounted price, this property should contain that price.                                                                                                                                             |
+| ✔︎︎︎︎︎ | └─➔&nbsp;`vatPercent`          | `integer`    | The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.                                                                                                                                                                   |
+| ✔︎︎︎︎︎ | └─➔&nbsp;`amount`              | `integer`    | The total amount including VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `500`0 equals `50.00 NOK`.                                      |
+| ✔︎︎︎︎︎ | └─➔&nbsp;`vatAmount`           | `integer`    | The total amount of VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `500`0 equals `50.00 NOK`.                                             |
 
 If the capture succeeds, it should respond with something like the following:
 
@@ -251,22 +246,21 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property                  | Type      |  Description |
-|:--------------------------|-----------|:-------------|
-| `payment`                 | `string`  | The relative URI of the payment this capture transaction belongs to.
-| `capture`                 | `object`  | The capture object, containing the information about the capture transaction.
-| └➔&nbsp;`id`              | `string`  | The relative URI of the created capture transaction.
-| └➔&nbsp;`transaction`     | `object`  | The transaction object, containing information about the current transaction.
-| └─➔&nbsp;`id`             | `string`  | The relative URI of the current `transaction` resource.
-| └─➔&nbsp;`created`        | `string`  | The ISO-8601 date and time of when the transaction was created.
-| └─➔&nbsp;`updated`        | `string`  | The ISO-8601 date and time of when the transaction was created.
-| └─➔&nbsp;`type`           | `string`  | Indicates the transaction type.
-| └─➔&nbsp;`state`          | `string`  | `Initialized`, `Completed` or `Failed`. Indicates the state of the transaction.
-| └─➔&nbsp;`number`         | `string`  | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead.
-| └─➔&nbsp;`amount`         | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` = 100.00 NOK, `5000` = 50.00 SEK.
-| └─➔&nbsp;`vatAmount`      | `integer` | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.
-| └─➔&nbsp;`description`    | `string`  | A human readable description of maximum 40 characters of the transaction.
-| └─➔&nbsp;`payeeReference` | `string`  | A unique reference for the transaction. See [`payeeReference`][payee-reference] for details.
+| **Property**                  | **Type**      | **Description**      |
+| `payment`                 | `string`  | The relative URI of the payment this capture transaction belongs to.                                                                                                                                         |
+| `capture`                 | `object`  | The capture object, containing the information about the capture transaction.                                                                                                                                |
+| └➔&nbsp;`id`              | `string`  | The relative URI of the created capture transaction.                                                                                                                                                         |
+| └➔&nbsp;`transaction`     | `object`  | The transaction object, containing information about the current transaction.                                                                                                                                |
+| └─➔&nbsp;`id`             | `string`  | The relative URI of the current `transaction` resource.                                                                                                                                                      |
+| └─➔&nbsp;`created`        | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
+| └─➔&nbsp;`updated`        | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
+| └─➔&nbsp;`type`           | `string`  | Indicates the transaction type.                                                                                                                                                                              |
+| └─➔&nbsp;`state`          | `string`  | `Initialized`, `Completed` or `Failed`. Indicates the state of the transaction.                                                                                                                              |
+| └─➔&nbsp;`number`         | `string`  | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead. |
+| └─➔&nbsp;`amount`         | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` = 100.00 NOK, `5000` = 50.00 SEK.                                                                                     |
+| └─➔&nbsp;`vatAmount`      | `integer` | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                           |
+| └─➔&nbsp;`description`    | `string`  | A human readable description of maximum 40 characters of the transaction.                                                                                                                                    |
+| └─➔&nbsp;`payeeReference` | `string`  | A unique reference for the transaction. See [`payeeReference`][payee-reference] for details.                                                                                                                 |
 
 **Et voilà!** Checkout should now be complete, the payment should be secure and
 everyone should be happy. But, sometimes you also need to implement the
@@ -296,11 +290,10 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| ✔︎︎︎︎︎ | Property                     | Type         |  Description |
-|:-:|:-----------------------------|--------------|:-------------|
-| ✔︎︎︎︎︎ | `transaction`                | `object`     | The transaction object.
-| ✔︎︎︎︎︎ | └➔&nbsp;`payeeReference`     | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.
-| ✔︎︎︎︎︎ | └➔&nbsp;`description`        | `string`     | A textual description of why the transaction is cancelled.
+| ✔︎︎︎︎︎ | **Property**                 | **Type**         | **Description**  |
+| ✔︎︎︎︎︎ | `transaction`            | `object`     | The transaction object.    |
+| ✔︎︎︎︎︎ | └➔&nbsp;`payeeReference` | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details. |
+| ✔︎︎︎︎︎ | └➔&nbsp;`description`    | `string`     | A textual description of why the transaction is cancelled.                                                                                                                               |
 
 If the cancellation request succeeds, the response should be similar to the
 example below:
@@ -330,22 +323,21 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property              | Type     |  Description |
-|:----------------------|----------|:-------------|
-| `payment`             | `string` | The relative URI of the payment this cancellation transaction belongs to.
-| `cancellation`        | `object` | The cancellation object, containing information about the cancellation transaction.
-| └➔&nbsp;`id`          | `string` | The relative URI of the cancellation transaction.
-| └➔&nbsp;`transaction`     | `object`  | The transaction object, containing information about the current transaction.
-| └─➔&nbsp;`id`             | `string`  | The relative URI of the current `transaction` resource.
-| └─➔&nbsp;`created`        | `string`  | The ISO-8601 date and time of when the transaction was created.
-| └─➔&nbsp;`updated`        | `string`  | The ISO-8601 date and time of when the transaction was created.
-| └─➔&nbsp;`type`           | `string`  | Indicates the transaction type.
-| └─➔&nbsp;`state`          | `string`  | `Initialized`, `Completed` or `Failed`. Indicates the state of the transaction.
-| └─➔&nbsp;`number`         | `string`  | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead.
-| └─➔&nbsp;`amount`         | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` = 100.00 NOK, `5000` = 50.00 SEK.
-| └─➔&nbsp;`vatAmount`      | `integer` | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.
-| └─➔&nbsp;`description`    | `string`  | A human readable description of maximum 40 characters of the transaction.
-| └─➔&nbsp;`payeeReference` | `string`  | A unique reference for the transaction. See [`payeeReference`][payee-reference] for details.
+| **Property**                  | **Type**      | **Description**           |
+| `payment`                 | `string`  | The relative URI of the payment this cancellation transaction belongs to.                                                                                                                                    |
+| `cancellation`            | `object`  | The cancellation object, containing information about the cancellation transaction.                                                                                                                          |
+| └➔&nbsp;`id`              | `string`  | The relative URI of the cancellation transaction.                                                                                                                                                            |
+| └➔&nbsp;`transaction`     | `object`  | The transaction object, containing information about the current transaction.                                                                                                                                |
+| └─➔&nbsp;`id`             | `string`  | The relative URI of the current `transaction` resource.                                                                                                                                                      |
+| └─➔&nbsp;`created`        | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
+| └─➔&nbsp;`updated`        | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
+| └─➔&nbsp;`type`           | `string`  | Indicates the transaction type.                                                                                                                                                                              |
+| └─➔&nbsp;`state`          | `string`  | `Initialized`, `Completed` or `Failed`. Indicates the state of the transaction.                                                                                                                              |
+| └─➔&nbsp;`number`         | `string`  | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead. |
+| └─➔&nbsp;`amount`         | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` = 100.00 NOK, `5000` = 50.00 SEK.                                                                                     |
+| └─➔&nbsp;`vatAmount`      | `integer` | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                           |
+| └─➔&nbsp;`description`    | `string`  | A human readable description of maximum 40 characters of the transaction.                                                                                                                                    |
+| └─➔&nbsp;`payeeReference` | `string`  | A unique reference for the transaction. See [`payeeReference`][payee-reference] for details.                                                                                                                 |
 
 ## Reversal
 
@@ -373,13 +365,12 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| ✔︎︎︎︎︎ | Property                     | Type         |  Description |
-|:-:|:-----------------------------|--------------|:-------------|
-| ✔︎︎︎︎︎ | `transaction`                | `object`     | The transaction object.
-| ✔︎︎︎︎︎ | └➔&nbsp;`amount`             | `integer`    | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.
-| ✔︎︎︎︎︎ | └➔&nbsp;`vatAmount`          | `integer`    | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.
-| ✔︎︎︎︎︎ | └➔&nbsp;`payeeReference`     | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.
-| ✔︎︎︎︎︎ | └➔&nbsp;`description`        | `string`     | Textual description of why the transaction is reversed.
+| ✔︎︎︎︎︎ | **Property**                 | **Type**         | **Description**  |
+| ✔︎︎︎︎︎ | `transaction`            | `object`     | The transaction object.        |
+| ✔︎︎︎︎︎ | └➔&nbsp;`amount`         | `integer`    | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.                                                        |
+| ✔︎︎︎︎︎ | └➔&nbsp;`vatAmount`      | `integer`    | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.                                                               |
+| ✔︎︎︎︎︎ | └➔&nbsp;`payeeReference` | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details. |
+| ✔︎︎︎︎︎ | └➔&nbsp;`description`    | `string`     | Textual description of why the transaction is reversed.                                                                                                                                  |
 
 If the reversal request succeeds, the response should be similar to the example below:
 
@@ -408,22 +399,21 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property                  | Type     |  Description |
-|:--------------------------|----------|:-------------|
-| `payment`                 | `string` | The relative URI of the payment this reversal transaction belongs to.
-| `reversals`               | `object` | The reversal object, containing information about the reversal transaction.
-| └➔&nbsp;`id`              | `string` | The relative URI of the reversal transaction.
-| └➔&nbsp;`transaction`     | `object`  | The transaction object, containing information about the current transaction.
-| └─➔&nbsp;`id`             | `string`  | The relative URI of the current `transaction` resource.
-| └─➔&nbsp;`created`        | `string`  | The ISO-8601 date and time of when the transaction was created.
-| └─➔&nbsp;`updated`        | `string`  | The ISO-8601 date and time of when the transaction was created.
-| └─➔&nbsp;`type`           | `string`  | Indicates the transaction type.
-| └─➔&nbsp;`state`          | `string`  | `Initialized`, `Completed` or `Failed`. Indicates the state of the transaction.
-| └─➔&nbsp;`number`         | `string`  | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead.
-| └─➔&nbsp;`amount`         | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` = 100.00 NOK, `5000` = 50.00 SEK.
-| └─➔&nbsp;`vatAmount`      | `integer` | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.
-| └─➔&nbsp;`description`    | `string`  | A human readable description of maximum 40 characters of the transaction.
-| └─➔&nbsp;`payeeReference` | `string`  | A unique reference for the transaction. See [`payeeReference`][payee-reference] for details.
+| **Property**                  | **Type**      | **Description**                   |
+| `payment`                 | `string`  | The relative URI of the payment this reversal transaction belongs to.                                                                                                                                        |
+| `reversals`               | `object`  | The reversal object, containing information about the reversal transaction.                                                                                                                                  |
+| └➔&nbsp;`id`              | `string`  | The relative URI of the reversal transaction.                                                                                                                                                                |
+| └➔&nbsp;`transaction`     | `object`  | The transaction object, containing information about the current transaction.                                                                                                                                |
+| └─➔&nbsp;`id`             | `string`  | The relative URI of the current `transaction` resource.                                                                                                                                                      |
+| └─➔&nbsp;`created`        | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
+| └─➔&nbsp;`updated`        | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
+| └─➔&nbsp;`type`           | `string`  | Indicates the transaction type.                                                                                                                                                                              |
+| └─➔&nbsp;`state`          | `string`  | `Initialized`, `Completed` or `Failed`. Indicates the state of the transaction.                                                                                                                              |
+| └─➔&nbsp;`number`         | `string`  | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead. |
+| └─➔&nbsp;`amount`         | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` = 100.00 NOK, `5000` = 50.00 SEK.                                                                                     |
+| └─➔&nbsp;`vatAmount`      | `integer` | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                           |
+| └─➔&nbsp;`description`    | `string`  | A human readable description of maximum 40 characters of the transaction.                                                                                                                                    |
+| └─➔&nbsp;`payeeReference` | `string`  | A unique reference for the transaction. See [`payeeReference`][payee-reference] for details.                                                                                                                 |
 
 
 ## Best Practices
@@ -461,8 +451,8 @@ through Swedbank Pay' integration validation procedure.
   website.
 * The integration needs to handle both one and two phase purchases correctly.
 * All of the operations `Cancel`, `Capture` and `Reversal` must be implemented.
-* The [transaction callback][callback must be handled appropriately.
-* [Proplems][/#problems] that may occur in Swedbank Pay' API must be handled
+* The [transaction callback][callback] must be handled appropriately.
+* [Problems][problems] that may occur in Swedbank Pay' API must be handled
   appropriately.
 * Your integration must be resilient to change. Properties, operations,
   headers, etc., that aren't understood in any response **must be ignored**.
@@ -470,15 +460,12 @@ through Swedbank Pay' integration validation procedure.
   haven't seen before is a major malfunction of your integration and must be
   fixed.
 
-  [https]: /#connection-and-protocol
-  [payment-order]: #
-  [initiate-consumer-session]: #
-  [view-consumer-identification]: #
-  [msisdn]: https://en.wikipedia.org/wiki/MSISDN
-  [payee-reference]: #
-  [consumer-events]: #
-  [payment-menu-styling]: #
-  [payment-order-operations]: #
-  [transactions]: #
-  [guest-payments]: #
-  [callback]: #
+[https]: /#connection-and-protocol
+[msisdn]: https://en.wikipedia.org/wiki/MSISDN
+[payee-reference]: #
+[payment-order-operations]: #
+[guest-payments]: #
+[callback]: #
+[payment-menu-back-end]: #
+[payment-menu-front-end]: #
+[problems]: #

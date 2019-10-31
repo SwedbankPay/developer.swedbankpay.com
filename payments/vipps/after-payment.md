@@ -2,53 +2,32 @@
 title: Swedbank Pay Payments Vipps After Payment
 sidebar:
   navigation:
-  - title: Payments
+  - title: Vipps Payments
     items:
-    - url: /payments/
-      title: Introduction
-    - url: /payments/credit-account
-      title: Credit Account Payments
-    - url: /payments/credit-card
-      title: Credit Card Payments
-    - url: /payments/invoice
-      title: Invoice Payments
-    - url: /payments/direct-debit
-      title: Direct Debit Payments
-    - url: /payments/mobile-pay
-      title: Mobile Pay Payments
-    - url: /payments/swish
-      title: Swish Payments
-    - url: /payments/swish/redirect
-      title: Swish Redirect
-    - url: /payments/swish/seamless-view
-      title: Swish Seamless View
-    - url: /payments/swish/after-payment
-      title: Swish After After Payment
-    - url: /payments/swish/optional-features
-      title: Swish Optional Features
     - url: /payments/vipps
-      title: Vipps Payments
+      title: Introduction
     - url: /payments/vipps/redirect
-      title: Vipps Redirect
+      title: Redirect
     - url: /payments/vipps/seamless-view
-      title: Vipps Seamless View
+      title: Seamless View
     - url: /payments/vipps/after-payment
-      title: Vipps After After Payment
-    - url: /payments/vipps/optional-features
-      title: Vipps Optional Features
+      title: After After Payment
+    - url: /payments/vipps/other-features    
+      title: Other Features
 ---
 
-` Payment Resource
+## Payment Resource
 
 The payment resource and all general sub-resources can be found in the [[core payment resources>>doc:Main.ecommerce.technical-reference.core-payment-resources.WebHome]] section.
 
-` Create Payment
+### Create Payment
 
 To create a Vipps payment, you perform an HTTP `POST` against the `/psp/vipps/payments` resource. Please read the [[general information >>doc:Main.ecommerce.technical-reference.WebHome]]on how to compose a valid HTTP request before proceeding.
 
 An example of a payment creation request is provided below. Each individual Property of the JSON document is described in the following section. Use the [expand][technical-reference-expansion] request parameter to get a response that includes one or more expanded sub-resources inlined.
 
-***Request***
+{:.code-header}
+**Request**
 
 ```HTTP
 POST /psp/vipps/payments HTTP/1.1
@@ -97,14 +76,12 @@ Content-Type: application/json
 }
 ```
 
-***Properties***
-
 {:.table .table-striped}
 | Property| Data type| Required| Description
-| payment.operation | string | Y | `Purchase`
-| payment.intent | string | Y | `Authorization`
+| payment.operation | string | ✔︎ | `Purchase`
+| payment.intent | string | ✔︎ | `Authorization`
 | payment.currency |string| Y |NOK
-| payment.prices.type | string | Y | `vipps`
+| payment.prices.type | string | ✔︎ | `vipps`
 | payment.prices.amount | integer | Y |Amount is entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 NOK.
 | payment.prices.vatAmount | integer | Y |If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.
 | payment.description | string(40) | Y |A textual description max 40 characters of the purchase.
@@ -126,7 +103,8 @@ Content-Type: application/json
 | payeeInfo.prefillInfo | string | N |The mobile number that will be prefilled in the PayEx payment pages. The consumer may change this number in the UI.
 | payeeInfo.subsite | String(40) | N |The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with PayEx reconciliation before being used.
 
-***Response***
+{:.code-header}
+**Response**
 
 ```HTTP
 HTTP/1.1 200 OK
@@ -180,8 +158,10 @@ Content-Type: application/json
 
 Posting a payment (operation purchase) returns the options of aborting the payment altogether or creating an authorization transaction through the `redirect-authorization` hyperlink. 
 
-***Request***
-```JSON
+{:.code-header}
+**Request**
+
+```JS
 {
     "payment": {
         "operation": "Purchase"
@@ -193,8 +173,10 @@ Posting a payment (operation purchase) returns the options of aborting the payme
 
 When a payment resource is created and during its lifetime, it will have a set of operations that can be performed on it. Which operations are available will vary depending on the state of the payment resource, what the access token is authorized to do, etc. A list of possible operations and their explanation is given below.
 
-***Operations***
-```JSON
+{:.code-header}
+**Operations**
+
+```JS
 {
     "payment": {},
     "operations": [
@@ -227,8 +209,6 @@ When a payment resource is created and during its lifetime, it will have a set o
 }
 ```
 
-***Properties***
-
 {:.table .table-striped}
 | Property| Description
 | href |The target URI to perform the operation against.
@@ -254,7 +234,8 @@ All card specific transactions are described below. Read more about the general 
 
 The `authorizations` resource contains information about the authorization transactions made on a specific payment.
 
-***Request***
+{:.code-header}
+**Request**
 
 ```HTTP
 GET /psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/authorizations HTTP/1.1
@@ -263,7 +244,8 @@ Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 ```
 
-***Response***
+{:.code-header}
+**Response**
 
 ```HTTP
 HTTP/1.1 200 OK
@@ -298,8 +280,6 @@ Content-Type: application/json
 }
 ```
 
-***Properties***
-
 {:.table .table-striped}
 | Property| Data type| Description
 | payment | string |The relative URI of the payment this authorization transactions resource belongs to.
@@ -310,7 +290,8 @@ Content-Type: application/json
 
 You can return a specific authorization transaction by adding the transaction id to the `GET` request.
 
-***Request***
+{:.code-header}
+**Request**
 
 ```HTTP
 GET /psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/authorizations/<transactionId> HTTP/1.1
@@ -319,10 +300,10 @@ Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 ```
 
-***Response***
+{:.code-header}
+**Response**
 
 ```HTTP
-
 HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -350,8 +331,6 @@ Content-Type: application/json
 }
 ```
 
-***Properties***
-
 {:.table .table-striped}
 | Property| Data type| Description
 | payment | string |The relative URI of the payment this authorization transaction resource belongs to.
@@ -362,7 +341,8 @@ Content-Type: application/json
 
 The `captures` resource lists the capture transactions (one or more) on a specific payment.
 
-***Request***
+{:.code-header}
+**Request**
 
 ```HTTP
 GET /psp/vipps/vipps/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/captures HTTP/1.1
@@ -371,7 +351,8 @@ Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 ```
 
-***Response***
+{:.code-header}
+**Response**
 
 ```HTTP
 HTTP/1.1 200 OK
@@ -405,8 +386,6 @@ Content-Type: application/json
 }
 ```
 
-***Properties***
-
 {:.table .table-striped}
 | Property| Data type| Description
 | payment | string |The relative URI of the payment this list of capture transactions belong to.
@@ -418,7 +397,8 @@ Content-Type: application/json
 
 A `capture` transaction can be created after a completed authorization by performing the `create-capture` operation.
 
-***Request***
+{:.code-header}
+**Request**
 
 ```HTTP
 POST /psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/captures HTTP/1.1
@@ -436,8 +416,6 @@ Content-Type: application/json
 }
 ```
 
-***Properties***
-
 {:.table .table-striped}
 | Property| Data type| Required| Description
 | capture.amount | integer |Y|Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 NOK.
@@ -447,10 +425,10 @@ Content-Type: application/json
 
 The `capture` resource contains information about the capture transaction made against a Vipps payment. You can return a specific capture transaction by adding the transaction id to the `GET` request.
 
-***Response***
+{:.code-header}
+**Response**
 
 ```HTTP
-
 HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -476,8 +454,6 @@ Content-Type: application/json
 }
 ```
 
-***Properties***
-
 {:.table .table-striped}
 | Property| Data type| Description
 | payment | string |The relative URI of the payment this capture transaction belongs to.
@@ -488,7 +464,8 @@ Content-Type: application/json
 
 The `cancellations` resource lists the cancellation transactions on a specific payment.
 
-***Request***
+{:.code-header}
+**Request**
 
 ```HTTP
 GET /psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/cancellations HTTP/1.1
@@ -497,7 +474,8 @@ Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 ```
 
-***Response***
+{:.code-header}
+**Response**
 
 ```HTTP
 HTTP/1.1 200 OK
@@ -530,8 +508,6 @@ Content-Type: application/json
 }
 ```
 
-***Properties***
-
 {:.table .table-striped}
 | Property| Data type| Description
 | payment | string |The relative URI of the payment this list of cancellation transactions belong to.
@@ -543,7 +519,8 @@ Content-Type: application/json
 
 Perform the `create-cancel` operation to cancel a previously created payment. You can only cancel a payment - or part of payment - not yet captured.
 
-***Request***
+{:.code-header}
+**Request**
 
 ```HTTP
 POST /psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/cancellations HTTP/1.1
@@ -559,8 +536,6 @@ Content-Type: application/json
 }
 ```
 
-***Properties***
-
 {:.table .table-striped}
 | Property| Data type| Required| Description
 | cancellation.description | string |Y|A textual description of the reason for the cancellation.
@@ -568,10 +543,10 @@ Content-Type: application/json
 
 The `cancel` resource contains information about a cancellation transaction made against a payment. You can return a specific cancellation transaction by adding the transaction id to the `GET` request.
 
-***Response***
+{:.code-header}
+**Response**
 
 ```HTTP
-
 HTTP/1.1 200 OK
 Content-Type: application/json
 {
@@ -596,8 +571,6 @@ Content-Type: application/json
 }
 ```
 
-***Properties***
-
 {:.table .table-striped}
 | Property| Data type| Description
 | payment | string |The relative URI of the payment this cancellation transaction belongs to.
@@ -608,7 +581,8 @@ Content-Type: application/json
 
 The `reversals` resource lists the reversal transactions (one or more) on a specific payment.
 
-***Request***
+{:.code-header}
+**Request**
 
 ```HTTP
 GET /psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/reversals HTTP/1.1
@@ -617,10 +591,10 @@ Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 ```
 
-***Response***
+{:.code-header}
+**Response**
 
 ```HTTP
-
 HTTP/1.1 200 OK
 Content-Type: application/json
 {
@@ -650,8 +624,6 @@ Content-Type: application/json
 }
 ```
 
-***Properties***
-
 {:.table .table-striped}
 | Property| Type| Description
 | payment | string |The relative URI of the payment that the reversal transactions belong to.
@@ -662,7 +634,8 @@ Content-Type: application/json
 
 The `create-reversal` operation reverses a previously created and captured payment.
 
-***Request***
+{:.code-header}
+**Request**
 
 ```HTTP
 POST /psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/reversals HTTP/1.1
@@ -680,8 +653,6 @@ Content-Type: application/json
 }
 ```
 
-***Properties***
-
 {:.table .table-striped}
 | Property| Data type| Required| Description
 | transaction.amount | integer |Y|Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 NOK.
@@ -691,7 +662,8 @@ Content-Type: application/json
 
 The `reversal` resource contains information about a reversal transaction made against a payment. You can return a specific reversal transaction by adding the transaction id to the `GET` request.
 
-***Response***
+{:.code-header}
+**Response**
 
 ```HTTP
 HTTP/1.1 200 OK
@@ -719,15 +691,13 @@ Content-Type: application/json
 }
 ```
 
-***Properties***
-
 {:.table .table-striped}
 | Property| Data type| Description
 | payment | string |The relative URI of the payment this capture transaction belongs to.
 | reversal.id | string |The relative URI of the created capture transaction.
 | reversal.transaction | object |The object representation of the generic [`transaction`][technical-reference-transaction].
 
-` Callback
+### Callback
 
 When a change or update from the back-end system are made on a payment or transaction, PayEx will perform a callback to inform the payee (merchant) about this update. Callback functionality is explaned in more detail [here][technical-reference-callback].
 
@@ -750,7 +720,7 @@ deactivate PAYEX
 deactivate Merchant
 ```
 
-### **Problem messages**
+### Problem messages
 
 When performing unsuccessful operations, the eCommerce API will respond with a problem message. We generally use the problem message type and status code to identify the nature of the problem. The problem name and description will often help narrow down the specifics of the problem.
 
@@ -761,7 +731,7 @@ For general information about problem messages and error handling, [visit error 
 All Vipps error types will have the following URI in front of type: ``https://api.payex.com/psp/errordetail/vipps/<errorType>``
 
 {:.table .table-striped}
-| Type| Status|  
+| Type | Status |  
 | VIPPS_ERROR |403| All errors
 
 #### Error types from Vipps (Callback)
@@ -769,8 +739,8 @@ All Vipps error types will have the following URI in front of type: ``https://ap
 All Vipps error types will have the following URI in front of type: ``https://api.payex.com/psp/errordetail/vipps/<errorType>``
 
 {:.table .table-striped}
-| Type| Status|  
-| VIPPS_DECLINED |400|Any status that is not YES
+| Type | Status |  
+| VIPPS_DECLINED | 400 | Any status that is not YES
 
 #### Error types from Acquirer
 
@@ -778,34 +748,32 @@ All Vipps error types will have the following URI in front of type: ``https://ap
 
 {:.table .table-striped}
 | Type| Status|  
-| CARD_BLACKLISTED |400| 
-| PAYMENT_TOKEN_ERROR |403| 
-| CARD_DECLINED |403| 
-| ACQUIRER_ERROR |403| 
-| ACQUIRER_CARD_BLACKLISTED |403| 
-| ACQUIRER_CARD_EXPIRED |403| 
-| ACQUIRER_CARD_STOLEN |403| 
-| ACQUIRER_INSUFFICIENT_FUNDS |403| 
-| ACQUIRER_INVALID_AMOUNT |403| 
-| ACQUIRER_POSSIBLE_FRAUD |403| 
-| FRAUD_DETECTED |403| 
-| BAD_REQUEST |500| 
-| INTERNAL_SERVER_ERROR |500| 
-| BAD_GATEWAY |502| 
-| ACQUIRER_GATEWAY_ERROR |502| 
-| ACQUIRER_GATEWAY_TIMEOUT |504| 
-| UNKNOWN_ERROR |500| 
+| *CARD_BLACKLISTED* |400| 
+| *PAYMENT_TOKEN_ERROR* |403| 
+| *CARD_DECLINED* |403| 
+| *ACQUIRER_ERROR* |403| 
+| *ACQUIRER_CARD_BLACKLISTED* |403| 
+| *ACQUIRER_CARD_EXPIRED* |403| 
+| *ACQUIRER_CARD_STOLEN* |403| 
+| *ACQUIRER_INSUFFICIENT_FUNDS* |403| 
+| *ACQUIRER_INVALID_AMOUNT* |403| 
+| *ACQUIRER_POSSIBLE_FRAUD* |403| 
+| *FRAUD_DETECTED* |403| 
+| *BAD_REQUEST* |500| 
+| *INTERNAL_SERVER_ERROR* |500| 
+| *BAD_GATEWAY* |502| 
+| *ACQUIRER_GATEWAY_ERROR* |502| 
+| *ACQUIRER_GATEWAY_TIMEOUT* |504| 
+| *UNKNOWN_ERROR* |500| 
 
-[technical-reference]: #
-[technical-reference-expansion]: #
-[technical-reference-callback]: #
-[technical-reference-callbackurl]: #
-[user-agent]: https://en.wikipedia.org/wiki/User_agent
-[technical-reference-payeeReference]: #
-[technical-reference-abort]: #
-[technical-reference-capture]: #
-[technical-reference-cancel]: #
-[technical-reference-reverse]: #
 [core-payment-resources]: #
-[technical-reference-transaction]: #
+[technical-reference-abort]: #
+[technical-reference-callback]: #
+[technical-reference-cancel]: #
+[technical-reference-capture]: #
+[technical-reference-expansion]: #
+[technical-reference-payeeReference]: #
 [technical-reference-problemmessages]: #
+[technical-reference-reverse]: #
+[technical-reference-transaction]: #
+[user-agent]: https://en.wikipedia.org/wiki/User_agent

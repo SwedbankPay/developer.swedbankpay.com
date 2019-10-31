@@ -1,21 +1,23 @@
 ## Payment Link
 
->The implementation sequence for this scenario is a variant of the purchase sequence in a [Hosted Payment Pages redirect scenario][payment-pages-redirect-implementation]. The consumer is not redirected to the payment pages directly but will instead receive a payment link via mail/SMS. When the consumer clicks on the link a payment window opens.
-
+{% include jumbotron.html body="The implementation sequence for this scenario
+is a variant of the purchase sequence. The consumer is not redirected to the
+payment pages directly but will instead receive a payment link via mail/SMS.
+When the consumer clicks on the link, a payment window opens." %}
 
 ### Introduction
 
 * The Payment Link can be implemented for payment methods listed below, using the Redirect platform and hosted payment pages.  
-** [Credit card][payment-instruments-card-payment-pages]
-** [MobilePay][payment-instruments-mobilepay-payment-pages]
-** [Swish][swish]
-** [Vipps][vipps]
-* When the consumer/end-user starts the purchase process in your merchant/wehshop site, you need to make a `POST` request towards PayEx with your *Purchase* information. You receive a Payment Link (same as redirect URL) in response. 
+  * [Credit card][payment-instruments-card-payment-pages]
+  * [MobilePay][payment-instruments-mobilepay-payment-pages]
+  * [Swish][swish]
+  * [Vipps][vipps]
+* When the consumer/end-user starts the purchase process in your merchant or webshop site, you need to make a `POST` request towards PayEx with your *Purchase* information. You receive a Payment Link (same as redirect URL) in response.
 * You have to distribute the Payment Link to the customer through your order system, using channels like e-mail or SMS.
-** NOTE: When sending information in e-mail/SMS, it is strongly recommended that you add information about your terms and conditions, including purchase information and price. **See recommendations in the next paragraph.**
-* When the consumer clicks on the Payment Link, the PayEx payment page will open, letting the consumer enter the payment details (varying depending on payment instrument) in a secure PayEx hosted environment. When paying with credit card and if required, PayEx will handle 3D-secure authentication 
+  * NOTE: When sending information in e-mail/SMS, it is strongly recommended that you add information about your terms and conditions, including purchase information and price. **See recommendations in the next paragraph.**
+* When the consumer clicks on the Payment Link, the PayEx payment page will open, letting the consumer enter the payment details (varying depending on payment instrument) in a secure PayEx hosted environment. When paying with credit card and if required, PayEx will handle 3D-secure authentication
 * After completion, PayEx will redirect the browser back to your merchant/webshop site.
-* If [`CallbackURL`][technical-reference-callbackurl] is set the merchant system will receive a callback from PayEx, enabling you to make a `GET` request towards PayEx with the *paymentID* received in the first step, which will return the purchase result.
+* If [`CallbackURL`][technical-reference-callbackurl] is set the merchant system will receive a callback from PayEx, enabling you to make a `GET` request towards PayEx with the `paymentID` received in the first step, which will return the purchase result.
 
 ### Recommendations regarding Payment Link in E-mail/SMS
 
@@ -35,30 +37,30 @@ We recommend that you send an e-mail or SMS confirmation with a receipt to the c
 
 ### API requests 
 
-The API-requests depend on the payment method you are using when implementing the Payment Link scenario, see [purchase flow][purchase-flow] One-phase payment metods will not implement capture, cancellation or reversal. The options you can choose from when creating a payment with key ##operation## set to Value ##Purchase## are listed below. The general REST based API model is described in the [technical reference][technical-reference].
+The API-requests depend on the payment method you are using when implementing the Payment Link scenario, see [purchase flow][purchase-flow] One-phase payment metods will not implement `capture`, `cancellation` or `reversal`. The options you can choose from when creating a payment with key `operation` set to Value `Purchase` are listed below. The general REST based API model is described in the [technical reference][technical-reference].
 
 ### Screenshots 
 
 When clicking the payment link, the consumer will be directed to a payment page, similar to the examples below, where payment information can be entered.
 
-![Merchant screenshot][1551694498854-650]
+![Paymentlink screenshot][test_purchase]
 
 ### Options
 
-All valid options when posting in a payment with operation ##Purchase##, are described in each payment method's respective API reference. Please see the general sequence diagrams for more information about payments in one-phase (e.g. [Swish][swish] and credit card with autocapture) and two-phase (e.g. [Credit card][credit-card], [MobilePay][mobile-pay], [Vipps][vipps]).
+All valid options when posting in a payment with operation `Purchase`, are described in each payment method's respective API reference. Please see the general sequence diagrams for more information about payments in one-phase (e.g. [Swish][swish] and credit card with autocapture) and two-phase (e.g. [Credit card][credit-card], [MobilePay][mobile-pay], [Vipps][vipps]).
 
 #### Authorization
 
 * PreAuthorization (Credit card):
-** If you specify that the _intent_ of the _purchase_ is `PreAuthorize` it's almost the same as an authorization, **except that no money will be reserved** from the consumers credit card, [before you make a finalize on this transaction (using the PATCH on the Autorization)][technical-reference-finalize].
+  * If you specify that the _intent_ of the _purchase_ is `PreAuthorize` it's almost the same as an authorization, **except that no money will be reserved** from the consumers credit card, [before you make a finalize on this transaction (using the PATCH on the Autorization)][technical-reference-finalize].
 
 * Authorize (two-phase):
-** When using two-phase flows you reserve the amount with an authorization, you will have to specify that the _intent_ of the _purchase_ is `Authorize`. The amount will be reserved but not charged. You will later (i.e. when you are ready to ship the purchased products) have to make a Capture or Cancel request.
+  * When using two-phase flows you reserve the amount with an authorization, you will have to specify that the _intent_ of the _purchase_ is `Authorize`. The amount will be reserved but not charged. You will later (i.e. when you are ready to ship the purchased products) have to make a `Capture` or `Cancel` request.
 
 #### Capture
 
 * Autocapture (one-phase credit card):
-** If you want the credit card to be charged right away, you will have to specify that the _intent_ of the purchase is `Autocapture`. The credit card will be charged and you don't need to do any more financial operations to this purchase.
+  * If you want the credit card to be charged right away, you will have to specify that the _intent_ of the purchase is `Autocapture`. The credit card will be charged and you don't need to do any more financial operations to this purchase.
 
 #### General
 
@@ -120,9 +122,9 @@ deactivate Merchant
 
 #### Options after posting a payment
 
-* If the payment enable a two-phase flow (`Authorize`), you will need to implement the Capture and Cancel requests.
+* If the payment enable a two-phase flow (`Authorize`), you will need to implement the `Capture` and `Cancel` requests.
 * It is possible to "abort" the validity of the Payment Link by making a `PATCH` on the payment. [See the PATCH payment description][abort].
-* For reversals, you will need to implement the ##Reversal## request.
+* For reversals, you will need to implement the `Reversal` request.
 * If you did a PreAuthorization, you will have to send a Finalize to the transaction using [PATCH on the Authorization][payment-instruments-card-payment-pages].
 * When implementing the Payment Link scenario, it is optional to set a CallbackURL in the `POST` request. If CallbackURL is set PayEx will send a postback request to this URL when the consumer as fulfilled the payment. [See the Callback API description here][technical-reference-callback].
 
@@ -168,8 +170,7 @@ deactivate PayEx
 deactivate Merchant
 ```
 
-[1551694498854-650]: /assets/img/1551694498854-650.png
-{:width="535px" height="481px" :text-align="center"}
+[test_purchase]: /assets/img/checkout/test_purchase.png
 [payment-pages-redirect-implementation]: #
 [payment-instruments-card-payment-pages]: #
 [payment-instruments-mobilepay-payment-pages]: #

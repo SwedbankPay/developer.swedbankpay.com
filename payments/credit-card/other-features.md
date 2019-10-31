@@ -1,41 +1,25 @@
 ---
-title: Swedbank Pay Payments Credit Card Seamless View
+title: Swedbank Pay Payments Credit Card Other Features
 sidebar:
   navigation:
-  - title: Payments
+  - title: Credit Card Payments
     items:
-    - url: /payments/
+    - url: /payments/credit-card/
       title: Introduction
-    - url: /payments/credit-account
-      title: Credit Account Payments
-    - url: /payments/credit-card
-      title: Credit Card Payments
     - url: /payments/credit-card/redirect
-      title: Credit Card Redirect
-    - url: /payments/credit-card/seamless-view
-      title: Credit Card Seamless View
+      title: Redirect
+    - url: /payments/credit-card/direct
+      title: Direct
     - url: /payments/credit-card/after-payment
-      title: Credit Card After Payments
+      title: After Payment
     - url: /payments/credit-card/other-features
-      title: Credit Card Other Features
-    - url: /payments/invoice
-      title: Invoice Payments
-    - url: /payments/direct-debit
-      title: Direct Debit Payments
-    - url: /payments/mobile-pay
-      title: Mobile Pay Payments
-    - url: /payments/swish
-      title: Swish Payments
-    - url: /payments/vipps
-      title: Vipps Payments
+      title: Other Features
 ---
 
 {% include alert.html type="warning"
                       icon="warning"
                       header="Site under development"
                       body="The Developer Portal is under construction and should not be used to integrate against Swedbank Pay's APIs yet." %}
-
-
 
 ## Recur
 
@@ -79,8 +63,6 @@ Content-Type: application/json
 {% include one-click-payments.md %}
 
 {% include payment-link.md %}
-
-{% include payment-menu-styling.md %}
 
 {% include subsite.md %}
 

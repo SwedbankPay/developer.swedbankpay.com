@@ -2,28 +2,14 @@
 title: Swedbank Pay Payments Credit Account
 sidebar:
   navigation:
-  - title: Payments
+  - title: Credit Account Payments
     items:
-    - url: /payments/
+    - url: /payments/credit-account/
       title: Introduction
-    - url: /payments/credit-account
-      title: Credit Account
     - url: /payments/credit-account/after-payment
-      title: Credit Account After Payment
+      title: After Payment
     - url: /payments/credit-account/other-features
-      title: Credit Account Other Features
-    - url: /payments/credit-card
-      title: Credit Card Payments
-    - url: /payments/invoice
-      title: Invoice Payments
-    - url: /payments/direct-debit
-      title: Direct Debit Payments
-    - url: /payments/mobile-pay
-      title: Mobile Pay Payments
-    - url: /payments/swish
-      title: Swish Payments
-    - url: /payments/vipps
-      title: Vipps Payments
+      title: Other Features
 ---
 
 {% include alert.html type="warning"
