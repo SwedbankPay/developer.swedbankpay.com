@@ -142,8 +142,8 @@ Note that the `<script>` element is added after the `<div>` container the
 Checkin will be hosted in. When this is set up, something along the
 following should appear:
 
-
-![Consumer UI][consumer-image]
+{:.text-center}
+![Consumer UI][checkin-image]{:width="564" height="293"}
 
 As you can see, the payer's information is pre-filled as provided by the
 initial `POST`. When the payer completes the checkin, the events
@@ -336,7 +336,6 @@ Content-Type: application/json
 |  | └─➔&nbsp;`zipCode`           | `string`      | If shipIndicator set to 4, then prefil this.
 |  | └─➔&nbsp;`countryCode`           | `string`      | If shipIndicator set to 4, then prefil this.
 
-
 The response back should look something like this (abbreviated for brevity):
 
 {:.code-header}
@@ -444,7 +443,8 @@ create the script element with JavaScript, all inside the event handler for
 
 This should bring up the Payment Menu in a hosted view, looking something like this:
 
-![1551693185782-957.png]
+{:.text-center}
+![Payment Menu][payment-menu-image]{:width="556" height="798"}
 
 When the consumer completes the payment, the Payment Menu script will be
 signaled and a full redirect to the `completeUrl` sent in with the
@@ -459,9 +459,8 @@ functions. You can also invoke `.refresh()` to
 order.
 
 
-[1551693185782-957.png]: /assets/img/checkout/payment_methods.png
-{:width="458px" :height="629px"}
-[consumer-image]: /assets/img/checkout/your_information.png
+[payment-menu-image]: /assets/img/checkout/payment_methods.png
+[checkin-image]: /assets/img/checkout/your_information.png
 [payment-order]: #
 [initiate-consumer-session]: #
 [view-consumer-identification]: #
