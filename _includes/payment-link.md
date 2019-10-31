@@ -43,7 +43,7 @@ The API-requests depend on the payment method you are using when implementing th
 
 When clicking the payment link, the consumer will be directed to a payment page, similar to the examples below, where payment information can be entered.
 
-![Merchant screenshot][1551694498854-650]
+![Paymentlink screenshot][test_purchase]
 
 ### Options
 
@@ -170,7 +170,7 @@ deactivate PayEx
 deactivate Merchant
 ```
 
-[1551694498854-650]: /assets/img/1551694498854-650.png
+[test_purchase]: /assets/img/checkout/test_purchase.png
 [payment-pages-redirect-implementation]: #
 [payment-instruments-card-payment-pages]: #
 [payment-instruments-mobilepay-payment-pages]: #

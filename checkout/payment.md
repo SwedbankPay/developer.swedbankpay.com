@@ -457,9 +457,9 @@ functions. You can also invoke `.refresh()` to
 order.
 
 
-[1551693185782-957.png]: /assets/img/1551693185782-957.png
+[1551693185782-957.png]: /assets/img/checkout/payment_methods.png
 {:width="458px" :height="629px"}
-[consumer-image]: /assets/img/Consumer.PNG
+[consumer-image]: /assets/img/checkout/your_information.png
 
 [payment-order]: #
 [initiate-consumer-session]: #
@@ -469,4 +469,3 @@ order.
 [payee-reference]: #
 [consumer-events]: #
 [payment-order-operations]: #
-

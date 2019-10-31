@@ -71,7 +71,7 @@ When redirecting to PayEx (as specified in [the Redirect scenario][redirect]) th
 
 ### Screenshots 
 
-![payment page][payment-page]
+![One click payment page][one-click-image]
 
 ### Delete payment token 
 
@@ -84,5 +84,5 @@ Please see [Delete payment token][delete-payment-token]
 [invoice]: #
 [credit-card-api]: #
 [technical-reference]: #
-[payment-page]: /assets/img/1551694133222-896.png
+[one-click-image]: /assets/img/checkout/one_click.png
 [delete-payment-token]: #
