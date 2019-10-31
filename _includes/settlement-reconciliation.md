@@ -1,6 +1,8 @@
 ## Settlement and Reconcilliation
 
->Reconciliation is an important step in an economic transaction. When a payment is reconciled,  captured amounts for the payment are matched against the corresponding settlement.
+{% include jumbotron.html body="Reconciliation is an important step in an
+economic transaction. When a payment is reconciled,  captured amounts for
+the payment are matched against the corresponding settlement." %}
 
 The information needed to reconcile captured funds - the balance report and transactions list - are available for all merchants using PayEx. By default you receive these files by e-mail, but it is also possible to get them via FTP access. Contact [[omni.client@payex.com>>mailto:omni.client@payex.com]] for further inquiries regarding this. The settlement frequency is defined in the agreement and you will receive a report for each payout and/or invoice.
 
@@ -108,7 +110,6 @@ PayEx.BackOffice->Merchant: Transaction list (XLSX-file)
 PayEx.BackOffice->Merchant: Transaction list (XML-file)
 deactivate Merchant
 ```
-
 
 **There are two ways** for you to match the information from your system with the information given in the reconciliation files from PayEx:
 

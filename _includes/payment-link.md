@@ -1,19 +1,21 @@
 ## Payment Link
 
->The implementation sequence for this scenario is a variant of the purchase sequence in a [Hosted Payment Pages redirect scenario][payment-pages-redirect-implementation]. The consumer is not redirected to the payment pages directly but will instead receive a payment link via mail/SMS. When the consumer clicks on the link a payment window opens.
-
+{% include jumbotron.html body="The implementation sequence for this scenario
+is a variant of the purchase sequence. The consumer is not redirected to the
+payment pages directly but will instead receive a payment link via mail/SMS.
+When the consumer clicks on the link, a payment window opens." %}
 
 ### Introduction
 
 * The Payment Link can be implemented for payment methods listed below, using the Redirect platform and hosted payment pages.  
-** [Credit card][payment-instruments-card-payment-pages]
-** [MobilePay][payment-instruments-mobilepay-payment-pages]
-** [Swish][swish]
-** [Vipps][vipps]
-* When the consumer/end-user starts the purchase process in your merchant/wehshop site, you need to make a `POST` request towards PayEx with your *Purchase* information. You receive a Payment Link (same as redirect URL) in response. 
+  * [Credit card][payment-instruments-card-payment-pages]
+  * [MobilePay][payment-instruments-mobilepay-payment-pages]
+  * [Swish][swish]
+  * [Vipps][vipps]
+* When the consumer/end-user starts the purchase process in your merchant or webshop site, you need to make a `POST` request towards PayEx with your *Purchase* information. You receive a Payment Link (same as redirect URL) in response.
 * You have to distribute the Payment Link to the customer through your order system, using channels like e-mail or SMS.
-** NOTE: When sending information in e-mail/SMS, it is strongly recommended that you add information about your terms and conditions, including purchase information and price. **See recommendations in the next paragraph.**
-* When the consumer clicks on the Payment Link, the PayEx payment page will open, letting the consumer enter the payment details (varying depending on payment instrument) in a secure PayEx hosted environment. When paying with credit card and if required, PayEx will handle 3D-secure authentication 
+  * NOTE: When sending information in e-mail/SMS, it is strongly recommended that you add information about your terms and conditions, including purchase information and price. **See recommendations in the next paragraph.**
+* When the consumer clicks on the Payment Link, the PayEx payment page will open, letting the consumer enter the payment details (varying depending on payment instrument) in a secure PayEx hosted environment. When paying with credit card and if required, PayEx will handle 3D-secure authentication
 * After completion, PayEx will redirect the browser back to your merchant/webshop site.
 * If [`CallbackURL`][technical-reference-callbackurl] is set the merchant system will receive a callback from PayEx, enabling you to make a `GET` request towards PayEx with the *paymentID* received in the first step, which will return the purchase result.
 
@@ -169,7 +171,6 @@ deactivate Merchant
 ```
 
 [1551694498854-650]: /assets/img/1551694498854-650.png
-{:width="535px" height="481px" :text-align="center"}
 [payment-pages-redirect-implementation]: #
 [payment-instruments-card-payment-pages]: #
 [payment-instruments-mobilepay-payment-pages]: #
