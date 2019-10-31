@@ -2,16 +2,6 @@
 title: Swedbank Pay Payments Credit Account
 sidebar:
   navigation:
-  - title: Checkout
-    items:
-    - url: /checkout/
-      title: Introduction
-    - url: /checkout/payment
-      title: Checkout Payment
-    - url: /checkout/after-payment
-      title: Checkout After Payment
-    - url: /checkout/other-features
-      title: Checkout Other Features
   - title: Payments
     items:
     - url: /payments/

@@ -2,94 +2,18 @@
 title: Swedbank Pay Payments Credit Card Seamless View
 sidebar:
   navigation:
-  - title: Checkout
+  - title: Credit Card Payments
     items:
-    - url: /checkout/
+    - url: /payments/credit-card/
       title: Introduction
-    - url: /checkout/payment
-      title: Checkout Payment
-    - url: /checkout/after-payment
-      title: Checkout After Payment
-    - url: /checkout/other-features
-      title: Checkout Other Features
-  - title: Payments
-    items:
-    - url: /payments/
-      title: Introduction
-    - url: /payments/credit-card
-      title: Credit Card Payments
     - url: /payments/credit-card/redirect
-      title: Credit Card Redirect
+      title: Redirect
     - url: /payments/credit-card/seamless-view
-      title: Credit Card Seamless View
+      title: Seamless View
     - url: /payments/credit-card/after-payment
-      title: Credit Card After Payments
+      title: After Payment
     - url: /payments/credit-card/other-features
-      title: Credit Card Other Features
-    - url: /payments/invoice
-      title: Invoice Payments
-    - url: /payments/invoice/redirect
-      title: Invoice Redirect
-    - url: /payments/invoice/seamless-view
-      title: Invoice Seamless View
-    - url: /payments/invoice/after-payment
-      title: Invoice After Payment
-    - url: /payments/invoice/other-features
-      title: Invoice Other Features
-    - url: /payments/mobile-pay
-      title: Mobile Pay Payments
-    - url: /payments/mobile-pay/redirect
-      title: Mobile Pay Redirect
-    - url: /payments/mobile-pay/seamless-view
-      title: Mobile Pay Seamless View
-    - url: /payments/mobile-pay/after-payment
-      title: Mobile Pay After Payment
-    - url: /payments/mobile-pay/other-features
-      title: Mobile Pay Other Features
-    - url: /payments/swish
-      title: Swish Payments
-    - url: /payments/swish/redirect
-      title: Swish Redirect
-    - url: /payments/swish/seamless-view
-      title: Swish Seamless View
-    - url: /payments/swish/after-payment
-      title: Swish After Payment
-    - url: /payments/swish/other-features
-      title: Swish Other Features
-    - url: /payments/vipps
-      title: Vipps Payments
-    - url: /payments/vipps/redirect
-      title: Vipps Redirect
-    - url: /payments/vipps/seamless-view
-      title: Vipps Seamless View
-    - url: /payments/vipps/after-payment
-      title: Vipps After After Payment
-    - url: /payments/vipps/other-features    
-      title: Vipps Other Features
-    - url: /payments/direct-debit
-      title: Direct Debit Payments
-    - url: /payments/direct-debit/redirect
-      title: Direct Debit Redirect
-    - url: /payments/direct-debit/seamless-view
-      title: Direct Debit Seamless View
-    - url: /payments/direct-debit/after-payment
-      title: Direct Debit After Payments
-    - url: /payments/direct-debit/other-features
-      title: Direct Debit Other Features
-    - url: /payments/credit-account
-      title: Credit Account
-    - url: /payments/credit-account/after-payment
-      title: Credit Account After Payment
-    - url: /payments/credit-account/other-features
-      title: Credit Account Other Features
-  - title: Resources
-    items:
-    - url: /resources/
-      title: Introduction
-    - url: /resources/test-data
-      title: Test Data
-    - url: /resources/demoshop
-      title: Demoshop
+      title: Other Features
 ---
 
 {% include alert.html type="warning"
@@ -97,17 +21,14 @@ sidebar:
                       header="Site under development"
                       body="The Developer Portal is under construction and should not be used to integrate against Swedbank Pay's APIs yet." %}
 
-## Introduction
-
-{% include alert.html type="error"
+{% include alert.html type="warning"
                       icon="error"
                       header="PCI-DSS Complicance"
                       body="The direct integration option requires you to collect the card data on your website, which means it must be [PCI-DSS Compliant][PCI-link]." %}
 
->The seamless view payment scenario **is used by customers that are compliant with PCI-DSS regulations**, and is a way to implement card payments without using PayEx Hosted payment pages.  
-
-
-                      
+{% include jumbotron.html body="The Direct Payment scenario **is used by
+customers that are compliant with PCI-DSS regulations**, and is a way to
+implement card payments without using PayEx Hosted payment pages.  " %}
 
 * The payer places an order and you make a `POST` request towards PayEx with gathered `Purchase` information. The action taken next is the `direct-authorization` operation that is returned in the first request. 
 * You `POST` the payer's card data to the URL in the [`direct-authorization` operation](#options-before-posting-a-payment-1).
