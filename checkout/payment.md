@@ -458,6 +458,280 @@ functions. You can also invoke `.refresh()` to
 [update the Payment Menu][payment-order-operations] after any changes to the
 order.
 
+## Payment Orders
+
+The `paymentorders` resource is used when initiating a payment process through [Payment Menu][payment-menu] and [PayEx Checkout](/checkout/index). The payment order is a container for the payment method object selected by the payer. This will generate a payment that is accessed through the sub-resources `payments` and `currentPayment`.
+
+{:.code-header}
+**Request**
+
+```http
+GET /psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/ HTTP/1.1
+Host: api.payex.com
+Authorization: Bearer <MerchantToken>
+Content-Type: application/json
+```
+
+{:.code-header}
+**Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "paymentorder": {
+        "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
+        "created": "2018-09-14T13:21:29.3182115Z",
+        "updated": "2018-09-14T13:21:57.6627579Z",
+        "operation": "Purchase",
+        "state": "Ready",
+        "currency": "SEK",
+        "amount": 1500,
+        "vatAmount": 0,
+        "remainingCaptureAmount": 1500,
+        "remainingCancellationAmount": 1500,
+        "remainingReversalAmount": 0,
+        "description": "Test Purchase",
+        "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
+        "userAgent": "Mozilla/5.0...",
+        "language": "nb-NO",
+        "urls" : { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/urls" },
+        "payeeInfo" : { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeinfo" },
+        "settings": { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/settings" },
+        "payers": { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/payers" },
+        "orderItems" : { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/orderItems" },
+        "metadata": { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/metadata" },
+        "payments": { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/payments" },
+        "currentPayment": { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/currentpayment" }
+    },
+    "operations": [
+        {
+            "method": "PATCH",
+            "href": "https://api.externalintegration.payex.com/psp/paymentorders/479a7a2b-3b20-4302-fa84-08d676d15bc0",
+            "rel": "update-paymentorder-abort",
+            "contentType": "application/json"
+        },
+        {
+            "method": "GET",
+            "href": "https://ecom.externalintegration.payex.com/paymentmenu/4b0baaf8fdb5a56b5bdd78a8dd9e63e42e93ec79e5d0c0b5cc40f79cf43c9428",
+            "rel": "redirect-paymentorder",
+            "contentType": "text/html"
+        },
+        {
+            "method": "GET",
+            "href": "https://ecom.externalintegration.payex.com/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=4b0baaf8fdb5a56b5bdd78a8dd9e63e42e93ec79e5d0c0b5cc40f79cf43c9428&culture=nb-NO",
+            "rel": "view-paymentorder",
+            "contentType": "application/javascript"
+        } 
+    ]   
+}
+```
+
+{:.table .table-striped}
+| Property | Type | Description | 
+| paymentorder | object | The payment order object.
+| paymentorder.id | string | The relative URI to the payment order.
+| paymentorder.created | string | The ISO-8601 date of when the payment order was created.
+| paymentorder.updated | string | The ISO-8601 date of when the payment order was updated.
+| paymentorder.operation | string | Purchase
+| paymentorder.state | string | `Ready`, `Pending`, `Failed` or `Aborted`. Indicates the state of the payment order. This field is oy for tatus display purposes.
+| paymentorder.currency | string | The currency of the payment order.
+| paymentorder.amount | integer | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK`, a `5000` quals `50.00 NOK`.
+| paymentorder.vatAmount | integer | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals `50.00 NOK`.
+| paymentorder.description | string(40) | A textual description of maximum 40 characters of the purchase.
+| paymentorder.userAgent | string | The [user agent][user-agent] string of the consumer's browser.
+| paymentorder.language | string | `nb-NO`, `sv-SE` or `en-US`
+| paymentorder.urls | string | The URI to the `urls` resource where all URIs related to the payment order can be retrieved.
+| paymentorder.payeeInfo | string | The URI to the `payeeinfo` resource where the information about the payee of the payment order can bretrieved. 
+| paymentorder.payers | string | The URI to the `payers` resource where information about the payee of the payment order can be rrieved.
+| paymentorder.orderItems | string | The URI to the `orderItems` resource where information about the order items can be retrieved.
+| paymentorder.metadata | string | The URI to the `payments` resource where information about all underlying payments can be retrieved.
+| paymentorder.payments | string | The URI to the `payments` resource where information about all underlying payments can be retrieved.
+| paymentorder.currentPayment | string | The URI to the ##currentPayment## resource where information about the current – and sole active –ayment can e retrieved.
+| paymentorder.operations | array | The array of possible operations to perform, given the state of the payment order. [See Operations for details][operations].
+
+### Creating a payment order
+
+To create a payment order, you perform a `POST` request towards the ##paymentorders## resource:
+
+{:.code-header}
+**Request**
+
+```http
+POST /psp/paymentorders HTTP/1.1
+Authorization: Bearer <MerchantToken>
+Content-Type: application/json
+
+{
+    "paymentorder": {
+        "operation": "Purchase",
+        "currency": "NOK",
+        "amount": 1500,
+        "vatAmount": 0,
+        "description": "Test Purchase",
+        "userAgent": "Mozilla/5.0...",
+        "language": "nb-NO",
+        "generateRecurrenceToken": false,
+        "disablePaymentMenu": false,
+        "urls": {
+            "hostUrls": ["https://example.com", "https://example.net"],
+            "completeUrl": "https://example.com/payment-completed",
+            "cancelUrl": "https://example.com/payment-canceled",
+            "paymentUrl": "https://example.com/perform-payment",
+            "callbackUrl": "https://api.example.com/payment-callback",
+            "termsOfServiceUrl": "https://example.com/termsandconditoons.pdf",
+            "logoUrl": "https://example.com/logo.png"
+        },
+        "payeeInfo": {
+            "payeeId": "12345678-1234-1234-1234-123456789012",
+            "payeeReference": "CD1234",
+            "payeeName": "Merchant1",
+            "productCategory": "A123",
+            "orderReference" : "or-123456",
+            "subsite": "Subsite1"
+        },
+        "payer": {
+            "consumerProfileRef": "7d5788219e5bc43350e75ac633e0480ab30ad20f96797a12b96e54da869714c4",
+        },
+        "orderItems": [
+            {
+                "reference": "P1",
+                "name": "Product1",
+                "type": "PRODUCT",
+                "class": "ProductGroup1",
+                "itemUrl": "https://example.com/products/123",
+                "imageUrl": "https://example.com/product123.jpg",
+                "description": "Product 1 description",
+                "discountDescription": "Volume discount",
+                "quantity": 4,
+                "quantityUnit": "pcs",
+                "unitPrice": 300,
+                "discountPrice": 200,
+                "vatPercent": 2500,
+                "amount": 1000,
+                "vatAmount": 250
+            },
+            {
+                "reference": "P2",
+                "name": "Product2",
+                "type": "PRODUCT",
+                "class": "ProductGroup1",
+                "description": "Product 2 description",
+                "quantity": 1,
+                "quantityUnit": "pcs",
+                "unitPrice": 500,
+                "vatPercent": 2500,
+                "amount": 500,
+                "vatAmount": 125
+            }
+        ],
+        "metadata": {
+            "key1": "value1",
+            "key2": 2,
+            "key3": 3.1,
+            "key4": false
+        },
+        "items": [
+            {
+                "creditCard": {
+                    "rejectCreditCards": false,
+                    "rejectDebitCards": false,
+                    "rejectConsumerCards": false,
+                    "rejectCorporateCards": false
+                }
+            },
+            {
+                "invoice": {
+                    "feeAmount": 1900
+                }
+            },
+            {
+                "swish": {
+                    "enableEcomOnly": false
+                }
+            }
+        ]
+    }
+}
+```
+
+{:.table .table-striped}
+| Property | Type | Required | Description
+| paymentorder | object | ✔︎︎︎︎︎ | The payment order object.
+| paymentorder.operation | string | ✔︎︎︎︎︎ | The operation that the payment order is supposed to perform.
+| paymentorder.currency | string | ✔︎︎︎︎︎ | The currency of the payment.
+| paymentorder.amount | integer | ✔︎︎︎︎︎ | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `5000` equals `50.00 NOK`.
+| paymentorder.vatAmount | integer | ✔︎︎︎︎︎ | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals `50.00 NOK`.
+| paymentorder.description | string | ✔︎︎︎︎︎ | The description of the payment order.
+| paymentorder.userAgent | string | ✔︎︎︎︎︎ | The user agent of the payer.
+| paymentorder.language | string | ✔︎︎︎︎︎ | The language of the payer.
+| paymentorder.generateRecurrenceToken | boolean | ✔︎︎︎︎︎ | Determines if a payment token should be generated. A recurrence token is primarily used to enable future recurring payments - with the same token - through server-to-server calls. Default value is ##false##
+| paymentorder.urls | object | ✔︎︎︎︎︎ | The object containing the payee's (such as the webshop or merchant) URLs that are relevant for this payment order. See [URLs for details][urls].
+| paymentorder.payeeInfo.payeeId | string | ✔︎︎︎︎︎ | The ID of the payee, usually the merchant ID.
+| paymentorder.payeeInfo.payeeReference | string(30) | ✔︎︎︎︎︎ | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.
+| paymentorder.payeeInfo.payeeName | string | | The name of the payee, usually the name of the merchant.
+| paymentorder.payeeInfo.productCategory | string | | A product category or number sent in from the payee/merchant. This is not validated by PayEx, but will be passed through the payment process and may be used in the settlement process.
+| paymentorder.payeeInfo.orderReference | string(50) | | The order reference should reflect the order reference found in the merchant's systems.
+| paymentorder.payeeInfo.subsite | String(40) | | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with PayEx reconciliation before being used.
+| paymentorder.payer.consumerProfileRef | string | | The consumer profile reference as obtained through the [Consumers][consumer-reference] API.
+| paymentorder.orderItems | array | | The array of items being purchased with the order. Used to print on invoices if the payer chooses to pay with invoice, among other things. [See Order Items for details][order-items].
+| paymentorder.metadata | object | | The keys and values that should be associated with the payment order. Can be additional identifiers and data you want to associate with the payment.
+| paymentorder.items | array | |The array of items that will affect how the payment is performed. [See Items][paymentorder-items] for details.
+
+{:.code-header}
+**Response**
+
+The response given when creating a payment order is equivalent to a `GET` Request towards the `paymentorders` resource, [as displayed above](#payment-orders)
+
+#### URLs
+
+The `urls` property of the ##paymentOrder## contains the URIs related to a payment order, including where the consumer gets redirected when going forward with or cancelling a payment session, as well as the callback URI that is used to inform the payee (merchant) of changes or updates made to underlying payments or transaction.
+
+{:.table .table-striped}
+| Property | Type | Required | Description
+| hostUrls | array | ✔︎︎︎︎︎ | The array of URIs valid for embedding of PayEx Hosted Views.
+| completeUrl | string | ✔︎︎︎︎︎ | The URI to redirect the payer to once the payment is completed.
+| cancelUrl | string | |The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios. 
+| paymentUrl | string | |The URI that PayEx will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. Only used in hosted views. If both cancelUrl and paymentUrl is sent, the paymentUrl will used.
+| callbackUrl | string | |The URI to the API endpoint receiving ##POST## requests on transaction activity related to the payment order.
+| termsOfServiceUrl | string | ✔︎︎︎︎︎ | The URI to the terms of service document the payer must accept in order to complete the payment. **HTTPS is a requirement**.
+| logoUrl | string | |The URI to the logo that will be displayed on redirect pages. **HTTPS is a requirement**.
+
+#### Order Items
+
+The `orderItems` property of the ##paymentOrder## is an array containing the items being purchased with the order. Used to print on invoices if the payer chooses to pay with invoice, among other things. Order items can be specified on both payment order creation as well as on [Capture][payment-order-capture].
+
+{:.table .table-striped}
+| PropertY | Type | Required | Description
+| reference | string | ✔︎︎︎︎︎ | A reference that identifies the order item.
+| name | string | ✔︎︎︎︎︎ | The name of the order item.
+| type | string | ✔︎︎︎︎︎ |  `PRODUCT`, `SERVICE`, `SHIPPING_FEE`, `DISCOUNT`, `VALUE_CODE`, or `OTHER`. The type of the order item.
+| class | string | ✔︎︎︎︎︎ | The classification of the order item. Can be used for assigning the order item to a specific product category, for instance. PayEx has no use for this value itself, but it's useful for some payment instruments and integrations.
+| itemUrl | string | |The URL to a page that contains a human readable description of the order item, or similar.
+| imageUrl | string | |The URL to an image of the order item.
+| description | string | |The human readable description of the order item.
+| discountDescription | string | |The human readable description of the possible discount.
+| quantity | integer | ✔︎︎︎︎︎ | The quantity of order items being purchased.
+| quantityUnit | string | ✔︎︎︎︎︎ | The unit of the quantity, such as `pcs`, `grams`, or similar.
+| unitPrice | integer | ✔︎︎︎︎︎ | The price per unit of order item.
+| discountPrice | integer | |If the order item is purchased at a discounted price, this property should contain that price.
+| vatPercent | integer | ✔︎︎︎︎︎ | The percent value of the VAT multiplied by 100, so ##25%## becomes ##2500##.
+| amount | integer | ✔︎︎︎︎︎ | The total amount including VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `5000` equals `50.00 NOK`.
+| vatAmount | integer | ✔︎︎︎︎︎ | The total amount of VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `5000` equals `50.00 NOK`.
+
+#### Items
+
+The `items` property of the ##paymentOrder## is an array containing items that will affect how the payment is performed.
+
+{:.table .table-striped}
+| Property | =Type| Required| Description
+| creditCard.rejectDebitCards | boolean | | `true` if debit cards should be declined; otherwise `false` per default. Default value is set by PayEx and can be changed at your request.
+| creditCard.rejectCreditCards | boolean | | `true` if credit cards should be declined; otherwise `false` per default. Default value is set by PayEx and can be changed at your request.
+| creditCard.rejectConsumerCards | boolean | | `true` if consumer cards should be declined; otherwise `false` per default. Default value is set by PayEx and can be changed at your request.
+| creditCard.rejectCorporateCards | boolean | | `true` if corporate cards should be declined; otherwise `false` per default. Default value is set by PayEx and can be changed at your request.
+| invoice.feeAmount | integer | |The fee amount in the lowest monetary unit to apply if the consumer chooses to pay with invoice.
+| swish.enableEcomOnly | boolean | | `true` to only enable Swish on ecommerce transactions.
 
 [payment-menu-image]: /assets/img/checkout/payment_methods.png
 [checkin-image]: /assets/img/checkout/your_information.png
@@ -469,3 +743,11 @@ order.
 [payee-reference]: #
 [consumer-events]: #
 [payment-order-operations]: #
+[payment-menu]: #
+[user-agent]: https://en.wikipedia.org/wiki/User_agent
+[operations]: #
+[urls]: #
+[consumer-reference]: #
+[order-items]: #
+[paymentorder-items]: #items
+[payment-order-capture]: #
