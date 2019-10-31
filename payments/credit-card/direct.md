@@ -1,5 +1,5 @@
 ---
-title: Swedbank Pay Payments Credit Card Seamless View
+title: Swedbank Pay Payments Credit Card Direct
 sidebar:
   navigation:
   - title: Credit Card Payments
@@ -8,8 +8,8 @@ sidebar:
       title: Introduction
     - url: /payments/credit-card/redirect
       title: Redirect
-    - url: /payments/credit-card/seamless-view
-      title: Seamless View
+    - url: /payments/credit-card/direct
+      title: Direct
     - url: /payments/credit-card/after-payment
       title: After Payment
     - url: /payments/credit-card/other-features
