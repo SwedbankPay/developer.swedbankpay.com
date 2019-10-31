@@ -1,33 +1,19 @@
 ---
-title: Swedbank Pay Payments Invoice After Payments
+title: Swedbank Pay Payments Invoice Other Features
 sidebar:
   navigation:
-  - title: Payments
+  - title: Invoice Payments
     items:
-    - url: /payments/
-      title: Introduction
-    - url: /payments/credit-account
-      title: Credit Account Payments
-    - url: /payments/credit-card
-      title: Credit Card Payments
     - url: /payments/invoice
-      title: Invoice Payments
+      title: Introduction
     - url: /payments/invoice/redirect
-      title: Invoice Payments Redirect
+      title: Redirect
     - url: /payments/invoice/seamless-view
-      title: Invoice Payments Seamless View
+      title: Seamless View
     - url: /payments/invoice/after-payment
-      title: Invoice Payments After Payment
-    - url: /payments/invoice/optional-features
-      title: Invoice Payments Optional Features
-    - url: /payments/direct-debit
-      title: Direct Debit Payments
-    - url: /payments/mobile-pay
-      title: Mobile Pay Payments
-    - url: /payments/swish
-      title: Swish Payments
-    - url: /payments/vipps
-      title: Vipps Payments
+      title: After Payment
+    - url: /payments/invoice/other-features
+      title: Other Features
 ---
 
 {% include alert.html type="warning"
@@ -64,25 +50,23 @@ All invoice error types will have the following URI in front of type: `https://a
 
 {:.table .table-striped}
 | **Type** | **Status** | 
-| `externalerror` | 500 | No error code
-| `inputerror` | 400 | 10 - ValidationWarning
-| `inputerror` | 400 | 30 - ValidationError
-| `inputerror` | 400 | 3010 - ClientRequestInvalid
-| `externalerror` | 502 | 40 - Error
-| `externalerror` | 502 | 60 - SystemError
-| `externalerror` | 502 | 50 - SystemConfigurationError
-| `externalerror` | 502 | 9999 - ServerOtherServer
-| `forbidden` | 403 | Any other error code
-
-{% include payment-menu-styling.md %}
+| *externalerror* | 500 | No error code
+| *inputerror* | 400 | 10 - ValidationWarning
+| *inputerror* | 400 | 30 - ValidationError
+| *inputerror* | 400 | 3010 - ClientRequestInvalid
+| *externalerror* | 502 | 40 - Error
+| *externalerror* | 502 | 60 - SystemError
+| *externalerror* | 502 | 50 - SystemConfigurationError
+| *externalerror* | 502 | 9999 - ServerOtherServer
+| *forbidden* | 403 | Any other error code
 
 {% include settlement-reconciliation.md %}
 
 {% include payment-link.md %}
 
+[callback-api]: #
+[callback-url]: #
 [fi-png]: /assets/img/fi.png
 [invoice-flow]: /payments/invoice/index/#invoice-flow
-[technical-reference]: #
-[callback-url]: #
-[callback-api]: #
 [technical-reference-problem-details]: #
+[technical-reference]: #

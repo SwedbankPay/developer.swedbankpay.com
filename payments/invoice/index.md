@@ -1,33 +1,19 @@
 ---
-title: Swedbank Pay Payments Invoice After Payments
+title: Swedbank Pay Payments Invoice
 sidebar:
   navigation:
-  - title: Payments
+  - title: Invoice Payments
     items:
-    - url: /payments/
-      title: Introduction
-    - url: /payments/credit-account
-      title: Credit Account Payments
-    - url: /payments/credit-card
-      title: Credit Card Payments
     - url: /payments/invoice
-      title: Invoice Payments
+      title: Introduction
     - url: /payments/invoice/redirect
-      title: Invoice Payments Redirect
+      title: Redirect
     - url: /payments/invoice/seamless-view
-      title: Invoice Payments Seamless View
+      title: Seamless View
     - url: /payments/invoice/after-payment
-      title: Invoice Payments After Payment
-    - url: /payments/invoice/optional-features
-      title: Invoice Payments Optional Features
-    - url: /payments/direct-debit
-      title: Direct Debit Payments
-    - url: /payments/mobile-pay
-      title: Mobile Pay Payments
-    - url: /payments/swish
-      title: Swish Payments
-    - url: /payments/vipps
-      title: Vipps Payments
+      title: After Payment
+    - url: /payments/invoice/other-features
+      title: Other Features
 ---
 
 {% include alert.html type="warning"
@@ -268,27 +254,25 @@ sequenceDiagram
 
 ---------------------------------------------------------------
 
-[technical-reference]: #
-[callback-url]: #
-[callback-api]: #
-[invoice-payments]: #
-[see-the-PATCH-payment-description]: /payments/credit-card/after-payment
-[callback-request]: #
-[invoice-captures]: #
-[cancel]:#
-[invoice-cancellations]: #
-[invoice-reversals]: #
-[reversals]: #
-[setup-mail]: mailto:setup.ecom@PayEx.com
-[optional-features]: /payments/invoice/optional-features
-[se-png]: \assets\img\se.png
-[no-png]: \assets\img\no.png
-[fi-png]: /assets/img/fi.png
-[approved-legal-address]: #
-[invoice-authorization]: #
-[callback-request]: #
-[capture]: #
-[redirect]: #
-[hosted-view]: /payments/#hosted-view-implementation
 [financing-invoice-1-png]: \assets\img\financing-invoice-1.png
 [financing-invoice-2-png]: \assets\img\financing-invoice-2.png
+[approved-legal-address]: #
+[callback-api]: #
+[callback-request]: #
+[callback-url]: #
+[cancel]:#
+[capture]: #
+[fi-png]: /assets/img/fi.png
+[hosted-view]: /payments/#hosted-view-implementation
+[invoice-cancellations]: #
+[invoice-captures]: #
+[invoice-payments]: #
+[invoice-reversals]: #
+[no-png]: \assets\img\no.png
+[optional-features]: /payments/invoice/optional-features
+[redirect]: #
+[reversals]: #
+[se-png]: \assets\img\se.png
+[see-the-PATCH-payment-description]: /payments/credit-card/after-payment
+[setup-mail]: mailto:setup.ecom@PayEx.com
+[technical-reference]: #

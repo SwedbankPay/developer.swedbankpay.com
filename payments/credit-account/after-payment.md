@@ -1,29 +1,15 @@
 ---
-title: Swedbank Pay Payments Credit Account
+title: Swedbank Pay Payments Credit Account After Payment
 sidebar:
   navigation:
-  - title: Payments
+  - title: Credit Account Payments
     items:
-    - url: /payments/
+    - url: /payments/credit-account/
       title: Introduction
-    - url: /payments/credit-account
-      title: Credit Account
     - url: /payments/credit-account/after-payment
-      title: Credit Account After Payment
+      title: After Payment
     - url: /payments/credit-account/other-features
-      title: Credit Account Other Features
-    - url: /payments/credit-card
-      title: Credit Card Payments
-    - url: /payments/invoice
-      title: Invoice Payments
-    - url: /payments/direct-debit
-      title: Direct Debit Payments
-    - url: /payments/mobile-pay
-      title: Mobile Pay Payments
-    - url: /payments/swish
-      title: Swish Payments
-    - url: /payments/vipps
-      title: Vipps Payments
+      title: Other Features
 ---
 
 {% include alert.html type="warning"
@@ -59,7 +45,7 @@ Content-Type: application/json
 
 {:.table .table-striped}
 | **Property** | **Data type** | **Required** | **Description** 
-| capture.amount | integer | Y | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.
+| capture.amount | integer | ✔︎ | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.
 | capture.vatAmount | integer | Y |Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.
 | capture.description | string |Y|A textual description of the capture transaction.
 | capture.payeeReference | string(30*) |Y| A unique reference for the capture transaction. See [payeeReference][payee-reference] for details.
@@ -130,10 +116,6 @@ Content-Type: application/json
 |payment|string|The relative URI of the payment this capture transaction belongs to.
 |capture.id|string|The relative URI of the created capture transaction.
 |capture.transaction|object|The object representation of the generic [transaction resource][transaction-resource]
-
-
-
-
 
 [payee-reference]: #
 [transaction-resource]: #

@@ -1,50 +1,37 @@
 ---
-title: Swedbank Pay Payments Vipps Optional Features
+title: Swedbank Pay Payments Vipps Other Features
 sidebar:
   navigation:
-  - title: Payments
+  - title: Vipps Payments
     items:
-    - url: /payments/
-      title: Introduction
-    - url: /payments/credit-account
-      title: Credit Account Payments
-    - url: /payments/credit-card
-      title: Credit Card Payments
-    - url: /payments/invoice
-      title: Invoice Payments
-    - url: /payments/direct-debit
-      title: Direct Debit Payments
-    - url: /payments/mobile-pay
-      title: Mobile Pay Payments
-    - url: /payments/swish
-      title: Swish Payments
-    - url: /payments/swish/redirect
-      title: Swish Redirect
-    - url: /payments/swish/seamless-view
-      title: Swish Seamless View
-    - url: /payments/swish/after-payment
-      title: Swish After After Payment
-    - url: /payments/swish/optional-features
-      title: Swish Optional Features
     - url: /payments/vipps
-      title: Vipps Payments
+      title: Introduction
     - url: /payments/vipps/redirect
-      title: Vipps Redirect
+      title: Redirect
     - url: /payments/vipps/seamless-view
-      title: Vipps Seamless View
+      title: Seamless View
     - url: /payments/vipps/after-payment
-      title: Vipps After After Payment
-    - url: /payments/vipps/optional-features    
-      title: Vipps Optional Features
+      title: After After Payment
+    - url: /payments/vipps/other-features    
+      title: Other Features
 ---
+
+
+  - title: Checkout
+    items:
+    - url: /checkout/
+      title: Introduction
+    - url: /checkout/payment
+      title: Checkout Payment
+    - url: /checkout/after-payment
+      title: Checkout After Payment
+    - url: /checkout/other-features
+      title: Checkout Other Features
 
 {% include alert.html type="warning"
                       icon="warning"
                       header="Site under development"
                       body="The Developer Portal is under construction and should not be used to integrate against Swedbank Pay's APIs yet." %}
-
-
-{% include payment-menu-styling.md %}
 
 {% include settlement-reconciliation.md %}
 

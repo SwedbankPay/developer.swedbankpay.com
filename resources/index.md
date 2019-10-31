@@ -1,7 +1,5 @@
 ---
-title: Swedbank Pay Developer Portal – Resources
-opengraph:
-    description: Swedbank Pay Developer Resources
+title: Swedbank Pay Resources
 sidebar:
   navigation:
   - title: Resources
@@ -61,7 +59,7 @@ Forwarded: for=82.115.151.177; host=example.com; proto=https
 
 {:.table .table-striped}
 | **Header**| **Required** | **Description**
-|Content-Type | Y | The [content type][content-type] of the body of the HTTP request. Usually set to `application/json`.
+|Content-Type | ✔︎ | The [content type][content-type] of the body of the HTTP request. Usually set to `application/json`.
 |Accept|Y|The [content type][content-type] accepted by the client. Usually set to `application/json`.
 |Authorization|Y|The OAuth 2 Access Token is generated in [PayEx Admin][payex-admin]. See the [admin guide][admin-guide] on how to get started.
 |Session-Id|N|A trace identifier used to trace calls through the PayEx systems (ref [RFC 7329][rfc7329]). Each request must mint a new [GUID/UUID][guid-uuid]. If no `Session-Id` is provided, PayEx will generate one.

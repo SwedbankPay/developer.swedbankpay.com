@@ -1,33 +1,19 @@
 ---
-title: Swedbank Pay Payments Credit Card Seamless View
+title: Swedbank Pay Payments Credit Card After Payment
 sidebar:
   navigation:
-  - title: Payments
+  - title: Credit Card Payments
     items:
-    - url: /payments/
+    - url: /payments/credit-card/
       title: Introduction
-    - url: /payments/credit-account
-      title: Credit Account Payments
-    - url: /payments/credit-card
-      title: Credit Card Payments
     - url: /payments/credit-card/redirect
-      title: Credit Card Redirect
-    - url: /payments/credit-card/seamless-view
-      title: Credit Card Seamless View
+      title: Redirect
+    - url: /payments/credit-card/direct
+      title: Direct
     - url: /payments/credit-card/after-payment
-      title: Credit Card After Payments
+      title: After Payment
     - url: /payments/credit-card/other-features
-      title: Credit Card Other Features
-    - url: /payments/invoice
-      title: Invoice Payments
-    - url: /payments/direct-debit
-      title: Direct Debit Payments
-    - url: /payments/mobile-pay
-      title: Mobile Pay Payments
-    - url: /payments/swish
-      title: Swish Payments
-    - url: /payments/vipps
-      title: Vipps Payments
+      title: Other Features
 ---
 
 {% include alert.html type="warning"
@@ -36,6 +22,15 @@ sidebar:
                       body="The Developer Portal is under construction and should not be used to integrate against Swedbank Pay's APIs yet." %}
 
 ## After payment options for Credit card
+
+### Options after posting a payment
+
+* *Abort:* It is possible to abort the process, if the payment has no successful transactions. [See the PATCH payment description][see-the-PATCH-payment-description].  
+* If the payment shown above is done as a two phase (`Authorization`), you will need to implement the `Capture` and `Cancel` requests.  
+* For `reversals`, you will need to implement the Reversal request.  
+* If you did a `PreAuthorization`, you will have to send a [Finalize request] to finalize the transaction.  
+* *If CallbackURL is set:* Whenever changes to the payment occur a [Callback request] will be posted to the callbackUrl, which was generated when the payment was created.  
+
 
 ### Capture  
 The `captures` resource list the capture transactions (one or more) on a specific payment.
@@ -82,7 +77,6 @@ Content-Type: application/json
 }
 ```
 
-
 {:.table .table-striped}
 | **Property** | **Data type** | **Description**
 | payment | string |The relative URI of the payment this list of capture transactions belong to.
@@ -111,8 +105,6 @@ Content-Type: application/json
     }
 }
 ```
-
-
 
 {:.table .table-striped}
 | **Property** | **Data type** | **Required** | **Description**
@@ -149,7 +141,6 @@ Content-Type: application/json
     }
 }
 ```
-
 
 {:.table .table-striped}
 | **Property** | **Data type** | **Description**
@@ -218,7 +209,6 @@ Content-Type: application/json
 }
 ```
 
-
 {:.table .table-striped}
 | **Property** | **Data type** | **Description**
 | payment | string |The relative URI of the payment this list of cancellation transactions belong to.
@@ -247,11 +237,10 @@ Content-Type: application/json
 }
 ```
 
-
 {:.table .table-striped}
 | **Property** | **Data type** | **Required** | **Description**
-| transaction.description | string | Y | A textual description of the reason for the cancellation.
-| transaction.payeeReference | string(30*) | Y | A unique reference for the cancellation transaction. See [payeeReference][payeeReference] for details.
+| transaction.description | string | ✔︎ | A textual description of the reason for the cancellation.
+| transaction.payeeReference | string(30*) | ✔︎ | A unique reference for the cancellation transaction. See [payeeReference][payeeReference] for details.
 
 The `cancel` resource contains information about a cancellation transaction made against a payment.
 
@@ -284,7 +273,6 @@ Content-Type: application/json
     }
 }
 ```
-
 
 {:.table .table-striped}
 | **Property** | **Data type** | **Description**
@@ -353,7 +341,6 @@ Content-Type: application/json
 }
 ```
 
-
 {:.table .table-striped}
 | **Property** | **Type** | **Description**
 | payment | string | The relative URI of the payment that the reversal transactions belong to.
@@ -384,13 +371,12 @@ Content-Type: application/json
 }
 ```
 
-
 {:.table .table-striped}
 | **Property** | **Data type** | **Required** | **Description**
-| transaction.amount | integer | Y | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.
-| transaction.vatAmount | integer | Y | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.
-| transaction.description | string | Y | A textual description of the capture
-| transaction.payeeReference | string(30*) | Y | A unique reference for the reversal transaction. See [payeeReference][payeeReference] for details.
+| transaction.amount | integer | ✔︎ | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.
+| transaction.vatAmount | integer | ✔︎ | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.
+| transaction.description | string | ✔︎ | A textual description of the capture
+| transaction.payeeReference | string(30*) | ✔︎ | A unique reference for the reversal transaction. See [payeeReference][payeeReference] for details.
 
 The `reversal` resource contains information about the newly created reversal transaction.
 
@@ -423,7 +409,6 @@ Content-Type: application/json
     }
 }
 ```
-
 
 {:.table .table-striped}
 | **Property** | **Data type** | **Description**
@@ -541,7 +526,6 @@ sequenceDiagram
   Deactivate PayEx
   Deactivate Merchant
 ```
-
 
 ### Reversal Sequence
 

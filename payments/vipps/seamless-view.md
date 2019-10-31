@@ -2,40 +2,18 @@
 title: Swedbank Pay Payments Vipps Seamless View
 sidebar:
   navigation:
-  - title: Payments
+  - title: Vipps Payments
     items:
-    - url: /payments/
-      title: Introduction
-    - url: /payments/credit-account
-      title: Credit Account Payments
-    - url: /payments/credit-card
-      title: Credit Card Payments
-    - url: /payments/invoice
-      title: Invoice Payments
-    - url: /payments/direct-debit
-      title: Direct Debit Payments
-    - url: /payments/mobile-pay
-      title: Mobile Pay Payments
-    - url: /payments/swish
-      title: Swish Payments
-    - url: /payments/swish/redirect
-      title: Swish Redirect
-    - url: /payments/swish/seamless-view
-      title: Swish Seamless View
-    - url: /payments/swish/after-payment
-      title: Swish After After Payment
-    - url: /payments/swish/optional-features
-      title: Swish Optional Features
     - url: /payments/vipps
-      title: Vipps Payments
+      title: Introduction
     - url: /payments/vipps/redirect
-      title: Vipps Redirect
+      title: Redirect
     - url: /payments/vipps/seamless-view
-      title: Vipps Seamless View
+      title: Seamless View
     - url: /payments/vipps/after-payment
-      title: Vipps After After Payment
-    - url: /payments/vipps/optional-features
-      title: Vipps Optional Features
+      title: After After Payment
+    - url: /payments/vipps/other-features    
+      title: Other Features
 ---
 
 >Vipps is a two-phase payment method supported by the major norwegian banks. In the redirect to PayEx payment pages scenario,  PayEx receives a mobile number (MSISDN) from the payer through Payex payment pages. PayEx performs a payment that the payer must confirm through the Vipps mobile app.
@@ -118,35 +96,14 @@ sequenceDiagram
   Merchant-->Browser: Display authorize result
 ```
 
-[reference-redirect]: #
-[payment-resource]: #payment-resource
-[create-payment]: #create-payment
-[purchase]: #purchase
-[operations]: #operations
-[vipps-transactions]: #vipps-transactions
-[authorizations]: #authorizations
-[captures]: #captures
-[create-capture-transaction]: #create-capture-transaction
-[cancellations]: #cancellations
-[create-cancellation-transaction]: #create-cancellation-transaction
-[reversals]: #reversals
-[create-reversal-transaction]: #create-reversal-transaction
-[callback]: #callback
-[core-payments-resources]: #
-[expand]: #
-[general-information]: #
-[see-user-agent-definition]: https://en.wikipedia.org/wiki/User_agent
-[callback]: #
-[payeeReference]: #
-[general-transaction-resource]: #
-[abort]: #
-[transaction-resource]: #
-[payeeReference]: #
-[error-handling-and-problem-details]: #
-[hosted-view]: #
 [Vipps_flow_PaymentPages.png]: /assets/img/Vipps_flow_PaymentPages.png
 [Screenshot_20190304-113739.png]: /assets/img/Screenshot_20190304-113739.png
 [1551695631447-890.png]: /assets/img/1551695631447-890.png
+[callback]: #
+[callbackurl]: #
+[cancellations]: #cancellations
+[captures]: #captures
+[hosted-view]: #
+[reference-redirect]: #
 [tehnical-reference]: #
 [vipps-payments]: #
-[callbackurl]: #

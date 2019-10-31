@@ -1,33 +1,19 @@
 ---
-title: Swedbank Pay Payments Invoice After Payments
+title: Swedbank Pay Payments Invoice After Payment
 sidebar:
   navigation:
-  - title: Payments
+  - title: Invoice Payments
     items:
-    - url: /payments/
-      title: Introduction
-    - url: /payments/credit-account
-      title: Credit Account Payments
-    - url: /payments/credit-card
-      title: Credit Card Payments
     - url: /payments/invoice
-      title: Invoice Payments
+      title: Introduction
     - url: /payments/invoice/redirect
-      title: Invoice Payments Redirect
+      title: Redirect
     - url: /payments/invoice/seamless-view
-      title: Invoice Payments Seamless View
+      title: Seamless View
     - url: /payments/invoice/after-payment
-      title: Invoice Payments After Payment
-    - url: /payments/invoice/optional-features
-      title: Invoice Payments Optional Features
-    - url: /payments/direct-debit
-      title: Direct Debit Payments
-    - url: /payments/mobile-pay
-      title: Mobile Pay Payments
-    - url: /payments/swish
-      title: Swish Payments
-    - url: /payments/vipps
-      title: Vipps Payments
+      title: After Payment
+    - url: /payments/invoice/other-features
+      title: Other Features
 ---
 
 {% include alert.html type="warning"
@@ -47,7 +33,9 @@ sidebar:
 
 The `captures` resource list the capture transactions performed on a specific invoice payment.
 
+{:.code-header}
 ***Request***
+
 ```HTTP
 GET /psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures HTTP/1.1
 Host: api.payex.com
@@ -55,6 +43,7 @@ Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 ```
 
+{:.code-header}
 ***Response***
 
 ```HTTP
@@ -90,6 +79,7 @@ Content-Type: application/json
 #### Create `FinancingConsumer` capture
 
 To capture a `FinancingConsumer` invoice payment, perform the create-capture operation with the following request  body:
+
 ```HTTP
 POST /psp/invoice/payments/<paymentId>/captures HTTP/1.1
 Host: api.payex.com
@@ -131,16 +121,16 @@ Content-Type: application/json
 
 {:.table .table-striped}
 | Parameter name | Datatype | Required | Value (with description)
-| transaction.activity | string | Y | FinancingConsumer.
-| transaction.Amount | integer | Y | Amount entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.
-| transaction.vatAmount | integer | Y | Amount entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.
-| transaction.payeeReference | string(50) | Y | A **unique **reference max 50 characters set by the merchant system) - this must be unique for each operation! The `payeeReference` must follow the regex pattern `[\w]* (a-zA-Z0-9_)`.
-| transaction.description | string | Y | A textual description of the capture
-| itemDescriptions.amount | integer | Y | Total price for this order line - entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.
-| itemDescriptions.description | string | Y | A textual description of this product
-| vatSummary.amount | integer | Y | Total price for this order line - entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.
-| vatSummary.vatAmount | integer | Y | VAT Amount entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.
-| vatSummary.vatPercent | string | Y | The VAT in percent. Supported values : "0.00", "6.00", "8.00", "10.00", "12.00", "14.00", "15.00", "22.00", "24.00", "25.00"
+| transaction.activity | string | ✔︎ | FinancingConsumer.
+| transaction.Amount | integer | ✔︎ | Amount entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.
+| transaction.vatAmount | integer | ✔︎ | Amount entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.
+| transaction.payeeReference | string(50) | ✔︎ | A **unique **reference max 50 characters set by the merchant system) - this must be unique for each operation! The `payeeReference` must follow the regex pattern `[\w]* (a-zA-Z0-9_)`.
+| transaction.description | string | ✔︎ | A textual description of the capture
+| itemDescriptions.amount | integer | ✔︎ | Total price for this order line - entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.
+| itemDescriptions.description | string | ✔︎ | A textual description of this product
+| vatSummary.amount | integer | ✔︎ | Total price for this order line - entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.
+| vatSummary.vatAmount | integer | ✔︎ | VAT Amount entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.
+| vatSummary.vatPercent | string | ✔︎ | The VAT in percent. Supported values : "0.00", "6.00", "8.00", "10.00", "12.00", "14.00", "15.00", "22.00", "24.00", "25.00"
 
 Notes on `FinancingConsumer` captures:
 
@@ -177,8 +167,6 @@ Content-Type: application/json
 }
 ```
 
-***Properties***
-
 {:.table .table-striped}
 | Property | Data type | Description
 | payment | string | The relative URI of the payment this capture transaction resource belongs to.
@@ -206,6 +194,7 @@ Deactivate PayEx
 
 The `cancellations` resource lists the cancellation transactions made on a specific payment.
 
+{:.code-header}
 ***Request***
 
 ```HTTP
@@ -216,6 +205,7 @@ Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 ```
 
+{:.code-header}
 ***Response***
 ```HTTP
 HTTP/1.1 200 OK
@@ -254,7 +244,9 @@ Content-Type: application/json
 
 Perform the `create-cancellation` operation to cancel a previously created - and not yet captured - invoice payment.
 
+{:.code-header}
 ***Request***
+
 ```HTTP
 POST /psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/cancellations HTTP/1.1
 Host: api.payex.com
@@ -272,12 +264,13 @@ Content-Type: application/json
 
 {:.table .table-striped}
 | Parameter name | Datatype | Required | Value (with description)
-| transaction.activity | string | Y | `FinancingConsumer`.
-| transaction.payeeReference | string | Y | A **unique **reference max 50 characters set by the merchant system) - this must be unique for each operation! The [payeeReference][technical-reference-payeeReference] must follow the regex pattern `[\w]* (a-zA-Z0-9_)`. 
-| transaction.description | string(50) | Y | A textual description for the cancellation.
+| transaction.activity | string | ✔︎ | `FinancingConsumer`.
+| transaction.payeeReference | string | ✔︎ | A **unique **reference max 50 characters set by the merchant system) - this must be unique for each operation! The [payeeReference][technical-reference-payeeReference] must follow the regex pattern `[\w]* (a-zA-Z0-9_)`. 
+| transaction.description | string(50) | ✔︎ | A textual description for the cancellation.
 
 The `cancel` resource will be returned, containing information about the newly created cancellation transaction.
 
+{:.code-header}
 ***Response***
 
 ```HTTP
@@ -302,8 +295,6 @@ The `cancel` resource will be returned, containing information about the newly c
     }
 }
 ```
-
-***Properties***
 
 {:.table .table-striped}
 | Property | Data type | Description
@@ -330,6 +321,7 @@ Deactivate PayEx
 
 The `reversals` resource will list the reversal transactions (one or more) on a specific payment.
 
+{:.code-header}
 ***Request***
 
 ```HTTP
@@ -339,6 +331,7 @@ Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 ```
 
+{:.code-header}
 ***Response***
 
 ```HTTP
@@ -367,8 +360,6 @@ Content-Type: application/json
 }
 ```
 
-***Properties***
-
 {:.table .table-striped}
 | Property | Type | Description
 | payment | string | The relative URI of the payment that the reversal transactions belong to.
@@ -379,7 +370,8 @@ Content-Type: application/json
 
 The `create-reversal` operation will reverse a previously captured payment. To reverse a payment, perform the `create-reversal` operation. The HTTP body of the request should look like the following.
 
-***Request***
+{:.code-header}
+**Request**
 
 ```HTTP
 POST /psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals HTTP/1.1
@@ -398,19 +390,21 @@ Content-Type: application/json
 }
 ```
 
-***Properties***
+{:.code-header}
+**Properties**
 
 {:.table .table-striped}
 | Property | Data type | Required | Description
 | transaction.activity | string | Y| `FinancingConsumer`.
-| transaction.amount | integer | Y | Amount Entered in the lowest momentary units of the selected currency. E.g. *10000* = 100.00 NOK, *5000* = 50.00 SEK.
-| transaction.vatAmount | integer | Y | Amount Entered in the lowest momentary units of the selected currency. E.g. *10000* = 100.00 NOK, *5000* = 50.00 SEK.
-| transaction.payeeReference | string(50 | Y | A **unique **reference max 50 characters set by the merchant system) - this must be unique for each operation! The `payeeReference` must follow the regex pattern `[\w]* (a-zA-Z0-9_)`.
-| transaction.description | string | Y | A textual description of the reversal.
+| transaction.amount | integer | ✔︎ | Amount Entered in the lowest momentary units of the selected currency. E.g. *10000* = 100.00 NOK, *5000* = 50.00 SEK.
+| transaction.vatAmount | integer | ✔︎ | Amount Entered in the lowest momentary units of the selected currency. E.g. *10000* = 100.00 NOK, *5000* = 50.00 SEK.
+| transaction.payeeReference | string(50 | ✔︎ | A **unique **reference max 50 characters set by the merchant system) - this must be unique for each operation! The `payeeReference` must follow the regex pattern `[\w]* (a-zA-Z0-9_)`.
+| transaction.description | string | ✔︎ | A textual description of the reversal.
 
 The `reversal` resource will be returned, containing information about the newly created reversal transaction.
 
-***Response***
+{:.code-header}
+**Response**
 
 ```HTTP
 HTTP/1.1 200 OK
@@ -438,7 +432,8 @@ Content-Type: application/json
 }
 ```
 
-***Properties***
+{:.code-header}
+**Properties**
 
 {:.table .table-striped}
 | Property | Data type | Description
@@ -466,8 +461,6 @@ Deactivate PayEx
 
 ----------------------------------------------------------
 [see-the-PATCH-payment-description]: /payments/credit-card/after-payment
-[callback-url]: #
-[callback-api]: #
 [callback-request]: #
 [invoice-captures]: #
 [invoice-cancellations]: #
