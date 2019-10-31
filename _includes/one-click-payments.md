@@ -7,7 +7,7 @@ these details for every purchase." %}
 
 ### Introduction 
 
-The main purchase flow and implementation is exactly the same as described in the [Redirect][redirect] and [Hosted View][hosted-view] scenarios for [credit card][card] and [financing invoice][invoice] payments, the difference being the use of a paymentToken. The details in this section describe explicitly the parameters that must be set to enable one-click purchases.
+The main purchase flow and implementation is exactly the same as described in the [Redirect][redirect] and [Hosted View][hosted-view] scenarios for [credit card][card] and [financing invoice][invoice] payments, the difference being the use of a `paymentToken`. The details in this section describe explicitly the parameters that must be set to enable one-click purchases.
 
 ### Payment Url
 
