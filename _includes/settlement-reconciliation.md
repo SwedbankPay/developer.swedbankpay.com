@@ -129,7 +129,7 @@ A credit card transaction is made when you either make a capture or a reversal. 
 }
 ```
 
-When you receive the response from PayEx, the response will includetransaction.number##. This is the same as the field calledTransactionNo## in the reconciliation file.
+When you receive the response from PayEx, the response will includetransaction.number##. This is the same as the field `calledTransactionNo` in the reconciliation file.
 
 ```JS
 {
