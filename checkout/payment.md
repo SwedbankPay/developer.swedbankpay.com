@@ -182,9 +182,11 @@ checkin process progressed.
 
 We start by performing a `POST` request towards the `paymentorder` resource
 with the `consumerProfileRef` we obtained in the checkin process described
-above. 
-**Notice** that the `orderItems`property object is optional. If the `POST` request has `orderItems` in the `paymentorder`, remember to include `orderItems` in the [capture operation][capture-operation].
-[See the technical reference for more details][payment-order].
+above.
+
+**Notice** that the `orderItems` property object is optional. If the `POST`
+request has `orderItems` in the `paymentorder`, remember to include
+`orderItems` in the [capture operation][capture-operation].
 
 {:.code-header}
 **Request**
@@ -221,7 +223,7 @@ Content-Type: application/json
             "orderReference" : "or-123456"
         },
         "payer": {
-             "consumerProfileRef": "7d5788219e5bc43350e75ac633e0480ab30ad20f96797a12b96e54da869714c4" 
+             "consumerProfileRef": "7d5788219e5bc43350e75ac633e0480ab30ad20f96797a12b96e54da869714c4"
         },
         "orderItems": [
             {
@@ -256,17 +258,17 @@ Content-Type: application/json
             }
         ],
         "riskIndicator" : {
-            "deliveryEmailAddress" : "string",              
-            "deliveryTimeFrameindicator" : "01",   
-            "preOrderDate" : "YYYYMMDD",                    
-            "preOrderPurchaseIndicator" : "01",          
-            "shipIndicator" : "01",        
-            "giftCardPurchase" : "false",               
-            "reOrderPurchaseIndicator" : "01",           
-            "pickUpAddress" : {                            
-                "name" : "companyname",                    
-                "streetAddress" : "string",                 
-                "coAddress" : "string",                   
+            "deliveryEmailAddress" : "string",
+            "deliveryTimeFrameIndicator" : "01",
+            "preOrderDate" : "YYYYMMDD",
+            "preOrderPurchaseIndicator" : "01",
+            "shipIndicator" : "01",
+            "giftCardPurchase" : false,
+            "reOrderPurchaseIndicator" : "01",
+            "pickUpAddress" : {
+                "name" : "companyname",
+                "streetAddress" : "string",
+                "coAddress" : "string",
                 "city" : "string",
                 "zipCode" : "string",
                 "countryCode" : "string"
@@ -318,7 +320,7 @@ Content-Type: application/json
 | ✔︎︎︎︎︎ | └─➔&nbsp;`vatPercent`          | `integer`      | The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.
 | ✔︎︎︎︎︎ | └─➔&nbsp;`amount`              | `integer`      | The total amount including VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `500`0 equals `50.00 NOK`.
 | ✔︎︎︎︎︎ | └─➔&nbsp;`vatAmount`           | `integer`      | The total amount of VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `500`0 equals `50.00 NOK`.
-|   | └➔&nbsp;`riskIndicator`           | `array`       | This **optional** array consist of information that helps verifying the payer. 
+|   | └➔&nbsp;`riskIndicator`           | `array`       | This **optional** array consist of information that helps verifying the payer.
 |  | └─➔&nbsp;`deliveryEmailAdress`           | `string`      | For electronic delivery, the email address to which the merchandise was delivered.
 |  | └─➔&nbsp;`deliveryTimeFrameIndicator`           | `string`      | Indicates the merchandise delivery timeframe. <br>01 (Electronic Delivery) <br>02 (Same day shipping) <br>03 (Overnight shipping) <br>04 (Two-day or more shipping)
 |  | └─➔&nbsp;`preOrderDate`           | `string`      | For a pre-ordered purchase. The expected date that the merchandise will be available. <br>FORMAT: "YYYYMMDD"
@@ -460,7 +462,6 @@ order.
 [1551693185782-957.png]: /assets/img/checkout/payment_methods.png
 {:width="458px" :height="629px"}
 [consumer-image]: /assets/img/checkout/your_information.png
-
 [payment-order]: #
 [initiate-consumer-session]: #
 [view-consumer-identification]: #
