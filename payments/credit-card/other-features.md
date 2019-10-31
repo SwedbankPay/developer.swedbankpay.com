@@ -142,8 +142,6 @@ Content-Type: application/json
 
 {% include payment-link.md %}
 
-{% include payment-menu-styling.md %}
-
 {% include subsite.md %}
 
 {% include settlement-reconciliation.md %}

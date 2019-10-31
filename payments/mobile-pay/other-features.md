@@ -140,8 +140,6 @@ sequenceDiagram
   Deactivate Merchant
 ```
 
-{% include payment-menu-styling.md %}
-
 {% include settlement-reconciliation.md %}
 
 {% include one-click-payments.md %}

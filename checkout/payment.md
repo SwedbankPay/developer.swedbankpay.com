@@ -383,9 +383,6 @@ create the script element with JavaScript, all inside the event handler for
 `onConsumerIdentified`.
 [See the technical reference for details][consumer-events].
 
-You also can [customize the styling][payment-menu-styling] of the Payment Menu
-by adding style properties to the JavaScript function call.
-
 {:.code-header}
 **HTML**
 
@@ -471,6 +468,5 @@ order.
 [msisdn]: https://en.wikipedia.org/wiki/MSISDN
 [payee-reference]: #
 [consumer-events]: #
-[payment-menu-styling]: #
 [payment-order-operations]: #
 
