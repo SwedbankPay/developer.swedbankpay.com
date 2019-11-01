@@ -10,6 +10,8 @@ sidebar:
       title: Test Data
     - url: /resources/demoshop
       title: Demoshop
+    - url: /resources/development-guidelines
+      title: Open Source Development Guidelines
 ---
 
 {% include alert.html type="warning"
