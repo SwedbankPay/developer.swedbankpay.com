@@ -25,56 +25,64 @@ sidebar:
 investigating which **other features** are available in Swedbank Pay Checkout.
 They are listed on this very page." %}
 
-{% include settlement-reconciliation.md %}
+## Purchase Payment Orders
 
-{% include payment-link.md %}
-
-{% include one-click-payments.md %}
-
-{% include recurring-card-payments.md %}
-
-## Payment order
-
-#### Purchase Payment Orders
-
-The `Purchase` operation is used in all common purchase scenarios. 
+The `Purchase` operation is used in all common purchase scenarios.
 
 {:.code-header}
 **Purchase**
+
 ```js
-{    
+{
     "paymentorder": {
         "operation": "Purchase"
     {
 }
 ```
 
-#### Verify Payment Orders
+## Verify Payment Orders
 
-The `Verify` operation lets you post verifications to confirm the validity of **credit card information**, without reserving or charging any amount. This option is mainly used to initiate a recurring payment scenario where the card will be charged at a later date. The request body is equivalent to a `Purchase` order with credit card as the selected item. A [payment token][payment-orders-resource] will be generated automatically, rendering the parameter `generateRecurrenceToken` unnecessary for this operation. 
+The `Verify` operation lets you post verifications to confirm the validity of
+**credit card information**, without reserving or charging any amount. This
+option is mainly used to initiate a recurring payment scenario where the card
+will be charged at a later date. The request body is equivalent to a `Purchase`
+order with credit card as the selected item.
+A [payment token][payment-orders-resource] will be generated automatically,
+rendering the parameter `generateRecurrenceToken` unnecessary for this
+operation.
 
 {:.code-header}
 **Verify**
 
 ```js
-{    
+{
     "paymentorder": {
         "operation": "Verify"
     {
 }
 ```
 
-#### Enabling recurring credit card payments
+## Recurring Payments
 
-If you want to enable subsequent recurring - server-to-server - payments for credit card, you need to create a recurrence token. This token will be utilized after the initial payment order.  
-
+If you want to enable subsequent recurring – server-to-server – payments for
+credit card, you need to create a recurrence token. This token will be utilized
+after the initial payment order.
 
 **Recurrence Token**
 
-* When initiating a `Purchase` payment order, you need to make sure that the attribute `generateRecurrenceToken` is set to `true`. This recurrence token will stored in the[ authorization transaction][authorization-transaction] sub-resource on the underlying credit card payment resource.
-* When initiating a `Verify` payment order, a recurrence token will be generated automatically. This recurrence token is stored in the [verification][verification-transaction]  sub-resource on the underlying credit card payment resource.
+* When initiating a `Purchase` payment order, you need to make sure that the
+  attribute `generateRecurrenceToken` is set to `true`. This recurrence token
+  will stored in the[ authorization transaction][authorization-transaction]
+  sub-resource on the underlying credit card payment resource.
+* When initiating a `Verify` payment order, a recurrence token will be generated
+  automatically. This recurrence token is stored in the
+  [verification][verification-transaction]  sub-resource on the underlying
+  credit card payment resource.
 
-You can view the current payment resource, containg the recurrence token and other payment instrument properties, by [expanding][expanding the sub-resource [`currentpayment`][current-payment] when doing a `GET` `request` on the `paymentorders`resource.
+You can view the current payment resource, containg the recurrence token and
+other payment instrument properties, by [expanding][expanding the sub-resource
+[`currentpayment`][current-payment] when doing a `GET` request on the
+`paymentorders` resource.
 
 {:.code-header}
 **Request**
@@ -84,9 +92,12 @@ GET /psp/paymentorders/<paymentorderId>?$expand=currentpayment HTTP/1.1
 Host: api.payex.com
 ```
 
-#### Creating recurring credit card payments
+### Creating recurring credit card payments
 
-When you have a `recurrenceToken` token safely tucked away, you can use this token in a subsequent `Recur` payment order. This will be a server-to-server affair, as we have tied all necessary payment instrument details related to the recurrence token during the initial payment order.
+When you have a `recurrenceToken` token safely tucked away, you can use this
+token in a subsequent `Recur` payment order. This will be a server-to-server
+affair, as we have tied all necessary payment instrument details related to the
+recurrence token during the initial payment order.
 
 {:.code-header}
 **Request**
@@ -153,7 +164,7 @@ Content-Type: application/json
 **Request**
 
 ```js
-{    
+{
     "paymentorder": {
         "disablePaymentMenu": true
     {
@@ -165,17 +176,28 @@ Content-Type: application/json
 ![example disablePaymentMenu = true][image_disabled_payment_menu]{:width="463" :height="553"}
 
 ##### example disablePaymentMenu = false
-![example disablePaymentMenu = false][image_enabled_payment_menu]{:width="464" :height="607"}
 
+![example disablePaymentMenu = false][image_enabled_payment_menu]{:width="464" :height="607"}
 
 ## Sub-resources
 
-The `paymentOrders` resource utilize several sub-resources, relating to underlying [payments][payment-orders-resource-payments], [the current payment active][current-payment], [payers][payment-orders-resource-payers] and [URLs][payment-resource-urls].  
-Common sub-resources like [payeeinfo][payment-resource-payeeinfo], that are structurally identical for both payments and payments orders, are described in the [Payment Resources][payment-resource] section. 
+The `paymentOrders` resource utilize several sub-resources, relating to
+underlying [payments][payment-orders-resource-payments],
+[the current payment active][current-payment],
+[payers][payment-orders-resource-payers] and [URLs][payment-resource-urls].
+Common sub-resources like [payeeinfo][payment-resource-payeeinfo], that are
+structurally identical for both payments and payments orders, are described in
+the [Payment Resources][payment-resource] section.
 
 ### Payments Resource
 
-A payment order is able to hold more than one payment object, _even though a successful payment order only harbour one successful payment_. This is necessary as the consumer might select and initate a payment option that is not followed through successfully. I.e. if the consumer cancels an invoice payment, a cancel transaction will still be tied to that particular invoice payment resource. This payment resource will continue to exist, even if the consumer successfully should finish the purchase with a credit card payment instead.
+A payment order is able to hold more than one payment object,
+_even though a successful payment order only harbour one successful payment_.
+This is necessary as the consumer might select and initate a payment option that
+is not followed through successfully. I.e. if the consumer cancels an invoice
+payment, a cancel transaction will still be tied to that particular invoice
+payment resource. This payment resource will continue to exist, even if the
+consumer successfully should finish the purchase with a credit card payment instead.
 
 {:.code-header}
 **Request**
@@ -196,7 +218,7 @@ Content-Type: application/json
                 "instrument" : "CreditCard",
                 "Created": "2016-09-14T13:21:29.3182115Z"
             },
-            {   
+            {
                 "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26d",
                 "instrument" : "Invoice",
                 "Created": "2016-09-14T13:21:29.3182115Z"
@@ -209,13 +231,14 @@ Content-Type: application/json
 {:.table .table-striped}
 | **Property** | **Type** | **Description**
 | *paymentorder* | object | The payment order object.
-|payments.id | string | The relative URI of the current `payments` resource.
-|payments.paymentList | string |The array of payment objects.
-|payments.paymentList[] | string | The payment object.
+|payments.id | `string` | The relative URI of the current `payments` resource.
+|payments.paymentList | `string` |The array of payment objects.
+|payments.paymentList[] | `string` | The payment object.
 
 ### Current Payment Resource
 
-The `currentpayment` resource displays the payment that are active within the payment order container.
+The `currentpayment` resource displays the payment that are active within the
+payment order container.
 
 {:.code-header}
 **Request**
@@ -273,32 +296,37 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| **Property** | **Type** | **Description**
-| paymentorder | object | The payment order object.
-| paymentorder.menuElementName | string | `creditcard`, `invoice`, etc. The name of the selected menu element.
-| paymentorder.payment | object | The payment object.
-| payment.recurrenceToken | string | The created recurrenceToken, if `operation : Verify` or `generateRecurrenceToken : true` was used.
-| payment.id | string | The relative URI to the payment.
-| payment.number | integer | The payment `number`, useful when there's need to reference the payment in human communication. Not usable for programmatic identification of the payment, for that `id` should be used instead.
-| payment.instrument | string | The payment instrument used.
-| payment.created | string | The ISO-8601 date of when the payment was created.
-| payment.updated | string | The ISO-8601 date of when the payment was updated.
-| payment.operation | string | `Purchase`, `payout`, `Verify` or `recur. `The type of the initiated payment.
-| payment.intent | string | The intent of the payment.
-| payment.state | string | `Ready`, `Pending`, `Failed` or `Aborted`. Indicates the state of the payment. This field is only for status display purposes.
-| payment.currency | string | The currency of the payment.
-| payment.prices.amount | integer | Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 NOK`, `5000` = `50.00 SEK`.
-| payment.prices.remainingCaptureAmount | integer | The available amount to capture.
-| payment.prices.remainingCancelAmount | integer | The available amount to cancel.
-| payment.prices.remainingReversalAmount | integer | The available amount to reverse.
-| payment.description | string(40) | A textual description of maximum 40 characters of the purchase.
-| payment.payerReference | string | The reference to the consumer from the merchant system, like mobile number, customer number etc.
-| payment.userAgent | string | The [user agent] string of the consumer's browser.
-| payment.language | string | `nb-NO`, `sv-SE` or `en-US`
+| Property                            | Type         | Description |
+|:------------------------------------|:-------------|:------------|
+| `paymentorder`                      | `string`     | The URI of the payment order the payment belongs to.
+| `menuElementName`                   | `string`     | `creditcard`, `invoice`, etc. The name of the selected menu element.
+| `payment`                           | `object`     | The payment object.
+| └➔&nbsp;`recurrenceToken`           | `string`     | The created recurrenceToken, if `operation : Verify` or `generateRecurrenceToken : true` was used.
+| └➔&nbsp;`id`                        | `string`     | The relative URI to the payment.
+| └➔&nbsp;`number`                    | `integer`    | The payment `number`, useful when there's need to reference the payment in human communication. Not usable for programmatic identification of the payment, for that `id` should be used instead.
+| └➔&nbsp;`instrument`                | `string`     | The payment instrument used.
+| └➔&nbsp;`created`                   | `string`     | The ISO-8601 date of when the payment was created.
+| └➔&nbsp;`updated`                   | `string`     | The ISO-8601 date of when the payment was updated.
+| └➔&nbsp;`operation`                 | `string`     | `Purchase`, `payout`, `Verify` or `recur. `The type of the initiated payment.
+| └➔&nbsp;`intent`                    | `string`     | The intent of the payment.
+| └➔&nbsp;`state`                     | `string`     | `Ready`, `Pending`, `Failed` or `Aborted`. Indicates the state of the payment. This field is only for status display purposes.
+| └➔&nbsp;`currency`                  | `string`     | The currency of the payment.
+| └➔&nbsp;`prices`                    | `object`     | The prices object.
+| └─➔&nbsp;`amount`                   | `integer`    | Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 NOK`, `5000` = `50.00 SEK`.
+| └─➔&nbsp;`remainingCaptureAmount`   | `integer`    | The available amount to capture.
+| └─➔&nbsp;`remainingCancelAmount`    | `integer`    | The available amount to cancel.
+| └─➔&nbsp;`remainingReversalAmount`  | `integer`    | The available amount to reverse.
+| └➔&nbsp;`description`               | `string(40)` | A textual description of maximum 40 characters of the purchase.
+| └➔&nbsp;`payerReference`            | `string`     | The reference to the consumer from the merchant system, like mobile number, customer number etc.
+| └➔&nbsp;`userAgent`                 | `string`     | The [user agent] string of the consumer's browser.
+| └➔&nbsp;`language`                  | `string`     | `nb-NO`, `sv-SE` or `en-US`
 
 ### URLs Resource
 
-The `urls` resource contains the URIs related to a payment order, including where the consumer gets redirected when going forward with or cancelling a payment session, as well as the callback URI that is used to inform the payee (merchant) of changes or updates made to underlying payments or transaction.
+The `urls` resource contains the URIs related to a payment order, including
+where the consumer gets redirected when going forward with or cancelling a
+payment session, as well as the callback URI that is used to inform the payee
+(merchant) of changes or updates made to underlying payments or transaction.
 
 {:.code-header}
 Request
@@ -333,16 +361,18 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| **Property** | **Data Type** | **Description**
-| paymentorder | string | The URI to the payment order the resource belong to.
-| paymentorder.urls.id | string | The relative URI to the current resource.
-| paymentorder.urls.hostsUrl | string | An array of the whitelisted URIs that are allowed as parents to a Hosted View, typically the URI of the web shop or similar that will embed a Hosted View within it.
-| paymentorder.urls.completeUrl | string | The URI that PayEx will redirect back to when the payment page is completed.
-| paymentorder.urls.cancelUrl | string | The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios. If both cancelUrl and paymentUrl is sent, the paymentUrl will used.
-| paymentorder.urls.paymentUrl | string | The URI that PayEx will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. Only used in hosted views. If both cancelUrl and paymentUrl is sent, the paymentUrl will used.
-| paymentorder.urls.callbackUrl | string | The URI that PayEx will perform an HTTP `POST` against every time a transaction is created on the payment. See [callback][callback-reference] for details.
-| paymentorder.urls.logoUrl | string | The URI that will be used for showing the customer logo. Must be a picture with at most 50px height and 400px width.
-| paymentorder.urls.termsOfServiceUrl | string | A URI that contains your terms and conditions for the payment, to be linked on the payment page.
+| Property                      | Type     | Description |
+|:------------------------------|:---------|:------------|
+| `paymentorder`                | `string` | The URI to the payment order the resource belong to.
+| `urls`                | `object` | The URLs object.
+| └➔&nbsp;`id`                 | `string` | The relative URI to the `urls` resource.
+| └➔&nbsp;`hostsUrl`           | `string` | An array of the whitelisted URIs that are allowed as parents to a Hosted View, typically the URI of the web shop or similar that will embed a Hosted View within it.
+| └➔&nbsp;`completeUrl`        | `string` | The URI that PayEx will redirect back to when the payment page is completed.
+| └➔&nbsp;`cancelUrl`          | `string` | The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios. If both cancelUrl and paymentUrl is sent, the paymentUrl will used.
+| └➔&nbsp;`paymentUrl`         | `string` | The URI that PayEx will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. Only used in hosted views. If both cancelUrl and paymentUrl is sent, the paymentUrl will used.
+| └➔&nbsp;`callbackUrl`        | `string` | The URI that PayEx will perform an HTTP `POST` against every time a transaction is created on the payment. See [callback][callback-reference] for details.
+| └➔&nbsp;`logoUrl`            | `string` | The URI that will be used for showing the customer logo. Must be a picture with at most 50px height and 400px width.
+| └➔&nbsp;`termsOfServiceUrl`  | `string` | A URI that contains your terms and conditions for the payment, to be linked on the payment page.
 
 ### Payer Resource
 
@@ -372,10 +402,10 @@ Content-Type: application/json
     "paymentorder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
     "payer" : {
         "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/payer",
-        "reference": "reference to payer",                
-        "email": "email",                                
-        "msisdn": "msisdn",                              
-        "shippingAddress": {                             
+        "reference": "reference to payer",
+        "email": "email",
+        "msisdn": "msisdn",
+        "shippingAddress": {
             "addressee": "firstName + lastName",
             "coAddress": "coAddress",
             "streetAddress": "streetAddress",
@@ -388,29 +418,34 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| **Property** | **Data Type** | **Description**
-| paymentorder | string | The URI to the payment order the payer object belongs to.
-| payer | object | The payer object.
-| payer.id | string | The relative URI to the current `payer` resource.
-| payer.email | string | Payer's registered email address.
-| payer.msisdn | string | Payer'registered mobile phone number.
-| payer.shippingAdress.addresse | object | The shipping address object related to the payer.
-| payer.shippingAdress.coAddress | string | Payer' s C/o address, if applicable. 
-| payer.shippingAdress.streetAddress | string | Payer's street address
-| payer.shippingAdress.zipCode | string | Payer's zip code
-| payer.shippingAdress.city | string | Payer's city of residence
-| payer.shippingAdress.countryCode | string | Country Code for country of residence.
+| Property                  | Type     | Description |
+|:--------------------------|:---------|:------------|
+| `paymentorder`            | `string` | The URI of the payment order the payer belongs to.
+| `payer`                   | `object` | The payer object.
+| └➔&nbsp;`id`              | `string` | The relative URI to the current `payer` resource.
+| └➔&nbsp;`email`           | `string` | Payer's registered email address.
+| └➔&nbsp;`msisdn`          | `string` | Payer'registered mobile phone number.
+| └➔&nbsp;`shippingAddress` | `object` | The shipping address object related to the `payer`.
+| └─➔&nbsp;`addresse`       | `object` | The shipping address object related to the `payer`.
+| └─➔&nbsp;`coAddress`      | `string` | Payer' s c/o address, if applicable.
+| └─➔&nbsp;`streetAddress`  | `string` | Payer's street address
+| └─➔&nbsp;`zipCode`        | `string` | Payer's zip code
+| └─➔&nbsp;`city`           | `string` | Payer's city of residence
+| └─➔&nbsp;`countryCode`    | `string` | Country Code for country of residence.
 
-### Payment Menu Events
+## Payment Menu Events
 
-During operation in the Payment Menu, several events can occur. They are described below.
+During operation in the Payment Menu, several events can occur. They are
+described below.
 
-#### On Payment Menu Instrument Selected
+### `onPaymentMenuInstrumentSelected`
 
-This event triggers when a user actively changes payment instrument in the Payment Menu. The `onPaymentMenuInstrumentSelected` event is raised with the following event argument object: 
+This event triggers when a user actively changes payment instrument in the
+Payment Menu. The `onPaymentMenuInstrumentSelected` event is raised with the
+following event argument object:
 
 {:.code-header}
-**On Payment Menu Instrument Selected**
+**`onPaymentMenuInstrumentSelected` event object**
 
 ```js
 {
@@ -420,16 +455,19 @@ This event triggers when a user actively changes payment instrument in the Payme
 ```
 
 {:.table .table-striped}
-| **Property** | **Type** | **Description**
-| name | string | The name and identifier of specific instrument instances - i.e. if you deploy more than one type of credit card payments, they would be distinguished by `name`.
-| instrument | string | `Creditcard`, `vipps`, `swish`, `invoice`. The instrument selected by the user.
+| Property     | Type     | Description |
+|:-------------|:---------|:------------|
+| `name`       | `string` | The name and identifier of specific instrument instances - i.e. if you deploy more than one type of credit card payments, they would be distinguished by `name`.
+| `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The instrument selected by the user.
 
-#### On Payment created
+### `onPaymentCreated`
 
-This event triggers when a user has selected a payment instrument and actively attempts to perform a payment. The `onPaymentCreate` event is raised with the following event argument object: 
+This event triggers when a user has selected a payment instrument and actively
+attempts to perform a payment. The `onPaymentCreate` event is raised with the
+following event argument object:
 
 {:.code-header}
-On Payment Created
+**`onPaymentCreated` event object**
 
 ```js
 {
@@ -439,16 +477,17 @@ On Payment Created
 ```
 
 {:.table .table-striped}
-| **Property** | **Type** | **Description**
-| id | string | The relative URI to the payment.
-| instrument | string | `Creditcard`, `vipps`, `swish`, `invoice`. The instrument selected when initiating the payment.
+| Property     | Type     | Description |
+|:-------------|:---------|:------------|
+| `id`         | `string` | The relative URI to the payment.
+| `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The instrument selected when initiating the payment.
 
-#### On Payment Completed
+### `onPaymentCompleted`
 
 This event triggers when a payment has completed successfully. The `onPaymentCompleted` event is raised with the following event argument object:
 
 {:.code-header}
-On Payment Completed
+**`onPaymentCompleted` event object**
 
 ```js
 {
@@ -458,16 +497,17 @@ On Payment Completed
 ```
 
 {:.table .table-striped}
-| **Property** | **Type** | **Description**
-| id | string | The relative URI to the payment.
-| redirectUrl | string | The URI the user will be redirect to after a completed payment.  
+| Property      | Type     | Description |
+|:--------------|:---------|:------------|
+| `id`          | `string` | The relative URI to the payment.
+| `redirectUrl` | `string` | The URI the user will be redirect to after a completed payment.
 
-#### On Payment Canceled
+### `onPaymentCanceled`
 
 This event triggers when the user cancels the payment. The `onPaymentCanceled` event is raised with the following event argument object:
 
 {:.code-header}
-**On Payment Canceled**
+**`onPaymentCanceled` event object**
 
 ```js
 {
@@ -477,16 +517,19 @@ This event triggers when the user cancels the payment. The `onPaymentCanceled` e
 ```
 
 {:.table .table-striped}
-| **Property** | **Type** | **Description**
-| id | string | The relative URI to the payment.
-| redirectUrl | string | The URI the user will be redirect to after a canceled payment.  
+| Property      | Type     | Description |
+|:--------------|:---------|:------------|
+| `id`          | `string` | The relative URI to the payment.
+| `redirectUrl` | `string` | The URI the user will be redirect to after a canceled payment.
 
-#### On Payment Failed
+### `onPaymentFailed`
 
-This event triggers when a payment has failed, disabling further attempts to perform a payment. The `onPaymentFailed` event is raised with the following event argument object:
+This event triggers when a payment has failed, disabling further attempts to
+perform a payment. The `onPaymentFailed` event is raised with the following
+event argument object:
 
 {:.code-header}
-**On Payment Failed**
+**`onPaymentFailed` event object**
 
 ```js
 {
@@ -496,34 +539,42 @@ This event triggers when a payment has failed, disabling further attempts to per
 ```
 
 {:.table .table-striped}
-| **Property** | **Type** | **Description**
-| id | string | The relative URI to the payment.
-| redirectUrl | string | The URI the user will be redirect to after a failed payment.
+| Property      | Type     | Description |
+|:--------------|:---------|:------------|
+| `id`          | `string` | The relative URI to the payment.
+| `redirectUrl` | `string` | The URI the user will be redirect to after a failed payment.
 
-#### On Payment Terms of Service
+### `onPaymentTermsOfService`
 
-This event triggers when the user clicks on the "Display terms and conditions" link. The `Y | ` event is raised with the following event argument object:
+This event triggers when the user clicks on the "Display terms and conditions"
+link. The `onPaymentTermsOfService` event is raised with the following event
+argument object:
 
 {:.code-header}
-**On Payment Terms of Service**
+**`onPaymentTermsOfService` event object**
+
 ```js
 {
     "origin": "owner | merchant",
-    "OpenUrl": "https://example.org/terms.html"
+    "openUrl": "https://example.org/terms.html"
 }
 ```
 
 {:.table .table-striped}
-| **Property** | **Type** | **Description**
-| origin | string | `owner`, `merchant`. The value is always `merchant` unless PayEx hosts the view. 
-| OpenUrl | string | The URI containing Terms of Service and conditions.
+| Property  | Type     | Description |
+|:----------|:---------|:------------|
+| `origin`  | `string` | `owner`, `merchant`. The value is always `merchant` unless PayEx hosts the view.
+| `openUrl` | `string` | The URI containing Terms of Service and conditions.
 
-### On Error
+### `onError`
 
-This event triggers during terminal errors or if the configuration fails validation. The `onError` event will be raised with the following event argument object:
+This event triggers during terminal errors or if the configuration fails
+validation. The `onError` event will be raised with the following event argument
+object:
 
 {:.code-header}
-On Error
+**`onError` event object**
+
 ```js
 {
     "origin": "consumer | paymentmenu | creditcard | invoice | ...",
@@ -532,12 +583,12 @@ On Error
 }
 ```
 
-
 {:.table .table-striped}
-| **Property** | **Type** | **Description**
-| origin | string | `consumer`, `paymentmenu`, `creditcard`, identifies the system that originated the error.
-| messageId | string | A unique identifier for the message.
-| details | string | A human readable and descriptive text of the error.
+| Property    | Type     | Description |
+|:------------|:---------|:------------|
+| `origin`    | `string` | `consumer`, `paymentmenu`, `creditcard`, identifies the system that originated the error.
+| `messageId` | `string` | A unique identifier for the message.
+| `details`   | `string` | A human readable and descriptive text of the error.
 
 ## Operations
 
@@ -599,25 +650,30 @@ When a payment order resource is created and during its lifetime, it will have a
 ```
 
 {:.table .table-striped}
-| **Property** | **Description**
-| href | The target URI to perform the operation against.
-| rel | The name of the relation the operation has to the current resource.
-| method | The HTTP method to use when performing the operation.
-| contentType | The HTTP content type of the resource referenced in the `href` property.
+| Property      | Type     | Description |
+|:--------------|:---------|:------------|
+| `href`        | `string` | The target URI to perform the operation against.
+| `rel`         | `string` | The name of the relation the operation has to the current resource.
+| `method`      | `string` | `GET`, `PATCH`, `POST`, etc. The HTTP method to use when performing the operation.
+| `contentType` | `string` | The HTTP content type of the resource referenced in the `href` property.
 
-The operations should be performed as described in each response and not as described here in the documentation. Always use the `href` and `method` as specified in the response by finding the appropriate operation based on its `rel` value. The only thing that should be hard coded in the client is the value of the `rel` and the request that will be sent in the HTTP body of the request for the given operation.
-
-**Operations**
+The operations should be performed as described in each response and not as
+described here in the documentation. Always use the `href` and `method` as
+specified in the response by finding the appropriate operation based on its
+`rel` value. The only thing that should be hard coded in the client is the value
+of the `rel` and the request that will be sent in the HTTP body of the request
+for the given operation.
 
 {:.table .table-striped}
-| **Operation** | **Description**
-| update-paymentorder-abort | [Aborts][abort] the payment order before any financial transactions are performed.
-| update-paymentorder-updateorder | [Updates the order][update-order] with a change in the `amount` and/or `vatAmount`.
-| redirect-paymentorder | Contains the URI that is used to redirect the consumer to the PayEx Payment Pages containing the Payment Menu.
-| view-paymentorder | Contains the JavaScript `href` that is used to embed the Payment Menu UI directly on the webshop/merchant site.
-| create-paymentorder-capture | The second part of a two-phase transaction where the authorized amount is sent from the payer to the payee. It is possible to do a part-capture on a subset of the authorized amount. Several captures on the same payment are possible, up to the total authorization amount.
-| create-paymentorder-cancellation | Used to cancel authorized and not yet captured transactions. If a cancellation is performed after doing a part-capture, it will only affect the not yet captured authorization amount.
-| create-paymentorder-reversal | Used to reverse a payment. It is only possible to reverse a payment that has been captured and not yet reversed.
+| Operation                           | Description |
+|:------------------------------------|:------------|
+| `update-paymentorder-abort`         | [Aborts][abort] the payment order before any financial transactions are performed.
+| `update-paymentorder-updateorder`   | [Updates the order][update-order] with a change in the `amount` and/or `vatAmount`.
+| `redirect-paymentorder`             | Contains the URI that is used to redirect the consumer to the PayEx Payment Pages containing the Payment Menu.
+| `view-paymentorder`                 | Contains the JavaScript `href` that is used to embed the Payment Menu UI directly on the webshop/merchant site.
+| `create-paymentorder-capture`       | The second part of a two-phase transaction where the authorized amount is sent from the payer to the payee. It is possible to do a part-capture on a subset of the authorized amount. Several captures on the same payment are possible, up to the total authorization amount.
+| `create-paymentorder-cancellation`  | Used to cancel authorized and not yet captured transactions. If a cancellation is performed after doing a part-capture, it will only affect the not yet captured authorization amount.
+| `create-paymentorder-reversal`      | Used to reverse a payment. It is only possible to reverse a payment that has been captured and not yet reversed.
 
 ### View Payment Order
 
@@ -732,23 +788,23 @@ Content-Type: application/json
             "href": "https://ecom.externalintegration.payex.com/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=4b0baaf8fdb5a56b5bdd78a8dd9e63e42e93ec79e5d0c0b5cc40f79cf43c9428&culture=nb-NO",
             "rel": "view-paymentorder",
             "contentType": "application/javascript"
-        } 
-    ]   
+        }
+    ]
 }
 ```
 
-The response given when changing a payment order is equivalent to a `GET` 
-request towards the `paymentorders` resource, [as displayed above][payment-orders-resource]. 
+The response given when changing a payment order is equivalent to a `GET`
+request towards the `paymentorders` resource, [as displayed above][payment-orders-resource].
 Remember to call .refresh() on the Payment Menu in JavaScript
 
 ### Capture
 
-Capture can only be done on a payment with a successful authorized transaction. 
-It is possible to do a part-capture where you only capture a smaller amount than the authorized amount. 
+Capture can only be done on a payment with a successful authorized transaction.
+It is possible to do a part-capture where you only capture a smaller amount than the authorized amount.
 You can later do more captures on the same payment up to the total authorization amount.
 
-To capture the authorized payment, we need to perform 
-`create-paymentorder-capture` against the accompanying href returned in the 
+To capture the authorized payment, we need to perform
+`create-paymentorder-capture` against the accompanying href returned in the
 `operations` list. See the abbreviated request and response below:
 
 {:.code-header}
@@ -804,9 +860,9 @@ Content-Type: application/json
 
 {:.table .table-striped}
 | **Property** | **Type** | **Required** | **Description**
-| transaction.description | string | Y | The description of the capture transaction.
-| transaction.amount | integer | Y | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `5000` equals `50.00 NOK`.
-| transaction.vatAmount | integer | Y | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `5000` equals `50.00 NOK`.
+| transaction.description | `string` | Y | The description of the capture transaction.
+| transaction.amount | `integer` | Y | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `5000` equals `50.00 NOK`.
+| transaction.vatAmount | `integer` | Y | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `5000` equals `50.00 NOK`.
 | transaction.payeeReference | string(30) | Y | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.
 | transaction.orderItems | array | N | The array of items being purchased with the order. Used to print on invoices if the payer chooses to pay with invoice, among other things. [See Order Items for details][order-items].
 
@@ -838,8 +894,8 @@ Content-Type: application/json
 
 {:.table .table-striped}
 | **Property** | **Data Type** | **Description**
-| payment | string | The relative URI of the payment this capture transaction belongs to.
-| capture.id | string | The relative URI of the created capture transaction.
+| payment | `string` | The relative URI of the payment this capture transaction belongs to.
+| capture.id | `string` | The relative URI of the created capture transaction.
 | capture.transaction | object | The object representation of the generic [`transaction resource`][authorization-transaction].
 
 Checkout should now be complete, the payment should be secure and everyone should be happy. But, sometimes you also need to implement the cancellation and reversal operations described below.
@@ -917,8 +973,8 @@ Content-Type: application/json
             "href": "https://ecom.externalintegration.payex.com/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=4b0baaf8fdb5a56b5bdd78a8dd9e63e42e93ec79e5d0c0b5cc40f79cf43c9428&culture=nb-NO",
             "rel": "view-paymentorder",
             "contentType": "application/javascript"
-        } 
-    ]   
+        }
+    ]
 }
 ```
 
@@ -951,7 +1007,7 @@ Content-Type: application/json
 {:.table .table-striped}
 | **Property** | **Type** | **Required** | **Description**
 | transaction.payeeReference | string(30) | Y | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.
-| transaction.description | string | Y | A textual description of why the transaction is cancelled.
+| transaction.description | `string` | Y | A textual description of why the transaction is cancelled.
 
 If the cancellation request succeeds, the response should be similar to the example below:
 
@@ -981,15 +1037,15 @@ Content-Type: application/json
 
 {:.table .table-striped}
 | **Property** | **Data Type** | **Description**
-| payment | string | The relative URI of the payment this capture transaction belongs to.
-| cancellation.id | string | The relative URI of the created capture transaction.
+| payment | `string` | The relative URI of the payment this capture transaction belongs to.
+| cancellation.id | `string` | The relative URI of the created capture transaction.
 | cancellation.transaction | object | The object representation of the generic [`transaction resource`][authorization-transaction].
 
 #### Reversal
 
-If we want to reverse a previously captured amount, we need to perform 
-`create-paymentorder-reversal` against the accompanying href returned 
-in the `operations` list. 
+If we want to reverse a previously captured amount, we need to perform
+`create-paymentorder-reversal` against the accompanying href returned
+in the `operations` list.
 See the abbreviated request and response below:
 
 {:.code-header}
@@ -1013,10 +1069,10 @@ Content-Type: application/json
 
 {:.table .table-striped}
 | **Property** | **Type** | **Required** | **Description**
-| transaction.amount | integer | Y | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `5000` equals `50.00 NOK`.
-| transaction.vatAmount | integer | Y | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `5000` equals `50.00 NOK`.
+| transaction.amount | `integer` | Y | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `5000` equals `50.00 NOK`.
+| transaction.vatAmount | `integer` | Y | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `5000` equals `50.00 NOK`.
 | transaction.payeeReference | string(30) | Y | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference for details.
-| transaction.description | string | Y | Textual description of why the transaction is reversed.
+| transaction.description | `string` | Y | Textual description of why the transaction is reversed.
 
 If the reversal request succeeds, the response should be similar to the example below:
 
@@ -1046,9 +1102,15 @@ Content-Type: application/json
 
 {:.table .table-striped}
 | **Property** | **Data Type** | **Description**
-| payment | string | The relative URI of the payment this reversal transaction belongs to.
-| reversal.id | string | The relative URI of the created reversal transaction.
+| payment | `string` | The relative URI of the payment this reversal transaction belongs to.
+| reversal.id | `string` | The relative URI of the created reversal transaction.
 | reversal.transaction | object | The object representation of the generic [`transaction resource`][authorization-transaction].
+
+{% include settlement-reconciliation.md %}
+
+{% include payment-link.md %}
+
+{% include one-click-payments.md %}
 
 {% include iterator.html prev_href="summary" prev_title="Back: Summary" %}
 
