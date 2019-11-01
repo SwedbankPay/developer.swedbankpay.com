@@ -10,6 +10,8 @@ sidebar:
       title: Payment
     - url: /checkout/after-payment
       title: After Payment
+    - url: /checkout/summary
+      title: Summary
     - url: /checkout/other-features
       title: Other Features
 ---
@@ -732,6 +734,11 @@ The `items` property of the ##paymentOrder## is an array containing items that w
 | creditCard.rejectCorporateCards | boolean | | `true` if corporate cards should be declined; otherwise `false` per default. Default value is set by PayEx and can be changed at your request.
 | invoice.feeAmount | integer | |The fee amount in the lowest monetary unit to apply if the consumer chooses to pay with invoice.
 | swish.enableEcomOnly | boolean | | `true` to only enable Swish on ecommerce transactions.
+
+{% include iterator.html prev_href="./"
+                         prev_title="Back: Introduction"
+                         next_href="after-payment"
+                         next_title="Next: After Payment" %}
 
 [payment-menu-image]: /assets/img/checkout/payment_methods.png
 [checkin-image]: /assets/img/checkout/your_information.png

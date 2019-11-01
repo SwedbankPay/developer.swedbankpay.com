@@ -10,6 +10,8 @@ sidebar:
       title: Payment
     - url: /checkout/after-payment
       title: After Payment
+    - url: /checkout/summary
+      title: Summary
     - url: /checkout/other-features
       title: Other Features
 ---
@@ -167,7 +169,7 @@ Content-Type: application/json
             "class": "ProductGroup1",
             "itemUrl": "https://example.com/products/123",
             "imageUrl": "https://example.com/product123.jpg",
-            "description": "Product 1 description", 
+            "description": "Product 1 description",
             "discountDescription": "Volume discount",
             "quantity": 4,
             "quantityUnit": "pcs",
@@ -415,57 +417,14 @@ Content-Type: application/json
 | └─➔&nbsp;`description`    | `string`  | A human readable description of maximum 40 characters of the transaction.                                                                                                                                    |
 | └─➔&nbsp;`payeeReference` | `string`  | A unique reference for the transaction. See [`payeeReference`][payee-reference] for details.                                                                                                                 |
 
-
-## Best Practices
-
-A completed integration against Swedbank Pay Checkout standard setup should
-adhere to a set of best practice criteria in order to successfully go
-through Swedbank Pay' integration validation procedure.
-
-### Must Haves
-
-* The Checkin and Payment Menu components (the two `<iframe>` elements) must be
-  separate (one must not replace the other).
-* The Checkin must be completed before any shipping details are finalized, as
-  the Checkin component provides shipping address via the
-  `onShippingDetailsAvailable` event.
-* A button in the webshop or merchant web site needs to exist that allows the
-  user to not perform Checkin ("Shop anonymously"). See
-  [guest payments][guest-payments] for details.
-* If a browser refresh is performed after the payer has checked in, the payment
-  menu must be shown even though `onConsumerIdentified` is not invoked.
-* The `consumerProfileRef` returned in the response from the `POST` request to
-  the `consumers` resource must be included in the `POST` request to the
-  `paymentorders` resource.
-* When the contents of the shopping cart changes or anything else that affects
-  the amount occurs, the `paymentorder` must be updated and the Payment Menu
-  must be `refresh`ed.
-* Features not described on this page must not be used, although they are
-  available in the API. Flags that can be turned to `true` must be kept
-  `false` as described in this standard setup documentation.
-* When the payer is checked in, he or she must be identified appropriately in
-  the Payment Menu (stored credit cards must be visible for the credit card
-  payment instrument, for instance).
-* `orderReference` must be sent as a part of the `POST` request to
-  `paymentorders` and must represent the order ID of the webshop or merchant
-  website.
-* The integration needs to handle both one and two phase purchases correctly.
-* All of the operations `Cancel`, `Capture` and `Reversal` must be implemented.
-* The [transaction callback][callback] must be handled appropriately.
-* [Problems][problems] that may occur in Swedbank Pay' API must be handled
-  appropriately.
-* Your integration must be resilient to change. Properties, operations,
-  headers, etc., that aren't understood in any response **must be ignored**.
-  Failing due to a something occurring in a response that your implementation
-  haven't seen before is a major malfunction of your integration and must be
-  fixed.
+{% include iterator.html prev_href="payment"
+                         prev_title="Back: Payment"
+                         next_href="summary"
+                         next_title="Next: Summary" %}
 
 [https]: /#connection-and-protocol
 [msisdn]: https://en.wikipedia.org/wiki/MSISDN
 [payee-reference]: #
 [payment-order-operations]: #
-[guest-payments]: #
-[callback]: #
 [payment-menu-back-end]: #
 [payment-menu-front-end]: #
-[problems]: #

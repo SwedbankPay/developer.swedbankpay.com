@@ -10,6 +10,8 @@ sidebar:
       title: Payment
     - url: /checkout/after-payment
       title: After Payment
+    - url: /checkout/summary
+      title: Summary
     - url: /checkout/other-features
       title: Other Features
 ---
@@ -18,6 +20,10 @@ sidebar:
                       icon="warning"
                       header="Site under development"
                       body="The Developer Portal is under construction and should not be used to integrate against Swedbank Pay's APIs yet." %}
+
+{% include jumbotron.html body="After a successful integration, it may be worth
+investigating which **other features** are available in Swedbank Pay Checkout.
+They are listed on this very page." %}
 
 {% include settlement-reconciliation.md %}
 
@@ -1043,6 +1049,8 @@ Content-Type: application/json
 | payment | string | The relative URI of the payment this reversal transaction belongs to.
 | reversal.id | string | The relative URI of the created reversal transaction.
 | reversal.transaction | object | The object representation of the generic [`transaction resource`][authorization-transaction].
+
+{% include iterator.html prev_href="summary" prev_title="Back: Summary" %}
 
 [abort]: #
 [authorization-transaction]: #
