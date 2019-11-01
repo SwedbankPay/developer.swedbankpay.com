@@ -10,13 +10,13 @@ The information needed to reconcile captured funds - the balance report and tran
 
 There are two main alternatives for settlement - either we handle the settlement process for you, or you handle the process yourself :
 
-#### PayEx handles the settlement process 
+#### PayEx handles the settlement process
 
 PayEx handles the settlement process on your behalf, (_called “Redovisningsservice”_). PayEx transfers the net amount to you directly.
 
 ##### PayEx Checkout
 
-When choosing [PayEx Checkout][payex-checkout] we always handle the settlement process for you, gathering all your eCommerce payments in one place. Straighforward and time efficient.  
+When choosing [PayEx Checkout][payex-checkout] we always handle the settlement process for you, gathering all your eCommerce payments in one place. Straighforward and time efficient.
 
 #### You handle the settlement process yourself
 
@@ -42,7 +42,7 @@ Provides a specification over fees for the given period. The fees total is speci
 
 The Transaction List (provided in `.xlsx` and `.xml` formats) specifies all transactions for a specific period, including a summary of transactions grouped by payment method. Both formats contain the same information, but the xml file is meant for computer processing while the excel workbook is meant for human interaction.
 
-The first row contains the name of the PayEx company (e.g. PayEx Solutions AB) that the merchant has the contract with, and the balance report number. The header fields contain a summary of the transactions displayed in the body. 
+The first row contains the name of the PayEx company (e.g. PayEx Solutions AB) that the merchant has the contract with, and the balance report number. The header fields contain a summary of the transactions displayed in the body.
 
 {:.code-header}
 **Header fields**
@@ -80,7 +80,7 @@ The first row contains the name of the PayEx company (e.g. PayEx Solutions AB) t
 |Credit Card Batch Number|Decimal|The reference number from the credit card processor.
 |Direct Debit Bank Reference|Decimal|The reference number from the processing bank.
 |Reference|Decimal|The transaction reference from processor.
-|PayEx Account Number|Decimal|The Account number given, shown in PayEx admin. 
+|PayEx Account Number|Decimal|The Account number given, shown in PayEx admin.
 |Referenced Transaction Number|Decimal|Transaction number for the Authoriation transaction for a two-stage transaction or the number of the debit transaction if it is a credit transaction.
 |Sales Channel|String|The channel through which the transaction was sent to PayEx (e.g Transaction via eCommerce APIs).
 |Brand|String|If eligible, Branding information as sent by merchant to PayEx.

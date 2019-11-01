@@ -10,6 +10,8 @@ sidebar:
       title: Payment
     - url: /checkout/after-payment
       title: After Payment
+    - url: /checkout/summary
+      title: Summary
     - url: /checkout/other-features
       title: Other Features
 ---
@@ -162,6 +164,9 @@ be performed again.
 
 With `paymentUrl` in place, the retry process becomes much more convenient for
 both the integration and the payer.
+
+{% include iterator.html next_href="payment"
+                         next_title="Next: Implement Payment" %}
 
 [https]: /#connection-and-protocol
 [payment-order]: #
