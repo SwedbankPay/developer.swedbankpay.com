@@ -1,5 +1,5 @@
 ---
-title: Swedbank Pay Checkout Other Features
+title: Swedbank Pay Checkout – Other Features
 sidebar:
   navigation:
   - title: Checkout

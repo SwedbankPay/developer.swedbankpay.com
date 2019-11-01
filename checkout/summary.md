@@ -1,5 +1,5 @@
 ---
-title: Swedbank Pay Checkout Summary
+title: Swedbank Pay Checkout – Summary
 sidebar:
   navigation:
   - title: Checkout
