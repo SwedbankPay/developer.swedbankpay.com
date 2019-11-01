@@ -92,13 +92,14 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| **Property**             | **Type**     |  **Description** |
-| `token`              | `string` | A session token used to initiate Checkout UI.
-| `operations`         | `array`  | The array of operation objects to choose from, described in detail in the table below.
-| └➔&nbsp;`rel`             | `string`     | The relational name of the operation, used as a programmatic identifier to find the correct operation given the current state of the application.
-| └➔&nbsp;`method`             | `string`     | The HTTP method to use when performing the operation.
-| └➔&nbsp;`contentType`             | `string`     | The HTTP content type of the target URI. Indicates what sort of resource is to be found at the URI, how it is expected to be used and behave.
-| └➔&nbsp;`href`             | `string`     | The target URI of the operation.
+| Property              | Type     | Description |
+|:----------------------|:---------|:------------|
+| `token`               | `string` | A session token used to initiate Checkout UI.
+| `operations`          | `array`  | The array of operation objects to choose from, described in detail in the table below.
+| └➔&nbsp;`rel`         | `string` | The relational name of the operation, used as a programmatic identifier to find the correct operation given the current state of the application.
+| └➔&nbsp;`method`      | `string` | The HTTP method to use when performing the operation.
+| └➔&nbsp;`contentType` | `string` | The HTTP content type of the target URI. Indicates what sort of resource is to be found at the URI, how it is expected to be used and behave.
+| └➔&nbsp;`href`        | `string` | The target URI of the operation.
 
 ### Checkin Front End
 
@@ -525,13 +526,13 @@ Content-Type: application/json
             "href": "https://ecom.externalintegration.payex.com/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=4b0baaf8fdb5a56b5bdd78a8dd9e63e42e93ec79e5d0c0b5cc40f79cf43c9428&culture=nb-NO",
             "rel": "view-paymentorder",
             "contentType": "application/javascript"
-        } 
-    ]   
+        }
+    ]
 }
 ```
 
 {:.table .table-striped}
-| Property | Type | Description | 
+| Property | Type | Description |
 | paymentorder | object | The payment order object.
 | paymentorder.id | string | The relative URI to the payment order.
 | paymentorder.created | string | The ISO-8601 date of when the payment order was created.
@@ -545,7 +546,7 @@ Content-Type: application/json
 | paymentorder.userAgent | string | The [user agent][user-agent] string of the consumer's browser.
 | paymentorder.language | string | `nb-NO`, `sv-SE` or `en-US`
 | paymentorder.urls | string | The URI to the `urls` resource where all URIs related to the payment order can be retrieved.
-| paymentorder.payeeInfo | string | The URI to the `payeeinfo` resource where the information about the payee of the payment order can bretrieved. 
+| paymentorder.payeeInfo | string | The URI to the `payeeinfo` resource where the information about the payee of the payment order can bretrieved.
 | paymentorder.payers | string | The URI to the `payers` resource where information about the payee of the payment order can be rrieved.
 | paymentorder.orderItems | string | The URI to the `orderItems` resource where information about the order items can be retrieved.
 | paymentorder.metadata | string | The URI to the `payments` resource where information about all underlying payments can be retrieved.
@@ -694,7 +695,7 @@ The `urls` property of the ##paymentOrder## contains the URIs related to a payme
 | Property | Type | Required | Description
 | hostUrls | array | ✔︎︎︎︎︎ | The array of URIs valid for embedding of PayEx Hosted Views.
 | completeUrl | string | ✔︎︎︎︎︎ | The URI to redirect the payer to once the payment is completed.
-| cancelUrl | string | |The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios. 
+| cancelUrl | string | |The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios.
 | paymentUrl | string | |The URI that PayEx will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. Only used in hosted views. If both cancelUrl and paymentUrl is sent, the paymentUrl will used.
 | callbackUrl | string | |The URI to the API endpoint receiving ##POST## requests on transaction activity related to the payment order.
 | termsOfServiceUrl | string | ✔︎︎︎︎︎ | The URI to the terms of service document the payer must accept in order to complete the payment. **HTTPS is a requirement**.
