@@ -8,6 +8,13 @@
 This is the repository for [Swedbank Pay Developer Portal][1]. It is run as a
 [Jekyll][2] website on [GitHub Pages][3].
 
+## Contributing
+
+Bug reports and pull requests are welcome on [GitHub][8]. This project is
+intended to be a safe, welcoming space for collaboration, and contributors
+are expected to adhere to the [Contributor Covenant][9] code of conduct as
+well as [PayEx Open Source Development Guidelines][10].
+
 ## Usage
 
 To view this website, browse to [developer.swedbankpay.com][1]. If you'd like
@@ -26,13 +33,8 @@ to host it locally on your computer, you need to do the following:
    * `davidanson.vscode-markdownlint`
    * `shd101wyy.markdown-preview-enhanced`
    * `bpruitt-goddard.mermaid-markdown-syntax-highlighting`
-
-## Contributing
-
-Bug reports and pull requests are welcome on [GitHub][8]. This project is
-intended to be a safe, welcoming space for collaboration, and contributors
-are expected to adhere to the [Contributor Covenant][9] code of conduct as
-well as [PayEx Open Source Development Guidelines][10].
+8. Also in Visual Studio Code, [set up a ruler at 80 characters][vsc-ruler]
+   by adding `"editor.rulers": [80]` to its configuration.
 
 ## License
 
@@ -55,3 +57,4 @@ This website is available as open source under the terms of the
 [gh-actions-badge]: https://github.com/SwedbankPay/developer.swedbankpay.com/workflows/jekyll-build/badge.svg
 [gh-actions]: https://github.com/SwedbankPay/developer.swedbankpay.com/actions
 [last-commit-badge]: https://img.shields.io/github/last-commit/SwedbankPay/developer.swedbankpay.com/master
+[vsc-ruler]: https://stackoverflow.com/a/29972073/61818
