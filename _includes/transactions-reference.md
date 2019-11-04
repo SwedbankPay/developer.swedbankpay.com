@@ -112,8 +112,6 @@ Content-Type: application/json
 }
 ```
 
-**Properties**
-
 {:.table .table-striped}
 | **Property** | **Data type** | **Description**
 | `payment` | `string` | The relative URI of the payment this transaction belongs to.
