@@ -1112,6 +1112,15 @@ Content-Type: application/json
 
 {% include one-click-payments.md %}
 
+## PayeeReference
+
+The `payeeReference` given when creating transactions and payments has some specific processing rules depending on specifications in the contract.
+
+* It must be unique for every operation, used to ensure exactly-once delivery of a transactional operation from the merchant system.
+* Its length and content validation is dependent on whether the transaction.number or the `payeeReference` is sent to the acquirer.
+  * If you select Option A in the settlement process (PayEx will handle the settlement), PayEx will send the transaction.number to the acquirer and the `payeeReference` may have the format of string(30).
+  * If you select Option B in the settlement process (you will handle the settlement yourself), PayEx will send the `payeeReference` to the acquirer and it will be limited to the format of string(12) and all characters must be digits.
+
 {% include iterator.html prev_href="summary" prev_title="Back: Summary" %}
 
 [abort]: #
@@ -1123,7 +1132,7 @@ Content-Type: application/json
 [image_disabled_payment_menu]: /assets/img/checkout/test_purchase.PNG
 [image_enabled_payment_menu]: /assets/img/checkout/payment_menu.PNG
 [order-items]: #
-[payee-reference]: #
+[payee-reference]: /checkout/other-features#payeereference
 [payment-menu]: #
 [payment-orders-resource-payers]: #
 [payment-orders-resource-payments]: #
