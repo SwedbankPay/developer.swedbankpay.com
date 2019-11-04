@@ -1,5 +1,5 @@
 ---
-title: Swedbank Pay Resources
+title: Demoshop
 sidebar:
   navigation:
   - title: Resources
