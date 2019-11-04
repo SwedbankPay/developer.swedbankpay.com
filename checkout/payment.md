@@ -664,7 +664,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property | Type | Description
+| **Required** | **Property** | **Type** | **Description**
 | ✔︎︎︎︎︎ | paymentorder | object | The payment order object.
 | ✔︎︎︎︎︎ | └─➔&nbsp;`operation` | string | The operation that the payment order is supposed to perform.
 | ✔︎︎︎︎︎ | └─➔&nbsp;`currency` | string | The currency of the payment.
@@ -696,7 +696,7 @@ The response given when creating a payment order is equivalent to a `GET` Reques
 The `urls` property of the `paymentOrder` contains the URIs related to a payment order, including where the consumer gets redirected when going forward with or cancelling a payment session, as well as the callback URI that is used to inform the payee (merchant) of changes or updates made to underlying payments or transaction.
 
 {:.table .table-striped}
-| Required | Property | Type | Description
+| **Required** | **Property** | **Type** | **Description**
 | ✔︎︎︎︎︎| hostUrls | array  | The array of URIs valid for embedding of PayEx Hosted Views.
 | ✔︎︎︎︎︎ | completeUrl | string | The URI to redirect the payer to once the payment is completed.
 | ✔︎︎︎︎︎ | termsOfServiceUrl | string  | The URI to the terms of service document the payer must accept in order to complete the payment. **HTTPS is a requirement**.
@@ -709,8 +709,12 @@ The `urls` property of the `paymentOrder` contains the URIs related to a payment
 
 The `orderItems` property of the `paymentOrder` is an array containing the items being purchased with the order. Used to print on invoices if the payer chooses to pay with invoice, among other things. Order items can be specified on both payment order creation as well as on [Capture][payment-order-capture].
 
+{% include alert.html type="info"
+                      icon="info"
+                      body="`orderItems` must be a part of `Capture` if `orderItems` is included in the `paymentOrder` creation." %}
+
 {:.table .table-striped}
-| Required | Property | Type | Description
+| **Required** | **Property** | **Type** | **Description**
 | ✔︎︎︎︎︎ | reference | string | A reference that identifies the order item.
 | ✔︎︎︎︎︎ | name | string | The name of the order item.
 | ✔︎︎︎︎︎ | type | string |  `PRODUCT`, `SERVICE`, `SHIPPING_FEE`, `DISCOUNT`, `VALUE_CODE`, or `OTHER`. The type of the order item.
@@ -732,7 +736,7 @@ The `orderItems` property of the `paymentOrder` is an array containing the items
 The `items` property of the `paymentOrder` is an array containing items that will affect how the payment is performed.
 
 {:.table .table-striped}
-| Required | Property | Type | Description
+| **Required** | **Property** | **Type** | **Description**
 | | creditCard.rejectDebitCards | boolean | `true` if debit cards should be declined; otherwise `false` per default. Default value is set by PayEx and can be changed at your request.
 | | creditCard.rejectCreditCards | boolean | `true` if credit cards should be declined; otherwise `false` per default. Default value is set by PayEx and can be changed at your request.
 | | creditCard.rejectConsumerCards | boolean | `true` if consumer cards should be declined; otherwise `false` per default. Default value is set by PayEx and can be changed at your request.
