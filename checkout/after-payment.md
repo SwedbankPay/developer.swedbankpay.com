@@ -424,7 +424,7 @@ Content-Type: application/json
 
 [https]: /#connection-and-protocol
 [msisdn]: https://en.wikipedia.org/wiki/MSISDN
-[payee-reference]: #
-[payment-order-operations]: #
-[payment-menu-back-end]: #
-[payment-menu-front-end]: #
+[payee-reference]: /checkout/other-features#payeereference
+[payment-order-operations]: /checkout/after-payment#operations
+[payment-menu-back-end]: /payment#payment-menu-back-end
+[payment-menu-front-end]: /payment#payment-menu-front-end
