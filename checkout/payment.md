@@ -753,7 +753,7 @@ The `items` property of the `paymentOrder` is an array containing items that wil
 [msisdn]: https://en.wikipedia.org/wiki/MSISDN
 [operations]: #
 [order-items]: #
-[payee-reference]: #
+[payee-reference]: /checkout/other-features#payeereference
 [payment-menu]: #
 [payment-order-capture]: #
 [payment-order-operations]: #
