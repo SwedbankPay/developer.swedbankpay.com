@@ -1,5 +1,5 @@
 ---
-title: Swedbank Pay Resources Test Data
+title: Test Data
 sidebar:
   navigation:
   - title: Resources
@@ -10,6 +10,8 @@ sidebar:
       title: Test Data
     - url: /resources/demoshop
       title: Demoshop
+    - url: /resources/development-guidelines
+      title: Open Source Development Guidelines
 ---
 
 {% include alert.html type="warning"
