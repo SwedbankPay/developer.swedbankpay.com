@@ -23,7 +23,7 @@ sidebar:
 
 It is important that the projects governed by PayEx foster a collaborative, open, inclusive, positive and tolerant community. To underscore this, a `CODE_OF_CONDUCT.md` file from [Contributor Covenant][contributor-covenant] should be added to the project:
 
-```http
+
 # Contributor Code of Conduct
 
 As contributors and maintainers of this project, and in the interest of
@@ -75,12 +75,12 @@ version 1.3.0, available at
 [contributor-covenant]: http://contributor-covenant.org/
 [opensource-mail]: opensource@payex.com
 [version]: http://contributor-covenant.org/version/1/3/0/
-```
+
 
 The Code of Conduct should then be referenced from the `CONTRIBUTING` file, for example with the following paragraphs:
 
-```http
+
 Please note that this project is released with a Contributor Code of Conduct.
 By participating in this project you agree to abide by its terms.
-```
+
 
