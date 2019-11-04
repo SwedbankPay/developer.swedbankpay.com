@@ -732,13 +732,13 @@ The `orderItems` property of the `paymentOrder` is an array containing the items
 The `items` property of the `paymentOrder` is an array containing items that will affect how the payment is performed.
 
 {:.table .table-striped}
-| Property | Type| Required| Description
-| creditCard.rejectDebitCards | boolean | | `true` if debit cards should be declined; otherwise `false` per default. Default value is set by PayEx and can be changed at your request.
-| creditCard.rejectCreditCards | boolean | | `true` if credit cards should be declined; otherwise `false` per default. Default value is set by PayEx and can be changed at your request.
-| creditCard.rejectConsumerCards | boolean | | `true` if consumer cards should be declined; otherwise `false` per default. Default value is set by PayEx and can be changed at your request.
-| creditCard.rejectCorporateCards | boolean | | `true` if corporate cards should be declined; otherwise `false` per default. Default value is set by PayEx and can be changed at your request.
-| invoice.feeAmount | integer | |The fee amount in the lowest monetary unit to apply if the consumer chooses to pay with invoice.
-| swish.enableEcomOnly | boolean | | `true` to only enable Swish on ecommerce transactions.
+| Required | Property | Type | Description
+| | creditCard.rejectDebitCards | boolean | `true` if debit cards should be declined; otherwise `false` per default. Default value is set by PayEx and can be changed at your request.
+| | creditCard.rejectCreditCards | boolean | `true` if credit cards should be declined; otherwise `false` per default. Default value is set by PayEx and can be changed at your request.
+| | creditCard.rejectConsumerCards | boolean | `true` if consumer cards should be declined; otherwise `false` per default. Default value is set by PayEx and can be changed at your request.
+| | creditCard.rejectCorporateCards | boolean | `true` if corporate cards should be declined; otherwise `false` per default. Default value is set by PayEx and can be changed at your request.
+| | invoice.feeAmount | integer |The fee amount in the lowest monetary unit to apply if the consumer chooses to pay with invoice.
+| | swish.enableEcomOnly | boolean | `true` to only enable Swish on ecommerce transactions.
 
 {% include iterator.html prev_href="./"
                          prev_title="Back: Introduction"
