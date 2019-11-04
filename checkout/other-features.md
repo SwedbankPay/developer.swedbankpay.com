@@ -433,6 +433,152 @@ Content-Type: application/json
 | └─➔&nbsp;`city`           | `string` | Payer's city of residence                           |
 | └─➔&nbsp;`countryCode`    | `string` | Country Code for country of residence.              |
 
+## Checkin Events
+
+```mermaid
+sequenceDiagram
+  participant Consumer
+  participant Merchant
+  participant SwedbankPay as Swedbank Pay
+
+  Consumer ->> Merchant: visit
+  Merchant ->> Merchant: Prepare, Embed ClientScript
+  Merchant ->> SwedbankPay: payex.hostedView.consumer().open()
+
+  alt Configuration validation failure
+    SwedbankPay -->> Merchant: onError
+  end
+
+  alt Identified consumer
+      alt Payment Menu not in DOM
+        SwedbankPay->>Merchant: onConsumerIdentified
+      else PaymentMenu already exist in DOM
+        SwedbankPay->>Merchant: onNewConsumer
+      end
+
+      alt Depending on backend response
+        SwedbankPay->>Merchant: onShippingDetailsAvailable
+        SwedbankPay->>Merchant: onBillingDetailsAvailable
+      end
+  end
+
+  alt Forget me
+    Consumer->>SwedbankPay: Click forget me link
+    SwedbankPay->>Merchant: onConsumerRemoved
+  end
+
+  alt Change shipping address
+    Consumer->>SwedbankPay: Click change shipping adress button
+    SwedbankPay->>Merchant: OnShippingDetailsAvailable
+  end
+```
+
+### `onConsumerIdentified`
+
+This event triggers when a consumer has performed Checkin and is identified,
+if the Payment Menu is not loaded and in the DOM.
+
+```mermaid
+sequenceDiagram
+  participant Consumer
+  participant Merchant
+  participant SwedbankPay as Swedbank Pay
+
+  activate Consumer
+    Consumer ->> Merchant: Visit
+    activate Merchant
+      Merchant ->> Merchant: Prepare and embed client script
+      Merchant ->> SwedbankPay: payex.hostedView.consumer().open()
+      activate SwedbankPay
+        SwedbankPay -->> Consumer: Render Checkin
+        Consumer ->> SwedbankPay: Perform Checkin
+        SwedbankPay ->> SwedbankPay: Payment Menu not in DOM
+        SwedbankPay ->> Merchant: onConsumerIdentified
+      deactivate SwedbankPay
+    deactivate Merchant
+  deactivate Consumer
+```
+
+The `onConsumerIdentified` event is raised with the following event argument
+object:
+
+{:.code-header}
+**`onConsumerIdentified` event object**
+
+```js
+{
+  "actionType": "OnConsumerIdentified",
+  "consumerProfileRef": "<consumerProfileRef>"
+}
+```
+
+### `onNewConsumer`
+
+This event triggers when a consumer has performed Checkin and is identified,
+if the Payment Menu is loaded and present in the DOM.
+
+```mermaid
+sequenceDiagram
+  participant Consumer
+  participant Merchant
+  participant SwedbankPay as Swedbank Pay
+
+  activate Consumer
+    Consumer ->> Merchant: Visit
+    activate Merchant
+      Merchant ->> Merchant: Prepare and embed client script
+      Merchant ->> SwedbankPay: payex.hostedView.consumer().open()
+      activate SwedbankPay
+        SwedbankPay -->> Consumer: Render Checkin
+        Consumer ->> SwedbankPay: Perform Checkin
+        SwedbankPay ->> SwedbankPay: Payment Menu in DOM
+        SwedbankPay ->> Merchant: onNewConsumer
+      deactivate SwedbankPay
+    deactivate Merchant
+  deactivate Consumer
+```
+
+The `onNewConsumer` event is raised with the following event argument object:
+
+{:.code-header}
+**`onNewConsumer` event object**
+
+```js
+{
+  "actionType": "OnNewConsumer",
+  "consumerProfileRef": "<consumerProfileRef>"
+}
+```
+
+### `onShippingDetailsAvailable`
+
+Triggered: When a consumer has been identified or shipping address has been updated.
+
+Handling: CallbackFunc. If no callback => None
+
+Output: {"actionType":"OnBillingDetailsAvailable","url":"/psp/consumers/~{~{ConsumerProfileRef}}/shipping-details"}
+
+### `onBillingDetailsAvailable`
+
+Triggered: When a consumer has been identified
+
+Handling: CallbackFunc. If no callback => None
+
+Output: {"actionType":"OnBillingDetailsAvailable","url":"/psp/consumers/~{~{ConsumerProfileRef}}/billing-details"}
+
+### `onConsumerRemoved`
+
+Triggered: When not you has been clicked and consumer has been removed
+
+Handling: CallbackFunc. If no callback => Runs disable on paymentMenu which will put an overlay over  the paymentMenu:
+window.payex.hostedView.paymentMenu().enable(false);
+
+### `onError`
+
+Triggered on terminal errors, and when the configuration fails validation.
+
+Handling: CallbackFunc. If no callback => None
+
 ## Payment Menu Events
 
 During operation in the Payment Menu, several events can occur. They are
@@ -718,7 +864,9 @@ The `view-paymentorder` operation contains the URI of the JavaScript that needs 
 
 ### Update Order
 
-Change amount and vat amount on a payment order. If you implement `updateorder` **you need to `refresh()`** the [Payment Menu front end][payment-menu] so the new amount is shown to the end customer.
+Change amount and vat amount on a payment order. If you implement `updateorder`
+**you need to `refresh()`** the [Payment Menu front end][payment-menu] so the
+new amount is shown to the end customer.
 
 {:.code-header}
 **Request**
