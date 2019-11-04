@@ -93,7 +93,7 @@ Content-Type: application/json
 
 {:.table .table-striped}
 | Property              | Type     | Description                                                                                                                                       |
-| :-------------------- | :------- | :------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `:--------------------` | `:-------` | `:------------------------------------------------------------------------------------------------------------------------------------------------` |
 | `token`               | `string` | A session token used to initiate Checkout UI.                                                                                                     |
 | `operations`          | `array`  | The array of operation objects to choose from, described in detail in the table below.                                                            |
 | └➔&nbsp;`rel`         | `string` | The relational name of the operation, used as a programmatic identifier to find the correct operation given the current state of the application. |
@@ -284,62 +284,63 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| ✔︎︎︎︎︎ | **Property**                     | **Type**         |  **Description** |
-| ✔︎︎︎︎︎ | `paymentorder`               | `object`     | The payment order object.
-| ✔︎︎︎︎︎ | `operation`                  | `string`     | The operation that the payment order is supposed to perform.
-| ✔︎︎︎︎︎ | └➔&nbsp;`currency`           | `string`      | The currency of the payment.
-| ✔︎︎︎︎︎ | └➔&nbsp;`amount`             | `integer`     | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK `and `5000` equals `50.00 NOK`.
-| ✔︎︎︎︎︎ | └➔&nbsp;`vatAmount`          | `integer`     | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `5000` equals `50.00 NOK`.
-| ✔︎︎︎︎︎ | └➔&nbsp;`description`        | `string`      | The description of the payment order.
-| ✔︎︎︎︎︎ | └➔&nbsp;`userAgent`          | `string`      | The user agent of the payer.
-| ✔︎︎︎︎︎ | └➔&nbsp;`language`           | `string`      | The language of the payer.
-| ✔︎︎︎︎︎ | └➔&nbsp;`generateRecurrenceToken` | `boolean`      | Determines if a payment token should be generated. A recurrence token is primarily used to enable future recurring payments - with the same token - through server-to-server calls. Default value is `false`.
-| ✔︎︎︎︎︎ | └➔&nbsp;`urls`               | `object`      | The `urls` object, containing the URLs relevant for the payment order.
-| ✔︎︎︎︎︎ | └─➔&nbsp;`hostUrls`          | `array`       | The array of URIs valid for embedding of Swedbank Pay Hosted Views.
-| ✔︎︎︎︎︎ | └─➔&nbsp;`completeUrl`       | `string`      | The URI to redirect the payer to once the payment is completed.
-|   | └─➔&nbsp;`cancelUrl`         | `string`       | The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only `cancelUrl` or `paymentUrl` can be used, not both.
-|   | └─➔&nbsp;`paymentUrl`        | `string`       | The URI that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. Only used in hosted views. Can not be used simultaneously with `cancelUrl`; only `cancelUrl` or `paymentUrl` can be used, not both.
-| ✔︎︎︎︎︎ | └─➔&nbsp;`callbackUrl`       | `string`       | The URI to the API endpoint receiving `POST` requests on transaction activity related to the payment order.
-| ✔︎︎︎︎︎ | └─➔&nbsp;`termsOfServiceUrl` | `string`       | The URI to the terms of service document the payer must accept in order to complete the payment. Requires `https`.
-| ✔︎︎︎︎︎ | └➔&nbsp;`payeeInfo`           | `string`      | The `payeeInfo` object, containing information about the payee.
-| ✔︎︎︎︎︎ | └─➔&nbsp;`payeeId`           | `string`       | The ID of the payee, usually the merchant ID.
-| ✔︎︎︎︎︎ | └─➔&nbsp;`payeeReference`    | `string(30)`   | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.
-|   | └─➔&nbsp;`payeeName`           | `string`     | The name of the payee, usually the name of the merchant.
-|   | └─➔&nbsp;`productCategory`     | `string`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.
-|   | └─➔&nbsp;`orderReference`      | `string(50)`  | The order reference should reflect the order reference found in the merchant's systems.
-|   | └➔&nbsp;`payer`                | `object`      | The `payer` object containing information about the payer relevant for the payment order.
-| ︎︎︎  | └─➔&nbsp;`consumerProfileRef`  | `string`      | The consumer profile reference as obtained through [initiating a consumer session][initiate-consumer-session].
-|   | └➔&nbsp;`orderItems`           | `array`       | The array of items being purchased with the order. Used to print on invoices if the payer chooses to pay with invoice, among other things
-| ✔︎︎︎︎︎ | └─➔&nbsp;`reference`           | `string`       | A reference that identifies the order item.
-| ✔︎︎︎︎︎ | └─➔&nbsp;`name`                | `string`       | The name of the order item.
-| ✔︎︎︎︎︎ | └─➔&nbsp;`type`                | `string`       | `PRODUCT`, `SERVICE`, `SHIPPING_FEE`, `DISCOUNT`, `VALUE_CODE` or `OTHER`. The type of the order item.
-| ✔︎︎︎︎︎ | └─➔&nbsp;`class`               | `string`       | The classification of the order item. Can be used for assigning the order item to a specific product category, for instance. Swedbank Pay has no use for this value itself, but it's useful for some payment instruments and integrations.
-| ︎︎︎  | └─➔&nbsp;`itemUrl`             | `string`       | The URL to a page that contains a human readable description of the order item, or similar.
-| ︎︎︎  | └─➔&nbsp;`imageUrl`            | `string`       | The URL to an image of the order item.
-| ︎︎︎  | └─➔&nbsp;`description`         | `string`       | The human readable description of the order item.
-| ︎︎︎  | └─➔&nbsp;`discountDescription` | `string`       | The human readable description of the possible discount.
-| ✔︎︎︎︎︎ | └─➔&nbsp;`quantity`            | `integer`      | The quantity of order items being purchased.
-| ✔︎︎︎︎︎ | └─➔&nbsp;`quantityUnit`        | `string`       | The unit of the quantity, such as `pcs`, `grams`, or similar.
-| ✔︎︎︎︎︎ | └─➔&nbsp;`unitPrice`           | `integer`      | The price per unit of order item.
-| ︎︎︎  | └─➔&nbsp;`discountPrice`       | `integer`       | If the order item is purchased at a discounted price, this property should contain that price.
-| ✔︎︎︎︎︎ | └─➔&nbsp;`vatPercent`          | `integer`      | The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.
-| ✔︎︎︎︎︎ | └─➔&nbsp;`amount`              | `integer`      | The total amount including VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `5000` equals `50.00 NOK`.
-| ✔︎︎︎︎︎ | └─➔&nbsp;`vatAmount`           | `integer`      | The total amount of VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `5000` equals `50.00 NOK`.
-|   | └➔&nbsp;`riskIndicator`           | `array`       | This **optional** array consist of information that helps verifying the payer.
-|  | └─➔&nbsp;`deliveryEmailAdress`           | `string`      | For electronic delivery, the email address to which the merchandise was delivered.
-|  | └─➔&nbsp;`deliveryTimeFrameIndicator`           | `string`      | Indicates the merchandise delivery timeframe. <br>01 (Electronic Delivery) <br>02 (Same day shipping) <br>03 (Overnight shipping) <br>04 (Two-day or more shipping)
-|  | └─➔&nbsp;`preOrderDate`           | `string`      | For a pre-ordered purchase. The expected date that the merchandise will be available. <br>FORMAT: `YYYYMMDD`
-|  | └─➔&nbsp;`preOrderPurchaseIndicator`           | `string`      | Indicates whether Cardholder is placing an order for merchandise with a future availability or release date. <br>01 (Merchandise available) <br>02 (Future availability)
-|  | └─➔&nbsp;`shipIndicator`           | `string`      | Indicates shipping method chosen for the transaction. <br> 01 (Ship to cardholder's billing address) <br>02 (Ship to another verified address on file with merchant)<br>03 (Ship to address that is different than cardholder's billing address)<br> 04 (Ship to Store / Pick-up at local store. Store address shall be populated in shipping address fields)<br> 05 (Digital goods, includes online services, electronic giftcards and redemption codes) <br>06 (Travel and Event tickets, not shipped) <br>07 (Other, e.g. gaming, digital service)
-|  | └─➔&nbsp;`giftCardPurchase`           | `boolean`      | `true` if this is a purchase of a gift card.
-|  | └─➔&nbsp;`reOrderPurchaseIndicator`           | `string`      | Indicates whether Cardholder is placing an order for merchandise with a future availability or release date. <br>01 (Merchandise available) <br>02 (Future availability)
-|  | └➔&nbsp;`pickUpAddress`           | `object`      | If shipIndicator set to 4, then prefil this.
-|  | └─➔&nbsp;`name`           | `string`      | If shipIndicator set to 4, then prefil this.
-|  | └─➔&nbsp;`streetAddress`           | `string`      | If shipIndicator set to 4, then prefil this.
-|  | └─➔&nbsp;`coAddress`           | `string`      | If shipIndicator set to 4, then prefil this.
-|  | └─➔&nbsp;`city`           | `string`      | If shipIndicator set to 4, then prefil this.
-|  | └─➔&nbsp;`zipCode`           | `string`      | If shipIndicator set to 4, then prefil this.
-|  | └─➔&nbsp;`countryCode`           | `string`      | If shipIndicator set to 4, then prefil this.
+| ✔︎︎︎︎︎ | Property                              | Type         | Description       |
+|:-:|:--------------------------------------|:-------------|:------------------|
+| ✔︎︎︎︎︎ | `paymentorder`                        | `object`     | The payment order object.
+| ✔︎︎︎︎︎ | └➔&nbsp;`operation`                   | `string`     | The operation that the payment order is supposed to perform.
+| ✔︎︎︎︎︎ | └➔&nbsp;`currency`                    | `string`     | The currency of the payment.
+| ✔︎︎︎︎︎ | └➔&nbsp;`amount`                      | `integer`    | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK `and `5000` equals `50.00 NOK`.
+| ✔︎︎︎︎︎ | └➔&nbsp;`vatAmount`                   | `integer`    | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `5000` equals `50.00 NOK`.
+| ✔︎︎︎︎︎ | └➔&nbsp;`description`                 | `string`     | The description of the payment order.
+| ✔︎︎︎︎︎ | └➔&nbsp;`userAgent`                   | `string`     | The user agent of the payer.
+| ✔︎︎︎︎︎ | └➔&nbsp;`language`                    | `string`     | The language of the payer.
+| ✔︎︎︎︎︎ | └➔&nbsp;`generateRecurrenceToken`     | `bool`    | Determines if a payment token should be generated. A recurrence token is primarily used to enable future recurring payments - with the same token - through server-to-server calls. Default value is `false`.
+| ✔︎︎︎︎︎ | └➔&nbsp;`urls`                        | `object`     | The `urls` object, containing the URLs relevant for the payment order.
+| ✔︎︎︎︎︎ | └─➔&nbsp;`hostUrls`                   | `array`      | The array of URIs valid for embedding of Swedbank Pay Hosted Views.
+| ✔︎︎︎︎︎ | └─➔&nbsp;`completeUrl`                | `string`     | The URI to redirect the payer to once the payment is completed.
+|   | └─➔&nbsp;`cancelUrl`                  | `string`     | The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only `cancelUrl` or `paymentUrl` can be used, not both.
+|   | └─➔&nbsp;`paymentUrl`                 | `string`     | The URI that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. Only used in hosted views. Can not be used simultaneously with `cancelUrl`; only `cancelUrl` or `paymentUrl` can be used, not both.
+| ✔︎︎︎︎︎ | └─➔&nbsp;`callbackUrl`                | `string`     | The URI to the API endpoint receiving `POST` requests on transaction activity related to the payment order.
+| ✔︎︎︎︎︎ | └─➔&nbsp;`termsOfServiceUrl`          | `string`     | The URI to the terms of service document the payer must accept in order to complete the payment. Requires `https`.
+| ✔︎︎︎︎︎ | └➔&nbsp;`payeeInfo`                   | `string`     | The `payeeInfo` object, containing information about the payee.
+| ✔︎︎︎︎︎ | └─➔&nbsp;`payeeId`                    | `string`     | The ID of the payee, usually the merchant ID.
+| ✔︎︎︎︎︎ | └─➔&nbsp;`payeeReference`             | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.
+|   | └─➔&nbsp;`payeeName`                  | `string`     | The name of the payee, usually the name of the merchant.
+|   | └─➔&nbsp;`productCategory`            | `string`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.
+|   | └─➔&nbsp;`orderReference`             | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.
+|   | └➔&nbsp;`payer`                       | `object`     | The `payer` object containing information about the payer relevant for the payment order.
+| ︎︎︎  | └─➔&nbsp;`consumerProfileRef`         | `string`     | The consumer profile reference as obtained through [initiating a consumer session][initiate-consumer-session].
+|   | └➔&nbsp;`orderItems`                  | `array`      | The array of items being purchased with the order. Used to print on invoices if the payer chooses to pay with invoice, among other things
+| ✔︎︎︎︎︎ | └─➔&nbsp;`reference`                  | `string`     | A reference that identifies the order item.
+| ✔︎︎︎︎︎ | └─➔&nbsp;`name`                       | `string`     | The name of the order item.
+| ✔︎︎︎︎︎ | └─➔&nbsp;`type`                       | `string`     | `PRODUCT`, `SERVICE`, `SHIPPING_FEE`, `DISCOUNT`, `VALUE_CODE` or `OTHER`. The type of the order item.
+| ✔︎︎︎︎︎ | └─➔&nbsp;`class`                      | `string`     | The classification of the order item. Can be used for assigning the order item to a specific product category, for instance. Swedbank Pay has no use for this value itself, but it's useful for some payment instruments and integrations.
+| ︎︎︎  | └─➔&nbsp;`itemUrl`                    | `string`     | The URL to a page that contains a human readable description of the order item, or similar.
+| ︎︎︎  | └─➔&nbsp;`imageUrl`                   | `string`     | The URL to an image of the order item.
+| ︎︎︎  | └─➔&nbsp;`description`                | `string`     | The human readable description of the order item.
+| ︎︎︎  | └─➔&nbsp;`discountDescription`        | `string`     | The human readable description of the possible discount.
+| ✔︎︎︎︎︎ | └─➔&nbsp;`quantity`                   | `integer`    | The quantity of order items being purchased.
+| ✔︎︎︎︎︎ | └─➔&nbsp;`quantityUnit`               | `string`     | The unit of the quantity, such as `pcs`, `grams`, or similar.
+| ✔︎︎︎︎︎ | └─➔&nbsp;`unitPrice`                  | `integer`    | The price per unit of order item.
+| ︎︎︎  | └─➔&nbsp;`discountPrice`              | `integer`    | If the order item is purchased at a discounted price, this property should contain that price.
+| ✔︎︎︎︎︎ | └─➔&nbsp;`vatPercent`                 | `integer`    | The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.
+| ✔︎︎︎︎︎ | └─➔&nbsp;`amount`                     | `integer`    | The total amount including VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `5000` equals `50.00 NOK`.
+| ✔︎︎︎︎︎ | └─➔&nbsp;`vatAmount`                  | `integer`    | The total amount of VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `5000` equals `50.00 NOK`.
+|   | └➔&nbsp;`riskIndicator`               | `array`      | This **optional** array consist of information that helps verifying the payer.
+|   | └─➔&nbsp;`deliveryEmailAdress`        | `string`     | For electronic delivery, the email address to which the merchandise was delivered.
+|   | └─➔&nbsp;`deliveryTimeFrameIndicator` | `string`     | Indicates the merchandise delivery timeframe. <br>`01` (Electronic Delivery) <br>`02` (Same day shipping) <br>`03` (Overnight shipping) <br>`04` (Two-day or more shipping)
+|   | └─➔&nbsp;`preOrderDate`               | `string`     | For a pre-ordered purchase. The expected date that the merchandise will be available. Format: `YYYYMMDD`
+|   | └─➔&nbsp;`preOrderPurchaseIndicator`  | `string`     | Indicates whether Cardholder is placing an order for merchandise with a future availability or release date. <br>`01` (Merchandise available) <br>`02` (Future availability)
+|   | └─➔&nbsp;`shipIndicator`              | `string`     | Indicates shipping method chosen for the transaction. <br>`01` (Ship to cardholder's billing address) <br>`02` (Ship to another verified address on file with merchant)<br>`03` (Ship to address that is different than cardholder's billing address)<br>`04` (Ship to Store / Pick-up at local store. Store address shall be populated in shipping address fields)<br>`05` (Digital goods, includes online services, electronic giftcards and redemption codes) <br>`06` (Travel and Event tickets, not shipped) <br>`07` (Other, e.g. gaming, digital service)
+|   | └─➔&nbsp;`giftCardPurchase`           | `bool`    | `true` if this is a purchase of a gift card.
+|   | └─➔&nbsp;`reOrderPurchaseIndicator`   | `string`     | Indicates whether Cardholder is placing an order for merchandise with a future availability or release date. <br>`01` (Merchandise available) <br>`02` (Future availability)
+|   | └➔&nbsp;`pickUpAddress`               | `object`     | If `shipIndicator` set to `04`, then prefill this.
+|   | └─➔&nbsp;`name`                       | `string`     | If `shipIndicator` set to `04`, then prefill this.
+|   | └─➔&nbsp;`streetAddress`              | `string`     | If `shipIndicator` set to `04`, then prefill this.
+|   | └─➔&nbsp;`coAddress`                  | `string`     | If `shipIndicator` set to `04`, then prefill this.
+|   | └─➔&nbsp;`city`                       | `string`     | If `shipIndicator` set to `04`, then prefill this.
+|   | └─➔&nbsp;`zipCode`                    | `string`     | If `shipIndicator` set to `04`, then prefill this.
+|   | └─➔&nbsp;`countryCode`                | `string`     | If `shipIndicator` set to `04`, then prefill this.
 
 The response back should look something like this (abbreviated for brevity):
 
@@ -467,7 +468,11 @@ order.
 
 ## Payment Orders
 
-The `paymentorders` resource is used when initiating a payment process through [Payment Menu][payment-menu] and [PayEx Checkout](/checkout/index). The payment order is a container for the payment method object selected by the payer. This will generate a payment that is accessed through the sub-resources `payments` and `currentPayment`.
+The `paymentorders` resource is used when initiating a payment process through
+[Payment Menu][payment-menu] and [PayEx Checkout](/checkout/index). The payment
+order is a container for the payment method object selected by the payer. This
+will generate a payment that is accessed through the sub-resources `payments`
+and `currentPayment`.
 
 {:.code-header}
 **Request**
@@ -536,31 +541,33 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property | Type | Description |
-| `paymentorder` | object | The payment order object.
-| └─➔&nbsp;`id` | string | The relative URI to the payment order.
-| └─➔&nbsp;`created` | string | The ISO-8601 date of when the payment order was created.
-| └─➔&nbsp;`updated` | string | The ISO-8601 date of when the payment order was updated.
-| └─➔&nbsp;`operation` | string | Purchase
-| └─➔&nbsp;`state` | string | `Ready`, `Pending`, `Failed` or `Aborted`. Indicates the state of the payment order. This field is oy for tatus display purposes.
-| └─➔&nbsp;`currency` | string | The currency of the payment order.
-| └─➔&nbsp;`amount` | integer | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK`, a `5000` quals `50.00 NOK`.
-| └─➔&nbsp;`vatAmount` | integer | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals `50.00 NOK`.
-| └─➔&nbsp;`description` | string(40) | A textual description of maximum 40 characters of the purchase.
-| └─➔&nbsp;`userAgent` | string | The [user agent][user-agent] string of the consumer's browser.
-| └─➔&nbsp;`language` | string | `nb-NO`, `sv-SE` or `en-US`
-| └─➔&nbsp;`urls` | string | The URI to the `urls` resource where all URIs related to the payment order can be retrieved.
-| └─➔&nbsp;`payeeInfo` | string | The URI to the `payeeinfo` resource where the information about the payee of the payment order can bretrieved.
-| └─➔&nbsp;`payers` | string | The URI to the `payers` resource where information about the payee of the payment order can be rrieved.
-| └─➔&nbsp;`orderItems` | string | The URI to the `orderItems` resource where information about the order items can be retrieved.
-| └─➔&nbsp;`metadata` | string | The URI to the `payments` resource where information about all underlying payments can be retrieved.
-| └─➔&nbsp;`payments` | string | The URI to the `payments` resource where information about all underlying payments can be retrieved.
-| └─➔&nbsp;`currentPayment` | string | The URI to the `currentPayment` resource where information about the current – and sole active – payment can be retrieved.
-| └─➔&nbsp;`operations` | array | The array of possible operations to perform, given the state of the payment order. [See Operations for details][operations].
+| Property                                 | Type         | Description        |
+|:-----------------------------------------|:-------------|:-------------------|
+| `paymentorder`            | `object`     | The payment order object.
+| └➔&nbsp;`id`              | `string`     | The relative URI to the payment order.
+| └➔&nbsp;`created`         | `string`     | The ISO-8601 date of when the payment order was created.
+| └➔&nbsp;`updated`         | `string`     | The ISO-8601 date of when the payment order was updated.
+| └➔&nbsp;`operation`       | `string`     | Purchase
+| └➔&nbsp;`state`           | `string`     | `Ready`, `Pending`, `Failed` or `Aborted`. Indicates the state of the payment order. This field is oy for tatus display purposes.
+| └➔&nbsp;`currency`        | `string`     | The currency of the payment order.
+| └➔&nbsp;`amount`          | `integer`    | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK`, a `5000` quals `50.00 NOK`.
+| └➔&nbsp;`vatAmount`       | `integer`    | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals `50.00 NOK`.
+| └➔&nbsp;`description`     | `string(40)` | A textual description of maximum 40 characters of the purchase.
+| └➔&nbsp;`userAgent`       | `string`     | The [user agent][user-agent] string of the consumer's browser.
+| └➔&nbsp;`language`        | `string`     | `nb-NO`, `sv-SE` or `en-US`
+| └➔&nbsp;`urls`            | `string`     | The URI to the `urls` resource where all URIs related to the payment order can be retrieved.
+| └➔&nbsp;`payeeInfo`       | `string`     | The URI to the `payeeinfo` resource where the information about the payee of the payment order can bretrieved.
+| └➔&nbsp;`payers`          | `string`     | The URI to the `payers` resource where information about the payee of the payment order can be rrieved.
+| └➔&nbsp;`orderItems`      | `string`     | The URI to the `orderItems` resource where information about the order items can be retrieved.
+| └➔&nbsp;`metadata`        | `string`     | The URI to the `payments` resource where information about all underlying payments can be retrieved.
+| └➔&nbsp;`payments`        | `string`     | The URI to the `payments` resource where information about all underlying payments can be retrieved.
+| └➔&nbsp;`currentPayment`  | `string`     | The URI to the `currentPayment` resource where information about the current – and sole active – payment can be retrieved.
+| └➔&nbsp;`operations`      | `array`      | The array of possible operations to perform, given the state of the payment order. [See Operations for details][operations].
 
 ### Creating a payment order
 
-To create a payment order, you perform a `POST` request towards the `paymentorders` resource:
+To create a payment order, you perform a `POST` request towards the
+`paymentorders` resource:
 
 {:.code-header}
 **Request**
@@ -664,46 +671,53 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| **Required** | **Property** | **Type** | **Description**
-| ✔︎︎︎︎︎ | paymentorder | object | The payment order object.
-| ✔︎︎︎︎︎ | └─➔&nbsp;`operation` | string | The operation that the payment order is supposed to perform.
-| ✔︎︎︎︎︎ | └─➔&nbsp;`currency` | string | The currency of the payment.
-| ✔︎︎︎︎︎ | └─➔&nbsp;`amount` | integer | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `5000` equals `50.00 NOK`.
-| ✔︎︎︎︎︎ | └─➔&nbsp;`vatAmount` | integer | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals `50.00 NOK`.
-| ✔︎︎︎︎︎ | └─➔&nbsp;`description` | string | The description of the payment order.
-| ✔︎︎︎︎︎ | └─➔&nbsp;`userAgent` | string | The user agent of the payer.
-| ✔︎︎︎︎︎ | └─➔&nbsp;`language` | string | The language of the payer.
-| ✔︎︎︎︎︎ | └─➔&nbsp;`generateRecurrenceToken` | boolean | Determines if a payment token should be generated. A recurrence token is primarily used to enable future recurring payments - with the same token - through server-to-server calls. Default value is `false`
-| ✔︎︎︎︎︎ | └─➔&nbsp;`urls` | object | The object containing the payee's (such as the webshop or merchant) URLs that are relevant for this payment order. See [URLs for details][urls].
-| ✔︎︎︎︎︎ | └─➔&nbsp;`payeeInfo.payeeId` | string | The ID of the payee, usually the merchant ID.
-| ✔︎︎︎︎︎ | └─➔&nbsp;`payeeInfo.payeeReference` | string(30) | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.
-| | └─➔&nbsp;`payeeInfo.payeeName` | string| The name of the payee, usually the name of the merchant.
-| | └─➔&nbsp;`payeeInfo.productCategory` | string| A product category or number sent in from the payee/merchant. This is not validated by PayEx, but will be passed through the payment process and may be used in the settlement process.
-| | └─➔&nbsp;`payeeInfo.orderReference` | string(50)| The order reference should reflect the order reference found in the merchant's systems.
-| | └─➔&nbsp;`payeeInfo.subsite` | String(40)| The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with PayEx reconciliation before being used.
-| | └─➔&nbsp;`payer.consumerProfileRef` | string| The consumer profile reference as obtained through the [Consumers][consumer-reference] API.
-| | └─➔&nbsp;`orderItems` | array| The array of items being purchased with the order. Used to print on invoices if the payer chooses to pay with invoice, among other things. [See Order Items for details][order-items].
-| | └─➔&nbsp;`metadata` | object| The keys and values that should be associated with the payment order. Can be additional identifiers and data you want to associate with the payment.
-| | └─➔&nbsp;`items` | array | The array of items that will affect how the payment is performed.
-
+| ✔︎︎︎︎︎ | Property                              | Type     | Description           |
+|:-:|:--------------------------------------|:---------|:----------------------|
+| ✔︎︎︎︎︎ | `paymentorder`                    | `object`     | The payment order object.
+| ✔︎︎︎︎︎ | └➔&nbsp;`operation`               | `string`     | The operation that the payment order is supposed to perform.
+| ✔︎︎︎︎︎ | └➔&nbsp;`currency`                | `string`     | The currency of the payment.
+| ✔︎︎︎︎︎ | └➔&nbsp;`amount`                  | `integer`    | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `5000` equals `50.00 NOK`.
+| ✔︎︎︎︎︎ | └➔&nbsp;`vatAmount`               | `integer`    | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals `50.00 NOK`.
+| ✔︎︎︎︎︎ | └➔&nbsp;`description`             | `string`     | The description of the payment order.
+| ✔︎︎︎︎︎ | └➔&nbsp;`userAgent`               | `string`     | The user agent of the payer.
+| ✔︎︎︎︎︎ | └➔&nbsp;`language`                | `string`     | The language of the payer.
+| ✔︎︎︎︎︎ | └➔&nbsp;`generateRecurrenceToken` | `bool`       | Determines if a payment token should be generated. A recurrence token is primarily used to enable future recurring payments - with the same token - through server-to-server calls. Default value is `false`
+| ✔︎︎︎︎︎ | └➔&nbsp;`urls`                    | `object`     | The object containing the payee's (such as the webshop or merchant) URLs that are relevant for this payment order. See [URLs for details][urls].
+| ✔︎︎︎︎︎ | └➔&nbsp;`payeeInfo`               | `object`     | The object containing information about the payee.
+| ✔︎︎︎︎︎ | └─➔&nbsp;`payeeId`                | `string`     | The ID of the payee, usually the merchant ID.
+| ✔︎︎︎︎︎ | └─➔&nbsp;`payeeReference`         | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.
+|   | └─➔&nbsp;`payeeName`              | `string`     | The name of the payee, usually the name of the merchant.
+|   | └─➔&nbsp;`productCategory`        | `string`     | A product category or number sent in from the payee/merchant. This is not validated by PayEx, but will be passed through the payment process and may be used in the settlement process.
+|   | └─➔&nbsp;`orderReference`         | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.
+|   | └─➔&nbsp;`subsite`                | `string(40)` | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with PayEx reconciliation before being used.
+|   | └➔&nbsp;`payer`                   | `string`     | The consumer profile reference as obtained through the [Consumers][consumer-reference] API.
+|   | └─➔&nbsp;`consumerProfileRef`     | `string`     | The consumer profile reference as obtained through the [Consumers][consumer-reference] API.
+|   | └➔&nbsp;`orderItems`              | `array`      | The array of items being purchased with the order. Used to print on invoices if the payer chooses to pay with invoice, among other things. [See Order Items for details][order-items].
+|   | └➔&nbsp;`metadata`                | `object`     | The keys and values that should be associated with the payment order. Can be additional identifiers and data you want to associate with the payment.
+|   | └➔&nbsp;`items`                   | `array`      | The array of items that will affect how the payment is performed.
 
 **Response**
 
-The response given when creating a payment order is equivalent to a `GET` Request towards the `paymentorders` resource, [as displayed above](#payment-orders)
+The response given when creating a payment order is equivalent to a `GET`
+request towards the `paymentorders` resource, [as displayed above](#payment-orders)
 
 #### URLs
 
-The `urls` property of the `paymentOrder` contains the URIs related to a payment order, including where the consumer gets redirected when going forward with or cancelling a payment session, as well as the callback URI that is used to inform the payee (merchant) of changes or updates made to underlying payments or transaction.
+The `urls` property of the `paymentOrder` contains the URIs related to a
+payment order, including where the consumer gets redirected when going forward
+with or cancelling a payment session, as well as the callback URI that is used
+to inform the payee (merchant) of changes or updates made to underlying payments or transaction.
 
 {:.table .table-striped}
-| **Required** | **Property** | **Type** | **Description**
-| ✔︎︎︎︎︎| hostUrls | array  | The array of URIs valid for embedding of PayEx Hosted Views.
-| ✔︎︎︎︎︎ | completeUrl | string | The URI to redirect the payer to once the payment is completed.
-| ✔︎︎︎︎︎ | termsOfServiceUrl | string  | The URI to the terms of service document the payer must accept in order to complete the payment. **HTTPS is a requirement**.
-| | cancelUrl | string |The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios.
-| | paymentUrl | string |The URI that PayEx will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. Only used in hosted views. If both cancelUrl and paymentUrl is sent, the paymentUrl will used.
-| | callbackUrl | string |The URI to the API endpoint receiving `POST` requests on transaction activity related to the payment order.
-| | logoUrl | string |The URI to the logo that will be displayed on redirect pages. **HTTPS is a requirement**.
+| ✔︎︎︎︎︎ | Property            | Type     | Description                             |
+|:-:|:--------------------|:---------|:----------------------------------------|
+| ✔ ︎︎︎︎︎| `hostUrls`          | `array`  | The array of URIs valid for embedding of PayEx Hosted Views.
+| ✔︎︎︎︎︎ | `completeUrl`       | `string` | The URI to redirect the payer to once the payment is completed.
+| ✔︎︎︎︎︎ | `termsOfServiceUrl` | `string` | The URI to the terms of service document the payer must accept in order to complete the payment. **HTTPS is a requirement**.
+|   | `cancelUrl`         | `string` | The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios.
+|   | `paymentUrl`        | `string` | The URI that PayEx will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. Only used in hosted views. If both cancelUrl and paymentUrl is sent, the paymentUrl will used.
+|   | `callbackUrl`       | `string` | The URI to the API endpoint receiving `POST` requests on transaction activity related to the payment order.
+|   | `logoUrl`           | `string` | The URI to the logo that will be displayed on redirect pages. **HTTPS is a requirement**.
 
 #### Order Items
 
@@ -714,35 +728,41 @@ The `orderItems` property of the `paymentOrder` is an array containing the items
                       body="`orderItems` must be a part of `Capture` if `orderItems` is included in the `paymentOrder` creation." %}
 
 {:.table .table-striped}
-| **Required** | **Property** | **Type** | **Description**
-| ✔︎︎︎︎︎ | reference | string | A reference that identifies the order item.
-| ✔︎︎︎︎︎ | name | string | The name of the order item.
-| ✔︎︎︎︎︎ | type | string |  `PRODUCT`, `SERVICE`, `SHIPPING_FEE`, `DISCOUNT`, `VALUE_CODE`, or `OTHER`. The type of the order item.
-| ✔︎︎︎︎︎ | class | string | The classification of the order item. Can be used for assigning the order item to a specific product category, for instance. PayEx has no use for this value itself, but it's useful for some payment instruments and integrations.
-| | itemUrl | string |The URL to a page that contains a human readable description of the order item, or similar.
-| | imageUrl | string |The URL to an image of the order item.
-| | description | string |The human readable description of the order item.
-| | discountDescription | string |The human readable description of the possible discount.
-| ✔︎︎︎︎︎ | quantity | integer | The quantity of order items being purchased.
-| ✔︎︎︎︎︎ | quantityUnit | string | The unit of the quantity, such as `pcs`, `grams`, or similar.
-| ✔︎︎︎︎︎ | unitPrice | integer | The price per unit of order item.
-| | discountPrice | integer |If the order item is purchased at a discounted price, this property should contain that price.
-| ✔︎︎︎︎︎ | vatPercent | integer | The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.
-| ✔︎︎︎︎︎ | amount | integer | The total amount including VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `5000` equals `50.00 NOK`.
-| ✔︎︎︎︎︎ | vatAmount | integer | The total amount of VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `5000` equals `50.00 NOK`.
+| ✔︎︎︎︎︎ | Property            | Type     | Description                             |
+|:-:|:--------------------|:---------|:----------------------------------------|
+| ✔︎︎︎︎︎ | `reference` | `string` | A reference that identifies the order item.
+| ✔︎︎︎︎︎ | `name` | `string` | The name of the order item.
+| ✔︎︎︎︎︎ | `type` | `string` |  `PRODUCT`, `SERVICE`, `SHIPPING_FEE`, `DISCOUNT`, `VALUE_CODE`, or `OTHER`. The type of the order item.
+| ✔︎︎︎︎︎ | `class` | `string` | The classification of the order item. Can be used for assigning the order item to a specific product category, for instance. PayEx has no use for this value itself, but it's useful for some payment instruments and integrations.
+|   | `itemUrl` | `string` |The URL to a page that contains a human readable description of the order item, or similar.
+|   | `imageUrl` | `string` |The URL to an image of the order item.
+|   | `description` | `string` |The human readable description of the order item.
+|   | `discountDescription` | `string` |The human readable description of the possible discount.
+| ✔︎︎︎︎︎ | `quantity` | `integer` | The quantity of order items being purchased.
+| ✔︎︎︎︎︎ | `quantityUnit` | `string` | The unit of the quantity, such as `pcs`, `grams`, or similar.
+| ✔︎︎︎︎︎ | `unitPrice` | `integer` | The price per unit of order item.
+|   | `discountPrice` | `integer` |If the order item is purchased at a discounted price, this property should contain that price.
+| ✔︎︎︎︎︎ | `vatPercent` | `integer` | The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.
+| ✔︎︎︎︎︎ | `amount` | `integer` | The total amount including VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `5000` equals `50.00 NOK`.
+| ✔︎︎︎︎︎ | `vatAmount` | `integer` | The total amount of VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `5000` equals `50.00 NOK`.
 
 #### Items
 
 The `items` property of the `paymentOrder` is an array containing items that will affect how the payment is performed.
 
 {:.table .table-striped}
-| **Required** | **Property** | **Type** | **Description**
-| | creditCard.rejectDebitCards | boolean | `true` if debit cards should be declined; otherwise `false` per default. Default value is set by PayEx and can be changed at your request.
-| | creditCard.rejectCreditCards | boolean | `true` if credit cards should be declined; otherwise `false` per default. Default value is set by PayEx and can be changed at your request.
-| | creditCard.rejectConsumerCards | boolean | `true` if consumer cards should be declined; otherwise `false` per default. Default value is set by PayEx and can be changed at your request.
-| | creditCard.rejectCorporateCards | boolean | `true` if corporate cards should be declined; otherwise `false` per default. Default value is set by PayEx and can be changed at your request.
-| | invoice.feeAmount | integer |The fee amount in the lowest monetary unit to apply if the consumer chooses to pay with invoice.
-| | swish.enableEcomOnly | boolean | `true` to only enable Swish on ecommerce transactions.
+| ✔︎︎︎︎︎ | Property            | Type     | Description                             |
+|:-:|:--------------------|:---------|:----------------------------------------|
+|   | `creditCard` | `object` | The credit card object.
+|   | └➔&nbsp;`rejectDebitCards` | `bool` | `true` if debit cards should be declined; otherwise `false` per default. Default value is set by PayEx and can be changed at your request.
+|   | └➔&nbsp;`rejectDebitCards` | `bool` | `true` if debit cards should be declined; otherwise `false` per default. Default value is set by PayEx and can be changed at your request.
+|   | └➔&nbsp;`rejectCreditCards` | `bool` | `true` if credit cards should be declined; otherwise `false` per default. Default value is set by PayEx and can be changed at your request.
+|   | └➔&nbsp;`rejectConsumerCards` | `bool` | `true` if consumer cards should be declined; otherwise `false` per default. Default value is set by PayEx and can be changed at your request.
+|   | └➔&nbsp;`rejectCorporateCards` | `bool` | `true` if corporate cards should be declined; otherwise `false` per default. Default value is set by PayEx and can be changed at your request.
+|   | `invoice` | `object` | The invoice object.
+|   | └➔&nbsp;`feeAmount` | `integer` | The fee amount in the lowest monetary unit to apply if the consumer chooses to pay with invoice.
+|   | `swish` | `object` | The swish object.
+|   | └➔&nbsp;`enableEcomOnly` | `bool` | `true` to only enable Swish on ecommerce transactions.
 
 {% include iterator.html prev_href="./"
                          prev_title="Back: Introduction"
