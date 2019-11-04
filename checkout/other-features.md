@@ -1355,12 +1355,12 @@ The Callback  functionality is similar for all payment methods.
 * PayEx will make an HTTP `POST` to the `callbackUrl` that was specified when the payee (merchant) created the payment.
 * When the `callbackUrl` receives such a callback, an HTTP `GET``` request must be made on the payment or on the transaction. The retrieved payment or transaction resource will give you the necessary information about the recent change/update.
 * The callback will be retried if it fails. Below are the retry timings, in milliseconds from the initial transaction time:
-  *. 30000 ms
-  *. 60000 ms
-  *. 360000 ms
-  *. 432000 ms
-  *. 864000 ms
-  *. 1265464 ms
+  * 30000 ms
+  * 60000 ms
+  * 360000 ms
+  * 432000 ms
+  * 864000 ms
+  * 1265464 ms
 * The callback is sent from the following IP addresses: `82.115.146.1`
 
 {:.code-header}
