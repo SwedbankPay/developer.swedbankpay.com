@@ -1,5 +1,5 @@
 ---
-title: Swedbank Pay Resources
+title: Contributing
 sidebar:
   navigation:
   - title: Resources
@@ -18,7 +18,7 @@ sidebar:
       title: Contributing
     - url: /resources/development-guidelines/good-commit-practice
       title: Good Commit Practice
-    - url: /resources/development-guidelines/license
+    - url: /resources/development-guidelines/licence
       title: Licence
 ---
 
@@ -27,11 +27,11 @@ sidebar:
                       header="Site under development"
                       body="The Developer Portal is under construction and should not be used to integrate against Swedbank Pay's APIs yet." %}
 
-
 To make it clear exactly how outside contributors should provide their contributions to the project, a CONTRIBUTING.md file should be created at the root of the repository. Once such a file exists, GitHub will present it to users creating new pull requests, issues, etc. in the repository. Here's an example of how such a file can look like:
 
 
-{% include jumbotron.html body="# How to contribute
+```http
+# How to contribute
 
 To contribute to the PayEx Development Guidelines, there's just a few things you need to know.
 
@@ -69,4 +69,5 @@ If you choose option 3 (forking the repository), then please read on.
 [commit-practice]:  git-commit-good-practice.md
 [push]:             https://git-scm.com/docs/git-push
 [remote]:           https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes
-[pull-request]:     https://help.github.com/articles/using-pull-requests/ " %}
+[pull-request]:     https://help.github.com/articles/using-pull-requests/ 
+```

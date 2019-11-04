@@ -1,5 +1,5 @@
 ---
-title: Swedbank Pay Resources
+title: Open Source Development Guidelines
 sidebar:
   navigation:
   - title: Resources
@@ -18,7 +18,7 @@ sidebar:
       title: Contributing
     - url: /resources/development-guidelines/good-commit-practice
       title: Good Commit Practice
-    - url: /resources/development-guidelines/license
+    - url: /resources/development-guidelines/licence
       title: Licence
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Swedbank Pay Resources
+title: Code Of Conduct
 sidebar:
   navigation:
   - title: Resources
@@ -18,7 +18,7 @@ sidebar:
       title: Contributing
     - url: /resources/development-guidelines/good-commit-practice
       title: Good Commit Practice
-    - url: /resources/development-guidelines/license
+    - url: /resources/development-guidelines/licence
       title: Licence
 ---
 
@@ -29,7 +29,8 @@ sidebar:
 
 It is important that the projects governed by PayEx foster a collaborative, open, inclusive, positive and tolerant community. To underscore this, a `CODE_OF_CONDUCT.md` file from [Contributor Covenant][contributor-covenant] should be added to the project:
 
-{% include jumbotron.html body="# Contributor Code of Conduct
+```http
+# Contributor Code of Conduct
 
 As contributors and maintainers of this project, and in the interest of
 fostering an open and welcoming community, we pledge to respect all people who
@@ -79,10 +80,13 @@ version 1.3.0, available at
 
 [contributor-covenant]: http://contributor-covenant.org/
 [opensource-mail]: opensource@payex.com
-[version]: http://contributor-covenant.org/version/1/3/0/ " %}
+[version]: http://contributor-covenant.org/version/1/3/0/
+```
 
 The Code of Conduct should then be referenced from the `CONTRIBUTING` file, for example with the following paragraphs:
 
-{% include jumbotron.html body="Please note that this project is released with a Contributor Code of Conduct.
-By participating in this project you agree to abide by its terms." %}
+```http
+Please note that this project is released with a Contributor Code of Conduct.
+By participating in this project you agree to abide by its terms.
+```
 
