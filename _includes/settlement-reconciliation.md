@@ -49,42 +49,42 @@ The first row contains the name of the PayEx company (e.g. PayEx Solutions AB) t
 
 {:.table .table-striped}
 |**Field**|**Type**|**Description**
-| Prefix |String|ThePrefix## used for transactions, only eligible if merchant uses prefix.
-| Currency |ISO 4217|Settlement currency (e.g. `SEK, NOK, EUR`).
-| ServiceType |String|The service type of the service used (e.g. `Creditcard, Direct debit`).
-| Service |String|The service used (e.g. `Creditcard, Direct debit`).
-| NoOfDebet |Decimal|Total number of debit transactions for the given service.
-| NoOfCredit |Decimal|Total number of credit transactions for the given service.
-| Amount |Decimal|Total amount for the given service (e.g 100.00).
-| FromDate |ISO 8601|The earlistest transaction date, `YYYY-MM-DD`.
-| ToDate |ISO 8601|The latest transaction date, `YYYY-MM-DD`.
+| Prefix | String | The `Prefix` used for transactions, only eligible if merchant uses prefix.
+| Currency | ISO 4217  |Settlement currency (e.g. `SEK, NOK, EUR`).
+| ServiceType | String | The service type of the service used (e.g. `Creditcard, Direct debit`).
+| Service | String |The service used (e.g. `Creditcard, Direct debit`).
+| NoOfDebet | Decimal | Total number of debit transactions for the given service.
+| NoOfCredit | Decimal | Total number of credit transactions for the given service.
+| Amount | Decimal | Total amount for the given service (e.g 100.00).
+| FromDate | ISO 8601 | The earlistest transaction date, `YYYY-MM-DD`.
+| ToDate | ISO 8601 | The latest transaction date, `YYYY-MM-DD`.
 
 {:.code-header}
 **Body fields**
 
 {:.table .table-striped}
 |**Field**|**Type**|**Description**
-| PayEx Batch Number |Decimal|A batch number common to all types of transactions processed by PayEx.
-| Transaction Number |Decimal|A unique identifier of the transaction, can be traced in PayEx Admin user interface.
-| Order id |String|A unique identifier of the order, as sent from the merchant to PayEx. Transactions that are related to the same order are associated with this ID.
-| Date Created |ISO 8601|Transaction capture date/time. YYYY-MM-DD hh:mm:ss.
-| Date Modified |ISO 8601|Transaction settle date/time. YYYY-MM-DD hh:mm:ss.
-| Provider |String|The service provider (e.g. Babs, Swedbank).
-|Type|String|The service type of the related transaction (e.g. `Creditcard, Direct debit`).
-| Amount |Decimal|Total amount of the related transaction (e.g 100.00).
+| PayEx Batch Number | Decimal | A batch number common to all types of transactions processed by PayEx.
+| Transaction Number | Decimal | A unique identifier of the transaction, can be traced in PayEx Admin user interface.
+| Order id | String | A unique identifier of the order, as sent from the merchant to PayEx. Transactions that are related to the same order are associated with this ID.
+| Date Created | ISO 8601 | Transaction capture date/time. YYYY-MM-DD hh:mm:ss.
+| Date Modified | ISO 8601 | Transaction settle date/time. YYYY-MM-DD hh:mm:ss.
+| Provider | String | The service provider (e.g. Babs, Swedbank).
+|Type| String | The service type of the related transaction (e.g. `Creditcard, Direct debit`).
+| Amount | Decimal | Total amount of the related transaction (e.g 100.00).
 | Currency |ISO 4217|Settlement currency (e.g. `SEK, NOK, EUR`).
-| Product Number |String|A product number, as sent by merchant to PayEx.
-| Description |String|A textual description of the transaction, as sent by merchant to PayEx.
-|VAT Amount|Decimal|VAT Amount for the given transaction (e.g 100.00).
-|VAT Percentage|Decimal|VAT Percentage for the given transaction.
-|Credit Card Batch Number|Decimal|The reference number from the credit card processor.
-|Direct Debit Bank Reference|Decimal|The reference number from the processing bank.
-|Reference|Decimal|The transaction reference from processor.
-|PayEx Account Number|Decimal|The Account number given, shown in PayEx admin.
-|Referenced Transaction Number|Decimal|Transaction number for the Authoriation transaction for a two-stage transaction or the number of the debit transaction if it is a credit transaction.
-|Sales Channel|String|The channel through which the transaction was sent to PayEx (e.g Transaction via eCommerce APIs).
-|Brand|String|If eligible, Branding information as sent by merchant to PayEx.
-|Point Of Sale |String|If eligible, POS information as sent by merchant to PayEx.
+| Product Number | String | A product number, as sent by merchant to PayEx.
+| Description | String | A textual description of the transaction, as sent by merchant to PayEx.
+|VAT Amount| Decimal | VAT Amount for the given transaction (e.g 100.00).
+|VAT Percentage| Decimal | VAT Percentage for the given transaction.
+|Credit Card Batch Number| Decimal | The reference number from the credit card processor.
+|Direct Debit Bank Reference| Decimal | The reference number from the processing bank.
+|Reference| Decimal | The transaction reference from processor.
+|PayEx Account Number| Decimal | The Account number given, shown in PayEx admin.
+|Referenced Transaction Number| Decimal | Transaction number for the Authoriation transaction for a two-stage transaction or the number of the debit transaction if it is a credit transaction.
+|Sales Channel| String | The channel through which the transaction was sent to PayEx (e.g Transaction via eCommerce APIs).
+|Brand| String | If eligible, Branding information as sent by merchant to PayEx.
+|Point Of Sale | String | If eligible, POS information as sent by merchant to PayEx.
 
 ### Reconciliation
 
@@ -129,7 +129,7 @@ A credit card transaction is made when you either make a capture or a reversal. 
 }
 ```
 
-When you receive the response from PayEx, the response will includetransaction.number##. This is the same as the field `calledTransactionNo` in the reconciliation file.
+When you receive the response from PayEx, the response will include `transaction.number`. This is the same as the field called `TransactionNo` in the reconciliation file.
 
 ```JS
 {

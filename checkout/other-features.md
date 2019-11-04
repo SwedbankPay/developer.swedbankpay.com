@@ -296,30 +296,30 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property                            | Type         | Description |
-|:------------------------------------|:-------------|:------------|
-| `paymentorder`                      | `string`     | The URI of the payment order the payment belongs to.
-| `menuElementName`                   | `string`     | `creditcard`, `invoice`, etc. The name of the selected menu element.
-| `payment`                           | `object`     | The payment object.
-| └➔&nbsp;`recurrenceToken`           | `string`     | The created recurrenceToken, if `operation : Verify` or `generateRecurrenceToken : true` was used.
-| └➔&nbsp;`id`                        | `string`     | The relative URI to the payment.
-| └➔&nbsp;`number`                    | `integer`    | The payment `number`, useful when there's need to reference the payment in human communication. Not usable for programmatic identification of the payment, for that `id` should be used instead.
-| └➔&nbsp;`instrument`                | `string`     | The payment instrument used.
-| └➔&nbsp;`created`                   | `string`     | The ISO-8601 date of when the payment was created.
-| └➔&nbsp;`updated`                   | `string`     | The ISO-8601 date of when the payment was updated.
-| └➔&nbsp;`operation`                 | `string`     | `Purchase`, `payout`, `Verify` or `recur. `The type of the initiated payment.
-| └➔&nbsp;`intent`                    | `string`     | The intent of the payment.
-| └➔&nbsp;`state`                     | `string`     | `Ready`, `Pending`, `Failed` or `Aborted`. Indicates the state of the payment. This field is only for status display purposes.
-| └➔&nbsp;`currency`                  | `string`     | The currency of the payment.
-| └➔&nbsp;`prices`                    | `object`     | The prices object.
-| └─➔&nbsp;`amount`                   | `integer`    | Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 NOK`, `5000` = `50.00 SEK`.
-| └─➔&nbsp;`remainingCaptureAmount`   | `integer`    | The available amount to capture.
-| └─➔&nbsp;`remainingCancelAmount`    | `integer`    | The available amount to cancel.
-| └─➔&nbsp;`remainingReversalAmount`  | `integer`    | The available amount to reverse.
-| └➔&nbsp;`description`               | `string(40)` | A textual description of maximum 40 characters of the purchase.
-| └➔&nbsp;`payerReference`            | `string`     | The reference to the consumer from the merchant system, like mobile number, customer number etc.
-| └➔&nbsp;`userAgent`                 | `string`     | The [user agent] string of the consumer's browser.
-| └➔&nbsp;`language`                  | `string`     | `nb-NO`, `sv-SE` or `en-US`
+| Property                           | Type         | Description                                                                                                                                                                                      |
+| :--------------------------------- | :----------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `paymentorder`                     | `string`     | The URI of the payment order the payment belongs to.                                                                                                                                             |
+| `menuElementName`                  | `string`     | `creditcard`, `invoice`, etc. The name of the selected menu element.                                                                                                                             |
+| `payment`                          | `object`     | The payment object.                                                                                                                                                                              |
+| └➔&nbsp;`recurrenceToken`          | `string`     | The created recurrenceToken, if `operation : Verify` or `generateRecurrenceToken : true` was used.                                                                                               |
+| └➔&nbsp;`id`                       | `string`     | The relative URI to the payment.                                                                                                                                                                 |
+| └➔&nbsp;`number`                   | `integer`    | The payment `number`, useful when there's need to reference the payment in human communication. Not usable for programmatic identification of the payment, for that `id` should be used instead. |
+| └➔&nbsp;`instrument`               | `string`     | The payment instrument used.                                                                                                                                                                     |
+| └➔&nbsp;`created`                  | `string`     | The ISO-8601 date of when the payment was created.                                                                                                                                               |
+| └➔&nbsp;`updated`                  | `string`     | The ISO-8601 date of when the payment was updated.                                                                                                                                               |
+| └➔&nbsp;`operation`                | `string`     | `Purchase`, `payout`, `Verify` or `recur. `The type of the initiated payment.                                                                                                                    |
+| └➔&nbsp;`intent`                   | `string`     | The intent of the payment.                                                                                                                                                                       |
+| └➔&nbsp;`state`                    | `string`     | `Ready`, `Pending`, `Failed` or `Aborted`. Indicates the state of the payment. This field is only for status display purposes.                                                                   |
+| └➔&nbsp;`currency`                 | `string`     | The currency of the payment.                                                                                                                                                                     |
+| └➔&nbsp;`prices`                   | `object`     | The prices object.                                                                                                                                                                               |
+| └─➔&nbsp;`amount`                  | `integer`    | Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 NOK`, `5000` = `50.00 SEK`.                                                                     |
+| └─➔&nbsp;`remainingCaptureAmount`  | `integer`    | The available amount to capture.                                                                                                                                                                 |
+| └─➔&nbsp;`remainingCancelAmount`   | `integer`    | The available amount to cancel.                                                                                                                                                                  |
+| └─➔&nbsp;`remainingReversalAmount` | `integer`    | The available amount to reverse.                                                                                                                                                                 |
+| └➔&nbsp;`description`              | `string(40)` | A textual description of maximum 40 characters of the purchase.                                                                                                                                  |
+| └➔&nbsp;`payerReference`           | `string`     | The reference to the consumer from the merchant system, like mobile number, customer number etc.                                                                                                 |
+| └➔&nbsp;`userAgent`                | `string`     | The [user agent] string of the consumer's browser.                                                                                                                                               |
+| └➔&nbsp;`language`                 | `string`     | `nb-NO`, `sv-SE` or `en-US`                                                                                                                                                                      |
 
 ### URLs Resource
 
@@ -361,18 +361,18 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property                      | Type     | Description |
-|:------------------------------|:---------|:------------|
-| `paymentorder`                | `string` | The URI to the payment order the resource belong to.
-| `urls`                | `object` | The URLs object.
-| └➔&nbsp;`id`                 | `string` | The relative URI to the `urls` resource.
-| └➔&nbsp;`hostsUrl`           | `string` | An array of the whitelisted URIs that are allowed as parents to a Hosted View, typically the URI of the web shop or similar that will embed a Hosted View within it.
-| └➔&nbsp;`completeUrl`        | `string` | The URI that PayEx will redirect back to when the payment page is completed.
-| └➔&nbsp;`cancelUrl`          | `string` | The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios. If both cancelUrl and paymentUrl is sent, the paymentUrl will used.
-| └➔&nbsp;`paymentUrl`         | `string` | The URI that PayEx will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. Only used in hosted views. If both cancelUrl and paymentUrl is sent, the paymentUrl will used.
-| └➔&nbsp;`callbackUrl`        | `string` | The URI that PayEx will perform an HTTP `POST` against every time a transaction is created on the payment. See [callback][callback-reference] for details.
-| └➔&nbsp;`logoUrl`            | `string` | The URI that will be used for showing the customer logo. Must be a picture with at most 50px height and 400px width.
-| └➔&nbsp;`termsOfServiceUrl`  | `string` | A URI that contains your terms and conditions for the payment, to be linked on the payment page.
+| Property                    | Type     | Description                                                                                                                                                                                                                                |
+| :-------------------------- | :------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `paymentorder`              | `string` | The URI to the payment order the resource belong to.                                                                                                                                                                                       |
+| `urls`                      | `object` | The URLs object.                                                                                                                                                                                                                           |
+| └➔&nbsp;`id`                | `string` | The relative URI to the `urls` resource.                                                                                                                                                                                                   |
+| └➔&nbsp;`hostsUrl`          | `string` | An array of the whitelisted URIs that are allowed as parents to a Hosted View, typically the URI of the web shop or similar that will embed a Hosted View within it.                                                                       |
+| └➔&nbsp;`completeUrl`       | `string` | The URI that PayEx will redirect back to when the payment page is completed.                                                                                                                                                               |
+| └➔&nbsp;`cancelUrl`         | `string` | The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios. If both cancelUrl and paymentUrl is sent, the paymentUrl will used.                                                                          |
+| └➔&nbsp;`paymentUrl`        | `string` | The URI that PayEx will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. Only used in hosted views. If both cancelUrl and paymentUrl is sent, the paymentUrl will used. |
+| └➔&nbsp;`callbackUrl`       | `string` | The URI that PayEx will perform an HTTP `POST` against every time a transaction is created on the payment. See [callback][callback-reference] for details.                                                                                 |
+| └➔&nbsp;`logoUrl`           | `string` | The URI that will be used for showing the customer logo. Must be a picture with at most 50px height and 400px width.                                                                                                                       |
+| └➔&nbsp;`termsOfServiceUrl` | `string` | A URI that contains your terms and conditions for the payment, to be linked on the payment page.                                                                                                                                           |
 
 ### Payer Resource
 
@@ -418,20 +418,20 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property                  | Type     | Description |
-|:--------------------------|:---------|:------------|
-| `paymentorder`            | `string` | The URI of the payment order the payer belongs to.
-| `payer`                   | `object` | The payer object.
-| └➔&nbsp;`id`              | `string` | The relative URI to the current `payer` resource.
-| └➔&nbsp;`email`           | `string` | Payer's registered email address.
-| └➔&nbsp;`msisdn`          | `string` | Payer'registered mobile phone number.
-| └➔&nbsp;`shippingAddress` | `object` | The shipping address object related to the `payer`.
-| └─➔&nbsp;`addresse`       | `object` | The shipping address object related to the `payer`.
-| └─➔&nbsp;`coAddress`      | `string` | Payer' s c/o address, if applicable.
-| └─➔&nbsp;`streetAddress`  | `string` | Payer's street address
-| └─➔&nbsp;`zipCode`        | `string` | Payer's zip code
-| └─➔&nbsp;`city`           | `string` | Payer's city of residence
-| └─➔&nbsp;`countryCode`    | `string` | Country Code for country of residence.
+| Property                  | Type     | Description                                         |
+| :------------------------ | :------- | :-------------------------------------------------- |
+| `paymentorder`            | `string` | The URI of the payment order the payer belongs to.  |
+| `payer`                   | `object` | The payer object.                                   |
+| └➔&nbsp;`id`              | `string` | The relative URI to the current `payer` resource.   |
+| └➔&nbsp;`email`           | `string` | Payer's registered email address.                   |
+| └➔&nbsp;`msisdn`          | `string` | Payer'registered mobile phone number.               |
+| └➔&nbsp;`shippingAddress` | `object` | The shipping address object related to the `payer`. |
+| └─➔&nbsp;`addresse`       | `object` | The shipping address object related to the `payer`. |
+| └─➔&nbsp;`coAddress`      | `string` | Payer' s c/o address, if applicable.                |
+| └─➔&nbsp;`streetAddress`  | `string` | Payer's street address                              |
+| └─➔&nbsp;`zipCode`        | `string` | Payer's zip code                                    |
+| └─➔&nbsp;`city`           | `string` | Payer's city of residence                           |
+| └─➔&nbsp;`countryCode`    | `string` | Country Code for country of residence.              |
 
 ## Payment Menu Events
 
@@ -455,10 +455,10 @@ following event argument object:
 ```
 
 {:.table .table-striped}
-| Property     | Type     | Description |
-|:-------------|:---------|:------------|
-| `name`       | `string` | The name and identifier of specific instrument instances - i.e. if you deploy more than one type of credit card payments, they would be distinguished by `name`.
-| `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The instrument selected by the user.
+| Property     | Type     | Description                                                                                                                                                      |
+| :----------- | :------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `name`       | `string` | The name and identifier of specific instrument instances - i.e. if you deploy more than one type of credit card payments, they would be distinguished by `name`. |
+| `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The instrument selected by the user.                                                                                  |
 
 ### `onPaymentCreated`
 
@@ -477,10 +477,10 @@ following event argument object:
 ```
 
 {:.table .table-striped}
-| Property     | Type     | Description |
-|:-------------|:---------|:------------|
-| `id`         | `string` | The relative URI to the payment.
-| `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The instrument selected when initiating the payment.
+| Property     | Type     | Description                                                                                     |
+| :----------- | :------- | :---------------------------------------------------------------------------------------------- |
+| `id`         | `string` | The relative URI to the payment.                                                                |
+| `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The instrument selected when initiating the payment. |
 
 ### `onPaymentCompleted`
 
@@ -497,10 +497,10 @@ This event triggers when a payment has completed successfully. The `onPaymentCom
 ```
 
 {:.table .table-striped}
-| Property      | Type     | Description |
-|:--------------|:---------|:------------|
-| `id`          | `string` | The relative URI to the payment.
-| `redirectUrl` | `string` | The URI the user will be redirect to after a completed payment.
+| Property      | Type     | Description                                                     |
+| :------------ | :------- | :-------------------------------------------------------------- |
+| `id`          | `string` | The relative URI to the payment.                                |
+| `redirectUrl` | `string` | The URI the user will be redirect to after a completed payment. |
 
 ### `onPaymentCanceled`
 
@@ -517,10 +517,10 @@ This event triggers when the user cancels the payment. The `onPaymentCanceled` e
 ```
 
 {:.table .table-striped}
-| Property      | Type     | Description |
-|:--------------|:---------|:------------|
-| `id`          | `string` | The relative URI to the payment.
-| `redirectUrl` | `string` | The URI the user will be redirect to after a canceled payment.
+| Property      | Type     | Description                                                    |
+| :------------ | :------- | :------------------------------------------------------------- |
+| `id`          | `string` | The relative URI to the payment.                               |
+| `redirectUrl` | `string` | The URI the user will be redirect to after a canceled payment. |
 
 ### `onPaymentFailed`
 
@@ -539,10 +539,10 @@ event argument object:
 ```
 
 {:.table .table-striped}
-| Property      | Type     | Description |
-|:--------------|:---------|:------------|
-| `id`          | `string` | The relative URI to the payment.
-| `redirectUrl` | `string` | The URI the user will be redirect to after a failed payment.
+| Property      | Type     | Description                                                  |
+| :------------ | :------- | :----------------------------------------------------------- |
+| `id`          | `string` | The relative URI to the payment.                             |
+| `redirectUrl` | `string` | The URI the user will be redirect to after a failed payment. |
 
 ### `onPaymentTermsOfService`
 
@@ -561,10 +561,10 @@ argument object:
 ```
 
 {:.table .table-striped}
-| Property  | Type     | Description |
-|:----------|:---------|:------------|
-| `origin`  | `string` | `owner`, `merchant`. The value is always `merchant` unless PayEx hosts the view.
-| `openUrl` | `string` | The URI containing Terms of Service and conditions.
+| Property  | Type     | Description                                                                      |
+| :-------- | :------- | :------------------------------------------------------------------------------- |
+| `origin`  | `string` | `owner`, `merchant`. The value is always `merchant` unless PayEx hosts the view. |
+| `openUrl` | `string` | The URI containing Terms of Service and conditions.                              |
 
 ### `onError`
 
@@ -584,11 +584,11 @@ object:
 ```
 
 {:.table .table-striped}
-| Property    | Type     | Description |
-|:------------|:---------|:------------|
-| `origin`    | `string` | `consumer`, `paymentmenu`, `creditcard`, identifies the system that originated the error.
-| `messageId` | `string` | A unique identifier for the message.
-| `details`   | `string` | A human readable and descriptive text of the error.
+| Property    | Type     | Description                                                                               |
+| :---------- | :------- | :---------------------------------------------------------------------------------------- |
+| `origin`    | `string` | `consumer`, `paymentmenu`, `creditcard`, identifies the system that originated the error. |
+| `messageId` | `string` | A unique identifier for the message.                                                      |
+| `details`   | `string` | A human readable and descriptive text of the error.                                       |
 
 ## Operations
 
@@ -650,12 +650,12 @@ When a payment order resource is created and during its lifetime, it will have a
 ```
 
 {:.table .table-striped}
-| Property      | Type     | Description |
-|:--------------|:---------|:------------|
-| `href`        | `string` | The target URI to perform the operation against.
-| `rel`         | `string` | The name of the relation the operation has to the current resource.
-| `method`      | `string` | `GET`, `PATCH`, `POST`, etc. The HTTP method to use when performing the operation.
-| `contentType` | `string` | The HTTP content type of the resource referenced in the `href` property.
+| Property      | Type     | Description                                                                        |
+| :------------ | :------- | :--------------------------------------------------------------------------------- |
+| `href`        | `string` | The target URI to perform the operation against.                                   |
+| `rel`         | `string` | The name of the relation the operation has to the current resource.                |
+| `method`      | `string` | `GET`, `PATCH`, `POST`, etc. The HTTP method to use when performing the operation. |
+| `contentType` | `string` | The HTTP content type of the resource referenced in the `href` property.           |
 
 The operations should be performed as described in each response and not as
 described here in the documentation. Always use the `href` and `method` as
@@ -665,15 +665,15 @@ of the `rel` and the request that will be sent in the HTTP body of the request
 for the given operation.
 
 {:.table .table-striped}
-| Operation                           | Description |
-|:------------------------------------|:------------|
-| `update-paymentorder-abort`         | [Aborts][abort] the payment order before any financial transactions are performed.
-| `update-paymentorder-updateorder`   | [Updates the order][update-order] with a change in the `amount` and/or `vatAmount`.
-| `redirect-paymentorder`             | Contains the URI that is used to redirect the consumer to the PayEx Payment Pages containing the Payment Menu.
-| `view-paymentorder`                 | Contains the JavaScript `href` that is used to embed the Payment Menu UI directly on the webshop/merchant site.
-| `create-paymentorder-capture`       | The second part of a two-phase transaction where the authorized amount is sent from the payer to the payee. It is possible to do a part-capture on a subset of the authorized amount. Several captures on the same payment are possible, up to the total authorization amount.
-| `create-paymentorder-cancellation`  | Used to cancel authorized and not yet captured transactions. If a cancellation is performed after doing a part-capture, it will only affect the not yet captured authorization amount.
-| `create-paymentorder-reversal`      | Used to reverse a payment. It is only possible to reverse a payment that has been captured and not yet reversed.
+| Operation                          | Description                                                                                                                                                                                                                                                                    |
+| :--------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `update-paymentorder-abort`        | [Aborts][abort] the payment order before any financial transactions are performed.                                                                                                                                                                                             |
+| `update-paymentorder-updateorder`  | [Updates the order][update-order] with a change in the `amount` and/or `vatAmount`.                                                                                                                                                                                            |
+| `redirect-paymentorder`            | Contains the URI that is used to redirect the consumer to the PayEx Payment Pages containing the Payment Menu.                                                                                                                                                                 |
+| `view-paymentorder`                | Contains the JavaScript `href` that is used to embed the Payment Menu UI directly on the webshop/merchant site.                                                                                                                                                                |
+| `create-paymentorder-capture`      | The second part of a two-phase transaction where the authorized amount is sent from the payer to the payee. It is possible to do a part-capture on a subset of the authorized amount. Several captures on the same payment are possible, up to the total authorization amount. |
+| `create-paymentorder-cancellation` | Used to cancel authorized and not yet captured transactions. If a cancellation is performed after doing a part-capture, it will only affect the not yet captured authorization amount.                                                                                         |
+| `create-paymentorder-reversal`     | Used to reverse a payment. It is only possible to reverse a payment that has been captured and not yet reversed.                                                                                                                                                               |
 
 ### View Payment Order
 
@@ -859,12 +859,12 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| **Property** | **Type** | **Required** | **Description**
-| transaction.description | `string` | Y | The description of the capture transaction.
-| transaction.amount | `integer` | Y | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `5000` equals `50.00 NOK`.
-| transaction.vatAmount | `integer` | Y | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `5000` equals `50.00 NOK`.
-| transaction.payeeReference | string(30) | Y | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.
-| transaction.orderItems | array | N | The array of items being purchased with the order. Used to print on invoices if the payer chooses to pay with invoice, among other things. [See Order Items for details][order-items].
+| **Required** | **Property** | **Type** | **Description**
+| ✔︎ | transaction.description | `string` | The description of the capture transaction.
+| ✔︎ | transaction.amount | `integer` | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `5000` equals `50.00 NOK`.
+| ✔︎ | transaction.vatAmount | `integer` | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `5000` equals `50.00 NOK`.
+| ✔︎ | transaction.payeeReference | string(30) | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.
+| | transaction.orderItems | array | The array of items being purchased with the order. Used to print on invoices if the payer chooses to pay with invoice, among other things. [See Order Items for details][order-items].
 
 If the capture succeeds, it should respond with something like the following:
 
@@ -1005,9 +1005,9 @@ Content-Type: application/json
 **Request Properties**
 
 {:.table .table-striped}
-| **Property** | **Type** | **Required** | **Description**
-| transaction.payeeReference | string(30) | Y | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.
-| transaction.description | `string` | Y | A textual description of why the transaction is cancelled.
+| **Required** | **Property** | **Type** | **Description**
+| ✔︎︎︎︎︎ | transaction.payeeReference | string(30) | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.
+| ✔︎︎︎︎︎ | transaction.description | `string` | A textual description of why the transaction is cancelled.
 
 If the cancellation request succeeds, the response should be similar to the example below:
 
@@ -1039,7 +1039,7 @@ Content-Type: application/json
 | **Property** | **Data Type** | **Description**
 | payment | `string` | The relative URI of the payment this capture transaction belongs to.
 | cancellation.id | `string` | The relative URI of the created capture transaction.
-| cancellation.transaction | object | The object representation of the generic [`transaction resource`][authorization-transaction].
+| cancellation.transaction | `object` | The object representation of the generic [`transaction resource`][authorization-transaction].
 
 #### Reversal
 
@@ -1068,11 +1068,11 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| **Property** | **Type** | **Required** | **Description**
-| transaction.amount | `integer` | Y | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `5000` equals `50.00 NOK`.
-| transaction.vatAmount | `integer` | Y | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `5000` equals `50.00 NOK`.
-| transaction.payeeReference | string(30) | Y | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference for details.
-| transaction.description | `string` | Y | Textual description of why the transaction is reversed.
+| **Required** | **Property** | **Type** | **Description**
+| ✔︎︎︎︎︎| transaction.amount | `integer` | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `5000` equals `50.00 NOK`.
+| ✔︎︎︎︎︎ | transaction.vatAmount | `integer` | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `5000` equals `50.00 NOK`.
+| ✔︎︎︎︎︎ | transaction.payeeReference | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payee-reference for details][payee-reference].
+| ✔︎︎︎︎︎ | transaction.description | `string` | Textual description of why the transaction is reversed.
 
 If the reversal request succeeds, the response should be similar to the example below:
 

@@ -55,28 +55,28 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| **Property** | **Data type** | **Required** | **Description**
-| payment.operation | string | ✔︎ | Purchase ##is the only type used for direct debit payments.
-| payment.intent | string | ✔︎ | Sale ##is the only type used for direct debit payments 
-| payment.currency |string | Y |The currency used.
-| payment.prices.type | string | Y |(((Use the generic type `Directdebit` if you want to enable all bank types supported by merchant contract, otherwise specify a specific bank type. [See the Prices object types for more information][core-payment-resources-pPrices-objecttypes].)))
-| payment.prices.amount | integer | ✔︎ | Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` `100.00 SEK` `5000` `50.00 SEK`.
-| payment.prices.vatAmount | integer | ✔︎ | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.
-| payment.description | string(40) | ✔︎ | A textual description max 40 characters of the purchase.
-| payment.payerReference | string | N | The reference to the payer (consumer/end-user) from the merchant system, like mobile number, customer number etc.
-| payment.userAgent | string | Y |The user agent reference of the consumer's browser - [see user agent definition][user-agent]
-| payment.language | string | ✔︎ | nb-NO, sv-SE or en-US.
-| payment.urls.completeUrl | string | ✔︎ | The URI that PayEx will redirect back to when the payment is followed through.
-| payment.urls.cancelUrl | string | ✔︎ | The URI that PayEx will redirect back to when the user presses the cancel button in the payment page.
-| payment.urls.callbackUrl | string | N |The URI that PayEx will perform an HTTP POST against every time a transaction is created on the payment. See [callback][technical-reference-callback] for details.
-| payment.urls.logoUrl | string | N | The URI that will be used for showing the customer logo. Must be a picture with at most 50px height and 400px width. Require https.
-| payment.urls.termsOfServiceUrl | string | N | A URI that contains your terms and conditions for the payment, to be linked on the payment page. Require https.
-| payeeInfo.payeeId | string | ✔︎ | This is the unique id that identifies this payee (like merchant) set by PayEx.
-| payeeInfo.payeeReference | string(35) | Y |A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][technical-reference-payeereference] for details.
-| payeeInfo.payeeName | string | N | The payee name (like merchant name) that will be displayed to consumer when redirected to PayEx.
-| payeeInfo.productCategory | string | N | A product category or number sent in from the payee/merchant. This is not validated by PayEx, but will be passed through the payment process and may be used in the settlement process.
-| payeeInfo.orderReference | string(50) | N | The order reference should reflect the order reference found in the merchant's systems.
-| payeeInfo.subsite | String(40) | N | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with PayEx reconciliation before being used.
+| **Property** | **Data type** | **Description**
+| ✔︎ | payment.operation | string | Purchase `is` the only type used for direct debit payments.
+| ✔︎ | payment.intent | string | Sale `is` the only type used for direct debit payments 
+| ✔︎ | payment.currency |string |The currency used.
+| ✔︎ | payment.prices.type | string |(((Use the generic type `Directdebit` if you want to enable all bank types supported by merchant contract, otherwise specify a specific bank type. [See the Prices object types for more information][core-payment-resources-pPrices-objecttypes].)))
+| ✔︎ | payment.prices.amount | integer | Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` `100.00 SEK` `5000` `50.00 SEK`.
+| ✔︎ | payment.prices.vatAmount | integer | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.
+| ✔︎ | payment.description | string(40) | A textual description max 40 characters of the purchase.
+| | payment.payerReference | string | The reference to the payer (consumer/end-user) from the merchant system, like mobile number, customer number etc.
+| ✔︎ | payment.userAgent | string |The user agent reference of the consumer's browser - [see user agent definition][user-agent]
+| ✔︎ | payment.language | string | nb-NO, sv-SE or en-US.
+| ✔︎ | payment.urls.completeUrl | string | The URI that PayEx will redirect back to when the payment is followed through.
+| ✔︎ | payment.urls.cancelUrl | string | The URI that PayEx will redirect back to when the user presses the cancel button in the payment page.
+| | payment.urls.callbackUrl | string |The URI that PayEx will perform an HTTP POST against every time a transaction is created on the payment. See [callback][technical-reference-callback] for details.
+| | payment.urls.logoUrl | string | The URI that will be used for showing the customer logo. Must be a picture with at most 50px height and 400px width. Require https.
+| | payment.urls.termsOfServiceUrl | string | A URI that contains your terms and conditions for the payment, to be linked on the payment page. Require https.
+| ✔︎ | payeeInfo.payeeId | string | This is the unique id that identifies this payee (like merchant) set by PayEx.
+| ✔︎ | payeeInfo.payeeReference | string(35) |A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][technical-reference-payeereference] for details.
+| | payeeInfo.payeeName | string | The payee name (like merchant name) that will be displayed to consumer when redirected to PayEx.
+| | payeeInfo.productCategory | string | A product category or number sent in from the payee/merchant. This is not validated by PayEx, but will be passed through the payment process and may be used in the settlement process.
+| | payeeInfo.orderReference | string(50) | The order reference should reflect the order reference found in the merchant's systems.
+| | payeeInfo.subsite | String(40) | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with PayEx reconciliation before being used.
 
 {:.code-header}
 **Response**
