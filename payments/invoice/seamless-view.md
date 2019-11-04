@@ -19,26 +19,41 @@ sidebar:
 {% include alert.html type="warning"
                       icon="warning"
                       header="Site under development"
-                      body="The Developer Portal is under construction and should not be used to integrate against Swedbank Pay's APIs yet." %}
+                      body="The Developer Portal is under construction and 
+                      should not be used to integrate against Swedbank Pay's 
+                      APIs yet." %}
 
 ## Introduction
 
-*   To create an invoice payment, you need to collect all purchase information and make a `POST` request towards PayEx.
-*   You also need to collect social security number (SSN) / person number and postal number from the consumer, and make another `POST` request towards Swedbank Pay in order to retrieve the name and address from the consumer.
-*   To create the authorization transaction, you need to calculate the final price / amount, and make a third `POST` request where you send in the consumer data.
-*   To get the authorization result, you need  to follow up with a `GET` request using the paymentID received in the first step.
-*   Finally, when you are ready to ship your order, you will have to make a `POST` request to make a Capture. **At this point Swedbank Pay will generate the invoice to the consumer.**
+*   To create an invoice payment, you need to collect all purchase information 
+    and make a `POST` request towards PayEx.
+*   You also need to collect social security number (SSN) / person number 
+    and postal number from the consumer, and make another `POST` request 
+    towards PayEx in order to retrieve the name and address from the consumer.
+*   To create the authorization transaction, you need to calculate the final 
+    price / amount, and make a third `POST` request where you send 
+    in the consumer data.
+*   To get the authorization result, you need  to follow up with a 
+    `GET` request using the paymentID received in the first step.
+*   Finally, when you are ready to ship your order, you will have to make 
+    a `POST` request to make a Capture. 
+    **At this point PayEx will generate the invoice to the consumer.**
 
 ## Important steps before you launch Swedbank Pay Faktura at your website
 
-Prior to launching Swedbank Pay Faktura at your site, make sure that you have done the following:  
+Prior to launching PayEx Faktura at your site, make sure that you 
+have done the following:  
 
-1.  Send a merchant logo in .JPG format to [setup.ecom@PayEx.com][setup-mail]. The logo will be displayed on all your invoices. Minimum accepted size is 600x200 pixels, and at least 300 DPI.
-2.  Included a link to "Terms and Conditions" for Swedbank Pay Faktura.
+1.  Send a merchant logo in .JPG format to [setup.ecom@PayEx.com][setup-mail]. 
+    The logo will be displayed on all your invoices. Minimum accepted size 
+    is 600x200 pixels, and at least 300 DPI.
+2.  Included a link to "Terms and Conditions" for PayEx Faktura.
 
 ## API requests
 
-The API requests are displayed in the [invoice flow](#invoice-flow). The options you can choose from when creating a payment with key operation set to Value FinancingConsumer are listed below. The general REST based API model is described in the [technical reference][technical-reference].
+The API requests are displayed in the [invoice flow](#invoice-flow). 
+The options you can choose from when creating a payment with key operation set 
+to Value FinancingConsumer are listed below.
 
 ### Options before posting a payment
 
@@ -51,23 +66,35 @@ The API requests are displayed in the [invoice flow](#invoice-flow). The options
 | *Currency* |	SEK |	NOK |	EUR |
 | *InvoiceType* |	PayExFinancingSE |	PayExFinancingNO |	PayExFinancingFI |
 
-*   An invoice payment is always two-phased based - you create an Authorize transaction, that is followed by a Capture or Cancel request.
-*   **Defining CallbackURL**: When implementing a scenario, it is optional to set a [CallbackURL][callback-url]in the `POST` request. If callbackURL is set Swedbank Pay will send a postback request to this URL when the consumer has fulfilled the payment. [See the Callback API description here.][callback-api]
+*   An invoice payment is always two-phased based - you create an 
+    Authorize transaction, that is followed by a Capture or Cancel request.
+*   **Defining CallbackURL**: When implementing a scenario, it is optional 
+    to set a [CallbackURL][callback-url]in the `POST` request. 
+    If callbackURL is set PayEx will send a postback request to this URL when 
+    the consumer has fulfilled the payment. 
+    [See the Callback API description here.][callback-api]
 
 # Invoice flow
 
-The sequence diagram below shows a high level description of the invoice process, including the four requests you have to send to Swedbank Pay to create an authorize transaction. **Note that the invoice will not be created/distributed before you have made a Capture request.** The Capture/Cancel/Reversal opions are described below under "Options after posting a payment". The links will take you directly to the API description for the specific request. 
+The sequence diagram below shows a high level description of the 
+invoice process, including the four requests you have to send to PayEx to 
+create an authorize transaction. 
+**Note that the invoice will not be created/distributed before you have 
+made a Capture request.** 
+The Capture/Cancel/Reversal opions are described below under 
+"Options after posting a payment". 
+The links will take you directly to the API description for the specific request. 
 
 ```mermaid
 sequenceDiagram
     Consumer->>Merchant: Start purchase (collect SSN and postal number)
     activate Merchant
     note left of Merchant: First API request 
-    Merchant->>PayEx: POST [Invoice Payments][invoice-payments] (operation=FinancingConsumer)
+    Merchant->>PayEx: POST <Invoice Payment> (operation=FinancingConsumer)
     activate PayEx
     PayEx-->>Merchant: payment resource
     note left of Merchant: Second API request
-    Merchant-->>PayEx: Post [approvedLegalAddress][approved-legal-address] (SNN and postal number)
+    Merchant-->>PayEx: Post <approvedLegalAddress> (SNN and postal number)
     PayEx-->>PayEx: Update payment with consumer delivery address
     PayEx-->>Merchant: Approved legaladdress information
     deactivate PayEx
@@ -77,10 +104,10 @@ sequenceDiagram
     Consumer->>Merchant: Confirm purchase
     activate Merchant
     note left of Merchant: Third API request
-    Merchant->>+PayEx: Post [invoice authorizations][invoice-authorizations] (Transaction Activity=FinancingConsumer)
+    Merchant->>+PayEx: Post <invoice authorization> (Transaction Activity=FinancingConsumer)
     PayEx-->>-Merchant: Transaction result
     note left of Merchant: Fourth API request
-    Merchant->>+PayEx: GET [invoice payments][invoice-payments] 
+    Merchant->>+PayEx: GET <invoice payment> 
     PayEx-->>-Merchant: payment resource
     Merchant-->>Consumer: Display result
     deactivate Merchant

@@ -19,19 +19,27 @@ sidebar:
 {% include alert.html type="warning"
                       icon="warning"
                       header="Site under development"
-                      body="The Developer Portal is under construction and should not be used to integrate against Swedbank Pay's APIs yet." %}
+                      body="The Developer Portal is under construction and 
+                      should not be used to integrate against 
+                      Swedbank Pay's APIs yet." %}
 
 
 ## Options after posting a payment
 
-*   **Abort:** It is possible to abort the process, if the payment has no successful transactions. [See the PATCH payment description][see-the-PATCH-payment-description].
-*   You must always follow up an Invoice Authorization with a Capture or Cancel request.
+*   **Abort:** It is possible to abort the process, 
+    if the payment has no successful transactions. 
+    [See the PATCH payment description][see-the-PATCH-payment-description].
+*   You must always follow up an Invoice Authorization with a 
+    Capture or Cancel request.
 *   For reversals, you will need to implement the Reversal request.
-*   **If CallbackURL is set:** Whenever changes to the payment occur a [Callback request][callback-request] will be posted to the callbackUrl, which was generated when the payment was created.
+*   **If CallbackURL is set:** Whenever changes to the payment occur a 
+    [Callback request][callback-request] will be posted to the callbackUrl, 
+    which was generated when the payment was created.
 
 ### Captures
 
-The `captures` resource list the capture transactions performed on a specific invoice payment.
+The `captures` resource list the capture transactions performed on a 
+specific invoice payment.
 
 {:.code-header}
 ***Request***
@@ -78,7 +86,8 @@ Content-Type: application/json
 
 #### Create `FinancingConsumer` capture
 
-To capture a `FinancingConsumer` invoice payment, perform the create-capture operation with the following request  body:
+To capture a `FinancingConsumer` invoice payment, perform the `create-capture` 
+operation with the following request body:
 
 ```HTTP
 POST /psp/invoice/payments/<paymentId>/captures HTTP/1.1
@@ -120,21 +129,22 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Parameter name | Datatype | Required | Value (with description)
-| transaction.activity | string | ✔︎ | FinancingConsumer.
-| transaction.Amount | integer | ✔︎ | Amount entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.
-| transaction.vatAmount | integer | ✔︎ | Amount entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.
-| transaction.payeeReference | string(50) | ✔︎ | A **unique **reference max 50 characters set by the merchant system) - this must be unique for each operation! The `payeeReference` must follow the regex pattern `[\w]* (a-zA-Z0-9_)`.
-| transaction.description | string | ✔︎ | A textual description of the capture
-| itemDescriptions.amount | integer | ✔︎ | Total price for this order line - entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.
-| itemDescriptions.description | string | ✔︎ | A textual description of this product
-| vatSummary.amount | integer | ✔︎ | Total price for this order line - entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.
-| vatSummary.vatAmount | integer | ✔︎ | VAT Amount entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.
-| vatSummary.vatPercent | string | ✔︎ | The VAT in percent. Supported values : "0.00", "6.00", "8.00", "10.00", "12.00", "14.00", "15.00", "22.00", "24.00", "25.00"
+| **Parameter name** | **Datatype** | **Required** | Value (with description)
+| `transaction.activity` | `string` | ✔︎ | FinancingConsumer.
+| `transaction.Amount` | `integer` | ✔︎ | Amount entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 NOK`, `5000` = `50.00 SEK`.
+| `transaction.vatAmount` | `integer` | ✔︎ | Amount entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 NOK`, `5000` = `50.00 SEK`.
+| `transaction.payeeReference` | `string(50)` | ✔︎ | A **unique** reference max 50 characters set by the merchant system) - this must be unique for each operation! The `payeeReference` must follow the regex pattern `[\w]* (a-zA-Z0-9_)`.
+| `transaction.description` | `string` | ✔︎ | A textual description of the capture
+| itemDescriptions.amount | `integer` | ✔︎ | Total price for this order line - entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 NOK`, `5000` = `50.00 SEK`.
+| itemDescriptions.description | `string` | ✔︎ | A textual description of this product
+| vatSummary.amount | `integer` | ✔︎ | Total price for this order line - entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 NOK`, `5000` = `50.00 SEK`.
+| vatSummary.vatAmount | `integer` | ✔︎ | VAT Amount entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 NOK`, `5000` =` 50.00 SEK`.
+| vatSummary.vatPercent | `string` | ✔︎ | The VAT in percent. Supported values : "0.00", "6.00", "8.00", "10.00", "12.00", "14.00", "15.00", "22.00", "24.00", "25.00"
 
 Notes on `FinancingConsumer` captures:
 
-* Due date is set by Swedbank Pay based on the agreement with merchant. Standard due date is 14 days.
+* Due date is set by PayEx based on the agreement with merchant. 
+  Standard due date is 14 days.
 * Invoice number is set by PayEx.
 
 ```HTTP
@@ -168,31 +178,36 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property | Data type | Description
-| payment | string | The relative URI of the payment this capture transaction resource belongs to.
-| capture.itemDescriptions.id | string | The relative URI of the item descriptions resource associated with this capture transaction resource.
-| capture.invoiceCopy | string | The relative URI of the downloadable invoice copy in PDF format.
-| capture.transaction | object | The object representation of the [transaction][technical-reference-transaction].
+| **Property** | **Data type** | **Description**
+| payment | `string` | The relative URI of the payment this capture transaction resource belongs to.
+| capture.itemDescriptions.id | `string` | The relative URI of the item descriptions resource associated with this capture transaction resource.
+| capture.invoiceCopy | `string` | The relative URI of the downloadable invoice copy in PDF format.
+| capture.transaction | `object` | The object representation of the [transaction][technical-reference-transaction].
 
 #### Capture Sequence
 
-`Capture` can only be done on a successfully authorized transaction. It is possible to do a part-capture where you only capture a part of the authorization amount. You can later do more captures on the same payment up to the total authorization amount.
+`Capture` can only be done on a successfully authorized transaction. 
+It is possible to do a part-capture where you only capture a part of the 
+authorization amount. 
+You can later do more captures on the same payment up to the total 
+authorization amount.
 
 
 ```mermaid
 sequenceDiagram
 
-Merchant->>PayEx: Post [Invoice captures][invoice-captures]
-Activate Merchant
-Activate PayEx
+Merchant->>PayEx: Post <Invoice captures>
+activate Merchant
+activate PayEx
 PayEx-->>Merchant: transaction resource
-Deactivate Merchant
-Deactivate PayEx
+deactivate Merchant
+deactivate PayEx
 ```
 
 ### Cancellations
 
-The `cancellations` resource lists the cancellation transactions made on a specific payment.
+The `cancellations` resource lists the cancellation transactions made on a 
+specific payment.
 
 {:.code-header}
 ***Request***
@@ -234,15 +249,16 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property | Data type | Description
-| payment | string | The relative URI of the payment this list of cancellation transactions belong to.
-| cancellations.id | string | The relative URI of the current `cancellations` resource.
-| cancellations.cancellationList | array | The array of the cancellation transaction objects.
-| cancellations.cancellationList[] | object | The object representation of the cancellation transaction resource described below.
+| **Property** | **Data type** | **Description**
+| `payment` | `string` | The relative URI of the payment this list of cancellation transactions belong to.
+| `cancellations.id` | `string` | The relative URI of the current `cancellations` resource.
+| `cancellations.cancellationList` | `array` | The array of the cancellation transaction objects.
+| `cancellations.cancellationList[]` | `object` | The object representation of the cancellation transaction resource described below.
 
 #### Create cancellation transaction
 
-Perform the `create-cancellation` operation to cancel a previously created - and not yet captured - invoice payment.
+Perform the `create-cancellation` operation to cancel a previously created
+(and not yet captured) invoice payment.
 
 {:.code-header}
 ***Request***
@@ -263,12 +279,13 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Parameter name | Datatype | Required | Value (with description)
-| transaction.activity | string | ✔︎ | `FinancingConsumer`.
-| transaction.payeeReference | string | ✔︎ | A **unique **reference max 50 characters set by the merchant system) - this must be unique for each operation! The [payeeReference][technical-reference-payeeReference] must follow the regex pattern `[\w]* (a-zA-Z0-9_)`. 
-| transaction.description | string(50) | ✔︎ | A textual description for the cancellation.
+| **Required** | **Parameter name** | **Datatype** | **Value (with description)**
+| ✔︎ | `transaction.activity` | `string` | `FinancingConsumer`.
+| ✔︎ | `transaction.payeeReference` | `string` | A **unique **reference max 50 characters set by the merchant system) - this must be unique for each operation! The [payeeReference][technical-reference-payeeReference] must follow the regex pattern `[\w]* (a-zA-Z0-9_)`. 
+| ✔︎ | `transaction.description` | `string(50)` | A textual description for the cancellation.
 
-The `cancel` resource will be returned, containing information about the newly created cancellation transaction.
+The `cancel` resource will be returned, containing information about the 
+newly created cancellation transaction.
 
 {:.code-header}
 ***Response***
@@ -297,29 +314,33 @@ The `cancel` resource will be returned, containing information about the newly c
 ```
 
 {:.table .table-striped}
-| Property | Data type | Description
-| payment | string | The relative URI of the payment this capture transaction belongs to.
-| reversal.id | string | The relative URI of the created capture transaction.
-| reversal.transaction | object | The object representation of the generic [transaction][technical-reference-transaction].
+| **Property** | **Data type** | **Description**
+| `payment` | `string` | The relative URI of the payment this capture transaction belongs to.
+| `reversal.id` | `string` | The relative URI of the created capture transaction.
+| `reversal.transaction` | `object` | The object representation of the generic [transaction][technical-reference-transaction].
 
 #### Cancel Sequence
 
-`Cancel` can only be done on a successfully authorized transaction, not yet captured. If you do cancel after doing a part-capture you will cancel the not yet captured amount only.
+`Cancel` can only be done on a successfully authorized transaction, 
+not yet captured. 
+If you do cancel after doing a part-capture you will cancel the 
+not yet captured amount only.
 
 
 ```mermaid
 sequenceDiagram
 Merchant->>PayEx: Post [Invoice cancellations][invoice-cancellations]
-Activate Merchant
-Activate PayEx
+activate Merchant
+activate PayEx
 PayEx-->>Merchant: transaction resource
-Deactivate Merchant
-Deactivate PayEx
+deactivate Merchant
+deactivate PayEx
 ```
 
 ### Reversals  
 
-The `reversals` resource will list the reversal transactions (one or more) on a specific payment.
+The `reversals` resource will list the reversal transactions 
+(one or more) on a specific payment.
 
 {:.code-header}
 ***Request***
@@ -361,10 +382,10 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property | Type | Description
-| payment | string | The relative URI of the payment that the reversal transactions belong to.
-| reversalList | array | The array of reversal transaction objects.
-| reversalList[] | object | The reversal transaction object representation of the reversal transaction resource described below.
+| **Property** | **Type** | **Description**
+| `payment` | `string` | The relative URI of the payment that the reversal transactions belong to.
+| `reversalList` | `array` | The array of reversal transaction objects.
+| `reversalList[]` | `object` | The reversal transaction object representation of the reversal transaction resource described below.
 
 #### Create reversal transaction
 
@@ -394,12 +415,12 @@ Content-Type: application/json
 **Properties**
 
 {:.table .table-striped}
-| Property | Data type | Required | Description
-| transaction.activity | string | Y| `FinancingConsumer`.
-| transaction.amount | integer | ✔︎ | Amount Entered in the lowest momentary units of the selected currency. E.g. *10000* = 100.00 NOK, *5000* = 50.00 SEK.
-| transaction.vatAmount | integer | ✔︎ | Amount Entered in the lowest momentary units of the selected currency. E.g. *10000* = 100.00 NOK, *5000* = 50.00 SEK.
-| transaction.payeeReference | string(50 | ✔︎ | A **unique **reference max 50 characters set by the merchant system) - this must be unique for each operation! The `payeeReference` must follow the regex pattern `[\w]* (a-zA-Z0-9_)`.
-| transaction.description | string | ✔︎ | A textual description of the reversal.
+| **Required** | **Property** | **Data type** | **Description**
+| ✔︎ | `transaction.activity` | `string` | `FinancingConsumer`.
+| ✔︎ | `transaction.amount` | `integer` | Amount Entered in the lowest momentary units of the selected currency. E.g. *`10000`* = `100.00 NOK`, *`5000`* = `50.00 SEK`.
+| ✔︎ | `transaction.vatAmount` | `integer` | Amount Entered in the lowest momentary units of the selected currency. E.g. *`10000`* = `100.00 NOK`, *`5000`* =` 50.00 SEK`.
+| ✔︎ | `transaction.payeeReference` | `string(50)` | A **unique **reference max 50 characters set by the merchant system) - this must be unique for each operation! The `payeeReference` must follow the regex pattern `[\w]* (a-zA-Z0-9_)`.
+| ✔︎ | `transaction.description` | `string` | A textual description of the reversal.
 
 The `reversal` resource will be returned, containing information about the newly created reversal transaction.
 
@@ -436,24 +457,25 @@ Content-Type: application/json
 **Properties**
 
 {:.table .table-striped}
-| Property | Data type | Description
-| payment | string | The relative URI of the payment this capture transaction belongs to.
-| reversal.id | string | The relative URI of the created capture transaction.
-| reversal.transaction | object | The object representation of the generic [transaction][technical-reference-transaction].
+| **Property** | **Data type** | **Description**
+| `payment` | `string` | The relative URI of the payment this capture transaction belongs to.
+| `reversal.id` | `string` | The relative URI of the created capture transaction.
+| `reversal.transaction` | `object` | The object representation of the generic [transaction][technical-reference-transaction].
 
 #### Reversal Sequence
 
-`Reversal` can only be done on an captured transaction where there are some captured amount not yet reversed.
+`Reversal` can only be done on an captured transaction where there are 
+some captured amount not yet reversed.
 
 
 ```mermaid
 sequenceDiagram
-Merchant->>PayEx: Post [Invoice reversals][invoice-reversals]
-Activate Merchant
-Activate PayEx
-PayEx-->>Merchant: transaction resource
-Deactivate Merchant
-Deactivate PayEx
+    Merchant->>PayEx: Post <Invoice reversals>
+    activate Merchant
+    activate PayEx
+    PayEx-->>Merchant: transaction resource
+    deactivate Merchant
+    deactivate PayEx
 ```
 
 {% include subsite.md %}
