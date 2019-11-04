@@ -99,7 +99,7 @@ after the initial payment order.
 
 * When initiating a `Purchase` payment order, you need to make sure that the
   attribute `generateRecurrenceToken` is set to `true`. This recurrence token
-  will stored in the[authorization transaction][authorization-transaction]
+  will stored in the[authorization transaction][transaction]
   sub-resource on the underlying credit card payment resource.
 * When initiating a `Verify` payment order, a recurrence token will be generated
   automatically. This recurrence token is stored in the
@@ -185,7 +185,28 @@ Content-Type: application/json
 }
 ```
 
-#### Disable payment menu when only one instrument exist
+#### Enable or Disable Payment Menu 
+
+It is possible to disable the payment menu when only one instrument exist by
+setting the `disablePaymentMenu` property to `true`. The default value is
+`false`, exemplified below.
+
+{:.code-header}
+**Request**
+
+```js
+{
+    "paymentorder": {
+        "disablePaymentMenu": false
+    {
+}
+```
+
+{:.text-center}
+![example disablePaymentMenu = false][image_enabled_payment_menu]{:width="464" :height="607"}
+
+Setting `disablePaymentMenu` property to `true` removes all other payment
+instruments but the one that is available.
 
 {:.code-header}
 **Request**
@@ -198,13 +219,8 @@ Content-Type: application/json
 }
 ```
 
-##### example disablePaymentMenu = true
-
+{:.text-center}
 ![example disablePaymentMenu = true][image_disabled_payment_menu]{:width="463" :height="553"}
-
-##### example disablePaymentMenu = false
-
-![example disablePaymentMenu = false][image_enabled_payment_menu]{:width="464" :height="607"}
 
 ## Sub-resources
 
@@ -785,12 +801,12 @@ When a payment order resource is created and during its lifetime, it will have a
 ```
 
 {:.table .table-striped}
-| Property      | Type     | Description                                                                        |
-| :------------ | :------- | :--------------------------------------------------------------------------------- |
-| `href`        | `string` | The target URI to perform the operation against.                                   |
-| `rel`         | `string` | The name of the relation the operation has to the current resource.                |
-| `method`      | `string` | `GET`, `PATCH`, `POST`, etc. The HTTP method to use when performing the operation. |
-| `contentType` | `string` | The HTTP content type of the resource referenced in the `href` property.           |
+| Property      | Type     | Description                                       |
+|:--------------|:---------|:--------------------------------------------------|
+| `href`        | `string` | The target URI to perform the operation against.
+| `rel`         | `string` | The name of the relation the operation has to the current resource.
+| `method`      | `string` | `GET`, `PATCH`, `POST`, etc. The HTTP method to use when performing the operation.
+| `contentType` | `string` | The HTTP content type of the resource referenced in the `href` property.
 
 The operations should be performed as described in each response and not as
 described here in the documentation. Always use the `href` and `method` as
@@ -800,15 +816,15 @@ of the `rel` and the request that will be sent in the HTTP body of the request
 for the given operation.
 
 {:.table .table-striped}
-| Operation                          | Description                                                                                                                                                                                                                                                                    |
-| :--------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `update-paymentorder-abort`        | [Aborts][abort] the payment order before any financial transactions are performed.                                                                                                                                                                                             |
-| `update-paymentorder-updateorder`  | [Updates the order][update-order] with a change in the `amount` and/or `vatAmount`.                                                                                                                                                                                            |
-| `redirect-paymentorder`            | Contains the URI that is used to redirect the consumer to the PayEx Payment Pages containing the Payment Menu.                                                                                                                                                                 |
-| `view-paymentorder`                | Contains the JavaScript `href` that is used to embed the Payment Menu UI directly on the webshop/merchant site.                                                                                                                                                                |
-| `create-paymentorder-capture`      | The second part of a two-phase transaction where the authorized amount is sent from the payer to the payee. It is possible to do a part-capture on a subset of the authorized amount. Several captures on the same payment are possible, up to the total authorization amount. |
-| `create-paymentorder-cancellation` | Used to cancel authorized and not yet captured transactions. If a cancellation is performed after doing a part-capture, it will only affect the not yet captured authorization amount.                                                                                         |
-| `create-paymentorder-reversal`     | Used to reverse a payment. It is only possible to reverse a payment that has been captured and not yet reversed.                                                                                                                                                               |
+| Operation                          | Description                             |
+|:-----------------------------------|:----------------------------------------|
+| `update-paymentorder-abort`        | [Aborts][abort] the payment order before any financial transactions are performed.
+| `update-paymentorder-updateorder`  | [Updates the order][update-order] with a change in the `amount` and/or `vatAmount`.
+| `redirect-paymentorder`            | Contains the URI that is used to redirect the consumer to the PayEx Payment Pages containing the Payment Menu.
+| `view-paymentorder`                | Contains the JavaScript `href` that is used to embed the Payment Menu UI directly on the webshop/merchant site.
+| `create-paymentorder-capture`      | The second part of a two-phase transaction where the authorized amount is sent from the payer to the payee. It is possible to do a part-capture on a subset of the authorized amount. Several captures on the same payment are possible, up to the total authorization amount.
+| `create-paymentorder-cancellation` | Used to cancel authorized and not yet captured transactions. If a cancellation is performed after doing a part-capture, it will only affect the not yet captured authorization amount.
+| `create-paymentorder-reversal`     | Used to reverse a payment. It is only possible to reverse a payment that has been captured and not yet reversed.
 
 ### View Payment Order
 
@@ -936,110 +952,13 @@ Remember to call .refresh() on the Payment Menu in JavaScript
 
 ### Capture
 
-Capture can only be done on a payment with a successful authorized transaction.
-It is possible to do a part-capture where you only capture a smaller amount than the authorized amount.
-You can later do more captures on the same payment up to the total authorization amount.
-
-To capture the authorized payment, we need to perform
-`create-paymentorder-capture` against the accompanying href returned in the
-`operations` list. See the abbreviated request and response below:
-
-{:.code-header}
-**Request**
-
-```http
-POST /psp/paymentorders/b80be381-b572-4f1e-9691-08d5dd095bc4/captures HTTP/1.1
-Host: api.externalintegration.payex.com
-Authorization: Bearer <MerchantToken>
-Content-Type: application/json
-
-{
-    "transaction": {
-        "description": "Capturing the authorized payment",
-        "amount": 15610,
-        "vatAmount": 3122,
-        "payeeReference": "AB832",
-        "orderItems": [
-            {
-                "reference": "P1",
-                "name": "Product1",
-                "type": "PRODUCT",
-                "class": "ProductGroup1",
-                "itemUrl": "https://example.com/products/123",
-                "imageUrl": "https://example.com/product123.jpg",
-                "description": "Product 1 description",
-                "discountDescription": "Volume discount",
-                "quantity": 4,
-                "quantityUnit": "pcs",
-                "unitPrice": 300,
-                "discountPrice": 200,
-                "vatPercent": 2500,
-                "amount": 1000,
-                "vatAmount": 250
-            },
-            {
-                "reference": "P2",
-                "name": "Product2",
-                "type": "PRODUCT",
-                "class": "ProductGroup1",
-                "description": "Product 2 description",
-                "quantity": 1,
-                "quantityUnit": "pcs",
-                "unitPrice": 500,
-                "vatPercent": 2500,
-                "amount": 500,
-                "vatAmount": 125
-            }
-        ]
-    }
-}
-```
-
-{:.table .table-striped}
-| **Required** | **Property** | **Type** | **Description**
-| ✔︎ | transaction.description | `string` | The description of the capture transaction.
-| ✔︎ | transaction.amount | `integer` | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `5000` equals `50.00 NOK`.
-| ✔︎ | transaction.vatAmount | `integer` | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `5000` equals `50.00 NOK`.
-| ✔︎ | transaction.payeeReference | string(30) | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.
-| | transaction.orderItems | array | The array of items being purchased with the order. Used to print on invoices if the payer chooses to pay with invoice, among other things. [See Order Items for details][order-items].
-
-If the capture succeeds, it should respond with something like the following:
-
-{:.code-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "payment": "/psp/creditcard/payments/d34bceb7-2b19-488a-cbf2-08d5df73b251",
-    "capture": {
-        "id": "/psp/creditcard/payments/d34bceb7-2b19-488a-cbf2-08d5df73b251/captures/af43be30-8dfa-4458-2222-08d5df73b9f1",
-        "transaction": {
-            "id": "/psp/creditcard/payments/d34bceb7-2b19-488a-cbf2-08d5df73b251/transactions/af43be30-8dfa-4458-2222-08d5df73b9f1",
-            "type": "Capture",
-            "state": "Completed",
-            "amount": 15610,
-            "vatAmount": 3122,
-            "description": "Capturing the authorized payment",
-            "payeeReference": "AB832",
-        }
-    }
-}
-```
-
-{:.table .table-striped}
-| **Property** | **Data Type** | **Description**
-| payment | `string` | The relative URI of the payment this capture transaction belongs to.
-| capture.id | `string` | The relative URI of the created capture transaction.
-| capture.transaction | object | The object representation of the generic [`transaction resource`][authorization-transaction].
-
-Checkout should now be complete, the payment should be secure and everyone should be happy. But, sometimes you also need to implement the cancellation and reversal operations described below.
+{% include payment-order-capture.md %}
 
 ### Abort
 
-To abort a payment order, perform the `update-paymentorder-abort``` operation that is returned in the payment order response. You need to include the following HTTP body:
+To abort a payment order, perform the `update-paymentorder-abort` operation that
+is returned in the payment order response. You need to include the following
+in the request body:
 
 {:.code-header}
 **Request**
@@ -1115,133 +1034,17 @@ Content-Type: application/json
 }
 ```
 
-The response given when aborting a payment order is equivalent to a `GET` request towards the `paymentorders` resource, [as displayed above][payment-orders], with its `state` set to `Aborted`.
+The response given when aborting a payment order is equivalent to a `GET`
+request towards the `paymentorders` resource, [as displayed above][payment-orders],
+with its `state` set to `Aborted`.
 
 ### Cancel
 
-If we want to cancel up to the total authorized (not captured) amount, we need to perform `create-paymentorder-cancel` against the accompanying `href` returned in the `operations` list. See the abbreviated request and response below:
-
-{:.code-header}
-**Request**
-
-```http
-POST /psp/paymentorders/b80be381-b572-4f1e-9691-08d5dd095bc4/cancellations HTTP/1.1
-Host: api.externalintegration.payex.com
-Authorization: Bearer <MerchantToken>
-Content-Type: application/json
-
-{
-    "transaction": {
-        "payeeReference": "ABC123",
-        "description": "Cancelling parts of the total amount"
-    }
-}
-```
-
-{:.code-header}
-**Request Properties**
-
-{:.table .table-striped}
-| **Required** | **Property** | **Type** | **Description**
-| ✔︎︎︎︎︎ | transaction.payeeReference | string(30) | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.
-| ✔︎︎︎︎︎ | transaction.description | `string` | A textual description of why the transaction is cancelled.
-
-If the cancellation request succeeds, the response should be similar to the example below:
-
-{:.code-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "payment": "/psp/creditcard/payments/d34bceb7-2b19-488a-cbf2-08d5df73b251",
-    "cancellation": {
-        "id": "/psp/creditcard/payments/d34bceb7-2b19-488a-cbf2-08d5df73b251/cancellations/af43be30-8dfa-4458-2222-08d5df73b9f1",
-        "transaction": {
-            "id": "/psp/creditcard/payments/d34bceb7-2b19-488a-cbf2-08d5df73b251/transactions/af43be30-8dfa-4458-2222-08d5df73b9f1",
-            "type": "Cancel",
-            "state": "Completed",
-            "amount": 5610,
-            "vatAmount": 1122,
-            "description": "Cancelling parts of the authorized payment",
-            "payeeReference": "AB832",
-        }
-    }
-}
-```
-
-{:.table .table-striped}
-| **Property** | **Data Type** | **Description**
-| payment | `string` | The relative URI of the payment this capture transaction belongs to.
-| cancellation.id | `string` | The relative URI of the created capture transaction.
-| cancellation.transaction | `object` | The object representation of the generic [`transaction resource`][authorization-transaction].
+{% include payment-order-cancel.md %}
 
 #### Reversal
 
-If we want to reverse a previously captured amount, we need to perform
-`create-paymentorder-reversal` against the accompanying href returned
-in the `operations` list.
-See the abbreviated request and response below:
-
-{:.code-header}
-**Request**
-
-```http
-POST /psp/paymentorders/b80be381-b572-4f1e-9691-08d5dd095bc4/reversals HTTP/1.1
-Host: api.externalintegration.payex.com
-Authorization: Bearer <MerchantToken>
-Content-Type: application/json
-
-{
-    "transaction": {
-        "amount": 15610,
-        "vatAmount": 3122,
-        "payeeReference": "ABC123",
-        "description": "description for transaction"
-    }
-}
-```
-
-{:.table .table-striped}
-| **Required** | **Property** | **Type** | **Description**
-| ✔︎︎︎︎︎ | transaction.amount | `integer` | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `5000` equals `50.00 NOK`.
-| ✔︎︎︎︎︎ | transaction.vatAmount | `integer` | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `5000` equals `50.00 NOK`.
-| ✔︎︎︎︎︎ | transaction.payeeReference | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payee-reference for details][payee-reference].
-| ✔︎︎︎︎︎ | transaction.description | `string` | Textual description of why the transaction is reversed.
-
-If the reversal request succeeds, the response should be similar to the example below:
-
-{:.code-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "payment": "/psp/creditcard/payments/d34bceb7-2b19-488a-cbf2-08d5df73b251",
-    "reversals": {
-        "id": "/psp/creditcard/payments/d34bceb7-2b19-488a-cbf2-08d5df73b251/cancellations/af43be30-8dfa-4458-2222-08d5df73b9f1",
-        "transaction": {
-            "id": "/psp/creditcard/payments/d34bceb7-2b19-488a-cbf2-08d5df73b251/transactions/af43be30-8dfa-4458-2222-08d5df73b9f1",
-            "type": "Reversal",
-            "state": "Completed",
-            "amount": 5610,
-            "vatAmount": 1122,
-            "description": "Reversing the capture amount",
-            "payeeReference": "ABC987",
-        }
-    }
-}
-```
-
-{:.table .table-striped}
-| **Property** | **Data Type** | **Description**
-| payment | `string` | The relative URI of the payment this reversal transaction belongs to.
-| reversal.id | `string` | The relative URI of the created reversal transaction.
-| reversal.transaction | object | The object representation of the generic [`transaction resource`][authorization-transaction].
+{% include payment-order-reversal.md %}
 
 {% include settlement-reconciliation.md %}
 
@@ -1249,18 +1052,10 @@ Content-Type: application/json
 
 {% include one-click-payments.md %}
 
-## PayeeReference
-
-The `payeeReference` given when creating transactions and payments has some specific processing rules depending on specifications in the contract.
-
-* It must be unique for every operation, used to ensure exactly-once delivery of a transactional operation from the merchant system.
-* Its length and content validation is dependent on whether the transaction.number or the `payeeReference` is sent to the acquirer.
-  * If you select Option A in the settlement process (PayEx will handle the settlement), PayEx will send the transaction.number to the acquirer and the `payeeReference` may have the format of string(30).
-  * If you select Option B in the settlement process (you will handle the settlement yourself), PayEx will send the `payeeReference` to the acquirer and it will be limited to the format of string(12) and all characters must be digits.
-
 ### Authorizations
 
-The `authorizations` resource contains information about authorization transactions made on a specific payment.
+The `authorizations` resource contains information about authorization
+transactions made on a specific payment.
 
 {:.code-header}
 **Request**
@@ -1343,11 +1138,13 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property | Data type | Description
-| `payment` | `string` | The relative URI of the payment this authorization transactions resource belongs to.
-| `authorizations.id` | `string` | The relative URI of the current authorization transactions resource.
-| `authorizations.authorizationList` | `array` | The array of authorization transaction objects.
-| `authorizations.authorizationList[]` | `object` | The authorization transaction object described in the `authorization` resource below.
+| Property                                 | Type     | Description            |
+|:-----------------------------------------|:---------|:-----------------------|
+| `payment`                     | `string` | The relative URI of the payment this authorization transactions resource belongs to.
+| `authorizations`              | `object` | The authorizations object.
+| └➔&nbsp;`id`                  | `string` | The relative URI of the current authorization transactions resource.
+| └➔&nbsp;`authorizationList`   | `array`  | The array of authorization transaction objects.
+| └➔&nbsp;`authorizationList[]` | `object` | The authorization transaction object described in the `authorization` resource below.
 
 {:.code-header}
 **Request**
@@ -1425,31 +1222,37 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property| Data type| Description
-| `payment` | `string` | The relative URI of the payment this authorization transaction resource belongs to.
-| `authorization.id` | `string` | The relative URI of the current authorization transaction resource.
-| `authorization.paymentToken` | `string` | The payment token created for the card used in the authorization.
-| `authorization.recurrenceToken` | `string` | The recurrence token created for the card used in the authorization.
-| `authorization.maskedPan` | `string` | The masked PAN number of the card.
-| `authorization.expireDate` | `string` | The month and year of when the card expires.
-| `authorization.panToken` | `string` | The token representing the specific PAN of the card.
-| `authorization.cardBrand` | `string` | `Visa`, `MC`, etc. The brand of the card.
-| `authorization.cardType` | `string` | `Credit Card` or `Debit Card`. Indicates the type of card used for the authorization.
-| `authorization.issuingBank` | `string` | The name of the bank that issued the card used for the authorization.
-| `authorization.countryCode` | `string` | The country the card is issued in.
-| `authorization.acquirerTransactionType` | `string` | `3DSECURE` or `SSL`. Indicates the transaction type of the acquirer.
-| `authorization.acquirerStan` | `string` | The System Trace Audit Number assigned by the acquirer to uniquely identify the transaction.
-| `authorization.acquirerTerminalId` | `string` | The ID of the acquirer terminal.
-| `authorization.acquirerTransactionTime` | `string` | The ISO-8601 date and time of the acquirer transaction.
-| `authorization.issuerAuthorizationApprovalCode` | `string` | The issuer's six-digit code used to identify the approval for a specific authorization request.
-| `authorization.authenticationStatus` | `string` | `Y`, `A`, `U` or `N`. Indicates the status of the authentication.
-| `authorization.transaction` | `object` | The object representation of the generic [`transaction` resource][authorization-transaction].
+| Property                                  | Type     | Description           |
+|:------------------------------------------|:---------|:----------------------|
+| `payment`                                 | `string` | The relative URI of the payment this authorization transaction resource belongs to.
+| `authorization`                           | `object` | The authorization object.
+| └➔&nbsp;`id`                              | `string` | The relative URI of the current authorization transaction resource.
+| └➔&nbsp;`paymentToken`                    | `string` | The payment token created for the card used in the authorization.
+| └➔&nbsp;`recurrenceToken`                 | `string` | The recurrence token created for the card used in the authorization.
+| └➔&nbsp;`maskedPan`                       | `string` | The masked PAN number of the card.
+| └➔&nbsp;`expireDate`                      | `string` | The month and year of when the card expires.
+| └➔&nbsp;`panToken`                        | `string` | The token representing the specific PAN of the card.
+| └➔&nbsp;`cardBrand`                       | `string` | `Visa`, `MC`, etc. The brand of the card.
+| └➔&nbsp;`cardType`                        | `string` | `Credit Card` or `Debit Card`. Indicates the type of card used for the authorization.
+| └➔&nbsp;`issuingBank`                     | `string` | The name of the bank that issued the card used for the authorization.
+| └➔&nbsp;`countryCode`                     | `string` | The country the card is issued in.
+| └➔&nbsp;`acquirerTransactionType`         | `string` | `3DSECURE` or `SSL`. Indicates the transaction type of the acquirer.
+| └➔&nbsp;`acquirerStan`                    | `string` | The System Trace Audit Number assigned by the acquirer to uniquely identify the transaction.
+| └➔&nbsp;`acquirerTerminalId`              | `string` | The ID of the acquirer terminal.
+| └➔&nbsp;`acquirerTransactionTime`         | `string` | The ISO-8601 date and time of the acquirer transaction.
+| └➔&nbsp;`issuerAuthorizationApprovalCode` | `string` | The issuer's six-digit code used to identify the approval for a specific authorization request.
+| └➔&nbsp;`authenticationStatus`            | `string` | `Y`, `A`, `U` or `N`. Indicates the status of the authentication.
+| └➔&nbsp;`transaction`                     | `object` | The object representation of the generic [`transaction` resource][transaction].
 
 #### Create authorization transaction
 
-The `direct-authorization` operation creates an authorization transaction directly whilst the `redirect-authorization` operation redirects the consumer to PayEx Payment pages where the payment is authorized.
+The `direct-authorization` operation creates an authorization transaction
+directly whilst the `redirect-authorization` operation redirects the consumer
+to PayEx Payment pages where the payment is authorized.
 
-> **Note:** In order to use the `direct-authorization` operation, the servers and application involved in retrieving and transferring the credit card number from the payer to PayEx needs to be [PCI DSS][pci-dss] certified.**
+> **Note:** In order to use the `direct-authorization` operation, the servers
+and application involved in retrieving and transferring the credit card number
+from the payer to PayEx needs to be [PCI DSS][pci-dss] certified.**
 
 {:.code-header}
 **Request**
@@ -1472,7 +1275,8 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property| Data type| Description
+| ✔︎︎︎︎︎ | Property                  | Type        | Description                   |
+|:-:|:--------------------------|:-------------|:------------------------------|
 | ✔︎︎︎︎︎ | `transaction.cardNumber` | `string` | Primary Account Number (PAN) of the card, printed on the face of the card.
 | ✔︎︎︎︎︎ | `transaction.cardExpiryMonth` | `integer` | Expiry month of the card, printed on the face of the card.
 | ✔︎︎︎︎︎ | `transaction.cardExpiryYear` | `integer` | Expiry year of the card, printed on the face of the card.
@@ -1481,7 +1285,16 @@ Content-Type: application/json
 
 **Response**
 
-The [`authorization`][authorization-transaction] resource contains information about an authorization transaction made towards a payment, as previously described.
+The [`authorization`][transaction] resource contains information about an
+authorization transaction made towards a payment, as previously described.
+
+### Transactions
+
+{% include transactions.md %}
+
+#### Transaction
+
+{% include transaction.md %}
 
 ## Callback
 
@@ -1563,6 +1376,23 @@ Deactivate PAYEX
 Deactivate Merchant
 ```
 
+## PayeeReference
+
+The `payeeReference` given when creating transactions and payments has some
+specific processing rules depending on specifications in the contract.
+
+* It must be unique for every operation, used to ensure exactly-once delivery of
+a transactional operation from the merchant system.
+* Its length and content validation is dependent on whether the
+  `transaction.number` or the `payeeReference` is sent to the acquirer.
+  * If you select Option A in the settlement process (PayEx will handle the
+    settlement), PayEx will send the transaction.number to the acquirer and the
+    `payeeReference` may have the format of string(30).
+  * If you select Option B in the settlement process (you will handle the
+    settlement yourself), PayEx will send the `payeeReference` to the acquirer
+    and it will be limited to the format of string(12) and all characters must
+    be digits.
+
 ## Problems
 
 When performing operations against the API, it will respond with a problem message that contain details of the error type if the request could not be successfully performed. Regardless of why the error occurred, the problem message will follow the same structure as specified in the [Problem Details for HTTP APIs][http-api-problems]] specification.
@@ -1633,13 +1463,13 @@ GET /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c?$expand=urls,a
 Host: api.payex.com
 ```
 
-To avoid unnecessary overhead, you should only expand the nodes you need info about.
-
+To avoid unnecessary overhead, you should only expand the nodes you need info
+about.
 
 {% include iterator.html prev_href="summary" prev_title="Back: Summary" %}
 
 [abort]: #operations
-[authorization-transaction]: #authorizations
+[transaction]: #transaction
 [callback-reference]: /checkout/other-features#callback
 [card-payments-problems]: /payments/credit-card/other-features#problem-messages
 [consumer-reference]: /checkout/other-features#payeereference
