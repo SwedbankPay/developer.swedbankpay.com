@@ -80,7 +80,7 @@ after the initial payment order.
   credit card payment resource.
 
 You can view the current payment resource, containg the recurrence token and
-other payment instrument properties, by [expanding][expanding the sub-resource
+other payment instrument properties, by [expanding the sub-resource][expanding]
 [`currentpayment`][current-payment] when doing a `GET` request on the
 `paymentorders` resource.
 
