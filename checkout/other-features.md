@@ -435,6 +435,11 @@ Content-Type: application/json
 
 ## Checkin Events
 
+The Checkin Seamless View can inform about events that occur during Checkin
+through JavaScript event callbacks which can be implemented in the
+`configuration` object passed to the `payex.hostedView.consumer(configuration)`
+object.
+
 ```mermaid
 sequenceDiagram
   participant Consumer
@@ -462,11 +467,6 @@ sequenceDiagram
       end
   end
 
-  alt Forget me
-    Consumer->>SwedbankPay: Click forget me link
-    SwedbankPay->>Merchant: onConsumerRemoved
-  end
-
   alt Change shipping address
     Consumer->>SwedbankPay: Click change shipping adress button
     SwedbankPay->>Merchant: OnShippingDetailsAvailable
@@ -477,27 +477,6 @@ sequenceDiagram
 
 This event triggers when a consumer has performed Checkin and is identified,
 if the Payment Menu is not loaded and in the DOM.
-
-```mermaid
-sequenceDiagram
-  participant Consumer
-  participant Merchant
-  participant SwedbankPay as Swedbank Pay
-
-  activate Consumer
-    Consumer ->> Merchant: Visit
-    activate Merchant
-      Merchant ->> Merchant: Prepare and embed client script
-      Merchant ->> SwedbankPay: payex.hostedView.consumer().open()
-      activate SwedbankPay
-        SwedbankPay -->> Consumer: Render Checkin
-        Consumer ->> SwedbankPay: Perform Checkin
-        SwedbankPay ->> SwedbankPay: Payment Menu not in DOM
-        SwedbankPay ->> Merchant: onConsumerIdentified
-      deactivate SwedbankPay
-    deactivate Merchant
-  deactivate Consumer
-```
 
 The `onConsumerIdentified` event is raised with the following event argument
 object:
@@ -517,27 +496,6 @@ object:
 This event triggers when a consumer has performed Checkin and is identified,
 if the Payment Menu is loaded and present in the DOM.
 
-```mermaid
-sequenceDiagram
-  participant Consumer
-  participant Merchant
-  participant SwedbankPay as Swedbank Pay
-
-  activate Consumer
-    Consumer ->> Merchant: Visit
-    activate Merchant
-      Merchant ->> Merchant: Prepare and embed client script
-      Merchant ->> SwedbankPay: payex.hostedView.consumer().open()
-      activate SwedbankPay
-        SwedbankPay -->> Consumer: Render Checkin
-        Consumer ->> SwedbankPay: Perform Checkin
-        SwedbankPay ->> SwedbankPay: Payment Menu in DOM
-        SwedbankPay ->> Merchant: onNewConsumer
-      deactivate SwedbankPay
-    deactivate Merchant
-  deactivate Consumer
-```
-
 The `onNewConsumer` event is raised with the following event argument object:
 
 {:.code-header}
@@ -552,32 +510,36 @@ The `onNewConsumer` event is raised with the following event argument object:
 
 ### `onShippingDetailsAvailable`
 
-Triggered: When a consumer has been identified or shipping address has been updated.
+Triggered when a consumer has been identified or shipping address has been
+updated.
 
-Handling: CallbackFunc. If no callback => None
+{:.code-header}
+**`onShippingDetailsAvailable` event object**
 
-Output: {"actionType":"OnBillingDetailsAvailable","url":"/psp/consumers/~{~{ConsumerProfileRef}}/shipping-details"}
+```js
+{
+  "actionType": "OnBillingDetailsAvailable",
+  "url": "/psp/consumers/<ConsumerProfileRef>/shipping-details"
+}
+```
 
 ### `onBillingDetailsAvailable`
 
-Triggered: When a consumer has been identified
+Triggered when a consumer has been identified
 
-Handling: CallbackFunc. If no callback => None
+{:.code-header}
+**`onBillingDetailsAvailable` event object**
 
-Output: {"actionType":"OnBillingDetailsAvailable","url":"/psp/consumers/~{~{ConsumerProfileRef}}/billing-details"}
-
-### `onConsumerRemoved`
-
-Triggered: When not you has been clicked and consumer has been removed
-
-Handling: CallbackFunc. If no callback => Runs disable on paymentMenu which will put an overlay over  the paymentMenu:
-window.payex.hostedView.paymentMenu().enable(false);
+```js
+{
+  "actionType": "OnBillingDetailsAvailable",
+  "url":"/psp/consumers/<ConsumerProfileRef>/billing-details"
+}
+```
 
 ### `onError`
 
 Triggered on terminal errors, and when the configuration fails validation.
-
-Handling: CallbackFunc. If no callback => None
 
 ## Payment Menu Events
 
