@@ -198,13 +198,14 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| ✔︎︎︎︎︎ | **Property**                       | **Type**         | **Description**                          |
+| ✔︎︎︎︎︎ | Property                       | Type     | Description                  |
+|:-:|:-------------------------------|:---------|:-----------------------------|
 | ✔︎︎︎︎︎ | `transaction`                  | `object`     | The transaction object.                                                                                                                                                                                                                    |
 | ✔︎︎︎︎︎ | └➔&nbsp;`description`          | `string`     | The description of the capture transaction.                                                                                                                                                                                                |
 | ✔︎︎︎︎︎ | └➔&nbsp;`amount`               | `integer`    | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.                                                                                                          |
 | ✔︎︎︎︎︎ | └➔&nbsp;`vatAmount`            | `integer`    | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.                                                                                                                 |
 | ✔︎︎︎︎︎ | └➔&nbsp;`payeeReference`       | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.                                                   |
-|        | └➔&nbsp;`orderItems`           | `array`      | The array of items being purchased with the order. Used to print on invoices if the payer chooses to pay with invoice, among other things. Required in `capture` requests if already sent with the initial creation of the Payment Order.  |
+|   | └➔&nbsp;`orderItems`           | `array`      | The array of items being purchased with the order. Used to print on invoices if the payer chooses to pay with invoice, among other things. Required in `capture` requests if already sent with the initial creation of the Payment Order.  |
 | ✔︎︎︎︎︎ | └─➔&nbsp;`reference`           | `string`     | A reference that identifies the order item.                                                                                                                                                                                                |
 | ✔︎︎︎︎︎ | └─➔&nbsp;`name`                | `string`     | The name of the order item.                                                                                                                                                                                                                |
 | ✔︎︎︎︎︎ | └─➔&nbsp;`type`                | `string`     | `PRODUCT`, `SERVICE`, `SHIPPING_FEE`, `DISCOUNT`, `VALUE_CODE` or `OTHER`. The type of the order item.                                                                                                                                     |
