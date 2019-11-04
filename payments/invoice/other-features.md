@@ -77,9 +77,7 @@ All invoice error types will have the following URI in front of type:
 
 {% include callback-reference.md %}
 
-[callback-api]: #
-[callback-url]: #
+[callback-api]: #callback
+[callback-url]: #callback
 [fi-png]: /assets/img/fi.png
 [invoice-flow]: /payments/invoice/index/#invoice-flow
-[technical-reference-problem-details]: #
-[technical-reference]: #
