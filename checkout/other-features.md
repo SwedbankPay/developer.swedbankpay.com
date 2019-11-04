@@ -72,7 +72,7 @@ after the initial payment order.
 
 * When initiating a `Purchase` payment order, you need to make sure that the
   attribute `generateRecurrenceToken` is set to `true`. This recurrence token
-  will stored in the[ authorization transaction][authorization-transaction]
+  will stored in the[authorization transaction][authorization-transaction] 
   sub-resource on the underlying credit card payment resource.
 * When initiating a `Verify` payment order, a recurrence token will be generated
   automatically. This recurrence token is stored in the
@@ -1069,7 +1069,7 @@ Content-Type: application/json
 
 {:.table .table-striped}
 | **Required** | **Property** | **Type** | **Description**
-| ✔︎︎︎︎︎| transaction.amount | `integer` | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `5000` equals `50.00 NOK`.
+| ✔︎︎︎︎︎ | transaction.amount | `integer` | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `5000` equals `50.00 NOK`.
 | ✔︎︎︎︎︎ | transaction.vatAmount | `integer` | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `5000` equals `50.00 NOK`.
 | ✔︎︎︎︎︎ | transaction.payeeReference | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payee-reference for details][payee-reference].
 | ✔︎︎︎︎︎ | transaction.description | `string` | Textual description of why the transaction is reversed.
@@ -1121,26 +1121,252 @@ The `payeeReference` given when creating transactions and payments has some spec
   * If you select Option A in the settlement process (PayEx will handle the settlement), PayEx will send the transaction.number to the acquirer and the `payeeReference` may have the format of string(30).
   * If you select Option B in the settlement process (you will handle the settlement yourself), PayEx will send the `payeeReference` to the acquirer and it will be limited to the format of string(12) and all characters must be digits.
 
+### Authorizations
+
+The `authorizations` resource contains information about authorization transactions made on a specific payment.
+
+{:.code-header}
+**Request**
+
+```http
+GET /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations HTTP/1.1
+Host: api.payex.com
+Authorization: Bearer <MerchantToken>
+Content-Type: application/json
+```
+
+{:.code-header}
+**Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "payment": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+  "authorizations": {
+    "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations",
+    "authorizationList": [
+      {
+        "direct": false,
+        "paymentToken": "12345678-1234-1234-1234-123456789012",
+        "recurrenceToken": "12345678-1234-1234-1234-123456789013",
+        "maskedPan": "123456xxxxxx1234",
+        "expiryDate": "mm/yyyy",
+        "panToken": "12345678-1234-1234-1234-123456789012",
+        "cardBrand": "Visa",
+        "cardType": "Credit",
+        "issuingBank": "UTL MAESTRO",
+        "countryCode": "999",
+        "acquirerTransactionType": "3DSECURE",
+        "issuerAuthorizationApprovalCode": "397136",
+        "acquirerStan": "39736",
+        "acquirerTerminalId": "39",
+        "acquirerTransactionTime": "2017-08-29T13:42:18Z",
+        "authenticationStatus": "Y",
+        "nonPaymentToken": "string",
+        "externalNonPaymentToken": "string",
+        "externalSiteId": "string",
+        "transactionInitiator": "CARDHOLDER",
+        "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations/12345678-1234-1234-1234-123456789012",
+        "transaction": {
+          "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
+          "created": "2019-08-13T10:32:21.861621Z",
+          "updated": "2019-08-13T10:32:23.4271016Z",
+          "type": "Authorization",
+          "state": "Failed",
+          "number": 1234567890,
+          "amount": 1000,
+          "vatAmount": 2500,
+          "description": "Test transaction",
+          "payeeReference": "AH123456",
+          "failedReason": "ExternalResponseError",
+          "failedActivityName": "Authorize",
+          "failedErrorCode": "REJECTED_BY_ACQUIRER",
+          "failedErrorDescription": "unknown error, response-code: 51",
+          "isOperational": false,
+          "problem": {
+            "type": "https://api.payex.com/psp/errordetail/creditcard/acquirererror",
+            "title": "Operation failed",
+            "status": 403,
+            "detail": "Unable to complete Authorization transaction, look at problem node!",
+            "problems": [
+              {
+                "name": "ExternalResponse",
+                "description": "REJECTED_BY_ACQUIRER-unknown error, response-code: 51"
+              }
+            ]
+          },
+          "operations": []
+        }
+      }
+    ]
+  }
+}
+```
+
+{:.table .table-striped}
+| Property | Data type | Description
+| `payment` | `string` | The relative URI of the payment this authorization transactions resource belongs to.
+| `authorizations.id` | `string` | The relative URI of the current authorization transactions resource.
+| `authorizations.authorizationList` | `array` | The array of authorization transaction objects.
+| `authorizations.authorizationList[]` | `object` | The authorization transaction object described in the `authorization` resource below.
+
+{:.code-header}
+**Request**
+
+```http
+GET /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations/12345678-1234-1234-1234-123456789012 HTTP/1.1
+Host: api.payex.com
+Authorization: Bearer <MerchantToken>
+Content-Type: application/json
+```
+
+{:.code-header}
+**Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "payment": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+  "authorization": {
+    "direct": false,
+    "paymentToken": "12345678-1234-1234-1234-123456789012",
+    "recurrenceToken": "12345678-1234-1234-1234-123456789013",
+    "maskedPan": "123456xxxxxx1234",
+    "expiryDate": "mm/yyyy",
+    "panToken": "12345678-1234-1234-1234-123456789012",
+    "cardBrand": "Visa",
+    "cardType": "Credit",
+    "issuingBank": "UTL MAESTRO",
+    "countryCode": "999",
+    "acquirerTransactionType": "3DSECURE",
+    "issuerAuthorizationApprovalCode": "397136",
+    "acquirerStan": "39736",
+    "acquirerTerminalId": "39",
+    "acquirerTransactionTime": "2017-08-29T13:42:18Z",
+    "authenticationStatus": "Y",
+    "nonPaymentToken": "string",
+    "externalNonPaymentToken": "string",
+    "externalSiteId": "string",
+    "transactionInitiator": "CARDHOLDER",
+    "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations/12345678-1234-1234-1234-123456789012",
+    "transaction": {
+      "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
+      "created": "2019-08-13T10:32:21.861621Z",
+      "updated": "2019-08-13T10:32:23.4271016Z",
+      "type": "Authorization",
+      "state": "Failed",
+      "number": 1234567890,
+      "amount": 1000,
+      "vatAmount": 2500,
+      "description": "Test transaction",
+      "payeeReference": "AH123456",
+      "failedReason": "ExternalResponseError",
+      "failedActivityName": "Authorize",
+      "failedErrorCode": "REJECTED_BY_ACQUIRER",
+      "failedErrorDescription": "unknown error, response-code: 51",
+      "isOperational": false,
+      "problem": {
+        "type": "https://api.payex.com/psp/errordetail/creditcard/acquirererror",
+        "title": "Operation failed",
+        "status": 403,
+        "detail": "Unable to complete Authorization transaction, look at problem node!",
+        "problems": [
+          {
+            "name": "ExternalResponse",
+            "description": "REJECTED_BY_ACQUIRER-unknown error, response-code: 51"
+          }
+        ]
+      },
+      "operations": []
+    }
+  }
+}
+```
+
+{:.table .table-striped}
+| Property| Data type| Description
+| `payment` | `string` | The relative URI of the payment this authorization transaction resource belongs to.
+| `authorization.id` | `string` | The relative URI of the current authorization transaction resource.
+| `authorization.paymentToken` | `string` | The payment token created for the card used in the authorization.
+| `authorization.recurrenceToken` | `string` | The recurrence token created for the card used in the authorization.
+| `authorization.maskedPan` | `string` | The masked PAN number of the card.
+| `authorization.expireDate` | `string` | The month and year of when the card expires.
+| `authorization.panToken` | `string` | The token representing the specific PAN of the card.
+| `authorization.cardBrand` | `string` | `Visa`, `MC`, etc. The brand of the card.
+| `authorization.cardType` | `string` | `Credit Card` or `Debit Card`. Indicates the type of card used for the authorization.
+| `authorization.issuingBank` | `string` | The name of the bank that issued the card used for the authorization.
+| `authorization.countryCode` | `string` | The country the card is issued in.
+| `authorization.acquirerTransactionType` | `string` | `3DSECURE` or `SSL`. Indicates the transaction type of the acquirer.
+| `authorization.acquirerStan` | `string` | The System Trace Audit Number assigned by the acquirer to uniquely identify the transaction.
+| `authorization.acquirerTerminalId` | `string` | The ID of the acquirer terminal.
+| `authorization.acquirerTransactionTime` | `string` | The ISO-8601 date and time of the acquirer transaction.
+| `authorization.issuerAuthorizationApprovalCode` | `string` | The issuer's six-digit code used to identify the approval for a specific authorization request.
+| `authorization.authenticationStatus` | `string` | `Y`, `A`, `U` or `N`. Indicates the status of the authentication.
+| `authorization.transaction` | `object` | The object representation of the generic [`transaction` resource][authorization-transaction].
+
+#### Create authorization transaction
+
+The `direct-authorization` operation creates an authorization transaction directly whilst the `redirect-authorization` operation redirects the consumer to PayEx Payment pages where the payment is authorized.
+
+> **Note:** In order to use the `direct-authorization` operation, the servers and application involved in retrieving and transferring the credit card number from the payer to PayEx needs to be [PCI DSS][pci-dss] certified.**
+
+{:.code-header}
+**Request**
+
+```http
+POST /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations HTTP/1.1
+Host: api.payex.com
+Authorization: Bearer <MerchantToken>
+Content-Type: application/json
+
+{
+    "transaction": {
+        "cardNumber": "4925000000000004",
+        "cardExpiryMonth": 11,
+        "cardExpiryYear": 22,
+        "cardVerificationCode": "185",
+        "cardholderName": "John Hancock"
+    }
+}
+```
+
+{:.table .table-striped}
+Required | Property| Data type| Description
+| ✔︎︎︎︎︎ | `transaction.cardNumber` | `string` | Primary Account Number (PAN) of the card, printed on the face of the card.
+| ✔︎︎︎︎︎ | `transaction.cardExpiryMonth` | `integer` | Expiry month of the card, printed on the face of the card.
+| ✔︎︎︎︎︎ | `transaction.cardExpiryYear` | `integer` | Expiry year of the card, printed on the face of the card.
+| | `transaction.cardVerificationCode` | `string` |Card verification code (CVC/CVV/CVC2), usually printed on the back of the card.
+| | `transaction.cardholderName` | `string` | Name of the card holder, usually printed on the face of the card.
+
+**Response**
+
+The [`authorization`][authorization-transaction] resource contains information about an authorization transaction made towards a payment, as previously described.
+
 {% include iterator.html prev_href="summary" prev_title="Back: Summary" %}
 
-[abort]: #
-[authorization-transaction]: #
-[callback-reference]: #
-[consumer-reference]: #
-[current-payment]: #
+[abort]: #operations
+[authorization-transaction]: #authorizations
+[callback-reference]: /checkout/payment#payment-menu-back-end
+[consumer-reference]: /checkout/other-features#payeereference
+[current-payment]: #current-payment-resource
 [expanding]: #
 [image_disabled_payment_menu]: /assets/img/checkout/test_purchase.PNG
 [image_enabled_payment_menu]: /assets/img/checkout/payment_menu.PNG
-[order-items]: #
+[order-items]: /checkout/payment#order-items
 [payee-reference]: /checkout/other-features#payeereference
-[payment-menu]: #
-[payment-orders-resource-payers]: #
-[payment-orders-resource-payments]: #
-[payment-orders-resource]: #
-[payment-orders]: #
-[payment-resource-payeeinfo]: #
-[payment-resource-urls]: #
-[payment-resource]: #
-[update-order]: #
+[payment-menu]: /checkout/payment#payment-menu
+[payment-orders-resource-payers]: #payer-resource
+[payment-orders-resource-payments]: #current-payment-resource
+[payment-orders-resource]: /checkout/payment#payment-orders
+[payment-orders]: /checkout/payment#payment-orders
+[payment-resource-payeeinfo]: /checkout/other-features#payeereference
+[payment-resource-urls]: #urls-resource
+[payment-resource]: #payments-resource
+[pci-dss]: https://www.pcisecuritystandards.org/
+[update-order]: /checkout/after-payment#update-order
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
-[verification-transaction]: #
+[verification-transaction]: #verify-payment-orders
