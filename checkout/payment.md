@@ -367,9 +367,10 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| **Property**       | **Type**     |  **Description** |
-| `paymentorder` | `object` | The payment order object.|
-| └➔&nbsp;`id`   | `string` | The relative URI to the payment order.|
+| Property       | Type     | Description                                      |
+|:---------------|:---------|:-------------------------------------------------|
+| `paymentorder` | `object` | The payment order object.
+| └➔&nbsp;`id`   | `string` | The relative URI to the payment order.
 | `operations`   | `array`  | The array of possible operations to perform, given the state of the payment order.
 
 The `paymentorder` object is abbreviated since it's just the `id` and
@@ -548,7 +549,7 @@ Content-Type: application/json
 | └➔&nbsp;`created`         | `string`     | The ISO-8601 date of when the payment order was created.
 | └➔&nbsp;`updated`         | `string`     | The ISO-8601 date of when the payment order was updated.
 | └➔&nbsp;`operation`       | `string`     | Purchase
-| └➔&nbsp;`state`           | `string`     | `Ready`, `Pending`, `Failed` or `Aborted`. Indicates the state of the payment order. This field is oy for tatus display purposes.
+| └➔&nbsp;`state`           | `string`     | `Ready`, `Pending`, `Failed` or `Aborted`. Indicates the state of the payment order. Does not reflect the state of any ongoing payments initiated from the payment order. This field is only for status display purposes.
 | └➔&nbsp;`currency`        | `string`     | The currency of the payment order.
 | └➔&nbsp;`amount`          | `integer`    | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK`, a `5000` quals `50.00 NOK`.
 | └➔&nbsp;`vatAmount`       | `integer`    | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals `50.00 NOK`.
@@ -556,8 +557,8 @@ Content-Type: application/json
 | └➔&nbsp;`userAgent`       | `string`     | The [user agent][user-agent] string of the consumer's browser.
 | └➔&nbsp;`language`        | `string`     | `nb-NO`, `sv-SE` or `en-US`
 | └➔&nbsp;`urls`            | `string`     | The URI to the `urls` resource where all URIs related to the payment order can be retrieved.
-| └➔&nbsp;`payeeInfo`       | `string`     | The URI to the `payeeinfo` resource where the information about the payee of the payment order can bretrieved.
-| └➔&nbsp;`payers`          | `string`     | The URI to the `payers` resource where information about the payee of the payment order can be rrieved.
+| └➔&nbsp;`payeeInfo`       | `string`     | The URI to the `payeeinfo` resource where the information about the payee of the payment order can be retrieved.
+| └➔&nbsp;`payers`          | `string`     | The URI to the `payers` resource where information about the payee of the payment order can be retrieved.
 | └➔&nbsp;`orderItems`      | `string`     | The URI to the `orderItems` resource where information about the order items can be retrieved.
 | └➔&nbsp;`metadata`        | `string`     | The URI to the `payments` resource where information about all underlying payments can be retrieved.
 | └➔&nbsp;`payments`        | `string`     | The URI to the `payments` resource where information about all underlying payments can be retrieved.
@@ -728,41 +729,41 @@ The `orderItems` property of the `paymentOrder` is an array containing the items
                       body="`orderItems` must be a part of `Capture` if `orderItems` is included in the `paymentOrder` creation." %}
 
 {:.table .table-striped}
-| ✔︎︎︎︎︎ | Property            | Type     | Description                             |
-|:-:|:--------------------|:---------|:----------------------------------------|
-| ✔︎︎︎︎︎ | `reference` | `string` | A reference that identifies the order item.
-| ✔︎︎︎︎︎ | `name` | `string` | The name of the order item.
-| ✔︎︎︎︎︎ | `type` | `string` |  `PRODUCT`, `SERVICE`, `SHIPPING_FEE`, `DISCOUNT`, `VALUE_CODE`, or `OTHER`. The type of the order item.
-| ✔︎︎︎︎︎ | `class` | `string` | The classification of the order item. Can be used for assigning the order item to a specific product category, for instance. PayEx has no use for this value itself, but it's useful for some payment instruments and integrations.
-|   | `itemUrl` | `string` |The URL to a page that contains a human readable description of the order item, or similar.
-|   | `imageUrl` | `string` |The URL to an image of the order item.
-|   | `description` | `string` |The human readable description of the order item.
-|   | `discountDescription` | `string` |The human readable description of the possible discount.
-| ✔︎︎︎︎︎ | `quantity` | `integer` | The quantity of order items being purchased.
-| ✔︎︎︎︎︎ | `quantityUnit` | `string` | The unit of the quantity, such as `pcs`, `grams`, or similar.
-| ✔︎︎︎︎︎ | `unitPrice` | `integer` | The price per unit of order item.
-|   | `discountPrice` | `integer` |If the order item is purchased at a discounted price, this property should contain that price.
-| ✔︎︎︎︎︎ | `vatPercent` | `integer` | The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.
-| ✔︎︎︎︎︎ | `amount` | `integer` | The total amount including VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `5000` equals `50.00 NOK`.
-| ✔︎︎︎︎︎ | `vatAmount` | `integer` | The total amount of VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `5000` equals `50.00 NOK`.
+| ✔︎︎︎︎︎ | Property             | Type     | Description                           |
+|:-:|:----------------------|:---------|:--------------------------------------|
+| ✔︎︎︎︎︎ | `reference`          | `string` | A reference that identifies the order item.
+| ✔︎︎︎︎︎ | `name`               | `string` | The name of the order item.
+| ✔︎︎︎︎︎ | `type`               | `string` |  `PRODUCT`, `SERVICE`, `SHIPPING_FEE`, `DISCOUNT`, `VALUE_CODE`, or `OTHER`. The type of the order item.
+| ✔︎︎︎︎︎ | `class`              | `string` | The classification of the order item. Can be used for assigning the order item to a specific product category, for instance. PayEx has no use for this value itself, but it's useful for some payment instruments and integrations.
+|   | `itemUrl`             | `string` | The URL to a page that contains a human readable description of the order item, or similar.
+|   | `imageUrl`            | `string` | The URL to an image of the order item.
+|   | `description`         | `string` | The human readable description of the order item.
+|   | `discountDescription` | `string` | The human readable description of the possible discount.
+| ✔︎︎︎︎︎ | `quantity`           | `integer` | The quantity of order items being purchased.
+| ✔︎︎︎︎︎ | `quantityUnit`       | `string` | The unit of the quantity, such as `pcs`, `grams`, or similar.
+| ✔︎︎︎︎︎ | `unitPrice`          | `integer` | The price per unit of order item.
+|   | `discountPrice`       | `integer` | If the order item is purchased at a discounted price, this property should contain that price.
+| ✔︎︎︎︎︎ | `vatPercent`         | `integer` | The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.
+| ✔︎︎︎︎︎ | `amount`             | `integer` | The total amount including VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `5000` equals `50.00 NOK`.
+| ✔︎︎︎︎︎ | `vatAmount`          | `integer` | The total amount of VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `5000` equals `50.00 NOK`.
 
 #### Items
 
 The `items` property of the `paymentOrder` is an array containing items that will affect how the payment is performed.
 
 {:.table .table-striped}
-| ✔︎︎︎︎︎ | Property            | Type     | Description                             |
-|:-:|:--------------------|:---------|:----------------------------------------|
-|   | `creditCard` | `object` | The credit card object.
-|   | └➔&nbsp;`rejectDebitCards` | `bool` | `true` if debit cards should be declined; otherwise `false` per default. Default value is set by PayEx and can be changed at your request.
-|   | └➔&nbsp;`rejectDebitCards` | `bool` | `true` if debit cards should be declined; otherwise `false` per default. Default value is set by PayEx and can be changed at your request.
-|   | └➔&nbsp;`rejectCreditCards` | `bool` | `true` if credit cards should be declined; otherwise `false` per default. Default value is set by PayEx and can be changed at your request.
-|   | └➔&nbsp;`rejectConsumerCards` | `bool` | `true` if consumer cards should be declined; otherwise `false` per default. Default value is set by PayEx and can be changed at your request.
-|   | └➔&nbsp;`rejectCorporateCards` | `bool` | `true` if corporate cards should be declined; otherwise `false` per default. Default value is set by PayEx and can be changed at your request.
-|   | `invoice` | `object` | The invoice object.
-|   | └➔&nbsp;`feeAmount` | `integer` | The fee amount in the lowest monetary unit to apply if the consumer chooses to pay with invoice.
-|   | `swish` | `object` | The swish object.
-|   | └➔&nbsp;`enableEcomOnly` | `bool` | `true` to only enable Swish on ecommerce transactions.
+| ✔︎︎︎︎︎ | Property                        | Type     | Description                 |
+|:-:|:--------------------------------|:---------|:----------------------------|
+|   | `creditCard`                    | `object` | The credit card object.
+|   | └➔&nbsp;`rejectDebitCards`     | `bool`    | `true` if debit cards should be declined; otherwise `false` per default. Default value is set by PayEx and can be changed at your request.
+|   | └➔&nbsp;`rejectDebitCards`     | `bool`    | `true` if debit cards should be declined; otherwise `false` per default. Default value is set by PayEx and can be changed at your request.
+|   | └➔&nbsp;`rejectCreditCards`    | `bool`    | `true` if credit cards should be declined; otherwise `false` per default. Default value is set by PayEx and can be changed at your request.
+|   | └➔&nbsp;`rejectConsumerCards`  | `bool`    | `true` if consumer cards should be declined; otherwise `false` per default. Default value is set by PayEx and can be changed at your request.
+|   | └➔&nbsp;`rejectCorporateCards` | `bool`    | `true` if corporate cards should be declined; otherwise `false` per default. Default value is set by PayEx and can be changed at your request.
+|   | `invoice`                       | `object` | The invoice object.
+|   | └➔&nbsp;`feeAmount`            | `integer` | The fee amount in the lowest monetary unit to apply if the consumer chooses to pay with invoice.
+|   | `swish`                         | `object` | The swish object.
+|   | └➔&nbsp;`enableEcomOnly`       | `bool`    | `true` to only enable Swish on ecommerce transactions.
 
 {% include iterator.html prev_href="./"
                          prev_title="Back: Introduction"
