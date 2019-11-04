@@ -1,5 +1,5 @@
 ---
-title: Code Of Conduct
+title: Swedbank Pay Code Of Conduct
 sidebar:
   navigation:
   - title: Resources
