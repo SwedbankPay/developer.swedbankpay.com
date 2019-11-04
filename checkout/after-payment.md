@@ -29,7 +29,7 @@ operations are and how they are executed is described below." %}
 ## Operations
 
 Most payment methods are two-phase payments –
-in which a successful paymentorder will result in an authorized transaction –
+in which a successful payment order will result in an authorized transaction –
 that must be followed up by a capture or cancellation transaction in a later
 stage. One-phase payments like Swish are settled directly without the option to
 capture or cancel. For a full list of the available operations, see the
@@ -42,7 +42,8 @@ capture or cancel. For a full list of the available operations, see the
 | `create-paymentorder-cancellation` | Used to cancel authorized and not yet captured transactions. If a cancellation is performed after doing a part-capture, it will only affect the not yet captured authorization amount.                                                                                         |
 | `create-paymentorder-reversal`     | Used to reverse a payment. It is only possible to reverse a payment that has been captured and not yet reversed.                                                                                                                                                               |
 
-To identify the operations that are available we need to do a `GET` request against the URI of `paymentorder.id`:
+To identify the operations that are available we need to do a `GET` request
+against the URI of `paymentorder.id`:
 
 {:.code-header}
 **Request**
@@ -97,10 +98,11 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| **Property**       | **Type**     | **Description**               |
-| `paymentorder` | `object` | The payment order object.                                                          |
-| └➔&nbsp;`id`   | `string` | The relative URI to the payment order.                                             |
-| `operations`   | `array`  | The array of possible operations to perform, given the state of the payment order. |
+| Property       | Type     | Description                                      |
+|:---------------|:---------|:-------------------------------------------------|
+| `paymentorder` | `object` | The payment order object.
+| └➔&nbsp;`id`   | `string` | The relative URI to the payment order.
+| `operations`   | `array`  | The array of possible operations to perform, given the state of the payment order.
 
 ## Update Order
 
@@ -139,8 +141,10 @@ It is possible to do a part-capture where you only capture a smaller amount
 than the authorized amount. You can later do more captures on the same payment
 up to the total authorization amount.
 
-**Notice** that the `orderItems`property object is optional. If the `POST` request has `orderItems` in the `paymentorder`, remember to include `orderItems` in the `capture` operation.
-If the `paymentorder` is without `orderItems`, remember to leave this out in the `capture` operation.
+**Notice** that the `orderItems` property object is optional. If the `POST`
+request has `orderItems` in the `paymentorder`, remember to include `orderItems`
+in the `capture` operation. If the `paymentorder` is without `orderItems`,
+remember to leave this out in the `capture` operation.
 
 To capture the authorized payment, we need to perform
 `create-paymentorder-capture` against the accompanying href returned in the
@@ -249,7 +253,8 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| **Property**                  | **Type**      | **Description**      |
+| Property                  | Type     | Description                           |
+|:--------------------------|:---------|:--------------------------------------|
 | `payment`                 | `string`  | The relative URI of the payment this capture transaction belongs to.                                                                                                                                         |
 | `capture`                 | `object`  | The capture object, containing the information about the capture transaction.                                                                                                                                |
 | └➔&nbsp;`id`              | `string`  | The relative URI of the created capture transaction.                                                                                                                                                         |
@@ -293,10 +298,11 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| ✔︎︎︎︎︎ | **Property**                 | **Type**         | **Description**  |
-| ✔︎︎︎︎︎ | `transaction`            | `object`     | The transaction object.    |
-| ✔︎︎︎︎︎ | └➔&nbsp;`payeeReference` | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details. |
-| ✔︎︎︎︎︎ | └➔&nbsp;`description`    | `string`     | A textual description of why the transaction is cancelled.                                                                                                                               |
+| ✔︎︎︎︎︎ | Property                  | Type        | Description                   |
+|:-:|:--------------------------|:-------------|:------------------------------|
+| ✔︎︎︎︎︎ | `transaction`            | `object`     | The transaction object.
+| ✔︎︎︎︎︎ | └➔&nbsp;`payeeReference` | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.
+| ✔︎︎︎︎︎ | └➔&nbsp;`description`    | `string`     | A textual description of why the transaction is cancelled.
 
 If the cancellation request succeeds, the response should be similar to the
 example below:
@@ -326,7 +332,8 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| **Property**                  | **Type**      | **Description**           |
+| Property                  | Type     | Description                           |
+|:--------------------------|:---------|:--------------------------------------|
 | `payment`                 | `string`  | The relative URI of the payment this cancellation transaction belongs to.                                                                                                                                    |
 | `cancellation`            | `object`  | The cancellation object, containing information about the cancellation transaction.                                                                                                                          |
 | └➔&nbsp;`id`              | `string`  | The relative URI of the cancellation transaction.                                                                                                                                                            |
@@ -368,7 +375,8 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| ✔︎︎︎︎︎ | **Property**                 | **Type**         | **Description**  |
+| ✔︎︎︎︎︎ | Property                 | Type         | Description                   |
+|:-:|:--------------------------|:-------------|:------------------------------|
 | ✔︎︎︎︎︎ | `transaction`            | `object`     | The transaction object.        |
 | ✔︎︎︎︎︎ | └➔&nbsp;`amount`         | `integer`    | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.                                                        |
 | ✔︎︎︎︎︎ | └➔&nbsp;`vatAmount`      | `integer`    | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.                                                               |
@@ -402,7 +410,8 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| **Property**                  | **Type**      | **Description**                   |
+| Property                  | Type      | Description                          |
+|:--------------------------|:----------|:-------------------------------------|
 | `payment`                 | `string`  | The relative URI of the payment this reversal transaction belongs to.                                                                                                                                        |
 | `reversals`               | `object`  | The reversal object, containing information about the reversal transaction.                                                                                                                                  |
 | └➔&nbsp;`id`              | `string`  | The relative URI of the reversal transaction.                                                                                                                                                                |
