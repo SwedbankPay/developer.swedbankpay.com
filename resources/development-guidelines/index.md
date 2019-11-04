@@ -30,7 +30,7 @@ sidebar:
 
 ## Introduction 
 
-PayEx is committed to creating a vibrant community around its open source initiative on GitHub and will alongside its partners expose the PayEx Payment APIs in high quality client modules and libraries. The development of these modules and libraries should be as transparent and accessible to the public as possible. The consequence and meaning of this will be explained in the following chapters of this guideline.
+Swedbank Pay is committed to creating a vibrant community around its open source initiative on GitHub and will alongside its partners expose the Swedbank Pay Payment APIs in high quality client modules and libraries. The development of these modules and libraries should be as transparent and accessible to the public as possible. The consequence and meaning of this will be explained in the following chapters of this guideline.
 
 Having the source code, tests, documentation, issues and such all in one place makes the projects governing the modules and libraries easier to grasp and understand for new users. GitHub is the world’s most popular developer and source code hosting platform and offers everything we need in an easy to use package. It is therefore a great choice for hosting the source code for the open source modules and all of their related resources.
 
@@ -87,10 +87,10 @@ All of PayEx' open source software should be licensed under a liberal [software 
 
 ## Copyright
 
-The copyright for code written in PayEx’ open source projects is shared between PayEx and the individual authors of the source code. This should be stated in the above mentioned LICENSE file as well as in each individual source code file and other metadata (such as .NET assembly information, etc.):
+The copyright for code written in PayEx’ open source projects is shared between Swedbank Pay and the individual authors of the source code. This should be stated in the above mentioned LICENSE file as well as in each individual source code file and other metadata (such as .NET assembly information, etc.):
 
 
-`Copyright © PayEx and Project Contributors`
+`Copyright © Swedbank Pay and Project Contributors`
 
 
 ## How to Contribute
@@ -99,7 +99,7 @@ The copyright for code written in PayEx’ open source projects is shared betwee
 
 ## Code of Conduct 
 
-Every project governed by PayEx or in its name should have a [Code of Conduct][code-of-conduct].
+Every project governed by Swedbank Pay or in its name should have a [Code of Conduct][code-of-conduct].
 
 ## Release Management 
 

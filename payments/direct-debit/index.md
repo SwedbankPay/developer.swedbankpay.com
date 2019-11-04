@@ -23,7 +23,7 @@ sidebar:
 
 ## Direct Debit Payments
 
->PayEx offer Direct Debit bank payments in the Baltics (Estonia, Latvia and Lithuania).
+>Swedbank Pay offer Direct Debit bank payments in the Baltics (Estonia, Latvia and Lithuania).
 
 
 {:.table .table-striped}
@@ -34,11 +34,11 @@ sidebar:
 
 ## Introduction
 
-*   When the consumer/end-user starts the purchase process in your merchant/webshop site, you need to make a `POST` request towards PayEx with your Purchase information. You receive a Redirect URL in return. 
+*   When the consumer/end-user starts the purchase process in your merchant/webshop site, you need to make a `POST` request towards Swedbank Pay with your Purchase information. You receive a Redirect URL in return. 
 *   You need to redirect the consumer/end-user's browser to the Redirect URL.
 *   A bank selection page will be presented to the consumer/end-user.
 *   The consumer/end-user will be redirect to the choosen bank's login page where she have to verify her identity to continue the payment process. 
-*   PayEx will redirect the consumer/end-user's browser to one of two specified URLs, depending on whether the payment session is followed through completely or cancelled beforehand. Please note that both a successful and rejected payment reach completion, in contrast to a cancelled payment.
+*   Swedbank Pay will redirect the consumer/end-user's browser to one of two specified URLs, depending on whether the payment session is followed through completely or cancelled beforehand. Please note that both a successful and rejected payment reach completion, in contrast to a cancelled payment.
 *   When you detect that the consumer/end-user reach your completeUrl, you need to do a GET request to receive the state of the transaction.
 
 ## Screenshots
@@ -59,11 +59,11 @@ All valid options when posting a payment with operation equal to Purchase, are d
 
 #### General
 
-*   **Defining CallbackURL**: When implementing a scenario, it is optional to set a [CallbackURL][callbackurl-reference] in the `POST` request. If callbackURL is set PayEx will send a postback request to this URL when the consumer has fulfilled the payment. [See the Callback API description here][technical-reference-callbackurl].
+*   **Defining CallbackURL**: When implementing a scenario, it is optional to set a [CallbackURL][callbackurl-reference] in the `POST` request. If callbackURL is set Swedbank Pay will send a postback request to this URL when the consumer has fulfilled the payment. [See the Callback API description here][technical-reference-callbackurl].
 
 ## Purchase flow
 
-The sequence diagram below shows the two requests you have to send to PayEx to make a purchase. The links will take you directly to the API description for the specific request. The diagram also shows in high level, the sequence of the process of a complete purchase.
+The sequence diagram below shows the two requests you have to send to Swedbank Pay to make a purchase. The links will take you directly to the API description for the specific request. The diagram also shows in high level, the sequence of the process of a complete purchase.
 
 ```mermaid
 sequenceDiagram
@@ -77,7 +77,7 @@ sequenceDiagram
 
   Merchant-->Consumer: Redirect to bank selection.
   Deactivate Merchant
-  note left of Merchant: Redirect to PayEx payment pages.
+  note left of Merchant: Redirect to Swedbank Pay payment pages.
   Consumer->PayEx: Select bank
   Activate PayEx
   
@@ -189,9 +189,9 @@ Content-Type: application/json
 | payment.payerReference | string | | The reference to the payer (consumer/end-user) from the merchant system, like mobile number, customer number etc. |
 | payment.userAgent | string | ✔︎︎︎︎ | The user agent reference of the consumer's browser - [see user agent definition][user-agent]. |
 | payment.language | string | ✔︎︎︎︎ | nb-NO, sv-SE or en-US. |
-| payment.urls.completeUrl | string | ✔︎︎︎︎ | The URI that PayEx will redirect back to when the payment is followed through. |
-| payment.urls.cancelUrl | string | ✔︎︎︎︎ | The URI that PayEx will redirect back to when the user presses the cancel button in the payment page. |
-| payment.urls.callbackUrl | string | | The URI that PayEx will perform an HTTP POST against every time a transaction is created on the payment. See [callback][technical-reference-callbackurl] for details. |
+| payment.urls.completeUrl | string | ✔︎︎︎︎ | The URI that Swedbank Pay will redirect back to when the payment is followed through. |
+| payment.urls.cancelUrl | string | ✔︎︎︎︎ | The URI that Swedbank Pay will redirect back to when the user presses the cancel button in the payment page. |
+| payment.urls.callbackUrl | string | | The URI that Swedbank Pay will perform an HTTP POST against every time a transaction is created on the payment. See [callback][technical-reference-callbackurl] for details. |
 | payment.urls.logoUrl | string | | The URI that will be used for showing the customer logo. Must be a picture with at most 50px height and 400px width. Require https. |
 | payment.urls.termsOfServiceUrl | string | | A URI that contains your terms and conditions for the payment, to be linked on the payment page. Require https. |
 | payeeInfo.payeeId | string | ✔︎︎︎︎ | This is the unique id that identifies this payee (like merchant) set by PayEx. |
@@ -199,7 +199,7 @@ Content-Type: application/json
 | payeeInfo.payeeName | string | | The payee name (like merchant name) that will be displayed to consumer when redirected to PayEx. |
 | payeeInfo.productCategory | string | | A product category or number sent in from the payee/merchant. This is not validated by PayEx, but will be passed through the payment process and may be used in the settlement process. |
 | payeeInfo.orderReference | string(50) | | The order reference should reflect the order reference found in the merchant's systems. |
-| payeeInfo.subsite | String(40) | | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with PayEx reconciliation before being used. |
+| payeeInfo.subsite | String(40) | | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used. |
 
 {:.code-header}
 **Response**
@@ -281,7 +281,7 @@ The operations should be performed as described in each response and not as desc
 
 | **Operation** | **Description** |
 | _update-payment-abort_ | [Aborts][technical-reference-abort-payment] the payment before any financial transactions are performed. |
-| _redirect-sale_ | Contains the redirect-URI that redirects the consumer to a PayEx hosted payments page prior to creating a sales transaction. |
+| _redirect-sale_ | Contains the redirect-URI that redirects the consumer to a Swedbank Pay hosted payments page prior to creating a sales transaction. |
 
 ## Direct Debit transactions
 
@@ -496,7 +496,7 @@ Content-Type: application/json
 
 ## Callback
 
-When a change or update from the back-end system are made on a payment or transaction, PayEx will perform a callback to inform the payee (merchant) about this update. Callback functionality is explaned in more detail [here][technical-reference-callbackurl].
+When a change or update from the back-end system are made on a payment or transaction, Swedbank Pay will perform a callback to inform the payee (merchant) about this update. Callback functionality is explaned in more detail [here][technical-reference-callbackurl].
 
 ```mermaid
 sequenceDiagram

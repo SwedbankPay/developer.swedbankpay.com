@@ -30,7 +30,7 @@ When performing unsuccessful operations, the eCommerce API will respond with a p
 For general information about problem messages and error handling, visit error handling and problem details[technical-reference-problem-details].
 
 
-## Error types from PayEx Invoice and third parties
+## Error types from Swedbank Pay Invoice and third parties
 
 All invoice error types will have the following URI in front of type: https://api.payex.com/psp/errordetail/invoice/<errorType>
 

@@ -16,13 +16,13 @@ sidebar:
       title: Other Features
 ---
 
->Vipps is a two-phase payment method supported by the major norwegian banks. In the redirect to PayEx payment pages scenario,  PayEx receives a mobile number (MSISDN) from the payer through Payex payment pages. PayEx performs a payment that the payer must confirm through the Vipps mobile app.
+>Vipps is a two-phase payment method supported by the major norwegian banks. In the redirect to Swedbank Pay payment pages scenario,  Swedbank Pay receives a mobile number (MSISDN) from the payer through Payex payment pages. Swedbank Pay performs a payment that the payer must confirm through the Vipps mobile app.
 
 ## Introduction
 
-* When the payer starts the purchase process, you make a `POST` request towards PayEx with the collected `Purchase` information. This will generate a payment object with a unique `paymentID`. You either receive a Redirect URL to a hosted page or a JavaScript source in response.
+* When the payer starts the purchase process, you make a `POST` request towards Swedbank Pay with the collected `Purchase` information. This will generate a payment object with a unique `paymentID`. You either receive a Redirect URL to a hosted page or a JavaScript source in response.
 * You need to [redirect][reference-redirect] the payer to the Redirect payment page or embed the script source on you site to create a [Hosted View][hosted-view] in an `iFrame`; where she is prompted to enter the registered mobile number. This triggers a `POST` towards PayEx.
-* PayEx handles the dialogue with Vipps and the consumer confirms the purchase in the Vipps app.
+* Swedbank Pay handles the dialogue with Vipps and the consumer confirms the purchase in the Vipps app.
 * If CallbackURL is set you will receive a payment callback when the Vipps dialogue is completed. You need to do a `GET` request, containing the `paymentID` generated in the first step, to receive the state of the transaction.
 
 ![Vipps_flow_PaymentPages.png]
@@ -35,7 +35,7 @@ With paymentUrl in place, the retry process becomes much more convenient for bot
 
 ## Screenshots 
 
-You redirect the payer to PayEx hosted payment pages to collect the consumers mobile number.
+You redirect the payer to Swedbank Pay hosted payment pages to collect the consumers mobile number.
 
 
 ![Vipps mobile payment pages][Screenshot_20190304-113739.png]
@@ -55,11 +55,11 @@ All valid options when posting a payment with operation equal to Purchase, are d
 
 #### General
 
-* **Defining CallbackURL**: When implementing a scenario, it is optional to set a [`CallbackURL`][callbackurl] in the `POST` request. If callbackURL is set PayEx will send a postback request to this URL when the consumer has fulfilled the payment. [See the Callback API description here][callback].
+* **Defining CallbackURL**: When implementing a scenario, it is optional to set a [`CallbackURL`][callbackurl] in the `POST` request. If callbackURL is set Swedbank Pay will send a postback request to this URL when the consumer has fulfilled the payment. [See the Callback API description here][callback].
 
 ## Purchase flow
 
-The sequence diagram below shows the two requests you have to send to PayEx to make a purchase. The links will take you directly to the API description for the specific request. 
+The sequence diagram below shows the two requests you have to send to Swedbank Pay to make a purchase. The links will take you directly to the API description for the specific request. 
 
 ```mermaid
 sequenceDiagram

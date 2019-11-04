@@ -134,7 +134,7 @@ Content-Type: application/json
 
 Notes on `FinancingConsumer` captures:
 
-* Due date is set by PayEx based on the agreement with merchant. Standard due date is 14 days.
+* Due date is set by Swedbank Pay based on the agreement with merchant. Standard due date is 14 days.
 * Invoice number is set by PayEx.
 
 ```HTTP

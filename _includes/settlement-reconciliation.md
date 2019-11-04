@@ -10,17 +10,17 @@ The information needed to reconcile captured funds - the balance report and tran
 
 There are two main alternatives for settlement - either we handle the settlement process for you, or you handle the process yourself :
 
-#### PayEx handles the settlement process
+#### Swedbank Pay handles the settlement process
 
-PayEx handles the settlement process on your behalf, (_called “Redovisningsservice”_). PayEx transfers the net amount to you directly.
+Swedbank Pay handles the settlement process on your behalf, (_called “Redovisningsservice”_). Swedbank Pay transfers the net amount to you directly.
 
-##### PayEx Checkout
+##### Swedbank Pay Checkout
 
-When choosing [PayEx Checkout][payex-checkout] we always handle the settlement process for you, gathering all your eCommerce payments in one place. Straighforward and time efficient.
+When choosing [Swedbank Pay Checkout][payex-checkout] we always handle the settlement process for you, gathering all your eCommerce payments in one place. Straighforward and time efficient.
 
 #### You handle the settlement process yourself
 
-If you will handle the settlement yourself, then PayEx will send you an invoice with the relevant fees, in addition to the report and transactions lists. Your acquirer will transfer settled funds to you.
+If you will handle the settlement yourself, then Swedbank Pay will send you an invoice with the relevant fees, in addition to the report and transactions lists. Your acquirer will transfer settled funds to you.
 
 #### Balance Report
 
@@ -28,11 +28,11 @@ The Balance Report (a _.pdf file_) specifies the total sales for a specific peri
 
 ##### Payment Summary
 
-Provides a summary of the `Amount` sold, `Fees` and `VAT`. **If PayEx handles the settlement process**, the `Transfered``amount` - shown in the balance report summary is equivalent to the disbursement on the bank statement (the remaining total amount after fees).
+Provides a summary of the `Amount` sold, `Fees` and `VAT`. **If Swedbank Pay handles the settlement process**, the `Transfered``amount` - shown in the balance report summary is equivalent to the disbursement on the bank statement (the remaining total amount after fees).
 
 ##### Sales specification
 
-Provides a specification over sales for the given period. The sales total is specified per payment area (`CreditCard, Direct Debit, Factoring`) and underlying payment instruments. Each sales row specify Quantity, Sum sales and Amount to pay out, the last one is only eligble **if PayEx handles the Settlement process**.
+Provides a specification over sales for the given period. The sales total is specified per payment area (`CreditCard, Direct Debit, Factoring`) and underlying payment instruments. Each sales row specify Quantity, Sum sales and Amount to pay out, the last one is only eligble **if Swedbank Pay handles the Settlement process**.
 
 ##### Fees specification
 
@@ -42,7 +42,7 @@ Provides a specification over fees for the given period. The fees total is speci
 
 The Transaction List (provided in `.xlsx` and `.xml` formats) specifies all transactions for a specific period, including a summary of transactions grouped by payment method. Both formats contain the same information, but the xml file is meant for computer processing while the excel workbook is meant for human interaction.
 
-The first row contains the name of the PayEx company (e.g. PayEx Solutions AB) that the merchant has the contract with, and the balance report number. The header fields contain a summary of the transactions displayed in the body.
+The first row contains the name of the Swedbank Pay company (e.g. Swedbank Pay Solutions AB) that the merchant has the contract with, and the balance report number. The header fields contain a summary of the transactions displayed in the body.
 
 {:.code-header}
 **Header fields**
@@ -64,8 +64,8 @@ The first row contains the name of the PayEx company (e.g. PayEx Solutions AB) t
 
 {:.table .table-striped}
 |**Field**|**Type**|**Description**
-| PayEx Batch Number | Decimal | A batch number common to all types of transactions processed by PayEx.
-| Transaction Number | Decimal | A unique identifier of the transaction, can be traced in PayEx Admin user interface.
+| Swedbank Pay Batch Number | Decimal | A batch number common to all types of transactions processed by PayEx.
+| Transaction Number | Decimal | A unique identifier of the transaction, can be traced in Swedbank Pay Admin user interface.
 | Order id | String | A unique identifier of the order, as sent from the merchant to PayEx. Transactions that are related to the same order are associated with this ID.
 | Date Created | ISO 8601 | Transaction capture date/time. YYYY-MM-DD hh:mm:ss.
 | Date Modified | ISO 8601 | Transaction settle date/time. YYYY-MM-DD hh:mm:ss.
@@ -80,15 +80,15 @@ The first row contains the name of the PayEx company (e.g. PayEx Solutions AB) t
 |Credit Card Batch Number| Decimal | The reference number from the credit card processor.
 |Direct Debit Bank Reference| Decimal | The reference number from the processing bank.
 |Reference| Decimal | The transaction reference from processor.
-|PayEx Account Number| Decimal | The Account number given, shown in PayEx admin.
+|Swedbank Pay Account Number| Decimal | The Account number given, shown in Swedbank Pay admin.
 |Referenced Transaction Number| Decimal | Transaction number for the Authoriation transaction for a two-stage transaction or the number of the debit transaction if it is a credit transaction.
-|Sales Channel| String | The channel through which the transaction was sent to PayEx (e.g Transaction via eCommerce APIs).
+|Sales Channel| String | The channel through which the transaction was sent to Swedbank Pay (e.g Transaction via eCommerce APIs).
 |Brand| String | If eligible, Branding information as sent by merchant to PayEx.
 |Point Of Sale | String | If eligible, POS information as sent by merchant to PayEx.
 
 ### Reconciliation
 
-To do the reconciliation, you need to match the information in your system against the information provided by PayEx in the balance report and transaction list. Below is a sequence diagram detailing the interaction.
+To do the reconciliation, you need to match the information in your system against the information provided by Swedbank Pay in the balance report and transaction list. Below is a sequence diagram detailing the interaction.
 
 ```mermaid
 sequenceDiagram
@@ -114,7 +114,7 @@ deactivate Merchant
 **There are two ways** for you to match the information from your system with the information given in the reconciliation files from PayEx:
 
 1. You can use information **generated by your** system (you will have to set a unique payeeReference when you make the transaction), or
-2. You can use the transaction number **generated by PayEx** (this is called transaction number and is returned from PayEx after you have created the transaction).
+2. You can use the transaction number **generated by PayEx** (this is called transaction number and is returned from Swedbank Pay after you have created the transaction).
 
 A credit card transaction is made when you either make a capture or a reversal. In the input data for making a capture, you will set the `payeeReference`. The unique value of this field is the same as the field called `OrderID` in the reconciliation file.
 
@@ -155,16 +155,16 @@ When you receive the response from PayEx, the response will include `transaction
 }
 ```
 
-* `payeeReference` sent to PayEx is equal to `OrderId` in the reconciliation file.
-* `capture.transaction.number` returned from PayEx is equal to `TransactionNo` in reconciliation file.
+* `payeeReference` sent to Swedbank Pay is equal to `OrderId` in the reconciliation file.
+* `capture.transaction.number` returned from Swedbank Pay is equal to `TransactionNo` in reconciliation file.
 
 ### Samples
 
 The content of the files depends on the type of agreement you have made with PayEx. For some payment methods, only option A is available, while for other payment methods, only option B is available. The sample files can be downloaded below.
 
-#### Option A: PayEx handles the settlement process
+#### Option A: Swedbank Pay handles the settlement process
 
-* **[PDF Balance Report for PayEx Checkout][attachement-1]**
+* **[PDF Balance Report for Swedbank Pay Checkout][attachement-1]**
 * [PDF Balance Report][attachement-2]
 * [XLSX Transaction List][attachement-3]
 * [XML Transaction List][attachement-4]

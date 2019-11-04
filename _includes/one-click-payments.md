@@ -67,7 +67,7 @@ Content-Type: application/json
 ```
 
 
-When redirecting to PayEx (as specified in [the Redirect scenario][redirect]) the payment page will be prefilled with the payer's card details.
+When redirecting to Swedbank Pay (as specified in [the Redirect scenario][redirect]) the payment page will be prefilled with the payer's card details.
 
 ### Screenshots 
 

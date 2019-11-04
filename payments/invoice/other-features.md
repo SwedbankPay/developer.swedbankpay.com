@@ -35,7 +35,7 @@ The API requests are displayed in the [invoice flow][invoice-flow]. The options 
 | **InvoiceType** |	PayExFinancingFI |
 
 *   An invoice payment is always two-phased based -  you create an Authorize transaction, that is followed by a Capture or Cancel request.
-*   **Defining CallbackURL**: When implementing a scenario, it is optional to set a [CallbackURL][callback-url] in the `POST` request. If callbackURL is set PayEx will send a postback request to this URL when the consumer has fulfilled the payment. [See the Callback API description here.][callback-api]
+*   **Defining CallbackURL**: When implementing a scenario, it is optional to set a [CallbackURL][callback-url] in the `POST` request. If callbackURL is set Swedbank Pay will send a postback request to this URL when the consumer has fulfilled the payment. [See the Callback API description here.][callback-api]
 
 
 ### Problem messages
@@ -44,7 +44,7 @@ When performing unsuccessful operations, the eCommerce API will respond with a p
 
 For general information about problem messages and error handling,[visit error handling and problem details][technical-reference-problem-details].
 
-#### Error types from PayEx Invoice and third parties 
+#### Error types from Swedbank Pay Invoice and third parties 
 
 All invoice error types will have the following URI in front of type: `https://api.payex.com/psp/errordetail/invoice/<errorType>`
 

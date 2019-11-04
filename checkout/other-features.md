@@ -410,10 +410,10 @@ Content-Type: application/json
 | `urls`                      | `object` | The URLs object.                                                                                                                                                                                                                           |
 | └➔&nbsp;`id`                | `string` | The relative URI to the `urls` resource.                                                                                                                                                                                                   |
 | └➔&nbsp;`hostsUrl`          | `string` | An array of the whitelisted URIs that are allowed as parents to a Hosted View, typically the URI of the web shop or similar that will embed a Hosted View within it.                                                                       |
-| └➔&nbsp;`completeUrl`       | `string` | The URI that PayEx will redirect back to when the payment page is completed.                                                                                                                                                               |
+| └➔&nbsp;`completeUrl`       | `string` | The URI that Swedbank Pay will redirect back to when the payment page is completed.                                                                                                                                                               |
 | └➔&nbsp;`cancelUrl`         | `string` | The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios. If both cancelUrl and paymentUrl is sent, the paymentUrl will used.                                                                          |
-| └➔&nbsp;`paymentUrl`        | `string` | The URI that PayEx will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. Only used in hosted views. If both cancelUrl and paymentUrl is sent, the paymentUrl will used. |
-| └➔&nbsp;`callbackUrl`       | `string` | The URI that PayEx will perform an HTTP `POST` against every time a transaction is created on the payment. See [callback][callback-reference] for details.                                                                                 |
+| └➔&nbsp;`paymentUrl`        | `string` | The URI that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. Only used in hosted views. If both cancelUrl and paymentUrl is sent, the paymentUrl will used. |
+| └➔&nbsp;`callbackUrl`       | `string` | The URI that Swedbank Pay will perform an HTTP `POST` against every time a transaction is created on the payment. See [callback][callback-reference] for details.                                                                                 |
 | └➔&nbsp;`logoUrl`           | `string` | The URI that will be used for showing the customer logo. Must be a picture with at most 50px height and 400px width.                                                                                                                       |
 | └➔&nbsp;`termsOfServiceUrl` | `string` | A URI that contains your terms and conditions for the payment, to be linked on the payment page.                                                                                                                                           |
 
@@ -714,7 +714,7 @@ argument object:
 {:.table .table-striped}
 | Property  | Type     | Description                                                                      |
 | :-------- | :------- | :------------------------------------------------------------------------------- |
-| `origin`  | `string` | `owner`, `merchant`. The value is always `merchant` unless PayEx hosts the view. |
+| `origin`  | `string` | `owner`, `merchant`. The value is always `merchant` unless Swedbank Pay hosts the view. |
 | `openUrl` | `string` | The URI containing Terms of Service and conditions.                              |
 
 ### `onError`
@@ -820,7 +820,7 @@ for the given operation.
 |:-----------------------------------|:----------------------------------------|
 | `update-paymentorder-abort`        | [Aborts][abort] the payment order before any financial transactions are performed.
 | `update-paymentorder-updateorder`  | [Updates the order][update-order] with a change in the `amount` and/or `vatAmount`.
-| `redirect-paymentorder`            | Contains the URI that is used to redirect the consumer to the PayEx Payment Pages containing the Payment Menu.
+| `redirect-paymentorder`            | Contains the URI that is used to redirect the consumer to the Swedbank Pay Payment Pages containing the Payment Menu.
 | `view-paymentorder`                | Contains the JavaScript `href` that is used to embed the Payment Menu UI directly on the webshop/merchant site.
 | `create-paymentorder-capture`      | The second part of a two-phase transaction where the authorized amount is sent from the payer to the payee. It is possible to do a part-capture on a subset of the authorized amount. Several captures on the same payment are possible, up to the total authorization amount.
 | `create-paymentorder-cancellation` | Used to cancel authorized and not yet captured transactions. If a cancellation is performed after doing a part-capture, it will only affect the not yet captured authorization amount.
@@ -834,7 +834,7 @@ The `view-paymentorder` operation contains the URI of the JavaScript that needs 
 <!DOCTYPE html>
 <html>
     <head>
-        <title>PayEx Checkout is Awesome!</title>
+        <title>Swedbank Pay Checkout is Awesome!</title>
     </head>
     <body>
         <div id="checkout"></div>
@@ -1248,11 +1248,11 @@ Content-Type: application/json
 
 The `direct-authorization` operation creates an authorization transaction
 directly whilst the `redirect-authorization` operation redirects the consumer
-to PayEx Payment pages where the payment is authorized.
+to Swedbank Pay Payment pages where the payment is authorized.
 
 > **Note:** In order to use the `direct-authorization` operation, the servers
 and application involved in retrieving and transferring the credit card number
-from the payer to PayEx needs to be [PCI DSS][pci-dss] certified.**
+from the payer to Swedbank Pay needs to be [PCI DSS][pci-dss] certified.**
 
 {:.code-header}
 **Request**
@@ -1300,9 +1300,11 @@ authorization transaction made towards a payment, as previously described.
 
 The Callback  functionality is similar for all payment methods.
 
-* Setting a `callbackUrl` in the HTTP `POST` API is optional, but highly recommended. If a payer closes the browser window, a network error or something else happens that prevents the payer from being redirect from PayEx back to the merchant website, the callback is what ensures that you receive information about what happened with the payment.
-* When a change or update from the back-end system are made on a payment or transaction, PayEx will perform a callback to inform the payee (merchant) about this update.
-* PayEx will make an HTTP `POST` to the `callbackUrl` that was specified when the payee (merchant) created the payment.
+* Setting a `callbackUrl` in the HTTP `POST` API is optional, but highly
+  recommended. If a payer closes the browser window, a network error or
+  something else happens that prevents the payer from being redirect from Swedbank Pay back to the merchant website, the callback is what ensures that you receive information about what happened with the payment.
+* When a change or update from the back-end system are made on a payment or transaction, Swedbank Pay will perform a callback to inform the payee (merchant) about this update.
+* Swedbank Pay will make an HTTP `POST` to the `callbackUrl` that was specified when the payee (merchant) created the payment.
 * When the `callbackUrl` receives such a callback, an HTTP `GET``` request must be made on the payment or on the transaction. The retrieved payment or transaction resource will give you the necessary information about the recent change/update.
 * The callback will be retried if it fails. Below are the retry timings, in milliseconds from the initial transaction time:
   * 30000 ms
@@ -1385,11 +1387,11 @@ specific processing rules depending on specifications in the contract.
 a transactional operation from the merchant system.
 * Its length and content validation is dependent on whether the
   `transaction.number` or the `payeeReference` is sent to the acquirer.
-  * If you select Option A in the settlement process (PayEx will handle the
-    settlement), PayEx will send the transaction.number to the acquirer and the
+  * If you select Option A in the settlement process (Swedbank Pay will handle the
+    settlement), Swedbank Pay will send the transaction.number to the acquirer and the
     `payeeReference` may have the format of string(30).
   * If you select Option B in the settlement process (you will handle the
-    settlement yourself), PayEx will send the `payeeReference` to the acquirer
+    settlement yourself), Swedbank Pay will send the `payeeReference` to the acquirer
     and it will be limited to the format of string(12) and all characters must
     be digits.
 
@@ -1419,7 +1421,7 @@ The structure of a problem message will look like this:
 | `type` | `string` | The URI that identifies the error type. This is the **only property usable for programmatic identification** of the type of error! When dereferenced, it might lead you to a human readable description of the error and how it can be recovered from.
 | `title` | `string` | The title contains a human readable description of the error.
 | `detail` | `string` | A detailed, human readable description of the error.
-| `instance` | `string` | The identifier of the error instance. This might be of use to PayEx support personnel in order to find the exact error and the context it occurred in.
+| `instance` | `string` | The identifier of the error instance. This might be of use to Swedbank Pay support personnel in order to find the exact error and the context it occurred in.
 | `status` | `integer` | The HTTP status code that the problem was served with.
 | `action` | `string` | The `action` indicates how the error can be recovered from.
 | `problems` | `array` | The array of problem detail objects.

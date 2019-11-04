@@ -89,11 +89,11 @@ Content-Type: application/json
 | payment.payerReference | string | N | The reference to the payer (consumer/end-user) from the merchant system, like mobile number, customer number etc. |
 | payment.userAgent | string | ✔︎ | The user agent reference of the consumer's browser - [see user agent definition][see-user-agent-definition] | 
 | payment.language | string | ✔︎ | nb-NO, sv-SE or en-US. |
-| payment.urls.hostUrls | array | ✔︎ | The array of URIs valid for embedding of PayEx Hosted Views. | 
-| payment.urls.completeUrl | string | ✔︎ | The URI that PayEx will redirect back to when the payment page is completed. | 
+| payment.urls.hostUrls | array | ✔︎ | The array of URIs valid for embedding of Swedbank Pay Hosted Views. | 
+| payment.urls.completeUrl | string | ✔︎ | The URI that Swedbank Pay will redirect back to when the payment page is completed. | 
 | payment.urls.cancelUrl | string | N | The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with paymentUrl; only cancelUrl or paymentUrl can be used, not both. |
-| payment.urls.paymentUrl | string | N | The URI that PayEx will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. Only used in hosted views. Can not be used simultaneously with cancelUrl; only cancelUrl or paymentUrl can be used, not both. |
-| payment.urls.callbackUrl | string | N | The URI that PayEx will perform an HTTP POST against every time a transaction is created on the payment. See [callback][callback] |
+| payment.urls.paymentUrl | string | N | The URI that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. Only used in hosted views. Can not be used simultaneously with cancelUrl; only cancelUrl or paymentUrl can be used, not both. |
+| payment.urls.callbackUrl | string | N | The URI that Swedbank Pay will perform an HTTP POST against every time a transaction is created on the payment. See [callback][callback] |
 | payment.urls.logoUrl | string | N | The URI that will be used for showing the customer logo. Must be a picture with at most 50px height and 400px width. Requires https. | 
 | payment.urls.termsOfServiceUrl | string | N | A URI that contains your terms and conditions for the payment, to be linked on the payment page. Requires https. | 
 | payeeInfo.payeeId | string | ✔︎ | This is the unique id that identifies this payee (like merchant) set by PayEx. |
@@ -101,8 +101,8 @@ Content-Type: application/json
 | payeeInfo.payeeName | string | N | The payee name (like merchant name) that will be displayed to consumer when redirected to PayEx. | 
 | payeeInfo.productCategory | string | N | A product category or number sent in from the payee/merchant. This is not validated by PayEx, but will be passed through the payment process and may be used in the settlement process. |
 | payeeInfo.orderReference | string(50) | N | The order reference should reflet the order reference found in the merchant's systems. | 
-| payeeInfo.prefillInfo | string | N | The mobile number that will be prefilled in the PayEx payment pages. The consumer may change this number in the UI. | 
-| payeeInfo.subsite | string(40) | N | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with PayEx reconciliation before being used. | 
+| payeeInfo.prefillInfo | string | N | The mobile number that will be prefilled in the Swedbank Pay payment pages. The consumer may change this number in the UI. | 
+| payeeInfo.subsite | string(40) | N | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used. | 
 
 {:.code-header}
 **Response** 
@@ -224,7 +224,7 @@ The operations should be performed as described in each response and not as desc
 {:.table .table-striped}
 | **Operation** | **Description** |
 | update-payment-abort | [Aborts][abort] the payment before any financial transactions are performed. |
-| redirect-authorization | Used to redirect the consumer to PayEx payment pages and the authorization UI. |
+| redirect-authorization | Used to redirect the consumer to Swedbank Pay payment pages and the authorization UI. |
 | create-capture | Creates a [capture transaction](#Captures). |
 | create-cancellation | Creates a [cancellation transaction](#Cancellations). |
 | create-reversal | Creates a [reversal transaction](#Reversals). | 
@@ -703,7 +703,7 @@ Content-Type: application/json
 
 ## Callback
 
-When a change or update from the back-end system are made on a payment or transaction, PayEx will perform a callback to inform the payee (merchant) about this update. Callback functionality is explaned in more detail [here][callback].
+When a change or update from the back-end system are made on a payment or transaction, Swedbank Pay will perform a callback to inform the payee (merchant) about this update. Callback functionality is explaned in more detail [here][callback].
 
 [abort]: #
 [callback]: #callback

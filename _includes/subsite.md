@@ -66,9 +66,9 @@ Content-Type: application/json
 | | payment.payerReference | string | The reference to the payer (consumer/end-user) from the merchant system, like mobile number, customer number etc.
 | ✔︎ | payment.userAgent | string |The user agent reference of the consumer's browser - [see user agent definition][user-agent]
 | ✔︎ | payment.language | string | nb-NO, sv-SE or en-US.
-| ✔︎ | payment.urls.completeUrl | string | The URI that PayEx will redirect back to when the payment is followed through.
-| ✔︎ | payment.urls.cancelUrl | string | The URI that PayEx will redirect back to when the user presses the cancel button in the payment page.
-| | payment.urls.callbackUrl | string |The URI that PayEx will perform an HTTP POST against every time a transaction is created on the payment. See [callback][technical-reference-callback] for details.
+| ✔︎ | payment.urls.completeUrl | string | The URI that Swedbank Pay will redirect back to when the payment is followed through.
+| ✔︎ | payment.urls.cancelUrl | string | The URI that Swedbank Pay will redirect back to when the user presses the cancel button in the payment page.
+| | payment.urls.callbackUrl | string |The URI that Swedbank Pay will perform an HTTP POST against every time a transaction is created on the payment. See [callback][technical-reference-callback] for details.
 | | payment.urls.logoUrl | string | The URI that will be used for showing the customer logo. Must be a picture with at most 50px height and 400px width. Require https.
 | | payment.urls.termsOfServiceUrl | string | A URI that contains your terms and conditions for the payment, to be linked on the payment page. Require https.
 | ✔︎ | payeeInfo.payeeId | string | This is the unique id that identifies this payee (like merchant) set by PayEx.
@@ -76,7 +76,7 @@ Content-Type: application/json
 | | payeeInfo.payeeName | string | The payee name (like merchant name) that will be displayed to consumer when redirected to PayEx.
 | | payeeInfo.productCategory | string | A product category or number sent in from the payee/merchant. This is not validated by PayEx, but will be passed through the payment process and may be used in the settlement process.
 | | payeeInfo.orderReference | string(50) | The order reference should reflect the order reference found in the merchant's systems.
-| | payeeInfo.subsite | String(40) | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with PayEx reconciliation before being used.
+| | payeeInfo.subsite | String(40) | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.
 
 {:.code-header}
 **Response**
@@ -158,7 +158,7 @@ The operations should be performed as described in each response and not as desc
 
 | **Operation** | **Description**
 | update-payment-abort |[Aborts][technical-reference-abort] the payment before any financial transactions are performed.
-| redirect-sale |Contains the redirect-URI that redirects the consumer to a PayEx hosted payments page prior to creating a sales transaction.
+| redirect-sale |Contains the redirect-URI that redirects the consumer to a Swedbank Pay hosted payments page prior to creating a sales transaction.
 
 ### Direct Debit transactions 
 
@@ -378,7 +378,7 @@ Content-Type: application/json
 
 ### Callback ###
 
-When a change or update from the back-end system are made on a payment or transaction, PayEx will perform a callback to inform the payee (merchant) about this update. Callback functionality is explaned in more detail [here][technical-reference-callback].
+When a change or update from the back-end system are made on a payment or transaction, Swedbank Pay will perform a callback to inform the payee (merchant) about this update. Callback functionality is explaned in more detail [here][technical-reference-callback].
 
 
 ```mermaid

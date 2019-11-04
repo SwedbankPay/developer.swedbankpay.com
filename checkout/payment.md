@@ -470,7 +470,7 @@ order.
 ## Payment Orders
 
 The `paymentorders` resource is used when initiating a payment process through
-[Payment Menu][payment-menu] and [PayEx Checkout](/checkout/index). The payment
+[Payment Menu][payment-menu] and [Swedbank Pay Checkout](/checkout/index). The payment
 order is a container for the payment method object selected by the payer. This
 will generate a payment that is accessed through the sub-resources `payments`
 and `currentPayment`.
@@ -690,7 +690,7 @@ Content-Type: application/json
 |   | └─➔&nbsp;`payeeName`              | `string`     | The name of the payee, usually the name of the merchant.
 |   | └─➔&nbsp;`productCategory`        | `string`     | A product category or number sent in from the payee/merchant. This is not validated by PayEx, but will be passed through the payment process and may be used in the settlement process.
 |   | └─➔&nbsp;`orderReference`         | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.
-|   | └─➔&nbsp;`subsite`                | `string(40)` | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with PayEx reconciliation before being used.
+|   | └─➔&nbsp;`subsite`                | `string(40)` | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.
 |   | └➔&nbsp;`payer`                   | `string`     | The consumer profile reference as obtained through the [Consumers][consumer-reference] API.
 |   | └─➔&nbsp;`consumerProfileRef`     | `string`     | The consumer profile reference as obtained through the [Consumers][consumer-reference] API.
 |   | └➔&nbsp;`orderItems`              | `array`      | The array of items being purchased with the order. Used to print on invoices if the payer chooses to pay with invoice, among other things. [See Order Items for details][order-items].
@@ -712,11 +712,11 @@ to inform the payee (merchant) of changes or updates made to underlying payments
 {:.table .table-striped}
 | ✔︎︎︎︎︎ | Property            | Type     | Description                             |
 |:-:|:--------------------|:---------|:----------------------------------------|
-| ✔ ︎︎︎︎︎| `hostUrls`          | `array`  | The array of URIs valid for embedding of PayEx Hosted Views.
+| ✔ ︎︎︎︎︎| `hostUrls`          | `array`  | The array of URIs valid for embedding of Swedbank Pay Hosted Views.
 | ✔︎︎︎︎︎ | `completeUrl`       | `string` | The URI to redirect the payer to once the payment is completed.
 | ✔︎︎︎︎︎ | `termsOfServiceUrl` | `string` | The URI to the terms of service document the payer must accept in order to complete the payment. **HTTPS is a requirement**.
 |   | `cancelUrl`         | `string` | The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios.
-|   | `paymentUrl`        | `string` | The URI that PayEx will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. Only used in hosted views. If both cancelUrl and paymentUrl is sent, the paymentUrl will used.
+|   | `paymentUrl`        | `string` | The URI that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. Only used in hosted views. If both cancelUrl and paymentUrl is sent, the paymentUrl will used.
 |   | `callbackUrl`       | `string` | The URI to the API endpoint receiving `POST` requests on transaction activity related to the payment order.
 |   | `logoUrl`           | `string` | The URI to the logo that will be displayed on redirect pages. **HTTPS is a requirement**.
 
@@ -734,7 +734,7 @@ The `orderItems` property of the `paymentOrder` is an array containing the items
 | ✔︎︎︎︎︎ | `reference`          | `string` | A reference that identifies the order item.
 | ✔︎︎︎︎︎ | `name`               | `string` | The name of the order item.
 | ✔︎︎︎︎︎ | `type`               | `string` |  `PRODUCT`, `SERVICE`, `SHIPPING_FEE`, `DISCOUNT`, `VALUE_CODE`, or `OTHER`. The type of the order item.
-| ✔︎︎︎︎︎ | `class`              | `string` | The classification of the order item. Can be used for assigning the order item to a specific product category, for instance. PayEx has no use for this value itself, but it's useful for some payment instruments and integrations.
+| ✔︎︎︎︎︎ | `class`              | `string` | The classification of the order item. Can be used for assigning the order item to a specific product category, for instance. Swedbank Pay has no use for this value itself, but it's useful for some payment instruments and integrations.
 |   | `itemUrl`             | `string` | The URL to a page that contains a human readable description of the order item, or similar.
 |   | `imageUrl`            | `string` | The URL to an image of the order item.
 |   | `description`         | `string` | The human readable description of the order item.
@@ -755,11 +755,11 @@ The `items` property of the `paymentOrder` is an array containing items that wil
 | ✔︎︎︎︎︎ | Property                        | Type     | Description                 |
 |:-:|:--------------------------------|:---------|:----------------------------|
 |   | `creditCard`                    | `object` | The credit card object.
-|   | └➔&nbsp;`rejectDebitCards`     | `bool`    | `true` if debit cards should be declined; otherwise `false` per default. Default value is set by PayEx and can be changed at your request.
-|   | └➔&nbsp;`rejectDebitCards`     | `bool`    | `true` if debit cards should be declined; otherwise `false` per default. Default value is set by PayEx and can be changed at your request.
-|   | └➔&nbsp;`rejectCreditCards`    | `bool`    | `true` if credit cards should be declined; otherwise `false` per default. Default value is set by PayEx and can be changed at your request.
-|   | └➔&nbsp;`rejectConsumerCards`  | `bool`    | `true` if consumer cards should be declined; otherwise `false` per default. Default value is set by PayEx and can be changed at your request.
-|   | └➔&nbsp;`rejectCorporateCards` | `bool`    | `true` if corporate cards should be declined; otherwise `false` per default. Default value is set by PayEx and can be changed at your request.
+|   | └➔&nbsp;`rejectDebitCards`     | `bool`    | `true` if debit cards should be declined; otherwise `false` per default. Default value is set by Swedbank Pay and can be changed at your request.
+|   | └➔&nbsp;`rejectDebitCards`     | `bool`    | `true` if debit cards should be declined; otherwise `false` per default. Default value is set by Swedbank Pay and can be changed at your request.
+|   | └➔&nbsp;`rejectCreditCards`    | `bool`    | `true` if credit cards should be declined; otherwise `false` per default. Default value is set by Swedbank Pay and can be changed at your request.
+|   | └➔&nbsp;`rejectConsumerCards`  | `bool`    | `true` if consumer cards should be declined; otherwise `false` per default. Default value is set by Swedbank Pay and can be changed at your request.
+|   | └➔&nbsp;`rejectCorporateCards` | `bool`    | `true` if corporate cards should be declined; otherwise `false` per default. Default value is set by Swedbank Pay and can be changed at your request.
 |   | `invoice`                       | `object` | The invoice object.
 |   | └➔&nbsp;`feeAmount`            | `integer` | The fee amount in the lowest monetary unit to apply if the consumer chooses to pay with invoice.
 |   | `swish`                         | `object` | The swish object.

@@ -26,10 +26,10 @@ sidebar:
 
 ## Introduction
 
-* When you have prepared your merchant/webshop site, you make a `POST` request towards PayEx with your  Purchase information. You will receive a Redirect URL, leading to a secure PayEx hosted environment, in response, .
+* When you have prepared your merchant/webshop site, you make a `POST` request towards Swedbank Pay with your  Purchase information. You will receive a Redirect URL, leading to a secure Swedbank Pay hosted environment, in response, .
 * You need to redirect the browser of the end-user/consumer to that URL so that she may enter her MobilePay details .
-* When the payment is completed, PayEx will redirect the browser back to your merchant/webshop site.
-* Finally you need to make a `GET` request towards PayEx with the paymentID received in the first step, which will return the purchase result.
+* When the payment is completed, Swedbank Pay will redirect the browser back to your merchant/webshop site.
+* Finally you need to make a `GET` request towards Swedbank Pay with the paymentID received in the first step, which will return the purchase result.
 
 ## Screenshots
 
@@ -51,11 +51,11 @@ All valid options when posting in a payment with operation equal to Purchase, ar
 
 #### General
 
-* **Defining CallbackURL**: When implementing a scenario, it is optional to set a [CallbackURL][technical-reference-callbackurl] in the POST request. If callbackURL is set PayEx will send a postback request to this URL when the consumer has fulfilled the payment. [See the Callback API description here.][technical-reference-callback]
+* **Defining CallbackURL**: When implementing a scenario, it is optional to set a [CallbackURL][technical-reference-callbackurl] in the POST request. If callbackURL is set Swedbank Pay will send a postback request to this URL when the consumer has fulfilled the payment. [See the Callback API description here.][technical-reference-callback]
 
 ## Purchase flow
 
-The sequence diagram below shows the two requests you have to send to PayEx to make a purchase. The links will take you directly to the API description for the specific request. The diagram also shows in high level, the sequence of the process of a complete purchase.
+The sequence diagram below shows the two requests you have to send to Swedbank Pay to make a purchase. The links will take you directly to the API description for the specific request. The diagram also shows in high level, the sequence of the process of a complete purchase.
 
 ```mermaid
 sequenceDiagram
