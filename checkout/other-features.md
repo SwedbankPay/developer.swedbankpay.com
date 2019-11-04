@@ -1280,8 +1280,8 @@ Content-Type: application/json
 | ✔︎︎︎︎︎ | `transaction.cardNumber` | `string` | Primary Account Number (PAN) of the card, printed on the face of the card.
 | ✔︎︎︎︎︎ | `transaction.cardExpiryMonth` | `integer` | Expiry month of the card, printed on the face of the card.
 | ✔︎︎︎︎︎ | `transaction.cardExpiryYear` | `integer` | Expiry year of the card, printed on the face of the card.
-| | `transaction.cardVerificationCode` | `string` |Card verification code (CVC/CVV/CVC2), usually printed on the back of the card.
-| | `transaction.cardholderName` | `string` | Name of the card holder, usually printed on the face of the card.
+|   | `transaction.cardVerificationCode` | `string` |Card verification code (CVC/CVV/CVC2), usually printed on the back of the card.
+|   | `transaction.cardholderName` | `string` | Name of the card holder, usually printed on the face of the card.
 
 **Response**
 
@@ -1313,7 +1313,7 @@ The Callback  functionality is similar for all payment methods.
   * 432000 ms
   * 864000 ms
   * 1265464 ms
-* The callback is sent from the following IP addresses: `82.115.146.1`
+* The callback is sent from the following IP address `82.115.146.1`.
 
 {:.code-header}
 **Payment Instrument Callback**
@@ -1360,40 +1360,24 @@ The sequence diagram below shows the HTTP ``POST` you will receive from PayEx, a
 
 ```mermaid
 sequenceDiagram
-Activate Merchant
-Activate PAYEX
-PAYEX->Merchant: POST <callbackUrl>
-note left of Merchant: Callback by PayEx
-Merchant-->PAYEX: HTTP response
-Deactivate PAYEX
-Deactivate Merchant
+    participant Merchant
+    participant SwedbankPay as Swedbank Pay
+    activate Merchant
+        activate SwedbankPay
+            SwedbankPay->Merchant: POST <callbackUrl>
+            note left of Merchant: Callback by PayEx
+            Merchant-->SwedbankPay: HTTP response
+        deactivate SwedbankPay
+    deactivate Merchant
 
-Activate Merchant
-Activate PAYEX
-Merchant->PAYEX: GET <payment instrument> payment
-note left of Merchant: First API request
-Activate PAYEX
-PAYEX-->Merchant: payment resource
-Deactivate PAYEX
-Deactivate Merchant
+    activate Merchant
+        Merchant->SwedbankPay: GET <payment instrument> payment
+        activate SwedbankPay
+            note left of Merchant: First API request
+            SwedbankPay-->Merchant: payment resource
+        deactivate SwedbankPay
+    deactivate Merchant
 ```
-
-## PayeeReference
-
-The `payeeReference` given when creating transactions and payments has some
-specific processing rules depending on specifications in the contract.
-
-* It must be unique for every operation, used to ensure exactly-once delivery of
-a transactional operation from the merchant system.
-* Its length and content validation is dependent on whether the
-  `transaction.number` or the `payeeReference` is sent to the acquirer.
-  * If you select Option A in the settlement process (Swedbank Pay will handle the
-    settlement), Swedbank Pay will send the transaction.number to the acquirer and the
-    `payeeReference` may have the format of string(30).
-  * If you select Option B in the settlement process (you will handle the
-    settlement yourself), Swedbank Pay will send the `payeeReference` to the acquirer
-    and it will be limited to the format of string(12) and all characters must
-    be digits.
 
 ## Problems
 
@@ -1417,7 +1401,8 @@ The structure of a problem message will look like this:
 ```
 
 {:.table .table-striped}
-| Parameter | Data type | Description
+| Property | Type | Description
+|:--------------------------|:-------------|:------------------------------|
 | `type` | `string` | The URI that identifies the error type. This is the **only property usable for programmatic identification** of the type of error! When dereferenced, it might lead you to a human readable description of the error and how it can be recovered from.
 | `title` | `string` | The title contains a human readable description of the error.
 | `detail` | `string` | A detailed, human readable description of the error.
@@ -1433,40 +1418,53 @@ The structure of a problem message will look like this:
 All common problem types will have a URI in the format `https://api.payex.com/psp/<error-type>`. The **URI is an identifier** and is currently not possible to dereference, although that might be possible in the future.
 
 {:.table .table-striped}
-| **Type** | **Status** | **Notes**
-| `inputerror` |400|The server cannot or will not process the request due to an apparent client error (e.g. malformed request syntax, size to large, invalid request).
-| `forbidden` |403|The request was valid, but the server is refusing the action. The necessary permissions to access the resource might be lacking.
-| `notfound` |404|The requested resource could not be found, but may be available in the future. Subsequent requests are permissible.
-| `systemerror` |500|A generic error message.
-| `configurationerror` |500|A error relating to configuration issues.
+| Type                  | Status | Description                                 |
+|:----------------------|:------:|:--------------------------------------------|
+| `inputerror`          | `400`  | The server cannot or will not process the request due to an apparent client error (e.g. malformed request syntax, size to large, invalid request).
+| `forbidden`           | `403`  | The request was valid, but the server is refusing the action. The necessary permissions to access the resource might be lacking.
+| `notfound`            | `404`  | The requested resource could not be found, but may be available in the future. Subsequent requests are permissible.
+| `systemerror`         | `500`  | A generic error message.
+| `configurationerror`  | `500`  | A error relating to configuration issues.
 
 ### Payment Instrument Specific Problems
 
 Problem types for a specific payment instrument will have a URI in the format `https://api.payex.com/psp/<payment-instrument>/<error-type>`. You can read more about the payment instrument specific problem messages below:
 
 * [Card Payments][card-payments-problems]
-* [**Invoice**][invoice-payments-problems]
-* [**Swish**][swish-payments-problems]
-* [**Vipps**][vipps-payments-problems]
+* [Invoice][invoice-payments-problems]
+* [Swish][swish-payments-problems]
+* [Vipps][vipps-payments-problems]
 
 ### Expansion
 
-The payment resource contain the ID of related sub-resources in its response properties. These sub-resources can be expanded inline by using the request parameter `expand`. This is an effective way to limit the number of necessary calls to the API, as you return several properties related to a Payment resource in a single request.
+The payment resource contain the ID of related sub-resources in its response
+properties. These sub-resources can be expanded inline by using the request
+parameter `expand`. This is an effective way to limit the number of necessary
+calls to the API, as you return several properties related to a Payment resource
+in a single request.
 
-Note that the `expand` parameter is available to all API requests but only applies to the request response. This means that you can use the expand parameter on a `POST`  or `PATCH`request to get a response containing the target resource including expanded properties.
+Note that the `expand` parameter is available to all API requests but only
+applies to the request response. This means that you can use the expand
+parameter on a `POST`  or `PATCH`request to get a response containing the target
+resource including expanded properties.
 
-This example below add the `urls` and `authorizations` property inlines to the response, enabling you to access information from these sub-resources.
+This example below add the `urls` and `authorizations` property inlines to the
+response, enabling you to access information from these sub-resources.
 
 {:.code-header}
 **Expansion**
 
 ```http
-GET /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c?$expand=urls,authorizations HTTP/1.1
+GET /psp/creditcard/payments/5adc265f?$expand=urls,authorizations HTTP/1.1
 Host: api.payex.com
 ```
 
 To avoid unnecessary overhead, you should only expand the nodes you need info
 about.
+
+## Payee Info
+
+{% include payeeinfo.md %}
 
 {% include iterator.html prev_href="summary" prev_title="Back: Summary" %}
 
