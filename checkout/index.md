@@ -169,4 +169,4 @@ both the integration and the payer.
                          next_title="Next: Implement Payment" %}
 
 [https]: /#connection-and-protocol
-[payment-order]: #
+[payment-order]: /checkout/payment#payment-orders
