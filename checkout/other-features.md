@@ -368,6 +368,10 @@ Content-Type: application/json
 
 {% include urls.md %}
 
+### Prices Resource
+
+{% include prices.md %}
+
 ### Payer Resource
 
 The `payer` resource contains payer information related to the payment order.
