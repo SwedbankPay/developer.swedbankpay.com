@@ -1,5 +1,5 @@
 ---
-title: Swedbank Pay Resources
+title: Test Data
 sidebar:
   navigation:
   - title: Resources
