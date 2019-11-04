@@ -1,4 +1,4 @@
-== Transactions ==
+## Transactions
 
 A payment contains sub-resources in the form of `transactions`. 
 Most operations performed on a payment ends up as a transaction. 
@@ -55,7 +55,7 @@ Content-Type: application/json
 | `transactions.transactionList` | `array` | The array of transaction objects.
 | `transactions.transactionList[]` | `object` | The transaction object (described in the `transaction` resource below).
 
-=== Transaction ===
+### Transaction
 
 The `transaction` resource contains the generic details of a 
 transaction on a specific payment. 

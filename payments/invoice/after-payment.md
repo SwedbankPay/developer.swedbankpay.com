@@ -483,9 +483,9 @@ sequenceDiagram
 
 ----------------------------------------------------------
 [see-the-PATCH-payment-description]: /payments/credit-card/after-payment
-[callback-request]: #
-[invoice-captures]: #
-[invoice-cancellations]: #
-[invoice-reversals]: #
+[callback-request]: /payments/invoice/other-features#callback
+[invoice-captures]: #captures
+[invoice-cancellations]: #cancellations
+[invoice-reversals]: #reversals
 [technical-reference-transaction]: #
 [technical-reference-payeeReference]: #
