@@ -1335,7 +1335,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-Required | Property| Data type| Description
+| Required | Property| Data type| Description
 | ✔︎︎︎︎︎ | `transaction.cardNumber` | `string` | Primary Account Number (PAN) of the card, printed on the face of the card.
 | ✔︎︎︎︎︎ | `transaction.cardExpiryMonth` | `integer` | Expiry month of the card, printed on the face of the card.
 | ✔︎︎︎︎︎ | `transaction.cardExpiryYear` | `integer` | Expiry year of the card, printed on the face of the card.
@@ -1346,16 +1346,172 @@ Required | Property| Data type| Description
 
 The [`authorization`][authorization-transaction] resource contains information about an authorization transaction made towards a payment, as previously described.
 
+## Callback
+
+The Callback  functionality is similar for all payment methods.
+
+* Setting a `callbackUrl` in the HTTP `POST` API is optional, but highly recommended. If a payer closes the browser window, a network error or something else happens that prevents the payer from being redirect from PayEx back to the merchant website, the callback is what ensures that you receive information about what happened with the payment.
+* When a change or update from the back-end system are made on a payment or transaction, PayEx will perform a callback to inform the payee (merchant) about this update.
+* PayEx will make an HTTP `POST` to the `callbackUrl` that was specified when the payee (merchant) created the payment.
+* When the `callbackUrl` receives such a callback, an HTTP `GET``` request must be made on the payment or on the transaction. The retrieved payment or transaction resource will give you the necessary information about the recent change/update.
+* The callback will be retried if it fails. Below are the retry timings, in milliseconds from the initial transaction time:
+  *. 30000 ms
+  *. 60000 ms
+  *. 360000 ms
+  *. 432000 ms
+  *. 864000 ms
+  *. 1265464 ms
+* The callback is sent from the following IP addresses: `82.115.146.1`
+
+{:.code-header}
+**Payment Instrument Callback**
+
+```js
+{
+   "payment": {
+       "id": "/psp/<payment instrument>/payments/22222222-2222-2222-2222-222222222222",
+       "number": 222222222
+    },
+   "transaction": {
+       "id": "/psp/<payment instrument>/payments/22222222-2222-2222-2222-222222222222/<transaction type>/33333333-3333-3333-3333-333333333333",
+       "number": 333333333
+    }
+}
+```
+
+{:.code-header}
+**Payment Order Callback**
+
+```js
+{
+    "paymentOrder":{
+        "id": "/psp/paymentorders/11111111-1111-1111-1111-111111111111",
+        "instrument": "<payment instrument>"
+    },
+    "payment":{
+        "id": "/psp/<payment instrument>/payments/22222222-2222-2222-2222-222222222222",
+        "number": 222222222
+    },
+    "transaction":{
+        "id": "/psp/<payment instrument>/payments/22222222-2222-2222-2222-222222222222/<transaction type>/33333333-3333-3333-3333-333333333333",
+        "number": 333333333
+    }
+}
+```
+
+{:.table .table-striped}
+| Parameter| Description
+| `Payment Instrument` | `CreditCard`, `Invoice`, `Swish`, `Vipps`, `DirectDebit`, `MobilePay`
+| `Transaction Type` | `Authorization`, `Capture`, `Cancellation`, `Reversal`
+
+The sequence diagram below shows the HTTP ``POST` you will receive from PayEx, and the two `GET` requests that you make to get the updated status.
+
+```mermaid
+sequenceDiagram
+Activate Merchant
+Activate PAYEX
+PAYEX->Merchant: POST <callbackUrl>
+note left of Merchant: Callback by PayEx
+Merchant-->PAYEX: HTTP response
+Deactivate PAYEX
+Deactivate Merchant
+
+Activate Merchant
+Activate PAYEX
+Merchant->PAYEX: GET <payment instrument> payment
+note left of Merchant: First API request
+Activate PAYEX
+PAYEX-->Merchant: payment resource
+Deactivate PAYEX
+Deactivate Merchant
+```
+
+## Problems
+
+When performing operations against the API, it will respond with a problem message that contain details of the error type if the request could not be successfully performed. Regardless of why the error occurred, the problem message will follow the same structure as specified in the [Problem Details for HTTP APIs][http-api-problems]] specification.
+
+The structure of a problem message will look like this:
+
+```js
+{
+    "type": "https://api.payex.com/psp/<error_type>",
+    "title": "There was an input error",
+    "detail": "Please correct the errors and retry the request",
+    "instance": "9a20d737-670d-42bf-9a9a-d36736de8721",
+    "status": 400,
+    "action": "RetryNewData",
+    "problems": [{
+        "name": "CreditCardParameters.Issuer",
+        "description": "minimum one issuer must be enabled "
+    }]
+}
+```
+
+{:.table .table-striped}
+| Parameter | Data type | Description
+| `type` | `string` | The URI that identifies the error type. This is the **only property usable for programmatic identification** of the type of error! When dereferenced, it might lead you to a human readable description of the error and how it can be recovered from.
+| `title` | `string` | The title contains a human readable description of the error.
+| `detail` | `string` | A detailed, human readable description of the error.
+| `instance` | `string` | The identifier of the error instance. This might be of use to PayEx support personnel in order to find the exact error and the context it occurred in.
+| `status` | `integer` | The HTTP status code that the problem was served with.
+| `action` | `string` | The `action` indicates how the error can be recovered from.
+| `problems` | `array` | The array of problem detail objects.
+| └➔&nbsp;`[].name` | `string` | The name of the property, header, object, entity or likewise that was erroneous.
+| └➔&nbsp;`[].description` | `string` | The description of what was wrong with the property, header, object, entity or likewise identified by `name`.
+
+### Common Problems
+
+All common problem types will have a URI in the format `https://api.payex.com/psp/<error-type>`. The **URI is an identifier** and is currently not possible to dereference, although that might be possible in the future.
+
+{:.table .table-striped}
+| **Type** | **Status** | **Notes**
+| `inputerror` |400|The server cannot or will not process the request due to an apparent client error (e.g. malformed request syntax, size to large, invalid request).
+| `forbidden` |403|The request was valid, but the server is refusing the action. The necessary permissions to access the resource might be lacking.
+| `notfound` |404|The requested resource could not be found, but may be available in the future. Subsequent requests are permissible.
+| `systemerror` |500|A generic error message.
+| `configurationerror` |500|A error relating to configuration issues.
+
+### Payment Instrument Specific Problems
+
+Problem types for a specific payment instrument will have a URI in the format `https://api.payex.com/psp/<payment-instrument>/<error-type>`. You can read more about the payment instrument specific problem messages below:
+
+* [Card Payments][card-payments-problems]
+* [**Invoice**][invoice-payments-problems]
+* [**Swish**][swish-payments-problems]
+* [**Vipps**][vipps-payments-problems]
+
+### Expansion
+
+The payment resource contain the ID of related sub-resources in its response properties. These sub-resources can be expanded inline by using the request parameter `expand`. This is an effective way to limit the number of necessary calls to the API, as you return several properties related to a Payment resource in a single request.
+
+Note that the `expand` parameter is available to all API requests but only applies to the request response. This means that you can use the expand parameter on a `POST`  or `PATCH`request to get a response containing the target resource including expanded properties.
+
+This example below add the `urls` and `authorizations` property inlines to the response, enabling you to access information from these sub-resources.
+
+{:.code-header}
+**Expansion**
+
+```http
+GET /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c?$expand=urls,authorizations HTTP/1.1
+Host: api.payex.com
+```
+
+To avoid unnecessary overhead, you should only expand the nodes you need info about.
+
+
 {% include iterator.html prev_href="summary" prev_title="Back: Summary" %}
 
 [abort]: #operations
 [authorization-transaction]: #authorizations
-[callback-reference]: /checkout/payment#payment-menu-back-end
+[callback-reference]: /checkout/other-features#callback
+[card-payments-problems]: /payments/credit-card/other-features#problem-messages
 [consumer-reference]: /checkout/other-features#payeereference
 [current-payment]: #current-payment-resource
-[expanding]: #
+[expanding]: #expansion
+[http-api-problems]: https://tools.ietf.org/html/rfc7807
 [image_disabled_payment_menu]: /assets/img/checkout/test_purchase.PNG
 [image_enabled_payment_menu]: /assets/img/checkout/payment_menu.PNG
+[invoice-payments-problems]: /payments/invoice/other-features#problem-messages
 [order-items]: /checkout/payment#order-items
 [payee-reference]: /checkout/other-features#payeereference
 [payment-menu]: /checkout/payment#payment-menu
@@ -1367,6 +1523,8 @@ The [`authorization`][authorization-transaction] resource contains information a
 [payment-resource-urls]: #urls-resource
 [payment-resource]: #payments-resource
 [pci-dss]: https://www.pcisecuritystandards.org/
+[swish-payments-problems]: /payments/swish/other-features#problem-messages
 [update-order]: /checkout/after-payment#update-order
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
 [verification-transaction]: #verify-payment-orders
+[vipps-payments-problems]: /payments/vipps/other-features#problem-messages

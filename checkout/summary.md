@@ -75,6 +75,6 @@ integration validation procedure.
                          next_href="other-features"
                          next_title="Next: Other Features" %}
 
-[guest-payments]: #
-[problems]: #
-[callback]: #
+[guest-payments]: /checkout/payment#checkin-back-end
+[problems]: /checkout/other-features#problems
+[callback]: /checkout/other-features#callback

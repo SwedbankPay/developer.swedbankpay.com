@@ -749,21 +749,20 @@ The `items` property of the `paymentOrder` is an array containing items that wil
                          next_href="after-payment"
                          next_title="Next: After Payment" %}
 
-[payment-menu-image]: /assets/img/checkout/payment_methods.png
-[checkin-image]: /assets/img/checkout/your_information.png
 [capture-operation]: /checkout/after-payment#capture
-[consumer-reference]: #
+[checkin-image]: /assets/img/checkout/your_information.png
+[consumer-reference]: /checkout/other-features#payeereference
 [initiate-consumer-session]: /checkout/payment#checkin-back-end
 [msisdn]: https://en.wikipedia.org/wiki/MSISDN
-[operations]: #
-[order-items]: #
+[operations]: /checkout/other-features#operations
+[order-items]: #order-items
 [payee-reference]: /checkout/other-features#payeereference
-[payment-menu]: #
-[payment-order-capture]: #
-[payment-order-operations]: #
-[payment-order]: #
+[payment-menu-image]: /assets/img/checkout/payment_methods.png
+[payment-menu]: #payment-menu
+[payment-order-capture]: /checkout/after-payment#capture
+[payment-order-operations]: /checkout/after-payment#operations
+[payment-order]: #payment-orders
 [paymentorder-items]: #items
 [technical-reference-onconsumer-identified]: /checkout/payment#payment-menu-front-end
-[urls]: #
+[urls]: /checkout/other-features#urls-resource
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
-[view-consumer-identification]: #
