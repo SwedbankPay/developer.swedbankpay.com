@@ -28,7 +28,7 @@ sidebar:
 
 *   **Abort:** It is possible to abort the process, 
     if the payment has no successful transactions. 
-    [See the PATCH payment description][see-the-PATCH-payment-description].
+    [See the PATCH payment description][payment-description].
 *   You must always follow up an Invoice Authorization with a 
     Capture or Cancel request.
 *   For reversals, you will need to implement the Reversal request.
@@ -482,10 +482,9 @@ sequenceDiagram
 
 
 ----------------------------------------------------------
-[see-the-PATCH-payment-description]: /payments/credit-card/after-payment
+[payment-description]: /payments/credit-card/after-payment
 [callback-request]: /payments/invoice/other-features#callback
 [invoice-captures]: #captures
 [invoice-cancellations]: #cancellations
 [invoice-reversals]: #reversals
-[technical-reference-transaction]: #
-[technical-reference-payeeReference]: #
+[technical-reference-transaction]: /payments/invoice/other-features#transactions

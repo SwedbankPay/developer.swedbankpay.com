@@ -502,7 +502,7 @@ Content-Type: application/json
 [payment-order-abort]: #
 [payment-order-update]: #
 [payment-menu-front-end]: #
-[user-agent]: (https://en.wikipedia.org/wiki/User_agent)
+[user-agent]: https://en.wikipedia.org/wiki/User_agent
 [operations]: #operations
 [payment-order-items]: #
 [transaction-resource]: #

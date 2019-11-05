@@ -41,7 +41,7 @@ set to Value FinancingConsumer are listed below.
 *   An invoice payment is always two-phased based -  you create an Authorize 
     transaction, that is followed by a Capture or Cancel request.
 *   **Defining CallbackURL**: When implementing a scenario, it is optional 
-    to set a [CallbackURL][callback-url] in the `POST` request. 
+    to set a [CallbackURL][callback-api] in the `POST` request. 
     If callbackURL is set PayEx will send a postback request to this URL when 
     the consumer has fulfilled the payment. 
     [See the Callback API description here.][callback-api]
@@ -69,41 +69,45 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/invoice/payments/<payments-id>",
-    "authorizations": {
-        "id": "/psp/invoice/payments/<payments-id>/authorizations",
-        "authorizationList": [{
-            "id": "/psp/invoice/payments/<payments-id>/authorizations/<transaction-id>",
-            "consumer": {
-                "id": "/psp/invoice/payments/<payments-id>/consumer"
-            },
-            "legalAddress": {
-                "id": "/psp/invoice/payments/<payments-id>/legaladdress"
-            },
-            "billingAddress": {
-                "id": "/psp/invoice/payments/<payments-id>/billingaddress"
-            },
-            "transaction": {
-                "id": "/psp/invoice/payments/<payments-id>/transactions/<transaction-id>",
-                "created": "2016-09-14T01:01:01.01Z",
-                "updated": "2016-09-14T01:01:01.03Z",
-                "type": "Authorization",
-                "state": "Initialized|Completed|Failed",
-                "number": 1234567890,
-                "amount": 1000,
-                "vatAmount": 250,
-                "description": "Test transaction",
-                "payeeReference": "AH123456",
-                "failedReason": "",
-                "isOperational": false,
-                "operations": [{
-                    "href": "https://api.payex.com/psp/invoice/payments/<payments-id>",
-                    "rel": "edit-authorization",
-                    "method": "PATCH"
-                }]
+  "payment": "/psp/invoice/payments/<payments-id>",
+  "authorizations": {
+    "id": "/psp/invoice/payments/<payments-id>/authorizations",
+    "authorizationList": [
+      {
+        "id": "/psp/invoice/payments/<payments-id>/authorizations/<transaction-id>",
+        "consumer": {
+          "id": "/psp/invoice/payments/<payments-id>/consumer"
+        },
+        "legalAddress": {
+          "id": "/psp/invoice/payments/<payments-id>/legaladdress"
+        },
+        "billingAddress": {
+          "id": "/psp/invoice/payments/<payments-id>/billingaddress"
+        },
+        "transaction": {
+          "id": "/psp/invoice/payments/<payments-id>/transactions/<transaction-id>",
+          "created": "2016-09-14T01:01:01.01Z",
+          "updated": "2016-09-14T01:01:01.03Z",
+          "type": "Authorization",
+          "state": "Initialized|Completed|Failed",
+          "number": 1234567890,
+          "amount": 1000,
+          "vatAmount": 250,
+          "description": "Test transaction",
+          "payeeReference": "AH123456",
+          "failedReason": "",
+          "isOperational": false,
+          "operations": [
+            {
+              "href": "https://api.payex.com/psp/invoice/payments/<payments-id>",
+              "rel": "edit-authorization",
+              "method": "PATCH"
             }
-        }]
-    }
+          ]
+        }
+      }
+    ]
+  }
 }
 ```
 
@@ -122,33 +126,33 @@ Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 
 {
-    "transaction": {
-        "activity": "FinancingConsumer"
-    },
-    "consumer": {
-        "socialSecurityNumber": "socialSecurityNumber",
-        "customerNumber": "customerNumber",
-        "name": "consumer name",
-        "email": "email",
-        "msisdn": "msisdn",
-        "ip": "consumer ip address"
-    },
-    "legalAddress": {
-        "addressee": "firstName + lastName",
-        "coAddress": "coAddress",
-        "streetAddress": "streetAddress",
-        "zipCode": "zipCode",
-        "city": "city",
-        "countryCode": "countryCode"
-    },
-    "billingAddress": {
-        "addressee": "firstName + lastName",
-        "coAddress": "coAddress",
-        "streetAddress": "streetAddress",
-        "zipCode": "zipCode",
-        "city": "city",
-        "countryCode": "countryCode"
-    }
+  "transaction": {
+    "activity": "FinancingConsumer"
+  },
+  "consumer": {
+    "socialSecurityNumber": "socialSecurityNumber",
+    "customerNumber": "customerNumber",
+    "name": "consumer name",
+    "email": "email",
+    "msisdn": "msisdn",
+    "ip": "consumer ip address"
+  },
+  "legalAddress": {
+    "addressee": "firstName + lastName",
+    "coAddress": "coAddress",
+    "streetAddress": "streetAddress",
+    "zipCode": "zipCode",
+    "city": "city",
+    "countryCode": "countryCode"
+  },
+  "billingAddress": {
+    "addressee": "firstName + lastName",
+    "coAddress": "coAddress",
+    "streetAddress": "streetAddress",
+    "zipCode": "zipCode",
+    "city": "city",
+    "countryCode": "countryCode"
+  }
 }
 ```
 
@@ -190,38 +194,40 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/invoice/payments/<payments-id>",
-    "authorization": {
-        "id": "/psp/invoice/payments/<payments-id>/authorizations/<transaction-id>",
-        "consumer": {
-            "id": "/psp/invoice/payments/<payments-id>/consumer"
-        },
-        "legalAddress": {
-            "id": "/psp/invoice/payments/<payments-id>/legaladdress"
-        },
-        "billingAddress": {
-            "id": "/psp/invoice/payments/<payments-id>/billingaddress"
-        },
-        "transaction": {
-            "id": "/psp/invoice/payments/<payments-id>/transactions/<transaction-id>",
-            "created": "2016-09-14T01:01:01.01Z",
-            "updated": "2016-09-14T01:01:01.03Z",
-            "type": "Authorization",
-            "state": "Initialized|Completed|Failed",
-            "number": 1234567890,
-            "amount": 1000,
-            "vatAmount": 250,
-            "description": "Test transaction",
-            "payeeReference": "AH123456",
-            "failedReason": "",
-            "isOperational": "TRUE|FALSE",
-            "operations": [{
-                "href": "https://api.payex.com/psp/invoice/payments/<payments-id>"
-                "rel": "edit-authorization",
-                "method": "PATCH"
-            }]
+  "payment": "/psp/invoice/payments/<payments-id>",
+  "authorization": {
+    "id": "/psp/invoice/payments/<payments-id>/authorizations/<transaction-id>",
+    "consumer": {
+      "id": "/psp/invoice/payments/<payments-id>/consumer"
+    },
+    "legalAddress": {
+      "id": "/psp/invoice/payments/<payments-id>/legaladdress"
+    },
+    "billingAddress": {
+      "id": "/psp/invoice/payments/<payments-id>/billingaddress"
+    },
+    "transaction": {
+      "id": "/psp/invoice/payments/<payments-id>/transactions/<transaction-id>",
+      "created": "2016-09-14T01:01:01.01Z",
+      "updated": "2016-09-14T01:01:01.03Z",
+      "type": "Authorization",
+      "state": "Initialized|Completed|Failed",
+      "number": 1234567890,
+      "amount": 1000,
+      "vatAmount": 250,
+      "description": "Test transaction",
+      "payeeReference": "AH123456",
+      "failedReason": "",
+      "isOperational": "TRUE|FALSE",
+      "operations": [
+        {
+          "href": "https://api.payex.com/psp/invoice/payments/<payments-id>",
+          "rel": "edit-authorization",
+          "method": "PATCH"
         }
+      ]
     }
+  }
 }
 ```
 
@@ -259,7 +265,6 @@ All invoice error types will have the following URI in front of type:
 
 {% include operations-reference.md %}
 
-[callback-api]: #callback
-[callback-url]: #callback
 [fi-png]: /assets/img/fi.png
+[callback-api]: #callback
 [invoice-flow]: /payments/invoice/index/#invoice-flow
