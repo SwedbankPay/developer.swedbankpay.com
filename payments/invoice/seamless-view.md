@@ -67,7 +67,7 @@ to Value FinancingConsumer are listed below.
 | *InvoiceType* |	PayExFinancingSE |	PayExFinancingNO |	PayExFinancingFI |
 
 *   An invoice payment is always two-phased based - you create an 
-    `Authorize` transaction, that is followed by a Capture or Cancel request.
+    [`Authorize`][authorize] transaction, that is followed by a [`Capture`][capture] or [`Cancel`][cancel] request.
 *   **Defining CallbackURL**: When implementing a scenario, it is optional 
     to set a [CallbackURL][callback-api]in the `POST` request. 
     If callbackURL is set PayEx will send a postback request to this URL when 
@@ -113,8 +113,14 @@ sequenceDiagram
     deactivate Merchant
 ```
 
+{% include iterator.html prev_href="./" prev_title="Back: Introduction" 
+next_href="after-payment" next_title="Next: After Payment" %}
+
 [callback-api]: /payments/invoice/other-features#callback
 [fi-png]: /assets/img/fi.png
 [no-png]: /assets/img/no.png
 [se-png]: /assets/img/se.png
 [setup-mail]: mailto:setup.ecom@PayEx.com
+[authorize]: /payments/invoice/other-features#authorizations
+[capture]: /payments/invoice/after-payment#captures
+[cancel]: /payments/invoice/after-payment#cancellations

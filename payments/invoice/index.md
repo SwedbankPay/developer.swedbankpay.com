@@ -145,7 +145,7 @@ to Value FinancingConsumer are listed below.
 *   An invoice payment is always two-phased based - you create an Authorize 
     transaction, that is followed by a Capture or Cancel request.
 *   **Defining CallbackURL**: When implementing a scenario, it is optional to 
-    set a [CallbackURL][callback-url] in the `POST` request. If `callbackURL` 
+    set a [CallbackURL][callback-api] in the `POST` request. If `callbackURL` 
     is set PayEx will send a postback request to this URL when the consumer 
     has fulfilled the payment.
 
@@ -186,68 +186,6 @@ sequenceDiagram
     Deactivate Merchant
 ```
 
-### Options after posting a payment
-
-*   **Abort:** It is possible to abort the process, if the payment has no 
-    successful transactions. [See the PATCH payment description][see-the-PATCH-payment-description].
-*   You must always follow up an Invoice Authorization with a Capture or 
-    Cancel request.
-*   For reversals, you will need to implement the Reversal request.
-*   **If CallbackURL is set:** Whenever changes to the payment occur a 
-    [Callback request][callback-request] will be posted to the 
-    [CallbackURL][callback-url], which was generated when the payment 
-    was created.
-
-#### Capture Sequence
-
-[Capture][capture] can only be done on a successfully authorized transaction. 
-It is possible to do a part-capture where you only capture a part of the 
-authorization amount. 
-You can later do more captures on the same payment up to the total 
-authorization amount.
-
-```mermaid
-sequenceDiagram
-    Merchant->>PayEx: Post [Invoice captures][invoice-captures]
-    Activate Merchant
-    Activate PayEx
-    PayEx->>Merchant: transaction resource
-    Deactivate Merchant 
-    Deactivate PayEx
-```
-
-#### Cancel Sequence
-
-[Cancel][cancel] can only be done on a successfully authorized transaction, 
-not yet captured. 
-If you do cancel after doing a part-capture you will cancel the not yet 
-captured amount only.
-
-
-```mermaid
-sequenceDiagram
-    Merchant->>PayEx: Post [Invoice cancellations][invoice-cancellations]
-    Activate Merchant
-    Activate PayEx
-    Deactivate Merchant 
-    Deactivate PayEx
-```
-
-#### Reversal Sequence
-
-[Reversal][reversals] can only be done on an captured transaction where there 
-are some captured amount not yet reversed.
-
-```mermaid
-sequenceDiagram
-    Merchant->>PayEx: Post [Invoice reversals][invoice-reversals]
-    Activate Merchant
-    Activate PayEx
-    PayEx->>Merchant: transaction resource
-    Deactivate Merchant 
-    Deactivate PayEx
-```
-
 ## Financing Invoice Payment Pages
 
 >PayEx Invoice (PayEx Faktura) is a payment service where PayEx helps improve 
@@ -282,9 +220,9 @@ set to Value FinancingConsumer are listed below.
 
 ### Screenshots
 
-![financing-invoice-1][financing-invoice-1-png]
+![financing-invoice-1][financing-invoice-1-png]{:width="444" :height="506"}
 
-![financing-invoice-2][financing-invoice-2-png]
+![financing-invoice-2][financing-invoice-2-png]{:width="447" :height="641"}
 
 #### Options before posting a payment
 
@@ -302,7 +240,7 @@ for [financing consumer][technical-reference-financing-consumer].
 *   An invoice payment is always two-phased based - you create an Authorize 
     transaction, that is followed by a Capture or Cancel request.
 *   **Defining CallbackURL**: When implementing a scenario, it is optional 
-    to set a [CallbackURL ][callback-url]in the `POST` request. 
+    to set a [CallbackURL ][callback-api]in the `POST` request. 
     If callbackURL is set PayEx will send a postback request to this URL when 
     the consumer has fulfilled the payment. 
     [See the Callback API description here.][callback-api]
@@ -338,25 +276,13 @@ sequenceDiagram
 
 ---------------------------------------------------------------
 
-[financing-invoice-1-png]: \assets\img\financing-invoice-1.png
-[financing-invoice-2-png]: \assets\img\financing-invoice-2.png
-[approved-legal-address]: #
-[callback-api]: #
-[callback-request]: #
-[callback-url]: #
-[cancel]:#
-[capture]: #
 [fi-png]: /assets/img/fi.png
+[financing-invoice-1-png]: /assets/img/checkout/test_purchase.PNG
+[financing-invoice-2-png]: /assets/Screenshots/Invoice/redirect view/iFrame verify data.PNG
+[no-png]: /assets/img/no.png
+[se-png]: /assets/img/se.png
+[callback-api]: /payments/invoice/other-features#callback
 [hosted-view]: /payments/#hosted-view-implementation
-[invoice-cancellations]: #
-[invoice-captures]: #
-[invoice-payments]: #
-[invoice-reversals]: #
-[no-png]: \assets\img\no.png
 [optional-features]: /payments/invoice/optional-features
-[redirect]: #
-[reversals]: #
-[se-png]: \assets\img\se.png
-[see-the-PATCH-payment-description]: /payments/credit-card/after-payment
+[redirect]: /payments/invoice/redirect
 [setup-mail]: mailto:setup.ecom@PayEx.com
-[technical-reference]: #
