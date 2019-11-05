@@ -46,6 +46,184 @@ set to Value FinancingConsumer are listed below.
     the consumer has fulfilled the payment. 
     [See the Callback API description here.][callback-api]
 
+### Authorizations
+
+The `authorizations` resource will list the authorization transactions 
+made on a specific payment.
+
+{:.code-header}
+**Request**
+
+```http
+GET /psp/invoice/payments/<payments-id>/authorizations HTTP/1.1
+Host: api.payex.com
+Authorization: Bearer <MerchantToken>
+Content-Type: application/json
+```
+
+{:.code-header}
+**Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "payment": "/psp/invoice/payments/<payments-id>",
+    "authorizations": {
+        "id": "/psp/invoice/payments/<payments-id>/authorizations",
+        "authorizationList": [{
+            "id": "/psp/invoice/payments/<payments-id>/authorizations/<transaction-id>",
+            "consumer": {
+                "id": "/psp/invoice/payments/<payments-id>/consumer"
+            },
+            "legalAddress": {
+                "id": "/psp/invoice/payments/<payments-id>/legaladdress"
+            },
+            "billingAddress": {
+                "id": "/psp/invoice/payments/<payments-id>/billingaddress"
+            },
+            "transaction": {
+                "id": "/psp/invoice/payments/<payments-id>/transactions/<transaction-id>",
+                "created": "2016-09-14T01:01:01.01Z",
+                "updated": "2016-09-14T01:01:01.03Z",
+                "type": "Authorization",
+                "state": "Initialized|Completed|Failed",
+                "number": 1234567890,
+                "amount": 1000,
+                "vatAmount": 250,
+                "description": "Test transaction",
+                "payeeReference": "AH123456",
+                "failedReason": "",
+                "isOperational": false,
+                "operations": [{
+                    "href": "https://api.payex.com/psp/invoice/payments/<payments-id>",
+                    "rel": "edit-authorization",
+                    "method": "PATCH"
+                }]
+            }
+        }]
+    }
+}
+```
+
+#### Create Authorization transaction
+
+To create an `authorization` transaction, perform the `create-authorization` 
+operation as returned in a previously created invoice payment.
+
+{:.code-header}
+**Request**
+
+```http
+POST /psp/invoice/payments/<payments-id>/authorizations HTTP/1.1
+Host: api.payex.com
+Authorization: Bearer <MerchantToken>
+Content-Type: application/json
+
+{
+    "transaction": {
+        "activity": "FinancingConsumer"
+    },
+    "consumer": {
+        "socialSecurityNumber": "socialSecurityNumber",
+        "customerNumber": "customerNumber",
+        "name": "consumer name",
+        "email": "email",
+        "msisdn": "msisdn",
+        "ip": "consumer ip address"
+    },
+    "legalAddress": {
+        "addressee": "firstName + lastName",
+        "coAddress": "coAddress",
+        "streetAddress": "streetAddress",
+        "zipCode": "zipCode",
+        "city": "city",
+        "countryCode": "countryCode"
+    },
+    "billingAddress": {
+        "addressee": "firstName + lastName",
+        "coAddress": "coAddress",
+        "streetAddress": "streetAddress",
+        "zipCode": "zipCode",
+        "city": "city",
+        "countryCode": "countryCode"
+    }
+}
+```
+
+{:.table .table-striped}
+| **Required** | **Property** | **Data type** | **Description** 
+| ✔︎︎︎︎︎ | `transaction.activity` | `string` |`FinancingConsumer`
+| ✔︎︎︎︎︎ | `consumer.socialSecurityNumber` | `string` | The social security number (national identity number) of the consumer. Format Sweden: `YYMMDD-NNNN`. Format Norway: `DDMMYYNNNNN`.
+| | `consumer.customerNumber` | `string` | The customer number in the merchant system.
+| | `consumer.email` | `string` | The e-mail address of the consumer.
+| ✔︎︎︎︎︎ | `consumer.msisdn` | `string` | The mobile phone number of the consumer. Format Sweden: `+46707777777`. Format Norway: `+4799999999`.
+| ✔︎︎︎︎︎ | `consumer.ip` | `string` | The IP address of the consumer.
+| ✔︎︎︎︎︎ | `legalAddress.addressee` | `string` | The full (first and last) name of the consumer.
+| | `legalAddress.coAddress` | `string` | The CO-address (if used)
+| | `legalAddress.streetAddress` | `string` | The street address of the consumer.
+| ✔︎︎︎︎︎ | `legalAddress.zipCode` | `string` | The postal code (ZIP code) of the consumer.
+| ✔︎︎︎︎︎ | `legalAddress.city` | `string` | The city to the consumer.
+| ✔︎︎︎︎︎ | `legalAddress.countryCode` | `string` | `SE` or `NO`. The country code of the consumer.
+
+{:.table .table-striped}
+| **Required** | **Property** | **Data type** | **Description** 
+| ✔︎︎︎︎︎ | `billingAddress.addressee` | `string` | The "firstName + lastName" to the consumer.
+| | `billingAddress.coAddress` | `string` | The CO-address (if used)
+| ✔︎︎︎︎︎ | `billingAddress.streetAddress` | `string` | The street address to the consumer.
+| ✔︎︎︎︎︎ | `billingAddress.zipCode` | `string` | The postal number (ZIP code) to the consumer.
+| ✔︎︎︎︎︎ | `billingAddress.city` | `string` | The city to the consumer.
+| ✔︎︎︎︎︎ | `billingAddress.countryCode` | `string` | `SE` or `NO`.
+
+_Note: The legal address must be the registered address of the consumer._
+
+
+The `authorization` resource will be returned, containing information about 
+the newly created authorization transaction.
+
+{:.code-header}
+**Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "payment": "/psp/invoice/payments/<payments-id>",
+    "authorization": {
+        "id": "/psp/invoice/payments/<payments-id>/authorizations/<transaction-id>",
+        "consumer": {
+            "id": "/psp/invoice/payments/<payments-id>/consumer"
+        },
+        "legalAddress": {
+            "id": "/psp/invoice/payments/<payments-id>/legaladdress"
+        },
+        "billingAddress": {
+            "id": "/psp/invoice/payments/<payments-id>/billingaddress"
+        },
+        "transaction": {
+            "id": "/psp/invoice/payments/<payments-id>/transactions/<transaction-id>",
+            "created": "2016-09-14T01:01:01.01Z",
+            "updated": "2016-09-14T01:01:01.03Z",
+            "type": "Authorization",
+            "state": "Initialized|Completed|Failed",
+            "number": 1234567890,
+            "amount": 1000,
+            "vatAmount": 250,
+            "description": "Test transaction",
+            "payeeReference": "AH123456",
+            "failedReason": "",
+            "isOperational": "TRUE|FALSE",
+            "operations": [{
+                "href": "https://api.payex.com/psp/invoice/payments/<payments-id>"
+                "rel": "edit-authorization",
+                "method": "PATCH"
+            }]
+        }
+    }
+}
+```
 
 ### Problem messages
 
