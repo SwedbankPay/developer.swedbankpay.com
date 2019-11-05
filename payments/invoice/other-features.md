@@ -261,10 +261,17 @@ All invoice error types will have the following URI in front of type:
 
 {% include callback-reference.md %}
 
+## Payment Orders
+
+{% include payment-order-get.md %}
+
 {% include transactions-reference.md %}
 
 {% include operations-reference.md %}
 
+{% include payeeinfo.md %}
+
 [fi-png]: /assets/img/fi.png
 [callback-api]: #callback
 [invoice-flow]: /payments/invoice/index/#invoice-flow
+[payment-order]: #payment-orders
