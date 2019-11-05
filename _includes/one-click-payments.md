@@ -7,11 +7,11 @@ these details for every purchase." %}
 
 ### Introduction
 
-The main purchase flow and implementation is exactly the same as described in
-the [Redirect][redirect] and [Hosted View][hosted-view] scenarios for
-[credit card][card] and [financing invoice][invoice] payments, the difference
-being the use of a `paymentToken`. The details in this section describe
-explicitly the parameters that must be set to enable one-click purchases.
+For [credit card][card] and [financing invoice][invoice] payments the
+payment flow and implementation varies from your default only being the
+use of a `paymentToken`. 
+The details in this section describe explicitly the parameters that must 
+be set to enable one-click purchases.
 
 ### Payment Url
 
@@ -42,8 +42,8 @@ for [credit card][card] and [financing invoice][invoice]. When making the first
 `paymentToken` you received in the initial purchase, where you specified the
 `generatePaymentToken` to `true`.
 
-See the technical reference, for how to create a [card][technical-reference]
-and [invoice][technical-reference] payment.
+See the technical reference, for how to create a [card][create-card-payment]
+and [invoice][create-invoice-payment] payment.
 
 {:.code-header}
 **Request**
@@ -90,8 +90,8 @@ Content-Type: application/json
 }
 ```
 
-When redirecting to Swedbank Pay (as specified in [the Redirect scenario][redirect])
-the payment page will be prefilled with the payer's card details.
+_When redirecting to Swedbank Pay the payment page will be 
+prefilled with the payer's card details._
 
 ### Screenshots
 
@@ -99,13 +99,51 @@ the payment page will be prefilled with the payer's card details.
 
 ### Delete payment token
 
-Please see [Delete payment token][delete-payment-token]
+If you, for any reason, need to delete a `paymentToken` 
+you use the `Delete payment token` request.
 
-[redirect]: #
-[hosted-view]: #
-[card]: #
-[invoice]: #
-[credit-card-api]: #
-[technical-reference]: #
+{:.code-header}
+**Request**
+
+```http
+PATCH /psp/creditcard/payments/instrumentData/<paymentToken> HTTP/1.1
+Host: api.payex.com
+Authorization: Bearer <MerchantToken>
+Content-Type: application/json
+
+{
+  "state": "Deleted", 
+  "tokenType" : "PaymentToken|RecurrenceToken",
+  "comment": "Comment on why the deletion is happening"
+}
+```
+
+{:.code-header}
+**Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "instrumentData": {
+    "id": "/psp/creditcard/payments/instrumentdata/12345678-1234-1234-1234-123456789000",
+    "paymentToken": "12345678-1234-1234-1234-123456789000",
+    "payeeId": "61c65499-de5c-454e-bf4c-043f22538d49",
+    "isDeleted": true|false,
+    "isPayeeToken": false,
+    "cardBrand": "Visa|MasterCard|...",
+    "maskedPan": "123456xxxxxx1111",
+    "expiryDate": "MM/YYYY"
+  }
+}
+```
+
+-----------------------------
+[card]: /payments/credit-card/
+[invoice]: /payments/invoice/
+[credit-card-api]: /payments/credit-card/
 [one-click-image]: /assets/img/checkout/one_click.png
-[delete-payment-token]: #
+[delete-payment-token]: #delete-payment-token
+[create-card-payment]: /payments/credit-card/
+[create-invoice-payment]: /payments/invoice/

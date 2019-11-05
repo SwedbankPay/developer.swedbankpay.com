@@ -170,17 +170,16 @@ deactivate PayEx
 deactivate Merchant
 ```
 
-[test_purchase]: /assets/img/checkout/test_purchase.png
-[payment-pages-redirect-implementation]: #
-[payment-instruments-card-payment-pages]: #
-[payment-instruments-mobilepay-payment-pages]: #
-[technical-reference-finalize]: #
-[swish]: /payments/swish
-[vipps]: /payments/vipps
+[abort]: #abort
 [credit-card]: /payments/credit-card
 [mobile-pay]: /payments/mobile-pay
-[technical-reference-callback]: #
-[technical-reference-callbackurl]: #
-[technical-reference]: #
-[purchase-flow]: #
-[abort]: #
+[payment-instruments-card-payment-pages]: /payments/credit-card/
+[payment-instruments-mobilepay-payment-pages]: /payments/mobile-pay/
+[purchase-flow]: ../#purchase-flow
+[swish]: /payments/swish
+[technical-reference-callback]: #callback
+[technical-reference-callbackurl]: #callback
+[technical-reference-finalize]: ../after-payment
+[technical-reference]: #operations
+[test_purchase]: /assets/img/checkout/test_purchase.png
+[vipps]: /payments/vipps
