@@ -30,7 +30,7 @@ The licensing of PayEx’ open source software should be one approved by the [Op
 ```http
 The MIT License (MIT)
 
-Copyright (c) 2019 PayEx and Project Contributors
+Copyright (c) 2019 Swedbank Pay and Project Contributors
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the 'Software'),

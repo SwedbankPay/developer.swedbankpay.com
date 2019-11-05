@@ -6,7 +6,7 @@ generated subsequent payments is made through server-to-server requests. " %}
 
 ### Prerequisites
 
-Prior to making any server-to-server requests, you need to supply the payment instrument details and a payment token to PayEx by initial purchase or [card verification][payment-verify].
+Prior to making any server-to-server requests, you need to supply the payment instrument details and a payment token to Swedbank Pay by initial purchase or [card verification][payment-verify].
 
 There are two ways to initiate recurring payments procedures, depending on if you want to make an initial charge or not:
 
@@ -59,7 +59,7 @@ You have the following options after a server-to-server Recur payment `POST`.
 
 ##### General 
 
-* **Defining CallbackURL**: When implementing a scenario, it is optional to set a [`CallbackURL`][technical-reference-callbackurl]  in the `POST` request. If callbackURL is set PayEx will send a postback request to this URL when the consumer has fulfilled the payment. [See the Callback API description here][technical-reference-callback].
+* **Defining CallbackURL**: When implementing a scenario, it is optional to set a [`CallbackURL`][technical-reference-callbackurl]  in the `POST` request. If callbackURL is set Swedbank Pay will send a postback request to this URL when the consumer has fulfilled the payment. [See the Callback API description here][technical-reference-callback].
 
 [payment-verify]: #
 [card-payment-purchase]: #

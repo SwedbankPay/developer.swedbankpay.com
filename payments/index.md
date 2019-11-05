@@ -35,7 +35,7 @@ sidebar:
 A two-phase payment is managed in two steps - first reserving funds that will be captured in the next step. The most common payment instrument using two-phase payments is card payments.
 
 + [Creating a payment object](#creating-a-payment-object).  
-The payment is the container object that holds all transactions that will be created during the payment process.  When PayEx receives the payment request body (in JSON format), a payment  is created and you will be given a unique paymentID in return. The response also include  (in a true RESTful way) the URIs to possible further actions, given the state of the payment.
+The payment is the container object that holds all transactions that will be created during the payment process.  When Swedbank Pay receives the payment request body (in JSON format), a payment  is created and you will be given a unique paymentID in return. The response also include  (in a true RESTful way) the URIs to possible further actions, given the state of the payment.
 + Authorize funds.  
   An authorization transaction reserves the funds necessary funds . It is possible to abort a payment before the end user has fulfilled the payment process.  
 And either:  
@@ -57,16 +57,16 @@ If you use a one-phase method (like Direct Bank Debit or [Swish](/payments/swish
 >Add image
 
 ### Creating a payment object
-The `payment` is the container object that holds all transactions that will be created during the payment process. When PayEx receives the payment request body (in JSON format), a payment  is created and you will be given a unique paymentID in return. The response also include  (in a true RESTful way) the URIs to possible further actions, given the state of the payment. It is possible to abort a payment before the end user has fulfilled the payment process.
+The `payment` is the container object that holds all transactions that will be created during the payment process. When Swedbank Pay receives the payment request body (in JSON format), a payment  is created and you will be given a unique paymentID in return. The response also include  (in a true RESTful way) the URIs to possible further actions, given the state of the payment. It is possible to abort a payment before the end user has fulfilled the payment process.
 Settle funds directly with a Sales transaction.  
 
->Pick and choose between the payment methods best suited for your business. Take advantage of our easy-to-use PCI compliant platforms Redirect and PayEx Hosted View - or use PayEx Direct API to integrate directly. Our payment methods and their platform availability are listed in the table below.
+>Pick and choose between the payment methods best suited for your business. Take advantage of our easy-to-use PCI compliant platforms Redirect and Swedbank Pay Hosted View - or use Swedbank Pay Direct API to integrate directly. Our payment methods and their platform availability are listed in the table below.
 
 {:.table .table-striped}
 |  | Payment method | Hosted View | Redirect | Direct API | Region |
 | CardIcon | [Credit card](payment/credit-card/) | ✔︎︎︎︎︎ | ✔︎︎︎︎︎ | ✔︎︎︎︎︎ | EarthIcon |
-| InvoiceIcon | [PayEx Invoice](payment/invoice/) | ✔︎︎︎︎︎ | ✔︎︎︎︎︎ | ✔︎︎︎︎︎ | NordicCountries |
-| EnvelopeIcon | [PayEx Web Invoice](payment/credit-account) | ✔︎︎︎︎︎ | ✔︎︎︎︎︎ | ✔︎ ︎| SwedenNorway|
+| InvoiceIcon | [Swedbank Pay Invoice](payment/invoice/) | ✔︎︎︎︎︎ | ✔︎︎︎︎︎ | ✔︎︎︎︎︎ | NordicCountries |
+| EnvelopeIcon | [Swedbank Pay Web Invoice](payment/credit-account) | ✔︎︎︎︎︎ | ✔︎︎︎︎︎ | ✔︎ ︎| SwedenNorway|
 | KeypadIcon | [Direct Debit](payment/direct-debit)| X | ✔︎︎︎︎︎ | | BalticNordic |
 | Vipps | [Vipps](payment/vipps) | ✔︎︎︎︎︎ | ✔︎︎︎︎︎ | | Norway |
 | Swish | [Swish](payments/swish) | ✔︎︎︎︎︎ | ✔︎︎︎︎︎ | ✔︎︎︎︎︎  ︎| Sweden |
@@ -74,8 +74,8 @@ Settle funds directly with a Sales transaction.
 
 >Add image
 
-## PayEx Payment Instruments Platforms
-PayEx Hosted view and Redirect offer easy-to-use PCI compliant platforms, available from both web and mobile browsers. Either let your customers access the platform directly, embedded on your site, or by redirection to a separate hosted payment page.
+## Swedbank Pay Payment Instruments Platforms
+Swedbank Pay Hosted view and Redirect offer easy-to-use PCI compliant platforms, available from both web and mobile browsers. Either let your customers access the platform directly, embedded on your site, or by redirection to a separate hosted payment page.
 
 ### Hosted View implementation
 With the Hosted View you can initiate the payment process directly in an iframe on your site. A hostUrl needs to be defined in the first POST request in order to enable the hosted view operation. See details of the request [here][card-payments-purchase].
@@ -88,7 +88,7 @@ Please visit our [demoshop][demoshop] to view our Payment Menu and Redirect impl
 
 ```
 TODO: Insert pickture from demoshop showing the following configuration:  
-PayEx Payment Pages  
+Swedbank Pay Payment Pages  
 Hosted View  
 Norway  
 English
@@ -136,7 +136,7 @@ JavaScript Call
 See the technical overview of each payment method and the technical reference for more specific information.
 
 ### Redirect implementation
-The Redirect implementation lets you redirect your customer to an easy-to-use PCI compliant payment platform, hosted by PayEx and available from both web and mobile browsers. The consumer selects a payment method and proceeds to hosted payment pages.
+The Redirect implementation lets you redirect your customer to an easy-to-use PCI compliant payment platform, hosted by Swedbank Pay and available from both web and mobile browsers. The consumer selects a payment method and proceeds to hosted payment pages.
 
 ```
 TODO: Insert image showing the flow of redirect implementation
@@ -146,7 +146,7 @@ Please visit our [demoshop][demoshop] to view our Payment Menu and Redirect impl
 
 ```
 TODO: Insert pickture from demoshop showing the following configuration:  
-PayEx Payment Pages  
+Swedbank Pay Payment Pages  
 Redirect  
 Norway  
 English
@@ -178,7 +178,7 @@ The core payment process of the eCommerce APIs are the same across all payment i
 
 ### Creating a payment
     * The payment is the container object that holds all transactions that will be created during the payment process. You specify which payment instrument to use, i.e. if you want to initiate a credit card payment, an invoice payment or a Swish payment, etc. This is managed by specific instrument calls to PayEx's API Platform, where you need to include all necessary payment details - like amount, description, references to your system, etc. This example shows a card payment post.  
-    * When PayEx receives this information, a payment  will be created and you will be given a unique paymentID in return. The response also include  (in a true RESTful way) the URI's to possible further actions, given the state of the payment.  
+    * When Swedbank Pay receives this information, a payment  will be created and you will be given a unique paymentID in return. The response also include  (in a true RESTful way) the URI's to possible further actions, given the state of the payment.  
     *  A successfully created payment is in a Ready state.If something has gone wrong along the way, the state is set to Failed. 
 ### Creating an Authorization or Sales transaction
     * A successful payment is `Ready` for authorization. An authoriation  transaction is often created through a Redirect scenario, where you transfer the consumer to a hosted payment page, or by enable the process to take place directly on your own site, through Hosted View.  
@@ -190,7 +190,7 @@ The core payment process of the eCommerce APIs are the same across all payment i
     | Completed |	Everything went ok! Financial funds is reserved. A capture transaction needs to be created in order to charge the consumer.|
     | Failed |	The transaction has failed (maybe the card got declined).. The transactional state is final, but it is still possible to retry and create another authorization transaction on this payment (the consumer tries another credit card). If the maximum amount of retries has been reached the payment state itself will be set to failed.|
 ### Checking the transaction state  
-    * By this time, the payment might containt several associated transactions, making it vital that you verify the state of the latest transaction. PayEx keeps all payment transactions to enable a full transaction history of each payment. 
+    * By this time, the payment might containt several associated transactions, making it vital that you verify the state of the latest transaction. Swedbank Pay keeps all payment transactions to enable a full transaction history of each payment. 
 ### Creating a capture transaction - two-phase payments only
     * Later on (when you deliver the merchandise, if physical content), you need to create a `capture` transaction to ensure that the money is charged from the consumer credit card (or that the invoice is created properly). You now have a least two connected transactions (one authorization and one capture).
     * The `capture` transaction will have one of the below states when created.

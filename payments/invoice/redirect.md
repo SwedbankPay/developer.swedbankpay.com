@@ -33,11 +33,11 @@ All valid options when posting a payment with operation equal to FinancingConsum
 | *InvoiceType* |	PayExFinancingSE |	PayExFinancingNO |	PayExFinancingFI |
 
 *   An invoice payment is always two-phased based - you create an Authorize transaction, that is followed by a Capture or Cancel request.
-*   **Defining CallbackURL**: When implementing a scenario, it is optional to set a [CallbackURL ][callback-url]in the `POST` request. If callbackURL is set PayEx will send a postback request to this URL when the consumer has fulfilled the payment. [See the Callback API description here.][callback-api]
+*   **Defining CallbackURL**: When implementing a scenario, it is optional to set a [CallbackURL ][callback-url]in the `POST` request. If callbackURL is set Swedbank Pay will send a postback request to this URL when the consumer has fulfilled the payment. [See the Callback API description here.][callback-api]
 
 ## Invoice flow
 
-The sequence diagram below shows the two requests you have to send to PayEx to make a purchase. The diagram also shows in high level, the sequence of the process of a complete purchase.
+The sequence diagram below shows the two requests you have to send to Swedbank Pay to make a purchase. The diagram also shows in high level, the sequence of the process of a complete purchase.
 
 
 ```mermaid

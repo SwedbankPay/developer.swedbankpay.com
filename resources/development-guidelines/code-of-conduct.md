@@ -21,7 +21,7 @@ sidebar:
                       header="Site under development"
                       body="The Developer Portal is under construction and should not be used to integrate against Swedbank Pay's APIs yet." %}
 
-It is important that the projects governed by PayEx foster a collaborative, open, inclusive, positive and tolerant community. To underscore this, a `CODE_OF_CONDUCT.md` file from [Contributor Covenant][contributor-covenant] should be added to the project:
+It is important that the projects governed by Swedbank Pay foster a collaborative, open, inclusive, positive and tolerant community. To underscore this, a `CODE_OF_CONDUCT.md` file from [Contributor Covenant][contributor-covenant] should be added to the project:
 
 
 # Contributor Code of Conduct

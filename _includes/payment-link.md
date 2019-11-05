@@ -12,12 +12,12 @@ When the consumer clicks on the link, a payment window opens." %}
   * [MobilePay][payment-instruments-mobilepay-payment-pages]
   * [Swish][swish]
   * [Vipps][vipps]
-* When the consumer/end-user starts the purchase process in your merchant or webshop site, you need to make a `POST` request towards PayEx with your *Purchase* information. You receive a Payment Link (same as redirect URL) in response.
+* When the consumer/end-user starts the purchase process in your merchant or webshop site, you need to make a `POST` request towards Swedbank Pay with your *Purchase* information. You receive a Payment Link (same as redirect URL) in response.
 * You have to distribute the Payment Link to the customer through your order system, using channels like e-mail or SMS.
   * NOTE: When sending information in e-mail/SMS, it is strongly recommended that you add information about your terms and conditions, including purchase information and price. **See recommendations in the next paragraph.**
-* When the consumer clicks on the Payment Link, the PayEx payment page will open, letting the consumer enter the payment details (varying depending on payment instrument) in a secure PayEx hosted environment. When paying with credit card and if required, PayEx will handle 3D-secure authentication
-* After completion, PayEx will redirect the browser back to your merchant/webshop site.
-* If [`CallbackURL`][technical-reference-callbackurl] is set the merchant system will receive a callback from PayEx, enabling you to make a `GET` request towards PayEx with the `paymentID` received in the first step, which will return the purchase result.
+* When the consumer clicks on the Payment Link, the Swedbank Pay payment page will open, letting the consumer enter the payment details (varying depending on payment instrument) in a secure Swedbank Pay hosted environment. When paying with credit card and if required, Swedbank Pay will handle 3D-secure authentication
+* After completion, Swedbank Pay will redirect the browser back to your merchant/webshop site.
+* If [`CallbackURL`][technical-reference-callbackurl] is set the merchant system will receive a callback from PayEx, enabling you to make a `GET` request towards Swedbank Pay with the `paymentID` received in the first step, which will return the purchase result.
 
 ### Recommendations regarding Payment Link in E-mail/SMS
 
@@ -64,7 +64,7 @@ All valid options when posting in a payment with operation `Purchase`, are descr
 
 #### General
 
-* When implementing the Payment Link scenario, it is optional to set a [`CallbackURL`][technical-reference-callbackurl] in the `POST` request. If callbackURL is set PayEx will send a postback request to this URL when the consumer as fulfilled the payment. [See the Callback API description here][technical-reference-callback].
+* When implementing the Payment Link scenario, it is optional to set a [`CallbackURL`][technical-reference-callbackurl] in the `POST` request. If callbackURL is set Swedbank Pay will send a postback request to this URL when the consumer as fulfilled the payment. [See the Callback API description here][technical-reference-callback].
 
 ### Purchase flow 
 
@@ -74,8 +74,8 @@ The sequence diagrams display the high level process of the purchase, from gener
 
 When dealing with credit card payments, 3D-Secure authentication of the cardholder is an essential topic. There are three alternative outcome of a credit card payment:
 
-* 3D-Secure enabled - by default, 3D-secure should be enabled, and PayEx will check if the card is enrolled with 3D-secure. This depends on the issuer of the card. If the card is not enrolled with 3D-Secure, no authentication of the cardholder is done.
-* Card supports 3D-Secure - if the card is enrolled with 3D-Secure, PayEx will redirect the cardholder to the autentication mechanism that is decided by the issuing bank. Normally this will be done using BankID or Mobile BankID.
+* 3D-Secure enabled - by default, 3D-secure should be enabled, and Swedbank Pay will check if the card is enrolled with 3D-secure. This depends on the issuer of the card. If the card is not enrolled with 3D-Secure, no authentication of the cardholder is done.
+* Card supports 3D-Secure - if the card is enrolled with 3D-Secure, Swedbank Pay will redirect the cardholder to the autentication mechanism that is decided by the issuing bank. Normally this will be done using BankID or Mobile BankID.
 
 ```mermaid
 sequenceDiagram
@@ -126,7 +126,7 @@ deactivate Merchant
 * It is possible to "abort" the validity of the Payment Link by making a `PATCH` on the payment. [See the PATCH payment description][abort].
 * For reversals, you will need to implement the `Reversal` request.
 * If you did a PreAuthorization, you will have to send a Finalize to the transaction using [PATCH on the Authorization][payment-instruments-card-payment-pages].
-* When implementing the Payment Link scenario, it is optional to set a CallbackURL in the `POST` request. If CallbackURL is set PayEx will send a postback request to this URL when the consumer as fulfilled the payment. [See the Callback API description here][technical-reference-callback].
+* When implementing the Payment Link scenario, it is optional to set a CallbackURL in the `POST` request. If CallbackURL is set Swedbank Pay will send a postback request to this URL when the consumer as fulfilled the payment. [See the Callback API description here][technical-reference-callback].
 
 #### Capture Sequence
 

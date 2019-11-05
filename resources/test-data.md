@@ -23,7 +23,7 @@ sidebar:
 
 ## Swedbank Pay Checkout Test Data
 
-During a PayEx Checkout implementation you can use the test data related to the different payment methods listed below. To see PayEx Checkout in action, please visit our [demoshop](https://ecom.externalintegration.payex.com/pspdemoshop)
+During a Swedbank Pay Checkout implementation you can use the test data related to the different payment methods listed below. To see Swedbank Pay Checkout in action, please visit our [demoshop](https://ecom.externalintegration.payex.com/pspdemoshop)
 
 To test a logged in user in the Demo Shop, please use the following test data:
 

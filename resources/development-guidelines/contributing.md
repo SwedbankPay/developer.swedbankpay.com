@@ -27,7 +27,7 @@ To make it clear exactly how outside contributors should provide their contribut
 
 # How to contribute
 
-To contribute to the PayEx Development Guidelines, there's just a few things you need to know.
+To contribute to the Swedbank Pay Development Guidelines, there's just a few things you need to know.
 
 ## Getting Started
 

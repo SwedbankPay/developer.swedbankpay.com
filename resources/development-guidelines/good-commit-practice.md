@@ -22,7 +22,7 @@ sidebar:
                       body="The Developer Portal is under construction and should not be used to integrate against Swedbank Pay's APIs yet." %}
 
 
-The following document is a fork of [OpenStack's Git Commit Good Practice][good-practice], rewritten to suit PayEx needs. It is based on experience doing code development, bug troubleshooting and code review across a number of projects using Git. Examination of other open source projects suggested they all follow a fairly common practice. It is motivated by a desire to improve the quality of the Git history in any repository. Quality is a hard term to define in computing; one person's "Thing of Beauty" is another's "Evil Hack". We can, however, come up with some general guidelines for what to do, or conversely what not to do, when publishing Git commits for merge with a project. This topic can be split into two areas of concern:
+The following document is a fork of [OpenStack's Git Commit Good Practice][good-practice], rewritten to suit Swedbank Pay needs. It is based on experience doing code development, bug troubleshooting and code review across a number of projects using Git. Examination of other open source projects suggested they all follow a fairly common practice. It is motivated by a desire to improve the quality of the Git history in any repository. Quality is a hard term to define in computing; one person's "Thing of Beauty" is another's "Evil Hack". We can, however, come up with some general guidelines for what to do, or conversely what not to do, when publishing Git commits for merge with a project. This topic can be split into two areas of concern:
 
 1. The structured set/split of the code changes
 1. The information provided in the commit message
