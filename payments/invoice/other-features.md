@@ -157,28 +157,30 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| **Required** | **Property** | **Data type** | **Description** 
-| ✔︎︎︎︎︎ | `transaction.activity` | `string` |`FinancingConsumer`
-| ✔︎︎︎︎︎ | `consumer.socialSecurityNumber` | `string` | The social security number (national identity number) of the consumer. Format Sweden: `YYMMDD-NNNN`. Format Norway: `DDMMYYNNNNN`.
-| | `consumer.customerNumber` | `string` | The customer number in the merchant system.
-| | `consumer.email` | `string` | The e-mail address of the consumer.
-| ✔︎︎︎︎︎ | `consumer.msisdn` | `string` | The mobile phone number of the consumer. Format Sweden: `+46707777777`. Format Norway: `+4799999999`.
-| ✔︎︎︎︎︎ | `consumer.ip` | `string` | The IP address of the consumer.
-| ✔︎︎︎︎︎ | `legalAddress.addressee` | `string` | The full (first and last) name of the consumer.
-| | `legalAddress.coAddress` | `string` | The CO-address (if used)
-| | `legalAddress.streetAddress` | `string` | The street address of the consumer.
-| ✔︎︎︎︎︎ | `legalAddress.zipCode` | `string` | The postal code (ZIP code) of the consumer.
-| ✔︎︎︎︎︎ | `legalAddress.city` | `string` | The city to the consumer.
-| ✔︎︎︎︎︎ | `legalAddress.countryCode` | `string` | `SE` or `NO`. The country code of the consumer.
+| **Required** | **Property**                    | **Data type** | **Description**                                                                                                                    |
+| :----------- | :------------------------------ | :------------ | :--------------------------------------------------------------------------------------------------------------------------------- |
+| ✔︎︎︎︎︎       | `transaction.activity`          | `string`      | `FinancingConsumer`                                                                                                                |
+| ✔︎︎︎︎︎       | `consumer.socialSecurityNumber` | `string`      | The social security number (national identity number) of the consumer. Format Sweden: `YYMMDD-NNNN`. Format Norway: `DDMMYYNNNNN`. |
+|              | `consumer.customerNumber`       | `string`      | The customer number in the merchant system.                                                                                        |
+|              | `consumer.email`                | `string`      | The e-mail address of the consumer.                                                                                                |
+| ✔︎︎︎︎︎       | `consumer.msisdn`               | `string`      | The mobile phone number of the consumer. Format Sweden: `+46707777777`. Format Norway: `+4799999999`.                              |
+| ✔︎︎︎︎︎       | `consumer.ip`                   | `string`      | The IP address of the consumer.                                                                                                    |
+| ✔︎︎︎︎︎       | `legalAddress.addressee`        | `string`      | The full (first and last) name of the consumer.                                                                                    |
+|              | `legalAddress.coAddress`        | `string`      | The CO-address (if used)                                                                                                           |
+|              | `legalAddress.streetAddress`    | `string`      | The street address of the consumer.                                                                                                |
+| ✔︎︎︎︎︎       | `legalAddress.zipCode`          | `string`      | The postal code (ZIP code) of the consumer.                                                                                        |
+| ✔︎︎︎︎︎       | `legalAddress.city`             | `string`      | The city to the consumer.                                                                                                          |
+| ✔︎︎︎︎︎       | `legalAddress.countryCode`      | `string`      | `SE` or `NO`. The country code of the consumer.                                                                                    |
 
 {:.table .table-striped}
-| **Required** | **Property** | **Data type** | **Description** 
-| ✔︎︎︎︎︎ | `billingAddress.addressee` | `string` | The "firstName + lastName" to the consumer.
-| | `billingAddress.coAddress` | `string` | The CO-address (if used)
-| ✔︎︎︎︎︎ | `billingAddress.streetAddress` | `string` | The street address to the consumer.
-| ✔︎︎︎︎︎ | `billingAddress.zipCode` | `string` | The postal number (ZIP code) to the consumer.
-| ✔︎︎︎︎︎ | `billingAddress.city` | `string` | The city to the consumer.
-| ✔︎︎︎︎︎ | `billingAddress.countryCode` | `string` | `SE` or `NO`.
+| **Required** | **Property**                   | **Data type** | **Description**                               |
+| :----------- | :----------------------------- | :------------ | :-------------------------------------------- |
+| ✔︎︎︎︎︎       | `billingAddress.addressee`     | `string`      | The "firstName + lastName" to the consumer.   |
+|              | `billingAddress.coAddress`     | `string`      | The CO-address (if used)                      |
+| ✔︎︎︎︎ ︎      | `billingAddress.streetAddress` | `string`      | The street address to the consumer.           |
+| ✔︎︎︎︎︎       | `billingAddress.zipCode`       | `string`      | The postal number (ZIP code) to the consumer. |
+| ✔︎︎︎︎︎       | `billingAddress.city`          | `string`      | The city to the consumer.                     |
+| ✔︎︎︎︎︎       | `billingAddress.countryCode`   | `string`      | `SE` or `NO`.                                 |
 
 _Note: The legal address must be the registered address of the consumer._
 
@@ -244,16 +246,17 @@ All invoice error types will have the following URI in front of type:
 `https://api.payex.com/psp/errordetail/invoice/<errorType>`
 
 {:.table .table-striped}
-| **Type** | **Status** | 
-| *externalerror* | 500 | No error code
-| *inputerror* | 400 | 10 - ValidationWarning
-| *inputerror* | 400 | 30 - ValidationError
-| *inputerror* | 400 | 3010 - ClientRequestInvalid
-| *externalerror* | 502 | 40 - Error
-| *externalerror* | 502 | 60 - SystemError
-| *externalerror* | 502 | 50 - SystemConfigurationError
-| *externalerror* | 502 | 9999 - ServerOtherServer
-| *forbidden* | 403 | Any other error code
+| **Type**        | **Status** |
+| :-------------- | :--------- |
+| *externalerror* | 500        | No error code                 |
+| *inputerror*    | 400        | 10 - ValidationWarning        |
+| *inputerror*    | 400        | 30 - ValidationError          |
+| *inputerror*    | 400        | 3010 - ClientRequestInvalid   |
+| *externalerror* | 502        | 40 - Error                    |
+| *externalerror* | 502        | 60 - SystemError              |
+| *externalerror* | 502        | 50 - SystemConfigurationError |
+| *externalerror* | 502        | 9999 - ServerOtherServer      |
+| *forbidden*     | 403        | Any other error code          |
 
 {% include settlement-reconciliation.md %}
 
@@ -268,6 +271,8 @@ All invoice error types will have the following URI in front of type:
 {% include transactions-reference.md %}
 
 {% include operations-reference.md %}
+
+### Payee Info
 
 {% include payeeinfo.md %}
 

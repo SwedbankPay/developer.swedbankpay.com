@@ -212,27 +212,29 @@ Content-Type: application/json
 ```
 **Remember to call .refresh() on the Payment Menu in JavaScript**
 
-| **Property** | **Type** | **Description** | 
-| `paymentorder` | `object` |The payment order object.
-| `paymentorder.id` | `string` |The relative URI to the payment order.
-| `paymentorder.created` | `string` |The ISO-8601 date of when the payment order was created.
-| `paymentorder.updated` | `string` |The ISO-8601 date of when the payment order was updated.
-| `paymentorder.operation` | `string` |Purchase
-| `paymentorder.state` | `string` | `Ready`, `Pending`, `Failed` or `Aborted`. Indicates the state of the payment order. This field is only for status display purposes.
-| `paymentorder.currency` | `string` |The currency of the payment order.
-| `paymentorder.amount` | `integer` |The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.
-| `paymentorder.vatAmount` | `integer` |The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.
-| `paymentorder.description` | `string(40)` | A textual description of maximum 40 characters of the purchase.
-| `paymentorder.userAgent` | `string` |The [user agent][user-agent] string of the consumer's browser.
-| `paymentorder.language` | `string` | `nb-NO`, `sv-SE` or `en-US`
-| `paymentorder.urls` | `string` |The URI to the `urls` resource where all URIs related to the payment order can be retrieved.
-| `paymentorder.payeeInfo` | `string` |The URI to the `payeeinfo` resource where the information about the payee of the payment order can be retrieved.
-| `paymentorder.payers` | `string` |The URI to the `payers` resource where information about the payee of the payment order can be retrieved.
-| `paymentorder.orderItems` | `string` |The URI to the `orderItems` resource where information about the order items can be retrieved.
-| `paymentorder.metadata` | `string` |The URI to the `payments` resource where information about all underlying payments can be retrieved.
-| `paymentorder.payments` | `string` |The URI to the `payments` resource where information about all underlying payments can be retrieved.
-| `paymentorder.currentPayment` | `string` |The URI to the `currentPayment` resource where information about the current – and sole active – payment can be retrieved.
-| `paymentorder.operations` | `array` |The array of possible operations to perform, given the state of the payment order. [See Operations for details][operations].
+{:.table .table-striped}
+| Property                 | Type         | Description                                                                                                                          |
+| :----------------------- | :----------- | :----------------------------------------------------------------------------------------------------------------------------------- |
+| `paymentorder`           | `object`     | The payment order object.                                                                                                            |
+| └➔&nbsp;`id`             | `string`     | The relative URI to the payment order.                                                                                               |
+| └➔&nbsp;`created`        | `string`     | The ISO-8601 date of when the payment order was created.                                                                             |
+| └➔&nbsp;`updated`        | `string`     | The ISO-8601 date of when the payment order was updated.                                                                             |
+| └➔&nbsp;`operation`      | `string`     | Purchase                                                                                                                             |
+| └➔&nbsp;`state`          | `string`     | `Ready`, `Pending`, `Failed` or `Aborted`. Indicates the state of the payment order. This field is only for status display purposes. |
+| └➔&nbsp;`currency`       | `string`     | The currency of the payment order.                                                                                                   |
+| └➔&nbsp;`amount`         | `integer`    | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.    |
+| └➔&nbsp;`vatAmount`      | `integer`    | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.           |
+| └➔&nbsp;`description`    | `string(40)` | A textual description of maximum 40 characters of the purchase.                                                                      |
+| └➔&nbsp;`userAgent`      | `string`     | The [user agent][user-agent] string of the consumer's browser.                                                                       |
+| └➔&nbsp;`language`       | `string`     | `nb-NO`, `sv-SE` or `en-US`                                                                                                          |
+| └➔&nbsp;`urls`           | `string`     | The URI to the `urls` resource where all URIs related to the payment order can be retrieved.                                         |
+| └➔&nbsp;`payeeInfo`      | `string`     | The URI to the `payeeinfo` resource where the information about the payee of the payment order can be retrieved.                     |
+| └➔&nbsp;`payers`         | `string`     | The URI to the `payers` resource where information about the payee of the payment order can be retrieved.                            |
+| └➔&nbsp;`orderItems`     | `string`     | The URI to the `orderItems` resource where information about the order items can be retrieved.                                       |
+| └➔&nbsp;`metadata`       | `string`     | The URI to the `payments` resource where information about all underlying payments can be retrieved.                                 |
+| └➔&nbsp;`payments`       | `string`     | The URI to the `payments` resource where information about all underlying payments can be retrieved.                                 |
+| └➔&nbsp;`currentPayment` | `string`     | The URI to the `currentPayment` resource where information about the current – and sole active – payment can be retrieved.           |
+| └➔&nbsp;`operations`     | `array`      | The array of possible operations to perform, given the state of the payment order. [See Operations for details][operations].         |
 
 #### Capture
 
@@ -499,11 +501,11 @@ Content-Type: application/json
 | `reversal.id` | `string` | The relative URI of the created reversal transaction.
 | `reversal.transaction` | `object` | The object representation of the generic [`transaction` resource][transaction-resource].
 
-[payment-order-abort]: #
-[payment-order-update]: #
-[payment-menu-front-end]: #
+[payment-order-abort]: #abort
+[payment-order-update]: #update-order
+[payment-menu-front-end]: /checkout/payment#payment-menu-front-end
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
 [operations]: #operations
-[payment-order-items]: #
-[transaction-resource]: #
-[payee-reference]: #
+[payment-order-items]: #payment-orders
+[transaction-resource]: #transactions
+[payee-reference]: #payee-info

@@ -71,7 +71,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property                 | Type         | Description                                                                                                                                                                                                               |
+| **Property**             | **Type**     | **Description**                                                                                                                                                                                                           |
 | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `paymentorder`           | `object`     | The payment order object.                                                                                                                                                                                                 |
 | └➔&nbsp;`id`             | `string`     | The relative URI to the payment order.                                                                                                                                                                                    |
@@ -93,3 +93,6 @@ Content-Type: application/json
 | └➔&nbsp;`payments`       | `string`     | The URI to the `payments` resource where information about all underlying payments can be retrieved.                                                                                                                      |
 | └➔&nbsp;`currentPayment` | `string`     | The URI to the `currentPayment` resource where information about the current – and sole active – payment can be retrieved.                                                                                                |
 | └➔&nbsp;`operations`     | `array`      | The array of possible operations to perform, given the state of the payment order. [See Operations for details][operations].                                                                                              |
+
+-----------------------------------------
+[payment-menu]: /checkout/payment#payment-menu
