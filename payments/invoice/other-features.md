@@ -271,6 +271,9 @@ All invoice error types will have the following URI in front of type:
 
 {% include payeeinfo.md %}
 
+{% include iterator.html prev_href="./" prev_title="Back: Introduction" 
+next_href="after-payment" next_title="Next: After Payment" %}
+
 [fi-png]: /assets/img/fi.png
 [callback-api]: #callback
 [invoice-flow]: /payments/invoice/index/#invoice-flow

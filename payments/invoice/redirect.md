@@ -79,6 +79,9 @@ Head over to [after payment][after-payment]
 to see what you can do when a payment is completed.  
 Here you will also find info on `Capture`, `Cancel`, and `Reversal`.
 
+{% include iterator.html prev_href="./" prev_title="Back: Introduction" 
+next_href="after-payment" next_title="Next: After Payment" %}
+
 [after-payment]: /payments/invoice/after-payment
 [no-png]: /assets/img/no.png
 [se-png]: /assets/img/se.png
