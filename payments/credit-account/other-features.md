@@ -23,12 +23,19 @@ sidebar:
 
 {% include subsite.md %}
 
+### Prices
+
+{% include prices.md %}
+
 ## Problem messages
 
 When performing unsuccessful operations, the eCommerce API will respond with a problem message. We generally use the problem message type and status code to identify the nature of the problem. The problem name and description will often help narrow down the specifics of the problem.
 
 For general information about problem messages and error handling, visit error handling and problem details[technical-reference-problem-details].
 
+### Payee reference
+
+{% include payeeinfo.md %}
 
 ## Error types from Swedbank Pay Invoice and third parties
 

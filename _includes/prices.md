@@ -38,14 +38,14 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property | Type | Description
-|:--------------------------|:-------------|:------------------------------|
-| `payment` | `string` |The relative URI of the  `payment`  the prices resource belongs to.
-| `prices.id` | `string` |The relative URI of the current  `prices`  resource.
-| `prices.priceList` | `array` |The array of price objects. **Note:** Even if you specifiy  `CreditCard`  in the input message the system will return all your configured card brands instead when you expan the priceList.
-| `prices.priceList[].type` | `string` |The type of the price object.
-| `prices.priceList[].amount` | `integer` |Amount is entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.
-| `prices.priceList[].vatAmount` | `integer` |If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.
+| Property                       | Type      | Description                                                                                                                                                                                 |
+| :----------------------------- | :-------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `payment`                      | `string`  | The relative URI of the  `payment`  the prices resource belongs to.                                                                                                                         |
+| `prices.id`                    | `string`  | The relative URI of the current  `prices`  resource.                                                                                                                                        |
+| `prices.priceList`             | `array`   | The array of price objects. **Note:** Even if you specifiy  `CreditCard`  in the input message the system will return all your configured card brands instead when you expan the priceList. |
+| `prices.priceList[].type`      | `string`  | The type of the price object.                                                                                                                                                               |
+| `prices.priceList[].amount`    | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.                                                                        |
+| `prices.priceList[].vatAmount` | `integer` | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                          |
 
 ### Prices Object Types
 
@@ -59,17 +59,17 @@ The generic type `CreditCard` enables all card brands, supported by merchant
 contract.
 
 {:.table .table-striped}
-| Type | Description
-|:-------------|:------------------------------|
-| `Visa` |Visa
-| `MasterCard` |MasterCard
-| `Amex` |American Express
-| `Dankort` |Dankort can only be used with DKK currency
-| `Diners` |Diners Club
-| `Finax` |Finax
-| `Jcb` |JCB
-| `IkanoFinansDK` |Ikano Finans Denmark
-| `Maestro` |MasterCard Maestro
+| Type            | Description                                |
+| :-------------- | :----------------------------------------- |
+| `Visa`          | Visa                                       |
+| `MasterCard`    | MasterCard                                 |
+| `Amex`          | American Express                           |
+| `Dankort`       | Dankort can only be used with DKK currency |
+| `Diners`        | Diners Club                                |
+| `Finax`         | Finax                                      |
+| `Jcb`           | JCB                                        |
+| `IkanoFinansDK` | Ikano Finans Denmark                       |
+| `Maestro`       | MasterCard Maestro                         |
 
 #### Direct Debit Payments
 
@@ -77,49 +77,49 @@ The generic type `DirectDebit` enables all bank types, supported by merchant
 contract.
 
 {:.table .table-striped}
-| Type | Description
-|:-------------|:------------------------------|
-| `SwedbankLV` |Swedbank Latvia
-| `SwedbankEE` |Swedbank Estonia
-| `SwedbankLT` |Swedbank Lithuania
-| `SwedbankSE` |Swedbank Sweden **(Not yet supported)**
-| `AalandFI` |Ålandsbanken Finland **(Not yet supported)**
-| `AktiaFI` |Aktia Finland **(Not yet supported)**
-| `DDBFI` |Danske Bank Finland **(Not yet supported)**
-| `HSBSE` |Handelsbanken Sweden **(Not yet supported)**
-| `NordeaFI` |Nordea Finland **(Not yet supported)**
-| `NordeaSE` |Nordea Sweden **(Not yet supported)**
-| `OmaF` I|Oma säästöpankki Finland **(Not yet supported)**
-| `OPFI` |OP Finland **(Not yet supported)**
-| `POPFI` |POP Pankki **(Not yet supported)**
-| `SHBFI` |Handelsbanken Finland **(Not yet supported)**
-| `SpankkiFI` |S-Pankki Finland **(Not yet supported)**
-| `SPFI` |Säästöpankki Finland **(Not yet supported)**
+| Type         | Description                                      |
+| :----------- | :----------------------------------------------- |
+| `SwedbankLV` | Swedbank Latvia                                  |
+| `SwedbankEE` | Swedbank Estonia                                 |
+| `SwedbankLT` | Swedbank Lithuania                               |
+| `SwedbankSE` | Swedbank Sweden **(Not yet supported)**          |
+| `AalandFI`   | Ålandsbanken Finland **(Not yet supported)**     |
+| `AktiaFI`    | Aktia Finland **(Not yet supported)**            |
+| `DDBFI`      | Danske Bank Finland **(Not yet supported)**      |
+| `HSBSE`      | Handelsbanken Sweden **(Not yet supported)**     |
+| `NordeaFI`   | Nordea Finland **(Not yet supported)**           |
+| `NordeaSE`   | Nordea Sweden **(Not yet supported)**            |
+| `OmaF` I     | Oma säästöpankki Finland **(Not yet supported)** |
+| `OPFI`       | OP Finland **(Not yet supported)**               |
+| `POPFI`      | POP Pankki **(Not yet supported)**               |
+| `SHBFI`      | Handelsbanken Finland **(Not yet supported)**    |
+| `SpankkiFI`  | S-Pankki Finland **(Not yet supported)**         |
+| `SPFI`       | Säästöpankki Finland **(Not yet supported)**     |
 
 #### Invoice Payments
 
 {:.table .table-striped}
-| Type | Description
-|:-------------|:------------------------------|
-| `Invoice` | Always Invoice
+| Type      | Description    |
+| :-------- | :------------- |
+| `Invoice` | Always Invoice |
 
 #### MobilePay Payments
 
 {:.table .table-striped}
-| Type | Description
-|:-------------|:------------------------------|
-| `Mobilepay` |Always Mobilepay
+| Type        | Description      |
+| :---------- | :--------------- |
+| `Mobilepay` | Always Mobilepay |
 
 #### Swish Payments
 
 {:.table .table-striped}
-| Type | Description
-|:-------------|:------------------------------|
-| `Swish` |Always Swish
+| Type    | Description  |
+| :------ | :----------- |
+| `Swish` | Always Swish |
 
 #### Vipps Payments
 
 {:.table .table-striped}
-| Type | Description
-|:-------------|:------------------------------|
-| `Vipps` |Always Vipps
+| Type    | Description  |
+| :------ | :----------- |
+| `Vipps` | Always Vipps |
