@@ -66,6 +66,10 @@ Content-Type: application/json
 
 {% include subsite.md %}
 
+### Prices
+
+{% include prices.md %}
+
 {% include settlement-reconciliation.md %}
 
 ### Problem messages
@@ -115,6 +119,9 @@ All acquirer error types will have the following URI in front of type: `https://
 | *acquirergatewayerror* | 502| Problems reaching acquirers gateway, try again after some time
 | *acquirergatewaytimeout* | 504| Problems reaching acquirers gateway, try again after some time 
 
+### Payee reference
+
+{% include payeeinfo.md %}
 
 [expansion]: #
 [technical-reference-problems]: #

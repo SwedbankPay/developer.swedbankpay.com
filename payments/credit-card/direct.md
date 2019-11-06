@@ -28,13 +28,13 @@ sidebar:
 
 {% include jumbotron.html body="The Direct Payment scenario **is used by
 customers that are compliant with PCI-DSS regulations**, and is a way to
-implement card payments without using PayEx Hosted payment pages.  " %}
+implement card payments without using Swedbank Pay Hosted payment pages.  " %}
 
-* The payer places an order and you make a `POST` request towards PayEx with gathered `Purchase` information. The action taken next is the `direct-authorization` operation that is returned in the first request. 
+* The payer places an order and you make a `POST` request towards Swedbank Pay with gathered `Purchase` information. The action taken next is the `direct-authorization` operation that is returned in the first request. 
 * You `POST` the payer's card data to the URL in the [`direct-authorization` operation](#options-before-posting-a-payment-1).
 * If 3D-secure authentication is required, you will then receive a URL where you will have to redirect the payer.
 * When the payment is completed, the payer needs to be redirected back to your merchant/webshop site.
-* Finally you make a `GET` request towards PayEx with the `paymentID` received in the first step, which will return the purchase result.
+* Finally you make a `GET` request towards Swedbank Pay with the `paymentID` received in the first step, which will return the purchase result.
 
 ### API Requests
 
@@ -56,7 +56,7 @@ All valid options when posting in a payment with `operation` equal to `Purchase`
 ##### General
 
 * **No 3D Secure and card acceptance**: There are optional paramers that can be used in relation to 3d-secure and card acceptance. By default, most credit card agreements with an acquirer will require that you use 3D-Secure for card holder authentication. However, if your agreement allows you to make a card payment without this authentication, or that specific cards can be declined, you may adjust these optional parameters when posting in the payment. This is specified in the technical reference section for creating credit card payments  - you will find the link in the sequence diagram below.
-* **Defining CallbackURL**: When implementing a scenario, it is optional to set a [CallbackURL][CallbackURL] in the `POST` request. If callbackURL is set PayEx will send a postback request to this URL when the consumer has fulfilled the payment. [See the Callback API description here][callback-API-description].
+* **Defining CallbackURL**: When implementing a scenario, it is optional to set a [CallbackURL][CallbackURL] in the `POST` request. If callbackURL is set Swedbank Pay will send a postback request to this URL when the consumer has fulfilled the payment. [See the Callback API description here][callback-API-description].
 
 ### Purchase flow
 
@@ -64,8 +64,8 @@ The sequence diagram below shows a high level description of a complete purchase
 
 When dealing with credit card payments, 3D-Secure authentication of the cardholder is an essential topic. There are three alternative outcomes of a credit card payment:
 
-* 3D-Secure enabled - by default, 3D-secure should be enabled, and PayEx will check if the card is enrolled with 3D-secure. This depends on the issuer of the card. If the card is not enrolled with 3D-Secure, no authentication of the cardholder is done.
-* Card supports 3D-Secure - if the card is enrolled with 3D-Secure, PayEx will redirect the cardholder to the autentication mechanism that is decided by the issuing bank. Normally this will be done using BankID or Mobile BankID.
+* 3D-Secure enabled - by default, 3D-secure should be enabled, and Swedbank Pay will check if the card is enrolled with 3D-secure. This depends on the issuer of the card. If the card is not enrolled with 3D-Secure, no authentication of the cardholder is done.
+* Card supports 3D-Secure - if the card is enrolled with 3D-Secure, Swedbank Pay will redirect the cardholder to the autentication mechanism that is decided by the issuing bank. Normally this will be done using BankID or Mobile BankID.
 
 ```mermaid
 sequenceDiagram

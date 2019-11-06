@@ -10,6 +10,8 @@ sidebar:
       title: Test Data
     - url: /resources/demoshop
       title: Demoshop
+    - url: /resources/development-guidelines
+      title: Open Source Development Guidelines
 ---
 
 {% include alert.html type="warning"
@@ -28,7 +30,7 @@ sidebar:
 ## Common eCommerce Resources
 
 
-[Consumers resource][consumers-resource] and [Payment Orders resource][payment-orders-resource] are the two fundamental resources that [Checkin][checkin] and [Payment Menu][payment-menu] build upon. Use Checkin and Payment Menu together to get [PayEx Checkout][checkout].  
+[Consumers resource][consumers-resource] and [Payment Orders resource][payment-orders-resource] are the two fundamental resources that [Checkin][checkin] and [Payment Menu][payment-menu] build upon. Use Checkin and Payment Menu together to get [Swedbank Pay Checkout][checkout].  
 
 
 
@@ -61,8 +63,8 @@ Forwarded: for=82.115.151.177; host=example.com; proto=https
 | **Header**| **Required** | **Description**
 |Content-Type | ✔︎ | The [content type][content-type] of the body of the HTTP request. Usually set to `application/json`.
 |Accept|Y|The [content type][content-type] accepted by the client. Usually set to `application/json`.
-|Authorization|Y|The OAuth 2 Access Token is generated in [PayEx Admin][payex-admin]. See the [admin guide][admin-guide] on how to get started.
-|Session-Id|N|A trace identifier used to trace calls through the PayEx systems (ref [RFC 7329][rfc7329]). Each request must mint a new [GUID/UUID][guid-uuid]. If no `Session-Id` is provided, PayEx will generate one.
+|Authorization|Y|The OAuth 2 Access Token is generated in [Swedbank Pay Admin][payex-admin]. See the [admin guide][admin-guide] on how to get started.
+|Session-Id|N|A trace identifier used to trace calls through the Swedbank Pay systems (ref [RFC 7329][rfc7329]). Each request must mint a new [GUID/UUID][guid-uuid]. If no `Session-Id` is provided, Swedbank Pay will generate one.
 |Forwarded|N|The IP address of the consumer as well as the host and protocol of the consumer-facing web page. When the header is present, only the `for` parameter containing the consumer IP address is required, the other parameters are optional. See [RFC 7239][rfc7329] for details.
 
 ## URI usage 
@@ -80,7 +82,7 @@ An important part of REST is its use of hypermedia. Instead of having to perform
 {% include alert.html type="warning"
                         icon="warning"
                         header="What to avoid"
-                        body="It is very important that only the base URIs of PayEx' APIs are stored in your system. All other URIs are returned dynamically in the response. PayEx cannot guarantee that your implementation will remain working if you store any other URIs in your system. When performing requests, please make sure to use the complete URIs that are returned in the response. Do not attempt to parse or build upon the returned data - you should not put any special significance to the information you might glean from an URI. URIs should be treated as identifiers you can use to retrieve the identified resource – nothing more, nothing less. If you don't follow this advice, your integration most assuredly will break when PayEx makes updates in the future." %}
+                        body="It is very important that only the base URIs of PayEx' APIs are stored in your system. All other URIs are returned dynamically in the response. Swedbank Pay cannot guarantee that your implementation will remain working if you store any other URIs in your system. When performing requests, please make sure to use the complete URIs that are returned in the response. Do not attempt to parse or build upon the returned data - you should not put any special significance to the information you might glean from an URI. URIs should be treated as identifiers you can use to retrieve the identified resource – nothing more, nothing less. If you don't follow this advice, your integration most assuredly will break when Swedbank Pay makes updates in the future." %}
 
 
 
@@ -178,8 +180,8 @@ The `payeeReference` given when creating transactions and payments has some spec
 
 1. It must be **unique** for every operation, used to ensure exactly-once delivery of a transactional operation from the merchant system.
 1. Its length and content validation is dependent on whether the `transaction.number` or the `payeeReference` is sent to the acquirer.
-11. If you select Option A in the settlement process (PayEx will handle the settlement), PayEx will send the `transaction.number` to the acquirer and the `payeeReference` may have the format of `string(30)`.
-11. If you select Option B in the settlement process (you will handle the settlement yourself), PayEx will send the `payeeReference` to the acquirer and it will be limited to the format of `string(12)` and all characters must be digits.
+11. If you select Option A in the settlement process (Swedbank Pay will handle the settlement), Swedbank Pay will send the `transaction.number` to the acquirer and the `payeeReference` may have the format of `string(30)`.
+11. If you select Option B in the settlement process (you will handle the settlement yourself), Swedbank Pay will send the `payeeReference` to the acquirer and it will be limited to the format of `string(12)` and all characters must be digits.
 
 
 
@@ -251,9 +253,9 @@ The response will be the `payment` resource with its `state` set to `Aborted`.
 
 The Callback  functionality is similar for all payment methods.
 
-* Setting a `callbackUrl` in the HTTP `POST` API is optional, but highly recommended. If a payer closes the browser window, a network error or something else happens that prevents the payer from being redirect from PayEx back to the merchant website, the callback is what ensures that you receive information about what happened with the payment.
-* When a change or update from the back-end system are made on a payment or transaction, PayEx will perform a callback to inform the payee (merchant) about this update.
-* PayEx will make an HTTP `POST` to the `callbackUrl` that was specified when the payee (merchant) created the payment.
+* Setting a `callbackUrl` in the HTTP `POST` API is optional, but highly recommended. If a payer closes the browser window, a network error or something else happens that prevents the payer from being redirect from Swedbank Pay back to the merchant website, the callback is what ensures that you receive information about what happened with the payment.
+* When a change or update from the back-end system are made on a payment or transaction, Swedbank Pay will perform a callback to inform the payee (merchant) about this update.
+* Swedbank Pay will make an HTTP `POST` to the `callbackUrl` that was specified when the payee (merchant) created the payment.
 * When the `callbackUrl` receives such a callback, an HTTP `GET` request must be made on the payment or on the transaction. The retrieved payment or transaction resource will give you the necessary information about the recent change/update.
 * The callback will be retried if it fails. Below are the retry timings, in milliseconds from the initial transaction time:
 *1. 30000 ms
@@ -361,7 +363,7 @@ The structure of a problem message will look like this:
 |type|string|The URI that identifies the error type. This is the **only property usable for programmatic identification** of the type of error! When dereferenced, it might lead you to a human readable description of the error and how it can be recovered from.
 |title|string|The title contains a human readable description of the error.
 |detail|string|A detailed, human readable description of the error.
-|instance|string|The identifier of the error instance. This might be of use to PayEx support personnel in order to find the exact error and the context it occurred in.
+|instance|string|The identifier of the error instance. This might be of use to Swedbank Pay support personnel in order to find the exact error and the context it occurred in.
 |status|integer|The HTTP status code that the problem was served with.
 |action|string|The action indicates how the error can be recovered from.
 |problems|array|The array of problem detail objects.

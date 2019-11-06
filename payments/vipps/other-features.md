@@ -16,18 +16,6 @@ sidebar:
       title: Other Features
 ---
 
-
-  - title: Checkout
-    items:
-    - url: /checkout/
-      title: Introduction
-    - url: /checkout/payment
-      title: Checkout Payment
-    - url: /checkout/after-payment
-      title: Checkout After Payment
-    - url: /checkout/other-features
-      title: Checkout Other Features
-
 {% include alert.html type="warning"
                       icon="warning"
                       header="Site under development"
@@ -42,6 +30,10 @@ sidebar:
 {% include recurring-card-payments.md %}
 
 {% include subsite.md %}
+
+### Prices
+
+{% include prices.md %}
 
 ## Problem messages
 
@@ -88,5 +80,9 @@ All Vipps error types will have the following URI in front of type: `https://api
 | *ACQUIRER_GATEWAY_ERROR* | 502 | 
 | *ACQUIRER_GATEWAY_TIMEOUT* | 504 | 
 | *UNKNOWN_ERROR* | 500 | 
+
+### Payee reference
+
+{% include payeeinfo.md %}
 
 [technical-reference-problems]: #

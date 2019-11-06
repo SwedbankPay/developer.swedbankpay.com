@@ -73,3 +73,11 @@ sequenceDiagram
 {% include recurring-card-payments.md %}
 
 {% include subsite.md %}
+
+### Prices
+
+{% include prices.md %}
+
+### Payee reference
+
+{% include payeeinfo.md %}
