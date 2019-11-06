@@ -63,11 +63,12 @@ A list of possible operations and their explanation is given below.
 ```
 
 {:.table .table-striped}
-| **Property**| **Description**
-| `href` | The target URI to perform the operation against.
-| `rel` | The name of the relation the operation has to the current resource.
-| `method` | The HTTP method to use when performing the operation.
-| `contentType` | The HTTP content type of the resource referenced in the `href` property.
+| Property      | Description                                                              |
+| :------------ | :----------------------------------------------------------------------- |
+| `href`        | The target URI to perform the operation against.                         |
+| `rel`         | The name of the relation the operation has to the current resource.      |
+| `method`      | The HTTP method to use when performing the operation.                    |
+| `contentType` | The HTTP content type of the resource referenced in the `href` property. |
 
 The operations should be performed as described in each response and not as 
 described here in the documentation. 
@@ -79,14 +80,15 @@ for the given operation.
 
 
 {:.table .table-striped}
-| **Operation** | **Description**
-| `update-paymentorder-abort` | [Aborts][payment-order-abort] the payment order before any financial transactions are performed.
-| `update-paymentorder-updateorder` | [Updates the order][payment-order-update] with a change in the `amount` and/or `vatAmount`.
-| `redirect-paymentorder` | Contains the URI that is used to redirect the consumer to the PayEx Payment Pages containing the Payment Menu.
-| `view-paymentorder` | Contains the JavaScript `href` that is used to embed the Payment Menu UI directly on the webshop/merchant site.
-| `create-paymentorder-capture` | The second part of a two-phase transaction where the authorized amount is sent from the payer to the payee. It is possible to do a part-capture on a subset of the authorized amount. Several captures on the same payment are possible, up to the total authorization amount.
-| `create-paymentorder-cancellation` | Used to cancel authorized and not yet captured transactions. If a cancellation is performed after doing a part-capture, it will only affect the not yet captured authorization amount.
-| `create-paymentorder-reversal` | Used to reverse a payment. It is only possible to reverse a payment that has been captured and not yet reversed.
+| Operation                          | Description                                                                                                                                                                                                                                                                    |
+| :--------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `update-paymentorder-abort`        | [Aborts][payment-order-abort] the payment order before any financial transactions are performed.                                                                                                                                                                               |
+| `update-paymentorder-updateorder`  | [Updates the order][payment-order-update] with a change in the `amount` and/or `vatAmount`.                                                                                                                                                                                    |
+| `redirect-paymentorder`            | Contains the URI that is used to redirect the consumer to the PayEx Payment Pages containing the Payment Menu.                                                                                                                                                                 |
+| `view-paymentorder`                | Contains the JavaScript `href` that is used to embed the Payment Menu UI directly on the webshop/merchant site.                                                                                                                                                                |
+| `create-paymentorder-capture`      | The second part of a two-phase transaction where the authorized amount is sent from the payer to the payee. It is possible to do a part-capture on a subset of the authorized amount. Several captures on the same payment are possible, up to the total authorization amount. |
+| `create-paymentorder-cancellation` | Used to cancel authorized and not yet captured transactions. If a cancellation is performed after doing a part-capture, it will only affect the not yet captured authorization amount.                                                                                         |
+| `create-paymentorder-reversal`     | Used to reverse a payment. It is only possible to reverse a payment that has been captured and not yet reversed.                                                                                                                                                               |
 
 #### View Payment Order
 
@@ -301,12 +303,13 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| **Required** | **Property**| **Type**| **Description**
-| ✔︎︎︎︎︎ | `transaction.description` | `string` |The description of the capture transaction.
-| ✔︎︎︎︎︎ | `transaction.amount` | `integer` |The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.
-| ✔︎︎︎︎︎ | `transaction.vatAmount` | `integer` |The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.
-| ✔︎︎︎︎︎ | `transaction.payeeReference` | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [[payeeReference>>doc:Main.ecommerce.technical-reference.WebHome|| anchor="HPayeeReference"]] for details.
-| | `transaction.orderItems` | `array` |The array of items being purchased with the order. Used to print on invoices if the payer chooses to pay with invoice, among other things. [See Order Items for details][payment-order-items].
+| Required | Property                     | Type         | Description                                                                                                                                                                                                |
+| :------- | :--------------------------- | :----------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ✔︎︎︎︎︎   | `transaction.description`    | `string`     | The description of the capture transaction.                                                                                                                                                                |
+| ✔︎︎︎︎︎   | `transaction.amount`         | `integer`    | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.                                                                          |
+| ✔︎︎︎︎︎   | `transaction.vatAmount`      | `integer`    | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.                                                                                 |
+| ✔︎︎︎︎︎   | `transaction.payeeReference` | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [[payeeReference>>doc:Main.ecommerce.technical-reference.WebHome |  | anchor="HPayeeReference"]] for details. |
+|          | `transaction.orderItems`     | `array`      | The array of items being purchased with the order. Used to print on invoices if the payer chooses to pay with invoice, among other things. [See Order Items for details][payment-order-items].             |
 
 If the capture succeeds, it should respond with something like the following:
 
@@ -335,10 +338,11 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| **Property**| **Data type** | **Description**
-| `payment` | `string` | The relative URI of the payment this capture transaction belongs to.
-| `capture.id` | `string` | The relative URI of the created capture transaction.
-| `capture.transaction` | `object` | The object representation of the generic [`transaction` resource][transaction-resource].
+| Property              | Data type | Description                                                                              |
+| :-------------------- | :-------- | :--------------------------------------------------------------------------------------- |
+| `payment`             | `string`  | The relative URI of the payment this capture transaction belongs to.                     |
+| `capture.id`          | `string`  | The relative URI of the created capture transaction.                                     |
+| `capture.transaction` | `object`  | The object representation of the generic [`transaction` resource][transaction-resource]. |
 
 Checkout should now be complete, the payment should be secure and everyone 
 should be happy. 
@@ -399,9 +403,10 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| **Property**| **Type**| **Required** | **Description**
-| ✔︎︎︎︎︎ | `transaction.payeeReference` | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.
-| ✔︎︎︎︎︎ | `transaction.description` | `string` | A textual description of why the transaction is cancelled.
+| Property | Type                         | Required     | Description                                                                                                                                                                              |
+| :------- | :--------------------------- | :----------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ✔︎︎︎︎︎   | `transaction.payeeReference` | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details. |
+| ✔︎︎︎︎︎   | `transaction.description`    | `string`     | A textual description of why the transaction is cancelled.                                                                                                                               |
 
 If the cancellation request succeeds, the response should be 
 similar to the example below:
@@ -431,10 +436,11 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| **Property**| **Data type** | **Description**
-| `payment` | `string` | The relative URI of the payment this capture transaction belongs to.
-| `cancellation.id` | `string` | The relative URI of the created capture transaction.
-| `cancellation.transaction` | `object` | The object representation of the generic [`transaction` resource][transaction-resource].
+| Property                   | Data type | Description                                                                              |
+| :------------------------- | :-------- | :--------------------------------------------------------------------------------------- |
+| `payment`                  | `string`  | The relative URI of the payment this capture transaction belongs to.                     |
+| `cancellation.id`          | `string`  | The relative URI of the created capture transaction.                                     |
+| `cancellation.transaction` | `object`  | The object representation of the generic [`transaction` resource][transaction-resource]. |
 
 #### Reversal
 
@@ -462,11 +468,12 @@ Content-Type: application/json
 }
 ```
 {:.table .table-striped}
-| **Property**| **Type**| **Required** | **Description**
-| ✔︎︎︎︎︎ | `transaction.amount` | `integer` |The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.
-| ✔︎︎︎︎︎ | `transaction.vatAmount` | `integer` |The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.
-| ✔︎︎︎︎︎ | `transaction.payeeReference` | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.
-| ✔︎︎︎︎︎ | `transaction.description` | `string` |Textual description of why the transaction is reversed.
+| Property | Type                         | Required     | Description                                                                                                                                                                              |
+| :------- | :--------------------------- | :----------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ✔︎︎︎︎︎   | `transaction.amount`         | `integer`    | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.                                                        |
+| ✔︎︎︎︎︎   | `transaction.vatAmount`      | `integer`    | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.                                                               |
+| ✔︎︎︎︎︎   | `transaction.payeeReference` | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details. |
+| ✔︎︎︎︎︎   | `transaction.description`    | `string`     | Textual description of why the transaction is reversed.                                                                                                                                  |
 
 If the reversal request succeeds, 
 the response should be similar to the example below:
@@ -496,10 +503,11 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| **Property**| **Data type** | **Description**
-| `payment` | `string` | The relative URI of the payment this reversal transaction belongs to.
-| `reversal.id` | `string` | The relative URI of the created reversal transaction.
-| `reversal.transaction` | `object` | The object representation of the generic [`transaction` resource][transaction-resource].
+| Property               | Data type | Description                                                                              |
+| :--------------------- | :-------- | :--------------------------------------------------------------------------------------- |
+| `payment`              | `string`  | The relative URI of the payment this reversal transaction belongs to.                    |
+| `reversal.id`          | `string`  | The relative URI of the created reversal transaction.                                    |
+| `reversal.transaction` | `object`  | The object representation of the generic [`transaction` resource][transaction-resource]. |
 
 [payment-order-abort]: #abort
 [payment-order-update]: #update-order

@@ -49,11 +49,12 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| **Property** | **Data type** | **Required**
-| `payment` | `string` | The relative URI of the payment this list of transactions belong to.
-| `transactions.id` | `string` | The relative URI of the current `transactions` resource.
-| `transactions.transactionList` | `array` | The array of transaction objects.
-| `transactions.transactionList[]` | `object` | The transaction object (described in the `transaction` resource below).
+| Property                         | Data type | Required                                                                |
+| :------------------------------- | :-------- | :---------------------------------------------------------------------- |
+| `payment`                        | `string`  | The relative URI of the payment this list of transactions belong to.    |
+| `transactions.id`                | `string`  | The relative URI of the current `transactions` resource.                |
+| `transactions.transactionList`   | `array`   | The array of transaction objects.                                       |
+| `transactions.transactionList[]` | `object`  | The transaction object (described in the `transaction` resource below). |
 
 ### Transaction
 
@@ -113,21 +114,22 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| **Property** | **Data type** | **Description**
-| `payment` | `string` | The relative URI of the payment this transaction belongs to.
-| `transaction.id` | `string` | The relative URI of the current `transaction` resource.
-| `transaction.created` | `string` | The ISO-8601 date and time of when the transaction was created.
-| `transaction.updated` | `string` | The ISO-8601 date and time of when the transaction was created.
-| `transaction.type` | `string` | Indicates the transaction type.
-| `transaction.state` | `string` | `Initialized`, `Completed` or `Failed`. Indicates the state of the transaction.
-| `transaction.number` | `string` | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead.
-| `transaction.amount` | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` = 100.00 NOK, `5000` = 50.00 SEK.
-| `transaction.vatAmount` | `integer` |If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.
-| `transaction.description` | `string` | A human readable description of maximum 40 characters of the transaction.
-| `transaction.payeeReference` | `string` | A unique reference for the transaction. See [`payeeReference`][payee-reference] for details.
-| `transaction.failedReason` | `string` | The human readable explanation of why the payment failed.
-| `transaction.isOperational` | `boolean` | `true` if the transaction is operational; otherwise `false`.
-| `transaction.operations` | `array` | The array of [operations][operations] that are possible to perform on the transaction in its current state.
+| Property | Data type | Description |
+| :------- | :-------- | :---------- ||
+| `payment`                    | `string`  | The relative URI of the payment this transaction belongs to.                                                                                                                                                 |
+| `transaction.id`             | `string`  | The relative URI of the current `transaction` resource.                                                                                                                                                      |
+| `transaction.created`        | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
+| `transaction.updated`        | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
+| `transaction.type`           | `string`  | Indicates the transaction type.                                                                                                                                                                              |
+| `transaction.state`          | `string`  | `Initialized`, `Completed` or `Failed`. Indicates the state of the transaction.                                                                                                                              |
+| `transaction.number`         | `string`  | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead. |
+| `transaction.amount`         | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` = 100.00 NOK, `5000` = 50.00 SEK.                                                                                     |
+| `transaction.vatAmount`      | `integer` | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                           |
+| `transaction.description`    | `string`  | A human readable description of maximum 40 characters of the transaction.                                                                                                                                    |
+| `transaction.payeeReference` | `string`  | A unique reference for the transaction. See [`payeeReference`][payee-reference] for details.                                                                                                                 |
+| `transaction.failedReason`   | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
+| `transaction.isOperational`  | `boolean` | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
+| `transaction.operations`     | `array`   | The array of [operations][operations] that are possible to perform on the transaction in its current state.                                                                                                  |
 
 [operations]: #operations
 [payee-reference]: #payee-reference

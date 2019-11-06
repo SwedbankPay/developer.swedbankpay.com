@@ -80,17 +80,17 @@ sequenceDiagram
 
   activate Merchant
   activate PAYEX
-  PAYEX->Merchant: POST <callbackUrl>
+  PAYEX->>Merchant: POST <callbackUrl>
   note left of Merchant: Callback by PayEx
-  Merchant-->PAYEX: HTTP response
+  Merchant-->>PAYEX: HTTP response
   deactivate PAYEX
   deactivate Merchant
 
   activate Merchant
-  Merchant->PAYEX: GET <payment instrument> payment
+  Merchant->>PAYEX: GET <payment instrument> payment
   note left of Merchant: First API request
   activate PAYEX
-  PAYEX-->Merchant: payment resource
+  PAYEX-->>Merchant: payment resource
   deactivate PAYEX
   deactivate Merchant
 ```
