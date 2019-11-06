@@ -31,6 +31,10 @@ sidebar:
 
 {% include subsite.md %}
 
+### Prices
+
+{% include prices.md %}
+
 ## Problem messages
 
 When performing unsuccessful operations, the eCommerce API will respond with a problem message. We generally use the problem message type and status code to identify the nature of the problem. The problem name and description will often help narrow down the specifics of the problem.
@@ -76,5 +80,9 @@ All Vipps error types will have the following URI in front of type: `https://api
 | *ACQUIRER_GATEWAY_ERROR* | 502 | 
 | *ACQUIRER_GATEWAY_TIMEOUT* | 504 | 
 | *UNKNOWN_ERROR* | 500 | 
+
+### Payee reference
+
+{% include payeeinfo.md %}
 
 [technical-reference-problems]: #

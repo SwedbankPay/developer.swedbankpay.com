@@ -31,6 +31,10 @@ sidebar:
 
 {% include subsite.md %}
 
+### Prices
+
+{% include prices.md %}
+
 ## Problem messages
 
 When performing unsuccessful operations, the eCommerce API will respond with a problem message. We generally use the problem message type and status code to identify the nature of the problem. The problem name and description will often help narrow down the specifics of the problem.
@@ -66,5 +70,9 @@ All Swish error types will have the following URI in front of type: `https://api
 | *swishdeclined* | 403 | TM01 | Payment timed out (User din't confirm payment in app)
 | *swishdeclined* | 403 | DS24 |  Payment timed out (Bank didn't respond).
 | *systemerror* | 500 | Any other error code|  
+
+### Payee reference
+
+{% include payeeinfo.md %}
 
 [technical-reference-problems]: #
