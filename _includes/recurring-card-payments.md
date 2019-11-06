@@ -59,14 +59,12 @@ You have the following options after a server-to-server Recur payment `POST`.
 
 ##### General 
 
-* **Defining CallbackURL**: When implementing a scenario, it is optional to set a [`CallbackURL`][technical-reference-callbackurl]  in the `POST` request. If callbackURL is set Swedbank Pay will send a postback request to this URL when the consumer has fulfilled the payment. [See the Callback API description here][technical-reference-callback].
+* **Defining CallbackURL**: When implementing a scenario, it is optional to set a [`CallbackURL`][technical-reference-callback]  in the `POST` request. If callbackURL is set Swedbank Pay will send a postback request to this URL when the consumer has fulfilled the payment. 
 
 [payment-verify]: #
 [card-payment-purchase]: #
-[card-payment-verify]: #
 [card-payment-recur]: #
 [card-payment-capture]: #
 [card-payment-cancel]: #
 [card-payments-remove-payment-token]: #
-[technical-reference-callbackurl]: #
 [technical-reference-callback]: #
