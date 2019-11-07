@@ -141,8 +141,7 @@ set to Value Purchase are listed below.
 
 ### Options before posting a payment
 
-All valid options when posting in a payment with operation equal to Purchase, 
-are described in [the technical reference][swish-payments-purchase].
+All valid options when posting in a payment with operation equal to Purchase.
 
 #### General
 
@@ -463,7 +462,7 @@ page to the consumer.
    callbackUrl, which was generated when the payment was created.
 * You can create a reversal transactions by implementing the Reversal request. 
   You can also access and reverse a payment through your merchant pages in 
-  the [Swedbank Pay admin portal][admin-portal].
+  the [Swedbank Pay admin portal][payex-admin-portal].
 
 ### Reversal Sequence
 
@@ -595,21 +594,19 @@ sequenceDiagram
 [swish-image]: /assets/img/swish.svg
 [1551695199059-994.png]: /assets/img/1551695199059-994.png
 [1551695460586-802.png]: /assets/img/1551695460586-802.png
-[admin-portal]: #
-[callback-url]: #
-[create-payment]: #
-[create-sale]: #
+[callback-url]: /payments/swish/other-fetures#callback
+[create-payment]: /payments/swish/
 [danske-bank]: https://danskebank.se/sv-se/foretag/medelstora-foretag/onlinetjanster/pages/swish-handel.aspx
 [handelsbanken]: https://www.handelsbanken.se/sv/foretag/konton-betalningar/ta-betalt/swish-for-foretag
-[hosted-view]: #
+[hosted-view]: /payments/swish/seamless-view
 [Länsförsäkringar]: https://www.lansforsakringar.se/stockholm/foretag/bank/lopande-ekonomi/betalningstjanster/swish-handel/
 [MSS]: https://developer.getswish.se/faq/which-test-tools-are-available/
 [nordea]: https://www.nordea.se/foretag/produkter/betala/swish-handel.html
 [payex-admin-portal]: https://admin.payex.com/psp/login/
 [payex-mailto]: mailto:sales@payex.com
-[redirect]: #
-[reversal-reference]: #
-[sales-transaction]: #
+[redirect]: /payments/swish/redirect
+[reversal-reference]: /payments/swish/after-payment#reversals
+[sales-transaction]: /payments/swish/other-features#sales
 [SEB-swish]: https://seb.se/foretag/digitala-tjanster/swish-handel
 [settlement-service]: #
 [sparbanken-oresund]: https://www.sparbankenskane.se/foretag/digitala-tjanster/swish/swish-for-handel/index.htm
@@ -617,9 +614,5 @@ sequenceDiagram
 [support-mailto]: mailto:support.ecom@payex.com
 [swedbank-swish]: https://www.swedbank.se/foretag/betala-och-ta-betalt/ta-betalt/swish/swish-handel/index.htm
 [swish-certificate-management-system]: https://comcert.getswish.net/cert-mgmt-web/authentication.html
-[swish-create-payment]: #
-[swish-payments]: #
-[technical-reference-callback]: #
-[technical-reference]: #
+[technical-reference-callback]: /payments/swish/other-features#callback
 [testverktyg-pdf]: https://www.getswish.se/dokument/Guide_Testverktyg_20151210.pdf
-[swish-payments-purchase]: #
