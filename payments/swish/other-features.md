@@ -37,36 +37,7 @@ sidebar:
 
 {% include prices.md %}
 
-#### Callback 
-
-When a change or update from the back-end system are made on a payment or 
-transaction, Swedbank Pay will perform a callback to inform the payee 
-(merchant) about this update. 
-Callback functionality is explaned in more detail 
-[here][technical-reference-callback].
-
-```mermaid
-sequenceDiagram
-  activate Merchant
-  activate PAYEX
-  PAYEX->>Merchant: POST <callbackUrl>
-  note left of Merchant: Callback by PayEx
-  Merchant-->>PAYEX: HTTP response
-  deactivate PAYEX
-  deactivate Merchant
-  
-  activate Merchant
-  activate PAYEX
-  Merchant->>PAYEX: GET <Swish payment>
-  note left of Merchant: First API request
-  Activate PAYEX
-  PAYEX-->>Merchant: payment resource
-  deactivate PAYEX
-  deactivate Merchant
-```
-
 ### Problem messages  
-
 
 When performing unsuccessful operations, the eCommerce API will respond with a 
 problem message. 
@@ -118,4 +89,4 @@ All Swish error types will have the following URI in front of type:
 
 {% include transaction.md %}
 
-[technical-reference-problems]: #problem-messages
+{% include callback-reference.md %}

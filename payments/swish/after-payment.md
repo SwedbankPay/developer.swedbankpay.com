@@ -481,8 +481,8 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property                   | Data type  | Description                                                                                                                                                            |
-| :------- | :------------------------- | :--------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Required | Property                   | Data type    | Description                                                                                                                                                            |
+| :------- | :------------------------- | :----------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ✔︎       | transaction.amount         | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 SEK`, `5000` = `50.00 SEK`.                                              |
 | ✔︎       | transaction.vatAmount      | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 SEK`, `5000` = `50.00 SEK`.                                              |
 | ✔︎       | transaction.description    | `string`     | A textual description of the capture                                                                                                                                   |
@@ -520,9 +520,9 @@ Content-Type: application/json
 {:.table .table-striped}
 | Property             | Data type | Description                                                                              |
 | :------------------- | :-------- | :--------------------------------------------------------------------------------------- |
-| payment              | `string`    | The relative URI of the payment this capture transaction belongs to.                     |
-| reversal.id          | `string`    | The relative URI of the created capture transaction.                                     |
-| reversal.transaction | `object`    | The object representation of the generic [transaction][technical-reference-transaction]. |
+| payment              | `string`  | The relative URI of the payment this capture transaction belongs to.                     |
+| reversal.id          | `string`  | The relative URI of the created capture transaction.                                     |
+| reversal.transaction | `object`  | The object representation of the generic [transaction][technical-reference-transaction]. |
 
 ## Options after posting a payment
 

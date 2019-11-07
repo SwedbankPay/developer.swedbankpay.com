@@ -134,7 +134,7 @@ sequenceDiagram
 
 ## Options after posting a payment
 
-* **If CallbackURL is set: **Whenever changes to the payment occur a 
+* **If CallbackURL is set**: Whenever changes to the payment occur a 
   [Callback request][technical-reference-callback] will be posted to the 
   callbackUrl, which was generated when the payment was created.
 * You can create a reversal transactions by implementing the Reversal request. 
@@ -157,10 +157,8 @@ sequenceDiagram
 ```
 
 [1551695199059-994.png]: /assets/img/1551695199059-994.png
-[callback-url]: #
-[hosted-view]: #
+[callback-url]: /payments/swish/other-fetures#callback
+[hosted-view]: /payments/swish/seamless-view
 [payex-admin-portal]: https://admin.payex.com/psp/login/
-[redirect]: #
-[swish-payments]: #
-[technical-reference-callback]: #
-[technical-reference]: #
+[redirect]: /payments/swish/redirect
+[technical-reference-callback]: /payments/swish/other-fetures#callback
