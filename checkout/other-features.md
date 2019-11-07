@@ -1390,32 +1390,7 @@ Problem types for a specific payment instrument will have a URI in the format `h
 * [Swish][swish-payments-problems]
 * [Vipps][vipps-payments-problems]
 
-### Expansion
-
-The payment resource contain the ID of related sub-resources in its response
-properties. These sub-resources can be expanded inline by using the request
-parameter `expand`. This is an effective way to limit the number of necessary
-calls to the API, as you return several properties related to a Payment resource
-in a single request.
-
-Note that the `expand` parameter is available to all API requests but only
-applies to the request response. This means that you can use the expand
-parameter on a `POST`  or `PATCH`request to get a response containing the target
-resource including expanded properties.
-
-This example below add the `urls` and `authorizations` property inlines to the
-response, enabling you to access information from these sub-resources.
-
-{:.code-header}
-**Expansion**
-
-```http
-GET /psp/creditcard/payments/5adc265f?$expand=urls,authorizations HTTP/1.1
-Host: api.payex.com
-```
-
-To avoid unnecessary overhead, you should only expand the nodes you need info
-about.
+{% include expand-parameter.md %}
 
 ## Payee Info
 

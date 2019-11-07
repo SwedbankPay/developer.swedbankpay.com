@@ -110,4 +110,6 @@ All Swish error types will have the following URI in front of type:
 
 {% include payeeinfo.md %}
 
+{% include expand-parameter.md %}
+
 [technical-reference-problems]: #

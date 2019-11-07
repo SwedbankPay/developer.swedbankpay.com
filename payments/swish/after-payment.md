@@ -534,6 +534,35 @@ Content-Type: application/json
     You can also access and reverse a payment through your merchant pages 
     in the [Swedbank Pay admin portal][payex-admin-portal].
 
+#### Abort
+
+To abort a payment order, perform the `update-paymentorder-abort` operation 
+that is returned in the payment order response. 
+You need to include the following `HTTP` body:
+
+{:.code-header}
+**Request**
+
+```http
+PATCH /psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c HTTP/1.1
+Host: api.externalintegration.payex.com
+Authorization: Bearer <MerchantToken>
+Content-Type: application/json
+
+{
+  "paymentorder": {
+    "operation": "Abort",
+    "abortReason": "CancelledByConsumer"
+  }
+}
+```
+
+**Response**
+
+The response given when aborting a payment order is equivalent to a `GET` 
+request towards the `paymentorders` resource, 
+[as displayed above][payment-order], with its `state` set to `Aborted`.
+
 #### Reversal Sequence
 
 A reversal transcation have to match the Payee reference of a 
@@ -563,12 +592,12 @@ Swish does not support `recurring` payments.
 
 [core-payment-resources]: /payments
 [payex-admin-portal]: https://admin.payex.com/psp/login/
-[reversal-reference]: #
-[technical-reference-abort]: #
-[technical-reference-callback]: #
-[technical-reference-expand]: #
+[technical-reference-abort]: #abort
+[technical-reference-callback]: /payments/swish/other-features#callback
+[technical-reference-expand]: /payments/swish/other-features#expansion
 [technical-reference-payeeReference]: #
 [technical-reference-problemmessages]: #
 [technical-reference-transaction]: #
 [general-http-info]: #
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
+[payment-order]: #create-payment
