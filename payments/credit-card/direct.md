@@ -69,54 +69,54 @@ When dealing with credit card payments, 3D-Secure authentication of the cardhold
 
 ```mermaid
 sequenceDiagram
-  Consumer->Merchant: start purchase
+  Consumer->>Merchant: start purchase
   activate Merchant
-  Merchant->PayEx: POST [operation=PURCHASE][purchase-operation-link]
+  Merchant->>PayEx: POST [operation=PURCHASE][purchase-operation-link]
   note left of Merchant: First API request
   activate PayEx
-  PayEx-->Merchant: payment resource
+  PayEx-->>Merchant: payment resource
 
-  Merchant -> PayEx: POST [Credit card direct authroization][credit-card-auth-direct]
+  Merchant ->> PayEx: POST [Credit card direct authroization][credit-card-auth-direct]
   note left of Merchant: Second API request
-  PayEx --> Merchant: transaction resource
+  PayEx -->> Merchant: transaction resource
 
   deactivate PayEx
-  Merchant-->Consumer: display purchase result
+  Merchant-->>Consumer: display purchase result
   deactivate Merchant
 ```
 
 ```mermaid
 sequenceDiagram
-  Consumer->Merchant: start purchase
+  Consumer->>Merchant: start purchase
   activate Merchant
-  Merchant->PayEx: POST [purchase-operation-link][purchace-operation-link] [operation=PURCHASE]
+  Merchant->>PayEx: POST [purchase-operation-link][purchace-operation-link] [operation=PURCHASE]
   note left of Merchant: First API request
   activate PayEx
-  PayEx-->Merchant: payment resource
+  PayEx-->>Merchant: payment resource
 
   Merchant -> PayEx: POST [Direct authorization][direct-authorization-reference]
   note left of Merchant: Second API request
   PayEx --> Merchant: transaction resource\n(operation redirect-authentication for 3DS)
 
   deactivate PayEx
-  Merchant-->Consumer: redirect to 3D-secure page
+  Merchant-->>Consumer: redirect to 3D-secure page
   deactivate Merchant
   
   note left of Consumer: redirect to card issuing bank
-  Consumer -> IssuingBank: 3D-secure authentication
+  Consumer ->> IssuingBank: 3D-secure authentication
   activate IssuingBank
-  IssuingBank-->Consumer: redirect to merchant
+  IssuingBank-->>Consumer: redirect to merchant
   note left of Consumer: redirect back to merchant
   deactivate IssuingBank
   
-  Consumer->Merchant: access merchant page
+  Consumer->>Merchant: access merchant page
   activate Merchant
-  Merchant->PayEx: GET [payments/credit-card/payments][get-payment-response]
+  Merchant->>PayEx: GET [payments/credit-card/payments][get-payment-response]
   note left of Merchant: Third API request
   activate PayEx
-  PayEx-->Merchant: payment resource
+  PayEx-->>Merchant: payment resource
   deactivate PayEx
-  Merchant-->Consumer: display purchase result
+  Merchant-->>Consumer: display purchase result
   deactivate Merchant
 ```
 
@@ -124,16 +124,17 @@ sequenceDiagram
 
 * If the payment shown above is done as a two-phase (Authorization), you will need to implement the Capture and Cancel requests.
 * **Abort:** It is possible to [abort a payment][abort] if the payment has no successful transactions.
-* For reversals, you will need to implement the Reversal request.
+* For reversals, you will need to implement the [Reversal][reversal] request.
 * If you did a PreAuthorization, you will have to send a Finalize to the transaction using [PATCH on the Authorization][finalizing-the-transaction].
 * **Callback from PayEx:** Whenever changes to the payment occur a [Callback request][callback-request] will be posted to the `callbackUrl`, generated when the payment was created.
 
-[abort]: /payments/credit-card/after-payment
+[abort]: /payments/credit-card/other-features/#abort
 [callback-API-description]: #
 [callback-request]: /payments/credit-card/after-payment
 [CallbackURL]: #
-[Cancel]: /payments/credit-card/after-after-payment
-[Capture]: /payments/credit-card/after-after-payment
+[Cancel]: /payments/credit-card/after-payment/#Cancellations
+[Capture]: /payments/credit-card/after-payment/#Capture
 [finalize-request]: /payments/credit-card/after-payment
-[finalizing-the-transaction]: /payments/credit-card/after-after-payment
+[finalizing-the-transaction]: /payments/credit-card/after-payment
 [PCI-link]: https://www.pcisecuritystandards.org/
+[reversal]: /payments/credit-card/after-payment/#Reversals

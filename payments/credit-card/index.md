@@ -27,13 +27,13 @@ TODO: This page needs serious clean-up.
 
 {% include jumbotron.html body="**Credit Card Payments** is the most popular,
 versatile and global way to initate a transaction with a customer. Choose
-between our **Seamless View** and **Redirect** integration options." %}
+between our **Seamless View**, **Redirect**, or **Direct** integration options." %}
 
-* When properly set up in your merchant/webshop site and the payer starts the purchase process, you need to make a `POST` request towards PayEx with your Purchase information. This will generate a payment object with a unique `paymentID`. You either receive a Redirect URL to a hosted page or a JavaScript source in response.
+* When properly set up in your merchant/webshop site and the payer starts the purchase process, you need to make a `POST` request towards PayEx with your Purchase information. This will generate a payment object with a unique `paymentID`. You either receive a Redirect URL to a Swedbank Pay hosted page(Redirect integration) or a JavaScript source in response(Seamless View integration).
 * You need to [redirect][redirect] the payer's browser to that specified URL, or embed the script source on your site to create a Hosted View in an iFrame; so that she can enter the credit card details in a secure PayEx hosted environment.
 * PayEx will handle 3D-secure authentication when this is required.
 * PayEx will redirect the payer's browser to - or display directly in the iFrame - one of two specified URLs, depending on whether the payment session is followed through completely or cancelled beforehand. Please note that both a successful and rejected payment reach completion, in contrast to a cancelled payment.
-* When you detect that the payer reach your `completeUrl` , you need to do a `GET` request to receive the state of the transaction, containing the `paymentID` generated in the first step, to receive the state of the transaction.
+* When you detect that the payer reach your `completeUrl` , you need to do a `GET` request, containing the `paymentID` generated in the first step, to receive the state of the transaction.
 
 ## Screenshots
 
@@ -58,7 +58,7 @@ Our `payment` example below uses the [`purchase`][purchase] value.
 The intent of the payment identifies how and when the charge will be effectuated. This determine the type of transaction used during the payment process.
 
 * **PreAuthorization**: A purchase with `PreAuthorization` intent is handled in a similar manner as the ordinary authorization procedure. The notable difference is that the funds are put on hold for 30 days (for an ordinary authorization the funds are reserved for 7 days). Also, with a `PreAuthorization`, the captured amount can be higher than the preauthorized amount. The amount captured should not be higher than 20% of the original amount, due to card brand rules. You complete the purchase by [finalizing the transaction][finalizing-the-transaction].
-* **Authorization (two-phase)**: If you want the credit card to reserve the amount, you will have to specify that the intent of the purchase is Authorization. The amount will be reserved but not charged. You will later (i.e. when you are ready to ship the purchased products) have to make a [Capture] or [Cancel] request.
+* **Authorization (two-phase)**: If you want the credit card to reserve the amount, you will have to specify that the intent of the purchase is Authorization. The amount will be reserved but not charged. You will later (i.e. when you are ready to ship the purchased products) have to make a [Capture][capture] or [Cancel][cancel] request.
 * **AutoCapture (one-phase)**:  If you want the credit card to be charged right away, you will have to specify that the intent of the purchase is `AutoCapture`. The credit card will be charged automatically after authorization and you don't need to do any more financial operations to this purchase.
 
 ### Purchase flow
@@ -93,7 +93,7 @@ sequenceDiagram
   note left of Consumer: First API request
   PayEx-->Merchant: payment resource
   deactivate PayEx
-  Merchant-->Consumer: authorization page
+  Merchant-->>Consumer: authorization page
   deactivate Merchant
 
   Consumer->>+PayEx: access authorization page
@@ -126,7 +126,7 @@ sequenceDiagram
   opt Callback is set
     PayEx->>PayEx: Payment is updated
     activate PayEx
-    PayEx->>Merchant: send [Callback request](#)
+    PayEx->>Merchant: send [Callback request](callback-request)
     deactivate PayEx
   end
 ```
@@ -140,40 +140,14 @@ sequenceDiagram
 {:height="711px" width="400px"}
 {:height="711px" width="400px"}
 [finalizing-the-transaction]: /payments/credit-card/after-payment
-[abort-a-payment]: #
-[abort]: /payments/credit-card/after-payment
-[before-you-finalize-the-transaction]: /payments/credit-card/after-payment
-[callback-API-description]: #
-[callback-request]: /payments/credit-card/after-payment
-[callback]: #
-[CallbackURL]: #
-[Cancel]: /payments/credit-card/after-after-payment
-[Capture]: /payments/credit-card/after-after-payment
-[card-verification]: #
-[card]: #
-[credit-card-auth-direct]: #
-[credit-card]: #
-[creditcard]: #
-[delete-payment-token]: #
-[direct-authorization-reference]: #
-[expanding]: #
+[callback-request]: /payments/credit-card/other-features/#callback
+[cancel]: /payments/credit-card/after-payment/#cancellations
+[capture]: /payments/credit-card/after-payment/#Capture
 [finalize-request]: /payments/credit-card/after-payment
-[financing-invoice]: #
 [get-payment-response]: payments/credit-card/payments
-[hosted-view]: /..
-[invoice]: #
-[one-click-payments]: #
 [PCI-link]: https://www.pcisecuritystandards.org/
-[purchace-operation-link]: #
-[purchase-operation-link]: #
-[purchase-payment]: #
-[recurring-card-payment]: #
-[recurring-server-to-server-based-payments]: #
 [redirect]: /payments/credit-card/redirect
-[remove-payment-token]: #
 [see-the-PATCH-payment-description]: /payments/credit-card/after-payment
-[technical-reference]: #
-[verify-payment]: #
 [resources-section]: /resources/#general
 [create-payment]: /payments/credit-card/other-features/#create-payment
 [purchase]: /payments/credit-card/other-features/#purchase

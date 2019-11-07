@@ -28,8 +28,8 @@ sidebar:
 * *Abort:* It is possible to abort the process, if the payment has no successful transactions. [See the PATCH payment description][see-the-PATCH-payment-description].  
 * If the payment shown above is done as a two phase (`Authorization`), you will need to implement the `Capture` and `Cancel` requests.  
 * For `reversals`, you will need to implement the Reversal request.  
-* If you did a `PreAuthorization`, you will have to send a [Finalize request] to finalize the transaction.  
-* *If CallbackURL is set:* Whenever changes to the payment occur a [Callback request] will be posted to the callbackUrl, which was generated when the payment was created.  
+* If you did a `PreAuthorization`, you will have to send a [Finalize request][finalize] to finalize the transaction.  
+* *If CallbackURL is set:* Whenever changes to the payment occur a [Callback request][callback] will be posted to the callbackUrl, which was generated when the payment was created.  
 
 
 ### Capture  
@@ -161,6 +161,87 @@ sequenceDiagram
   Deactivate PayEx
   Deactivate Merchant
 ```
+
+### Finalize
+
+Finalizing a preauthorized payment is done as a `PATCH`  after a successful `Authorization` transaction has been created. The common use-case for the finalize operation is to authorize the payment (that has the preauthorization intent) and complete all payment related activities as soon as possible - in order to complete (finalize) everything server-to-server afterwards. The only allowed activity is `Finalize`. To use the operation, you should perform a `GET` on the payment after the user returns from the `redirect-authorization` operation and find the operation `update-authorization-finalize`.
+
+{:.code-header}
+**Request**
+
+```http
+PATCH /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations/<transactionId> HTTP/1.1
+Host: api.payex.com
+Authorization: Bearer <MerchantToken>
+Content-Type: application/json
+
+{
+    "transaction": {
+        "activity": "Finalize"
+    }
+}
+```
+
+{:.table .table-striped}
+| ✔︎︎︎︎︎ | Property | Data type |Description
+| |:--------|:-------|:---------
+| ✔︎︎︎︎︎ |transaction.activity|string|Finalize
+
+{:.code-header}
+**Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "payment": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "authorization": {
+        "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations/12345678-1234-1234-1234-123456789012",
+        "paymentToken": "12345678-1234-1234-1234-123456789012",
+        "maskedPan": "123456xxxxxx1234",
+        "expireDate": "mm/yyyy",
+        "panToken": "12345678-1234-1234-1234-123456789012",
+        "cardBrand": "Visa|MC",
+        "cardType": "Credit Card|Debit Card",
+        "issuingBank": "UTL MAESTRO",
+        "countryCode": "999",
+        "acquirerTransactionType": "3DSECURE|SSL",
+        "acquirerStan": "39736",
+        "acquirerTerminalId": "39",
+        "acquirerTransactionTime": "2017-08-29T13:42:18Z",
+        "authenticationStatus": "Y|A|U|N",
+        "transaction": {
+            "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
+            "created": "2016-09-14T01:01:01.01Z",
+            "updated": "2016-09-14T01:01:01.03Z",
+            "type": "Authorization",
+            "state": "Initialized",
+            "number": 1234567890,
+            "amount": 1000,
+            "vatAmount": 250,
+            "description": "Test transaction",
+            "payeeReference": "AH123456",
+            "failedReason": "",
+            "isOperational": true,
+            "operations": [
+                {
+                    "href": "https://api.payex.com/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+                    "rel": "edit-authorization",
+                    "method": "PATCH"
+                }
+            ]
+        }
+    }
+}
+```
+
+{:.table .table-striped}
+|Property|Data type|Description
+|:-------|:--------|:-----------
+|payment|string|The relative URI of the payment this finalize transaction resource belongs to.
+|authorization|object|The object representation of the [authorization transaction resource].
+
 
 ### Cancellations 
 
@@ -475,7 +556,7 @@ Content-Type: application/json
 
 #### Callback 
 
-When a change or update from the back-end system are made on a payment or transaction, Swedbank Pay will perform a callback to inform the payee (merchant) about this update. Callback functionality is explaned in more detail [here][technical-reference-callback].
+When a change or update from the back-end system are made on a payment or transaction, Swedbank Pay will perform a callback to inform the payee (merchant) about this update. Callback functionality is explaned in more detail [here][callback].
 
 ```mermaid
 sequenceDiagram
@@ -604,4 +685,4 @@ You have the following options after a server-to-server Recur payment `POST`.
 [technical-reference-credit-card-cancellations]: #
 [transaction-resource]: #
 [payeeReference]: #
-[technical-reference-callback]: #
+[callback]: /payment/credit-card/other-features/#callback
