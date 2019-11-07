@@ -471,7 +471,7 @@ sales transaction.
 
 ```mermaid
 sequenceDiagram
-  Merchant->>PayEx: POST [Swish reversals][reversal-reference]
+  Merchant->>PayEx: POST <Swish reversal>
   Activate Merchant
   Activate PayEx
   PayEx-->>Merchant: transaction resource

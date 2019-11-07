@@ -146,3 +146,4 @@ sequenceDiagram
 [sales-transaction]: /payments/swish/after-payment#sales
 [swish-payments]: /payments/swish/after-payment#payment-resource
 [technical-reference-callback]: /payments/swish/other-features#callback
+[callback-url]: /payments/swish/other-features#callback
