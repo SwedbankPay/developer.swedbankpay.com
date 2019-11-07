@@ -19,17 +19,26 @@ sidebar:
 {% include alert.html type="warning"
                       icon="warning"
                       header="Site under development"
-                      body="The Developer Portal is under construction and should not be used to integrate against Swedbank Pay's APIs yet." %}
+                      body="The Developer Portal is under construction and 
+                      should not be used to integrate against Swedbank Pay's 
+                      APIs yet." %}
 
 ## Payment Resource
 
-The `payment` resource and all general sub-resources can be found in the [[core payment resources>>doc:Main.ecommerce.technical-reference.core-payment-resources.WebHome]] section.
+The `payment` resource and all general sub-resources can be found in the 
+[core payment resources][core-payment-resources] section.
 
 ### Create Payment
 
-To create a Swish payment, you perform an HTTP ##POST## against the ##/psp/swish/payments## resource. Please read the [[general information >>doc:Main.ecommerce.technical-reference.WebHome]]on how to compose a valid HTTP request before proceeding.
+To create a Swish payment, you perform an HTTP `POST` against the 
+`/psp/swish/payments` resource. Please read the 
+[general information][general-http-info] on how to compose a valid HTTP request before proceeding.
 
-An example of a payment creation request is provided below. Each individual Property of the JSON document is described in the following section. Use the [expand][technical-reference-expand] request parameter to get a response that includes one or more expanded sub-resources inlined.
+An example of a payment creation request is provided below. 
+Each individual Property of the JSON document is described in the 
+following section. 
+Use the [expand][technical-reference-expand] request parameter to get a 
+response that includes one or more expanded sub-resources inlined.
 
 {:.code-header}
 **Request**
@@ -81,31 +90,32 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property| Data type| Required| Description
-| payment.operation | string | ✔︎ | `Purchase`
-| payment.intent | string | ✔︎ | `Sale`
-| payment.currency |string| Y | `SEK`
-| payment.prices.type | string | ✔︎ | `Swish`
-| payment.prices.amount | integer | Y |Amount is entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 SEK 5000 = 50.00 SEK.
-| payment.prices.vatAmount | integer | Y |If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.
-| payment.description | string(40) | Y |A textual description max 40 characters of the purchase.
-| payment.payerReference | string | N |The reference to the payer (consumer/end-user) from the merchant system, like mobile number, customer number etc.
-| payment.userAgent | string | Y |The user agent reference of the consumer's browser - [[see user agent definition>>url:https://en.wikipedia.org/wiki/User_agent]]
-| payment.language | string | Y |nb-NO, sv-SE or en-US.
-| payment.urls.hostUrls | array | Y |The array of URIs valid for embedding of Swedbank Pay Hosted Views.
-| payment.urls.completeUrl | string | Y |The URI that Swedbank Pay will redirect back to when the payment page is completed.
-| payment.urls.cancelUrl | string | Y |The URI that Swedbank Pay will redirect back to when the user presses the cancel button in the payment page.
-| payment.urls.callbackUrl | string | N |The URI that Swedbank Pay will perform an HTTP POST against every time a transaction is created on the payment. See [callback][technical-reference-callback] for details.
-| payment.urls.logoUrl | string |N|The URI that will be used for showing the customer logo. Must be a picture with at most 50px height and 400px width. Require https.
-| payment.urls.termsOfServiceUrl | string | N | A URI that contains your terms and conditions for the payment, to be linked on the payment page. Require https.
-| payment.payeeInfo.payeeId | string | Y |This is the unique id that identifies this payee (like merchant) set by PayEx.
-| payment.payeeInfo.payeeReference | string(35) | Y |A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][technical-reference-payeeReference] for details.
-| payment.payeeInfo.payeeName | string | N |The payee name (like merchant name) that will be displayed to consumer when redirected to PayEx.
-| payment.payeeInfo.productCategory | string | N |A product category or number sent in from the payee/merchant. This is not validated by PayEx, but will be passed through the payment process and may be used in the settlement process.
-| payment.payeeInfo.orderReference | string(50) |N|The order reference should reflect the order reference found in the merchant's systems.
-| payment.payeeInfo.subsite | string(40) |N|The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.
-| payment.prefillInfo.msisdn | string | N |Number will be prefilled on payment page, if valid.
-| payment.swish.ecomOnlyEnabled | boolean | N |If true you trigger the redirect payment scenario by default.
+| Required | Property                      | Data type    | Description                                                                                                                                                                                                 |
+| :------- | :---------------------------- | :----------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ✔︎       | └➔ .operation                 | `string`     | `Purchase`                                                                                                                                                                                                  |
+| ✔︎       | └➔ .intent                    | `string`     | `Sale`                                                                                                                                                                                                      |
+| ✔︎       | └➔ .currency                  | `string`     | `SEK`                                                                                                                                                                                                       |
+| ✔︎       | └➔ .prices.type               | `string`     | `Swish`                                                                                                                                                                                                     |
+| ✔︎       | └➔ .prices.amount             | `integer`    | Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 SEK` `5000` = `50.00 SEK`.                                                                                 |
+| ✔︎       | └➔ .prices.vatAmount          | `integer`    | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                          |
+| ✔︎       | └➔ .description               | `string(40)` | A textual description max 40 characters of the purchase.                                                                                                                                                    |
+|          | └➔ .payerReference            | `string`     | The reference to the payer (consumer/end-user) from the merchant system, like mobile number, customer number etc.                                                                                           |
+| ✔︎       | └➔ .userAgent                 | `string`     | The user agent reference of the consumer's browser - [see user agent definition][user-agent]                                                                                                                |
+| ✔︎       | └➔ .language                  | `string`     | nb-NO, sv-SE or en-US.                                                                                                                                                                                      |
+| ✔︎       | └➔ .urls.hostUrls             | `array`      | The array of URIs valid for embedding of Swedbank Pay Hosted Views.                                                                                                                                         |
+| ✔︎       | └➔ .urls.completeUrl          | `string`     | The URI that Swedbank Pay will redirect back to when the payment page is completed.                                                                                                                         |
+| ✔︎       | └➔ .urls.cancelUrl            | `string`     | The URI that Swedbank Pay will redirect back to when the user presses the cancel button in the payment page.                                                                                                |
+|          | └➔ .urls.callbackUrl          | `string`     | The URI that Swedbank Pay will perform an HTTP POST against every time a transaction is created on the payment. See [callback][technical-reference-callback] for details.                                   |
+|          | └➔ .urls.logoUrl              | `string`     | The URI that will be used for showing the customer logo. Must be a picture with at most 50px height and 400px width. Require https.                                                                         |
+|          | └➔ .urls.termsOfServiceUrl    | `string`     | A URI that contains your terms and conditions for the payment, to be linked on the payment page. Require https.                                                                                             |
+| ✔︎       | └➔ .payeeInfo.payeeId         | `string`     | This is the unique id that identifies this payee (like merchant) set by PayEx.                                                                                                                              |
+| ✔︎       | └➔ .payeeInfo.payeeReference  | `string(35)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][technical-reference-payeeReference] for details. |
+|          | └➔ .payeeInfo.payeeName       | `string`     | The payee name (like merchant name) that will be displayed to consumer when redirected to PayEx.                                                                                                            |
+|          | └➔ .payeeInfo.productCategory | `string`     | A product category or number sent in from the payee/merchant. This is not validated by PayEx, but will be passed through the payment process and may be used in the settlement process.                     |
+|          | └➔ .payeeInfo.orderReference  | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                     |
+|          | └➔ .payeeInfo.subsite         | `string(40)` | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.                                                 |
+|          | └➔ .prefillInfo.msisdn        | `string`     | Number will be prefilled on payment page, if valid.                                                                                                                                                         |
+|          | └➔ .swish.ecomOnlyEnabled     | `boolean`    | If true you trigger the redirect payment scenario by default.                                                                                                                                               |
  
 {:.code-header}
 **Response**
@@ -587,3 +597,5 @@ Swish does not support `recurring` payments.
 [technical-reference-payeeReference]: #
 [technical-reference-problemmessages]: #
 [technical-reference-transaction]: #
+[general-http-info]: #
+[user-agent]: https://en.wikipedia.org/wiki/User_agent
