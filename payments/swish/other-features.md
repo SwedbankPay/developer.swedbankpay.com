@@ -19,7 +19,9 @@ sidebar:
 {% include alert.html type="warning"
                       icon="warning"
                       header="Site under development"
-                      body="The Developer Portal is under construction and should not be used to integrate against Swedbank Pay's APIs yet." %}
+                      body="The Developer Portal is under construction and 
+                      should not be used to integrate against Swedbank Pay's 
+                      APIs yet." %}
 
 {% include settlement-reconciliation.md %}
 
@@ -47,18 +49,18 @@ Callback functionality is explaned in more detail
 sequenceDiagram
   activate Merchant
   activate PAYEX
-  PAYEX->Merchant: POST <callbackUrl>
+  PAYEX->>Merchant: POST <callbackUrl>
   note left of Merchant: Callback by PayEx
-  Merchant-->PAYEX: HTTP response
+  Merchant-->>PAYEX: HTTP response
   deactivate PAYEX
   deactivate Merchant
   
   activate Merchant
   activate PAYEX
-  Merchant->PAYEX: GET <Swish payment>
+  Merchant->>PAYEX: GET <Swish payment>
   note left of Merchant: First API request
   Activate PAYEX
-  PAYEX-->Merchant: payment resource
+  PAYEX-->>Merchant: payment resource
   deactivate PAYEX
   deactivate Merchant
 ```
@@ -116,4 +118,4 @@ All Swish error types will have the following URI in front of type:
 
 {% include transaction.md %}
 
-[technical-reference-problems]: #
+[technical-reference-problems]: #problem-messages
