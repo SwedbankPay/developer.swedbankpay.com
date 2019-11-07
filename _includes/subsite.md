@@ -344,12 +344,12 @@ Content-Type: application/json
 ``` 
 
 {:.table .table-striped}
-| Property                   | Data type  | Required | Description                                                                                                                                                                |
-| :------------------------- | :--------- | :------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| transaction.amount         | integer    | ✔︎       | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` `100.00 SEK`, `5000` `50.00 SEK`.                                                      |
-| transaction.vatAmount      | integer    | ✔︎       | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` `100.00 SEK`, `5000` `50.00 SEK`.                                                      |
-| transaction.description    | string     | ✔︎       | A textual description of the capture                                                                                                                                       |
-| transaction.payeeReference | string(35) | ✔︎       | A  reference that must match the  ##payeeReference## of the sales transaction you want to reverse. See [`payeeReference`][technical-reference-payeereference] for details. |
+| Required | Property                   | Data type  | Description                                                                                                                                                                |
+| :------- | :------------------------- | :--------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ✔︎       | transaction.amount         | integer    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` `100.00 SEK`, `5000` `50.00 SEK`.                                                      |
+| ✔︎       | transaction.vatAmount      | integer    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` `100.00 SEK`, `5000` `50.00 SEK`.                                                      |
+| ✔︎       | transaction.description    | string     | A textual description of the capture                                                                                                                                       |
+| ✔︎       | transaction.payeeReference | string(35) | A  reference that must match the  ##payeeReference## of the sales transaction you want to reverse. See [`payeeReference`][technical-reference-payeereference] for details. |
 
 
 {:.code-header}

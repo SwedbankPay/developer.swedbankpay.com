@@ -59,7 +59,7 @@ The consumer/end-user is redirected to Swedbank Pay hosted pages and prompted
 to insert her phone number to initiate the sales transaction.
 
 ![Consumer paying with Swish using PayEx]
-[1551695199059-994.png]{:width="467px" height="364px"}
+[swish-redirect-image]{:width="467px" height="364px"}
 
 ## API Requests
 
@@ -156,7 +156,7 @@ sequenceDiagram
   Deactivate Merchant
 ```
 
-[1551695199059-994.png]: /assets/img/1551695199059-994.png
+[swish-redirect-image]: /assets/Screenshots/Swish/redirect view/View/windows small window.PNG
 [callback-url]: /payments/swish/other-fetures#callback
 [hosted-view]: /payments/swish/seamless-view
 [payex-admin-portal]: https://admin.payex.com/psp/login/

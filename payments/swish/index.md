@@ -263,7 +263,7 @@ The consumer/end-user is redirected to Swedbank Pay hosted pages and
 prompted to insert her phone number to initiate the sales transaction.
 
 ![Consumer paying with Swish using PayEx]
-[1551695199059-994.png]{:width="467px" height="364px"}
+[swish-redirect-view]{:width="467px" height="364px"}
 
 ## API Requests
 
@@ -516,7 +516,7 @@ The payer is redirected to Swedbank Pay hosted pages and prompted to
 initiate the sales transaction.
 
 ![User being promted to initiate a sales transaction]
-[1551695460586-802.png]{:width="400px" height="711px"}
+[swish-hosted-view]{:width="657.625px" height="357.391px"}
 
 ## API Requests
 
@@ -592,8 +592,8 @@ sequenceDiagram
 
 [se-image]: /assets/img/se.svg
 [swish-image]: /assets/img/swish.svg
-[1551695199059-994.png]: /assets/img/1551695199059-994.png
-[1551695460586-802.png]: /assets/img/1551695460586-802.png
+[swish-redirect-view]: /assets/Screenshots/Swish/redirect view/View/windows small window.PNG
+[swish-hosted-view]: /assets/Screenshots/Swish/hostedView/windows.PNG
 [callback-url]: /payments/swish/other-fetures#callback
 [create-payment]: /payments/swish/
 [danske-bank]: https://danskebank.se/sv-se/foretag/medelstora-foretag/onlinetjanster/pages/swish-handel.aspx
