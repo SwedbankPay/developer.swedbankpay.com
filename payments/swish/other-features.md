@@ -112,4 +112,8 @@ All Swish error types will have the following URI in front of type:
 
 {% include expand-parameter.md %}
 
+#### Transaction
+
+{% include transaction.md %}
+
 [technical-reference-problems]: #

@@ -392,8 +392,7 @@ Content-Type: application/json
 }
 ```
 
-**Operations**
-`redirect-app-swish` is only returned in m-commerce.
+_Operation_ `redirect-app-swish` is only returned in m-commerce.
 
 The payment now contains a sale transaction with the status (state) 
 `AwaitingActivity`. 
@@ -450,11 +449,11 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property       | Type   | Description                                                                                          |
-| :------------- | :----- | :--------------------------------------------------------------------------------------------------- |
-| payment        | string | The relative URI of the payment that the reversal transactions belong to.                            |
-| reversalList   | array  | The array of reversal transaction objects.                                                           |
-| reversalList[] | object | The reversal transaction object representation of the reversal transaction resource described below. |
+| Property       | Type     | Description                                                                                          |
+| :------------- | :------- | :--------------------------------------------------------------------------------------------------- |
+| payment        | `string` | The relative URI of the payment that the reversal transactions belong to.                            |
+| reversalList   | `array`  | The array of reversal transaction objects.                                                           |
+| reversalList[] | `object` | The reversal transaction object representation of the reversal transaction resource described below. |
 
 #### Create Reversal transaction 
 
@@ -482,12 +481,12 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property                   | Data type  | Required | Description                                                                                                                                                            |
-| :------------------------- | :--------- | :------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| transaction.amount         | integer    | Y        | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 SEK`, `5000` = `50.00 SEK`.                                              |
-| transaction.vatAmount      | integer    | Y        | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 SEK`, `5000` = `50.00 SEK`.                                              |
-| transaction.description    | string     | Y        | A textual description of the capture                                                                                                                                   |
-| transaction.payeeReference | string(35) | Y        | A  reference that must match the  `payeeReference` of the sales transaction you want to reverse. See [payeeReference][technical-reference-payeeReference] for details. |
+| Required | Property                   | Data type  | Description                                                                                                                                                            |
+| :------- | :------------------------- | :--------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ✔︎       | transaction.amount         | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 SEK`, `5000` = `50.00 SEK`.                                              |
+| ✔︎       | transaction.vatAmount      | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 SEK`, `5000` = `50.00 SEK`.                                              |
+| ✔︎       | transaction.description    | `string`     | A textual description of the capture                                                                                                                                   |
+| ✔︎       | transaction.payeeReference | `string(35)` | A  reference that must match the  `payeeReference` of the sales transaction you want to reverse. See [payeeReference][technical-reference-payeeReference] for details. |
 
 {:.code-header}
 **Response**
@@ -521,9 +520,9 @@ Content-Type: application/json
 {:.table .table-striped}
 | Property             | Data type | Description                                                                              |
 | :------------------- | :-------- | :--------------------------------------------------------------------------------------- |
-| payment              | string    | The relative URI of the payment this capture transaction belongs to.                     |
-| reversal.id          | string    | The relative URI of the created capture transaction.                                     |
-| reversal.transaction | object    | The object representation of the generic [transaction][technical-reference-transaction]. |
+| payment              | `string`    | The relative URI of the payment this capture transaction belongs to.                     |
+| reversal.id          | `string`    | The relative URI of the created capture transaction.                                     |
+| reversal.transaction | `object`    | The object representation of the generic [transaction][technical-reference-transaction]. |
 
 ## Options after posting a payment
 
@@ -591,13 +590,13 @@ Swish does not support `cancel`.
 Swish does not support `recurring` payments.
 
 [core-payment-resources]: /payments
+[general-http-info]: /resources/
 [payex-admin-portal]: https://admin.payex.com/psp/login/
+[payment-order]: #create-payment
 [technical-reference-abort]: #abort
 [technical-reference-callback]: /payments/swish/other-features#callback
 [technical-reference-expand]: /payments/swish/other-features#expansion
-[technical-reference-payeeReference]: #
-[technical-reference-problemmessages]: #
-[technical-reference-transaction]: #
-[general-http-info]: #
+[technical-reference-payeeReference]: /payments/swish/other-features#payee-reference
+[technical-reference-problemmessages]: /payments/swish/other-features#problem-messages
+[technical-reference-transaction]: /payments/swish/other-features#transaction
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
-[payment-order]: #create-payment
