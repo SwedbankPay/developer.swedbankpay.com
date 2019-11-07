@@ -454,7 +454,7 @@ sequenceDiagram
 [Länsförsäkringar]: https://www.lansforsakringar.se/stockholm/foretag/bank/lopande-ekonomi/betalningstjanster/swish-handel/
 [MSS]: https://developer.getswish.se/faq/which-test-tools-are-available/
 [nordea]: https://www.nordea.se/foretag/produkter/betala/swish-handel.html
-[payex-admin-portal]: #
+[payex-admin-portal]: https://admin.payex.com/psp/login/
 [payex-mailto]: mailto:sales@payex.com
 [redirect]: #
 [reversal-reference]: #

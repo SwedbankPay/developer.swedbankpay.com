@@ -121,7 +121,7 @@ sequenceDiagram
 {:width="467px" height="364px"}
 [callback-url]: #
 [hosted-view]: #
-[payex-admin-portal]: #
+[payex-admin-portal]: https://admin.payex.com/psp/login/
 [redirect]: #
 [swish-payments]: #
 [technical-reference-callback]: #

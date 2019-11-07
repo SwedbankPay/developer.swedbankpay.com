@@ -110,7 +110,7 @@ sequenceDiagram
 ```
 
 [create-payment]: #
-[payex-admin-portal]: #
+[payex-admin-portal]: https://admin.payex.com/psp/login/
 [sales-transaction]: #
 [swish-payments]: #
 [technical-reference-callback]: #

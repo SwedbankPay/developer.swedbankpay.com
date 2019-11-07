@@ -165,7 +165,12 @@ Content-Type: application/json
 
 ### Operations
 
-A payment resource has a set of operations that can be performed on it, from its creation to its completion. The operations available at any given time vary between payment methods and depends on the current state of the payment resource. A list of possible operations for Swish Payments and their explanation is given below.
+A payment resource has a set of operations that can be performed on it, 
+from its creation to its completion. 
+The operations available at any given time vary between payment methods and 
+depends on the current state of the payment resource. 
+A list of possible operations for Swish Payments and their explanation 
+is given below.
 
 {:.code-header}
 **Operations**
@@ -199,27 +204,36 @@ A payment resource has a set of operations that can be performed on it, from its
 ```
 
 {:.table .table-striped}
-| Property| Description
-| href |The target URI to perform the operation against.
-| rel |The name of the relation the operation has to the current resource.
-| method |The HTTP method to use when performing the operation.
+| Property | Description                                                         |
+| :------- | :------------------------------------------------------------------ |
+| href     | The target URI to perform the operation against.                    |
+| rel      | The name of the relation the operation has to the current resource. |
+| method   | The HTTP method to use when performing the operation.               |
 
-The operations should be performed as described in each response and not as described here in the documentation. Always use the `href` and `method` as specified in the response by finding the appropriate operation based on its `rel` value. The only thing that should be hard coded in the client is the value of the `rel` and the request that will be sent in the HTTP body of the request for the given operation.
+The operations should be performed as described in each response and not as 
+described here in the documentation. 
+Always use the `href` and `method` as specified in the response by finding the 
+appropriate operation based on its `rel` value. 
+The only thing that should be hard coded in the client is the value of 
+the `rel` and the request that will be sent in the HTTP body of the 
+request for the given operation.
 
 {:.table .table-striped}
-| Operation | Description
-| update-payment-abort |[Aborts][technical-reference-abort] the payment before any financial transactions are performed.
-| create-sale |Creates a `sales` transaction without redirection to a payment page (**Direct scenario**). `Msisdn` is required in e-commerce scenario. 
-| redirect-sale |Contains the redirect-URI that redirects the consumer to a Swedbank Pay hosted payments page prior to creating a sales transaction (**Redirect scenario**).
-| view-payment |Contains the URI of the JavaScript used to create a Hosted View iframe directly without redirecting the consumer to separate payment page.
+| Operation            | Description                                                                                                                                                 |
+| :------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| update-payment-abort | [Aborts][technical-reference-abort] the payment before any financial transactions are performed.                                                            |
+| create-sale          | Creates a `sales` transaction without redirection to a payment page (**Direct scenario**). `Msisdn` is required in e-commerce scenario.                     |
+| redirect-sale        | Contains the redirect-URI that redirects the consumer to a Swedbank Pay hosted payments page prior to creating a sales transaction (**Redirect scenario**). |
+| view-payment         | Contains the URI of the JavaScript used to create a Hosted View iframe directly without redirecting the consumer to separate payment page.                  |
 
 ### Swish transactions
 
-All card specific transactions are described below. Read more about the general transaction resource [here][core-payment-resources].
+All card specific transactions are described below. 
 
 ### Sales
 
-The `Sales` resource lists the sales transactions (one or more) on a specific payment.
+The `Sales` resource lists the sales transactions (one or more) 
+on a specific payment.
 
 {:.code-header}
 **Request**
@@ -272,7 +286,12 @@ Content-Type: application/json
 
 #### Create Sales transaction
 
-In e-commerce the consumer/end-user's `msisdn`(mobile number) is required. This is managed either by sending a `POST` request as seen below, or by redirecting the end-user to the hosted payment pages. The `msisdn` is only required for e-commerce. In the m-commerce flow, the consumer uses the device that hosts the Swish app to manage the purchase, making `msisdn` unneccessary.
+In e-commerce the consumer/end-user's `msisdn`(mobile number) is required. 
+This is managed either by sending a `POST` request as seen below, 
+or by redirecting the end-user to the hosted payment pages. 
+The `msisdn` is only required for e-commerce. In the m-commerce flow, 
+the consumer uses the device that hosts the Swish app to manage the purchase, 
+making `msisdn` unneccessary.
 
 {:.code-header}
 **e-commerce Request**
@@ -320,6 +339,7 @@ Content-Type: application/json
     }
 }
 ```
+
 {:.code-header}
 **m-commerce Request**
 
@@ -375,11 +395,15 @@ Content-Type: application/json
 **Operations**
 `redirect-app-swish` is only returned in m-commerce.
 
-The payment now contains a sale transaction with the status (state) `AwaitingActivity`.  When the consumer confirms the payment a callback request will follow from PayEx. 
+The payment now contains a sale transaction with the status (state) 
+`AwaitingActivity`. 
+When the consumer confirms the payment a callback request will follow 
+from PayEx. 
 
 ### Reversals
 
-The `Reversals` resource list the reversals transactions (one or more) on a specific payment.
+The `Reversals` resource list the reversals transactions (one or more) 
+on a specific payment.
 
 {:.code-header}
 **Request**
@@ -426,14 +450,17 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property| Type| Description
-| payment | string |The relative URI of the payment that the reversal transactions belong to.
-| reversalList | array |The array of reversal transaction objects.
-| reversalList[] | object |The reversal transaction object representation of the reversal transaction resource described below.
+| Property       | Type   | Description                                                                                          |
+| :------------- | :----- | :--------------------------------------------------------------------------------------------------- |
+| payment        | string | The relative URI of the payment that the reversal transactions belong to.                            |
+| reversalList   | array  | The array of reversal transaction objects.                                                           |
+| reversalList[] | object | The reversal transaction object representation of the reversal transaction resource described below. |
 
 #### Create Reversal transaction 
 
-You can create a reversal transaction against a completed sales transaction by adding that transaction's ##payeeReference## in the request body.  A callback request will follow from PayEx. 
+You can create a reversal transaction against a completed sales transaction 
+by adding that transaction's `payeeReference` in the request body.
+A callback request will follow from PayEx. 
 
 {:.code-header}
 **Request**
@@ -455,11 +482,12 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property| Data type| Required| Description
-| transaction.amount | integer |Y|Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 SEK, 5000 = 50.00 SEK.
-| transaction.vatAmount | integer |Y|Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 SEK, 5000 = 50.00 SEK.
-| transaction.description | string |Y|A textual description of the capture
-| transaction.payeeReference | string(35) |Y|A  reference that must match the  `payeeReference` of the sales transaction you want to reverse. See [payeeReference][technical-reference-payeeReference] for details.
+| Property                   | Data type  | Required | Description                                                                                                                                                            |
+| :------------------------- | :--------- | :------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| transaction.amount         | integer    | Y        | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 SEK`, `5000` = `50.00 SEK`.                                              |
+| transaction.vatAmount      | integer    | Y        | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 SEK`, `5000` = `50.00 SEK`.                                              |
+| transaction.description    | string     | Y        | A textual description of the capture                                                                                                                                   |
+| transaction.payeeReference | string(35) | Y        | A  reference that must match the  `payeeReference` of the sales transaction you want to reverse. See [payeeReference][technical-reference-payeeReference] for details. |
 
 {:.code-header}
 **Response**
@@ -491,87 +519,32 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property| Data type| Description
-| payment | string |The relative URI of the payment this capture transaction belongs to.
-| reversal.id | string |The relative URI of the created capture transaction.
-| reversal.transaction | object |The object representation of the generic [transaction][technical-reference-transaction].
-
-#### Callback 
-
-When a change or update from the back-end system are made on a payment or transaction, Swedbank Pay will perform a callback to inform the payee (merchant) about this update. Callback functionality is explaned in more detail [here][technical-reference-callback].
-
-```mermaid
-sequenceDiagram
-  activate Merchant
-  activate PAYEX
-  PAYEX->Merchant: POST <callbackUrl>
-  note left of Merchant: Callback by PayEx
-  Merchant-->PAYEX: HTTP response
-  deactivate PAYEX
-  deactivate Merchant
-  
-  activate Merchant
-  activate PAYEX
-  Merchant->PAYEX: GET <Swish payment>
-  note left of Merchant: First API request
-  Activate PAYEX
-  PAYEX-->Merchant: payment resource
-  deactivate PAYEX
-  deactivate Merchant
-```
-
-### Problem messages  
-
-When performing unsuccessful operations, the eCommerce API will respond with a problem message. We generally use the problem message type and status code to identify the nature of the problem. The problem name and description will often help narrow down the specifics of the problem.
-
-For general information about problem messages and error handling, [visit error handling and problem details][technical-reference-problemmessages].
-
-### Error types from Swish and third parties
-
-All Swish error types will have the following URI in front of type: `https://api.payex.com/psp/<errordetail>/swish`
-
-{:.table .table-striped}
-| Type| Status| **Error code**| **Details**
-| *externalerror* | 500 | No error code | 
-| *inputerror* | 400 | FF08 | Input validation failed (PayeeReference) 
-| *inputerror* | 400 | BE18 | Input validation failed (Msisdn) 
-| *inputerror* | 400 | PA02 | Input validation failed (Amount) 
-| *inputerror* | 400 | AM06 | Input validation failed (Amount) 
-| *inputerror* | 400 | AM02 | Input validation failed (Amount)
-| *inputerror* | 400 | AM03 | Input validation failed (Currency) 
-| *inputerror* |500|RP02|Input validation failed (Description)
-| *configurationerror* | 403 | RP01 | Configuration of contract is not correct, or missing settings
-| *configurationerror* | 403 | ACMT07 | Configuration of contract is not correct, or missing settings 
-| *systemerror* | 500 | RP03 | Unable to complete operation (Invalid callback url) 
-| *swishdeclined* | 403 | RP06 | Third party returned error (Duplicate swish payment request) 
-| *swishdeclined* | 403 | ACMT03 | Third party returned error (Swish msisdn not enrolled)
-| *swishdeclined* | 403 | ACMT01 | Third party returned error (Swish msisdn not enrolled)
-| *swishdeclined* | 403 | RF02 | Third party returned error (Reversal declined due to Sale transaction being over 13 months old)
-| *swishdeclined* | 403 | RF04 | Third party returned error (Msisdn has changed owner (organization) between sale and reversal)
-| *swishdeclined* | 403 | RF06 | Third party returned error (Msisdn has changed owener (SSN) between sale and reversal)
-| *swishdeclined* | 403 | RF07 | Third party returned error (Swish rejected transaction)
-| *swishdeclined* | 403 | FF10 | Third party returned error (Bank rejected transaction)
-| *usercancelled* | 403 | BANKIDCL | Cancelled by user 
-| *swishdeclined* | 403 | TM01 | Payment timed out (User din't confirm payment in app)
-| *swishdeclined* | 403 | DS24| Payment timed out (Bank didn't respond).
-| *systemerror* | 500 | Any other error code |  
-
+| Property             | Data type | Description                                                                              |
+| :------------------- | :-------- | :--------------------------------------------------------------------------------------- |
+| payment              | string    | The relative URI of the payment this capture transaction belongs to.                     |
+| reversal.id          | string    | The relative URI of the created capture transaction.                                     |
+| reversal.transaction | object    | The object representation of the generic [transaction][technical-reference-transaction]. |
 
 ## Options after posting a payment
 
-*   **If CallbackURL is set: **Whenever changes to the payment occur a [Callback request][technical-reference-callback] will be posted to the callbackUrl, which was generated when the payment was created.
-*   You can create a reversal transactions by implementing the Reversal request. You can also access and reverse a payment through your merchant pages in the [Swedbank Pay admin portal][payex-admin-portal].
+*   **If CallbackURL is set**: Whenever changes to the payment occur a 
+    [Callback request][technical-reference-callback] will be posted to the 
+    callbackUrl, which was generated when the payment was created.
+*   You can create a reversal transactions by implementing the Reversal request.
+    You can also access and reverse a payment through your merchant pages 
+    in the [Swedbank Pay admin portal][payex-admin-portal].
 
 #### Reversal Sequence
 
-A reversal transcation have to match the Payee reference of a completed sales transaction.
+A reversal transcation have to match the Payee reference of a 
+completed sales transaction.
 
 ```mermaid
 sequenceDiagram
-  Merchant->PAYEX: POST [Swish reversals][reversal-reference]
+  Merchant->>PAYEX: POST <Swish reversal>
   Activate Merchant
   Activate PAYEX
-  PAYEX-->Merchant: transaction resource
+  PAYEX-->>Merchant: transaction resource
   Deactivate PAYEX
   Deactivate Merchant
 ```
@@ -589,7 +562,7 @@ Swish does not support `cancel`.
 Swish does not support `recurring` payments.
 
 [core-payment-resources]: /payments
-[payex-admin-portal]: #
+[payex-admin-portal]: https://admin.payex.com/psp/login/
 [reversal-reference]: #
 [technical-reference-abort]: #
 [technical-reference-callback]: #
