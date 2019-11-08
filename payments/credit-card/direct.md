@@ -46,7 +46,7 @@ All valid options when posting in a payment with `operation` equal to `Purchase`
 
 ##### Type of authorization (Intent).
 
-* **PreAuthorization**: If you specify that the `intent` of the `purchase` is `PreAuthorization`, it's almost the same as an authorization, _except that no money will be reserved_ from the consumers credit card, [before you finalize the transaction][finalize-request]
+* **PreAuthorization**: If you specify that the `intent` of the `purchase` is `PreAuthorization`, it's almost the same as an authorization, _except that no money will be reserved_ from the consumers credit card, [before you finalize the transaction][finalize]
 * **Authorization (two-phase):** If you want the credit card to reserve the amount, you will have to specify that the `intent` of the `purchase` is `Authorization`. The amount will be reserved but not charged. You will later (i.e. when you are ready to ship the purchased products) have to make a [Capture][Capture] or [Cancel][Cancel] request.
 
 ##### Type of capture (Intent)
@@ -56,7 +56,7 @@ All valid options when posting in a payment with `operation` equal to `Purchase`
 ##### General
 
 * **No 3D Secure and card acceptance**: There are optional paramers that can be used in relation to 3d-secure and card acceptance. By default, most credit card agreements with an acquirer will require that you use 3D-Secure for card holder authentication. However, if your agreement allows you to make a card payment without this authentication, or that specific cards can be declined, you may adjust these optional parameters when posting in the payment. This is specified in the technical reference section for creating credit card payments  - you will find the link in the sequence diagram below.
-* **Defining CallbackURL**: When implementing a scenario, it is optional to set a [CallbackURL][CallbackURL] in the `POST` request. If callbackURL is set Swedbank Pay will send a postback request to this URL when the consumer has fulfilled the payment. [See the Callback API description here][callback-API-description].
+* **Defining CallbackURL**: When implementing a scenario, it is optional to set a [CallbackURL][callback] in the `POST` request. If callbackURL is set Swedbank Pay will send a postback request to this URL when the consumer has fulfilled the payment. [See the Callback API description here][callback].
 
 ### Purchase flow
 
@@ -125,16 +125,13 @@ sequenceDiagram
 * If the payment shown above is done as a two-phase (Authorization), you will need to implement the Capture and Cancel requests.
 * **Abort:** It is possible to [abort a payment][abort] if the payment has no successful transactions.
 * For reversals, you will need to implement the [Reversal][reversal] request.
-* If you did a PreAuthorization, you will have to send a Finalize to the transaction using [PATCH on the Authorization][finalizing-the-transaction].
+* If you did a PreAuthorization, you will have to send a Finalize to the transaction using [PATCH on the Authorization][finalize].
 * **Callback from PayEx:** Whenever changes to the payment occur a [Callback request][callback-request] will be posted to the `callbackUrl`, generated when the payment was created.
 
 [abort]: /payments/credit-card/other-features/#abort
-[callback-API-description]: #
-[callback-request]: /payments/credit-card/after-payment
-[CallbackURL]: #
+[callback]: /payments/credit-card/other-features/#callback
 [Cancel]: /payments/credit-card/after-payment/#Cancellations
 [Capture]: /payments/credit-card/after-payment/#Capture
-[finalize-request]: /payments/credit-card/after-payment
-[finalizing-the-transaction]: /payments/credit-card/after-payment
+[finalize]: /payments/credit-card/after-payment/#finalize
 [PCI-link]: https://www.pcisecuritystandards.org/
 [reversal]: /payments/credit-card/after-payment/#Reversals
