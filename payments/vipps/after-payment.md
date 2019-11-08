@@ -18,13 +18,19 @@ sidebar:
 
 ## Payment Resource
 
-The payment resource and all general sub-resources can be found in the [[core payment resources>>doc:Main.ecommerce.technical-reference.core-payment-resources.WebHome]] section.
+The payment resource and all general sub-resources can be found in the 
+[core payment resources](#create-payment) section.
 
 ### Create Payment
 
-To create a Vipps payment, you perform an HTTP `POST` against the `/psp/vipps/payments` resource. Please read the [[general information >>doc:Main.ecommerce.technical-reference.WebHome]]on how to compose a valid HTTP request before proceeding.
+To create a Vipps payment, you perform an HTTP `POST` against the 
+`/psp/vipps/payments` resource. 
 
-An example of a payment creation request is provided below. Each individual Property of the JSON document is described in the following section. Use the [expand][technical-reference-expansion] request parameter to get a response that includes one or more expanded sub-resources inlined.
+An example of a payment creation request is provided below.
+Each individual Property of the JSON document is described in the following 
+section. 
+Use the [expand][technical-reference-expansion] request parameter to get a 
+response that includes one or more expanded sub-resources inlined.
 
 {:.code-header}
 **Request**
@@ -77,31 +83,32 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property| Data type| Required| Description
-| payment.operation | string | ✔︎ | `Purchase`
-| payment.intent | string | ✔︎ | `Authorization`
-| payment.currency |string| Y |NOK
-| payment.prices.type | string | ✔︎ | `vipps`
-| payment.prices.amount | integer | Y |Amount is entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 NOK.
-| payment.prices.vatAmount | integer | Y |If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.
-| payment.description | string(40) | Y |A textual description max 40 characters of the purchase.
-| payment.payerReference | string | N |The reference to the payer (consumer/end-user) from the merchant system, like mobile number, customer number etc.
-| payment.userAgent | string | Y |The user agent reference of the consumer's browser - [see user agent][user-agent]]
-| payment.language | string | Y |nb-NO, sv-SE or en-US.
-| payment.urls.hostUrls | array | Y|The array of URIs valid for embedding of Swedbank Pay Hosted Views.
-| payment.urls.completeUrl | string | Y |The URI that Swedbank Pay will redirect back to when the payment page is completed.
-| payment.urls.cancelUrl | string | N|The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only `cancelUrl` or `paymentUrl` can be used, not both. 
-| payment.urls.paymentUrl | string | N|The URI that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. Only used in hosted views. Can not be used simultaneously with `cancelUrl`; only `cancelUrl` or `paymentUrl` can be used, not both.
-| payment.urls.callbackUrl | string | N |The URI that Swedbank Pay will perform an HTTP POST against every time a transaction is created on the payment. See [callback][technical-reference-callback] for details.
-| payment.urls.logoUrl | string | N |The URI that will be used for showing the customer logo. Must be a picture with at most 50px height and 400px width. Require https.
-| payment.urls.termsOfServiceUrl | string | N |A URI that contains your terms and conditions for the payment, to be linked on the payment page. Require https.
-| payeeInfo.payeeId | string | Y |This is the unique id that identifies this payee (like merchant) set by PayEx.
-| payeeInfo.payeeReference | string(30) | Y |A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][technical-reference-payeeReference] for details.
-| payeeInfo.payeeName | string | N |The payee name (like merchant name) that will be displayed to consumer when redirected to PayEx.
-| payeeInfo.productCategory | string | N |A product category or number sent in from the payee/merchant. This is not validated by PayEx, but will be passed through the payment process and may be used in the settlement process.
-| payeeInfo.orderReference | string(50) | N |The order reference should reflet the order reference found in the merchant's systems.
-| payeeInfo.prefillInfo | string | N |The mobile number that will be prefilled in the Swedbank Pay payment pages. The consumer may change this number in the UI.
-| payeeInfo.subsite | String(40) | N |The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.
+| Property                       | Data type  | Required | Description                                                                                                                                                                                                                                                                            |
+| :----------------------------- | :--------- | :------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| payment.operation              | string     | ✔︎       | `Purchase`                                                                                                                                                                                                                                                                             |
+| payment.intent                 | string     | ✔︎       | `Authorization`                                                                                                                                                                                                                                                                        |
+| payment.currency               | string     | Y        | NOK                                                                                                                                                                                                                                                                                    |
+| payment.prices.type            | string     | ✔︎       | `vipps`                                                                                                                                                                                                                                                                                |
+| payment.prices.amount          | integer    | Y        | Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 NOK`, `5000` = `50.00 NOK`.                                                                                                                                                           |
+| payment.prices.vatAmount       | integer    | Y        | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                                                                                                     |
+| payment.description            | string(40) | Y        | A textual description max 40 characters of the purchase.                                                                                                                                                                                                                               |
+| payment.payerReference         | string     | N        | The reference to the payer (consumer/end-user) from the merchant system, like mobile number, customer number etc.                                                                                                                                                                      |
+| payment.userAgent              | string     | Y        | The user agent reference of the consumer's browser - [see user agent][user-agent]]                                                                                                                                                                                                     |
+| payment.language               | string     | Y        | nb-NO, sv-SE or en-US.                                                                                                                                                                                                                                                                 |
+| payment.urls.hostUrls          | array      | Y        | The array of URIs valid for embedding of Swedbank Pay Hosted Views.                                                                                                                                                                                                                    |
+| payment.urls.completeUrl       | string     | Y        | The URI that Swedbank Pay will redirect back to when the payment page is completed.                                                                                                                                                                                                    |
+| payment.urls.cancelUrl         | string     | N        | The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only `cancelUrl` or `paymentUrl` can be used, not both.                                                                                |
+| payment.urls.paymentUrl        | string     | N        | The URI that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. Only used in hosted views. Can not be used simultaneously with `cancelUrl`; only `cancelUrl` or `paymentUrl` can be used, not both. |
+| payment.urls.callbackUrl       | string     | N        | The URI that Swedbank Pay will perform an HTTP POST against every time a transaction is created on the payment. See [callback][technical-reference-callback] for details.                                                                                                              |
+| payment.urls.logoUrl           | string     | N        | The URI that will be used for showing the customer logo. Must be a picture with at most 50px height and 400px width. Require https.                                                                                                                                                    |
+| payment.urls.termsOfServiceUrl | string     | N        | A URI that contains your terms and conditions for the payment, to be linked on the payment page. Require https.                                                                                                                                                                        |
+| payeeInfo.payeeId              | string     | Y        | This is the unique id that identifies this payee (like merchant) set by PayEx.                                                                                                                                                                                                         |
+| payeeInfo.payeeReference       | string(30) | Y        | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][technical-reference-payeeReference] for details.                                                                            |
+| payeeInfo.payeeName            | string     | N        | The payee name (like merchant name) that will be displayed to consumer when redirected to PayEx.                                                                                                                                                                                       |
+| payeeInfo.productCategory      | string     | N        | A product category or number sent in from the payee/merchant. This is not validated by PayEx, but will be passed through the payment process and may be used in the settlement process.                                                                                                |
+| payeeInfo.orderReference       | string(50) | N        | The order reference should reflet the order reference found in the merchant's systems.                                                                                                                                                                                                 |
+| payeeInfo.prefillInfo          | string     | N        | The mobile number that will be prefilled in the Swedbank Pay payment pages. The consumer may change this number in the UI.                                                                                                                                                             |
+| payeeInfo.subsite              | String(40) | N        | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.                                                                                                                            |
 
 {:.code-header}
 **Response**
@@ -156,7 +163,9 @@ Content-Type: application/json
 
 ### Purchase
 
-Posting a payment (operation purchase) returns the options of aborting the payment altogether or creating an authorization transaction through the `redirect-authorization` hyperlink. 
+Posting a payment (operation purchase) returns the options of aborting the 
+payment altogether or creating an authorization transaction through the 
+`redirect-authorization` hyperlink. 
 
 {:.code-header}
 **Request**
@@ -171,7 +180,11 @@ Posting a payment (operation purchase) returns the options of aborting the payme
 
 ### Operations
 
-When a payment resource is created and during its lifetime, it will have a set of operations that can be performed on it. Which operations are available will vary depending on the state of the payment resource, what the access token is authorized to do, etc. A list of possible operations and their explanation is given below.
+When a payment resource is created and during its lifetime, 
+it will have a set of operations that can be performed on it. 
+Which operations are available will vary depending on the state of the 
+payment resource, what the access token is authorized to do, etc. 
+A list of possible operations and their explanation is given below.
 
 {:.code-header}
 **Operations**
@@ -210,29 +223,38 @@ When a payment resource is created and during its lifetime, it will have a set o
 ```
 
 {:.table .table-striped}
-| Property| Description
-| href |The target URI to perform the operation against.
-| rel |The name of the relation the operation has to the current resource.
-| method |The HTTP method to use when performing the operation.
+| Property | Description                                                         |
+| :------- | :------------------------------------------------------------------ |
+| href     | The target URI to perform the operation against.                    |
+| rel      | The name of the relation the operation has to the current resource. |
+| method   | The HTTP method to use when performing the operation.               |
 
-The operations should be performed as described in each response and not as described here in the documentation. Always use the `href` and `method` as specified in the response by finding the appropriate operation based on its `rel` value. The only thing that should be hard coded in the client is the value of the `rel` and the request that will be sent in the HTTP body of the request for the given operation.
+The operations should be performed as described in each response and not as 
+described here in the documentation. 
+Always use the `href` and `method` as specified in the response by finding 
+the appropriate operation based on its `rel` value. 
+The only thing that should be hard coded in the client is the value of the 
+`rel` and the request that will be sent in the HTTP body of the request for 
+the given operation.
 
 {:.table .table-striped}
-| Operation | Description
-| update-payment-abort |[Aborts][technical-reference-abort] the payment before any financial transactions are performed.
-| redirect-authorization |Used to redirect the consumer to Swedbank Pay payment pages and the authorization UI.
-| create-capture |Creates a [`capture`][technical-reference-capture].
-| create-cancellation |Creates a [`cancellation`][technical-reference-cancel].
-| create-reversal |Creates a [`reversal`][technical-reference-reverse].
+| Operation              | Description                                                                                      |
+| :--------------------- | :----------------------------------------------------------------------------------------------- |
+| update-payment-abort   | [Aborts][technical-reference-abort] the payment before any financial transactions are performed. |
+| redirect-authorization | Used to redirect the consumer to Swedbank Pay payment pages and the authorization UI.            |
+| create-capture         | Creates a [`capture`][technical-reference-capture].                                              |
+| create-cancellation    | Creates a [`cancellation`][technical-reference-cancel].                                          |
+| create-reversal        | Creates a [`reversal`][technical-reference-reverse].                                             |
 
 
 ## Vipps transactions
 
-All card specific transactions are described below. Read more about the general transaction resource [here][core-payment-resources].
+All card specific transactions are described below. 
 
 ### Authorizations
 
-The `authorizations` resource contains information about the authorization transactions made on a specific payment.
+The `authorizations` resource contains information about the authorization 
+transactions made on a specific payment.
 
 {:.code-header}
 **Request**
@@ -281,12 +303,12 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property| Data type| Description
-| payment | string |The relative URI of the payment this authorization transactions resource belongs to.
-| authorizations.id | string |The relative URI of the current authorization transactions resource.
-| authorizations.authorizationList | array |The array of authorization transaction objects.
-| authorizations.authorizationList[] | object |The authorization transaction object described in the `authorization` resource below.
-\\The `authorization` resource contains information about an authorization transaction made on a specific payment.
+| Property                           | Data type | Description                                                                                                                                                                                            |
+| :--------------------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| payment                            | string    | The relative URI of the payment this authorization transactions resource belongs to.                                                                                                                   |
+| authorizations.id                  | string    | The relative URI of the current authorization transactions resource.                                                                                                                                   |
+| authorizations.authorizationList   | array     | The array of authorization transaction objects.                                                                                                                                                        |
+| authorizations.authorizationList[] | object    | The authorization transaction object described in the `authorization` resource below. The `authorization` resource contains information about an authorization transaction made on a specific payment. |
 
 You can return a specific authorization transaction by adding the transaction id to the `GET` request.
 
@@ -332,10 +354,11 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property| Data type| Description
-| payment | string |The relative URI of the payment this authorization transaction resource belongs to.
-| authorization.id | string |The relative URI of the current authorization transaction resource.
-| authorization.transaction | object |The object representation of the generic [transaction][technical-reference-transaction].
+| Property                  | Data type | Description                                                                              |
+| :------------------------ | :-------- | :--------------------------------------------------------------------------------------- |
+| payment                   | string    | The relative URI of the payment this authorization transaction resource belongs to.      |
+| authorization.id          | string    | The relative URI of the current authorization transaction resource.                      |
+| authorization.transaction | object    | The object representation of the generic [transaction][technical-reference-transaction]. |
 
 ### Captures
 
@@ -344,7 +367,7 @@ The `captures` resource lists the capture transactions (one or more) on a specif
 {:.code-header}
 **Request**
 
-```HTTP
+```HTThP
 GET /psp/vipps/vipps/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/captures HTTP/1.1
 Host: api.payex.com
 Authorization: Bearer <MerchantToken>
@@ -387,11 +410,12 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property| Data type| Description
-| payment | string |The relative URI of the payment this list of capture transactions belong to.
-| captures.id | string |The relative URI of the current `captures` resource.
-| captures.captureList | array |The array of capture transaction objects.
-| captures.captureList[] | object |The capture transaction object described in the `capture` resource below.
+| Property               | Data type | Description                                                                  |
+| :--------------------- | :-------- | :--------------------------------------------------------------------------- |
+| payment                | string    | The relative URI of the payment this list of capture transactions belong to. |
+| captures.id            | string    | The relative URI of the current `captures` resource.                         |
+| captures.captureList   | array     | The array of capture transaction objects.                                    |
+| captures.captureList[] | object    | The capture transaction object described in the `capture` resource below.    |
 
 ### Create capture transaction
 
@@ -417,13 +441,17 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property| Data type| Required| Description
-| capture.amount | integer |Y|Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 NOK.
-| capture.vatAmount | integer |Y|Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 NOK.
-| capture.description | string |Y|A textual description of the capture transaction.
-| capture.payeeReference | string(50) |Y|A unique reference for the capture transaction. See [`payeeReference`][technical-reference-payeeReference] for details.
+| Property               | Data type  | Required | Description                                                                                                               |
+| :--------------------- | :--------- | :------- | :------------------------------------------------------------------------------------------------------------------------ |
+| capture.amount         | integer    | Y        | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 NOK`, `5000` = `50.00 NOK`. |
+| capture.vatAmount      | integer    | Y        | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 NOK`, `5000` = `50.00 NOK`. |
+| capture.description    | string     | Y        | A textual description of the capture transaction.                                                                         |
+| capture.payeeReference | string(50) | Y        | A unique reference for the capture transaction. See [`payeeReference`][technical-reference-payeeReference] for details.   |
 
-The `capture` resource contains information about the capture transaction made against a Vipps payment. You can return a specific capture transaction by adding the transaction id to the `GET` request.
+The `capture` resource contains information about the capture transaction made 
+against a Vipps payment. 
+You can return a specific capture transaction by adding the transaction id to 
+the `GET` request.
 
 {:.code-header}
 **Response**
@@ -455,14 +483,16 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property| Data type| Description
-| payment | string |The relative URI of the payment this capture transaction belongs to.
-| capture.id | string |The relative URI of the created capture transaction.
-| capture.transaction | object |The object representation of the generic [`transaction`][technical-reference-transaction].
+| Property            | Data type | Description                                                                                |
+| :------------------ | :-------- | :----------------------------------------------------------------------------------------- |
+| payment             | string    | The relative URI of the payment this capture transaction belongs to.                       |
+| capture.id          | string    | The relative URI of the created capture transaction.                                       |
+| capture.transaction | object    | The object representation of the generic [`transaction`][technical-reference-transaction]. |
 
 ### Cancellations
 
-The `cancellations` resource lists the cancellation transactions on a specific payment.
+The `cancellations` resource lists the cancellation transactions on a 
+specific payment.
 
 {:.code-header}
 **Request**
@@ -509,15 +539,17 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property| Data type| Description
-| payment | string |The relative URI of the payment this list of cancellation transactions belong to.
-| cancellations.id | string |The relative URI of the current `cancellations` resource.
-| cancellations.cancellationList | array |The array of the cancellation transaction objects.
-| cancellations.cancellationList[] | object |The object representation of the cancellation transaction resource described below.
+| Property                         | Data type | Description                                                                         |
+| :------------------------------- | :-------- | :---------------------------------------------------------------------------------- |
+| payment                          | string    | The relative URI of the payment this list of cancellation transactions belong to.   |
+| cancellations.id                 | string    | The relative URI of the current `cancellations` resource.                           |
+| cancellations.cancellationList   | array     | The array of the cancellation transaction objects.                                  |
+| cancellations.cancellationList[] | object    | The object representation of the cancellation transaction resource described below. |
 
 ### Create cancellation transaction
 
-Perform the `create-cancel` operation to cancel a previously created payment. You can only cancel a payment - or part of payment - not yet captured.
+Perform the `create-cancel` operation to cancel a previously created payment. 
+You can only cancel a payment - or part of payment - not yet captured.
 
 {:.code-header}
 **Request**
@@ -537,9 +569,10 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property| Data type| Required| Description
-| cancellation.description | string |Y|A textual description of the reason for the cancellation.
-| cancellation.payeeReference | string(50) |Y|A unique reference for the cancellation transaction. See [`payeeReference`][technical-reference-payeeReference] for details.
+| ✔︎︎︎︎︎ | Property                    | Data type  | Description                                                                                                                  |
+| :----- | :-------------------------- | :--------- | :--------------------------------------------------------------------------------------------------------------------------- |
+| ✔︎︎︎︎︎ | cancellation.description    | string     | A textual description of the reason for the cancellation.                                                                    |
+| ✔︎︎︎︎︎ | cancellation.payeeReference | string(50) | A unique reference for the cancellation transaction. See [`payeeReference`][technical-reference-payeeReference] for details. |
 
 The `cancel` resource contains information about a cancellation transaction made against a payment. You can return a specific cancellation transaction by adding the transaction id to the `GET` request.
 
@@ -572,14 +605,16 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property| Data type| Description
-| payment | string |The relative URI of the payment this cancellation transaction belongs to.
-| cancellation.id | string |The relative URI of the current cancellation transaction resource.
-| cancellation.transaction | object |The object representation of the generic [transaction][technical-reference-transaction].
+| Property                 | Data type | Description                                                                              |
+| :----------------------- | :-------- | :--------------------------------------------------------------------------------------- |
+| payment                  | string    | The relative URI of the payment this cancellation transaction belongs to.                |
+| cancellation.id          | string    | The relative URI of the current cancellation transaction resource.                       |
+| cancellation.transaction | object    | The object representation of the generic [transaction][technical-reference-transaction]. |
 
 ### Reversals 
 
-The `reversals` resource lists the reversal transactions (one or more) on a specific payment.
+The `reversals` resource lists the reversal transactions (one or more) 
+on a specific payment.
 
 {:.code-header}
 **Request**
@@ -625,14 +660,16 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property| Type| Description
-| payment | string |The relative URI of the payment that the reversal transactions belong to.
-| reversalList | array |The array of reversal transaction objects.
-| reversalList[] | object |The reversal transaction object representation of the reversal transaction resource described below.
+| Property       | Type   | Description                                                                                          |
+| :------------- | :----- | :--------------------------------------------------------------------------------------------------- |
+| payment        | string | The relative URI of the payment that the reversal transactions belong to.                            |
+| reversalList   | array  | The array of reversal transaction objects.                                                           |
+| reversalList[] | object | The reversal transaction object representation of the reversal transaction resource described below. |
 
 #### Create reversal transaction 
 
-The `create-reversal` operation reverses a previously created and captured payment.
+The `create-reversal` operation reverses a previously created and 
+captured payment.
 
 {:.code-header}
 **Request**
@@ -654,13 +691,17 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property| Data type| Required| Description
-| transaction.amount | integer |Y|Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 NOK.
-| transaction.vatAmount | integer |Y|Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 NOK.
-| transaction.description | string |Y|A textual description of the capture
-| transaction.payeeReference | string(50) |Y|A unique reference for the reversal transaction. See [`payeeReference`][technical-reference-payeeReference] for details.
+| Required | Property                   | Data type  | Description                                                                                                               |
+| :------- | :------------------------- | :--------- | :------------------------------------------------------------------------------------------------------------------------ |
+| ✔︎︎︎︎︎   | transaction.amount         | integer    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 NOK`, `5000` = `50.00 NOK`. |
+| ✔︎︎︎︎︎   | transaction.vatAmount      | integer    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 NOK`, `5000` = `50.00 NOK`. |
+| ✔︎︎︎︎︎   | transaction.description    | string     | A textual description of the capture                                                                                      |
+| ✔︎︎︎︎︎   | transaction.payeeReference | string(50) | A unique reference for the reversal transaction. See [`payeeReference`][technical-reference-payeeReference] for details.  |
 
-The `reversal` resource contains information about a reversal transaction made against a payment. You can return a specific reversal transaction by adding the transaction id to the `GET` request.
+The `reversal` resource contains information about a reversal transaction made 
+against a payment. 
+You can return a specific reversal transaction by adding the transaction id 
+to the `GET` request.
 
 {:.code-header}
 **Response**
@@ -692,51 +733,62 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property| Data type| Description
-| payment | string |The relative URI of the payment this capture transaction belongs to.
-| reversal.id | string |The relative URI of the created capture transaction.
-| reversal.transaction | object |The object representation of the generic [`transaction`][technical-reference-transaction].
+| Property             | Data type | Description                                                                                |
+| :------------------- | :-------- | :----------------------------------------------------------------------------------------- |
+| payment              | string    | The relative URI of the payment this capture transaction belongs to.                       |
+| reversal.id          | string    | The relative URI of the created capture transaction.                                       |
+| reversal.transaction | object    | The object representation of the generic [`transaction`][technical-reference-transaction]. |
 
 ### Callback
 
-When a change or update from the back-end system are made on a payment or transaction, Swedbank Pay will perform a callback to inform the payee (merchant) about this update. Callback functionality is explaned in more detail [here][technical-reference-callback].
+When a change or update from the back-end system are made on a payment or 
+transaction, Swedbank Pay will perform a callback to inform the 
+payee (merchant) about this update. 
+Callback functionality is explaned in more detail 
+[here][technical-reference-callback].
 
 ```mermaid
 sequenceDiagram
-activate Merchant
-activate PAYEX
-PAYEX->Merchant: POST <callbackUrl>
-note left of Merchant: Callback by PayEx
-Merchant-->PAYEX: HTTP response
-deactivate PAYEX
-deactivate Merchant
+    activate Merchant
+    activate PAYEX
+    PAYEX->Merchant: POST <callbackUrl>
+    note left of Merchant: Callback by PayEx
+    Merchant-->PAYEX: HTTP response
+    deactivate PAYEX
+    deactivate Merchant
 
-activate Merchant
-Merchant->PAYEX: GET Vipps payment
-note left of Merchant: First API request
-activate PAYEX
-PAYEX-->Merchant: payment resource
-deactivate PAYEX
-deactivate Merchant
+    activate Merchant
+    Merchant->PAYEX: GET <Vipps payment>
+    note left of Merchant: First API request
+    activate PAYEX
+    PAYEX-->Merchant: payment resource
+    deactivate PAYEX
+    deactivate Merchant
 ```
 
 ### Problem messages
 
-When performing unsuccessful operations, the eCommerce API will respond with a problem message. We generally use the problem message type and status code to identify the nature of the problem. The problem name and description will often help narrow down the specifics of the problem.
-
-For general information about problem messages and error handling, [visit error handling and problem details][technical-reference-problemmessages].
+When performing unsuccessful operations, the eCommerce API will respond with a 
+problem message. 
+We generally use the problem message type and status code to identify the 
+nature of the problem. 
+The problem name and description will often help narrow down the specifics 
+of the problem.
 
 ### Error types from Vipps (Init-call)
 
-All Vipps error types will have the following URI in front of type: ``https://api.payex.com/psp/errordetail/vipps/<errorType>``
+All Vipps error types will have the following URI in front of type: 
+`https://api.payex.com/psp/errordetail/vipps/<errorType>`
 
 {:.table .table-striped}
-| Type | Status |  
-| VIPPS_ERROR |403| All errors
+| Type        | Status |            |
+| :---------- | :----- | :--------- |
+| VIPPS_ERROR | 403    | All errors |
 
 #### Error types from Vipps (Callback)
 
-All Vipps error types will have the following URI in front of type: ``https://api.payex.com/psp/errordetail/vipps/<errorType>``
+All Vipps error types will have the following URI in front of type: 
+`https://api.payex.com/psp/errordetail/vipps/<errorType>`
 
 {:.table .table-striped}
 | Type | Status |  
@@ -744,36 +796,36 @@ All Vipps error types will have the following URI in front of type: ``https://ap
 
 #### Error types from Acquirer
 
-All Vipps error types will have the following URI in front of type: ``https://api.payex.com/psp/errordetail/vipps/<errorType>``
+All Vipps error types will have the following URI in front of type:
+ `https://api.payex.com/psp/errordetail/vipps/<errorType>`
 
 {:.table .table-striped}
-| Type| Status|  
-| *CARD_BLACKLISTED* |400| 
-| *PAYMENT_TOKEN_ERROR* |403| 
-| *CARD_DECLINED* |403| 
-| *ACQUIRER_ERROR* |403| 
-| *ACQUIRER_CARD_BLACKLISTED* |403| 
-| *ACQUIRER_CARD_EXPIRED* |403| 
-| *ACQUIRER_CARD_STOLEN* |403| 
-| *ACQUIRER_INSUFFICIENT_FUNDS* |403| 
-| *ACQUIRER_INVALID_AMOUNT* |403| 
-| *ACQUIRER_POSSIBLE_FRAUD* |403| 
-| *FRAUD_DETECTED* |403| 
-| *BAD_REQUEST* |500| 
-| *INTERNAL_SERVER_ERROR* |500| 
-| *BAD_GATEWAY* |502| 
-| *ACQUIRER_GATEWAY_ERROR* |502| 
-| *ACQUIRER_GATEWAY_TIMEOUT* |504| 
-| *UNKNOWN_ERROR* |500| 
+| Type                          | Status |
+| :---------------------------- | :----- |
+| *CARD_BLACKLISTED*            | 400    |
+| *PAYMENT_TOKEN_ERROR*         | 403    |
+| *CARD_DECLINED*               | 403    |
+| *ACQUIRER_ERROR*              | 403    |
+| *ACQUIRER_CARD_BLACKLISTED*   | 403    |
+| *ACQUIRER_CARD_EXPIRED*       | 403    |
+| *ACQUIRER_CARD_STOLEN*        | 403    |
+| *ACQUIRER_INSUFFICIENT_FUNDS* | 403    |
+| *ACQUIRER_INVALID_AMOUNT*     | 403    |
+| *ACQUIRER_POSSIBLE_FRAUD*     | 403    |
+| *FRAUD_DETECTED*              | 403    |
+| *BAD_REQUEST*                 | 500    |
+| *INTERNAL_SERVER_ERROR*       | 500    |
+| *BAD_GATEWAY*                 | 502    |
+| *ACQUIRER_GATEWAY_ERROR*      | 502    |
+| *ACQUIRER_GATEWAY_TIMEOUT*    | 504    |
+| *UNKNOWN_ERROR*               | 500    |
 
-[core-payment-resources]: #
-[technical-reference-abort]: #
-[technical-reference-callback]: #
-[technical-reference-cancel]: #
-[technical-reference-capture]: #
-[technical-reference-expansion]: #
-[technical-reference-payeeReference]: #
-[technical-reference-problemmessages]: #
-[technical-reference-reverse]: #
-[technical-reference-transaction]: #
+[technical-reference-abort]: /payments/vipps/other-features#abort
+[technical-reference-callback]: /payments/vipps/other-features#callback
+[technical-reference-cancel]: /payments/vipps/other-features#cancel
+[technical-reference-capture]: /payments/vipps/other-features#capture-sequence
+[technical-reference-expansion]: /#expansion
+[technical-reference-payeeReference]: /payments/vipps/other-features#payee-reference
+[technical-reference-reverse]: /payments/vipps/other-features#reversal
+[technical-reference-transaction]: /payments/vipps/other-features#transactions
 [user-agent]: https://en.wikipedia.org/wiki/User_agent

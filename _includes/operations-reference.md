@@ -468,7 +468,7 @@ Content-Type: application/json
 }
 ```
 {:.table .table-striped}
-| Property | Type                         | Required     | Description                                                                                                                                                                              |
+| Required | Property                     | Type         | Description                                                                                                                                                                              |
 | :------- | :--------------------------- | :----------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ✔︎︎︎︎︎   | `transaction.amount`         | `integer`    | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.                                                        |
 | ✔︎︎︎︎︎   | `transaction.vatAmount`      | `integer`    | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.                                                               |

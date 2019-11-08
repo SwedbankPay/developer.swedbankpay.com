@@ -29,6 +29,8 @@ sidebar:
 
 {% include recurring-card-payments.md %}
 
+{% include operations-reference.md %}
+
 {% include subsite.md %}
 
 ### Prices
@@ -46,16 +48,18 @@ For general information about problem messages and error handling, [visit error 
 All Vipps error types will have the following URI in front of type: `https://api.payex.com/psp/errordetail/vipps/<errorType>`
 
 {:.table .table-striped}
-| **Type** | **Status** | Note 
-| *VIPPS_ERROR* | 403 | All errors
+| Type          | Status | Note       |
+| :------------ | :----- | :--------- |
+| *VIPPS_ERROR* | 403    | All errors |
 
 ### Error types from Vipps (Callback)
 
 All Vipps error types will have the following URI in front of type: `https://api.payex.com/psp/errordetail/vipps/<errorType>`
 
 {:.table .table-striped}
-| **Type** | **Status** | Note 
-| *VIPPS_DECLINED* | 400 | Any status that is not YES
+| Type             | Status | Note                       |
+| :--------------- | :----- | :------------------------- |
+| *VIPPS_DECLINED* | 400    | Any status that is not YES |
 
 ### Error types from Acquirer
 
@@ -85,4 +89,6 @@ All Vipps error types will have the following URI in front of type: `https://api
 
 {% include payeeinfo.md %}
 
-[technical-reference-problems]: #
+{% include transactions-reference.md %}
+
+[technical-reference-problems]: #problem-messages
