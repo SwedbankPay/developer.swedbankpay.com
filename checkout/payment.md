@@ -142,6 +142,13 @@ operation is meant to be embedded in a `<script>` element in an HTML document.
 </html>
 ```
 
+{:.code-header}
+**JS**
+
+```JS
+
+```
+
 Note that the `<script>` element is added after the `<div>` container the
 Checkin will be hosted in. When this is set up, something along the
 following should appear:
