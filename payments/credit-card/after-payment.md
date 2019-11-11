@@ -168,10 +168,10 @@ later do more captures on the same payment up to the total authorization amount.
 
 ```mermaid
 sequenceDiagram
-  Merchant->PayEx: POST [Credit card captures]
+  Merchant->>PayEx: POST [Credit card captures]
   Activate Merchant
   Activate PayEx
-  PayEx-->Merchant: transaction resource
+  PayEx-->>Merchant: transaction resource
   Deactivate PayEx
   Deactivate Merchant
 ```
@@ -397,10 +397,10 @@ and the authorization amount.
 
 ```mermaid
 sequenceDiagram
-  Merchant->PayEx: POST [creditcard cancellactions]
+  Merchant->>PayEx: POST [creditcard cancellactions]
   Activate Merchant
   Activate PayEx
-  PayEx-->Merchant: transaction resource
+  PayEx-->>Merchant: transaction resource
   Deactivate PayEx
   Deactivate Merchant
 ```
@@ -538,10 +538,10 @@ Reversal can only be done on a payment where there are some captured amount not
 
 ```mermaid
 sequenceDiagram
-  Merchant->PayEx: POST [creditcard reversals]
+  Merchant->>PayEx: POST [creditcard reversals]
   Activate Merchant
   Activate PayEx
-  PayEx-->Merchant: transaction resource
+  PayEx-->>Merchant: transaction resource
   Deactivate PayEx
   Deactivate Merchant
 ```
@@ -607,16 +607,16 @@ sequenceDiagram
   activate PayEx
   PayEx->>Merchant: POST <callbackUrl>
   note left of Merchant: Callback by PayEx
-  Merchant-->PayEx: HTTP response
+  Merchant-->>PayEx: HTTP response
   deactivate PayEx
   deactivate Merchant
 
   activate Merchant
   activate PayEx
-  Merchant->PayEx: GET [credit card payment]
+  Merchant->>PayEx: GET [credit card payment]
   note left of Merchant: First API request
   Activate PayEx
-  PayEx-->Merchant: payment resource
+  PayEx-->>Merchant: payment resource
   deactivate PayEx
   deactivate Merchant
 ```
@@ -632,10 +632,10 @@ authorization amount.
 
 ```mermaid
 sequenceDiagram
-  Merchant->PayEx: POST [credit card capture](payments/credit-card/payments)
+  Merchant->>PayEx: POST [credit card capture](payments/credit-card/payments)
   Activate Merchant
   Activate PayEx
-  PayEx-->Merchant: transaction resource
+  PayEx-->>Merchant: transaction resource
   Deactivate PayEx
   Deactivate Merchant
 ```
@@ -648,10 +648,10 @@ and the authorization amount.
 
 ```mermaid
 sequenceDiagram
-  Merchant->PayEx: POST [credit card cancel]
+  Merchant->>PayEx: POST [credit card cancel]
   Activate Merchant
   Activate PayEx
-  PayEx-->Merchant: transaction resource
+  PayEx-->>Merchant: transaction resource
   Deactivate PayEx
   Deactivate Merchant
 ```
@@ -663,10 +663,10 @@ yet reversed.
 
 ```mermaid
 sequenceDiagram
-  Merchant->PayEx: POST [credit card reversal]
+  Merchant->>PayEx: POST [credit card reversal]
   Activate Merchant
   Activate PayEx
-  PayEx-->Merchant: transaction resource
+  PayEx-->>Merchant: transaction resource
   Deactivate PayEx
   Deactivate Merchant
 ```
@@ -682,10 +682,10 @@ authorization amount.
 
 ```mermaid
 sequenceDiagram
-  Merchant->PayEx: POST [credit card capture]
+  Merchant->>PayEx: POST [credit card capture]
   Activate Merchant
   Activate PayEx
-  PayEx-->Merchant: transaction resource
+  PayEx-->>Merchant: transaction resource
   Deactivate PayEx
   Deactivate Merchant
 ```
@@ -698,10 +698,10 @@ and the authorization amount.
 
 ```mermaid
 sequenceDiagram
-  Merchant->PayEx: POST [credit card cancellations]
+  Merchant->>PayEx: POST [credit card cancellations]
   Activate Merchant
   Activate PayEx
-  PayEx-->Merchant: transaction resource
+  PayEx-->>Merchant: transaction resource
   Deactivate PayEx
   Deactivate Merchant
 ```
@@ -713,10 +713,10 @@ yet reversed.
 
 ```mermaid
 sequenceDiagram
-  Merchant->PayEx: POST [credit card reversals][reversal]
+  Merchant->>PayEx: POST [credit card reversals]
   Activate Merchant
   Activate PayEx
-  PayEx-->Merchant: transaction resource
+  PayEx-->>Merchant: transaction resource
   Deactivate PayEx
   Deactivate Merchant
 ```
