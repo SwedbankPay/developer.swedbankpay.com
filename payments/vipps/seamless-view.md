@@ -60,7 +60,7 @@ so it should include some sort of state identifier in the URL.
 The state identifier is the ID of the order, shopping cart or similar that has 
 the URL of the Payment stored.
 
-With paymentUrl in place, the retry process becomes much more convenient for 
+With `paymentUrl` in place, the retry process becomes much more convenient for 
 both the integration and the payer.
 
 ## Screenshots 
@@ -96,7 +96,7 @@ are described in [the technical reference][vipps-payments].
 
 * **Defining CallbackURL**: When implementing a scenario, it is optional to 
   set a [`CallbackURL`][callbackurl] in the `POST` request. 
-  If callbackURL is set Swedbank Pay will send a postback request to this URL 
+  If `callbackURL` is set Swedbank Pay will send a postback request to this URL 
   when the consumer has fulfilled the payment.
 
 ## Purchase flow

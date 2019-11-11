@@ -111,7 +111,7 @@ sequenceDiagram
   Browser->>Merchant: start purchase (pay with VIPPS)
   activate Merchant
 
-  Merchant->PayEx_FrontEnd: POST <Create  Vipps payment>
+  Merchant->>PayEx_FrontEnd: POST <Create  Vipps payment>
   note left of Merchant: First API request
   activate PayEx_FrontEnd
   PayEx_FrontEnd-->>Merchant: payment resource
@@ -124,7 +124,7 @@ sequenceDiagram
   PayEx_FrontEnd-->>Vipps_API: Initialize Vipps payment
   activate Vipps_API
   Vipps_API-->>PayEx_FrontEnd: response
-  PayEx_FrontEnd-->Browser: Authorization response (State=Pending)
+  PayEx_FrontEnd-->>Browser: Authorization response (State=Pending)
   note left of Browser: check your phone
   deactivate Merchant
   
@@ -143,7 +143,7 @@ sequenceDiagram
   note left of Browser: Redirect to merchant
   activate Merchant
   PayEx_FrontEnd-->>Merchant: Payment Callback
-  Merchant-->PayEx_FrontEnd: GET <Vipps payments>
+  Merchant-->>PayEx_FrontEnd: GET <Vipps payments>
   note left of Merchant: Second API request
   PayEx_FrontEnd-->>Merchant: Payment resource
   deactivate PayEx_FrontEnd
