@@ -758,7 +758,6 @@ operations to this purchase.​​​​​
 [cancel]: /payments/credit-card/after-payment/#cancellations
 [capture]: /payments/credit-card/after-payment/#Capture
 [create-payment]: /payments/credit-card/other-features/#create-payment
-[creditcard-image-2]: /assets/img/creditcard-image-2.png
 [finalize]: /payments/credit-card/after-payment/#finalize
 [reversal]: /payments/credit-card/after-payment/#reversals
 [verify]: /payments/credit-card/other-features/#verify
