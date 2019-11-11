@@ -25,11 +25,17 @@ sidebar:
 
 # Create Payment 
 
-Within the card payments part of the eCommerce API, you can create four kinds of payments  ([purchase][purchase], [recurrence][recurrence], [payout][payout] and [verification][verify]) and you can inspect and alter the details of the individual transactions within the payment.
+Within the card payments part of the eCommerce API, you can create four kinds 
+of payments  ([purchase][purchase], [recurrence][recurrence], [payout][payout] 
+and [verification][verify]) and you can inspect and alter the details of the 
+individual transactions within the payment.
 
-To create a card payment, you perform an HTTP `POST` against the `/psp/creditcard/payments resource`.
+To create a card payment, you perform an HTTP `POST` against the
+ `/psp/creditcard/payments resource`.
 
-There are four different kinds of payment that can be created. These are identified with the value of the `operation` property. Each kind are documented in their own section below.
+There are four different kinds of payment that can be created. These are 
+identified with the value of the `operation` property. Each kind are documented 
+in their own section below.
 
 {:.code-header}
 **Request**"
@@ -57,9 +63,11 @@ Content-Type: application/json
 
 ## Purchase 
 
-A `Purchase` payment is a straightforward way to charge the card of the payer. It is followed up by posting a capture, cancellation or reversal transaction.
+A `Purchase` payment is a straightforward way to charge the card of the payer. 
+It is followed up by posting a capture, cancellation or reversal transaction.
 
-An example of a request is provided below. Each individual Property of the JSON document is described in the following section.
+An example of a request is provided below. Each individual Property of the JSON
+ document is described in the following section.
 
 {:.code-header}
 **Request**
@@ -330,7 +338,10 @@ Content-Type: application/json
 
 ## Recur
 
-A `recur` payment is a payment that references a `recurrenceToken` created through a previous payment in order to charge the same card. Use the [expand][expansion] request parameter to get a response that includes one or more expanded sub-resources inlined.
+A `recur` payment is a payment that references a `recurrenceToken` created 
+through a previous payment in order to charge the same card. Use the 
+[expand][expansion] request parameter to get a response that includes one or 
+more expanded sub-resources inlined.
 
 {:.code-header}
 **Request**
@@ -369,19 +380,28 @@ Content-Type: application/json
 
 ## Payout 
 
->"Payout to Card" is an add-on service that enable you to deposit winnings directly to your end-users' credit cards. This without  the need to collect card details from the end-user a second time.
+>"Payout to Card" is an add-on service that enable you to deposit winnings 
+directly to your end-users' credit cards. This without  the need to collect 
+card details from the end-user a second time.
 
 ### Introduction
 
-* Acquirer for this service is Swedbank. You require a separate Swedbank acquiring number to ensure that payout transactions and regular card transactions are kept separate.
+* Acquirer for this service is Swedbank. You require a separate Swedbank 
+acquiring number to ensure that payout transactions and regular card 
+transactions are kept separate.
 * You need to have the 3D-secure protocol enabled.
-* The service is available both through hosted payment pages and through direct API integration.
-* The current implementation is only available for gaming transactions (Merchant MCC: 7995).
+* The service is available both through hosted payment pages and through direct 
+API integration.
+* The current implementation is only available for gaming transactions 
+(Merchant MCC: 7995).
 * The payout service is not a part of Swedbank Pay Settlement Service.
 
 ### API requests
 
-The API requests are displayed in the [payout flow](#payout-flow).  You create a payout by performing a `POST` creditcard payments with key `operation` set to `payout`. The general REST based API model is described in the [technical reference].
+The API requests are displayed in the [payout flow](#payout-flow).  You create 
+a payout by performing a `POST` creditcard payments with key `operation` set to 
+`payout`. The general REST based API model is described in the 
+[technical reference][#].
 
 {:.code-header}
 **Request**
@@ -474,30 +494,56 @@ sequenceDiagram
 
 ## Verify
 
->The `Verify` operation lets you post verification payments, which are used to confirm validity of card information without reserving or charging any amount.
+>The `Verify` operation lets you post verification payments, which are used to 
+confirm validity of card information without reserving or charging any amount.
 
 ### Introduction
 
-This option is commonly used when initiating a subsequent [One-click card payment][one-click-payments] or a [recurring card payment][recurring-card-payment] flow - where you do not want to charge the consumer right away. Please note that all boolean credit card attributes involving rejection of certain card types are optional and set on contract level.
+This option is commonly used when initiating a subsequent 
+[One-click card payment][one-click-payments] or a 
+[recurring card payment][recurring-card-payment] flow - where you do not want 
+to charge the consumer right away. Please note that all boolean credit card 
+attributes involving rejection of certain card types are optional and set on 
+contract level.
 
 ### Verification through Swedbank Pay Payment Pages
 
-* When properly set up in your merchant/webshop site and the payer initiates a verification operation, you make a `POST` request towards Swedbank Pay with your Verify information. This will generate a payment object with a unique paymentID. You either receive a Redirect URL to a hosted page or a JavaScript source in response.
-* You need to [redirect] the payer's browser to that specified URL, or embed the script source on your site to create a [Hosted View][hosted-view] in an iFrame; so that she can enter the credit card details in a secure Swedbank Pay hosted environment.
+* When properly set up in your merchant/webshop site and the payer initiates a 
+verification operation, you make a `POST` request towards Swedbank Pay with your
+ Verify information. This will generate a payment object with a unique 
+ `paymentID`. You either receive a Redirect URL to a hosted page or a JavaScript
+ source in response.
+* You need to [redirect] the payer's browser to that specified URL, or embed the
+ script source on your site to create a [Hosted View][hosted-view] in an iFrame;
+ so that she can enter the credit card details in a secure Swedbank Pay hosted 
+ environment.
 * Swedbank Pay will handle 3D-secure authentication when this is required.
-* Swedbank Pay will redirect the payer's browser to - or display directly in the iFrame - one of two specified URLs, depending on whether the payment session is followed through completely or cancelled beforehand. Please note that both a successful and rejected payment reach completion, in contrast to a cancelled payment.
-* When you detect that the payer reach your completeUrl , you need to do a `GET` request to receive the state of the transaction.
-* Finally you will make a `GET` request towards Swedbank Pay with the paymentID received in the first step, which will return the payment result and a paymentToken that can be used for subsequent [One-Click Payments][one-click-payments] and [recurring server-to-server based payments][recurring-server-to-server-based-payments].
+* Swedbank Pay will redirect the payer's browser to - or display directly in the
+ iFrame - one of two specified URLs, depending on whether the payment session is
+ followed through completely or cancelled beforehand. Please note that both a 
+ successful and rejected payment reach completion, in contrast to a cancelled 
+ payment.
+* When you detect that the payer reach your completeUrl , you need to do a `GET`
+ request to receive the state of the transaction.
+* Finally you will make a `GET` request towards Swedbank Pay with the 
+`paymentID` received in the first step, which will return the payment result 
+and a `paymentToken` that can be used for subsequent 
+[One-Click Payments][one-click-payments] and 
+[recurring server-to-server based payments][recurring-server-to-server-based-payments].
 
 ### Screenshots
 
-You will redirect the consumer/end-user to Swedbank Pay hosted pages to collect the credit card information.
+You will redirect the consumer/end-user to Swedbank Pay hosted pages to collect 
+the credit card information.
 
 ![Merchant implementing redirect][redirect-image]
 
 ### API Requests
 
-The API requests are displayed in the [Verification flow]. The options you can choose from when creating a payment with key operation set to Value Verify are listed below. The general REST based API model is described in the [technical reference].
+The API requests are displayed in the [Verification flow]. The options you can 
+choose from when creating a payment with key operation set to Value Verify are 
+listed below. The general REST based API model is described in the 
+[technical reference].
 
 {:.code-header}
 **Request**
@@ -605,11 +651,21 @@ Content-Type: application/json
 
 ### Verification flow
 
-The sequence diagram below shows the two requests you have to send to Swedbank Pay to make a purchase. The links will take you directly to the API description for the specific request. The diagram also shows in high level, the sequence of the process of a complete purchase.  
-When dealing with credit card payments, 3D-Secure authentication of the cardholder is an essential topic. There are three alternative outcome of a credit card payment:
+The sequence diagram below shows the two requests you have to send to Swedbank 
+Pay to make a purchase. The links will take you directly to the API description 
+for the specific request. The diagram also shows in high level, the sequence of 
+the process of a complete purchase.  
+When dealing with credit card payments, 3D-Secure authentication of the 
+cardholder is an essential topic. There are three alternative outcome of a 
+credit card payment:
 
-* 3D-Secure enabled - by default, 3D-secure should be enabled, and Swedbank Pay will check if the card is enrolled with 3D-secure. This depends on the issuer of the card. If the card is not enrolled with 3D-Secure, no authentication of the cardholder is done.
-* Card supports 3D-Secure - if the card is enrolled with 3D-Secure, Swedbank Pay will redirect the cardholder to the autentication mechanism that is decided by the issuing bank. Normally this will be done using BankID or Mobile BankID.
+* 3D-Secure enabled - by default, 3D-secure should be enabled, and Swedbank Pay 
+will check if the card is enrolled with 3D-secure. This depends on the issuer of
+ the card. If the card is not enrolled with 3D-Secure, no authentication of the 
+ cardholder is done.
+* Card supports 3D-Secure - if the card is enrolled with 3D-Secure, Swedbank 
+Pay will redirect the cardholder to the autentication mechanism that is decided 
+by the issuing bank. Normally this will be done using BankID or Mobile BankID.
 
 ## Payment Orders
 
@@ -618,6 +674,53 @@ When dealing with credit card payments, 3D-Secure authentication of the cardhold
 {% include transactions-reference.md %}
 
 {% include operations-reference.md %}
+
+### Create authorization transaction
+
+The `direct-authorization` operation creates an authorization transaction 
+directly whilst the `redirect-authorization`operation redirects the consumer to 
+Swedbank Pay Payment pages where the payment is authorized.
+
+{% include alert.html type="warning"
+                      icon="warning"
+                      header="Note"
+                      body="In order to use the `direct-authorization` operation, the servers and application involved in retrieving and transferring the credit card number from the payer to PayEx needs to be [PCI DSS][PCI-link] certified." %}
+
+
+{code-header}
+**Request**
+
+```http
+POST /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations HTTP/1.1
+Host: api.payex.com
+Authorization: Bearer <MerchantToken>
+Content-Type: application/json
+
+{
+    "transaction": {
+        "cardNumber": "4925000000000004",
+        "cardExpiryMonth": 11,
+        "cardExpiryYear": 22,
+        "cardVerificationCode": "185",
+        "cardholderName": "John Hancock"
+    }
+}
+```
+
+
+{:.table .table-striped}
+| ✔︎︎︎︎︎ | Property | Data type | Description
+|:--|:---------|:----------|:--------------
+| ✔︎︎︎︎︎ | transaction.cardNumber | string|Primary Account Number (PAN) of the card, printed on the face of the card.
+| ✔︎︎︎︎︎ | transaction.cardExpiryMonth | integer|Expiry month of the card, printed on the face of the card.
+| ✔︎︎︎︎︎ | transaction.cardExpiryYear | integer|Expiry year of the card, printed on the face of the card.
+| | transaction.cardVerificationCode | string|Card verification code (CVC/CVV/CVC2), usually printed on the back of the card.
+| | transaction.cardholderName | string|Name of the card holder, usually printed on the face of the card.
+
+**Response**
+
+The `authorization` resource contains information about an authorization 
+transaction made towards a payment, as previously described.
 
 {% include one-click-payments.md %}
 
@@ -639,16 +742,22 @@ When dealing with credit card payments, 3D-Secure authentication of the cardhold
 
 ## Problem messages
 
-When performing unsuccessful operations, the eCommerce API will respond with a problem message. We generally use the problem message ##type## and ##status## code to identify the nature of the problem. The problem ##name## and ##description## will often help narrow down the specifics of the problem.
+When performing unsuccessful operations, the eCommerce API will respond with a 
+problem message. We generally use the problem message `type` and `status` code 
+to identify the nature of the problem. The problem `name` and `description` will
+ often help narrow down the specifics of the problem.
 
-For general information about problem messages and error handling,[visit error handling and problem details][technical-reference-problems]. 
+For general information about problem messages and error handling,
+[visit error handling and problem details][technical-reference-problems]. 
 
 ### Contractual error types
 
-All contract types will have the following URI in front of type: `https://api.payex.com/psp/<errordetail>/creditcard`
+All contract types will have the following URI in front of type: 
+`https://api.payex.com/psp/<errordetail>/creditcard`
 
 {:.table .table-striped}
 | **Type** | **Status** | **Notes**
+|:---------|:-----------|:----------
 |*cardbranddisabled*| 403 | 
 | *accountholdertyperejected* | 403 | 
 | *cardtyperejected* | 403 | 
@@ -659,10 +768,12 @@ All contract types will have the following URI in front of type: `https://api.pa
 
 ### Error types from 3Dsecure/ Acquirer
 
-All acquirer error types will have the following URI in front of type: `https://api.payex.com/psp/errordetail/creditcard/<errorType>`
+All acquirer error types will have the following URI in front of type: 
+`https://api.payex.com/psp/errordetail/creditcard/<errorType>`
 
 {:.table .table-striped}
 | **Type** | **Status** | **Notes**
+|:---------|:-----------|:-----------
 | *3dsecureerror* | 400 | 3D Secure not working, try again some time later
 | *cardblacklisted* | 400 | Card blacklisted, Consumer need to contact their Card-issuing bank
 | *paymenttokenerror* | 403 |  
@@ -693,3 +804,5 @@ All acquirer error types will have the following URI in front of type: `https://
 [expansion]: #
 [technical-reference-problems]: #
 [redirect-image]: /assets/img/creditcard-image-3.png
+[PCI-link]: https://www.pcisecuritystandards.org/
+
