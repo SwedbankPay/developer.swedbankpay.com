@@ -314,7 +314,7 @@ Content-Type: application/json
 | ✔︎︎︎︎︎ | └─➔&nbsp;`reference`                  | `string`     | A reference that identifies the order item.
 | ✔︎︎︎︎︎ | └─➔&nbsp;`name`                       | `string`     | The name of the order item.
 | ✔︎︎︎︎︎ | └─➔&nbsp;`type`                       | `string`     | `PRODUCT`, `SERVICE`, `SHIPPING_FEE`, `DISCOUNT`, `VALUE_CODE` or `OTHER`. The type of the order item.
-| ✔︎︎︎︎︎ | └─➔&nbsp;`class`                      | `string`     | The classification of the order item. Can be used for assigning the order item to a specific product category, for instance. Swedbank Pay has no use for this value itself, but it's useful for some payment instruments and integrations.
+| ✔︎︎︎︎︎ | └─➔&nbsp;`class`                      | `string`     | The classification of the order item. Can be used for assigning the order item to a specific product category, for instance. Swedbank Pay has no use for this value itself, but it's useful for some payment instruments and integrations. Note that this has to be a single word.
 | ︎︎︎  | └─➔&nbsp;`itemUrl`                    | `string`     | The URL to a page that contains a human readable description of the order item, or similar.
 | ︎︎︎  | └─➔&nbsp;`imageUrl`                   | `string`     | The URL to an image of the order item.
 | ︎︎︎  | └─➔&nbsp;`description`                | `string`     | The human readable description of the order item.
