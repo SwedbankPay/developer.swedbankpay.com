@@ -86,7 +86,6 @@ We recommend that you include following information:
 * Directions to (a link to a page) the merchant's terms and conditions 
   (such as return policy) and information of how the consumer can contact the 
   merchant. 
-  [See example here.][paymentlink-pdf]
 * Details informing the consumer that he or she accepts the Terms & Conditions 
   when clicking on the Payment Link.
 
@@ -108,7 +107,7 @@ to Value Purchase are listed below.
 When clicking the payment link, the consumer will be directed to a payment 
 page, similar to the examples below, where payment information can be entered.
 
-![Payex payment menu][1551694498854-650]
+![Payex payment menu][paymentMethodsScreenshot]
 
 ### Options
 
@@ -219,14 +218,13 @@ sequenceDiagram
 ```
 
 
-[1551694498854-650]: /assets/img/1551694498854-650.png
-[credit-card]: #
-[mobile-pay]: #
-[payex-reconciliation-and-settlement]: #
-[paymentlink-pdf]: #
-[redirect-implementation]: #
-[swish-e-commerce]: #
-[swish-m-commerce]: #
-[technical-reference-callback]: #
-[tecnical-reference-finalize]: #
-[vipps]: #
+[paymentMethodsScreenshot]: /assets/img/checkout/payment_methods.PNG
+[credit-card]: /payments/credit-card/
+[mobile-pay]: /payments/mobile-pay/
+[payex-reconciliation-and-settlement]: /payments/mobile-pay/other-features#settlement-and-reconcilliation
+[redirect-implementation]: /payments/mobile-pay/redirect
+[swish-e-commerce]: /payments/swish/#swish-e-commerce-redirect-to-payment-pages
+[swish-m-commerce]: /payments/swish/#swish-m-commerce-redirect-to-payment-pages
+[technical-reference-callback]: /payments/mobile-pay/other-features#callback
+[tecnical-reference-finalize]: /payments/mobile-pay/after-payment#finalize
+[vipps]: /payments/vipps/

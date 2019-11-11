@@ -240,6 +240,96 @@ Content-Type: application/json
 | cancellations.cancellationList[] | object    | The object representation of the cancellation transaction resource described below. |
 
 
+### Finalize
+
+Finalizing a preauthorized payment is done as a `PATCH`  after a successful 
+`Authorization` transaction has been created. 
+The common use-case for the finalize operation is to authorize the payment 
+(that has the preauthorization intent) and complete all payment related 
+activities as soon as possible - in order to complete (finalize) everything 
+server-to-server afterwards. 
+The only allowed activity is `Finalize`. To use the operation, you should 
+perform a `GET` on the payment after the user returns from the 
+`redirect-authorization` operation and find the operation 
+`update-authorization-finalize`.
+
+{:.code-header}
+**Request**
+
+```http
+PATCH /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations/<transactionId> HTTP/1.1
+Host: api.payex.com
+Authorization: Bearer <MerchantToken>
+Content-Type: application/json
+
+{
+    "transaction": {
+        "activity": "Finalize"
+    }
+}
+```
+
+{:.table .table-striped}
+| Required | Property               | Data type | Description |
+| :------- | :--------------------- | :-------- | :---------- |
+| ✔︎       | `transaction.activity` | `string`  | `Finalize`  |
+
+
+{:.code-header}
+**Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "payment": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "authorization": {
+        "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations/12345678-1234-1234-1234-123456789012",
+        "paymentToken": "12345678-1234-1234-1234-123456789012",
+        "maskedPan": "123456xxxxxx1234",
+        "expireDate": "mm/yyyy",
+        "panToken": "12345678-1234-1234-1234-123456789012",
+        "cardBrand": "Visa|MC",
+        "cardType": "Credit Card|Debit Card",
+        "issuingBank": "UTL MAESTRO",
+        "countryCode": "999",
+        "acquirerTransactionType": "3DSECURE|SSL",
+        "acquirerStan": "39736",
+        "acquirerTerminalId": "39",
+        "acquirerTransactionTime": "2017-08-29T13:42:18Z",
+        "authenticationStatus": "Y|A|U|N",
+        "transaction": {
+            "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
+            "created": "2016-09-14T01:01:01.01Z",
+            "updated": "2016-09-14T01:01:01.03Z",
+            "type": "Authorization",
+            "state": "Initialized",
+            "number": 1234567890,
+            "amount": 1000,
+            "vatAmount": 250,
+            "description": "Test transaction",
+            "payeeReference": "AH123456",
+            "failedReason": "",
+            "isOperational": true,
+            "operations": [
+                {
+                    "href": "https://api.payex.com/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+                    "rel": "edit-authorization",
+                    "method": "PATCH"
+                }
+            ]
+        }
+    }
+}
+```
+
+{:.table .table-striped}
+| Property        | Data type | Description                                                                             |
+| :-------------- | :-------- | :-------------------------------------------------------------------------------------- |
+| `payment`       | `string`  | The relative URI of the payment this finalize transaction resource belongs to.          |
+| `authorization` | `object`  | The object representation of the [`authorization` transaction resource][authorization]. |
+
 ### Create cancellation transaction
 Perform the `create-cancel` operation to cancel a previously created payment. 
 You can only cancel a payment - or part of payment - not yet captured.
