@@ -15,16 +15,20 @@ sidebar:
 {% include alert.html type="warning"
                       icon="warning"
                       header="Site under development"
-                      body="The Developer Portal is under construction and should not be used to integrate against Swedbank Pay's APIs yet." %}
+                      body="The Developer Portal is under construction and 
+                      should not be used to integrate against Swedbank Pay's 
+                      APIs yet." %}
 
 
 
 ## Create capture transaction
 
-To `capture` a `CreditAccountSe` transaction, you need to perform the `create-capture` operation.
+To `capture` a `CreditAccountSe` transaction, you need to perform the 
+`create-capture` operation.
 
 {:.code-header}
-**Request**"
+**Request**
+
 ```HTTP
 POST /psp/creditcard/payments/<paymentId>/captures HTTP/1.1
 Host: api.payex.com
@@ -41,20 +45,20 @@ Content-Type: application/json
 }
 ```
 
-
-
 {:.table .table-striped}
-| **Property** | **Data type** | **Required** | **Description** 
-| capture.amount | integer | ✔︎ | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.
-| capture.vatAmount | integer | Y |Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.
-| capture.description | string |Y|A textual description of the capture transaction.
-| capture.payeeReference | string(30*) |Y| A unique reference for the capture transaction. See [payeeReference][payee-reference] for details.
+| Required | Property               | Data type   | Description                                                                                                               |
+| :------- | :--------------------- | :---------- | :------------------------------------------------------------------------------------------------------------------------ |
+| ✔︎       | capture.amount         | integer     | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 NOK`, `5000` = `50.00 SEK`. |
+| ✔︎       | capture.vatAmount      | integer     | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 NOK`, `5000` = `50.00 SEK`. |
+| ✔︎       | capture.description    | string      | A textual description of the capture transaction.                                                                         |
+| ✔︎       | capture.payeeReference | string(30*) | A unique reference for the capture transaction. See [payeeReference][payee-reference] for details.                        |
 
 
 The `capture` resource contains information about the capture transaction.
 
 {:.code-header}
 **Response**
+
 ```HTTP
 HTTP/1.1 200 OK
 Content-Type: application/json
@@ -110,12 +114,20 @@ Content-Type: application/json
 }
 ```
 
-
 {:.table .table-striped}
-| **Property** | **Data type** | **Description** 
-|payment|string|The relative URI of the payment this capture transaction belongs to.
-|capture.id|string|The relative URI of the created capture transaction.
-|capture.transaction|object|The object representation of the generic [transaction resource][transaction-resource]
+| Property            | Data type | Description                                                                           |
+| :------------------ | :-------- | :------------------------------------------------------------------------------------ |
+| payment             | string    | The relative URI of the payment this capture transaction belongs to.                  |
+| capture.id          | string    | The relative URI of the created capture transaction.                                  |
+| capture.transaction | object    | The object representation of the generic [transaction resource][transaction-resource] |
 
-[payee-reference]: #
-[transaction-resource]: #
+
+{% include iterator.html 
+        prev_href="index"
+        prev_title="Back: Introduction"
+        next_href="other-features"
+        next_title="Next: Other Features" %}
+
+
+[payee-reference]: /payments/credit-account/other-features#payeereference
+[transaction-resource]: /payments/credit-account/other-features#transactions
