@@ -632,7 +632,7 @@ authorization amount.
 
 ```mermaid
 sequenceDiagram
-  Merchant->>PayEx: POST [credit card capture](payments/credit-card/payments)
+  Merchant->>PayEx: POST [credit card capture]
   Activate Merchant
   Activate PayEx
   PayEx-->>Merchant: transaction resource
