@@ -29,6 +29,35 @@ HTTP requests, responses and HTML code you will need to implement in order to
 complete the Swedbank Pay Checkout integration. Before Checkout you have to
 Checkin. To check in, the payer needs to be identified.
 
+```mermaid
+sequenceDiagram
+    participant Payer
+    participant Merchant
+    participant SwedbankPay as Swedbank Pay
+
+    activate Payer
+        rect rgba(238, 112, 35, 0.05)
+            note left of Payer: Checkin
+
+            Payer ->> Merchant: Start Checkin
+            activate Merchant
+                Merchant ->> SwedbankPay: POST /psp/consumers
+                activate SwedbankPay
+                    SwedbankPay -->> Merchant: rel:view-consumer-identification
+                deactivate SwedbankPay
+                Merchant -->> Payer: Show Checkin (Consumer Hosted View)
+
+            deactivate Merchant
+            Payer ->> Payer: Initiate Consumer Hosted View (open iframe)
+            Payer ->> SwedbankPay: Show Consumer UI page in iframe
+            activate SwedbankPay
+                SwedbankPay ->> Payer: Consumer identification process
+                SwedbankPay -->> Payer: show consumer completed iframe
+            deactivate SwedbankPay
+            Payer ->> Payer: onConsumerIdentified (consumerProfileRef)
+        end
+```
+
 ### Checkin Back End
 
 The payer will be identified with the `consumers` resource and will be
