@@ -258,7 +258,7 @@ Content-Type: application/json
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0...",
         "language": "sv",
-        "generateRecurrenceToken": false
+        "generateRecurrenceToken": false,
         "urls": {
             "hostUrls": ["https://example.com", "https://example.net"],
             "completeUrl": "https://example.com/payment-completed",
