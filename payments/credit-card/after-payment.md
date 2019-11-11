@@ -610,7 +610,7 @@ transaction, Swedbank Pay will perform a callback to inform the payee (merchant)
 sequenceDiagram
   activate Merchant
   activate PayEx
-  PayEx->Merchant: POST <callbackUrl>
+  PayEx->>Merchant: POST <callbackUrl>
   note left of Merchant: Callback by PayEx
   Merchant-->PayEx: HTTP response
   deactivate PayEx
