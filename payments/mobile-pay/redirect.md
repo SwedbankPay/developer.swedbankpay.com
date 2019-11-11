@@ -107,9 +107,13 @@ sequenceDiagram
   Deactivate Merchant
 ```
 
+{% include iterator.html prev_href="index"
+                         prev_title="Back: Introduction"
+                         next_href="after-payment"
+                         next_title="Next: After Payment" %}
+
 [mobilepay-screenshot-1]: /assets/img/mobilepay-screenshot-1.png
 [mobilepay-screenshot-2]: /assets/img/mobilepay-screenshot-2.png
-[mobilepay-cancel]: #
-[mobilepay-capture]: #
-[technical-reference-callback]: #
-[technical-reference]: #
+[mobilepay-cancel]: /payments/mobile-pay/after-payment#cancellations
+[mobilepay-capture]: /payments/mobile-pay/after-payment#capture
+[technical-reference-callback]: /payments/mobile-pay/other-features#callback
