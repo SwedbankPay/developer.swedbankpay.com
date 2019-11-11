@@ -8,6 +8,8 @@ sidebar:
       title: Introduction
     - url: /payments/credit-card/redirect
       title: Redirect
+    - url: /payments/credit-card/seamless-view
+      title: Seamless View
     - url: /payments/credit-card/direct
       title: Direct
     - url: /payments/credit-card/after-payment
@@ -200,19 +202,19 @@ Content-Type: application/json
 | |generateRecurrenceToken|boolean|`true` or `false`. Set this to `true` if you want to create a recurrenceToken for future use Recurring purchases (subscription payments).
 | ✔︎︎︎︎︎ |userAgent|string|The user agent reference of the consumer's browser - [see user agent definition][user-agent-definition]
 | ✔︎︎︎︎︎ |language|string|nb-NO, sv-SE or en-US.
-| |urls.hostUrl|array|The array of URLs valid for embedding of PayEx Hosted Views. If not supplied, view-operation will not be available.
-| ✔︎︎︎︎︎ |urls.completeUrl|string|The URL that PayEx will redirect back to when the payment page is completed.
+| |urls.hostUrl|array|The array of URLs valid for embedding of Swedbank Pay Hosted Views. If not supplied, view-operation will not be available.
+| ✔︎︎︎︎︎ |urls.completeUrl|string|The URL that Swedbank Pay will redirect back to when the payment page is completed.
 | |urls.cancelUrl|string|The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with paymentUrl; only cancelUrl or paymentUrl can be used, not both. 
-| |urls.paymentUrl|string|The URI that PayEx will redirect back to when the view-operation needs to be loaded, to inspect and act on the current status of the payment. Only used in hosted views. If both cancelUrl and paymentUrl is sent, the paymentUrl will used.
-| |urls.callbackUrl|string|The URL that PayEx will perform an HTTP POST against every time a transaction is created on the payment. See [callback][] for details.
+| |urls.paymentUrl|string|The URI that Swedbank Pay will redirect back to when the view-operation needs to be loaded, to inspect and act on the current status of the payment. Only used in hosted views. If both cancelUrl and paymentUrl is sent, the paymentUrl will used.
+| |urls.callbackUrl|string|The URL that Swedbank Pay will perform an HTTP POST against every time a transaction is created on the payment. See [callback][] for details.
 | |urls.logoUrl|string|The URL that will be used for showing the customer logo. Must be a picture with maximum 50px height and 400px width. Require https.
 | |urls.termsOfServiceUrl|string|A URL that contains your terms and conditions for the payment, to be linked on the payment page. Require https.
-| ✔︎︎︎︎︎ |payeeInfo.payeeId|string|This is the unique id that identifies this payee (like merchant) set by PayEx.
+| ✔︎︎︎︎︎ |payeeInfo.payeeId|string|This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.
 | ✔︎︎︎︎︎ |payeeInfo.payeeReference|string(30*)|A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.
-| |payeeInfo.payeeName|string|The payee name (like merchant name) that will be displayed to consumer when redirected to PayEx.
-| |payeeInfo.productCategory|string|A product category or number sent in from the payee/merchant. This is not validated by PayEx, but will be passed through the payment process and may be used in the settlement process.
+| |payeeInfo.payeeName|string|The payee name (like merchant name) that will be displayed to consumer when redirected to Swedbank Pay.
+| |payeeInfo.productCategory|string|A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.
 | |payeeInfo.orderReference|String(50)|The order reference should reflect the order reference found in the merchant's systems.
-| |payeeInfo.subsite|String(40)|The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with PayEx reconciliation before being used.
+| |payeeInfo.subsite|String(40)|The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.
 | |metadata|object|The keys and values that should be associated with the payment. Can be additional identifiers and data you want to associate with the payment.
 | |cardholder.firstName|string|Optional (increased chance for frictionless flow if set) If buyer is a company, use only firstName for companyName.
 | |cardholder.lastName|string|Optional (increased chance for frictionless flow if set) If buyer is a company, use only firstName for companyName.
@@ -260,10 +262,10 @@ Content-Type: application/json
 | |riskIndicator.pickUpAddress.city|string|If shipIndicator set to 4, then prefil this.
 | |riskIndicator.pickUpAddress.zipCode|string|If shipIndicator set to 4, then prefil this.
 | |riskIndicator.pickUpAddress.countryCode|string|If shipIndicator set to 4, then prefil this.
-| |creditCard.rejectDebitCards|boolean|`true` if debit cards should be declined; otherwise `false` per default. Default value is set by PayEx and can be changed at your request.
-| |creditCard.rejectCreditCards|boolean|`true` if credit cards should be declined; otherwise `false` per default. Default value is set by PayEx and can be changed at your request.
-| |creditCard.rejectConsumerCards|boolean|`true` if consumer cards should be declined; otherwise `false` per default. Default value is set by PayEx and can be changed at your request.
-| |creditCard.rejectCorporateCards|boolean|`true` if corporate cards should be declined; otherwise `false` per default. Default value is set by PayEx and can be changed at your request.
+| |creditCard.rejectDebitCards|boolean|`true` if debit cards should be declined; otherwise `false` per default. Default value is set by Swedbank Pay and can be changed at your request.
+| |creditCard.rejectCreditCards|boolean|`true` if credit cards should be declined; otherwise `false` per default. Default value is set by Swedbank Pay and can be changed at your request.
+| |creditCard.rejectConsumerCards|boolean|`true` if consumer cards should be declined; otherwise `false` per default. Default value is set by Swedbank Pay and can be changed at your request.
+| |creditCard.rejectCorporateCards|boolean|`true` if corporate cards should be declined; otherwise `false` per default. Default value is set by Swedbank Pay and can be changed at your request.
 
 {:.code-header}
 **Response**
@@ -375,7 +377,7 @@ Content-Type: application/json
 * You need to have the 3D-secure protocol enabled.
 * The service is available both through hosted payment pages and through direct API integration.
 * The current implementation is only available for gaming transactions (Merchant MCC: 7995).
-* The payout service is not a part of PayEx Settlement Service.
+* The payout service is not a part of Swedbank Pay Settlement Service.
 
 ### API requests
 
@@ -478,18 +480,18 @@ sequenceDiagram
 
 This option is commonly used when initiating a subsequent [One-click card payment][one-click-payments] or a [recurring card payment][recurring-card-payment] flow - where you do not want to charge the consumer right away. Please note that all boolean credit card attributes involving rejection of certain card types are optional and set on contract level.
 
-### Verification through PayEx Payment Pages
+### Verification through Swedbank Pay Payment Pages
 
-* When properly set up in your merchant/webshop site and the payer initiates a verification operation, you make a `POST` request towards PayEx with your Verify information. This will generate a payment object with a unique paymentID. You either receive a Redirect URL to a hosted page or a JavaScript source in response.
-* You need to [redirect] the payer's browser to that specified URL, or embed the script source on your site to create a [Hosted View][hosted-view] in an iFrame; so that she can enter the credit card details in a secure PayEx hosted environment.
-* PayEx will handle 3D-secure authentication when this is required.
-* PayEx will redirect the payer's browser to - or display directly in the iFrame - one of two specified URLs, depending on whether the payment session is followed through completely or cancelled beforehand. Please note that both a successful and rejected payment reach completion, in contrast to a cancelled payment.
+* When properly set up in your merchant/webshop site and the payer initiates a verification operation, you make a `POST` request towards Swedbank Pay with your Verify information. This will generate a payment object with a unique paymentID. You either receive a Redirect URL to a hosted page or a JavaScript source in response.
+* You need to [redirect] the payer's browser to that specified URL, or embed the script source on your site to create a [Hosted View][hosted-view] in an iFrame; so that she can enter the credit card details in a secure Swedbank Pay hosted environment.
+* Swedbank Pay will handle 3D-secure authentication when this is required.
+* Swedbank Pay will redirect the payer's browser to - or display directly in the iFrame - one of two specified URLs, depending on whether the payment session is followed through completely or cancelled beforehand. Please note that both a successful and rejected payment reach completion, in contrast to a cancelled payment.
 * When you detect that the payer reach your completeUrl , you need to do a `GET` request to receive the state of the transaction.
-* Finally you will make a `GET` request towards PayEx with the paymentID received in the first step, which will return the payment result and a paymentToken that can be used for subsequent [One-Click Payments][one-click-payments] and [recurring server-to-server based payments][recurring-server-to-server-based-payments].
+* Finally you will make a `GET` request towards Swedbank Pay with the paymentID received in the first step, which will return the payment result and a paymentToken that can be used for subsequent [One-Click Payments][one-click-payments] and [recurring server-to-server based payments][recurring-server-to-server-based-payments].
 
 ### Screenshots
 
-You will redirect the consumer/end-user to PayEx hosted pages to collect the credit card information.
+You will redirect the consumer/end-user to Swedbank Pay hosted pages to collect the credit card information.
 
 ![Merchant implementing redirect][redirect-image]
 
@@ -603,11 +605,11 @@ Content-Type: application/json
 
 ### Verification flow
 
-The sequence diagram below shows the two requests you have to send to PayEx to make a purchase. The links will take you directly to the API description for the specific request. The diagram also shows in high level, the sequence of the process of a complete purchase.  
+The sequence diagram below shows the two requests you have to send to Swedbank Pay to make a purchase. The links will take you directly to the API description for the specific request. The diagram also shows in high level, the sequence of the process of a complete purchase.  
 When dealing with credit card payments, 3D-Secure authentication of the cardholder is an essential topic. There are three alternative outcome of a credit card payment:
 
-* 3D-Secure enabled - by default, 3D-secure should be enabled, and PayEx will check if the card is enrolled with 3D-secure. This depends on the issuer of the card. If the card is not enrolled with 3D-Secure, no authentication of the cardholder is done.
-* Card supports 3D-Secure - if the card is enrolled with 3D-Secure, PayEx will redirect the cardholder to the autentication mechanism that is decided by the issuing bank. Normally this will be done using BankID or Mobile BankID.
+* 3D-Secure enabled - by default, 3D-secure should be enabled, and Swedbank Pay will check if the card is enrolled with 3D-secure. This depends on the issuer of the card. If the card is not enrolled with 3D-Secure, no authentication of the cardholder is done.
+* Card supports 3D-Secure - if the card is enrolled with 3D-Secure, Swedbank Pay will redirect the cardholder to the autentication mechanism that is decided by the issuing bank. Normally this will be done using BankID or Mobile BankID.
 
 ## Payment Orders
 
@@ -624,6 +626,10 @@ When dealing with credit card payments, 3D-Secure authentication of the cardhold
 {% include payment-link.md %}
 
 {% include subsite.md %}
+
+## PayeeReference
+
+{% include payeeinfo.md %}
 
 ## Prices
 

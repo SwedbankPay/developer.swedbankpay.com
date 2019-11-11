@@ -8,6 +8,8 @@ sidebar:
       title: Introduction
     - url: /payments/credit-card/redirect
       title: Redirect
+    - url: /payments/credit-card/seamless-view
+      title: Seamless View
     - url: /payments/credit-card/direct
       title: Direct
     - url: /payments/credit-card/after-payment
@@ -25,9 +27,9 @@ sidebar:
 
 ### Options after posting a payment
 
-* *Abort:* It is possible to abort the process, if the payment has no successful transactions. [See the PATCH payment description][see-the-PATCH-payment-description].  
+* *Abort:* It is possible to abort the process, if the payment has no successful transactions. [See the PATCH payment description][abort].  
 * If the payment shown above is done as a two phase (`Authorization`), you will need to implement the `Capture` and `Cancel` requests.  
-* For `reversals`, you will need to implement the Reversal request.  
+* For `reversals`, you will need to implement the [Reversal request][reversal].  
 * If you did a `PreAuthorization`, you will have to send a [Finalize request][finalize] to finalize the transaction.  
 * *If CallbackURL is set:* Whenever changes to the payment occur a [Callback request][callback] will be posted to the callbackUrl, which was generated when the payment was created.  
 
@@ -367,7 +369,7 @@ Cancel can only be done on a authorized transaction. If you do cancel after doin
 
 ```mermaid
 sequenceDiagram
-  Merchant->PayEx: POST [creditcard cancellactions][creditcard-cancellactions]
+  Merchant->PayEx: POST [creditcard cancellactions][cancel]
   Activate Merchant
   Activate PayEx
   PayEx-->Merchant: transaction resource
@@ -503,7 +505,7 @@ Reversal can only be done on a payment where there are some captured amount not 
 
 ```mermaid
 sequenceDiagram
-  Merchant->PayEx: POST [creditcard reversals][creditcard-reversals]
+  Merchant->PayEx: POST [creditcard reversals][reversal]
   Activate Merchant
   Activate PayEx
   PayEx-->Merchant: transaction resource
@@ -561,20 +563,20 @@ When a change or update from the back-end system are made on a payment or transa
 ```mermaid
 sequenceDiagram
   activate Merchant
-  activate PAYEX
-  PAYEX->Merchant: POST <callbackUrl>
+  activate PayEx
+  PayEx->Merchant: POST <callbackUrl>
   note left of Merchant: Callback by PayEx
-  Merchant-->PAYEX: HTTP response
-  deactivate PAYEX
+  Merchant-->PayEx: HTTP response
+  deactivate PayEx
   deactivate Merchant
 
   activate Merchant
-  activate PAYEX
-  Merchant->PAYEX: GET [credit card payment]
+  activate PayEx
+  Merchant->PayEx: GET [credit card payment]
   note left of Merchant: First API request
-  Activate PAYEX
-  PAYEX-->Merchant: payment resource
-  deactivate PAYEX
+  Activate PayEx
+  PayEx-->Merchant: payment resource
+  deactivate PayEx
   deactivate Merchant
 ```
 
@@ -614,7 +616,7 @@ Reversal can only be done on a payment where there are some captured amount not 
 
 ```mermaid
 sequenceDiagram
-  Merchant->PayEx: POST [credit card reversal](payments/credit-card/payments)
+  Merchant->PayEx: POST [credit card reversal][reversal]
   Activate Merchant
   Activate PayEx
   PayEx-->Merchant: transaction resource
@@ -644,7 +646,7 @@ Cancel can only be done on a authorized transaction. If you do cancel after doin
 
 ```mermaid
 sequenceDiagram
-  Merchant->PayEx: POST [credit card cancellations](payments/credit-card/payments)
+  Merchant->PayEx: POST [credit card cancellations][cancel]
   Activate Merchant
   Activate PayEx
   PayEx-->Merchant: transaction resource
@@ -658,7 +660,7 @@ Reversal can only be done on a payment where there are some captured amount not 
 
 ```mermaid
 sequenceDiagram
-  Merchant->PayEx: POST [credit card reversals](payments/credit-card/payments)
+  Merchant->PayEx: POST [credit card reversals][reversal]
   Activate Merchant
   Activate PayEx
   PayEx-->Merchant: transaction resource
@@ -673,16 +675,33 @@ You have the following options after a server-to-server Recur payment `POST`.
 
 #### Autorization (intent)
 
-* **Authorization (two-phase):** If you want the credit card to reserve the amount, you will have to specify that the intent of the purchase is Authorization. The amount will be reserved but not charged. You will later (i.e. when you are ready to ship the purchased products) have to make a [Capture][technical-reference-credit-card-captures] or [Cancel][technical-reference-credit-card-cancellations] request.
+* **Authorization (two-phase):** If you want the credit card to reserve the amount, you will have to specify that the intent of the purchase is Authorization. The amount will be reserved but not charged. You will later (i.e. when you are ready to ship the purchased products) have to make a [Capture][capture] or [Cancel][cancel] request.
 
 #### Capture (intent)
 
 * **AutoCapture (one-phase): **If you want the credit card to be charged right away, you will have to specify that the intent of the purchase is AutoCapture. The credit card will be charged and you don't need to do any more financial operations to this purchase.​​​​​
 
-[creditcard-cancellactions]: #
-[creditcard-reversals]: #
-[technical-reference-credit-card-captures]: /xwiki/wiki/developer/view/Main/ecommerce/technical-reference/core-payment-resources/card-payments/#HCaptures
-[technical-reference-credit-card-cancellations]: #
-[transaction-resource]: #
-[payeeReference]: #
+
+[transaction-resource]: /payments/credit-card/other-features/#transactions
+[payeeReference]: /payments/credit-card/other-features/#payeereference
 [callback]: /payment/credit-card/other-features/#callback
+
+
+
+[abort]: /payments/credit-card/other-features/#abort
+[callback]: /payments/credit-card/other-features/#callback
+[cancel]: /payments/credit-card/after-payment/#cancellations
+[capture]: /payments/credit-card/after-payment/#Capture
+[create-payment]: /payments/credit-card/other-features/#create-payment
+[creditcard-image-2]: /assets/img/creditcard-image-2.png
+[finalize]: /payments/credit-card/after-payment/#finalize
+[payout]: /payments/credit-card/other-features/#payout
+[purchase]: /payments/credit-card/other-features/#purchase
+[purchase-flow]: /payments/credit-card/redirect/#purchase-flow
+[purchase-flow-mobile]: /payments/credit-card/redirect/#purchase-flow-mobile
+[recur]: /payments/credit-card/other-features/#recur
+[redirect-image]: /assets/img/creditcard-image-3.png
+[reversal]: /payments/credit-card/after-payment/#reversals
+[Screnshot-1]: /assets/img/creditcard-image-1.png
+[see-the-PATCH-payment-description]: /payments/credit-card/after-payment
+[verify]: /payments/credit-card/other-features/#verify

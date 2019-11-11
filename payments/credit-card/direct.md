@@ -8,6 +8,8 @@ sidebar:
       title: Introduction
     - url: /payments/credit-card/redirect
       title: Redirect
+    - url: /payments/credit-card/seamless-view
+      title: Seamless View
     - url: /payments/credit-card/direct
       title: Direct
     - url: /payments/credit-card/after-payment
@@ -60,7 +62,7 @@ All valid options when posting in a payment with `operation` equal to `Purchase`
 
 ### Purchase flow
 
-The sequence diagram below shows a high level description of a complete purchase, and the requests you have to send to PayEx. The links will take you directly to the corresponding API description.
+The sequence diagram below shows a high level description of a complete purchase, and the requests you have to send to Swedbank Pay. The links will take you directly to the corresponding API description.
 
 When dealing with credit card payments, 3D-Secure authentication of the cardholder is an essential topic. There are three alternative outcomes of a credit card payment:
 
@@ -126,7 +128,7 @@ sequenceDiagram
 * **Abort:** It is possible to [abort a payment][abort] if the payment has no successful transactions.
 * For reversals, you will need to implement the [Reversal][reversal] request.
 * If you did a PreAuthorization, you will have to send a Finalize to the transaction using [PATCH on the Authorization][finalize].
-* **Callback from PayEx:** Whenever changes to the payment occur a [Callback request][callback-request] will be posted to the `callbackUrl`, generated when the payment was created.
+* **Callback from Swedbank Pay:** Whenever changes to the payment occur a [Callback request][callback-request] will be posted to the `callbackUrl`, generated when the payment was created.
 
 [abort]: /payments/credit-card/other-features/#abort
 [callback]: /payments/credit-card/other-features/#callback

@@ -8,6 +8,8 @@ sidebar:
       title: Introduction
     - url: /payments/credit-card/redirect
       title: Redirect
+    - url: /payments/credit-card/seamless-view
+      title: Seamless View
     - url: /payments/credit-card/direct
       title: Direct
     - url: /payments/credit-card/after-payment
@@ -29,10 +31,10 @@ TODO: This page needs serious clean-up.
 versatile and global way to initate a transaction with a customer. Choose
 between our **Seamless View**, **Redirect**, or **Direct** integration options." %}
 
-* When properly set up in your merchant/webshop site and the payer starts the purchase process, you need to make a `POST` request towards PayEx with your Purchase information. This will generate a payment object with a unique `paymentID`. You either receive a Redirect URL to a Swedbank Pay hosted page(Redirect integration) or a JavaScript source in response(Seamless View integration).
-* You need to [redirect][redirect] the payer's browser to that specified URL, or embed the script source on your site to create a Hosted View in an iFrame; so that she can enter the credit card details in a secure PayEx hosted environment.
-* PayEx will handle 3D-secure authentication when this is required.
-* PayEx will redirect the payer's browser to - or display directly in the iFrame - one of two specified URLs, depending on whether the payment session is followed through completely or cancelled beforehand. Please note that both a successful and rejected payment reach completion, in contrast to a cancelled payment.
+* When properly set up in your merchant/webshop site and the payer starts the purchase process, you need to make a `POST` request towards Swedbank Pay with your Purchase information. This will generate a payment object with a unique `paymentID`. You either receive a Redirect URL to a Swedbank Pay hosted page(Redirect integration) or a JavaScript source in response(Seamless View integration).
+* You need to [redirect][redirect] the payer's browser to that specified URL, or embed the script source on your site to create a Hosted View in an iFrame; so that she can enter the credit card details in a secure Swedbank Pay hosted environment.
+* Swedbank Pay will handle 3D-secure authentication when this is required.
+* Swedbank Pay will redirect the payer's browser to - or display directly in the iFrame - one of two specified URLs, depending on whether the payment session is followed through completely or cancelled beforehand. Please note that both a successful and rejected payment reach completion, in contrast to a cancelled payment.
 * When you detect that the payer reach your `completeUrl` , you need to do a `GET` request, containing the `paymentID` generated in the first step, to receive the state of the transaction.
 
 ## Screenshots
@@ -63,7 +65,7 @@ The intent of the payment identifies how and when the charge will be effectuated
 
 ### Purchase flow
 
-The sequence diagram below shows a high level description of a complete purchase, and the requests you have to send to PayEx. The links will take you directly to the corresponding API description.
+The sequence diagram below shows a high level description of a complete purchase, and the requests you have to send to Swedbank Pay. The links will take you directly to the corresponding API description.
 
 When dealing with credit card payments, 3D-Secure authentication of the cardholder is an essential topic. There are three alternative outcome of a credit card payment:
 

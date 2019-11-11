@@ -8,6 +8,8 @@ sidebar:
       title: Introduction
     - url: /payments/credit-card/redirect
       title: Redirect
+    - url: /payments/credit-card/seamless-view
+      title: Seamless View
     - url: /payments/credit-card/direct
       title: Direct
     - url: /payments/credit-card/after-payment
@@ -21,11 +23,11 @@ is the most common way to implement card payments." %}
 
 ## Introduction
 
-* When properly set up in your merchant/webshop site and the payer starts the purchase process, you need to make a POST request towards Swedbank Pay with your Purchase information. This will generate a payment object with a unique paymentID. You either receive a Redirect URL to a hosted page or a JavaScript source in response.
-* You need to redirect the payer's browser to that specified URL, or embed the script source on your site to create a Hosted View in an iFrame; so that she can enter the credit card details in a secure Swedbank Pay hosted environment.
+* When properly set up in your merchant/webshop site and the payer starts the purchase process, you need to make a POST request towards Swedbank Pay with your Purchase information. This will generate a payment object with a unique `paymentID`. You will receive a **redirect URL** to a Swedbank Pay payment page 
+* You need to redirect the payer's browser to that specified URL so that she can enter the credit card details in a secure Swedbank Pay environment.
 * Swedbank Pay will handle 3D-secure authentication when this is required.
-* Swedbank Pay will redirect the payer's browser to - or display directly in the iFrame - one of two specified URLs, depending on whether the payment session is followed through completely or cancelled beforehand. Please note that both a successful and rejected payment reach completion, in contrast to a cancelled payment.
-* When you detect that the payer reach your completeUrl , you need to do a `GET` request to receive the state of the transaction, containing the paymentID generated in the first step, to receive the state of the transaction.
+* Swedbank Pay will redirect the payer's browser to - one of two specified URLs, depending on whether the payment session is followed through completely or cancelled beforehand. Please note that both a successful and rejected payment reach completion, in contrast to a cancelled payment.
+* When you detect that the payer reach your `completeUrl` , you need to do a `GET` request to receive the state of the transaction, containing the `paymentID` generated in the first step, to receive the state of the transaction.
 
 ## Screenshots
 
@@ -52,7 +54,7 @@ The intent of the payment identifies how and when the charge will be effectuated
 * **Authorization (two-phase)**: If you want the credit card to reserve the amount, you will have to specify that the intent of the purchase is Authorization. The amount will be reserved but not charged. You will later (i.e. when you are ready to ship the purchased products) have to make a [Capture][capture] or [Cancel][cancel] request.
 
 ### General
-* *No 3D Secure and card acceptance:* There are optional paramers that can be used in relation to 3d-secure and card acceptance. By default, most credit card agreements with an acquirer will require that you use 3D-Secure for card holder authentication. However, if your agreement allows you to make a card payment without this authentication, or that specific cards can be declined, you may adjust these optional parameters when posting in the payment. This is specified in the technical reference section for creating credit card payments  - you will find the link in the sequence diagram below.
+* *No 3D Secure and card acceptance:* There are optional paramers that can be used in relation to 3d-secure and card acceptance. By default, most credit card agreements with an acquirer will require that you use 3D-Secure for card holder authentication. However, if your agreement allows you to make a card payment without this authentication, or that specific cards can be declined, you may adjust these optional parameters when posting in the payment.
 * *Defining `callbackURL`:* When implementing a scenario, it is optional to set a `callbackURL` in the `POST` request. If `callbackURL` is set Swedbank Pay will send a postback request to this URL when the consumer has fulfilled the payment. [See the Callback API description here][callback].
 
 ### Co-brand Visa/Dankort
@@ -60,9 +62,9 @@ The intent of the payment identifies how and when the charge will be effectuated
 Not yet supported
 
 ## Purchase flow
-The sequence diagram below shows a high level description of a complete purchase, and the requests you have to send to PayEx. The links will take you directly to the corresponding API description.
+The sequence diagram below shows a high level description of a complete purchase, and the requests you have to send to Swedbank Pay. The links will take you directly to the corresponding API description.
 
-When dealing with credit card payments, 3D-Secure authentication of the cardholder is an essential topic. There are three alternative outcome of a credit card payment:
+When dealing with credit card payments, 3D-Secure authentication of the cardholder is an essential topic. There are two alternative outcome of a credit card payment:
 
 * 3D-Secure enabled - by default, 3D-secure should be enabled, and Swedbank Pay will check if the card is enrolled with 3D-secure. This depends on the issuer of the card. If the card is not enrolled with 3D-Secure, no authentication of the cardholder is done.
 * Card supports 3D-Secure - if the card is enrolled with 3D-Secure, Swedbank Pay will redirect the cardholder to the autentication mechanism that is decided by the issuing bank. Normally this will be done using BankID or Mobile BankID.
@@ -129,7 +131,7 @@ sequenceDiagram
 
 ### Options after posting a payment
 
-* *Abort:* It is possible to abort the process, if the payment has no successful transactions. [See the PATCH payment description][abort].  
+* `Abort`: It is possible to abort the process, if the payment has no successful transactions. [See the PATCH payment description][abort].  
 * If the payment shown above is done as a two phase (`Authorization`), you will need to implement the [`Capture`][capture] and [`Cancel`][cancel] requests.  
 * For `reversals`, you will need to implement the [Reversal request][reversal]. 
 * If you did a `PreAuthorization`, you will have to send a [Finalize request][finalize] to finalize the transaction.  
@@ -139,15 +141,9 @@ sequenceDiagram
 
 >The implementation sequence for this scenario is identical to the standard Redirect scenario, but also includes explanations of how to include this redirect in mobile apps or in mobile web pages.
 
-### Payment Url
-
-For our hosted view, the URL property called `paymentUrl` will be used if the consumer is redirected out of the hosted view frame through our [Credit Card API]. The consumer is redirected out of frame when at the 3d secure verification for credit card payments. The URL should represent the page of where the payment hosted view was hosted originally, such as the checkout page, shopping cart page, or similar. Basically, `paymentUrl` should be set to the same URL as that of the page where the JavaScript for the hosted payment view was added to in order to initiate the payment. Please note that the `paymentUrl` must be able to invoke the same JavaScript URL from the same Payment as the one that initiated the payment originally, so it should include some sort of state identifier in the URL. The state identifier is the ID of the order, shopping cart or similar that has the URL of the Payment stored.
-
-With `paymentUrl` in place, the retry process becomes much more convenient for both the integration and the payer.
-
 ## Screenshots
 
-You will redirect the consumer/end-user to PayEx hosted pages to collect the credit card information.
+You will redirect the consumer/end-user to Swedbank Pay hosted pages to collect the credit card information.
 
 ![Merchant implemented redirect][redirect-image]
 
@@ -173,17 +169,17 @@ The intent of the payment identifies how and when the charge will be effectuated
 
 #### General
 
-* **No 3D Secure and card acceptance**: There are optional paramers that can be used in relation to 3d-secure and card acceptance. By default, most credit card agreements with an acquirer will require that you use 3D-Secure for card holder authentication. However, if your agreement allows you to make a card payment without this authentication, or that specific cards can be declined, you may adjust these optional parameters when posting in the payment. This is specified in the technical reference section for creating credit card payments  - you will find the link in the sequence diagram below.
-* **Defining `callbackURL`**: When implementing a scenario, it is optional to set a `callbackURL` in the `POST` request. If `callbackURL` is set PayEx will send a postback request to this URL when the consumer has fulfilled the payment. [See the Callback API description here][callback].
+* **No 3D Secure and card acceptance**: There are optional paramers that can be used in relation to 3d-secure and card acceptance. By default, most credit card agreements with an acquirer will require that you use 3D-Secure for card holder authentication. However, if your agreement allows you to make a card payment without this authentication, or that specific cards can be declined, you may adjust these optional parameters when posting in the payment.
+* **Defining `callbackURL`**: When implementing a scenario, it is optional to set a `callbackURL` in the `POST` request. If `callbackURL` is set Swedbank Pay will send a postback request to this URL when the consumer has fulfilled the payment. [See the Callback API description here][callback].
 
 ## Purchase flow mobile
 
-The sequence diagram below shows a high level description of a complete purchase, and the two requests you have to send to PayEx. The links will take you directly to the corresponding API description.
+The sequence diagram below shows a high level description of a complete purchase, and the two requests you have to send to Swedbank Pay. The links will take you directly to the corresponding API description.
 
 When dealing with credit card payments, 3D-Secure authentication of the cardholder is an essential topic. There are two alternative outcomes of a credit card payment:
 
-* 3D-Secure enabled - by default, 3D-secure should be enabled, and PayEx will check if the card is enrolled with 3D-secure. This depends on the issuer of the card. If the card is not enrolled with 3D-Secure, no authentication of the cardholder is done.
-* Card supports 3D-Secure - if the card is enrolled with 3D-Secure, PayEx will redirect the cardholder to the autentication mechanism that is decided by the issuing bank. Normally this will be done using BankID or Mobile BankID. 
+* 3D-Secure enabled - by default, 3D-secure should be enabled, and Swedbank Pay will check if the card is enrolled with 3D-secure. This depends on the issuer of the card. If the card is not enrolled with 3D-Secure, no authentication of the cardholder is done.
+* Card supports 3D-Secure - if the card is enrolled with 3D-Secure, Swedbank Pay will redirect the cardholder to the autentication mechanism that is decided by the issuing bank. Normally this will be done using BankID or Mobile BankID. 
 
 ```mermaid
 sequenceDiagram
@@ -282,11 +278,9 @@ sequenceDiagram
 [purchase-flow-mobile]: /payments/credit-card/redirect/#purchase-flow-mobile
 [recur]: /payments/credit-card/other-features/#recur
 [redirect-image]: /assets/img/creditcard-image-3.png
-[rest-api-model]: ../../
 [reversal]: /payments/credit-card/after-payment/#reversals
 [Screnshot-1]: /assets/img/creditcard-image-1.png
 [see-the-PATCH-payment-description]: /payments/credit-card/after-payment
-[technical-reference]: #
 [verify]: /payments/credit-card/other-features/#verify
 {:height="711px" width="400px"}
 {:height="711px" width="400px"}
