@@ -11,7 +11,7 @@ sidebar:
     - url: /payments/vipps/seamless-view
       title: Seamless View
     - url: /payments/vipps/after-payment
-      title: After After Payment
+      title: After Payment
     - url: /payments/vipps/other-features    
       title: Other Features
 ---
@@ -140,6 +140,12 @@ sequenceDiagram
   PayEx.BackEnd-->>PayEx.FrontEnd: authorize result
   Merchant-->>Browser: Display authorize result
 ```
+
+{% include iterator.html 
+        prev_href="redirect"
+        prev_title="Back: Redirect"
+        next_href="after-payment"
+        next_title="Next: After payments" %}
 
 [Vipps_flow_PaymentPages.png]: /assets/img/Vipps_flow_PaymentPages.png
 [Vipps-screenshot-1]: /assets/img/checkout/Vipps_hosted_payment.PNG

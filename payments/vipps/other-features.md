@@ -11,7 +11,7 @@ sidebar:
     - url: /payments/vipps/seamless-view
       title: Seamless View
     - url: /payments/vipps/after-payment
-      title: After After Payment
+      title: After Payment
     - url: /payments/vipps/other-features    
       title: Other Features
 ---
@@ -78,7 +78,7 @@ All Vipps error types will have the following URI in front of type:
 `https://api.payex.com/psp/errordetail/vipps/<errorType>`
 
 {:.table .table-striped}
-| **Type** | **Status** | Note 
+| Type | Status | Note 
 | *CARD_BLACKLISTED* | 400 | 
 | *PAYMENT_TOKEN_ERROR* | 403 | 
 | *CARD_DECLINED* | 403 | 
@@ -102,6 +102,12 @@ All Vipps error types will have the following URI in front of type:
 {% include payeeinfo.md %}
 
 {% include transactions-reference.md %}
+
+{% include callback-reference.md %}
+
+{% include iterator.html 
+        prev_href="after-payment"
+        prev_title="Back: After Payment" %}
 
 [technical-reference-problems]: #problem-messages
 [payment-order]: #payment-order

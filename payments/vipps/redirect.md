@@ -11,7 +11,7 @@ sidebar:
     - url: /payments/vipps/seamless-view
       title: Seamless View
     - url: /payments/vipps/after-payment
-      title: After After Payment
+      title: After Payment
     - url: /payments/vipps/other-features    
       title: Other Features
 ---
@@ -68,9 +68,9 @@ both the integration and the payer.
 You redirect the payer to Swedbank Pay hosted payment pages to collect the 
 consumers mobile number.
 
-
-![Vipps mobile payment pages][Screenshot_20190304-113739.png]
-![Vipps payment pages][1551695631447-890.png]
+![Vipps mobile payment pages]
+[Vipps-screenshot-1]{:width="426px" :height="632px"}
+![Vipps payment pages][Vipps-screenshot-2]{:width="427px" :height="694px"}
 
 ### API Requests 
 
@@ -151,9 +151,14 @@ sequenceDiagram
   deactivate Merchant
 ```
 
+{% include iterator.html prev_href="./"
+                         prev_title="Back: Introduction"
+                         next_href="seamless-view"
+                         next_title="Next: Implement Seamless view" %}
+
 [Vipps_flow_PaymentPages.png]: /assets/img/Vipps_flow_PaymentPages.png
-[Screenshot_20190304-113739.png]: /assets/img/Screenshot_20190304-113739.png
-[1551695631447-890.png]: /assets/img/1551695631447-890.png
+[Vipps-screenshot-1]: /assets/img/checkout/Vipps_hosted_payment.PNG
+[Vipps-screenshot-2]: /assets/img/checkout/Vipps_hosted_payment_no_paymentUrl.PNG
 [callbackurl]: /payments/vipps/other-features#callback
 [cancellations]: /payments/vipps/other-features#cancel-sequence
 [captures]: /payments/vipps/other-features#capture-sequence

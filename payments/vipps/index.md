@@ -11,7 +11,7 @@ sidebar:
     - url: /payments/vipps/seamless-view
       title: Seamless View
     - url: /payments/vipps/after-payment
-      title: After After Payment
+      title: After Payment
     - url: /payments/vipps/other-features    
       title: Other Features
 ---
@@ -31,7 +31,6 @@ or more expanded sub-resources inlined.
 **Request**
 
 ```HTTP
-HTTP
 POST /psp/vipps/payments HTTP/1.1  
 Host: api.payex.com  
 Authorization: Bearer <MerchantToken>  
@@ -88,23 +87,23 @@ Content-Type: application/json
 | ✔︎       | payment.prices.amount          | `integer`    | Amount is entered in the lowest momentary units of the selected currency. <br> E.g. `10000` = `100.00 NOK`, `5000` = `50.00 NOK`.                                                                                                                                                |
 | ✔︎       | payment.prices.vatAmount       | `integer`    | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                                                                                               |
 | ✔︎       | payment.description            | `string`(40) | A textual description max 40 characters of the purchase.                                                                                                                                                                                                                         |
-| N        | payment.payerReference         | `string`     | The reference to the payer (consumer/end-user) from the merchant system, like mobile number, customer number etc.                                                                                                                                                                |
+|          | payment.payerReference         | `string`     | The reference to the payer (consumer/end-user) from the merchant system, like mobile number, customer number etc.                                                                                                                                                                |
 | ✔︎       | payment.userAgent              | `string`     | The user agent reference of the consumer's browser - [see user agent definition][see-user-agent-definition]                                                                                                                                                                      |
 | ✔︎       | payment.language               | `string`     | `nb-NO`, `sv-SE` or `en-US`.                                                                                                                                                                                                                                                     |
 | ✔︎       | payment.urls.hostUrls          | `array`      | The array of URIs valid for embedding of Swedbank Pay Hosted Views.                                                                                                                                                                                                              |
 | ✔︎       | payment.urls.completeUrl       | `string`     | The URI that Swedbank Pay will redirect back to when the payment page is completed.                                                                                                                                                                                              |
-| N        | payment.urls.cancelUrl         | `string`     | The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with paymentUrl; only cancelUrl or paymentUrl can be used, not both.                                                                                |
-| N        | payment.urls.paymentUrl        | `string`     | The URI that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. Only used in hosted views. Can not be used simultaneously with cancelUrl; only cancelUrl or paymentUrl can be used, not both. |
-| N        | payment.urls.callbackUrl       | `string`     | The URI that Swedbank Pay will perform an HTTP POST against every time a transaction is created on the payment. See [callback][callback]                                                                                                                                         |
-| N        | payment.urls.logoUrl           | `string`     | The URI that will be used for showing the customer logo. Must be a picture with at most 50px height and 400px width. Requires https.                                                                                                                                             |
-| N        | payment.urls.termsOfServiceUrl | `string`     | A URI that contains your terms and conditions for the payment, to be linked on the payment page. Requires https.                                                                                                                                                                 |
+|          | payment.urls.cancelUrl         | `string`     | The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with paymentUrl; only cancelUrl or paymentUrl can be used, not both.                                                                                |
+|          | payment.urls.paymentUrl        | `string`     | The URI that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. Only used in hosted views. Can not be used simultaneously with cancelUrl; only cancelUrl or paymentUrl can be used, not both. |
+|          | payment.urls.callbackUrl       | `string`     | The URI that Swedbank Pay will perform an HTTP POST against every time a transaction is created on the payment. See [callback][callback]                                                                                                                                         |
+|          | payment.urls.logoUrl           | `string`     | The URI that will be used for showing the customer logo. Must be a picture with at most 50px height and 400px width. Requires https.                                                                                                                                             |
+|          | payment.urls.termsOfServiceUrl | `string`     | A URI that contains your terms and conditions for the payment, to be linked on the payment page. Requires https.                                                                                                                                                                 |
 | ✔︎       | payeeInfo.payeeId              | `string`     | This is the unique id that identifies this payee (like merchant) set by PayEx.                                                                                                                                                                                                   |
 | ✔︎       | payeeInfo.payeeReference       | `string`(30) | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payeeReference] for details.                                                                                          |
-| N        | payeeInfo.payeeName            | `string`     | The payee name (like merchant name) that will be displayed to consumer when redirected to PayEx.                                                                                                                                                                                 |
-| N        | payeeInfo.productCategory      | `string`     | A product category or number sent in from the payee/merchant. This is not validated by PayEx, but will be passed through the payment process and may be used in the settlement process.                                                                                          |
-| N        | payeeInfo.orderReference       | `string`(50) | The order reference should reflet the order reference found in the merchant's systems.                                                                                                                                                                                           |
-| N        | payeeInfo.prefillInfo          | `string`     | The mobile number that will be prefilled in the Swedbank Pay payment pages. The consumer may change this number in the UI.                                                                                                                                                       |
-| N        | payeeInfo.subsite              | `string`(40) | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.                                                                                                                      |
+|          | payeeInfo.payeeName            | `string`     | The payee name (like merchant name) that will be displayed to consumer when redirected to PayEx.                                                                                                                                                                                 |
+|          | payeeInfo.productCategory      | `string`     | A product category or number sent in from the payee/merchant. This is not validated by PayEx, but will be passed through the payment process and may be used in the settlement process.                                                                                          |
+|          | payeeInfo.orderReference       | `string`(50) | The order reference should reflet the order reference found in the merchant's systems.                                                                                                                                                                                           |
+|          | payeeInfo.prefillInfo          | `string`     | The mobile number that will be prefilled in the Swedbank Pay payment pages. The consumer may change this number in the UI.                                                                                                                                                       |
+|          | payeeInfo.subsite              | `string`(40) | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.                                                                                                                      |
 
 {:.code-header}
 **Response** 
@@ -142,7 +141,7 @@ Content-Type: application/json
            "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/metadata"  
         }  
     },  
-   "operations": \[  
+   "operations": [  
         {  
            "method": "PATCH",  
            "href": "https://api.externalintegration.payex.com/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d",  
@@ -153,13 +152,13 @@ Content-Type: application/json
            "href": "https://ecom.externalintegration.payex.com/vipps/payments/authorize/afccf3d0016340620756d5ff3e08f69b555fbe2e45ca71f4bd159ebdb0f00065",  
            "rel": "redirect-authorization"  
         }  
-    \]  
+    ]  
 }
 ```
 
 ### Purchase
 
-Posting a payment (operation purchase) returns the options of aborting the 
+Posting a payment (operation `purchase`) returns the options of aborting the 
 payment altogether or creating an authorization transaction through the 
 redirect-authorization hyperlink. 
 
@@ -213,7 +212,7 @@ A list of possible operations and their explanation is given below.
            "href": "https://api.externalintegration.payex.com/psp/mobilepay/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/reversals",  
            "rel": "create-reversal",  
            "method": "POST"  
-        },  
+        }
     ]  
 }
 ```
@@ -230,7 +229,7 @@ A list of possible operations and their explanation is given below.
 
 The operations should be performed as described in each response and not as 
 described here in the documentation. 
-Always use the href and method as specified in the response by finding the 
+Always use the `href` and method as specified in the response by finding the 
 appropriate operation based on its rel value. 
 The only thing that should be hard coded in the client is the value of the 
 rel and the request that will be sent in the HTTP body of the request for 
@@ -277,7 +276,7 @@ Content-Type: application/json
    "payment": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d",  
    "authorizations": {  
        "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/authorizations",  
-       "authorizationList": \[  
+       "authorizationList": [  
             {  
                "vippsTransactionId": "5619328800",  
                "msisdn": "+47xxxxxxxx",  
@@ -294,7 +293,7 @@ Content-Type: application/json
                    "description": "Vipps Test",  
                    "payeeReference": "Postman1536157124",  
                    "isOperational": false,  
-                   "operations": \[\]  
+                   "operations": []  
                 }  
             }  
         \]  
@@ -348,7 +347,7 @@ Content-Type: application/json
            "description": "Vipps Test",  
            "payeeReference": "Postman1536157124",  
            "isOperational": false,  
-           "operations": \[\]  
+           "operations": []  
         }  
     }  
 }
@@ -386,7 +385,7 @@ Content-Type: application/json
    "payment": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d",  
    "captures": {  
        "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/captures",  
-       "captureList": \[  
+       "captureList": [  
             {  
                "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/captures/643cafb6-8b69-4ad9-b2c8-08d612f03245",  
                "transaction": {  
@@ -402,10 +401,10 @@ Content-Type: application/json
                    "payeeReference": "cpt1536159837",  
                    "isOperational": false,  
                    "reconciliationNumber": 736941,  
-                   "operations": \[\]  
+                   "operations": []  
                 }  
             }  
-        \]  
+        ]  
     }  
 }
 ```
@@ -478,7 +477,7 @@ Content-Type: application/json
            "description": "description for transaction",  
            "payeeReference": "cpt1536159837",  
            "isOperational": false,  
-           "operations": \[\]  
+           "operations": []  
         }  
     }  
 }  
@@ -516,7 +515,7 @@ Content-Type: application/json
    "payment": "/psp/vipps/payments/754c378d-dd77-40cf-3811-08d613932ad6",  
    "cancellations": {  
        "id": "/psp/vipps/payments/754c378d-dd77-40cf-3811-08d613932ad6/cancellations",  
-       "cancellationList": \[  
+       "cancellationList": [  
             {  
                "id": "/psp/vipps/payments/754c378d-dd77-40cf-3811-08d613932ad6/cancellations/808a2929-6673-4b40-32b6-08d6139342aa",  
                "transaction": {  
@@ -531,7 +530,7 @@ Content-Type: application/json
                    "description": "description for transaction",  
                    "payeeReference": "testabc",  
                    "isOperational": false,  
-                   "operations": \[\]  
+                   "operations": []  
                 }  
             }  
         \]  
@@ -603,7 +602,7 @@ Content-Type: application/json
            "description": "description for transaction",  
            "payeeReference": "testabc",  
            "isOperational": false,  
-           "operations": \[\]  
+           "operations": []  
         }  
     }  
 }
@@ -657,7 +656,7 @@ Content-Type: application/json
                    "description": "description for transaction",  
                    "payeeReference": "cpt1536228775",  
                    "isOperational": false,  
-                   "operations": \[\]  
+                   "operations": []  
                 }  
             }  
         \]  
@@ -732,7 +731,7 @@ Content-Type: application/json
            "description": "description for transaction",  
            "payeeReference": "cpt1536228775",  
            "isOperational": false,  
-           "operations": \[\]  
+           "operations": []  
         }  
     }  
 }
@@ -751,6 +750,12 @@ When a change or update from the back-end system are made on a payment or
 transaction, Swedbank Pay will perform a callback to inform the 
 payee (merchant) about this update. 
 Callback functionality is explaned in more detail [here][callback].
+
+{% include iterator.html 
+        prev_href="../"
+        prev_title="Back: Payments"
+        next_href="redirect"
+        next_title="Next: Implement Redirect" %}
 
 [abort]: /payments/vipps/other-features#abort
 [callback]: /payments/vipps/other-features#callback

@@ -89,7 +89,7 @@ contract.
 | `HSBSE`      | Handelsbanken Sweden **(Not yet supported)**     |
 | `NordeaFI`   | Nordea Finland **(Not yet supported)**           |
 | `NordeaSE`   | Nordea Sweden **(Not yet supported)**            |
-| `OmaF` I     | Oma säästöpankki Finland **(Not yet supported)** |
+| `OmaFI`      | Oma säästöpankki Finland **(Not yet supported)** |
 | `OPFI`       | OP Finland **(Not yet supported)**               |
 | `POPFI`      | POP Pankki **(Not yet supported)**               |
 | `SHBFI`      | Handelsbanken Finland **(Not yet supported)**    |
