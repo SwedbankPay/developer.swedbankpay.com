@@ -63,7 +63,7 @@ Content-Type: application/json
 | ✔︎︎︎︎︎ | `operation`          | `string` | `initiate-consumer-session`, the operation to perform.
 |   | `msisdn`              | `string` | The [MSISDN][msisdn] (mobile phone number) of the payer. Format Sweden: `+46707777777`. Format Norway: `+4799999999`.
 |   | `email`               | `string` | The e-mail address of the payer.
-|   | `consumerCountryCode` | `string` | Payers country of residence. Used by the consumerUi for validation on all input fields.
+| ✔︎︎︎︎︎ | `consumerCountryCode` | `string` | Payers country of residence. Used by the consumerUi for validation on all input fields.
 |   | `nationalIdentifier`  | `object` | The object containing information about the national identifier of the payer.
 |   | └➔ `socialSecurityNumber` | `string` | The social security number of the payer. Format: Norway `DDMMYYXXXXX`, Sweden: `YYYYMMDDXXXX`.
 |   | └➔ `countryCode`          | `string` | The country code, denoting the origin of the issued social security number. Required if `nationalIdentifier.socialSecurityNumber` is set.
