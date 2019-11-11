@@ -752,7 +752,6 @@ operations to this purchase.​​​​​
 [callback]: /payment/credit-card/other-features/#callback
 
 
-
 [abort]: /payments/credit-card/other-features/#abort
 [callback]: /payments/credit-card/other-features/#callback
 [cancel]: /payments/credit-card/after-payment/#cancellations
