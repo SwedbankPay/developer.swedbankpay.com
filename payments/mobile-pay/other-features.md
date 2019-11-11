@@ -33,7 +33,7 @@ authorization amount.
 
 ```mermaid
 sequenceDiagram
-  Merchant->PayEx: POST [creditcard captures][credit-card-capture]
+  Merchant->PayEx: POST <creditcard capture>
   Activate Merchant
   Activate PayEx
   PayEx-->Merchant: transaction resource
@@ -49,7 +49,7 @@ between the captured amount and the authorized amount.
 
 ```mermaid
 sequenceDiagram
-  Merchant->PayEx: POST [creditcard cancellations][credit-card-cancel]
+  Merchant->PayEx: POST <creditcard cancellation>
   Activate Merchant
   Activate PayEx
   PayEx-->Merchant: transaction resource
@@ -64,7 +64,7 @@ not yet reversed.
 
 ```mermaid
 sequenceDiagram
-  Merchant->PayEx: POST [creditcard reversals][credit-card-reversal]
+  Merchant->PayEx: POST <creditcard reversal>
   Activate Merchant
   Activate PayEx
   PayEx-->Merchant: transaction resource
@@ -158,3 +158,6 @@ The response will be the `payment` resource with its `state` set to `Aborted`.
 ### Payee reference
 
 {% include payeeinfo.md %}
+
+{% include iterator.html prev_href="after-payment"
+                         prev_title="Back: After Payment" %}
