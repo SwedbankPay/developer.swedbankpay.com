@@ -93,7 +93,7 @@ Content-Type: application/json
 
 {:.table .table-striped}
 | Property              | Type     | Description                                                                                                                                       |
-| `:--------------------` | `:-------` | `:------------------------------------------------------------------------------------------------------------------------------------------------` |
+| :-------------------- | :------- | :------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `token`               | `string` | A session token used to initiate Checkout UI.                                                                                                     |
 | `operations`          | `array`  | The array of operation objects to choose from, described in detail in the table below.                                                            |
 | └➔&nbsp;`rel`         | `string` | The relational name of the operation, used as a programmatic identifier to find the correct operation given the current state of the application. |
