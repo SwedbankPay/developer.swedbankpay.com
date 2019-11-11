@@ -749,7 +749,6 @@ operations to this purchase.​​​​​
 
 [transaction-resource]: /payments/credit-card/other-features/#transactions
 [payeeReference]: /payments/credit-card/other-features/#payeereference
-[callback]: /payment/credit-card/other-features/#callback
 
 
 [abort]: /payments/credit-card/other-features/#abort
