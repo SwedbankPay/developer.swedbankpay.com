@@ -605,7 +605,7 @@ transaction, Swedbank Pay will perform a callback to inform the payee (merchant)
 sequenceDiagram
   activate Merchant
   activate PayEx
-  PayEx->Merchant: POST <callbackUrl>
+  PayEx->>Merchant: POST <callbackUrl>
   note left of Merchant: Callback by PayEx
   Merchant-->PayEx: HTTP response
   deactivate PayEx
@@ -744,24 +744,12 @@ operations to this purchase.​​​​​
 
 [transaction-resource]: /payments/credit-card/other-features/#transactions
 [payeeReference]: /payments/credit-card/other-features/#payeereference
-[callback]: /payment/credit-card/other-features/#callback
-
 
 
 [abort]: /payments/credit-card/other-features/#abort
 [callback]: /payments/credit-card/other-features/#callback
 [cancel]: /payments/credit-card/after-payment/#cancellations
 [capture]: /payments/credit-card/after-payment/#Capture
-[create-payment]: /payments/credit-card/other-features/#create-payment
-[creditcard-image-2]: /assets/img/creditcard-image-2.png
 [finalize]: /payments/credit-card/after-payment/#finalize
-[payout]: /payments/credit-card/other-features/#payout
-[purchase]: /payments/credit-card/other-features/#purchase
-[purchase-flow]: /payments/credit-card/redirect/#purchase-flow
-[purchase-flow-mobile]: /payments/credit-card/redirect/#purchase-flow-mobile
-[recur]: /payments/credit-card/other-features/#recur
-[redirect-image]: /assets/img/creditcard-image-3.png
 [reversal]: /payments/credit-card/after-payment/#reversals
-[Screnshot-1]: /assets/img/creditcard-image-1.png
-[see-the-PATCH-payment-description]: /payments/credit-card/after-payment
 [verify]: /payments/credit-card/other-features/#verify
