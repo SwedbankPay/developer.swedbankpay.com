@@ -33,7 +33,7 @@ sidebar:
 
 * When the payer starts the purchase process, you make a `POST` request towards 
   Swedbank Pay with the collected Purchase information. 
-  This will generate a payment object with a unique paymentID. 
+  This will generate a payment object with a unique `paymentID`. 
   You either receive a Redirect URL to a hosted page or a JavaScript 
   source in response.
 * You need to [redirect][redirect] the payer to the Redirect payment page or 
@@ -50,7 +50,7 @@ sidebar:
   in contrast to a cancelled payment.
 * If CallbackURL is set you will receive a payment callback when the Swish 
   dialogue is completed. 
-  You need to do a `GET` request, containing the paymentID generated in the 
+  You need to do a `GET` request, containing the `paymentID` generated in the 
   first step, to receive the state of the transaction.
 
 ## Screenshots
