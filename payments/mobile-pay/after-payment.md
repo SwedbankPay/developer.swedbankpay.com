@@ -175,7 +175,7 @@ authorization amount.
 
 ```mermaid
 sequenceDiagram
-  Merchant->>PayEx: POST [mobilepay captures][mobilepay-capture]
+  Merchant->>PayEx: POST <mobilepay capture>
   Activate Merchant
   Activate PayEx
   PayEx-->>Merchant: transaction resource
@@ -548,7 +548,7 @@ captured amount not yet reversed.
 
 ```mermaid
 sequenceDiagram
-  Merchant->>PayEx: POST mobilepay reversal>
+  Merchant->>PayEx: POST <mobilepay reversal>
   Activate Merchant
   Activate PayEx
   PayEx-->>Merchant: transaction resource
@@ -556,11 +556,11 @@ sequenceDiagram
   Deactivate Merchant
 ```
 
-
-[mobilepay-cancel]: #
-[mobilepay-capture]: #
-[mobilepay-reversal]: #
-[payee-reference]: #
-[technical-reference-abort]: #
-[technical-reference-callback]: #
-[transaction-resource]: #
+[authorization]: /payments/mobile-pay/redirect#type-of-authorization-intent
+[mobilepay-cancel]: /payments/mobile-pay/other-features#cancel-sequence
+[mobilepay-capture]: /payments/mobile-pay/other-features#capture-sequence
+[mobilepay-reversal]: /payments/mobile-pay/other-features#reversal-sequence
+[payee-reference]: /payments/mobile-pay/other-features#payee-reference
+[technical-reference-abort]: /payments/mobile-pay/other-features#abort-a-payment
+[technical-reference-callback]: /payments/mobile-pay/other-features#callback
+[transaction-resource]: /payments/mobile-pay/other-features#transactions
