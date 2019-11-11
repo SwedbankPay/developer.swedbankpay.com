@@ -761,6 +761,5 @@ operations to this purchase.​​​​​
 [creditcard-image-2]: /assets/img/creditcard-image-2.png
 [finalize]: /payments/credit-card/after-payment/#finalize
 [payout]: /payments/credit-card/other-features/#payout
-[purchase]: /payments/credit-card/other-features/#purchase
 [reversal]: /payments/credit-card/after-payment/#reversals
 [verify]: /payments/credit-card/other-features/#verify
