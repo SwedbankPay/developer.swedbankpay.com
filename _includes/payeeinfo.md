@@ -33,15 +33,15 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property | Type | Description
-|:--------------------------|:-------------|:------------------------------|
-| `payment` | `string` |The URI of the payment which the  `payeeinfo`  belongs to.
-| `payeeInfo.id` |string|The URI of the current  `payeeinfo`  resource.
-| `payeeInfo.payeeId` |string|This is the unique id that identifies this payee (like merchant) set by PayEx
-| `payeeInfo.payeeReference` | `string(50)` |A unique reference set by the merchant system. See below for details
-| `payeeInfo.payeeName` | `string` |The payee name (like merchant name) that will be displayed to consumer when redirected to PayEx.
-| `payeeInfo.productCategory` | `string` |A product category or number sent in from the payee/merchant. This is not validated by PayEx, but will be passed through the payment process and may be used in the settlement process. You therefore need to ensure that the value given here is valid in the settlement.
-| `payeeInfo.orderReference` | `string(50)` |The order reference should reflect the order reference found in the merchant's systems.
+| Property                    | Type         | Description                                                                                                                                                                                                                                                                |
+| :-------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `payment`                   | `string`     | The URI of the payment which the  `payeeinfo`  belongs to.                                                                                                                                                                                                                 |
+| `payeeInfo.id`              | `string`     | The URI of the current  `payeeinfo`  resource.                                                                                                                                                                                                                             |
+| `payeeInfo.payeeId`         | `string`     | This is the unique id that identifies this payee (like merchant) set by PayEx                                                                                                                                                                                              |
+| `payeeInfo.payeeReference`  | `string(50)` | A unique reference set by the merchant system. See below for details                                                                                                                                                                                                       |
+| `payeeInfo.payeeName`       | `string`     | The payee name (like merchant name) that will be displayed to consumer when redirected to PayEx.                                                                                                                                                                           |
+| `payeeInfo.productCategory` | `string`     | A product category or number sent in from the payee/merchant. This is not validated by PayEx, but will be passed through the payment process and may be used in the settlement process. You therefore need to ensure that the value given here is valid in the settlement. |
+| `payeeInfo.orderReference`  | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                    |
 
 ### PayeeReference
 

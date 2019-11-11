@@ -303,13 +303,13 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property                     | Type         | Description                                                                                                                                                                                                |
-| :------- | :--------------------------- | :----------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ✔︎︎︎︎︎   | `transaction.description`    | `string`     | The description of the capture transaction.                                                                                                                                                                |
-| ✔︎︎︎︎︎   | `transaction.amount`         | `integer`    | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.                                                                          |
-| ✔︎︎︎︎︎   | `transaction.vatAmount`      | `integer`    | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.                                                                                 |
-| ✔︎︎︎︎︎   | `transaction.payeeReference` | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [[payeeReference>>doc:Main.ecommerce.technical-reference.WebHome |  | anchor="HPayeeReference"]] for details. |
-|          | `transaction.orderItems`     | `array`      | The array of items being purchased with the order. Used to print on invoices if the payer chooses to pay with invoice, among other things. [See Order Items for details][payment-order-items].             |
+| Required | Property                     | Type         | Description                                                                                                                                                                                    |
+| :------- | :--------------------------- | :----------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ✔︎︎︎︎︎   | `transaction.description`    | `string`     | The description of the capture transaction.                                                                                                                                                    |
+| ✔︎︎︎︎︎   | `transaction.amount`         | `integer`    | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.                                                              |
+| ✔︎︎︎︎︎   | `transaction.vatAmount`      | `integer`    | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.                                                                     |
+| ✔︎︎︎︎︎   | `transaction.payeeReference` | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.       |
+|          | `transaction.orderItems`     | `array`      | The array of items being purchased with the order. Used to print on invoices if the payer chooses to pay with invoice, among other things. [See Order Items for details][payment-order-items]. |
 
 If the capture succeeds, it should respond with something like the following:
 
@@ -467,8 +467,9 @@ Content-Type: application/json
     }
 }
 ```
+
 {:.table .table-striped}
-| Property | Type                         | Required     | Description                                                                                                                                                                              |
+| Required | Property                     | Type         | Description                                                                                                                                                                              |
 | :------- | :--------------------------- | :----------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ✔︎︎︎︎︎   | `transaction.amount`         | `integer`    | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.                                                        |
 | ✔︎︎︎︎︎   | `transaction.vatAmount`      | `integer`    | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.                                                               |
