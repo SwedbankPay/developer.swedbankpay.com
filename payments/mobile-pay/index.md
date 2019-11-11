@@ -217,6 +217,9 @@ sequenceDiagram
   Deactivate Merchant
 ```
 
+{% include iterator.html 
+                         next_href="redirect"
+                         next_title="Next: Redirect" %}
 
 [paymentMethodsScreenshot]: /assets/img/checkout/payment_methods.PNG
 [credit-card]: /payments/credit-card/
