@@ -33,10 +33,10 @@ authorization amount.
 
 ```mermaid
 sequenceDiagram
-  Merchant->PayEx: POST <creditcard capture>
+  Merchant->>PayEx: POST <creditcard capture>
   Activate Merchant
   Activate PayEx
-  PayEx-->Merchant: transaction resource
+  PayEx-->>Merchant: transaction resource
   Deactivate PayEx
   Deactivate Merchant
 ```
@@ -49,10 +49,10 @@ between the captured amount and the authorized amount.
 
 ```mermaid
 sequenceDiagram
-  Merchant->PayEx: POST <creditcard cancellation>
+  Merchant->>PayEx: POST <creditcard cancellation>
   Activate Merchant
   Activate PayEx
-  PayEx-->Merchant: transaction resource
+  PayEx-->>Merchant: transaction resource
   Deactivate PayEx
   Deactivate Merchant
 ```
@@ -64,10 +64,10 @@ not yet reversed.
 
 ```mermaid
 sequenceDiagram
-  Merchant->PayEx: POST <creditcard reversal>
+  Merchant->>PayEx: POST <creditcard reversal>
   Activate Merchant
   Activate PayEx
-  PayEx-->Merchant: transaction resource
+  PayEx-->>Merchant: transaction resource
   Deactivate PayEx
   Deactivate Merchant
 ```
