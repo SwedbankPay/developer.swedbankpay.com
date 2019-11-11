@@ -764,6 +764,5 @@ operations to this purchase.​​​​​
 [purchase]: /payments/credit-card/other-features/#purchase
 [purchase-flow]: /payments/credit-card/redirect/#purchase-flow
 [purchase-flow-mobile]: /payments/credit-card/redirect/#purchase-flow-mobile
-[recur]: /payments/credit-card/other-features/#recur
 [reversal]: /payments/credit-card/after-payment/#reversals
 [verify]: /payments/credit-card/other-features/#verify
