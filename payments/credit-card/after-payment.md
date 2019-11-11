@@ -762,6 +762,5 @@ operations to this purchase.​​​​​
 [finalize]: /payments/credit-card/after-payment/#finalize
 [payout]: /payments/credit-card/other-features/#payout
 [purchase]: /payments/credit-card/other-features/#purchase
-[purchase-flow]: /payments/credit-card/redirect/#purchase-flow
 [reversal]: /payments/credit-card/after-payment/#reversals
 [verify]: /payments/credit-card/other-features/#verify
