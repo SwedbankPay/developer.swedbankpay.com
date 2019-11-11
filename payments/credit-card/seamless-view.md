@@ -233,6 +233,5 @@ generated when the payment was created.
 [recur]: /payments/credit-card/other-features/#recur
 [redirect-image]: /assets/img/creditcard-image-3.png
 [reversal]: /payments/credit-card/after-payment/#reversals
-[Screnshot-1]: /assets/img/creditcard-image-1.png
 [see-the-PATCH-payment-description]: /payments/credit-card/after-payment
 [verify]: /payments/credit-card/other-features/#verify
