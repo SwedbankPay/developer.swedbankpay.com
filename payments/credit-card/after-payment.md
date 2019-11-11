@@ -168,7 +168,7 @@ later do more captures on the same payment up to the total authorization amount.
 
 ```mermaid
 sequenceDiagram
-  Merchant->PayEx: POST [Credit card captures](payments/credit-card/payments)
+  Merchant->PayEx: POST [Credit card captures]
   Activate Merchant
   Activate PayEx
   PayEx-->Merchant: transaction resource
@@ -262,7 +262,7 @@ Content-Type: application/json
 |Property|Data type|Description
 |:-------|:--------|:-----------
 |payment|string|The relative URI of the payment this finalize transaction resource belongs to.
-|authorization|object|The object representation of the [authorization transaction resource].
+|authorization|object|The object representation of the [authorization transaction resource][transaction-resource].
 
 
 ### Cancellations 
@@ -344,12 +344,10 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| ✔︎︎︎︎︎ | **Property** | **Data type** | **Required** | **Description**
-|:-------------|:--------------|:-------------|:---------------
-| ✔︎︎︎︎︎ | transaction.description | string | A textual description of the reason 
-for the cancellation.
-| ✔︎︎︎︎︎ | transaction.payeeReference | string(30*) | A unique reference for the 
-cancellation transaction. See [payeeReference][payeeReference] for details.
+| ✔︎︎︎︎︎ | **Property** | **Data type** | **Description**
+|:----|:--------------|:-------------|:---------------
+| ✔︎︎︎︎︎ | transaction.description | string | A textual description of the reason for the cancellation.
+| ✔︎︎︎︎︎ | transaction.payeeReference | string(30*) | A unique reference for the cancellation transaction. See [payeeReference][payeeReference] for details.
 
 The `cancel` resource contains information about a cancellation transaction 
 made against a payment.
@@ -387,12 +385,9 @@ Content-Type: application/json
 {:.table .table-striped}
 | **Property** | **Data type** | **Description**
 |:-------------|:--------------|:---------------
-| payment | string | The relative URI of the payment this cancellation 
-transaction belongs to.
-| cancellation.id | string | The relative URI of the current cancellation 
-transaction resource.
-| cancellation.transaction | object | The object representation of the generic 
-[transaction resource][transaction-resource].
+| payment | string | The relative URI of the payment this cancellation transaction belongs to.
+| cancellation.id | string | The relative URI of the current cancellation transaction resource.
+| cancellation.transaction | object | The object representation of the generic  [transaction resource][transaction-resource].
 
 #### Cancel Sequence
 
@@ -402,7 +397,7 @@ and the authorization amount.
 
 ```mermaid
 sequenceDiagram
-  Merchant->PayEx: POST [creditcard cancellactions][cancel]
+  Merchant->PayEx: POST [creditcard cancellactions]
   Activate Merchant
   Activate PayEx
   PayEx-->Merchant: transaction resource
@@ -543,7 +538,7 @@ Reversal can only be done on a payment where there are some captured amount not
 
 ```mermaid
 sequenceDiagram
-  Merchant->PayEx: POST [creditcard reversals][reversal]
+  Merchant->PayEx: POST [creditcard reversals]
   Activate Merchant
   Activate PayEx
   PayEx-->Merchant: transaction resource
@@ -653,7 +648,7 @@ and the authorization amount.
 
 ```mermaid
 sequenceDiagram
-  Merchant->PayEx: POST [credit card cancel](payments/credit-card/payments)
+  Merchant->PayEx: POST [credit card cancel]
   Activate Merchant
   Activate PayEx
   PayEx-->Merchant: transaction resource
@@ -668,7 +663,7 @@ yet reversed.
 
 ```mermaid
 sequenceDiagram
-  Merchant->PayEx: POST [credit card reversal][reversal]
+  Merchant->PayEx: POST [credit card reversal]
   Activate Merchant
   Activate PayEx
   PayEx-->Merchant: transaction resource
@@ -687,7 +682,7 @@ authorization amount.
 
 ```mermaid
 sequenceDiagram
-  Merchant->PayEx: POST [credit card capture](payments/credit-card/payments)
+  Merchant->PayEx: POST [credit card capture]
   Activate Merchant
   Activate PayEx
   PayEx-->Merchant: transaction resource
@@ -703,7 +698,7 @@ and the authorization amount.
 
 ```mermaid
 sequenceDiagram
-  Merchant->PayEx: POST [credit card cancellations][cancel]
+  Merchant->PayEx: POST [credit card cancellations]
   Activate Merchant
   Activate PayEx
   PayEx-->Merchant: transaction resource
@@ -734,10 +729,10 @@ You have the following options after a server-to-server Recur payment `POST`.
 #### Autorization (intent)
 
 * **Authorization (two-phase):** If you want the credit card to reserve the 
-* amount, you will have to specify that the intent of the purchase is 
-* Authorization. The amount will be reserved but not charged. You will later 
-* (i.e. when you are ready to ship the purchased products) have to make a 
-* [Capture][capture] or [Cancel][cancel] request.
+amount, you will have to specify that the intent of the purchase is 
+Authorization. The amount will be reserved but not charged. You will later 
+(i.e. when you are ready to ship the purchased products) have to make a 
+[Capture][capture] or [Cancel][cancel] request.
 
 #### Capture (intent)
 
