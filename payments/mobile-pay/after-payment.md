@@ -556,6 +556,11 @@ sequenceDiagram
   Deactivate Merchant
 ```
 
+{% include iterator.html prev_href="redirect"
+                         prev_title="Back: Redirect"
+                         next_href="other-features"
+                         next_title="Next: Other Features" %}
+
 [authorization]: /payments/mobile-pay/redirect#type-of-authorization-intent
 [mobilepay-cancel]: /payments/mobile-pay/other-features#cancel-sequence
 [mobilepay-capture]: /payments/mobile-pay/other-features#capture-sequence
