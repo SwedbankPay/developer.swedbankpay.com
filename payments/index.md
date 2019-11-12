@@ -192,12 +192,12 @@ Operations
 To intregrate the payment page script, you need to prepare you front end:
 
 1. You need to create a container that will contain  the Hosted View iframe:  
-`<div id="payex-hosted-payment-page">`.
+  `<div id="payex-hosted-payment-page">`.
 2. You also need to create a `<script>` source within the container, using the 
-href value you obtained when submitting your initial POST. As mentioned above, 
-all Hosted View operations have a rel description beginning with  `"view-"`. The
- example below is taken from the view-payment operation, above - enabling Swish 
- payments through Hosted View.
+  href value you obtained when submitting your initial POST. As mentioned above, 
+  all Hosted View operations have a rel description beginning with  `"view-"`. The
+  example below is taken from the view-payment operation, above - enabling Swish 
+  payments through Hosted View.
 
 ```HTML
 <script id="paymentPageScript" src="https://ecom.stage.payex.com/swish/core/scripts/client/px.swish.client.js?
@@ -205,7 +205,7 @@ all Hosted View operations have a rel description beginning with  `"view-"`. Th
 ```
 
 1. Lastly, you must initiate the Hosted View with a JavaScript call to open the 
-Hosted View iframe embedded on you site.
+  Hosted View iframe embedded on you site.
 
 ```HTML
 JavaScript Call
