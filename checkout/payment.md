@@ -253,12 +253,12 @@ Content-Type: application/json
     "paymentorder": {
         "operation": "Purchase",
         "currency": "SEK",
-        "amount": 1500,
-        "vatAmount": 375,
+        "amount": 15610,
+        "vatAmount": 3122,
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0...",
-        "language": "sv",
-        "generateRecurrenceToken": false,
+        "language": "sv-SE",
+        "generateRecurrenceToken": true,
         "urls": {
             "hostUrls": ["https://example.com", "https://example.net"],
             "completeUrl": "https://example.com/payment-completed",
@@ -404,7 +404,7 @@ Content-Type: application/json
     },
     "operations": [
         {
-            "href": "https://ecom.externalintegration.payex.com/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=38540e86bd78e885fba2ef054ef9792512b1c9c5975cbd6fd450ef9aa15b1844&culture=sv",
+            "href": "https://ecom.externalintegration.payex.com/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=38540e86bd78e885fba2ef054ef9792512b1c9c5975cbd6fd450ef9aa15b1844&culture=sv-SE",
             "rel": "view-paymentorder",
             "method": "GET",
             "contentType": "application/javascript"
@@ -567,7 +567,7 @@ Content-Type: application/json
         "vatAmount": 0,
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0...",
-        "language": "sv",
+        "language": "sv-SE",
         "generateRecurrenceToken": false,
         "disablePaymentMenu": false,
         "urls": {
