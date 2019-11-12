@@ -592,7 +592,7 @@ sequenceDiagram
 
 [se-image]: /assets/img/se.svg
 [swish-image]: /assets/img/swish.svg
-[swish-redirect-view]: /assets/Screenshots/Swish/redirect view/View/windows small window.png
+[swish-redirect-view]: /assets/screenshots/swish/redirect/view/windows-small-window.png
 [swish-hosted-view]: /assets/Screenshots/Swish/hostedView/windows.png
 [callback-url]: /payments/swish/other-fetures#callback
 [create-payment]: /payments/swish/
