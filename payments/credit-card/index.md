@@ -184,7 +184,6 @@ sequenceDiagram
 {:height="711px" width="400px"}
 {:height="711px" width="400px"}
 [finalizing-the-transaction]: /payments/credit-card/after-payment
-[callback-request]: /payments/credit-card/other-features/#callback
 [cancel]: /payments/credit-card/after-payment/#cancellations
 [capture]: /payments/credit-card/after-payment/#Capture
 [finalize-request]: /payments/credit-card/after-payment
