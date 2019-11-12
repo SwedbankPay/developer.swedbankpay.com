@@ -184,7 +184,6 @@ sequenceDiagram
 {:height="711px" width="400px"}
 {:height="711px" width="400px"}
 [finalizing-the-transaction]: /payments/credit-card/after-payment
-[callback-request]: /payments/credit-card/other-features/#callback
 [cancel]: /payments/credit-card/after-payment/#cancellations
 [capture]: /payments/credit-card/after-payment/#Capture
 [finalize-request]: /payments/credit-card/after-payment
@@ -192,7 +191,6 @@ sequenceDiagram
 [PCI-link]: https://www.pcisecuritystandards.org/
 [redirect]: /payments/credit-card/redirect
 [see-the-PATCH-payment-description]: /payments/credit-card/after-payment
-[resources-section]: /resources/#general
 [create-payment]: /payments/credit-card/other-features/#create-payment
 [purchase]: /payments/credit-card/other-features/#purchase
 [recur]: /payments/credit-card/other-features/#recur
