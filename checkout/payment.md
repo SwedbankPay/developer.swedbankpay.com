@@ -127,9 +127,9 @@ operation is meant to be embedded in a `<script>` element in an HTML document.
 </html>
 ```
 
-The HTML itself only need to just contain the `<div>` elements for us
-to place the embedded iFrames into,
-while the JavaScript handles the fetching and placement into those containers.
+In the HTML, you only need to add two `<div>` elements to place the
+check-in and payment menu inside of. The JavaScript will handle getting the
+iFrames to handle the check-in and payment.
 
 {:.code-header}
 **JavaScript**
@@ -138,10 +138,12 @@ while the JavaScript handles the fetching and placement into those containers.
 window.onload = function () {
     var request = new XMLHttpRequest();
     request.addEventListener('load', function () {
-        // We assume that the response we get back from the backend is
-        // exactly the server provides
+        // We will assume that our own backend returns the
+        // exact same as what SwedbankPay returns.
         response = JSON.parse(this.responseText);
         var script = document.createElement('script');
+        // This assumes that the operations from the response of the POST from the
+        // payment order is returned verbatim from the server to the Ajax:
         var operation = response.operations.find(function (o) {
             return o.rel === 'view-consumer-identification';
         });
@@ -444,11 +446,13 @@ The HTML code will be unchanged in this example.
 window.onload = function () {
     var request = new XMLHttpRequest();
     request.addEventListener('load', function () {
-        // Here we assume that your endpoint returns the same values
-        // as the server does.
+        // We will assume that our own backend returns the
+        // exact same as what SwedbankPay returns.
         response = JSON.parse(this.responseText);
 
         var script = document.createElement('script');
+        // This assumes the operations from the response of the POST of the
+        // payment order is returned verbatim from the server to the Ajax:
         var operation = response.operations.find(function (o) {
             return o.rel === 'view-consumer-identification';
         });
@@ -466,10 +470,9 @@ window.onload = function () {
                     var request = new XMLHttpRequest();
                         request.addEventListener('load', function() {
                             response = JSON.parse(this.responseText);
-
+                            // This is identical to how we get the 'view-consumer-identification'
+                            // script from the check-in.
                             var script = document.createElement('script');
-                            // This assumses the operations from the response of the POST of the
-                            // payment order is returned verbatim from the server to the Ajax:
                             var operation = response.operations.find(function(o) {
                                 return o.rel === 'view-paymentorder';
                             });
