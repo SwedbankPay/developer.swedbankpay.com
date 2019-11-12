@@ -39,12 +39,12 @@ sidebar:
 |                                | Payment method                      | Seamless View | Redirect | Direct API | Region                                                                           |
 | :----------------------------- | :---------------------------------- | :------------ | :------- | :--------- | :------------------------------------------------------------------------------- |
 | ![CardIcon][card-icon]         | [Credit card][credit-card]          | ✔︎︎︎︎︎        | ✔︎︎︎︎︎   | ✔︎︎︎︎︎     | ![EarthIcon][earth-icon]                                                         |
-| ![InvoiceIcon][invoice-icon]   | [Swedbank Pay Invoice][invoice]     | ✔︎︎︎︎︎        | ✔︎︎︎︎︎   | ✔︎︎︎︎︎     | ![nor][nor-flag]![swe][swe-flag]![fin][fin-flag]                                 |
-| ![EnvelopeIcon][envelope-icon] | [Swedbank Pay Web Invoice][invoice] | ✔︎︎︎︎︎        | ✔︎︎︎︎︎   | ✔︎ ︎       | ![nor][nor-flag]![swe][swe-flag]                                                 |
-| ![KeypadIcon][keypad-icon]     | [Direct Debit][direct-debit]        | X             | ✔︎︎︎︎︎   | X          | ![swe][swe-flag]![fin][fin-flag]![lat][lat-flag]![lit][lit-flag]![est][est-flag] |
-| ![Vipps][vipps-logo]           | [Vipps][vipps]                      | ✔︎︎︎︎︎        | ✔︎︎︎︎︎   | X          | ![nor][nor-flag]                                                                 |
+| ![InvoiceIcon][invoice-icon]   | [Swedbank Pay Invoice][invoice]     | ✔︎︎︎︎︎        | ✔︎︎︎︎︎   | ✔︎︎︎︎︎     | ![nor][nor-flag] ![swe][swe-flag] ![fin][fin-flag]                                 |
+| ![EnvelopeIcon][envelope-icon] | [Swedbank Pay Web Invoice][invoice] | ✔︎︎︎︎︎        | ✔︎︎︎︎︎   | ✔︎ ︎       | ![nor][nor-flag] ![swe][swe-flag]                                                 |
+| ![KeypadIcon][keypad-icon]     | [Direct Debit][direct-debit]        |            | ✔︎︎︎︎︎   |         | ![swe][swe-flag] ![fin][fin-flag] ![lat][lat-flag] ![lit][lit-flag] ![est][est-flag] |
+| ![Vipps][vipps-logo]           | [Vipps][vipps]                      | ✔︎︎︎︎︎        | ✔︎︎︎︎︎   |         | ![nor][nor-flag]                                                                 |
 | ![Swish][swish-logo]           | [Swish][swish]                      | ✔︎︎︎︎︎        | ✔︎︎︎︎︎   | ✔︎︎︎︎︎  ︎  | ![swe][swe-flag]                                                                 |
-| ![MobilePay][mobilepay-logo]   | [Mobile Pay][mobile-pay]            | X             | ✔︎︎︎︎︎   | X          | ![dan][dan-flag]                                                                 |
+| ![MobilePay][mobilepay-logo]   | [Mobile Pay][mobile-pay]            |            | ✔︎︎︎︎︎   |         | ![dan][dan-flag]                                                                 |
 
 ## Seamless View
 
