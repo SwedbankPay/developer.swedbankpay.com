@@ -175,22 +175,15 @@ sequenceDiagram
   end
 ```
 
-
+{% include iterator.html  next_href="redirect" next_title="Next: Redirect" %}
 
 
 [Screnshot-1]: /assets/img/creditcard-image-1.png
 {:height="711px" width="400px"}
-[creditcard-image-2]: /assets/img/creditcard-image-2.png
-{:height="711px" width="400px"}
-{:height="711px" width="400px"}
 [finalizing-the-transaction]: /payments/credit-card/after-payment
 [cancel]: /payments/credit-card/after-payment/#cancellations
 [capture]: /payments/credit-card/after-payment/#Capture
-[finalize-request]: /payments/credit-card/after-payment
-[get-payment-response]: payments/credit-card/payments
-[PCI-link]: https://www.pcisecuritystandards.org/
 [redirect]: /payments/credit-card/redirect
-[see-the-PATCH-payment-description]: /payments/credit-card/after-payment
 [create-payment]: /payments/credit-card/other-features/#create-payment
 [purchase]: /payments/credit-card/other-features/#purchase
 [recur]: /payments/credit-card/other-features/#recur

@@ -339,9 +339,7 @@ Content-Type: application/json
 ## Recur
 
 A `recur` payment is a payment that references a `recurrenceToken` created 
-through a previous payment in order to charge the same card. Use the 
-[expand][expansion] request parameter to get a response that includes one or 
-more expanded sub-resources inlined.
+through a previous payment in order to charge the same card.
 
 {:.code-header}
 **Request**
@@ -745,8 +743,6 @@ problem message. We generally use the problem message `type` and `status` code
 to identify the nature of the problem. The problem `name` and `description` will
  often help narrow down the specifics of the problem.
 
-For general information about problem messages and error handling,
-[visit error handling and problem details][technical-reference-problems]. 
 
 ### Contractual error types
 
@@ -793,6 +789,8 @@ All acquirer error types will have the following URI in front of type:
 | *acquirergatewayerror* | 502| Problems reaching acquirers gateway, try again after some time
 | *acquirergatewaytimeout* | 504| Problems reaching acquirers gateway, try again after some time
 
+{% include iterator.html prev_href="after-payment" prev_title="Back: After payment"  %}
+
 [purchase]: #purchase
 [user-agent-definition]: https://en.wikipedia.org/wiki/User_agent
 [finalize]: /payments/credit-card/after-payment/#finalize
@@ -806,8 +804,6 @@ All acquirer error types will have the following URI in front of type:
 [recurrence]: #recur
 [verify]: #verify
 [payout]: #payout
-[expansion]: #
-[technical-reference-problems]: #
 [redirect-image]: /assets/img/creditcard-image-3.png
 
 

@@ -741,15 +741,15 @@ away, you will have to specify that the intent of the purchase is AutoCapture.
 The credit card will be charged and you don't need to do any more financial 
 operations to this purchase.​​​​​
 
+{% include iterator.html prev_href="direct" prev_title="Back: Direct" 
+next_href="other-features" next_title="Next: Other Features" %}
+
 
 [transaction-resource]: /payments/credit-card/other-features/#transactions
 [payeeReference]: /payments/credit-card/other-features/#payeereference
-
-
 [abort]: /payments/credit-card/other-features/#abort
 [callback]: /payments/credit-card/other-features/#callback
 [cancel]: /payments/credit-card/after-payment/#cancellations
 [capture]: /payments/credit-card/after-payment/#Capture
 [finalize]: /payments/credit-card/after-payment/#finalize
 [reversal]: /payments/credit-card/after-payment/#reversals
-[verify]: /payments/credit-card/other-features/#verify

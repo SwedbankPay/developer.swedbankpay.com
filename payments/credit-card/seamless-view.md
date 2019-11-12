@@ -213,7 +213,8 @@ need to implement the [`Capture`][capture] and [`Cancel`][cancel] requests.
 [Callback request][callback] will be posted to the `callbackUrl`, which was 
 generated when the payment was created. 
 
-
+{% include iterator.html prev_href="redirect" prev_title="Redirect" 
+next_href="direct" next_title="Next: Direct" %}
 
 [payment-page_hosted-view.png]: /assets\Screenshots\Credit Card\hostedView\View\macOS.PNG
 [abort]: /payments/credit-card/other-features/#abort
@@ -221,16 +222,10 @@ generated when the payment was created.
 [cancel]: /payments/credit-card/after-payment/#cancellations
 [capture]: /payments/credit-card/after-payment/#Capture
 [create-payment]: /payments/credit-card/other-features/#create-payment
-[creditcard-image-2]: /assets/img/creditcard-image-2.png
 [finalize]: /payments/credit-card/after-payment/#finalize
 [payout]: /payments/credit-card/other-features/#payout
 [purchase]: /payments/credit-card/other-features/#purchase
-[purchase-flow]: /payments/credit-card/redirect/#purchase-flow
-[purchase-flow-mobile]: /payments/credit-card/redirect/#purchase-flow-mobile
 [recur]: /payments/credit-card/other-features/#recur
-[redirect-image]: /assets/img/creditcard-image-3.png
 [reversal]: /payments/credit-card/after-payment/#reversals
-[see-the-PATCH-payment-description]: /payments/credit-card/after-payment
 [verify]: /payments/credit-card/other-features/#verify
 [create-payment]: /payments/credit-card/other-features/#create-payment
-[finalize]: /payments/credit-card/after-payment/#finalize

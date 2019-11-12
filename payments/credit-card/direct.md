@@ -174,6 +174,9 @@ transaction using [PATCH on the Authorization][finalize].
 [Callback request][callback] will be posted to the `callbackUrl`, 
 generated when the payment was created.
 
+{% include iterator.html prev_href="seamless-view" prev_title="Back: Seamless View" 
+next_href="after-payment" next_title="Next: After Payment" %}
+
 [abort]: /payments/credit-card/other-features/#abort
 [callback]: /payments/credit-card/other-features/#callback
 [Cancel]: /payments/credit-card/after-payment/#Cancellations
