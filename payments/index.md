@@ -74,15 +74,15 @@ and enabling a more straightforward integration.
 [MobilePay][invoice], [Vipps][vipps])
 
 A two-phase payment is managed in two steps - first reserving funds that will be
- captured in the next step. The most common payment instrument using two-phase 
- payments is card payments.
+captured in the next step. The most common payment instrument using two-phase 
+payments is card payments.
 
 + **Creating a payment object**.  
-The payment is the container object that holds all transactions that will be 
-created during the payment process.  When Swedbank Pay receives the payment 
-request body (in JSON format), a payment  is created and you will be given a 
-unique paymentID in return. The response also include  (in a true RESTful way) 
-the URIs to possible further actions, given the state of the payment.
+  The payment is the container object that holds all transactions that will be 
+  created during the payment process.  When Swedbank Pay receives the payment 
+  request body (in JSON format), a payment  is created and you will be given a 
+  unique paymentID in return. The response also include  (in a true RESTful way) 
+  the URIs to possible further actions, given the state of the payment.
 + Authorize funds.  
   An authorization transaction reserves the funds necessary funds . It is 
   possible to abort a payment before the end user has fulfilled the payment 
@@ -105,7 +105,7 @@ Or:
 [Card][credit-card])
 
 If you use a one-phase method (like Direct Bank Debit or [Swish][swish] a Sales
- transaction will be created and the consumer charged right away). 
+transaction will be created and the consumer charged right away). 
 
 * _One-phase card payments is enabled with autocapture._
 
@@ -284,29 +284,28 @@ instruments.
 
 ### Creating a payment
 * The payment is the container object that holds all transactions that will be 
-created during the payment process. You specify which payment instrument to 
-use, i.e. if you want to initiate a credit card payment, an invoice payment or 
-a Swish payment, etc. This is managed by specific instrument calls to PayEx's 
-API Platform, where you need to include all necessary payment details - like 
-amount, description, references to your system, etc. This example shows a card
- payment 
-post.  
+  created during the payment process. You specify which payment instrument to 
+  use, i.e. if you want to initiate a credit card payment, an invoice payment or 
+  a Swish payment, etc. This is managed by specific instrument calls to PayEx's 
+  API Platform, where you need to include all necessary payment details - like 
+  amount, description, references to your system, etc. This example shows a card
+  payment post.  
 * When Swedbank Pay receives this information, a payment  will be created and 
-you will be given a unique paymentID in return. The response also include  
-(in a true RESTful way) the URI's to possible further actions, given the state 
-of the payment.  
-*  A successfully created payment is in a Ready state.If something has gone 
-wrong along the way, the state is set to Failed. 
+  you will be given a unique paymentID in return. The response also include  
+  (in a true RESTful way) the URI's to possible further actions, given the state 
+  of the payment.  
+* A successfully created payment is in a Ready state.If something has gone 
+  wrong along the way, the state is set to Failed. 
   
 ### Creating an Authorization or Sales transaction
 * A successful payment is `Ready` for authorization. An authoriation  
-transaction is often created through a Redirect scenario, where you transfer the
- consumer to a hosted payment page, or by enable the process to take place 
-directly on your own site, through Hosted View.  
+  transaction is often created through a Redirect scenario, where you transfer 
+  the consumer to a hosted payment page, or by enable the process to take place 
+  directly on your own site, through Hosted View.  
 * If you use a *one-phase method* (like Direct bank debit or Swish) a `Sales` 
-transaction will be created and the consumer be charged right away. A 
-`two-phase` payment method like credit card needs to be capture the authorized 
-funds in a later step.  
+  transaction will be created and the consumer be charged right away. A 
+  `two-phase` payment method like credit card needs to be capture the authorized 
+  funds in a later step.  
 * The `authorize` transaction will have one of the below states when created.
 
 
@@ -317,15 +316,15 @@ funds in a later step.
 
 ### Checking the transaction state  
 * By this time, the payment might containt several associated transactions, 
-making it vital that you verify the state of the latest transaction. Swedbank 
-Pay keeps all payment transactions to enable a full transaction history of each 
-payment. 
+  making it vital that you verify the state of the latest transaction. Swedbank 
+  Pay keeps all payment transactions to enable a full transaction history of 
+  each payment. 
 
 ### Creating a capture transaction - two-phase payments only
 * Later on (when you deliver the merchandise, if physical content), you need to 
-create a `capture` transaction to ensure that the money is charged from the 
-consumer credit card (or that the invoice is created properly). You now have a 
-least two connected transactions (one authorization and one capture).
+  create a `capture` transaction to ensure that the money is charged from the 
+  consumer credit card (or that the invoice is created properly). You now have a 
+  least two connected transactions (one authorization and one capture).
 * The `capture` transaction will have one of the below states when created.
   
 {:.table .table-striped} 
