@@ -357,7 +357,6 @@ sequenceDiagram
 [finalize]: /payments/credit-card/after-payment/#finalize
 [payout]: /payments/credit-card/other-features/#payout
 [purchase]: /payments/credit-card/other-features/#purchase
-[purchase-flow]: /payments/credit-card/redirect/#purchase-flow
 [purchase-flow-mobile]: /payments/credit-card/redirect/#purchase-flow-mobile
 [recur]: /payments/credit-card/other-features/#recur
 [redirect-image]: /assets/img/creditcard-image-3.png
