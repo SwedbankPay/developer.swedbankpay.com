@@ -133,7 +133,7 @@ sequenceDiagram
             activate SwedbankPay
                 SwedbankPay -->> Merchant: Capture status
             deactivate SwedbankPay
-            note right of Merchant: Capture here only if the purchased goods don't require shipping. If shipping is required, perform capture after the goods have shipped.
+            note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.
         deactivate Merchant
     end
 ```
