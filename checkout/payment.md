@@ -117,41 +117,138 @@ operation is meant to be embedded in a `<script>` element in an HTML document.
 <html>
     <head>
         <title>Swedbank Pay Checkout is Awesome!</title>
+        <!-- Here you can specify your own javascript file -->
+        <script src="app.js"></script>
     </head>
     <body>
         <div id="checkin"></div>
         <div id="payment-menu"></div>
-        <script src="https://ecom.externalintegration.payex.com/consumers/core/scripts/client/px.consumer.client.js?token=7e380fbb3196ea76cc45814c1d99d59b66db918ce2131b61f585645eff364871"></script>
-        <script language="javascript">
+    </body>
+</html>
+```
+
+The HTML itself only need to just contain the `<div>` elements for us
+to place the embedded iFrames into,
+while the JavaScript handles the fetching and placement into those containers.
+
+{:.code-header}
+**JavaScript(ESNext)**
+
+```JS
+window.onload = async function () {
+    try {
+        // Using the Fetch API to contact your backend.
+        // Replace the 'https://your/endpoint/here' with your API endpoint.
+        const request = await fetch('https://your/endpoint/here', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                // In this example we'll send in all of the information mentioned
+                // before in the request to the endpoint.
+                operation: 'initiate-consumer-session',
+                msisdn: '+46739000001',
+                email: 'leia.ahlstrom@example.com',
+                consumerCountryCode: 'SE',
+                nationalIdentifer: {
+                    socialSecurityNumber: '199710202392',
+                    countryCode: "SE"
+                }
+            })
+        });
+        // We assume that the response we get back from the backend is
+        // exactly the server provides
+        const response = await request.json();
+        const script = document.createElement('script');
+        const operation = response.operations.find(function(o) {
+            return o.rel === 'view-consumer-identification';
+        });
+        script.setAttribute('src', operation.href);
+        script.onload = function() {
             payex.hostedView.consumer({
                 // The container specifies which id the script will look for
                 // to host the checkin component
                 container: "checkin",
-                onConsumerIdentified: function(consumerIdentifiedEvent) {
+                onConsumerIdentified: function (consumerIdentifiedEvent) {
                     // consumerIdentifiedEvent.consumerProfileRef contains the reference
                     // to the identified consumer which we need to pass on to the
                     // Payment Order to initialize a personalized Payment Menu.
                     console.log(consumerIdentifiedEvent);
                 },
-                onShippingDetailsAvailable: function(shippingDetailsAvailableEvent) {
+                onShippingDetailsAvailable: function (shippingDetailsAvailableEvent) {
                     console.log(shippingDetailsAvailableEvent);
                 }
             }).open();
-        </script>
-    </body>
-</html>
+        };
+        // Appending the script to the head
+        const head = document.getElementsByTagName('head')[0];
+        head.appendChild(script);
+    } catch (error) {
+        console.error(error);
+    }
+};
 ```
 
 {:.code-header}
-**JS**
+**JavaScript**
 
 ```JS
-
+window.onload = function () {
+    var request = new XMLHttpRequest();
+    request.addEventListener('load', function () {
+        // We assume that the response we get back from the backend is
+        // exactly the server provides
+        response = JSON.parse(this.responseText);
+        var script = document.createElement('script');
+        var operation = response.operations.find(function (o) {
+            return o.rel === 'view-consumer-identification';
+        });
+        script.setAttribute('src', operation.href);
+        script.onload = function () {
+            payex.hostedView.consumer({
+                // The container specifies which id the script will look for
+                // to host the checkin component
+                container: "checkin",
+                onConsumerIdentified: function (consumerIdentifiedEvent) {
+                    // consumerIdentifiedEvent.consumerProfileRef contains the reference
+                    // to the identified consumer which we need to pass on to the
+                    // Payment Order to initialize a personalized Payment Menu.
+                    console.log(consumerIdentifiedEvent);
+                },
+                onShippingDetailsAvailable: function (shippingDetailsAvailableEvent) {
+                    console.log(shippingDetailsAvailableEvent);
+                }
+            }).open();
+        };
+        // Appending the script to the head
+        var head = document.getElementsByTagName('head')[0];
+        head.appendChild(script);
+    });
+    // Replace the 'https://your/endpoint/here' with your API endpoint.
+    request.open('POST', 'https://your/endpoint/here', true);
+    request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+    // In this example we'll send in all of the information mentioned
+    // before in the request to the endpoint.
+    request.send(JSON.stringify({
+        operation: 'initiate-consumer-session',
+        msisdn: '+46739000001',
+        email: 'leia.ahlstrom@example.com',
+        consumerCountryCode: 'SE',
+        nationalIdentifer: {
+            socialSecurityNumber: '199710202392',
+            countryCode: "SE"
+        }
+    }));
+};
 ```
 
-Note that the `<script>` element is added after the `<div>` container the
-Checkin will be hosted in. When this is set up, something along the
-following should appear:
+Note that we attach the `<script>` element to the head,
+but use `window.onload` to ensure everything has loaded in properly
+before accessing the page.
+With the scripts loading in after the entire page is loaded, we can access the
+`<div>` container that the Checkin will be hosted in.
+With this setup, after the page loads the following should appear:
 
 {:.text-center}
 ![Consumer UI][checkin-image]{:width="564" height="293"}
