@@ -278,7 +278,7 @@ sequenceDiagram
 
 [fi-png]: /assets/img/fi.png
 [financing-invoice-1-png]: /assets/img/checkout/test-purchase.png
-[financing-invoice-2-png]: /assets/Screenshots/Invoice/redirect view/iFrame verify data.png
+[financing-invoice-2-png]: /assets/screenshots/invoice/redirect/iframe-verify-data.png
 [no-png]: /assets/img/no.png
 [se-png]: /assets/img/se.png
 [callback-api]: /payments/invoice/other-features#callback
