@@ -47,8 +47,10 @@ To start integrating Swedbank Pay Checkout, you need the following:
 To get started with Swedbank Pay Checkout, you should learn about its different
 components and how they work together. Swedbank Pay Checkout consists of two related,
 but disconnected concepts: **Checkin** and **Payment Menu**. Checkin identifies
-the consumer in our Consumer API and Payment Menu completes the payment with
-our Payment Menu API. Connect the two concepts and you have Swedbank Pay Checkout.
+the consumer in our Consumer API and Payment Menu authorizes the payment with
+our Payment Menu API. The next step is to **Capture** the payment. You can either
+capture the total amount, or do a part-capture. Connect these steps and you have
+Swedbank Pay Checkout.
 
 ```mermaid
 sequenceDiagram
@@ -60,17 +62,22 @@ sequenceDiagram
         rect rgba(238, 112, 35, 0.05)
             note left of Payer: Checkin
 
-            Payer ->>+ Merchant: Start Checkin
-                Merchant ->>+ SwedbankPay: POST /psp/consumers
-                    SwedbankPay -->>- Merchant: rel:view-consumer-identification
-                Merchant -->>- Payer: Show Checkin (Consumer Hosted View)
+            Payer ->> Merchant: Start Checkin
+            activate Merchant
+                Merchant ->> SwedbankPay: POST /psp/consumers
+                activate SwedbankPay
+                    SwedbankPay -->> Merchant: rel:view-consumer-identification [1]
+                deactivate SwedbankPay
+                Merchant -->> Payer: Show Checkin (Consumer Hosted View)
 
-            Payer ->> Payer: Initiate Consumer Hosted View (open iframe)
-            Payer ->>+ SwedbankPay: Show Consumer UI page in iframe
+            deactivate Merchant
+            Payer ->> Payer: Initiate Consumer Hosted View (open iframe) [2]
+            Payer ->> SwedbankPay: Show Consumer UI page in iframe [3]
+            activate SwedbankPay
                 SwedbankPay ->> Payer: Consumer identification process
                 SwedbankPay -->> Payer: Show Consumer completed iframe
             deactivate SwedbankPay
-            Payer ->> Payer: onConsumerIdentified (consumerProfileRef)
+            Payer ->> Payer: onConsumerIdentified (consumerProfileRef) [4]
         end
 
         rect rgba(138,205,195,0.1)
@@ -82,7 +89,7 @@ sequenceDiagram
             Payer ->> Payer: Initiate Payment Menu Hosted View (open iframe)
             SwedbankPay -->> Payer: Show Payment UI page in iframe
             activate SwedbankPay
-                Payer ->> SwedbankPay: Authorize Payment
+                Payer ->> SwedbankPay: Authorize Payment [5]
                 opt consumer perform payment out of iframe
                     SwedbankPay ->> Merchant: POST Payment Callback
                     SwedbankPay -->> Payer: Redirect to Payment URL
@@ -118,6 +125,21 @@ sequenceDiagram
         deactivate Merchant
     end
 ```
+
+### Checkin
+
+[1] 'rel: view-consumer-identification' is a value in one of the operations,
+sent as a response from Swedbank Pay to the Merchant. <br>
+[2] 'Initiate Consumer Hosted View (open iframe)' creates the iframe. <br>
+[3] 'Show Consumer UI page in iframe' displays the checkin form as content inside
+of the iframe. <br>
+[4] 'onConsumerIdentified (consumerProfileRef)' is an event that triggers when the
+consumer has been identified, and delivers a property 'consumerProfileRef' as a
+reference to be used in the payment menu.
+
+### Payment Menu
+
+[5] 'Authorize Payment' is when the payer has accepted the payment.
 
 {% include iterator.html next_href="payment"
                          next_title="Next: Implement Payment" %}
