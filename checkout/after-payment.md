@@ -36,12 +36,12 @@ capture or cancel. For a full list of the available operations, see the
 [techincal reference][payment-order-operations].
 
 {:.table .table-striped}
-| Operation                          | Description                             |
-|:-----------------------------------|:----------------------------------------|
-| `update-paymentorder-updateorder`  | [Updates the order](#update-order) with a change in the `amount` and/or `vatAmount`.
-| `create-paymentorder-capture`      | The second part of a two-phase transaction where the authorized amount is sent from the payer to the payee. It is possible to do a part-capture on a subset of the authorized amount. Several captures on the same payment are possible, up to the total authorization amount.
-| `create-paymentorder-cancellation` | Used to cancel authorized and not yet captured transactions. If a cancellation is performed after doing a part-capture, it will only affect the not yet captured authorization amount.
-| `create-paymentorder-reversal`     | Used to reverse a payment. It is only possible to reverse a payment that has been captured and not yet reversed.
+| Operation                          | Description                                                                                                                                                                                                                                                                    |
+| :--------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `update-paymentorder-updateorder`  | [Updates the order](#update-order) with a change in the `amount` and/or `vatAmount`.                                                                                                                                                                                           |
+| `create-paymentorder-capture`      | The second part of a two-phase transaction where the authorized amount is sent from the payer to the payee. It is possible to do a part-capture on a subset of the authorized amount. Several captures on the same payment are possible, up to the total authorization amount. |
+| `create-paymentorder-cancellation` | Used to cancel authorized and not yet captured transactions. If a cancellation is performed after doing a part-capture, it will only affect the not yet captured authorization amount.                                                                                         |
+| `create-paymentorder-reversal`     | Used to reverse a payment. It is only possible to reverse a payment that has been captured and not yet reversed.                                                                                                                                                               |
 
 To identify the operations that are available we need to do a `GET` request
 against the URI of `paymentorder.id`:
@@ -99,11 +99,11 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property       | Type     | Description                                      |
-|:---------------|:---------|:-------------------------------------------------|
-| `paymentorder` | `object` | The payment order object.
-| └➔&nbsp;`id`   | `string` | The relative URI to the payment order.
-| `operations`   | `array`  | The array of possible operations to perform, given the state of the payment order.
+| Property       | Type     | Description                                                                        |
+| :------------- | :------- | :--------------------------------------------------------------------------------- |
+| `paymentorder` | `object` | The payment order object.                                                          |
+| └➔&nbsp;`id`   | `string` | The relative URI to the payment order.                                             |
+| `operations`   | `array`  | The array of possible operations to perform, given the state of the payment order. |
 
 ## Capture
 
@@ -129,6 +129,6 @@ cancellation and reversal operations described below.
 [https]: /#connection-and-protocol
 [msisdn]: https://en.wikipedia.org/wiki/MSISDN
 [payee-reference]: /checkout/other-features#payeereference
-[payment-order-operations]: /checkout/after-payment#operations
+[payment-order-operations]: /checkout/other-features#operations
 [payment-menu-back-end]: /payment#payment-menu-back-end
 [payment-menu-front-end]: /payment#payment-menu-front-end

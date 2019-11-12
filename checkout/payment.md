@@ -188,6 +188,7 @@ their purchase.
 We start by performing a `POST` request towards the `paymentorder` resource
 with the `consumerProfileRef` we obtained in the checkin process described
 above.
+Remember to read up on our [URL resource][urls].
 
 **Notice** that the `orderItems` property object is optional. If the `POST`
 request has `orderItems` in the `paymentorder`, remember to include
@@ -205,13 +206,13 @@ Content-Type: application/json
 {
     "paymentorder": {
         "operation": "Purchase",
-        "currency": "NOK",
-        "amount": 15610,
-        "vatAmount": 3122,
+        "currency": "SEK",
+        "amount": 1500,
+        "vatAmount": 375,
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0...",
-        "language": "nb-NO",
-        "generateRecurrenceToken": true
+        "language": "sv",
+        "generateRecurrenceToken": false
         "urls": {
             "hostUrls": ["https://example.com", "https://example.net"],
             "completeUrl": "https://example.com/payment-completed",
@@ -289,8 +290,8 @@ Content-Type: application/json
 | ✔︎︎︎︎︎ | `paymentorder`                        | `object`     | The payment order object.
 | ✔︎︎︎︎︎ | └➔&nbsp;`operation`                   | `string`     | The operation that the payment order is supposed to perform.
 | ✔︎︎︎︎︎ | └➔&nbsp;`currency`                    | `string`     | The currency of the payment.
-| ✔︎︎︎︎︎ | └➔&nbsp;`amount`                      | `integer`    | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK `and `5000` equals `50.00 NOK`.
-| ✔︎︎︎︎︎ | └➔&nbsp;`vatAmount`                   | `integer`    | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `5000` equals `50.00 NOK`.
+| ✔︎︎︎︎︎ | └➔&nbsp;`amount`                      | `integer`    | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 SEK `and `5000` equals `50.00 SEK`.
+| ✔︎︎︎︎︎ | └➔&nbsp;`vatAmount`                   | `integer`    | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 SEK` and `5000` equals `50.00 SEK`.
 | ✔︎︎︎︎︎ | └➔&nbsp;`description`                 | `string`     | The description of the payment order.
 | ✔︎︎︎︎︎ | └➔&nbsp;`userAgent`                   | `string`     | The user agent of the payer.
 | ✔︎︎︎︎︎ | └➔&nbsp;`language`                    | `string`     | The language of the payer.
@@ -301,7 +302,7 @@ Content-Type: application/json
 |   | └─➔&nbsp;`cancelUrl`                  | `string`     | The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only `cancelUrl` or `paymentUrl` can be used, not both.
 |   | └─➔&nbsp;`paymentUrl`                 | `string`     | The URI that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. Only used in hosted views. Can not be used simultaneously with `cancelUrl`; only `cancelUrl` or `paymentUrl` can be used, not both.
 | ✔︎︎︎︎︎ | └─➔&nbsp;`callbackUrl`                | `string`     | The URI to the API endpoint receiving `POST` requests on transaction activity related to the payment order.
-| ✔︎︎︎︎︎ | └─➔&nbsp;`termsOfServiceUrl`          | `string`     | The URI to the terms of service document the payer must accept in order to complete the payment. Requires `https`.
+| ✔︎︎︎︎︎ | └─➔&nbsp;`termsOfServiceUrl`          | `string`     | The URI to the merchant terms of service document the payer must accept in order to complete the payment. This is not the Swedbank Pay Terms of Service. Requires `https`.
 | ✔︎︎︎︎︎ | └➔&nbsp;`payeeInfo`                   | `string`     | The `payeeInfo` object, containing information about the payee.
 | ✔︎︎︎︎︎ | └─➔&nbsp;`payeeId`                    | `string`     | The ID of the payee, usually the merchant ID.
 | ✔︎︎︎︎︎ | └─➔&nbsp;`payeeReference`             | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.
@@ -320,20 +321,20 @@ Content-Type: application/json
 | ︎︎︎  | └─➔&nbsp;`description`                | `string`     | The human readable description of the order item.
 | ︎︎︎  | └─➔&nbsp;`discountDescription`        | `string`     | The human readable description of the possible discount.
 | ✔︎︎︎︎︎ | └─➔&nbsp;`quantity`                   | `integer`    | The quantity of order items being purchased.
-| ✔︎︎︎︎︎ | └─➔&nbsp;`quantityUnit`               | `string`     | The unit of the quantity, such as `pcs`, `grams`, or similar.
+| ✔︎︎︎︎︎ | └─➔&nbsp;`quantityUnit`               | `string`     | The unit of the quantity, such as `pcs`, `grams`, or similar. This is a free-text field and is used for your own book keeping.
 | ✔︎︎︎︎︎ | └─➔&nbsp;`unitPrice`                  | `integer`    | The price per unit of order item.
 | ︎︎︎  | └─➔&nbsp;`discountPrice`              | `integer`    | If the order item is purchased at a discounted price, this property should contain that price.
 | ✔︎︎︎︎︎ | └─➔&nbsp;`vatPercent`                 | `integer`    | The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.
-| ✔︎︎︎︎︎ | └─➔&nbsp;`amount`                     | `integer`    | The total amount including VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `5000` equals `50.00 NOK`.
-| ✔︎︎︎︎︎ | └─➔&nbsp;`vatAmount`                  | `integer`    | The total amount of VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `5000` equals `50.00 NOK`.
+| ✔︎︎︎︎︎ | └─➔&nbsp;`amount`                     | `integer`    | The total amount including VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 SEK` and `5000` equals `50.00 SEK`.
+| ✔︎︎︎︎︎ | └─➔&nbsp;`vatAmount`                  | `integer`    | The total amount of VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 SEK` and `5000` equals `50.00 SEK`.
 |   | └➔&nbsp;`riskIndicator`               | `array`      | This **optional** array consist of information that helps verifying the payer.
 |   | └─➔&nbsp;`deliveryEmailAdress`        | `string`     | For electronic delivery, the email address to which the merchandise was delivered.
 |   | └─➔&nbsp;`deliveryTimeFrameIndicator` | `string`     | Indicates the merchandise delivery timeframe. <br>`01` (Electronic Delivery) <br>`02` (Same day shipping) <br>`03` (Overnight shipping) <br>`04` (Two-day or more shipping)
 |   | └─➔&nbsp;`preOrderDate`               | `string`     | For a pre-ordered purchase. The expected date that the merchandise will be available. Format: `YYYYMMDD`
-|   | └─➔&nbsp;`preOrderPurchaseIndicator`  | `string`     | Indicates whether Cardholder is placing an order for merchandise with a future availability or release date. <br>`01` (Merchandise available) <br>`02` (Future availability)
+|   | └─➔&nbsp;`preOrderPurchaseIndicator`  | `string`     | Indicates whether the payer is placing an order for merchandise with a future availability or release date. <br>`01` (Merchandise available) <br>`02` (Future availability)
 |   | └─➔&nbsp;`shipIndicator`              | `string`     | Indicates shipping method chosen for the transaction. <br>`01` (Ship to cardholder's billing address) <br>`02` (Ship to another verified address on file with merchant)<br>`03` (Ship to address that is different than cardholder's billing address)<br>`04` (Ship to Store / Pick-up at local store. Store address shall be populated in shipping address fields)<br>`05` (Digital goods, includes online services, electronic giftcards and redemption codes) <br>`06` (Travel and Event tickets, not shipped) <br>`07` (Other, e.g. gaming, digital service)
 |   | └─➔&nbsp;`giftCardPurchase`           | `bool`    | `true` if this is a purchase of a gift card.
-|   | └─➔&nbsp;`reOrderPurchaseIndicator`   | `string`     | Indicates whether Cardholder is placing an order for merchandise with a future availability or release date. <br>`01` (Merchandise available) <br>`02` (Future availability)
+|   | └─➔&nbsp;`reOrderPurchaseIndicator`   | `string`     | Indicates whether the payer is placing an order for merchandise with a future availability or release date. <br>`01` (Merchandise available) <br>`02` (Future availability)
 |   | └➔&nbsp;`pickUpAddress`               | `object`     | If `shipIndicator` set to `04`, then prefill this.
 |   | └─➔&nbsp;`name`                       | `string`     | If `shipIndicator` set to `04`, then prefill this.
 |   | └─➔&nbsp;`streetAddress`              | `string`     | If `shipIndicator` set to `04`, then prefill this.
@@ -357,7 +358,7 @@ Content-Type: application/json
     },
     "operations": [
         {
-            "href": "https://ecom.externalintegration.payex.com/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=38540e86bd78e885fba2ef054ef9792512b1c9c5975cbd6fd450ef9aa15b1844&culture=nb-NO",
+            "href": "https://ecom.externalintegration.payex.com/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=38540e86bd78e885fba2ef054ef9792512b1c9c5975cbd6fd450ef9aa15b1844&culture=sv",
             "rel": "view-paymentorder",
             "method": "GET",
             "contentType": "application/javascript"
@@ -407,7 +408,7 @@ create the script element with JavaScript, all inside the event handler for
         <script language="javascript">
                 payex.hostedView.consumer({
                     container: 'checkin',
-                    culture: 'nb-NO',
+                    culture: 'sv',
                     onConsumerIdentified: function(consumerIdentifiedEvent) {
                         // When the consumer is identified, we need to perform an AJAX request
                         // to our server to forward the consumerProfileRef in a server-to-server
@@ -427,7 +428,7 @@ create the script element with JavaScript, all inside the event handler for
                                 // Payment Menu inside our 'payment-menu' container.
                                 payex.hostedView.paymentMenu({
                                     container: 'payment-menu',
-                                    culture: 'nb-NO'
+                                    culture: 'sv'
                                 }).open();
                             };
                             // Append the Payment Menu script to the <head>
@@ -487,12 +488,12 @@ Content-Type: application/json
 {
     "paymentorder": {
         "operation": "Purchase",
-        "currency": "NOK",
+        "currency": "SEK",
         "amount": 1500,
         "vatAmount": 0,
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0...",
-        "language": "nb-NO",
+        "language": "sv",
         "generateRecurrenceToken": false,
         "disablePaymentMenu": false,
         "urls": {
@@ -583,8 +584,8 @@ Content-Type: application/json
 | ✔︎︎︎︎︎ | `paymentorder`                    | `object`     | The payment order object.
 | ✔︎︎︎︎︎ | └➔&nbsp;`operation`               | `string`     | The operation that the payment order is supposed to perform.
 | ✔︎︎︎︎︎ | └➔&nbsp;`currency`                | `string`     | The currency of the payment.
-| ✔︎︎︎︎︎ | └➔&nbsp;`amount`                  | `integer`    | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `5000` equals `50.00 NOK`.
-| ✔︎︎︎︎︎ | └➔&nbsp;`vatAmount`               | `integer`    | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals `50.00 NOK`.
+| ✔︎︎︎︎︎ | └➔&nbsp;`amount`                  | `integer`    | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 SEK` and `5000` equals `50.00 SEK`.
+| ✔︎︎︎︎︎ | └➔&nbsp;`vatAmount`               | `integer`    | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 SEK and `5000` equals `50.00 SEK`.
 | ✔︎︎︎︎︎ | └➔&nbsp;`description`             | `string`     | The description of the payment order.
 | ✔︎︎︎︎︎ | └➔&nbsp;`userAgent`               | `string`     | The user agent of the payer.
 | ✔︎︎︎︎︎ | └➔&nbsp;`language`                | `string`     | The language of the payer.
@@ -602,6 +603,7 @@ Content-Type: application/json
 |   | └➔&nbsp;`orderItems`              | `array`      | The array of items being purchased with the order. Used to print on invoices if the payer chooses to pay with invoice, among other things. [See Order Items for details][order-items].
 |   | └➔&nbsp;`metadata`                | `object`     | The keys and values that should be associated with the payment order. Can be additional identifiers and data you want to associate with the payment.
 |   | └➔&nbsp;`items`                   | `array`      | The array of items that will affect how the payment is performed.
+|   | └➔&nbsp;`disablePaymentMenu`                   | `boolean`      | If set to `true`, disables the frame around the payment menu. Usefull when only showing one payment instrument.
 
 **Response**
 
@@ -650,8 +652,8 @@ The `orderItems` property of the `paymentOrder` is an array containing the items
 | ✔︎︎︎︎︎ | `unitPrice`          | `integer` | The price per unit of order item.
 |   | `discountPrice`       | `integer` | If the order item is purchased at a discounted price, this property should contain that price.
 | ✔︎︎︎︎︎ | `vatPercent`         | `integer` | The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.
-| ✔︎︎︎︎︎ | `amount`             | `integer` | The total amount including VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `5000` equals `50.00 NOK`.
-| ✔︎︎︎︎︎ | `vatAmount`          | `integer` | The total amount of VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `5000` equals `50.00 NOK`.
+| ✔︎︎︎︎︎ | `amount`             | `integer` | The total amount including VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 SEK` and `5000` equals `50.00 SEK`.
+| ✔︎︎︎︎︎ | `vatAmount`          | `integer` | The total amount of VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 SEK` and `5000` equals `50.00 SEK`.
 
 #### Items
 
