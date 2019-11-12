@@ -34,6 +34,7 @@ Hosted View - or use Swedbank Pay Direct API to integrate directly. Our payment 
 
 {:.table .table-striped}
 |  | Payment method | Seamless View | Redirect | Direct API | Region |
+|:---|:-------------|:--------------|:---------|:-----------|:-------|
 | ![CardIcon][card-icon] | [Credit card][credit-card] | ✔︎︎︎︎︎ | ✔︎︎︎︎︎ | ✔︎︎︎︎︎ | ![EarthIcon][earth-icon] |
 | ![InvoiceIcon][invoice-icon] | [Swedbank Pay Invoice][invoice] | ✔︎︎︎︎︎ | ✔︎︎︎︎︎ | ✔︎︎︎︎︎ | ![nor][nor-flag]![swe][swe-flag]![fin][fin-flag] |
 | ![EnvelopeIcon][envelope-icon] | [Swedbank Pay Web Invoice][invoice] | ✔︎︎︎︎︎ | ✔︎︎︎︎︎ | ✔︎ ︎| ![nor][nor-flag]![swe][swe-flag]|
@@ -147,7 +148,7 @@ English
 
 #### Getting started
 When implementing Hosted view, you need to locate the operation that is returned
- from your [API request][technical-reference], which contains the URL of the JavaScript that you need to embed on your Front End side. This will load the 
+ from your API request, which contains the URL of the JavaScript that you need to embed on your Front End side. This will load the 
  payment page on a subset of your own webpage.  
 
 The properties of the operation containing the script URL should be similar to 
@@ -210,7 +211,7 @@ note left of Merchant: First API request
 Activate PayEx
 PayEx-->>Merchant: Payment resource
 deactivate PayEx
-Merchant-->>Consumer: Consumer browser gets redirected\n to the hosted authorization page.
+Merchant-->>Consumer: Consumer browser gets redirected to the hosted authorization page.
 deactivate Merchant
 Consumer->>PayEx: access authorize page
 note left of Consumer: redirect to PayEx
@@ -322,22 +323,21 @@ page when this happens,  she will be redirected back to your store.
 
 [card-payments-purchase]: /payments/credit-card/#purchase-flow-1
 [demoshop]: https://ecom.externalintegration.payex.com/pspdemoshop
-[technical-reference]: #
-[card-icon]: \assets\img\card-icon.PNG
-[invoice-icon]: \assets\img\invoice-icon.PNG
-[envelope-icon]: \assets\img\envelope-icon.PNG
-[keypad-icon]: \assets\img\keypad-icon.PNG
-[vipps-logo]: \assets\img\vipps-icon.PNG
-[swish-logo]: \assets\img\swish-icon.png
-[mobilepay-logo]: \assets\img\mobilepay-icon.png
-[earth-icon]: \assets\img\Globe-icon.png
-[nor-flag]: \assets\img\no.png
-[swe-flag]: \assets\img\se.png
-[fin-flag]: \assets\img\fi.png
-[lat-flag]: \assets\img\latvia-flag.png
-[lit-flag]: \assets\img\lithuania-flag.png
-[est-flag]: \assets\img\estonia-flag.png
-[dan-flag]: \assets\img\danish-flag.png
+[card-icon]: /assets/img/card-icon.PNG
+[invoice-icon]: /assets/img/invoice-icon.PNG
+[envelope-icon]: /assets/img/envelope-icon.PNG
+[keypad-icon]: /assets/img/keypad-icon.PNG
+[vipps-logo]: /assets/img/vipps-icon.PNG
+[swish-logo]: /assets/img/swish-icon.png
+[mobilepay-logo]: /assets/img/mobilepay-icon.png
+[earth-icon]: /assets/img/Globe-icon.png
+[nor-flag]: /assets/img/no.png
+[swe-flag]: /assets/img/se.png
+[fin-flag]: /assets/img/fi.png
+[lat-flag]: /assets/img/latvia-flag.png
+[lit-flag]: /assets/img/lithuania-flag.png
+[est-flag]: /assets/img/estonia-flag.png
+[dan-flag]: /assets/img/danish-flag.png
 [credit-card]: /payments/credit-card
 [invoice]: /payments/invoice
 [credit-account]: /payments/credit-account
