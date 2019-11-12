@@ -800,7 +800,6 @@ All acquirer error types will have the following URI in front of type:
 [recurrence]: #recur
 [verify]: #verify
 [payout]: #payout
-[payout-to-card]: #
 [expansion]: #
 [technical-reference-problems]: #
 [redirect-image]: /assets/img/creditcard-image-3.png
