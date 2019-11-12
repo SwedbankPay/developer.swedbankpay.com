@@ -71,10 +71,8 @@ sequenceDiagram
                 SwedbankPay -->>- Payer: show consumer completed iframe
             Payer ->> Payer: onConsumerIdentified (consumerProfileRef)
         end
-    deactivate Payer
 
         rect rgba(138,205,195,0.1)
-    activate Payer
             note left of Payer: Payment Menu
             Payer ->>+ Merchant: Prepare Payment Menu
                 Merchant ->>+ SwedbankPay: POST /psp/paymentorders (paymentUrl, consumerProfileRef)
