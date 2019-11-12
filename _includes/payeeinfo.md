@@ -5,7 +5,7 @@ a corporation etc) related to a specific payment.
 **Request**
 
 ```http
-GET /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeInfo HTTP/1.1
+GET /psp/paymentorder/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeInfo HTTP/1.1
 Host: api.payex.com
 Authorization: Bearer <MerchantToken>
 Content-Type: application/json
@@ -19,9 +19,9 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "payment": "/psp/paymentorder/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
     "payeeInfo": {
-        "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeInfo",
+        "id": "/psp/paymentorder/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeInfo",
         "payeeId": "12345678-1234-1234-1234-123456789012",
         "payeeReference": "EN1234",
         "payeeName": "TestMerchant1",
