@@ -45,7 +45,7 @@ capture or cancel. For a full list of the available operations, see the
 
 To identify the operations that are available we need to do a `GET` request
 against the URI of `paymentorder.id`:
-
+   
 {:.code-header}
 **Request**
 

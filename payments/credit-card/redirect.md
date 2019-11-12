@@ -361,9 +361,9 @@ next_href="seamless-view" next_title="Next: Seamless View" %}
 [payout]: /payments/credit-card/other-features/#payout
 [purchase]: /payments/credit-card/other-features/#purchase
 [recur]: /payments/credit-card/other-features/#recur
-[redirect-image]: /assets/img/creditcard-image-3.png
+[redirect-image]: /assets/img/creditcard-image-3.PNG
 [reversal]: /payments/credit-card/after-payment/#reversals
-[Screnshot-1]: /assets/img/creditcard-image-1.png
+[Screnshot-1]: /assets/img/creditcard-image-1.PNG
 [verify]: /payments/credit-card/other-features/#verify
 {:height="711px" width="400px"}
 {:height="711px" width="400px"}
