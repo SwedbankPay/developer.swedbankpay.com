@@ -68,7 +68,8 @@ sequenceDiagram
             Payer ->> Payer: Initiate Consumer Hosted View (open iframe)
             Payer ->>+ SwedbankPay: Show Consumer UI page in iframe
                 SwedbankPay ->> Payer: Consumer identification process
-                SwedbankPay -->>- Payer: show consumer completed iframe
+                SwedbankPay -->> Payer: Show Consumer completed iframe
+            deactivate SwedbankPay
             Payer ->> Payer: onConsumerIdentified (consumerProfileRef)
         end
 
@@ -81,11 +82,11 @@ sequenceDiagram
             Payer ->> Payer: Initiate Payment Menu Hosted View (open iframe)
             SwedbankPay -->> Payer: Show Payment UI page in iframe
             activate SwedbankPay
-                Payer ->> SwedbankPay: Pay
+                Payer ->> SwedbankPay: Authorize Payment
                 opt consumer perform payment out of iframe
                     SwedbankPay ->> Merchant: POST Payment Callback
                     SwedbankPay -->> Payer: Redirect to Payment URL
-                    Payer ->> Merchant: Prepare payment Menu
+                    Payer ->> Merchant: Prepare Payment Menu
                     Payer ->> Payer: Initiate Payment Menu Hosted View (open iframe)
                     Payer ->> SwedbankPay: Show Payment UI page in iframe
                     SwedbankPay -->> Payer: Payment status
@@ -94,7 +95,7 @@ sequenceDiagram
                             SwedbankPay -->>- Merchant: Payment Order status
                     deactivate Merchant
                 end
-                opt consumer performes payment within iframe
+                opt consumer perform payment within iframe
                     SwedbankPay ->> Merchant: POST Payment Callback
                     SwedbankPay -->> Payer: Payment status
                     Payer ->>+ Merchant: Redirect to Payment Complete URL
