@@ -593,7 +593,7 @@ sequenceDiagram
 [se-image]: /assets/img/se.svg
 [swish-image]: /assets/img/swish.svg
 [swish-redirect-view]: /assets/screenshots/swish/redirect/view/windows-small-window.png
-[swish-hosted-view]: /assets/Screenshots/Swish/hostedView/windows.png
+[swish-hosted-view]: /assets/screenshots/swish/hosted-view/windows.png
 [callback-url]: /payments/swish/other-fetures#callback
 [create-payment]: /payments/swish/
 [danske-bank]: https://danskebank.se/sv-se/foretag/medelstora-foretag/onlinetjanster/pages/swish-handel.aspx
