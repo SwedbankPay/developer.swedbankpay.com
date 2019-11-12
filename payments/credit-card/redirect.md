@@ -354,7 +354,6 @@ sequenceDiagram
 [cancel]: /payments/credit-card/after-payment/#cancellations
 [capture]: /payments/credit-card/after-payment/#Capture
 [create-payment]: /payments/credit-card/other-features/#create-payment
-[creditcard-image-2]: /assets/img/creditcard-image-2.png
 [finalize]: /payments/credit-card/after-payment/#finalize
 [payout]: /payments/credit-card/other-features/#payout
 [purchase]: /payments/credit-card/other-features/#purchase
