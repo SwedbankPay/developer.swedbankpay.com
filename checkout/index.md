@@ -49,8 +49,12 @@ components and how they work together. Swedbank Pay Checkout consists of two rel
 but disconnected concepts: **Checkin** and **Payment Menu**. Checkin identifies
 the consumer in our Consumer API and Payment Menu authorizes the payment with
 our Payment Menu API. The next step is to **Capture** the payment. You can either
-capture the total amount, or do a part-capture. Connect these steps and you have
+capture the total amount, or do a part-capture (as described under 'After Payment'). Connect these steps and you have
 Swedbank Pay Checkout.
+
+Under, you will see a sequence diagram showing the sequence of a Swedbank Pay checkout.
+Note that in this diagram, the Payer refers to the merchant front-end (website)
+while Merchant refers to the merchant back-end.
 
 ```mermaid
 sequenceDiagram
@@ -140,7 +144,11 @@ sequenceDiagram
     end
 ```
 
-### Checkin
+### Explanations
+
+Under, you see a list of notes that explains some of the sequences in the diagram. 
+
+#### Checkin
 
 [1] 'rel: view-consumer-identification' is a value in one of the operations,
 sent as a response from Swedbank Pay to the Merchant. <br>
@@ -148,10 +156,10 @@ sent as a response from Swedbank Pay to the Merchant. <br>
 [3] 'Show Consumer UI page in iframe' displays the checkin form as content inside
 of the iframe. <br>
 [4] 'onConsumerIdentified (consumerProfileRef)' is an event that triggers when the
-consumer has been identified, and delivers a property 'consumerProfileRef' as a
+consumer has been identified, and delivers<br> a property 'consumerProfileRef' as a
 reference to be used in the payment menu.
 
-### Payment Menu
+#### Payment Menu
 
 [5] 'Authorize Payment' is when the payer has accepted the payment.
 
