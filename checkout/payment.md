@@ -152,13 +152,13 @@ window.onload = function () {
                 // The container specifies which id the script will look for
                 // to host the checkin component
                 container: "checkin",
-                onConsumerIdentified: function (consumerIdentifiedEvent) {
+                onConsumerIdentified: function onConsumerIdentified(consumerIdentifiedEvent) {
                     // consumerIdentifiedEvent.consumerProfileRef contains the reference
                     // to the identified consumer which we need to pass on to the
                     // Payment Order to initialize a personalized Payment Menu.
                     console.log(consumerIdentifiedEvent);
                 },
-                onShippingDetailsAvailable: function (shippingDetailsAvailableEvent) {
+                onShippingDetailsAvailable: function onShippingDetailsAvailable(shippingDetailsAvailableEvent) {
                     console.log(shippingDetailsAvailableEvent);
                 }
             }).open();
