@@ -118,7 +118,7 @@ operation is meant to be embedded in a `<script>` element in an HTML document.
     <head>
         <title>Swedbank Pay Checkout is Awesome!</title>
         <!-- Here you can specify your own javascript file -->
-        <script src={YourJavaScriptFileHere}></script>
+        <script src=<YourJavaScriptFileHere></script>
     </head>
     <body>
         <div id="checkin"></div>
@@ -167,7 +167,7 @@ window.onload = function () {
         head.appendChild(script);
     });
     // Place in your own API endpoint here.
-    request.open('POST', {Your-Endpoint-Here}, true);
+    request.open('POST', <Your-Endpoint-Here>, true);
     request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
     // In this example we'll send in all of the information mentioned
     // before in the request to the endpoint.
@@ -488,7 +488,7 @@ window.onload = function () {
                         });
                         // Like before, you should replace the address here with
                         // your own endpoint.
-                        request.open('POST', 'https://localhost:5001/payexcheckout/payment', true);
+                        request.open('POST', , true);
                         request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
                         // In this example, we send the entire Consumer Identified Event Argument
                         // Object as JSON to the server, as it contains the consumerProfileRef.
@@ -503,8 +503,8 @@ window.onload = function () {
         var head = document.getElementsByTagName('head')[0];
         head.appendChild(script);
     });
-    // Replace the address here to your API endpoint.
-    request.open('POST', 'https://localhost:5001/payexcheckout/checkin', true);
+    // Place in your own API endpoint here.
+    request.open('POST', <Your-Endpoint-Here>, true);
     request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
     // We send in the previously mentioned request here to the checkin endpoint.
     request.send(JSON.stringify({
