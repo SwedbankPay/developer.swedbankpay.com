@@ -64,7 +64,7 @@ Content-Type: application/json
 | ✔︎︎︎︎︎ | `operation`          | `string` | `initiate-consumer-session`, the operation to perform.
 |   | `msisdn`              | `string` | The [MSISDN][msisdn] (mobile phone number) of the payer. Format Sweden: `+46707777777`. Format Norway: `+4799999999`.
 |   | `email`               | `string` | The e-mail address of the payer.
-|   | `consumerCountryCode` | `string` | Payers country of residence. Used by the consumerUi for validation on all input fields.
+| ✔︎︎︎︎︎ | `consumerCountryCode` | `string` | Payers country of residence. Used by the consumerUi for validation on all input fields.
 |   | `nationalIdentifier`  | `object` | The object containing information about the national identifier of the payer.
 |   | └➔ `socialSecurityNumber` | `string` | The social security number of the payer. Format: Norway `DDMMYYXXXXX`, Sweden: `YYYYMMDDXXXX`.
 |   | └➔ `countryCode`          | `string` | The country code, denoting the origin of the issued social security number. Required if `nationalIdentifier.socialSecurityNumber` is set.
@@ -258,7 +258,7 @@ Content-Type: application/json
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",
-        "generateRecurrenceToken": true
+        "generateRecurrenceToken": true,
         "urls": {
             "hostUrls": ["https://example.com", "https://example.net"],
             "completeUrl": "https://example.com/payment-completed",
@@ -361,7 +361,7 @@ Content-Type: application/json
 | ✔︎︎︎︎︎ | └─➔&nbsp;`reference`                  | `string`     | A reference that identifies the order item.
 | ✔︎︎︎︎︎ | └─➔&nbsp;`name`                       | `string`     | The name of the order item.
 | ✔︎︎︎︎︎ | └─➔&nbsp;`type`                       | `string`     | `PRODUCT`, `SERVICE`, `SHIPPING_FEE`, `DISCOUNT`, `VALUE_CODE` or `OTHER`. The type of the order item.
-| ✔︎︎︎︎︎ | └─➔&nbsp;`class`                      | `string`     | The classification of the order item. Can be used for assigning the order item to a specific product category, for instance. Swedbank Pay has no use for this value itself, but it's useful for some payment instruments and integrations.
+| ✔︎︎︎︎︎ | └─➔&nbsp;`class`                      | `string`     | The classification of the order item. Can be used for assigning the order item to a specific product category, for instance. Swedbank Pay has no use for this value itself, but it's useful for some payment instruments and integrations. Note that this cannot contain spaces.
 | ︎︎︎  | └─➔&nbsp;`itemUrl`                    | `string`     | The URL to a page that contains a human readable description of the order item, or similar.
 | ︎︎︎  | └─➔&nbsp;`imageUrl`                   | `string`     | The URL to an image of the order item.
 | ︎︎︎  | └─➔&nbsp;`description`                | `string`     | The human readable description of the order item.
