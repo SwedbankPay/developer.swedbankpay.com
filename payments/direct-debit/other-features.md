@@ -38,16 +38,3 @@ sidebar:
 {% include iterator.html 
                          prev_href="other-features"
                          prev_title="Back: Other Features" %}
-
-[callbackurl-reference]: #
-[direct-debit-payment-post-reversal]: #
-[direct-debit-technical-reference]: #
-[technical-reference-abort-payment]: #
-[technical-reference-callbackurl]: #
-[technical-reference-create-direct-debit]: #
-[technical-reference-expansion]: #
-[technical-reference-payeereference]: #
-[technical-reference-price-object]: #
-[technical-reference-transactions]: #
-[technical-reference]: #
-[user-agent]: https://en.wikipedia.org/wiki/User_agent
