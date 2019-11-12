@@ -149,7 +149,7 @@ sequenceDiagram
 
 [Vipps_flow_PaymentPages.png]: /assets/img/Vipps_flow_PaymentPages.png
 [Vipps-screenshot-1]: /assets/img/checkout/vipps-hosted-payment.png
-[Vipps-screenshot-2]: /assets/img/checkout/vipps-hosted-payment-no-paymentUrl.png
+[Vipps-screenshot-2]: /assets/img/checkout/vipps-hosted-payment-no-payment-url.png
 [callback]: /payments/vipps/other-features#callback
 [callbackurl]: /payments/vipps/other-features#callback
 [cancellations]: /payments/vipps/other-features#cancel-sequence
