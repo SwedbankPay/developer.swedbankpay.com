@@ -26,6 +26,19 @@ sidebar:
                       icon="warning"
                       header="Site under development"
                       body="The Developer Portal is under construction and should not be used to integrate against Swedbank Pay's APIs yet." %}
+
+>Pick and choose between the payment methods best suited for your business. Take advantage of our easy-to-use PCI compliant platforms Redirect and Swedbank Pay Hosted View - or use Swedbank Pay Direct API to integrate directly. Our payment methods and their platform availability are listed in the table below.
+
+{:.table .table-striped}
+|  | Payment method | Hosted View | Redirect | Direct API | Region |
+| CardIcon | [Credit card](payment/credit-card/) | ✔︎︎︎︎︎ | ✔︎︎︎︎︎ | ✔︎︎︎︎︎ | EarthIcon |
+| InvoiceIcon | [Swedbank Pay Invoice](payment/invoice/) | ✔︎︎︎︎︎ | ✔︎︎︎︎︎ | ✔︎︎︎︎︎ | NordicCountries |
+| EnvelopeIcon | [Swedbank Pay Web Invoice](payment/credit-account) | ✔︎︎︎︎︎ | ✔︎︎︎︎︎ | ✔︎ ︎| SwedenNorway|
+| KeypadIcon | [Direct Debit](payment/direct-debit)| X | ✔︎︎︎︎︎ | X | BalticNordic |
+| Vipps | [Vipps](payment/vipps) | ✔︎︎︎︎︎ | ✔︎︎︎︎︎ | X | Norway |
+| Swish | [Swish](payments/swish) | ✔︎︎︎︎︎ | ✔︎︎︎︎︎ | ✔︎︎︎︎︎  ︎| Sweden |
+| MobilePay | [Mobile Pay](payments/mobile-pay) | X | ✔︎︎︎︎︎ | X | Denmark |
+
 ## The Fundamentals
 
 >All Payments APIs in the Swedbank Pay API Platform share a common foundation with a similar payment process for all payment instruments, reducing complexity and enabling a more straightforward integration.
@@ -60,17 +73,6 @@ If you use a one-phase method (like Direct Bank Debit or [Swish](/payments/swish
 The `payment` is the container object that holds all transactions that will be created during the payment process. When Swedbank Pay receives the payment request body (in JSON format), a payment  is created and you will be given a unique paymentID in return. The response also include  (in a true RESTful way) the URIs to possible further actions, given the state of the payment. It is possible to abort a payment before the end user has fulfilled the payment process.
 Settle funds directly with a Sales transaction.  
 
->Pick and choose between the payment methods best suited for your business. Take advantage of our easy-to-use PCI compliant platforms Redirect and Swedbank Pay Hosted View - or use Swedbank Pay Direct API to integrate directly. Our payment methods and their platform availability are listed in the table below.
-
-{:.table .table-striped}
-|  | Payment method | Hosted View | Redirect | Direct API | Region |
-| CardIcon | [Credit card](payment/credit-card/) | ✔︎︎︎︎︎ | ✔︎︎︎︎︎ | ✔︎︎︎︎︎ | EarthIcon |
-| InvoiceIcon | [Swedbank Pay Invoice](payment/invoice/) | ✔︎︎︎︎︎ | ✔︎︎︎︎︎ | ✔︎︎︎︎︎ | NordicCountries |
-| EnvelopeIcon | [Swedbank Pay Web Invoice](payment/credit-account) | ✔︎︎︎︎︎ | ✔︎︎︎︎︎ | ✔︎ ︎| SwedenNorway|
-| KeypadIcon | [Direct Debit](payment/direct-debit)| X | ✔︎︎︎︎︎ | | BalticNordic |
-| Vipps | [Vipps](payment/vipps) | ✔︎︎︎︎︎ | ✔︎︎︎︎︎ | | Norway |
-| Swish | [Swish](payments/swish) | ✔︎︎︎︎︎ | ✔︎︎︎︎︎ | ✔︎︎︎︎︎  ︎| Sweden |
-| MobilePay | [Mobile Pay](payments/mobile-pay) | | ✔︎︎︎︎︎ | | Denmark |
 
 >Add image
 
