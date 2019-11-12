@@ -82,10 +82,16 @@ Content-Type: application/json
     "token": "7e380fbb3196ea76cc45814c1d99d59b66db918ce2131b61f585645eff364871",
     "operations": [
         {
-            "rel": "view-consumer-identification",
             "method": "GET",
-            "contentType": "application/javascript",
+            "rel": "redirect-consumer-identification",
+            "href": "https://ecom.stage.payex.com/consumers/sessions/7e380fbb3196ea76cc45814c1d99d59b66db918ce2131b61f585645eff364871",
+            "contentType": "text/html"
+        },
+        {
+            "method": "GET",
+            "rel": "view-consumer-identification",
             "href": "https://ecom.externalintegration.payex.com/consumers/core/scripts/client/px.consumer.client.js?token=7e380fbb3196ea76cc45814c1d99d59b66db918ce2131b61f585645eff364871",
+            "contentType": "application/javascript",
         }
     ]
 }
@@ -109,6 +115,11 @@ the operation should be performed.
 The `view-consumer-identification` operation
 and its `application/javascript` content type gives us a clue that the
 operation is meant to be embedded in a `<script>` element in an HTML document.
+
+In our example we will focus on the on-site example. Be aware that the
+`redirect-consumer-identification` is the redirect solution, sending you
+to another website to handle the check-in.
+
 
 {:.code-header}
 **HTML**
@@ -252,12 +263,12 @@ Content-Type: application/json
 {
     "paymentorder": {
         "operation": "Purchase",
-        "currency": "NOK",
+        "currency": "SEK",
         "amount": 15610,
         "vatAmount": 3122,
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0...",
-        "language": "nb-NO",
+        "language": "sv-SE",
         "generateRecurrenceToken": true,
         "urls": {
             "hostUrls": ["https://example.com", "https://example.net"],
@@ -404,7 +415,7 @@ Content-Type: application/json
     },
     "operations": [
         {
-            "href": "https://ecom.externalintegration.payex.com/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=38540e86bd78e885fba2ef054ef9792512b1c9c5975cbd6fd450ef9aa15b1844&culture=nb-NO",
+            "href": "https://ecom.externalintegration.payex.com/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=38540e86bd78e885fba2ef054ef9792512b1c9c5975cbd6fd450ef9aa15b1844&culture=sv-SE",
             "rel": "view-paymentorder",
             "method": "GET",
             "contentType": "application/javascript"
@@ -482,7 +493,7 @@ window.onload = function () {
                                 // Payment Menu inside our 'payment-menu' container.
                                 payex.hostedView.paymentMenu({
                                     container: 'payment-menu',
-                                    culture: 'nb-NO'
+                                    culture: 'sv-SE'
                                 }).open();
                             };
                             // Append the Payment Menu script to the <head>
@@ -562,12 +573,12 @@ Content-Type: application/json
 {
     "paymentorder": {
         "operation": "Purchase",
-        "currency": "NOK",
+        "currency": "SEK",
         "amount": 1500,
         "vatAmount": 0,
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0...",
-        "language": "nb-NO",
+        "language": "sv-SE",
         "generateRecurrenceToken": false,
         "disablePaymentMenu": false,
         "urls": {
