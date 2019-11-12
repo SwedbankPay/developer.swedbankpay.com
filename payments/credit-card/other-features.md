@@ -59,7 +59,7 @@ Content-Type: application/json
 | ✔︎︎︎︎︎ | Property          | Data type | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | ----------------- | --------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ✔︎︎︎︎︎ | payment.operation | string   | Determines the initial operation, that defines the type card payment created.<br> <br> `Purchase`. Used to charge a card. It is followed up by a capture or cancel operation.<br> <br> `Recur`.Used to charge a card on a recurring basis. Is followed up by a capture or cancel operation (if not Autocapture is used, that is).<br> <br>`Payout`. Used to deposit funds directly to credit card. No more requests are necessary from the merchant side.<br> <br>`Verify`. Used when authorizing a card withouth reserveing any funds.  It is followed up by a verification transaction. |
-| ✔︎︎︎︎︎ | payment.intent    | string    | The intent of the payment identifies how and when the charge will be effectuated. This determine the type transactions used during the payment process.<br> <br>`PreAuthorization`. Holds the funds for a certain time in contrast to reserving the amount. A preauthoriations is always followed by the [finalize][finalize] operation.<br> <br>`Authorization`. Reserves the amount, and is followed by a [cancellation][cancellation] or [capture][capture] of funds.<br> <br>`AutoCapture`. A one phase-option that enable capture of funds automatically after authorization.        |
+| ✔︎︎︎︎︎ | payment.intent    | string    | The intent of the payment identifies how and when the charge will be effectuated. This determine the type transactions used during the payment process.<br> <br>`PreAuthorization`. Holds the funds for a certain time in contrast to reserving the amount. A preauthoriations is always followed by the [finalize][finalize] operation.<br> <br>`Authorization`. Reserves the amount, and is followed by a [cancellation][cancel] or [capture][capture] of funds.<br> <br>`AutoCapture`. A one phase-option that enable capture of funds automatically after authorization.        |
 
 ## Purchase 
 
@@ -214,7 +214,7 @@ Content-Type: application/json
 | ✔︎︎︎︎︎ |urls.completeUrl|string|The URL that Swedbank Pay will redirect back to when the payment page is completed.
 | |urls.cancelUrl|string|The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with paymentUrl; only cancelUrl or paymentUrl can be used, not both. 
 | |urls.paymentUrl|string|The URI that Swedbank Pay will redirect back to when the view-operation needs to be loaded, to inspect and act on the current status of the payment. Only used in hosted views. If both cancelUrl and paymentUrl is sent, the paymentUrl will used.
-| |urls.callbackUrl|string|The URL that Swedbank Pay will perform an HTTP POST against every time a transaction is created on the payment. See [callback][] for details.
+| |urls.callbackUrl|string|The URL that Swedbank Pay will perform an HTTP POST against every time a transaction is created on the payment. See [callback][callback] for details.
 | |urls.logoUrl|string|The URL that will be used for showing the customer logo. Must be a picture with maximum 50px height and 400px width. Require https.
 | |urls.termsOfServiceUrl|string|A URL that contains your terms and conditions for the payment, to be linked on the payment page. Require https.
 | ✔︎︎︎︎︎ |payeeInfo.payeeId|string|This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.
@@ -400,8 +400,7 @@ API integration.
 
 The API requests are displayed in the [payout flow](#payout-flow).  You create 
 a payout by performing a `POST` creditcard payments with key `operation` set to 
-`payout`. The general REST based API model is described in the 
-[technical reference][#].
+`payout`.
 
 {:.code-header}
 **Request**
@@ -513,7 +512,7 @@ verification operation, you make a `POST` request towards Swedbank Pay with your
  Verify information. This will generate a payment object with a unique 
  `paymentID`. You either receive a Redirect URL to a hosted page or a JavaScript
  source in response.
-* You need to [redirect] the payer's browser to that specified URL, or embed the
+* You need to [redirect][redirect] the payer's browser to that specified URL, or embed the
  script source on your site to create a [Hosted View][hosted-view] in an iFrame;
  so that she can enter the credit card details in a secure Swedbank Pay hosted 
  environment.
@@ -542,8 +541,7 @@ the credit card information.
 
 The API requests are displayed in the [Verification flow]. The options you can 
 choose from when creating a payment with key operation set to Value Verify are 
-listed below. The general REST based API model is described in the 
-[technical reference].
+listed below.
 
 {:.code-header}
 **Request**
@@ -797,6 +795,13 @@ All acquirer error types will have the following URI in front of type:
 
 [purchase]: #purchase
 [user-agent-definition]: https://en.wikipedia.org/wiki/User_agent
+[finalize]: /payments/credit-card/after-payment/#finalize
+[cancel]: /payments/credit-card/after-payment/#cancellations
+[capture]: /payments/credit-card/after-payment/#Capture
+[callback]: /payments/credit-card/other-features/#callback
+[price-resource]: /payments/credit-card/other-features/#prices
+[redirect]: /payments/credit-card/redirect
+[hosted-view]: /payments/credit-card/seamless-view
 [recurrence]: #recur
 [verify]: #verify
 [payout]: #payout

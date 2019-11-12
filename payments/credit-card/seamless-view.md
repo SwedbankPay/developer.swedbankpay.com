@@ -29,7 +29,7 @@ purchase process, you need to make a POST request towards Swedbank Pay with your
  Purchase information. This will generate a payment object with a unique 
  `paymentID`. You will receive a **JavaScript source** in response.
 * You need to embed the script source on your site to create a 
-[Hosted View][hosted-view] in an iFrame; so that she can enter the credit card 
+hosted-view in an iFrame(see screenshot below); so that she can enter the credit card 
 details in a secure Swedbank Pay hosted environment.
 * Swedbank Pay will handle 3D-secure authentication when this is required.
 * Swedbank Pay will display directly in the iFrame - one of two specified URLs, 
@@ -62,13 +62,10 @@ both the integration and the payer.
 
 ## Screenshots 
 
-You will redirect the payer to Swedbank Pay hosted pages to collect the credit 
-card information.
+You will have an iFramed window on your page where the consumer can enter the 
+credit card information.
 
-(% style="text-align:center" %)
-[[image:1551693452568-441.png||height="485" width="490"]]
-
-
+![payment-page_hosted-view.png]{:height="700px" :width="490px"}
 
 ## API Requests
 
@@ -217,8 +214,8 @@ need to implement the [`Capture`][capture] and [`Cancel`][cancel] requests.
 generated when the payment was created. 
 
 
-
-[hosted-view]: #
+[payment-page_hosted-view.png]: /assets\Screenshots\Credit Card\hostedView\View\macOS.PNG
+[hosted-view]: 
 [abort]: /payments/credit-card/other-features/#abort
 [callback]: /payments/credit-card/other-features/#callback
 [cancel]: /payments/credit-card/after-payment/#cancellations
