@@ -252,12 +252,12 @@ Content-Type: application/json
 {
     "paymentorder": {
         "operation": "Purchase",
-        "currency": "NOK",
+        "currency": "SEK",
         "amount": 15610,
         "vatAmount": 3122,
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0...",
-        "language": "nb-NO",
+        "language": "sv-SE",
         "generateRecurrenceToken": true,
         "urls": {
             "hostUrls": ["https://example.com", "https://example.net"],
