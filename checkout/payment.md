@@ -59,7 +59,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| ✔︎︎︎︎︎ | **Property**             | **Type**     |  **Description** |
+| ✔︎︎︎︎︎ **(Required)** | **Property**             | **Type**     |  **Description** |
 | ✔︎︎︎︎︎ | `operation`          | `string` | `initiate-consumer-session`, the operation to perform.
 |   | `msisdn`              | `string` | The [MSISDN][msisdn] (mobile phone number) of the payer. Format Sweden: `+46707777777`. Format Norway: `+4799999999`.
 |   | `email`               | `string` | The e-mail address of the payer.
@@ -331,7 +331,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| ✔︎︎︎︎︎ | Property                              | Type         | Description       |
+| ✔︎︎︎︎︎ (Required) | Property                              | Type         | Description       |
 |:-:|:--------------------------------------|:-------------|:------------------|
 | ✔︎︎︎︎︎ | `paymentorder`                        | `object`     | The payment order object.
 | ✔︎︎︎︎︎ | └➔&nbsp;`operation`                   | `string`     | The operation that the payment order is supposed to perform.
@@ -653,7 +653,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| ✔︎︎︎︎︎ | Property                              | Type     | Description           |
+| ✔︎︎︎︎︎ (Required) | Property                              | Type     | Description           |
 |:-:|:--------------------------------------|:---------|:----------------------|
 | ✔︎︎︎︎︎ | `paymentorder`                    | `object`     | The payment order object.
 | ✔︎︎︎︎︎ | └➔&nbsp;`operation`               | `string`     | The operation that the payment order is supposed to perform.
@@ -692,7 +692,7 @@ with or cancelling a payment session, as well as the callback URI that is used
 to inform the payee (merchant) of changes or updates made to underlying payments or transaction.
 
 {:.table .table-striped}
-| ✔︎︎︎︎︎ | Property            | Type     | Description                             |
+| ✔︎︎︎︎︎ (Required) | Property            | Type     | Description                             |
 |:-:|:--------------------|:---------|:----------------------------------------|
 | ✔ ︎︎︎︎︎| `hostUrls`          | `array`  | The array of URIs valid for embedding of Swedbank Pay Hosted Views.
 | ✔︎︎︎︎︎ | `completeUrl`       | `string` | The URI to redirect the payer to once the payment is completed.
@@ -711,7 +711,7 @@ The `orderItems` property of the `paymentOrder` is an array containing the items
                       body="`orderItems` must be a part of `Capture` if `orderItems` is included in the `paymentOrder` creation." %}
 
 {:.table .table-striped}
-| ✔︎︎︎︎︎ | Property             | Type     | Description                           |
+| ✔︎︎︎︎︎ (Required) | Property             | Type     | Description                           |
 |:-:|:----------------------|:---------|:--------------------------------------|
 | ✔︎︎︎︎︎ | `reference`          | `string` | A reference that identifies the order item.
 | ✔︎︎︎︎︎ | `name`               | `string` | The name of the order item.
@@ -734,7 +734,7 @@ The `orderItems` property of the `paymentOrder` is an array containing the items
 The `items` property of the `paymentOrder` is an array containing items that will affect how the payment is performed.
 
 {:.table .table-striped}
-| ✔︎︎︎︎︎ | Property                        | Type     | Description                 |
+| ✔︎︎︎︎︎ (Required) | Property                        | Type     | Description                 |
 |:-:|:--------------------------------|:---------|:----------------------------|
 |   | `creditCard`                    | `object` | The credit card object.
 |   | └➔&nbsp;`rejectDebitCards`     | `bool`    | `true` if debit cards should be declined; otherwise `false` per default. Default value is set by Swedbank Pay and can be changed at your request.
