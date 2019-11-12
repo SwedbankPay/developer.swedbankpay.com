@@ -36,7 +36,6 @@ persisted to streamline future Payment Menu processes. Payer identification
 is done through the `initiate-consumer-session` operation. In the request body,
 most properties are optional. However, the more information that is provided,
 the easier the identification process becomes for the payer.
-[See the technical reference for details][initiate-consumer-session].
 
 {:.code-header}
 **Request**
@@ -93,7 +92,7 @@ Content-Type: application/json
 
 {:.table .table-striped}
 | Property              | Type     | Description                                                                                                                                       |
-| :-------------------- | :------- | :------------------------------------------------------------------------------------------------------------------------------------------------ |
+| :------- | :------- | :------------------------------ |
 | `token`               | `string` | A session token used to initiate Checkout UI.                                                                                                     |
 | `operations`          | `array`  | The array of operation objects to choose from, described in detail in the table below.                                                            |
 | └➔&nbsp;`rel`         | `string` | The relational name of the operation, used as a programmatic identifier to find the correct operation given the current state of the application. |
