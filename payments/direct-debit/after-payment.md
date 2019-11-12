@@ -22,7 +22,7 @@ sidebar:
   successful transactions.
 * For reversals, you will need to implement the Reversal request.
 * **If CallbackURL is set:** Whenever changes to the payment occur a 
-  [Callback request][technical-reference-callbackurl] will be posted to the 
+  [Callback request][callbackurl-reference] will be posted to the 
   [CallbackURL][callbackurl-reference], which was generated when the payment 
   was created.
 
@@ -47,15 +47,5 @@ sequenceDiagram
                          prev_href="redirect"
                          prev_title="Back: Redirect" %}
 
-[callbackurl-reference]: #
-[direct-debit-payment-post-reversal]: #
-[direct-debit-technical-reference]: #
-[technical-reference-abort-payment]: #
-[technical-reference-callbackurl]: #
-[technical-reference-create-direct-debit]: #
-[technical-reference-expansion]: #
-[technical-reference-payeereference]: #
-[technical-reference-price-object]: #
-[technical-reference-transactions]: #
-[technical-reference]: #
-[user-agent]: https://en.wikipedia.org/wiki/User_agent
+[callbackurl-reference]: /payments/direct-debit/other-features#callback
+[technical-reference-abort-payment]: /payments/direct-debit/other-features#abort-payment
