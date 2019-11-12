@@ -71,7 +71,7 @@ with a similar payment process for all payment instruments, reducing complexity
 and enabling a more straightforward integration.
 
 *Two-phase payments* ([Card][credit-card], [Invoice][invoice], 
-[MobilePay][invoice], [Vipps][vipps]
+[MobilePay][invoice], [Vipps][vipps])
 
 A two-phase payment is managed in two steps - first reserving funds that will be
  captured in the next step. The most common payment instrument using two-phase 
@@ -102,10 +102,10 @@ Or:
 
 
 *One-phase payments* ([Direct Debit][direct-debit], [Swish][swish], 
-[Card][credit-card]
+[Card][credit-card])
 
 If you use a one-phase method (like Direct Bank Debit or [Swish][swish] a Sales
- transaction will be created and the consumer charged right away. 
+ transaction will be created and the consumer charged right away). 
 
 * _One-phase card payments is enabled with autocapture._
 
@@ -163,9 +163,9 @@ English
 
 #### Getting started
 When implementing Hosted view, you need to locate the operation that is returned
- from your API request, which contains the URL of the JavaScript that you need 
- to embed on your Front End side. This will load the 
- payment page on a subset of your own webpage.  
+from your API request, which contains the URL of the JavaScript that you need 
+to embed on your Front End side. This will load the 
+payment page on a subset of your own webpage.  
 
 The properties of the operation containing the script URL should be similar to 
 the example below. The href attribute refers to a script of the contentType 
@@ -341,27 +341,27 @@ have the same states (Initialized, completed and failed). 
   
 ### Creating a reversal transaction - optional
 * In some cases you may need to make a reversal of captured funds. This is done 
-by creating a reversal transaction. A two-phase payment will during this step 
-have at least three connected transactions (one authorization, one capture, and
-one reversal).
+  by creating a reversal transaction. A two-phase payment will during this step 
+  have at least three connected transactions (one authorization, one capture, 
+  and one reversal).
   
 ### Aborting the payment - optional
 * It is possible for the merchant to abort a payment before the end user has 
-fulfilled the payment process. If the merchant calls the `PATCH` function 
-(see PATCH method for Payments), the payment will be aborted.
+  fulfilled the payment process. If the merchant calls the `PATCH` function 
+  (see PATCH method for Payments), the payment will be aborted.
 * This can only happen if there exist no final transactions (like captures) on 
-the payment with a successful status. Once the payment is aborted, no more 
-transactions/operations can be done. If the consumer has been redirected to a 
-hosted payment page when this happens, the end user will be redirected back to 
-your merchant page.
+  the payment with a successful status. Once the payment is aborted, no more 
+  transactions/operations can be done. If the consumer has been redirected to a 
+  hosted payment page when this happens, the end user will be redirected back to 
+  your merchant page.
 
 ### Payment is set to Failed
 * During some circumstances the payment state might be set to Failed. This 
-happens if an antifraud pattern triggers or if the number of tries are exceeded
- during the authorization phase, as mentioned above.  No more transactions can 
- be created on a failed payment. If the consumer has been redirected to a 
- payment 
-page when this happens,  she will be redirected back to your store.
+  happens if an antifraud pattern triggers or if the number of tries are 
+  exceeded during the authorization phase, as mentioned above.  No more 
+  transactions can be created on a failed payment. If the consumer has been 
+  redirected to a payment page when this happens,  she will be redirected back 
+  to your store.
 
 [card-payments-purchase]: /payments/credit-card/#purchase-flow-1
 [demoshop]: https://ecom.externalintegration.payex.com/pspdemoshop
@@ -386,4 +386,3 @@ page when this happens,  she will be redirected back to your store.
 [vipps]: /payments/vipps
 [swish]: /payments/swish
 [mobile-pay]: /payments/mobile-pay
-
