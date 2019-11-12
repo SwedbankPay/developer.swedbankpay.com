@@ -114,13 +114,13 @@ will check if the card is enrolled with 3D-secure. This depends on the issuer of
 ```mermaid
 sequenceDiagram
     Consumer->>+Merchant: start purchase
-    Merchant->>+PayEx: POST [operation=PURCHASE](payments/credit-card/payments)
+    Merchant->>+PayEx: POST [operation=PURCHASE]
     Note left of PayEx: First API Request
     PayEx-->>-Merchant: payment resource
     Merchant-->>-Consumer: authorization page
     note left of Consumer: redirect to Swedbank Pay (If Redirect scenario)
     Consumer->>+Merchant: access merchant page
-    Merchant->>+PayEx: GET [payments/credit-card/payments](payments/credit-card/payments)
+    Merchant->>+PayEx: GET [payments/credit-card/payments]
     note left of Merchant: Second API request
     PayEx-->>-Merchant: payment resource
     Merchant-->>-Consumer: display purchase result
@@ -129,7 +129,7 @@ sequenceDiagram
 ```mermaid
 sequenceDiagram
   Consumer->>+Merchant: start purchase
-  Merchant->>+PayEx: POST [operation=PURCHASE](payments/credit-card/payments)
+  Merchant->>+PayEx: POST [operation=PURCHASE]
   note left of Consumer: First API request
   PayEx-->>Merchant: payment resource
   deactivate PayEx
@@ -156,7 +156,7 @@ sequenceDiagram
   note left of Consumer: redirect back to merchant\n(If Redirect scenario)
   
   Consumer->>+Merchant: access merchant page
-  Merchant->>+PayEx: GET [payments/credit-card/payments](payments/credit-card/payments)
+  Merchant->>+PayEx: GET [payments/credit-card/payments]
   note left of Merchant: Second API request
   PayEx-->>Merchant: payment resource
   deactivate PayEx
@@ -166,7 +166,7 @@ sequenceDiagram
   opt Callback is set
     PayEx->>PayEx: Payment is updated
     activate PayEx
-    PayEx->>Merchant: send [Callback request][callback]
+    PayEx->>Merchant: send [Callback request]
     deactivate PayEx
   end
 ```
@@ -269,7 +269,7 @@ will check if the card is enrolled with 3D-secure. This depends on the issuer of
 sequenceDiagram
   Consumer->>Merchant: start purchase
   Activate Merchant
-  Merchant->>PayEx: POST [operation=PURCHASE](payments/credit-card/payments)
+  Merchant->>PayEx: POST [operation=PURCHASE]
   note left of Merchant: First API request
   Activate PayEx
   PayEx-->>Merchant: payment resource
@@ -286,7 +286,7 @@ sequenceDiagram
   
   Consumer->>Merchant: access merchant page
   Activate Merchant
-  Merchant->>PayEx: GET [payments/credit-card/payments](payments/credit-card/payments)
+  Merchant->>PayEx: GET [payments/credit-card/payments]
   note left of Merchant: Second API request
   Activate PayEx
   PayEx-->>Merchant: payment resource
@@ -301,7 +301,7 @@ sequenceDiagram
 sequenceDiagram
   Consumer->>Merchant: start purchase
   Activate Merchant
-  Merchant->>PayEx: POST [operation=PURCHASE](payments/credit-card/payments)
+  Merchant->>PayEx: POST [operation=PURCHASE]
   note left of Merchant: First API request
   Activate PayEx
   PayEx-->>Merchant: payment resource
@@ -333,7 +333,7 @@ sequenceDiagram
   
   Consumer->>Merchant: access merchant page
   Activate Merchant
-  Merchant->>PayEx: GET [payments/credit-card/payments](payments/credit-card/payments)
+  Merchant->>PayEx: GET [payments/credit-card/payments]
   note left of Merchant: Second API request
   Activate PayEx
   PayEx-->>Merchant: payment resource
@@ -344,7 +344,7 @@ sequenceDiagram
   opt Callback is set
   PayEx->>PayEx: Payment is updated
   Activate PayEx
-  PayEx->>Merchant: send [Callback request][callback]
+  PayEx->>Merchant: send [Callback request]
   deactivate PayEx
   end
 ```

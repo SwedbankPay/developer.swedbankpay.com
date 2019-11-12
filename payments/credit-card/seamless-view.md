@@ -141,13 +141,13 @@ will check if the card is enrolled with 3D-secure. This depends on the issuer of
 ```mermaid
 sequenceDiagram
     Consumer->>+Merchant: start purchase
-    Merchant->>+PayEx: POST [operation=PURCHASE](payments/credit-card/payments)
+    Merchant->>+PayEx: POST [operation=PURCHASE]
     Note left of PayEx: First API Request
     PayEx-->>-Merchant: payment resource
     Merchant-->>-Consumer: authorization page
     note left of Consumer: redirect to PayEx (If Redirect scenario)
     Consumer->>+Merchant: access merchant page
-    Merchant->>+PayEx: GET [payments/credit-card/payments](payments/credit-card/payments)
+    Merchant->>+PayEx: GET [payments/credit-card/payments]
     note left of Merchant: Second API request
     PayEx-->>-Merchant: payment resource
     Merchant-->>-Consumer: display purchase result
@@ -156,7 +156,7 @@ sequenceDiagram
 ```mermaid
 sequenceDiagram
   Consumer->>+Merchant: start purchase
-  Merchant->>+PayEx: POST [operation=PURCHASE](payments/credit-card/payments)
+  Merchant->>+PayEx: POST [operation=PURCHASE]
   note left of Consumer: First API request
   PayEx-->>Merchant: payment resource
   deactivate PayEx
@@ -183,7 +183,7 @@ sequenceDiagram
   note left of Consumer: redirect back to merchant\n(If Redirect scenario)
   
   Consumer->>+Merchant: access merchant page
-  Merchant->>+PayEx: GET [payments/credit-card/payments](payments/credit-card/payments)
+  Merchant->>+PayEx: GET [payments/credit-card/payments]
   note left of Merchant: Second API request
   PayEx-->>Merchant: payment resource
   deactivate PayEx
@@ -193,7 +193,7 @@ sequenceDiagram
   opt Callback is set
     PayEx->>PayEx: Payment is updated
     activate PayEx
-    PayEx->>Merchant: send [Callback request][callback]
+    PayEx->>Merchant: send [Callback request]
     deactivate PayEx
   end
 ```
@@ -214,8 +214,8 @@ need to implement the [`Capture`][capture] and [`Cancel`][cancel] requests.
 generated when the payment was created. 
 
 
+
 [payment-page_hosted-view.png]: /assets\Screenshots\Credit Card\hostedView\View\macOS.PNG
-[hosted-view]: 
 [abort]: /payments/credit-card/other-features/#abort
 [callback]: /payments/credit-card/other-features/#callback
 [cancel]: /payments/credit-card/after-payment/#cancellations
@@ -232,3 +232,5 @@ generated when the payment was created.
 [reversal]: /payments/credit-card/after-payment/#reversals
 [see-the-PATCH-payment-description]: /payments/credit-card/after-payment
 [verify]: /payments/credit-card/other-features/#verify
+[create-payment]: /payments/credit-card/other-features/#create-payment
+[finalize]: /payments/credit-card/after-payment/#finalize

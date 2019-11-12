@@ -198,7 +198,7 @@ Content-Type: application/json
 | ✔︎︎︎︎︎ | Property     | Data type | Description                                                                                                                                                                                                                                                                                                                                                                                                          |
 | :----- | :----------- | :-------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ✔︎︎︎︎︎ | operation    | string    | Purchase                                                                                                                                                                                                                                                                                                                                                                                                             |
-| ✔︎︎︎︎︎ | intent       | string    | `PreAuthorization`. Holds the funds for a certain time in contrast to reserving the amount. A preauthoriation is always followed by the [finalize][finalize] operation. <br> <br> `Authorization`. Reserves the amount, and is followed by a [cancellation][cancellation] or [capture][capture] of funds.<br> <br> `AutoCapture`. A one phase option that enable capture of funds automatically after authorization. |
+| ✔︎︎︎︎︎ | intent       | string    | `PreAuthorization`. Holds the funds for a certain time in contrast to reserving the amount. A preauthoriation is always followed by the [finalize][finalize] operation. <br> <br> `Authorization`. Reserves the amount, and is followed by a [cancellation][cancel] or [capture][capture] of funds.<br> <br> `AutoCapture`. A one phase option that enable capture of funds automatically after authorization. |
 |        | paymentToken | string    | If you put in a paymentToken here, the payment page will preload the stored payment data related to the `paymentToken` and let the consumer make a purchase without having to enter all card data. This is called a "One Click" purchase.                                                                                                                                                                            |
 | ✔︎︎︎︎︎ | currency     | string    | NOK, SEK, DKK, USD or EUR.                                                                                                                                                                                                                                                                                                                                                                                           |
 | ✔︎︎︎︎︎ | prices.type  | string    | Use the generic type CreditCard if you want to enable all card brands supported by merchant contract. Use card brands like Visa (for card type Visa), MasterCard (for card type Mastercard) and others if you want to specify different amount for each card brand. If you want to use more than one amount you must have one instance in the prices node for each card brand. You will not be allowed to both specify card brands and CreditCard at the same time in this field. [See the Prices resource and prices object types for more information][price-resource].
@@ -500,7 +500,7 @@ confirm validity of card information without reserving or charging any amount.
 
 This option is commonly used when initiating a subsequent 
 [One-click card payment][one-click-payments] or a 
-[recurring card payment][recurring-card-payment] flow - where you do not want 
+[recurring card payment][recurrence] flow - where you do not want 
 to charge the consumer right away. Please note that all boolean credit card 
 attributes involving rejection of certain card types are optional and set on 
 contract level.
@@ -528,7 +528,7 @@ verification operation, you make a `POST` request towards Swedbank Pay with your
 `paymentID` received in the first step, which will return the payment result 
 and a `paymentToken` that can be used for subsequent 
 [One-Click Payments][one-click-payments] and 
-[recurring server-to-server based payments][recurring-server-to-server-based-payments].
+[recurring server-to-server based payments][recurrence].
 
 ### Screenshots
 
@@ -682,7 +682,7 @@ Swedbank Pay Payment pages where the payment is authorized.
 {% include alert.html type="warning"
                       icon="warning"
                       header="Note"
-                      body="In order to use the `direct-authorization` operation, the servers and application involved in retrieving and transferring the credit card number from the payer to PayEx needs to be [PCI DSS][PCI-link] certified." %}
+                      body="In order to use the `direct-authorization` operation, the servers and application involved in retrieving and transferring the credit card number from the payer to PayEx needs to be [PCI DSS](https://www.pcisecuritystandards.org/) certified." %}
 
 
 {code-header}
@@ -802,11 +802,12 @@ All acquirer error types will have the following URI in front of type:
 [price-resource]: /payments/credit-card/other-features/#prices
 [redirect]: /payments/credit-card/redirect
 [hosted-view]: /payments/credit-card/seamless-view
+[one-click-payments]: #one-click-payments
 [recurrence]: #recur
 [verify]: #verify
 [payout]: #payout
 [expansion]: #
 [technical-reference-problems]: #
 [redirect-image]: /assets/img/creditcard-image-3.png
-[PCI-link]: https://www.pcisecuritystandards.org/
+
 

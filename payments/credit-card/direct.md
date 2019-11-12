@@ -112,12 +112,12 @@ the issuing bank. Normally this will be done using BankID or Mobile BankID.
 sequenceDiagram
   Consumer->>Merchant: start purchase
   activate Merchant
-  Merchant->>PayEx: POST [operation=PURCHASE][purchase-operation-link]
+  Merchant->>PayEx: POST [operation=PURCHASE]
   note left of Merchant: First API request
   activate PayEx
   PayEx-->>Merchant: payment resource
 
-  Merchant ->> PayEx: POST [Credit card direct authroization][credit-card-auth-direct]
+  Merchant ->> PayEx: POST [Credit card direct authroization]
   note left of Merchant: Second API request
   PayEx -->> Merchant: transaction resource
 
@@ -130,14 +130,14 @@ sequenceDiagram
 sequenceDiagram
   Consumer->>Merchant: start purchase
   activate Merchant
-  Merchant->>PayEx: POST [purchase-operation-link][purchace-operation-link] [operation=PURCHASE]
+  Merchant->>PayEx: POST [operation=PURCHASE]
   note left of Merchant: First API request
   activate PayEx
   PayEx-->>Merchant: payment resource
 
-  Merchant -> PayEx: POST [Direct authorization][direct-authorization-reference]
+  Merchant -> PayEx: POST [Direct authorization]
   note left of Merchant: Second API request
-  PayEx --> Merchant: transaction resource\n(operation redirect-authentication for 3DS)
+  PayEx --> Merchant: transaction resource
 
   deactivate PayEx
   Merchant-->>Consumer: redirect to 3D-secure page
@@ -152,7 +152,7 @@ sequenceDiagram
   
   Consumer->>Merchant: access merchant page
   activate Merchant
-  Merchant->>PayEx: GET [payments/credit-card/payments][get-payment-response]
+  Merchant->>PayEx: GET [get-payment-response]
   note left of Merchant: Third API request
   activate PayEx
   PayEx-->>Merchant: payment resource
@@ -171,7 +171,7 @@ successful transactions.
 * If you did a PreAuthorization, you will have to send a Finalize to the 
 transaction using [PATCH on the Authorization][finalize].
 * **Callback from Swedbank Pay:** Whenever changes to the payment occur a 
-[Callback request][callback-request] will be posted to the `callbackUrl`, 
+[Callback request][callback] will be posted to the `callbackUrl`, 
 generated when the payment was created.
 
 [abort]: /payments/credit-card/other-features/#abort
@@ -181,4 +181,4 @@ generated when the payment was created.
 [finalize]: /payments/credit-card/after-payment/#finalize
 [PCI-link]: https://www.pcisecuritystandards.org/
 [reversal]: /payments/credit-card/after-payment/#Reversals
-/payments/credit-card/other-features/#Create-authorization-transaction
+[authorization]: /payments/credit-card/other-features/#create-authorization-transaction
