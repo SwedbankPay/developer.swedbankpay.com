@@ -437,7 +437,20 @@ sequenceDiagram
   Deactivate Merchant
 ```
 
-{% include iterator.html next_href="index"
-                         next_title="Next: Introduction" 
-                         prev_href="after-payment"
-                         prev_title="Back: After Payment" %}
+{% include iterator.html next_href="after-payment"
+                         next_title="Next: After Payment" 
+                         prev_href="index"
+                         prev_title="Back: Introduction" %}
+
+[callbackurl-reference]: #
+[direct-debit-payment-post-reversal]: #
+[direct-debit-technical-reference]: #
+[technical-reference-abort-payment]: #
+[technical-reference-callbackurl]: #
+[technical-reference-create-direct-debit]: #
+[technical-reference-expansion]: #
+[technical-reference-payeereference]: #
+[technical-reference-price-object]: #
+[technical-reference-transactions]: #
+[technical-reference]: #
+[user-agent]: https://en.wikipedia.org/wiki/User_agent

@@ -41,3 +41,21 @@ sequenceDiagram
   Deactivate PayEx
   Deactivate Merchant
 ```
+
+{% include iterator.html next_href="other-features"
+                         next_title="Next: Other Features" 
+                         prev_href="redirect"
+                         prev_title="Back: Redirect" %}
+
+[callbackurl-reference]: #
+[direct-debit-payment-post-reversal]: #
+[direct-debit-technical-reference]: #
+[technical-reference-abort-payment]: #
+[technical-reference-callbackurl]: #
+[technical-reference-create-direct-debit]: #
+[technical-reference-expansion]: #
+[technical-reference-payeereference]: #
+[technical-reference-price-object]: #
+[technical-reference-transactions]: #
+[technical-reference]: #
+[user-agent]: https://en.wikipedia.org/wiki/User_agent

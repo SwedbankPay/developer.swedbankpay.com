@@ -57,11 +57,6 @@ The API requests are displayed in the [purchase flow](#purchase-flow).
 The options you can choose from when creating a payment with key operation set 
 to Value Purchase are listed below.
 
-### Options before posting a payment
-
-All valid options when posting a payment with operation equal to Purchase, 
-are described in [the technical reference][direct-debit-technical-reference].
-
 #### Type of authorization (Intent).
 
 **Sale**: A direct debit payment will always have intent: Sale, creating a 
@@ -127,15 +122,4 @@ Read how to implement _Direct Debit_ using Redirect next.
                          next_title="Next: Implement Redirect" %}
 
 
-[callbackurl-reference]: #
-[direct-debit-payment-post-reversal]: #
-[direct-debit-technical-reference]: #
-[technical-reference-abort-payment]: #
-[technical-reference-callbackurl]: #
-[technical-reference-create-direct-debit]: #
-[technical-reference-expansion]: #
-[technical-reference-payeereference]: #
-[technical-reference-price-object]: #
-[technical-reference-transactions]: #
-[technical-reference]: #
-[user-agent]: https://en.wikipedia.org/wiki/User_agent
+[callbackurl-reference]: /payments/direct-debit/other-features#callback
