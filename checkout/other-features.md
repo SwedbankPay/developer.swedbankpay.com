@@ -19,7 +19,9 @@ sidebar:
 {% include alert.html type="warning"
                       icon="warning"
                       header="Site under development"
-                      body="The Developer Portal is under construction and should not be used to integrate against Swedbank Pay's APIs yet." %}
+                      body="The Developer Portal is under construction and 
+                      should not be used to integrate against Swedbank Pay's 
+                      APIs yet." %}
 
 {% include jumbotron.html body="After a successful integration, it may be worth
 investigating which **other features** are available in Swedbank Pay Checkout.
@@ -595,7 +597,9 @@ following event argument object:
 
 ### `onPaymentCompleted`
 
-This event triggers when a payment has completed successfully. The `onPaymentCompleted` event is raised with the following event argument object:
+This event triggers when a payment has completed successfully.
+The `onPaymentCompleted` event is raised with the following event argument 
+object:
 
 {:.code-header}
 **`onPaymentCompleted` event object**
@@ -615,7 +619,9 @@ This event triggers when a payment has completed successfully. The `onPaymentCom
 
 ### `onPaymentCanceled`
 
-This event triggers when the user cancels the payment. The `onPaymentCanceled` event is raised with the following event argument object:
+This event triggers when the user cancels the payment. 
+The `onPaymentCanceled` event is raised with the following event argument 
+object:
 
 {:.code-header}
 **`onPaymentCanceled` event object**
@@ -703,7 +709,12 @@ object:
 
 ## Operations
 
-When a payment order resource is created and during its lifetime, it will have a set of operations that can be performed on it. The state of the payment order resource, what the access token is authorized to do, the chosen payment instrument and its transactional states, etc. determine the available operations before the initial purchase. A list of possible operations and their explanation is given below.
+When a payment order resource is created and during its lifetime, it will have 
+a set of operations that can be performed on it. 
+The state of the payment order resource, what the access token is authorized 
+to do, the chosen payment instrument and its transactional states, etc. 
+determine the available operations before the initial purchase. 
+A list of possible operations and their explanation is given below.
 
 {:.code-header}
 **Operations**
@@ -907,7 +918,8 @@ Content-Type: application/json
 ```
 
 The response given when changing a payment order is equivalent to a `GET`
-request towards the `paymentorders` resource, [as displayed above][payment-orders-resource].
+request towards the `paymentorders` resource, 
+[as displayed above][payment-orders-resource].
 Remember to call .refresh() on the Payment Menu in JavaScript
 
 ### Capture
@@ -995,7 +1007,8 @@ Content-Type: application/json
 ```
 
 The response given when aborting a payment order is equivalent to a `GET`
-request towards the `paymentorders` resource, [as displayed above][payment-orders],
+request towards the `paymentorders` resource, 
+[as displayed above][payment-orders],
 with its `state` set to `Aborted`.
 
 ### Cancel
@@ -1255,15 +1268,23 @@ authorization transaction made towards a payment, as previously described.
 
 ## Callback
 
-The Callback  functionality is similar for all payment methods.
-
 * Setting a `callbackUrl` in the HTTP `POST` API is optional, but highly
   recommended. If a payer closes the browser window, a network error or
-  something else happens that prevents the payer from being redirect from Swedbank Pay back to the merchant website, the callback is what ensures that you receive information about what happened with the payment.
-* When a change or update from the back-end system are made on a payment or transaction, Swedbank Pay will perform a callback to inform the payee (merchant) about this update.
-* Swedbank Pay will make an HTTP `POST` to the `callbackUrl` that was specified when the payee (merchant) created the payment.
-* When the `callbackUrl` receives such a callback, an HTTP `GET``` request must be made on the payment or on the transaction. The retrieved payment or transaction resource will give you the necessary information about the recent change/update.
-* The callback will be retried if it fails. Below are the retry timings, in milliseconds from the initial transaction time:
+  something else happens that prevents the payer from being redirect from 
+  Swedbank Pay back to the merchant website, the callback is what ensures that 
+  you receive information about what happened with the payment.
+* When a change or update from the back-end system are made on a payment or 
+  transaction, Swedbank Pay will perform a callback to inform the payee 
+  (merchant) about this update.
+* Swedbank Pay will make an HTTP `POST` to the `callbackUrl` that was 
+  specified when the payee (merchant) created the payment.
+* When the `callbackUrl` receives such a callback, an HTTP `GET` request must 
+  be made on the payment or on the transaction. 
+  The retrieved payment or transaction resource will give you the necessary 
+  information about the recent change/update.
+* The callback will be retried if it fails. 
+  Below are the retry timings, in milliseconds from the initial 
+  transaction time:
   * 30000 ms
   * 60000 ms
   * 360000 ms
@@ -1309,11 +1330,13 @@ The Callback  functionality is similar for all payment methods.
 ```
 
 {:.table .table-striped}
-| Parameter| Description
-| `Payment Instrument` | `CreditCard`, `Invoice`, `Swish`, `Vipps`, `DirectDebit`, `MobilePay`
-| `Transaction Type` | `Authorization`, `Capture`, `Cancellation`, `Reversal`
+| Parameter            | Description                                                           |
+| :------------------- | :-------------------------------------------------------------------- |
+| `Payment Instrument` | `CreditCard`, `Invoice`, `Swish`, `Vipps`, `DirectDebit`, `MobilePay` |
+| `Transaction Type`   | `Authorization`, `Capture`, `Cancellation`, `Reversal`                |
 
-The sequence diagram below shows the HTTP ``POST` you will receive from PayEx, and the two `GET` requests that you make to get the updated status.
+The sequence diagram below shows the HTTP `POST` you will receive from PayEx, 
+and the two `GET` requests that you make to get the updated status.
 
 ```mermaid
 sequenceDiagram
@@ -1338,7 +1361,12 @@ sequenceDiagram
 
 ## Problems
 
-When performing operations against the API, it will respond with a problem message that contain details of the error type if the request could not be successfully performed. Regardless of why the error occurred, the problem message will follow the same structure as specified in the [Problem Details for HTTP APIs][http-api-problems]] specification.
+When performing operations against the API, it will respond with a problem 
+message that contain details of the error type if the request could not be 
+successfully performed. 
+Regardless of why the error occurred, the problem message will follow the same 
+structure as specified in the 
+[Problem Details for HTTP APIs][http-api-problems]] specification.
 
 The structure of a problem message will look like this:
 
@@ -1372,7 +1400,10 @@ The structure of a problem message will look like this:
 
 ### Common Problems
 
-All common problem types will have a URI in the format `https://api.payex.com/psp/<error-type>`. The **URI is an identifier** and is currently not possible to dereference, although that might be possible in the future.
+All common problem types will have a URI in the format
+`https://api.payex.com/psp/<error-type>`. 
+The **URI is an identifier** and is currently not possible to dereference, 
+although that might be possible in the future.
 
 {:.table .table-striped}
 | Type                 | Status | Description                                                                                                                                        |
@@ -1383,14 +1414,6 @@ All common problem types will have a URI in the format `https://api.payex.com/ps
 | `systemerror`        | `500`  | A generic error message.                                                                                                                           |
 | `configurationerror` | `500`  | A error relating to configuration issues.                                                                                                          |
 
-### Payment Instrument Specific Problems
-
-Problem types for a specific payment instrument will have a URI in the format `https://api.payex.com/psp/<payment-instrument>/<error-type>`. You can read more about the payment instrument specific problem messages below:
-
-* [Card Payments][card-payments-problems]
-* [Invoice][invoice-payments-problems]
-* [Swish][swish-payments-problems]
-* [Vipps][vipps-payments-problems]
 
 {% include expand-parameter.md %}
 
