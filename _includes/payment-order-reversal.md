@@ -22,9 +22,9 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| ✔︎︎︎︎︎ | Property                 | Type         | Description                   |
-|:-:|:--------------------------|:-------------|:------------------------------|
-| ✔︎︎︎︎︎ | `transaction`            | `object`     | The transaction object.        |
+| ✔︎︎︎︎︎ | Property                 | Type         | Description                                                                                                                                                                              |
+| :----: | :----------------------- | :----------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ✔︎︎︎︎︎ | `transaction`            | `object`     | The transaction object.                                                                                                                                                                  |
 | ✔︎︎︎︎︎ | └➔&nbsp;`amount`         | `integer`    | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.                                                        |
 | ✔︎︎︎︎︎ | └➔&nbsp;`vatAmount`      | `integer`    | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.                                                               |
 | ✔︎︎︎︎︎ | └➔&nbsp;`payeeReference` | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details. |
@@ -47,8 +47,8 @@ Content-Type: application/json
             "id": "/psp/creditcard/payments/d34bceb7-2b19-488a-cbf2-08d5df73b251/transactions/af43be30-8dfa-4458-2222-08d5df73b9f1",
             "type": "Reversal",
             "state": "Completed",
-            "amount": 5610,
-            "vatAmount": 1122,
+            "amount": 15610,
+            "vatAmount": 3122,
             "description": "Reversing the capture amount",
             "payeeReference": "ABC987",
         }
@@ -57,8 +57,8 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property                  | Type      | Description                          |
-|:--------------------------|:----------|:-------------------------------------|
+| Property                  | Type      | Description                                                                                                                                                                                                  |
+| :------------------------ | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `payment`                 | `string`  | The relative URI of the payment this reversal transaction belongs to.                                                                                                                                        |
 | `reversals`               | `object`  | The reversal object, containing information about the reversal transaction.                                                                                                                                  |
 | └➔&nbsp;`id`              | `string`  | The relative URI of the reversal transaction.                                                                                                                                                                |
