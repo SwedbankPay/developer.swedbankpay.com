@@ -133,65 +133,6 @@ to place the embedded iFrames into,
 while the JavaScript handles the fetching and placement into those containers.
 
 {:.code-header}
-**JavaScript(ESNext)**
-
-```JS
-window.onload = async function () {
-    try {
-        // Using the Fetch API to contact your backend.
-        // Replace the 'https://your/endpoint/here' with your API endpoint.
-        const request = await fetch('https://your/endpoint/here', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                // In this example we'll send in all of the information mentioned
-                // before in the request to the endpoint.
-                operation: 'initiate-consumer-session',
-                msisdn: '+46739000001',
-                email: 'leia.ahlstrom@example.com',
-                consumerCountryCode: 'SE',
-                nationalIdentifer: {
-                    socialSecurityNumber: '199710202392',
-                    countryCode: "SE"
-                }
-            })
-        });
-        // We assume that the response we get back from the backend is
-        // exactly the server provides
-        const response = await request.json();
-        const script = document.createElement('script');
-        const operation = response.operations.find(function(o) {
-            return o.rel === 'view-consumer-identification';
-        });
-        script.setAttribute('src', operation.href);
-        script.onload = function() {
-            payex.hostedView.consumer({
-                // The container specifies which id the script will look for
-                // to host the checkin component
-                container: "checkin",
-                onConsumerIdentified: function (consumerIdentifiedEvent) {
-                    // consumerIdentifiedEvent.consumerProfileRef contains the reference
-                    // to the identified consumer which we need to pass on to the
-                    // Payment Order to initialize a personalized Payment Menu.
-                    console.log(consumerIdentifiedEvent);
-                },
-                onShippingDetailsAvailable: function (shippingDetailsAvailableEvent) {
-                    console.log(shippingDetailsAvailableEvent);
-                }
-            }).open();
-        };
-        // Appending the script to the head
-        const head = document.getElementsByTagName('head')[0];
-        head.appendChild(script);
-    } catch (error) {
-        console.error(error);
-    }
-};
-```
-
-{:.code-header}
 **JavaScript**
 
 ```JS
