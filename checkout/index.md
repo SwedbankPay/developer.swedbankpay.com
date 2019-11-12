@@ -40,7 +40,7 @@ To start integrating Swedbank Pay Checkout, you need the following:
 * Agreement that includes Swedbank Pay Checkout
 * Obtained credentials (merchant Access Token) from Swedbank Pay through
   Swedbank Pay Admin. Please observe that Swedbank Pay Checkout encompass
-  both the **`consumer`** and **`paymentmenu`** scope.
+  both the **`consumer`** and **`paymentmenu`** scope
 
 ## Introduction
 
@@ -73,7 +73,7 @@ sequenceDiagram
             Payer ->> SwedbankPay: Show Consumer UI page in iframe
             activate SwedbankPay
                 SwedbankPay ->> Payer: Consumer identification process
-                SwedbankPay -->> Payer: show consumer completed iframe
+                SwedbankPay -->> Payer: Show Consumer completed iframe
             deactivate SwedbankPay
             Payer ->> Payer: onConsumerIdentified (consumerProfileRef)
         end
@@ -91,11 +91,11 @@ sequenceDiagram
             Payer ->> Payer: Initiate Payment Menu Hosted View (open iframe)
             SwedbankPay -->> Payer: Show Payment UI page in iframe
             activate SwedbankPay
-                Payer ->> SwedbankPay: Pay
+                Payer ->> SwedbankPay: Authorize Payment
                 opt consumer perform payment out of iframe
                     SwedbankPay ->> Merchant: POST Payment Callback
                     SwedbankPay -->> Payer: Redirect to Payment URL
-                    Payer ->> Merchant: Prepare payment Menu
+                    Payer ->> Merchant: Prepare Payment Menu
                     Payer ->> Payer: Initiate Payment Menu Hosted View (open iframe)
                     Payer ->> SwedbankPay: Show Payment UI page in iframe
                     SwedbankPay -->> Payer: Payment status
@@ -107,7 +107,7 @@ sequenceDiagram
                         deactivate SwedbankPay
                     deactivate Merchant
                 end
-                opt consumer performes payment within iframe
+                opt consumer perform payment within iframe
                     SwedbankPay ->> Merchant: POST Payment Callback
                     SwedbankPay -->> Payer: Payment status
                     Payer ->> Merchant: Redirect to Payment Complete URL
@@ -133,7 +133,7 @@ sequenceDiagram
             activate SwedbankPay
                 SwedbankPay -->> Merchant: Capture status
             deactivate SwedbankPay
-            note right of Merchant: Capture here only if the purchased goods don't require shipping. If shipping is required, perform capture after the goods have shipped.
+            note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.
         deactivate Merchant
     end
 ```
