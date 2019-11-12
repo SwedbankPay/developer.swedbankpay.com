@@ -10,8 +10,6 @@ sidebar:
       title: Redirect
     - url: /payments/direct-debit/seamless-view
       title: Seamless View
-    - url: /payments/direct-debit/after-payment
-      title: After Payments
     - url: /payments/direct-debit/other-features
       title: Other Features
 ---
