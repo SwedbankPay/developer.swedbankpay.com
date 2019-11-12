@@ -25,6 +25,16 @@ sidebar:
 
 {% include payment-link.md %}
 
+{% include transactions-reference.md %}
+
+{% include abort-reference.md %}
+
+{% include expand-parameter.md %}
+
+{% include payeeinfo.md %}
+
+{% include prices.md %}
+
 {% include iterator.html 
                          prev_href="other-features"
                          prev_title="Back: Other Features" %}

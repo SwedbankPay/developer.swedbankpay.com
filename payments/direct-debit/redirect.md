@@ -442,15 +442,10 @@ sequenceDiagram
                          prev_href="index"
                          prev_title="Back: Introduction" %}
 
-[callbackurl-reference]: #
-[direct-debit-payment-post-reversal]: #
-[direct-debit-technical-reference]: #
-[technical-reference-abort-payment]: #
-[technical-reference-callbackurl]: #
-[technical-reference-create-direct-debit]: #
-[technical-reference-expansion]: #
-[technical-reference-payeereference]: #
-[technical-reference-price-object]: #
-[technical-reference-transactions]: #
-[technical-reference]: #
+[technical-reference-abort-payment]: /payments/direct-debit/other-features#abort-payment
+[technical-reference-callbackurl]: /payments/direct-debit/other-features#callback
+[technical-reference-expansion]: /payments/direct-debit/other-features#expansion
+[technical-reference-payeereference]: /payments/direct-debit/other-features#payeereference
+[technical-reference-price-object]: /payments/direct-debit/other-features#prices-object-types
+[technical-reference-transactions]: /payments/direct-debit/other-features#transactions
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
