@@ -118,34 +118,81 @@ operation is meant to be embedded in a `<script>` element in an HTML document.
 <html>
     <head>
         <title>Swedbank Pay Checkout is Awesome!</title>
+        <!-- Here you can specify your own javascript file -->
+        <script src=<YourJavaScriptFileHere></script>
     </head>
     <body>
         <div id="checkin"></div>
         <div id="payment-menu"></div>
-        <script src="https://ecom.externalintegration.payex.com/consumers/core/scripts/client/px.consumer.client.js?token=7e380fbb3196ea76cc45814c1d99d59b66db918ce2131b61f585645eff364871"></script>
-        <script language="javascript">
+    </body>
+</html>
+```
+
+In the HTML, you only need to add two `<div>` elements to place the
+check-in and payment menu inside of. The JavaScript will handle getting the
+iFrames to handle the check-in and payment.
+
+{:.code-header}
+**JavaScript**
+
+```JS
+window.onload = function () {
+    var request = new XMLHttpRequest();
+    request.addEventListener('load', function () {
+        // We will assume that our own backend returns the
+        // exact same as what SwedbankPay returns.
+        response = JSON.parse(this.responseText);
+        var script = document.createElement('script');
+        // This assumes that the operations from the response of the POST from the
+        // payment order is returned verbatim from the server to the Ajax:
+        var operation = response.operations.find(function (o) {
+            return o.rel === 'view-consumer-identification';
+        });
+        script.setAttribute('src', operation.href);
+        script.onload = function () {
             payex.hostedView.consumer({
                 // The container specifies which id the script will look for
                 // to host the checkin component
                 container: "checkin",
-                onConsumerIdentified: function(consumerIdentifiedEvent) {
+                onConsumerIdentified: function onConsumerIdentified(consumerIdentifiedEvent) {
                     // consumerIdentifiedEvent.consumerProfileRef contains the reference
                     // to the identified consumer which we need to pass on to the
                     // Payment Order to initialize a personalized Payment Menu.
                     console.log(consumerIdentifiedEvent);
                 },
-                onShippingDetailsAvailable: function(shippingDetailsAvailableEvent) {
+                onShippingDetailsAvailable: function onShippingDetailsAvailable(shippingDetailsAvailableEvent) {
                     console.log(shippingDetailsAvailableEvent);
                 }
             }).open();
-        </script>
-    </body>
-</html>
+        };
+        // Appending the script to the head
+        var head = document.getElementsByTagName('head')[0];
+        head.appendChild(script);
+    });
+    // Place in your own API endpoint here.
+    request.open('POST', <Your-Endpoint-Here>, true);
+    request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+    // In this example we'll send in all of the information mentioned
+    // before in the request to the endpoint.
+    request.send(JSON.stringify({
+        operation: 'initiate-consumer-session',
+        msisdn: '+46739000001',
+        email: 'leia.ahlstrom@example.com',
+        consumerCountryCode: 'SE',
+        nationalIdentifer: {
+            socialSecurityNumber: '199710202392',
+            countryCode: "SE"
+        }
+    }));
+};
 ```
 
-Note that the `<script>` element is added after the `<div>` container the
-Checkin will be hosted in. When this is set up, something along the
-following should appear:
+Note that we attach the `<script>` element to the head,
+but use `window.onload` to ensure everything has loaded in properly
+before accessing the page.
+With the scripts loading in after the entire page is loaded, we can access the
+`<div>` container that the Checkin will be hosted in.
+With this setup, after the page loads the following should appear:
 
 {:.text-center}
 ![Consumer UI][checkin-image]{:width="564" height="293"}
@@ -390,37 +437,45 @@ cause a page reload and do this with static HTML or you can avoid the page
 refresh by invoking the POST to create the payment order through Ajax and then
 create the script element with JavaScript, all inside the event handler for
 [`onConsumerIdentified`][technical-reference-onconsumer-identified].
+The HTML code will be unchanged in this example.
 
 {:.code-header}
-**HTML**
+**JavaScript**
 
-```html
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Swedbank Pay Checkout is Awesome!</title>
-    </head>
-    <body>
-        <div id="checkin"></div>
-        <div id="payment-menu"></div>
-        <script src="https://ecom.externalintegration.payex.com/consumers/core/scripts/client/px.consumer.client.js?token=7e380fbb3196ea76cc45814c1d99d59b66db918ce2131b61f585645eff364871"></script>
-        <script language="javascript">
-                payex.hostedView.consumer({
-                    container: 'checkin',
-                    culture: 'nb-NO',
-                    onConsumerIdentified: function(consumerIdentifiedEvent) {
-                        // When the consumer is identified, we need to perform an AJAX request
-                        // to our server to forward the consumerProfileRef in a server-to-server
-                        // POST request to the Payment Orders resource in order to initialize
-                        // the Payment Menu.
-                        var request = new XMLHttpRequest();
+```JS
+window.onload = function () {
+    var request = new XMLHttpRequest();
+    request.addEventListener('load', function () {
+        // We will assume that our own backend returns the
+        // exact same as what SwedbankPay returns.
+        response = JSON.parse(this.responseText);
+
+        var script = document.createElement('script');
+        // This assumes the operations from the response of the POST of the
+        // payment order is returned verbatim from the server to the Ajax:
+        var operation = response.operations.find(function (o) {
+            return o.rel === 'view-consumer-identification';
+        });
+        script.setAttribute('src', operation.href);
+        script.onload = function () {
+            payex.hostedView.consumer({
+                // The container specifies which id the script will look for
+                // to host the checkin component
+                container: "checkin",
+                onConsumerIdentified: function onConsumerIdentified(consumerIdentifiedEvent) {
+                    // When the consumer is identified, we need to perform an AJAX request
+                    // to our server to forward the consumerProfileRef in a server-to-server
+                    // POST request to the Payment Orders resource in order to initialize
+                    // the Payment Menu.
+                    var request = new XMLHttpRequest();
                         request.addEventListener('load', function() {
                             response = JSON.parse(this.responseText);
-
+                            // This is identical to how we get the 'view-consumer-identification'
+                            // script from the check-in.
                             var script = document.createElement('script');
-                            // This assumses the operations from the response of the POST of the
-                            // payment order is returned verbatim from the server to the Ajax:
-                            var operation = response.operations.find(function(o) { o.rel === 'view-paymentorder' });
+                            var operation = response.operations.find(function(o) {
+                                return o.rel === 'view-paymentorder';
+                            });
                             script.setAttribute('src', operation.href);
                             script.onload = function() {
                                 // When the 'view-paymentorder' script is loaded, we can initialize the
@@ -434,18 +489,38 @@ create the script element with JavaScript, all inside the event handler for
                             var head = document.getElementsByTagName('head')[0];
                             head.appendChild(script);
                         });
-                        // This example just performs the POST request of the Consumer Identified
-                        // Event Argument to the same URL as the current one.
-                        request.open('POST', window.location.href, true);
+                        // Like before, you should replace the address here with
+                        // your own endpoint.
+                        request.open('POST', , true);
                         request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
                         // In this example, we send the entire Consumer Identified Event Argument
                         // Object as JSON to the server, as it contains the consumerProfileRef.
                         request.send(JSON.stringify(consumerIdentifiedEvent));
-                    }
-                }).open();
-        </script>
-    </body>
-</html>
+                },
+                onShippingDetailsAvailable: function onShippingDetailsAvailable(shippingDetailsAvailableEvent) {
+                    console.log(shippingDetailsAvailableEvent);
+                }
+            }).open();
+        };
+        // Appending the script to the head
+        var head = document.getElementsByTagName('head')[0];
+        head.appendChild(script);
+    });
+    // Place in your own API endpoint here.
+    request.open('POST', <Your-Endpoint-Here>, true);
+    request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+    // We send in the previously mentioned request here to the checkin endpoint.
+    request.send(JSON.stringify({
+        operation: 'initiate-consumer-session',
+        msisdn: '+46739000001',
+        email: 'leia.ahlstrom@example.com',
+        consumerCountryCode: 'SE',
+        nationalIdentifer: {
+            socialSecurityNumber: '199710202392',
+            countryCode: "SE"
+        }
+    }));
+};
 ```
 
 This should bring up the Payment Menu in a hosted view, looking something like this:
