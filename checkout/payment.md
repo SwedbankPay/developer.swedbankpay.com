@@ -118,7 +118,7 @@ operation is meant to be embedded in a `<script>` element in an HTML document.
     <head>
         <title>Swedbank Pay Checkout is Awesome!</title>
         <!-- Here you can specify your own javascript file -->
-        <script src="app.js"></script>
+        <script src={YourJavaScriptFileHere}></script>
     </head>
     <body>
         <div id="checkin"></div>
@@ -166,8 +166,8 @@ window.onload = function () {
         var head = document.getElementsByTagName('head')[0];
         head.appendChild(script);
     });
-    // Replace the 'https://your/endpoint/here' with your API endpoint.
-    request.open('POST', 'https://your/endpoint/here', true);
+    // Place in your own API endpoint here.
+    request.open('POST', {Your-Endpoint-Here}, true);
     request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
     // In this example we'll send in all of the information mentioned
     // before in the request to the endpoint.
