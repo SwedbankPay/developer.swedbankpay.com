@@ -384,7 +384,7 @@ All common problem types will have a URI in the format [https://api.payex.com/ps
 
 ### Payment Instrument Specific Problems 
 
-Problem types for a specific payment instrument will have a URI in the format ##https://api.payex.com/psp/<payment-instrument>/<error-type>##. You can read more about the payment instrument specific problem messages below:
+Problem types for a specific payment instrument will have a URI in the format `https://api.payex.com/psp/<payment-instrument>/<error-type>`. You can read more about the payment instrument specific problem messages below:
 
 * [**Card Payments**][card-payment]
 * [**Invoice**][invoice]
