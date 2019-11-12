@@ -24,8 +24,8 @@ Content-Type: application/json
 {
   "transaction": {
     "description": "Capturing the authorized payment",
-    "amount": 15610,
-    "vatAmount": 3122,
+    "amount": 1500,
+    "vatAmount": 375,
     "payeeReference": "AB832"
     "orderItems": [
         {
