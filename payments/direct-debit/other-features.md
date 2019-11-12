@@ -8,8 +8,8 @@ sidebar:
       title: Introduction
     - url: /payments/direct-debit/redirect
       title: Redirect
-    - url: /payments/direct-debit/seamless-view
-      title: Seamless View
+    - url: /payments/direct-debit/after-payment
+      title: After Payment
     - url: /payments/direct-debit/other-features
       title: Other Features
 ---
