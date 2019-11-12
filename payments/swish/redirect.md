@@ -156,7 +156,7 @@ sequenceDiagram
   Deactivate Merchant
 ```
 
-[swish-redirect-image]: /assets/screenshots/swish/redirect/view/windows-small-window.png
+[swish-redirect-image]: /assets/screenshots/swish/redirect-view/view/windows-small-window.png
 [callback-url]: /payments/swish/other-fetures#callback
 [hosted-view]: /payments/swish/seamless-view
 [payex-admin-portal]: https://admin.payex.com/psp/login/
