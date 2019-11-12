@@ -183,4 +183,4 @@ The content of the files depends on the type of agreement you have made with Pay
 [attachement-5]: /assets/documents/R1234-0001 eget konto.pdf
 [attachement-6]: /assets/documents/R1234-0001 eget konto.pdf
 [attachement-7]: /assets/documents/Testredovisning Eget konto.xml
-[omni-client-email]: mailto:omni.client@payex.com
+[omni-client-email]: mailto:omni.client@swedbankpay.se

@@ -94,6 +94,7 @@ operation.
 If you want to enable subsequent recurring – server-to-server – payments for
 credit card, you need to create a recurrence token. This token will be utilized
 after the initial payment order.
+**This requires that you have activated this on your merchant account.**
 
 **Recurrence Token**
 
@@ -207,6 +208,10 @@ setting the `disablePaymentMenu` property to `true`. The default value is
 
 Setting `disablePaymentMenu` property to `true` removes all other payment
 instruments but the one that is available.
+This feature is only valuable to set to `true` if you have only one payment
+instrument available. By setting it to `true` will remove the frame around the
+menu and show only the instrument.
+
 
 {:.code-header}
 **Request**
@@ -667,10 +672,10 @@ argument object:
 ```
 
 {:.table .table-striped}
-| Property  | Type     | Description                                                                      |
-| :-------- | :------- | :------------------------------------------------------------------------------- |
+| Property  | Type     | Description                                                                             |
+| :-------- | :------- | :-------------------------------------------------------------------------------------- |
 | `origin`  | `string` | `owner`, `merchant`. The value is always `merchant` unless Swedbank Pay hosts the view. |
-| `openUrl` | `string` | The URI containing Terms of Service and conditions.                              |
+| `openUrl` | `string` | The URI containing Terms of Service and conditions.                                     |
 
 ### `onError`
 
@@ -756,12 +761,12 @@ When a payment order resource is created and during its lifetime, it will have a
 ```
 
 {:.table .table-striped}
-| Property      | Type     | Description                                       |
-|:--------------|:---------|:--------------------------------------------------|
-| `href`        | `string` | The target URI to perform the operation against.
-| `rel`         | `string` | The name of the relation the operation has to the current resource.
-| `method`      | `string` | `GET`, `PATCH`, `POST`, etc. The HTTP method to use when performing the operation.
-| `contentType` | `string` | The HTTP content type of the resource referenced in the `href` property.
+| Property      | Type     | Description                                                                        |
+| :------------ | :------- | :--------------------------------------------------------------------------------- |
+| `href`        | `string` | The target URI to perform the operation against.                                   |
+| `rel`         | `string` | The name of the relation the operation has to the current resource.                |
+| `method`      | `string` | `GET`, `PATCH`, `POST`, etc. The HTTP method to use when performing the operation. |
+| `contentType` | `string` | The HTTP content type of the resource referenced in the `href` property.           |
 
 The operations should be performed as described in each response and not as
 described here in the documentation. Always use the `href` and `method` as
@@ -771,15 +776,15 @@ of the `rel` and the request that will be sent in the HTTP body of the request
 for the given operation.
 
 {:.table .table-striped}
-| Operation                          | Description                             |
-|:-----------------------------------|:----------------------------------------|
-| `update-paymentorder-abort`        | [Aborts][abort] the payment order before any financial transactions are performed.
-| `update-paymentorder-updateorder`  | [Updates the order][update-order] with a change in the `amount` and/or `vatAmount`.
-| `redirect-paymentorder`            | Contains the URI that is used to redirect the consumer to the Swedbank Pay Payment Pages containing the Payment Menu.
-| `view-paymentorder`                | Contains the JavaScript `href` that is used to embed the Payment Menu UI directly on the webshop/merchant site.
-| `create-paymentorder-capture`      | The second part of a two-phase transaction where the authorized amount is sent from the payer to the payee. It is possible to do a part-capture on a subset of the authorized amount. Several captures on the same payment are possible, up to the total authorization amount.
-| `create-paymentorder-cancellation` | Used to cancel authorized and not yet captured transactions. If a cancellation is performed after doing a part-capture, it will only affect the not yet captured authorization amount.
-| `create-paymentorder-reversal`     | Used to reverse a payment. It is only possible to reverse a payment that has been captured and not yet reversed.
+| Operation                          | Description                                                                                                                                                                                                                                                                    |
+| :--------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `update-paymentorder-abort`        | [Aborts][abort] the payment order before any financial transactions are performed.                                                                                                                                                                                             |
+| `update-paymentorder-updateorder`  | [Updates the order][update-order] with a change in the `amount` and/or `vatAmount`.                                                                                                                                                                                            |
+| `redirect-paymentorder`            | Contains the URI that is used to redirect the consumer to the Swedbank Pay Payment Pages containing the Payment Menu.                                                                                                                                                          |
+| `view-paymentorder`                | Contains the JavaScript `href` that is used to embed the Payment Menu UI directly on the webshop/merchant site.                                                                                                                                                                |
+| `create-paymentorder-capture`      | The second part of a two-phase transaction where the authorized amount is sent from the payer to the payee. It is possible to do a part-capture on a subset of the authorized amount. Several captures on the same payment are possible, up to the total authorization amount. |
+| `create-paymentorder-cancellation` | Used to cancel authorized and not yet captured transactions. If a cancellation is performed after doing a part-capture, it will only affect the not yet captured authorization amount.                                                                                         |
+| `create-paymentorder-reversal`     | Used to reverse a payment. It is only possible to reverse a payment that has been captured and not yet reversed.                                                                                                                                                               |
 
 ### View Payment Order
 
@@ -1003,9 +1008,6 @@ with its `state` set to `Aborted`.
 
 {% include settlement-reconciliation.md %}
 
-{% include payment-link.md %}
-
-{% include one-click-payments.md %}
 
 ### Authorizations
 
@@ -1093,13 +1095,13 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property                                 | Type     | Description            |
-|:-----------------------------------------|:---------|:-----------------------|
-| `payment`                     | `string` | The relative URI of the payment this authorization transactions resource belongs to.
-| `authorizations`              | `object` | The authorizations object.
-| └➔&nbsp;`id`                  | `string` | The relative URI of the current authorization transactions resource.
-| └➔&nbsp;`authorizationList`   | `array`  | The array of authorization transaction objects.
-| └➔&nbsp;`authorizationList[]` | `object` | The authorization transaction object described in the `authorization` resource below.
+| Property                      | Type     | Description                                                                           |
+| :---------------------------- | :------- | :------------------------------------------------------------------------------------ |
+| `payment`                     | `string` | The relative URI of the payment this authorization transactions resource belongs to.  |
+| `authorizations`              | `object` | The authorizations object.                                                            |
+| └➔&nbsp;`id`                  | `string` | The relative URI of the current authorization transactions resource.                  |
+| └➔&nbsp;`authorizationList`   | `array`  | The array of authorization transaction objects.                                       |
+| └➔&nbsp;`authorizationList[]` | `object` | The authorization transaction object described in the `authorization` resource below. |
 
 {:.code-header}
 **Request**
@@ -1177,27 +1179,27 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property                                  | Type     | Description           |
-|:------------------------------------------|:---------|:----------------------|
-| `payment`                                 | `string` | The relative URI of the payment this authorization transaction resource belongs to.
-| `authorization`                           | `object` | The authorization object.
-| └➔&nbsp;`id`                              | `string` | The relative URI of the current authorization transaction resource.
-| └➔&nbsp;`paymentToken`                    | `string` | The payment token created for the card used in the authorization.
-| └➔&nbsp;`recurrenceToken`                 | `string` | The recurrence token created for the card used in the authorization.
-| └➔&nbsp;`maskedPan`                       | `string` | The masked PAN number of the card.
-| └➔&nbsp;`expireDate`                      | `string` | The month and year of when the card expires.
-| └➔&nbsp;`panToken`                        | `string` | The token representing the specific PAN of the card.
-| └➔&nbsp;`cardBrand`                       | `string` | `Visa`, `MC`, etc. The brand of the card.
-| └➔&nbsp;`cardType`                        | `string` | `Credit Card` or `Debit Card`. Indicates the type of card used for the authorization.
-| └➔&nbsp;`issuingBank`                     | `string` | The name of the bank that issued the card used for the authorization.
-| └➔&nbsp;`countryCode`                     | `string` | The country the card is issued in.
-| └➔&nbsp;`acquirerTransactionType`         | `string` | `3DSECURE` or `SSL`. Indicates the transaction type of the acquirer.
-| └➔&nbsp;`acquirerStan`                    | `string` | The System Trace Audit Number assigned by the acquirer to uniquely identify the transaction.
-| └➔&nbsp;`acquirerTerminalId`              | `string` | The ID of the acquirer terminal.
-| └➔&nbsp;`acquirerTransactionTime`         | `string` | The ISO-8601 date and time of the acquirer transaction.
-| └➔&nbsp;`issuerAuthorizationApprovalCode` | `string` | The issuer's six-digit code used to identify the approval for a specific authorization request.
-| └➔&nbsp;`authenticationStatus`            | `string` | `Y`, `A`, `U` or `N`. Indicates the status of the authentication.
-| └➔&nbsp;`transaction`                     | `object` | The object representation of the generic [`transaction` resource][transaction].
+| Property                                  | Type     | Description                                                                                     |
+| :---------------------------------------- | :------- | :---------------------------------------------------------------------------------------------- |
+| `payment`                                 | `string` | The relative URI of the payment this authorization transaction resource belongs to.             |
+| `authorization`                           | `object` | The authorization object.                                                                       |
+| └➔&nbsp;`id`                              | `string` | The relative URI of the current authorization transaction resource.                             |
+| └➔&nbsp;`paymentToken`                    | `string` | The payment token created for the card used in the authorization.                               |
+| └➔&nbsp;`recurrenceToken`                 | `string` | The recurrence token created for the card used in the authorization.                            |
+| └➔&nbsp;`maskedPan`                       | `string` | The masked PAN number of the card.                                                              |
+| └➔&nbsp;`expireDate`                      | `string` | The month and year of when the card expires.                                                    |
+| └➔&nbsp;`panToken`                        | `string` | The token representing the specific PAN of the card.                                            |
+| └➔&nbsp;`cardBrand`                       | `string` | `Visa`, `MC`, etc. The brand of the card.                                                       |
+| └➔&nbsp;`cardType`                        | `string` | `Credit Card` or `Debit Card`. Indicates the type of card used for the authorization.           |
+| └➔&nbsp;`issuingBank`                     | `string` | The name of the bank that issued the card used for the authorization.                           |
+| └➔&nbsp;`countryCode`                     | `string` | The country the card is issued in.                                                              |
+| └➔&nbsp;`acquirerTransactionType`         | `string` | `3DSECURE` or `SSL`. Indicates the transaction type of the acquirer.                            |
+| └➔&nbsp;`acquirerStan`                    | `string` | The System Trace Audit Number assigned by the acquirer to uniquely identify the transaction.    |
+| └➔&nbsp;`acquirerTerminalId`              | `string` | The ID of the acquirer terminal.                                                                |
+| └➔&nbsp;`acquirerTransactionTime`         | `string` | The ISO-8601 date and time of the acquirer transaction.                                         |
+| └➔&nbsp;`issuerAuthorizationApprovalCode` | `string` | The issuer's six-digit code used to identify the approval for a specific authorization request. |
+| └➔&nbsp;`authenticationStatus`            | `string` | `Y`, `A`, `U` or `N`. Indicates the status of the authentication.                               |
+| └➔&nbsp;`transaction`                     | `object` | The object representation of the generic [`transaction` resource][transaction].                 |
 
 #### Create authorization transaction
 
@@ -1230,13 +1232,13 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| ✔︎︎︎︎︎ | Property                  | Type        | Description                   |
-|:-:|:--------------------------|:-------------|:------------------------------|
-| ✔︎︎︎︎︎ | `transaction.cardNumber` | `string` | Primary Account Number (PAN) of the card, printed on the face of the card.
-| ✔︎︎︎︎︎ | `transaction.cardExpiryMonth` | `integer` | Expiry month of the card, printed on the face of the card.
-| ✔︎︎︎︎︎ | `transaction.cardExpiryYear` | `integer` | Expiry year of the card, printed on the face of the card.
-|   | `transaction.cardVerificationCode` | `string` |Card verification code (CVC/CVV/CVC2), usually printed on the back of the card.
-|   | `transaction.cardholderName` | `string` | Name of the card holder, usually printed on the face of the card.
+| ✔︎︎︎︎︎ | Property                           | Type      | Description                                                                     |
+| :----: | :--------------------------------- | :-------- | :------------------------------------------------------------------------------ |
+| ✔︎︎︎︎︎ | `transaction.cardNumber`           | `string`  | Primary Account Number (PAN) of the card, printed on the face of the card.      |
+| ✔︎︎︎︎︎ | `transaction.cardExpiryMonth`      | `integer` | Expiry month of the card, printed on the face of the card.                      |
+| ✔︎︎︎︎︎ | `transaction.cardExpiryYear`       | `integer` | Expiry year of the card, printed on the face of the card.                       |
+|        | `transaction.cardVerificationCode` | `string`  | Card verification code (CVC/CVV/CVC2), usually printed on the back of the card. |
+|        | `transaction.cardholderName`       | `string`  | Name of the card holder, usually printed on the face of the card.               |
 
 **Response**
 
@@ -1356,30 +1358,30 @@ The structure of a problem message will look like this:
 ```
 
 {:.table .table-striped}
-| Property | Type | Description
-|:--------------------------|:-------------|:------------------------------|
-| `type` | `string` | The URI that identifies the error type. This is the **only property usable for programmatic identification** of the type of error! When dereferenced, it might lead you to a human readable description of the error and how it can be recovered from.
-| `title` | `string` | The title contains a human readable description of the error.
-| `detail` | `string` | A detailed, human readable description of the error.
-| `instance` | `string` | The identifier of the error instance. This might be of use to Swedbank Pay support personnel in order to find the exact error and the context it occurred in.
-| `status` | `integer` | The HTTP status code that the problem was served with.
-| `action` | `string` | The `action` indicates how the error can be recovered from.
-| `problems` | `array` | The array of problem detail objects.
-| └➔&nbsp;`[].name` | `string` | The name of the property, header, object, entity or likewise that was erroneous.
-| └➔&nbsp;`[].description` | `string` | The description of what was wrong with the property, header, object, entity or likewise identified by `name`.
+| Property                 | Type      | Description                                                                                                                                                                                                                                            |
+| :----------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `type`                   | `string`  | The URI that identifies the error type. This is the **only property usable for programmatic identification** of the type of error! When dereferenced, it might lead you to a human readable description of the error and how it can be recovered from. |
+| `title`                  | `string`  | The title contains a human readable description of the error.                                                                                                                                                                                          |
+| `detail`                 | `string`  | A detailed, human readable description of the error.                                                                                                                                                                                                   |
+| `instance`               | `string`  | The identifier of the error instance. This might be of use to Swedbank Pay support personnel in order to find the exact error and the context it occurred in.                                                                                          |
+| `status`                 | `integer` | The HTTP status code that the problem was served with.                                                                                                                                                                                                 |
+| `action`                 | `string`  | The `action` indicates how the error can be recovered from.                                                                                                                                                                                            |
+| `problems`               | `array`   | The array of problem detail objects.                                                                                                                                                                                                                   |
+| └➔&nbsp;`[].name`        | `string`  | The name of the property, header, object, entity or likewise that was erroneous.                                                                                                                                                                       |
+| └➔&nbsp;`[].description` | `string`  | The description of what was wrong with the property, header, object, entity or likewise identified by `name`.                                                                                                                                          |
 
 ### Common Problems
 
 All common problem types will have a URI in the format `https://api.payex.com/psp/<error-type>`. The **URI is an identifier** and is currently not possible to dereference, although that might be possible in the future.
 
 {:.table .table-striped}
-| Type                  | Status | Description                                 |
-|:----------------------|:------:|:--------------------------------------------|
-| `inputerror`          | `400`  | The server cannot or will not process the request due to an apparent client error (e.g. malformed request syntax, size to large, invalid request).
-| `forbidden`           | `403`  | The request was valid, but the server is refusing the action. The necessary permissions to access the resource might be lacking.
-| `notfound`            | `404`  | The requested resource could not be found, but may be available in the future. Subsequent requests are permissible.
-| `systemerror`         | `500`  | A generic error message.
-| `configurationerror`  | `500`  | A error relating to configuration issues.
+| Type                 | Status | Description                                                                                                                                        |
+| :------------------- | :----: | :------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `inputerror`         | `400`  | The server cannot or will not process the request due to an apparent client error (e.g. malformed request syntax, size to large, invalid request). |
+| `forbidden`          | `403`  | The request was valid, but the server is refusing the action. The necessary permissions to access the resource might be lacking.                   |
+| `notfound`           | `404`  | The requested resource could not be found, but may be available in the future. Subsequent requests are permissible.                                |
+| `systemerror`        | `500`  | A generic error message.                                                                                                                           |
+| `configurationerror` | `500`  | A error relating to configuration issues.                                                                                                          |
 
 ### Payment Instrument Specific Problems
 
