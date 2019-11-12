@@ -270,9 +270,9 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property               | Data type | Description |
-| :------- | :--------------------- | :-------- | :---------- |
-| ✔︎       | `transaction.activity` | `string`  | `Finalize`  |
+| ✔︎   | Property               | Data type | Description |
+| :--- | :--------------------- | :-------- | :---------- |
+| ✔︎   | `transaction.activity` | `string`  | `Finalize`  |
 
 
 {:.code-header}
@@ -352,10 +352,10 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property                    | Data type  | Description                                                                                             |
-| :------- | :-------------------------- | :--------- | :------------------------------------------------------------------------------------------------------ |
-| ✔︎       | cancellation.description    | string     | A textual description of the reason for the cancellation.                                               |
-| ✔︎       | cancellation.payeeReference | string(50) | A unique reference for the cancellation transaction. See [payeeReference][payee-reference] for details. |
+| ✔︎   | Property                    | Data type  | Description                                                                                             |
+| :--- | :-------------------------- | :--------- | :------------------------------------------------------------------------------------------------------ |
+| ✔︎   | cancellation.description    | string     | A textual description of the reason for the cancellation.                                               |
+| ✔︎   | cancellation.payeeReference | string(50) | A unique reference for the cancellation transaction. See [payeeReference][payee-reference] for details. |
 
 
 The `cancel` resource contains information about a cancellation transaction 
@@ -492,12 +492,12 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property                   | Data type  | Description                                                                                                               |
-| :------- | :------------------------- | :--------- | :------------------------------------------------------------------------------------------------------------------------ |
-| ✔︎       | transaction.amount         | integer    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
-| ✔︎       | transaction.vatAmount      | integer    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
-| ✔︎       | transaction.description    | string     | A textual description of the capture                                                                                      |
-| ✔︎       | transaction.payeeReference | string(50) | A unique reference for the reversal transaction. See [payeeReference][payee-reference] for details.                       |
+| ✔︎   | Property                   | Data type  | Description                                                                                                               |
+| :--- | :------------------------- | :--------- | :------------------------------------------------------------------------------------------------------------------------ |
+| ✔︎   | transaction.amount         | integer    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
+| ✔︎   | transaction.vatAmount      | integer    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
+| ✔︎   | transaction.description    | string     | A textual description of the capture                                                                                      |
+| ✔︎   | transaction.payeeReference | string(50) | A unique reference for the reversal transaction. See [payeeReference][payee-reference] for details.                       |
 
 
 The `reversal` resource contains information about a reversal transaction made 
