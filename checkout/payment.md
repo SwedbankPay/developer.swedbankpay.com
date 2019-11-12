@@ -678,14 +678,14 @@ The `items` property of the `paymentOrder` is an array containing items that wil
                          next_title="Next: After Payment" %}
 
 [capture-operation]: /checkout/after-payment#capture
-[checkin-image]: /assets/img/checkout/your_information.png
+[checkin-image]: /assets/img/checkout/your_information.PNG
 [consumer-reference]: /checkout/other-features#payeereference
 [initiate-consumer-session]: /checkout/payment#checkin-back-end
 [msisdn]: https://en.wikipedia.org/wiki/MSISDN
 [operations]: /checkout/other-features#operations
 [order-items]: #order-items
 [payee-reference]: /checkout/other-features#payeereference
-[payment-menu-image]: /assets/img/checkout/payment_methods.png
+[payment-menu-image]: /assets/img/checkout/payment_methods.PNG
 [payment-menu]: #payment-menu
 [payment-order-capture]: /checkout/after-payment#capture
 [payment-order-operations]: /checkout/after-payment#operations
