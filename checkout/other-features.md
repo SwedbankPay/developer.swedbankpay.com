@@ -1431,8 +1431,8 @@ although that might be possible in the future.
 [current-payment]: #current-payment-resource
 [expanding]: #expansion
 [http-api-problems]: https://tools.ietf.org/html/rfc7807
-[image_disabled_payment_menu]: /assets/img/checkout/test_purchase.PNG
-[image_enabled_payment_menu]: /assets/img/checkout/payment_menu.PNG
+[image_disabled_payment_menu]: /assets/img/checkout/test-purchase.png
+[image_enabled_payment_menu]: /assets/img/checkout/payment-menu.png
 [invoice-payments-problems]: /payments/invoice/other-features#problem-messages
 [order-items]: /checkout/payment#order-items
 [payee-reference]: /checkout/other-features#payeereference

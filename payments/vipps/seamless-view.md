@@ -148,8 +148,8 @@ sequenceDiagram
         next_title="Next: After payments" %}
 
 [Vipps_flow_PaymentPages.png]: /assets/img/Vipps_flow_PaymentPages.png
-[Vipps-screenshot-1]: /assets/img/checkout/Vipps_hosted_payment.PNG
-[Vipps-screenshot-2]: /assets/img/checkout/Vipps_hosted_payment_no_paymentUrl.PNG
+[Vipps-screenshot-1]: /assets/img/checkout/vipps-hosted-payment.png
+[Vipps-screenshot-2]: /assets/img/checkout/vipps-hosted-payment-no-paymentUrl.png
 [callback]: /payments/vipps/other-features#callback
 [callbackurl]: /payments/vipps/other-features#callback
 [cancellations]: /payments/vipps/other-features#cancel-sequence
