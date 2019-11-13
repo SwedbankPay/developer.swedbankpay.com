@@ -210,7 +210,55 @@ complete and we can move on to [payment menu](#payment-menu).
 ## Payment Menu
 
 Payment Menu begins where Checkin left off, letting the payer complete
-their purchase.
+their purchase. Under, you will se the sequence diagram of the payment menu.<br>
+Notice that there are two optional ways of perfoming the payment:
+
+* Consumer perform payment out of iframe
+
+* Consumer perform payment within iframe
+
+```mermaid
+sequenceDiagram
+    participant Payer
+    participant Merchant
+    participant SwedbankPay as Swedbank Pay
+
+    activate Payer
+
+    rect rgba(138,205,195,0.1)
+            note left of Payer: Payment Menu
+            Payer ->>+ Merchant: Prepare Payment Menu
+                Merchant ->>+ SwedbankPay: POST /psp/paymentorders (paymentUrl, consumerProfileRef)
+                    SwedbankPay -->>- Merchant: rel:view-paymentorder
+                Merchant -->>- Payer: Display Payment Menu
+            Payer ->> Payer: Initiate Payment Menu Hosted View (open iframe)
+            SwedbankPay -->> Payer: Show Payment UI page in iframe
+            activate SwedbankPay
+                Payer ->> SwedbankPay: Authorize Payment
+                opt consumer perform payment out of iframe
+                    SwedbankPay ->> Merchant: POST Payment Callback
+                    SwedbankPay -->> Payer: Redirect to Payment URL
+                    Payer ->> Merchant: Prepare Payment Menu
+                    Payer ->> Payer: Initiate Payment Menu Hosted View (open iframe)
+                    Payer ->> SwedbankPay: Show Payment UI page in iframe
+                    SwedbankPay -->> Payer: Payment status
+                    Payer ->>+ Merchant: Redirect to Payment Complete URL
+                        Merchant ->>+ SwedbankPay: GET /psp/paymentorders/<paymentOrderId>
+                            SwedbankPay -->>- Merchant: Payment Order status
+                    deactivate Merchant
+                end
+                opt consumer perform payment within iframe
+                    SwedbankPay ->> Merchant: POST Payment Callback
+                    SwedbankPay -->> Payer: Payment status
+                    Payer ->>+ Merchant: Redirect to Payment Complete URL
+                        Merchant ->>+ SwedbankPay: GET /psp/paymentorders/<paymentOrderId>
+                            SwedbankPay -->>- Merchant: Payment Order status
+                    deactivate Merchant
+                end
+            deactivate SwedbankPay
+        end
+    deactivate Payer
+```
 
 ### Payment Menu Back End
 
