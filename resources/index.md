@@ -391,6 +391,8 @@ Problem types for a specific payment instrument will have a URI in the format `h
 * [**Swish**][swish]
 * [**Vipps**][vipps]
 
+{% include iterator.html next_href="test-data" next_title="Next: Test Data" %}
+
 [consumers-resource]: #
 [payment-orders-resource]: #
 [checkin]: /checkout/checkin

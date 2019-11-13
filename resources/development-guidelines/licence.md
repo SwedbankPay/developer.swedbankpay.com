@@ -21,11 +21,9 @@ sidebar:
                       header="Site under development"
                       body="The Developer Portal is under construction and should not be used to integrate against Swedbank Pay's APIs yet." %}
 
-
 ## Licensing 
 
 The licensing of PayEx’ open source software should be one approved by the [Open Source Initiative][open-source-initiative] and preferably one that is compatible with closed source, enterprise software. The [MIT License][mit-license] is therefore a good fit and should be chosen when possible:
-
 
 ```http
 The MIT License (MIT)
@@ -51,10 +49,9 @@ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 ```
 
-
-
 The license should be placed in a file called `LICENSE` in the root of the repository and preferably be included as a header in all source code files in the same repository.
 
+{% include iterator.html prev_href="good-commit-practice" prev_title="Back: Good Commit Practice" %}
 
 [open-source-initiative]: https://opensource.org/
 [mit-license]: https://opensource.org/licenses/MIT

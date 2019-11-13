@@ -129,8 +129,8 @@ Releases should correspond to a tagged version number and a [Release][release] f
 
 To help with writing release notes, projects can use the tool [GitReleaseNotes][git-release-notes]. Even if no tool is used, the release notes should adhere to the [Semantic Release Notes][semantic-release-notes] specification.
 
-
-
+{% include iterator.html prev_href="../demoshop" prev_title="Back: Demoshop" 
+next_href="code-of-conduct" next_title="Next: Code Of Conduct" %}
 
 [principles-of-object-oriented-design]: http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod
 [domain-driven-design]: http://martinfowler.com/tags/domain%20driven%20design.html

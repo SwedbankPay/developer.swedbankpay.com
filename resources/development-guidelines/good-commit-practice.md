@@ -462,6 +462,8 @@ Some things to note about this example commit message
 * It describes the rough architecture of the fix (how libvirt returns arch)
 * It notes the limitations of the fix (work needed on Xen)
 
+{% include iterator.html prev_href="contributing" prev_title="Back: Contributing" 
+next_href="licence" next_title="Next: Licence" %}
 
 [good-practice]: https://wiki.openstack.org/wiki/GitCommitMessages
 [bisect]: https://git-scm.com/book/en/v2/Git-Tools-Debugging-with-Git

@@ -72,9 +72,6 @@ This Code of Conduct is adapted from the [Contributor Covenant][contributor-cove
 version 1.3.0, available at
 [http://contributor-covenant.org/version/1/3/0/][version]
 
-[contributor-covenant]: http://contributor-covenant.org/
-[opensource-mail]: opensource@payex.com
-[version]: http://contributor-covenant.org/version/1/3/0/
 
 
 The Code of Conduct should then be referenced from the `CONTRIBUTING` file, for example with the following paragraphs:
@@ -83,4 +80,9 @@ The Code of Conduct should then be referenced from the `CONTRIBUTING` file, for 
 Please note that this project is released with a Contributor Code of Conduct.
 By participating in this project you agree to abide by its terms.
 
+{% include iterator.html prev_href="index" prev_title="Back: Development Guidelines Introduction" 
+next_href="contributing" next_title="Next: Contributing" %}
 
+[contributor-covenant]: http://contributor-covenant.org/
+[opensource-mail]: opensource@payex.com
+[version]: http://contributor-covenant.org/version/1/3/0/
