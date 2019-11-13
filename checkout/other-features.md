@@ -29,14 +29,14 @@ They are listed on this very page." %}
 
 ## Payment Url
 
-For our hosted views solution in Checkout (using
+For our Seamless Views solution in Checkout (using
 [Payment Order][payment-order]), we have a URL property called `paymentUrl`
-that will be used if the consumer is redirected out of the hosted view
+that will be used if the consumer is redirected out of the Seamless View
 (the `iframe`). The consumer is redirected out of `iframe` when selecting
 payment methods Vipps or in the 3D secure verification for credit card
 payments.
 
-The URL should represent the page of where the payment hosted view was hosted
+The URL should represent the page of where the payment Seamless View was hosted
 originally, such as the checkout page, shopping cart page, or similar.
 Basically, `paymentUrl` should be set to the same URL as that of the page
 where the JavaScript for the hosted payment view was added to in order to
