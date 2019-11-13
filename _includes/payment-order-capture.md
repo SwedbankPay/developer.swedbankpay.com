@@ -3,6 +3,32 @@ It is possible to do a part-capture where you only capture a smaller amount
 than the authorized amount. You can later do more captures on the same payment
 up to the total authorization amount.
 
+This is done by requesting the order information from the server, to get the
+request link to perform the capture. With this, you can request the capture
+with the sum to capture, and get back the status.
+
+```mermaid
+sequenceDiagram
+    participant Payer
+    participant Merchant
+    participant SwedbankPay as Swedbank Pay
+
+    rect rgba(81,43,43,0.1)
+        note left of Payer: Capture
+        activate Merchant
+            Merchant ->> SwedbankPay: GET /psp/paymentorders/<paymentOrderId>
+            activate SwedbankPay
+                SwedbankPay -->> Merchant: rel:create-paymentorder-capture
+            deactivate SwedbankPay
+            Merchant ->> SwedbankPay: POST /psp/paymentorders/<paymentOrderId>/captures
+            activate SwedbankPay
+                SwedbankPay -->> Merchant: Capture status
+            deactivate SwedbankPay
+            note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.
+        deactivate Merchant
+    end
+```
+
 **Notice** that the `orderItems` property object is optional. If the `POST`
 request has `orderItems` in the `paymentorder`, remember to include `orderItems`
 in the `capture` operation. If the `paymentorder` is without `orderItems`,
@@ -71,11 +97,11 @@ Content-Type: application/json
 | ✔︎︎︎︎︎ | └➔&nbsp;`amount`               | `integer`    | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.                                                                                                          |
 | ✔︎︎︎︎︎ | └➔&nbsp;`vatAmount`            | `integer`    | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.                                                                                                                 |
 | ✔︎︎︎︎︎ | └➔&nbsp;`payeeReference`       | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.                                                   |
-|        | └➔&nbsp;`orderItems`           | `array`      | The array of items being purchased with the order. Used to print on invoices if the payer chooses to pay with invoice, among other things. Required in `capture` requests if already sent with the initial creation of the Payment Order.  |
+|        | └➔&nbsp;`orderItems`           | `array`      | The array of items being purchased with the order. Used to print on invoices if the payer chooses to pay with invoice, among other things. Required in `capture` requests if already sent with the initial creation of the Payment Order. Note that this should only contain the items to be captured from the order.  |
 | ✔︎︎︎︎︎ | └─➔&nbsp;`reference`           | `string`     | A reference that identifies the order item.                                                                                                                                                                                                |
 | ✔︎︎︎︎︎ | └─➔&nbsp;`name`                | `string`     | The name of the order item.                                                                                                                                                                                                                |
 | ✔︎︎︎︎︎ | └─➔&nbsp;`type`                | `string`     | `PRODUCT`, `SERVICE`, `SHIPPING_FEE`, `DISCOUNT`, `VALUE_CODE` or `OTHER`. The type of the order item.                                                                                                                                     |
-| ✔︎︎︎︎︎ | └─➔&nbsp;`class`               | `string`     | The classification of the order item. Can be used for assigning the order item to a specific product category, for instance. Swedbank Pay has no use for this value itself, but it's useful for some payment instruments and integrations. |
+| ✔︎︎︎︎︎ | └─➔&nbsp;`class`               | `string`     | The classification of the order item. Can be used for assigning the order item to a specific product category, for instance. Swedbank Pay has no use for this value itself, but it's useful for some payment instruments and integrations. Note that this cannot contain spaces. |
 |  ︎︎︎   | └─➔&nbsp;`itemUrl`             | `string`     | The URL to a page that contains a human readable description of the order item, or similar.                                                                                                                                                |
 |  ︎︎︎   | └─➔&nbsp;`imageUrl`            | `string`     | The URL to an image of the order item.                                                                                                                                                                                                     |
 |  ︎︎︎   | └─➔&nbsp;`description`         | `string`     | The human readable description of the order item.                                                                                                                                                                                          |

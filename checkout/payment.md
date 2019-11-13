@@ -29,6 +29,35 @@ HTTP requests, responses and HTML code you will need to implement in order to
 complete the Swedbank Pay Checkout integration. Before Checkout you have to
 Checkin. To check in, the payer needs to be identified.
 
+```mermaid
+sequenceDiagram
+    participant Payer
+    participant Merchant
+    participant SwedbankPay as Swedbank Pay
+
+    activate Payer
+        rect rgba(238, 112, 35, 0.05)
+            note left of Payer: Checkin
+
+            Payer ->> Merchant: Start Checkin
+            activate Merchant
+                Merchant ->> SwedbankPay: POST /psp/consumers
+                activate SwedbankPay
+                    SwedbankPay -->> Merchant: rel:view-consumer-identification
+                deactivate SwedbankPay
+                Merchant -->> Payer: Show Checkin (Consumer Hosted View)
+
+            deactivate Merchant
+            Payer ->> Payer: Initiate Consumer Hosted View (open iframe)
+            Payer ->> SwedbankPay: Show Consumer UI page in iframe
+            activate SwedbankPay
+                SwedbankPay ->> Payer: Consumer identification process
+                SwedbankPay -->> Payer: show consumer completed iframe
+            deactivate SwedbankPay
+            Payer ->> Payer: onConsumerIdentified (consumerProfileRef)
+        end
+```
+
 ### Checkin Back End
 
 The payer will be identified with the `consumers` resource and will be
@@ -59,11 +88,11 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| ✔︎︎︎︎︎ | **Property**             | **Type**     |  **Description** |
+| ✔︎︎︎︎︎ **(Required)** | **Property**             | **Type**     |  **Description** |
 | ✔︎︎︎︎︎ | `operation`          | `string` | `initiate-consumer-session`, the operation to perform.
 |   | `msisdn`              | `string` | The [MSISDN][msisdn] (mobile phone number) of the payer. Format Sweden: `+46707777777`. Format Norway: `+4799999999`.
 |   | `email`               | `string` | The e-mail address of the payer.
-|   | `consumerCountryCode` | `string` | Payers country of residence. Used by the consumerUi for validation on all input fields.
+| ✔︎︎︎︎︎ | `consumerCountryCode` | `string` | Payers country of residence. Used by the consumerUi for validation on all input fields.
 |   | `nationalIdentifier`  | `object` | The object containing information about the national identifier of the payer.
 |   | └➔ `socialSecurityNumber` | `string` | The social security number of the payer. Format: Norway `DDMMYYXXXXX`, Sweden: `YYYYMMDDXXXX`.
 |   | └➔ `countryCode`          | `string` | The country code, denoting the origin of the issued social security number. Required if `nationalIdentifier.socialSecurityNumber` is set.
@@ -81,10 +110,16 @@ Content-Type: application/json
     "token": "7e380fbb3196ea76cc45814c1d99d59b66db918ce2131b61f585645eff364871",
     "operations": [
         {
-            "rel": "view-consumer-identification",
             "method": "GET",
-            "contentType": "application/javascript",
+            "rel": "redirect-consumer-identification",
+            "href": "https://ecom.stage.payex.com/consumers/sessions/7e380fbb3196ea76cc45814c1d99d59b66db918ce2131b61f585645eff364871",
+            "contentType": "text/html"
+        },
+        {
+            "method": "GET",
+            "rel": "view-consumer-identification",
             "href": "https://ecom.externalintegration.payex.com/consumers/core/scripts/client/px.consumer.client.js?token=7e380fbb3196ea76cc45814c1d99d59b66db918ce2131b61f585645eff364871",
+            "contentType": "application/javascript",
         }
     ]
 }
@@ -109,6 +144,15 @@ The `view-consumer-identification` operation
 and its `application/javascript` content type gives us a clue that the
 operation is meant to be embedded in a `<script>` element in an HTML document.
 
+{% include alert.html type="warning"
+                      icon="warning"
+                      header=""
+                      body="In our example we will focus on using the
+                      `view-consumer-identification` solution.
+                      The `redirect-consumer-identification` method redirects
+                      the user to Swedbank's own site to handle the checkin
+                      and is used in other implementations.%}
+
 {:.code-header}
 **HTML**
 
@@ -117,34 +161,81 @@ operation is meant to be embedded in a `<script>` element in an HTML document.
 <html>
     <head>
         <title>Swedbank Pay Checkout is Awesome!</title>
+        <!-- Here you can specify your own javascript file -->
+        <script src=<YourJavaScriptFileHere></script>
     </head>
     <body>
         <div id="checkin"></div>
         <div id="payment-menu"></div>
-        <script src="https://ecom.externalintegration.payex.com/consumers/core/scripts/client/px.consumer.client.js?token=7e380fbb3196ea76cc45814c1d99d59b66db918ce2131b61f585645eff364871"></script>
-        <script language="javascript">
+    </body>
+</html>
+```
+
+In the HTML, you only need to add two `<div>` elements to place the
+check-in and payment menu inside of. The JavaScript will handle the rest when
+it comes to handling the check-in and payment menu.
+
+{:.code-header}
+**JavaScript**
+
+```JS
+window.onload = function () {
+    var request = new XMLHttpRequest();
+    request.addEventListener('load', function () {
+        // We will assume that our own backend returns the
+        // exact same as what SwedbankPay returns.
+        response = JSON.parse(this.responseText);
+        var script = document.createElement('script');
+        // This assumes that the operations from the response of the POST from the
+        // payment order is returned verbatim from the server to the Ajax:
+        var operation = response.operations.find(function (o) {
+            return o.rel === 'view-consumer-identification';
+        });
+        script.setAttribute('src', operation.href);
+        script.onload = function () {
             payex.hostedView.consumer({
                 // The container specifies which id the script will look for
                 // to host the checkin component
                 container: "checkin",
-                onConsumerIdentified: function(consumerIdentifiedEvent) {
+                onConsumerIdentified: function onConsumerIdentified(consumerIdentifiedEvent) {
                     // consumerIdentifiedEvent.consumerProfileRef contains the reference
                     // to the identified consumer which we need to pass on to the
                     // Payment Order to initialize a personalized Payment Menu.
                     console.log(consumerIdentifiedEvent);
                 },
-                onShippingDetailsAvailable: function(shippingDetailsAvailableEvent) {
+                onShippingDetailsAvailable: function onShippingDetailsAvailable(shippingDetailsAvailableEvent) {
                     console.log(shippingDetailsAvailableEvent);
                 }
             }).open();
-        </script>
-    </body>
-</html>
+        };
+        // Appending the script to the head
+        var head = document.getElementsByTagName('head')[0];
+        head.appendChild(script);
+    });
+    // Place in your own API endpoint here.
+    request.open('POST', <Your-Endpoint-Here>, true);
+    request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+    // In this example we'll send in all of the information mentioned
+    // before in the request to the endpoint.
+    request.send(JSON.stringify({
+        operation: 'initiate-consumer-session',
+        msisdn: '+46739000001',
+        email: 'leia.ahlstrom@example.com',
+        consumerCountryCode: 'SE',
+        nationalIdentifer: {
+            socialSecurityNumber: '199710202392',
+            countryCode: "SE"
+        }
+    }));
+};
 ```
 
-Note that the `<script>` element is added after the `<div>` container the
-Checkin will be hosted in. When this is set up, something along the
-following should appear:
+**Notice** that we attach the `<script>` element to the head,
+but use `window.onload` to ensure everything has loaded in properly
+before accessing the page.
+With the scripts loading in after the entire page is loaded, we can access the
+`<div>` container that the Checkin will be hosted in.
+After that has all loaded, you should see something like this:
 
 {:.text-center}
 ![Consumer UI][checkin-image]{:width="564" height="293"}
@@ -180,7 +271,55 @@ complete and we can move on to [payment menu](#payment-menu).
 ## Payment Menu
 
 Payment Menu begins where Checkin left off, letting the payer complete
-their purchase.
+their purchase. Under, you will se the sequence diagram of the payment menu.<br>
+Notice that there are two optional ways of perfoming the payment:
+
+* Consumer perform payment out of iframe
+
+* Consumer perform payment within iframe
+
+```mermaid
+sequenceDiagram
+    participant Payer
+    participant Merchant
+    participant SwedbankPay as Swedbank Pay
+
+    activate Payer
+
+    rect rgba(138,205,195,0.1)
+            note left of Payer: Payment Menu
+            Payer ->>+ Merchant: Prepare Payment Menu
+                Merchant ->>+ SwedbankPay: POST /psp/paymentorders (paymentUrl, consumerProfileRef)
+                    SwedbankPay -->>- Merchant: rel:view-paymentorder
+                Merchant -->>- Payer: Display Payment Menu
+            Payer ->> Payer: Initiate Payment Menu Hosted View (open iframe)
+            SwedbankPay -->> Payer: Show Payment UI page in iframe
+            activate SwedbankPay
+                Payer ->> SwedbankPay: Authorize Payment
+                opt consumer perform payment out of iframe
+                    SwedbankPay ->> Merchant: POST Payment Callback
+                    SwedbankPay -->> Payer: Redirect to Payment URL
+                    Payer ->> Merchant: Prepare Payment Menu
+                    Payer ->> Payer: Initiate Payment Menu Hosted View (open iframe)
+                    Payer ->> SwedbankPay: Show Payment UI page in iframe
+                    SwedbankPay -->> Payer: Payment status
+                    Payer ->>+ Merchant: Redirect to Payment Complete URL
+                        Merchant ->>+ SwedbankPay: GET /psp/paymentorders/<paymentOrderId>
+                            SwedbankPay -->>- Merchant: Payment Order status
+                    deactivate Merchant
+                end
+                opt consumer perform payment within iframe
+                    SwedbankPay ->> Merchant: POST Payment Callback
+                    SwedbankPay -->> Payer: Payment status
+                    Payer ->>+ Merchant: Redirect to Payment Complete URL
+                        Merchant ->>+ SwedbankPay: GET /psp/paymentorders/<paymentOrderId>
+                            SwedbankPay -->>- Merchant: Payment Order status
+                    deactivate Merchant
+                end
+            deactivate SwedbankPay
+        end
+    deactivate Payer
+```
 
 ### Payment Menu Back End
 
@@ -211,7 +350,7 @@ Content-Type: application/json
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0...",
         "language": "sv",
-        "generateRecurrenceToken": false
+        "generateRecurrenceToken": false,
         "urls": {
             "hostUrls": ["https://example.com", "https://example.net"],
             "completeUrl": "https://example.com/payment-completed",
@@ -284,7 +423,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| ✔︎︎︎︎︎ | Property                              | Type         | Description       |
+| ✔︎︎︎︎︎ (Required) | Property                              | Type         | Description       |
 |:-:|:--------------------------------------|:-------------|:------------------|
 | ✔︎︎︎︎︎ | `paymentorder`                        | `object`     | The payment order object.
 | ✔︎︎︎︎︎ | └➔&nbsp;`operation`                   | `string`     | The operation that the payment order is supposed to perform.
@@ -314,7 +453,7 @@ Content-Type: application/json
 | ✔︎︎︎︎︎ | └─➔&nbsp;`reference`                  | `string`     | A reference that identifies the order item.
 | ✔︎︎︎︎︎ | └─➔&nbsp;`name`                       | `string`     | The name of the order item.
 | ✔︎︎︎︎︎ | └─➔&nbsp;`type`                       | `string`     | `PRODUCT`, `SERVICE`, `SHIPPING_FEE`, `DISCOUNT`, `VALUE_CODE` or `OTHER`. The type of the order item.
-| ✔︎︎︎︎︎ | └─➔&nbsp;`class`                      | `string`     | The classification of the order item. Can be used for assigning the order item to a specific product category, for instance. Swedbank Pay has no use for this value itself, but it's useful for some payment instruments and integrations.
+| ✔︎︎︎︎︎ | └─➔&nbsp;`class`                      | `string`     | The classification of the order item. Can be used for assigning the order item to a specific product category, for instance. Swedbank Pay has no use for this value itself, but it's useful for some payment instruments and integrations. Note that this cannot contain spaces.
 | ︎︎︎  | └─➔&nbsp;`itemUrl`                    | `string`     | The URL to a page that contains a human readable description of the order item, or similar.
 | ︎︎︎  | └─➔&nbsp;`imageUrl`                   | `string`     | The URL to an image of the order item.
 | ︎︎︎  | └─➔&nbsp;`description`                | `string`     | The human readable description of the order item.
@@ -390,37 +529,45 @@ cause a page reload and do this with static HTML or you can avoid the page
 refresh by invoking the POST to create the payment order through Ajax and then
 create the script element with JavaScript, all inside the event handler for
 [`onConsumerIdentified`][technical-reference-onconsumer-identified].
+The HTML code will be unchanged in this example.
 
 {:.code-header}
-**HTML**
+**JavaScript**
 
-```html
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Swedbank Pay Checkout is Awesome!</title>
-    </head>
-    <body>
-        <div id="checkin"></div>
-        <div id="payment-menu"></div>
-        <script src="https://ecom.externalintegration.payex.com/consumers/core/scripts/client/px.consumer.client.js?token=7e380fbb3196ea76cc45814c1d99d59b66db918ce2131b61f585645eff364871"></script>
-        <script language="javascript">
-                payex.hostedView.consumer({
-                    container: 'checkin',
-                    culture: 'sv',
-                    onConsumerIdentified: function(consumerIdentifiedEvent) {
-                        // When the consumer is identified, we need to perform an AJAX request
-                        // to our server to forward the consumerProfileRef in a server-to-server
-                        // POST request to the Payment Orders resource in order to initialize
-                        // the Payment Menu.
-                        var request = new XMLHttpRequest();
+```JS
+window.onload = function () {
+    var request = new XMLHttpRequest();
+    request.addEventListener('load', function () {
+        // We will assume that our own backend returns the
+        // exact same as what SwedbankPay returns.
+        response = JSON.parse(this.responseText);
+
+        var script = document.createElement('script');
+        // This assumes the operations from the response of the POST of the
+        // payment order is returned verbatim from the server to the Ajax:
+        var operation = response.operations.find(function (o) {
+            return o.rel === 'view-consumer-identification';
+        });
+        script.setAttribute('src', operation.href);
+        script.onload = function () {
+            payex.hostedView.consumer({
+                // The container specifies which id the script will look for
+                // to host the checkin component
+                container: "checkin",
+                onConsumerIdentified: function onConsumerIdentified(consumerIdentifiedEvent) {
+                    // When the consumer is identified, we need to perform an AJAX request
+                    // to our server to forward the consumerProfileRef in a server-to-server
+                    // POST request to the Payment Orders resource in order to initialize
+                    // the Payment Menu.
+                    var request = new XMLHttpRequest();
                         request.addEventListener('load', function() {
                             response = JSON.parse(this.responseText);
-
+                            // This is identical to how we get the 'view-consumer-identification'
+                            // script from the check-in.
                             var script = document.createElement('script');
-                            // This assumses the operations from the response of the POST of the
-                            // payment order is returned verbatim from the server to the Ajax:
-                            var operation = response.operations.find(function(o) { o.rel === 'view-paymentorder' });
+                            var operation = response.operations.find(function(o) {
+                                return o.rel === 'view-paymentorder';
+                            });
                             script.setAttribute('src', operation.href);
                             script.onload = function() {
                                 // When the 'view-paymentorder' script is loaded, we can initialize the
@@ -434,18 +581,38 @@ create the script element with JavaScript, all inside the event handler for
                             var head = document.getElementsByTagName('head')[0];
                             head.appendChild(script);
                         });
-                        // This example just performs the POST request of the Consumer Identified
-                        // Event Argument to the same URL as the current one.
-                        request.open('POST', window.location.href, true);
+                        // Like before, you should replace the address here with
+                        // your own endpoint.
+                        request.open('POST', , true);
                         request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
                         // In this example, we send the entire Consumer Identified Event Argument
                         // Object as JSON to the server, as it contains the consumerProfileRef.
                         request.send(JSON.stringify(consumerIdentifiedEvent));
-                    }
-                }).open();
-        </script>
-    </body>
-</html>
+                },
+                onShippingDetailsAvailable: function onShippingDetailsAvailable(shippingDetailsAvailableEvent) {
+                    console.log(shippingDetailsAvailableEvent);
+                }
+            }).open();
+        };
+        // Appending the script to the head
+        var head = document.getElementsByTagName('head')[0];
+        head.appendChild(script);
+    });
+    // Place in your own API endpoint here.
+    request.open('POST', <Your-Endpoint-Here>, true);
+    request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+    // We send in the previously mentioned request here to the checkin endpoint.
+    request.send(JSON.stringify({
+        operation: 'initiate-consumer-session',
+        msisdn: '+46739000001',
+        email: 'leia.ahlstrom@example.com',
+        consumerCountryCode: 'SE',
+        nationalIdentifer: {
+            socialSecurityNumber: '199710202392',
+            countryCode: "SE"
+        }
+    }));
+};
 ```
 
 This should bring up the Payment Menu in a hosted view, looking something like this:
@@ -492,7 +659,7 @@ Content-Type: application/json
         "vatAmount": 0,
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0...",
-        "language": "sv",
+        "language": "sv-SE",
         "generateRecurrenceToken": false,
         "disablePaymentMenu": false,
         "urls": {
@@ -578,7 +745,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| ✔︎︎︎︎︎ | Property                              | Type     | Description           |
+| ✔︎︎︎︎︎ (Required) | Property                              | Type     | Description           |
 |:-:|:--------------------------------------|:---------|:----------------------|
 | ✔︎︎︎︎︎ | `paymentorder`                    | `object`     | The payment order object.
 | ✔︎︎︎︎︎ | └➔&nbsp;`operation`               | `string`     | The operation that the payment order is supposed to perform.
@@ -617,7 +784,7 @@ with or cancelling a payment session, as well as the callback URI that is used
 to inform the payee (merchant) of changes or updates made to underlying payments or transaction.
 
 {:.table .table-striped}
-| ✔︎︎︎︎︎ | Property            | Type     | Description                             |
+| ✔︎︎︎︎︎ (Required) | Property            | Type     | Description                             |
 |:-:|:--------------------|:---------|:----------------------------------------|
 | ✔ ︎︎︎︎︎| `hostUrls`          | `array`  | The array of URIs valid for embedding of Swedbank Pay Hosted Views.
 | ✔︎︎︎︎︎ | `completeUrl`       | `string` | The URI to redirect the payer to once the payment is completed.
@@ -636,7 +803,7 @@ The `orderItems` property of the `paymentOrder` is an array containing the items
                       body="`orderItems` must be a part of `Capture` if `orderItems` is included in the `paymentOrder` creation." %}
 
 {:.table .table-striped}
-| ✔︎︎︎︎︎ | Property             | Type     | Description                           |
+| ✔︎︎︎︎︎ (Required) | Property             | Type     | Description                           |
 |:-:|:----------------------|:---------|:--------------------------------------|
 | ✔︎︎︎︎︎ | `reference`          | `string` | A reference that identifies the order item.
 | ✔︎︎︎︎︎ | `name`               | `string` | The name of the order item.
@@ -659,7 +826,7 @@ The `orderItems` property of the `paymentOrder` is an array containing the items
 The `items` property of the `paymentOrder` is an array containing items that will affect how the payment is performed.
 
 {:.table .table-striped}
-| ✔︎︎︎︎︎ | Property                        | Type     | Description                 |
+| ✔︎︎︎︎︎ (Required) | Property                        | Type     | Description                 |
 |:-:|:--------------------------------|:---------|:----------------------------|
 |   | `creditCard`                    | `object` | The credit card object.
 |   | └➔&nbsp;`rejectDebitCards`     | `bool`    | `true` if debit cards should be declined; otherwise `false` per default. Default value is set by Swedbank Pay and can be changed at your request.
