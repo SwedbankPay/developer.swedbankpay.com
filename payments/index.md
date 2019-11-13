@@ -51,7 +51,7 @@ sidebar:
 
 With the Seamless View you can initiate the payment process directly in an
 iframe on your site. A hostUrl needs to be defined in the first `POST` request
-in order to enable the hosted view operation. See details of the request under
+in order to enable the Seamless View operation. See details of the request under
 **Other Features** for the given payment instrument.
 
 ## Redirect
@@ -135,7 +135,7 @@ hosted payment page.
 
 With the Hosted View you can initiate the payment process directly in an iframe
 on your site. A hostUrl needs to be defined in the first POST request in order
-to enable the hosted view operation. See details of the request
+to enable the Seamless View operation. See details of the request
 [here][card-payments-purchase].
 
 
@@ -173,7 +173,7 @@ payment page on a subset of your own webpage.
 The properties of the operation containing the script URL should be similar to
 the example below. The href attribute refers to a script of the contentType
 application/javascript and the rel description view-payment indicate that the
-hosted view scenario will generate a one-phased sales transaction. A two-phase
+Seamless View scenario will generate a one-phased sales transaction. A two-phase
 credit card payment would during the same scenario generate an authorization
 transaction, and the `rel` value would in that case be `view-authorization`.
 

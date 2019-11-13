@@ -15,11 +15,11 @@ be set to enable one-click purchases.
 
 ### Payment Url
 
-For our hosted view, the URL property called `paymentUrl` will be used if the
-consumer is redirected out of the hosted view frame through our
+For our Seamless View, the URL property called `paymentUrl` will be used if the
+consumer is redirected out of the Seamless View frame through our
 [Credit Card API][credit-card-api]. The consumer is redirected out of frame when
 at the 3d secure verification for credit card payments. The URL should represent
-the page of where the payment hosted view was hosted originally, such as the
+the page of where the payment Seamless View was hosted originally, such as the
 checkout page, shopping cart page, or similar. Basically, `paymentUrl` should be
 set to the same URL as that of the page where the JavaScript for the hosted
 payment view was added to in order to initiate the payment. Please note that the

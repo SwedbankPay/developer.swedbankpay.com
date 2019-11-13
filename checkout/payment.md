@@ -299,7 +299,7 @@ Content-Type: application/json
 | ✔︎︎︎︎︎ | └─➔&nbsp;`hostUrls`                   | `array`      | The array of URIs valid for embedding of Swedbank Pay Hosted Views.
 | ✔︎︎︎︎︎ | └─➔&nbsp;`completeUrl`                | `string`     | The URI to redirect the payer to once the payment is completed.
 |   | └─➔&nbsp;`cancelUrl`                  | `string`     | The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only `cancelUrl` or `paymentUrl` can be used, not both.
-|   | └─➔&nbsp;`paymentUrl`                 | `string`     | The URI that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. Only used in hosted views. Can not be used simultaneously with `cancelUrl`; only `cancelUrl` or `paymentUrl` can be used, not both.
+|   | └─➔&nbsp;`paymentUrl`                 | `string`     | The URI that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. Only used in Seamless Views. Can not be used simultaneously with `cancelUrl`; only `cancelUrl` or `paymentUrl` can be used, not both.
 | ✔︎︎︎︎︎ | └─➔&nbsp;`callbackUrl`                | `string`     | The URI to the API endpoint receiving `POST` requests on transaction activity related to the payment order.
 | ✔︎︎︎︎︎ | └─➔&nbsp;`termsOfServiceUrl`          | `string`     | The URI to the merchant terms of service document the payer must accept in order to complete the payment. This is not the Swedbank Pay Terms of Service. Requires `https`.
 | ✔︎︎︎︎︎ | └➔&nbsp;`payeeInfo`                   | `string`     | The `payeeInfo` object, containing information about the payee.
@@ -379,7 +379,7 @@ in your system to look up status on the completed payment later.
 
 Then find the `view-paymentorder` operation and embed its `href` in a
 `<script>` element.
-That script will then load the hosted view for the Payment Menu. We will look
+That script will then load the Seamless View for the Payment Menu. We will look
 into how to hook that up next.
 
 ### Payment Menu Front End
@@ -448,7 +448,7 @@ create the script element with JavaScript, all inside the event handler for
 </html>
 ```
 
-This should bring up the Payment Menu in a hosted view, looking something like this:
+This should bring up the Payment Menu in a Seamless View, looking something like this:
 
 {:.text-center}
 ![Payment Menu with card payment opened][payment-menu-image]{:width="556" height="798"}
@@ -623,7 +623,7 @@ to inform the payee (merchant) of changes or updates made to underlying payments
 | ✔︎︎︎︎︎ | `completeUrl`       | `string` | The URI to redirect the payer to once the payment is completed.
 | ✔︎︎︎︎︎ | `termsOfServiceUrl` | `string` | The URI to the terms of service document the payer must accept in order to complete the payment. **HTTPS is a requirement**.
 |   | `cancelUrl`         | `string` | The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios.
-|   | `paymentUrl`        | `string` | The URI that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. Only used in hosted views. If both cancelUrl and paymentUrl is sent, the paymentUrl will used.
+|   | `paymentUrl`        | `string` | The URI that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. Only used in Seamless Views. If both cancelUrl and paymentUrl is sent, the paymentUrl will used.
 |   | `callbackUrl`       | `string` | The URI to the API endpoint receiving `POST` requests on transaction activity related to the payment order.
 |   | `logoUrl`           | `string` | The URI to the logo that will be displayed on redirect pages. **HTTPS is a requirement**.
 
