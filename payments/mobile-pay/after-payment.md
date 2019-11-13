@@ -8,8 +8,6 @@ sidebar:
       title: Introduction
     - url: /payments/mobile-pay/redirect
       title: Redirect
-    - url: /payments/mobile-pay/seamless-view
-      title: Seamless View
     - url: /payments/mobile-pay/after-payment
       title: After Payment
     - url: /payments/mobile-pay/other-features
@@ -19,20 +17,26 @@ sidebar:
 {% include alert.html type="warning"
                       icon="warning"
                       header="Site under development"
-                      body="The Developer Portal is under construction and should not be used to integrate against Swedbank Pay's APIs yet." %}
-## After payment options for Mobile Pay
+                      body="The Developer Portal is under construction and 
+                      should not be used to integrate against Swedbank Pay's 
+                      APIs yet." %}
 
 ### Options after posting a payment
 
-* **Abort:** It is possible to [abort a payment][technical-reference-abort] if the payment has no successful transactions.
-* If the payment shown above is done as a two-phase (`authorization`), you will need to implement the `Capture` and `Cancel` requests.
+* **Abort**: It is possible to [abort a payment][technical-reference-abort] 
+  if the payment has no successful transactions.
+* If the payment shown above is done as a two-phase (`authorization`), 
+  you will need to implement the `Capture` and `Cancel` requests.
 * For reversals, you will need to implement the `Reversal` request.
-* **If CallbackURL is set:** Whenever changes to the payment occur  a [Callback request][technical-reference-callback] will be posted to the `callbackUrl`, generated when the payment was created.
+* **If CallbackURL is set**: Whenever changes to the payment occur 
+  a [Callback request][technical-reference-callback] will be posted to 
+  the `callbackUrl`, generated when the payment was created.
 
 
 ## Capture
 
-The `captures` resource lists the capture transactions performed on a specific payment.
+The `captures` resource lists the capture transactions performed on a 
+specific payment.
 
 {:.code-header}
 **Request**
@@ -78,7 +82,8 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| **Property**            | **Data type** | **Description**                                                          |
+| Property            | Data type | Description                                                          |
+| :------------------ | :-------- | :------------------------------------------------------------------- |
 | payment             | string    | The relative URI of the payment this capture transaction belongs to. |
 | capture.id          | string    | The relative URI of the created capture transaction.                 |
 | capture.transaction | object    | The object representation of the generic transaction resource.       |
@@ -106,13 +111,17 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| **Property**               | **Data type**  | **Required** | **Description**                                                                                                       |
-| capture.amount         | integer    | Y        | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 DKK, 5000 = 50.00 DKK. |
-| capture.vatAmount      | integer    | Y        | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 DKK, 5000 = 50.00 DKK. |
-| capture.description    | string     | Y        | A textual description of the capture transaction.                                                                 |
-| capture.payeeReference | string(50) | Y        | A unique reference for the capture transaction. See [payeeReference][payee-reference] for details.                                   |
+| Required | Property               | Data type  | Description                                                                                                               |
+| :------- | :--------------------- | :--------- | :------------------------------------------------------------------------------------------------------------------------ |
+| ✔︎       | capture.amount         | integer    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
+| ✔︎       | capture.vatAmount      | integer    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
+| ✔︎       | capture.description    | string     | A textual description of the capture transaction.                                                                         |
+| ✔︎       | capture.payeeReference | string(50) | A unique reference for the capture transaction. See [payeeReference][payee-reference] for details.                        |
 
-The `capture` resource contains information about the capture transaction made against a MobilePay payment. You can return a specific capture transaction by adding the transaction id to the `GET` request.
+The `capture` resource contains information about the capture transaction made 
+against a MobilePay payment. 
+You can return a specific capture transaction by adding the transaction id to
+ the `GET` request.
 
 {:.code-header}
 **Response**
@@ -149,28 +158,34 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| **Property**            | **Data type** | **Description**                                                          |
-| payment             | string    | The relative URI of the payment this capture transaction belongs to. |
-| capture.id          | string    | The relative URI of the created capture transaction.                 |
-| capture.transaction | object    | The object representation of the generic [transaction resource][transaction-resource].       |
+| Property            | Data type | Description                                                                            |
+| :------------------ | :-------- | :------------------------------------------------------------------------------------- |
+| payment             | string    | The relative URI of the payment this capture transaction belongs to.                   |
+| capture.id          | string    | The relative URI of the created capture transaction.                                   |
+| capture.transaction | object    | The object representation of the generic [transaction resource][transaction-resource]. |
 
 
 ### Capture Sequence
 
-`Capture` can only be done on a authorized transaction. It is possible to do a part-capture where you only capture a smaller amount than the authorization amount. You can later do more captures on the sam payment upto the total authorization amount.
+`Capture` can only be done on a authorized transaction. 
+It is possible to do a part-capture where you only capture a smaller amount 
+than the authorization amount. 
+You can later do more captures on the sam payment upto the total 
+authorization amount.
 
 ```mermaid
 sequenceDiagram
-  Merchant->PayEx: POST [mobilepay captures][mobilepay-capture]
+  Merchant->>PayEx: POST <mobilepay capture>
   Activate Merchant
   Activate PayEx
-  PayEx-->Merchant: transaction resource
+  PayEx-->>Merchant: transaction resource
   Deactivate PayEx
   Deactivate Merchant
 ```
 
 ## Cancellations
-The `cancellations` resource lists the cancellation transactions on a specific payment.
+The `cancellations` resource lists the cancellation transactions on a 
+specific payment.
 
 {:.code-header}
 **Request**
@@ -217,15 +232,107 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| **Property**                         | **Data type** | **Description**                                                                         |
+| Property                         | Data type | Description                                                                         |
+| :------------------------------- | :-------- | :---------------------------------------------------------------------------------- |
 | payment                          | string    | The relative URI of the payment this list of cancellation transactions belong to.   |
 | cancellations.id                 | string    | The relative URI of the current cancellations resource.                             |
 | cancellations.cancellationList   | array     | The array of the cancellation transaction objects.                                  |
 | cancellations.cancellationList[] | object    | The object representation of the cancellation transaction resource described below. |
 
 
+### Finalize
+
+Finalizing a preauthorized payment is done as a `PATCH`  after a successful 
+`Authorization` transaction has been created. 
+The common use-case for the finalize operation is to authorize the payment 
+(that has the preauthorization intent) and complete all payment related 
+activities as soon as possible - in order to complete (finalize) everything 
+server-to-server afterwards. 
+The only allowed activity is `Finalize`. To use the operation, you should 
+perform a `GET` on the payment after the user returns from the 
+`redirect-authorization` operation and find the operation 
+`update-authorization-finalize`.
+
+{:.code-header}
+**Request**
+
+```http
+PATCH /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations/<transactionId> HTTP/1.1
+Host: api.payex.com
+Authorization: Bearer <MerchantToken>
+Content-Type: application/json
+
+{
+    "transaction": {
+        "activity": "Finalize"
+    }
+}
+```
+
+{:.table .table-striped}
+| ✔︎   | Property               | Data type | Description |
+| :--- | :--------------------- | :-------- | :---------- |
+| ✔︎   | `transaction.activity` | `string`  | `Finalize`  |
+
+
+{:.code-header}
+**Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "payment": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "authorization": {
+        "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations/12345678-1234-1234-1234-123456789012",
+        "paymentToken": "12345678-1234-1234-1234-123456789012",
+        "maskedPan": "123456xxxxxx1234",
+        "expireDate": "mm/yyyy",
+        "panToken": "12345678-1234-1234-1234-123456789012",
+        "cardBrand": "Visa|MC",
+        "cardType": "Credit Card|Debit Card",
+        "issuingBank": "UTL MAESTRO",
+        "countryCode": "999",
+        "acquirerTransactionType": "3DSECURE|SSL",
+        "acquirerStan": "39736",
+        "acquirerTerminalId": "39",
+        "acquirerTransactionTime": "2017-08-29T13:42:18Z",
+        "authenticationStatus": "Y|A|U|N",
+        "transaction": {
+            "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
+            "created": "2016-09-14T01:01:01.01Z",
+            "updated": "2016-09-14T01:01:01.03Z",
+            "type": "Authorization",
+            "state": "Initialized",
+            "number": 1234567890,
+            "amount": 1000,
+            "vatAmount": 250,
+            "description": "Test transaction",
+            "payeeReference": "AH123456",
+            "failedReason": "",
+            "isOperational": true,
+            "operations": [
+                {
+                    "href": "https://api.payex.com/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+                    "rel": "edit-authorization",
+                    "method": "PATCH"
+                }
+            ]
+        }
+    }
+}
+```
+
+{:.table .table-striped}
+| Property        | Data type | Description                                                                             |
+| :-------------- | :-------- | :-------------------------------------------------------------------------------------- |
+| `payment`       | `string`  | The relative URI of the payment this finalize transaction resource belongs to.          |
+| `authorization` | `object`  | The object representation of the [`authorization` transaction resource][authorization]. |
+
 ### Create cancellation transaction
-Perform the `create-cancel` operation to cancel a previously created payment. You can only cancel a payment - or part of payment - not yet captured.
+Perform the `create-cancel` operation to cancel a previously created payment. 
+You can only cancel a payment - or part of payment - not yet captured.
 
 {:.code-header}
 **Request**
@@ -245,12 +352,16 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| **Property**                    | **Data type**  | **Required** | **Description**          
-| cancellation.description    | string     | Y        | A textual description of the reason for the cancellation.                            |
-| cancellation.payeeReference | string(50) | Y        | A unique reference for the cancellation transaction. See [payeeReference][payee-reference] for details. |
+| ✔︎   | Property                    | Data type  | Description                                                                                             |
+| :--- | :-------------------------- | :--------- | :------------------------------------------------------------------------------------------------------ |
+| ✔︎   | cancellation.description    | string     | A textual description of the reason for the cancellation.                                               |
+| ✔︎   | cancellation.payeeReference | string(50) | A unique reference for the cancellation transaction. See [payeeReference][payee-reference] for details. |
 
 
-The `cancel` resource contains information about a cancellation transaction made against a payment. You can return a specific cancellation transaction by adding the transaction id to the `GET` request.
+The `cancel` resource contains information about a cancellation transaction 
+made against a payment. 
+You can return a specific cancellation transaction by adding the transaction 
+id to the `GET` request.
 
 {:.code-header}
 **Response**
@@ -282,10 +393,11 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| **Property**                 | **Data type** | **Description**
-| payment                  | string    | The relative URI of the payment this cancellation transaction belongs to. |
-| cancellation.id          | string    | The relative URI of the current cancellation transaction resource.        |
-| cancellation.transaction | object    | The object representation of the generic [transaction resource][transaction-resource].            |
+| Property                 | Data type | Description                                                                            |
+| :----------------------- | :-------- | :------------------------------------------------------------------------------------- |
+| payment                  | string    | The relative URI of the payment this cancellation transaction belongs to.              |
+| cancellation.id          | string    | The relative URI of the current cancellation transaction resource.                     |
+| cancellation.transaction | object    | The object representation of the generic [transaction resource][transaction-resource]. |
 
 ### Cancel Sequence
 
@@ -293,15 +405,16 @@ Cancel can only be done on a authorized transaction. If you do cancel after doin
 
 ```mermaid
 sequenceDiagram
-  Merchant->PayEx: POST [mobilepay cancellations][mobilepay-cancel]
-Activate Merchant
-Activate PayEx
-PayEx-->Merchant: transaction resource
-Deactivate PayEx
-Deactivate Merchant
+  Merchant->>PayEx: POST <mobilepay cancellation>
+  Activate Merchant
+  Activate PayEx
+  PayEx-->>Merchant: transaction resource
+  Deactivate PayEx
+  Deactivate Merchant
 ```
 ## Reversals
-The `reversals` resource lists the reversal transactions performed on a specific payment.
+The `reversals` resource lists the reversal transactions performed on a 
+specific payment.
 
 {:.code-header}
 **Request**
@@ -347,7 +460,8 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| **Property**       | **Type**   | **Description**    
+| Property       | Type   | Description                                                                                          |
+| :------------- | :----- | :--------------------------------------------------------------------------------------------------- |
 | payment        | string | The relative URI of the payment that the reversal transactions belong to.                            |
 | id             | string | The relative URI of the created reversal transaction.                                                |
 | reversalList   | array  | The array of reversal transaction objects.                                                           |
@@ -355,7 +469,8 @@ Content-Type: application/json
 
 
 ### Create reversal transaction
-The `create-reversal` operation reverses a previously created and captured payment.
+The `create-reversal` operation reverses a previously created and 
+captured payment.
 
 {:.code-header}
 **Request**
@@ -377,14 +492,18 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| **Property**                   | **Data type**  | **Required** | **Description** 
-| transaction.amount         | integer    | Y        | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 DKK, 5000 = 50.00 DKK. |
-| transaction.vatAmount      | integer    | Y        | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 DKK, 5000 = 50.00 DKK. |
-| transaction.description    | string     | Y        | A textual description of the capture                                                                              |
-| transaction.payeeReference | string(50) | Y        | A unique reference for the reversal transaction. See [payeeReference][payee-reference] for details.                                  |
+| ✔︎   | Property                   | Data type  | Description                                                                                                               |
+| :--- | :------------------------- | :--------- | :------------------------------------------------------------------------------------------------------------------------ |
+| ✔︎   | transaction.amount         | integer    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
+| ✔︎   | transaction.vatAmount      | integer    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
+| ✔︎   | transaction.description    | string     | A textual description of the capture                                                                                      |
+| ✔︎   | transaction.payeeReference | string(50) | A unique reference for the reversal transaction. See [payeeReference][payee-reference] for details.                       |
 
 
-The `reversal` resource contains information about a reversal transaction made against a payment. You can return a specific reversal transaction by adding the transaction id to the `GET` request.
+The `reversal` resource contains information about a reversal transaction made 
+against a payment. 
+You can return a specific reversal transaction by adding the transaction id to 
+the `GET` request.
 
 {:.code-header}
 **Response**
@@ -416,30 +535,37 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property             | Data type | Description                            
+| Property             | Data type | Description                                                          |
+| :------------------- | :-------- | :------------------------------------------------------------------- |
 | payment              | string    | The relative URI of the payment this capture transaction belongs to. |
 | reversal.id          | string    | The relative URI of the created capture transaction.                 |
 | reversal.transaction | object    | The object representation of the generic transaction resource.       |
 
 ### Reversal Sequence
 
-Reversal can only be done on a payment where there are some captured amount not yet reversed.
+Reversal can only be done on a payment where there are some 
+captured amount not yet reversed.
 
 ```mermaid
 sequenceDiagram
-  Merchant->PayEx: POST [mobilepay reversals][mobilepay-reversal]
+  Merchant->>PayEx: POST <mobilepay reversal>
   Activate Merchant
   Activate PayEx
-  PayEx-->Merchant: transaction resource
+  PayEx-->>Merchant: transaction resource
   Deactivate PayEx
   Deactivate Merchant
 ```
 
+{% include iterator.html prev_href="redirect"
+                         prev_title="Back: Redirect"
+                         next_href="other-features"
+                         next_title="Next: Other Features" %}
 
-[mobilepay-cancel]: #
-[mobilepay-capture]: #
-[mobilepay-reversal]: #
-[payee-reference]: #
-[technical-reference-abort]: #
-[technical-reference-callback]: #
-[transaction-resource]: #
+[authorization]: /payments/mobile-pay/redirect#type-of-authorization-intent
+[mobilepay-cancel]: /payments/mobile-pay/other-features#cancel-sequence
+[mobilepay-capture]: /payments/mobile-pay/other-features#capture-sequence
+[mobilepay-reversal]: /payments/mobile-pay/other-features#reversal-sequence
+[payee-reference]: /payments/mobile-pay/other-features#payee-reference
+[technical-reference-abort]: /payments/mobile-pay/other-features#abort-a-payment
+[technical-reference-callback]: /payments/mobile-pay/other-features#callback
+[transaction-resource]: /payments/mobile-pay/other-features#transactions
