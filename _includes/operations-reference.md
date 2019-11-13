@@ -554,7 +554,7 @@ Content-Type: application/json
 
 [payment-order-abort]: #abort
 [payment-order-update]: #update-order
-[payment-menu-front-end]: /checkout/payment#payment-menu-front-end
+[payment-menu-front-end]: /checkout/payment-menu#payment-menu-front-end
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
 [operations]: #operations
 [payment-order-items]: #payment-orders

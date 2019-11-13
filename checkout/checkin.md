@@ -1,5 +1,5 @@
 ---
-title: Swedbank Pay Checkout – Payment
+title: Swedbank Pay Checkout – Checkin
 sidebar:
   navigation:
   - title: Checkout
@@ -23,13 +23,17 @@ sidebar:
                       header="Site under development"
                       body="The Developer Portal is under construction and should not be used to integrate against Swedbank Pay's APIs yet." %}
 
-## Checkin
+{% include jumbotron.html body="Swedbank Pay Checkout consists of two parts:
+**Checkin** and **Payment Menu**. In the sections that follow you'll find
+examples of the HTTP requests, responses and HTML code you will need to
+implement in order to complete the Swedbank Pay Checkout integration. To
+finalize Checkout you first have to Checkin. To check in, the payer needs to be
+identified." %}
 
-As mentioned, Swedbank Pay Checkout consists of two parts: **Checkin** and
-**Payment Menu**. In the sections that follow you'll find examples of the
-HTTP requests, responses and HTML code you will need to implement in order to
-complete the Swedbank Pay Checkout integration. Before Checkout you have to
-Checkin. To check in, the payer needs to be identified.
+## Introduction
+
+An overview of how the process of identifying the payer through Checkin is
+illustrated in the below sequence diagram.
 
 ```mermaid
 sequenceDiagram
@@ -60,7 +64,7 @@ sequenceDiagram
         end
 ```
 
-### Checkin Back End
+## Checkin Back End
 
 The payer will be identified with the `consumers` resource and will be
 persisted to streamline future Payment Menu processes. Payer identification
@@ -137,7 +141,7 @@ Content-Type: application/json
 | └➔&nbsp;`contentType` | `string` | The HTTP content type of the target URI. Indicates what sort of resource is to be found at the URI, how it is expected to be used and behave.     |
 | └➔&nbsp;`href`        | `string` | The target URI of the operation.                                                                                                                  |
 
-### Checkin Front End
+## Checkin Front End
 
 The response from the `POST` of consumer information contains a few operations.
 The combination of `rel`, `method` and `contentType` should give you a clue how
@@ -268,7 +272,7 @@ the following argument objects:
 ```
 
 With a `consumerProfileRef` safely tucked into our pocket, the Checkin is
-complete and we can move on to [payment menu](#payment-menu).
+complete and we can move on to [payment menu][payment-menu].
 
 
 {% include iterator.html prev_href="./"
@@ -279,7 +283,7 @@ complete and we can move on to [payment menu](#payment-menu).
 [capture-operation]: /checkout/after-payment#capture
 [checkin-image]: /assets/img/checkout/your-information.png
 [consumer-reference]: /checkout/other-features#payeereference
-[initiate-consumer-session]: /checkout/payment#checkin-back-end
+[initiate-consumer-session]: /checkout/checkin#checkin-back-end
 [msisdn]: https://en.wikipedia.org/wiki/MSISDN
 [operations]: /checkout/other-features#operations
 [order-items]: #order-items
@@ -290,6 +294,7 @@ complete and we can move on to [payment menu](#payment-menu).
 [payment-order-operations]: /checkout/after-payment#operations
 [payment-order]: #payment-orders
 [paymentorder-items]: #items
-[technical-reference-onconsumer-identified]: /checkout/payment#payment-menu-front-end
+[technical-reference-onconsumer-identified]: /checkout/payment-menu-front-end
 [urls]: /checkout/other-features#urls-resource
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
+[payment-menu]: payment-menu

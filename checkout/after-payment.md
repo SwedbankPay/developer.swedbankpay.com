@@ -24,7 +24,7 @@ sidebar:
                       body="The Developer Portal is under construction and should not be used to integrate against Swedbank Pay's APIs yet." %}
 
 {% include jumbotron.html body="When the consumer has **completed** the entire
-[Checkin and Payment flow](/checkout/payment), you need to implement the
+[Checkin](checkin) and [Payment Menu](payment-menu), you need to implement the
 relevant **after-payment operations** in your order system. Which these
 operations are and how they are executed is described below." %}
 

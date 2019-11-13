@@ -1,5 +1,5 @@
 ---
-title: Swedbank Pay Checkout – Payment
+title: Swedbank Pay Checkout – Payment Menu
 sidebar:
   navigation:
   - title: Checkout
@@ -23,11 +23,13 @@ sidebar:
                       header="Site under development"
                       body="The Developer Portal is under construction and should not be used to integrate against Swedbank Pay's APIs yet." %}
 
-## Payment Menu
+{% include jumbotron.html body="**Payment Menu** begins where **Checkin** left
+off, letting the payer complete their purchase." %}
 
-Payment Menu begins where Checkin left off, letting the payer complete
-their purchase. Under, you will se the sequence diagram of the payment menu.<br>
-Notice that there are two optional ways of perfoming the payment:
+## Introduction
+
+Below, you will se the sequence diagram of the payment menu. Notice that there
+are two optional ways of performing the payment:
 
 * Consumer perform payment out of iframe
 
@@ -76,7 +78,7 @@ sequenceDiagram
     deactivate Payer
 ```
 
-### Payment Menu Back End
+## Payment Menu Back End
 
 We start by performing a `POST` request towards the `paymentorder` resource
 with the `consumerProfileRef` we obtained in the checkin process described
@@ -276,7 +278,7 @@ Then find the `view-paymentorder` operation and embed its `href` in a
 That script will then load the Seamless View for the Payment Menu. We will look
 into how to hook that up next.
 
-### Payment Menu Front End
+## Payment Menu Front End
 
 To load the payment menu from the JavaScript URL obtained in the back end API
 response, it needs to be set as a `script` element's `src` attribute. You can
@@ -387,212 +389,10 @@ goods have been sent.
 You may open and close the payment menu using `.open()` and `.close()`
 functions. You can also invoke `.refresh()` to
 [update the Payment Menu][payment-order-operations] after any changes to the
-order.
+order. 
 
-## Payment Orders
-
-{% include payment-order-get.md %}
-
-### Creating a payment order
-
-To create a payment order, you perform a `POST` request towards the
-`paymentorders` resource:
-
-{:.code-header}
-**Request**
-
-```http
-POST /psp/paymentorders HTTP/1.1
-Authorization: Bearer <MerchantToken>
-Content-Type: application/json
-
-{
-    "paymentorder": {
-        "operation": "Purchase",
-        "currency": "SEK",
-        "amount": 1500,
-        "vatAmount": 375,
-        "description": "Test Purchase",
-        "userAgent": "Mozilla/5.0...",
-        "language": "sv-SE",
-        "generateRecurrenceToken": false,
-        "disablePaymentMenu": false,
-        "urls": {
-            "hostUrls": ["https://example.com", "https://example.net"],
-            "completeUrl": "https://example.com/payment-completed",
-            "cancelUrl": "https://example.com/payment-canceled",
-            "paymentUrl": "https://example.com/perform-payment",
-            "callbackUrl": "https://api.example.com/payment-callback",
-            "termsOfServiceUrl": "https://example.com/termsandconditoons.pdf",
-            "logoUrl": "https://example.com/logo.png"
-        },
-        "payeeInfo": {
-            "payeeId": "12345678-1234-1234-1234-123456789012",
-            "payeeReference": "CD1234",
-            "payeeName": "Merchant1",
-            "productCategory": "A123",
-            "orderReference" : "or-123456",
-            "subsite": "Subsite1"
-        },
-        "payer": {
-            "consumerProfileRef": "7d5788219e5bc43350e75ac633e0480ab30ad20f96797a12b96e54da869714c4",
-        },
-        "orderItems": [
-            {
-                "reference": "P1",
-                "name": "Product1",
-                "type": "PRODUCT",
-                "class": "ProductGroup1",
-                "itemUrl": "https://example.com/products/123",
-                "imageUrl": "https://example.com/product123.jpg",
-                "description": "Product 1 description",
-                "discountDescription": "Volume discount",
-                "quantity": 4,
-                "quantityUnit": "pcs",
-                "unitPrice": 300,
-                "discountPrice": 200,
-                "vatPercent": 2500,
-                "amount": 1000,
-                "vatAmount": 250
-            },
-            {
-                "reference": "P2",
-                "name": "Product2",
-                "type": "PRODUCT",
-                "class": "ProductGroup1",
-                "description": "Product 2 description",
-                "quantity": 1,
-                "quantityUnit": "pcs",
-                "unitPrice": 500,
-                "vatPercent": 2500,
-                "amount": 500,
-                "vatAmount": 125
-            }
-        ],
-        "metadata": {
-            "key1": "value1",
-            "key2": 2,
-            "key3": 3.1,
-            "key4": false
-        },
-        "items": [
-            {
-                "creditCard": {
-                    "rejectCreditCards": false,
-                    "rejectDebitCards": false,
-                    "rejectConsumerCards": false,
-                    "rejectCorporateCards": false
-                }
-            },
-            {
-                "invoice": {
-                    "feeAmount": 1900
-                }
-            },
-            {
-                "swish": {
-                    "enableEcomOnly": false
-                }
-            }
-        ]
-    }
-}
-```
-
-{:.table .table-striped}
-| ✔︎︎︎︎︎ (Required) | Property                              | Type     | Description           |
-|:-:|:--------------------------------------|:---------|:----------------------|
-| ✔︎︎︎︎︎ | `paymentorder`                    | `object`     | The payment order object.
-| ✔︎︎︎︎︎ | └➔&nbsp;`operation`               | `string`     | The operation that the payment order is supposed to perform.
-| ✔︎︎︎︎︎ | └➔&nbsp;`currency`                | `string`     | The currency of the payment.
-| ✔︎︎︎︎︎ | └➔&nbsp;`amount`                  | `integer`    | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 SEK` and `5000` equals `50.00 SEK`.
-| ✔︎︎︎︎︎ | └➔&nbsp;`vatAmount`               | `integer`    | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 SEK and `5000` equals `50.00 SEK`.
-| ✔︎︎︎︎︎ | └➔&nbsp;`description`             | `string`     | The description of the payment order.
-| ✔︎︎︎︎︎ | └➔&nbsp;`userAgent`               | `string`     | The user agent of the payer.
-| ✔︎︎︎︎︎ | └➔&nbsp;`language`                | `string`     | The language of the payer.
-| ✔︎︎︎︎︎ | └➔&nbsp;`generateRecurrenceToken` | `bool`       | Determines if a payment token should be generated. A recurrence token is primarily used to enable future recurring payments - with the same token - through server-to-server calls. Default value is `false`
-| ✔︎︎︎︎︎ | └➔&nbsp;`urls`                    | `object`     | The object containing the payee's (such as the webshop or merchant) URLs that are relevant for this payment order. See [URLs for details][urls].
-| ✔︎︎︎︎︎ | └➔&nbsp;`payeeInfo`               | `object`     | The object containing information about the payee.
-| ✔︎︎︎︎︎ | └─➔&nbsp;`payeeId`                | `string`     | The ID of the payee, usually the merchant ID.
-| ✔︎︎︎︎︎ | └─➔&nbsp;`payeeReference`         | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.
-|   | └─➔&nbsp;`payeeName`              | `string`     | The name of the payee, usually the name of the merchant.
-|   | └─➔&nbsp;`productCategory`        | `string`     | A product category or number sent in from the payee/merchant. This is not validated by PayEx, but will be passed through the payment process and may be used in the settlement process.
-|   | └─➔&nbsp;`orderReference`         | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.
-|   | └─➔&nbsp;`subsite`                | `string(40)` | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.
-|   | └➔&nbsp;`payer`                   | `string`     | The consumer profile reference as obtained through the [Consumers][consumer-reference] API.
-|   | └─➔&nbsp;`consumerProfileRef`     | `string`     | The consumer profile reference as obtained through the [Consumers][consumer-reference] API.
-|   | └➔&nbsp;`orderItems`              | `array`      | The array of items being purchased with the order. Used to print on invoices if the payer chooses to pay with invoice, among other things. [See Order Items for details][order-items].
-|   | └➔&nbsp;`metadata`                | `object`     | The keys and values that should be associated with the payment order. Can be additional identifiers and data you want to associate with the payment.
-|   | └➔&nbsp;`items`                   | `array`      | The array of items that will affect how the payment is performed.
-|   | └➔&nbsp;`disablePaymentMenu`                   | `boolean`      | If set to `true`, disables the frame around the payment menu. Usefull when only showing one payment instrument.
-
-**Response**
-
-The response given when creating a payment order is equivalent to a `GET`
-request towards the `paymentorders` resource, [as displayed above](#payment-orders)
-
-#### URLs
-
-The `urls` property of the `paymentOrder` contains the URIs related to a
-payment order, including where the consumer gets redirected when going forward
-with or cancelling a payment session, as well as the callback URI that is used
-to inform the payee (merchant) of changes or updates made to underlying payments or transaction.
-
-{:.table .table-striped}
-| ✔︎︎︎︎︎ (Required) | Property            | Type     | Description                             |
-|:-:|:--------------------|:---------|:----------------------------------------|
-| ✔ ︎︎︎︎︎| `hostUrls`          | `array`  | The array of URIs valid for embedding of Swedbank Pay Hosted Views.
-| ✔︎︎︎︎︎ | `completeUrl`       | `string` | The URI to redirect the payer to once the payment is completed.
-| ✔︎︎︎︎︎ | `termsOfServiceUrl` | `string` | The URI to the terms of service document the payer must accept in order to complete the payment. **HTTPS is a requirement**.
-|   | `cancelUrl`         | `string` | The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios.
-|   | `paymentUrl`        | `string` | The URI that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. Only used in Seamless Views. If both cancelUrl and paymentUrl is sent, the paymentUrl will used.
-|   | `callbackUrl`       | `string` | The URI to the API endpoint receiving `POST` requests on transaction activity related to the payment order.
-|   | `logoUrl`           | `string` | The URI to the logo that will be displayed on redirect pages. **HTTPS is a requirement**.
-
-#### Order Items
-
-The `orderItems` property of the `paymentOrder` is an array containing the items being purchased with the order. Used to print on invoices if the payer chooses to pay with invoice, among other things. Order items can be specified on both payment order creation as well as on [Capture][payment-order-capture].
-
-{% include alert.html type="info"
-                      icon="info"
-                      body="`orderItems` must be a part of `Capture` if `orderItems` is included in the `paymentOrder` creation." %}
-
-{:.table .table-striped}
-| ✔︎︎︎︎︎ (Required) | Property             | Type     | Description                           |
-|:-:|:----------------------|:---------|:--------------------------------------|
-| ✔︎︎︎︎︎ | `reference`          | `string` | A reference that identifies the order item.
-| ✔︎︎︎︎︎ | `name`               | `string` | The name of the order item.
-| ✔︎︎︎︎︎ | `type`               | `string` |  `PRODUCT`, `SERVICE`, `SHIPPING_FEE`, `DISCOUNT`, `VALUE_CODE`, or `OTHER`. The type of the order item.
-| ✔︎︎︎︎︎ | `class`              | `string` | The classification of the order item. Can be used for assigning the order item to a specific product category, for instance. Swedbank Pay has no use for this value itself, but it's useful for some payment instruments and integrations.
-|   | `itemUrl`             | `string` | The URL to a page that contains a human readable description of the order item, or similar.
-|   | `imageUrl`            | `string` | The URL to an image of the order item.
-|   | `description`         | `string` | The human readable description of the order item.
-|   | `discountDescription` | `string` | The human readable description of the possible discount.
-| ✔︎︎︎︎︎ | `quantity`           | `integer` | The quantity of order items being purchased.
-| ✔︎︎︎︎︎ | `quantityUnit`       | `string` | The unit of the quantity, such as `pcs`, `grams`, or similar.
-| ✔︎︎︎︎︎ | `unitPrice`          | `integer` | The price per unit of order item.
-|   | `discountPrice`       | `integer` | If the order item is purchased at a discounted price, this property should contain that price.
-| ✔︎︎︎︎︎ | `vatPercent`         | `integer` | The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.
-| ✔︎︎︎︎︎ | `amount`             | `integer` | The total amount including VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 SEK` and `5000` equals `50.00 SEK`.
-| ✔︎︎︎︎︎ | `vatAmount`          | `integer` | The total amount of VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 SEK` and `5000` equals `50.00 SEK`.
-
-#### Items
-
-The `items` property of the `paymentOrder` is an array containing items that will affect how the payment is performed.
-
-{:.table .table-striped}
-| ✔︎︎︎︎︎ (Required) | Property                        | Type     | Description                 |
-|:-:|:--------------------------------|:---------|:----------------------------|
-|   | `creditCard`                    | `object` | The credit card object.
-|   | └➔&nbsp;`rejectDebitCards`     | `bool`    | `true` if debit cards should be declined; otherwise `false` per default. Default value is set by Swedbank Pay and can be changed at your request.
-|   | └➔&nbsp;`rejectDebitCards`     | `bool`    | `true` if debit cards should be declined; otherwise `false` per default. Default value is set by Swedbank Pay and can be changed at your request.
-|   | └➔&nbsp;`rejectCreditCards`    | `bool`    | `true` if credit cards should be declined; otherwise `false` per default. Default value is set by Swedbank Pay and can be changed at your request.
-|   | └➔&nbsp;`rejectConsumerCards`  | `bool`    | `true` if consumer cards should be declined; otherwise `false` per default. Default value is set by Swedbank Pay and can be changed at your request.
-|   | └➔&nbsp;`rejectCorporateCards` | `bool`    | `true` if corporate cards should be declined; otherwise `false` per default. Default value is set by Swedbank Pay and can be changed at your request.
-|   | `invoice`                       | `object` | The invoice object.
-|   | └➔&nbsp;`feeAmount`            | `integer` | The fee amount in the lowest monetary unit to apply if the consumer chooses to pay with invoice.
-|   | `swish`                         | `object` | The swish object.
-|   | └➔&nbsp;`enableEcomOnly`       | `bool`    | `true` to only enable Swish on ecommerce transactions.
+Now that you have completed the Payment Menu integration, you can move on to
+finalizing the payment in the [After Payment section][after-payment].
 
 {% include iterator.html prev_href="checkin"
                          prev_title="Back: Checkin"
@@ -602,7 +402,7 @@ The `items` property of the `paymentOrder` is an array containing items that wil
 [capture-operation]: /checkout/after-payment#capture
 [checkin-image]: /assets/img/checkout/your-information.png
 [consumer-reference]: /checkout/other-features#payeereference
-[initiate-consumer-session]: /checkout/payment#checkin-back-end
+[initiate-consumer-session]: /checkout/checkin#checkin-back-end
 [msisdn]: https://en.wikipedia.org/wiki/MSISDN
 [operations]: /checkout/other-features#operations
 [order-items]: #order-items
@@ -613,6 +413,7 @@ The `items` property of the `paymentOrder` is an array containing items that wil
 [payment-order-operations]: /checkout/after-payment#operations
 [payment-order]: #payment-orders
 [paymentorder-items]: #items
-[technical-reference-onconsumer-identified]: /checkout/payment#payment-menu-front-end
+[technical-reference-onconsumer-identified]: /checkout/payment-menu-front-end
 [urls]: /checkout/other-features#urls-resource
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
+[after-payment]: after-payment

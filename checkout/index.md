@@ -149,4 +149,4 @@ reference to be used in the payment menu.
                          next_title="Next: Implement Checkin" %}
 
 [https]: /#connection-and-protocol
-[payment-order]: /checkout/payment#payment-orders
+[payment-order]: /checkout/other-features#payment-orders
