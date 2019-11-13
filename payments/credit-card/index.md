@@ -461,9 +461,9 @@ When dealing with credit card payments, 3D-Secure authentication of the cardhold
 * Card supports 3D-Secure - if the card is enrolled with 3D-Secure, Swedbank Pay will redirect the cardholder to the autentication mechanism that is decided by the issuing bank. Normally this will be done using BankID or Mobile BankID.
 
 [Screnshot-1]: /assets/img/creditcard-image-1.png
-{:height="711px" width="400px"}
+{:height="640px" width="600px"}
 [creditcard-image-2]: /assets/img/creditcard-image-2.png
-{:height="711px" width="400px"}
+{:height="640px" width="600px"}
 [redirect-image]: /assets/img/creditcard-image-3.png
 {:height="711px" width="400px"}
 [finalizing-the-transaction]: /payments/credit-card/after-after-payment

@@ -131,7 +131,7 @@ sequenceDiagram
 * *If CallbackURL is set:* Whenever changes to the payment occur a [Callback request] will be posted to the callbackUrl, which was generated when the payment was created.  
 
 [Screnshot-1]: /assets/img/creditcard-image-1.png
-{:height="711px" width="400px"}
+{:height="640px" width="600px"}
 [creditcard-image-2]: /assets/img/creditcard-image-2.png
 {:height="711px" width="400px"}
 [redirect-image]: /assets/img/creditcard-image-3.png
