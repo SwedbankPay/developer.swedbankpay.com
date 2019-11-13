@@ -365,11 +365,11 @@ have the same states (Initialized, completed and failed). 
 
 [card-payments-purchase]: /payments/credit-card/#purchase-flow-1
 [demoshop]: https://ecom.externalintegration.payex.com/pspdemoshop
-[card-icon]: /assets/img/card-icon.PNG
-[invoice-icon]: /assets/img/invoice-icon.PNG
-[envelope-icon]: /assets/img/envelope-icon.PNG
-[keypad-icon]: /assets/img/keypad-icon.PNG
-[vipps-logo]: /assets/img/vipps-icon.PNG
+[card-icon]: /assets/img/card-icon.png
+[invoice-icon]: /assets/img/invoice-icon.png
+[envelope-icon]: /assets/img/envelope-icon.png
+[keypad-icon]: /assets/img/keypad-icon.png
+[vipps-logo]: /assets/img/vipps-icon.png
 [swish-logo]: /assets/img/swish-icon.png
 [mobilepay-logo]: /assets/img/mobilepay-icon.png
 [earth-icon]: /assets/img/globe-icon.png
