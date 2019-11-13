@@ -177,7 +177,6 @@ sequenceDiagram
 
 {% include iterator.html  next_href="redirect" next_title="Next: Redirect" %}
 
-
 [Screnshot-1]: /assets/img/creditcard-image-1.png
 {:height="711px" width="400px"}
 [finalizing-the-transaction]: /payments/credit-card/after-payment
