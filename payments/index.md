@@ -372,7 +372,7 @@ have the same states (Initialized, completed and failed). 
 [vipps-logo]: /assets/img/vipps-icon.PNG
 [swish-logo]: /assets/img/swish-icon.png
 [mobilepay-logo]: /assets/img/mobilepay-icon.png
-[earth-icon]: /assets/img/Globe-icon.png
+[earth-icon]: /assets/img/globe-icon.png
 [nor-flag]: /assets/img/no.png
 [swe-flag]: /assets/img/se.png
 [fin-flag]: /assets/img/fi.png
