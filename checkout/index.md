@@ -36,11 +36,11 @@ methods in just a few simple steps.
 
 To start integrating Swedbank Pay Checkout, you need the following:
 
-* [HTTPS][https] enabled web server
-* Agreement that includes Swedbank Pay Checkout
+* [HTTPS][https] enabled web server.
+* Agreement that includes Swedbank Pay Checkout.
 * Obtained credentials (merchant Access Token) from Swedbank Pay through
   Swedbank Pay Admin. Please observe that Swedbank Pay Checkout encompass
-  both the **`consumer`** and **`paymentmenu`** scope
+  both the **`consumer`** and **`paymentmenu`** scope.
 
 ## Introduction
 
