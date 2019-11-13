@@ -19,7 +19,9 @@ sidebar:
 {% include alert.html type="warning"
                       icon="warning"
                       header="Site under development"
-                      body="The Developer Portal is under construction and should not be used to integrate against Swedbank Pay's APIs yet." %}
+                      body="The Developer Portal is under construction and 
+                      should not be used to integrate against Swedbank Pay's 
+                      APIs yet." %}
 
 {% include jumbotron.html body="After a successful integration, it may be worth
 investigating which **other features** are available in Swedbank Pay Checkout.
@@ -94,6 +96,7 @@ operation.
 If you want to enable subsequent recurring – server-to-server – payments for
 credit card, you need to create a recurrence token. This token will be utilized
 after the initial payment order.
+**This requires that you have activated this on your merchant account.**
 
 **Recurrence Token**
 
@@ -207,6 +210,10 @@ setting the `disablePaymentMenu` property to `true`. The default value is
 
 Setting `disablePaymentMenu` property to `true` removes all other payment
 instruments but the one that is available.
+This feature is only valuable to set to `true` if you have only one payment
+instrument available. By setting it to `true` will remove the frame around the
+menu and show only the instrument.
+
 
 {:.code-header}
 **Request**
@@ -590,7 +597,9 @@ following event argument object:
 
 ### `onPaymentCompleted`
 
-This event triggers when a payment has completed successfully. The `onPaymentCompleted` event is raised with the following event argument object:
+This event triggers when a payment has completed successfully.
+The `onPaymentCompleted` event is raised with the following event argument 
+object:
 
 {:.code-header}
 **`onPaymentCompleted` event object**
@@ -610,7 +619,9 @@ This event triggers when a payment has completed successfully. The `onPaymentCom
 
 ### `onPaymentCanceled`
 
-This event triggers when the user cancels the payment. The `onPaymentCanceled` event is raised with the following event argument object:
+This event triggers when the user cancels the payment. 
+The `onPaymentCanceled` event is raised with the following event argument 
+object:
 
 {:.code-header}
 **`onPaymentCanceled` event object**
@@ -667,10 +678,10 @@ argument object:
 ```
 
 {:.table .table-striped}
-| Property  | Type     | Description                                                                      |
-| :-------- | :------- | :------------------------------------------------------------------------------- |
+| Property  | Type     | Description                                                                             |
+| :-------- | :------- | :-------------------------------------------------------------------------------------- |
 | `origin`  | `string` | `owner`, `merchant`. The value is always `merchant` unless Swedbank Pay hosts the view. |
-| `openUrl` | `string` | The URI containing Terms of Service and conditions.                              |
+| `openUrl` | `string` | The URI containing Terms of Service and conditions.                                     |
 
 ### `onError`
 
@@ -698,7 +709,12 @@ object:
 
 ## Operations
 
-When a payment order resource is created and during its lifetime, it will have a set of operations that can be performed on it. The state of the payment order resource, what the access token is authorized to do, the chosen payment instrument and its transactional states, etc. determine the available operations before the initial purchase. A list of possible operations and their explanation is given below.
+When a payment order resource is created and during its lifetime, it will have 
+a set of operations that can be performed on it. 
+The state of the payment order resource, what the access token is authorized 
+to do, the chosen payment instrument and its transactional states, etc. 
+determine the available operations before the initial purchase. 
+A list of possible operations and their explanation is given below.
 
 {:.code-header}
 **Operations**
@@ -756,12 +772,12 @@ When a payment order resource is created and during its lifetime, it will have a
 ```
 
 {:.table .table-striped}
-| Property      | Type     | Description                                       |
-|:--------------|:---------|:--------------------------------------------------|
-| `href`        | `string` | The target URI to perform the operation against.
-| `rel`         | `string` | The name of the relation the operation has to the current resource.
-| `method`      | `string` | `GET`, `PATCH`, `POST`, etc. The HTTP method to use when performing the operation.
-| `contentType` | `string` | The HTTP content type of the resource referenced in the `href` property.
+| Property      | Type     | Description                                                                        |
+| :------------ | :------- | :--------------------------------------------------------------------------------- |
+| `href`        | `string` | The target URI to perform the operation against.                                   |
+| `rel`         | `string` | The name of the relation the operation has to the current resource.                |
+| `method`      | `string` | `GET`, `PATCH`, `POST`, etc. The HTTP method to use when performing the operation. |
+| `contentType` | `string` | The HTTP content type of the resource referenced in the `href` property.           |
 
 The operations should be performed as described in each response and not as
 described here in the documentation. Always use the `href` and `method` as
@@ -771,15 +787,15 @@ of the `rel` and the request that will be sent in the HTTP body of the request
 for the given operation.
 
 {:.table .table-striped}
-| Operation                          | Description                             |
-|:-----------------------------------|:----------------------------------------|
-| `update-paymentorder-abort`        | [Aborts][abort] the payment order before any financial transactions are performed.
-| `update-paymentorder-updateorder`  | [Updates the order][update-order] with a change in the `amount` and/or `vatAmount`.
-| `redirect-paymentorder`            | Contains the URI that is used to redirect the consumer to the Swedbank Pay Payment Pages containing the Payment Menu.
-| `view-paymentorder`                | Contains the JavaScript `href` that is used to embed the Payment Menu UI directly on the webshop/merchant site.
-| `create-paymentorder-capture`      | The second part of a two-phase transaction where the authorized amount is sent from the payer to the payee. It is possible to do a part-capture on a subset of the authorized amount. Several captures on the same payment are possible, up to the total authorization amount.
-| `create-paymentorder-cancellation` | Used to cancel authorized and not yet captured transactions. If a cancellation is performed after doing a part-capture, it will only affect the not yet captured authorization amount.
-| `create-paymentorder-reversal`     | Used to reverse a payment. It is only possible to reverse a payment that has been captured and not yet reversed.
+| Operation                          | Description                                                                                                                                                                                                                                                                    |
+| :--------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `update-paymentorder-abort`        | [Aborts][abort] the payment order before any financial transactions are performed.                                                                                                                                                                                             |
+| `update-paymentorder-updateorder`  | [Updates the order][update-order] with a change in the `amount` and/or `vatAmount`.                                                                                                                                                                                            |
+| `redirect-paymentorder`            | Contains the URI that is used to redirect the consumer to the Swedbank Pay Payment Pages containing the Payment Menu.                                                                                                                                                          |
+| `view-paymentorder`                | Contains the JavaScript `href` that is used to embed the Payment Menu UI directly on the webshop/merchant site.                                                                                                                                                                |
+| `create-paymentorder-capture`      | The second part of a two-phase transaction where the authorized amount is sent from the payer to the payee. It is possible to do a part-capture on a subset of the authorized amount. Several captures on the same payment are possible, up to the total authorization amount. |
+| `create-paymentorder-cancellation` | Used to cancel authorized and not yet captured transactions. If a cancellation is performed after doing a part-capture, it will only affect the not yet captured authorization amount.                                                                                         |
+| `create-paymentorder-reversal`     | Used to reverse a payment. It is only possible to reverse a payment that has been captured and not yet reversed.                                                                                                                                                               |
 
 ### View Payment Order
 
@@ -902,7 +918,8 @@ Content-Type: application/json
 ```
 
 The response given when changing a payment order is equivalent to a `GET`
-request towards the `paymentorders` resource, [as displayed above][payment-orders-resource].
+request towards the `paymentorders` resource, 
+[as displayed above][payment-orders-resource].
 Remember to call .refresh() on the Payment Menu in JavaScript
 
 ### Capture
@@ -990,7 +1007,8 @@ Content-Type: application/json
 ```
 
 The response given when aborting a payment order is equivalent to a `GET`
-request towards the `paymentorders` resource, [as displayed above][payment-orders],
+request towards the `paymentorders` resource, 
+[as displayed above][payment-orders],
 with its `state` set to `Aborted`.
 
 ### Cancel
@@ -1003,9 +1021,6 @@ with its `state` set to `Aborted`.
 
 {% include settlement-reconciliation.md %}
 
-{% include payment-link.md %}
-
-{% include one-click-payments.md %}
 
 ### Authorizations
 
@@ -1093,13 +1108,13 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property                                 | Type     | Description            |
-|:-----------------------------------------|:---------|:-----------------------|
-| `payment`                     | `string` | The relative URI of the payment this authorization transactions resource belongs to.
-| `authorizations`              | `object` | The authorizations object.
-| └➔&nbsp;`id`                  | `string` | The relative URI of the current authorization transactions resource.
-| └➔&nbsp;`authorizationList`   | `array`  | The array of authorization transaction objects.
-| └➔&nbsp;`authorizationList[]` | `object` | The authorization transaction object described in the `authorization` resource below.
+| Property                      | Type     | Description                                                                           |
+| :---------------------------- | :------- | :------------------------------------------------------------------------------------ |
+| `payment`                     | `string` | The relative URI of the payment this authorization transactions resource belongs to.  |
+| `authorizations`              | `object` | The authorizations object.                                                            |
+| └➔&nbsp;`id`                  | `string` | The relative URI of the current authorization transactions resource.                  |
+| └➔&nbsp;`authorizationList`   | `array`  | The array of authorization transaction objects.                                       |
+| └➔&nbsp;`authorizationList[]` | `object` | The authorization transaction object described in the `authorization` resource below. |
 
 {:.code-header}
 **Request**
@@ -1177,27 +1192,27 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property                                  | Type     | Description           |
-|:------------------------------------------|:---------|:----------------------|
-| `payment`                                 | `string` | The relative URI of the payment this authorization transaction resource belongs to.
-| `authorization`                           | `object` | The authorization object.
-| └➔&nbsp;`id`                              | `string` | The relative URI of the current authorization transaction resource.
-| └➔&nbsp;`paymentToken`                    | `string` | The payment token created for the card used in the authorization.
-| └➔&nbsp;`recurrenceToken`                 | `string` | The recurrence token created for the card used in the authorization.
-| └➔&nbsp;`maskedPan`                       | `string` | The masked PAN number of the card.
-| └➔&nbsp;`expireDate`                      | `string` | The month and year of when the card expires.
-| └➔&nbsp;`panToken`                        | `string` | The token representing the specific PAN of the card.
-| └➔&nbsp;`cardBrand`                       | `string` | `Visa`, `MC`, etc. The brand of the card.
-| └➔&nbsp;`cardType`                        | `string` | `Credit Card` or `Debit Card`. Indicates the type of card used for the authorization.
-| └➔&nbsp;`issuingBank`                     | `string` | The name of the bank that issued the card used for the authorization.
-| └➔&nbsp;`countryCode`                     | `string` | The country the card is issued in.
-| └➔&nbsp;`acquirerTransactionType`         | `string` | `3DSECURE` or `SSL`. Indicates the transaction type of the acquirer.
-| └➔&nbsp;`acquirerStan`                    | `string` | The System Trace Audit Number assigned by the acquirer to uniquely identify the transaction.
-| └➔&nbsp;`acquirerTerminalId`              | `string` | The ID of the acquirer terminal.
-| └➔&nbsp;`acquirerTransactionTime`         | `string` | The ISO-8601 date and time of the acquirer transaction.
-| └➔&nbsp;`issuerAuthorizationApprovalCode` | `string` | The issuer's six-digit code used to identify the approval for a specific authorization request.
-| └➔&nbsp;`authenticationStatus`            | `string` | `Y`, `A`, `U` or `N`. Indicates the status of the authentication.
-| └➔&nbsp;`transaction`                     | `object` | The object representation of the generic [`transaction` resource][transaction].
+| Property                                  | Type     | Description                                                                                     |
+| :---------------------------------------- | :------- | :---------------------------------------------------------------------------------------------- |
+| `payment`                                 | `string` | The relative URI of the payment this authorization transaction resource belongs to.             |
+| `authorization`                           | `object` | The authorization object.                                                                       |
+| └➔&nbsp;`id`                              | `string` | The relative URI of the current authorization transaction resource.                             |
+| └➔&nbsp;`paymentToken`                    | `string` | The payment token created for the card used in the authorization.                               |
+| └➔&nbsp;`recurrenceToken`                 | `string` | The recurrence token created for the card used in the authorization.                            |
+| └➔&nbsp;`maskedPan`                       | `string` | The masked PAN number of the card.                                                              |
+| └➔&nbsp;`expireDate`                      | `string` | The month and year of when the card expires.                                                    |
+| └➔&nbsp;`panToken`                        | `string` | The token representing the specific PAN of the card.                                            |
+| └➔&nbsp;`cardBrand`                       | `string` | `Visa`, `MC`, etc. The brand of the card.                                                       |
+| └➔&nbsp;`cardType`                        | `string` | `Credit Card` or `Debit Card`. Indicates the type of card used for the authorization.           |
+| └➔&nbsp;`issuingBank`                     | `string` | The name of the bank that issued the card used for the authorization.                           |
+| └➔&nbsp;`countryCode`                     | `string` | The country the card is issued in.                                                              |
+| └➔&nbsp;`acquirerTransactionType`         | `string` | `3DSECURE` or `SSL`. Indicates the transaction type of the acquirer.                            |
+| └➔&nbsp;`acquirerStan`                    | `string` | The System Trace Audit Number assigned by the acquirer to uniquely identify the transaction.    |
+| └➔&nbsp;`acquirerTerminalId`              | `string` | The ID of the acquirer terminal.                                                                |
+| └➔&nbsp;`acquirerTransactionTime`         | `string` | The ISO-8601 date and time of the acquirer transaction.                                         |
+| └➔&nbsp;`issuerAuthorizationApprovalCode` | `string` | The issuer's six-digit code used to identify the approval for a specific authorization request. |
+| └➔&nbsp;`authenticationStatus`            | `string` | `Y`, `A`, `U` or `N`. Indicates the status of the authentication.                               |
+| └➔&nbsp;`transaction`                     | `object` | The object representation of the generic [`transaction` resource][transaction].                 |
 
 #### Create authorization transaction
 
@@ -1230,13 +1245,13 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| ✔︎︎︎︎︎ | Property                  | Type        | Description                   |
-|:-:|:--------------------------|:-------------|:------------------------------|
-| ✔︎︎︎︎︎ | `transaction.cardNumber` | `string` | Primary Account Number (PAN) of the card, printed on the face of the card.
-| ✔︎︎︎︎︎ | `transaction.cardExpiryMonth` | `integer` | Expiry month of the card, printed on the face of the card.
-| ✔︎︎︎︎︎ | `transaction.cardExpiryYear` | `integer` | Expiry year of the card, printed on the face of the card.
-|   | `transaction.cardVerificationCode` | `string` |Card verification code (CVC/CVV/CVC2), usually printed on the back of the card.
-|   | `transaction.cardholderName` | `string` | Name of the card holder, usually printed on the face of the card.
+| ✔︎︎︎︎︎ | Property                           | Type      | Description                                                                     |
+| :----: | :--------------------------------- | :-------- | :------------------------------------------------------------------------------ |
+| ✔︎︎︎︎︎ | `transaction.cardNumber`           | `string`  | Primary Account Number (PAN) of the card, printed on the face of the card.      |
+| ✔︎︎︎︎︎ | `transaction.cardExpiryMonth`      | `integer` | Expiry month of the card, printed on the face of the card.                      |
+| ✔︎︎︎︎︎ | `transaction.cardExpiryYear`       | `integer` | Expiry year of the card, printed on the face of the card.                       |
+|        | `transaction.cardVerificationCode` | `string`  | Card verification code (CVC/CVV/CVC2), usually printed on the back of the card. |
+|        | `transaction.cardholderName`       | `string`  | Name of the card holder, usually printed on the face of the card.               |
 
 **Response**
 
@@ -1253,15 +1268,23 @@ authorization transaction made towards a payment, as previously described.
 
 ## Callback
 
-The Callback  functionality is similar for all payment methods.
-
 * Setting a `callbackUrl` in the HTTP `POST` API is optional, but highly
   recommended. If a payer closes the browser window, a network error or
-  something else happens that prevents the payer from being redirect from Swedbank Pay back to the merchant website, the callback is what ensures that you receive information about what happened with the payment.
-* When a change or update from the back-end system are made on a payment or transaction, Swedbank Pay will perform a callback to inform the payee (merchant) about this update.
-* Swedbank Pay will make an HTTP `POST` to the `callbackUrl` that was specified when the payee (merchant) created the payment.
-* When the `callbackUrl` receives such a callback, an HTTP `GET``` request must be made on the payment or on the transaction. The retrieved payment or transaction resource will give you the necessary information about the recent change/update.
-* The callback will be retried if it fails. Below are the retry timings, in milliseconds from the initial transaction time:
+  something else happens that prevents the payer from being redirect from 
+  Swedbank Pay back to the merchant website, the callback is what ensures that 
+  you receive information about what happened with the payment.
+* When a change or update from the back-end system are made on a payment or 
+  transaction, Swedbank Pay will perform a callback to inform the payee 
+  (merchant) about this update.
+* Swedbank Pay will make an HTTP `POST` to the `callbackUrl` that was 
+  specified when the payee (merchant) created the payment.
+* When the `callbackUrl` receives such a callback, an HTTP `GET` request must 
+  be made on the payment or on the transaction. 
+  The retrieved payment or transaction resource will give you the necessary 
+  information about the recent change/update.
+* The callback will be retried if it fails. 
+  Below are the retry timings, in milliseconds from the initial 
+  transaction time:
   * 30000 ms
   * 60000 ms
   * 360000 ms
@@ -1307,11 +1330,13 @@ The Callback  functionality is similar for all payment methods.
 ```
 
 {:.table .table-striped}
-| Parameter| Description
-| `Payment Instrument` | `CreditCard`, `Invoice`, `Swish`, `Vipps`, `DirectDebit`, `MobilePay`
-| `Transaction Type` | `Authorization`, `Capture`, `Cancellation`, `Reversal`
+| Parameter            | Description                                                           |
+| :------------------- | :-------------------------------------------------------------------- |
+| `Payment Instrument` | `CreditCard`, `Invoice`, `Swish`, `Vipps`, `DirectDebit`, `MobilePay` |
+| `Transaction Type`   | `Authorization`, `Capture`, `Cancellation`, `Reversal`                |
 
-The sequence diagram below shows the HTTP ``POST` you will receive from PayEx, and the two `GET` requests that you make to get the updated status.
+The sequence diagram below shows the HTTP `POST` you will receive from PayEx, 
+and the two `GET` requests that you make to get the updated status.
 
 ```mermaid
 sequenceDiagram
@@ -1336,7 +1361,12 @@ sequenceDiagram
 
 ## Problems
 
-When performing operations against the API, it will respond with a problem message that contain details of the error type if the request could not be successfully performed. Regardless of why the error occurred, the problem message will follow the same structure as specified in the [Problem Details for HTTP APIs][http-api-problems]] specification.
+When performing operations against the API, it will respond with a problem 
+message that contain details of the error type if the request could not be 
+successfully performed. 
+Regardless of why the error occurred, the problem message will follow the same 
+structure as specified in the 
+[Problem Details for HTTP APIs][http-api-problems]] specification.
 
 The structure of a problem message will look like this:
 
@@ -1356,66 +1386,36 @@ The structure of a problem message will look like this:
 ```
 
 {:.table .table-striped}
-| Property | Type | Description
-|:--------------------------|:-------------|:------------------------------|
-| `type` | `string` | The URI that identifies the error type. This is the **only property usable for programmatic identification** of the type of error! When dereferenced, it might lead you to a human readable description of the error and how it can be recovered from.
-| `title` | `string` | The title contains a human readable description of the error.
-| `detail` | `string` | A detailed, human readable description of the error.
-| `instance` | `string` | The identifier of the error instance. This might be of use to Swedbank Pay support personnel in order to find the exact error and the context it occurred in.
-| `status` | `integer` | The HTTP status code that the problem was served with.
-| `action` | `string` | The `action` indicates how the error can be recovered from.
-| `problems` | `array` | The array of problem detail objects.
-| └➔&nbsp;`[].name` | `string` | The name of the property, header, object, entity or likewise that was erroneous.
-| └➔&nbsp;`[].description` | `string` | The description of what was wrong with the property, header, object, entity or likewise identified by `name`.
+| Property                 | Type      | Description                                                                                                                                                                                                                                            |
+| :----------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `type`                   | `string`  | The URI that identifies the error type. This is the **only property usable for programmatic identification** of the type of error! When dereferenced, it might lead you to a human readable description of the error and how it can be recovered from. |
+| `title`                  | `string`  | The title contains a human readable description of the error.                                                                                                                                                                                          |
+| `detail`                 | `string`  | A detailed, human readable description of the error.                                                                                                                                                                                                   |
+| `instance`               | `string`  | The identifier of the error instance. This might be of use to Swedbank Pay support personnel in order to find the exact error and the context it occurred in.                                                                                          |
+| `status`                 | `integer` | The HTTP status code that the problem was served with.                                                                                                                                                                                                 |
+| `action`                 | `string`  | The `action` indicates how the error can be recovered from.                                                                                                                                                                                            |
+| `problems`               | `array`   | The array of problem detail objects.                                                                                                                                                                                                                   |
+| └➔&nbsp;`[].name`        | `string`  | The name of the property, header, object, entity or likewise that was erroneous.                                                                                                                                                                       |
+| └➔&nbsp;`[].description` | `string`  | The description of what was wrong with the property, header, object, entity or likewise identified by `name`.                                                                                                                                          |
 
 ### Common Problems
 
-All common problem types will have a URI in the format `https://api.payex.com/psp/<error-type>`. The **URI is an identifier** and is currently not possible to dereference, although that might be possible in the future.
+All common problem types will have a URI in the format
+`https://api.payex.com/psp/<error-type>`. 
+The **URI is an identifier** and is currently not possible to dereference, 
+although that might be possible in the future.
 
 {:.table .table-striped}
-| Type                  | Status | Description                                 |
-|:----------------------|:------:|:--------------------------------------------|
-| `inputerror`          | `400`  | The server cannot or will not process the request due to an apparent client error (e.g. malformed request syntax, size to large, invalid request).
-| `forbidden`           | `403`  | The request was valid, but the server is refusing the action. The necessary permissions to access the resource might be lacking.
-| `notfound`            | `404`  | The requested resource could not be found, but may be available in the future. Subsequent requests are permissible.
-| `systemerror`         | `500`  | A generic error message.
-| `configurationerror`  | `500`  | A error relating to configuration issues.
+| Type                 | Status | Description                                                                                                                                        |
+| :------------------- | :----: | :------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `inputerror`         | `400`  | The server cannot or will not process the request due to an apparent client error (e.g. malformed request syntax, size to large, invalid request). |
+| `forbidden`          | `403`  | The request was valid, but the server is refusing the action. The necessary permissions to access the resource might be lacking.                   |
+| `notfound`           | `404`  | The requested resource could not be found, but may be available in the future. Subsequent requests are permissible.                                |
+| `systemerror`        | `500`  | A generic error message.                                                                                                                           |
+| `configurationerror` | `500`  | A error relating to configuration issues.                                                                                                          |
 
-### Payment Instrument Specific Problems
 
-Problem types for a specific payment instrument will have a URI in the format `https://api.payex.com/psp/<payment-instrument>/<error-type>`. You can read more about the payment instrument specific problem messages below:
-
-* [Card Payments][card-payments-problems]
-* [Invoice][invoice-payments-problems]
-* [Swish][swish-payments-problems]
-* [Vipps][vipps-payments-problems]
-
-### Expansion
-
-The payment resource contain the ID of related sub-resources in its response
-properties. These sub-resources can be expanded inline by using the request
-parameter `expand`. This is an effective way to limit the number of necessary
-calls to the API, as you return several properties related to a Payment resource
-in a single request.
-
-Note that the `expand` parameter is available to all API requests but only
-applies to the request response. This means that you can use the expand
-parameter on a `POST`  or `PATCH`request to get a response containing the target
-resource including expanded properties.
-
-This example below add the `urls` and `authorizations` property inlines to the
-response, enabling you to access information from these sub-resources.
-
-{:.code-header}
-**Expansion**
-
-```http
-GET /psp/creditcard/payments/5adc265f?$expand=urls,authorizations HTTP/1.1
-Host: api.payex.com
-```
-
-To avoid unnecessary overhead, you should only expand the nodes you need info
-about.
+{% include expand-parameter.md %}
 
 ## Payee Info
 
@@ -1431,8 +1431,8 @@ about.
 [current-payment]: #current-payment-resource
 [expanding]: #expansion
 [http-api-problems]: https://tools.ietf.org/html/rfc7807
-[image_disabled_payment_menu]: /assets/img/checkout/test_purchase.PNG
-[image_enabled_payment_menu]: /assets/img/checkout/payment_menu.PNG
+[image_disabled_payment_menu]: /assets/img/checkout/test-purchase.png
+[image_enabled_payment_menu]: /assets/img/checkout/payment-menu.png
 [invoice-payments-problems]: /payments/invoice/other-features#problem-messages
 [order-items]: /checkout/payment#order-items
 [payee-reference]: /checkout/other-features#payeereference

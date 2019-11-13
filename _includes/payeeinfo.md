@@ -5,7 +5,7 @@ a corporation etc) related to a specific payment.
 **Request**
 
 ```http
-GET /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeInfo HTTP/1.1
+GET /psp/paymentorder/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeInfo HTTP/1.1
 Host: api.payex.com
 Authorization: Bearer <MerchantToken>
 Content-Type: application/json
@@ -19,9 +19,9 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "payment": "/psp/paymentorder/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
     "payeeInfo": {
-        "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeInfo",
+        "id": "/psp/paymentorder/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeInfo",
         "payeeId": "12345678-1234-1234-1234-123456789012",
         "payeeReference": "EN1234",
         "payeeName": "TestMerchant1",
@@ -33,15 +33,15 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property | Type | Description
-|:--------------------------|:-------------|:------------------------------|
-| `payment` | `string` |The URI of the payment which the  `payeeinfo`  belongs to.
-| `payeeInfo.id` |string|The URI of the current  `payeeinfo`  resource.
-| `payeeInfo.payeeId` |string|This is the unique id that identifies this payee (like merchant) set by PayEx
-| `payeeInfo.payeeReference` | `string(50)` |A unique reference set by the merchant system. See below for details
-| `payeeInfo.payeeName` | `string` |The payee name (like merchant name) that will be displayed to consumer when redirected to PayEx.
-| `payeeInfo.productCategory` | `string` |A product category or number sent in from the payee/merchant. This is not validated by PayEx, but will be passed through the payment process and may be used in the settlement process. You therefore need to ensure that the value given here is valid in the settlement.
-| `payeeInfo.orderReference` | `string(50)` |The order reference should reflect the order reference found in the merchant's systems.
+| Property                    | Type         | Description                                                                                                                                                                                                                                                                |
+| :-------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `payment`                   | `string`     | The URI of the payment which the  `payeeinfo`  belongs to.                                                                                                                                                                                                                 |
+| `payeeInfo.id`              | `string`     | The URI of the current  `payeeinfo`  resource.                                                                                                                                                                                                                             |
+| `payeeInfo.payeeId`         | `string`     | This is the unique id that identifies this payee (like merchant) set by PayEx                                                                                                                                                                                              |
+| `payeeInfo.payeeReference`  | `string(50)` | A unique reference set by the merchant system. See below for details                                                                                                                                                                                                       |
+| `payeeInfo.payeeName`       | `string`     | The payee name (like merchant name) that will be displayed to consumer when redirected to PayEx.                                                                                                                                                                           |
+| `payeeInfo.productCategory` | `string`     | A product category or number sent in from the payee/merchant. This is not validated by PayEx, but will be passed through the payment process and may be used in the settlement process. You therefore need to ensure that the value given here is valid in the settlement. |
+| `payeeInfo.orderReference`  | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                    |
 
 ### PayeeReference
 

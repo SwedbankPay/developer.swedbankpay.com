@@ -4,7 +4,7 @@
 economic transaction. When a payment is reconciled,  captured amounts for
 the payment are matched against the corresponding settlement." %}
 
-The information needed to reconcile captured funds - the balance report and transactions list - are available for all merchants using PayEx. By default you receive these files by e-mail, but it is also possible to get them via FTP access. Contact [omni.client@payex.com][omni-client-email] for further inquiries regarding this. The settlement frequency is defined in the agreement and you will receive a report for each payout and/or invoice.
+The information needed to reconcile captured funds - the balance report and transactions list - are available for all merchants using PayEx. By default you receive these files by e-mail, but it is also possible to get them via FTP access. Contact [omni.client@swedbankpay.se][omni-client-email] for further inquiries regarding this. The settlement frequency is defined in the agreement and you will receive a report for each payout and/or invoice.
 
 ### Settlement
 
@@ -183,4 +183,4 @@ The content of the files depends on the type of agreement you have made with Pay
 [attachement-5]: /assets/documents/R1234-0001 eget konto.pdf
 [attachement-6]: /assets/documents/R1234-0001 eget konto.pdf
 [attachement-7]: /assets/documents/Testredovisning Eget konto.xml
-[omni-client-email]: mailto:omni.client@payex.com
+[omni-client-email]: mailto:omni.client@swedbankpay.se

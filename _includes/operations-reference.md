@@ -303,13 +303,13 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property                     | Type         | Description                                                                                                                                                                                                |
-| :------- | :--------------------------- | :----------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ✔︎︎︎︎︎   | `transaction.description`    | `string`     | The description of the capture transaction.                                                                                                                                                                |
-| ✔︎︎︎︎︎   | `transaction.amount`         | `integer`    | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.                                                                          |
-| ✔︎︎︎︎︎   | `transaction.vatAmount`      | `integer`    | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.                                                                                 |
-| ✔︎︎︎︎︎   | `transaction.payeeReference` | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [[payeeReference>>doc:Main.ecommerce.technical-reference.WebHome |  | anchor="HPayeeReference"]] for details. |
-|          | `transaction.orderItems`     | `array`      | The array of items being purchased with the order. Used to print on invoices if the payer chooses to pay with invoice, among other things. [See Order Items for details][payment-order-items].             |
+| Required | Property                     | Type         | Description                                                                                                                                                                                    |
+| :------- | :--------------------------- | :----------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ✔︎︎︎︎︎   | `transaction.description`    | `string`     | The description of the capture transaction.                                                                                                                                                    |
+| ✔︎︎︎︎︎   | `transaction.amount`         | `integer`    | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.                                                              |
+| ✔︎︎︎︎︎   | `transaction.vatAmount`      | `integer`    | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.                                                                     |
+| ✔︎︎︎︎︎   | `transaction.payeeReference` | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.       |
+|          | `transaction.orderItems`     | `array`      | The array of items being purchased with the order. Used to print on invoices if the payer chooses to pay with invoice, among other things. [See Order Items for details][payment-order-items]. |
 
 If the capture succeeds, it should respond with something like the following:
 
@@ -351,6 +351,9 @@ operations described below.
 
 #### Abort
 
+* It is possible for the merchant to abort a payment before the end user has fulfilled the payment process. If the merchant calls the `PATCH` function (see example below), the payment will be aborted.
+* This can only happen if there exist no final transactions (like captures) on the payment with a successful status. Once the payment is aborted, no more transactions/operations can be done. If the consumer has been redirected to a hosted payment page when this happens, the end user will be redirected back to your merchant page.
+
 To abort a payment order, perform the `update-paymentorder-abort` operation 
 that is returned in the payment order response. 
 You need to include the following `HTTP` body:
@@ -372,11 +375,50 @@ Content-Type: application/json
 }
 ```
 
-**Response**
 
 The response given when aborting a payment order is equivalent to a `GET` 
-request towards the `paymentorders` resource, 
-[as displayed above][payment-order], with its `state` set to `Aborted`.
+request towards the `paymentorders` resource, with its `state` set to `Aborted`.
+
+{:.code-header}
+**Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "payment": {
+        "id": "/psp/creditcard/payments/e73da1da-1148-476c-b6bb-08d67623d21b",
+        "number": 70100130293,
+        "created": "2019-01-09T13:11:28.371179Z",
+        "updated": "2019-01-09T13:11:46.5949967Z",
+        "instrument": "CreditCard",
+        "operation": "Purchase",
+        "intent": "AutoCapture",
+        "state": "Aborted",
+        "currency": "DKK",
+        "prices": {
+            "id": "/psp/creditcard/payments/e73da1da-1148-476c-b6bb-08d67623d21b/prices"
+        },
+        "amount": 0,
+        "description": "creditcard Test",
+        "payerReference": "100500",
+        "initiatingSystemUserAgent": "PostmanRuntime/7.1.1",
+        "userAgent": "Mozilla/5.0",
+        "language": "nb-NO",
+        "urls": {
+            "id": "/psp/creditcard/payments/e73da1da-1148-476c-b6bb-08d67623d21b/urls"
+        },
+        "payeeInfo": {
+            "id": "/psp/creditcard/payments/e73da1da-1148-476c-b6bb-08d67623d21b/payeeinfo"
+        },
+        "metadata": {
+            "id": "/psp/creditcard/payments/e73da1da-1148-476c-b6bb-08d67623d21b/metadata"
+        }
+    },
+    "operations": []
+}
+```
 
 #### Cancel
 
@@ -467,8 +509,9 @@ Content-Type: application/json
     }
 }
 ```
+
 {:.table .table-striped}
-| Property | Type                         | Required     | Description                                                                                                                                                                              |
+| Required | Property                     | Type         | Description                                                                                                                                                                              |
 | :------- | :--------------------------- | :----------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ✔︎︎︎︎︎   | `transaction.amount`         | `integer`    | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.                                                        |
 | ✔︎︎︎︎︎   | `transaction.vatAmount`      | `integer`    | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.                                                               |

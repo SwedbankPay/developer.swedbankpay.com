@@ -143,7 +143,7 @@ Content-Type: application/json
 [card]: /payments/credit-card/
 [invoice]: /payments/invoice/
 [credit-card-api]: /payments/credit-card/
-[one-click-image]: /assets/img/checkout/one_click.png
+[one-click-image]: /assets/img/checkout/one-click.png
 [delete-payment-token]: #delete-payment-token
 [create-card-payment]: /payments/credit-card/
 [create-invoice-payment]: /payments/invoice/

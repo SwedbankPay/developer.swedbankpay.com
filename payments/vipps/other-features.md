@@ -11,7 +11,7 @@ sidebar:
     - url: /payments/vipps/seamless-view
       title: Seamless View
     - url: /payments/vipps/after-payment
-      title: After After Payment
+      title: After Payment
     - url: /payments/vipps/other-features    
       title: Other Features
 ---
@@ -19,7 +19,9 @@ sidebar:
 {% include alert.html type="warning"
                       icon="warning"
                       header="Site under development"
-                      body="The Developer Portal is under construction and should not be used to integrate against Swedbank Pay's APIs yet." %}
+                      body="The Developer Portal is under construction and 
+                      should not be used to integrate against Swedbank Pay's 
+                      APIs yet." %}
 
 {% include settlement-reconciliation.md %}
 
@@ -29,6 +31,12 @@ sidebar:
 
 {% include recurring-card-payments.md %}
 
+### Payment order
+
+{% include payment-order-get.md %}
+
+{% include operations-reference.md %}
+
 {% include subsite.md %}
 
 ### Prices
@@ -37,32 +45,40 @@ sidebar:
 
 ## Problem messages
 
-When performing unsuccessful operations, the eCommerce API will respond with a problem message. We generally use the problem message type and status code to identify the nature of the problem. The problem name and description will often help narrow down the specifics of the problem.
-
-For general information about problem messages and error handling, [visit error handling and problem details][technical-reference-problems].  
+When performing unsuccessful operations, the eCommerce API will respond with a 
+problem message. 
+We generally use the problem message type and status code to identify the 
+nature of the problem. 
+The problem name and description will often help narrow down the specifics of 
+the problem.
 
 ### Error types from Vipps (Init-call)
 
-All Vipps error types will have the following URI in front of type: `https://api.payex.com/psp/errordetail/vipps/<errorType>`
+All Vipps error types will have the following URI in front of type: 
+`https://api.payex.com/psp/errordetail/vipps/<errorType>`
 
 {:.table .table-striped}
-| **Type** | **Status** | Note 
-| *VIPPS_ERROR* | 403 | All errors
+| Type          | Status | Note       |
+| :------------ | :----- | :--------- |
+| *VIPPS_ERROR* | 403    | All errors |
 
 ### Error types from Vipps (Callback)
 
-All Vipps error types will have the following URI in front of type: `https://api.payex.com/psp/errordetail/vipps/<errorType>`
+All Vipps error types will have the following URI in front of type: 
+`https://api.payex.com/psp/errordetail/vipps/<errorType>`
 
 {:.table .table-striped}
-| **Type** | **Status** | Note 
-| *VIPPS_DECLINED* | 400 | Any status that is not YES
+| Type             | Status | Note                       |
+| :--------------- | :----- | :------------------------- |
+| *VIPPS_DECLINED* | 400    | Any status that is not YES |
 
 ### Error types from Acquirer
 
-All Vipps error types will have the following URI in front of type: `https://api.payex.com/psp/errordetail/vipps/<errorType>`
+All Vipps error types will have the following URI in front of type: 
+`https://api.payex.com/psp/errordetail/vipps/<errorType>`
 
 {:.table .table-striped}
-| **Type** | **Status** | Note 
+| Type | Status | Note 
 | *CARD_BLACKLISTED* | 400 | 
 | *PAYMENT_TOKEN_ERROR* | 403 | 
 | *CARD_DECLINED* | 403 | 
@@ -85,4 +101,13 @@ All Vipps error types will have the following URI in front of type: `https://api
 
 {% include payeeinfo.md %}
 
-[technical-reference-problems]: #
+{% include transactions-reference.md %}
+
+{% include callback-reference.md %}
+
+{% include iterator.html 
+        prev_href="after-payment"
+        prev_title="Back: After Payment" %}
+
+[technical-reference-problems]: #problem-messages
+[payment-order]: #payment-order
