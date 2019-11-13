@@ -28,6 +28,29 @@ sidebar:
 relevant **after-payment operations** in your order system. Which these
 operations are and how they are executed is described below." %}
 
+## Introduction
+
+Below is the final part of the sequence diagram illustrating how a capture
+operation is performed.
+
+```mermaid
+sequenceDiagram
+    participant Payer
+    participant Merchant
+    participant SwedbankPay as Swedbank Pay
+
+    rect rgba(81,43,43,0.1)
+        note left of Payer: Capture
+        activate Merchant
+            Merchant ->>+ SwedbankPay: GET /psp/paymentorders/<paymentOrderId>
+                SwedbankPay -->>- Merchant: rel:create-paymentorder-capture
+            Merchant ->>+ SwedbankPay: POST /psp/paymentorders/<paymentOrderId>/captures
+                SwedbankPay -->>- Merchant: Capture status
+            note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.
+        deactivate Merchant
+    end
+```
+
 ## Operations
 
 Most payment methods are two-phase payments –
