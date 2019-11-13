@@ -8,6 +8,8 @@ sidebar:
       title: Introduction
     - url: /checkout/checkin
       title: Checkin
+    - url: /checkout/payment-menu
+      title: Payment Menu
     - url: /checkout/after-payment
       title: After Payment
     - url: /checkout/summary
@@ -120,8 +122,8 @@ cancellation and reversal operations described below.
 
 {% include payment-order-reversal.md %}
 
-{% include iterator.html prev_href="payment"
-                         prev_title="Back: Payment"
+{% include iterator.html prev_href="payment-menu"
+                         prev_title="Back: Payment Menu"
                          next_href="summary"
                          next_title="Next: Summary" %}
 

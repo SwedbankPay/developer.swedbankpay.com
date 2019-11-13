@@ -8,6 +8,8 @@ sidebar:
       title: Introduction
     - url: /checkout/checkin
       title: Checkin
+    - url: /checkout/payment-menu
+      title: Payment Menu
     - url: /checkout/after-payment
       title: After Payment
     - url: /checkout/summary
