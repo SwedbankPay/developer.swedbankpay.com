@@ -29,11 +29,12 @@ sidebar:
                       should not be used to integrate against Swedbank Pay's 
                       APIs yet." %}
 
->Pick and choose between the payment methods best suited for your business. 
- Take advantage of our easy-to-use PCI compliant platforms Redirect and Swedbank
-  Pay 
- Hosted View - or use Swedbank Pay Direct API to integrate directly. Our payment 
- methods and their platform availability are listed in the table below.
+{% include jumbotron.html body="Pick and choose between the payment methods best
+   suited for your business. 
+   Take advantage of our easy-to-use PCI compliant platforms Redirect and 
+   Seamless View - or use Swedbank Pay Direct API to integrate directly. Our 
+   payment methods and their platform availability are listed in the table 
+   below." %}
 
 {:.table .table-striped}
 |                                | Payment method                      | Seamless View | Redirect | Direct API | Region                                                                           |
