@@ -151,7 +151,7 @@ operation is meant to be embedded in a `<script>` element in an HTML document.
                       `view-consumer-identification` solution.
                       The `redirect-consumer-identification` method redirects
                       the user to Swedbank's own site to handle the checkin
-                      and is used in other implementations.%}
+                      and is used in other implementations."%}
 
 {:.code-header}
 **HTML**
