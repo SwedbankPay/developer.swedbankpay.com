@@ -66,21 +66,15 @@ sequenceDiagram
         rect rgba(238, 112, 35, 0.05)
             note left of Payer: Checkin
 
-            Payer ->> Merchant: Start Checkin
-            activate Merchant
-                Merchant ->> SwedbankPay: POST /psp/consumers
-                activate SwedbankPay
-                    SwedbankPay -->> Merchant: rel:view-consumer-identification [1]
-                deactivate SwedbankPay
-                Merchant -->> Payer: Show Checkin (Consumer Hosted View)
+            Payer ->>+ Merchant: Start Checkin
+                Merchant ->>+ SwedbankPay: POST /psp/consumers
+                    SwedbankPay -->>- Merchant: rel:view-consumer-identification [1]
+                Merchant -->>- Payer: Show Checkin (Consumer Hosted View)
 
-            deactivate Merchant
             Payer ->> Payer: Initiate Consumer Hosted View (open iframe) [2]
-            Payer ->> SwedbankPay: Show Consumer UI page in iframe [3]
-            activate SwedbankPay
+            Payer ->>+ SwedbankPay: Show Consumer UI page in iframe [3]
                 SwedbankPay ->> Payer: Consumer identification process
-                SwedbankPay -->> Payer: Show Consumer completed iframe
-            deactivate SwedbankPay
+                SwedbankPay -->>- Payer: show consumer completed iframe
             Payer ->> Payer: onConsumerIdentified (consumerProfileRef) [4]
         end
 
