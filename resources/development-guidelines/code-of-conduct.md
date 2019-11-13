@@ -19,10 +19,14 @@ sidebar:
 {% include alert.html type="warning"
                       icon="warning"
                       header="Site under development"
-                      body="The Developer Portal is under construction and should not be used to integrate against Swedbank Pay's APIs yet." %}
+                      body="The Developer Portal is under construction and 
+                      should not be used to integrate against Swedbank Pay's 
+                      APIs yet." %}
 
-It is important that the projects governed by Swedbank Pay foster a collaborative, open, inclusive, positive and tolerant community. To underscore this, a `CODE_OF_CONDUCT.md` file from [Contributor Covenant][contributor-covenant] should be added to the project:
-
+It is important that the projects governed by Swedbank Pay foster a 
+collaborative, open, inclusive, positive and tolerant community. To underscore 
+this, a `CODE_OF_CONDUCT.md` file from 
+[Contributor Covenant][contributor-covenant] should be added to the project:
 
 # Contributor Code of Conduct
 
@@ -61,26 +65,24 @@ This Code of Conduct applies both within project spaces and in public spaces
 when an individual is representing the project or its community.
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be
-reported by contacting a project maintainer at [opensource@payex.com][opensource-mail]. All
-complaints will be reviewed and investigated and will result in a response that
-is deemed necessary and appropriate to the circumstances. Maintainers are
-obligated to maintain confidentiality with regard to the reporter of an
-incident.
+reported by contacting a project maintainer at 
+[opensource@payex.com][opensource-mail]. All complaints will be reviewed and 
+investigated and will result in a response that is deemed necessary and 
+appropriate to the circumstances. Maintainers are obligated to maintain 
+confidentiality with regard to the reporter of an incident.
 
-
-This Code of Conduct is adapted from the [Contributor Covenant][contributor-covenant],
-version 1.3.0, available at
+This Code of Conduct is adapted from the 
+[Contributor Covenant][contributor-covenant], version 1.3.0, available at
 [http://contributor-covenant.org/version/1/3/0/][version]
 
-
-
-The Code of Conduct should then be referenced from the `CONTRIBUTING` file, for example with the following paragraphs:
-
+The Code of Conduct should then be referenced from the `CONTRIBUTING` file, 
+for example with the following paragraphs:
 
 Please note that this project is released with a Contributor Code of Conduct.
 By participating in this project you agree to abide by its terms.
 
-{% include iterator.html prev_href="index" prev_title="Back: Development Guidelines Introduction" 
+{% include iterator.html prev_href="index" prev_title="Back: Development 
+Guidelines Introduction" 
 next_href="contributing" next_title="Next: Contributing" %}
 
 [contributor-covenant]: http://contributor-covenant.org/
