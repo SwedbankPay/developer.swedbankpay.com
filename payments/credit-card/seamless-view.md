@@ -65,7 +65,7 @@ both the integration and the payer.
 You will have an iFramed window on your page where the consumer can enter the 
 credit card information.
 
-![payment-page_hosted-view.PNG]{:height="700px" :width="490px"}
+![payment-page_hosted-view.png]{:height="700px" :width="490px"}
 
 ## API Requests
 
@@ -216,7 +216,7 @@ generated when the payment was created.
 {% include iterator.html prev_href="redirect" prev_title="Redirect" 
 next_href="direct" next_title="Next: Direct" %}
 
-[payment-page_hosted-view.PNG]: /assets\Screenshots\Credit Card\hostedView\View\macOS.PNG
+[payment-page_hosted-view.png]: /assets/screenshots/credit-card/hosted-view/view/macos.png
 [abort]: /payments/credit-card/other-features/#abort
 [callback]: /payments/credit-card/other-features/#callback
 [cancel]: /payments/credit-card/after-payment/#cancellations

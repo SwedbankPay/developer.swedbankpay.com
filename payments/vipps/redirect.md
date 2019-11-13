@@ -156,9 +156,9 @@ sequenceDiagram
                          next_href="seamless-view"
                          next_title="Next: Implement Seamless view" %}
 
-[Vipps_flow_PaymentPages.png]: /assets/img/Vipps_flow_PaymentPages.png
-[Vipps-screenshot-1]: /assets/img/checkout/Vipps_hosted_payment.PNG
-[Vipps-screenshot-2]: /assets/img/checkout/Vipps_hosted_payment_no_paymentUrl.PNG
+[Vipps_flow_PaymentPages.png]: /assets/img/vipps-flow-paymentpages.png
+[Vipps-screenshot-1]: /assets/img/checkout/vipps-hosted-payment.png
+[Vipps-screenshot-2]: /assets/img/checkout/vipps-hosted-payment-no-paymenturl.png
 [callbackurl]: /payments/vipps/other-features#callback
 [cancellations]: /payments/vipps/other-features#cancel-sequence
 [captures]: /payments/vipps/other-features#capture-sequence

@@ -259,5 +259,5 @@ deactivate Merchant
 [technical-reference-callbackurl]: #callback
 [technical-reference-finalize]: ../after-payment
 [technical-reference]: #operations
-[test_purchase]: /assets/img/checkout/test_purchase.png
+[test_purchase]: /assets/img/checkout/test-purchase.png
 [vipps]: /payments/vipps
