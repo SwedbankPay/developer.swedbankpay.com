@@ -147,8 +147,7 @@ operation is meant to be embedded in a `<script>` element in an HTML document.
 
 In our example we will focus on the on-site example. Be aware that the
 `redirect-consumer-identification` is the redirect solution, sending you
-to another website to handle the check-in.
-
+to Swedbank's own site to handle the checkin.
 
 {:.code-header}
 **HTML**
@@ -169,8 +168,8 @@ to another website to handle the check-in.
 ```
 
 In the HTML, you only need to add two `<div>` elements to place the
-check-in and payment menu inside of. The JavaScript will handle getting the
-iFrames to handle the check-in and payment.
+check-in and payment menu inside of. The JavaScript will handle the rest when
+it comes to handling the check-in and payment menu.
 
 {:.code-header}
 **JavaScript**
@@ -227,12 +226,12 @@ window.onload = function () {
 };
 ```
 
-Note that we attach the `<script>` element to the head,
+**Notice** that we attach the `<script>` element to the head,
 but use `window.onload` to ensure everything has loaded in properly
 before accessing the page.
 With the scripts loading in after the entire page is loaded, we can access the
 `<div>` container that the Checkin will be hosted in.
-With this setup, after the page loads the following should appear:
+After that has all loaded, you should see something like this:
 
 {:.text-center}
 ![Consumer UI][checkin-image]{:width="564" height="293"}
