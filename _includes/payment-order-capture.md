@@ -3,6 +3,32 @@ It is possible to do a part-capture where you only capture a smaller amount
 than the authorized amount. You can later do more captures on the same payment
 up to the total authorization amount.
 
+This is done by requesting the order information from the server, to get the
+request link to perform the capture. With this, you can request the capture
+with the sum to capture, and get back the status.
+
+```mermaid
+sequenceDiagram
+    participant Payer
+    participant Merchant
+    participant SwedbankPay as Swedbank Pay
+
+    rect rgba(81,43,43,0.1)
+        note left of Payer: Capture
+        activate Merchant
+            Merchant ->> SwedbankPay: GET /psp/paymentorders/<paymentOrderId>
+            activate SwedbankPay
+                SwedbankPay -->> Merchant: rel:create-paymentorder-capture
+            deactivate SwedbankPay
+            Merchant ->> SwedbankPay: POST /psp/paymentorders/<paymentOrderId>/captures
+            activate SwedbankPay
+                SwedbankPay -->> Merchant: Capture status
+            deactivate SwedbankPay
+            note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.
+        deactivate Merchant
+    end
+```
+
 **Notice** that the `orderItems` property object is optional. If the `POST`
 request has `orderItems` in the `paymentorder`, remember to include `orderItems`
 in the `capture` operation. If the `paymentorder` is without `orderItems`,
