@@ -6,8 +6,8 @@ sidebar:
     items:
     - url: /checkout/
       title: Introduction
-    - url: /checkout/payment
-      title: Payment
+    - url: /checkout/checkin
+      title: Checkin
     - url: /checkout/after-payment
       title: After Payment
     - url: /checkout/summary
@@ -143,8 +143,8 @@ reference to be used in the payment menu.
 
 [5] 'Authorize Payment' is when the payer has accepted the payment.
 
-{% include iterator.html next_href="payment"
-                         next_title="Next: Implement Payment" %}
+{% include iterator.html next_href="checkin"
+                         next_title="Next: Implement Checkin" %}
 
 [https]: /#connection-and-protocol
 [payment-order]: /checkout/payment#payment-orders

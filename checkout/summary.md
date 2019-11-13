@@ -6,8 +6,8 @@ sidebar:
     items:
     - url: /checkout/
       title: Introduction
-    - url: /checkout/payment
-      title: Payment
+    - url: /checkout/checkin
+      title: Checkin
     - url: /checkout/after-payment
       title: After Payment
     - url: /checkout/summary
