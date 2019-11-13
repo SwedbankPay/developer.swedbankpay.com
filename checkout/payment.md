@@ -583,7 +583,7 @@ window.onload = function () {
                         });
                         // Like before, you should replace the address here with
                         // your own endpoint.
-                        request.open('POST', , true);
+                        request.open('POST', <Your-Endpoint-Here>, true);
                         request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
                         // In this example, we send the entire Consumer Identified Event Argument
                         // Object as JSON to the server, as it contains the consumerProfileRef.
