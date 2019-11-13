@@ -144,9 +144,15 @@ The `view-consumer-identification` operation
 and its `application/javascript` content type gives us a clue that the
 operation is meant to be embedded in a `<script>` element in an HTML document.
 
-In our example we will focus on the on-site example. Be aware that the
-`redirect-consumer-identification` is the redirect solution, sending you
-to Swedbank's own site to handle the checkin.
+{% include alert.html type="warning"
+                      icon="warning"
+                      header=""
+                      body="In our example we will focus on the on-site example.
+                      Be aware that the `redirect-consumer-identification`
+                      is the redirect solution, sending you to Swedbank's own
+                      site to handle the checkin.
+                      Avoid using `redirect-consumer-identification`
+                      for the time being." %}
 
 {:.code-header}
 **HTML**
