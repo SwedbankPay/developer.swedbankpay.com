@@ -255,6 +255,3 @@ To simulate an error message, set description in `POST` Create Payment or
 | https://api.internaltest.payex.com/psp/fakecallback/notfound   | `404 Not Found`                                      |
 | https://api.internaltest.payex.com/psp/fakecallback/badrequest | `400 Bad Request`                                    |
 | https://api.internaltest.payex.com/psp/fakecallback/random     | `200 OK, 404 Not Found or 400 Bad Request at random` |
-
-{% include iterator.html prev_href="index" prev_title="Back: Introduction" 
-next_href="demoshop" next_title="Next: Demoshop" %}

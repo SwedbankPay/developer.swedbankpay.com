@@ -483,8 +483,6 @@ more about the payment instrument specific problem messages below:
 * [**Swish**][swish]
 * [**Vipps**][vipps]
 
-{% include iterator.html next_href="test-data" next_title="Next: Test Data" %}
-
 [consumers-resource]: #
 [payment-orders-resource]: #
 [checkin]: /checkout/checkin

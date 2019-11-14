@@ -61,10 +61,6 @@ If you choose option 3 (forking the repository), then please read on.
 * [Push][push] the branch to your [forked repository (remote)][remote].
 * Submit a [pull request][pull-request] for the pushed branch.
 
-{% include iterator.html prev_href="code-of-conduct" prev_title="Back: Code Of 
-Conduct" 
-next_href="good-commit-practice" next_title="Next: Good Commit Practice" %}
-
 [coc]:              CODE_OF_CONDUCT.md
 [github]:           https://github.com/signup/free
 [edit]:             https://help.github.com/articles/editing-files-in-your-repository/

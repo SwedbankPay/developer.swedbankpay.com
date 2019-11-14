@@ -81,10 +81,6 @@ for example with the following paragraphs:
 Please note that this project is released with a Contributor Code of Conduct.
 By participating in this project you agree to abide by its terms.
 
-{% include iterator.html prev_href="index" prev_title="Back: Development 
-Guidelines Introduction" 
-next_href="contributing" next_title="Next: Contributing" %}
-
 [contributor-covenant]: http://contributor-covenant.org/
 [opensource-mail]: opensource@payex.com
 [version]: http://contributor-covenant.org/version/1/3/0/

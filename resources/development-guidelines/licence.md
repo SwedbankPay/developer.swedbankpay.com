@@ -59,8 +59,5 @@ The license should be placed in a file called `LICENSE` in the root of the
 repository and preferably be included as a header in all source code files in 
 the same repository.
 
-{% include iterator.html prev_href="good-commit-practice" prev_title="Back: 
-Good Commit Practice" %}
-
 [open-source-initiative]: https://opensource.org/
 [mit-license]: https://opensource.org/licenses/MIT
