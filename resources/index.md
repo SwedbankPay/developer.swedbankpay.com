@@ -74,8 +74,8 @@ Forwarded: for=82.115.151.177; host=example.com; proto=https
 ```
 
 {:.table .table-striped}
-| ✔︎   | Header | Description |
-| :--- | :----- | :---------- ||
+| ✔︎   | Header        | Description                                                                                                                                                                                                                                                                   |
+| :--- | :------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ✔︎   | Content-Type  | The [content type][content-type] of the body of the HTTP request. Usually set to `application/json`.                                                                                                                                                                          |
 | ✔︎   | Accept        | The [content type][content-type] accepted by the client. Usually set to `application/json`.                                                                                                                                                                                   |
 | ✔︎   | Authorization | The OAuth 2 Access Token is generated in [Swedbank Pay Admin][payex-admin]. See the [admin guide][admin-guide] on how to get started.                                                                                                                                         |
