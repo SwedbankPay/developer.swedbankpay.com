@@ -45,11 +45,11 @@ sidebar:
 
 ### Payment Url
 
-For our hosted view, the URL property called `paymentUrl` will be used when the 
-consumer is redirected out of the hosted view frame through our 
+For our Seamless View, the URL property called `paymentUrl` will be used when the 
+consumer is redirected out of the Seamless View frame through our 
 [Vipps API][vipps-payments]. 
 The consumer is redirected out of frame when selecting Vipps as payment method. 
-The URL should represent the page of where the payment hosted view was hosted 
+The URL should represent the page of where the payment Seamless View was hosted 
 originally, such as the checkout page, shopping cart page, or similar. 
 Basically, `paymentUrl` should be set to the same URL as that of the page where 
 the JavaScript for the hosted payment view was added to in order to initiate 

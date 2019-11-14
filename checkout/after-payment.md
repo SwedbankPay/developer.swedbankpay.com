@@ -6,8 +6,10 @@ sidebar:
     items:
     - url: /checkout/
       title: Introduction
-    - url: /checkout/payment
-      title: Payment
+    - url: /checkout/checkin
+      title: Checkin
+    - url: /checkout/payment-menu
+      title: Payment Menu
     - url: /checkout/after-payment
       title: After Payment
     - url: /checkout/summary
@@ -22,9 +24,32 @@ sidebar:
                       body="The Developer Portal is under construction and should not be used to integrate against Swedbank Pay's APIs yet." %}
 
 {% include jumbotron.html body="When the consumer has **completed** the entire
-[Checkin and Payment flow](/checkout/payment), you need to implement the
+[Checkin](checkin) and [Payment Menu](payment-menu), you need to implement the
 relevant **after-payment operations** in your order system. Which these
 operations are and how they are executed is described below." %}
+
+## Introduction
+
+Below is the final part of the sequence diagram illustrating how a capture
+operation is performed.
+
+```mermaid
+sequenceDiagram
+    participant Payer
+    participant Merchant
+    participant SwedbankPay as Swedbank Pay
+
+    rect rgba(81,43,43,0.1)
+        note left of Payer: Capture
+        activate Merchant
+            Merchant ->>+ SwedbankPay: GET /psp/paymentorders/<paymentOrderId>
+                SwedbankPay -->>- Merchant: rel:create-paymentorder-capture
+            Merchant ->>+ SwedbankPay: POST /psp/paymentorders/<paymentOrderId>/captures
+                SwedbankPay -->>- Merchant: Capture status
+            note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.
+        deactivate Merchant
+    end
+```
 
 ## Operations
 
@@ -120,8 +145,8 @@ cancellation and reversal operations described below.
 
 {% include payment-order-reversal.md %}
 
-{% include iterator.html prev_href="payment"
-                         prev_title="Back: Payment"
+{% include iterator.html prev_href="payment-menu"
+                         prev_title="Back: Payment Menu"
                          next_href="summary"
                          next_title="Next: Summary" %}
 

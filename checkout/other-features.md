@@ -6,8 +6,10 @@ sidebar:
     items:
     - url: /checkout/
       title: Introduction
-    - url: /checkout/payment
-      title: Payment
+    - url: /checkout/checkin
+      title: Checkin
+    - url: /checkout/payment-menu
+      title: Payment Menu
     - url: /checkout/after-payment
       title: After Payment
     - url: /checkout/summary
@@ -29,14 +31,14 @@ They are listed on this very page." %}
 
 ## Payment Url
 
-For our hosted views solution in Checkout (using
+For our Seamless Views solution in Checkout (using
 [Payment Order][payment-order]), we have a URL property called `paymentUrl`
-that will be used if the consumer is redirected out of the hosted view
+that will be used if the consumer is redirected out of the Seamless View
 (the `iframe`). The consumer is redirected out of `iframe` when selecting
 payment methods Vipps or in the 3D secure verification for credit card
 payments.
 
-The URL should represent the page of where the payment hosted view was hosted
+The URL should represent the page of where the payment Seamless View was hosted
 originally, such as the checkout page, shopping cart page, or similar.
 Basically, `paymentUrl` should be set to the same URL as that of the page
 where the JavaScript for the hosted payment view was added to in order to
@@ -54,7 +56,817 @@ be performed again.
 With `paymentUrl` in place, the retry process becomes much more convenient for
 both the integration and the payer.
 
-## Purchase Payment Orders
+#### Enable or Disable Payment Menu
+
+It is possible to disable the payment menu when only one instrument exist by
+setting the `disablePaymentMenu` property to `true`. The default value is
+`false`, exemplified below.
+
+{:.code-header}
+**Request**
+
+```js
+{
+    "paymentorder": {
+        "disablePaymentMenu": false
+    {
+}
+```
+
+{:.text-center}
+![example disablePaymentMenu = false][image_enabled_payment_menu]{:width="464" :height="607"}
+
+Setting `disablePaymentMenu` property to `true` removes all other payment
+instruments but the one that is available.
+This feature is only valuable to set to `true` if you have only one payment
+instrument available. By setting it to `true` will remove the frame around the
+menu and show only the instrument.
+
+
+{:.code-header}
+**Request**
+
+```js
+{
+    "paymentorder": {
+        "disablePaymentMenu": true
+    {
+}
+```
+
+{:.text-center}
+![example disablePaymentMenu = true][image_disabled_payment_menu]{:width="463" :height="553"}
+
+## Payment Orders
+
+{% include payment-order-get.md %}
+
+### Creating a payment order
+
+To create a payment order, you perform a `POST` request towards the
+`paymentorders` resource:
+
+{:.code-header}
+**Request**
+
+```http
+POST /psp/paymentorders HTTP/1.1
+Authorization: Bearer <MerchantToken>
+Content-Type: application/json
+
+{
+    "paymentorder": {
+        "operation": "Purchase",
+        "currency": "SEK",
+        "amount": 1500,
+        "vatAmount": 375,
+        "description": "Test Purchase",
+        "userAgent": "Mozilla/5.0...",
+        "language": "sv-SE",
+        "generateRecurrenceToken": false,
+        "disablePaymentMenu": false,
+        "urls": {
+            "hostUrls": ["https://example.com", "https://example.net"],
+            "completeUrl": "https://example.com/payment-completed",
+            "cancelUrl": "https://example.com/payment-canceled",
+            "paymentUrl": "https://example.com/perform-payment",
+            "callbackUrl": "https://api.example.com/payment-callback",
+            "termsOfServiceUrl": "https://example.com/termsandconditoons.pdf",
+            "logoUrl": "https://example.com/logo.png"
+        },
+        "payeeInfo": {
+            "payeeId": "12345678-1234-1234-1234-123456789012",
+            "payeeReference": "CD1234",
+            "payeeName": "Merchant1",
+            "productCategory": "A123",
+            "orderReference" : "or-123456",
+            "subsite": "Subsite1"
+        },
+        "payer": {
+            "consumerProfileRef": "7d5788219e5bc43350e75ac633e0480ab30ad20f96797a12b96e54da869714c4",
+        },
+        "orderItems": [
+            {
+                "reference": "P1",
+                "name": "Product1",
+                "type": "PRODUCT",
+                "class": "ProductGroup1",
+                "itemUrl": "https://example.com/products/123",
+                "imageUrl": "https://example.com/product123.jpg",
+                "description": "Product 1 description",
+                "discountDescription": "Volume discount",
+                "quantity": 4,
+                "quantityUnit": "pcs",
+                "unitPrice": 300,
+                "discountPrice": 200,
+                "vatPercent": 2500,
+                "amount": 1000,
+                "vatAmount": 250
+            },
+            {
+                "reference": "P2",
+                "name": "Product2",
+                "type": "PRODUCT",
+                "class": "ProductGroup1",
+                "description": "Product 2 description",
+                "quantity": 1,
+                "quantityUnit": "pcs",
+                "unitPrice": 500,
+                "vatPercent": 2500,
+                "amount": 500,
+                "vatAmount": 125
+            }
+        ],
+        "metadata": {
+            "key1": "value1",
+            "key2": 2,
+            "key3": 3.1,
+            "key4": false
+        },
+        "items": [
+            {
+                "creditCard": {
+                    "rejectCreditCards": false,
+                    "rejectDebitCards": false,
+                    "rejectConsumerCards": false,
+                    "rejectCorporateCards": false
+                }
+            },
+            {
+                "invoice": {
+                    "feeAmount": 1900
+                }
+            },
+            {
+                "swish": {
+                    "enableEcomOnly": false
+                }
+            }
+        ]
+    }
+}
+```
+
+{:.table .table-striped}
+| ✔︎︎︎︎︎ (Required) | Property                          | Type         | Description                                                                                                                                                                                                  |
+| :---------------: | :-------------------------------- | :----------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|      ✔︎︎︎︎︎       | `paymentorder`                    | `object`     | The payment order object.                                                                                                                                                                                    |
+|      ✔︎︎︎︎︎       | └➔&nbsp;`operation`               | `string`     | The operation that the payment order is supposed to perform.                                                                                                                                                 |
+|      ✔︎︎︎︎︎       | └➔&nbsp;`currency`                | `string`     | The currency of the payment.                                                                                                                                                                                 |
+|      ✔︎︎︎︎︎       | └➔&nbsp;`amount`                  | `integer`    | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 SEK` and `5000` equals `50.00 SEK`.                                                                        |
+|      ✔︎︎︎︎︎       | └➔&nbsp;`vatAmount`               | `integer`    | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 SEK and `5000` equals `50.00 SEK`.                                                                                 |
+|      ✔︎︎︎︎︎       | └➔&nbsp;`description`             | `string`     | The description of the payment order.                                                                                                                                                                        |
+|      ✔︎︎︎︎︎       | └➔&nbsp;`userAgent`               | `string`     | The user agent of the payer.                                                                                                                                                                                 |
+|      ✔︎︎︎︎︎       | └➔&nbsp;`language`                | `string`     | The language of the payer.                                                                                                                                                                                   |
+|      ✔︎︎︎︎︎       | └➔&nbsp;`generateRecurrenceToken` | `bool`       | Determines if a payment token should be generated. A recurrence token is primarily used to enable future recurring payments - with the same token - through server-to-server calls. Default value is `false` |
+|      ✔︎︎︎︎︎       | └➔&nbsp;`urls`                    | `object`     | The object containing the payee's (such as the webshop or merchant) URLs that are relevant for this payment order. See [URLs for details][urls].                                                             |
+|      ✔︎︎︎︎︎       | └➔&nbsp;`payeeInfo`               | `object`     | The object containing information about the payee.                                                                                                                                                           |
+|      ✔︎︎︎︎︎       | └─➔&nbsp;`payeeId`                | `string`     | The ID of the payee, usually the merchant ID.                                                                                                                                                                |
+|      ✔︎︎︎︎︎       | └─➔&nbsp;`payeeReference`         | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.                     |
+|                   | └─➔&nbsp;`payeeName`              | `string`     | The name of the payee, usually the name of the merchant.                                                                                                                                                     |
+|                   | └─➔&nbsp;`productCategory`        | `string`     | A product category or number sent in from the payee/merchant. This is not validated by PayEx, but will be passed through the payment process and may be used in the settlement process.                      |
+|                   | └─➔&nbsp;`orderReference`         | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                      |
+|                   | └─➔&nbsp;`subsite`                | `string(40)` | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.                                                  |
+|                   | └➔&nbsp;`payer`                   | `string`     | The consumer profile reference as obtained through the [Consumers][consumer-reference] API.                                                                                                                  |
+|                   | └─➔&nbsp;`consumerProfileRef`     | `string`     | The consumer profile reference as obtained through the [Consumers][consumer-reference] API.                                                                                                                  |
+|                   | └➔&nbsp;`orderItems`              | `array`      | The array of items being purchased with the order. Used to print on invoices if the payer chooses to pay with invoice, among other things. [See Order Items for details][order-items].                       |
+|                   | └➔&nbsp;`metadata`                | `object`     | The keys and values that should be associated with the payment order. Can be additional identifiers and data you want to associate with the payment.                                                         |
+|                   | └➔&nbsp;`items`                   | `array`      | The array of items that will affect how the payment is performed.                                                                                                                                            |
+|                   | └➔&nbsp;`disablePaymentMenu`      | `boolean`    | If set to `true`, disables the frame around the payment menu. Usefull when only showing one payment instrument.                                                                                              |
+
+**Response**
+
+The response given when creating a payment order is equivalent to a `GET`
+request towards the `paymentorders` resource, [as displayed above](#payment-orders)
+
+### URLs
+
+The `urls` property of the `paymentOrder` contains the URIs related to a
+payment order, including where the consumer gets redirected when going forward
+with or cancelling a payment session, as well as the callback URI that is used
+to inform the payee (merchant) of changes or updates made to underlying payments or transaction.
+
+{:.table .table-striped}
+| ✔︎︎︎︎︎ (Required) | Property            | Type     | Description                                                                                                                                                                                                                                         |
+| :---------------: | :------------------ | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|      ✔ ︎︎︎︎︎      | `hostUrls`          | `array`  | The array of URIs valid for embedding of Swedbank Pay Hosted Views.                                                                                                                                                                                 |
+|      ✔︎︎︎︎︎       | `completeUrl`       | `string` | The URI to redirect the payer to once the payment is completed.                                                                                                                                                                                     |
+|      ✔︎︎︎︎︎       | `termsOfServiceUrl` | `string` | The URI to the terms of service document the payer must accept in order to complete the payment. **HTTPS is a requirement**.                                                                                                                        |
+|                   | `cancelUrl`         | `string` | The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios.                                                                                                                                                       |
+|                   | `paymentUrl`        | `string` | The URI that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. Only used in Seamless Views. If both cancelUrl and paymentUrl is sent, the paymentUrl will used. |
+|                   | `callbackUrl`       | `string` | The URI to the API endpoint receiving `POST` requests on transaction activity related to the payment order.                                                                                                                                         |
+|                   | `logoUrl`           | `string` | The URI to the logo that will be displayed on redirect pages. **HTTPS is a requirement**.                                                                                                                                                           |
+
+### Order Items
+
+The `orderItems` property of the `paymentOrder` is an array containing the items being purchased with the order. Used to print on invoices if the payer chooses to pay with invoice, among other things. Order items can be specified on both payment order creation as well as on [Capture][payment-order-capture].
+
+{% include alert.html type="info"
+                      icon="info"
+                      body="`orderItems` must be a part of `Capture` if `orderItems` is included in the `paymentOrder` creation." %}
+
+{:.table .table-striped}
+| ✔︎︎︎︎︎ (Required) | Property              | Type      | Description                                                                                                                                                                                                                                |
+| :---------------: | :-------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|      ✔︎︎︎︎︎       | `reference`           | `string`  | A reference that identifies the order item.                                                                                                                                                                                                |
+|      ✔︎︎︎︎︎       | `name`                | `string`  | The name of the order item.                                                                                                                                                                                                                |
+|      ✔︎︎︎︎︎       | `type`                | `string`  | `PRODUCT`, `SERVICE`, `SHIPPING_FEE`, `DISCOUNT`, `VALUE_CODE`, or `OTHER`. The type of the order item.                                                                                                                                    |
+|      ✔︎︎︎︎︎       | `class`               | `string`  | The classification of the order item. Can be used for assigning the order item to a specific product category, for instance. Swedbank Pay has no use for this value itself, but it's useful for some payment instruments and integrations. |
+|                   | `itemUrl`             | `string`  | The URL to a page that contains a human readable description of the order item, or similar.                                                                                                                                                |
+|                   | `imageUrl`            | `string`  | The URL to an image of the order item.                                                                                                                                                                                                     |
+|                   | `description`         | `string`  | The human readable description of the order item.                                                                                                                                                                                          |
+|                   | `discountDescription` | `string`  | The human readable description of the possible discount.                                                                                                                                                                                   |
+|      ✔︎︎︎︎︎       | `quantity`            | `integer` | The quantity of order items being purchased.                                                                                                                                                                                               |
+|      ✔︎︎︎︎︎       | `quantityUnit`        | `string`  | The unit of the quantity, such as `pcs`, `grams`, or similar.                                                                                                                                                                              |
+|      ✔︎︎︎︎︎       | `unitPrice`           | `integer` | The price per unit of order item.                                                                                                                                                                                                          |
+|                   | `discountPrice`       | `integer` | If the order item is purchased at a discounted price, this property should contain that price.                                                                                                                                             |
+|      ✔︎︎︎︎︎       | `vatPercent`          | `integer` | The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.                                                                                                                                                                   |
+|      ✔︎︎︎︎︎       | `amount`              | `integer` | The total amount including VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 SEK` and `5000` equals `50.00 SEK`.                                      |
+|      ✔︎︎︎︎︎       | `vatAmount`           | `integer` | The total amount of VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 SEK` and `5000` equals `50.00 SEK`.                                             |
+
+### Items
+
+The `items` property of the `paymentOrder` is an array containing items that will affect how the payment is performed.
+
+{:.table .table-striped}
+| ✔︎︎︎︎︎ (Required) | Property                       | Type      | Description                                                                                                                                           |
+| :---------------: | :----------------------------- | :-------- | :---------------------------------------------------------------------------------------------------------------------------------------------------- |
+|                   | `creditCard`                   | `object`  | The credit card object.                                                                                                                               |
+|                   | └➔&nbsp;`rejectDebitCards`     | `bool`    | `true` if debit cards should be declined; otherwise `false` per default. Default value is set by Swedbank Pay and can be changed at your request.     |
+|                   | └➔&nbsp;`rejectDebitCards`     | `bool`    | `true` if debit cards should be declined; otherwise `false` per default. Default value is set by Swedbank Pay and can be changed at your request.     |
+|                   | └➔&nbsp;`rejectCreditCards`    | `bool`    | `true` if credit cards should be declined; otherwise `false` per default. Default value is set by Swedbank Pay and can be changed at your request.    |
+|                   | └➔&nbsp;`rejectConsumerCards`  | `bool`    | `true` if consumer cards should be declined; otherwise `false` per default. Default value is set by Swedbank Pay and can be changed at your request.  |
+|                   | └➔&nbsp;`rejectCorporateCards` | `bool`    | `true` if corporate cards should be declined; otherwise `false` per default. Default value is set by Swedbank Pay and can be changed at your request. |
+|                   | `invoice`                      | `object`  | The invoice object.                                                                                                                                   |
+|                   | └➔&nbsp;`feeAmount`            | `integer` | The fee amount in the lowest monetary unit to apply if the consumer chooses to pay with invoice.                                                      |
+|                   | `swish`                        | `object`  | The swish object.                                                                                                                                     |
+|                   | └➔&nbsp;`enableEcomOnly`       | `bool`    | `true` to only enable Swish on ecommerce transactions.                                                                                                |
+
+The `paymentOrders` resource utilize several sub-resources, relating to
+underlying [payments][payment-orders-resource-payments],
+[the current payment active][current-payment],
+[payers][payment-orders-resource-payers] and [URLs][payment-resource-urls].
+Common sub-resources like [payeeinfo][payment-resource-payeeinfo], that are
+structurally identical for both payments and payments orders, are described in
+the [Payment Resources][payment-resource] section.
+
+## Operations
+
+When a payment order resource is created and during its lifetime, it will have 
+a set of operations that can be performed on it. 
+The state of the payment order resource, what the access token is authorized 
+to do, the chosen payment instrument and its transactional states, etc. 
+determine the available operations before the initial purchase. 
+A list of possible operations and their explanation is given below.
+
+{:.code-header}
+**Operations**
+
+```js
+{
+    "paymentOrder": {
+        "id": "/psp/paymentorders/8bf85423-841d-4fb8-d754-08d6d398f0c5",
+    }
+    "operations": [
+        {
+            "method": "PATCH",
+            "href": "https://api.externalintegration.payex.com/psp/paymentorders/8bf85423-841d-4fb8-d754-08d6d398f0c5",
+            "rel": "update-paymentorder-abort",
+            "contentType": "application/json"
+        },
+        {
+            "method": "PATCH",
+            "href": "https://api.externalintegration.payex.com/psp/paymentorders/8bf85423-841d-4fb8-d754-08d6d398f0c5",
+            "rel": "update-paymentorder-updateorder",
+            "contentType": "application/json"
+        },
+        {
+            "method": "GET",
+            "href": "https://ecom.externalintegration.payex.com/paymentmenu/eb6932c2e24113377ecd88da343a10566b31f59265c665203b1287277224ef60",
+            "rel": "redirect-paymentorder",
+            "contentType": "text/html"
+        },
+        {
+            "method": "GET",
+            "href": "https://ecom.externalintegration.payex.com/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=eb6932c2e24113377ecd88da343a10566b31f59265c665203b1287277224ef60&culture=nb-NO",
+            "rel": "view-paymentorder",
+            "contentType": "application/javascript"
+        },
+        {
+            "method": "POST",
+            "href": "https://api.externalintegration.payex.com/psp/paymentorders/b80be381-b572-4f1e-9691-08d5dd095bc4/captures",
+            "rel": "create-paymentorder-capture",
+            "contentType": "application/json"
+        },
+        {
+            "method": "POST",
+            "href": "https://api.externalintegration.payex.com/psp/paymentorders/b80be381-b572-4f1e-9691-08d5dd095bc4/cancellations",
+            "rel": "create-paymentorder-cancel",
+            "contentType": "application/json"
+        },
+        {
+            "method": "POST",
+            "href": "https://api.externalintegration.payex.com/psp/paymentorders/b80be381-b572-4f1e-9691-08d5dd095bc4/reversals",
+            "rel": "create-paymentorder-reversal",
+            "contentType": "application/json"
+        }
+    ]
+}
+```
+
+{:.table .table-striped}
+| Property      | Type     | Description                                                                        |
+| :------------ | :------- | :--------------------------------------------------------------------------------- |
+| `href`        | `string` | The target URI to perform the operation against.                                   |
+| `rel`         | `string` | The name of the relation the operation has to the current resource.                |
+| `method`      | `string` | `GET`, `PATCH`, `POST`, etc. The HTTP method to use when performing the operation. |
+| `contentType` | `string` | The HTTP content type of the resource referenced in the `href` property.           |
+
+The operations should be performed as described in each response and not as
+described here in the documentation. Always use the `href` and `method` as
+specified in the response by finding the appropriate operation based on its
+`rel` value. The only thing that should be hard coded in the client is the value
+of the `rel` and the request that will be sent in the HTTP body of the request
+for the given operation.
+
+{:.table .table-striped}
+| Operation                          | Description                                                                                                                                                                                                                                                                    |
+| :--------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `update-paymentorder-abort`        | [Aborts][abort] the payment order before any financial transactions are performed.                                                                                                                                                                                             |
+| `update-paymentorder-updateorder`  | [Updates the order][update-order] with a change in the `amount` and/or `vatAmount`.                                                                                                                                                                                            |
+| `redirect-paymentorder`            | Contains the URI that is used to redirect the consumer to the Swedbank Pay Payment Pages containing the Payment Menu.                                                                                                                                                          |
+| `view-paymentorder`                | Contains the JavaScript `href` that is used to embed the Payment Menu UI directly on the webshop/merchant site.                                                                                                                                                                |
+| `create-paymentorder-capture`      | The second part of a two-phase transaction where the authorized amount is sent from the payer to the payee. It is possible to do a part-capture on a subset of the authorized amount. Several captures on the same payment are possible, up to the total authorization amount. |
+| `create-paymentorder-cancellation` | Used to cancel authorized and not yet captured transactions. If a cancellation is performed after doing a part-capture, it will only affect the not yet captured authorization amount.                                                                                         |
+| `create-paymentorder-reversal`     | Used to reverse a payment. It is only possible to reverse a payment that has been captured and not yet reversed.                                                                                                                                                               |
+
+### View Payment Order
+
+The `view-paymentorder` operation contains the URI of the JavaScript that needs to be set as a `script` element's `src` attribute, either client-side through JavaScript or server-side in HTML as shown below.
+
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Swedbank Pay Checkout is Awesome!</title>
+    </head>
+    <body>
+        <div id="checkout"></div>
+        <script src="https://ecom.payex.com/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=38540e86bd78e885fba2ef054ef9792512b1c9c5975cbd6fd450ef9aa15b1844&culture=nb-NO"></script>
+        <script language="javascript">
+            payex.hostedView.paymentMenu({
+                container: 'checkout',
+                culture: 'nb-NO',
+                onPaymentCompleted: function(paymentCompletedEvent) {
+                    console.log(paymentCompletedEvent);
+                },
+                onPaymentFailed: function(paymentFailedEvent) {
+                    console.log(paymentFailedEvent);
+                },
+                onPaymentCreated: function(paymentCreatedEvent) {
+                    console.log(paymentCreatedEvent);
+                },
+                onPaymentToS: function(paymentToSEvent) {
+                    console.log(paymentToSEvent);
+                },
+                onPaymentMenuInstrumentSelected: function(paymentMenuInstrumentSelectedEvent) {
+                    console.log(paymentMenuInstrumentSelectedEvent);
+                },
+                onError: function(error) {
+                    console.error(error);
+                },
+            }).open();
+        </script>
+    </body>
+</html>
+```
+
+### Update Order
+
+Change amount and vat amount on a payment order. If you implement `updateorder`
+**you need to `refresh()`** the [Payment Menu front end][payment-menu] so the
+new amount is shown to the end customer.
+
+{:.code-header}
+**Request**
+
+```http
+PATCH /psp/paymentorders/b80be381-b572-4f1e-9691-08d5dd095bc4 HTTP/1.1
+Authorization: Bearer <MerchantToken>
+Content-Type: application/json
+
+{
+    "paymentorder": {
+        "operation": "UpdateOrder",
+        "amount": 2500,
+        "vatAmount": 120
+    }
+}
+```
+
+{:.code-header}
+**Response**
+```http
+Response
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "paymentorder": {
+        "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
+        "created": "2018-09-14T13:21:29.3182115Z",
+        "updated": "2018-09-14T13:21:57.6627579Z",
+        "operation": "Purchase",
+        "state": "Ready",
+        "currency": "SEK",
+        "amount": 1500,
+        "vatAmount": 0,
+        "remainingCaptureAmount": 1500,
+        "remainingCancellationAmount": 1500,
+        "remainingReversalAmount": 0,
+        "description": "Test Purchase",
+        "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
+        "userAgent": "Mozilla/5.0...",
+        "language": "nb-NO",
+        "urls" : { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/urls" },
+        "payeeInfo" : { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeinfo" },
+        "settings": { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/settings" },
+        "payers": { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/payers" },
+        "orderItems" : { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/orderItems" },
+        "metadata": { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/metadata" },
+        "payments": { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/payments" },
+        "currentPayment": { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/currentpayment" }
+    },
+    "operations": [
+        {
+            "method": "PATCH",
+            "href": "https://api.externalintegration.payex.com/psp/paymentorders/479a7a2b-3b20-4302-fa84-08d676d15bc0",
+            "rel": "update-paymentorder-abort",
+            "contentType": "application/json"
+        },
+        {
+            "method": "GET",
+            "href": "https://ecom.externalintegration.payex.com/paymentmenu/4b0baaf8fdb5a56b5bdd78a8dd9e63e42e93ec79e5d0c0b5cc40f79cf43c9428",
+            "rel": "redirect-paymentorder",
+            "contentType": "text/html"
+        },
+        {
+            "method": "GET",
+            "href": "https://ecom.externalintegration.payex.com/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=4b0baaf8fdb5a56b5bdd78a8dd9e63e42e93ec79e5d0c0b5cc40f79cf43c9428&culture=nb-NO",
+            "rel": "view-paymentorder",
+            "contentType": "application/javascript"
+        }
+    ]
+}
+```
+
+The response given when changing a payment order is equivalent to a `GET`
+request towards the `paymentorders` resource, 
+[as displayed above][payment-orders-resource].
+Remember to call .refresh() on the Payment Menu in JavaScript
+
+### Capture
+
+{% include payment-order-capture.md %}
+
+### Abort
+
+To abort a payment order, perform the `update-paymentorder-abort` operation that
+is returned in the payment order response. You need to include the following
+in the request body:
+
+{:.code-header}
+**Request**
+
+```http
+PATCH /psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c HTTP/1.1
+Host: api.externalintegration.payex.com
+Authorization: Bearer <MerchantToken>
+Content-Type: application/json
+
+{
+  "paymentorder": {
+    "operation": "Abort",
+    "abortReason": "CancelledByConsumer"
+  }
+}
+```
+
+{:.code-header}
+**Response**
+
+```http
+Response
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "paymentorder": {
+        "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
+        "created": "2018-09-14T13:21:29.3182115Z",
+        "updated": "2018-09-14T13:21:57.6627579Z",
+        "operation": "Purchase",
+        "state": "Ready",
+        "currency": "SEK",
+        "amount": 1500,
+        "vatAmount": 0,
+        "remainingCaptureAmount": 1500,
+        "remainingCancellationAmount": 1500,
+        "remainingReversalAmount": 0,
+        "description": "Test Purchase",
+        "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
+        "userAgent": "Mozilla/5.0...",
+        "language": "nb-NO",
+        "urls" : { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/urls" },
+        "payeeInfo" : { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeinfo" },
+        "settings": { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/settings" },
+        "payers": { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/payers" },
+        "orderItems" : { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/orderItems" },
+        "metadata": { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/metadata" },
+        "payments": { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/payments" },
+        "currentPayment": { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/currentpayment" }
+    },
+    "operations": [
+        {
+            "method": "PATCH",
+            "href": "https://api.externalintegration.payex.com/psp/paymentorders/479a7a2b-3b20-4302-fa84-08d676d15bc0",
+            "rel": "update-paymentorder-abort",
+            "contentType": "application/json"
+        },
+        {
+            "method": "GET",
+            "href": "https://ecom.externalintegration.payex.com/paymentmenu/4b0baaf8fdb5a56b5bdd78a8dd9e63e42e93ec79e5d0c0b5cc40f79cf43c9428",
+            "rel": "redirect-paymentorder",
+            "contentType": "text/html"
+        },
+        {
+            "method": "GET",
+            "href": "https://ecom.externalintegration.payex.com/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=4b0baaf8fdb5a56b5bdd78a8dd9e63e42e93ec79e5d0c0b5cc40f79cf43c9428&culture=nb-NO",
+            "rel": "view-paymentorder",
+            "contentType": "application/javascript"
+        }
+    ]
+}
+```
+
+The response given when aborting a payment order is equivalent to a `GET`
+request towards the `paymentorders` resource, 
+[as displayed above][payment-orders],
+with its `state` set to `Aborted`.
+
+### Cancel
+
+{% include payment-order-cancel.md %}
+
+#### Reversal
+
+{% include payment-order-reversal.md %}
+
+### Authorizations
+
+The `authorizations` resource contains information about authorization
+transactions made on a specific payment.
+
+{:.code-header}
+**Request**
+
+```http
+GET /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations HTTP/1.1
+Host: api.payex.com
+Authorization: Bearer <MerchantToken>
+Content-Type: application/json
+```
+
+{:.code-header}
+**Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "payment": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+  "authorizations": {
+    "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations",
+    "authorizationList": [
+      {
+        "direct": false,
+        "paymentToken": "12345678-1234-1234-1234-123456789012",
+        "recurrenceToken": "12345678-1234-1234-1234-123456789013",
+        "maskedPan": "123456xxxxxx1234",
+        "expiryDate": "mm/yyyy",
+        "panToken": "12345678-1234-1234-1234-123456789012",
+        "cardBrand": "Visa",
+        "cardType": "Credit",
+        "issuingBank": "UTL MAESTRO",
+        "countryCode": "999",
+        "acquirerTransactionType": "3DSECURE",
+        "issuerAuthorizationApprovalCode": "397136",
+        "acquirerStan": "39736",
+        "acquirerTerminalId": "39",
+        "acquirerTransactionTime": "2017-08-29T13:42:18Z",
+        "authenticationStatus": "Y",
+        "nonPaymentToken": "string",
+        "externalNonPaymentToken": "string",
+        "externalSiteId": "string",
+        "transactionInitiator": "CARDHOLDER",
+        "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations/12345678-1234-1234-1234-123456789012",
+        "transaction": {
+          "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
+          "created": "2019-08-13T10:32:21.861621Z",
+          "updated": "2019-08-13T10:32:23.4271016Z",
+          "type": "Authorization",
+          "state": "Failed",
+          "number": 1234567890,
+          "amount": 1000,
+          "vatAmount": 2500,
+          "description": "Test transaction",
+          "payeeReference": "AH123456",
+          "failedReason": "ExternalResponseError",
+          "failedActivityName": "Authorize",
+          "failedErrorCode": "REJECTED_BY_ACQUIRER",
+          "failedErrorDescription": "unknown error, response-code: 51",
+          "isOperational": false,
+          "problem": {
+            "type": "https://api.payex.com/psp/errordetail/creditcard/acquirererror",
+            "title": "Operation failed",
+            "status": 403,
+            "detail": "Unable to complete Authorization transaction, look at problem node!",
+            "problems": [
+              {
+                "name": "ExternalResponse",
+                "description": "REJECTED_BY_ACQUIRER-unknown error, response-code: 51"
+              }
+            ]
+          },
+          "operations": []
+        }
+      }
+    ]
+  }
+}
+```
+
+{:.table .table-striped}
+| Property                      | Type     | Description                                                                           |
+| :---------------------------- | :------- | :------------------------------------------------------------------------------------ |
+| `payment`                     | `string` | The relative URI of the payment this authorization transactions resource belongs to.  |
+| `authorizations`              | `object` | The authorizations object.                                                            |
+| └➔&nbsp;`id`                  | `string` | The relative URI of the current authorization transactions resource.                  |
+| └➔&nbsp;`authorizationList`   | `array`  | The array of authorization transaction objects.                                       |
+| └➔&nbsp;`authorizationList[]` | `object` | The authorization transaction object described in the `authorization` resource below. |
+
+{:.code-header}
+**Request**
+
+```http
+GET /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations/12345678-1234-1234-1234-123456789012 HTTP/1.1
+Host: api.payex.com
+Authorization: Bearer <MerchantToken>
+Content-Type: application/json
+```
+
+{:.code-header}
+**Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "payment": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+  "authorization": {
+    "direct": false,
+    "paymentToken": "12345678-1234-1234-1234-123456789012",
+    "recurrenceToken": "12345678-1234-1234-1234-123456789013",
+    "maskedPan": "123456xxxxxx1234",
+    "expiryDate": "mm/yyyy",
+    "panToken": "12345678-1234-1234-1234-123456789012",
+    "cardBrand": "Visa",
+    "cardType": "Credit",
+    "issuingBank": "UTL MAESTRO",
+    "countryCode": "999",
+    "acquirerTransactionType": "3DSECURE",
+    "issuerAuthorizationApprovalCode": "397136",
+    "acquirerStan": "39736",
+    "acquirerTerminalId": "39",
+    "acquirerTransactionTime": "2017-08-29T13:42:18Z",
+    "authenticationStatus": "Y",
+    "nonPaymentToken": "string",
+    "externalNonPaymentToken": "string",
+    "externalSiteId": "string",
+    "transactionInitiator": "CARDHOLDER",
+    "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations/12345678-1234-1234-1234-123456789012",
+    "transaction": {
+      "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
+      "created": "2019-08-13T10:32:21.861621Z",
+      "updated": "2019-08-13T10:32:23.4271016Z",
+      "type": "Authorization",
+      "state": "Failed",
+      "number": 1234567890,
+      "amount": 1000,
+      "vatAmount": 2500,
+      "description": "Test transaction",
+      "payeeReference": "AH123456",
+      "failedReason": "ExternalResponseError",
+      "failedActivityName": "Authorize",
+      "failedErrorCode": "REJECTED_BY_ACQUIRER",
+      "failedErrorDescription": "unknown error, response-code: 51",
+      "isOperational": false,
+      "problem": {
+        "type": "https://api.payex.com/psp/errordetail/creditcard/acquirererror",
+        "title": "Operation failed",
+        "status": 403,
+        "detail": "Unable to complete Authorization transaction, look at problem node!",
+        "problems": [
+          {
+            "name": "ExternalResponse",
+            "description": "REJECTED_BY_ACQUIRER-unknown error, response-code: 51"
+          }
+        ]
+      },
+      "operations": []
+    }
+  }
+}
+```
+
+{:.table .table-striped}
+| Property                                  | Type     | Description                                                                                     |
+| :---------------------------------------- | :------- | :---------------------------------------------------------------------------------------------- |
+| `payment`                                 | `string` | The relative URI of the payment this authorization transaction resource belongs to.             |
+| `authorization`                           | `object` | The authorization object.                                                                       |
+| └➔&nbsp;`id`                              | `string` | The relative URI of the current authorization transaction resource.                             |
+| └➔&nbsp;`paymentToken`                    | `string` | The payment token created for the card used in the authorization.                               |
+| └➔&nbsp;`recurrenceToken`                 | `string` | The recurrence token created for the card used in the authorization.                            |
+| └➔&nbsp;`maskedPan`                       | `string` | The masked PAN number of the card.                                                              |
+| └➔&nbsp;`expireDate`                      | `string` | The month and year of when the card expires.                                                    |
+| └➔&nbsp;`panToken`                        | `string` | The token representing the specific PAN of the card.                                            |
+| └➔&nbsp;`cardBrand`                       | `string` | `Visa`, `MC`, etc. The brand of the card.                                                       |
+| └➔&nbsp;`cardType`                        | `string` | `Credit Card` or `Debit Card`. Indicates the type of card used for the authorization.           |
+| └➔&nbsp;`issuingBank`                     | `string` | The name of the bank that issued the card used for the authorization.                           |
+| └➔&nbsp;`countryCode`                     | `string` | The country the card is issued in.                                                              |
+| └➔&nbsp;`acquirerTransactionType`         | `string` | `3DSECURE` or `SSL`. Indicates the transaction type of the acquirer.                            |
+| └➔&nbsp;`acquirerStan`                    | `string` | The System Trace Audit Number assigned by the acquirer to uniquely identify the transaction.    |
+| └➔&nbsp;`acquirerTerminalId`              | `string` | The ID of the acquirer terminal.                                                                |
+| └➔&nbsp;`acquirerTransactionTime`         | `string` | The ISO-8601 date and time of the acquirer transaction.                                         |
+| └➔&nbsp;`issuerAuthorizationApprovalCode` | `string` | The issuer's six-digit code used to identify the approval for a specific authorization request. |
+| └➔&nbsp;`authenticationStatus`            | `string` | `Y`, `A`, `U` or `N`. Indicates the status of the authentication.                               |
+| └➔&nbsp;`transaction`                     | `object` | The object representation of the generic [`transaction` resource][transaction].                 |
+
+#### Create authorization transaction
+
+The `direct-authorization` operation creates an authorization transaction
+directly whilst the `redirect-authorization` operation redirects the consumer
+to Swedbank Pay Payment pages where the payment is authorized.
+
+> **Note:** In order to use the `direct-authorization` operation, the servers
+and application involved in retrieving and transferring the credit card number
+from the payer to Swedbank Pay needs to be [PCI DSS][pci-dss] certified.**
+
+{:.code-header}
+**Request**
+
+```http
+POST /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations HTTP/1.1
+Host: api.payex.com
+Authorization: Bearer <MerchantToken>
+Content-Type: application/json
+
+{
+    "transaction": {
+        "cardNumber": "4925000000000004",
+        "cardExpiryMonth": 11,
+        "cardExpiryYear": 22,
+        "cardVerificationCode": "185",
+        "cardholderName": "John Hancock"
+    }
+}
+```
+
+{:.table .table-striped}
+| ✔︎︎︎︎︎ | Property                           | Type      | Description                                                                     |
+| :----: | :--------------------------------- | :-------- | :------------------------------------------------------------------------------ |
+| ✔︎︎︎︎︎ | `transaction.cardNumber`           | `string`  | Primary Account Number (PAN) of the card, printed on the face of the card.      |
+| ✔︎︎︎︎︎ | `transaction.cardExpiryMonth`      | `integer` | Expiry month of the card, printed on the face of the card.                      |
+| ✔︎︎︎︎︎ | `transaction.cardExpiryYear`       | `integer` | Expiry year of the card, printed on the face of the card.                       |
+|        | `transaction.cardVerificationCode` | `string`  | Card verification code (CVC/CVV/CVC2), usually printed on the back of the card. |
+|        | `transaction.cardholderName`       | `string`  | Name of the card holder, usually printed on the face of the card.               |
+
+**Response**
+
+The [`authorization`][transaction] resource contains information about an
+authorization transaction made towards a payment, as previously described.
+
+### Transactions
+
+{% include transactions.md %}
+
+#### Transaction
+
+{% include transaction.md %}
+
+## Purchase Payments
 
 The `Purchase` operation is used in all common purchase scenarios.
 
@@ -69,7 +881,7 @@ The `Purchase` operation is used in all common purchase scenarios.
 }
 ```
 
-## Verify Payment Orders
+## Verify Payments
 
 The `Verify` operation lets you post verifications to confirm the validity of
 **credit card information**, without reserving or charging any amount. This
@@ -188,58 +1000,7 @@ Content-Type: application/json
 }
 ```
 
-#### Enable or Disable Payment Menu 
-
-It is possible to disable the payment menu when only one instrument exist by
-setting the `disablePaymentMenu` property to `true`. The default value is
-`false`, exemplified below.
-
-{:.code-header}
-**Request**
-
-```js
-{
-    "paymentorder": {
-        "disablePaymentMenu": false
-    {
-}
-```
-
-{:.text-center}
-![example disablePaymentMenu = false][image_enabled_payment_menu]{:width="464" :height="607"}
-
-Setting `disablePaymentMenu` property to `true` removes all other payment
-instruments but the one that is available.
-This feature is only valuable to set to `true` if you have only one payment
-instrument available. By setting it to `true` will remove the frame around the
-menu and show only the instrument.
-
-
-{:.code-header}
-**Request**
-
-```js
-{
-    "paymentorder": {
-        "disablePaymentMenu": true
-    {
-}
-```
-
-{:.text-center}
-![example disablePaymentMenu = true][image_disabled_payment_menu]{:width="463" :height="553"}
-
-## Sub-resources
-
-The `paymentOrders` resource utilize several sub-resources, relating to
-underlying [payments][payment-orders-resource-payments],
-[the current payment active][current-payment],
-[payers][payment-orders-resource-payers] and [URLs][payment-resource-urls].
-Common sub-resources like [payeeinfo][payment-resource-payeeinfo], that are
-structurally identical for both payments and payments orders, are described in
-the [Payment Resources][payment-resource] section.
-
-### Payments Resource
+## Payments Resource
 
 A payment order is able to hold more than one payment object,
 _even though a successful payment order only harbour one successful payment_.
@@ -707,583 +1468,24 @@ object:
 | `messageId` | `string` | A unique identifier for the message.                                                      |
 | `details`   | `string` | A human readable and descriptive text of the error.                                       |
 
-## Operations
-
-When a payment order resource is created and during its lifetime, it will have 
-a set of operations that can be performed on it. 
-The state of the payment order resource, what the access token is authorized 
-to do, the chosen payment instrument and its transactional states, etc. 
-determine the available operations before the initial purchase. 
-A list of possible operations and their explanation is given below.
-
-{:.code-header}
-**Operations**
-
-```js
-{
-    "paymentOrder": {
-        "id": "/psp/paymentorders/8bf85423-841d-4fb8-d754-08d6d398f0c5",
-    }
-    "operations": [
-        {
-            "method": "PATCH",
-            "href": "https://api.externalintegration.payex.com/psp/paymentorders/8bf85423-841d-4fb8-d754-08d6d398f0c5",
-            "rel": "update-paymentorder-abort",
-            "contentType": "application/json"
-        },
-        {
-            "method": "PATCH",
-            "href": "https://api.externalintegration.payex.com/psp/paymentorders/8bf85423-841d-4fb8-d754-08d6d398f0c5",
-            "rel": "update-paymentorder-updateorder",
-            "contentType": "application/json"
-        },
-        {
-            "method": "GET",
-            "href": "https://ecom.externalintegration.payex.com/paymentmenu/eb6932c2e24113377ecd88da343a10566b31f59265c665203b1287277224ef60",
-            "rel": "redirect-paymentorder",
-            "contentType": "text/html"
-        },
-        {
-            "method": "GET",
-            "href": "https://ecom.externalintegration.payex.com/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=eb6932c2e24113377ecd88da343a10566b31f59265c665203b1287277224ef60&culture=nb-NO",
-            "rel": "view-paymentorder",
-            "contentType": "application/javascript"
-        },
-        {
-            "method": "POST",
-            "href": "https://api.externalintegration.payex.com/psp/paymentorders/b80be381-b572-4f1e-9691-08d5dd095bc4/captures",
-            "rel": "create-paymentorder-capture",
-            "contentType": "application/json"
-        },
-        {
-            "method": "POST",
-            "href": "https://api.externalintegration.payex.com/psp/paymentorders/b80be381-b572-4f1e-9691-08d5dd095bc4/cancellations",
-            "rel": "create-paymentorder-cancel",
-            "contentType": "application/json"
-        },
-        {
-            "method": "POST",
-            "href": "https://api.externalintegration.payex.com/psp/paymentorders/b80be381-b572-4f1e-9691-08d5dd095bc4/reversals",
-            "rel": "create-paymentorder-reversal",
-            "contentType": "application/json"
-        }
-    ]
-}
-```
-
-{:.table .table-striped}
-| Property      | Type     | Description                                                                        |
-| :------------ | :------- | :--------------------------------------------------------------------------------- |
-| `href`        | `string` | The target URI to perform the operation against.                                   |
-| `rel`         | `string` | The name of the relation the operation has to the current resource.                |
-| `method`      | `string` | `GET`, `PATCH`, `POST`, etc. The HTTP method to use when performing the operation. |
-| `contentType` | `string` | The HTTP content type of the resource referenced in the `href` property.           |
-
-The operations should be performed as described in each response and not as
-described here in the documentation. Always use the `href` and `method` as
-specified in the response by finding the appropriate operation based on its
-`rel` value. The only thing that should be hard coded in the client is the value
-of the `rel` and the request that will be sent in the HTTP body of the request
-for the given operation.
-
-{:.table .table-striped}
-| Operation                          | Description                                                                                                                                                                                                                                                                    |
-| :--------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `update-paymentorder-abort`        | [Aborts][abort] the payment order before any financial transactions are performed.                                                                                                                                                                                             |
-| `update-paymentorder-updateorder`  | [Updates the order][update-order] with a change in the `amount` and/or `vatAmount`.                                                                                                                                                                                            |
-| `redirect-paymentorder`            | Contains the URI that is used to redirect the consumer to the Swedbank Pay Payment Pages containing the Payment Menu.                                                                                                                                                          |
-| `view-paymentorder`                | Contains the JavaScript `href` that is used to embed the Payment Menu UI directly on the webshop/merchant site.                                                                                                                                                                |
-| `create-paymentorder-capture`      | The second part of a two-phase transaction where the authorized amount is sent from the payer to the payee. It is possible to do a part-capture on a subset of the authorized amount. Several captures on the same payment are possible, up to the total authorization amount. |
-| `create-paymentorder-cancellation` | Used to cancel authorized and not yet captured transactions. If a cancellation is performed after doing a part-capture, it will only affect the not yet captured authorization amount.                                                                                         |
-| `create-paymentorder-reversal`     | Used to reverse a payment. It is only possible to reverse a payment that has been captured and not yet reversed.                                                                                                                                                               |
-
-### View Payment Order
-
-The `view-paymentorder` operation contains the URI of the JavaScript that needs to be set as a `script` element's `src` attribute, either client-side through JavaScript or server-side in HTML as shown below.
-
-```html
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Swedbank Pay Checkout is Awesome!</title>
-    </head>
-    <body>
-        <div id="checkout"></div>
-        <script src="https://ecom.payex.com/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=38540e86bd78e885fba2ef054ef9792512b1c9c5975cbd6fd450ef9aa15b1844&culture=nb-NO"></script>
-        <script language="javascript">
-            payex.hostedView.paymentMenu({
-                container: 'checkout',
-                culture: 'nb-NO',
-                onPaymentCompleted: function(paymentCompletedEvent) {
-                    console.log(paymentCompletedEvent);
-                },
-                onPaymentFailed: function(paymentFailedEvent) {
-                    console.log(paymentFailedEvent);
-                },
-                onPaymentCreated: function(paymentCreatedEvent) {
-                    console.log(paymentCreatedEvent);
-                },
-                onPaymentToS: function(paymentToSEvent) {
-                    console.log(paymentToSEvent);
-                },
-                onPaymentMenuInstrumentSelected: function(paymentMenuInstrumentSelectedEvent) {
-                    console.log(paymentMenuInstrumentSelectedEvent);
-                },
-                onError: function(error) {
-                    console.error(error);
-                },
-            }).open();
-        </script>
-    </body>
-</html>
-```
-
-### Update Order
-
-Change amount and vat amount on a payment order. If you implement `updateorder`
-**you need to `refresh()`** the [Payment Menu front end][payment-menu] so the
-new amount is shown to the end customer.
-
-{:.code-header}
-**Request**
-
-```http
-PATCH /psp/paymentorders/b80be381-b572-4f1e-9691-08d5dd095bc4 HTTP/1.1
-Authorization: Bearer <MerchantToken>
-Content-Type: application/json
-
-{
-    "paymentorder": {
-        "operation": "UpdateOrder",
-        "amount": 2500,
-        "vatAmount": 120
-    }
-}
-```
-
-{:.code-header}
-**Response**
-```http
-Response
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "paymentorder": {
-        "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
-        "created": "2018-09-14T13:21:29.3182115Z",
-        "updated": "2018-09-14T13:21:57.6627579Z",
-        "operation": "Purchase",
-        "state": "Ready",
-        "currency": "SEK",
-        "amount": 1500,
-        "vatAmount": 0,
-        "remainingCaptureAmount": 1500,
-        "remainingCancellationAmount": 1500,
-        "remainingReversalAmount": 0,
-        "description": "Test Purchase",
-        "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
-        "userAgent": "Mozilla/5.0...",
-        "language": "nb-NO",
-        "urls" : { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/urls" },
-        "payeeInfo" : { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeinfo" },
-        "settings": { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/settings" },
-        "payers": { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/payers" },
-        "orderItems" : { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/orderItems" },
-        "metadata": { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/metadata" },
-        "payments": { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/payments" },
-        "currentPayment": { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/currentpayment" }
-    },
-    "operations": [
-        {
-            "method": "PATCH",
-            "href": "https://api.externalintegration.payex.com/psp/paymentorders/479a7a2b-3b20-4302-fa84-08d676d15bc0",
-            "rel": "update-paymentorder-abort",
-            "contentType": "application/json"
-        },
-        {
-            "method": "GET",
-            "href": "https://ecom.externalintegration.payex.com/paymentmenu/4b0baaf8fdb5a56b5bdd78a8dd9e63e42e93ec79e5d0c0b5cc40f79cf43c9428",
-            "rel": "redirect-paymentorder",
-            "contentType": "text/html"
-        },
-        {
-            "method": "GET",
-            "href": "https://ecom.externalintegration.payex.com/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=4b0baaf8fdb5a56b5bdd78a8dd9e63e42e93ec79e5d0c0b5cc40f79cf43c9428&culture=nb-NO",
-            "rel": "view-paymentorder",
-            "contentType": "application/javascript"
-        }
-    ]
-}
-```
-
-The response given when changing a payment order is equivalent to a `GET`
-request towards the `paymentorders` resource, 
-[as displayed above][payment-orders-resource].
-Remember to call .refresh() on the Payment Menu in JavaScript
-
-### Capture
-
-{% include payment-order-capture.md %}
-
-### Abort
-
-To abort a payment order, perform the `update-paymentorder-abort` operation that
-is returned in the payment order response. You need to include the following
-in the request body:
-
-{:.code-header}
-**Request**
-
-```http
-PATCH /psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c HTTP/1.1
-Host: api.externalintegration.payex.com
-Authorization: Bearer <MerchantToken>
-Content-Type: application/json
-
-{
-  "paymentorder": {
-    "operation": "Abort",
-    "abortReason": "CancelledByConsumer"
-  }
-}
-```
-
-{:.code-header}
-**Response**
-
-```http
-Response
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "paymentorder": {
-        "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
-        "created": "2018-09-14T13:21:29.3182115Z",
-        "updated": "2018-09-14T13:21:57.6627579Z",
-        "operation": "Purchase",
-        "state": "Ready",
-        "currency": "SEK",
-        "amount": 1500,
-        "vatAmount": 0,
-        "remainingCaptureAmount": 1500,
-        "remainingCancellationAmount": 1500,
-        "remainingReversalAmount": 0,
-        "description": "Test Purchase",
-        "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
-        "userAgent": "Mozilla/5.0...",
-        "language": "nb-NO",
-        "urls" : { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/urls" },
-        "payeeInfo" : { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeinfo" },
-        "settings": { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/settings" },
-        "payers": { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/payers" },
-        "orderItems" : { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/orderItems" },
-        "metadata": { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/metadata" },
-        "payments": { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/payments" },
-        "currentPayment": { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/currentpayment" }
-    },
-    "operations": [
-        {
-            "method": "PATCH",
-            "href": "https://api.externalintegration.payex.com/psp/paymentorders/479a7a2b-3b20-4302-fa84-08d676d15bc0",
-            "rel": "update-paymentorder-abort",
-            "contentType": "application/json"
-        },
-        {
-            "method": "GET",
-            "href": "https://ecom.externalintegration.payex.com/paymentmenu/4b0baaf8fdb5a56b5bdd78a8dd9e63e42e93ec79e5d0c0b5cc40f79cf43c9428",
-            "rel": "redirect-paymentorder",
-            "contentType": "text/html"
-        },
-        {
-            "method": "GET",
-            "href": "https://ecom.externalintegration.payex.com/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=4b0baaf8fdb5a56b5bdd78a8dd9e63e42e93ec79e5d0c0b5cc40f79cf43c9428&culture=nb-NO",
-            "rel": "view-paymentorder",
-            "contentType": "application/javascript"
-        }
-    ]
-}
-```
-
-The response given when aborting a payment order is equivalent to a `GET`
-request towards the `paymentorders` resource, 
-[as displayed above][payment-orders],
-with its `state` set to `Aborted`.
-
-### Cancel
-
-{% include payment-order-cancel.md %}
-
-#### Reversal
-
-{% include payment-order-reversal.md %}
-
-{% include settlement-reconciliation.md %}
-
-
-### Authorizations
-
-The `authorizations` resource contains information about authorization
-transactions made on a specific payment.
-
-{:.code-header}
-**Request**
-
-```http
-GET /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations HTTP/1.1
-Host: api.payex.com
-Authorization: Bearer <MerchantToken>
-Content-Type: application/json
-```
-
-{:.code-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "payment": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
-  "authorizations": {
-    "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations",
-    "authorizationList": [
-      {
-        "direct": false,
-        "paymentToken": "12345678-1234-1234-1234-123456789012",
-        "recurrenceToken": "12345678-1234-1234-1234-123456789013",
-        "maskedPan": "123456xxxxxx1234",
-        "expiryDate": "mm/yyyy",
-        "panToken": "12345678-1234-1234-1234-123456789012",
-        "cardBrand": "Visa",
-        "cardType": "Credit",
-        "issuingBank": "UTL MAESTRO",
-        "countryCode": "999",
-        "acquirerTransactionType": "3DSECURE",
-        "issuerAuthorizationApprovalCode": "397136",
-        "acquirerStan": "39736",
-        "acquirerTerminalId": "39",
-        "acquirerTransactionTime": "2017-08-29T13:42:18Z",
-        "authenticationStatus": "Y",
-        "nonPaymentToken": "string",
-        "externalNonPaymentToken": "string",
-        "externalSiteId": "string",
-        "transactionInitiator": "CARDHOLDER",
-        "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations/12345678-1234-1234-1234-123456789012",
-        "transaction": {
-          "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
-          "created": "2019-08-13T10:32:21.861621Z",
-          "updated": "2019-08-13T10:32:23.4271016Z",
-          "type": "Authorization",
-          "state": "Failed",
-          "number": 1234567890,
-          "amount": 1000,
-          "vatAmount": 2500,
-          "description": "Test transaction",
-          "payeeReference": "AH123456",
-          "failedReason": "ExternalResponseError",
-          "failedActivityName": "Authorize",
-          "failedErrorCode": "REJECTED_BY_ACQUIRER",
-          "failedErrorDescription": "unknown error, response-code: 51",
-          "isOperational": false,
-          "problem": {
-            "type": "https://api.payex.com/psp/errordetail/creditcard/acquirererror",
-            "title": "Operation failed",
-            "status": 403,
-            "detail": "Unable to complete Authorization transaction, look at problem node!",
-            "problems": [
-              {
-                "name": "ExternalResponse",
-                "description": "REJECTED_BY_ACQUIRER-unknown error, response-code: 51"
-              }
-            ]
-          },
-          "operations": []
-        }
-      }
-    ]
-  }
-}
-```
-
-{:.table .table-striped}
-| Property                      | Type     | Description                                                                           |
-| :---------------------------- | :------- | :------------------------------------------------------------------------------------ |
-| `payment`                     | `string` | The relative URI of the payment this authorization transactions resource belongs to.  |
-| `authorizations`              | `object` | The authorizations object.                                                            |
-| └➔&nbsp;`id`                  | `string` | The relative URI of the current authorization transactions resource.                  |
-| └➔&nbsp;`authorizationList`   | `array`  | The array of authorization transaction objects.                                       |
-| └➔&nbsp;`authorizationList[]` | `object` | The authorization transaction object described in the `authorization` resource below. |
-
-{:.code-header}
-**Request**
-
-```http
-GET /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations/12345678-1234-1234-1234-123456789012 HTTP/1.1
-Host: api.payex.com
-Authorization: Bearer <MerchantToken>
-Content-Type: application/json
-```
-
-{:.code-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "payment": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
-  "authorization": {
-    "direct": false,
-    "paymentToken": "12345678-1234-1234-1234-123456789012",
-    "recurrenceToken": "12345678-1234-1234-1234-123456789013",
-    "maskedPan": "123456xxxxxx1234",
-    "expiryDate": "mm/yyyy",
-    "panToken": "12345678-1234-1234-1234-123456789012",
-    "cardBrand": "Visa",
-    "cardType": "Credit",
-    "issuingBank": "UTL MAESTRO",
-    "countryCode": "999",
-    "acquirerTransactionType": "3DSECURE",
-    "issuerAuthorizationApprovalCode": "397136",
-    "acquirerStan": "39736",
-    "acquirerTerminalId": "39",
-    "acquirerTransactionTime": "2017-08-29T13:42:18Z",
-    "authenticationStatus": "Y",
-    "nonPaymentToken": "string",
-    "externalNonPaymentToken": "string",
-    "externalSiteId": "string",
-    "transactionInitiator": "CARDHOLDER",
-    "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations/12345678-1234-1234-1234-123456789012",
-    "transaction": {
-      "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
-      "created": "2019-08-13T10:32:21.861621Z",
-      "updated": "2019-08-13T10:32:23.4271016Z",
-      "type": "Authorization",
-      "state": "Failed",
-      "number": 1234567890,
-      "amount": 1000,
-      "vatAmount": 2500,
-      "description": "Test transaction",
-      "payeeReference": "AH123456",
-      "failedReason": "ExternalResponseError",
-      "failedActivityName": "Authorize",
-      "failedErrorCode": "REJECTED_BY_ACQUIRER",
-      "failedErrorDescription": "unknown error, response-code: 51",
-      "isOperational": false,
-      "problem": {
-        "type": "https://api.payex.com/psp/errordetail/creditcard/acquirererror",
-        "title": "Operation failed",
-        "status": 403,
-        "detail": "Unable to complete Authorization transaction, look at problem node!",
-        "problems": [
-          {
-            "name": "ExternalResponse",
-            "description": "REJECTED_BY_ACQUIRER-unknown error, response-code: 51"
-          }
-        ]
-      },
-      "operations": []
-    }
-  }
-}
-```
-
-{:.table .table-striped}
-| Property                                  | Type     | Description                                                                                     |
-| :---------------------------------------- | :------- | :---------------------------------------------------------------------------------------------- |
-| `payment`                                 | `string` | The relative URI of the payment this authorization transaction resource belongs to.             |
-| `authorization`                           | `object` | The authorization object.                                                                       |
-| └➔&nbsp;`id`                              | `string` | The relative URI of the current authorization transaction resource.                             |
-| └➔&nbsp;`paymentToken`                    | `string` | The payment token created for the card used in the authorization.                               |
-| └➔&nbsp;`recurrenceToken`                 | `string` | The recurrence token created for the card used in the authorization.                            |
-| └➔&nbsp;`maskedPan`                       | `string` | The masked PAN number of the card.                                                              |
-| └➔&nbsp;`expireDate`                      | `string` | The month and year of when the card expires.                                                    |
-| └➔&nbsp;`panToken`                        | `string` | The token representing the specific PAN of the card.                                            |
-| └➔&nbsp;`cardBrand`                       | `string` | `Visa`, `MC`, etc. The brand of the card.                                                       |
-| └➔&nbsp;`cardType`                        | `string` | `Credit Card` or `Debit Card`. Indicates the type of card used for the authorization.           |
-| └➔&nbsp;`issuingBank`                     | `string` | The name of the bank that issued the card used for the authorization.                           |
-| └➔&nbsp;`countryCode`                     | `string` | The country the card is issued in.                                                              |
-| └➔&nbsp;`acquirerTransactionType`         | `string` | `3DSECURE` or `SSL`. Indicates the transaction type of the acquirer.                            |
-| └➔&nbsp;`acquirerStan`                    | `string` | The System Trace Audit Number assigned by the acquirer to uniquely identify the transaction.    |
-| └➔&nbsp;`acquirerTerminalId`              | `string` | The ID of the acquirer terminal.                                                                |
-| └➔&nbsp;`acquirerTransactionTime`         | `string` | The ISO-8601 date and time of the acquirer transaction.                                         |
-| └➔&nbsp;`issuerAuthorizationApprovalCode` | `string` | The issuer's six-digit code used to identify the approval for a specific authorization request. |
-| └➔&nbsp;`authenticationStatus`            | `string` | `Y`, `A`, `U` or `N`. Indicates the status of the authentication.                               |
-| └➔&nbsp;`transaction`                     | `object` | The object representation of the generic [`transaction` resource][transaction].                 |
-
-#### Create authorization transaction
-
-The `direct-authorization` operation creates an authorization transaction
-directly whilst the `redirect-authorization` operation redirects the consumer
-to Swedbank Pay Payment pages where the payment is authorized.
-
-> **Note:** In order to use the `direct-authorization` operation, the servers
-and application involved in retrieving and transferring the credit card number
-from the payer to Swedbank Pay needs to be [PCI DSS][pci-dss] certified.**
-
-{:.code-header}
-**Request**
-
-```http
-POST /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations HTTP/1.1
-Host: api.payex.com
-Authorization: Bearer <MerchantToken>
-Content-Type: application/json
-
-{
-    "transaction": {
-        "cardNumber": "4925000000000004",
-        "cardExpiryMonth": 11,
-        "cardExpiryYear": 22,
-        "cardVerificationCode": "185",
-        "cardholderName": "John Hancock"
-    }
-}
-```
-
-{:.table .table-striped}
-| ✔︎︎︎︎︎ | Property                           | Type      | Description                                                                     |
-| :----: | :--------------------------------- | :-------- | :------------------------------------------------------------------------------ |
-| ✔︎︎︎︎︎ | `transaction.cardNumber`           | `string`  | Primary Account Number (PAN) of the card, printed on the face of the card.      |
-| ✔︎︎︎︎︎ | `transaction.cardExpiryMonth`      | `integer` | Expiry month of the card, printed on the face of the card.                      |
-| ✔︎︎︎︎︎ | `transaction.cardExpiryYear`       | `integer` | Expiry year of the card, printed on the face of the card.                       |
-|        | `transaction.cardVerificationCode` | `string`  | Card verification code (CVC/CVV/CVC2), usually printed on the back of the card. |
-|        | `transaction.cardholderName`       | `string`  | Name of the card holder, usually printed on the face of the card.               |
-
-**Response**
-
-The [`authorization`][transaction] resource contains information about an
-authorization transaction made towards a payment, as previously described.
-
-### Transactions
-
-{% include transactions.md %}
-
-#### Transaction
-
-{% include transaction.md %}
-
 ## Callback
 
 * Setting a `callbackUrl` in the HTTP `POST` API is optional, but highly
   recommended. If a payer closes the browser window, a network error or
-  something else happens that prevents the payer from being redirect from 
-  Swedbank Pay back to the merchant website, the callback is what ensures that 
+  something else happens that prevents the payer from being redirect from
+  Swedbank Pay back to the merchant website, the callback is what ensures that
   you receive information about what happened with the payment.
-* When a change or update from the back-end system are made on a payment or 
-  transaction, Swedbank Pay will perform a callback to inform the payee 
+* When a change or update from the back-end system are made on a payment or
+  transaction, Swedbank Pay will perform a callback to inform the payee
   (merchant) about this update.
-* Swedbank Pay will make an HTTP `POST` to the `callbackUrl` that was 
+* Swedbank Pay will make an HTTP `POST` to the `callbackUrl` that was
   specified when the payee (merchant) created the payment.
-* When the `callbackUrl` receives such a callback, an HTTP `GET` request must 
-  be made on the payment or on the transaction. 
-  The retrieved payment or transaction resource will give you the necessary 
+* When the `callbackUrl` receives such a callback, an HTTP `GET` request must
+  be made on the payment or on the transaction.
+  The retrieved payment or transaction resource will give you the necessary
   information about the recent change/update.
-* The callback will be retried if it fails. 
-  Below are the retry timings, in milliseconds from the initial 
+* The callback will be retried if it fails.
+  Below are the retry timings, in milliseconds from the initial
   transaction time:
   * 30000 ms
   * 60000 ms
@@ -1361,11 +1563,11 @@ sequenceDiagram
 
 ## Problems
 
-When performing operations against the API, it will respond with a problem 
-message that contain details of the error type if the request could not be 
-successfully performed. 
-Regardless of why the error occurred, the problem message will follow the same 
-structure as specified in the 
+When performing operations against the API, it will respond with a problem
+message that contain details of the error type if the request could not be
+successfully performed.
+Regardless of why the error occurred, the problem message will follow the same
+structure as specified in the
 [Problem Details for HTTP APIs][http-api-problems]] specification.
 
 The structure of a problem message will look like this:
@@ -1421,6 +1623,8 @@ although that might be possible in the future.
 
 {% include payeeinfo.md %}
 
+{% include settlement-reconciliation.md %}
+
 {% include iterator.html prev_href="summary" prev_title="Back: Summary" %}
 
 [abort]: #operations
@@ -1434,13 +1638,13 @@ although that might be possible in the future.
 [image_disabled_payment_menu]: /assets/img/checkout/test-purchase.png
 [image_enabled_payment_menu]: /assets/img/checkout/payment-menu.png
 [invoice-payments-problems]: /payments/invoice/other-features#problem-messages
-[order-items]: /checkout/payment#order-items
+[order-items]: /checkout/other-features#order-items
 [payee-reference]: /checkout/other-features#payeereference
-[payment-menu]: /checkout/payment#payment-menu
+[payment-menu]: /checkout/payment-menu
 [payment-orders-resource-payers]: #payer-resource
 [payment-orders-resource-payments]: #current-payment-resource
-[payment-orders-resource]: /checkout/payment#payment-orders
-[payment-orders]: /checkout/payment#payment-orders
+[payment-orders-resource]: /checkout/other-features#payment-orders
+[payment-orders]: /checkout/other-features#payment-orders
 [payment-resource-payeeinfo]: /checkout/other-features#payeereference
 [payment-resource-urls]: #urls-resource
 [payment-resource]: #payments-resource
@@ -1450,3 +1654,4 @@ although that might be possible in the future.
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
 [verification-transaction]: #verify-payment-orders
 [vipps-payments-problems]: /payments/vipps/other-features#problem-messages
+[payment-order]: #payment-orders
