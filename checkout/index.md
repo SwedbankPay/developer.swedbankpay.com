@@ -70,14 +70,14 @@ sequenceDiagram
 
             Payer ->>+ Merchant: Start Checkin
                 Merchant ->>+ SwedbankPay: POST /psp/consumers
-                    SwedbankPay -->>- Merchant: rel:view-consumer-identification ❶
+                    SwedbankPay -->>- Merchant: rel:view-consumer-identification ①
                 Merchant -->>- Payer: Show Checkin (Consumer Hosted View)
 
-            Payer ->> Payer: Initiate Consumer Hosted View (open iframe) ❷
-            Payer ->>+ SwedbankPay: Show Consumer UI page in iframe ❸
+            Payer ->> Payer: Initiate Consumer Hosted View (open iframe) ②
+            Payer ->>+ SwedbankPay: Show Consumer UI page in iframe ③
                 SwedbankPay ->> Payer: Consumer identification process
                 SwedbankPay -->>- Payer: show consumer completed iframe
-            Payer ->> Payer: onConsumerIdentified (consumerProfileRef) ❹
+            Payer ->> Payer: onConsumerIdentified (consumerProfileRef) ④
         end
 
         rect rgba(138,205,195,0.1)
@@ -89,7 +89,7 @@ sequenceDiagram
             Payer ->> Payer: Initiate Payment Menu Hosted View (open iframe)
             SwedbankPay -->> Payer: Show Payment UI page in iframe
             activate SwedbankPay
-                Payer ->> SwedbankPay: Authorize Payment ❺
+                Payer ->> SwedbankPay: Authorize Payment ⑤
                 opt consumer perform payment out of iframe
                     SwedbankPay ->> Merchant: POST Payment Callback
                     SwedbankPay -->> Payer: Redirect to Payment URL
@@ -128,22 +128,23 @@ sequenceDiagram
 
 ### Explanations
 
-Under, you see a list of notes that explains some of the sequences in the diagram.
+Under, you see a list of notes that explains some of the sequences in the
+diagram.
 
 #### Checkin
 
-* ❶ `rel: view-consumer-identification` is a value in one of the operations,
-   sent as a response from Swedbank Pay to the Merchant.
-* ❷ `Initiate Consumer Hosted View (open iframe)` creates the iframe.
-* ❸ `Show Consumer UI page in iframe` displays the checkin form as content inside
-   of the iframe.
-* ❹ `onConsumerIdentified (consumerProfileRef)` is an event that triggers when
-   the consumer has been identified, and delivers a property
-   `consumerProfileRef` as a reference to be used in the payment menu.
+* ① `rel: view-consumer-identification` is a value in one of the operations,
+  sent as a response from Swedbank Pay to the Merchant.
+* ② `Initiate Consumer Hosted View (open iframe)` creates the iframe.
+* ③ `Show Consumer UI page in iframe` displays the checkin form as content inside
+  of the iframe.
+* ④ `onConsumerIdentified (consumerProfileRef)` is an event that triggers when
+  the consumer has been identified, and delivers a property
+  `consumerProfileRef` as a reference to be used in the payment menu.
 
 #### Payment Menu
 
-* ❺ `Authorize Payment` is when the payer has accepted the payment.
+* ⑤ `Authorize Payment` is when the payer has accepted the payment.
 
 {% include iterator.html next_href="checkin"
                          next_title="Next: Implement Checkin" %}
