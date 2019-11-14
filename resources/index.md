@@ -391,12 +391,10 @@ Problem types for a specific payment instrument will have a URI in the format `h
 * [**Swish**][swish]
 * [**Vipps**][vipps]
 
-
-
 [consumers-resource]: #
 [payment-orders-resource]: #
-[checkin]: /checkout/payment/#Checkin
-[payment-menu]: /checkout/payment/#payment-menu
+[checkin]: /checkout/checkin
+[payment-menu]: /checkout/payment-menu
 [checkout]: /checkout/
 [java]: https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default
 [php-curl]: https://stackoverflow.com/a/32926813/61818

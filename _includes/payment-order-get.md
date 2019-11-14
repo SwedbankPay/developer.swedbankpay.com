@@ -94,6 +94,5 @@ Content-Type: application/json
 | └➔&nbsp;`currentPayment` | `string`     | The URI to the `currentPayment` resource where information about the current – and sole active – payment can be retrieved.                                                                                                |
 | └➔&nbsp;`operations`     | `array`      | The array of possible operations to perform, given the state of the payment order. [See Operations for details][operations].                                                                                              |
 
-
 -----------------------------------------
-[payment-menu]: /checkout/payment#payment-menu
+[payment-menu]: /checkout/payment-menu
