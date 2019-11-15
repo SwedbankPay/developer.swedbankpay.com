@@ -407,7 +407,7 @@ finalizing the payment in the [After Payment section][after-payment].
 [operations]: /checkout/other-features#operations
 [order-items]: #order-items
 [payee-reference]: /checkout/other-features#payeereference
-[payment-menu-image]: /assets/img/checkout/payment-methods.png
+[payment-menu-image]: /assets/img/checkout/payment-menu.png
 [payment-menu]: #payment-menu
 [payment-order-capture]: /checkout/after-payment#capture
 [payment-order-operations]: /checkout/after-payment#operations
