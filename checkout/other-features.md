@@ -634,43 +634,6 @@ with its `state` set to `Aborted`.
 
 {% include transaction.md %}
 
-## Purchase Payments
-
-The `Purchase` operation is used in all common purchase scenarios.
-
-{:.code-header}
-**Purchase**
-
-```js
-{
-    "paymentorder": {
-        "operation": "Purchase"
-    {
-}
-```
-
-## Verify Payments
-
-The `Verify` operation lets you post verifications to confirm the validity of
-**credit card information**, without reserving or charging any amount. This
-option is mainly used to initiate a recurring payment scenario where the card
-will be charged at a later date. The request body is equivalent to a `Purchase`
-order with credit card as the selected item.
-A [payment token][payment-orders-resource] will be generated automatically,
-rendering the parameter `generateRecurrenceToken` unnecessary for this
-operation.
-
-{:.code-header}
-**Verify**
-
-```js
-{
-    "paymentorder": {
-        "operation": "Verify"
-    {
-}
-```
-
 ## Recurring Payments
 
 If you want to enable subsequent recurring – server-to-server – payments for
@@ -765,6 +728,43 @@ Content-Type: application/json
       "key4": false
     }
   }
+}
+```
+
+## Purchase Payments
+
+The `Purchase` operation is used in all common purchase scenarios.
+
+{:.code-header}
+**Purchase**
+
+```js
+{
+    "paymentorder": {
+        "operation": "Purchase"
+    {
+}
+```
+
+## Verify Payments
+
+The `Verify` operation lets you post verifications to confirm the validity of
+**credit card information**, without reserving or charging any amount. This
+option is mainly used to initiate a recurring payment scenario where the card
+will be charged at a later date. The request body is equivalent to a `Purchase`
+order with credit card as the selected item.
+A [payment token][payment-orders-resource] will be generated automatically,
+rendering the parameter `generateRecurrenceToken` unnecessary for this
+operation.
+
+{:.code-header}
+**Verify**
+
+```js
+{
+    "paymentorder": {
+        "operation": "Verify"
+    {
 }
 ```
 
