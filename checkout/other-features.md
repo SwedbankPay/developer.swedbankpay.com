@@ -636,8 +636,7 @@ with its `state` set to `Aborted`.
 
 ## Recurring Payments
 
-If you want to enable subsequent recurring – server-to-server – payments for
-credit card, you need to create a recurrence token. This token will be utilized
+If you want to enable subsequent recurring – server-to-server – payments, you need to create a recurrence token. This token will be utilized
 after the initial payment order.
 **This requires that you have activated this on your merchant account.**
 
@@ -646,11 +645,11 @@ after the initial payment order.
 * When initiating a `Purchase` payment order, you need to make sure that the
   attribute `generateRecurrenceToken` is set to `true`. This recurrence token
   will stored in the[authorization transaction][transaction]
-  sub-resource on the underlying credit card payment resource.
+  sub-resource on the underlying payment resource.
 * When initiating a `Verify` payment order, a recurrence token will be generated
   automatically. This recurrence token is stored in the
   [verification][verification-transaction]  sub-resource on the underlying
-  credit card payment resource.
+  payment resource.
 
 You can view the current payment resource, containg the recurrence token and
 other payment instrument properties, by [expanding the sub-resource][expanding]
@@ -665,7 +664,7 @@ GET /psp/paymentorders/<paymentorderId>?$expand=currentpayment HTTP/1.1
 Host: api.payex.com
 ```
 
-### Creating recurring credit card payments
+### Creating recurring payments
 
 When you have a `recurrenceToken` token safely tucked away, you can use this
 token in a subsequent `Recur` payment order. This will be a server-to-server
