@@ -41,9 +41,6 @@ integration validation procedure.
 * The Checkin must be completed before any shipping details are finalized, as
   the Checkin component provides shipping address via the
   `onShippingDetailsAvailable` event.
-* A button in the webshop or merchant web site needs to exist that allows the
-  user to not perform Checkin ("Shop anonymously"). See
-  [guest payments][guest-payments] for details.
 * If a browser refresh is performed after the payer has checked in, the payment
   menu must be shown even though `onConsumerIdentified` is not invoked.
 * The `consumerProfileRef` returned in the response from the `POST` request to
@@ -83,6 +80,5 @@ integration validation procedure.
                          next_href="other-features"
                          next_title="Next: Other Features" %}
 
-[guest-payments]: /checkout/checkin#checkin-back-end
 [problems]: /checkout/other-features#problems
 [callback]: /checkout/other-features#callback
