@@ -251,15 +251,15 @@ with or cancelling a payment session, as well as the callback URI that is used
 to inform the payee (merchant) of changes or updates made to underlying payments or transaction.
 
 {:.table .table-striped}
-| ✔︎︎︎︎︎ (Required) | Property            | Type     | Description                                                                                                                                                                                                                                         |
-| :---------------: | :------------------ | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|      ✔ ︎︎︎︎︎      | `hostUrls`          | `array`  | The array of URIs valid for embedding of Swedbank Pay Hosted Views.                                                                                                                                                                                 |
-|      ✔︎︎︎︎︎       | `completeUrl`       | `string` | The URI to redirect the payer to once the payment is completed.                                                                                                                                                                                     |
-|      ✔︎︎︎︎︎       | `termsOfServiceUrl` | `string` | The URI to the terms of service document the payer must accept in order to complete the payment. **HTTPS is a requirement**.                                                                                                                        |
-|                   | `cancelUrl`         | `string` | The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios.                                                                                                                                                       |
-|                   | `paymentUrl`        | `string` | The URI that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. Only used in Seamless Views. If both cancelUrl and paymentUrl is sent, the paymentUrl will used. |
-|                   | `callbackUrl`       | `string` | The URI to the API endpoint receiving `POST` requests on transaction activity related to the payment order.                                                                                                                                         |
-|                   | `logoUrl`           | `string` | The URI to the logo that will be displayed on redirect pages. **HTTPS is a requirement**.                                                                                                                                                           |
+| ✔︎︎︎︎︎ (Required) | Property            | Type     | Description                                                                                                                                        |
+| :---------------: | :------------------ | :------- | :------------------------------------------------------------------------------------------------------------------------------------------------- |
+|      ✔ ︎︎︎︎︎      | `hostUrls`          | `array`  | The array of URIs valid for embedding of Swedbank Pay Hosted Views.                                                                                |
+|      ✔︎︎︎︎︎       | `completeUrl`       | `string` | The URI to redirect the payer to once the payment is completed.                                                                                    |
+|      ✔︎︎︎︎︎       | `termsOfServiceUrl` | `string` | The URI to the terms of service document the payer must accept in order to complete the payment. **HTTPS is a requirement**.                       |
+|                   | `cancelUrl`         | `string` | The URI to redirect the payer to if the payment is canceled, either by the payer or by merchant trough `abort` of the payment/paymentorder.        |
+|                   | `paymentUrl`        | `string` | The URI that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. |
+|                   | `callbackUrl`       | `string` | The URI to the API endpoint receiving `POST` requests on transaction activity related to the payment order.                                        |
+|                   | `logoUrl`           | `string` | The URI to the logo that will be displayed on redirect pages. **HTTPS is a requirement**.                                                          |
 
 ### Order Items
 
