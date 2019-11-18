@@ -68,9 +68,7 @@ sequenceDiagram
 
 The payer will be identified with the `consumers` resource and will be
 persisted to streamline future Payment Menu processes. Payer identification
-is done through the `initiate-consumer-session` operation. In the request body,
-most properties are optional. However, the more information that is provided,
-the easier the identification process becomes for the payer.
+is done through the `initiate-consumer-session` operation.
 
 {:.code-header}
 **Request**
@@ -83,26 +81,15 @@ Content-Type: application/json
 
 {
     "operation": "initiate-consumer-session",
-    "msisdn": "+46739000001",
-    "email": "leia.ahlstrom@example.com",
-    "consumerCountryCode": "SE",
-    "nationalIdentifier": {
-        "socialSecurityNumber": "199710202392",
-        "countryCode": "SE"
-    }
+    "consumerCountryCode": "SE"
 }
 ```
 
 {:.table .table-striped}
-| ✔︎︎︎︎︎ **(Required)** | **Property**              | **Type** | **Description**                                                                                                                           |
-| :-------------------- | :------------------------ | :------- | :---------------------------------------------------------------------------------------------------------------------------------------- |
-| ✔︎︎︎︎︎                | `operation`               | `string` | `initiate-consumer-session`, the operation to perform.                                                                                    |
-|                       | `msisdn`                  | `string` | The [MSISDN][msisdn] (mobile phone number) of the payer. Format Sweden: `+46707777777`. Format Norway: `+4799999999`.                     |
-|                       | `email`                   | `string` | The e-mail address of the payer.                                                                                                          |
-| ✔︎︎︎︎︎                | `consumerCountryCode`     | `string` | Payers country of residence. Used by the consumerUi for validation on all input fields.                                                   |
-|                       | `nationalIdentifier`      | `object` | The object containing information about the national identifier of the payer.                                                             |
-|                       | └➔ `socialSecurityNumber` | `string` | The social security number of the payer. Format: Norway `DDMMYYXXXXX`, Sweden: `YYYYMMDDXXXX`.                                            |
-|                       | └➔ `countryCode`          | `string` | The country code, denoting the origin of the issued social security number. Required if `nationalIdentifier.socialSecurityNumber` is set. |
+| Required | Property              | Type     | Description                                                                             |
+| :------- | :-------------------- | :------- | :-------------------------------------------------------------------------------------- |
+| ✔︎︎︎︎︎   | `operation`           | `string` | `initiate-consumer-session`, the operation to perform.                                  |
+| ✔︎︎︎︎︎   | `consumerCountryCode` | `string` | Payers country of residence. Used by the consumerUi for validation on all input fields. |
 
 When the request has been sent, a response containing an array of operations that can be acted upon will be returned:
 
