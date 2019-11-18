@@ -87,8 +87,7 @@ both the integration and the payer.
 * Your integration must be resilient to change. Properties, operations,
   headers, etc., that aren't understood in any response **must be ignored**.
   Failing due to a something occurring in a response that your implementation
-  haven't seen before is a major malfunction of your integration and must be
-  fixed.
+  haven't seen before is a malfunction that must be fixed.
 * The `paymentUrl` must be placed on a page where it can invoke the same 
   `JavaScript` URL from the same _Payment_ or _Payment Order_ as the initiated
   payment page, so a identifier of some sort should be stored either on the page
