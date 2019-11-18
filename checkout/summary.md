@@ -71,6 +71,12 @@ integration validation procedure.
   Failing due to a something occurring in a response that your implementation
   haven't seen before is a major malfunction of your integration and must be
   fixed.
+* The `paymentUrl` must be placed on a page where it can invoke the same 
+  `JavaScript` URL from the same _Payment_ or _Payment Order_ as the initiated
+  payment page, so a identifier of some sort should be stored either on the page
+  or in the `URL` of the `paymentUrl` so the same original payment view can 
+  be initiated. The state identifier is the ID of the order, shopping
+  cart or similar that has the URL of the Payment or Payment Order stored.
 
 {% include iterator.html prev_href="after-payment"
                          prev_title="Back: After Payment"

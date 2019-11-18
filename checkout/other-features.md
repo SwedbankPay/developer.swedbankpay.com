@@ -189,7 +189,9 @@ Content-Type: application/json
                     "rejectCreditCards": false,
                     "rejectDebitCards": false,
                     "rejectConsumerCards": false,
-                    "rejectCorporateCards": false
+                    "rejectCorporateCards": false,
+                    "no3DSecureForStoredCards": false,
+                    "noCvcForStoredCards": false
                 }
             },
             {
@@ -208,31 +210,33 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| ✔︎︎︎︎︎ (Required) | Property                          | Type         | Description                                                                                                                                                                                                  |
-| :---------------: | :-------------------------------- | :----------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|      ✔︎︎︎︎︎       | `paymentorder`                    | `object`     | The payment order object.                                                                                                                                                                                    |
-|      ✔︎︎︎︎︎       | └➔&nbsp;`operation`               | `string`     | The operation that the payment order is supposed to perform.                                                                                                                                                 |
-|      ✔︎︎︎︎︎       | └➔&nbsp;`currency`                | `string`     | The currency of the payment.                                                                                                                                                                                 |
-|      ✔︎︎︎︎︎       | └➔&nbsp;`amount`                  | `integer`    | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 SEK` and `5000` equals `50.00 SEK`.                                                                        |
-|      ✔︎︎︎︎︎       | └➔&nbsp;`vatAmount`               | `integer`    | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 SEK and `5000` equals `50.00 SEK`.                                                                                 |
-|      ✔︎︎︎︎︎       | └➔&nbsp;`description`             | `string`     | The description of the payment order.                                                                                                                                                                        |
-|      ✔︎︎︎︎︎       | └➔&nbsp;`userAgent`               | `string`     | The user agent of the payer.                                                                                                                                                                                 |
-|      ✔︎︎︎︎︎       | └➔&nbsp;`language`                | `string`     | The language of the payer.                                                                                                                                                                                   |
-|      ✔︎︎︎︎︎       | └➔&nbsp;`generateRecurrenceToken` | `bool`       | Determines if a payment token should be generated. A recurrence token is primarily used to enable future recurring payments - with the same token - through server-to-server calls. Default value is `false` |
-|      ✔︎︎︎︎︎       | └➔&nbsp;`urls`                    | `object`     | The object containing the payee's (such as the webshop or merchant) URLs that are relevant for this payment order. See [URLs for details][urls].                                                             |
-|      ✔︎︎︎︎︎       | └➔&nbsp;`payeeInfo`               | `object`     | The object containing information about the payee.                                                                                                                                                           |
-|      ✔︎︎︎︎︎       | └─➔&nbsp;`payeeId`                | `string`     | The ID of the payee, usually the merchant ID.                                                                                                                                                                |
-|      ✔︎︎︎︎︎       | └─➔&nbsp;`payeeReference`         | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.                     |
-|                   | └─➔&nbsp;`payeeName`              | `string`     | The name of the payee, usually the name of the merchant.                                                                                                                                                     |
-|                   | └─➔&nbsp;`productCategory`        | `string`     | A product category or number sent in from the payee/merchant. This is not validated by PayEx, but will be passed through the payment process and may be used in the settlement process.                      |
-|                   | └─➔&nbsp;`orderReference`         | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                      |
-|                   | └─➔&nbsp;`subsite`                | `string(40)` | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.                                                  |
-|                   | └➔&nbsp;`payer`                   | `string`     | The consumer profile reference as obtained through the [Consumers][consumer-reference] API.                                                                                                                  |
-|                   | └─➔&nbsp;`consumerProfileRef`     | `string`     | The consumer profile reference as obtained through the [Consumers][consumer-reference] API.                                                                                                                  |
-|                   | └➔&nbsp;`orderItems`              | `array`      | The array of items being purchased with the order. Used to print on invoices if the payer chooses to pay with invoice, among other things. [See Order Items for details][order-items].                       |
-|                   | └➔&nbsp;`metadata`                | `object`     | The keys and values that should be associated with the payment order. Can be additional identifiers and data you want to associate with the payment.                                                         |
-|                   | └➔&nbsp;`items`                   | `array`      | The array of items that will affect how the payment is performed.                                                                                                                                            |
-|                   | └➔&nbsp;`disablePaymentMenu`      | `boolean`    | If set to `true`, disables the frame around the payment menu. Usefull when only showing one payment instrument.                                                                                              |
+| ✔︎︎︎︎︎ (Required) | Property                           | Type         | Description                                                                                                                                                                                                  |
+| :---------------: | :--------------------------------- | :----------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|      ✔︎︎︎︎︎       | `paymentorder`                     | `object`     | The payment order object.                                                                                                                                                                                    |
+|      ✔︎︎︎︎︎       | └➔&nbsp;`operation`                | `string`     | The operation that the payment order is supposed to perform.                                                                                                                                                 |
+|      ✔︎︎︎︎︎       | └➔&nbsp;`currency`                 | `string`     | The currency of the payment.                                                                                                                                                                                 |
+|      ✔︎︎︎︎︎       | └➔&nbsp;`amount`                   | `integer`    | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 SEK` and `5000` equals `50.00 SEK`.                                                                        |
+|      ✔︎︎︎︎︎       | └➔&nbsp;`vatAmount`                | `integer`    | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 SEK and `5000` equals `50.00 SEK`.                                                                                 |
+|      ✔︎︎︎︎︎       | └➔&nbsp;`description`              | `string`     | The description of the payment order.                                                                                                                                                                        |
+|      ✔︎︎︎︎︎       | └➔&nbsp;`userAgent`                | `string`     | The user agent of the payer.                                                                                                                                                                                 |
+|      ✔︎︎︎︎︎       | └➔&nbsp;`language`                 | `string`     | The language of the payer.                                                                                                                                                                                   |
+|      ✔︎︎︎︎︎       | └➔&nbsp;`generateRecurrenceToken`  | `bool`       | Determines if a payment token should be generated. A recurrence token is primarily used to enable future recurring payments - with the same token - through server-to-server calls. Default value is `false` |
+|      ✔︎︎︎︎︎       | └➔&nbsp;`urls`                     | `object`     | The object containing the payee's (such as the webshop or merchant) URLs that are relevant for this payment order. See [URLs for details][urls].                                                             |
+|      ✔︎︎︎︎︎       | └➔&nbsp;`payeeInfo`                | `object`     | The object containing information about the payee.                                                                                                                                                           |
+|      ✔︎︎︎︎︎       | └─➔&nbsp;`payeeId`                 | `string`     | The ID of the payee, usually the merchant ID.                                                                                                                                                                |
+|      ✔︎︎︎︎︎       | └─➔&nbsp;`payeeReference`          | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.                     |
+|                   | └─➔&nbsp;`payeeName`               | `string`     | The name of the payee, usually the name of the merchant.                                                                                                                                                     |
+|                   | └─➔&nbsp;`productCategory`         | `string`     | A product category or number sent in from the payee/merchant. This is not validated by PayEx, but will be passed through the payment process and may be used in the settlement process.                      |
+|                   | └─➔&nbsp;`orderReference`          | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                      |
+|                   | └─➔&nbsp;`subsite`                 | `string(40)` | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.                                                  |
+|                   | └➔&nbsp;`payer`                    | `string`     | The consumer profile reference as obtained through the [Consumers][consumer-reference] API.                                                                                                                  |
+|                   | └─➔&nbsp;`consumerProfileRef`      | `string`     | The consumer profile reference as obtained through the [Consumers][consumer-reference] API.                                                                                                                  |
+|                   | └➔&nbsp;`orderItems`               | `array`      | The array of items being purchased with the order. Used to print on invoices if the payer chooses to pay with invoice, among other things. [See Order Items for details][order-items].                       |
+|                   | └➔&nbsp;`metadata`                 | `object`     | The keys and values that should be associated with the payment order. Can be additional identifiers and data you want to associate with the payment.                                                         |
+|                   | └➔&nbsp;`items`                    | `array`      | The array of items that will affect how the payment is performed.                                                                                                                                            |
+|                   | └➔&nbsp;`disablePaymentMenu`       | `boolean`    | If set to `true`, disables the frame around the payment menu. Usefull when only showing one payment instrument.                                                                                              |
+|                   | └➔&nbsp;`no3DSecureForStoredCards` | `boolean`    | `true` if 3DSecure should be disabled for this payment in the case a stored card is used; otherwise `false` per default. To use this feature it has to be enabled on the contract with Swedbank Pay.         |
+|                   | └➔&nbsp;`noCvcForStoredCards`      | `boolean`    | `true` if the CVC field should be disabled for this payment in the case a stored card is used; otherwise `false` per default. To use this feature it has to be enabled on the contract with Swedbank Pay.    |
 
 **Response**
 
@@ -247,15 +251,15 @@ with or cancelling a payment session, as well as the callback URI that is used
 to inform the payee (merchant) of changes or updates made to underlying payments or transaction.
 
 {:.table .table-striped}
-| ✔︎︎︎︎︎ (Required) | Property            | Type     | Description                                                                                                                                                                                                                                         |
-| :---------------: | :------------------ | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|      ✔ ︎︎︎︎︎      | `hostUrls`          | `array`  | The array of URIs valid for embedding of Swedbank Pay Hosted Views.                                                                                                                                                                                 |
-|      ✔︎︎︎︎︎       | `completeUrl`       | `string` | The URI to redirect the payer to once the payment is completed.                                                                                                                                                                                     |
-|      ✔︎︎︎︎︎       | `termsOfServiceUrl` | `string` | The URI to the terms of service document the payer must accept in order to complete the payment. **HTTPS is a requirement**.                                                                                                                        |
-|                   | `cancelUrl`         | `string` | The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios.                                                                                                                                                       |
-|                   | `paymentUrl`        | `string` | The URI that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. Only used in Seamless Views. If both cancelUrl and paymentUrl is sent, the paymentUrl will used. |
-|                   | `callbackUrl`       | `string` | The URI to the API endpoint receiving `POST` requests on transaction activity related to the payment order.                                                                                                                                         |
-|                   | `logoUrl`           | `string` | The URI to the logo that will be displayed on redirect pages. **HTTPS is a requirement**.                                                                                                                                                           |
+| ✔︎︎︎︎︎ (Required) | Property            | Type     | Description                                                                                                                                                       |
+| :---------------: | :------------------ | :------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|      ✔ ︎︎︎︎︎      | `hostUrls`          | `array`  | The array of URIs valid for embedding of Swedbank Pay Hosted Views.                                                                                               |
+|      ✔︎︎︎︎︎       | `completeUrl`       | `string` | The URI to redirect the payer to once the payment is completed.                                                                                                   |
+|      ✔︎︎︎︎︎       | `termsOfServiceUrl` | `string` | The URI to the terms of service document the payer must accept in order to complete the payment. **HTTPS is a requirement**.                                      |
+|                   | `cancelUrl`         | `string` | The URI to redirect the payer to if the payment is canceled, either by the payer or by the merchant trough an `abort` request of the `payment` or `paymentorder`. |
+|                   | `paymentUrl`        | `string` | The URI that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment.                |
+|                   | `callbackUrl`       | `string` | The URI to the API endpoint receiving `POST` requests on transaction activity related to the payment order.                                                       |
+|                   | `logoUrl`           | `string` | The URI to the logo that will be displayed on redirect pages. **HTTPS is a requirement**.                                                                         |
 
 ### Order Items
 
@@ -266,23 +270,23 @@ The `orderItems` property of the `paymentOrder` is an array containing the items
                       body="`orderItems` must be a part of `Capture` if `orderItems` is included in the `paymentOrder` creation." %}
 
 {:.table .table-striped}
-| ✔︎︎︎︎︎ (Required) | Property              | Type      | Description                                                                                                                                                                                                                                |
-| :---------------: | :-------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|      ✔︎︎︎︎︎       | `reference`           | `string`  | A reference that identifies the order item.                                                                                                                                                                                                |
-|      ✔︎︎︎︎︎       | `name`                | `string`  | The name of the order item.                                                                                                                                                                                                                |
-|      ✔︎︎︎︎︎       | `type`                | `string`  | `PRODUCT`, `SERVICE`, `SHIPPING_FEE`, `DISCOUNT`, `VALUE_CODE`, or `OTHER`. The type of the order item.                                                                                                                                    |
-|      ✔︎︎︎︎︎       | `class`               | `string`  | The classification of the order item. Can be used for assigning the order item to a specific product category, for instance. Swedbank Pay has no use for this value itself, but it's useful for some payment instruments and integrations. |
-|                   | `itemUrl`             | `string`  | The URL to a page that contains a human readable description of the order item, or similar.                                                                                                                                                |
-|                   | `imageUrl`            | `string`  | The URL to an image of the order item.                                                                                                                                                                                                     |
-|                   | `description`         | `string`  | The human readable description of the order item.                                                                                                                                                                                          |
-|                   | `discountDescription` | `string`  | The human readable description of the possible discount.                                                                                                                                                                                   |
-|      ✔︎︎︎︎︎       | `quantity`            | `integer` | The quantity of order items being purchased.                                                                                                                                                                                               |
-|      ✔︎︎︎︎︎       | `quantityUnit`        | `string`  | The unit of the quantity, such as `pcs`, `grams`, or similar.                                                                                                                                                                              |
-|      ✔︎︎︎︎︎       | `unitPrice`           | `integer` | The price per unit of order item.                                                                                                                                                                                                          |
-|                   | `discountPrice`       | `integer` | If the order item is purchased at a discounted price, this property should contain that price.                                                                                                                                             |
-|      ✔︎︎︎︎︎       | `vatPercent`          | `integer` | The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.                                                                                                                                                                   |
-|      ✔︎︎︎︎︎       | `amount`              | `integer` | The total amount including VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 SEK` and `5000` equals `50.00 SEK`.                                      |
-|      ✔︎︎︎︎︎       | `vatAmount`           | `integer` | The total amount of VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 SEK` and `5000` equals `50.00 SEK`.                                             |
+| ✔︎︎︎︎︎ (Required) | Property              | Type      | Description                                                                                                                                                                                                                    |
+| :---------------: | :-------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|      ✔︎︎︎︎︎       | `reference`           | `string`  | A reference that identifies the order item.                                                                                                                                                                                    |
+|      ✔︎︎︎︎︎       | `name`                | `string`  | The name of the order item.                                                                                                                                                                                                    |
+|      ✔︎︎︎︎︎       | `type`                | `string`  | `PRODUCT`, `SERVICE`, `SHIPPING_FEE`, `DISCOUNT`, `VALUE_CODE`, or `OTHER`. The type of the order item.                                                                                                                        |
+|      ✔︎︎︎︎︎       | `class`               | `string`  | The classification of the order item. Can be used for assigning the order item to a specific product category, such as `MobilePhone`. Note that `class` cannot contain spaces. Swedbank Pay may use this field for statistics. |
+|                   | `itemUrl`             | `string`  | The URL to a page that can display the purchased item, such as a product page                                                                                                                                                  |
+|                   | `imageUrl`            | `string`  | The URL to an image of the order item.                                                                                                                                                                                         |
+|                   | `description`         | `string`  | The human readable description of the order item.                                                                                                                                                                              |
+|                   | `discountDescription` | `string`  | The human readable description of the possible discount.                                                                                                                                                                       |
+|      ✔︎︎︎︎︎       | `quantity`            | `integer` | The quantity of order items being purchased.                                                                                                                                                                                   |
+|      ✔︎︎︎︎︎       | `quantityUnit`        | `string`  | The unit of the quantity, such as `pcs`, `grams`, or similar.                                                                                                                                                                  |
+|      ✔︎︎︎︎︎       | `unitPrice`           | `integer` | The price per unit of order item.                                                                                                                                                                                              |
+|                   | `discountPrice`       | `integer` | If the order item is purchased at a discounted price, this property should contain that price.                                                                                                                                 |
+|      ✔︎︎︎︎︎       | `vatPercent`          | `integer` | The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.                                                                                                                                                       |
+|      ✔︎︎︎︎︎       | `amount`              | `integer` | The total amount including VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 SEK` and `5000` equals `50.00 SEK`.                          |
+|      ✔︎︎︎︎︎       | `vatAmount`           | `integer` | The total amount of VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 SEK` and `5000` equals `50.00 SEK`.                                 |
 
 ### Items
 
@@ -621,242 +625,6 @@ with its `state` set to `Aborted`.
 #### Reversal
 
 {% include payment-order-reversal.md %}
-
-### Authorizations
-
-The `authorizations` resource contains information about authorization
-transactions made on a specific payment.
-
-{:.code-header}
-**Request**
-
-```http
-GET /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations HTTP/1.1
-Host: api.payex.com
-Authorization: Bearer <MerchantToken>
-Content-Type: application/json
-```
-
-{:.code-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "payment": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
-  "authorizations": {
-    "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations",
-    "authorizationList": [
-      {
-        "direct": false,
-        "paymentToken": "12345678-1234-1234-1234-123456789012",
-        "recurrenceToken": "12345678-1234-1234-1234-123456789013",
-        "maskedPan": "123456xxxxxx1234",
-        "expiryDate": "mm/yyyy",
-        "panToken": "12345678-1234-1234-1234-123456789012",
-        "cardBrand": "Visa",
-        "cardType": "Credit",
-        "issuingBank": "UTL MAESTRO",
-        "countryCode": "999",
-        "acquirerTransactionType": "3DSECURE",
-        "issuerAuthorizationApprovalCode": "397136",
-        "acquirerStan": "39736",
-        "acquirerTerminalId": "39",
-        "acquirerTransactionTime": "2017-08-29T13:42:18Z",
-        "authenticationStatus": "Y",
-        "nonPaymentToken": "string",
-        "externalNonPaymentToken": "string",
-        "externalSiteId": "string",
-        "transactionInitiator": "CARDHOLDER",
-        "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations/12345678-1234-1234-1234-123456789012",
-        "transaction": {
-          "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
-          "created": "2019-08-13T10:32:21.861621Z",
-          "updated": "2019-08-13T10:32:23.4271016Z",
-          "type": "Authorization",
-          "state": "Failed",
-          "number": 1234567890,
-          "amount": 1000,
-          "vatAmount": 2500,
-          "description": "Test transaction",
-          "payeeReference": "AH123456",
-          "failedReason": "ExternalResponseError",
-          "failedActivityName": "Authorize",
-          "failedErrorCode": "REJECTED_BY_ACQUIRER",
-          "failedErrorDescription": "unknown error, response-code: 51",
-          "isOperational": false,
-          "problem": {
-            "type": "https://api.payex.com/psp/errordetail/creditcard/acquirererror",
-            "title": "Operation failed",
-            "status": 403,
-            "detail": "Unable to complete Authorization transaction, look at problem node!",
-            "problems": [
-              {
-                "name": "ExternalResponse",
-                "description": "REJECTED_BY_ACQUIRER-unknown error, response-code: 51"
-              }
-            ]
-          },
-          "operations": []
-        }
-      }
-    ]
-  }
-}
-```
-
-{:.table .table-striped}
-| Property                      | Type     | Description                                                                           |
-| :---------------------------- | :------- | :------------------------------------------------------------------------------------ |
-| `payment`                     | `string` | The relative URI of the payment this authorization transactions resource belongs to.  |
-| `authorizations`              | `object` | The authorizations object.                                                            |
-| └➔&nbsp;`id`                  | `string` | The relative URI of the current authorization transactions resource.                  |
-| └➔&nbsp;`authorizationList`   | `array`  | The array of authorization transaction objects.                                       |
-| └➔&nbsp;`authorizationList[]` | `object` | The authorization transaction object described in the `authorization` resource below. |
-
-{:.code-header}
-**Request**
-
-```http
-GET /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations/12345678-1234-1234-1234-123456789012 HTTP/1.1
-Host: api.payex.com
-Authorization: Bearer <MerchantToken>
-Content-Type: application/json
-```
-
-{:.code-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "payment": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
-  "authorization": {
-    "direct": false,
-    "paymentToken": "12345678-1234-1234-1234-123456789012",
-    "recurrenceToken": "12345678-1234-1234-1234-123456789013",
-    "maskedPan": "123456xxxxxx1234",
-    "expiryDate": "mm/yyyy",
-    "panToken": "12345678-1234-1234-1234-123456789012",
-    "cardBrand": "Visa",
-    "cardType": "Credit",
-    "issuingBank": "UTL MAESTRO",
-    "countryCode": "999",
-    "acquirerTransactionType": "3DSECURE",
-    "issuerAuthorizationApprovalCode": "397136",
-    "acquirerStan": "39736",
-    "acquirerTerminalId": "39",
-    "acquirerTransactionTime": "2017-08-29T13:42:18Z",
-    "authenticationStatus": "Y",
-    "nonPaymentToken": "string",
-    "externalNonPaymentToken": "string",
-    "externalSiteId": "string",
-    "transactionInitiator": "CARDHOLDER",
-    "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations/12345678-1234-1234-1234-123456789012",
-    "transaction": {
-      "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
-      "created": "2019-08-13T10:32:21.861621Z",
-      "updated": "2019-08-13T10:32:23.4271016Z",
-      "type": "Authorization",
-      "state": "Failed",
-      "number": 1234567890,
-      "amount": 1000,
-      "vatAmount": 2500,
-      "description": "Test transaction",
-      "payeeReference": "AH123456",
-      "failedReason": "ExternalResponseError",
-      "failedActivityName": "Authorize",
-      "failedErrorCode": "REJECTED_BY_ACQUIRER",
-      "failedErrorDescription": "unknown error, response-code: 51",
-      "isOperational": false,
-      "problem": {
-        "type": "https://api.payex.com/psp/errordetail/creditcard/acquirererror",
-        "title": "Operation failed",
-        "status": 403,
-        "detail": "Unable to complete Authorization transaction, look at problem node!",
-        "problems": [
-          {
-            "name": "ExternalResponse",
-            "description": "REJECTED_BY_ACQUIRER-unknown error, response-code: 51"
-          }
-        ]
-      },
-      "operations": []
-    }
-  }
-}
-```
-
-{:.table .table-striped}
-| Property                                  | Type     | Description                                                                                     |
-| :---------------------------------------- | :------- | :---------------------------------------------------------------------------------------------- |
-| `payment`                                 | `string` | The relative URI of the payment this authorization transaction resource belongs to.             |
-| `authorization`                           | `object` | The authorization object.                                                                       |
-| └➔&nbsp;`id`                              | `string` | The relative URI of the current authorization transaction resource.                             |
-| └➔&nbsp;`paymentToken`                    | `string` | The payment token created for the card used in the authorization.                               |
-| └➔&nbsp;`recurrenceToken`                 | `string` | The recurrence token created for the card used in the authorization.                            |
-| └➔&nbsp;`maskedPan`                       | `string` | The masked PAN number of the card.                                                              |
-| └➔&nbsp;`expireDate`                      | `string` | The month and year of when the card expires.                                                    |
-| └➔&nbsp;`panToken`                        | `string` | The token representing the specific PAN of the card.                                            |
-| └➔&nbsp;`cardBrand`                       | `string` | `Visa`, `MC`, etc. The brand of the card.                                                       |
-| └➔&nbsp;`cardType`                        | `string` | `Credit Card` or `Debit Card`. Indicates the type of card used for the authorization.           |
-| └➔&nbsp;`issuingBank`                     | `string` | The name of the bank that issued the card used for the authorization.                           |
-| └➔&nbsp;`countryCode`                     | `string` | The country the card is issued in.                                                              |
-| └➔&nbsp;`acquirerTransactionType`         | `string` | `3DSECURE` or `SSL`. Indicates the transaction type of the acquirer.                            |
-| └➔&nbsp;`acquirerStan`                    | `string` | The System Trace Audit Number assigned by the acquirer to uniquely identify the transaction.    |
-| └➔&nbsp;`acquirerTerminalId`              | `string` | The ID of the acquirer terminal.                                                                |
-| └➔&nbsp;`acquirerTransactionTime`         | `string` | The ISO-8601 date and time of the acquirer transaction.                                         |
-| └➔&nbsp;`issuerAuthorizationApprovalCode` | `string` | The issuer's six-digit code used to identify the approval for a specific authorization request. |
-| └➔&nbsp;`authenticationStatus`            | `string` | `Y`, `A`, `U` or `N`. Indicates the status of the authentication.                               |
-| └➔&nbsp;`transaction`                     | `object` | The object representation of the generic [`transaction` resource][transaction].                 |
-
-#### Create authorization transaction
-
-The `direct-authorization` operation creates an authorization transaction
-directly whilst the `redirect-authorization` operation redirects the consumer
-to Swedbank Pay Payment pages where the payment is authorized.
-
-> **Note:** In order to use the `direct-authorization` operation, the servers
-and application involved in retrieving and transferring the credit card number
-from the payer to Swedbank Pay needs to be [PCI DSS][pci-dss] certified.**
-
-{:.code-header}
-**Request**
-
-```http
-POST /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations HTTP/1.1
-Host: api.payex.com
-Authorization: Bearer <MerchantToken>
-Content-Type: application/json
-
-{
-    "transaction": {
-        "cardNumber": "4925000000000004",
-        "cardExpiryMonth": 11,
-        "cardExpiryYear": 22,
-        "cardVerificationCode": "185",
-        "cardholderName": "John Hancock"
-    }
-}
-```
-
-{:.table .table-striped}
-| ✔︎︎︎︎︎ | Property                           | Type      | Description                                                                     |
-| :----: | :--------------------------------- | :-------- | :------------------------------------------------------------------------------ |
-| ✔︎︎︎︎︎ | `transaction.cardNumber`           | `string`  | Primary Account Number (PAN) of the card, printed on the face of the card.      |
-| ✔︎︎︎︎︎ | `transaction.cardExpiryMonth`      | `integer` | Expiry month of the card, printed on the face of the card.                      |
-| ✔︎︎︎︎︎ | `transaction.cardExpiryYear`       | `integer` | Expiry year of the card, printed on the face of the card.                       |
-|        | `transaction.cardVerificationCode` | `string`  | Card verification code (CVC/CVV/CVC2), usually printed on the back of the card. |
-|        | `transaction.cardholderName`       | `string`  | Name of the card holder, usually printed on the face of the card.               |
-
-**Response**
-
-The [`authorization`][transaction] resource contains information about an
-authorization transaction made towards a payment, as previously described.
 
 ### Transactions
 
@@ -1221,11 +989,7 @@ sequenceDiagram
   end
 
   alt Identified consumer
-      alt Payment Menu not in DOM
-        SwedbankPay->>Merchant: onConsumerIdentified
-      else PaymentMenu already exist in DOM
-        SwedbankPay->>Merchant: onNewConsumer
-      end
+      SwedbankPay->>Merchant: onConsumerIdentified
 
       alt Depending on backend response
         SwedbankPay->>Merchant: onShippingDetailsAvailable
@@ -1253,23 +1017,6 @@ object:
 ```js
 {
   "actionType": "OnConsumerIdentified",
-  "consumerProfileRef": "<consumerProfileRef>"
-}
-```
-
-### `onNewConsumer`
-
-This event triggers when a consumer has performed Checkin and is identified,
-if the Payment Menu is loaded and present in the DOM.
-
-The `onNewConsumer` event is raised with the following event argument object:
-
-{:.code-header}
-**`onNewConsumer` event object**
-
-```js
-{
-  "actionType": "OnNewConsumer",
   "consumerProfileRef": "<consumerProfileRef>"
 }
 ```
