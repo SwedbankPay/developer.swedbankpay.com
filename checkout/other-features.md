@@ -210,33 +210,33 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| ✔︎︎︎︎︎ (Required) | Property                           | Type         | Description                                                                                                                                                                                                  |
-| :---------------: | :--------------------------------- | :----------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|      ✔︎︎︎︎︎       | `paymentorder`                     | `object`     | The payment order object.                                                                                                                                                                                    |
-|      ✔︎︎︎︎︎       | └➔&nbsp;`operation`                | `string`     | The operation that the payment order is supposed to perform.                                                                                                                                                 |
-|      ✔︎︎︎︎︎       | └➔&nbsp;`currency`                 | `string`     | The currency of the payment.                                                                                                                                                                                 |
-|      ✔︎︎︎︎︎       | └➔&nbsp;`amount`                   | `integer`    | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 SEK` and `5000` equals `50.00 SEK`.                                                                        |
-|      ✔︎︎︎︎︎       | └➔&nbsp;`vatAmount`                | `integer`    | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 SEK and `5000` equals `50.00 SEK`.                                                                                 |
-|      ✔︎︎︎︎︎       | └➔&nbsp;`description`              | `string`     | The description of the payment order.                                                                                                                                                                        |
-|      ✔︎︎︎︎︎       | └➔&nbsp;`userAgent`                | `string`     | The user agent of the payer.                                                                                                                                                                                 |
-|      ✔︎︎︎︎︎       | └➔&nbsp;`language`                 | `string`     | The language of the payer.                                                                                                                                                                                   |
-|      ✔︎︎︎︎︎       | └➔&nbsp;`generateRecurrenceToken` | `bool`       | Determines if a recurrence token should be generated. A recurrence token is primarily used to enable future recurring payments - with the same token - through server-to-server calls. Default value is `false` |
-|      ✔︎︎︎︎︎       | └➔&nbsp;`urls`                     | `object`     | The object containing the payee's (such as the webshop or merchant) URLs that are relevant for this payment order. See [URLs for details][urls].                                                             |
-|      ✔︎︎︎︎︎       | └➔&nbsp;`payeeInfo`                | `object`     | The object containing information about the payee.                                                                                                                                                           |
-|      ✔︎︎︎︎︎       | └─➔&nbsp;`payeeId`                 | `string`     | The ID of the payee, usually the merchant ID.                                                                                                                                                                |
-|      ✔︎︎︎︎︎       | └─➔&nbsp;`payeeReference`          | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.                     |
-|                   | └─➔&nbsp;`payeeName`               | `string`     | The name of the payee, usually the name of the merchant.                                                                                                                                                     |
-|                   | └─➔&nbsp;`productCategory`         | `string`     | A product category or number sent in from the payee/merchant. This is not validated by PayEx, but will be passed through the payment process and may be used in the settlement process.                      |
-|                   | └─➔&nbsp;`orderReference`          | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                      |
-|                   | └─➔&nbsp;`subsite`                 | `string(40)` | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.                                                  |
-|                   | └➔&nbsp;`payer`                    | `string`     | The consumer profile reference as obtained through the [Consumers][consumer-reference] API.                                                                                                                  |
-|                   | └─➔&nbsp;`consumerProfileRef`      | `string`     | The consumer profile reference as obtained through the [Consumers][consumer-reference] API.                                                                                                                  |
-|                   | └➔&nbsp;`orderItems`               | `array`      | The array of items being purchased with the order. Used to print on invoices if the payer chooses to pay with invoice, among other things. [See Order Items for details][order-items].                       |
-|                   | └➔&nbsp;`metadata`                 | `object`     | The keys and values that should be associated with the payment order. Can be additional identifiers and data you want to associate with the payment.                                                         |
-|                   | └➔&nbsp;`items`                    | `array`      | The array of items that will affect how the payment is performed.                                                                                                                                            |
-|                   | └➔&nbsp;`disablePaymentMenu`       | `boolean`    | If set to `true`, disables the frame around the payment menu. Usefull when only showing one payment instrument.                                                                                              |
-|                   | └➔&nbsp;`no3DSecureForStoredCards` | `boolean`    | `true` if 3DSecure should be disabled for this payment in the case a stored card is used; otherwise `false` per default. To use this feature it has to be enabled on the contract with Swedbank Pay.         |
-|                   | └➔&nbsp;`noCvcForStoredCards`      | `boolean`    | `true` if the CVC field should be disabled for this payment in the case a stored card is used; otherwise `false` per default. To use this feature it has to be enabled on the contract with Swedbank Pay.    |
+| ✔︎︎︎︎︎ (Required) | Property                           | Type         | Description                                                                                                                                                                                                     |
+| :---------------: | :--------------------------------- | :----------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|      ✔︎︎︎︎︎       | `paymentorder`                     | `object`     | The payment order object.                                                                                                                                                                                       |
+|      ✔︎︎︎︎︎       | └➔&nbsp;`operation`                | `string`     | The operation that the payment order is supposed to perform.                                                                                                                                                    |
+|      ✔︎︎︎︎︎       | └➔&nbsp;`currency`                 | `string`     | The currency of the payment.                                                                                                                                                                                    |
+|      ✔︎︎︎︎︎       | └➔&nbsp;`amount`                   | `integer`    | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 SEK` and `5000` equals `50.00 SEK`.                                                                           |
+|      ✔︎︎︎︎︎       | └➔&nbsp;`vatAmount`                | `integer`    | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 SEK and `5000` equals `50.00 SEK`.                                                                                    |
+|      ✔︎︎︎︎︎       | └➔&nbsp;`description`              | `string`     | The description of the payment order.                                                                                                                                                                           |
+|      ✔︎︎︎︎︎       | └➔&nbsp;`userAgent`                | `string`     | The user agent of the payer.                                                                                                                                                                                    |
+|      ✔︎︎︎︎︎       | └➔&nbsp;`language`                 | `string`     | The language of the payer.                                                                                                                                                                                      |
+|      ✔︎︎︎︎︎       | └➔&nbsp;`generateRecurrenceToken`  | `bool`       | Determines if a recurrence token should be generated. A recurrence token is primarily used to enable future recurring payments - with the same token - through server-to-server calls. Default value is `false` |
+|      ✔︎︎︎︎︎       | └➔&nbsp;`urls`                     | `object`     | The object containing the payee's (such as the webshop or merchant) URLs that are relevant for this payment order. See [URLs for details][urls].                                                                |
+|      ✔︎︎︎︎︎       | └➔&nbsp;`payeeInfo`                | `object`     | The object containing information about the payee.                                                                                                                                                              |
+|      ✔︎︎︎︎︎       | └─➔&nbsp;`payeeId`                 | `string`     | The ID of the payee, usually the merchant ID.                                                                                                                                                                   |
+|      ✔︎︎︎︎︎       | └─➔&nbsp;`payeeReference`          | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.                        |
+|                   | └─➔&nbsp;`payeeName`               | `string`     | The name of the payee, usually the name of the merchant.                                                                                                                                                        |
+|                   | └─➔&nbsp;`productCategory`         | `string`     | A product category or number sent in from the payee/merchant. This is not validated by PayEx, but will be passed through the payment process and may be used in the settlement process.                         |
+|                   | └─➔&nbsp;`orderReference`          | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                         |
+|                   | └─➔&nbsp;`subsite`                 | `string(40)` | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.                                                     |
+|                   | └➔&nbsp;`payer`                    | `string`     | The consumer profile reference as obtained through the [Consumers][consumer-reference] API.                                                                                                                     |
+|                   | └─➔&nbsp;`consumerProfileRef`      | `string`     | The consumer profile reference as obtained through the [Consumers][consumer-reference] API.                                                                                                                     |
+|                   | └➔&nbsp;`orderItems`               | `array`      | The array of items being purchased with the order. Used to print on invoices if the payer chooses to pay with invoice, among other things. [See Order Items for details][order-items].                          |
+|                   | └➔&nbsp;`metadata`                 | `object`     | The keys and values that should be associated with the payment order. Can be additional identifiers and data you want to associate with the payment.                                                            |
+|                   | └➔&nbsp;`items`                    | `array`      | The array of items that will affect how the payment is performed.                                                                                                                                               |
+|                   | └➔&nbsp;`disablePaymentMenu`       | `boolean`    | If set to `true`, disables the frame around the payment menu. Usefull when only showing one payment instrument.                                                                                                 |
+|                   | └➔&nbsp;`no3DSecureForStoredCards` | `boolean`    | `true` if 3DSecure should be disabled for this payment in the case a stored card is used; otherwise `false` per default. To use this feature it has to be enabled on the contract with Swedbank Pay.            |
+|                   | └➔&nbsp;`noCvcForStoredCards`      | `boolean`    | `true` if the CVC field should be disabled for this payment in the case a stored card is used; otherwise `false` per default. To use this feature it has to be enabled on the contract with Swedbank Pay.       |
 
 **Response**
 
@@ -636,15 +636,16 @@ with its `state` set to `Aborted`.
 
 ## Recurring Payments
 
-If you want to enable subsequent recurring – server-to-server – payments, you need to create a recurrence token. This token will be utilized
-after the initial payment order.
-**This requires that you have activated this on your merchant account.**
+If you want to enable subsequent recurring – server-to-server – payments, you
+need to create a **recurrence token**. This token will be utilized after the
+initial payment order. **Recurring payments must be activated on the contract
+with Swedbank Pay in order to work.**
 
 **Recurrence Token**
 
 * When initiating a `Purchase` payment order, you need to make sure that the
   attribute `generateRecurrenceToken` is set to `true`. This recurrence token
-  will stored in the[authorization transaction][transaction]
+  will stored in the [authorization transaction][transaction]
   sub-resource on the underlying payment resource.
 * When initiating a `Verify` payment order, a recurrence token will be generated
   automatically. This recurrence token is stored in the
@@ -794,12 +795,12 @@ Content-Type: application/json
             {
                 "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
                 "instrument" : "CreditCard",
-                "Created": "2016-09-14T13:21:29.3182115Z"
+                "created": "2016-09-14T13:21:29.3182115Z"
             },
             {
                 "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26d",
                 "instrument" : "Invoice",
-                "Created": "2016-09-14T13:21:29.3182115Z"
+                "created": "2016-09-14T13:21:29.3182115Z"
             }
         ]
     }
@@ -807,11 +808,15 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| **Property** | **Type** | **Description**
-| *paymentorder* | object | The payment order object.
-|payments.id | `string` | The relative URI of the current `payments` resource.
-|payments.paymentList | `string` |The array of payment objects.
-|payments.paymentList[] | `string` | The payment object.
+| Property              | Type     | Description                                                 |
+| :-------------------- | :------- | :---------------------------------------------------------- |
+| `paymentorder`        | `object` | The payment order object.                                   |
+| `payments`            | `object` | The `payments` object.                                      |
+| └➔&nbsp;`id`          | `string` | The relative URI of the current `payments` resource.        |
+| └➔&nbsp;`paymentList` | `array`  | The array of `payment` objects.                             |
+| └─➔&nbsp;`id`         | `string` | The URI of the `payment`.                                   |
+| └─➔&nbsp;`instrument` | `string` | The name of the payment instrument.                         |
+| └─➔&nbsp;`created`    | `string` | The ISO-8601 date and time of when the payment was created. |
 
 ### Current Payment Resource
 
@@ -879,7 +884,7 @@ Content-Type: application/json
 | `paymentorder`                     | `string`     | The URI of the payment order the payment belongs to.                                                                                                                                             |
 | `menuElementName`                  | `string`     | `creditcard`, `invoice`, etc. The name of the selected menu element.                                                                                                                             |
 | `payment`                          | `object`     | The payment object.                                                                                                                                                                              |
-| └➔&nbsp;`recurrenceToken`          | `string`     | The created recurrenceToken, if `operation : Verify` or `generateRecurrenceToken : true` was used.                                                                                               |
+| └➔&nbsp;`recurrenceToken`          | `string`     | The created recurrenceToken, if `operation: Verify` or `generateRecurrenceToken: true` was used.                                                                                                 |
 | └➔&nbsp;`id`                       | `string`     | The relative URI to the payment.                                                                                                                                                                 |
 | └➔&nbsp;`number`                   | `integer`    | The payment `number`, useful when there's need to reference the payment in human communication. Not usable for programmatic identification of the payment, for that `id` should be used instead. |
 | └➔&nbsp;`instrument`               | `string`     | The payment instrument used.                                                                                                                                                                     |
@@ -896,7 +901,7 @@ Content-Type: application/json
 | └─➔&nbsp;`remainingReversalAmount` | `integer`    | The available amount to reverse.                                                                                                                                                                 |
 | └➔&nbsp;`description`              | `string(40)` | A textual description of maximum 40 characters of the purchase.                                                                                                                                  |
 | └➔&nbsp;`payerReference`           | `string`     | The reference to the consumer from the merchant system, like mobile number, customer number etc.                                                                                                 |
-| └➔&nbsp;`userAgent`                | `string`     | The [user agent] string of the consumer's browser.                                                                                                                                               |
+| └➔&nbsp;`userAgent`                | `string`     | The [user agent][user-agent] string of the consumer's browser.                                                                                                                                   |
 | └➔&nbsp;`language`                 | `string`     | `nb-NO`, `sv-SE` or `en-US`                                                                                                                                                                      |
 
 ### Urls Resource
