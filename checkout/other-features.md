@@ -1221,11 +1221,7 @@ sequenceDiagram
   end
 
   alt Identified consumer
-      alt Payment Menu not in DOM
-        SwedbankPay->>Merchant: onConsumerIdentified
-      else PaymentMenu already exist in DOM
-        SwedbankPay->>Merchant: onNewConsumer
-      end
+      SwedbankPay->>Merchant: onConsumerIdentified
 
       alt Depending on backend response
         SwedbankPay->>Merchant: onShippingDetailsAvailable
@@ -1253,23 +1249,6 @@ object:
 ```js
 {
   "actionType": "OnConsumerIdentified",
-  "consumerProfileRef": "<consumerProfileRef>"
-}
-```
-
-### `onNewConsumer`
-
-This event triggers when a consumer has performed Checkin and is identified,
-if the Payment Menu is loaded and present in the DOM.
-
-The `onNewConsumer` event is raised with the following event argument object:
-
-{:.code-header}
-**`onNewConsumer` event object**
-
-```js
-{
-  "actionType": "OnNewConsumer",
   "consumerProfileRef": "<consumerProfileRef>"
 }
 ```
