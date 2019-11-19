@@ -102,3 +102,4 @@ both the integration and the payer.
 
 [problems]: /checkout/other-features#problems
 [callback]: /checkout/other-features#callback
+[vipps-payments]: /payments/vipps/index.md
