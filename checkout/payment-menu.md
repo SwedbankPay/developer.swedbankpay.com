@@ -422,7 +422,7 @@ window.onload = function () {
 This should bring up the Payment Menu in a Seamless View, looking something like this:
 
 {:.text-center}
-![Payment Menu with card payment opened][payment-menu-image]{:width="556" height="798"}
+![Payment Menu with card payment opened][payment-menu-image]{:width="407" height="627"}
 
 When the consumer completes the payment, the Payment Menu script will be
 signaled and a full redirect to the `completeUrl` sent in with the
