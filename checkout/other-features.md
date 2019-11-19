@@ -21,8 +21,8 @@ sidebar:
 {% include alert.html type="warning"
                       icon="warning"
                       header="Site under development"
-                      body="The Developer Portal is under construction and 
-                      should not be used to integrate against Swedbank Pay's 
+                      body="The Developer Portal is under construction and
+                      should not be used to integrate against Swedbank Pay's
                       APIs yet." %}
 
 {% include jumbotron.html body="After a successful integration, it may be worth
@@ -81,7 +81,6 @@ instruments but the one that is available.
 This feature is only valuable to set to `true` if you have only one payment
 instrument available. By setting it to `true` will remove the frame around the
 menu and show only the instrument.
-
 
 {:.code-header}
 **Request**
@@ -316,11 +315,11 @@ the [Payment Resources][payment-resource] section.
 
 ## Operations
 
-When a payment order resource is created and during its lifetime, it will have 
-a set of operations that can be performed on it. 
-The state of the payment order resource, what the access token is authorized 
-to do, the chosen payment instrument and its transactional states, etc. 
-determine the available operations before the initial purchase. 
+When a payment order resource is created and during its lifetime, it will have
+a set of operations that can be performed on it.
+The state of the payment order resource, what the access token is authorized
+to do, the chosen payment instrument and its transactional states, etc.
+determine the available operations before the initial purchase.
 A list of possible operations and their explanation is given below.
 
 {:.code-header}
@@ -470,6 +469,7 @@ Content-Type: application/json
 
 {:.code-header}
 **Response**
+
 ```http
 Response
 HTTP/1.1 200 OK
@@ -525,7 +525,7 @@ Content-Type: application/json
 ```
 
 The response given when changing a payment order is equivalent to a `GET`
-request towards the `paymentorders` resource, 
+request towards the `paymentorders` resource,
 [as displayed above][payment-orders-resource].
 Remember to call .refresh() on the Payment Menu in JavaScript
 
@@ -614,7 +614,7 @@ Content-Type: application/json
 ```
 
 The response given when aborting a payment order is equivalent to a `GET`
-request towards the `paymentorders` resource, 
+request towards the `paymentorders` resource,
 [as displayed above][payment-orders],
 with its `state` set to `Aborted`.
 
@@ -890,7 +890,7 @@ Content-Type: application/json
 | └➔&nbsp;`instrument`               | `string`     | The payment instrument used.                                                                                                                                                                     |
 | └➔&nbsp;`created`                  | `string`     | The ISO-8601 date of when the payment was created.                                                                                                                                               |
 | └➔&nbsp;`updated`                  | `string`     | The ISO-8601 date of when the payment was updated.                                                                                                                                               |
-| └➔&nbsp;`operation`                | `string`     | `Purchase`, `payout`, `Verify` or `recur. `The type of the initiated payment.                                                                                                                    |
+| └➔&nbsp;`operation`                | `string`     | `Purchase`, `payout`, `Verify` or `recur.`The type of the initiated payment.                                                                                                                     |
 | └➔&nbsp;`intent`                   | `string`     | The intent of the payment.                                                                                                                                                                       |
 | └➔&nbsp;`state`                    | `string`     | `Ready`, `Pending`, `Failed` or `Aborted`. Indicates the state of the payment. This field is only for status display purposes.                                                                   |
 | └➔&nbsp;`currency`                 | `string`     | The currency of the payment.                                                                                                                                                                     |
@@ -1110,7 +1110,7 @@ following event argument object:
 ### `onPaymentCompleted`
 
 This event triggers when a payment has completed successfully.
-The `onPaymentCompleted` event is raised with the following event argument 
+The `onPaymentCompleted` event is raised with the following event argument
 object:
 
 {:.code-header}
@@ -1131,8 +1131,8 @@ object:
 
 ### `onPaymentCanceled`
 
-This event triggers when the user cancels the payment. 
-The `onPaymentCanceled` event is raised with the following event argument 
+This event triggers when the user cancels the payment.
+The `onPaymentCanceled` event is raised with the following event argument
 object:
 
 {:.code-header}
@@ -1288,7 +1288,7 @@ object:
 | `Payment Instrument` | `CreditCard`, `Invoice`, `Swish`, `Vipps`, `DirectDebit`, `MobilePay` |
 | `Transaction Type`   | `Authorization`, `Capture`, `Cancellation`, `Reversal`                |
 
-The sequence diagram below shows the HTTP `POST` you will receive from PayEx, 
+The sequence diagram below shows the HTTP `POST` you will receive from PayEx,
 and the two `GET` requests that you make to get the updated status.
 
 ```mermaid
@@ -1354,8 +1354,8 @@ The structure of a problem message will look like this:
 ### Common Problems
 
 All common problem types will have a URI in the format
-`https://api.payex.com/psp/<error-type>`. 
-The **URI is an identifier** and is currently not possible to dereference, 
+`https://api.payex.com/psp/<error-type>`.
+The **URI is an identifier** and is currently not possible to dereference,
 although that might be possible in the future.
 
 {:.table .table-striped}
@@ -1366,7 +1366,6 @@ although that might be possible in the future.
 | `notfound`           | `404`  | The requested resource could not be found, but may be available in the future. Subsequent requests are permissible.                                |
 | `systemerror`        | `500`  | A generic error message.                                                                                                                           |
 | `configurationerror` | `500`  | A error relating to configuration issues.                                                                                                          |
-
 
 {% include expand-parameter.md %}
 
