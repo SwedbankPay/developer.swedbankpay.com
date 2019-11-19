@@ -33,6 +33,7 @@ like to host it locally on your computer, you need to do the following:
    * `davidanson.vscode-markdownlint`
    * `shd101wyy.markdown-preview-enhanced`
    * `bpruitt-goddard.mermaid-markdown-syntax-highlighting`
+   * `yzhang.markdown-all-in-one`
 8. Also in Visual Studio Code, [set up a ruler at 80 characters][vsc-ruler]
    by adding `"editor.rulers": [80]` to its configuration.
 
