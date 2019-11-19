@@ -40,15 +40,13 @@ sequenceDiagram
     participant SwedbankPay as Swedbank Pay
 
     rect rgba(81,43,43,0.1)
-        note left of Payer: Capture
         activate Merchant
-            Merchant ->>+ SwedbankPay: GET /psp/paymentorders/<paymentOrderId>
-                SwedbankPay -->>- Merchant: rel:create-paymentorder-capture
-            Merchant ->>+ SwedbankPay: POST /psp/paymentorders/<paymentOrderId>/captures
-                SwedbankPay -->>- Merchant: Capture status
-            note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.
+        note left of Payer: Capture
+        Merchant ->>+ SwedbankPay: rel:create-paymentorder-capture
         deactivate Merchant
-    end
+        SwedbankPay -->>- Merchant: Capture status
+        note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>PaymentInstruments that support <br>Authorizations.
+        end
 ```
 
 ## Operations

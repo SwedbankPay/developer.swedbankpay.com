@@ -47,7 +47,7 @@ depending on if you want to make an initial charge or not:
 #### Retreive Recurrence Token
 
 The recurrence token can then be retrieved by doing a `GET` request against 
-the `paymen`. 
+the `payment`.
 You need to store this `recurrenceToken` in your system and keep 
 track of the corresponding consumer-ID.
 

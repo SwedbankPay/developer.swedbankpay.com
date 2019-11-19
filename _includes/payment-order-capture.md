@@ -20,19 +20,13 @@ sequenceDiagram
     participant SwedbankPay as Swedbank Pay
 
     rect rgba(81,43,43,0.1)
-        note left of Payer: Capture
         activate Merchant
-            Merchant ->> SwedbankPay: GET /psp/paymentorders/<paymentOrderId>
-            activate SwedbankPay
-                SwedbankPay -->> Merchant: rel:create-paymentorder-capture
-            deactivate SwedbankPay
-            Merchant ->> SwedbankPay: POST /psp/paymentorders/<paymentOrderId>/captures
-            activate SwedbankPay
-                SwedbankPay -->> Merchant: Capture status
-            deactivate SwedbankPay
-            note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.
+        note left of Payer: Capture
+        Merchant ->>+ SwedbankPay: rel:create-paymentorder-capture
         deactivate Merchant
-    end
+        SwedbankPay -->>- Merchant: Capture status
+        note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>PaymentInstruments that support <br>Authorizations.
+        end
 ```
 
 **Notice** that the `orderItems` property object is optional. If the `POST`
@@ -106,13 +100,13 @@ Content-Type: application/json
 |        | └➔&nbsp;`orderItems`           | `array`      | The array of items being purchased with the order. Used to print on invoices if the payer chooses to pay with invoice, among other things. Required in `capture` requests if already sent with the initial creation of the Payment Order. Note that this should only contain the items to be captured from the order. |
 | ✔︎︎︎︎︎ | └─➔&nbsp;`reference`           | `string`     | A reference that identifies the order item.                                                                                                                                                                                                                                                                           |
 | ✔︎︎︎︎︎ | └─➔&nbsp;`name`                | `string`     | The name of the order item.                                                                                                                                                                                                                                                                                           |
-| ✔︎︎︎︎︎ | └─➔&nbsp;`type`                | `string`     | `PRODUCT`, `SERVICE`, `SHIPPING_FEE`, `DISCOUNT`, `VALUE_CODE` or `OTHER`. The type of the order item.                                                                                                                                                                                                                |
+| ✔︎︎︎︎︎ | └─➔&nbsp;`type`                | `string`     | `PRODUCT`, `SERVICE`, `SHIPPING_FEE`, `PAYMENT_FEE`, `DISCOUNT`, `VALUE_CODE` or `OTHER`. The type of the order item.                                                                                                                                                                                                 |
 | ✔︎︎︎︎︎ | └─➔&nbsp;`class`               | `string`     | The classification of the order item. Can be used for assigning the order item to a specific product category, such as `MobilePhone`. Note that `class` cannot contain spaces. Swedbank Pay may use this field for statistics.                                                                                        |
 |  ︎︎︎   | └─➔&nbsp;`itemUrl`             | `string`     | The URL to a page that can display the purchased item, such as a product page                                                                                                                                                                                                                                         |
 |  ︎︎︎   | └─➔&nbsp;`imageUrl`            | `string`     | The URL to an image of the order item.                                                                                                                                                                                                                                                                                |
 |  ︎︎︎   | └─➔&nbsp;`description`         | `string`     | The human readable description of the order item.                                                                                                                                                                                                                                                                     |
 |  ︎︎︎   | └─➔&nbsp;`discountDescription` | `string`     | The human readable description of the possible discount.                                                                                                                                                                                                                                                              |
-| ✔︎︎︎︎︎ | └─➔&nbsp;`quantity`            | `integer`    | The quantity of order items being purchased.                                                                                                                                                                                                                                                                          |
+| ✔︎︎︎︎︎ | └─➔&nbsp;`quantity`            | `decimal`    | The 4 decimal precision quantity of order items being purchased.                                                                                                                                                                                                                                                      |
 | ✔︎︎︎︎︎ | └─➔&nbsp;`quantityUnit`        | `string`     | The unit of the quantity, such as `pcs`, `grams`, or similar.                                                                                                                                                                                                                                                         |
 | ✔︎︎︎︎︎ | └─➔&nbsp;`unitPrice`           | `integer`    | The price per unit of order item.                                                                                                                                                                                                                                                                                     |
 |  ︎︎︎   | └─➔&nbsp;`discountPrice`       | `integer`    | If the order item is purchased at a discounted price, this property should contain that price.                                                                                                                                                                                                                        |

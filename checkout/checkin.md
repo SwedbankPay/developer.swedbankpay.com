@@ -41,27 +41,28 @@ sequenceDiagram
     participant Merchant
     participant SwedbankPay as Swedbank Pay
 
-    activate Payer
         rect rgba(238, 112, 35, 0.05)
             note left of Payer: Checkin
 
-            Payer ->> Merchant: Start Checkin
-            activate Merchant
-                Merchant ->> SwedbankPay: POST /psp/consumers
-                activate SwedbankPay
-                    SwedbankPay -->> Merchant: rel:view-consumer-identification
-                deactivate SwedbankPay
-                Merchant -->> Payer: Show Checkin (Consumer Hosted View)
+    Payer ->>+ Merchant: Start Checkin
+    Merchant ->>+ SwedbankPay: POST /psp/consumers
+    deactivate Merchant
+    SwedbankPay -->>+ Merchant: rel:view-consumer-identification ①
+    deactivate SwedbankPay
+    Merchant -->>- Payer: Show Checkin on Merchant Page
 
-            deactivate Merchant
-            Payer ->> Payer: Initiate Consumer Hosted View (open iframe)
-            Payer ->> SwedbankPay: Show Consumer UI page in iframe
-            activate SwedbankPay
-                SwedbankPay ->> Payer: Consumer identification process
-                SwedbankPay -->> Payer: show consumer completed iframe
-            deactivate SwedbankPay
-            Payer ->> Payer: onConsumerIdentified (consumerProfileRef)
-        end
+    Payer ->>+ Payer: Initiate Consumer Hosted View (open iframe) ②
+    Payer ->>+ SwedbankPay: Show Consumer UI page in iframe ③
+    deactivate Payer
+    SwedbankPay ->>- Payer: Consumer identification process
+    activate Payer
+    Payer ->>+ SwedbankPay: Consumer identification process
+    deactivate Payer
+    SwedbankPay -->>- Payer: show consumer completed iframe
+    activate Payer
+    Payer ->> Payer: EVENT: onConsumerIdentified (consumerProfileRef) ④
+    deactivate Payer
+    end
 ```
 
 ## Checkin Back End
@@ -145,7 +146,11 @@ operation is meant to be embedded in a `<script>` element in an HTML document.
                       `view-consumer-identification` solution.
                       The `redirect-consumer-identification` method redirects
                       the user to Swedbank's own site to handle the checkin
-                      and is used in other implementations."%}
+                      and is used in other implementations.
+                      `redirect-consumer-identification` **should only be used in
+                      test enviroments**. It is not suitable for the production
+                      environment as there is no simple way of retrieving the
+                      `consumerProfileRef`."%}
 
 {:.code-header}
 **HTML**
