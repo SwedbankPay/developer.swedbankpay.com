@@ -422,9 +422,10 @@ This should bring up the Payment Menu in a Seamless View, looking something like
 When the consumer completes the payment, the Payment Menu script will be
 signaled and a full redirect to the `completeUrl` sent in with the
 Payment Order will be performed. When the `completeUrl` on your server is hit,
-you can inspect the status on the stored `paymentorder.id` on the server, and
-perform capture (unless the payment was a `Sale` or one-phase purchace, in
-which case it is automatically captured) – and unless the goods are sent
+you can inspect the status on the stored `paymentorder.id` on the server, and 
+then perform `capture`.
+If the payment is a Sale or one-phase purchace, it will be automatically 
+captured. A third scenario is if the goods are sent
 physically to the payer; then you should await capture until after the
 goods have been sent.
 
