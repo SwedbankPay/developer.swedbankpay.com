@@ -133,7 +133,7 @@ request has `orderItems` in the `paymentorder`, remember to include
 
 **Also notice** to increase the chance for not invoking 3DSecure during a 
 purchase, it's recommended that you add as much data to the 
-`riskIndicatorobject` in the request below.
+`riskIndicator` object in the request below.
 
 {:.code-header}
 **Request**
