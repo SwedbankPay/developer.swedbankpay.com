@@ -69,6 +69,10 @@ It is followed up by posting a capture, cancellation or reversal transaction.
 An example of a request is provided below. Each individual Property of the JSON
  document is described in the following section.
 
+**Notice** to increase the chance for not invoking 3DSecure during a purchase, 
+it's recommended that you add as much data to the `riskIndicator` object in 
+the request below.
+
 {:.code-header}
 **Request**
 
