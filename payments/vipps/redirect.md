@@ -16,95 +16,95 @@ sidebar:
       title: Other Features
 ---
 
->Vipps is a two-phase payment method supported by the major norwegian banks. 
- In the redirect to Swedbank Pay payment pages scenario,  Swedbank Pay 
- receives a mobile number (MSISDN) from the payer through Payex payment pages. 
- Swedbank Pay performs a payment that the payer must confirm through the 
+>Vipps is a two-phase payment method supported by the major norwegian banks.
+ In the redirect to Swedbank Pay payment pages scenario,  Swedbank Pay
+ receives a mobile number (MSISDN) from the payer through Payex payment pages.
+ Swedbank Pay performs a payment that the payer must confirm through the
  Vipps mobile app.
 
 ## Introduction
 
-* When the payer starts the purchase process, you make a `POST` request towards 
-  Swedbank Pay with the collected `Purchase` information. 
-  This will generate a payment object with a unique `paymentID`. 
-  You either receive a Redirect URL to a hosted page or a JavaScript source 
+* When the payer starts the purchase process, you make a `POST` request towards
+  Swedbank Pay with the collected `Purchase` information.
+  This will generate a payment object with a unique `paymentID`.
+  You either receive a Redirect URL to a hosted page or a JavaScript source
   in response.
-* You need to [redirect][reference-redirect] the payer to the Redirect payment 
-  page or embed the script source on you site to create a 
-  [Hosted View][hosted-view] in an `iFrame`; where she is prompted to enter the 
-  registered mobile number. 
+* You need to [redirect][reference-redirect] the payer to the Redirect payment
+  page or embed the script source on you site to create a
+  [Hosted View][hosted-view] in an `iFrame`; where she is prompted to enter the
+  registered mobile number.
   This triggers a `POST` towards PayEx.
-* Swedbank Pay handles the dialogue with Vipps and the consumer confirms the 
+* Swedbank Pay handles the dialogue with Vipps and the consumer confirms the
   purchase in the Vipps app.
-* If CallbackURL is set you will receive a payment callback when the Vipps 
-  dialogue is completed. 
-  You need to do a `GET` request, containing the `paymentID` generated in the 
+* If CallbackURL is set you will receive a payment callback when the Vipps
+  dialogue is completed.
+  You need to do a `GET` request, containing the `paymentID` generated in the
   first step, to receive the state of the transaction.
 
 ![Vipps_flow_PaymentPages.png]
 
 ### Payment Url
 
-For our Seamless View, the URL property called `paymentUrl` will be used when the 
-consumer is redirected out of the Seamless View frame through our 
-[Vipps API][vipps-payments]. 
-The consumer is redirected out of frame when selecting Vipps as payment method. 
-The URL should represent the page of where the payment Seamless View was hosted 
-originally, such as the checkout page, shopping cart page, or similar. 
-Basically, `paymentUrl` should be set to the same URL as that of the page where 
-the JavaScript for the hosted payment view was added to in order to initiate 
-the payment. 
-Please note that the `paymentUrl` must be able to invoke the same JavaScript 
-URL from the same Payment as the one that initiated the payment originally, 
-so it should include some sort of state identifier in the URL. 
-The state identifier is the ID of the order, shopping cart or similar that has 
+For our Seamless View, the URL property called `paymentUrl` will be used when the
+consumer is redirected out of the Seamless View frame through our
+[Vipps API][vipps-payments].
+The consumer is redirected out of frame when selecting Vipps as payment method.
+The URL should represent the page of where the payment Seamless View was hosted
+originally, such as the checkout page, shopping cart page, or similar.
+Basically, `paymentUrl` should be set to the same URL as that of the page where
+the JavaScript for the hosted payment view was added to in order to initiate
+the payment.
+Please note that the `paymentUrl` must be able to invoke the same JavaScript
+URL from the same Payment as the one that initiated the payment originally,
+so it should include some sort of state identifier in the URL.
+The state identifier is the ID of the order, shopping cart or similar that has
 the URL of the Payment stored.
 
-With paymentUrl in place, the retry process becomes much more convenient for 
+With paymentUrl in place, the retry process becomes much more convenient for
 both the integration and the payer.
 
-## Screenshots 
+## Screenshots
 
-You redirect the payer to Swedbank Pay hosted payment pages to collect the 
+You redirect the payer to Swedbank Pay hosted payment pages to collect the
 consumers mobile number.
 
 ![Vipps mobile payment pages]
 [Vipps-screenshot-1]{:width="426px" :height="632px"}
 ![Vipps payment pages][Vipps-screenshot-2]{:width="427px" :height="694px"}
 
-### API Requests 
+### API Requests
 
-The API requests are displayed in the [purchase flow](#purchase-flow). 
-The options you can choose from when creating a payment with key `operation` 
+The API requests are displayed in the [purchase flow](#purchase-flow).
+The options you can choose from when creating a payment with key `operation`
 set to Value `Purchase` are listed below.
 
-### Options before posting a payment 
+### Options before posting a payment
 
-All valid options when posting a payment with operation equal to Purchase, 
+All valid options when posting a payment with operation equal to Purchase,
 are described in [the technical reference][vipps-payments].
 
-#### Type of authorization (Intent).
+#### Type of authorization (Intent)
 
-**Authorization (two-phase)**: The intent of a Vipps purchase is always 
-`Authorization`. 
-The amount will be reserved but not charged. 
-You will later (i.e. if a physical product, when you are ready to ship the 
-purchased products) have to make a [Capture][captures] or 
+**Authorization (two-phase)**: The intent of a Vipps purchase is always
+`Authorization`.
+The amount will be reserved but not charged.
+You will later (i.e. if a physical product, when you are ready to ship the
+purchased products) have to make a [Capture][captures] or
 [Cancel][cancellations] request.
 
 #### General
 
-**Defining CallbackURL**: When implementing a scenario, it is optional to set 
-a [`CallbackURL`][callbackurl] in the `POST` request. 
-If callbackURL is set Swedbank Pay will send a postback request to this URL 
+**Defining CallbackURL**: When implementing a scenario, it is optional to set
+a [`CallbackURL`][callbackurl] in the `POST` request.
+If callbackURL is set Swedbank Pay will send a postback request to this URL
 when the consumer has fulfilled the payment.
 
 ## Purchase flow
 
-The sequence diagram below shows the two requests you have to send to 
-Swedbank Pay to make a purchase. 
-The links will take you directly to the API description for the specific 
-request. 
+The sequence diagram below shows the two requests you have to send to
+Swedbank Pay to make a purchase.
+The links will take you directly to the API description for the specific
+request.
 
 ```mermaid
 sequenceDiagram

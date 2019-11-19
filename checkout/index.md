@@ -103,8 +103,11 @@ sequenceDiagram
             deactivate Payer
             SwedbankPay ->>+ Payer: Do payment logic
             deactivate SwedbankPay
+            Payer ->> SwedbankPay: Do payment logic
+            deactivate Payer
 
                 opt Consumer perform payment out of iFrame
+                    activate Payer
                     Payer ->> Payer: Redirect to 3rd party
                     Payer ->>+ 3rdParty: Redirect to 3rdPartyUrl URL
                     deactivate Payer
@@ -113,11 +116,9 @@ sequenceDiagram
                     Payer ->> Payer: Initiate Payment Menu Hosted View (open iframe)
                     Payer ->>+ SwedbankPay: Show Payment UI page in iframe
                     deactivate Payer
-                    SwedbankPay ->> Payer: Do payment logic
                 end
 
         SwedbankPay -->> Payer: Payment status
-        deactivate SwedbankPay
 
             alt If payment is completed
             activate Payer

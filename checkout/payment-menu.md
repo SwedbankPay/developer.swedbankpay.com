@@ -131,6 +131,10 @@ Remember to read up on our [URL resource][urls].
 request has `orderItems` in the `paymentorder`, remember to include
 `orderItems` in the [capture operation][capture-operation].
 
+**Also notice** to increase the chance for not invoking 3DSecure during a 
+purchase, it's recommended that you add as much data to the 
+`riskIndicator` object in the request below.
+
 {:.code-header}
 **Request**
 
@@ -227,7 +231,7 @@ Content-Type: application/json
 |      ✔︎︎︎︎︎       | `paymentorder`                        | `object`     | The payment order object.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 |      ✔︎︎︎︎︎       | └➔&nbsp;`operation`                   | `string`     | The operation that the payment order is supposed to perform.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 |      ✔︎︎︎︎︎       | └➔&nbsp;`currency`                    | `string`     | The currency of the payment.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-|      ✔︎︎︎︎︎       | └➔&nbsp;`amount`                      | `integer`    | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 SEK `and `5000` equals `50.00 SEK`.                                                                                                                                                                                                                                                                                                                                                                                                                            |
+|      ✔︎︎︎︎︎       | └➔&nbsp;`amount`                      | `integer`    | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 SEK`and `5000` equals `50.00 SEK`.                                                                                                                                                                                                                                                                                                                                                                                                                             |
 |      ✔︎︎︎︎︎       | └➔&nbsp;`vatAmount`                   | `integer`    | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 SEK` and `5000` equals `50.00 SEK`.                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 |      ✔︎︎︎︎︎       | └➔&nbsp;`description`                 | `string`     | The description of the payment order.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 |      ✔︎︎︎︎︎       | └➔&nbsp;`userAgent`                   | `string`     | The user agent of the payer.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
@@ -422,16 +426,17 @@ This should bring up the Payment Menu in a Seamless View, looking something like
 When the consumer completes the payment, the Payment Menu script will be
 signaled and a full redirect to the `completeUrl` sent in with the
 Payment Order will be performed. When the `completeUrl` on your server is hit,
-you can inspect the status on the stored `paymentorder.id` on the server, and
-perform capture (unless the payment was a `Sale` or one-phase purchace, in
-which case it is automatically captured) – and unless the goods are sent
+you can inspect the status on the stored `paymentorder.id` on the server, and 
+then perform `capture`.
+If the payment is a `Sale` or one-phase purchase, it will be automatically 
+captured. A third scenario is if the goods are sent
 physically to the payer; then you should await capture until after the
 goods have been sent.
 
 You may open and close the payment menu using `.open()` and `.close()`
 functions. You can also invoke `.refresh()` to
 [update the Payment Menu][payment-order-operations] after any changes to the
-order. 
+order.
 
 Now that you have completed the Payment Menu integration, you can move on to
 finalizing the payment in the [After Payment section][after-payment].

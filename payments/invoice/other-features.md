@@ -19,36 +19,36 @@ sidebar:
 {% include alert.html type="warning"
                       icon="warning"
                       header="Site under development"
-                      body="The Developer Portal is under construction and 
-                      should not be used to integrate against Swedbank Pay's 
+                      body="The Developer Portal is under construction and
+                      should not be used to integrate against Swedbank Pay's
                       APIs yet." %}
 
 ## API requests
 
-The API requests are displayed in the [invoice flow][invoice-flow]. 
-The options you can choose from when creating a payment with key operation 
+The API requests are displayed in the [invoice flow][invoice-flow].
+The options you can choose from when creating a payment with key operation
 set to Value FinancingConsumer are listed below.
 
 ### Options before posting a payment
 
 {:.table .table-striped}
-| **POST Request** |	Finland ![Finish flag][fi-png]  |
-| **Operation** |	FinancingConsumer |
+| **POST Request** | Finland ![Finish flag][fi-png]  |
+| **Operation** | FinancingConsumer |
 | **Intent** | Authorization |
 | **Currency** | EUR |
-| **InvoiceType** |	PayExFinancingFI |
+| **InvoiceType** | PayExFinancingFI |
 
-*   An invoice payment is always two-phased based -  you create an Authorize 
+* An invoice payment is always two-phased based -  you create an Authorize
     transaction, that is followed by a Capture or Cancel request.
-*   **Defining CallbackURL**: When implementing a scenario, it is optional 
-    to set a [CallbackURL][callback-api] in the `POST` request. 
-    If callbackURL is set PayEx will send a postback request to this URL when 
-    the consumer has fulfilled the payment. 
+* **Defining CallbackURL**: When implementing a scenario, it is optional
+    to set a [CallbackURL][callback-api] in the `POST` request.
+    If callbackURL is set PayEx will send a postback request to this URL when
+    the consumer has fulfilled the payment.
     [See the Callback API description here.][callback-api]
 
 ### Authorizations
 
-The `authorizations` resource will list the authorization transactions 
+The `authorizations` resource will list the authorization transactions
 made on a specific payment.
 
 {:.code-header}
@@ -113,7 +113,7 @@ Content-Type: application/json
 
 #### Create Authorization transaction
 
-To create an `authorization` transaction, perform the `create-authorization` 
+To create an `authorization` transaction, perform the `create-authorization`
 operation as returned in a previously created invoice payment.
 
 {:.code-header}
@@ -184,8 +184,7 @@ Content-Type: application/json
 
 _Note: The legal address must be the registered address of the consumer._
 
-
-The `authorization` resource will be returned, containing information about 
+The `authorization` resource will be returned, containing information about
 the newly created authorization transaction.
 
 {:.code-header}
@@ -235,14 +234,14 @@ Content-Type: application/json
 
 ### Problem messages
 
-When performing unsuccessful operations, the eCommerce API will respond with 
-a problem message. We generally use the problem message type and status code 
-to identify the nature of the problem. The problem name and description will 
+When performing unsuccessful operations, the eCommerce API will respond with
+a problem message. We generally use the problem message type and status code
+to identify the nature of the problem. The problem name and description will
 often help narrow down the specifics of the problem.
 
-#### Error types from Swedbank Pay Invoice and third parties 
+#### Error types from Swedbank Pay Invoice and third parties
 
-All invoice error types will have the following URI in front of type: 
+All invoice error types will have the following URI in front of type:
 `https://api.payex.com/psp/errordetail/invoice/<errorType>`
 
 {:.table .table-striped}
@@ -276,7 +275,7 @@ All invoice error types will have the following URI in front of type:
 
 {% include payeeinfo.md %}
 
-{% include iterator.html prev_href="./" prev_title="Back: Introduction" 
+{% include iterator.html prev_href="./" prev_title="Back: Introduction"
 next_href="after-payment" next_title="Next: After Payment" %}
 
 [fi-png]: /assets/img/fi.png

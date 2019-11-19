@@ -21,15 +21,14 @@ sidebar:
 
 ### Create Payment
 
-To create a Direct Debit payment, you perform an HTTP `POST` against the 
+To create a Direct Debit payment, you perform an HTTP `POST` against the
 `/psp/directdebit/payments` resource.
 
-An example of a payment creation request is provided below. 
-Each individual Property of the JSON document is described in the 
-following section. 
-Use the [expand][technical-reference-expansion] request parameter to get a 
+An example of a payment creation request is provided below.
+Each individual Property of the JSON document is described in the
+following section.
+Use the [expand][technical-reference-expansion] request parameter to get a
 response that includes one or more expanded sub-resources inlined.
-
 
 ```HTTP
 Request
@@ -70,7 +69,7 @@ Content-Type: application/json
            "subsite": "MySubsite"  
         }
     }
-}   
+}
 ```
 
 {:.table .table-striped}
@@ -146,11 +145,11 @@ Content-Type: application/json
 
 ## Operations
 
-A payment resource has a set of operations that can be performed on it, 
-from its creation to its end. 
-The operations available at any given time vary between payment methods and 
-depends on the current state of the payment resource. 
-A list of possible operations for Direct Debit Payments and their explanation 
+A payment resource has a set of operations that can be performed on it,
+from its creation to its end.
+The operations available at any given time vary between payment methods and
+depends on the current state of the payment resource.
+A list of possible operations for Direct Debit Payments and their explanation
 is given below.
 
 {:.code-header}
@@ -180,12 +179,12 @@ is given below.
 | rel      | The name of the relation the operation has to the current resource. |
 | method   | The HTTP method to use when performing the operation.               |
 
-The operations should be performed as described in each response and not as 
-described here in the documentation. 
-Always use the `href` and `method` as specified in the response by finding the 
-appropriate operation based on its `rel` value. 
-The only thing that should be hard coded in the client is the value of the 
-`rel` and the request that will be sent in the HTTP body of the request for 
+The operations should be performed as described in each response and not as
+described here in the documentation.
+Always use the `href` and `method` as specified in the response by finding the
+appropriate operation based on its `rel` value.
+The only thing that should be hard coded in the client is the value of the
+`rel` and the request that will be sent in the HTTP body of the request for
 the given operation.
 
 | Operation              | Description                                                                                                                         |
@@ -199,7 +198,7 @@ All Direct Debit specific transactions are described below.
 
 ### Sales
 
-The `Sales` resource lists the sales transactions (one or more) on a 
+The `Sales` resource lists the sales transactions (one or more) on a
 specific payment.
 
 {:.code-header}
@@ -270,7 +269,7 @@ Content-Type: application/json
                    "isOperational": "TRUE|FALSE",
                    "operations": [
                         {  
-                           "href": "https://api.payex.com/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",            
+                           "href": "https://api.payex.com/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
                            "rel": "edit-sale",
                            "method": "PATCH"  
                         }
@@ -284,12 +283,12 @@ Content-Type: application/json
 
 #### Create Sales transaction
 
-The sales transaction This is managed either by by redirecting the end-user 
+The sales transaction This is managed either by by redirecting the end-user
 to the hosted payment pages.
 
 ### Reversals
 
-The `Reversals` resource list the reversals transactions (one or more) on a 
+The `Reversals` resource list the reversals transactions (one or more) on a
 specific payment.
 
 {:.code-header}
@@ -345,9 +344,9 @@ Content-Type: application/json
 
 #### Create Reversal transaction
 
-You can create a reversal transaction against a completed sales transaction 
-by adding that transaction's payeeReference in the request body. 
-A callback request will follow from PayEx. 
+You can create a reversal transaction against a completed sales transaction
+by adding that transaction's payeeReference in the request body.
+A callback request will follow from PayEx.
 
 {:.code-header}
 **Request**
@@ -414,8 +413,8 @@ Content-Type: application/json
 
 ## Callback
 
-When a change or update from the back-end system are made on a payment or 
-transaction, Swedbank Pay will perform a callback to inform the payee 
+When a change or update from the back-end system are made on a payment or
+transaction, Swedbank Pay will perform a callback to inform the payee
 (merchant) about this update.
 
 ```mermaid
@@ -438,7 +437,7 @@ sequenceDiagram
 ```
 
 {% include iterator.html next_href="after-payment"
-                         next_title="Next: After Payment" 
+                         next_title="Next: After Payment"
                          prev_href="index"
                          prev_title="Back: Introduction" %}
 

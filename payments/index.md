@@ -37,15 +37,15 @@ sidebar:
    below." %}
 
 {:.table .table-striped}
-|                                | Payment method                      | Seamless View | Redirect | Direct API | Region                                                                           |
-| :----------------------------- | :---------------------------------- | :------------ | :------- | :--------- | :------------------------------------------------------------------------------- |
-| ![CardIcon][card-icon]         | [Credit card][credit-card]          | ✔︎︎︎︎︎        | ✔︎︎︎︎︎   | ✔︎︎︎︎︎     | ![EarthIcon][earth-icon]                                                         |
-| ![InvoiceIcon][invoice-icon]   | [Swedbank Pay Invoice][invoice]     | ✔︎︎︎︎︎        | ✔︎︎︎︎︎   | ✔︎︎︎︎︎     | ![nor][nor-flag] ![swe][swe-flag] ![fin][fin-flag]                                 |
-| ![EnvelopeIcon][envelope-icon] | [Swedbank Pay Web Invoice][invoice] | ✔︎︎︎︎︎        | ✔︎︎︎︎︎   | ✔︎ ︎       | ![nor][nor-flag] ![swe][swe-flag]                                                 |
-| ![KeypadIcon][keypad-icon]     | [Direct Debit][direct-debit]        |            | ✔︎︎︎︎︎   |         | ![swe][swe-flag] ![fin][fin-flag] ![lat][lat-flag] ![lit][lit-flag] ![est][est-flag] |
-| ![Vipps][vipps-logo]           | [Vipps][vipps]                      | ✔︎︎︎︎︎        | ✔︎︎︎︎︎   |         | ![nor][nor-flag]                                                                 |
-| ![Swish][swish-logo]           | [Swish][swish]                      | ✔︎︎︎︎︎        | ✔︎︎︎︎︎   | ✔︎︎︎︎︎  ︎  | ![swe][swe-flag]                                                                 |
-| ![MobilePay][mobilepay-logo]   | [Mobile Pay][mobile-pay]            |            | ✔︎︎︎︎︎   |         | ![dan][dan-flag]                                                                 |
+|                                | Payment method                      | Seamless View | Redirect | Direct API | Region                                                                               |
+| :----------------------------- | :---------------------------------- | :------------ | :------- | :--------- | :----------------------------------------------------------------------------------- |
+| ![CardIcon][card-icon]         | [Credit card][credit-card]          | ✔︎︎︎︎︎        | ✔︎︎︎︎︎   | ✔︎︎︎︎︎     | ![EarthIcon][earth-icon]                                                             |
+| ![InvoiceIcon][invoice-icon]   | [Swedbank Pay Invoice][invoice]     | ✔︎︎︎︎︎        | ✔︎︎︎︎︎   | ✔︎︎︎︎︎     | ![nor][nor-flag] ![swe][swe-flag] ![fin][fin-flag]                                   |
+| ![EnvelopeIcon][envelope-icon] | [Swedbank Pay Web Invoice][invoice] | ✔︎︎︎︎︎        | ✔︎︎︎︎︎   | ✔︎ ︎       | ![nor][nor-flag] ![swe][swe-flag]                                                    |
+| ![KeypadIcon][keypad-icon]     | [Direct Debit][direct-debit]        |               | ✔︎︎︎︎︎   |            | ![swe][swe-flag] ![fin][fin-flag] ![lat][lat-flag] ![lit][lit-flag] ![est][est-flag] |
+| ![Vipps][vipps-logo]           | [Vipps][vipps]                      | ✔︎︎︎︎︎        | ✔︎︎︎︎︎   |            | ![nor][nor-flag]                                                                     |
+| ![Swish][swish-logo]           | [Swish][swish]                      | ✔︎︎︎︎︎        | ✔︎︎︎︎︎   | ✔︎︎︎︎︎  ︎  | ![swe][swe-flag]                                                                     |
+| ![MobilePay][mobilepay-logo]   | [Mobile Pay][mobile-pay]            |               | ✔︎︎︎︎︎   |            | ![dan][dan-flag]                                                                     |
 
 ## Seamless View
 
@@ -122,10 +122,10 @@ possible to abort a payment before the end user has fulfilled the payment
 process.
 Settle funds directly with a Sales transaction.  
 
-
 >Add image
 
 ## Swedbank Pay Payment Instruments Platforms
+
 Swedbank Pay Hosted view and Redirect offer easy-to-use PCI compliant platforms,
 available from both web and mobile browsers. Either let your customers access
 the platform directly, embedded on your site, or by redirection to a separate
@@ -137,7 +137,6 @@ With the Hosted View you can initiate the payment process directly in an iframe
 on your site. A hostUrl needs to be defined in the first POST request in order
 to enable the Seamless View operation. See details of the request
 [here][card-payments-purchase].
-
 
 ```mermaid
 sequenceDiagram
@@ -242,7 +241,7 @@ Consumer->>PayEx: access authorize page
 note left of Consumer: redirect to PayEx
 ```
 
-Please visit our [demoshop][demoshop] to view our Payment Menu and Redirect 
+Please visit our [demoshop][demoshop] to view our Payment Menu and Redirect
 implementation in action. Use the configuration below:
 
 ```
@@ -255,15 +254,15 @@ English
 
 #### Getting started
 
-To start using the Redirect platform, you need to implement the appropriate 
-operation returned from the initial API Request, containing the URL that the 
+To start using the Redirect platform, you need to implement the appropriate
+operation returned from the initial API Request, containing the URL that the
 customer's browser needs to be redirected to.
 
-The combination of properties should be similar to all payment methods. In the 
-example below, the href attribute refers to the redirect URL and the rel 
-description redirect-sale indicate that the redirect scenario will generate a 
-one-phased sales transaction. A two-phase credit card payment would during the 
-same scenario generate an authorization transaction, and the  rel description 
+The combination of properties should be similar to all payment methods. In the
+example below, the href attribute refers to the redirect URL and the rel
+description redirect-sale indicate that the redirect scenario will generate a
+one-phased sales transaction. A two-phase credit card payment would during the
+same scenario generate an authorization transaction, and the  rel description
 would in that case be `"redirect-authorization"`.
 
 ```JS
@@ -279,12 +278,12 @@ would in that case be `"redirect-authorization"`.
 }
 ```
 
-See the technical overview of each payment method and the technical reference 
+See the technical overview of each payment method and the technical reference
 for more specific information.
 
 ## The Payment Process
 
-The core payment process of the eCommerce APIs are the same across all payment 
+The core payment process of the eCommerce APIs are the same across all payment
 instruments.
 
 ### Creating a payment
@@ -337,7 +336,7 @@ instruments.
   
 {:.table .table-striped}
 | Initialized | Something unexpected occurred. It is impossible to determine the exact status (network failure etc.) and the transaction will remain Initialized. The corresponding state of the payment will be set to pending andno further actions can be taken on this payment (no more transactions can be created).|
-| Completed |	Everything went ok! The consumer's card has been charged (or billed by invoice).|
+| Completed | Everything went ok! The consumer's card has been charged (or billed by invoice).|
 | Failed |The transaction has failed (maybe the card error relating to the acquiring bank). The transactional state is final, but it is still possible to retry and create another capture transaction  (the consumer tries another credit card, yet again). If the maximum amount of retries has been reached the payment state itself will be set to failed.|
 
 ### Cancelling an authorized amount

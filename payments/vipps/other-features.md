@@ -19,8 +19,8 @@ sidebar:
 {% include alert.html type="warning"
                       icon="warning"
                       header="Site under development"
-                      body="The Developer Portal is under construction and 
-                      should not be used to integrate against Swedbank Pay's 
+                      body="The Developer Portal is under construction and
+                      should not be used to integrate against Swedbank Pay's
                       APIs yet." %}
 
 {% include settlement-reconciliation.md %}
@@ -45,16 +45,16 @@ sidebar:
 
 ## Problem messages
 
-When performing unsuccessful operations, the eCommerce API will respond with a 
-problem message. 
-We generally use the problem message type and status code to identify the 
-nature of the problem. 
-The problem name and description will often help narrow down the specifics of 
+When performing unsuccessful operations, the eCommerce API will respond with a
+problem message.
+We generally use the problem message type and status code to identify the
+nature of the problem.
+The problem name and description will often help narrow down the specifics of
 the problem.
 
 ### Error types from Vipps (Init-call)
 
-All Vipps error types will have the following URI in front of type: 
+All Vipps error types will have the following URI in front of type:
 `https://api.payex.com/psp/errordetail/vipps/<errorType>`
 
 {:.table .table-striped}
@@ -64,7 +64,7 @@ All Vipps error types will have the following URI in front of type:
 
 ### Error types from Vipps (Callback)
 
-All Vipps error types will have the following URI in front of type: 
+All Vipps error types will have the following URI in front of type:
 `https://api.payex.com/psp/errordetail/vipps/<errorType>`
 
 {:.table .table-striped}
@@ -74,28 +74,28 @@ All Vipps error types will have the following URI in front of type:
 
 ### Error types from Acquirer
 
-All Vipps error types will have the following URI in front of type: 
+All Vipps error types will have the following URI in front of type:
 `https://api.payex.com/psp/errordetail/vipps/<errorType>`
 
 {:.table .table-striped}
-| Type | Status | Note 
-| *CARD_BLACKLISTED* | 400 | 
-| *PAYMENT_TOKEN_ERROR* | 403 | 
-| *CARD_DECLINED* | 403 | 
-| *ACQUIRER_ERROR* | 403 | 
-| *ACQUIRER_CARD_BLACKLISTED* | 403 | 
-| *ACQUIRER_CARD_EXPIRED* | 403 | 
-| *ACQUIRER_CARD_STOLEN* | 403 | 
-| *ACQUIRER_INSUFFICIENT_FUNDS* | 403 | 
-| *ACQUIRER_INVALID_AMOUNT* | 403 | 
-| *ACQUIRER_POSSIBLE_FRAUD* | 403 | 
-| *FRAUD_DETECTED* | 403 | 
-| *BAD_REQUEST* | 500 | 
-| *INTERNAL_SERVER_ERROR* | 500 | 
-| *BAD_GATEWAY* | 502 | 
-| *ACQUIRER_GATEWAY_ERROR* | 502 | 
-| *ACQUIRER_GATEWAY_TIMEOUT* | 504 | 
-| *UNKNOWN_ERROR* | 500 | 
+| Type | Status | Note
+| *CARD_BLACKLISTED* | 400 |
+| *PAYMENT_TOKEN_ERROR* | 403 |
+| *CARD_DECLINED* | 403 |
+| *ACQUIRER_ERROR* | 403 |
+| *ACQUIRER_CARD_BLACKLISTED* | 403 |
+| *ACQUIRER_CARD_EXPIRED* | 403 |
+| *ACQUIRER_CARD_STOLEN* | 403 |
+| *ACQUIRER_INSUFFICIENT_FUNDS* | 403 |
+| *ACQUIRER_INVALID_AMOUNT* | 403 |
+| *ACQUIRER_POSSIBLE_FRAUD* | 403 |
+| *FRAUD_DETECTED* | 403 |
+| *BAD_REQUEST* | 500 |
+| *INTERNAL_SERVER_ERROR* | 500 |
+| *BAD_GATEWAY* | 502 |
+| *ACQUIRER_GATEWAY_ERROR* | 502 |
+| *ACQUIRER_GATEWAY_TIMEOUT* | 504 |
+| *UNKNOWN_ERROR* | 500 |
 
 ### Payee reference
 
@@ -105,7 +105,7 @@ All Vipps error types will have the following URI in front of type:
 
 {% include callback-reference.md %}
 
-{% include iterator.html 
+{% include iterator.html
         prev_href="after-payment"
         prev_title="Back: After Payment" %}
 

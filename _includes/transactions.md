@@ -47,10 +47,10 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property                     | Type     | Description                        |
-|:-----------------------------|:---------|:-----------------------------------|
-| `payment`                    | `string` | The relative URI of the payment this list of transactions belong to.
-| `transactions`               | `object` | The transactions object.
-| └➔&nbsp;`id`                | `string` | The relative URI of the current `transactions` resource.
-| └➔&nbsp;`transactionList`   | `array`  | The array of transaction objects.
-| └➔&nbsp;`transactionList[]` | `object` | The transaction object (described in the `transaction` resource below).
+| Property                    | Type     | Description                                                             |
+| :-------------------------- | :------- | :---------------------------------------------------------------------- |
+| `payment`                   | `string` | The relative URI of the payment this list of transactions belong to.    |
+| `transactions`              | `object` | The transactions object.                                                |
+| └➔&nbsp;`id`                | `string` | The relative URI of the current `transactions` resource.                |
+| └➔&nbsp;`transactionList`   | `array`  | The array of transaction objects.                                       |
+| └➔&nbsp;`transactionList[]` | `object` | The transaction object (described in the `transaction` resource below). |
