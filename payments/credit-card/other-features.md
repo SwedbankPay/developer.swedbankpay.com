@@ -69,9 +69,10 @@ It is followed up by posting a capture, cancellation or reversal transaction.
 An example of a request is provided below. Each individual Property of the JSON
  document is described in the following section.
 
-**Notice** to increase the chance for not invoking 3DSecure during a purchase,
-it's recommended that you add as much data to the `riskIndicator` object in
-the request below.
+**Please note** that in order to minimize the risk for a challenge request
+(Strong Customer Authentication – “SCA”) on card payments, it's recommended that
+you add as much data as possible to the `riskIndicator` object in the request
+below.
 
 {:.code-header}
 **Request**
@@ -657,7 +658,7 @@ Content-Type: application/json
 The sequence diagram below shows the two requests you have to send to Swedbank
 Pay to make a purchase. The links will take you directly to the API description
 for the specific request. The diagram also shows in high level, the sequence of
-the process of a complete purchase.  
+the process of a complete purchase.
 When dealing with credit card payments, 3D-Secure authentication of the
 cardholder is an essential topic. There are three alternative outcome of a
 credit card payment:

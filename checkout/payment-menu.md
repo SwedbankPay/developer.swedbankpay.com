@@ -127,13 +127,14 @@ with the `consumerProfileRef` we obtained in the checkin process described
 above.
 Remember to read up on our [URL resource][urls].
 
-**Notice** that the `orderItems` property object is optional. If the `POST`
-request has `orderItems` in the `paymentorder`, remember to include
-`orderItems` in the [capture operation][capture-operation].
+**Please Note:**
 
-**Also notice** to increase the chance for not invoking 3DSecure during a
-purchase, it's recommended that you add as much data to the
-`riskIndicator` object in the request below.
+* The `orderItems` property object is optional. If the `POST` request has
+  `orderItems` in the `paymentorder`, remember to include `orderItems` in
+  the [capture operation][capture-operation].
+* To minimize the risk for a challenge request (Strong Customer Authentication
+  – “SCA”) on card payments, it's recommended that you add as much data as
+  possible to the `riskIndicator` object in the request below.
 
 {:.code-header}
 **Request**
