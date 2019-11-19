@@ -74,7 +74,7 @@ contract.
 | `IkanoFinansDK` | Ikano Finans Denmark                       |
 | `Maestro`       | MasterCard Maestro                         |
 
-{% if hide-direct-debit == false %}
+{% unless hide-direct-debit %}
 
 #### Direct Debit Payments
 
@@ -100,7 +100,7 @@ contract.
 | `SHBFI`      | Handelsbanken Finland **(Not yet supported)**    |
 | `SpankkiFI`  | S-Pankki Finland **(Not yet supported)**         |
 | `SPFI`       | Säästöpankki Finland **(Not yet supported)**     |
-{% endif %}
+{% endunless %}
 
 #### Invoice Payments
 
@@ -109,7 +109,7 @@ contract.
 | :-------- | :------------- |
 | `Invoice` | Always Invoice |
 
-{% if hide-mobile-pay == false %}
+{% unless hide-mobile-pay %}
 
 #### MobilePay Payments
 
@@ -118,7 +118,7 @@ contract.
 | :---------- | :--------------- |
 | `Mobilepay` | Always Mobilepay |
 
-{% endif %}
+{% endunless %}
 
 #### Swish Payments
 
