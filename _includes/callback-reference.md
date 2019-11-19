@@ -10,8 +10,8 @@ about this update.
   being redirect from Swedbank Pay back to the merchant website, the callback is
   what ensures that you receive information about what happened with the payment.
 * When a change or update from the back-end system are made on a payment or
-  transaction, Swedbank Pay will perform a callback to inform the payee
-  (merchant) about this update.
+  transaction, Swedbank Pay will perform an asynchronous server-to-server
+  callback to inform the payee (merchant) about this update.
 * Swedbank Pay will make an HTTP `POST` to the `callbackUrl` that was specified
   when the payee (merchant) created the payment.
 * When the `callbackUrl` receives such a callback, an `HTTP` `GET` request
