@@ -18,18 +18,18 @@ sidebar:
 
 ## Payment Resource
 
-The payment resource and all general sub-resources can be found in the 
+The payment resource and all general sub-resources can be found in the
 [core payment resources](#create-payment) section.
 
 ### Create Payment
 
-To create a Vipps payment, you perform an HTTP `POST` against the 
-`/psp/vipps/payments` resource. 
+To create a Vipps payment, you perform an HTTP `POST` against the
+`/psp/vipps/payments` resource.
 
 An example of a payment creation request is provided below.
-Each individual Property of the JSON document is described in the following 
-section. 
-Use the [expand][technical-reference-expansion] request parameter to get a 
+Each individual Property of the JSON document is described in the following
+section.
+Use the [expand][technical-reference-expansion] request parameter to get a
 response that includes one or more expanded sub-resources inlined.
 
 {:.code-header}
@@ -166,9 +166,9 @@ Content-Type: application/json
 
 ### Purchase
 
-Posting a payment (operation purchase) returns the options of aborting the 
-payment altogether or creating an authorization transaction through the 
-`redirect-authorization` hyperlink. 
+Posting a payment (operation purchase) returns the options of aborting the
+payment altogether or creating an authorization transaction through the
+`redirect-authorization` hyperlink.
 
 {:.code-header}
 **Request**
@@ -183,10 +183,10 @@ payment altogether or creating an authorization transaction through the
 
 ### Operations
 
-When a payment resource is created and during its lifetime, 
-it will have a set of operations that can be performed on it. 
-Which operations are available will vary depending on the state of the 
-payment resource, what the access token is authorized to do, etc. 
+When a payment resource is created and during its lifetime,
+it will have a set of operations that can be performed on it.
+Which operations are available will vary depending on the state of the
+payment resource, what the access token is authorized to do, etc.
 A list of possible operations and their explanation is given below.
 
 {:.code-header}
@@ -232,12 +232,12 @@ A list of possible operations and their explanation is given below.
 | `rel`    | The name of the relation the operation has to the current resource. |
 | `method` | The HTTP method to use when performing the operation.               |
 
-The operations should be performed as described in each response and not as 
-described here in the documentation. 
-Always use the `href` and `method` as specified in the response by finding 
-the appropriate operation based on its `rel` value. 
-The only thing that should be hard coded in the client is the value of the 
-`rel` and the request that will be sent in the HTTP body of the request for 
+The operations should be performed as described in each response and not as
+described here in the documentation.
+Always use the `href` and `method` as specified in the response by finding
+the appropriate operation based on its `rel` value.
+The only thing that should be hard coded in the client is the value of the
+`rel` and the request that will be sent in the HTTP body of the request for
 the given operation.
 
 {:.table .table-striped}
@@ -450,9 +450,9 @@ Content-Type: application/json
 | ✔︎       | capture.description    | string     | A textual description of the capture transaction.                                                                         |
 | ✔︎       | capture.payeeReference | string(50) | A unique reference for the capture transaction. See [`payeeReference`][technical-reference-payeeReference] for details.   |
 
-The `capture` resource contains information about the capture transaction made 
-against a Vipps payment. 
-You can return a specific capture transaction by adding the transaction id to 
+The `capture` resource contains information about the capture transaction made
+against a Vipps payment.
+You can return a specific capture transaction by adding the transaction id to
 the `GET` request.
 
 {:.code-header}
@@ -493,7 +493,7 @@ Content-Type: application/json
 
 ### Cancellations
 
-The `cancellations` resource lists the cancellation transactions on a 
+The `cancellations` resource lists the cancellation transactions on a
 specific payment.
 
 {:.code-header}
@@ -550,7 +550,7 @@ Content-Type: application/json
 
 ### Create cancellation transaction
 
-Perform the `create-cancel` operation to cancel a previously created payment. 
+Perform the `create-cancel` operation to cancel a previously created payment.
 You can only cancel a payment - or part of payment - not yet captured.
 
 {:.code-header}
@@ -613,9 +613,9 @@ Content-Type: application/json
 | cancellation.id          | string    | The relative URI of the current cancellation transaction resource.                       |
 | cancellation.transaction | object    | The object representation of the generic [transaction][technical-reference-transaction]. |
 
-### Reversals 
+### Reversals
 
-The `reversals` resource lists the reversal transactions (one or more) 
+The `reversals` resource lists the reversal transactions (one or more)
 on a specific payment.
 
 {:.code-header}
@@ -668,9 +668,9 @@ Content-Type: application/json
 | reversalList   | array  | The array of reversal transaction objects.                                                           |
 | reversalList[] | object | The reversal transaction object representation of the reversal transaction resource described below. |
 
-#### Create reversal transaction 
+#### Create reversal transaction
 
-The `create-reversal` operation reverses a previously created and 
+The `create-reversal` operation reverses a previously created and
 captured payment.
 
 {:.code-header}
@@ -700,9 +700,9 @@ Content-Type: application/json
 | ✔︎︎︎︎︎   | transaction.description    | string     | A textual description of the capture                                                                                      |
 | ✔︎︎︎︎︎   | transaction.payeeReference | string(50) | A unique reference for the reversal transaction. See [`payeeReference`][technical-reference-payeeReference] for details.  |
 
-The `reversal` resource contains information about a reversal transaction made 
-against a payment. 
-You can return a specific reversal transaction by adding the transaction id 
+The `reversal` resource contains information about a reversal transaction made
+against a payment.
+You can return a specific reversal transaction by adding the transaction id
 to the `GET` request.
 
 {:.code-header}
@@ -743,10 +743,10 @@ Content-Type: application/json
 
 ### Callback
 
-When a change or update from the back-end system are made on a payment or 
-transaction, Swedbank Pay will perform a callback to inform the 
-payee (merchant) about this update. 
-Callback functionality is explaned in more detail 
+When a change or update from the back-end system are made on a payment or
+transaction, Swedbank Pay will perform a callback to inform the
+payee (merchant) about this update.
+Callback functionality is explaned in more detail
 [here][technical-reference-callback].
 
 ```mermaid
@@ -770,16 +770,16 @@ sequenceDiagram
 
 ### Problem messages
 
-When performing unsuccessful operations, the eCommerce API will respond with a 
-problem message. 
-We generally use the problem message type and status code to identify the 
-nature of the problem. 
-The problem name and description will often help narrow down the specifics 
+When performing unsuccessful operations, the eCommerce API will respond with a
+problem message.
+We generally use the problem message type and status code to identify the
+nature of the problem.
+The problem name and description will often help narrow down the specifics
 of the problem.
 
 ### Error types from Vipps (Init-call)
 
-All Vipps error types will have the following URI in front of type: 
+All Vipps error types will have the following URI in front of type:
 `https://api.payex.com/psp/errordetail/vipps/<errorType>`
 
 {:.table .table-striped}
@@ -789,7 +789,7 @@ All Vipps error types will have the following URI in front of type:
 
 #### Error types from Vipps (Callback)
 
-All Vipps error types will have the following URI in front of type: 
+All Vipps error types will have the following URI in front of type:
 `https://api.payex.com/psp/errordetail/vipps/<errorType>`
 
 {:.table .table-striped}
@@ -822,7 +822,7 @@ All Vipps error types will have the following URI in front of type:
 | *ACQUIRER_GATEWAY_TIMEOUT*    | 504    |
 | *UNKNOWN_ERROR*               | 500    |
 
-{% include iterator.html 
+{% include iterator.html
         prev_href="seamless-view"
         prev_title="Back: Seamless View"
         next_href="other-features"
