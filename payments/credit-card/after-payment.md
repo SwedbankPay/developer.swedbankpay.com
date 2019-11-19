@@ -86,7 +86,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property               | Data type | Description                                                                  |
+| Property               | Type | Description                                                                  |
 | :--------------------- | :-------- | :--------------------------------------------------------------------------- |
 | payment                | string    | The relative URI of the payment this list of capture transactions belong to. |
 | captures.id            | string    | The relative URI of the current  captures  resource.                         |
@@ -118,7 +118,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| ✔︎︎︎︎︎ | Property                   | Data type   | Required                                                                                                      | Description |
+| ✔︎︎︎︎︎ | Property                   | Type   | Required                                                                                                      | Description |
 | :----- | :------------------------- | :---------- | :------------------------------------------------------------------------------------------------------------ | :---------- |
 | ✔︎︎︎︎︎ | transaction.amount         | integer     | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 100.00 NOK, 5000 50.00 SEK. |
 | ✔︎︎︎︎︎ | transaction.vatAmount      | integer     | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 100.00 NOK, 5000 50.00 SEK. |
@@ -155,7 +155,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property            | Data type | Description                                                                            |
+| Property            | Type | Description                                                                            |
 | :------------------ | :-------- | :------------------------------------------------------------------------------------- |
 | payment             | string    | The relative URI of the payment this capture transaction belongs to.                   |
 | capture.id          | string    | The relative URI of the created capture transaction.                                   |
@@ -206,7 +206,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| ✔︎︎︎︎︎ | Property | Data type |Description
+| ✔︎︎︎︎︎ | Property | Type |Description
 | |:--------|:-------|:---------
 | ✔︎︎︎︎︎ |transaction.activity|string|Finalize
 
@@ -260,7 +260,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property      | Data type | Description                                                                                  |
+| Property      | Type | Description                                                                                  |
 | :------------ | :-------- | :------------------------------------------------------------------------------------------- |
 | payment       | string    | The relative URI of the payment this finalize transaction resource belongs to.               |
 | authorization | object    | The object representation of the [authorization transaction resource][transaction-resource]. |
@@ -314,7 +314,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property                         | Data type | Description                                                                         |
+| Property                         | Type | Description                                                                         |
 | :------------------------------- | :-------- | :---------------------------------------------------------------------------------- |
 | payment                          | string    | The relative URI of the payment this list of cancellation transactions belong to.   |
 | cancellations.id                 | string    | The relative URI of the current `cancellations` resource.                           |
@@ -344,7 +344,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| ✔︎︎︎︎︎ | Property                   | Data type   | Description                                                                                            |
+| ✔︎︎︎︎︎ | Property                   | Type   | Description                                                                                            |
 | :----- | :------------------------- | :---------- | :----------------------------------------------------------------------------------------------------- |
 | ✔︎︎︎︎︎ | transaction.description    | string      | A textual description of the reason for the cancellation.                                              |
 | ✔︎︎︎︎︎ | transaction.payeeReference | string(30*) | A unique reference for the cancellation transaction. See [payeeReference][payeeReference] for details. |
@@ -383,7 +383,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property                 | Data type | Description                                                                             |
+| Property                 | Type | Description                                                                             |
 | :----------------------- | :-------- | :-------------------------------------------------------------------------------------- |
 | payment                  | string    | The relative URI of the payment this cancellation transaction belongs to.               |
 | cancellation.id          | string    | The relative URI of the current cancellation transaction resource.                      |
@@ -485,7 +485,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| ✔︎︎︎︎︎ | Property | Data type | Description
+| ✔︎︎︎︎︎ | Property | Type | Description
 | ✔︎︎︎︎︎ | transaction.amount | integer | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.
 | ✔︎︎︎︎︎ | transaction.vatAmount | integer | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.
 | ✔︎︎︎︎︎ | transaction.description | string | A textual description of the capture
@@ -525,7 +525,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property             | Data type | Description                                                                            |
+| Property             | Type | Description                                                                            |
 | :------------------- | :-------- | :------------------------------------------------------------------------------------- |
 | payment              | string    | The relative URI of the payment this reversal transaction belongs to.                  |
 | reversal.id          | string    | The relative URI of the created reversal transaction.                                  |

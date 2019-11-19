@@ -88,9 +88,9 @@ Content-Type: application/json
 
 {:.table .table-striped}
 | Required | Property              | Type     | Description                                                                             |
-| :------- | :-------------------- | :------- | :-------------------------------------------------------------------------------------- |
-| ✔︎︎︎︎︎   | `operation`           | `string` | `initiate-consumer-session`, the operation to perform.                                  |
-| ✔︎︎︎︎︎   | `consumerCountryCode` | `string` | Payers country of residence. Used by the consumerUi for validation on all input fields. |
+| :------: | :-------------------- | :------- | :-------------------------------------------------------------------------------------- |
+|  ✔︎︎︎︎︎  | `operation`           | `string` | `initiate-consumer-session`, the operation to perform.                                  |
+|  ✔︎︎︎︎︎  | `consumerCountryCode` | `string` | Payers country of residence. Used by the consumerUi for validation on all input fields. |
 
 When the request has been sent, a response containing an array of operations that can be acted upon will be returned:
 
