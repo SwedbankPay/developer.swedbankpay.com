@@ -20,11 +20,11 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| ✔︎︎︎︎︎ | Property                  | Type        | Description                   |
-|:-:|:--------------------------|:-------------|:------------------------------|
-| ✔︎︎︎︎︎ | `transaction`            | `object`     | The transaction object.
-| ✔︎︎︎︎︎ | └➔&nbsp;`payeeReference` | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.
-| ✔︎︎︎︎︎ | └➔&nbsp;`description`    | `string`     | A textual description of why the transaction is cancelled.
+| ✔︎︎︎︎︎ | Property                 | Type         | Description                                                                                                                                                                              |
+| :----: | :----------------------- | :----------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ✔︎︎︎︎︎ | `transaction`            | `object`     | The transaction object.                                                                                                                                                                  |
+| ✔︎︎︎︎︎ | └➔&nbsp;`payeeReference` | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details. |
+| ✔︎︎︎︎︎ | └➔&nbsp;`description`    | `string`     | A textual description of why the transaction is cancelled.                                                                                                                               |
 
 If the cancellation request succeeds, the response should be similar to the
 example below:
@@ -54,8 +54,8 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property                  | Type     | Description                           |
-|:--------------------------|:---------|:--------------------------------------|
+| Property                  | Type      | Description                                                                                                                                                                                                  |
+| :------------------------ | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `payment`                 | `string`  | The relative URI of the payment this cancellation transaction belongs to.                                                                                                                                    |
 | `cancellation`            | `object`  | The cancellation object, containing information about the cancellation transaction.                                                                                                                          |
 | └➔&nbsp;`id`              | `string`  | The relative URI of the cancellation transaction.                                                                                                                                                            |

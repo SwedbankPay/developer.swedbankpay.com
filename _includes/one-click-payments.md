@@ -9,8 +9,8 @@ these details for every purchase." %}
 
 For [credit card][card] and [financing invoice][invoice] payments the
 payment flow and implementation varies from your default only being the
-use of a `paymentToken`. 
-The details in this section describe explicitly the parameters that must 
+use of a `paymentToken`.
+The details in this section describe explicitly the parameters that must
 be set to enable one-click purchases.
 
 ### Payment Url
@@ -52,7 +52,7 @@ and [invoice][create-invoice-payment] payment.
 POST /psp/creditcard/payments HTTP/1.1
 Host: api.payex.com
 Authorization: Bearer <MerchantToken>
-Content-Type: application/json      
+Content-Type: application/json
 
 {
   "payment": {
@@ -90,7 +90,7 @@ Content-Type: application/json
 }
 ```
 
-_When redirecting to Swedbank Pay the payment page will be 
+_When redirecting to Swedbank Pay the payment page will be
 prefilled with the payer's card details._
 
 ### Screenshots
@@ -99,7 +99,7 @@ prefilled with the payer's card details._
 
 ### Delete payment token
 
-If you, for any reason, need to delete a `paymentToken` 
+If you, for any reason, need to delete a `paymentToken`
 you use the `Delete payment token` request.
 
 {:.code-header}
@@ -112,7 +112,7 @@ Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 
 {
-  "state": "Deleted", 
+  "state": "Deleted",
   "tokenType" : "PaymentToken|RecurrenceToken",
   "comment": "Comment on why the deletion is happening"
 }

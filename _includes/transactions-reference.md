@@ -1,11 +1,11 @@
 ## Transactions
 
-A payment contains sub-resources in the form of `transactions`. 
-Most operations performed on a payment ends up as a transaction. 
-The different types of operations that alter the state of the payment by 
+A payment contains sub-resources in the form of `transactions`.
+Most operations performed on a payment ends up as a transaction.
+The different types of operations that alter the state of the payment by
 creating a transaction is described below.
 
-The `transactions` resource will list the transactions (one or more) 
+The `transactions` resource will list the transactions (one or more)
 on a specific payment.
 
 {:.code-header}
@@ -58,23 +58,23 @@ Content-Type: application/json
 
 ### Transaction
 
-The `transaction` resource contains the generic details of a 
-transaction on a specific payment. 
+The `transaction` resource contains the generic details of a
+transaction on a specific payment.
 
 When a transaction is created it will have one of three states:
 
-* `Initialized` - if there is some error where the source is undeterminable 
-  (network failure, etc), the transaction will remain Initialized. 
-  The corresponding state of the payment order will in this case be set 
-  to pending. 
+* `Initialized` - if there is some error where the source is undeterminable
+  (network failure, etc), the transaction will remain Initialized.
+  The corresponding state of the payment order will in this case be set
+  to pending.
   No further transactions can be created.
-* `Completed` - if everything went ok the transaction will follow 
+* `Completed` - if everything went ok the transaction will follow
   through to completion..
-* `Failed` - if the transaction has failed 
-  (i.e. a denial from the acquiring bank) it is possible to retry 
-  (i.e the consumer tries using another credit card) up to a maximum amount 
-  of retries (in that case which the payment order gets 
-  the state `failed` as well). 
+* `Failed` - if the transaction has failed
+  (i.e. a denial from the acquiring bank) it is possible to retry
+  (i.e the consumer tries using another credit card) up to a maximum amount
+  of retries (in that case which the payment order gets
+  the state `failed` as well).
 
 {:.code-header}
 **Request**
