@@ -41,36 +41,35 @@ sequenceDiagram
     participant Merchant
     participant SwedbankPay as Swedbank Pay
 
-    activate Payer
         rect rgba(238, 112, 35, 0.05)
             note left of Payer: Checkin
 
-            Payer ->> Merchant: Start Checkin
-            activate Merchant
-                Merchant ->> SwedbankPay: POST /psp/consumers
-                activate SwedbankPay
-                    SwedbankPay -->> Merchant: rel:view-consumer-identification
-                deactivate SwedbankPay
-                Merchant -->> Payer: Show Checkin (Consumer Hosted View)
+    Payer ->>+ Merchant: Start Checkin
+    Merchant ->>+ SwedbankPay: POST /psp/consumers
+    deactivate Merchant
+    SwedbankPay -->>+ Merchant: rel:view-consumer-identification ①
+    deactivate SwedbankPay
+    Merchant -->>- Payer: Show Checkin on Merchant Page
 
-            deactivate Merchant
-            Payer ->> Payer: Initiate Consumer Hosted View (open iframe)
-            Payer ->> SwedbankPay: Show Consumer UI page in iframe
-            activate SwedbankPay
-                SwedbankPay ->> Payer: Consumer identification process
-                SwedbankPay -->> Payer: show consumer completed iframe
-            deactivate SwedbankPay
-            Payer ->> Payer: onConsumerIdentified (consumerProfileRef)
-        end
+    Payer ->>+ Payer: Initiate Consumer Hosted View (open iframe) ②
+    Payer ->>+ SwedbankPay: Show Consumer UI page in iframe ③
+    deactivate Payer
+    SwedbankPay ->>- Payer: Consumer identification process
+    activate Payer
+    Payer ->>+ SwedbankPay: Consumer identification process
+    deactivate Payer
+    SwedbankPay -->>- Payer: show consumer completed iframe
+    activate Payer
+    Payer ->> Payer: EVENT: onConsumerIdentified (consumerProfileRef) ④
+    deactivate Payer
+    end
 ```
 
 ## Checkin Back End
 
 The payer will be identified with the `consumers` resource and will be
 persisted to streamline future Payment Menu processes. Payer identification
-is done through the `initiate-consumer-session` operation. In the request body,
-most properties are optional. However, the more information that is provided,
-the easier the identification process becomes for the payer.
+is done through the `initiate-consumer-session` operation.
 
 {:.code-header}
 **Request**
@@ -83,26 +82,15 @@ Content-Type: application/json
 
 {
     "operation": "initiate-consumer-session",
-    "msisdn": "+46739000001",
-    "email": "leia.ahlstrom@example.com",
-    "consumerCountryCode": "SE",
-    "nationalIdentifier": {
-        "socialSecurityNumber": "199710202392",
-        "countryCode": "SE"
-    }
+    "consumerCountryCode": "SE"
 }
 ```
 
 {:.table .table-striped}
-| ✔︎︎︎︎︎ **(Required)** | **Property**              | **Type** | **Description**                                                                                                                           |
-| :-------------------- | :------------------------ | :------- | :---------------------------------------------------------------------------------------------------------------------------------------- |
-| ✔︎︎︎︎︎                | `operation`               | `string` | `initiate-consumer-session`, the operation to perform.                                                                                    |
-|                       | `msisdn`                  | `string` | The [MSISDN][msisdn] (mobile phone number) of the payer. Format Sweden: `+46707777777`. Format Norway: `+4799999999`.                     |
-|                       | `email`                   | `string` | The e-mail address of the payer.                                                                                                          |
-| ✔︎︎︎︎︎                | `consumerCountryCode`     | `string` | Payers country of residence. Used by the consumerUi for validation on all input fields.                                                   |
-|                       | `nationalIdentifier`      | `object` | The object containing information about the national identifier of the payer.                                                             |
-|                       | └➔ `socialSecurityNumber` | `string` | The social security number of the payer. Format: Norway `DDMMYYXXXXX`, Sweden: `YYYYMMDDXXXX`.                                            |
-|                       | └➔ `countryCode`          | `string` | The country code, denoting the origin of the issued social security number. Required if `nationalIdentifier.socialSecurityNumber` is set. |
+| Required | Property              | Type     | Description                                                                             |
+| :------- | :-------------------- | :------- | :-------------------------------------------------------------------------------------- |
+| ✔︎︎︎︎︎   | `operation`           | `string` | `initiate-consumer-session`, the operation to perform.                                  |
+| ✔︎︎︎︎︎   | `consumerCountryCode` | `string` | Payers country of residence. Used by the consumerUi for validation on all input fields. |
 
 When the request has been sent, a response containing an array of operations that can be acted upon will be returned:
 
@@ -158,7 +146,11 @@ operation is meant to be embedded in a `<script>` element in an HTML document.
                       `view-consumer-identification` solution.
                       The `redirect-consumer-identification` method redirects
                       the user to Swedbank's own site to handle the checkin
-                      and is used in other implementations."%}
+                      and is used in other implementations.
+                      `redirect-consumer-identification` **should only be used in
+                      test enviroments**. It is not suitable for the production
+                      environment as there is no simple way of retrieving the
+                      `consumerProfileRef`."%}
 
 {:.code-header}
 **HTML**

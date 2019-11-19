@@ -1,4 +1,10 @@
-Capture can only be done on a payment with a successful authorized transaction.
+Capture can only be done on a payment with a successful authorized transaction,
+and if the authorization was not done on a one-phase payment instrument.
+Examples of one-phase payment instruments are [Swish](/payments/swish/index.md)
+and [Vipps](/payments/vipps/index.md), while payment instruments such as 
+[Credit Card](/payments/credit-card/index.md) are two-phase payemtns, requiring
+a `Capture` to be performed.
+
 It is possible to do a part-capture where you only capture a smaller amount
 than the authorized amount. You can later do more captures on the same payment
 up to the total authorization amount.
@@ -14,19 +20,13 @@ sequenceDiagram
     participant SwedbankPay as Swedbank Pay
 
     rect rgba(81,43,43,0.1)
-        note left of Payer: Capture
         activate Merchant
-            Merchant ->> SwedbankPay: GET /psp/paymentorders/<paymentOrderId>
-            activate SwedbankPay
-                SwedbankPay -->> Merchant: rel:create-paymentorder-capture
-            deactivate SwedbankPay
-            Merchant ->> SwedbankPay: POST /psp/paymentorders/<paymentOrderId>/captures
-            activate SwedbankPay
-                SwedbankPay -->> Merchant: Capture status
-            deactivate SwedbankPay
-            note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.
+        note left of Payer: Capture
+        Merchant ->>+ SwedbankPay: rel:create-paymentorder-capture
         deactivate Merchant
-    end
+        SwedbankPay -->>- Merchant: Capture status
+        note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>PaymentInstruments that support <br>Authorizations.
+        end
 ```
 
 **Notice** that the `orderItems` property object is optional. If the `POST`
@@ -90,29 +90,29 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| ✔︎︎︎︎︎ | Property                       | Type         | Description                                                                                                                                                                                                                                |
-| :----: | :----------------------------- | :----------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ✔︎︎︎︎︎ | `transaction`                  | `object`     | The transaction object.                                                                                                                                                                                                                    |
-| ✔︎︎︎︎︎ | └➔&nbsp;`description`          | `string`     | The description of the capture transaction.                                                                                                                                                                                                |
-| ✔︎︎︎︎︎ | └➔&nbsp;`amount`               | `integer`    | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.                                                                                                          |
-| ✔︎︎︎︎︎ | └➔&nbsp;`vatAmount`            | `integer`    | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.                                                                                                                 |
-| ✔︎︎︎︎︎ | └➔&nbsp;`payeeReference`       | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.                                                   |
-|        | └➔&nbsp;`orderItems`           | `array`      | The array of items being purchased with the order. Used to print on invoices if the payer chooses to pay with invoice, among other things. Required in `capture` requests if already sent with the initial creation of the Payment Order. Note that this should only contain the items to be captured from the order.  |
-| ✔︎︎︎︎︎ | └─➔&nbsp;`reference`           | `string`     | A reference that identifies the order item.                                                                                                                                                                                                |
-| ✔︎︎︎︎︎ | └─➔&nbsp;`name`                | `string`     | The name of the order item.                                                                                                                                                                                                                |
-| ✔︎︎︎︎︎ | └─➔&nbsp;`type`                | `string`     | `PRODUCT`, `SERVICE`, `SHIPPING_FEE`, `DISCOUNT`, `VALUE_CODE` or `OTHER`. The type of the order item.                                                                                                                                     |
-| ✔︎︎︎︎︎ | └─➔&nbsp;`class`               | `string`     | The classification of the order item. Can be used for assigning the order item to a specific product category, for instance. Swedbank Pay has no use for this value itself, but it's useful for some payment instruments and integrations. Note that this cannot contain spaces. |
-|  ︎︎︎   | └─➔&nbsp;`itemUrl`             | `string`     | The URL to a page that contains a human readable description of the order item, or similar.                                                                                                                                                |
-|  ︎︎︎   | └─➔&nbsp;`imageUrl`            | `string`     | The URL to an image of the order item.                                                                                                                                                                                                     |
-|  ︎︎︎   | └─➔&nbsp;`description`         | `string`     | The human readable description of the order item.                                                                                                                                                                                          |
-|  ︎︎︎   | └─➔&nbsp;`discountDescription` | `string`     | The human readable description of the possible discount.                                                                                                                                                                                   |
-| ✔︎︎︎︎︎ | └─➔&nbsp;`quantity`            | `integer`    | The quantity of order items being purchased.                                                                                                                                                                                               |
-| ✔︎︎︎︎︎ | └─➔&nbsp;`quantityUnit`        | `string`     | The unit of the quantity, such as `pcs`, `grams`, or similar.                                                                                                                                                                              |
-| ✔︎︎︎︎︎ | └─➔&nbsp;`unitPrice`           | `integer`    | The price per unit of order item.                                                                                                                                                                                                          |
-|  ︎︎︎   | └─➔&nbsp;`discountPrice`       | `integer`    | If the order item is purchased at a discounted price, this property should contain that price.                                                                                                                                             |
-| ✔︎︎︎︎︎ | └─➔&nbsp;`vatPercent`          | `integer`    | The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.                                                                                                                                                                   |
-| ✔︎︎︎︎︎ | └─➔&nbsp;`amount`              | `integer`    | The total amount including VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `500`0 equals `50.00 NOK`.                                      |
-| ✔︎︎︎︎︎ | └─➔&nbsp;`vatAmount`           | `integer`    | The total amount of VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `500`0 equals `50.00 NOK`.                                             |
+| ✔︎︎︎︎︎ | Property                       | Type         | Description                                                                                                                                                                                                                                                                                                           |
+| :----: | :----------------------------- | :----------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ✔︎︎︎︎︎ | `transaction`                  | `object`     | The transaction object.                                                                                                                                                                                                                                                                                               |
+| ✔︎︎︎︎︎ | └➔&nbsp;`description`          | `string`     | The description of the capture transaction.                                                                                                                                                                                                                                                                           |
+| ✔︎︎︎︎︎ | └➔&nbsp;`amount`               | `integer`    | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.                                                                                                                                                                                     |
+| ✔︎︎︎︎︎ | └➔&nbsp;`vatAmount`            | `integer`    | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.                                                                                                                                                                                            |
+| ✔︎︎︎︎︎ | └➔&nbsp;`payeeReference`       | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.                                                                                                                              |
+|        | └➔&nbsp;`orderItems`           | `array`      | The array of items being purchased with the order. Used to print on invoices if the payer chooses to pay with invoice, among other things. Required in `capture` requests if already sent with the initial creation of the Payment Order. Note that this should only contain the items to be captured from the order. |
+| ✔︎︎︎︎︎ | └─➔&nbsp;`reference`           | `string`     | A reference that identifies the order item.                                                                                                                                                                                                                                                                           |
+| ✔︎︎︎︎︎ | └─➔&nbsp;`name`                | `string`     | The name of the order item.                                                                                                                                                                                                                                                                                           |
+| ✔︎︎︎︎︎ | └─➔&nbsp;`type`                | `string`     | `PRODUCT`, `SERVICE`, `SHIPPING_FEE`, `PAYMENT_FEE`, `DISCOUNT`, `VALUE_CODE` or `OTHER`. The type of the order item.                                                                                                                                                                                                 |
+| ✔︎︎︎︎︎ | └─➔&nbsp;`class`               | `string`     | The classification of the order item. Can be used for assigning the order item to a specific product category, such as `MobilePhone`. Note that `class` cannot contain spaces. Swedbank Pay may use this field for statistics.                                                                                        |
+|  ︎︎︎   | └─➔&nbsp;`itemUrl`             | `string`     | The URL to a page that can display the purchased item, such as a product page                                                                                                                                                                                                                                         |
+|  ︎︎︎   | └─➔&nbsp;`imageUrl`            | `string`     | The URL to an image of the order item.                                                                                                                                                                                                                                                                                |
+|  ︎︎︎   | └─➔&nbsp;`description`         | `string`     | The human readable description of the order item.                                                                                                                                                                                                                                                                     |
+|  ︎︎︎   | └─➔&nbsp;`discountDescription` | `string`     | The human readable description of the possible discount.                                                                                                                                                                                                                                                              |
+| ✔︎︎︎︎︎ | └─➔&nbsp;`quantity`            | `decimal`    | The 4 decimal precision quantity of order items being purchased.                                                                                                                                                                                                                                                      |
+| ✔︎︎︎︎︎ | └─➔&nbsp;`quantityUnit`        | `string`     | The unit of the quantity, such as `pcs`, `grams`, or similar.                                                                                                                                                                                                                                                         |
+| ✔︎︎︎︎︎ | └─➔&nbsp;`unitPrice`           | `integer`    | The price per unit of order item.                                                                                                                                                                                                                                                                                     |
+|  ︎︎︎   | └─➔&nbsp;`discountPrice`       | `integer`    | If the order item is purchased at a discounted price, this property should contain that price.                                                                                                                                                                                                                        |
+| ✔︎︎︎︎︎ | └─➔&nbsp;`vatPercent`          | `integer`    | The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.                                                                                                                                                                                                                                              |
+| ✔︎︎︎︎︎ | └─➔&nbsp;`amount`              | `integer`    | The total amount including VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `500`0 equals `50.00 NOK`.                                                                                                                 |
+| ✔︎︎︎︎︎ | └─➔&nbsp;`vatAmount`           | `integer`    | The total amount of VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `500`0 equals `50.00 NOK`.                                                                                                                        |
 
 If the capture succeeds, it should respond with something like the following:
 

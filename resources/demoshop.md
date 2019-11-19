@@ -17,9 +17,12 @@ sidebar:
 {% include alert.html type="warning"
                       icon="warning"
                       header="Site under development"
-                      body="The Developer Portal is under construction and should not be used to integrate against Swedbank Pay's APIs yet." %}
+                      body="The Developer Portal is under construction and 
+                      should not be used to integrate against Swedbank Pay's 
+                      APIs yet." %}
 
 
 {% include jumbotron.html body=
 "We are working on a brand new demoshop for you!
-In the meantime, knock yourself out with our existing [demoshop](https://ecom.externalintegration.payex.com/pspdemoshop)" %}
+In the meantime, knock yourself out with our existing 
+[demoshop](https://ecom.externalintegration.payex.com/pspdemoshop)" %}

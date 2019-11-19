@@ -83,33 +83,36 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property                       | Data type  | Description                                                                                                                                                                                                                                                                            |
-| :------- | :----------------------------- | :--------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ✔︎       | payment.operation              | string     | `Purchase`                                                                                                                                                                                                                                                                             |
-| ✔︎       | payment.intent                 | string     | `Authorization`                                                                                                                                                                                                                                                                        |
-| ✔︎       | payment.currency               | string     | NOK                                                                                                                                                                                                                                                                                    |
-| ✔︎       | payment.prices.type            | string     | `vipps`                                                                                                                                                                                                                                                                                |
-| ✔︎       | payment.prices.amount          | integer    | Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 NOK`, `5000` = `50.00 NOK`.                                                                                                                                                           |
-| ✔︎       | payment.prices.vatAmount       | integer    | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                                                                                                     |
-| ✔︎       | payment.description            | string(40) | A textual description max 40 characters of the purchase.                                                                                                                                                                                                                               |
-|          | payment.payerReference         | string     | The reference to the payer (consumer/end-user) from the merchant system, like mobile number, customer number etc.                                                                                                                                                                      |
-| ✔︎       | payment.userAgent              | string     | The user agent reference of the consumer's browser - [see user agent][user-agent]]                                                                                                                                                                                                     |
-| ✔︎       | payment.language               | string     | nb-NO, sv-SE or en-US.                                                                                                                                                                                                                                                                 |
-| ✔︎       | payment.urls.hostUrls          | array      | The array of URIs valid for embedding of Swedbank Pay Hosted Views.                                                                                                                                                                                                                    |
-| ✔︎       | payment.urls.completeUrl       | string     | The URI that Swedbank Pay will redirect back to when the payment page is completed.                                                                                                                                                                                                    |
-|          | payment.urls.cancelUrl         | string     | The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only `cancelUrl` or `paymentUrl` can be used, not both.                                                                                |
-|          | payment.urls.paymentUrl        | string     | The URI that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. Only used in Seamless Views. Can not be used simultaneously with `cancelUrl`; only `cancelUrl` or `paymentUrl` can be used, not both. |
-|          | payment.urls.callbackUrl       | string     | The URI that Swedbank Pay will perform an HTTP POST against every time a transaction is created on the payment. See [callback][technical-reference-callback] for details.                                                                                                              |
-|          | payment.urls.logoUrl           | string     | The URI that will be used for showing the customer logo. Must be a picture with at most 50px height and 400px width. Require https.                                                                                                                                                    |
-|          | payment.urls.termsOfServiceUrl | string     | A URI that contains your terms and conditions for the payment, to be linked on the payment page. Require https.                                                                                                                                                                        |
-| ✔︎       | payeeInfo.payeeId              | string     | This is the unique id that identifies this payee (like merchant) set by PayEx.                                                                                                                                                                                                         |
-| ✔︎       | payeeInfo.payeeReference       | string(30) | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][technical-reference-payeeReference] for details.                                                                            |
-|          | payeeInfo.payeeName            | string     | The payee name (like merchant name) that will be displayed to consumer when redirected to PayEx.                                                                                                                                                                                       |
-|          | payeeInfo.productCategory      | string     | A product category or number sent in from the payee/merchant. This is not validated by PayEx, but will be passed through the payment process and may be used in the settlement process.                                                                                                |
-|          | payeeInfo.orderReference       | string(50) | The order reference should reflet the order reference found in the merchant's systems.                                                                                                                                                                                                 |
-|          | payeeInfo.prefillInfo          | string     | The mobile number that will be prefilled in the Swedbank Pay payment pages. The consumer may change this number in the UI.                                                                                                                                                             |
-|          | payeeInfo.subsite              | String(40) | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.                                                                                                                            |
-
+| Required | Property                     | Data type    | Description                                                                                                                                                                                                 |
+| :------: | :--------------------------- | :----------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|    ✔︎    | `payment`                    | `object`     | The `payment` object.                                                                                                                                                                                       |
+|    ✔︎    | └➔&nbsp;`operation`          | `string`     | `Purchase`                                                                                                                                                                                                  |
+|    ✔︎    | └➔&nbsp;`intent`             | `string`     | `Authorization`                                                                                                                                                                                             |
+|    ✔︎    | └➔&nbsp;`currency`           | `string`     | NOK                                                                                                                                                                                                         |
+|    ✔︎    | └➔&nbsp;`prices.type`        | `string`     | `vipps`                                                                                                                                                                                                     |
+|    ✔︎    | └➔&nbsp;`prices.amount`      | `integer`    | Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 NOK`, `5000` = `50.00 NOK`.                                                                                |
+|    ✔︎    | └➔&nbsp;`prices.vatAmount`   | `integer`    | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                          |
+|    ✔︎    | └➔&nbsp;`description`        | `string(40)` | A textual description max 40 characters of the purchase.                                                                                                                                                    |
+|          | └➔&nbsp;`payerReference`     | `string`     | The reference to the payer (consumer/end-user) from the merchant system, like mobile number, customer number etc.                                                                                           |
+|    ✔︎    | └➔&nbsp;`userAgent`          | `string`     | The user agent reference of the consumer's browser - [see user agent][user-agent]]                                                                                                                          |
+|    ✔︎    | └➔&nbsp;`language`           | `string`     | `nb-NO`, `sv-SE` or `en-US`.                                                                                                                                                                                |
+|    ✔︎    | └➔&nbsp;`urls`               | `object`     | The object containing URLs relevant for the `payment`.                                                                                                                                                      |
+|    ✔︎    | └─➔&nbsp;`hostUrls`          | `array`      | The array of URIs valid for embedding of Swedbank Pay Hosted Views.                                                                                                                                         |
+|    ✔︎    | └─➔&nbsp;`completeUrl`       | `string`     | The URI that Swedbank Pay will redirect back to when the payment page is completed.                                                                                                                         |
+|          | └─➔&nbsp;`cancelUrl`         | `string`     | The URI to redirect the payer to if the payment is canceled, either by the payer or by the merchant trough an `abort` request of the `payment`.                                                             |
+|          | └─➔&nbsp;`paymentUrl`        | `string`     | The URI that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the `payment`.                                                        |
+|          | └─➔&nbsp;`callbackUrl`       | `string`     | The URI that Swedbank Pay will perform an HTTP `POST` request against every time a transaction is created on the payment. See [callback][technical-reference-callback] for details.                         |
+|          | └─➔&nbsp;`logoUrl`           | `string`     | The URI that will be used for showing the customer logo. Must be a picture with at most 50px height and 400px width. Require https.                                                                         |
+|          | └─➔&nbsp;`termsOfServiceUrl` | `string`     | A URI that contains your terms and conditions for the payment, to be linked on the payment page. Require https.                                                                                             |
+|    ✔︎    | └➔&nbsp;`payeeInfo`          | `object`     | The object containing information about the payee.                                                                                                                                                          |
+|    ✔︎    | └─➔&nbsp;`payeeId`           | `string`     | This is the unique id that identifies this payee (like merchant) set by PayEx.                                                                                                                              |
+|    ✔︎    | └─➔&nbsp;`payeeReference`    | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][technical-reference-payeeReference] for details. |
+|          | └─➔&nbsp;`payeeName`         | `string`     | The payee name (like merchant name) that will be displayed to consumer when redirected to PayEx.                                                                                                            |
+|          | └─➔&nbsp;`productCategory`   | `strin`      | A product category or number sent in from the payee/merchant. This is not validated by PayEx, but will be passed through the payment process and may be used in the settlement process.                     |
+|          | └─➔&nbsp;`orderReference`    | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                     |
+|          | └─➔&nbsp;`prefillInfo`       | `string`     | The mobile number that will be pre-filled in the Swedbank Pay payment pages. The consumer may change this number in the UI.                                                                                 |
+|          | └─➔&nbsp;`subsite`           | `string(40)` | The `subsite` field can be used to perform split settlement on the payment. The `subsites` must be resolved with Swedbank Pay reconciliation before being used.                                             |
+`
 {:.code-header}
 **Response**
 
@@ -225,9 +228,9 @@ A list of possible operations and their explanation is given below.
 {:.table .table-striped}
 | Property | Description                                                         |
 | :------- | :------------------------------------------------------------------ |
-| href     | The target URI to perform the operation against.                    |
-| rel      | The name of the relation the operation has to the current resource. |
-| method   | The HTTP method to use when performing the operation.               |
+| `href`   | The target URI to perform the operation against.                    |
+| `rel`    | The name of the relation the operation has to the current resource. |
+| `method` | The HTTP method to use when performing the operation.               |
 
 The operations should be performed as described in each response and not as 
 described here in the documentation. 
@@ -238,22 +241,21 @@ The only thing that should be hard coded in the client is the value of the
 the given operation.
 
 {:.table .table-striped}
-| Operation              | Description                                                                                      |
-| :--------------------- | :----------------------------------------------------------------------------------------------- |
-| update-payment-abort   | [Aborts][technical-reference-abort] the payment before any financial transactions are performed. |
-| redirect-authorization | Used to redirect the consumer to Swedbank Pay payment pages and the authorization UI.            |
-| create-capture         | Creates a [`capture`][technical-reference-capture].                                              |
-| create-cancellation    | Creates a [`cancellation`][technical-reference-cancel].                                          |
-| create-reversal        | Creates a [`reversal`][technical-reference-reverse].                                             |
-
+| Operation                | Description                                                                                      |
+| :----------------------- | :----------------------------------------------------------------------------------------------- |
+| `update-payment-abort`   | [Aborts][technical-reference-abort] the payment before any financial transactions are performed. |
+| `redirect-authorization` | Used to redirect the consumer to Swedbank Pay payment pages and the authorization UI.            |
+| `create-capture`         | Creates a [`capture`][technical-reference-capture].                                              |
+| `create-cancellation`    | Creates a [`cancellation`][technical-reference-cancel].                                          |
+| `create-reversal`        | Creates a [`reversal`][technical-reference-reverse].                                             |
 
 ## Vipps transactions
 
-All card specific transactions are described below. 
+All card specific transactions are described below.
 
 ### Authorizations
 
-The `authorizations` resource contains information about the authorization 
+The `authorizations` resource contains information about the authorization
 transactions made on a specific payment.
 
 {:.code-header}
