@@ -1,3 +1,6 @@
+{% assign hide-direct-debit = include.hide-direct-debit | default: false %}
+{% assign hide-mobile-pay = include.hide-mobile-pay | default: false %}
+
 The `prices` resource lists the prices related to a specific payment.
 
 {:.code-header}
@@ -71,7 +74,7 @@ contract.
 | `IkanoFinansDK` | Ikano Finans Denmark                       |
 | `Maestro`       | MasterCard Maestro                         |
 
-{% if hide-direct-debit: 0%}
+{% if hide-direct-debit == false %}
 
 #### Direct Debit Payments
 
@@ -106,7 +109,7 @@ contract.
 | :-------- | :------------- |
 | `Invoice` | Always Invoice |
 
-{% if hide-mobile-pay: 0%}
+{% if hide-mobile-pay == false %}
 
 #### MobilePay Payments
 
