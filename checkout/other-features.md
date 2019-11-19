@@ -225,7 +225,7 @@ Content-Type: application/json
 |      ✔︎︎︎︎︎       | └─➔&nbsp;`payeeId`                 | `string`     | The ID of the payee, usually the merchant ID.                                                                                                                                                                   |
 |      ✔︎︎︎︎︎       | └─➔&nbsp;`payeeReference`          | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.                        |
 |                   | └─➔&nbsp;`payeeName`               | `string`     | The name of the payee, usually the name of the merchant.                                                                                                                                                        |
-|                   | └─➔&nbsp;`productCategory`         | `string`     | A product category or number sent in from the payee/merchant. This is not validated by PayEx, but will be passed through the payment process and may be used in the settlement process.                         |
+|                   | └─➔&nbsp;`productCategory`         | `string`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                  |
 |                   | └─➔&nbsp;`orderReference`          | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                         |
 |                   | └─➔&nbsp;`subsite`                 | `string(40)` | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.                                                     |
 |                   | └➔&nbsp;`payer`                    | `string`     | The consumer profile reference as obtained through the [Consumers][consumer-reference] API.                                                                                                                     |
@@ -1272,8 +1272,8 @@ object:
 | `Payment Instrument` | `CreditCard`, `Invoice`, `Swish`, `Vipps`, `DirectDebit`, `MobilePay` |
 | `Transaction Type`   | `Authorization`, `Capture`, `Cancellation`, `Reversal`                |
 
-The sequence diagram below shows the HTTP `POST` you will receive from PayEx,
-and the two `GET` requests that you make to get the updated status.
+The sequence diagram below shows the HTTP `POST` you will receive from Swedbank
+Pay, and the two `GET` requests that you make to get the updated status.
 
 ```mermaid
 sequenceDiagram
@@ -1282,7 +1282,7 @@ sequenceDiagram
     activate Merchant
         activate SwedbankPay
             SwedbankPay->Merchant: POST <callbackUrl>
-            note left of Merchant: Callback by PayEx
+            note left of Merchant: Callback by Swedbank Pay
             Merchant-->SwedbankPay: HTTP response
         deactivate SwedbankPay
     deactivate Merchant
