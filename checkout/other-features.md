@@ -1236,31 +1236,15 @@ object:
   The retrieved payment or transaction resource will give you the necessary
   information about the recent change/update.
 * The callback will be retried if it fails.
-  Below are the retry timings, in milliseconds from the initial
-  transaction time:
-  * 30000 ms
-  * 60000 ms
-  * 360000 ms
-  * 432000 ms
-  * 864000 ms
-  * 1265464 ms
+  Below are the retry timings, in seconds
+  from the initial transaction time:
+  * 30 seconds
+  * 60 seconds
+  * 360 seconds
+  * 432 seconds
+  * 864 seconds
+  * 1265 seconds
 * The callback is sent from the following IP address `82.115.146.1`.
-
-{:.code-header}
-**Payment Instrument Callback**
-
-```js
-{
-   "payment": {
-       "id": "/psp/<payment instrument>/payments/22222222-2222-2222-2222-222222222222",
-       "number": 222222222
-    },
-   "transaction": {
-       "id": "/psp/<payment instrument>/payments/22222222-2222-2222-2222-222222222222/<transaction type>/33333333-3333-3333-3333-333333333333",
-       "number": 333333333
-    }
-}
-```
 
 {:.code-header}
 **Payment Order Callback**
