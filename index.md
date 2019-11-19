@@ -253,50 +253,7 @@ some particular processing rules depending on specifications in the contract.
 
 [Read more about the settlement process here][settlement].
 
-### Callbacks
-
-The callback functionality is similar for all payment methods and work like
-"webhooks" do in other web APIs.
-
-* Setting a `callbackUrl` in the HTTP ``POST`` API is optional, but highly recommended. If a payer closes the browser window, a network error or something else happens that prevents the payer from being redirect from Swedbank Pay back to the merchant website, the callback is what ensures that you receive information about what happened with the payment.
-* When a change or update from the back-end system are made on a payment or transaction, Swedbank Pay will perform a callback to inform the payee (merchant) about this update.
-* Swedbank Pay will make an HTTP ``POST`` to the `callbackUrl` that was specified when the payee (merchant) created the payment.
-* When the `callbackUrl` receives such a callback, an HTTP `GET` request must be made on the payment or on the transaction. The retrieved payment or transaction resource will give you the necessary information about the recent change/update.
-* The callback will be retried if it fails. Below are the retry timings, in milliseconds from the initial transaction time:
-  1. 30000 ms
-  2. 60000 ms
-  3. 360000 ms
-  4. 432000 ms
-  5. 864000 ms
-  6. 1265464 ms
-* The callback is sent from the following IP address: `82.115.146.1`
-* The response to the callback must have the HTTP status code `200 OK`.
-
-The sequence diagram below shows the HTTP `POST` you will receive from
-Swedbank Pay, and the two `GET` requests that you make to get the updated
-resources.
-
-```mermaid
-sequenceDiagram
-    participant Merchant
-    participant SwedbankPay
-
-    activate SwedbankPay
-      SwedbankPay->>Merchant: POST <callbackUrl>
-      activate Merchant
-        Note left of SwedbankPay: Callback POST by SwedbankPay
-        Merchant->>SwedbankPay: Callback response
-      deactivate Merchant
-    deactivate SwedbankPay
-
-    activate Merchant
-      Merchant->>SwedbankPay: GET <updated resource>
-      activate SwedbankPay
-        Note right of Merchant: Request for updated resource
-        SwedbankPay-->>Merchant: Updated resource
-      deactivate SwedbankPay
-    deactivate Merchant
-```
+{% include callback-reference.md %}
 
 ## Problems
 

@@ -225,7 +225,7 @@ Content-Type: application/json
 |      ✔︎︎︎︎︎       | └─➔&nbsp;`payeeId`                 | `string`     | The ID of the payee, usually the merchant ID.                                                                                                                                                                   |
 |      ✔︎︎︎︎︎       | └─➔&nbsp;`payeeReference`          | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.                        |
 |                   | └─➔&nbsp;`payeeName`               | `string`     | The name of the payee, usually the name of the merchant.                                                                                                                                                        |
-|                   | └─➔&nbsp;`productCategory`         | `string`     | A product category or number sent in from the payee/merchant. This is not validated by PayEx, but will be passed through the payment process and may be used in the settlement process.                         |
+|                   | └─➔&nbsp;`productCategory`         | `string`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                  |
 |                   | └─➔&nbsp;`orderReference`          | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                         |
 |                   | └─➔&nbsp;`subsite`                 | `string(40)` | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.                                                     |
 |                   | └➔&nbsp;`payer`                    | `string`     | The consumer profile reference as obtained through the [Consumers][consumer-reference] API.                                                                                                                     |
@@ -753,7 +753,7 @@ The `Verify` operation lets you post verifications to confirm the validity of
 option is mainly used to initiate a recurring payment scenario where the card
 will be charged at a later date. The request body is equivalent to a `Purchase`
 order with credit card as the selected item.
-A [payment token][payment-orders-resource] will be generated automatically,
+A [recurrence token][payment-orders-resource] will be generated automatically,
 rendering the parameter `generateRecurrenceToken` unnecessary for this
 operation.
 
@@ -776,7 +776,8 @@ This is necessary as the consumer might select and initate a payment option that
 is not followed through successfully. I.e. if the consumer cancels an invoice
 payment, a cancel transaction will still be tied to that particular invoice
 payment resource. This payment resource will continue to exist, even if the
-consumer successfully should finish the purchase with a credit card payment instead.
+consumer successfully should finish the purchase with a credit card payment
+instead.
 
 {:.code-header}
 **Request**
@@ -910,7 +911,7 @@ Content-Type: application/json
 
 ### Prices Resource
 
-{% include prices.md %}
+{% include prices.md hide-direct-debit=1 hide-mobile-pay=1 %}
 
 ### Payer Resource
 
@@ -1227,8 +1228,8 @@ object:
   Swedbank Pay back to the merchant website, the callback is what ensures that
   you receive information about what happened with the payment.
 * When a change or update from the back-end system are made on a payment or
-  transaction, Swedbank Pay will perform a callback to inform the payee
-  (merchant) about this update.
+  transaction, Swedbank Pay will perform an asynchronous server-to-server
+  callback to inform the payee (merchant) about this update.
 * Swedbank Pay will make an HTTP `POST` to the `callbackUrl` that was
   specified when the payee (merchant) created the payment.
 * When the `callbackUrl` receives such a callback, an HTTP `GET` request must
@@ -1236,31 +1237,15 @@ object:
   The retrieved payment or transaction resource will give you the necessary
   information about the recent change/update.
 * The callback will be retried if it fails.
-  Below are the retry timings, in milliseconds from the initial
-  transaction time:
-  * 30000 ms
-  * 60000 ms
-  * 360000 ms
-  * 432000 ms
-  * 864000 ms
-  * 1265464 ms
+  Below are the retry timings, in seconds
+  from the initial transaction time:
+  * 30 seconds
+  * 60 seconds
+  * 360 seconds
+  * 432 seconds
+  * 864 seconds
+  * 1265 seconds
 * The callback is sent from the following IP address `82.115.146.1`.
-
-{:.code-header}
-**Payment Instrument Callback**
-
-```js
-{
-   "payment": {
-       "id": "/psp/<payment instrument>/payments/22222222-2222-2222-2222-222222222222",
-       "number": 222222222
-    },
-   "transaction": {
-       "id": "/psp/<payment instrument>/payments/22222222-2222-2222-2222-222222222222/<transaction type>/33333333-3333-3333-3333-333333333333",
-       "number": 333333333
-    }
-}
-```
 
 {:.code-header}
 **Payment Order Callback**
@@ -1288,8 +1273,8 @@ object:
 | `Payment Instrument` | `CreditCard`, `Invoice`, `Swish`, `Vipps`, `DirectDebit`, `MobilePay` |
 | `Transaction Type`   | `Authorization`, `Capture`, `Cancellation`, `Reversal`                |
 
-The sequence diagram below shows the HTTP `POST` you will receive from PayEx,
-and the two `GET` requests that you make to get the updated status.
+The sequence diagram below shows the HTTP `POST` you will receive from Swedbank
+Pay, and the two `GET` requests that you make to get the updated status.
 
 ```mermaid
 sequenceDiagram
@@ -1298,7 +1283,7 @@ sequenceDiagram
     activate Merchant
         activate SwedbankPay
             SwedbankPay->Merchant: POST <callbackUrl>
-            note left of Merchant: Callback by PayEx
+            note left of Merchant: Callback by Swedbank Pay
             Merchant-->SwedbankPay: HTTP response
         deactivate SwedbankPay
     deactivate Merchant

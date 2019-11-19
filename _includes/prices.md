@@ -1,3 +1,6 @@
+{% assign hide-direct-debit = include.hide-direct-debit | default: false %}
+{% assign hide-mobile-pay = include.hide-mobile-pay | default: false %}
+
 The `prices` resource lists the prices related to a specific payment.
 
 {:.code-header}
@@ -71,6 +74,8 @@ contract.
 | `IkanoFinansDK` | Ikano Finans Denmark                       |
 | `Maestro`       | MasterCard Maestro                         |
 
+{% unless hide-direct-debit %}
+
 #### Direct Debit Payments
 
 The generic type `DirectDebit` enables all bank types, supported by merchant
@@ -95,6 +100,7 @@ contract.
 | `SHBFI`      | Handelsbanken Finland **(Not yet supported)**    |
 | `SpankkiFI`  | S-Pankki Finland **(Not yet supported)**         |
 | `SPFI`       | Säästöpankki Finland **(Not yet supported)**     |
+{% endunless %}
 
 #### Invoice Payments
 
@@ -103,12 +109,16 @@ contract.
 | :-------- | :------------- |
 | `Invoice` | Always Invoice |
 
+{% unless hide-mobile-pay %}
+
 #### MobilePay Payments
 
 {:.table .table-striped}
 | Type        | Description      |
 | :---------- | :--------------- |
 | `Mobilepay` | Always Mobilepay |
+
+{% endunless %}
 
 #### Swish Payments
 
