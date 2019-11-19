@@ -2,7 +2,7 @@
 title: Swedbank Pay Developer Portal
 ---
 
-{% assign design_guide_base_url = design_guide_version_url | default: '<https://design.swedbankpay.com'> %}
+{% assign design_guide_base_url = design_guide_version_url | default: 'https://design.swedbankpay.com' %}
 {% assign design_guide_version = site.design_guide.version | default: '4.1.0' %}
 {% assign design_guide_version_url = design_guide_base_url | append: '/v/' | append: design_guide_version %}
 
