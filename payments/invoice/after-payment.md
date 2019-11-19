@@ -19,26 +19,25 @@ sidebar:
 {% include alert.html type="warning"
                       icon="warning"
                       header="Site under development"
-                      body="The Developer Portal is under construction and 
-                      should not be used to integrate against 
+                      body="The Developer Portal is under construction and
+                      should not be used to integrate against
                       Swedbank Pay's APIs yet." %}
-
 
 ## Options after posting a payment
 
-*   **Abort:** It is possible to abort the process, 
-    if the payment has no successful transactions. 
+* **Abort:** It is possible to abort the process,
+    if the payment has no successful transactions.
     [See the PATCH payment description][payment-description].
-*   You must always follow up an Invoice Authorization with a 
+* You must always follow up an Invoice Authorization with a
     Capture or Cancel request.
-*   For reversals, you will need to implement the Reversal request.
-*   **If CallbackURL is set:** Whenever changes to the payment occur a 
-    [Callback request][callback-request] will be posted to the callbackUrl, 
+* For reversals, you will need to implement the Reversal request.
+* **If CallbackURL is set:** Whenever changes to the payment occur a
+    [Callback request][callback-request] will be posted to the callbackUrl,
     which was generated when the payment was created.
 
 ### Captures
 
-The `captures` resource list the capture transactions performed on a 
+The `captures` resource list the capture transactions performed on a
 specific invoice payment.
 
 {:.code-header}
@@ -86,7 +85,7 @@ Content-Type: application/json
 
 #### Create `FinancingConsumer` capture
 
-To capture a `FinancingConsumer` invoice payment, perform the `create-capture` 
+To capture a `FinancingConsumer` invoice payment, perform the `create-capture`
 operation with the following request body:
 
 ```HTTP
@@ -139,12 +138,12 @@ Content-Type: application/json
 | ✔︎       | itemDescriptions.amount      | `integer`    | Total price for this order line - entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 NOK`, `5000` = `50.00 SEK`.                                    |
 | ✔︎       | itemDescriptions.description | `string`     | A textual description of this product                                                                                                                                                   |
 | ✔︎       | vatSummary.amount            | `integer`    | Total price for this order line - entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 NOK`, `5000` = `50.00 SEK`.                                    |
-| ✔︎       | vatSummary.vatAmount         | `integer`    | VAT Amount entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 NOK`, `5000` =` 50.00 SEK`.                                                           |
+| ✔︎       | vatSummary.vatAmount         | `integer`    | VAT Amount entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 NOK`, `5000` =`50.00 SEK`.                                                            |
 | ✔︎       | vatSummary.vatPercent        | `string`     | The VAT in percent. Supported values : "0.00", "6.00", "8.00", "10.00", "12.00", "14.00", "15.00", "22.00", "24.00", "25.00"                                                            |
 
 Notes on `FinancingConsumer` captures:
 
-* Due date is set by PayEx based on the agreement with merchant. 
+* Due date is set by PayEx based on the agreement with merchant.
   Standard due date is 14 days.
 * Invoice number is set by PayEx.
 
@@ -188,12 +187,11 @@ Content-Type: application/json
 
 #### Capture Sequence
 
-`Capture` can only be done on a successfully authorized transaction. 
-It is possible to do a part-capture where you only capture a part of the 
-authorization amount. 
-You can later do more captures on the same payment up to the total 
+`Capture` can only be done on a successfully authorized transaction.
+It is possible to do a part-capture where you only capture a part of the
 authorization amount.
-
+You can later do more captures on the same payment up to the total
+authorization amount.
 
 ```mermaid
 sequenceDiagram
@@ -208,7 +206,7 @@ deactivate PayEx
 
 ### Cancellations
 
-The `cancellations` resource lists the cancellation transactions made on a 
+The `cancellations` resource lists the cancellation transactions made on a
 specific payment.
 
 {:.code-header}
@@ -224,6 +222,7 @@ Content-Type: application/json
 
 {:.code-header}
 ***Response***
+
 ```HTTP
 HTTP/1.1 200 OK
 Content-Type: application/json
@@ -288,7 +287,7 @@ Content-Type: application/json
 | ✔︎       | `transaction.payeeReference` | `string`     | A **unique **reference max 50 characters set by the merchant system) - this must be unique for each operation! The [payeeReference][technical-reference-payeeReference] must follow the regex pattern `[\w]* (a-zA-Z0-9_)`. |
 | ✔︎       | `transaction.description`    | `string(50)` | A textual description for the cancellation.                                                                                                                                                                                 |
 
-The `cancel` resource will be returned, containing information about the 
+The `cancel` resource will be returned, containing information about the
 newly created cancellation transaction.
 
 {:.code-header}
@@ -326,11 +325,10 @@ newly created cancellation transaction.
 
 #### Cancel Sequence
 
-`Cancel` can only be done on a successfully authorized transaction, 
-not yet captured. 
-If you do cancel after doing a part-capture you will cancel the 
+`Cancel` can only be done on a successfully authorized transaction,
+not yet captured.
+If you do cancel after doing a part-capture you will cancel the
 not yet captured amount only.
-
 
 ```mermaid
 sequenceDiagram
@@ -344,7 +342,7 @@ deactivate PayEx
 
 ### Reversals  
 
-The `reversals` resource will list the reversal transactions 
+The `reversals` resource will list the reversal transactions
 (one or more) on a specific payment.
 
 {:.code-header}
@@ -425,7 +423,7 @@ Content-Type: application/json
 | :------- | :--------------------------- | :----------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ✔︎       | `transaction.activity`       | `string`     | `FinancingConsumer`.                                                                                                                                                                    |
 | ✔︎       | `transaction.amount`         | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. *`10000`* = `100.00 NOK`, *`5000`* = `50.00 SEK`.                                                           |
-| ✔︎       | `transaction.vatAmount`      | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. *`10000`* = `100.00 NOK`, *`5000`* =` 50.00 SEK`.                                                           |
+| ✔︎       | `transaction.vatAmount`      | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. *`10000`* = `100.00 NOK`, *`5000`* =`50.00 SEK`.                                                            |
 | ✔︎       | `transaction.payeeReference` | `string(50)` | A **unique **reference max 50 characters set by the merchant system) - this must be unique for each operation! The `payeeReference` must follow the regex pattern `[\w]* (a-zA-Z0-9_)`. |
 | ✔︎       | `transaction.description`    | `string`     | A textual description of the reversal.                                                                                                                                                  |
 
@@ -469,9 +467,8 @@ Content-Type: application/json
 
 #### Reversal Sequence
 
-`Reversal` can only be done on an captured transaction where there are 
+`Reversal` can only be done on an captured transaction where there are
 some captured amount not yet reversed.
-
 
 ```mermaid
 sequenceDiagram
@@ -493,7 +490,7 @@ sequenceDiagram
 
 {% include payeeinfo.md %}
 
-{% include iterator.html prev_href="./" prev_title="Back: Introduction" 
+{% include iterator.html prev_href="./" prev_title="Back: Introduction"
 next_href="other-features" next_title="Next: Other Features" %}
 
 ----------------------------------------------------------

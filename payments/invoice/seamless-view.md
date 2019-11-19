@@ -19,40 +19,40 @@ sidebar:
 {% include alert.html type="warning"
                       icon="warning"
                       header="Site under development"
-                      body="The Developer Portal is under construction and 
-                      should not be used to integrate against Swedbank Pay's 
+                      body="The Developer Portal is under construction and
+                      should not be used to integrate against Swedbank Pay's
                       APIs yet." %}
 
 ## Introduction
 
-*   To create an invoice payment, you need to collect all purchase information 
+* To create an invoice payment, you need to collect all purchase information
     and make a `POST` request towards PayEx.
-*   You also need to collect social security number (SSN) / person number 
-    and postal number from the consumer, and make another `POST` request 
+* You also need to collect social security number (SSN) / person number
+    and postal number from the consumer, and make another `POST` request
     towards PayEx in order to retrieve the name and address from the consumer.
-*   To create the authorization transaction, you need to calculate the final 
-    price / amount, and make a third `POST` request where you send 
+* To create the authorization transaction, you need to calculate the final
+    price / amount, and make a third `POST` request where you send
     in the consumer data.
-*   To get the authorization result, you need  to follow up with a 
+* To get the authorization result, you need  to follow up with a
     `GET` request using the paymentID received in the first step.
-*   Finally, when you are ready to ship your order, you will have to make 
-    a `POST` request to make a Capture. 
+* Finally, when you are ready to ship your order, you will have to make
+    a `POST` request to make a Capture.
     **At this point PayEx will generate the invoice to the consumer.**
 
 ## Important steps before you launch Swedbank Pay Faktura at your website
 
-Prior to launching PayEx Faktura at your site, make sure that you 
+Prior to launching PayEx Faktura at your site, make sure that you
 have done the following:  
 
-1.  Send a merchant logo in .JPG format to [setup.ecom@PayEx.com][setup-mail]. 
-    The logo will be displayed on all your invoices. Minimum accepted size 
+1. Send a merchant logo in .JPG format to [setup.ecom@PayEx.com][setup-mail].
+    The logo will be displayed on all your invoices. Minimum accepted size
     is 600x200 pixels, and at least 300 DPI.
-2.  Included a link to "Terms and Conditions" for PayEx Faktura.
+2. Included a link to "Terms and Conditions" for PayEx Faktura.
 
 ## API requests
 
-The API requests are displayed in the [invoice flow](#invoice-flow). 
-The options you can choose from when creating a payment with key operation set 
+The API requests are displayed in the [invoice flow](#invoice-flow).
+The options you can choose from when creating a payment with key operation set
 to Value FinancingConsumer are listed below.
 
 ### Options before posting a payment
@@ -60,36 +60,36 @@ to Value FinancingConsumer are listed below.
 **POST Request**
 
 {:.table .table-striped}
-| *POST Request* |	**Sweden** ![Swedish flag][se-png] |	**Norway** ![Norwegian flag][no-png] |	**FInland** ![Finish flag][fi-png] |
-| *Operation* |	FinancingConsumer	| FinancingConsumer |	FinancingConsumer |
-| *Intent* |	Authorization |	Authorization |	Authorization |
-| *Currency* |	SEK |	NOK |	EUR |
-| *InvoiceType* |	PayExFinancingSE |	PayExFinancingNO |	PayExFinancingFI |
+| *POST Request* | **Sweden** ![Swedish flag][se-png] | **Norway** ![Norwegian flag][no-png] | **FInland** ![Finish flag][fi-png] |
+| *Operation* | FinancingConsumer | FinancingConsumer | FinancingConsumer |
+| *Intent* | Authorization | Authorization | Authorization |
+| *Currency* | SEK | NOK | EUR |
+| *InvoiceType* | PayExFinancingSE | PayExFinancingNO | PayExFinancingFI |
 
-*   An invoice payment is always two-phased based - you create an 
+* An invoice payment is always two-phased based - you create an
     [`Authorize`][authorize] transaction, that is followed by a [`Capture`][capture] or [`Cancel`][cancel] request.
-*   **Defining CallbackURL**: When implementing a scenario, it is optional 
-    to set a [CallbackURL][callback-api]in the `POST` request. 
-    If callbackURL is set PayEx will send a postback request to this URL when 
-    the consumer has fulfilled the payment. 
+* **Defining CallbackURL**: When implementing a scenario, it is optional
+    to set a [CallbackURL][callback-api]in the `POST` request.
+    If callbackURL is set PayEx will send a postback request to this URL when
+    the consumer has fulfilled the payment.
     [See the Callback API description here.][callback-api]
 
 # Invoice flow
 
-The sequence diagram below shows a high level description of the 
-invoice process, including the four requests you have to send to PayEx to 
-create an authorize transaction. 
-**Note that the invoice will not be created/distributed before you have 
-made a Capture request.** 
-The Capture/Cancel/Reversal opions are described below under 
-"Options after posting a payment". 
-The links will take you directly to the API description for the specific request. 
+The sequence diagram below shows a high level description of the
+invoice process, including the four requests you have to send to PayEx to
+create an authorize transaction.
+**Note that the invoice will not be created/distributed before you have
+made a Capture request.**
+The Capture/Cancel/Reversal opions are described below under
+"Options after posting a payment".
+The links will take you directly to the API description for the specific request.
 
 ```mermaid
 sequenceDiagram
     Consumer->>Merchant: Start purchase (collect SSN and postal number)
     activate Merchant
-    note left of Merchant: First API request 
+    note left of Merchant: First API request
     Merchant->>PayEx: POST <Invoice Payment> (operation=FinancingConsumer)
     activate PayEx
     PayEx-->>Merchant: payment resource
@@ -107,13 +107,13 @@ sequenceDiagram
     Merchant->>+PayEx: Post <invoice authorization> (Transaction Activity=FinancingConsumer)
     PayEx-->>-Merchant: Transaction result
     note left of Merchant: Fourth API request
-    Merchant->>+PayEx: GET <invoice payment> 
+    Merchant->>+PayEx: GET <invoice payment>
     PayEx-->>-Merchant: payment resource
     Merchant-->>Consumer: Display result
     deactivate Merchant
 ```
 
-{% include iterator.html prev_href="./" prev_title="Back: Introduction" 
+{% include iterator.html prev_href="./" prev_title="Back: Introduction"
 next_href="after-payment" next_title="Next: After Payment" %}
 
 [callback-api]: /payments/invoice/other-features#callback
