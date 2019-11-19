@@ -131,6 +131,10 @@ Remember to read up on our [URL resource][urls].
 request has `orderItems` in the `paymentorder`, remember to include
 `orderItems` in the [capture operation][capture-operation].
 
+**Also notice** to increase the chance for not invoking 3DSecure during a 
+purchase, it's recommended that you add as much data to the 
+`riskIndicatorobject` in the request below.
+
 {:.code-header}
 **Request**
 
