@@ -71,6 +71,8 @@ contract.
 | `IkanoFinansDK` | Ikano Finans Denmark                       |
 | `Maestro`       | MasterCard Maestro                         |
 
+{% if hide-direct-debit: 0%}
+
 #### Direct Debit Payments
 
 The generic type `DirectDebit` enables all bank types, supported by merchant
@@ -95,6 +97,7 @@ contract.
 | `SHBFI`      | Handelsbanken Finland **(Not yet supported)**    |
 | `SpankkiFI`  | S-Pankki Finland **(Not yet supported)**         |
 | `SPFI`       | Säästöpankki Finland **(Not yet supported)**     |
+{% endif %}
 
 #### Invoice Payments
 
@@ -103,12 +106,16 @@ contract.
 | :-------- | :------------- |
 | `Invoice` | Always Invoice |
 
+{% if hide-mobile-pay: 0%}
+
 #### MobilePay Payments
 
 {:.table .table-striped}
 | Type        | Description      |
 | :---------- | :--------------- |
 | `Mobilepay` | Always Mobilepay |
+
+{% endif %}
 
 #### Swish Payments
 

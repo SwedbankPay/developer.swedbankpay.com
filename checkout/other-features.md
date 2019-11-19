@@ -911,7 +911,7 @@ Content-Type: application/json
 
 ### Prices Resource
 
-{% include prices.md %}
+{% include prices.md hide-direct-debit=1 hide-mobile-pay=1 %}
 
 ### Payer Resource
 
