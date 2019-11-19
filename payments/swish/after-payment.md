@@ -19,25 +19,25 @@ sidebar:
 {% include alert.html type="warning"
                       icon="warning"
                       header="Site under development"
-                      body="The Developer Portal is under construction and 
-                      should not be used to integrate against Swedbank Pay's 
+                      body="The Developer Portal is under construction and
+                      should not be used to integrate against Swedbank Pay's
                       APIs yet." %}
 
 ## Payment Resource
 
-The `payment` resource and all general sub-resources can be found in the 
+The `payment` resource and all general sub-resources can be found in the
 [core payment resources][core-payment-resources] section.
 
 ### Create Payment
 
-To create a Swish payment, you perform an HTTP `POST` against the 
-`/psp/swish/payments` resource. Please read the 
+To create a Swish payment, you perform an HTTP `POST` against the
+`/psp/swish/payments` resource. Please read the
 [general information][general-http-info] on how to compose a valid HTTP request before proceeding.
 
-An example of a payment creation request is provided below. 
-Each individual Property of the JSON document is described in the 
-following section. 
-Use the [expand][technical-reference-expand] request parameter to get a 
+An example of a payment creation request is provided below.
+Each individual Property of the JSON document is described in the
+following section.
+Use the [expand][technical-reference-expand] request parameter to get a
 response that includes one or more expanded sub-resources inlined.
 
 {:.code-header}
@@ -116,7 +116,7 @@ Content-Type: application/json
 |          | └➔ .payeeInfo.subsite         | `string(40)` | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.                                                 |
 |          | └➔ .prefillInfo.msisdn        | `string`     | Number will be prefilled on payment page, if valid.                                                                                                                                                         |
 |          | └➔ .swish.ecomOnlyEnabled     | `boolean`    | If true you trigger the redirect payment scenario by default.                                                                                                                                               |
- 
+
 {:.code-header}
 **Response**
 
@@ -165,11 +165,11 @@ Content-Type: application/json
 
 ### Operations
 
-A payment resource has a set of operations that can be performed on it, 
-from its creation to its completion. 
-The operations available at any given time vary between payment methods and 
-depends on the current state of the payment resource. 
-A list of possible operations for Swish Payments and their explanation 
+A payment resource has a set of operations that can be performed on it,
+from its creation to its completion.
+The operations available at any given time vary between payment methods and
+depends on the current state of the payment resource.
+A list of possible operations for Swish Payments and their explanation
 is given below.
 
 {:.code-header}
@@ -210,12 +210,12 @@ is given below.
 | rel      | The name of the relation the operation has to the current resource. |
 | method   | The HTTP method to use when performing the operation.               |
 
-The operations should be performed as described in each response and not as 
-described here in the documentation. 
-Always use the `href` and `method` as specified in the response by finding the 
-appropriate operation based on its `rel` value. 
-The only thing that should be hard coded in the client is the value of 
-the `rel` and the request that will be sent in the HTTP body of the 
+The operations should be performed as described in each response and not as
+described here in the documentation.
+Always use the `href` and `method` as specified in the response by finding the
+appropriate operation based on its `rel` value.
+The only thing that should be hard coded in the client is the value of
+the `rel` and the request that will be sent in the HTTP body of the
 request for the given operation.
 
 {:.table .table-striped}
@@ -228,11 +228,11 @@ request for the given operation.
 
 ### Swish transactions
 
-All card specific transactions are described below. 
+All card specific transactions are described below.
 
 ### Sales
 
-The `Sales` resource lists the sales transactions (one or more) 
+The `Sales` resource lists the sales transactions (one or more)
 on a specific payment.
 
 {:.code-header}
@@ -286,11 +286,11 @@ Content-Type: application/json
 
 #### Create Sales transaction
 
-In e-commerce the consumer/end-user's `msisdn`(mobile number) is required. 
-This is managed either by sending a `POST` request as seen below, 
-or by redirecting the end-user to the hosted payment pages. 
-The `msisdn` is only required for e-commerce. In the m-commerce flow, 
-the consumer uses the device that hosts the Swish app to manage the purchase, 
+In e-commerce the consumer/end-user's `msisdn`(mobile number) is required.
+This is managed either by sending a `POST` request as seen below,
+or by redirecting the end-user to the hosted payment pages.
+The `msisdn` is only required for e-commerce. In the m-commerce flow,
+the consumer uses the device that hosts the Swish app to manage the purchase,
 making `msisdn` unneccessary.
 
 {:.code-header}
@@ -307,7 +307,7 @@ Content-Type: application/json
         "msisdn": "+46xxxxxxxxx"
     }
 }
-``` 
+```
 
 {:.code-header}
 **e-commerce Response**
@@ -381,7 +381,7 @@ Content-Type: application/json
             "payeeReference": "Postman1508747933",
             "isOperational": true,
             "operations": [
-                {                         
+                {
                     "href": "swish://paymentrequest?token=<swishtoken>&callbackurl=<completeUrl>",
                     "method": "GET",
                     "rel": "redirect-app-swish"
@@ -394,14 +394,14 @@ Content-Type: application/json
 
 _Operation_ `redirect-app-swish` is only returned in m-commerce.
 
-The payment now contains a sale transaction with the status (state) 
-`AwaitingActivity`. 
-When the consumer confirms the payment a callback request will follow 
-from PayEx. 
+The payment now contains a sale transaction with the status (state)
+`AwaitingActivity`.
+When the consumer confirms the payment a callback request will follow
+from PayEx.
 
 ### Reversals
 
-The `Reversals` resource list the reversals transactions (one or more) 
+The `Reversals` resource list the reversals transactions (one or more)
 on a specific payment.
 
 {:.code-header}
@@ -455,11 +455,11 @@ Content-Type: application/json
 | reversalList   | `array`  | The array of reversal transaction objects.                                                           |
 | reversalList[] | `object` | The reversal transaction object representation of the reversal transaction resource described below. |
 
-#### Create Reversal transaction 
+#### Create Reversal transaction
 
-You can create a reversal transaction against a completed sales transaction 
+You can create a reversal transaction against a completed sales transaction
 by adding that transaction's `payeeReference` in the request body.
-A callback request will follow from PayEx. 
+A callback request will follow from PayEx.
 
 {:.code-header}
 **Request**
@@ -472,9 +472,9 @@ Content-Type: application/json
 
 {
     "transaction": {
-        "amount": 1500, 
-        "vatAmount": 0, 
-        "description" : "Test Reversal", 
+        "amount": 1500,
+        "vatAmount": 0,
+        "description" : "Test Reversal",
         "payeeReference": "ABC123"
     }
 }
@@ -526,17 +526,17 @@ Content-Type: application/json
 
 ## Options after posting a payment
 
-*   **If CallbackURL is set**: Whenever changes to the payment occur a 
-    [Callback request][technical-reference-callback] will be posted to the 
+* **If CallbackURL is set**: Whenever changes to the payment occur a
+    [Callback request][technical-reference-callback] will be posted to the
     callbackUrl, which was generated when the payment was created.
-*   You can create a reversal transactions by implementing the Reversal request.
-    You can also access and reverse a payment through your merchant pages 
+* You can create a reversal transactions by implementing the Reversal request.
+    You can also access and reverse a payment through your merchant pages
     in the [Swedbank Pay admin portal][payex-admin-portal].
 
 #### Abort
 
-To abort a payment order, perform the `update-paymentorder-abort` operation 
-that is returned in the payment order response. 
+To abort a payment order, perform the `update-paymentorder-abort` operation
+that is returned in the payment order response.
 You need to include the following `HTTP` body:
 
 {:.code-header}
@@ -558,13 +558,13 @@ Content-Type: application/json
 
 **Response**
 
-The response given when aborting a payment order is equivalent to a `GET` 
-request towards the `paymentorders` resource, 
+The response given when aborting a payment order is equivalent to a `GET`
+request towards the `paymentorders` resource,
 [as displayed above][payment-order], with its `state` set to `Aborted`.
 
 #### Reversal Sequence
 
-A reversal transcation have to match the Payee reference of a 
+A reversal transcation have to match the Payee reference of a
 completed sales transaction.
 
 ```mermaid
