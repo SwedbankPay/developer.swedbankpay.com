@@ -17,18 +17,17 @@ sidebar:
 {% include alert.html type="warning"
                       icon="warning"
                       header="Site under development"
-                      body="The Developer Portal is under construction and 
-                      should not be used to integrate against Swedbank Pay's 
+                      body="The Developer Portal is under construction and
+                      should not be used to integrate against Swedbank Pay's
                       APIs yet." %}
-
 
 ### Capture Sequence
 
-Capture can only be perfomed on a payment with a successfully authorized 
-transaction. 
-It is possible to do a part-capture where you only capture a smaller amount 
-than the authorized amount. 
-You can later do more captures on the same payment up to the total 
+Capture can only be perfomed on a payment with a successfully authorized
+transaction.
+It is possible to do a part-capture where you only capture a smaller amount
+than the authorized amount.
+You can later do more captures on the same payment up to the total
 authorization amount.
 
 ```mermaid
@@ -43,8 +42,8 @@ sequenceDiagram
 
 ### Cancel Sequence
 
-Cancel can only be done on a authorized transaction. 
-If you do cancel after doing a part-capture you will cancel the difference 
+Cancel can only be done on a authorized transaction.
+If you do cancel after doing a part-capture you will cancel the difference
 between the captured amount and the authorized amount.
 
 ```mermaid
@@ -59,7 +58,7 @@ sequenceDiagram
 
 ### Reversal Sequence
 
-Reversal can only be done on a payment where there are some captured amount 
+Reversal can only be done on a payment where there are some captured amount
 not yet reversed.
 
 ```mermaid
@@ -74,7 +73,7 @@ sequenceDiagram
 
 ### Abort a payment
 
-To abort a payment, perform the `update-payment-abort` operation that is 
+To abort a payment, perform the `update-payment-abort` operation that is
 returned in the payment request. You need to include the following HTTP body:
 
 {:.code-header}
