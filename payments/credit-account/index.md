@@ -15,22 +15,21 @@ sidebar:
 {% include alert.html type="warning"
                       icon="warning"
                       header="Site under development"
-                      body="The Developer Portal is under construction and 
-                      should not be used to integrate against Swedbank Pay's 
+                      body="The Developer Portal is under construction and
+                      should not be used to integrate against Swedbank Pay's
                       APIs yet." %}
 
-
-
-> Swedbank Pay Credit Account is an online payment instrument allowing payers 
+> Swedbank Pay Credit Account is an online payment instrument allowing payers
 > to split a purchase into several payments.
 
 {% include alert.html type="info"
                       icon="info"
-                      body="Swedbank Pay Credit Account is only available as a 
-                      payment instrument in Swedbank Pay Checkout and Sweden 
+                      body="Swedbank Pay Credit Account is only available as a
+                      payment instrument in Swedbank Pay Checkout and Sweden
                       at the moment." %}
 
 ## Sequence with unsigned CreditAccount  
+
 Payment sequence when signing is required.
 
 ```mermaid
@@ -115,6 +114,7 @@ sequenceDiagram
 ```
 
 ## Sequence with signed CreditAccount  
+
 Payment sequence when signing is not required.
 
 ```mermaid
@@ -174,7 +174,7 @@ sequenceDiagram
   deactivate Merchant
 ```
 
-{% include iterator.html 
+{% include iterator.html
         prev_href="../"
         prev_title="Back: Payments"
         next_href="after-payment"

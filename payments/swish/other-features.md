@@ -19,8 +19,8 @@ sidebar:
 {% include alert.html type="warning"
                       icon="warning"
                       header="Site under development"
-                      body="The Developer Portal is under construction and 
-                      should not be used to integrate against Swedbank Pay's 
+                      body="The Developer Portal is under construction and
+                      should not be used to integrate against Swedbank Pay's
                       APIs yet." %}
 
 {% include settlement-reconciliation.md %}
@@ -39,16 +39,16 @@ sidebar:
 
 ### Problem messages  
 
-When performing unsuccessful operations, the eCommerce API will respond with a 
-problem message. 
-We generally use the problem message type and status code to identify 
-the nature of the problem. 
-The problem name and description will often help narrow down the specifics 
+When performing unsuccessful operations, the eCommerce API will respond with a
+problem message.
+We generally use the problem message type and status code to identify
+the nature of the problem.
+The problem name and description will often help narrow down the specifics
 of the problem.
 
 ### Error types from Swish and third parties
 
-All Swish error types will have the following URI in front of type: 
+All Swish error types will have the following URI in front of type:
 `https://api.payex.com/psp/<errordetail>/swish`
 
 {:.table .table-striped}
@@ -77,7 +77,6 @@ All Swish error types will have the following URI in front of type:
 | *swishdeclined*      | 403    | TM01                 | Payment timed out (User din't confirm payment in app)                                           |
 | *swishdeclined*      | 403    | DS24                 | Payment timed out (Bank didn't respond).                                                        |
 | *systemerror*        | 500    | Any other error code |
-
 
 ### Payee reference
 

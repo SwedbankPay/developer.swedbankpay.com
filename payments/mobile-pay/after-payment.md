@@ -17,25 +17,24 @@ sidebar:
 {% include alert.html type="warning"
                       icon="warning"
                       header="Site under development"
-                      body="The Developer Portal is under construction and 
-                      should not be used to integrate against Swedbank Pay's 
+                      body="The Developer Portal is under construction and
+                      should not be used to integrate against Swedbank Pay's
                       APIs yet." %}
 
 ### Options after posting a payment
 
-* **Abort**: It is possible to [abort a payment][technical-reference-abort] 
+* **Abort**: It is possible to [abort a payment][technical-reference-abort]
   if the payment has no successful transactions.
-* If the payment shown above is done as a two-phase (`authorization`), 
+* If the payment shown above is done as a two-phase (`authorization`),
   you will need to implement the `Capture` and `Cancel` requests.
 * For reversals, you will need to implement the `Reversal` request.
-* **If CallbackURL is set**: Whenever changes to the payment occur 
-  a [Callback request][technical-reference-callback] will be posted to 
+* **If CallbackURL is set**: Whenever changes to the payment occur
+  a [Callback request][technical-reference-callback] will be posted to
   the `callbackUrl`, generated when the payment was created.
-
 
 ## Capture
 
-The `captures` resource lists the capture transactions performed on a 
+The `captures` resource lists the capture transactions performed on a
 specific payment.
 
 {:.code-header}
@@ -89,6 +88,7 @@ Content-Type: application/json
 | capture.transaction | object    | The object representation of the generic transaction resource.       |
 
 ### Create capture transaction
+
 A `capture` transaction - to withdraw money from the payer's mobilepay - can be created after a completed authorization by performing the `create-capture` operation.
 
 {:.code-header}
@@ -118,8 +118,8 @@ Content-Type: application/json
 | ✔︎       | capture.description    | string     | A textual description of the capture transaction.                                                                         |
 | ✔︎       | capture.payeeReference | string(50) | A unique reference for the capture transaction. See [payeeReference][payee-reference] for details.                        |
 
-The `capture` resource contains information about the capture transaction made 
-against a MobilePay payment. 
+The `capture` resource contains information about the capture transaction made
+against a MobilePay payment.
 You can return a specific capture transaction by adding the transaction id to
  the `GET` request.
 
@@ -164,13 +164,12 @@ Content-Type: application/json
 | capture.id          | string    | The relative URI of the created capture transaction.                                   |
 | capture.transaction | object    | The object representation of the generic [transaction resource][transaction-resource]. |
 
-
 ### Capture Sequence
 
-`Capture` can only be done on a authorized transaction. 
-It is possible to do a part-capture where you only capture a smaller amount 
-than the authorization amount. 
-You can later do more captures on the sam payment upto the total 
+`Capture` can only be done on a authorized transaction.
+It is possible to do a part-capture where you only capture a smaller amount
+than the authorization amount.
+You can later do more captures on the sam payment upto the total
 authorization amount.
 
 ```mermaid
@@ -184,7 +183,8 @@ sequenceDiagram
 ```
 
 ## Cancellations
-The `cancellations` resource lists the cancellation transactions on a 
+
+The `cancellations` resource lists the cancellation transactions on a
 specific payment.
 
 {:.code-header}
@@ -239,18 +239,17 @@ Content-Type: application/json
 | cancellations.cancellationList   | array     | The array of the cancellation transaction objects.                                  |
 | cancellations.cancellationList[] | object    | The object representation of the cancellation transaction resource described below. |
 
-
 ### Finalize
 
-Finalizing a preauthorized payment is done as a `PATCH`  after a successful 
-`Authorization` transaction has been created. 
-The common use-case for the finalize operation is to authorize the payment 
-(that has the preauthorization intent) and complete all payment related 
-activities as soon as possible - in order to complete (finalize) everything 
-server-to-server afterwards. 
-The only allowed activity is `Finalize`. To use the operation, you should 
-perform a `GET` on the payment after the user returns from the 
-`redirect-authorization` operation and find the operation 
+Finalizing a preauthorized payment is done as a `PATCH`  after a successful
+`Authorization` transaction has been created.
+The common use-case for the finalize operation is to authorize the payment
+(that has the preauthorization intent) and complete all payment related
+activities as soon as possible - in order to complete (finalize) everything
+server-to-server afterwards.
+The only allowed activity is `Finalize`. To use the operation, you should
+perform a `GET` on the payment after the user returns from the
+`redirect-authorization` operation and find the operation
 `update-authorization-finalize`.
 
 {:.code-header}
@@ -273,7 +272,6 @@ Content-Type: application/json
 | ✔︎   | Property               | Data type | Description |
 | :--- | :--------------------- | :-------- | :---------- |
 | ✔︎   | `transaction.activity` | `string`  | `Finalize`  |
-
 
 {:.code-header}
 **Response**
@@ -331,7 +329,8 @@ Content-Type: application/json
 | `authorization` | `object`  | The object representation of the [`authorization` transaction resource][authorization]. |
 
 ### Create cancellation transaction
-Perform the `create-cancel` operation to cancel a previously created payment. 
+
+Perform the `create-cancel` operation to cancel a previously created payment.
 You can only cancel a payment - or part of payment - not yet captured.
 
 {:.code-header}
@@ -357,10 +356,9 @@ Content-Type: application/json
 | ✔︎   | cancellation.description    | string     | A textual description of the reason for the cancellation.                                               |
 | ✔︎   | cancellation.payeeReference | string(50) | A unique reference for the cancellation transaction. See [payeeReference][payee-reference] for details. |
 
-
-The `cancel` resource contains information about a cancellation transaction 
-made against a payment. 
-You can return a specific cancellation transaction by adding the transaction 
+The `cancel` resource contains information about a cancellation transaction
+made against a payment.
+You can return a specific cancellation transaction by adding the transaction
 id to the `GET` request.
 
 {:.code-header}
@@ -412,8 +410,10 @@ sequenceDiagram
   Deactivate PayEx
   Deactivate Merchant
 ```
+
 ## Reversals
-The `reversals` resource lists the reversal transactions performed on a 
+
+The `reversals` resource lists the reversal transactions performed on a
 specific payment.
 
 {:.code-header}
@@ -467,9 +467,9 @@ Content-Type: application/json
 | reversalList   | array  | The array of reversal transaction objects.                                                           |
 | reversalList[] | object | The reversal transaction object representation of the reversal transaction resource described below. |
 
-
 ### Create reversal transaction
-The `create-reversal` operation reverses a previously created and 
+
+The `create-reversal` operation reverses a previously created and
 captured payment.
 
 {:.code-header}
@@ -499,10 +499,9 @@ Content-Type: application/json
 | ✔︎   | transaction.description    | string     | A textual description of the capture                                                                                      |
 | ✔︎   | transaction.payeeReference | string(50) | A unique reference for the reversal transaction. See [payeeReference][payee-reference] for details.                       |
 
-
-The `reversal` resource contains information about a reversal transaction made 
-against a payment. 
-You can return a specific reversal transaction by adding the transaction id to 
+The `reversal` resource contains information about a reversal transaction made
+against a payment.
+You can return a specific reversal transaction by adding the transaction id to
 the `GET` request.
 
 {:.code-header}
@@ -543,7 +542,7 @@ Content-Type: application/json
 
 ### Reversal Sequence
 
-Reversal can only be done on a payment where there are some 
+Reversal can only be done on a payment where there are some
 captured amount not yet reversed.
 
 ```mermaid

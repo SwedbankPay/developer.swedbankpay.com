@@ -35,6 +35,6 @@ sidebar:
 
 {% include prices.md %}
 
-{% include iterator.html 
+{% include iterator.html
                          prev_href="other-features"
                          prev_title="Back: Other Features" %}

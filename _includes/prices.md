@@ -18,7 +18,7 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c", 
+    "payment": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
     "prices": {
         "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/prices",
         "priceList": [

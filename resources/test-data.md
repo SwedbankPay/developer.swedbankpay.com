@@ -17,18 +17,18 @@ sidebar:
 {% include alert.html type="warning"
                       icon="warning"
                       header="Site under development"
-                      body="The Developer Portal is under construction and 
-                      should not be used to integrate against Swedbank Pay's 
+                      body="The Developer Portal is under construction and
+                      should not be used to integrate against Swedbank Pay's
                       APIs yet." %}
 
-{% include jumbotron.html body="Testing, are we? Good! Here's some data you can 
+{% include jumbotron.html body="Testing, are we? Good! Here's some data you can
    use to test and verify your integration!" %}
 
 ## Swedbank Pay Checkout Test Data
 
-During a Swedbank Pay Checkout implementation you can use the test data related 
-to the different payment methods listed below. To see Swedbank Pay Checkout in 
-action, please visit our 
+During a Swedbank Pay Checkout implementation you can use the test data related
+to the different payment methods listed below. To see Swedbank Pay Checkout in
+action, please visit our
 [demoshop](https://ecom.externalintegration.payex.com/pspdemoshop)
 
 To test a logged in user in the Demo Shop, please use the following test data:
@@ -114,13 +114,13 @@ To test a logged in user in the Demo Shop, please use the following test data:
 
 ## Failure Testing
 
-For testing errors in transactions there are two different methods. The first 
-method is performed through 3DSecure, and the second method is for testing 
+For testing errors in transactions there are two different methods. The first
+method is performed through 3DSecure, and the second method is for testing
 errors thorugh spesific amounts.
 
 ### 3DSecure Method
 
-First, POST a Payment (operation purchase) and enter the link to the payment 
+First, POST a Payment (operation purchase) and enter the link to the payment
 page. Example URL: -
 <https://ecom.externalintegration.payex.com/creditcardv2/payments/authorize/739cbaeae33320a5b289e2fc135a8ae443e7b510474c2785683f71c497b49552> .
 Fill the data for either the Visa or MasterCard as shown below.
@@ -131,24 +131,24 @@ Fill the data for either the Visa or MasterCard as shown below.
 | Visa       | `4761739001010416` | 12/22  | `268` | 3DS enrolled, ECI 5, Evry & loopback |
 | MasterCard | `5226612199533406` | 09/28  | `602` | 3DS enrolled, ECI 6, Evry & loopback |
 
-After pressing the purchase button you will then be taken to a menu where you 
+After pressing the purchase button you will then be taken to a menu where you
 can select Authentication status, menu is displayed in the picture under:
 
 <!--- TODO: REMEMBER TO ADD PICTURE HERE -->
 
-In this menu there is a few different options to choose from, choose the status 
-you want to test. When selected, simply press the Continue button and the 
+In this menu there is a few different options to choose from, choose the status
+you want to test. When selected, simply press the Continue button and the
 status you selected will be sent with the payment.
 
 ### Amount Error Testing Method
 
-We have some preset amounts that can be used to produce error codes. When 
-making a payment (operation purchase) enter one of these numbers from the list 
-below, in the prices object ("amount": <    number>,) before submitting a 
-transaction. Then the error message displayed behind the numbers will be sent 
+We have some preset amounts that can be used to produce error codes. When
+making a payment (operation purchase) enter one of these numbers from the list
+below, in the prices object ("amount": <    number>,) before submitting a
+transaction. Then the error message displayed behind the numbers will be sent
 with your payment in the test environment.
 
-The amounts that can be used and produce error codes 
+The amounts that can be used and produce error codes
 (transactionThirdPartyError):
 
 {:.table .table-striped}
@@ -204,10 +204,11 @@ The amounts that can be used and produce error codes
 Use any name, adress etc.
 
 ## Vipps Test Data
-For testing a positive purchase (in our external integration test environment), 
-please use any mobile number, except within the range: 99999991-99999999, as 
-these will trigger error messages. The error messages are documented in the 
-table below. There will be no user dialog at the mobile phone when testing 
+
+For testing a positive purchase (in our external integration test environment),
+please use any mobile number, except within the range: 99999991-99999999, as
+these will trigger error messages. The error messages are documented in the
+table below. There will be no user dialog at the mobile phone when testing
 Vipps.
 
 {:.table .table-striped}
@@ -222,8 +223,8 @@ Vipps.
 | 99999997      | User not Registered with Vipps                                  |
 | 99999998      | Merchant not available or active                                |
 
-Since there is no user dialog when testing Vipps in external integration, the 
-following mobile numbers can be used to simulate consumer action/behaviour in 
+Since there is no user dialog when testing Vipps in external integration, the
+following mobile numbers can be used to simulate consumer action/behaviour in
 Vipps application.
 
 {:.table .table-striped}
@@ -233,10 +234,11 @@ Vipps application.
 | 99999989      | Cancellation by consumer in app.                                                  |
 
 ## Swish Test Data
-For testing a positive purchase (in our external integration test environment), 
+
+For testing a positive purchase (in our external integration test environment),
 please use any mobile number. E.g: +46 739000001
 
-To simulate an error message, set description in `POST` Create Payment or 
+To simulate an error message, set description in `POST` Create Payment or
 `Create` Payment Order to one of the following values:
 
 {:.table .table-striped}
@@ -249,9 +251,9 @@ To simulate an error message, set description in `POST` Create Payment or
 ## Callback Test Data
 
 {:.table .table-striped}
-| URL                                                            | Response                                             |
-| :------------------------------------------------------------- | :--------------------------------------------------- |
-| https://api.internaltest.payex.com/psp/fakecallback            | `200 OK`                                             |
-| https://api.internaltest.payex.com/psp/fakecallback/notfound   | `404 Not Found`                                      |
-| https://api.internaltest.payex.com/psp/fakecallback/badrequest | `400 Bad Request`                                    |
-| https://api.internaltest.payex.com/psp/fakecallback/random     | `200 OK, 404 Not Found or 400 Bad Request at random` |
+| URL                                                              | Response                                             |
+| :--------------------------------------------------------------- | :--------------------------------------------------- |
+| <https://api.internaltest.payex.com/psp/fakecallback>            | `200 OK`                                             |
+| <https://api.internaltest.payex.com/psp/fakecallback/notfound>   | `404 Not Found`                                      |
+| <https://api.internaltest.payex.com/psp/fakecallback/badrequest> | `400 Bad Request`                                    |
+| <https://api.internaltest.payex.com/psp/fakecallback/random>     | `200 OK, 404 Not Found or 400 Bad Request at random` |

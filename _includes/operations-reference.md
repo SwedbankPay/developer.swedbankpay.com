@@ -1,10 +1,10 @@
 ### Operations
 
-When a payment order resource is created and during its lifetime, 
-it will have a set of operations that can be performed on it. 
-The state of the payment order resource, what the access token is authorized 
-to do, the chosen payment instrument and its transactional states, 
-etc. determine the available operations before the initial purchase. 
+When a payment order resource is created and during its lifetime,
+it will have a set of operations that can be performed on it.
+The state of the payment order resource, what the access token is authorized
+to do, the chosen payment instrument and its transactional states,
+etc. determine the available operations before the initial purchase.
 A list of possible operations and their explanation is given below.
 
 {:.code-header}
@@ -70,14 +70,13 @@ A list of possible operations and their explanation is given below.
 | `method`      | The HTTP method to use when performing the operation.                    |
 | `contentType` | The HTTP content type of the resource referenced in the `href` property. |
 
-The operations should be performed as described in each response and not as 
-described here in the documentation. 
-Always use the `href` and `method` as specified in the response by finding 
-the appropriate operation based on its `rel` value. 
-The only thing that should be hard coded in the client is the value of 
-the `rel` and the request that will be sent in the HTTP body of the request 
+The operations should be performed as described in each response and not as
+described here in the documentation.
+Always use the `href` and `method` as specified in the response by finding
+the appropriate operation based on its `rel` value.
+The only thing that should be hard coded in the client is the value of
+the `rel` and the request that will be sent in the HTTP body of the request
 for the given operation.
-
 
 {:.table .table-striped}
 | Operation                          | Description                                                                                                                                                                                                                                                                    |
@@ -92,8 +91,8 @@ for the given operation.
 
 #### View Payment Order
 
-The `view-paymentorder` operation contains the URI of the JavaScript that 
-needs to be set as a `script` element's `src` attribute, 
+The `view-paymentorder` operation contains the URI of the JavaScript that
+needs to be set as a `script` element's `src` attribute,
 either client-side through JavaScript or server-side in HTML as shown below.
 
 ```html
@@ -135,8 +134,8 @@ either client-side through JavaScript or server-side in HTML as shown below.
 
 #### Update Order
 
-Change amount and vat amount on a payment order. 
-If you implement `updateorder` **you need to `refresh()`** 
+Change amount and vat amount on a payment order.
+If you implement `updateorder` **you need to `refresh()`**
 the [Payment Menu front end][payment-menu-front-end]
 so the new amount is shown to the end customer.
 
@@ -208,10 +207,11 @@ Content-Type: application/json
             "href": "https://ecom.externalintegration.payex.com/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=4b0baaf8fdb5a56b5bdd78a8dd9e63e42e93ec79e5d0c0b5cc40f79cf43c9428&culture=nb-NO",
             "rel": "view-paymentorder",
             "contentType": "application/javascript"
-        } 
-    ]   
+        }
+    ]
 }
 ```
+
 **Remember to call .refresh() on the Payment Menu in JavaScript**
 
 {:.table .table-striped}
@@ -240,15 +240,15 @@ Content-Type: application/json
 
 #### Capture
 
-Capture can only be done on a payment with a successful authorized transaction. 
-It is possible to do a part-capture where you only capture a smaller amount 
-than the authorized amount. 
-You can later do more captures on the same payment up to the total 
+Capture can only be done on a payment with a successful authorized transaction.
+It is possible to do a part-capture where you only capture a smaller amount
+than the authorized amount.
+You can later do more captures on the same payment up to the total
 authorization amount.
 
-To capture the authorized payment, we need to perform 
+To capture the authorized payment, we need to perform
 `create-paymentorder-capture` against the accompanying href returned in the
-`operations` list. 
+`operations` list.
 See the abbreviated request and response below:
 
 {:.code-header}
@@ -344,9 +344,9 @@ Content-Type: application/json
 | `capture.id`          | `string`  | The relative URI of the created capture transaction.                                     |
 | `capture.transaction` | `object`  | The object representation of the generic [`transaction` resource][transaction-resource]. |
 
-Checkout should now be complete, the payment should be secure and everyone 
-should be happy. 
-But, sometimes you also need to implement the cancellation and reversal 
+Checkout should now be complete, the payment should be secure and everyone
+should be happy.
+But, sometimes you also need to implement the cancellation and reversal
 operations described below.
 
 #### Abort
@@ -354,8 +354,8 @@ operations described below.
 * It is possible for the merchant to abort a payment before the end user has fulfilled the payment process. If the merchant calls the `PATCH` function (see example below), the payment will be aborted.
 * This can only happen if there exist no final transactions (like captures) on the payment with a successful status. Once the payment is aborted, no more transactions/operations can be done. If the consumer has been redirected to a hosted payment page when this happens, the end user will be redirected back to your merchant page.
 
-To abort a payment order, perform the `update-paymentorder-abort` operation 
-that is returned in the payment order response. 
+To abort a payment order, perform the `update-paymentorder-abort` operation
+that is returned in the payment order response.
 You need to include the following `HTTP` body:
 
 {:.code-header}
@@ -375,8 +375,7 @@ Content-Type: application/json
 }
 ```
 
-
-The response given when aborting a payment order is equivalent to a `GET` 
+The response given when aborting a payment order is equivalent to a `GET`
 request towards the `paymentorders` resource, with its `state` set to `Aborted`.
 
 {:.code-header}
@@ -422,9 +421,9 @@ Content-Type: application/json
 
 #### Cancel
 
-If we want to cancel up to the total authorized (not captured) amount, 
-we need to perform `create-paymentorder-cancel` against the accompanying `href` 
-returned in the` operations `list. 
+If we want to cancel up to the total authorized (not captured) amount,
+we need to perform `create-paymentorder-cancel` against the accompanying `href`
+returned in the`operations`list.
 See the abbreviated request and response below:
 
 {:.code-header}
@@ -450,7 +449,7 @@ Content-Type: application/json
 | ✔︎︎︎︎︎   | `transaction.payeeReference` | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details. |
 | ✔︎︎︎︎︎   | `transaction.description`    | `string`     | A textual description of why the transaction is cancelled.                                                                                                                               |
 
-If the cancellation request succeeds, the response should be 
+If the cancellation request succeeds, the response should be
 similar to the example below:
 
 {:.code-header}
@@ -486,9 +485,9 @@ Content-Type: application/json
 
 #### Reversal
 
-If we want to reverse a previously captured amount, we need to perform 
-`create-paymentorder-reversal` against the accompanying `href` returned 
-in the `operations` list. 
+If we want to reverse a previously captured amount, we need to perform
+`create-paymentorder-reversal` against the accompanying `href` returned
+in the `operations` list.
 See the abbreviated request and response below:
 
 {:.code-header}
@@ -518,7 +517,7 @@ Content-Type: application/json
 | ✔︎︎︎︎︎   | `transaction.payeeReference` | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details. |
 | ✔︎︎︎︎︎   | `transaction.description`    | `string`     | Textual description of why the transaction is reversed.                                                                                                                                  |
 
-If the reversal request succeeds, 
+If the reversal request succeeds,
 the response should be similar to the example below:
 
 {:.code-header}

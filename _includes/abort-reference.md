@@ -1,9 +1,8 @@
 ### Abort payment
 
-To abort a payment, perform the `update-payment-abort` operation that is 
-returned in the payment request. 
+To abort a payment, perform the `update-payment-abort` operation that is
+returned in the payment request.
 You need to include the following HTTP body:
-
 
 {:.table .table-striped}
 **Request**

@@ -267,7 +267,6 @@ the following argument objects:
 With a `consumerProfileRef` safely tucked into our pocket, the Checkin is
 complete and we can move on to [payment menu][payment-menu].
 
-
 {% include iterator.html prev_href="./"
                          prev_title="Back: Introduction"
                          next_href="payment-menu"
