@@ -15,15 +15,13 @@ sidebar:
 {% include alert.html type="warning"
                       icon="warning"
                       header="Site under development"
-                      body="The Developer Portal is under construction and 
-                      should not be used to integrate against Swedbank Pay's 
+                      body="The Developer Portal is under construction and
+                      should not be used to integrate against Swedbank Pay's
                       APIs yet." %}
-
-
 
 ## Create capture transaction
 
-To `capture` a `CreditAccountSe` transaction, you need to perform the 
+To `capture` a `CreditAccountSe` transaction, you need to perform the
 `create-capture` operation.
 
 {:.code-header}
@@ -52,7 +50,6 @@ Content-Type: application/json
 | ✔︎       | capture.vatAmount      | integer     | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 NOK`, `5000` = `50.00 SEK`. |
 | ✔︎       | capture.description    | string      | A textual description of the capture transaction.                                                                         |
 | ✔︎       | capture.payeeReference | string(30*) | A unique reference for the capture transaction. See [payeeReference][payee-reference] for details.                        |
-
 
 The `capture` resource contains information about the capture transaction.
 
@@ -121,13 +118,11 @@ Content-Type: application/json
 | capture.id          | string    | The relative URI of the created capture transaction.                                  |
 | capture.transaction | object    | The object representation of the generic [transaction resource][transaction-resource] |
 
-
-{% include iterator.html 
+{% include iterator.html
         prev_href="index"
         prev_title="Back: Introduction"
         next_href="other-features"
         next_title="Next: Other Features" %}
-
 
 [payee-reference]: /payments/credit-account/other-features#payeereference
 [transaction-resource]: /payments/credit-account/other-features#transactions

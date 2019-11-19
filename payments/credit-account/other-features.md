@@ -15,8 +15,8 @@ sidebar:
 {% include alert.html type="warning"
                       icon="warning"
                       header="Site under development"
-                      body="The Developer Portal is under construction and 
-                      should not be used to integrate against Swedbank Pay's 
+                      body="The Developer Portal is under construction and
+                      should not be used to integrate against Swedbank Pay's
                       APIs yet." %}
 
 {% include settlement-reconciliation.md %}
@@ -31,7 +31,7 @@ sidebar:
 
 ## Problem messages
 
-When performing unsuccessful operations, the eCommerce API will respond with 
+When performing unsuccessful operations, the eCommerce API will respond with
 a problem message. We generally use the problem message type and status code to
 identify the nature of the problem. The problem name and description will often
 help narrow down the specifics of the problem.
@@ -46,7 +46,6 @@ help narrow down the specifics of the problem.
 
 All invoice error types will have the following URI in front of type:
 `https://api.payex.com/psp/errordetail/invoice/<errorType>`
-
 
 {:.table .table-striped}
 | Type            | Status | Description                   |
