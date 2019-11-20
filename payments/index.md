@@ -126,14 +126,14 @@ Settle funds directly with a Sales transaction.
 
 ## Swedbank Pay Payment Instruments Platforms
 
-Swedbank Pay Hosted view and Redirect offer easy-to-use PCI compliant platforms,
+Swedbank Pay Seamless View and Redirect offer easy-to-use PCI compliant platforms,
 available from both web and mobile browsers. Either let your customers access
 the platform directly, embedded on your site, or by redirection to a separate
 hosted payment page.
 
-### Hosted View implementation
+### Seamless View implementation
 
-With the Hosted View you can initiate the payment process directly in an iframe
+With the Seamless View you can initiate the payment process directly in an iframe
 on your site. A hostUrl needs to be defined in the first POST request in order
 to enable the Seamless View operation. See details of the request
 [here][card-payments-purchase].
@@ -157,14 +157,14 @@ implementation in action. Use the configuration below:
 ```markdown
 TODO: Insert picture from demoshop showing the following configuration:  
 Swedbank Pay Payment Pages  
-Hosted View  
+Seamless View  
 Norway  
 English
 ```
 
-#### Getting started with Hosted View
+#### Getting started with Seamless View
 
-When implementing Hosted view, you need to locate the operation that is returned
+When implementing Seamless View, you need to locate the operation that is returned
 from your API request, which contains the URL of the JavaScript that you need
 to embed on your Front End side. This will load the
 payment page on a subset of your own webpage.
@@ -193,21 +193,21 @@ Operations
 
 To integrate the payment page script, you need to prepare you front end:
 
-1. You need to create a container that will contain  the Hosted View iframe:  
+1. You need to create a container that will contain  the Seamless View iframe:  
   `<div id="payex-hosted-payment-page">`.
 2. You also need to create a `<script>` source within the container, using the
   href value you obtained when submitting your initial POST. As mentioned above,
-  all Hosted View operations have a rel description beginning with  `"view-"`.
+  all Seamless View operations have a rel description beginning with  `"view-"`.
   The example below is taken from the view-payment operation, above - enabling
-  Swish payments through Hosted View.
+  Swish payments through Seamless View.
 
 ```HTML
 <script id="paymentPageScript" src="https://ecom.stage.payex.com/swish/core/scripts/client/px.swish.client.js?
                                     token=bcff0db777d5bcf21a210235342921f46da993efa5e91340f713c8cedf4aac38"></script>
 ```
 
-1. Lastly, you must initiate the Hosted View with a JavaScript call to open the
-  Hosted View iframe embedded on you site.
+1. Lastly, you must initiate the Seamless View with a JavaScript call to open the
+  Seamless View iframe embedded on you site.
 
 ```HTML
 JavaScript Call
@@ -307,7 +307,7 @@ instruments.
 * A successful payment is `Ready` for authorization. An authoriation  
   transaction is often created through a Redirect scenario, where you transfer
   the consumer to a hosted payment page, or by enable the process to take place
-  directly on your own site, through Hosted View.  
+  directly on your own site, through Seamless View.  
 * If you use a *one-phase method* (like Direct bank debit or Swish) a `Sales`
   transaction will be created and the consumer be charged right away. A
   `two-phase` payment method like credit card needs to be capture the authorized
