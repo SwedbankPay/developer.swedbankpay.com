@@ -31,9 +31,8 @@ off, letting the payer complete their purchase." %}
 Below, you will se the sequence diagram of the payment menu. Notice that there
 are two optional ways of performing the payment:
 
-* Consumer perform payment out of iframe
-
-* Consumer perform payment within iframe
+* Consumer perform payment **out** of `iframe`.
+* Consumer perform payment **within** `iframe`.
 
 ```mermaid
 sequenceDiagram
@@ -127,14 +126,23 @@ with the `consumerProfileRef` we obtained in the checkin process described
 above.
 Remember to read up on our [URL resource][urls].
 
-**Please Note:**
+{% include alert.html type="neutral" icon="info" body="The `orderItems` property
+object is optional. If the `POST` request has `orderItems` in the
+`paymentorder`, remember to include `orderItems` in the [capture
+operation](after-payment#capture)." %}
 
-* The `orderItems` property object is optional. If the `POST` request has
-  `orderItems` in the `paymentorder`, remember to include `orderItems` in
-  the [capture operation][capture-operation].
-* To minimize the risk for a challenge request (Strong Customer Authentication
-  – “SCA”) on card payments, it's recommended that you add as much data as
-  possible to the `riskIndicator` object in the request below.
+{% include alert.html type="neutral" icon="info" body="To minimize the risk for
+a challenge request (Strong Customer Authentication – “SCA”) on card payments,
+it's recommended that you add as much data as possible to the `riskIndicator`
+object in the request below." %}
+
+### Payment Url
+
+{% include payment-url.md payment-order=true
+when="selecting the payment instrument Vipps or in the 3-D Secure verification
+for Credit Card Payments" %}
+
+### Request
 
 {:.code-header}
 **Request**
@@ -284,6 +292,8 @@ Content-Type: application/json
 |          | └─➔&nbsp;`city`                       | `string`     | If `shipIndicator` set to `04`, then prefill this with the payers `city` of the purchase to decrease the risk factor of the purchase.                                                                                                                                                                                                                                                                                                                                                                                                                            |
 |          | └─➔&nbsp;`zipCode`                    | `string`     | If `shipIndicator` set to `04`, then prefill this with the payers `zipCode` of the purchase to decrease the risk factor of the purchase.                                                                                                                                                                                                                                                                                                                                                                                                                         |
 |          | └─➔&nbsp;`countryCode`                | `string`     | If `shipIndicator` set to `04`, then prefill this with the payers `countryCode` of the purchase to decrease the risk factor of the purchase.                                                                                                                                                                                                                                                                                                                                                                                                                     |
+
+### Response
 
 The response back should look something like this (abbreviated for brevity):
 
@@ -447,7 +457,6 @@ finalizing the payment in the [After Payment section][after-payment].
                          next_href="after-payment"
                          next_title="Next: After Payment" %}
 
-[capture-operation]: /checkout/after-payment#capture
 [checkin-image]: /assets/img/checkout/your-information.png
 [consumer-reference]: /checkout/other-features#payeereference
 [initiate-consumer-session]: /checkout/checkin#checkin-back-end
