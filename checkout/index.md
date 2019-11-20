@@ -47,16 +47,20 @@ To start integrating Swedbank Pay Checkout, you need the following:
 ## Introduction
 
 To get started with Swedbank Pay Checkout, you should learn about its different
-components and how they work together. Swedbank Pay Checkout consists of two related,
-but disconnected concepts: **Checkin** and **Payment Menu**. Checkin identifies
-the consumer in our Consumer API and Payment Menu authorizes the payment with
-our Payment Menu API. The next step is to **Capture** the payment. You can either
-capture the total amount, or do a part-capture (as described under 'After Payment'). Connect these steps and you have
+components and how they work together. Swedbank Pay Checkout consists of two
+related, but disconnected concepts: **Checkin** and **Payment Menu**. Checkin
+identifies the consumer in our Consumer API and Payment Menu authorizes the
+payment with our Payment Menu API. The next step is to **Capture** the payment.
+You can either capture the total amount, or do a part-capture (as described
+under [After Payment][after-payment-capture]). Connect these steps and you have
 Swedbank Pay Checkout.
 
-Under, you will see a sequence diagram showing the sequence of a Swedbank Pay checkout.
-Note that in this diagram, the Payer refers to the merchant front-end (website)
-while Merchant refers to the merchant back-end.
+Under, you will see a sequence diagram showing the sequence of a Swedbank Pay
+checkout.
+
+{% include alert.html type="neutral" icon="info" body="
+Note that in this diagram, the Payer refers to the merchant front-end
+(website) while Merchant refers to the merchant back-end." %}
 
 ```mermaid
 sequenceDiagram
@@ -201,3 +205,4 @@ diagram.
 
 [https]: /#connection-and-protocol
 [payment-order]: /checkout/other-features#payment-orders
+[after-payment-capture]: after-payment#capture

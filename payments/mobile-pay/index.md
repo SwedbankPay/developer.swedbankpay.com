@@ -61,7 +61,7 @@ to learn how to implement MobilePay in the redirect scenario.
   will open, letting the consumer enter the payment details (varying depending
   on payment instrument) in a secure Swedbank Pay hosted environment.
   When paying with credit card and if required, Swedbank Pay will handle
-  3D-secure authentication
+  3-D Secure authentication
 * After completion, Swedbank Pay will redirect the browser back to your
   merchant/webshop site.
 * If [CallbackURL][technical-reference-callback] is set the merchant system
@@ -153,23 +153,24 @@ when the consumer as fulfilled the payment.
 
 The sequence diagrams display the high level process of the purchase,
 from generating a Payment Link to receving a Callback.
-This in a generalized flow as well as a specific 3D-secure enabled credit
-card scenario.  
+This in a generalized flow as well as a specific 3-D Secure enabled credit
+card scenario.
 
-**Please note that the the callback may come either before,
-after or in the same moment as the consumer are being redirected to the status
-page at the merchant site when the purchase is fulfilled.**
+{% include alert.html type="neutral" icon="info" body="
+Please note that the the callback may come either before, after or in the same
+moment as the consumer are being redirected to the status page at the merchant
+site when the purchase is fulfilled." %}
 
-When dealing with credit card payments, 3D-Secure authentication of the
+When dealing with credit card payments, 3-D Secure authentication of the
 cardholder is an essential topic.
 There are two alternative outcome of a credit card payment:
 
-* 3D-Secure enabled - by default, 3D-secure should be enabled, and Swedbank
-  Pay will check if the card is enrolled with 3D-secure.
+* 3-D Secure enabled - by default, 3-D Secure should be enabled, and Swedbank
+  Pay will check if the card is enrolled with 3-D Secure.
   This depends on the issuer of the card.
-  If the card is not enrolled with 3D-Secure, no authentication
+  If the card is not enrolled with 3-D Secure, no authentication
   of the cardholder is done.
-* Card supports 3D-Secure - if the card is enrolled with 3D-Secure,
+* Card supports 3-D Secure - if the card is enrolled with 3-D Secure,
   Swedbank Pay will redirect the cardholder to the autentication mechanism
   that is decided by the issuing bank.
   Normally this will be done using BankID or Mobile BankID.
@@ -179,7 +180,7 @@ sequenceDiagram
   Consumer->>MerchantOrderSystem: consumer starts purchase
   Activate MerchantOrderSystem
   MerchantOrderSystem->>Merchant: start purchase process
-  Activate Merchant  
+  Activate Merchant
   Merchant->>PayEx: POST [payment] (operation=PURCHASE)
   note left of Merchant: First API request
   Activate PayEx
@@ -189,11 +190,11 @@ sequenceDiagram
   Deactivate Merchant
   MerchantOrderSystem-->>Consumer: Distribute Payment URL through e-mail/SMS
   Deactivate MerchantOrderSystem
-  
+
   note left of Consumer: Payment Link in e-mail/SMS
   Consumer->>PayEx: Open link and enter payment information
   Activate PayEx
-  
+
   opt Card supports 3-D Secure
   PayEx-->>Consumer: redirect to IssuingBank
   Deactivate PayEx
@@ -201,11 +202,11 @@ sequenceDiagram
   Consumer->>PayEx: access authentication page
   Activate PayEx
   end
-  
+
   PayEx-->>Consumer: redirect to merchant site
   note left of PayEx: redirect back to merchant
   Deactivate PayEx
-  
+
   Consumer->>Merchant: access merchant page
   Activate Merchant
   Merchant->>PayEx: GET [payment]

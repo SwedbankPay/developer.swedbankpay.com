@@ -78,8 +78,8 @@ This Code of Conduct is adapted from the
 The Code of Conduct should then be referenced from the `CONTRIBUTING` file,
 for example with the following paragraphs:
 
-Please note that this project is released with a Contributor Code of Conduct.
-By participating in this project you agree to abide by its terms.
+> Please note that this project is released with a Contributor Code of Conduct.
+> By participating in this project you agree to abide by its terms.
 
 [contributor-covenant]: http://contributor-covenant.org/
 [opensource-mail]: opensource@payex.com

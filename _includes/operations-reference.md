@@ -212,7 +212,9 @@ Content-Type: application/json
 }
 ```
 
->Remember to call .refresh() on the Payment Menu in JavaScript
+{% include alert.html type="neutral" icon="info" body="
+After updating the Payment Order, remember to call `.refresh()` on the Payment
+Menu in JavaScript." %}
 
 {:.table .table-striped}
 | Property                 | Type         | Description                                                                                                                          |
