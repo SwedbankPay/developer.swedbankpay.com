@@ -264,7 +264,7 @@ to inform the payee (merchant) of changes or updates made to underlying payments
 
 The `orderItems` property of the `paymentOrder` is an array containing the items being purchased with the order. Used to print on invoices if the payer chooses to pay with invoice, among other things. Order items can be specified on both payment order creation as well as on [Capture][payment-order-capture].
 
-{% include alert.html type="info"
+{% include alert.html type="neutral"
                       icon="info"
                       body="`orderItems` must be a part of `Capture` if `orderItems` is included in the `paymentOrder` creation." %}
 
