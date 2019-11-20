@@ -48,24 +48,8 @@ integration validation procedure.
   `paymentorders` resource.
 * The `paymentUrl` is an URL property that redirect the consumer from the payment page and back to the Merchant
 
-For our Seamless View, the URL property called `paymentUrl` will be used when the
-consumer is redirected out of the Seamless View frame through our
-[Vipps API][vipps-payments].
-The consumer is redirected out of frame when selecting Vipps as payment method.
-The URL should represent the page of where the payment Seamless View was hosted
-originally,
-such as the checkout page, shopping cart page, or similar. Basically,
-`paymentUrl` should be set to the same URL as that of the page where the
-JavaScript for the hosted payment view was added to in order to initiate the
-payment.
-Please note that the `paymentUrl` must be able to invoke the same JavaScript
-URL from the same Payment as the one that initiated the payment originally,
-so it should include some sort of state identifier in the URL.
-The state identifier is the ID of the order, shopping cart or similar that has
-the URL of the Payment stored.
-
-With `paymentUrl` in place, the retry process becomes much more convenient for
-both the integration and the payer.
+{% include payment-url.md
+when="at the 3-D Secure verification for credit card payments" %}
 
 * When the contents of the shopping cart changes or anything else that affects
   the amount occurs, the `paymentorder` must be updated and the Payment Menu

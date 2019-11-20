@@ -37,7 +37,7 @@ with gathered `Purchase` information. The action taken next is the
 `direct-authorization` operation that is returned in the first request.
 * You `POST` the payer's card data to the URL in the
 [`direct-authorization` operation][authorization].
-* If 3D-secure authentication is required, you will then receive a URL where
+* If 3-D Secure authentication is required, you will then receive a URL where
 you will have to redirect the payer.
 * When the payment is completed, the payer needs to be redirected back to your
 merchant/webshop site.
@@ -48,8 +48,7 @@ received in the first step, which will return the purchase result.
 
 The API requests are displayed in the [purchase flow](#purchase-flow-2). The
 options you can choose from when creating a payment with key `operation` set to
-Value `Purchase` are listed below. The general REST based API model is described
-in the [technical reference](#).
+Value `Purchase` are listed below.
 
 #### Options before posting a payment
 
@@ -77,9 +76,9 @@ more financial operations to this purchase.
 
 ##### General
 
-* **No 3D Secure and card acceptance**: There are optional paramers that can be
-used in relation to 3d-secure and card acceptance. By default, most credit card
-agreements with an acquirer will require that you use 3D-Secure for card holder
+* **No 3-D Secure and card acceptance**: There are optional paramers that can be
+used in relation to 3-D Secure and card acceptance. By default, most credit card
+agreements with an acquirer will require that you use 3-D Secure for card holder
 authentication. However, if your agreement allows you to make a card payment
 without this authentication, or that specific cards can be declined, you may
 adjust these optional parameters when posting in the payment. This is specified
@@ -96,15 +95,15 @@ The sequence diagram below shows a high level description of a complete
 purchase, and the requests you have to send to Swedbank Pay. The links will take
  you directly to the corresponding API description.
 
-When dealing with credit card payments, 3D-Secure authentication of the
+When dealing with credit card payments, 3-D Secure authentication of the
 cardholder is an essential topic. There are three alternative outcomes of
 acredit card payment:
 
-* 3D-Secure enabled - by default, 3D-secure should be enabled, and Swedbank Pay
-will check if the card is enrolled with 3D-secure. This depends on the issuer of
- the card. If the card is not enrolled with 3D-Secure, no authentication of the
+* 3-D Secure enabled - by default, 3-D Secure should be enabled, and Swedbank Pay
+will check if the card is enrolled with 3-D Secure. This depends on the issuer of
+ the card. If the card is not enrolled with 3-D Secure, no authentication of the
  cardholder is done.
-* Card supports 3D-Secure - if the card is enrolled with 3D-Secure, Swedbank Pay
+* Card supports 3-D Secure - if the card is enrolled with 3-D Secure, Swedbank Pay
 will redirect the cardholder to the autentication mechanism that is decided by
 the issuing bank. Normally this will be done using BankID or Mobile BankID.
 
@@ -140,16 +139,16 @@ sequenceDiagram
   PayEx --> Merchant: transaction resource
 
   deactivate PayEx
-  Merchant-->>Consumer: redirect to 3D-secure page
+  Merchant-->>Consumer: redirect to 3-D Secure page
   deactivate Merchant
-  
+
   note left of Consumer: redirect to card issuing bank
-  Consumer ->> IssuingBank: 3D-secure authentication
+  Consumer ->> IssuingBank: 3-D Secure authentication
   activate IssuingBank
   IssuingBank-->>Consumer: redirect to merchant
   note left of Consumer: redirect back to merchant
   deactivate IssuingBank
-  
+
   Consumer->>Merchant: access merchant page
   activate Merchant
   Merchant->>PayEx: GET [get-payment-response]

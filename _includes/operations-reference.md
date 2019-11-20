@@ -212,7 +212,9 @@ Content-Type: application/json
 }
 ```
 
-**Remember to call .refresh() on the Payment Menu in JavaScript**
+{% include alert.html type="neutral" icon="info" body="
+After updating the Payment Order, remember to call `.refresh()` on the Payment
+Menu in JavaScript." %}
 
 {:.table .table-striped}
 | Property                 | Type         | Description                                                                                                                          |
@@ -304,11 +306,11 @@ Content-Type: application/json
 
 {:.table .table-striped}
 | Required | Property                     | Type         | Description                                                                                                                                                                                    |
-| :------- | :--------------------------- | :----------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ✔︎︎︎︎︎   | `transaction.description`    | `string`     | The description of the capture transaction.                                                                                                                                                    |
-| ✔︎︎︎︎︎   | `transaction.amount`         | `integer`    | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.                                                              |
-| ✔︎︎︎︎︎   | `transaction.vatAmount`      | `integer`    | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.                                                                     |
-| ✔︎︎︎︎︎   | `transaction.payeeReference` | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.       |
+| :------: | :--------------------------- | :----------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|  ✔︎︎︎︎︎  | `transaction.description`    | `string`     | The description of the capture transaction.                                                                                                                                                    |
+|  ✔︎︎︎︎︎  | `transaction.amount`         | `integer`    | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.                                                              |
+|  ✔︎︎︎︎︎  | `transaction.vatAmount`      | `integer`    | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.                                                                     |
+|  ✔︎︎︎︎︎  | `transaction.payeeReference` | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.       |
 |          | `transaction.orderItems`     | `array`      | The array of items being purchased with the order. Used to print on invoices if the payer chooses to pay with invoice, among other things. [See Order Items for details][payment-order-items]. |
 
 If the capture succeeds, it should respond with something like the following:
@@ -338,11 +340,11 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property              | Data type | Description                                                                              |
-| :-------------------- | :-------- | :--------------------------------------------------------------------------------------- |
-| `payment`             | `string`  | The relative URI of the payment this capture transaction belongs to.                     |
-| `capture.id`          | `string`  | The relative URI of the created capture transaction.                                     |
-| `capture.transaction` | `object`  | The object representation of the generic [`transaction` resource][transaction-resource]. |
+| Property              | Type     | Description                                                                              |
+| :-------------------- | :------- | :--------------------------------------------------------------------------------------- |
+| `payment`             | `string` | The relative URI of the payment this capture transaction belongs to.                     |
+| `capture.id`          | `string` | The relative URI of the created capture transaction.                                     |
+| `capture.transaction` | `object` | The object representation of the generic [`transaction` resource][transaction-resource]. |
 
 Checkout should now be complete, the payment should be secure and everyone
 should be happy.
@@ -444,10 +446,10 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property | Type                         | Required     | Description                                                                                                                                                                              |
-| :------- | :--------------------------- | :----------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ✔︎︎︎︎︎   | `transaction.payeeReference` | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details. |
-| ✔︎︎︎︎︎   | `transaction.description`    | `string`     | A textual description of why the transaction is cancelled.                                                                                                                               |
+| Required | Property                     | Type         | Description                                                                                                                                                                              |
+| :------: | :--------------------------- | :----------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|  ✔︎︎︎︎︎  | `transaction.payeeReference` | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details. |
+|  ✔︎︎︎︎︎  | `transaction.description`    | `string`     | A textual description of why the transaction is cancelled.                                                                                                                               |
 
 If the cancellation request succeeds, the response should be
 similar to the example below:
@@ -477,11 +479,11 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property                   | Data type | Description                                                                              |
-| :------------------------- | :-------- | :--------------------------------------------------------------------------------------- |
-| `payment`                  | `string`  | The relative URI of the payment this capture transaction belongs to.                     |
-| `cancellation.id`          | `string`  | The relative URI of the created capture transaction.                                     |
-| `cancellation.transaction` | `object`  | The object representation of the generic [`transaction` resource][transaction-resource]. |
+| Property                   | Type     | Description                                                                              |
+| :------------------------- | :------- | :--------------------------------------------------------------------------------------- |
+| `payment`                  | `string` | The relative URI of the payment this capture transaction belongs to.                     |
+| `cancellation.id`          | `string` | The relative URI of the created capture transaction.                                     |
+| `cancellation.transaction` | `object` | The object representation of the generic [`transaction` resource][transaction-resource]. |
 
 #### Reversal
 
@@ -511,11 +513,11 @@ Content-Type: application/json
 
 {:.table .table-striped}
 | Required | Property                     | Type         | Description                                                                                                                                                                              |
-| :------- | :--------------------------- | :----------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ✔︎︎︎︎︎   | `transaction.amount`         | `integer`    | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.                                                        |
-| ✔︎︎︎︎︎   | `transaction.vatAmount`      | `integer`    | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.                                                               |
-| ✔︎︎︎︎︎   | `transaction.payeeReference` | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details. |
-| ✔︎︎︎︎︎   | `transaction.description`    | `string`     | Textual description of why the transaction is reversed.                                                                                                                                  |
+| :------: | :--------------------------- | :----------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|  ✔︎︎︎︎︎  | `transaction.amount`         | `integer`    | The amount including VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.                                                        |
+|  ✔︎︎︎︎︎  | `transaction.vatAmount`      | `integer`    | The amount of VAT in the lowest monetary unit of the currency. E.g. `10000` equals 100.00 NOK and `5000` equals 50.00 NOK.                                                               |
+|  ✔︎︎︎︎︎  | `transaction.payeeReference` | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details. |
+|  ✔︎︎︎︎︎  | `transaction.description`    | `string`     | Textual description of why the transaction is reversed.                                                                                                                                  |
 
 If the reversal request succeeds,
 the response should be similar to the example below:
@@ -545,11 +547,11 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property               | Data type | Description                                                                              |
-| :--------------------- | :-------- | :--------------------------------------------------------------------------------------- |
-| `payment`              | `string`  | The relative URI of the payment this reversal transaction belongs to.                    |
-| `reversal.id`          | `string`  | The relative URI of the created reversal transaction.                                    |
-| `reversal.transaction` | `object`  | The object representation of the generic [`transaction` resource][transaction-resource]. |
+| Property               | Type     | Description                                                                              |
+| :--------------------- | :------- | :--------------------------------------------------------------------------------------- |
+| `payment`              | `string` | The relative URI of the payment this reversal transaction belongs to.                    |
+| `reversal.id`          | `string` | The relative URI of the created reversal transaction.                                    |
+| `reversal.transaction` | `object` | The object representation of the generic [`transaction` resource][transaction-resource]. |
 
 [payment-order-abort]: #abort
 [payment-order-update]: #update-order

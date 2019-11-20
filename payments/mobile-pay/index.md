@@ -25,7 +25,7 @@ sidebar:
 of [Swedbank Pay Settlement Service][payex-reconciliation-and-settlement] to
 get consolidated payments and reporting, for all your payment methods.
 
-# MobilePay Online Payment Pages
+## MobilePay Online Payment Pages
 
 Read our documentation on [MobilePay Redirect](/payments/mobile-pay/redirect)
 to learn how to implement MobilePay in the redirect scenario.
@@ -42,26 +42,26 @@ to learn how to implement MobilePay in the redirect scenario.
 ## Introduction
 
 * The Payment Link can be implemented for payment methods listed below,
-  using the Redirect platform and hosted payment pages.  
- * [Credit card][credit-card]
- * [MobilePay][mobile-pay]
- * [Swish m-commerce][swish-m-commerce] and [Swish e-commerce][swish-e-commerce]
- * [Vipps][vipps]
+  using the Redirect platform and hosted payment pages.
+  * [Credit card][credit-card]
+  * [MobilePay][mobile-pay]
+  * [Swish m-commerce][swish-m-commerce] and [Swish e-commerce][swish-e-commerce]
+  * [Vipps][vipps]
 * When the consumer/end-user starts the purchase process in your
   merchant/wehshop site, you need to make a `POST` request towards Swedbank Pay
   with your Purchase information.
   You receive a Payment Link (same as redirect URL) in response.
 * You have to distribute the Payment Link to the customer through your order
   system, using channels like e-mail or SMS.
- * NOTE: When sending information in e-mail/SMS, it is strongly recommended
+  * NOTE: When sending information in e-mail/SMS, it is strongly recommended
    that you add information about your terms and conditions, including
    purchase information and price.
-   **See recommendations in the next paragraph.**
+    **See recommendations in the next paragraph.**
 * When the consumer clicks on the Payment Link, the Swedbank Pay payment page
   will open, letting the consumer enter the payment details (varying depending
   on payment instrument) in a secure Swedbank Pay hosted environment.
   When paying with credit card and if required, Swedbank Pay will handle
-  3D-secure authentication
+  3-D Secure authentication
 * After completion, Swedbank Pay will redirect the browser back to your
   merchant/webshop site.
 * If [CallbackURL][technical-reference-callback] is set the merchant system
@@ -121,14 +121,14 @@ and two-phase (e.g. [Credit card][credit-card],
 #### Authorization
 
 * PreAuthorization (Credit card):
- * If you specify that the _intent_ of the _purchase_ is PreAuthorize,
+  * If you specify that the _intent_ of the _purchase_ is PreAuthorize,
    it's almost the same as an authorization,
-   **except that no money will be reserved** from the consumers credit card,
+    **except that no money will be reserved** from the consumers credit card,
    [before you make a finalize on this transaction (using the PATCH on
    the Autorization)][tecnical-reference-finalize].
 
 * Authorize (two-phase):
- * When using two-phase flows you reserve the amount with an authorization,
+  * When using two-phase flows you reserve the amount with an authorization,
    you will have to specify that the intent of the purchaseis Authorize.
    The amount will be reserved but not charged.
    You will later (i.e. when you are ready to ship the purchased products)
@@ -153,23 +153,24 @@ when the consumer as fulfilled the payment.
 
 The sequence diagrams display the high level process of the purchase,
 from generating a Payment Link to receving a Callback.
-This in a generalized flow as well as a specific 3D-secure enabled credit
-card scenario.  
+This in a generalized flow as well as a specific 3-D Secure enabled credit
+card scenario.
 
-**Please note that the the callback may come either before,
-after or in the same moment as the consumer are being redirected to the status
-page at the merchant site when the purchase is fulfilled.**
+{% include alert.html type="neutral" icon="info" body="
+Please note that the the callback may come either before, after or in the same
+moment as the consumer are being redirected to the status page at the merchant
+site when the purchase is fulfilled." %}
 
-When dealing with credit card payments, 3D-Secure authentication of the
+When dealing with credit card payments, 3-D Secure authentication of the
 cardholder is an essential topic.
 There are two alternative outcome of a credit card payment:
 
-* 3D-Secure enabled - by default, 3D-secure should be enabled, and Swedbank
-  Pay will check if the card is enrolled with 3D-secure.
+* 3-D Secure enabled - by default, 3-D Secure should be enabled, and Swedbank
+  Pay will check if the card is enrolled with 3-D Secure.
   This depends on the issuer of the card.
-  If the card is not enrolled with 3D-Secure, no authentication
+  If the card is not enrolled with 3-D Secure, no authentication
   of the cardholder is done.
-* Card supports 3D-Secure - if the card is enrolled with 3D-Secure,
+* Card supports 3-D Secure - if the card is enrolled with 3-D Secure,
   Swedbank Pay will redirect the cardholder to the autentication mechanism
   that is decided by the issuing bank.
   Normally this will be done using BankID or Mobile BankID.
@@ -179,7 +180,7 @@ sequenceDiagram
   Consumer->>MerchantOrderSystem: consumer starts purchase
   Activate MerchantOrderSystem
   MerchantOrderSystem->>Merchant: start purchase process
-  Activate Merchant  
+  Activate Merchant
   Merchant->>PayEx: POST [payment] (operation=PURCHASE)
   note left of Merchant: First API request
   Activate PayEx
@@ -189,11 +190,11 @@ sequenceDiagram
   Deactivate Merchant
   MerchantOrderSystem-->>Consumer: Distribute Payment URL through e-mail/SMS
   Deactivate MerchantOrderSystem
-  
+
   note left of Consumer: Payment Link in e-mail/SMS
   Consumer->>PayEx: Open link and enter payment information
   Activate PayEx
-  
+
   opt Card supports 3-D Secure
   PayEx-->>Consumer: redirect to IssuingBank
   Deactivate PayEx
@@ -201,11 +202,11 @@ sequenceDiagram
   Consumer->>PayEx: access authentication page
   Activate PayEx
   end
-  
+
   PayEx-->>Consumer: redirect to merchant site
   note left of PayEx: redirect back to merchant
   Deactivate PayEx
-  
+
   Consumer->>Merchant: access merchant page
   Activate Merchant
   Merchant->>PayEx: GET [payment]

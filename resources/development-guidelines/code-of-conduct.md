@@ -28,7 +28,7 @@ collaborative, open, inclusive, positive and tolerant community. To underscore
 this, a `CODE_OF_CONDUCT.md` file from
 [Contributor Covenant][contributor-covenant] should be added to the project:
 
-# Contributor Code of Conduct
+## Contributor Code of Conduct
 
 As contributors and maintainers of this project, and in the interest of
 fostering an open and welcoming community, we pledge to respect all people who
@@ -78,8 +78,8 @@ This Code of Conduct is adapted from the
 The Code of Conduct should then be referenced from the `CONTRIBUTING` file,
 for example with the following paragraphs:
 
-Please note that this project is released with a Contributor Code of Conduct.
-By participating in this project you agree to abide by its terms.
+> Please note that this project is released with a Contributor Code of Conduct.
+> By participating in this project you agree to abide by its terms.
 
 [contributor-covenant]: http://contributor-covenant.org/
 [opensource-mail]: opensource@payex.com

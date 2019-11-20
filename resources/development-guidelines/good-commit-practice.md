@@ -568,11 +568,11 @@ Date:   Mon Jun 11 17:16:10 2012 +0100
 
 Some things to note about this example commit message
 
-- It describes what the original problem is (bad KVM defaults)
-- It describes the functional change being made (the new PIT/RTC policies)
-- It describes what the result of the change is (new the XML/QEMU args)
-- It describes scope for future improvement (the possible per-OS type config)
-- It uses the Closes-Bug notation
+* It describes what the original problem is (bad KVM defaults)
+* It describes the functional change being made (the new PIT/RTC policies)
+* It describes what the result of the change is (new the XML/QEMU args)
+* It describes scope for future improvement (the possible per-OS type config)
+* It uses the Closes-Bug notation
 
 {:.code-header}
 **Example 2**

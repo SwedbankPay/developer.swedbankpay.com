@@ -74,16 +74,19 @@ to Value FinancingConsumer are listed below.
     the consumer has fulfilled the payment.
     [See the Callback API description here.][callback-api]
 
-# Invoice flow
+### Invoice flow
 
 The sequence diagram below shows a high level description of the
 invoice process, including the four requests you have to send to PayEx to
 create an authorize transaction.
-**Note that the invoice will not be created/distributed before you have
-made a Capture request.**
-The Capture/Cancel/Reversal opions are described below under
-"Options after posting a payment".
-The links will take you directly to the API description for the specific request.
+
+{% include alert.html type="neutral" icon="info" body="
+Note that the invoice will not be created/distributed before you have
+made a `capture` request." %}
+
+The Capture/Cancel/Reversal opions are described below under "Options after
+posting a payment". The links will take you directly to the API description for
+the specific request.
 
 ```mermaid
 sequenceDiagram

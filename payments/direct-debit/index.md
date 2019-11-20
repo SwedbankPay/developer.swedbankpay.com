@@ -56,7 +56,7 @@ The API requests are displayed in the [purchase flow](#purchase-flow).
 The options you can choose from when creating a payment with key operation set
 to Value Purchase are listed below.
 
-#### Type of authorization (Intent)
+### Type of authorization (Intent)
 
 **Sale**: A direct debit payment will always have intent: Sale, creating a
 one-phase sales transaction.

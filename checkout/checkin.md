@@ -88,9 +88,9 @@ Content-Type: application/json
 
 {:.table .table-striped}
 | Required | Property              | Type     | Description                                                                             |
-| :------- | :-------------------- | :------- | :-------------------------------------------------------------------------------------- |
-| ✔︎︎︎︎︎   | `operation`           | `string` | `initiate-consumer-session`, the operation to perform.                                  |
-| ✔︎︎︎︎︎   | `consumerCountryCode` | `string` | Payers country of residence. Used by the consumerUi for validation on all input fields. |
+| :------: | :-------------------- | :------- | :-------------------------------------------------------------------------------------- |
+|  ✔︎︎︎︎︎  | `operation`           | `string` | `initiate-consumer-session`, the operation to perform.                                  |
+|  ✔︎︎︎︎︎  | `consumerCountryCode` | `string` | Payers country of residence. Used by the consumerUi for validation on all input fields. |
 
 When the request has been sent, a response containing an array of operations that can be acted upon will be returned:
 
@@ -229,9 +229,11 @@ window.onload = function () {
 };
 ```
 
-**Notice** that we attach the `<script>` element to the head,
+{% include alert.html type="neutral" icon="info" body="
+Note that we attach the `<script>` element to the head,
 but use `window.onload` to ensure everything has loaded in properly
-before accessing the page.
+before accessing the page." %}
+
 With the scripts loading in after the entire page is loaded, we can access the
 `<div>` container that the Checkin will be hosted in.
 After that has all loaded, you should see something like this:

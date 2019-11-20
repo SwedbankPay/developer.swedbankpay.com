@@ -133,10 +133,11 @@ parameter `expand`. This is an effective way to limit the number of necessary
 calls to the API, as you return several properties related to a Payment
 resource in a single request.
 
+{% include alert.html type="neutral" icon="info" body="
 Note that the `expand` parameter is available to all API requests but only
 applies to the request response. This means that you can use the expand
 parameter on a `POST` or `PATCH` request to get a response containing the
-target resource including expanded properties.
+target resource including expanded properties." %}
 
 This example below add the `urls` and `authorizations` property inlines to the
 response, enabling you to access information from these sub-resources.
@@ -223,9 +224,9 @@ instrument specific operations.
 {:.table .table-striped}
 | Property | Description                                                         |
 | :------- | :------------------------------------------------------------------ |
-| href     | The target URI to perform the operation against.                    |
-| rel      | The name of the relation the operation has to the current resource. |
-| method   | The HTTP method to use when performing the operation.               |
+| `href`   | The target URI to perform the operation against.                    |
+| `rel`    | The name of the relation the operation has to the current resource. |
+| `method` | The HTTP method to use when performing the operation.               |
 
 **The operations should be performed as described in each response and not as
 described here in the documentation**. Always use the `href` and `method` as
@@ -347,17 +348,17 @@ The structure of a problem message will look like this:
 ```
 
 {:.table .table-striped}
-| Parameter              | Data type | Description                                                                                                                                                                                                                                            |
-| :--------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| type                   | string    | The URI that identifies the error type. This is the **only property usable for programmatic identification** of the type of error! When dereferenced, it might lead you to a human readable description of the error and how it can be recovered from. |
-| title                  | string    | The title contains a human readable description of the error.                                                                                                                                                                                          |
-| detail                 | string    | A detailed, human readable description of the error.                                                                                                                                                                                                   |
-| instance               | string    | The identifier of the error instance. This might be of use to Swedbank Pay support personnel in order to find the exact error and the context it occurred in.                                                                                          |
-| status                 | integer   | The HTTP status code that the problem was served with.                                                                                                                                                                                                 |
-| action                 | string    | The action indicates how the error can be recovered from.                                                                                                                                                                                              |
-| problems               | array     | The array of problem detail objects.                                                                                                                                                                                                                   |
-| problems[].name        | string    | The name of the property, header, object, entity or likewise that was erroneous.                                                                                                                                                                       |
-| problems[].description | string    | The description of what was wrong with the property, header, object, entity or likewise identified by `name`.                                                                                                                                          |
+| Parameter              | Type    | Description                                                                                                                                                                                                                                            |
+| :--------------------- | :------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| type                   | string  | The URI that identifies the error type. This is the **only property usable for programmatic identification** of the type of error! When dereferenced, it might lead you to a human readable description of the error and how it can be recovered from. |
+| title                  | string  | The title contains a human readable description of the error.                                                                                                                                                                                          |
+| detail                 | string  | A detailed, human readable description of the error.                                                                                                                                                                                                   |
+| instance               | string  | The identifier of the error instance. This might be of use to Swedbank Pay support personnel in order to find the exact error and the context it occurred in.                                                                                          |
+| status                 | integer | The HTTP status code that the problem was served with.                                                                                                                                                                                                 |
+| action                 | string  | The action indicates how the error can be recovered from.                                                                                                                                                                                              |
+| problems               | array   | The array of problem detail objects.                                                                                                                                                                                                                   |
+| problems[].name        | string  | The name of the property, header, object, entity or likewise that was erroneous.                                                                                                                                                                       |
+| problems[].description | string  | The description of what was wrong with the property, header, object, entity or likewise identified by `name`.                                                                                                                                          |
 
 ### Common Problems
 

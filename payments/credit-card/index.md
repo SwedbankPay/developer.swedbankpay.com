@@ -41,7 +41,7 @@ response(Seamless View integration).
 or embed the script source on your site to create a Hosted View in an iFrame;
 so that she can enter the credit card details in a secure Swedbank Pay hosted
 environment.
-* Swedbank Pay will handle 3D-secure authentication when this is required.
+* Swedbank Pay will handle 3-D Secure authentication when this is required.
 * Swedbank Pay will redirect the payer's browser to - or display directly in
 the iFrame - one of two specified URLs, depending on whether the payment session
  is followed through completely or cancelled beforehand. Please note that both a
@@ -101,15 +101,15 @@ The sequence diagram below shows a high level description of a complete
 purchase, and the requests you have to send to Swedbank Pay. The links will
 take you directly to the corresponding API description.
 
-When dealing with credit card payments, 3D-Secure authentication of the
+When dealing with credit card payments, 3-D Secure authentication of the
 cardholder is an essential topic. There are three alternative outcome of a
 credit card payment:
 
-* 3D-Secure enabled - by default, 3D-secure should be enabled, and Swedbank Pay
-* will check if the card is enrolled with 3D-secure. This depends on the issuer
-* of the card. If the card is not enrolled with 3D-Secure, no authentication of
+* 3-D Secure enabled - by default, 3-D Secure should be enabled, and Swedbank Pay
+* will check if the card is enrolled with 3-D Secure. This depends on the issuer
+* of the card. If the card is not enrolled with 3-D Secure, no authentication of
 * the cardholder is done.
-* Card supports 3D-Secure - if the card is enrolled with 3D-Secure, Swedbank Pay
+* Card supports 3-D Secure - if the card is enrolled with 3-D Secure, Swedbank Pay
 * will redirect the cardholder to the autentication mechanism that is decided
 * by the issuing bank. Normally this will be done using BankID or Mobile
 * BankID.
@@ -147,18 +147,18 @@ sequenceDiagram
 
   Consumer->>Consumer: input creditcard information
   Consumer->>+PayEx: submit creditcard information
-  
+
   opt Card supports 3-D Secure
     PayEx-->>Consumer: redirect to IssuingBank
     deactivate PayEx
     Consumer->>IssuingBank: 3-D Secure authentication process
     Consumer->>+PayEx: access authentication page
   end
-  
+
   PayEx-->>Consumer: redirect to merchant
   deactivate PayEx
   note left of Consumer: redirect back to merchant\n(If Redirect scenario)
-  
+
   Consumer->>+Merchant: access merchant page
   Merchant->>+PayEx: GET [payments/credit-card/payments](payments/credit-card/payments)
   note left of Merchant: Second API request

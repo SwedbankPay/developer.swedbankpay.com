@@ -29,7 +29,7 @@ purchase process, you need to make a POST request towards Swedbank Pay with your
  `paymentID`. You will receive a **redirect URL** to a Swedbank Pay payment page
 * You need to redirect the payer's browser to that specified URL so that she can
  enter the credit card details in a secure Swedbank Pay environment.
-* Swedbank Pay will handle 3D-secure authentication when this is required.
+* Swedbank Pay will handle 3-D Secure authentication when this is required.
 * Swedbank Pay will redirect the payer's browser to - one of two specified URLs,
  depending on whether the payment session is followed through completely or
  cancelled beforehand. Please note that both a successful and rejected payment
@@ -81,9 +81,9 @@ Authorization. The amount will be reserved but not charged. You will later
 
 ### General
 
-* *No 3D Secure and card acceptance:* There are optional paramers that can be
-used in relation to 3d-secure and card acceptance. By default, most credit card
-agreements with an acquirer will require that you use 3D-Secure for card holder
+* *No 3-D Secure and card acceptance:* There are optional paramers that can be
+used in relation to 3-D Secure and card acceptance. By default, most credit card
+agreements with an acquirer will require that you use 3-D Secure for card holder
 authentication. However, if your agreement allows you to make a card payment
 without this authentication, or that specific cards can be declined, you may
 adjust these optional parameters when posting in the payment.
@@ -102,15 +102,15 @@ The sequence diagram below shows a high level description of a complete
 purchase, and the requests you have to send to Swedbank Pay. The links will
 take you directly to the corresponding API description.
 
-When dealing with credit card payments, 3D-Secure authentication of the
+When dealing with credit card payments, 3-D Secure authentication of the
 cardholder is an essential topic. There are two alternative outcome of a credit
 card payment:
 
-* 3D-Secure enabled - by default, 3D-secure should be enabled, and Swedbank Pay
-will check if the card is enrolled with 3D-secure. This depends on the issuer of
- the card. If the card is not enrolled with 3D-Secure, no authentication of the
+* 3-D Secure enabled - by default, 3-D Secure should be enabled, and Swedbank Pay
+will check if the card is enrolled with 3-D Secure. This depends on the issuer of
+ the card. If the card is not enrolled with 3-D Secure, no authentication of the
  cardholder is done.
-* Card supports 3D-Secure - if the card is enrolled with 3D-Secure, Swedbank Pay
+* Card supports 3-D Secure - if the card is enrolled with 3-D Secure, Swedbank Pay
  will redirect the cardholder to the autentication mechanism that is decided by
   the issuing bank. Normally this will be done using BankID or Mobile BankID.
 
@@ -146,18 +146,18 @@ sequenceDiagram
 
   Consumer->>Consumer: input creditcard information
   Consumer->>+PayEx: submit creditcard information
-  
+
   opt Card supports 3-D Secure
     PayEx-->>Consumer: redirect to IssuingBank
     deactivate PayEx
     Consumer->>IssuingBank: 3-D Secure authentication process
     Consumer->>+PayEx: access authentication page
   end
-  
+
   PayEx-->>Consumer: redirect to merchant
   deactivate PayEx
   note left of Consumer: redirect back to merchant\n(If Redirect scenario)
-  
+
   Consumer->>+Merchant: access merchant page
   Merchant->>+PayEx: GET [payments/credit-card/payments]
   note left of Merchant: Second API request
@@ -177,12 +177,12 @@ sequenceDiagram
 ### Options after posting a payment
 
 * `Abort`: It is possible to abort the process, if the payment has no successful
- transactions. [See the PATCH payment description][abort].  
+ transactions. [See the PATCH payment description][abort].
 * If the payment shown above is done as a two phase (`Authorization`), you will
- need to implement the [`Capture`][capture] and [`Cancel`][cancel] requests.  
+ need to implement the [`Capture`][capture] and [`Cancel`][cancel] requests.
 * For `reversals`, you will need to implement the [Reversal request][reversal].
 * If you did a `PreAuthorization`, you will have to send a
-[Finalize request][finalize] to finalize the transaction.  
+[Finalize request][finalize] to finalize the transaction.
 * *If `callbackURL` is set:* Whenever changes to the payment occur a
  [Callback request][callback] will be posted to the `callbackUrl`, which was
  generated when the payment was created.
@@ -193,14 +193,14 @@ sequenceDiagram
 Redirect scenario, but also includes explanations of how to include this
 redirect in mobile apps or in mobile web pages.
 
-## Screenshots
+### Screenshots for Payment Pages
 
 You will redirect the consumer/end-user to Swedbank Pay hosted pages to collect
 the credit card information.
 
 ![Merchant implemented redirect][redirect-image]
 
-## API Requests
+## API Requests for Payment Pages
 
 The API requests are displayed in the [purchase flow](#purchase-flow-mobile).
 You can [create a card `payment`][create-payment] with following `operation`
@@ -239,9 +239,9 @@ away, you will have to specify that the intent of the purchase is `AutoCapture`.
 
 #### General
 
-* **No 3D Secure and card acceptance**: There are optional paramers that can be
-used in relation to 3d-secure and card acceptance. By default, most credit card
-agreements with an acquirer will require that you use 3D-Secure for card holder
+* **No 3-D Secure and card acceptance**: There are optional paramers that can be
+used in relation to 3-D Secure and card acceptance. By default, most credit card
+agreements with an acquirer will require that you use 3-D Secure for card holder
 authentication. However, if your agreement allows you to make a card payment
 without this authentication, or that specific cards can be declined, you may
 adjust these optional parameters when posting in the payment.
@@ -256,15 +256,15 @@ The sequence diagram below shows a high level description of a complete
 purchase, and the two requests you have to send to Swedbank Pay. The links will
 take you directly to the corresponding API description.
 
-When dealing with credit card payments, 3D-Secure authentication of the
+When dealing with credit card payments, 3-D Secure authentication of the
 cardholder is an essential topic. There are two alternative outcomes of a credit
  card payment:
 
-* 3D-Secure enabled - by default, 3D-secure should be enabled, and Swedbank Pay
-will check if the card is enrolled with 3D-secure. This depends on the issuer of
- the card. If the card is not enrolled with 3D-Secure, no authentication of the
+* 3-D Secure enabled - by default, 3-D Secure should be enabled, and Swedbank Pay
+will check if the card is enrolled with 3-D Secure. This depends on the issuer of
+ the card. If the card is not enrolled with 3-D Secure, no authentication of the
  cardholder is done.
-* Card supports 3D-Secure - if the card is enrolled with 3D-Secure, Swedbank Pay
+* Card supports 3-D Secure - if the card is enrolled with 3-D Secure, Swedbank Pay
  will redirect the cardholder to the autentication mechanism that is decided by
  the issuing bank. Normally this will be done using BankID or Mobile BankID.
 
@@ -279,14 +279,14 @@ sequenceDiagram
   Deactivate PayEx
   Merchant-->>Consumer: authorization page
   Deactivate Merchant
-  
+
   note left of Consumer: redirect to PayEx
   Consumer->>PayEx: enter card info
   Activate PayEx
   PayEx-->>Consumer: redirect to merchant
   note left of Consumer: redirect back to merchant
   Deactivate PayEx
-  
+
   Consumer->>Merchant: access merchant page
   Activate Merchant
   Merchant->>PayEx: GET [payments/credit-card/payments]
@@ -298,7 +298,7 @@ sequenceDiagram
   Deactivate Merchant
 ```
 
-### Detailed Sequence Diagram enabing 3D-secure authentication
+### Detailed Sequence Diagram enabing 3-D Secure authentication
 
 ```mermaid
 sequenceDiagram
@@ -311,13 +311,13 @@ sequenceDiagram
   Deactivate PayEx
   Merchant-->>Consumer: authorization page
   Deactivate Merchant
-  
+
   Consumer->>PayEx: access authorization page
   note left of Consumer: redirect to PayEx\n(if Redirect scenario)
   Activate PayEx
   PayEx-->>Consumer: display purchase information
   Deactivate PayEx
-  
+
   Consumer->>Consumer: input creditcard information
   Consumer->>PayEx: submit creditcard information
   Activate PayEx
@@ -329,11 +329,11 @@ sequenceDiagram
   Consumer->>PayEx: access authentication page
   Activate PayEx
   end
-  
+
   PayEx-->>Consumer: redirect to merchant
   note left of Consumer: redirect back to merchant\n(if Redirect scenario)
   Deactivate PayEx
-  
+
   Consumer->>Merchant: access merchant page
   Activate Merchant
   Merchant->>PayEx: GET [payments/credit-card/payments]
@@ -343,7 +343,7 @@ sequenceDiagram
   Deactivate PayEx
   Merchant-->>Consumer: display purchase result
   Deactivate Merchant
-  
+
   opt Callback is set
   PayEx->>PayEx: Payment is updated
   Activate PayEx

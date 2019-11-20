@@ -19,8 +19,8 @@ sidebar:
 {% include alert.html type="warning"
                       icon="warning"
                       header="Site under development"
-                      body="The Developer Portal is under
-                      construction and should not be used to integrate against
+                      body="The Developer Portal is under construction and
+                      should not be used to integrate against
                       Swedbank Pay's APIs yet." %}
 
 >PayEx Invoice implements the *Financing Invoice API* and is a service where
@@ -30,7 +30,7 @@ PayEx helps improve cashflow by purchasing merchant invoices.
 
 >PayEx Invoice (PayEx Faktura) is a payment service where PayEx helps improve
 cashflow by purchasing merchant invoices. PayEx receives invoice data, which is
-used to produce and distribute invoices to the consumer/end-user.  
+used to produce and distribute invoices to the consumer/end-user.
 
 ### Introduction
 
@@ -66,8 +66,13 @@ REST based API model is described in the [technical reference].
 
 The sequence diagram below shows the high level description of the invoice
 process, including the three requests you have to send to PayEx to create an
-authorize transaction. **Note that the invoice will not be created/distributed
-before you have made a Capture request.** The Capture/Cancel/Reversal opions are
+authorize transaction.
+
+{% include alert.html type="neutral" icon="info" body="
+Note that the invoice will not be created/distributed before you have
+made a `capture` request." %}
+
+The Capture/Cancel/Reversal opions are
 described in [optional features][optional-features].
 The links will take you directly to the API description for the specific request.
 
@@ -95,7 +100,7 @@ sequenceDiagram
 
 >PayEx Invoice (PayEx Faktura) is a payment service where PayEx helps improve
 cashflow by purchasing merchant invoices. PayEx receives invoice data, which is
-used to produce and distribute invoices to the consumer/end-user.  
+used to produce and distribute invoices to the consumer/end-user.
 
 ### Introduction
 
@@ -147,14 +152,19 @@ to Value FinancingConsumer are listed below.
     is set PayEx will send a postback request to this URL when the consumer
     has fulfilled the payment.
 
-## Invoice flow
+### Invoice flow
 
 The sequence diagram below shows a high level description of the invoice
 process, including the four requests you have to send to PayEx to create an
-authorize transaction. **Note that the invoice will not be created/distributed
-before you have made a Capture request**. The Capture/Cancel/Reversal opions
-are described below under "Options after posting a payment". The links will
-take you directly to the API description for the specific request.
+authorize transaction.
+
+{% include alert.html type="neutral" icon="info" body="
+Note that the invoice will not be created/distributed before you have
+made a `capture` request." %}
+
+The Capture/Cancel/Reversal opions are described below under "Options after
+posting a payment". The links will take you directly to the API description for
+the specific request.
 
 ```mermaid
 sequenceDiagram
@@ -188,7 +198,7 @@ sequenceDiagram
 
 >PayEx Invoice (PayEx Faktura) is a payment service where PayEx helps improve
 cashflow by purchasing merchant invoices. The Redirect purchase scenario is the
-easiest way to implement PayEx Invoice.  
+easiest way to implement PayEx Invoice.
 
 ### Introduction
 
