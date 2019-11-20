@@ -229,9 +229,11 @@ window.onload = function () {
 };
 ```
 
-**Notice** that we attach the `<script>` element to the head,
+{% include alert.html type="neutral" icon="info" body="
+Note that we attach the `<script>` element to the head,
 but use `window.onload` to ensure everything has loaded in properly
-before accessing the page.
+before accessing the page." %}
+
 With the scripts loading in after the entire page is loaded, we can access the
 `<div>` container that the Checkin will be hosted in.
 After that has all loaded, you should see something like this:

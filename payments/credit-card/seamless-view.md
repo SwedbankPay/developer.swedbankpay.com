@@ -30,7 +30,7 @@ purchase process, you need to make a POST request towards Swedbank Pay with your
 * You need to embed the script source on your site to create a
 hosted-view in an iFrame(see screenshot below); so that she can enter the credit card
 details in a secure Swedbank Pay hosted environment.
-* Swedbank Pay will handle 3D-secure authentication when this is required.
+* Swedbank Pay will handle 3-D Secure authentication when this is required.
 * Swedbank Pay will display directly in the iFrame - one of two specified URLs,
 depending on whether the payment session is followed through completely or
 cancelled beforehand. Please note that both a successful and rejected payment
@@ -42,22 +42,8 @@ transaction.
 
 ### Payment Url
 
-For our Seamless View, the URL property called `paymentUrl` will be used if the
-consumer is redirected out of the Seamless View frame (iFrame) through our
-[Credit Card API][purchase]. The consumer is redirected out of frame when at
-the 3d secure verification for credit card payments. The `paymentURL` should
-represent the page of where the payment Seamless View was hosted originally,
-such as the checkout page, shopping cart page, or similar. Basically,
-`paymentUrl` should be set to the same URL as that of the page where the
-JavaScript for the hosted payment view was added to in order to initiate the
-payment. Please note that the `paymentUrl` must be able to invoke the same
-JavaScript URL from the same Payment as the one that initiated the payment
-originally, so it should include some sort of state identifier in the URL.
-The state identifier is the ID of the order, shopping cart or similar that has
-the URL of the Payment stored.
-
-With `paymentUrl` in place, the retry process becomes much more convenient for
-both the integration and the payer.
+{% include payment-url.md
+when="at the 3-D Secure verification for Credit Card Payments" %}
 
 ## Screenshots
 
@@ -105,9 +91,9 @@ away, you will have to specify that the intent of the purchase is `AutoCapture`.
 
 ### General
 
-* **No 3D Secure and card acceptance**: There are optional paramers that can be
-used in relation to 3d-secure and card acceptance. By default, most credit card
- agreements with an acquirer will require that you use 3D-Secure for card holder
+* **No 3-D Secure and card acceptance**: There are optional paramers that can be
+used in relation to 3-D Secure and card acceptance. By default, most credit card
+ agreements with an acquirer will require that you use 3-D Secure for card holder
  authentication. However, if your agreement allows you to make a card payment
  without this authentication, or that specific cards can be declined, you may
  adjust these optional parameters when posting in the payment. This is specified
@@ -124,15 +110,15 @@ The sequence diagram below shows a high level description of a complete
 purchase, and the requests you have to send to Swedbank Pay. The links will take
  you directly to the corresponding API description.
 
-When dealing with credit card payments, 3D-Secure authentication of the
+When dealing with credit card payments, 3-D Secure authentication of the
 cardholder is an essential topic. There are two alternative outcome of a credit
 card payment:
 
-* 3D-Secure enabled - by default, 3D-secure should be enabled, and Swedbank Pay
-will check if the card is enrolled with 3D-secure. This depends on the issuer of
- the card. If the card is not enrolled with 3D-Secure, no authentication of the
+* 3-D Secure enabled - by default, 3-D Secure should be enabled, and Swedbank Pay
+will check if the card is enrolled with 3-D Secure. This depends on the issuer of
+ the card. If the card is not enrolled with 3-D Secure, no authentication of the
  cardholder is done.
-* Card supports 3D-Secure - if the card is enrolled with 3D-Secure, Swedbank Pay
+* Card supports 3-D Secure - if the card is enrolled with 3-D Secure, Swedbank Pay
  will redirect the cardholder to the autentication mechanism that is decided by
  the issuing bank. Normally this will be done using BankID or Mobile BankID.
 
@@ -168,18 +154,18 @@ sequenceDiagram
 
   Consumer->>Consumer: input creditcard information
   Consumer->>+PayEx: submit creditcard information
-  
+
   opt Card supports 3-D Secure
     PayEx-->>Consumer: redirect to IssuingBank
     deactivate PayEx
     Consumer->>IssuingBank: 3-D Secure authentication process
     Consumer->>+PayEx: access authentication page
   end
-  
+
   PayEx-->>Consumer: redirect to merchant
   deactivate PayEx
   note left of Consumer: redirect back to merchant\n(If Redirect scenario)
-  
+
   Consumer->>+Merchant: access merchant page
   Merchant->>+PayEx: GET [payments/credit-card/payments]
   note left of Merchant: Second API request
@@ -199,12 +185,12 @@ sequenceDiagram
 ### Options after posting a payment
 
 * `Abort`: It is possible to abort the process, if the payment has no successful
- transactions. [See the PATCH payment description][abort].  
+ transactions. [See the PATCH payment description][abort].
 * If the payment shown above is done as a two phase (`Authorization`), you will
-need to implement the [`Capture`][capture] and [`Cancel`][cancel] requests.  
+need to implement the [`Capture`][capture] and [`Cancel`][cancel] requests.
 * For `reversals`, you will need to implement the [Reversal request][reversal].
 * If you did a `PreAuthorization`, you will have to send a
-[Finalize request][finalize] to finalize the transaction.  
+[Finalize request][finalize] to finalize the transaction.
 * *If `callbackURL` is set:* Whenever changes to the payment occur a
 [Callback request][callback] will be posted to the `callbackUrl`, which was
 generated when the payment was created.
