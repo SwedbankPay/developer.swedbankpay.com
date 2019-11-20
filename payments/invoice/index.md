@@ -19,8 +19,8 @@ sidebar:
 {% include alert.html type="warning"
                       icon="warning"
                       header="Site under development"
-                      body="The Developer Portal is under
-                      construction and should not be used to integrate against
+                      body="The Developer Portal is under construction and
+                      should not be used to integrate against
                       Swedbank Pay's APIs yet." %}
 
 >PayEx Invoice implements the *Financing Invoice API* and is a service where
@@ -147,7 +147,7 @@ to Value FinancingConsumer are listed below.
     is set PayEx will send a postback request to this URL when the consumer
     has fulfilled the payment.
 
-## Invoice flow
+### Invoice flow
 
 The sequence diagram below shows a high level description of the invoice
 process, including the four requests you have to send to PayEx to create an

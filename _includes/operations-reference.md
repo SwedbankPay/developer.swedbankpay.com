@@ -212,7 +212,7 @@ Content-Type: application/json
 }
 ```
 
-**Remember to call .refresh() on the Payment Menu in JavaScript**
+>Remember to call .refresh() on the Payment Menu in JavaScript
 
 {:.table .table-striped}
 | Property                 | Type         | Description                                                                                                                          |

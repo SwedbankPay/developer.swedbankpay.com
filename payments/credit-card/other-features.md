@@ -23,7 +23,7 @@ sidebar:
                       header="Site under development"
                       body="The Developer Portal is under construction and should not be used to integrate against Swedbank Pay's APIs yet." %}
 
-# Create Payment
+## Create Payment
 
 Within the card payments part of the eCommerce API, you can create four kinds
 of payments  ([purchase][purchase], [recurrence][recurrence], [payout][payout]
@@ -69,8 +69,8 @@ It is followed up by posting a capture, cancellation or reversal transaction.
 An example of a request is provided below. Each individual Property of the JSON
  document is described in the following section.
 
-**Notice** to increase the chance for not invoking 3DSecure during a purchase, 
-it's recommended that you add as much data to the `riskIndicator` object in 
+**Notice** to increase the chance for not invoking 3DSecure during a purchase,
+it's recommended that you add as much data to the `riskIndicator` object in
 the request below.
 
 {:.code-header}
@@ -501,7 +501,7 @@ sequenceDiagram
 >The `Verify` operation lets you post verification payments, which are used to
 confirm validity of card information without reserving or charging any amount.
 
-### Introduction
+### Introduction to Verify
 
 This option is commonly used when initiating a subsequent
 [One-click card payment][one-click-payments] or a
@@ -718,7 +718,7 @@ Content-Type: application/json
 |        | transaction.cardVerificationCode | string    | Card verification code (CVC/CVV/CVC2), usually printed on the back of the card. |
 |        | transaction.cardholderName       | string    | Name of the card holder, usually printed on the face of the card.               |
 
-**Response**
+>Response
 
 The `authorization` resource contains information about an authorization
 transaction made towards a payment, as previously described.

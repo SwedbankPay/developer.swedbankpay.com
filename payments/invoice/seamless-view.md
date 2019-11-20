@@ -74,7 +74,7 @@ to Value FinancingConsumer are listed below.
     the consumer has fulfilled the payment.
     [See the Callback API description here.][callback-api]
 
-# Invoice flow
+### Invoice flow
 
 The sequence diagram below shows a high level description of the
 invoice process, including the four requests you have to send to PayEx to

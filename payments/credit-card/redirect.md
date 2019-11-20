@@ -193,14 +193,14 @@ sequenceDiagram
 Redirect scenario, but also includes explanations of how to include this
 redirect in mobile apps or in mobile web pages.
 
-## Screenshots
+### Screenshots for Payment Pages
 
 You will redirect the consumer/end-user to Swedbank Pay hosted pages to collect
 the credit card information.
 
 ![Merchant implemented redirect][redirect-image]
 
-## API Requests
+## API Requests for Payment Pages
 
 The API requests are displayed in the [purchase flow](#purchase-flow-mobile).
 You can [create a card `payment`][create-payment] with following `operation`

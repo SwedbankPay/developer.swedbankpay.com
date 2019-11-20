@@ -37,38 +37,37 @@ Host: api.payex.com
 Authorization: Bearer <MerchantToken>  
 Content-Type: application/json  
   
-{  
-   "payment": {  
-       "operation": "Purchase",
-       "intent": "Sale",
-       "currency": "EUR",
-       "prices": [
-            {  
-               "type": "NordeaFi",
-               "amount": 1500,
-               "vatAmount": 0  
-            }
-        ],
-       "description": "Test Purchase",
-       "payerReference": "AB1234",
-       "userAgent": "Mozilla/5.0...",
-       "language": "sv-SE",
-       "urls": {
-           "completeUrl": "http://test-dummy.net/payment-completed",
-           "cancelUrl": "http://test-dummy.net/payment-canceled",
-           "callbackUrl": "http://test-dummy.net/payment-callback",
-           "logoUrl": "http://test-dummy.net/logo.png",
-           "termsOfServiceUrl": "http://test-dummy.net/terms.pdf"  
-        },
-       "payeeInfo": {  
-           "payeeId": "12345678-1234-1234-1234-123456789012",
-           "payeeReference": "PR123",
-           "payeeName": "Merchant1",
-           "productCategory": "PC1233",
-           "orderReference": "or-12456",
-           "subsite": "MySubsite"  
-        }
-    }
+{
+  "payment": {
+    "operation": "Purchase",
+    "intent": "Sale",
+    "currency": "EUR",
+    "prices": [
+      {  
+        "type": "NordeaFi",
+        "amount": 1500,
+        "vatAmount": 0  
+      }],
+    "description": "Test Purchase",
+    "payerReference": "AB1234",
+    "userAgent": "Mozilla/5.0...",
+    "language": "sv-SE",
+    "urls": {
+      "completeUrl": "http://test-dummy.net/payment-completed",
+      "cancelUrl": "http://test-dummy.net/payment-canceled",
+      "callbackUrl": "http://test-dummy.net/payment-callback",
+      "logoUrl": "http://test-dummy.net/logo.png",
+      "termsOfServiceUrl": "http://test-dummy.net/terms.pdf"  
+    },
+    "payeeInfo": {  
+      "payeeId": "12345678-1234-1234-1234-123456789012",
+      "payeeReference": "PR123",
+      "payeeName": "Merchant1",
+      "productCategory": "PC1233",
+      "orderReference": "or-12456",
+      "subsite": "MySubsite"  
+    }
+  }
 }
 ```
 
@@ -104,42 +103,55 @@ Content-Type: application/json
 HTTP/1.1 200 OK  
 Content-Type: application/json  
   
-{  
-   "payment": {  
-       "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
-       "number": 1234567890,
-       "instrument": "DirectDebit",
-       "created": "2018-10-09T13:01:01Z",
-       "updated": "2018-10-09T13:01:01Z",
-       "state": "Ready",
-       "operation": "Purchase",
-       "intent": "Sale",
-       "currency": "EUR",
-       "amount": 1500,
-       "remainingReversalAmount": 0,
-       "description": "Test Purchase",
-       "userAgent": "Mozilla/5.0...",
-       "language": "nb-NO",
-       "prices": { "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/prices" },
-       "transactions": { "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions" },
-       "sales": { "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/sales" },
-       "reversals": { "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals" },
-       "payeeInfo" : { "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeInfo" },
-       "urls" : { "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/urls" },
-       "settings": { "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/settings" }
-  },
-   "operations": [
-        {  
-           "href": "https://api.payex.com/psp/directdebit/payments/<paymentId>/sales",
-           "rel": "redirect-sale",
-           "method": "POST"  
-        },
-        {  
-           "href": "http://api.payex.com/psp/directdebit/payments/<paymentId>",
-           "rel": "update-payment-abort",
-           "method": "PATCH"  
-        }
-    ]
+{
+  "payment": {
+    "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "number": 1234567890,
+    "instrument": "DirectDebit",
+    "created": "2018-10-09T13:01:01Z",
+    "updated": "2018-10-09T13:01:01Z",
+    "state": "Ready",
+    "operation": "Purchase",
+    "intent": "Sale",
+    "currency": "EUR",
+    "amount": 1500,
+    "remainingReversalAmount": 0,
+    "description": "Test Purchase",
+    "userAgent": "Mozilla/5.0...",
+    "language": "nb-NO",
+    "prices": {
+      "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/prices"
+    },
+    "transactions": {
+      "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions"
+    },
+    "sales": {
+      "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/sales"
+    },
+    "reversals": {
+      "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals"
+    },
+    "payeeInfo": {
+      "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeInfo"
+    },
+    "urls": {
+      "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/urls"
+    },
+    "settings": {
+      "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/settings"
+    }
+  },
+  "operations": [{
+      "href": "https://api.payex.com/psp/directdebit/payments/<paymentId>/sales",
+      "rel": "redirect-sale",
+      "method": "POST"
+    },
+    {
+      "href": "http://api.payex.com/psp/directdebit/payments/<paymentId>",
+      "rel": "update-payment-abort",
+      "method": "PATCH"
+    }
+  ]
 }
 ```
 
@@ -156,19 +168,18 @@ is given below.
 **Operations**
 
 ```JS
-{  
-   "operations": [
-        {  
-           "method": "PATCH",
-           "href": "https://api.externalintegration.payex.com/psp/directdebit/payments/3648fa94-7fd8-4e32-a14b-08d608f884ff",
-           "rel": "update-payment-abort"  
-        },
-        {  
-           "method": "GET",
-           "href": "https://ecom.externalintegration.payex.com/directdebit/payments/sales/993b479653da83671c074316c7455da05fced9d634431edbb64f3c5f80a863f0",
-           "rel": "redirect-sale"  
-        }
-    ]
+{
+  "operations": [{
+      "method": "PATCH",
+      "href": "https://api.externalintegration.payex.com/psp/directdebit/payments/3648fa94-7fd8-4e32-a14b-08d608f884ff",
+      "rel": "update-payment-abort"
+    },
+    {
+      "method": "GET",
+      "href": "https://ecom.externalintegration.payex.com/directdebit/payments/sales/993b479653da83671c074316c7455da05fced9d634431edbb64f3c5f80a863f0",
+      "rel": "redirect-sale"
+    }
+  ]
 }
 ```
 
@@ -218,66 +229,62 @@ Content-Type: application/json
 HTTP/1.1 200 OK  
 Content-Type: application/json  
   
-{  
-   "payment": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
-   "sales": {  
-       "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/sales",
-       "salesList": [
-            {  
-               "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/sales/12345678-1234-1234-1234-123456789012",
-               "selectedBank": "NordeaFI",
-               "deviceIsMobile": "TRUE|FALSE",
-               "transaction": {  
-                   "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
-                   "created": "2018-09-14T01:01:01.01Z",
-                   "updated": "2018-09-14T01:01:01.03Z",
-                   "type": "Sale",
-                   "state": "Initialized|Completed|Failed",
-                   "number": 1234567890,
-                   "amount": 1000,
-                   "vatAmount": 250,
-                   "description": "Test transaction",
-                   "payeeReference": "AH123456",
-                   "failedReason": "",
-                   "failedActivityName": "",
-                   "failedErrorCode": "",
-                   "failedErrorDescription": "",
-                   "isOperational": "TRUE|FALSE",
-                   "operations": [
-                    ]
-                }
-            },
-            {  
-               "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/sales/12345678-1234-1234-1234-123456789013",
-               "selectedBank": "NordeaFI|...",
-               "deviceIsMobile": "TRUE|FALSE",
-               "transaction": {  
-                   "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789013",
-                   "created": "2018-09-14T01:01:01.01Z",
-                   "updated": "2018-09-14T01:01:01.03Z",
-                   "type": "Sale",
-                   "state": "Initialized|Completed|Failed",
-                   "number": 1234567890,
-                   "amount": 1000,
-                   "vatAmount": 250,
-                   "description": "Test transaction",
-                   "payeeReference": "AH123456",
-                   "failedReason": "",
-                   "failedActivityName": "",
-                   "failedErrorCode": "",
-                   "failedErrorDescription": "",
-                   "isOperational": "TRUE|FALSE",
-                   "operations": [
-                        {  
-                           "href": "https://api.payex.com/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
-                           "rel": "edit-sale",
-                           "method": "PATCH"  
-                        }
-                    ]
-                }
-            }
-        ]
-    }
+{
+  "payment": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+  "sales": {
+    "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/sales",
+    "salesList": [{
+        "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/sales/12345678-1234-1234-1234-123456789012",
+        "selectedBank": "NordeaFI",
+        "deviceIsMobile": "TRUE|FALSE",
+        "transaction": {
+          "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
+          "created": "2018-09-14T01:01:01.01Z",
+          "updated": "2018-09-14T01:01:01.03Z",
+          "type": "Sale",
+          "state": "Initialized|Completed|Failed",
+          "number": 1234567890,
+          "amount": 1000,
+          "vatAmount": 250,
+          "description": "Test transaction",
+          "payeeReference": "AH123456",
+          "failedReason": "",
+          "failedActivityName": "",
+          "failedErrorCode": "",
+          "failedErrorDescription": "",
+          "isOperational": "TRUE|FALSE",
+          "operations": []
+        }
+      },
+      {
+        "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/sales/12345678-1234-1234-1234-123456789013",
+        "selectedBank": "NordeaFI|...",
+        "deviceIsMobile": "TRUE|FALSE",
+        "transaction": {
+          "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789013",
+          "created": "2018-09-14T01:01:01.01Z",
+          "updated": "2018-09-14T01:01:01.03Z",
+          "type": "Sale",
+          "state": "Initialized|Completed|Failed",
+          "number": 1234567890,
+          "amount": 1000,
+          "vatAmount": 250,
+          "description": "Test transaction",
+          "payeeReference": "AH123456",
+          "failedReason": "",
+          "failedActivityName": "",
+          "failedErrorCode": "",
+          "failedErrorDescription": "",
+          "isOperational": "TRUE|FALSE",
+          "operations": [{
+            "href": "https://api.payex.com/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+            "rel": "edit-sale",
+            "method": "PATCH"
+          }]
+        }
+      }
+    ]
+  }
 }
 ```
 
@@ -308,30 +315,28 @@ Content-Type: application/json
 HTTP/1.1 200 OK  
 Content-Type: application/json  
   
-{  
-   "payment": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
-   "reversals": {  
-       "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals",
-       "reversalList": [
-            {  
-               "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals/12345678-1234-1234-1234-123456789012",
-               "transaction": {  
-                   "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
-                   "created": "2016-09-14T01:01:01.01Z",
-                   "updated": "2016-09-14T01:01:01.03Z",
-                   "type": "Reversal",
-                   "state": "Initialized|Completed|Failed",
-                   "number": 1234567890,
-                   "amount": 1000,
-                   "vatAmount": 250,
-                   "description": "Test transaction",
-                   "payeeReference": "AH123456",
-                   "isOperational": "TRUE|FALSE",
-                   "operations": []
-                }
-            }
-        ]
-    }
+{
+  "payment": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+  "reversals": {
+    "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals",
+    "reversalList": [{
+      "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals/12345678-1234-1234-1234-123456789012",
+      "transaction": {
+        "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
+        "created": "2016-09-14T01:01:01.01Z",
+        "updated": "2016-09-14T01:01:01.03Z",
+        "type": "Reversal",
+        "state": "Initialized|Completed|Failed",
+        "number": 1234567890,
+        "amount": 1000,
+        "vatAmount": 250,
+        "description": "Test transaction",
+        "payeeReference": "AH123456",
+        "isOperational": "TRUE|FALSE",
+        "operations": []
+      }
+    }]
+  }
 }
 ```
 
@@ -357,13 +362,13 @@ Host: api.payex.com
 Authorization: Bearer <MerchantToken>  
 Content-Type: application/json  
   
-{  
-   "transaction": {  
-       "amount": 1500,
-       "vatAmount": 0,
-       "description" : "Test Reversal",
-       "payeeReference": "ABC123"  
-    }
+{
+  "transaction": {
+    "amount": 1500,
+    "vatAmount": 0,
+    "description": "Test Reversal",
+    "payeeReference": "ABC123"
+  }
 }
 ```
 
@@ -382,25 +387,25 @@ Content-Type: application/json
 HTTP/1.1 200 OK  
 Content-Type: application/json  
   
-{  
-   "payment": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
-   "reversal": {  
-       "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals/12345678-1234-1234-1234-123456789012",
-       "transaction": {  
-           "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
-           "created": "2016-09-14T01:01:01.01Z",
-           "updated": "2016-09-14T01:01:01.03Z",
-           "type": "Reversal",
-           "state": "Initialized|Completed|Failed",
-           "number": 1234567890,
-           "amount": 1000,
-           "vatAmount": 250,
-           "description": "Test transaction",
-           "payeeReference": "AH123456",
-           "isOperational": "TRUE|FALSE",
-           "operations": []
-        }
-    }
+{
+  "payment": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+  "reversal": {
+    "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals/12345678-1234-1234-1234-123456789012",
+    "transaction": {
+      "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
+      "created": "2016-09-14T01:01:01.01Z",
+      "updated": "2016-09-14T01:01:01.03Z",
+      "type": "Reversal",
+      "state": "Initialized|Completed|Failed",
+      "number": 1234567890,
+      "amount": 1000,
+      "vatAmount": 250,
+      "description": "Test transaction",
+      "payeeReference": "AH123456",
+      "isOperational": "TRUE|FALSE",
+      "operations": []
+    }
+  }
 }
 ```
 

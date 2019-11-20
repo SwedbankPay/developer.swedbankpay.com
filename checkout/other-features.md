@@ -56,7 +56,7 @@ be performed again.
 With `paymentUrl` in place, the retry process becomes much more convenient for
 both the integration and the payer.
 
-#### Enable or Disable Payment Menu
+### Enable or Disable Payment Menu
 
 It is possible to disable the payment menu when only one instrument exist by
 setting the `disablePaymentMenu` property to `true`. The default value is
@@ -237,7 +237,7 @@ Content-Type: application/json
 |                   | └➔&nbsp;`no3DSecureForStoredCards` | `boolean`    | `true` if 3DSecure should be disabled for this payment in the case a stored card is used; otherwise `false` per default. To use this feature it has to be enabled on the contract with Swedbank Pay.            |
 |                   | └➔&nbsp;`noCvcForStoredCards`      | `boolean`    | `true` if the CVC field should be disabled for this payment in the case a stored card is used; otherwise `false` per default. To use this feature it has to be enabled on the contract with Swedbank Pay.       |
 
-**Response**
+#### Response
 
 The response given when creating a payment order is equivalent to a `GET`
 request towards the `paymentorders` resource, [as displayed above](#payment-orders)
@@ -641,7 +641,7 @@ need to create a **recurrence token**. This token will be utilized after the
 initial payment order. **Recurring payments must be activated on the contract
 with Swedbank Pay in order to work.**
 
-**Recurrence Token**
+### Recurrence Token
 
 * When initiating a `Purchase` payment order, you need to make sure that the
   attribute `generateRecurrenceToken` is set to `true`. This recurrence token
@@ -1196,7 +1196,7 @@ argument object:
 | `origin`  | `string` | `owner`, `merchant`. The value is always `merchant` unless Swedbank Pay hosts the view. |
 | `openUrl` | `string` | The URI containing Terms of Service and conditions.                                     |
 
-### `onError`
+### onError
 
 This event triggers during terminal errors or if the configuration fails
 validation. The `onError` event will be raised with the following event argument

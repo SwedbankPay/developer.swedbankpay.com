@@ -131,8 +131,8 @@ Remember to read up on our [URL resource][urls].
 request has `orderItems` in the `paymentorder`, remember to include
 `orderItems` in the [capture operation][capture-operation].
 
-**Also notice** to increase the chance for not invoking 3DSecure during a 
-purchase, it's recommended that you add as much data to the 
+**Also notice** to increase the chance for not invoking 3DSecure during a
+purchase, it's recommended that you add as much data to the
 `riskIndicator` object in the request below.
 
 {:.code-header}
@@ -426,9 +426,9 @@ This should bring up the Payment Menu in a Seamless View, looking something like
 When the consumer completes the payment, the Payment Menu script will be
 signaled and a full redirect to the `completeUrl` sent in with the
 Payment Order will be performed. When the `completeUrl` on your server is hit,
-you can inspect the status on the stored `paymentorder.id` on the server, and 
+you can inspect the status on the stored `paymentorder.id` on the server, and
 then perform `capture`.
-If the payment is a `Sale` or one-phase purchase, it will be automatically 
+If the payment is a `Sale` or one-phase purchase, it will be automatically
 captured. A third scenario is if the goods are sent
 physically to the payer; then you should await capture until after the
 goods have been sent.

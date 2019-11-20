@@ -25,7 +25,7 @@ sidebar:
 of [Swedbank Pay Settlement Service][payex-reconciliation-and-settlement] to
 get consolidated payments and reporting, for all your payment methods.
 
-# MobilePay Online Payment Pages
+## MobilePay Online Payment Pages
 
 Read our documentation on [MobilePay Redirect](/payments/mobile-pay/redirect)
 to learn how to implement MobilePay in the redirect scenario.
@@ -42,21 +42,21 @@ to learn how to implement MobilePay in the redirect scenario.
 ## Introduction
 
 * The Payment Link can be implemented for payment methods listed below,
-  using the Redirect platform and hosted payment pages.  
- * [Credit card][credit-card]
- * [MobilePay][mobile-pay]
- * [Swish m-commerce][swish-m-commerce] and [Swish e-commerce][swish-e-commerce]
- * [Vipps][vipps]
+  using the Redirect platform and hosted payment pages.
+  * [Credit card][credit-card]
+  * [MobilePay][mobile-pay]
+  * [Swish m-commerce][swish-m-commerce] and [Swish e-commerce][swish-e-commerce]
+  * [Vipps][vipps]
 * When the consumer/end-user starts the purchase process in your
   merchant/wehshop site, you need to make a `POST` request towards Swedbank Pay
   with your Purchase information.
   You receive a Payment Link (same as redirect URL) in response.
 * You have to distribute the Payment Link to the customer through your order
   system, using channels like e-mail or SMS.
- * NOTE: When sending information in e-mail/SMS, it is strongly recommended
+  * NOTE: When sending information in e-mail/SMS, it is strongly recommended
    that you add information about your terms and conditions, including
    purchase information and price.
-   **See recommendations in the next paragraph.**
+    **See recommendations in the next paragraph.**
 * When the consumer clicks on the Payment Link, the Swedbank Pay payment page
   will open, letting the consumer enter the payment details (varying depending
   on payment instrument) in a secure Swedbank Pay hosted environment.
@@ -121,14 +121,14 @@ and two-phase (e.g. [Credit card][credit-card],
 #### Authorization
 
 * PreAuthorization (Credit card):
- * If you specify that the _intent_ of the _purchase_ is PreAuthorize,
+  * If you specify that the _intent_ of the _purchase_ is PreAuthorize,
    it's almost the same as an authorization,
-   **except that no money will be reserved** from the consumers credit card,
+    **except that no money will be reserved** from the consumers credit card,
    [before you make a finalize on this transaction (using the PATCH on
    the Autorization)][tecnical-reference-finalize].
 
 * Authorize (two-phase):
- * When using two-phase flows you reserve the amount with an authorization,
+  * When using two-phase flows you reserve the amount with an authorization,
    you will have to specify that the intent of the purchaseis Authorize.
    The amount will be reserved but not charged.
    You will later (i.e. when you are ready to ship the purchased products)
