@@ -460,7 +460,7 @@ Content-Type: application/json
 
 You can create a reversal transaction against a completed sales transaction
 by adding that transaction's `payeeReference` in the request body.
-A callback request will follow from PayEx.
+A callback request will follow from Swedbank Pay.
 
 {:.code-header}
 **Request**
@@ -561,7 +561,7 @@ Content-Type: application/json
 
 The response given when aborting a payment order is equivalent to a `GET`
 request towards the `paymentorders` resource,
-[as displayed above][payment-order], with its `state` set to `Aborted`
+[as displayed above][payment-order], with its `state` set to `Aborted`.
 
 #### Reversal Sequence
 
@@ -580,11 +580,11 @@ sequenceDiagram
 
 ### Capture
 
-Swish does not support `capture`
+Swish does not support `capture`.
 
 ### Cancel
 
-Swish does not support `cancel`
+Swish does not support `cancel`.
 
 ### Recurring
 
