@@ -28,7 +28,7 @@ collaborative, open, inclusive, positive and tolerant community. To underscore
 this, a `CODE_OF_CONDUCT.md` file from
 [Contributor Covenant][contributor-covenant] should be added to the project:
 
-# Contributor Code of Conduct
+## Contributor Code of Conduct
 
 As contributors and maintainers of this project, and in the interest of
 fostering an open and welcoming community, we pledge to respect all people who

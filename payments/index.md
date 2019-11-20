@@ -154,7 +154,7 @@ sequenceDiagram
 Please visit our [demoshop][demoshop] to view our Payment Menu and Redirect
 implementation in action. Use the configuration below:
 
-```
+```markdown
 TODO: Insert picture from demoshop showing the following configuration:  
 Swedbank Pay Payment Pages  
 Hosted View  
@@ -162,7 +162,7 @@ Norway
 English
 ```
 
-#### Getting started
+#### Getting started with Hosted View
 
 When implementing Hosted view, you need to locate the operation that is returned
 from your API request, which contains the URL of the JavaScript that you need
@@ -252,7 +252,7 @@ Norway
 English
 ```
 
-#### Getting started
+#### Getting started with Redirect
 
 To start using the Redirect platform, you need to implement the appropriate
 operation returned from the initial API Request, containing the URL that the

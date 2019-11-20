@@ -533,7 +533,7 @@ Content-Type: application/json
     You can also access and reverse a payment through your merchant pages
     in the [Swedbank Pay admin portal][payex-admin-portal].
 
-#### Abort
+### Abort
 
 To abort a payment order, perform the `update-paymentorder-abort` operation
 that is returned in the payment order response.

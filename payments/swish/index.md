@@ -23,7 +23,7 @@ sidebar:
                       should not be used to integrate against Swedbank Pay's
                       APIs yet." %}
 
-# Swish Payments
+## Swish Payments
 
 >Add Swish to your Swedbank Pay payment methodsand take advantage of
 **[Swedbank Pay Settlement Service][settlement-service]** to get consolidated
@@ -480,7 +480,7 @@ sequenceDiagram
   Deactivate Merchant
 ```
 
-# Swish m-commerce Redirect
+## Swish m-commerce Redirect
 
 >Swish is an one-phase payment method supported by the major Swedish banks.
  In the redirect m-commerce scenario, Swedbank Pay performs a payment that
@@ -608,7 +608,7 @@ sequenceDiagram
 [reversal-reference]: /payments/swish/after-payment#reversals
 [sales-transaction]: /payments/swish/other-features#sales
 [SEB-swish]: https://seb.se/foretag/digitala-tjanster/swish-handel
-[settlement-service]: #
+[settlement-service]: /payments/swish/other-features#settlement-and-reconcilliation
 [sparbanken-oresund]: https://www.sparbankenskane.se/foretag/digitala-tjanster/swish/swish-for-handel/index.htm
 [sparbanken-syd]: https://www.sparbankensyd.se/vardagstjanster/betala/swish-foretag/
 [support-mailto]: mailto:support.ecom@payex.com

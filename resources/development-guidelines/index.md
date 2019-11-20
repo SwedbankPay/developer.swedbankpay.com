@@ -113,12 +113,12 @@ be perceived as accessible:
    using GitHub’s online Markdown editing features.
 4. How to contribute should be clearly explained in a `CONTRIBUTING` file.
 5. The process of contributing should be as simple as possible.
-  1. The project should follow the norm and best practice of the language and
+   1. The project should follow the norm and best practice of the language and
      environment it is written in.
-  2. There should be tests in the project that are easy to get up and running
+   2. There should be tests in the project that are easy to get up and running
      on a developer machine without installing any external services, tools or
      libraries, unless they are handled by a package manager like NuGet.
-  3. Contributed code should be checked by a
+   3. Contributed code should be checked by a
      [continuous integration][continuous-integration] server that labels the
      status of pull request accordingly. If a test fails, the contributor
      should be alerted of its failure through GitHub’s interface.
@@ -128,11 +128,11 @@ be perceived as accessible:
 7. The development and branching process should preferably be based on an
    existing scheme such as [GitFlow][gitflow] or [GitHub Flow][github-flow].
 8. All development should be done in public.
-  4. Code should be pushed to GitHub regularly, so it’s possible to see
+   1. Code should be pushed to GitHub regularly, so it’s possible to see
      progress.
-  5. For incomplete features and bugfixes, [GitFlow][gitflow] with branch
+   2. For incomplete features and bugfixes, [GitFlow][gitflow] with branch
      prefixes such as `feature/` and `hotfix/` should be used
-  6. All code in development should be pushed as often as possible.
+   3. All code in development should be pushed as often as possible.
 
 ### Security
 

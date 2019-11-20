@@ -29,7 +29,7 @@ root of the repository. Once such a file exists, GitHub will present it to
 users creating new pull requests, issues, etc. in the repository. Here's an
 example of how such a file can look like:
 
-# How to contribute
+## How to contribute
 
 To contribute to the Swedbank Pay Development Guidelines, there's just a few
 things you need to know.
@@ -45,7 +45,7 @@ things you need to know.
         * Make sure you fill in the earliest version that you know has the
           issue.
     1. [Directly edit the file][edit] you want to change on GitHub.
-    2. [Fork the repository on GitHub][forking].
+    1. [Fork the repository on GitHub][forking].
 
 If you choose option 3 (forking the repository), then please read on.
 

@@ -48,8 +48,7 @@ received in the first step, which will return the purchase result.
 
 The API requests are displayed in the [purchase flow](#purchase-flow-2). The
 options you can choose from when creating a payment with key `operation` set to
-Value `Purchase` are listed below. The general REST based API model is described
-in the [technical reference](#).
+Value `Purchase` are listed below.
 
 #### Options before posting a payment
 

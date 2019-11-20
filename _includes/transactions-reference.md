@@ -4,7 +4,7 @@
 
 ### Transaction
 
-{% include transaction.md %]
+{% include transaction.md %}
 
 [operations]: #operations
 [payee-reference]: #payee-reference

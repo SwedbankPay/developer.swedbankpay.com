@@ -49,7 +49,7 @@ The API requests are displayed in the [purchase flow](#purchase-flow).
 The options you can choose from when creating a payment with key operation set
 to Value `Purchase` are listed below.
 
-#### Type of authorization (Intent)
+### Type of authorization (Intent)
 
 **Authorization (two-phase)**: The intent of a MobilePay purchase is always
 `Authorization`. The amount will be reserved but not charged.
