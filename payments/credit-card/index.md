@@ -116,62 +116,72 @@ credit card payment:
 
 ```mermaid
 sequenceDiagram
-    Consumer->>+Merchant: start purchase
-    Merchant->>+PayEx: POST [operation=PURCHASE](payments/credit-card/payments)
-    Note left of Merchant: First API Request
-    PayEx-->>-Merchant: payment resource
-    Merchant-->>-Consumer: authorization page
-    note left of Consumer: redirect to PayEx (If Redirect scenario)
+    participant Payer
+    participant Merchant
+    participant SwedbankPay as Swedbank Pay
 
-    Consumer->>+Merchant: access merchant page
-    Merchant->>+PayEx: GET [payments/credit-card/payments](payments/credit-card/payments)
+    activate Payer
+    Payer->>+Merchant: start purchase
+    deactivate Payer
+    Merchant->>+SwedbankPay: POST /psp/creditcard/payments
+    deactivate Merchant
+    note left of Merchant: First API Request
+    SwedbankPay-->>+Merchant: payment resource
+    deactivate SwedbankPay
+    Merchant-->>+Payer: authorization page
+    note left of Payer: redirect to SwedbankPay<br>(If Redirect scenario)
+
+    Payer->>+Merchant: access merchant page
+    deactivate Payer
+    Merchant->>+SwedbankPay: GET [payments/credit-card/payments](payments/credit-card/payments)
+    deactivate Merchant
     note left of Merchant: Second API request
-    PayEx-->>-Merchant: payment resource
-    Merchant-->>-Consumer: display purchase result
+    SwedbankPay-->>+Merchant: payment resource
+    Merchant-->>-Payer: display purchase result
 ```
 
 ```mermaid
 sequenceDiagram
-  Consumer->>+Merchant: start purchase
-  Merchant->>+PayEx: POST [operation=PURCHASE](payments/credit-card/payments)
-  note left of Consumer: First API request
-  PayEx-->Merchant: payment resource
-  deactivate PayEx
-  Merchant-->>Consumer: authorization page
+  Payer->>+Merchant: start purchase
+  Merchant->>+SwedbankPay: POST [operation=PURCHASE](payments/credit-card/payments)
+  note left of Payer: First API request
+  SwedbankPay-->Merchant: payment resource
+  deactivate SwedbankPay
+  Merchant-->>Payer: authorization page
   deactivate Merchant
 
-  Consumer->>+PayEx: access authorization page
-  note left of Consumer: redirect to PayEx\n(If Redirect scenario)
-  PayEx-->>Consumer: display purchase information
-  deactivate PayEx
+  Payer->>+SwedbankPay: access authorization page
+  note left of Payer: redirect to SwedbankPay<br>(If Redirect scenario)
+  SwedbankPay-->>Payer: display purchase information
+  deactivate SwedbankPay
 
-  Consumer->>Consumer: input creditcard information
-  Consumer->>+PayEx: submit creditcard information
+  Payer->>Payer: input creditcard information
+  Payer->>+SwedbankPay: submit creditcard information
   
   opt Card supports 3-D Secure
-    PayEx-->>Consumer: redirect to IssuingBank
-    deactivate PayEx
-    Consumer->>IssuingBank: 3-D Secure authentication process
-    Consumer->>+PayEx: access authentication page
+    SwedbankPay-->>Payer: redirect to IssuingBank
+    deactivate SwedbankPay
+    Payer->>IssuingBank: 3-D Secure authentication process
+    Payer->>+SwedbankPay: access authentication page
   end
   
-  PayEx-->>Consumer: redirect to merchant
-  deactivate PayEx
-  note left of Consumer: redirect back to merchant\n(If Redirect scenario)
+  SwedbankPay-->>Payer: redirect to merchant
+  deactivate SwedbankPay
+  note left of Payer: redirect back to merchant<br>(If Redirect scenario)
   
-  Consumer->>+Merchant: access merchant page
-  Merchant->>+PayEx: GET [payments/credit-card/payments](payments/credit-card/payments)
+  Payer->>+Merchant: access merchant page
+  Merchant->>+SwedbankPay: GET [payments/credit-card/payments](payments/credit-card/payments)
   note left of Merchant: Second API request
-  PayEx-->>Merchant: payment resource
-  deactivate PayEx
-  Merchant-->>Consumer: display purchase result
+  SwedbankPay-->>Merchant: payment resource
+  deactivate SwedbankPay
+  Merchant-->>Payer: display purchase result
   deactivate Merchant
 
   opt Callback is set
-    PayEx->>PayEx: Payment is updated
-    activate PayEx
-    PayEx->>Merchant: send [Callback request](callback-request)
-    deactivate PayEx
+    SwedbankPay->>SwedbankPay: Payment is updated
+    activate SwedbankPay
+    SwedbankPay->>Merchant: send [Callback request](callback-request)
+    deactivate SwedbankPay
   end
 ```
 
