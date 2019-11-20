@@ -8,7 +8,7 @@ When the consumer clicks on the link, a payment window opens." %}
 ### Introduction
 
 * The Payment Link can be implemented for payment methods listed below,
-  using the Redirect platform and hosted payment pages.  
+  using the Redirect platform and hosted payment pages.
   * [Credit card][payment-instruments-card-payment-pages]
   * [MobilePay][payment-instruments-mobilepay-payment-pages]
   * [Swish][swish]
@@ -120,11 +120,12 @@ two-phase (e.g. [Credit card][credit-card], [MobilePay][mobile-pay],
 The sequence diagrams display the high level process of the purchase,
 from generating a Payment Link to receving a Callback.
 This in a generalized flow as well as a specific 3D-secure enabled
-credit card scenario.  
+credit card scenario.
 
-**Please note that the the callback may come either before, after or in the
+{% include alert.html type="neutral" icon="info" body="
+Please note that the the callback may come either before, after or in the
 same moment as the consumer are being redirected to the status page at the
-merchant site when the purchase is fulfilled.**
+merchant site when the purchase is fulfilled." %}
 
 When dealing with credit card payments, 3D-Secure authentication of the
 cardholder is an essential topic.
@@ -145,7 +146,7 @@ sequenceDiagram
 Consumer->MerchantOrderSystem: consumer starts purchase
 activate MerchantOrderSystem
 MerchantOrderSystem->Merchant: start purchase process
-activate Merchant  
+activate Merchant
 Merchant->PayEx: POST [payment] (operation=PURCHASE)
 note left of Merchant: First API request
 activate PayEx

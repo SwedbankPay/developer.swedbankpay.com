@@ -182,7 +182,8 @@ Content-Type: application/json
 | ✔︎︎︎︎︎       | `billingAddress.city`          | `string`      | The city to the consumer.                     |
 | ✔︎︎︎︎︎       | `billingAddress.countryCode`   | `string`      | `SE` or `NO`.                                 |
 
-_Note: The legal address must be the registered address of the consumer._
+{% include alert.html type="neutral" icon="info" body="
+Note: The legal address must be the registered address of the consumer." %}
 
 The `authorization` resource will be returned, containing information about
 the newly created authorization transaction.

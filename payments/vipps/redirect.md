@@ -12,7 +12,7 @@ sidebar:
       title: Seamless View
     - url: /payments/vipps/after-payment
       title: After Payment
-    - url: /payments/vipps/other-features    
+    - url: /payments/vipps/other-features
       title: Other Features
 ---
 
@@ -45,20 +45,23 @@ sidebar:
 
 ### Payment Url
 
-For our Seamless View, the URL property called `paymentUrl` will be used when the
-consumer is redirected out of the Seamless View frame through our
+For our Seamless View, the URL property called `paymentUrl` will be used when
+the consumer is redirected out of the Seamless View frame through our
 [Vipps API][vipps-payments].
+
 The consumer is redirected out of frame when selecting Vipps as payment method.
 The URL should represent the page of where the payment Seamless View was hosted
 originally, such as the checkout page, shopping cart page, or similar.
 Basically, `paymentUrl` should be set to the same URL as that of the page where
-the JavaScript for the hosted payment view was added to in order to initiate
-the payment.
+the JavaScript for the hosted payment view was added to in order to initiate the
+payment.
+
+{% include alert.html type="neutral" icon="info" body="
 Please note that the `paymentUrl` must be able to invoke the same JavaScript
 URL from the same Payment as the one that initiated the payment originally,
 so it should include some sort of state identifier in the URL.
 The state identifier is the ID of the order, shopping cart or similar that has
-the URL of the Payment stored.
+the URL of the Payment stored." %}
 
 With paymentUrl in place, the retry process becomes much more convenient for
 both the integration and the payer.
@@ -127,7 +130,7 @@ sequenceDiagram
   PayEx_FrontEnd-->>Browser: Authorization response (State=Pending)
   note left of Browser: check your phone
   deactivate Merchant
-  
+
   Vipps_API-->>Vipps_App: Confirm Payment UI
   Vipps_App-->>Vipps_App: Confirmation Dialogue
   Vipps_App-->>Vipps_API: Confirmation

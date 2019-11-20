@@ -156,9 +156,10 @@ from generating a Payment Link to receving a Callback.
 This in a generalized flow as well as a specific 3D-secure enabled credit
 card scenario.  
 
-**Please note that the the callback may come either before,
-after or in the same moment as the consumer are being redirected to the status
-page at the merchant site when the purchase is fulfilled.**
+{% include alert.html type="neutral" icon="info" body="
+Please note that the the callback may come either before, after or in the same
+moment as the consumer are being redirected to the status page at the merchant
+site when the purchase is fulfilled." %}
 
 When dealing with credit card payments, 3D-Secure authentication of the
 cardholder is an essential topic.
@@ -179,7 +180,7 @@ sequenceDiagram
   Consumer->>MerchantOrderSystem: consumer starts purchase
   Activate MerchantOrderSystem
   MerchantOrderSystem->>Merchant: start purchase process
-  Activate Merchant  
+  Activate Merchant
   Merchant->>PayEx: POST [payment] (operation=PURCHASE)
   note left of Merchant: First API request
   Activate PayEx
@@ -189,11 +190,11 @@ sequenceDiagram
   Deactivate Merchant
   MerchantOrderSystem-->>Consumer: Distribute Payment URL through e-mail/SMS
   Deactivate MerchantOrderSystem
-  
+
   note left of Consumer: Payment Link in e-mail/SMS
   Consumer->>PayEx: Open link and enter payment information
   Activate PayEx
-  
+
   opt Card supports 3-D Secure
   PayEx-->>Consumer: redirect to IssuingBank
   Deactivate PayEx
@@ -201,11 +202,11 @@ sequenceDiagram
   Consumer->>PayEx: access authentication page
   Activate PayEx
   end
-  
+
   PayEx-->>Consumer: redirect to merchant site
   note left of PayEx: redirect back to merchant
   Deactivate PayEx
-  
+
   Consumer->>Merchant: access merchant page
   Activate Merchant
   Merchant->>PayEx: GET [payment]

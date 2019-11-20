@@ -69,10 +69,11 @@ It is followed up by posting a capture, cancellation or reversal transaction.
 An example of a request is provided below. Each individual Property of the JSON
  document is described in the following section.
 
-**Please note** that in order to minimize the risk for a challenge request
+{% include alert.html type="neutral" icon="info" body="
+Please note that in order to minimize the risk for a challenge request
 (Strong Customer Authentication – “SCA”) on card payments, it's recommended that
 you add as much data as possible to the `riskIndicator` object in the request
-below.
+below." %}
 
 {:.code-header}
 **Request**
@@ -507,9 +508,12 @@ confirm validity of card information without reserving or charging any amount.
 This option is commonly used when initiating a subsequent
 [One-click card payment][one-click-payments] or a
 [recurring card payment][recurrence] flow - where you do not want
-to charge the consumer right away. Please note that all boolean credit card
-attributes involving rejection of certain card types are optional and set on
-contract level.
+to charge the consumer right away.
+
+{% include alert.html type="neutral" icon="info" body="
+Please note that all boolean credit card attributes involving rejection of
+certain card types are optional and requires enabling on the contract with
+Swedbank Pay." %}
 
 ### Verification through Swedbank Pay Payment Pages
 
