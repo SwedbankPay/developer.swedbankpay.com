@@ -263,7 +263,7 @@ Content-Type: application/json
 |          | cardholder.accountInfo.shippingAddressUsageIndicator | string      | Optional (increased chance for frictionless flow if set).<br> <br>Indicates when the shipping address used for this transaction was first used with the merchant.<br>01 (This transaction)<br>02 (Less than 30 days)<br>03 (30-60 days)<br>04 (More than 60 days)                                                                                                                                                                                                                                                                                                                                                 |
 |          | cardholder.accountInfo.shippingNameIndicator         | string      | Optional (increased chance for frictionless flow if set).<br> <br>Indicates if the Cardholder Name on the account is identical to the shipping Name used for this transaction.<br>01 (Account name identical to shipping name)<br>02 (Account name different than shipping name)<br>                                                                                                                                                                                                                                                                                                                              |
 |          | cardholder.accountInfo.suspiciousAccountActivity     | string      | Optional (increased chance for frictionless flow if set).<br> <br>Indicates whether merchant has experienced suspicious activity (including previous fraud) on the cardholder account.<br>01 (No suspicious activity has been observed)<br>02 (Suspicious activity has been observed)<br>                                                                                                                                                                                                                                                                                                                         |
-|          | cardholder.accountInfo.addressMatchIndicator         | boolean     | Optional (increased chance for frictionless flow if set)<br> <br> Allows the 3DS Requestor to indicate to the ACS whether the cardholder’s billing and shipping address are the same.                                                                                                                                                                                                                                                                                                                                                                                                                             |
+|          | cardholder.accountInfo.addressMatchIndicator         | boolean     | Optional (increased chance for frictionless flow if set)<br> <br> Allows the 3-D Secure Requestor to indicate to the ACS whether the cardholder’s billing and shipping address are the same.                                                                                                                                                                                                                                                                                                                                                                                                                             |
 |          | riskIndicator.deliveryEmailAddress                   | string      | Optional (increased chance for frictionless flow if set).<br> <br> For electronic delivery, the email address to which the merchandise was delivered.                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 |          | riskIndicator.deliveryTimeFrameIndicator             | string      | Optional (increased chance for frictionless flow if set).<br> <br> Indicates the merchandise delivery timeframe.<br>01 (Electronic Delivery)<br>02 (Same day shipping)<br>03 (Overnight shipping)<br>04 (Two-day or more shipping)<br>                                                                                                                                                                                                                                                                                                                                                                            |
 |          | riskIndicator.preOrderDate                           | string      | Optional (increased chance for frictionless flow if set).<br> <br>For a pre-ordered purchase. The expected date that the merchandise will be available.<br>FORMAT: "YYYYMMDD"                                                                                                                                                                                                                                                                                                                                                                                                                                     |
@@ -282,7 +282,7 @@ Content-Type: application/json
 |          | creditCard.rejectCreditCards                         | boolean     | `true` if credit cards should be declined; otherwise `false` per default. Default value is set by Swedbank Pay and can be changed at your request.                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 |          | creditCard.rejectConsumerCards                       | boolean     | `true` if consumer cards should be declined; otherwise `false` per default. Default value is set by Swedbank Pay and can be changed at your request.                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 |          | creditCard.rejectCorporateCards                      | boolean     | `true` if corporate cards should be declined; otherwise `false` per default. Default value is set by Swedbank Pay and can be changed at your request.                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-|          | creditCard.no3DSecure                                | boolean     | `true` if 3DSecure should be disabled for this payment in the case a stored card is used; otherwise `false` per default. To use this feature it has to be enabled on the contract with Swedbank Pay.                                                                                                                                                                                                                                                                                                                                                                                                              |
+|          | creditCard.no3DSecure                                | boolean     | `true` if 3-D Secure should be disabled for this payment in the case a stored card is used; otherwise `false` per default. To use this feature it has to be enabled on the contract with Swedbank Pay.                                                                                                                                                                                                                                                                                                                                                                                                              |
 |          | creditCard.noCvc                                     | boolean     | `true` if the CVC field should be disabled for this payment in the case a stored card is used; otherwise `false` per default. To use this feature it has to be enabled on the contract with Swedbank Pay.                                                                                                                                                                                                                                                                                                                                                                                                         |
 
 {:.code-header}
@@ -396,7 +396,7 @@ card details from the end-user a second time.
 * Acquirer for this service is Swedbank. You require a separate Swedbank
 acquiring number to ensure that payout transactions and regular card
 transactions are kept separate.
-* You need to have the 3D-secure protocol enabled.
+* You need to have the 3-D Secure protocol enabled.
 * The service is available both through hosted payment pages and through direct
 API integration.
 * The current implementation is only available for gaming transactions
@@ -526,7 +526,7 @@ verification operation, you make a `POST` request towards Swedbank Pay with your
  script source on your site to create a [Hosted View][hosted-view] in an iFrame;
  so that she can enter the credit card details in a secure Swedbank Pay hosted
  environment.
-* Swedbank Pay will handle 3D-secure authentication when this is required.
+* Swedbank Pay will handle 3-D Secure authentication when this is required.
 * Swedbank Pay will redirect the payer's browser to - or display directly in the
  iFrame - one of two specified URLs, depending on whether the payment session is
  followed through completely or cancelled beforehand. Please note that both a
@@ -663,15 +663,15 @@ The sequence diagram below shows the two requests you have to send to Swedbank
 Pay to make a purchase. The links will take you directly to the API description
 for the specific request. The diagram also shows in high level, the sequence of
 the process of a complete purchase.
-When dealing with credit card payments, 3D-Secure authentication of the
+When dealing with credit card payments, 3-D Secure authentication of the
 cardholder is an essential topic. There are three alternative outcome of a
 credit card payment:
 
-* 3D-Secure enabled - by default, 3D-secure should be enabled, and Swedbank Pay
-will check if the card is enrolled with 3D-secure. This depends on the issuer of
- the card. If the card is not enrolled with 3D-Secure, no authentication of the
+* 3-D Secure enabled - by default, 3-D Secure should be enabled, and Swedbank Pay
+will check if the card is enrolled with 3-D Secure. This depends on the issuer of
+ the card. If the card is not enrolled with 3-D Secure, no authentication of the
  cardholder is done.
-* Card supports 3D-Secure - if the card is enrolled with 3D-Secure, Swedbank
+* Card supports 3-D Secure - if the card is enrolled with 3-D Secure, Swedbank
 Pay will redirect the cardholder to the autentication mechanism that is decided
 by the issuing bank. Normally this will be done using BankID or Mobile BankID.
 
@@ -769,7 +769,7 @@ All contract types will have the following URI in front of type:
 | *frauddetected*                | 403    |
 | *3dsecuredeclined*             | 403    |
 
-### Error types from 3Dsecure/ Acquirer
+### Error types from 3-D Secure/Acquirer
 
 All acquirer error types will have the following URI in front of type:
 `https://api.payex.com/psp/errordetail/creditcard/<errorType>`

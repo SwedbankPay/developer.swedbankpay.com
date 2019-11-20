@@ -30,7 +30,7 @@ purchase process, you need to make a POST request towards Swedbank Pay with your
 * You need to embed the script source on your site to create a
 hosted-view in an iFrame(see screenshot below); so that she can enter the credit card
 details in a secure Swedbank Pay hosted environment.
-* Swedbank Pay will handle 3D-secure authentication when this is required.
+* Swedbank Pay will handle 3-D Secure authentication when this is required.
 * Swedbank Pay will display directly in the iFrame - one of two specified URLs,
 depending on whether the payment session is followed through completely or
 cancelled beforehand. Please note that both a successful and rejected payment
@@ -43,7 +43,7 @@ transaction.
 ### Payment Url
 
 {% include payment-url.md
-when="at the 3D Secure verification for Credit Card Payments" %}
+when="at the 3-D Secure verification for Credit Card Payments" %}
 
 ## Screenshots
 
@@ -91,9 +91,9 @@ away, you will have to specify that the intent of the purchase is `AutoCapture`.
 
 ### General
 
-* **No 3D Secure and card acceptance**: There are optional paramers that can be
-used in relation to 3d-secure and card acceptance. By default, most credit card
- agreements with an acquirer will require that you use 3D-Secure for card holder
+* **No 3-D Secure and card acceptance**: There are optional paramers that can be
+used in relation to 3-D Secure and card acceptance. By default, most credit card
+ agreements with an acquirer will require that you use 3-D Secure for card holder
  authentication. However, if your agreement allows you to make a card payment
  without this authentication, or that specific cards can be declined, you may
  adjust these optional parameters when posting in the payment. This is specified
@@ -110,15 +110,15 @@ The sequence diagram below shows a high level description of a complete
 purchase, and the requests you have to send to Swedbank Pay. The links will take
  you directly to the corresponding API description.
 
-When dealing with credit card payments, 3D-Secure authentication of the
+When dealing with credit card payments, 3-D Secure authentication of the
 cardholder is an essential topic. There are two alternative outcome of a credit
 card payment:
 
-* 3D-Secure enabled - by default, 3D-secure should be enabled, and Swedbank Pay
-will check if the card is enrolled with 3D-secure. This depends on the issuer of
- the card. If the card is not enrolled with 3D-Secure, no authentication of the
+* 3-D Secure enabled - by default, 3-D Secure should be enabled, and Swedbank Pay
+will check if the card is enrolled with 3-D Secure. This depends on the issuer of
+ the card. If the card is not enrolled with 3-D Secure, no authentication of the
  cardholder is done.
-* Card supports 3D-Secure - if the card is enrolled with 3D-Secure, Swedbank Pay
+* Card supports 3-D Secure - if the card is enrolled with 3-D Secure, Swedbank Pay
  will redirect the cardholder to the autentication mechanism that is decided by
  the issuing bank. Normally this will be done using BankID or Mobile BankID.
 

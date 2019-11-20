@@ -49,7 +49,7 @@ integration validation procedure.
 * The `paymentUrl` is an URL property that redirect the consumer from the payment page and back to the Merchant
 
 {% include payment-url.md
-when="at the 3d secure verification for credit card payments" %}
+when="at the 3-D Secure verification for credit card payments" %}
 
 * When the contents of the shopping cart changes or anything else that affects
   the amount occurs, the `paymentorder` must be updated and the Payment Menu

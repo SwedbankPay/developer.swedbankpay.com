@@ -32,7 +32,7 @@ They are listed on this very page." %}
 ## Payment Url
 
 {% include payment-url.md payment-order=true
-when="selecting the payment instrument Vipps or in the 3D Secure verification
+when="selecting the payment instrument Vipps or in the 3-D Secure verification
 for Credit Card Payments" %}
 
 ### Enable or Disable Payment Menu
@@ -213,7 +213,7 @@ Content-Type: application/json
 |          | └➔&nbsp;`metadata`                 | `object`     | The keys and values that should be associated with the payment order. Can be additional identifiers and data you want to associate with the payment.                                                            |
 |          | └➔&nbsp;`items`                    | `array`      | The array of items that will affect how the payment is performed.                                                                                                                                               |
 |          | └➔&nbsp;`disablePaymentMenu`       | `boolean`    | If set to `true`, disables the frame around the payment menu. Usefull when only showing one payment instrument.                                                                                                 |
-|          | └➔&nbsp;`no3DSecureForStoredCards` | `boolean`    | `true` if 3DSecure should be disabled for this payment in the case a stored card is used; otherwise `false` per default. To use this feature it has to be enabled on the contract with Swedbank Pay.            |
+|          | └➔&nbsp;`no3DSecureForStoredCards` | `boolean`    | `true` if 3-D Secure should be disabled for this payment in the case a stored card is used; otherwise `false` per default. To use this feature it has to be enabled on the contract with Swedbank Pay.            |
 |          | └➔&nbsp;`noCvcForStoredCards`      | `boolean`    | `true` if the CVC field should be disabled for this payment in the case a stored card is used; otherwise `false` per default. To use this feature it has to be enabled on the contract with Swedbank Pay.       |
 
 #### Response

@@ -16,7 +16,7 @@ be set to enable one-click purchases.
 ### Payment Url
 
 {% include payment-url.md
-when="at the 3d secure verification for credit card payments" %}
+when="at the 3-D Secure verification for credit card payments" %}
 
 ### Returning purchases
 

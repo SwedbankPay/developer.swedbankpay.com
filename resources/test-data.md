@@ -115,10 +115,10 @@ To test a logged in user in the Demo Shop, please use the following test data:
 ## Failure Testing
 
 For testing errors in transactions there are two different methods. The first
-method is performed through 3DSecure, and the second method is for testing
+method is performed through 3-D Secure, and the second method is for testing
 errors thorugh spesific amounts.
 
-### 3DSecure Method
+### 3-D Secure Method
 
 First, POST a Payment (operation purchase) and enter the link to the payment
 page. Example URL: -
@@ -128,8 +128,8 @@ Fill the data for either the Visa or MasterCard as shown below.
 {:.table .table-striped}
 | Card type  | Card number        | Expiry | CVC   | Type of test data                    |
 | :--------- | :----------------- | :----- | :---- | :----------------------------------- |
-| Visa       | `4761739001010416` | 12/22  | `268` | 3DS enrolled, ECI 5, Evry & loopback |
-| MasterCard | `5226612199533406` | 09/28  | `602` | 3DS enrolled, ECI 6, Evry & loopback |
+| Visa       | `4761739001010416` | 12/22  | `268` | 3-D Secure enrolled, ECI 5, Evry & loopback |
+| MasterCard | `5226612199533406` | 09/28  | `602` | 3-D Secure enrolled, ECI 6, Evry & loopback |
 
 After pressing the purchase button you will then be taken to a menu where you
 can select Authentication status, menu is displayed in the picture under:
