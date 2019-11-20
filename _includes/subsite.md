@@ -1,6 +1,6 @@
 ## Subsite
 
-### Create Payment ###
+### Create Payment
 
 To create a Direct Debit payment, you perform an HTTP `POST` against the
 `/psp/directdebit/payments` resource.
