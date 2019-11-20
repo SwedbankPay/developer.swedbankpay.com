@@ -44,12 +44,12 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property               | Data type   | Description                                                                                                               |
-| :------- | :--------------------- | :---------- | :------------------------------------------------------------------------------------------------------------------------ |
-| ✔︎       | capture.amount         | integer     | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 NOK`, `5000` = `50.00 SEK`. |
-| ✔︎       | capture.vatAmount      | integer     | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 NOK`, `5000` = `50.00 SEK`. |
-| ✔︎       | capture.description    | string      | A textual description of the capture transaction.                                                                         |
-| ✔︎       | capture.payeeReference | string(30*) | A unique reference for the capture transaction. See [payeeReference][payee-reference] for details.                        |
+| Required | Property               | Type   | Description                                                                                                               |
+| :------: | :--------------------- | :---------- | :------------------------------------------------------------------------------------------------------------------------ |
+|    ✔︎    | capture.amount         | integer     | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 NOK`, `5000` = `50.00 SEK`. |
+|    ✔︎    | capture.vatAmount      | integer     | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 NOK`, `5000` = `50.00 SEK`. |
+|    ✔︎    | capture.description    | string      | A textual description of the capture transaction.                                                                         |
+|    ✔︎    | capture.payeeReference | string(30*) | A unique reference for the capture transaction. See [payeeReference][payee-reference] for details.                        |
 
 The `capture` resource contains information about the capture transaction.
 
@@ -112,11 +112,11 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property            | Data type | Description                                                                           |
-| :------------------ | :-------- | :------------------------------------------------------------------------------------ |
-| payment             | string    | The relative URI of the payment this capture transaction belongs to.                  |
-| capture.id          | string    | The relative URI of the created capture transaction.                                  |
-| capture.transaction | object    | The object representation of the generic [transaction resource][transaction-resource] |
+| Property              | Type | Description                                                                           |
+| :-------------------- | :-------- | :------------------------------------------------------------------------------------ |
+| `payment`             | `string`  | The relative URI of the payment this capture transaction belongs to.                  |
+| `capture.id`          | `string`  | The relative URI of the created capture transaction.                                  |
+| `capture.transaction` | `object`  | The object representation of the generic [transaction resource][transaction-resource] |
 
 {% include iterator.html
         prev_href="index"

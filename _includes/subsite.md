@@ -40,7 +40,7 @@ Content-Type: application/json
             "callbackUrl": "http://test-dummy.net/payment-callback",
             "logoUrl": "https://example.com/logo.png",
             "termsOfServiceUrl": "https://example.com/terms.pdf"
-        },  
+        },
         "payeeInfo": {
             "payeeId": "12345678-1234-1234-1234-123456789012",
             "payeeReference": "PR123",
@@ -54,25 +54,25 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property | Data type                      | Description |
-| :------- | :----------------------------- | :---------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ✔︎       | payment.operation              | string      | `Purchase` is the only type used for direct debit payments.                                                                                                                                                                                           |
-| ✔︎       | payment.intent                 | string      | `Sale` is the only type used for direct debit payments                                                                                                                                                                                                |
-| ✔︎       | payment.currency               | string      | The currency used.                                                                                                                                                                                                                                    |
-| ✔︎       | payment.prices.type            | string      | (((Use the generic type `Directdebit` if you want to enable all bank types supported by merchant contract, otherwise specify a specific bank type. [See the Prices object types for more information][core-payment-resources-pPrices-objecttypes].))) |
-| ✔︎       | payment.prices.amount          | integer     | Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` `100.00 SEK` `5000` `50.00 SEK`.                                                                                                                               |
-| ✔︎       | payment.prices.vatAmount       | integer     | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                                                                    |
-| ✔︎       | payment.description            | string(40)  | A textual description max 40 characters of the purchase.                                                                                                                                                                                              |
+| Property | Type                           | Description |
+| :------: | :----------------------------- | :---------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|    ✔︎    | payment.operation              | string      | `Purchase` is the only type used for direct debit payments.                                                                                                                                                                                           |
+|    ✔︎    | payment.intent                 | string      | `Sale` is the only type used for direct debit payments                                                                                                                                                                                                |
+|    ✔︎    | payment.currency               | string      | The currency used.                                                                                                                                                                                                                                    |
+|    ✔︎    | payment.prices.type            | string      | (((Use the generic type `Directdebit` if you want to enable all bank types supported by merchant contract, otherwise specify a specific bank type. [See the Prices object types for more information][core-payment-resources-pPrices-objecttypes].))) |
+|    ✔︎    | payment.prices.amount          | integer     | Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` `100.00 SEK` `5000` `50.00 SEK`.                                                                                                                               |
+|    ✔︎    | payment.prices.vatAmount       | integer     | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                                                                    |
+|    ✔︎    | payment.description            | string(40)  | A textual description max 40 characters of the purchase.                                                                                                                                                                                              |
 |          | payment.payerReference         | string      | The reference to the payer (consumer/end-user) from the merchant system, like mobile number, customer number etc.                                                                                                                                     |
-| ✔︎       | payment.userAgent              | string      | The user agent reference of the consumer's browser - [see user agent definition][user-agent]                                                                                                                                                          |
-| ✔︎       | payment.language               | string      | nb-NO, sv-SE or en-US.                                                                                                                                                                                                                                |
-| ✔︎       | payment.urls.completeUrl       | string      | The URI that Swedbank Pay will redirect back to when the payment is followed through.                                                                                                                                                                 |
-| ✔︎       | payment.urls.cancelUrl         | string      | The URI that Swedbank Pay will redirect back to when the user presses the cancel button in the payment page.                                                                                                                                          |
+|    ✔︎    | payment.userAgent              | string      | The user agent reference of the consumer's browser - [see user agent definition][user-agent]                                                                                                                                                          |
+|    ✔︎    | payment.language               | string      | nb-NO, sv-SE or en-US.                                                                                                                                                                                                                                |
+|    ✔︎    | payment.urls.completeUrl       | string      | The URI that Swedbank Pay will redirect back to when the payment is followed through.                                                                                                                                                                 |
+|    ✔︎    | payment.urls.cancelUrl         | string      | The URI that Swedbank Pay will redirect back to when the user presses the cancel button in the payment page.                                                                                                                                          |
 |          | payment.urls.callbackUrl       | string      | The URI that Swedbank Pay will perform an HTTP POST against every time a transaction is created on the payment. See [callback][technical-reference-callback] for details.                                                                             |
 |          | payment.urls.logoUrl           | string      | The URI that will be used for showing the customer logo. Must be a picture with at most 50px height and 400px width. **Requires https**.                                                                                                              |
 |          | payment.urls.termsOfServiceUrl | string      | A URI that contains your terms and conditions for the payment, to be linked on the payment page. **Requires https**.                                                                                                                                  |
-| ✔︎       | payeeInfo.payeeId              | string      | This is the unique id that identifies this payee (like merchant) set by PayEx.                                                                                                                                                                        |
-| ✔︎       | payeeInfo.payeeReference       | string(35)  | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][technical-reference-payeereference] for details.                                           |
+|    ✔︎    | payeeInfo.payeeId              | string      | This is the unique id that identifies this payee (like merchant) set by PayEx.                                                                                                                                                                        |
+|    ✔︎    | payeeInfo.payeeReference       | string(35)  | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][technical-reference-payeereference] for details.                                           |
 |          | payeeInfo.payeeName            | string      | The payee name (like merchant name) that will be displayed to consumer when redirected to PayEx.                                                                                                                                                      |
 |          | payeeInfo.productCategory      | string      | A product category or number sent in from the payee/merchant. This is not validated by PayEx, but will be passed through the payment process and may be used in the settlement process.                                                               |
 |          | payeeInfo.orderReference       | string(50)  | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                               |
@@ -156,9 +156,9 @@ and their explanation is given below.
 {:.table .table-striped}
 | Property | Description                                                         |
 | :------- | :------------------------------------------------------------------ |
-| href     | The target URI to perform the operation against.                    |
-| rel      | The name of the relation the operation has to the current resource. |
-| method   | The HTTP method to use when performing the operation.               |
+| `href`   | The target URI to perform the operation against.                    |
+| `rel`    | The name of the relation the operation has to the current resource. |
+| `method` | The HTTP method to use when performing the operation.               |
 
 The operations should be performed as described in each response and not as
 described here in the documentation.
@@ -322,7 +322,7 @@ Content-Type: application/json
 ##### Create Reversal transaction
 
 You can create a reversal transaction against a completed sales
-transaction by adding that transaction's `payeeReference` in the request body.  
+transaction by adding that transaction's `payeeReference` in the request body.
 A callback request will follow from PayEx.
 
 {:.code-header}
@@ -345,12 +345,12 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property                   | Data type  | Description                                                                                                                                                                |
-| :------- | :------------------------- | :--------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ✔︎       | transaction.amount         | integer    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` `100.00 SEK`, `5000` `50.00 SEK`.                                                      |
-| ✔︎       | transaction.vatAmount      | integer    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` `100.00 SEK`, `5000` `50.00 SEK`.                                                      |
-| ✔︎       | transaction.description    | string     | A textual description of the capture                                                                                                                                       |
-| ✔︎       | transaction.payeeReference | string(35) | A  reference that must match the  ##payeeReference## of the sales transaction you want to reverse. See [`payeeReference`][technical-reference-payeereference] for details. |
+| Required | Property                   | Type       | Description                                                                                                                                                                |
+| :------: | :------------------------- | :--------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|    ✔︎    | transaction.amount         | integer    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` `100.00 SEK`, `5000` `50.00 SEK`.                                                      |
+|    ✔︎    | transaction.vatAmount      | integer    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` `100.00 SEK`, `5000` `50.00 SEK`.                                                      |
+|    ✔︎    | transaction.description    | string     | A textual description of the capture                                                                                                                                       |
+|    ✔︎    | transaction.payeeReference | string(35) | A  reference that must match the  ##payeeReference## of the sales transaction you want to reverse. See [`payeeReference`][technical-reference-payeereference] for details. |
 
 {:.code-header}
 **Response**
@@ -382,11 +382,11 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property             | Data type | Description                                                           |
-| :------------------- | :-------- | :-------------------------------------------------------------------- |
-| payment              | string    | The relative URI of the payment this capture transaction belongs to.  |
-| reversal.id          | string    | The relative URI of the created capture transaction.                  |
-| reversal.transaction | object    | The object representation of the generic [transaction][reversal-get]. |
+| Property             | Type   | Description                                                           |
+| :------------------- | :----- | :-------------------------------------------------------------------- |
+| payment              | string | The relative URI of the payment this capture transaction belongs to.  |
+| reversal.id          | string | The relative URI of the created capture transaction.                  |
+| reversal.transaction | object | The object representation of the generic [transaction][reversal-get]. |
 
 ### Callback
 
