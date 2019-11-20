@@ -42,22 +42,8 @@ transaction.
 
 ### Payment Url
 
-For our Seamless View, the URL property called `paymentUrl` will be used if the
-consumer is redirected out of the Seamless View frame (iFrame) through our
-[Credit Card API][purchase]. The consumer is redirected out of frame when at
-the 3d secure verification for credit card payments. The `paymentURL` should
-represent the page of where the payment Seamless View was hosted originally,
-such as the checkout page, shopping cart page, or similar. Basically,
-`paymentUrl` should be set to the same URL as that of the page where the
-JavaScript for the hosted payment view was added to in order to initiate the
-payment. Please note that the `paymentUrl` must be able to invoke the same
-JavaScript URL from the same Payment as the one that initiated the payment
-originally, so it should include some sort of state identifier in the URL.
-The state identifier is the ID of the order, shopping cart or similar that has
-the URL of the Payment stored.
-
-With `paymentUrl` in place, the retry process becomes much more convenient for
-both the integration and the payer.
+{% include payment-url.md
+when="at the 3D Secure verification for Credit Card Payments" %}
 
 ## Screenshots
 
@@ -168,18 +154,18 @@ sequenceDiagram
 
   Consumer->>Consumer: input creditcard information
   Consumer->>+PayEx: submit creditcard information
-  
+
   opt Card supports 3-D Secure
     PayEx-->>Consumer: redirect to IssuingBank
     deactivate PayEx
     Consumer->>IssuingBank: 3-D Secure authentication process
     Consumer->>+PayEx: access authentication page
   end
-  
+
   PayEx-->>Consumer: redirect to merchant
   deactivate PayEx
   note left of Consumer: redirect back to merchant\n(If Redirect scenario)
-  
+
   Consumer->>+Merchant: access merchant page
   Merchant->>+PayEx: GET [payments/credit-card/payments]
   note left of Merchant: Second API request
@@ -199,12 +185,12 @@ sequenceDiagram
 ### Options after posting a payment
 
 * `Abort`: It is possible to abort the process, if the payment has no successful
- transactions. [See the PATCH payment description][abort].  
+ transactions. [See the PATCH payment description][abort].
 * If the payment shown above is done as a two phase (`Authorization`), you will
-need to implement the [`Capture`][capture] and [`Cancel`][cancel] requests.  
+need to implement the [`Capture`][capture] and [`Cancel`][cancel] requests.
 * For `reversals`, you will need to implement the [Reversal request][reversal].
 * If you did a `PreAuthorization`, you will have to send a
-[Finalize request][finalize] to finalize the transaction.  
+[Finalize request][finalize] to finalize the transaction.
 * *If `callbackURL` is set:* Whenever changes to the payment occur a
 [Callback request][callback] will be posted to the `callbackUrl`, which was
 generated when the payment was created.

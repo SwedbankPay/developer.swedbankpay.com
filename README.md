@@ -30,10 +30,16 @@ like to host it locally on your computer, you need to do the following:
 5. Run `bundle exec jekyll serve` to start the website.
 6. Open `http://localhost:4000` in a browser.
 7. In Visual Studio Code, install the following plugins:
-   * `davidanson.vscode-markdownlint`
-   * `shd101wyy.markdown-preview-enhanced`
-   * `bpruitt-goddard.mermaid-markdown-syntax-highlighting`
-   * `yzhang.markdown-all-in-one`
+   * `davidanson.vscode-markdownlint`, to lint Markdown files according to an
+     defined set of rules.
+   * `shd101wyy.markdown-preview-enhanced`, to render Markdown to HTML in a
+     preview window.
+   * `bpruitt-goddard.mermaid-markdown-syntax-highlighting`, to give syntax
+     highlighting Mermaid diagrams in Markdown files.
+   * `yzhang.markdown-all-in-one`, to enable a plethora of Markdown features,
+     most importantly formatting of Markdown tables with VS Code's built-in
+     format functionality.
+   * `stkb.rewrap`, to make line-breaking text at 80 characters easier.
 8. Also in Visual Studio Code, [set up a ruler at 80 characters][vsc-ruler]
    by adding `"editor.rulers": [80]` to its configuration.
 
