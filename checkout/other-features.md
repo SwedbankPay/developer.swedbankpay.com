@@ -1321,7 +1321,7 @@ The structure of a problem message will look like this:
 ### Common Problems
 
 All common problem types will have a URI in the format
-`https://api.externalintegration.payex.com/psp/<error-type>`.
+`https://api.payex.com/psp/<error-type>`.
 The **URI is an identifier** and is currently not possible to dereference,
 although that might be possible in the future.
 
