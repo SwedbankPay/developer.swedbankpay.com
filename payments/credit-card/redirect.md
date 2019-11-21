@@ -130,7 +130,7 @@ sequenceDiagram
     deactivate SwedbankPay
     Merchant-->>+Payer: authorization page
     deactivate Merchant
-    note left of Payer: redirect to SwedbankPay<br>(If Redirect scenario)
+    note left of Payer: redirect to SwedbankPay
     Payer->>+Merchant: access merchant page
     deactivate Payer
     Merchant->>+SwedbankPay: GET /psp/creditcard/payments/<paymentorder.id>
@@ -159,7 +159,7 @@ sequenceDiagram
   deactivate Merchant
   Payer->>+SwedbankPay: access authorization page
   deactivate Payer
-  note left of Payer: redirect to SwedbankPay<br>(If Redirect scenario)
+  note left of Payer: redirect to SwedbankPay
   SwedbankPay-->>+Payer: display purchase information
   deactivate SwedbankPay
 
@@ -176,7 +176,7 @@ sequenceDiagram
   
   SwedbankPay-->>+Payer: redirect to merchant
   deactivate SwedbankPay
-  note left of Payer: redirect back to merchant<br>(If Redirect scenario)
+  note left of Payer: redirect back to merchant
   
   Payer->>+Merchant: access merchant page
   deactivate Payer
@@ -292,85 +292,83 @@ will check if the card is enrolled with 3-D Secure. This depends on the issuer o
 
 ```mermaid
 sequenceDiagram
-  Consumer->>Merchant: start purchase
-  Activate Merchant
-  Merchant->>PayEx: POST [operation=PURCHASE]
-  note left of Merchant: First API request
-  Activate PayEx
-  PayEx-->>Merchant: payment resource
-  Deactivate PayEx
-  Merchant-->>Consumer: authorization page
-  Deactivate Merchant
+    participant Payer
+    participant Merchant
+    participant SwedbankPay as Swedbank Pay
 
-  note left of Consumer: redirect to PayEx
-  Consumer->>PayEx: enter card info
-  Activate PayEx
-  PayEx-->>Consumer: redirect to merchant
-  note left of Consumer: redirect back to merchant
-  Deactivate PayEx
-
-  Consumer->>Merchant: access merchant page
-  Activate Merchant
-  Merchant->>PayEx: GET [payments/credit-card/payments]
-  note left of Merchant: Second API request
-  Activate PayEx
-  PayEx-->>Merchant: payment resource
-  Deactivate PayEx
-  Merchant-->>Consumer: display purchase result
-  Deactivate Merchant
+    activate Payer
+    Payer->>+Merchant: start purchase
+    deactivate Payer
+    Merchant->>+SwedbankPay: POST /psp/creditcard/payments
+    deactivate Merchant
+    note left of Merchant: First API Request
+    SwedbankPay-->>+Merchant: payment resource
+    deactivate SwedbankPay
+    Merchant-->>+Payer: authorization page
+    deactivate Merchant
+    note left of Payer: redirect to SwedbankPay<br>(If Redirect scenario)
+    Payer->>+Merchant: access merchant page
+    deactivate Payer
+    Merchant->>+SwedbankPay: GET /psp/creditcard/payments/<paymentorder.id>
+    deactivate Merchant
+    note left of Merchant: Second API request
+    SwedbankPay-->>+Merchant: rel: redirect-authorization
+    deactivate SwedbankPay
+    Merchant-->>-Payer: display purchase result
 ```
-
-### Detailed Sequence Diagram enabing 3-D Secure authentication
 
 ```mermaid
 sequenceDiagram
-  Consumer->>Merchant: start purchase
-  Activate Merchant
-  Merchant->>PayEx: POST [operation=PURCHASE]
-  note left of Merchant: First API request
-  Activate PayEx
-  PayEx-->>Merchant: payment resource
-  Deactivate PayEx
-  Merchant-->>Consumer: authorization page
-  Deactivate Merchant
+    participant Payer
+    participant Merchant
+    participant SwedbankPay as Swedbank Pay
 
-  Consumer->>PayEx: access authorization page
-  note left of Consumer: redirect to PayEx\n(if Redirect scenario)
-  Activate PayEx
-  PayEx-->>Consumer: display purchase information
-  Deactivate PayEx
+  activate Payer
+  Payer->>+Merchant: start purchase
+  deactivate Payer
+  Merchant->>+SwedbankPay: POST /psp/creditcard/payments
+  deactivate Merchant
+  note left of Payer: First API request
+  SwedbankPay-->+Merchant: payment resource
+  deactivate SwedbankPay
+  Merchant-->>+Payer: authorization page
+  deactivate Merchant
+  Payer->>+SwedbankPay: access authorization page
+  deactivate Payer
+  note left of Payer: redirect to SwedbankPay
+  SwedbankPay-->>+Payer: display purchase information
+  deactivate SwedbankPay
 
-  Consumer->>Consumer: input creditcard information
-  Consumer->>PayEx: submit creditcard information
-  Activate PayEx
-
+  Payer->>Payer: input creditcard information
+  Payer->>+SwedbankPay: submit creditcard information
+  deactivate Payer
   opt Card supports 3-D Secure
-  PayEx-->>Consumer: redirect to IssuingBank
-  Deactivate PayEx
-  Consumer->>IssuingBank: 3-D Secure authentication process
-  Consumer->>PayEx: access authentication page
-  Activate PayEx
+    SwedbankPay-->>+Payer: redirect to IssuingBank
+    deactivate SwedbankPay
+    Payer->>IssuingBank: 3-D Secure authentication process
+    Payer->>+SwedbankPay: access authentication page
+    deactivate Payer
   end
-
-  PayEx-->>Consumer: redirect to merchant
-  note left of Consumer: redirect back to merchant\n(if Redirect scenario)
-  Deactivate PayEx
-
-  Consumer->>Merchant: access merchant page
-  Activate Merchant
-  Merchant->>PayEx: GET [payments/credit-card/payments]
+  
+  SwedbankPay-->>+Payer: redirect to merchant
+  deactivate SwedbankPay
+  note left of Payer: redirect back to merchant
+  
+  Payer->>+Merchant: access merchant page
+  deactivate Payer
+  Merchant->>+SwedbankPay: GET /psp/creditcard/payments/<paymentorder.id>
+  deactivate Merchant
   note left of Merchant: Second API request
-  Activate PayEx
-  PayEx-->>Merchant: payment resource
-  Deactivate PayEx
-  Merchant-->>Consumer: display purchase result
-  Deactivate Merchant
+  SwedbankPay-->>+Merchant: rel: redirect-authorization
+  deactivate SwedbankPay
+  Merchant-->>Payer: display purchase result
+  deactivate Merchant
 
   opt Callback is set
-  PayEx->>PayEx: Payment is updated
-  Activate PayEx
-  PayEx->>Merchant: send [Callback request]
-  deactivate PayEx
+    activate SwedbankPay
+    SwedbankPay->>SwedbankPay: Payment is updated
+    SwedbankPay->>Merchant: POST Payment Callback
+    deactivate SwedbankPay
   end
 ```
 
