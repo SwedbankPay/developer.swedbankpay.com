@@ -26,7 +26,7 @@ sidebar:
 {% include alert.html type="warning"
                       icon="error"
                       header="PCI-DSS Complicance"
-                      body="The direct integration option requires you to collect the card data on your website, which means it must be [PCI-DSS Compliant][PCI-link]." %}
+                      body="The direct integration option requires you to collect the card data on your website, which means it must be [PCI-DSS Compliant]( https://www.pcisecuritystandards.org/)." %}
 
 {% include jumbotron.html body="The Direct Payment scenario **is used by
 customers that are compliant with PCI-DSS regulations**, and is a way to
@@ -53,7 +53,7 @@ Value `Purchase` are listed below.
 #### Options before posting a payment
 
 All valid options when posting in a payment with `operation` equal to `Purchase`
-, are described in [the technical reference].
+, are described in [technical reference](#).
 
 ##### Type of authorization (Intent)
 
