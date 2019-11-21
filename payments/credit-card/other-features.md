@@ -42,7 +42,7 @@ in their own section below.
 
 ```http
 POST /psp/creditcard/payments HTTP/1.1
-Host: api.payex.com
+Host: api.externalintegration.payex.com
 Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 
@@ -324,7 +324,7 @@ Content-Type: application/json
   },
   "operations": [
     {
-      "href": "https://api.payex.com/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+      "href": "https://api.externalintegration.payex.com/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
       "rel": "update-payment-abort",
       "method": "PATCH",
       "contentType": "application/json"
@@ -355,7 +355,7 @@ through a previous payment in order to charge the same card.
 
 ```HTTP
 POST /psp/creditcard/payments HTTP/1.1
-Host: api.payex.com
+Host: api.externalintegration.payex.com
 Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 
@@ -414,7 +414,7 @@ a payout by performing a `POST` creditcard payments with key `operation` set to
 
 ```http
 POST /psp/creditcard/payments HTTP/1.1
-Host: api.payex.com
+Host: api.externalintegration.payex.com
 Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 
@@ -558,7 +558,7 @@ listed below.
 
 ```http
 POST /psp/creditcard/payments HTTP/1.1
-Host: api.payex.com
+Host: api.externalintegration.payex.com
 Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 
@@ -628,7 +628,7 @@ Content-Type: application/json
     },
     "operations": [
         {
-            "href": "https://api.payex.com/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+            "href": "https://api.externalintegration.payex.com/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
             "rel": "update-payment-abort",
             "method": "PATCH",
             "contentType": "application/json"
@@ -699,7 +699,7 @@ Swedbank Pay Payment pages where the payment is authorized.
 
 ```http
 POST /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations HTTP/1.1
-Host: api.payex.com
+Host: api.externalintegration.payex.com
 Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 
@@ -756,7 +756,7 @@ to identify the nature of the problem. The problem `name` and `description` will
 ### Contractual error types
 
 All contract types will have the following URI in front of type:
-`https://api.payex.com/psp/<errordetail>/creditcard`
+`https://api.externalintegration.payex.com/psp/<errordetail>/creditcard`
 
 {:.table .table-striped}
 | Type                           | Status | Notes |

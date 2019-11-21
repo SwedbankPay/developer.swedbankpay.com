@@ -142,7 +142,7 @@ response, enabling you to access information from these sub-resources.
 
 ```http
 GET /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c?$expand=urls,authorizations HTTP/1.1
-Host: api.payex.com
+Host: api.externalintegration.payex.com
 ```
 
 To avoid unnecessary overhead, you should only expand the nodes you need info
@@ -273,7 +273,7 @@ The structure of a problem message will look like this:
 
 ```js
 {
-    "type": "https://api.payex.com/psp/inputerror",
+    "type": "https://api.externalintegration.payex.com/psp/inputerror",
     "title": "There was an input error",
     "detail": "Please correct the errors and retry the request",
     "instance": "9a20d737-670d-42bf-9a9a-d36736de8721",
@@ -332,7 +332,7 @@ more about the payment instrument specific problem messages below:
   [ruby-tls]: https://stackoverflow.com/a/11059873/61818
   [python-tls]: https://docs.python.org/2/library/ssl.html#ssl.PROTOCOL_TLSv1_2
   [node-tls]: https://stackoverflow.com/a/44635449/61818
-  [ssllabs]: https://www.ssllabs.com/ssltest/analyze.html?d=api.payex.com
+  [ssllabs]: https://www.ssllabs.com/ssltest/analyze.html?d=api.externalintegration.payex.com
   [content-type]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type
   [admin]: https://admin.externalintegration.payex.com/psp/login
   [admin-guide]: #
@@ -344,7 +344,7 @@ more about the payment instrument specific problem messages below:
   [iso-639-1]: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
   [iso-3166]: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
   [uuid]: https://en.wikipedia.org/wiki/Universally_unique_identifier
-  [external-integration]: https://api.externalintegration.payex.com
+  [external-integration]: https://api.externalintegration.payex.com/
   [production]: https://api.payex.com/
   [the-rest-and-then-some]: https://www.youtube.com/watch?v=QIv9YR1bMwY
   [settlement]: #

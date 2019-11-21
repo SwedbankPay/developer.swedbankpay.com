@@ -14,7 +14,7 @@ following section.
 
 ```HTTP
 POST /psp/directdebit/payments HTTP/1.1
-Host: api.payex.com
+Host: api.externalintegration.payex.com
 Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 
@@ -111,12 +111,12 @@ Content-Type: application/json
   },
     "operations": [
         {
-            "href": "https://api.payex.com/psp/directdebit/payments/<paymentId>/sales",
+            "href": "https://api.externalintegration.payex.com/psp/directdebit/payments/<paymentId>/sales",
             "rel": "redirect-sale",
             "method": "POST"
         },
         {
-            "href": "http://api.payex.com/psp/directdebit/payments/<paymentId>",
+            "href": "http://api.externalintegration.payex.com/psp/directdebit/payments/<paymentId>",
             "rel": "update-payment-abort",
             "method": "PATCH"
         }
@@ -188,7 +188,7 @@ a specific payment.
 
 ```HTTP
 GET /psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/sales HTTP/1.1
-Host: api.payex.com
+Host: api.externalintegration.payex.com
 Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 ```
@@ -251,7 +251,7 @@ Content-Type: application/json
                     "isOperational": "TRUE|FALSE",
                     "operations": [
                         {
-                            "href": "https://api.payex.com/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+                            "href": "https://api.externalintegration.payex.com/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
                             "rel": "edit-sale",
                             "method": "PATCH"
                         }
@@ -273,7 +273,7 @@ The `Reversals` resource list the reversals transactions
 
 ```HTTP
 GET /psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals HTTP/1.1
-Host: api.payex.com
+Host: api.externalintegration.payex.com
 Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 ```
@@ -330,7 +330,7 @@ A callback request will follow from PayEx.
 
 ```HTTP
 POST /psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals HTTP/1.1
-Host: api.payex.com
+Host: api.externalintegration.payex.com
 Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 

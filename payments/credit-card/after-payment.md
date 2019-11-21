@@ -28,17 +28,17 @@ sidebar:
 ### Options after posting a payment
 
 * *Abort:* It is possible to abort the process, if the payment has no successful
-transactions. [See the PATCH payment description][abort].  
+transactions. [See the PATCH payment description][abort].
 * If the payment shown above is done as a two phase (`Authorization`), you will
-need to implement the `Capture` and `Cancel` requests.  
-* For `reversals`, you will need to implement the [Reversal request][reversal].  
+need to implement the `Capture` and `Cancel` requests.
+* For `reversals`, you will need to implement the [Reversal request][reversal].
 * If you did a `PreAuthorization`, you will have to send a
-[Finalize request][finalize] to finalize the transaction.  
+[Finalize request][finalize] to finalize the transaction.
 * *If CallbackURL is set:* Whenever changes to the payment occur a
 [Callback request][callback] will be posted to the callbackUrl, which was
-generated when the payment was created.  
+generated when the payment was created.
 
-### Capture  
+### Capture
 
 The `captures` resource list the capture transactions (one or more) on a
 specific payment.
@@ -48,7 +48,7 @@ specific payment.
 
 ```HTTP
 GET /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures HTTP/1.1
-Host: api.payex.com
+Host: api.externalintegration.payex.com
 Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 ```
@@ -103,7 +103,7 @@ need to perform the create-capture operation.
 
 ```HTTP
 POST /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures HTTP/1.1
-Host: api.payex.com
+Host: api.externalintegration.payex.com
 Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 
@@ -194,7 +194,7 @@ from the `redirect-authorization` operation and find the operation
 
 ```http
 PATCH /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations/<transactionId> HTTP/1.1
-Host: api.payex.com
+Host: api.externalintegration.payex.com
 Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 
@@ -249,7 +249,7 @@ Content-Type: application/json
             "isOperational": true,
             "operations": [
                 {
-                    "href": "https://api.payex.com/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+                    "href": "https://api.externalintegration.payex.com/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
                     "rel": "edit-authorization",
                     "method": "PATCH"
                 }
@@ -275,7 +275,7 @@ payment.
 
 ```HTTP
 GET /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/cancellations HTTP/1.1
-Host: api.payex.com
+Host: api.externalintegration.payex.com
 Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 ```
@@ -331,7 +331,7 @@ yet captured - payment.
 
 ```HTTP
 POST /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/cancellations HTTP/1.1
-Host: api.payex.com
+Host: api.externalintegration.payex.com
 Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 
@@ -415,7 +415,7 @@ specific payment.
 
 ```HTTP
 GET /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals HTTP/1.1
-Host: api.payex.com
+Host: api.externalintegration.payex.com
 Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 ```
@@ -470,7 +470,7 @@ The `create-reversal` operation will reverse a previously captured payment.
 
 ```HTTP
 POST /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals HTTP/1.1
-Host: api.payex.com
+Host: api.externalintegration.payex.com
 Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 
@@ -562,7 +562,7 @@ card number is automatically deleted six months after a successful
 
 ```HTTP
 PATCH /psp/creditcard/payments/instrumentData/<paymentToken> HTTP/1.1
-Host: api.payex.com
+Host: api.externalintegration.payex.com
 Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 

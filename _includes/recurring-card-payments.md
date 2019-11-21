@@ -114,7 +114,7 @@ certain card types are optional and set on contract level." %}
 
 ```http
 POST /psp/creditcard/payments HTTP/1.1
-Host: api.payex.com
+Host: api.externalintegration.payex.com
 Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 
@@ -184,7 +184,7 @@ Content-Type: application/json
     },
     "operations": [
         {
-            "href": "https://api.payex.com/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+            "href": "https://api.externalintegration.payex.com/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
             "rel": "update-payment-abort",
             "method": "PATCH",
             "contentType": "application/json"

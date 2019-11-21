@@ -19,7 +19,7 @@ When a transaction is created it will have one of three states:
 
 ```http
 GET /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions HTTP/1.1
-Host: api.payex.com
+Host: api.externalintegration.payex.com
 Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 ```
