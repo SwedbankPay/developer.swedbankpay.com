@@ -59,39 +59,42 @@ Content-Type: application/json
 ```HTTP
 HTTP/1.1 200 OK
 Content-Type: application/json
+
 {
     "payment": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
     "captures": {
-            "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures",
-            "captureList": [{
-                    "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures/12345678-1234-1234-1234-123456789012",
-                    "transaction": {
-                            "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
-                            "created": "2016-09-14T01:01:01.01Z",
-                            "updated": "2016-09-14T01:01:01.03Z",
-                            "type": "Capture",
-                            "state": "Completed",
-                            "number": 1234567890,
-                            "amount": 1000,
-                            "vatAmount": 250,
-                            "description": "Test transaction",
-                            "payeeReference": "AH123456",
-                            "failedReason": "",
-                            "isOperational": false,
-                            "operations": []
-                    }
-            }]
+        "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures",
+        "captureList": [
+            {
+                "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures/12345678-1234-1234-1234-123456789012",
+                "transaction": {
+                    "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
+                    "created": "2016-09-14T01:01:01.01Z",
+                    "updated": "2016-09-14T01:01:01.03Z",
+                    "type": "Capture",
+                    "state": "Completed",
+                    "number": 1234567890,
+                    "amount": 1000,
+                    "vatAmount": 250,
+                    "description": "Test transaction",
+                    "payeeReference": "AH123456",
+                    "failedReason": "",
+                    "isOperational": false,
+                    "operations": []
+                }
+            }
+        ]
     }
 }
 ```
 
 {:.table .table-striped}
-| Property               | Type | Description                                                                  |
-| :--------------------- | :-------- | :--------------------------------------------------------------------------- |
-| payment                | string    | The relative URI of the payment this list of capture transactions belong to. |
-| captures.id            | string    | The relative URI of the current  captures  resource.                         |
-| captures.captureList   | array     | The array of capture transaction objects.                                    |
-| captures.captureList[] | object    | The capture transaction object described in the  capture  resource below.    |
+| Property               | Type   | Description                                                                  |
+| :--------------------- | :----- | :--------------------------------------------------------------------------- |
+| payment                | string | The relative URI of the payment this list of capture transactions belong to. |
+| captures.id            | string | The relative URI of the current  captures  resource.                         |
+| captures.captureList   | array  | The array of capture transaction objects.                                    |
+| captures.captureList[] | object | The capture transaction object described in the  capture  resource below.    |
 
 #### Create capture transaction
 
@@ -118,7 +121,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| ✔︎︎︎︎︎ | Property                   | Type   | Required                                                                                                      | Description |
+| ✔︎︎︎︎︎ | Property                   | Type        | Required                                                                                                      | Description |
 | :----- | :------------------------- | :---------- | :------------------------------------------------------------------------------------------------------------ | :---------- |
 | ✔︎︎︎︎︎ | transaction.amount         | integer     | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 100.00 NOK, 5000 50.00 SEK. |
 | ✔︎︎︎︎︎ | transaction.vatAmount      | integer     | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 100.00 NOK, 5000 50.00 SEK. |
@@ -155,11 +158,11 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property            | Type | Description                                                                            |
-| :------------------ | :-------- | :------------------------------------------------------------------------------------- |
-| payment             | string    | The relative URI of the payment this capture transaction belongs to.                   |
-| capture.id          | string    | The relative URI of the created capture transaction.                                   |
-| capture.transaction | object    | The object representation of the generic [transaction resource][transaction-resource]. |
+| Property            | Type   | Description                                                                            |
+| :------------------ | :----- | :------------------------------------------------------------------------------------- |
+| payment             | string | The relative URI of the payment this capture transaction belongs to.                   |
+| capture.id          | string | The relative URI of the created capture transaction.                                   |
+| capture.transaction | object | The object representation of the generic [transaction resource][transaction-resource]. |
 
 #### Capture Sequence
 
@@ -260,10 +263,10 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property      | Type | Description                                                                                  |
-| :------------ | :-------- | :------------------------------------------------------------------------------------------- |
-| payment       | string    | The relative URI of the payment this finalize transaction resource belongs to.               |
-| authorization | object    | The object representation of the [authorization transaction resource][transaction-resource]. |
+| Property      | Type   | Description                                                                                  |
+| :------------ | :----- | :------------------------------------------------------------------------------------------- |
+| payment       | string | The relative URI of the payment this finalize transaction resource belongs to.               |
+| authorization | object | The object representation of the [authorization transaction resource][transaction-resource]. |
 
 ### Cancellations
 
@@ -314,12 +317,12 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property                         | Type | Description                                                                         |
-| :------------------------------- | :-------- | :---------------------------------------------------------------------------------- |
-| payment                          | string    | The relative URI of the payment this list of cancellation transactions belong to.   |
-| cancellations.id                 | string    | The relative URI of the current `cancellations` resource.                           |
-| cancellations.cancellationList   | array     | The array of the cancellation transaction objects.                                  |
-| cancellations.cancellationList[] | object    | The object representation of the cancellation transaction resource described below. |
+| Property                         | Type   | Description                                                                         |
+| :------------------------------- | :----- | :---------------------------------------------------------------------------------- |
+| payment                          | string | The relative URI of the payment this list of cancellation transactions belong to.   |
+| cancellations.id                 | string | The relative URI of the current `cancellations` resource.                           |
+| cancellations.cancellationList   | array  | The array of the cancellation transaction objects.                                  |
+| cancellations.cancellationList[] | object | The object representation of the cancellation transaction resource described below. |
 
 ### Create cancellation transaction
 
@@ -344,7 +347,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| ✔︎︎︎︎︎ | Property                   | Type   | Description                                                                                            |
+| ✔︎︎︎︎︎ | Property                   | Type        | Description                                                                                            |
 | :----- | :------------------------- | :---------- | :----------------------------------------------------------------------------------------------------- |
 | ✔︎︎︎︎︎ | transaction.description    | string      | A textual description of the reason for the cancellation.                                              |
 | ✔︎︎︎︎︎ | transaction.payeeReference | string(30*) | A unique reference for the cancellation transaction. See [payeeReference][payeeReference] for details. |
@@ -383,11 +386,11 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property                 | Type | Description                                                                             |
-| :----------------------- | :-------- | :-------------------------------------------------------------------------------------- |
-| payment                  | string    | The relative URI of the payment this cancellation transaction belongs to.               |
-| cancellation.id          | string    | The relative URI of the current cancellation transaction resource.                      |
-| cancellation.transaction | object    | The object representation of the generic  [transaction resource][transaction-resource]. |
+| Property                 | Type   | Description                                                                             |
+| :----------------------- | :----- | :-------------------------------------------------------------------------------------- |
+| payment                  | string | The relative URI of the payment this cancellation transaction belongs to.               |
+| cancellation.id          | string | The relative URI of the current cancellation transaction resource.                      |
+| cancellation.transaction | object | The object representation of the generic  [transaction resource][transaction-resource]. |
 
 #### Cancel Sequence
 
@@ -525,11 +528,11 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property             | Type | Description                                                                            |
-| :------------------- | :-------- | :------------------------------------------------------------------------------------- |
-| payment              | string    | The relative URI of the payment this reversal transaction belongs to.                  |
-| reversal.id          | string    | The relative URI of the created reversal transaction.                                  |
-| reversal.transaction | object    | The object representation of the generic [transaction resource][transaction-resource]. |
+| Property             | Type   | Description                                                                            |
+| :------------------- | :----- | :------------------------------------------------------------------------------------- |
+| payment              | string | The relative URI of the payment this reversal transaction belongs to.                  |
+| reversal.id          | string | The relative URI of the created reversal transaction.                                  |
+| reversal.transaction | object | The object representation of the generic [transaction resource][transaction-resource]. |
 
 #### Reversal Sequence
 
