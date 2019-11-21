@@ -273,7 +273,7 @@ The structure of a problem message will look like this:
 
 ```js
 {
-    "type": "https://api.externalintegration.payex.com/psp/inputerror",
+    "type": "https://api.payex.com/psp/inputerror",
     "title": "There was an input error",
     "detail": "Please correct the errors and retry the request",
     "instance": "9a20d737-670d-42bf-9a9a-d36736de8721",
