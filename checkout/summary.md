@@ -32,7 +32,7 @@ complies with our **Best Practices**." %}
 
 A completed integration against Swedbank Pay Checkout should adhere to a set of
 best practice criteria in order to successfully go through Swedbank Pay's
-integration validation procedure.
+integration validation procedure. These best practices are mentioned below.
 
 ### Must Haves
 
@@ -46,11 +46,8 @@ integration validation procedure.
 * The `consumerProfileRef` returned in the response from the `POST` request to
   the `consumers` resource must be included in the `POST` request to the
   `paymentorders` resource.
-* The `paymentUrl` is an URL property that redirect the consumer from the payment page and back to the Merchant
-
-{% include payment-url.md
-when="at the 3-D Secure verification for credit card payments" %}
-
+* The `paymentUrl` must be included in the `POST` request of the Payment Order
+  to ensure the best possible handling of retried payments.
 * When the contents of the shopping cart changes or anything else that affects
   the amount occurs, the `paymentorder` must be updated and the Payment Menu
   must be `refresh`ed.

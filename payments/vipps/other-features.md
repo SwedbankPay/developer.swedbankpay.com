@@ -12,7 +12,7 @@ sidebar:
       title: Seamless View
     - url: /payments/vipps/after-payment
       title: After Payment
-    - url: /payments/vipps/other-features    
+    - url: /payments/vipps/other-features
       title: Other Features
 ---
 
