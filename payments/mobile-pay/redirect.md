@@ -17,7 +17,7 @@ sidebar:
 {% include alert.html type="warning"
                       icon="warning"
                       header="Site under development"
-                      body="The Developer Portal is under construction and
+                      body="This section of the Developer Portal is under construction and
                       should not be used to integrate against Swedbank Pay's
                       APIs yet." %}
 
@@ -91,10 +91,10 @@ sequenceDiagram
   PayEx->>Consumer_App: Confirm payment
   Consumer_App-->>PayEx: Payment confirmed
   Deactivate PayEx
-  
+
   PayEx-->>Consumer: redirect to merchant
   note left of PayEx: redirect back to merchant
-  
+
   Consumer->>Merchant: access merchant page
   Activate Merchant
   Merchant->>PayEx: GET <mobilepay payment>

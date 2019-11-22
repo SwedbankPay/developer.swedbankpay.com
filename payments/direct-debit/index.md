@@ -17,7 +17,7 @@ sidebar:
 {% include alert.html type="warning"
                       icon="warning"
                       header="Site under development"
-                      body="The Developer Portal is under construction and
+                      body="This section of the Developer Portal is under construction and
                       should not be used to integrate against Swedbank Pay's
                       APIs yet." %}
 
@@ -92,7 +92,7 @@ sequenceDiagram
   note left of Merchant: Redirect to Swedbank Pay payment pages.
   Consumer->>PayEx: Select bank
   Activate PayEx
-  
+
   PayEx-->>Consumer: redirect to bank and customer identification
   note left of PayEx: Redirect to\n the selected bank's identification page.
   Deactivate PayEx

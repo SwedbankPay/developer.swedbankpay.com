@@ -19,7 +19,7 @@ sidebar:
 {% include alert.html type="warning"
                       icon="warning"
                       header="Site under development"
-                      body="The Developer Portal is under construction and
+                      body="This section of the Developer Portal is under construction and
                       should not be used to integrate against Swedbank Pay's
                       APIs yet." %}
 
@@ -83,10 +83,10 @@ sequenceDiagram
   Merchant-->>PayEx: POST <Create Sales Transaction> (operation=create-sale)
   PayEx-->>Merchant: sales resource
   deactivate PayEx
-  
+
   note left of Merchant: POST containing MSISDN
   Merchant--xBrowser: Tell consumer to open Swish app
-  
+
   activate Swish_API
   activate Swish_App
   Swish_API->>Swish_App: Ask for payment confirmation
@@ -99,7 +99,7 @@ sequenceDiagram
   activate Swish_App
   Swish_API->>Swish_App: Start redirect
   deactivate Swish_API
-  
+
   Swish_App--xBrowser: Redirect
   deactivate Swish_App
   Merchant->>PayEx: GET <Sales transaction>
@@ -110,7 +110,7 @@ sequenceDiagram
   deactivate PayEx
 ```
 
-**Redirect and Payment Status**  
+**Redirect and Payment Status**
 After the payment is confirmed, the consumer will be redirected from the
 Swish app to the completeUrl set in the first API request `POST`
 [Create payment][create-payment] and you need to retrieve payment status

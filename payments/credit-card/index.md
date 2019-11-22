@@ -25,7 +25,7 @@ TODO: This page needs serious clean-up.
 {% include alert.html type="warning"
                       icon="warning"
                       header="Site under development"
-                      body="The Developer Portal is under construction and should not be used to integrate against Swedbank Pay's APIs yet." %}
+                      body="This section of the Developer Portal is under construction and should not be used to integrate against Swedbank Pay's APIs yet." %}
 
 {% include jumbotron.html body="**Credit Card Payments** is the most popular,
 versatile and global way to initate a transaction with a customer. Choose
@@ -173,11 +173,11 @@ sequenceDiagram
     Payer->>+SwedbankPay: access authentication page
     deactivate Payer
   end
-  
+
   SwedbankPay-->>+Payer: redirect to merchant
   deactivate SwedbankPay
   note left of Payer: redirect back to merchant<br>(If Redirect scenario)
-  
+
   Payer->>+Merchant: access merchant page
   deactivate Payer
   Merchant->>+SwedbankPay: GET /psp/creditcard/payments/<paymentorder.id>
