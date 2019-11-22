@@ -42,38 +42,38 @@ Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 
 {
-  "payment": {
-    "operation": "Verify",
-    "currency": "NOK",
-    "description": "Test Verification",
-    "payerReference": "AB1234",
-    "userAgent": "Mozilla/5.0...",
-    "language": "nb-NO",
-    "generatePaymentToken": true,
-    "generateRecurrenceToken": false,
-    "urls": {
-      "hostUrls": ["http://test-dummy.net"],
-      "completeUrl": "http://test-dummy.net/payment-completed",
-      "cancelUrl": "http://test-dummy.net/payment-canceled",
-      "paymentUrl": "http://example.com/perform-payment",
-      "logoUrl": "https://test-dummy.net/payment-logo.png",
-      "termsOfServiceUrl": "https://test-dummy.net/payment-terms.html"
+    "payment": {
+        "operation": "Verify",
+        "currency": "NOK",
+        "description": "Test Verification",
+        "payerReference": "AB1234",
+        "userAgent": "Mozilla/5.0...",
+        "language": "nb-NO",
+        "generatePaymentToken": true,
+        "generateRecurrenceToken": false,
+        "urls": {
+            "hostUrls": [ "https://example.com" ],
+            "completeUrl": "https://example.com/payment-completed",
+            "cancelUrl": "https://example.com/payment-canceled",
+            "paymentUrl": "http://example.com/perform-payment",
+            "logoUrl": "https://example.com/payment-logo.png",
+            "termsOfServiceUrl": "https://example.com/payment-terms.html"
+        },
+        "payeeInfo": {
+            "payeeId": "12345678-1234-1234-1234-123456789012",
+            "payeeReference": "CD1234",
+            "payeeName": "Merchant1",
+            "productCategory": "A123",
+            "orderReference": "or-12456",
+            "subsite": "MySubsite"
+        }
     },
-    "payeeInfo": {
-      "payeeId": "12345678-1234-1234-1234-123456789012",
-      "payeeReference": "CD1234",
-      "payeeName": "Merchant1",
-      "productCategory": "A123",
-      "orderReference": "or-12456",
-      "subsite": "MySubsite"
+    "creditCard": {
+        "rejectCreditCards": false,
+        "rejectDebitCards": false,
+        "rejectConsumerCards": false,
+        "rejectCorporateCards": false
     }
-  },
-  "creditCard": {
-    "rejectCreditCards": false,
-    "rejectDebitCards": false,
-    "rejectConsumerCards": false,
-    "rejectCorporateCards": false
-  }
 }
 ```
 
@@ -99,11 +99,16 @@ Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 
 {
-  "state": "Deleted",
-  "tokenType" : "PaymentToken|RecurrenceToken",
-  "comment": "Comment on why the deletion is happening"
+    "state": "Deleted",
+    "tokenType": "PaymentToken|RecurrenceToken",
+    "comment": "Comment on why the deletion is happening"
 }
 ```
+
+{% comment %}
+TODO: Remove pipes from the above code example and add a property table
+      explaining each property here.
+{% endcomment %}
 
 {:.code-header}
 **Response**
@@ -113,18 +118,23 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "instrumentData": {
-    "id": "/psp/creditcard/payments/instrumentdata/12345678-1234-1234-1234-123456789000",
-    "paymentToken": "12345678-1234-1234-1234-123456789000",
-    "payeeId": "61c65499-de5c-454e-bf4c-043f22538d49",
-    "isDeleted": true|false,
-    "isPayeeToken": false,
-    "cardBrand": "Visa|MasterCard|...",
-    "maskedPan": "123456xxxxxx1111",
-    "expiryDate": "MM/YYYY"
-  }
+    "instrumentData": {
+        "id": "/psp/creditcard/payments/instrumentdata/12345678-1234-1234-1234-123456789000",
+        "paymentToken": "12345678-1234-1234-1234-123456789000",
+        "payeeId": "61c65499-de5c-454e-bf4c-043f22538d49",
+        "isDeleted": true,
+        "isPayeeToken": false,
+        "cardBrand": "Visa|MasterCard|...",
+        "maskedPan": "123456xxxxxx1111",
+        "expiryDate": "MM/YYYY"
+    }
 }
 ```
+
+{% comment %}
+TODO: Remove pipes from the above code example and add a property table
+      explaining each property here.
+{% endcomment %}
 
 -----------------------------
 [card]: /payments/credit-card/

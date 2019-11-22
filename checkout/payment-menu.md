@@ -164,7 +164,7 @@ Content-Type: application/json
         "language": "sv-SE",
         "generateRecurrenceToken": false,
         "urls": {
-            "hostUrls": ["https://example.com", "https://example.net"],
+            "hostUrls": [ "https://example.com", "https://example.net" ],
             "completeUrl": "https://example.com/payment-completed",
             "cancelUrl": "https://example.com/payment-canceled",
             "paymentUrl": "https://example.com/perform-payment",
@@ -176,10 +176,10 @@ Content-Type: application/json
             "payeeReference": "AB832",
             "payeeName": "Merchant1",
             "productCategory": "A123",
-            "orderReference" : "or-123456"
+            "orderReference": "or-123456"
         },
         "payer": {
-             "consumerProfileRef": "7d5788219e5bc43350e75ac633e0480ab30ad20f96797a12b96e54da869714c4"
+            "consumerProfileRef": "7d5788219e5bc43350e75ac633e0480ab30ad20f96797a12b96e54da869714c4"
         },
         "orderItems": [
             {
@@ -213,23 +213,23 @@ Content-Type: application/json
                 "vatAmount": 125
             }
         ],
-        "riskIndicator" : {
-            "deliveryEmailAddress" : "string",
-            "deliveryTimeFrameIndicator" : "01",
-            "preOrderDate" : "YYYYMMDD",
-            "preOrderPurchaseIndicator" : "01",
-            "shipIndicator" : "01",
-            "giftCardPurchase" : false,
-            "reOrderPurchaseIndicator" : "01",
-            "pickUpAddress" : {
-                "name" : "companyname",
-                "streetAddress" : "string",
-                "coAddress" : "string",
-                "city" : "string",
-                "zipCode" : "string",
-                "countryCode" : "string"
+        "riskIndicator": {
+            "deliveryEmailAddress": "string",
+            "deliveryTimeFrameIndicator": "01",
+            "preOrderDate": "YYYYMMDD",
+            "preOrderPurchaseIndicator": "01",
+            "shipIndicator": "01",
+            "giftCardPurchase": false,
+            "reOrderPurchaseIndicator": "01",
+            "pickUpAddress": {
+                "name": "companyname",
+                "streetAddress": "string",
+                "coAddress": "string",
+                "city": "string",
+                "zipCode": "string",
+                "countryCode": "string"
             }
-        },
+        }
     }
 }
 ```
@@ -348,7 +348,7 @@ The HTML code will be unchanged in this example.
 {:.code-header}
 **JavaScript**
 
-```JS
+```js
 window.onload = function () {
     var request = new XMLHttpRequest();
     request.addEventListener('load', function () {

@@ -40,6 +40,8 @@ like to host it locally on your computer, you need to do the following:
      most importantly formatting of Markdown tables with VS Code's built-in
      format functionality.
    * `stkb.rewrap`, to make line-breaking text at 80 characters easier.
+   * `supperchong.pretty-json` to format selected JSON snippets in code
+     examples.
 8. Also in Visual Studio Code, [set up a ruler at 80 characters][vsc-ruler]
    by adding `"editor.rulers": [80]` to its configuration.
 

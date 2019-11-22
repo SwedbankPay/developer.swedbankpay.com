@@ -24,7 +24,7 @@ Content-Type: application/json
     "paymentorder": "/psp/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
     "urls": {
         "id": "/psp/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/urls",
-        "hostUrls": [ "http://test-dummy.net", "http://test-dummy2.net" ],
+        "hostUrls": [ "https://example.com", "http://test-dummy2.net" ],
         "completeUrl": "http://example.com/payment-complete",
         "cancelUrl": "http://example.com/payment-canceled",
         "paymentUrl": "http://example.com/perform-payment",

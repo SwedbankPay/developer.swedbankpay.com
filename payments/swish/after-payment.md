@@ -176,7 +176,7 @@ is given below.
 {:.code-header}
 **Operations**
 
-```JS
+```js
 {
     "operations": [
         {

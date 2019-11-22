@@ -54,11 +54,11 @@ Content-Type: application/json
        "userAgent": "Mozilla/5.0...",
        "language": "sv-SE",
        "urls": {
-           "completeUrl": "http://test-dummy.net/payment-completed",
-           "cancelUrl": "http://test-dummy.net/payment-canceled",
-           "callbackUrl": "http://test-dummy.net/payment-callback",
-           "logoUrl": "http://test-dummy.net/logo.png",
-           "termsOfServiceUrl": "http://test-dummy.net/terms.pdf"
+           "completeUrl": "https://example.com/payment-completed",
+           "cancelUrl": "https://example.com/payment-canceled",
+           "callbackUrl": "https://example.com/payment-callback",
+           "logoUrl": "https://example.com/logo.png",
+           "termsOfServiceUrl": "https://example.com/terms.pdf"
         },
        "payeeInfo": {
            "payeeId": "12345678-1234-1234-1234-123456789012",
@@ -155,7 +155,7 @@ is given below.
 {:.code-header}
 **Operations**
 
-```JS
+```js
 {
    "operations": [
         {

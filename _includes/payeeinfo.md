@@ -27,7 +27,6 @@ Content-Type: application/json
         "payeeName": "TestMerchant1",
         "productCategory": "EF1234",
         "orderReference": "or-123456"
-
     }
 }
 ```

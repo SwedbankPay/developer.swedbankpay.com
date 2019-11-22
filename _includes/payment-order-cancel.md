@@ -47,7 +47,7 @@ Content-Type: application/json
             "amount": 5610,
             "vatAmount": 1122,
             "description": "Cancelling parts of the authorized payment",
-            "payeeReference": "AB832",
+            "payeeReference": "AB832"
         }
     }
 }

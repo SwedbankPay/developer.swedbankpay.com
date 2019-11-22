@@ -155,10 +155,10 @@ Please visit our [demoshop][demoshop] to view our Payment Menu and Redirect
 implementation in action. Use the configuration below:
 
 ```markdown
-TODO: Insert picture from demoshop showing the following configuration:  
-Swedbank Pay Payment Pages  
-Seamless View  
-Norway  
+TODO: Insert picture from demoshop showing the following configuration:
+Swedbank Pay Payment Pages
+Seamless View
+Norway
 English
 ```
 
@@ -176,7 +176,7 @@ Seamless View scenario will generate a one-phased sales transaction. A two-phase
 credit card payment would during the same scenario generate an authorization
 transaction, and the `rel` value would in that case be `view-authorization`.
 
-```JS
+```js
 Operations
 {
    "operations": [
@@ -193,7 +193,7 @@ Operations
 
 To integrate the payment page script, you need to prepare you front end:
 
-1. You need to create a container that will contain  the Seamless View iframe:  
+1. You need to create a container that will contain  the Seamless View iframe:
   `<div id="payex-hosted-payment-page">`.
 2. You also need to create a `<script>` source within the container, using the
   href value you obtained when submitting your initial POST. As mentioned above,
@@ -265,7 +265,7 @@ one-phased sales transaction. A two-phase credit card payment would during the
 same scenario generate an authorization transaction, and the  rel description
 would in that case be `"redirect-authorization"`.
 
-```JS
+```js
 {
    "operations": [
         {

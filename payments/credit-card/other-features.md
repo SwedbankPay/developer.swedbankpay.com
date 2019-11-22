@@ -112,13 +112,13 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "urls": {
-            "hostUrls": ["http://test-dummy.net"],
-            "completeUrl": "http://test-dummy.net/payment-completed",
-            "cancelUrl": "http://test-dummy.net/payment-canceled",
+            "hostUrls": ["https://example.com"],
+            "completeUrl": "https://example.com/payment-completed",
+            "cancelUrl": "https://example.com/payment-canceled",
             "paymentUrl": "http://example.com/perform-payment",
-            "callbackUrl": "http://test-dummy.net/payment-callback",
-            "logoUrl": "http://test-dummy.net/payment-logo.png",
-            "termsOfServiceUrl": "http://test-dummy.net/payment-terms.pdf",
+            "callbackUrl": "https://example.com/payment-callback",
+            "logoUrl": "https://example.com/payment-logo.png",
+            "termsOfServiceUrl": "https://example.com/payment-terms.pdf",
         },
         "payeeInfo": {
             "payeeId": "12345678-1234-1234-1234-123456789012",
@@ -371,7 +371,7 @@ Content-Type: application/json
        "userAgent": "Mozilla/5.0...",
        "language": "nb-NO",
        "urls": {
-           "callbackUrl": "http://test-dummy.net/payment-callback"
+           "callbackUrl": "https://example.com/payment-callback"
         },
        "payeeInfo": {
            "payeeId": "12345678-1234-1234-1234-123456789012",
@@ -430,7 +430,7 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0",
         "language": "nb-NO",
         "urls": {
-            "callbackUrl": "http://test-dummy.net/payment-callback"
+            "callbackUrl": "https://example.com/payment-callback"
         },
         "payeeInfo": {
             "payeeId": "12345678-1234-1234-1234-123456789012",
@@ -573,12 +573,12 @@ Content-Type: application/json
     "generatePaymentToken": true,
     "generateRecurrenceToken": false,
     "urls": {
-      "hostUrls": ["http://test-dummy.net"],
-      "completeUrl": "http://test-dummy.net/payment-completed",
-      "cancelUrl": "http://test-dummy.net/payment-canceled",
+      "hostUrls": ["https://example.com"],
+      "completeUrl": "https://example.com/payment-completed",
+      "cancelUrl": "https://example.com/payment-canceled",
       "paymentUrl": "http://example.com/perform-payment",
-      "logoUrl": "https://test-dummy.net/payment-logo.png",
-      "termsOfServiceUrl": "https://test-dummy.net/payment-terms.html"
+      "logoUrl": "https://example.com/payment-logo.png",
+      "termsOfServiceUrl": "https://example.com/payment-terms.html"
     },
     "payeeInfo": {
       "payeeId": "12345678-1234-1234-1234-123456789012",

@@ -35,9 +35,9 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "urls": {
-            "completeUrl": "http://test-dummy.net/payment-completed",
-            "cancelUrl": "http://test-dummy.net/payment-canceled",
-            "callbackUrl": "http://test-dummy.net/payment-callback",
+            "completeUrl": "https://example.com/payment-completed",
+            "cancelUrl": "https://example.com/payment-canceled",
+            "callbackUrl": "https://example.com/payment-callback",
             "logoUrl": "https://example.com/logo.png",
             "termsOfServiceUrl": "https://example.com/terms.pdf"
         },
@@ -136,7 +136,7 @@ and their explanation is given below.
 {:.code-header}
 **Operations**
 
-```JS
+```js
 {
     "operations": [
         {
@@ -225,8 +225,7 @@ Content-Type: application/json
                     "failedErrorCode": "",
                     "failedErrorDescription": "",
                     "isOperational": "TRUE|FALSE",
-                    "operations": [
-                    ]
+                    "operations": []
                 }
             },
             {
