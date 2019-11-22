@@ -19,7 +19,7 @@ sidebar:
 {% include alert.html type="warning"
                       icon="warning"
                       header="Site under development"
-                      body="The Developer Portal is under construction and
+                      body="This section of the Developer Portal is under construction and
                       should not be used to integrate against Swedbank Pay's
                       APIs yet." %}
 
@@ -75,7 +75,7 @@ sequenceDiagram
 ### Options after posting a payment
 
 Head over to [after payment][after-payment]
-to see what you can do when a payment is completed.  
+to see what you can do when a payment is completed.
 Here you will also find info on `Capture`, `Cancel`, and `Reversal`.
 
 {% include iterator.html prev_href="./" prev_title="Back: Introduction"

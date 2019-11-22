@@ -18,11 +18,6 @@ sidebar:
       title: Other Features
 ---
 
-{% include alert.html type="warning"
-                      icon="warning"
-                      header="Site under development"
-                      body="The Developer Portal is under construction and should not be used to integrate against Swedbank Pay's APIs yet." %}
-
 {% include jumbotron.html body="Swedbank Pay Checkout consists of two parts:
 **Checkin** and **Payment Menu**. In the sections that follow you'll find
 examples of the HTTP requests, responses and HTML code you will need to
