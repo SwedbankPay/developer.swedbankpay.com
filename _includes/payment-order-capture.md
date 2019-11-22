@@ -49,44 +49,44 @@ Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 
 {
-  "transaction": {
-    "description": "Capturing the authorized payment",
-    "amount": 1500,
-    "vatAmount": 375,
-    "payeeReference": "AB832"
-    "orderItems": [
-        {
-            "reference": "P1",
-            "name": "Product1",
-            "type": "PRODUCT",
-            "class": "ProductGroup1",
-            "itemUrl": "https://example.com/products/123",
-            "imageUrl": "https://example.com/product123.jpg",
-            "description": "Product 1 description",
-            "discountDescription": "Volume discount",
-            "quantity": 4,
-            "quantityUnit": "pcs",
-            "unitPrice": 300,
-            "discountPrice": 200,
-            "vatPercent": 2500,
-            "amount": 1000,
-            "vatAmount": 250
-        },
-        {
-            "reference": "P2",
-            "name": "Product2",
-            "type": "PRODUCT",
-            "class": "ProductGroup1",
-            "description": "Product 2 description",
-            "quantity": 1,
-            "quantityUnit": "pcs",
-            "unitPrice": 500,
-            "vatPercent": 2500,
-            "amount": 500,
-            "vatAmount": 125
-        }
-    ],
-  }
+    "transaction": {
+        "description": "Capturing the authorized payment",
+        "amount": 1500,
+        "vatAmount": 375,
+        "payeeReference": "AB832",
+        "orderItems": [
+            {
+                "reference": "P1",
+                "name": "Product1",
+                "type": "PRODUCT",
+                "class": "ProductGroup1",
+                "itemUrl": "https://example.com/products/123",
+                "imageUrl": "https://example.com/product123.jpg",
+                "description": "Product 1 description",
+                "discountDescription": "Volume discount",
+                "quantity": 4,
+                "quantityUnit": "pcs",
+                "unitPrice": 300,
+                "discountPrice": 200,
+                "vatPercent": 2500,
+                "amount": 1000,
+                "vatAmount": 250
+            },
+            {
+                "reference": "P2",
+                "name": "Product2",
+                "type": "PRODUCT",
+                "class": "ProductGroup1",
+                "description": "Product 2 description",
+                "quantity": 1,
+                "quantityUnit": "pcs",
+                "unitPrice": 500,
+                "vatPercent": 2500,
+                "amount": 500,
+                "vatAmount": 125
+            }
+        ]
+    }
 }
 ```
 
@@ -135,7 +135,7 @@ Content-Type: application/json
             "amount": 15610,
             "vatAmount": 3122,
             "description": "Capturing the authorized payment",
-            "payeeReference": "AB832",
+            "payeeReference": "AB832"
         }
     }
 }

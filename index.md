@@ -332,7 +332,7 @@ more about the payment instrument specific problem messages below:
   [ruby-tls]: https://stackoverflow.com/a/11059873/61818
   [python-tls]: https://docs.python.org/2/library/ssl.html#ssl.PROTOCOL_TLSv1_2
   [node-tls]: https://stackoverflow.com/a/44635449/61818
-  [ssllabs]: https://www.ssllabs.com/ssltest/analyze.html?d=api.externalintegration.payex.com
+  [ssllabs]: https://www.ssllabs.com/ssltest/analyze.html?d=api.payex.com
   [content-type]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type
   [admin]: https://admin.externalintegration.payex.com/psp/login
   [admin-guide]: #

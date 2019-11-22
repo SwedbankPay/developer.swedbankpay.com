@@ -165,7 +165,7 @@ redirect-authorization hyperlink.
 {:.code-header}
 **Request**
 
-```JS
+```js
 {
    "payment": {
        "operation": "Purchase"
@@ -184,7 +184,7 @@ A list of possible operations and their explanation is given below.
 {:.code-header}
 **Operations**
 
-```JS
+```js
 {
    "payment": {},
    "operations": [

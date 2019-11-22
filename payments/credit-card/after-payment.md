@@ -138,21 +138,21 @@ Content-Type: application/json
 {
     "payment": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
     "capture": {
-            "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures/12345678-1234-1234-1234-123456789012",
-            "transaction": {
-                   "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
-                   "created": "2016-09-14T01:01:01.01Z",
-                   "updated": "2016-09-14T01:01:01.03Z",
-                   "type": "Capture",
-                   "state": "Completed",
-                   "number": 1234567890,
-                   "amount": 1500,
-                   "vatAmount": 250,
-                   "description": "Test Capture",
-                   "payeeReference": "ABC123",
-                   "isOperational": false,
-                   "operations": []
-            }
+        "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures/12345678-1234-1234-1234-123456789012",
+        "transaction": {
+            "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
+            "created": "2016-09-14T01:01:01.01Z",
+            "updated": "2016-09-14T01:01:01.03Z",
+            "type": "Capture",
+            "state": "Completed",
+            "number": 1234567890,
+            "amount": 1500,
+            "vatAmount": 250,
+            "description": "Test Capture",
+            "payeeReference": "ABC123",
+            "isOperational": false,
+            "operations": []
+        }
     }
 }
 ```

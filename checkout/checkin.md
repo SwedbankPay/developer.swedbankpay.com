@@ -114,7 +114,7 @@ Content-Type: application/json
             "method": "GET",
             "rel": "view-consumer-identification",
             "href": "https://ecom.externalintegration.payex.com/consumers/core/scripts/client/px.consumer.client.js?token=7e380fbb3196ea76cc45814c1d99d59b66db918ce2131b61f585645eff364871",
-            "contentType": "application/javascript",
+            "contentType": "application/javascript"
         }
     ]
 }
@@ -177,7 +177,7 @@ it comes to handling the check-in and payment menu.
 {:.code-header}
 **JavaScript**
 
-```JS
+```js
 window.onload = function () {
     var request = new XMLHttpRequest();
     request.addEventListener('load', function () {
@@ -249,7 +249,7 @@ the following argument objects:
 {:.code-header}
 **Consumer Identified Event Argument Object**
 
-```JS
+```js
 {
     "actionType": "OnConsumerIdentified",
     "consumerProfileRef": "7d5788219e5bc43350e75ac633e0480ab30ad20f96797a12b96e54da869714c4"
@@ -259,7 +259,7 @@ the following argument objects:
 {:.code-header}
 **Shipping Details Available Event Argument Object**
 
-```JS
+```js
 {
     "actionType": "OnShippingDetailsAvailable",
     "url": "https://api.externalintegration.payex.com/psp/consumers/<consumerProfileRef>/shipping-details"
