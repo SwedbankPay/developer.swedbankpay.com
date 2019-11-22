@@ -18,11 +18,6 @@ sidebar:
       title: Other Features
 ---
 
-{% include alert.html type="warning"
-                      icon="warning"
-                      header="Site under development"
-                      body="The Developer Portal is under construction and should not be used to integrate against Swedbank Pay's APIs yet." %}
-
 {% include jumbotron.html body="When the consumer has **completed** the entire
 [Checkin](checkin) and [Payment Menu](payment-menu), you need to implement the
 relevant **after-payment operations** in your order system. Which these

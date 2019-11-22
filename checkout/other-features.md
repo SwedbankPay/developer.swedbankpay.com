@@ -18,13 +18,6 @@ sidebar:
       title: Other Features
 ---
 
-{% include alert.html type="warning"
-                      icon="warning"
-                      header="Site under development"
-                      body="The Developer Portal is under construction and
-                      should not be used to integrate against Swedbank Pay's
-                      APIs yet." %}
-
 {% include jumbotron.html body="After a successful integration, it may be worth
 investigating which **other features** are available in Swedbank Pay Checkout.
 They are listed on this very page." %}

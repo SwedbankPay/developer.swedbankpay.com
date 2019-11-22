@@ -18,11 +18,6 @@ sidebar:
       title: Other Features
 ---
 
-{% include alert.html type="warning"
-                      icon="warning"
-                      header="Site under development"
-                      body="The Developer Portal is under construction and should not be used to integrate against Swedbank Pay's APIs yet." %}
-
 {% include jumbotron.html body="If you have read this far, you should now be
 done with the basic integration of Swedbank Pay Checkout. Congratulations!
 Read on to check items on the check list to ensure that your integration

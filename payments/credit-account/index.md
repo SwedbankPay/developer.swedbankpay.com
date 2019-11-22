@@ -15,7 +15,7 @@ sidebar:
 {% include alert.html type="warning"
                       icon="warning"
                       header="Site under development"
-                      body="The Developer Portal is under construction and
+                      body="This section of the Developer Portal is under construction and
                       should not be used to integrate against Swedbank Pay's
                       APIs yet." %}
 
@@ -28,7 +28,7 @@ sidebar:
                       payment instrument in Swedbank Pay Checkout and Sweden
                       at the moment." %}
 
-## Sequence with unsigned CreditAccount  
+## Sequence with unsigned CreditAccount
 
 Payment sequence when signing is required.
 
@@ -113,7 +113,7 @@ sequenceDiagram
   deactivate Merchant
 ```
 
-## Sequence with signed CreditAccount  
+## Sequence with signed CreditAccount
 
 Payment sequence when signing is not required.
 
