@@ -29,7 +29,7 @@ depending on if you want to make an initial charge or not:
 {:.code-header}
 **Attribute**
 
-```JS
+```js
 "generateRecurrenceToken": "true"
 ```
 
@@ -114,43 +114,43 @@ certain card types are optional and set on contract level." %}
 
 ```http
 POST /psp/creditcard/payments HTTP/1.1
-Host: api.payex.com
+Host: api.externalintegration.payex.com
 Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 
 {
-  "payment": {
-    "operation": "Verify",
-    "currency": "NOK",
-    "description": "Test Verification",
-    "payerReference": "AB1234",
-    "userAgent": "Mozilla/5.0...",
-    "language": "nb-NO",
-    "generatePaymentToken": true,
-    "generateRecurrenceToken": false,
-    "urls": {
-      "hostUrls": ["http://test-dummy.net"],
-      "completeUrl": "http://test-dummy.net/payment-completed",
-      "cancelUrl": "http://test-dummy.net/payment-canceled",
-      "paymentUrl": "http://example.com/perform-payment",
-      "logoUrl": "https://test-dummy.net/payment-logo.png",
-      "termsOfServiceUrl": "https://test-dummy.net/payment-terms.html"
+    "payment": {
+        "operation": "Verify",
+        "currency": "NOK",
+        "description": "Test Verification",
+        "payerReference": "AB1234",
+        "userAgent": "Mozilla/5.0...",
+        "language": "nb-NO",
+        "generatePaymentToken": true,
+        "generateRecurrenceToken": false,
+        "urls": {
+            "hostUrls": [ "https://example.com" ],
+            "completeUrl": "https://example.com/payment-completed",
+            "cancelUrl": "https://example.com/payment-canceled",
+            "paymentUrl": "http://example.com/perform-payment",
+            "logoUrl": "https://example.com/payment-logo.png",
+            "termsOfServiceUrl": "https://example.com/payment-terms.html"
+        },
+        "payeeInfo": {
+            "payeeId": "12345678-1234-1234-1234-123456789012",
+            "payeeReference": "CD1234",
+            "payeeName": "Merchant1",
+            "productCategory": "A123",
+            "orderReference": "or-12456",
+            "subsite": "MySubsite"
+        }
     },
-    "payeeInfo": {
-      "payeeId": "12345678-1234-1234-1234-123456789012",
-      "payeeReference": "CD1234",
-      "payeeName": "Merchant1",
-      "productCategory": "A123",
-      "orderReference": "or-12456",
-      "subsite": "MySubsite"
+    "creditCard": {
+        "rejectCreditCards": false,
+        "rejectDebitCards": false,
+        "rejectConsumerCards": false,
+        "rejectCorporateCards": false
     }
-  },
-  "creditCard": {
-    "rejectCreditCards": false,
-    "rejectDebitCards": false,
-    "rejectConsumerCards": false,
-    "rejectCorporateCards": false
-  }
 }
 ```
 
@@ -184,7 +184,7 @@ Content-Type: application/json
     },
     "operations": [
         {
-            "href": "https://api.payex.com/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+            "href": "https://api.externalintegration.payex.com/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
             "rel": "update-payment-abort",
             "method": "PATCH",
             "contentType": "application/json"

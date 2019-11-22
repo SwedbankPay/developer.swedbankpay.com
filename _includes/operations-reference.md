@@ -333,7 +333,7 @@ Content-Type: application/json
             "amount": 15610,
             "vatAmount": 3122,
             "description": "Capturing the authorized payment",
-            "payeeReference": "AB832",
+            "payeeReference": "AB832"
         }
     }
 }
@@ -370,10 +370,10 @@ Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 
 {
-  "paymentorder": {
-    "operation": "Abort",
-    "abortReason": "CancelledByConsumer"
-  }
+    "paymentorder": {
+        "operation": "Abort",
+        "abortReason": "CancelledByConsumer"
+    }
 }
 ```
 
@@ -472,7 +472,7 @@ Content-Type: application/json
             "amount": 5610,
             "vatAmount": 1122,
             "description": "Cancelling parts of the authorized payment",
-            "payeeReference": "AB832",
+            "payeeReference": "AB832"
         }
     }
 }
@@ -540,7 +540,7 @@ Content-Type: application/json
             "amount": 5610,
             "vatAmount": 1122,
             "description": "Reversing the capture amount",
-            "payeeReference": "ABC987",
+            "payeeReference": "ABC987"
         }
     }
 }

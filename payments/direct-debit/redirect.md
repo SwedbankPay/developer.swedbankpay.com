@@ -33,7 +33,7 @@ response that includes one or more expanded sub-resources inlined.
 ```HTTP
 Request
 POST /psp/directdebit/payments HTTP/1.1
-Host: api.payex.com
+Host: api.externalintegration.payex.com
 Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 
@@ -54,11 +54,11 @@ Content-Type: application/json
        "userAgent": "Mozilla/5.0...",
        "language": "sv-SE",
        "urls": {
-           "completeUrl": "http://test-dummy.net/payment-completed",
-           "cancelUrl": "http://test-dummy.net/payment-canceled",
-           "callbackUrl": "http://test-dummy.net/payment-callback",
-           "logoUrl": "http://test-dummy.net/logo.png",
-           "termsOfServiceUrl": "http://test-dummy.net/terms.pdf"
+           "completeUrl": "https://example.com/payment-completed",
+           "cancelUrl": "https://example.com/payment-canceled",
+           "callbackUrl": "https://example.com/payment-callback",
+           "logoUrl": "https://example.com/logo.png",
+           "termsOfServiceUrl": "https://example.com/terms.pdf"
         },
        "payeeInfo": {
            "payeeId": "12345678-1234-1234-1234-123456789012",
@@ -130,12 +130,12 @@ Content-Type: application/json
   },
    "operations": [
         {
-           "href": "https://api.payex.com/psp/directdebit/payments/<paymentId>/sales",
+           "href": "https://api.externalintegration.payex.com/psp/directdebit/payments/<paymentId>/sales",
            "rel": "redirect-sale",
            "method": "POST"
         },
         {
-           "href": "http://api.payex.com/psp/directdebit/payments/<paymentId>",
+           "href": "http://api.externalintegration.payex.com/psp/directdebit/payments/<paymentId>",
            "rel": "update-payment-abort",
            "method": "PATCH"
         }
@@ -155,7 +155,7 @@ is given below.
 {:.code-header}
 **Operations**
 
-```JS
+```js
 {
    "operations": [
         {
@@ -206,7 +206,7 @@ specific payment.
 
 ```HTTP
 GET /psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/sales HTTP/1.1
-Host: api.payex.com
+Host: api.externalintegration.payex.com
 Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 ```
@@ -269,7 +269,7 @@ Content-Type: application/json
                    "isOperational": "TRUE|FALSE",
                    "operations": [
                         {
-                           "href": "https://api.payex.com/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+                           "href": "https://api.externalintegration.payex.com/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
                            "rel": "edit-sale",
                            "method": "PATCH"
                         }
@@ -296,7 +296,7 @@ specific payment.
 
 ```HTTP
 GET /psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals HTTP/1.1
-Host: api.payex.com
+Host: api.externalintegration.payex.com
 Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 ```
@@ -353,7 +353,7 @@ A callback request will follow from PayEx.
 
 ```HTTP
 POST /psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals HTTP/1.1
-Host: api.payex.com
+Host: api.externalintegration.payex.com
 Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 

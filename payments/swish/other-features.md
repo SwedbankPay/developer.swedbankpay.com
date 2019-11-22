@@ -37,7 +37,7 @@ sidebar:
 
 {% include prices.md %}
 
-### Problem messages  
+### Problem messages
 
 When performing unsuccessful operations, the eCommerce API will respond with a
 problem message.
@@ -49,7 +49,7 @@ of the problem.
 ### Error types from Swish and third parties
 
 All Swish error types will have the following URI in front of type:
-`https://api.payex.com/psp/<errordetail>/swish`
+`https://api.externalintegration.payex.com/psp/<errordetail>/swish`
 
 {:.table .table-striped}
 | Type                 | Status | Error code           | Details                                                                                         |

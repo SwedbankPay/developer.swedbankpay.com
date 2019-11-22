@@ -56,7 +56,7 @@ made on a specific payment.
 
 ```http
 GET /psp/invoice/payments/<payments-id>/authorizations HTTP/1.1
-Host: api.payex.com
+Host: api.externalintegration.payex.com
 Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 ```
@@ -99,7 +99,7 @@ Content-Type: application/json
           "isOperational": false,
           "operations": [
             {
-              "href": "https://api.payex.com/psp/invoice/payments/<payments-id>",
+              "href": "https://api.externalintegration.payex.com/psp/invoice/payments/<payments-id>",
               "rel": "edit-authorization",
               "method": "PATCH"
             }
@@ -121,7 +121,7 @@ operation as returned in a previously created invoice payment.
 
 ```http
 POST /psp/invoice/payments/<payments-id>/authorizations HTTP/1.1
-Host: api.payex.com
+Host: api.externalintegration.payex.com
 Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 
@@ -223,7 +223,7 @@ Content-Type: application/json
       "isOperational": "TRUE|FALSE",
       "operations": [
         {
-          "href": "https://api.payex.com/psp/invoice/payments/<payments-id>",
+          "href": "https://api.externalintegration.payex.com/psp/invoice/payments/<payments-id>",
           "rel": "edit-authorization",
           "method": "PATCH"
         }

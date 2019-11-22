@@ -34,13 +34,13 @@ about this update.
 
 ```js
 {
-   "payment": {
-       "id": "/psp/<payment instrument>/payments/<payment-id>",
-       "number": 222222222
+    "payment": {
+        "id": "/psp/<payment instrument>/payments/<payment-id>",
+        "number": 222222222
     },
-   "transaction": {
-       "id": "/psp/<payment instrument>/payments/<payment-id>/<transaction type>/<transaction-id>",
-       "number": 333333333
+    "transaction": {
+        "id": "/psp/<payment instrument>/payments/<payment-id>/<transaction type>/<transaction-id>",
+        "number": 333333333
     }
 }
 ```
@@ -50,15 +50,15 @@ about this update.
 
 ```js
 {
-    "paymentOrder":{
+    "paymentOrder": {
         "id": "/psp/paymentorders/<paymentorder-id>",
         "instrument": "<payment instrument>"
     },
-    "payment":{
+    "payment": {
         "id": "/psp/<payment instrument>/payments/<payment-id>",
         "number": 222222222
     },
-    "transaction":{
+    "transaction": {
         "id": "/psp/<payment instrument>/payments/<payment-id>/<transaction type>/<transaction-id>",
         "number": 333333333
     }

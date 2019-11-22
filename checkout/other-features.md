@@ -644,7 +644,7 @@ other payment instrument properties, by [expanding the sub-resource][expanding]
 
 ```http
 GET /psp/paymentorders/<paymentorderId>?$expand=currentpayment HTTP/1.1
-Host: api.payex.com
+Host: api.externalintegration.payex.com
 ```
 
 ### Creating recurring payments
@@ -659,7 +659,7 @@ recurrence token during the initial payment order.
 
 ```http
 POST /psp/paymentorders HTTP/1.1
-Host: api.payex.com
+Host: api.externalintegration.payex.com
 Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 
@@ -766,7 +766,7 @@ instead.
 
 ```http
 GET /psp/paymentorders<paymentorderId>/payments HTTP/1.1
-Host: api.payex.com
+Host: api.externalintegration.payex.com
 Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 
@@ -811,7 +811,7 @@ payment order container.
 
 ```http
 GET /psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/currentpayment HTTP/1.1
-Host: api.payex.com
+Host: api.externalintegration.payex.com
 Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 ```
@@ -907,7 +907,7 @@ during login/checkin.
 
 ```http
 GET /psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/payers/ HTTP/1.1
-Host: api.payex.com
+Host: api.externalintegration.payex.com
 Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 ```

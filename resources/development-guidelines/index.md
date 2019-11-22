@@ -1,17 +1,11 @@
 ---
-title: Open Source Development Guidelines
+title: Swedbank Pay Open Source Development Guidelines
 sidebar:
   navigation:
-  - title: Resources
+  - title: Swedbank Pay Development Guidelines
     items:
-    - url: /resources/
-      title: Introduction
-    - url: /resources/test-data
-      title: Test Data
-    - url: /resources/demoshop
-      title: Demoshop
     - url: /resources/development-guidelines
-      title: Open Source Development Guidelines
+      title: Introduction
     - url: /resources/development-guidelines/code-of-conduct
       title: Code Of Conduct
     - url: /resources/development-guidelines/contributing

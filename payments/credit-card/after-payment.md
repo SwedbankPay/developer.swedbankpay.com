@@ -28,17 +28,17 @@ sidebar:
 ### Options after posting a payment
 
 * *Abort:* It is possible to abort the process, if the payment has no successful
-transactions. [See the PATCH payment description][abort].  
+transactions. [See the PATCH payment description][abort].
 * If the payment shown above is done as a two phase (`Authorization`), you will
-need to implement the `Capture` and `Cancel` requests.  
-* For `reversals`, you will need to implement the [Reversal request][reversal].  
+need to implement the `Capture` and `Cancel` requests.
+* For `reversals`, you will need to implement the [Reversal request][reversal].
 * If you did a `PreAuthorization`, you will have to send a
-[Finalize request][finalize] to finalize the transaction.  
+[Finalize request][finalize] to finalize the transaction.
 * *If CallbackURL is set:* Whenever changes to the payment occur a
 [Callback request][callback] will be posted to the callbackUrl, which was
-generated when the payment was created.  
+generated when the payment was created.
 
-### Capture  
+### Capture
 
 The `captures` resource list the capture transactions (one or more) on a
 specific payment.
@@ -48,7 +48,7 @@ specific payment.
 
 ```HTTP
 GET /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures HTTP/1.1
-Host: api.payex.com
+Host: api.externalintegration.payex.com
 Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 ```
@@ -59,39 +59,42 @@ Content-Type: application/json
 ```HTTP
 HTTP/1.1 200 OK
 Content-Type: application/json
+
 {
     "payment": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
     "captures": {
-            "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures",
-            "captureList": [{
-                    "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures/12345678-1234-1234-1234-123456789012",
-                    "transaction": {
-                            "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
-                            "created": "2016-09-14T01:01:01.01Z",
-                            "updated": "2016-09-14T01:01:01.03Z",
-                            "type": "Capture",
-                            "state": "Completed",
-                            "number": 1234567890,
-                            "amount": 1000,
-                            "vatAmount": 250,
-                            "description": "Test transaction",
-                            "payeeReference": "AH123456",
-                            "failedReason": "",
-                            "isOperational": false,
-                            "operations": []
-                    }
-            }]
+        "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures",
+        "captureList": [
+            {
+                "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures/12345678-1234-1234-1234-123456789012",
+                "transaction": {
+                    "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
+                    "created": "2016-09-14T01:01:01.01Z",
+                    "updated": "2016-09-14T01:01:01.03Z",
+                    "type": "Capture",
+                    "state": "Completed",
+                    "number": 1234567890,
+                    "amount": 1000,
+                    "vatAmount": 250,
+                    "description": "Test transaction",
+                    "payeeReference": "AH123456",
+                    "failedReason": "",
+                    "isOperational": false,
+                    "operations": []
+                }
+            }
+        ]
     }
 }
 ```
 
 {:.table .table-striped}
-| Property               | Type | Description                                                                  |
-| :--------------------- | :-------- | :--------------------------------------------------------------------------- |
-| payment                | string    | The relative URI of the payment this list of capture transactions belong to. |
-| captures.id            | string    | The relative URI of the current  captures  resource.                         |
-| captures.captureList   | array     | The array of capture transaction objects.                                    |
-| captures.captureList[] | object    | The capture transaction object described in the  capture  resource below.    |
+| Property               | Type   | Description                                                                  |
+| :--------------------- | :----- | :--------------------------------------------------------------------------- |
+| payment                | string | The relative URI of the payment this list of capture transactions belong to. |
+| captures.id            | string | The relative URI of the current  captures  resource.                         |
+| captures.captureList   | array  | The array of capture transaction objects.                                    |
+| captures.captureList[] | object | The capture transaction object described in the  capture  resource below.    |
 
 #### Create capture transaction
 
@@ -103,7 +106,7 @@ need to perform the create-capture operation.
 
 ```HTTP
 POST /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures HTTP/1.1
-Host: api.payex.com
+Host: api.externalintegration.payex.com
 Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 
@@ -118,7 +121,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| ✔︎︎︎︎︎ | Property                   | Type   | Required                                                                                                      | Description |
+| ✔︎︎︎︎︎ | Property                   | Type        | Required                                                                                                      | Description |
 | :----- | :------------------------- | :---------- | :------------------------------------------------------------------------------------------------------------ | :---------- |
 | ✔︎︎︎︎︎ | transaction.amount         | integer     | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 100.00 NOK, 5000 50.00 SEK. |
 | ✔︎︎︎︎︎ | transaction.vatAmount      | integer     | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 100.00 NOK, 5000 50.00 SEK. |
@@ -135,31 +138,31 @@ Content-Type: application/json
 {
     "payment": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
     "capture": {
-            "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures/12345678-1234-1234-1234-123456789012",
-            "transaction": {
-                   "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
-                   "created": "2016-09-14T01:01:01.01Z",
-                   "updated": "2016-09-14T01:01:01.03Z",
-                   "type": "Capture",
-                   "state": "Completed",
-                   "number": 1234567890,
-                   "amount": 1500,
-                   "vatAmount": 250,
-                   "description": "Test Capture",
-                   "payeeReference": "ABC123",
-                   "isOperational": false,
-                   "operations": []
-            }
+        "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures/12345678-1234-1234-1234-123456789012",
+        "transaction": {
+            "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
+            "created": "2016-09-14T01:01:01.01Z",
+            "updated": "2016-09-14T01:01:01.03Z",
+            "type": "Capture",
+            "state": "Completed",
+            "number": 1234567890,
+            "amount": 1500,
+            "vatAmount": 250,
+            "description": "Test Capture",
+            "payeeReference": "ABC123",
+            "isOperational": false,
+            "operations": []
+        }
     }
 }
 ```
 
 {:.table .table-striped}
-| Property            | Type | Description                                                                            |
-| :------------------ | :-------- | :------------------------------------------------------------------------------------- |
-| payment             | string    | The relative URI of the payment this capture transaction belongs to.                   |
-| capture.id          | string    | The relative URI of the created capture transaction.                                   |
-| capture.transaction | object    | The object representation of the generic [transaction resource][transaction-resource]. |
+| Property            | Type   | Description                                                                            |
+| :------------------ | :----- | :------------------------------------------------------------------------------------- |
+| payment             | string | The relative URI of the payment this capture transaction belongs to.                   |
+| capture.id          | string | The relative URI of the created capture transaction.                                   |
+| capture.transaction | object | The object representation of the generic [transaction resource][transaction-resource]. |
 
 #### Capture Sequence
 
@@ -194,7 +197,7 @@ from the `redirect-authorization` operation and find the operation
 
 ```http
 PATCH /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations/<transactionId> HTTP/1.1
-Host: api.payex.com
+Host: api.externalintegration.payex.com
 Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 
@@ -249,7 +252,7 @@ Content-Type: application/json
             "isOperational": true,
             "operations": [
                 {
-                    "href": "https://api.payex.com/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+                    "href": "https://api.externalintegration.payex.com/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
                     "rel": "edit-authorization",
                     "method": "PATCH"
                 }
@@ -260,10 +263,10 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property      | Type | Description                                                                                  |
-| :------------ | :-------- | :------------------------------------------------------------------------------------------- |
-| payment       | string    | The relative URI of the payment this finalize transaction resource belongs to.               |
-| authorization | object    | The object representation of the [authorization transaction resource][transaction-resource]. |
+| Property      | Type   | Description                                                                                  |
+| :------------ | :----- | :------------------------------------------------------------------------------------------- |
+| payment       | string | The relative URI of the payment this finalize transaction resource belongs to.               |
+| authorization | object | The object representation of the [authorization transaction resource][transaction-resource]. |
 
 ### Cancellations
 
@@ -275,7 +278,7 @@ payment.
 
 ```HTTP
 GET /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/cancellations HTTP/1.1
-Host: api.payex.com
+Host: api.externalintegration.payex.com
 Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 ```
@@ -314,12 +317,12 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property                         | Type | Description                                                                         |
-| :------------------------------- | :-------- | :---------------------------------------------------------------------------------- |
-| payment                          | string    | The relative URI of the payment this list of cancellation transactions belong to.   |
-| cancellations.id                 | string    | The relative URI of the current `cancellations` resource.                           |
-| cancellations.cancellationList   | array     | The array of the cancellation transaction objects.                                  |
-| cancellations.cancellationList[] | object    | The object representation of the cancellation transaction resource described below. |
+| Property                         | Type   | Description                                                                         |
+| :------------------------------- | :----- | :---------------------------------------------------------------------------------- |
+| payment                          | string | The relative URI of the payment this list of cancellation transactions belong to.   |
+| cancellations.id                 | string | The relative URI of the current `cancellations` resource.                           |
+| cancellations.cancellationList   | array  | The array of the cancellation transaction objects.                                  |
+| cancellations.cancellationList[] | object | The object representation of the cancellation transaction resource described below. |
 
 ### Create cancellation transaction
 
@@ -331,7 +334,7 @@ yet captured - payment.
 
 ```HTTP
 POST /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/cancellations HTTP/1.1
-Host: api.payex.com
+Host: api.externalintegration.payex.com
 Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 
@@ -344,7 +347,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| ✔︎︎︎︎︎ | Property                   | Type   | Description                                                                                            |
+| ✔︎︎︎︎︎ | Property                   | Type        | Description                                                                                            |
 | :----- | :------------------------- | :---------- | :----------------------------------------------------------------------------------------------------- |
 | ✔︎︎︎︎︎ | transaction.description    | string      | A textual description of the reason for the cancellation.                                              |
 | ✔︎︎︎︎︎ | transaction.payeeReference | string(30*) | A unique reference for the cancellation transaction. See [payeeReference][payeeReference] for details. |
@@ -383,11 +386,11 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property                 | Type | Description                                                                             |
-| :----------------------- | :-------- | :-------------------------------------------------------------------------------------- |
-| payment                  | string    | The relative URI of the payment this cancellation transaction belongs to.               |
-| cancellation.id          | string    | The relative URI of the current cancellation transaction resource.                      |
-| cancellation.transaction | object    | The object representation of the generic  [transaction resource][transaction-resource]. |
+| Property                 | Type   | Description                                                                             |
+| :----------------------- | :----- | :-------------------------------------------------------------------------------------- |
+| payment                  | string | The relative URI of the payment this cancellation transaction belongs to.               |
+| cancellation.id          | string | The relative URI of the current cancellation transaction resource.                      |
+| cancellation.transaction | object | The object representation of the generic  [transaction resource][transaction-resource]. |
 
 #### Cancel Sequence
 
@@ -415,7 +418,7 @@ specific payment.
 
 ```HTTP
 GET /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals HTTP/1.1
-Host: api.payex.com
+Host: api.externalintegration.payex.com
 Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 ```
@@ -470,7 +473,7 @@ The `create-reversal` operation will reverse a previously captured payment.
 
 ```HTTP
 POST /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals HTTP/1.1
-Host: api.payex.com
+Host: api.externalintegration.payex.com
 Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 
@@ -525,11 +528,11 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property             | Type | Description                                                                            |
-| :------------------- | :-------- | :------------------------------------------------------------------------------------- |
-| payment              | string    | The relative URI of the payment this reversal transaction belongs to.                  |
-| reversal.id          | string    | The relative URI of the created reversal transaction.                                  |
-| reversal.transaction | object    | The object representation of the generic [transaction resource][transaction-resource]. |
+| Property             | Type   | Description                                                                            |
+| :------------------- | :----- | :------------------------------------------------------------------------------------- |
+| payment              | string | The relative URI of the payment this reversal transaction belongs to.                  |
+| reversal.id          | string | The relative URI of the created reversal transaction.                                  |
+| reversal.transaction | object | The object representation of the generic [transaction resource][transaction-resource]. |
 
 #### Reversal Sequence
 
@@ -562,7 +565,7 @@ card number is automatically deleted six months after a successful
 
 ```HTTP
 PATCH /psp/creditcard/payments/instrumentData/<paymentToken> HTTP/1.1
-Host: api.payex.com
+Host: api.externalintegration.payex.com
 Authorization: Bearer <MerchantToken>
 Content-Type: application/json
 

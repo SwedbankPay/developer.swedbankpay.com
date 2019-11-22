@@ -50,7 +50,7 @@ Content-Type: application/json
             "amount": 15610,
             "vatAmount": 3122,
             "description": "Reversing the capture amount",
-            "payeeReference": "ABC987",
+            "payeeReference": "ABC987"
         }
     }
 }

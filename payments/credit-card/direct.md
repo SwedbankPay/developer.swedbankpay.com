@@ -109,54 +109,62 @@ the issuing bank. Normally this will be done using BankID or Mobile BankID.
 
 ```mermaid
 sequenceDiagram
-  Consumer->>Merchant: start purchase
-  activate Merchant
-  Merchant->>PayEx: POST [operation=PURCHASE]
-  note left of Merchant: First API request
-  activate PayEx
-  PayEx-->>Merchant: payment resource
+    participant Payer
+    participant Merchant
+    participant SwedbankPay as Swedbank Pay
 
-  Merchant ->> PayEx: POST [Credit card direct authroization]
-  note left of Merchant: Second API request
-  PayEx -->> Merchant: transaction resource
-
-  deactivate PayEx
-  Merchant-->>Consumer: display purchase result
-  deactivate Merchant
+    activate Payer
+    Payer->>+Merchant: start purchase
+    deactivate Payer
+    Merchant->>+SwedbankPay: POST /psp/creditcard/payments
+    deactivate Merchant
+    note left of Merchant: First API Request
+    SwedbankPay-->>+Merchant: rel: view-authorization
+    deactivate SwedbankPay
+    Merchant->>+SwedbankPay: GET /psp/creditcard/payments/<paymentorder.id>
+    deactivate Merchant
+    note left of Merchant: Second API request
+    SwedbankPay-->>+Merchant: rel: direct-authorization
+    deactivate SwedbankPay
+    Merchant-->>-Payer: display purchase result
 ```
 
 ```mermaid
 sequenceDiagram
-  Consumer->>Merchant: start purchase
-  activate Merchant
-  Merchant->>PayEx: POST [operation=PURCHASE]
-  note left of Merchant: First API request
-  activate PayEx
-  PayEx-->>Merchant: payment resource
+    participant Payer
+    participant Merchant
+    participant SwedbankPay as Swedbank Pay
+    participant IssuingBank
 
-  Merchant -> PayEx: POST [Direct authorization]
-  note left of Merchant: Second API request
-  PayEx --> Merchant: transaction resource
-
-  deactivate PayEx
-  Merchant-->>Consumer: redirect to 3-D Secure page
+  activate Payer
+  Payer->>+Merchant: start purchase
+  deactivate Payer
+  Merchant->>+SwedbankPay: POST /psp/creditcard/payments
   deactivate Merchant
-
-  note left of Consumer: redirect to card issuing bank
-  Consumer ->> IssuingBank: 3-D Secure authentication
-  activate IssuingBank
-  IssuingBank-->>Consumer: redirect to merchant
-  note left of Consumer: redirect back to merchant
+  note left of Merchant: First API request
+  SwedbankPay-->+Merchant: payment resource
+  deactivate SwedbankPay
+  Merchant-->>+SwedbankPay: GET /psp/creditcard/payments/<paymentorder.id>
+  deactivate Merchant
+  note left of Merchant: Second API request
+  SwedbankPay-->>+Merchant: rel: direct-authorization
+  deactivate SwedbankPay
+  Merchant-->>+Payer: redirect to 3-D Secure page
+  deactivate Merchant
+  Payer->>+IssuingBank: 3-D Secure authentication
+  deactivate Payer
+  note left of Payer: redirect to card issuing bank
+  IssuingBank-->>+Payer: redirect to merchant
   deactivate IssuingBank
-
-  Consumer->>Merchant: access merchant page
-  activate Merchant
-  Merchant->>PayEx: GET [get-payment-response]
+  note left of Payer: redirect back to merchant
+  Payer->>+Merchant: access merchant page
+  deactivate Payer
+  Merchant->>+SwedbankPay: GET /psp/creditcard/payments/<paymentorder.id>
+  deactivate Merchant
   note left of Merchant: Third API request
-  activate PayEx
-  PayEx-->>Merchant: payment resource
-  deactivate PayEx
-  Merchant-->>Consumer: display purchase result
+  SwedbankPay-->>+Merchant: rel: redirect-authorization
+  deactivate SwedbankPay
+  Merchant-->>Payer: display purchase result
   deactivate Merchant
 ```
 
