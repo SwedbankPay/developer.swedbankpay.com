@@ -69,11 +69,10 @@ It is followed up by posting a capture, cancellation or reversal transaction.
 An example of a request is provided below. Each individual Property of the JSON
  document is described in the following section.
 
-{% include alert.html type="neutral" icon="info" body="
-Please note that in order to minimize the risk for a challenge request
-(Strong Customer Authentication – “SCA”) on card payments, it's recommended that
-you add as much data as possible to the `riskIndicator` object in the request
-below." %}
+{% include alert.html type="success" icon="info" body="In order to minimize the
+risk for a challenge request (Strong Customer Authentication – “SCA”) on card
+payments, it's recommended that you add as much data as possible to the
+`riskIndicator` object in the request below." %}
 
 {:.code-header}
 **Request**
