@@ -36,7 +36,7 @@ To create a payment order, you perform a `POST` request towards the
 
 ```http
 POST /psp/paymentorders HTTP/1.1
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
@@ -204,7 +204,7 @@ Request
 ```http
 GET /psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/urls/ HTTP/1.1
 Host: api.externalintegration.payex.com
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
@@ -439,7 +439,7 @@ new amount is shown to the end customer.
 
 ```http
 PATCH /psp/paymentorders/b80be381-b572-4f1e-9691-08d5dd095bc4 HTTP/1.1
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
@@ -532,7 +532,7 @@ in the request body:
 ```http
 PATCH /psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c HTTP/1.1
 Host: api.externalintegration.payex.com
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
@@ -665,7 +665,7 @@ recurrence token during the initial payment order.
 ```http
 POST /psp/paymentorders HTTP/1.1
 Host: api.externalintegration.payex.com
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
@@ -771,7 +771,7 @@ should finish the purchase with a credit card payment instead.
 ```http
 GET /psp/paymentorders<paymentorderId>/payments HTTP/1.1
 Host: api.externalintegration.payex.com
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
@@ -816,7 +816,7 @@ payment order container.
 ```http
 GET /psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/currentpayment HTTP/1.1
 Host: api.externalintegration.payex.com
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
@@ -908,7 +908,7 @@ during login/checkin.
 ```http
 GET /psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/payers/ HTTP/1.1
 Host: api.externalintegration.payex.com
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 

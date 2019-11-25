@@ -10,7 +10,7 @@ and `currentPayment`.
 ```http
 GET /psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/ HTTP/1.1
 Host: api.externalintegration.payex.com
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 

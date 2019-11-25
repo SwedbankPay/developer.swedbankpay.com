@@ -43,7 +43,7 @@ in their own section below.
 ```http
 POST /psp/creditcard/payments HTTP/1.1
 Host: api.externalintegration.payex.com
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
@@ -79,7 +79,7 @@ payments, it's recommended that you add as much data as possible to the
 
 ```http
 POST /psp/creditcard/payments HTTP/1.1
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
@@ -355,7 +355,7 @@ through a previous payment in order to charge the same card.
 ```HTTP
 POST /psp/creditcard/payments HTTP/1.1
 Host: api.externalintegration.payex.com
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
@@ -414,7 +414,7 @@ a payout by performing a `POST` creditcard payments with key `operation` set to
 ```http
 POST /psp/creditcard/payments HTTP/1.1
 Host: api.externalintegration.payex.com
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
@@ -558,7 +558,7 @@ listed below.
 ```http
 POST /psp/creditcard/payments HTTP/1.1
 Host: api.externalintegration.payex.com
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
@@ -699,7 +699,7 @@ Swedbank Pay Payment pages where the payment is authorized.
 ```http
 POST /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations HTTP/1.1
 Host: api.externalintegration.payex.com
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {

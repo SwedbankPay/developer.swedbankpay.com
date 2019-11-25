@@ -57,7 +57,7 @@ made on a specific payment.
 ```http
 GET /psp/invoice/payments/<payments-id>/authorizations HTTP/1.1
 Host: api.externalintegration.payex.com
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
@@ -122,7 +122,7 @@ operation as returned in a previously created invoice payment.
 ```http
 POST /psp/invoice/payments/<payments-id>/authorizations HTTP/1.1
 Host: api.externalintegration.payex.com
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {

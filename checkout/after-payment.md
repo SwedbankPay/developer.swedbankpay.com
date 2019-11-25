@@ -68,7 +68,7 @@ against the URI of `paymentorder.id`:
 
 ```http
 GET /psp/paymentorders/b80be381-b572-4f1e-9691-08d5dd095bc4 HTTP/1.1
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 ```
 
 The (abbreviated) response containing an `updateorder`, `capture`,

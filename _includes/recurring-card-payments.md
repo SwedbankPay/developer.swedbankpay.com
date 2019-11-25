@@ -115,7 +115,7 @@ certain card types are optional and set on contract level." %}
 ```http
 POST /psp/creditcard/payments HTTP/1.1
 Host: api.externalintegration.payex.com
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {

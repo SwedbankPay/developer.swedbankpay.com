@@ -145,7 +145,7 @@ for Credit Card Payments" %}
 ```http
 POST /psp/paymentorders HTTP/1.1
 Host: api.externalintegration.payex.com
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
