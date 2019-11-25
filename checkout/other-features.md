@@ -206,7 +206,7 @@ Content-Type: application/json
 |          | └➔&nbsp;`metadata`                 | `object`     | The keys and values that should be associated with the payment order. Can be additional identifiers and data you want to associate with the payment.                                                            |
 |          | └➔&nbsp;`items`                    | `array`      | The array of items that will affect how the payment is performed.                                                                                                                                               |
 |          | └➔&nbsp;`disablePaymentMenu`       | `boolean`    | If set to `true`, disables the frame around the payment menu. Usefull when only showing one payment instrument.                                                                                                 |
-|          | └➔&nbsp;`no3DSecureForStoredCards` | `boolean`    | `true` if 3-D Secure should be disabled for this payment in the case a stored card is used; otherwise `false` per default. To use this feature it has to be enabled on the contract with Swedbank Pay.            |
+|          | └➔&nbsp;`no3DSecureForStoredCards` | `boolean`    | `true` if 3-D Secure should be disabled for this payment in the case a stored card is used; otherwise `false` per default. To use this feature it has to be enabled on the contract with Swedbank Pay.          |
 |          | └➔&nbsp;`noCvcForStoredCards`      | `boolean`    | `true` if the CVC field should be disabled for this payment in the case a stored card is used; otherwise `false` per default. To use this feature it has to be enabled on the contract with Swedbank Pay.       |
 
 #### Response
@@ -1338,7 +1338,6 @@ although that might be possible in the future.
 {% include iterator.html prev_href="summary" prev_title="Back: Summary" %}
 
 [abort]: #operations
-[transaction]: #transaction
 [callback-reference]: /checkout/other-features#callback
 [card-payments-problems]: /payments/credit-card/other-features#problem-messages
 [consumer-reference]: /checkout/other-features#payeereference
@@ -1348,9 +1347,12 @@ although that might be possible in the future.
 [image_disabled_payment_menu]: /assets/img/checkout/test-purchase.png
 [image_enabled_payment_menu]: /assets/img/checkout/payment-menu.png
 [invoice-payments-problems]: /payments/invoice/other-features#problem-messages
+[operations]: #operations
 [order-items]: /checkout/other-features#order-items
 [payee-reference]: /checkout/other-features#payeereference
 [payment-menu]: /checkout/payment-menu
+[payment-order-capture]: #capture
+[payment-order]: #payment-orders
 [payment-orders-resource-payers]: #payer-resource
 [payment-orders-resource-payments]: #current-payment-resource
 [payment-orders-resource]: /checkout/other-features#payment-orders
@@ -1360,9 +1362,9 @@ although that might be possible in the future.
 [payment-resource]: #payments-resource
 [pci-dss]: https://www.pcisecuritystandards.org/
 [swish-payments-problems]: /payments/swish/other-features#problem-messages
+[transaction]: #transaction
 [update-order]: /checkout/after-payment#update-order
+[urls]: #urls-resource
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
 [verification-transaction]: #verify-payment-orders
 [vipps-payments-problems]: /payments/vipps/other-features#problem-messages
-[payment-order]: #payment-orders
-[payment-order-capture]: #capture
