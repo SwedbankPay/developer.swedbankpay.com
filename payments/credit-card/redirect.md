@@ -261,7 +261,7 @@ Content-Type: application/json
 }
 ```
 
-### Type of authorization - Intent
+## Type of authorization - Intent
 
 The intent of the payment identifies how and when the charge will be
 effectuated. This determine the type of transaction used during the payment
@@ -294,9 +294,9 @@ adjust these optional parameters when posting in the payment.
  will send a postback request to this URL when the consumer has fulfilled the
  payment. [See the Callback API description here][callback].
 
-### Co-brand Visa/Dankort
+## Payment Resource
 
-Not yet supported
+{% include payment-resource.md %}
 
 ## Purchase flow
 
@@ -423,7 +423,7 @@ redirect in mobile apps or in mobile web pages.
 You will redirect the consumer/end-user to Swedbank Pay hosted pages to collect
 the credit card information.
 
-![Merchant implemented redirect][redirect-image]
+![Merchant implemented redirect][redirect-image]{:width="407" height="627"}
 
 ## API Requests for Payment Pages
 
@@ -462,7 +462,7 @@ away, you will have to specify that the intent of the purchase is `AutoCapture`.
  The credit card will be charged automatically after authorization and you don't
   need to do any more financial operations to this purchase.
 
-#### General
+### General
 
 * **No 3-D Secure and card acceptance**: There are optional paramers that can be
 used in relation to 3-D Secure and card acceptance. By default, most credit card
@@ -584,11 +584,15 @@ next_href="seamless-view" next_title="Next: Seamless View" %}
 [cancel]: /payments/credit-card/after-payment/#cancellations
 [capture]: /payments/credit-card/after-payment/#Capture
 [create-payment]: /payments/credit-card/other-features/#create-payment
+[expansion]: /payments/credit-card/other-features/#expansion
 [finalize]: /payments/credit-card/after-payment/#finalize
+[payee-reference]: /payments/credit-card/other-features/#payeereference
 [payout]: /payments/credit-card/other-features/#payout
 [purchase]: /payments/credit-card/other-features/#purchase
+[price-resource]: /payments/credit-card/other-features/#prices
 [recur]: /payments/credit-card/other-features/#recur
-[redirect-image]: /assets/img/creditcard-image-3.png
+[redirect-image]: /assets/img/checkout/test-purchase.png
 [reversal]: /payments/credit-card/after-payment/#reversals
-[Screnshot-1]: /assets/img/creditcard-image-1.png
+[Screnshot-1]: /assets/img/checkout/test-purchase.png
 [verify]: /payments/credit-card/other-features/#verify
+[user-agent-definition]: https://en.wikipedia.org/wiki/User_agent
