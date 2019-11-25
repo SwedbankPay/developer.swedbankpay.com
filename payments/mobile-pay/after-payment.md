@@ -43,7 +43,7 @@ specific payment.
 ```HTTP
 GET /psp/mobilepay/payments/e7919b4f-81a2-4ffb-ec40-08d617d580a2/captures HTTP/1.1
 Host: api.externalintegration.payex.com
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
@@ -97,7 +97,7 @@ A `capture` transaction - to withdraw money from the payer's mobilepay - can be 
 ```HTTP
 POST /psp/mobilepay/payments/e7919b4f-81a2-4ffb-ec40-08d617d580a2/captures HTTP/1.1
 Host: api.externalintegration.payex.com
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
@@ -193,7 +193,7 @@ specific payment.
 ```HTTP
 GET /psp/mobilepay/payments/e7919b4f-81a2-4ffb-ec40-08d617d580a2/cancellations HTTP/1.1
 Host: api.externalintegration.payex.com
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
@@ -258,7 +258,7 @@ perform a `GET` on the payment after the user returns from the
 ```http
 PATCH /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations/<transactionId> HTTP/1.1
 Host: api.externalintegration.payex.com
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
@@ -339,7 +339,7 @@ You can only cancel a payment - or part of payment - not yet captured.
 ```HTTP
 POST /psp/mobilepay/payments/e7919b4f-81a2-4ffb-ec40-08d617d580a2/cancellations HTTP/1.1
 Host: api.externalintegration.payex.com
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
@@ -422,7 +422,7 @@ specific payment.
 ```HTTP
 GET /psp/mobilepay/payments/e7919b4f-81a2-4ffb-ec40-08d617d580a2/reversals HTTP/1.1
 Host: api.externalintegration.payex.com
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
@@ -478,7 +478,7 @@ captured payment.
 ```HTTP
 POST /psp/mobilepay/payments/e7919b4f-81a2-4ffb-ec40-08d617d580a2/reversals HTTP/1.1
 Host: api.externalintegration.payex.com
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {

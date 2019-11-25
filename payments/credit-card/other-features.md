@@ -43,7 +43,7 @@ in their own section below.
 ```http
 POST /psp/creditcard/payments HTTP/1.1
 Host: api.externalintegration.payex.com
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
@@ -69,18 +69,17 @@ It is followed up by posting a capture, cancellation or reversal transaction.
 An example of a request is provided below. Each individual Property of the JSON
  document is described in the following section.
 
-{% include alert.html type="neutral" icon="info" body="
-Please note that in order to minimize the risk for a challenge request
-(Strong Customer Authentication – “SCA”) on card payments, it's recommended that
-you add as much data as possible to the `riskIndicator` object in the request
-below." %}
+{% include alert.html type="success" icon="info" body="In order to minimize the
+risk for a challenge request (Strong Customer Authentication – “SCA”) on card
+payments, it's recommended that you add as much data as possible to the
+`riskIndicator` object in the request below." %}
 
 {:.code-header}
 **Request**
 
 ```http
 POST /psp/creditcard/payments HTTP/1.1
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
@@ -356,7 +355,7 @@ through a previous payment in order to charge the same card.
 ```HTTP
 POST /psp/creditcard/payments HTTP/1.1
 Host: api.externalintegration.payex.com
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
@@ -415,7 +414,7 @@ a payout by performing a `POST` creditcard payments with key `operation` set to
 ```http
 POST /psp/creditcard/payments HTTP/1.1
 Host: api.externalintegration.payex.com
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
@@ -559,7 +558,7 @@ listed below.
 ```http
 POST /psp/creditcard/payments HTTP/1.1
 Host: api.externalintegration.payex.com
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
@@ -700,7 +699,7 @@ Swedbank Pay Payment pages where the payment is authorized.
 ```http
 POST /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations HTTP/1.1
 Host: api.externalintegration.payex.com
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {

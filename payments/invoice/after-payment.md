@@ -46,7 +46,7 @@ specific invoice payment.
 ```HTTP
 GET /psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures HTTP/1.1
 Host: api.externalintegration.payex.com
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
@@ -91,7 +91,7 @@ operation with the following request body:
 ```HTTP
 POST /psp/invoice/payments/<paymentId>/captures HTTP/1.1
 Host: api.externalintegration.payex.com
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
@@ -216,7 +216,7 @@ specific payment.
 Request
 GET /psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/cancellations HTTP/1.1
 Host: api.externalintegration.payex.com
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
@@ -268,7 +268,7 @@ Perform the `create-cancellation` operation to cancel a previously created
 ```HTTP
 POST /psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/cancellations HTTP/1.1
 Host: api.externalintegration.payex.com
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
@@ -351,7 +351,7 @@ The `reversals` resource will list the reversal transactions
 ```HTTP
 GET /psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals HTTP/1.1
 Host: api.externalintegration.payex.com
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
@@ -401,7 +401,7 @@ The `create-reversal` operation will reverse a previously captured payment. To r
 ```HTTP
 POST /psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals HTTP/1.1
 Host: api.externalintegration.payex.com
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
