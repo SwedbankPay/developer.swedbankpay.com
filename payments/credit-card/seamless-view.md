@@ -306,6 +306,10 @@ process.
   Pay will send a postback request to this URL when the consumer has fulfilled 
   the payment. [See the Callback API description here][callback].
 
+## Payment Resource
+
+{% include payment-resource.md %}
+
 ## Purchase flow
 
 The sequence diagram below shows a high level description of a complete
@@ -425,10 +429,14 @@ next_href="direct" next_title="Next: Direct" %}
 [cancel]: /payments/credit-card/after-payment/#cancellations
 [capture]: /payments/credit-card/after-payment/#Capture
 [create-payment]: /payments/credit-card/other-features/#create-payment
+[expansion]: /payments/credit-card/other-features/#expansion
 [finalize]: /payments/credit-card/after-payment/#finalize
+[payee-reference]: /payments/credit-card/other-features/#payeereference
 [payout]: /payments/credit-card/other-features/#payout
 [purchase]: /payments/credit-card/other-features/#purchase
+[price-resource]: /payments/credit-card/other-features/#prices
 [recur]: /payments/credit-card/other-features/#recur
 [reversal]: /payments/credit-card/after-payment/#reversals
 [verify]: /payments/credit-card/other-features/#verify
 [create-payment]: /payments/credit-card/other-features/#create-payment
+[user-agent-definition]: https://en.wikipedia.org/wiki/User_agent

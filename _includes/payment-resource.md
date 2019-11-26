@@ -117,8 +117,8 @@ the `rel` and the request that will be sent in the HTTP body of the request
 for the given operation.
 
 {:.table .table-striped}
-| Operation                          | Description                                                                                                                                                                                                                                                                    |
-| :--------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `update-payment-abort`        | [Aborts][abort] the payment order before any financial transactions are performed.                                                                                                                                                                               |
-| `redirect-authorization`            | Contains the URI that is used to redirect the consumer to the PayEx Payment Pages containing the card authorization UI.                                                                                                                                                                 |
-| `view-authorization`                | Contains the JavaScript href that is used to embed  the card authorization UI directly on the webshop/merchant site                                                                                                                                                                |
+| Operation                | Description                                                                                                             |
+| :----------------------- | :---------------------------------------------------------------------------------------------------------------------- |
+| `update-payment-abort`   | [Aborts][abort] the payment order before any financial transactions are performed.                                      |
+| `redirect-authorization` | Contains the URI that is used to redirect the consumer to the PayEx Payment Pages containing the card authorization UI. |
+| `view-authorization`     | Contains the JavaScript href that is used to embed  the card authorization UI directly on the webshop/merchant site     |
