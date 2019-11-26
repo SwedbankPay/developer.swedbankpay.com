@@ -269,7 +269,7 @@ Content-Type: application/json
 }
 ```
 
-### Type of authorization - Intent
+## Type of authorization - Intent
 
 The intent of the payment identifies how and when the charge will be
 effectuated. This determine the type of transaction used during the payment
