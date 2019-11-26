@@ -24,11 +24,11 @@ sidebar:
 ## Introduction
 
 * When properly set up in your merchant/webshop site and the payer starts the
-  purchase process, you need to make a POST request towards Swedbank Pay with 
+  purchase process, you need to make a POST request towards Swedbank Pay with
   your Purchase information. This will generate a payment object with a unique
   `paymentID`. You will receive a **JavaScript source** in response.
 * You need to embed the script source on your site to create a
-  hosted-view in an iFrame(see screenshot below); so that she can enter the 
+  hosted-view in an iFrame(see screenshot below); so that she can enter the
   credit card details in a secure Swedbank Pay hosted environment.
 * Swedbank Pay will handle 3-D Secure authentication when this is required.
 * Swedbank Pay will display directly in the iFrame - one of two specified URLs,
@@ -70,17 +70,17 @@ Our `payment` example below uses the [`purchase`][purchase] value.
 A `Purchase` payment is a straightforward way to charge the card of the payer.
 It is followed up by posting a capture, cancellation or reversal transaction.
 
-An example of an abbreviated `POST` request is provided below. Each individual 
-Property of the JSON document is described in the following section. 
-An example of an expanded `POST` request is available in the 
+An example of an abbreviated `POST` request is provided below. Each individual
+Property of the JSON document is described in the following section.
+An example of an expanded `POST` request is available in the
 [other features section][purchase].
 
 {% include alert.html type="neutral"
                       icon="info"
-                      body="Please note that in order to minimize the risk for 
-                      a challenge request (Strong Customer Authentication – 
-                      “SCA”) on card payments, it's recommended that you add as 
-                      much data as possible to the `riskIndicator` object in 
+                      body="Please note that in order to minimize the risk for
+                      a challenge request (Strong Customer Authentication –
+                      “SCA”) on card payments, it's recommended that you add as
+                      much data as possible to the `riskIndicator` object in
                       the request below." %}
 
 {:.code-header}
@@ -289,21 +289,21 @@ process.
   (i.e. when you are ready to ship the purchased products) have to make a
   [Capture][capture] or [Cancel][cancel] request.
 * **AutoCapture (one-phase)**:  If you want the credit card to be charged right
-  away, you will have to specify that the intent of the purchase is 
-  `AutoCapture`. The credit card will be charged automatically after 
+  away, you will have to specify that the intent of the purchase is
+  `AutoCapture`. The credit card will be charged automatically after
   authorization and you don't need to do any more financial operations to this purchase.
 
 ### General
 
 * **No 3-D Secure and card acceptance**: There are optional paramers that can be
-  used in relation to 3-D Secure and card acceptance. By default, most credit 
-  card agreements with an acquirer will require that you use 3-D Secure for card holder authentication. However, if your agreement allows you to make a card 
-  payment without this authentication, or that specific cards can be declined, 
-  you may adjust these optional parameters when posting in the payment. This is specified in the technical reference section for creating credit card 
+  used in relation to 3-D Secure and card acceptance. By default, most credit
+  card agreements with an acquirer will require that you use 3-D Secure for card holder authentication. However, if your agreement allows you to make a card
+  payment without this authentication, or that specific cards can be declined,
+  you may adjust these optional parameters when posting in the payment. This is specified in the technical reference section for creating credit card
   payments  - you will find the link in the sequence diagram below.
 * **Defining `callbackURL`**: When implementing a scenario, it is optional to
-  set a `callbackURL` in the `POST` request. If `callbackURL` is set Swedbank 
-  Pay will send a postback request to this URL when the consumer has fulfilled 
+  set a `callbackURL` in the `POST` request. If `callbackURL` is set Swedbank
+  Pay will send a postback request to this URL when the consumer has fulfilled
   the payment. [See the Callback API description here][callback].
 
 ## Payment Resource
@@ -320,12 +320,12 @@ When dealing with credit card payments, 3-D Secure authentication of the
 cardholder is an essential topic. There are two alternative outcome of a credit
 card payment:
 
-* 3-D Secure enabled - by default, 3-D Secure should be enabled, and Swedbank 
-  Pay will check if the card is enrolled with 3-D Secure. This depends on the 
-  issuer of the card. If the card is not enrolled with 3-D Secure, no 
+* 3-D Secure enabled - by default, 3-D Secure should be enabled, and Swedbank
+  Pay will check if the card is enrolled with 3-D Secure. This depends on the
+  issuer of the card. If the card is not enrolled with 3-D Secure, no
   authentication of the cardholder is done.
-* Card supports 3-D Secure - if the card is enrolled with 3-D Secure, Swedbank 
-  Pay will redirect the cardholder to the autentication mechanism that is 
+* Card supports 3-D Secure - if the card is enrolled with 3-D Secure, Swedbank
+  Pay will redirect the cardholder to the autentication mechanism that is
   decided by the issuing bank. Normally this will be done using BankID or Mobile BankID.
 
 ```mermaid
