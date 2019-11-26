@@ -75,7 +75,8 @@ An example of an expanded `POST` request is available in the
                       body="Please note that in order to minimize the risk
                       for a challenge request (Strong Customer Authentication –
                       “SCA”) on card payments, it's recommended that you add as
-                      much data as possible to the `riskIndicator` object in the request below." %}
+                      much data as possible to the `riskIndicator` object in 
+                      the request below." %}
 
 {:.code-header}
 **Request**
@@ -271,8 +272,10 @@ process.
 
 * **PreAuthorization**: A purchase with `PreAuthorization` intent is handled in
   a similar manner as the ordinary authorization procedure. The notable
-  difference is that the funds are put on hold for 30 days (for an ordinary authorization the funds are reserved for 7 days). Also, with a
-  `PreAuthorization`, the captured amount can be higher than the preauthorized amount. The amount captured should not be higher than 20% of the original
+  difference is that the funds are put on hold for 30 days (for an ordinary 
+  authorization the funds are reserved for 7 days). Also, with a
+  `PreAuthorization`, the captured amount can be higher than the preauthorized 
+  amount. The amount captured should not be higher than 20% of the original
   amount, due to card brand rules. You complete the purchase by
   [finalizing the transaction][finalize].
 * **Authorization (two-phase)**: If you want the credit card to reserve the
@@ -285,9 +288,11 @@ process.
 
 * *No 3-D Secure and card acceptance:* There are optional paramers that can be
   used in relation to 3-D Secure and card acceptance. By default, most credit
-  card agreements with an acquirer will require that you use 3-D Secure for card holder authentication. However, if your agreement allows you to make a card
-  payment without this authentication, or that specific cards can be declined,
-  you may adjust these optional parameters when posting in the payment.
+  card agreements with an acquirer will require that you use 3-D Secure for 
+  card holder authentication. However, if your agreement allows you to make a 
+  card payment without this authentication, or that specific cards can be 
+  declined, you may adjust these optional parameters when posting in the 
+  payment.
 * *Defining `callbackURL`:* When implementing a scenario, it is optional to set
   a `callbackURL` in the `POST` request. If `callbackURL` is set Swedbank Pay
   will send a postback request to this URL when the consumer has fulfilled the
@@ -459,13 +464,15 @@ process.
 * **AutoCapture (one-phase)**:  If you want the credit card to be charged right
   away, you will have to specify that the intent of the purchase is
   `AutoCapture`. The credit card will be charged automatically after
-  authorization and you don't need to do any more financial operations to this purchase.
+  authorization and you don't need to do any more financial operations to this 
+  purchase.
 
 ### General
 
 * **No 3-D Secure and card acceptance**: There are optional paramers that can be
   used in relation to 3-D Secure and card acceptance. By default, most credit
-  card agreements with an acquirer will require that you use 3-D Secure for card holder authentication. However, if your agreement allows you to make a
+  card agreements with an acquirer will require that you use 3-D Secure for 
+  card holder authentication. However, if your agreement allows you to make a
   card payment without this authentication, or that specific cards can be
   declined, you may adjust these optional parameters when posting in the
   payment.

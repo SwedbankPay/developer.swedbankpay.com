@@ -19,7 +19,8 @@ sidebar:
 ---
 
 {% include jumbotron.html body="The Seamless View purchase scenario
-                          represents the opportunity to implement card payments directly in your webshop." %}
+                          represents the opportunity to implement card payments 
+                          directly in your webshop." %}
 
 ## Introduction
 
@@ -291,16 +292,19 @@ process.
 * **AutoCapture (one-phase)**:  If you want the credit card to be charged right
   away, you will have to specify that the intent of the purchase is
   `AutoCapture`. The credit card will be charged automatically after
-  authorization and you don't need to do any more financial operations to this purchase.
+  authorization and you don't need to do any more financial operations to this 
+  purchase.
 
 ### General
 
 * **No 3-D Secure and card acceptance**: There are optional paramers that can be
   used in relation to 3-D Secure and card acceptance. By default, most credit
-  card agreements with an acquirer will require that you use 3-D Secure for card holder authentication. However, if your agreement allows you to make a card
-  payment without this authentication, or that specific cards can be declined,
-  you may adjust these optional parameters when posting in the payment. This is specified in the technical reference section for creating credit card
-  payments  - you will find the link in the sequence diagram below.
+  card agreements with an acquirer will require that you use 3-D Secure for 
+  card holder authentication. However, if your agreement allows you to make a 
+  card payment without this authentication, or that specific cards can be 
+  declined, you may adjust these optional parameters when posting in the 
+  payment. This is specified in the technical reference section for creating 
+  credit card payments  - you will find the link in the sequence diagram below.
 * **Defining `callbackURL`**: When implementing a scenario, it is optional to
   set a `callbackURL` in the `POST` request. If `callbackURL` is set Swedbank
   Pay will send a postback request to this URL when the consumer has fulfilled
@@ -326,7 +330,8 @@ card payment:
   authentication of the cardholder is done.
 * Card supports 3-D Secure - if the card is enrolled with 3-D Secure, Swedbank
   Pay will redirect the cardholder to the autentication mechanism that is
-  decided by the issuing bank. Normally this will be done using BankID or Mobile BankID.
+  decided by the issuing bank. Normally this will be done using BankID or 
+  Mobile BankID.
 
 ```mermaid
 sequenceDiagram

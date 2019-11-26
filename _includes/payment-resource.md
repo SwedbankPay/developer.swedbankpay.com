@@ -1,4 +1,9 @@
-The `payment` resource is central to all payment instruments. All operations that target the payment resource directly produce a response similar to the example seen below. The response given contains all operations that are possible to perform in the current state of the payment. You can use the `expand` parameter to expand one or more properties relating to the purchase resource (see [Expansion][expansion]).
+The `payment` resource is central to all payment instruments. All operations 
+that target the payment resource directly produce a response similar to the 
+example seen below. The response given contains all operations that are 
+possible to perform in the current state of the payment. You can use the 
+`expand` parameter to expand one or more properties relating to the purchase 
+resource (see [Expansion][expansion]).
 
 {:.code-header}
 **Request**
