@@ -172,11 +172,11 @@ later do more captures on the same payment up to the total authorization amount.
 
 ```mermaid
 sequenceDiagram
-  Merchant->>PayEx: POST [Credit card captures]
+  Merchant->>SwedbankPay: POST [Credit card captures]
   Activate Merchant
-  Activate PayEx
-  PayEx-->>Merchant: transaction resource
-  Deactivate PayEx
+  Activate SwedbankPay
+  SwedbankPay-->>Merchant: transaction resource
+  Deactivate SwedbankPay
   Deactivate Merchant
 ```
 
@@ -400,11 +400,11 @@ and the authorization amount.
 
 ```mermaid
 sequenceDiagram
-  Merchant->>PayEx: POST [creditcard cancellactions]
+  Merchant->>SwedbankPay: POST [creditcard cancellactions]
   Activate Merchant
-  Activate PayEx
-  PayEx-->>Merchant: transaction resource
-  Deactivate PayEx
+  Activate SwedbankPay
+  SwedbankPay-->>Merchant: transaction resource
+  Deactivate SwedbankPay
   Deactivate Merchant
 ```
 
@@ -541,11 +541,11 @@ Reversal can only be done on a payment where there are some captured amount not
 
 ```mermaid
 sequenceDiagram
-  Merchant->>PayEx: POST [creditcard reversals]
+  Merchant->>SwedbankPay: POST [creditcard reversals]
   Activate Merchant
-  Activate PayEx
-  PayEx-->>Merchant: transaction resource
-  Deactivate PayEx
+  Activate SwedbankPay
+  SwedbankPay-->>Merchant: transaction resource
+  Deactivate SwedbankPay
   Deactivate Merchant
 ```
 
@@ -607,20 +607,20 @@ transaction, Swedbank Pay will perform a callback to inform the payee (merchant)
 ```mermaid
 sequenceDiagram
   activate Merchant
-  activate PayEx
-  PayEx->>Merchant: POST <callbackUrl>
-  note left of Merchant: Callback by PayEx
-  Merchant-->>PayEx: HTTP response
-  deactivate PayEx
+  activate SwedbankPay
+  SwedbankPay->>Merchant: POST <callbackUrl>
+  note left of Merchant: Callback by SwedbankPay
+  Merchant-->>SwedbankPay: HTTP response
+  deactivate SwedbankPay
   deactivate Merchant
 
   activate Merchant
-  activate PayEx
-  Merchant->>PayEx: GET [credit card payment]
+  activate SwedbankPay
+  Merchant->>SwedbankPay: GET [credit card payment]
   note left of Merchant: First API request
-  Activate PayEx
-  PayEx-->>Merchant: payment resource
-  deactivate PayEx
+  Activate SwedbankPay
+  SwedbankPay-->>Merchant: payment resource
+  deactivate SwedbankPay
   deactivate Merchant
 ```
 
@@ -635,11 +635,11 @@ authorization amount.
 
 ```mermaid
 sequenceDiagram
-  Merchant->>PayEx: POST [credit card capture]
+  Merchant->>SwedbankPay: POST [credit card capture]
   Activate Merchant
-  Activate PayEx
-  PayEx-->>Merchant: transaction resource
-  Deactivate PayEx
+  Activate SwedbankPay
+  SwedbankPay-->>Merchant: transaction resource
+  Deactivate SwedbankPay
   Deactivate Merchant
 ```
 
@@ -651,11 +651,11 @@ and the authorization amount.
 
 ```mermaid
 sequenceDiagram
-  Merchant->>PayEx: POST [credit card cancel]
+  Merchant->>SwedbankPay: POST [credit card cancel]
   Activate Merchant
-  Activate PayEx
-  PayEx-->>Merchant: transaction resource
-  Deactivate PayEx
+  Activate SwedbankPay
+  SwedbankPay-->>Merchant: transaction resource
+  Deactivate SwedbankPay
   Deactivate Merchant
 ```
 
@@ -666,11 +666,11 @@ yet reversed.
 
 ```mermaid
 sequenceDiagram
-  Merchant->>PayEx: POST [credit card reversal]
+  Merchant->>SwedbankPay: POST [credit card reversal]
   Activate Merchant
-  Activate PayEx
-  PayEx-->>Merchant: transaction resource
-  Deactivate PayEx
+  Activate SwedbankPay
+  SwedbankPay-->>Merchant: transaction resource
+  Deactivate SwedbankPay
   Deactivate Merchant
 ```
 
@@ -685,11 +685,11 @@ authorization amount.
 
 ```mermaid
 sequenceDiagram
-  Merchant->>PayEx: POST [credit card capture]
+  Merchant->>SwedbankPay: POST [credit card capture]
   Activate Merchant
-  Activate PayEx
-  PayEx-->>Merchant: transaction resource
-  Deactivate PayEx
+  Activate SwedbankPay
+  SwedbankPay-->>Merchant: transaction resource
+  Deactivate SwedbankPay
   Deactivate Merchant
 ```
 
@@ -701,11 +701,11 @@ and the authorization amount.
 
 ```mermaid
 sequenceDiagram
-  Merchant->>PayEx: POST [credit card cancellations]
+  Merchant->>SwedbankPay: POST [credit card cancellations]
   Activate Merchant
-  Activate PayEx
-  PayEx-->>Merchant: transaction resource
-  Deactivate PayEx
+  Activate SwedbankPay
+  SwedbankPay-->>Merchant: transaction resource
+  Deactivate SwedbankPay
   Deactivate Merchant
 ```
 
@@ -716,11 +716,11 @@ yet reversed.
 
 ```mermaid
 sequenceDiagram
-  Merchant->>PayEx: POST [credit card reversals]
+  Merchant->>SwedbankPay: POST [credit card reversals]
   Activate Merchant
-  Activate PayEx
-  PayEx-->>Merchant: transaction resource
-  Deactivate PayEx
+  Activate SwedbankPay
+  SwedbankPay-->>Merchant: transaction resource
+  Deactivate SwedbankPay
   Deactivate Merchant
 ```
 
