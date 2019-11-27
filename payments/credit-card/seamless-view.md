@@ -157,9 +157,9 @@ Content-Type: application/json
 | Required | Property                              | Type          | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | :------: | :------------------------------------ | :------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 |  ✔︎︎︎︎︎  | `payment`                             | `object`      | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-|  ✔︎︎︎︎︎  | `operation`                           | `string`      | The operation that the `payment` is supposed to perform. The [`purchase`][purchase] operation is used in our example. Take a look at the [create card `payment` section][create-payment] for a full examples of the following `operation` options: [Purchase][purchase], [Recur][recur], [Payout][payout], [Verify][verify]                                                                                                                                                                                                                                               |
-|  ✔︎︎︎︎︎  | `intent`                              | `string`      | `PreAuthorization`. Holds the funds for a certain time in contrast to reserving the amount. A preauthoriation is always followed by the [finalize][finalize] operation. <br> <br> `Authorization`. Reserves the amount, and is followed by a [cancellation][cancel] or [capture][capture] of funds.<br> <br> `AutoCapture`. A one phase option that enable capture of funds automatically after authorization.                                                                                                                                                            |
-|  ✔︎︎︎︎︎  | `currency`                            | `string`      | NOK, SEK, DKK, USD or EUR.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`operation`                   | `string`      | The operation that the `payment` is supposed to perform. The [`purchase`][purchase] operation is used in our example. Take a look at the [create card `payment` section][create-payment] for a full examples of the following `operation` options: [Purchase][purchase], [Recur][recur], [Payout][payout], [Verify][verify]                                                                                                                                                                                                                                               |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`intent`                      | `string`      | `PreAuthorization`. Holds the funds for a certain time in contrast to reserving the amount. A preauthoriation is always followed by the [finalize][finalize] operation. <br> <br> `Authorization`. Reserves the amount, and is followed by a [cancellation][cancel] or [capture][capture] of funds.<br> <br> `AutoCapture`. A one phase option that enable capture of funds automatically after authorization.                                                                                                                                                            |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`currency`                    | `string`      | NOK, SEK, DKK, USD or EUR.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`prices`                      | `object`      | The `prices` resource lists the prices related to a specific payment.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`type`                       | `string`      | Use the generic type CreditCard if you want to enable all card brands supported by merchant contract. Use card brands like Visa (for card type Visa), MasterCard (for card type Mastercard) and others if you want to specify different amount for each card brand. If you want to use more than one amount you must have one instance in the prices node for each card brand. You will not be allowed to both specify card brands and CreditCard at the same time in this field. [See the Prices resource and prices object types for more information][price-resource]. |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`amount`                     | `integer`     | Amount is entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 SEK 5000 = 50.00 SEK.                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
@@ -216,55 +216,55 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "payment": {
-    "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
-    "number": 1234567890,
-    "instrument": "CreditCard",
-    "created": "2016-09-14T13:21:29.3182115Z",
-    "updated": "2016-09-14T13:21:57.6627579Z",
-    "state": "Ready",
-    "operation": "Purchase",
-    "intent": "Authorization",
-    "currency": "SEK",
-    "amount": 1500,
-    "remainingCaptureAmount": 1500,
-    "remainingCancellationAmount": 1500,
-    "remainingReversalAmount": 0,
-    "description": "Test Purchase",
-    "payerReference": "AB1234",
-    "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
-    "userAgent": "Mozilla/5.0...",
-    "language": "sv-SE",
-    "prices": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/prices" },
-    "transactions": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions" },
-    "authorizations": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations" },
-    "captures": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures" },
-    "reversals": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals" },
-    "cancellations": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/cancellations" },
-    "urls" : { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/urls" },
-    "payeeInfo" : { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeInfo" },
-    "settings": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/settings" }
-  },
-  "operations": [
-    {
-      "href": "https://api.payex.com/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
-      "rel": "update-payment-abort",
-      "method": "PATCH",
-      "contentType": "application/json"
+    "payment": {
+      "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+      "number": 1234567890,
+      "instrument": "CreditCard",
+      "created": "2016-09-14T13:21:29.3182115Z",
+      "updated": "2016-09-14T13:21:57.6627579Z",
+      "state": "Ready",
+      "operation": "Purchase",
+      "intent": "Authorization",
+      "currency": "SEK",
+      "amount": 1500,
+      "remainingCaptureAmount": 1500,
+      "remainingCancellationAmount": 1500,
+      "remainingReversalAmount": 0,
+      "description": "Test Purchase",
+      "payerReference": "AB1234",
+      "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
+      "userAgent": "Mozilla/5.0...",
+      "language": "sv-SE",
+      "prices": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/prices" },
+      "transactions": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions" },
+      "authorizations": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations" },
+      "captures": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures" },
+      "reversals": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals" },
+      "cancellations": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/cancellations" },
+      "urls" : { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/urls" },
+      "payeeInfo" : { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeInfo" },
+      "settings": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/settings" }
     },
-    {
-      "href": "https://ecom.payex.com/creditcard/payments/authorize/123456123412341234123456789012",
-      "rel": "redirect-authorization",
-      "method": "GET",
-      "contentType": "text/html"
-    },
-    {
-      "method": "GET",
-      "href": "https://ecom.dev.payex.com/creditcard/core/scripts/client/px.creditcard.client.js?token=123456123412341234123456789012",
-      "rel": "view-authorization",
-      "contentType": "application/javascript"
-    }
-  ]
+    "operations": [
+      {
+        "href": "https://api.payex.com/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+        "rel": "update-payment-abort",
+        "method": "PATCH",
+        "contentType": "application/json"
+      },
+      {
+        "href": "https://ecom.payex.com/creditcard/payments/authorize/123456123412341234123456789012",
+        "rel": "redirect-authorization",
+        "method": "GET",
+        "contentType": "text/html"
+      },
+      {
+        "method": "GET",
+        "href": "https://ecom.dev.payex.com/creditcard/core/scripts/client/px.creditcard.client.js?token=123456123412341234123456789012",
+        "rel": "view-authorization",
+        "contentType": "application/javascript"
+      }
+    ]
 }
 ```
 
