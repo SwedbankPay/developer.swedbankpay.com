@@ -331,6 +331,7 @@ generated when the payment was created.
 next_href="after-payment" next_title="Next: After Payment" %}
 
 [abort]: /payments/credit-card/other-features/#abort
+[expansion]: /payments/credit-card/other-features/#expansion
 [callback]: /payments/credit-card/other-features/#callback
 [Cancel]: /payments/credit-card/after-payment/#Cancellations
 [Capture]: /payments/credit-card/after-payment/#Capture
