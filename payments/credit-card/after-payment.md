@@ -18,10 +18,10 @@ sidebar:
       title: Other Features
 ---
 
-{% include alert.html type="warning"
-                      icon="warning"
-                      header="Site under development"
-                      body="This section of the Developer Portal is under construction and should not be used to integrate against Swedbank Pay's APIs yet." %}
+{% include alert.html type="warning" icon="warning" header="Site under
+                      development" body="This section of the Developer Portal is
+                      under construction and should not be used to integrate
+                      against Swedbank Pay's APIs yet." %}
 
 ## After payment options for Credit card
 
@@ -121,8 +121,8 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| ✔︎︎︎︎︎ | Property                   | Type        | Required                                                                                                      | Description |
-| :----- | :------------------------- | :---------- | :------------------------------------------------------------------------------------------------------------ | :---------- |
+| ✔︎︎︎︎︎ | Property                   | Type        | Description |
+| :----- | :------------------------- | :---------- | :------------------------------------------------------------------------------------------------------------ |
 | ✔︎︎︎︎︎ | transaction.amount         | integer     | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 100.00 NOK, 5000 50.00 SEK. |
 | ✔︎︎︎︎︎ | transaction.vatAmount      | integer     | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 100.00 NOK, 5000 50.00 SEK. |
 | ✔︎︎︎︎︎ | transaction.description    | string      | A textual description of the capture transaction.                                                             |
@@ -173,11 +173,11 @@ later do more captures on the same payment up to the total authorization amount.
 ```mermaid
 sequenceDiagram
   Merchant->>SwedbankPay: POST [Credit card captures]
-  Activate Merchant
-  Activate SwedbankPay
+  activate Merchant
+  activate SwedbankPay
   SwedbankPay-->>Merchant: transaction resource
-  Deactivate SwedbankPay
-  Deactivate Merchant
+  deactivate SwedbankPay
+  deactivate Merchant
 ```
 
 ### Finalize
@@ -401,11 +401,11 @@ and the authorization amount.
 ```mermaid
 sequenceDiagram
   Merchant->>SwedbankPay: POST [creditcard cancellactions]
-  Activate Merchant
-  Activate SwedbankPay
+  activate Merchant
+  activate SwedbankPay
   SwedbankPay-->>Merchant: transaction resource
-  Deactivate SwedbankPay
-  Deactivate Merchant
+  deactivate SwedbankPay
+  deactivate Merchant
 ```
 
 ### Reversals
@@ -542,11 +542,11 @@ Reversal can only be done on a payment where there are some captured amount not
 ```mermaid
 sequenceDiagram
   Merchant->>SwedbankPay: POST [creditcard reversals]
-  Activate Merchant
-  Activate SwedbankPay
+  activate Merchant
+  activate SwedbankPay
   SwedbankPay-->>Merchant: transaction resource
-  Deactivate SwedbankPay
-  Deactivate Merchant
+  deactivate SwedbankPay
+  deactivate Merchant
 ```
 
 #### Remove payment token
@@ -618,7 +618,7 @@ sequenceDiagram
   activate SwedbankPay
   Merchant->>SwedbankPay: GET [credit card payment]
   note left of Merchant: First API request
-  Activate SwedbankPay
+  activate SwedbankPay
   SwedbankPay-->>Merchant: payment resource
   deactivate SwedbankPay
   deactivate Merchant
@@ -636,11 +636,11 @@ authorization amount.
 ```mermaid
 sequenceDiagram
   Merchant->>SwedbankPay: POST [credit card capture]
-  Activate Merchant
-  Activate SwedbankPay
+  activate Merchant
+  activate SwedbankPay
   SwedbankPay-->>Merchant: transaction resource
-  Deactivate SwedbankPay
-  Deactivate Merchant
+  deactivate SwedbankPay
+  deactivate Merchant
 ```
 
 ### Cancel Sequence
@@ -652,11 +652,11 @@ and the authorization amount.
 ```mermaid
 sequenceDiagram
   Merchant->>SwedbankPay: POST [credit card cancel]
-  Activate Merchant
-  Activate SwedbankPay
+  activate Merchant
+  activate SwedbankPay
   SwedbankPay-->>Merchant: transaction resource
-  Deactivate SwedbankPay
-  Deactivate Merchant
+  deactivate SwedbankPay
+  deactivate Merchant
 ```
 
 ### Reversal Sequence
@@ -667,11 +667,11 @@ yet reversed.
 ```mermaid
 sequenceDiagram
   Merchant->>SwedbankPay: POST [credit card reversal]
-  Activate Merchant
-  Activate SwedbankPay
+  activate Merchant
+  activate SwedbankPay
   SwedbankPay-->>Merchant: transaction resource
-  Deactivate SwedbankPay
-  Deactivate Merchant
+  deactivate SwedbankPay
+  deactivate Merchant
 ```
 
 ## After payment options for Direct Card Payments
@@ -686,11 +686,11 @@ authorization amount.
 ```mermaid
 sequenceDiagram
   Merchant->>SwedbankPay: POST [credit card capture]
-  Activate Merchant
-  Activate SwedbankPay
+  activate Merchant
+  activate SwedbankPay
   SwedbankPay-->>Merchant: transaction resource
-  Deactivate SwedbankPay
-  Deactivate Merchant
+  deactivate SwedbankPay
+  deactivate Merchant
 ```
 
 ### Cancel Sequence
@@ -702,11 +702,11 @@ and the authorization amount.
 ```mermaid
 sequenceDiagram
   Merchant->>SwedbankPay: POST [credit card cancellations]
-  Activate Merchant
-  Activate SwedbankPay
+  activate Merchant
+  activate SwedbankPay
   SwedbankPay-->>Merchant: transaction resource
-  Deactivate SwedbankPay
-  Deactivate Merchant
+  deactivate SwedbankPay
+  deactivate Merchant
 ```
 
 ### Reversal Sequence
@@ -717,11 +717,11 @@ yet reversed.
 ```mermaid
 sequenceDiagram
   Merchant->>SwedbankPay: POST [credit card reversals]
-  Activate Merchant
-  Activate SwedbankPay
+  activate Merchant
+  activate SwedbankPay
   SwedbankPay-->>Merchant: transaction resource
-  Deactivate SwedbankPay
-  Deactivate Merchant
+  deactivate SwedbankPay
+  deactivate Merchant
 ```
 
 ## After payment options for Payout to Card
