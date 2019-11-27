@@ -1,4 +1,4 @@
-## Settlement and Reconcilliation
+## Settlement and Reconciliation
 
 {% include jumbotron.html body="Reconciliation is an important step in an
 economic transaction. When a payment is reconciled,  captured amounts for
@@ -186,61 +186,63 @@ In short, it is a settlement feature where a company with a website or an app ca
 
 #### What we need from you as a company:
 
-Send us a KYC form for each sub merchant you want to include. We will also do a KYC check on your sub merchants, providing extra security for you.
-Give every sub merchant who sells goods/services at your website / in your app a unique prefix number. This needs to be included in the KYC form you send to us. We recommend using the same customer number they have in your system.
-Attach the prefix number to all the items/goods/services the sub merchant sells through your website/app, so the goods/services can be matched to the correct merchant in our back office system.
-A partner agreement is needed for the automatic deduction of revenue cuts and fees?
+* Send us a KYC form for each sub merchant you want to include. We will also do a KYC check on your sub merchants, providing extra security for you.
+* Give every sub merchant who sells goods/services at your website / in your app a unique prefix number. This needs to be included in the KYC form you send to us. We recommend using the same customer number they have in your system.
+* Attach the prefix number to all the items/goods/services the sub merchant sells through your website/app, so the goods/services can be matched to the correct merchant in our back office system.
+* A partner agreement is needed for the automatic deduction of revenue cuts and fees.
 
 
 #### How it works:
 
-- We set up the sub merchant prefix in our systems.
-- The prefix number is added in the subsite field in the API call when you create the payment for the goods/service.
-- The customer selects payment method and completes the payment.
-- The payment goes into the client funds account.
-- Swedbank Pay matches the transaction and the merchant using the prefix number.
-- The settlement is split and connected to the correct merchant.
-- Revenue cuts for the super merchant and fees from Swedbank Pay are deducted automatically.
-- Payout to the sub merchant is done.
+1. We set up the sub merchant prefix in our systems.
+1. The prefix number is added in the subsite field in the API call when you create the payment for the goods/service.
+1. The customer selects payment method and completes the payment.
+1. The payment goes into the client funds account.
+1. Swedbank Pay matches the transaction and the merchant using the prefix number.
+1. The settlement is split and connected to the correct merchant.
+1. Revenue cuts for the super merchant and fees from Swedbank Pay are deducted automatically.
+1. Payout to the sub merchant is done.
 
 
 
 
 #### The upsides:
 
-Since the sub merchants are connected to Swedbank Pay through the super merchant instead of having separate setups, this means that you:
-Only need one agreement for credit card, direct debit, Vipps, Swish, MobilePay,  invoice, credit account and payment gateway.
-Only need one acquiring agreement.
-Only need one Vipps/Swish certificate.
-Can add more payment methods easily, as it only has to be done once.
-Can set up new sub merchants quickly, as the only thing needed is a KYC form and a prefix number. This shortens the setup time for both you and us to a matter of hours.
+* Since the sub merchants are connected to Swedbank Pay through the super merchant instead of having separate setups, this means that you:
+   * Only need one agreement for credit card, direct debit, Vipps, Swish, MobilePay,  invoice, credit account and payment gateway.
+   * Only need one acquiring agreement.
+   * Only need one Vipps/Swish certificate.
+   * Can add more payment methods easily, as it only has to be done once.
+   * Can set up new sub merchants quickly, as the only thing needed is a KYC form and a prefix number. This shortens the setup time for both you and us to a matter of hours.
 
-The automatic settlement split and deduction of fees and revenue cuts minimizes the work for your accounting department, as you do not have to invoice your sub merchants.
 
-The prefix split is available with all the payment methods we offer on our eCom platform:
 
-* Credit account
-* Credit card
-* Direct debit
-* Invoice
-* MobilePay (N/A in checkout)
-* Swish
-* Vipps
-* _Trustly and ViaBill are currently under development and will also support this feature._
+* The automatic settlement split and deduction of fees and revenue cuts minimizes the work for your accounting department, as you do not have to invoice your sub merchants.
+
+* The prefix split is available with all the payment methods we offer on our eCom platform:
+   * Credit account
+   * Credit card
+   * Direct debit
+   * Invoice
+   * MobilePay (Not available in checkout)
+   * Swish
+   * Vipps
+   * _Trustly and ViaBill are currently under development and will also support this feature._
 
 
 #### Good to know:
 
+With regards to admin functions, we offer a full integration towards our admin system. This way, you do not have to log in to Swedbank Pay Admin to perform these operations.
 
-*Captures and cancels*
+**Captures and cancels**
 
 Captures and cancels are done by the super merchant the same way as any other normal flow. 
 
-*Reversals*
+**Reversals**
 
-In cases where you need to do reversals, this will be performed by the super merchant. The reversal amount will be charged from the sub merchants prefix. If the sub merchants balance is 0 (zero), the super merchant will be invoiced. The super merchant will in turn have to invoice the sub merchant for this amount.
+In cases where you need to do reversals, this will be performed by the super merchant. The reversal amount will be charged from the sub merchants prefix. If the sub merchants balance is 0 (zero), the super merchant will be invoiced. The super merchant will in turn have to invoice this amount to the sub merchant.
 
-With regards to admin functions, we offer a full integration towards our admin system. This way, you do not have to log in to Swedbank Pay Admin to perform these operations.
+
 
 
 [payex-checkout]: /checkout
