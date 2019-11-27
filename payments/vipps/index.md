@@ -33,7 +33,7 @@ or more expanded sub-resources inlined.
 ```HTTP
 POST /psp/vipps/payments HTTP/1.1
 Host: api.externalintegration.payex.com
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
@@ -41,19 +41,19 @@ Content-Type: application/json
        "operation": "Purchase",
        "intent": "Authorization",
        "currency": "NOK",
-       "prices": \[
+       "prices": [
             {
                "type": "Vipps",
                "amount": 1500,
                "vatAmount": 0
             }
-        \],
+        ],
        "description": "Vipps Test",
        "payerReference": "ABtimestamp",
        "userAgent": "Mozilla/5.0",
        "language": "nb-NO",
        "urls": {
-           "hostUrls": \["https://example.com", "https://example.net"\],
+           "hostUrls": ["https://example.com", "https://example.net"],
            "completeUrl": "http://example.com/payment-completed",
            "cancelUrl": "http://example.com/payment-canceled",
            "paymentUrl": "http://example.com/perform-payment",
@@ -261,7 +261,7 @@ transactions made on a specific payment.
 ```HTTP
 GET /psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/authorizations HTTP/1.1
 Host: api.externalintegration.payex.com
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
@@ -296,7 +296,7 @@ Content-Type: application/json
                    "operations": []
                 }
             }
-        \]
+        ]
     }
 }
 ```
@@ -318,7 +318,7 @@ transaction id to the GET request.
 ```HTTP
 GET /psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/authorizations/<transactionId> HTTP/1.1
 Host: api.externalintegration.payex.com
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
@@ -370,7 +370,7 @@ The captures resource lists the capture transactions (one or more) on a specific
 ```HTTP
 GET /psp/vipps/vipps/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/captures HTTP/1.1
 Host: api.externalintegration.payex.com
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
@@ -410,12 +410,12 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property                 | Type     | Description                                                                  |
-| :----------------------- | :------- | :--------------------------------------------------------------------------- |
-| payment                  | `string` | The relative URI of the payment this list of capture transactions belong to. |
-| captures.id              | `string` | The relative URI of the current captures resource.                           |
-| captures.captureList     | `array`  | The array of capture transaction objects.                                    |
-| captures.captureList\[\] | `object` | The capture transaction object described in the capture resource below.      |
+| Property               | Type     | Description                                                                  |
+| :--------------------- | :------- | :--------------------------------------------------------------------------- |
+| payment                | `string` | The relative URI of the payment this list of capture transactions belong to. |
+| captures.id            | `string` | The relative URI of the current captures resource.                           |
+| captures.captureList   | `array`  | The array of capture transaction objects.                                    |
+| captures.captureList[] | `object` | The capture transaction object described in the capture resource below.      |
 
 #### Create capture transaction
 
@@ -428,7 +428,7 @@ performing the create-capture operation.
 ```HTTP
 POST /psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/captures HTTP/1.1
 Host: api.externalintegration.payex.com
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
@@ -500,7 +500,7 @@ The cancellations resource lists the cancellation transactions on a specific pay
 ```HTTP
 GET /psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/cancellations HTTP/1.1
 Host: api.externalintegration.payex.com
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
@@ -533,7 +533,7 @@ Content-Type: application/json
                    "operations": []
                 }
             }
-        \]
+        ]
     }
 }
 ```
@@ -557,7 +557,7 @@ You can only cancel a payment - or part of payment - not yet captured.
 ```HTTP
 POST /psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/cancellations HTTP/1.1
 Host: api.externalintegration.payex.com
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
@@ -626,7 +626,7 @@ specific payment.
 ```HTTP
 GET /psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/reversals HTTP/1.1
 Host: api.externalintegration.payex.com
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
@@ -638,28 +638,28 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-   "payment": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d",
-   "reversals": {
-       "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/reversals",
-       "reversalList": \[
+    "payment": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d",
+    "reversals": {
+        "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/reversals",
+        "reversalList": [
             {
-               "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/reversals/b3ac5f69-3d24-4c66-32b7-08d6139342aa",
-               "transaction": {
-                   "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/transactions/b3ac5f69-3d24-4c66-32b7-08d6139342aa",
-                   "created": "2018-09-06T10:12:54.738174Z",
-                   "updated": "2018-09-06T10:12:55.0671912Z",
-                   "type": "Reversal",
-                   "state": "Completed",
-                   "number": 72100003193,
-                   "amount": 1500,
-                   "vatAmount": 250,
-                   "description": "description for transaction",
-                   "payeeReference": "cpt1536228775",
-                   "isOperational": false,
-                   "operations": []
+                "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/reversals/b3ac5f69-3d24-4c66-32b7-08d6139342aa",
+                "transaction": {
+                    "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/transactions/b3ac5f69-3d24-4c66-32b7-08d6139342aa",
+                    "created": "2018-09-06T10:12:54.738174Z",
+                    "updated": "2018-09-06T10:12:55.0671912Z",
+                    "type": "Reversal",
+                    "state": "Completed",
+                    "number": 72100003193,
+                    "amount": 1500,
+                    "vatAmount": 250,
+                    "description": "description for transaction",
+                    "payeeReference": "cpt1536228775",
+                    "isOperational": false,
+                    "operations": []
                 }
             }
-        \]
+        ]
     }
 }
 ```
@@ -682,7 +682,7 @@ captured payment.
 ```HTTP
 POST /psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/reversals HTTP/1.1
 Host: api.externalintegration.payex.com
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {

@@ -72,7 +72,7 @@ is done through the `initiate-consumer-session` operation.
 ```http
 POST /psp/consumers HTTP/1.1
 Host: api.externalintegration.payex.com
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {

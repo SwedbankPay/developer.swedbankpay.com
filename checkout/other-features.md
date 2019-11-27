@@ -22,52 +22,6 @@ sidebar:
 investigating which **other features** are available in Swedbank Pay Checkout.
 They are listed on this very page." %}
 
-## Payment Url
-
-{% include payment-url.md payment-order=true
-when="selecting the payment instrument Vipps or in the 3-D Secure verification
-for Credit Card Payments" %}
-
-### Enable or Disable Payment Menu
-
-It is possible to disable the payment menu when only one instrument exist by
-setting the `disablePaymentMenu` property to `true`. The default value is
-`false`, exemplified below.
-
-{:.code-header}
-**Request**
-
-```js
-{
-    "paymentorder": {
-        "disablePaymentMenu": false
-    {
-}
-```
-
-{:.text-center}
-![example disablePaymentMenu = false][image_enabled_payment_menu]{:width="464" :height="607"}
-
-Setting `disablePaymentMenu` property to `true` removes all other payment
-instruments but the one that is available.
-This feature is only valuable to set to `true` if you have only one payment
-instrument available. By setting it to `true` will remove the frame around the
-menu and show only the instrument.
-
-{:.code-header}
-**Request**
-
-```js
-{
-    "paymentorder": {
-        "disablePaymentMenu": true
-    {
-}
-```
-
-{:.text-center}
-![example disablePaymentMenu = true][image_disabled_payment_menu]{:width="463" :height="553"}
-
 ## Payment Orders
 
 {% include payment-order-get.md %}
@@ -82,7 +36,7 @@ To create a payment order, you perform a `POST` request towards the
 
 ```http
 POST /psp/paymentorders HTTP/1.1
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
@@ -206,7 +160,7 @@ Content-Type: application/json
 |          | └➔&nbsp;`metadata`                 | `object`     | The keys and values that should be associated with the payment order. Can be additional identifiers and data you want to associate with the payment.                                                            |
 |          | └➔&nbsp;`items`                    | `array`      | The array of items that will affect how the payment is performed.                                                                                                                                               |
 |          | └➔&nbsp;`disablePaymentMenu`       | `boolean`    | If set to `true`, disables the frame around the payment menu. Usefull when only showing one payment instrument.                                                                                                 |
-|          | └➔&nbsp;`no3DSecureForStoredCards` | `boolean`    | `true` if 3-D Secure should be disabled for this payment in the case a stored card is used; otherwise `false` per default. To use this feature it has to be enabled on the contract with Swedbank Pay.            |
+|          | └➔&nbsp;`no3DSecureForStoredCards` | `boolean`    | `true` if 3-D Secure should be disabled for this payment in the case a stored card is used; otherwise `false` per default. To use this feature it has to be enabled on the contract with Swedbank Pay.          |
 |          | └➔&nbsp;`noCvcForStoredCards`      | `boolean`    | `true` if the CVC field should be disabled for this payment in the case a stored card is used; otherwise `false` per default. To use this feature it has to be enabled on the contract with Swedbank Pay.       |
 
 #### Response
@@ -216,10 +170,11 @@ request towards the `paymentorders` resource, [as displayed above](#payment-orde
 
 ### URLs
 
-The `urls` property of the `paymentOrder` contains the URIs related to a
-payment order, including where the consumer gets redirected when going forward
-with or cancelling a payment session, as well as the callback URI that is used
-to inform the payee (merchant) of changes or updates made to underlying payments or transaction.
+When creating a Payment Order, the `urls` property of the `paymentOrder`
+contains the related URIs, including where the consumer gets redirected when
+going forward with or cancelling a payment session, as well as the callback URI
+that is used to inform the payee (merchant) of changes or updates made to
+underlying payments or transaction.
 
 {:.table .table-striped}
 | Required | Property            | Type     | Description                                                                                                                                                       |
@@ -231,6 +186,63 @@ to inform the payee (merchant) of changes or updates made to underlying payments
 |          | `paymentUrl`        | `string` | The URI that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment.                |
 |          | `callbackUrl`       | `string` | The URI to the API endpoint receiving `POST` requests on transaction activity related to the payment order.                                                       |
 |          | `logoUrl`           | `string` | The URI to the logo that will be displayed on redirect pages. **HTTPS is a requirement**.                                                                         |
+
+#### Payment Url
+
+{% include payment-url.md payment-order=true
+when="selecting the payment instrument Vipps or in the 3-D Secure verification
+for Credit Card Payments" %}
+
+#### URLs Resource
+
+It is possible to perform a `GET` request on the `urls` resource to retrieve its
+contents.
+
+{:.code-header}
+Request
+
+```http
+GET /psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/urls/ HTTP/1.1
+Host: api.externalintegration.payex.com
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+```
+
+{:.code-header}
+Response
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "paymentorder": "/psp/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "urls": {
+        "id": "/psp/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/urls",
+        "hostUrls": [ "https://example.com", "http://test-dummy2.net" ],
+        "completeUrl": "http://example.com/payment-complete",
+        "cancelUrl": "http://example.com/payment-canceled",
+        "paymentUrl": "http://example.com/perform-payment",
+        "callbackUrl": "http://api.example.com/payment-callback",
+        "logoUrl": "http://merchant.com/path/to/logo.png",
+        "termsOfServiceUrl": "http://merchant.com/path/to/tems"
+    }
+}
+```
+
+{:.table .table-striped}
+| Property                    | Type     | Description                                                                                                                                                          |
+| :-------------------------- | :------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `paymentorder`              | `string` | The URI to the payment order the resource belong to.                                                                                                                 |
+| `urls`                      | `object` | The URLs object.                                                                                                                                                     |
+| └➔&nbsp;`id`                | `string` | The relative URI to the `urls` resource.                                                                                                                             |
+| └➔&nbsp;`hostsUrl`          | `string` | An array of the whitelisted URIs that are allowed as parents to a Hosted View, typically the URI of the web shop or similar that will embed a Hosted View within it. |
+| └➔&nbsp;`completeUrl`       | `string` | The URI that Swedbank Pay will redirect back to when the payment page is completed.                                                                                  |
+| └➔&nbsp;`cancelUrl`         | `string` | The URI to redirect the payer to if the payment is canceled, either by the payer or by the merchant trough an `abort` request of the `payment` or `paymentorder`.    |
+| └➔&nbsp;`paymentUrl`        | `string` | The URI that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment.                   |
+| └➔&nbsp;`callbackUrl`       | `string` | The URI that Swedbank Pay will perform an HTTP `POST` against every time a transaction is created on the payment. See [callback][callback-reference] for details.    |
+| └➔&nbsp;`logoUrl`           | `string` | The URI that will be used for showing the customer logo. Must be a picture with at most 50px height and 400px width.                                                 |
+| └➔&nbsp;`termsOfServiceUrl` | `string` | A URI that contains your terms and conditions for the payment, to be linked on the payment page.                                                                     |
 
 ### Order Items
 
@@ -427,7 +439,7 @@ new amount is shown to the end customer.
 
 ```http
 PATCH /psp/paymentorders/b80be381-b572-4f1e-9691-08d5dd095bc4 HTTP/1.1
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
@@ -520,7 +532,7 @@ in the request body:
 ```http
 PATCH /psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c HTTP/1.1
 Host: api.externalintegration.payex.com
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
@@ -640,7 +652,7 @@ GET /psp/paymentorders/<paymentorderId>?$expand=currentpayment HTTP/1.1
 Host: api.externalintegration.payex.com
 ```
 
-### Creating recurring payments
+### Creating Recurring Payments
 
 When you have a `recurrenceToken` token safely tucked away, you can use this
 token in a subsequent `Recur` payment order. This will be a server-to-server
@@ -653,7 +665,7 @@ recurrence token during the initial payment order.
 ```http
 POST /psp/paymentorders HTTP/1.1
 Host: api.externalintegration.payex.com
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
@@ -745,14 +757,13 @@ operation.
 
 ## Payments Resource
 
-A payment order is able to hold more than one payment object,
-_even though a successful payment order only harbour one successful payment_.
-This is necessary as the consumer might select and initate a payment option that
-is not followed through successfully. I.e. if the consumer cancels an invoice
-payment, a cancel transaction will still be tied to that particular invoice
-payment resource. This payment resource will continue to exist, even if the
-consumer successfully should finish the purchase with a credit card payment
-instead.
+A payment order is able to hold more than one payment object, _even though a
+successful payment order only harbour one successful payment_. This is necessary
+as the consumer might select and initiate a payment option that is not followed
+through successfully. I.e. if the consumer cancels an invoice payment, a cancel
+transaction will still be tied to that particular invoice payment resource. This
+payment resource will continue to exist, even if the consumer successfully
+should finish the purchase with a credit card payment instead.
 
 {:.code-header}
 **Request**
@@ -760,7 +771,7 @@ instead.
 ```http
 GET /psp/paymentorders<paymentorderId>/payments HTTP/1.1
 Host: api.externalintegration.payex.com
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
@@ -805,7 +816,7 @@ payment order container.
 ```http
 GET /psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/currentpayment HTTP/1.1
 Host: api.externalintegration.payex.com
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
@@ -880,10 +891,6 @@ Content-Type: application/json
 | └➔&nbsp;`userAgent`                | `string`     | The [user agent][user-agent] string of the consumer's browser.                                                                                                                                   |
 | └➔&nbsp;`language`                 | `string`     | `nb-NO`, `sv-SE` or `en-US`                                                                                                                                                                      |
 
-### Urls Resource
-
-{% include urls.md %}
-
 ### Prices Resource
 
 {% include prices.md hide-direct-debit=1 hide-mobile-pay=1 %}
@@ -901,7 +908,7 @@ during login/checkin.
 ```http
 GET /psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/payers/ HTTP/1.1
 Host: api.externalintegration.payex.com
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
@@ -938,7 +945,7 @@ Content-Type: application/json
 | `payer`                   | `object` | The payer object.                                   |
 | └➔&nbsp;`id`              | `string` | The relative URI to the current `payer` resource.   |
 | └➔&nbsp;`email`           | `string` | Payer's registered email address.                   |
-| └➔&nbsp;`msisdn`          | `string` | Payer'registered mobile phone number.               |
+| └➔&nbsp;`msisdn`          | `string` | Payer's registered mobile phone number.             |
 | └➔&nbsp;`shippingAddress` | `object` | The shipping address object related to the `payer`. |
 | └─➔&nbsp;`addresse`       | `object` | The shipping address object related to the `payer`. |
 | └─➔&nbsp;`coAddress`      | `string` | Payer' s c/o address, if applicable.                |
@@ -1033,6 +1040,46 @@ Triggered when a consumer has been identified
 ### `onError`
 
 Triggered on terminal errors, and when the configuration fails validation.
+
+## Enable or Disable Payment Menu
+
+It is possible to disable the payment menu when only one instrument exist by
+setting the `disablePaymentMenu` property to `true`. The default value is
+`false`, exemplified below.
+
+{:.code-header}
+**Request**
+
+```js
+{
+    "paymentorder": {
+        "disablePaymentMenu": false
+    {
+}
+```
+
+{:.text-center}
+![example disablePaymentMenu = false][image_enabled_payment_menu]{:width="464" :height="607"}
+
+Setting `disablePaymentMenu` property to `true` removes all other payment
+instruments but the one that is available.
+This feature is only valuable to set to `true` if you have only one payment
+instrument available. By setting it to `true` will remove the frame around the
+menu and show only the instrument.
+
+{:.code-header}
+**Request**
+
+```js
+{
+    "paymentorder": {
+        "disablePaymentMenu": true
+    {
+}
+```
+
+{:.text-center}
+![example disablePaymentMenu = true][image_disabled_payment_menu]{:width="463" :height="553"}
 
 ## Payment Menu Events
 
@@ -1171,7 +1218,7 @@ argument object:
 | `origin`  | `string` | `owner`, `merchant`. The value is always `merchant` unless Swedbank Pay hosts the view. |
 | `openUrl` | `string` | The URI containing Terms of Service and conditions.                                     |
 
-### onError
+### `onError`
 
 This event triggers during terminal errors or if the configuration fails
 validation. The `onError` event will be raised with the following event argument
@@ -1338,7 +1385,6 @@ although that might be possible in the future.
 {% include iterator.html prev_href="summary" prev_title="Back: Summary" %}
 
 [abort]: #operations
-[transaction]: #transaction
 [callback-reference]: /checkout/other-features#callback
 [card-payments-problems]: /payments/credit-card/other-features#problem-messages
 [consumer-reference]: /checkout/other-features#payeereference
@@ -1348,9 +1394,12 @@ although that might be possible in the future.
 [image_disabled_payment_menu]: /assets/img/checkout/test-purchase.png
 [image_enabled_payment_menu]: /assets/img/checkout/payment-menu.png
 [invoice-payments-problems]: /payments/invoice/other-features#problem-messages
+[operations]: #operations
 [order-items]: /checkout/other-features#order-items
 [payee-reference]: /checkout/other-features#payeereference
 [payment-menu]: /checkout/payment-menu
+[payment-order-capture]: #capture
+[payment-order]: #payment-orders
 [payment-orders-resource-payers]: #payer-resource
 [payment-orders-resource-payments]: #current-payment-resource
 [payment-orders-resource]: /checkout/other-features#payment-orders
@@ -1360,9 +1409,9 @@ although that might be possible in the future.
 [payment-resource]: #payments-resource
 [pci-dss]: https://www.pcisecuritystandards.org/
 [swish-payments-problems]: /payments/swish/other-features#problem-messages
+[transaction]: #transaction
 [update-order]: /checkout/after-payment#update-order
+[urls]: #urls-resource
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
 [verification-transaction]: #verify-payment-orders
 [vipps-payments-problems]: /payments/vipps/other-features#problem-messages
-[payment-order]: #payment-orders
-[payment-order-capture]: #capture
