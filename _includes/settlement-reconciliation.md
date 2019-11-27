@@ -64,7 +64,7 @@ the settlement process yourselves you will receive a separat invoice for fees**.
 
 #### Transactions List
 
-The Transaction List (provided in `.xlsx` and `.xml` formats) specifies all transactions for a specific period, including a summary of transactions grouped by payment method. Both formats contain the same information, but the xml file is meant for computer processing while the excel workbook is meant for human interaction.
+The Transaction List (provided in `.xlsx` and `.xml` formats) specifies all transactions for a specific period, including a summary of transactions grouped by payment instrument. Both formats contain the same information, but the xml file is meant for computer processing while the excel workbook is meant for human interaction.
 
 The first row contains the name of the Swedbank Pay company (e.g. Swedbank Pay Solutions AB) that the merchant has the contract with, and the balance report number. The header fields contain a summary of the transactions displayed in the body.
 
@@ -200,9 +200,9 @@ the reconciliation file.
 ### Samples
 
 The content of the files depends on the type of agreement you have made with
-PayEx. For some payment methods, only option A is available, while for other
-payment methods, only option B is available. The sample files can be downloaded
-below.
+PayEx. For some payment instruments, only option A is available, while for other
+payment instruments, only option B is available. The sample files can be
+downloaded below.
 
 #### Option A: Swedbank Pay handles the settlement process
 
@@ -243,8 +243,8 @@ charities.
 * Give every sub merchant who sells goods/services at your website or in your
   app a unique prefix number. This needs to be included in the KYC form you send
   to us. We recommend using the same customer number they have in your system.
-* Attach the prefix number to all the items/goods/services the sub merchant
-  sells through your website/app, so the goods/services can be matched to the
+* Attach the prefix number to all the goods/services the sub merchant
+  sells through your website or app, so the goods/services can be matched to the
   correct merchant in our back office system.
 * A partner agreement is needed for the automatic deduction of revenue cuts and
   fees.
@@ -253,16 +253,16 @@ charities.
 #### How it works:
 
 1. We set up the sub merchant prefix in our systems.
-1. The prefix number is added in the subsite field in the API call when you
-   create the payment for the goods/service.
-1. The customer selects payment method and completes the payment.
-1. The payment goes into the client funds account.
-1. Swedbank Pay matches the transaction and the merchant using the prefix
+2. The prefix number is added in the subsite field in the API call when you
+   create the payment for the goods or service.
+3. The customer selects payment instrument and completes the payment.
+4. The payment goes into the client funds account.
+5. Swedbank Pay matches the transaction and the merchant using the prefix
    number.
-1. The settlement is split and connected to the correct merchant.
-1. Revenue cuts for the super merchant and fees from Swedbank Pay are deducted
+6. The settlement is split and connected to the correct merchant.
+7. Revenue cuts for the super merchant and fees from Swedbank Pay are deducted
    automatically.
-1. Payout to the sub merchant is done.
+8. Payout to the sub merchant is done.
 
 
 
@@ -275,7 +275,7 @@ charities.
      MobilePay,  invoice, credit account and payment gateway.
    * Only need one acquiring agreement.
    * Only need one Vipps/Swish certificate.
-   * Can add more payment methods easily, as it only has to be done once.
+   * Can add more payment instruments easily, as it only has to be done once.
    * Can set up new sub merchants quickly, as the only thing needed is a KYC
      form and a prefix number. This shortens the setup time for both you and us
      to a matter of hours.
