@@ -19,9 +19,9 @@ sidebar:
 {% include alert.html type="warning"
                       icon="warning"
                       header="Site under development"
-                      body="This section of the Developer Portal is under construction and
-                      should not be used to integrate against Swedbank Pay's
-                      APIs yet." %}
+                      body="This section of the
+                      Developer Portal is under construction and should not be
+                      used to integrate against Swedbank Pay's APIs yet." %}
 
 >Swish is an one-phase payment method supported by the major Swedish banks.
  In the redirect e-commerce scenario, Swedbank Pay performs a payment that the
@@ -32,33 +32,31 @@ sidebar:
 ## Introduction
 
 * When the payer starts the purchase process, you make a `POST` request towards
-  Swedbank Pay with the collected Purchase information.
-  This will generate a payment object with a unique `paymentID`.
-  You either receive a Redirect URL to a hosted page or a JavaScript
-  source in response.
+  Swedbank Pay with the collected Purchase information. This will generate a
+  payment object with a unique `paymentID`. You either receive a Redirect URL to
+  a hosted page or a JavaScript source in response.
 * You need to [redirect][redirect] the payer to the Redirect payment page or
-  embed the script source on you site to create a [Hosted View][hosted-view]
-  in an iFrame;
-  where she is prompted to enter the Swish registered mobile number.
+  embed the script source on you site to create a [Hosted View][hosted-view] in
+  an iFrame; where she is prompted to enter the Swish registered mobile number.
   This triggers the initiation of a sales transaction.
 * Swedbank Pay handles the dialogue with Swish and the consumer confirms the
   purchase in the Swish app.
-* Swedbank Pay will redirect the payer's browser to - or display directly in
-  the iFrame - one of two specified URLs, depending on whether the payment
-  session is followed through completely or cancelled beforehand.
-  Please note that both a successful and rejected payment reach completion,
-  in contrast to a cancelled payment.
+* Swedbank Pay will redirect the payer's browser to - or display directly in the
+  iFrame - one of two specified URLs, depending on whether the payment session
+  is followed through completely or cancelled beforehand. Please note that both
+  a successful and rejected payment reach completion, in contrast to a cancelled
+  payment.
 * If CallbackURL is set you will receive a payment callback when the Swish
-  dialogue is completed.
-  You need to do a `GET` request, containing the `paymentID` generated in the
-  first step, to receive the state of the transaction.
+  dialogue is completed. You need to do a `GET` request, containing the
+  `paymentID` generated in the first step, to receive the state of the
+  transaction.
 
 ## Screenshots
 
 The consumer/end-user is redirected to Swedbank Pay hosted pages and prompted
 to insert her phone number to initiate the sales transaction.
 
-![Consumer paying with Swish using PayEx]
+![Consumer paying with Swish using Swedbank Pay]
 [swish-redirect-image]{:width="467px" height="364px"}
 
 ## API Requests
@@ -75,10 +73,10 @@ All valid options when posting in a payment with operation equal to Purchase.
 
 #### General
 
-* **Defining CallbackURL**: When implementing a scenario, it is optional to
-  set a [CallbackURL][callback-url] in the `POST` request.
-  If callbackURL is set Swedbank Pay will send a postback request to this
-  URL when the consumer has fulfilled the payment.
+* **Defining CallbackURL**: When implementing a scenario, it is optional to set
+  a [CallbackURL][callback-url] in the `POST` request. If callbackURL is set
+  Swedbank Pay will send a postback request to this URL when the consumer has
+  fulfilled the payment.
 
 ## Purchase flow
 
@@ -89,54 +87,54 @@ request.
 
 ```mermaid
 sequenceDiagram
-  Activate Browser
+  activate Browser
   Browser->>Merchant: start purchase
-  Activate Merchant
-  Merchant->>PayEx: POST <Swish create payment> (operation=PURCHASE)
+  activate Merchant
+  Merchant->>SwedbankPay: POST <Swish create payment> (operation=PURCHASE)
   note left of Merchant: First API request
-  Activate PayEx
-  PayEx-->>Merchant: payment resource
-  Deactivate PayEx
+  activate SwedbankPay
+  SwedbankPay-->>Merchant: payment resource
+  deactivate SwedbankPay
   Merchant-->>Browser: redirect to payments page
-  Deactivate Merchant
+  deactivate Merchant
   
-  note left of PayEx: redirect to Swedbank Pay (If Redirect scenario)
-  Browser->>PayEx: enter mobile number
-  Activate PayEx
+  note left of SwedbankPay: redirect to Swedbank Pay (If Redirect scenario)
+  Browser->>SwedbankPay: enter mobile number
+  activate SwedbankPay
 
-  PayEx--xBrowser: Tell consumer to open Swish app
-  Deactivate Swedbank Pay
-  Activate Swish_API
-  Activate Swish_App
+  SwedbankPay--xBrowser: Tell consumer to open Swish app
+  deactivate Swedbank Pay
+  activate Swish_API
+  activate Swish_App
   Swish_API->>Swish_App: Ask for payment confirmation
   Swish_App-->>Swish_API: Consumer confirms payment
-  Deactivate Swish_App
+  deactivate Swish_App
   
   opt Callback
-  Activate PayEx
-  Swish_API-->>PayEx: Payment status
-  PayEx-->>Swish_API: Callback response
-  Deactivate Swish_API
-  PayEx--xMerchant: Transaction callback
+  activate SwedbankPay
+  Swish_API-->>SwedbankPay: Payment status
+  SwedbankPay-->>Swish_API: Callback response
+  deactivate Swish_API
+  SwedbankPay--xMerchant: Transaction callback
   end
-  PayEx-->>Browser: Redirect to merchant (If Redirect scenario)
-  Deactivate PayEx
+  SwedbankPay-->>Browser: Redirect to merchant (If Redirect scenario)
+  deactivate SwedbankPay
   
   Browser-->>Merchant: Redirect
-  Activate PayEx
-  Activate Merchant
-  Merchant->>PayEx: GET <Swish payment>
-  PayEx-->>Merchant: Payment response
+  activate SwedbankPay
+  activate Merchant
+  Merchant->>SwedbankPay: GET <Swish payment>
+  SwedbankPay-->>Merchant: Payment response
   Merchant-->>Browser: Payment Status  
-  Deactivate Merchant
-  Deactivate Browser
+  deactivate Merchant
+  deactivate Browser
 ```
 
 ## Options after posting a payment
 
-* **If CallbackURL is set**: Whenever changes to the payment occur a
-  [Callback request][technical-reference-callback] will be posted to the
-  callbackUrl, which was generated when the payment was created.
+* **If CallbackURL is set**: Whenever changes to the payment occur a [Callback
+  request][technical-reference-callback] will be posted to the callbackUrl,
+  which was generated when the payment was created.
 * You can create a reversal transactions by implementing the Reversal request.
   You can also access and reverse a payment through your merchant pages in the
   [Swedbank Pay admin portal][payex-admin-portal].
@@ -148,12 +146,12 @@ sales transaction.
 
 ```mermaid
 sequenceDiagram
-  Merchant->>PayEx: POST <Swish reversal>
-  Activate Merchant
-  Activate PayEx
-  PayEx-->>Merchant: transaction resource
-  Deactivate PayEx
-  Deactivate Merchant
+  Merchant->>SwedbankPay: POST <Swish reversal>
+  activate Merchant
+  activate SwedbankPay
+  SwedbankPay-->>Merchant: transaction resource
+  deactivate SwedbankPay
+  deactivate Merchant
 ```
 
 [swish-redirect-image]: /assets/screenshots/swish/redirect-view/view/windows-small-window.png
