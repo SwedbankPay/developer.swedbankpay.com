@@ -71,10 +71,10 @@ Content-Type: application/json
 |          | payment.urls.callbackUrl       | string      | The URI that Swedbank Pay will perform an HTTP POST against every time a transaction is created on the payment. See [callback][technical-reference-callback] for details.                                                                             |
 |          | payment.urls.logoUrl           | string      | The URI that will be used for showing the customer logo. Must be a picture with at most 50px height and 400px width. **Requires https**.                                                                                                              |
 |          | payment.urls.termsOfServiceUrl | string      | A URI that contains your terms and conditions for the payment, to be linked on the payment page. **Requires https**.                                                                                                                                  |
-|    ✔︎    | payeeInfo.payeeId              | string      | This is the unique id that identifies this payee (like merchant) set by PayEx.                                                                                                                                                                        |
+|    ✔︎    | payeeInfo.payeeId              | string      | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                                                                        |
 |    ✔︎    | payeeInfo.payeeReference       | string(35)  | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][technical-reference-payeereference] for details.                                           |
-|          | payeeInfo.payeeName            | string      | The payee name (like merchant name) that will be displayed to consumer when redirected to PayEx.                                                                                                                                                      |
-|          | payeeInfo.productCategory      | string      | A product category or number sent in from the payee/merchant. This is not validated by PayEx, but will be passed through the payment process and may be used in the settlement process.                                                               |
+|          | payeeInfo.payeeName            | string      | The payee name (like merchant name) that will be displayed to consumer when redirected to Swedbank Pay.                                                                                                                                                      |
+|          | payeeInfo.productCategory      | string      | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                               |
 |          | payeeInfo.orderReference       | string(50)  | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                               |
 |          | payeeInfo.subsite              | String(40)  | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.                                                                                           |
 
@@ -322,7 +322,7 @@ Content-Type: application/json
 
 You can create a reversal transaction against a completed sales
 transaction by adding that transaction's `payeeReference` in the request body.
-A callback request will follow from PayEx.
+A callback request will follow from Swedbank Pay.
 
 {:.code-header}
 **Request**
@@ -397,19 +397,16 @@ Callback functionality is explaned in more detail
 
 ```mermaid
 sequenceDiagram
+  activate SwedbankPay
+  SwedbankPay->>-Merchant: POST <callbackUrl>
   activate Merchant
-  activate PayEx
-  PayEx->Merchant: POST <callbackUrl>
-  note left of Merchant: Callback by PayEx
-  Merchant-->PayEx: HTTP response
-  deactivate PayEx
-  deactivate Merchant
+  note left of Merchant: Callback by SwedbankPay
+  Merchant-->>SwedbankPay: HTTP response
 
-  Merchant->PayEx: GET Direct Debit payment
+  Merchant->>-SwedbankPay: GET Direct Debit payment
+  activate SwedbankPay
   note left of Merchant: First API request
-  activate PayEx
-  PayEx-->Merchant: payment resource
-  deactivate PayEx
+  SwedbankPay-->>-Merchant: payment resource
 ```
 
 ------------------------------------
