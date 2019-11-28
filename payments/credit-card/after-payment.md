@@ -27,16 +27,16 @@ sidebar:
 
 ### Options after posting a payment
 
-* *Abort:* It is possible to abort the process, if the payment has no successful
+* `Abort`: It is possible to abort the process, if the payment has no successful
   transactions. [See the PATCH payment description][abort].
 * If the payment shown above is done as a two phase (`Authorization`), you will
   need to implement the `Capture` and `Cancel` requests.
 * For `reversals`, you will need to implement the [Reversal request][reversal].
 * If you did a `PreAuthorization`, you will have to send a [Finalize
-  request][finalize] to finalize the transaction.
-* *If CallbackURL is set:* Whenever changes to the payment occur a [Callback
-  request][callback] will be posted to the callbackUrl, which was generated when
-  the payment was created.
+  request][finalize] to complete the transaction.
+* If `CallbackURL` is set: Whenever changes to the payment occur a [Callback
+  request][callback] will be posted to the `callbackUrl`, which was generated
+  when the payment was created.
 
 ### Capture
 
@@ -91,10 +91,10 @@ Content-Type: application/json
 {:.table .table-striped}
 | Property                  | Type      | Description                                                                                                                                                                                                  |
 | :------------------------ | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `payment`                 | `string`  | The relative URI of the payment this list of  `capture` transactions belong to.                                                                                                                                 |
-| `captures`                | `object`  | The  `capture` resource contains information about the  `capture` transaction made against a card payment.                                                                                                         |
-| └➔&nbsp;`id`              | `string`  | The relative URI of the current   `capture`s  resource.                                                                                                                                                         |
-| └➔&nbsp;`captureList`     | `array`   | The array of  `capture` transaction objects.                                                                                                                                                                    |
+| `payment`                 | `string`  | The relative URI of the payment this list of  `capture` transactions belong to.                                                                                                                              |
+| `captures`                | `object`  | The  `capture` resource contains information about the  `capture` transaction made against a card payment.                                                                                                   |
+| └➔&nbsp;`id`              | `string`  | The relative URI of the current   `capture`s  resource.                                                                                                                                                      |
+| └➔&nbsp;`captureList`     | `array`   | The array of  `capture` transaction objects.                                                                                                                                                                 |
 | └─➔&nbsp;`id`             | `string`  | The relative URI of the current  transaction  resource.                                                                                                                                                      |
 | └➔&nbsp;`transaction`     | `object`  | The object representation of the generic [transaction resource][transaction-resource].                                                                                                                       |
 | └─➔&nbsp;`id`             | `string`  | The relative URI of the current  transaction  resource.                                                                                                                                                      |
@@ -113,8 +113,8 @@ Content-Type: application/json
 
 #### Create capture transaction
 
-To create a capture transaction to withdraw money from the payer's card, you
-need to perform the create-capture operation.
+To create a `capture` transaction to withdraw money from the payer's card, you
+need to perform the `create-capture` operation.
 
 {:.code-header}
 **Request**
@@ -136,13 +136,13 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| ✔︎︎︎︎︎ | Property                 | Type          | Description                                                                                                   |
-| :----: | :----------------------- | :------------ | :------------------------------------------------------------------------------------------------------------ |
-| ✔︎︎︎︎︎ | `transaction`            | `object`      | The object representation of the generic [transaction resource][transaction-resource].                        |
-| ✔︎︎︎︎︎ | └➔&nbsp;`amount`         | `integer`     | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 100.00 NOK, 5000 50.00 SEK. |
-| ✔︎︎︎︎︎ | └➔&nbsp;`vatAmount`      | `integer`     | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 100.00 NOK, 5000 50.00 SEK. |
-| ✔︎︎︎︎︎ | └➔&nbsp;`description`    | `string`      | A textual description of the capture transaction.                                                             |
-| ✔︎︎︎︎︎ | └➔&nbsp;`payeeReference` | `string(30*)` | A unique reference for the capture transaction. See [payeeReference][payeeReference] for details.             |
+| Required | Property                 | Type          | Description                                                                                                   |
+| :------: | :----------------------- | :------------ | :------------------------------------------------------------------------------------------------------------ |
+|  ✔︎︎︎︎︎  | `transaction`            | `object`      | The object representation of the generic [transaction resource][transaction-resource].                        |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`amount`         | `integer`     | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 100.00 NOK, 5000 50.00 SEK. |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`vatAmount`      | `integer`     | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 100.00 NOK, 5000 50.00 SEK. |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`description`    | `string`      | A textual description of the capture transaction.                                                             |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`payeeReference` | `string(30*)` | A unique reference for the capture transaction. See [payeeReference][payeeReference] for details.             |
 
 {:.code-header}
 **Response**
@@ -174,29 +174,29 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property                | Type      | Description                                                                                                                                                                                                  |
-| :---------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| payment                 | `string`  | The relative URI of the payment this capture transaction belongs to.                                                                                                                                         |
-| capture                 | `object`  | The capture resource contains information about the capture transaction made against a card payment.                                                                                                         |
-| └➔&nbsp;id              | `string`  | The relative URI of the created capture transaction.                                                                                                                                                         |
-| └➔&nbsp;transaction     | `object`  | The object representation of the generic [transaction resource][transaction-resource].                                                                                                                       |
-| └─➔&nbsp;id             | `string`  | The relative URI of the current  transaction  resource.                                                                                                                                                      |
-| └─➔&nbsp;created        | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
-| └─➔&nbsp;updated        | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
-| └─➔&nbsp;type           | `string`  | Indicates the transaction type.                                                                                                                                                                              |
-| └─➔&nbsp;state          | `string`  | Initialized ,  Completed  or  Failed . Indicates the state of the transaction                                                                                                                                |
-| └─➔&nbsp;number         | `string`  | The transaction  number , useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that  id  should be used instead. |
-| └─➔&nbsp;amount         | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g.  10000  = 100.00 NOK,  5000  = 50.00 SEK.                                                                                     |
-| └─➔&nbsp;vatAmount      | `integer` | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                           |
-| └─➔&nbsp;description    | `string`  | A human readable description of maximum 40 characters of the transaction                                                                                                                                     |
-| └─➔&nbsp;payeeReference | `string`  | A unique reference for the transaction. See [payeeReference][payeeReference] for details.                                                                                                                    |
-| └─➔&nbsp;failedReason   | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
-| └─➔&nbsp;isOperational  | `boolean` | `true`  if the transaction is operational; otherwise  `false` .                                                                                                                                              |
-| └─➔&nbsp;operations     | `array`   | The array of [operations][operations] that are possible to perform on the transaction in its current state.                                                                                                  |
+| Property                  | Type      | Description                                                                                                                                                                                                  |
+| :------------------------ | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `payment`                 | `string`  | The relative URI of the payment this `capture` transaction belongs to.                                                                                                                                       |
+| `capture`                 | `object`  | The `capture` resource contains information about the `capture` transaction made against a card payment.                                                                                                     |
+| └➔&nbsp;`id`              | `string`  | The relative URI of the created `capture` transaction.                                                                                                                                                       |
+| └➔&nbsp;`transaction`     | `object`  | The object representation of the generic [`transaction resource`][transaction-resource].                                                                                                                     |
+| └─➔&nbsp;`id`             | `string`  | The relative URI of the current  `transaction`  resource.                                                                                                                                                    |
+| └─➔&nbsp;`created`        | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
+| └─➔&nbsp;`updated`        | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
+| └─➔&nbsp;`type`           | `string`  | Indicates the transaction type.                                                                                                                                                                              |
+| └─➔&nbsp;`state`          | `string`  | Initialized ,  Completed  or  Failed . Indicates the state of the transaction                                                                                                                                |
+| └─➔&nbsp;`number`         | `string`  | The transaction  number , useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that  id  should be used instead. |
+| └─➔&nbsp;`amount`         | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g.  10000  = 100.00 NOK,  5000  = 50.00 SEK.                                                                                     |
+| └─➔&nbsp;`vatAmount`      | `integer` | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                           |
+| └─➔&nbsp;`description`    | `string`  | A human readable description of maximum 40 characters of the transaction                                                                                                                                     |
+| └─➔&nbsp;`payeeReference` | `string`  | A unique reference for the transaction. See [payeeReference][payeeReference] for details.                                                                                                                    |
+| └─➔&nbsp;`failedReason`   | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
+| └─➔&nbsp;`isOperational`  | `boolean` | `true`  if the transaction is operational; otherwise  `false` .                                                                                                                                              |
+| └─➔&nbsp;`operations`     | `array`   | The array of [operations][operations] that are possible to perform on the transaction in its current state.                                                                                                  |
 
 #### Capture Sequence
 
-Capture can only be done on a authorized transaction. It is possible to do a
+`Capture` can only be done on a authorized transaction. It is possible to do a
 part-capture where you only capture a part of the authorization amount. You can
 later do more captures on the same payment up to the total authorization amount.
 
@@ -238,9 +238,10 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| ✔︎︎︎︎︎ | Property             | Type   | Description                                                                                                        |
-| :----: | :------------------- | :----- | :----------------------------------------------------------------------------------------------------------------- |
-| ✔︎︎︎︎︎ | transaction.activity | string | The `finalize` operation will complete(finalize) the payment. |
+| Required | Property           | Type     | Description                                                                              |
+| :------: | :----------------- | :------- | :--------------------------------------------------------------------------------------- |
+|  ✔︎︎︎︎︎  | `transaction`      | `object` | The object representation of the generic [`transaction resource`][transaction-resource]. |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`activity` | `string` | The `finalize` operation will complete(finalize) the payment.                            |
 
 {:.code-header}
 **Response**
@@ -292,10 +293,43 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property      | Type     | Description                                                                                  |
-| :------------ | :------- | :------------------------------------------------------------------------------------------- |
-| payment       | `string` | The relative URI of the payment this finalize transaction resource belongs to.               |
-| authorization | `object` | The object representation of the [authorization transaction resource][transaction-resource]. |
+| Property                                  | Type      | Description                                                                                                                                                                                                  |
+| :---------------------------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `payment`                                 | `string`  | The relative URI of the payment this `finalize` transaction resource belongs to.                                                                                                                             |
+| `authorization`                           | `object`  | The object representation of the [authorization transaction resource][transaction-resource].                                                                                                                 |
+| └➔&nbsp;`id`                              | `string`  | The relative URI of the current authorization transaction resource.                                                                                                                                          |
+| └➔&nbsp;`paymentToken`                    | `string`  | The payment token created for the card used in the authorization.                                                                                                                                            |
+| └➔&nbsp;`recurrenceToken`                 | `string`  | The recurrence token created for the card used in the authorization.                                                                                                                                         |
+| └➔&nbsp;`maskedPan`                       | `string`  | The masked PAN number of the card.                                                                                                                                                                           |
+| └➔&nbsp;`expireDate`                      | `string`  | The month and year of when the card expires.                                                                                                                                                                 |
+| └➔&nbsp;`panToken`                        | `string`  | The token representing the specific PAN of the card.                                                                                                                                                         |
+| └➔&nbsp;`cardBrand`                       | `string`  | Visa ,  MasterCard , etc. The brand of the card.                                                                                                                                                             |
+| └➔&nbsp;`cardType`                        | `string`  | Credit Card  or  Debit Card . Indicates the type of card used for the authorization.                                                                                                                         |
+| └➔&nbsp;`issuingBank`                     | `string`  | The name of the bank that issued the card used for the authorization.                                                                                                                                        |
+| └➔&nbsp;`countryCode`                     | `string`  | The country the card is issued in.                                                                                                                                                                           |
+| └➔&nbsp;`acquirerTransactionType`         | `string`  | 3DSECURE  or  SSL . Indicates the transaction type of the acquirer.                                                                                                                                          |
+| └➔&nbsp;`acquirerStan`                    | `string`  | The System Trace Audit Number assigned by the acquirer to uniquely identify the transaction.                                                                                                                 |
+| └➔&nbsp;`acquirerTerminalId`              | `string`  | The ID of the acquirer terminal.                                                                                                                                                                             |
+| └➔&nbsp;`acquirerTransactionTime`         | `string`  | The ISO-8601 date and time of the acquirer transaction.                                                                                                                                                      |
+| └➔&nbsp;`issuerAuthorizationApprovalCode` | `string`  | The issuer's six-digit code used to identify the approval for a specific authorization request.                                                                                                              |
+| └➔&nbsp;`authenticationStatus`            | `string`  | Y ,  A ,  U  or  N . Indicates the status of the authentication.                                                                                                                                             |
+| └➔&nbsp;`transaction`                     | `object`  | The object representation of the generic [transaction resource][transaction-resource].                                                                                                                       |
+| └─➔&nbsp;`id`                             | `string`  | The relative URI of the current  `transaction`  resource.                                                                                                                                                    |
+| └─➔&nbsp;`created`                        | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
+| └─➔&nbsp;`updated`                        | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
+| └─➔&nbsp;`type`                           | `string`  | Indicates the transaction type.                                                                                                                                                                              |
+| └─➔&nbsp;`state`                          | `string`  | Initialized ,  Completed  or  Failed . Indicates the state of the transaction                                                                                                                                |
+| └─➔&nbsp;`number`                         | `string`  | The transaction  number , useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that  id  should be used instead. |
+| └─➔&nbsp;`amount`                         | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g.  10000  = 100.00 NOK,  5000  = 50.00 SEK.                                                                                     |
+| └─➔&nbsp;`vatAmount`                      | `integer` | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                           |
+| └─➔&nbsp;`description`                    | `string`  | A human readable description of maximum 40 characters of the transaction                                                                                                                                     |
+| └─➔&nbsp;`payeeReference`                 | `string`  | A unique reference for the transaction. See [payeeReference][payeeReference] for details.                                                                                                                    |
+| └─➔&nbsp;`failedReason`                   | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
+| └─➔&nbsp;`isOperational`                  | `boolean` | `true`  if the transaction is operational; otherwise  `false` .                                                                                                                                              |
+| └➔&nbsp;`operations`                      | `array`   | The array of [operations][operations] that are possible to perform on the transaction in its current state.                                                                                                  |
+| └─➔&nbsp;`href`                           | `string`  | The target URI to perform the operation against.                                                                                                                                                             |
+| └─➔&nbsp;`rel`                            | `string`  | The name of the relation the operation has to the current resource.                                                                                                                                          |
+| └─➔&nbsp;`method`                         | `string`  | The HTTP method to use when performing the operation.                                                                                                                                                        |
 
 ### Cancellations
 
@@ -348,8 +382,8 @@ Content-Type: application/json
 {:.table .table-striped}
 | Property                   | Type      | Description                                                                                                                                                                                                  |
 | :------------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `payment`                  | `string`  | The relative URI of the payment this list of `cancellation` transactions belong to.                                                                                                                            |
-| `cancellations`            | `object`  | The `cancellation` resource contains information about the `cancellation` transaction made against a card payment.                                                                                               |
+| `payment`                  | `string`  | The relative URI of the payment this list of `cancellation` transactions belong to.                                                                                                                          |
+| `cancellations`            | `object`  | The `cancellation` resource contains information about the `cancellation` transaction made against a card payment.                                                                                           |
 | └➔&nbsp;`id`               | `string`  | The relative URI of the current `cancellation` resource.                                                                                                                                                     |
 | └➔&nbsp;`cancellationList` | `array`   | The array of `cancellation` transaction objects.                                                                                                                                                             |
 | └─➔&nbsp;`id`              | `string`  | The relative URI of the current transaction  resource.                                                                                                                                                       |
@@ -367,7 +401,6 @@ Content-Type: application/json
 | └─➔&nbsp;`failedReason`    | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | └─➔&nbsp;`isOperational`   | `boolean` | `true` if the transaction is operational; otherwise `false` .                                                                                                                                                |
 | └─➔&nbsp;`operations`      | `array`   | The array of [operations][operations] that are possible to perform on the transaction in its current state.                                                                                                  |
-
 
 ### Create cancellation transaction
 
@@ -392,11 +425,11 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| ✔︎︎︎︎︎ | Property                 | Type          | Description                                                                                              |
-| :----: | :----------------------- | :------------ | :------------------------------------------------------------------------------------------------------- |
-| ✔︎︎︎︎︎ | `transaction`            | `object`      | The `object` representation of the generic [transaction resource][transaction-resource].                 |
-| ✔︎︎︎︎︎ | └➔&nbsp;`description`    | `string`      | A textual description of the reason for the `cancellation`.                                              |
-| ✔︎︎︎︎︎ | └➔&nbsp;`payeeReference` | `string(30*)` | A unique reference for the `cancellation` transaction. See [payeeReference][payeeReference] for details. |
+| Required | Property                 | Type          | Description                                                                                              |
+| :------: | :----------------------- | :------------ | :------------------------------------------------------------------------------------------------------- |
+|  ✔︎︎︎︎︎  | `transaction`            | `object`      | The `object` representation of the generic [transaction resource][transaction-resource].                 |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`description`    | `string`      | A textual description of the reason for the `cancellation`.                                              |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`payeeReference` | `string(30*)` | A unique reference for the `cancellation` transaction. See [payeeReference][payeeReference] for details. |
 
 The `cancel` resource contains information about a cancellation transaction
 made against a payment.
@@ -434,9 +467,9 @@ Content-Type: application/json
 {:.table .table-striped}
 | Property                  | Type      | Description                                                                                                                                                                                                  |
 | :------------------------ | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `payment`                 | `string`  | The relative URI of the payment this `cancellation` transaction belongs to.                                                                                                                                    |
-| `cancellation`            | `object`  | The `cancellation` resource contains information about the `cancellation` transaction made against a card payment.                                                                                               |
-| └➔&nbsp;`id`              | `string`  | The relative URI of the created `cancellation` transaction.                                                                                                                                                    |
+| `payment`                 | `string`  | The relative URI of the payment this `cancellation` transaction belongs to.                                                                                                                                  |
+| `cancellation`            | `object`  | The `cancellation` resource contains information about the `cancellation` transaction made against a card payment.                                                                                           |
+| └➔&nbsp;`id`              | `string`  | The relative URI of the created `cancellation` transaction.                                                                                                                                                  |
 | └➔&nbsp;`transaction`     | `object`  | The object representation of the generic [transaction resource][transaction-resource].                                                                                                                       |
 | └─➔&nbsp;`id`             | `string`  | The relative URI of the current  transaction  resource.                                                                                                                                                      |
 | └─➔&nbsp;`created`        | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
@@ -454,7 +487,7 @@ Content-Type: application/json
 
 #### Cancel Sequence
 
-Cancel can only be done on a authorized transaction. If you do cancel after
+`Cancel` can only be done on a authorized transaction. If you do cancel after
 doing a part-capture you will cancel the different between the capture amount
 and the authorization amount.
 
@@ -518,8 +551,8 @@ Content-Type: application/json
 {:.table .table-striped}
 | Property                  | Type      | Description                                                                                                                                                                                                  |
 | :------------------------ | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `payment`                 | `string`  | The relative URI of the payment this list of cancellation transactions belong to.                                                                                                                            |
-| `recersals`               | `object`  | The reversals resource contains information about the reversals transaction made against a card payment.                                                                                                     |
+| `payment`                 | `string`  | The relative URI of the payment this list of `reversals` transactions belong to.                                                                                                                            |
+| `recersals`               | `object`  | The `reversals` resource contains information about the `reversals` transaction made against a card payment.                                                                                                     |
 | └➔&nbsp;`id`              | `string`  | The relative URI of the current `reversals` resource.                                                                                                                                                        |
 | └➔&nbsp;`reversalList`    | `array`   | The array of `reversals` transaction objects.                                                                                                                                                                |
 | └─➔&nbsp;`id`             | `string`  | The relative URI of the current transaction  resource.                                                                                                                                                       |
@@ -563,12 +596,12 @@ Content-Type: application/json
 
 {:.table .table-striped}
 |:---:|:----------|:------|:-----------
-|  ✔︎︎︎︎︎  | Property | Type | Description |
-|  ✔︎︎︎︎︎  | `transaction`            | `object`      | The `object` representation of the generic [transaction resource][transaction-resource].                 |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`amount` | `integer` | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK. |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`vatAmount` | `integer` | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.|
-|  ✔︎︎︎︎︎  | └➔&nbsp;`description` | `string` | A textual description of the `reversal`.|
-|  ✔︎︎︎︎︎  | └➔&nbsp;`payeeReference` | `string(30*)` | A unique reference for the `reversal` transaction. See [payeeReference][payeeReference] for details.|
+| Required | Property | Type | Description |
+|   ✔︎︎︎︎︎   | `transaction`            | `object`      | The `object` representation of the generic [transaction resource][transaction-resource].                 |
+|   ✔︎︎︎︎︎   | └➔&nbsp;`amount` | `integer` | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK. |
+|   ✔︎︎︎︎︎   | └➔&nbsp;`vatAmount` | `integer` | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.|
+|   ✔︎︎︎︎︎   | └➔&nbsp;`description` | `string` | A textual description of the `reversal`.|
+|   ✔︎︎︎︎︎   | └➔&nbsp;`payeeReference` | `string(30*)` | A unique reference for the `reversal` transaction. See [payeeReference][payeeReference] for details.|
 
 The `reversal` resource contains information about the newly created reversal
 transaction.
@@ -604,11 +637,11 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property             | Type     | Description                                                                            |
-| :------------------- | :------- | :------------------------------------------------------------------------------------- |
-| `payment`                 | `string`  | The relative URI of the payment this cancellation transaction belongs to.                                                                                                                                    |
-| `reversal`            | `object`  | The `reversal`resource contains information about the `reversal`transaction made against a card payment.                                                                                               |
-| └➔&nbsp;`id`              | `string`  | The relative URI of the created `reversal`transaction.                                                                                                                                                    |
+| Property                  | Type      | Description                                                                                                                                                                                                  |
+| :------------------------ | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `payment`                 | `string`  | The relative URI of the payment this `reversal` transaction belongs to.                                                                                                                                    |
+| `reversal`                | `object`  | The `reversal`resource contains information about the `reversal`transaction made against a card payment.                                                                                                     |
+| └➔&nbsp;`id`              | `string`  | The relative URI of the created `reversal`transaction.                                                                                                                                                       |
 | └➔&nbsp;`transaction`     | `object`  | The object representation of the generic [transaction resource][transaction-resource].                                                                                                                       |
 | └─➔&nbsp;`id`             | `string`  | The relative URI of the current  transaction  resource.                                                                                                                                                      |
 | └─➔&nbsp;`created`        | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
@@ -626,8 +659,8 @@ Content-Type: application/json
 
 #### Reversal Sequence
 
-Reversal can only be done on a payment where there are some captured amount not
- yet reversed.
+`Reversal` can only be done on a payment where there are some captured amount
+not yet reversed.
 
 ```mermaid
 sequenceDiagram
@@ -643,11 +676,11 @@ sequenceDiagram
 If you, for any reason, need to delete a paymentToken you use the
 `Delete payment token` request.
 
-> Please note that this call does not erase the card number stored at PayEx. A
-  card number is automatically deleted six months after a successful `Delete
-  payment token` request. If you want to remove card information beforehand, you
-  need to contact support.ecom@payex.com; and supply them with the relevant
-  transaction reference or payment token.
+> Please note that this call does not erase the card number stored at
+  Swedbank Pay. A card number is automatically deleted six months after a
+  successful `Delete payment token` request. If you want to remove card
+  information beforehand, you need to contact support.ecom@payex.com; and supply
+  them with the relevant transaction reference or payment token.
 
 {:.code-header}
 **Request**
@@ -690,7 +723,7 @@ Content-Type: application/json
 
 When a change or update from the back-end system are made on a payment or
 transaction, Swedbank Pay will perform a callback to inform the payee (merchant)
-about this update. Callback functionality is explaned in more detail
+about this update. `Callback` functionality is explaned in more detail
 [here][callback].
 
 ```mermaid
@@ -709,9 +742,9 @@ sequenceDiagram
 
 ## After payment options for Card Payment Pages in Mobile Apps
 
-### Capture Sequence
+### Capture Sequence for Mobile Apps
 
-Capture can only be done on a authorized transaction. It is possible to do a
+`Capture` can only be done on a authorized transaction. It is possible to do a
 part-capture where you only capture a smaller amount than the authorization
 amount. You can later do more captures on the sam payment upto the total
 authorization amount.
@@ -725,9 +758,9 @@ sequenceDiagram
   deactivate SwedbankPay
 ```
 
-### Cancel Sequence
+### Cancel Sequence for Mobile Apps
 
-Cancel can only be done on a authorized transaction. If you do cancel after
+`Cancel` can only be done on a authorized transaction. If you do cancel after
 doing a part-capture you will cancel the different between the capture amount
 and the authorization amount.
 
@@ -740,9 +773,9 @@ sequenceDiagram
   deactivate SwedbankPay
 ```
 
-### Reversal Sequence
+### Reversal Sequence for Mobile Apps
 
-Reversal can only be done on a payment where there are some captured amount not
+`Reversal` can only be done on a payment where there are some captured amount not
 yet reversed.
 
 ```mermaid
@@ -756,9 +789,9 @@ sequenceDiagram
 
 ## After payment options for Direct Card Payments
 
-### Capture Sequence
+### Capture Sequence for Direct Card Payments
 
-Capture can only be done on a authorized transaction. It is possible to do a
+`Capture` can only be done on a authorized transaction. It is possible to do a
 part-capture where you only capture a smaller amount than the authorization
 amount. You can later do more captures on the sam payment upto the total
 authorization amount.
@@ -772,9 +805,9 @@ sequenceDiagram
   deactivate SwedbankPay
 ```
 
-### Cancel Sequence
+### Cancel Sequence for Direct Card Payments
 
-Cancel can only be done on a authorized transaction. If you do cancel after
+`Cancel` can only be done on a authorized transaction. If you do cancel after
 doing a part-capture you will cancel the different between the capture amount
 and the authorization amount.
 
@@ -787,9 +820,9 @@ sequenceDiagram
   deactivate SwedbankPay
 ```
 
-### Reversal Sequence
+### Reversal Sequence for Direct Card Payments
 
-Reversal can only be done on a payment where there are some captured amount not
+`Reversal` can only be done on a payment where there are some captured amount not
 yet reversed.
 
 ```mermaid
