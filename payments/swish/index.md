@@ -170,8 +170,8 @@ sequenceDiagram
    SwedbankPay-->>-Merchant: sales resource
   activate Merchant
   note left of Merchant: POST containing MSISDN
-  Merchant--xBrowser: Tell consumer to open Swish app
-  Swish_API->>-Swish_App: Ask for payment confirmation
+  Merchant--x-Browser: Tell consumer to open Swish app
+  Swish_API->>Swish_App: Ask for payment confirmation
   activate Swish_App
   Swish_App-->>-Swish_API: Consumer confirms payment
   activate Swish_API
@@ -183,7 +183,7 @@ sequenceDiagram
   Swish_API->>-Swish_App: Start redirect
   activate Swish_App
   
-  Swish_App--xBrowser: Redirect
+  Swish_App--x-Browser: Redirect
   activate Merchant
   Merchant->>- SwedbankPay: GET <Sales transaction>
   activate  SwedbankPay
@@ -300,9 +300,9 @@ sequenceDiagram
   Browser->>-SwedbankPay: enter mobile number
   activate  SwedbankPay
 
-   SwedbankPay--xBrowser: Tell consumer to open Swish app
+   SwedbankPay--x-Browser: Tell consumer to open Swish app
   activate Swish_API
-  Swish_API->>-Swish_App: Ask for payment confirmation
+  Swish_API->>Swish_App: Ask for payment confirmation
   activate Swish_App
   Swish_App-->>-Swish_API: Consumer confirms payment
   activate Swish_API
@@ -312,14 +312,14 @@ sequenceDiagram
   activate SwedbankPay
    SwedbankPay-->>-Swish_API: Callback response
   activate Swish_API
-   SwedbankPay--xMerchant: Transaction callback
+   SwedbankPay--x-Merchant: Transaction callback
   end
   activate SwedbankPay
    SwedbankPay-->>-Browser: Redirect to merchant (If Redirect scenario)
   activate Browser
   Browser-->>-Merchant: Redirect
   activate Merchant
-  Merchant->>- SwedbankPay: GET <Swish payment>
+  Merchant->>-SwedbankPay: GET <Swish payment>
   activate  SwedbankPay
    SwedbankPay-->>-Merchant: Payment response
   activate Merchant
@@ -409,12 +409,10 @@ sequenceDiagram
   note left of  SwedbankPay: POST not containing MSISDN
    SwedbankPay-->>-Merchant: sales resource
   activate Merchant
-  Merchant-xMobile_App: Open Swish app request
+  Merchant-x-Mobile_App: Open Swish app request
   activate Mobile_App
-  deactivate Merchant
   Mobile_App->>-Swish_App: Open Swish app
-  activate Swish_API
-  Swish_API->>-Swish_App: Ask for payment confirmation
+  Swish_API->>Swish_App: Ask for payment confirmation
   activate Swish_App
   Swish_App-->>-Swish_API: Consumer confirms payment
   activate Swish_API
@@ -426,13 +424,12 @@ sequenceDiagram
   Swish_API->>-Swish_App: Start redirect
   activate Swish_App
 
-  Swish_App--xMobile_App: Redirect
-  activate Mobile_App
-  Merchant->>- SwedbankPay: GET <Sales transaction>
+  Swish_App--x-Mobile_App: Redirect
+  Merchant->>SwedbankPay: GET <Sales transaction>
   activate SwedbankPay
    SwedbankPay-->>-Merchant: Payment response
    activate Merchant
-  Merchant-->>-Mobile_App: Payment Status    
+  Merchant-->>-Mobile_App: Payment Status
 ```
 
 **Redirect and Payment Status**  
