@@ -69,41 +69,40 @@ for the specific request.
 ```mermaid
 sequenceDiagram
   activate Browser
-  Browser->>Merchant: start purchase
+  Browser->>-Merchant: start purchase
   activate Merchant
-  Merchant->>SwedbankPay: POST <Create Swish payment> (operation=PURCHASE)
-  note left of Merchant: First API request
+  Merchant->>-SwedbankPay: POST <Create Swish payment> (operation=PURCHASE)
   activate SwedbankPay
-  SwedbankPay-->>Merchant: payment resource
+  note left of Merchant: First API request
+  SwedbankPay-->>-Merchant: payment resource
+  activate Merchant
 
-  Merchant-->>SwedbankPay: POST <Create Sales Transaction> (operation=create-sale)
-  SwedbankPay-->>Merchant: sales resource
-  deactivate SwedbankPay
+  Merchant-->>-SwedbankPay: POST <Create Sales Transaction> (operation=create-sale)
+  activate SwedbankPay
+  SwedbankPay-->>-Merchant: sales resource
+  activate Merchant
 
   note left of Merchant: POST containing MSISDN
-  Merchant--xBrowser: Tell consumer to open Swish app
+  Merchant--x-Browser: Tell consumer to open Swish app
 
-  activate Swish_API
-  activate Swish_App
   Swish_API->>Swish_App: Ask for payment confirmation
-  Swish_App-->>Swish_API: Consumer confirms payment
-  deactivate Swish_App
-
-  activate SwedbankPay
-  Swish_API-->>SwedbankPay: Payment status
-  SwedbankPay-->>Swish_API: Callback response
   activate Swish_App
-  Swish_API->>Swish_App: Start redirect
-  deactivate Swish_API
+  Swish_App-->>-Swish_API: Consumer confirms payment
+  activate Swish_API
 
-  Swish_App--xBrowser: Redirect
-  deactivate Swish_App
+  Swish_API-->>-SwedbankPay: Payment status
+  activate SwedbankPay
+  SwedbankPay-->>-Swish_API: Callback response
+  activate Swish_API
+  Swish_API->>-Swish_App: Start redirect
+  activate Swish_App
+
+  Swish_App--x-Browser: Redirect
   Merchant->>SwedbankPay: GET <Sales transaction>
-  SwedbankPay-->>Merchant: Payment response
-  Merchant-->>Browser: Payment Status
-  deactivate Merchant
-  deactivate Browser
-  deactivate SwedbankPay
+  activate SwedbankPay
+  SwedbankPay-->>-Merchant: Payment response
+  activate Merchant
+  Merchant-->>-Browser: Payment Status
 ```
 
 **Redirect and Payment Status**
@@ -129,12 +128,10 @@ sales transaction.
 
 ```mermaid
 sequenceDiagram
-  Merchant->>SwedbankPay: POST <Swish reversal>
   activate Merchant
+  Merchant->>-SwedbankPay: POST <Swish reversal>
   activate SwedbankPay
-  SwedbankPay-->>Merchant: transaction resource
-  deactivate SwedbankPay
-  deactivate Merchant
+  SwedbankPay-->>-Merchant: transaction resource
 ```
 
 [create-payment]: /payments/swish/after-payment#create-payment
