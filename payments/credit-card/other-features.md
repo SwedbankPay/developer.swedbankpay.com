@@ -23,6 +23,10 @@ sidebar:
                       under construction and should not be used to integrate
                       against Swedbank Pay's APIs yet." %}
 
+{% include jumbotron.html body="Welcome to Other Features - a subsection of
+Credit Card. This section has extented code examples and features that were not
+covered by the other subsections." %}
+
 ## Create Payment
 
 Within the card payments part of the eCommerce API, you can create four kinds
