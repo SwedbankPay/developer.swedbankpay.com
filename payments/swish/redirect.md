@@ -143,7 +143,11 @@ sequenceDiagram
 
 ## Swish m-commerce Redirect
 
+<<<<<<< HEAD
 > Swish is an one-phase payment instrument supported by the major Swedish banks. In
+=======
+> Swish is an one-phase payment method supported by the major Swedish banks. In
+>>>>>>> DX-415 moved redirect content from index to redirect section and fix diagrams in payment-link.md
   the redirect m-commerce scenario, Swedbank Pay performs a payment that the
   payer confirms directly through the Swish mobile app.
 
@@ -181,7 +185,11 @@ initiate the sales transaction.
 ## API Requests
 
 The API requests are displayed in the [purchase flow](#purchase-flow-3). Swish
+<<<<<<< HEAD
 is a one-phase payment instrument that is based on sales transactions not involving
+=======
+is a one-phase payment method that is based on sales transactions not involving
+>>>>>>> DX-415 moved redirect content from index to redirect section and fix diagrams in payment-link.md
 capture or cancellation operations. The options you can choose from when
 creating a payment with key operation set to Value Purchase are listed below.
 
