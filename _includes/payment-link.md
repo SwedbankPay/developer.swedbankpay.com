@@ -46,11 +46,10 @@ We recommend that you include following information:
   consumer will pay for.
 * Some order-id (or similar) that exists in the merchant order system.
 * The price and currency.
-* Details about shipping method and expected delivery (if physical goods will
-  be sent  to the consumer).
-* Directions to (a link to a page) the merchant's terms and conditions
-  (such as return policy) and information of how the consumer can contact
-  the merchant.
+* Details about shipping method and expected delivery (if physical goods will be
+  sent  to the consumer).
+* Directions to (a link to a page) the merchant's terms and conditions (such as
+  return policy) and information of how the consumer can contact the merchant.
 * Details informing the consumer that he or she accepts the Terms & Conditions
   when clicking on the Payment Link.
 
@@ -93,19 +92,19 @@ two-phase (e.g. [Credit card][credit-card], [MobilePay][mobile-pay],
   [before you make a finalize on this transaction
   ][technical-reference-finalize].
 * Authorize (two-phase):
-  * When using two-phase flows you reserve the amount with an authorization,
-  you will have to specify that the _intent_ of the _purchase_ is `Authorize`.
-  The amount will be reserved but not charged.
-  You will later (i.e. when you are ready to ship the purchased products)
-  have to make a `Capture` or `Cancel` request.
+  * When using two-phase flows you reserve the amount with an authorization, you
+    will have to specify that the _intent_ of the _purchase_ is `Authorize`. The
+    amount will be reserved but not charged. You will later (i.e. when you are
+    ready to ship the purchased products) have to make a `Capture` or `Cancel`
+    request.
 
 #### Capture
 
 * Autocapture (one-phase credit card):
   * If you want the credit card to be charged right away, you will have to
-  specify that the _intent_ of the purchase is `Autocapture`.
-  The credit card will be charged and you don't need to do any more financial
-  operations to this purchase.
+    specify that the _intent_ of the purchase is `Autocapture`. The credit card
+    will be charged and you don't need to do any more financial operations to
+    this purchase.
 
 #### General
 
@@ -146,44 +145,41 @@ sequenceDiagram
 activate Consumer
 Consumer->>-MerchantOrderSystem: consumer starts purchase
 activate MerchantOrderSystem
-MerchantOrderSystem->>+Merchant: start purchase process
-deactivate MerchantOrderSystem
-Merchant->>+SwedbankPay: POST [payment] (operation=PURCHASE)
-deactivate Merchant
+MerchantOrderSystem->>-Merchant: start purchase process
+activate Merchant
+Merchant->>-SwedbankPay: POST [payment] (operation=PURCHASE)
+activate SwedbankPay
 note left of Merchant: First API request
-SwedbankPay-->>+Merchant: payment resource with payment URL
-deactivate SwedbankPay
-Merchant-->>+MerchantOrderSystem: Payment URL sent to order system
-deactivate Merchant
-MerchantOrderSystem-->>+Consumer: Distribute Payment URL through e-mail/SMS
-deactivate MerchantOrderSystem
-
+SwedbankPay-->>-Merchant: payment resource with payment URL
+activate Merchant
+Merchant-->>-MerchantOrderSystem: Payment URL sent to order system
+activate MerchantOrderSystem
+MerchantOrderSystem-->>-Consumer: Distribute Payment URL through e-mail/SMS
+activate Consumer
 note left of Consumer: Payment Link in e-mail/SMS
-Consumer->>+SwedbankPay: Open link and enter payment information
-deactivate Consumer
+Consumer->>-SwedbankPay: Open link and enter payment information
+activate SwedbankPay
 
 opt Card supports 3-D Secure
-SwedbankPay-->>+Consumer: redirect to IssuingBank
-deactivate SwedbankPay
-Consumer->>+IssuingBank: 3-D Secure authentication process
-deactivate Consumer
-Consumer->>+SwedbankPay: access authentication page
-deactivate IssuingBank
+SwedbankPay-->>-Consumer: redirect to IssuingBank
+activate Consumer
+Consumer->>IssuingBank: 3-D Secure authentication process
+Consumer->>-SwedbankPay: access authentication page
+activate SwedbankPay
 end
 
-SwedbankPay-->>+Consumer: redirect to merchant site
-deactivate SwedbankPay
+SwedbankPay-->>-Consumer: redirect to merchant site
+activate Consumer
 note left of SwedbankPay: redirect back to merchant
 
-Consumer->>+Merchant: access merchant page
-deactivate Consumer
-Merchant->>+SwedbankPay: GET [payment]
-deactivate Merchant
+Consumer->>-Merchant: access merchant page
+activate Merchant
+Merchant->>-SwedbankPay: GET [payment]
+activate SwedbankPay
 note left of Merchant: Second API request
-SwedbankPay-->>+Merchant: payment resource
-deactivate SwedbankPay
-Merchant-->>Consumer: display purchase result
-deactivate Merchant
+SwedbankPay-->>-Merchant: payment resource
+activate Merchant
+Merchant-->>-Consumer: display purchase result
 ```
 
 #### Options after posting a payment
