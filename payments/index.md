@@ -6,8 +6,8 @@ sidebar:
     items:
     - url: /payments/
       title: Introduction
-    - url: /payments/credit-card
-      title: Credit Card Payments
+    - url: /payments/card-payments
+      title: Card Payments
     - url: /payments/invoice
       title: Invoice Payments
     - url: /payments/swish

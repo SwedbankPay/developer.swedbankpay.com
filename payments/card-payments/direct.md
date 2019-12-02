@@ -1,20 +1,20 @@
 ---
-title: Swedbank Pay Payments Credit Card Direct
+title: Swedbank Pay Card Payments Direct
 sidebar:
   navigation:
-  - title: Credit Card Payments
+  - title: Card Payments
     items:
-    - url: /payments/credit-card/
+    - url: /payments/card-payments/
       title: Introduction
-    - url: /payments/credit-card/redirect
+    - url: /payments/card-payments/redirect
       title: Redirect
-    - url: /payments/credit-card/seamless-view
+    - url: /payments/card-payments/seamless-view
       title: Seamless View
-    - url: /payments/credit-card/direct
+    - url: /payments/card-payments/direct
       title: Direct
-    - url: /payments/credit-card/after-payment
+    - url: /payments/card-payments/after-payment
       title: After Payment
-    - url: /payments/credit-card/other-features
+    - url: /payments/card-payments/other-features
       title: Other Features
 ---
 
@@ -322,7 +322,7 @@ sequenceDiagram
 need to implement the [Capture][Capture] and [Cancel][Cancel] requests.
 * **Abort:** It is possible to [abort a payment][abort] if the payment has no
 successful transactions.
-* For reversals, you will need to implement the [Reversal][reversal] request.
+* For `reversals`, you will need to implement the [Reversal][reversal] request.
 * **Callback from Swedbank Pay:** Whenever changes to the payment occur a
 [Callback request][callback] will be posted to the `callbackUrl`,
 generated when the payment was created.
@@ -330,17 +330,17 @@ generated when the payment was created.
 {% include iterator.html prev_href="seamless-view" prev_title="Back: Seamless View"
 next_href="after-payment" next_title="Next: After Payment" %}
 
-[abort]: /payments/credit-card/other-features/#abort
-[expansion]: /payments/credit-card/other-features/#expansion
-[callback]: /payments/credit-card/other-features/#callback
-[Cancel]: /payments/credit-card/after-payment/#Cancellations
-[Capture]: /payments/credit-card/after-payment/#Capture
+[abort]: /payments/card-payments/other-features/#abort
+[expansion]: /payments/card-payments/other-features/#expansion
+[callback]: /payments/card-payments/other-features/#callback
+[Cancel]: /payments/card-payments/after-payment/#Cancellations
+[Capture]: /payments/card-paymentsd/after-payment/#Capture
 [PCI-link]: https://www.pcisecuritystandards.org/
-[reversal]: /payments/credit-card/after-payment/#Reversals
-[authorization]: /payments/credit-card/other-features/#create-authorization-transaction
-[other features]: /payments/credit-card/other-features#purchase
-[purchase]:  /payments/credit-card/other-features/#purchase
-[recur]:  /payments/credit-card/other-features/#recur
-[payout]:  /payments/credit-card/other-features/#purchase
-[verify]: /payments/credit-card/other-features/#verify
-[create-payment]: /payments/credit-card/other-features/#create-payment
+[reversal]: /payments/card-payments/after-payment/#Reversals
+[authorization]: /payments/card-payments/other-features/#create-authorization-transaction
+[other features]: /payments/card-payments/other-features#purchase
+[purchase]:  /payments/card-payments/other-features/#purchase
+[recur]:  /payments/card-payments/other-features/#recur
+[payout]:  /payments/card-payments/other-features/#purchase
+[verify]: /payments/card-payments/other-features/#verify
+[create-payment]: /payments/card-payments/other-features/#create-payment

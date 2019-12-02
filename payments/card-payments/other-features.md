@@ -1,20 +1,20 @@
 ---
-title: Swedbank Pay Payments Credit Card Other Features
+title: Swedbank Pay Card Payments Other Features
 sidebar:
   navigation:
-  - title: Credit Card Payments
+  - title: Card Payments
     items:
-    - url: /payments/credit-card/
+    - url: /payments/card-payments/
       title: Introduction
-    - url: /payments/credit-card/redirect
+    - url: /payments/card-payments/redirect
       title: Redirect
-    - url: /payments/credit-card/seamless-view
+    - url: /payments/card-payments/seamless-view
       title: Seamless View
-    - url: /payments/credit-card/direct
+    - url: /payments/card-payments/direct
       title: Direct
-    - url: /payments/credit-card/after-payment
+    - url: /payments/card-payments/after-payment
       title: After Payment
-    - url: /payments/credit-card/other-features
+    - url: /payments/card-payments/other-features
       title: Other Features
 ---
 
@@ -819,12 +819,12 @@ payment"  %}
 
 [purchase]: #purchase
 [user-agent-definition]: https://en.wikipedia.org/wiki/User_agent
-[cancel]: /payments/credit-card/after-payment/#cancellations
-[capture]: /payments/credit-card/after-payment/#Capture
-[callback]: /payments/credit-card/other-features/#callback
-[price-resource]: /payments/credit-card/other-features/#prices
-[redirect]: /payments/credit-card/redirect
-[hosted-view]: /payments/credit-card/seamless-view
+[cancel]: /payments/card-payments/after-payment/#cancellations
+[capture]: /payments/card-payments/after-payment/#Capture
+[callback]: /payments/card-payments/other-features/#callback
+[price-resource]: /payments/card-payments/other-features/#prices
+[redirect]: /payments/card-payments/redirect
+[hosted-view]: /payments/card-payments/seamless-view
 [one-click-payments]: #one-click-payments
 [split-settlement]: #split-settlement
 [settlement-and-reconciliation]: #settlement-and-reconciliation

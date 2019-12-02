@@ -1,20 +1,20 @@
 ---
-title: Swedbank Pay Payments Credit Card Introduction
+title: Swedbank Pay Card Payments Introduction
 sidebar:
   navigation:
-  - title: Credit Card Payments
+  - title: Card Payments
     items:
-    - url: /payments/credit-card/
+    - url: /payments/card-payments/
       title: Introduction
-    - url: /payments/credit-card/redirect
+    - url: /payments/card-payments/redirect
       title: Redirect
-    - url: /payments/credit-card/seamless-view
+    - url: /payments/card-payments/seamless-view
       title: Seamless View
-    - url: /payments/credit-card/direct
+    - url: /payments/card-payments/direct
       title: Direct
-    - url: /payments/credit-card/after-payment
+    - url: /payments/card-payments/after-payment
       title: After Payment
-    - url: /payments/credit-card/other-features
+    - url: /payments/card-payments/other-features
       title: Other Features
 ---
 
@@ -27,7 +27,7 @@ TODO: This page needs serious clean-up.
                       header="Site under development"
                       body="This section of the Developer Portal is under construction and should not be used to integrate against Swedbank Pay's APIs yet." %}
 
-{% include jumbotron.html body="**Credit Card Payments** is the most popular,
+{% include jumbotron.html body="**Card Payments** is the most popular,
 versatile and global way to initate a transaction with a customer. Choose
 between our **Seamless View**, **Redirect**, or **Direct** integration options." %}
 
@@ -93,9 +93,9 @@ The sequence diagram below shows a high level description of a complete
 purchase, and the requests you have to send to Swedbank Pay. The links will
 take you directly to the corresponding API description.
 
-When dealing with credit card payments, 3-D Secure authentication of the
+When dealing with card payments, 3-D Secure authentication of the
 cardholder is an essential topic. There are three alternative outcome of a
-credit card payment:
+card payment:
 
 * 3-D Secure enabled - by default, 3-D Secure should be enabled, and Swedbank Pay
 * will check if the card is enrolled with 3-D Secure. This depends on the issuer
@@ -190,13 +190,14 @@ sequenceDiagram
 
 {% include iterator.html  next_href="redirect" next_title="Next: Redirect" %}
 
-[card-payment]: /assets/img/payments/card-payment.png
-[finalizing-the-transaction]: /payments/credit-card/after-payment
-[cancel]: /payments/credit-card/after-payment/#cancellations
-[capture]: /payments/credit-card/after-payment/#Capture
-[redirect]: /payments/credit-card/redirect
-[create-payment]: /payments/credit-card/other-features/#create-payment
-[purchase]: /payments/credit-card/other-features/#purchase
-[recur]: /payments/credit-card/other-features/#recur
-[payout]: /payments/credit-card/other-features/#payout
-[verify]: /payments/credit-card/other-features/#verify
+[Screnshot-1]: /assets/img/creditcard-image-1.png
+{:height="711px" width="400px"}
+[finalizing-the-transaction]: /payments/card-payments/after-payment
+[cancel]: /payments/card-payments/after-payment/#cancellations
+[capture]: /payments/card-payments/after-payment/#Capture
+[redirect]: /payments/card-payments/redirect
+[create-payment]: /payments/card-payments/other-features/#create-payment
+[purchase]: /payments/card-payments/other-features/#purchase
+[recur]: /payments/card-payments/other-features/#recur
+[payout]: /payments/card-payments/other-features/#payout
+[verify]: /payments/card-payments/other-features/#verify

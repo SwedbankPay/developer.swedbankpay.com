@@ -1,20 +1,20 @@
 ---
-title: Swedbank Pay Payments Credit Card After Payment
+title: Swedbank Pay Card Payments After Payment
 sidebar:
   navigation:
-  - title: Credit Card Payments
+  - title: Card Payments
     items:
-    - url: /payments/credit-card/
+    - url: /payments/card-payments/
       title: Introduction
-    - url: /payments/credit-card/redirect
+    - url: /payments/card-payments/redirect
       title: Redirect
-    - url: /payments/credit-card/seamless-view
+    - url: /payments/card-payments/seamless-view
       title: Seamless View
-    - url: /payments/credit-card/direct
+    - url: /payments/card-payments/direct
       title: Direct
-    - url: /payments/credit-card/after-payment
+    - url: /payments/card-payments/after-payment
       title: After Payment
-    - url: /payments/credit-card/other-features
+    - url: /payments/card-payments/other-features
       title: Other Features
 ---
 
@@ -734,11 +734,11 @@ You have the following options after a server-to-server Recur payment `POST`.
 {% include iterator.html prev_href="direct" prev_title="Back: Direct"
 next_href="other-features" next_title="Next: Other Features" %}
 
-[transaction-resource]: /payments/credit-card/other-features/#transactions
-[payeeReference]: /payments/credit-card/other-features/#payeereference
-[abort]: /payments/credit-card/other-features/#abort
-[callback]: /payments/credit-card/other-features/#callback
-[cancel]: /payments/credit-card/after-payment/#cancellations
-[capture]: /payments/credit-card/after-payment/#Capture
-[operations]: /payments/credit-card/other-features/#operations
-[reversal]: /payments/credit-card/after-payment/#reversals
+[transaction-resource]: /payments/card-payments/other-features/#transactions
+[payeeReference]: /payments/card-payments/other-features/#payeereference
+[abort]: /payments/card-payments/other-features/#abort
+[callback]: /payments/card-payments/other-features/#callback
+[cancel]: /payments/card-payments/after-payment/#cancellations
+[capture]: /payments/card-payments/after-payment/#Capture
+[operations]: /payments/card-payments/other-features/#operations
+[reversal]: /payments/card-payments/after-payment/#reversals
