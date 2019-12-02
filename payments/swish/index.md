@@ -100,16 +100,6 @@ Technical reference for Swish API resources and their properties.
 [If you are missing a scenario, please let us know what you need!]
 [support-mailto]
 
-## Merchant Swish Simulator (MSS)
-
-[MSS] is a test server application that simulates the commerce interaction
-with Swish API.
-It can answer the calls to Swish API and returns correct formatted return
-messages and also the error messages.
-
-Click on the following [link][testverktyg-pdf] to know more about the error
-codes that are used in Merchant Swish Simulator.
-
 # Swish e-commerce Direct API
 
 >Swish is a one-phase payment method supported by the major Swedish banks.
@@ -360,4 +350,3 @@ sequenceDiagram
 [swedbank-swish]: https://www.swedbank.se/foretag/betala-och-ta-betalt/ta-betalt/swish/swish-handel/index.htm
 [swish-certificate-management-system]: https://comcert.getswish.net/cert-mgmt-web/authentication.html
 [technical-reference-callback]: /payments/swish/other-features#callback
-[testverktyg-pdf]: https://www.getswish.se/dokument/Guide_Testverktyg_20151210.pdf
