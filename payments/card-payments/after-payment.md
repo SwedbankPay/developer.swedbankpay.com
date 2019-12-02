@@ -27,8 +27,8 @@ sidebar:
 
 ### Options after posting a payment
 
-* `Abort`: It is possible to abort the process, if the payment has no successful
-  transactions. [See the PATCH payment description][abort].
+* *Abort:* It is possible to abort the process if the payment has no successful
+transactions. [See the Abort description here][abort].
 * If the payment shown above is done as a two phase (`Authorization`), you will
   need to implement the `Capture` and `Cancel` requests.
 * For `reversals`, you will need to implement the [Reversal request][reversal].

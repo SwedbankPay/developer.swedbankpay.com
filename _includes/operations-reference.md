@@ -353,7 +353,7 @@ operations described below.
 
 #### Abort
 
-* It is possible for the merchant to abort a payment before the end user has fulfilled the payment process. If the merchant calls the `PATCH` function (see example below), the payment will be aborted.
+* It is possible for the merchant to abort a payment before the end user has fulfilled the payment process. See code example below.
 * This can only happen if there exist no final transactions (like captures) on the payment with a successful status. Once the payment is aborted, no more transactions/operations can be done. If the consumer has been redirected to a hosted payment page when this happens, the end user will be redirected back to your merchant page.
 
 To abort a payment order, perform the `update-paymentorder-abort` operation
