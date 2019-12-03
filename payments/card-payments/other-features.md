@@ -68,7 +68,7 @@ Content-Type: application/json
 ## Purchase
 
 A `Purchase` payment is a straightforward way to charge the card of the payer.
-It is followed up by posting a capture, cancellation or reversal transaction.
+It is followed up by posting a `capture`, `cancellation` or `reversal` transaction.
 
 An example of a request is provided below. Each individual Property of the JSON
 document is described in the following section.
@@ -140,31 +140,31 @@ Content-Type: application/json
         "cardholder": {
             "firstName": "firstname/companyname",
             "lastName": "lastname",
-            "email": "string",
-            "msisdn": "string",
-            "homePhoneNumber": "string",
-            "workPhoneNumber": "string",
+            "email": "email",
+            "msisdn": "msisdn",
+            "homePhoneNumber": "homePhoneNumber",
+            "workPhoneNumber": "workPhoneNumber",
             "shippingAddress": {
                 "firstName": "firstname",
                 "lastName": "lastname",
-                "email": "string",
-                "msisdn": "string",
-                "streetAddress": "string",
-                "coAddress": "string",
-                "city": "string",
-                "zipCode": "string",
-                "countryCode": "string"
+                "email": "email",
+                "msisdn": "msisdn",
+                "streetAddress": "streetAddress",
+                "coAddress": "coAddress",
+                "city": "city",
+                "zipCode": "zipCode",
+                "countryCode": "countryCode"
             },
             "billingAddress": {
                 "firstName": "firstname/companyname",
                 "lastName": "lastname",
-                "email": "string",
-                "msisdn": "string",
-                "streetAddress": "string",
-                "coAddress": "string",
-                "city": "string",
-                "zipCode": "string",
-                "countryCode": "string"
+                "email": "email",
+                "msisdn": "msisdn",
+                "streetAddress": "streetAddress",
+                "coAddress": "coAddress",
+                "city": "city",
+                "zipCode": "zipCode",
+                "countryCode": "countrycode"
             },
             "accountInfo": {
                 "accountAgeIndicator": "01",
@@ -186,11 +186,11 @@ Content-Type: application/json
             "reOrderPurchaseIndicator": "01",
             "pickUpAddress": {
                 "name": "companyname",
-                "streetAddress": "string",
-                "coAddress": "string",
-                "city": "string",
-                "zipCode": "string",
-                "countryCode": "string"
+                "streetAddress": "streetAddress",
+                "coAddress": "coAddress",
+                "city": "city",
+                "zipCode": "zipCode",
+                "countryCode": "countrycode"
             }
         }
     },
@@ -687,6 +687,61 @@ credit card payment:
   Pay will redirect the cardholder to the autentication mechanism that is
   decided by the issuing bank. Normally this will be done using BankID or Mobile
   BankID.
+
+```mermaid
+sequenceDiagram
+    participant Payer
+    participant Merchant
+    participant SwedbankPay as Swedbank Pay
+    participant IssuingBank
+
+  activate Payer
+  Payer->>+Merchant: start verification
+  deactivate Payer
+  Merchant->>+SwedbankPay: POST /psp/creditcard/payments(operation=VERIFY)
+  deactivate Merchant
+  note left of Payer: First API request
+  SwedbankPay-->+Merchant: payment resource
+  deactivate SwedbankPay
+  Merchant-->>+Payer: redirect to verification page
+  deactivate Merchant
+  Payer->>+SwedbankPay: access verification page
+  deactivate Payer
+  note left of Payer: redirect to SwedbankPay<br>(If Redirect scenario)
+  SwedbankPay-->>+Payer: display purchase information
+  deactivate SwedbankPay
+
+  Payer->>Payer: input creditcard information
+  Payer->>+SwedbankPay: submit creditcard information
+  deactivate Payer
+  opt Card supports 3-D Secure
+    SwedbankPay-->>Payer: redirect to IssuingBank
+    deactivate SwedbankPay
+    Payer->>IssuingBank: 3-D Secure authentication process
+    Payer->>+SwedbankPay: access authentication page
+    deactivate Payer
+  end
+
+  SwedbankPay-->>+Payer: redirect to merchant
+  deactivate SwedbankPay
+  note left of Payer: redirect back to merchant<br>(If Redirect scenario)
+
+  Payer->>+Merchant: access merchant page
+  Merchant->>+SwedbankPay: GET /psp/creditcard/payments/<paymentorder.id>
+  deactivate Merchant
+  note left of Merchant: Second API request
+  SwedbankPay-->>+Merchant: rel: redirect-authorization
+  deactivate SwedbankPay
+  Merchant-->>Payer: display purchase result
+  deactivate Merchant
+
+  opt Callback is set
+    activate SwedbankPay
+    SwedbankPay->>SwedbankPay: Payment is updated
+    SwedbankPay->>Merchant: POST Payment Callback
+    deactivate SwedbankPay
+  end
+```
 
 ## Payment Orders
 
