@@ -28,14 +28,14 @@ sidebar:
   purchase process, you need to make a POST request towards Swedbank Pay with
   your Purchase information. This will generate a payment object with a unique
   `paymentID`. You will receive a **JavaScript source** in response.
-* You need to embed the script source on your site to create a
-  hosted-view in an `iframe`(see screenshot below); so that she can enter the
-  credit card details in a secure Swedbank Pay hosted environment.
+* You need to embed the script source on your site to create a hosted-view in an
+  `iframe`(see screenshot below); so that she can enter the credit card details
+  in a secure Swedbank Pay hosted environment.
 * Swedbank Pay will handle 3-D Secure authentication when this is required.
-* Swedbank Pay will display directly in the `iframe` - one of two specified URLs,
-  depending on whether the payment session is followed through completely or
-  cancelled beforehand. Please note that both a successful and rejected payment
-  reach completion, in contrast to a cancelled payment.
+* Swedbank Pay will display directly in the `iframe` - one of two specified
+  URLs, depending on whether the payment session is followed through completely
+  or cancelled beforehand. Please note that both a successful and rejected
+  payment reach completion, in contrast to a cancelled payment.
 * When you detect that the payer reach your `completeUrl` , you need to do a
   `GET` request to receive the state of the transaction, containing the
   `paymentID` generated in the first step, to receive the state of the
@@ -289,12 +289,12 @@ process.
 
 * **No 3-D Secure and card acceptance**: There are optional paramers that can be
   used in relation to 3-D Secure and card acceptance. By default, most credit
-  card agreements with an acquirer will require that you use 3-D Secure for
-  card holder authentication. However, if your agreement allows you to make a
-  card payment without this authentication, or that specific cards can be
-  declined, you may adjust these optional parameters when posting in the
-  payment. This is specified in the technical reference section for creating
-  credit card payments  - you will find the link in the sequence diagram below.
+  card agreements with an acquirer will require that you use 3-D Secure for card
+  holder authentication. However, if your agreement allows you to make a card
+  payment without this authentication, or that specific cards can be declined,
+  you may adjust these optional parameters when posting in the payment. This is
+  specified in the technical reference section for creating credit card payments
+   - you will find the link in the sequence diagram below.
 * **Defining `callbackURL`**: When implementing a scenario, it is optional to
   set a `callbackURL` in the `POST` request. If `callbackURL` is set Swedbank
   Pay will send a postback request to this URL when the consumer has fulfilled
@@ -320,8 +320,8 @@ card payment:
   authentication of the cardholder is done.
 * Card supports 3-D Secure - if the card is enrolled with 3-D Secure, Swedbank
   Pay will redirect the cardholder to the autentication mechanism that is
-  decided by the issuing bank. Normally this will be done using BankID or
-  Mobile BankID.
+  decided by the issuing bank. Normally this will be done using BankID or Mobile
+  BankID.
 
 ```mermaid
 sequenceDiagram
@@ -409,9 +409,9 @@ sequenceDiagram
 * If the payment shown above is done as a two phase (`Authorization`), you will
   need to implement the [`Capture`][capture] and [`Cancel`][cancel] requests.
 * For `reversals`, you will need to implement the [Reversal request][reversal].
-* *If `callbackURL` is set:* Whenever changes to the payment occur a
-  [Callback request][callback] will be posted to the `callbackUrl`, which was
-  generated when the payment was created.
+* *If `callbackURL` is set:* Whenever changes to the payment occur a [Callback
+  request][callback] will be posted to the `callbackUrl`, which was generated
+  when the payment was created.
 
 {% include iterator.html prev_href="redirect" prev_title="Redirect"
 next_href="direct" next_title="Next: Direct" %}

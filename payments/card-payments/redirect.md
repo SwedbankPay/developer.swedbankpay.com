@@ -278,11 +278,10 @@ process.
 
 * *No 3-D Secure and card acceptance:* There are optional paramers that can be
   used in relation to 3-D Secure and card acceptance. By default, most credit
-  card agreements with an acquirer will require that you use 3-D Secure for
-  card holder authentication. However, if your agreement allows you to make a
-  card payment without this authentication, or that specific cards can be
-  declined, you may adjust these optional parameters when posting in the
-  payment.
+  card agreements with an acquirer will require that you use 3-D Secure for card
+  holder authentication. However, if your agreement allows you to make a card
+  payment without this authentication, or that specific cards can be declined,
+  you may adjust these optional parameters when posting in the payment.
 * *Defining `callbackURL`:* When implementing a scenario, it is optional to set
   a `callbackURL` in the `POST` request. If `callbackURL` is set Swedbank Pay
   will send a postback request to this URL when the consumer has fulfilled the
@@ -308,8 +307,8 @@ card payment:
   authentication of then cardholder is done.
 * Card supports 3-D Secure - if the card is enrolled with 3-D Secure, Swedbank
   Pay will redirect the cardholder to the autentication mechanism that is
-  decided by the issuing bank. Normally this will be done using BankID or
-  Mobile BankID.
+  decided by the issuing bank. Normally this will be done using BankID or Mobile
+  BankID.
 
 ```mermaid
 sequenceDiagram
@@ -400,9 +399,9 @@ sequenceDiagram
 * If the payment shown above is done as a two phase (`Authorization`), you will
   need to implement the [`Capture`][capture] and [`Cancel`][cancel] requests.
 * For `reversals`, you will need to implement the [Reversal request][reversal].
-* *If `callbackURL` is set:* Whenever changes to the payment occur a
-  [Callback request][callback] will be posted to the `callbackUrl`, which was
-  generated when the payment was created.
+* *If `callbackURL` is set:* Whenever changes to the payment occur a [Callback
+  request][callback] will be posted to the `callbackUrl`, which was generated
+  when the payment was created.
 
 ## Card Payment Pages in Mobile Apps
 
@@ -440,7 +439,7 @@ process.
   amount, you will have to specify that the intent of the purchase is
   Authorization. The amount will be reserved but not charged. You will later
   (i.e. when you are ready to ship the purchased products) have to make a
-[Capture][capture] or [Cancel][cancel] request.
+  [Capture][capture] or [Cancel][cancel] request.
 * **AutoCapture (one-phase)**:  If you want the credit card to be charged right
   away, you will have to specify that the intent of the purchase is
   `AutoCapture`. The credit card will be charged automatically after
@@ -451,11 +450,10 @@ process.
 
 * **No 3-D Secure and card acceptance**: There are optional paramers that can be
   used in relation to 3-D Secure and card acceptance. By default, most credit
-  card agreements with an acquirer will require that you use 3-D Secure for
-  card holder authentication. However, if your agreement allows you to make a
-  card payment without this authentication, or that specific cards can be
-  declined, you may adjust these optional parameters when posting in the
-  payment.
+  card agreements with an acquirer will require that you use 3-D Secure for card
+  holder authentication. However, if your agreement allows you to make a card
+  payment without this authentication, or that specific cards can be declined,
+  you may adjust these optional parameters when posting in the payment.
 * **Defining `callbackURL`**: When implementing a scenario, it is optional to
   set a `callbackURL` in the `POST` request. If `callbackURL` is set Swedbank
   Pay will send a postback request to this URL when the consumer has fulfilled
@@ -477,8 +475,8 @@ card payment:
   authentication of the cardholder is done.
 * Card supports 3-D Secure - if the card is enrolled with 3-D Secure, Swedbank
   Pay will redirect the cardholder to the autentication mechanism that is
-  decided by the issuing bank. Normally this will be done using BankID or
-  Mobile BankID.
+  decided by the issuing bank. Normally this will be done using BankID or Mobile
+  BankID.
 
 ```mermaid
 sequenceDiagram

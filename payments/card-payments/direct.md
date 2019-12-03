@@ -39,7 +39,8 @@ implement card payments without using Swedbank Pay Hosted payment pages." %}
 * The payer places an order and you make a `POST` request towards Swedbank Pay
   with gathered `Purchase` information.
 * The action taken next is the `direct-authorization` operation that is returned
-  in the first request. You `POST` the payer's card data to the URL in the[`direct-authorization` operation][authorization].
+  in the first request. You `POST` the payer's card data to the URL in
+  the[`direct-authorization` operation][authorization].
 * If 3-D Secure authentication is required, you will then receive a URL where
   you will have to redirect the payer.
 * When the payment is completed, the payer needs to be redirected back to your
@@ -232,32 +233,32 @@ Content-Type: application/json
 ### Type of authorization (Intent)
 
 * **Authorization (two-phase):** If you want the credit card to reserve the
-amount, you will have to specify that the `intent` of the `purchase` is
-`Authorization`. The amount will be reserved but not charged. You will later
-(i.e. when you are ready to ship the purchased products) have to make a
-[Capture][Capture] or [Cancel][Cancel] request.
+  amount, you will have to specify that the `intent` of the `purchase` is
+  `Authorization`. The amount will be reserved but not charged. You will later
+  (i.e. when you are ready to ship the purchased products) have to make a
+  [Capture][Capture] or [Cancel][Cancel] request.
 
 ### Type of capture (Intent)
 
 * **AutoCapture (one-phase):** If you want the credit card to be charged right
-away, you will have to specify that the `intent` of the `purchase` is
-`AutoCapture`. The credit card will be charged and you don't need to do any
-more financial operations to this purchase.
+  away, you will have to specify that the `intent` of the `purchase` is
+  `AutoCapture`. The credit card will be charged and you don't need to do any
+  more financial operations to this purchase.
 
 ### General
 
 * **No 3-D Secure and card acceptance**: There are optional paramers that can be
-used in relation to 3-D Secure and card acceptance. By default, most credit card
-agreements with an acquirer will require that you use 3-D Secure for card holder
-authentication. However, if your agreement allows you to make a card payment
-without this authentication, or that specific cards can be declined, you may
-adjust these optional parameters when posting in the payment. This is specified
-in the technical reference section for creating credit card payments  - you will
- find the link in the sequence diagram below.
+  used in relation to 3-D Secure and card acceptance. By default, most credit
+  card agreements with an acquirer will require that you use 3-D Secure for card
+  holder authentication. However, if your agreement allows you to make a card
+  payment without this authentication, or that specific cards can be declined,
+  you may adjust these optional parameters when posting in the payment. This is
+  specified in the technical reference section for creating credit card payments
+   - you will find the link in the sequence diagram below.
 * **Defining CallbackURL**: When implementing a scenario, it is optional to set
-a [CallbackURL][callback] in the `POST` request. If `CallbackURL` is set, then
-Swedbank Pay will send a postback request to this URL when the consumer has
-fulfilled the payment. [See the Callback API description here][callback].
+  a [CallbackURL][callback] in the `POST` request. If `CallbackURL` is set, then
+  Swedbank Pay will send a postback request to this URL when the consumer has
+  fulfilled the payment. [See the Callback API description here][callback].
 
 ## Payment Resource
 
@@ -266,16 +267,17 @@ fulfilled the payment. [See the Callback API description here][callback].
 ### 3-D Secure authentication
 
 When dealing with credit card payments, 3-D Secure authentication of the
-cardholder is an essential topic. There are two alternative outcomes of
-a credit card payment:
+cardholder is an essential topic. There are two alternative outcomes of a credit
+card payment:
 
-* **3-D Secure enabled (by default):** 3-D Secure should be enabled, and Swedbank Pay
-will check if the card is enrolled with 3-D Secure. This depends on the issuer of
- the card. If the card is not enrolled with 3-D Secure, no authentication of the
- cardholder is done.
-* **Card supports 3-D Secure:** If the card is enrolled with 3-D Secure, Swedbank Pay
-will redirect the cardholder to the autentication mechanism that is decided by
-the issuing bank. Normally this will be done using BankID or Mobile BankID.
+* **3-D Secure enabled (by default):** 3-D Secure should be enabled, and
+  Swedbank Pay will check if the card is enrolled with 3-D Secure. This depends
+  on the issuer of the card. If the card is not enrolled with 3-D Secure, no
+  authentication of the cardholder is done.
+* **Card supports 3-D Secure:** If the card is enrolled with 3-D Secure,
+  Swedbank Pay will redirect the cardholder to the autentication mechanism that
+  is decided by the issuing bank. Normally this will be done using BankID or
+  Mobile BankID.
 
 ```mermaid
 sequenceDiagram
@@ -319,13 +321,13 @@ sequenceDiagram
 ### Options after posting a purchase payment
 
 * If the payment shown above is done as a two-phase (Authorization), you will
-need to implement the [Capture][Capture] and [Cancel][Cancel] requests.
+  need to implement the [Capture][Capture] and [Cancel][Cancel] requests.
 * **Abort:** It is possible to [abort a payment][abort] if the payment has no
-successful transactions.
+  successful transactions.
 * For `reversals`, you will need to implement the [Reversal][reversal] request.
 * **Callback from Swedbank Pay:** Whenever changes to the payment occur a
-[Callback request][callback] will be posted to the `callbackUrl`,
-generated when the payment was created.
+  [Callback request][callback] will be posted to the `callbackUrl`, generated
+  when the payment was created.
 
 {% include iterator.html prev_href="seamless-view" prev_title="Back: Seamless View"
 next_href="after-payment" next_title="Next: After Payment" %}

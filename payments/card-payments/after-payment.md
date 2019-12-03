@@ -28,7 +28,7 @@ sidebar:
 ### Options after posting a payment
 
 * *Abort:* It is possible to abort the process if the payment has no successful
-transactions. [See the Abort description here][abort].
+  transactions. [See the Abort description here][abort].
 * If the payment shown above is done as a two phase (`Authorization`), you will
   need to implement the `Capture` and `Cancel` requests.
 * For `reversals`, you will need to implement the [Reversal request][reversal].
@@ -552,11 +552,11 @@ sequenceDiagram
 If you, for any reason, need to delete a paymentToken you use the
 `Delete payment token` request.
 
-> Please note that this call does not erase the card number stored at
-  Swedbank Pay. A card number is automatically deleted six months after a
-  successful `Delete payment token` request. If you want to remove card
-  information beforehand, you need to contact support.ecom@payex.com; and supply
-  them with the relevant transaction reference or payment token.
+> Please note that this call does not erase the card number stored at Swedbank
+  Pay. A card number is automatically deleted six months after a successful
+  `Delete payment token` request. If you want to remove card information
+  beforehand, you need to contact support.ecom@payex.com; and supply them with
+  the relevant transaction reference or payment token.
 
 {:.code-header}
 **Request**
