@@ -156,50 +156,50 @@ sequenceDiagram
     participant Merchant
     participant SwedbankPay as Swedbank Pay
 
-  activate Payer
-  Payer->>-Merchant: start purchase
-  activate Merchant
-  Merchant->>-SwedbankPay: POST /psp/creditcard/payments
-  activate SwedbankPay
-  note left of Payer: First API request
-  SwedbankPay-->>-Merchant: payment resource
-  activate Merchant
-  Merchant-->>-Payer: authorization page
-  activate Payer
-  Payer->>-SwedbankPay: access authorization page
-  activate SwedbankPay
-  note left of Payer: redirect to SwedbankPay<br>(If Redirect scenario)
-  SwedbankPay-->>-Payer: display purchase information
-  activate Payer
-  Payer->>Payer: input creditcard information
-  Payer->>-SwedbankPay: submit creditcard information
-  activate SwedbankPay
-  opt Card supports 3-D Secure
-    SwedbankPay-->>-Payer: redirect to IssuingBank
     activate Payer
-    Payer->>IssuingBank: 3-D Secure authentication process
-    activate IssuingBank
-    Payer->>-SwedbankPay: access authentication page
-  end
+    Payer->>-Merchant: start purchase
+    activate Merchant
+    Merchant->>-SwedbankPay: POST /psp/creditcard/payments
+    activate SwedbankPay
+    note left of Payer: First API request
+    SwedbankPay-->>-Merchant: payment resource
+    activate Merchant
+    Merchant-->>-Payer: authorization page
+    activate Payer
+    Payer->>-SwedbankPay: access authorization page
+    activate SwedbankPay
+    note left of Payer: redirect to SwedbankPay<br>(If Redirect scenario)
+    SwedbankPay-->>-Payer: display purchase information
+    activate Payer
+    Payer->>Payer: input creditcard information
+    Payer->>-SwedbankPay: submit creditcard information
+    activate SwedbankPay
+        opt Card supports 3-D Secure
+        SwedbankPay-->>-Payer: redirect to IssuingBank
+        activate Payer
+        Payer->>IssuingBank: 3-D Secure authentication process
+        activate IssuingBank
+        Payer->>-SwedbankPay: access authentication page
+        end
 
-  SwedbankPay-->>-Payer: redirect to merchant
-  activate Payer
-  note left of Payer: redirect back to merchant<br>(If Redirect scenario)
+    SwedbankPay-->>-Payer: redirect to merchant
+    activate Payer
+    note left of Payer: redirect back to merchant<br>(If Redirect scenario)
 
-  Payer->>-Merchant: access merchant page
-  activate Merchant
-  Merchant->>-SwedbankPay: GET /psp/creditcard/payments/<paymentorder.id>
-  activate SwedbankPay
-  note left of Merchant: Second API request
-  SwedbankPay-->>-Merchant: rel: redirect-authorization
-  activate Merchant
-  Merchant-->>-Payer: display purchase result
+    Payer->>-Merchant: access merchant page
+    activate Merchant
+    Merchant->>-SwedbankPay: GET /psp/creditcard/payments/<paymentorder.id>
+    activate SwedbankPay
+    note left of Merchant: Second API request
+    SwedbankPay-->>-Merchant: rel: redirect-authorization
+    activate Merchant
+    Merchant-->>-Payer: display purchase result
 
-  opt Callback is set
-  activate SwedbankPay
-    SwedbankPay->>SwedbankPay: Payment is updated
-    SwedbankPay->>-Merchant: POST Payment Callback
-  end
+        opt Callback is set
+        activate SwedbankPay
+        SwedbankPay->>SwedbankPay: Payment is updated
+        SwedbankPay->>-Merchant: POST Payment Callback
+        end
 ```
 
 {% include iterator.html  next_href="redirect" next_title="Next: Redirect" %}

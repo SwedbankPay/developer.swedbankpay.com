@@ -65,20 +65,20 @@ the request under **Other Features** for the given payment instrument.
 
 ## Redirect
 
-The [Redirect][redirect] platform redirects the consumers to a Swedbank Pay hosted payment
-page. The consumer will then be redirected back to your page when the payment
-is completed.
+The [Redirect][redirect] platform redirects the consumers to a Swedbank Pay
+hosted payment page. The consumer will then be redirected back to your page when
+the payment is completed.
 
 ## Direct API
 
-The [Direct][direct] option gives you the opportunity to create your own front-end and use our
-API's in the payment process.
+The [Direct][direct] option gives you the opportunity to create your own
+front-end and use our API's in the payment process.
 
 ## The Fundamentals
 
->All Payments APIs in the Swedbank Pay API Platform share a common foundation
-with a similar payment process for all payment instruments, reducing complexity
-and enabling a more straightforward integration.
+> All Payments APIs in the Swedbank Pay API Platform share a common foundation
+  with a similar payment process for all payment instruments, reducing
+  complexity and enabling a more straightforward integration.
 
 *Two-phase payments* ([Card][credit-card], [Invoice][invoice],
 [MobilePay][invoice], [Vipps][vipps])
@@ -128,36 +128,35 @@ request body (in JSON format), a payment  is created and you will be given a
 unique paymentID in return. The response also include  (in a true RESTful way)
 the URIs to possible further actions, given the state of the payment. It is
 possible to abort a payment before the end user has fulfilled the payment
-process.
-Settle funds directly with a Sales transaction.
+process. Settle funds directly with a Sales transaction.
 
 >Add image
 
 ## Swedbank Pay Payment Instruments Platforms
 
-Swedbank Pay Seamless View and Redirect offer easy-to-use PCI compliant platforms,
-available from both web and mobile browsers. Either let your customers access
-the platform directly, embedded on your site, or by redirection to a separate
-hosted payment page.
+Swedbank Pay Seamless View and Redirect offer easy-to-use PCI compliant
+platforms, available from both web and mobile browsers. Either let your
+customers access the platform directly, embedded on your site, or by redirection
+to a separate hosted payment page.
 
 ### Seamless View implementation
 
-With the Seamless View you can initiate the payment process directly in an iframe
-on your site. A hostUrl needs to be defined in the first POST request in order
-to enable the Seamless View operation. See details of the request
+With the Seamless View you can initiate the payment process directly in an
+iframe on your site. A hostUrl needs to be defined in the first POST request in
+order to enable the Seamless View operation. See details of the request
 [here][card-payments-purchase].
 
 ```mermaid
 sequenceDiagram
-  Consumer->>Merchant: The consumer starts purchase process
+  activate Consumer
+  Consumer->>-Merchant: The consumer starts purchase process
   activate Merchant
-  Merchant->>PayEx: POST [operation=PURCHASE]
+  Merchant->>-SwedbankPay: POST [operation=PURCHASE]
+  activate SwedbankPay
   note left of Merchant: First API request
-  activate PayEx
-  PayEx-->>Merchant: Payment resource
-  deactivate PayEx
-  Merchant-->>Consumer: Merchant embed Script on her site, creating Seamless View in iframe.
-  deactivate Merchant
+  SwedbankPay-->>-Merchant: Payment resource
+  activate Merchant
+  Merchant-->>-Consumer: Merchant embed Script on her site, creating Seamless View in iframe.
 ```
 
 Please visit our [demoshop][demoshop] to view our Payment Menu and Redirect
@@ -173,10 +172,10 @@ English
 
 #### Getting started with Seamless View
 
-When implementing Seamless View, you need to locate the operation that is returned
-from your API request, which contains the URL of the JavaScript that you need
-to embed on your Front End side. This will load the
-payment page on a subset of your own webpage.
+When implementing Seamless View, you need to locate the operation that is
+returned from your API request, which contains the URL of the JavaScript that
+you need to embed on your Front End side. This will load the payment page on a
+subset of your own webpage.
 
 The properties of the operation containing the script URL should be similar to
 the example below. The href attribute refers to a script of the contentType
@@ -237,17 +236,19 @@ hosted payment page.
 
 ```mermaid
 sequenceDiagram
-Consumer->>Merchant: The consumer starts purchase process
+activate Consumer
+Consumer->>-Merchant: The consumer starts purchase process
 activate Merchant
-Merchant->>PayEx: (operation=PURCHASE)
+Merchant->>-SwedbankPay: (operation=PURCHASE)
+activate SwedbankPay
 note left of Merchant: First API request
-Activate PayEx
-PayEx-->>Merchant: Payment resource
-deactivate PayEx
-Merchant-->>Consumer: Consumer browser gets redirected to the hosted authorization page.
-deactivate Merchant
-Consumer->>PayEx: access authorize page
-note left of Consumer: redirect to PayEx
+Activate SwedbankPay
+SwedbankPay-->>-Merchant: Payment resource
+activate Merchant
+Merchant-->>-Consumer: Consumer browser gets redirected to the hosted authorization page.
+activate Consumer
+Consumer->>-SwedbankPay: access authorize page
+note left of Consumer: redirect to SwedbankPay
 ```
 
 Please visit our [demoshop][demoshop] to view our Payment Menu and Redirect
@@ -300,10 +301,10 @@ instruments.
 * The payment is the container object that holds all transactions that will be
   created during the payment process. You specify which payment instrument to
   use, i.e. if you want to initiate a credit card payment, an invoice payment or
-  a Swish payment, etc. This is managed by specific instrument calls to PayEx's
-  API Platform, where you need to include all necessary payment details - like
-  amount, description, references to your system, etc. This example shows a card
-  payment post.
+  a Swish payment, etc. This is managed by specific instrument calls to Swedbank
+  Pay's API Platform, where you need to include all necessary payment details -
+  like amount, description, references to your system, etc. This example shows a
+  card payment post.
 * When Swedbank Pay receives this information, a payment  will be created and
   you will be given a unique paymentID in return. The response also include
   (in a true RESTful way) the URI's to possible further actions, given the state

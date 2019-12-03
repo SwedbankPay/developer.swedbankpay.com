@@ -142,44 +142,41 @@ There are three alternative outcome of a credit card payment:
 
 ```mermaid
 sequenceDiagram
-activate Consumer
-Consumer->>-MerchantOrderSystem: consumer starts purchase
-activate MerchantOrderSystem
-MerchantOrderSystem->>-Merchant: start purchase process
-activate Merchant
-Merchant->>-SwedbankPay: POST [payment] (operation=PURCHASE)
-activate SwedbankPay
-note left of Merchant: First API request
-SwedbankPay-->>-Merchant: payment resource with payment URL
-activate Merchant
-Merchant-->>-MerchantOrderSystem: Payment URL sent to order system
-activate MerchantOrderSystem
-MerchantOrderSystem-->>-Consumer: Distribute Payment URL through e-mail/SMS
-activate Consumer
-note left of Consumer: Payment Link in e-mail/SMS
-Consumer->>-SwedbankPay: Open link and enter payment information
-activate SwedbankPay
-
-opt Card supports 3-D Secure
-SwedbankPay-->>-Consumer: redirect to IssuingBank
-activate Consumer
-Consumer->>IssuingBank: 3-D Secure authentication process
-Consumer->>-SwedbankPay: access authentication page
-activate SwedbankPay
-end
-
-SwedbankPay-->>-Consumer: redirect to merchant site
-activate Consumer
-note left of SwedbankPay: redirect back to merchant
-
-Consumer->>-Merchant: access merchant page
-activate Merchant
-Merchant->>-SwedbankPay: GET [payment]
-activate SwedbankPay
-note left of Merchant: Second API request
-SwedbankPay-->>-Merchant: payment resource
-activate Merchant
-Merchant-->>-Consumer: display purchase result
+    activate Consumer
+    Consumer->>-MerchantOrderSystem: consumer starts purchase
+    activate MerchantOrderSystem
+    MerchantOrderSystem->>-Merchant: start purchase process
+    activate Merchant
+    Merchant->>-SwedbankPay: POST [payment] (operation=PURCHASE)
+    activate SwedbankPay
+    note left of Merchant: First API request
+    SwedbankPay-->>-Merchant: payment resource with payment URL
+    activate Merchant
+    Merchant-->>-MerchantOrderSystem: Payment URL sent to order system
+    activate MerchantOrderSystem
+    MerchantOrderSystem-->>-Consumer: Distribute Payment URL through e-mail/SMS
+    activate Consumer
+    note left of Consumer: Payment Link in e-mail/SMS
+    Consumer->>-SwedbankPay: Open link and enter payment information
+    activate SwedbankPay
+        opt Card supports 3-D Secure
+        SwedbankPay-->>-Consumer: redirect to IssuingBank
+        activate Consumer
+        Consumer->>IssuingBank: 3-D Secure authentication process
+        Consumer->>-SwedbankPay: access authentication page
+        activate SwedbankPay
+        end
+    SwedbankPay-->>-Consumer: redirect to merchant site
+    activate Consumer
+    note left of SwedbankPay: redirect back to merchant
+    Consumer->>-Merchant: access merchant page
+    activate Merchant
+    Merchant->>-SwedbankPay: GET [payment]
+    activate SwedbankPay
+    note left of Merchant: Second API request
+    SwedbankPay-->>-Merchant: payment resource
+    activate Merchant
+    Merchant-->>-Consumer: display purchase result
 ```
 
 #### Options after posting a payment
@@ -208,10 +205,10 @@ authorization amount.
 
 ```mermaid
 sequenceDiagram
-activate Merchant
-Merchant->>-SwedbankPay: POST <capture>
-activate SwedbankPay
-SwedbankPay-->>-Merchant: transaction resource
+    activate Merchant
+    Merchant->>-SwedbankPay: POST <capture>
+    activate SwedbankPay
+    SwedbankPay-->>-Merchant: transaction resource
 ```
 
 #### Cancel Sequence
@@ -222,10 +219,10 @@ between the captured amount and the authorized amount.
 
 ```mermaid
 sequenceDiagram
-activate Merchant
-Merchant->>-SwedbankPay: POST <Cancellation>
-activate SwedbankPay
-SwedbankPay-->>-Merchant: transaction resource
+    activate Merchant
+    Merchant->>-SwedbankPay: POST <Cancellation>
+    activate SwedbankPay
+    SwedbankPay-->>-Merchant: transaction resource
 ```
 
 #### Reversal Sequence
@@ -235,10 +232,10 @@ amount not yet reversed.
 
 ```mermaid
 sequenceDiagram
-activate Merchant
-Merchant->>-SwedbankPay: POST <Reversal>
-activate SwedbankPay
-SwedbankPay-->>-Merchant: transaction resource
+    activate Merchant
+    Merchant->>-SwedbankPay: POST <Reversal>
+    activate SwedbankPay
+    SwedbankPay-->>-Merchant: transaction resource
 ```
 
 [abort]: #abort
