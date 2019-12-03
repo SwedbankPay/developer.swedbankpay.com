@@ -140,19 +140,19 @@ Content-Type: application/json
         "cardholder": {
             "firstName": "firstname/companyname",
             "lastName": "lastname",
-            "email": "email",
-            "msisdn": "msisdn",
+            "email": "leia.ahlstrom@swedbankpay.com",
+            "msisdn": "+4673900000",
             "homePhoneNumber": "homePhoneNumber",
             "workPhoneNumber": "workPhoneNumber",
             "shippingAddress": {
-                "firstName": "firstname",
-                "lastName": "lastname",
-                "email": "email",
-                "msisdn": "msisdn",
-                "streetAddress": "streetAddress",
+                "firstName": "Leia",
+                "lastName": "Ahlstrom",
+                "email": "leia.ahlstrom@swedbankpay.com",
+                "msisdn": "+46739000001",
+                "streetAddress": "Helgestavägen 9",
                 "coAddress": "coAddress",
-                "city": "city",
-                "zipCode": "zipCode",
+                "city": "19792 Bro",
+                "zipCode": "XXXXX",
                 "countryCode": "countryCode"
             },
             "billingAddress": {
@@ -874,8 +874,8 @@ payment"  %}
 
 [purchase]: #purchase
 [user-agent-definition]: https://en.wikipedia.org/wiki/User_agent
-[cancel]: /payments/card-payments/after-payment/#cancellations
-[capture]: /payments/card-payments/after-payment/#Capture
+[cancel]: /payments/card/after-payment/#cancellations
+[capture]: /payments/card/after-payment/#Capture
 [callback]: /payments/card-payments/other-features/#callback
 [price-resource]: /payments/card-payments/other-features/#prices
 [redirect]: /payments/card-payments/redirect
