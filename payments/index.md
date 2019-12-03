@@ -36,6 +36,15 @@ sidebar:
    payment methods and their platform availability are listed in the table
    below." %}
 
+## Prerequisites
+
+To start integrating Swebank Pay Payments, you need the following:
+
+* [HTTPS][https] enabled web server.
+* Agreement that includes Swedbank Pay Payments.
+* Obtained credentials (merchant Access Token) from Swedbank Pay through
+  Swedbank Pay Admin.
+
 {:.table .table-striped}
 |                                | Payment method                      | Seamless View | Redirect | Direct API | Region                                                                               |
 | :----------------------------- | :---------------------------------- | :-----------: | :------: | :--------: | :----------------------------------------------------------------------------------- |
@@ -49,20 +58,20 @@ sidebar:
 
 ## Seamless View
 
-With the Seamless View you can initiate the payment process directly in an
-iframe on your site. A hostUrl needs to be defined in the first `POST` request
-in order to enable the Seamless View operation. See details of the request under
-**Other Features** for the given payment instrument.
+With the [Seamless View][seamless-view] you can initiate the payment process
+directly in an iframe on your site. A hostUrl needs to be defined in the first
+`POST` request in order to enable the Seamless View operation. See details of
+the request under **Other Features** for the given payment instrument.
 
 ## Redirect
 
-The Redirect platform redirects the consumers to a Swedbank Pay hosted payment
+The [Redirect][redirect] platform redirects the consumers to a Swedbank Pay hosted payment
 page. The consumer will then be redirected back to your page when the payment
 is completed.
 
 ## Direct API
 
-This option gives you the opportunity to create your own front-end and use our
+The [Direct][direct] option gives you the opportunity to create your own front-end and use our
 API's in the payment process.
 
 ## The Fundamentals
@@ -376,6 +385,7 @@ instruments.
 [card-payments-purchase]: /payments/credit-card/#purchase-flow-1
 [demoshop]: https://ecom.externalintegration.payex.com/pspdemoshop
 [card-icon]: /assets/img/card-icon.png
+[https]: /#connection-and-protocol
 [invoice-icon]: /assets/img/invoice-icon.png
 [envelope-icon]: /assets/img/envelope-icon.png
 [keypad-icon]: /assets/img/keypad-icon.png
@@ -396,3 +406,6 @@ instruments.
 [vipps]: /payments/vipps
 [swish]: /payments/swish
 [mobile-pay]: /payments/mobile-pay
+[seamless-view]: /payments/credit-card/seamless-view
+[redirect]: /payments/credit-card/redirect
+[direct]: /payments/credit-card/direct
