@@ -29,10 +29,10 @@ sidebar:
   your Purchase information. This will generate a payment object with a unique
   `paymentID`. You will receive a **JavaScript source** in response.
 * You need to embed the script source on your site to create a
-  hosted-view in an iFrame(see screenshot below); so that she can enter the
+  hosted-view in an `iframe`(see screenshot below); so that she can enter the
   credit card details in a secure Swedbank Pay hosted environment.
 * Swedbank Pay will handle 3-D Secure authentication when this is required.
-* Swedbank Pay will display directly in the iFrame - one of two specified URLs,
+* Swedbank Pay will display directly in the `iframe` - one of two specified URLs,
   depending on whether the payment session is followed through completely or
   cancelled beforehand. Please note that both a successful and rejected payment
   reach completion, in contrast to a cancelled payment.
@@ -48,7 +48,7 @@ when="at the 3-D Secure verification for Credit Card Payments" %}
 
 ## Screenshots
 
-You will have an iFramed window on your page where the consumer can enter the
+You will have an `iframe` window on your page where the consumer can enter the
 credit card information.
 
 ![screenshot of the hosted view card payment page][hosted-view-card]{:height="250px" width="660px"}
@@ -339,7 +339,7 @@ sequenceDiagram
     deactivate SwedbankPay
     Merchant-->>+Payer: authorization page
     deactivate Merchant
-    Payer ->>Payer: Initiate iFrame
+    Payer ->>Payer: Initiate iframe
     Payer->>+Merchant: access merchant page
     deactivate Payer
     Merchant->>+SwedbankPay: GET <payment.id>
