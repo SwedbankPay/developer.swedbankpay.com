@@ -76,9 +76,12 @@ front-end and use our API's in the payment process.
 
 ## The Fundamentals
 
-> All Payments APIs in the Swedbank Pay API Platform share a common foundation
-  with a similar payment process for all payment instruments, reducing
-  complexity and enabling a more straightforward integration.
+{% include alert.html type="neutral"
+                      icon="info"
+                      body="All Payments APIs in the Swedbank Pay API Platform
+                      share a common foundation with a similar payment process
+                      for all payment instruments, reducing complexity and
+                      enabling a more straightforward integration." %}
 
 *Two-phase payments* ([Card][credit-card], [Invoice][invoice],
 [MobilePay][invoice], [Vipps][vipps])
