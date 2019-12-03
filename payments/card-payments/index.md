@@ -35,7 +35,7 @@ between our **Seamless View**, **Redirect**, or **Direct** integration options."
   purchase process, you need to make a `POST` request towards Swedbank Pay with
   your Purchase information. This will generate a payment object with a unique
   `paymentID`. You either receive a Redirect URL to a Swedbank Pay hosted
-  page(Redirect integration) or a JavaScript source in response(Seamless View
+  page (Redirect integration) or a JavaScript source in response (Seamless View
   integration).
 * You need to [redirect][redirect] the payer's browser to that specified URL, or
   embed the script source on your site to create a Hosted View in an `iframe`;
