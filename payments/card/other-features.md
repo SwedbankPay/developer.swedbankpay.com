@@ -411,8 +411,8 @@ Content-Type: application/json
 * You need to have the 3-D Secure protocol enabled.
 * The service is available both through hosted payment pages and through direct
   API integration.
-* The current implementation is only available for gaming transactions (Merchant
-  MCC: 7995).
+* The current implementation is only available for gaming transactions (
+  [MCC][mcc]: 7995).
 * The payout service is not a part of Swedbank Pay Settlement Service.
 
 ### API requests
@@ -877,6 +877,7 @@ payment"  %}
 [cancel]: /payments/card/after-payment/#cancellations
 [capture]: /payments/card/after-payment/#Capture
 [callback]: /payments/card/other-features/#callback
+[mcc]: https://en.wikipedia.org/wiki/Merchant_category_code
 [price-resource]: /payments/card/other-features/#prices
 [redirect]: /payments/card/redirect
 [hosted-view]: /payments/card/seamless-view
