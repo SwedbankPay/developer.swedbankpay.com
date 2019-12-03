@@ -56,7 +56,7 @@ receive the state of the transaction.
 You will redirect the payer to Swedbank Pay hosted pages to collect the credit
 card information.
 
-![Screnshot-1]
+![screenshot of the redirect card payment page][card-payment]{:height="500px" width="425px"}
 
 ## API Requests
 
@@ -198,8 +198,7 @@ sequenceDiagram
 
 {% include iterator.html  next_href="redirect" next_title="Next: Redirect" %}
 
-[Screnshot-1]: /assets/img/creditcard-image-1.png
-{:height="711px" width="400px"}
+[card-payment]: /assets/img/payments/card-payment.png
 [finalizing-the-transaction]: /payments/credit-card/after-payment
 [cancel]: /payments/credit-card/after-payment/#cancellations
 [capture]: /payments/credit-card/after-payment/#Capture

@@ -51,7 +51,7 @@ when="at the 3-D Secure verification for Credit Card Payments" %}
 You will have an iFramed window on your page where the consumer can enter the
 credit card information.
 
-![payment-page_hosted-view.png]{:height="700px" :width="490px"}
+![screenshot of the hosted view card payment page][hosted-view-card]{:height="250px" width="660px"}
 
 ## API Requests
 
@@ -426,7 +426,6 @@ sequenceDiagram
 {% include iterator.html prev_href="redirect" prev_title="Redirect"
 next_href="direct" next_title="Next: Direct" %}
 
-[payment-page_hosted-view.png]: /assets/screenshots/credit-card/hosted-view/view/macos.png
 [abort]: /payments/credit-card/other-features/#abort
 [callback]: /payments/credit-card/other-features/#callback
 [cancel]: /payments/credit-card/after-payment/#cancellations
@@ -443,3 +442,4 @@ next_href="direct" next_title="Next: Direct" %}
 [verify]: /payments/credit-card/other-features/#verify
 [create-payment]: /payments/credit-card/other-features/#create-payment
 [user-agent-definition]: https://en.wikipedia.org/wiki/User_agent
+[hosted-view-card]: /assets/img/payments/hosted-view-card.png
