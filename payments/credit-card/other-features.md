@@ -544,7 +544,7 @@ and a `paymentToken` that can be used for subsequent
 You will redirect the consumer/end-user to Swedbank Pay hosted pages to collect
 the credit card information.
 
-![Screenshot-1]
+![Screenshot-1]{:height="500px" width="425px"}
 
 ### API Requests
 
@@ -813,4 +813,3 @@ All acquirer error types will have the following URI in front of type:
 [verify]: #verify
 [payout]: #payout
 [Screenshot-1]: /assets/img/payments/card_payment.png
-{:height="500px" width="425px"}
