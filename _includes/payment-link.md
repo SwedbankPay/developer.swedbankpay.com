@@ -91,7 +91,7 @@ two-phase (e.g. [Credit card][credit-card], [MobilePay][mobile-pay],
   it's almost the same as an authorization,
   **except that no money will be reserved** from the consumers credit card,
   [before you make a finalize on this transaction
-  (Finalize)][technical-reference-finalize].
+  ][technical-reference-finalize].
 * Authorize (two-phase):
   * When using two-phase flows you reserve the amount with an authorization,
   you will have to specify that the _intent_ of the _purchase_ is `Authorize`.
