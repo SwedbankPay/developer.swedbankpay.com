@@ -4,17 +4,17 @@ sidebar:
   navigation:
   - title: Card Payments
     items:
-    - url: /payments/card-payments/
+    - url: /payments/card/
       title: Introduction
-    - url: /payments/card-payments/redirect
+    - url: /payments/card/redirect
       title: Redirect
-    - url: /payments/card-payments/seamless-view
+    - url: /payments/card/seamless-view
       title: Seamless View
-    - url: /payments/card-payments/direct
+    - url: /payments/card/direct
       title: Direct
-    - url: /payments/card-payments/after-payment
+    - url: /payments/card/after-payment
       title: After Payment
-    - url: /payments/card-payments/other-features
+    - url: /payments/card/other-features
       title: Other Features
 ---
 
@@ -734,11 +734,11 @@ You have the following options after a server-to-server Recur payment `POST`.
 {% include iterator.html prev_href="direct" prev_title="Back: Direct"
 next_href="other-features" next_title="Next: Other Features" %}
 
-[transaction-resource]: /payments/card-payments/other-features/#transactions
-[payeeReference]: /payments/card-payments/other-features/#payeereference
-[abort]: /payments/card-payments/other-features/#abort
-[callback]: /payments/card-payments/other-features/#callback
-[cancel]: /payments/card-payments/after-payment/#cancellations
-[capture]: /payments/card-payments/after-payment/#Capture
-[operations]: /payments/card-payments/other-features/#operations
-[reversal]: /payments/card-payments/after-payment/#reversals
+[transaction-resource]: /payments/card/other-features/#transactions
+[payeeReference]: /payments/card/other-features/#payeereference
+[abort]: /payments/card/other-features/#abort
+[callback]: /payments/card/other-features/#callback
+[cancel]: /payments/card/after-payment/#cancellations
+[capture]: /payments/card/after-payment/#Capture
+[operations]: /payments/card/other-features/#operations
+[reversal]: /payments/card/after-payment/#reversals

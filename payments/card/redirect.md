@@ -4,17 +4,17 @@ sidebar:
   navigation:
   - title: Card Payments
     items:
-    - url: /payments/card-payments/
+    - url: /payments/card/
       title: Introduction
-    - url: /payments/card-payments/redirect
+    - url: /payments/card/redirect
       title: Redirect
-    - url: /payments/card-payments/seamless-view
+    - url: /payments/card/seamless-view
       title: Seamless View
-    - url: /payments/card-payments/direct
+    - url: /payments/card/direct
       title: Direct
-    - url: /payments/card-payments/after-payment
+    - url: /payments/card/after-payment
       title: After Payment
-    - url: /payments/card-payments/other-features
+    - url: /payments/card/other-features
       title: Other Features
 ---
 
@@ -563,19 +563,19 @@ sequenceDiagram
 {% include iterator.html prev_href="./" prev_title="Back: Introduction"
 next_href="seamless-view" next_title="Next: Seamless View" %}
 
-[abort]: /payments/card-payments/other-features/#abort
-[callback]: /payments/card-payments/other-features/#callback
-[cancel]: /payments/card-payments/after-payment/#cancellations
-[capture]: /payments/card-payments/after-payment/#Capture
-[create-payment]: /payments/card-payments/other-features/#create-payment
-[expansion]: /payments/card-payments/other-features/#expansion
-[payee-reference]: /payments/card-payments/other-features/#payeereference
-[payout]: /payments/card-payments/other-features/#payout
-[purchase]: /payments/card-payments/other-features/#purchase
-[price-resource]: /payments/card-payments/other-features/#prices
-[recur]: /payments/card-payments/other-features/#recur
+[abort]: /payments/card/other-features/#abort
+[callback]: /payments/card/other-features/#callback
+[cancel]: /payments/card/after-payment/#cancellations
+[capture]: /payments/card/after-payment/#Capture
+[create-payment]: /payments/card/other-features/#create-payment
+[expansion]: /payments/card/other-features/#expansion
+[payee-reference]: /payments/card/other-features/#payeereference
+[payout]: /payments/card/other-features/#payout
+[purchase]: /payments/card/other-features/#purchase
+[price-resource]: /payments/card/other-features/#prices
+[recur]: /payments/card/other-features/#recur
 [redirect-image]: /assets/img/checkout/test-purchase.png
-[reversal]: /payments/card-payments/after-payment/#reversals
+[reversal]: /payments/card/after-payment/#reversals
 [Screnshot-1]: /assets/img/checkout/test-purchase.png
-[verify]: /payments/card-payments/other-features/#verify
+[verify]: /payments/card/other-features/#verify
 [user-agent-definition]: https://en.wikipedia.org/wiki/User_agent

@@ -246,9 +246,9 @@ SwedbankPay-->>-Merchant: transaction resource
 ```
 
 [abort]: #abort
-[credit-card]: /payments/card-payments
+[credit-card]: /payments/card
 [mobile-pay]: /payments/mobile-pay
-[payment-instruments-card-payment-pages]: /payments/card-payments/
+[payment-instruments-card-payment-pages]: /payments/card/
 [payment-instruments-mobilepay-payment-pages]: /payments/mobile-pay/
 [purchase-flow]: ../#purchase-flow
 [swish]: /payments/swish

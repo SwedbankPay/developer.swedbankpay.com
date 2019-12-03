@@ -4,17 +4,17 @@ sidebar:
   navigation:
   - title: Card Payments
     items:
-    - url: /payments/card-payments/
+    - url: /payments/card/
       title: Introduction
-    - url: /payments/card-payments/redirect
+    - url: /payments/card/redirect
       title: Redirect
-    - url: /payments/card-payments/seamless-view
+    - url: /payments/card/seamless-view
       title: Seamless View
-    - url: /payments/card-payments/direct
+    - url: /payments/card/direct
       title: Direct
-    - url: /payments/card-payments/after-payment
+    - url: /payments/card/after-payment
       title: After Payment
-    - url: /payments/card-payments/other-features
+    - url: /payments/card/other-features
       title: Other Features
 ---
 
@@ -332,17 +332,17 @@ sequenceDiagram
 {% include iterator.html prev_href="seamless-view" prev_title="Back: Seamless View"
 next_href="after-payment" next_title="Next: After Payment" %}
 
-[abort]: /payments/card-payments/other-features/#abort
-[expansion]: /payments/card-payments/other-features/#expansion
-[callback]: /payments/card-payments/other-features/#callback
-[Cancel]: /payments/card-payments/after-payment/#Cancellations
-[Capture]: /payments/card-paymentsd/after-payment/#Capture
+[abort]: /payments/card/other-features/#abort
+[expansion]: /payments/card/other-features/#expansion
+[callback]: /payments/card/other-features/#callback
+[Cancel]: /payments/card/after-payment/#Cancellations
+[Capture]: /payments/cardd/after-payment/#Capture
 [PCI-link]: https://www.pcisecuritystandards.org/
-[reversal]: /payments/card-payments/after-payment/#Reversals
-[authorization]: /payments/card-payments/other-features/#create-authorization-transaction
-[other features]: /payments/card-payments/other-features#purchase
-[purchase]:  /payments/card-payments/other-features/#purchase
-[recur]:  /payments/card-payments/other-features/#recur
-[payout]:  /payments/card-payments/other-features/#purchase
-[verify]: /payments/card-payments/other-features/#verify
-[create-payment]: /payments/card-payments/other-features/#create-payment
+[reversal]: /payments/card/after-payment/#Reversals
+[authorization]: /payments/card/other-features/#create-authorization-transaction
+[other features]: /payments/card/other-features#purchase
+[purchase]:  /payments/card/other-features/#purchase
+[recur]:  /payments/card/other-features/#recur
+[payout]:  /payments/card/other-features/#purchase
+[verify]: /payments/card/other-features/#verify
+[create-payment]: /payments/card/other-features/#create-payment

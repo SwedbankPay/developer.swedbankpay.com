@@ -4,17 +4,17 @@ sidebar:
   navigation:
   - title: Card Payments
     items:
-    - url: /payments/card-payments/
+    - url: /payments/card/
       title: Introduction
-    - url: /payments/card-payments/redirect
+    - url: /payments/card/redirect
       title: Redirect
-    - url: /payments/card-payments/seamless-view
+    - url: /payments/card/seamless-view
       title: Seamless View
-    - url: /payments/card-payments/direct
+    - url: /payments/card/direct
       title: Direct
-    - url: /payments/card-payments/after-payment
+    - url: /payments/card/after-payment
       title: After Payment
-    - url: /payments/card-payments/other-features
+    - url: /payments/card/other-features
       title: Other Features
 ---
 
@@ -193,12 +193,12 @@ sequenceDiagram
 
 [Screnshot-1]: /assets/img/creditcard-image-1.png
 {:height="711px" width="400px"}
-[finalizing-the-transaction]: /payments/card-payments/after-payment
-[cancel]: /payments/card-payments/after-payment/#cancellations
-[capture]: /payments/card-payments/after-payment/#Capture
-[redirect]: /payments/card-payments/redirect
-[create-payment]: /payments/card-payments/other-features/#create-payment
-[purchase]: /payments/card-payments/other-features/#purchase
-[recur]: /payments/card-payments/other-features/#recur
-[payout]: /payments/card-payments/other-features/#payout
-[verify]: /payments/card-payments/other-features/#verify
+[finalizing-the-transaction]: /payments/card/after-payment
+[cancel]: /payments/card/after-payment/#cancellations
+[capture]: /payments/card/after-payment/#Capture
+[redirect]: /payments/card/redirect
+[create-payment]: /payments/card/other-features/#create-payment
+[purchase]: /payments/card/other-features/#purchase
+[recur]: /payments/card/other-features/#recur
+[payout]: /payments/card/other-features/#payout
+[verify]: /payments/card/other-features/#verify

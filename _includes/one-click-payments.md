@@ -137,9 +137,9 @@ TODO: Remove pipes from the above code example and add a property table
 {% endcomment %}
 
 -----------------------------
-[card]: /payments/card-payments/
+[card]: /payments/card/
 [invoice]: /payments/invoice/
 [one-click-image]: /assets/img/checkout/one-click.png
 [delete-payment-token]: #delete-payment-token
-[create-card-payment]: /payments/card-payments/
+[create-card-payment]: /payments/card/
 [create-invoice-payment]: /payments/invoice/

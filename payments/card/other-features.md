@@ -4,17 +4,17 @@ sidebar:
   navigation:
   - title: Card Payments
     items:
-    - url: /payments/card-payments/
+    - url: /payments/card/
       title: Introduction
-    - url: /payments/card-payments/redirect
+    - url: /payments/card/redirect
       title: Redirect
-    - url: /payments/card-payments/seamless-view
+    - url: /payments/card/seamless-view
       title: Seamless View
-    - url: /payments/card-payments/direct
+    - url: /payments/card/direct
       title: Direct
-    - url: /payments/card-payments/after-payment
+    - url: /payments/card/after-payment
       title: After Payment
-    - url: /payments/card-payments/other-features
+    - url: /payments/card/other-features
       title: Other Features
 ---
 
@@ -876,10 +876,10 @@ payment"  %}
 [user-agent-definition]: https://en.wikipedia.org/wiki/User_agent
 [cancel]: /payments/card/after-payment/#cancellations
 [capture]: /payments/card/after-payment/#Capture
-[callback]: /payments/card-payments/other-features/#callback
-[price-resource]: /payments/card-payments/other-features/#prices
-[redirect]: /payments/card-payments/redirect
-[hosted-view]: /payments/card-payments/seamless-view
+[callback]: /payments/card/other-features/#callback
+[price-resource]: /payments/card/other-features/#prices
+[redirect]: /payments/card/redirect
+[hosted-view]: /payments/card/seamless-view
 [one-click-payments]: #one-click-payments
 [split-settlement]: #split-settlement
 [settlement-and-reconciliation]: #settlement-and-reconciliation
