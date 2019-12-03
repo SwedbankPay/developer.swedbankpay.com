@@ -45,7 +45,7 @@ is the most common way to implement card payments." %}
 You will redirect the payer to Swedbank Pay hosted pages to collect the credit
 card information.
 
-![Screenshot-1]{:height="500px" width="425px"}
+![Card-payment][card-payment]{:height="500px" width="425px"}
 
 ## API Requests
 
@@ -597,6 +597,6 @@ next_href="seamless-view" next_title="Next: Seamless View" %}
 [recur]: /payments/credit-card/other-features/#recur
 [redirect-image]: /assets/img/checkout/test-purchase.png
 [reversal]: /payments/credit-card/after-payment/#reversals
-[Screenshot-1]: /assets/img/payments/card_payment.png
+[Card-payment]: /assets/img/payments/card-payment.png
 [verify]: /payments/credit-card/other-features/#verify
 [user-agent-definition]: https://en.wikipedia.org/wiki/User_agent
