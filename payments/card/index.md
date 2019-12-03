@@ -33,15 +33,15 @@ TODO: This page needs serious clean-up.
 and global way to initate a transaction with a customer. Choose between our
 **Seamless View**, **Redirect**, or **Direct** integration options." %}
 
-* **Seamless View** is our solution for a payment experience that is integrated
+> **Seamless View** is our solution for a payment experience that is integrated
   directly on your website. The payment process will be executed in an iFrame on
   your page.
 
-* **Redirect** will take the consumer to a Swedbank Pay hosted payment page
+> **Redirect** will take the consumer to a Swedbank Pay hosted payment page
   where they can perform a safe transaction. The consumer will be redirected
   back to your website after the completion of the payment.
 
-* **Direct** integration is a way to implement card payments without using
+> **Direct** integration is a way to implement card payments without using
   Swedbank Pay hosted payment pages. This option allow you to collect the card
   data on your page. That implies that the process must be [PCI-DSS
   Compliant][PCI-DSS].

@@ -24,6 +24,12 @@ sidebar:
 
 ## Introduction
 
+Seamless View provides an integration of the payment process directly on your
+website. This solution offers a smooth shopping experience with Swedbank Pay
+payment pages seamlessly integrated in an iFrame on your website. The costumer
+does not need to leave your webpage, since we are handling the payment in the
+iFrame on your page.
+
 * When properly set up in your merchant/webshop site and the payer starts the
   purchase process, you need to make a POST request towards Swedbank Pay with
   your Purchase information. This will generate a payment object with a unique
