@@ -34,7 +34,7 @@ and global way to initate a transaction with a customer. Choose between our
 **Seamless View**, **Redirect**, or **Direct** integration options." %}
 
 > **Seamless View** is our solution for a payment experience that is integrated
-  directly on your website. The payment process will be executed in an iFrame on
+  directly on your website. The payment process will be executed in an `iframe` on
   your page.
 
 > **Redirect** will take the consumer to a Swedbank Pay hosted payment page
