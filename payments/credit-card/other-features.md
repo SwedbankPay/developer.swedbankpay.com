@@ -34,8 +34,8 @@ of payments  ([purchase][purchase], [recurrence][recurrence], [payout][payout]
 and [verification][verify]) and you can inspect and alter the details of the
 individual transactions within the payment.
 
-To create a card payment, you perform an HTTP `POST` against the
-`/psp/creditcard/payments resource`.
+To create a card payment, you perform an HTTP `POST` against the `payments`
+resource.
 
 There are four different kinds of payment that can be created. These are
 identified with the value of the `operation` property. Each kind are documented
@@ -305,55 +305,55 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "payment": {
-    "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
-    "number": 1234567890,
-    "instrument": "CreditCard",
-    "created": "2016-09-14T13:21:29.3182115Z",
-    "updated": "2016-09-14T13:21:57.6627579Z",
-    "state": "Ready",
-    "operation": "Purchase",
-    "intent": "Authorization",
-    "currency": "SEK",
-    "amount": 1500,
-    "remainingCaptureAmount": 1500,
-    "remainingCancellationAmount": 1500,
-    "remainingReversalAmount": 0,
-    "description": "Test Purchase",
-    "payerReference": "AB1234",
-    "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
-    "userAgent": "Mozilla/5.0...",
-    "language": "sv-SE",
-    "prices": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/prices" },
-    "transactions": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions" },
-    "authorizations": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations" },
-    "captures": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures" },
-    "reversals": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals" },
-    "cancellations": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/cancellations" },
-    "urls" : { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/urls" },
-    "payeeInfo" : { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeInfo" },
-    "settings": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/settings" }
-  },
-  "operations": [
-    {
-      "href": "https://api.externalintegration.payex.com/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
-      "rel": "update-payment-abort",
-      "method": "PATCH",
-      "contentType": "application/json"
+    "payment": {
+        "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+        "number": 1234567890,
+        "instrument": "CreditCard",
+        "created": "2016-09-14T13:21:29.3182115Z",
+        "updated": "2016-09-14T13:21:57.6627579Z",
+        "state": "Ready",
+        "operation": "Purchase",
+        "intent": "Authorization",
+        "currency": "SEK",
+        "amount": 1500,
+        "remainingCaptureAmount": 1500,
+        "remainingCancellationAmount": 1500,
+        "remainingReversalAmount": 0,
+        "description": "Test Purchase",
+        "payerReference": "AB1234",
+        "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
+        "userAgent": "Mozilla/5.0...",
+        "language": "sv-SE",
+        "prices": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/prices" },
+        "transactions": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions" },
+        "authorizations": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations" },
+        "captures": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures" },
+        "reversals": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals" },
+        "cancellations": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/cancellations" },
+        "urls": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/urls" },
+        "payeeInfo": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeInfo" },
+        "settings": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/settings" }
     },
-    {
-      "href": "https://ecom.payex.com/creditcard/payments/authorize/123456123412341234123456789012",
-      "rel": "redirect-authorization",
-      "method": "GET",
-      "contentType": "text/html"
-    },
-    {
-      "method": "GET",
-      "href": "https://ecom.dev.payex.com/creditcard/core/scripts/client/px.creditcard.client.js?token=123456123412341234123456789012",
-      "rel": "view-authorization",
-      "contentType": "application/javascript"
-    }
-  ]
+    "operations": [
+        {
+            "href": "https://api.externalintegration.payex.com/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+            "rel": "update-payment-abort",
+            "method": "PATCH",
+            "contentType": "application/json"
+        },
+        {
+            "href": "https://ecom.payex.com/creditcard/payments/authorize/123456123412341234123456789012",
+            "rel": "redirect-authorization",
+            "method": "GET",
+            "contentType": "text/html"
+        },
+        {
+            "method": "GET",
+            "href": "https://ecom.dev.payex.com/creditcard/core/scripts/client/px.creditcard.client.js?token=123456123412341234123456789012",
+            "rel": "view-authorization",
+            "contentType": "application/javascript"
+        }
+    ]
 }
 ```
 
@@ -372,28 +372,28 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
-   "payment": {
-       "operation": "Recur",
-       "intent": "Authorization|AutoCapture",
-       "recurrenceToken": "5adc265f-f87f-4313-577e-08d3dca1a26c",
-       "currency": "NOK",
-       "amount": 1500,
-       "vatAmount": 0,
-       "description": "Test Recurrence",
-       "userAgent": "Mozilla/5.0...",
-       "language": "nb-NO",
-       "urls": {
-           "callbackUrl": "https://example.com/payment-callback"
-        },
-       "payeeInfo": {
-           "payeeId": "12345678-1234-1234-1234-123456789012",
-           "payeeReference": "CD1234",
-           "payeeName": "Merchant1",
-           "productCategory": "A123",
-           "orderReference": "or-12456",
-           "subsite": "MySubsite"
-        }
-    }
+    "payment": {
+        "operation": "Recur",
+        "intent": "Authorization|AutoCapture",
+        "recurrenceToken": "5adc265f-f87f-4313-577e-08d3dca1a26c",
+        "currency": "NOK",
+        "amount": 1500,
+        "vatAmount": 0,
+        "description": "Test Recurrence",
+        "userAgent": "Mozilla/5.0...",
+        "language": "nb-NO",
+        "urls": {
+            "callbackUrl": "https://example.com/payment-callback"
+        },
+        "payeeInfo": {
+            "payeeId": "12345678-1234-1234-1234-123456789012",
+            "payeeReference": "CD1234",
+            "payeeName": "Merchant1",
+            "productCategory": "A123",
+            "orderReference": "or-12456",
+            "subsite": "MySubsite"
+        }
+    }
 }
 ```
 
