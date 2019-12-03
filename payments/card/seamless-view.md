@@ -34,9 +34,9 @@ does not need to leave your webpage, since we are handling the payment in the
   purchase process, you need to make a POST request towards Swedbank Pay with
   your Purchase information. This will generate a payment object with a unique
   `paymentID`. You will receive a **JavaScript source** in response.
-* You need to embed the script source on your site to create a hosted-view in an
-  `iframe`(see screenshot below); so that she can enter the credit card details
-  in a secure Swedbank Pay hosted environment.
+* You need to embed the script source on your site to create a
+  hosted-view in an `iframe` (see screenshot below); so that she can enter the
+  credit card details in a secure Swedbank Pay hosted environment.
 * Swedbank Pay will handle 3-D Secure authentication when this is required.
 * Swedbank Pay will display directly in the `iframe` - one of two specified
   URLs, depending on whether the payment session is followed through completely
