@@ -18,8 +18,8 @@ sidebar:
       title: Other Features
 ---
 
-{% include jumbotron.html body="The basic redirect view purchase scenario
-is the most common way to implement card payments." %}
+{% include jumbotron.html body="The basic redirect purchase scenario is the
+simplest and most common way to implement Card Payments." %}
 
 ## Introduction
 
@@ -35,7 +35,7 @@ is the most common way to implement card payments." %}
   depending on whether the payment session is followed through completely or
   cancelled beforehand. Please note that both a successful and rejected payment
   reach completion, in contrast to a cancelled payment.
-* When you detect that the payer reach your `completeUrl` , you need to do a
+* When you detect that the payer reach your `completeUrl`, you need to do a
   `GET` request to receive the state of the transaction, containing the
   `paymentID` generated in the first step, to receive the state of the
   transaction.
