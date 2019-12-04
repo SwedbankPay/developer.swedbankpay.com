@@ -620,7 +620,7 @@ sequenceDiagram
   deactivate SwedbankPay
 ```
 
-## After payment options for Card Payment Pages in Mobile Apps
+## After payment options for Card Payments in Mobile Apps
 
 ### Capture Sequence for Mobile Apps
 

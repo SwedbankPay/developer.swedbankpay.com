@@ -527,7 +527,7 @@ Please note that all boolean credit card attributes involving rejection of
 certain card types are optional and requires enabling on the contract with
 Swedbank Pay." %}
 
-### Verification through Swedbank Pay Payment Pages
+### Verification through Swedbank Pay Payments
 
 * When properly set up in your merchant/webshop site and the payer initiates a
   verification operation, you make a `POST` request towards Swedbank Pay with
@@ -755,7 +755,7 @@ sequenceDiagram
 
 The `direct-authorization` operation creates an authorization transaction
 directly whilst the `redirect-authorization`operation redirects the consumer to
-Swedbank Pay Payment pages where the payment is authorized.
+Swedbank Pay Payments where the payment is authorized.
 
 {% include alert.html type="warning" icon="warning" header="Note" body="In order
                       to use the `direct-authorization` operation, the servers

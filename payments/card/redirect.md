@@ -403,20 +403,20 @@ sequenceDiagram
   request][callback] will be posted to the `callbackUrl`, which was generated
   when the payment was created.
 
-## Card Payment Pages in Mobile Apps
+## Card Payments in Mobile Apps
 
 > The implementation sequence for this scenario is identical to the standard
   Redirect scenario, but also includes explanations of how to include this
   redirect in mobile apps or in mobile web pages.
 
-### Screenshots for Payment Pages
+### Screenshots for Payments
 
 You will redirect the consumer/end-user to Swedbank Pay hosted pages to collect
 the credit card information.
 
 ![Merchant implemented redirect][redirect-image]{:width="407" height="627"}
 
-## API Requests for Payment Pages
+## API Requests for Payments
 
 The API requests are displayed in the [purchase flow](#purchase-flow-mobile).
 You can [create a card `payment`][create-payment] with following `operation`
