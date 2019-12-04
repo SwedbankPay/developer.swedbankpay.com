@@ -8,7 +8,7 @@ When the consumer clicks on the link, a payment window opens." %}
 ### Introduction
 
 * The Payment Link can be implemented for payment methods listed below,
-  using the Redirect platform and hosted payments.
+  using the Redirect platform and hosted payment pages.
   * [Credit card][payment-instruments-card-payment-pages]
   * [MobilePay][payment-instruments-mobilepay-payment-pages]
   * [Swish][swish]
@@ -22,7 +22,7 @@ When the consumer clicks on the link, a payment window opens." %}
   * NOTE: When sending information in e-mail/SMS, it is strongly recommended
   that you add information about your terms and conditions, including purchase
   information and price. **See recommendations in the next paragraph.**
-* When the consumer clicks on the Payment Link, the Swedbank Pay payments
+* When the consumer clicks on the Payment Link, the Swedbank Pay payment page
   will open, letting the consumer enter the payment details (varying depending
   on payment instrument) in a secure Swedbank Pay hosted environment.
   When paying with credit card and if required, Swedbank Pay will handle

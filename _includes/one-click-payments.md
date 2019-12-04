@@ -77,12 +77,12 @@ Content-Type: application/json
 }
 ```
 
-_When redirecting to Swedbank Pay the payment pages will be
+_When redirecting to Swedbank Pay the payment page will be
 prefilled with the payer's card details._
 
 ### Screenshots
 
-![One click payments][one-click-image]
+![One click payment page][one-click-image]
 
 ### Delete payment token
 

@@ -56,7 +56,7 @@ between our **Seamless View**, **Redirect**, or **Direct** integration options."
 You will redirect the payer to Swedbank Pay hosted pages to collect the credit
 card information.
 
-![screenshot of the redirect card payments][card-payment]{:height="500px" width="425px"}
+![screenshot of the redirect card payment page][card-payment]{:height="500px" width="425px"}
 
 ## API Requests
 

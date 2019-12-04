@@ -48,7 +48,7 @@ Content-Type: application/json
 | `prices.priceList`             | `array`   | The array of price objects. **Note:** Even if you specifiy  `CreditCard`  in the input message the system will return all your configured card brands instead when you expan the priceList. |
 | `prices.priceList[].type`      | `string`  | The type of the price object.                                                                                                                                                               |
 | `prices.priceList[].amount`    | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.                                                                        |
-| `prices.priceList[].vatAmount` | `integer` | If the amount given includes VAT, this may be displayed for the user in the payment (redirect only). Set to 0 (zero) if this is not relevant.                                          |
+| `prices.priceList[].vatAmount` | `integer` | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                          |
 
 ### Prices Object Types
 
