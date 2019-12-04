@@ -61,7 +61,7 @@ Content-Type: application/json
 |    ✔︎    | └➔&nbsp;`intent`           | `string`     | `Sale` is the only type used for direct debit payments                                                                                                                                                                                                |
 |    ✔︎    | └➔&nbsp;`currency`         | `string`     | The currency used.                                                                                                                                                                                                                                    |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`prices`           | `object`     | The `prices` resource lists the prices related to a specific payment.                                                                                                                                                                                 |
-|    ✔︎    | └─➔&nbsp;`type`              | `string`     | (((Use the generic type `Directdebit` if you want to enable all bank types supported by merchant contract, otherwise specify a specific bank type. [See the Prices object types for more information][core-payment-resources-pPrices-objecttypes].))) |
+|    ✔︎    | └─➔&nbsp;`type`              | `string`     | (((Use the generic type `Directdebit` if you want to enable all bank types supported by merchant contract, otherwise specify a specific bank type. [See the Prices object types for more information][core-payment-resources-prices-objecttypes].))) |
 |    ✔︎    | └─➔&nbsp;`amount`            | `integer`    | Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` `100.00 SEK` `5000` `50.00 SEK`.                                                                                                                               |
 |    ✔︎    | └─➔&nbsp;`vatAmount`         | `integer`    | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                                                                    |
 |    ✔︎    | └➔&nbsp;`description`      | `string(40)` | A textual description max 40 characters of the purchase.                                                                                                                                                                                              |
@@ -415,7 +415,7 @@ sequenceDiagram
 ```
 
 ------------------------------------
-[core-payment-resources-pPrices-objecttypes]: #prices
+[core-payment-resources-prices-objecttypes]: #prices
 [reversal-get]: #reversals
 [technical-reference-callback]: #callback
 [technical-reference-payeereference]: #payee-reference
