@@ -32,8 +32,6 @@ sidebar:
 * If the payment shown above is done as a two phase (`Authorization`), you will
   need to implement the `Capture` and `Cancel` requests.
 * For `reversals`, you will need to implement the [Reversal request][reversal].
-* If you did a `PreAuthorization`, you will have to send a [Finalize
-  request][finalize] to complete the transaction.
 * If `CallbackURL` is set: Whenever changes to the payment occur a [Callback
   request][callback] will be posted to the `callbackUrl`, which was generated
   when the payment was created.
@@ -208,18 +206,6 @@ sequenceDiagram
   SwedbankPay-->>Merchant: transaction resource
   deactivate SwedbankPay
 ```
-
-### Finalize
-
-Finalizing a preauthorized payment is done as a `PATCH`  after a successful
-`Authorization` transaction has been created. The common use-case for the
-finalize operation is to authorize the payment
-(that has the preauthorization intent) and complete all payment related
-activities as soon as possible - in order to complete (finalize) everything
-server-to-server afterwards. The only allowed activity is `Finalize`. To use
-the operation, you should perform a `GET` on the payment after the user returns
-from the `redirect-authorization` operation and find the operation
-`update-authorization-finalize`.
 
 {:.code-header}
 **Request**

@@ -77,14 +77,6 @@ The intent of the payment identifies how and when the charge will be
 effectuated. This determine the type of transaction used during the payment
 process.
 
-* **PreAuthorization**: A purchase with `PreAuthorization` intent is handled in
-a similar manner as the ordinary authorization procedure. The notable difference
- is that the funds are put on hold for 30 days (for an ordinary authorization
-the funds are reserved for 7 days). Also, with a `PreAuthorization`, the
-captured amount can be higher than the preauthorized amount. The amount captured
- should not be higher than 20% of the original amount, due to card brand rules.
- You complete the purchase by
-[finalizing the transaction][finalizing-the-transaction].
 * **Authorization (two-phase)**: If you want the credit card to reserve the
 amount, you will have to specify that the intent of the purchase is
 Authorization. The amount will be reserved but not charged. You will later

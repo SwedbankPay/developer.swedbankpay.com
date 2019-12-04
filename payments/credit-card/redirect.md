@@ -152,7 +152,7 @@ Content-Type: application/json
 | :------: | :------------------------------------ | :------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 |  ✔︎︎︎︎︎  | `payment`                             | `object`      | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`operation`                           | `string`      | The operation that the `payment` is supposed to perform. The [`purchase`][purchase] operation is used in our example. Take a look at the [create card `payment` section][create-payment] for a full examples of the following `operation` options: [Purchase][purchase], [Recur][recur], [Payout][payout], [Verify][verify]                                                                                                                                                                                                                                               |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`intent`                              | `string`      | `PreAuthorization`. Holds the funds for a certain time in contrast to reserving the amount. A preauthoriation is always followed by the [finalize][finalize] operation. <br> <br> `Authorization`. Reserves the amount, and is followed by a [cancellation][cancel] or [capture][capture] of funds.<br> <br> `AutoCapture`. A one phase option that enable capture of funds automatically after authorization.                                                                                                                                                            |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`intent`                              | `string`      | `Authorization`. Reserves the amount, and is followed by a [cancellation][cancel] or [capture][capture] of funds.<br> <br> `AutoCapture`. A one phase option that enable capture of funds automatically after authorization.                                                                                                                                                            |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`currency`                            | `string`      | NOK, SEK, DKK, USD or EUR.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`prices`                      | `object`      | The `prices` resource lists the prices related to a specific payment.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`type`                       | `string`      | Use the generic type CreditCard if you want to enable all card brands supported by merchant contract. Use card brands like Visa (for card type Visa), MasterCard (for card type Mastercard) and others if you want to specify different amount for each card brand. If you want to use more than one amount you must have one instance in the prices node for each card brand. You will not be allowed to both specify card brands and CreditCard at the same time in this field. [See the Prices resource and prices object types for more information][price-resource]. |
@@ -268,14 +268,6 @@ The intent of the payment identifies how and when the charge will be
 effectuated. This determine the type of transaction used during the payment
 process.
 
-* **PreAuthorization**: A purchase with `PreAuthorization` intent is handled in
-  a similar manner as the ordinary authorization procedure. The notable
-  difference is that the funds are put on hold for 30 days (for an ordinary
-  authorization the funds are reserved for 7 days). Also, with a
-  `PreAuthorization`, the captured amount can be higher than the preauthorized
-  amount. The amount captured should not be higher than 20% of the original
-  amount, due to card brand rules. You complete the purchase by
-  [finalizing the transaction][finalize].
 * **Authorization (two-phase)**: If you want the credit card to reserve the
   amount, you will have to specify that the intent of the purchase is
   Authorization. The amount will be reserved but not charged. You will later
@@ -408,8 +400,6 @@ sequenceDiagram
 * If the payment shown above is done as a two phase (`Authorization`), you will
   need to implement the [`Capture`][capture] and [`Cancel`][cancel] requests.
 * For `reversals`, you will need to implement the [Reversal request][reversal].
-* If you did a `PreAuthorization`, you will have to send a
-  [Finalize request][finalize] to finalize the transaction.
 * *If `callbackURL` is set:* Whenever changes to the payment occur a
   [Callback request][callback] will be posted to the `callbackUrl`, which was
   generated when the payment was created.
@@ -446,14 +436,6 @@ The intent of the payment identifies how and when the charge will be
 effectuated. This determine the type of transaction used during the payment
 process.
 
-* **PreAuthorization**: A purchase with `PreAuthorization` intent is handled
-  in a similar manner as the ordinary authorization procedure. The notable
-  difference is that the funds are put on hold for 30 days (for an ordinary
-  authorization the funds are reserved for 7 days). Also, with a
-  `PreAuthorization`, the captured amount can be higher than the preauthorized
-  amount. The amount captured should not be higher than 20% of the original
-  amount, due to card brand rules. You complete the purchase by
-  [finalizing the transaction][finalize].
 * **Authorization (two-phase)**: If you want the credit card to reserve the
   amount, you will have to specify that the intent of the purchase is
   Authorization. The amount will be reserved but not charged. You will later
