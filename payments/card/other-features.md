@@ -743,14 +743,6 @@ sequenceDiagram
   end
 ```
 
-## Payment Orders
-
-{% include payment-order-get.md %}
-
-{% include transactions-reference.md %}
-
-{% include operations-reference.md %}
-
 ### Create authorization transaction
 
 The `direct-authorization` operation creates an authorization transaction
