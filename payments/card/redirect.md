@@ -1,5 +1,5 @@
 ---
-title: Swedbank Pay Card Payments Redirect
+title: Swedbank Pay Card Payments – Redirect
 sidebar:
   navigation:
   - title: Card Payments

@@ -1,5 +1,5 @@
 ---
-title: Swedbank Pay Card Payments Seamless View
+title: Swedbank Pay Card Payments – Seamless View
 sidebar:
   navigation:
   - title: Card Payments

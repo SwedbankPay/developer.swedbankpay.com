@@ -1,5 +1,5 @@
 ---
-title: Swedbank Pay Card Payments Direct
+title: Swedbank Pay Card Payments – Direct
 sidebar:
   navigation:
   - title: Card Payments
