@@ -214,10 +214,13 @@ sequenceDiagram
 
 # Swish m-commerce Direct API
 
-> Swish is an one-phase payment method supported by the major Swedish banks.
-  When implementing the direct m-commerce scenario, Swedbank Pay performs a
-  payment that the consumer/end-user confirms directly through the Swish mobile
-  app.
+{% include alert.html type="neutral"
+                      icon="info"
+                      body="Swish is an one-phase payment method supported by
+                      the major Swedish banks. When implementing the direct
+                      m-commerce scenario, Swedbank Pay performs a payment that
+                      the consumer/end-user confirms directly through the Swish
+                      mobile app." %}
 
 ## Introduction
 
