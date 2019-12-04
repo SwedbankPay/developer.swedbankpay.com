@@ -125,5 +125,5 @@ for the given operation.
 | Operation                | Description                                                                                                             |
 | :----------------------- | :---------------------------------------------------------------------------------------------------------------------- |
 | `update-payment-abort`   | [Aborts][abort] the payment order before any financial transactions are performed.                                      |
-| `redirect-authorization` | Contains the URI that is used to redirect the consumer to the PayEx Payment Pages containing the card authorization UI. |
+| `redirect-authorization` | Contains the URI that is used to redirect the consumer to the Swedbank Pay Payments containing the card authorization UI. |
 | `view-authorization`     | Contains the JavaScript href that is used to embed  the card authorization UI directly on the webshop/merchant site     |
