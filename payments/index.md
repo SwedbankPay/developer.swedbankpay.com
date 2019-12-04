@@ -47,19 +47,19 @@ To start integrating Swebank Pay Payments, you need the following:
 
 {:.table .table-striped}
 |                                | Payment instrument                  | Seamless View | Redirect | Direct API | Region                                                                               |
-| :----------------------------- | :---------------------------------- | :-----------: | :------: | :--------: | :----------------------------------------------------------------------------------- |
-| ![CardIcon][card-icon]         | [Credit card][card]                 |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  |   ✔︎︎︎︎︎   | ![EarthIcon][earth-icon]                                                             |
-| ![InvoiceIcon][invoice-icon]   | [Swedbank Pay Invoice][invoice]     |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  |   ✔︎︎︎︎︎   | ![nor][nor-flag] ![swe][swe-flag] ![fin][fin-flag]                                   |
+| :----------------------------: | :---------------------------------- | :-----------: | :------: | :--------: | :----------------------------------------------------------------------------------- |
+|     ![CardIcon][card-icon]     | [Credit card][card]                 |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  |   ✔︎︎︎︎︎   | ![EarthIcon][earth-icon]                                                             |
+|  ![InvoiceIcon][invoice-icon]  | [Swedbank Pay Invoice][invoice]     |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  |   ✔︎︎︎︎︎   | ![nor][nor-flag] ![swe][swe-flag] ![fin][fin-flag]                                   |
 | ![EnvelopeIcon][envelope-icon] | [Swedbank Pay Web Invoice][invoice] |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  |    ✔︎ ︎    | ![nor][nor-flag] ![swe][swe-flag]                                                    |
-| ![KeypadIcon][keypad-icon]     | [Direct Debit][direct-debit]        |               |  ✔︎︎︎︎︎  |            | ![swe][swe-flag] ![fin][fin-flag] ![lat][lat-flag] ![lit][lit-flag] ![est][est-flag] |
-| ![Vipps][vipps-logo]           | [Vipps][vipps]                      |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  |            | ![nor][nor-flag]                                                                     |
-| ![Swish][swish-logo]           | [Swish][swish]                      |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  | ✔︎︎︎︎︎  ︎  | ![swe][swe-flag]                                                                     |
-| ![MobilePay][mobilepay-logo]   | [Mobile Pay][mobile-pay]            |               |  ✔︎︎︎︎︎  |            | ![dan][dan-flag]                                                                     |
+|   ![KeypadIcon][keypad-icon]   | [Direct Debit][direct-debit]        |               |  ✔︎︎︎︎︎  |            | ![swe][swe-flag] ![fin][fin-flag] ![lat][lat-flag] ![lit][lit-flag] ![est][est-flag] |
+|      ![Vipps][vipps-logo]      | [Vipps][vipps]                      |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  |            | ![nor][nor-flag]                                                                     |
+|      ![Swish][swish-logo]      | [Swish][swish]                      |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  | ✔︎︎︎︎︎  ︎  | ![swe][swe-flag]                                                                     |
+|  ![MobilePay][mobilepay-logo]  | [Mobile Pay][mobile-pay]            |               |  ✔︎︎︎︎︎  |            | ![dan][dan-flag]                                                                     |
 
 ## Seamless View
 
-With the [Seamless View][seamless-view] you can initiate the payment process
-directly in an iframe on your site. A hostUrl needs to be defined in the first
+With [Seamless Views][seamless-view] you can initiate the payment process
+directly in an `iframe` on your site. A hostUrl needs to be defined in the first
 `POST` request in order to enable the Seamless View operation. See details of
 the request under **Other Features** for the given payment instrument.
 
