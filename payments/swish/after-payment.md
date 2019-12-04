@@ -168,7 +168,7 @@ Content-Type: application/json
 
 A payment resource has a set of operations that can be performed on it,
 from its creation to its completion.
-The operations available at any given time vary between payment methods and
+The operations available at any given time vary between payment instruments and
 depends on the current state of the payment resource.
 A list of possible operations for Swish Payments and their explanation
 is given below.

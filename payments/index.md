@@ -29,11 +29,11 @@ sidebar:
                       should not be used to integrate against Swedbank Pay's
                       APIs yet." %}
 
-{% include jumbotron.html body="Pick and choose between the payment methods best
+{% include jumbotron.html body="Pick and choose between the payment instruments best
    suited for your business.
    Take advantage of our easy-to-use PCI compliant platforms Redirect and
    Seamless View - or use Swedbank Pay Direct API to integrate directly. Our
-   payment methods and their platform availability are listed in the table
+   payment instruments and their platform availability are listed in the table
    below." %}
 
 ## Prerequisites
@@ -46,7 +46,7 @@ To start integrating Swebank Pay Payments, you need the following:
   Swedbank Pay Admin.
 
 {:.table .table-striped}
-|                                | Payment method                      | Seamless View | Redirect | Direct API | Region                                                                               |
+|                                | Payment instrument                  | Seamless View | Redirect | Direct API | Region                                                                               |
 | :----------------------------- | :---------------------------------- | :-----------: | :------: | :--------: | :----------------------------------------------------------------------------------- |
 | ![CardIcon][card-icon]         | [Credit card][card]                 |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  |   ✔︎︎︎︎︎   | ![EarthIcon][earth-icon]                                                             |
 | ![InvoiceIcon][invoice-icon]   | [Swedbank Pay Invoice][invoice]     |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  |   ✔︎︎︎︎︎   | ![nor][nor-flag] ![swe][swe-flag] ![fin][fin-flag]                                   |
@@ -236,7 +236,7 @@ more specific information.
 
 The Redirect implementation lets you redirect your customer to an easy-to-use
 PCI-DSS compliant payment platform, hosted by Swedbank Pay and available from
-both web and mobile browsers. The consumer selects a payment method and proceeds
+both web and mobile browsers. The consumer selects a payment instrument and proceeds
 to hosted payment page.
 
 ```mermaid
@@ -273,7 +273,7 @@ To start using the Redirect platform, you need to implement the appropriate
 operation returned from the initial API Request, containing the URL that the
 customer's browser needs to be redirected to.
 
-The combination of properties should be similar to all payment methods. In the
+The combination of properties should be similar to all payment instruments. In the
 example below, the href attribute refers to the redirect URL and the rel
 description redirect-sale indicate that the redirect scenario will generate a
 one-phased sales transaction. A two-phase credit card payment would during the
@@ -293,7 +293,7 @@ that case be `redirect-authorization`.
 }
 ```
 
-See the technical overview of each payment method and the technical reference
+See the technical overview of each payment instrument and the technical reference
 for more specific information.
 
 ## The Payment Process
@@ -325,7 +325,7 @@ instruments.
   directly on your own site, through Seamless View.
 * If you use a *one-phase method* (like Direct bank debit or Swish) a `Sales`
   transaction will be created and the consumer be charged right away. A
-  two-phase payment method like credit card, the authorized amount needs to
+  two-phase payment instrument like credit card, the authorized amount needs to
   captured in a later step.
 * The `authorize` transaction will have one of the below states when created.
 

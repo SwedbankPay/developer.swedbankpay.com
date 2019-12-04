@@ -7,7 +7,7 @@ When the consumer clicks on the link, a payment window opens." %}
 
 ### Introduction
 
-The Payment Link can be implemented for payment methods listed below, using the
+The Payment Link can be implemented for payment instruments listed below, using the
 Redirect platform and Swedbank Pay hosted payment page.
 
 * [Credit card][payment-instruments-card-payment-pages]
@@ -68,7 +68,7 @@ the consumer when the payment has been fulfilled.
 
 ### API Requests
 
-The API requests depend on the payment method you are using when implementing
+The API requests depend on the payment instrument you are using when implementing
 the Payment Link scenario, see [purchase flow][purchase-flow] One-phase payment
 instruments will not implement `capture`, `cancellation` or `reversal`.
 The options you can choose from when creating a payment with key `operation`
@@ -85,7 +85,7 @@ page, similar to the examples below, where payment information can be entered.
 ### Options
 
 All valid options when posting in a payment with operation `Purchase`,
-are described in each payment method's respective API reference.
+are described in each payment instrument's respective API reference.
 Please see the general sequence diagrams for more information about payments
 in one-phase (e.g. [Swish][swish] and credit card with autocapture) and
 two-phase (e.g. [Credit card][credit-card], [MobilePay][mobile-pay],

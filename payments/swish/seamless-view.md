@@ -23,7 +23,7 @@ sidebar:
                       under construction and should not be used to integrate
                       against Swedbank Pay's APIs yet." %}
 
-> Swish is a one-phase payment method supported by the major Swedish banks. In
+> Swish is a one-phase payment instrument supported by the major Swedish banks. In
   the direct e-commerce scenario, Swedbank Pay receives the Swish registered
   mobile number directly from the merchant UI. Swedbank Pay performs a payment
   that the payer confirms using her Swish mobile app.
@@ -44,7 +44,7 @@ sidebar:
 ## API Requests
 
 The API requests are displayed in the [purchase flow](#purchase-flow). Swish is
-a one-phase payment method that is based on sales transactions not involving
+a one-phase payment instrument that is based on sales transactions not involving
 capture or cancellation operations. The options you can choose from when
 creating a payment with key operation set to Value Purchase are listed below.
 
