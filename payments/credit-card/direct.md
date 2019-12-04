@@ -57,10 +57,6 @@ All valid options when posting in a payment with `operation` equal to `Purchase`
 
 ##### Type of authorization (Intent)
 
-* **PreAuthorization**: If you specify that the `intent` of the `purchase` is
-`PreAuthorization`, it's almost the same as an authorization,
-_except that no money will be reserved_ from the consumers credit card,
-[before you finalize the transaction][finalize]
 * **Authorization (two-phase):** If you want the credit card to reserve the
 amount, you will have to specify that the `intent` of the `purchase` is
 `Authorization`. The amount will be reserved but not charged. You will later
@@ -175,8 +171,6 @@ need to implement the Capture and Cancel requests.
 * **Abort:** It is possible to [abort a payment][abort] if the payment has no
 successful transactions.
 * For reversals, you will need to implement the [Reversal][reversal] request.
-* If you did a PreAuthorization, you will have to send a Finalize to the
-transaction using [PATCH on the Authorization][finalize].
 * **Callback from Swedbank Pay:** Whenever changes to the payment occur a
 [Callback request][callback] will be posted to the `callbackUrl`,
 generated when the payment was created.
@@ -188,7 +182,6 @@ next_href="after-payment" next_title="Next: After Payment" %}
 [callback]: /payments/credit-card/other-features/#callback
 [Cancel]: /payments/credit-card/after-payment/#Cancellations
 [Capture]: /payments/credit-card/after-payment/#Capture
-[finalize]: /payments/credit-card/after-payment/#finalize
 [PCI-link]: https://www.pcisecuritystandards.org/
 [reversal]: /payments/credit-card/after-payment/#Reversals
 [authorization]: /payments/credit-card/other-features/#create-authorization-transaction
