@@ -30,7 +30,7 @@ When the consumer clicks on the link, a payment window opens." %}
 * After completion, Swedbank Pay will redirect the browser back to your
   merchant/webshop site.
 * If [`CallbackURL`][technical-reference-callbackurl] is set the merchant
-  system will receive a callback from PayEx, enabling you to make a `GET`
+  system will receive a callback from Swedbank Pay, enabling you to make a `GET`
   request towards Swedbank Pay with the `paymentID` received in the first step,
   which will return the purchase result.
 
@@ -143,44 +143,46 @@ There are three alternative outcome of a credit card payment:
 
 ```mermaid
 sequenceDiagram
-Consumer->MerchantOrderSystem: consumer starts purchase
+activate Consumer
+Consumer->>-MerchantOrderSystem: consumer starts purchase
 activate MerchantOrderSystem
-MerchantOrderSystem->Merchant: start purchase process
-activate Merchant
-Merchant->PayEx: POST [payment] (operation=PURCHASE)
-note left of Merchant: First API request
-activate PayEx
-PayEx-->Merchant: payment resource with payment URL
-deactivate PayEx
-Merchant-->MerchantOrderSystem: Payment URL sent to order system
+MerchantOrderSystem->>+Merchant: start purchase process
+deactivate MerchantOrderSystem
+Merchant->>+SwedbankPay: POST [payment] (operation=PURCHASE)
 deactivate Merchant
-MerchantOrderSystem-->Consumer: Distribute Payment URL through e-mail/SMS
+note left of Merchant: First API request
+SwedbankPay-->>+Merchant: payment resource with payment URL
+deactivate SwedbankPay
+Merchant-->>+MerchantOrderSystem: Payment URL sent to order system
+deactivate Merchant
+MerchantOrderSystem-->>+Consumer: Distribute Payment URL through e-mail/SMS
 deactivate MerchantOrderSystem
 
 note left of Consumer: Payment Link in e-mail/SMS
-Consumer->PayEx: Open link and enter payment information
-Activate PayEx
+Consumer->>+SwedbankPay: Open link and enter payment information
+deactivate Consumer
 
 opt Card supports 3-D Secure
-PayEx-->Consumer: redirect to IssuingBank
-deactivate PayEx
-Consumer->IssuingBank: 3-D Secure authentication process
-Consumer->PayEx: access authentication page
-activate PayEx
+SwedbankPay-->>+Consumer: redirect to IssuingBank
+deactivate SwedbankPay
+Consumer->>+IssuingBank: 3-D Secure authentication process
+deactivate Consumer
+Consumer->>+SwedbankPay: access authentication page
+deactivate IssuingBank
 end
 
-PayEx-->Consumer: redirect to merchant site
-note left of PayEx: redirect back to merchant
-deactivate PayEx
+SwedbankPay-->>+Consumer: redirect to merchant site
+deactivate SwedbankPay
+note left of SwedbankPay: redirect back to merchant
 
-Consumer->Merchant: access merchant page
-activate Merchant
-Merchant->PayEx: GET [payment]
+Consumer->>+Merchant: access merchant page
+deactivate Consumer
+Merchant->>+SwedbankPay: GET [payment]
+deactivate Merchant
 note left of Merchant: Second API request
-activate PayEx
-PayEx-->Merchant: payment resource
-deactivate PayEx
-Merchant-->Consumer: display purchase result
+SwedbankPay-->>+Merchant: payment resource
+deactivate SwedbankPay
+Merchant-->>Consumer: display purchase result
 deactivate Merchant
 ```
 
@@ -210,12 +212,10 @@ authorization amount.
 
 ```mermaid
 sequenceDiagram
-Merchant->PayEx: POST <capture>
 activate Merchant
-activate PayEx
-PayEx-->Merchant: transaction resource
-deactivate PayEx
-deactivate Merchant
+Merchant->>-SwedbankPay: POST <capture>
+activate SwedbankPay
+SwedbankPay-->>-Merchant: transaction resource
 ```
 
 #### Cancel Sequence
@@ -226,12 +226,10 @@ between the captured amount and the authorized amount.
 
 ```mermaid
 sequenceDiagram
-Merchant->PayEx: POST <Cancellation>
 activate Merchant
-activate PayEx
-PayEx-->Merchant: transaction resource
-deactivate PayEx
-deactivate Merchant
+Merchant->>-SwedbankPay: POST <Cancellation>
+activate SwedbankPay
+SwedbankPay-->>-Merchant: transaction resource
 ```
 
 #### Reversal Sequence
@@ -241,12 +239,10 @@ amount not yet reversed.
 
 ```mermaid
 sequenceDiagram
-Merchant->PayEx: POST <Reversal>
 activate Merchant
-activate PayEx
-PayEx-->Merchant: transaction resource
-deactivate PayEx
-deactivate Merchant
+Merchant->>-SwedbankPay: POST <Reversal>
+activate SwedbankPay
+SwedbankPay-->>-Merchant: transaction resource
 ```
 
 [abort]: #abort

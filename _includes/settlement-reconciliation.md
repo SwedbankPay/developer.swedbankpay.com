@@ -5,7 +5,7 @@ economic transaction. When a payment is reconciled,  captured amounts for the
 payment are matched against the corresponding settlement." %}
 
 The information needed to reconcile captured funds - the balance report and
-transactions list - are available for all merchants using PayEx. By default you
+transactions list - are available for all merchants using Swedbank Pay. By default you
 receive these files by e-mail, but it is also possible to get them via FTP
 access. Contact [omni.client@swedbankpay.se][omni-client-email] for further
 inquiries regarding this. The settlement frequency is defined in the agreement
@@ -90,17 +90,17 @@ The first row contains the name of the Swedbank Pay company (e.g. Swedbank Pay S
 {:.table .table-striped}
 | Field                         | Type     | Description                                                                                                                                           |
 | :---------------------------- | :------- | :---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Swedbank Pay Batch Number     | Decimal  | A batch number common to all types of transactions processed by PayEx.                                                                                |
+| Swedbank Pay Batch Number     | Decimal  | A batch number common to all types of transactions processed by Swedbank Pay.                                                                                |
 | Transaction Number            | Decimal  | A unique identifier of the transaction, can be traced in Swedbank Pay Admin user interface.                                                           |
-| Order id                      | String   | A unique identifier of the order, as sent from the merchant to PayEx. Transactions that are related to the same order are associated with this ID.    |
+| Order id                      | String   | A unique identifier of the order, as sent from the merchant to Swedbank Pay. Transactions that are related to the same order are associated with this ID.    |
 | Date Created                  | ISO 8601 | Transaction capture date/time. YYYY-MM-DD hh:mm:ss.                                                                                                   |
 | Date Modified                 | ISO 8601 | Transaction settle date/time. YYYY-MM-DD hh:mm:ss.                                                                                                    |
 | Provider                      | String   | The service provider (e.g. Babs, Swedbank).                                                                                                           |
 | Type                          | String   | The service type of the related transaction (e.g. `Creditcard, Direct debit`).                                                                        |
 | Amount                        | Decimal  | Total amount of the related transaction (e.g 100.00).                                                                                                 |
 | Currency                      | ISO 4217 | Settlement currency (e.g. `SEK, NOK, EUR`).                                                                                                           |
-| Product Number                | String   | A product number, as sent by merchant to PayEx.                                                                                                       |
-| Description                   | String   | A textual description of the transaction, as sent by merchant to PayEx.                                                                               |
+| Product Number                | String   | A product number, as sent by merchant to Swedbank Pay.                                                                                                       |
+| Description                   | String   | A textual description of the transaction, as sent by merchant to Swedbank Pay.                                                                               |
 | VAT Amount                    | Decimal  | VAT Amount for the given transaction (e.g 100.00).                                                                                                    |
 | VAT Percentage                | Decimal  | VAT Percentage for the given transaction.                                                                                                             |
 | Credit Card Batch Number      | Decimal  | The reference number from the credit card processor.                                                                                                  |
@@ -109,8 +109,8 @@ The first row contains the name of the Swedbank Pay company (e.g. Swedbank Pay S
 | Swedbank Pay Account Number   | Decimal  | The Account number given, shown in Swedbank Pay admin.                                                                                                |
 | Referenced Transaction Number | Decimal  | Transaction number for the Authoriation transaction for a two-stage transaction or the number of the debit transaction if it is a credit transaction. |
 | Sales Channel                 | String   | The channel through which the transaction was sent to Swedbank Pay (e.g Transaction via eCommerce APIs).                                              |
-| Brand                         | String   | If eligible, Branding information as sent by merchant to PayEx.                                                                                       |
-| Point Of Sale                 | String   | If eligible, POS information as sent by merchant to PayEx.                                                                                            |
+| Brand                         | String   | If eligible, Branding information as sent by merchant to Swedbank Pay.                                                                                       |
+| Point Of Sale                 | String   | If eligible, POS information as sent by merchant to Swedbank Pay.                                                                                            |
 
 ### Reconciliation
 
@@ -140,11 +140,11 @@ deactivate Merchant
 ```
 
 **There are two ways** for you to match the information from your system with
-the information given in the reconciliation files from PayEx:
+the information given in the reconciliation files from Swedbank Pay:
 
 1. You can use information **generated by your** system (you will have to set a
    unique payeeReference when you make the transaction), or
-2. You can use the transaction number **generated by PayEx** (this is called
+2. You can use the transaction number **generated by Swedbank Pay** (this is called
    transaction number and is returned from Swedbank Pay after you have created
    the transaction).
 
@@ -164,7 +164,7 @@ reconciliation file.
 }
 ```
 
-When you receive the response from PayEx, the response will include
+When you receive the response from Swedbank Pay, the response will include
 `transaction.number`. This is the same as the field called `TransactionNo` in
 the reconciliation file.
 
@@ -200,7 +200,7 @@ the reconciliation file.
 ### Samples
 
 The content of the files depends on the type of agreement you have made with
-PayEx. For some payment instruments, only option A is available, while for other
+Swedbank Pay. For some payment instruments, only option A is available, while for other
 payment instruments, only option B is available. The sample files can be
 downloaded below.
 
