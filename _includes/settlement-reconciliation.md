@@ -64,9 +64,16 @@ the settlement process yourselves you will receive a separat invoice for fees**.
 
 #### Transactions List
 
-The Transaction List (provided in `.xlsx` and `.xml` formats) specifies all transactions for a specific period, including a summary of transactions grouped by payment instrument. Both formats contain the same information, but the xml file is meant for computer processing while the excel workbook is meant for human interaction.
+The Transaction List (provided in `.xlsx` and `.xml` formats) specifies all
+transactions for a specific period, including a summary of transactions grouped
+by payment instrument. Both formats contain the same information, but the xml
+file is meant for computer processing while the excel workbook is meant for
+human interaction.
 
-The first row contains the name of the Swedbank Pay company (e.g. Swedbank Pay Solutions AB) that the merchant has the contract with, and the balance report number. The header fields contain a summary of the transactions displayed in the body.
+The first row contains the name of the Swedbank Pay company (e.g. Swedbank Pay
+Solutions AB) that the merchant has the contract with, and the balance report
+number. The header fields contain a summary of the transactions displayed in the
+body.
 
 {:.code-header}
 **Header fields**
@@ -74,15 +81,15 @@ The first row contains the name of the Swedbank Pay company (e.g. Swedbank Pay S
 {:.table .table-striped}
 | Field       | Type     | Description                                                                |
 | :---------- | :------- | :------------------------------------------------------------------------- |
-| Prefix      | String   | The `Prefix` used for transactions, only eligible if merchant uses prefix. |
-| Currency    | ISO 4217 | Settlement currency (e.g. `SEK, NOK, EUR`).                                |
-| ServiceType | String   | The service type of the service used (e.g. `Creditcard, Direct debit`).    |
-| Service     | String   | The service used (e.g. `Creditcard, Direct debit`).                        |
-| NoOfDebet   | Decimal  | Total number of debit transactions for the given service.                  |
-| NoOfCredit  | Decimal  | Total number of credit transactions for the given service.                 |
-| Amount      | Decimal  | Total amount for the given service (e.g 100.00).                           |
-| FromDate    | ISO 8601 | The earlistest transaction date, `YYYY-MM-DD`.                             |
-| ToDate      | ISO 8601 | The latest transaction date, `YYYY-MM-DD`.                                 |
+| `Prefix`      | `String`   | The `Prefix` used for transactions, only eligible if merchant uses prefix. |
+| Currency    | `ISO 4217` | Settlement currency (e.g. `SEK, NOK, EUR`).                                |
+| `ServiceType` | `String`   | The service type of the service used (e.g. `Creditcard, Direct debit`).    |
+| `Service`     | `String`   | The service used (e.g. `Creditcard, Direct debit`).                        |
+| `NoOfDebet`   | `Decimal`  | Total number of debit transactions for the given service.                  |
+| `NoOfCredit`  | `Decimal`  | Total number of credit transactions for the given service.                 |
+| `Amount`      | `Decimal`  | Total amount for the given service (e.g 100.00).                           |
+| `FromDate`    | `ISO 8601` | The earlistest transaction date, `YYYY-MM-DD`.                             |
+| `ToDate`      | `ISO 8601` | The latest transaction date, `YYYY-MM-DD`.                                 |
 
 {:.code-header}
 **Body fields**
@@ -90,27 +97,27 @@ The first row contains the name of the Swedbank Pay company (e.g. Swedbank Pay S
 {:.table .table-striped}
 | Field                         | Type     | Description                                                                                                                                           |
 | :---------------------------- | :------- | :---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Swedbank Pay Batch Number     | Decimal  | A batch number common to all types of transactions processed by Swedbank Pay.                                                                                |
-| Transaction Number            | Decimal  | A unique identifier of the transaction, can be traced in Swedbank Pay Admin user interface.                                                           |
-| Order id                      | String   | A unique identifier of the order, as sent from the merchant to Swedbank Pay. Transactions that are related to the same order are associated with this ID.    |
-| Date Created                  | ISO 8601 | Transaction capture date/time. YYYY-MM-DD hh:mm:ss.                                                                                                   |
-| Date Modified                 | ISO 8601 | Transaction settle date/time. YYYY-MM-DD hh:mm:ss.                                                                                                    |
-| Provider                      | String   | The service provider (e.g. Babs, Swedbank).                                                                                                           |
-| Type                          | String   | The service type of the related transaction (e.g. `Creditcard, Direct debit`).                                                                        |
-| Amount                        | Decimal  | Total amount of the related transaction (e.g 100.00).                                                                                                 |
-| Currency                      | ISO 4217 | Settlement currency (e.g. `SEK, NOK, EUR`).                                                                                                           |
-| Product Number                | String   | A product number, as sent by merchant to Swedbank Pay.                                                                                                       |
-| Description                   | String   | A textual description of the transaction, as sent by merchant to Swedbank Pay.                                                                               |
-| VAT Amount                    | Decimal  | VAT Amount for the given transaction (e.g 100.00).                                                                                                    |
-| VAT Percentage                | Decimal  | VAT Percentage for the given transaction.                                                                                                             |
-| Credit Card Batch Number      | Decimal  | The reference number from the credit card processor.                                                                                                  |
-| Direct Debit Bank Reference   | Decimal  | The reference number from the processing bank.                                                                                                        |
-| Reference                     | Decimal  | The transaction reference from processor.                                                                                                             |
-| Swedbank Pay Account Number   | Decimal  | The Account number given, shown in Swedbank Pay admin.                                                                                                |
-| Referenced Transaction Number | Decimal  | Transaction number for the Authoriation transaction for a two-stage transaction or the number of the debit transaction if it is a credit transaction. |
-| Sales Channel                 | String   | The channel through which the transaction was sent to Swedbank Pay (e.g Transaction via eCommerce APIs).                                              |
-| Brand                         | String   | If eligible, Branding information as sent by merchant to Swedbank Pay.                                                                                       |
-| Point Of Sale                 | String   | If eligible, POS information as sent by merchant to Swedbank Pay.                                                                                            |
+| `Swedbank Pay Batch Number`     | `Decimal`  | A batch number common to all types of transactions processed by PayEx.                                                                                |
+| `Transaction Number`            | `Decimal`  | A unique identifier of the transaction, can be traced in Swedbank Pay Admin user interface.                                                           |
+| `Order id`                      | `String`   | A unique identifier of the order, as sent from the merchant to PayEx. Transactions that are related to the same order are associated with this ID.    |
+| `Date Created`                  | `ISO 8601` | Transaction capture date/time. YYYY-MM-DD hh:mm:ss.                                                                                                   |
+| `Date Modified`                 | `ISO 8601` | Transaction settle date/time. YYYY-MM-DD hh:mm:ss.                                                                                                    |
+| `Provider`                      | `String`   | The service provider (e.g. Babs, Swedbank).                                                                                                           |
+| `Type`                          | `String`   | The service type of the related transaction (e.g. `Creditcard, Direct debit`).                                                                        |
+| `Amount`                        | `Decimal`  | Total amount of the related transaction (e.g 100.00).                                                                                                 |
+| `Currency`                      | `ISO 4217` | Settlement currency (e.g. `SEK, NOK, EUR`).                                                                                                           |
+| `Product Number`                | `String`   | A product number, as sent by merchant to PayEx.                                                                                                       |
+| `Description`                   | `String`   | A textual description of the transaction, as sent by merchant to PayEx.                                                                               |
+| `VAT Amount`                    | `Decimal`  | VAT Amount for the given transaction (e.g 100.00).                                                                                                    |
+| `VAT Percentage`                | `Decimal`  | VAT Percentage for the given transaction.                                                                                                             |
+| `Credit Card Batch Number`      | `Decimal`  | The reference number from the credit card processor.                                                                                                  |
+| `Direct Debit Bank Reference`   | `Decimal`  | The reference number from the processing bank.                                                                                                        |
+| `Reference`                     | `Decimal`  | The transaction reference from processor.                                                                                                             |
+| `Swedbank Pay Account Number`   | `Decimal`  | The Account number given, shown in Swedbank Pay admin.                                                                                                |
+| `Referenced Transaction Number` | `Decimal`  | Transaction number for the Authoriation transaction for a two-stage transaction or the number of the debit transaction if it is a credit transaction. |
+| `Sales Channel`                 | `String`   | The channel through which the transaction was sent to Swedbank Pay (e.g Transaction via eCommerce APIs).                                              |
+| `Brand`                         | `String`   | If eligible, Branding information as sent by merchant to PayEx.                                                                                       |
+| `Point Of Sale`                 | `String`   | If eligible, POS information as sent by merchant to PayEx.                                                                                            |
 
 ### Reconciliation
 
@@ -123,19 +130,19 @@ sequenceDiagram
 activate Merchant
 activate PayEx.FrontEnd
 activate PayEx.BackOffice
-Merchant-->PayEx.FrontEnd: Online payment transactions
+Merchant-->>PayEx.FrontEnd: Online payment transactions
 deactivate Merchant
 
-PayEx.FrontEnd-->PayEx.BackOffice: Transaction data
+PayEx.FrontEnd-->>PayEx.BackOffice: Transaction data
 deactivate PayEx.FrontEnd
 deactivate PayEx.BackOffice
 
 activate Merchant
 
-PayEx.BackOffice->Merchant: Balance Report (PDF-file)
-note left of BackOffice: files are sent by e-mail or file transfer
-PayEx.BackOffice->Merchant: Transaction list (XLSX-file)
-PayEx.BackOffice->Merchant: Transaction list (XML-file)
+PayEx.BackOffice->>Merchant: Balance Report (PDF-file)
+note left of Merchant: files are sent by e-mail or file transfer
+PayEx.BackOffice->>Merchant: Transaction list (XLSX-file)
+PayEx.BackOffice->>Merchant: Transaction list (XML-file)
 deactivate Merchant
 ```
 
@@ -217,8 +224,6 @@ downloaded below.
 * [XLSX Transaction List][attachement-6]
 * [XML Transaction List][attachement-7]
 
-
-
 ### Split Settlement
 
 The prefix split is the easy way of doing settlements for companies with
@@ -235,7 +240,6 @@ sporting events etc., each venue gets its own prefix number. If you run a
 funeral home, the sub merchants can be everything from flower delivery to
 charities.
 
-
 #### What we need from you as a company:
 
 * Send us a KYC form for each sub merchant you want to include. We will also do
@@ -248,7 +252,6 @@ charities.
   correct merchant in our back office system.
 * A partner agreement is needed for the automatic deduction of revenue cuts and
   fees.
-
 
 #### How it works:
 
@@ -264,9 +267,6 @@ charities.
    automatically.
 8. Payout to the sub merchant is done.
 
-
-
-
 #### The upsides:
 
 * Since the sub merchants are connected to Swedbank Pay through the super
@@ -280,15 +280,12 @@ charities.
      form and a prefix number. This shortens the setup time for both you and us
      to a matter of hours.
 
-
-
 * The automatic settlement split and deduction of fees and revenue cuts
   minimizes the work for your accounting department, as you do not have to
   invoice your sub merchants.
 
 * The prefix split is available with all the payment instruments we offer on our
   eCom platform.
-
 
 #### Good to know:
 
@@ -299,7 +296,7 @@ these operations.
 **Captures and cancels**
 
 Captures and cancels are done by the super merchant the same way as any other
-normal flow. 
+normal flow.
 
 **Reversals**
 
@@ -307,9 +304,6 @@ In cases where you need to do reversals, this will be performed by the super
 merchant. The reversal amount will be charged from the sub merchants prefix. If
 the sub merchants balance is 0 (zero), the super merchant will be invoiced. The
 super merchant will in turn have to invoice this amount to the sub merchant.
-
-
-
 
 [payex-checkout]: /checkout
 [attachement-1]: /assets/documents/testredovisning-payexcheckout.pdf

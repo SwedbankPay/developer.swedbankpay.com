@@ -1,9 +1,7 @@
 The `payment` resource is central to all payment instruments. All operations
 that target the payment resource directly produce a response similar to the
 example seen below. The response given contains all operations that are
-possible to perform in the current state of the payment. You can use the
-`expand` parameter to expand one or more properties relating to the purchase
-resource (see [Expansion][expansion]).
+possible to perform in the current state of the payment.
 
 {:.code-header}
 **Request**
@@ -11,7 +9,7 @@ resource (see [Expansion][expansion]).
 ```http
 GET /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/ HTTP/1.1
 Host: api.payex.com
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
@@ -30,7 +28,7 @@ Content-Type: application/json
         "updated": "2016-09-14T13:21:57.6627579Z",
         "state": "Ready",
         "operation": "Purchase",
-        "intent": "PreAuthorization",
+        "intent": "Authorization",
         "currency": "NOK",
         "amount": 1500,
         "remainingCaptureAmount": 1500,
@@ -84,14 +82,20 @@ Content-Type: application/json
             "href": "https://ecom.externalintegration.payex.com/creditcardv2/payments/authorize/c5c29b7c0d45913a9fbca195056b47fdde0201cc6ad93c3634d7cd8dea361e1f",
             "rel": "redirect-authorization",
             "contentType": "text/html"
+        },
+        {
+            "method": "POST",
+            "href": "https://api.externalintegration.payex.com/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures",
+            "rel": "create-capture",
+            "contentType": "application/json"
         }
     ]
 }
 ```
 
 {:.table .table-striped}
-| Property                 | Type       | Description                                                                                                                                                                                      |
-| :----------------------- | :--------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Property                 | Type         | Description                                                                                                                                                                                      |
+| :----------------------- | :----------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `payment`                | `object`     | The `payment` object contains information about the specific payment.                                                                                                                            |
 | └➔&nbsp;`id`             | `string`     | The relative URI of the payment.                                                                                                                                                                 |
 | └➔&nbsp;`number`         | `integer`    | The payment  number , useful when there's need to reference the payment in human communication. Not usable for programmatic identification of the payment, for that  id  should be used instead. |
@@ -122,8 +126,10 @@ the `rel` and the request that will be sent in the HTTP body of the request
 for the given operation.
 
 {:.table .table-striped}
-| Operation                | Description                                                                                                             |
-| :----------------------- | :---------------------------------------------------------------------------------------------------------------------- |
-| `update-payment-abort`   | [Aborts][abort] the payment order before any financial transactions are performed.                                      |
+| Operation                | Description                                                                                                               |
+| :----------------------- | :------------------------------------------------------------------------------------------------------------------------ |
+| `update-payment-abort`   | [Aborts][abort] the payment order before any financial transactions are performed.                                        |
 | `redirect-authorization` | Contains the URI that is used to redirect the consumer to the Swedbank Pay Payments containing the card authorization UI. |
-| `view-authorization`     | Contains the JavaScript href that is used to embed  the card authorization UI directly on the webshop/merchant site     |
+| `view-authorization`     | Contains the JavaScript href that is used to embed  the card authorization UI directly on the webshop/merchant site       |
+| `create-capture`         | Creates a `capture` transaction in order to charge the reserved funds from the consumer.                                  |
+| `create-cancellation`    | Creates a `cancellation` transaction that cancels a created, but not yet captured payment.                                |

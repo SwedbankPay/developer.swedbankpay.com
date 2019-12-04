@@ -19,9 +19,9 @@ sidebar:
 {% include alert.html type="warning"
                       icon="warning"
                       header="Site under development"
-                      body="This section of the Developer Portal is under construction and
-                      should not be used to integrate against Swedbank Pay's
-                      APIs yet." %}
+                      body="This section of the Developer Portal is under
+                      construction and should not be used to integrate against
+                      Swedbank Pay's APIs yet." %}
 
 ## Payment Resource
 
@@ -31,14 +31,14 @@ The `payment` resource and all general sub-resources can be found in the
 ### Create Payment
 
 To create a Swish payment, you perform an HTTP `POST` against the
-`/psp/swish/payments` resource. Please read the
-[general information][general-http-info] on how to compose a valid HTTP request before proceeding.
+`/psp/swish/payments` resource. Please read the [general
+information][general-http-info] on how to compose a valid HTTP request before
+proceeding.
 
-An example of a payment creation request is provided below.
-Each individual Property of the JSON document is described in the
-following section.
-Use the [expand][technical-reference-expand] request parameter to get a
-response that includes one or more expanded sub-resources inlined.
+An example of a payment creation request is provided below. Each individual
+Property of the JSON document is described in the following section. Use the
+[expand][technical-reference-expand] request parameter to get a response that
+includes one or more expanded sub-resources inlined.
 
 {:.code-header}
 **Request**
@@ -527,12 +527,12 @@ Content-Type: application/json
 
 ## Options after posting a payment
 
-* **If CallbackURL is set**: Whenever changes to the payment occur a
-    [Callback request][technical-reference-callback] will be posted to the
-    callbackUrl, which was generated when the payment was created.
+* **If CallbackURL is set**: Whenever changes to the payment occur a [Callback
+    request][technical-reference-callback] will be posted to the callbackUrl,
+    which was generated when the payment was created.
 * You can create a reversal transactions by implementing the Reversal request.
-    You can also access and reverse a payment through your merchant pages
-    in the [Swedbank Pay admin portal][payex-admin-portal].
+    You can also access and reverse a payment through your merchant pages in the
+    [Swedbank Pay admin portal][payex-admin-portal].
 
 ### Abort
 
@@ -570,12 +570,10 @@ completed sales transaction.
 
 ```mermaid
 sequenceDiagram
-  Merchant->>PAYEX: POST <Swish reversal>
-  Activate Merchant
-  Activate PAYEX
-  PAYEX-->>Merchant: transaction resource
-  Deactivate PAYEX
-  Deactivate Merchant
+  activate Merchant
+  Merchant->>-SwedbankPay: POST <Swish reversal>
+  activate SwedbankPay
+  SwedbankPay-->>-Merchant: transaction resource
 ```
 
 ### Capture

@@ -7,34 +7,42 @@ When the consumer clicks on the link, a payment window opens." %}
 
 ### Introduction
 
-* The Payment Link can be implemented for payment methods listed below,
-  using the Redirect platform and hosted payment page.
-  * [Credit card][payment-instruments-card-payment-pages]
-  * [MobilePay][payment-instruments-mobilepay-payment-pages]
-  * [Swish][swish]
-  * [Vipps][vipps]
-* When the consumer/end-user starts the purchase process in your merchant or
-  webshop site, you need to make a `POST` request towards Swedbank Pay with
-  your *Purchase* information. You receive a Payment Link
-  (same as redirect URL) in response.
-* You have to distribute the Payment Link to the customer through your order
-  system, using channels like e-mail or SMS.
-  * NOTE: When sending information in e-mail/SMS, it is strongly recommended
-  that you add information about your terms and conditions, including purchase
-  information and price. **See recommendations in the next paragraph.**
-* When the consumer clicks on the Payment Link, the Swedbank Pay payment page
-  will open, letting the consumer enter the payment details (varying depending
-  on payment instrument) in a secure Swedbank Pay hosted environment.
-  When paying with credit card and if required, Swedbank Pay will handle
-  3-D Secure authentication
-* After completion, Swedbank Pay will redirect the browser back to your
-  merchant/webshop site.
-* If [`CallbackURL`][technical-reference-callbackurl] is set the merchant
-  system will receive a callback from Swedbank Pay, enabling you to make a `GET`
-  request towards Swedbank Pay with the `paymentID` received in the first step,
-  which will return the purchase result.
+The Payment Link can be implemented for payment methods listed below, using the
+Redirect platform and Swedbank Pay hosted payment page.
 
-### Recommendations regarding Payment Link in E-mail/SMS
+* [Credit card][payment-instruments-card-payment-pages]
+* [MobilePay][payment-instruments-mobilepay-payment-pages]
+* [Swish][swish]
+* [Vipps][vipps]
+
+When the consumer/end-user starts the purchase process in your merchant or
+webshop site, you need to make a `POST` request towards Swedbank Pay with your
+*Purchase* information. You receive a Payment Link (same as redirect URL) in
+response.
+
+You have to distribute the Payment Link to the consumer through your order
+system, using channels like e-mail or SMS.
+
+{% include alert.html type="neutral" icon="info" body="When sending information
+in e-mail/SMS, it is strongly recommended that you add information about your
+terms and conditions, including purchase information and price. **See
+recommendations in the next section.**" %}
+
+When the consumer clicks on the Payment Link, the Swedbank Pay payment page will
+open, letting the consumer enter the payment details (varying depending on
+payment instrument) in a secure Swedbank Pay hosted environment. When paying
+with credit card and if required, Swedbank Pay will handle 3-D Secure
+authentication
+
+After completion, Swedbank Pay will redirect the browser back to your
+merchant/webshop site.
+
+If [`callbackURL`][technical-reference-callbackurl] is set the merchant system
+will receive a callback from Swedbank Pay, enabling you to make a `GET` request
+towards Swedbank Pay with the `id` of the payment received in the first step,
+which will return the purchase result.
+
+### E-mail And SMS Recommendations
 
 When you as a merchant sends an e-mail or SMS to the consumer about the
 Payment Link, it is recommended to include contextual information that help
@@ -46,24 +54,23 @@ We recommend that you include following information:
   consumer will pay for.
 * Some order-id (or similar) that exists in the merchant order system.
 * The price and currency.
-* Details about shipping method and expected delivery (if physical goods will
-  be sent  to the consumer).
-* Directions to (a link to a page) the merchant's terms and conditions
-  (such as return policy) and information of how the consumer can contact
-  the merchant.
+* Details about shipping method and expected delivery (if physical goods will be
+  sent  to the consumer).
+* Directions to (a link to a page) the merchant's terms and conditions (such as
+  return policy) and information of how the consumer can contact the merchant.
 * Details informing the consumer that he or she accepts the Terms & Conditions
   when clicking on the Payment Link.
 
-### Recommendations about receipt
+### Receipt Recommendations
 
 We recommend that you send an e-mail or SMS confirmation with a receipt to
 the consumer when the payment has been fulfilled.
 
-### API requests
+### API Requests
 
-The API-requests depend on the payment method you are using when implementing
+The API requests depend on the payment method you are using when implementing
 the Payment Link scenario, see [purchase flow][purchase-flow] One-phase payment
-metods will not implement `capture`, `cancellation` or `reversal`.
+instruments will not implement `capture`, `cancellation` or `reversal`.
 The options you can choose from when creating a payment with key `operation`
 set to Value `Purchase` are listed below. The general REST based API model is
 described in the [technical reference][technical-reference].
@@ -86,46 +93,52 @@ two-phase (e.g. [Credit card][credit-card], [MobilePay][mobile-pay],
 
 #### Authorization
 
-* PreAuthorization (Credit card):
-  * If you specify that the _intent_ of the _purchase_ is `PreAuthorize`
-  it's almost the same as an authorization,
-  **except that no money will be reserved** from the consumers credit card,
-  [before you make a finalize on this transaction
-  ][technical-reference-finalize].
-* Authorize (two-phase):
-  * When using two-phase flows you reserve the amount with an authorization,
-  you will have to specify that the _intent_ of the _purchase_ is `Authorize`.
-  The amount will be reserved but not charged.
-  You will later (i.e. when you are ready to ship the purchased products)
-  have to make a `Capture` or `Cancel` request.
+When using two-phase flows you reserve the amount with an authorization, you
+will have to specify that the _intent_ of the _purchase_ is `Authorize`. The
+amount will be reserved but not charged. You will later (i.e. when you are ready
+to ship the purchased products) have to make a `Capture` or `Cancel` request.
 
 #### Capture
 
-* Autocapture (one-phase credit card):
-  * If you want the credit card to be charged right away, you will have to
-  specify that the _intent_ of the purchase is `Autocapture`.
-  The credit card will be charged and you don't need to do any more financial
-  operations to this purchase.
+Capture can only be performed on a payment with a successfully authorized
+transaction. It is possible to do a part-capture where you only capture a
+smaller amount than the authorized amount. You can later do more captures on the
+same payment up to the total authorization amount.
+
+If you want the credit card to be charged right away, you will have to specify
+that the _intent_ of the purchase is `AutoCapture`. The credit card will be
+charged and you don't need to do any more financial operations to this purchase.
+
+#### Cancel
+
+Cancel can only be done on a authorized transaction. If you do cancel after
+doing a part-capture you will cancel the difference between the captured amount
+and the authorized amount.
+
+#### Reversal
+
+Reversal can only be done on a payment where there are some captured amount not
+yet reversed.
 
 #### General
 
-* When implementing the Payment Link scenario, it is optional to set a
-  [`CallbackURL`][technical-reference-callbackurl] in the `POST` request.
-  If callbackURL is set Swedbank Pay will send a postback request to this
-  URL when the consumer as fulfilled the payment.
-  [See the Callback API description here][technical-reference-callback].
+When implementing the Payment Link scenario, it is optional to set a
+[`callbackURL`][technical-reference-callbackurl] in the `POST` request. If
+callbackURL is set Swedbank Pay will send a request to this URL when the
+consumer as fulfilled the payment. [See the Callback API description
+here][technical-reference-callback].
 
 ### Purchase flow
 
-The sequence diagrams display the high level process of the purchase,
-from generating a Payment Link to receving a Callback.
-This in a generalized flow as well as a specific 3-D Secure enabled
-credit card scenario.
+The sequence diagrams display the high level process of the purchase, from
+generating a Payment Link to receiving a Callback. This in a generalized flow as
+well as a specific 3-D Secure enabled credit card scenario.
 
 {% include alert.html type="neutral" icon="info" body="
 Please note that the the callback may come either before, after or in the
 same moment as the consumer are being redirected to the status page at the
-merchant site when the purchase is fulfilled." %}
+merchant site when the purchase is fulfilled. Don't rely on the callback being
+timed at any specific moment." %}
 
 When dealing with credit card payments, 3-D Secure authentication of the
 cardholder is an essential topic.
@@ -143,47 +156,41 @@ There are three alternative outcome of a credit card payment:
 
 ```mermaid
 sequenceDiagram
-activate Consumer
-Consumer->>-MerchantOrderSystem: consumer starts purchase
-activate MerchantOrderSystem
-MerchantOrderSystem->>+Merchant: start purchase process
-deactivate MerchantOrderSystem
-Merchant->>+SwedbankPay: POST [payment] (operation=PURCHASE)
-deactivate Merchant
-note left of Merchant: First API request
-SwedbankPay-->>+Merchant: payment resource with payment URL
-deactivate SwedbankPay
-Merchant-->>+MerchantOrderSystem: Payment URL sent to order system
-deactivate Merchant
-MerchantOrderSystem-->>+Consumer: Distribute Payment URL through e-mail/SMS
-deactivate MerchantOrderSystem
-
-note left of Consumer: Payment Link in e-mail/SMS
-Consumer->>+SwedbankPay: Open link and enter payment information
-deactivate Consumer
-
-opt Card supports 3-D Secure
-SwedbankPay-->>+Consumer: redirect to IssuingBank
-deactivate SwedbankPay
-Consumer->>+IssuingBank: 3-D Secure authentication process
-deactivate Consumer
-Consumer->>+SwedbankPay: access authentication page
-deactivate IssuingBank
-end
-
-SwedbankPay-->>+Consumer: redirect to merchant site
-deactivate SwedbankPay
-note left of SwedbankPay: redirect back to merchant
-
-Consumer->>+Merchant: access merchant page
-deactivate Consumer
-Merchant->>+SwedbankPay: GET [payment]
-deactivate Merchant
-note left of Merchant: Second API request
-SwedbankPay-->>+Merchant: payment resource
-deactivate SwedbankPay
-Merchant-->>Consumer: display purchase result
-deactivate Merchant
+    activate Consumer
+    Consumer->>-MerchantOrderSystem: consumer starts purchase
+    activate MerchantOrderSystem
+    MerchantOrderSystem->>-Merchant: start purchase process
+    activate Merchant
+    Merchant->>-SwedbankPay: POST [payment] (operation=PURCHASE)
+    activate SwedbankPay
+    note left of Merchant: First API request
+    SwedbankPay-->>-Merchant: payment resource with payment URL
+    activate Merchant
+    Merchant-->>-MerchantOrderSystem: Payment URL sent to order system
+    activate MerchantOrderSystem
+    MerchantOrderSystem-->>-Consumer: Distribute Payment URL through e-mail/SMS
+    activate Consumer
+    note left of Consumer: Payment Link in e-mail/SMS
+    Consumer->>-SwedbankPay: Open link and enter payment information
+    activate SwedbankPay
+        opt Card supports 3-D Secure
+        SwedbankPay-->>-Consumer: redirect to IssuingBank
+        activate Consumer
+        Consumer->>IssuingBank: 3-D Secure authentication process
+        Consumer->>-SwedbankPay: access authentication page
+        activate SwedbankPay
+        end
+    SwedbankPay-->>-Consumer: redirect to merchant site
+    activate Consumer
+    note left of SwedbankPay: redirect back to merchant
+    Consumer->>-Merchant: access merchant page
+    activate Merchant
+    Merchant->>-SwedbankPay: GET [payment]
+    activate SwedbankPay
+    note left of Merchant: Second API request
+    SwedbankPay-->>-Merchant: payment resource
+    activate Merchant
+    Merchant-->>-Consumer: display purchase result
 ```
 
 #### Options after posting a payment
@@ -193,57 +200,11 @@ deactivate Merchant
 * It is possible to "abort" the validity of the Payment Link.
   [See the Abort description here][abort].
 * For reversals, you will need to implement the `Reversal` request.
-* If you did a PreAuthorization, you will have to send a `Finalize` to the
-  transaction. [Read about this here][payment-instruments-card-payment-pages].
 * When implementing the Payment Link scenario, it is optional to set a
   CallbackURL in the `POST` request.
   If CallbackURL is set Swedbank Pay will send a postback request to this
   URL when the consumer as fulfilled the payment.
   [See the Callback API description here][technical-reference-callback].
-
-#### Capture Sequence
-
-Capture can only be perfomed on a payment with a successfully authorized
-transaction.
-It is possible to do a part-capture where you only capture a smaller
-amount than the authorized amount.
-You can later do more captures on the same payment up to the total
-authorization amount.
-
-```mermaid
-sequenceDiagram
-activate Merchant
-Merchant->>-SwedbankPay: POST <capture>
-activate SwedbankPay
-SwedbankPay-->>-Merchant: transaction resource
-```
-
-#### Cancel Sequence
-
-Cancel can only be done on a authorized transaction.
-If you do cancel after doing a part-capture you will cancel the difference
-between the captured amount and the authorized amount.
-
-```mermaid
-sequenceDiagram
-activate Merchant
-Merchant->>-SwedbankPay: POST <Cancellation>
-activate SwedbankPay
-SwedbankPay-->>-Merchant: transaction resource
-```
-
-#### Reversal Sequence
-
-Reversal can only be done on a payment where there are some captured
-amount not yet reversed.
-
-```mermaid
-sequenceDiagram
-activate Merchant
-Merchant->>-SwedbankPay: POST <Reversal>
-activate SwedbankPay
-SwedbankPay-->>-Merchant: transaction resource
-```
 
 [abort]: #abort
 [credit-card]: /payments/card
@@ -254,7 +215,6 @@ SwedbankPay-->>-Merchant: transaction resource
 [swish]: /payments/swish
 [technical-reference-callback]: #callback
 [technical-reference-callbackurl]: #callback
-[technical-reference-finalize]: ../after-payment
 [technical-reference]: #operations
 [test_purchase]: /assets/img/checkout/test-purchase.png
 [vipps]: /payments/vipps
