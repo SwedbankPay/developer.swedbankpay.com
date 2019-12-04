@@ -214,7 +214,6 @@ sequenceDiagram
 {% include iterator.html  next_href="redirect" next_title="Next: Redirect" %}
 
 [card-payment]: /assets/img/payments/card-payment.png
-[finalizing-the-transaction]: /payments/credit-card/after-payment
 [cancel]: /payments/credit-card/after-payment/#cancellations
 [capture]: /payments/credit-card/after-payment/#Capture
 [redirect]: /payments/credit-card/redirect

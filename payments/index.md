@@ -48,7 +48,7 @@ To start integrating Swebank Pay Payments, you need the following:
 {:.table .table-striped}
 |                                | Payment method                      | Seamless View | Redirect | Direct API | Region                                                                               |
 | :----------------------------- | :---------------------------------- | :-----------: | :------: | :--------: | :----------------------------------------------------------------------------------- |
-| ![CardIcon][card-icon]         | [Credit card][credit-card]          |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  |   ✔︎︎︎︎︎   | ![EarthIcon][earth-icon]                                                             |
+| ![CardIcon][card-icon]         | [Credit card][card]          |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  |   ✔︎︎︎︎︎   | ![EarthIcon][earth-icon]                                                             |
 | ![InvoiceIcon][invoice-icon]   | [Swedbank Pay Invoice][invoice]     |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  |   ✔︎︎︎︎︎   | ![nor][nor-flag] ![swe][swe-flag] ![fin][fin-flag]                                   |
 | ![EnvelopeIcon][envelope-icon] | [Swedbank Pay Web Invoice][invoice] |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  |    ✔︎ ︎    | ![nor][nor-flag] ![swe][swe-flag]                                                    |
 | ![KeypadIcon][keypad-icon]     | [Direct Debit][direct-debit]        |               |  ✔︎︎︎︎︎  |            | ![swe][swe-flag] ![fin][fin-flag] ![lat][lat-flag] ![lit][lit-flag] ![est][est-flag] |
@@ -83,7 +83,7 @@ front-end and use our API's in the payment process.
                       for all payment instruments, reducing complexity and
                       enabling a more straightforward integration." %}
 
-*Two-phase payments* ([Card][credit-card], [Invoice][invoice],
+*Two-phase payments* ([Card][card], [Invoice][invoice],
 [MobilePay][invoice], [Vipps][vipps])
 
 A two-phase payment is managed in two steps - first reserving funds that will be
@@ -114,7 +114,7 @@ Or:
   achieved by creating a reversal transaction.
 
 *One-phase payments* ([Direct Debit][direct-debit], [Swish][swish],
-[Card][credit-card])
+[Card][card])
 
 If you use a one-phase method (like Direct Bank Debit or [Swish][swish] a Sales
 transaction will be created and the consumer charged right away).
@@ -146,8 +146,8 @@ to a separate hosted payment page.
 
 With the Seamless View you can initiate the payment process directly in an
 iframe on your site. A hostUrl needs to be defined in the first POST request in
-order to enable the Seamless View operation. See details of the request
-[here][card-payments-purchase].
+order to enable the Seamless View operation. See details of the Seamless View
+implementation on the respective Payments pages.
 
 ```mermaid
 sequenceDiagram
@@ -386,7 +386,6 @@ instruments.
   redirected to a payment page when this happens,  she will be redirected back
   to your store.
 
-[card-payments-purchase]: /payments/credit-card/#purchase-flow-1
 [demoshop]: https://ecom.externalintegration.payex.com/pspdemoshop
 [card-icon]: /assets/img/card-icon.png
 [https]: /#connection-and-protocol
@@ -404,12 +403,12 @@ instruments.
 [lit-flag]: /assets/img/lithuania-flag.png
 [est-flag]: /assets/img/estonia-flag.png
 [dan-flag]: /assets/img/danish-flag.png
-[credit-card]: /payments/credit-card
+[card]: /payments/card
 [invoice]: /payments/invoice
 [direct-debit]: /payments/direct-debit
 [vipps]: /payments/vipps
 [swish]: /payments/swish
 [mobile-pay]: /payments/mobile-pay
-[seamless-view]: /payments/credit-card/seamless-view
-[redirect]: /payments/credit-card/redirect
-[direct]: /payments/credit-card/direct
+[seamless-view]: /payments/card/seamless-view
+[redirect]: /payments/card/redirect
+[direct]: /payments/card/direct
