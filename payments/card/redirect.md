@@ -80,16 +80,7 @@ An example of an expanded `POST` request is available in the
 
 ### General
 
-* *No 3-D Secure and card acceptance:* There are optional paramers that can be
-  used in relation to 3-D Secure and card acceptance. By default, most credit
-  card agreements with an acquirer will require that you use 3-D Secure for card
-  holder authentication. However, if your agreement allows you to make a card
-  payment without this authentication, or that specific cards can be declined,
-  you may adjust these optional parameters when posting in the payment.
-* *Defining `callbackURL`:* When implementing a scenario, it is optional to set
-  a `callbackURL` in the `POST` request. If `callbackURL` is set Swedbank Pay
-  will send a postback request to this URL when the consumer has fulfilled the
-  payment. [See the Callback API description here][callback].
+{% include card-general.md %}
 
 ## Payment Resource
 
@@ -232,36 +223,6 @@ options:
 * [Verify][verify]
 
 Our `payment` example below uses the [`purchase`][purchase] value.
-
-### Type of authorization - Intent
-
-The intent of the payment identifies how and when the charge will be
-effectuated. This determine the type of transaction used during the payment
-process.
-
-* **Authorization (two-phase)**: If you want the credit card to reserve the
-  amount, you will have to specify that the intent of the purchase is
-  Authorization. The amount will be reserved but not charged. You will later
-  (i.e. when you are ready to ship the purchased products) have to make a
-  [Capture][capture] or [Cancel][cancel] request.
-* **AutoCapture (one-phase)**:  If you want the credit card to be charged right
-  away, you will have to specify that the intent of the purchase is
-  `AutoCapture`. The credit card will be charged automatically after
-  authorization and you don't need to do any more financial operations to this
-  purchase.
-
-### General
-
-* **No 3-D Secure and card acceptance**: There are optional paramers that can be
-  used in relation to 3-D Secure and card acceptance. By default, most credit
-  card agreements with an acquirer will require that you use 3-D Secure for card
-  holder authentication. However, if your agreement allows you to make a card
-  payment without this authentication, or that specific cards can be declined,
-  you may adjust these optional parameters when posting in the payment.
-* **Defining `callbackURL`**: When implementing a scenario, it is optional to
-  set a `callbackURL` in the `POST` request. If `callbackURL` is set Swedbank
-  Pay will send a postback request to this URL when the consumer has fulfilled
-  the payment. [See the Callback API description here][callback].
 
 ## Purchase flow mobile
 
