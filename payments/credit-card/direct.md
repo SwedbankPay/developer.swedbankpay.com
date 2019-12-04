@@ -182,7 +182,6 @@ next_href="after-payment" next_title="Next: After Payment" %}
 [callback]: /payments/credit-card/other-features/#callback
 [Cancel]: /payments/credit-card/after-payment/#Cancellations
 [Capture]: /payments/credit-card/after-payment/#Capture
-[finalize]: /payments/credit-card/after-payment/#finalize
 [PCI-link]: https://www.pcisecuritystandards.org/
 [reversal]: /payments/credit-card/after-payment/#Reversals
 [authorization]: /payments/credit-card/other-features/#create-authorization-transaction

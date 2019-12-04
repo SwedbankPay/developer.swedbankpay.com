@@ -819,7 +819,6 @@ payment"  %}
 
 [purchase]: #purchase
 [user-agent-definition]: https://en.wikipedia.org/wiki/User_agent
-[finalize]: /payments/credit-card/after-payment/#finalize
 [cancel]: /payments/credit-card/after-payment/#cancellations
 [capture]: /payments/credit-card/after-payment/#Capture
 [callback]: /payments/credit-card/other-features/#callback

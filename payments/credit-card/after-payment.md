@@ -207,116 +207,6 @@ sequenceDiagram
   deactivate SwedbankPay
 ```
 
-{:.code-header}
-**Request**
-
-```http
-PATCH /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations/<transactionId> HTTP/1.1
-Host: api.externalintegration.payex.com
-Authorization: Bearer <AccessToken>
-Content-Type: application/json
-
-{
-    "transaction": {
-        "activity": "Finalize"
-    }
-}
-```
-
-{:.table .table-striped}
-| Required | Property           | Type     | Description                                                                              |
-| :------: | :----------------- | :------- | :--------------------------------------------------------------------------------------- |
-|  ✔︎︎︎︎︎  | `transaction`      | `object` | The object representation of the generic [`transaction resource`][transaction-resource]. |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`activity` | `string` | The `finalize` operation will complete(finalize) the payment.                            |
-
-{:.code-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "payment": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
-    "authorization": {
-        "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations/12345678-1234-1234-1234-123456789012",
-        "paymentToken": "12345678-1234-1234-1234-123456789012",
-        "maskedPan": "123456xxxxxx1234",
-        "expireDate": "mm/yyyy",
-        "panToken": "12345678-1234-1234-1234-123456789012",
-        "cardBrand": "Visa|MC",
-        "cardType": "Credit Card|Debit Card",
-        "issuingBank": "UTL MAESTRO",
-        "countryCode": "999",
-        "acquirerTransactionType": "3DSECURE|SSL",
-        "acquirerStan": "39736",
-        "acquirerTerminalId": "39",
-        "acquirerTransactionTime": "2017-08-29T13:42:18Z",
-        "authenticationStatus": "Y|A|U|N",
-        "transaction": {
-            "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
-            "created": "2016-09-14T01:01:01.01Z",
-            "updated": "2016-09-14T01:01:01.03Z",
-            "type": "Authorization",
-            "state": "Initialized",
-            "number": 1234567890,
-            "amount": 1000,
-            "vatAmount": 250,
-            "description": "Test transaction",
-            "payeeReference": "AH123456",
-            "failedReason": "",
-            "isOperational": true,
-            "operations": [
-                {
-                    "href": "https://api.externalintegration.payex.com/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
-                    "rel": "edit-authorization",
-                    "method": "PATCH"
-                }
-            ]
-        }
-    }
-}
-```
-
-{:.table .table-striped}
-| Property                                  | Type      | Description                                                                                                                                                                                                  |
-| :---------------------------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `payment`                                 | `string`  | The relative URI of the payment this `finalize` transaction resource belongs to.                                                                                                                             |
-| `authorization`                           | `object`  | The object representation of the [authorization transaction resource][transaction-resource].                                                                                                                 |
-| └➔&nbsp;`id`                              | `string`  | The relative URI of the current authorization transaction resource.                                                                                                                                          |
-| └➔&nbsp;`paymentToken`                    | `string`  | The payment token created for the card used in the authorization.                                                                                                                                            |
-| └➔&nbsp;`recurrenceToken`                 | `string`  | The recurrence token created for the card used in the authorization.                                                                                                                                         |
-| └➔&nbsp;`maskedPan`                       | `string`  | The masked PAN number of the card.                                                                                                                                                                           |
-| └➔&nbsp;`expireDate`                      | `string`  | The month and year of when the card expires.                                                                                                                                                                 |
-| └➔&nbsp;`panToken`                        | `string`  | The token representing the specific PAN of the card.                                                                                                                                                         |
-| └➔&nbsp;`cardBrand`                       | `string`  | Visa ,  MasterCard , etc. The brand of the card.                                                                                                                                                             |
-| └➔&nbsp;`cardType`                        | `string`  | Credit Card  or  Debit Card . Indicates the type of card used for the authorization.                                                                                                                         |
-| └➔&nbsp;`issuingBank`                     | `string`  | The name of the bank that issued the card used for the authorization.                                                                                                                                        |
-| └➔&nbsp;`countryCode`                     | `string`  | The country the card is issued in.                                                                                                                                                                           |
-| └➔&nbsp;`acquirerTransactionType`         | `string`  | 3DSECURE  or  SSL . Indicates the transaction type of the acquirer.                                                                                                                                          |
-| └➔&nbsp;`acquirerStan`                    | `string`  | The System Trace Audit Number assigned by the acquirer to uniquely identify the transaction.                                                                                                                 |
-| └➔&nbsp;`acquirerTerminalId`              | `string`  | The ID of the acquirer terminal.                                                                                                                                                                             |
-| └➔&nbsp;`acquirerTransactionTime`         | `string`  | The ISO-8601 date and time of the acquirer transaction.                                                                                                                                                      |
-| └➔&nbsp;`issuerAuthorizationApprovalCode` | `string`  | The issuer's six-digit code used to identify the approval for a specific authorization request.                                                                                                              |
-| └➔&nbsp;`authenticationStatus`            | `string`  | Y ,  A ,  U  or  N . Indicates the status of the authentication.                                                                                                                                             |
-| └➔&nbsp;`transaction`                     | `object`  | The object representation of the generic [transaction resource][transaction-resource].                                                                                                                       |
-| └─➔&nbsp;`id`                             | `string`  | The relative URI of the current  `transaction`  resource.                                                                                                                                                    |
-| └─➔&nbsp;`created`                        | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
-| └─➔&nbsp;`updated`                        | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
-| └─➔&nbsp;`type`                           | `string`  | Indicates the transaction type.                                                                                                                                                                              |
-| └─➔&nbsp;`state`                          | `string`  | Initialized ,  Completed  or  Failed . Indicates the state of the transaction                                                                                                                                |
-| └─➔&nbsp;`number`                         | `string`  | The transaction  number , useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that  id  should be used instead. |
-| └─➔&nbsp;`amount`                         | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g.  10000  = 100.00 NOK,  5000  = 50.00 SEK.                                                                                     |
-| └─➔&nbsp;`vatAmount`                      | `integer` | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                           |
-| └─➔&nbsp;`description`                    | `string`  | A human readable description of maximum 40 characters of the transaction                                                                                                                                     |
-| └─➔&nbsp;`payeeReference`                 | `string`  | A unique reference for the transaction. See [payeeReference][payeeReference] for details.                                                                                                                    |
-| └─➔&nbsp;`failedReason`                   | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
-| └─➔&nbsp;`isOperational`                  | `boolean` | `true`  if the transaction is operational; otherwise  `false` .                                                                                                                                              |
-| └➔&nbsp;`operations`                      | `array`   | The array of [operations][operations] that are possible to perform on the transaction in its current state.                                                                                                  |
-| └─➔&nbsp;`href`                           | `string`  | The target URI to perform the operation against.                                                                                                                                                             |
-| └─➔&nbsp;`rel`                            | `string`  | The name of the relation the operation has to the current resource.                                                                                                                                          |
-| └─➔&nbsp;`method`                         | `string`  | The HTTP method to use when performing the operation.                                                                                                                                                        |
-
 ### Cancellations
 
 The `cancellations` resource lists the cancellation transactions on a specific
@@ -850,6 +740,5 @@ next_href="other-features" next_title="Next: Other Features" %}
 [callback]: /payments/credit-card/other-features/#callback
 [cancel]: /payments/credit-card/after-payment/#cancellations
 [capture]: /payments/credit-card/after-payment/#Capture
-[finalize]: /payments/credit-card/after-payment/#finalize
 [operations]: /payments/credit-card/other-features/#operations
 [reversal]: /payments/credit-card/after-payment/#reversals

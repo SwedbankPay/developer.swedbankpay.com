@@ -571,7 +571,6 @@ next_href="seamless-view" next_title="Next: Seamless View" %}
 [capture]: /payments/credit-card/after-payment/#Capture
 [create-payment]: /payments/credit-card/other-features/#create-payment
 [expansion]: /payments/credit-card/other-features/#expansion
-[finalize]: /payments/credit-card/after-payment/#finalize
 [payee-reference]: /payments/credit-card/other-features/#payeereference
 [payout]: /payments/credit-card/other-features/#payout
 [purchase]: /payments/credit-card/other-features/#purchase
