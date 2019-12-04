@@ -2,13 +2,13 @@
 
 {% include jumbotron.html body="The implementation sequence for this scenario
 is a variant of the purchase sequence. The consumer is not redirected to the
-payment pages directly but will instead receive a payment link via mail/SMS.
+Payments directly but will instead receive a payment link via mail/SMS.
 When the consumer clicks on the link, a payment window opens." %}
 
 ### Introduction
 
 * The Payment Link can be implemented for payment methods listed below,
-  using the Redirect platform and hosted payment pages.
+  using the Redirect platform and hosted payment page.
   * [Credit card][payment-instruments-card-payment-pages]
   * [MobilePay][payment-instruments-mobilepay-payment-pages]
   * [Swish][swish]
@@ -91,7 +91,7 @@ two-phase (e.g. [Credit card][credit-card], [MobilePay][mobile-pay],
   it's almost the same as an authorization,
   **except that no money will be reserved** from the consumers credit card,
   [before you make a finalize on this transaction
-  (using the PATCH on the Autorization)][technical-reference-finalize].
+  ][technical-reference-finalize].
 * Authorize (two-phase):
   * When using two-phase flows you reserve the amount with an authorization,
   you will have to specify that the _intent_ of the _purchase_ is `Authorize`.
@@ -190,11 +190,11 @@ deactivate Merchant
 
 * If the payment enable a two-phase flow (`Authorize`),
   you will need to implement the `Capture` and `Cancel` requests.
-* It is possible to "abort" the validity of the Payment Link by making
-  a `PATCH` on the payment. [See the PATCH payment description][abort].
+* It is possible to "abort" the validity of the Payment Link.
+  [See the Abort description here][abort].
 * For reversals, you will need to implement the `Reversal` request.
-* If you did a PreAuthorization, you will have to send a Finalize to the
-  transaction using [PATCH on the Authorization][payment-instruments-card-payment-pages].
+* If you did a PreAuthorization, you will have to send a `Finalize` to the
+  transaction. [Read about this here][payment-instruments-card-payment-pages].
 * When implementing the Payment Link scenario, it is optional to set a
   CallbackURL in the `POST` request.
   If CallbackURL is set Swedbank Pay will send a postback request to this
@@ -246,9 +246,9 @@ SwedbankPay-->>-Merchant: transaction resource
 ```
 
 [abort]: #abort
-[credit-card]: /payments/credit-card
+[credit-card]: /payments/card
 [mobile-pay]: /payments/mobile-pay
-[payment-instruments-card-payment-pages]: /payments/credit-card/
+[payment-instruments-card-payment-pages]: /payments/card/
 [payment-instruments-mobilepay-payment-pages]: /payments/mobile-pay/
 [purchase-flow]: ../#purchase-flow
 [swish]: /payments/swish

@@ -53,7 +53,7 @@ track of the corresponding consumer-ID.
 
 #### Delete Recurrence Token
 
-You can delete a created recurrence token with a `PATCH`-request.
+You can delete a created recurrence token.
 Please see technical reference for details
 [here][card-payments-remove-payment-token].
 

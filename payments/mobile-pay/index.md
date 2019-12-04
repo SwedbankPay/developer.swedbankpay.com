@@ -25,7 +25,7 @@ sidebar:
 of [Swedbank Pay Settlement Service][payex-reconciliation-and-settlement] to
 get consolidated payments and reporting, for all your payment methods.
 
-## MobilePay Online Payment Pages
+## MobilePay Online Payments
 
 Read our documentation on [MobilePay Redirect](/payments/mobile-pay/redirect)
 to learn how to implement MobilePay in the redirect scenario.
@@ -34,15 +34,15 @@ to learn how to implement MobilePay in the redirect scenario.
 
 >The implementation sequence for this scenario is a variant of the purchase
  sequence in a
- [Hosted Payment Pages redirect scenario][redirect-implementation].
- The consumer is not redirected to the payment pages directly but will
+ [hosted payment page redirect scenario][redirect-implementation].
+ The consumer is not redirected to the Payments directly but will
  instead receive a payment link via mail/SMS.
  When the consumer clicks on the link a payment window opens.
 
 ## Introduction
 
 * The Payment Link can be implemented for payment methods listed below,
-  using the Redirect platform and hosted payment pages.
+  using the Redirect platform and hosted payment page.
   * [Credit card][credit-card]
   * [MobilePay][mobile-pay]
   * [Swish m-commerce][swish-m-commerce] and [Swish e-commerce][swish-e-commerce]

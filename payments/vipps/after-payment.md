@@ -110,7 +110,7 @@ Content-Type: application/json
 |          | └─➔&nbsp;`payeeName`         | `string`     | The payee name (like merchant name) that will be displayed to consumer when redirected to PayEx.                                                                                                            |
 |          | └─➔&nbsp;`productCategory`   | `strin`      | A product category or number sent in from the payee/merchant. This is not validated by PayEx, but will be passed through the payment process and may be used in the settlement process.                     |
 |          | └─➔&nbsp;`orderReference`    | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                     |
-|          | └─➔&nbsp;`prefillInfo`       | `string`     | The mobile number that will be pre-filled in the Swedbank Pay payment pages. The consumer may change this number in the UI.                                                                                 |
+|          | └─➔&nbsp;`prefillInfo`       | `string`     | The mobile number that will be pre-filled in the Swedbank Pay Payments. The consumer may change this number in the UI.                                                                                 |
 |          | └─➔&nbsp;`subsite`           | `string(40)` | The `subsite` field can be used to perform split settlement on the payment. The `subsites` must be resolved with Swedbank Pay reconciliation before being used.                                             |
 `
 {:.code-header}
@@ -244,7 +244,7 @@ the given operation.
 | Operation                | Description                                                                                      |
 | :----------------------- | :----------------------------------------------------------------------------------------------- |
 | `update-payment-abort`   | [Aborts][technical-reference-abort] the payment before any financial transactions are performed. |
-| `redirect-authorization` | Used to redirect the consumer to Swedbank Pay payment pages and the authorization UI.            |
+| `redirect-authorization` | Used to redirect the consumer to Swedbank Pay Payments and the authorization UI.            |
 | `create-capture`         | Creates a [`capture`][technical-reference-capture].                                              |
 | `create-cancellation`    | Creates a [`cancellation`][technical-reference-cancel].                                          |
 | `create-reversal`        | Creates a [`reversal`][technical-reference-reverse].                                             |

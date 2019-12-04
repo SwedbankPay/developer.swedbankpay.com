@@ -194,7 +194,7 @@ sequenceDiagram
     Deactivate Merchant
 ```
 
-## Financing Invoice Payment Pages
+## Financing Invoice Payments
 
 >PayEx Invoice (PayEx Faktura) is a payment service where PayEx helps improve
 cashflow by purchasing merchant invoices. The Redirect purchase scenario is the

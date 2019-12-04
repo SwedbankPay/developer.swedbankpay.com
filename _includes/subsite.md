@@ -172,7 +172,7 @@ the given operation.
 | Operation            | Description                                                                                                                         |
 | :------------------- | :---------------------------------------------------------------------------------------------------------------------------------- |
 | update-payment-abort | Aborts the payment before any financial transactions are performed.                                                                 |
-| redirect-sale        | Contains the redirect-URI that redirects the consumer to a Swedbank Pay hosted payments page prior to creating a sales transaction. |
+| redirect-sale        | Contains the redirect-URI that redirects the consumer to a Swedbank Pay hosted payment page prior to creating a sales transaction. |
 
 ### Direct Debit transactions
 

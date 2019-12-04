@@ -47,27 +47,27 @@ a merchant number/payee and access to
 ## Implementation models and commerce flows
 
 Swedbank Pay supports both e-commerce and m-commerce flows
-(as a Merchant you should implement both) - through Swedbank Pay Payment Pages
+(as a Merchant you should implement both) - through Swedbank Pay Payments
 or Swedbank Pay Direct API integration.
 
 ![swish logo][swish-image]{:height="50px" width="50px"}
 
-### Swish m-commerce, Redirect to payment pages
+### Swish m-commerce, Redirect to Payments
 
 _Available in ![swedish flag][se-image]{:height="15px" width="15px"}_
 
 Swish payments from a mobile device made either through an app or via a
 mobile browser on the mobile device that hosts the Swish app.
-The flow redirects the payment dialogue to Swedbank Pay Payment Pages,
+The flow redirects the payment dialogue to Swedbank Pay Payments,
 that will handle the required user dialogue.
 
-### Swish e-commerce, Redirect to payment pages
+### Swish e-commerce, Redirect to Payments
 
 _Available in ![swedish flag][se-image]{:height="15px" width="15px"}_
 
 Swish payments initiated by the consumer in a browser in equipment other than
 the mobile device that hosts the Swish app.
-The flow redirects the payment dialogue to Swedbank Pay Payment Pages,
+The flow redirects the payment dialogue to Swedbank Pay Payments,
 that will handle the required user dialogue / mobile number input.
 
 ### Swish m-commerce, Direct API integration
@@ -90,7 +90,7 @@ _Available in ![swedish flag][se-image]{:height="15px" width="15px"}_
 Generate a Payment Link that can be sent to the consumer via e-mail or SMS,
 so the consumer may pay at a later moment.
 Payment links can be implemented for all payment methods supporting Redirect
-to hosted payment pages
+to hosted payment page
 
 ### Technical Reference
 

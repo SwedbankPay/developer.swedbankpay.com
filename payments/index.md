@@ -6,8 +6,8 @@ sidebar:
     items:
     - url: /payments/
       title: Introduction
-    - url: /payments/credit-card
-      title: Credit Card Payments
+    - url: /payments/card
+      title: Card Payments
     - url: /payments/invoice
       title: Invoice Payments
     - url: /payments/swish
@@ -156,7 +156,7 @@ implementation in action. Use the configuration below:
 
 ```markdown
 TODO: Insert picture from demoshop showing the following configuration:
-Swedbank Pay Payment Pages
+Swedbank Pay Payments
 Seamless View
 Norway
 English
@@ -224,7 +224,7 @@ for more specific information.
 The Redirect implementation lets you redirect your customer to an easy-to-use
 PCI compliant payment platform, hosted by Swedbank Pay and available from both
 web and mobile browsers. The consumer selects a payment method and proceeds to
-hosted payment pages.
+hosted payment page.
 
 ```mermaid
 sequenceDiagram
@@ -246,7 +246,7 @@ implementation in action. Use the configuration below:
 
 ```
 TODO: Insert picture from demoshop showing the following configuration:
-Swedbank Pay Payment Pages
+Swedbank Pay Payments
 Redirect
 Norway
 English

@@ -1,20 +1,20 @@
 ---
-title: Swedbank Pay Payments Credit Card After Payment
+title: Swedbank Pay Card Payments – After Payment
 sidebar:
   navigation:
-  - title: Credit Card Payments
+  - title: Card Payments
     items:
-    - url: /payments/credit-card/
+    - url: /payments/card/
       title: Introduction
-    - url: /payments/credit-card/redirect
+    - url: /payments/card/redirect
       title: Redirect
-    - url: /payments/credit-card/seamless-view
+    - url: /payments/card/seamless-view
       title: Seamless View
-    - url: /payments/credit-card/direct
+    - url: /payments/card/direct
       title: Direct
-    - url: /payments/credit-card/after-payment
+    - url: /payments/card/after-payment
       title: After Payment
-    - url: /payments/credit-card/other-features
+    - url: /payments/card/other-features
       title: Other Features
 ---
 
@@ -27,8 +27,8 @@ sidebar:
 
 ### Options after posting a payment
 
-* `Abort`: It is possible to abort the process, if the payment has no successful
-  transactions. [See the PATCH payment description][abort].
+* *Abort:* It is possible to abort the process if the payment has no successful
+  transactions. [See the Abort description here][abort].
 * If the payment shown above is done as a two phase (`Authorization`), you will
   need to implement the `Capture` and `Cancel` requests.
 * For `reversals`, you will need to implement the [Reversal request][reversal].
@@ -552,11 +552,15 @@ sequenceDiagram
 If you, for any reason, need to delete a paymentToken you use the
 `Delete payment token` request.
 
-> Please note that this call does not erase the card number stored at
-  Swedbank Pay. A card number is automatically deleted six months after a
-  successful `Delete payment token` request. If you want to remove card
-  information beforehand, you need to contact support.ecom@payex.com; and supply
-  them with the relevant transaction reference or payment token.
+{% include alert.html type="warning"
+                      icon="warning"
+                      body="Please note that this call does not erase the card number stored at Swedbank
+  Pay. A card number is automatically deleted six months after a successful
+  `Delete payment token` request. If you want to remove card information
+  beforehand, you need to contact ehandelsetup@swedbankpay.dk,
+  verkkokauppa.setup@swedbankpay.fi, ehandelsetup@swedbankpay.no or
+  ehandelsetup@swedbankpay.se; and supply them with
+  the relevant transaction reference or payment token." %}
 
 {:.code-header}
 **Request**
@@ -616,7 +620,7 @@ sequenceDiagram
   deactivate SwedbankPay
 ```
 
-## After payment options for Card Payment Pages in Mobile Apps
+## After payment options for Card Payments in Mobile Apps
 
 ### Capture Sequence for Mobile Apps
 
@@ -734,11 +738,11 @@ You have the following options after a server-to-server Recur payment `POST`.
 {% include iterator.html prev_href="direct" prev_title="Back: Direct"
 next_href="other-features" next_title="Next: Other Features" %}
 
-[transaction-resource]: /payments/credit-card/other-features/#transactions
-[payeeReference]: /payments/credit-card/other-features/#payeereference
-[abort]: /payments/credit-card/other-features/#abort
-[callback]: /payments/credit-card/other-features/#callback
-[cancel]: /payments/credit-card/after-payment/#cancellations
-[capture]: /payments/credit-card/after-payment/#Capture
-[operations]: /payments/credit-card/other-features/#operations
-[reversal]: /payments/credit-card/after-payment/#reversals
+[transaction-resource]: /payments/card/other-features/#transactions
+[payeeReference]: /payments/card/other-features/#payeereference
+[abort]: /payments/card/other-features/#abort
+[callback]: /payments/card/other-features/#callback
+[cancel]: /payments/card/after-payment/#cancellations
+[capture]: /payments/card/after-payment/#Capture
+[operations]: /payments/card/other-features/#operations
+[reversal]: /payments/card/after-payment/#reversals
