@@ -394,6 +394,6 @@ next_href="seamless-view" next_title="Next: Seamless View" %}
 [recur]: /payments/card/other-features/#recur
 [redirect-image]: /assets/img/checkout/test-purchase.png
 [reversal]: /payments/card/after-payment/#reversals
-[Screnshot-1]: /assets/img/checkout/test-purchase.png
+[card-payment]: /assets/img/checkout/test-purchase.png
 [verify]: /payments/card/other-features/#verify
 [user-agent-definition]: https://en.wikipedia.org/wiki/User_agent
