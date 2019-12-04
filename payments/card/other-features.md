@@ -365,7 +365,7 @@ through a previous payment in order to charge the same card.
 {:.code-header}
 **Request**
 
-```HTTP
+```http
 POST /psp/creditcard/payments HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>

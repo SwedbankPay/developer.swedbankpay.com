@@ -43,7 +43,7 @@ includes one or more expanded sub-resources inlined.
 {:.code-header}
 **Request**
 
-```HTTP
+```http
 POST /psp/swish/payments HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
@@ -121,7 +121,7 @@ Content-Type: application/json
 {:.code-header}
 **Response**
 
-```HTTP
+```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -239,7 +239,7 @@ on a specific payment.
 {:.code-header}
 **Request**
 
-```HTTP
+```http
 GET /psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/sales HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
@@ -249,7 +249,7 @@ Content-Type: application/json
 {:.code-header}
 **Response**
 
-```HTTP
+```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -297,7 +297,7 @@ making `msisdn` unneccessary.
 {:.code-header}
 **e-commerce Request**
 
-```HTTP
+```http
 POST /psp/swish/payments/<paymentId>/sales HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
@@ -313,7 +313,7 @@ Content-Type: application/json
 {:.code-header}
 **e-commerce Response**
 
-```HTTP
+```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -344,7 +344,7 @@ Content-Type: application/json
 {:.code-header}
 **m-commerce Request**
 
-```HTTP
+```http
 POST /psp/swish/payments/<paymentId>/sales HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
@@ -359,7 +359,7 @@ Content-Type: application/json
 {:.code-header}
 **m-commerce Response**
 
-```HTTP
+```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -408,7 +408,7 @@ on a specific payment.
 {:.code-header}
 **Request**
 
-```HTTP
+```http
 GET /psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
@@ -418,7 +418,7 @@ Content-Type: application/json
 {:.code-header}
 **Response**
 
-```HTTP
+```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -465,7 +465,7 @@ A callback request will follow from Swedbank Pay.
 {:.code-header}
 **Request**
 
-```HTTP
+```http
 POST /psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
@@ -492,7 +492,7 @@ Content-Type: application/json
 {:.code-header}
 **Response**
 
-```HTTP
+```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
