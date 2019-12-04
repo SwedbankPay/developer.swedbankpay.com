@@ -27,7 +27,7 @@ To `capture` a `CreditAccountSe` transaction, you need to perform the
 {:.code-header}
 **Request**
 
-```HTTP
+```http
 POST /psp/creditcard/payments/<paymentId>/captures HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
@@ -56,7 +56,7 @@ The `capture` resource contains information about the capture transaction.
 {:.code-header}
 **Response**
 
-```HTTP
+```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 

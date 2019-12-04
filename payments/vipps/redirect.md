@@ -16,7 +16,7 @@ sidebar:
       title: Other Features
 ---
 
->Vipps is a two-phase payment method supported by the major norwegian banks.
+>Vipps is a two-phase payment instrument supported by the major norwegian banks.
  In the redirect to Swedbank Pay Payments scenario,  Swedbank Pay
  receives a mobile number (MSISDN) from the payer through Payex Payments.
  Swedbank Pay performs a payment that the payer must confirm through the
@@ -45,7 +45,7 @@ sidebar:
 
 ### Payment Url
 
-{% include payment-url.md when="selecting Vipps as payment method" %}
+{% include payment-url.md when="selecting Vipps as payment instrument" %}
 
 ## Screenshots
 

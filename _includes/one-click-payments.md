@@ -35,7 +35,7 @@ and [invoice][create-invoice-payment] payment.
 {:.code-header}
 **Request**
 
-```HTTP
+```http
 POST /psp/creditcard/payments HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>

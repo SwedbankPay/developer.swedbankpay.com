@@ -21,9 +21,9 @@ sidebar:
                       should not be used to integrate against Swedbank Pay's
                       APIs yet." %}
 
->Add MobilePay Online to your Swedbank Pay payment methods and take advantage
+>Add MobilePay Online to your Swedbank Pay payment instruments and take advantage
 of [Swedbank Pay Settlement Service][payex-reconciliation-and-settlement] to
-get consolidated payments and reporting, for all your payment methods.
+get consolidated payments and reporting, for all your payment instruments.
 
 ## MobilePay Online Payments
 
@@ -41,7 +41,7 @@ to learn how to implement MobilePay in the redirect scenario.
 
 ## Introduction
 
-* The Payment Link can be implemented for payment methods listed below,
+* The Payment Link can be implemented for payment instruments listed below,
   using the Redirect platform and hosted payment page.
   * [Credit card][credit-card]
   * [MobilePay][mobile-pay]
@@ -96,7 +96,7 @@ the consumer when the payment has been fulfilled.
 
 ## API requests
 
-The API requests depend on the payment method you are using when implementing
+The API requests depend on the payment instrument you are using when implementing
 the Payment Link scenario, see [purchase flow](#purchase-flow).
 One-phase payment metods will not implement capture, cancellation or reversal.
 The options you can choose from when creating a payment with key operation set
@@ -112,7 +112,7 @@ page, similar to the examples below, where payment information can be entered.
 ### Options
 
 All valid options when posting in a payment with operation Purchase,
-are described in each payment method's respective API reference.
+are described in each payment instrument's respective API reference.
 Please see the general sequence diagrams for more information about payments
 in one-phase (e.g. [Swish][swish-m-commerce] and credit card with autocapture)
 and two-phase (e.g. [Credit card][credit-card],
