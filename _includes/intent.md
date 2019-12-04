@@ -1,0 +1,14 @@
+The intent of the payment identifies how and when the charge will be
+effectuated. This determine the type of transaction used during the payment
+process.
+
+* **`Authorization` (two-phase)**: If you want the credit card to reserve the
+  amount, you will have to specify that the intent of the purchase is
+  Authorization. The amount will be reserved but not charged. You will later
+  (i.e. when you are ready to ship the purchased products) have to make a
+  [Capture][capture] or [Cancel][cancel] request.
+* **`AutoCapture` (one-phase)**:  If you want the credit card to be charged
+  right away, you will have to specify that the intent of the purchase is
+  `AutoCapture`. The credit card will be charged automatically after
+  authorization and you don't need to do any more financial operations to this
+  purchase.

@@ -74,17 +74,9 @@ An example of an expanded `POST` request is available in the
 
 {% include purchase.md %}
 
-## Type of authorization - Intent
+### Intent
 
-The intent of the payment identifies how and when the charge will be
-effectuated. This determine the type of transaction used during the payment
-process.
-
-* **Authorization (two-phase)**: If you want the credit card to reserve the
-  amount, you will have to specify that the intent of the purchase is
-  Authorization. The amount will be reserved but not charged. You will later
-  (i.e. when you are ready to ship the purchased products) have to make a
-  [Capture][capture] or [Cancel][cancel] request.
+{% include intent.md %}
 
 ### General
 
