@@ -216,12 +216,6 @@ sequenceDiagram
 
 ### Cancellations
 
-The `cancellations` resource lists the cancellation transactions on a specific
-payment.
-
-{:.code-header}
-**Request**
-
 `Cancel` can only be done on a authorized transaction. If you do cancel after
 doing a part-capture you will cancel the difference between the capture amount
 and the authorization amount.
@@ -639,6 +633,5 @@ next_href="other-features" next_title="Next: Other Features" %}
 [callback]: /payments/credit-card/other-features/#callback
 [cancel]: /payments/credit-card/after-payment/#cancellations
 [capture]: /payments/credit-card/after-payment/#Capture
-[finalize]: /payments/credit-card/after-payment/#finalize
 [operations]: /payments/credit-card/other-features/#operations
 [reversal]: /payments/credit-card/after-payment/#reversals
