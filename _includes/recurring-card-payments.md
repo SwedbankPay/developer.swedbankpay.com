@@ -22,15 +22,14 @@ depending on if you want to make an initial charge or not:
 
 #### Generate RecurrenceToken
 
-* When posting a `Purchase` payment,
-  you need to make sure that the attribute
+* When posting a `Purchase` payment, you need to make sure that the attribute
   `generateRecurrenceToken` is set to `true`
 
 {:.code-header}
-**Attribute**
+**Property**
 
 ```js
-"generateRecurrenceToken": "true"
+"generateRecurrenceToken": true
 ```
 
 * When posting a `Verify` payment, a payment token will be generated
@@ -44,11 +43,10 @@ depending on if you want to make an initial charge or not:
 * You need to `POST` a [Verify payment][payment-verify], that will
   automatically generate a recurrence token (for later recurring use).
 
-#### Retreive Recurrence Token
+#### Retrieve Recurrence Token
 
-The recurrence token can then be retrieved by doing a `GET` request against
-the `payment`.
-You need to store this `recurrenceToken` in your system and keep
+The recurrence token can then be retrieved by doing a `GET` request against the
+`payment`. You need to store this `recurrenceToken` in your system and keep
 track of the corresponding consumer-ID.
 
 #### Delete Recurrence Token
