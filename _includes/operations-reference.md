@@ -1,11 +1,11 @@
 ### Operations
 
-When a payment order resource is created and during its lifetime,
-it will have a set of operations that can be performed on it.
-The state of the payment order resource, what the access token is authorized
-to do, the chosen payment instrument and its transactional states,
-etc. determine the available operations before the initial purchase.
-A list of possible operations and their explanation is given below.
+When a payment order resource is created and during its lifetime, it will have a
+set of operations that can be performed on it. The state of the payment order
+resource, what the access token is authorized to do, the chosen payment
+instrument and its transactional states, etc. determine the available operations
+before the initial purchase. A list of possible operations and their explanation
+is given below.
 
 {:.code-header}
 **Operations**
@@ -71,11 +71,10 @@ A list of possible operations and their explanation is given below.
 | `contentType` | The HTTP content type of the resource referenced in the `href` property. |
 
 The operations should be performed as described in each response and not as
-described here in the documentation.
-Always use the `href` and `method` as specified in the response by finding
-the appropriate operation based on its `rel` value.
-The only thing that should be hard coded in the client is the value of
-the `rel` and the request that will be sent in the HTTP body of the request
+described here in the documentation. Always use the `href` and `method` as
+specified in the response by finding the appropriate operation based on its
+`rel` value. The only thing that should be hard coded in the client is the value
+of the `rel` and the request that will be sent in the HTTP body of the request
 for the given operation.
 
 {:.table .table-striped}
@@ -83,7 +82,7 @@ for the given operation.
 | :--------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `update-paymentorder-abort`        | [Aborts][payment-order-abort] the payment order before any financial transactions are performed.                                                                                                                                                                               |
 | `update-paymentorder-updateorder`  | [Updates the order][payment-order-update] with a change in the `amount` and/or `vatAmount`.                                                                                                                                                                                    |
-| `redirect-paymentorder`            | Contains the URI that is used to redirect the consumer to the Swedbank Pay Payments containing the Payment Menu.                                                                                                                                                                 |
+| `redirect-paymentorder`            | Contains the URI that is used to redirect the consumer to the Swedbank Pay Payments containing the Payment Menu.                                                                                                                                                               |
 | `view-paymentorder`                | Contains the JavaScript `href` that is used to embed the Payment Menu UI directly on the webshop/merchant site.                                                                                                                                                                |
 | `create-paymentorder-capture`      | The second part of a two-phase transaction where the authorized amount is sent from the payer to the payee. It is possible to do a part-capture on a subset of the authorized amount. Several captures on the same payment are possible, up to the total authorization amount. |
 | `create-paymentorder-cancellation` | Used to cancel authorized and not yet captured transactions. If a cancellation is performed after doing a part-capture, it will only affect the not yet captured authorization amount.                                                                                         |
@@ -91,9 +90,9 @@ for the given operation.
 
 #### View Payment Order
 
-The `view-paymentorder` operation contains the URI of the JavaScript that
-needs to be set as a `script` element's `src` attribute,
-either client-side through JavaScript or server-side in HTML as shown below.
+The `view-paymentorder` operation contains the URI of the JavaScript that needs
+to be set as a `script` element's `src` attribute, either client-side through
+JavaScript or server-side in HTML as shown below.
 
 ```html
 <!DOCTYPE html>
@@ -347,18 +346,22 @@ Content-Type: application/json
 | `capture.transaction` | `object` | The object representation of the generic [`transaction` resource][transaction-resource]. |
 
 Checkout should now be complete, the payment should be secure and everyone
-should be happy.
-But, sometimes you also need to implement the cancellation and reversal
-operations described below.
+should be happy. But, sometimes you also need to implement the cancellation and
+reversal operations described below.
 
 #### Abort
 
-* It is possible for the merchant to abort a payment before the end user has fulfilled the payment process. See code example below.
-* This can only happen if there exist no final transactions (like captures) on the payment with a successful status. Once the payment is aborted, no more transactions/operations can be done. If the consumer has been redirected to a hosted payment page when this happens, the end user will be redirected back to your merchant page.
+* It is possible for the merchant to abort a payment before the end user has
+  fulfilled the payment process. See code example below.
+* This can only happen if there exist no final transactions (like captures) on
+  the payment with a successful status. Once the payment is aborted, no more
+  transactions/operations can be done. If the consumer has been redirected to a
+  hosted payment page when this happens, the end user will be redirected back to
+  your merchant page.
 
-To abort a payment order, perform the `update-paymentorder-abort` operation
-that is returned in the payment order response.
-You need to include the following `HTTP` body:
+To abort a payment order, perform the `update-paymentorder-abort` operation that
+is returned in the payment order response. You need to include the following
+`HTTP` body:
 
 {:.code-header}
 **Request**
@@ -488,9 +491,8 @@ Content-Type: application/json
 #### Reversal
 
 If we want to reverse a previously captured amount, we need to perform
-`create-paymentorder-reversal` against the accompanying `href` returned
-in the `operations` list.
-See the abbreviated request and response below:
+`create-paymentorder-reversal` against the accompanying `href` returned in the
+`operations` list. See the abbreviated request and response below:
 
 {:.code-header}
 **Request**
