@@ -25,9 +25,10 @@ sidebar:
 
 ## Swish Payments
 
-> Add Swish to your Swedbank Pay Payment instruments and take advantage of
-  **[Swedbank Pay Settlement Service][settlement-service]** to get consolidated
-  payments and reporting, for all your payment methods.
+{% include jumbotron.html body="Add Swish to your Swedbank Pay Payment
+instruments and take advantage of **[Swedbank Pay Settlement
+Service](/payments/swish/other-features#settlement-and-reconcilliation)** to get consolidated payments and reporting, for
+all your payment methods." %}
 
 ## How do you get started with Swish through  Swedbank Pay
 
@@ -102,11 +103,14 @@ Technical reference for Swish API resources and their properties.
 
 # Swish e-commerce Direct API
 
->Swish is a one-phase payment method supported by the major Swedish banks.
- In the direct e-commerce scenario, Swedbank Pay receives the Swish registered
- mobile number directly from the merchant UI.
- Swedbank Pay performs a payment that the payer confirms using her
- Swish mobile app.
+{% include alert.html type="neutral"
+                      icon="info"
+                      body="Swish is a one-phase payment method supported by the
+                      major Swedish banks. In the direct e-commerce scenario,
+                      Swedbank Pay receives the Swish registered mobile number
+                      directly from the merchant UI. Swedbank Pay performs a
+                      payment that the payer confirms using her Swish mobile
+                      app." %}
 
 ## Introduction
 
@@ -346,7 +350,6 @@ sequenceDiagram
 [reversal-reference]: /payments/swish/after-payment#reversals
 [sales-transaction]: /payments/swish/other-features#sales
 [SEB-swish]: https://seb.se/foretag/digitala-tjanster/swish-handel
-[settlement-service]: /payments/swish/other-features#settlement-and-reconcilliation
 [sparbanken-oresund]: https://www.sparbankenskane.se/foretag/digitala-tjanster/swish/swish-for-handel/index.htm
 [sparbanken-syd]: https://www.sparbankensyd.se/vardagstjanster/betala/swish-foretag/
 [support-mailto]: mailto:support.ecom@payex.com
