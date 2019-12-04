@@ -1386,7 +1386,7 @@ although that might be possible in the future.
 
 [abort]: #operations
 [callback-reference]: /checkout/other-features#callback
-[card-payments-problems]: /payments/credit-card/other-features#problem-messages
+[card-payments-problems]: /payments/card/other-features#problem-messages
 [consumer-reference]: /checkout/other-features#payeereference
 [current-payment]: #current-payment-resource
 [expanding]: #expansion

@@ -422,7 +422,7 @@ sequenceDiagram
 {% include iterator.html prev_href="redirect" prev_title="Redirect"
 next_href="direct" next_title="Next: Direct" %}
 
-[payment-page_hosted-view.png]: /assets/screenshots/credit-card/hosted-view/view/macos.png
+[payment-page_hosted-view.png]: /assets/screenshots/card/hosted-view/view/macos.png
 [abort]: /payments/card/other-features/#abort
 [callback]: /payments/card/other-features/#callback
 [cancel]: /payments/card/after-payment/#cancellations

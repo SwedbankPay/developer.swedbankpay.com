@@ -212,11 +212,11 @@ sequenceDiagram
 {% include iterator.html  next_href="redirect" next_title="Next: Redirect" %}
 
 [card-payment]: /assets/img/payments/card-payment.png
-[cancel]: /payments/credit-card/after-payment/#cancellations
-[capture]: /payments/credit-card/after-payment/#Capture
-[redirect]: /payments/credit-card/redirect
-[create-payment]: /payments/credit-card/other-features/#create-payment
-[purchase]: /payments/credit-card/other-features/#purchase
-[recur]: /payments/credit-card/other-features/#recur
-[payout]: /payments/credit-card/other-features/#payout
-[verify]: /payments/credit-card/other-features/#verify
+[cancel]: /payments/card/after-payment/#cancellations
+[capture]: /payments/card/after-payment/#Capture
+[redirect]: /payments/card/redirect
+[create-payment]: /payments/card/other-features/#create-payment
+[purchase]: /payments/card/other-features/#purchase
+[recur]: /payments/card/other-features/#recur
+[payout]: /payments/card/other-features/#payout
+[verify]: /payments/card/other-features/#verify
