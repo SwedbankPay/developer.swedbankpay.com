@@ -409,7 +409,7 @@ Content-Type: application/json
   acquiring number to ensure that payout transactions and regular card
   transactions are kept separate.
 * You need to have the 3-D Secure protocol enabled.
-* The service is available both through hosted payment pages and through direct
+* The service is available both through hosted payment page and through direct
   API integration.
 * The current implementation is only available for gaming transactions (
   [MCC][mcc]: 7995).

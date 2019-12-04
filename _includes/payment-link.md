@@ -2,13 +2,13 @@
 
 {% include jumbotron.html body="The implementation sequence for this scenario
 is a variant of the purchase sequence. The consumer is not redirected to the
-payment pages directly but will instead receive a payment link via mail/SMS.
+Payments directly but will instead receive a payment link via mail/SMS.
 When the consumer clicks on the link, a payment window opens." %}
 
 ### Introduction
 
 * The Payment Link can be implemented for payment methods listed below,
-  using the Redirect platform and hosted payment pages.
+  using the Redirect platform and hosted payment page.
   * [Credit card][payment-instruments-card-payment-pages]
   * [MobilePay][payment-instruments-mobilepay-payment-pages]
   * [Swish][swish]

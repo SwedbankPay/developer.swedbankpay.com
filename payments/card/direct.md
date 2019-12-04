@@ -32,7 +32,7 @@ sidebar:
 
 {% include jumbotron.html body="The Direct Payment scenario **is used by
 customers that are compliant with PCI-DSS regulations**, and is a way to
-implement card payments without using Swedbank Pay Hosted Payments." %}
+implement card payments without using Swedbank Pay hosted payment page." %}
 
 ### Purchase flow
 

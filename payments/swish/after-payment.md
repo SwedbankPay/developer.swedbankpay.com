@@ -224,7 +224,7 @@ request for the given operation.
 | :--------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `update-payment-abort` | [Aborts][technical-reference-abort] the payment before any financial transactions are performed.                                                            |
 | `create-sale`          | Creates a `sales` transaction without redirection to a payment page (**Direct scenario**). `Msisdn` is required in e-commerce scenario.                     |
-| `redirect-sale`        | Contains the redirect-URI that redirects the consumer to a Swedbank Pay hosted payments page prior to creating a sales transaction (**Redirect scenario**). |
+| `redirect-sale`        | Contains the redirect-URI that redirects the consumer to a Swedbank Pay hosted payment page prior to creating a sales transaction (**Redirect scenario**). |
 | `view-payment`         | Contains the URI of the JavaScript used to create a Hosted View iframe directly without redirecting the consumer to separate payment page.                  |
 
 ### Swish transactions
@@ -289,7 +289,7 @@ Content-Type: application/json
 
 In e-commerce the consumer/end-user's `msisdn`(mobile number) is required.
 This is managed either by sending a `POST` request as seen below,
-or by redirecting the end-user to the hosted payment pages.
+or by redirecting the end-user to the hosted payment page.
 The `msisdn` is only required for e-commerce. In the m-commerce flow,
 the consumer uses the device that hosts the Swish app to manage the purchase,
 making `msisdn` unneccessary.
