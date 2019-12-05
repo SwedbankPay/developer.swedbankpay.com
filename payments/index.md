@@ -181,8 +181,8 @@ you need to embed on your Front End side. This will load the payment page on a
 subset of your own webpage.
 
 The properties of the operation containing the script URL should be similar to
-the example below. The href attribute refers to a script of the contentType
-application/javascript and the rel description view-payment indicate that the
+the example below. The `href` attribute refers to a script of the `contentType`
+application/javascript and the `rel` value `view-payment` indicate that the
 Seamless View scenario will generate a one-phased sales transaction. A two-phase
 credit card payment would during the same scenario generate an authorization
 transaction, and the `rel` value would in that case be `view-authorization`.
@@ -273,12 +273,12 @@ To start using the Redirect platform, you need to implement the appropriate
 operation returned from the initial API Request, containing the URL that the
 customer's browser needs to be redirected to.
 
-The combination of properties should be similar to all payment instruments. In the
-example below, the href attribute refers to the redirect URL and the rel
-description redirect-sale indicate that the redirect scenario will generate a
-one-phased sales transaction. A two-phase credit card payment would during the
-same scenario generate an authorization transaction, and the rel value would in
-that case be `redirect-authorization`.
+The combination of properties should be similar to all payment instruments. In
+the example below, the `href` attribute refers to the redirect URL and the `rel`
+value `redirect-sale` indicate that the redirect scenario will generate a
+one-phased `Sales` transaction. A two-phase credit card payment would during the
+same scenario generate an authorization transaction, and the `rel` value would
+in that case be `redirect-authorization`.
 
 ```js
 {

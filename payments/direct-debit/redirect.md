@@ -175,7 +175,7 @@ is given below.
 {:.table .table-striped}
 | Property | Description                                                         |
 | :------- | :------------------------------------------------------------------ |
-| href     | The target URI to perform the operation against.                    |
+| `href`     | The target URI to perform the operation against.                    |
 | rel      | The name of the relation the operation has to the current resource. |
 | method   | The HTTP method to use when performing the operation.               |
 

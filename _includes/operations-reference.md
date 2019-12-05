@@ -248,7 +248,7 @@ You can later do more captures on the same payment up to the total
 authorization amount.
 
 To capture the authorized payment, we need to perform
-`create-paymentorder-capture` against the accompanying href returned in the
+`create-paymentorder-capture` against the accompanying `href` returned in the
 `operations` list.
 See the abbreviated request and response below:
 
