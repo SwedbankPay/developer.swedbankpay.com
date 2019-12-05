@@ -34,7 +34,7 @@ sidebar:
 customers that are compliant with PCI-DSS regulations**, and is a way to
 implement card payments without using Swedbank Pay hosted payment page." %}
 
-### Purchase flow
+## Introduction
 
 * The payer places an order and you make a `POST` request towards Swedbank Pay
   with gathered `Purchase` information.
@@ -74,7 +74,7 @@ sequenceDiagram
     Merchant-->>-Payer: display purchase result
 ```
 
-### API Requests
+## API Requests
 
 The API requests are displayed in the [purchase flow](#purchase-flow-mobile).
 You can [create a card `payment`][create-payment] with following `operation`
@@ -102,7 +102,7 @@ An example of an expanded `POST` request is available in the
 
 {% include purchase.md %}
 
-### Type of authorization (Intent)
+## Type of authorization - Intent
 
 * **Authorization (two-phase):** If you want the credit card to reserve the
   amount, you will have to specify that the `intent` of the `purchase` is
@@ -110,27 +110,25 @@ An example of an expanded `POST` request is available in the
   (i.e. when you are ready to ship the purchased products) have to make a
   [Capture][Capture] or [Cancel][Cancel] request.
 
-### Type of capture (Intent)
+### General
+
+* *No 3-D Secure and card acceptance*: There are optional paramers that can be
+  used in relation to 3-D Secure and card acceptance. By default, most credit
+  card agreements with an acquirer will require that you use 3-D Secure for card
+  holder authentication. However, if your agreement allows you to make a card
+  payment without this authentication, or that specific cards can be declined,
+  you may adjust these optional parameters when posting in the payment.
+* *Defining CallbackURL*: When implementing a scenario, it is optional to set
+  a [CallbackURL][callback] in the `POST` request. If `CallbackURL` is set, then
+  Swedbank Pay will send a postback request to this URL when the consumer has
+  fulfilled the payment. [See the Callback API description here][callback].
+
+## Type of capture - Intent
 
 * **AutoCapture (one-phase):** If you want the credit card to be charged right
   away, you will have to specify that the `intent` of the `purchase` is
   `AutoCapture`. The credit card will be charged and you don't need to do any
   more financial operations to this purchase.
-
-### General
-
-* **No 3-D Secure and card acceptance**: There are optional paramers that can be
-  used in relation to 3-D Secure and card acceptance. By default, most credit
-  card agreements with an acquirer will require that you use 3-D Secure for card
-  holder authentication. However, if your agreement allows you to make a card
-  payment without this authentication, or that specific cards can be declined,
-  you may adjust these optional parameters when posting in the payment. This is
-  specified in the technical reference section for creating credit card payments
-   - you will find the link in the sequence diagram below.
-* **Defining CallbackURL**: When implementing a scenario, it is optional to set
-  a [CallbackURL][callback] in the `POST` request. If `CallbackURL` is set, then
-  Swedbank Pay will send a postback request to this URL when the consumer has
-  fulfilled the payment. [See the Callback API description here][callback].
 
 ## Payment Resource
 
@@ -142,11 +140,11 @@ When dealing with credit card payments, 3-D Secure authentication of the
 cardholder is an essential topic. There are two alternative outcomes of a credit
 card payment:
 
-* **3-D Secure enabled (by default):** 3-D Secure should be enabled, and
+* *3-D Secure enabled (by default):* 3-D Secure should be enabled, and
   Swedbank Pay will check if the card is enrolled with 3-D Secure. This depends
   on the issuer of the card. If the card is not enrolled with 3-D Secure, no
   authentication of the cardholder is done.
-* **Card supports 3-D Secure:** If the card is enrolled with 3-D Secure,
+* *Card supports 3-D Secure:* If the card is enrolled with 3-D Secure,
   Swedbank Pay will redirect the cardholder to the autentication mechanism that
   is decided by the issuing bank. Normally this will be done using BankID or
   Mobile BankID.
@@ -190,7 +188,7 @@ sequenceDiagram
   deactivate Merchant
 ```
 
-### Options after posting a purchase payment
+## Options after posting a purchase payment
 
 * If the payment shown above is done as a two-phase (Authorization), you will
   need to implement the [Capture][Capture] and [Cancel][Cancel] requests.
