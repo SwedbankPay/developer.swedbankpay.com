@@ -28,12 +28,14 @@ payment pages seamlessly integrated in an `iframe` on your website. The costumer
 does not need to leave your webpage, since we are handling the payment in the
 `iframe` on your page.
 
+![screenshot of the hosted view card payment page][hosted-view-card]{:height="250px" width="660px"}
+
 * When properly set up in your merchant/webshop site and the payer starts the
   purchase process, you need to make a POST request towards Swedbank Pay with
   your Purchase information. This will generate a payment object with a unique
   `paymentID`. You will receive a **JavaScript source** in response.
 * You need to embed the script source on your site to create a
-  hosted-view in an `iframe` (see screenshot below); so that she can enter the
+  hosted-view in an `iframe`; so that she can enter the
   credit card details in a secure Swedbank Pay hosted environment.
 * Swedbank Pay will handle 3-D Secure authentication when this is required.
 * Swedbank Pay will display directly in the `iframe` - one of two specified
@@ -45,21 +47,60 @@ does not need to leave your webpage, since we are handling the payment in the
   `paymentID` generated in the first step, to receive the state of the
   transaction.
 
-### Payment Url
+The sequence diagram below illustrates the purchase flow:
 
-{% include payment-url.md
-when="at the 3-D Secure verification for Credit Card Payments" %}
+```mermaid
+sequenceDiagram
+    participant Payer
+    participant Merchant
+    participant SwedbankPay as Swedbank Pay
 
-## Screenshots
+    activate Payer
+    Payer->>-Merchant: start purchase
+    activate Merchant
+    Merchant->>-SwedbankPay: POST /psp/creditcard/payments
+    activate SwedbankPay
+    note left of Payer: First API request
+    SwedbankPay-->>-Merchant: rel: view-authorization
+    activate Merchant
+    Merchant-->>-Payer: authorization page
+    activate Payer
+    note left of Payer: Open iframe
+    Payer->>Payer: Input creditcard information
+    Payer->>-SwedbankPay: Authorization
+    activate SwedbankPay
+        opt Card supports 3-D Secure
+        SwedbankPay-->>-Payer: redirect to IssuingBank
+        activate Payer
+        Payer->>IssuingBank: 3-D Secure authentication process
+        Payer->>-SwedbankPay: access authentication page
+        end
+    SwedbankPay-->>Merchant: Event: OnPaymentComplete
+    activate Merchant
+    Merchant->>-SwedbankPay: GET <payment.id>
+    activate SwedbankPay
+    note left of Merchant: Second API request
+    SwedbankPay-->>-Merchant: rel: view-payment
+    activate Merchant
+    Merchant-->>-Payer: display purchase result
+    activate Payer
 
-You will have an `iframe` window on your page where the consumer can enter the
-credit card information.
+        opt Callback is set
+        activate SwedbankPay
+        SwedbankPay->>SwedbankPay: Payment is updated
+        SwedbankPay->>-Merchant: POST Payment Callback
+        end
+```
 
-![screenshot of the hosted view card payment page][hosted-view-card]{:height="250px" width="660px"}
+## Seamless View Back End
 
-## API Requests
+The payment process starts when the payer/consumer is ready to start the
+purchase. We start by performing a `POST` request towards the `payment`
+resource.
 
-The API requests are displayed in the [purchase flow](#purchase-flow-mobile).
+### Operations
+
+The API requests are displayed in the urchase flow above.
 You can [create a card `payment`][create-payment] with following `operation`
 options:
 
@@ -68,7 +109,7 @@ options:
 * [Payout][payout]
 * [Verify][verify]
 
-Our `payment` example below uses the [`purchase`][purchase] value.
+We use the [`purchase`][purchase] value in our examples.
 
 ### Purchase
 
@@ -266,9 +307,36 @@ Content-Type: application/json
 }
 ```
 
-## Intent
+The key information in the response is the `view-authorization` operation. You
+will need to embed its `href` in a `<script>` element. The script will enable
+loading the payment page in an `iframe` in our next step.
 
-{% include intent.md %}
+## Seamless View Front End
+
+You need to prepare your front end in order to integrate the payment page script. A simplified integration has these three steps:
+
+* Create a container that will contain the Seamless View iframe: `<div id="SwedbankPay-hosted-payment-page">.
+* Create a `<script>` source within the container. Embed the `href` value
+   obtained in the `POST` request. Example:
+
+{:.code-header}
+**JavaScript**
+
+```js
+    <script id="paymentPageScript" src="https://ecom.dev.payex.com/creditcard/core/ scripts/client/px.creditcard.client.js?token=123456123412341234123456789012"></script>
+```
+
+* Lastly, initiate the Seamless View with a JavaScript call to open the
+   `iframe` embedded on your website.
+
+{:.code-header}
+**JavaScript**
+
+```js
+    <script language="javascript">
+      payex.hostedView.page(configuration).open();
+    </script>
+```
 
 ### General
 
@@ -278,11 +346,12 @@ Content-Type: application/json
 
 {% include payment-resource.md %}
 
-## Purchase flow
+### Payment Url
 
-The sequence diagram below shows a high level description of a complete
-purchase, and the requests you have to send to Swedbank Pay. The links will take
-you directly to the corresponding API description.
+{% include payment-url.md
+when="at the 3-D Secure verification for Credit Card Payments" %}
+
+## Purchase flow
 
 When dealing with credit card payments, 3-D Secure authentication of the
 cardholder is an essential topic. There are two alternative outcome of a credit
@@ -297,84 +366,6 @@ card payment:
   decided by the issuing bank. Normally this will be done using BankID or Mobile
   BankID.
 
-```mermaid
-sequenceDiagram
-    participant Payer
-    participant Merchant
-    participant SwedbankPay as Swedbank Pay
-
-    activate Payer
-    Payer->>+Merchant: start purchase
-    deactivate Payer
-    Merchant->>+SwedbankPay: POST /psp/creditcard/payments
-    deactivate Merchant
-    note left of Merchant: First API Request
-    SwedbankPay-->>+Merchant: rel: view-authorization
-    deactivate SwedbankPay
-    Merchant-->>+Payer: authorization page
-    deactivate Merchant
-    Payer ->>Payer: Initiate iframe
-    Payer->>+Merchant: access merchant page
-    deactivate Payer
-    Merchant->>+SwedbankPay: GET <payment.id>
-    deactivate Merchant
-    note left of Merchant: Second API request
-    SwedbankPay-->>+Merchant: rel: redirect-authorization
-    deactivate SwedbankPay
-    Merchant-->>-Payer: display purchase result
-```
-
-```mermaid
-sequenceDiagram
-    participant Payer
-    participant Merchant
-    participant SwedbankPay as Swedbank Pay
-
-    activate Payer
-    Payer->>+Merchant: start purchase
-    deactivate Payer
-    Merchant->>+SwedbankPay: POST /psp/creditcard/payments
-    deactivate Merchant
-    note left of Payer: First API request
-    SwedbankPay-->+Merchant: payment resource
-    deactivate SwedbankPay
-    Merchant-->>+Payer: authorization page
-    deactivate Merchant
-    Payer->>+SwedbankPay: access authorization page
-    deactivate Payer
-    SwedbankPay-->>+Payer: display purchase information
-    deactivate SwedbankPay
-
-    Payer->>Payer: input creditcard information
-    Payer->>+SwedbankPay: submit creditcard information
-    deactivate Payer
-        opt Card supports 3-D Secure
-        SwedbankPay-->>+Payer: redirect to IssuingBank
-        deactivate SwedbankPay
-        Payer->>IssuingBank: 3-D Secure authentication process
-        Payer->>+SwedbankPay: access authentication page
-        deactivate Payer
-        end
-  
-    SwedbankPay-->>+Payer: redirect to merchant
-    deactivate SwedbankPay  
-    Payer->>+Merchant: access merchant page
-    deactivate Payer
-    Merchant->>+SwedbankPay: GET <payment.id>
-    deactivate Merchant
-    note left of Merchant: Second API request
-    SwedbankPay-->>+Merchant: rel: redirect-authorization
-    deactivate SwedbankPay
-    Merchant-->>Payer: display purchase result
-    deactivate Merchant
-
-      opt Callback is set
-      activate SwedbankPay
-      SwedbankPay->>SwedbankPay: Payment is updated
-      SwedbankPay->>Merchant: POST Payment Callback
-      deactivate SwedbankPay
-      end
-```
 
 ### Options after posting a payment
 
