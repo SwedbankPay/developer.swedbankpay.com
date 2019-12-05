@@ -59,9 +59,9 @@ To start integrating Swebank Pay Payments, you need the following:
 ## Seamless View
 
 With [Seamless Views][seamless-view] you can initiate the payment process
-directly in an `iframe` on your site. A hostUrl needs to be defined in the first
-`POST` request in order to enable the Seamless View operation. See details of
-the request under **Other Features** for the given payment instrument.
+directly in an `iframe` on your site. `hostUrls` needs to be defined in the
+first `POST` request in order to enable the Seamless View operation. See details
+of the request under **Other Features** for the given payment instrument.
 
 ## Redirect
 
@@ -145,9 +145,9 @@ to a separate Swedbank Pay hosted payment page.
 ### Seamless Views
 
 With the Seamless View you can initiate the payment process directly in an
-`iframe` on your site. A hostUrl needs to be defined in the first `POST` request
-in order to enable the Seamless View operation. See details of the Seamless View
-implementation underneath each respective payment instrument.
+`iframe` on your site. `hostUrls` needs to be defined in the first `POST`
+request in order to enable the Seamless View operation. See details of the
+Seamless View implementation underneath each respective payment instrument.
 
 ```mermaid
 sequenceDiagram
