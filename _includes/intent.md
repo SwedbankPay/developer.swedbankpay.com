@@ -1,5 +1,5 @@
 The intent of the payment identifies how and when the charge will be
-effectuated. This determine the type of transaction used during the payment
+effectuated. This determines the type of transaction used during the payment
 process.
 
 * **`Authorization` (two-phase)**: If you want the credit card to reserve the
