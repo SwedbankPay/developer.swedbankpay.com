@@ -22,7 +22,7 @@ depending on if you want to make an initial charge or not:
 
 #### Generate RecurrenceToken
 
-* When posting a `Purchase` payment, you need to make sure that the attribute
+* When posting a `Purchase` payment, you need to make sure that the property
   `generateRecurrenceToken` is set to `true`
 
 {:.code-header}

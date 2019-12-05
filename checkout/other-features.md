@@ -631,7 +631,7 @@ with Swedbank Pay in order to work.**
 ### Recurrence Token
 
 * When initiating a `Purchase` payment order, you need to make sure that the
-  attribute `generateRecurrenceToken` is set to `true`. This recurrence token
+  property `generateRecurrenceToken` is set to `true`. This recurrence token
   will stored in the [authorization transaction][transaction]
   sub-resource on the underlying payment resource.
 * When initiating a `Verify` payment order, a recurrence token will be generated
