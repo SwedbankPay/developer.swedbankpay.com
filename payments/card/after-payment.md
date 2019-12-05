@@ -214,7 +214,7 @@ sequenceDiagram
   SwedbankPay-->>-Merchant: transaction resource
 ```
 
-### Cancellations
+## Cancellations
 
 `Cancel` can only be done on a authorized transaction. If you do cancel after
 doing a part-capture you will cancel the difference between the capture amount
