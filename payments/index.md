@@ -46,15 +46,15 @@ To start integrating Swebank Pay Payments, you need the following:
   Swedbank Pay Admin.
 
 {:.table .table-striped}
-|                                | Payment instrument                  | Seamless View | Redirect | Direct API | Region                                                                               |
-| :----------------------------: | :---------------------------------- | :-----------: | :------: | :--------: | :----------------------------------------------------------------------------------- |
-|     ![CardIcon][card-icon]     | [Credit card][card]                 |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  |   ✔︎︎︎︎︎   | ![EarthIcon][earth-icon]                                                             |
-|  ![InvoiceIcon][invoice-icon]  | [Swedbank Pay Invoice][invoice]     |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  |   ✔︎︎︎︎︎   | ![nor][nor-flag] ![swe][swe-flag] ![fin][fin-flag]                                   |
-| ![EnvelopeIcon][envelope-icon] | [Swedbank Pay Web Invoice][invoice] |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  |    ✔︎ ︎    | ![nor][nor-flag] ![swe][swe-flag]                                                    |
-|   ![KeypadIcon][keypad-icon]   | [Direct Debit][direct-debit]        |               |  ✔︎︎︎︎︎  |            | ![swe][swe-flag] ![fin][fin-flag] ![lat][lat-flag] ![lit][lit-flag] ![est][est-flag] |
-|      ![Vipps][vipps-logo]      | [Vipps][vipps]                      |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  |            | ![nor][nor-flag]                                                                     |
-|      ![Swish][swish-logo]      | [Swish][swish]                      |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  | ✔︎︎︎︎︎  ︎  | ![swe][swe-flag]                                                                     |
-|  ![MobilePay][mobilepay-logo]  | [Mobile Pay][mobile-pay]            |               |  ✔︎︎︎︎︎  |            | ![dan][dan-flag]                                                                     |
+|                                | Payment instrument                  | Seamless View | Redirect | Region                                                                               |
+| :----------------------------: | :---------------------------------- | :-----------: | :------: | :----------------------------------------------------------------------------------- |
+|     ![CardIcon][card-icon]     | [Credit card][card]                 |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  | ![EarthIcon][earth-icon]                                                             |
+|  ![InvoiceIcon][invoice-icon]  | [Swedbank Pay Invoice][invoice]     |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  | ![nor][nor-flag] ![swe][swe-flag] ![fin][fin-flag]                                   |
+| ![EnvelopeIcon][envelope-icon] | [Swedbank Pay Web Invoice][invoice] |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  | ![nor][nor-flag] ![swe][swe-flag]                                                    |
+|   ![KeypadIcon][keypad-icon]   | [Direct Debit][direct-debit]        |               |  ✔︎︎︎︎︎   ![swe][swe-flag] ![fin][fin-flag] ![lat][lat-flag] ![lit][lit-flag] ![est][est-flag] |
+|      ![Vipps][vipps-logo]      | [Vipps][vipps]                      |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  | ![nor][nor-flag]                                                                     |
+|      ![Swish][swish-logo]      | [Swish][swish]                      |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  | ![swe][swe-flag]                                                                     |
+|  ![MobilePay][mobilepay-logo]  | [Mobile Pay][mobile-pay]            |               |  ✔︎︎︎︎︎  |  ![dan][dan-flag]                                                                     |
 
 ## Seamless View
 
@@ -68,11 +68,6 @@ of the request under **Other Features** for the given payment instrument.
 The [Redirect][redirect] platform redirects the consumers to a Swedbank Pay
 hosted payment page. The consumer will then be redirected back to your page when
 the payment is completed.
-
-## Direct API
-
-The [Direct][direct] option gives you the opportunity to create your own
-front-end and use our API's in the payment process.
 
 ## The Fundamentals
 
@@ -417,4 +412,3 @@ instruments.
 [mobile-pay]: /payments/mobile-pay
 [seamless-view]: /payments/card/seamless-view
 [redirect]: /payments/card/redirect
-[direct]: /payments/card/direct
