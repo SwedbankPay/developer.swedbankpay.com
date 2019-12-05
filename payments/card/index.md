@@ -200,7 +200,7 @@ sequenceDiagram
 
 [card-payment]: /assets/img/payments/card-payment.png
 [cancel]: /payments/card/after-payment/#cancellations
-[capture]: /payments/card/after-payment/#Capture
+[capture]: /payments/card/after-payment/#capture
 [redirect]: /payments/card/redirect
 [create-payment]: /payments/card/other-features/#create-payment
 [purchase]: /payments/card/other-features/#purchase
