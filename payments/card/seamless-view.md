@@ -98,14 +98,14 @@ When dealing with credit card payments, 3-D Secure authentication of the
 cardholder is an essential topic. There are two alternative outcome of a credit
 card payment:
 
-* 3-D Secure enabled - by default, 3-D Secure should be enabled, and Swedbank
-  Pay will check if the card is enrolled with 3-D Secure. This depends on the
-  issuer of the card. If the card is not enrolled with 3-D Secure, no
-  authentication of the cardholder is done.
-* Card supports 3-D Secure - if the card is enrolled with 3-D Secure, Swedbank
-  Pay will redirect the cardholder to the autentication mechanism that is
-  decided by the issuing bank. Normally this will be done using BankID or Mobile
-  BankID.
+1. 3-D Secure enabled - by default, 3-D Secure should be enabled, and Swedbank
+   Pay will check if the card is enrolled with 3-D Secure. This depends on the
+   issuer of the card. If the card is not enrolled with 3-D Secure, no
+   authentication of the cardholder is done.
+1. Card supports 3-D Secure - if the card is enrolled with 3-D Secure, Swedbank
+   Pay will redirect the cardholder to the autentication mechanism that is
+   decided by the issuing bank. Normally this will be done using BankID or
+   Mobile BankID.
 
 ### Payment Url
 
@@ -336,16 +336,16 @@ loading the payment page in an `iframe` in our next step.
 You need to prepare your front end in order to integrate the payment page
 script. A simplified integration has these following steps:
 
-* Create a container that will contain the Seamless View iframe: `<div
-  id="SwedbankPay-seamless-view-page">.
-* Create a `<script>` source within the container. Embed the `href` value
-  obtained in the `POST` request in the `<script>` element. Example:
+1. Create a container that will contain the Seamless View iframe: `<div
+   id="SwedbankPay-seamless-view-page">`.
+2. Create a `<script>` source within the container. Embed the `href` value
+   obtained in the `POST` request in the `<script>` element. Example:
 
 ```html
     <script id="paymentPageScript" src="https://ecom.dev.payex.com/creditcard/core/ scripts/client/px.creditcard.client.js?token=123456123412341234123456789012"></script>
 ```
 
-* The previous two steps gives this HTML:
+The previous two steps gives this HTML:
 
 {:.code-header}
 **HTML**
@@ -360,22 +360,22 @@ script. A simplified integration has these following steps:
     </head>
     <body>
         <div id="SweddbankPay-seamless-view-page">
-          <script id="paymentPageScript" src="https://ecom.dev.payex.com/creditcard/core/ scripts/client/px.creditcard.client.js?token=123456123412341234123456789012"></script>
+          <script id="paymentPageScript" src="https://ecom.dev.payex.com/creditcard/core/scripts/client/px.creditcard.client.js?token=123456123412341234123456789012"></script>
         </div>
     </body>
 </html>
 ```
 
-* Lastly, initiate the Seamless View with a JavaScript call to open the
-   `iframe` embedded on your website.
+* Lastly, initiate the Seamless View with a JavaScript call to open the `iframe`
+  embedded on your website.
 
 {:.code-header}
 **JavaScript**
 
 ```js
-    <script language="javascript">
-      payex.hostedView.creditCard().open();
-    </script>
+<script language="javascript">
+  payex.hostedView.creditCard().open();
+</script>
 ```
 
 {% include iterator.html prev_href="redirect" prev_title="Redirect"
