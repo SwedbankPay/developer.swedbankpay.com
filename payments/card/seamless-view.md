@@ -120,7 +120,7 @@ resource.
 
 ### Operations
 
-The API requests are displayed in the urchase flow above.
+The API requests are displayed in the purchase flow above.
 You can [create a card `payment`][create-payment] with following `operation`
 options:
 
