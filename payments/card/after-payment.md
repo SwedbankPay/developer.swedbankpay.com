@@ -23,8 +23,10 @@ sidebar:
 
 ## Options after posting a payment
 
-To see the available operations after posting a payment, do a `GET` request on
-the payment resource.
+When you detect that the payer reach your `completeUrl` , you need to do a `GET`
+request on the payment resource, containing the `paymentID` generated in the
+first step, to receive the state of the transaction. You will also be able to
+see the available operations after posting a payment.
 
 {% include payment-resource.md %}
 
