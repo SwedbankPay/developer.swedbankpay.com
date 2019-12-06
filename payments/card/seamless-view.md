@@ -30,23 +30,6 @@ does not need to leave your webpage, since we are handling the payment in the
 
 ![screenshot of the hosted view card payment page][hosted-view-card]{:height="250px" width="660px"}
 
-* When properly set up in your merchant/webshop site and the payer starts the
-  purchase process, you need to make a POST request towards Swedbank Pay with
-  your Purchase information. This will generate a payment object with a unique
-  `paymentID`. You will receive a **JavaScript source** in response.
-* You need to embed the script source on your site to create a
-  hosted-view in an `iframe`; so that she can enter the
-  credit card details in a secure Swedbank Pay hosted environment.
-* Swedbank Pay will handle 3-D Secure authentication when this is required.
-* Swedbank Pay will display directly in the `iframe` - one of two specified
-  URLs, depending on whether the payment session is followed through completely
-  or cancelled beforehand. Please note that both a successful and rejected
-  payment reach completion, in contrast to a cancelled payment.
-* When you detect that the payer reach your `completeUrl` , you need to do a
-  `GET` request to receive the state of the transaction, containing the
-  `paymentID` generated in the first step, to receive the state of the
-  transaction.
-
 ## Purchase Flow
 
 ```mermaid
@@ -58,28 +41,30 @@ sequenceDiagram
     activate Payer
     Payer->>-Merchant: start purchase
     activate Merchant
+    note left of Payer: First API request
     Merchant->>-SwedbankPay: POST /psp/creditcard/payments
     activate SwedbankPay
-    note left of Payer: First API request
-    SwedbankPay-->>-Merchant: rel: view-authorization
+    SwedbankPay-->>-Merchant: rel: view-authorization ①
     activate Merchant
     Merchant-->>-Payer: authorization page
     activate Payer
-    note left of Payer: Open iframe
+    note left of Payer: Open iframe ②
     Payer->>Payer: Input creditcard information
-    Payer->>-SwedbankPay: Authorization
+    Payer->>-SwedbankPay: Show Consumer UI page in iframe - Authorization ③
     activate SwedbankPay
         opt Card supports 3-D Secure
         SwedbankPay-->>-Payer: redirect to IssuingBank
         activate Payer
         Payer->>IssuingBank: 3-D Secure authentication process
+        activate IssuingBank
+        IssuingBank->>-Payer: 3-D Secure authentication process
         Payer->>-SwedbankPay: access authentication page
         end
-    SwedbankPay-->>Merchant: Event: OnPaymentComplete
+    SwedbankPay-->>Merchant: Event: OnPaymentComplete ④
     activate Merchant
+    note left of Merchant: Second API request.
     Merchant->>-SwedbankPay: GET <payment.id>
     activate SwedbankPay
-    note left of Merchant: Second API request
     SwedbankPay-->>-Merchant: rel: view-payment
     activate Merchant
     Merchant-->>-Payer: display purchase result
@@ -92,8 +77,21 @@ sequenceDiagram
         end
 ```
 
+### Explainations
+
+* ① `rel: view-authorization` is a value in one of the operations, sent as a
+  response from Swedbank Pay to the Merchant.
+* ② `Open iframe` creates the Swedbank Pay hosted iframe.
+* ③ `Show Consumer UI page in iframe` displays the payment window as content
+  inside of the iframe. The consumer can insert card information for
+  authorization.
+* ④ `Event: OnPaymentComplete` is when er payment is complete. Please note that
+  both a successful and rejected payment reach completion, in contrast to a
+  cancelled payment.
+
 ### 3-D Secure
 
+Swedbank Pay will handle 3-D Secure authentication when this is required.
 When dealing with credit card payments, 3-D Secure authentication of the
 cardholder is an essential topic. There are two alternative outcome of a credit
 card payment:
@@ -102,7 +100,7 @@ card payment:
    Pay will check if the card is enrolled with 3-D Secure. This depends on the
    issuer of the card. If the card is not enrolled with 3-D Secure, no
    authentication of the cardholder is done.
-1. Card supports 3-D Secure - if the card is enrolled with 3-D Secure, Swedbank
+2. Card supports 3-D Secure - if the card is enrolled with 3-D Secure, Swedbank
    Pay will redirect the cardholder to the autentication mechanism that is
    decided by the issuing bank. Normally this will be done using BankID or
    Mobile BankID.
@@ -114,9 +112,27 @@ when="at the 3-D Secure verification for Card Payments" %}
 
 ## Seamless View Back End
 
-The payment process starts when the payer/consumer is ready to start the
-purchase. We start by performing a `POST` request towards the `payment`
-resource.
+When properly set up in your merchant/webshop site and the payer starts the
+purchase process, you need to make a POST request towards Swedbank Pay with your
+Purchase information. This will generate a payment object with a unique
+`paymentID`. You will receive a **JavaScript source** in response.
+
+### Type of authorization - Intent
+
+The intent of the payment identifies how and when the charge will be
+effectuated. This determine the type of transaction used during the payment
+process.
+
+* **Authorization (two-phase)**: If you want the credit card to reserve the
+  amount, you will have to specify that the intent of the purchase is
+  Authorization. The amount will be reserved but not charged. You will later
+  (i.e. when you are ready to ship the purchased products) have to make a
+  [Capture][capture] or [Cancel][cancel] request.
+* **AutoCapture (one-phase)**:  If you want the credit card to be charged right
+  away, you will have to specify that the intent of the purchase is
+  `AutoCapture`. The credit card will be charged automatically after
+  authorization and you don't need to do any more financial operations to this
+  purchase.
 
 ### Operations
 
@@ -124,12 +140,10 @@ The API requests are displayed in the purchase flow above.
 You can [create a card `payment`][create-payment] with following `operation`
 options:
 
-* [Purchase][purchase]
+* [Purchase][purchase] (We use this value in our examples)
 * [Recur][recur]
 * [Payout][payout]
 * [Verify][verify]
-
-We use the [`purchase`][purchase] value in our examples.
 
 ### Purchase
 
@@ -333,8 +347,9 @@ loading the payment page in an `iframe` in our next step.
 
 ## Seamless View Front End
 
-You need to prepare your front end in order to integrate the payment page
-script. A simplified integration has these following steps:
+You need to embed the script source on your site to create a hosted-view in an
+`iframe`; so that she can enter the credit card details in a secure Swedbank Pay
+hosted environment. A simplified integration has these following steps:
 
 1. Create a container that will contain the Seamless View iframe: `<div
    id="SwedbankPay-seamless-view-page">`.
@@ -342,7 +357,7 @@ script. A simplified integration has these following steps:
    obtained in the `POST` request in the `<script>` element. Example:
 
 ```html
-    <script id="paymentPageScript" src="https://ecom.dev.payex.com/creditcard/core/ scripts/client/px.creditcard.client.js?token=123456123412341234123456789012"></script>
+    <script id="paymentPageScript" src="https://ecom.dev.payex.com/creditcard/core/ scripts/client/px.creditcard.client.js"></script>
 ```
 
 The previous two steps gives this HTML:
@@ -356,18 +371,18 @@ The previous two steps gives this HTML:
     <head>
         <title>Swedbank Pay Seamless View is Awesome!</title>
         <!-- Here you can specify your own javascript file -->
-        <script src=<YourJavaScriptFileHere></script>
+        <script src=<YourJavaScriptFileHere>></script>
     </head>
     <body>
         <div id="SweddbankPay-seamless-view-page">
-          <script id="paymentPageScript" src="https://ecom.dev.payex.com/creditcard/core/scripts/client/px.creditcard.client.js?token=123456123412341234123456789012"></script>
+          <script id="paymentPageScript" src="https://ecom.dev.payex.com/creditcard/core/scripts/client/px.creditcard.client.js"></script>
         </div>
     </body>
 </html>
 ```
 
-* Lastly, initiate the Seamless View with a JavaScript call to open the `iframe`
-  embedded on your website.
+Lastly, initiate the Seamless View with a JavaScript call to open the `iframe`
+embedded on your website.
 
 {:.code-header}
 **JavaScript**
