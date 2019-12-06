@@ -739,7 +739,7 @@ sequenceDiagram
 
 ### Create authorization transaction
 
-The `redirect-authorization`operation redirects the consumer to
+The `redirect-authorization` operation redirects the consumer to
 Swedbank Pay Payments where the payment is authorized.
 
 {code-header}
