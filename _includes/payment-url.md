@@ -1,4 +1,4 @@
-{% assign when = include.when | default: "selecting the payment method" %}
+{% assign when = include.when | default: "selecting the payment instrument" %}
 {% assign payment-order = include.payment-order | default: false %}
 
 {% if payment-order %}

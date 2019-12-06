@@ -43,7 +43,7 @@ specific invoice payment.
 {:.code-header}
 ***Request***
 
-```HTTP
+```http
 GET /psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
@@ -53,7 +53,7 @@ Content-Type: application/json
 {:.code-header}
 ***Response***
 
-```HTTP
+```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -88,7 +88,7 @@ Content-Type: application/json
 To capture a `FinancingConsumer` invoice payment, perform the `create-capture`
 operation with the following request body:
 
-```HTTP
+```http
 POST /psp/invoice/payments/<paymentId>/captures HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
@@ -147,7 +147,7 @@ Notes on `FinancingConsumer` captures:
   Standard due date is 14 days.
 * Invoice number is set by PayEx.
 
-```HTTP
+```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -212,7 +212,7 @@ specific payment.
 {:.code-header}
 ***Request***
 
-```HTTP
+```http
 Request
 GET /psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/cancellations HTTP/1.1
 Host: api.externalintegration.payex.com
@@ -223,7 +223,7 @@ Content-Type: application/json
 {:.code-header}
 ***Response***
 
-```HTTP
+```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -265,7 +265,7 @@ Perform the `create-cancellation` operation to cancel a previously created
 {:.code-header}
 ***Request***
 
-```HTTP
+```http
 POST /psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/cancellations HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
@@ -293,7 +293,7 @@ newly created cancellation transaction.
 {:.code-header}
 ***Response***
 
-```HTTP
+```http
 {
     "payment": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
     "cancellation": {
@@ -348,7 +348,7 @@ The `reversals` resource will list the reversal transactions
 {:.code-header}
 ***Request***
 
-```HTTP
+```http
 GET /psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
@@ -358,7 +358,7 @@ Content-Type: application/json
 {:.code-header}
 ***Response***
 
-```HTTP
+```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -398,7 +398,7 @@ The `create-reversal` operation will reverse a previously captured payment. To r
 {:.code-header}
 **Request**
 
-```HTTP
+```http
 POST /psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
@@ -432,7 +432,7 @@ The `reversal` resource will be returned, containing information about the newly
 {:.code-header}
 **Response**
 
-```HTTP
+```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -494,7 +494,7 @@ sequenceDiagram
 next_href="other-features" next_title="Next: Other Features" %}
 
 ----------------------------------------------------------
-[payment-description]: /payments/credit-card/after-payment
+[payment-description]: /payments/card/after-payment
 [callback-request]: /payments/invoice/other-features#callback
 [invoice-captures]: #captures
 [invoice-cancellations]: #cancellations

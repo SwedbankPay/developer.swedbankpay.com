@@ -30,7 +30,7 @@ following section.
 Use the [expand][technical-reference-expansion] request parameter to get a
 response that includes one or more expanded sub-resources inlined.
 
-```HTTP
+```http
 Request
 POST /psp/directdebit/payments HTTP/1.1
 Host: api.externalintegration.payex.com
@@ -100,7 +100,7 @@ Content-Type: application/json
 {:.code-header}
 **Response**
 
-```HTTP
+```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -147,7 +147,7 @@ Content-Type: application/json
 
 A payment resource has a set of operations that can be performed on it,
 from its creation to its end.
-The operations available at any given time vary between payment methods and
+The operations available at any given time vary between payment instruments and
 depends on the current state of the payment resource.
 A list of possible operations for Direct Debit Payments and their explanation
 is given below.
@@ -175,7 +175,7 @@ is given below.
 {:.table .table-striped}
 | Property | Description                                                         |
 | :------- | :------------------------------------------------------------------ |
-| href     | The target URI to perform the operation against.                    |
+| `href`     | The target URI to perform the operation against.                    |
 | rel      | The name of the relation the operation has to the current resource. |
 | method   | The HTTP method to use when performing the operation.               |
 
@@ -190,7 +190,7 @@ the given operation.
 | Operation              | Description                                                                                                                         |
 | :--------------------- | :---------------------------------------------------------------------------------------------------------------------------------- |
 | _update-payment-abort_ | [Aborts][technical-reference-abort-payment] the payment before any financial transactions are performed.                            |
-| _redirect-sale_        | Contains the redirect-URI that redirects the consumer to a Swedbank Pay hosted payments page prior to creating a sales transaction. |
+| _redirect-sale_        | Contains the redirect-URI that redirects the consumer to a Swedbank Pay hosted payment page prior to creating a sales transaction. |
 
 ## Direct Debit transactions
 
@@ -204,7 +204,7 @@ specific payment.
 {:.code-header}
 **Request**
 
-```HTTP
+```http
 GET /psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/sales HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
@@ -214,7 +214,7 @@ Content-Type: application/json
 {:.code-header}
 **Response**
 
-```HTTP
+```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -284,7 +284,7 @@ Content-Type: application/json
 #### Create Sales transaction
 
 The sales transaction This is managed either by by redirecting the end-user
-to the hosted payment pages.
+to the hosted payment page.
 
 ### Reversals
 
@@ -294,7 +294,7 @@ specific payment.
 {:.code-header}
 **Request**
 
-```HTTP
+```http
 GET /psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
@@ -304,7 +304,7 @@ Content-Type: application/json
 {:.code-header}
 **Response**
 
-```HTTP
+```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -351,7 +351,7 @@ A callback request will follow from PayEx.
 {:.code-header}
 **Request**
 
-```HTTP
+```http
 POST /psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
@@ -378,7 +378,7 @@ Content-Type: application/json
 {:.code-header}
 **Response**
 
-```HTTP
+```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 

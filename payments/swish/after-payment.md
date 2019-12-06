@@ -19,9 +19,9 @@ sidebar:
 {% include alert.html type="warning"
                       icon="warning"
                       header="Site under development"
-                      body="This section of the Developer Portal is under construction and
-                      should not be used to integrate against Swedbank Pay's
-                      APIs yet." %}
+                      body="This section of the Developer Portal is under
+                      construction and should not be used to integrate against
+                      Swedbank Pay's APIs yet." %}
 
 ## Payment Resource
 
@@ -31,19 +31,19 @@ The `payment` resource and all general sub-resources can be found in the
 ### Create Payment
 
 To create a Swish payment, you perform an HTTP `POST` against the
-`/psp/swish/payments` resource. Please read the
-[general information][general-http-info] on how to compose a valid HTTP request before proceeding.
+`/psp/swish/payments` resource. Please read the [general
+information][general-http-info] on how to compose a valid HTTP request before
+proceeding.
 
-An example of a payment creation request is provided below.
-Each individual Property of the JSON document is described in the
-following section.
-Use the [expand][technical-reference-expand] request parameter to get a
-response that includes one or more expanded sub-resources inlined.
+An example of a payment creation request is provided below. Each individual
+Property of the JSON document is described in the following section. Use the
+[expand][technical-reference-expand] request parameter to get a response that
+includes one or more expanded sub-resources inlined.
 
 {:.code-header}
 **Request**
 
-```HTTP
+```http
 POST /psp/swish/payments HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
@@ -121,7 +121,7 @@ Content-Type: application/json
 {:.code-header}
 **Response**
 
-```HTTP
+```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -168,7 +168,7 @@ Content-Type: application/json
 
 A payment resource has a set of operations that can be performed on it,
 from its creation to its completion.
-The operations available at any given time vary between payment methods and
+The operations available at any given time vary between payment instruments and
 depends on the current state of the payment resource.
 A list of possible operations for Swish Payments and their explanation
 is given below.
@@ -224,7 +224,7 @@ request for the given operation.
 | :--------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `update-payment-abort` | [Aborts][technical-reference-abort] the payment before any financial transactions are performed.                                                            |
 | `create-sale`          | Creates a `sales` transaction without redirection to a payment page (**Direct scenario**). `Msisdn` is required in e-commerce scenario.                     |
-| `redirect-sale`        | Contains the redirect-URI that redirects the consumer to a Swedbank Pay hosted payments page prior to creating a sales transaction (**Redirect scenario**). |
+| `redirect-sale`        | Contains the redirect-URI that redirects the consumer to a Swedbank Pay hosted payment page prior to creating a sales transaction (**Redirect scenario**). |
 | `view-payment`         | Contains the URI of the JavaScript used to create a Hosted View iframe directly without redirecting the consumer to separate payment page.                  |
 
 ### Swish transactions
@@ -239,7 +239,7 @@ on a specific payment.
 {:.code-header}
 **Request**
 
-```HTTP
+```http
 GET /psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/sales HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
@@ -249,7 +249,7 @@ Content-Type: application/json
 {:.code-header}
 **Response**
 
-```HTTP
+```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -289,7 +289,7 @@ Content-Type: application/json
 
 In e-commerce the consumer/end-user's `msisdn`(mobile number) is required.
 This is managed either by sending a `POST` request as seen below,
-or by redirecting the end-user to the hosted payment pages.
+or by redirecting the end-user to the hosted payment page.
 The `msisdn` is only required for e-commerce. In the m-commerce flow,
 the consumer uses the device that hosts the Swish app to manage the purchase,
 making `msisdn` unneccessary.
@@ -297,7 +297,7 @@ making `msisdn` unneccessary.
 {:.code-header}
 **e-commerce Request**
 
-```HTTP
+```http
 POST /psp/swish/payments/<paymentId>/sales HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
@@ -313,7 +313,7 @@ Content-Type: application/json
 {:.code-header}
 **e-commerce Response**
 
-```HTTP
+```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -344,7 +344,7 @@ Content-Type: application/json
 {:.code-header}
 **m-commerce Request**
 
-```HTTP
+```http
 POST /psp/swish/payments/<paymentId>/sales HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
@@ -359,7 +359,7 @@ Content-Type: application/json
 {:.code-header}
 **m-commerce Response**
 
-```HTTP
+```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -408,7 +408,7 @@ on a specific payment.
 {:.code-header}
 **Request**
 
-```HTTP
+```http
 GET /psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
@@ -418,7 +418,7 @@ Content-Type: application/json
 {:.code-header}
 **Response**
 
-```HTTP
+```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -465,7 +465,7 @@ A callback request will follow from Swedbank Pay.
 {:.code-header}
 **Request**
 
-```HTTP
+```http
 POST /psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
@@ -492,7 +492,7 @@ Content-Type: application/json
 {:.code-header}
 **Response**
 
-```HTTP
+```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -527,12 +527,12 @@ Content-Type: application/json
 
 ## Options after posting a payment
 
-* **If CallbackURL is set**: Whenever changes to the payment occur a
-    [Callback request][technical-reference-callback] will be posted to the
-    callbackUrl, which was generated when the payment was created.
+* **If CallbackURL is set**: Whenever changes to the payment occur a [Callback
+    request][technical-reference-callback] will be posted to the callbackUrl,
+    which was generated when the payment was created.
 * You can create a reversal transactions by implementing the Reversal request.
-    You can also access and reverse a payment through your merchant pages
-    in the [Swedbank Pay admin portal][payex-admin-portal].
+    You can also access and reverse a payment through your merchant pages in the
+    [Swedbank Pay admin portal][payex-admin-portal].
 
 ### Abort
 
@@ -570,12 +570,10 @@ completed sales transaction.
 
 ```mermaid
 sequenceDiagram
-  Merchant->>PAYEX: POST <Swish reversal>
-  Activate Merchant
-  Activate PAYEX
-  PAYEX-->>Merchant: transaction resource
-  Deactivate PAYEX
-  Deactivate Merchant
+  activate Merchant
+  Merchant->>-SwedbankPay: POST <Swish reversal>
+  activate SwedbankPay
+  SwedbankPay-->>-Merchant: transaction resource
 ```
 
 ### Capture

@@ -1,20 +1,18 @@
 ---
-title: Swedbank Pay Payments Credit Card Seamless View
+title: Swedbank Pay Card Payments – Seamless View
 sidebar:
   navigation:
-  - title: Credit Card Payments
+  - title: Card Payments
     items:
-    - url: /payments/credit-card/
+    - url: /payments/card/
       title: Introduction
-    - url: /payments/credit-card/redirect
+    - url: /payments/card/redirect
       title: Redirect
-    - url: /payments/credit-card/seamless-view
+    - url: /payments/card/seamless-view
       title: Seamless View
-    - url: /payments/credit-card/direct
-      title: Direct
-    - url: /payments/credit-card/after-payment
+    - url: /payments/card/after-payment
       title: After Payment
-    - url: /payments/credit-card/other-features
+    - url: /payments/card/other-features
       title: Other Features
 ---
 
@@ -24,47 +22,115 @@ sidebar:
 
 ## Introduction
 
-* When properly set up in your merchant/webshop site and the payer starts the
-  purchase process, you need to make a POST request towards Swedbank Pay with
-  your Purchase information. This will generate a payment object with a unique
-  `paymentID`. You will receive a **JavaScript source** in response.
-* You need to embed the script source on your site to create a
-  hosted-view in an iFrame(see screenshot below); so that she can enter the
-  credit card details in a secure Swedbank Pay hosted environment.
-* Swedbank Pay will handle 3-D Secure authentication when this is required.
-* Swedbank Pay will display directly in the iFrame - one of two specified URLs,
-  depending on whether the payment session is followed through completely or
-  cancelled beforehand. Please note that both a successful and rejected payment
-  reach completion, in contrast to a cancelled payment.
-* When you detect that the payer reach your `completeUrl` , you need to do a
-  `GET` request to receive the state of the transaction, containing the
-  `paymentID` generated in the first step, to receive the state of the
-  transaction.
+Seamless View provides an integration of the payment process directly on your
+website. This solution offers a smooth shopping experience with Swedbank Pay
+payment pages seamlessly integrated in an `iframe` on your website. The costumer
+does not need to leave your webpage, since we are handling the payment in the
+`iframe` on your page.
+
+![screenshot of the hosted view card payment page][hosted-view-card]{:height="250px" width="660px"}
+
+## Purchase Flow
+
+```mermaid
+sequenceDiagram
+    participant Payer
+    participant Merchant
+    participant SwedbankPay as Swedbank Pay
+
+    activate Payer
+    Payer->>-Merchant: start purchase
+    activate Merchant
+    note left of Payer: First API request
+    Merchant->>-SwedbankPay: POST /psp/creditcard/payments
+    activate SwedbankPay
+    SwedbankPay-->>-Merchant: rel: view-authorization ①
+    activate Merchant
+    Merchant-->>-Payer: authorization page
+    activate Payer
+    note left of Payer: Open iframe ②
+    Payer->>Payer: Input creditcard information
+    Payer->>-SwedbankPay: Show Consumer UI page in iframe - Authorization ③
+    activate SwedbankPay
+        opt Card supports 3-D Secure
+        SwedbankPay-->>-Payer: redirect to IssuingBank
+        activate Payer
+        Payer->>IssuingBank: 3-D Secure authentication process
+        activate IssuingBank
+        IssuingBank->>-Payer: 3-D Secure authentication process
+        Payer->>-SwedbankPay: access authentication page
+        end
+    SwedbankPay-->>Merchant: Event: OnPaymentComplete ④
+    activate Merchant
+    note left of Merchant: Second API request.
+    Merchant->>-SwedbankPay: GET <payment.id>
+    activate SwedbankPay
+    SwedbankPay-->>-Merchant: rel: view-payment
+    activate Merchant
+    Merchant-->>-Payer: display purchase result
+    activate Payer
+
+        opt Callback is set
+        activate SwedbankPay
+        SwedbankPay->>SwedbankPay: Payment is updated
+        SwedbankPay->>-Merchant: POST Payment Callback
+        end
+```
+
+### Explainations
+
+* ① `rel: view-authorization` is a value in one of the operations, sent as a
+  response from Swedbank Pay to the Merchant.
+* ② `Open iframe` creates the Swedbank Pay hosted iframe.
+* ③ `Show Consumer UI page in iframe` displays the payment window as content
+  inside of the iframe. The consumer can insert card information for
+  authorization.
+* ④ `Event: OnPaymentComplete` is when er payment is complete. Please note that
+  both a successful and rejected payment reach completion, in contrast to a
+  cancelled payment.
+
+### 3-D Secure
+
+Swedbank Pay will handle 3-D Secure authentication when this is required.
+When dealing with credit card payments, 3-D Secure authentication of the
+cardholder is an essential topic. There are two alternative outcome of a credit
+card payment:
+
+1. 3-D Secure enabled - by default, 3-D Secure should be enabled, and Swedbank
+   Pay will check if the card is enrolled with 3-D Secure. This depends on the
+   issuer of the card. If the card is not enrolled with 3-D Secure, no
+   authentication of the cardholder is done.
+2. Card supports 3-D Secure - if the card is enrolled with 3-D Secure, Swedbank
+   Pay will redirect the cardholder to the autentication mechanism that is
+   decided by the issuing bank. Normally this will be done using BankID or
+   Mobile BankID.
 
 ### Payment Url
 
 {% include payment-url.md
-when="at the 3-D Secure verification for Credit Card Payments" %}
+when="at the 3-D Secure verification for Card Payments" %}
 
-## Screenshots
+## Seamless View Back End
 
-You will have an iFramed window on your page where the consumer can enter the
-credit card information.
+When properly set up in your merchant/webshop site and the payer starts the
+purchase process, you need to make a POST request towards Swedbank Pay with your
+Purchase information. This will generate a payment object with a unique
+`paymentID`. You will receive a **JavaScript source** in response.
 
-![screenshot of the hosted view card payment page][hosted-view-card]{:height="250px" width="660px"}
+### Intent
 
-## API Requests
+{% include intent.md %}
 
-The API requests are displayed in the [purchase flow](#purchase-flow-mobile).
+### Operations
+
+The API requests are displayed in the purchase flow above.
 You can [create a card `payment`][create-payment] with following `operation`
 options:
 
-* [Purchase][purchase]
+* [Purchase][purchase] (We use this value in our examples)
 * [Recur][recur]
 * [Payout][payout]
 * [Verify][verify]
-
-Our `payment` example below uses the [`purchase`][purchase] value.
 
 ### Purchase
 
@@ -76,13 +142,7 @@ Property of the JSON document is described in the following section.
 An example of an expanded `POST` request is available in the
 [other features section][purchase].
 
-{% include alert.html type="neutral"
-                      icon="info"
-                      body="Please note that in order to minimize the risk for
-                      a challenge request (Strong Customer Authentication –
-                      “SCA”) on card payments, it's recommended that you add as
-                      much data as possible to the `riskIndicator` object in
-                      the request below." %}
+{% include risk-indicator.md %}
 
 {:.code-header}
 **Request**
@@ -171,14 +231,14 @@ Content-Type: application/json
 |  ✔︎︎︎︎︎  | └➔&nbsp;`userAgent`                   | `string`      | The user agent reference of the consumer's browser - [see user agent definition][user-agent-definition]                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`language`                    | `string`      | nb-NO, sv-SE or en-US.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`urls`                        | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-|          | └─➔&nbsp;`hostUrl`                    | `array`       | The array of URLs valid for embedding of Swedbank Pay Hosted Views. If not supplied, view-operation will not be available.                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+|          | └─➔&nbsp;`hostUrls`                   | `array`       | The array of URLs valid for embedding of Swedbank Pay Hosted Views. If not supplied, view-operation will not be available.                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`completeUrl`                | `string`      | The URL that Swedbank Pay will redirect back to when the payment page is completed.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 |          | └─➔&nbsp;`cancelUrl`                  | `string`      | The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only cancelUrl or `paymentUrl` can be used, not both.                                                                                                                                                                                                                                                                                                                                                                     |
 |          | └─➔&nbsp;`paymentUrl`                 | `string`      | The URI that Swedbank Pay will redirect back to when the view-operation needs to be loaded, to inspect and act on the current status of the payment. Only used in Seamless Views. If both `cancelUrl` and `paymentUrl` is sent, the `paymentUrl` will used.                                                                                                                                                                                                                                                                                                               |
 |          | └─➔&nbsp;`callbackUrl`                | `string`      | The URL that Swedbank Pay will perform an HTTP POST against every time a transaction is created on the payment. See [callback][callback] for details.                                                                                                                                                                                                                                                                                                                                                                                                                     |
 |          | └─➔&nbsp;`logoUrl`                    | `string`      | The URL that will be used for showing the customer logo. Must be a picture with maximum 50px height and 400px width. Require https.                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 |          | └─➔&nbsp;`termsOfServiceUrl`          | `string`      | A URL that contains your terms and conditions for the payment, to be linked on the payment page. Require https.                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`payeenfo`                    | `object`      | The `payeeInfo` contains information about the payee.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`payeeInfo`                    | `object`      | The `payeeInfo` contains information about the payee.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`payeeId`                    | `string`      | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`payeeReference`             | `string(30*)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.                                                                                                                                                                                                                                                                                                                                                                                  |
 |          | └─➔&nbsp;`payeeName`                  | `string`      | The payee name (like merchant name) that will be displayed to consumer when redirected to Swedbank Pay.                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
@@ -268,167 +328,76 @@ Content-Type: application/json
 }
 ```
 
-## Type of authorization - Intent
+The key information in the response is the `view-authorization` operation. You
+will need to embed its `href` in a `<script>` element. The script will enable
+loading the payment page in an `iframe` in our next step.
 
-The intent of the payment identifies how and when the charge will be
-effectuated. This determine the type of transaction used during the payment
-process.
+## Seamless View Front End
 
-* **Authorization (two-phase)**: If you want the credit card to reserve the
-  amount, you will have to specify that the intent of the purchase is
-  Authorization. The amount will be reserved but not charged. You will later
-  (i.e. when you are ready to ship the purchased products) have to make a
-  [Capture][capture] or [Cancel][cancel] request.
-* **AutoCapture (one-phase)**:  If you want the credit card to be charged right
-  away, you will have to specify that the intent of the purchase is
-  `AutoCapture`. The credit card will be charged automatically after
-  authorization and you don't need to do any more financial operations to this
-  purchase.
+You need to embed the script source on your site to create a hosted-view in an
+`iframe`; so that she can enter the credit card details in a secure Swedbank Pay
+hosted environment. A simplified integration has these following steps:
 
-### General
+1. Create a container that will contain the Seamless View iframe: `<div
+   id="SwedbankPay-seamless-view-page">`.
+2. Create a `<script>` source within the container. Embed the `href` value
+   obtained in the `POST` request in the `<script>` element. Example:
 
-* **No 3-D Secure and card acceptance**: There are optional paramers that can be
-  used in relation to 3-D Secure and card acceptance. By default, most credit
-  card agreements with an acquirer will require that you use 3-D Secure for
-  card holder authentication. However, if your agreement allows you to make a
-  card payment without this authentication, or that specific cards can be
-  declined, you may adjust these optional parameters when posting in the
-  payment. This is specified in the technical reference section for creating
-  credit card payments  - you will find the link in the sequence diagram below.
-* **Defining `callbackURL`**: When implementing a scenario, it is optional to
-  set a `callbackURL` in the `POST` request. If `callbackURL` is set Swedbank
-  Pay will send a postback request to this URL when the consumer has fulfilled
-  the payment. [See the Callback API description here][callback].
-
-## Payment Resource
-
-{% include payment-resource.md %}
-
-## Purchase flow
-
-The sequence diagram below shows a high level description of a complete
-purchase, and the requests you have to send to Swedbank Pay. The links will take
-you directly to the corresponding API description.
-
-When dealing with credit card payments, 3-D Secure authentication of the
-cardholder is an essential topic. There are two alternative outcome of a credit
-card payment:
-
-* 3-D Secure enabled - by default, 3-D Secure should be enabled, and Swedbank
-  Pay will check if the card is enrolled with 3-D Secure. This depends on the
-  issuer of the card. If the card is not enrolled with 3-D Secure, no
-  authentication of the cardholder is done.
-* Card supports 3-D Secure - if the card is enrolled with 3-D Secure, Swedbank
-  Pay will redirect the cardholder to the autentication mechanism that is
-  decided by the issuing bank. Normally this will be done using BankID or
-  Mobile BankID.
-
-```mermaid
-sequenceDiagram
-    participant Payer
-    participant Merchant
-    participant SwedbankPay as Swedbank Pay
-
-    activate Payer
-    Payer->>+Merchant: start purchase
-    deactivate Payer
-    Merchant->>+SwedbankPay: POST /psp/creditcard/payments
-    deactivate Merchant
-    note left of Merchant: First API Request
-    SwedbankPay-->>+Merchant: rel: view-authorization
-    deactivate SwedbankPay
-    Merchant-->>+Payer: authorization page
-    deactivate Merchant
-    Payer ->>Payer: Initiate iFrame
-    Payer->>+Merchant: access merchant page
-    deactivate Payer
-    Merchant->>+SwedbankPay: GET <payment.id>
-    deactivate Merchant
-    note left of Merchant: Second API request
-    SwedbankPay-->>+Merchant: rel: redirect-authorization
-    deactivate SwedbankPay
-    Merchant-->>-Payer: display purchase result
+```html
+    <script id="paymentPageScript" src="https://ecom.dev.payex.com/creditcard/core/ scripts/client/px.creditcard.client.js"></script>
 ```
 
-```mermaid
-sequenceDiagram
-    participant Payer
-    participant Merchant
-    participant SwedbankPay as Swedbank Pay
+The previous two steps gives this HTML:
 
-  activate Payer
-  Payer->>+Merchant: start purchase
-  deactivate Payer
-  Merchant->>+SwedbankPay: POST /psp/creditcard/payments
-  deactivate Merchant
-  note left of Payer: First API request
-  SwedbankPay-->+Merchant: payment resource
-  deactivate SwedbankPay
-  Merchant-->>+Payer: authorization page
-  deactivate Merchant
-  Payer->>+SwedbankPay: access authorization page
-  deactivate Payer
-  SwedbankPay-->>+Payer: display purchase information
-  deactivate SwedbankPay
+{:.code-header}
+**HTML**
 
-  Payer->>Payer: input creditcard information
-  Payer->>+SwedbankPay: submit creditcard information
-  deactivate Payer
-  opt Card supports 3-D Secure
-    SwedbankPay-->>+Payer: redirect to IssuingBank
-    deactivate SwedbankPay
-    Payer->>IssuingBank: 3-D Secure authentication process
-    Payer->>+SwedbankPay: access authentication page
-    deactivate Payer
-  end
-  
-  SwedbankPay-->>+Payer: redirect to merchant
-  deactivate SwedbankPay  
-  Payer->>+Merchant: access merchant page
-  deactivate Payer
-  Merchant->>+SwedbankPay: GET <payment.id>
-  deactivate Merchant
-  note left of Merchant: Second API request
-  SwedbankPay-->>+Merchant: rel: redirect-authorization
-  deactivate SwedbankPay
-  Merchant-->>Payer: display purchase result
-  deactivate Merchant
-
-  opt Callback is set
-    activate SwedbankPay
-    SwedbankPay->>SwedbankPay: Payment is updated
-    SwedbankPay->>Merchant: POST Payment Callback
-    deactivate SwedbankPay
-  end
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Swedbank Pay Seamless View is Awesome!</title>
+        <!-- Here you can specify your own javascript file -->
+        <script src=<YourJavaScriptFileHere>></script>
+    </head>
+    <body>
+        <div id="SweddbankPay-seamless-view-page">
+          <script id="paymentPageScript" src="https://ecom.dev.payex.com/creditcard/core/scripts/client/px.creditcard.client.js"></script>
+        </div>
+    </body>
+</html>
 ```
 
-### Options after posting a payment
+Lastly, initiate the Seamless View with a JavaScript call to open the `iframe`
+embedded on your website.
 
-* `Abort`: It is possible to abort the process, if the payment has no successful
-  transactions. [See the PATCH payment description][abort].
-* If the payment shown above is done as a two phase (`Authorization`), you will
-  need to implement the [`Capture`][capture] and [`Cancel`][cancel] requests.
-* For `reversals`, you will need to implement the [Reversal request][reversal].
-* *If `callbackURL` is set:* Whenever changes to the payment occur a
-  [Callback request][callback] will be posted to the `callbackUrl`, which was
-  generated when the payment was created.
+{:.code-header}
+**JavaScript**
+
+```js
+<script language="javascript">
+  payex.hostedView.creditCard().open();
+</script>
+```
 
 {% include iterator.html prev_href="redirect" prev_title="Redirect"
-next_href="direct" next_title="Next: Direct" %}
+next_href="after-payment" next_title="Next: After Payment" %}
 
-[abort]: /payments/credit-card/other-features/#abort
-[callback]: /payments/credit-card/other-features/#callback
-[cancel]: /payments/credit-card/after-payment/#cancellations
-[capture]: /payments/credit-card/after-payment/#Capture
-[create-payment]: /payments/credit-card/other-features/#create-payment
-[expansion]: /payments/credit-card/other-features/#expansion
-[payee-reference]: /payments/credit-card/other-features/#payeereference
-[payout]: /payments/credit-card/other-features/#payout
-[purchase]: /payments/credit-card/other-features/#purchase
-[price-resource]: /payments/credit-card/other-features/#prices
-[recur]: /payments/credit-card/other-features/#recur
-[reversal]: /payments/credit-card/after-payment/#reversals
-[verify]: /payments/credit-card/other-features/#verify
-[create-payment]: /payments/credit-card/other-features/#create-payment
+[payment-page_hosted-view.png]: /assets/screenshots/card/hosted-view/view/macos.png
+[abort]: /payments/card/other-features/#abort
+[after-payment]: /payments/card/after-payment
+[callback]: /payments/card/other-features/#callback
+[cancel]: /payments/card/after-payment/#cancellations
+[capture]: /payments/card/after-payment/#Capture
+[create-payment]: /payments/card/other-features/#create-payment
+[expansion]: /payments/card/other-features/#expansion
+[payee-reference]: /payments/card/other-features/#payeereference
+[payout]: /payments/card/other-features/#payout
+[purchase]: /payments/card/other-features/#purchase
+[price-resource]: /payments/card/other-features/#prices
+[recur]: /payments/card/other-features/#recur
+[reversal]: /payments/card/after-payment/#reversals
+[verify]: /payments/card/other-features/#verify
+[create-payment]: /payments/card/other-features/#create-payment
 [user-agent-definition]: https://en.wikipedia.org/wiki/User_agent
 [hosted-view-card]: /assets/img/payments/hosted-view-card.png

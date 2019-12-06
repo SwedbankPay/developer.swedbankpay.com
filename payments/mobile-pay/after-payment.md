@@ -40,7 +40,7 @@ specific payment.
 {:.code-header}
 **Request**
 
-```HTTP
+```http
 GET /psp/mobilepay/payments/e7919b4f-81a2-4ffb-ec40-08d617d580a2/captures HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
@@ -50,7 +50,7 @@ Content-Type: application/json
 {:.code-header}
 **Response**
 
-```HTTP
+```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -94,7 +94,7 @@ A `capture` transaction - to withdraw money from the payer's mobilepay - can be 
 {:.code-header}
 **Request**
 
-```HTTP
+```http
 POST /psp/mobilepay/payments/e7919b4f-81a2-4ffb-ec40-08d617d580a2/captures HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
@@ -126,7 +126,7 @@ You can return a specific capture transaction by adding the transaction id to
 {:.code-header}
 **Response**
 
-```HTTP
+```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -190,7 +190,7 @@ specific payment.
 {:.code-header}
 **Request**
 
-```HTTP
+```http
 GET /psp/mobilepay/payments/e7919b4f-81a2-4ffb-ec40-08d617d580a2/cancellations HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
@@ -200,7 +200,7 @@ Content-Type: application/json
 {:.code-header}
 **Response**
 
-```HTTP
+```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -336,7 +336,7 @@ You can only cancel a payment - or part of payment - not yet captured.
 {:.code-header}
 **Request**
 
-```HTTP
+```http
 POST /psp/mobilepay/payments/e7919b4f-81a2-4ffb-ec40-08d617d580a2/cancellations HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
@@ -364,7 +364,7 @@ id to the `GET` request.
 {:.code-header}
 **Response**
 
-```HTTP
+```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -419,7 +419,7 @@ specific payment.
 {:.code-header}
 **Request**
 
-```HTTP
+```http
 GET /psp/mobilepay/payments/e7919b4f-81a2-4ffb-ec40-08d617d580a2/reversals HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
@@ -429,7 +429,7 @@ Content-Type: application/json
 {:.code-header}
 **Response**
 
-```HTTP
+```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -475,7 +475,7 @@ captured payment.
 {:.code-header}
 **Request**
 
-```HTTP
+```http
 POST /psp/mobilepay/payments/e7919b4f-81a2-4ffb-ec40-08d617d580a2/reversals HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
@@ -507,7 +507,7 @@ the `GET` request.
 {:.code-header}
 **Response**
 
-```HTTP
+```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 

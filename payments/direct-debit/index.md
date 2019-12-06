@@ -89,7 +89,7 @@ sequenceDiagram
 
   Merchant-->>Consumer: Redirect to bank selection.
   Deactivate Merchant
-  note left of Merchant: Redirect to Swedbank Pay payment pages.
+  note left of Merchant: Redirect to Swedbank Pay Payments.
   Consumer->>PayEx: Select bank
   Activate PayEx
 

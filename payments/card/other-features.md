@@ -1,20 +1,18 @@
 ---
-title: Swedbank Pay Payments Credit Card Other Features
+title: Swedbank Pay Card Payments – Other Features
 sidebar:
   navigation:
-  - title: Credit Card Payments
+  - title: Card Payments
     items:
-    - url: /payments/credit-card/
+    - url: /payments/card/
       title: Introduction
-    - url: /payments/credit-card/redirect
+    - url: /payments/card/redirect
       title: Redirect
-    - url: /payments/credit-card/seamless-view
+    - url: /payments/card/seamless-view
       title: Seamless View
-    - url: /payments/credit-card/direct
-      title: Direct
-    - url: /payments/credit-card/after-payment
+    - url: /payments/card/after-payment
       title: After Payment
-    - url: /payments/credit-card/other-features
+    - url: /payments/card/other-features
       title: Other Features
 ---
 
@@ -26,6 +24,10 @@ sidebar:
 {% include jumbotron.html body="Welcome to Other Features - a subsection of
 Credit Card. This section has extented code examples and features that were not
 covered by the other subsections." %}
+
+## Payment Resource
+
+{% include payment-resource.md %}
 
 ## Create Payment
 
@@ -68,15 +70,12 @@ Content-Type: application/json
 ## Purchase
 
 A `Purchase` payment is a straightforward way to charge the card of the payer.
-It is followed up by posting a capture, cancellation or reversal transaction.
+It is followed up by posting a `capture`, `cancellation` or `reversal` transaction.
 
 An example of a request is provided below. Each individual Property of the JSON
 document is described in the following section.
 
-{% include alert.html type="success" icon="info" body="In order to minimize the
-risk for a challenge request (Strong Customer Authentication – “SCA”) on card
-payments, it's recommended that you add as much data as possible to the
-`riskIndicator` object in the request below." %}
+{% include risk-indicator.md %}
 
 {:.code-header}
 **Request**
@@ -140,31 +139,31 @@ Content-Type: application/json
         "cardholder": {
             "firstName": "firstname/companyname",
             "lastName": "lastname",
-            "email": "string",
-            "msisdn": "string",
-            "homePhoneNumber": "string",
-            "workPhoneNumber": "string",
+            "email": "leia.ahlstrom@swedbankpay.com",
+            "msisdn": "+4673900000",
+            "homePhoneNumber": "homePhoneNumber",
+            "workPhoneNumber": "workPhoneNumber",
             "shippingAddress": {
-                "firstName": "firstname",
-                "lastName": "lastname",
-                "email": "string",
-                "msisdn": "string",
-                "streetAddress": "string",
-                "coAddress": "string",
-                "city": "string",
-                "zipCode": "string",
-                "countryCode": "string"
+                "firstName": "Leia",
+                "lastName": "Ahlstrom",
+                "email": "leia.ahlstrom@swedbankpay.com",
+                "msisdn": "+46739000001",
+                "streetAddress": "Helgestavägen 9",
+                "coAddress": "coAddress",
+                "city": "19792 Bro",
+                "zipCode": "XXXXX",
+                "countryCode": "countryCode"
             },
             "billingAddress": {
                 "firstName": "firstname/companyname",
                 "lastName": "lastname",
-                "email": "string",
-                "msisdn": "string",
-                "streetAddress": "string",
-                "coAddress": "string",
-                "city": "string",
-                "zipCode": "string",
-                "countryCode": "string"
+                "email": "email",
+                "msisdn": "msisdn",
+                "streetAddress": "streetAddress",
+                "coAddress": "coAddress",
+                "city": "city",
+                "zipCode": "zipCode",
+                "countryCode": "countrycode"
             },
             "accountInfo": {
                 "accountAgeIndicator": "01",
@@ -186,11 +185,11 @@ Content-Type: application/json
             "reOrderPurchaseIndicator": "01",
             "pickUpAddress": {
                 "name": "companyname",
-                "streetAddress": "string",
-                "coAddress": "string",
-                "city": "string",
-                "zipCode": "string",
-                "countryCode": "string"
+                "streetAddress": "streetAddress",
+                "coAddress": "coAddress",
+                "city": "city",
+                "zipCode": "zipCode",
+                "countryCode": "countrycode"
             }
         }
     },
@@ -224,7 +223,7 @@ Content-Type: application/json
 |  ✔︎︎︎︎︎  | └➔&nbsp;`userAgent`                      | `string`      | The user agent reference of the consumer's browser - [see user agent definition][user-agent-definition]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`language`                       | `string`      | `nb-NO`, `sv-SE` or `en-US`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 |    ✔︎    | └➔&nbsp;`urls`                           | `object`      | The object containing URLs relevant for the `payment`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-|          | └─➔&nbsp;`hostUrl`                       | `array`       | The array of URLs valid for embedding of Swedbank Pay Hosted Views. If not supplied, view-operation will not be available.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+|          | └─➔&nbsp;`hostUrls`                      | `array`       | The array of URLs valid for embedding of Swedbank Pay Hosted Views. If not supplied, view-operation will not be available.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`completeUrl`                   | `string`      | The URL that Swedbank Pay will redirect back to when the payment page is completed.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 |          | └─➔&nbsp;`cancelUrl`                     | `string`      | The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only `cancelUrl` or `paymentUrl` can be used, not both.                                                                                                                                                                                                                                                                                                                                                                                                           |
 |          | └─➔&nbsp;`paymentUrl`                    | `string`      | The URI that Swedbank Pay will redirect back to when the view-operation needs to be loaded, to inspect and act on the current status of the payment. Only used in Seamless Views. If both `cancelUrl` and `paymentUrl` is sent, the `paymentUrl` will used.                                                                                                                                                                                                                                                                                                                                                       |
@@ -365,7 +364,7 @@ through a previous payment in order to charge the same card.
 {:.code-header}
 **Request**
 
-```HTTP
+```http
 POST /psp/creditcard/payments HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
@@ -409,10 +408,9 @@ Content-Type: application/json
   acquiring number to ensure that payout transactions and regular card
   transactions are kept separate.
 * You need to have the 3-D Secure protocol enabled.
-* The service is available both through hosted payment pages and through direct
-  API integration.
-* The current implementation is only available for gaming transactions (Merchant
-  MCC: 7995).
+* The service is available through a Swedbank Pay hosted payment page.
+* The current implementation is only available for gaming transactions (
+  [MCC][mcc]: 7995).
 * The payout service is not a part of Swedbank Pay Settlement Service.
 
 ### API requests
@@ -527,7 +525,7 @@ Please note that all boolean credit card attributes involving rejection of
 certain card types are optional and requires enabling on the contract with
 Swedbank Pay." %}
 
-### Verification through Swedbank Pay Payment Pages
+### Verification through Swedbank Pay Payments
 
 * When properly set up in your merchant/webshop site and the payer initiates a
   verification operation, you make a `POST` request towards Swedbank Pay with
@@ -688,26 +686,65 @@ credit card payment:
   decided by the issuing bank. Normally this will be done using BankID or Mobile
   BankID.
 
-## Payment Orders
+```mermaid
+sequenceDiagram
+    participant Payer
+    participant Merchant
+    participant SwedbankPay as Swedbank Pay
+    participant IssuingBank
 
-{% include payment-order-get.md %}
+  activate Payer
+  Payer->>+Merchant: start verification
+  deactivate Payer
+  Merchant->>+SwedbankPay: POST /psp/creditcard/payments(operation=VERIFY)
+  deactivate Merchant
+  note left of Payer: First API request
+  SwedbankPay-->+Merchant: payment resource
+  deactivate SwedbankPay
+  Merchant-->>+Payer: redirect to verification page
+  deactivate Merchant
+  Payer->>+SwedbankPay: access verification page
+  deactivate Payer
+  note left of Payer: redirect to SwedbankPay<br>(If Redirect scenario)
+  SwedbankPay-->>+Payer: display purchase information
+  deactivate SwedbankPay
 
-{% include transactions-reference.md %}
+  Payer->>Payer: input creditcard information
+  Payer->>+SwedbankPay: submit creditcard information
+  deactivate Payer
+  opt Card supports 3-D Secure
+    SwedbankPay-->>Payer: redirect to IssuingBank
+    deactivate SwedbankPay
+    Payer->>IssuingBank: 3-D Secure authentication process
+    Payer->>+SwedbankPay: access authentication page
+    deactivate Payer
+  end
 
-{% include operations-reference.md %}
+  SwedbankPay-->>+Payer: redirect to merchant
+  deactivate SwedbankPay
+  note left of Payer: redirect back to merchant<br>(If Redirect scenario)
+
+  Payer->>+Merchant: access merchant page
+  Merchant->>+SwedbankPay: GET /psp/creditcard/payments/<paymentorder.id>
+  deactivate Merchant
+  note left of Merchant: Second API request
+  SwedbankPay-->>+Merchant: rel: redirect-authorization
+  deactivate SwedbankPay
+  Merchant-->>Payer: display purchase result
+  deactivate Merchant
+
+  opt Callback is set
+    activate SwedbankPay
+    SwedbankPay->>SwedbankPay: Payment is updated
+    SwedbankPay->>Merchant: POST Payment Callback
+    deactivate SwedbankPay
+  end
+```
 
 ### Create authorization transaction
 
-The `direct-authorization` operation creates an authorization transaction
-directly whilst the `redirect-authorization`operation redirects the consumer to
-Swedbank Pay Payment pages where the payment is authorized.
-
-{% include alert.html type="warning" icon="warning" header="Note" body="In order
-                      to use the `direct-authorization` operation, the servers
-                      and application involved in retrieving and transferring
-                      the credit card number from the payer to Swedbank Pay
-                      needs to be [PCI
-                      DSS](https://www.pcisecuritystandards.org/) certified." %}
+The `redirect-authorization` operation redirects the consumer to
+Swedbank Pay Payments where the payment is authorized.
 
 {code-header}
 **Request**
@@ -819,12 +856,13 @@ payment"  %}
 
 [purchase]: #purchase
 [user-agent-definition]: https://en.wikipedia.org/wiki/User_agent
-[cancel]: /payments/credit-card/after-payment/#cancellations
-[capture]: /payments/credit-card/after-payment/#Capture
-[callback]: /payments/credit-card/other-features/#callback
-[price-resource]: /payments/credit-card/other-features/#prices
-[redirect]: /payments/credit-card/redirect
-[hosted-view]: /payments/credit-card/seamless-view
+[cancel]: /payments/card/after-payment/#cancellations
+[capture]: /payments/card/after-payment/#Capture
+[callback]: /payments/card/other-features/#callback
+[mcc]: https://en.wikipedia.org/wiki/Merchant_category_code
+[price-resource]: /payments/card/other-features/#prices
+[redirect]: /payments/card/redirect
+[hosted-view]: /payments/card/seamless-view
 [one-click-payments]: #one-click-payments
 [split-settlement]: #split-settlement
 [settlement-and-reconciliation]: #settlement-and-reconciliation

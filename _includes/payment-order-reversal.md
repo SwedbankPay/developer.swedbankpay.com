@@ -1,5 +1,5 @@
 If we want to reverse a previously captured amount, we need to perform
-`create-paymentorder-reversal` against the accompanying href returned in the
+`create-paymentorder-reversal` against the accompanying `href` returned in the
 `operations` list. See the abbreviated request and response below:
 
 {:.code-header}

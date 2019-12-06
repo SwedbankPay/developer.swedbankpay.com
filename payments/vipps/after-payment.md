@@ -35,7 +35,7 @@ response that includes one or more expanded sub-resources inlined.
 {:.code-header}
 **Request**
 
-```HTTP
+```http
 POST /psp/vipps/payments HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
@@ -110,13 +110,13 @@ Content-Type: application/json
 |          | └─➔&nbsp;`payeeName`         | `string`     | The payee name (like merchant name) that will be displayed to consumer when redirected to PayEx.                                                                                                            |
 |          | └─➔&nbsp;`productCategory`   | `strin`      | A product category or number sent in from the payee/merchant. This is not validated by PayEx, but will be passed through the payment process and may be used in the settlement process.                     |
 |          | └─➔&nbsp;`orderReference`    | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                     |
-|          | └─➔&nbsp;`prefillInfo`       | `string`     | The mobile number that will be pre-filled in the Swedbank Pay payment pages. The consumer may change this number in the UI.                                                                                 |
+|          | └─➔&nbsp;`prefillInfo`       | `string`     | The mobile number that will be pre-filled in the Swedbank Pay Payments. The consumer may change this number in the UI.                                                                                 |
 |          | └─➔&nbsp;`subsite`           | `string(40)` | The `subsite` field can be used to perform split settlement on the payment. The `subsites` must be resolved with Swedbank Pay reconciliation before being used.                                             |
 `
 {:.code-header}
 **Response**
 
-```HTTP
+```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -244,7 +244,7 @@ the given operation.
 | Operation                | Description                                                                                      |
 | :----------------------- | :----------------------------------------------------------------------------------------------- |
 | `update-payment-abort`   | [Aborts][technical-reference-abort] the payment before any financial transactions are performed. |
-| `redirect-authorization` | Used to redirect the consumer to Swedbank Pay payment pages and the authorization UI.            |
+| `redirect-authorization` | Used to redirect the consumer to Swedbank Pay Payments and the authorization UI.            |
 | `create-capture`         | Creates a [`capture`][technical-reference-capture].                                              |
 | `create-cancellation`    | Creates a [`cancellation`][technical-reference-cancel].                                          |
 | `create-reversal`        | Creates a [`reversal`][technical-reference-reverse].                                             |
@@ -261,7 +261,7 @@ transactions made on a specific payment.
 {:.code-header}
 **Request**
 
-```HTTP
+```http
 GET /psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/authorizations HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
@@ -271,7 +271,7 @@ Content-Type: application/json
 {:.code-header}
 **Response**
 
-```HTTP
+```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -317,7 +317,7 @@ You can return a specific authorization transaction by adding the transaction id
 {:.code-header}
 **Request**
 
-```HTTP
+```http
 GET /psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/authorizations/<transactionId> HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
@@ -327,7 +327,7 @@ Content-Type: application/json
 {:.code-header}
 **Response**
 
-```HTTP
+```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -379,7 +379,7 @@ Content-Type: application/json
 {:.code-header}
 **Response**
 
-```HTTP
+```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -426,7 +426,7 @@ A `capture` transaction can be created after a completed authorization by perfor
 {:.code-header}
 **Request**
 
-```HTTP
+```http
 POST /psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/captures HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
@@ -458,7 +458,7 @@ the `GET` request.
 {:.code-header}
 **Response**
 
-```HTTP
+```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -499,7 +499,7 @@ specific payment.
 {:.code-header}
 **Request**
 
-```HTTP
+```http
 GET /psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/cancellations HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
@@ -509,7 +509,7 @@ Content-Type: application/json
 {:.code-header}
 **Response**
 
-```HTTP
+```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -556,7 +556,7 @@ You can only cancel a payment - or part of payment - not yet captured.
 {:.code-header}
 **Request**
 
-```HTTP
+```http
 POST /psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/cancellations HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
@@ -581,7 +581,7 @@ The `cancel` resource contains information about a cancellation transaction made
 {:.code-header}
 **Response**
 
-```HTTP
+```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 {
@@ -621,7 +621,7 @@ on a specific payment.
 {:.code-header}
 **Request**
 
-```HTTP
+```http
 GET /psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/reversals HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
@@ -631,7 +631,7 @@ Content-Type: application/json
 {:.code-header}
 **Response**
 
-```HTTP
+```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 {
@@ -676,7 +676,7 @@ captured payment.
 {:.code-header}
 **Request**
 
-```HTTP
+```http
 POST /psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/reversals HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
@@ -708,7 +708,7 @@ to the `GET` request.
 {:.code-header}
 **Response**
 
-```HTTP
+```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 

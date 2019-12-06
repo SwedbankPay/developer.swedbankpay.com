@@ -46,7 +46,7 @@ sequenceDiagram
 
 ## Operations
 
-Most payment methods are two-phase payments –
+Most payment instruments are two-phase payments –
 in which a successful payment order will result in an authorized transaction –
 that must be followed up by a capture or cancellation transaction in a later
 stage. One-phase payments like Swish are settled directly without the option to
@@ -57,7 +57,7 @@ capture or cancel. For a full list of the available operations, see the
 | Operation                          | Description                                                                                                                                                                                                                                                                    |
 | :--------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `create-paymentorder-capture`      | The second part of a two-phase transaction where the authorized amount is sent from the payer to the payee. It is possible to do a part-capture on a subset of the authorized amount. Several captures on the same payment are possible, up to the total authorization amount. |
-| `create-paymentorder-cancellation` | Used to cancel authorized and not yet captured transactions. If a cancellation is performed after doing a part-capture, it will only affect the not yet captured authorization amount.                                                                                         |
+| `create-paymentorder-cancel` | Used to cancel authorized and not yet captured transactions. If a cancellation is performed after doing a part-capture, it will only affect the not yet captured authorization amount.                                                                                         |
 | `create-paymentorder-reversal`     | Used to reverse a payment. It is only possible to reverse a payment that has been captured and not yet reversed.                                                                                                                                                               |
 
 To identify the operations that are available we need to do a `GET` request
@@ -102,7 +102,7 @@ Content-Type: application/json
         {
             "method": "POST",
             "href": "https://api.externalintegration.payex.com/psp/paymentorders/b80be381-b572-4f1e-9691-08d5dd095bc4/cancellations",
-            "rel": "create-paymentorder-cancellation",
+            "rel": "create-paymentorder-cancel",
             "contentType": "application/json"
         },
         {

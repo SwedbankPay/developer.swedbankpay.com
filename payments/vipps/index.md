@@ -30,7 +30,7 @@ or more expanded sub-resources inlined.
 {:.code-header}
 **Request**
 
-```HTTP
+```http
 POST /psp/vipps/payments HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
@@ -102,13 +102,13 @@ Content-Type: application/json
 |          | `payeeInfo.payeeName`            | `string`     | The payee name (like merchant name) that will be displayed to consumer when redirected to PayEx.                                                                                                                                                                                   |
 |          | `payeeInfo.productCategory`      | `string`     | A product category or number sent in from the payee/merchant. This is not validated by PayEx, but will be passed through the payment process and may be used in the settlement process.                                                                                            |
 |          | `payeeInfo.orderReference`       | `string(50)` | The order reference should reflet the order reference found in the merchant's systems.                                                                                                                                                                                             |
-|          | `payeeInfo.prefillInfo`          | `string`     | The mobile number that will be prefilled in the Swedbank Pay payment pages. The consumer may change this number in the UI.                                                                                                                                                         |
+|          | `payeeInfo.prefillInfo`          | `string`     | The mobile number that will be prefilled in the Swedbank Pay Payments. The consumer may change this number in the UI.                                                                                                                                                         |
 |          | `payeeInfo.subsite`              | `string(40)  | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.                                                                                                                        |
 
 {:.code-header}
 **Response**
 
-```HTTP
+```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -239,7 +239,7 @@ the given operation.
 | Operation                | Description                                                                           |
 | :----------------------- | :------------------------------------------------------------------------------------ |
 | `update-payment-abort`   | [Aborts][abort] the payment before any financial transactions are performed.          |
-| `redirect-authorization` | Used to redirect the consumer to Swedbank Pay payment pages and the authorization UI. |
+| `redirect-authorization` | Used to redirect the consumer to Swedbank Pay Payments and the authorization UI. |
 | `create-capture`         | Creates a [capture transaction](#Captures).                                           |
 | `create-cancellation`    | Creates a [cancellation transaction](#Cancellations).                                 |
 | `create-reversal`        | Creates a [reversal transaction](#Reversals).                                         |
@@ -258,7 +258,7 @@ transactions made on a specific payment.
 {:.code-header}
 **Request**
 
-```HTTP
+```http
 GET /psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/authorizations HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
@@ -268,7 +268,7 @@ Content-Type: application/json
 {:.code-header}
 **Response**
 
-```HTTP
+```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -315,7 +315,7 @@ transaction id to the GET request.
 {:.code-header}
 **Request**
 
-```HTTP
+```http
 GET /psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/authorizations/<transactionId> HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
@@ -325,7 +325,7 @@ Content-Type: application/json
 {:.code-header}
 **Response**
 
-```HTTP
+```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -367,7 +367,7 @@ The captures resource lists the capture transactions (one or more) on a specific
 {:.code-header}
 **Request**
 
-```HTTP
+```http
 GET /psp/vipps/vipps/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/captures HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
@@ -377,7 +377,7 @@ Content-Type: application/json
 {:.code-header}
 **Response**
 
-```HTTP
+```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -425,7 +425,7 @@ performing the create-capture operation.
 {:.code-header}
 **Request**
 
-```HTTP
+```http
 POST /psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/captures HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
@@ -457,7 +457,7 @@ to the `GET` request.
 {:.code-header}
 **Response**
 
-```HTTP
+```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -497,7 +497,7 @@ The cancellations resource lists the cancellation transactions on a specific pay
 {:.code-header}
 **Request**
 
-```HTTP
+```http
 GET /psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/cancellations HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
@@ -507,7 +507,7 @@ Content-Type: application/json
 {:.code-header}
 **Response**
 
-```HTTP
+```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -554,7 +554,7 @@ You can only cancel a payment - or part of payment - not yet captured.
 {:.code-header}
 **Request**
 
-```HTTP
+```http
 POST /psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/cancellations HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
@@ -582,7 +582,7 @@ transaction id to the GET request.
 {:.code-header}
 **Response**
 
-```HTTP
+```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -623,7 +623,7 @@ specific payment.
 {:.code-header}
 **Request**
 
-```HTTP
+```http
 GET /psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/reversals HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
@@ -633,7 +633,7 @@ Content-Type: application/json
 {:.code-header}
 **Response**
 
-```HTTP
+```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -679,7 +679,7 @@ captured payment.
 {:.code-header}
 **Request**
 
-```HTTP
+```http
 POST /psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/reversals HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
@@ -711,7 +711,7 @@ the `GET` request.
 {:.code-header}
 **Response**
 
-```HTTP
+```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 

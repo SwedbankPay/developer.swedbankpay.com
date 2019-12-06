@@ -16,8 +16,8 @@ sidebar:
       title: Other Features
 ---
 
-{% include jumbotron.html body="Vipps is a two-phase payment method supported
-by the major norwegian banks. In the redirect to Swedbank Pay payment pages
+{% include jumbotron.html body="Vipps is a two-phase payment instrument supported
+by the major norwegian banks. In the redirect to Swedbank Pay Payments
 scenario, Swedbank Pay receives a mobile number (MSISDN) from the payer through
 Swedbank Pay Payments. Swedbank Pay performs a payment that the payer must
 confirm through the Vipps mobile app." %}
@@ -43,16 +43,16 @@ confirm through the Vipps mobile app." %}
 
 ### Payment Url
 
-{% include payment-url.md when="selecting Vipps as payment method" %}
+{% include payment-url.md when="selecting Vipps as payment instrument" %}
 
 ## Screenshots
 
-You redirect the payer to Swedbank Pay hosted payment pages to collect the
+You redirect the payer to Swedbank Pay hosted payment page to collect the
 consumers mobile number.
 
-![Vipps mobile payment pages]
+![Vipps mobile Payments]
 [Vipps-screenshot-1]{:width="426px" :height="632px"}
-![Vipps payment pages][Vipps-screenshot-2]{:width="427px" :height="694px"}
+![Vipps Payments][Vipps-screenshot-2]{:width="427px" :height="694px"}
 
 ### API Requests
 
