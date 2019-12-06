@@ -404,7 +404,7 @@ Content-Type: application/json
   acquiring number to ensure that payout transactions and regular card
   transactions are kept separate.
 * You need to have the 3-D Secure protocol enabled.
-* The service is available both through hosted payment page.
+* The service is available through a Swedbank Pay hosted payment page.
 * The current implementation is only available for gaming transactions (
   [MCC][mcc]: 7995).
 * The payout service is not a part of Swedbank Pay Settlement Service.
