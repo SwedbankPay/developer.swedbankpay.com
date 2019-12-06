@@ -739,16 +739,8 @@ sequenceDiagram
 
 ### Create authorization transaction
 
-The `direct-authorization` operation creates an authorization transaction
-directly whilst the `redirect-authorization`operation redirects the consumer to
+The `redirect-authorization`operation redirects the consumer to
 Swedbank Pay Payments where the payment is authorized.
-
-{% include alert.html type="warning" icon="warning" header="Note" body="In order
-                      to use the `direct-authorization` operation, the servers
-                      and application involved in retrieving and transferring
-                      the credit card number from the payer to Swedbank Pay
-                      needs to be [PCI
-                      DSS](https://www.pcisecuritystandards.org/) certified." %}
 
 {code-header}
 **Request**
