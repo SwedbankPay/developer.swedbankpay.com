@@ -47,7 +47,7 @@ does not need to leave your webpage, since we are handling the payment in the
   `paymentID` generated in the first step, to receive the state of the
   transaction.
 
-The sequence diagram below illustrates the purchase flow:
+## Purchase Flow
 
 ```mermaid
 sequenceDiagram
@@ -91,6 +91,26 @@ sequenceDiagram
         SwedbankPay->>-Merchant: POST Payment Callback
         end
 ```
+
+### 3-D Secure
+
+When dealing with credit card payments, 3-D Secure authentication of the
+cardholder is an essential topic. There are two alternative outcome of a credit
+card payment:
+
+* 3-D Secure enabled - by default, 3-D Secure should be enabled, and Swedbank
+  Pay will check if the card is enrolled with 3-D Secure. This depends on the
+  issuer of the card. If the card is not enrolled with 3-D Secure, no
+  authentication of the cardholder is done.
+* Card supports 3-D Secure - if the card is enrolled with 3-D Secure, Swedbank
+  Pay will redirect the cardholder to the autentication mechanism that is
+  decided by the issuing bank. Normally this will be done using BankID or Mobile
+  BankID.
+
+### Payment Url
+
+{% include payment-url.md
+when="at the 3-D Secure verification for Card Payments" %}
 
 ## Seamless View Back End
 
@@ -313,17 +333,37 @@ loading the payment page in an `iframe` in our next step.
 
 ## Seamless View Front End
 
-You need to prepare your front end in order to integrate the payment page script. A simplified integration has these three steps:
+You need to prepare your front end in order to integrate the payment page
+script. A simplified integration has these following steps:
 
-* Create a container that will contain the Seamless View iframe: `<div id="SwedbankPay-hosted-payment-page">.
+* Create a container that will contain the Seamless View iframe: `<div
+  id="SwedbankPay-seamless-view-page">.
 * Create a `<script>` source within the container. Embed the `href` value
-   obtained in the `POST` request. Example:
+  obtained in the `POST` request in the `<script>` element. Example:
+
+```html
+    <script id="paymentPageScript" src="https://ecom.dev.payex.com/creditcard/core/ scripts/client/px.creditcard.client.js?token=123456123412341234123456789012"></script>
+```
+
+* The previous two steps gives this HTML:
 
 {:.code-header}
-**JavaScript**
+**HTML**
 
-```js
-    <script id="paymentPageScript" src="https://ecom.dev.payex.com/creditcard/core/ scripts/client/px.creditcard.client.js?token=123456123412341234123456789012"></script>
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Swedbank Pay Seamless View is Awesome!</title>
+        <!-- Here you can specify your own javascript file -->
+        <script src=<YourJavaScriptFileHere></script>
+    </head>
+    <body>
+        <div id="SweddbankPay-seamless-view-page">
+          <script id="paymentPageScript" src="https://ecom.dev.payex.com/creditcard/core/ scripts/client/px.creditcard.client.js?token=123456123412341234123456789012"></script>
+        </div>
+    </body>
+</html>
 ```
 
 * Lastly, initiate the Seamless View with a JavaScript call to open the
@@ -334,49 +374,9 @@ You need to prepare your front end in order to integrate the payment page script
 
 ```js
     <script language="javascript">
-      payex.hostedView.page(configuration).open();
+      payex.hostedView.creditCard().open();
     </script>
 ```
-
-### General
-
-{% include card-general.md %}
-
-## Payment Resource
-
-{% include payment-resource.md %}
-
-### Payment Url
-
-{% include payment-url.md
-when="at the 3-D Secure verification for Credit Card Payments" %}
-
-## Purchase flow
-
-When dealing with credit card payments, 3-D Secure authentication of the
-cardholder is an essential topic. There are two alternative outcome of a credit
-card payment:
-
-* 3-D Secure enabled - by default, 3-D Secure should be enabled, and Swedbank
-  Pay will check if the card is enrolled with 3-D Secure. This depends on the
-  issuer of the card. If the card is not enrolled with 3-D Secure, no
-  authentication of the cardholder is done.
-* Card supports 3-D Secure - if the card is enrolled with 3-D Secure, Swedbank
-  Pay will redirect the cardholder to the autentication mechanism that is
-  decided by the issuing bank. Normally this will be done using BankID or Mobile
-  BankID.
-
-
-### Options after posting a payment
-
-* `Abort`: It is possible to abort the process, if the payment has no successful
-  transactions. [See the Abort payment description][abort].
-* If the payment shown above is done as a two phase (`Authorization`), you will
-  need to implement the [`Capture`][capture] and [`Cancel`][cancel] requests.
-* For `reversals`, you will need to implement the [Reversal request][reversal].
-* *If `callbackURL` is set:* Whenever changes to the payment occur a [Callback
-  request][callback] will be posted to the `callbackUrl`, which was generated
-  when the payment was created.
 
 {% include iterator.html prev_href="redirect" prev_title="Redirect"
 next_href="after-payment" next_title="Next: After Payment" %}

@@ -25,6 +25,10 @@ sidebar:
 Credit Card. This section has extented code examples and features that were not
 covered by the other subsections." %}
 
+## Payment Resource
+
+{% include payment-resource.md %}
+
 ## Create Payment
 
 Within the card payments part of the eCommerce API, you can create four kinds
