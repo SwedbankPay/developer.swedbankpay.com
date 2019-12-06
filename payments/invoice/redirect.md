@@ -84,3 +84,4 @@ next_href="after-payment" next_title="Next: After Payment" %}
 [after-payment]: /payments/invoice/after-payment
 [no-png]: /assets/img/no.png
 [se-png]: /assets/img/se.png
+

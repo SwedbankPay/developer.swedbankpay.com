@@ -10,8 +10,6 @@ sidebar:
       title: Redirect
     - url: /payments/card/seamless-view
       title: Seamless View
-    - url: /payments/card/direct
-      title: Direct
     - url: /payments/card/after-payment
       title: After Payment
     - url: /payments/card/other-features
@@ -31,7 +29,7 @@ TODO: This page needs serious clean-up.
 
 {% include jumbotron.html body="**Card Payments** is the most popular, versatile
 and global way to initate a transaction with a customer. Choose between our
-**Seamless View**, **Redirect**, or **Direct** integration options." %}
+**Redirect** and **Seamless view** integration options." %}
 
 {% include alert.html type="neutral"
                       icon="branding_watermark"
@@ -46,14 +44,6 @@ and global way to initate a transaction with a customer. Choose between our
                       Pay hosted payment page where they can perform a safe
                       transaction. The consumer will be redirected back to your
                       website after the completion of the payment." %}
-
-{% include alert.html type="neutral"
-                      icon="open_in_browser"
-                      body="**Direct** integration is a way to implement card
-                      payments without using Swedbank Pay hosted payment pages.
-                      This option allow you to collect the card data on your
-                      page. That implies that the process must be [PCI-DSS
-                      Compliant](https://www.pcisecuritystandards.org/)" %}
 
 * When properly set up in your merchant/webshop site and the payer starts the
   purchase process, you need to make a `POST` request towards Swedbank Pay with

@@ -10,8 +10,6 @@ sidebar:
       title: Redirect
     - url: /payments/card/seamless-view
       title: Seamless View
-    - url: /payments/card/direct
-      title: Direct
     - url: /payments/card/after-payment
       title: After Payment
     - url: /payments/card/other-features
@@ -390,10 +388,11 @@ sequenceDiagram
   when the payment was created.
 
 {% include iterator.html prev_href="redirect" prev_title="Redirect"
-next_href="direct" next_title="Next: Direct" %}
+next_href="after-payment" next_title="Next: After Payment" %}
 
 [payment-page_hosted-view.png]: /assets/screenshots/card/hosted-view/view/macos.png
 [abort]: /payments/card/other-features/#abort
+[after-payment]: /payments/card/after-payment
 [callback]: /payments/card/other-features/#callback
 [cancel]: /payments/card/after-payment/#cancellations
 [capture]: /payments/card/after-payment/#Capture
