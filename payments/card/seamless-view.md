@@ -82,13 +82,7 @@ Property of the JSON document is described in the following section.
 An example of an expanded `POST` request is available in the
 [other features section][purchase].
 
-{% include alert.html type="neutral"
-                      icon="info"
-                      body="Please note that in order to minimize the risk for
-                      a challenge request (Strong Customer Authentication –
-                      “SCA”) on card payments, it's recommended that you add as
-                      much data as possible to the `riskIndicator` object in
-                      the request below." %}
+{% include risk-indicator.md %}
 
 {:.code-header}
 **Request**
@@ -177,7 +171,7 @@ Content-Type: application/json
 |  ✔︎︎︎︎︎  | └➔&nbsp;`userAgent`                   | `string`      | The user agent reference of the consumer's browser - [see user agent definition][user-agent-definition]                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`language`                    | `string`      | nb-NO, sv-SE or en-US.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`urls`                        | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-|          | └─➔&nbsp;`hostUrl`                    | `array`       | The array of URLs valid for embedding of Swedbank Pay Hosted Views. If not supplied, view-operation will not be available.                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+|          | └─➔&nbsp;`hostUrls`                   | `array`       | The array of URLs valid for embedding of Swedbank Pay Hosted Views. If not supplied, view-operation will not be available.                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`completeUrl`                | `string`      | The URL that Swedbank Pay will redirect back to when the payment page is completed.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 |          | └─➔&nbsp;`cancelUrl`                  | `string`      | The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only cancelUrl or `paymentUrl` can be used, not both.                                                                                                                                                                                                                                                                                                                                                                     |
 |          | └─➔&nbsp;`paymentUrl`                 | `string`      | The URI that Swedbank Pay will redirect back to when the view-operation needs to be loaded, to inspect and act on the current status of the payment. Only used in Seamless Views. If both `cancelUrl` and `paymentUrl` is sent, the `paymentUrl` will used.                                                                                                                                                                                                                                                                                                               |
@@ -274,37 +268,13 @@ Content-Type: application/json
 }
 ```
 
-## Type of authorization - Intent
+## Intent
 
-The intent of the payment identifies how and when the charge will be
-effectuated. This determine the type of transaction used during the payment
-process.
-
-* **Authorization (two-phase)**: If you want the credit card to reserve the
-  amount, you will have to specify that the intent of the purchase is
-  Authorization. The amount will be reserved but not charged. You will later
-  (i.e. when you are ready to ship the purchased products) have to make a
-  [Capture][capture] or [Cancel][cancel] request.
-* **AutoCapture (one-phase)**:  If you want the credit card to be charged right
-  away, you will have to specify that the intent of the purchase is
-  `AutoCapture`. The credit card will be charged automatically after
-  authorization and you don't need to do any more financial operations to this
-  purchase.
+{% include intent.md %}
 
 ### General
 
-* **No 3-D Secure and card acceptance**: There are optional paramers that can be
-  used in relation to 3-D Secure and card acceptance. By default, most credit
-  card agreements with an acquirer will require that you use 3-D Secure for card
-  holder authentication. However, if your agreement allows you to make a card
-  payment without this authentication, or that specific cards can be declined,
-  you may adjust these optional parameters when posting in the payment. This is
-  specified in the technical reference section for creating credit card payments
-   - you will find the link in the sequence diagram below.
-* **Defining `callbackURL`**: When implementing a scenario, it is optional to
-  set a `callbackURL` in the `POST` request. If `callbackURL` is set Swedbank
-  Pay will send a postback request to this URL when the consumer has fulfilled
-  the payment. [See the Callback API description here][callback].
+{% include card-general.md %}
 
 ## Payment Resource
 
@@ -422,7 +392,7 @@ sequenceDiagram
 {% include iterator.html prev_href="redirect" prev_title="Redirect"
 next_href="direct" next_title="Next: Direct" %}
 
-[payment-page_hosted-view.png]: /assets/screenshots/credit-card/hosted-view/view/macos.png
+[payment-page_hosted-view.png]: /assets/screenshots/card/hosted-view/view/macos.png
 [abort]: /payments/card/other-features/#abort
 [callback]: /payments/card/other-features/#callback
 [cancel]: /payments/card/after-payment/#cancellations

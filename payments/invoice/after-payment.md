@@ -494,7 +494,7 @@ sequenceDiagram
 next_href="other-features" next_title="Next: Other Features" %}
 
 ----------------------------------------------------------
-[payment-description]: /payments/credit-card/after-payment
+[payment-description]: /payments/card/after-payment
 [callback-request]: /payments/invoice/other-features#callback
 [invoice-captures]: #captures
 [invoice-cancellations]: #cancellations

@@ -384,7 +384,7 @@ for the given operation.
 | `redirect-paymentorder`            | Contains the URI that is used to redirect the consumer to the Swedbank Pay Payments containing the Payment Menu.                                                                                                                                                          |
 | `view-paymentorder`                | Contains the JavaScript `href` that is used to embed the Payment Menu UI directly on the webshop/merchant site.                                                                                                                                                                |
 | `create-paymentorder-capture`      | The second part of a two-phase transaction where the authorized amount is sent from the payer to the payee. It is possible to do a part-capture on a subset of the authorized amount. Several captures on the same payment are possible, up to the total authorization amount. |
-| `create-paymentorder-cancellation` | Used to cancel authorized and not yet captured transactions. If a cancellation is performed after doing a part-capture, it will only affect the not yet captured authorization amount.                                                                                         |
+| `create-paymentorder-cancel` | Used to cancel authorized and not yet captured transactions. If a cancellation is performed after doing a part-capture, it will only affect the not yet captured authorization amount.                                                                                         |
 | `create-paymentorder-reversal`     | Used to reverse a payment. It is only possible to reverse a payment that has been captured and not yet reversed.                                                                                                                                                               |
 
 ### View Payment Order
@@ -631,7 +631,7 @@ with Swedbank Pay in order to work.**
 ### Recurrence Token
 
 * When initiating a `Purchase` payment order, you need to make sure that the
-  attribute `generateRecurrenceToken` is set to `true`. This recurrence token
+  property `generateRecurrenceToken` is set to `true`. This recurrence token
   will stored in the [authorization transaction][transaction]
   sub-resource on the underlying payment resource.
 * When initiating a `Verify` payment order, a recurrence token will be generated
@@ -1386,7 +1386,7 @@ although that might be possible in the future.
 
 [abort]: #operations
 [callback-reference]: /checkout/other-features#callback
-[card-payments-problems]: /payments/credit-card/other-features#problem-messages
+[card-payments-problems]: /payments/card/other-features#problem-messages
 [consumer-reference]: /checkout/other-features#payeereference
 [current-payment]: #current-payment-resource
 [expanding]: #expansion

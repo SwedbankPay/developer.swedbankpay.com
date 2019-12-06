@@ -1,5 +1,5 @@
 If we want to cancel up to the total authorized (not captured) amount, we need
-to perform `create-paymentorder-cancel` against the accompanying href returned
+to perform `create-paymentorder-cancel` against the accompanying `href` returned
 in the `operations` list. See the abbreviated request and response below:
 
 {:.code-header}

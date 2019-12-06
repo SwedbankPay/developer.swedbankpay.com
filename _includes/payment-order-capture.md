@@ -2,7 +2,7 @@ Capture can only be done on a payment with a successful authorized transaction,
 and if the authorization was not done on a one-phase payment instrument.
 Examples of one-phase payment instruments are [Swish](/payments/swish/index.md)
 and [Vipps](/payments/vipps/index.md), while payment instruments such as
-[Credit Card](/payments/credit-card/index.md) are two-phase payemtns, requiring
+[Credit Card](/payments/card/index.md) are two-phase payments, requiring
 a `Capture` to be performed.
 
 It is possible to do a part-capture where you only capture a smaller amount
@@ -36,7 +36,7 @@ in the `capture` operation. If the `paymentorder` is without `orderItems`,
 remember to leave this out in the `capture` operation." %}
 
 To capture the authorized payment, we need to perform
-`create-paymentorder-capture` against the accompanying href returned in the
+`create-paymentorder-capture` against the accompanying `href` returned in the
 `operations` list. See the abbreviated request and response below:
 
 {:.code-header}

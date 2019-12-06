@@ -72,20 +72,18 @@ and global way to initate a transaction with a customer. Choose between our
   a successful and rejected payment reach completion, in contrast to a cancelled
   payment.
 * When you detect that the payer reach your `completeUrl` , you need to do a
-  `GET` request, containing the `paymentID` generated in the first step, to
-  receive the state of the transaction.
-
-## Screenshots
+  `GET` request, containing the `id` of the payment generated in the first step,
+  to receive the state of the transaction.
 
 You will redirect the payer to Swedbank Pay hosted pages to collect the credit
 card information.
 
 ![screenshot of the redirect card payment page][card-payment]{:height="500px" width="425px"}
 
-## API Requests
+## Operations
 
 The API requests are displayed in the [purchase flow](#purchase-flow).
-You can [create a card `payment`][create-payment] with following `operation`
+You can [create a card payment][create-payment] with following `operation`
 options:
 
 * [Purchase][purchase]
@@ -93,26 +91,13 @@ options:
 * [Payout][payout]
 * [Verify][verify]
 
-Our `payment` example below uses the [`purchase`][purchase] value.
+Our `payment` example below uses the [`purchase`][purchase] operation.
 
-### Type of authorization - Intent
+## Intent
 
-The intent of the payment identifies how and when the charge will be
-effectuated. This determine the type of transaction used during the payment
-process.
+{% include intent.md %}
 
-* **Authorization (two-phase)**: If you want the credit card to reserve the
-  amount, you will have to specify that the intent of the purchase is
-  Authorization. The amount will be reserved but not charged. You will later
-  (i.e. when you are ready to ship the purchased products) have to make a
-  [Capture][capture] or [Cancel][cancel] request.
-* **AutoCapture (one-phase)**:  If you want the credit card to be charged right
-  away, you will have to specify that the intent of the purchase is
-  `AutoCapture`. The credit card will be charged automatically after
-  authorization and you don't need to do any more financial operations to this
-  purchase.
-
-### Purchase flow
+## Purchase Flow
 
 The sequence diagram below shows a high level description of a complete
 purchase, and the requests you have to send to Swedbank Pay. The links will
@@ -214,11 +199,11 @@ sequenceDiagram
 {% include iterator.html  next_href="redirect" next_title="Next: Redirect" %}
 
 [card-payment]: /assets/img/payments/card-payment.png
-[cancel]: /payments/credit-card/after-payment/#cancellations
-[capture]: /payments/credit-card/after-payment/#Capture
-[redirect]: /payments/credit-card/redirect
-[create-payment]: /payments/credit-card/other-features/#create-payment
-[purchase]: /payments/credit-card/other-features/#purchase
-[recur]: /payments/credit-card/other-features/#recur
-[payout]: /payments/credit-card/other-features/#payout
-[verify]: /payments/credit-card/other-features/#verify
+[cancel]: /payments/card/after-payment/#cancellations
+[capture]: /payments/card/after-payment/#capture
+[redirect]: /payments/card/redirect
+[create-payment]: /payments/card/other-features/#create-payment
+[purchase]: /payments/card/other-features/#purchase
+[recur]: /payments/card/other-features/#recur
+[payout]: /payments/card/other-features/#payout
+[verify]: /payments/card/other-features/#verify

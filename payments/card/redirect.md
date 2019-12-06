@@ -18,8 +18,8 @@ sidebar:
       title: Other Features
 ---
 
-{% include jumbotron.html body="The basic redirect view purchase scenario
-is the most common way to implement card payments." %}
+{% include jumbotron.html body="The basic redirect purchase scenario is the
+simplest and most common way to implement Card Payments." %}
 
 ## Introduction
 
@@ -35,7 +35,7 @@ is the most common way to implement card payments." %}
   depending on whether the payment session is followed through completely or
   cancelled beforehand. Please note that both a successful and rejected payment
   reach completion, in contrast to a cancelled payment.
-* When you detect that the payer reach your `completeUrl` , you need to do a
+* When you detect that the payer reach your `completeUrl`, you need to do a
   `GET` request to receive the state of the transaction, containing the
   `paymentID` generated in the first step, to receive the state of the
   transaction.
@@ -70,40 +70,17 @@ Property of the JSON document is described in the following section.
 An example of an expanded `POST` request is available in the
 [other features section][purchase].
 
-{% include alert.html type="neutral"
-                      icon="info"
-                      body="Please note that in order to minimize the risk
-                      for a challenge request (Strong Customer Authentication –
-                      “SCA”) on card payments, it's recommended that you add as
-                      much data as possible to the `riskIndicator` object in
-                      the request below." %}
+{% include risk-indicator.md %}
 
 {% include purchase.md %}
 
-## Type of authorization - Intent
+### Intent
 
-The intent of the payment identifies how and when the charge will be
-effectuated. This determine the type of transaction used during the payment
-process.
-
-* **Authorization (two-phase)**: If you want the credit card to reserve the
-  amount, you will have to specify that the intent of the purchase is
-  Authorization. The amount will be reserved but not charged. You will later
-  (i.e. when you are ready to ship the purchased products) have to make a
-  [Capture][capture] or [Cancel][cancel] request.
+{% include intent.md %}
 
 ### General
 
-* *No 3-D Secure and card acceptance:* There are optional paramers that can be
-  used in relation to 3-D Secure and card acceptance. By default, most credit
-  card agreements with an acquirer will require that you use 3-D Secure for card
-  holder authentication. However, if your agreement allows you to make a card
-  payment without this authentication, or that specific cards can be declined,
-  you may adjust these optional parameters when posting in the payment.
-* *Defining `callbackURL`:* When implementing a scenario, it is optional to set
-  a `callbackURL` in the `POST` request. If `callbackURL` is set Swedbank Pay
-  will send a postback request to this URL when the consumer has fulfilled the
-  payment. [See the Callback API description here][callback].
+{% include card-general.md %}
 
 ## Payment Resource
 
@@ -247,36 +224,6 @@ options:
 
 Our `payment` example below uses the [`purchase`][purchase] value.
 
-### Type of authorization - Intent
-
-The intent of the payment identifies how and when the charge will be
-effectuated. This determine the type of transaction used during the payment
-process.
-
-* **Authorization (two-phase)**: If you want the credit card to reserve the
-  amount, you will have to specify that the intent of the purchase is
-  Authorization. The amount will be reserved but not charged. You will later
-  (i.e. when you are ready to ship the purchased products) have to make a
-  [Capture][capture] or [Cancel][cancel] request.
-* **AutoCapture (one-phase)**:  If you want the credit card to be charged right
-  away, you will have to specify that the intent of the purchase is
-  `AutoCapture`. The credit card will be charged automatically after
-  authorization and you don't need to do any more financial operations to this
-  purchase.
-
-### General
-
-* **No 3-D Secure and card acceptance**: There are optional paramers that can be
-  used in relation to 3-D Secure and card acceptance. By default, most credit
-  card agreements with an acquirer will require that you use 3-D Secure for card
-  holder authentication. However, if your agreement allows you to make a card
-  payment without this authentication, or that specific cards can be declined,
-  you may adjust these optional parameters when posting in the payment.
-* **Defining `callbackURL`**: When implementing a scenario, it is optional to
-  set a `callbackURL` in the `POST` request. If `callbackURL` is set Swedbank
-  Pay will send a postback request to this URL when the consumer has fulfilled
-  the payment. [See the Callback API description here][callback].
-
 ## Purchase flow mobile
 
 The sequence diagram below shows a high level description of a complete
@@ -394,6 +341,6 @@ next_href="seamless-view" next_title="Next: Seamless View" %}
 [recur]: /payments/card/other-features/#recur
 [redirect-image]: /assets/img/checkout/test-purchase.png
 [reversal]: /payments/card/after-payment/#reversals
-[Screnshot-1]: /assets/img/checkout/test-purchase.png
+[card-payment]: /assets/img/checkout/test-purchase.png
 [verify]: /payments/card/other-features/#verify
 [user-agent-definition]: https://en.wikipedia.org/wiki/User_agent

@@ -223,7 +223,7 @@ sequenceDiagram
                          next_title="Next: Redirect" %}
 
 [paymentMethodsScreenshot]: /assets/img/checkout/payment_methods.PNG
-[credit-card]: /payments/credit-card/
+[credit-card]: /payments/card/
 [mobile-pay]: /payments/mobile-pay/
 [payex-reconciliation-and-settlement]: /payments/mobile-pay/other-features#settlement-and-reconcilliation
 [redirect-implementation]: /payments/mobile-pay/redirect

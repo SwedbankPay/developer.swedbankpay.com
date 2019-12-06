@@ -25,7 +25,7 @@ to your system, you can use the payment token, using already stored payment
 data, to initiate enable one-click payments. You will need to make a standard
 redirect purchase, following the sequence as specified in the Redirect scenarios
 for [credit card][card] and [financing invoice][invoice]. When making the first
-`POST` request you insert the `paymentToken` attribute. This must be the
+`POST` request you insert the `paymentToken` property. This must be the
 `paymentToken` you received in the initial purchase, where you specified the
 `generatePaymentToken` to `true`.
 
