@@ -230,31 +230,6 @@ Content-Type: application/json
 }
 ```
 
-### Problem messages
-
-When performing unsuccessful operations, the eCommerce API will respond with
-a problem message. We generally use the problem message type and status code
-to identify the nature of the problem. The problem name and description will
-often help narrow down the specifics of the problem.
-
-#### Error types from Swedbank Pay Invoice and third parties
-
-All invoice error types will have the following URI in front of type:
-`https://api.payex.com/psp/errordetail/invoice/<errorType>`
-
-{:.table .table-striped}
-| Type            | Status |                               |
-| :-------------- | :----- | :---------------------------- |
-| *externalerror* | 500    | No error code                 |
-| *inputerror*    | 400    | 10 - ValidationWarning        |
-| *inputerror*    | 400    | 30 - ValidationError          |
-| *inputerror*    | 400    | 3010 - ClientRequestInvalid   |
-| *externalerror* | 502    | 40 - Error                    |
-| *externalerror* | 502    | 60 - SystemError              |
-| *externalerror* | 502    | 50 - SystemConfigurationError |
-| *externalerror* | 502    | 9999 - ServerOtherServer      |
-| *forbidden*     | 403    | Any other error code          |
-
 <!--
 ## Payment Orders
 
@@ -271,12 +246,12 @@ All invoice error types will have the following URI in front of type:
 
 ## Create Payment
 
-Within the card payments part of the eCommerce API, you can create four kinds
-of payments  ([purchase][purchase], [recurrence][recurrence], [payout][payout]
+Within the invoice payments part of the eCommerce API, you can create four kinds
+of payments ([purchase][purchase], [recurrence][recurrence], [payout][payout]
 and [verification][verify]) and you can inspect and alter the details of the
 individual transactions within the payment.
 
-To create a card payment, you perform an HTTP `POST` against the `payments`
+To create a invoice payment, you perform an HTTP `POST` against the `payments`
 resource.
 
 There are four different kinds of payment that can be created. These are
@@ -301,11 +276,11 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property            | Type     | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| :------: | ------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|  ✔︎︎︎︎︎  | `payment`           | `object` | The `payment` object.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`operation` | `string` | Determines the initial operation, that defines the type card payment created.<br> <br> `Purchase`. Used to charge a card. It is followed up by a capture or cancel operation.<br> <br> `Recur`.Used to charge a card on a recurring basis. Is followed up by a capture or cancel operation (if not Autocapture is used, that is).<br> <br>`Payout`. Used to deposit funds directly to credit card. No more requests are necessary from the merchant side.<br> <br>`Verify`. Used when authorizing a card withouth reserveing any funds.  It is followed up by a verification transaction. |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`intent`    | `string` | The intent of the payment identifies how and when the charge will be effectuated. This determine the type transactions used during the payment process.<br> <br>`Authorization`. Reserves the amount, and is followed by a [cancellation][cancel] or [capture][capture] of funds.<br> <br>`AutoCapture`. A one phase-option that enable capture of funds automatically after authorization.                                                                                                                                                                                               |
+| Required | Property            | Type     | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| :------: | ------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|  ✔︎︎︎︎︎  | `payment`           | `object` | The `payment` object.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`operation` | `string` | Determines the initial operation, that defines the type invoice payment created.<br> <br> `Purchase`. Used to charge a card. It is followed up by a capture or cancel operation.<br> <br> `Recur`. Used to charge a card on a recurring basis. Is followed up by a capture or cancel operation (if not Autocapture is used, that is).<br> <br>`Payout`. Used to deposit funds directly to credit card. No more requests are necessary from the merchant side.<br> <br>`Verify`. Used when authorizing a card withouth reserveing any funds.  It is followed up by a verification transaction. |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`intent`    | `string` | The intent of the payment identifies how and when the charge will be effectuated. This determine the type transactions used during the payment process.<br> <br>`Authorization`. Reserves the amount, and is followed by a [cancellation][cancel] or [capture][capture] of funds.<br> <br>`AutoCapture`. A one phase-option that enable capture of funds automatically after authorization.                                                                                                                                                                                                   |
 
 ## Purchase
 
@@ -448,7 +423,7 @@ Content-Type: application/json
 | Required | Property                                 | Type          | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | :------: | :--------------------------------------- | :------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |  ✔︎︎︎︎︎  | `payment`                                | `object`      | The payment object                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`operation`                      | `string`      | Determines the initial operation, that defines the type card payment created.<br> <br> `Purchase`. Used to charge a card. It is followed up by a capture or cancel operation.<br> <br> `Recur`.Used to charge a card on a recurring basis. Is followed up by a capture or cancel operation (if not Autocapture is used, that is).<br> <br>`Payout`. Used to deposit funds directly to credit card. No more requests are necessary from the merchant side.<br> <br>`Verify`. Used when authorizing a card withouth reserveing any funds.  It is followed up by a verification transaction.                         |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`operation`                      | `string`      | Determines the initial operation, that defines the type invoice payment created.<br> <br> `Purchase`. Used to charge a card. It is followed up by a capture or cancel operation.<br> <br> `Recur`.Used to charge a card on a recurring basis. Is followed up by a capture or cancel operation (if not Autocapture is used, that is).<br> <br>`Payout`. Used to deposit funds directly to credit card. No more requests are necessary from the merchant side.<br> <br>`Verify`. Used when authorizing a card withouth reserveing any funds.  It is followed up by a verification transaction.                      |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`intent`                         | `string`      | `Authorization`. Reserves the amount, and is followed by a [cancellation][cancel] or [capture][capture] of funds.<br> <br> `AutoCapture`. A one phase option that enable capture of funds automatically after authorization.                                                                                                                                                                                                                                                                                                                                                                                      |
 |          | └➔&nbsp;`paymentToken`                   | `string`      | If you put in a paymentToken here, the payment page will preload the stored payment data related to the `paymentToken` and let the consumer make a purchase without having to enter all card data. This is called a "One Click" purchase.                                                                                                                                                                                                                                                                                                                                                                         |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`currency`                       | `string`      | NOK, SEK, DKK, USD or EUR.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
@@ -660,7 +635,7 @@ Content-Type: application/json
 ### API requests for Payout
 
 The API requests are displayed in the [payout flow](#payout-flow).  You create
-a payout by performing a `POST` creditcard payments with key `operation` set to
+a payout by performing a `POST` creditinvoice payments with key `operation` set to
 `payout`.
 
 {:.code-header}
@@ -760,8 +735,8 @@ sequenceDiagram
 ### Introduction to Verify
 
 This option is commonly used when initiating a subsequent
-[One-click card payment][one-click-payments] or a
-[recurring card payment][recurrence] flow - where you do not want
+[One-click invoice payment][one-click-payments] or a
+[recurring invoice payment][recurrence] flow - where you do not want
 to charge the consumer right away.
 
 {% include alert.html type="neutral" icon="info" body="
@@ -799,7 +774,7 @@ Swedbank Pay." %}
 You will redirect the consumer/end-user to Swedbank Pay hosted pages to collect
 the credit card information.
 
-![screenshot of the redirect card payment page][card-payment]{:height="500px" width="425px"}
+![screenshot of the redirect invoice payment page][card-payment]{:height="500px" width="425px"}
 
 ### API Requests
 
@@ -917,9 +892,9 @@ The sequence diagram below shows the two requests you have to send to Swedbank
 Pay to make a purchase. The links will take you directly to the API description
 for the specific request. The diagram also shows in high level, the sequence of
 the process of a complete purchase.
-When dealing with credit card payments, 3-D Secure authentication of the
+When dealing with credit invoice payments, 3-D Secure authentication of the
 cardholder is an essential topic. There are three alternative outcome of a
-credit card payment:
+credit invoice payment:
 
 * 3-D Secure enabled - by default, 3-D Secure should be enabled, and Swedbank
   Pay will check if the card is enrolled with 3-D Secure. This depends on the
@@ -1050,21 +1025,23 @@ problem message. We generally use the problem message `type` and `status` code
 to identify the nature of the problem. The problem `name` and `description` will
 often help narrow down the specifics of the problem.
 
-### Contractual Problem Types
+### Error types from Swedbank Pay Invoice and third parties
 
-All contract types will have the following URI in front of type:
-`https://api.externalintegration.payex.com/psp/<errordetail>/creditcard`
+All invoice error types will have the following URI in front of type:
+`https://api.payex.com/psp/errordetail/invoice/<errorType>`
 
 {:.table .table-striped}
-| Type                           | Status | Description                                 |
-| :----------------------------- | :----: | :------------------------------------------ |
-| `cardbranddisabled`            | `403`  | The card brand is disabled.                 |
-| `accountholdertyperejected`    | `403`  | The account holder type is rejected.        |
-| `cardtyperejected`             | `403`  | The card type is rejected.                  |
-| `3dsecurerequired`             | `403`  | The transaction was rejected by 3-D Secure. |
-| `authenticationstatusrejected` | `403`  | The authentication status was rejected.     |
-| `frauddetected`                | `403`  | The transaction was fraudulent.             |
-| `3dsecuredeclined`             | `403`  | 3-D Secure declined the transaction.        |
+| Type            | Status |                               |
+| :-------------- | :----- | :---------------------------- |
+| *externalerror* | 500    | No error code                 |
+| *inputerror*    | 400    | 10 - ValidationWarning        |
+| *inputerror*    | 400    | 30 - ValidationError          |
+| *inputerror*    | 400    | 3010 - ClientRequestInvalid   |
+| *externalerror* | 502    | 40 - Error                    |
+| *externalerror* | 502    | 60 - SystemError              |
+| *externalerror* | 502    | 50 - SystemConfigurationError |
+| *externalerror* | 502    | 9999 - ServerOtherServer      |
+| *forbidden*     | 403    | Any other error code          |
 
 ### Acquirer and 3-D Secure Problem Types
 
