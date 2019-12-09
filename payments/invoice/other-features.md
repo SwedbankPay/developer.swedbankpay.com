@@ -32,11 +32,12 @@ set to Value FinancingConsumer are listed below.
 ### Options before posting a payment
 
 {:.table .table-striped}
-| **POST Request** | Finland ![Finish flag][fi-png]  |
-| **Operation** | FinancingConsumer |
-| **Intent** | Authorization |
-| **Currency** | EUR |
-| **InvoiceType** | PayExFinancingFI |
+|                 | **Sweden** ![Swedish flag][se-png] | **Norway** ![Norwegian flag][no-png] | **FInland** ![Finish flag][fi-png] |
+| :-------------: | :--------------------------------: | :----------------------------------: | :--------------------------------: |
+|  **Operation**  |         FinancingConsumer          |          FinancingConsumer           |         FinancingConsumer          |
+|   **Intent**    |           Authorization            |            Authorization             |           Authorization            |
+|  **Currency**   |                SEK                 |                 NOK                  |                EUR                 |
+| **InvoiceType** |          PayExFinancingSE          |           PayExFinancingNO           |          PayExFinancingFI          |
 
 * An invoice payment is always two-phased based -  you create an Authorize
     transaction, that is followed by a Capture or Cancel request.
@@ -280,6 +281,8 @@ All invoice error types will have the following URI in front of type:
 next_href="after-payment" next_title="Next: After Payment" %}
 
 [fi-png]: /assets/img/fi.png
+[no-png]: /assets/img/no.png
+[se-png]: /assets/img/se.png
 [callback-api]: #callback
 [invoice-flow]: /payments/invoice/index/#invoice-flow
 [payment-order]: #payment-orders
