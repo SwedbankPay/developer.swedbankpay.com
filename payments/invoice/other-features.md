@@ -230,16 +230,6 @@ Content-Type: application/json
 }
 ```
 
-<!--
-## Payment Orders
-
-{% include payment-order-get.md %}
-
-{% include transactions-reference.md %}
-
-{% include operations-reference.md %}
--->
-
 ## Payment Resource
 
 {% include payment-resource.md %}
@@ -262,16 +252,16 @@ in their own section below.
 **Request**"
 
 ```http
-POST /psp/creditcard/payments HTTP/1.1
+POST /psp/invoice/payments HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
-    "payment": {
-        "operation": "<operation>",
-        "intent": "<intent>",
-    }
+  "payment": {
+    "operation": "<operation>",
+    "intent": "<intent>",
+  }
 }
 ```
 
@@ -296,126 +286,129 @@ document is described in the following section.
 **Request**
 
 ```http
-POST /psp/creditcard/payments HTTP/1.1
+POST /psp/invoice/payments HTTP/1.1
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
-    "payment": {
-        "operation": "Purchase",
-        "intent": "Authorization",
-        "paymentToken": "",
-        "currency": "SEK",
-        "prices": [{
-                "type": "CreditCard",
-                "amount": 1500,
-                "vatAmount": 0
-            },
-            {
-                "type": "Visa",
-                "amount": 1500,
-                "vatAmount": 0
-            },
-            {
-                "type": "MasterCard",
-                "amount": 1500,
-                "vatAmount": 0
-            }
-        ],
-        "description": "Test Purchase",
-        "payerReference": "AB1234",
-        "generatePaymentToken": false,
-        "generateRecurrenceToken": false,
-        "userAgent": "Mozilla/5.0...",
-        "language": "sv-SE",
-        "urls": {
-            "hostUrls": ["https://example.com"],
-            "completeUrl": "https://example.com/payment-completed",
-            "cancelUrl": "https://example.com/payment-canceled",
-            "paymentUrl": "http://example.com/perform-payment",
-            "callbackUrl": "https://example.com/payment-callback",
-            "logoUrl": "https://example.com/payment-logo.png",
-            "termsOfServiceUrl": "https://example.com/payment-terms.pdf",
-        },
-        "payeeInfo": {
-            "payeeId": "12345678-1234-1234-1234-123456789012",
-            "payeeReference": "CD1234",
-            "payeeName": "Merchant1",
-            "productCategory": "A123",
-            "orderReference": "or123",
-            "subsite": "MySubsite"
-        },
-        "metadata": {
-            "key1": "value1",
-            "key2": 2,
-            "key3": 3.1,
-            "key4": false
-        },
-        "cardholder": {
-            "firstName": "firstname/companyname",
-            "lastName": "lastname",
-            "email": "leia.ahlstrom@swedbankpay.com",
-            "msisdn": "+4673900000",
-            "homePhoneNumber": "homePhoneNumber",
-            "workPhoneNumber": "workPhoneNumber",
-            "shippingAddress": {
-                "firstName": "Leia",
-                "lastName": "Ahlstrom",
-                "email": "leia.ahlstrom@swedbankpay.com",
-                "msisdn": "+46739000001",
-                "streetAddress": "Helgestavägen 9",
-                "coAddress": "coAddress",
-                "city": "19792 Bro",
-                "zipCode": "XXXXX",
-                "countryCode": "countryCode"
-            },
-            "billingAddress": {
-                "firstName": "firstname/companyname",
-                "lastName": "lastname",
-                "email": "email",
-                "msisdn": "msisdn",
-                "streetAddress": "streetAddress",
-                "coAddress": "coAddress",
-                "city": "city",
-                "zipCode": "zipCode",
-                "countryCode": "countrycode"
-            },
-            "accountInfo": {
-                "accountAgeIndicator": "01",
-                "accountChangeIndicator": "01",
-                "accountPwdChangeIndicator": "01",
-                "shippingAddressUsageIndicator": "01",
-                "shippingNameIndicator": "01",
-                "suspiciousAccountActivity": "01",
-                "addressMatchIndicator": false
-            }
-        },
-        "riskIndicator": {
-            "deliveryEmailAddress": "string",
-            "deliveryTimeFrameindicator": "01",
-            "preOrderDate": "YYYYMMDD",
-            "preOrderPurchaseIndicator": "01",
-            "shipIndicator": "01",
-            "giftCardPurchase": false,
-            "reOrderPurchaseIndicator": "01",
-            "pickUpAddress": {
-                "name": "companyname",
-                "streetAddress": "streetAddress",
-                "coAddress": "coAddress",
-                "city": "city",
-                "zipCode": "zipCode",
-                "countryCode": "countrycode"
-            }
-        }
+  "payment": {
+    "operation": "Purchase",
+    "intent": "Authorization",
+    "paymentToken": "",
+    "currency": "SEK",
+    "prices": [
+      {
+        "type": "CreditCard",
+        "amount": 1500,
+        "vatAmount": 0
+      },
+      {
+        "type": "Visa",
+        "amount": 1500,
+        "vatAmount": 0
+      },
+      {
+        "type": "MasterCard",
+        "amount": 1500,
+        "vatAmount": 0
+      }
+    ],
+    "description": "Test Purchase",
+    "payerReference": "AB1234",
+    "generatePaymentToken": false,
+    "generateRecurrenceToken": false,
+    "userAgent": "Mozilla/5.0...",
+    "language": "sv-SE",
+    "urls": {
+      "hostUrls": [
+        "https://example.com"
+      ],
+      "completeUrl": "https://example.com/payment-completed",
+      "cancelUrl": "https://example.com/payment-canceled",
+      "paymentUrl": "http://example.com/perform-payment",
+      "callbackUrl": "https://example.com/payment-callback",
+      "logoUrl": "https://example.com/payment-logo.png",
+      "termsOfServiceUrl": "https://example.com/payment-terms.pdf"
     },
-    "creditCard": {
-        "rejectCreditCards": false,
-        "rejectDebitCards": false,
-        "rejectConsumerCards": false,
-        "rejectCorporateCards": false,
-        "no3DSecure": false,
-        "noCvc": false
+    "payeeInfo": {
+      "payeeId": "12345678-1234-1234-1234-123456789012",
+      "payeeReference": "CD1234",
+      "payeeName": "Merchant1",
+      "productCategory": "A123",
+      "orderReference": "or123",
+      "subsite": "MySubsite"
+    },
+    "metadata": {
+      "key1": "value1",
+      "key2": 2,
+      "key3": 3.1,
+      "key4": false
+    },
+    "cardholder": {
+      "firstName": "firstname/companyname",
+      "lastName": "lastname",
+      "email": "leia.ahlstrom@swedbankpay.com",
+      "msisdn": "+4673900000",
+      "homePhoneNumber": "homePhoneNumber",
+      "workPhoneNumber": "workPhoneNumber",
+      "shippingAddress": {
+        "firstName": "Leia",
+        "lastName": "Ahlstrom",
+        "email": "leia.ahlstrom@swedbankpay.com",
+        "msisdn": "+46739000001",
+        "streetAddress": "Helgestavägen 9",
+        "coAddress": "coAddress",
+        "city": "19792 Bro",
+        "zipCode": "XXXXX",
+        "countryCode": "countryCode"
+      },
+      "billingAddress": {
+        "firstName": "firstname/companyname",
+        "lastName": "lastname",
+        "email": "email",
+        "msisdn": "msisdn",
+        "streetAddress": "streetAddress",
+        "coAddress": "coAddress",
+        "city": "city",
+        "zipCode": "zipCode",
+        "countryCode": "countrycode"
+      },
+      "accountInfo": {
+        "accountAgeIndicator": "01",
+        "accountChangeIndicator": "01",
+        "accountPwdChangeIndicator": "01",
+        "shippingAddressUsageIndicator": "01",
+        "shippingNameIndicator": "01",
+        "suspiciousAccountActivity": "01",
+        "addressMatchIndicator": false
+      }
+    },
+    "riskIndicator": {
+      "deliveryEmailAddress": "string",
+      "deliveryTimeFrameindicator": "01",
+      "preOrderDate": "YYYYMMDD",
+      "preOrderPurchaseIndicator": "01",
+      "shipIndicator": "01",
+      "giftCardPurchase": false,
+      "reOrderPurchaseIndicator": "01",
+      "pickUpAddress": {
+        "name": "companyname",
+        "streetAddress": "streetAddress",
+        "coAddress": "coAddress",
+        "city": "city",
+        "zipCode": "zipCode",
+        "countryCode": "countrycode"
+      }
     }
+  },
+  "creditCard": {
+    "rejectCreditCards": false,
+    "rejectDebitCards": false,
+    "rejectConsumerCards": false,
+    "rejectCorporateCards": false,
+    "no3DSecure": false,
+    "noCvc": false
+  }
 }
 ```
 
@@ -519,55 +512,73 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": {
-        "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
-        "number": 1234567890,
-        "instrument": "CreditCard",
-        "created": "2016-09-14T13:21:29.3182115Z",
-        "updated": "2016-09-14T13:21:57.6627579Z",
-        "state": "Ready",
-        "operation": "Purchase",
-        "intent": "Authorization",
-        "currency": "SEK",
-        "amount": 1500,
-        "remainingCaptureAmount": 1500,
-        "remainingCancellationAmount": 1500,
-        "remainingReversalAmount": 0,
-        "description": "Test Purchase",
-        "payerReference": "AB1234",
-        "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
-        "userAgent": "Mozilla/5.0...",
-        "language": "sv-SE",
-        "prices": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/prices" },
-        "transactions": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions" },
-        "authorizations": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations" },
-        "captures": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures" },
-        "reversals": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals" },
-        "cancellations": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/cancellations" },
-        "urls": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/urls" },
-        "payeeInfo": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeInfo" },
-        "settings": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/settings" }
+  "payment": {
+    "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "number": 1234567890,
+    "instrument": "CreditCard",
+    "created": "2016-09-14T13:21:29.3182115Z",
+    "updated": "2016-09-14T13:21:57.6627579Z",
+    "state": "Ready",
+    "operation": "Purchase",
+    "intent": "Authorization",
+    "currency": "SEK",
+    "amount": 1500,
+    "remainingCaptureAmount": 1500,
+    "remainingCancellationAmount": 1500,
+    "remainingReversalAmount": 0,
+    "description": "Test Purchase",
+    "payerReference": "AB1234",
+    "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
+    "userAgent": "Mozilla/5.0...",
+    "language": "sv-SE",
+    "prices": {
+      "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/prices"
     },
-    "operations": [
-        {
-            "href": "https://api.externalintegration.payex.com/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
-            "rel": "update-payment-abort",
-            "method": "PATCH",
-            "contentType": "application/json"
-        },
-        {
-            "href": "https://ecom.payex.com/creditcard/payments/authorize/123456123412341234123456789012",
-            "rel": "redirect-authorization",
-            "method": "GET",
-            "contentType": "text/html"
-        },
-        {
-            "method": "GET",
-            "href": "https://ecom.dev.payex.com/creditcard/core/scripts/client/px.creditcard.client.js?token=123456123412341234123456789012",
-            "rel": "view-authorization",
-            "contentType": "application/javascript"
-        }
-    ]
+    "transactions": {
+      "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions"
+    },
+    "authorizations": {
+      "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations"
+    },
+    "captures": {
+      "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures"
+    },
+    "reversals": {
+      "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals"
+    },
+    "cancellations": {
+      "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/cancellations"
+    },
+    "urls": {
+      "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/urls"
+    },
+    "payeeInfo": {
+      "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeInfo"
+    },
+    "settings": {
+      "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/settings"
+    }
+  },
+  "operations": [
+    {
+      "href": "https://api.externalintegration.payex.com/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+      "rel": "update-payment-abort",
+      "method": "PATCH",
+      "contentType": "application/json"
+    },
+    {
+      "href": "https://ecom.payex.com/invoice/payments/authorize/123456123412341234123456789012",
+      "rel": "redirect-authorization",
+      "method": "GET",
+      "contentType": "text/html"
+    },
+    {
+      "method": "GET",
+      "href": "https://ecom.dev.payex.com/invoice/core/scripts/client/px.creditcard.client.js?token=123456123412341234123456789012",
+      "rel": "view-authorization",
+      "contentType": "application/javascript"
+    }
+  ]
 }
 ```
 
@@ -580,34 +591,34 @@ through a previous payment in order to charge the same card.
 **Request**
 
 ```http
-POST /psp/creditcard/payments HTTP/1.1
+POST /psp/invoice/payments HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
-    "payment": {
-        "operation": "Recur",
-        "intent": "Authorization|AutoCapture",
-        "recurrenceToken": "5adc265f-f87f-4313-577e-08d3dca1a26c",
-        "currency": "NOK",
-        "amount": 1500,
-        "vatAmount": 0,
-        "description": "Test Recurrence",
-        "userAgent": "Mozilla/5.0...",
-        "language": "nb-NO",
-        "urls": {
-            "callbackUrl": "https://example.com/payment-callback"
-        },
-        "payeeInfo": {
-            "payeeId": "12345678-1234-1234-1234-123456789012",
-            "payeeReference": "CD1234",
-            "payeeName": "Merchant1",
-            "productCategory": "A123",
-            "orderReference": "or-12456",
-            "subsite": "MySubsite"
-        }
+  "payment": {
+    "operation": "Recur",
+    "intent": "Authorization|AutoCapture",
+    "recurrenceToken": "5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "currency": "NOK",
+    "amount": 1500,
+    "vatAmount": 0,
+    "description": "Test Recurrence",
+    "userAgent": "Mozilla/5.0...",
+    "language": "nb-NO",
+    "urls": {
+      "callbackUrl": "https://example.com/payment-callback"
+    },
+    "payeeInfo": {
+      "payeeId": "12345678-1234-1234-1234-123456789012",
+      "payeeReference": "CD1234",
+      "payeeName": "Merchant1",
+      "productCategory": "A123",
+      "orderReference": "or-12456",
+      "subsite": "MySubsite"
     }
+  }
 }
 ```
 
@@ -642,34 +653,34 @@ a payout by performing a `POST` creditinvoice payments with key `operation` set 
 **Request**
 
 ```http
-POST /psp/creditcard/payments HTTP/1.1
+POST /psp/invoice/payments HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
-    "payment": {
-        "operation": "Payout",
-        "intent": "AutoCapture",
-        "paymentToken": "5adc265f-f87f-4313-577e-08d3dca1a26c",
-        "currency": "NOK",
-        "amount": 1500,
-        "vatAmount": 0,
-        "description": "Test Payout",
-        "userAgent": "Mozilla/5.0",
-        "language": "nb-NO",
-        "urls": {
-            "callbackUrl": "https://example.com/payment-callback"
-        },
-        "payeeInfo": {
-            "payeeId": "12345678-1234-1234-1234-123456789012",
-            "payeeReference": "CD1234",
-            "payeeName": "Merchant1",
-            "productCategory": "A123",
-            "orderReference": "or-12456",
-            "subsite": "MySubsite"
-        }
+  "payment": {
+    "operation": "Payout",
+    "intent": "AutoCapture",
+    "paymentToken": "5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "currency": "NOK",
+    "amount": 1500,
+    "vatAmount": 0,
+    "description": "Test Payout",
+    "userAgent": "Mozilla/5.0",
+    "language": "nb-NO",
+    "urls": {
+      "callbackUrl": "https://example.com/payment-callback"
+    },
+    "payeeInfo": {
+      "payeeId": "12345678-1234-1234-1234-123456789012",
+      "payeeReference": "CD1234",
+      "payeeName": "Merchant1",
+      "productCategory": "A123",
+      "orderReference": "or-12456",
+      "subsite": "MySubsite"
     }
+  }
 }
 ```
 
@@ -682,7 +693,7 @@ Content-Type: application/json
 
 {
   "payment": {
-    "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
     "number": 1234567890,
     "created": "2016-09-14T13:21:29.3182115Z",
     "updated": "2016-09-14T13:21:57.6627579Z",
@@ -698,15 +709,15 @@ Content-Type: application/json
     "userAgent": "Mozilla/5.0...",
     "language": "nb-NO",
     "paymentToken": "5adc265f-f87f-4313-577e-08d3dca1a26c",
-    "prices": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/prices" },
-    "transactions": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions" },
-    "authorizations": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations" },
-    "captures": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures" },
-    "reversals": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals" },
-    "cancellations": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/cancellations" },
-    "urls" : { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/urls" },
-    "payeeInfo" : { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeInfo" },
-    "settings": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/settings" }
+    "prices": { "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/prices" },
+    "transactions": { "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions" },
+    "authorizations": { "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations" },
+    "captures": { "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures" },
+    "reversals": { "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals" },
+    "cancellations": { "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/cancellations" },
+    "urls" : { "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/urls" },
+    "payeeInfo" : { "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeInfo" },
+    "settings": { "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/settings" }
   }
 }
 ```
@@ -786,7 +797,7 @@ listed below.
 **Request**
 
 ```http
-POST /psp/creditcard/payments HTTP/1.1
+POST /psp/invoice/payments HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -835,54 +846,62 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": {
-        "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
-        "number": 1234567890,
-        "created": "2016-09-14T13:21:29.3182115Z",
-        "updated": "2016-09-14T13:21:57.6627579Z",
-        "operation": "Verify",
-        "state": "Ready",
-        "currency": "NOK",
-        "amount": 0,
-        "description": "Test Verification",
-        "payerReference": "AB1234",
-        "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
-        "userAgent": "Mozilla/5.0",
-        "language": "nb-NO",
-        "transactions": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions" },
-        "verifications": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/verifications" },
-        "urls" : { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/urls" },
-        "payeeInfo" : { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeInfo" },
-        "settings": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/settings" }
+  "payment": {
+    "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "number": 1234567890,
+    "created": "2016-09-14T13:21:29.3182115Z",
+    "updated": "2016-09-14T13:21:57.6627579Z",
+    "operation": "Verify",
+    "state": "Ready",
+    "currency": "NOK",
+    "amount": 0,
+    "description": "Test Verification",
+    "payerReference": "AB1234",
+    "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
+    "userAgent": "Mozilla/5.0",
+    "language": "nb-NO",
+    "transactions": {
+      "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions"
     },
-    "operations": [
-        {
-            "href": "https://api.externalintegration.payex.com/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
-            "rel": "update-payment-abort",
-            "method": "PATCH",
-            "contentType": "application/json"
-        },
-        {
-            "href": "https://ecom.payex.com/creditcard/payments/verification/123456123412341234123456789012",
-            "rel": "redirect-verification",
-            "method": "GET",
-            "contentType": "application/json"
-        },
-        {
-            "method": "GET",
-            "href": "https://ecom.dev.payex.com/creditcard/core/scripts/client/px.creditcard.client.js?token=123456123412341234123456789012",
-            "rel": "view-verification",
-            "contentType": "application/javascript"
-        },
-
-        {
-            "method": "POST",
-            "href": "https://ecom.dev.payex.com/psp/creditcard/confined/payments/{paymentId:guid}/verifications",
-            "rel": "direct-verification",
-            "contentType": "application/json"
-        }
-
-    ]
+    "verifications": {
+      "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/verifications"
+    },
+    "urls": {
+      "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/urls"
+    },
+    "payeeInfo": {
+      "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeInfo"
+    },
+    "settings": {
+      "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/settings"
+    }
+  },
+  "operations": [
+    {
+      "href": "https://api.externalintegration.payex.com/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+      "rel": "update-payment-abort",
+      "method": "PATCH",
+      "contentType": "application/json"
+    },
+    {
+      "href": "https://ecom.payex.com/invoice/payments/verification/123456123412341234123456789012",
+      "rel": "redirect-verification",
+      "method": "GET",
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "href": "https://ecom.dev.payex.com/invoice/core/scripts/client/px.creditcard.client.js?token=123456123412341234123456789012",
+      "rel": "view-verification",
+      "contentType": "application/javascript"
+    },
+    {
+      "method": "POST",
+      "href": "https://ecom.dev.payex.com/psp/invoice/confined/payments/{paymentId:guid}/verifications",
+      "rel": "direct-verification",
+      "contentType": "application/json"
+    }
+  ]
 }
 ```
 
@@ -907,15 +926,15 @@ credit invoice payment:
 
 ```mermaid
 sequenceDiagram
-    participant Payer
-    participant Merchant
-    participant SwedbankPay as Swedbank Pay
-    participant IssuingBank
+  participant Payer
+  participant Merchant
+  participant SwedbankPay as Swedbank Pay
+  participant IssuingBank
 
   activate Payer
   Payer->>+Merchant: start verification
   deactivate Payer
-  Merchant->>+SwedbankPay: POST /psp/creditcard/payments(operation=VERIFY)
+  Merchant->>+SwedbankPay: POST /psp/invoice/payments(operation=VERIFY)
   deactivate Merchant
   note left of Payer: First API request
   SwedbankPay-->+Merchant: payment resource
@@ -944,7 +963,7 @@ sequenceDiagram
   note left of Payer: redirect back to merchant<br>(If Redirect scenario)
 
   Payer->>+Merchant: access merchant page
-  Merchant->>+SwedbankPay: GET /psp/creditcard/payments/<paymentorder.id>
+  Merchant->>+SwedbankPay: GET /psp/invoice/payments/<paymentorder.id>
   deactivate Merchant
   note left of Merchant: Second API request
   SwedbankPay-->>+Merchant: rel: redirect-authorization
@@ -969,7 +988,7 @@ Swedbank Pay Payments where the payment is authorized.
 **Request**
 
 ```http
-POST /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations HTTP/1.1
+POST /psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -1046,7 +1065,7 @@ All invoice error types will have the following URI in front of type:
 ### Acquirer and 3-D Secure Problem Types
 
 All acquirer error types will have the following URI in front of type:
-`https://api.payex.com/psp/errordetail/creditcard/<errorType>`
+`https://api.payex.com/psp/errordetail/invoice/<errorType>`
 
 {:.table .table-striped}
 | Type                           | Status | Description                                                                                   |
@@ -1078,21 +1097,21 @@ next_href="after-payment" next_title="Next: After Payment" %}
 [fi-png]: /assets/img/fi.png
 [no-png]: /assets/img/no.png
 [se-png]: /assets/img/se.png
-[callback-api]: #callback
-[callback]: /payments/card/other-features/#callback
-[cancel]: /payments/card/after-payment/#cancellations
-[capture]: /payments/card/after-payment/#Capture
 [card-payment]: /assets/img/payments/card-payment.png
-[hosted-view]: /payments/card/seamless-view
+[callback-api]: #callback
+[callback]: /payments/invoice/other-features/#callback
+[cancel]: /payments/invoice/after-payment/#cancellations
+[capture]: /payments/invoice/after-payment/#Capture
+[hosted-view]: /payments/invoice/seamless-view
 [invoice-flow]: /payments/invoice/index/#invoice-flow
 [mcc]: https://en.wikipedia.org/wiki/Merchant_category_code
 [one-click-payments]: #one-click-payments
 [payment-order]: #payment-orders
 [payout]: #payout
-[price-resource]: /payments/card/other-features/#prices
+[price-resource]: /payments/invoice/other-features/#prices
 [purchase]: #purchase
 [recurrence]: #recur
-[redirect]: /payments/card/redirect
+[redirect]: /payments/invoice/redirect
 [settlement-and-reconciliation]: #settlement-and-reconciliation
 [split-settlement]: #split-settlement
 [user-agent-definition]: https://en.wikipedia.org/wiki/User_agent
