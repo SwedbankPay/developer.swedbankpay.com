@@ -19,33 +19,33 @@ sidebar:
 {% include alert.html type="warning"
                       icon="warning"
                       header="Site under development"
-                      body="This section of the Developer Portal is under construction and
-                      should not be used to integrate against Swedbank Pay's
-                      APIs yet." %}
+                      body="This section of the Developer Portal is under
+                      construction and should not be used to integrate against
+                      Swedbank Pay's APIs yet." %}
 
 ## API requests
 
 The API requests are displayed in the [invoice flow][invoice-flow].
 The options you can choose from when creating a payment with key operation
-set to Value FinancingConsumer are listed below.
+set to value `FinancingConsumer` are listed below.
 
 ### Options before posting a payment
 
 {:.table .table-striped}
-|                 | **Sweden** ![Swedish flag][se-png] | **Norway** ![Norwegian flag][no-png] | **FInland** ![Finish flag][fi-png] |
-| :-------------: | :--------------------------------: | :----------------------------------: | :--------------------------------: |
-|  **Operation**  |         FinancingConsumer          |          FinancingConsumer           |         FinancingConsumer          |
-|   **Intent**    |           Authorization            |            Authorization             |           Authorization            |
-|  **Currency**   |                SEK                 |                 NOK                  |                EUR                 |
-| **InvoiceType** |          PayExFinancingSE          |           PayExFinancingNO           |          PayExFinancingFI          |
+|                 | Sweden ![Swedish flag][se-png] | Norway ![Norwegian flag][no-png] | FInland ![Finish flag][fi-png] |
+| :-------------- | :----------------------------- | :------------------------------- | :----------------------------- |
+| **Operation**   | `FinancingConsumer`            | `FinancingConsumer`              | `FinancingConsumer`            |
+| **Intent**      | `Authorization`                | `Authorization`                  | `Authorization`                |
+| **Currency**    | SEK                            | NOK                              | EUR                            |
+| **InvoiceType** | `PayExFinancingSE`             | `PayExFinancingNO`               | `PayExFinancingFI`             |
 
 * An invoice payment is always two-phased based -  you create an Authorize
-    transaction, that is followed by a Capture or Cancel request.
+  transaction, that is followed by a Capture or Cancel request.
 * **Defining CallbackURL**: When implementing a scenario, it is optional
-    to set a [CallbackURL][callback-api] in the `POST` request.
-    If callbackURL is set PayEx will send a postback request to this URL when
-    the consumer has fulfilled the payment.
-    [See the Callback API description here.][callback-api]
+  to set a [CallbackURL][callback-api] in the request.
+  If callbackURL is set PayEx will send a postback request to this URL when
+  the consumer has fulfilled the payment.
+  [See the Callback API description here.][callback-api]
 
 ### Authorizations
 
@@ -56,7 +56,7 @@ made on a specific payment.
 **Request**
 
 ```http
-GET /psp/invoice/payments/<payments-id>/authorizations HTTP/1.1
+GET /psp/invoice/payments/<payment-id>/authorizations HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -70,23 +70,23 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "payment": "/psp/invoice/payments/<payments-id>",
+  "payment": "/psp/invoice/payments/<payment-id>",
   "authorizations": {
-    "id": "/psp/invoice/payments/<payments-id>/authorizations",
+    "id": "/psp/invoice/payments/<payment-id>/authorizations",
     "authorizationList": [
       {
-        "id": "/psp/invoice/payments/<payments-id>/authorizations/<transaction-id>",
+        "id": "/psp/invoice/payments/<payment-id>/authorizations/<transaction-id>",
         "consumer": {
-          "id": "/psp/invoice/payments/<payments-id>/consumer"
+          "id": "/psp/invoice/payments/<payment-id>/consumer"
         },
         "legalAddress": {
-          "id": "/psp/invoice/payments/<payments-id>/legaladdress"
+          "id": "/psp/invoice/payments/<payment-id>/legaladdress"
         },
         "billingAddress": {
-          "id": "/psp/invoice/payments/<payments-id>/billingaddress"
+          "id": "/psp/invoice/payments/<payment-id>/billingaddress"
         },
         "transaction": {
-          "id": "/psp/invoice/payments/<payments-id>/transactions/<transaction-id>",
+          "id": "/psp/invoice/payments/<payment-id>/transactions/<transaction-id>",
           "created": "2016-09-14T01:01:01.01Z",
           "updated": "2016-09-14T01:01:01.03Z",
           "type": "Authorization",
@@ -100,7 +100,7 @@ Content-Type: application/json
           "isOperational": false,
           "operations": [
             {
-              "href": "https://api.externalintegration.payex.com/psp/invoice/payments/<payments-id>",
+              "href": "https://api.externalintegration.payex.com/psp/invoice/payments/<payment-id>",
               "rel": "edit-authorization",
               "method": "PATCH"
             }
@@ -121,7 +121,7 @@ operation as returned in a previously created invoice payment.
 **Request**
 
 ```http
-POST /psp/invoice/payments/<payments-id>/authorizations HTTP/1.1
+POST /psp/invoice/payments/<payment-id>/authorizations HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -158,30 +158,26 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| **Required** | **Property**                    | **Data type** | **Description**                                                                                                                    |
-| :----------- | :------------------------------ | :------------ | :--------------------------------------------------------------------------------------------------------------------------------- |
-| ✔︎︎︎︎︎       | `transaction.activity`          | `string`      | `FinancingConsumer`                                                                                                                |
-| ✔︎︎︎︎︎       | `consumer.socialSecurityNumber` | `string`      | The social security number (national identity number) of the consumer. Format Sweden: `YYMMDD-NNNN`. Format Norway: `DDMMYYNNNNN`. |
-|              | `consumer.customerNumber`       | `string`      | The customer number in the merchant system.                                                                                        |
-|              | `consumer.email`                | `string`      | The e-mail address of the consumer.                                                                                                |
-| ✔︎︎︎︎︎       | `consumer.msisdn`               | `string`      | The mobile phone number of the consumer. Format Sweden: `+46707777777`. Format Norway: `+4799999999`.                              |
-| ✔︎︎︎︎︎       | `consumer.ip`                   | `string`      | The IP address of the consumer.                                                                                                    |
-| ✔︎︎︎︎︎       | `legalAddress.addressee`        | `string`      | The full (first and last) name of the consumer.                                                                                    |
-|              | `legalAddress.coAddress`        | `string`      | The CO-address (if used)                                                                                                           |
-|              | `legalAddress.streetAddress`    | `string`      | The street address of the consumer.                                                                                                |
-| ✔︎︎︎︎︎       | `legalAddress.zipCode`          | `string`      | The postal code (ZIP code) of the consumer.                                                                                        |
-| ✔︎︎︎︎︎       | `legalAddress.city`             | `string`      | The city to the consumer.                                                                                                          |
-| ✔︎︎︎︎︎       | `legalAddress.countryCode`      | `string`      | `SE` or `NO`. The country code of the consumer.                                                                                    |
-
-{:.table .table-striped}
-| **Required** | **Property**                   | **Data type** | **Description**                               |
-| :----------- | :----------------------------- | :------------ | :-------------------------------------------- |
-| ✔︎︎︎︎︎       | `billingAddress.addressee`     | `string`      | The "firstName + lastName" to the consumer.   |
-|              | `billingAddress.coAddress`     | `string`      | The CO-address (if used)                      |
-| ✔︎︎︎︎ ︎      | `billingAddress.streetAddress` | `string`      | The street address to the consumer.           |
-| ✔︎︎︎︎︎       | `billingAddress.zipCode`       | `string`      | The postal number (ZIP code) to the consumer. |
-| ✔︎︎︎︎︎       | `billingAddress.city`          | `string`      | The city to the consumer.                     |
-| ✔︎︎︎︎︎       | `billingAddress.countryCode`   | `string`      | `SE` or `NO`.                                 |
+| Required | Property                        | Data type | Description                                                                                                                                                      |
+| :------- | :------------------------------ | :-------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ✔︎︎︎︎︎   | `transaction.activity`          | `string`  | `FinancingConsumer`                                                                                                                                              |
+| ✔︎︎︎︎︎   | `consumer.socialSecurityNumber` | `string`  | The social security number (national identity number) of the consumer. Format Sweden: `YYMMDD-NNNN`. Format Norway: `DDMMYYNNNNN`. Format Finland: `DDMMYYNNNNN` |
+|          | `consumer.customerNumber`       | `string`  | The customer number in the merchant system.                                                                                                                      |
+|          | `consumer.email`                | `string`  | The e-mail address of the consumer.                                                                                                                              |
+| ✔︎︎︎︎︎   | `consumer.msisdn`               | `string`  | The mobile phone number of the consumer. Format Sweden: `+46707777777`. Format Norway: `+4799999999`. Format Finland: `+358501234567`                            |
+| ✔︎︎︎︎︎   | `consumer.ip`                   | `string`  | The IP address of the consumer.                                                                                                                                  |
+| ✔︎︎︎︎︎   | `legalAddress.addressee`        | `string`  | The full (first and last) name of the consumer.                                                                                                                  |
+|          | `legalAddress.coAddress`        | `string`  | The CO-address (if used)                                                                                                                                         |
+|          | `legalAddress.streetAddress`    | `string`  | The street address of the consumer.                                                                                                                              |
+| ✔︎︎︎︎︎   | `legalAddress.zipCode`          | `string`  | The postal code (ZIP code) of the consumer.                                                                                                                      |
+| ✔︎︎︎︎︎   | `legalAddress.city`             | `string`  | The city to the consumer.                                                                                                                                        |
+| ✔︎︎︎︎︎   | `legalAddress.countryCode`      | `string`  | `SE`, `NO`, or `FI`. The country code of the consumer.                                                                                                           |
+| ✔︎︎︎︎︎   | `billingAddress.addressee`      | `string`  | The full (first and last) name of the consumer.                                                                                                                  |
+|          | `billingAddress.coAddress`      | `string`  | The CO-address (if used)                                                                                                                                         |
+| ✔︎︎︎︎ ︎  | `billingAddress.streetAddress`  | `string`  | The street address to the consumer.                                                                                                                              |
+| ✔︎︎︎︎︎   | `billingAddress.zipCode`        | `string`  | The postal number (ZIP code) to the consumer.                                                                                                                    |
+| ✔︎︎︎︎︎   | `billingAddress.city`           | `string`  | The city to the consumer.                                                                                                                                        |
+| ✔︎︎︎︎︎   | `billingAddress.countryCode`    | `string`  | `SE`, `NO`, or `FI`.                                                                                                                                             |
 
 {% include alert.html type="neutral" icon="info" body="
 Note: The legal address must be the registered address of the consumer." %}
@@ -197,20 +193,20 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "payment": "/psp/invoice/payments/<payments-id>",
+  "payment": "/psp/invoice/payments/<payment-id>",
   "authorization": {
-    "id": "/psp/invoice/payments/<payments-id>/authorizations/<transaction-id>",
+    "id": "/psp/invoice/payments/<payment-id>/authorizations/<transaction-id>",
     "consumer": {
-      "id": "/psp/invoice/payments/<payments-id>/consumer"
+      "id": "/psp/invoice/payments/<payment-id>/consumer"
     },
     "legalAddress": {
-      "id": "/psp/invoice/payments/<payments-id>/legaladdress"
+      "id": "/psp/invoice/payments/<payment-id>/legaladdress"
     },
     "billingAddress": {
-      "id": "/psp/invoice/payments/<payments-id>/billingaddress"
+      "id": "/psp/invoice/payments/<payment-id>/billingaddress"
     },
     "transaction": {
-      "id": "/psp/invoice/payments/<payments-id>/transactions/<transaction-id>",
+      "id": "/psp/invoice/payments/<payment-id>/transactions/<transaction-id>",
       "created": "2016-09-14T01:01:01.01Z",
       "updated": "2016-09-14T01:01:01.03Z",
       "type": "Authorization",
@@ -224,7 +220,7 @@ Content-Type: application/json
       "isOperational": "TRUE|FALSE",
       "operations": [
         {
-          "href": "https://api.externalintegration.payex.com/psp/invoice/payments/<payments-id>",
+          "href": "https://api.externalintegration.payex.com/psp/invoice/payments/<payment-id>",
           "rel": "edit-authorization",
           "method": "PATCH"
         }
@@ -247,17 +243,17 @@ All invoice error types will have the following URI in front of type:
 `https://api.payex.com/psp/errordetail/invoice/<errorType>`
 
 {:.table .table-striped}
-| **Type**        | **Status** |
-| :-------------- | :--------- |
-| *externalerror* | 500        | No error code                 |
-| *inputerror*    | 400        | 10 - ValidationWarning        |
-| *inputerror*    | 400        | 30 - ValidationError          |
-| *inputerror*    | 400        | 3010 - ClientRequestInvalid   |
-| *externalerror* | 502        | 40 - Error                    |
-| *externalerror* | 502        | 60 - SystemError              |
-| *externalerror* | 502        | 50 - SystemConfigurationError |
-| *externalerror* | 502        | 9999 - ServerOtherServer      |
-| *forbidden*     | 403        | Any other error code          |
+| Type            | Status |                               |
+| :-------------- | :----- | :---------------------------- |
+| *externalerror* | 500    | No error code                 |
+| *inputerror*    | 400    | 10 - ValidationWarning        |
+| *inputerror*    | 400    | 30 - ValidationError          |
+| *inputerror*    | 400    | 3010 - ClientRequestInvalid   |
+| *externalerror* | 502    | 40 - Error                    |
+| *externalerror* | 502    | 60 - SystemError              |
+| *externalerror* | 502    | 50 - SystemConfigurationError |
+| *externalerror* | 502    | 9999 - ServerOtherServer      |
+| *forbidden*     | 403    | Any other error code          |
 
 {% include settlement-reconciliation.md %}
 
