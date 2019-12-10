@@ -52,7 +52,6 @@ All valid options when posting a payment with operation equal to
 {:.table .table-striped}
 | | **Sweden** ![Swedish flag][se-png]| **Norway** ![Norwegian flag][no-png] | **Finland** ![Finish flag][fi-png] |
 | `operation` | `FinancingConsumer` | `FinancingConsumer` | `FinancingConsumer` |
-| `intent` | `Authorization` | `Authorization` | `Authorization` |
 | `currency` | SEK | NOK | EUR |
 |`invoiceType` | `PayExFinancingSE` | `PayExFinancingNO` | `PayExFinancingFI` |
 
