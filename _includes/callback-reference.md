@@ -1,3 +1,49 @@
+{% assign payment-order = include.payment-order | default: false %}
+
+{% if payment-order %}
+    {% capture entity %}
+{:.code-header}
+**Payment Order Callback**
+
+```js
+{
+    "paymentOrder": {
+    "id": "/psp/paymentorders/<paymentorder-id>",
+    "instrument": "<payment instrument>"
+    },
+    "payment": {
+    "id": "/psp/<payment instrument>/payments/<payment-id>",
+    "number": 222222222
+    },
+    "transaction": {
+    "id": "/psp/<payment instrument>/payments/<payment-id>/<transaction type>/<transaction-id>",
+    "number": 333333333
+    }
+    }
+```
+
+{% endcapture %}
+{% else %}
+    {% capture entity %}
+{:.code-header}
+**Payment Instrument Callback**
+
+```js
+{
+    "payment": {
+        "id": "/psp/<payment instrument>/payments/<payment-id>",
+        "number": 222222222
+    },
+    "transaction": {
+        "id": "/psp/<payment instrument>/payments/<payment-id>/<transaction type>/<transaction-id>",
+        "number": 333333333
+    }
+}
+```
+
+{% endcapture %}
+{% endif %}
+
 ## Callback
 
 When a change or update from the back-end system are made on a payment or
@@ -28,41 +74,7 @@ about this update.
   * 1265 seconds
 * The callback is sent from the following IP address: `82.115.146.1`
 
-{:.code-header}
-**Payment Instrument Callback**
-
-```js
-{
-    "payment": {
-        "id": "/psp/<payment instrument>/payments/<payment-id>",
-        "number": 222222222
-    },
-    "transaction": {
-        "id": "/psp/<payment instrument>/payments/<payment-id>/<transaction type>/<transaction-id>",
-        "number": 333333333
-    }
-}
-```
-
-{:.code-header}
-**Payment Order Callback**
-
-```js
-{
-    "paymentOrder": {
-        "id": "/psp/paymentorders/<paymentorder-id>",
-        "instrument": "<payment instrument>"
-    },
-    "payment": {
-        "id": "/psp/<payment instrument>/payments/<payment-id>",
-        "number": 222222222
-    },
-    "transaction": {
-        "id": "/psp/<payment instrument>/payments/<payment-id>/<transaction type>/<transaction-id>",
-        "number": 333333333
-    }
-}
-```
+{{ entity }}
 
 {:.table .table-striped}
 | **Parameter** | **Description**
@@ -75,17 +87,17 @@ status.
 
 ```mermaid
 sequenceDiagram
-  Participant Merchant
-  Participant SwedbankPay as Swedbank Pay
+Participant Merchant
+Participant SwedbankPay as Swedbank Pay
 
-  activate SwedbankPay
-  SwedbankPay->>+Merchant: POST <callbackUrl>
-  deactivate SwedbankPay
-  note left of Merchant: Callback by Swedbank Pay
-  Merchant-->>+SwedbankPay: HTTP response
-  Merchant->>+SwedbankPay: GET <payment instrument> payment
-  deactivate Merchant
-  note left of Merchant: First API request
-  SwedbankPay-->>+Merchant: payment resource
-  deactivate SwedbankPay
+activate SwedbankPay
+SwedbankPay->>+Merchant: POST <callbackUrl>
+deactivate SwedbankPay
+note left of Merchant: Callback by Swedbank Pay
+Merchant-->>+SwedbankPay: HTTP response
+Merchant->>+SwedbankPay: GET <payment instrument> payment
+deactivate Merchant
+note left of Merchant: First API request
+SwedbankPay-->>+Merchant: payment resource
+deactivate SwedbankPay
 ```

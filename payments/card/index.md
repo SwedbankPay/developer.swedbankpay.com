@@ -125,7 +125,7 @@ sequenceDiagram
     note left of Payer: redirect to SwedbankPay<br>(If Redirect scenario)
     Payer->>-Merchant: access merchant page
     activate Merchant
-    Merchant->>-SwedbankPay: GET /psp/creditcard/payments/<paymentorder.id>
+    Merchant->>-SwedbankPay: GET /psp/creditcard/payments/<payment.id>
     activate SwedbankPay
     note left of Merchant: Second API request
     SwedbankPay-->>-Merchant: rel: redirect-authorization
@@ -172,7 +172,7 @@ sequenceDiagram
 
     Payer->>-Merchant: access merchant page
     activate Merchant
-    Merchant->>-SwedbankPay: GET /psp/creditcard/payments/<paymentorder.id>
+    Merchant->>-SwedbankPay: GET /psp/creditcard/payments/<payment.id>
     activate SwedbankPay
     note left of Merchant: Second API request
     SwedbankPay-->>-Merchant: rel: redirect-authorization
