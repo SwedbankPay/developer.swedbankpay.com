@@ -91,7 +91,7 @@ Content-Type: application/json
 |  ✔︎︎︎︎︎  | └➔&nbsp;`operation` | `string` | Determines the initial operation, that defines the type invoice payment created.<br> <br> `FinancingConsumer`. Used to create a new invoice to be sent to the payer.<br> <br> `Recur`. Used to charge a card on a recurring basis. Is followed up by a capture or cancel operation (if not Autocapture is used, that is).<br> <br>`Verify`. Used when authorizing a card withouth reserveing any funds.  It is followed up by a verification transaction. |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`intent`    | `string` | The intent of the payment identifies how and when the charge will be effectuated. This determine the type transactions used during the payment process.<br> <br>`Authorization`. Reserves the amount, and is followed by a [cancellation][cancel] or [capture][capture] of funds.                                                                                                                                                                         |
 
-## FinancingConsumer
+## Financing Consumer
 
 A `FinancingConsumer` payment is a invoice.
 
@@ -106,7 +106,7 @@ Content-Type: application/json
 
 {
   "payment": {
-    "operation": "<operation>",
+    "operation": "FinancingConsumer",
     "intent": "<intent>",
     "currency": "NOK|SEK|...",
     "prices": [
@@ -134,16 +134,6 @@ Content-Type: application/json
       "payeeName": "Merchant1",
       "productCategory": "PC1234",
       "subsite": "MySubsite"
-    },
-    "metadata": {
-      "key1": "value1",
-      "key2": 2,
-      "key3": 3.1,
-      "key4": false
-    },
-    "prefillinfo": {
-      "msisdn": "value",
-      "email": "value"
     }
   },
   "invoice": {
@@ -564,6 +554,8 @@ Content-Type: application/json
 The `authorization` resource contains information about an authorization
 transaction made towards a payment, as previously described.
 
+{% include transactions-reference.md %}
+
 {% include one-click-payments.md %}
 
 {% include callback-reference.md %}
@@ -613,21 +605,15 @@ next_href="after-payment" next_title="Next: After Payment" %}
 [fi-png]: /assets/img/fi.png
 [no-png]: /assets/img/no.png
 [se-png]: /assets/img/se.png
-[card-payment]: /assets/img/payments/card-payment.png
 [callback-api]: #callback
-[callback]: /payments/invoice/other-features/#callback
 [cancel]: /payments/invoice/after-payment/#cancellations
 [capture]: /payments/invoice/after-payment/#Capture
+[card-payment]: /assets/img/payments/card-payment.png
+[FinancingConsumer]: #financing-consumer
 [hosted-view]: /payments/invoice/seamless-view
 [invoice-flow]: /payments/invoice/index/#invoice-flow
-[mcc]: https://en.wikipedia.org/wiki/Merchant_category_code
 [one-click-payments]: #one-click-payments
-[payment-order]: #payment-orders
-[price-resource]: /payments/invoice/other-features/#prices
-[purchase]: #purchase
 [recurrence]: #recur
 [redirect]: /payments/invoice/redirect
-[settlement-and-reconciliation]: #settlement-and-reconciliation
-[split-settlement]: #split-settlement
-[user-agent-definition]: https://en.wikipedia.org/wiki/User_agent
+[transaction-resource]: #transactions
 [verify]: #verify
