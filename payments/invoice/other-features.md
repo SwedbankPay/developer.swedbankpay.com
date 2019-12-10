@@ -1,5 +1,5 @@
 ---
-title: Swedbank Pay Payments Invoice Other Features
+title: Swedbank Pay Invoice Payments – Other Features
 sidebar:
   navigation:
   - title: Invoice Payments
@@ -32,12 +32,12 @@ set to value `FinancingConsumer` are listed below.
 ### Options before posting a payment
 
 {:.table .table-striped}
-|                 | Sweden ![Swedish flag][se-png] | Norway ![Norwegian flag][no-png] | FInland ![Finish flag][fi-png] |
-| :-------------- | :----------------------------- | :------------------------------- | :----------------------------- |
-| **Operation**   | `FinancingConsumer`            | `FinancingConsumer`              | `FinancingConsumer`            |
-| **Intent**      | `Authorization`                | `Authorization`                  | `Authorization`                |
-| **Currency**    | SEK                            | NOK                              | EUR                            |
-| **InvoiceType** | `PayExFinancingSE`             | `PayExFinancingNO`               | `PayExFinancingFI`             |
+|                 | Norway ![Norwegian flag][no-png] | FInland ![Finish flag][fi-png] | Sweden ![Swedish flag][se-png] |
+| :-------------- | :------------------------------- | :----------------------------- | :----------------------------- |
+| **Operation**   | `FinancingConsumer`              | `FinancingConsumer`            | `FinancingConsumer`            |
+| **Intent**      | `Authorization`                  | `Authorization`                | `Authorization`                |
+| **Currency**    | NOK                              | EUR                            | SEK                            |
+| **InvoiceType** | `PayExFinancingNO`               | `PayExFinancingFI`             | `PayExFinancingSE`             |
 
 * An invoice payment is always two-phased based -  you create an Authorize
   transaction, that is followed by a Capture or Cancel request.
@@ -93,7 +93,7 @@ Content-Type: application/json
 
 ## Financing Consumer
 
-A `FinancingConsumer` payment is a invoice.
+A `FinancingConsumer` payment is an invoice.
 
 {:.code-header}
 **Request**
@@ -606,8 +606,8 @@ next_href="after-payment" next_title="Next: After Payment" %}
 [no-png]: /assets/img/no.png
 [se-png]: /assets/img/se.png
 [callback-api]: #callback
-[cancel]: /payments/invoice/after-payment/#cancellations
-[capture]: /payments/invoice/after-payment/#Capture
+[cancel]: /payments/invoice/after-payment#cancellations
+[capture]: /payments/invoice/after-payment#Capture
 [card-payment]: /assets/img/payments/card-payment.png
 [FinancingConsumer]: #financing-consumer
 [hosted-view]: /payments/invoice/seamless-view
