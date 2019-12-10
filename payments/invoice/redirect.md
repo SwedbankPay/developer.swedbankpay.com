@@ -94,7 +94,7 @@ sequenceDiagram
 ## API Requests
 
 The API requests are displayed in the [purchase flow](#purchase-flow).
-You can  with following `operation`
+You can complete the invoice payment with following `operation`
 options:
 
 * [Financing Consumer][other-features-financing-consumer]
