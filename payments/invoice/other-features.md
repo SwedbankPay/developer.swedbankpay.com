@@ -625,8 +625,9 @@ Content-Type: application/json
 
 ## Verify
 
-> The `Verify` operation lets you post verification payments, which are used to
-  confirm validity of card information without reserving or charging any amount.
+{% include alert.html type="neutral" icon="info" body="The `Verify` operation
+lets you post verification payments, which are used to confirm validity of card
+information without reserving or charging any amount." %}
 
 ### Introduction to Verify
 
@@ -635,10 +636,9 @@ This option is commonly used when initiating a subsequent
 [recurring invoice payment][recurrence] flow - where you do not want
 to charge the consumer right away.
 
-{% include alert.html type="neutral" icon="info" body="
-Please note that all boolean credit card attributes involving rejection of
-certain card types are optional and requires enabling on the contract with
-Swedbank Pay." %}
+{% include alert.html type="neutral" icon="info" body="Please note that all
+boolean credit card attributes involving rejection of certain card types are
+optional and requires enabling on the contract with Swedbank Pay." %}
 
 ### Verification through Swedbank Pay Payments
 
@@ -714,11 +714,8 @@ Content-Type: application/json
       "subsite": "MySubsite"
     }
   },
-  "creditCard": {
-    "rejectCreditCards": false,
-    "rejectDebitCards": false,
-    "rejectConsumerCards": false,
-    "rejectCorporateCards": false
+  "invoice": {
+    "invoiceType": "PayExFinancingNo"
   }
 }
 ```
@@ -763,30 +760,30 @@ Content-Type: application/json
   },
   "operations": [
     {
-      "href": "https://api.externalintegration.payex.com/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
-      "rel": "update-payment-abort",
-      "method": "PATCH",
+      "method": "POST",
+      "href": "https://api.externalintegration.payex.com/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/approvedlegaladdress",
+      "rel": "create-approved-legal-address",
       "contentType": "application/json"
-    },
-    {
-      "href": "https://ecom.payex.com/invoice/payments/verification/123456123412341234123456789012",
-      "rel": "redirect-verification",
-      "method": "GET",
-      "contentType": "application/json"
-    },
-    {
-      "method": "GET",
-      "href": "https://ecom.dev.payex.com/invoice/core/scripts/client/px.creditcard.client.js?token=123456123412341234123456789012",
-      "rel": "view-verification",
-      "contentType": "application/javascript"
     },
     {
       "method": "POST",
-      "href": "https://ecom.dev.payex.com/psp/invoice/confined/payments/{paymentId:guid}/verifications",
-      "rel": "direct-verification",
+      "href": "https://api.externalintegration.payex.com/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations",
+      "rel": "create-authorization",
       "contentType": "application/json"
+    },
+    {
+      "method": "PATCH",
+      "href": "https://api.externalintegration.payex.com/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+      "rel": "update-payment-abort",
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "href": "https://ecom.externalintegration.payex.com/invoice/payments/authorize/2f9b51a821d40dd015332f14460f91393856725a19e9fb5a834d460af91c9ce2",
+      "rel": "redirect-authorization",
+      "contentType": "text/html"
     }
-  ]
+]
 }
 ```
 
@@ -879,27 +876,127 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
-    "transaction": {
-        "cardNumber": "4925000000000004",
-        "cardExpiryMonth": 11,
-        "cardExpiryYear": 22,
-        "cardVerificationCode": "185",
-        "cardholderName": "John Hancock"
-    }
+  "transaction": {
+    "activity": "FinancingConsumer"
+  },
+  "consumer": {
+    "socialSecurityNumber": "socialSecurityNumber",
+    "customerNumber": "customerNumber",
+    "email": "email",
+    "msisdn": "msisdn",
+    "ip": "consumer ip address"
+  },
+  "legalAddress": {
+    "addressee": "firstName + lastName",
+    "coAddress": "coAddress",
+    "streetAddress": "streetAddress",
+    "zipCode": "zipCode",
+    "city": "city",
+    "countryCode": "countryCode"
+  },
+  "billingAddress": {
+    "addressee": "firstName + lastName",
+    "coAddress": "coAddress",
+    "streetAddress": "streetAddress",
+    "zipCode": "zipCode",
+    "city": "city",
+    "countryCode": "countryCode"
+  }
 }
 ```
 
 {:.table .table-striped}
-| Required | Property                       | Type      | Description                                                                     |
-| :------: | :----------------------------- | :-------- | :------------------------------------------------------------------------------ |
-|  ✔︎︎︎︎︎  | `transaction`                  | `object`  | The transaction object.                                                         |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`cardNumber`           | `string`  | Primary Account Number (PAN) of the card, printed on the face of the card.      |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`cardExpiryMonth`      | `integer` | Expiry month of the card, printed on the face of the card.                      |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`cardExpiryYear`       | `integer` | Expiry year of the card, printed on the face of the card.                       |
-|          | └➔&nbsp;`cardVerificationCode` | `string`  | Card verification code (CVC/CVV/CVC2), usually printed on the back of the card. |
-|          | └➔&nbsp;`cardholderName`       | `string`  | Name of the card holder, usually printed on the face of the card.               |
+| Required | Property                       | Type     | Description                                                            |
+| :------: | :----------------------------- | :------- | :--------------------------------------------------------------------- |
+|  ✔︎︎︎︎︎  | `transaction`                  | `object` | The transaction object.                                                |
+|          | └➔&nbsp;`activity`             | `string` | Only the value `"FinancingConsumer"` or `"AccountsReceivableConsumer"` |
+|          | `consumer`                     | `object` | The consumer object.                                                   |
+|          | └➔&nbsp;`socialSecurityNumber` | `string` | The social security number of the consumer.                            |
+|          | └➔&nbsp;`customerNumber`       | `string` | Customer number of the consumer.                                       |
+|          | └➔&nbsp;`email`                | `string` | The customer email address.                                            |
+|          | └➔&nbsp;`msisdn`               | `string` | The MSISDN of the consumer.                                            |
+|          | └➔&nbsp;`ip`                   | `string` | The IP address of the consumer.                                        |
+|          | `legalAddress`                 | `object` | The Address object.                                                    |
+|          | └➔&nbsp;`addressee`            | `string` | The full name of the addressee of this invoice                         |
+|          | └➔&nbsp;`coAddress`            | `string` | The co Address of the addressee.                                       |
+|          | └➔&nbsp;`streetAddress`        | `string` | The street address of the addresse.                                    |
+|          | └➔&nbsp;`zipCode`              | `string` | The zip code of the addresse.                                          |
+|          | └➔&nbsp;`city`                 | `string` | The city name  of the addresse.                                        |
+|          | └➔&nbsp;`countryCode`          | `string` | The country code of the addresse.                                      |
+|          | `billingAddress`               | `object` | The BillingAddress object for the billing address of the addresse.     |
+|          | └➔&nbsp;`addressee`            | `string` | The full name of the billing address adressee.                         |
+|          | └➔&nbsp;`coAddress`            | `string` | The co address of the billing address adressee.                        |
+|          | └➔&nbsp;`streetAddress`        | `string` | The street address of the billing address adressee.                    |
+|          | └➔&nbsp;`zipCode`              | `string` | The zip code of the billing address adressee.                          |
+|          | └➔&nbsp;`city`                 | `string` | The city name of the billing address adressee.                         |
+|          | └➔&nbsp;`countryCode`          | `string` | The country code of the billing address adressee.                      |
 
-> Response
+{code-header}
+**Response**
+
+```json
+{
+  "payment": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+  "authorization": {
+    "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations/12345678-1234-1234-1234-123456789012",
+    "consumer": {
+      "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/consumer"
+    },
+    "legalAddress": {
+      "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/legaladdress"
+    },
+    "billingAddress": {
+      "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/billingaddress"
+    },
+    "transaction": {
+      "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
+      "created": "2016-09-14T01:01:01.01Z",
+      "updated": "2016-09-14T01:01:01.03Z",
+      "type": "Authorization",
+      "state": "Initialized|Completed|Failed",
+      "number": 1234567890,
+      "amount": 1000,
+      "vatAmount": 250,
+      "description": "Test transaction",
+      "payeeReference": "AH123456",
+      "failedReason": "ExternalResponseError",
+      "failedActivityName": "Authorize",
+      "failedErrorCode": "ThirdPartyErrorCode",
+      "failedErrorDescription": "ThirdPartyErrorMessage",
+      "isOperational": "TRUE|FALSE",
+      "activities": {
+        "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012/activities"
+      },
+      "operations": [
+        {
+          "href": "https://api.payex.com/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+          "rel": "edit-authorization",
+          "method": "PATCH"
+        }
+      ]
+    }
+  }
+}
+```
+
+{:.table .table-striped}
+| Property                 | Type      | Description                                                                                                                                                                                                  |
+| :----------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `payment`                | `string`  | The relative URI of the payment this transaction belongs to.                                                                                                                                                 |
+| `authorization`          | `object`  | The transaction object.                                                                                                                                                                                      |
+| └➔&nbsp;`id`             | `string`  | The relative URI of the current `transaction` resource.                                                                                                                                                      |
+| └➔&nbsp;`created`        | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
+| └➔&nbsp;`updated`        | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
+| └➔&nbsp;`type`           | `string`  | Indicates the transaction type.                                                                                                                                                                              |
+| └➔&nbsp;`state`          | `string`  | `Initialized`, `Completed` or `Failed`. Indicates the state of the transaction.                                                                                                                              |
+| └➔&nbsp;`number`         | `string`  | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead. |
+| └➔&nbsp;`amount`         | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` = 100.00 NOK, `5000` = 50.00 SEK.                                                                                     |
+| └➔&nbsp;`vatAmount`      | `integer` | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                           |
+| └➔&nbsp;`description`    | `string`  | A human readable description of maximum 40 characters of the transaction.                                                                                                                                    |
+| └➔&nbsp;`payeeReference` | `string`  | A unique reference for the transaction.                                                                                                                                                                      |
+| └➔&nbsp;`failedReason`   | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
+| └➔&nbsp;`isOperational`  | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
+| └➔&nbsp;`operations`     | `array`   | The array of operations that are possible to perform on the transaction in its current state.                                                                                                                |
 
 The `authorization` resource contains information about an authorization
 transaction made towards a payment, as previously described.
