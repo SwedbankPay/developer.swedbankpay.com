@@ -108,7 +108,7 @@ Content-Type: application/json
   "payment": {
     "operation": "FinancingConsumer",
     "intent": "<intent>",
-    "currency": "NOK|SEK|...",
+    "currency": "NOK",
     "prices": [
       {
         "type": "Invoice",
@@ -118,9 +118,9 @@ Content-Type: application/json
     ],
     "description": "Test Purchase",
     "payerReference": "SomeReference",
-    "generateRecurrenceToken": "true|false",
+    "generateRecurrenceToken": "false",
     "userAgent": "Mozilla/5.0...",
-    "language": "nb-NO|sv-SE|...",
+    "language": "nb-NO",
     "urls": {
       "completeUrl": "http://test-dummy.net/payment-completed",
       "cancelUrl": "http://test-dummy.net/payment-canceled",
@@ -137,8 +137,7 @@ Content-Type: application/json
     }
   },
   "invoice": {
-    "invoiceType": "PayExFinancingSe|PayExFinancingNo|PayExFinancingFi|CampaignInvoiceSe|PayMonthlyInvoiceSe|ScbFinancingSe",
-    "campaignCode": "Campaign1|Campaign2|Campaign3|Campaign4"
+    "invoiceType": "PayExFinancingNo"
   }
 }
 ```
@@ -160,7 +159,7 @@ Content-Type: application/json
 {
   "payment": {
     "operation": "Recur",
-    "intent": "Authorization|AutoCapture",
+    "intent": "Authorization",
     "recurrenceToken": "5adc265f-f87f-4313-577e-08d3dca1a26c",
     "currency": "NOK",
     "amount": 1500,
@@ -433,27 +432,25 @@ Content-Type: application/json
     "activity": "FinancingConsumer"
   },
   "consumer": {
-    "socialSecurityNumber": "socialSecurityNumber",
-    "customerNumber": "customerNumber",
-    "email": "email",
-    "msisdn": "msisdn",
-    "ip": "consumer ip address"
+    "socialSecurityNumber": "26026708248",
+    "customerNumber": "123456",
+    "email": "olivia.nyhuus@payex.com",
+    "msisdn": "+4798765432",
+    "ip": "127.0.0.1"
   },
   "legalAddress": {
-    "addressee": "firstName + lastName",
-    "coAddress": "coAddress",
-    "streetAddress": "streetAddress",
-    "zipCode": "zipCode",
-    "city": "city",
-    "countryCode": "countryCode"
+    "addressee": "Olivia Nyhuus",
+    "streetAddress": "SaltnesToppen 43",
+    "zipCode": "1642",
+    "city": "Saltnes",
+    "countryCode": "no"
   },
   "billingAddress": {
-    "addressee": "firstName + lastName",
-    "coAddress": "coAddress",
-    "streetAddress": "streetAddress",
-    "zipCode": "zipCode",
-    "city": "city",
-    "countryCode": "countryCode"
+    "addressee": "Olivia Nyhuus",
+    "streetAddress": "SaltnesToppen 43",
+    "zipCode": "1642",
+    "city": "Saltnes",
+    "countryCode": "no"
   }
 }
 ```
@@ -506,7 +503,7 @@ Content-Type: application/json
       "created": "2016-09-14T01:01:01.01Z",
       "updated": "2016-09-14T01:01:01.03Z",
       "type": "Authorization",
-      "state": "Initialized|Completed|Failed",
+      "state": "Initialized",
       "number": 1234567890,
       "amount": 1000,
       "vatAmount": 250,
@@ -516,7 +513,7 @@ Content-Type: application/json
       "failedActivityName": "Authorize",
       "failedErrorCode": "ThirdPartyErrorCode",
       "failedErrorDescription": "ThirdPartyErrorMessage",
-      "isOperational": "TRUE|FALSE",
+      "isOperational": "TRUE",
       "activities": {
         "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012/activities"
       },
