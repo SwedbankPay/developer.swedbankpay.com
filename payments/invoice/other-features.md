@@ -343,7 +343,7 @@ Content-Type: application/json
       "rel": "redirect-authorization",
       "contentType": "text/html"
     }
-]
+  ]
 }
 ```
 
@@ -419,7 +419,7 @@ sequenceDiagram
 The `redirect-authorization` operation redirects the consumer to
 Swedbank Pay Payments where the payment is authorized.
 
-{code-header}
+{:.code-header}
 **Request**
 
 ```http
