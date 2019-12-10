@@ -361,7 +361,7 @@ The previous two steps gives this HTML:
         <script src=<YourJavaScriptFileHere>></script>
     </head>
     <body>
-        <div id="SweddbankPay-seamless-view-page">
+        <div id="SwedbankPay-seamless-view-page">
           <script id="paymentPageScript" src="https://ecom.dev.payex.com/creditcard/core/scripts/client/px.creditcard.client.js"></script>
         </div>
     </body>
@@ -376,7 +376,11 @@ embedded on your website.
 
 ```js
 <script language="javascript">
-  payex.hostedView.creditCard().open();
+    payex.hostedView.creditCard({
+        // The container specifies which id the script will look for to host the
+        // iframe component.
+        container: "SwedbankPay-seamless-view-page"
+    }).open();
 </script>
 ```
 
