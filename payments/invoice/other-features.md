@@ -338,16 +338,9 @@ sequenceDiagram
   SwedbankPay-->>+Payer: display purchase information
   deactivate SwedbankPay
 
-  Payer->>Payer: input creditcard information
-  Payer->>+SwedbankPay: submit creditcard information
+  Payer->>Payer: input invoice information
+  Payer->>+SwedbankPay: submit invoice information
   deactivate Payer
-  opt Card supports 3-D Secure
-    SwedbankPay-->>Payer: redirect to IssuingBank
-    deactivate SwedbankPay
-    Payer->>IssuingBank: 3-D Secure authentication process
-    Payer->>+SwedbankPay: access authentication page
-    deactivate Payer
-  end
 
   SwedbankPay-->>+Payer: redirect to merchant
   deactivate SwedbankPay
