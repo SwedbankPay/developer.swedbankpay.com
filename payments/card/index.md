@@ -188,7 +188,7 @@ sequenceDiagram
 
 {% include iterator.html  next_href="redirect" next_title="Next: Redirect" %}
 
-[card-payment]: /assets/img/payments/card-payment.png
+[card-payment]: /assets/img/checkout/test-purchase.png
 [cancel]: /payments/card/after-payment/#cancellations
 [capture]: /payments/card/after-payment/#capture
 [redirect]: /payments/card/redirect

@@ -80,7 +80,7 @@ described in the [technical reference][technical-reference].
 When clicking the payment link, the consumer will be directed to a payment
 page, similar to the examples below, where payment information can be entered.
 
-![Paymentlink screenshot][test_purchase]
+![screenshot of the redirect card payment page][card-payment]{:height="500px" width="425px"}
 
 ### Options
 
