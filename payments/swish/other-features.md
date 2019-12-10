@@ -31,7 +31,7 @@ sidebar:
 
 {% include recurring-card-payments.md %}
 
-{% include subsite.md %}
+{% include subsite.md swish=true %}
 
 ### Prices
 
