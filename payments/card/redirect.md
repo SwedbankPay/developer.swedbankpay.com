@@ -70,7 +70,7 @@ An example of an expanded `POST` request is available in the
 
 {% include risk-indicator.md %}
 
-{% include purchase.md %}
+{% include purchase.md redirect=true%}
 
 ### Intent
 
