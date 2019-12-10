@@ -68,7 +68,7 @@ identified with the value of the `operation` property. Each kind are documented
 in their own section below.
 
 {:.code-header}
-**Request**"
+**Request**
 
 ```http
 POST /psp/invoice/payments HTTP/1.1
