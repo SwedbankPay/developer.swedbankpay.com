@@ -388,20 +388,20 @@ embedded on your website.
 next_href="after-payment" next_title="Next: After Payment" %}
 
 [payment-page_hosted-view.png]: /assets/screenshots/card/hosted-view/view/macos.png
-[abort]: /payments/card/other-features/#abort
+[abort]: /payments/card/other-features#abort
 [after-payment]: /payments/card/after-payment
-[callback]: /payments/card/other-features/#callback
-[cancel]: /payments/card/after-payment/#cancellations
-[capture]: /payments/card/after-payment/#Capture
-[create-payment]: /payments/card/other-features/#create-payment
-[expansion]: /payments/card/other-features/#expansion
-[payee-reference]: /payments/card/other-features/#payeereference
-[payout]: /payments/card/other-features/#payout
-[purchase]: /payments/card/other-features/#purchase
-[price-resource]: /payments/card/other-features/#prices
-[recur]: /payments/card/other-features/#recur
-[reversal]: /payments/card/after-payment/#reversals
-[verify]: /payments/card/other-features/#verify
-[create-payment]: /payments/card/other-features/#create-payment
+[callback]: /payments/card/other-features#callback
+[cancel]: /payments/card/after-payment#cancellations
+[capture]: /payments/card/after-payment#Capture
+[create-payment]: /payments/card/other-features#create-payment
+[expansion]: /payments/card/other-features#expansion
+[payee-reference]: /payments/card/other-features#payeereference
+[payout]: /payments/card/other-features#payout
+[purchase]: /payments/card/other-features#purchase
+[price-resource]: /payments/card/other-features#prices
+[recur]: /payments/card/other-features#recur
+[reversal]: /payments/card/after-payment#reversals
+[verify]: /payments/card/other-features#verify
+[create-payment]: /payments/card/other-features#create-payment
 [user-agent-definition]: https://en.wikipedia.org/wiki/User_agent
 [hosted-view-card]: /assets/img/payments/hosted-view-card.png

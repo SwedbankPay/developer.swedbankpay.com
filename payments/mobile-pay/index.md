@@ -227,8 +227,8 @@ sequenceDiagram
 [mobile-pay]: /payments/mobile-pay/
 [payex-reconciliation-and-settlement]: /payments/mobile-pay/other-features#settlement-and-reconcilliation
 [redirect-implementation]: /payments/mobile-pay/redirect
-[swish-e-commerce]: /payments/swish/#swish-e-commerce-redirect-to-payment-pages
-[swish-m-commerce]: /payments/swish/#swish-m-commerce-redirect-to-payment-pages
+[swish-e-commerce]: /payments/swish#swish-e-commerce-redirect-to-payment-pages
+[swish-m-commerce]: /payments/swish#swish-m-commerce-redirect-to-payment-pages
 [technical-reference-callback]: /payments/mobile-pay/other-features#callback
 [tecnical-reference-finalize]: /payments/mobile-pay/after-payment#finalize
 [vipps]: /payments/vipps/

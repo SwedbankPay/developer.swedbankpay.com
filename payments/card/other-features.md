@@ -857,11 +857,11 @@ payment"  %}
 
 [purchase]: #purchase
 [user-agent-definition]: https://en.wikipedia.org/wiki/User_agent
-[cancel]: /payments/card/after-payment/#cancellations
-[capture]: /payments/card/after-payment/#Capture
-[callback]: /payments/card/other-features/#callback
+[cancel]: /payments/card/after-payment#cancellations
+[capture]: /payments/card/after-payment#Capture
+[callback]: /payments/card/other-features#callback
 [mcc]: https://en.wikipedia.org/wiki/Merchant_category_code
-[price-resource]: /payments/card/other-features/#prices
+[price-resource]: /payments/card/other-features#prices
 [redirect]: /payments/card/redirect
 [hosted-view]: /payments/card/seamless-view
 [one-click-payments]: #one-click-payments

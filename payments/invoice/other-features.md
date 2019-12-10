@@ -587,6 +587,7 @@ next_href="after-payment" next_title="Next: After Payment" %}
 [no-png]: /assets/img/no.png
 [se-png]: /assets/img/se.png
 [callback-api]: #callback
+<<<<<<< HEAD
 [cancel]: /payments/invoice/after-payment#cancellations
 [capture]: /payments/invoice/after-payment#Capture
 [card-payment]: /assets/img/payments/card-payment.png
@@ -598,3 +599,7 @@ next_href="after-payment" next_title="Next: After Payment" %}
 [redirect]: /payments/invoice/redirect
 [transaction-resource]: #transactions
 [verify]: #verify
+=======
+[invoice-flow]: /payments/invoice/index#invoice-flow
+[payment-order]: #payment-orders
+>>>>>>> DX-463 Fixed links with wrong routing

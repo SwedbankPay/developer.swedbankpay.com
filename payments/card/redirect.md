@@ -326,19 +326,19 @@ sequenceDiagram
 {% include iterator.html prev_href="./" prev_title="Back: Introduction"
 next_href="seamless-view" next_title="Next: Seamless View" %}
 
-[abort]: /payments/card/other-features/#abort
-[callback]: /payments/card/other-features/#callback
-[cancel]: /payments/card/after-payment/#cancellations
-[capture]: /payments/card/after-payment/#Capture
-[create-payment]: /payments/card/other-features/#create-payment
-[expansion]: /payments/card/other-features/#expansion
-[payee-reference]: /payments/card/other-features/#payeereference
-[payout]: /payments/card/other-features/#payout
-[purchase]: /payments/card/other-features/#purchase
-[price-resource]: /payments/card/other-features/#prices
-[recur]: /payments/card/other-features/#recur
+[abort]: /payments/card/other-features#abort
+[callback]: /payments/card/other-features#callback
+[cancel]: /payments/card/after-payment#cancellations
+[capture]: /payments/card/after-payment#Capture
+[create-payment]: /payments/card/other-features#create-payment
+[expansion]: /payments/card/other-features#expansion
+[payee-reference]: /payments/card/other-features#payeereference
+[payout]: /payments/card/other-features#payout
+[purchase]: /payments/card/other-features#purchase
+[price-resource]: /payments/card/other-features#prices
+[recur]: /payments/card/other-features#recur
 [redirect-image]: /assets/img/checkout/test-purchase.png
-[reversal]: /payments/card/after-payment/#reversals
+[reversal]: /payments/card/after-payment#reversals
 [card-payment]: /assets/img/checkout/test-purchase.png
-[verify]: /payments/card/other-features/#verify
+[verify]: /payments/card/other-features#verify
 [user-agent-definition]: https://en.wikipedia.org/wiki/User_agent

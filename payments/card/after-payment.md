@@ -626,12 +626,12 @@ sequenceDiagram
 {% include iterator.html prev_href="seamless-view" prev_title="Back: Seamless View"
 next_href="other-features" next_title="Next: Other Features" %}
 
-[transaction-resource]: /payments/card/other-features/#transactions
-[payeeReference]: /payments/card/other-features/#payeereference
-[payment-resource]: /payments/card/other-features/#payment
-[abort]: /payments/card/other-features/#abort
-[callback]: /payments/card/other-features/#callback
-[cancel]: /payments/card/after-payment/#cancellations
-[capture]: /payments/card/after-payment/#Capture
-[operations]: /payments/card/other-features/#operations
-[reversal]: /payments/card/after-payment/#reversals
+[transaction-resource]: /payments/card/other-features#transactions
+[payeeReference]: /payments/card/other-features#payeereference
+[payment-resource]: /payments/card/other-features#payment
+[abort]: /payments/card/other-features#abort
+[callback]: /payments/card/other-features#callback
+[cancel]: /payments/card/after-payment#cancellations
+[capture]: /payments/card/after-payment#Capture
+[operations]: /payments/card/other-features#operations
+[reversal]: /payments/card/after-payment#reversals

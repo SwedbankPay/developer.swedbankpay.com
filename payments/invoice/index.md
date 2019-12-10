@@ -107,6 +107,7 @@ sequenceDiagram
 [after-payment]: /payments/invoice/after-payment
 [no-png]: /assets/img/no.png
 [se-png]: /assets/img/se.png
+<<<<<<< HEAD
 [fi-png]: /assets/img/fi.png
 [callback]: /payments/invoice/other-features#callback
 [cancel]: /payments/invoice/after-payment#cancellations
@@ -118,3 +119,10 @@ sequenceDiagram
 [recur]: /payments/card/other-features/#recur
 [user-agent-def]: https://en.wikipedia.org/wiki/User_agent
 [payee-reference]: /payments/invoice/other-features#payee-info
+=======
+[callback-api]: /payments/invoice/other-features#callback
+[hosted-view]: /payments#hosted-view-implementation
+[optional-features]: /payments/invoice/optional-features
+[redirect]: /payments/invoice/redirect
+[setup-mail]: mailto:setup.ecom@PayEx.com
+>>>>>>> DX-463 Fixed links with wrong routing
