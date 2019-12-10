@@ -84,6 +84,7 @@ Our `payment` example below uses the [`FinancingConsumer`]
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
+
 {
     "payment": {
         "operation": "FinancingConsumer",
