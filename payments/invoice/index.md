@@ -124,7 +124,7 @@ Content-Type: application/json
 
         },
         "billingAddress": {
-                "firstName": "firstname/companyname",
+                "firstName": "Leia",
                 "lastName": "lastname",
                 "email": "email",
                 "msisdn": "msisdn",
