@@ -99,7 +99,7 @@ Content-Type: application/json
         ],
         "description": "Test Purchase",
         "payerReference": "SomeReference",
-        "generateRecurrenceToken": "true|false", //<-- Optional (default value is false)
+        "generateRecurrenceToken": false,
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO|sv-SE|...",
         "urls": {
