@@ -82,7 +82,7 @@ prefilled with the payer's card details._
 
 ### Screenshots
 
-![One click payment page][one-click-image]
+![One click payment page][one-click-image]{:height="450px" width="425px"}
 
 ### Delete payment token
 
