@@ -88,7 +88,7 @@ Content-Type: application/json
     "payment": {
         "operation": "FinancingConsumer",
         "intent": "Authorization",
-        "currency": "NOK|SEK|...",
+        "currency": "SEK",
         "prices": [
             {
                 "type": "Invoice",
