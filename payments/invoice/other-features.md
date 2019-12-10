@@ -56,8 +56,7 @@ set to value `FinancingConsumer` are listed below.
 ## Create Payment
 
 Within the invoice payments part of the eCommerce API, you can create four kinds
-of payments ([FinancingConsumer][FinancingConsumer],
-[AccountsReceivableConsumer][AccountsReceivableConsumer], [Verify][Verify], and
+of payments ([FinancingConsumer][FinancingConsumer], [Verify][Verify], and
 [Recur][recurrence]), and you can inspect and alter the details of the
 individual transactions within the payment.
 
@@ -86,11 +85,73 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property            | Type     | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| :------: | ------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|  ✔︎︎︎︎︎  | `payment`           | `object` | The `payment` object.                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`operation` | `string` | Determines the initial operation, that defines the type invoice payment created.<br> <br> `Purchase`. Used to charge a card. It is followed up by a capture or cancel operation.<br> <br> `Recur`. Used to charge a card on a recurring basis. Is followed up by a capture or cancel operation (if not Autocapture is used, that is).<br> <br>`Verify`. Used when authorizing a card withouth reserveing any funds.  It is followed up by a verification transaction. |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`intent`    | `string` | The intent of the payment identifies how and when the charge will be effectuated. This determine the type transactions used during the payment process.<br> <br>`Authorization`. Reserves the amount, and is followed by a [cancellation][cancel] or [capture][capture] of funds.<br> <br>`AutoCapture`. A one phase-option that enable capture of funds automatically after authorization.                                                                           |
+| Required | Property            | Type     | Description                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| :------: | ------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|  ✔︎︎︎︎︎  | `payment`           | `object` | The `payment` object.                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`operation` | `string` | Determines the initial operation, that defines the type invoice payment created.<br> <br> `FinancingConsumer`. Used to create a new invoice to be sent to the payer.<br> <br> `Recur`. Used to charge a card on a recurring basis. Is followed up by a capture or cancel operation (if not Autocapture is used, that is).<br> <br>`Verify`. Used when authorizing a card withouth reserveing any funds.  It is followed up by a verification transaction. |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`intent`    | `string` | The intent of the payment identifies how and when the charge will be effectuated. This determine the type transactions used during the payment process.<br> <br>`Authorization`. Reserves the amount, and is followed by a [cancellation][cancel] or [capture][capture] of funds.                                                                                                                                                                         |
+
+## FinancingConsumer
+
+A `FinancingConsumer` payment is a invoice.
+
+{:.code-header}
+**Request**
+
+```http
+POST /psp/invoice/payments HTTP/1.1
+Host: api.externalintegration.payex.com
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+
+{
+  "payment": {
+    "operation": "<operation>",
+    "intent": "<intent>",
+    "currency": "NOK|SEK|...",
+    "prices": [
+      {
+        "type": "Invoice",
+        "amount": 1500,
+        "vatAmount": 0
+      }
+    ],
+    "description": "Test Purchase",
+    "payerReference": "SomeReference",
+    "generateRecurrenceToken": "true|false",
+    "userAgent": "Mozilla/5.0...",
+    "language": "nb-NO|sv-SE|...",
+    "urls": {
+      "completeUrl": "http://test-dummy.net/payment-completed",
+      "cancelUrl": "http://test-dummy.net/payment-canceled",
+      "callbackUrl": "http://test-dummy.net/payment-callback",
+      "logoUrl": "http://fakeservices.psp.dev.utvnet.net/logo.png",
+      "termsOfServiceUrl": "http://fakeservices.psp.dev.utvnet.net/terms.pdf"
+    },
+    "payeeInfo": {
+      "payeeId": "12345678-1234-1234-1234-123456789012",
+      "payeeReference": "PR123",
+      "payeeName": "Merchant1",
+      "productCategory": "PC1234",
+      "subsite": "MySubsite"
+    },
+    "metadata": {
+      "key1": "value1",
+      "key2": 2,
+      "key3": 3.1,
+      "key4": false
+    },
+    "prefillinfo": {
+      "msisdn": "value",
+      "email": "value"
+    }
+  },
+  "invoice": {
+    "invoiceType": "PayExFinancingSe|PayExFinancingNo|PayExFinancingFi|CampaignInvoiceSe|PayMonthlyInvoiceSe|ScbFinancingSe",
+    "campaignCode": "Campaign1|Campaign2|Campaign3|Campaign4"
+  }
+}
+```
 
 ## Recur
 
