@@ -26,7 +26,7 @@ sidebar:
                       Swedbank Pay's APIs yet." %}
 
 {% include jumbotron.html body="**Invoice Payments** is one of the easiest
-and safest payment service where Swedbank Pay helps improve cashflow by
+and safest payment services where Swedbank Pay helps improve cashflow by
 purchasing merchant invoices.
 Choose between our **Direct**, **Redirect** and **Seamless view**
 integration options." %}
