@@ -339,12 +339,12 @@ You need to embed the script source on your site to create a hosted-view in an
 hosted environment. A simplified integration has these following steps:
 
 1. Create a container that will contain the Seamless View iframe: `<div
-   id="SwedbankPay-seamless-view-page">`.
+   id="swedbank-pay-seamless-view-page">`.
 2. Create a `<script>` source within the container. Embed the `href` value
    obtained in the `POST` request in the `<script>` element. Example:
 
 ```html
-    <script id="paymentPageScript" src="https://ecom.dev.payex.com/creditcard/core/ scripts/client/px.creditcard.client.js"></script>
+    <script id="payment-page-script" src="https://ecom.dev.payex.com/creditcard/core/ scripts/client/px.creditcard.client.js"></script>
 ```
 
 The previous two steps gives this HTML:
@@ -361,8 +361,8 @@ The previous two steps gives this HTML:
         <script src=<YourJavaScriptFileHere>></script>
     </head>
     <body>
-        <div id="SwedbankPay-seamless-view-page">
-          <script id="paymentPageScript" src="https://ecom.dev.payex.com/creditcard/core/scripts/client/px.creditcard.client.js"></script>
+        <div id="swedbank-pay-seamless-view-page">
+          <script id="payment-page-script" src="https://ecom.dev.payex.com/creditcard/core/scripts/client/px.creditcard.client.js"></script>
         </div>
     </body>
 </html>
