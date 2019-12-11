@@ -7,7 +7,7 @@ a corporation etc) related to a specific payment.
 **Request**
 
 ```http
-GET /psp/{{ when }}/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeInfo HTTP/1.1
+GET /psp/{{ instrument }}/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeInfo HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
