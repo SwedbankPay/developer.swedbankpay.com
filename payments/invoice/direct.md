@@ -23,7 +23,7 @@ Direct is a payment service where Swedbank Pay helps improve cashflow by
 purchasing merchant invoices. Swedbank Pay receives invoice data, which is used
 to produce and distribute invoices to the consumer/end-use" %}
 
-## Introduction (NO, SE and FI)
+## Introduction
 
 * To create an invoice payment, you need to collect all purchase information
   and make a `POST` request towards Swedbank Pay.
@@ -117,6 +117,7 @@ sequenceDiagram
   Merchant-->>-Consumer: Display All detail and final price
   Consumer-->>Consumer: Input consumer data
   Consumer->>Merchant: Confirm purchase
+  
   Activate Merchant
   note left of Merchant: Second API request
   Merchant->>+Swedbank Pay: POST <Invoice autorizations> (Transaction Activity=FinancingConsumer)

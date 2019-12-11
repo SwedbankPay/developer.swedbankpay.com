@@ -117,7 +117,7 @@ Content-Type: application/json
   "payment": {
     "operation": "FinancingConsumer",
       "intent": "Authorization",
-      "currency": "NOK|SEK|...",
+      "currency": "SEK",
       "prices": [
       {
         "type": "Invoice",
@@ -127,9 +127,8 @@ Content-Type: application/json
       ],
       "description": "Test Purchase",
       "payerReference": "SomeReference",
-      "generateRecurrenceToken": false,
       "userAgent": "Mozilla/5.0...",
-      "language": "nb-NO|sv-SE|...",
+      "language": "sv-SE",
       "urls": {
         "completeUrl": "http://test-dummy.net/payment-completed",
         "cancelUrl": "http://test-dummy.net/payment-canceled",
@@ -142,22 +141,21 @@ Content-Type: application/json
         "payeeReference": "PR123",
         "payeeName": "Merchant1",
         "productCategory": "PC1234",
-        "subsite": "MySubsite" //<-- Optional
+        "subsite": "MySubsite"
       },
       "billingAddress": {
-        "firstName": "firstname/companyname",
-        "lastName": "lastname",
-        "email": "email",
-        "msisdn": "msisdn",
-        "streetAddress": "streetAddress",
-        "coAddress": "coAddress",
-        "city": "city",
-        "zipCode": "zipCode",
-        "countryCode": "countrycode"
+        "firstName": "Leia",
+        "lastName": "Ahlstrom",
+        "email": "leia.ahlstrom@swedbankpay.com",
+        "msisdn": "+46739000001",
+        "streetAddress": "Helgestavägen 9",
+        "city": "Bro",
+        "zipCode": "19792",
+        "countryCode": "SE"
       }
   },
   "invoice": {
-      "invoiceType": "PayExFinancingNo",
+      "invoiceType": "PayExFinancingSe",
   }
 }
 ```
@@ -225,14 +223,14 @@ Content-Type: application/json
     "state": "Ready|Pending|Failed|Aborted",
     "operation": "FinancingConsumer"
     "intent": "Authorization",
-    "currency": "NOK|SEK|...",
+    "currency": "SEK",
     "amount": 1500,
     "remainingCaptureAmount": 1000,
     "remainingCancellationAmount": 1000,
     "remainingReversalAmount": 500,
     "description": "Test Purchase",
     "userAgent": "Mozilla/5.0...",
-    "language": "nb-NO",
+    "language": "se-SE",
     "prices": { "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/prices" },
     "transactions": { "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions" },
     "authorizations": { "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations" },
@@ -298,7 +296,7 @@ Content-Type: application/json
     "state": "Ready",
     "operation": "Purchase",
     "intent": "Authorization",
-    "currency": "NOK",
+    "currency": "SE",
     "amount": 1500,
     "remainingCaptureAmount": 1500,
     "remainingCancellationAmount": 1500,
@@ -307,7 +305,7 @@ Content-Type: application/json
     "payerReference": "AB1234",
     "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
     "userAgent": "Mozilla/5.0...",
-    "language": "nb-NO",
+    "language": "se-SE",
     "prices": { "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/prices" },
     "transactions": { "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions" },
     "authorizations": { "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations" },
