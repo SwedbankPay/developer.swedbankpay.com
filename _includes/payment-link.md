@@ -135,8 +135,11 @@ here][technical-reference-callback].
 ### Purchase flow
 
 The sequence diagrams display the high level process of the purchase, from
-generating a Payment Link to receiving a Callback. This in a generalized flow as
+generating a Payment Link to receiving a Callback.
+{% unless hide-3d-secure %}
+This in a generalized flow as
 well as a specific 3-D Secure enabled credit card scenario.
+{% endunless %}
 
 {% include alert.html type="neutral" icon="info" body="
 Please note that the the callback may come either before, after or in the
