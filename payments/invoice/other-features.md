@@ -489,7 +489,7 @@ Content-Type: application/json
       "created": "2016-09-14T01:01:01.01Z",
       "updated": "2016-09-14T01:01:01.03Z",
       "type": "Authorization",
-      "state": "Initialized",
+      "state": "Failed",
       "number": 1234567890,
       "amount": 1000,
       "vatAmount": 250,
@@ -590,7 +590,7 @@ next_href="after-payment" next_title="Next: After Payment" %}
 [card-payment]: /assets/img/payments/card-payment.png
 [FinancingConsumer]: #financing-consumer
 [hosted-view]: /payments/invoice/seamless-view
-[invoice-flow]: /payments/invoice/index/#invoice-flow
+[invoice-flow]: /payments/invoice/index#invoice-flow
 [one-click-payments]: #one-click-payments
 [recurrence]: #recur
 [redirect]: /payments/invoice/redirect
