@@ -25,19 +25,18 @@ to produce and distribute invoices to the consumer/end-use" %}
 
 ## Introduction
 
-* To create an invoice payment, you need to collect all purchase information
-  and make a `POST` request towards Swedbank Pay.
-* You also need to collect social security number (SSN) / person number and
-  postal number from the consumer, and make another `POST` request towards
-  PayEx in order to retrieve the name and address from the consumer.
-* To create the authorization transaction, you need to calculate the final
-  price / amount, and make a third `POST` request where you send in
-  the consumer data.
-* To get the authorization result, you need  to follow up with a `GET`
-  request using the `paymentID` received in the first step.
-* Finally, when you are ready to ship your order, you will have to make
-  a `POST` request to make a Capture. **At this point Swedbank Pay will generate
-  the invoice to the consumer.**
+1. Collect all purchase information and send it in a `POST` request to
+Swedbank Pay.
+1. Include personal information (SSN and postal code) and send it to Swedbank Pay.
+1. Make a new `POST` request towards Swedbank Pay to retrieve the name and
+address of the customer.
+1. Create an authorization transaction by calculating the final price / amount.
+1. Make a third `POST` request with consumer data as input.
+1. Send a  `GET` request with the `paymentID` to get the authorization result
+1. Make a Capture by creating a `POST` request
+
+  **By making a Capture, Swedbank Pay will generate
+  the invoice to the consumer and the order is ready for shipping.**
 
 ## Options before posting a payment
 
@@ -117,7 +116,7 @@ sequenceDiagram
   Merchant-->>-Consumer: Display All detail and final price
   Consumer-->>Consumer: Input consumer data
   Consumer->>Merchant: Confirm purchase
-  
+
   Activate Merchant
   note left of Merchant: Second API request
   Merchant->>+Swedbank Pay: POST <Invoice autorizations> (Transaction Activity=FinancingConsumer)
@@ -138,5 +137,6 @@ sequenceDiagram
 [callback-api]: /payments/invoice/other-features#callback
 [hosted-view]: /payments/#hosted-view-implementation
 [optional-features]: /payments/invoice/optional-features
+[other-features-financing-consumer]: /payments/invoice/other-features
 [redirect]: /payments/invoice/redirect
 [setup-mail]: mailto:setup.ecom@PayEx.com
