@@ -1,7 +1,7 @@
 {% assign payment-order = include.payment-order | default: false %}
 
 {% if payment-order %}
-    {% capture entity %}
+    {% capture code-example %}
 {:.code-header}
 **Payment Order Callback**
 
@@ -24,7 +24,7 @@
 
 {% endcapture %}
 {% else %}
-    {% capture entity %}
+    {% capture code-example %}
 {:.code-header}
 **Payment Instrument Callback**
 
@@ -74,7 +74,7 @@ about this update.
   * 1265 seconds
 * The callback is sent from the following IP address: `82.115.146.1`
 
-{{ entity }}
+{{ code-example }}
 
 {:.table .table-striped}
 | **Parameter** | **Description**
