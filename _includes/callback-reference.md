@@ -82,18 +82,18 @@ Swedbank Pay, and the two `GET` requests that you make to get the updated
 status.
 
 ```mermaid
-sequenceDiagram
-Participant Merchant
-Participant SwedbankPay as Swedbank Pay
+    sequenceDiagram
+    Participant Merchant
+    Participant SwedbankPay as Swedbank Pay
 
-activate SwedbankPay
-SwedbankPay->>+Merchant: POST <callbackUrl>
-deactivate SwedbankPay
-note left of Merchant: Callback by Swedbank Pay
-Merchant-->>+SwedbankPay: HTTP response
-Merchant->>+SwedbankPay: GET <payment instrument> payment
-deactivate Merchant
-note left of Merchant: First API request
-SwedbankPay-->>+Merchant: payment resource
-deactivate SwedbankPay
+    activate SwedbankPay
+    SwedbankPay->>+Merchant: POST <callbackUrl>
+    deactivate SwedbankPay
+    note left of Merchant: Callback by Swedbank Pay
+    Merchant-->>+SwedbankPay: HTTP response
+    Merchant->>+SwedbankPay: GET <payment instrument> payment
+    deactivate Merchant
+    note left of Merchant: First API request
+    SwedbankPay-->>+Merchant: payment resource
+    deactivate SwedbankPay
 ```
