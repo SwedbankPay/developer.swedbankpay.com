@@ -50,7 +50,7 @@ about this update.
     "id": "/psp/<payment instrument>/payments/<payment-id>/<transaction type>/<transaction-id>",
     "number": 333333333
     }
-    }
+}
 ```
 
 {% else %}
