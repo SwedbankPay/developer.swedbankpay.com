@@ -21,31 +21,111 @@ simplest and most common way to implement Card Payments." %}
 
 ## Introduction
 
-* When properly set up in your merchant/webshop site and the payer starts the
-  purchase process, you need to make a POST request towards Swedbank Pay with
-  your Purchase information. This will generate a payment object with a unique
-  `paymentID`. You will receive a **redirect URL** to a Swedbank Pay payment
-  page.
-* You need to redirect the payer's browser to that specified URL so that she can
-  enter the credit card details in a secure Swedbank Pay environment.
-* Swedbank Pay will handle 3-D Secure authentication when this is required.
-* Swedbank Pay will redirect the payer's browser to - one of two specified URLs,
-  depending on whether the payment session is followed through completely or
-  cancelled beforehand. Please note that both a successful and rejected payment
-  reach completion, in contrast to a cancelled payment.
-* When you detect that the payer reach your `completeUrl`, you need to do a
-  `GET` request to receive the state of the transaction, containing the
-  `paymentID` generated in the first step, to receive the state of the
-  transaction.
+Redirect is the integration that lets Swedbank Pay handle the payments, while
+you handle your core activities. When ready to pay, the consumer will be
+redirected to a secure Swedbank Pay hosted site. Finally, the consumer will be
+redirected back to your website after the payment process.
 
-## Screenshots
-
-You will redirect the payer to Swedbank Pay hosted pages to collect the credit
-card information.
+This is how the payment window might look like:
 
 ![screenshot of the redirect card payment page][card-payment]{:height="500px" width="425px"}
 
-## API Requests
+## Purchase flow
+
+```mermaid
+sequenceDiagram
+    participant Payer
+    participant Merchant
+    participant SwedbankPay as Swedbank Pay
+
+    activate Payer
+    Payer->>-Merchant: start purchase
+    activate Merchant
+    Merchant->>-SwedbankPay: POST /psp/creditcard/payments
+    activate SwedbankPay
+    note left of Payer: First API request
+    SwedbankPay-->>-Merchant: rel: redirect-authorization ①
+    activate Merchant
+    Merchant-->>-Payer: authorization page
+    activate Payer
+    Payer->>-SwedbankPay: access authorization page
+    activate SwedbankPay
+    note left of Payer: redirect to SwedbankPay ②
+    SwedbankPay-->>-Payer: display purchase information
+    activate Payer
+    Payer->>Payer: input creditcard information ③
+    Payer->>-SwedbankPay: submit creditcard information
+        opt Card supports 3-D Secure
+        note left of Payer: Authentication Challenge ④
+        SwedbankPay-->>Payer: redirect to IssuingBank
+        activate Payer
+        Payer->>-IssuingBank: 3-D Secure authentication process
+        activate IssuingBank
+        IssuingBank->>-Payer: 3-D Secure authentication process
+        activate Payer
+        Payer->>-SwedbankPay: access authentication page
+        activate SwedbankPay
+        end
+    SwedbankPay-->>-Payer: CompleteUrl ⑤
+    activate Payer
+    Payer->>-SwedbankPay: GET <payment.id> ⑥
+    activate SwedbankPay
+    note left of Merchant: Second API request
+    SwedbankPay-->>-Merchant: rel: redirect-authorization
+    activate Merchant
+    Merchant-->>-Payer: display purchase result
+        opt Callback is set
+        activate SwedbankPay
+        SwedbankPay->>SwedbankPay: Payment is updated
+        SwedbankPay->>-Merchant: POST Payment Callback
+        end
+```
+
+### Explainations
+
+* ① `rel: redirect-authorization` is the name of one of the operations, sent as
+  a response from Swedbank Pay to the Merchant. The href in this operation is
+  the **redirect URL** to a Swedbank Pay payment page.  
+* ② The consumer is being redirected to a secure Swedbank Pay hosted page
+* ③ The payment window is presented and the consumer can insert card information
+  for authorization.
+* ④ If needed the consumer must go through an authorization challenge to verify
+  the identity.
+* ⑤ The Payer reaches the CompleteUrl which you defined in the initial POST
+  request. Please note that both a successful and rejected payment reach
+  completion, in contrast to a cancelled payment.
+* ⑥ Send a GET request with the `paymentId` to check the state of the
+  transaction.
+
+### 3-D Secure
+
+Swedbank Pay will handle 3-D Secure authentication when this is required.
+When dealing with credit card payments, 3-D Secure authentication of the
+cardholder is an essential topic. There are two alternative outcomes of a credit
+card payment:
+
+1. 3-D Secure enabled - by default, 3-D Secure should be enabled, and Swedbank
+   Pay will check if the card is enrolled with 3-D Secure. This depends on the
+   issuer of the card. If the card is not enrolled with 3-D Secure, no
+   authentication of the cardholder is done.
+2. Card supports 3-D Secure - if the card is enrolled with 3-D Secure, Swedbank
+   Pay will redirect the cardholder to the autentication mechanism that is
+   decided by the issuing bank. Normally this will be done using BankID or
+   Mobile BankID.
+
+## Redirect Back End
+
+When properly set up in your merchant/webshop site and the payer starts the
+purchase process, you need to make a POST request towards Swedbank Pay with
+your Purchase information. This will generate a payment object with a unique
+`paymentID`. You will receive a **redirect URL** to a Swedbank Pay payment
+page.
+
+### Intent
+
+{% include intent.md %}
+
+### Operations
 
 The API requests are displayed in the [purchase flow](#purchase-flow).
 You can [create a card `payment`][create-payment] with following `operation`
@@ -56,7 +136,7 @@ options:
 * [Payout][payout]
 * [Verify][verify]
 
-Our `payment` example below uses the [`purchase`][purchase] value.
+Our `payment` example uses the [`purchase`][purchase] value.
 
 ### Purchase
 
@@ -72,129 +152,22 @@ An example of an expanded `POST` request is available in the
 
 {% include purchase.md %}
 
-### Intent
-
-{% include intent.md %}
+* You need to redirect the payer's browser to that specified URL in the
+  `rel:redirect-authorization` operation so that she can enter the credit card
+  details in a secure Swedbank Pay environment.
+* Swedbank Pay will handle 3-D Secure authentication when this is required.
+* Swedbank Pay will redirect the payer's browser to - one of two specified URLs,
+  depending on whether the payment session is followed through completely or
+  cancelled beforehand. Please note that both a successful and rejected payment
+  reach completion, in contrast to a cancelled payment.
+* When you detect that the payer reach your `completeUrl`, you need to do a
+  `GET` request to receive the state of the transaction, containing the
+  `paymentID` generated in the first step, to receive the state of the
+  transaction.
 
 ### General
 
 {% include card-general.md %}
-
-## Payment Resource
-
-{% include payment-resource.md %}
-
-## Purchase flow
-
-The sequence diagram below shows a high level description of a complete
-purchase, and the requests you have to send to Swedbank Pay. The links will
-take you directly to the corresponding API description.
-
-When dealing with credit card payments, 3-D Secure authentication of the
-cardholder is an essential topic. There are two alternative outcome of a credit
-card payment:
-
-* 3-D Secure enabled - by default, 3-D Secure should be enabled, and Swedbank
-  Pay will check if the card is enrolled with 3-D Secure. This depends on the
-  issuer of the card. If the card is not enrolled with 3-D Secure, no
-  authentication of then cardholder is done.
-* Card supports 3-D Secure - if the card is enrolled with 3-D Secure, Swedbank
-  Pay will redirect the cardholder to the autentication mechanism that is
-  decided by the issuing bank. Normally this will be done using BankID or Mobile
-  BankID.
-
-```mermaid
-sequenceDiagram
-    participant Payer
-    participant Merchant
-    participant SwedbankPay as Swedbank Pay
-
-    activate Payer
-    Payer->>+Merchant: start purchase
-    deactivate Payer
-    Merchant->>+SwedbankPay: POST /psp/creditcard/payments
-    deactivate Merchant
-    note left of Merchant: First API Request
-    SwedbankPay-->>+Merchant: payment resource
-    deactivate SwedbankPay
-    Merchant-->>+Payer: authorization page
-    deactivate Merchant
-    note left of Payer: redirect to SwedbankPay
-    Payer->>+Merchant: access merchant page
-    deactivate Payer
-    Merchant->>+SwedbankPay: GET <payment.id>
-    deactivate Merchant
-    note left of Merchant: Second API request
-    SwedbankPay-->>+Merchant: rel: redirect-authorization
-    deactivate SwedbankPay
-    Merchant-->>-Payer: display purchase result
-```
-
-```mermaid
-sequenceDiagram
-    participant Payer
-    participant Merchant
-    participant SwedbankPay as Swedbank Pay
-
-  activate Payer
-  Payer->>+Merchant: start purchase
-  deactivate Payer
-  Merchant->>+SwedbankPay: POST /psp/creditcard/payments
-  deactivate Merchant
-  note left of Payer: First API request
-  SwedbankPay-->+Merchant: payment resource
-  deactivate SwedbankPay
-  Merchant-->>+Payer: authorization page
-  deactivate Merchant
-  Payer->>+SwedbankPay: access authorization page
-  deactivate Payer
-  note left of Payer: redirect to SwedbankPay
-  SwedbankPay-->>+Payer: display purchase information
-  deactivate SwedbankPay
-
-  Payer->>Payer: input creditcard information
-  Payer->>+SwedbankPay: submit creditcard information
-  deactivate Payer
-  opt Card supports 3-D Secure
-    SwedbankPay-->>+Payer: redirect to IssuingBank
-    deactivate SwedbankPay
-    Payer->>IssuingBank: 3-D Secure authentication process
-    Payer->>+SwedbankPay: access authentication page
-    deactivate Payer
-  end
-
-  SwedbankPay-->>+Payer: redirect to merchant
-  deactivate SwedbankPay
-  note left of Payer: redirect back to merchant
-
-  Payer->>+Merchant: access merchant page
-  deactivate Payer
-  Merchant->>+SwedbankPay: GET <payment.id>
-  deactivate Merchant
-  note left of Merchant: Second API request
-  SwedbankPay-->>+Merchant: rel: redirect-authorization
-  deactivate SwedbankPay
-  Merchant-->>Payer: display purchase result
-  deactivate Merchant
-
-  opt Callback is set
-    activate SwedbankPay
-    SwedbankPay->>SwedbankPay: Payment is updated
-    SwedbankPay->>Merchant: POST Payment Callback
-    deactivate SwedbankPay
-  end
-```
-
-### Options after posting a payment
-
-* `Abort`: It is possible to abort the process, if the payment has no successful
-  transactions. [See the Abort payment description][abort].
-* If the payment shown above is done as a two phase (`Authorization`), you will
-  need to implement the [`Capture`][capture] and [`Cancel`][cancel] requests.
-* For `reversals`, you will need to implement the [Reversal request][reversal].
-* *If `callbackURL` is set:* Whenever changes to the payment occur a [Callback
-  request][callback] will be posted to the `callbackUrl`, which was generated
-  when the payment was created.
 
 ## Card Payments in Mobile Apps
 
@@ -248,23 +221,23 @@ sequenceDiagram
     participant SwedbankPay as Swedbank Pay
 
     activate Payer
-    Payer->>+Merchant: start purchase
-    deactivate Payer
-    Merchant->>+SwedbankPay: POST /psp/creditcard/payments
-    deactivate Merchant
+    Payer->>-Merchant: start purchase
+    activate Merchant
+    Merchant->>-SwedbankPay: POST /psp/creditcard/payments
+    activate SwedbankPay
     note left of Merchant: First API Request
-    SwedbankPay-->>+Merchant: payment resource
-    deactivate SwedbankPay
-    Merchant-->>+Payer: authorization page
-    deactivate Merchant
+    SwedbankPay-->>-Merchant: payment resource
+    activate Merchant
+    Merchant-->>-Payer: authorization page
+    activate Payer
     note left of Payer: redirect to SwedbankPay
-    Payer->>+Merchant: access merchant page
-    deactivate Payer
-    Merchant->>+SwedbankPay: GET <payment.id>
-    deactivate Merchant
+    Payer->>-Merchant: access merchant page
+    activate Merchant
+    Merchant->>-SwedbankPay: GET <payment.id>
+    activate SwedbankPay
     note left of Merchant: Second API request
-    SwedbankPay-->>+Merchant: rel: redirect-authorization
-    deactivate SwedbankPay
+    SwedbankPay-->>-Merchant: rel: redirect-authorization
+    activate Merchant
     Merchant-->>-Payer: display purchase result
 ```
 
@@ -275,51 +248,51 @@ sequenceDiagram
     participant SwedbankPay as Swedbank Pay
 
   activate Payer
-  Payer->>+Merchant: start purchase
-  deactivate Payer
-  Merchant->>+SwedbankPay: POST /psp/creditcard/payments
-  deactivate Merchant
+  Payer->>-Merchant: start purchase
+  activate Payer
+  Merchant->>-SwedbankPay: POST /psp/creditcard/payments
+  activate Merchant
   note left of Payer: First API request
-  SwedbankPay-->+Merchant: payment resource
-  deactivate SwedbankPay
-  Merchant-->>+Payer: authorization page
-  deactivate Merchant
-  Payer->>+SwedbankPay: access authorization page
-  deactivate Payer
+  SwedbankPay-->-Merchant: payment resource
+  activate SwedbankPay
+  Merchant-->>-Payer: authorization page
+  activate Merchant
+  Payer->>-SwedbankPay: access authorization page
+  activate Payer
   note left of Payer: redirect to SwedbankPay
-  SwedbankPay-->>+Payer: display purchase information
-  deactivate SwedbankPay
+  SwedbankPay-->>-Payer: display purchase information
+  activate SwedbankPay
 
   Payer->>Payer: input creditcard information
-  Payer->>+SwedbankPay: submit creditcard information
-  deactivate Payer
+  Payer->>-SwedbankPay: submit creditcard information
+  activate Payer
   opt Card supports 3-D Secure
-    SwedbankPay-->>+Payer: redirect to IssuingBank
-    deactivate SwedbankPay
+    SwedbankPay-->>-Payer: redirect to IssuingBank
+    activate SwedbankPay
     Payer->>IssuingBank: 3-D Secure authentication process
-    Payer->>+SwedbankPay: access authentication page
-    deactivate Payer
+    Payer->>-SwedbankPay: access authentication page
+    activate Payer
   end
 
-  SwedbankPay-->>+Payer: redirect to merchant
-  deactivate SwedbankPay
+  SwedbankPay-->>-Payer: redirect to merchant
+  activate SwedbankPay
   note left of Payer: redirect back to merchant
 
-  Payer->>+Merchant: access merchant page
-  deactivate Payer
-  Merchant->>+SwedbankPay: GET <payment.id>
-  deactivate Merchant
+  Payer->>-Merchant: access merchant page
+  activate Payer
+  Merchant->>-SwedbankPay: GET <payment.id>
+  activate Merchant
   note left of Merchant: Second API request
-  SwedbankPay-->>+Merchant: rel: redirect-authorization
-  deactivate SwedbankPay
+  SwedbankPay-->>-Merchant: rel: redirect-authorization
+  activate SwedbankPay
   Merchant-->>Payer: display purchase result
-  deactivate Merchant
+  activate Merchant
 
   opt Callback is set
     activate SwedbankPay
     SwedbankPay->>SwedbankPay: Payment is updated
     SwedbankPay->>Merchant: POST Payment Callback
-    deactivate SwedbankPay
+    activate SwedbankPay
   end
 ```
 
