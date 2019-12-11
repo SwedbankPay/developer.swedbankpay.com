@@ -6,6 +6,8 @@ sidebar:
     items:
     - url: /payments/swish
       title: Introduction
+     - url: /payments/swish/direct
+      title: Direct
     - url: /payments/swish/redirect
       title: Redirect
     - url: /payments/swish/seamless-view
