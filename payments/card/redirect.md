@@ -153,7 +153,7 @@ An example of an expanded `POST` request is available in the
 {% include purchase.md %}
 
 * You need to redirect the payer's browser to that specified URL in the
-  `rel:redirect-authorization` operation so that she can enter the credit card
+  `redirect-authorization` operation so that she can enter the credit card
   details in a secure Swedbank Pay environment.
 * Swedbank Pay will handle 3-D Secure authentication when this is required.
 * Swedbank Pay will redirect the payer's browser to - one of two specified URLs,
