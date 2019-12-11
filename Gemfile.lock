@@ -253,7 +253,6 @@ DEPENDENCIES
   dotenv
   github-pages
   jekyll-github-metadata
-  jemoji
   rake
 
 BUNDLED WITH
