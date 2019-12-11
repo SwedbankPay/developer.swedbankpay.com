@@ -23,7 +23,7 @@ sidebar:
 
 {% include payment-link.md %}
 
-{% include subsite.md credit-account=true %}
+{% include subsite.md payment-instrument="credit-account" %}
 
 ### Prices
 
