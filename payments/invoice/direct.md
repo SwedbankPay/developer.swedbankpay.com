@@ -48,7 +48,7 @@ All valid options when posting a payment with operation equal to
 | | **Sweden** ![Swedish flag][se-png]| **Norway** ![Norwegian flag][no-png] | **Finland** ![Finish flag][fi-png] |
 | `operation` | `FinancingConsumer` | `FinancingConsumer` | `FinancingConsumer` |
 | `intent` | `Authorization` | `Authorization` | `Authorization` |
-| `currency` | SEK | NOK | EUR |
+| `currency` | `SEK` | `NOK` | `EUR` |
 |`invoiceType` | `PayExFinancingSE` | `PayExFinancingNO` | `PayExFinancingFI` |
 
 * An invoice payment is always two-phased based - you create an Authorize
