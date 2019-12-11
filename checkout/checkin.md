@@ -82,10 +82,10 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-|      Required      | Property              | Type     | Description                                                                             |
-| :----------------: | :-------------------- | :------- | :-------------------------------------------------------------------------------------- |
-| :heavy_check_mark: | `operation`           | `string` | `initiate-consumer-session`, the operation to perform.                                  |
-| :heavy_check_mark: | `consumerCountryCode` | `string` | Payers country of residence. Used by the consumerUi for validation on all input fields. |
+| Required | Property              | Type     | Description                                                                             |
+| :------: | :-------------------- | :------- | :-------------------------------------------------------------------------------------- |
+|  ✔︎︎︎︎︎  | `operation`           | `string` | `initiate-consumer-session`, the operation to perform.                                  |
+|  ✔︎︎︎︎︎  | `consumerCountryCode` | `string` | Payers country of residence. Used by the consumerUi for validation on all input fields. |
 
 When the request has been sent, a response containing an array of operations that can be acted upon will be returned:
 

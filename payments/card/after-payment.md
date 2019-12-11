@@ -71,13 +71,13 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-|      Required      | Property                 | Type          | Description                                                                                                   |
-| :----------------: | :----------------------- | :------------ | :------------------------------------------------------------------------------------------------------------ |
-| :heavy_check_mark: | `transaction`            | `object`      | The object representation of the generic [transaction resource][transaction-resource].                        |
-| :heavy_check_mark: | └➔&nbsp;`amount`         | `integer`     | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 100.00 NOK, 5000 50.00 SEK. |
-| :heavy_check_mark: | └➔&nbsp;`vatAmount`      | `integer`     | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 100.00 NOK, 5000 50.00 SEK. |
-| :heavy_check_mark: | └➔&nbsp;`description`    | `string`      | A textual description of the capture transaction.                                                             |
-| :heavy_check_mark: | └➔&nbsp;`payeeReference` | `string(30*)` | A unique reference for the capture transaction. See [payeeReference][payeeReference] for details.             |
+| Required | Property                 | Type          | Description                                                                                                   |
+| :------: | :----------------------- | :------------ | :------------------------------------------------------------------------------------------------------------ |
+|  ✔︎︎︎︎︎  | `transaction`            | `object`      | The object representation of the generic [transaction resource][transaction-resource].                        |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`amount`         | `integer`     | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 100.00 NOK, 5000 50.00 SEK. |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`vatAmount`      | `integer`     | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 100.00 NOK, 5000 50.00 SEK. |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`description`    | `string`      | A textual description of the capture transaction.                                                             |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`payeeReference` | `string(30*)` | A unique reference for the capture transaction. See [payeeReference][payeeReference] for details.             |
 
 {:.code-header}
 **Response**
@@ -243,11 +243,11 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-|      Required      | Property                 | Type          | Description                                                                                              |
-| :----------------: | :----------------------- | :------------ | :------------------------------------------------------------------------------------------------------- |
-| :heavy_check_mark: | `transaction`            | `object`      | The `object` representation of the generic [transaction resource][transaction-resource].                 |
-| :heavy_check_mark: | └➔&nbsp;`description`    | `string`      | A textual description of the reason for the `cancellation`.                                              |
-| :heavy_check_mark: | └➔&nbsp;`payeeReference` | `string(30*)` | A unique reference for the `cancellation` transaction. See [payeeReference][payeeReference] for details. |
+| Required | Property                 | Type          | Description                                                                                              |
+| :------: | :----------------------- | :------------ | :------------------------------------------------------------------------------------------------------- |
+|  ✔︎︎︎︎︎  | `transaction`            | `object`      | The `object` representation of the generic [transaction resource][transaction-resource].                 |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`description`    | `string`      | A textual description of the reason for the `cancellation`.                                              |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`payeeReference` | `string(30*)` | A unique reference for the `cancellation` transaction. See [payeeReference][payeeReference] for details. |
 
 The `cancel` resource contains information about a cancellation transaction
 made against a payment.
@@ -412,11 +412,11 @@ Content-Type: application/json
 {:.table .table-striped}
 |:---:|:----------|:------|:-----------
 | Required | Property | Type | Description |
-|   :heavy_check_mark:   | `transaction`            | `object`      | The `object` representation of the generic [transaction resource][transaction-resource].                 |
-|   :heavy_check_mark:   | └➔&nbsp;`amount` | `integer` | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK. |
-|   :heavy_check_mark:   | └➔&nbsp;`vatAmount` | `integer` | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.|
-|   :heavy_check_mark:   | └➔&nbsp;`description` | `string` | A textual description of the `reversal`.|
-|   :heavy_check_mark:   | └➔&nbsp;`payeeReference` | `string(30*)` | A unique reference for the `reversal` transaction. See [payeeReference][payeeReference] for details.|
+|   ✔︎︎︎︎︎   | `transaction`            | `object`      | The `object` representation of the generic [transaction resource][transaction-resource].                 |
+|   ✔︎︎︎︎︎   | └➔&nbsp;`amount` | `integer` | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK. |
+|   ✔︎︎︎︎︎   | └➔&nbsp;`vatAmount` | `integer` | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.|
+|   ✔︎︎︎︎︎   | └➔&nbsp;`description` | `string` | A textual description of the `reversal`.|
+|   ✔︎︎︎︎︎   | └➔&nbsp;`payeeReference` | `string(30*)` | A unique reference for the `reversal` transaction. See [payeeReference][payeeReference] for details.|
 
 The `reversal` resource contains information about the newly created reversal
 transaction.
