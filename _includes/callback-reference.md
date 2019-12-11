@@ -1,48 +1,4 @@
-{% assign payment-order = include.payment-order | default: false %}
 
-{% if payment-order %}
-    {% capture code-example %}
-{:.code-header}
-**Payment Order Callback**
-
-```js
-{
-    "paymentOrder": {
-    "id": "/psp/paymentorders/<paymentorder-id>",
-    "instrument": "<payment instrument>"
-    },
-    "payment": {
-    "id": "/psp/<payment instrument>/payments/<payment-id>",
-    "number": 222222222
-    },
-    "transaction": {
-    "id": "/psp/<payment instrument>/payments/<payment-id>/<transaction type>/<transaction-id>",
-    "number": 333333333
-    }
-    }
-```
-
-{% endcapture %}
-{% else %}
-    {% capture code-example %}
-{:.code-header}
-**Payment Instrument Callback**
-
-```js
-{
-    "payment": {
-        "id": "/psp/<payment instrument>/payments/<payment-id>",
-        "number": 222222222
-    },
-    "transaction": {
-        "id": "/psp/<payment instrument>/payments/<payment-id>/<transaction type>/<transaction-id>",
-        "number": 333333333
-    }
-}
-```
-
-{% endcapture %}
-{% endif %}
 
 ## Callback
 
@@ -74,7 +30,47 @@ about this update.
   * 1265 seconds
 * The callback is sent from the following IP address: `82.115.146.1`
 
-{{ code-example }}
+{% assign payment-order = include.payment-order | default: false %}
+
+{% if payment-order %}
+{:.code-header}
+**Payment Order Callback**
+
+```js
+{
+    "paymentOrder": {
+    "id": "/psp/paymentorders/<paymentorder-id>",
+    "instrument": "<payment instrument>"
+    },
+    "payment": {
+    "id": "/psp/<payment instrument>/payments/<payment-id>",
+    "number": 222222222
+    },
+    "transaction": {
+    "id": "/psp/<payment instrument>/payments/<payment-id>/<transaction type>/<transaction-id>",
+    "number": 333333333
+    }
+    }
+```
+
+{% else %}
+{:.code-header}
+**Payment Instrument Callback**
+
+```js
+{
+    "payment": {
+        "id": "/psp/<payment instrument>/payments/<payment-id>",
+        "number": 222222222
+    },
+    "transaction": {
+        "id": "/psp/<payment instrument>/payments/<payment-id>/<transaction type>/<transaction-id>",
+        "number": 333333333
+    }
+}
+```
+
+{% endif %}
 
 {:.table .table-striped}
 | **Parameter** | **Description**
