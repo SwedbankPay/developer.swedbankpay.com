@@ -55,6 +55,7 @@ sequenceDiagram
     activate Payer
     Payer->>Payer: input creditcard information ③
     Payer->>-SwedbankPay: submit creditcard information
+
         opt Card supports 3-D Secure
         note left of Payer: Authentication Challenge ④
         SwedbankPay-->>Payer: redirect to IssuingBank
@@ -66,6 +67,7 @@ sequenceDiagram
         Payer->>-SwedbankPay: access authentication page
         activate SwedbankPay
         end
+
     SwedbankPay-->>-Payer: CompleteUrl ⑤
     activate Payer
     Payer->>-SwedbankPay: GET <payment.id> ⑥
@@ -74,6 +76,7 @@ sequenceDiagram
     SwedbankPay-->>-Merchant: rel: redirect-authorization
     activate Merchant
     Merchant-->>-Payer: display purchase result
+
         opt Callback is set
         activate SwedbankPay
         SwedbankPay->>SwedbankPay: Payment is updated
@@ -247,53 +250,52 @@ sequenceDiagram
     participant Merchant
     participant SwedbankPay as Swedbank Pay
 
-  activate Payer
-  Payer->>-Merchant: start purchase
-  activate Payer
-  Merchant->>-SwedbankPay: POST /psp/creditcard/payments
-  activate Merchant
-  note left of Payer: First API request
-  SwedbankPay-->-Merchant: payment resource
-  activate SwedbankPay
-  Merchant-->>-Payer: authorization page
-  activate Merchant
-  Payer->>-SwedbankPay: access authorization page
-  activate Payer
-  note left of Payer: redirect to SwedbankPay
-  SwedbankPay-->>-Payer: display purchase information
-  activate SwedbankPay
-
-  Payer->>Payer: input creditcard information
-  Payer->>-SwedbankPay: submit creditcard information
-  activate Payer
-  opt Card supports 3-D Secure
-    SwedbankPay-->>-Payer: redirect to IssuingBank
-    activate SwedbankPay
-    Payer->>IssuingBank: 3-D Secure authentication process
-    Payer->>-SwedbankPay: access authentication page
     activate Payer
-  end
-
-  SwedbankPay-->>-Payer: redirect to merchant
-  activate SwedbankPay
-  note left of Payer: redirect back to merchant
-
-  Payer->>-Merchant: access merchant page
-  activate Payer
-  Merchant->>-SwedbankPay: GET <payment.id>
-  activate Merchant
-  note left of Merchant: Second API request
-  SwedbankPay-->>-Merchant: rel: redirect-authorization
-  activate SwedbankPay
-  Merchant-->>Payer: display purchase result
-  activate Merchant
-
-  opt Callback is set
+    Payer->>-Merchant: start purchase
+    activate Payer
+    Merchant->>-SwedbankPay: POST /psp/creditcard/payments
+    activate Merchant
+    note left of Payer: First API request
+    SwedbankPay-->-Merchant: payment resource
     activate SwedbankPay
-    SwedbankPay->>SwedbankPay: Payment is updated
-    SwedbankPay->>Merchant: POST Payment Callback
+    Merchant-->>-Payer: authorization page
+    activate Merchant
+    Payer->>-SwedbankPay: access authorization page
+    activate Payer
+    note left of Payer: redirect to SwedbankPay
+    SwedbankPay-->>-Payer: display purchase information
     activate SwedbankPay
-  end
+    Payer->>Payer: input creditcard information
+    Payer->>-SwedbankPay: submit creditcard information
+    activate Payer
+
+        opt Card supports 3-D Secure
+        SwedbankPay-->>-Payer: redirect to IssuingBank
+        activate SwedbankPay
+        Payer->>IssuingBank: 3-D Secure authentication process
+        Payer->>-SwedbankPay: access authentication page
+        activate Payer
+        end
+
+    SwedbankPay-->>-Payer: redirect to merchant
+    activate SwedbankPay
+    note left of Payer: redirect back to merchant
+    Payer->>-Merchant: access merchant page
+    activate Payer
+    Merchant->>-SwedbankPay: GET <payment.id>
+    activate Merchant
+    note left of Merchant: Second API request
+    SwedbankPay-->>-Merchant: rel: redirect-authorization
+    activate SwedbankPay
+    Merchant-->>Payer: display purchase result
+    activate Merchant
+
+        opt Callback is set
+        activate SwedbankPay
+        SwedbankPay->>SwedbankPay: Payment is updated
+        SwedbankPay->>Merchant: POST Payment Callback
+        activate SwedbankPay
+        end
 ```
 
 {% include iterator.html prev_href="./" prev_title="Back: Introduction"
