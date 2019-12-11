@@ -566,17 +566,17 @@ All invoice error types will have the following URI in front of type:
 `https://api.payex.com/psp/errordetail/invoice/<errorType>`
 
 {:.table .table-striped}
-| Type            | Status |                               |
-| :-------------- | :----- | :---------------------------- |
-| *externalerror* | 500    | No error code                 |
-| *inputerror*    | 400    | 10 - ValidationWarning        |
-| *inputerror*    | 400    | 30 - ValidationError          |
-| *inputerror*    | 400    | 3010 - ClientRequestInvalid   |
-| *externalerror* | 502    | 40 - Error                    |
-| *externalerror* | 502    | 60 - SystemError              |
-| *externalerror* | 502    | 50 - SystemConfigurationError |
-| *externalerror* | 502    | 9999 - ServerOtherServer      |
-| *forbidden*     | 403    | Any other error code          |
+| Type            | Status | Description                   |
+| :-------------- | :----: | :---------------------------- |
+| `externalerror` |  500   | No error code                 |
+| `inputerror`    |  400   | 10 - ValidationWarning        |
+| `inputerror`    |  400   | 30 - ValidationError          |
+| `inputerror`    |  400   | 3010 - ClientRequestInvalid   |
+| `externalerror` |  502   | 40 - Error                    |
+| `externalerror` |  502   | 60 - SystemError              |
+| `externalerror` |  502   | 50 - SystemConfigurationError |
+| `externalerror` |  502   | 9999 - ServerOtherServer      |
+| `forbidden`     |  403   | Any other error code          |
 
 {% include iterator.html prev_href="./" prev_title="Back: Introduction"
 next_href="after-payment" next_title="Next: After Payment" %}
@@ -590,7 +590,7 @@ next_href="after-payment" next_title="Next: After Payment" %}
 [card-payment]: /assets/img/payments/card-payment.png
 [FinancingConsumer]: #financing-consumer
 [hosted-view]: /payments/invoice/seamless-view
-[invoice-flow]: /payments/invoice/index#invoice-flow
+[invoice-flow]: /payments/invoice#invoice-flow
 [one-click-payments]: #one-click-payments
 [recurrence]: #recur
 [redirect]: /payments/invoice/redirect
