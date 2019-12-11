@@ -541,7 +541,7 @@ transaction made towards a payment, as previously described.
 
 {% include callback-reference.md %}
 
-{% include payment-link.md %}
+{% include payment-link.md hide-3d-secure=true %}
 
 ## PayeeReference
 
