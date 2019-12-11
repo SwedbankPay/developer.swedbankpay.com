@@ -379,7 +379,7 @@ embedded on your website.
     payex.hostedView.creditCard({
         // The container specifies which id the script will look for to host the
         // iframe component.
-        container: "SwedbankPay-seamless-view-page"
+        container: "swedbank-pay-seamless-view-page"
     }).open();
 </script>
 ```
