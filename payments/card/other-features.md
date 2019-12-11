@@ -783,7 +783,7 @@ transaction made towards a payment, as previously described.
 
 {% include one-click-payments.md %}
 
-{% include callback-reference.md payment-order=true%}
+{% include callback-reference.md %}
 
 {% include payment-link.md %}
 
