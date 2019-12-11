@@ -1,4 +1,6 @@
 {% assign payment-instrument = include.payment-instrument | default: creditcard %}
+{% assign payment-id = "77DA8F11-43DF-4E59-800A-EA0E94D27F4A" %}
+{% assign transaction-id = "373B335B-C0EE-46B2-A123-8A2B6C9DA2EA" %}
 
 ### Authorizations
 
@@ -9,7 +11,7 @@ made on a specific payment.
 **Request**
 
 ```http
-GET /psp/{{payment-instrument}}/payments/<payment-id>/authorizations HTTP/1.1
+GET /psp/{{payment-instrument}}/payments/{{payment-id}}/authorizations HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -23,27 +25,27 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "payment": "/psp/{{payment-instrument}}/payments/<payment-id>",
+  "payment": "/psp/{{payment-instrument}}/payments/{{payment-id}}",
   "authorizations": {
-    "id": "/psp/{{payment-instrument}}/payments/<payment-id>/authorizations",
+    "id": "/psp/{{payment-instrument}}/payments/{{payment-id}}/authorizations",
     "authorizationList": [
       {
-        "id": "/psp/{{payment-instrument}}/payments/<payment-id>/authorizations/<transaction-id>",
+        "id": "/psp/{{payment-instrument}}/payments/{{payment-id}}/authorizations/{{transaction-id}}",
         "consumer": {
-          "id": "/psp/{{payment-instrument}}/payments/<payment-id>/consumer"
+          "id": "/psp/{{payment-instrument}}/payments/{{payment-id}}/consumer"
         },
         "legalAddress": {
-          "id": "/psp/{{payment-instrument}}/payments/<payment-id>/legaladdress"
+          "id": "/psp/{{payment-instrument}}/payments/{{payment-id}}/legaladdress"
         },
         "billingAddress": {
-          "id": "/psp/{{payment-instrument}}/payments/<payment-id>/billingaddress"
+          "id": "/psp/{{payment-instrument}}/payments/{{payment-id}}/billingaddress"
         },
         "transaction": {
-          "id": "/psp/{{payment-instrument}}/payments/<payment-id>/transactions/<transaction-id>",
+          "id": "/psp/{{payment-instrument}}/payments/{{payment-id}}/transactions/{{transaction-id}}",
           "created": "2016-09-14T01:01:01.01Z",
           "updated": "2016-09-14T01:01:01.03Z",
           "type": "Authorization",
-          "state": "Initialized|Completed|Failed",
+          "state": "Initialized",
           "number": 1234567890,
           "amount": 1000,
           "vatAmount": 250,
@@ -53,7 +55,13 @@ Content-Type: application/json
           "isOperational": false,
           "operations": [
             {
-              "href": "https://api.externalintegration.payex.com/psp/{{payment-instrument}}/payments/<payment-id>",
+              "method": "POST",
+              "href": "https://api.stage.payex.com/psp/{{payment-instrument}}/payments/{{payment-id}}/authorizations",
+              "rel": "create-authorization",
+              "contentType": "application/json"
+            },
+            {
+              "href": "https://api.externalintegration.payex.com/psp/{{payment-instrument}}/payments/{{payment-id}}",
               "rel": "edit-authorization",
               "method": "PATCH"
             }
@@ -74,7 +82,7 @@ operation as returned in a previously created invoice payment.
 **Request**
 
 ```http
-POST /psp/{{payment-instrument}}/payments/<payment-id>/authorizations HTTP/1.1
+POST /psp/{{payment-instrument}}/payments/{{payment-id}}/authorizations HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -85,27 +93,26 @@ Content-Type: application/json
   },
   "consumer": {
     "socialSecurityNumber": "socialSecurityNumber",
-    "customerNumber": "customerNumber",
-    "name": "consumer name",
-    "email": "email",
-    "msisdn": "msisdn",
-    "ip": "consumer ip address"
+    "customerNumber": "123456",
+    "name": "Olivia Nyhuus",
+    "email": "olivia.nyhuus@payex.com",
+    "msisdn": "+4798765432",
+    "ip": "127.0.0.1"
   },
   "legalAddress": {
-    "addressee": "firstName + lastName",
-    "coAddress": "coAddress",
-    "streetAddress": "streetAddress",
-    "zipCode": "zipCode",
-    "city": "city",
-    "countryCode": "countryCode"
+    "addressee": "Olivia Nyhuus",
+    "streetAddress": "SaltnesToppen 43",
+    "zipCode": "1642",
+    "city": "Saltnes",
+    "countryCode": "no"
   },
   "billingAddress": {
-    "addressee": "firstName + lastName",
-    "coAddress": "coAddress",
-    "streetAddress": "streetAddress",
-    "zipCode": "zipCode",
-    "city": "city",
-    "countryCode": "countryCode"
+    "addressee": "Olivia Nyhuus",
+    "coAddress": "Bernt Nyhuus",
+    "streetAddress": "SaltnesToppen 43",
+    "zipCode": "1642",
+    "city": "Saltnes",
+    "countryCode": "no"
   }
 }
 ```
@@ -146,20 +153,20 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "payment": "/psp/{{payment-instrument}}/payments/<payment-id>",
+  "payment": "/psp/{{payment-instrument}}/payments/{{payment-id}}",
   "authorization": {
-    "id": "/psp/{{payment-instrument}}/payments/<payment-id>/authorizations/<transaction-id>",
+    "id": "/psp/{{payment-instrument}}/payments/{{payment-id}}/authorizations/{{transaction-id}}",
     "consumer": {
-      "id": "/psp/{{payment-instrument}}/payments/<payment-id>/consumer"
+      "id": "/psp/{{payment-instrument}}/payments/{{payment-id}}/consumer"
     },
     "legalAddress": {
-      "id": "/psp/{{payment-instrument}}/payments/<payment-id>/legaladdress"
+      "id": "/psp/{{payment-instrument}}/payments/{{payment-id}}/legaladdress"
     },
     "billingAddress": {
-      "id": "/psp/{{payment-instrument}}/payments/<payment-id>/billingaddress"
+      "id": "/psp/{{payment-instrument}}/payments/{{payment-id}}/billingaddress"
     },
     "transaction": {
-      "id": "/psp/{{payment-instrument}}/payments/<payment-id>/transactions/<transaction-id>",
+      "id": "/psp/{{payment-instrument}}/payments/{{payment-id}}/transactions/{{transaction-id}}",
       "created": "2016-09-14T01:01:01.01Z",
       "updated": "2016-09-14T01:01:01.03Z",
       "type": "Authorization",
@@ -173,7 +180,7 @@ Content-Type: application/json
       "isOperational": "TRUE|FALSE",
       "operations": [
         {
-          "href": "https://api.externalintegration.payex.com/psp/{{payment-instrument}}/payments/<payment-id>",
+          "href": "https://api.externalintegration.payex.com/psp/{{payment-instrument}}/payments/{{payment-id}}",
           "rel": "edit-authorization",
           "method": "PATCH"
         }

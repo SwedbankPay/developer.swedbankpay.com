@@ -34,8 +34,7 @@ set to value `FinancingConsumer` are listed below.
 {:.table .table-striped}
 |                 | Norway ![Norwegian flag][no-png] | FInland ![Finish flag][fi-png] | Sweden ![Swedish flag][se-png] |
 | :-------------- | :------------------------------- | :----------------------------- | :----------------------------- |
-| **Operation**   | `FinancingConsumer`              | `FinancingConsumer`            | `FinancingConsumer`            |
-| **Intent**      | `Authorization`                  | `Authorization`                | `Authorization`                |
+| `Operation`     | `FinancingConsumer`              | `FinancingConsumer`            | `FinancingConsumer`            |
 | **Currency**    | NOK                              | EUR                            | SEK                            |
 | **InvoiceType** | `PayExFinancingNO`               | `PayExFinancingFI`             | `PayExFinancingSE`             |
 
@@ -51,7 +50,7 @@ set to value `FinancingConsumer` are listed below.
 
 ## Payment Resource
 
-{% include payment-resource.md %}
+{% include payment-resource.md payment-resource="invoice" %}
 
 ## Create Payment
 
@@ -210,7 +209,6 @@ optional and requires enabling on the contract with Swedbank Pay." %}
   embed the script source on your site to create a [Hosted View][hosted-view] in
   an `iframe`; so that she can enter the credit card details in a secure
   Swedbank Pay hosted environment.
-* Swedbank Pay will handle 3-D Secure authentication when this is required.
 * Swedbank Pay will redirect the payer's browser to - or display directly in the
   `iframe` - one of two specified URLs, depending on whether the payment session
   is followed through completely or cancelled beforehand. Please note that both
@@ -352,18 +350,6 @@ The sequence diagram below shows the two requests you have to send to Swedbank
 Pay to make a purchase. The links will take you directly to the API description
 for the specific request. The diagram also shows in high level, the sequence of
 the process of a complete purchase.
-When dealing with credit invoice payments, 3-D Secure authentication of the
-cardholder is an essential topic. There are three alternative outcome of a
-credit invoice payment:
-
-* 3-D Secure enabled - by default, 3-D Secure should be enabled, and Swedbank
-  Pay will check if the card is enrolled with 3-D Secure. This depends on the
-  issuer of the card. If the card is not enrolled with 3-D Secure, no
-  authentication of the cardholder is done.
-* Card supports 3-D Secure - if the card is enrolled with 3-D Secure, Swedbank
-  Pay will redirect the cardholder to the autentication mechanism that is
-  decided by the issuing bank. Normally this will be done using BankID or Mobile
-  BankID.
 
 ```mermaid
 sequenceDiagram
@@ -553,13 +539,9 @@ transaction made towards a payment, as previously described.
 
 {% include transactions-reference.md %}
 
-{% include one-click-payments.md %}
-
 {% include callback-reference.md %}
 
 {% include payment-link.md %}
-
-{% include subsite.md %}
 
 ## PayeeReference
 
