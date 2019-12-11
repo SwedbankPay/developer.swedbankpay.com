@@ -32,11 +32,11 @@ set to value `FinancingConsumer` are listed below.
 ### Options before posting a payment
 
 {:.table .table-striped}
-|                 | Norway ![Norwegian flag][no-png] | FInland ![Finish flag][fi-png] | Sweden ![Swedish flag][se-png] |
-| :-------------- | :------------------------------- | :----------------------------- | :----------------------------- |
-| `Operation`     | `FinancingConsumer`              | `FinancingConsumer`            | `FinancingConsumer`            |
-| **Currency**    | NOK                              | EUR                            | SEK                            |
-| **InvoiceType** | `PayExFinancingNO`               | `PayExFinancingFI`             | `PayExFinancingSE`             |
+|               | Norway ![Norwegian flag][no-png] | FInland ![Finish flag][fi-png] | Sweden ![Swedish flag][se-png] |
+| :------------ | :------------------------------- | :----------------------------- | :----------------------------- |
+| `operation`   | `FinancingConsumer`              | `FinancingConsumer`            | `FinancingConsumer`            |
+| `currency`    | `NOK`                            | `EUR`                          | `SEK`                          |
+| `invoiceType` | `PayExFinancingNO`               | `PayExFinancingFI`             | `PayExFinancingSE`             |
 
 * An invoice payment is always two-phased based -  you create an Authorize
   transaction, that is followed by a Capture or Cancel request.
@@ -50,7 +50,7 @@ set to value `FinancingConsumer` are listed below.
 
 ## Payment Resource
 
-{% include payment-resource.md payment-resource="invoice" %}
+{% include payment-resource.md payment-instrument="invoice" %}
 
 ## Create Payment
 
