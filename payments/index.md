@@ -46,15 +46,15 @@ To start integrating Swebank Pay Payments, you need the following:
   Swedbank Pay Admin.
 
 {:.table .table-striped}
-|                                | Payment instrument                  | Seamless View | Redirect | Region                                                                               |
-| :----------------------------: | :---------------------------------- | :-----------: | :------: | :----------------------------------------------------------------------------------- |
-|     ![CardIcon][card-icon]     | [Credit card][card]                 |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  | ![EarthIcon][earth-icon]                                                             |
-|  ![InvoiceIcon][invoice-icon]  | [Swedbank Pay Invoice][invoice]     |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  | ![nor][nor-flag] ![swe][swe-flag] ![fin][fin-flag]                                   |
-| ![EnvelopeIcon][envelope-icon] | [Swedbank Pay Web Invoice][invoice] |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  | ![nor][nor-flag] ![swe][swe-flag]                                                    |
-|   ![KeypadIcon][keypad-icon]   | [Direct Debit][direct-debit]        |               |  ✔︎︎︎︎︎  | ![swe][swe-flag] ![fin][fin-flag] ![lat][lat-flag] ![lit][lit-flag] ![est][est-flag] |
-|      ![Vipps][vipps-logo]      | [Vipps][vipps]                      |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  | ![nor][nor-flag]                                                                     |
-|      ![Swish][swish-logo]      | [Swish][swish]                      |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  | ![swe][swe-flag]                                                                     |
-|  ![MobilePay][mobilepay-logo]  | [Mobile Pay][mobile-pay]            |               |  ✔︎︎︎︎︎  | ![dan][dan-flag]                                                                     |
+|                                | Payment instrument                  |   Seamless View    |      Redirect      | Region                                                                               |
+| :----------------------------: | :---------------------------------- | :----------------: | :----------------: | :----------------------------------------------------------------------------------- |
+|     ![CardIcon][card-icon]     | [Credit card][card]                 | :heavy_check_mark: | :heavy_check_mark: | ![EarthIcon][earth-icon]                                                             |
+|  ![InvoiceIcon][invoice-icon]  | [Swedbank Pay Invoice][invoice]     | :heavy_check_mark: | :heavy_check_mark: | ![nor][nor-flag] ![swe][swe-flag] ![fin][fin-flag]                                   |
+| ![EnvelopeIcon][envelope-icon] | [Swedbank Pay Web Invoice][invoice] | :heavy_check_mark: | :heavy_check_mark: | ![nor][nor-flag] ![swe][swe-flag]                                                    |
+|   ![KeypadIcon][keypad-icon]   | [Direct Debit][direct-debit]        |                    | :heavy_check_mark: | ![swe][swe-flag] ![fin][fin-flag] ![lat][lat-flag] ![lit][lit-flag] ![est][est-flag] |
+|      ![Vipps][vipps-logo]      | [Vipps][vipps]                      | :heavy_check_mark: | :heavy_check_mark: | ![nor][nor-flag]                                                                     |
+|      ![Swish][swish-logo]      | [Swish][swish]                      | :heavy_check_mark: | :heavy_check_mark: | ![swe][swe-flag]                                                                     |
+|  ![MobilePay][mobilepay-logo]  | [Mobile Pay][mobile-pay]            |                    | :heavy_check_mark: | ![dan][dan-flag]                                                                     |
 
 ## Seamless View
 

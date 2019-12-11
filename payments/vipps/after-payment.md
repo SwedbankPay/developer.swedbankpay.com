@@ -110,7 +110,7 @@ Content-Type: application/json
 |          | └─➔&nbsp;`payeeName`         | `string`     | The payee name (like merchant name) that will be displayed to consumer when redirected to PayEx.                                                                                                            |
 |          | └─➔&nbsp;`productCategory`   | `strin`      | A product category or number sent in from the payee/merchant. This is not validated by PayEx, but will be passed through the payment process and may be used in the settlement process.                     |
 |          | └─➔&nbsp;`orderReference`    | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                     |
-|          | └─➔&nbsp;`prefillInfo`       | `string`     | The mobile number that will be pre-filled in the Swedbank Pay Payments. The consumer may change this number in the UI.                                                                                 |
+|          | └─➔&nbsp;`prefillInfo`       | `string`     | The mobile number that will be pre-filled in the Swedbank Pay Payments. The consumer may change this number in the UI.                                                                                      |
 |          | └─➔&nbsp;`subsite`           | `string(40)` | The `subsite` field can be used to perform split settlement on the payment. The `subsites` must be resolved with Swedbank Pay reconciliation before being used.                                             |
 `
 {:.code-header}
@@ -244,7 +244,7 @@ the given operation.
 | Operation                | Description                                                                                      |
 | :----------------------- | :----------------------------------------------------------------------------------------------- |
 | `update-payment-abort`   | [Aborts][technical-reference-abort] the payment before any financial transactions are performed. |
-| `redirect-authorization` | Used to redirect the consumer to Swedbank Pay Payments and the authorization UI.            |
+| `redirect-authorization` | Used to redirect the consumer to Swedbank Pay Payments and the authorization UI.                 |
 | `create-capture`         | Creates a [`capture`][technical-reference-capture].                                              |
 | `create-cancellation`    | Creates a [`cancellation`][technical-reference-cancel].                                          |
 | `create-reversal`        | Creates a [`reversal`][technical-reference-reverse].                                             |
@@ -571,10 +571,10 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property                      | Type         | Description                                                                                                                  |
-| :------: | :---------------------------- | :----------- | :--------------------------------------------------------------------------------------------------------------------------- |
-|  ✔︎︎︎︎︎  | `cancellation.description`    | `string`     | A textual description of the reason for the cancellation.                                                                    |
-|  ✔︎︎︎︎︎  | `cancellation.payeeReference` | `string(50)` | A unique reference for the cancellation transaction. See [`payeeReference`][technical-reference-payeeReference] for details. |
+|      Required      | Property                      | Type         | Description                                                                                                                  |
+| :----------------: | :---------------------------- | :----------- | :--------------------------------------------------------------------------------------------------------------------------- |
+| :heavy_check_mark: | `cancellation.description`    | `string`     | A textual description of the reason for the cancellation.                                                                    |
+| :heavy_check_mark: | `cancellation.payeeReference` | `string(50)` | A unique reference for the cancellation transaction. See [`payeeReference`][technical-reference-payeeReference] for details. |
 
 The `cancel` resource contains information about a cancellation transaction made against a payment. You can return a specific cancellation transaction by adding the transaction id to the `GET` request.
 
@@ -693,12 +693,12 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property                     | Type         | Description                                                                                                               |
-| :------: | :--------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------ |
-|  ✔︎︎︎︎︎  | `transaction.amount`         | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 NOK`, `5000` = `50.00 NOK`. |
-|  ✔︎︎︎︎︎  | `transaction.vatAmount`      | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 NOK`, `5000` = `50.00 NOK`. |
-|  ✔︎︎︎︎︎  | `transaction.description`    | `string`     | A textual description of the capture                                                                                      |
-|  ✔︎︎︎︎︎  | `transaction.payeeReference` | `string(50)` | A unique reference for the reversal transaction. See [`payeeReference`][technical-reference-payeeReference] for details.  |
+|      Required      | Property                     | Type         | Description                                                                                                               |
+| :----------------: | :--------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------ |
+| :heavy_check_mark: | `transaction.amount`         | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 NOK`, `5000` = `50.00 NOK`. |
+| :heavy_check_mark: | `transaction.vatAmount`      | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 NOK`, `5000` = `50.00 NOK`. |
+| :heavy_check_mark: | `transaction.description`    | `string`     | A textual description of the capture                                                                                      |
+| :heavy_check_mark: | `transaction.payeeReference` | `string(50)` | A unique reference for the reversal transaction. See [`payeeReference`][technical-reference-payeeReference] for details.  |
 
 The `reversal` resource contains information about a reversal transaction made
 against a payment.
