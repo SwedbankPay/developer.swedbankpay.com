@@ -1,5 +1,3 @@
-
-
 ## Callback
 
 When a change or update from the back-end system are made on a payment or
@@ -39,16 +37,16 @@ about this update.
 ```js
 {
     "paymentOrder": {
-    "id": "/psp/paymentorders/<paymentorder-id>",
-    "instrument": "<payment instrument>"
+        "id": "/psp/paymentorders/<paymentorder-id>",
+        "instrument": "<payment instrument>"
     },
     "payment": {
-    "id": "/psp/<payment instrument>/payments/<payment-id>",
-    "number": 222222222
+        "id": "/psp/<payment instrument>/payments/<payment-id>",
+        "number": 222222222
     },
     "transaction": {
-    "id": "/psp/<payment instrument>/payments/<payment-id>/<transaction type>/<transaction-id>",
-    "number": 333333333
+        "id": "/psp/<payment instrument>/payments/<payment-id>/<transaction type>/<transaction-id>",
+        "number": 333333333
     }
 }
 ```
