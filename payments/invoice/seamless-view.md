@@ -75,8 +75,9 @@ sequenceDiagram
 Note that the invoice will not be created/distributed before you have
 made a `capture` request." %}
 
-The Capture/Cancel/Reversal options are described in the [after payment section][after-payment]. The link will take you directly to the API descriptions for
-the requests.
+The Capture/Cancel/Reversal options are described in the [after payment
+section][after-payment]. The link will take you directly to the API descriptions
+for the requests.
 
 ### Explainations
 
@@ -94,22 +95,22 @@ the requests.
   using the paymentID received in the first step.
 
 * Finally, when you are ready to ship your order, you will have to make a `POST`
-  request to make a [Capture][capture]. **At this point Swedbank Pay will generate the
-  invoice to the consumer.**
+  request to make a [Capture][capture]. **At this point Swedbank Pay will
+  generate the invoice to the consumer.**
 
 ## API requests
 
-The API requests are displayed in the [invoice flow](#invoice-flow).
-The options you can choose from when creating a payment with key operation set
-to Value `FinancingConsumer` are listed below.
+The API requests are displayed in the [invoice flow](#invoice-flow). The options
+you can choose from when creating a payment with key operation set to Value
+`FinancingConsumer` are listed below.
 
 * An invoice payment is always two-phased based - you create an
   [`Authorize`][authorize] transaction, that is followed by a
   [`Capture`][capture] or [`Cancel`][cancel] request.
 * **Defining CallbackURL**: When implementing a scenario, it is optional to set
   a [CallbackURL][callback] in the `POST` request. If callbackURL is set
-  Swedbank Pay will send a postback request to this URL when the consumer has fulfilled
-  the payment. [See the Callback API description here.][callback]
+  Swedbank Pay will send a postback request to this URL when the consumer has
+  fulfilled the payment. [See the Callback API description here.][callback]
 
 ## Seamless View Back End
 
@@ -120,7 +121,8 @@ invoice information. This will generate a payment object with a unique
 
 ### Options before posting a payment
 
-Different countries have different values for the properties. The table below showcase the values for the respective countries:
+Different countries have different values for the properties. The table below
+showcase the values for the respective countries:
 
 **POST Request Options**
 
