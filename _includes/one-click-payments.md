@@ -26,7 +26,7 @@ You can do this either by by setting the `generatePaymentToken` property to
 operation to [`Verify`][verify].
 
 {:.code-header}
-generatePaymentToken property
+**`generatePaymentToken` property**
 
 ```
 "generatePaymentToken": "true"
