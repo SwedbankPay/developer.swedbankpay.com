@@ -792,7 +792,7 @@ transaction made towards a payment, as previously described.
 ## PayeeReference
 
 {% include payeeinfo.md
-instrument="creditcard" %}
+payment-instrument="creditcard" %}
 
 ## Prices
 
