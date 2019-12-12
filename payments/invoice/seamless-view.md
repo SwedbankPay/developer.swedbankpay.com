@@ -122,7 +122,7 @@ invoice information. This will generate a payment object with a unique
 
 Different countries have different values for the properties. The table below showcase the values for the respective countries:
 
-**POST Request**
+**POST Request Options**
 
 {:.table .table-striped}
 | *Country* | **Sweden** ![Swedish flag][se-png] | **Norway** ![Norwegian flag][no-png] | **FInland** ![Finish flag][fi-png] |
