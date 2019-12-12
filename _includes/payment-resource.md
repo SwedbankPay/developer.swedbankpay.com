@@ -1,3 +1,5 @@
+{% assign payment-instrument = include.payment-instrument | default: creditcard %}
+
 The `payment` resource is central to all payment instruments. All operations
 that target the payment resource directly produce a response similar to the
 example seen below. The response given contains all operations that are
@@ -7,7 +9,7 @@ possible to perform in the current state of the payment.
 **Request**
 
 ```http
-GET /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/ HTTP/1.1
+GET /psp/{{payment-instrument}}/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/ HTTP/1.1
 Host: api.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -22,7 +24,7 @@ Content-Type: application/json
 
 {
     "payment": {
-        "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+        "id": "/psp/{{payment-instrument}}/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
         "number": 1234567890,
         "created": "2016-09-14T13:21:29.3182115Z",
         "updated": "2016-09-14T13:21:57.6627579Z",
@@ -40,34 +42,34 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",
         "prices": {
-            "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/prices"
+            "id": "/psp/{{payment-instrument}}/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/prices"
         },
         "payeeInfo": {
-            "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeInfo"
+            "id": "/psp/{{payment-instrument}}/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeInfo"
         },
         "urls": {
-            "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/urls"
+            "id": "/psp/{{payment-instrument}}/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/urls"
         },
         "transactions": {
-            "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions"
+            "id": "/psp/{{payment-instrument}}/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions"
         },
         "authorizations": {
-            "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations"
+            "id": "/psp/{{payment-instrument}}/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations"
         },
         "captures": {
-            "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures"
+            "id": "/psp/{{payment-instrument}}/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures"
         },
         "reversals": {
-            "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals"
+            "id": "/psp/{{payment-instrument}}/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals"
         },
         "cancellations": {
-            "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/cancellations"
+            "id": "/psp/{{payment-instrument}}/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/cancellations"
         }
     },
     "operations": [
         {
             "method": "PATCH",
-            "href": "https://api.externalintegration.payex.com/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+            "href": "https://api.externalintegration.payex.com/psp/{{payment-instrument}}/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
             "rel": "update-payment-abort",
             "contentType": "application/json"
         },
@@ -85,7 +87,7 @@ Content-Type: application/json
         },
         {
             "method": "POST",
-            "href": "https://api.externalintegration.payex.com/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures",
+            "href": "https://api.externalintegration.payex.com/psp/{{payment-instrument}}/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures",
             "rel": "create-capture",
             "contentType": "application/json"
         }
@@ -130,6 +132,6 @@ for the given operation.
 | :----------------------- | :------------------------------------------------------------------------------------------------------------------------ |
 | `update-payment-abort`   | [Aborts][abort] the payment order before any financial transactions are performed.                                        |
 | `redirect-authorization` | Contains the URI that is used to redirect the consumer to the Swedbank Pay Payments containing the card authorization UI. |
-| `view-authorization`     | Contains the JavaScript `href` that is used to embed  the card authorization UI directly on the webshop/merchant site       |
+| `view-authorization`     | Contains the JavaScript `href` that is used to embed  the card authorization UI directly on the webshop/merchant site     |
 | `create-capture`         | Creates a `capture` transaction in order to charge the reserved funds from the consumer.                                  |
 | `create-cancellation`    | Creates a `cancellation` transaction that cancels a created, but not yet captured payment.                                |
