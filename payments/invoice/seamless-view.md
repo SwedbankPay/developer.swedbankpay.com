@@ -94,7 +94,7 @@ the requests.
   using the paymentID received in the first step.
 
 * Finally, when you are ready to ship your order, you will have to make a `POST`
-  request to make a Capture. **At this point Swedbank Pay will generate the
+  request to make a [Capture][capture]. **At this point Swedbank Pay will generate the
   invoice to the consumer.**
 
 ## API requests
@@ -107,7 +107,7 @@ to Value `FinancingConsumer` are listed below.
   [`Authorize`][authorize] transaction, that is followed by a
   [`Capture`][capture] or [`Cancel`][cancel] request.
 * **Defining CallbackURL**: When implementing a scenario, it is optional to set
-  a [CallbackURL][callback-api]in the `POST` request. If callbackURL is set
+  a [CallbackURL][callback-api] in the `POST` request. If callbackURL is set
   Swedbank Pay will send a postback request to this URL when the consumer has fulfilled
   the payment. [See the Callback API description here.][callback-api]
 
