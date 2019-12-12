@@ -118,26 +118,29 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property                        | Data type | Description                                                                                                                                                      |
-| :------- | :------------------------------ | :-------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ✔︎︎︎︎︎   | `transaction.activity`          | `string`  | `FinancingConsumer`                                                                                                                                              |
-| ✔︎︎︎︎︎   | `consumer.socialSecurityNumber` | `string`  | The social security number (national identity number) of the consumer. Format Sweden: `YYMMDD-NNNN`. Format Norway: `DDMMYYNNNNN`. Format Finland: `DDMMYYNNNNN` |
-|          | `consumer.customerNumber`       | `string`  | The customer number in the merchant system.                                                                                                                      |
-|          | `consumer.email`                | `string`  | The e-mail address of the consumer.                                                                                                                              |
-| ✔︎︎︎︎︎   | `consumer.msisdn`               | `string`  | The mobile phone number of the consumer. Format Sweden: `+46707777777`. Format Norway: `+4799999999`. Format Finland: `+358501234567`                            |
-| ✔︎︎︎︎︎   | `consumer.ip`                   | `string`  | The IP address of the consumer.                                                                                                                                  |
-| ✔︎︎︎︎︎   | `legalAddress.addressee`        | `string`  | The full (first and last) name of the consumer.                                                                                                                  |
-|          | `legalAddress.coAddress`        | `string`  | The CO-address (if used)                                                                                                                                         |
-|          | `legalAddress.streetAddress`    | `string`  | The street address of the consumer.                                                                                                                              |
-| ✔︎︎︎︎︎   | `legalAddress.zipCode`          | `string`  | The postal code (ZIP code) of the consumer.                                                                                                                      |
-| ✔︎︎︎︎︎   | `legalAddress.city`             | `string`  | The city to the consumer.                                                                                                                                        |
-| ✔︎︎︎︎︎   | `legalAddress.countryCode`      | `string`  | `SE`, `NO`, or `FI`. The country code of the consumer.                                                                                                           |
-| ✔︎︎︎︎︎   | `billingAddress.addressee`      | `string`  | The full (first and last) name of the consumer.                                                                                                                  |
-|          | `billingAddress.coAddress`      | `string`  | The CO-address (if used)                                                                                                                                         |
-| ✔︎︎︎︎ ︎  | `billingAddress.streetAddress`  | `string`  | The street address to the consumer.                                                                                                                              |
-| ✔︎︎︎︎︎   | `billingAddress.zipCode`        | `string`  | The postal number (ZIP code) to the consumer.                                                                                                                    |
-| ✔︎︎︎︎︎   | `billingAddress.city`           | `string`  | The city to the consumer.                                                                                                                                        |
-| ✔︎︎︎︎︎   | `billingAddress.countryCode`    | `string`  | `SE`, `NO`, or `FI`.                                                                                                                                             |
+| Required | Property                       | Data type | Description                                                                                                                                                      |
+| :------- | :----------------------------- | :-------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ✔︎︎︎︎︎   | `transaction.activity`         | `string`  | `FinancingConsumer`                                                                                                                                              |
+| ✔︎︎︎︎︎   | `consumer`                     | `object`  | The consumer object.                                                                                                                                             |
+| ✔︎︎︎︎︎   | └➔&nbsp;`socialSecurityNumber` | `string`  | The social security number (national identity number) of the consumer. Format Sweden: `YYMMDD-NNNN`. Format Norway: `DDMMYYNNNNN`. Format Finland: `DDMMYYNNNNN` |
+|          | └➔&nbsp;`customerNumber`       | `string`  | The customer number in the merchant system.                                                                                                                      |
+|          | └➔&nbsp;`email`                | `string`  | The e-mail address of the consumer.                                                                                                                              |
+| ✔︎︎︎︎︎   | └➔&nbsp;`msisdn`               | `string`  | The mobile phone number of the consumer. Format Sweden: `+46707777777`. Format Norway: `+4799999999`. Format Finland: `+358501234567`                            |
+| ✔︎︎︎︎︎   | └➔&nbsp;`ip`                   | `string`  | The IP address of the consumer.                                                                                                                                  |
+| ✔︎︎︎︎︎   | `legalAddress`                 | `object`  | The legal address object containing information about the consumers legal addres.                                                                                |
+| ✔︎︎︎︎︎   | └➔&nbsp;`addressee`            | `string`  | The full (first and last) name of the consumer.                                                                                                                  |
+|          | └➔&nbsp;`coAddress`            | `string`  | The CO-address (if used)                                                                                                                                         |
+|          | └➔&nbsp;`streetAddress`        | `string`  | The street address of the consumer.                                                                                                                              |
+| ✔︎︎︎︎︎   | └➔&nbsp;`zipCode`              | `string`  | The postal code (ZIP code) of the consumer.                                                                                                                      |
+| ✔︎︎︎︎︎   | └➔&nbsp;`city`                 | `string`  | The city to the consumer.                                                                                                                                        |
+| ✔︎︎︎︎︎   | └➔&nbsp;`countryCode`          | `string`  | `SE`, `NO`, or `FI`. The country code of the consumer.                                                                                                           |
+| ✔︎︎︎︎︎   | `billingAddress`               | `object`  | The billing address object containing information about the consumers billing addres.                                                                            |
+| ✔︎︎︎︎︎   | └➔&nbsp;`addressee`            | `string`  | The full (first and last) name of the consumer.                                                                                                                  |
+|          | └➔&nbsp;`coAddress`            | `string`  | The CO-address (if used)                                                                                                                                         |
+| ✔︎︎︎︎ ︎  | └➔&nbsp;`streetAddress`        | `string`  | The street address to the consumer.                                                                                                                              |
+| ✔︎︎︎︎︎   | └➔&nbsp;`zipCode`              | `string`  | The postal number (ZIP code) to the consumer.                                                                                                                    |
+| ✔︎︎︎︎︎   | └➔&nbsp;`city`                 | `string`  | The city to the consumer.                                                                                                                                        |
+| ✔︎︎︎︎︎   | └➔&nbsp;`countryCode`          | `string`  | `SE`, `NO`, or `FI`.                                                                                                                                             |
 
 {% include alert.html type="neutral" icon="info" body="
 Note: The legal address must be the registered address of the consumer." %}
