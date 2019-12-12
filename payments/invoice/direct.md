@@ -45,7 +45,7 @@ All valid options when posting a payment with operation equal to
 [other features][other-features-financing-consumer].
 
 {:.table .table-striped}
-|               | Norway ![Norwegian flag][no-png] | FInland ![Finish flag][fi-png] | Sweden ![Swedish flag][se-png] |
+|               | Norway ![Norwegian flag][no-png] | Finland ![Finish flag][fi-png] | Sweden ![Swedish flag][se-png] |
 | :------------ | :------------------------------- | :----------------------------- | :----------------------------- |
 | `operation`   | `FinancingConsumer`              | `FinancingConsumer`            | `FinancingConsumer`            |
 | `currency`    | `NOK`                            | `EUR`                          | `SEK`                          |

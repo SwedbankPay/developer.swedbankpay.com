@@ -50,10 +50,11 @@ All valid options when posting a payment with operation equal to
 [other features][other-features-financing-consumer].
 
 {:.table .table-striped}
-| | **Sweden** ![Swedish flag][se-png]| **Norway** ![Norwegian flag][no-png] | **Finland** ![Finish flag][fi-png] |
-| `operation` | `FinancingConsumer` | `FinancingConsumer` | `FinancingConsumer` |
-| `currency` | SEK | NOK | EUR |
-|`invoiceType` | `PayExFinancingSE` | `PayExFinancingNO` | `PayExFinancingFI` |
+|               | Norway ![Norwegian flag][no-png] | Finland ![Finish flag][fi-png] | Sweden ![Swedish flag][se-png] |
+| :------------ | :------------------------------- | :----------------------------- | :----------------------------- |
+| `operation`   | `FinancingConsumer`              | `FinancingConsumer`            | `FinancingConsumer`            |
+| `currency`    | `NOK`                            | `EUR`                          | `SEK`                          |
+| `invoiceType` | `PayExFinancingNO`               | `PayExFinancingFI`             | `PayExFinancingSE`             |
 
 * An invoice payment is always two-phased based - you create an
   `Authorize` transaction, that is followed by a `Capture` or `Cancel` request.
@@ -214,52 +215,74 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "payment": {
-    "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
-    "number": 1234567890,
-    "instrument": "Invoice",
-    "created": "YYYY-MM-DDThh:mm:ssZ",
-    "updated": "YYYY-MM-DDThh:mm:ssZ",
-    "state": "Ready|Pending|Failed|Aborted",
-    "operation": "FinancingConsumer"
-    "intent": "Authorization",
-    "currency": "SEK",
-    "amount": 1500,
-    "remainingCaptureAmount": 1000,
-    "remainingCancellationAmount": 1000,
-    "remainingReversalAmount": 500,
-    "description": "Test Purchase",
-    "userAgent": "Mozilla/5.0...",
-    "language": "se-SE",
-    "prices": { "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/prices" },
-    "transactions": { "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions" },
-    "authorizations": { "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations" },
-    "captures": { "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures" },
-    "reversals": { "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals" },
-    "cancellations": { "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/cancellations" },
-    "payeeInfo" : { "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeInfo" },
-    "urls" : { "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/urls" },
-    "settings": { "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/settings" },
-    "approvedLegalAddress": { "id": "/psp/invoice/payments/<paymentId>/approvedlegaladdress" },
-    "maskedApprovedLegalAddress": { "id": "/psp/invoice/payments/<paymentId>/maskedapprovedlegaladdress" }
-  },
-  "operations": [
-    {
-      "href": "https://api.payex.com/psp/invoice/payments/<paymentId>",
-      "rel": "update-payment-abort",
-      "method": "PATCH"
+    "payment": {
+        "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+        "number": 1234567890,
+        "instrument": "Invoice",
+        "created": "YYYY-MM-DDThh:mm:ssZ",
+        "updated": "YYYY-MM-DDThh:mm:ssZ",
+        "state": "Ready",
+        "operation": "FinancingConsumer",
+        "intent": "Authorization",
+        "currency": "SEK",
+        "amount": 1500,
+        "remainingCaptureAmount": 1000,
+        "remainingCancellationAmount": 1000,
+        "remainingReversalAmount": 500,
+        "description": "Test Purchase",
+        "userAgent": "Mozilla/5.0...",
+        "language": "se-SE",
+        "prices": {
+            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/prices"
+        },
+        "transactions": {
+            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions"
+        },
+        "authorizations": {
+            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations"
+        },
+        "captures": {
+            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures"
+        },
+        "reversals": {
+            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals"
+        },
+        "cancellations": {
+            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/cancellations"
+        },
+        "payeeInfo": {
+            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeInfo"
+        },
+        "urls": {
+            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/urls"
+        },
+        "settings": {
+            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/settings"
+        },
+        "approvedLegalAddress": {
+            "id": "/psp/invoice/payments/<paymentId>/approvedlegaladdress"
+        },
+        "maskedApprovedLegalAddress": {
+            "id": "/psp/invoice/payments/<paymentId>/maskedapprovedlegaladdress"
+        }
     },
-    {
-      "href": "https://api.payex.com/psp/invoice/payments/<paymentId>/authorizations",
-      "rel": "create-authorize",
-      "method": "POST"
-    },
-    {
-      "href": "https://api.payex.com/psp/invoice/payments/<paymentId>/approvedlegaladdress",
-      "rel": "create-approved-legal-address",
-      "method": "POST"
-    }
-  ]
+    "operations": [
+        {
+            "href": "https://api.payex.com/psp/invoice/payments/<paymentId>",
+            "rel": "update-payment-abort",
+            "method": "PATCH"
+        },
+        {
+            "href": "https://api.payex.com/psp/invoice/payments/<paymentId>/authorizations",
+            "rel": "create-authorize",
+            "method": "POST"
+        },
+        {
+            "href": "https://api.payex.com/psp/invoice/payments/<paymentId>/approvedlegaladdress",
+            "rel": "create-approved-legal-address",
+            "method": "POST"
+        }
+    ]
 }
 ```
 
