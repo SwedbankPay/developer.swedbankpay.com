@@ -311,54 +311,78 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "payment": {
-    "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
-    "number": 1234567890,
-    "created": "2016-09-14T13:21:29.3182115Z",
-    "updated": "2016-09-14T13:21:57.6627579Z",
-    "state": "Ready",
-    "operation": "Purchase",
-    "intent": "Authorization",
-    "currency": "SE",
-    "amount": 1500,
-    "remainingCaptureAmount": 1500,
-    "remainingCancellationAmount": 1500,
-    "remainingReversalAmount": 0,
-    "description": "Test Purchase",
-    "payerReference": "AB1234",
-    "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
-    "userAgent": "Mozilla/5.0...",
-    "language": "se-SE",
-    "prices": { "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/prices" },
-    "transactions": { "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions" },
-    "authorizations": { "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations" },
-    "captures": { "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures" },
-    "reversals": { "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals" },
-    "cancellations": { "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/cancellations" },
-    "payeeInfo" : { "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeInfo" },
-    "urls" : { "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/urls" },
-    "settings": { "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/settings" },
-    "approvedLegalAddress": { "id": "/psp/invoice/payments/<paymentId>/approvedlegaladdress" },
-    "maskedApprovedLegalAddress": { "id": "/psp/invoice/payments/<paymentId>/maskedapprovedlegaladdress" }
-  },
-  "approvedLegalAddress": { "id": "/psp/invoice/payments/<paymentId>/approvedlegaladdress" },
-  "operations": [
-    {
-      "href": "https://api.payex.com/psp/invoice/payments/<paymentId>/captures",
-      "rel": "create-capture",
-      "method": "POST"
+    "payment": {
+        "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+        "number": 1234567890,
+        "created": "2016-09-14T13:21:29.3182115Z",
+        "updated": "2016-09-14T13:21:57.6627579Z",
+        "state": "Ready",
+        "operation": "Purchase",
+        "intent": "Authorization",
+        "currency": "SE",
+        "amount": 1500,
+        "remainingCaptureAmount": 1500,
+        "remainingCancellationAmount": 1500,
+        "remainingReversalAmount": 0,
+        "description": "Test Purchase",
+        "payerReference": "AB1234",
+        "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
+        "userAgent": "Mozilla/5.0...",
+        "language": "se-SE",
+        "prices": {
+            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/prices"
+        },
+        "transactions": {
+            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions"
+        },
+        "authorizations": {
+            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations"
+        },
+        "captures": {
+            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures"
+        },
+        "reversals": {
+            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals"
+        },
+        "cancellations": {
+            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/cancellations"
+        },
+        "payeeInfo": {
+            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeInfo"
+        },
+        "urls": {
+            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/urls"
+        },
+        "settings": {
+            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/settings"
+        },
+        "approvedLegalAddress": {
+            "id": "/psp/invoice/payments/<paymentId>/approvedlegaladdress"
+        },
+        "maskedApprovedLegalAddress": {
+            "id": "/psp/invoice/payments/<paymentId>/maskedapprovedlegaladdress"
+        }
     },
-    {
-      "href": "https://api.payex.com/psp/invoice/payments/<paymentId>/cancellations",
-      "rel": "create-cancel",
-      "method": "POST"
+    "approvedLegalAddress": {
+        "id": "/psp/invoice/payments/<paymentId>/approvedlegaladdress"
     },
-    {
-      "href": "https://api.payex.com/psp/invoice/payments/<paymentId>/approvedlegaladdress",
-      "rel": "create-approved-legal-address",
-      "method": "POST"
-    }
-  ]
+    "operations": [
+        {
+            "href": "https://api.payex.com/psp/invoice/payments/<paymentId>/captures",
+            "rel": "create-capture",
+            "method": "POST"
+        },
+        {
+            "href": "https://api.payex.com/psp/invoice/payments/<paymentId>/cancellations",
+            "rel": "create-cancel",
+            "method": "POST"
+        },
+        {
+            "href": "https://api.payex.com/psp/invoice/payments/<paymentId>/approvedlegaladdress",
+            "rel": "create-approved-legal-address",
+            "method": "POST"
+        }
+    ]
 }
 ```
 
@@ -369,16 +393,6 @@ transaction.
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
-{
-    "href": "https://merchant/cancelUrl",
-    "rel": "redirect-merchant-cancel",
-    "method": "GET"
-}
-{
-   "href": "https://merchant/completeUrl",
-   "rel": "redirect-merchant-complete",
-   "method": "GET"
-}
 
 {
     "href": "https://merchant/cancelUrl",
@@ -386,10 +400,21 @@ Content-Type: application/json
     "method": "GET"
 }
 {
-   "href": "https://merchant/completeUrl",
-   "rel": "redirect-merchant-complete",
-   "method": "GET"
+    "href": "https://merchant/completeUrl",
+    "rel": "redirect-merchant-complete",
+    "method": "GET"
 }
+{
+    "href": "https://merchant/cancelUrl",
+    "rel": "redirect-merchant-cancel",
+    "method": "GET"
+}
+{
+    "href": "https://merchant/completeUrl",
+    "rel": "redirect-merchant-complete",
+    "method": "GET"
+}
+
 
 ```
 

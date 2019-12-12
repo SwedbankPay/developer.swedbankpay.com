@@ -6,8 +6,6 @@ sidebar:
     items:
     - url: /payments/invoice
       title: Introduction
-    - url: /payments/invoice/direct
-      title: Direct
     - url: /payments/invoice/redirect
       title: Redirect
     - url: /payments/invoice/seamless-view
