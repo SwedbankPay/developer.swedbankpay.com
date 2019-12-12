@@ -114,49 +114,49 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "payment": {
-    "operation": "FinancingConsumer",
-      "intent": "Authorization",
-      "currency": "SEK",
-      "prices": [
-      {
-        "type": "Invoice",
-        "amount": 1500,
-        "vatAmount": 0
+    "payment": {
+        "operation": "FinancingConsumer",
+        "intent": "Authorization",
+        "currency": "SEK",
+        "prices": [
+            {
+                "type": "Invoice",
+                "amount": 1500,
+                "vatAmount": 0
+            }
+        ],
+        "description": "Test Purchase",
+        "payerReference": "SomeReference",
+        "userAgent": "Mozilla/5.0...",
+        "language": "sv-SE",
+        "urls": {
+            "completeUrl": "http://test-dummy.net/payment-completed",
+            "cancelUrl": "http://test-dummy.net/payment-canceled",
+            "callbackUrl": "http://test-dummy.net/payment-callback",
+            "logoUrl": "http://fakeservices.psp.dev.utvnet.net/logo.png",
+            "termsOfServiceUrl": "http://fakeservices.psp.dev.utvnet.net/terms.pdf"
+        },
+        "payeeInfo": {
+            "payeeId": "12345678-1234-1234-1234-123456789012",
+            "payeeReference": "PR123",
+            "payeeName": "Merchant1",
+            "productCategory": "PC1234",
+            "subsite": "MySubsite"
+        },
+        "billingAddress": {
+            "firstName": "Leia",
+            "lastName": "Ahlstrom",
+            "email": "leia.ahlstrom@swedbankpay.com",
+            "msisdn": "+46739000001",
+            "streetAddress": "Helgestavägen 9",
+            "city": "Bro",
+            "zipCode": "19792",
+            "countryCode": "SE"
         }
-      ],
-      "description": "Test Purchase",
-      "payerReference": "SomeReference",
-      "userAgent": "Mozilla/5.0...",
-      "language": "sv-SE",
-      "urls": {
-        "completeUrl": "http://test-dummy.net/payment-completed",
-        "cancelUrl": "http://test-dummy.net/payment-canceled",
-        "callbackUrl": "http://test-dummy.net/payment-callback",
-        "logoUrl": "http://fakeservices.psp.dev.utvnet.net/logo.png",
-        "termsOfServiceUrl": "http://fakeservices.psp.dev.utvnet.net/terms.pdf"
-      },
-      "payeeInfo": {
-        "payeeId": "12345678-1234-1234-1234-123456789012",
-        "payeeReference": "PR123",
-        "payeeName": "Merchant1",
-        "productCategory": "PC1234",
-        "subsite": "MySubsite"
-      },
-      "billingAddress": {
-        "firstName": "Leia",
-        "lastName": "Ahlstrom",
-        "email": "leia.ahlstrom@swedbankpay.com",
-        "msisdn": "+46739000001",
-        "streetAddress": "Helgestavägen 9",
-        "city": "Bro",
-        "zipCode": "19792",
-        "countryCode": "SE"
-      }
-  },
-  "invoice": {
-      "invoiceType": "PayExFinancingSe",
-  }
+    },
+    "invoice": {
+        "invoiceType": "PayExFinancingSe"
+    }
 }
 ```
 

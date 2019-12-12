@@ -76,56 +76,56 @@ with the `approvedLegalAddress` (SNN and postal number).
 
 ```mermaid
 sequenceDiagram
-  Consumer->>Merchant: Start purchase (collect SSN and postal number)
-  Activate Merchant
-  note left of Merchant: First API request
-  Merchant->>Swedbank Pay: POST <Invoice Payments> (operation=FinancingConsumer)
-  Activate Swedbank Pay
+    Consumer->>Merchant: Start purchase (collect SSN and postal number)
+    Activate Merchant
+    note left of Merchant: First API request
+    Merchant->>Swedbank Pay: POST <Invoice Payments> (operation=FinancingConsumer)
+    Activate Swedbank Pay
 
-  Swedbank Pay-->>Merchant: payment resource
-  note left of Merchant: Second API request
-  Merchant-->>Swedbank Pay: POST <approvedLegalAddress> (SNN and postal number)
-  Swedbank Pay-->>Swedbank Pay: Update payment with consumer delivery address
-  Swedbank Pay-->>Merchant: Approved legaladdress information
-  Deactivate Swedbank Pay
+    Swedbank Pay-->>Merchant: payment resource
+    note left of Merchant: Second API request
+    Merchant-->>Swedbank Pay: POST <approvedLegalAddress> (SNN and postal number)
+    Swedbank Pay-->>Swedbank Pay: Update payment with consumer delivery address
+    Swedbank Pay-->>Merchant: Approved legaladdress information
+    deactivate Swedbank Pay
 
-  Merchant-->>Consumer: Display all details and final price
-  Consumer->>Consumer: Input email and mobile number
-  Deactivate Merchant
-  Consumer->>Merchant: Confirm purchase
-  Activate Merchant
+    Merchant-->>Consumer: Display all details and final price
+    Consumer->>Consumer: Input email and mobile number
+    deactivate Merchant
+    Consumer->>Merchant: Confirm purchase
+    Activate Merchant
 
-  note left of Merchant: Third API request
-  Merchant->>+Swedbank Pay: POST <invoice authorizations> (Transaction Activity=FinancingConsumer)
-  Swedbank Pay-->>-Merchant: Transaction result
-  note left of Merchant: Fourth API request
-  Merchant->>+Swedbank Pay: GET <invoice payments>
-  Swedbank Pay-->>-Merchant: payment resource
-  Merchant-->>Consumer: Display result
-  Deactivate Merchant
+    note left of Merchant: Third API request
+    Merchant->>+Swedbank Pay: POST <invoice authorizations> (Transaction Activity=FinancingConsumer)
+    Swedbank Pay-->>-Merchant: Transaction result
+    note left of Merchant: Fourth API request
+    Merchant->>+Swedbank Pay: GET <invoice payments>
+    Swedbank Pay-->>-Merchant: payment resource
+    Merchant-->>Consumer: Display result
+    deactivate Merchant
 ```
 
 ## Invoice Flow (FI)
 
 ```mermaid
 sequenceDiagram
-  Consumer->>+Merchant: start purchase
-  note left of Merchant: First API request
-  Merchant->>+Swedbank Pay: POST <Invoice Payments> (operation=FinancingConsumer)
-  Swedbank Pay-->>-Merchant: payment resource
-  Merchant-->>-Consumer: Display All detail and final price
-  Consumer-->>Consumer: Input consumer data
-  Consumer->>Merchant: Confirm purchase
+    Consumer->>+Merchant: start purchase
+    note left of Merchant: First API request
+    Merchant->>+Swedbank Pay: POST <Invoice Payments> (operation=FinancingConsumer)
+    Swedbank Pay-->>-Merchant: payment resource
+    Merchant-->>-Consumer: Display All detail and final price
+    Consumer-->>Consumer: Input consumer data
+    Consumer->>Merchant: Confirm purchase
 
-  Activate Merchant
-  note left of Merchant: Second API request
-  Merchant->>+Swedbank Pay: POST <Invoice autorizations> (Transaction Activity=FinancingConsumer)
-  Swedbank Pay->>-Merchant: Transaction result
-  note left of Merchant: Third API request
-  Merchant->>+Swedbank Pay: GET <Invoice payments>
-  Swedbank Pay-->>-Merchant: payment resource
-  Merchant-->>Consumer: Display result
-  Deactivate Merchant
+    Activate Merchant
+    note left of Merchant: Second API request
+    Merchant->>+Swedbank Pay: POST <Invoice autorizations> (Transaction Activity=FinancingConsumer)
+    Swedbank Pay->>-Merchant: Transaction result
+    note left of Merchant: Third API request
+    Merchant->>+Swedbank Pay: GET <Invoice payments>
+    Swedbank Pay-->>-Merchant: payment resource
+    Merchant-->>Consumer: Display result
+    deactivate Merchant
 ```
 
 [capture]: /payments/credit-card/after-payment#Capture
