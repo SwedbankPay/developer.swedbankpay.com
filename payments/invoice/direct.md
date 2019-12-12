@@ -45,11 +45,11 @@ All valid options when posting a payment with operation equal to
 [other features][other-features-financing-consumer].
 
 {:.table .table-striped}
-| | **Sweden** ![Swedish flag][se-png]| **Norway** ![Norwegian flag][no-png] | **Finland** ![Finish flag][fi-png] |
-| `operation` | `FinancingConsumer` | `FinancingConsumer` | `FinancingConsumer` |
-| `intent` | `Authorization` | `Authorization` | `Authorization` |
-| `currency` | `SEK` | `NOK` | `EUR` |
-|`invoiceType` | `PayExFinancingSE` | `PayExFinancingNO` | `PayExFinancingFI` |
+|               | Norway ![Norwegian flag][no-png] | FInland ![Finish flag][fi-png] | Sweden ![Swedish flag][se-png] |
+| :------------ | :------------------------------- | :----------------------------- | :----------------------------- |
+| `operation`   | `FinancingConsumer`              | `FinancingConsumer`            | `FinancingConsumer`            |
+| `currency`    | `NOK`                            | `EUR`                          | `SEK`                          |
+| `invoiceType` | `PayExFinancingNO`               | `PayExFinancingFI`             | `PayExFinancingSE`             |
 
 * An invoice payment is always two-phased based - you create an Authorize
   transaction, that is followed by a `Capture` or `Cancel` request.
@@ -63,7 +63,7 @@ Note that the invoice will not be created/distributed before you have
 made a `capture` request." %}.
 
 The `Capture` , `Cancel`, `Reversal` opions are
-described in [optional features][optional-features].
+described in [other features][other-features].
 The links will take you directly to the API description for the specific request.
 
 The sequence diagram below shows a high level description of the invoice
@@ -136,7 +136,7 @@ sequenceDiagram
 [se-png]: /assets/img/se.png
 [callback-api]: /payments/invoice/other-features#callback
 [hosted-view]: /payments/#hosted-view-implementation
-[optional-features]: /payments/invoice/optional-features
+[other-features]: /payments/invoice/other-features
 [other-features-financing-consumer]: /payments/invoice/other-features
 [redirect]: /payments/invoice/redirect
 [setup-mail]: mailto:setup.ecom@PayEx.com
