@@ -80,7 +80,7 @@ Swedbank Pay, and the two `GET` requests that you make to get the updated
 status.
 
 ```mermaid
-    sequenceDiagram
+sequenceDiagram
     Participant Merchant
     Participant SwedbankPay as Swedbank Pay
 
