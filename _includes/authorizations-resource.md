@@ -25,51 +25,51 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "payment": "/psp/{{payment-instrument}}/payments/{{payment-id}}",
-  "authorizations": {
-    "id": "/psp/{{payment-instrument}}/payments/{{payment-id}}/authorizations",
-    "authorizationList": [
-      {
-        "id": "/psp/{{payment-instrument}}/payments/{{payment-id}}/authorizations/{{transaction-id}}",
-        "consumer": {
-          "id": "/psp/{{payment-instrument}}/payments/{{payment-id}}/consumer"
-        },
-        "legalAddress": {
-          "id": "/psp/{{payment-instrument}}/payments/{{payment-id}}/legaladdress"
-        },
-        "billingAddress": {
-          "id": "/psp/{{payment-instrument}}/payments/{{payment-id}}/billingaddress"
-        },
-        "transaction": {
-          "id": "/psp/{{payment-instrument}}/payments/{{payment-id}}/transactions/{{transaction-id}}",
-          "created": "2016-09-14T01:01:01.01Z",
-          "updated": "2016-09-14T01:01:01.03Z",
-          "type": "Authorization",
-          "state": "Initialized",
-          "number": 1234567890,
-          "amount": 1000,
-          "vatAmount": 250,
-          "description": "Test transaction",
-          "payeeReference": "AH123456",
-          "failedReason": "",
-          "isOperational": false,
-          "operations": [
+    "payment": "/psp/{{payment-instrument}}/payments/{{payment-id}}",
+    "authorizations": {
+        "id": "/psp/{{payment-instrument}}/payments/{{payment-id}}/authorizations",
+        "authorizationList": [
             {
-              "method": "POST",
-              "href": "https://api.stage.payex.com/psp/{{payment-instrument}}/payments/{{payment-id}}/authorizations",
-              "rel": "create-authorization",
-              "contentType": "application/json"
-            },
-            {
-              "href": "https://api.externalintegration.payex.com/psp/{{payment-instrument}}/payments/{{payment-id}}",
-              "rel": "edit-authorization",
-              "method": "PATCH"
+                "id": "/psp/{{payment-instrument}}/payments/{{payment-id}}/authorizations/{{transaction-id}}",
+                "consumer": {
+                    "id": "/psp/{{payment-instrument}}/payments/{{payment-id}}/consumer"
+                },
+                "legalAddress": {
+                    "id": "/psp/{{payment-instrument}}/payments/{{payment-id}}/legaladdress"
+                },
+                "billingAddress": {
+                    "id": "/psp/{{payment-instrument}}/payments/{{payment-id}}/billingaddress"
+                },
+                "transaction": {
+                    "id": "/psp/{{payment-instrument}}/payments/{{payment-id}}/transactions/{{transaction-id}}",
+                    "created": "2016-09-14T01:01:01.01Z",
+                    "updated": "2016-09-14T01:01:01.03Z",
+                    "type": "Authorization",
+                    "state": "Initialized",
+                    "number": 1234567890,
+                    "amount": 1000,
+                    "vatAmount": 250,
+                    "description": "Test transaction",
+                    "payeeReference": "AH123456",
+                    "failedReason": "",
+                    "isOperational": false,
+                    "operations": [
+                        {
+                            "method": "POST",
+                            "href": "https://api.stage.payex.com/psp/{{payment-instrument}}/payments/{{payment-id}}/authorizations",
+                            "rel": "create-authorization",
+                            "contentType": "application/json"
+                        },
+                        {
+                            "href": "https://api.externalintegration.payex.com/psp/{{payment-instrument}}/payments/{{payment-id}}",
+                            "rel": "edit-authorization",
+                            "method": "PATCH"
+                        }
+                    ]
+                }
             }
-          ]
-        }
-      }
-    ]
-  }
+        ]
+    }
 }
 ```
 
@@ -88,32 +88,32 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
-  "transaction": {
-    "activity": "FinancingConsumer"
-  },
-  "consumer": {
-    "socialSecurityNumber": "socialSecurityNumber",
-    "customerNumber": "123456",
-    "name": "Olivia Nyhuus",
-    "email": "olivia.nyhuus@payex.com",
-    "msisdn": "+4798765432",
-    "ip": "127.0.0.1"
-  },
-  "legalAddress": {
-    "addressee": "Olivia Nyhuus",
-    "streetAddress": "SaltnesToppen 43",
-    "zipCode": "1642",
-    "city": "Saltnes",
-    "countryCode": "no"
-  },
-  "billingAddress": {
-    "addressee": "Olivia Nyhuus",
-    "coAddress": "Bernt Nyhuus",
-    "streetAddress": "SaltnesToppen 43",
-    "zipCode": "1642",
-    "city": "Saltnes",
-    "countryCode": "no"
-  }
+    "transaction": {
+        "activity": "FinancingConsumer"
+    },
+    "consumer": {
+        "socialSecurityNumber": "socialSecurityNumber",
+        "customerNumber": "123456",
+        "name": "Olivia Nyhuus",
+        "email": "olivia.nyhuus@payex.com",
+        "msisdn": "+4798765432",
+        "ip": "127.0.0.1"
+    },
+    "legalAddress": {
+        "addressee": "Olivia Nyhuus",
+        "streetAddress": "SaltnesToppen 43",
+        "zipCode": "1642",
+        "city": "Saltnes",
+        "countryCode": "no"
+    },
+    "billingAddress": {
+        "addressee": "Olivia Nyhuus",
+        "coAddress": "Bernt Nyhuus",
+        "streetAddress": "SaltnesToppen 43",
+        "zipCode": "1642",
+        "city": "Saltnes",
+        "countryCode": "no"
+    }
 }
 ```
 
@@ -156,39 +156,39 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "payment": "/psp/{{payment-instrument}}/payments/{{payment-id}}",
-  "authorization": {
-    "id": "/psp/{{payment-instrument}}/payments/{{payment-id}}/authorizations/{{transaction-id}}",
-    "consumer": {
-      "id": "/psp/{{payment-instrument}}/payments/{{payment-id}}/consumer"
-    },
-    "legalAddress": {
-      "id": "/psp/{{payment-instrument}}/payments/{{payment-id}}/legaladdress"
-    },
-    "billingAddress": {
-      "id": "/psp/{{payment-instrument}}/payments/{{payment-id}}/billingaddress"
-    },
-    "transaction": {
-      "id": "/psp/{{payment-instrument}}/payments/{{payment-id}}/transactions/{{transaction-id}}",
-      "created": "2016-09-14T01:01:01.01Z",
-      "updated": "2016-09-14T01:01:01.03Z",
-      "type": "Authorization",
-      "state": "Initialized|Completed|Failed",
-      "number": 1234567890,
-      "amount": 1000,
-      "vatAmount": 250,
-      "description": "Test transaction",
-      "payeeReference": "AH123456",
-      "failedReason": "",
-      "isOperational": "TRUE|FALSE",
-      "operations": [
-        {
-          "href": "https://api.externalintegration.payex.com/psp/{{payment-instrument}}/payments/{{payment-id}}",
-          "rel": "edit-authorization",
-          "method": "PATCH"
+    "payment": "/psp/{{payment-instrument}}/payments/{{payment-id}}",
+    "authorization": {
+        "id": "/psp/{{payment-instrument}}/payments/{{payment-id}}/authorizations/{{transaction-id}}",
+        "consumer": {
+            "id": "/psp/{{payment-instrument}}/payments/{{payment-id}}/consumer"
+        },
+        "legalAddress": {
+            "id": "/psp/{{payment-instrument}}/payments/{{payment-id}}/legaladdress"
+        },
+        "billingAddress": {
+            "id": "/psp/{{payment-instrument}}/payments/{{payment-id}}/billingaddress"
+        },
+        "transaction": {
+            "id": "/psp/{{payment-instrument}}/payments/{{payment-id}}/transactions/{{transaction-id}}",
+            "created": "2016-09-14T01:01:01.01Z",
+            "updated": "2016-09-14T01:01:01.03Z",
+            "type": "Authorization",
+            "state": "Initialized|Completed|Failed",
+            "number": 1234567890,
+            "amount": 1000,
+            "vatAmount": 250,
+            "description": "Test transaction",
+            "payeeReference": "AH123456",
+            "failedReason": "",
+            "isOperational": "TRUE|FALSE",
+            "operations": [
+                {
+                    "href": "https://api.externalintegration.payex.com/psp/{{payment-instrument}}/payments/{{payment-id}}",
+                    "rel": "edit-authorization",
+                    "method": "PATCH"
+                }
+            ]
         }
-      ]
     }
-  }
 }
 ```
