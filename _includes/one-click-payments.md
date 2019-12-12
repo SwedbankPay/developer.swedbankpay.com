@@ -63,7 +63,7 @@ track of the corresponding consumer-ID in your system.
 
 When a known consumer (where you have attained a consumer-ID or similar) returns
 to your system, you can use the payment token, using already stored payment
-data, to initiate enable one-click payments. You will need to make a standard
+data, to initiate one-click payments. You will need to make a standard
 purchase, following the sequence as specified in the Redirect or Seamless View
 scenarios for [credit card][card] and [financing invoice][invoice]. When making
 the first `POST` request you insert the `paymentToken` property. This must be
