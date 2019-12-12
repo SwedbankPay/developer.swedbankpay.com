@@ -725,7 +725,7 @@ sequenceDiagram
   note left of Payer: redirect back to merchant<br>(If Redirect scenario)
 
   Payer->>+Merchant: access merchant page
-  Merchant->>+SwedbankPay: GET /psp/creditcard/payments/<payment-id>
+  Merchant->>+SwedbankPay: GET <payment.id>
   deactivate Merchant
   note left of Merchant: Second API request
   SwedbankPay-->>+Merchant: rel: redirect-authorization
