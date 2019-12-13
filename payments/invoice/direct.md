@@ -508,5 +508,5 @@ for the given operation.
 [other-features-financing-consumer]: /payments/invoice/other-features
 [redirect]: /payments/invoice/redirect
 [verify]: /payments/card/other-features/#verify
-[recur]: /payments/card/other-features/#recur
+[recur]: /payments/invoice/other-features/#recur
 [setup-mail]: mailto:setup.ecom@PayEx.com
