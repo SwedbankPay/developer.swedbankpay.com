@@ -582,5 +582,5 @@ next_href="after-payment" next_title="Next: After Payment" %}
 [no-png]: /assets/img/no.png
 [se-png]: /assets/img/se.png
 [callback-api]: #callback
-[invoice-flow]: /payments/invoice/index#invoice-flow
+[invoice-flow]: /payments/invoice/#invoice-flow
 [payment-order]: #payment-orders
