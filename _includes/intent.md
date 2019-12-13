@@ -14,5 +14,5 @@ process.
   authorization and you don't need to do any more financial operations to
   fulfill the transaction.
 
-[capture]: /payments/card/after-payment/#capture
-[cancel]: /payments/card/after-payment/#cancellations
+[capture]: ./after-payment/#capture
+[cancel]: ./after-payment/#cancellations
