@@ -14,7 +14,7 @@ sidebar:
       title: Other Features
 ---
 
-{% include alert_development_section.md %}
+{% include alert-development-section.md %}
 
 >Add MobilePay Online to your Swedbank Pay payment instruments and take advantage
 of [Swedbank Pay Settlement Service][payex-reconciliation-and-settlement] to

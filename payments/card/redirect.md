@@ -16,7 +16,7 @@ sidebar:
       title: Other Features
 ---
 
-{% include alert_review_section.md %}
+{% include alert-review-section.md %}
 
 {% include jumbotron.html body="The basic redirect purchase scenario is the
 simplest and most common way to implement Card Payments." %}

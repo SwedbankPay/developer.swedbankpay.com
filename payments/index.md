@@ -22,7 +22,7 @@ sidebar:
       title: Direct Debit Payments
 ---
 
-{% include alert_development_section.md %}
+{% include alert-development-section.md %}
 
 {% include jumbotron.html body="Pick and choose between the payment instruments best
    suited for your business.

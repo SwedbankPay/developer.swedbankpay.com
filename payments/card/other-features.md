@@ -16,7 +16,7 @@ sidebar:
       title: Other Features
 ---
 
-{% include alert_review_section.md %}
+{% include alert-review-section.md %}
 
 {% include jumbotron.html body="Welcome to Other Features - a subsection of
 Credit Card. This section has extented code examples and features that were not

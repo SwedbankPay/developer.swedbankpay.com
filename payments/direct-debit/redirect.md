@@ -14,7 +14,7 @@ sidebar:
       title: Other Features
 ---
 
-{% include alert_development_section.md %}
+{% include alert-development-section.md %}
 
 ### Create Payment
 

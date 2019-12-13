@@ -18,7 +18,7 @@ sidebar:
       title: Other Features
 ---
 
-{% include alert_review_section.md %}
+{% include alert-review-section.md %}
 
 {% include jumbotron.html body="**Direct**
 Direct is a payment service where Swedbank Pay helps improve cashflow by

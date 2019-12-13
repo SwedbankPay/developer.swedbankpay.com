@@ -18,7 +18,7 @@ sidebar:
       title: Other Features
 ---
 
-{% include alert_review_section.md %}
+{% include alert-review-section.md %}
 
 {% include jumbotron.html body="**Invoice Payments** is one of the most easiest
 and safest payment service where Swedbank Pay helps improve cashflow by
