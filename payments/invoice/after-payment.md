@@ -20,63 +20,28 @@ sidebar:
 
 ## Options after posting a payment
 
-* **Abort:** It is possible to abort the process,
-    if the payment has no successful transactions.
-    [See the PATCH payment description][payment-description].
-* You must always follow up an Invoice Authorization with a
-    Capture or Cancel request.
-* For reversals, you will need to implement the Reversal request.
-* **If CallbackURL is set:** Whenever changes to the payment occur a
-    [Callback request][callback-request] will be posted to the callbackUrl,
-    which was generated when the payment was created.
+When you detect that the payer has reached your `completeUrl`, you need to do a
+GET request on the payment resource, containing the paymentID generated in the
+first step, to receive the state of the transaction. You will also be able to
+see the available operations after posting a payment.
+
+{% include payment-resource.md payment-instrument="invoice"%}
+
+* **Abort:** It is possible to abort the process if the payment has no
+  successful transactions. [See the PATCH payment
+  description][payment-description].
+* An invoice authorization must be followed by a `Capture` or
+  `Cancel` request.
+* For reversals, you will need to implement the `Reversal` request.
+* **If CallbackURL is set:** Whenever changes to the payment occur a [Callback
+  request][callback-request] will be posted to the callbackUrl, which was
+  generated when the payment was created.
 
 ### Captures
 
-The `captures` resource list the capture transactions performed on a
-specific invoice payment.
-
-{:.code-header}
-***Request***
-
-```http
-GET /psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures HTTP/1.1
-Host: api.externalintegration.payex.com
-Authorization: Bearer <AccessToken>
-Content-Type: application/json
-```
-
-{:.code-header}
-***Response***
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "payment": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
-    "captures": [{
-        "itemDescriptions": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/5adc265f-f87f-4313-577e-08d3dca1a26c/itemdescriptions"
-        },
-        "invoiceCopy": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures/5adc265f-f87f-4313-577e-08d3dca1a26c/invoicecopy",
-        "transaction": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/5adc265f-f87f-4313-577e-08d3dca1a26c",
-            "created": "2016-09-14T01:01:01.01Z",
-            "updated": "2016-09-14T01:01:01.03Z",
-            "type": "Capture",
-            "state": "Initialized|Completed|Failed",
-            "number": 1234567890,
-            "amount": 1000,
-            "vatAmount": 250,
-            "description": "Test transaction",
-            "payeeReference": "AH123456",
-            "failedReason": "",
-            "isOperational": "TRUE|FALSE",
-            "operations": []
-        }
-    }]
-}
-```
+An invoice capture will generate the invoice and distribute it to the consumer.
+This differs from i.e. card payments, where a capture operation will fully or
+partially charge the consumer's authorized amount.
 
 #### Create `FinancingConsumer` capture
 
@@ -138,9 +103,9 @@ Content-Type: application/json
 
 Notes on `FinancingConsumer` captures:
 
-* Due date is set by PayEx based on the agreement with merchant.
-  Standard due date is 14 days.
-* Invoice number is set by PayEx.
+* The due date is set by PayEx based on the agreement with merchant. Standard
+  due date is 14 days.
+* The invoice number is set by PayEx.
 
 ```http
 HTTP/1.1 200 OK
@@ -179,13 +144,57 @@ Content-Type: application/json
 | capture.itemDescriptions.id | `string`  | The relative URI of the item descriptions resource associated with this capture transaction resource. |
 | capture.invoiceCopy         | `string`  | The relative URI of the downloadable invoice copy in PDF format.                                      |
 | capture.transaction         | `object`  | The object representation of the [transaction][technical-reference-transaction].                      |
+The `captures` resource lists the capture transactions performed on a
+specific invoice payment.
+
+{:.code-header}
+***Request***
+
+```http
+GET /psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures HTTP/1.1
+Host: api.externalintegration.payex.com
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+```
+
+{:.code-header}
+***Response***
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "payment": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "captures": [{
+        "itemDescriptions": {
+            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/5adc265f-f87f-4313-577e-08d3dca1a26c/itemdescriptions"
+        },
+        "invoiceCopy": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures/5adc265f-f87f-4313-577e-08d3dca1a26c/invoicecopy",
+        "transaction": {
+            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/5adc265f-f87f-4313-577e-08d3dca1a26c",
+            "created": "2016-09-14T01:01:01.01Z",
+            "updated": "2016-09-14T01:01:01.03Z",
+            "type": "Capture",
+            "state": "Initialized|Completed|Failed",
+            "number": 1234567890,
+            "amount": 1000,
+            "vatAmount": 250,
+            "description": "Test transaction",
+            "payeeReference": "AH123456",
+            "failedReason": "",
+            "isOperational": "TRUE|FALSE",
+            "operations": []
+        }
+    }]
+}
+```
 
 #### Capture Sequence
 
-`Capture` can only be done on a successfully authorized transaction.
-It is possible to do a part-capture where you only capture a part of the
-authorization amount.
-You can later do more captures on the same payment up to the total
+`Capture` can only be done on a successfully authorized transaction. It is
+possible to do a part-capture where you only capture a part of the authorization
+amount. You can do more captures on the same payment later, up to the total
 authorization amount.
 
 ```mermaid
