@@ -376,8 +376,8 @@ next_href="after-payment" next_title="Next: After Payment" %}
 [fi-png]: /assets/img/fi.png
 [financing-consumer]: /payments/invoice/other-features#financingconsumer
 [no-png]: /assets/img/no.png
-[payee-reference]: /payments/invoice/other-features/#payeereference
-[price-resource]: /payments/invoice/other-features/#prices
+[payee-reference]: /payments/invoice/other-features#payeereference
+[price-resource]: /payments/invoice/other-features#prices
 [recur]: /payments/invoice/other-features#recur
 [se-png]: /assets/img/se.png
 [setup-mail]: mailto:setup.ecom@PayEx.com
