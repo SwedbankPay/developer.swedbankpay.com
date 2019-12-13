@@ -35,6 +35,8 @@ payment pages seamlessly integrated in an `iframe` on your website. The costumer
 does not need to leave your webpage, since we are handling the payment in the
 `iframe` on your page.
 
+![screenshot of the invoice payment window][invoice-payment]{:height="425px" width="700px"}
+
 ## Purchase Flow
 
 The sequence diagram below shows a high level description of the
@@ -380,3 +382,4 @@ next_href="after-payment" next_title="Next: After Payment" %}
 [setup-mail]: mailto:setup.ecom@PayEx.com
 [user-agent-definition]: https://en.wikipedia.org/wiki/User_agent
 [verify]: /payments/invoice/other-features#verify
+[invoice-payment]: /assets/img/checkout/invoice-seamless-view.png
