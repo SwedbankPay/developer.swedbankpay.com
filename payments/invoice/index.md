@@ -68,8 +68,7 @@ options:
 * [Recur][recur]
 * [Verify][verify]
 
-Our `payment` example uses the [`FinancingConsumer`]
-[financing-consumer] operation.
+Our `payment` example uses the [`FinancingConsumer`][financing-consumer] operation.
 
 ## Invoice flow
 
@@ -100,12 +99,12 @@ sequenceDiagram
 ```
 
 [after-payment]: /payments/invoice/after-payment
-[no-png]: /assets/img/no.png
-[se-png]: /assets/img/se.png
 [callback-api]: /payments/invoice/other-features#callback
-[optional-features]: /payments/invoice/optional-features
-[redirect]: /payments/invoice/redirect
-[setup-mail]: mailto:setup.ecom@PayEx.com
 [financing-consumer]: /payments/invoice/other-features#financing-consumer
+[no-png]: /assets/img/no.png
+[optional-features]: /payments/invoice/optional-features
 [recur]: /payments/invoice/other-features#recur
+[redirect]: /payments/invoice/redirect
+[se-png]: /assets/img/se.png
+[setup-mail]: mailto:setup.ecom@PayEx.com
 [verify]: /payments/invoice/other-features#verify
