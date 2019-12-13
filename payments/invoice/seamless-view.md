@@ -131,7 +131,7 @@ showcase the values for the respective countries:
 
 ### Intent
 
-{% include intent.md %}
+{% include intent.md no-autocapture=true%}
 
 ### Operations
 
