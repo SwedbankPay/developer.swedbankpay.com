@@ -1,3 +1,23 @@
+{% assign instrument = include.payment-instrument | default: false %}
+
+{% if instrument=="card" %}
+    {% assign payeeReferenceLength = "50" %}
+{% elsif instrument=="credit-account" %}
+    {% assign payeeReferenceLength = "50" %}
+{% elsif instrument=="invoice" %}
+    {% assign payeeReferenceLength = "50" %}
+{% elsif instrument=="swish" %}
+    {% assign payeeReferenceLength = "35" %}
+{% elsif instrument=="vipps" %}
+    {% assign payeeReferenceLength = "30" %}
+{% elsif instrument=="mobilepay" %}
+    {% assign payeeReferenceLength = "50" %}
+{% elsif instrument=="checkout" %}
+    {% assign payeeReferenceLength = "30" %}
+{% else %}
+    {% assign payeeReferenceLength = "30" %}
+{% endif %}
+
 ## Subsite
 
 ### Create Payment
@@ -76,7 +96,7 @@ Content-Type: application/json
 |          | └─➔&nbsp;`termsOfServiceUrl` | `string`     | A URI that contains your terms and conditions for the payment, to be linked on the payment page. **Requires https**.                                                                                                                                  |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`payeeInfo`         | `object`     | The `payeeInfo` contains information about the payee.                                                                                                                                                                                                 |
 |    ✔︎    | └─➔&nbsp;`payeeId`          | `string`     | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                                                                 |
-|    ✔︎    | └─➔&nbsp;`payeeReference`   | `string(35)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][technical-reference-payeereference] for details.                                           |
+|    ✔︎    | └─➔&nbsp;`payeeReference`   | `string({{ payeeReferenceLength }})` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][technical-reference-payeereference] for details.                                           |
 |          | └─➔&nbsp;`payeeName`        | `string`     | The payee name (like merchant name) that will be displayed to consumer when redirected to Swedbank Pay.                                                                                                                                               |
 |          | └─➔&nbsp;`productCategory`  | `string`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                        |
 |          | └─➔&nbsp;`orderReference`   | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                               |
@@ -354,7 +374,7 @@ Content-Type: application/json
 |    ✔︎    | └➔&nbsp;`amount`         | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` `100.00 SEK`, `5000` `50.00 SEK`.                                                      |
 |    ✔︎    | └➔&nbsp;`vatAmount`      | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` `100.00 SEK`, `5000` `50.00 SEK`.                                                      |
 |    ✔︎    | └➔&nbsp;`description`    | `string`     | A textual description of the capture                                                                                                                                       |
-|    ✔︎    | └➔&nbsp;`payeeReference` | `string(35)` | A  reference that must match the  ##payeeReference## of the sales transaction you want to reverse. See [`payeeReference`][technical-reference-payeereference] for details. |
+|    ✔︎    | └➔&nbsp;`payeeReference` | `string({{ payeeReferenceLength }})` | A  reference that must match the  ##payeeReference## of the sales transaction you want to reverse. See [`payeeReference`][technical-reference-payeereference] for details. |
 
 {:.code-header}
 **Response**

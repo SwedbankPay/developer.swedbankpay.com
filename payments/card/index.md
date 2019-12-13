@@ -20,12 +20,7 @@ sidebar:
 TODO: This page needs serious clean-up.
 {% endcomment %}
 
-{% include alert.html type="warning"
-                      icon="warning"
-                      header="Site under development"
-                      body="This section of the Developer Portal is
-                      under construction and should not be used to integrate
-                      against Swedbank Pay's APIs yet." %}
+{% include alert-review-section.md %}
 
 {% include jumbotron.html body="**Card Payments** is the most popular, versatile
 and global way to initate a transaction with a customer. Choose between our
@@ -125,7 +120,7 @@ sequenceDiagram
     note left of Payer: redirect to SwedbankPay<br>(If Redirect scenario)
     Payer->>-Merchant: access merchant page
     activate Merchant
-    Merchant->>-SwedbankPay: GET /psp/creditcard/payments/<paymentorder.id>
+    Merchant->>-SwedbankPay: GET <payment.id>
     activate SwedbankPay
     note left of Merchant: Second API request
     SwedbankPay-->>-Merchant: rel: redirect-authorization
@@ -172,7 +167,7 @@ sequenceDiagram
 
     Payer->>-Merchant: access merchant page
     activate Merchant
-    Merchant->>-SwedbankPay: GET /psp/creditcard/payments/<paymentorder.id>
+    Merchant->>-SwedbankPay: GET <payment.id>
     activate SwedbankPay
     note left of Merchant: Second API request
     SwedbankPay-->>-Merchant: rel: redirect-authorization
@@ -189,11 +184,11 @@ sequenceDiagram
 {% include iterator.html  next_href="redirect" next_title="Next: Redirect" %}
 
 [card-payment]: /assets/img/payments/card-payment.png
-[cancel]: /payments/card/after-payment/#cancellations
-[capture]: /payments/card/after-payment/#capture
+[cancel]: /payments/card/after-payment#cancellations
+[capture]: /payments/card/after-payment#capture
 [redirect]: /payments/card/redirect
-[create-payment]: /payments/card/other-features/#create-payment
-[purchase]: /payments/card/other-features/#purchase
-[recur]: /payments/card/other-features/#recur
-[payout]: /payments/card/other-features/#payout
-[verify]: /payments/card/other-features/#verify
+[create-payment]: /payments/card/other-features#create-payment
+[purchase]: /payments/card/other-features#purchase
+[recur]: /payments/card/other-features#recur
+[payout]: /payments/card/other-features#payout
+[verify]: /payments/card/other-features#verify

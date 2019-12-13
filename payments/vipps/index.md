@@ -16,6 +16,8 @@ sidebar:
       title: Other Features
 ---
 
+{% include alert-development-section.md %}
+
 ## Create Payment
 
 To create a Vipps payment, you perform an HTTP POST against the
@@ -102,7 +104,7 @@ Content-Type: application/json
 |          | `payeeInfo.payeeName`            | `string`     | The payee name (like merchant name) that will be displayed to consumer when redirected to PayEx.                                                                                                                                                                                   |
 |          | `payeeInfo.productCategory`      | `string`     | A product category or number sent in from the payee/merchant. This is not validated by PayEx, but will be passed through the payment process and may be used in the settlement process.                                                                                            |
 |          | `payeeInfo.orderReference`       | `string(50)` | The order reference should reflet the order reference found in the merchant's systems.                                                                                                                                                                                             |
-|          | `payeeInfo.prefillInfo`          | `string`     | The mobile number that will be prefilled in the Swedbank Pay Payments. The consumer may change this number in the UI.                                                                                                                                                         |
+|          | `payeeInfo.prefillInfo`          | `string`     | The mobile number that will be prefilled in the Swedbank Pay Payments. The consumer may change this number in the UI.                                                                                                                                                              |
 |          | `payeeInfo.subsite`              | `string(40)  | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.                                                                                                                        |
 
 {:.code-header}
@@ -236,13 +238,13 @@ rel and the request that will be sent in the HTTP body of the request for
 the given operation.
 
 {:.table .table-striped}
-| Operation                | Description                                                                           |
-| :----------------------- | :------------------------------------------------------------------------------------ |
-| `update-payment-abort`   | [Aborts][abort] the payment before any financial transactions are performed.          |
+| Operation                | Description                                                                      |
+| :----------------------- | :------------------------------------------------------------------------------- |
+| `update-payment-abort`   | [Aborts][abort] the payment before any financial transactions are performed.     |
 | `redirect-authorization` | Used to redirect the consumer to Swedbank Pay Payments and the authorization UI. |
-| `create-capture`         | Creates a [capture transaction](#Captures).                                           |
-| `create-cancellation`    | Creates a [cancellation transaction](#Cancellations).                                 |
-| `create-reversal`        | Creates a [reversal transaction](#Reversals).                                         |
+| `create-capture`         | Creates a [capture transaction](#Captures).                                      |
+| `create-cancellation`    | Creates a [cancellation transaction](#Cancellations).                            |
+| `create-reversal`        | Creates a [reversal transaction](#Reversals).                                    |
 
 ### Vipps transactions
 

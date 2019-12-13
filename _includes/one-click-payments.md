@@ -18,19 +18,62 @@ be set to enable one-click purchases.
 {% include payment-url.md
 when="at the 3-D Secure verification for credit card payments" %}
 
-### Returning purchases
+### API Requests To Generate paymentToken
+
+When making the initial purchase request, you need to generate a `paymentToken`.
+You can do this either by by setting the `generatePaymentToken` property to
+`true` (see example below) when doing a card purchase, or set the initial
+operation to [`Verify`][verify].
+
+{:.code-header}
+**`generatePaymentToken` property**
+
+```
+"generatePaymentToken": "true"
+```
+
+### Finding paymentToken value
+
+When the initial purchase is followed through, a `paymentToken` will linked to
+the payment.  You can return the value by making a `GET` request towards payment
+resource (expanding either the authorizations or verifications sub-resource),
+after the consumer successfully has completed the purchase. The two examples are
+provided below.
+
+{:.code-header}
+**Request Towards Authorizations Resource**
+
+```http
+GET https://api.payex.com/psp/creditcard/payments/<payment-id>/<authorizations> HTTP/1.1
+Host: api.payex.com
+```
+
+{:.code-header}
+**Request Towards Verifications Resource**
+
+```http
+GET https://api.payex.com/psp/creditcard/payments/<payment-id>/<verifications> HTTP/1.1
+Host: api.payex.com
+```
+
+You need to store the `paymentToken` from the response in your system and keep
+track of the corresponding consumer-ID in your system.
+
+### Returning Purchases
 
 When a known consumer (where you have attained a consumer-ID or similar) returns
 to your system, you can use the payment token, using already stored payment
-data, to initiate enable one-click payments. You will need to make a standard
-redirect purchase, following the sequence as specified in the Redirect scenarios
-for [credit card][card] and [financing invoice][invoice]. When making the first
-`POST` request you insert the `paymentToken` property. This must be the
-`paymentToken` you received in the initial purchase, where you specified the
+data, to initiate one-click payments. You will need to make a standard
+purchase, following the sequence as specified in the Redirect or Seamless View
+scenarios for [credit card][card] and [financing invoice][invoice]. When making
+the first `POST` request you insert the `paymentToken` property. This must be
+the `paymentToken` you received in the initial purchase, where you specified the
 `generatePaymentToken` to `true`.
 
-See the technical reference, for how to create a [card][create-card-payment]
+See the Other Feature sections for how to create a [card][create-card-payment]
 and [invoice][create-invoice-payment] payment.
+
+Abbrevated code example:
 
 {:.code-header}
 **Request**
@@ -43,46 +86,26 @@ Content-Type: application/json
 
 {
     "payment": {
-        "operation": "Verify",
-        "currency": "NOK",
-        "description": "Test Verification",
-        "payerReference": "AB1234",
-        "userAgent": "Mozilla/5.0...",
-        "language": "nb-NO",
-        "generatePaymentToken": true,
-        "generateRecurrenceToken": false,
-        "urls": {
-            "hostUrls": [ "https://example.com" ],
-            "completeUrl": "https://example.com/payment-completed",
-            "cancelUrl": "https://example.com/payment-canceled",
-            "paymentUrl": "http://example.com/perform-payment",
-            "logoUrl": "https://example.com/payment-logo.png",
-            "termsOfServiceUrl": "https://example.com/payment-terms.html"
-        },
-        "payeeInfo": {
-            "payeeId": "12345678-1234-1234-1234-123456789012",
-            "payeeReference": "CD1234",
-            "payeeName": "Merchant1",
-            "productCategory": "A123",
-            "orderReference": "or-12456",
-            "subsite": "MySubsite"
-        }
+        "operation": "<operation>",
+        "intent": "<intent>",
+        "paymentToken": "<paymentToken>"
     },
-    "creditCard": {
-        "rejectCreditCards": false,
-        "rejectDebitCards": false,
-        "rejectConsumerCards": false,
-        "rejectCorporateCards": false
-    }
 }
 ```
 
-_When redirecting to Swedbank Pay the payment page will be
-prefilled with the payer's card details._
+{:.table .table-striped}
+| Required | Property            | Type     | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| :------: | ------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|  ✔︎︎︎︎︎  | `payment`           | `object` | The `payment` object.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`operation` | `string` | Determines the initial operation, that defines the type card payment created.<br> <br> `Purchase`. Used to charge a card. It is followed up by a capture or cancel operation.<br> <br> `Recur`.Used to charge a card on a recurring basis. Is followed up by a capture or cancel operation (if not Autocapture is used, that is).<br> <br>`Payout`. Used to deposit funds directly to credit card. No more requests are necessary from the merchant side.<br> <br>`Verify`. Used when authorizing a card withouth reserveing any funds.  It is followed up by a verification transaction. |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`intent`    | `string` | The intent of the payment identifies how and when the charge will be effectuated. This determine the type transactions used during the payment process.<br> <br>`Authorization`. Reserves the amount, and is followed by a [cancellation][cancel] or [capture][capture] of funds.<br> <br>`AutoCapture`. A one phase-option that enable capture of funds automatically after authorization.              |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`paymentToken`    | `string` | The `paymentToken` value received in `GET` response towards the Payment Resource is the same `paymentToken` generated in the initial purchase request. The token allow you to use already stored card data to initiate one-click payments.                    |
 
-### Screenshots
+{% include alert.html type="neutral" icon="info" body="
+When redirecting to Swedbank Pay the payment page will be
+prefilled with the payer's card details. See example below." %}
 
-![One click payment page][one-click-image]
+![One click payment page][one-click-image]{:height="450px" width="425px"}
 
 ### Delete payment token
 
@@ -137,9 +160,10 @@ TODO: Remove pipes from the above code example and add a property table
 {% endcomment %}
 
 -----------------------------
-[card]: /payments/card/
-[invoice]: /payments/invoice/
+[card]: /payments/card
+[invoice]: /payments/invoice
 [one-click-image]: /assets/img/checkout/one-click.png
 [delete-payment-token]: #delete-payment-token
-[create-card-payment]: /payments/card/
-[create-invoice-payment]: /payments/invoice/
+[create-card-payment]: /payments/card/other-features#create-payment
+[create-invoice-payment]: /payments/invoice/other-features#create-payment
+[verify]: ./other-features#verify

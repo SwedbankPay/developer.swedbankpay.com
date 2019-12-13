@@ -14,6 +14,7 @@ sidebar:
       title: Other Features
 ---
 
+{% include alert-development-section.md %}
 
 ## Options after posting a payment
 

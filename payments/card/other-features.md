@@ -16,10 +16,7 @@ sidebar:
       title: Other Features
 ---
 
-{% include alert.html type="warning" icon="warning" header="Site under
-                      development" body="This section of the Developer Portal is
-                      under construction and should not be used to integrate
-                      against Swedbank Pay's APIs yet." %}
+{% include alert-review-section.md %}
 
 {% include jumbotron.html body="Welcome to Other Features - a subsection of
 Credit Card. This section has extented code examples and features that were not
@@ -65,7 +62,7 @@ Content-Type: application/json
 | :------: | ------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |  ✔︎︎︎︎︎  | `payment`           | `object` | The `payment` object.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`operation` | `string` | Determines the initial operation, that defines the type card payment created.<br> <br> `Purchase`. Used to charge a card. It is followed up by a capture or cancel operation.<br> <br> `Recur`.Used to charge a card on a recurring basis. Is followed up by a capture or cancel operation (if not Autocapture is used, that is).<br> <br>`Payout`. Used to deposit funds directly to credit card. No more requests are necessary from the merchant side.<br> <br>`Verify`. Used when authorizing a card withouth reserveing any funds.  It is followed up by a verification transaction. |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`intent`    | `string` | The intent of the payment identifies how and when the charge will be effectuated. This determine the type transactions used during the payment process.<br> <br>`Authorization`. Reserves the amount, and is followed by a [cancellation][cancel] or [capture][capture] of funds.<br> <br>`AutoCapture`. A one phase-option that enable capture of funds automatically after authorization.              |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`intent`    | `string` | The intent of the payment identifies how and when the charge will be effectuated. This determine the type transactions used during the payment process.<br> <br>`Authorization`. Reserves the amount, and is followed by a [cancellation][cancel] or [capture][capture] of funds.<br> <br>`AutoCapture`. A one phase-option that enable capture of funds automatically after authorization.                                                                                                                                                                                               |
 
 ## Purchase
 
@@ -209,7 +206,7 @@ Content-Type: application/json
 | :------: | :--------------------------------------- | :------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |  ✔︎︎︎︎︎  | `payment`                                | `object`      | The payment object                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`operation`                      | `string`      | Determines the initial operation, that defines the type card payment created.<br> <br> `Purchase`. Used to charge a card. It is followed up by a capture or cancel operation.<br> <br> `Recur`.Used to charge a card on a recurring basis. Is followed up by a capture or cancel operation (if not Autocapture is used, that is).<br> <br>`Payout`. Used to deposit funds directly to credit card. No more requests are necessary from the merchant side.<br> <br>`Verify`. Used when authorizing a card withouth reserveing any funds.  It is followed up by a verification transaction.                         |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`intent`                         | `string`      | `Authorization`. Reserves the amount, and is followed by a [cancellation][cancel] or [capture][capture] of funds.<br> <br> `AutoCapture`. A one phase option that enable capture of funds automatically after authorization.                                                                                                                                                                                                    |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`intent`                         | `string`      | `Authorization`. Reserves the amount, and is followed by a [cancellation][cancel] or [capture][capture] of funds.<br> <br> `AutoCapture`. A one phase option that enable capture of funds automatically after authorization.                                                                                                                                                                                                                                                                                                                                                                                      |
 |          | └➔&nbsp;`paymentToken`                   | `string`      | If you put in a paymentToken here, the payment page will preload the stored payment data related to the `paymentToken` and let the consumer make a purchase without having to enter all card data. This is called a "One Click" purchase.                                                                                                                                                                                                                                                                                                                                                                         |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`currency`                       | `string`      | NOK, SEK, DKK, USD or EUR.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`prices`                         | `array`       | The `prices` resource lists the prices related to a specific payment.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
@@ -232,7 +229,7 @@ Content-Type: application/json
 |          | └─➔&nbsp;`termsOfServiceUrl`             | `string`      | A URL that contains your terms and conditions for the payment, to be linked on the payment page. Require https.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`payeeInfo`                      | `string`      | The `payeeInfo` object, containing information about the payee.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`payeeId`                       | `string`      | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-|  ✔︎︎︎︎︎  | └─➔&nbsp;`payeeReference`                | `string(30*)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.                                                                                                                                                                                                                                                                                                                                                                                                                          |
+|  ✔︎︎︎︎︎  | └─➔&nbsp;`payeeReference`                | `string(50*)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.                                                                                                                                                                                                                                                                                                                                                                                                                          |
 |          | └─➔&nbsp;`payeeName`                     | `string`      | The payee name (like merchant name) that will be displayed to consumer when redirected to Swedbank Pay.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 |          | └─➔&nbsp;`productCategory`               | `string`      | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                                                                                                                                                                                                                                                                                                                                    |
 |          | └─➔&nbsp;`orderReference`                | `String(50)`  | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
@@ -725,7 +722,7 @@ sequenceDiagram
   note left of Payer: redirect back to merchant<br>(If Redirect scenario)
 
   Payer->>+Merchant: access merchant page
-  Merchant->>+SwedbankPay: GET /psp/creditcard/payments/<paymentorder.id>
+  Merchant->>+SwedbankPay: GET <payment.id>
   deactivate Merchant
   note left of Merchant: Second API request
   SwedbankPay-->>+Merchant: rel: redirect-authorization
@@ -787,11 +784,12 @@ transaction made towards a payment, as previously described.
 
 {% include payment-link.md %}
 
-{% include subsite.md %}
+{% include subsite.md payment-instrument="card" %}
 
 ## PayeeReference
 
-{% include payeeinfo.md %}
+{% include payeeinfo.md
+payment-instrument="creditcard" %}
 
 ## Prices
 
@@ -856,11 +854,11 @@ payment"  %}
 
 [purchase]: #purchase
 [user-agent-definition]: https://en.wikipedia.org/wiki/User_agent
-[cancel]: /payments/card/after-payment/#cancellations
-[capture]: /payments/card/after-payment/#Capture
-[callback]: /payments/card/other-features/#callback
+[cancel]: /payments/card/after-payment#cancellations
+[capture]: /payments/card/after-payment#Capture
+[callback]: /payments/card/other-features#callback
 [mcc]: https://en.wikipedia.org/wiki/Merchant_category_code
-[price-resource]: /payments/card/other-features/#prices
+[price-resource]: /payments/card/other-features#prices
 [redirect]: /payments/card/redirect
 [hosted-view]: /payments/card/seamless-view
 [one-click-payments]: #one-click-payments

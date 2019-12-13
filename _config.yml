@@ -3,6 +3,7 @@ remote_theme: SwedbankPay/swedbank-pay-design-guide-jekyll-theme
 exclude: ["Gemfile*", "Rakefile"]
 plugins:
   - "jekyll-github-metadata"
+  - jemoji
 tipue_search:
   include:
     pages: true

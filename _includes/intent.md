@@ -10,9 +10,10 @@ process.
   transaction.
 * **`AutoCapture` (one-phase)**:  If you want the credit card to be charged
   right away, you will have to specify that the intent of the purchase is
-  `AutoCapture`. The credit card will be charged automatically after
-  authorization and you don't need to do any more financial operations to
-  fulfill the transaction.
+  `AutoCapture`. This is only allowed if the consumer purchases digital
+  products. The credit card will be charged automatically after authorization
+  and you don't need to do any more financial operations to fulfill the
+  transaction.
 
-[capture]: /payments/card/after-payment/#capture
-[cancel]: /payments/card/after-payment/#cancellations
+[capture]: ./after-payment#capture
+[cancel]: ./after-payment#cancellations
