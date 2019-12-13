@@ -16,12 +16,7 @@ sidebar:
       title: Licence
 ---
 
-{% include alert.html type="warning"
-                      icon="warning"
-                      header="Site under development"
-                      body="This section of the Developer Portal is under construction and
-                      should not be used to integrate against Swedbank Pay's
-                      APIs yet." %}
+{% include alert-review-section.md %}
 
 The following document is a fork of
 [OpenStack's Git Commit Good Practice][good-practice], rewritten to suit
