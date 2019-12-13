@@ -14,10 +14,7 @@ sidebar:
       title: Other Features
 ---
 
-{% include alert.html type="warning"
-                      icon="warning"
-                      header="Site under development"
-                      body="This section of the Developer Portal is under construction and should not be used to integrate against Swedbank Pay's APIs yet." %}
+{% include alert-development-section.md %}
 
 ### Create Payment
 
@@ -175,7 +172,7 @@ is given below.
 {:.table .table-striped}
 | Property | Description                                                         |
 | :------- | :------------------------------------------------------------------ |
-| `href`     | The target URI to perform the operation against.                    |
+| `href`   | The target URI to perform the operation against.                    |
 | rel      | The name of the relation the operation has to the current resource. |
 | method   | The HTTP method to use when performing the operation.               |
 
@@ -187,9 +184,9 @@ The only thing that should be hard coded in the client is the value of the
 `rel` and the request that will be sent in the HTTP body of the request for
 the given operation.
 
-| Operation              | Description                                                                                                                         |
-| :--------------------- | :---------------------------------------------------------------------------------------------------------------------------------- |
-| _update-payment-abort_ | [Aborts][technical-reference-abort-payment] the payment before any financial transactions are performed.                            |
+| Operation              | Description                                                                                                                        |
+| :--------------------- | :--------------------------------------------------------------------------------------------------------------------------------- |
+| _update-payment-abort_ | [Aborts][technical-reference-abort-payment] the payment before any financial transactions are performed.                           |
 | _redirect-sale_        | Contains the redirect-URI that redirects the consumer to a Swedbank Pay hosted payment page prior to creating a sales transaction. |
 
 ## Direct Debit transactions

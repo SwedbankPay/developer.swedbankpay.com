@@ -16,12 +16,7 @@ sidebar:
       title: Other Features
 ---
 
-{% include alert.html type="warning"
-                      icon="warning"
-                      header="Site under development"
-                      body="This section of the Developer Portal is under
-                      construction and should not be used to integrate against
-                      Swedbank Pay's APIs yet." %}
+{% include alert-development-section.md %}
 
 {% include settlement-reconciliation.md %}
 
@@ -31,7 +26,7 @@ sidebar:
 
 {% include recurring-card-payments.md %}
 
-{% include subsite.md %}
+{% include subsite.md payment-instrument="swish" %}
 
 ### Prices
 

@@ -16,12 +16,7 @@ sidebar:
       title: Other Features
 ---
 
-{% include alert.html type="warning"
-                      icon="warning"
-                      header="Site under development"
-                      body="This section of the Developer Portal is under
-                      construction and should not be used to integrate against
-                      Swedbank Pay's APIs yet." %}
+{% include alert-development-section.md %}
 
 ## Payment Resource
 
@@ -220,12 +215,12 @@ the `rel` and the request that will be sent in the HTTP body of the
 request for the given operation.
 
 {:.table .table-striped}
-| Operation              | Description                                                                                                                                                 |
-| :--------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `update-payment-abort` | [Aborts][technical-reference-abort] the payment before any financial transactions are performed.                                                            |
-| `create-sale`          | Creates a `sales` transaction without redirection to a payment page (**Direct scenario**). `Msisdn` is required in e-commerce scenario.                     |
+| Operation              | Description                                                                                                                                                |
+| :--------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `update-payment-abort` | [Aborts][technical-reference-abort] the payment before any financial transactions are performed.                                                           |
+| `create-sale`          | Creates a `sales` transaction without redirection to a payment page (**Direct scenario**). `Msisdn` is required in e-commerce scenario.                    |
 | `redirect-sale`        | Contains the redirect-URI that redirects the consumer to a Swedbank Pay hosted payment page prior to creating a sales transaction (**Redirect scenario**). |
-| `view-payment`         | Contains the URI of the JavaScript used to create a Hosted View iframe directly without redirecting the consumer to separate payment page.                  |
+| `view-payment`         | Contains the URI of the JavaScript used to create a Hosted View iframe directly without redirecting the consumer to separate payment page.                 |
 
 ### Swish transactions
 

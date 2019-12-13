@@ -28,22 +28,9 @@ about this update.
   * 1265 seconds
 * The callback is sent from the following IP address: `82.115.146.1`
 
-{:.code-header}
-**Payment Instrument Callback**
+{% assign payment-order = include.payment-order | default: false %}
 
-```js
-{
-    "payment": {
-        "id": "/psp/<payment instrument>/payments/<payment-id>",
-        "number": 222222222
-    },
-    "transaction": {
-        "id": "/psp/<payment instrument>/payments/<payment-id>/<transaction type>/<transaction-id>",
-        "number": 333333333
-    }
-}
-```
-
+{% if payment-order %}
 {:.code-header}
 **Payment Order Callback**
 
@@ -64,6 +51,25 @@ about this update.
 }
 ```
 
+{% else %}
+{:.code-header}
+**Payment Instrument Callback**
+
+```js
+{
+    "payment": {
+        "id": "/psp/<payment instrument>/payments/<payment-id>",
+        "number": 222222222
+    },
+    "transaction": {
+        "id": "/psp/<payment instrument>/payments/<payment-id>/<transaction type>/<transaction-id>",
+        "number": 333333333
+    }
+}
+```
+
+{% endif %}
+
 {:.table .table-striped}
 | **Parameter** | **Description**
 | `Payment Instrument` | `CreditCard`, `Invoice`, `Swish`, `Vipps`, `DirectDebit`, `MobilePay`
@@ -75,17 +81,17 @@ status.
 
 ```mermaid
 sequenceDiagram
-  Participant Merchant
-  Participant SwedbankPay as Swedbank Pay
+    Participant Merchant
+    Participant SwedbankPay as Swedbank Pay
 
-  activate SwedbankPay
-  SwedbankPay->>+Merchant: POST <callbackUrl>
-  deactivate SwedbankPay
-  note left of Merchant: Callback by Swedbank Pay
-  Merchant-->>+SwedbankPay: HTTP response
-  Merchant->>+SwedbankPay: GET <payment instrument> payment
-  deactivate Merchant
-  note left of Merchant: First API request
-  SwedbankPay-->>+Merchant: payment resource
-  deactivate SwedbankPay
+    activate SwedbankPay
+    SwedbankPay->>+Merchant: POST <callbackUrl>
+    deactivate SwedbankPay
+    note left of Merchant: Callback by Swedbank Pay
+    Merchant-->>+SwedbankPay: HTTP response
+    Merchant->>+SwedbankPay: GET <payment instrument> payment
+    deactivate Merchant
+    note left of Merchant: First API request
+    SwedbankPay-->>+Merchant: payment resource
+    deactivate SwedbankPay
 ```

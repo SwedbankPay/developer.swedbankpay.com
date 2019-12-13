@@ -82,11 +82,11 @@ You have the following options after a server-to-server Recur payment `POST`.
 
 ##### Capture (intent)
 
-* **AutoCapture (one-phase)**: If you want the credit card to be charged
-  right away, you will have to specify that the intent of the purchase is
-  AutoCapture.
-  The credit card will be charged and you don't need to do any more
-  financial operations to this purchase.​​​​​
+* **AutoCapture (one-phase)**: If you want the credit card to be charged right
+  away, you will have to specify that the intent of the purchase is AutoCapture.
+  This is only allowed if the consumer purchases digital products. The credit
+  card will be charged and you don't need to do any more financial operations to
+  this purchase.​​​​​
 
 ##### General
 

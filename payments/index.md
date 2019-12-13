@@ -22,12 +22,7 @@ sidebar:
       title: Direct Debit Payments
 ---
 
-{% include alert.html type="warning"
-                      icon="warning"
-                      header="Site under development"
-                      body="This section of the Developer Portal is under construction and
-                      should not be used to integrate against Swedbank Pay's
-                      APIs yet." %}
+{% include alert-development-section.md %}
 
 {% include jumbotron.html body="Pick and choose between the payment instruments best
    suited for your business.
@@ -208,7 +203,7 @@ To integrate the payment page script, you need to prepare you front end:
    – enabling Swish payments through Seamless View.
 
 ```html
-<script id="paymentPageScript" src="https://ecom.stage.payex.com/swish/core/scripts/client/px.swish.client.js?
+<script id="payment-page-script" src="https://ecom.stage.payex.com/swish/core/scripts/client/px.swish.client.js?
                                     token=bcff0db777d5bcf21a210235342921f46da993efa5e91340f713c8cedf4aac38"></script>
 ```
 

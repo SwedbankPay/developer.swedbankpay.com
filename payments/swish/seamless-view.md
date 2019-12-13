@@ -16,12 +16,7 @@ sidebar:
       title: Other Features
 ---
 
-{% include alert.html type="warning"
-                      icon="warning" header="Site under
-                      development"
-                      body="This section of the Developer Portal is
-                      under construction and should not be used to integrate
-                      against Swedbank Pay's APIs yet." %}
+{% include alert-development-section.md %}
 
 > Swish is a one-phase payment instrument supported by the major Swedish banks. In
   the direct e-commerce scenario, Swedbank Pay receives the Swish registered

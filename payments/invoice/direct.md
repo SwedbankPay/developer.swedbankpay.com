@@ -1,5 +1,5 @@
 ---
-title: Swedbank Pay Payments Invoice Redirect
+title: Swedbank Pay Payments Invoice Direct
 sidebar:
   navigation:
   - title: Invoice Payments
@@ -20,25 +20,27 @@ sidebar:
 
 {% include alert-review-section.md %}
 
+{% include jumbotron.html body="**Direct**
+Direct is a payment service where Swedbank Pay helps improve cashflow by
+purchasing merchant invoices. Swedbank Pay receives invoice data, which is used
+to produce and distribute invoices to the consumer/end-use" %}
+
 ## Introduction
 
-* When properly set up in your merchant/webshop site and the payer starts the
-  purchase process, you need to make a POST request towards Swedbank Pay with
-  your Purchase information. This will generate a payment object with a unique
-  `paymentID`. You will receive a **redirect URL** to a Swedbank Pay payment
-  page.
-* You need to redirect the payer's browser to that specified URL so that the
-  payer can enter the credit card details in a secure Swedbank Pay environment.
-* Swedbank Pay will redirect the payer's browser to - one of two specified URLs,
-  depending on whether the payment session is followed through completely or
-  cancelled beforehand. Please note that both a successful and rejected payment
-  reach completion, in contrast to a cancelled payment.
-* When you detect that the payer reach your `completeUrl` , you need to do a
-  `GET` request to receive the state of the transaction, containing the
-  `paymentID` generated in the first step, to receive the state of the
-  transaction.
+1. Collect all purchase information and send it in a `POST` request to
+Swedbank Pay.
+1. Include personal information (SSN and postal code) and send it to Swedbank Pay.
+1. Make a new `POST` request towards Swedbank Pay to retrieve the name and
+address of the customer.
+1. Create an authorization transaction by calculating the final price / amount.
+1. Make a third `POST` request with consumer data as input.
+1. Send a  `GET` request with the `paymentID` to get the authorization result
+1. Make a Capture by creating a `POST` request
 
-### Options before posting a payment
+  **By making a Capture, Swedbank Pay will generate
+  the invoice to the consumer and the order is ready for shipping.**
+
+## Options before posting a payment
 
 All valid options when posting a payment with operation equal to
 `FinancingConsumer`, are described in
@@ -51,39 +53,80 @@ All valid options when posting a payment with operation equal to
 | `currency`    | `NOK`                            | `EUR`                          | `SEK`                          |
 | `invoiceType` | `PayExFinancingNO`               | `PayExFinancingFI`             | `PayExFinancingSE`             |
 
-* An invoice payment is always two-phased based - you create an
-  `Authorize` transaction, that is followed by a `Capture` or `Cancel` request.
-* **Defining CallbackURL**: When implementing a scenario, it is optional
-  to set a [CallbackURL][callback] in the `POST` request.
-  If `callbackURL` is set, then Swedbank Pay will send a postback request to
-  this URL when the consumer has fulfilled the payment.
-  [See the Callback API description here.][callback]
+* An invoice payment is always two-phased based - you create an Authorize
+  transaction, that is followed by a `Capture` or `Cancel` request.
+* **Defining CallbackURL**: When implementing a scenario, it is optional to
+  set a [CallbackURL][callback-api] in the `POST` request. If `callbackURL`
+  is set Swedbank Pay will send a postback request to this URL when the consumer
+  has fulfilled the payment.
 
-## Invoice flow
+{% include alert.html type="neutral" icon="info" body="
+Note that the invoice will not be created/distributed before you have
+made a `capture` request." %}.
 
-The sequence diagram below shows the two requests you have to send to Swedbank
-Pay to make a purchase.
-The diagram also shows in high level,
-the sequence of the process of a complete purchase.
+The `Capture` , `Cancel`, `Reversal` opions are
+described in [other features][other-features].
+The links will take you directly to the API description for the specific request.
+
+The sequence diagram below shows a high level description of the invoice
+process, including the four requests you have to send to Swedbank Pay to create
+an authorize transaction for Sweden (SE) and Norway (NO). Note that for Finland
+(FI) the process is different as the Merchant needs to send a `POST` request
+with the `approvedLegalAddress` (SNN and postal number).
+
+## Invoice flow (SE and NO)
 
 ```mermaid
 sequenceDiagram
-    Consumer->>Merchant: Start purchase
-    activate Merchant
+    Consumer->>Merchant: Start purchase (collect SSN and postal number)
+    Activate Merchant
     note left of Merchant: First API request
-    Merchant->>+Swedbank Pay: POST <Invoice Payment> (operation=FinancingConsumer)
-    Swedbank Pay-->>-Merchant: payment resource
-    Merchant-->>-Consumer: authorization page
-    note left of Consumer: redirect to Swedbank Pay
-    Consumer->>+Swedbank Pay: enter consumer details
-    Swedbank Pay-->>-Consumer: redirect to merchant
-    note left of Consumer: redirect back to Merchant
-    Consumer->>Merchant: access merchant page
-    activate Merchant
+    Merchant->>Swedbank Pay: POST <Invoice Payments> (operation=FinancingConsumer)
+    Activate Swedbank Pay
+
+    Swedbank Pay-->>Merchant: payment resource
     note left of Merchant: Second API request
-    Merchant->>+Swedbank Pay: GET <Invoice payment>
+    Merchant-->>Swedbank Pay: POST <approvedLegalAddress> (SNN and postal number)
+    Swedbank Pay-->>Swedbank Pay: Update payment with consumer delivery address
+    Swedbank Pay-->>Merchant: Approved legaladdress information
+    deactivate Swedbank Pay
+
+    Merchant-->>Consumer: Display all details and final price
+    Consumer->>Consumer: Input email and mobile number
+    deactivate Merchant
+    Consumer->>Merchant: Confirm purchase
+    Activate Merchant
+
+    note left of Merchant: Third API request
+    Merchant->>+Swedbank Pay: POST <invoice authorizations> (Transaction Activity=FinancingConsumer)
+    Swedbank Pay-->>-Merchant: Transaction result
+    note left of Merchant: Fourth API request
+    Merchant->>+Swedbank Pay: GET <invoice payments>
     Swedbank Pay-->>-Merchant: payment resource
-    Merchant-->>Consumer: display purchase result
+    Merchant-->>Consumer: Display result
+    deactivate Merchant
+```
+
+## Invoice Flow (FI)
+
+```mermaid
+sequenceDiagram
+    Consumer->>+Merchant: start purchase
+    note left of Merchant: First API request
+    Merchant->>+Swedbank Pay: POST <Invoice Payments> (operation=FinancingConsumer)
+    Swedbank Pay-->>-Merchant: payment resource
+    Merchant-->>-Consumer: Display All detail and final price
+    Consumer-->>Consumer: Input consumer data
+    Consumer->>Merchant: Confirm purchase
+
+    Activate Merchant
+    note left of Merchant: Second API request
+    Merchant->>+Swedbank Pay: POST <Invoice autorizations> (Transaction Activity=FinancingConsumer)
+    Swedbank Pay->>-Merchant: Transaction result
+    note left of Merchant: Third API request
+    Merchant->>+Swedbank Pay: GET <Invoice payments>
+    Swedbank Pay-->>-Merchant: payment resource
+    Merchant-->>Consumer: Display result
     deactivate Merchant
 ```
 
@@ -454,26 +497,18 @@ for the given operation.
 | `create-capture`         | Creates a `capture` transaction in order to charge the reserved funds from the consumer.                                  |
 | `create-cancellation`    | Creates a `cancellation` transaction that cancels a created, but not yet captured payment.                                |
 
-### Options after posting a payment
-
-Head over to [after payment][after-payment]
-to see what you can do when a payment is completed.
-Here you will also find info on `Capture`, `Cancel`, and `Reversal`.
-
-{% include iterator.html prev_href="./" prev_title="Back: Introduction"
-next_href="after-payment" next_title="Next: After Payment" %}
-
-[after-payment]: /payments/invoice/after-payment
+[abort]: /payments/invoice/other-features#abort
+[capture]: /payments/credit-card/after-payment#Capture
+[fi-png]: /assets/img/fi.png
+[financing-invoice-1-png]: /assets/img/checkout/test-purchase.png
+[financing-invoice-2-png]: /assets/screenshots/invoice/redirect-view/iframe-verify-data.png
 [no-png]: /assets/img/no.png
 [se-png]: /assets/img/se.png
-[fi-png]: /assets/img/fi.png
-[callback]: /payments/invoice/other-features#callback
-[cancel]: /payments/invoice/after-payment#cancellations
-[capture]: /payments/invoice/after-payment#captures
-[other-features-financing-consumer]:/payments/invoice/other-features#create-authorization-transaction
-[payout]: /payments/card/other-features/#payout
-[purchase]: /payments/card/other-features/#purchase
-[verify]: /payments/card/other-features/#verify
-[recur]: /payments/card/other-features/#recur
-[user-agent-def]: https://en.wikipedia.org/wiki/User_agent
-[payee-reference]: /payments/invoice/other-features#payee-info
+[callback-api]: /payments/invoice/other-features#callback
+[hosted-view]: /payments/#hosted-view-implementation
+[other-features]: /payments/invoice/other-features
+[other-features-financing-consumer]: /payments/invoice/other-features
+[redirect]: /payments/invoice/redirect
+[verify]: /payments/invoice/other-features/#verify
+[recur]: /payments/invoice/other-features/#recur
+[setup-mail]: mailto:setup.ecom@PayEx.com
