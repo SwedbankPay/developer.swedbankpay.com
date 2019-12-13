@@ -149,7 +149,7 @@ options:
 
 ### FinancingConsumer
 
-A `FinancingConsumer` payment is a straightforward way to an invoice for the
+A `FinancingConsumer` payment is a straightforward way to invoice a
 payer. It is followed up by posting a capture, cancellation or reversal
 transaction.
 
