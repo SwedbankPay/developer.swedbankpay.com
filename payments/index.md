@@ -208,7 +208,7 @@ To integrate the payment page script, you need to prepare you front end:
    – enabling Swish payments through Seamless View.
 
 ```html
-<script id="paymentPageScript" src="https://ecom.stage.payex.com/swish/core/scripts/client/px.swish.client.js?
+<script id="payment-page-script" src="https://ecom.stage.payex.com/swish/core/scripts/client/px.swish.client.js?
                                     token=bcff0db777d5bcf21a210235342921f46da993efa5e91340f713c8cedf4aac38"></script>
 ```
 

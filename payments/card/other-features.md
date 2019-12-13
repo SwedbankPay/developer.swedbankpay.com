@@ -232,7 +232,7 @@ Content-Type: application/json
 |          | └─➔&nbsp;`termsOfServiceUrl`             | `string`      | A URL that contains your terms and conditions for the payment, to be linked on the payment page. Require https.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`payeeInfo`                      | `string`      | The `payeeInfo` object, containing information about the payee.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`payeeId`                       | `string`      | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-|  ✔︎︎︎︎︎  | └─➔&nbsp;`payeeReference`                | `string(30*)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.                                                                                                                                                                                                                                                                                                                                                                                                                          |
+|  ✔︎︎︎︎︎  | └─➔&nbsp;`payeeReference`                | `string(50*)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.                                                                                                                                                                                                                                                                                                                                                                                                                          |
 |          | └─➔&nbsp;`payeeName`                     | `string`      | The payee name (like merchant name) that will be displayed to consumer when redirected to Swedbank Pay.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 |          | └─➔&nbsp;`productCategory`               | `string`      | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                                                                                                                                                                                                                                                                                                                                    |
 |          | └─➔&nbsp;`orderReference`                | `String(50)`  | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
@@ -725,7 +725,7 @@ sequenceDiagram
   note left of Payer: redirect back to merchant<br>(If Redirect scenario)
 
   Payer->>+Merchant: access merchant page
-  Merchant->>+SwedbankPay: GET /psp/creditcard/payments/<paymentorder.id>
+  Merchant->>+SwedbankPay: GET <payment.id>
   deactivate Merchant
   note left of Merchant: Second API request
   SwedbankPay-->>+Merchant: rel: redirect-authorization
@@ -787,11 +787,12 @@ transaction made towards a payment, as previously described.
 
 {% include payment-link.md %}
 
-{% include subsite.md %}
+{% include subsite.md payment-instrument="card" %}
 
 ## PayeeReference
 
-{% include payeeinfo.md %}
+{% include payeeinfo.md
+payment-instrument="creditcard" %}
 
 ## Prices
 
@@ -856,11 +857,11 @@ payment"  %}
 
 [purchase]: #purchase
 [user-agent-definition]: https://en.wikipedia.org/wiki/User_agent
-[cancel]: /payments/card/after-payment/#cancellations
-[capture]: /payments/card/after-payment/#Capture
-[callback]: /payments/card/other-features/#callback
+[cancel]: /payments/card/after-payment#cancellations
+[capture]: /payments/card/after-payment#Capture
+[callback]: /payments/card/other-features#callback
 [mcc]: https://en.wikipedia.org/wiki/Merchant_category_code
-[price-resource]: /payments/card/other-features/#prices
+[price-resource]: /payments/card/other-features#prices
 [redirect]: /payments/card/redirect
 [hosted-view]: /payments/card/seamless-view
 [one-click-payments]: #one-click-payments

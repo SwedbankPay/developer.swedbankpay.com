@@ -1,3 +1,5 @@
+{% assign instrument = include.payment-instrument | default: "paymentorder" %}
+
 The `payeeinfo` resource contains information about the payee (i.e. a merchant,
 a corporation etc) related to a specific payment.
 
@@ -5,7 +7,7 @@ a corporation etc) related to a specific payment.
 **Request**
 
 ```http
-GET /psp/paymentorder/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeInfo HTTP/1.1
+GET /psp/{{ instrument }}/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeInfo HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -19,9 +21,9 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/paymentorder/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "payment": "/psp/{{ instrument }}/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
     "payeeInfo": {
-        "id": "/psp/paymentorder/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeInfo",
+        "id": "/psp/{{ instrument }}/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeInfo",
         "payeeId": "12345678-1234-1234-1234-123456789012",
         "payeeReference": "EN1234",
         "payeeName": "TestMerchant1",

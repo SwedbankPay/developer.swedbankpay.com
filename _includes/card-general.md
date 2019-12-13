@@ -13,4 +13,4 @@ the link in the sequence diagram below." %}
 `callbackUrl` in the `POST` request. If `callbackUrl` is set Swedbank Pay will
 send a `POST` request to this URL when the consumer has fulfilled the payment.
 [See the Callback API description for more
-information](/payments/card/other-features/#callback)." %}
+information](/payments/card/other-features#callback)." %}

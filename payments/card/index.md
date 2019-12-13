@@ -125,7 +125,7 @@ sequenceDiagram
     note left of Payer: redirect to SwedbankPay<br>(If Redirect scenario)
     Payer->>-Merchant: access merchant page
     activate Merchant
-    Merchant->>-SwedbankPay: GET /psp/creditcard/payments/<paymentorder.id>
+    Merchant->>-SwedbankPay: GET <payment.id>
     activate SwedbankPay
     note left of Merchant: Second API request
     SwedbankPay-->>-Merchant: rel: redirect-authorization
@@ -172,7 +172,7 @@ sequenceDiagram
 
     Payer->>-Merchant: access merchant page
     activate Merchant
-    Merchant->>-SwedbankPay: GET /psp/creditcard/payments/<paymentorder.id>
+    Merchant->>-SwedbankPay: GET <payment.id>
     activate SwedbankPay
     note left of Merchant: Second API request
     SwedbankPay-->>-Merchant: rel: redirect-authorization
@@ -188,12 +188,12 @@ sequenceDiagram
 
 {% include iterator.html  next_href="redirect" next_title="Next: Redirect" %}
 
-[card-payment]: /assets/img/checkout/test-purchase.png
-[cancel]: /payments/card/after-payment/#cancellations
-[capture]: /payments/card/after-payment/#capture
+[card-payment]: /assets/img/payments/card-payment.png
+[cancel]: /payments/card/after-payment#cancellations
+[capture]: /payments/card/after-payment#capture
 [redirect]: /payments/card/redirect
-[create-payment]: /payments/card/other-features/#create-payment
-[purchase]: /payments/card/other-features/#purchase
-[recur]: /payments/card/other-features/#recur
-[payout]: /payments/card/other-features/#payout
-[verify]: /payments/card/other-features/#verify
+[create-payment]: /payments/card/other-features#create-payment
+[purchase]: /payments/card/other-features#purchase
+[recur]: /payments/card/other-features#recur
+[payout]: /payments/card/other-features#payout
+[verify]: /payments/card/other-features#verify

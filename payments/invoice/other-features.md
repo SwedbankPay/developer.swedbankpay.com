@@ -587,14 +587,5 @@ next_href="after-payment" next_title="Next: After Payment" %}
 [no-png]: /assets/img/no.png
 [se-png]: /assets/img/se.png
 [callback-api]: #callback
-[cancel]: /payments/invoice/after-payment#cancellations
-[capture]: /payments/invoice/after-payment#Capture
-[card-payment]: /assets/img/payments/card-payment.png
-[FinancingConsumer]: #financing-consumer
-[hosted-view]: /payments/invoice/seamless-view
-[invoice-flow]: /payments/invoice#invoice-flow
-[one-click-payments]: #one-click-payments
-[recurrence]: #recur
-[redirect]: /payments/invoice/redirect
-[transaction-resource]: #transactions
-[verify]: #verify
+[invoice-flow]: /payments/invoice/index#invoice-flow
+[payment-order]: #payment-orders

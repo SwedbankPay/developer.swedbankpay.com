@@ -37,7 +37,7 @@ sidebar:
 
 {% include operations-reference.md %}
 
-{% include subsite.md %}
+{% include subsite.md payment-instrument="vipps" %}
 
 ### Prices
 

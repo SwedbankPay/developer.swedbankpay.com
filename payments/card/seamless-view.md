@@ -240,7 +240,7 @@ Content-Type: application/json
 |          | └─➔&nbsp;`termsOfServiceUrl`          | `string`      | A URL that contains your terms and conditions for the payment, to be linked on the payment page. Require https.                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`payeeInfo`                    | `object`      | The `payeeInfo` contains information about the payee.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`payeeId`                    | `string`      | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-|  ✔︎︎︎︎︎  | └─➔&nbsp;`payeeReference`             | `string(30*)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.                                                                                                                                                                                                                                                                                                                                                                                  |
+|  ✔︎︎︎︎︎  | └─➔&nbsp;`payeeReference`             | `string(50*)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.                                                                                                                                                                                                                                                                                                                                                                                  |
 |          | └─➔&nbsp;`payeeName`                  | `string`      | The payee name (like merchant name) that will be displayed to consumer when redirected to Swedbank Pay.                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 |          | └─➔&nbsp;`productCategory`            | `string`      | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                                                                                                                                                                                                                                                                                            |
 |          | └─➔&nbsp;`orderReference`             | `String(50)`  | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
@@ -339,12 +339,12 @@ You need to embed the script source on your site to create a hosted-view in an
 hosted environment. A simplified integration has these following steps:
 
 1. Create a container that will contain the Seamless View iframe: `<div
-   id="SwedbankPay-seamless-view-page">`.
+   id="swedbank-pay-seamless-view-page">`.
 2. Create a `<script>` source within the container. Embed the `href` value
    obtained in the `POST` request in the `<script>` element. Example:
 
 ```html
-    <script id="paymentPageScript" src="https://ecom.dev.payex.com/creditcard/core/ scripts/client/px.creditcard.client.js"></script>
+    <script id="payment-page-script" src="https://ecom.dev.payex.com/creditcard/core/ scripts/client/px.creditcard.client.js"></script>
 ```
 
 The previous two steps gives this HTML:
@@ -361,8 +361,8 @@ The previous two steps gives this HTML:
         <script src=<YourJavaScriptFileHere>></script>
     </head>
     <body>
-        <div id="SweddbankPay-seamless-view-page">
-          <script id="paymentPageScript" src="https://ecom.dev.payex.com/creditcard/core/scripts/client/px.creditcard.client.js"></script>
+        <div id="swedbank-pay-seamless-view-page">
+          <script id="payment-page-script" src="https://ecom.dev.payex.com/creditcard/core/scripts/client/px.creditcard.client.js"></script>
         </div>
     </body>
 </html>
@@ -376,7 +376,11 @@ embedded on your website.
 
 ```js
 <script language="javascript">
-  payex.hostedView.creditCard().open();
+    payex.hostedView.creditCard({
+        // The container specifies which id the script will look for to host the
+        // iframe component.
+        container: "swedbank-pay-seamless-view-page"
+    }).open();
 </script>
 ```
 
@@ -384,20 +388,20 @@ embedded on your website.
 next_href="after-payment" next_title="Next: After Payment" %}
 
 [payment-page_hosted-view.png]: /assets/screenshots/card/hosted-view/view/macos.png
-[abort]: /payments/card/other-features/#abort
+[abort]: /payments/card/other-features#abort
 [after-payment]: /payments/card/after-payment
-[callback]: /payments/card/other-features/#callback
-[cancel]: /payments/card/after-payment/#cancellations
-[capture]: /payments/card/after-payment/#Capture
-[create-payment]: /payments/card/other-features/#create-payment
-[expansion]: /payments/card/other-features/#expansion
-[payee-reference]: /payments/card/other-features/#payeereference
-[payout]: /payments/card/other-features/#payout
-[purchase]: /payments/card/other-features/#purchase
-[price-resource]: /payments/card/other-features/#prices
-[recur]: /payments/card/other-features/#recur
-[reversal]: /payments/card/after-payment/#reversals
-[verify]: /payments/card/other-features/#verify
-[create-payment]: /payments/card/other-features/#create-payment
+[callback]: /payments/card/other-features#callback
+[cancel]: /payments/card/after-payment#cancellations
+[capture]: /payments/card/after-payment#Capture
+[create-payment]: /payments/card/other-features#create-payment
+[expansion]: /payments/card/other-features#expansion
+[payee-reference]: /payments/card/other-features#payeereference
+[payout]: /payments/card/other-features#payout
+[purchase]: /payments/card/other-features#purchase
+[price-resource]: /payments/card/other-features#prices
+[recur]: /payments/card/other-features#recur
+[reversal]: /payments/card/after-payment#reversals
+[verify]: /payments/card/other-features#verify
+[create-payment]: /payments/card/other-features#create-payment
 [user-agent-definition]: https://en.wikipedia.org/wiki/User_agent
 [hosted-view-card]: /assets/img/payments/hosted-view-card.png

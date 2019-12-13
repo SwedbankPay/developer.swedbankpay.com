@@ -107,14 +107,8 @@ sequenceDiagram
 [after-payment]: /payments/invoice/after-payment
 [no-png]: /assets/img/no.png
 [se-png]: /assets/img/se.png
-[fi-png]: /assets/img/fi.png
-[callback]: /payments/invoice/other-features#callback
-[cancel]: /payments/invoice/after-payment#cancellations
-[capture]: /payments/invoice/after-payment#captures
-[other-features-financing-consumer]:/payments/invoice/other-features#create-authorization-transaction
-[payout]: /payments/card/other-features/#payout
-[purchase]: /payments/card/other-features/#purchase
-[verify]: /payments/card/other-features/#verify
-[recur]: /payments/card/other-features/#recur
-[user-agent-def]: https://en.wikipedia.org/wiki/User_agent
-[payee-reference]: /payments/invoice/other-features#payee-info
+[callback-api]: /payments/invoice/other-features#callback
+[hosted-view]: /payments#hosted-view-implementation
+[optional-features]: /payments/invoice/optional-features
+[redirect]: /payments/invoice/redirect
+[setup-mail]: mailto:setup.ecom@PayEx.com
