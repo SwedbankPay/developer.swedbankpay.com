@@ -346,7 +346,7 @@ Content-Type: application/json
 
 You can create a reversal transaction against a completed sales
 transaction by adding that transaction's `payeeReference` in the request body.
-A callback request will follow from Swedbank Pay.
+A callback request from Swedbank Pay will follow.
 
 {:.code-header}
 **Request**

@@ -21,18 +21,18 @@ sidebar:
 ## Options after posting a payment
 
 When you detect that the payer has reached your `completeUrl`, you need to do a
-GET request on the payment resource, containing the paymentID generated in the
-first step, to receive the state of the transaction. You will also be able to
-see the available operations after posting a payment.
+GET request on the payment resource, which contains the paymentID generated in
+the first step, to receive the state of the transaction. You will also be able
+to see the available operations after posting a payment.
 
-{% include payment-resource.md payment-instrument="invoice"%}
+{% include payment-resource.md payment-instrument="invoice" %}
 
 * **Abort:** It is possible to abort the process if the payment has no
   successful transactions. [See the PATCH payment
   description][payment-description].
-* An invoice authorization must be followed by a `Capture` or
-  `Cancel` request.
-* For reversals, you will need to implement the `Reversal` request.
+* An invoice authorization must be followed by a `capture` or
+  `cancel` request.
+* For reversals, you will need to implement the `reversal` request.
 * **If CallbackURL is set:** Whenever changes to the payment occur a [Callback
   request][callback-request] will be posted to the callbackUrl, which was
   generated when the payment was created.
@@ -140,10 +140,13 @@ Content-Type: application/json
 {:.table .table-striped}
 | Property                    | Type | Description                                                                                           |
 | :-------------------------- | :-------- | :---------------------------------------------------------------------------------------------------- |
-| payment                     | `string`  | The relative URI of the payment this capture transaction resource belongs to.                         |
-| capture.itemDescriptions.id | `string`  | The relative URI of the item descriptions resource associated with this capture transaction resource. |
-| capture.invoiceCopy         | `string`  | The relative URI of the downloadable invoice copy in PDF format.                                      |
-| capture.transaction         | `object`  | The object representation of the [transaction][technical-reference-transaction].                      |
+| `payment`                     | `string`  | The relative URI of the payment this capture transaction resource belongs to.                         |
+| `capture.itemDescriptions.id` | `string`  | The relative URI of the item descriptions resource associated with this capture transaction resource. |
+| `capture.invoiceCopy`         | `string`  | The relative URI of the downloadable invoice copy in PDF format.                                      |
+| `capture.transaction`         | `object`  | The object representation of the [transaction][technical-reference-transaction].                      |
+
+#### Inspecting the Captures
+
 The `captures` resource lists the capture transactions performed on a
 specific invoice payment.
 
@@ -192,10 +195,10 @@ Content-Type: application/json
 
 #### Capture Sequence
 
-`Capture` can only be done on a successfully authorized transaction. It is
-possible to do a part-capture where you only capture a part of the authorization
-amount. You can do more captures on the same payment later, up to the total
-authorization amount.
+A `capture` can only be performed on a successfully authorized transaction. It is
+possible to do a partial `capture` where you only capture a part of the
+authorized amount. You can do other captures on the same payment later, up to
+the total authorized amount.
 
 ```mermaid
 sequenceDiagram
@@ -210,7 +213,75 @@ deactivate PayEx
 
 ### Cancellations
 
-The `cancellations` resource lists the cancellation transactions made on a
+#### Create cancellation transaction
+
+Perform the `create-cancellation` operation to cancel a previously authorized
+or partially captured invoice payment.
+
+{:.code-header}
+***Request***
+
+```http
+POST /psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/cancellations HTTP/1.1
+Host: api.externalintegration.payex.com
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+
+{
+    "transaction": {
+        "activity": "FinancingConsumer",
+        "payeeReference": "customer order reference-unique",
+        "description": "description for transaction"
+    }
+}
+```
+
+{:.table .table-striped}
+| Required | Parameter name               | Datatype     | Value (with description)                                                                                                                                                                                                    |
+| :------: | :--------------------------- | :----------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|    ✔︎     | `transaction.activity`       | `string`     | `FinancingConsumer`.                                                                                                                                                                                                        |
+|    ✔︎     | `transaction.payeeReference` | `string`     | A **unique **reference max 50 characters set by the merchant system) - this must be unique for each operation! The [payeeReference][technical-reference-payeeReference] must follow the regex pattern `[\w]* (a-zA-Z0-9_)`. |
+|    ✔︎     | `transaction.description`    | `string(50)` | A textual description for the cancellation.                                                                                                                                                                                 |
+
+The `cancel` resource will be returned, containing information about the
+newly created `cancel` transaction.
+
+{:.code-header}
+***Response***
+
+```http
+{
+    "payment": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "cancellation": {
+        "transaction": {
+            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
+            "created": "2016-09-14T01:01:01.01Z",
+            "updated": "2016-09-14T01:01:01.03Z",
+            "type": "Cancellation",
+            "state": "Completed",
+            "number": 1234567890,
+            "amount": 1000,
+            "vatAmount": 250,
+            "description": "Test transaction",
+            "payeeReference": "AH123456",
+            "failedReason": "",
+            "isOperational": false,
+            "operations": []
+        }
+    }
+}
+```
+
+{:.table .table-striped}
+| Property               | Type | Description                                                                              |
+| :--------------------- | :-------- | :--------------------------------------------------------------------------------------- |
+| `payment`              | `string`  | The relative URI of the payment this capture transaction belongs to.                     |
+| `reversal.id`          | `string`  | The relative URI of the created capture transaction.                                     |
+| `reversal.transaction` | `object`  | The object representation of the generic [transaction][technical-reference-transaction]. |
+
+### Inspecting the Cancellation
+
+The `cancellations` resource lists the cancellation transaction made on a
 specific payment.
 
 {:.code-header}
@@ -261,78 +332,11 @@ Content-Type: application/json
 | `cancellations.cancellationList`   | `array`   | The array of the cancellation transaction objects.                                  |
 | `cancellations.cancellationList[]` | `object`  | The object representation of the cancellation transaction resource described below. |
 
-#### Create cancellation transaction
-
-Perform the `create-cancellation` operation to cancel a previously created
-(and not yet captured) invoice payment.
-
-{:.code-header}
-***Request***
-
-```http
-POST /psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/cancellations HTTP/1.1
-Host: api.externalintegration.payex.com
-Authorization: Bearer <AccessToken>
-Content-Type: application/json
-
-{
-    "transaction": {
-        "activity": "FinancingConsumer",
-        "payeeReference": "customer order reference-unique",
-        "description": "description for transaction"
-    }
-}
-```
-
-{:.table .table-striped}
-| Required | Parameter name               | Datatype     | Value (with description)                                                                                                                                                                                                    |
-| :------: | :--------------------------- | :----------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|    ✔︎     | `transaction.activity`       | `string`     | `FinancingConsumer`.                                                                                                                                                                                                        |
-|    ✔︎     | `transaction.payeeReference` | `string`     | A **unique **reference max 50 characters set by the merchant system) - this must be unique for each operation! The [payeeReference][technical-reference-payeeReference] must follow the regex pattern `[\w]* (a-zA-Z0-9_)`. |
-|    ✔︎     | `transaction.description`    | `string(50)` | A textual description for the cancellation.                                                                                                                                                                                 |
-
-The `cancel` resource will be returned, containing information about the
-newly created cancellation transaction.
-
-{:.code-header}
-***Response***
-
-```http
-{
-    "payment": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
-    "cancellation": {
-        "transaction": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
-            "created": "2016-09-14T01:01:01.01Z",
-            "updated": "2016-09-14T01:01:01.03Z",
-            "type": "Cancellation",
-            "state": "Completed",
-            "number": 1234567890,
-            "amount": 1000,
-            "vatAmount": 250,
-            "description": "Test transaction",
-            "payeeReference": "AH123456",
-            "failedReason": "",
-            "isOperational": false,
-            "operations": []
-        }
-    }
-}
-```
-
-{:.table .table-striped}
-| Property               | Type | Description                                                                              |
-| :--------------------- | :-------- | :--------------------------------------------------------------------------------------- |
-| `payment`              | `string`  | The relative URI of the payment this capture transaction belongs to.                     |
-| `reversal.id`          | `string`  | The relative URI of the created capture transaction.                                     |
-| `reversal.transaction` | `object`  | The object representation of the generic [transaction][technical-reference-transaction]. |
-
 #### Cancel Sequence
 
-`Cancel` can only be done on a successfully authorized transaction,
-not yet captured.
-If you do cancel after doing a part-capture you will cancel the
-not yet captured amount only.
+A `cancel` can only be performed on a successfully authorized transaction which
+has not been captured yet. If you perform a cancellation after doing a partial
+capture, you will only cancel the remaining authorized amount.
 
 ```mermaid
 sequenceDiagram
@@ -346,58 +350,12 @@ deactivate PayEx
 
 ### Reversals
 
-The `reversals` resource will list the reversal transactions
-(one or more) on a specific payment.
-
-{:.code-header}
-***Request***
-
-```http
-GET /psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals HTTP/1.1
-Host: api.externalintegration.payex.com
-Authorization: Bearer <AccessToken>
-Content-Type: application/json
-```
-
-{:.code-header}
-***Response***
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "payment": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
-    "reversal": [{
-        "transaction": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
-            "created": "2016-09-14T01:01:01.01Z",
-            "updated": "2016-09-14T01:01:01.03Z",
-            "type": "Reversal",
-            "state": "Completed",
-            "number": 1234567890,
-            "amount": 1000,
-            "vatAmount": 250,
-            "description": "Test transaction",
-            "payeeReference": "AH123456",
-            "failedReason": "",
-            "isOperational": false,
-            "operations": []
-        }
-    }]
-}
-```
-
-{:.table .table-striped}
-| Property         | Type     | Description                                                                                          |
-| :--------------- | :------- | :--------------------------------------------------------------------------------------------------- |
-| `payment`        | `string` | The relative URI of the payment that the reversal transactions belong to.                            |
-| `reversalList`   | `array`  | The array of reversal transaction objects.                                                           |
-| `reversalList[]` | `object` | The reversal transaction object representation of the reversal transaction resource described below. |
-
 #### Create reversal transaction
 
-The `create-reversal` operation will reverse a previously captured payment. To reverse a payment, perform the `create-reversal` operation. The HTTP body of the request should look like the following.
+The `create-reversal` operation will reverse a previously captured payment and
+refund the amount to the consumer. To reverse a payment, perform the
+`create-reversal` operation. The HTTP body of the request should look as
+follows:
 
 {:.code-header}
 **Request**
@@ -469,6 +427,57 @@ Content-Type: application/json
 | `reversal.id`          | `string`  | The relative URI of the created capture transaction.                                     |
 | `reversal.transaction` | `object`  | The object representation of the generic [transaction][technical-reference-transaction]. |
 
+### Inspecting the Reversal
+
+The `reversals` resource will list the reversal transactions
+(one or more) on a specific payment.
+
+{:.code-header}
+***Request***
+
+```http
+GET /psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals HTTP/1.1
+Host: api.externalintegration.payex.com
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+```
+
+{:.code-header}
+***Response***
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "payment": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "reversal": [{
+        "transaction": {
+            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
+            "created": "2016-09-14T01:01:01.01Z",
+            "updated": "2016-09-14T01:01:01.03Z",
+            "type": "Reversal",
+            "state": "Completed",
+            "number": 1234567890,
+            "amount": 1000,
+            "vatAmount": 250,
+            "description": "Test transaction",
+            "payeeReference": "AH123456",
+            "failedReason": "",
+            "isOperational": false,
+            "operations": []
+        }
+    }]
+}
+```
+
+{:.table .table-striped}
+| Property         | Type     | Description                                                                                          |
+| :--------------- | :------- | :--------------------------------------------------------------------------------------------------- |
+| `payment`        | `string` | The relative URI of the payment that the reversal transactions belong to.                            |
+| `reversalList`   | `array`  | The array of reversal transaction objects.                                                           |
+| `reversalList[]` | `object` | The reversal transaction object representation of the reversal transaction resource described below. |
+
 #### Reversal Sequence
 
 `Reversal` can only be done on an captured transaction where there are
@@ -492,7 +501,7 @@ sequenceDiagram
 
 ### Payee reference
 
-{% include payee-info.md %}
+{% include payeeinfo.md %}
 
 {% include iterator.html prev_href="./" prev_title="Back: Introduction"
 next_href="other-features" next_title="Next: Other Features" %}

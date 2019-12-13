@@ -229,4 +229,5 @@ sequenceDiagram
 [technical-reference-callback]: #callback
 [technical-reference-callbackurl]: #callback
 [test_purchase]: /assets/img/checkout/test-purchase.png
+[card-payment]: /assets/img/payments/card-payment.png
 [vipps]: /payments/vipps
