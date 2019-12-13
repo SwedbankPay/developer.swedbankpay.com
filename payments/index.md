@@ -22,12 +22,7 @@ sidebar:
       title: Direct Debit Payments
 ---
 
-{% include alert.html type="warning"
-                      icon="warning"
-                      header="Site under development"
-                      body="This section of the Developer Portal is under construction and
-                      should not be used to integrate against Swedbank Pay's
-                      APIs yet." %}
+{% include alert-development-section.md %}
 
 {% include jumbotron.html body="Pick and choose between the payment instruments best
    suited for your business.

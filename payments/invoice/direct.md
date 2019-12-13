@@ -18,6 +18,8 @@ sidebar:
       title: Other Features
 ---
 
+{% include alert-review-section.md %}
+
 {% include jumbotron.html body="**Direct**
 Direct is a payment service where Swedbank Pay helps improve cashflow by
 purchasing merchant invoices. Swedbank Pay receives invoice data, which is used

@@ -16,12 +16,7 @@ sidebar:
       title: Licence
 ---
 
-{% include alert.html type="warning"
-                      icon="warning"
-                      header="Site under development"
-                      body="This section of the Developer Portal is under construction and
-                      should not be used to integrate against Swedbank Pay's
-                      APIs yet." %}
+{% include alert-review-section.md %}
 
 To make it clear exactly how outside contributors should provide their
 contributions to the project, a CONTRIBUTING.md file should be created at the

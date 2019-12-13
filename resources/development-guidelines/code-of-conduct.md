@@ -16,12 +16,7 @@ sidebar:
       title: Licence
 ---
 
-{% include alert.html type="warning"
-                      icon="warning"
-                      header="Site under development"
-                      body="This section of the Developer Portal is under construction and
-                      should not be used to integrate against Swedbank Pay's
-                      APIs yet." %}
+{% include alert-review-section.md %}
 
 It is important that the projects governed by Swedbank Pay foster a
 collaborative, open, inclusive, positive and tolerant community. To underscore
