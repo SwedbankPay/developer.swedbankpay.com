@@ -175,6 +175,20 @@ Content-Type: application/json
 
 {% include prices.md %}
 
+### Payee reference
+
+{% include payee-info.md %}
+
+{% include expand-parameter.md %}
+
+#### Transaction
+
+{% include transactions-reference.md %}
+
+{% include callback-reference.md %}
+
+{% include payment-link.md hide-3d-secure=true %}
+
 ### Problem messages
 
 When performing unsuccessful operations, the eCommerce API will respond with a
@@ -215,15 +229,3 @@ All Swish error types will have the following URI in front of type:
 | *swishdeclined*      | 403    | TM01                 | Payment timed out (User din't confirm payment in app)                                           |
 | *swishdeclined*      | 403    | DS24                 | Payment timed out (Bank didn't respond).                                                        |
 | *systemerror*        | 500    | Any other error code |
-
-### Payee reference
-
-{% include payee-info.md %}
-
-{% include expand-parameter.md %}
-
-#### Transaction
-
-{% include transaction.md %}
-
-{% include callback-reference.md %}
