@@ -35,9 +35,6 @@ payment pages seamlessly integrated in an `iframe` on your website. The costumer
 does not need to leave your webpage, since we are handling the payment in the
 `iframe` on your page.
 
-**TODO**
-Insert screenshot of an iframe with the invoice option.
-
 ## Purchase Flow
 
 The sequence diagram below shows a high level description of the
