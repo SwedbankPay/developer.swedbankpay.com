@@ -12,12 +12,7 @@ sidebar:
       title: Other Features
 ---
 
-{% include alert.html type="warning"
-                      icon="warning"
-                      header="Site under development"
-                      body="This section of the Developer Portal is under construction and
-                      should not be used to integrate against Swedbank Pay's
-                      APIs yet." %}
+{% include alert_development_section.md %}
 
 ## Create capture transaction
 
@@ -44,7 +39,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property               | Type   | Description                                                                                                               |
+| Required | Property               | Type        | Description                                                                                                               |
 | :------: | :--------------------- | :---------- | :------------------------------------------------------------------------------------------------------------------------ |
 |    ✔︎    | capture.amount         | integer     | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 NOK`, `5000` = `50.00 SEK`. |
 |    ✔︎    | capture.vatAmount      | integer     | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 NOK`, `5000` = `50.00 SEK`. |
@@ -112,11 +107,11 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property              | Type | Description                                                                           |
-| :-------------------- | :-------- | :------------------------------------------------------------------------------------ |
-| `payment`             | `string`  | The relative URI of the payment this capture transaction belongs to.                  |
-| `capture.id`          | `string`  | The relative URI of the created capture transaction.                                  |
-| `capture.transaction` | `object`  | The object representation of the generic [transaction resource][transaction-resource] |
+| Property              | Type     | Description                                                                           |
+| :-------------------- | :------- | :------------------------------------------------------------------------------------ |
+| `payment`             | `string` | The relative URI of the payment this capture transaction belongs to.                  |
+| `capture.id`          | `string` | The relative URI of the created capture transaction.                                  |
+| `capture.transaction` | `object` | The object representation of the generic [transaction resource][transaction-resource] |
 
 {% include iterator.html
         prev_href="index"

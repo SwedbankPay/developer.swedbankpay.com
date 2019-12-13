@@ -16,6 +16,8 @@ sidebar:
       title: Other Features
 ---
 
+{% include alert_development_section.md %}
+
 {% include jumbotron.html body="Vipps is a two-phase payment instrument supported
 by the major norwegian banks. In the redirect to Swedbank Pay Payments
 scenario, Swedbank Pay receives a mobile number (MSISDN) from the payer through
