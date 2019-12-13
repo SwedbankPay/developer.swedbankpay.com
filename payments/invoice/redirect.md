@@ -231,7 +231,7 @@ Content-Type: application/json
         "remainingReversalAmount": 500,
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0...",
-        "language": "se-SE",
+        "language": "sv-SE",
         "prices": {
             "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/prices"
         },
@@ -328,7 +328,7 @@ Content-Type: application/json
         "payerReference": "AB1234",
         "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
         "userAgent": "Mozilla/5.0...",
-        "language": "se-SE",
+        "language": "sv-SE",
         "prices": {
             "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/prices"
         },
