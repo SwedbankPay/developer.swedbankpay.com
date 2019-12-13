@@ -231,3 +231,6 @@ All Swish error types will have the following URI in front of type:
 | *swishdeclined*      | 403    | TM01                 | Payment timed out (User din't confirm payment in app)                                           |
 | *swishdeclined*      | 403    | DS24                 | Payment timed out (Bank didn't respond).                                                        |
 | *systemerror*        | 500    | Any other error code |
+
+[payee-reference]: #payeeReference
+[transaction-resource]: #Transactions
