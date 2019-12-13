@@ -20,12 +20,7 @@ sidebar:
 TODO: This page needs serious clean-up.
 {% endcomment %}
 
-{% include alert.html type="warning"
-                      icon="warning"
-                      header="Site under development"
-                      body="This section of the Developer Portal is
-                      under construction and should not be used to integrate
-                      against Swedbank Pay's APIs yet." %}
+{% include alert_review_section.md %}
 
 {% include jumbotron.html body="**Card Payments** is the most popular, versatile
 and global way to initate a transaction with a customer. Choose between our
