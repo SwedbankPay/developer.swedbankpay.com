@@ -218,6 +218,7 @@ sequenceDiagram
   URL when the consumer as fulfilled the payment.
   [See the Callback API description here][technical-reference-callback].
 
+[card-payment]: /assets/img/payments/card-payment.png
 [abort]: #abort
 [credit-card]: /payments/card
 [mobile-pay]: /payments/mobile-pay
