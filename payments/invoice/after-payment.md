@@ -28,7 +28,7 @@ to see the available operations after posting a payment.
 {% include payment-resource.md payment-instrument="invoice" %}
 
 * **Abort:** It is possible to abort the process if the payment has no
-  successful transactions. [See the PATCH payment
+  successful transactions. [See the `abort`
   description][payment-description].
 * An invoice authorization must be followed by a `capture` or
   `cancel` request.
@@ -36,6 +36,8 @@ to see the available operations after posting a payment.
 * **If CallbackURL is set:** Whenever changes to the payment occur a [Callback
   request][callback-request] will be posted to the callbackUrl, which was
   generated when the payment was created.
+
+{% include abort-reference.md instrument="invoice" %}
 
 ### Captures
 
@@ -130,7 +132,7 @@ Content-Type: application/json
             "description": "Test transaction",
             "payeeReference": "AH123456",
             "failedReason": "",
-            "isOperational": "TRUE|FALSE",
+            "isOperational": false,
             "operations": []
         }
     }
@@ -179,14 +181,14 @@ Content-Type: application/json
             "created": "2016-09-14T01:01:01.01Z",
             "updated": "2016-09-14T01:01:01.03Z",
             "type": "Capture",
-            "state": "Initialized|Completed|Failed",
+            "state": "Failed",
             "number": 1234567890,
             "amount": 1000,
             "vatAmount": 250,
             "description": "Test transaction",
             "payeeReference": "AH123456",
             "failedReason": "",
-            "isOperational": "TRUE|FALSE",
+            "isOperational": false,
             "operations": []
         }
     }]
@@ -507,7 +509,7 @@ sequenceDiagram
 next_href="other-features" next_title="Next: Other Features" %}
 
 ----------------------------------------------------------
-[payment-description]: /payments/card/after-payment
+[payment-description]: /payments/invoice/after-payment#abort
 [callback-request]: /payments/invoice/other-features#callback
 [invoice-captures]: #captures
 [invoice-cancellations]: #cancellations
