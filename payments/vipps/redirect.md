@@ -278,14 +278,10 @@ transactions made on a specific payment.
 **Request**
 
 ```http
-
-HTTP/1.1 200 OK
+GET /psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/authorizations/5619328800 HTTP/1.1
 Content-Type: application/json
-GET /psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/authorizations/<transactionId> HTTP/1.1
 Host: api.payex.com
 Authorization: Bearer <MerchantToken>
-
-
 ```
 
 {:.code-header}
