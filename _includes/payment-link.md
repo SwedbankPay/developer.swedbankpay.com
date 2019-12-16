@@ -213,8 +213,8 @@ sequenceDiagram
   [See the Abort description here][abort].
 * For reversals, you will need to implement the `Reversal` request.
 * When implementing the Payment Link scenario, it is optional to set a
-  CallbackURL in the `POST` request.
-  If CallbackURL is set Swedbank Pay will send a postback request to this
+  `callbackURL` in the `POST` request.
+  If `callbackURL` is set Swedbank Pay will send a postback request to this
   URL when the consumer as fulfilled the payment.
   [See the Callback API description here][technical-reference-callback].
 
