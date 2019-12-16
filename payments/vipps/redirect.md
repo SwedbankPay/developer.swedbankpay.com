@@ -176,6 +176,7 @@ Content-Type: application/json
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
+
 {
     "payment": {
         "id": "/psp/vipps/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
@@ -273,11 +274,19 @@ Content-Type: application/json
 The `authorizations` resource contains information about the authorization
 transactions made on a specific payment.
 
-Request
-GET /psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/authorizations HTTP/1.1
+{:.code-header}
+**Request**
+
+```http
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+GET /psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/authorizations/<transactionId> HTTP/1.1
 Host: api.payex.com
 Authorization: Bearer <MerchantToken>
-Content-Type: application/json
+
+
+```
 
 {:.code-header}
 **Response**
@@ -289,32 +298,36 @@ Content-Type: application/json
 
 {
     "payment": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d",
-    "authorizations": {
-        "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/authorizations",
-        "authorizationList": [
-            {
-                "vippsTransactionId": "5619328800",
-                "msisdn": "+47xxxxxxxx",
-                "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/authorizations/3bfb8c66-33be-4871-465b-08d612f01a53",
-                "transaction": {
-                    "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/transactions/3bfb8c66-33be-4871-465b-08d612f01a53",
-                    "created": "2018-09-05T15:01:39.8658084Z",
-                    "updated": "2018-09-05T15:01:42.2119509Z",
-                    "type": "Authorization",
-                    "state": "Completed",
-                    "number": 72100003090,
-                    "amount": 1500,
-                    "vatAmount": 0,
-                    "description": "Vipps Test",
-                    "payeeReference": "Postman1536157124",
-                    "isOperational": false,
-                    "operations": []
-                }
-            }
-        ]
+    "authorization": {
+        "vippsTransactionId": "5619328800",
+        "msisdn": "+47xxxxxxxx",
+        "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/authorizations/3bfb8c66-33be-4871-465b-08d612f01a53",
+        "transaction": {
+            "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/transactions/3bfb8c66-33be-4871-465b-08d612f01a53",
+            "created": "2018-09-05T15:01:39.8658084Z",
+            "updated": "2018-09-05T15:01:42.2119509Z",
+            "type": "Authorization",
+            "state": "Completed",
+            "number": 72100003090,
+            "amount": 1500,
+            "vatAmount": 0,
+            "description": "Vipps Test",
+            "payeeReference": "Postman1536157124",
+            "isOperational": false,
+            "operations": []
+        }
     }
 }
 ```
+
+{:.table .table-striped}
+| Property                              | Type          | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| :------: | :------------------------------------ | :------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+|  ✔︎︎︎︎︎  | `payment`                             | `string`      | The relative URI of the payment this authorization transactions resource belongs to.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`authorizations.id`                           | `string`      | The relative URI of the current authorization transactions resource.                                                                                                                                                                                                                                             |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`authorizations.authorizationList`                              | `array`      |  The array of authorization transaction objects.                                                                                                                                                          |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`authorizations.authorizationList[]`                            | `object`      | The `authorization` transaction object described in the authorization resource below.
+  |
 
 ### Options before posting a payment
 
