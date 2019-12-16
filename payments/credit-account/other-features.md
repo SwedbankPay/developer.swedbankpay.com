@@ -18,8 +18,6 @@ sidebar:
 
 {% include payment-link.md %}
 
-{% include subsite.md %}
-
 ### Prices
 
 {% include prices.md %}

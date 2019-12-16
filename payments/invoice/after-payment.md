@@ -501,8 +501,6 @@ sequenceDiagram
     deactivate PayEx
 ```
 
-{% include subsite.md %}
-
 ### Prices
 
 {% include prices.md %}

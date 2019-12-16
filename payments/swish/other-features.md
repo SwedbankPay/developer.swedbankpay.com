@@ -166,8 +166,6 @@ Content-Type: application/json
 
 {% include payment-link.md %}
 
-{% include subsite.md payment-instrument="swish" %}
-
 ### Prices
 
 {% include prices.md %}
