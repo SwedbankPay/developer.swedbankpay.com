@@ -18,10 +18,7 @@ sidebar:
 
 {% include alert-development-section.md %}
 
-# Payment Resource
-
-This section describes the general sub-resources of the API that are used to
-generate payment requests.
+## Payment Resource
 
 {% include payment-resource.md payment-instrument="swish" %}
 
@@ -168,8 +165,6 @@ Content-Type: application/json
 {% include one-click-payments.md %}
 
 {% include payment-link.md %}
-
-{% include recurring-card-payments.md %}
 
 {% include subsite.md payment-instrument="swish" %}
 

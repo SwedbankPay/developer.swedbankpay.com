@@ -141,7 +141,7 @@ The response will be the `payment` resource with its `state` set to `Aborted`.
 
 {% include callback-reference.md %}
 
-{% include subsite.md payment-instrument="mobilepay" %}
+{% include subsite.md %}
 
 {% include transactions-reference.md %}
 
