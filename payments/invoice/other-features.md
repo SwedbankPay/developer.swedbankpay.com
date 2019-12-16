@@ -38,10 +38,10 @@ set to value `FinancingConsumer` are listed below.
 * An invoice payment is always two-phased based -  you create an Authorize
   transaction, that is followed by a Capture or Cancel request.
 * **Defining CallbackURL**: When implementing a scenario, it is optional
-  to set a [CallbackURL][callback-api] in the request.
+  to set a [CallbackURL][callback] in the request.
   If callbackURL is set PayEx will send a postback request to this URL when
   the consumer has fulfilled the payment.
-  [See the Callback API description here.][callback-api]
+  [See the Callback API description here.][callback]
 
 {% include authorizations-resource.md payment-instrument="invoice" %}
 
@@ -52,8 +52,8 @@ set to value `FinancingConsumer` are listed below.
 ## Create Payment
 
 Within the invoice payments part of the eCommerce API, you can create four kinds
-of payments ([FinancingConsumer][FinancingConsumer], [Verify][Verify], and
-[Recur][recurrence]), and you can inspect and alter the details of the
+of payments ([FinancingConsumer][financing-consumer], [Verify][verify], and
+[Recur][recur]), and you can inspect and alter the details of the
 individual transactions within the payment.
 
 To create a invoice payment, you perform an HTTP `POST` against the `payments`
@@ -188,7 +188,7 @@ information without reserving or charging any amount." %}
 
 This option is commonly used when initiating a subsequent
 [One-click invoice payment][one-click-payments] or a
-[recurring invoice payment][recurrence] flow - where you do not want
+[recurring invoice payment][recur] flow - where you do not want
 to charge the consumer right away.
 
 {% include alert.html type="neutral" icon="info" body="Please note that all
@@ -203,9 +203,9 @@ optional and requires enabling on the contract with Swedbank Pay." %}
   `paymentID`. You either receive a Redirect URL to a hosted page or a
   JavaScript source in response.
 * You need to [redirect][redirect] the payer's browser to that specified URL, or
-  embed the script source on your site to create a [Hosted View][hosted-view] in
-  an `iframe`; so that she can enter the credit card details in a secure
-  Swedbank Pay hosted environment.
+  embed the script source on your site to create a [Seamless
+  View][seamless-view] in an `iframe`; so that she can enter the credit card
+  details in a secure Swedbank Pay hosted environment.
 * Swedbank Pay will redirect the payer's browser to - or display directly in the
   `iframe` - one of two specified URLs, depending on whether the payment session
   is followed through completely or cancelled beforehand. Please note that both
@@ -217,7 +217,7 @@ optional and requires enabling on the contract with Swedbank Pay." %}
   `paymentID` received in the first step, which will return the payment result
   and a `paymentToken` that can be used for subsequent [One-Click
   Payments][one-click-payments] and [recurring server-to-server based
-  payments][recurrence].
+  payments][recur].
 
 ### Screenshots
 
@@ -542,7 +542,7 @@ transaction made towards a payment, as previously described.
 
 ## PayeeReference
 
-{% include payeeinfo.md %}
+{% include payee-info.md %}
 
 ## Prices
 
@@ -578,9 +578,16 @@ All invoice error types will have the following URI in front of type:
 {% include iterator.html prev_href="./" prev_title="Back: Introduction"
 next_href="after-payment" next_title="Next: After Payment" %}
 
+[callback]: #callback
+[cancel]: /payments/invoice/after-payment#cancellations
+[capture]: /payments/invoice/after-payment#capture
+[card-payment]: /assets/img/checkout/test-purchase.png
 [fi-png]: /assets/img/fi.png
+[financing-consumer]: #financing-consumer
+[invoice-flow]: /payments/invoice/#invoice-flow
 [no-png]: /assets/img/no.png
+[recur]: #recur
+[redirect]: /payments/invoice/redirect
 [se-png]: /assets/img/se.png
-[callback-api]: #callback
-[invoice-flow]: /payments/invoice/index#invoice-flow
-[payment-order]: #payment-orders
+[seamless-view]: /payments/invoice/seamless-view
+[verify]: #verfify

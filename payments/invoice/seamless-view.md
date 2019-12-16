@@ -370,7 +370,8 @@ next_href="after-payment" next_title="Next: After Payment" %}
 [capture]: /payments/invoice/after-payment#captures
 [create-payment]: /payments/invoice/other-features#create-payment
 [fi-png]: /assets/img/fi.png
-[financing-consumer]: /payments/invoice/other-features#financingconsumer
+[financing-consumer]: /payments/invoice/other-features#financing-consumer
+[invoice-payment]: /assets/img/checkout/invoice-seamless-view.png
 [no-png]: /assets/img/no.png
 [payee-reference]: /payments/invoice/other-features#payeereference
 [price-resource]: /payments/invoice/other-features#prices
@@ -379,4 +380,3 @@ next_href="after-payment" next_title="Next: After Payment" %}
 [setup-mail]: mailto:setup.ecom@PayEx.com
 [user-agent-definition]: https://en.wikipedia.org/wiki/User_agent
 [verify]: /payments/invoice/other-features#verify
-[invoice-payment]: /assets/img/checkout/invoice-seamless-view.png

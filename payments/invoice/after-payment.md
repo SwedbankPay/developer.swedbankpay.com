@@ -483,7 +483,7 @@ sequenceDiagram
 
 ### Payee reference
 
-{% include payeeinfo.md %}
+{% include payee-info.md %}
 
 {% include iterator.html prev_href="./" prev_title="Back: Introduction"
 next_href="other-features" next_title="Next: Other Features" %}

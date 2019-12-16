@@ -48,10 +48,10 @@ integration options." %}
                       The payment process will be executed in an `iframe` on
                       your page." %}
 
-### Important steps before you launch Swedbank Pay Faktura at your website
+### Important steps before you launch Swedbank Pay Invoice Payments at your website
 
-Prior to launching Swedbank Pay Faktura at your site, make sure that you
-have done the following:  
+Prior to launching Swedbank Pay Invoice Payments at your site, make sure that
+you have done the following:  
 
 1. Sent a merchant logo in .JPG format to [setup.ecom@payex.com][setup-mail].
     The logo will be displayed on all your invoices. Minimum accepted size is
@@ -64,12 +64,11 @@ The API requests are displayed in the [purchase flow](#purchase-flow).
 You can create an invoice payment with the following `operation`
 options:
 
-* [Financing Consumer][other-features-financing-consumer]
+* [Financing Consumer][financing-consumer]
 * [Recur][recur]
 * [Verify][verify]
 
-Our `payment` example uses the [`FinancingConsumer`]
-[other-features-financing-consumer] value.
+Our `payment` example uses the [`FinancingConsumer`][financing-consumer] operation.
 
 ## Invoice flow
 
@@ -100,10 +99,12 @@ sequenceDiagram
 ```
 
 [after-payment]: /payments/invoice/after-payment
-[no-png]: /assets/img/no.png
-[se-png]: /assets/img/se.png
 [callback-api]: /payments/invoice/other-features#callback
-[hosted-view]: /payments#hosted-view-implementation
+[financing-consumer]: /payments/invoice/other-features#financing-consumer
+[no-png]: /assets/img/no.png
 [optional-features]: /payments/invoice/optional-features
+[recur]: /payments/invoice/other-features#recur
 [redirect]: /payments/invoice/redirect
+[se-png]: /assets/img/se.png
 [setup-mail]: mailto:setup.ecom@PayEx.com
+[verify]: /payments/invoice/other-features#verify

@@ -33,7 +33,7 @@ help narrow down the specifics of the problem.
 
 ### Payee reference
 
-{% include payeeinfo.md %}
+{% include payee-info.md %}
 
 {% include transactions-reference.md %}
 

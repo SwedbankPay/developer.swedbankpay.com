@@ -76,8 +76,7 @@ The API requests depend on the payment instrument you are using when implementin
 the Payment Link scenario, see [purchase flow][purchase-flow] One-phase payment
 instruments will not implement `capture`, `cancellation` or `reversal`.
 The options you can choose from when creating a payment with key `operation`
-set to Value `Purchase` are listed below. The general REST based API model is
-described in the [technical reference][technical-reference].
+set to Value `Purchase` are listed below.
 
 ### Screenshots
 
@@ -214,11 +213,12 @@ sequenceDiagram
   [See the Abort description here][abort].
 * For reversals, you will need to implement the `Reversal` request.
 * When implementing the Payment Link scenario, it is optional to set a
-  CallbackURL in the `POST` request.
-  If CallbackURL is set Swedbank Pay will send a postback request to this
+  `callbackURL` in the `POST` request.
+  If `callbackURL` is set Swedbank Pay will send a postback request to this
   URL when the consumer as fulfilled the payment.
   [See the Callback API description here][technical-reference-callback].
 
+[card-payment]: /assets/img/payments/card-payment.png
 [abort]: #abort
 [credit-card]: /payments/card
 [mobile-pay]: /payments/mobile-pay
@@ -228,6 +228,5 @@ sequenceDiagram
 [swish]: /payments/swish
 [technical-reference-callback]: #callback
 [technical-reference-callbackurl]: #callback
-[technical-reference]: #operations
 [test_purchase]: /assets/img/checkout/test-purchase.png
 [vipps]: /payments/vipps
