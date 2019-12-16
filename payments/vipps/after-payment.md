@@ -381,16 +381,18 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property               | Type   | Description                                                                  |
-| :--------------------- | :----- | :--------------------------------------------------------------------------- |
-| payment                | string | The relative URI of the payment this list of capture transactions belong to. |
-| captures.id            | string | The relative URI of the current `captures` resource.                         |
-| captures.captureList   | array  | The array of capture transaction objects.                                    |
-| captures.captureList[] | object | The capture transaction object described in the `capture` resource below.    |
+| Property                | Type     | Description                                                                  |
+| :---------------------- | :------- | :--------------------------------------------------------------------------- |
+| `payment`               | `string` | The relative URI of the payment this list of capture transactions belong to. |
+| `captures`              | `object` | The `captures` list resource.                                                |
+| └➔&nbsp;`id`            | `string` | The relative URI of the current `captures` resource.                         |
+| └➔&nbsp;`captureList`   | `array`  | The array of capture transaction objects.                                    |
+| └➔&nbsp;`captureList[]` | `object` | The capture transaction object described in the `capture` resource below.    |
 
 ### Create capture transaction
 
-A `capture` transaction can be created after a completed authorization by performing the `create-capture` operation.
+A `capture` transaction can be created after a completed authorization by
+sending a request to `/psp/vipps/payments/<payment-id>/captures`.
 
 {:.code-header}
 **Request**
@@ -414,10 +416,11 @@ Content-Type: application/json
 {:.table .table-striped}
 | Required | Property                 | Type         | Description                                                                                                               |
 | :------: | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------ |
-|    ✔︎    | `capture.amount`         | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 NOK`, `5000` = `50.00 NOK`. |
-|    ✔︎    | `capture.vatAmount`      | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 NOK`, `5000` = `50.00 NOK`. |
-|    ✔︎    | `capture.description`    | `string`     | A textual description of the capture transaction.                                                                         |
-|    ✔︎    | `capture.payeeReference` | `string(50)` | A unique reference for the capture transaction. See [`payeeReference`][technical-reference-payeeReference] for details.   |
+|    ✔︎    | `transaction`            | `integer`    | The transaction object containing a Vipps transaction description.                                                        |
+|    ✔︎    | └➔&nbsp;`amount`         | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 NOK`, `5000` = `50.00 NOK`. |
+|    ✔︎    | └➔&nbsp;`vatAmount`      | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 NOK`, `5000` = `50.00 NOK`. |
+|    ✔︎    | └➔&nbsp;`description`    | `string`     | A textual description of the capture transaction.                                                                         |
+|    ✔︎    | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the capture transaction. See [`payeeReference`][technical-reference-payeeReference] for details.   |
 
 The `capture` resource contains information about the capture transaction made
 against a Vipps payment.
@@ -454,11 +457,12 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property            | Type   | Description                                                                                |
-| :------------------ | :----- | :----------------------------------------------------------------------------------------- |
-| payment             | string | The relative URI of the payment this capture transaction belongs to.                       |
-| capture.id          | string | The relative URI of the created capture transaction.                                       |
-| capture.transaction | object | The object representation of the generic [`transaction`][technical-reference-transaction]. |
+| Property        | Type     | Description                                                                                |
+| :-------------- | :------- | :----------------------------------------------------------------------------------------- |
+| `payment`       | `string` | The relative URI of the payment this capture transaction belongs to.                       |
+| `capture`       | `string` | The capture object, containing a transaction object.                                       |
+| └➔`id`          | `string` | The relative URI of the created capture transaction.                                       |
+| └➔`transaction` | `object` | The object representation of the generic [`transaction`][technical-reference-transaction]. |
 
 ### Cancellations
 
@@ -510,17 +514,20 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property                         | Type   | Description                                                                         |
-| :------------------------------- | :----- | :---------------------------------------------------------------------------------- |
-| payment                          | string | The relative URI of the payment this list of cancellation transactions belong to.   |
-| cancellations.id                 | string | The relative URI of the current `cancellations` resource.                           |
-| cancellations.cancellationList   | array  | The array of the cancellation transaction objects.                                  |
-| cancellations.cancellationList[] | object | The object representation of the cancellation transaction resource described below. |
+| Property               | Type     | Description                                                                         |
+| :--------------------- | :------- | :---------------------------------------------------------------------------------- |
+| `payment`              | `string` | The relative URI of the payment this list of cancellation transactions belong to.   |
+| `cancellations`        | `object` | The `cancellations` object.                                                         |
+| └➔`id`                 | `string` | The relative URI of the current `cancellations` resource.                           |
+| └➔`cancellationList`   | `array`  | The array of the cancellation transaction objects.                                  |
+| └➔`cancellationList[]` | `object` | The object representation of the cancellation transaction resource described below. |
 
 ### Create cancellation transaction
 
-Perform the `create-cancel` operation to cancel a previously created payment.
-You can only cancel a payment - or part of payment - not yet captured.
+Perform a `Post` request to cancel a previously created payment.
+You can only cancel a payment, or part of it, if it has yet to be captured.
+To revert a capture, or part of a capture, you must perform a `reversal`.
+Performing a cancellation will cancel all remaning capture amounts on a payment.
 
 {:.code-header}
 **Request**
@@ -540,12 +547,16 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property                      | Type         | Description                                                                                                                  |
-| :------: | :---------------------------- | :----------- | :--------------------------------------------------------------------------------------------------------------------------- |
-|  ✔︎︎︎︎︎  | `cancellation.description`    | `string`     | A textual description of the reason for the cancellation.                                                                    |
-|  ✔︎︎︎︎︎  | `cancellation.payeeReference` | `string(50)` | A unique reference for the cancellation transaction. See [`payeeReference`][technical-reference-payeeReference] for details. |
+| Required | Property           | Type         | Description                                                                                                                  |
+| :------: | :----------------- | :----------- | :--------------------------------------------------------------------------------------------------------------------------- |
+|  ✔︎︎︎︎︎  | `transaction`      | `object`     | The transaction object describing the cancellation request.                                                                  |
+|  ✔︎︎︎︎︎  | └➔`description`    | `string`     | A textual description of the reason for the cancellation.                                                                    |
+|  ✔︎︎︎︎︎  | └➔`payeeReference` | `string(50)` | A unique reference for the cancellation transaction. See [`payeeReference`][technical-reference-payeeReference] for details. |
 
-The `cancel` resource contains information about a cancellation transaction made against a payment. You can return a specific cancellation transaction by adding the transaction id to the `GET` request.
+The `cancel` resource contains information about a cancellation transaction made
+against a payment.
+You can return a specific cancellation transaction by adding the transaction id
+to the `GET` request.
 
 {:.code-header}
 **Response**
