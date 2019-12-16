@@ -1,4 +1,4 @@
-{% assign no-autocapture = include.no-autocapture | default: false %}
+{% assign autocapture = include.autocapture | default: false %}
 
 The intent of the payment identifies how and when the charge will be
 effectuated. This determines the type of transaction used during the payment
@@ -10,14 +10,14 @@ process.
   when you are ready to ship the purchased products) have to make a
   [capture][capture] or [cancel][cancel] request later on to fulfill the
   transaction.
-{% unless no-autocapture %}
+{% if autocapture %}
 * **`AutoCapture` (one-phase)**:  If you want the credit card to be charged
   right away, you will have to specify that the intent of the purchase is
   `AutoCapture`. This is only allowed if the consumer purchases digital
   products. The credit card will be charged automatically after authorization
   and you don't need to do any more financial operations to fulfill the
   transaction.
-{% endunless %}
+{% endif %}
 
 [capture]: ./after-payment#capture
 [cancel]: ./after-payment#cancellations
