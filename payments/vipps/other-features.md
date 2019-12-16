@@ -20,11 +20,7 @@ sidebar:
 
 {% include settlement-reconciliation.md %}
 
-{% include one-click-payments.md %}
-
 {% include payment-link.md %}
-
-{% include recurring-card-payments.md %}
 
 ### Payment order
 
@@ -32,11 +28,9 @@ sidebar:
 
 {% include operations-reference.md %}
 
-{% include subsite.md payment-instrument="vipps" %}
-
 ### Prices
 
-{% include prices.md %}
+{% include prices.md hide-mobile-pay=true hide-direct-debit=true %}
 
 ## Problem messages
 
@@ -94,7 +88,7 @@ All Vipps error types will have the following URI in front of type:
 
 ### Payee reference
 
-{% include payeeinfo.md %}
+{% include payee-info.md %}
 
 {% include transactions-reference.md %}
 

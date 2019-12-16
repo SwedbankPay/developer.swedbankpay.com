@@ -151,7 +151,7 @@ The response will be the `payment` resource with its `state` set to `Aborted`.
 
 ### Payee reference
 
-{% include payeeinfo.md %}
+{% include payee-info.md %}
 
 {% include iterator.html prev_href="after-payment"
                          prev_title="Back: After Payment" %}

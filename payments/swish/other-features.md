@@ -75,7 +75,7 @@ All Swish error types will have the following URI in front of type:
 
 ### Payee reference
 
-{% include payeeinfo.md %}
+{% include payee-info.md %}
 
 {% include expand-parameter.md %}
 
