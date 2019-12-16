@@ -20,16 +20,10 @@ sidebar:
 
 ## Swish Payments
 
-<<<<<<< HEAD
 {% include jumbotron.html body="Add Swish to your Swedbank Pay Payment
 instruments and take advantage of **[Swedbank Pay Settlement
 Service](/payments/swish/other-features#settlement-and-reconcilliation)** to get consolidated payments and reporting, for
 all your payment instruments." %}
-=======
-> Add Swish to your Swedbank Pay Payment instruments and take advantage of
-  **[Swedbank Pay Settlement Service][settlement-service]** to get consolidated
-  payments and reporting, for all your payment methods.
->>>>>>> DX-415 moved redirect content from index to redirect section and fix diagrams in payment-link.md
 
 ## How do you get started with Swish through  Swedbank Pay
 
