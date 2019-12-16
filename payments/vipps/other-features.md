@@ -20,11 +20,7 @@ sidebar:
 
 {% include settlement-reconciliation.md %}
 
-{% include one-click-payments.md %}
-
 {% include payment-link.md %}
-
-{% include recurring-card-payments.md %}
 
 ### Payment order
 
@@ -32,11 +28,17 @@ sidebar:
 
 {% include operations-reference.md %}
 
-{% include subsite.md payment-instrument="vipps" %}
-
 ### Prices
 
-{% include prices.md %}
+{% include prices.md hide-mobile-pay=true hide-direct-debit=true %}
+
+### Payee reference
+
+{% include payee-info.md %}
+
+{% include transactions-reference.md %}
+
+{% include callback-reference.md %}
 
 ## Problem messages
 
@@ -91,14 +93,6 @@ All Vipps error types will have the following URI in front of type:
 | *ACQUIRER_GATEWAY_ERROR* | 502 |
 | *ACQUIRER_GATEWAY_TIMEOUT* | 504 |
 | *UNKNOWN_ERROR* | 500 |
-
-### Payee reference
-
-{% include payeeinfo.md %}
-
-{% include transactions-reference.md %}
-
-{% include callback-reference.md %}
 
 {% include iterator.html
         prev_href="after-payment"

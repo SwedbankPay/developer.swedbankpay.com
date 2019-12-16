@@ -542,7 +542,7 @@ transaction made towards a payment, as previously described.
 
 ## PayeeReference
 
-{% include payeeinfo.md %}
+{% include payee-info.md %}
 
 ## Prices
 

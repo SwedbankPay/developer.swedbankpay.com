@@ -79,10 +79,10 @@ body.
 **Header fields**
 
 {:.table .table-striped}
-| Field       | Type     | Description                                                                |
-| :---------- | :------- | :------------------------------------------------------------------------- |
+| Field         | Type       | Description                                                                |
+| :------------ | :--------- | :------------------------------------------------------------------------- |
 | `Prefix`      | `String`   | The `Prefix` used for transactions, only eligible if merchant uses prefix. |
-| Currency    | `ISO 4217` | Settlement currency (e.g. `SEK, NOK, EUR`).                                |
+| Currency      | `ISO 4217` | Settlement currency (e.g. `SEK, NOK, EUR`).                                |
 | `ServiceType` | `String`   | The service type of the service used (e.g. `Creditcard, Direct debit`).    |
 | `Service`     | `String`   | The service used (e.g. `Creditcard, Direct debit`).                        |
 | `NoOfDebet`   | `Decimal`  | Total number of debit transactions for the given service.                  |
@@ -95,8 +95,8 @@ body.
 **Body fields**
 
 {:.table .table-striped}
-| Field                         | Type     | Description                                                                                                                                           |
-| :---------------------------- | :------- | :---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Field                           | Type       | Description                                                                                                                                           |
+| :------------------------------ | :--------- | :---------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Swedbank Pay Batch Number`     | `Decimal`  | A batch number common to all types of transactions processed by PayEx.                                                                                |
 | `Transaction Number`            | `Decimal`  | A unique identifier of the transaction, can be traced in Swedbank Pay Admin user interface.                                                           |
 | `Order id`                      | `String`   | A unique identifier of the order, as sent from the merchant to PayEx. Transactions that are related to the same order are associated with this ID.    |
@@ -240,7 +240,7 @@ sporting events etc., each venue gets its own prefix number. If you run a
 funeral home, the sub merchants can be everything from flower delivery to
 charities.
 
-#### What we need from you as a company:
+#### What we need from you as a company
 
 * Send us a KYC form for each sub merchant you want to include. We will also do
   a KYC check on your sub merchants, providing extra security for you.
@@ -253,7 +253,7 @@ charities.
 * A partner agreement is needed for the automatic deduction of revenue cuts and
   fees.
 
-#### How it works:
+#### How it works
 
 1. We set up the sub merchant prefix in our systems.
 2. The prefix number is added in the subsite field in the API call when you
@@ -267,38 +267,36 @@ charities.
    automatically.
 8. Payout to the sub merchant is done.
 
-#### The upsides:
+#### The upsides
 
 * Since the sub merchants are connected to Swedbank Pay through the super
   merchant instead of having separate setups, this means that you:
-   * Only need one agreement for credit card, direct debit, Vipps, Swish,
-     MobilePay,  invoice, credit account and payment gateway.
-   * Only need one acquiring agreement.
-   * Only need one Vipps/Swish certificate.
-   * Can add more payment instruments easily, as it only has to be done once.
-   * Can set up new sub merchants quickly, as the only thing needed is a KYC
-     form and a prefix number. This shortens the setup time for both you and us
-     to a matter of hours.
-
+* Only need one agreement for credit card, direct debit, Vipps, Swish,
+  MobilePay,  invoice, credit account and payment gateway.
+* Only need one acquiring agreement.
+* Only need one Vipps/Swish certificate.
+* Can add more payment instruments easily, as it only has to be done once.
+* Can set up new sub merchants quickly, as the only thing needed is a KYC
+  form and a prefix number. This shortens the setup time for both you and us
+  to a matter of hours.
 * The automatic settlement split and deduction of fees and revenue cuts
   minimizes the work for your accounting department, as you do not have to
   invoice your sub merchants.
-
 * The prefix split is available with all the payment instruments we offer on our
   eCom platform.
 
-#### Good to know:
+#### Good to know
 
 With regards to admin functions, we offer a full integration towards our admin
 system. This way, you do not have to log in to Swedbank Pay Admin to perform
 these operations.
 
-**Captures and cancels**
+##### Captures and cancels
 
 Captures and cancels are done by the super merchant the same way as any other
 normal flow.
 
-**Reversals**
+##### Reversals
 
 In cases where you need to do reversals, this will be performed by the super
 merchant. The reversal amount will be charged from the sub merchants prefix. If
@@ -307,10 +305,10 @@ super merchant will in turn have to invoice this amount to the sub merchant.
 
 [payex-checkout]: /checkout
 [attachement-1]: /assets/documents/testredovisning-payexcheckout.pdf
-[attachement-2]: /assets/documents/R1234-0001 redov.service.pdf
-[attachement-3]: /assets/documents/Transaktionsstatistik Redovisningsservice.xlsx
-[attachement-4]: /assets/documents/Transaktionsstatistik Redovisningsservice.xml
-[attachement-5]: /assets/documents/R1234-0001 eget konto.pdf
-[attachement-6]: /assets/documents/R1234-0001 eget konto.pdf
-[attachement-7]: /assets/documents/Testredovisning Eget konto.xml
+[attachement-2]: assets/documents/r1234-0001-redov.service.pdf
+[attachement-3]: /assets/documents/transaktionsstatistik-redovisningsservice.xlsx
+[attachement-4]: /assets/documents/transaktionsstatistik-redovisningsservice.xml
+[attachement-5]: assets/documents/r1234-0001-eget-konto.pdf
+[attachement-6]: assets/documents/r1234-0001-eget-konto.pdf
+[attachement-7]: assets/documents/testredovisning-eget-konto.xlsx
 [omni-client-email]: mailto:omni.client@swedbankpay.se

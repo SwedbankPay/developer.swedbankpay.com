@@ -28,7 +28,7 @@ sidebar:
 
 {% include expand-parameter.md %}
 
-{% include payeeinfo.md %}
+{% include payee-info.md %}
 
 {% include prices.md %}
 
