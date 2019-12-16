@@ -121,7 +121,7 @@ Purchase information. This will generate a payment object with a unique
 
 ### Intent
 
-{% include intent.md %}
+{% include intent.md autocapture=true %}
 
 ### Operations
 
