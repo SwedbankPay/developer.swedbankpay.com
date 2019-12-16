@@ -20,8 +20,8 @@ sidebar:
 
 ## Payment Resource
 
-The payment resource and all general sub-resources can be found in the
-[core payment resources](#create-payment) section.
+This section describes the general sub-resources of the API that are used to
+generate payment requests.
 
 ### Create Payment
 
@@ -29,7 +29,7 @@ To create a Vipps payment, you perform an HTTP `POST` against the
 `/psp/vipps/payments` resource.
 
 An example of a payment creation request is provided below.
-Each individual Property of the JSON document is described in the following
+Each individual property of the JSON document is described in the following
 section.
 Use the [expand][technical-reference-expansion] request parameter to get a
 response that includes one or more expanded sub-resources inlined.
@@ -91,9 +91,10 @@ Content-Type: application/json
 |    ✔︎    | └➔&nbsp;`operation`          | `string`     | `Purchase`                                                                                                                                                                                                  |
 |    ✔︎    | └➔&nbsp;`intent`             | `string`     | `Authorization`                                                                                                                                                                                             |
 |    ✔︎    | └➔&nbsp;`currency`           | `string`     | NOK                                                                                                                                                                                                         |
-|    ✔︎    | └➔&nbsp;`prices.type`        | `string`     | `vipps`                                                                                                                                                                                                     |
-|    ✔︎    | └➔&nbsp;`prices.amount`      | `integer`    | Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 NOK`, `5000` = `50.00 NOK`.                                                                                |
-|    ✔︎    | └➔&nbsp;`prices.vatAmount`   | `integer`    | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                          |
+|    ✔︎    | └➔&nbsp;`prices`             | `object`     | The [`prices`][prices] object.                                                                                                                                                                              |
+|    ✔︎    | └─➔&nbsp;`type`              | `string`     | `vipps`                                                                                                                                                                                                     |
+|    ✔︎    | └─➔&nbsp;`amount`            | `integer`    | Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 NOK`, `5000` = `50.00 NOK`.                                                                                |
+|    ✔︎    | └─➔&nbsp;`vatAmount`         | `integer`    | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                          |
 |    ✔︎    | └➔&nbsp;`description`        | `string(40)` | A textual description max 40 characters of the purchase.                                                                                                                                                    |
 |          | └➔&nbsp;`payerReference`     | `string`     | The reference to the payer (consumer/end-user) from the merchant system, like mobile number, customer number etc.                                                                                           |
 |    ✔︎    | └➔&nbsp;`userAgent`          | `string`     | The user agent reference of the consumer's browser - [see user agent][user-agent]]                                                                                                                          |
@@ -114,7 +115,7 @@ Content-Type: application/json
 |          | └─➔&nbsp;`orderReference`    | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                     |
 |          | └─➔&nbsp;`prefillInfo`       | `string`     | The mobile number that will be pre-filled in the Swedbank Pay Payments. The consumer may change this number in the UI.                                                                                      |
 |          | └─➔&nbsp;`subsite`           | `string(40)` | The `subsite` field can be used to perform split settlement on the payment. The `subsites` must be resolved with Swedbank Pay reconciliation before being used.                                             |
-`
+
 {:.code-header}
 **Response**
 
@@ -168,7 +169,7 @@ Content-Type: application/json
 
 ### Purchase
 
-Posting a payment (operation purchase) returns the options of aborting the
+Posting a payment (operation `Purchase`) returns the options of aborting the
 payment altogether or creating an authorization transaction through the
 `redirect-authorization` hyperlink.
 
@@ -189,43 +190,6 @@ When a payment resource is created and during its lifetime,
 it will have a set of operations that can be performed on it.
 Which operations are available will vary depending on the state of the
 payment resource, what the access token is authorized to do, etc.
-A list of possible operations and their explanation is given below.
-
-{:.code-header}
-**Operations**
-
-```js
-{
-    "payment": {},
-    "operations": [
-        {
-            "href": "http://api.externalintegration.payex.com/psp/vipps/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
-            "rel": "update-payment-abort",
-            "method": "PATCH"
-        },
-        {
-            "href": "https://ecom.externalintegration.payex.com/vipps/payments/authorize/123456123412341234123456789012",
-            "rel": "redirect-authorization",
-            "method": "GET"
-        },
-        {
-            "href": "https://api.externalintegration.payex.com/psp/mobilepay/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/captures",
-            "rel": "create-capture",
-            "method": "POST"
-        },
-        {
-            "href": "https://api.externalintegration.payex.com/psp/mobilepay/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/cancellations",
-            "rel": "create-cancellation",
-            "method": "POST"
-        },
-        {
-            "href": "https://api.externalintegration.payex.com/psp/mobilepay/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/reversals",
-            "rel": "create-reversal",
-            "method": "POST"
-        },
-    ]
-}
-```
 
 {:.table .table-striped}
 | Property | Description                                                         |
@@ -284,7 +248,7 @@ Content-Type: application/json
         "authorizationList": [
             {
                 "vippsTransactionId": "5619328800",
-                "msisdn": "+47xxxxxxxx",
+                "msisdn": "+4798765432",
                 "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/authorizations/3bfb8c66-33be-4871-465b-08d612f01a53",
                 "transaction": {
                     "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/transactions/3bfb8c66-33be-4871-465b-08d612f01a53",
@@ -307,14 +271,16 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property                           | Type   | Description                                                                                                                                                                                            |
-| :--------------------------------- | :----- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| payment                            | string | The relative URI of the payment this authorization transactions resource belongs to.                                                                                                                   |
-| authorizations.id                  | string | The relative URI of the current authorization transactions resource.                                                                                                                                   |
-| authorizations.authorizationList   | array  | The array of authorization transaction objects.                                                                                                                                                        |
-| authorizations.authorizationList[] | object | The authorization transaction object described in the `authorization` resource below. The `authorization` resource contains information about an authorization transaction made on a specific payment. |
+| Property                      | Type     | Description                                                                                                                                                                                            |
+| :---------------------------- | :------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `payment`                     | `string` | The relative URI of the payment this authorization transactions resource belongs to.                                                                                                                   |
+| `authorizations`              | `object` | The authorizations object giving access to authorization information pertaining to this transaction.                                                                                                   |
+| └➔&nbsp;`id`                  | `string` | The relative URI of the current authorization transactions resource.                                                                                                                                   |
+| └➔&nbsp;`authorizationList`   | `array`  | The array of authorization transaction objects.                                                                                                                                                        |
+| └➔&nbsp;`authorizationList[]` | `object` | The authorization transaction object described in the `authorization` resource below. The `authorization` resource contains information about an authorization transaction made on a specific payment. |
 
-You can return a specific authorization transaction by adding the transaction id to the `GET` request.
+You can return a specific authorization transaction by adding the transaction id
+to the `GET` request.
 
 {:.code-header}
 **Request**
@@ -337,7 +303,7 @@ Content-Type: application/json
     "payment": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d",
     "authorization": {
         "vippsTransactionId": "5619328800",
-        "msisdn": "+47xxxxxxxx",
+        "msisdn": "+4798765432",
         "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/authorizations/3bfb8c66-33be-4871-465b-08d612f01a53",
         "transaction": {
             "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/transactions/3bfb8c66-33be-4871-465b-08d612f01a53",
@@ -358,11 +324,12 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property                  | Type   | Description                                                                              |
-| :------------------------ | :----- | :--------------------------------------------------------------------------------------- |
-| payment                   | string | The relative URI of the payment this authorization transaction resource belongs to.      |
-| authorization.id          | string | The relative URI of the current authorization transaction resource.                      |
-| authorization.transaction | object | The object representation of the generic [transaction][technical-reference-transaction]. |
+| Property               | Type     | Description                                                                              |
+| :--------------------- | :------- | :--------------------------------------------------------------------------------------- |
+| `payment`              | `string` | The relative URI of the payment this authorization transaction resource belongs to.      |
+| `authorization`        | `string` | The authorization object.                                                                |
+| └➔&nbsp;`id`           | `string` | The relative URI of the current authorization transaction resource.                      |
+| └➔&nbsp; `transaction` | `object` | The object representation of the generic [transaction][technical-reference-transaction]. |
 
 ### Captures
 
@@ -839,3 +806,4 @@ All Vipps error types will have the following URI in front of type:
 [technical-reference-reverse]: /payments/vipps/other-features#reversal
 [technical-reference-transaction]: /payments/vipps/other-features#transactions
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
+[prices]: /payments/vipps/other-features#prices
