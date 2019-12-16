@@ -76,8 +76,7 @@ The API requests depend on the payment instrument you are using when implementin
 the Payment Link scenario, see [purchase flow][purchase-flow] One-phase payment
 instruments will not implement `capture`, `cancellation` or `reversal`.
 The options you can choose from when creating a payment with key `operation`
-set to Value `Purchase` are listed below. The general REST based API model is
-described in the [technical reference][technical-reference].
+set to Value `Purchase` are listed below.
 
 ### Screenshots
 
@@ -228,6 +227,5 @@ sequenceDiagram
 [swish]: /payments/swish
 [technical-reference-callback]: #callback
 [technical-reference-callbackurl]: #callback
-[technical-reference]: #operations
 [test_purchase]: /assets/img/checkout/test-purchase.png
 [vipps]: /payments/vipps
