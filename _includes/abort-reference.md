@@ -38,7 +38,7 @@ Content-Type: application/json
         "number": 70100130293,
         "created": "2019-01-09T13:11:28.371179Z",
         "updated": "2019-01-09T13:11:46.5949967Z",
-        "instrument": "{{instrument}}",
+        "instrument": "{{ instrument | capitalize }}",
         "operation": "Purchase",
         "intent": "Authorization",
         "state": "Aborted",

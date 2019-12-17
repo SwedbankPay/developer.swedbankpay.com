@@ -16,7 +16,12 @@ sidebar:
       title: Other Features
 ---
 
-{% include alert-review-section.md %}
+{% include alert.html type="warning"
+                      icon="warning"
+                      header="Site under development"
+                      body="This section of the Developer Portal is under construction and
+                      should not be used to integrate against
+                      Swedbank Pay's APIs yet." %}
 
 ## Options after posting a payment
 
@@ -29,7 +34,7 @@ to see the available operations after posting a payment.
 
 * **Abort:** It is possible to abort the process if the payment has no
   successful transactions. [See the `abort`
-  description][payment-description].
+  description][abort-description].
 * An invoice authorization must be followed by a `capture` or
   `cancel` request.
 * For reversals, you will need to implement the `reversal` request.
@@ -215,7 +220,7 @@ deactivate PayEx
 
 ### Cancellations
 
-#### Create cancellation transaction
+#### Create cancel transaction
 
 Perform the `create-cancellation` operation to cancel a previously authorized
 or partially captured invoice payment.
@@ -242,7 +247,7 @@ Content-Type: application/json
 | Required | Parameter name               | Datatype     | Value (with description)                                                                                                                                                                                                    |
 | :------: | :--------------------------- | :----------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |    ✔︎     | `transaction.activity`       | `string`     | `FinancingConsumer`.                                                                                                                                                                                                        |
-|    ✔︎     | `transaction.payeeReference` | `string`     | A **unique **reference max 50 characters set by the merchant system) - this must be unique for each operation! The [payeeReference][technical-reference-payeeReference] must follow the regex pattern `[\w]* (a-zA-Z0-9_)`. |
+|    ✔︎     | `transaction.payeeReference` | `string`     | A **unique **reference max 50 characters set by the merchant system) - this must be unique for each operation! The `payeeReference` must follow the regex pattern `[\w]* (a-zA-Z0-9_)`. |
 |    ✔︎     | `transaction.description`    | `string(50)` | A textual description for the cancellation.                                                                                                                                                                                 |
 
 The `cancel` resource will be returned, containing information about the
@@ -342,7 +347,7 @@ capture, you will only cancel the remaining authorized amount.
 
 ```mermaid
 sequenceDiagram
-Merchant->>PayEx: Post [Invoice cancellations][invoice-cancellations]
+Merchant->>PayEx: Post `invoice cancellations`
 activate Merchant
 activate PayEx
 PayEx-->>Merchant: transaction resource
@@ -495,21 +500,19 @@ sequenceDiagram
     deactivate PayEx
 ```
 
-{% include subsite.md payment-instrument="invoice" %}
-
 ### Prices
 
 {% include prices.md %}
 
 ### Payee reference
 
-{% include payeeinfo.md %}
+{% include payee-info.md %}
 
 {% include iterator.html prev_href="./" prev_title="Back: Introduction"
 next_href="other-features" next_title="Next: Other Features" %}
 
 ----------------------------------------------------------
-[payment-description]: /payments/invoice/after-payment#abort
+[abort-description]: #abort
 [callback-request]: /payments/invoice/other-features#callback
 [invoice-captures]: #captures
 [invoice-cancellations]: #cancellations
