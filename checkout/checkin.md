@@ -77,7 +77,8 @@ Content-Type: application/json
 
 {
     "operation": "initiate-consumer-session",
-    "consumerCountryCode": "SE"
+    "language": "sv-SE",
+    "shippingAddressRestrictedToCountryCodes" : ["NO", "SE", "DK"]
 }
 ```
 
@@ -85,7 +86,8 @@ Content-Type: application/json
 | Required | Property              | Type     | Description                                                                             |
 | :------: | :-------------------- | :------- | :-------------------------------------------------------------------------------------- |
 |  ✔︎︎︎︎︎  | `operation`           | `string` | `initiate-consumer-session`, the operation to perform.                                  |
-|  ✔︎︎︎︎︎  | `consumerCountryCode` | `string` | Payers country of residence. Used by the consumerUi for validation on all input fields. |
+|  ✔︎︎︎︎︎  | `language`            | `string` | Selected language to be used in Checkin. Supported values are `nb-NO`, `sv-SE` and `en-US` |
+|  ✔︎︎︎︎︎  | `shippingAddressRestrictedToCountryCodes`            | `string` | List of supported shipping countries for merchant. Using ISO-3166 standard.  |
 
 When the request has been sent, a response containing an array of operations that can be acted upon will be returned:
 
@@ -213,12 +215,8 @@ window.onload = function () {
     // before in the request to the endpoint.
     request.send(JSON.stringify({
         operation: 'initiate-consumer-session',
-        msisdn: '+46739000001',
-        email: 'leia.ahlstrom@example.com',
-        consumerCountryCode: 'SE',
-        nationalIdentifer: {
-            socialSecurityNumber: '199710202392',
-            countryCode: "SE"
+        language: 'sv-SE',
+        shippingAddressRestrictedToCountryCodes : ['NO', 'SE']
         }
     }));
 };
