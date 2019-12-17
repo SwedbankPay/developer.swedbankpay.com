@@ -18,35 +18,12 @@ sidebar:
 
 {% include alert-development-section.md %}
 
->Swish is an one-phase payment instrument supported by the major Swedish banks.
- In the redirect e-commerce scenario, Swedbank Pay performs a payment that the
- payer confirms using her Swish mobile app.
- The consumer initiates the payment by supplying the Swish registered mobile
- number (MSISDN), connected to the Swish app.
+{% include jumbotron.html body="**Swish Payments Redirect** is where Swedbank
+Pay performs a payment that the payer confirms using her Swish mobile app.
+The consumer initiates the payment by supplying the
+Swish registered mobile number (msisdn), connected to the Swish app." %}
 
 ## Introduction
-
-* When the payer starts the purchase process, you make a `POST` request towards
-  Swedbank Pay with the collected Purchase information. This will generate a
-  payment object with a unique `paymentID`. You either receive a Redirect URL to
-  a hosted page or a JavaScript source in response.
-* You need to [redirect][redirect] the payer to the Redirect payment page or
-  embed the script source on you site to create a [Hosted View][hosted-view] in
-  an iFrame; where she is prompted to enter the Swish registered mobile number.
-  This triggers the initiation of a sales transaction.
-* Swedbank Pay handles the dialogue with Swish and the consumer confirms the
-  purchase in the Swish app.
-* Swedbank Pay will redirect the payer's browser to - or display directly in the
-  iFrame - one of two specified URLs, depending on whether the payment session
-  is followed through completely or cancelled beforehand. Please note that both
-  a successful and rejected payment reach completion, in contrast to a cancelled
-  payment.
-* If CallbackURL is set you will receive a payment callback when the Swish
-  dialogue is completed. You need to do a `GET` request, containing the
-  `paymentID` generated in the first step, to receive the state of the
-  transaction.
-
-## Screenshots
 
 The consumer/end-user is redirected to Swedbank Pay hosted pages and prompted
 to insert her phone number to initiate the sales transaction.
@@ -59,19 +36,17 @@ to insert her phone number to initiate the sales transaction.
 The API requests are displayed in the [purchase flow](#purchase-flow).
 Swish is a one-phase payment instrument that is based on sales transactions not
 involving capture or cancellation operations.
-The options you can choose from when creating a payment with key operation set
-to Value Purchase are listed below.
-
-### Options before posting a payment
-
-All valid options when posting in a payment with operation equal to Purchase.
+The options you can choose from when creating a payment with key `operation` set
+to value `Purchase` are listed below.
 
 #### General
 
-* **Defining CallbackURL**: When implementing a scenario, it is optional to set
-  a [CallbackURL][callback-url] in the `POST` request. If callbackURL is set
-  Swedbank Pay will send a postback request to this URL when the consumer has
-  fulfilled the payment.
+{% include alert.html type="success" icon="link" body="**Defining
+`callbackUrl`**: When implementing a scenario, it is optional to set a
+`callbackUrl` in the `POST` request. If `callbackUrl` is set Swedbank Pay will
+send a `POST` request to this URL when the consumer has fulfilled the payment.
+[See the Callback API description for more
+information](/payments/card/other-features#callback)." %}
 
 ## Purchase flow
 
@@ -119,33 +94,7 @@ sequenceDiagram
   Merchant-->>-Browser: Payment Status  
 ```
 
-## Options after posting a payment
-
-* **If CallbackURL is set**: Whenever changes to the payment occur a [Callback
-  request][technical-reference-callback] will be posted to the callbackUrl,
-  which was generated when the payment was created.
-* You can create a reversal transactions by implementing the Reversal request.
-  You can also access and reverse a payment through your merchant pages in the
-  [Swedbank Pay admin portal][payex-admin-portal].
-
-### Reversal Sequence
-
-A reversal transcation need to match the Payee reference of a completed
-sales transaction.
-
-```mermaid
-sequenceDiagram
-  activate Merchant
-  Merchant->>-SwedbankPay: POST <Swish reversal>
-  activate SwedbankPay
-  SwedbankPay-->>-Merchant: transaction resource
-```
-
 ## Swish m-commerce Redirect
-
-> Swish is an one-phase payment instrument supported by the major Swedish banks. In
-  the redirect m-commerce scenario, Swedbank Pay performs a payment that the
-  payer confirms directly through the Swish mobile app.
 
 ## Introduction
 
