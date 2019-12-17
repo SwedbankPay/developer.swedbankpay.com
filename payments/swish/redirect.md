@@ -45,6 +45,13 @@ Swish registered mobile number (msisdn), connected to the Swish app." %}
 ![Consumer paying with Swish using Swedbank Pay]
 [swish-redirect-image]{:width="467px" height="364px"}
 
+## Operations
+
+The API requests are displayed in the [purchase flow](#purchase-flow-3). Swish
+is a one-phase payment instrument that is based on sales transactions not involving
+`capture` or `cancellation` operations. The options you can choose from when
+creating a payment with key operation set to value `Purchase` are listed below.
+
 {% include alert.html type="success" icon="link" body="**Defining
 `callbackUrl`**: When implementing a scenario, it is optional to set a
 `callbackUrl` in the `POST` request. If `callbackUrl` is set Swedbank Pay will
@@ -56,8 +63,6 @@ information](/payments/card/other-features#callback)." %}
 
 The sequence diagram below shows the requests you have to send to Swedbank Pay
 to make a purchase.
-The links will take you directly to the API description for the specific
-request.
 
 ```mermaid
 sequenceDiagram
@@ -98,13 +103,6 @@ sequenceDiagram
   Merchant-->>-Browser: Payment Status  
 ```
 
-## API Requests
-
-The API requests are displayed in the [purchase flow](#purchase-flow-3). Swish
-is a one-phase payment instrument that is based on sales transactions not involving
-capture or cancellation operations. The options you can choose from when
-creating a payment with key operation set to Value Purchase are listed below.
-
 {:.code-header}
 **Request**
 
@@ -120,17 +118,22 @@ Content-Type: application/json
         "operation": "Purchase",
         "intent": "Sale",
         "currency": "SEK",
-        "prices": [{
-            "type": "Swish",
-            "amount": 1500,
-            "vatAmount": 0
-        }],
+        "prices": [
+            {
+                "type": "Swish",
+                "amount": 1500,
+                "vatAmount": 0
+            }
+        ],
         "description": "Test Purchase",
         "payerReference": "AB1234",
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "urls": {
-            "hostUrls": ["https://example.com", "https://example.net"],
+            "hostUrls": [
+                "https://example.com",
+                "https://example.net"
+            ],
             "paymentUrl": "http://example.com/perform-payment",
             "completeUrl": "https://example.com/payment-completed",
             "cancelUrl": "https://example.com/payment-canceled",
@@ -189,7 +192,7 @@ Content-Type: application/json
 |          | └─➔&nbsp;`productCategory`            | `string`      | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                                                                                                                                                                                                                                                                                            |
 |          | └─➔&nbsp;`orderReference`             | `String(50)`  | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 |          | └─➔&nbsp;`prefillInfo.msisdn`             | `String(50)`  | Number will be prefilled on payment page, if valid. We support international phone numbers defined with country code prefix. ex +45.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-|          | └─➔&nbsp;`ecomOnlyEnabled`             | `boolean`  | If true you trigger the redirect payment scenario by default.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+|          | └─➔&nbsp;`ecomOnlyEnabled`             | `boolean`  | `true` if to only enable Swish on browser-based transactions.; otherwise `false` to also enable Swish transactions via mobile app.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 
 {:.code-header}
 **Response**
@@ -216,7 +219,7 @@ Content-Type: application/json
         "language": "nb-NO",
         "urls": {
             "id": "/psp/swish/payments/20dfbcb9-587a-4ce9-e63e-08d519f1802f/urls"
-    },
+        },
         "payeeInfo": {
             "id": "/psp/swish/payments/20dfbcb9-587a-4ce9-e63e-08d519f1802f/payeeinfo"
         }
