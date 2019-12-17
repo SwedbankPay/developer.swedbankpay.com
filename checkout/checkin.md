@@ -77,7 +77,7 @@ Content-Type: application/json
 
 {
     "operation": "initiate-consumer-session",
-    "language": "nb-NO"|"sv-SE"|"en-US",
+    "language": "sv-SE",
     "shippingAddressRestrictedToCountryCodes" : ["NO", "SE", "DK", ...]
 }
 ```
