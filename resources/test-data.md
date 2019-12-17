@@ -46,7 +46,7 @@ To test a logged in user in the Demo Shop, please use the following test data:
 | `Email`         | `leia.ahlstrom@payex.com` | The e-mail address of the payer.                                   |
 | `Mobile number` | `+46 739000001`           | The mobile phone number of the payer. Format Sweden: +46707777777. |
 | `SSN`           | `971020-2392`             | The social security number of the payer. Sweden: YYYYMMDDXXXX.     |
-| `ZipCode`       | `19792`                   | The city zip code. Format: Sweden XXXXX                            |
+| `ZipCode`       | `17674`                   | The city zip code. Format: Sweden XXXXX                            |
 
 ## Credit Card Test Data
 
