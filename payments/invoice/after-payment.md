@@ -347,7 +347,7 @@ capture, you will only cancel the remaining authorized amount.
 
 ```mermaid
 sequenceDiagram
-Merchant->>PayEx: Post `invoice cancellations`
+Merchant->>PayEx: Post <Invoice cancellations>
 activate Merchant
 activate PayEx
 PayEx-->>Merchant: transaction resource
