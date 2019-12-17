@@ -38,8 +38,6 @@ sidebar:
 
 {% include transactions-reference.md %}
 
-{% include callback-reference.md %}
-
 ## Problem messages
 
 When performing unsuccessful operations, the eCommerce API will respond with a
