@@ -86,7 +86,7 @@ Content-Type: application/json
 | Required | Property              | Type     | Description                                                                             |
 | :------: | :-------------------- | :------- | :-------------------------------------------------------------------------------------- |
 |  ✔︎︎︎︎︎  | `operation`           | `string` | `initiate-consumer-session`, the operation to perform.                                  |
-|  ✔︎︎︎︎︎  | `language`            | `string` | Selected language to be used in checkin module. Supported values nb-NO, sv-SE and en-US |
+|  ✔︎︎︎︎︎  | `language`            | `string` | Selected language to be used in Checkin. Supported values are `nb-NO`, `sv-SE` and `en-US` |
 |  ✔︎︎︎︎︎  | `shippingAddressRestrictedToCountryCodes`            | `string` | List of supported shipping countries for merchant. Using ISO-3166 standard.  |
 
 When the request has been sent, a response containing an array of operations that can be acted upon will be returned:
