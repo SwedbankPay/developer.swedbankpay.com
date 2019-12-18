@@ -130,7 +130,7 @@ Content-Type: application/json
           "vatAmount": 250,
           "description": "Test transaction",
           "payeeReference": "AH123456",
-          "isOperational": "true",
+          "isOperational": true,
           "reconciliationNumber": 737283,
           "operations": []
         }
