@@ -51,7 +51,7 @@ the given operation.
 
 ## Vipps transactions
 
-All card specific transactions are described below.
+All Vipps after payment transactions are described below.
 
 ## Authorizations
 
@@ -226,7 +226,7 @@ Content-Type: application/json
 ## Create capture transaction
 
 A `capture` transaction can be created after a completed authorization by
-sending a request to `/psp/vipps/payments/<payment-id>/captures`.
+finding the `rel` `create-capture`.
 
 {:.code-header}
 **Request**
@@ -358,7 +358,7 @@ Content-Type: application/json
 
 ## Create cancellation transaction
 
-Perform a `Post` request to cancel a previously created payment.
+A payment may be cancelled if the `rel` `create-cancellation` is available.
 You can only cancel a payment, or part of it, if it has yet to be captured.
 To revert a capture, or part of a capture, you must perform a `reversal`.
 Performing a cancellation will cancel all remaning capture amounts on a payment.
@@ -486,8 +486,8 @@ Content-Type: application/json
 
 ### Create reversal transaction
 
-A `reversal` transaction can be created after a completed authorization by
-sending a request to `/psp/vipps/payments/<payment-id>/reversals`.
+A `reversal` transaction can be created if the `rel` `create-reversal` is
+available.
 
 {:.code-header}
 **Request**
