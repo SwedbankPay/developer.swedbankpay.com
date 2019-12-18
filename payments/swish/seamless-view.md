@@ -132,7 +132,7 @@ Sales information. This will generate a payment object with a unique
 ### Operations
 
 The API requests are displayed in the purchase flow above.
-You can [create a card `payment`][create-payment] with following `operation`
+You can [create a Swish `payment`][create-payment] with following `operation`
 options:
 
 * [Purchase][purchase] (We use this value in our examples)
