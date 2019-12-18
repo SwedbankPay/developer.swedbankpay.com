@@ -1,3 +1,5 @@
+{% assign payment-order = include.payment-order | default: false %}
+
 ## Callback
 
 When a change or update from the back-end system are made on a payment or
@@ -27,8 +29,6 @@ about this update.
   * 864 seconds
   * 1265 seconds
 * The callback is sent from the following IP address: `82.115.146.1`
-
-{% assign payment-order = include.payment-order | default: false %}
 
 {% if payment-order %}
 {:.code-header}

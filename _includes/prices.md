@@ -7,7 +7,7 @@ The `prices` resource lists the prices related to a specific payment.
 **Request**
 
 ```http
-GET /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/prices/ HTTP/1.1
+GET /psp/creditcard/payments/{{ page.paymentId }}/prices/ HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -21,9 +21,9 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "payment": "/psp/creditcard/payments/{{ page.paymentId }}",
     "prices": {
-        "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/prices",
+        "id": "/psp/creditcard/payments/{{ page.paymentId }}/prices",
         "priceList": [
             {
                 "type": "VISA",

@@ -54,11 +54,11 @@ capture or cancel. For a full list of the available operations, see the
 [techincal reference][payment-order-operations].
 
 {:.table .table-striped}
-| Operation                          | Description                                                                                                                                                                                                                                                                    |
-| :--------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `create-paymentorder-capture`      | The second part of a two-phase transaction where the authorized amount is sent from the payer to the payee. It is possible to do a part-capture on a subset of the authorized amount. Several captures on the same payment are possible, up to the total authorization amount. |
-| `create-paymentorder-cancel` | Used to cancel authorized and not yet captured transactions. If a cancellation is performed after doing a part-capture, it will only affect the not yet captured authorization amount.                                                                                         |
-| `create-paymentorder-reversal`     | Used to reverse a payment. It is only possible to reverse a payment that has been captured and not yet reversed.                                                                                                                                                               |
+| Operation                      | Description                                                                                                                                                                                                                                                                    |
+| :----------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `create-paymentorder-capture`  | The second part of a two-phase transaction where the authorized amount is sent from the payer to the payee. It is possible to do a part-capture on a subset of the authorized amount. Several captures on the same payment are possible, up to the total authorization amount. |
+| `create-paymentorder-cancel`   | Used to cancel authorized and not yet captured transactions. If a cancellation is performed after doing a part-capture, it will only affect the not yet captured authorization amount.                                                                                         |
+| `create-paymentorder-reversal` | Used to reverse a payment. It is only possible to reverse a payment that has been captured and not yet reversed.                                                                                                                                                               |
 
 To identify the operations that are available we need to do a `GET` request
 against the URI of `paymentorder.id`:
@@ -67,7 +67,7 @@ against the URI of `paymentorder.id`:
 **Request**
 
 ```http
-GET /psp/paymentorders/b80be381-b572-4f1e-9691-08d5dd095bc4 HTTP/1.1
+GET /psp/paymentorders/{{ page.paymentOrderId }} HTTP/1.1
 Authorization: Bearer <AccessToken>
 ```
 
@@ -84,30 +84,30 @@ Content-Type: application/json
 
 {
     "paymentOrder": {
-        "id": "/psp/paymentorders/b80be381-b572-4f1e-9691-08d5dd095bc4"
+        "id": "/psp/paymentorders/{{ page.paymentOrderId }}"
     },
     "operations": [
         {
             "method": "PATCH",
-            "href": "https://api.externalintegration.payex.com/psp/paymentorders/b80be381-b572-4f1e-9691-08d5dd095bc4",
+            "href": "https://api.externalintegration.payex.com/psp/paymentorders/{{ page.paymentOrderId }}",
             "rel": "update-paymentorder-updateorder",
             "contentType": "application/json"
         },
         {
             "method": "POST",
-            "href": "https://api.externalintegration.payex.com/psp/paymentorders/b80be381-b572-4f1e-9691-08d5dd095bc4/captures",
+            "href": "https://api.externalintegration.payex.com/psp/paymentorders/{{ page.paymentOrderId }}/captures",
             "rel": "create-paymentorder-capture",
             "contentType": "application/json"
         },
         {
             "method": "POST",
-            "href": "https://api.externalintegration.payex.com/psp/paymentorders/b80be381-b572-4f1e-9691-08d5dd095bc4/cancellations",
+            "href": "https://api.externalintegration.payex.com/psp/paymentorders/{{ page.paymentOrderId }}/cancellations",
             "rel": "create-paymentorder-cancel",
             "contentType": "application/json"
         },
         {
             "method": "POST",
-            "href": "https://api.externalintegration.payex.com/psp/paymentorders/b80be381-b572-4f1e-9691-08d5dd095bc4/reversals",
+            "href": "https://api.externalintegration.payex.com/psp/paymentorders/{{ page.paymentOrderId }}/reversals",
             "rel": "create-paymentorder-reversal",
             "contentType": "application/json"
         }

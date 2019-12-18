@@ -19,7 +19,7 @@ response, enabling you to access information from these sub-resources.
 **Expansion**
 
 ```http
-GET /psp/creditcard/payments/5adc265f?$expand=urls,authorizations HTTP/1.1
+GET /psp/creditcard/payments/{{ page.paymentId }}?$expand=urls,authorizations HTTP/1.1
 Host: api.externalintegration.payex.com
 ```
 

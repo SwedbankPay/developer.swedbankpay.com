@@ -10,7 +10,7 @@ specific payment.
 **Request**
 
 ```http
-GET /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions HTTP/1.1
+GET /psp/creditcard/payments/{{ page.paymentId }}/transactions HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -24,11 +24,11 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "payment": "/psp/creditcard/payments/{{ page.paymentId }}",
     "transactions": {
-        "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions",
+        "id": "/psp/creditcard/payments/{{ page.paymentId }}/transactions",
         "transactionList": [{
-            "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
+            "id": "/psp/creditcard/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
             "created": "2016-09-14T01:01:01.01Z",
             "updated": "2016-09-14T01:01:01.03Z",
             "type": "Authorization",

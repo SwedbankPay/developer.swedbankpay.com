@@ -161,7 +161,7 @@ Content-Type: application/json
 
 {
     "payment": {
-        "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+        "id": "/psp/creditcard/payments/{{ page.paymentId }}",
         "number": 1234567890,
         "created": "2016-09-14T13:21:29.3182115Z",
         "updated": "2016-09-14T13:21:57.6627579Z",
@@ -174,15 +174,15 @@ Content-Type: application/json
         "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
         "userAgent": "Mozilla/5.0",
         "language": "nb-NO",
-        "transactions": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions" },
-        "verifications": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/verifications" },
-        "urls" : { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/urls" },
-        "payeeInfo" : { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeInfo" },
-        "settings": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/settings" }
+        "transactions": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/transactions" },
+        "verifications": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/verifications" },
+        "urls" : { "id": "/psp/creditcard/payments/{{ page.paymentId }}/urls" },
+        "payeeInfo" : { "id": "/psp/creditcard/payments/{{ page.paymentId }}/payeeInfo" },
+        "settings": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/settings" }
     },
     "operations": [
         {
-            "href": "https://api.externalintegration.payex.com/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+            "href": "https://api.externalintegration.payex.com/psp/creditcard/payments/{{ page.paymentId }}",
             "rel": "update-payment-abort",
             "method": "PATCH",
             "contentType": "application/json"
@@ -202,7 +202,7 @@ Content-Type: application/json
 
         {
             "method": "POST",
-            "href": "https://ecom.dev.payex.com/psp/creditcard/confined/payments/{paymentId:guid}/verifications",
+            "href": "https://ecom.dev.payex.com/psp/creditcard/confined/payments/{{ page.paymentId }}/verifications",
             "rel": "direct-verification",
             "contentType": "application/json"
         }
