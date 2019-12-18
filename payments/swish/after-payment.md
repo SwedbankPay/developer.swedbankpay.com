@@ -142,7 +142,7 @@ Content-Type: application/json
 
 ### Create Sales transaction
 
-In browser based solutions the payers `msisdn`(mobile number) is required.
+In browser based solutions the payers `msisdn` (mobile number) is required.
 This is managed either by sending a `POST` request as seen below,
 or by redirecting the end-user to the hosted payment page.
 The `msisdn` is only required for browser based solutions.
