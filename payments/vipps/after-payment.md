@@ -41,13 +41,13 @@ The only thing that should be hard coded in the client is the value of the
 the given operation.
 
 {:.table .table-striped}
-| Operation                | Description                                                                                 |
-| :----------------------- | :------------------------------------------------------------------------------------------ |
-| `update-payment-abort`   | [Aborts][other-features-abort] the payment before any financial transactions are performed. |
-| `redirect-authorization` | Used to redirect the consumer to Swedbank Pay Payments and the authorization UI.            |
-| `create-capture`         | Creates a [`capture`][other-features-capture].                                              |
-| `create-cancellation`    | Creates a [`cancellation`][other-features-cancel].                                          |
-| `create-reversal`        | Creates a [`reversal`][other-features-reverse].                                             |
+| Operation                | Description                                                                      |
+| :----------------------- | :------------------------------------------------------------------------------- |
+| `update-payment-abort`   | [Aborts][abort] the payment before any financial transactions are performed.     |
+| `redirect-authorization` | Used to redirect the consumer to Swedbank Pay Payments and the authorization UI. |
+| `create-capture`         | Creates a [`capture`][capture].                                                  |
+| `create-cancellation`    | Creates a [`cancellation`][cancel].                                              |
+| `create-reversal`        | Creates a [`reversal`][reverse].                                                 |
 
 ## Vipps transactions
 
@@ -163,7 +163,7 @@ Content-Type: application/json
 | `payment`              | `string` | The relative URI of the payment this authorization transaction resource belongs to. |
 | `authorization`        | `string` | The authorization object.                                                           |
 | └➔&nbsp;`id`           | `string` | The relative URI of the current authorization transaction resource.                 |
-| └➔&nbsp; `transaction` | `object` | The object representation of the generic [transaction][other-features-transaction]. |
+| └➔&nbsp; `transaction` | `object` | The object representation of the generic [transaction][transaction].                |
 
 ## Captures
 
@@ -254,7 +254,7 @@ Content-Type: application/json
 |    ✔︎    | └➔&nbsp;`amount`         | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 NOK`, `5000` = `50.00 NOK`. |
 |    ✔︎    | └➔&nbsp;`vatAmount`      | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 NOK`, `5000` = `50.00 NOK`. |
 |    ✔︎    | └➔&nbsp;`description`    | `string`     | A textual description of the capture transaction.                                                                         |
-|    ✔︎    | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the capture transaction. See [`payeeReference`][other-features-payeeReference] for details.        |
+|    ✔︎    | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the capture transaction. See [`payeeReference`][payeeReference] for details.                       |
 
 The `capture` resource contains information about the capture transaction made
 against a Vipps payment.
@@ -291,12 +291,12 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property              | Type     | Description                                                                           |
-| :-------------------- | :------- | :------------------------------------------------------------------------------------ |
-| `payment`             | `string` | The relative URI of the payment this capture transaction belongs to.                  |
-| `capture`             | `string` | The capture object, containing a transaction object.                                  |
-| └➔&nbsp;`id`          | `string` | The relative URI of the created capture transaction.                                  |
-| └➔&nbsp;`transaction` | `object` | The object representation of the generic [`transaction`][other-features-transaction]. |
+| Property              | Type     | Description                                                            |
+| :-------------------- | :------- | :--------------------------------------------------------------------- |
+| `payment`             | `string` | The relative URI of the payment this capture transaction belongs to.   |
+| `capture`             | `string` | The capture object, containing a transaction object.                   |
+| └➔&nbsp;`id`          | `string` | The relative URI of the created capture transaction.                   |
+| └➔&nbsp;`transaction` | `object` | The object representation of the generic [`transaction`][transaction]. |
 
 ## Cancellations
 
@@ -381,11 +381,11 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property                 | Type         | Description                                                                                                             |
-| :------: | :----------------------- | :----------- | :---------------------------------------------------------------------------------------------------------------------- |
-|  ✔︎︎︎︎︎  | `transaction`            | `object`     | The transaction object describing the cancellation request.                                                             |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`description`    | `string`     | A textual description of the reason for the cancellation.                                                               |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the cancellation transaction. See [`payeeReference`][other-features-payeeReference] for details. |
+| Required | Property                 | Type         | Description                                                                                              |
+| :------: | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------- |
+|  ✔︎︎︎︎︎  | `transaction`            | `object`     | The transaction object describing the cancellation request.                                              |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`description`    | `string`     | A textual description of the reason for the cancellation.                                                |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the cancellation transaction. See [`payeeReference`][payeeReference] for details. |
 
 The `cancel` resource contains information about a cancellation transaction made
 against a payment.
@@ -421,12 +421,12 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property              | Type     | Description                                                                         |
-| :-------------------- | :------- | :---------------------------------------------------------------------------------- |
-| `payment`             | `string` | The relative URI of the payment this cancellation transaction belongs to.           |
-| `cancellation`        | `object` | The cancellation resource.                                                          |
-| └➔&nbsp;`id`          | `string` | The relative URI of the current cancellation transaction resource.                  |
-| └➔&nbsp;`transaction` | `object` | The object representation of the generic [transaction][other-features-transaction]. |
+| Property              | Type     | Description                                                               |
+| :-------------------- | :------- | :------------------------------------------------------------------------ |
+| `payment`             | `string` | The relative URI of the payment this cancellation transaction belongs to. |
+| `cancellation`        | `object` | The cancellation resource.                                                |
+| └➔&nbsp;`id`          | `string` | The relative URI of the current cancellation transaction resource.        |
+| └➔&nbsp;`transaction` | `object` | The object representation of the generic [transaction][transaction].      |
 
 ## Reversals
 
@@ -515,7 +515,7 @@ Content-Type: application/json
 |  ✔︎︎︎︎︎  | └➔&nbsp;`amount`         | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 NOK`, `5000` = `50.00 NOK`. |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`vatAmount`      | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 NOK`, `5000` = `50.00 NOK`. |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`description`    | `string`     | A textual description of the capture                                                                                      |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the reversal transaction. See [`payeeReference`][other-features-payeeReference] for details.       |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the reversal transaction. See [`payeeReference`][payeeReference] for details.                      |
 
 The `reversal` resource contains information about a reversal transaction made
 against a payment.
@@ -552,12 +552,12 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property              | Type     | Description                                                                           |
-| :-------------------- | :------- | :------------------------------------------------------------------------------------ |
-| `payment`             | `string` | The relative URI of the payment this capture transaction belongs to.                  |
-| `reversal`            | `object` | The reversal object.                                                                  |
-| └➔&nbsp;`id`          | `string` | The relative URI of the created capture transaction.                                  |
-| └➔&nbsp;`transaction` | `object` | The object representation of the generic [`transaction`][other-features-transaction]. |
+| Property              | Type     | Description                                                            |
+| :-------------------- | :------- | :--------------------------------------------------------------------- |
+| `payment`             | `string` | The relative URI of the payment this capture transaction belongs to.   |
+| `reversal`            | `object` | The reversal object.                                                   |
+| └➔&nbsp;`id`          | `string` | The relative URI of the created capture transaction.                   |
+| └➔&nbsp;`transaction` | `object` | The object representation of the generic [`transaction`][transaction]. |
 
 {% include iterator.html
         prev_href="seamless-view"
@@ -565,9 +565,9 @@ Content-Type: application/json
         next_href="other-features"
         next_title="Next: Other Features" %}
 
-[other-features-abort]: /payments/vipps/other-features#abort
-[other-features-cancel]: /payments/vipps/other-features#cancel
-[other-features-capture]: /payments/vipps/other-features#capture-sequence
-[other-features-payeeReference]: /payments/vipps/other-features#payee-reference
-[other-features-reverse]: /payments/vipps/other-features#reversal
-[other-features-transaction]: /payments/vipps/other-features#transactions
+[abort]: /payments/vipps/other-features#abort
+[cancel]: #cancellations
+[capture]: #captures
+[payeeReference]: /payments/vipps/other-features#payee-reference
+[reverse]: #reversals
+[transaction]: /payments/vipps/other-features#transactions
