@@ -1,3 +1,22 @@
+---
+title: Swedbank Pay Payments Redirect
+sidebar:
+  navigation:
+  - title: Vipps Payments
+    items:
+    - url: /payments/vipps
+      title: Introduction
+    - url: /payments/vipps/redirect
+      title: Redirect
+    - url: /payments/vipps/seamless-view
+      title: Seamless View
+    - url: /payments/vipps/after-payment
+      title: After Payment
+    - url: /payments/vipps/other-features
+      title: Other Features
+---
+
+
 {% include alert-development-section.md %}
 
 {% include jumbotron.html body="**Vipps Payments** is a two-phase
@@ -10,18 +29,18 @@ that the payer must confirm through the Vipps mobile app." %}
 
 * When the payer starts the purchase process, you make a `POST` request towards
   Swedbank Pay with the collected `Purchase` information.
-  This will generate a payment object with a unique `paymentID`.
-  You either receive a Redirect URL to a hosted page or a JavaScript source
+* This will generate a payment object with a unique `paymentID`.
+* You will either receive a Redirect URL to a hosted page or a JavaScript source
   in response.
 * You need to [redirect][reference-redirect] the payer to the Redirect payment
   where the user is prompted to enter the registered mobile number.
   This triggers a `POST` towards Swedbank Pay.
 * Swedbank Pay handles the dialogue with Vipps and the consumer confirms the
   purchase in the Vipps app.
-* If CallbackURL is set, the user will receive a payment callback when the Vipps
+* If `callbackURL` is set, the user will receive a payment callback when the Vipps
   dialogue is completed.
-* Lastly, the user needs to do a `GET` request, containing the `paymentID`
-* generated in the first step, to receive the state of the transaction.
+* Lastly, the user needs to send a `GET` request, containing the `paymentID`
+  generated in the first step, to receive the state of the transaction.
 
 You redirect the payer to Swedbank Pay hosted payment page to collect the
 consumers mobile number.
@@ -311,11 +330,6 @@ Content-Type: application/json
 |  ✔︎︎︎︎︎  | └➔&nbsp;`authorizations.authorizationList[]`                            | `object`      | The `authorization` transaction object described in the authorization resource below.
   |
 
-### Options before posting a payment
-
-All valid options when posting a payment with operation equal to Purchase,
-are described in [the technical reference][vipps-payments].
-
 {% include iterator.html prev_href="./"
                          prev_title="Back: Introduction"
                          next_href="seamless-view"
@@ -325,8 +339,8 @@ are described in [the technical reference][vipps-payments].
 [Vipps-screenshot-1]: /assets/img/checkout/vipps-hosted-payment.png
 [Vipps-screenshot-2]: /assets/img/checkout/vipps-hosted-payment-no-paymenturl.png
 [callbackurl]: /payments/vipps/other-features#callback
-[cancel]: /payments/vipps/other-features#cancel-sequence
-[capture]: /payments/vipps/other-features#capture-sequence
+[cancel]: /payments/vipps/other-features#cancellations
+[capture]: /payments/vipps/after-payment#captures
 [seamless-view]: /payments/vipps/seamless-view
 [reference-redirect]: /payments/vipps/redirect
 [vipps-payments]: /payments/vipps/other-features
