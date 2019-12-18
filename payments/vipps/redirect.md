@@ -1,5 +1,5 @@
 ---
-title: Swedbank Pay Payments Redirect
+title: Swedbank Pay Payments Vipps Redirect
 sidebar:
   navigation:
   - title: Vipps Payments
