@@ -29,4 +29,4 @@ defaults:
       layout: default
       paymentId: 7E6CDFC3-1276-44E9-9992-7CF4419750E1
       transactionId: EC2A9B09-601A-42AE-8E33-A5737E1CF177
-      paymentOrderId: 09CCD29A-7C4F-4752-9396-12100CBFECCE
+      paymentOrderId: 09ccd29a-7c4f-4752-9396-12100cbfecce
