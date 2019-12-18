@@ -64,39 +64,38 @@ request.
 sequenceDiagram
   Browser->>Merchant: start purchase (pay with VIPPS)
   activate Merchant
-  Merchant->>SwedbankPay: POST <Create Vipps payment>
+
+  Merchant->>SwedbankPay: POST <Create  Vipps payment>
   note left of Merchant: First API request
   activate SwedbankPay
   SwedbankPay-->>Merchant: payment resource
   deactivate SwedbankPay
   Merchant-->>Browser: Redirect to payment page
-  note left of Browser:redirect to Swedbank Pay
+  note left of Browser:redirect to PayEx
   Browser-->>SwedbankPay: enter mobile number
   activate SwedbankPay
 
-  SwedbankPay-->>VippsAPI: Initialize Vipps payment
-  activate VippsAPI
-  VippsAPI-->>SwedbankPayd: response
+  SwedbankPay-->>Vipps_API: Initialize Vipps payment
+  activate Vipps_API
+  Vipps_API-->>SwedbankPay: response
   SwedbankPay-->>Browser: Authorization response (State=Pending)
-  deactivate SwedbankPay
   note left of Browser: check your phone
   deactivate Merchant
 
-  VippsAPI-->>VippsApp: Confirm Payment UI
-  VippsApp-->>VippsApp: Confirmation Dialogue
-  VippsApp-->>VippsAPI: Confirmation
-  VippsAPI-->>SwedbankPay: make payment
+  Vipps_API-->>Vipps_App: Confirm Payment UI
+  Vipps_App-->>Vipps_App: Confirmation Dialogue
+  Vipps_App-->>Vipps_API: Confirmation
+  Vipps_API-->>SwedbankPay: make payment
   activate SwedbankPay
   SwedbankPay-->>SwedbankPay: execute payment
-  SwedbankPay-->>VippsAPI: response
+  SwedbankPay-->>Vipps_API: response
   deactivate SwedbankPay
-  deactivate VippsAPI
+  deactivate Vipps_API
   SwedbankPay-->>SwedbankPay: authorize result
   SwedbankPay-->>Browser: authorize result
   Browser-->>Merchant: Redirect to merchant
   note left of Browser: Redirect to merchant
   activate Merchant
-  activate SwedbankPay
   SwedbankPay-->>Merchant: Payment Callback
   Merchant-->>SwedbankPay: GET <Vipps payments>
   note left of Merchant: Second API request
