@@ -18,13 +18,14 @@ sidebar:
 
 {% include alert-development-section.md %}
 
-{% include jumbotron.html body="Vipps is a two-phase payment instrument supported
-by the major norwegian banks. In the redirect to Swedbank Pay Payments
-scenario, Swedbank Pay receives a mobile number (MSISDN) from the payer through
-Swedbank Pay Payments. Swedbank Pay performs a payment that the payer must
-confirm through the Vipps mobile app." %}
+{% include jumbotron.html body="The Seamless View scenario represents the opportunity to implement Vipps directly in your webshop." %}
 
 ## Introduction
+
+Vipps is a two-phase payment instrument supported by the major norwegian banks.
+In the Seamless View scenario, Swedbank Pay receives a mobile number (MSISDN)
+from the payer through Swedbank Pay Payments. Swedbank Pay performs a payment
+that the payer must confirm through the Vipps mobile app.
 
 * When the payer starts the purchase process, you make a `POST` request towards
   Swedbank Pay with the collected `Purchase` information. This will generate a
@@ -33,7 +34,7 @@ confirm through the Vipps mobile app." %}
 * You need to [redirect][reference-redirect] the payer to the Redirect payment
   page or embed the script source on you site to create a
   [Hosted View][hosted-view] in an `iFrame`; where she is prompted to enter the
-  registered mobile number. This triggers a `POST` towards PayEx.
+  registered mobile number. This triggers a `POST` towards Swedbank Pay.
 * Swedbank Pay handles the dialogue with Vipps and the consumer confirms the
   purchase in the Vipps app.
 * If CallbackURL is set you will receive a payment callback when the Vipps
@@ -42,6 +43,49 @@ confirm through the Vipps mobile app." %}
   to receive the state of the transaction.
 
 ![Vipps_flow_PaymentPages.png]
+
+## Purchase flow
+
+The sequence diagram below shows the two requests you have to send to
+Swedbank Pay to make a purchase.
+The links will take you directly to the API description for the specific
+request.
+
+```mermaid
+sequenceDiagram
+    Browser->>Merchant: start purchase (pay with VIPPS)
+    activate Merchant
+    Merchant->>-SwedbankPay.FrontEnd: POST <Create  Vipps payment>
+    activate SwedbankPay.FrontEnd
+    note left of Merchant: First API request
+    SwedbankPay.FrontEnd-->>-Merchant: payment resource
+    activate Merchant
+    Merchant-->>-Browser: Redirect to payment page
+    activate Browser
+    note left of Browser:redirect to Swedbank Pay
+    Browser-->>-SwedbankPay.FrontEnd: enter mobile number
+    activate SwedbankPay.FrontEnd
+
+    SwedbankPay.FrontEnd-->>-Vipps.API: Initialize Vipps payment
+    activate Vipps.API
+    Vipps.API-->>-SwedbankPay.FrontEnd: response
+    activate SwedbankPay.FrontEnd
+    SwedbankPay.FrontEnd-->>-Browser: Authorization response (State=Pending)
+    activate Browser
+    note left of Browser: check your phone
+
+    Vipps.API-->>Vipps_App: Confirm Payment UI
+    activate Vipps_App
+    Vipps_App-->>Vipps_App: Confirmation Dialogue
+    Vipps_App-->>-Vipps.API: Confirmation
+    activate Vipps.API
+    Vipps.API-->>-SwedbankPay.BackEnd: make payment
+    activate SwedbankPay.BackEnd
+    SwedbankPay.BackEnd-->>SwedbankPay.BackEnd: execute payment
+    SwedbankPay.BackEnd-->>Vipps.API: response
+    SwedbankPay.BackEnd-->>-SwedbankPay.FrontEnd: authorize result
+    Merchant-->>Browser: Display authorize result
+```
 
 ### Payment Url
 
@@ -82,47 +126,7 @@ are described in [the technical reference][vipps-payments].
   If `callbackURL` is set Swedbank Pay will send a postback request to this URL
   when the consumer has fulfilled the payment.
 
-## Purchase flow
 
-The sequence diagram below shows the two requests you have to send to
-Swedbank Pay to make a purchase.
-The links will take you directly to the API description for the specific
-request.
-
-```mermaid
-sequenceDiagram
-  Browser->>Merchant: start purchase (pay with VIPPS)
-  activate Merchant
-
-  Merchant->>PayEx.FrontEnd: POST <Create  Vipps payment>
-  note left of Merchant: First API request
-  activate PayEx.FrontEnd
-  PayEx.FrontEnd-->>Merchant: payment resource
-  deactivate PayEx.FrontEnd
-  Merchant-->>Browser: Redirect to payment page
-  note left of Browser:redirect to PayEx
-  Browser-->>PayEx.FrontEnd: enter mobile number
-  activate PayEx.FrontEnd
-
-  PayEx.FrontEnd-->>Vipps.API: Initialize Vipps payment
-  activate Vipps.API
-  Vipps.API-->>PayEx.FrontEnd: response
-  PayEx.FrontEnd-->>Browser: Authorization response (State=Pending)
-  note left of Browser: check your phone
-  deactivate Merchant
-
-  Vipps.API-->>Vipps_App: Confirm Payment UI
-  Vipps_App-->>Vipps_App: Confirmation Dialogue
-  Vipps_App-->>Vipps.API: Confirmation
-  Vipps.API-->>PayEx.BackEnd: make payment
-  activate PayEx.BackEnd
-  PayEx.BackEnd-->>PayEx.BackEnd: execute payment
-  PayEx.BackEnd-->>Vipps.API: response
-  deactivate PayEx.BackEnd
-  deactivate Vipps.API
-  PayEx.BackEnd-->>PayEx.FrontEnd: authorize result
-  Merchant-->>Browser: Display authorize result
-```
 
 {% include iterator.html
         prev_href="redirect"
