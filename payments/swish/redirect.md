@@ -28,7 +28,7 @@ Swish registered mobile number (msisdn), connected to the Swish app." %}
 * When the payer starts the purchase process, through a mobile device that hosts
   the her Swish app, you make a `POST` request towards Swedbank Pay with the
   collected Purchase information. This will generate a payment object with a
-  unique paymentID. You either receive a Redirect URL to a hosted page or a
+  unique `paymentID`. You either receive a Redirect URL to a hosted page or a
   JavaScript source in response.
 * You need to [redirect][redirect] the payer to the Redirect payment.
   The payment flow is identified as m-commerce, as the purchase is
