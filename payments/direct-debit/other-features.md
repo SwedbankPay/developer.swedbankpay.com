@@ -244,13 +244,13 @@ Content-Type: application/json
             {
                 "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/sales/12345678-1234-1234-1234-123456789012",
                 "selectedBank": "NordeaFI",
-                "deviceIsMobile": "TRUE|FALSE",
+                "deviceIsMobile": "TRUE",
                 "transaction": {
                     "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
                     "created": "2018-09-14T01:01:01.01Z",
                     "updated": "2018-09-14T01:01:01.03Z",
                     "type": "Sale",
-                    "state": "Initialized|Completed|Failed",
+                    "state": "Initialized",
                     "number": 1234567890,
                     "amount": 1000,
                     "vatAmount": 250,
@@ -260,20 +260,20 @@ Content-Type: application/json
                     "failedActivityName": "",
                     "failedErrorCode": "",
                     "failedErrorDescription": "",
-                    "isOperational": "TRUE|FALSE",
+                    "isOperational": "FALSE",
                     "operations": []
                 }
             },
             {
                 "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/sales/12345678-1234-1234-1234-123456789013",
-                "selectedBank": "NordeaFI|...",
-                "deviceIsMobile": "TRUE|FALSE",
+                "selectedBank": "NordeaFI",
+                "deviceIsMobile": "TRUE",
                 "transaction": {
                     "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789013",
                     "created": "2018-09-14T01:01:01.01Z",
                     "updated": "2018-09-14T01:01:01.03Z",
                     "type": "Sale",
-                    "state": "Initialized|Completed|Failed",
+                    "state": "Initialized",
                     "number": 1234567890,
                     "amount": 1000,
                     "vatAmount": 250,
@@ -283,7 +283,7 @@ Content-Type: application/json
                     "failedActivityName": "",
                     "failedErrorCode": "",
                     "failedErrorDescription": "",
-                    "isOperational": "TRUE|FALSE",
+                    "isOperational": "TRUE",
                     "operations": [
                         {
                             "href": "https://api.externalintegration.payex.com/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
@@ -332,13 +332,13 @@ Content-Type: application/json
                     "created": "2016-09-14T01:01:01.01Z",
                     "updated": "2016-09-14T01:01:01.03Z",
                     "type": "Reversal",
-                    "state": "Initialized|Completed|Failed",
+                    "state": "Initialized",
                     "number": 1234567890,
                     "amount": 1000,
                     "vatAmount": 250,
                     "description": "Test transaction",
                     "payeeReference": "AH123456",
-                    "isOperational": "TRUE|FALSE",
+                    "isOperational": "TRUE",
                     "operations": []
                 }
             }
@@ -404,13 +404,13 @@ Content-Type: application/json
             "created": "2016-09-14T01:01:01.01Z",
             "updated": "2016-09-14T01:01:01.03Z",
             "type": "Reversal",
-            "state": "Initialized|Completed|Failed",
+            "state": "Initialized",
             "number": 1234567890,
             "amount": 1000,
             "vatAmount": 250,
             "description": "Test transaction",
             "payeeReference": "AH123456",
-            "isOperational": "TRUE|FALSE",
+            "isOperational": "TRUE",
             "operations": []
         }
     }
