@@ -6,7 +6,7 @@ If we want to reverse a previously captured amount, we need to perform
 **Request**
 
 ```http
-POST /psp/paymentorders/b80be381-b572-4f1e-9691-08d5dd095bc4/reversals HTTP/1.1
+POST /psp/paymentorders/{{ page.paymentOrderId }}/reversals HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -40,11 +40,11 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/creditcard/payments/d34bceb7-2b19-488a-cbf2-08d5df73b251",
+    "payment": "/psp/creditcard/payments/{{ page.paymentOrderId }}",
     "reversals": {
-        "id": "/psp/creditcard/payments/d34bceb7-2b19-488a-cbf2-08d5df73b251/cancellations/af43be30-8dfa-4458-2222-08d5df73b9f1",
+        "id": "/psp/creditcard/payments/{{ page.paymentOrderId }}/cancellations/{{ page.transactionId }}",
         "transaction": {
-            "id": "/psp/creditcard/payments/d34bceb7-2b19-488a-cbf2-08d5df73b251/transactions/af43be30-8dfa-4458-2222-08d5df73b9f1",
+            "id": "/psp/creditcard/payments/{{ page.paymentOrderId }}/transactions/{{ page.transactionId }}",
             "type": "Reversal",
             "state": "Completed",
             "amount": 15610,
