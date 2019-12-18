@@ -1,25 +1,7 @@
----
-title: Swedbank Pay Payments Vipps Redirect
-sidebar:
-  navigation:
-  - title: Vipps Payments
-    items:
-    - url: /payments/vipps
-      title: Introduction
-    - url: /payments/vipps/redirect
-      title: Redirect
-    - url: /payments/vipps/seamless-view
-      title: Seamless View
-    - url: /payments/vipps/after-payment
-      title: After Payment
-    - url: /payments/vipps/other-features
-      title: Other Features
----
-
 {% include alert-development-section.md %}
 
 {% include jumbotron.html body="**Vipps Payments** is a two-phase
-payment instrument supported by the major norwegian banks. In the redirect to
+payment instrument supported by the major Norwegian banks. In the redirect
 scenario, Swedbank Pay receives a mobile number (msisdn)
 from the payer through Swedbank Pay Payments. Swedbank Pay performs a payment
 that the payer must confirm through the Vipps mobile app." %}
@@ -82,43 +64,44 @@ request.
 sequenceDiagram
   Browser->>Merchant: start purchase (pay with VIPPS)
   activate Merchant
-
-  Merchant->>Swedbank_Pay_FrontEnd: POST <Create  Vipps payment>
+  Merchant->>SwedbankPay: POST <Create Vipps payment>
   note left of Merchant: First API request
-  activate Swedbank_Pay_FrontEnd
-  Swedbank_Pay_FrontEnd-->>Merchant: payment resource
-  deactivate Swedbank_Pay_FrontEnd
+  activate SwedbankPay
+  SwedbankPay-->>Merchant: payment resource
+  deactivate SwedbankPay
   Merchant-->>Browser: Redirect to payment page
   note left of Browser:redirect to Swedbank Pay
-  Browser-->>Swedbank_Pay_FrontEnd: enter mobile number
-  activate Swedbank_Pay_FrontEnd
+  Browser-->>SwedbankPay: enter mobile number
+  activate SwedbankPay
 
-  Swedbank_Pay_FrontEnd-->>Vipps_API: Initialize Vipps payment
-  activate Vipps_API
-  Vipps_API-->>Swedbank_Pay_FrontEnd: response
-  Swedbank_Pay_FrontEnd-->>Browser: Authorization response (State=Pending)
+  SwedbankPay-->>VippsAPI: Initialize Vipps payment
+  activate VippsAPI
+  VippsAPI-->>SwedbankPayd: response
+  SwedbankPay-->>Browser: Authorization response (State=Pending)
+  deactivate SwedbankPay
   note left of Browser: check your phone
   deactivate Merchant
 
-  Vipps_API-->>Vipps_App: Confirm Payment UI
-  Vipps_App-->>Vipps_App: Confirmation Dialogue
-  Vipps_App-->>Vipps_API: Confirmation
-  Vipps_API-->>Swedbank_Pay_BackEnd: make payment
-  activate Swedbank_Pay_BackEnd
-  Swedbank_Pay_BackEnd-->>Swedbank_Pay_BackEnd: execute payment
-  Swedbank_Pay_BackEnd-->>Vipps_API: response
-  deactivate Swedbank_Pay_BackEnd
-  deactivate Vipps_API
-  Swedbank_Pay_BackEnd-->>Swedbank_Pay_FrontEnd: authorize result
-  Swedbank_Pay_FrontEnd-->>Browser: authorize result
+  VippsAPI-->>VippsApp: Confirm Payment UI
+  VippsApp-->>VippsApp: Confirmation Dialogue
+  VippsApp-->>VippsAPI: Confirmation
+  VippsAPI-->>SwedbankPay: make payment
+  activate SwedbankPay
+  SwedbankPay-->>SwedbankPay: execute payment
+  SwedbankPay-->>VippsAPI: response
+  deactivate SwedbankPay
+  deactivate VippsAPI
+  SwedbankPay-->>SwedbankPay: authorize result
+  SwedbankPay-->>Browser: authorize result
   Browser-->>Merchant: Redirect to merchant
   note left of Browser: Redirect to merchant
   activate Merchant
-  Swedbank_Pay_FrontEnd-->>Merchant: Payment Callback
-  Merchant-->>Swedbank_Pay_FrontEnd: GET <Vipps payments>
+  activate SwedbankPay
+  SwedbankPay-->>Merchant: Payment Callback
+  Merchant-->>SwedbankPay: GET <Vipps payments>
   note left of Merchant: Second API request
-  Swedbank_Pay_FrontEnd-->>Merchant: Payment resource
-  deactivate Swedbank_Pay_FrontEnd
+  SwedbankPay-->>Merchant: Payment resource
+  deactivate SwedbankPay
   Merchant-->>Browser: Display authorize result
   deactivate Merchant
 ```
@@ -149,13 +132,13 @@ Content-Type: application/json
         "pageStripdown": true,
         "language": "nb-NO",
         "urls": {
-            "hostUrls": "http://test-dummy.net",
-            "completeUrl": "http://test-dummy.net/payment-completed",
-            "cancelUrl": "http://test-dummy.net/payment-canceled",
-            "callbackUrl": "http://test-dummy.net/payment-callback",
-            "logoUrl": "http://test-dummy.net/payment-logo.png",
-            "termsOfServiceUrl": "https://test-dummy.net/payment-terms.pdf",
-            "paymentUrl": "http://test-dummy.net/payment-cart"
+            "hostUrls": "https://example.net",
+            "completeUrl": "https://example.net/payment-completed",
+            "cancelUrl": "https://example.net/payment-canceled",
+            "callbackUrl": "https://example.net/payment-callback",
+            "logoUrl": "https://example.net/payment-logo.png",
+            "termsOfServiceUrl": "https://example.net/payment-terms.pdf",
+            "paymentUrl": "https://example.net/payment-cart"
         },
         "payeeInfo": {
             "payeeId": "12345678-1234-1234-1234-123456789012",
@@ -278,10 +261,14 @@ transactions made on a specific payment.
 **Request**
 
 ```http
-GET /psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/authorizations/5619328800 HTTP/1.1
+
+HTTP/1.1 200 OK
 Content-Type: application/json
+GET /psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/authorizations/<transactionId> HTTP/1.1
 Host: api.payex.com
 Authorization: Bearer <MerchantToken>
+
+
 ```
 
 {:.code-header}
