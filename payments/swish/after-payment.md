@@ -390,7 +390,7 @@ Content-Type: application/json
 }
 ```
 
-_Operation_ `redirect-app-swish` is only returned when using in-app flows.
+The `operation` `redirect-app-swish` is only returned when using in-app flows.
 
 The payment now contains a sale transaction with the status (state)
 `AwaitingActivity`
@@ -399,8 +399,8 @@ from Swedbank Pay.
 
 ## Reversals
 
-The `Reversals` resource list the reversals transactions (one or more)
-on a specific payment.
+The `Reversals` resource list the reversals transactions (one or more) on a
+specific payment.
 
 {:.code-header}
 **Request**
@@ -451,14 +451,15 @@ Content-Type: application/json
 | :----------------------- | :------- | :--------------------------------------------------------------------------------------------------- |
 | `payment`                | `string` | The relative URI of the payment that the reversal transactions belong to.                            |
 | `reversals`              | `object` | The reversal object.                                                                                 |
-| └➔&nbsp;`reversalList`   | `array`  | The array of reversal transaction objects.                                                           |
-| └➔&nbsp;`reversalList[]` | `object` | The reversal transaction object representation of the reversal transaction resource described below. |
+| └➔&nbsp;`reversalList[]` | `array`  | The array of reversal transaction objects.                                                           |
+| └─➔&nbsp;`transaction`   | `object` | The reversal transaction object representation of the reversal transaction resource described below. |
 
 ### Create Reversal transaction
 
 A reversal transaction can be created after a completed authorization by sending
 a request to `/psp/swish/payments/<payment-id>/reversals`.
-A callback request will follow from Swedbank Pay.
+A [callback][technical-reference-callback] request will follow from
+Swedbank Pay.
 
 {:.code-header}
 **Request**
@@ -524,15 +525,6 @@ Content-Type: application/json
 | `reversal`            | `object` | The `reversal` object contains information about this `reversal`.                        |
 | └➔&nbsp;`id`          | `string` | The relative URI of the created capture transaction.                                     |
 | └➔&nbsp;`transaction` | `object` | The object representation of the generic [transaction][technical-reference-transaction]. |
-
-## Options after posting a payment
-
-* **If CallbackURL is set**: Whenever changes to the payment occur a [Callback
-  request][technical-reference-callback] will be posted to the callbackUrl,
-  which was generated when the payment was created.
-* You can create a reversal transactions by implementing the `reversal` request.
-  You can also access and reverse a payment through your merchant pages in the
-  [Swedbank Pay admin portal][payex-admin-portal].
 
 ## Abort
 
