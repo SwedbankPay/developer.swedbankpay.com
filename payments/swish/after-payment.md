@@ -369,7 +369,7 @@ Content-Type: application/json
             "vatAmount": 250,
             "description": "Test transaction",
             "payeeReference": "AH123456",
-            "isOperational": "FALSE",
+            "isOperational": false,
             "operations": []
         }
     }
