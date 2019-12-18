@@ -146,7 +146,7 @@ In browser based solutions the payers `msisdn` (mobile number) is required.
 This is managed either by sending a `POST` request as seen below,
 or by redirecting the end-user to the hosted payment page.
 The `msisdn` is only required for browser based solutions.
-In-app solutions and flow, the consumer uses the device that hosts the Swish app
+With mobile app based solutions, the consumer uses the device that hosts the Swish app
 to manage the purchase, making `msisdn` optional.
 
 {:.code-header}
