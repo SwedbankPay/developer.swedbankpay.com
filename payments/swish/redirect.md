@@ -181,7 +181,7 @@ initiate the sales transaction.
 ## API Requests
 
 The API requests are displayed in the [purchase flow](#purchase-flow-3). Swish
-is a one-phase payment method that is based on sales transactions not involving
+is a one-phase payment instrument that is based on sales transactions not involving
 capture or cancellation operations. The options you can choose from when
 creating a payment with key operation set to Value Purchase are listed below.
 
