@@ -132,10 +132,7 @@ Sales information. This will generate a payment object with a unique
 ### Operations
 
 The API requests are displayed in the purchase flow above.
-You can [create a Swish `payment`][create-payment] with following `operation`
-options:
-
-* [Purchase][purchase] (We use this value in our examples)
+You can [create a Swish `payment`][create-payment] with the [purchase][purchase] `operation`
 
 ### Purchase
 
@@ -190,7 +187,7 @@ Content-Type: application/json
             "orderReference": "or123",
         },
         "prefillInfo": {
-          "msisdn": "{{msisdn}}"
+          "msisdn": "+46987654321"
         },
         "riskIndicator": {
             "deliveryEmailAddress": "string",
@@ -248,7 +245,7 @@ Content-Type: application/json
 |          | └─➔&nbsp;`productCategory`            | `string`      | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                                                                                                                                                                                                                                                                                            |
 |          | └─➔&nbsp;`orderReference`             | `String(50)`  | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 |          | └➔&nbsp;`prefillInfo`                  | `object`      | An object that holds prefill information that can be inserted on the payment page.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-|          | └─➔&nbsp;`enableEcomOnly`           | `string`     | Number will be prefilled on payment page, if valid. We support international phone numbers defined with country code prefix. ex +45                                                                                                                                                                                                                                                                                                                                                                                                                         |
+|          | └─➔&nbsp;`msisdn`           | `string`     | Number will be prefilled on payment page, if valid. We support international phone numbers defined with country code prefix. ex +46                                                                                                                                                                                                                                                                                                                                                                                                                         |
 |          | └─➔&nbsp;`subsite`                    | `String(40)`  | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.                                                                                                                                                                                                                                                                                                                                                                                                               |
 |          | └➔&nbsp;`riskIndicator`               | `array`       | This **optional** array consist of information that helps verifying the payer. Providing these fields decreases the likelyhood of having to promt for 3-D Secure authenticaiton of the payer when they are authenticating the purchacse.                                                                                                                                                                                                                                                                                                                                  |
 |          | └─➔&nbsp;`deliveryEmailAdress`        | `string`      | For electronic delivery, the email address to which the merchandise was delivered. Providing this field when appropriate decreases the likelyhood of a 3-D Secure authentication for the payer.                                                                                                                                                                                                                                                                                                                                                                           |
@@ -314,9 +311,9 @@ Content-Type: application/json
       },
       {
             "method": "POST",
-            "href": "https://api.stage.payex.com/psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/sales",
+            "href": "https://api.externalintegration.payex.com/psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/sales",
             "rel": "create-sale"
-        },
+      },
       {
         "href": "https://ecom.payex.com/swish/payments/authorize/123456123412341234123456789012",
         "rel": "redirect-sale",
@@ -334,7 +331,7 @@ Content-Type: application/json
             "href": "https://ecom.externalintegration.payex.com/swish/core/scripts/client/px.swish.client.js?token=123456123412341234123456789012",
             "rel": "view-payment",
             "contentType": "application/javascript"
-        }
+      }
     ]
 }
 ```
