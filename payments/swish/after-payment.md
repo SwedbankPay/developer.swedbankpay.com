@@ -18,7 +18,6 @@ sidebar:
 
 {% include alert-development-section.md %}
 
-
 ## Operations
 
 When a payment resource is created and during its lifetime, it will have a set
@@ -153,7 +152,7 @@ to manage the purchase, making `msisdn` optional.
 **Browser-based Request**
 
 ```http
-POST /psp/swish/payments/<paymentId>/sales HTTP/1.1
+POST /psp/swish/payments/20dfbcb9-587a-4ce9-e63e-08d519f1802f/sales HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -200,7 +199,7 @@ Content-Type: application/json
 **In-app Request**
 
 ```http
-POST /psp/swish/payments/<paymentId>/sales HTTP/1.1
+POST /psp/swish/payments/20dfbcb9-587a-4ce9-e63e-08d519f1802f/sales HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
