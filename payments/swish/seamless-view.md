@@ -331,7 +331,7 @@ Content-Type: application/json
       },
       {
             "method": "GET",
-            "href": "https://ecom.stage.payex.com/swish/core/scripts/client/px.swish.client.js?token=123456123412341234123456789012",
+            "href": "https://ecom.externalintegration.payex.com/swish/core/scripts/client/px.swish.client.js?token=123456123412341234123456789012",
             "rel": "view-payment",
             "contentType": "application/javascript"
         }
