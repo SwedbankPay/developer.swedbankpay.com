@@ -82,7 +82,7 @@ Content-Type: application/json
             "subsite": "MySubsite"
             },
         "prefillInfo": {
-         "msisdn": "+47xxxxxxxx"
+         "msisdn": "+4793000001"
         }
     }
 }
