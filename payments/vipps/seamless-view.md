@@ -187,7 +187,7 @@ Content-Type: application/json
            "subsite": "MySubsite"
             },
        "prefillInfo": {
-        "msisdn": "+46987654321"
+        "msisdn": "+4798765432"
         }
     }
 }
@@ -225,7 +225,7 @@ Content-Type: application/json
 |          | └─➔&nbsp;`productCategory`        | `string`      | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                              |
 |          | └─➔&nbsp;`orderReference`         | `String(50)`  | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                     |
 |          | └➔&nbsp;`prefillInfo`             | `object`      | An object that holds prefill information that can be inserted on the payment page.                                                                                                                                                                          |
-|          | └─➔&nbsp;`msisdn`                 | `string`      | Number will be prefilled on payment page, if valid. We support international phone numbers defined with country code prefix. ex +46                                                                                                                         |
+|          | └─➔&nbsp;`msisdn`                 | `string`      | Number will be prefilled on payment page, if valid. Only Norwegian phone numbers are supported. The country code prefix is +47                                                                                                                              |
 |          | └─➔&nbsp;`subsite`                | `String(40)`  | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.                                                                                                 |
 
 {:.code-header}
@@ -362,7 +362,7 @@ Content-Type: application/json
 
 {
   "transaction": {
-    "msisdn": "+46987654321"
+    "msisdn": "+4798765432"
   }
 }
 ```
@@ -378,7 +378,7 @@ Content-Type: application/json
     "payment": "/psp/vipps/payments/{{ page.paymentId }}",
     "authorization": {
         "vippsTransactionId": "5619328800",
-        "msisdn": "+46987654321",
+        "msisdn": "+4798765432",
         "id": "/psp/vipps/payments/{{ page.paymentId }}/authorizations/",
     "transaction": {
         "id": "/psp/vipps/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
@@ -404,14 +404,14 @@ Content-Type: application/json
 | `payment`                    | `string`  | The relative URI of the payment this transaction belongs to.                                                                                                                                                 |
 | `authorization`              | `object`  | The authorization object.                                                                                                                                                                                    |
 | └➔&nbsp;`vippsTransactionId` | `string`  | The ID of the Vipps transaction.                                                                                                                                                                             |
-| └➔&nbsp;`msisdn`             | `string`  | The mobile number of the consumer. We support international phone numbers defined with country code prefix. ex +46                                                                                           |
+| └➔&nbsp;`msisdn`             | `string`  | The mobile number of the consumer.  Only Norwegian phone numbers are supported. The country code prefix is +47                                                                                               |
 | └➔&nbsp;`id`                 | `string`  | The relative URI of the current `authorization` resource.                                                                                                                                                    |
 | `transaction`                | `object`  | The transaction object.                                                                                                                                                                                      |
 | └➔&nbsp;`id`                 | `string`  | The relative URI of the current `transaction` resource.                                                                                                                                                      |
 | └➔&nbsp;`created`            | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
 | └➔&nbsp;`updated`            | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
 | └➔&nbsp;`type`               | `string`  | Indicates the transaction type.                                                                                                                                                                              |
-| └➔&nbsp;`state`              | `string`  | `Initialized`, `AwaitingActivity`, `Completed` or `Failed`. Indicates the state of the transaction.                                                                                                                              |
+| └➔&nbsp;`state`              | `string`  | `Initialized`, `AwaitingActivity`, `Completed` or `Failed`. Indicates the state of the transaction.                                                                                                          |
 | └➔&nbsp;`number`             | `string`  | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead. |
 | └➔&nbsp;`amount`             | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` = 100.00 NOK, `5000` = 50.00 SEK.                                                                                     |
 | └➔&nbsp;`vatAmount`          | `integer` | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                           |
