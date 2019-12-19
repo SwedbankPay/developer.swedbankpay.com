@@ -41,23 +41,23 @@ request.
 sequenceDiagram
     Browser->>Merchant: start purchase (pay with VIPPS)
     activate Merchant
-    Merchant->>-SwedbankPay.FrontEnd: POST /psp/vipps/payments ①
-    activate SwedbankPay.FrontEnd
+    Merchant->>-SwedbankPay: POST /psp/vipps/payments ①
+    activate SwedbankPay
     note left of Merchant: First API request
-    SwedbankPay.FrontEnd-->>-Merchant: rel: view-payment ②
+    SwedbankPay-->>-Merchant: rel: view-payment ②
     activate Merchant
     Merchant-->>-Browser: authorization page
     activate Browser
     note left of Browser: Open iframe ③
     Browser->>Browser: Enter mobile number ④
-    Browser-->>-SwedbankPay.FrontEnd: Passing data for authorization
-    activate SwedbankPay.FrontEnd
+    Browser-->>-SwedbankPay: Passing data for authorization
+    activate SwedbankPay
 
-    SwedbankPay.FrontEnd-->>-Vipps.API: POST <paymentId>/authorizations ⑤
+    SwedbankPay-->>-Vipps.API: POST <paymentId>/authorizations ⑤
     activate Vipps.API
-    Vipps.API-->>-SwedbankPay.FrontEnd: response
-    activate SwedbankPay.FrontEnd
-    SwedbankPay.FrontEnd-->>-Browser: Authorization response (State=AwaitingActivity) ⑥
+    Vipps.API-->>-SwedbankPay: response
+    activate SwedbankPay
+    SwedbankPay-->>-Browser: Authorization response (State=AwaitingActivity) ⑥
     activate Browser
     note left of Browser: check your phone
 
@@ -67,13 +67,14 @@ sequenceDiagram
     Vipps_App-->>Vipps_App: Confirmation Dialogue
     Vipps_App-->>-Vipps.API: Confirmation
     activate Vipps.API
-    Vipps.API-->>-SwedbankPay.BackEnd: make payment
-    activate SwedbankPay.BackEnd
-    SwedbankPay.BackEnd-->>SwedbankPay.BackEnd: execute payment
-    SwedbankPay.BackEnd-->>Vipps.API: response
-    SwedbankPay.BackEnd-->>-SwedbankPay.FrontEnd: authorize result
-    activate SwedbankPay.FrontEnd
-    SwedbankPay.FrontEnd-->>-Browser: Display authorize result
+    Vipps.API-->>-SwedbankPay: make payment
+    activate SwedbankPay
+    SwedbankPay-->>SwedbankPay: execute payment
+    SwedbankPay-->>-Vipps.API: response
+    activate Vipps.API
+    Vipps.API-->>-SwedbankPay: authorize result
+    activate SwedbankPay
+    SwedbankPay-->>-Browser: Display authorize result
 ```
 
 ### Explainations
