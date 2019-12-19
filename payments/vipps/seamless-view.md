@@ -57,7 +57,7 @@ sequenceDiagram
     activate Vipps.API
     Vipps.API-->>-SwedbankPay.FrontEnd: response
     activate SwedbankPay.FrontEnd
-    SwedbankPay.FrontEnd-->>-Browser: Authorization response (State=Pending) ⑥
+    SwedbankPay.FrontEnd-->>-Browser: Authorization response (State=AwaitingActivity) ⑥
     activate Browser
     note left of Browser: check your phone
 
