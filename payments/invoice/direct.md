@@ -84,55 +84,64 @@ with the `approvedLegalAddress` (SNN and postal number).
 ```mermaid
 sequenceDiagram
     Consumer->>Merchant: Start purchase (collect SSN and postal number)
-    Activate Merchant
+    activate Merchant
     note left of Merchant: First API request
-    Merchant->>Swedbank Pay: POST <Invoice Payments> (operation=FinancingConsumer)
-    Activate Swedbank Pay
-
-    Swedbank Pay-->>Merchant: payment resource
+    Merchant->>-Swedbank Pay: POST <Invoice Payments> (operation=FinancingConsumer)
+    activate Swedbank Pay
+    Swedbank Pay-->>-Merchant: payment resource
+    activate Merchant
     note left of Merchant: Second API request
-    Merchant-->>Swedbank Pay: POST <approvedLegalAddress> (SNN and postal number)
+    Merchant-->>-Swedbank Pay: POST <approvedLegalAddress> (SNN and postal number)
+    activate Swedbank Pay
     Swedbank Pay-->>Swedbank Pay: Update payment with consumer delivery address
-    Swedbank Pay-->>Merchant: Approved legaladdress information
-    deactivate Swedbank Pay
-
-    Merchant-->>Consumer: Display all details and final price
+    Swedbank Pay-->>-Merchant: Approved legaladdress information
+    activate Merchant
+    Merchant-->>-Consumer: Display all details and final price
+    activate Consumer
     Consumer->>Consumer: Input email and mobile number
-    deactivate Merchant
-    Consumer->>Merchant: Confirm purchase
-    Activate Merchant
+    Consumer->>-Merchant: Confirm purchase
+    activate Merchant
 
     note left of Merchant: Third API request
-    Merchant->>+Swedbank Pay: POST <invoice authorizations> (Transaction Activity=FinancingConsumer)
+    Merchant->>-Swedbank Pay: POST <invoice authorizations> (Transaction Activity=FinancingConsumer)
+    activate Swedbank Pay
     Swedbank Pay-->>-Merchant: Transaction result
+    activate Merchant
     note left of Merchant: Fourth API request
-    Merchant->>+Swedbank Pay: GET <invoice payments>
+    Merchant->>-Swedbank Pay: GET <invoice payments>
+    activate Swedbank Pay
     Swedbank Pay-->>-Merchant: payment resource
-    Merchant-->>Consumer: Display result
-    deactivate Merchant
+    activate Merchant
+    Merchant-->>-Consumer: Display result
 ```
 
 ## Invoice Flow (FI)
 
 ```mermaid
 sequenceDiagram
-    Consumer->>+Merchant: start purchase
+    Consumer->>Merchant: start purchase
+    activate Merchant
     note left of Merchant: First API request
-    Merchant->>+Swedbank Pay: POST <Invoice Payments> (operation=FinancingConsumer)
+    Merchant->>-Swedbank Pay: POST <Invoice Payments> (operation=FinancingConsumer)
+    activate Swedbank Pay
     Swedbank Pay-->>-Merchant: payment resource
+    activate Merchant
     Merchant-->>-Consumer: Display All detail and final price
+    activate Consumer
     Consumer-->>Consumer: Input consumer data
-    Consumer->>Merchant: Confirm purchase
-
-    Activate Merchant
+    Consumer->>-Merchant: Confirm purchase
+    activate Merchant
     note left of Merchant: Second API request
-    Merchant->>+Swedbank Pay: POST <Invoice autorizations> (Transaction Activity=FinancingConsumer)
+    Merchant->>-Swedbank Pay: POST <Invoice autorizations> (Transaction Activity=FinancingConsumer)
+    activate Swedbank Pay
     Swedbank Pay->>-Merchant: Transaction result
+    activate Merchant
     note left of Merchant: Third API request
-    Merchant->>+Swedbank Pay: GET <Invoice payments>
+    Merchant->>-Swedbank Pay: GET <Invoice payments>
+    activate Swedbank Pay
     Swedbank Pay-->>-Merchant: payment resource
-    Merchant-->>Consumer: Display result
-    deactivate Merchant
+    activate Merchant
+    Merchant-->>-Consumer: Display result
 ```
 
 ## API Requests
@@ -207,8 +216,8 @@ Content-Type: application/json
 | Required | Property                              | Type          | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | :------: | :------------------------------------ | :------------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |  ✔︎︎︎︎︎  | `payment`                             | `object`      | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`operation`                   | `string`      | The operation that the `payment` is supposed to perform. The [`FinancingConsumer`][financing-consumer] operation is used in our example. Take a look at the ?? for a full examples of the following `operation` options: [FinancingConsumer][financing-consumer], [Recur][recur], [Verify][verify]                                                                                                                                                                                                                              |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`intent`                      | `string`      | `Authorization` is the only intent option for invoice. Reserves the amount, and is followed by a [cancellation][cancel] or [capture][capture] of funds.                                                                                                                                                                                                                    |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`operation`                   | `string`      | The operation that the `payment` is supposed to perform. The [`FinancingConsumer`][financing-consumer] operation is used in our example. Take a look at the ?? for a full examples of the following `operation` options: [FinancingConsumer][financing-consumer], [Recur][recur], [Verify][verify]                                                                                                                                                                                                                                             |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`intent`                      | `string`      | `Authorization` is the only intent option for invoice. Reserves the amount, and is followed by a [cancellation][cancel] or [capture][capture] of funds.                                                                                                                                                                                                                                                                                                                                                                                        |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`currency`                    | `string`      | NOK, SEK, DKK, USD or EUR.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`prices`                      | `object`      | The `prices` resource lists the prices related to a specific payment.                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`type`                       | `string`      | Use the `Invoice` type here                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
@@ -218,7 +227,7 @@ Content-Type: application/json
 |          | └➔&nbsp;`payerReference`              | `string`      | The reference to the payer (consumer/end user) from the merchant system. E.g mobile number, customer number etc.                                                                                                                                                                                                                                                                                                                                                                                                                               |
 |          | └➔&nbsp;`generatePaymentToken`        | `boolean`     | `true` or `false`. Set this to `true` if you want to create a paymentToken for future use as One Click.                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 |          | └➔&nbsp;`generateRecurrenceToken`     | `boolean`     | `true` or `false`. Set this to `true` if you want to create a recurrenceToken for future use Recurring purchases (subscription payments).                                                                                                                                                                                                                                                                                                                                                                                                      |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`userAgent`                   | `string`      | The user agent reference of the consumer's browser - [see user agent definition][user-agent-definition]                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`userAgent`                   | `string`      | The user agent reference of the consumer's browser - [see user agent definition][user-agent-definition]                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`language`                    | `string`      | nb-NO, sv-SE or en-US.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`urls`                        | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 |          | └─➔&nbsp;`hostUrl`                    | `array`       | The array of URLs valid for embedding of Swedbank Pay Hosted Views. If not supplied, view-operation will not be available.                                                                                                                                                                                                                                                                                                                                                                                                                     |
@@ -473,7 +482,7 @@ Content-Type: application/json
 | └➔&nbsp;`prices.id`      | `string`     | The relative URI of the current prices resource.                                                                                                                                                 |
 | └➔&nbsp;`description`    | `string(40)` | A textual description of maximum 40 characters of the purchase.                                                                                                                                  |
 | └➔&nbsp;`payerReference` | `string`     | The reference to the payer (consumer/end-user) from the merchant system, like e-mail address, mobile number, customer number etc.                                                                |
-| └➔&nbsp;`userAgent`      | `string`     | The [user agent][user-agent-definition] string of the consumer's browser.                                                                                                                               |
+| └➔&nbsp;`userAgent`      | `string`     | The [user agent][user-agent-definition] string of the consumer's browser.                                                                                                                        |
 | └➔&nbsp;`language`       | `string`     | `nb-NO` , `sv-SE`  or  `en-US`                                                                                                                                                                   |
 | └➔&nbsp;`urls`           | `string`     | The URI to the  urls  resource where all URIs related to the payment can be retrieved.                                                                                                           |
 | └➔&nbsp;`payeeInfo`      | `string`     | The URI to the  payeeinfo  resource where the information about the payee of the payment can be retrieved.                                                                                       |
@@ -514,6 +523,7 @@ next_href="after-payment" next_title="Next: After Payment" %}
 [financing-invoice-2-png]: /assets/screenshots/invoice/redirect-view/iframe-verify-data.png
 [no-png]: /assets/img/no.png
 [other-features]: /payments/invoice/other-features
+[payee-reference]: /payments/invoice/other-features#payee-info
 [recur]: /payments/invoice/other-features#recur
 [redirect]: /payments/invoice/redirect
 [se-png]: /assets/img/se.png
