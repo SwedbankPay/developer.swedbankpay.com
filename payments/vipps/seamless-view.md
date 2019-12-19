@@ -18,7 +18,8 @@ sidebar:
 
 {% include alert-development-section.md %}
 
-{% include jumbotron.html body="The Seamless View scenario represents the opportunity to implement Vipps directly in your webshop." %}
+{% include jumbotron.html body="The **Seamless View** scenario gives your
+customers the opportunity to pay with Vipps directly within your webshop." %}
 
 ## Introduction
 
