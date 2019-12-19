@@ -16,6 +16,209 @@ sidebar:
 
 {% include alert-development-section.md %}
 
+## Payment Resource
+
+### Create Payment
+
+To create a Mobile Pay payment, you perform an HTTP `POST` against the
+`/psp/mobilepay/payments` resource. Please read the [general
+information][general-http-info] on how to compose a valid HTTP request before
+proceeding.
+
+An example of a payment creation request is provided below. Each individual
+Property of the JSON document is described in the following section. Use the
+[expand][technical-reference-expand] request parameter to get a response that
+includes one or more expanded sub-resources inlined.
+
+{:.code-header}
+**Request**
+
+```http
+POST /psp/mobilepay/payments HTTP/1.1
+Host: api.externalintegration.payex.com
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+
+{
+    "payment": {
+        "operation": "Purchase",
+        "intent": "Sale",
+        "currency": "SEK",
+        "prices": [{
+            "type": "MobilePay",
+            "amount": 1500,
+            "vatAmount": 0
+        }],
+        "description": "Test Purchase",
+        "payerReference": "AB1234",
+        "userAgent": "Mozilla/5.0...",
+        "language": "da-DK",
+        "urls": {
+            "hostUrls": ["https://example.com", "https://example.net"],
+            "completeUrl": "https://example.com/payment-completed",
+            "cancelUrl": "https://example.com/payment-canceled",
+            "callbackUrl": "https://example.com/payment-callback",
+            "logoUrl": "https://example.com/logo.png",
+            "termsOfServiceUrl": "https://example.com/terms.pdf"
+        },
+        "payeeInfo": {
+            "payeeId": "bbb33dc5-f44e-4af6-afc0-27fb5fa2f63a",
+            "payeeReference": "ref-123456",
+            "payeeName": "Merchant1",
+            "productCategory": "A123",
+            "orderReference": "or-123456",
+            "subsite": "MySubsite"
+        },
+        "prefillInfo": {
+            "msisdn": "+4792345678"
+        },
+        "mobilepay": {
+            "shoplogoUrl": "https://example.com/shop-logo.png"
+        }
+    }
+}
+```
+
+{:.table .table-striped}
+| Required | Property                            | Type         | Description                                                                                                                                                                                                 |
+| :------: | :---------------------------------- | :----------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|    ✔︎    | `payment`                           | `object`     | The `payment`object.                                                                                                                                                                                        |
+|    ✔︎    | └➔&nbsp;`operation`                 | `string`     | `Purchase`                                                                                                                                                                                                  |
+|    ✔︎    | └➔&nbsp;`intent`                    | `string`     | `Sale`                                                                                                                                                                                                      |
+|    ✔︎    | └➔&nbsp;`currency`                  | `string`     | `SEK`                                                                                                                                                                                                       |
+|    ✔︎    | └➔&nbsp;`prices.type`               | `string`     | `Swish`                                                                                                                                                                                                     |
+|    ✔︎    | └➔&nbsp;`prices.amount`             | `integer`    | Amount is entered in the lowest momentary units of the selected currency. E.g.`10000`=`100.00 SEK``5000`=`50.00 SEK`                                                                                        |
+|    ✔︎    | └➔&nbsp;`prices.vatAmount`          | `integer`    | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                          |
+|    ✔︎    | └➔&nbsp;`description`               | `string(40)` | A textual description max 40 characters of the purchase.                                                                                                                                                    |
+|          | └➔&nbsp;`payerReference`            | `string`     | The reference to the payer (consumer/end-user) from the merchant system, like mobile number, customer number etc.                                                                                           |
+|    ✔︎    | └➔&nbsp;`userAgent`                 | `string`     | The user agent reference of the consumer's browser - [see user agent definition][user-agent]                                                                                                                |
+|    ✔︎    | └➔&nbsp;`language`                  | `string`     | nb-NO, sv-SE or en-US.                                                                                                                                                                                      |
+|    ✔︎    | └➔&nbsp;`urls.hostUrls`             | `array`      | The array of URIs valid for embedding of Swedbank Pay Hosted Views.                                                                                                                                         |
+|    ✔︎    | └➔&nbsp;`urls.completeUrl`          | `string`     | The URI that Swedbank Pay will redirect back to when the payment page is completed.                                                                                                                         |
+|    ✔︎    | └➔&nbsp;`urls.cancelUrl`            | `string`     | The URI that Swedbank Pay will redirect back to when the user presses the cancel button in the payment page.                                                                                                |
+|          | └➔&nbsp;`urls.callbackUrl`          | `string`     | The URI that Swedbank Pay will perform an HTTP POST against every time a transaction is created on the payment. See [callback][technical-reference-callback] for details.                                   |
+|          | └➔&nbsp;`urls.logoUrl`              | `string`     | The URI that will be used for showing the customer logo. Must be a picture with at most 50px height and 400px width. Require https.                                                                         |
+|          | └➔&nbsp;`urls.termsOfServiceUrl`    | `string`     | A URI that contains your terms and conditions for the payment, to be linked on the payment page. Require https.                                                                                             |
+|    ✔︎    | └➔&nbsp;`payeeInfo.payeeId`         | `string`     | This is the unique id that identifies this payee (like merchant) set by PayEx.                                                                                                                              |
+|    ✔︎    | └➔&nbsp;`payeeInfo.payeeReference`  | `string(35)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][technical-reference-payeeReference] for details. |
+|          | └➔&nbsp;`payeeInfo.payeeName`       | `string`     | The payee name (like merchant name) that will be displayed to consumer when redirected to PayEx.                                                                                                            |
+|          | └➔&nbsp;`payeeInfo.productCategory` | `string`     | A product category or number sent in from the payee/merchant. This is not validated by PayEx, but will be passed through the payment process and may be used in the settlement process.                     |
+|          | └➔&nbsp;`payeeInfo.orderReference`  | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                     |
+|          | └➔&nbsp;`payeeInfo.subsite`         | `string(40)` | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.                                                 |
+|          | └➔&nbsp;`prefillInfo.msisdn`        | `string`     | Number will be prefilled on payment page, if valid.                                                                                                                                                         |
+|          | └➔&nbsp;`mobilepay.shoplogoUrl`     | `boolean`    | The URI that will be used for showing the customer logo. Must be a picture with at most 50px height and 400px width. Requires https.                                                                        |
+
+{:.code-header}
+**Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "payment": {
+    "id": "/psp/mobilepay/payments/{{ page.paymentId }}",
+    "number": 1234567890,
+    "created": "2016-09-14T13:21:29.3182115Z",
+    "updated": "2016-09-14T13:21:57.6627579Z",
+    "instrument": "MobilePay",
+    "operation": "Purchase",
+    "intent": "Authorization",
+    "state": "Ready",
+    "currency": "DKK",
+    "amount": 1500,
+    "remainingCaptureAmount": 1500,
+    "remainingCancellationAmount": 1500,
+    "remainingReversalAmount": 0,
+    "description": "Test Purchase",
+    "payerReference": "AB1234",
+    "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
+    "userAgent": "Mozilla/5.0...",
+    "language": "da-DK",
+    "prices": { "id": "/psp/mobilepay/payments/{{ page.paymentId }}/prices" },
+    "transactions": { "id": "/psp/mobilepay/payments/{{ page.paymentId }}/transactions" },
+    "authorizations": { "id": "/psp/mobilepay/payments/{{ page.paymentId }}/authorizations" },
+    "reversals": { "id": "/psp/mobilepay/payments/{{ page.paymentId }}/reversals" },
+    "cancellations": { "id": "/psp/mobilepay/payments/{{ page.paymentId }}/cancellations" },
+    "urls" : { "id": "/psp/mobilepay/payments/{{ page.paymentId }}/urls" },
+    "payeeInfo" : { "id": "/psp/mobilepay/payments/{{ page.paymentId }}/payeeInfo" },
+    "settings": { "id": "/psp/mobilepay/payments/{{ page.paymentId }}/settings" }
+  },
+  "operations": [
+    {
+      "method": "POST",
+      "href": "https://ecom.externalintegration.payex.com/psp/mobilepay/payments/{{ page.paymentId }}/authorizations",
+      "rel": "create-authorization"
+    },
+    {
+      "method": "PATCH",
+      "href": "https://ecom.externalintegration.payex.com/psp/mobilepay/payments/{{ page.paymentId }}",
+      "rel": "update-payment-abort"
+    },
+    {
+      "method": "GET",
+      "href": "http://localhost:15487/mobilepay/payments/authorize/9fb05a835f2fc227dc7bca9abaf649b918ba8a572deb448bff543dd5806dacb7",
+      "rel": "redirect-authorization"
+    }
+  ]
+}
+```
+
+### Operations
+
+A payment resource has a set of operations that can be performed on it,
+from its creation to its completion.
+The operations available at any given time vary between payment instruments and
+depends on the current state of the payment resource.
+A list of possible operations for Swish Payments and their explanation
+is given below.
+
+{:.code-header}
+**Operations**
+
+```js
+{
+    "operations": [
+    {
+      "method": "POST",
+      "href": "https://ecom.externalintegration.payex.com/psp/mobilepay/payments/{{ page.paymentId }}/authorizations",
+      "rel": "create-authorization"
+    },
+    {
+      "method": "PATCH",
+      "href": "https://ecom.externalintegration.payex.com/psp/mobilepay/payments/{{ page.paymentId }}",
+      "rel": "update-payment-abort"
+    },
+    {
+      "method": "GET",
+      "href": "https://ecom.externalintegration.payex.com/mobilepay/payments/authorize/9fb05a835f2fc227dc7bca9abaf649b918ba8a572deb448bff543dd5806dacb7",
+      "rel": "redirect-authorization"
+    }
+  ]
+}
+```
+
+{:.table .table-striped}
+| Property | Description                                                         |
+| :------- | :------------------------------------------------------------------ |
+| `href`   | The target URI to perform the operation against.                    |
+| `rel`    | The name of the relation the operation has to the current resource. |
+| `method` | The HTTP method to use when performing the operation.               |
+
+The operations should be performed as described in each response and not as
+described here in the documentation.
+Always use the `href` and `method` as specified in the response by finding the
+appropriate operation based on its `rel` value.
+The only thing that should be hard coded in the client is the value of
+the `rel` and the request that will be sent in the HTTP body of the
+request for the given operation.
+
+{:.table .table-striped}
+| Operation                | Description                                                                                      |
+| :----------------------- | :----------------------------------------------------------------------------------------------- |
+| `update-payment-abort`   | [Aborts][technical-reference-abort] the payment before any financial transactions are performed. |
+| `redirect-authorization` | Used to redirect the consumer to Swedbank Pay Payments and the authorization UI.                 |
+
 ## Options after posting a payment
 
 * **Abort**: It is possible to [abort a payment][technical-reference-abort]
@@ -112,8 +315,8 @@ Content-Type: application/json
 | Required | Property                 | Type         | Description                                                                                                               |
 | :------: | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------ |
 |    ✔︎    | `transaction`            | `object`     | Object representing the capture transaction.                                                                              |
-|    ✔︎    | └➔&nbsp;`amount`         | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
-|    ✔︎    | └➔&nbsp;`vatAmount`      | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
+|    ✔︎    | └➔&nbsp;`amount`         | `integer`    | Amount entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
+|    ✔︎    | └➔&nbsp;`vatAmount`      | `integer`    | Amount entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
 |    ✔︎    | └➔&nbsp;`description`    | `string`     | A textual description of the capture transaction.                                                                         |
 |    ✔︎    | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the capture transaction. See [payeeReference][payee-reference] for details.                        |
 
@@ -535,8 +738,8 @@ Content-Type: application/json
 | ✔︎   | Property                 | Type         | Description                                                                                                               |
 | :--- | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------ |
 | ✔︎   | `transaction`            | `integer`    | The reversal `transaction`.                                                                                               |
-| ✔︎   | └➔&nbsp;`amount`         | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
-| ✔︎   | └➔&nbsp;`vatAmount`      | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
+| ✔︎   | └➔&nbsp;`amount`         | `integer`    | Amount entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
+| ✔︎   | └➔&nbsp;`vatAmount`      | `integer`    | Amount entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
 | ✔︎   | └➔&nbsp;`description`    | `string`     | A textual description of the capture                                                                                      |
 | ✔︎   | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the reversal transaction. See [payeeReference][payee-reference] for details.                       |
 
