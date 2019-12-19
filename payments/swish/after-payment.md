@@ -94,7 +94,7 @@ on a specific payment.
 **Request**
 
 ```http
-GET /psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/sales HTTP/1.1
+GET /psp/swish/payments/{{ page.paymentId }}/sales HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -108,18 +108,18 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "payment": "/psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+  "payment": "/psp/swish/payments/{{ page.paymentId }}",
   "sales": {
-    "id": "/psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/sale",
+    "id": "/psp/swish/payments/{{ page.paymentId }}/sale",
     "saleList": [
       {
         "date": "8/13/2019 8:58:23 AM +00:00",
         "payerAlias": "46739000001",
         "swishPaymentReference": "8D0A30A7804E40479F88FFBA26111F04",
         "swishStatus": "PAID",
-        "id": "/psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/sales/12345678-1234-1234-1234-123456789012",
+        "id": "/psp/swish/payments/{{ page.paymentId }}/sales/{{ page.transactionId }}",
         "transaction": {
-          "id": "12345678-1234-1234-1234-123456789012",
+          "id": "{{ page.transactionId }}",
           "created": "2016-09-14T01:01:01.01Z",
           "updated": "2016-09-14T01:01:01.03Z",
           "type": "Sale",
@@ -152,7 +152,7 @@ to manage the purchase, making `msisdn` optional.
 **Browser-based Request**
 
 ```http
-POST /psp/swish/payments/20dfbcb9-587a-4ce9-e63e-08d519f1802f/sales HTTP/1.1
+POST /psp/swish/payments/{{ page.paymentId }}/sales HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -172,13 +172,13 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/swish/payments/20dfbcb9-587a-4ce9-e63e-08d519f1802f",
+    "payment": "/psp/swish/payments/{{ page.paymentId }}",
     "sale": {
         "date": "23.10.2017 08:39:37 +00:00",
         "paymentRequestToken": "LhXrK84MSpWU2RO09f8kUP-FHiBo-1pB",
-        "id": "/psp/swish/payments/20dfbcb9-587a-4ce9-e63e-08d519f1802f/sales/6bf31479-623f-418a-d69e-08d519f19722",
+        "id": "/psp/swish/payments/{{ page.paymentId }}/sales/{{ page.transactionId }}",
         "transaction": {
-            "id": "6bf31479-623f-418a-d69e-08d519f19722",
+            "id": "{{ page.transactionId }}",
             "created": "2017-10-23T08:39:35.6478733Z",
             "updated": "2017-10-23T08:39:37.3788733Z",
             "type": "Sale",
@@ -199,7 +199,7 @@ Content-Type: application/json
 **In-app Request**
 
 ```http
-POST /psp/swish/payments/20dfbcb9-587a-4ce9-e63e-08d519f1802f/sales HTTP/1.1
+POST /psp/swish/payments/{{ page.paymentId }}/sales HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -218,13 +218,13 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/swish/payments/20dfbcb9-587a-4ce9-e63e-08d519f1802f",
+    "payment": "/psp/swish/payments/{{ page.paymentId }}",
     "sale": {
         "date": "23.10.2017 08:39:37 +00:00",
         "paymentRequestToken": "LhXrK84MSpWU2RO09f8kUP-FHiBo-1pB",
-        "id": "/psp/swish/payments/20dfbcb9-587a-4ce9-e63e-08d519f1802f/sales/6bf31479-623f-418a-d69e-08d519f19722",
+        "id": "/psp/swish/payments/{{ page.paymentId }}/sales/{{ page.transactionId }}",
         "transaction": {
-            "id": "6bf31479-623f-418a-d69e-08d519f19722",
+            "id": "{{ page.transactionId }}",
             "created": "2017-10-23T08:39:35.6478733Z",
             "updated": "2017-10-23T08:39:37.3788733Z",
             "type": "Sale",
@@ -263,7 +263,7 @@ specific payment.
 **Request**
 
 ```http
-GET /psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals HTTP/1.1
+GET /psp/swish/payments/{{ page.paymentId }}/reversals HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -277,14 +277,14 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "payment": "/psp/swish/payments/{{ page.paymentId }}",
     "reversals": {
-        "id": "/psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals",
+        "id": "/psp/swish/payments/{{ page.paymentId }}/reversals",
         "reversalList": [
             {
-                "id": "/psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals/12345678-1234-1234-1234-123456789012",
+                "id": "/psp/swish/payments/{{ page.paymentId }}/reversals/{{ page.transactionId }}",
                 "transaction": {
-                    "id": "/psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
+                    "id": "/psp/swish/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
                     "created": "2016-09-14T01:01:01.01Z",
                     "updated": "2016-09-14T01:01:01.03Z",
                     "type": "Reversal",
@@ -294,7 +294,7 @@ Content-Type: application/json
                     "vatAmount": 250,
                     "description": "Test transaction",
                     "payeeReference": "AH123456",
-                    "isOperational": "TRUE",
+                    "isOperational": true,
                     "operations": []
                 }
             }
@@ -322,7 +322,7 @@ Swedbank Pay.
 **Request**
 
 ```http
-POST /psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals HTTP/1.1
+POST /psp/swish/payments/{{ page.paymentId }}/reversals HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -354,11 +354,11 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "payment": "/psp/swish/payments/{{ page.paymentId }}",
     "reversal": {
-        "id": "/psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals/12345678-1234-1234-1234-123456789012",
+        "id": "/psp/swish/payments/{{ page.paymentId }}/reversals/{{ page.transactionId }}",
         "transaction": {
-            "id": "/psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
+            "id": "/psp/swish/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
             "created": "2016-09-14T01:01:01.01Z",
             "updated": "2016-09-14T01:01:01.03Z",
             "type": "Reversal",
@@ -392,7 +392,7 @@ You need to include the following `HTTP` body:
 **Request**
 
 ```http
-PATCH /psp/payments/5adc265f-f87f-4313-577e-08d3dca1a26c HTTP/1.1
+PATCH /psp/payments/{{ page.paymentId }} HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json

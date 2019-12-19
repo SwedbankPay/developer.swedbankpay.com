@@ -124,7 +124,7 @@ Content-Type: application/json
 
 {
     "payment": {
-        "id": "/psp/swish/payments/20dfbcb9-587a-4ce9-e63e-08d519f1802f",
+        "id": "/psp/swish/payments/{{ page.paymentId }}",
         "number": 992308,
         "created": "2017-10-23T08:38:57.2248733Z",
         "instrument": "Swish",
@@ -137,23 +137,23 @@ Content-Type: application/json
         "payerReference": "AB1234",
         "initiatingSystemUserAgent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36",
         "userAgent": "Mozilla/5.0...",
-        "language": "nb-NO",
+        "language": "sv-SE",
         "urls": {
-            "id": "/psp/swish/payments/20dfbcb9-587a-4ce9-e63e-08d519f1802f/urls"
+            "id": "/psp/swish/payments/{{ page.paymentId }}/urls"
         },
         "payeeInfo": {
-            "id": "/psp/swish/payments/20dfbcb9-587a-4ce9-e63e-08d519f1802f/payeeinfo"
+            "id": "/psp/swish/payments/{{ page.paymentId }}/payeeinfo"
         }
     },
     "operations": [
         {
             "method": "PATCH",
-            "href": "http://localhost:18496/psp/swish/payments/20dfbcb9-587a-4ce9-e63e-08d519f1802f",
+            "href": "http://localhost:18496/psp/swish/payments/{{ page.paymentId }}",
             "rel": "update-payment-abort"
         },
         {
             "method": "POST",
-            "href": "http://localhost:18496/psp/swish/payments/20dfbcb9-587a-4ce9-e63e-08d519f1802f/sales",
+            "href": "http://localhost:18496/psp/swish/payments/{{ page.paymentId }}/sales",
             "rel": "create-sale"
         }
 
