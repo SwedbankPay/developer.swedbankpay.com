@@ -92,21 +92,6 @@ sequenceDiagram
 * ⑦ Swedbank Pay handles the dialogue with Vipps and the consumer confirms the
   purchase in the Vipps app.
 
-### 3-D Secure
-
-Swedbank Pay will handle 3-D Secure authentication when this is required. When
-dealing with card payments, 3-D Secure authentication of the cardholder
-is an essential topic. There are two alternative outcome of a card payment:
-
-1. 3-D Secure enabled - by default, 3-D Secure should be enabled, and Swedbank
-   Pay will check if the card is enrolled with 3-D Secure. This depends on the
-   issuer of the card. If the card is not enrolled with 3-D Secure, no
-   authentication of the cardholder is done.
-2. Card supports 3-D Secure - if the card is enrolled with 3-D Secure, Swedbank
-   Pay will redirect the cardholder to the autentication mechanism that is
-   decided by the issuing bank. Normally this will be done using BankID or
-   Mobile BankID.
-
 ### Payment Url
 
 {% include payment-url.md when="selecting Vipps as payment instrument" %}
