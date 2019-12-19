@@ -75,9 +75,10 @@ operation.
 
 ## Invoice flow
 
-The sequence diagram below shows the two requests you have to send to Swedbank
-Pay to make a purchase. The diagram also shows the steps in
-a [purchase][purchase] process.
+This is an example of the Redirect scenario. For other integrations, take a
+look at the respective sections. The sequence diagram below shows the two
+requests you have to send to Swedbank Pay to make a purchase. The diagram also
+shows the steps in a [purchase][purchase] process.
 
 ```mermaid
 sequenceDiagram
