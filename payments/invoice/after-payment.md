@@ -10,6 +10,8 @@ sidebar:
       title: Redirect
     - url: /payments/invoice/seamless-view
       title: Seamless View
+    - url: /payments/invoice/direct
+      title: Direct
     - url: /payments/invoice/after-payment
       title: After Payment
     - url: /payments/invoice/other-features
@@ -508,7 +510,7 @@ sequenceDiagram
 
 {% include payee-info.md %}
 
-{% include iterator.html prev_href="./" prev_title="Back: Introduction"
+{% include iterator.html prev_href="direct" prev_title="Back: Direct"
 next_href="other-features" next_title="Next: Other Features" %}
 
 ----------------------------------------------------------

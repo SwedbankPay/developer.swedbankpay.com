@@ -6,12 +6,12 @@ sidebar:
     items:
     - url: /payments/invoice
       title: Introduction
-    - url: /payments/invoice/direct
-      title: Direct
     - url: /payments/invoice/redirect
       title: Redirect
     - url: /payments/invoice/seamless-view
       title: Seamless View
+    - url: /payments/invoice/direct
+      title: Direct
     - url: /payments/invoice/after-payment
       title: After Payment
     - url: /payments/invoice/other-features
@@ -575,8 +575,9 @@ All invoice error types will have the following URI in front of type:
 | `externalerror` |  502   | 9999 - ServerOtherServer      |
 | `forbidden`     |  403   | Any other error code          |
 
-{% include iterator.html prev_href="./" prev_title="Back: Introduction"
-next_href="after-payment" next_title="Next: After Payment" %}
+{% include iterator.html prev_href="after-payment" prev_title="Back: After
+Payment" %}
+
 
 [callback]: #callback
 [cancel]: /payments/invoice/after-payment#cancellations

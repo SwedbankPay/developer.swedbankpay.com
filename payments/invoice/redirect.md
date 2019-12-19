@@ -6,12 +6,12 @@ sidebar:
     items:
     - url: /payments/invoice
       title: Introduction
-    - url: /payments/invoice/direct
-      title: Direct
     - url: /payments/invoice/redirect
       title: Redirect
     - url: /payments/invoice/seamless-view
       title: Seamless View
+    - url: /payments/invoice/direct
+      title: Direct
     - url: /payments/invoice/after-payment
       title: After Payment
     - url: /payments/invoice/other-features
@@ -71,20 +71,26 @@ sequenceDiagram
     Consumer->>Merchant: Start purchase
     activate Merchant
     note left of Merchant: First API request
-    Merchant->>+Swedbank Pay: POST <Invoice Payment> (operation=FinancingConsumer)
+    Merchant->>-Swedbank Pay: POST <Invoice Payment> (operation=FinancingConsumer)
+    activate Swedbank Pay
     Swedbank Pay-->>-Merchant: payment resource
+    activate Merchant
     Merchant-->>-Consumer: authorization page
+    activate Consumer
     note left of Consumer: redirect to Swedbank Pay
-    Consumer->>+Swedbank Pay: enter consumer details
+    Consumer->>-Swedbank Pay: enter consumer details
+    activate Swedbank Pay
     Swedbank Pay-->>-Consumer: redirect to merchant
+    activate Consumer
     note left of Consumer: redirect back to Merchant
-    Consumer->>Merchant: access merchant page
+    Consumer->>-Merchant: access merchant page
     activate Merchant
     note left of Merchant: Second API request
-    Merchant->>+Swedbank Pay: GET <Invoice payment>
+    Merchant->>-Swedbank Pay: GET <Invoice payment>
+    activate Swedbank Pay
     Swedbank Pay-->>-Merchant: payment resource
-    Merchant-->>Consumer: display purchase result
-    deactivate Merchant
+    activate Merchant
+    Merchant-->>-Consumer: display purchase result
 ```
 
 ## API Requests
@@ -461,7 +467,7 @@ to see what you can do when a payment is completed.
 Here you will also find info on `Capture`, `Cancel`, and `Reversal`.
 
 {% include iterator.html prev_href="./" prev_title="Back: Introduction"
-next_href="after-payment" next_title="Next: After Payment" %}
+next_href="seamless-view" next_title="Next: Seamless View" %}
 
 [abort]: /payments/invoice/after-payment#abort
 [after-payment]: /payments/invoice/after-payment

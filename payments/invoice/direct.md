@@ -6,12 +6,12 @@ sidebar:
     items:
     - url: /payments/invoice
       title: Introduction
-    - url: /payments/invoice/direct
-      title: Direct
     - url: /payments/invoice/redirect
       title: Redirect
     - url: /payments/invoice/seamless-view
       title: Seamless View
+    - url: /payments/invoice/direct
+      title: Direct
     - url: /payments/invoice/after-payment
       title: After Payment
     - url: /payments/invoice/other-features
@@ -20,18 +20,23 @@ sidebar:
 
 {% include alert-review-section.md %}
 
-{% include jumbotron.html body="**Direct**
-Direct is a payment service where Swedbank Pay helps improve cashflow by
-purchasing merchant invoices. Swedbank Pay receives invoice data, which is used
-to produce and distribute invoices to the consumer/end-use" %}
+{% include alert.html type="neutral" icon="report_problem" header="Disclaimer"
+body="Direct Invoice is about to be phased out. This section is only for
+merchants that currently have a contract with this integration." %}
+
+{% include jumbotron.html body="**Direct** is a payment service where Swedbank
+Pay helps improve cashflow by purchasing merchant invoices. Swedbank Pay
+receives invoice data, which is used to produce and distribute invoices to the
+consumer/end-user" %}
 
 ## Introduction
 
-1. Collect all purchase information and send it in a `POST` request to
-Swedbank Pay.
-1. Include personal information (SSN and postal code) and send it to Swedbank Pay.
+1. Collect all purchase information and send it in a `POST` request to Swedbank
+   Pay.
+1. Include personal information (SSN and postal code) and send it to Swedbank
+   Pay.
 1. Make a new `POST` request towards Swedbank Pay to retrieve the name and
-address of the customer.
+   address of the customer.
 1. Create an authorization transaction by calculating the final price / amount.
 1. Make a third `POST` request with consumer data as input.
 1. Send a  `GET` request with the `paymentID` to get the authorization result
@@ -495,6 +500,9 @@ for the given operation.
 | `view-authorization`     | Contains the JavaScript `href` that is used to embed  the card authorization UI directly on the webshop/merchant site     |
 | `create-capture`         | Creates a `capture` transaction in order to charge the reserved funds from the consumer.                                  |
 | `create-cancellation`    | Creates a `cancellation` transaction that cancels a created, but not yet captured payment.                                |
+
+{% include iterator.html prev_href="seamless-view" prev_title="Back: Seamless View"
+next_href="after-payment" next_title="Next: After Payment" %}
 
 [abort]: /payments/invoice/other-features#abort
 [callback]: /payments/invoice/other-features#callback
