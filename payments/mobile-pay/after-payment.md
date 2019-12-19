@@ -81,15 +81,18 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property            | Type   | Description                                                          |
-| :------------------ | :----- | :------------------------------------------------------------------- |
-| payment             | string | The relative URI of the payment this capture transaction belongs to. |
-| capture.id          | string | The relative URI of the created capture transaction.                 |
-| capture.transaction | object | The object representation of the generic transaction resource.       |
+| Property              | Type     | Description                                                                            |
+| :-------------------- | :------- | :------------------------------------------------------------------------------------- |
+| `payment`             | `string` | The relative URI of the payment this capture transaction belongs to.                   |
+| `capture`             | `string` | The capture object.                                                                    |
+| └➔&nbsp;`id`          | `string` | The relative URI of the created capture transaction.                                   |
+| └➔&nbsp;`transaction` | `object` | The object representation of the generic [transaction resource][transaction-resource]. |
 
 ### Create capture transaction
 
-A `capture` transaction - to withdraw money from the payer's mobilepay - can be created after a completed authorization by performing the `create-capture` operation.
+A `capture` transaction - to withdraw money from the payer's mobilepay - can be
+created after a completed authorization by performing the `create-capture`
+operation.
 
 {:.code-header}
 **Request**
@@ -113,10 +116,11 @@ Content-Type: application/json
 {:.table .table-striped}
 | Required | Property                 | Type         | Description                                                                                                               |
 | :------: | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------ |
-|    ✔︎    | `capture.amount`         | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
-|    ✔︎    | `capture.vatAmount`      | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
-|    ✔︎    | `capture.description`    | `string`     | A textual description of the capture transaction.                                                                         |
-|    ✔︎    | `capture.payeeReference` | `string(50)` | A unique reference for the capture transaction. See [payeeReference][payee-reference] for details.                        |
+|    ✔︎    | `transaction`            | `object`     | Object representing the capture transaction.                                                                              |
+|    ✔︎    | └➔&nbsp;`amount`         | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
+|    ✔︎    | └➔&nbsp;`vatAmount`      | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
+|    ✔︎    | └➔&nbsp;`description`    | `string`     | A textual description of the capture transaction.                                                                         |
+|    ✔︎    | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the capture transaction. See [payeeReference][payee-reference] for details.                        |
 
 The `capture` resource contains information about the capture transaction made
 against a MobilePay payment.
@@ -158,11 +162,12 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property            | Type   | Description                                                                            |
-| :------------------ | :----- | :------------------------------------------------------------------------------------- |
-| payment             | string | The relative URI of the payment this capture transaction belongs to.                   |
-| capture.id          | string | The relative URI of the created capture transaction.                                   |
-| capture.transaction | object | The object representation of the generic [transaction resource][transaction-resource]. |
+| Property              | Type     | Description                                                                            |
+| :-------------------- | :------- | :------------------------------------------------------------------------------------- |
+| `payment`             | `string` | The relative URI of the payment this capture transaction belongs to.                   |
+| `capture`             | `string` | The capture transaction object.                                                        |
+| └➔&nbsp;`id`          | `string` | The relative URI of the created capture transaction.                                   |
+| └➔&nbsp;`transaction` | `object` | The object representation of the generic [transaction resource][transaction-resource]. |
 
 ### Capture Sequence
 
@@ -174,11 +179,11 @@ authorization amount.
 
 ```mermaid
 sequenceDiagram
-  Merchant->>PayEx: POST <mobilepay capture>
+  Merchant->>SwedbankPay: POST <mobilepay capture>
   Activate Merchant
-  Activate PayEx
-  PayEx-->>Merchant: transaction resource
-  Deactivate PayEx
+  Activate SwedbankPay
+  SwedbankPay-->>Merchant: transaction resource
+  Deactivate SwedbankPay
   Deactivate Merchant
 ```
 
@@ -237,12 +242,13 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property                         | Type   | Description                                                                         |
-| :------------------------------- | :----- | :---------------------------------------------------------------------------------- |
-| payment                          | string | The relative URI of the payment this list of cancellation transactions belong to.   |
-| cancellations.id                 | string | The relative URI of the current cancellations resource.                             |
-| cancellations.cancellationList   | array  | The array of the cancellation transaction objects.                                  |
-| cancellations.cancellationList[] | object | The object representation of the cancellation transaction resource described below. |
+| Property                     | Type     | Description                                                                         |
+| :--------------------------- | :------- | :---------------------------------------------------------------------------------- |
+| `payment`                    | `string` | The relative URI of the payment this list of cancellation transactions belong to.   |
+| `cancellations`              | `string` | The cancellations object.                                                           |
+| └➔&nbsp;`id`                 | `string` | The relative URI of the current cancellations resource.                             |
+| └➔&nbsp;`cancellationList`   | `array`  | The array of the cancellation transaction objects.                                  |
+| └➔&nbsp;`cancellationList[]` | `object` | The object representation of the cancellation transaction resource described below. |
 
 ### Finalize
 
@@ -563,11 +569,11 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property             | Type   | Description                                                          |
-| :------------------- | :----- | :------------------------------------------------------------------- |
-| payment              | string | The relative URI of the payment this capture transaction belongs to. |
-| reversal.id          | string | The relative URI of the created capture transaction.                 |
-| reversal.transaction | object | The object representation of the generic transaction resource.       |
+| Property             | Type   | Description                                                                            |
+| :------------------- | :----- | :------------------------------------------------------------------------------------- |
+| payment              | string | The relative URI of the payment this capture transaction belongs to.                   |
+| reversal.id          | string | The relative URI of the created capture transaction.                                   |
+| reversal.transaction | object | The object representation of the generic [transaction resource][transaction-resource]. |
 
 ### Reversal Sequence
 
