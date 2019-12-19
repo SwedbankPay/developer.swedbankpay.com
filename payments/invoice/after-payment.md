@@ -158,7 +158,7 @@ The `captures` resource lists the capture transactions performed on a
 specific invoice payment.
 
 {:.code-header}
-***Request***
+**Request**
 
 ```http
 GET /psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures HTTP/1.1
@@ -168,7 +168,7 @@ Content-Type: application/json
 ```
 
 {:.code-header}
-***Response***
+**Response**
 
 ```http
 HTTP/1.1 200 OK
@@ -254,7 +254,7 @@ The `cancel` resource will be returned, containing information about the
 newly created `cancel` transaction.
 
 {:.code-header}
-***Response***
+**Response**
 
 ```http
 {
@@ -292,7 +292,7 @@ The `cancellations` resource lists the cancellation transaction made on a
 specific payment.
 
 {:.code-header}
-***Request***
+**Request**
 
 ```http
 Request
@@ -303,7 +303,7 @@ Content-Type: application/json
 ```
 
 {:.code-header}
-***Response***
+**Response**
 
 ```http
 HTTP/1.1 200 OK
@@ -450,7 +450,7 @@ Content-Type: application/json
 ```
 
 {:.code-header}
-***Response***
+**Response**
 
 ```http
 HTTP/1.1 200 OK

@@ -1,12 +1,12 @@
 {% assign instrument = include.instrument | default: "selecting the payment instrument" %}
 
-### Abort
+## Abort
 
 To abort a payment, perform the `update-payment-abort` operation that is
 returned in the payment request.
 You need to include the following HTTP body:
 
-{:.table .table-striped}
+{:.code-header}
 **Request**
 
 ```http
@@ -23,7 +23,7 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{:.code-header}
 **Response**
 
 ```http
