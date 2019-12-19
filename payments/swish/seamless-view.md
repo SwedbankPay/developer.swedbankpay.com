@@ -83,7 +83,7 @@ sequenceDiagram
 
 * ① When the payer starts the purchase process, you make a `POST` request
   towards Swedbank Pay with the collected Purchase information.
-* ② `rel: view-sales` is a value in one of the operations, sent as a response
+* ② `view-sales` is a `rel` value in one of the operations, sent as a response
   from Swedbank Pay to the Merchant.
 * ③ `Open iframe` creates the Swedbank Pay hosted iframe.
 * ④ `Show Consumer UI page in iframe` displays the payment window as content
