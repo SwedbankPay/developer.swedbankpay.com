@@ -20,18 +20,15 @@ sidebar:
 
 {% include alert-review-section.md %}
 
-{% include jumbotron.html body="**Invoice Payments** is one of the most easiest
-and safest payment service where Swedbank Pay helps improve cashflow by
+{% include jumbotron.html body="**Invoice Payments** is one of the easiest payment service where Swedbank Pay helps improve cashflow by
 purchasing merchant invoices.
 Choose between our **Direct**, **Redirect** and **Seamless view**
 integration options." %}
 
 {% include alert.html type="neutral"
                       icon="open_in_browser"
-                      body="**Direct** is a payment service where Swedbank Pay
-                      helps improve cashflow by purchasing merchant invoices.
-                      Swedbank Pay receives invoice data, which is used to
-                      produce and distribute invoices to the consumer/end-use." %}
+                      body="The **Direct** integration puts the control in your hands. You control the collection of the purchase information and personal information before sending them to us. Swedbank Pay receives invoice data, which is used to
+                      produce and distribute invoices to the consumer/end-user." %}
 
 {% include alert.html type="neutral"
                       icon="cached"
@@ -56,11 +53,11 @@ you have done the following:  
 1. Sent a merchant logo in .JPG format to [setup.ecom@payex.com][setup-mail].
     The logo will be displayed on all your invoices. Minimum accepted size is
     600x200 pixels, and at least 300 DPI.
-2. Included a link to "Terms and Conditions" for Swedbank Pay Faktura.
+2. Included a link to "Terms and Conditions" for Invoice.
 
 ## API Requests
 
-The API requests are displayed in the [purchase flow](#purchase-flow).
+The API requests are displayed in the purchase flow below.
 You can create an invoice payment with the following `operation`
 options:
 
