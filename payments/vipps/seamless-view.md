@@ -141,7 +141,7 @@ Content-Type: application/json
    "payment": {
        "operation": "Purchase",
        "intent": "Authorization",
-       "currency": "SEK",
+       "currency": "NOK",
        "prices": [
             {
                "type": "Vipps",
@@ -184,17 +184,17 @@ Content-Type: application/json
 |  ✔︎︎︎︎︎  | `payment`                         | `object`      | The `payment` object contains information about the specific payment.                                                                                                                                                                                       |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`operation`               | `string`      | The [`purchase`][purchase] operation is used in our example. Take a look at the [create `payment` section][create-payment] for a full example of the [Purchase][purchase] `operation`.                                                                      |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`intent`                  | `string`      | `Authorization`. Reserves the amount, and is followed by a [cancellation][cancellations] or [capture][captures] of funds.<br> <br> `AutoCapture`. A one phase option that enable capture of funds automatically after authorization.                        |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`currency`                | `string`      | NOK, SEK, DKK, USD or EUR.                                                                                                                                                                                                                                  |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`currency`                | `string`      | NOK                                                                                                                                                                                                                                                         |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`prices`                  | `object`      | The `prices` resource lists the prices related to a specific payment.                                                                                                                                                                                       |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`type`                   | `string`      | Use the Vipps value. [See the Prices resource and prices object types for more information][price-resource].                                                                                                                                                |
-|  ✔︎︎︎︎︎  | └─➔&nbsp;`amount`                 | `integer`     | Amount is entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 SEK 5000 = 50.00 SEK.                                                                                                                                         |
+|  ✔︎︎︎︎︎  | └─➔&nbsp;`amount`                 | `integer`     | Amount is entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK 5000 = 50.00 NOK.                                                                                                                                         |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`vatAmount`              | `integer`     | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                                                                          |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`description`             | `string(40)`  | A textual description max 40 characters of the purchase.                                                                                                                                                                                                    |
 |          | └➔&nbsp;`payerReference`          | `string`      | The reference to the payer (consumer/end user) from the merchant system. E.g mobile number, customer number etc.                                                                                                                                            |
 |          | └➔&nbsp;`generatePaymentToken`    | `boolean`     | `true` or `false`. Set this to `true` if you want to create a paymentToken for future use as One Click.                                                                                                                                                     |
 |          | └➔&nbsp;`generateRecurrenceToken` | `boolean`     | `true` or `false`. Set this to `true` if you want to create a recurrenceToken for future use Recurring purchases (subscription payments).                                                                                                                   |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`userAgent`               | `string`      | The user agent reference of the consumer's browser - [see user agent definition][user-agent-definition]                                                                                                                                                     |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`language`                | `string`      | nb-NO, sv-SE or en-US.                                                                                                                                                                                                                                      |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`language`                | `string`      | nb-NO or en-US.                                                                                                                                                                                                                                             |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`urls`                    | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                      |
 |          | └─➔&nbsp;`hostUrls`               | `array`       | The array of URLs valid for embedding of Swedbank Pay Hosted Views. If not supplied, view-operation will not be available.                                                                                                                                  |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`completeUrl`            | `string`      | The URL that Swedbank Pay will redirect back to when the payment page is completed.                                                                                                                                                                         |
@@ -229,7 +229,7 @@ Content-Type: application/json
        "operation": "Purchase",
        "intent": "Authorization",
        "state": "Ready",
-       "currency": "SEK",
+       "currency": "NOK",
        "prices": {
            "id": "/psp/vipps/payments/{{page.paymentId}}/prices"
         },
@@ -398,7 +398,7 @@ Content-Type: application/json
 | └➔&nbsp;`type`               | `string`  | Indicates the transaction type.                                                                                                                                                                              |
 | └➔&nbsp;`state`              | `string`  | `Initialized`, `AwaitingActivity`, `Completed` or `Failed`. Indicates the state of the transaction.                                                                                                          |
 | └➔&nbsp;`number`             | `string`  | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead. |
-| └➔&nbsp;`amount`             | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` = 100.00 NOK, `5000` = 50.00 SEK.                                                                                     |
+| └➔&nbsp;`amount`             | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` = 100.00 NOK, `5000` = 50.00 NOK.                                                                                     |
 | └➔&nbsp;`vatAmount`          | `integer` | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                           |
 | └➔&nbsp;`description`        | `string`  | A human readable description of maximum 40 characters of the transaction.                                                                                                                                    |
 | └➔&nbsp;`payeeReference`     | `string`  | A unique reference for the transaction.                                                                                                                                                                      |
