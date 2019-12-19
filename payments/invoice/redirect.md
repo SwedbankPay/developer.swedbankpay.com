@@ -132,14 +132,14 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "urls": {
-            "completeUrl": "http://test-dummy.net/payment-completed",
-            "cancelUrl": "http://test-dummy.net/payment-canceled",
-            "callbackUrl": "http://test-dummy.net/payment-callback",
-            "logoUrl": "http://fakeservices.psp.dev.utvnet.net/logo.png",
-            "termsOfServiceUrl": "http://fakeservices.psp.dev.utvnet.net/terms.pdf"
+            "completeUrl": "http://example.com/payment-completed",
+            "cancelUrl": "http://example.com/payment-canceled",
+            "callbackUrl": "http://example.com/payment-callback",
+            "logoUrl": "http://example.com/logo.png",
+            "termsOfServiceUrl": "http://example.com/terms.pdf"
         },
         "payeeInfo": {
-            "payeeId": "12345678-1234-1234-1234-123456789012",
+            "payeeId": "{{ page.merchantId }}",
             "payeeReference": "PR123",
             "payeeName": "Merchant1",
             "productCategory": "PC1234",
@@ -217,7 +217,7 @@ Content-Type: application/json
 
 {
     "payment": {
-        "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+        "id": "/psp/invoice/payments/{{ page.paymentId }}",
         "number": 1234567890,
         "instrument": "Invoice",
         "created": "2016-09-14T13:21:29.3182115Z",
@@ -234,52 +234,52 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "prices": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/prices"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/prices"
         },
         "transactions": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/transactions"
         },
         "authorizations": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/authorizations"
         },
         "captures": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/captures"
         },
         "reversals": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/reversals"
         },
         "cancellations": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/cancellations"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/cancellations"
         },
         "payeeInfo": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeInfo"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/payeeInfo"
         },
         "urls": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/urls"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/urls"
         },
         "settings": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/settings"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/settings"
         },
         "approvedLegalAddress": {
-            "id": "/psp/invoice/payments/<paymentId>/approvedlegaladdress"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/approvedlegaladdress"
         },
         "maskedApprovedLegalAddress": {
-            "id": "/psp/invoice/payments/<paymentId>/maskedapprovedlegaladdress"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/maskedapprovedlegaladdress"
         }
     },
     "operations": [
         {
-            "href": "https://api.payex.com/psp/invoice/payments/<paymentId>",
+            "href": "https://api.payex.com/psp/invoice/payments/{{ page.paymentId }}",
             "rel": "update-payment-abort",
             "method": "PATCH"
         },
         {
-            "href": "https://api.payex.com/psp/invoice/payments/<paymentId>/authorizations",
+            "href": "https://api.payex.com/psp/invoice/payments/{{ page.paymentId }}/authorizations",
             "rel": "create-authorize",
             "method": "POST"
         },
         {
-            "href": "https://api.payex.com/psp/invoice/payments/<paymentId>/approvedlegaladdress",
+            "href": "https://api.payex.com/psp/invoice/payments/{{ page.paymentId }}/approvedlegaladdress",
             "rel": "create-approved-legal-address",
             "method": "POST"
         }
@@ -298,7 +298,7 @@ possible to perform in the current state of the payment.
 **Request**
 
 ```http
-GET /psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/ HTTP/1.1
+GET /psp/invoice/payments/{{ page.paymentId }}/ HTTP/1.1
 Host: api.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -313,7 +313,7 @@ Content-Type: application/json
 
 {
     "payment": {
-        "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+        "id": "/psp/invoice/payments/{{ page.paymentId }}",
         "number": 1234567890,
         "created": "2016-09-14T13:21:29.3182115Z",
         "updated": "2016-09-14T13:21:57.6627579Z",
@@ -331,55 +331,55 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "prices": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/prices"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/prices"
         },
         "transactions": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/transactions"
         },
         "authorizations": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/authorizations"
         },
         "captures": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/captures"
         },
         "reversals": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/reversals"
         },
         "cancellations": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/cancellations"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/cancellations"
         },
         "payeeInfo": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeInfo"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/payeeInfo"
         },
         "urls": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/urls"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/urls"
         },
         "settings": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/settings"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/settings"
         },
         "approvedLegalAddress": {
-            "id": "/psp/invoice/payments/<paymentId>/approvedlegaladdress"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/approvedlegaladdress"
         },
         "maskedApprovedLegalAddress": {
-            "id": "/psp/invoice/payments/<paymentId>/maskedapprovedlegaladdress"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/maskedapprovedlegaladdress"
         }
     },
     "approvedLegalAddress": {
-        "id": "/psp/invoice/payments/<paymentId>/approvedlegaladdress"
+        "id": "/psp/invoice/payments/{{ page.paymentId }}/approvedlegaladdress"
     },
     "operations": [
         {
-            "href": "https://api.payex.com/psp/invoice/payments/<paymentId>/captures",
+            "href": "https://api.payex.com/psp/invoice/payments/{{ page.paymentId }}/captures",
             "rel": "create-capture",
             "method": "POST"
         },
         {
-            "href": "https://api.payex.com/psp/invoice/payments/<paymentId>/cancellations",
+            "href": "https://api.payex.com/psp/invoice/payments/{{ page.paymentId }}/cancellations",
             "rel": "create-cancel",
             "method": "POST"
         },
         {
-            "href": "https://api.payex.com/psp/invoice/payments/<paymentId>/approvedlegaladdress",
+            "href": "https://api.payex.com/psp/invoice/payments/{{ page.paymentId }}/approvedlegaladdress",
             "rel": "create-approved-legal-address",
             "method": "POST"
         }
