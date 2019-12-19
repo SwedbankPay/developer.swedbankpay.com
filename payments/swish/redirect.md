@@ -189,7 +189,7 @@ Content-Type: application/json
 |          | └─➔&nbsp;`ecomOnlyEnabled`                    | `boolean`  | `true` if to only enable Swish on browser based transactions.; otherwise `false` to also enable Swish transactions in-app.                                                                                                                                                                                                                                                                                                                                                                                                   |
 
 {:.code-header}
-**Request**
+**Response**
 
 ```http
 HTTP/1.1 200 OK
