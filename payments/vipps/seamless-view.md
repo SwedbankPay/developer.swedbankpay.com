@@ -99,9 +99,9 @@ sequenceDiagram
 ## Seamless View Back End
 
 When properly set up in your merchant/webshop site and the payer starts the
-purchase process, you need to make a `POST` request towards Swedbank Pay with your
-Purchase information. This will generate a payment object with a unique
-`paymentID`. You will receive a **JavaScript source** in response.
+purchase process, you need to make a `POST` request towards Swedbank Pay with
+your Purchase information. This will generate a payment object with a unique
+`paymentID`. You will receive a response in which you can find the **JavaScript source** in the `view-payment` operation.
 
 ### Intent
 
