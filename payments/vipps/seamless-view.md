@@ -23,7 +23,7 @@ customers the opportunity to pay with Vipps directly within your webshop." %}
 
 ## Introduction
 
-Vipps is a two-phase payment instrument supported by the major norwegian banks.
+Vipps is a two-phase payment instrument supported by the major Norwegian banks.
 In the Seamless View scenario, Swedbank Pay receives a mobile number (MSISDN)
 from the payer through Swedbank Pay Payments. Swedbank Pay performs a payment
 that the payer must confirm through the Vipps mobile app.
