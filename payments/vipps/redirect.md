@@ -30,17 +30,14 @@ that the payer must confirm through the Vipps mobile app." %}
 * When the payer starts the purchase process, you make a `POST` request towards
   Swedbank Pay with the collected `Purchase` information.
 * This will generate a payment object with a unique `paymentID`.
-* You will either receive a Redirect URL to a hosted page or a JavaScript source
-  in response.
+* You will receive a Redirect URL to a hosted page.
 * You need to [redirect][reference-redirect] the payer to the Redirect payment
   where the user is prompted to enter the registered mobile number.
   This triggers a `POST` towards Swedbank Pay.
 * Swedbank Pay handles the dialogue with Vipps and the consumer confirms the
   purchase in the Vipps app.
-* If `callbackURL` is set, the user will receive a payment callback when the Vipps
-  dialogue is completed.
-* Lastly, the user needs to send a `GET` request, containing the `paymentID`
-  generated in the first step, to receive the state of the transaction.
+* To receive the state of the transaction you need to do a `GET`
+  request containing the `paymentID` generated in the first step.
 
 You redirect the payer to Swedbank Pay hosted payment page to collect the
 consumers mobile number.
@@ -48,29 +45,6 @@ consumers mobile number.
 ![Vipps mobile Payments]
 [Vipps-screenshot-1]{:width="426px" :height="632px"}
 ![Vipps Payments][Vipps-screenshot-2]{:width="427px" :height="694px"}
-
-## Operations
-
-The API requests are displayed in the [purchase flow](#purchase-flow).
-You can create a Vipps payment with the `operation` value set to `purchase`. See
-the `purchase` example below.
-
-### Intent
-
-**`Authorization` (two-phase)**: The intent of the payment identifies how and
-when the charge will be effectuated. This determines the type of transaction
-used during the payment process. The intent of a Vipps purchase is always
-`Authorization`. The amount will be reserved but not charged.
-You will later (i.e. if a physical product, when you are ready to ship the
-purchased products) have to make a [Capture][capture] or
-[Cancel][cancel] request.
-
-{% include alert.html type="success" icon="link" body="**Defining
-`callbackUrl`**: When implementing a scenario, it is optional to set a
-`callbackUrl` in the `POST` request. If `callbackUrl` is set, Swedbank Pay will
-send a `POST` request to this URL when the consumer has fulfilled the payment.
-[See the Callback API description for more
-information](/payments/vipps/other-features#callback)." %}
 
 ## Purchase flow
 
@@ -123,6 +97,36 @@ sequenceDiagram
   Merchant-->>Browser: Display authorize result
   deactivate Merchant
 ```
+
+### Intent
+
+**`Authorization` (two-phase)**: The intent of the payment identifies how and
+when the charge will be effectuated. This determines the type of transaction
+used during the payment process. The intent of a Vipps purchase is always
+`Authorization`. The amount will be reserved but not charged.
+You will later (i.e. if a physical product, when you are ready to ship the
+purchased products) have to make a [Capture][capture] or
+[Cancel][cancel] request.
+
+### General
+
+  {% include alert.html type="success" icon="link" body="**Defining
+`callbackUrl`**: When implementing a scenario, it is strongly recommended to set a
+`callbackUrl` in the `POST` request. If `callbackUrl` is set, Swedbank Pay will
+send a `POST` request to this URL when the consumer has fulfilled the payment.
+[See the Callback API description for more
+information](/payments/vipps/other-features#callback)." %}
+
+## Operations
+
+The API requests are displayed in the [purchase flow](#purchase-flow).
+You can create a Vipps payment with the `operation` value set to `purchase`. See
+the `purchase` example below.
+
+### Purchase
+
+A `Purchase` payment is a straightforward way to charge the the payer.
+It is followed up by posting a capture, cancellation or reversal transaction.
 
 {:.code-header}
 **Request**
