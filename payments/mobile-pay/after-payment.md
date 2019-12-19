@@ -36,8 +36,13 @@ specific payment.
 **Request**
 
 ```http
+<<<<<<< HEAD
 GET /psp/mobilepay/payments/e7919b4f-81a2-4ffb-ec40-08d617d580a2/captures HTTP/1.1
 Host: {{ page.apiUrl }}
+=======
+GET /psp/mobilepay/payments/{{ page.paymentId }}/captures HTTP/1.1
+Host: api.externalintegration.payex.com
+>>>>>>> DX-502 Update mobile pay after payment GUIDs
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -50,13 +55,13 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/mobilepay/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "payment": "/psp/mobilepay/payments/{{ page.paymentId }}",
     "captures": {
-        "id": "/psp/mobilepay/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures",
+        "id": "/psp/mobilepay/payments/{{ page.paymentId }}/captures",
         "captureList": [{
-            "id": "/psp/mobilepay/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures/12345678-1234-1234-1234-123456789012",
+            "id": "/psp/mobilepay/payments/{{ page.paymentId }}/captures/{{ page.transactionId }}",
             "transaction": {
-                "id": "/psp/mobilepay/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
+                "id": "/psp/mobilepay/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
                 "created": "2016-09-14T01:01:01.01Z",
                 "updated": "2016-09-14T01:01:01.03Z",
                 "type": "Capture",
@@ -126,14 +131,14 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/mobilepay/payments/6c742993-0aaa-478e-ec41-08d617d580a2",
+    "payment": "/psp/mobilepay/payments/{{ page.paymentId }}",
     "captures": {
-        "id": "/psp/mobilepay/payments/6c742993-0aaa-478e-ec41-08d617d580a2/captures",
+        "id": "/psp/mobilepay/payments/{{ page.paymentId }}/captures",
         "captureList": [
             {
-                "id": "/psp/mobilepay/payments/6c742993-0aaa-478e-ec41-08d617d580a2/captures/6f978046-ad7d-4a7e-8ac9-08d617e01a6f",
+                "id": "/psp/mobilepay/payments/{{ page.paymentId }}/captures/{{ page.transactionId }}",
                 "transaction": {
-                    "id": "/psp/mobilepay/payments/6c742993-0aaa-478e-ec41-08d617d580a2/transactions/6f978046-ad7d-4a7e-8ac9-08d617e01a6f",
+                    "id": "/psp/mobilepay/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
                     "created": "2018-09-11T12:14:20.3155727Z",
                     "updated": "2018-09-11T12:14:21.3834204Z",
                     "type": "Capture",
@@ -186,8 +191,13 @@ specific payment.
 **Request**
 
 ```http
+<<<<<<< HEAD
 GET /psp/mobilepay/payments/e7919b4f-81a2-4ffb-ec40-08d617d580a2/cancellations HTTP/1.1
 Host: {{ page.apiUrl }}
+=======
+GET /psp/mobilepay/payments/{{ page.paymentId }}/cancellations HTTP/1.1
+Host: api.externalintegration.payex.com
+>>>>>>> DX-502 Update mobile pay after payment GUIDs
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -200,14 +210,14 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/mobilepay/payments/6c742993-0aaa-478e-ec41-08d617d580a2",
+    "payment": "/psp/mobilepay/payments/{{ page.paymentId }}",
     "cancellations": {
-        "id": "/psp/mobilepay/payments/6c742993-0aaa-478e-ec41-08d617d580a2/cancellations",
+        "id": "/psp/mobilepay/payments/{{ page.paymentId }}/cancellations",
         "cancellationList": [
             {
-                "id": "/psp/mobilepay/payments/6c742993-0aaa-478e-ec41-08d617d580a2/cancellations/c72f2a42-2222-4f91-ed4a-08d617e0d7e9",
+                "id": "/psp/mobilepay/payments/{{ page.paymentId }}/cancellations/{{ page.transactionId }}",
                 "transaction": {
-                    "id": "/psp/mobilepay/payments/6c742993-0aaa-478e-ec41-08d617d580a2/transactions/c72f2a42-2222-4f91-ed4a-08d617e0d7e9",
+                    "id": "/psp/mobilepay/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
                     "created": "2018-09-11T12:19:38.1247314Z",
                     "updated": "2018-09-11T12:19:38.3059149Z",
                     "type": "Cancellation",
@@ -251,8 +261,13 @@ perform a `GET` on the payment after the user returns from the
 **Request**
 
 ```http
+<<<<<<< HEAD
 PATCH /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations/<transactionId> HTTP/1.1
 Host: {{ page.apiUrl }}
+=======
+PATCH /psp/creditcard/payments/{{ page.paymentId }}/authorizations/<transactionId> HTTP/1.1
+Host: api.externalintegration.payex.com
+>>>>>>> DX-502 Update mobile pay after payment GUIDs
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -276,13 +291,13 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "payment": "/psp/creditcard/payments/{{ page.paymentId }}",
     "authorization": {
-        "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations/12345678-1234-1234-1234-123456789012",
-        "paymentToken": "12345678-1234-1234-1234-123456789012",
+        "id": "/psp/creditcard/payments/{{ page.paymentId }}/authorizations/{{ page.transactionId }}",
+        "paymentToken": "{{ page.transactionId }}",
         "maskedPan": "123456xxxxxx1234",
         "expireDate": "mm/yyyy",
-        "panToken": "12345678-1234-1234-1234-123456789012",
+        "panToken": "{{ page.transactionId }}",
         "cardBrand": "Visa|MC",
         "cardType": "Credit Card|Debit Card",
         "issuingBank": "UTL MAESTRO",
@@ -293,7 +308,7 @@ Content-Type: application/json
         "acquirerTransactionTime": "2017-08-29T13:42:18Z",
         "authenticationStatus": "Y|A|U|N",
         "transaction": {
-            "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
+            "id": "/psp/creditcard/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
             "created": "2016-09-14T01:01:01.01Z",
             "updated": "2016-09-14T01:01:01.03Z",
             "type": "Authorization",
@@ -307,7 +322,11 @@ Content-Type: application/json
             "isOperational": true,
             "operations": [
                 {
+<<<<<<< HEAD
                     "href": "https://{{ page.apiUrl }}/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+=======
+                    "href": "https://api.externalintegration.payex.com/psp/creditcard/payments/{{ page.paymentId }}",
+>>>>>>> DX-502 Update mobile pay after payment GUIDs
                     "rel": "edit-authorization",
                     "method": "PATCH"
                 }
@@ -332,8 +351,13 @@ You can only cancel a payment - or part of payment - not yet captured.
 **Request**
 
 ```http
+<<<<<<< HEAD
 POST /psp/mobilepay/payments/e7919b4f-81a2-4ffb-ec40-08d617d580a2/cancellations HTTP/1.1
 Host: {{ page.apiUrl }}
+=======
+POST /psp/mobilepay/payments/{{ page.paymentId }}/cancellations HTTP/1.1
+Host: api.externalintegration.payex.com
+>>>>>>> DX-502 Update mobile pay after payment GUIDs
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -364,11 +388,11 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/mobilepay/payments/6c742993-0aaa-478e-ec41-08d617d580a2",
+    "payment": "/psp/mobilepay/payments/{{ page.paymentId }}",
     "cancellation": {
-        "id": "/psp/mobilepay/payments/6c742993-0aaa-478e-ec41-08d617d580a2/cancellations/c72f2a42-2222-4f91-ed4a-08d617e0d7e9",
+        "id": "/psp/mobilepay/payments/{{ page.paymentId }}/cancellations/{{ page.transactionId }}",
         "transaction": {
-            "id": "/psp/mobilepay/payments/6c742993-0aaa-478e-ec41-08d617d580a2/transactions/c72f2a42-2222-4f91-ed4a-08d617e0d7e9",
+            "id": "/psp/mobilepay/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
             "created": "2018-09-11T12:19:38.1247314Z",
             "updated": "2018-09-11T12:19:38.3059149Z",
             "type": "Cancellation",
@@ -415,8 +439,13 @@ specific payment.
 **Request**
 
 ```http
+<<<<<<< HEAD
 GET /psp/mobilepay/payments/e7919b4f-81a2-4ffb-ec40-08d617d580a2/reversals HTTP/1.1
 Host: {{ page.apiUrl }}
+=======
+GET /psp/mobilepay/payments/{{ page.paymentId }}/reversals HTTP/1.1
+Host: api.externalintegration.payex.com
+>>>>>>> DX-502 Update mobile pay after payment GUIDs
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -429,13 +458,13 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/mobilepay/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "payment": "/psp/mobilepay/payments/{{ page.paymentId }}",
     "reversals": {
-        "id": "/psp/mobilepay/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversal",
+        "id": "/psp/mobilepay/payments/{{ page.paymentId }}/reversal",
         "reversalList": [{
-            "id": "/psp/mobilepay/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversal/12345678-1234-1234-1234-123456789012",
+            "id": "/psp/mobilepay/payments/{{ page.paymentId }}/reversal/{{ page.transactionId }}",
             "transaction": {
-                "id": "/psp/mobilepay/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
+                "id": "/psp/mobilepay/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
                 "created": "2016-09-14T01:01:01.01Z",
                 "updated": "2016-09-14T01:01:01.03Z",
                 "type": "Reversal",
@@ -471,8 +500,13 @@ captured payment.
 **Request**
 
 ```http
+<<<<<<< HEAD
 POST /psp/mobilepay/payments/e7919b4f-81a2-4ffb-ec40-08d617d580a2/reversals HTTP/1.1
 Host: {{ page.apiUrl }}
+=======
+POST /psp/mobilepay/payments/{{ page.paymentId }}/reversals HTTP/1.1
+Host: api.externalintegration.payex.com
+>>>>>>> DX-502 Update mobile pay after payment GUIDs
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -507,11 +541,11 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/mobilepay/payments/6c742993-0aaa-478e-ec41-08d617d580a2",
+    "payment": "/psp/mobilepay/payments/{{ page.paymentId }}",
     "reversal": {
-        "id": "/psp/mobilepay/payments/6c742993-0aaa-478e-ec41-08d617d580a2/reversals/55c52694-fdb0-4134-ed4b-08d617e0d7e9",
+        "id": "/psp/mobilepay/payments/{{ page.paymentId }}/reversals/{{ page.transactionId }}",
         "transaction": {
-            "id": "/psp/mobilepay/payments/6c742993-0aaa-478e-ec41-08d617d580a2/transactions/55c52694-fdb0-4134-ed4b-08d617e0d7e9",
+            "id": "/psp/mobilepay/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
             "created": "2018-09-11T12:25:54.339611Z",
             "updated": "2018-09-11T12:25:54.5738079Z",
             "type": "Reversal",
