@@ -187,7 +187,6 @@ information without reserving or charging any amount." %}
 ### Introduction to Verify
 
 This option is commonly used when initiating a subsequent
-[One-click invoice payment][one-click-payments] or a
 [recurring invoice payment][recur] flow - where you do not want
 to charge the consumer right away.
 
@@ -215,9 +214,8 @@ optional and requires enabling on the contract with Swedbank Pay." %}
   request to receive the state of the transaction.
 * Finally you will make a `GET` request towards Swedbank Pay with the
   `paymentID` received in the first step, which will return the payment result
-  and a `paymentToken` that can be used for subsequent [One-Click
-  Payments][one-click-payments] and [recurring server-to-server based
-  payments][recur].
+  and a `paymentToken` that can be used for subsequent [recurring
+  server-to-server based payments][recur].
 
 ### Screenshots
 
@@ -228,7 +226,7 @@ the credit card information.
 
 ### API Requests
 
-The API requests are displayed in the [Verification flow]. The options you can
+The API requests are displayed in the [Verification flow][verification-flow]. The options you can
 choose from when creating a payment with key operation set to Value Verify are
 listed below.
 
@@ -578,17 +576,17 @@ All invoice error types will have the following URI in front of type:
 {% include iterator.html prev_href="after-payment" prev_title="Back: After
 Payment" %}
 
-
 [callback]: #callback
 [cancel]: /payments/invoice/after-payment#cancellations
 [capture]: /payments/invoice/after-payment#capture
 [card-payment]: /assets/img/checkout/test-purchase.png
 [fi-png]: /assets/img/fi.png
 [financing-consumer]: #financing-consumer
-[invoice-flow]: /payments/invoice/#invoice-flow
+[invoice-flow]: /payments/invoice#invoice-flow
 [no-png]: /assets/img/no.png
 [recur]: #recur
 [redirect]: /payments/invoice/redirect
 [se-png]: /assets/img/se.png
 [seamless-view]: /payments/invoice/seamless-view
 [verify]: #verfify
+[verification-flow]: #verification-flow

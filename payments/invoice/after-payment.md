@@ -152,7 +152,7 @@ Content-Type: application/json
 | `payment`                     | `string`  | The relative URI of the payment this capture transaction resource belongs to.                         |
 | `capture.itemDescriptions.id` | `string`  | The relative URI of the item descriptions resource associated with this capture transaction resource. |
 | `capture.invoiceCopy`         | `string`  | The relative URI of the downloadable invoice copy in PDF format.                                      |
-| `capture.transaction`         | `object`  | The object representation of the [transaction][technical-reference-transaction].                      |
+| `capture.transaction`         | `object`  | The object representation of the [transaction][other-features-transaction].                      |
 
 #### Inspecting the Captures
 
@@ -286,7 +286,7 @@ newly created `cancel` transaction.
 | :--------------------- | :-------- | :--------------------------------------------------------------------------------------- |
 | `payment`              | `string`  | The relative URI of the payment this capture transaction belongs to.                     |
 | `reversal.id`          | `string`  | The relative URI of the created capture transaction.                                     |
-| `reversal.transaction` | `object`  | The object representation of the generic [transaction][technical-reference-transaction]. |
+| `reversal.transaction` | `object`  | The object representation of the generic [transaction][other-features-transaction]. |
 
 ### Inspecting the Cancellation
 
@@ -434,7 +434,7 @@ Content-Type: application/json
 | :--------------------- | :-------- | :--------------------------------------------------------------------------------------- |
 | `payment`              | `string`  | The relative URI of the payment this capture transaction belongs to.                     |
 | `reversal.id`          | `string`  | The relative URI of the created capture transaction.                                     |
-| `reversal.transaction` | `object`  | The object representation of the generic [transaction][technical-reference-transaction]. |
+| `reversal.transaction` | `object`  | The object representation of the generic [transaction][other-features-transaction]. |
 
 ### Inspecting the Reversal
 
@@ -519,4 +519,4 @@ next_href="other-features" next_title="Next: Other Features" %}
 [invoice-captures]: #captures
 [invoice-cancellations]: #cancellations
 [invoice-reversals]: #reversals
-[technical-reference-transaction]: /payments/invoice/other-features#transactions
+[other-features-transaction]: /payments/invoice/other-features#transactions
