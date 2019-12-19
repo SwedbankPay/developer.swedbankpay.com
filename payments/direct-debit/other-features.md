@@ -244,7 +244,7 @@ Content-Type: application/json
             {
                 "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/sales/12345678-1234-1234-1234-123456789012",
                 "selectedBank": "NordeaFI",
-                "deviceIsMobile": "TRUE",
+                "deviceIsMobile": true,
                 "transaction": {
                     "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
                     "created": "2018-09-14T01:01:01.01Z",
@@ -267,7 +267,7 @@ Content-Type: application/json
             {
                 "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/sales/12345678-1234-1234-1234-123456789013",
                 "selectedBank": "NordeaFI",
-                "deviceIsMobile": "TRUE",
+                "deviceIsMobile": true,
                 "transaction": {
                     "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789013",
                     "created": "2018-09-14T01:01:01.01Z",
@@ -283,7 +283,7 @@ Content-Type: application/json
                     "failedActivityName": "",
                     "failedErrorCode": "",
                     "failedErrorDescription": "",
-                    "isOperational": "TRUE",
+                    "isOperational": true,
                     "operations": [
                         {
                             "href": "https://api.externalintegration.payex.com/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
@@ -338,7 +338,7 @@ Content-Type: application/json
                     "vatAmount": 250,
                     "description": "Test transaction",
                     "payeeReference": "AH123456",
-                    "isOperational": "TRUE",
+                    "isOperational": true,
                     "operations": []
                 }
             }
@@ -410,7 +410,7 @@ Content-Type: application/json
             "vatAmount": 250,
             "description": "Test transaction",
             "payeeReference": "AH123456",
-            "isOperational": "TRUE",
+            "isOperational": true,
             "operations": []
         }
     }
