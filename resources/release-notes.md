@@ -18,7 +18,7 @@ sidebar:
 
 {% include alert-review-section.md %}
 
-{% include jumbotron.html body="" %}
+{% include jumbotron.html body="The latest updates about our releases will be published on this page" %}
 
 ## December 2019
 
@@ -32,7 +32,7 @@ shippingAddressRestrictedToCountryCodes, in our checkin module.
 Updated api specification can be found [here][initiate-consumer-session]
 
 {% comment %}
-TODO: Release this when the Swish Redirect section is released with the correct screenshot.
+TODO: Release this when the Swish Redirect section is released with the correct screenshot. Change the link below when this is ready.
 
 ### Improved purchase experience in Swish
 
@@ -84,76 +84,81 @@ The input parameter `quantity` in OrderItems-node is now updated to decimal.
 You may send up to 4 decimals. See updated documentation
 [here][payment-orders]
 
+{% comment %} TODO: This is currently only used by ICA. Should we have the
+documentation available? Check Jira-task DX-511.
+
 ### Payment order
 
 We have added support for restricting payment instruments available in payment
 menu. The input parameter is ##restrictedToInstruments## in Payment order. See
 updated documentation
 [[here>>doc:Main.ecommerce.technical-reference.payment-orders-resource.WebHome]]
+{% endcomment %}
 
 ## October 2019
 
 ### Payment Url Credit Card
 
-We have added the URL property called ##paymentUrl## for [[Credit
-Card>>doc:Main.ecommerce.technical-reference.core-payment-resources.card-payments.WebHome]]
-hosted view (previously added for Vipps and Payment Order), that will be used
+We have added the URL property called `paymentUrl` for [Card
+Seamless View][card-payment-url] (previously added for Vipps and Checkout), that will be used
 when the user is returned from 3rd party. The URL should represent the page in
-where the payment hosted view was hosted originally, such as the checkout page,
-shopping cart page, or similar. Basically, ##paymentUrl## should be set to the
+where the payment Seamless View was hosted originally, such as the checkout page,
+shopping cart page, or similar. Basically, `paymentUrl` should be set to the
 same URL as that of the page where the JavaScript for the hosted payment view
-was added, in order to initiate the payment. Please note that the ##paymentUrl##
+was added, in order to initiate the payment. Please note that the `paymentUrl`
 must be able to invoke the same JavaScript URL from the same Payment as the one
 that initiated the payment originally, so it should include some sort of state
 identifier in the URL. The state identifier is the ID of the order, shopping
 cart or similar that has the URL of the Payment stored. When the JavaScript is
 invoked after return of the consumer, the consumer will either be redirected to
-the completeUrl (event onPaymentCompleted) or if payment has failed, see an
+the `completeUrl` (event onPaymentCompleted) or if payment has failed, see an
 error-message and get the option to retry the payment.
 
 ## August 2019
 
 ### Order Items
 
-On [[Payment
-Order>>doc:Main.ecommerce.technical-reference.payment-orders-resource.WebHome]],
-##itemDescriptions## and ##vatSummary## has been replaced with the more
-versatile and powerful ##orderItems##. While ##itemDescriptions## will continue
-to work, it is recommended that all integrations switch over to ##orderItems##
-as soon as possible. When ##orderItems## is used, ##itemDescriptions## must be
+On [Payment Orders][payment-orders],
+`itemDescriptions` and `vatSummary` has been replaced with the more
+versatile and powerful `orderItems`. While `itemDescriptions` will continue
+to work, it is recommended that all integrations switch over to `orderItems`
+as soon as possible. When `orderItems` is used, `itemDescriptions` must be
 removed from all requests as the two cannot be used simultaneously.
 
 ### Payment Url
 
-For our hosted views (currently
-[[Vipps>>doc:Main.ecommerce.technical-reference.core-payment-resources.vipps-payments.WebHome]]
-or in [[Payment
-Order>>doc:Main.ecommerce.technical-reference.payment-orders-resource.WebHome]]),
-we have added a new URL property called ##paymentUrl## that will be used when
+For our Seamless Views (currently
+[Vipps][vipps-payment-url]
+or in [Checkout][checkout-payment-url]),
+we have added a new URL property called `paymentUrl` that will be used when
 user is returned from 3rd party. The URL should represent the page of where the
 payment hosted view was hosted originally, such as the checkout page, shopping
-cart page, or similar. Basically, ##paymentUrl## should be set to the same URL
+cart page, or similar. Basically, `paymentUrl` should be set to the same URL
 as that of the page where the JavaScript for the hosted payment view was added
-to in order to initiate the payment. Please note that the ##paymentUrl## must be
+to in order to initiate the payment. Please note that the `paymentUrl` must be
 able to invoke the same JavaScript URL from the same Payment or Payment Order as
 the one that initiated the payment originally, so it should include some sort of
 state identifier in the URL. The state identifier is the ID of the order,
 shopping cart or similar that has the URL of the Payment or Payment Order
 stored. When the JavaScript is invoked after return of the consumer, the
-consumer will either be redirected to the completeUrl, or, if payment failed,
+consumer will either be redirected to the `completeUrl`, or, if payment failed,
 see an error-message, and get the option to retry the payment.
 
-If paymentUrl is not implemented, retry of payments will not be possible in
+If `paymentUrl` is not implemented, retry of payments will not be possible in
 either individual payment instruments such as
-[[Vipps>>doc:Main.ecommerce.technical-reference.core-payment-resources.vipps-payments.WebHome]]
-or in [[Payment
-Order>>doc:Main.ecommerce.technical-reference.payment-orders-resource.WebHome]].
+[Vipps][vipps-payment-resource]
+or in [Checkout][checkout-payment-orders].
 It makes it more tedious to retry payment as the whole process including the
 creation of the payment or payment order needs to be performed again. With
 paymentUrl in place, the retry process becomes much more convenient for both the
 integration and the payer.
 
+[card-payment-url]: /payments/card/other-features#payment-url
 [checkout]: /checkout
+[checkout-payment-url]: /checkout/other-features#payment-url
+[checkout-payment-orders]: /checkout/other-features#payment-orders
 [initiate-consumer-session]: /checkout/checkin#checkin-back-end
-[payment-orders]: /checkout/other-features#payment-orders
+[payment-orders]: /checkout/other-features#creating-a-payment-order
 [swish-other-features]: /payments/swish/other-features
+[vipps-payment-url]: /payments/vipps/other-features#payment-url
+[vipps-payment-resource]: /payments/vipps/other-features#payment-resource
