@@ -12,6 +12,8 @@ sidebar:
       title: Demoshop
     - url: /resources/development-guidelines
       title: Open Source Development Guidelines
+    - url: /resources/release-notes
+      title: Release Notes
 ---
 
 {% include alert-review-section.md %}
