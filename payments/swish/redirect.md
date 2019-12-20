@@ -94,7 +94,7 @@ sequenceDiagram
 
 ## Operations
 
-The API requests are displayed in the [purchase flow](#purchase-flow).
+The API requests are displayed in the [purchase flow][purchase-flow].
 Swish is a one-phase payment instrument that is based on sales transactions
 **not** involving `capture` or `cancellation` operations.
 The options you can choose from when creating a payment with key `operation` set
@@ -247,6 +247,6 @@ of the transaction." %}
 [callback-url]: /payments/swish/other-fetures#callback
 [seamless-view]: /payments/swish/seamless-view
 [payee-reference]: /payments/swish/other-features#payeereference
-[purchase]: /payments/swish/other-features#purchase-flow
+[purchase-flow]: #purchase-flow
 [redirect]: /payments/swish/redirect
 [technical-reference-callback]: /payments/swish/other-fetures#callback
