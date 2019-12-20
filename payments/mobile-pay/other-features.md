@@ -258,14 +258,14 @@ the `rel` and the request that will be sent in the HTTP body of the
 request for the given operation.
 
 {:.table .table-striped}
-| Operation                | Description                                                                                      |
-| :----------------------- | :----------------------------------------------------------------------------------------------- |
-| `update-payment-abort`   | [Aborts][technical-reference-abort] the payment before any financial transactions are performed. |
-| `create-authorization`   | Create an [authorization][authorization-transaction] transaction.                                |
-| `redirect-authorization` | Used to redirect the consumer to the mobilepay authorization UI.                                 |
-| `create-capture`         | Creates a [capture][capture-transaction] transaction.                                            |
-| `create-cancellation`    | Creates a [cancellation][cancellation-transaction] transaction.                                  |
-| `create-reversal`        | Creates a [reversal][reversal-transaction] transaction.                                          |
+| Operation                | Description                                                                  |
+| :----------------------- | :--------------------------------------------------------------------------- |
+| `update-payment-abort`   | [Aborts][abort] the payment before any financial transactions are performed. |
+| `create-authorization`   | Create an [authorization][authorization-transaction] transaction.            |
+| `redirect-authorization` | Used to redirect the consumer to the mobilepay authorization UI.             |
+| `create-capture`         | Creates a [capture][capture-transaction] transaction.                        |
+| `create-cancellation`    | Creates a [cancellation][cancellation-transaction] transaction.              |
+| `create-reversal`        | Creates a [reversal][reversal-transaction] transaction.                      |
 
 ## MobilePay transactions
 
@@ -428,8 +428,7 @@ Content-Type: application/json
 The authorization transaction is initiated by redirecting the end-user/consumer
 to the hyperlink returned in the `redirect-authorization` request.
 
-
-## Captures=
+## Captures
 
 The `captures` resource lists the capture transactions (one or more) on a
 specific payment.
@@ -477,8 +476,6 @@ Content-Type: application/json
 }
 ```
 
-**Properties**
-
 {:.table .table-striped}
 | Property                | Type     | Required                                                                     | Description |
 | :---------------------- | :------- | :--------------------------------------------------------------------------- | :---------- |
@@ -488,7 +485,7 @@ Content-Type: application/json
 | └➔&nbsp;`captureList`   | `array`  | The array of capture transaction objects.                                    |
 | └➔&nbsp;`captureList[]` | `object` | The capture transaction object described in the `capture` resource below.    |
 
-### Create capture transaction==
+### Create capture transaction
 
 A `capture` transaction - to withdraw money from the payer's mobilepay - can be
 created after a completed authorization by performing the `create-capture`
@@ -560,7 +557,7 @@ Content-Type: application/json
         ]
     }
 }
-``` 
+```
 
 {:.table .table-striped}
 | Property               | Type     | Description                                                          |
@@ -570,7 +567,7 @@ Content-Type: application/json
 | └➔&nbsp;`id`           | `string` | The relative URI of the created capture transaction.                 |
 | └➔&nbsp;`stransaction` | `object` | The object representation of the `transaction` resource.             |
 
-## Cancellations=
+## Cancellations
 
 The `cancellations` resource lists the cancellation transactions on a specific
 payment.
@@ -618,8 +615,6 @@ Content-Type: application/json
     }
 }
 ```
-
-**Properties**
 
 {:.table .table-striped}
 | Property                     | Type     | Description                                                                         |
@@ -701,7 +696,7 @@ Content-Type: application/json
 | └➔&nbsp;`id` | `string` |The relative URI of the current cancellation transaction resource.
 | └➔&nbsp;`transaction` | `object` |The object representation of the current transaction.
 
-## Reversals=
+## Reversals
 
 The `reversals` resource lists the reversal transactions (one or more) on a
 specific payment.
@@ -714,7 +709,7 @@ GET /psp/mobilepay/payments/{{ page.paymentId }}/reversals HTTP/1.1
 Host: api.payex.com
 Authorization: Bearer <MerchantToken>
 Content-Type: application/json
-`
+```
 
 {:.code-header}
 **Response**
@@ -749,8 +744,6 @@ Content-Type: application/json
 }
 ```
 
-**Properties**
-
 {:.table .table-striped}
 | Property                 | Type     | Description                                                                                          |
 | :----------------------- | :------- | :--------------------------------------------------------------------------------------------------- |
@@ -783,8 +776,6 @@ Content-Type: application/json
     }
 }
 ```
-
-**Properties**
 
 {:.table .table-striped}
 | Property                 | Type         | Required | Description                                                                                                               |
@@ -836,8 +827,6 @@ Content-Type: application/json
 | `reversal`            | `object` | The created capture transaction.                                     |
 | └➔&nbsp;`id`          | `string` | The relative URI of the created capture transaction.                 |
 | └➔&nbsp;`transaction` | `object` | The object representation of the `transaction` resource.             |
-
-
 
 ## Capture Sequence
 
@@ -977,4 +966,14 @@ The response will be the `payment` resource with its `state` set to `Aborted`.
 {% include iterator.html prev_href="after-payment"
                          prev_title="Back: After Payment" %}
 
+[abort]: #abort-a-payment
+[authorization-transaction]: #authorizations
+[callback-reference]: #callback
+[cancel]: #cancellations
+[cancellation-transaction]: #cancellations
+[capture-transaction]: #captures
+[capture]: #captures
+[payeeReference]: #payee-reference
+[reversal-transaction]: #reversals
+[transaction-resource]: #transactions
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
