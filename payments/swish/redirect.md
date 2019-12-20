@@ -146,7 +146,7 @@ Content-Type: application/json
             "subsite": "MySubsite"
         },
         "prefillInfo": {
-            "msisdn": "+46xxxxxxxxx"
+            "msisdn": "+46739000001"
         },
         "swish": {
             "ecomOnlyEnabled": false
