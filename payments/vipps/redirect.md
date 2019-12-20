@@ -48,7 +48,7 @@ purchased products) have to make a [Capture][capture] or
 
 {% include alert.html type="success" icon="link" body="**Defining
 `callbackUrl`**: When implementing a scenario, it is optional to set a
-`callbackUrl` in the `POST` request. If `callbackUrl` is set, Swedbank Pay will
+`callbackUrl` in the request. If `callbackUrl` is set, Swedbank Pay will
 send a `POST` request to this URL when the consumer has fulfilled the payment.
 [See the Callback API description for more
 information](/payments/vipps/other-features#callback)." %}
