@@ -185,6 +185,63 @@ Content-Type: application/json
 | └➔&nbsp;`urls`                               | `string`     | The URI to the `urls` resource where all URIs related to the payment can be retrieved.                                                                                                           |
 | └➔&nbsp;`payeeInfo`                          | `string`     | The URI to the `payeeinfo` resource where the information about the payee of the payment can be retrieved.                                                                                       |
 
+## Purchase
+
+Posting a payment (operation `purchase`) returns the options of aborting the
+payment altogether or creating an authorization transaction through the
+`redirect-authorization` hyperlink.
+Use the expand request parameter to get a response that includes one or more
+expanded sub-resources inlined.
+
+```json
+{
+    "payment": {
+        "operation": "Purchase"
+    }
+}
+```
+
+## Operations
+
+When a payment resource is created and during its lifetime, it will have a set
+of operations that can be performed on it.
+Which operations are available will vary depending on the state of the payment
+resource, what the access token is authorized to do, etc.
+A list of possible operations and their explanation is given below.
+
+```json
+{
+    "payment": {},
+    "operations": [
+        {
+            "href": "http://api.externalintegration.payex.com/psp/mobilepay/payments/{{ page.paymentId }}",
+            "rel": "update-payment-abort",
+            "method": "PATCH"
+        },
+        {
+            "href": "https://ecom.externalintegration.payex.com/mobilepay/payments/authorize/{{ page.paymentId }}",
+            "rel": "redirect-authorization",
+            "method": "GET"
+        },
+        {
+            "href": "https://api.externalintegration.payex.com/psp/mobilepay/payments/{{ page.paymentId }}/captures",
+            "rel": "create-capture",
+            "method": "POST"
+        },
+        {
+            "href": "https://api.externalintegration.payex.com/psp/mobilepay/payments/{{ page.paymentId }}/cancellations",
+            "rel": "create-cancellation",
+            "method": "POST"
+        },
+        {
+            "href": "https://api.externalintegration.payex.com/psp/mobilepay/payments/{{ page.paymentId }}/reversals",
+            "rel": "create-reversal",
+            "method": "POST"
+        },
+    ]
+}
+```
+
 ## Capture Sequence
 
 Capture can only be perfomed on a payment with a successfully authorized
