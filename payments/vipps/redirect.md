@@ -15,7 +15,7 @@ that the payer must confirm through the Vipps mobile app." %}
   in response.
 * You need to [redirect][reference-redirect] the payer to the Redirect payment
   where the user is prompted to enter the registered mobile number.
-  This triggers a `POST` towards Swedbank Pay.
+  This triggers a request towards Swedbank Pay.
 * Swedbank Pay handles the dialogue with Vipps and the consumer confirms the
   purchase in the Vipps app.
 * If CallbackURL is set, the user will receive a payment callback when the Vipps
