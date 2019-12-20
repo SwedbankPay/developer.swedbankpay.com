@@ -282,7 +282,7 @@ Content-Type: application/json
     "payment": "/psp/vipps/payments/{{ page.paymentId }}",
     "authorization": {
         "vippsTransactionId": "5619328800",
-        "msisdn": "+47xxxxxxxx",
+        "msisdn": "+4793000001",
         "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/authorizations/3bfb8c66-33be-4871-465b-08d612f01a53",
         "transaction": {
             "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/transactions/3bfb8c66-33be-4871-465b-08d612f01a53",
