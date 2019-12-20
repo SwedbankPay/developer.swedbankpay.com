@@ -24,45 +24,65 @@ sidebar:
 
 {% include alert-development-section.md %}
 
-{% include jumbotron.html body="Pick and choose between the payment instruments best
-   suited for your business.
-   Take advantage of our easy-to-use PCI compliant platforms Redirect and
-   Seamless View - or use Swedbank Pay Direct API to integrate directly. Our
-   payment instruments and their platform availability are listed in the table
-   below." %}
+## Introduction
 
-## Prerequisites
+Payments is our off-the-rack assortment of payment instruments. You can pick and
+choose among them to tailor the instrument package best suited for your
+business. Is Vipps all you need? Go for Vipps only. Do you want Vipps and
+invoice? Implement Vipps and invoice. Want them all? Have them all. Each payment
+instrument is set up with a separate contract and integration. 
 
-To start integrating Swebank Pay Payments, you need the following:
-
-* [HTTPS][https] enabled web server.
-* Agreement that includes Swedbank Pay Payments.
-* Obtained credentials (merchant Access Token) from Swedbank Pay through
-  Swedbank Pay Admin.
+With a couple of exceptions, our payment instruments are available on three
+platforms. Choose between our easy-to-use PCI compliant platforms Redirect
+and Seamless View - or use Swedbank Pay Direct API to integrate directly. Our
+payment instruments and their platform availability are listed in the table
+below.
 
 {:.table .table-striped}
 |                                | Payment instrument                  | Seamless View | Redirect | Region                                                                               |
 | :----------------------------: | :---------------------------------- | :-----------: | :------: | :----------------------------------------------------------------------------------- |
-|     ![CardIcon][card-icon]     | [Credit card][card]                 |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  | ![EarthIcon][earth-icon]                                                             |
+|     ![CardIcon][card-icon]     | [Card][card]                 |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  | ![EarthIcon][earth-icon]                                                             |
 |  ![InvoiceIcon][invoice-icon]  | [Swedbank Pay Invoice][invoice]     |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  | ![nor][nor-flag] ![swe][swe-flag] ![fin][fin-flag]                                   |
 | ![EnvelopeIcon][envelope-icon] | [Swedbank Pay Web Invoice][invoice] |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  | ![nor][nor-flag] ![swe][swe-flag]                                                    |
 |   ![KeypadIcon][keypad-icon]   | [Direct Debit][direct-debit]        |               |  ✔︎︎︎︎︎  | ![swe][swe-flag] ![fin][fin-flag] ![lat][lat-flag] ![lit][lit-flag] ![est][est-flag] |
 |      ![Vipps][vipps-logo]      | [Vipps][vipps]                      |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  | ![nor][nor-flag]                                                                     |
 |      ![Swish][swish-logo]      | [Swish][swish]                      |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  | ![swe][swe-flag]                                                                     |
-|  ![MobilePay][mobilepay-logo]  | [Mobile Pay][mobile-pay]            |               |  ✔︎︎︎︎︎  | ![dan][dan-flag]                                                                     |
+|  ![MobilePay][mobilepay-logo]  | [MobilePay][mobile-pay]            |               |  ✔︎︎︎︎︎  | ![dan][dan-flag] ![fin][fin-flag]                                                                      |
 
-## Seamless View
+## Prerequisites
+
+To start integrating Swedbank Pay Payments, you need the following:
+
+* An [HTTPS][https] enabled web server.
+* An agreement which includes Swedbank Pay Payments.
+* Credentials (Merchant Access Token) from Swedbank Pay retrieved from
+  Swedbank Pay Admin.
+
+## Platform options
+
+Here are our three platform options at a glance. You can read more about the
+integration process by visiting the sections for each payment instrument.
+
+### Seamless View
 
 With [Seamless Views][seamless-view] you can initiate the payment process
-directly in an `iframe` on your site. `hostUrls` needs to be defined in the
-first `POST` request in order to enable the Seamless View operation. See details
-of the request under **Other Features** for the given payment instrument.
+directly in an `iframe` on your site. If you prefer that the consumer isn't
+redirected away from you, this option enables you to embed our payment page
+seamlessly into your shopping experience.
 
-## Redirect
+### Redirect
 
 The [Redirect][redirect] platform redirects the consumers to a Swedbank Pay
-hosted payment page. The consumer will then be redirected back to your page when
-the payment is completed.
+hosted payment page. The consumer will be redirected back to your page when the
+payment is completed.
+
+### Direct
+
+[Direct][direct] is the option where you integrate directly using our Direct
+API. This is an integration with the most flexibility and opportunities. If you
+want to offer card payments and choose this option, you have to be PCI-DSS
+compliant.
+
 
 ## The Fundamentals
 
@@ -73,314 +93,77 @@ the payment is completed.
                       for all payment instruments, reducing complexity and
                       enabling a more straightforward integration." %}
 
+There are to main payment types, *two-phase* and *one-phase* payments. The two
+seem very similar from a consumer's point of view, but there are key differences
+you should know about.
+
 *Two-phase payments* ([Card][card], [Invoice][invoice],
 [MobilePay][invoice], [Vipps][vipps])
 
-A two-phase payment is managed in two steps - first reserving funds that will be
-captured in the next step. The most common payment instrument using two-phase
-payments is card payments.
+A two-phase payment is performed in two steps – an `authorization` which
+reserves the consumer's funds, and a `capture` of the funds at a later time,
+usually when the goods are shipped.
 
-* **Creating a payment object**.
-  The payment is the container object that holds all transactions that will be
-  created during the payment process.  When Swedbank Pay receives the payment
-  request body (in JSON format), a payment  is created and you will be given a
-  unique paymentID in return. The response also include  (in a true RESTful way)
-  the URIs to possible further actions, given the state of the payment.
-* Authorize funds.
-  An authorization transaction reserves the funds necessary funds . It is
-  possible to abort a payment before the end user has fulfilled the payment
-  process.
-And either:
-* Capture funds.
-  Before delivering the merchandise you need to create a capture transaction to
-  ensure that the money is charged from the consumer credit card or properly
-  billed by invoice.
-Or:
-* Cancel the authorized amount.
-  Funds that are authorized but not yet captured can be released back to the
-  consumer. This is done by creating a cancel transaction.
-* Reverse captured funds.
-  In some cases you may need to make a reversal of captured funds. This is
-  achieved by creating a reversal transaction.
+This is the most common payment type, and it is used by card payments, Vipps
+payments, MobilePay payments, invoice payments and credit account payments. A
+capture of an invoice will *not* capture any funds, but trigger the invoice
+distribution and send it to the consumer.
+
 
 *One-phase payments* ([Direct Debit][direct-debit], [Swish][swish],
 [Card][card])
 
-If you use a one-phase method (like Direct Bank Debit or [Swish][swish] a Sales
-transaction will be created and the consumer charged right away).
+There are two types of one-phase payments – `sale` and `autoCapture`.
 
-* _One-phase card payments is enabled with autocapture._
+`sale` is used by payment instruments such as Direct Debit and [Swish][swish].
+These payments will have a `sale` transaction instead of the `authorization` and
+`capture`. The funds will be captured from the consumer straight away.
 
->Add image
+`autoCapture` is only available for card payments. The mechanics work the same
+way as a two-phase payment, with two separate transactions – one for the
+`authorization` and one for the `capture`. 
 
-### Creating a payment object
+As the name implies, the capture transaction is performed automatically when the
+authorization is successful. Because of this, `autoCapture` should only be used
+when dealing with digital products, since they are shipped instantly.
 
-The `payment` is the container object that holds all transactions that will be
-created during the payment process. When Swedbank Pay receives the payment
-request body (in JSON format), a payment  is created and you will be given a
-unique paymentID in return. The response also include  (in a true RESTful way)
-the URIs to possible further actions, given the state of the payment. It is
-possible to abort a payment before the end user has fulfilled the payment
-process. Settle funds directly with a Sales transaction.
+As the funds are captured instantly, `cancel` is not available for either of the
+one-phase payments. `abort` and `reversal` can be performed the same way as with
+two-phase payments.
 
->Add image
 
-## Swedbank Pay Payments Platform
+## The Payment Object
 
-Swedbank Pay Seamless View and Redirect offer easy-to-use PCI-DSS compliant
-platforms, available from both web and mobile browsers. Either let your
-customers access the platform directly, embedded on your site, or by redirection
-to a separate Swedbank Pay hosted payment page.
+  The payment is the container object that holds all transactions
+  created during the payment process. When Swedbank Pay receives the payment
+  request body (in JSON format), a payment is created and you will be given a
+  unique paymentID in return. The response also includes (in a true RESTful way)
+  the URIs for further actions, given the state of the payment.
 
-### Seamless Views
+  After creating a payment, you can:
 
-With the Seamless View you can initiate the payment process directly in an
-`iframe` on your site. `hostUrls` needs to be defined in the first `POST`
-request in order to enable the Seamless View operation. See details of the
-Seamless View implementation underneath each respective payment instrument.
+* Authorize funds. An authorization transaction reserves the funds. It is
+  possible to `abort` a payment before the end user has completed the payment
+  process. And either:
+* Capture funds. Before delivering the merchandise you need to create a capture
+  transaction to ensure that the money is charged from the consumer credit card
+  or properly billed by invoice. One-phase payments will combine these two in a
+  `sale` or `autoCapture` transaction as described in the section above. 
+  
+  Or:
+* Cancel the authorized amount. Funds that are authorized but not yet captured,
+  can be released back to the consumer. This is done by creating a cancel
+  transaction. This is not available for one-phase payments.
+* Reverse captured funds. In some cases you may need to make a reversal of
+  captured funds. This is achieved by creating a reversal transaction.
 
-```mermaid
-sequenceDiagram
-  activate Consumer
-  Consumer->>-Merchant: The consumer starts purchase process
-  activate Merchant
-  Merchant->>-SwedbankPay: POST [operation=PURCHASE]
-  activate SwedbankPay
-  note left of Merchant: First API request
-  SwedbankPay-->>-Merchant: Payment resource
-  activate Merchant
-  Merchant-->>-Consumer: Merchant embed Script on her site, creating Seamless View in iframe.
-```
+ All actions after creating the payment can be done by using our APIs, or from
+ our admin tool. `abort` is only available when using APIs.
 
-Please visit our [demoshop][demoshop] to view our Payment Menu and Redirect
-implementation in action. Use the configuration below:
+Please visit our [demoshop][demoshop] to see our Payment Menu and Redirect
+implementation in action.
 
-```markdown
-TODO: Insert picture from demoshop showing the following configuration:
-Swedbank Pay Payments
-Seamless View
-Norway
-English
-```
 
-#### Getting started with Seamless View
-
-When implementing Seamless View, you need to locate the operation that is
-returned from your API request, which contains the URL of the JavaScript that
-you need to embed on your Front End side. This will load the payment page on a
-subset of your own webpage.
-
-The properties of the operation containing the script URL should be similar to
-the example below. The `href` attribute refers to a script of the `contentType`
-application/javascript and the `rel` value `view-payment` indicate that the
-Seamless View scenario will generate a one-phased sales transaction. A two-phase
-credit card payment would during the same scenario generate an authorization
-transaction, and the `rel` value would in that case be `view-authorization`.
-
-```js
-Operations
-{
-   "operations": [
-        {
-           "method": "GET",
-           "href": "https://ecom.externalintegration.payex.com/swish/core/scripts/client/px.swish.client.js
-                    ?token=cfb9e24832d56fec7ab79709f56accc53d79a699756687d39095b517bc5f011b",
-           "rel": "view-payment",
-           "contentType": "application/javascript"
-        }
-    ]
-}
-```
-
-To integrate the payment page script, you need to prepare you front end:
-
-1. You need to create a container that will contain the Seamless View `iframe`:
-   `<div id="payex-hosted-payment-page">`.
-2. You also need to create a `<script>` source within the container, using the
-   `href` value you obtained when submitting your initial `POST`. As mentioned
-   above, all Seamless View operations have a rel description beginning with
-    `"view-"`. The example below is taken from the `view-payment` operation, above
-   – enabling Swish payments through Seamless View.
-
-```html
-<script id="payment-page-script" src="https://ecom.stage.payex.com/swish/core/scripts/client/px.swish.client.js?
-                                    token=bcff0db777d5bcf21a210235342921f46da993efa5e91340f713c8cedf4aac38"></script>
-```
-
-1. Lastly, you must initiate the Seamless View with a JavaScript call to open the
-  Seamless View iframe embedded on you site.
-
-{:.code-header}
-**JavaScript Call**
-
-```html
-<script language="javascript">
-    payex.hostedView.page(configuration).open();
-</script>
-```
-
-See the overview of each payment instrument and their technical reference for
-more specific information.
-
-### Redirect Implementation
-
-The Redirect implementation lets you redirect your customer to an easy-to-use
-PCI-DSS compliant payment platform, hosted by Swedbank Pay and available from
-both web and mobile browsers. The consumer selects a payment instrument and proceeds
-to hosted payment page.
-
-```mermaid
-sequenceDiagram
-activate Consumer
-Consumer->>-Merchant: The consumer starts purchase process
-activate Merchant
-Merchant->>-SwedbankPay: (operation=PURCHASE)
-activate SwedbankPay
-note left of Merchant: First API request
-Activate SwedbankPay
-SwedbankPay-->>-Merchant: Payment resource
-activate Merchant
-Merchant-->>-Consumer: Consumer browser gets redirected to the hosted authorization page.
-activate Consumer
-Consumer->>-SwedbankPay: access authorize page
-note left of Consumer: redirect to SwedbankPay
-```
-
-Please visit our [demoshop][demoshop] to view our Payment Menu and Redirect
-implementation in action. Use the configuration below:
-
-```
-TODO: Insert picture from demoshop showing the following configuration:
-Swedbank Pay Payments
-Redirect
-Norway
-English
-```
-
-#### Getting started with Redirect
-
-To start using the Redirect platform, you need to implement the appropriate
-operation returned from the initial API Request, containing the URL that the
-customer's browser needs to be redirected to.
-
-The combination of properties should be similar to all payment instruments. In
-the example below, the `href` attribute refers to the redirect URL and the `rel`
-value `redirect-sale` indicate that the redirect scenario will generate a
-one-phased `Sales` transaction. A two-phase credit card payment would during the
-same scenario generate an authorization transaction, and the `rel` value would
-in that case be `redirect-authorization`.
-
-```js
-{
-   "operations": [
-        {
-           "method": "GET",
-           "href": "https://ecom.externalintegration.payex.com/swish/payments/sales
-                     /993b479653da83671c074316c7455da05fced9d634431edbb64f3c5f80a863f0",
-           "rel": "redirect-sale"
-        }
-    ]
-}
-```
-
-See the technical overview of each payment instrument and the technical reference
-for more specific information.
-
-## The Payment Process
-
-The core payment process of the eCommerce APIs are the same across all payment
-instruments.
-
-### Creating a payment
-
-* The payment is the container object that holds all transactions that will be
-  created during the payment process. You specify which payment instrument to
-  use, i.e. if you want to initiate a credit card payment, an invoice payment or
-  a Swish payment, etc. This is managed by specific instrument calls to Swedbank
-  Pay's API Platform, where you need to include all necessary payment details -
-  like amount, description, references to your system, etc. This example shows a
-  card payment post.
-* When Swedbank Pay receives this information, a payment  will be created and
-  you will be given a unique paymentID in return. The response also include
-  (in a true RESTful way) the URI's to possible further actions, given the state
-  of the payment.
-* A successfully created payment is in a Ready state.If something has gone
-  wrong along the way, the state is set to Failed.
-
-### Creating an Authorization or Sales transaction
-
-* A successful payment is `Ready` for authorization. An authoriation
-  transaction is often created through a Redirect scenario, where you transfer
-  the consumer to a hosted payment page, or by enable the process to take place
-  directly on your own site, through Seamless View.
-* If you use a *one-phase method* (like Direct bank debit or Swish) a `Sales`
-  transaction will be created and the consumer be charged right away. A
-  two-phase payment instrument like credit card, the authorized amount needs to
-  captured in a later step.
-* The `authorize` transaction will have one of the below states when created.
-
-{:.table .table-striped}
-| State         | Description                                                                                                                                                                                                                                                                                                                             |
-| :------------ | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Initialized` | Something unexpected occurred. It is impossible to determine the exact status (network failure etc.) and the transaction will remain Initialized. The corresponding state of the payment will be set to pending and no further actions can be taken on this payment (no more transactions can be created).                              |
-| `Completed`   | Everything went ok! Financial funds is reserved. A capture transaction needs to be created in order to charge the consumer.                                                                                                                                                                                                             |
-| `Failed`      | The transaction has failed (maybe the card got declined).. The transactional state is final, but it is still possible to retry and create another authorization transaction on this payment (the consumer tries another credit card). If the maximum amount of retries has been reached the payment state itself will be set to failed. |
-
-### Checking the transaction state
-
-* By this time, the payment might contains several associated transactions,
-  making it vital that you verify the state of the latest transaction. Swedbank
-  Pay keeps all payment transactions to enable a full transaction history of
-  each payment.
-
-### Creating a capture transaction (two-phase payments only)
-
-* Later on (when you deliver the merchandise, if physical content), you need to
-  create a `capture` transaction to ensure that the money is charged from the
-  consumer credit card (or that the invoice is created properly). You now have a
-  least two connected transactions (one authorization and one capture).
-* The `capture` transaction will have one of the below states when created.
-
-{:.table .table-striped}
-| State         | Description                                                                                                                                                                                                                                                                                                                                          |
-| :------------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Initialized` | Something unexpected occurred. It is impossible to determine the exact status (network failure etc.) and the transaction will remain Initialized. The corresponding state of the payment will be set to pending andno further actions can be taken on this payment (no more transactions can be created).                                            |
-| `Completed`   | Everything went ok! The consumer's card has been charged (or billed by invoice).                                                                                                                                                                                                                                                                     |
-| `Failed`      | The transaction has failed (maybe the card error relating to the acquiring bank). The transactional state is final, but it is still possible to retry and create another capture transaction  (the consumer tries another credit card, yet again). If the maximum amount of retries has been reached the payment state itself will be set to failed. |
-
-### Cancelling an authorized amount
-
-* Funds that are authorized but not yet captured can be released back to the
-  consumer. This is done by creating a cancel transaction.
-* A cancel transaction follow the same structure as all transactions and can
-  have the same states (Initialized, completed and failed).
-
-### Creating a reversal transaction (optional)
-
-* In some cases you may need to make a reversal of captured funds. This is done
-  by creating a reversal transaction. A two-phase payment will during this step
-  have at least three connected transactions (one authorization, one capture,
-  and one reversal).
-
-### Aborting the payment (optional)
-
-* It is possible for the merchant to abort a payment before the end user has
-  fulfilled the payment process. If the merchant calls the `PATCH` function
-  (see PATCH method for Payments), the payment will be aborted.
-* This can only happen if there exist no final transactions (like captures) on
-  the payment with a successful status. Once the payment is aborted, no more
-  transactions/operations can be done. If the consumer has been redirected to a
-  hosted payment page when this happens, the end user will be redirected back to
-  your merchant page.
-
-### Payment is set to Failed
-
-* During some circumstances the payment state might be set to Failed. This
-  happens if an antifraud pattern triggers or if the number of tries are
-  exceeded during the authorization phase, as mentioned above.  No more
-  transactions can be created on a failed payment. If the consumer has been
-  redirected to a payment page when this happens,  she will be redirected back
-  to your store.
 
 [demoshop]: https://ecom.externalintegration.payex.com/pspdemoshop
 [card-icon]: /assets/img/card-icon.png
@@ -407,3 +190,4 @@ instruments.
 [mobile-pay]: /payments/mobile-pay
 [seamless-view]: /payments/card/seamless-view
 [redirect]: /payments/card/redirect
+[direct]: /payments/card/redirect
