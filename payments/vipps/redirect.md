@@ -279,7 +279,7 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d",
+    "payment": "/psp/vipps/payments/{{ page.paymentId }}",
     "authorization": {
         "vippsTransactionId": "5619328800",
         "msisdn": "+47xxxxxxxx",
