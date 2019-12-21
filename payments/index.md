@@ -93,7 +93,7 @@ compliant.
                       for all payment instruments, reducing complexity and
                       enabling a more straightforward integration." %}
 
-There are to main payment types, *two-phase* and *one-phase* payments. The two
+There are two main payment types, *two-phase* and *one-phase* payments. The two
 seem very similar from a consumer's point of view, but there are key differences
 you should know about.
 
