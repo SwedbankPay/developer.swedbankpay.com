@@ -34,7 +34,7 @@ instrument is set up with a separate contract and integration.
 
 With a couple of exceptions, our payment instruments are available on three
 platforms. Choose between our easy-to-use PCI compliant platforms Redirect
-and Seamless View - or use Swedbank Pay Direct API to integrate directly. Our
+and Seamless View – or use Swedbank Pay Direct API to integrate directly. Our
 payment instruments and their platform availability are listed in the table
 below.
 
