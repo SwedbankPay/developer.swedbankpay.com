@@ -80,7 +80,7 @@ payment is completed.
 
 [Direct][direct] is the option where you integrate directly using our Direct
 API. This is an integration with the most flexibility and opportunities. If you
-want to offer card payments and choose this option, you have to be PCI-DSS
+want to offer Card Payments and choose this option, you have to be PCI-DSS
 compliant.
 
 
@@ -104,8 +104,8 @@ A two-phase payment is performed in two steps – an `authorization` which
 reserves the consumer's funds, and a `capture` of the funds at a later time,
 usually when the goods are shipped.
 
-This is the most common payment type, and it is used by card payments, Vipps
-payments, MobilePay payments, invoice payments and credit account payments. A
+This is the most common payment type, and it is used by Card Payments, Vipps
+Payments, MobilePay payments, Invoice Payments and Credit Account Payments. A
 capture of an invoice will *not* capture any funds, but trigger the invoice
 distribution and send it to the consumer.
 
@@ -119,7 +119,7 @@ There are two types of one-phase payments – `sale` and `autoCapture`.
 These payments will have a `sale` transaction instead of the `authorization` and
 `capture`. The funds will be captured from the consumer straight away.
 
-`autoCapture` is only available for card payments. The mechanics work the same
+`autoCapture` is only available for Card Payments. The mechanics work the same
 way as a two-phase payment, with two separate transactions – one for the
 `authorization` and one for the `capture`. 
 
