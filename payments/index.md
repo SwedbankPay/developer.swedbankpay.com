@@ -134,13 +134,13 @@ two-phase payments.
 
 ## The Payment Object
 
-  The payment is the container object that holds all transactions
-  created during the payment process. When Swedbank Pay receives the payment
-  request body (in JSON format), a payment is created and you will be given a
-  unique paymentID in return. The response also includes (in a true RESTful way)
-  the URIs for further actions, given the state of the payment.
+The payment is the container object that holds all transactions
+created during the payment process. When Swedbank Pay receives the payment
+request body (in JSON format), a payment is created and you will be given a
+unique payment ID in return. The response also includes (in a true RESTful way)
+the URIs and operations for further actions, given the state of the payment.
 
-  After creating a payment, you can:
+After creating a payment, you can:
 
 * Authorize funds. An authorization transaction reserves the funds. It is
   possible to `abort` a payment before the end user has completed the payment
