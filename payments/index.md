@@ -22,15 +22,15 @@ sidebar:
       title: Direct Debit Payments
 ---
 
-{% include alert-development-section.md %}
+{% include alert-review-section.md %}
 
-## Introduction
+{% include jumbotron.html body="Payments is our off-the-rack assortment of
+payment instruments. You can pick and choose among them to tailor the instrument
+package best suited for your business." %}
 
-Payments is our off-the-rack assortment of payment instruments. You can pick and
-choose among them to tailor the instrument package best suited for your
-business. Is Vipps all you need? Go for Vipps only. Do you want Vipps and
-invoice? Implement Vipps and invoice. Want them all? Have them all. Each payment
-instrument is set up with a separate contract and integration. 
+Is Vipps all you need? Go for Vipps only. Do you want Vipps and Invoice?
+Implement Vipps and Invoice. Want them all? Have them all. Each payment
+instrument is set up with a separate contract and integration.
 
 With a couple of exceptions, our payment instruments are available on three
 platforms. Choose between our easy-to-use PCI compliant platforms Redirect
@@ -83,7 +83,6 @@ API. This is an integration with the most flexibility and opportunities. If you
 want to offer Card Payments and choose this option, you have to be PCI-DSS
 compliant.
 
-
 ## The Fundamentals
 
 {% include alert.html type="neutral"
@@ -109,7 +108,6 @@ Payments, MobilePay payments, Invoice Payments and Credit Account Payments. A
 capture of an invoice will *not* capture any funds, but trigger the invoice
 distribution and send it to the consumer.
 
-
 *One-phase payments* ([Direct Debit][direct-debit], [Swish][swish],
 [Card][card])
 
@@ -121,7 +119,7 @@ These payments will have a `sale` transaction instead of the `authorization` and
 
 `autoCapture` is only available for Card Payments. The mechanics work the same
 way as a two-phase payment, with two separate transactions – one for the
-`authorization` and one for the `capture`. 
+`authorization` and one for the `capture`.
 
 As the name implies, the capture transaction is performed automatically when the
 authorization is successful. Because of this, `autoCapture` should only be used
@@ -130,7 +128,6 @@ when dealing with digital products, since they are shipped instantly.
 As the funds are captured instantly, `cancel` is not available for either of the
 one-phase payments. `abort` and `reversal` can be performed the same way as with
 two-phase payments.
-
 
 ## The Payment Object
 
@@ -148,8 +145,8 @@ After creating a payment, you can:
 * Capture funds. Before delivering the merchandise you need to create a capture
   transaction to ensure that the money is charged from the consumer credit card
   or properly billed by invoice. One-phase payments will combine these two in a
-  `sale` or `autoCapture` transaction as described in the section above. 
-  
+  `sale` or `autoCapture` transaction as described in the section above.
+
   Or:
 * Cancel the authorized amount. Funds that are authorized but not yet captured,
   can be released back to the consumer. This is done by creating a cancel
@@ -162,8 +159,6 @@ After creating a payment, you can:
 
 Please visit our [demoshop][demoshop] to see our Payment Menu and Redirect
 implementation in action.
-
-
 
 [demoshop]: https://ecom.externalintegration.payex.com/pspdemoshop
 [card-icon]: /assets/img/card-icon.png
