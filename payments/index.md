@@ -78,7 +78,7 @@ payment is completed.
 
 ### Direct
 
-[Direct][direct] is the option where you integrate directly using our Direct
+Direct is the option where you integrate directly using our Direct
 API. This is an integration with the most flexibility and opportunities. If you
 want to offer Card Payments and choose this option, you have to be PCI-DSS
 compliant.
@@ -190,4 +190,3 @@ implementation in action.
 [mobile-pay]: /payments/mobile-pay
 [seamless-view]: /payments/card/seamless-view
 [redirect]: /payments/card/redirect
-[direct]: /payments/card/redirect
