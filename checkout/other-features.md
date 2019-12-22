@@ -399,7 +399,7 @@ The `view-paymentorder` operation contains the URI of the JavaScript that needs 
     </head>
     <body>
         <div id="checkout"></div>
-        <script src="https://ecom.payex.com/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=38540e86bd78e885fba2ef054ef9792512b1c9c5975cbd6fd450ef9aa15b1844&culture=nb-NO"></script>
+        <script src="https://ecom.externalintegration.payex.com/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=38540e86bd78e885fba2ef054ef9792512b1c9c5975cbd6fd450ef9aa15b1844&culture=nb-NO"></script>
         <script language="javascript">
             payex.hostedView.paymentMenu({
                 container: 'checkout',
@@ -1332,7 +1332,7 @@ The structure of a problem message will look like this:
 
 ```js
 {
-    "type": "https://api.payex.com/psp/<error_type>",
+    "type": "https://api.payex.com/psp/creditcard/inputerror",
     "title": "There was an input error",
     "detail": "Please correct the errors and retry the request",
     "instance": "9a20d737-670d-42bf-9a9a-d36736de8721",

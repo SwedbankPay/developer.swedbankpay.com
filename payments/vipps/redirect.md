@@ -230,17 +230,17 @@ Content-Type: application/json
     "operations": [
         {
             "method": "POST",
-            "href": "http://localhost:15486/psp/vipps/payments/c50eef6d-a788-4ec6-64ff-08d4b16740a4/authorizations",
+            "href": "http://api.externalintegration.payex.com/psp/vipps/payments/c50eef6d-a788-4ec6-64ff-08d4b16740a4/authorizations",
             "rel": "create-authorization"
         },
         {
             "method": "PATCH",
-            "href": "http://localhost:15486/psp/vipps/payments/c50eef6d-a788-4ec6-64ff-08d4b16740a4",
+            "href": "http://api.externalintegration.payex.com/psp/vipps/payments/c50eef6d-a788-4ec6-64ff-08d4b16740a4",
             "rel": "update-payment-abort"
         },
         {
             "method": "GET",
-            "href": "http://localhost:15487/vipps/payments/authorize/8fb05a835f2fc227dc7bca9abaf649b919ba8a572deb448bff543dd5806dacb7",
+            "href": "http://api.externalintegration.payex.com/vipps/payments/authorize/8fb05a835f2fc227dc7bca9abaf649b919ba8a572deb448bff543dd5806dacb7",
             "rel": "redirect-authorization"
         }
     ]
@@ -287,7 +287,7 @@ transactions made on a specific payment.
 HTTP/1.1 200 OK
 Content-Type: application/json
 GET /psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/authorizations/<transactionId> HTTP/1.1
-Host: api.payex.com
+Host: api.externalintegration.payex.com
 Authorization: Bearer <MerchantToken>
 
 

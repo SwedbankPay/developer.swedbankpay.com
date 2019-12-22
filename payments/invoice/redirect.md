@@ -269,17 +269,17 @@ Content-Type: application/json
     },
     "operations": [
         {
-            "href": "https://api.payex.com/psp/invoice/payments/{{ page.paymentId }}",
+            "href": "https://api.externalintegration.payex.com/psp/invoice/payments/{{ page.paymentId }}",
             "rel": "update-payment-abort",
             "method": "PATCH"
         },
         {
-            "href": "https://api.payex.com/psp/invoice/payments/{{ page.paymentId }}/authorizations",
+            "href": "https://api.externalintegration.payex.com/psp/invoice/payments/{{ page.paymentId }}/authorizations",
             "rel": "create-authorize",
             "method": "POST"
         },
         {
-            "href": "https://api.payex.com/psp/invoice/payments/{{ page.paymentId }}/approvedlegaladdress",
+            "href": "https://api.externalintegration.payex.com/psp/invoice/payments/{{ page.paymentId }}/approvedlegaladdress",
             "rel": "create-approved-legal-address",
             "method": "POST"
         }
@@ -299,7 +299,7 @@ possible to perform in the current state of the payment.
 
 ```http
 GET /psp/invoice/payments/{{ page.paymentId }}/ HTTP/1.1
-Host: api.payex.com
+Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -369,17 +369,17 @@ Content-Type: application/json
     },
     "operations": [
         {
-            "href": "https://api.payex.com/psp/invoice/payments/{{ page.paymentId }}/captures",
+            "href": "https://api.externalintegration.payex.com/psp/invoice/payments/{{ page.paymentId }}/captures",
             "rel": "create-capture",
             "method": "POST"
         },
         {
-            "href": "https://api.payex.com/psp/invoice/payments/{{ page.paymentId }}/cancellations",
+            "href": "https://api.externalintegration.payex.com/psp/invoice/payments/{{ page.paymentId }}/cancellations",
             "rel": "create-cancel",
             "method": "POST"
         },
         {
-            "href": "https://api.payex.com/psp/invoice/payments/{{ page.paymentId }}/approvedlegaladdress",
+            "href": "https://api.externalintegration.payex.com/psp/invoice/payments/{{ page.paymentId }}/approvedlegaladdress",
             "rel": "create-approved-legal-address",
             "method": "POST"
         }

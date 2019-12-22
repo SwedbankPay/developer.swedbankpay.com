@@ -10,7 +10,7 @@ sidebar:
       title: Redirect
     - url: /payments/invoice/seamless-view
       title: Seamless View
-    - url: /payments/invoice/direct 
+    - url: /payments/invoice/direct
       title: Direct
     - url: /payments/invoice/after-payment
       title: After Payment
@@ -272,31 +272,31 @@ Content-Type: application/json
     "operations": [
         {
             "method": "POST",
-            "href": "https://api.stage.payex.com/psp/invoice/payments/{{ page.paymentId }}/approvedlegaladdress",
+            "href": "https://api.externalintegration.payex.com/psp/invoice/payments/{{ page.paymentId }}/approvedlegaladdress",
             "rel": "create-approved-legal-address",
             "contentType": "application/json"
         },
         {
             "method": "POST",
-            "href": "https://api.stage.payex.com/psp/invoice/payments/{{ page.paymentId }}/authorizations",
+            "href": "https://api.externalintegration.payex.com/psp/invoice/payments/{{ page.paymentId }}/authorizations",
             "rel": "create-authorization",
             "contentType": "application/json"
         },
         {
             "method": "PATCH",
-            "href": "https://api.stage.payex.com/psp/invoice/payments/{{ page.paymentId }}",
+            "href": "https://api.externalintegration.payex.com/psp/invoice/payments/{{ page.paymentId }}",
             "rel": "update-payment-abort",
             "contentType": "application/json"
         },
         {
             "method": "GET",
-            "href": "https://ecom.stage.payex.com/invoice/payments/authorize/ce98e5fa397de21b64cb4aa932aad81cf2ef18736cb9d975c82466a495cbe3bc",
+            "href": "https://ecom.externalintegration.payex.com/invoice/payments/authorize/ce98e5fa397de21b64cb4aa932aad81cf2ef18736cb9d975c82466a495cbe3bc",
             "rel": "redirect-authorization",
             "contentType": "text/html"
         },
         {
             "method": "GET",
-            "href": "https://ecom.stage.payex.com/invoice/core/scripts/client/px.invoice.client.js?<token>&operation=authorize",
+            "href": "https://ecom.externalintegration.payex.com/invoice/core/scripts/client/px.invoice.client.js?<token>&operation=authorize",
             "rel": "view-authorization",
             "contentType": "application/javascript"
         }

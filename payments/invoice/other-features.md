@@ -499,7 +499,7 @@ Content-Type: application/json
             },
             "operations": [
                 {
-                    "href": "https://api.payex.com/psp/invoice/payments/{{ page.paymentId }}",
+                    "href": "https://api.externalintegration.payex.com/psp/invoice/payments/{{ page.paymentId }}",
                     "rel": "edit-authorization",
                     "method": "PATCH"
                 }
@@ -557,7 +557,7 @@ often help narrow down the specifics of the problem.
 ### Error types from Swedbank Pay Invoice and third parties
 
 All invoice error types will have the following URI in front of type:
-`https://api.payex.com/psp/errordetail/invoice/<errorType>`
+`https://api.externalintegration.payex.com/psp/errordetail/invoice/<errorType>`
 
 {:.table .table-striped}
 | Type            | Status | Description                   |

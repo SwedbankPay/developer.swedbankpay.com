@@ -147,12 +147,12 @@ Content-Type: application/json
     "operations": [
         {
             "method": "PATCH",
-            "href": "http://localhost:18496/psp/swish/payments/{{ page.paymentId }}",
+            "href": "http://api.externalintegration.payex.com/psp/swish/payments/{{ page.paymentId }}",
             "rel": "update-payment-abort"
         },
         {
             "method": "POST",
-            "href": "http://localhost:18496/psp/swish/payments/{{ page.paymentId }}/sales",
+            "href": "http://api.externalintegration.payex.com/psp/swish/payments/{{ page.paymentId }}/sales",
             "rel": "create-sale"
         }
 

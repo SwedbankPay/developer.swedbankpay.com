@@ -44,16 +44,16 @@ provided below.
 **Request Towards Authorizations Resource**
 
 ```http
-GET https://api.payex.com/psp/creditcard/payments/<payment-id>/<authorizations> HTTP/1.1
-Host: api.payex.com
+GET /psp/creditcard/payments/<payment-id>/<authorizations> HTTP/1.1
+Host: api.externalintegration.payex.com
 ```
 
 {:.code-header}
 **Request Towards Verifications Resource**
 
 ```http
-GET https://api.payex.com/psp/creditcard/payments/<payment-id>/<verifications> HTTP/1.1
-Host: api.payex.com
+GET /psp/creditcard/payments/<payment-id>/<verifications> HTTP/1.1
+Host: api.externalintegration.payex.com
 ```
 
 You need to store the `paymentToken` from the response in your system and keep
