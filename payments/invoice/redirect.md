@@ -396,22 +396,22 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "href": "https://merchant/cancelUrl",
+    "href": "https://example.com/cancelUrl",
     "rel": "redirect-merchant-cancel",
     "method": "GET"
 }
 {
-    "href": "https://merchant/completeUrl",
+    "href": "https://example.com/completeUrl",
     "rel": "redirect-merchant-complete",
     "method": "GET"
 }
 {
-    "href": "https://merchant/cancelUrl",
+    "href": "https://example.com/cancelUrl",
     "rel": "redirect-merchant-cancel",
     "method": "GET"
 }
 {
-    "href": "https://merchant/completeUrl",
+    "href": "https://example.com/completeUrl",
     "rel": "redirect-merchant-complete",
     "method": "GET"
 }

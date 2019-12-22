@@ -219,7 +219,7 @@ Content-Type: application/json
     "paymentorder": "/psp/payments/{{ page.paymentOrderId }}",
     "urls": {
         "id": "/psp/payments/{{ page.paymentOrderId }}/urls",
-        "hostUrls": [ "https://example.com", "http://test-dummy2.net" ],
+        "hostUrls": [ "https://example.com", "http://example.net" ],
         "completeUrl": "http://example.com/payment-complete",
         "cancelUrl": "http://example.com/payment-canceled",
         "paymentUrl": "http://example.com/perform-payment",
