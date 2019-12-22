@@ -501,14 +501,6 @@ sequenceDiagram
     deactivate PayEx
 ```
 
-### Prices
-
-{% include prices.md %}
-
-### Payee reference
-
-{% include payee-info.md %}
-
 {% include iterator.html prev_href="direct" prev_title="Back: Direct"
 next_href="other-features" next_title="Next: Other Features" %}
 

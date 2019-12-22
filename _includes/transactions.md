@@ -1,3 +1,5 @@
+{% assign payment-instrument = include.payment-instrument | default: 'creditcard' %}
+
 A payment contains sub-resources in the form of `transactions`. Most operations
 performed on a payment ends up as a transaction. The different types of
 operations that alter the state of the payment by creating a transaction is
@@ -10,7 +12,7 @@ specific payment.
 **Request**
 
 ```http
-GET /psp/creditcard/payments/{{ page.paymentId }}/transactions HTTP/1.1
+GET /psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/transactions HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -24,11 +26,11 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/creditcard/payments/{{ page.paymentId }}",
+    "payment": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}",
     "transactions": {
-        "id": "/psp/creditcard/payments/{{ page.paymentId }}/transactions",
+        "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/transactions",
         "transactionList": [{
-            "id": "/psp/creditcard/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
+            "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
             "created": "2016-09-14T01:01:01.01Z",
             "updated": "2016-09-14T01:01:01.03Z",
             "type": "Authorization",

@@ -75,13 +75,13 @@ Content-Type: application/json
         },
         {
             "method": "GET",
-            "href": "https://ecom.externalintegration.payex.com/creditcardv2/core/scripts/client/px.creditcard.client.js?token={{ page.transactionId }}&operation=authorize",
+            "href": "https://ecom.externalintegration.payex.com/{{payment-instrument}}/core/scripts/client/px.creditcard.client.js?token={{ page.transactionId }}&operation=authorize",
             "rel": "view-authorization",
             "contentType": "application/javascript"
         },
         {
             "method": "GET",
-            "href": "https://ecom.externalintegration.payex.com/creditcardv2/payments/authorize/{{ page.transactionId }}",
+            "href": "https://ecom.externalintegration.payex.com/{{payment-instrument}}/payments/authorize/{{ page.transactionId }}",
             "rel": "redirect-authorization",
             "contentType": "text/html"
         },

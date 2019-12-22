@@ -784,8 +784,6 @@ transaction made towards a payment, as previously described.
 
 {% include payment-link.md %}
 
-{% include subsite.md payment-instrument="card" %}
-
 ## PayeeReference
 
 {% include payee-info.md

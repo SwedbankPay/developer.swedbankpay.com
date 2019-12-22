@@ -1,10 +1,9 @@
+{% assign payment-instrument = include.payment-instrument | default: 'creditcard' %}
+
 ## Transactions
 
-{% include transactions.md %}
+{% include transactions.md payment-instrument=payment-instrument %}
 
 ### Transaction
 
-{% include transaction.md %}
-
-[operations]: #operations
-[payee-reference]: #payee-reference
+{% include transaction.md payment-instrument=payment-instrument %}
