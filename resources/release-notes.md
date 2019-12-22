@@ -28,8 +28,8 @@ We have added support for specifying language as input in checkin module,
 language. Supported languages are Norwegian, Swedish and English. Consumers
 outside Sweden and Norway can now purchase in our Checkout service. You can
 specify supported countries for shipment in a new input parameter,
-shippingAddressRestrictedToCountryCodes, in our checkin module.
-Updated api specification can be found [here][initiate-consumer-session]
+`shippingAddressRestrictedToCountryCodes`, in our checkin module.
+Updated API specification can be found [here][initiate-consumer-session].
 
 {% comment %}
 TODO: Release this when the Swish Redirect section is released with the correct screenshot. Change the link below when this is ready.
