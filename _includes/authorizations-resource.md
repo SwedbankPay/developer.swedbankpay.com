@@ -54,7 +54,7 @@ Content-Type: application/json
                     "operations": [
                         {
                             "method": "POST",
-                            "href": "https://api.stage.payex.com/psp/{{payment-instrument}}/payments/{{page.paymentId}}/authorizations",
+                            "href": "https://api.externalintegration.payex.com/psp/{{payment-instrument}}/payments/{{page.paymentId}}/authorizations",
                             "rel": "create-authorization",
                             "contentType": "application/json"
                         },

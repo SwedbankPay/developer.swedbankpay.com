@@ -309,13 +309,13 @@ Content-Type: application/json
     },
     "operations": [
       {
-        "href": "https://api.payex.com/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+        "href": "https://api.externalintegration.payex.com/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
         "rel": "update-payment-abort",
         "method": "PATCH",
         "contentType": "application/json"
       },
       {
-        "href": "https://ecom.payex.com/creditcard/payments/authorize/123456123412341234123456789012",
+        "href": "https://ecom.externalintegration.payex.com/creditcard/payments/authorize/123456123412341234123456789012",
         "rel": "redirect-authorization",
         "method": "GET",
         "contentType": "text/html"

@@ -23,11 +23,11 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "urls": {
-            "completeUrl": "http://test-dummy.net/payment-completed",
-            "cancelUrl": "http://test-dummy.net/payment-canceled",
-            "callbackUrl": "http://test-dummy.net/payment-callback",
-            "logoUrl": "http://test-dummy.net/payment-logo.png",
-            "termsOfServiceUrl": "http://test-dummy.net/payment-terms.pdf",
+            "completeUrl": "http://example.com/payment-completed",
+            "cancelUrl": "http://example.com/payment-canceled",
+            "callbackUrl": "http://example.com/payment-callback",
+            "logoUrl": "http://example.com/payment-logo.png",
+            "termsOfServiceUrl": "http://example.com/payment-terms.pdf",
         },
         "payeeInfo": {
             "payeeId": "12345678-1234-1234-1234-123456789012",
@@ -163,13 +163,13 @@ Content-Type: application/json
   },
   "operations": [
     {
-      "href": "https://api.payex.com/psp/creditcard/payments/{{ page.paymentId }}",
+      "href": "https://api.externalintegration.payex.com/psp/creditcard/payments/{{ page.paymentId }}",
       "rel": "update-payment-abort",
       "method": "PATCH",
       "contentType": "application/json"
     },
     {
-      "href": "https://ecom.payex.com/creditcard/payments/authorize/123456123412341234123456789012",
+      "href": "https://ecom.externalintegration.payex.com/creditcard/payments/authorize/123456123412341234123456789012",
       "rel": "redirect-authorization",
       "method": "GET",
       "contentType": "text/html"

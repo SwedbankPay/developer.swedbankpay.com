@@ -300,7 +300,7 @@ Content-Type: application/json
             "rel": "create-sale"
       },
       {
-        "href": "https://ecom.payex.com/swish/payments/authorize/123456123412341234123456789012",
+        "href": "https://ecom.externalintegration.payex.com/swish/payments/authorize/123456123412341234123456789012",
         "rel": "redirect-sale",
         "method": "GET",
         "contentType": "text/html"

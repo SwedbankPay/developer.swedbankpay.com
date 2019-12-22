@@ -117,14 +117,14 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",
         "urls": {
-            "completeUrl": "http://test-dummy.net/payment-completed",
-            "cancelUrl": "http://test-dummy.net/payment-canceled",
-            "callbackUrl": "http://test-dummy.net/payment-callback",
-            "logoUrl": "http://fakeservices.psp.dev.utvnet.net/logo.png",
-            "termsOfServiceUrl": "http://fakeservices.psp.dev.utvnet.net/terms.pdf"
+            "completeUrl": "http://example.com/payment-completed",
+            "cancelUrl": "http://example.com/payment-canceled",
+            "callbackUrl": "http://example.com/payment-callback",
+            "logoUrl": "http://example.com/logo.png",
+            "termsOfServiceUrl": "http://fexample.com/terms.pdf"
         },
         "payeeInfo": {
-            "payeeId": "12345678-1234-1234-1234-123456789012",
+            "payeeId": "{{ page.merchantId }}",
             "payeeReference": "PR123",
             "payeeName": "Merchant1",
             "productCategory": "PC1234",
@@ -150,11 +150,12 @@ POST /psp/invoice/payments HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
+
 {
     "payment": {
         "operation": "Recur",
         "intent": "Authorization",
-        "recurrenceToken": "5adc265f-f87f-4313-577e-08d3dca1a26c",
+        "recurrenceToken": "{{ page.paymentId }}",
         "currency": "NOK",
         "amount": 1500,
         "vatAmount": 0,
@@ -165,7 +166,7 @@ Content-Type: application/json
             "callbackUrl": "https://example.com/payment-callback"
         },
         "payeeInfo": {
-            "payeeId": "12345678-1234-1234-1234-123456789012",
+            "payeeId": "{{ page.merchantId }}",
             "payeeReference": "CD1234",
             "payeeName": "Merchant1",
             "productCategory": "A123",
@@ -236,6 +237,7 @@ POST /psp/invoice/payments HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
+
 {
     "payment": {
         "operation": "Verify",
@@ -257,7 +259,7 @@ Content-Type: application/json
             "termsOfServiceUrl": "https://example.com/payment-terms.html"
         },
         "payeeInfo": {
-            "payeeId": "12345678-1234-1234-1234-123456789012",
+            "payeeId": "{{ page.merchantId }}",
             "payeeReference": "CD1234",
             "payeeName": "Merchant1",
             "productCategory": "A123",
@@ -279,7 +281,7 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 {
     "payment": {
-        "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+        "id": "/psp/invoice/payments/{{ page.paymentId }}",
         "number": 1234567890,
         "created": "2016-09-14T13:21:29.3182115Z",
         "updated": "2016-09-14T13:21:57.6627579Z",
@@ -293,37 +295,37 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0",
         "language": "nb-NO",
         "transactions": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/transactions"
         },
         "verifications": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/verifications"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/verifications"
         },
         "urls": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/urls"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/urls"
         },
         "payeeInfo": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeInfo"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/payeeInfo"
         },
         "settings": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/settings"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/settings"
         }
     },
     "operations": [
         {
             "method": "POST",
-            "href": "https://api.externalintegration.payex.com/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/approvedlegaladdress",
+            "href": "https://api.externalintegration.payex.com/psp/invoice/payments/{{ page.paymentId }}/approvedlegaladdress",
             "rel": "create-approved-legal-address",
             "contentType": "application/json"
         },
         {
             "method": "POST",
-            "href": "https://api.externalintegration.payex.com/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations",
+            "href": "https://api.externalintegration.payex.com/psp/invoice/payments/{{ page.paymentId }}/authorizations",
             "rel": "create-authorization",
             "contentType": "application/json"
         },
         {
             "method": "PATCH",
-            "href": "https://api.externalintegration.payex.com/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+            "href": "https://api.externalintegration.payex.com/psp/invoice/payments/{{ page.paymentId }}",
             "rel": "update-payment-abort",
             "contentType": "application/json"
         },
@@ -401,7 +403,7 @@ Swedbank Pay Payments where the payment is authorized.
 **Request**
 
 ```http
-POST /psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations HTTP/1.1
+POST /psp/invoice/payments/{{ page.paymentId }}/authorizations HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -464,20 +466,20 @@ Content-Type: application/json
 
 ```json
 {
-    "payment": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "payment": "/psp/invoice/payments/{{ page.paymentId }}",
     "authorization": {
-        "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations/12345678-1234-1234-1234-123456789012",
+        "id": "/psp/invoice/payments/{{ page.paymentId }}/authorizations/{{ page.transactionId }}",
         "consumer": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/consumer"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/consumer"
         },
         "legalAddress": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/legaladdress"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/legaladdress"
         },
         "billingAddress": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/billingaddress"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/billingaddress"
         },
         "transaction": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
             "created": "2016-09-14T01:01:01.01Z",
             "updated": "2016-09-14T01:01:01.03Z",
             "type": "Authorization",
@@ -493,11 +495,11 @@ Content-Type: application/json
             "failedErrorDescription": "ThirdPartyErrorMessage",
             "isOperational": "TRUE",
             "activities": {
-                "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012/activities"
+                "id": "/psp/invoice/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}/activities"
             },
             "operations": [
                 {
-                    "href": "https://api.payex.com/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+                    "href": "https://api.externalintegration.payex.com/psp/invoice/payments/{{ page.paymentId }}",
                     "rel": "edit-authorization",
                     "method": "PATCH"
                 }
@@ -555,7 +557,7 @@ often help narrow down the specifics of the problem.
 ### Error types from Swedbank Pay Invoice and third parties
 
 All invoice error types will have the following URI in front of type:
-`https://api.payex.com/psp/errordetail/invoice/<errorType>`
+`https://api.payex.com/psp/errordetail/invoice/<error-type>`
 
 {:.table .table-striped}
 | Type            | Status | Description                   |

@@ -216,7 +216,7 @@ the problem.
 ### Error types from Vipps (Init-call)
 
 All Vipps error types will have the following URI in front of type:
-`https://api.payex.com/psp/errordetail/vipps/<errorType>`
+`https://api.payex.com/psp/errordetail/vipps/<error-type>`
 
 {:.table .table-striped}
 | Type          | Status | Note       |
@@ -226,7 +226,7 @@ All Vipps error types will have the following URI in front of type:
 ### Error types from Vipps (Callback)
 
 All Vipps error types will have the following URI in front of type:
-`https://api.payex.com/psp/errordetail/vipps/<errorType>`
+`https://api.payex.com/psp/errordetail/vipps/<error-type>`
 
 {:.table .table-striped}
 | Type             | Status | Note                       |
@@ -236,7 +236,7 @@ All Vipps error types will have the following URI in front of type:
 ### Error types from Acquirer
 
 All Vipps error types will have the following URI in front of type:
-`https://api.payex.com/psp/errordetail/vipps/<errorType>`
+`https://api.payex.com/psp/errordetail/vipps/<error-type>`
 
 {:.table .table-striped}
 | Type | Status | Note

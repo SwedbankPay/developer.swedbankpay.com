@@ -120,14 +120,14 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "payment": "/psp/invoice/payments/{{ page.paymentId }}",
     "capture": {
         "itemDescriptions": {
-            "id": "/psp/invoice/payments/<captureId>/transactions/12345678-1234-1234-1234-123456789012/itemDescriptions"
+            "id": "/psp/invoice/payments/<captureId>/transactions/{{ page.transactionId }}/itemDescriptions"
         },
-        "invoiceCopy": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures/12345678-1234-1234-1234-123456789012/invoicecopy",
+        "invoiceCopy": "/psp/invoice/payments/{{ page.paymentId }}/captures/{{ page.transactionId }}/invoicecopy",
         "transaction": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
             "created": "2016-09-14T01:01:01.01Z",
             "updated": "2016-09-14T01:01:01.03Z",
             "type": "Capture",
@@ -162,7 +162,7 @@ specific invoice payment.
 **Request**
 
 ```http
-GET /psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures HTTP/1.1
+GET /psp/invoice/payments/{{ page.paymentId }}/captures HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -176,14 +176,14 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "payment": "/psp/invoice/payments/{{ page.paymentId }}",
     "captures": [{
         "itemDescriptions": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/5adc265f-f87f-4313-577e-08d3dca1a26c/itemdescriptions"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/transactions/{{ page.paymentId }}/itemdescriptions"
         },
-        "invoiceCopy": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures/5adc265f-f87f-4313-577e-08d3dca1a26c/invoicecopy",
+        "invoiceCopy": "/psp/invoice/payments/{{ page.paymentId }}/captures/{{ page.paymentId }}/invoicecopy",
         "transaction": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/5adc265f-f87f-4313-577e-08d3dca1a26c",
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/transactions/{{ page.paymentId }}",
             "created": "2016-09-14T01:01:01.01Z",
             "updated": "2016-09-14T01:01:01.03Z",
             "type": "Capture",
@@ -230,7 +230,7 @@ or partially captured invoice payment.
 ***Request***
 
 ```http
-POST /psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/cancellations HTTP/1.1
+POST /psp/invoice/payments/{{ page.paymentId }}/cancellations HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -259,10 +259,10 @@ newly created `cancel` transaction.
 
 ```http
 {
-    "payment": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "payment": "/psp/invoice/payments/{{ page.paymentId }}",
     "cancellation": {
         "transaction": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
             "created": "2016-09-14T01:01:01.01Z",
             "updated": "2016-09-14T01:01:01.03Z",
             "type": "Cancellation",
@@ -297,7 +297,7 @@ specific payment.
 
 ```http
 Request
-GET /psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/cancellations HTTP/1.1
+GET /psp/invoice/payments/{{ page.paymentId }}/cancellations HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -311,10 +311,10 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "payment": "/psp/invoice/payments/{{ page.paymentId }}",
     "cancellations": [{
         "transaction": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/5adc265f-f87f-4313-577e-08d3dca1a26c",
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/transactions/{{ page.paymentId }}",
             "created": "2016-09-14T01:01:01.01Z",
             "updated": "2016-09-14T01:01:01.03Z",
             "type": "Cancellation",
@@ -369,7 +369,7 @@ follows:
 **Request**
 
 ```http
-POST /psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals HTTP/1.1
+POST /psp/invoice/payments/{{ page.paymentId }}/reversals HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -407,10 +407,10 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "payment": "/psp/invoice/payments/{{ page.paymentId }}",
     "reversal": {
         "transaction": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
             "created": "2016-09-14T01:01:01.01Z",
             "updated": "2016-09-14T01:01:01.03Z",
             "type": "Reversal",
@@ -444,7 +444,7 @@ The `reversals` resource will list the reversal transactions
 ***Request***
 
 ```http
-GET /psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals HTTP/1.1
+GET /psp/invoice/payments/{{ page.paymentId }}/reversals HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -458,10 +458,10 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "payment": "/psp/invoice/payments/{{ page.paymentId }}",
     "reversal": [{
         "transaction": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
             "created": "2016-09-14T01:01:01.01Z",
             "updated": "2016-09-14T01:01:01.03Z",
             "type": "Reversal",
