@@ -6,12 +6,12 @@ sidebar:
     items:
     - url: /payments/invoice
       title: Introduction
-    - url: /payments/invoice/direct 
-      title: Direct
     - url: /payments/invoice/redirect
       title: Redirect
     - url: /payments/invoice/seamless-view
       title: Seamless View
+    - url: /payments/invoice/direct 
+      title: Direct
     - url: /payments/invoice/after-payment
       title: After Payment
     - url: /payments/invoice/other-features
@@ -360,8 +360,8 @@ embedded on your website.
 </script>
 ```
 
-{% include iterator.html prev_href="./" prev_title="Back: Introduction"
-next_href="after-payment" next_title="Next: After Payment" %}
+{% include iterator.html prev_href="redirect" prev_title="Back: Redirect"
+next_href="direct" next_title="Next: Direct" %}
 
 [after-payment]: /payments/invoice/after-payment
 [authorize]: /payments/invoice/other-features#authorizations

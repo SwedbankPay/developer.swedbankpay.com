@@ -43,20 +43,20 @@ Content-Type: application/json
             "key4": false
         },
         "riskIndicator": {
-            "deliveryEmailAddress": "string",
+            "deliveryEmailAddress": "test@example.com",
             "deliveryTimeFrameindicator": "01",
-            "preOrderDate": "YYYYMMDD",
+            "preOrderDate": "19801231",
             "preOrderPurchaseIndicator": "01",
             "shipIndicator": "01",
             "giftCardPurchase": false,
             "reOrderPurchaseIndicator": "01",
             "pickUpAddress": {
-                "name": "companyname",
-                "streetAddress": "string",
-                "coAddress": "string",
-                "city": "string",
-                "zipCode": "string",
-                "countryCode": "string"
+                "name": "Leo",
+                "streetAddress": "Gata 535",
+                "coAddress": "street 55",
+                "city": "Stockholm",
+                "zipCode": "55560",
+                "countryCode": "SE"
             }
         }
     },

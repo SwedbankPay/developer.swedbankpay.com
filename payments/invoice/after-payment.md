@@ -10,6 +10,8 @@ sidebar:
       title: Redirect
     - url: /payments/invoice/seamless-view
       title: Seamless View
+    - url: /payments/invoice/direct
+      title: Direct
     - url: /payments/invoice/after-payment
       title: After Payment
     - url: /payments/invoice/other-features
@@ -19,8 +21,7 @@ sidebar:
 {% include alert.html type="warning"
                       icon="warning"
                       header="Site under development"
-                      body="This section of the Developer Portal is under construction and
-                      should not be used to integrate against
+                      body="This section of the Developer Portal is under construction and should not be used to integrate against
                       Swedbank Pay's APIs yet." %}
 
 ## Options after posting a payment
@@ -98,14 +99,14 @@ Content-Type: application/json
 | Required | Parameter name               | Datatype     | Value (with description)                                                                                                                                                                |
 | :------: | :--------------------------- | :----------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |    ✔︎     | `transaction.activity`       | `string`     | FinancingConsumer.                                                                                                                                                                      |
-|    ✔︎     | `transaction.Amount`         | `integer`    | Amount entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 NOK`, `5000` = `50.00 SEK`.                                                               |
-|    ✔︎     | `transaction.vatAmount`      | `integer`    | Amount entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 NOK`, `5000` = `50.00 SEK`.                                                               |
+|    ✔︎     | `transaction.Amount`         | `integer`    | Amount entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 SEK`, `5000` = `50.00 SEK`.                                                               |
+|    ✔︎     | `transaction.vatAmount`      | `integer`    | Amount entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 SEK`, `5000` = `50.00 SEK`.                                                               |
 |    ✔︎     | `transaction.payeeReference` | `string(50)` | A **unique** reference max 50 characters set by the merchant system) - this must be unique for each operation! The `payeeReference` must follow the regex pattern `[\w]* (a-zA-Z0-9_)`. |
 |    ✔︎     | `transaction.description`    | `string`     | A textual description of the capture                                                                                                                                                    |
-|    ✔︎     | `itemDescriptions.amount`      | `integer`    | Total price for this order line - entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 NOK`, `5000` = `50.00 SEK`.                                    |
+|    ✔︎     | `itemDescriptions.amount`      | `integer`    | Total price for this order line - entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 SEK`, `5000` = `50.00 SEK`.                                    |
 |    ✔︎     | `itemDescriptions.description` | `string`     | A textual description of this product                                                                                                                                                   |
-|    ✔︎     | `vatSummary.amount`            | `integer`    | Total price for this order line - entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 NOK`, `5000` = `50.00 SEK`.                                    |
-|    ✔︎     | `vatSummary.vatAmount`         | `integer`    | VAT Amount entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 NOK`, `5000` =`50.00 SEK`.                                                            |
+|    ✔︎     | `vatSummary.amount`            | `integer`    | Total price for this order line - entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 SEK`, `5000` = `50.00 SEK`.                                    |
+|    ✔︎     | `vatSummary.vatAmount`         | `integer`    | VAT Amount entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 SEK`, `5000` =`50.00 SEK`.                                                            |
 |    ✔︎     | `vatSummary.vatPercent`        | `string`     | The VAT in percent. Supported values : "0.00", "6.00", "8.00", "10.00", "12.00", "14.00", "15.00", "22.00", "24.00", "25.00"                                                            |
 
 Notes on `FinancingConsumer` captures:
@@ -150,7 +151,7 @@ Content-Type: application/json
 | `payment`                     | `string`  | The relative URI of the payment this capture transaction resource belongs to.                         |
 | `capture.itemDescriptions.id` | `string`  | The relative URI of the item descriptions resource associated with this capture transaction resource. |
 | `capture.invoiceCopy`         | `string`  | The relative URI of the downloadable invoice copy in PDF format.                                      |
-| `capture.transaction`         | `object`  | The object representation of the [transaction][technical-reference-transaction].                      |
+| `capture.transaction`         | `object`  | The object representation of the [transaction][other-features-transaction].                      |
 
 #### Inspecting the Captures
 
@@ -158,7 +159,7 @@ The `captures` resource lists the capture transactions performed on a
 specific invoice payment.
 
 {:.code-header}
-***Request***
+**Request**
 
 ```http
 GET /psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures HTTP/1.1
@@ -168,7 +169,7 @@ Content-Type: application/json
 ```
 
 {:.code-header}
-***Response***
+**Response**
 
 ```http
 HTTP/1.1 200 OK
@@ -254,7 +255,7 @@ The `cancel` resource will be returned, containing information about the
 newly created `cancel` transaction.
 
 {:.code-header}
-***Response***
+**Response**
 
 ```http
 {
@@ -284,7 +285,7 @@ newly created `cancel` transaction.
 | :--------------------- | :-------- | :--------------------------------------------------------------------------------------- |
 | `payment`              | `string`  | The relative URI of the payment this capture transaction belongs to.                     |
 | `reversal.id`          | `string`  | The relative URI of the created capture transaction.                                     |
-| `reversal.transaction` | `object`  | The object representation of the generic [transaction][technical-reference-transaction]. |
+| `reversal.transaction` | `object`  | The object representation of the generic [transaction][other-features-transaction]. |
 
 ### Inspecting the Cancellation
 
@@ -292,7 +293,7 @@ The `cancellations` resource lists the cancellation transaction made on a
 specific payment.
 
 {:.code-header}
-***Request***
+**Request**
 
 ```http
 Request
@@ -303,7 +304,7 @@ Content-Type: application/json
 ```
 
 {:.code-header}
-***Response***
+**Response**
 
 ```http
 HTTP/1.1 200 OK
@@ -391,8 +392,8 @@ Content-Type: application/json
 | Required | Property                     | Type    | Description                                                                                                                                                                             |
 | :------: | :--------------------------- | :----------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |    ✔︎     | `transaction.activity`       | `string`     | `FinancingConsumer`.                                                                                                                                                                    |
-|    ✔︎     | `transaction.amount`         | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. *`10000`* = `100.00 NOK`, *`5000`* = `50.00 SEK`.                                                           |
-|    ✔︎     | `transaction.vatAmount`      | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. *`10000`* = `100.00 NOK`, *`5000`* =`50.00 SEK`.                                                            |
+|    ✔︎     | `transaction.amount`         | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. *`10000`* = `100.00 SEK`, *`5000`* = `50.00 SEK`.                                                           |
+|    ✔︎     | `transaction.vatAmount`      | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. *`10000`* = `100.00 SEK`, *`5000`* =`50.00 SEK`.                                                            |
 |    ✔︎     | `transaction.payeeReference` | `string(50)` | A **unique **reference max 50 characters set by the merchant system) - this must be unique for each operation! The `payeeReference` must follow the regex pattern `[\w]* (a-zA-Z0-9_)`. |
 |    ✔︎     | `transaction.description`    | `string`     | A textual description of the reversal.                                                                                                                                                  |
 
@@ -432,7 +433,7 @@ Content-Type: application/json
 | :--------------------- | :-------- | :--------------------------------------------------------------------------------------- |
 | `payment`              | `string`  | The relative URI of the payment this capture transaction belongs to.                     |
 | `reversal.id`          | `string`  | The relative URI of the created capture transaction.                                     |
-| `reversal.transaction` | `object`  | The object representation of the generic [transaction][technical-reference-transaction]. |
+| `reversal.transaction` | `object`  | The object representation of the generic [transaction][other-features-transaction]. |
 
 ### Inspecting the Reversal
 
@@ -450,7 +451,7 @@ Content-Type: application/json
 ```
 
 {:.code-header}
-***Response***
+**Response**
 
 ```http
 HTTP/1.1 200 OK
@@ -508,7 +509,7 @@ sequenceDiagram
 
 {% include payee-info.md %}
 
-{% include iterator.html prev_href="./" prev_title="Back: Introduction"
+{% include iterator.html prev_href="direct" prev_title="Back: Direct"
 next_href="other-features" next_title="Next: Other Features" %}
 
 ----------------------------------------------------------
@@ -517,4 +518,4 @@ next_href="other-features" next_title="Next: Other Features" %}
 [invoice-captures]: #captures
 [invoice-cancellations]: #cancellations
 [invoice-reversals]: #reversals
-[technical-reference-transaction]: /payments/invoice/other-features#transactions
+[other-features-transaction]: /payments/invoice/other-features#transactions

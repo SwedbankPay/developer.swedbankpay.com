@@ -6,12 +6,12 @@ sidebar:
     items:
     - url: /payments/invoice
       title: Introduction
-    - url: /payments/invoice/direct
-      title: Direct
     - url: /payments/invoice/redirect
       title: Redirect
     - url: /payments/invoice/seamless-view
       title: Seamless View
+    - url: /payments/invoice/direct
+      title: Direct
     - url: /payments/invoice/after-payment
       title: After Payment
     - url: /payments/invoice/other-features
@@ -73,10 +73,10 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
-  "payment": {
-    "operation": "<operation>",
-    "intent": "<intent>",
-  }
+    "payment": {
+        "operation": "<operation>",
+        "intent": "<intent>"
+    }
 }
 ```
 
@@ -99,42 +99,41 @@ POST /psp/invoice/payments HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
-
 {
-  "payment": {
-    "operation": "FinancingConsumer",
-    "intent": "<intent>",
-    "currency": "NOK",
-    "prices": [
-      {
-        "type": "Invoice",
-        "amount": 1500,
-        "vatAmount": 0
-      }
-    ],
-    "description": "Test Purchase",
-    "payerReference": "SomeReference",
-    "generateRecurrenceToken": "false",
-    "userAgent": "Mozilla/5.0...",
-    "language": "nb-NO",
-    "urls": {
-      "completeUrl": "http://test-dummy.net/payment-completed",
-      "cancelUrl": "http://test-dummy.net/payment-canceled",
-      "callbackUrl": "http://test-dummy.net/payment-callback",
-      "logoUrl": "http://fakeservices.psp.dev.utvnet.net/logo.png",
-      "termsOfServiceUrl": "http://fakeservices.psp.dev.utvnet.net/terms.pdf"
+    "payment": {
+        "operation": "FinancingConsumer",
+        "intent": "<intent>",
+        "currency": "NOK",
+        "prices": [
+            {
+                "type": "Invoice",
+                "amount": 1500,
+                "vatAmount": 0
+            }
+        ],
+        "description": "Test Purchase",
+        "payerReference": "SomeReference",
+        "generateRecurrenceToken": "false",
+        "userAgent": "Mozilla/5.0...",
+        "language": "nb-NO",
+        "urls": {
+            "completeUrl": "http://test-dummy.net/payment-completed",
+            "cancelUrl": "http://test-dummy.net/payment-canceled",
+            "callbackUrl": "http://test-dummy.net/payment-callback",
+            "logoUrl": "http://fakeservices.psp.dev.utvnet.net/logo.png",
+            "termsOfServiceUrl": "http://fakeservices.psp.dev.utvnet.net/terms.pdf"
+        },
+        "payeeInfo": {
+            "payeeId": "12345678-1234-1234-1234-123456789012",
+            "payeeReference": "PR123",
+            "payeeName": "Merchant1",
+            "productCategory": "PC1234",
+            "subsite": "MySubsite"
+        }
     },
-    "payeeInfo": {
-      "payeeId": "12345678-1234-1234-1234-123456789012",
-      "payeeReference": "PR123",
-      "payeeName": "Merchant1",
-      "productCategory": "PC1234",
-      "subsite": "MySubsite"
+    "invoice": {
+        "invoiceType": "PayExFinancingNo"
     }
-  },
-  "invoice": {
-    "invoiceType": "PayExFinancingNo"
-  }
 }
 ```
 
@@ -151,30 +150,29 @@ POST /psp/invoice/payments HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
-
 {
-  "payment": {
-    "operation": "Recur",
-    "intent": "Authorization",
-    "recurrenceToken": "5adc265f-f87f-4313-577e-08d3dca1a26c",
-    "currency": "NOK",
-    "amount": 1500,
-    "vatAmount": 0,
-    "description": "Test Recurrence",
-    "userAgent": "Mozilla/5.0...",
-    "language": "nb-NO",
-    "urls": {
-      "callbackUrl": "https://example.com/payment-callback"
-    },
-    "payeeInfo": {
-      "payeeId": "12345678-1234-1234-1234-123456789012",
-      "payeeReference": "CD1234",
-      "payeeName": "Merchant1",
-      "productCategory": "A123",
-      "orderReference": "or-12456",
-      "subsite": "MySubsite"
+    "payment": {
+        "operation": "Recur",
+        "intent": "Authorization",
+        "recurrenceToken": "5adc265f-f87f-4313-577e-08d3dca1a26c",
+        "currency": "NOK",
+        "amount": 1500,
+        "vatAmount": 0,
+        "description": "Test Recurrence",
+        "userAgent": "Mozilla/5.0...",
+        "language": "nb-NO",
+        "urls": {
+            "callbackUrl": "https://example.com/payment-callback"
+        },
+        "payeeInfo": {
+            "payeeId": "12345678-1234-1234-1234-123456789012",
+            "payeeReference": "CD1234",
+            "payeeName": "Merchant1",
+            "productCategory": "A123",
+            "orderReference": "or-12456",
+            "subsite": "MySubsite"
+        }
     }
-  }
 }
 ```
 
@@ -187,7 +185,6 @@ information without reserving or charging any amount." %}
 ### Introduction to Verify
 
 This option is commonly used when initiating a subsequent
-[One-click invoice payment][one-click-payments] or a
 [recurring invoice payment][recur] flow - where you do not want
 to charge the consumer right away.
 
@@ -215,9 +212,8 @@ optional and requires enabling on the contract with Swedbank Pay." %}
   request to receive the state of the transaction.
 * Finally you will make a `GET` request towards Swedbank Pay with the
   `paymentID` received in the first step, which will return the payment result
-  and a `paymentToken` that can be used for subsequent [One-Click
-  Payments][one-click-payments] and [recurring server-to-server based
-  payments][recur].
+  and a `paymentToken` that can be used for subsequent [recurring
+  server-to-server based payments][recur].
 
 ### Screenshots
 
@@ -228,7 +224,7 @@ the credit card information.
 
 ### API Requests
 
-The API requests are displayed in the [Verification flow]. The options you can
+The API requests are displayed in the [Verification flow][verification-flow]. The options you can
 choose from when creating a payment with key operation set to Value Verify are
 listed below.
 
@@ -240,37 +236,38 @@ POST /psp/invoice/payments HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
-
 {
-  "payment": {
-    "operation": "Verify",
-    "currency": "NOK",
-    "description": "Test Verification",
-    "payerReference": "AB1234",
-    "userAgent": "Mozilla/5.0...",
-    "language": "nb-NO",
-    "generatePaymentToken": true,
-    "generateRecurrenceToken": false,
-    "urls": {
-      "hostUrls": ["https://example.com"],
-      "completeUrl": "https://example.com/payment-completed",
-      "cancelUrl": "https://example.com/payment-canceled",
-      "paymentUrl": "http://example.com/perform-payment",
-      "logoUrl": "https://example.com/payment-logo.png",
-      "termsOfServiceUrl": "https://example.com/payment-terms.html"
+    "payment": {
+        "operation": "Verify",
+        "currency": "NOK",
+        "description": "Test Verification",
+        "payerReference": "AB1234",
+        "userAgent": "Mozilla/5.0...",
+        "language": "nb-NO",
+        "generatePaymentToken": true,
+        "generateRecurrenceToken": false,
+        "urls": {
+            "hostUrls": [
+                "https://example.com"
+            ],
+            "completeUrl": "https://example.com/payment-completed",
+            "cancelUrl": "https://example.com/payment-canceled",
+            "paymentUrl": "http://example.com/perform-payment",
+            "logoUrl": "https://example.com/payment-logo.png",
+            "termsOfServiceUrl": "https://example.com/payment-terms.html"
+        },
+        "payeeInfo": {
+            "payeeId": "12345678-1234-1234-1234-123456789012",
+            "payeeReference": "CD1234",
+            "payeeName": "Merchant1",
+            "productCategory": "A123",
+            "orderReference": "or-12456",
+            "subsite": "MySubsite"
+        }
     },
-    "payeeInfo": {
-      "payeeId": "12345678-1234-1234-1234-123456789012",
-      "payeeReference": "CD1234",
-      "payeeName": "Merchant1",
-      "productCategory": "A123",
-      "orderReference": "or-12456",
-      "subsite": "MySubsite"
+    "invoice": {
+        "invoiceType": "PayExFinancingNo"
     }
-  },
-  "invoice": {
-    "invoiceType": "PayExFinancingNo"
-  }
 }
 ```
 
@@ -280,64 +277,63 @@ Content-Type: application/json
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
-
 {
-  "payment": {
-    "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
-    "number": 1234567890,
-    "created": "2016-09-14T13:21:29.3182115Z",
-    "updated": "2016-09-14T13:21:57.6627579Z",
-    "operation": "Verify",
-    "state": "Ready",
-    "currency": "NOK",
-    "amount": 0,
-    "description": "Test Verification",
-    "payerReference": "AB1234",
-    "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
-    "userAgent": "Mozilla/5.0",
-    "language": "nb-NO",
-    "transactions": {
-      "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions"
+    "payment": {
+        "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+        "number": 1234567890,
+        "created": "2016-09-14T13:21:29.3182115Z",
+        "updated": "2016-09-14T13:21:57.6627579Z",
+        "operation": "Verify",
+        "state": "Ready",
+        "currency": "NOK",
+        "amount": 0,
+        "description": "Test Verification",
+        "payerReference": "AB1234",
+        "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
+        "userAgent": "Mozilla/5.0",
+        "language": "nb-NO",
+        "transactions": {
+            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions"
+        },
+        "verifications": {
+            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/verifications"
+        },
+        "urls": {
+            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/urls"
+        },
+        "payeeInfo": {
+            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeInfo"
+        },
+        "settings": {
+            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/settings"
+        }
     },
-    "verifications": {
-      "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/verifications"
-    },
-    "urls": {
-      "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/urls"
-    },
-    "payeeInfo": {
-      "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeInfo"
-    },
-    "settings": {
-      "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/settings"
-    }
-  },
-  "operations": [
-    {
-      "method": "POST",
-      "href": "https://api.externalintegration.payex.com/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/approvedlegaladdress",
-      "rel": "create-approved-legal-address",
-      "contentType": "application/json"
-    },
-    {
-      "method": "POST",
-      "href": "https://api.externalintegration.payex.com/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations",
-      "rel": "create-authorization",
-      "contentType": "application/json"
-    },
-    {
-      "method": "PATCH",
-      "href": "https://api.externalintegration.payex.com/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
-      "rel": "update-payment-abort",
-      "contentType": "application/json"
-    },
-    {
-      "method": "GET",
-      "href": "https://ecom.externalintegration.payex.com/invoice/payments/authorize/2f9b51a821d40dd015332f14460f91393856725a19e9fb5a834d460af91c9ce2",
-      "rel": "redirect-authorization",
-      "contentType": "text/html"
-    }
-  ]
+    "operations": [
+        {
+            "method": "POST",
+            "href": "https://api.externalintegration.payex.com/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/approvedlegaladdress",
+            "rel": "create-approved-legal-address",
+            "contentType": "application/json"
+        },
+        {
+            "method": "POST",
+            "href": "https://api.externalintegration.payex.com/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations",
+            "rel": "create-authorization",
+            "contentType": "application/json"
+        },
+        {
+            "method": "PATCH",
+            "href": "https://api.externalintegration.payex.com/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+            "rel": "update-payment-abort",
+            "contentType": "application/json"
+        },
+        {
+            "method": "GET",
+            "href": "https://ecom.externalintegration.payex.com/invoice/payments/authorize/2f9b51a821d40dd015332f14460f91393856725a19e9fb5a834d460af91c9ce2",
+            "rel": "redirect-authorization",
+            "contentType": "text/html"
+        }
+    ]
 }
 ```
 
@@ -350,50 +346,50 @@ the process of a complete purchase.
 
 ```mermaid
 sequenceDiagram
-  participant Payer
-  participant Merchant
-  participant SwedbankPay as Swedbank Pay
-  participant IssuingBank
+    participant Payer
+    participant Merchant
+    participant SwedbankPay as Swedbank Pay
+    participant IssuingBank
 
-  activate Payer
-  Payer->>+Merchant: start verification
-  deactivate Payer
-  Merchant->>+SwedbankPay: POST /psp/invoice/payments(operation=VERIFY)
-  deactivate Merchant
-  note left of Payer: First API request
-  SwedbankPay-->+Merchant: payment resource
-  deactivate SwedbankPay
-  Merchant-->>+Payer: redirect to verification page
-  deactivate Merchant
-  Payer->>+SwedbankPay: access verification page
-  deactivate Payer
-  note left of Payer: redirect to SwedbankPay<br>(If Redirect scenario)
-  SwedbankPay-->>+Payer: display purchase information
-  deactivate SwedbankPay
-
-  Payer->>Payer: input invoice information
-  Payer->>+SwedbankPay: submit invoice information
-  deactivate Payer
-
-  SwedbankPay-->>+Payer: redirect to merchant
-  deactivate SwedbankPay
-  note left of Payer: redirect back to merchant<br>(If Redirect scenario)
-
-  Payer->>+Merchant: access merchant page
-  Merchant->>+SwedbankPay: GET /psp/invoice/payments/<paymentorder.id>
-  deactivate Merchant
-  note left of Merchant: Second API request
-  SwedbankPay-->>+Merchant: rel: redirect-authorization
-  deactivate SwedbankPay
-  Merchant-->>Payer: display purchase result
-  deactivate Merchant
-
-  opt Callback is set
-    activate SwedbankPay
-    SwedbankPay->>SwedbankPay: Payment is updated
-    SwedbankPay->>Merchant: POST Payment Callback
+    activate Payer
+    Payer->>+Merchant: start verification
+    deactivate Payer
+    Merchant->>+SwedbankPay: POST /psp/invoice/payments(operation=VERIFY)
+    deactivate Merchant
+    note left of Payer: First API request
+    SwedbankPay-->+Merchant: payment resource
     deactivate SwedbankPay
-  end
+    Merchant-->>+Payer: redirect to verification page
+    deactivate Merchant
+    Payer->>+SwedbankPay: access verification page
+    deactivate Payer
+    note left of Payer: redirect to SwedbankPay<br>(If Redirect scenario)
+    SwedbankPay-->>+Payer: display purchase information
+    deactivate SwedbankPay
+
+    Payer->>Payer: input invoice information
+    Payer->>+SwedbankPay: submit invoice information
+    deactivate Payer
+
+    SwedbankPay-->>+Payer: redirect to merchant
+    deactivate SwedbankPay
+    note left of Payer: redirect back to merchant<br>(If Redirect scenario)
+
+    Payer->>+Merchant: access merchant page
+    Merchant->>+SwedbankPay: GET /psp/invoice/payments/<paymentorder.id>
+    deactivate Merchant
+    note left of Merchant: Second API request
+    SwedbankPay-->>+Merchant: rel: redirect-authorization
+    deactivate SwedbankPay
+    Merchant-->>Payer: display purchase result
+    deactivate Merchant
+
+        opt Callback is set
+          activate SwedbankPay
+          SwedbankPay->>SwedbankPay: Payment is updated
+          SwedbankPay->>Merchant: POST Payment Callback
+          deactivate SwedbankPay
+        end
 ```
 
 ### Create authorization transaction
@@ -409,32 +405,31 @@ POST /psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations H
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
-
 {
-  "transaction": {
-    "activity": "FinancingConsumer"
-  },
-  "consumer": {
-    "socialSecurityNumber": "26026708248",
-    "customerNumber": "123456",
-    "email": "olivia.nyhuus@payex.com",
-    "msisdn": "+4798765432",
-    "ip": "127.0.0.1"
-  },
-  "legalAddress": {
-    "addressee": "Olivia Nyhuus",
-    "streetAddress": "SaltnesToppen 43",
-    "zipCode": "1642",
-    "city": "Saltnes",
-    "countryCode": "no"
-  },
-  "billingAddress": {
-    "addressee": "Olivia Nyhuus",
-    "streetAddress": "SaltnesToppen 43",
-    "zipCode": "1642",
-    "city": "Saltnes",
-    "countryCode": "no"
-  }
+    "transaction": {
+        "activity": "FinancingConsumer"
+    },
+    "consumer": {
+        "socialSecurityNumber": "26026708248",
+        "customerNumber": "123456",
+        "email": "olivia.nyhuus@payex.com",
+        "msisdn": "+4798765432",
+        "ip": "127.0.0.1"
+    },
+    "legalAddress": {
+        "addressee": "Olivia Nyhuus",
+        "streetAddress": "SaltnesToppen 43",
+        "zipCode": "1642",
+        "city": "Saltnes",
+        "countryCode": "no"
+    },
+    "billingAddress": {
+        "addressee": "Olivia Nyhuus",
+        "streetAddress": "SaltnesToppen 43",
+        "zipCode": "1642",
+        "city": "Saltnes",
+        "countryCode": "no"
+    }
 }
 ```
 
@@ -469,46 +464,46 @@ Content-Type: application/json
 
 ```json
 {
-  "payment": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
-  "authorization": {
-    "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations/12345678-1234-1234-1234-123456789012",
-    "consumer": {
-      "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/consumer"
-    },
-    "legalAddress": {
-      "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/legaladdress"
-    },
-    "billingAddress": {
-      "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/billingaddress"
-    },
-    "transaction": {
-      "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
-      "created": "2016-09-14T01:01:01.01Z",
-      "updated": "2016-09-14T01:01:01.03Z",
-      "type": "Authorization",
-      "state": "Failed",
-      "number": 1234567890,
-      "amount": 1000,
-      "vatAmount": 250,
-      "description": "Test transaction",
-      "payeeReference": "AH123456",
-      "failedReason": "ExternalResponseError",
-      "failedActivityName": "Authorize",
-      "failedErrorCode": "ThirdPartyErrorCode",
-      "failedErrorDescription": "ThirdPartyErrorMessage",
-      "isOperational": "TRUE",
-      "activities": {
-        "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012/activities"
-      },
-      "operations": [
-        {
-          "href": "https://api.payex.com/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
-          "rel": "edit-authorization",
-          "method": "PATCH"
+    "payment": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "authorization": {
+        "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations/12345678-1234-1234-1234-123456789012",
+        "consumer": {
+            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/consumer"
+        },
+        "legalAddress": {
+            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/legaladdress"
+        },
+        "billingAddress": {
+            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/billingaddress"
+        },
+        "transaction": {
+            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
+            "created": "2016-09-14T01:01:01.01Z",
+            "updated": "2016-09-14T01:01:01.03Z",
+            "type": "Authorization",
+            "state": "Failed",
+            "number": 1234567890,
+            "amount": 1000,
+            "vatAmount": 250,
+            "description": "Test transaction",
+            "payeeReference": "AH123456",
+            "failedReason": "ExternalResponseError",
+            "failedActivityName": "Authorize",
+            "failedErrorCode": "ThirdPartyErrorCode",
+            "failedErrorDescription": "ThirdPartyErrorMessage",
+            "isOperational": "TRUE",
+            "activities": {
+                "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012/activities"
+            },
+            "operations": [
+                {
+                    "href": "https://api.payex.com/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+                    "rel": "edit-authorization",
+                    "method": "PATCH"
+                }
+            ]
         }
-      ]
     }
-  }
 }
 ```
 
@@ -575,8 +570,8 @@ All invoice error types will have the following URI in front of type:
 | `externalerror` |  502   | 9999 - ServerOtherServer      |
 | `forbidden`     |  403   | Any other error code          |
 
-{% include iterator.html prev_href="./" prev_title="Back: Introduction"
-next_href="after-payment" next_title="Next: After Payment" %}
+{% include iterator.html prev_href="after-payment" prev_title="Back: After
+Payment" %}
 
 [callback]: #callback
 [cancel]: /payments/invoice/after-payment#cancellations
@@ -584,10 +579,11 @@ next_href="after-payment" next_title="Next: After Payment" %}
 [card-payment]: /assets/img/checkout/test-purchase.png
 [fi-png]: /assets/img/fi.png
 [financing-consumer]: #financing-consumer
-[invoice-flow]: /payments/invoice/#invoice-flow
+[invoice-flow]: /payments/invoice#invoice-flow
 [no-png]: /assets/img/no.png
 [recur]: #recur
 [redirect]: /payments/invoice/redirect
 [se-png]: /assets/img/se.png
 [seamless-view]: /payments/invoice/seamless-view
 [verify]: #verfify
+[verification-flow]: #verification-flow
