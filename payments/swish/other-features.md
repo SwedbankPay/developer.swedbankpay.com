@@ -168,7 +168,7 @@ Content-Type: application/json
 
 ### Prices
 
-{% include prices.md %}
+{% include prices.md payment-instrument="swish" %}
 
 ### Payee reference
 

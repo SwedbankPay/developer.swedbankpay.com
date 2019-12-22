@@ -20,7 +20,7 @@ sidebar:
 
 ### Prices
 
-{% include prices.md %}
+{% include prices.md payment-instrument="creditaccount" %}
 
 ## Problem messages
 

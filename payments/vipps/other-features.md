@@ -30,7 +30,7 @@ sidebar:
 
 ### Prices
 
-{% include prices.md hide-mobile-pay=true hide-direct-debit=true %}
+{% include prices.md payment-instrument="vipps" %}
 
 ### Payee reference
 

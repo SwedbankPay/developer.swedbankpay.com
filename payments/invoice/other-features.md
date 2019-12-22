@@ -541,7 +541,7 @@ transaction made towards a payment, as previously described.
 
 ## Prices
 
-{% include prices.md %}
+{% include prices.md payment-instrument="invoice" %}
 
 {% include settlement-reconciliation.md %}
 

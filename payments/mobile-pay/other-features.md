@@ -145,7 +145,7 @@ The response will be the `payment` resource with its `state` set to `Aborted`.
 
 ### Prices
 
-{% include prices.md %}
+{% include prices.md payment-instrument="mobilepay" %}
 
 ### Payee reference
 

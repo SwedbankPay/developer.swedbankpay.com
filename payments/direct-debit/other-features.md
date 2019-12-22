@@ -30,7 +30,7 @@ sidebar:
 
 {% include payee-info.md %}
 
-{% include prices.md %}
+{% include prices.md payment-instrument="directdebit" %}
 
 ### Create Payment
 

@@ -1,5 +1,4 @@
-{% assign hide-direct-debit = include.hide-direct-debit | default: false %}
-{% assign hide-mobile-pay = include.hide-mobile-pay | default: false %}
+{% assign payment-instrument = include.payment-instrument | default: 'creditcard' %}
 
 The `prices` resource lists the prices related to a specific payment.
 
@@ -7,7 +6,7 @@ The `prices` resource lists the prices related to a specific payment.
 **Request**
 
 ```http
-GET /psp/creditcard/payments/{{ page.paymentId }}/prices/ HTTP/1.1
+GET /psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/prices/ HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -21,9 +20,9 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/creditcard/payments/{{ page.paymentId }}",
+    "payment": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}",
     "prices": {
-        "id": "/psp/creditcard/payments/{{ page.paymentId }}/prices",
+        "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/prices",
         "priceList": [
             {
                 "type": "VISA",
@@ -56,6 +55,10 @@ Each payment instrument have one or more prices object types. This is most
 relevant when using card based and direct debit payments as each type correspond
 to a card brand or bank respectively.
 
+{% case payment-instrument %}
+
+{% when "creditcard" %}
+
 #### Card Payments
 
 The generic type `CreditCard` enables all card brands, supported by merchant
@@ -74,7 +77,7 @@ contract.
 | `IkanoFinansDK` | Ikano Finans Denmark                       |
 | `Maestro`       | MasterCard Maestro                         |
 
-{% unless hide-direct-debit %}
+{% when "directdebit" %}
 
 #### Direct Debit Payments
 
@@ -100,7 +103,8 @@ contract.
 | `SHBFI`      | Handelsbanken Finland **(Not yet supported)**    |
 | `SpankkiFI`  | S-Pankki Finland **(Not yet supported)**         |
 | `SPFI`       | Säästöpankki Finland **(Not yet supported)**     |
-{% endunless %}
+
+{% when "invoice" %}
 
 #### Invoice Payments
 
@@ -109,16 +113,16 @@ contract.
 | :-------- | :------------- |
 | `Invoice` | Always Invoice |
 
-{% unless hide-mobile-pay %}
+{% when "mobilepay" %}
 
 #### MobilePay Payments
 
 {:.table .table-striped}
 | Type        | Description      |
 | :---------- | :--------------- |
-| `Mobilepay` | Always Mobilepay |
+| `Mobilepay` | Always MobilePay |
 
-{% endunless %}
+{% when "swish" %}
 
 #### Swish Payments
 
@@ -127,9 +131,13 @@ contract.
 | :------ | :----------- |
 | `Swish` | Always Swish |
 
+{% when "vipps" %}
+
 #### Vipps Payments
 
 {:.table .table-striped}
 | Type    | Description  |
 | :------ | :----------- |
 | `Vipps` | Always Vipps |
+
+{% endcase %}
