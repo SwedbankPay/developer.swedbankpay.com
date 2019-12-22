@@ -23,11 +23,11 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "urls": {
-            "completeUrl": "http://test-dummy.net/payment-completed",
-            "cancelUrl": "http://test-dummy.net/payment-canceled",
-            "callbackUrl": "http://test-dummy.net/payment-callback",
-            "logoUrl": "http://test-dummy.net/payment-logo.png",
-            "termsOfServiceUrl": "http://test-dummy.net/payment-terms.pdf",
+            "completeUrl": "http://example.com/payment-completed",
+            "cancelUrl": "http://example.com/payment-canceled",
+            "callbackUrl": "http://example.com/payment-callback",
+            "logoUrl": "http://example.com/payment-logo.png",
+            "termsOfServiceUrl": "http://example.com/payment-terms.pdf",
         },
         "payeeInfo": {
             "payeeId": "12345678-1234-1234-1234-123456789012",
@@ -43,20 +43,20 @@ Content-Type: application/json
             "key4": false
         },
         "riskIndicator": {
-            "deliveryEmailAddress": "string",
+            "deliveryEmailAddress": "test@example.com",
             "deliveryTimeFrameindicator": "01",
-            "preOrderDate": "YYYYMMDD",
+            "preOrderDate": "19801231",
             "preOrderPurchaseIndicator": "01",
             "shipIndicator": "01",
             "giftCardPurchase": false,
             "reOrderPurchaseIndicator": "01",
             "pickUpAddress": {
-                "name": "companyname",
-                "streetAddress": "string",
-                "coAddress": "string",
-                "city": "string",
-                "zipCode": "string",
-                "countryCode": "string"
+                "name": "Leo",
+                "streetAddress": "Gata 535",
+                "coAddress": "street 55",
+                "city": "Stockholm",
+                "zipCode": "55560",
+                "countryCode": "SE"
             }
         }
     },
@@ -75,9 +75,9 @@ Content-Type: application/json
 | Required | Property                              | Type          | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | :------: | :------------------------------------ | :------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 |  ✔︎︎︎︎︎  | `payment`                             | `object`      | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`operation`                           | `string`      | The operation that the `payment` is supposed to perform. The [`purchase`][purchase] operation is used in our example. Take a look at the [create card `payment` section][create-payment] for a full examples of the following `operation` options: [Purchase][purchase], [Recur][recur], [Payout][payout], [Verify][verify]                                                                                                                                                                                                                                               |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`intent`                              | `string`      |  `Authorization`. Reserves the amount, and is followed by a [cancellation][cancel] or [capture][capture] of funds.<br> <br> `AutoCapture`. A one phase option that enable capture of funds automatically after authorization.                                                                                                                                                            |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`currency`                            | `string`      | NOK, SEK, DKK, USD or EUR.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`operation`                   | `string`      | The operation that the `payment` is supposed to perform. The [`purchase`][purchase] operation is used in our example. Take a look at the [create card `payment` section][create-payment] for a full examples of the following `operation` options: [Purchase][purchase], [Recur][recur], [Payout][payout], [Verify][verify]                                                                                                                                                                                                                                               |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`intent`                      | `string`      | `Authorization`. Reserves the amount, and is followed by a [cancellation][cancel] or [capture][capture] of funds.<br> <br> `AutoCapture`. A one phase option that enable capture of funds automatically after authorization.                                                                                                                                                                                                                                                                                                                                              |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`currency`                    | `string`      | NOK, SEK, DKK, USD or EUR.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`prices`                      | `object`      | The `prices` resource lists the prices related to a specific payment.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`type`                       | `string`      | Use the generic type CreditCard if you want to enable all card brands supported by merchant contract. Use card brands like Visa (for card type Visa), MasterCard (for card type Mastercard) and others if you want to specify different amount for each card brand. If you want to use more than one amount you must have one instance in the prices node for each card brand. You will not be allowed to both specify card brands and CreditCard at the same time in this field. [See the Prices resource and prices object types for more information][price-resource]. |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`amount`                     | `integer`     | Amount is entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 SEK 5000 = 50.00 SEK.                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
@@ -133,7 +133,7 @@ Content-Type: application/json
 
 {
   "payment": {
-    "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "id": "/psp/creditcard/payments/{{ page.paymentId }}",
     "number": 1234567890,
     "instrument": "CreditCard",
     "created": "2016-09-14T13:21:29.3182115Z",
@@ -151,25 +151,25 @@ Content-Type: application/json
     "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
     "userAgent": "Mozilla/5.0...",
     "language": "sv-SE",
-    "prices": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/prices" },
-    "transactions": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions" },
-    "authorizations": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations" },
-    "captures": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures" },
-    "reversals": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals" },
-    "cancellations": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/cancellations" },
-    "urls" : { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/urls" },
-    "payeeInfo" : { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeInfo" },
-    "settings": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/settings" }
+    "prices": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/prices" },
+    "transactions": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/transactions" },
+    "authorizations": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/authorizations" },
+    "captures": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/captures" },
+    "reversals": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/reversals" },
+    "cancellations": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/cancellations" },
+    "urls" : { "id": "/psp/creditcard/payments/{{ page.paymentId }}/urls" },
+    "payeeInfo" : { "id": "/psp/creditcard/payments/{{ page.paymentId }}/payeeInfo" },
+    "settings": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/settings" }
   },
   "operations": [
     {
-      "href": "https://api.payex.com/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+      "href": "https://api.externalintegration.payex.com/psp/creditcard/payments/{{ page.paymentId }}",
       "rel": "update-payment-abort",
       "method": "PATCH",
       "contentType": "application/json"
     },
     {
-      "href": "https://ecom.payex.com/creditcard/payments/authorize/123456123412341234123456789012",
+      "href": "https://ecom.externalintegration.payex.com/creditcard/payments/authorize/123456123412341234123456789012",
       "rel": "redirect-authorization",
       "method": "GET",
       "contentType": "text/html"

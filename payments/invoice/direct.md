@@ -6,12 +6,12 @@ sidebar:
     items:
     - url: /payments/invoice
       title: Introduction
-    - url: /payments/invoice/direct
-      title: Direct
     - url: /payments/invoice/redirect
       title: Redirect
     - url: /payments/invoice/seamless-view
       title: Seamless View
+    - url: /payments/invoice/direct
+      title: Direct
     - url: /payments/invoice/after-payment
       title: After Payment
     - url: /payments/invoice/other-features
@@ -20,18 +20,23 @@ sidebar:
 
 {% include alert-review-section.md %}
 
-{% include jumbotron.html body="**Direct**
-Direct is a payment service where Swedbank Pay helps improve cashflow by
-purchasing merchant invoices. Swedbank Pay receives invoice data, which is used
-to produce and distribute invoices to the consumer/end-use" %}
+{% include alert.html type="neutral" icon="report_problem" header="Disclaimer"
+body="Direct Invoice is about to be phased out. This section is only for
+merchants that currently have a contract with this integration." %}
+
+{% include jumbotron.html body="**Direct** is a payment service where Swedbank
+Pay helps improve cashflow by purchasing merchant invoices. Swedbank Pay
+receives invoice data, which is used to produce and distribute invoices to the
+consumer/end-user" %}
 
 ## Introduction
 
-1. Collect all purchase information and send it in a `POST` request to
-Swedbank Pay.
-1. Include personal information (SSN and postal code) and send it to Swedbank Pay.
+1. Collect all purchase information and send it in a `POST` request to Swedbank
+   Pay.
+1. Include personal information (SSN and postal code) and send it to Swedbank
+   Pay.
 1. Make a new `POST` request towards Swedbank Pay to retrieve the name and
-address of the customer.
+   address of the customer.
 1. Create an authorization transaction by calculating the final price / amount.
 1. Make a third `POST` request with consumer data as input.
 1. Send a  `GET` request with the `paymentID` to get the authorization result
@@ -79,55 +84,64 @@ with the `approvedLegalAddress` (SNN and postal number).
 ```mermaid
 sequenceDiagram
     Consumer->>Merchant: Start purchase (collect SSN and postal number)
-    Activate Merchant
+    activate Merchant
     note left of Merchant: First API request
-    Merchant->>Swedbank Pay: POST <Invoice Payments> (operation=FinancingConsumer)
-    Activate Swedbank Pay
-
-    Swedbank Pay-->>Merchant: payment resource
+    Merchant->>-Swedbank Pay: POST <Invoice Payments> (operation=FinancingConsumer)
+    activate Swedbank Pay
+    Swedbank Pay-->>-Merchant: payment resource
+    activate Merchant
     note left of Merchant: Second API request
-    Merchant-->>Swedbank Pay: POST <approvedLegalAddress> (SNN and postal number)
+    Merchant-->>-Swedbank Pay: POST <approvedLegalAddress> (SNN and postal number)
+    activate Swedbank Pay
     Swedbank Pay-->>Swedbank Pay: Update payment with consumer delivery address
-    Swedbank Pay-->>Merchant: Approved legaladdress information
-    deactivate Swedbank Pay
-
-    Merchant-->>Consumer: Display all details and final price
+    Swedbank Pay-->>-Merchant: Approved legaladdress information
+    activate Merchant
+    Merchant-->>-Consumer: Display all details and final price
+    activate Consumer
     Consumer->>Consumer: Input email and mobile number
-    deactivate Merchant
-    Consumer->>Merchant: Confirm purchase
-    Activate Merchant
+    Consumer->>-Merchant: Confirm purchase
+    activate Merchant
 
     note left of Merchant: Third API request
-    Merchant->>+Swedbank Pay: POST <invoice authorizations> (Transaction Activity=FinancingConsumer)
+    Merchant->>-Swedbank Pay: POST <invoice authorizations> (Transaction Activity=FinancingConsumer)
+    activate Swedbank Pay
     Swedbank Pay-->>-Merchant: Transaction result
+    activate Merchant
     note left of Merchant: Fourth API request
-    Merchant->>+Swedbank Pay: GET <invoice payments>
+    Merchant->>-Swedbank Pay: GET <invoice payments>
+    activate Swedbank Pay
     Swedbank Pay-->>-Merchant: payment resource
-    Merchant-->>Consumer: Display result
-    deactivate Merchant
+    activate Merchant
+    Merchant-->>-Consumer: Display result
 ```
 
 ## Invoice Flow (FI)
 
 ```mermaid
 sequenceDiagram
-    Consumer->>+Merchant: start purchase
+    Consumer->>Merchant: start purchase
+    activate Merchant
     note left of Merchant: First API request
-    Merchant->>+Swedbank Pay: POST <Invoice Payments> (operation=FinancingConsumer)
+    Merchant->>-Swedbank Pay: POST <Invoice Payments> (operation=FinancingConsumer)
+    activate Swedbank Pay
     Swedbank Pay-->>-Merchant: payment resource
+    activate Merchant
     Merchant-->>-Consumer: Display All detail and final price
+    activate Consumer
     Consumer-->>Consumer: Input consumer data
-    Consumer->>Merchant: Confirm purchase
-
-    Activate Merchant
+    Consumer->>-Merchant: Confirm purchase
+    activate Merchant
     note left of Merchant: Second API request
-    Merchant->>+Swedbank Pay: POST <Invoice autorizations> (Transaction Activity=FinancingConsumer)
+    Merchant->>-Swedbank Pay: POST <Invoice autorizations> (Transaction Activity=FinancingConsumer)
+    activate Swedbank Pay
     Swedbank Pay->>-Merchant: Transaction result
+    activate Merchant
     note left of Merchant: Third API request
-    Merchant->>+Swedbank Pay: GET <Invoice payments>
+    Merchant->>-Swedbank Pay: GET <Invoice payments>
+    activate Swedbank Pay
     Swedbank Pay-->>-Merchant: payment resource
-    Merchant-->>Consumer: Display result
-    deactivate Merchant
+    activate Merchant
+    Merchant-->>-Consumer: Display result
 ```
 
 ## API Requests
@@ -168,14 +182,14 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "urls": {
-            "completeUrl": "http://test-dummy.net/payment-completed",
-            "cancelUrl": "http://test-dummy.net/payment-canceled",
-            "callbackUrl": "http://test-dummy.net/payment-callback",
-            "logoUrl": "http://fakeservices.psp.dev.utvnet.net/logo.png",
-            "termsOfServiceUrl": "http://fakeservices.psp.dev.utvnet.net/terms.pdf"
+            "completeUrl": "http://example.com/payment-completed",
+            "cancelUrl": "http://example.com/payment-canceled",
+            "callbackUrl": "http://example.com/payment-callback",
+            "logoUrl": "http://example.com/logo.png",
+            "termsOfServiceUrl": "http://example.com/terms.pdf"
         },
         "payeeInfo": {
-            "payeeId": "12345678-1234-1234-1234-123456789012",
+            "payeeId": "{{ page.merchantId }}",
             "payeeReference": "PR123",
             "payeeName": "Merchant1",
             "productCategory": "PC1234",
@@ -202,8 +216,8 @@ Content-Type: application/json
 | Required | Property                              | Type          | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | :------: | :------------------------------------ | :------------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |  ✔︎︎︎︎︎  | `payment`                             | `object`      | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`operation`                   | `string`      | The operation that the `payment` is supposed to perform. The [`FinancingConsumer`][financing-consumer] operation is used in our example. Take a look at the ?? for a full examples of the following `operation` options: [FinancingConsumer][financing-consumer], [Recur][recur], [Verify][verify]                                                                                                                                                                                                                              |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`intent`                      | `string`      | `Authorization` is the only intent option for invoice. Reserves the amount, and is followed by a [cancellation][cancel] or [capture][capture] of funds.                                                                                                                                                                                                                    |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`operation`                   | `string`      | The operation that the `payment` is supposed to perform. The [`FinancingConsumer`][financing-consumer] operation is used in our example. Take a look at the Other Features section for a full examples of the following `operation` options: [FinancingConsumer][financing-consumer], [Recur][recur], [Verify][verify]                                                                                                                                                                                                                                             |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`intent`                      | `string`      | `Authorization` is the only intent option for invoice. Reserves the amount, and is followed by a [cancellation][cancel] or [capture][capture] of funds.                                                                                                                                                                                                                                                                                                                                                                                        |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`currency`                    | `string`      | NOK, SEK, DKK, USD or EUR.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`prices`                      | `object`      | The `prices` resource lists the prices related to a specific payment.                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`type`                       | `string`      | Use the `Invoice` type here                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
@@ -213,7 +227,7 @@ Content-Type: application/json
 |          | └➔&nbsp;`payerReference`              | `string`      | The reference to the payer (consumer/end user) from the merchant system. E.g mobile number, customer number etc.                                                                                                                                                                                                                                                                                                                                                                                                                               |
 |          | └➔&nbsp;`generatePaymentToken`        | `boolean`     | `true` or `false`. Set this to `true` if you want to create a paymentToken for future use as One Click.                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 |          | └➔&nbsp;`generateRecurrenceToken`     | `boolean`     | `true` or `false`. Set this to `true` if you want to create a recurrenceToken for future use Recurring purchases (subscription payments).                                                                                                                                                                                                                                                                                                                                                                                                      |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`userAgent`                   | `string`      | The user agent reference of the consumer's browser - [see user agent definition][user-agent-definition]                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`userAgent`                   | `string`      | The user agent reference of the consumer's browser - [see user agent definition][user-agent-definition]                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`language`                    | `string`      | nb-NO, sv-SE or en-US.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`urls`                        | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 |          | └─➔&nbsp;`hostUrl`                    | `array`       | The array of URLs valid for embedding of Swedbank Pay Hosted Views. If not supplied, view-operation will not be available.                                                                                                                                                                                                                                                                                                                                                                                                                     |
@@ -253,7 +267,7 @@ Content-Type: application/json
 
 {
     "payment": {
-        "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+        "id": "/psp/invoice/payments/{{ page.paymentId }}",
         "number": 1234567890,
         "instrument": "Invoice",
         "created": "YYYY-MM-DDThh:mm:ssZ",
@@ -270,52 +284,52 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "prices": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/prices"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/prices"
         },
         "transactions": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/transactions"
         },
         "authorizations": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/authorizations"
         },
         "captures": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/captures"
         },
         "reversals": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/reversals"
         },
         "cancellations": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/cancellations"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/cancellations"
         },
         "payeeInfo": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeInfo"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/payeeInfo"
         },
         "urls": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/urls"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/urls"
         },
         "settings": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/settings"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/settings"
         },
         "approvedLegalAddress": {
-            "id": "/psp/invoice/payments/<paymentId>/approvedlegaladdress"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/approvedlegaladdress"
         },
         "maskedApprovedLegalAddress": {
-            "id": "/psp/invoice/payments/<paymentId>/maskedapprovedlegaladdress"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/maskedapprovedlegaladdress"
         }
     },
     "operations": [
         {
-            "href": "https://api.payex.com/psp/invoice/payments/<paymentId>",
+            "href": "https://api.externalintegration.payex.com/psp/invoice/payments/{{ page.paymentId }}",
             "rel": "update-payment-abort",
             "method": "PATCH"
         },
         {
-            "href": "https://api.payex.com/psp/invoice/payments/<paymentId>/authorizations",
+            "href": "https://api.externalintegration.payex.com/psp/invoice/payments/{{ page.paymentId }}/authorizations",
             "rel": "create-authorize",
             "method": "POST"
         },
         {
-            "href": "https://api.payex.com/psp/invoice/payments/<paymentId>/approvedlegaladdress",
+            "href": "https://api.externalintegration.payex.com/psp/invoice/payments/{{ page.paymentId }}/approvedlegaladdress",
             "rel": "create-approved-legal-address",
             "method": "POST"
         }
@@ -334,8 +348,8 @@ possible to perform in the current state of the payment.
 **Request**
 
 ```http
-GET /psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/ HTTP/1.1
-Host: api.payex.com
+GET /psp/invoice/payments/{{ page.paymentId }}/ HTTP/1.1
+Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -349,7 +363,7 @@ Content-Type: application/json
 
 {
     "payment": {
-        "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+        "id": "/psp/invoice/payments/{{ page.paymentId }}",
         "number": 1234567890,
         "created": "2016-09-14T13:21:29.3182115Z",
         "updated": "2016-09-14T13:21:57.6627579Z",
@@ -367,55 +381,55 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "prices": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/prices"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/prices"
         },
         "transactions": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/transactions"
         },
         "authorizations": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/authorizations"
         },
         "captures": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/captures"
         },
         "reversals": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/reversals"
         },
         "cancellations": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/cancellations"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/cancellations"
         },
         "payeeInfo": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeInfo"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/payeeInfo"
         },
         "urls": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/urls"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/urls"
         },
         "settings": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/settings"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/settings"
         },
         "approvedLegalAddress": {
-            "id": "/psp/invoice/payments/<paymentId>/approvedlegaladdress"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/approvedlegaladdress"
         },
         "maskedApprovedLegalAddress": {
-            "id": "/psp/invoice/payments/<paymentId>/maskedapprovedlegaladdress"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/maskedapprovedlegaladdress"
         }
     },
     "approvedLegalAddress": {
-        "id": "/psp/invoice/payments/<paymentId>/approvedlegaladdress"
+        "id": "/psp/invoice/payments/{{ page.paymentId }}/approvedlegaladdress"
     },
     "operations": [
         {
-            "href": "https://api.payex.com/psp/invoice/payments/<paymentId>/captures",
+            "href": "https://api.externalintegration.payex.com/psp/invoice/payments/{{ page.paymentId }}/captures",
             "rel": "create-capture",
             "method": "POST"
         },
         {
-            "href": "https://api.payex.com/psp/invoice/payments/<paymentId>/cancellations",
+            "href": "https://api.externalintegration.payex.com/psp/invoice/payments/{{ page.paymentId }}/cancellations",
             "rel": "create-cancel",
             "method": "POST"
         },
         {
-            "href": "https://api.payex.com/psp/invoice/payments/<paymentId>/approvedlegaladdress",
+            "href": "https://api.externalintegration.payex.com/psp/invoice/payments/{{ page.paymentId }}/approvedlegaladdress",
             "rel": "create-approved-legal-address",
             "method": "POST"
         }
@@ -432,22 +446,22 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "href": "https://merchant/cancelUrl",
+    "href": "https://example.com/cancelUrl",
     "rel": "redirect-merchant-cancel",
     "method": "GET"
 }
 {
-    "href": "https://merchant/completeUrl",
+    "href": "https://example.com/completeUrl",
     "rel": "redirect-merchant-complete",
     "method": "GET"
 }
 {
-    "href": "https://merchant/cancelUrl",
+    "href": "https://example.com/cancelUrl",
     "rel": "redirect-merchant-cancel",
     "method": "GET"
 }
 {
-    "href": "https://merchant/completeUrl",
+    "href": "https://example.com/completeUrl",
     "rel": "redirect-merchant-complete",
     "method": "GET"
 }
@@ -468,7 +482,7 @@ Content-Type: application/json
 | └➔&nbsp;`prices.id`      | `string`     | The relative URI of the current prices resource.                                                                                                                                                 |
 | └➔&nbsp;`description`    | `string(40)` | A textual description of maximum 40 characters of the purchase.                                                                                                                                  |
 | └➔&nbsp;`payerReference` | `string`     | The reference to the payer (consumer/end-user) from the merchant system, like e-mail address, mobile number, customer number etc.                                                                |
-| └➔&nbsp;`userAgent`      | `string`     | The [user agent][user-agent-definition] string of the consumer's browser.                                                                                                                               |
+| └➔&nbsp;`userAgent`      | `string`     | The [user agent][user-agent-definition] string of the consumer's browser.                                                                                                                        |
 | └➔&nbsp;`language`       | `string`     | `nb-NO` , `sv-SE`  or  `en-US`                                                                                                                                                                   |
 | └➔&nbsp;`urls`           | `string`     | The URI to the  urls  resource where all URIs related to the payment can be retrieved.                                                                                                           |
 | └➔&nbsp;`payeeInfo`      | `string`     | The URI to the  payeeinfo  resource where the information about the payee of the payment can be retrieved.                                                                                       |
@@ -496,6 +510,9 @@ for the given operation.
 | `create-capture`         | Creates a `capture` transaction in order to charge the reserved funds from the consumer.                                  |
 | `create-cancellation`    | Creates a `cancellation` transaction that cancels a created, but not yet captured payment.                                |
 
+{% include iterator.html prev_href="seamless-view" prev_title="Back: Seamless View"
+next_href="after-payment" next_title="Next: After Payment" %}
+
 [abort]: /payments/invoice/other-features#abort
 [callback]: /payments/invoice/other-features#callback
 [cancel]: /payments/invoice/after-payment#cancellations
@@ -506,6 +523,7 @@ for the given operation.
 [financing-invoice-2-png]: /assets/screenshots/invoice/redirect-view/iframe-verify-data.png
 [no-png]: /assets/img/no.png
 [other-features]: /payments/invoice/other-features
+[payee-reference]: /payments/invoice/other-features#payee-info
 [recur]: /payments/invoice/other-features#recur
 [redirect]: /payments/invoice/redirect
 [se-png]: /assets/img/se.png

@@ -143,8 +143,8 @@ sequenceDiagram
 
 ## Swish m-commerce Redirect
 
-> Swish is an one-phase payment instrument supported by the major Swedish banks. In
-  the redirect m-commerce scenario, Swedbank Pay performs a payment that the
+> Swish is an one-phase payment instrument supported by the major Swedish banks.
+  In the redirect m-commerce scenario, Swedbank Pay performs a payment that the
   payer confirms directly through the Swish mobile app.
 
 ## Introduction

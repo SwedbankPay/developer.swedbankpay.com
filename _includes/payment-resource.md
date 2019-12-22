@@ -9,8 +9,8 @@ possible to perform in the current state of the payment.
 **Request**
 
 ```http
-GET /psp/{{payment-instrument}}/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/ HTTP/1.1
-Host: api.payex.com
+GET /psp/{{payment-instrument}}/payments/{{ page.paymentId }}/ HTTP/1.1
+Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -24,7 +24,7 @@ Content-Type: application/json
 
 {
     "payment": {
-        "id": "/psp/{{payment-instrument}}/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+        "id": "/psp/{{payment-instrument}}/payments/{{ page.paymentId }}",
         "number": 1234567890,
         "created": "2016-09-14T13:21:29.3182115Z",
         "updated": "2016-09-14T13:21:57.6627579Z",
@@ -42,52 +42,52 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",
         "prices": {
-            "id": "/psp/{{payment-instrument}}/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/prices"
+            "id": "/psp/{{payment-instrument}}/payments/{{ page.paymentId }}/prices"
         },
         "payeeInfo": {
-            "id": "/psp/{{payment-instrument}}/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeInfo"
+            "id": "/psp/{{payment-instrument}}/payments/{{ page.paymentId }}/payeeInfo"
         },
         "urls": {
-            "id": "/psp/{{payment-instrument}}/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/urls"
+            "id": "/psp/{{payment-instrument}}/payments/{{ page.paymentId }}/urls"
         },
         "transactions": {
-            "id": "/psp/{{payment-instrument}}/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions"
+            "id": "/psp/{{payment-instrument}}/payments/{{ page.paymentId }}/transactions"
         },
         "authorizations": {
-            "id": "/psp/{{payment-instrument}}/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations"
+            "id": "/psp/{{payment-instrument}}/payments/{{ page.paymentId }}/authorizations"
         },
         "captures": {
-            "id": "/psp/{{payment-instrument}}/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures"
+            "id": "/psp/{{payment-instrument}}/payments/{{ page.paymentId }}/captures"
         },
         "reversals": {
-            "id": "/psp/{{payment-instrument}}/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals"
+            "id": "/psp/{{payment-instrument}}/payments/{{ page.paymentId }}/reversals"
         },
         "cancellations": {
-            "id": "/psp/{{payment-instrument}}/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/cancellations"
+            "id": "/psp/{{payment-instrument}}/payments/{{ page.paymentId }}/cancellations"
         }
     },
     "operations": [
         {
             "method": "PATCH",
-            "href": "https://api.externalintegration.payex.com/psp/{{payment-instrument}}/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+            "href": "https://api.externalintegration.payex.com/psp/{{payment-instrument}}/payments/{{ page.paymentId }}",
             "rel": "update-payment-abort",
             "contentType": "application/json"
         },
         {
             "method": "GET",
-            "href": "https://ecom.externalintegration.payex.com/creditcardv2/core/scripts/client/px.creditcard.client.js?token=c5c29b7c0d45913a9fbca195056b47fdde0201cc6ad93c3634d7cd8dea361e1f&operation=authorize",
+            "href": "https://ecom.externalintegration.payex.com/{{payment-instrument}}/core/scripts/client/px.creditcard.client.js?token={{ page.transactionId }}&operation=authorize",
             "rel": "view-authorization",
             "contentType": "application/javascript"
         },
         {
             "method": "GET",
-            "href": "https://ecom.externalintegration.payex.com/creditcardv2/payments/authorize/c5c29b7c0d45913a9fbca195056b47fdde0201cc6ad93c3634d7cd8dea361e1f",
+            "href": "https://ecom.externalintegration.payex.com/{{payment-instrument}}/payments/authorize/{{ page.transactionId }}",
             "rel": "redirect-authorization",
             "contentType": "text/html"
         },
         {
             "method": "POST",
-            "href": "https://api.externalintegration.payex.com/psp/{{payment-instrument}}/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures",
+            "href": "https://api.externalintegration.payex.com/psp/{{payment-instrument}}/payments/{{ page.paymentId }}/captures",
             "rel": "create-capture",
             "contentType": "application/json"
         }
@@ -130,7 +130,7 @@ for the given operation.
 {:.table .table-striped}
 | Operation                | Description                                                                                                               |
 | :----------------------- | :------------------------------------------------------------------------------------------------------------------------ |
-| `update-payment-abort`   | [Aborts][abort] the payment order before any financial transactions are performed.                                        |
+| `update-payment-abort`   | `abort`s the payment order before any financial transactions are performed.                                               |
 | `redirect-authorization` | Contains the URI that is used to redirect the consumer to the Swedbank Pay Payments containing the card authorization UI. |
 | `view-authorization`     | Contains the JavaScript `href` that is used to embed  the card authorization UI directly on the webshop/merchant site     |
 | `create-capture`         | Creates a `capture` transaction in order to charge the reserved funds from the consumer.                                  |

@@ -202,7 +202,7 @@ contents.
 Request
 
 ```http
-GET /psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/urls/ HTTP/1.1
+GET /psp/paymentorders/{{ page.paymentOrderId }}/urls/ HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -216,10 +216,10 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "paymentorder": "/psp/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "paymentorder": "/psp/payments/{{ page.paymentOrderId }}",
     "urls": {
-        "id": "/psp/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/urls",
-        "hostUrls": [ "https://example.com", "http://test-dummy2.net" ],
+        "id": "/psp/payments/{{ page.paymentOrderId }}/urls",
+        "hostUrls": [ "https://example.com", "http://example.net" ],
         "completeUrl": "http://example.com/payment-complete",
         "cancelUrl": "http://example.com/payment-canceled",
         "paymentUrl": "http://example.com/perform-payment",
@@ -312,18 +312,18 @@ A list of possible operations and their explanation is given below.
 ```js
 {
     "paymentOrder": {
-        "id": "/psp/paymentorders/8bf85423-841d-4fb8-d754-08d6d398f0c5",
+        "id": "/psp/paymentorders/{{ page.paymentOrderId }}",
     }
     "operations": [
         {
             "method": "PATCH",
-            "href": "https://api.externalintegration.payex.com/psp/paymentorders/8bf85423-841d-4fb8-d754-08d6d398f0c5",
+            "href": "https://api.externalintegration.payex.com/psp/paymentorders/{{ page.paymentOrderId }}",
             "rel": "update-paymentorder-abort",
             "contentType": "application/json"
         },
         {
             "method": "PATCH",
-            "href": "https://api.externalintegration.payex.com/psp/paymentorders/8bf85423-841d-4fb8-d754-08d6d398f0c5",
+            "href": "https://api.externalintegration.payex.com/psp/paymentorders/{{ page.paymentOrderId }}",
             "rel": "update-paymentorder-updateorder",
             "contentType": "application/json"
         },
@@ -341,19 +341,19 @@ A list of possible operations and their explanation is given below.
         },
         {
             "method": "POST",
-            "href": "https://api.externalintegration.payex.com/psp/paymentorders/b80be381-b572-4f1e-9691-08d5dd095bc4/captures",
+            "href": "https://api.externalintegration.payex.com/psp/paymentorders/{{ page.paymentOrderId }}/captures",
             "rel": "create-paymentorder-capture",
             "contentType": "application/json"
         },
         {
             "method": "POST",
-            "href": "https://api.externalintegration.payex.com/psp/paymentorders/b80be381-b572-4f1e-9691-08d5dd095bc4/cancellations",
+            "href": "https://api.externalintegration.payex.com/psp/paymentorders/{{ page.paymentOrderId }}/cancellations",
             "rel": "create-paymentorder-cancel",
             "contentType": "application/json"
         },
         {
             "method": "POST",
-            "href": "https://api.externalintegration.payex.com/psp/paymentorders/b80be381-b572-4f1e-9691-08d5dd095bc4/reversals",
+            "href": "https://api.externalintegration.payex.com/psp/paymentorders/{{ page.paymentOrderId }}/reversals",
             "rel": "create-paymentorder-reversal",
             "contentType": "application/json"
         }
@@ -399,7 +399,7 @@ The `view-paymentorder` operation contains the URI of the JavaScript that needs 
     </head>
     <body>
         <div id="checkout"></div>
-        <script src="https://ecom.payex.com/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=38540e86bd78e885fba2ef054ef9792512b1c9c5975cbd6fd450ef9aa15b1844&culture=nb-NO"></script>
+        <script src="https://ecom.externalintegration.payex.com/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=38540e86bd78e885fba2ef054ef9792512b1c9c5975cbd6fd450ef9aa15b1844&culture=nb-NO"></script>
         <script language="javascript">
             payex.hostedView.paymentMenu({
                 container: 'checkout',
@@ -438,7 +438,7 @@ new amount is shown to the end customer.
 **Request**
 
 ```http
-PATCH /psp/paymentorders/b80be381-b572-4f1e-9691-08d5dd095bc4 HTTP/1.1
+PATCH /psp/paymentorders/{{ page.paymentOrderId }} HTTP/1.1
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -461,7 +461,7 @@ Content-Type: application/json
 
 {
     "paymentorder": {
-        "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
+        "id": "/psp/paymentorders/{{ page.paymentOrderId }}",
         "created": "2018-09-14T13:21:29.3182115Z",
         "updated": "2018-09-14T13:21:57.6627579Z",
         "operation": "Purchase",
@@ -476,19 +476,19 @@ Content-Type: application/json
         "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",
-        "urls" : { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/urls" },
-        "payeeInfo" : { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeinfo" },
-        "settings": { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/settings" },
-        "payers": { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/payers" },
-        "orderItems" : { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/orderItems" },
-        "metadata": { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/metadata" },
-        "payments": { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/payments" },
-        "currentPayment": { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/currentpayment" }
+        "urls" : { "id": "/psp/paymentorders/{{ page.paymentOrderId }}/urls" },
+        "payeeInfo" : { "id": "/psp/paymentorders/{{ page.paymentOrderId }}/payeeinfo" },
+        "settings": { "id": "/psp/paymentorders/{{ page.paymentOrderId }}/settings" },
+        "payers": { "id": "/psp/paymentorders/{{ page.paymentOrderId }}/payers" },
+        "orderItems" : { "id": "/psp/paymentorders/{{ page.paymentOrderId }}/orderItems" },
+        "metadata": { "id": "/psp/paymentorders/{{ page.paymentOrderId }}/metadata" },
+        "payments": { "id": "/psp/paymentorders/{{ page.paymentOrderId }}/payments" },
+        "currentPayment": { "id": "/psp/paymentorders/{{ page.paymentOrderId }}/currentpayment" }
     },
     "operations": [
         {
             "method": "PATCH",
-            "href": "https://api.externalintegration.payex.com/psp/paymentorders/479a7a2b-3b20-4302-fa84-08d676d15bc0",
+            "href": "https://api.externalintegration.payex.com/psp/paymentorders/{{ page.paymentOrderId }}",
             "rel": "update-paymentorder-abort",
             "contentType": "application/json"
         },
@@ -530,7 +530,7 @@ in the request body:
 **Request**
 
 ```http
-PATCH /psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c HTTP/1.1
+PATCH /psp/paymentorders/{{ page.paymentOrderId }} HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -553,7 +553,7 @@ Content-Type: application/json
 
 {
     "paymentorder": {
-        "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
+        "id": "/psp/paymentorders/{{ page.paymentOrderId }}",
         "created": "2018-09-14T13:21:29.3182115Z",
         "updated": "2018-09-14T13:21:57.6627579Z",
         "operation": "Purchase",
@@ -568,19 +568,19 @@ Content-Type: application/json
         "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",
-        "urls" : { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/urls" },
-        "payeeInfo" : { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeinfo" },
-        "settings": { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/settings" },
-        "payers": { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/payers" },
-        "orderItems" : { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/orderItems" },
-        "metadata": { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/metadata" },
-        "payments": { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/payments" },
-        "currentPayment": { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/currentpayment" }
+        "urls" : { "id": "/psp/paymentorders/{{ page.paymentOrderId }}/urls" },
+        "payeeInfo" : { "id": "/psp/paymentorders/{{ page.paymentOrderId }}/payeeinfo" },
+        "settings": { "id": "/psp/paymentorders/{{ page.paymentOrderId }}/settings" },
+        "payers": { "id": "/psp/paymentorders/{{ page.paymentOrderId }}/payers" },
+        "orderItems" : { "id": "/psp/paymentorders/{{ page.paymentOrderId }}/orderItems" },
+        "metadata": { "id": "/psp/paymentorders/{{ page.paymentOrderId }}/metadata" },
+        "payments": { "id": "/psp/paymentorders/{{ page.paymentOrderId }}/payments" },
+        "currentPayment": { "id": "/psp/paymentorders/{{ page.paymentOrderId }}/currentpayment" }
     },
     "operations": [
         {
             "method": "PATCH",
-            "href": "https://api.externalintegration.payex.com/psp/paymentorders/479a7a2b-3b20-4302-fa84-08d676d15bc0",
+            "href": "https://api.externalintegration.payex.com/psp/paymentorders/{{ page.paymentOrderId }}",
             "rel": "update-paymentorder-abort",
             "contentType": "application/json"
         },
@@ -671,7 +671,7 @@ Content-Type: application/json
 {
   "paymentorder": {
     "operation": "Recur",
-    "recurrenceToken": "5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "recurrenceToken": "{{ page.paymentOrderId }}",
     "currency": "SEK",
     "amount": 1000,
     "vatAmount": 250,
@@ -775,12 +775,12 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
-    "paymentorder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "paymentorder": "/psp/paymentorders/{{ page.paymentOrderId }}",
     "payments": {
-        "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/payments",
+        "id": "/psp/paymentorders/{{ page.paymentOrderId }}/payments",
         "paymentList" : [
             {
-                "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+                "id": "/psp/creditcard/payments/{{ page.paymentOrderId }}",
                 "instrument" : "CreditCard",
                 "created": "2016-09-14T13:21:29.3182115Z"
             },
@@ -814,7 +814,7 @@ payment order container.
 **Request**
 
 ```http
-GET /psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/currentpayment HTTP/1.1
+GET /psp/paymentorders/{{ page.paymentOrderId }}/currentpayment HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -828,11 +828,11 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "paymentorder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "paymentorder": "/psp/paymentorders/{{ page.paymentOrderId }}",
     "menuElementName": "creditcard",
     "payment": {
-        "recurrenceToken": "5adc265f-f87f-4313-577e-08d3dca1a26c",
-        "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+        "recurrenceToken": "{{ page.paymentOrderId }}",
+        "id": "/psp/creditcard/payments/{{ page.paymentOrderId }}",
         "number": 1234567890,
         "instrument": "CreditCard",
         "created": "2016-09-14T13:21:29.3182115Z",
@@ -849,17 +849,17 @@ Content-Type: application/json
         "payerReference": "AB1234",
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",
-        "prices": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/prices" },
-        "transactions": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions" },
-        "authorizations": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations" },
-        "captures": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures" },
-        "cancellations": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/cancellations" },
-        "reversals": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals" },
-        "verifications": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/verifications" },
-        "urls" : { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/urls" },
-        "payeeInfo" : { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeInfo" },
-        "metadata" : { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/metadata" },
-        "settings": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/settings" }
+        "prices": { "id": "/psp/creditcard/payments/{{ page.paymentOrderId }}/prices" },
+        "transactions": { "id": "/psp/creditcard/payments/{{ page.paymentOrderId }}/transactions" },
+        "authorizations": { "id": "/psp/creditcard/payments/{{ page.paymentOrderId }}/authorizations" },
+        "captures": { "id": "/psp/creditcard/payments/{{ page.paymentOrderId }}/captures" },
+        "cancellations": { "id": "/psp/creditcard/payments/{{ page.paymentOrderId }}/cancellations" },
+        "reversals": { "id": "/psp/creditcard/payments/{{ page.paymentOrderId }}/reversals" },
+        "verifications": { "id": "/psp/creditcard/payments/{{ page.paymentOrderId }}/verifications" },
+        "urls" : { "id": "/psp/creditcard/payments/{{ page.paymentOrderId }}/urls" },
+        "payeeInfo" : { "id": "/psp/creditcard/payments/{{ page.paymentOrderId }}/payeeInfo" },
+        "metadata" : { "id": "/psp/creditcard/payments/{{ page.paymentOrderId }}/metadata" },
+        "settings": { "id": "/psp/creditcard/payments/{{ page.paymentOrderId }}/settings" }
     },
     "operations": []
 }
@@ -893,7 +893,7 @@ Content-Type: application/json
 
 ### Prices Resource
 
-{% include prices.md hide-direct-debit=1 hide-mobile-pay=1 %}
+{% include prices.md %}
 
 ### Payer Resource
 
@@ -906,7 +906,7 @@ during login/checkin.
 **Request**
 
 ```http
-GET /psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/payers/ HTTP/1.1
+GET /psp/paymentorders/{{ page.paymentOrderId }}/payers/ HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -920,9 +920,9 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "paymentorder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "paymentorder": "/psp/paymentorders/{{ page.paymentOrderId }}",
     "payer" : {
-        "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/payer",
+        "id": "/psp/paymentorders/{{ page.paymentOrderId }}/payer",
         "reference": "reference to payer",
         "email": "email",
         "msisdn": "msisdn",
@@ -1119,7 +1119,7 @@ following event argument object:
 
 ```js
 {
-    "id": "/psp/creditcard/payments/653b1f5d-8e6c-4cce-d42d-08d58e414c69",
+    "id": "/psp/creditcard/payments/{{ page.paymentId }}",
     "instrument": "creditcard | vipps | swish | invoice",
 }
 ```
@@ -1141,7 +1141,7 @@ object:
 
 ```js
 {
-    "id": "/psp/creditcard/payments/653b1f5d-8e6c-4cce-d42d-08d58e414c69",
+    "id": "/psp/creditcard/payments/{{ page.paymentId }}",
     "redirectUrl": "https://en.wikipedia.org/wiki/Success"
 }
 ```
@@ -1163,7 +1163,7 @@ object:
 
 ```js
 {
-    "id": "/psp/creditcard/payments/653b1f5d-8e6c-4cce-d42d-08d58e414c69",
+    "id": "/psp/creditcard/payments/{{ page.paymentId }}",
     "redirectUrl": "https://en.wikipedia.org/wiki/Canceled"
 }
 ```
@@ -1185,7 +1185,7 @@ event argument object:
 
 ```js
 {
-    "id": "/psp/creditcard/payments/653b1f5d-8e6c-4cce-d42d-08d58e414c69",
+    "id": "/psp/creditcard/payments/{{ page.paymentId }}",
     "redirectUrl": "https://en.wikipedia.org/wiki/Failed"
 }
 ```
@@ -1332,7 +1332,7 @@ The structure of a problem message will look like this:
 
 ```js
 {
-    "type": "https://api.payex.com/psp/<error_type>",
+    "type": "https://api.payex.com/psp/errordetail/creditcard/inputerror",
     "title": "There was an input error",
     "detail": "Please correct the errors and retry the request",
     "instance": "9a20d737-670d-42bf-9a9a-d36736de8721",
@@ -1361,7 +1361,7 @@ The structure of a problem message will look like this:
 ### Common Problems
 
 All common problem types will have a URI in the format
-`https://api.payex.com/psp/<error-type>`.
+`https://api.payex.com/psp/errordetail/<payment-instrument>/<error-type>`.
 The **URI is an identifier** and is currently not possible to dereference,
 although that might be possible in the future.
 

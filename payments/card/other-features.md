@@ -338,7 +338,7 @@ Content-Type: application/json
             "contentType": "application/json"
         },
         {
-            "href": "https://ecom.payex.com/creditcard/payments/authorize/123456123412341234123456789012",
+            "href": "https://ecom.externalintegration.payex.com/creditcard/payments/authorize/123456123412341234123456789012",
             "rel": "redirect-authorization",
             "method": "GET",
             "contentType": "text/html"
@@ -641,7 +641,7 @@ Content-Type: application/json
             "contentType": "application/json"
         },
         {
-            "href": "https://ecom.payex.com/creditcard/payments/verification/123456123412341234123456789012",
+            "href": "https://ecom.externalintegration.payex.com/creditcard/payments/verification/123456123412341234123456789012",
             "rel": "redirect-verification",
             "method": "GET",
             "contentType": "application/json"
@@ -784,8 +784,6 @@ transaction made towards a payment, as previously described.
 
 {% include payment-link.md %}
 
-{% include subsite.md payment-instrument="card" %}
-
 ## PayeeReference
 
 {% include payee-info.md
@@ -823,7 +821,7 @@ All contract types will have the following URI in front of type:
 ### Acquirer and 3-D Secure Problem Types
 
 All acquirer error types will have the following URI in front of type:
-`https://api.payex.com/psp/errordetail/creditcard/<errorType>`
+`https://api.payex.com/psp/errordetail/creditcard/<error-type>`
 
 {:.table .table-striped}
 | Type                           | Status | Description                                                                                   |

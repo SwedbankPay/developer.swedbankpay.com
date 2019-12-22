@@ -7,7 +7,7 @@ a corporation etc) related to a specific payment.
 **Request**
 
 ```http
-GET /psp/{{ instrument }}/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeInfo HTTP/1.1
+GET /psp/{{ instrument }}/payments/{{ page.paymentId }}/payeeInfo HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -21,9 +21,9 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/{{ instrument }}/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "payment": "/psp/{{ instrument }}/payments/{{ page.paymentId }}",
     "payeeInfo": {
-        "id": "/psp/{{ instrument }}/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeInfo",
+        "id": "/psp/{{ instrument }}/payments/{{ page.paymentId }}/payeeInfo",
         "payeeId": "12345678-1234-1234-1234-123456789012",
         "payeeReference": "EN1234",
         "payeeName": "TestMerchant1",
@@ -34,15 +34,15 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property                    | Type         | Description                                                                                                                                                                                                                                                                |
-| :-------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `payment`                   | `string`     | The URI of the payment which the  `payeeinfo`  belongs to.                                                                                                                                                                                                                 |
-| `payeeInfo.id`              | `string`     | The URI of the current  `payeeinfo`  resource.                                                                                                                                                                                                                             |
+| Property                    | Type         | Description                                                                                                                                                                                                                                                                       |
+| :-------------------------- | :----------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `payment`                   | `string`     | The URI of the payment which the  `payeeinfo`  belongs to.                                                                                                                                                                                                                        |
+| `payeeInfo.id`              | `string`     | The URI of the current  `payeeinfo`  resource.                                                                                                                                                                                                                                    |
 | `payeeInfo.payeeId`         | `string`     | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay                                                                                                                                                                                              |
-| `payeeInfo.payeeReference`  | `string(50)` | A unique reference set by the merchant system. See below for details                                                                                                                                                                                                       |
+| `payeeInfo.payeeReference`  | `string(50)` | A unique reference set by the merchant system. See below for details                                                                                                                                                                                                              |
 | `payeeInfo.payeeName`       | `string`     | The payee name (like merchant name) that will be displayed to consumer when redirected to Swedbank Pay.                                                                                                                                                                           |
 | `payeeInfo.productCategory` | `string`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process. You therefore need to ensure that the value given here is valid in the settlement. |
-| `payeeInfo.orderReference`  | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                    |
+| `payeeInfo.orderReference`  | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                           |
 
 ### PayeeReference
 

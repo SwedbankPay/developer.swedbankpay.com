@@ -8,7 +8,7 @@ and `currentPayment`.
 **Request**
 
 ```http
-GET /psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/ HTTP/1.1
+GET /psp/paymentorders/{{ page.paymentOrderId }}/ HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -23,7 +23,7 @@ Content-Type: application/json
 
 {
     "paymentorder": {
-        "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
+        "id": "/psp/paymentorders/{{ page.paymentOrderId }}",
         "created": "2018-09-14T13:21:29.3182115Z",
         "updated": "2018-09-14T13:21:57.6627579Z",
         "operation": "Purchase",
@@ -38,19 +38,19 @@ Content-Type: application/json
         "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",
-        "urls" : { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/urls" },
-        "payeeInfo" : { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeinfo" },
-        "settings": { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/settings" },
-        "payers": { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/payers" },
-        "orderItems" : { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/orderItems" },
-        "metadata": { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/metadata" },
-        "payments": { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/payments" },
-        "currentPayment": { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/currentpayment" }
+        "urls" : { "id": "/psp/paymentorders/{{ page.paymentOrderId }}/urls" },
+        "payeeInfo" : { "id": "/psp/paymentorders/{{ page.paymentOrderId }}/payeeinfo" },
+        "settings": { "id": "/psp/paymentorders/{{ page.paymentOrderId }}/settings" },
+        "payers": { "id": "/psp/paymentorders/{{ page.paymentOrderId }}/payers" },
+        "orderItems" : { "id": "/psp/paymentorders/{{ page.paymentOrderId }}/orderItems" },
+        "metadata": { "id": "/psp/paymentorders/{{ page.paymentOrderId }}/metadata" },
+        "payments": { "id": "/psp/paymentorders/{{ page.paymentOrderId }}/payments" },
+        "currentPayment": { "id": "/psp/paymentorders/{{ page.paymentOrderId }}/currentpayment" }
     },
     "operations": [
         {
             "method": "PATCH",
-            "href": "https://api.externalintegration.payex.com/psp/paymentorders/479a7a2b-3b20-4302-fa84-08d676d15bc0",
+            "href": "https://api.externalintegration.payex.com/psp/paymentorders/{{ page.paymentOrderId }}",
             "rel": "update-paymentorder-abort",
             "contentType": "application/json"
         },

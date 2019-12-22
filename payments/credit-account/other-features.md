@@ -18,11 +18,9 @@ sidebar:
 
 {% include payment-link.md %}
 
-{% include subsite.md payment-instrument="credit-account" %}
-
 ### Prices
 
-{% include prices.md %}
+{% include prices.md payment-instrument="creditaccount" %}
 
 ## Problem messages
 
@@ -35,12 +33,12 @@ help narrow down the specifics of the problem.
 
 {% include payee-info.md %}
 
-{% include transactions-reference.md %}
+{% include transactions-reference.md payment-instrument="creditaccount" %}
 
 ## Error types from Swedbank Pay Invoice and third parties
 
 All invoice error types will have the following URI in front of type:
-`https://api.payex.com/psp/errordetail/invoice/<errorType>`
+`https://api.payex.com/psp/errordetail/invoice/<error-type>`
 
 {:.table .table-striped}
 | Type            | Status | Description                   |

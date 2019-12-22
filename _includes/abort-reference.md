@@ -1,14 +1,16 @@
-### Abort payment
+{% assign instrument = include.instrument | default: "selecting the payment instrument" %}
+
+## Abort
 
 To abort a payment, perform the `update-payment-abort` operation that is
 returned in the payment request.
 You need to include the following HTTP body:
 
-{:.table .table-striped}
+{:.code-header}
 **Request**
 
 ```http
-PATCH /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c HTTP/1.1
+PATCH /psp/{{instrument}}/payments/{{ page.paymentId }} HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -21,7 +23,7 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{:.code-header}
 **Response**
 
 ```http
@@ -30,32 +32,32 @@ Content-Type: application/json
 
 {
     "payment": {
-        "id": "/psp/creditcard/payments/e73da1da-1148-476c-b6bb-08d67623d21b",
+        "id": "/psp/{{instrument}}/payments/{{ page.paymentId }}",
         "number": 70100130293,
         "created": "2019-01-09T13:11:28.371179Z",
         "updated": "2019-01-09T13:11:46.5949967Z",
-        "instrument": "CreditCard",
+        "instrument": "{{ instrument | capitalize }}",
         "operation": "Purchase",
-        "intent": "AutoCapture",
+        "intent": "Authorization",
         "state": "Aborted",
-        "currency": "DKK",
+        "currency": "SEK",
         "prices": {
-            "id": "/psp/creditcard/payments/e73da1da-1148-476c-b6bb-08d67623d21b/prices"
+            "id": "/psp/{{instrument}}/payments/{{ page.paymentId }}/prices"
         },
         "amount": 0,
-        "description": "creditcard Test",
+        "description": "{{instrument}} Test",
         "payerReference": "100500",
         "initiatingSystemUserAgent": "PostmanRuntime/7.1.1",
         "userAgent": "Mozilla/5.0",
         "language": "nb-NO",
         "urls": {
-            "id": "/psp/creditcard/payments/e73da1da-1148-476c-b6bb-08d67623d21b/urls"
+            "id": "/psp/{{instrument}}/payments/{{ page.paymentId }}/urls"
         },
         "payeeInfo": {
-            "id": "/psp/creditcard/payments/e73da1da-1148-476c-b6bb-08d67623d21b/payeeinfo"
+            "id": "/psp/{{instrument}}/payments/{{ page.paymentId }}/payeeinfo"
         },
         "metadata": {
-            "id": "/psp/creditcard/payments/e73da1da-1148-476c-b6bb-08d67623d21b/metadata"
+            "id": "/psp/{{instrument}}/payments/{{ page.paymentId }}/metadata"
         }
     },
     "operations": []

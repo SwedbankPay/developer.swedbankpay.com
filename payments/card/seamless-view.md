@@ -187,20 +187,20 @@ Content-Type: application/json
             "orderReference": "or123",
         },
         "riskIndicator": {
-            "deliveryEmailAddress": "string",
+            "deliveryEmailAddress": "test@example.com",
             "deliveryTimeFrameindicator": "01",
-            "preOrderDate": "YYYYMMDD",
+            "preOrderDate": "19801231",
             "preOrderPurchaseIndicator": "01",
             "shipIndicator": "01",
             "giftCardPurchase": false,
             "reOrderPurchaseIndicator": "01",
             "pickUpAddress": {
-                "name": "companyname",
-                "streetAddress": "string",
-                "coAddress": "string",
-                "city": "string",
-                "zipCode": "string",
-                "countryCode": "string"
+                "name": "Leo",
+                "streetAddress": "Gata 535",
+                "coAddress": "street 55",
+                "city": "Stockholm",
+                "zipCode": "55560",
+                "countryCode": "SE"
             }
         }
     },
@@ -309,13 +309,13 @@ Content-Type: application/json
     },
     "operations": [
       {
-        "href": "https://api.payex.com/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+        "href": "https://api.externalintegration.payex.com/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
         "rel": "update-payment-abort",
         "method": "PATCH",
         "contentType": "application/json"
       },
       {
-        "href": "https://ecom.payex.com/creditcard/payments/authorize/123456123412341234123456789012",
+        "href": "https://ecom.externalintegration.payex.com/creditcard/payments/authorize/123456123412341234123456789012",
         "rel": "redirect-authorization",
         "method": "GET",
         "contentType": "text/html"

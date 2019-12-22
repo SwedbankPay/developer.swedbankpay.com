@@ -13,18 +13,18 @@ is given below.
 ```js
 {
     "paymentOrder": {
-        "id": "/psp/paymentorders/8bf85423-841d-4fb8-d754-08d6d398f0c5",
+        "id": "/psp/paymentorders/{{ page.paymentOrderId }}",
     }
     "operations": [
         {
             "method": "PATCH",
-            "href": "https://api.externalintegration.payex.com/psp/paymentorders/8bf85423-841d-4fb8-d754-08d6d398f0c5",
+            "href": "https://api.externalintegration.payex.com/psp/paymentorders/{{ page.paymentOrderId }}",
             "rel": "update-paymentorder-abort",
             "contentType": "application/json"
         },
         {
             "method": "PATCH",
-            "href": "https://api.externalintegration.payex.com/psp/paymentorders/8bf85423-841d-4fb8-d754-08d6d398f0c5",
+            "href": "https://api.externalintegration.payex.com/psp/paymentorders/{{ page.paymentOrderId }}",
             "rel": "update-paymentorder-updateorder",
             "contentType": "application/json"
         },
@@ -42,19 +42,19 @@ is given below.
         },
         {
             "method": "POST",
-            "href": "https://api.externalintegration.payex.com/psp/paymentorders/b80be381-b572-4f1e-9691-08d5dd095bc4/captures",
+            "href": "https://api.externalintegration.payex.com/psp/paymentorders/{{ page.paymentOrderId }}/captures",
             "rel": "create-paymentorder-capture",
             "contentType": "application/json"
         },
         {
             "method": "POST",
-            "href": "https://api.externalintegration.payex.com/psp/paymentorders/b80be381-b572-4f1e-9691-08d5dd095bc4/cancellations",
+            "href": "https://api.externalintegration.payex.com/psp/paymentorders/{{ page.paymentOrderId }}/cancellations",
             "rel": "create-paymentorder-cancel",
             "contentType": "application/json"
         },
         {
             "method": "POST",
-            "href": "https://api.externalintegration.payex.com/psp/paymentorders/b80be381-b572-4f1e-9691-08d5dd095bc4/reversals",
+            "href": "https://api.externalintegration.payex.com/psp/paymentorders/{{ page.paymentOrderId }}/reversals",
             "rel": "create-paymentorder-reversal",
             "contentType": "application/json"
         }
@@ -78,15 +78,15 @@ of the `rel` and the request that will be sent in the HTTP body of the request
 for the given operation.
 
 {:.table .table-striped}
-| Operation                          | Description                                                                                                                                                                                                                                                                    |
-| :--------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `update-paymentorder-abort`        | [Aborts][payment-order-abort] the payment order before any financial transactions are performed.                                                                                                                                                                               |
-| `update-paymentorder-updateorder`  | [Updates the order][payment-order-update] with a change in the `amount` and/or `vatAmount`.                                                                                                                                                                                    |
-| `redirect-paymentorder`            | Contains the URI that is used to redirect the consumer to the Swedbank Pay Payments containing the Payment Menu.                                                                                                                                                               |
-| `view-paymentorder`                | Contains the JavaScript `href` that is used to embed the Payment Menu UI directly on the webshop/merchant site.                                                                                                                                                                |
-| `create-paymentorder-capture`      | The second part of a two-phase transaction where the authorized amount is sent from the payer to the payee. It is possible to do a part-capture on a subset of the authorized amount. Several captures on the same payment are possible, up to the total authorization amount. |
-| `create-paymentorder-cancel` | Used to cancel authorized and not yet captured transactions. If a cancellation is performed after doing a part-capture, it will only affect the not yet captured authorization amount.                                                                                         |
-| `create-paymentorder-reversal`     | Used to reverse a payment. It is only possible to reverse a payment that has been captured and not yet reversed.                                                                                                                                                               |
+| Operation                         | Description                                                                                                                                                                                                                                                                    |
+| :-------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `update-paymentorder-abort`       | [Aborts][payment-order-abort] the payment order before any financial transactions are performed.                                                                                                                                                                               |
+| `update-paymentorder-updateorder` | [Updates the order][payment-order-update] with a change in the `amount` and/or `vatAmount`.                                                                                                                                                                                    |
+| `redirect-paymentorder`           | Contains the URI that is used to redirect the consumer to the Swedbank Pay Payments containing the Payment Menu.                                                                                                                                                               |
+| `view-paymentorder`               | Contains the JavaScript `href` that is used to embed the Payment Menu UI directly on the webshop/merchant site.                                                                                                                                                                |
+| `create-paymentorder-capture`     | The second part of a two-phase transaction where the authorized amount is sent from the payer to the payee. It is possible to do a part-capture on a subset of the authorized amount. Several captures on the same payment are possible, up to the total authorization amount. |
+| `create-paymentorder-cancel`      | Used to cancel authorized and not yet captured transactions. If a cancellation is performed after doing a part-capture, it will only affect the not yet captured authorization amount.                                                                                         |
+| `create-paymentorder-reversal`    | Used to reverse a payment. It is only possible to reverse a payment that has been captured and not yet reversed.                                                                                                                                                               |
 
 #### View Payment Order
 
@@ -102,7 +102,7 @@ JavaScript or server-side in HTML as shown below.
     </head>
     <body>
         <div id="checkout"></div>
-        <script src="https://ecom.payex.com/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=38540e86bd78e885fba2ef054ef9792512b1c9c5975cbd6fd450ef9aa15b1844&culture=nb-NO"></script>
+        <script src="https://ecom.externalintegration.payex.com/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=38540e86bd78e885fba2ef054ef9792512b1c9c5975cbd6fd450ef9aa15b1844&culture=nb-NO"></script>
         <script language="javascript">
             payex.hostedView.paymentMenu({
                 container: 'checkout',
@@ -142,7 +142,7 @@ so the new amount is shown to the end customer.
 **Request**
 
 ```http
-PATCH /psp/paymentorders/b80be381-b572-4f1e-9691-08d5dd095bc4 HTTP/1.1
+PATCH /psp/paymentorders/{{ page.paymentOrderId }} HTTP/1.1
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -164,7 +164,7 @@ Content-Type: application/json
 
 {
     "paymentorder": {
-        "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
+        "id": "/psp/paymentorders/{{ page.paymentOrderId }}",
         "created": "2018-09-14T13:21:29.3182115Z",
         "updated": "2018-09-14T13:21:57.6627579Z",
         "operation": "Purchase",
@@ -179,19 +179,19 @@ Content-Type: application/json
         "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",
-        "urls" : { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/urls" },
-        "payeeInfo" : { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeinfo" },
-        "settings": { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/settings" },
-        "payers": { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/payers" },
-        "orderItems" : { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/orderItems" },
-        "metadata": { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/metadata" },
-        "payments": { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/payments" },
-        "currentPayment": { "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/currentpayment" }
+        "urls" : { "id": "/psp/paymentorders/{{ page.paymentOrderId }}/urls" },
+        "payeeInfo" : { "id": "/psp/paymentorders/{{ page.paymentOrderId }}/payeeinfo" },
+        "settings": { "id": "/psp/paymentorders/{{ page.paymentOrderId }}/settings" },
+        "payers": { "id": "/psp/paymentorders/{{ page.paymentOrderId }}/payers" },
+        "orderItems" : { "id": "/psp/paymentorders/{{ page.paymentOrderId }}/orderItems" },
+        "metadata": { "id": "/psp/paymentorders/{{ page.paymentOrderId }}/metadata" },
+        "payments": { "id": "/psp/paymentorders/{{ page.paymentOrderId }}/payments" },
+        "currentPayment": { "id": "/psp/paymentorders/{{ page.paymentOrderId }}/currentpayment" }
     },
     "operations": [
         {
             "method": "PATCH",
-            "href": "https://api.externalintegration.payex.com/psp/paymentorders/479a7a2b-3b20-4302-fa84-08d676d15bc0",
+            "href": "https://api.externalintegration.payex.com/psp/paymentorders/{{ page.paymentOrderId }}",
             "rel": "update-paymentorder-abort",
             "contentType": "application/json"
         },
@@ -256,7 +256,7 @@ See the abbreviated request and response below:
 **Request**
 
 ```http
-POST /psp/paymentorders/b80be381-b572-4f1e-9691-08d5dd095bc4/captures HTTP/1.1
+POST /psp/paymentorders/{{ page.paymentOrderId }}/captures HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -322,11 +322,11 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/creditcard/payments/d34bceb7-2b19-488a-cbf2-08d5df73b251",
+    "payment": "/psp/creditcard/payments/{{ page.paymentId }}",
     "capture": {
-        "id": "/psp/creditcard/payments/d34bceb7-2b19-488a-cbf2-08d5df73b251/captures/af43be30-8dfa-4458-2222-08d5df73b9f1",
+        "id": "/psp/creditcard/payments/{{ page.paymentId }}/captures/{{ page.transactionId }}",
         "transaction": {
-            "id": "/psp/creditcard/payments/d34bceb7-2b19-488a-cbf2-08d5df73b251/transactions/af43be30-8dfa-4458-2222-08d5df73b9f1",
+            "id": "/psp/creditcard/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
             "type": "Capture",
             "state": "Completed",
             "amount": 15610,
@@ -367,7 +367,7 @@ is returned in the payment order response. You need to include the following
 **Request**
 
 ```http
-PATCH /psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c HTTP/1.1
+PATCH /psp/paymentorders/{{ page.paymentOrderId }} HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -392,7 +392,7 @@ Content-Type: application/json
 
 {
     "payment": {
-        "id": "/psp/creditcard/payments/e73da1da-1148-476c-b6bb-08d67623d21b",
+        "id": "/psp/creditcard/payments/{{ page.paymentId }}",
         "number": 70100130293,
         "created": "2019-01-09T13:11:28.371179Z",
         "updated": "2019-01-09T13:11:46.5949967Z",
@@ -402,7 +402,7 @@ Content-Type: application/json
         "state": "Aborted",
         "currency": "DKK",
         "prices": {
-            "id": "/psp/creditcard/payments/e73da1da-1148-476c-b6bb-08d67623d21b/prices"
+            "id": "/psp/creditcard/payments/{{ page.paymentId }}/prices"
         },
         "amount": 0,
         "description": "creditcard Test",
@@ -411,13 +411,13 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0",
         "language": "nb-NO",
         "urls": {
-            "id": "/psp/creditcard/payments/e73da1da-1148-476c-b6bb-08d67623d21b/urls"
+            "id": "/psp/creditcard/payments/{{ page.paymentId }}/urls"
         },
         "payeeInfo": {
-            "id": "/psp/creditcard/payments/e73da1da-1148-476c-b6bb-08d67623d21b/payeeinfo"
+            "id": "/psp/creditcard/payments/{{ page.paymentId }}/payeeinfo"
         },
         "metadata": {
-            "id": "/psp/creditcard/payments/e73da1da-1148-476c-b6bb-08d67623d21b/metadata"
+            "id": "/psp/creditcard/payments/{{ page.paymentId }}/metadata"
         }
     },
     "operations": []
@@ -435,7 +435,7 @@ See the abbreviated request and response below:
 **Request**
 
 ```http
-POST /psp/paymentorders/b80be381-b572-4f1e-9691-08d5dd095bc4/cancellations HTTP/1.1
+POST /psp/paymentorders/{{ page.paymentOrderId }}/cancellations HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -465,11 +465,11 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/creditcard/payments/d34bceb7-2b19-488a-cbf2-08d5df73b251",
+    "payment": "/psp/creditcard/payments/{{ page.paymentId }}",
     "cancellation": {
-        "id": "/psp/creditcard/payments/d34bceb7-2b19-488a-cbf2-08d5df73b251/cancellations/af43be30-8dfa-4458-2222-08d5df73b9f1",
+        "id": "/psp/creditcard/payments/{{ page.paymentId }}/cancellations/{{ page.transactionId }}",
         "transaction": {
-            "id": "/psp/creditcard/payments/d34bceb7-2b19-488a-cbf2-08d5df73b251/transactions/af43be30-8dfa-4458-2222-08d5df73b9f1",
+            "id": "/psp/creditcard/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
             "type": "Cancel",
             "state": "Completed",
             "amount": 5610,
@@ -498,7 +498,7 @@ If we want to reverse a previously captured amount, we need to perform
 **Request**
 
 ```http
-POST /psp/paymentorders/b80be381-b572-4f1e-9691-08d5dd095bc4/reversals HTTP/1.1
+POST /psp/paymentorders/{{ page.paymentOrderId }}/reversals HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -532,11 +532,11 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/creditcard/payments/d34bceb7-2b19-488a-cbf2-08d5df73b251",
+    "payment": "/psp/creditcard/payments/{{ page.paymentId }}",
     "reversals": {
-        "id": "/psp/creditcard/payments/d34bceb7-2b19-488a-cbf2-08d5df73b251/cancellations/af43be30-8dfa-4458-2222-08d5df73b9f1",
+        "id": "/psp/creditcard/payments/{{ page.paymentId }}/cancellations/{{ page.transactionId }}",
         "transaction": {
-            "id": "/psp/creditcard/payments/d34bceb7-2b19-488a-cbf2-08d5df73b251/transactions/af43be30-8dfa-4458-2222-08d5df73b9f1",
+            "id": "/psp/creditcard/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
             "type": "Reversal",
             "state": "Completed",
             "amount": 5610,

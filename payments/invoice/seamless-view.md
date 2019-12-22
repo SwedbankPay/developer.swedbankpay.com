@@ -6,12 +6,12 @@ sidebar:
     items:
     - url: /payments/invoice
       title: Introduction
-    - url: /payments/invoice/direct 
-      title: Direct
     - url: /payments/invoice/redirect
       title: Redirect
     - url: /payments/invoice/seamless-view
       title: Seamless View
+    - url: /payments/invoice/direct
+      title: Direct
     - url: /payments/invoice/after-payment
       title: After Payment
     - url: /payments/invoice/other-features
@@ -120,7 +120,7 @@ invoice information. This will generate a payment object with a unique
 Different countries have different values for the properties. The table below
 showcase the values for the respective countries:
 
-**POST Request Options**
+#### POST Request Options
 
 {:.table .table-striped}
 |               | Norway ![Norwegian flag][no-png] | FInland ![Finish flag][fi-png] | Sweden ![Swedish flag][se-png] |
@@ -190,7 +190,7 @@ Content-Type: application/json
             "termsOfServiceUrl": "http://example.com/payment-terms.pdf"
         },
         "payeeInfo": {
-            "payeeId": "12345678-1234-1234-1234-123456789012",
+            "payeeId": "{{ page.merchantId }}",
             "payeeReference": "CD1234",
             "payeeName": "Merchant1",
             "productCategory": "A123"
@@ -242,7 +242,7 @@ Content-Type: application/json
 
 {
     "payment": {
-        "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+        "id": "/psp/invoice/payments/{{ page.paymentId }}",
         "number": 1234567890,
         "instrument": "Invoice",
         "created": "YYYY-MM-DDThh:mm:ssZ",
@@ -252,7 +252,7 @@ Content-Type: application/json
         "state": "Ready",
         "currency": "SEK",
         "prices": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/prices"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/prices"
         },
         "amount": 0,
         "description": "Test Purchase",
@@ -260,43 +260,43 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "urls": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/urls"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/urls"
         },
         "payeeInfo": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeinfo"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/payeeinfo"
         },
         "metadata": {
-            "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/metadata"
+            "id": "/psp/invoice/payments/{{ page.paymentId }}/metadata"
         }
     },
     "operations": [
         {
             "method": "POST",
-            "href": "https://api.stage.payex.com/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/approvedlegaladdress",
+            "href": "https://api.externalintegration.payex.com/psp/invoice/payments/{{ page.paymentId }}/approvedlegaladdress",
             "rel": "create-approved-legal-address",
             "contentType": "application/json"
         },
         {
             "method": "POST",
-            "href": "https://api.stage.payex.com/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations",
+            "href": "https://api.externalintegration.payex.com/psp/invoice/payments/{{ page.paymentId }}/authorizations",
             "rel": "create-authorization",
             "contentType": "application/json"
         },
         {
             "method": "PATCH",
-            "href": "https://api.stage.payex.com/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+            "href": "https://api.externalintegration.payex.com/psp/invoice/payments/{{ page.paymentId }}",
             "rel": "update-payment-abort",
             "contentType": "application/json"
         },
         {
             "method": "GET",
-            "href": "https://ecom.stage.payex.com/invoice/payments/authorize/ce98e5fa397de21b64cb4aa932aad81cf2ef18736cb9d975c82466a495cbe3bc",
+            "href": "https://ecom.externalintegration.payex.com/invoice/payments/authorize/ce98e5fa397de21b64cb4aa932aad81cf2ef18736cb9d975c82466a495cbe3bc",
             "rel": "redirect-authorization",
             "contentType": "text/html"
         },
         {
             "method": "GET",
-            "href": "https://ecom.stage.payex.com/invoice/core/scripts/client/px.invoice.client.js?<token>&operation=authorize",
+            "href": "https://ecom.externalintegration.payex.com/invoice/core/scripts/client/px.invoice.client.js?<token>&operation=authorize",
             "rel": "view-authorization",
             "contentType": "application/javascript"
         }
@@ -360,8 +360,8 @@ embedded on your website.
 </script>
 ```
 
-{% include iterator.html prev_href="./" prev_title="Back: Introduction"
-next_href="after-payment" next_title="Next: After Payment" %}
+{% include iterator.html prev_href="redirect" prev_title="Back: Redirect"
+next_href="direct" next_title="Next: Direct" %}
 
 [after-payment]: /payments/invoice/after-payment
 [authorize]: /payments/invoice/other-features#authorizations
