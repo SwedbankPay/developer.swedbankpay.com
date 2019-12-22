@@ -529,7 +529,7 @@ Content-Type: application/json
 The `authorization` resource contains information about an authorization
 transaction made towards a payment, as previously described.
 
-{% include transactions-reference.md %}
+{% include transactions-reference.md payment-instrument="invoice" %}
 
 {% include callback-reference.md %}
 

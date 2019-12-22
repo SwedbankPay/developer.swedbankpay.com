@@ -178,7 +178,7 @@ Content-Type: application/json
 
 #### Transaction
 
-{% include transactions-reference.md %}
+{% include transactions-reference.md payment-instrument="swish" %}
 
 {% include callback-reference.md %}
 

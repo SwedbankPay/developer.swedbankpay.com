@@ -36,7 +36,7 @@ sidebar:
 
 {% include payee-info.md %}
 
-{% include transactions-reference.md %}
+{% include transactions-reference.md payment-instrument="vipps" %}
 
 {% include callback-reference.md %}
 

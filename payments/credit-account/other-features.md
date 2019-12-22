@@ -33,7 +33,7 @@ help narrow down the specifics of the problem.
 
 {% include payee-info.md %}
 
-{% include transactions-reference.md %}
+{% include transactions-reference.md payment-instrument="creditaccount" %}
 
 ## Error types from Swedbank Pay Invoice and third parties
 

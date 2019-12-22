@@ -22,7 +22,7 @@ sidebar:
 
 {% include payment-link.md %}
 
-{% include transactions-reference.md %}
+{% include transactions-reference.md payment-instrument="directdebit" %}
 
 {% include abort-reference.md %}
 
