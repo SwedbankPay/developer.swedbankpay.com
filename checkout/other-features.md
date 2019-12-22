@@ -1332,7 +1332,7 @@ The structure of a problem message will look like this:
 
 ```js
 {
-    "type": "https://api.payex.com/psp/creditcard/inputerror",
+    "type": "https://api.payex.com/psp/errordetail/creditcard/inputerror",
     "title": "There was an input error",
     "detail": "Please correct the errors and retry the request",
     "instance": "9a20d737-670d-42bf-9a9a-d36736de8721",
@@ -1361,7 +1361,7 @@ The structure of a problem message will look like this:
 ### Common Problems
 
 All common problem types will have a URI in the format
-`https://api.payex.com/psp/<error-type>`.
+`https://api.payex.com/psp/errordetail/<payment-instrument>/<error-type>`.
 The **URI is an identifier** and is currently not possible to dereference,
 although that might be possible in the future.
 

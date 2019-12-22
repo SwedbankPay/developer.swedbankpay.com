@@ -557,7 +557,7 @@ often help narrow down the specifics of the problem.
 ### Error types from Swedbank Pay Invoice and third parties
 
 All invoice error types will have the following URI in front of type:
-`https://api.externalintegration.payex.com/psp/errordetail/invoice/<errorType>`
+`https://api.payex.com/psp/errordetail/invoice/<error-type>`
 
 {:.table .table-striped}
 | Type            | Status | Description                   |

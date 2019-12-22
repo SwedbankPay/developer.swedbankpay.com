@@ -821,7 +821,7 @@ All contract types will have the following URI in front of type:
 ### Acquirer and 3-D Secure Problem Types
 
 All acquirer error types will have the following URI in front of type:
-`https://api.externalintegration.payex.com/psp/errordetail/creditcard/<errorType>`
+`https://api.payex.com/psp/errordetail/creditcard/<error-type>`
 
 {:.table .table-striped}
 | Type                           | Status | Description                                                                                   |
