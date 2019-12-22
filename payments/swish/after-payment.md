@@ -18,153 +18,12 @@ sidebar:
 
 {% include alert-development-section.md %}
 
-## Payment Resource
+## Operations
 
-The `payment` resource and all general sub-resources can be found in the
-[core payment resources][core-payment-resources] section.
-
-### Create Payment
-
-To create a Swish payment, you perform an HTTP `POST` against the
-`/psp/swish/payments` resource. Please read the [general
-information][general-http-info] on how to compose a valid HTTP request before
-proceeding.
-
-An example of a payment creation request is provided below. Each individual
-Property of the JSON document is described in the following section. Use the
-[expand][technical-reference-expand] request parameter to get a response that
-includes one or more expanded sub-resources inlined.
-
-{:.code-header}
-**Request**
-
-```http
-POST /psp/swish/payments HTTP/1.1
-Host: api.externalintegration.payex.com
-Authorization: Bearer <AccessToken>
-Content-Type: application/json
-
-{
-    "payment": {
-        "operation": "Purchase",
-        "intent": "Sale",
-        "currency": "SEK",
-        "prices": [{
-            "type": "Swish",
-            "amount": 1500,
-            "vatAmount": 0
-        }],
-        "description": "Test Purchase",
-        "payerReference": "AB1234",
-        "userAgent": "Mozilla/5.0...",
-        "language": "nb-NO",
-        "urls": {
-            "hostUrls": ["https://example.com", "https://example.net"],
-            "completeUrl": "https://example.com/payment-completed",
-            "cancelUrl": "https://example.com/payment-canceled",
-            "callbackUrl": "https://example.com/payment-callback",
-            "logoUrl": "https://example.com/logo.png",
-            "termsOfServiceUrl": "https://example.com/terms.pdf"
-        },
-        "payeeInfo": {
-            "payeeId": "bbb33dc5-f44e-4af6-afc0-27fb5fa2f63a",
-            "payeeReference": "ref-123456",
-            "payeeName": "Merchant1",
-            "productCategory": "A123",
-            "orderReference": "or-123456",
-            "subsite": "MySubsite"
-        },
-        "prefillInfo": {
-            "msisdn": "+46xxxxxxxxx"
-        },
-        "swish": {
-            "ecomOnlyEnabled": false
-        }
-    }
-}
-```
-
-{:.table .table-striped}
-| Required | Property                            | Type         | Description                                                                                                                                                                                                 |
-| :------: | :---------------------------------- | :----------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|    ✔︎    | `payment`                           | `object`     | The `payment`object.                                                                                                                                                                                        |
-|    ✔︎    | └➔&nbsp;`operation`                 | `string`     | `Purchase`                                                                                                                                                                                                  |
-|    ✔︎    | └➔&nbsp;`intent`                    | `string`     | `Sale`                                                                                                                                                                                                      |
-|    ✔︎    | └➔&nbsp;`currency`                  | `string`     | `SEK`                                                                                                                                                                                                       |
-|    ✔︎    | └➔&nbsp;`prices.type`               | `string`     | `Swish`                                                                                                                                                                                                     |
-|    ✔︎    | └➔&nbsp;`prices.amount`             | `integer`    | Amount is entered in the lowest momentary units of the selected currency. E.g.`10000`=`100.00 SEK``5000`=`50.00 SEK`                                                                                        |
-|    ✔︎    | └➔&nbsp;`prices.vatAmount`          | `integer`    | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                          |
-|    ✔︎    | └➔&nbsp;`description`               | `string(40)` | A textual description max 40 characters of the purchase.                                                                                                                                                    |
-|          | └➔&nbsp;`payerReference`            | `string`     | The reference to the payer (consumer/end-user) from the merchant system, like mobile number, customer number etc.                                                                                           |
-|    ✔︎    | └➔&nbsp;`userAgent`                 | `string`     | The user agent reference of the consumer's browser - [see user agent definition][user-agent]                                                                                                                |
-|    ✔︎    | └➔&nbsp;`language`                  | `string`     | nb-NO, sv-SE or en-US.                                                                                                                                                                                      |
-|    ✔︎    | └➔&nbsp;`urls.hostUrls`             | `array`      | The array of URIs valid for embedding of Swedbank Pay Hosted Views.                                                                                                                                         |
-|    ✔︎    | └➔&nbsp;`urls.completeUrl`          | `string`     | The URI that Swedbank Pay will redirect back to when the payment page is completed.                                                                                                                         |
-|    ✔︎    | └➔&nbsp;`urls.cancelUrl`            | `string`     | The URI that Swedbank Pay will redirect back to when the user presses the cancel button in the payment page.                                                                                                |
-|          | └➔&nbsp;`urls.callbackUrl`          | `string`     | The URI that Swedbank Pay will perform an HTTP POST against every time a transaction is created on the payment. See [callback][technical-reference-callback] for details.                                   |
-|          | └➔&nbsp;`urls.logoUrl`              | `string`     | The URI that will be used for showing the customer logo. Must be a picture with at most 50px height and 400px width. Require https.                                                                         |
-|          | └➔&nbsp;`urls.termsOfServiceUrl`    | `string`     | A URI that contains your terms and conditions for the payment, to be linked on the payment page. Require https.                                                                                             |
-|    ✔︎    | └➔&nbsp;`payeeInfo.payeeId`         | `string`     | This is the unique id that identifies this payee (like merchant) set by PayEx.                                                                                                                              |
-|    ✔︎    | └➔&nbsp;`payeeInfo.payeeReference`  | `string(35)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][technical-reference-payeeReference] for details. |
-|          | └➔&nbsp;`payeeInfo.payeeName`       | `string`     | The payee name (like merchant name) that will be displayed to consumer when redirected to PayEx.                                                                                                            |
-|          | └➔&nbsp;`payeeInfo.productCategory` | `string`     | A product category or number sent in from the payee/merchant. This is not validated by PayEx, but will be passed through the payment process and may be used in the settlement process.                     |
-|          | └➔&nbsp;`payeeInfo.orderReference`  | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                     |
-|          | └➔&nbsp;`payeeInfo.subsite`         | `string(40)` | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.                                                 |
-|          | └➔&nbsp;`prefillInfo.msisdn`        | `string`     | Number will be prefilled on payment page, if valid.                                                                                                                                                         |
-|          | └➔&nbsp;`swish.ecomOnlyEnabled`     | `boolean`    | If true you trigger the redirect payment scenario by default.                                                                                                                                               |
-
-{:.code-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "payment": {
-        "id": "/psp/swish/payments/20dfbcb9-587a-4ce9-e63e-08d519f1802f",
-        "number": 992308,
-        "created": "2017-10-23T08:38:57.2248733Z",
-        "instrument": "Swish",
-        "operation": "Purchase",
-        "intent": "Sale",
-        "state": "Ready",
-        "currency": "SEK",
-        "amount": 0,
-        "description": "Test Purchase",
-        "payerReference": "AB1234",
-        "initiatingSystemUserAgent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36",
-        "userAgent": "Mozilla/5.0...",
-        "language": "nb-NO",
-        "urls": {
-            "id": "/psp/swish/payments/20dfbcb9-587a-4ce9-e63e-08d519f1802f/urls"
-    },
-        "payeeInfo": {
-            "id": "/psp/swish/payments/20dfbcb9-587a-4ce9-e63e-08d519f1802f/payeeinfo"
-        }
-    },
-    "operations": [
-        {
-            "method": "PATCH",
-            "href": "http://localhost:18496/psp/swish/payments/20dfbcb9-587a-4ce9-e63e-08d519f1802f",
-            "rel": "update-payment-abort"
-        },
-        {
-            "method": "POST",
-            "href": "http://localhost:18496/psp/swish/payments/20dfbcb9-587a-4ce9-e63e-08d519f1802f/sales",
-            "rel": "create-sale"
-        }
-
-    ]
-}
-```
-
-### Operations
-
-A payment resource has a set of operations that can be performed on it,
-from its creation to its completion.
-The operations available at any given time vary between payment instruments and
-depends on the current state of the payment resource.
+When a payment resource is created and during its lifetime, it will have a set
+of operations that can be performed on it.
+Which operations are available will vary depending on the state of the payment
+resource, what the access token is authorized to do, etc.
 A list of possible operations for Swish Payments and their explanation
 is given below.
 
@@ -215,27 +74,27 @@ the `rel` and the request that will be sent in the HTTP body of the
 request for the given operation.
 
 {:.table .table-striped}
-| Operation              | Description                                                                                                                                                |
-| :--------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `update-payment-abort` | [Aborts][technical-reference-abort] the payment before any financial transactions are performed.                                                           |
-| `create-sale`          | Creates a `sales` transaction without redirection to a payment page (**Direct scenario**). `Msisdn` is required in e-commerce scenario.                    |
-| `redirect-sale`        | Contains the redirect-URI that redirects the consumer to a Swedbank Pay hosted payment page prior to creating a sales transaction (**Redirect scenario**). |
-| `view-payment`         | Contains the URI of the JavaScript used to create a Hosted View iframe directly without redirecting the consumer to separate payment page.                 |
+| Operation              | Description                                                                                                                                |
+| :--------------------- | :----------------------------------------------------------------------------------------------------------------------------------------- |
+| `update-payment-abort` | [Aborts][technical-reference-abort] the payment before any financial transactions are performed.                                           |
+| `create-sale`          | Creates a `sales` transaction without redirection to a payment page. `Msisdn` is required in browser based scenarioes.                     |
+| `redirect-sale`        | Contains the redirect-URI that redirects the consumer to a Swedbank Pay hosted payment page prior to creating a sales transaction.         |
+| `view-payment`         | Contains the URI of the JavaScript used to create a Hosted View iframe directly without redirecting the consumer to separate payment page. |
 
-### Swish transactions
+## Swish transactions
 
-All card specific transactions are described below.
+All Swish transactions are described below.
 
-### Sales
+## Sales
 
-The `Sales` resource lists the sales transactions (one or more)
+The `sales` resource lists the sales transactions (one or more)
 on a specific payment.
 
 {:.code-header}
 **Request**
 
 ```http
-GET /psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/sales HTTP/1.1
+GET /psp/swish/payments/{{ page.paymentId }}/sales HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -249,28 +108,28 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "payment": "/psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+  "payment": "/psp/swish/payments/{{ page.paymentId }}",
   "sales": {
-    "id": "/psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/sale",
+    "id": "/psp/swish/payments/{{ page.paymentId }}/sale",
     "saleList": [
       {
         "date": "8/13/2019 8:58:23 AM +00:00",
-        "payerAlias": "4670XXXXXXX",
+        "payerAlias": "46739000001",
         "swishPaymentReference": "8D0A30A7804E40479F88FFBA26111F04",
         "swishStatus": "PAID",
-        "id": "/psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/sales/12345678-1234-1234-1234-123456789012",
+        "id": "/psp/swish/payments/{{ page.paymentId }}/sales/{{ page.transactionId }}",
         "transaction": {
-          "id": "12345678-1234-1234-1234-123456789012",
+          "id": "{{ page.transactionId }}",
           "created": "2016-09-14T01:01:01.01Z",
           "updated": "2016-09-14T01:01:01.03Z",
           "type": "Sale",
-          "state": "Initialized|Completed|Failed",
+          "state": "Initialized",
           "number": 1234567890,
           "amount": 1000,
           "vatAmount": 250,
           "description": "Test transaction",
           "payeeReference": "AH123456",
-          "isOperational": "true|false",
+          "isOperational": true,
           "reconciliationNumber": 737283,
           "operations": []
         }
@@ -280,46 +139,46 @@ Content-Type: application/json
 }
 ```
 
-#### Create Sales transaction
+### Create Sales transaction
 
-In e-commerce the consumer/end-user's `msisdn`(mobile number) is required.
+In browser based solutions the payers `msisdn` (mobile number) is required.
 This is managed either by sending a `POST` request as seen below,
 or by redirecting the end-user to the hosted payment page.
-The `msisdn` is only required for e-commerce. In the m-commerce flow,
-the consumer uses the device that hosts the Swish app to manage the purchase,
-making `msisdn` unneccessary.
+The `msisdn` is only required for browser based solutions.
+With mobile app based solutions, the consumer uses the device that hosts the Swish app
+to manage the purchase, making `msisdn` optional.
 
 {:.code-header}
-**e-commerce Request**
+**Browser-based Request**
 
 ```http
-POST /psp/swish/payments/<paymentId>/sales HTTP/1.1
+POST /psp/swish/payments/{{ page.paymentId }}/sales HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
     "transaction": {
-        "msisdn": "+46xxxxxxxxx"
+        "msisdn": "+46739000001"
     }
 }
 ```
 
 {:.code-header}
-**e-commerce Response**
+**Browser-based Response**
 
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/swish/payments/20dfbcb9-587a-4ce9-e63e-08d519f1802f",
+    "payment": "/psp/swish/payments/{{ page.paymentId }}",
     "sale": {
         "date": "23.10.2017 08:39:37 +00:00",
         "paymentRequestToken": "LhXrK84MSpWU2RO09f8kUP-FHiBo-1pB",
-        "id": "/psp/swish/payments/20dfbcb9-587a-4ce9-e63e-08d519f1802f/sales/6bf31479-623f-418a-d69e-08d519f19722",
+        "id": "/psp/swish/payments/{{ page.paymentId }}/sales/{{ page.transactionId }}",
         "transaction": {
-            "id": "6bf31479-623f-418a-d69e-08d519f19722",
+            "id": "{{ page.transactionId }}",
             "created": "2017-10-23T08:39:35.6478733Z",
             "updated": "2017-10-23T08:39:37.3788733Z",
             "type": "Sale",
@@ -337,10 +196,10 @@ Content-Type: application/json
 ```
 
 {:.code-header}
-**m-commerce Request**
+**In-app Request**
 
 ```http
-POST /psp/swish/payments/<paymentId>/sales HTTP/1.1
+POST /psp/swish/payments/{{ page.paymentId }}/sales HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -352,20 +211,20 @@ Content-Type: application/json
 ```
 
 {:.code-header}
-**m-commerce Response**
+**In-app Response**
 
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/swish/payments/20dfbcb9-587a-4ce9-e63e-08d519f1802f",
+    "payment": "/psp/swish/payments/{{ page.paymentId }}",
     "sale": {
         "date": "23.10.2017 08:39:37 +00:00",
         "paymentRequestToken": "LhXrK84MSpWU2RO09f8kUP-FHiBo-1pB",
-        "id": "/psp/swish/payments/20dfbcb9-587a-4ce9-e63e-08d519f1802f/sales/6bf31479-623f-418a-d69e-08d519f19722",
+        "id": "/psp/swish/payments/{{ page.paymentId }}/sales/{{ page.transactionId }}",
         "transaction": {
-            "id": "6bf31479-623f-418a-d69e-08d519f19722",
+            "id": "{{ page.transactionId }}",
             "created": "2017-10-23T08:39:35.6478733Z",
             "updated": "2017-10-23T08:39:37.3788733Z",
             "type": "Sale",
@@ -388,23 +247,23 @@ Content-Type: application/json
 }
 ```
 
-_Operation_ `redirect-app-swish` is only returned in m-commerce.
+The `operation` `redirect-app-swish` is only returned when using in-app flows.
 
 The payment now contains a sale transaction with the status (state)
 `AwaitingActivity`
 When the consumer confirms the payment a callback request will follow
-from PayEx.
+from Swedbank Pay.
 
-### Reversals
+## Reversals
 
-The `Reversals` resource list the reversals transactions (one or more)
-on a specific payment.
+The `Reversals` resource list the reversals transactions (one or more) on a
+specific payment.
 
 {:.code-header}
 **Request**
 
 ```http
-GET /psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals HTTP/1.1
+GET /psp/swish/payments/{{ page.paymentId }}/reversals HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -418,24 +277,24 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "payment": "/psp/swish/payments/{{ page.paymentId }}",
     "reversals": {
-        "id": "/psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals",
+        "id": "/psp/swish/payments/{{ page.paymentId }}/reversals",
         "reversalList": [
             {
-                "id": "/psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals/12345678-1234-1234-1234-123456789012",
+                "id": "/psp/swish/payments/{{ page.paymentId }}/reversals/{{ page.transactionId }}",
                 "transaction": {
-                    "id": "/psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
+                    "id": "/psp/swish/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
                     "created": "2016-09-14T01:01:01.01Z",
                     "updated": "2016-09-14T01:01:01.03Z",
                     "type": "Reversal",
-                    "state": "Initialized|Completed|Failed",
+                    "state": "Completed",
                     "number": 1234567890,
                     "amount": 1000,
                     "vatAmount": 250,
                     "description": "Test transaction",
                     "payeeReference": "AH123456",
-                    "isOperational": "TRUE|FALSE",
+                    "isOperational": true,
                     "operations": []
                 }
             }
@@ -445,23 +304,25 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property         | Type     | Description                                                                                          |
-| :--------------- | :------- | :--------------------------------------------------------------------------------------------------- |
-| `payment`        | `string` | The relative URI of the payment that the reversal transactions belong to.                            |
-| `reversalList`   | `array`  | The array of reversal transaction objects.                                                           |
-| `reversalList[]` | `object` | The reversal transaction object representation of the reversal transaction resource described below. |
+| Property                 | Type     | Description                                                                                          |
+| :----------------------- | :------- | :--------------------------------------------------------------------------------------------------- |
+| `payment`                | `string` | The relative URI of the payment that the reversal transactions belong to.                            |
+| `reversals`              | `object` | The reversal object.                                                                                 |
+| └➔&nbsp;`reversalList[]` | `array`  | The array of reversal transaction objects.                                                           |
+| └─➔&nbsp;`transaction`   | `object` | The reversal transaction object representation of the reversal transaction resource described below. |
 
-#### Create Reversal transaction
+### Create Reversal transaction
 
-You can create a reversal transaction against a completed sales transaction
-by adding that transaction's `payeeReference` in the request body.
-A callback request will follow from Swedbank Pay.
+A reversal transaction can be created after a completed authorization by sending
+a request to `/psp/swish/payments/<payment-id>/reversals`.
+A [callback][technical-reference-callback] request will follow from
+Swedbank Pay.
 
 {:.code-header}
 **Request**
 
 ```http
-POST /psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals HTTP/1.1
+POST /psp/swish/payments/{{ page.paymentId }}/reversals HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -477,12 +338,13 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property                     | Type         | Description                                                                                                                                                            |
-| :------: | :--------------------------- | :----------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|    ✔︎    | `transaction.amount`         | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 SEK`, `5000` = `50.00 SEK`                                               |
-|    ✔︎    | `transaction.vatAmount`      | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 SEK`, `5000` = `50.00 SEK`                                               |
-|    ✔︎    | `transaction.description`    | `string`     | A textual description of the capture                                                                                                                                   |
-|    ✔︎    | `transaction.payeeReference` | `string(35)` | A  reference that must match the  `payeeReference` of the sales transaction you want to reverse. See [payeeReference][technical-reference-payeeReference] for details. |
+| Required | Property                 | Type         | Description                                                                                                                                                            |
+| :------: | :----------------------- | :----------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|    ✔︎    | `transaction`            | `object`     | The `transaction` object, containing information about this `reversal`.                                                                                                |
+|    ✔︎    | └➔&nbsp;`amount`         | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 SEK`, `5000` = `50.00 SEK`                                               |
+|    ✔︎    | └➔&nbsp;`vatAmount`      | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 SEK`, `5000` = `50.00 SEK`                                               |
+|    ✔︎    | └➔&nbsp;`description`    | `string`     | A textual description of the capture                                                                                                                                   |
+|    ✔︎    | └➔&nbsp;`payeeReference` | `string(35)` | A  reference that must match the  `payeeReference` of the sales transaction you want to reverse. See [payeeReference][technical-reference-payeeReference] for details. |
 
 {:.code-header}
 **Response**
@@ -492,21 +354,21 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "payment": "/psp/swish/payments/{{ page.paymentId }}",
     "reversal": {
-        "id": "/psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals/12345678-1234-1234-1234-123456789012",
+        "id": "/psp/swish/payments/{{ page.paymentId }}/reversals/{{ page.transactionId }}",
         "transaction": {
-            "id": "/psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
+            "id": "/psp/swish/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
             "created": "2016-09-14T01:01:01.01Z",
             "updated": "2016-09-14T01:01:01.03Z",
             "type": "Reversal",
-            "state": "Initialized|Completed|Failed",
+            "state": "Completed",
             "number": 1234567890,
             "amount": 1000,
             "vatAmount": 250,
             "description": "Test transaction",
             "payeeReference": "AH123456",
-            "isOperational": "TRUE|FALSE",
+            "isOperational": false,
             "operations": []
         }
     }
@@ -514,51 +376,49 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property             | Type     | Description                                                                              |
-| :------------------- | :------- | :--------------------------------------------------------------------------------------- |
-| payment              | `string` | The relative URI of the payment this capture transaction belongs to.                     |
-| reversal.id          | `string` | The relative URI of the created capture transaction.                                     |
-| reversal.transaction | `object` | The object representation of the generic [transaction][technical-reference-transaction]. |
+| Property              | Type     | Description                                                                              |
+| :-------------------- | :------- | :--------------------------------------------------------------------------------------- |
+| `payment`             | `string` | The relative URI of the payment this capture transaction belongs to.                     |
+| `reversal`            | `object` | The `reversal` object contains information about this `reversal`.                        |
+| └➔&nbsp;`id`          | `string` | The relative URI of the created capture transaction.                                     |
+| └➔&nbsp;`transaction` | `object` | The object representation of the generic [transaction][technical-reference-transaction]. |
 
-## Options after posting a payment
+## Abort
 
-* **If CallbackURL is set**: Whenever changes to the payment occur a [Callback
-    request][technical-reference-callback] will be posted to the callbackUrl,
-    which was generated when the payment was created.
-* You can create a reversal transactions by implementing the Reversal request.
-    You can also access and reverse a payment through your merchant pages in the
-    [Swedbank Pay admin portal][payex-admin-portal].
-
-### Abort
-
-To abort a payment order, perform the `update-paymentorder-abort` operation
-that is returned in the payment order response.
+To abort a payment order, send a request to `/psp/swish/payments/{{paymentId}}`.
 You need to include the following `HTTP` body:
 
 {:.code-header}
 **Request**
 
 ```http
-PATCH /psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c HTTP/1.1
+PATCH /psp/payments/{{ page.paymentId }} HTTP/1.1
 Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
-  "paymentorder": {
+  "payment": {
     "operation": "Abort",
     "abortReason": "CancelledByConsumer"
   }
 }
 ```
 
-**Response**
+{:.table .table-striped}
+| Property              | Type     | Description                                                                              |
+| :-------------------- | :------- | :--------------------------------------------------------------------------------------- |
+| `payment`             | `string` | The `payment` object holds the reason and operation for this request.                    |
+| └➔&nbsp;`operation`   | `string` | `abort` to abort this payment.                                                           |
+| └➔&nbsp;`abortReason` | `object` | A textual reason for this abort. Examples: "CancelledByConsumer", "CancelledByCustomer". |
+
+### Response from abort
 
 The response given when aborting a payment order is equivalent to a `GET`
 request towards the `paymentorders` resource,
 [as displayed above][payment-order], with its `state` set to `Aborted`.
 
-#### Reversal Sequence
+### Reversal Sequence
 
 A reversal transcation have to match the Payee reference of a
 completed sales transaction.
@@ -571,15 +431,17 @@ sequenceDiagram
   SwedbankPay-->>-Merchant: transaction resource
 ```
 
-### Capture
+## Capture
 
-Swish does not support `capture`.
+Swish does not support `capture` as it is a one-phase payment method all
+completed payments are captured.
 
-### Cancel
+## Cancel
 
-Swish does not support `cancel`.
+Swish does not support `cancel` as `cancel` can only be used on two-phase
+payments before they are captured or reversed.
 
-### Recurring
+## Recurring
 
 Swish does not support `recurring` payments.
 
