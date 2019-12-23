@@ -236,7 +236,7 @@ After that has all loaded, you should see something like this:
 
 As you can see, the payer's information is pre-filled as provided by the
 initial `POST`. When the payer completes the checkin, the events
-`onConsumerIdentified` and `onShippingDetailsAvailable` will be raised with
+`onConsumerIdentified`, `onShippingDetailsAvailable` and `onBillingDetailsAvailable` will be raised with
 the following argument objects:
 
 {:.code-header}
@@ -256,6 +256,16 @@ the following argument objects:
 {
     "actionType": "OnShippingDetailsAvailable",
     "url": "https://api.externalintegration.payex.com/psp/consumers/<consumerProfileRef>/shipping-details"
+}
+```
+
+{:.code-header}
+**Billing Details Available Event Argument Object**
+
+```js
+{
+    "actionType": "OnBillingDetailsAvailable",
+    "url": "https://api.externalintegration.payex.com/psp/consumers/<consumerProfileRef>/billing-details"
 }
 ```
 
