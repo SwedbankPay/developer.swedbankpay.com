@@ -289,7 +289,6 @@ Content-Type: application/json
 [create-payment]: /payments/swish/
 [payex-admin-portal]: https://admin.payex.com/psp/login/
 [payex-mailto]: mailto:sales@payex.com
-[purchase]:
 [redirect]: /payments/swish/redirect
 [sales-transaction]: /payments/swish/other-features#sales
 [SEB-swish]: https://seb.se/foretag/digitala-tjanster/swish-handel
