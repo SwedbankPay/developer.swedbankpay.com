@@ -36,7 +36,7 @@ sidebar:
   and make a `POST` request towards Swedbank Pay to create a sales transaction.
 * Swedbank Pay will handle the dialogue with Swish and the consumer will have to
   confirm the purchase in the Swish app.
-* If `CallbackURL` is set, you will receive a payment callback when the Swish
+* If `callbackURL` is set, you will receive a payment callback when the Swish
   dialogue is completed.
 * Make a `GET` request to check the payment status.
 
@@ -85,7 +85,7 @@ sequenceDiagram
 
 ## Operations
 
-The API requests are displayed in the [purchase flow][purchase-flow)].
+The API requests are displayed in the [purchase flow][purchase].
 Swish is a one-phase payment instrument that is based on sales transactions not
 involving `capture` or `cancellation` operations.
 The options you can choose from when creating a payment with key operation
@@ -93,49 +93,11 @@ set to value `Purchase` are listed below.
 
 #### General
 
-* **Defining CallbackURL**: When implementing a scenario, it is strongly
-  recommended to set a [CallbackURL][callback-url] in the `POST` request.
-  If `callbackURL` is set, Swedbank Pay will send a postback request to this
-  URL when the consumer has fulfilled the payment.
-
-```mermaid
-sequenceDiagram
-  activate Mobile_App
-  Mobile_App->>-Merchant: start purchase
-  activate Merchant
-  Merchant->>-SwedbankPay: POST <Create payment> (operation=PURCHASE)
-  activate  SwedbankPay
-  note left of Merchant: First API request
-  SwedbankPay-->>-Merchant: payment resource
-  activate Merchant
-
-  Merchant-->>- SwedbankPay: POST <Create Sales Transaction> (operation=create-sale)
-  activate  SwedbankPay
-  note left of  SwedbankPay: POST not containing MSISDN
-   SwedbankPay-->>-Merchant: sales resource
-  activate Merchant
-  Merchant-x-Mobile_App: Open Swish app request
-  activate Mobile_App
-  Mobile_App->>-Swish_App: Open Swish app
-  Swish_API->>Swish_App: Ask for payment confirmation
-  activate Swish_App
-  Swish_App-->>-Swish_API: Consumer confirms payment
-  activate Swish_API
-  
-  Swish_API-->>- SwedbankPay: Payment status
-  activate  SwedbankPay
-  SwedbankPay-->>-Swish_API: Callback response
-  activate Swish_API
-  Swish_API->>-Swish_App: Start redirect
-  activate Swish_App
-
-  Swish_App--x-Mobile_App: Redirect
-  Merchant->>SwedbankPay: GET <Sales transaction>
-  activate SwedbankPay
-   SwedbankPay-->>-Merchant: Payment response
-   activate Merchant
-  Merchant-->>-Mobile_App: Payment Status
-```
+{% include alert.html type="success" icon="link" body="**Defining CallbackURL**:
+When implementing a scenario, it is strongly recommended to set a
+[`callbackURL`][callback-url] in the `POST` request. If `callbackURL` is set,
+Swedbank Pay will send a postback request to this URL when the consumer has
+fulfilled the payment." %}
 
 {:.code-header}
 **Request**
@@ -179,7 +141,7 @@ Content-Type: application/json
             "subsite": "MySubsite"
         },
         "prefillInfo": {
-            "msisdn": "+46xxxxxxxxx"
+            "msisdn": "+46739000001"
         },
         "swish": {
             "ecomOnlyEnabled": false
@@ -266,17 +228,27 @@ Content-Type: application/json
 }
 ```
 
-## Sales
+## Create Sale transaction
 
-The Sales resource lists the sales transactions (one or more) on a specific payment.
+This operation creates a sales transaction in the direct payment scenario.
+This is managed either by sending a `POST` request as seen
+below, or by directing the end-user to the hosted payment pages. Note that the
+`msisdn` value (the consumer/end-user's mobile number) is required in this
+request.
 
 {:.code-header}
 **Request**
 
 ```http
-POST /psp/swish/payments HTTP/1.1
+POST /psp/swish/payments/<paymentId>/sales HTTP/1.1
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
+
+{
+    "transaction": {
+        "msisdn": "+46739000001"
+    }
+}
 
 ```
 
@@ -289,43 +261,35 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
-    "payment": "/psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
-    "sales": {
-        "id": "/psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/sale",
-        "saleList": [
-            {
-                "date": "8/13/2019 8:58:23 AM +00:00",
-                "payerAlias": "4670XXXXXXX",
-                "swishPaymentReference": "8D0A30A7804E40479F88FFBA26111F04",
-                "swishStatus": "PAID",
-                "id": "/psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/sales/12345678-1234-1234-1234-123456789012",
-                "transaction": {
-                    "id": "12345678-1234-1234-1234-123456789012",
-                    "created": "2016-09-14T01:01:01.01Z",
-                    "updated": "2016-09-14T01:01:01.03Z",
-                    "type": "Sale",
-                    "state": "Initialized|Completed|Failed",
-                    "number": 1234567890,
-                    "amount": 1000,
-                    "vatAmount": 250,
-                    "description": "Test transaction",
-                    "payeeReference": "AH123456",
-                    "isOperational": "true|false",
-                    "reconciliationNumber": 737283,
-                    "operations": []
-                }
-            }
-        ]
+    "payment": "/psp/swish/payments/20dfbcb9-587a-4ce9-e63e-08d519f1802f",
+    "sale": {
+        "date": "23.10.2017 08:39:37 +00:00",
+        "paymentRequestToken": "LhXrK84MSpWU2RO09f8kUP-FHiBo-1pB",
+        "id": "/psp/swish/payments/20dfbcb9-587a-4ce9-e63e-08d519f1802f/sales/6bf31479-623f-418a-d69e-08d519f19722",
+        "transaction": {
+            "id": "6bf31479-623f-418a-d69e-08d519f19722",
+            "created": "2017-10-23T08:39:35.6478733Z",
+            "updated": "2017-10-23T08:39:37.3788733Z",
+            "type": "Sale",
+            "state": "AwaitingActivity",
+            "number": 992309,
+            "amount": 1500,
+            "vatAmount": 0,
+            "description": "Purchase",
+            "payeeReference": "Postman1508747933",
+            "isOperational": true,
+            "operations": []
+        }
     }
 }
 ```
 
 [swish-redirect-view]: /assets/screenshots/swish/redirect-view/view/windows-small-window.png
-[swish-hosted-view]: /assets/screenshots/swish/hosted-view/windows.png
 [callback-url]: /payments/swish/other-fetures#callback
 [create-payment]: /payments/swish/
 [payex-admin-portal]: https://admin.payex.com/psp/login/
 [payex-mailto]: mailto:sales@payex.com
+[purchase]:
 [redirect]: /payments/swish/redirect
 [sales-transaction]: /payments/swish/other-features#sales
 [SEB-swish]: https://seb.se/foretag/digitala-tjanster/swish-handel
