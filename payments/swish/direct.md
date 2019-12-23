@@ -286,6 +286,9 @@ Content-Type: application/json
 }
 ```
 
+{% include iterator.html prev_href="introduction" prev_title="Back: Introduction"
+next_href="redirect" next_title="Next: Redirect" %}
+
 [swish-redirect-view]: /assets/screenshots/swish/redirect-view/view/windows-small-window.png
 [callback-url]: /payments/swish/other-features#callback-1
 [redirect]: /payments/swish/redirect
