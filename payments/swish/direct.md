@@ -258,8 +258,7 @@ Content-Type: application/json
 **Response**
 
 ```http
-POST /psp/swish/payments HTTP/1.1
-Authorization: Bearer <AccessToken>
+HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
@@ -277,7 +276,7 @@ Content-Type: application/json
             "number": 992309,
             "amount": 1500,
             "vatAmount": 0,
-            "description": "Purchase",
+            "description": "Test Purchase",
             "payeeReference": "Postman1508747933",
             "isOperational": true,
             "operations": []
