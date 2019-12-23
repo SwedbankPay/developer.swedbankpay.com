@@ -18,8 +18,9 @@ sidebar:
 
 {% include alert-development-section.md %}
 
-{% include jumbotron.html body="**Swish Payments Redirect** is where Swedbank
-Pay performs a payment that the payer confirms using her Swish mobile app.
+{% include jumbotron.html body="Swish is a one-phase payment instrument supported by the
+major Swedish banks.**Swish Payments Redirect** is where Swedbank
+Pay performs a payment that the payer confirms in the Swish mobile app.
 The consumer initiates the payment by supplying the Swish registered mobile
 number (msisdn), connected to the Swish app." %}
 
@@ -29,7 +30,7 @@ number (msisdn), connected to the Swish app." %}
   Swedbank Pay with the collected Purchase information. This will generate a
   payment object with a unique `paymentID`. You either receive a Redirect URL to
   a hosted page or a JavaScript source in response.
-* You need to [redirect][redirect] the payer to the payment page where she is
+* You need to redirect the payer to the payment page where she is
   prompted to enter the Swish registered mobile number.
   This triggers the initiation of a sales transaction.
 * Swedbank Pay handles the dialogue with Swish and the consumer confirms the
@@ -100,6 +101,16 @@ Swish is a one-phase payment instrument that is based on sales transactions
 The options you can choose from when creating a payment with key `operation` set
 to value `Purchase` are listed below.
 
+### General
+
+{% include alert.html type="success" icon="link" body="
+**Defining CallbackURL**: When implementing a scenario, it is strongly
+recommended to set a [CallbackURL][callback-url] in the `POST` request.
+If `callbackURL` is set Swedbank Pay will send a postback request to this
+URL when the consumer has fulfilled the payment. You need to do a `GET` request,
+containing the `paymentID` generated in the first step, to receive the state
+of the transaction." %}
+
 ### API Requests
 
 All valid options when posting in a payment with operation equal to `Purchase`.
@@ -109,9 +120,10 @@ The `purchase` example shown below.
 **Request**
 
 ```http
-POST /psp/cswish/payments
+POST /psp/swish/payments
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
+
 {
     "payment": {
         "operation": "Purchase",
@@ -232,16 +244,6 @@ Content-Type: application/json
     ]
 }
 ```
-
-## General
-
-{% include alert.html type="success" icon="link" body="
-**Defining CallbackURL**: When implementing a scenario, it is strongly
-recommended to set a [CallbackURL][callback-url] in the `POST` request.
-If `callbackURL` is set Swedbank Pay will send a postback request to this
-URL when the consumer has fulfilled the payment. You need to do a `GET` request,
-containing the `paymentID` generated in the first step, to receive the state
-of the transaction." %}
 
 [swish-redirect-image]: /assets/screenshots/swish/redirect-view/view/windows-small-window.png
 [callback-url]: /payments/swish/other-fetures#callback
