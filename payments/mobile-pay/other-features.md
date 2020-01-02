@@ -32,7 +32,7 @@ An example of a payment creation request is provided below.
 
 ```http
 POST /psp/mobilepay/payments HTTP/1.1
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
@@ -77,7 +77,7 @@ Content-Type: application/json
         }
     },
     "mobilepay": {
-        "shoplogoUrl": "Url for shop logo url"
+        "shoplogoUrl": "https://example.com/shop-logo.png"
     }
 }
 ```
@@ -113,7 +113,7 @@ Content-Type: application/json
 |          | └➔&nbsp;`mobilepay.shoplogoUrl` | `string`     | URI to logo that will be visible at MobilePay                                                                                                                                                                 |
 
 {:.code-header}
-**Request**
+**Response**
 
 ```json
 {
@@ -281,7 +281,7 @@ The `authorizations` resource contains information about the authorization trans
 ```http
 GET /psp/mobilepay/payments/{{ page.paymentId }}/authorizations/ HTTP/1.1
 Host: api.payex.com
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 `
 
@@ -351,7 +351,7 @@ You can return a specific autorization transaction by adding the transaction id 
 ```http
 GET /psp/mobilepay/payments/{{ page.paymentId }}/authorizations/ HTTP/1.1
 Host: api.payex.com
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
@@ -433,57 +433,8 @@ to the hyperlink returned in the `redirect-authorization` request.
 The `captures` resource lists the capture transactions (one or more) on a
 specific payment.
 
-{:.code-header}
-**Request**
-
-```http
-GET /psp/mobilepay/payments/{{ page.paymentId }}/captures HTTP/1.1
-Host: api.payex.com
-Authorization: Bearer <MerchantToken>
-Content-Type: application/json
-```
-
-{:.code-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "payment": "/psp/mobilepay/payments/{{ page.paymentId }}",
-    "captures": {
-        "id": "/psp/mobilepay/payments/{{ page.paymentId }}/captures",
-        "captureList": [{
-            "id": "/psp/mobilepay/payments/{{ page.paymentId }}/captures/{{ page.transactionId }}",
-            "transaction": {
-                "id": "/psp/mobilepay/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
-                "created": "2016-09-14T01:01:01.01Z",
-                "updated": "2016-09-14T01:01:01.03Z",
-                "type": "Capture",
-                "state": "Completed",
-                "number": 1234567890,
-                "amount": 1000,
-                "vatAmount": 250,
-                "description": "Test transaction",
-                "payeeReference": "AH123456",
-                "failedReason": "",
-                "isOperational": false,
-                "operations": []
-            }
-        }]
-    }
-}
-```
-
-{:.table .table-striped}
-| Property                | Type     | Required                                                                     | Description |
-| :---------------------- | :------- | :--------------------------------------------------------------------------- | :---------- |
-| `payment`               | `string` | The relative URI of the payment this list of capture transactions belong to. |
-| `captures`              | `object` | The current `captures` resource.                                             |
-| └➔&nbsp;`id`            | `string` | The relative URI of the current `captures` resource.                         |
-| └➔&nbsp;`captureList`   | `array`  | The array of capture transaction objects.                                    |
-| └➔&nbsp;`captureList[]` | `object` | The capture transaction object described in the `capture` resource below.    |
+{% include transaction-response.md payment-instrument="mobile-pay"
+    transaction="capture" %}
 
 ### Create capture transaction
 
@@ -495,10 +446,9 @@ operation.
 **Request**
 
 ```http
-
 POST /psp/mobilepay/payments/{{ page.paymentId }}/captures HTTP/1.1
 Host: api.payex.com
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
@@ -572,58 +522,8 @@ Content-Type: application/json
 The `cancellations` resource lists the cancellation transactions on a specific
 payment.
 
-{:.code-header}
-**Request**
-
-```http
-GET /psp/mobilepay/payments/{{ page.paymentId }}/cancellations HTTP/1.1
-Host: api.payex.com
-Authorization: Bearer <MerchantToken>
-Content-Type: application/json
-```
-
-{:.code-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "payment": "/psp/mobilepay/payments/{{ page.paymentId }}",
-    "cancellations": {
-        "id": "/psp/mobilepay/payments/{{ page.paymentId }}/cancellations",
-        "cancellationList": [
-            {
-                "id": "/psp/mobilepay/payments/{{ page.paymentId }}/cancellations/{{ page.transactionId }}",
-                "transaction": {
-                    "id": "/psp/mobilepay/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
-                    "created": "2018-09-11T12:19:38.1247314Z",
-                    "updated": "2018-09-11T12:19:38.3059149Z",
-                    "type": "Cancellation",
-                    "state": "Completed",
-                    "number": 75100000127,
-                    "amount": 500,
-                    "vatAmount": 0,
-                    "description": "Test Cancellation",
-                    "payeeReference": "ABC123",
-                    "isOperational": false,
-                    "operations": []
-                }
-            }
-        ]
-    }
-}
-```
-
-{:.table .table-striped}
-| Property                     | Type     | Description                                                                         |
-| :--------------------------- | :------- | :---------------------------------------------------------------------------------- |
-| `payment`                    | `string` | The relative URI of the payment this list of cancellation transactions belong to.   |
-| `cancellations`              | `object` | The current `cancellations` resource.                                               |
-| └➔&nbsp;`id`                 | `string` | The relative URI of the current `cancellations` resource.                           |
-| └➔&nbsp;`cancellationList`   | `array`  | The array of the cancellation transaction objects.                                  |
-| └➔&nbsp;`cancellationList[]` | `object` | The object representation of the cancellation transaction resource described below. |
+{% include transaction-response.md payment-instrument="mobile-pay"
+    transaction="cancellation" %}
 
 ### Create cancellation transaction
 
@@ -636,7 +536,7 @@ You can only cancel a payment - or part of payment - not yet captured.
 ```http
 POST /psp/mobilepay/payments/{{ page.paymentId }}/cancellations HTTP/1.1
 Host: api.payex.com
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
@@ -701,57 +601,8 @@ Content-Type: application/json
 The `reversals` resource lists the reversal transactions (one or more) on a
 specific payment.
 
-{:.code-header}
-**Request**
-
-```http
-GET /psp/mobilepay/payments/{{ page.paymentId }}/reversals HTTP/1.1
-Host: api.payex.com
-Authorization: Bearer <MerchantToken>
-Content-Type: application/json
-```
-
-{:.code-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "payment": "/psp/mobilepay/payments/{{ page.paymentId }}",
-    "reversals": {
-        "id": "/psp/mobilepay/payments/{{ page.paymentId }}/reversal",
-        "reversalList": [{
-            "id": "/psp/mobilepay/payments/{{ page.paymentId }}/reversal/{{ page.transactionId }}",
-            "transaction": {
-                "id": "/psp/mobilepay/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
-                "created": "2016-09-14T01:01:01.01Z",
-                "updated": "2016-09-14T01:01:01.03Z",
-                "type": "Reversal",
-                "state": "Completed",
-                "number": 1234567890,
-                "amount": 1000,
-                "vatAmount": 250,
-                "description": "Test transaction",
-                "payeeReference": "AH123456",
-                "failedReason": "",
-                "isOperational": false,
-                "operations": []
-            }
-        }]
-    }
-}
-```
-
-{:.table .table-striped}
-| Property                 | Type     | Description                                                                                          |
-| :----------------------- | :------- | :--------------------------------------------------------------------------------------------------- |
-| `payment`                | `string` | The relative URI of the payment that the reversal transactions belong to.                            |
-| `reversals`              | `object` | The current reversal transaction object.                                                             |
-| └➔&nbsp;`id`             | `string` | The relative URI of the created reversal transaction.                                                |
-| └➔&nbsp;`reversalList`   | `array`  | The array of reversal transaction objects.                                                           |
-| └➔&nbsp;`reversalList[]` | `object` | The reversal transaction object representation of the reversal transaction resource described below. |
+{% include transaction-response.md payment-instrument="mobile-pay"
+    transaction="reversal" %}
 
 ### Create reversal transaction
 
@@ -764,7 +615,7 @@ payment.
 ```http
 POST /psp/mobilepay/payments/{{ page.paymentId }}/reversals HTTP/1.1
 Host: api.payex.com
-Authorization: Bearer <MerchantToken>
+Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
