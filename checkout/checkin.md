@@ -235,7 +235,7 @@ After that has all loaded, you should see something like this:
 ![Consumer UI][checkin-image]{:width="564" height="293"}
 
 As you can see, the payer's information is pre-filled as provided by the
-initial `POST`. When the payer completes the checkin, the events
+initial `POST`. During and on completion of Checkin, the events
 `onConsumerIdentified`, `onShippingDetailsAvailable` and `onBillingDetailsAvailable` may be raised with
 the following argument objects:
 
