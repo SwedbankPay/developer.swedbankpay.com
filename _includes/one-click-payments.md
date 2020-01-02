@@ -121,7 +121,7 @@ you use the `Delete payment token` request.
                       icon="warning"
                       body="Please note that this call does not erase the card number stored at Swedbank
   Pay. A card number is automatically deleted six months after a successful
-  `Delete payment token` request. If you want to remove card information
+  `Delete payment token` request. If you want card information removed
   at an earlier date, you need to contact ehandelsetup@swedbankpay.dk,
   verkkokauppa.setup@swedbankpay.fi, ehandelsetup@swedbankpay.no or
   ehandelsetup@swedbankpay.se; and supply them with
