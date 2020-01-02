@@ -269,7 +269,7 @@ the following argument objects:
 }
 ```
 
-Here is an example of what a GET request might return:
+Here is an example of what a `GET` request towards the `url` provided in the event might return:
 
 {:.code-header}
 **Response**
