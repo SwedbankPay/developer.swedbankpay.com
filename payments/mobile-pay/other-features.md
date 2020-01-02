@@ -283,7 +283,7 @@ The `authorizations` resource contains information about the authorization trans
 
 ```http
 GET /psp/mobilepay/payments/{{ page.paymentId }}/authorizations/ HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 `
@@ -353,7 +353,7 @@ You can return a specific autorization transaction by adding the transaction id 
 
 ```http
 GET /psp/mobilepay/payments/{{ page.paymentId }}/authorizations/ HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -463,7 +463,7 @@ operation.
 
 ```http
 POST /psp/mobilepay/payments/{{ page.paymentId }}/captures HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -551,7 +551,7 @@ You can only cancel a payment - or part of payment - not yet captured.
 
 ```http
 POST /psp/mobilepay/payments/{{ page.paymentId }}/cancellations HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -630,7 +630,7 @@ payment.
 
 ```http
 POST /psp/mobilepay/payments/{{ page.paymentId }}/reversals HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
