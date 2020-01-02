@@ -269,6 +269,28 @@ the following argument objects:
 }
 ```
 
+Here is an example of what a GET request might return:
+
+{:.code-header}
+**Response**
+
+```http
+{
+    "email": "olivia.nyhuus@payex.com",
+    "msisdn": "+4798765432",
+    "billingAddress": {
+        "addressee": "Olivia Nyhus",
+        "coAddress": "",
+        "email": "olivia.nyhuus@payex.com",
+        "msisdn": "+4798765432",
+        "streetAddress": "Saltnestoppen 43",
+        "zipCode": "1642",
+        "city": "saltnes",
+        "countryCode": "NO"
+    }
+}
+```
+
 With a `consumerProfileRef` safely tucked into our pocket, the Checkin is
 complete and we can move on to [payment menu][payment-menu].
 
