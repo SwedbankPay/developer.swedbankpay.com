@@ -235,8 +235,8 @@ After that has all loaded, you should see something like this:
 ![Consumer UI][checkin-image]{:width="564" height="293"}
 
 As you can see, the payer's information is pre-filled as provided by the
-initial `POST`. When the payer completes the checkin, the events
-`onConsumerIdentified` and `onShippingDetailsAvailable` will be raised with
+initial `POST`. During and on completion of Checkin, the events
+`onConsumerIdentified`, `onShippingDetailsAvailable` and `onBillingDetailsAvailable` may be raised with
 the following argument objects:
 
 {:.code-header}
@@ -256,6 +256,38 @@ the following argument objects:
 {
     "actionType": "OnShippingDetailsAvailable",
     "url": "https://{{ page.apiUrl }}/psp/consumers/<consumerProfileRef>/shipping-details"
+}
+```
+
+{:.code-header}
+**Billing Details Available Event Argument Object**
+
+```js
+{
+    "actionType": "OnBillingDetailsAvailable",
+    "url": "https://api.externalintegration.payex.com/psp/consumers/<consumerProfileRef>/billing-details"
+}
+```
+
+Here is an example of what a `GET` request towards the `url` provided in the event might return:
+
+{:.code-header}
+**Response**
+
+```http
+{
+    "email": "olivia.nyhuus@payex.com",
+    "msisdn": "+4798765432",
+    "billingAddress": {
+        "addressee": "Olivia Nyhus",
+        "coAddress": "",
+        "email": "olivia.nyhuus@payex.com",
+        "msisdn": "+4798765432",
+        "streetAddress": "Saltnestoppen 43",
+        "zipCode": "1642",
+        "city": "saltnes",
+        "countryCode": "NO"
+    }
 }
 ```
 
