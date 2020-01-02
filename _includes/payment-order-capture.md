@@ -44,7 +44,7 @@ To capture the authorized payment, we need to perform
 
 ```http
 POST /psp/paymentorders/{{ page.paymentOrderId }}/captures HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 

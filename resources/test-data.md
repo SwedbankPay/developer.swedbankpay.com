@@ -26,7 +26,7 @@ sidebar:
 During a Swedbank Pay Checkout implementation you can use the test data related
 to the different payment instruments listed below. To see Swedbank Pay Checkout in
 action, please visit our
-[demoshop](https://ecom.externalintegration.payex.com/pspdemoshop)
+[demoshop](https://{{ page.frontEndUrl }}/pspdemoshop)
 
 To test a logged in user in the Demo Shop, please use the following test data:
 
@@ -119,12 +119,12 @@ errors thorugh spesific amounts.
 
 First, POST a Payment (operation purchase) and enter the link to the payment
 page. Example URL: -
-<https://ecom.externalintegration.payex.com/creditcardv2/payments/authorize/739cbaeae33320a5b289e2fc135a8ae443e7b510474c2785683f71c497b49552> .
+<https://{{ page.frontEndUrl }}/creditcardv2/payments/authorize/739cbaeae33320a5b289e2fc135a8ae443e7b510474c2785683f71c497b49552> .
 Fill the data for either the Visa or MasterCard as shown below.
 
 {:.table .table-striped}
-| Card type  | Card number        | Expiry | CVC   | Type of test data                    |
-| :--------- | :----------------- | :----- | :---- | :----------------------------------- |
+| Card type  | Card number        | Expiry | CVC   | Type of test data                           |
+| :--------- | :----------------- | :----- | :---- | :------------------------------------------ |
 | Visa       | `4761739001010416` | 12/22  | `268` | 3-D Secure enrolled, ECI 5, Evry & loopback |
 | MasterCard | `5226612199533406` | 09/28  | `602` | 3-D Secure enrolled, ECI 6, Evry & loopback |
 

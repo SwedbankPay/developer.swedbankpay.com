@@ -20,7 +20,7 @@ response, enabling you to access information from these sub-resources.
 
 ```http
 GET /psp/creditcard/payments/{{ page.paymentId }}?$expand=urls,authorizations HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiUrl }}
 ```
 
 To avoid unnecessary overhead, you should only expand the nodes you need info

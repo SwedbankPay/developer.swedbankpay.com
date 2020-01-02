@@ -68,7 +68,7 @@ in their own section below.
 
 ```http
 POST /psp/invoice/payments HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -96,7 +96,7 @@ A `FinancingConsumer` payment is an invoice.
 
 ```http
 POST /psp/invoice/payments HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 {
@@ -147,7 +147,7 @@ through a previous payment in order to charge the same card.
 
 ```http
 POST /psp/invoice/payments HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -234,7 +234,7 @@ listed below.
 
 ```http
 POST /psp/invoice/payments HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -313,25 +313,25 @@ Content-Type: application/json
     "operations": [
         {
             "method": "POST",
-            "href": "https://api.externalintegration.payex.com/psp/invoice/payments/{{ page.paymentId }}/approvedlegaladdress",
+            "href": "https://{{ page.apiUrl }}/psp/invoice/payments/{{ page.paymentId }}/approvedlegaladdress",
             "rel": "create-approved-legal-address",
             "contentType": "application/json"
         },
         {
             "method": "POST",
-            "href": "https://api.externalintegration.payex.com/psp/invoice/payments/{{ page.paymentId }}/authorizations",
+            "href": "https://{{ page.apiUrl }}/psp/invoice/payments/{{ page.paymentId }}/authorizations",
             "rel": "create-authorization",
             "contentType": "application/json"
         },
         {
             "method": "PATCH",
-            "href": "https://api.externalintegration.payex.com/psp/invoice/payments/{{ page.paymentId }}",
+            "href": "https://{{ page.apiUrl }}/psp/invoice/payments/{{ page.paymentId }}",
             "rel": "update-payment-abort",
             "contentType": "application/json"
         },
         {
             "method": "GET",
-            "href": "https://ecom.externalintegration.payex.com/invoice/payments/authorize/2f9b51a821d40dd015332f14460f91393856725a19e9fb5a834d460af91c9ce2",
+            "href": "https://{{ page.frontEndUrl }}/invoice/payments/authorize/2f9b51a821d40dd015332f14460f91393856725a19e9fb5a834d460af91c9ce2",
             "rel": "redirect-authorization",
             "contentType": "text/html"
         }
@@ -404,7 +404,7 @@ Swedbank Pay Payments where the payment is authorized.
 
 ```http
 POST /psp/invoice/payments/{{ page.paymentId }}/authorizations HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 {
@@ -499,7 +499,7 @@ Content-Type: application/json
             },
             "operations": [
                 {
-                    "href": "https://api.externalintegration.payex.com/psp/invoice/payments/{{ page.paymentId }}",
+                    "href": "https://{{ page.apiUrl }}/psp/invoice/payments/{{ page.paymentId }}",
                     "rel": "edit-authorization",
                     "method": "PATCH"
                 }

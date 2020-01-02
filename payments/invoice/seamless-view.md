@@ -272,31 +272,31 @@ Content-Type: application/json
     "operations": [
         {
             "method": "POST",
-            "href": "https://api.externalintegration.payex.com/psp/invoice/payments/{{ page.paymentId }}/approvedlegaladdress",
+            "href": "https://{{ page.apiUrl }}/psp/invoice/payments/{{ page.paymentId }}/approvedlegaladdress",
             "rel": "create-approved-legal-address",
             "contentType": "application/json"
         },
         {
             "method": "POST",
-            "href": "https://api.externalintegration.payex.com/psp/invoice/payments/{{ page.paymentId }}/authorizations",
+            "href": "https://{{ page.apiUrl }}/psp/invoice/payments/{{ page.paymentId }}/authorizations",
             "rel": "create-authorization",
             "contentType": "application/json"
         },
         {
             "method": "PATCH",
-            "href": "https://api.externalintegration.payex.com/psp/invoice/payments/{{ page.paymentId }}",
+            "href": "https://{{ page.apiUrl }}/psp/invoice/payments/{{ page.paymentId }}",
             "rel": "update-payment-abort",
             "contentType": "application/json"
         },
         {
             "method": "GET",
-            "href": "https://ecom.externalintegration.payex.com/invoice/payments/authorize/ce98e5fa397de21b64cb4aa932aad81cf2ef18736cb9d975c82466a495cbe3bc",
+            "href": "https://{{ page.frontEndUrl }}/invoice/payments/authorize/ce98e5fa397de21b64cb4aa932aad81cf2ef18736cb9d975c82466a495cbe3bc",
             "rel": "redirect-authorization",
             "contentType": "text/html"
         },
         {
             "method": "GET",
-            "href": "https://ecom.externalintegration.payex.com/invoice/core/scripts/client/px.invoice.client.js?<token>&operation=authorize",
+            "href": "https://{{ page.frontEndUrl }}/invoice/core/scripts/client/px.invoice.client.js?<token>&operation=authorize",
             "rel": "view-authorization",
             "contentType": "application/javascript"
         }

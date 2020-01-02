@@ -7,7 +7,7 @@ If we want to reverse a previously captured amount, we need to perform
 
 ```http
 POST /psp/paymentorders/{{ page.paymentOrderId }}/reversals HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 

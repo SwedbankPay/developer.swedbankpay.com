@@ -71,7 +71,7 @@ is done through the `initiate-consumer-session` operation.
 
 ```http
 POST /psp/consumers HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -83,11 +83,11 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property              | Type     | Description                                                                             |
-| :------: | :-------------------- | :------- | :-------------------------------------------------------------------------------------- |
-|  ✔︎︎︎︎︎  | `operation`           | `string` | `initiate-consumer-session`, the operation to perform.                                  |
-|  ✔︎︎︎︎︎  | `language`            | `string` | Selected language to be used in Checkin. Supported values are `nb-NO`, `sv-SE` and `en-US` |
-|  ✔︎︎︎︎︎  | `shippingAddressRestrictedToCountryCodes`            | `string` | List of supported shipping countries for merchant. Using ISO-3166 standard.  |
+| Required | Property                                  | Type     | Description                                                                                |
+| :------: | :---------------------------------------- | :------- | :----------------------------------------------------------------------------------------- |
+|  ✔︎︎︎︎︎  | `operation`                               | `string` | `initiate-consumer-session`, the operation to perform.                                     |
+|  ✔︎︎︎︎︎  | `language`                                | `string` | Selected language to be used in Checkin. Supported values are `nb-NO`, `sv-SE` and `en-US` |
+|  ✔︎︎︎︎︎  | `shippingAddressRestrictedToCountryCodes` | `string` | List of supported shipping countries for merchant. Using ISO-3166 standard.                |
 
 When the request has been sent, a response containing an array of operations that can be acted upon will be returned:
 
@@ -104,13 +104,13 @@ Content-Type: application/json
         {
             "method": "GET",
             "rel": "redirect-consumer-identification",
-            "href": "https://ecom.externalintegration.payex.com/consumers/sessions/7e380fbb3196ea76cc45814c1d99d59b66db918ce2131b61f585645eff364871",
+            "href": "https://{{ page.frontEndUrl }}/consumers/sessions/7e380fbb3196ea76cc45814c1d99d59b66db918ce2131b61f585645eff364871",
             "contentType": "text/html"
         },
         {
             "method": "GET",
             "rel": "view-consumer-identification",
-            "href": "https://ecom.externalintegration.payex.com/consumers/core/scripts/client/px.consumer.client.js?token=7e380fbb3196ea76cc45814c1d99d59b66db918ce2131b61f585645eff364871",
+            "href": "https://{{ page.frontEndUrl }}/consumers/core/scripts/client/px.consumer.client.js?token=7e380fbb3196ea76cc45814c1d99d59b66db918ce2131b61f585645eff364871",
             "contentType": "application/javascript"
         }
     ]
@@ -255,7 +255,7 @@ the following argument objects:
 ```js
 {
     "actionType": "OnShippingDetailsAvailable",
-    "url": "https://api.externalintegration.payex.com/psp/consumers/<consumerProfileRef>/shipping-details"
+    "url": "https://{{ page.apiUrl }}/psp/consumers/<consumerProfileRef>/shipping-details"
 }
 ```
 

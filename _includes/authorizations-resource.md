@@ -10,7 +10,7 @@ made on a specific payment.
 
 ```http
 GET /psp/{{payment-instrument}}/payments/{{page.paymentId}}/authorizations HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -54,12 +54,12 @@ Content-Type: application/json
                     "operations": [
                         {
                             "method": "POST",
-                            "href": "https://api.externalintegration.payex.com/psp/{{payment-instrument}}/payments/{{page.paymentId}}/authorizations",
+                            "href": "https://{{ page.apiUrl }}/psp/{{payment-instrument}}/payments/{{page.paymentId}}/authorizations",
                             "rel": "create-authorization",
                             "contentType": "application/json"
                         },
                         {
-                            "href": "https://api.externalintegration.payex.com/psp/{{payment-instrument}}/payments/{{page.paymentId}}",
+                            "href": "https://{{ page.apiUrl }}/psp/{{payment-instrument}}/payments/{{page.paymentId}}",
                             "rel": "edit-authorization",
                             "method": "PATCH"
                         }
@@ -81,7 +81,7 @@ operation as returned in a previously created invoice payment.
 
 ```http
 POST /psp/{{payment-instrument}}/payments/{{page.paymentId}}/authorizations HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -181,7 +181,7 @@ Content-Type: application/json
             "isOperational": "TRUE|FALSE",
             "operations": [
                 {
-                    "href": "https://api.externalintegration.payex.com/psp/{{payment-instrument}}/payments/{{page.paymentId}}",
+                    "href": "https://{{ page.apiUrl }}/psp/{{payment-instrument}}/payments/{{page.paymentId}}",
                     "rel": "edit-authorization",
                     "method": "PATCH"
                 }

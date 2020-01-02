@@ -39,7 +39,7 @@ response that includes one or more expanded sub-resources inlined.
 
 ```http
 POST /psp/vipps/payments HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -64,7 +64,7 @@ Content-Type: application/json
             "completeUrl": "http://example.com/payment-completed",
             "cancelUrl": "http://example.com/payment-canceled",
             "paymentUrl": "http://example.com/perform-payment",
-            "callbackUrl": "https://api.externalintegration.payex.com/psp/payment-callback",
+            "callbackUrl": "https://{{ page.apiUrl }}/psp/payment-callback",
             "logoUrl": "https://example.com/path/to/logo.png",
             "termsOfServiceUrl": "https://example.com/terms.pdf"
 
@@ -155,12 +155,12 @@ Content-Type: application/json
     "operations": [
         {
             "method": "PATCH",
-            "href": "https://api.externalintegration.payex.com/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d",
+            "href": "https://{{ page.apiUrl }}/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d",
             "rel": "update-payment-abort"
         },
         {
             "method": "GET",
-            "href": "https://ecom.externalintegration.payex.com/vipps/payments/authorize/afccf3d0016340620756d5ff3e08f69b555fbe2e45ca71f4bd159ebdb0f00065",
+            "href": "https://{{ page.frontEndUrl }}/vipps/payments/authorize/afccf3d0016340620756d5ff3e08f69b555fbe2e45ca71f4bd159ebdb0f00065",
             "rel": "redirect-authorization"
         }
     ]
@@ -229,7 +229,7 @@ transactions made on a specific payment.
 
 ```http
 GET /psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/authorizations HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -287,7 +287,7 @@ to the `GET` request.
 
 ```http
 GET /psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/authorizations/<transactionId> HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -340,7 +340,7 @@ The `captures` resource lists the capture transactions (one or more) on a specif
 
 ```HTThP
 GET /psp/vipps/vipps/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/captures HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -399,7 +399,7 @@ finding the `rel` `create-capture`.
 
 ```http
 POST /psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/captures HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -474,7 +474,7 @@ specific payment.
 
 ```http
 GET /psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/cancellations HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -534,7 +534,7 @@ Performing a cancellation will cancel all remaning capture amounts on a payment.
 
 ```http
 POST /psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/cancellations HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -604,7 +604,7 @@ on a specific payment.
 
 ```http
 GET /psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/reversals HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -660,7 +660,7 @@ available.
 
 ```http
 POST /psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/reversals HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
