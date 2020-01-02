@@ -280,7 +280,7 @@ The `authorizations` resource contains information about the authorization trans
 
 ```http
 GET /psp/mobilepay/payments/{{ page.paymentId }}/authorizations/ HTTP/1.1
-Host: api.payex.com
+Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 `
@@ -350,7 +350,7 @@ You can return a specific autorization transaction by adding the transaction id 
 
 ```http
 GET /psp/mobilepay/payments/{{ page.paymentId }}/authorizations/ HTTP/1.1
-Host: api.payex.com
+Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -447,7 +447,7 @@ operation.
 
 ```http
 POST /psp/mobilepay/payments/{{ page.paymentId }}/captures HTTP/1.1
-Host: api.payex.com
+Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -535,7 +535,7 @@ You can only cancel a payment - or part of payment - not yet captured.
 
 ```http
 POST /psp/mobilepay/payments/{{ page.paymentId }}/cancellations HTTP/1.1
-Host: api.payex.com
+Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -614,7 +614,7 @@ payment.
 
 ```http
 POST /psp/mobilepay/payments/{{ page.paymentId }}/reversals HTTP/1.1
-Host: api.payex.com
+Host: api.externalintegration.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -629,13 +629,13 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property                 | Type         | Required | Description                                                                                                               |
-| :----------------------- | :----------- | :------- |
-| `transaction`            | `object`     | Y        | The current reversal transaction object                                                                                   |
-| └➔&nbsp;`amount`         | `integer`    | Y        | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
-| └➔&nbsp;`vatAmount`      | `integer`    | Y        | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
-| └➔&nbsp;`description`    | `string`     | Y        | A textual description of the capture                                                                                      |
-| └➔&nbsp;`payeeReference` | `string(50)` | Y        | A unique reference for the reversal transaction. See [`payeeReference`][payeeReference] for details.                      |
+| Required | Property                 | Type         | Description                                                                                                               |
+| :------: | :----------------------- | :----------- |
+|    ✔︎    | `transaction`            | `object`     | The current reversal transaction object                                                                                   |
+|    ✔︎    | └➔&nbsp;`amount`         | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
+|    ✔︎    | └➔&nbsp;`vatAmount`      | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
+|    ✔︎    | └➔&nbsp;`description`    | `string`     | A textual description of the capture                                                                                      |
+|    ✔︎    | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the reversal transaction. See [`payeeReference`][payeeReference] for details.                      |
 
 The `reversal` resource contains information about a reversal transaction made
 against a payment.

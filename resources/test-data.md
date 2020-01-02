@@ -55,7 +55,7 @@ To test a logged in user in the Demo Shop, please use the following test data:
 {:.table .table-striped}
 | Type            | Data          | Description                                                        |
 | :-------------- | :------------ | :----------------------------------------------------------------- |
-| `Mobile number` | `+4522222222` | The mobile phone number of the payer. Format Denmark: -45 22222222 |
+| `Mobile number` | `+4522222222` | The mobile phone number of the payer. Format Denmark: +45 22222222 |
 
 ## Credit Card Test Data
 
