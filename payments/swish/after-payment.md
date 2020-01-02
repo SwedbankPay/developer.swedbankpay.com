@@ -250,7 +250,7 @@ Content-Type: application/json
 The `operation` `redirect-app-swish` is only returned when using in-app flows.
 
 The payment now contains a sale transaction with the status (state)
-`AwaitingActivity`.
+`AwaitingActivity`, meaning we are awaiting a response from Swish.
 `AwaitingActivity` means that we are waiting for response from external systems.
 When the consumer confirms the payment a callback request will follow
 from Swedbank Pay.

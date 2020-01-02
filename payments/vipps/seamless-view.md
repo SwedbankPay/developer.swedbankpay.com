@@ -90,8 +90,8 @@ sequenceDiagram
   authorization.
 * ⑥ The response will contain the state of the transaction. It will normally be
   in `AwaitingActivity` in this fase of the payment.
-  `AwaitingActivity` means that we are waiting for response from external
-  systems.
+  `AwaitingActivity` in this phase of the payment, meaning we are awaiting a
+  response from Vipps.
 * ⑦ Swedbank Pay handles the dialogue with Vipps and the consumer confirms the
   purchase in the Vipps app.
 
