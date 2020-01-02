@@ -22,8 +22,8 @@ To create a MobilePay payment, you perform an HTTP `POST` against the
 `/psp/mobilepay/payments` resource. Please read the general information on how
 to compose a valid HTTP request before proceeding.
 
-MobilePay is a two-phase payment that always use purchase as operation to
-initialize the authorization.
+MobilePay is a two-phase payment instrument that always use `Purchase` as the
+`operation` to initialize the authorization.
 
 An example of a payment creation request is provided below.
 
@@ -149,12 +149,12 @@ Content-Type: application/json
     "operations": [
         {
             "method": "PATCH",
-            "href": "https://api.payex.com/psp/mobilepay/payments/{{ page.paymentId }}",
+            "href": "https://api.externalintegration.payex.com/psp/mobilepay/payments/{{ page.paymentId }}",
             "rel": "update-payment-abort"
         },
         {
             "method": "GET",
-            "href": "https://ecom.payex.com/mobilepay/payments/authorize/0018f0afb9b6dd73fb39087893362d0099c6e54166c82274b776219cf113ebfc",
+            "href": "https://ecom.externalintegration.payex.com/mobilepay/payments/authorize/0018f0afb9b6dd73fb39087893362d0099c6e54166c82274b776219cf113ebfc",
             "rel": "redirect-authorization"
         }
     ]
