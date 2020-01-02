@@ -10,7 +10,7 @@ possible to perform in the current state of the payment.
 
 ```http
 GET /psp/{{payment-instrument}}/payments/{{ page.paymentId }}/ HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -69,25 +69,25 @@ Content-Type: application/json
     "operations": [
         {
             "method": "PATCH",
-            "href": "https://api.externalintegration.payex.com/psp/{{payment-instrument}}/payments/{{ page.paymentId }}",
+            "href": "https://{{ page.apiUrl }}/psp/{{payment-instrument}}/payments/{{ page.paymentId }}",
             "rel": "update-payment-abort",
             "contentType": "application/json"
         },
         {
             "method": "GET",
-            "href": "https://ecom.externalintegration.payex.com/{{payment-instrument}}/core/scripts/client/px.creditcard.client.js?token={{ page.transactionId }}&operation=authorize",
+            "href": "https://{{ page.frontEndUrl }}/{{payment-instrument}}/core/scripts/client/px.creditcard.client.js?token={{ page.transactionId }}&operation=authorize",
             "rel": "view-authorization",
             "contentType": "application/javascript"
         },
         {
             "method": "GET",
-            "href": "https://ecom.externalintegration.payex.com/{{payment-instrument}}/payments/authorize/{{ page.transactionId }}",
+            "href": "https://{{ page.frontEndUrl }}/{{payment-instrument}}/payments/authorize/{{ page.transactionId }}",
             "rel": "redirect-authorization",
             "contentType": "text/html"
         },
         {
             "method": "POST",
-            "href": "https://api.externalintegration.payex.com/psp/{{payment-instrument}}/payments/{{ page.paymentId }}/captures",
+            "href": "https://{{ page.apiUrl }}/psp/{{payment-instrument}}/payments/{{ page.paymentId }}/captures",
             "rel": "create-capture",
             "contentType": "application/json"
         }

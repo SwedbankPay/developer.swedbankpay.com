@@ -35,22 +35,22 @@ is given below.
     "operations": [
         {
             "method": "PATCH",
-            "href": "https://api.externalintegration.payex.com/psp/swish/payments/3648fa94-7fd8-4e32-a14b-08d608f884ff",
+            "href": "https://{{ page.apiUrl }}/psp/swish/payments/3648fa94-7fd8-4e32-a14b-08d608f884ff",
             "rel": "update-payment-abort"
         },
         {
             "method": "POST",
-            "href": "https://api.externalintegration.payex.com/psp/swish/payments/3648fa94-7fd8-4e32-a14b-08d608f884ff/sales",
+            "href": "https://{{ page.apiUrl }}/psp/swish/payments/3648fa94-7fd8-4e32-a14b-08d608f884ff/sales",
             "rel": "create-sale"
         },
         {
             "method": "GET",
-            "href": "https://ecom.externalintegration.payex.com/swish/payments/sales/993b479653da83671c074316c7455da05fced9d634431edbb64f3c5f80a863f0",
+            "href": "https://{{ page.frontEndUrl }}/swish/payments/sales/993b479653da83671c074316c7455da05fced9d634431edbb64f3c5f80a863f0",
             "rel": "redirect-sale"
         },
         {
             "method": "GET",
-            "href": "https://ecom.externalintegration.payex.com/swish/core/scripts/client/px.swish.client.js?token=cfb9e24832d56fec7ab79709f56accc53d79a699756687d39095b517bc5f011b",
+            "href": "https://{{ page.frontEndUrl }}/swish/core/scripts/client/px.swish.client.js?token=cfb9e24832d56fec7ab79709f56accc53d79a699756687d39095b517bc5f011b",
             "rel": "view-payment",
             "contentType": "application/javascript"
         }
@@ -95,7 +95,7 @@ on a specific payment.
 
 ```http
 GET /psp/swish/payments/{{ page.paymentId }}/sales HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -153,7 +153,7 @@ to manage the purchase, making `msisdn` optional.
 
 ```http
 POST /psp/swish/payments/{{ page.paymentId }}/sales HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -200,7 +200,7 @@ Content-Type: application/json
 
 ```http
 POST /psp/swish/payments/{{ page.paymentId }}/sales HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -264,7 +264,7 @@ specific payment.
 
 ```http
 GET /psp/swish/payments/{{ page.paymentId }}/reversals HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -323,7 +323,7 @@ Swedbank Pay.
 
 ```http
 POST /psp/swish/payments/{{ page.paymentId }}/reversals HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -393,7 +393,7 @@ You need to include the following `HTTP` body:
 
 ```http
 PATCH /psp/payments/{{ page.paymentId }} HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 

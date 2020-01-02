@@ -203,7 +203,7 @@ Request
 
 ```http
 GET /psp/paymentorders/{{ page.paymentOrderId }}/urls/ HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -317,43 +317,43 @@ A list of possible operations and their explanation is given below.
     "operations": [
         {
             "method": "PATCH",
-            "href": "https://api.externalintegration.payex.com/psp/paymentorders/{{ page.paymentOrderId }}",
+            "href": "https://{{ page.apiUrl }}/psp/paymentorders/{{ page.paymentOrderId }}",
             "rel": "update-paymentorder-abort",
             "contentType": "application/json"
         },
         {
             "method": "PATCH",
-            "href": "https://api.externalintegration.payex.com/psp/paymentorders/{{ page.paymentOrderId }}",
+            "href": "https://{{ page.apiUrl }}/psp/paymentorders/{{ page.paymentOrderId }}",
             "rel": "update-paymentorder-updateorder",
             "contentType": "application/json"
         },
         {
             "method": "GET",
-            "href": "https://ecom.externalintegration.payex.com/paymentmenu/eb6932c2e24113377ecd88da343a10566b31f59265c665203b1287277224ef60",
+            "href": "https://{{ page.frontEndUrl }}/paymentmenu/eb6932c2e24113377ecd88da343a10566b31f59265c665203b1287277224ef60",
             "rel": "redirect-paymentorder",
             "contentType": "text/html"
         },
         {
             "method": "GET",
-            "href": "https://ecom.externalintegration.payex.com/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=eb6932c2e24113377ecd88da343a10566b31f59265c665203b1287277224ef60&culture=nb-NO",
+            "href": "https://{{ page.frontEndUrl }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=eb6932c2e24113377ecd88da343a10566b31f59265c665203b1287277224ef60&culture=nb-NO",
             "rel": "view-paymentorder",
             "contentType": "application/javascript"
         },
         {
             "method": "POST",
-            "href": "https://api.externalintegration.payex.com/psp/paymentorders/{{ page.paymentOrderId }}/captures",
+            "href": "https://{{ page.apiUrl }}/psp/paymentorders/{{ page.paymentOrderId }}/captures",
             "rel": "create-paymentorder-capture",
             "contentType": "application/json"
         },
         {
             "method": "POST",
-            "href": "https://api.externalintegration.payex.com/psp/paymentorders/{{ page.paymentOrderId }}/cancellations",
+            "href": "https://{{ page.apiUrl }}/psp/paymentorders/{{ page.paymentOrderId }}/cancellations",
             "rel": "create-paymentorder-cancel",
             "contentType": "application/json"
         },
         {
             "method": "POST",
-            "href": "https://api.externalintegration.payex.com/psp/paymentorders/{{ page.paymentOrderId }}/reversals",
+            "href": "https://{{ page.apiUrl }}/psp/paymentorders/{{ page.paymentOrderId }}/reversals",
             "rel": "create-paymentorder-reversal",
             "contentType": "application/json"
         }
@@ -399,7 +399,7 @@ The `view-paymentorder` operation contains the URI of the JavaScript that needs 
     </head>
     <body>
         <div id="checkout"></div>
-        <script src="https://ecom.externalintegration.payex.com/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=38540e86bd78e885fba2ef054ef9792512b1c9c5975cbd6fd450ef9aa15b1844&culture=nb-NO"></script>
+        <script src="https://{{ page.frontEndUrl }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=38540e86bd78e885fba2ef054ef9792512b1c9c5975cbd6fd450ef9aa15b1844&culture=nb-NO"></script>
         <script language="javascript">
             payex.hostedView.paymentMenu({
                 container: 'checkout',
@@ -488,19 +488,19 @@ Content-Type: application/json
     "operations": [
         {
             "method": "PATCH",
-            "href": "https://api.externalintegration.payex.com/psp/paymentorders/{{ page.paymentOrderId }}",
+            "href": "https://{{ page.apiUrl }}/psp/paymentorders/{{ page.paymentOrderId }}",
             "rel": "update-paymentorder-abort",
             "contentType": "application/json"
         },
         {
             "method": "GET",
-            "href": "https://ecom.externalintegration.payex.com/paymentmenu/4b0baaf8fdb5a56b5bdd78a8dd9e63e42e93ec79e5d0c0b5cc40f79cf43c9428",
+            "href": "https://{{ page.frontEndUrl }}/paymentmenu/4b0baaf8fdb5a56b5bdd78a8dd9e63e42e93ec79e5d0c0b5cc40f79cf43c9428",
             "rel": "redirect-paymentorder",
             "contentType": "text/html"
         },
         {
             "method": "GET",
-            "href": "https://ecom.externalintegration.payex.com/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=4b0baaf8fdb5a56b5bdd78a8dd9e63e42e93ec79e5d0c0b5cc40f79cf43c9428&culture=nb-NO",
+            "href": "https://{{ page.frontEndUrl }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=4b0baaf8fdb5a56b5bdd78a8dd9e63e42e93ec79e5d0c0b5cc40f79cf43c9428&culture=nb-NO",
             "rel": "view-paymentorder",
             "contentType": "application/javascript"
         }
@@ -531,7 +531,7 @@ in the request body:
 
 ```http
 PATCH /psp/paymentorders/{{ page.paymentOrderId }} HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -580,19 +580,19 @@ Content-Type: application/json
     "operations": [
         {
             "method": "PATCH",
-            "href": "https://api.externalintegration.payex.com/psp/paymentorders/{{ page.paymentOrderId }}",
+            "href": "https://{{ page.apiUrl }}/psp/paymentorders/{{ page.paymentOrderId }}",
             "rel": "update-paymentorder-abort",
             "contentType": "application/json"
         },
         {
             "method": "GET",
-            "href": "https://ecom.externalintegration.payex.com/paymentmenu/4b0baaf8fdb5a56b5bdd78a8dd9e63e42e93ec79e5d0c0b5cc40f79cf43c9428",
+            "href": "https://{{ page.frontEndUrl }}/paymentmenu/4b0baaf8fdb5a56b5bdd78a8dd9e63e42e93ec79e5d0c0b5cc40f79cf43c9428",
             "rel": "redirect-paymentorder",
             "contentType": "text/html"
         },
         {
             "method": "GET",
-            "href": "https://ecom.externalintegration.payex.com/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=4b0baaf8fdb5a56b5bdd78a8dd9e63e42e93ec79e5d0c0b5cc40f79cf43c9428&culture=nb-NO",
+            "href": "https://{{ page.frontEndUrl }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=4b0baaf8fdb5a56b5bdd78a8dd9e63e42e93ec79e5d0c0b5cc40f79cf43c9428&culture=nb-NO",
             "rel": "view-paymentorder",
             "contentType": "application/javascript"
         }
@@ -649,7 +649,7 @@ other payment instrument properties, by [expanding the sub-resource][expanding]
 
 ```http
 GET /psp/paymentorders/<paymentorderId>?$expand=currentpayment HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiUrl }}
 ```
 
 ### Creating Recurring Payments
@@ -664,7 +664,7 @@ recurrence token during the initial payment order.
 
 ```http
 POST /psp/paymentorders HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -770,7 +770,7 @@ should finish the purchase with a credit card payment instead.
 
 ```http
 GET /psp/paymentorders<paymentorderId>/payments HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -815,7 +815,7 @@ payment order container.
 
 ```http
 GET /psp/paymentorders/{{ page.paymentOrderId }}/currentpayment HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -907,7 +907,7 @@ during login/checkin.
 
 ```http
 GET /psp/paymentorders/{{ page.paymentOrderId }}/payers/ HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```

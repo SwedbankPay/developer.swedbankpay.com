@@ -163,13 +163,13 @@ Content-Type: application/json
   },
   "operations": [
     {
-      "href": "https://api.externalintegration.payex.com/psp/creditcard/payments/{{ page.paymentId }}",
+      "href": "https://{{ page.apiUrl }}/psp/creditcard/payments/{{ page.paymentId }}",
       "rel": "update-payment-abort",
       "method": "PATCH",
       "contentType": "application/json"
     },
     {
-      "href": "https://ecom.externalintegration.payex.com/creditcard/payments/authorize/123456123412341234123456789012",
+      "href": "https://{{ page.frontEndUrl }}/creditcard/payments/authorize/123456123412341234123456789012",
       "rel": "redirect-authorization",
       "method": "GET",
       "contentType": "text/html"

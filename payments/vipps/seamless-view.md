@@ -134,7 +134,7 @@ An example of an expanded `POST` request is available in the
 
 ```http
 POST /psp/vipps/payments HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -253,17 +253,17 @@ Content-Type: application/json
    "operations": [
         {
            "method": "PATCH",
-           "href": "https://api.externalintegration.payex.com/psp/vipps/payments/{{page.paymentId}}",
+           "href": "https://{{ page.apiUrl }}/psp/vipps/payments/{{page.paymentId}}",
            "rel": "update-payment-abort"
         },
         {
            "method": "GET",
-           "href": "https://ecom.externalintegration.payex.com/vipps/payments/authorize/afccf3d0016340620756d5ff3e08f69b555fbe2e45ca71f4bd159ebdb0f00065",
+           "href": "https://{{ page.frontEndUrl }}/vipps/payments/authorize/afccf3d0016340620756d5ff3e08f69b555fbe2e45ca71f4bd159ebdb0f00065",
            "rel": "redirect-authorization"
         },
         {
             "method": "GET",
-            "href": "https://ecom.externalintegration.payex.com/vipps/core/scripts/client/px.vipps.client.js?token=703687bc6005c07475c9fb0aec284bb17b8c3e80d7f6baa16792995313327673&Culture=sv-SE",
+            "href": "https://{{ page.frontEndUrl }}/vipps/core/scripts/client/px.vipps.client.js?token=703687bc6005c07475c9fb0aec284bb17b8c3e80d7f6baa16792995313327673&Culture=sv-SE",
             "rel": "view-payment",
             "contentType": "application/javascript"
         }
@@ -342,7 +342,7 @@ Use the mobile number from the consumer to create an authorization transaction.
 
 ```http
 POST /psp/vipps/payments/{{ page.paymentId }}/authorizations HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 

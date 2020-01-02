@@ -21,7 +21,7 @@ When a transaction is created it will have one of three states:
 
 ```http
 GET /psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/transactions HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```

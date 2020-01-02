@@ -84,10 +84,10 @@ Forwarded: for=82.115.151.177; host=example.com; proto=https
 The base URIs of the API Platform are:
 
 {:.table .table-striped}
-| Environment                      | Base URL                                     |
-| :------------------------------- | :------------------------------------------- |
-| [**Test**][external-integration] | `https://api.externalintegration.payex.com/` |
-| [**Production**][production]     | `https://api.payex.com/`                     |
+| Environment                      | Base URL                     |
+| :------------------------------- | :--------------------------- |
+| [**Test**][external-integration] | `https://{{ page.apiUrl }}/` |
+| [**Production**][production]     | `https://api.payex.com/`     |
 
 An important part of REST is its use of **hypermedia**. Instead of having to
 perform complex state management and hard coding URIs and the availability of
@@ -139,7 +139,7 @@ response, enabling you to access information from these sub-resources.
 
 ```http
 GET /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c?$expand=urls,authorizations HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiUrl }}
 ```
 
 To avoid unnecessary overhead, you should only expand the nodes you need info
@@ -197,23 +197,23 @@ instrument specific operations.
     "payment": {},
     "operations": [
         {
-            "href": "http://api.externalintegration.payex.com/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+            "href": "http://{{ page.apiUrl }}/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
             "rel": "update-payment-abort",
             "method": "PATCH"
         },
         {
-            "href": "https://ecom.externalintegration.payex.com/creditcard/payments/authorize/123456123412341234123456789012",
+            "href": "https://{{ page.frontEndUrl }}/creditcard/payments/authorize/123456123412341234123456789012",
             "rel": "redirect-authorization",
             "method": "GET"
         },
         {
-            "href": "https://ecom.externalintegration.payex.com/swish/core/scripts/client/px.swish.client.js?token=cfb9e24832d56fec7ab79709f56accc53d79a699756687d39095b517bc5f011b",
+            "href": "https://{{ page.frontEndUrl }}/swish/core/scripts/client/px.swish.client.js?token=cfb9e24832d56fec7ab79709f56accc53d79a699756687d39095b517bc5f011b",
             "rel": "view-payment",
             "method": "GET",
             "contentType": "application/javascript"
         },
         {
-            "href": "https://api.externalintegration.payex.com/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures",
+            "href": "https://{{ page.apiUrl }}/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures",
             "rel": "create-capture",
             "method": "POST"
         }
@@ -342,7 +342,7 @@ can read more about the payment instrument specific problem messages below:
   [iso-639-1]: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
   [iso-3166]: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
   [uuid]: https://en.wikipedia.org/wiki/Universally_unique_identifier
-  [external-integration]: https://api.externalintegration.payex.com/
+  [external-integration]: https://{{ page.apiUrl }}/
   [production]: https://api.payex.com/
   [the-rest-and-then-some]: https://www.youtube.com/watch?v=QIv9YR1bMwY
   [settlement]: #

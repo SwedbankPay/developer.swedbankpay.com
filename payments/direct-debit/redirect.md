@@ -30,7 +30,7 @@ response that includes one or more expanded sub-resources inlined.
 ```http
 Request
 POST /psp/directdebit/payments HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -127,12 +127,12 @@ Content-Type: application/json
   },
    "operations": [
         {
-           "href": "https://api.externalintegration.payex.com/psp/directdebit/payments/<paymentId>/sales",
+           "href": "https://{{ page.apiUrl }}/psp/directdebit/payments/<paymentId>/sales",
            "rel": "redirect-sale",
            "method": "POST"
         },
         {
-           "href": "http://api.externalintegration.payex.com/psp/directdebit/payments/<paymentId>",
+           "href": "http://{{ page.apiUrl }}/psp/directdebit/payments/<paymentId>",
            "rel": "update-payment-abort",
            "method": "PATCH"
         }
@@ -157,12 +157,12 @@ is given below.
    "operations": [
         {
            "method": "PATCH",
-           "href": "https://api.externalintegration.payex.com/psp/directdebit/payments/3648fa94-7fd8-4e32-a14b-08d608f884ff",
+           "href": "https://{{ page.apiUrl }}/psp/directdebit/payments/3648fa94-7fd8-4e32-a14b-08d608f884ff",
            "rel": "update-payment-abort"
         },
         {
            "method": "GET",
-           "href": "https://ecom.externalintegration.payex.com/directdebit/payments/sales/993b479653da83671c074316c7455da05fced9d634431edbb64f3c5f80a863f0",
+           "href": "https://{{ page.frontEndUrl }}/directdebit/payments/sales/993b479653da83671c074316c7455da05fced9d634431edbb64f3c5f80a863f0",
            "rel": "redirect-sale"
         }
     ]
@@ -203,7 +203,7 @@ specific payment.
 
 ```http
 GET /psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/sales HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -266,7 +266,7 @@ Content-Type: application/json
                    "isOperational": "TRUE|FALSE",
                    "operations": [
                         {
-                           "href": "https://api.externalintegration.payex.com/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+                           "href": "https://{{ page.apiUrl }}/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
                            "rel": "edit-sale",
                            "method": "PATCH"
                         }
@@ -293,7 +293,7 @@ specific payment.
 
 ```http
 GET /psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -350,7 +350,7 @@ A callback request will follow from PayEx.
 
 ```http
 POST /psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 

@@ -216,7 +216,7 @@ Content-Type: application/json
 | Required | Property                              | Type          | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | :------: | :------------------------------------ | :------------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |  ✔︎︎︎︎︎  | `payment`                             | `object`      | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`operation`                   | `string`      | The operation that the `payment` is supposed to perform. The [`FinancingConsumer`][financing-consumer] operation is used in our example. Take a look at the Other Features section for a full examples of the following `operation` options: [FinancingConsumer][financing-consumer], [Recur][recur], [Verify][verify]                                                                                                                                                                                                                                             |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`operation`                   | `string`      | The operation that the `payment` is supposed to perform. The [`FinancingConsumer`][financing-consumer] operation is used in our example. Take a look at the Other Features section for a full examples of the following `operation` options: [FinancingConsumer][financing-consumer], [Recur][recur], [Verify][verify]                                                                                                                                                                                                                         |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`intent`                      | `string`      | `Authorization` is the only intent option for invoice. Reserves the amount, and is followed by a [cancellation][cancel] or [capture][capture] of funds.                                                                                                                                                                                                                                                                                                                                                                                        |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`currency`                    | `string`      | NOK, SEK, DKK, USD or EUR.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`prices`                      | `object`      | The `prices` resource lists the prices related to a specific payment.                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
@@ -319,17 +319,17 @@ Content-Type: application/json
     },
     "operations": [
         {
-            "href": "https://api.externalintegration.payex.com/psp/invoice/payments/{{ page.paymentId }}",
+            "href": "https://{{ page.apiUrl }}/psp/invoice/payments/{{ page.paymentId }}",
             "rel": "update-payment-abort",
             "method": "PATCH"
         },
         {
-            "href": "https://api.externalintegration.payex.com/psp/invoice/payments/{{ page.paymentId }}/authorizations",
+            "href": "https://{{ page.apiUrl }}/psp/invoice/payments/{{ page.paymentId }}/authorizations",
             "rel": "create-authorize",
             "method": "POST"
         },
         {
-            "href": "https://api.externalintegration.payex.com/psp/invoice/payments/{{ page.paymentId }}/approvedlegaladdress",
+            "href": "https://{{ page.apiUrl }}/psp/invoice/payments/{{ page.paymentId }}/approvedlegaladdress",
             "rel": "create-approved-legal-address",
             "method": "POST"
         }
@@ -349,7 +349,7 @@ possible to perform in the current state of the payment.
 
 ```http
 GET /psp/invoice/payments/{{ page.paymentId }}/ HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -419,17 +419,17 @@ Content-Type: application/json
     },
     "operations": [
         {
-            "href": "https://api.externalintegration.payex.com/psp/invoice/payments/{{ page.paymentId }}/captures",
+            "href": "https://{{ page.apiUrl }}/psp/invoice/payments/{{ page.paymentId }}/captures",
             "rel": "create-capture",
             "method": "POST"
         },
         {
-            "href": "https://api.externalintegration.payex.com/psp/invoice/payments/{{ page.paymentId }}/cancellations",
+            "href": "https://{{ page.apiUrl }}/psp/invoice/payments/{{ page.paymentId }}/cancellations",
             "rel": "create-cancel",
             "method": "POST"
         },
         {
-            "href": "https://api.externalintegration.payex.com/psp/invoice/payments/{{ page.paymentId }}/approvedlegaladdress",
+            "href": "https://{{ page.apiUrl }}/psp/invoice/payments/{{ page.paymentId }}/approvedlegaladdress",
             "rel": "create-approved-legal-address",
             "method": "POST"
         }
