@@ -115,7 +115,10 @@ Content-Type: application/json
 {:.code-header}
 **Response**
 
-```json
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
 {
     "payment": {
         "prices": {
@@ -475,13 +478,13 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property                 | Type         | Required | Description                                                                                                               |
-| :----------------------- | :----------- | :------- | :------------------------------------------------------------------------------------------------------------------------ |
-| `transaction`            | `object`     | Y        | The currenct capture object.                                                                                              |
-| └➔&nbsp;`amount`         | `integer`    | Y        | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
-| └➔&nbsp;`vatAmount`      | `integer`    | Y        | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
-| └➔&nbsp;`description`    | `string`     | Y        | A textual description of the capture transaction.                                                                         |
-| └➔&nbsp;`payeeReference` | `string(50)` | Y        | A unique reference for the capture transaction. See [`payeeReference`][payeeReference] for details.                       |
+| Required | Property                 | Type         | Description                                                                                                               |
+| :------- | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------ |
+| ✔︎︎︎︎︎   | `transaction`            | `object`     | The currenct capture object.                                                                                              |
+| ✔︎︎︎︎︎   | └➔&nbsp;`amount`         | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
+| ✔︎︎︎︎︎   | └➔&nbsp;`vatAmount`      | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
+| ✔︎︎︎︎︎   | └➔&nbsp;`description`    | `string`     | A textual description of the capture transaction.                                                                         |
+| ✔︎︎︎︎︎   | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the capture transaction. See [`payeeReference`][payeeReference] for details.                       |
 
 The `capture` resource contains information about the capture transaction made
 against a mobilepay payment.
@@ -561,11 +564,11 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property| Type| Required| Description
-| : --| : --| : --| : --|
-| `transaction` | `object` |Y| The current cancellation.
-| └➔&nbsp;`description` | `string` |Y|A textual description of the reason for the cancellation.
-| └➔&nbsp;`payeeReference` | `string(50)` |Y|A unique reference for the cancellation transaction. See [`payeeReference`][payeeReference] for details.
+| Required | Property                 | Type         | Description                                                                                              |
+| :------: | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------- |
+|  ✔︎︎︎︎︎  | `transaction`            | `object`     | The current cancellation.                                                                                |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`description`    | `string`     | A textual description of the reason for the cancellation.                                                |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the cancellation transaction. See [`payeeReference`][payeeReference] for details. |
 
 The `cancel` resource contains information about a cancellation transaction
 made against a payment.
