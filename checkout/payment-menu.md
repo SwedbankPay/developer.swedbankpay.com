@@ -168,7 +168,8 @@ Content-Type: application/json
             "payeeReference": "AB832",
             "payeeName": "Merchant1",
             "productCategory": "A123",
-            "orderReference": "or-123456"
+            "orderReference": "or-123456",
+            "subsite": "MySubsite"
         },
         "payer": {
             "consumerProfileRef": "7d5788219e5bc43350e75ac633e0480ab30ad20f96797a12b96e54da869714c4"
@@ -251,6 +252,7 @@ Content-Type: application/json
 |          | └─➔&nbsp;`payeeName`                  | `string`     | The name of the payee, usually the name of the merchant.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 |          | └─➔&nbsp;`productCategory`            | `string`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                                                                                                                                                                                                                                                                                   |
 |          | └─➔&nbsp;`orderReference`             | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+|          | └─➔&nbsp;`subsite`                       | `String(40)`  | The subsite field can be used to perform [split settlement][split-settlement] on the payment. The subsites must be resolved with Swedbank Pay [reconciliation][settlement-and-reconciliation] before being used.                                                                                                                                                                                                                                                                                                                                                                                                  |
 |          | └➔&nbsp;`payer`                       | `object`     | The `payer` object containing information about the payer relevant for the payment order.                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 |   ︎︎︎    | └─➔&nbsp;`consumerProfileRef`         | `string`     | The consumer profile reference as obtained through [initiating a consumer session][initiate-consumer-session].                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 |          | └➔&nbsp;`orderItems`                  | `array`      | The array of items being purchased with the order. Used to print on invoices if the payer chooses to pay with invoice, among other things                                                                                                                                                                                                                                                                                                                                                                                                                        |
@@ -449,6 +451,7 @@ finalizing the payment in the [After Payment section][after-payment].
                          next_href="after-payment"
                          next_title="Next: After Payment" %}
 
+[after-payment]: after-payment
 [checkin-image]: /assets/img/checkout/your-information.png
 [consumer-reference]: /checkout/other-features#payeereference
 [initiate-consumer-session]: /checkout/checkin#checkin-back-end
@@ -462,7 +465,8 @@ finalizing the payment in the [After Payment section][after-payment].
 [payment-order-operations]: /checkout/after-payment#operations
 [payment-order]: #payment-orders
 [paymentorder-items]: #items
+[settlement-and-reconciliation]: /checkout/other-features#settlement-and-reconciliation
+[split-settlement]: /checkout/other-features#split-settlement
 [technical-reference-onconsumer-identified]: /checkout/payment-menu-front-end
 [urls]: /checkout/other-features#urls-resource
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
-[after-payment]: after-payment
