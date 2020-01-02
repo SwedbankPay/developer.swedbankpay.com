@@ -50,6 +50,13 @@ To test a logged in user in the Demo Shop, please use the following test data:
 | `SSN`           | `971020-2392`             | The social security number of the payer. Sweden: YYYYMMDDXXXX.     |
 | `ZipCode`       | `17674`                   | The city zip code. Format: Sweden XXXXX                            |
 
+### Denmark
+
+{:.table .table-striped}
+| Type            | Data          | Description                                                        |
+| :-------------- | :------------ | :----------------------------------------------------------------- |
+| `Mobile number` | `+4522222222` | The mobile phone number of the payer. Format Denmark: -45 22222222 |
+
 ## Credit Card Test Data
 
 ### Visa
