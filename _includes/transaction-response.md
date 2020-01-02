@@ -1,11 +1,12 @@
 {% assign instrument = include.payment-instrument | default: "paymentorder" %}
 {% assign transaction = include.transaction | default: "capture" %}
+{% assign plural = transaction | append: "s" %}
 
 {:.code-header}
 **Request**
 
 ```http
-GET /psp/{{ instrument }}/payments/{{ page.paymentId }}/{{ transaction | append: "s" }} HTTP/1.1
+GET /psp/{{ instrument }}/payments/{{ page.paymentId }}/{{ plural }} HTTP/1.1
 Host: api.payex.com
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -20,10 +21,10 @@ Content-Type: application/json
 
 {
     "payment": "/psp/{{ instrument }}/payments/{{ page.paymentId }}",
-    "{{ transaction | append: "s" }}": {
-        "id": "/psp/{{ instrument }}/payments/{{ page.paymentId }}/{{ transaction | append: "s" }}",
+    "{{ plural }}": {
+        "id": "/psp/{{ instrument }}/payments/{{ page.paymentId }}/{{ plural }}",
         "{{ transaction }}List": [{
-            "id": "/psp/{{ instrument }}/payments/{{ page.paymentId }}/{{ transaction | append: "s" }}/{{ page.transactionId }}",
+            "id": "/psp/{{ instrument }}/payments/{{ page.paymentId }}/{{ plural }}/{{ page.transactionId }}",
             "transaction": {
                 "id": "/psp/{{ instrument }}/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
                 "created": "2016-09-14T01:01:01.01Z",
@@ -48,8 +49,8 @@ Content-Type: application/json
 | Property                          | Type      | Required                                                                                                                                                                                                     |
 | :-------------------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `payment`                         | `string`  | The relative URI of the payment this list of {{ transaction }} transactions belong to.                                                                                                                       |
-| `{{ transaction | append: "s" }}` | `object`  | The current `{{ transaction | append: "s" }}` resource.                                                                                                                                                      |
-| └➔&nbsp;`id`                      | `string`  | The relative URI of the current `{{ transaction | append: "s" }}` resource.                                                                                                                                  |
+| `{{ plural }}`                    | `object`  | The current `{{ plural }}` resource.                                                                                                                                                                         |
+| └➔&nbsp;`id`                      | `string`  | The relative URI of the current `{{ plural }}` resource.                                                                                                                                                     |
 | └➔&nbsp;`{{ transaction }}List`   | `array`   | The array of {{ transaction }} transaction objects.                                                                                                                                                          |
 | └➔&nbsp;`{{ transaction }}List[]` | `object`  | The {{ transaction }} transaction object described in the `{{ transaction }}` resource below.                                                                                                                |
 | └─➔&nbsp;`id`                     | `string`  | The relative URI of the current `transaction` resource.                                                                                                                                                      |

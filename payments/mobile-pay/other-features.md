@@ -152,12 +152,12 @@ Content-Type: application/json
     "operations": [
         {
             "method": "PATCH",
-            "href": "https://api.externalintegration.payex.com/psp/mobilepay/payments/{{ page.paymentId }}",
+            "href": "https://{{ page.apiUrl }}/psp/mobilepay/payments/{{ page.paymentId }}",
             "rel": "update-payment-abort"
         },
         {
             "method": "GET",
-            "href": "https://ecom.externalintegration.payex.com/mobilepay/payments/authorize/0018f0afb9b6dd73fb39087893362d0099c6e54166c82274b776219cf113ebfc",
+            "href": "https://{{ page.frontEndUrl }}/mobilepay/payments/authorize/{{ page.transactionId }}",
             "rel": "redirect-authorization"
         }
     ]
@@ -217,27 +217,27 @@ A list of possible operations and their explanation is given below.
     "payment": {},
     "operations": [
         {
-            "href": "http://api.externalintegration.payex.com/psp/mobilepay/payments/{{ page.paymentId }}",
+            "href": "http://{{ page.apiUrl }}/psp/mobilepay/payments/{{ page.paymentId }}",
             "rel": "update-payment-abort",
             "method": "PATCH"
         },
         {
-            "href": "https://ecom.externalintegration.payex.com/mobilepay/payments/authorize/{{ page.paymentId }}",
+            "href": "https://{{ page.frontEndUrl }}/mobilepay/payments/authorize/{{ page.paymentId }}",
             "rel": "redirect-authorization",
             "method": "GET"
         },
         {
-            "href": "https://api.externalintegration.payex.com/psp/mobilepay/payments/{{ page.paymentId }}/captures",
+            "href": "https://{{ page.apiUrl }}/psp/mobilepay/payments/{{ page.paymentId }}/captures",
             "rel": "create-capture",
             "method": "POST"
         },
         {
-            "href": "https://api.externalintegration.payex.com/psp/mobilepay/payments/{{ page.paymentId }}/cancellations",
+            "href": "https://{{ page.apiUrl }}/psp/mobilepay/payments/{{ page.paymentId }}/cancellations",
             "rel": "create-cancellation",
             "method": "POST"
         },
         {
-            "href": "https://api.externalintegration.payex.com/psp/mobilepay/payments/{{ page.paymentId }}/reversals",
+            "href": "https://{{ page.apiUrl }}/psp/mobilepay/payments/{{ page.paymentId }}/reversals",
             "rel": "create-reversal",
             "method": "POST"
         },
@@ -272,7 +272,7 @@ request for the given operation.
 
 ## MobilePay transactions
 
-All MobilePay specific transactions are described below. Read more about the general transaction resource [[here>>doc:Main.ecommerce.technical-reference.core-payment-resources.WebHome]].
+All MobilePay specific transactions are described below.
 
 ## Authorizations
 
@@ -301,7 +301,7 @@ Content-Type: application/json
         "id": "/psp/mobilepay/payments/{{ page.paymentId }}/authorizations",
         "authorizationList": [{
             "id": "/psp/mobilepay/payments/{{ page.paymentId }}/authorizations/{{ page.transactionId }}",
-            "paymentToken": "{{ page.transactionId }}",
+            "paymentToken": "{{ page.paymentToken }}",
             "maskedPan": "123456xxxxxx1234",
             "expireDate": "mm/yyyy",
             "panToken": "{{ page.transactionId }}",
@@ -369,7 +369,7 @@ Content-Type: application/json
     "payment": "/psp/mobilepay/payments/{{ page.paymentId }}",
     "authorization": {
         "id": "/psp/mobilepay/payments/{{ page.paymentId }}/authorizations/{{ page.transactionId }}",
-        "paymentToken": "{{ page.transactionId }}",
+        "paymentToken": "{{ page.paymentToken }}",
         "maskedPan": "123456xxxxxx1234",
         "expireDate": "mm/yyyy",
         "panToken": "{{ page.transactionId }}",
@@ -504,9 +504,9 @@ Content-Type: application/json
         "id": "/psp/mobilepay/payments/{{ page.paymentId }}/captures",
         "captureList": [
             {
-                "id": "/psp/mobilepay/payments/{{ page.paymentId }}/captures/6f978046-ad7d-4a7e-8ac9-08d617e01a6f",
+                "id": "/psp/mobilepay/payments/{{ page.paymentId }}/captures/{{ page.transactionId }}",
                 "transaction": {
-                    "id": "/psp/mobilepay/payments/{{ page.paymentId }}/transactions/6f978046-ad7d-4a7e-8ac9-08d617e01a6f",
+                    "id": "/psp/mobilepay/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
                     "created": "2018-09-11T12:14:20.3155727Z",
                     "updated": "2018-09-11T12:14:21.3834204Z",
                     "type": "Capture",
@@ -789,7 +789,7 @@ Content-Type: application/json
 
 {
     "payment": {
-        "id": "/psp/creditcard/payments/e73da1da-1148-476c-b6bb-08d67623d21b",
+        "id": "/psp/creditcard/payments/{{ page.paymentId }}",
         "number": 70100130293,
         "created": "2019-01-09T13:11:28.371179Z",
         "updated": "2019-01-09T13:11:46.5949967Z",
@@ -799,7 +799,7 @@ Content-Type: application/json
         "state": "Aborted",
         "currency": "DKK",
         "prices": {
-            "id": "/psp/creditcard/payments/e73da1da-1148-476c-b6bb-08d67623d21b/prices"
+            "id": "/psp/creditcard/payments/{{ page.paymentId }}/prices"
         },
         "amount": 0,
         "description": "creditcard Test",
@@ -808,13 +808,13 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0",
         "language": "nb-NO",
         "urls": {
-            "id": "/psp/creditcard/payments/e73da1da-1148-476c-b6bb-08d67623d21b/urls"
+            "id": "/psp/creditcard/payments/{{ page.paymentId }}/urls"
         },
         "payeeInfo": {
-            "id": "/psp/creditcard/payments/e73da1da-1148-476c-b6bb-08d67623d21b/payeeinfo"
+            "id": "/psp/creditcard/payments/{{ page.paymentId }}/payeeinfo"
         },
         "metadata": {
-            "id": "/psp/creditcard/payments/e73da1da-1148-476c-b6bb-08d67623d21b/metadata"
+            "id": "/psp/creditcard/payments/{{ page.paymentId }}/metadata"
         }
     },
     "operations": []
