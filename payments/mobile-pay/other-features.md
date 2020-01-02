@@ -403,25 +403,38 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property                          | Type     | Description                                                                                  |
-| :-------------------------------- | :------- | :------------------------------------------------------------------------------------------- |
-| `payment`                         | `string` | The relative URI of the payment this authorization transaction resource belongs to.          |
-| `authorization`                   | `string` | The current authorization transaction resource.                                              |
-| └➔&nbsp;`id`                      | `string` | The relative URI of the current authorization transaction resource.                          |
-| └➔&nbsp;`paymentToken`            | `string` | The payment token created for the card used in the authorization.                            |
-| └➔&nbsp;`maskedPan`               | `string` | The masked PAN number of the card.                                                           |
-| └➔&nbsp;`expireDate`              | `string` | The month and year of when the card expires.                                                 |
-| └➔&nbsp;`panToken`                | `string` | The token representing the specific PAN of the card.                                         |
-| └➔&nbsp;`cardBrand`               | `string` | `Visa`, `MC`, etc. The brand of the card.                                                    |
-| └➔&nbsp;`cardType`                | `string` | `Credit Card` or `Debit Card`. Indicates the type of card used for the authorization.        |
-| └➔&nbsp;`issuingBank`             | `string` | The name of the bank that issued the card used for the authorization.                        |
-| └➔&nbsp;`countryCode`             | `string` | The country the card is issued in.                                                           |
-| └➔&nbsp;`acquirerTransactionType` | `string` | `3DSECURE` or `SSL`. Indicates the transaction type of the acquirer.                         |
-| └➔&nbsp;`acquirerStan`            | `string` | The System Trace Audit Number assigned by the acquirer to uniquely identify the transaction. |
-| └➔&nbsp;`acquirerTerminalId`      | `string` | The ID of the acquirer terminal.                                                             |
-| └➔&nbsp;`acquirerTransactionTime` | `string` | The ISO-8601 date and time of the acquirer transaction.                                      |
-| └➔&nbsp;`authenticationStatus`    | `string` | `Y`, `A`, `U` or `N`. Indicates the status of the authentication.                            |
-| └➔&nbsp;`transaction`             | `object` | The object representation of the generic transaction resource.                               |
+| Property                          | Type      | Description                                                                                                                                                                                                  |
+| :-------------------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `payment`                         | `string`  | The relative URI of the payment this authorization transaction resource belongs to.                                                                                                                          |
+| `authorization`                   | `string`  | The current authorization transaction resource.                                                                                                                                                              |
+| └➔&nbsp;`id`                      | `string`  | The relative URI of the current authorization transaction resource.                                                                                                                                          |
+| └➔&nbsp;`paymentToken`            | `string`  | The payment token created for the card used in the authorization.                                                                                                                                            |
+| └➔&nbsp;`maskedPan`               | `string`  | The masked PAN number of the card.                                                                                                                                                                           |
+| └➔&nbsp;`expireDate`              | `string`  | The month and year of when the card expires.                                                                                                                                                                 |
+| └➔&nbsp;`panToken`                | `string`  | The token representing the specific PAN of the card.                                                                                                                                                         |
+| └➔&nbsp;`cardBrand`               | `string`  | `Visa`, `MC`, etc. The brand of the card.                                                                                                                                                                    |
+| └➔&nbsp;`cardType`                | `string`  | `Credit Card` or `Debit Card`. Indicates the type of card used for the authorization.                                                                                                                        |
+| └➔&nbsp;`issuingBank`             | `string`  | The name of the bank that issued the card used for the authorization.                                                                                                                                        |
+| └➔&nbsp;`countryCode`             | `string`  | The country the card is issued in.                                                                                                                                                                           |
+| └➔&nbsp;`acquirerTransactionType` | `string`  | `3DSECURE` or `SSL`. Indicates the transaction type of the acquirer.                                                                                                                                         |
+| └➔&nbsp;`acquirerStan`            | `string`  | The System Trace Audit Number assigned by the acquirer to uniquely identify the transaction.                                                                                                                 |
+| └➔&nbsp;`acquirerTerminalId`      | `string`  | The ID of the acquirer terminal.                                                                                                                                                                             |
+| └➔&nbsp;`acquirerTransactionTime` | `string`  | The ISO-8601 date and time of the acquirer transaction.                                                                                                                                                      |
+| └➔&nbsp;`authenticationStatus`    | `string`  | `Y`, `A`, `U` or `N`. Indicates the status of the authentication.                                                                                                                                            |
+| └➔&nbsp;`transaction`             | `object`  | The object representation of the generic transaction resource.                                                                                                                                               |
+| └─➔&nbsp;`id`                     | `string`  | The relative URI of the current `transaction` resource.                                                                                                                                                      |
+| └─➔&nbsp;`created`                | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
+| └─➔&nbsp;`updated`                | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
+| └─➔&nbsp;`type`                   | `string`  | Indicates the transaction type.                                                                                                                                                                              |
+| └─➔&nbsp;`state`                  | `string`  | `Initialized`, `Completed` or `Failed`. Indicates the state of the transaction.                                                                                                                              |
+| └─➔&nbsp;`number`                 | `string`  | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead. |
+| └─➔&nbsp;`amount`                 | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` = 100.00 NOK, `5000` = 50.00 SEK.                                                                                     |
+| └─➔&nbsp;`vatAmount`              | `integer` | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                           |
+| └─➔&nbsp;`description`            | `string`  | A human readable description of maximum 40 characters of the transaction.                                                                                                                                    |
+| └─➔&nbsp;`payeeReference`         | `string`  | A unique reference for the transaction.                                                                                                                                                                      |
+| └─➔&nbsp;`failedReason`           | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
+| └─➔&nbsp;`isOperational`          | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
+| └─➔&nbsp;`operations`             | `array`   | The array of operations that are possible to perform on the transaction in its current state.                                                                                                                |
 
 ### Create authorization transaction
 
@@ -672,12 +685,25 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property              | Type     | Description                                                          |
-| :-------------------- | :------- | :------------------------------------------------------------------- |
-| `payment`             | `string` | The relative URI of the payment this capture transaction belongs to. |
-| `reversal`            | `object` | The created capture transaction.                                     |
-| └➔&nbsp;`id`          | `string` | The relative URI of the created capture transaction.                 |
-| └➔&nbsp;`transaction` | `object` | The object representation of the `transaction` resource.             |
+| Property                  | Type      | Description                                                                                                                                                                                                  |
+| :------------------------ | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `payment`                 | `string`  | The relative URI of the payment this capture transaction belongs to.                                                                                                                                         |
+| `reversal`                | `object`  | The created capture transaction.                                                                                                                                                                             |
+| └➔&nbsp;`id`              | `string`  | The relative URI of the created capture transaction.                                                                                                                                                         |
+| └➔&nbsp;`transaction`     | `object`  | The object representation of the `transaction` resource.                                                                                                                                                     |
+| └─➔&nbsp;`id`             | `string`  | The relative URI of the current `transaction` resource.                                                                                                                                                      |
+| └─➔&nbsp;`created`        | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
+| └─➔&nbsp;`updated`        | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
+| └─➔&nbsp;`type`           | `string`  | Indicates the transaction type.                                                                                                                                                                              |
+| └─➔&nbsp;`state`          | `string`  | `Initialized`, `Completed` or `Failed`. Indicates the state of the transaction.                                                                                                                              |
+| └─➔&nbsp;`number`         | `string`  | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead. |
+| └─➔&nbsp;`amount`         | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` = 100.00 NOK, `5000` = 50.00 SEK.                                                                                     |
+| └─➔&nbsp;`vatAmount`      | `integer` | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                           |
+| └─➔&nbsp;`description`    | `string`  | A human readable description of maximum 40 characters of the transaction.                                                                                                                                    |
+| └─➔&nbsp;`payeeReference` | `string`  | A unique reference for the transaction.                                                                                                                                                                      |
+| └─➔&nbsp;`failedReason`   | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
+| └─➔&nbsp;`isOperational`  | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
+| └─➔&nbsp;`operations`     | `array`   | The array of operations that are possible to perform on the transaction in its current state.                                                                                                                |
 
 ## Capture Sequence
 
