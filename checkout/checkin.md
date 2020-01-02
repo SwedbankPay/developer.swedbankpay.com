@@ -236,7 +236,7 @@ After that has all loaded, you should see something like this:
 
 As you can see, the payer's information is pre-filled as provided by the
 initial `POST`. When the payer completes the checkin, the events
-`onConsumerIdentified`, `onShippingDetailsAvailable` and `onBillingDetailsAvailable` will be raised with
+`onConsumerIdentified`, `onShippingDetailsAvailable` and `onBillingDetailsAvailable` may be raised with
 the following argument objects:
 
 {:.code-header}
