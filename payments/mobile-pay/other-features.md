@@ -16,16 +16,19 @@ sidebar:
 
 {% include alert-development-section.md %}
 
-## Create Payment
+## Payment Resource
 
-To create a MobilePay payment, you perform an HTTP `POST` against the
-`/psp/mobilepay/payments` resource. Please read the general information on how
-to compose a valid HTTP request before proceeding.
+### Create Payment
 
-MobilePay is a two-phase payment instrument that always use `Purchase` as the
-`operation` to initialize the authorization.
+To create a Mobile Pay payment, you perform an HTTP `POST` against the
+`/psp/mobilepay/payments` resource. Please read the [general
+information][general-http-info] on how to compose a valid HTTP request before
+proceeding.
 
-An example of a payment creation request is provided below.
+An example of a payment creation request is provided below. Each individual
+Property of the JSON document is described in the following section. Use the
+[expand][technical-reference-expand] request parameter to get a response that
+includes one or more expanded sub-resources inlined.
 
 {:.code-header}
 **Request**
