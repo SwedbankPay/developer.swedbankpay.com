@@ -162,7 +162,7 @@ is given below.
         },
         {
            "method": "GET",
-           "href": "{{ page.frontEndUrl }}/directdebit/payments/sales/993b479653da83671c074316c7455da05fced9d634431edbb64f3c5f80a863f0",
+           "href": "{{ page.frontEndUrl }}/directdebit/payments/sales/{{ page.paymentToken }}",
            "rel": "redirect-sale"
         }
     ]
@@ -263,7 +263,7 @@ Content-Type: application/json
                    "failedActivityName": "",
                    "failedErrorCode": "",
                    "failedErrorDescription": "",
-                   "isOperational": "TRUE|FALSE",
+                   "isOperational": false,
                    "operations": [
                         {
                            "href": "{{ page.apiUrl }}/psp/directdebit/payments/{{ page.paymentId }}",

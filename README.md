@@ -66,11 +66,11 @@ These are found under `defaults.values:` and should be used where fitting.
    and response examples.
 5. `paymentToken`: This is used to replace the payment token `GUID` for request
    and response examples.
-6. `apiHost`: This constant is used to replace the host urls of request and
+6. `apiHost`: This constant is used as a replacement for the API host name in requests and
    responses.
-7. `apiUrl`: This constant is used to replace the api url for request and
+7. `apiUrl`: This constant is used as a replacement for the API URL in request and
    response examples.
-8. `frontEndUrl`: This constant is used to replace the frontend urls in request
+8. `frontEndUrl`: This constant is used as a replacement for frontend URLs in request
    and response examples.
 
 Using these constants makes our documentation more resilient to change and makes

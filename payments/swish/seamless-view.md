@@ -313,7 +313,7 @@ Content-Type: application/json
       },
       {
             "method": "GET",
-            "href": "{{ page.frontEndUrl }}/swish/core/scripts/client/px.swish.client.js?token=123456123412341234123456789012",
+            "href": "{{ page.frontEndUrl }}/swish/core/scripts/client/px.swish.client.js?token={{ page.paymentToken }}",
             "rel": "view-payment",
             "contentType": "application/javascript"
       }

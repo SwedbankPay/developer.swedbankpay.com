@@ -110,7 +110,7 @@ Content-Type: application/json
         {
             "method": "GET",
             "rel": "view-consumer-identification",
-            "href": "{{ page.frontEndUrl }}/consumers/core/scripts/client/px.consumer.client.js?token=7e380fbb3196ea76cc45814c1d99d59b66db918ce2131b61f585645eff364871",
+            "href": "{{ page.frontEndUrl }}/consumers/core/scripts/client/px.consumer.client.js?token={{ page.paymentToken }}",
             "contentType": "application/javascript"
         }
     ]

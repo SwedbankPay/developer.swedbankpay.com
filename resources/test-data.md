@@ -126,7 +126,7 @@ errors thorugh spesific amounts.
 
 First, POST a Payment (operation purchase) and enter the link to the payment
 page. Example URL: -
-<{{ page.frontEndUrl }}/creditcardv2/payments/authorize/739cbaeae33320a5b289e2fc135a8ae443e7b510474c2785683f71c497b49552> .
+<{{ page.frontEndUrl }}/creditcardv2/payments/authorize/{{ page.paymentToken }}> .
 Fill the data for either the Visa or MasterCard as shown below.
 
 {:.table .table-striped}

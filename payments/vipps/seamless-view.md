@@ -264,7 +264,7 @@ Content-Type: application/json
         },
         {
             "method": "GET",
-            "href": "{{ page.frontEndUrl }}/vipps/core/scripts/client/px.vipps.client.js?token=703687bc6005c07475c9fb0aec284bb17b8c3e80d7f6baa16792995313327673&Culture=sv-SE",
+            "href": "{{ page.frontEndUrl }}/vipps/core/scripts/client/px.vipps.client.js?token={{ page.paymentToken }}&Culture=sv-SE",
             "rel": "view-payment",
             "contentType": "application/javascript"
         }

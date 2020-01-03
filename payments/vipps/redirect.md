@@ -230,7 +230,7 @@ Content-Type: application/json
     "operations": [
         {
             "method": "POST",
-            "href": "http://{{ page.apiHost }}/psp/vipps/payments/{{ page.transactionId }}/authorizations",
+            "href": "{{ page.apiUrl }}/psp/vipps/payments/{{ page.transactionId }}/authorizations",
             "rel": "create-authorization"
         },
         {
@@ -240,7 +240,7 @@ Content-Type: application/json
         },
         {
             "method": "GET",
-            "href": "http://{{ page.apiHost }}/vipps/payments/authorize/8fb05a835f2fc227dc7bca9abaf649b919ba8a572deb448bff543dd5806dacb7",
+            "href": "{{ page.apiUrl }}/vipps/payments/authorize/8fb05a835f2fc227dc7bca9abaf649b919ba8a572deb448bff543dd5806dacb7",
             "rel": "redirect-authorization"
         }
     ]

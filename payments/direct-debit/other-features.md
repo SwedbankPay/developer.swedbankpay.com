@@ -152,7 +152,7 @@ Content-Type: application/json
             "method": "POST"
         },
         {
-            "href": "http://{{ page.apiHost }}/psp/directdebit/payments/<paymentId>",
+            "href": "{{ page.apiUrl }}/psp/directdebit/payments/<paymentId>",
             "rel": "update-payment-abort",
             "method": "PATCH"
         }
@@ -177,12 +177,12 @@ and their explanation is given below.
     "operations": [
         {
             "method": "PATCH",
-            "href": "{{ page.apiUrl }}/psp/directdebit/payments/{{ page.transactionId }}",
+            "href": "{{ page.apiUrl }}/psp/directdebit/payments/{{ page.paymentId }}",
             "rel": "update-payment-abort"
         },
         {
             "method": "GET",
-            "href": "{{ page.frontEndUrl }}/directdebit/payments/sales/993b479653da83671c074316c7455da05fced9d634431edbb64f3c5f80a863f0",
+            "href": "{{ page.frontEndUrl }}/directdebit/payments/sales/{{ page.paymentToken }}",
             "rel": "redirect-sale"
         }
     ]
