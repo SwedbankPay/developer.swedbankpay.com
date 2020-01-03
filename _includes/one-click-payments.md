@@ -88,7 +88,7 @@ Content-Type: application/json
     "payment": {
         "operation": "Purchase",
         "intent": "Authorization",
-        "paymentToken": "{{ page.paymentId }}"
+        "paymentToken": "{{ page.paymentToken }}"
     },
     "creditCard": {
         "noCVC": true
