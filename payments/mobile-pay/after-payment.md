@@ -71,49 +71,10 @@ Content-Type: application/json
 The `capture` resource contains information about the capture transaction made
 against a MobilePay payment.
 You can return a specific capture transaction by adding the transaction id to
- the `GET` request.
+the `GET` request.
 
-{:.code-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "payment": "/psp/mobilepay/payments/{{ page.paymentId }}",
-    "captures": {
-        "id": "/psp/mobilepay/payments/{{ page.paymentId }}/captures",
-        "captureList": [
-            {
-                "id": "/psp/mobilepay/payments/{{ page.paymentId }}/captures/{{ page.transactionId }}",
-                "transaction": {
-                    "id": "/psp/mobilepay/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
-                    "created": "2018-09-11T12:14:20.3155727Z",
-                    "updated": "2018-09-11T12:14:21.3834204Z",
-                    "type": "Capture",
-                    "state": "Completed",
-                    "number": 75100000126,
-                    "amount": 1000,
-                    "vatAmount": 250,
-                    "description": "description for transaction",
-                    "payeeReference": "1234",
-                    "isOperational": false,
-                    "operations": []
-                }
-            }
-        ]
-    }
-}
-```
-
-{:.table .table-striped}
-| Property              | Type     | Description                                                                            |
-| :-------------------- | :------- | :------------------------------------------------------------------------------------- |
-| `payment`             | `string` | The relative URI of the payment this capture transaction belongs to.                   |
-| `capture`             | `string` | The capture transaction object.                                                        |
-| └➔&nbsp;`id`          | `string` | The relative URI of the created capture transaction.                                   |
-| └➔&nbsp;`transaction` | `object` | The object representation of the generic [transaction resource][transaction-resource]. |
+{% include transaction-response.md payment-instrument="mobile-pay"
+    transaction="capture"%}
 
 ## Capture Sequence
 
@@ -176,42 +137,8 @@ made against a payment.
 You can return a specific cancellation transaction by adding the transaction
 id to the `GET` request.
 
-{:.code-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "payment": "/psp/mobilepay/payments/{{ page.paymentId }}",
-    "cancellation": {
-        "id": "/psp/mobilepay/payments/{{ page.paymentId }}/cancellations/{{ page.transactionId }}",
-        "transaction": {
-            "id": "/psp/mobilepay/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
-            "created": "2018-09-11T12:19:38.1247314Z",
-            "updated": "2018-09-11T12:19:38.3059149Z",
-            "type": "Cancellation",
-            "state": "Completed",
-            "number": 75100000127,
-            "amount": 500,
-            "vatAmount": 0,
-            "description": "Test Cancellation",
-            "payeeReference": "ABC123",
-            "isOperational": false,
-            "operations": []
-        }
-    }
-}
-```
-
-{:.table .table-striped}
-| Property              | Type     | Description                                                                            |
-| :-------------------- | :------- | :------------------------------------------------------------------------------------- |
-| `payment`             | `string` | The relative URI of the payment this cancellation transaction belongs to.              |
-| `cancellation`        | `string` | The current cancellation transaction object.                                           |
-| └➔&nbsp;`id`          | `string` | The relative URI of the current cancellation transaction resource.                     |
-| └➔&nbsp;`transaction` | `object` | The object representation of the generic [transaction resource][transaction-resource]. |
+{% include transaction-response.md payment-instrument="mobile-pay"
+    transaction="cancellation"%}
 
 ## Cancel Sequence
 
@@ -276,42 +203,8 @@ against a payment.
 You can return a specific reversal transaction by adding the transaction id to
 the `GET` request.
 
-{:.code-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "payment": "/psp/mobilepay/payments/{{ page.paymentId }}",
-    "reversal": {
-        "id": "/psp/mobilepay/payments/{{ page.paymentId }}/reversals/{{ page.transactionId }}",
-        "transaction": {
-            "id": "/psp/mobilepay/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
-            "created": "2018-09-11T12:25:54.339611Z",
-            "updated": "2018-09-11T12:25:54.5738079Z",
-            "type": "Reversal",
-            "state": "Completed",
-            "number": 75100000128,
-            "amount": 1000,
-            "vatAmount": 0,
-            "description": "Reversal reason",
-            "payeeReference": "DEF456",
-            "isOperational": false,
-            "operations": []
-        }
-    }
-}
-```
-
-{:.table .table-striped}
-| Property              | Type     | Description                                                                            |
-| :-------------------- | :------- | :------------------------------------------------------------------------------------- |
-| `payment`             | `string` | The relative URI of the payment this capture transaction belongs to.                   |
-| `reversal`            | `string` | The reversal transaction.                                                              |
-| └➔&nbsp;`id`          | `string` | The relative URI of the created capture transaction.                                   |
-| └➔&nbsp;`transaction` | `object` | The object representation of the generic [transaction resource][transaction-resource]. |
+{% include transaction-response.md payment-instrument="mobile-pay"
+    transaction="reversal"%}
 
 ## Reversal Sequence
 
