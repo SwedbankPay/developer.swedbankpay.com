@@ -68,7 +68,9 @@ These are found under `defaults.values:` and should be used where fitting.
    and response examples.
 6. `apiHost`: This constant is used to replace the host urls of request and
    responses.
-7. `frontEndUrl`: This constant is used to replace the frontend urls in request
+7. `apiUrl`: This constant is used to replace the api url for request and
+   response examples.
+8. `frontEndUrl`: This constant is used to replace the frontend urls in request
    and response examples.
 
 Using these constants makes our documentation more resilient to change and makes
