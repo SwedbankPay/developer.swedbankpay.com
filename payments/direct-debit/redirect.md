@@ -245,11 +245,11 @@ Content-Type: application/json
                 }
             },
             {
-               "id": "/psp/directdebit/payments/{{ page.paymentId }}/sales/12345678-1234-1234-1234-123456789013",
+               "id": "/psp/directdebit/payments/{{ page.paymentId }}/sales/{{ page.transactionId }}",
                "selectedBank": "NordeaFI|...",
                "deviceIsMobile": "TRUE|FALSE",
                "transaction": {
-                   "id": "/psp/directdebit/payments/{{ page.paymentId }}/transactions/12345678-1234-1234-1234-123456789013",
+                   "id": "/psp/directdebit/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
                    "created": "2018-09-14T01:01:01.01Z",
                    "updated": "2018-09-14T01:01:01.03Z",
                    "type": "Sale",

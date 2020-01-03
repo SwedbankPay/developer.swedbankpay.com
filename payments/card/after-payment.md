@@ -588,8 +588,8 @@ Content-Type: application/json
 
 {
   "instrumentData": {
-    "id": "/psp/creditcard/payments/instrumentdata/12345678-1234-1234-1234-123456789000",
-    "paymentToken": "12345678-1234-1234-1234-123456789000",
+    "id": "/psp/creditcard/payments/instrumentdata/{{ page.paymentId }}",
+    "paymentToken": "{{ page.paymentToken }}",
     "payeeId": "{{ page.merchantId }}",
     "isDeleted": true|false,
     "isPayeeToken": false,
