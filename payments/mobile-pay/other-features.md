@@ -278,75 +278,11 @@ All MobilePay specific transactions are described below.
 
 The `authorizations` resource contains information about the authorization transactions made on a specific payment.
 
-{:.code-header}
-**Request**
+{% include transaction-response.md payment-instrument="mobile-pay"
+    transaction="authorization"%}
 
-```http
-GET /psp/mobilepay/payments/{{ page.paymentId }}/authorizations/ HTTP/1.1
-Host: {{ page.apiUrl }}
-Authorization: Bearer <AccessToken>
-Content-Type: application/json
-`
-
-{:.code-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "payment": "/psp/mobilepay/payments/{{ page.paymentId }}",
-    "authorizations": {
-        "id": "/psp/mobilepay/payments/{{ page.paymentId }}/authorizations",
-        "authorizationList": [{
-            "id": "/psp/mobilepay/payments/{{ page.paymentId }}/authorizations/{{ page.transactionId }}",
-            "paymentToken": "{{ page.paymentToken }}",
-            "maskedPan": "123456xxxxxx1234",
-            "expireDate": "mm/yyyy",
-            "panToken": "{{ page.transactionId }}",
-            "cardBrand": "Visa",
-            "cardType": "Credit Card",
-            "issuingBank": "UTL MAESTRO",
-            "countryCode": "999",
-            "acquirerTransactionType": "3DSECURE",
-            "acquirerStan": "39736",
-            "acquirerTerminalId": "39",
-            "acquirerTransactionTime": "2017-08-29T13:42:18Z",
-            "authenticationStatus": "Y",
-            "transaction": {
-                "id": "/psp/mobilepay/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
-                "created": "2018-09-14T01:01:01.01Z",
-                "updated": "2018-09-14T01:01:01.03Z",
-                "type": "Authorization",
-                "state": "Initialized",
-                "number": 1234567890,
-                "amount": 1000,
-                "vatAmount": 250,
-                "description": "Test transaction",
-                "payeeReference": "AH123456",
-                "failedReason": "",
-                "failedActivityName": "Authorize",
-                "failedErrorCode": "REJECTED_BY_ACQUIRER",
-                "failedErrorDescription": "General decline, response-code: 05",
-                "isOperational": true,
-                "operations": []
-            }
-        }]
-    }
-}
-```
-
-{:.table .table-striped}
-| Property                      | Type     | Description                                                                           |
-| :---------------------------- | :------- | :------------------------------------------------------------------------------------ |
-| `payment`                     | `string` | The relative URI of the payment this authorization transactions resource belongs to.  |
-| `authorizations`              | `object` | The authorization object.                                                             |
-| └➔&nbsp;`id`                  | `string` | The relative URI of the current authorization transactions resource.                  |
-| └➔&nbsp;`authorizationList`   | `array`  | The array of authorization transaction objects.                                       |
-| └➔&nbsp;`authorizationList[]` | `object` | The authorization transaction object described in the `authorization` resource below. |
-
-You can return a specific autorization transaction by adding the transaction id to the `GET`request.
+You can return a specific autorization transaction by adding the transaction id
+to the `GET`request.
 
 {:.code-header}
 **Request**
@@ -491,47 +427,8 @@ against a mobilepay payment.
 You can return a specific capture transaction by adding the transaction id to
 the `GET` request.
 
-{:.code-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "payment": "/psp/mobilepay/payments/{{ page.paymentId }}",
-    "captures": {
-        "id": "/psp/mobilepay/payments/{{ page.paymentId }}/captures",
-        "captureList": [
-            {
-                "id": "/psp/mobilepay/payments/{{ page.paymentId }}/captures/{{ page.transactionId }}",
-                "transaction": {
-                    "id": "/psp/mobilepay/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
-                    "created": "2018-09-11T12:14:20.3155727Z",
-                    "updated": "2018-09-11T12:14:21.3834204Z",
-                    "type": "Capture",
-                    "state": "Completed",
-                    "number": 75100000126,
-                    "amount": 1000,
-                    "vatAmount": 250,
-                    "description": "description for transaction",
-                    "payeeReference": "1234",
-                    "isOperational": false,
-                    "operations": []
-                }
-            }
-        ]
-    }
-}
-```
-
-{:.table .table-striped}
-| Property               | Type     | Description                                                          |
-| :--------------------- | :------- | :------------------------------------------------------------------- |
-| `payment`              | `string` | The relative URI of the payment this capture transaction belongs to. |
-| `captures`             | `object` | The created capture transaction.                                     |
-| └➔&nbsp;`id`           | `string` | The relative URI of the created capture transaction.                 |
-| └➔&nbsp;`stransaction` | `object` | The object representation of the `transaction` resource.             |
+{% include transaction-response.md payment-instrument="mobile-pay"
+    transaction="capture"%}
 
 ## Cancellations
 
@@ -575,42 +472,8 @@ made against a payment.
 You can return a specific cancellation transaction by adding the transaction id
 to the `GET` request.
 
-{:.code-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "payment": "/psp/mobilepay/payments/{{ page.paymentId }}",
-    "cancellation": {
-        "id": "/psp/mobilepay/payments/{{ page.paymentId }}/cancellations/{{ page.transactionId }}",
-        "transaction": {
-            "id": "/psp/mobilepay/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
-            "created": "2018-09-11T12:19:38.1247314Z",
-            "updated": "2018-09-11T12:19:38.3059149Z",
-            "type": "Cancellation",
-            "state": "Completed",
-            "number": 75100000127,
-            "amount": 500,
-            "vatAmount": 0,
-            "description": "Test Cancellation",
-            "payeeReference": "ABC123",
-            "isOperational": false,
-            "operations": []
-        }
-    }
-}
-```
-
-{:.table .table-striped}
-| Property| Type| Description
-| : --| : --| : --|
-| `payment` | `string` |The relative URI of the payment this cancellation transaction belongs to.
-| `cancellation` | `object` |The current cancellation transaction resource.
-| └➔&nbsp;`id` | `string` |The relative URI of the current cancellation transaction resource.
-| └➔&nbsp;`transaction` | `object` |The object representation of the current transaction.
+{% include transaction-response.md payment-instrument="mobile-pay"
+    transaction="cancellation"%}
 
 ## Reversals
 
@@ -658,55 +521,8 @@ against a payment.
 You can return a specific reversal transaction by adding the transaction id to
 the `GET` request.
 
-{:.code-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "payment": "/psp/mobilepay/payments/{{ page.paymentId }}",
-    "reversal": {
-        "id": "/psp/mobilepay/payments/{{ page.paymentId }}/reversals/{{ page.transactionId }}",
-        "transaction": {
-            "id": "/psp/mobilepay/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
-            "created": "2018-09-11T12:25:54.339611Z",
-            "updated": "2018-09-11T12:25:54.5738079Z",
-            "type": "Reversal",
-            "state": "Completed",
-            "number": 75100000128,
-            "amount": 1000,
-            "vatAmount": 0,
-            "description": "Test Reversal",
-            "payeeReference": "DEF456",
-            "isOperational": false,
-            "operations": []
-        }
-    }
-}
-```
-
-{:.table .table-striped}
-| Property                  | Type      | Description                                                                                                                                                                                                  |
-| :------------------------ | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `payment`                 | `string`  | The relative URI of the payment this capture transaction belongs to.                                                                                                                                         |
-| `reversal`                | `object`  | The created capture transaction.                                                                                                                                                                             |
-| └➔&nbsp;`id`              | `string`  | The relative URI of the created capture transaction.                                                                                                                                                         |
-| └➔&nbsp;`transaction`     | `object`  | The object representation of the `transaction` resource.                                                                                                                                                     |
-| └─➔&nbsp;`id`             | `string`  | The relative URI of the current `transaction` resource.                                                                                                                                                      |
-| └─➔&nbsp;`created`        | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
-| └─➔&nbsp;`updated`        | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
-| └─➔&nbsp;`type`           | `string`  | Indicates the transaction type.                                                                                                                                                                              |
-| └─➔&nbsp;`state`          | `string`  | `Initialized`, `Completed` or `Failed`. Indicates the state of the transaction.                                                                                                                              |
-| └─➔&nbsp;`number`         | `string`  | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead. |
-| └─➔&nbsp;`amount`         | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` = 100.00 NOK, `5000` = 50.00 SEK.                                                                                     |
-| └─➔&nbsp;`vatAmount`      | `integer` | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                           |
-| └─➔&nbsp;`description`    | `string`  | A human readable description of maximum 40 characters of the transaction.                                                                                                                                    |
-| └─➔&nbsp;`payeeReference` | `string`  | A unique reference for the transaction.                                                                                                                                                                      |
-| └─➔&nbsp;`failedReason`   | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
-| └─➔&nbsp;`isOperational`  | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
-| └─➔&nbsp;`operations`     | `array`   | The array of operations that are possible to perform on the transaction in its current state.                                                                                                                |
+{% include transaction-response.md payment-instrument="mobile-pay"
+    transaction="reversal"%}
 
 ## Capture Sequence
 
