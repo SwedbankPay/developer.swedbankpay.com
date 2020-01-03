@@ -6,7 +6,7 @@
 **Request**
 
 ```http
-GET /psp/{{ instrument }}/payments/{{ page.paymentId }}/{{ transaction | append: "s" }} HTTP/1.1
+GET /psp/{{ instrument }}/payments/{{ page.paymentId }}/{{ plural }} HTTP/1.1
 Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
