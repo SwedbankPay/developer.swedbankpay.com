@@ -300,7 +300,7 @@ Content-Type: application/json
 
 {
     "paymentorder": {
-      "id": "/psp/paymentorders/{{ page.paymentId }}"
+      "id": "/psp/paymentorders/{{ page.paymentOrderId }}"
     },
     "operations": [
         {

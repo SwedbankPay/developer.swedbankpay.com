@@ -1275,7 +1275,7 @@ object:
 ```js
 {
     "paymentOrder":{
-        "id": "/psp/paymentorders/{{ page.paymentId }}",
+        "id": "/psp/paymentorders/{{ page.paymentOrderId }}",
         "instrument": "<payment instrument>"
     },
     "payment":{
