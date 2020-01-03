@@ -104,7 +104,7 @@ beginning of the file using the following syntax.
 {% assign instrument = include.payment-instrument | default: "paymentorder" %}
 ```
 
-This assigns the variable `instrument` to `"paymentOrder"` by default if it 
+This assigns the variable `instrument` to `"paymentOrder"` by default if it
 isn't passed in via the include.
 
 ```markdown
@@ -112,6 +112,24 @@ isn't passed in via the include.
 ```
 
 Read more about passing arguments and how includes work [here][liquid-includes].
+
+### Mermaid
+
+Having diagrams easy to read in Markdown as well as rendered in HTML makes
+maintaining it easier.
+Using [mermaid-js][mermaid-github] to generate sequence diagrams is easy using
+our build system or the [Mermaid Live Editor][mermaid-live-editor].
+
+```mermaid
+sequenceDiagram
+  participant SwedbankPay as Swedbank Pay
+
+  activate SwedbankPay
+  SwedbankPay->>-Merchant: POST <callbackUrl>
+  activate Merchant
+  note left of Merchant: Callback by SwedbankPay
+  Merchant->>-SwedbankPay: GET [credit card payment]
+```
 
 ## License
 
@@ -134,6 +152,8 @@ This website is available as open source under the terms of the
 [last-commit-badge]: https://img.shields.io/github/last-commit/SwedbankPay/developer.swedbankpay.com/master
 [license]: https://opensource.org/licenses/MIT
 [liquid-includes]: https://jekyllrb.com/docs/includes/
+[mermaid-github]: https://github.com/mermaid-js/mermaid
+[mermaid-live-editor]: https://mermaidjs.github.io/mermaid-live-editor
 [ruby]: https://www.ruby-lang.org/en/
 [swp-dp]: https://developer.swedbankpay.com
 [vsc-ruler]: https://stackoverflow.com/a/29972073/61818
