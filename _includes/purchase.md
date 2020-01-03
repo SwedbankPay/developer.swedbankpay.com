@@ -167,7 +167,7 @@ Content-Type: application/json
       "contentType": "application/json"
     },
     {
-      "href": "https://{{ page.frontEndUrl }}/creditcard/payments/authorize/123456123412341234123456789012",
+      "href": "{{ page.frontEndUrl }}/creditcard/payments/authorize/123456123412341234123456789012",
       "rel": "redirect-authorization",
       "method": "GET",
       "contentType": "text/html"

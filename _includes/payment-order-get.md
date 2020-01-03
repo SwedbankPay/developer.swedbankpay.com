@@ -56,13 +56,13 @@ Content-Type: application/json
         },
         {
             "method": "GET",
-            "href": "https://{{ page.frontEndUrl }}/paymentmenu/4b0baaf8fdb5a56b5bdd78a8dd9e63e42e93ec79e5d0c0b5cc40f79cf43c9428",
+            "href": "{{ page.frontEndUrl }}/paymentmenu/4b0baaf8fdb5a56b5bdd78a8dd9e63e42e93ec79e5d0c0b5cc40f79cf43c9428",
             "rel": "redirect-paymentorder",
             "contentType": "text/html"
         },
         {
             "method": "GET",
-            "href": "https://{{ page.frontEndUrl }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=4b0baaf8fdb5a56b5bdd78a8dd9e63e42e93ec79e5d0c0b5cc40f79cf43c9428&culture=nb-NO",
+            "href": "{{ page.frontEndUrl }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=4b0baaf8fdb5a56b5bdd78a8dd9e63e42e93ec79e5d0c0b5cc40f79cf43c9428&culture=nb-NO",
             "rel": "view-paymentorder",
             "contentType": "application/javascript"
         }

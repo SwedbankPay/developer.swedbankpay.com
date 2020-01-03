@@ -162,7 +162,7 @@ is given below.
         },
         {
            "method": "GET",
-           "href": "https://{{ page.frontEndUrl }}/directdebit/payments/sales/993b479653da83671c074316c7455da05fced9d634431edbb64f3c5f80a863f0",
+           "href": "{{ page.frontEndUrl }}/directdebit/payments/sales/993b479653da83671c074316c7455da05fced9d634431edbb64f3c5f80a863f0",
            "rel": "redirect-sale"
         }
     ]

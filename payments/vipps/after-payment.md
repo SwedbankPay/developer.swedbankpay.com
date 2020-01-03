@@ -160,7 +160,7 @@ Content-Type: application/json
         },
         {
             "method": "GET",
-            "href": "https://{{ page.frontEndUrl }}/vipps/payments/authorize/afccf3d0016340620756d5ff3e08f69b555fbe2e45ca71f4bd159ebdb0f00065",
+            "href": "{{ page.frontEndUrl }}/vipps/payments/authorize/afccf3d0016340620756d5ff3e08f69b555fbe2e45ca71f4bd159ebdb0f00065",
             "rel": "redirect-authorization"
         }
     ]

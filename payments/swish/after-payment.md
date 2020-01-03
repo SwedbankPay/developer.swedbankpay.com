@@ -45,12 +45,12 @@ is given below.
         },
         {
             "method": "GET",
-            "href": "https://{{ page.frontEndUrl }}/swish/payments/sales/993b479653da83671c074316c7455da05fced9d634431edbb64f3c5f80a863f0",
+            "href": "{{ page.frontEndUrl }}/swish/payments/sales/993b479653da83671c074316c7455da05fced9d634431edbb64f3c5f80a863f0",
             "rel": "redirect-sale"
         },
         {
             "method": "GET",
-            "href": "https://{{ page.frontEndUrl }}/swish/core/scripts/client/px.swish.client.js?token=cfb9e24832d56fec7ab79709f56accc53d79a699756687d39095b517bc5f011b",
+            "href": "{{ page.frontEndUrl }}/swish/core/scripts/client/px.swish.client.js?token=cfb9e24832d56fec7ab79709f56accc53d79a699756687d39095b517bc5f011b",
             "rel": "view-payment",
             "contentType": "application/javascript"
         }

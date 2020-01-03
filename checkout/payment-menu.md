@@ -304,7 +304,7 @@ Content-Type: application/json
     },
     "operations": [
         {
-            "href": "https://{{ page.frontEndUrl }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=38540e86bd78e885fba2ef054ef9792512b1c9c5975cbd6fd450ef9aa15b1844&culture=sv-SE",
+            "href": "{{ page.frontEndUrl }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=38540e86bd78e885fba2ef054ef9792512b1c9c5975cbd6fd450ef9aa15b1844&culture=sv-SE",
             "rel": "view-paymentorder",
             "method": "GET",
             "contentType": "application/javascript"

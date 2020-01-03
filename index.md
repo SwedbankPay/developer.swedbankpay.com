@@ -202,12 +202,12 @@ instrument specific operations.
             "method": "PATCH"
         },
         {
-            "href": "https://{{ page.frontEndUrl }}/creditcard/payments/authorize/123456123412341234123456789012",
+            "href": "{{ page.frontEndUrl }}/creditcard/payments/authorize/123456123412341234123456789012",
             "rel": "redirect-authorization",
             "method": "GET"
         },
         {
-            "href": "https://{{ page.frontEndUrl }}/swish/core/scripts/client/px.swish.client.js?token=cfb9e24832d56fec7ab79709f56accc53d79a699756687d39095b517bc5f011b",
+            "href": "{{ page.frontEndUrl }}/swish/core/scripts/client/px.swish.client.js?token=cfb9e24832d56fec7ab79709f56accc53d79a699756687d39095b517bc5f011b",
             "rel": "view-payment",
             "method": "GET",
             "contentType": "application/javascript"

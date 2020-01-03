@@ -329,13 +329,13 @@ A list of possible operations and their explanation is given below.
         },
         {
             "method": "GET",
-            "href": "https://{{ page.frontEndUrl }}/paymentmenu/eb6932c2e24113377ecd88da343a10566b31f59265c665203b1287277224ef60",
+            "href": "{{ page.frontEndUrl }}/paymentmenu/eb6932c2e24113377ecd88da343a10566b31f59265c665203b1287277224ef60",
             "rel": "redirect-paymentorder",
             "contentType": "text/html"
         },
         {
             "method": "GET",
-            "href": "https://{{ page.frontEndUrl }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=eb6932c2e24113377ecd88da343a10566b31f59265c665203b1287277224ef60&culture=nb-NO",
+            "href": "{{ page.frontEndUrl }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=eb6932c2e24113377ecd88da343a10566b31f59265c665203b1287277224ef60&culture=nb-NO",
             "rel": "view-paymentorder",
             "contentType": "application/javascript"
         },
@@ -399,7 +399,7 @@ The `view-paymentorder` operation contains the URI of the JavaScript that needs 
     </head>
     <body>
         <div id="checkout"></div>
-        <script src="https://{{ page.frontEndUrl }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=38540e86bd78e885fba2ef054ef9792512b1c9c5975cbd6fd450ef9aa15b1844&culture=nb-NO"></script>
+        <script src="{{ page.frontEndUrl }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=38540e86bd78e885fba2ef054ef9792512b1c9c5975cbd6fd450ef9aa15b1844&culture=nb-NO"></script>
         <script language="javascript">
             payex.hostedView.paymentMenu({
                 container: 'checkout',
@@ -494,13 +494,13 @@ Content-Type: application/json
         },
         {
             "method": "GET",
-            "href": "https://{{ page.frontEndUrl }}/paymentmenu/4b0baaf8fdb5a56b5bdd78a8dd9e63e42e93ec79e5d0c0b5cc40f79cf43c9428",
+            "href": "{{ page.frontEndUrl }}/paymentmenu/4b0baaf8fdb5a56b5bdd78a8dd9e63e42e93ec79e5d0c0b5cc40f79cf43c9428",
             "rel": "redirect-paymentorder",
             "contentType": "text/html"
         },
         {
             "method": "GET",
-            "href": "https://{{ page.frontEndUrl }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=4b0baaf8fdb5a56b5bdd78a8dd9e63e42e93ec79e5d0c0b5cc40f79cf43c9428&culture=nb-NO",
+            "href": "{{ page.frontEndUrl }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=4b0baaf8fdb5a56b5bdd78a8dd9e63e42e93ec79e5d0c0b5cc40f79cf43c9428&culture=nb-NO",
             "rel": "view-paymentorder",
             "contentType": "application/javascript"
         }
@@ -586,13 +586,13 @@ Content-Type: application/json
         },
         {
             "method": "GET",
-            "href": "https://{{ page.frontEndUrl }}/paymentmenu/4b0baaf8fdb5a56b5bdd78a8dd9e63e42e93ec79e5d0c0b5cc40f79cf43c9428",
+            "href": "{{ page.frontEndUrl }}/paymentmenu/4b0baaf8fdb5a56b5bdd78a8dd9e63e42e93ec79e5d0c0b5cc40f79cf43c9428",
             "rel": "redirect-paymentorder",
             "contentType": "text/html"
         },
         {
             "method": "GET",
-            "href": "https://{{ page.frontEndUrl }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=4b0baaf8fdb5a56b5bdd78a8dd9e63e42e93ec79e5d0c0b5cc40f79cf43c9428&culture=nb-NO",
+            "href": "{{ page.frontEndUrl }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=4b0baaf8fdb5a56b5bdd78a8dd9e63e42e93ec79e5d0c0b5cc40f79cf43c9428&culture=nb-NO",
             "rel": "view-paymentorder",
             "contentType": "application/javascript"
         }

@@ -188,7 +188,7 @@ Content-Type: application/json
             "contentType": "application/json"
         },
         {
-            "href": "https://{{ page.frontEndUrl }}/creditcard/payments/verification/123456123412341234123456789012",
+            "href": "{{ page.frontEndUrl }}/creditcard/payments/verification/123456123412341234123456789012",
             "rel": "redirect-verification",
             "method": "GET",
             "contentType": "application/json"

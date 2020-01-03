@@ -151,7 +151,7 @@ Content-Type: application/json
         },
         {
            "method": "GET",
-           "href": "https://{{ page.frontEndUrl }}/vipps/payments/authorize/afccf3d0016340620756d5ff3e08f69b555fbe2e45ca71f4bd159ebdb0f00065",
+           "href": "{{ page.frontEndUrl }}/vipps/payments/authorize/afccf3d0016340620756d5ff3e08f69b555fbe2e45ca71f4bd159ebdb0f00065",
            "rel": "redirect-authorization"
         }
     ]
@@ -196,7 +196,7 @@ A list of possible operations and their explanation is given below.
            "method": "PATCH"
         },
         {
-           "href": "https://{{ page.frontEndUrl }}/vipps/payments/authorize/123456123412341234123456789012",
+           "href": "{{ page.frontEndUrl }}/vipps/payments/authorize/123456123412341234123456789012",
            "rel": "redirect-authorization",
            "method": "GET"
         },

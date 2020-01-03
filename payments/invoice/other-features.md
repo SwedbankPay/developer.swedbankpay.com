@@ -331,7 +331,7 @@ Content-Type: application/json
         },
         {
             "method": "GET",
-            "href": "https://{{ page.frontEndUrl }}/invoice/payments/authorize/2f9b51a821d40dd015332f14460f91393856725a19e9fb5a834d460af91c9ce2",
+            "href": "{{ page.frontEndUrl }}/invoice/payments/authorize/2f9b51a821d40dd015332f14460f91393856725a19e9fb5a834d460af91c9ce2",
             "rel": "redirect-authorization",
             "contentType": "text/html"
         }

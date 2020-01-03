@@ -75,13 +75,13 @@ Content-Type: application/json
         },
         {
             "method": "GET",
-            "href": "https://{{ page.frontEndUrl }}/{{ payment-instrument }}/core/scripts/client/px.creditcard.client.js?token={{ page.transactionId }}&operation=authorize",
+            "href": "{{ page.frontEndUrl }}/{{ payment-instrument }}/core/scripts/client/px.creditcard.client.js?token={{ page.transactionId }}&operation=authorize",
             "rel": "view-authorization",
             "contentType": "application/javascript"
         },
         {
             "method": "GET",
-            "href": "https://{{ page.frontEndUrl }}/{{ payment-instrument }}/payments/authorize/{{ page.transactionId }}",
+            "href": "{{ page.frontEndUrl }}/{{ payment-instrument }}/payments/authorize/{{ page.transactionId }}",
             "rel": "redirect-authorization",
             "contentType": "text/html"
         },

@@ -300,7 +300,7 @@ Content-Type: application/json
             "rel": "create-sale"
       },
       {
-        "href": "https://{{ page.frontEndUrl }}/swish/payments/authorize/123456123412341234123456789012",
+        "href": "{{ page.frontEndUrl }}/swish/payments/authorize/123456123412341234123456789012",
         "rel": "redirect-sale",
         "method": "GET",
         "contentType": "text/html"
@@ -313,7 +313,7 @@ Content-Type: application/json
       },
       {
             "method": "GET",
-            "href": "https://{{ page.frontEndUrl }}/swish/core/scripts/client/px.swish.client.js?token=123456123412341234123456789012",
+            "href": "{{ page.frontEndUrl }}/swish/core/scripts/client/px.swish.client.js?token=123456123412341234123456789012",
             "rel": "view-payment",
             "contentType": "application/javascript"
       }

@@ -290,13 +290,13 @@ Content-Type: application/json
         },
         {
             "method": "GET",
-            "href": "https://{{ page.frontEndUrl }}/invoice/payments/authorize/ce98e5fa397de21b64cb4aa932aad81cf2ef18736cb9d975c82466a495cbe3bc",
+            "href": "{{ page.frontEndUrl }}/invoice/payments/authorize/ce98e5fa397de21b64cb4aa932aad81cf2ef18736cb9d975c82466a495cbe3bc",
             "rel": "redirect-authorization",
             "contentType": "text/html"
         },
         {
             "method": "GET",
-            "href": "https://{{ page.frontEndUrl }}/invoice/core/scripts/client/px.invoice.client.js?<token>&operation=authorize",
+            "href": "{{ page.frontEndUrl }}/invoice/core/scripts/client/px.invoice.client.js?<token>&operation=authorize",
             "rel": "view-authorization",
             "contentType": "application/javascript"
         }

@@ -34,4 +34,4 @@ defaults:
       paymentToken: 2e2324ce-8aa3-41f7-82f9-927434689b8c
       apiHost: api.externalintegration.payex.com
       apiUrl: https://api.externalintegration.payex.com
-      frontEndUrl: ecom.externalintegration.payex.com
+      frontEndUrl: https://ecom.externalintegration.payex.com
