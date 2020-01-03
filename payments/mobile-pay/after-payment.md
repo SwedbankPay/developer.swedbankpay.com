@@ -45,7 +45,7 @@ operation.
 
 ```http
 POST /psp/mobilepay/payments/{{ page.paymentId }}/captures HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -113,7 +113,7 @@ You can only cancel a payment - or part of payment - not yet captured.
 
 ```http
 POST /psp/mobilepay/payments/{{ page.paymentId }}/cancellations HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -175,7 +175,7 @@ captured payment.
 
 ```http
 POST /psp/mobilepay/payments/{{ page.paymentId }}/reversals HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
