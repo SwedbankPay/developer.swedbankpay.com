@@ -14,6 +14,8 @@ sidebar:
       title: Open Source Development Guidelines
     - url: /resources/release-notes
       title: Release Notes
+    - url: /resources/terminology
+      title: Terminology
 ---
 
 {% include alert-review-section.md %}
