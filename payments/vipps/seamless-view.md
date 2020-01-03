@@ -89,7 +89,6 @@ sequenceDiagram
 * ⑤ A `POST` request is sent to the Vipps API with the mobile number for
   authorization.
 * ⑥ The response will contain the state of the transaction. It will normally be
-  in `AwaitingActivity` in this fase of the payment.
   `AwaitingActivity` in this phase of the payment, meaning we are awaiting a
   response from Vipps.
 * ⑦ Swedbank Pay handles the dialogue with Vipps and the consumer confirms the
