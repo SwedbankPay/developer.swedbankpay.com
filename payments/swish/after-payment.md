@@ -35,12 +35,12 @@ is given below.
     "operations": [
         {
             "method": "PATCH",
-            "href": "https://{{ page.apiUrl }}/psp/swish/payments/{{ page.transactionId }}",
+            "href": "https://{{ page.apiUrl }}/psp/swish/payments/{{ page.paymentId }}",
             "rel": "update-payment-abort"
         },
         {
             "method": "POST",
-            "href": "https://{{ page.apiUrl }}/psp/swish/payments/{{ page.transactionId }}/sales",
+            "href": "https://{{ page.apiUrl }}/psp/swish/payments/{{ page.paymentId }}/sales",
             "rel": "create-sale"
         },
         {
