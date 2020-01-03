@@ -235,7 +235,7 @@ Content-Type: application/json
         },
         {
             "method": "PATCH",
-            "href": "http://{{ page.apiHost }}/psp/vipps/payments/{{ page.transactionId }}",
+            "href": "{{ page.apiUrl }}/psp/vipps/payments/{{ page.transactionId }}",
             "rel": "update-payment-abort"
         },
         {
