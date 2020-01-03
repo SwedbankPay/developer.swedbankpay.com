@@ -329,7 +329,7 @@ A list of possible operations and their explanation is given below.
         },
         {
             "method": "GET",
-            "href": "{{ page.frontEndUrl }}/paymentmenu/eb6932c2e24113377ecd88da343a10566b31f59265c665203b1287277224ef60",
+            "href": "{{ page.frontEndUrl }}/paymentmenu/{{ page.paymentToken }}",
             "rel": "redirect-paymentorder",
             "contentType": "text/html"
         },
