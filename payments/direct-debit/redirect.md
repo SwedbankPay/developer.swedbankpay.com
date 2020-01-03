@@ -157,7 +157,7 @@ is given below.
    "operations": [
         {
            "method": "PATCH",
-           "href": "https://{{ page.apiUrl }}/psp/directdebit/payments/3648fa94-7fd8-4e32-a14b-08d608f884ff",
+           "href": "https://{{ page.apiUrl }}/psp/directdebit/payments/{{ page.transactionId }}",
            "rel": "update-payment-abort"
         },
         {
@@ -221,11 +221,11 @@ Content-Type: application/json
        "id": "/psp/directdebit/payments/{{ page.paymentId }}/sales",
        "salesList": [
             {
-               "id": "/psp/directdebit/payments/{{ page.paymentId }}/sales/12345678-1234-1234-1234-123456789012",
+               "id": "/psp/directdebit/payments/{{ page.paymentId }}/sales/{{ page.transactionId }}",
                "selectedBank": "NordeaFI",
                "deviceIsMobile": "TRUE|FALSE",
                "transaction": {
-                   "id": "/psp/directdebit/payments/{{ page.paymentId }}/transactions/12345678-1234-1234-1234-123456789012",
+                   "id": "/psp/directdebit/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
                    "created": "2018-09-14T01:01:01.01Z",
                    "updated": "2018-09-14T01:01:01.03Z",
                    "type": "Sale",
@@ -311,9 +311,9 @@ Content-Type: application/json
        "id": "/psp/directdebit/payments/{{ page.paymentId }}/reversals",
        "reversalList": [
             {
-               "id": "/psp/directdebit/payments/{{ page.paymentId }}/reversals/12345678-1234-1234-1234-123456789012",
+               "id": "/psp/directdebit/payments/{{ page.paymentId }}/reversals/{{ page.transactionId }}",
                "transaction": {
-                   "id": "/psp/directdebit/payments/{{ page.paymentId }}/transactions/12345678-1234-1234-1234-123456789012",
+                   "id": "/psp/directdebit/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
                    "created": "2016-09-14T01:01:01.01Z",
                    "updated": "2016-09-14T01:01:01.03Z",
                    "type": "Reversal",
@@ -382,9 +382,9 @@ Content-Type: application/json
 {
    "payment": "/psp/directdebit/payments/{{ page.paymentId }}",
    "reversal": {
-       "id": "/psp/directdebit/payments/{{ page.paymentId }}/reversals/12345678-1234-1234-1234-123456789012",
+       "id": "/psp/directdebit/payments/{{ page.paymentId }}/reversals/{{ page.transactionId }}",
        "transaction": {
-           "id": "/psp/directdebit/payments/{{ page.paymentId }}/transactions/12345678-1234-1234-1234-123456789012",
+           "id": "/psp/directdebit/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
            "created": "2016-09-14T01:01:01.01Z",
            "updated": "2016-09-14T01:01:01.03Z",
            "type": "Reversal",
