@@ -332,7 +332,7 @@ Content-Type: application/json
     },
     "operations": [
         {
-            "href": "https://{{ page.apiHost }}/psp/creditcard/payments/{{ page.paymentId }}",
+            "href": "{{ page.apiUrl }}/psp/creditcard/payments/{{ page.paymentId }}",
             "rel": "update-payment-abort",
             "method": "PATCH",
             "contentType": "application/json"
@@ -635,7 +635,7 @@ Content-Type: application/json
     },
     "operations": [
         {
-            "href": "https://{{ page.apiHost }}/psp/creditcard/payments/{{ page.paymentId }}",
+            "href": "{{ page.apiUrl }}/psp/creditcard/payments/{{ page.paymentId }}",
             "rel": "update-payment-abort",
             "method": "PATCH",
             "contentType": "application/json"
@@ -805,7 +805,7 @@ often help narrow down the specifics of the problem.
 ### Contractual Problem Types
 
 All contract types will have the following URI in front of type:
-`https://{{ page.apiHost }}/psp/<errordetail>/creditcard`
+`{{ page.apiUrl }}/psp/<errordetail>/creditcard`
 
 {:.table .table-striped}
 | Type                           | Status | Description                                 |

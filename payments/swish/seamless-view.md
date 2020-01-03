@@ -289,14 +289,14 @@ Content-Type: application/json
     },
     "operations": [
       {
-        "href": "https://{{ page.apiHost }}/psp/swish/payments/{{ page.paymentId }}",
+        "href": "{{ page.apiUrl }}/psp/swish/payments/{{ page.paymentId }}",
         "rel": "update-payment-abort",
         "method": "PATCH",
         "contentType": "application/json"
       },
       {
             "method": "POST",
-            "href": "https://{{ page.apiHost }}/psp/swish/payments/{{ page.paymentId }}/sales",
+            "href": "{{ page.apiUrl }}/psp/swish/payments/{{ page.paymentId }}/sales",
             "rel": "create-sale"
       },
       {

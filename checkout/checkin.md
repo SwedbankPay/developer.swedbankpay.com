@@ -255,7 +255,7 @@ the following argument objects:
 ```js
 {
     "actionType": "OnShippingDetailsAvailable",
-    "url": "https://{{ page.apiHost }}/psp/consumers/<consumerProfileRef>/shipping-details"
+    "url": "{{ page.apiUrl }}/psp/consumers/<consumerProfileRef>/shipping-details"
 }
 ```
 

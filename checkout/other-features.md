@@ -317,13 +317,13 @@ A list of possible operations and their explanation is given below.
     "operations": [
         {
             "method": "PATCH",
-            "href": "https://{{ page.apiHost }}/psp/paymentorders/{{ page.paymentOrderId }}",
+            "href": "{{ page.apiUrl }}/psp/paymentorders/{{ page.paymentOrderId }}",
             "rel": "update-paymentorder-abort",
             "contentType": "application/json"
         },
         {
             "method": "PATCH",
-            "href": "https://{{ page.apiHost }}/psp/paymentorders/{{ page.paymentOrderId }}",
+            "href": "{{ page.apiUrl }}/psp/paymentorders/{{ page.paymentOrderId }}",
             "rel": "update-paymentorder-updateorder",
             "contentType": "application/json"
         },
@@ -341,19 +341,19 @@ A list of possible operations and their explanation is given below.
         },
         {
             "method": "POST",
-            "href": "https://{{ page.apiHost }}/psp/paymentorders/{{ page.paymentOrderId }}/captures",
+            "href": "{{ page.apiUrl }}/psp/paymentorders/{{ page.paymentOrderId }}/captures",
             "rel": "create-paymentorder-capture",
             "contentType": "application/json"
         },
         {
             "method": "POST",
-            "href": "https://{{ page.apiHost }}/psp/paymentorders/{{ page.paymentOrderId }}/cancellations",
+            "href": "{{ page.apiUrl }}/psp/paymentorders/{{ page.paymentOrderId }}/cancellations",
             "rel": "create-paymentorder-cancel",
             "contentType": "application/json"
         },
         {
             "method": "POST",
-            "href": "https://{{ page.apiHost }}/psp/paymentorders/{{ page.paymentOrderId }}/reversals",
+            "href": "{{ page.apiUrl }}/psp/paymentorders/{{ page.paymentOrderId }}/reversals",
             "rel": "create-paymentorder-reversal",
             "contentType": "application/json"
         }
@@ -488,7 +488,7 @@ Content-Type: application/json
     "operations": [
         {
             "method": "PATCH",
-            "href": "https://{{ page.apiHost }}/psp/paymentorders/{{ page.paymentOrderId }}",
+            "href": "{{ page.apiUrl }}/psp/paymentorders/{{ page.paymentOrderId }}",
             "rel": "update-paymentorder-abort",
             "contentType": "application/json"
         },
@@ -580,7 +580,7 @@ Content-Type: application/json
     "operations": [
         {
             "method": "PATCH",
-            "href": "https://{{ page.apiHost }}/psp/paymentorders/{{ page.paymentOrderId }}",
+            "href": "{{ page.apiUrl }}/psp/paymentorders/{{ page.paymentOrderId }}",
             "rel": "update-paymentorder-abort",
             "contentType": "application/json"
         },

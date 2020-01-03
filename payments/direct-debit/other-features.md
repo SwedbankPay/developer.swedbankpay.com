@@ -147,7 +147,7 @@ Content-Type: application/json
   },
     "operations": [
         {
-            "href": "https://{{ page.apiHost }}/psp/directdebit/payments/<paymentId>/sales",
+            "href": "{{ page.apiUrl }}/psp/directdebit/payments/<paymentId>/sales",
             "rel": "redirect-sale",
             "method": "POST"
         },
@@ -177,7 +177,7 @@ and their explanation is given below.
     "operations": [
         {
             "method": "PATCH",
-            "href": "https://{{ page.apiHost }}/psp/directdebit/payments/{{ page.transactionId }}",
+            "href": "{{ page.apiUrl }}/psp/directdebit/payments/{{ page.transactionId }}",
             "rel": "update-payment-abort"
         },
         {
@@ -286,7 +286,7 @@ Content-Type: application/json
                     "isOperational": true,
                     "operations": [
                         {
-                            "href": "https://{{ page.apiHost }}/psp/directdebit/payments/{{ page.paymentId }}",
+                            "href": "{{ page.apiUrl }}/psp/directdebit/payments/{{ page.paymentId }}",
                             "rel": "edit-sale",
                             "method": "PATCH"
                         }

@@ -54,12 +54,12 @@ Content-Type: application/json
                     "operations": [
                         {
                             "method": "POST",
-                            "href": "https://{{ page.apiHost }}/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/authorizations",
+                            "href": "{{ page.apiUrl }}/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/authorizations",
                             "rel": "create-authorization",
                             "contentType": "application/json"
                         },
                         {
-                            "href": "https://{{ page.apiHost }}/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}",
+                            "href": "{{ page.apiUrl }}/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}",
                             "rel": "edit-authorization",
                             "method": "PATCH"
                         }
@@ -181,7 +181,7 @@ Content-Type: application/json
             "isOperational": "TRUE|FALSE",
             "operations": [
                 {
-                    "href": "https://{{ page.apiHost }}/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}",
+                    "href": "{{ page.apiUrl }}/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}",
                     "rel": "edit-authorization",
                     "method": "PATCH"
                 }

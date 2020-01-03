@@ -59,7 +59,7 @@ Content-Type: application/json
            "completeUrl": "http://example.com/payment-completed",
            "cancelUrl": "http://example.com/payment-canceled",
            "paymentUrl": "http://example.com/perform-payment",
-           "callbackUrl": "https://{{ page.apiHost }}/psp/payment-callback",
+           "callbackUrl": "{{ page.apiUrl }}/psp/payment-callback",
            "logoUrl": "https://example.com/path/to/logo.png",
            "termsOfServiceUrl": "https://example.com/terms.pdf"
 
@@ -146,7 +146,7 @@ Content-Type: application/json
    "operations": [
         {
            "method": "PATCH",
-           "href": "https://{{ page.apiHost }}/psp/vipps/payments/{{ page.paymentId }}",
+           "href": "{{ page.apiUrl }}/psp/vipps/payments/{{ page.paymentId }}",
            "rel": "update-payment-abort"
         },
         {
@@ -201,17 +201,17 @@ A list of possible operations and their explanation is given below.
            "method": "GET"
         },
         {
-           "href": "https://{{ page.apiHost }}/psp/mobilepay/payments/{{ page.paymentId }}/captures",
+           "href": "{{ page.apiUrl }}/psp/mobilepay/payments/{{ page.paymentId }}/captures",
            "rel": "create-capture",
            "method": "POST"
         },
         {
-           "href": "https://{{ page.apiHost }}/psp/mobilepay/payments/{{ page.paymentId }}/cancellations",
+           "href": "{{ page.apiUrl }}/psp/mobilepay/payments/{{ page.paymentId }}/cancellations",
            "rel": "create-cancellation",
            "method": "POST"
         },
         {
-           "href": "https://{{ page.apiHost }}/psp/mobilepay/payments/{{ page.paymentId }}/reversals",
+           "href": "{{ page.apiUrl }}/psp/mobilepay/payments/{{ page.paymentId }}/reversals",
            "rel": "create-reversal",
            "method": "POST"
         }

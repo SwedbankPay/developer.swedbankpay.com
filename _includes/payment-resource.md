@@ -69,7 +69,7 @@ Content-Type: application/json
     "operations": [
         {
             "method": "PATCH",
-            "href": "https://{{ page.apiHost }}/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}",
+            "href": "{{ page.apiUrl }}/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}",
             "rel": "update-payment-abort",
             "contentType": "application/json"
         },
@@ -87,7 +87,7 @@ Content-Type: application/json
         },
         {
             "method": "POST",
-            "href": "https://{{ page.apiHost }}/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/captures",
+            "href": "{{ page.apiUrl }}/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/captures",
             "rel": "create-capture",
             "contentType": "application/json"
         }

@@ -161,7 +161,7 @@ Content-Type: application/json
   },
   "operations": [
     {
-      "href": "https://{{ page.apiHost }}/psp/creditcard/payments/{{ page.paymentId }}",
+      "href": "{{ page.apiUrl }}/psp/creditcard/payments/{{ page.paymentId }}",
       "rel": "update-payment-abort",
       "method": "PATCH",
       "contentType": "application/json"

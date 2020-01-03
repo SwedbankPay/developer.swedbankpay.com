@@ -313,19 +313,19 @@ Content-Type: application/json
     "operations": [
         {
             "method": "POST",
-            "href": "https://{{ page.apiHost }}/psp/invoice/payments/{{ page.paymentId }}/approvedlegaladdress",
+            "href": "{{ page.apiUrl }}/psp/invoice/payments/{{ page.paymentId }}/approvedlegaladdress",
             "rel": "create-approved-legal-address",
             "contentType": "application/json"
         },
         {
             "method": "POST",
-            "href": "https://{{ page.apiHost }}/psp/invoice/payments/{{ page.paymentId }}/authorizations",
+            "href": "{{ page.apiUrl }}/psp/invoice/payments/{{ page.paymentId }}/authorizations",
             "rel": "create-authorization",
             "contentType": "application/json"
         },
         {
             "method": "PATCH",
-            "href": "https://{{ page.apiHost }}/psp/invoice/payments/{{ page.paymentId }}",
+            "href": "{{ page.apiUrl }}/psp/invoice/payments/{{ page.paymentId }}",
             "rel": "update-payment-abort",
             "contentType": "application/json"
         },
@@ -499,7 +499,7 @@ Content-Type: application/json
             },
             "operations": [
                 {
-                    "href": "https://{{ page.apiHost }}/psp/invoice/payments/{{ page.paymentId }}",
+                    "href": "{{ page.apiUrl }}/psp/invoice/payments/{{ page.paymentId }}",
                     "rel": "edit-authorization",
                     "method": "PATCH"
                 }

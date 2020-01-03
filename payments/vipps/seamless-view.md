@@ -254,7 +254,7 @@ Content-Type: application/json
    "operations": [
         {
            "method": "PATCH",
-           "href": "https://{{ page.apiHost }}/psp/vipps/payments/{{ page.paymentId }}",
+           "href": "{{ page.apiUrl }}/psp/vipps/payments/{{ page.paymentId }}",
            "rel": "update-payment-abort"
         },
         {

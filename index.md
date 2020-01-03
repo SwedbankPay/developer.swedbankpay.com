@@ -84,10 +84,10 @@ Forwarded: for=82.115.151.177; host=example.com; proto=https
 The base URIs of the API Platform are:
 
 {:.table .table-striped}
-| Environment                      | Base URL                      |
-| :------------------------------- | :---------------------------- |
-| [**Test**][external-integration] | `https://{{ page.apiHost }}/` |
-| [**Production**][production]     | `https://api.payex.com/`      |
+| Environment                      | Base URL                 |
+| :------------------------------- | :----------------------- |
+| [**Test**][external-integration] | `{{ page.apiUrl }}/`     |
+| [**Production**][production]     | `https://api.payex.com/` |
 
 An important part of REST is its use of **hypermedia**. Instead of having to
 perform complex state management and hard coding URIs and the availability of
@@ -213,7 +213,7 @@ instrument specific operations.
             "contentType": "application/javascript"
         },
         {
-            "href": "https://{{ page.apiHost }}/psp/creditcard/payments/{{ page.paymentId }}/captures",
+            "href": "{{ page.apiUrl }}/psp/creditcard/payments/{{ page.paymentId }}/captures",
             "rel": "create-capture",
             "method": "POST"
         }
@@ -342,7 +342,7 @@ can read more about the payment instrument specific problem messages below:
   [iso-639-1]: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
   [iso-3166]: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
   [uuid]: https://en.wikipedia.org/wiki/Universally_unique_identifier
-  [external-integration]: https://{{ page.apiHost }}/
+  [external-integration]: {{ page.apiUrl }}/
   [production]: https://api.payex.com/
   [the-rest-and-then-some]: https://www.youtube.com/watch?v=QIv9YR1bMwY
   [settlement]: #
