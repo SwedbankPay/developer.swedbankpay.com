@@ -106,7 +106,7 @@ beginning of the file using the following syntax.
 {% assign instrument = include.payment-instrument | default: "paymentorder" %}
 ```
 
-This assigns the variable `instrument` to `"paymentOrder"` by default if it
+This assigns `"paymentOrder"` to the variable `instrument` by default if it
 isn't passed in via the include.
 
 ```markdown
