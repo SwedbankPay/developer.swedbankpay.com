@@ -45,7 +45,7 @@ in their own section below.
 
 ```http
 POST /psp/creditcard/payments HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -120,7 +120,7 @@ Content-Type: application/json
             "termsOfServiceUrl": "https://example.com/payment-terms.pdf",
         },
         "payeeInfo": {
-            "payeeId": "12345678-1234-1234-1234-123456789012",
+            "payeeId": "{{ page.merchantId }}"
             "payeeReference": "CD1234",
             "payeeName": "Merchant1",
             "productCategory": "A123",
@@ -291,7 +291,7 @@ Content-Type: application/json
 |          | └➔&nbsp;`rejectConsumerCards`            | `boolean`     | `true` if consumer cards should be declined; otherwise `false` per default. Default value is set by Swedbank Pay and can be changed at your request.                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 |          | └➔&nbsp;`rejectCorporateCards`           | `boolean`     | `true` if corporate cards should be declined; otherwise `false` per default. Default value is set by Swedbank Pay and can be changed at your request.                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 |          | └➔&nbsp;`no3DSecure`                     | `boolean`     | `true` if 3-D Secure should be disabled for this payment in the case a stored card is used; otherwise `false` per default. To use this feature it has to be enabled on the contract with Swedbank Pay.                                                                                                                                                                                                                                                                                                                                                                                                            |
-|          | └➔&nbsp;`noCvc`                          | `boolean`     | `true` if the CVC field should be disabled for this payment in the case a stored card is used; otherwise `false` per default. This feature is commonly used when [One-Click Payments][one-click-payments] is enabled. To use this feature it has to be enabled on the contract with Swedbank Pay.                                                                                                                                                                                                                                                                                                                                                                                                         |
+|          | └➔&nbsp;`noCvc`                          | `boolean`     | `true` if the CVC field should be disabled for this payment in the case a stored card is used; otherwise `false` per default. This feature is commonly used when [One-Click Payments][one-click-payments] is enabled. To use this feature it has to be enabled on the contract with Swedbank Pay.                                                                                                                                                                                                                                                                                                                 |
 
 {:.code-header}
 **Response**
@@ -302,7 +302,7 @@ Content-Type: application/json
 
 {
     "payment": {
-        "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+        "id": "/psp/creditcard/payments/{{ page.paymentId }}",
         "number": 1234567890,
         "instrument": "CreditCard",
         "created": "2016-09-14T13:21:29.3182115Z",
@@ -320,25 +320,25 @@ Content-Type: application/json
         "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
-        "prices": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/prices" },
-        "transactions": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions" },
-        "authorizations": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations" },
-        "captures": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures" },
-        "reversals": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals" },
-        "cancellations": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/cancellations" },
-        "urls": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/urls" },
-        "payeeInfo": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeInfo" },
-        "settings": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/settings" }
+        "prices": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/prices" },
+        "transactions": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/transactions" },
+        "authorizations": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/authorizations" },
+        "captures": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/captures" },
+        "reversals": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/reversals" },
+        "cancellations": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/cancellations" },
+        "urls": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/urls" },
+        "payeeInfo": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/payeeInfo" },
+        "settings": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/settings" }
     },
     "operations": [
         {
-            "href": "https://{{ page.apiUrl }}/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+            "href": "{{ page.apiUrl }}/psp/creditcard/payments/{{ page.paymentId }}",
             "rel": "update-payment-abort",
             "method": "PATCH",
             "contentType": "application/json"
         },
         {
-            "href": "https://{{ page.frontEndUrl }}/creditcard/payments/authorize/123456123412341234123456789012",
+            "href": "{{ page.frontEndUrl }}/creditcard/payments/authorize/123456123412341234123456789012",
             "rel": "redirect-authorization",
             "method": "GET",
             "contentType": "text/html"
@@ -363,7 +363,7 @@ through a previous payment in order to charge the same card.
 
 ```http
 POST /psp/creditcard/payments HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -371,7 +371,7 @@ Content-Type: application/json
     "payment": {
         "operation": "Recur",
         "intent": "Authorization|AutoCapture",
-        "recurrenceToken": "5adc265f-f87f-4313-577e-08d3dca1a26c",
+        "recurrenceToken": "{{ page.paymentId }}",
         "currency": "NOK",
         "amount": 1500,
         "vatAmount": 0,
@@ -382,7 +382,7 @@ Content-Type: application/json
             "callbackUrl": "https://example.com/payment-callback"
         },
         "payeeInfo": {
-            "payeeId": "12345678-1234-1234-1234-123456789012",
+            "payeeId": "{{ page.merchantId }}"
             "payeeReference": "CD1234",
             "payeeName": "Merchant1",
             "productCategory": "A123",
@@ -421,7 +421,7 @@ a payout by performing a `POST` creditcard payments with key `operation` set to
 
 ```http
 POST /psp/creditcard/payments HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -429,7 +429,7 @@ Content-Type: application/json
     "payment": {
         "operation": "Payout",
         "intent": "AutoCapture",
-        "paymentToken": "5adc265f-f87f-4313-577e-08d3dca1a26c",
+        "paymentToken": "{{ page.paymentId }}",
         "currency": "NOK",
         "amount": 1500,
         "vatAmount": 0,
@@ -440,7 +440,7 @@ Content-Type: application/json
             "callbackUrl": "https://example.com/payment-callback"
         },
         "payeeInfo": {
-            "payeeId": "12345678-1234-1234-1234-123456789012",
+            "payeeId": "{{ page.merchantId }}"
             "payeeReference": "CD1234",
             "payeeName": "Merchant1",
             "productCategory": "A123",
@@ -460,7 +460,7 @@ Content-Type: application/json
 
 {
   "payment": {
-    "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "id": "/psp/creditcard/payments/{{ page.paymentId }}",
     "number": 1234567890,
     "created": "2016-09-14T13:21:29.3182115Z",
     "updated": "2016-09-14T13:21:57.6627579Z",
@@ -475,16 +475,16 @@ Content-Type: application/json
     "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
     "userAgent": "Mozilla/5.0...",
     "language": "nb-NO",
-    "paymentToken": "5adc265f-f87f-4313-577e-08d3dca1a26c",
-    "prices": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/prices" },
-    "transactions": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions" },
-    "authorizations": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations" },
-    "captures": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures" },
-    "reversals": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals" },
-    "cancellations": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/cancellations" },
-    "urls" : { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/urls" },
-    "payeeInfo" : { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeInfo" },
-    "settings": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/settings" }
+    "paymentToken": "{{ page.paymentId }}",
+    "prices": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/prices" },
+    "transactions": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/transactions" },
+    "authorizations": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/authorizations" },
+    "captures": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/captures" },
+    "reversals": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/reversals" },
+    "cancellations": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/cancellations" },
+    "urls" : { "id": "/psp/creditcard/payments/{{ page.paymentId }}/urls" },
+    "payeeInfo" : { "id": "/psp/creditcard/payments/{{ page.paymentId }}/payeeInfo" },
+    "settings": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/settings" }
   }
 }
 ```
@@ -565,7 +565,7 @@ listed below.
 
 ```http
 POST /psp/creditcard/payments HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -588,7 +588,7 @@ Content-Type: application/json
       "termsOfServiceUrl": "https://example.com/payment-terms.html"
     },
     "payeeInfo": {
-      "payeeId": "12345678-1234-1234-1234-123456789012",
+      "payeeId": "{{ page.merchantId }}"
       "payeeReference": "CD1234",
       "payeeName": "Merchant1",
       "productCategory": "A123",
@@ -614,7 +614,7 @@ Content-Type: application/json
 
 {
     "payment": {
-        "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+        "id": "/psp/creditcard/payments/{{ page.paymentId }}",
         "number": 1234567890,
         "created": "2016-09-14T13:21:29.3182115Z",
         "updated": "2016-09-14T13:21:57.6627579Z",
@@ -627,21 +627,21 @@ Content-Type: application/json
         "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
         "userAgent": "Mozilla/5.0",
         "language": "nb-NO",
-        "transactions": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions" },
-        "verifications": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/verifications" },
-        "urls" : { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/urls" },
-        "payeeInfo" : { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeInfo" },
-        "settings": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/settings" }
+        "transactions": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/transactions" },
+        "verifications": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/verifications" },
+        "urls" : { "id": "/psp/creditcard/payments/{{ page.paymentId }}/urls" },
+        "payeeInfo" : { "id": "/psp/creditcard/payments/{{ page.paymentId }}/payeeInfo" },
+        "settings": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/settings" }
     },
     "operations": [
         {
-            "href": "https://{{ page.apiUrl }}/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+            "href": "{{ page.apiUrl }}/psp/creditcard/payments/{{ page.paymentId }}",
             "rel": "update-payment-abort",
             "method": "PATCH",
             "contentType": "application/json"
         },
         {
-            "href": "https://{{ page.frontEndUrl }}/creditcard/payments/verification/123456123412341234123456789012",
+            "href": "{{ page.frontEndUrl }}/creditcard/payments/verification/123456123412341234123456789012",
             "rel": "redirect-verification",
             "method": "GET",
             "contentType": "application/json"
@@ -747,8 +747,8 @@ Swedbank Pay Payments where the payment is authorized.
 **Request**
 
 ```http
-POST /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations HTTP/1.1
-Host: {{ page.apiUrl }}
+POST /psp/creditcard/payments/{{ page.paymentId }}/authorizations HTTP/1.1
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -805,7 +805,7 @@ often help narrow down the specifics of the problem.
 ### Contractual Problem Types
 
 All contract types will have the following URI in front of type:
-`https://{{ page.apiUrl }}/psp/<errordetail>/creditcard`
+`{{ page.apiUrl }}/psp/<errordetail>/creditcard`
 
 {:.table .table-striped}
 | Type                           | Status | Description                                 |

@@ -135,7 +135,7 @@ An example of an expanded `POST` request is available in the
 
 ```http
 POST /psp/vipps/payments HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -166,7 +166,7 @@ Content-Type: application/json
 
         },
        "payeeInfo": {
-           "payeeId": "3387e01f-a323-428b-a954-8c1e2baf7186",
+           "payeeId": "{{ page.merchantId }}"
            "payeeReference": "payeeReference",
            "payeeName": "Merchant1",
            "productCategory": "A123",
@@ -224,7 +224,7 @@ Content-Type: application/json
 
 {
    "payment": {
-       "id": "/psp/vipps/payments/{{page.paymentId}}",
+       "id": "/psp/vipps/payments/{{ page.paymentId }}",
        "number": 72100003079,
        "created": "2018-09-05T14:18:44.4259255Z",
        "instrument": "Vipps",
@@ -233,7 +233,7 @@ Content-Type: application/json
        "state": "Ready",
        "currency": "NOK",
        "prices": {
-           "id": "/psp/vipps/payments/{{page.paymentId}}/prices"
+           "id": "/psp/vipps/payments/{{ page.paymentId }}/prices"
         },
        "amount": 0,
        "description": "Vipps Test",
@@ -242,29 +242,29 @@ Content-Type: application/json
        "userAgent": "Mozilla/5.0 weeeeee",
        "language": "nb-NO",
        "urls": {
-           "id": "/psp/vipps/payments/{{page.paymentId}}/urls"
+           "id": "/psp/vipps/payments/{{ page.paymentId }}/urls"
         },
        "payeeInfo": {
-           "id": "/psp/vipps/payments/{{page.paymentId}}/payeeinfo"
+           "id": "/psp/vipps/payments/{{ page.paymentId }}/payeeinfo"
         },
        "metadata": {
-           "id": "/psp/vipps/payments/{{page.paymentId}}/metadata"
+           "id": "/psp/vipps/payments/{{ page.paymentId }}/metadata"
         }
     },
    "operations": [
         {
            "method": "PATCH",
-           "href": "https://{{ page.apiUrl }}/psp/vipps/payments/{{page.paymentId}}",
+           "href": "{{ page.apiUrl }}/psp/vipps/payments/{{ page.paymentId }}",
            "rel": "update-payment-abort"
         },
         {
            "method": "GET",
-           "href": "https://{{ page.frontEndUrl }}/vipps/payments/authorize/afccf3d0016340620756d5ff3e08f69b555fbe2e45ca71f4bd159ebdb0f00065",
+           "href": "{{ page.frontEndUrl }}/vipps/payments/authorize/{{ page.paymentToken }}",
            "rel": "redirect-authorization"
         },
         {
             "method": "GET",
-            "href": "https://{{ page.frontEndUrl }}/vipps/core/scripts/client/px.vipps.client.js?token=703687bc6005c07475c9fb0aec284bb17b8c3e80d7f6baa16792995313327673&Culture=sv-SE",
+            "href": "{{ page.frontEndUrl }}/vipps/core/scripts/client/px.vipps.client.js?token={{ page.paymentToken }}&Culture=sv-SE",
             "rel": "view-payment",
             "contentType": "application/javascript"
         }
@@ -343,7 +343,7 @@ Use the mobile number from the consumer to create an authorization transaction.
 
 ```http
 POST /psp/vipps/payments/{{ page.paymentId }}/authorizations HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 

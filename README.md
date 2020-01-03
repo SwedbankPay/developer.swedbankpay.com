@@ -66,9 +66,11 @@ These are found under `defaults.values:` and should be used where fitting.
    and response examples.
 5. `paymentToken`: This is used to replace the payment token `GUID` for request
    and response examples.
-6. `apiUrl`: This constant is used to replace the host urls of request and
+6. `apiHost`: This constant is used as a replacement for the API host name in requests and
    responses.
-7. `frontEndUrl`: This constant is used to replace the frontend urls in request
+7. `apiUrl`: This constant is used as a replacement for the API URL in request and
+   response examples.
+8. `frontEndUrl`: This constant is used as a replacement for frontend URLs in request
    and response examples.
 
 Using these constants makes our documentation more resilient to change and makes
@@ -80,8 +82,8 @@ All constants are available trough the `page` variable.
 Example:
 
 ```http
-GET /psp/paymentorders/{{ page.paymentId }}/ HTTP/1.1
-Host: {{ page.apiUrl }}
+GET /psp/paymentorders/{{ page.paymentOrderId }}/ HTTP/1.1
+Host: {{ page.apiHost }}
 ```
 
 ### Use includes
@@ -104,7 +106,7 @@ beginning of the file using the following syntax.
 {% assign instrument = include.payment-instrument | default: "paymentorder" %}
 ```
 
-This assigns the variable `instrument` to `"paymentOrder"` by default if it
+This assigns `"paymentOrder"` to the variable `instrument` by default if it
 isn't passed in via the include.
 
 ```markdown

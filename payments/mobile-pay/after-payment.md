@@ -100,9 +100,7 @@ sequenceDiagram
 The `cancellations` resource lists the cancellation transactions on a
 specific payment.
 
-{% include transaction-response.md payment-instrument="mobilepay" transaction="cancellation" %}
-
-## Create cancellation transaction
+### Create cancellation transaction
 
 Perform the `create-cancel` operation to cancel a previously created payment.
 You can only cancel a payment - or part of payment - not yet captured.
@@ -138,6 +136,95 @@ id to the `GET` request.
 
 {% include transaction-response.md payment-instrument="mobilepay"
     transaction="cancellation"%}
+
+### Finalize
+
+Finalizing a preauthorized payment is done as a `PATCH`  after a successful
+`Authorization` transaction has been created.
+The common use-case for the finalize operation is to authorize the payment
+(that has the preauthorization intent) and complete all payment related
+activities as soon as possible - in order to complete (finalize) everything
+server-to-server afterwards.
+The only allowed activity is `Finalize`. To use the operation, you should
+perform a `GET` on the payment after the user returns from the
+`redirect-authorization` operation and find the operation
+`update-authorization-finalize`.
+
+{:.code-header}
+**Request**
+
+```http
+PATCH /psp/creditcard/payments/{{ page.paymentId }}/authorizations/<transactionId> HTTP/1.1
+Host: {{ page.apiHost }}
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+
+{
+    "transaction": {
+        "activity": "Finalize"
+    }
+}
+```
+
+{:.table .table-striped}
+| ✔︎   | Property               | Type     | Description |
+| :--- | :--------------------- | :------- | :---------- |
+| ✔︎   | `transaction.activity` | `string` | `Finalize`  |
+
+{:.code-header}
+**Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "payment": "/psp/creditcard/payments/{{ page.paymentId }}",
+    "authorization": {
+        "id": "/psp/creditcard/payments/{{ page.paymentId }}/authorizations/{{ page.transactionId }}",
+        "paymentToken": "{{ page.transactionId }}",
+        "maskedPan": "123456xxxxxx1234",
+        "expireDate": "mm/yyyy",
+        "panToken": "{{ page.transactionId }}",
+        "cardBrand": "Visa|MC",
+        "cardType": "Credit Card|Debit Card",
+        "issuingBank": "UTL MAESTRO",
+        "countryCode": "999",
+        "acquirerTransactionType": "3DSECURE|SSL",
+        "acquirerStan": "39736",
+        "acquirerTerminalId": "39",
+        "acquirerTransactionTime": "2017-08-29T13:42:18Z",
+        "authenticationStatus": "Y|A|U|N",
+        "transaction": {
+            "id": "/psp/creditcard/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
+            "created": "2016-09-14T01:01:01.01Z",
+            "updated": "2016-09-14T01:01:01.03Z",
+            "type": "Authorization",
+            "state": "Initialized",
+            "number": 1234567890,
+            "amount": 1000,
+            "vatAmount": 250,
+            "description": "Test transaction",
+            "payeeReference": "AH123456",
+            "failedReason": "",
+            "isOperational": true,
+            "operations": [
+                {
+                    "href": "{{ page.apiUrl }}/psp/creditcard/payments/{{ page.paymentId }}",
+                    "rel": "edit-authorization",
+                    "method": "PATCH"
+                }
+            ]
+        }
+    }
+}
+```
+
+{:.table .table-striped}
+| Property        | Type     | Description                                                                             |
+| :-------------- | :------- | :-------------------------------------------------------------------------------------- |
+| `payment`       | `string` | The relative URI of the payment this finalize transaction resource belongs to.          |
+| `authorization` | `object` | The object representation of the [`authorization` transaction resource][authorization]. |
 
 ## Cancel Sequence
 

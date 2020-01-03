@@ -160,7 +160,7 @@ After creating a payment, you can:
 Please visit our [demoshop][demoshop] to see our Payment Menu and Redirect
 implementation in action.
 
-[demoshop]: https://{{ page.frontEndUrl }}/pspdemoshop
+[demoshop]: {{ page.frontEndUrl }}/pspdemoshop
 [card-icon]: /assets/img/card-icon.png
 [https]: /#connection-and-protocol
 [invoice-icon]: /assets/img/invoice-icon.png

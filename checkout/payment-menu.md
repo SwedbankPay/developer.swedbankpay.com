@@ -141,7 +141,7 @@ for Credit Card Payments" %}
 
 ```http
 POST /psp/paymentorders HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -164,7 +164,7 @@ Content-Type: application/json
             "termsOfServiceUrl": "https://example.com/termsandconditoons.pdf"
         },
         "payeeInfo": {
-            "payeeId": "12345678-1234-1234-1234-123456789012",
+            "payeeId": "{{ page.merchantId }}"
             "payeeReference": "AB832",
             "payeeName": "Merchant1",
             "productCategory": "A123",
@@ -252,7 +252,7 @@ Content-Type: application/json
 |          | └─➔&nbsp;`payeeName`                  | `string`     | The name of the payee, usually the name of the merchant.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 |          | └─➔&nbsp;`productCategory`            | `string`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                                                                                                                                                                                                                                                                                   |
 |          | └─➔&nbsp;`orderReference`             | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-|          | └─➔&nbsp;`subsite`                       | `String(40)`  | The subsite field can be used to perform [split settlement][split-settlement] on the payment. The subsites must be resolved with Swedbank Pay [reconciliation][settlement-and-reconciliation] before being used.                                                                                                                                                                                                                                                                                                                                                                                                  |
+|          | └─➔&nbsp;`subsite`                    | `String(40)` | The subsite field can be used to perform [split settlement][split-settlement] on the payment. The subsites must be resolved with Swedbank Pay [reconciliation][settlement-and-reconciliation] before being used.                                                                                                                                                                                                                                                                                                                                                 |
 |          | └➔&nbsp;`payer`                       | `object`     | The `payer` object containing information about the payer relevant for the payment order.                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 |   ︎︎︎    | └─➔&nbsp;`consumerProfileRef`         | `string`     | The consumer profile reference as obtained through [initiating a consumer session][initiate-consumer-session].                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 |          | └➔&nbsp;`orderItems`                  | `array`      | The array of items being purchased with the order. Used to print on invoices if the payer chooses to pay with invoice, among other things                                                                                                                                                                                                                                                                                                                                                                                                                        |
@@ -300,11 +300,11 @@ Content-Type: application/json
 
 {
     "paymentorder": {
-      "id": "/psp/paymentorders/b80be381-b572-4f1e-9691-08d5dd095bc4"
+      "id": "/psp/paymentorders/{{ page.paymentOrderId }}"
     },
     "operations": [
         {
-            "href": "https://{{ page.frontEndUrl }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=38540e86bd78e885fba2ef054ef9792512b1c9c5975cbd6fd450ef9aa15b1844&culture=sv-SE",
+            "href": "{{ page.frontEndUrl }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token={{ page.paymentToken }}&culture=sv-SE",
             "rel": "view-paymentorder",
             "method": "GET",
             "contentType": "application/javascript"

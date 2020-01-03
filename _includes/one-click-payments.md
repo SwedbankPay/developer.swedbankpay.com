@@ -45,7 +45,7 @@ provided below.
 
 ```http
 GET /psp/creditcard/payments/<payment-id>/<authorizations> HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 ```
 
 {:.code-header}
@@ -53,7 +53,7 @@ Host: {{ page.apiUrl }}
 
 ```http
 GET /psp/creditcard/payments/<payment-id>/<verifications> HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 ```
 
 You need to store the `paymentToken` from the response in your system and keep
@@ -80,7 +80,7 @@ Abbrevated code example:
 
 ```http
 POST /psp/creditcard/payments HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -88,7 +88,7 @@ Content-Type: application/json
     "payment": {
         "operation": "Purchase",
         "intent": "Authorization",
-        "paymentToken": "5adc265f-f87f-4313-577e-08d3dca1a26c"
+        "paymentToken": "{{ page.paymentToken }}"
     },
     "creditCard": {
         "noCVC": true
@@ -132,7 +132,7 @@ you use the `Delete payment token` request.
 
 ```http
 PATCH /psp/creditcard/payments/instrumentData/<paymentToken> HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -157,9 +157,9 @@ Content-Type: application/json
 
 {
     "instrumentData": {
-        "id": "/psp/creditcard/payments/instrumentdata/12345678-1234-1234-1234-123456789000",
-        "paymentToken": "12345678-1234-1234-1234-123456789000",
-        "payeeId": "61c65499-de5c-454e-bf4c-043f22538d49",
+        "id": "/psp/creditcard/payments/instrumentdata/{{ page.transactionId }}",
+        "paymentToken": "{{ page.paymentToken }}",
+        "payeeId": "{{ page.merchantId }}",
         "isDeleted": true,
         "isPayeeToken": false,
         "cardBrand": "Visa|MasterCard|...",

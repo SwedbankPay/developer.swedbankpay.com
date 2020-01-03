@@ -71,7 +71,7 @@ is done through the `initiate-consumer-session` operation.
 
 ```http
 POST /psp/consumers HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -104,13 +104,13 @@ Content-Type: application/json
         {
             "method": "GET",
             "rel": "redirect-consumer-identification",
-            "href": "https://{{ page.frontEndUrl }}/consumers/sessions/7e380fbb3196ea76cc45814c1d99d59b66db918ce2131b61f585645eff364871",
+            "href": "{{ page.frontEndUrl }}/consumers/sessions/7e380fbb3196ea76cc45814c1d99d59b66db918ce2131b61f585645eff364871",
             "contentType": "text/html"
         },
         {
             "method": "GET",
             "rel": "view-consumer-identification",
-            "href": "https://{{ page.frontEndUrl }}/consumers/core/scripts/client/px.consumer.client.js?token=7e380fbb3196ea76cc45814c1d99d59b66db918ce2131b61f585645eff364871",
+            "href": "{{ page.frontEndUrl }}/consumers/core/scripts/client/px.consumer.client.js?token={{ page.paymentToken }}",
             "contentType": "application/javascript"
         }
     ]
@@ -255,7 +255,7 @@ the following argument objects:
 ```js
 {
     "actionType": "OnShippingDetailsAvailable",
-    "url": "https://{{ page.apiUrl }}/psp/consumers/<consumerProfileRef>/shipping-details"
+    "url": "{{ page.apiUrl }}/psp/consumers/<consumerProfileRef>/shipping-details"
 }
 ```
 

@@ -30,7 +30,7 @@ Content-Type: application/json
             "termsOfServiceUrl": "http://example.com/payment-terms.pdf",
         },
         "payeeInfo": {
-            "payeeId": "12345678-1234-1234-1234-123456789012",
+            "payeeId": "{{ page.merchantId }}"
             "payeeReference": "CD1234",
             "payeeName": "Merchant1",
             "productCategory": "A123",
@@ -161,13 +161,13 @@ Content-Type: application/json
   },
   "operations": [
     {
-      "href": "https://{{ page.apiUrl }}/psp/creditcard/payments/{{ page.paymentId }}",
+      "href": "{{ page.apiUrl }}/psp/creditcard/payments/{{ page.paymentId }}",
       "rel": "update-payment-abort",
       "method": "PATCH",
       "contentType": "application/json"
     },
     {
-      "href": "https://{{ page.frontEndUrl }}/creditcard/payments/authorize/123456123412341234123456789012",
+      "href": "{{ page.frontEndUrl }}/creditcard/payments/authorize/{{ page.transactionId }}",
       "rel": "redirect-authorization",
       "method": "GET",
       "contentType": "text/html"

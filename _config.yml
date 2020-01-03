@@ -31,6 +31,7 @@ defaults:
       transactionId: ec2a9b09-601a-42ae-8e33-a5737e1cf177
       paymentOrderId: 09ccd29a-7c4f-4752-9396-12100cbfecce
       merchantId: 5cabf558-5283-482f-b252-4d58e06f6f3b
-      paymentToken: 2e2324ce-8aa3-41f7-82f9-927434689b8c
-      apiUrl: api.externalintegration.payex.com
-      frontEndUrl: ecom.externalintegration.payex.com
+      paymentToken: afccf3d0016340620756d5ff3e08f69b555fbe2e45ca71f4bd159ebdb0f00065
+      apiHost: api.externalintegration.payex.com
+      apiUrl: https://api.externalintegration.payex.com
+      frontEndUrl: https://ecom.externalintegration.payex.com

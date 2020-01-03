@@ -60,7 +60,7 @@ Content-Type: application/json
             "logoUrl": "https://example.com/logo.png"
         },
         "payeeInfo": {
-            "payeeId": "12345678-1234-1234-1234-123456789012",
+            "payeeId": "{{ page.merchantId }}"
             "payeeReference": "CD1234",
             "payeeName": "Merchant1",
             "productCategory": "A123",
@@ -203,7 +203,7 @@ Request
 
 ```http
 GET /psp/paymentorders/{{ page.paymentOrderId }}/urls/ HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -317,43 +317,43 @@ A list of possible operations and their explanation is given below.
     "operations": [
         {
             "method": "PATCH",
-            "href": "https://{{ page.apiUrl }}/psp/paymentorders/{{ page.paymentOrderId }}",
+            "href": "{{ page.apiUrl }}/psp/paymentorders/{{ page.paymentOrderId }}",
             "rel": "update-paymentorder-abort",
             "contentType": "application/json"
         },
         {
             "method": "PATCH",
-            "href": "https://{{ page.apiUrl }}/psp/paymentorders/{{ page.paymentOrderId }}",
+            "href": "{{ page.apiUrl }}/psp/paymentorders/{{ page.paymentOrderId }}",
             "rel": "update-paymentorder-updateorder",
             "contentType": "application/json"
         },
         {
             "method": "GET",
-            "href": "https://{{ page.frontEndUrl }}/paymentmenu/eb6932c2e24113377ecd88da343a10566b31f59265c665203b1287277224ef60",
+            "href": "{{ page.frontEndUrl }}/paymentmenu/{{ page.paymentToken }}",
             "rel": "redirect-paymentorder",
             "contentType": "text/html"
         },
         {
             "method": "GET",
-            "href": "https://{{ page.frontEndUrl }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=eb6932c2e24113377ecd88da343a10566b31f59265c665203b1287277224ef60&culture=nb-NO",
+            "href": "{{ page.frontEndUrl }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token={{ page.paymentToken }}&culture=nb-NO",
             "rel": "view-paymentorder",
             "contentType": "application/javascript"
         },
         {
             "method": "POST",
-            "href": "https://{{ page.apiUrl }}/psp/paymentorders/{{ page.paymentOrderId }}/captures",
+            "href": "{{ page.apiUrl }}/psp/paymentorders/{{ page.paymentOrderId }}/captures",
             "rel": "create-paymentorder-capture",
             "contentType": "application/json"
         },
         {
             "method": "POST",
-            "href": "https://{{ page.apiUrl }}/psp/paymentorders/{{ page.paymentOrderId }}/cancellations",
+            "href": "{{ page.apiUrl }}/psp/paymentorders/{{ page.paymentOrderId }}/cancellations",
             "rel": "create-paymentorder-cancel",
             "contentType": "application/json"
         },
         {
             "method": "POST",
-            "href": "https://{{ page.apiUrl }}/psp/paymentorders/{{ page.paymentOrderId }}/reversals",
+            "href": "{{ page.apiUrl }}/psp/paymentorders/{{ page.paymentOrderId }}/reversals",
             "rel": "create-paymentorder-reversal",
             "contentType": "application/json"
         }
@@ -399,7 +399,7 @@ The `view-paymentorder` operation contains the URI of the JavaScript that needs 
     </head>
     <body>
         <div id="checkout"></div>
-        <script src="https://{{ page.frontEndUrl }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=38540e86bd78e885fba2ef054ef9792512b1c9c5975cbd6fd450ef9aa15b1844&culture=nb-NO"></script>
+        <script src="{{ page.frontEndUrl }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token={{ page.paymentToken }}&culture=nb-NO"></script>
         <script language="javascript">
             payex.hostedView.paymentMenu({
                 container: 'checkout',
@@ -488,19 +488,19 @@ Content-Type: application/json
     "operations": [
         {
             "method": "PATCH",
-            "href": "https://{{ page.apiUrl }}/psp/paymentorders/{{ page.paymentOrderId }}",
+            "href": "{{ page.apiUrl }}/psp/paymentorders/{{ page.paymentOrderId }}",
             "rel": "update-paymentorder-abort",
             "contentType": "application/json"
         },
         {
             "method": "GET",
-            "href": "https://{{ page.frontEndUrl }}/paymentmenu/4b0baaf8fdb5a56b5bdd78a8dd9e63e42e93ec79e5d0c0b5cc40f79cf43c9428",
+            "href": "{{ page.frontEndUrl }}/paymentmenu/{{ page.paymentToken }}",
             "rel": "redirect-paymentorder",
             "contentType": "text/html"
         },
         {
             "method": "GET",
-            "href": "https://{{ page.frontEndUrl }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=4b0baaf8fdb5a56b5bdd78a8dd9e63e42e93ec79e5d0c0b5cc40f79cf43c9428&culture=nb-NO",
+            "href": "{{ page.frontEndUrl }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token={{ page.paymentToken }}&culture=nb-NO",
             "rel": "view-paymentorder",
             "contentType": "application/javascript"
         }
@@ -531,7 +531,7 @@ in the request body:
 
 ```http
 PATCH /psp/paymentorders/{{ page.paymentOrderId }} HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -580,19 +580,19 @@ Content-Type: application/json
     "operations": [
         {
             "method": "PATCH",
-            "href": "https://{{ page.apiUrl }}/psp/paymentorders/{{ page.paymentOrderId }}",
+            "href": "{{ page.apiUrl }}/psp/paymentorders/{{ page.paymentOrderId }}",
             "rel": "update-paymentorder-abort",
             "contentType": "application/json"
         },
         {
             "method": "GET",
-            "href": "https://{{ page.frontEndUrl }}/paymentmenu/4b0baaf8fdb5a56b5bdd78a8dd9e63e42e93ec79e5d0c0b5cc40f79cf43c9428",
+            "href": "{{ page.frontEndUrl }}/paymentmenu/{{ page.paymentToken }}",
             "rel": "redirect-paymentorder",
             "contentType": "text/html"
         },
         {
             "method": "GET",
-            "href": "https://{{ page.frontEndUrl }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=4b0baaf8fdb5a56b5bdd78a8dd9e63e42e93ec79e5d0c0b5cc40f79cf43c9428&culture=nb-NO",
+            "href": "{{ page.frontEndUrl }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token={{ page.paymentToken }}&culture=nb-NO",
             "rel": "view-paymentorder",
             "contentType": "application/javascript"
         }
@@ -649,7 +649,7 @@ other payment instrument properties, by [expanding the sub-resource][expanding]
 
 ```http
 GET /psp/paymentorders/<paymentorderId>?$expand=currentpayment HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 ```
 
 ### Creating Recurring Payments
@@ -664,7 +664,7 @@ recurrence token during the initial payment order.
 
 ```http
 POST /psp/paymentorders HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -682,7 +682,7 @@ Content-Type: application/json
       "callbackUrl": "https://example.com/callback"
     },
     "payeeInfo": {
-      "payeeId": "12345678-1234-1234-1234-123456789012",
+      "payeeId": "{{ page.merchantId }}"
       "payeeReference": "CD1234",
       "payeeName": "Merchant1",
       "productCategory": "A123",
@@ -770,7 +770,7 @@ should finish the purchase with a credit card payment instead.
 
 ```http
 GET /psp/paymentorders<paymentorderId>/payments HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -785,7 +785,7 @@ Content-Type: application/json
                 "created": "2016-09-14T13:21:29.3182115Z"
             },
             {
-                "id": "/psp/invoice/payments/5adc265f-f87f-4313-577e-08d3dca1a26d",
+                "id": "/psp/invoice/payments/{{ page.paymentId }}",
                 "instrument" : "Invoice",
                 "created": "2016-09-14T13:21:29.3182115Z"
             }
@@ -815,7 +815,7 @@ payment order container.
 
 ```http
 GET /psp/paymentorders/{{ page.paymentOrderId }}/currentpayment HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -907,7 +907,7 @@ during login/checkin.
 
 ```http
 GET /psp/paymentorders/{{ page.paymentOrderId }}/payers/ HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -1275,15 +1275,15 @@ object:
 ```js
 {
     "paymentOrder":{
-        "id": "/psp/paymentorders/11111111-1111-1111-1111-111111111111",
+        "id": "/psp/paymentorders/{{ page.paymentOrderId }}",
         "instrument": "<payment instrument>"
     },
     "payment":{
-        "id": "/psp/<payment instrument>/payments/22222222-2222-2222-2222-222222222222",
+        "id": "/psp/<payment instrument>/payments/{{ page.paymentId }}",
         "number": 222222222
     },
     "transaction":{
-        "id": "/psp/<payment instrument>/payments/22222222-2222-2222-2222-222222222222/<transaction type>/33333333-3333-3333-3333-333333333333",
+        "id": "/psp/<payment instrument>/payments/{{ page.paymentId }}/<transaction type>/{{ page.transactionId }}",
         "number": 333333333
     }
 }
@@ -1335,7 +1335,7 @@ The structure of a problem message will look like this:
     "type": "https://api.payex.com/psp/errordetail/creditcard/inputerror",
     "title": "There was an input error",
     "detail": "Please correct the errors and retry the request",
-    "instance": "9a20d737-670d-42bf-9a9a-d36736de8721",
+    "instance": "{{ page.transactionId }}",
     "status": 400,
     "action": "RetryNewData",
     "problems": [{
