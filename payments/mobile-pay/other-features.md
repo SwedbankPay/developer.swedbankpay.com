@@ -335,7 +335,7 @@ Content-Type: application/json
             "failedReason": "",
             "isOperational": false,
             "operations": [{
-                "href": "https://api.payex.com/psp/mobilepay/payments/{{ page.paymentId }}",
+                "href": "{{ page.apiUrl }}/psp/mobilepay/payments/{{ page.paymentId }}",
                 "rel": "edit-authorization",
                 "method": "PATCH"
             }]
