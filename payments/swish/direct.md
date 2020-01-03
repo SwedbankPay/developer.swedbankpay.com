@@ -135,7 +135,7 @@ Content-Type: application/json
             "termsOfServiceUrl": "https://example.com/terms.pdf"
         },
         "payeeInfo": {
-            "payeeId": "bbb33dc5-f44e-4af6-afc0-27fb5fa2f63a",
+            "payeeId": "{{ page.merchantId }}",
             "payeeReference": "ref-123456",
             "payeeName": "Merchant1",
             "productCategory": "A123",
@@ -218,12 +218,12 @@ Content-Type: application/json
     "operations": [
         {
             "method": "PATCH",
-            "href": "http://localhost:18496/psp/swish/payments/20dfbcb9-587a-4ce9-e63e-08d519f1802f",
+            "href": "//{{ page.apiUrl }}/psp/swish/payments/20dfbcb9-587a-4ce9-e63e-08d519f1802f",
             "rel": "update-payment-abort"
         },
         {
             "method": "POST",
-            "href": "http://localhost:18496/psp/swish/payments/20dfbcb9-587a-4ce9-e63e-08d519f1802f/sales",
+            "href": "http://{{ page.apiUrl }}/psp/swish/payments/20dfbcb9-587a-4ce9-e63e-08d519f1802f/sales",
             "rel": "create-sale"
         }
     ]
@@ -268,7 +268,7 @@ Content-Type: application/json
         "paymentRequestToken": "LhXrK84MSpWU2RO09f8kUP-FHiBo-1pB",
         "id": "/psp/swish/payments/20dfbcb9-587a-4ce9-e63e-08d519f1802f/sales/6bf31479-623f-418a-d69e-08d519f19722",
         "transaction": {
-            "id": "6bf31479-623f-418a-d69e-08d519f19722",
+            "id": "{{ page.transactionId }}",
             "created": "2017-10-23T08:39:35.6478733Z",
             "updated": "2017-10-23T08:39:37.3788733Z",
             "type": "Sale",
