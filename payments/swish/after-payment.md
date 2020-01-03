@@ -385,7 +385,7 @@ Content-Type: application/json
 
 ## Abort
 
-To abort a payment order, send a request to `/psp/swish/payments/{{paymentId}}`.
+To abort a payment order, send a request to `/psp/swish/payments/{{ paymentId }}`.
 You need to include the following `HTTP` body:
 
 {:.code-header}
