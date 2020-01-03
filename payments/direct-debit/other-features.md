@@ -74,7 +74,7 @@ Content-Type: application/json
             "termsOfServiceUrl": "https://example.com/terms.pdf"
         },
         "payeeInfo": {
-            "payeeId": "12345678-1234-1234-1234-123456789012",
+            "payeeId": "{{ page.merchantId }}",
             "payeeReference": "PR123",
             "payeeName": "Merchant1",
             "productCategory": "PC1233",

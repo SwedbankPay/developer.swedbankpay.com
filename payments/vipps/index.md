@@ -65,7 +65,7 @@ Content-Type: application/json
 
         },
        "payeeInfo": {
-           "payeeId": "3387e01f-a323-428b-a954-8c1e2baf7186",
+           "payeeId": "{{ page.merchantId }}"
            "payeeReference": "payeeReference",
            "payeeName": "Merchant1",
            "productCategory": "A123",

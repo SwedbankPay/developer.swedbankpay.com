@@ -120,7 +120,7 @@ Content-Type: application/json
             "termsOfServiceUrl": "https://example.com/payment-terms.pdf",
         },
         "payeeInfo": {
-            "payeeId": "12345678-1234-1234-1234-123456789012",
+            "payeeId": "{{ page.merchantId }}"
             "payeeReference": "CD1234",
             "payeeName": "Merchant1",
             "productCategory": "A123",
@@ -291,7 +291,7 @@ Content-Type: application/json
 |          | └➔&nbsp;`rejectConsumerCards`            | `boolean`     | `true` if consumer cards should be declined; otherwise `false` per default. Default value is set by Swedbank Pay and can be changed at your request.                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 |          | └➔&nbsp;`rejectCorporateCards`           | `boolean`     | `true` if corporate cards should be declined; otherwise `false` per default. Default value is set by Swedbank Pay and can be changed at your request.                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 |          | └➔&nbsp;`no3DSecure`                     | `boolean`     | `true` if 3-D Secure should be disabled for this payment in the case a stored card is used; otherwise `false` per default. To use this feature it has to be enabled on the contract with Swedbank Pay.                                                                                                                                                                                                                                                                                                                                                                                                            |
-|          | └➔&nbsp;`noCvc`                          | `boolean`     | `true` if the CVC field should be disabled for this payment in the case a stored card is used; otherwise `false` per default. This feature is commonly used when [One-Click Payments][one-click-payments] is enabled. To use this feature it has to be enabled on the contract with Swedbank Pay.                                                                                                                                                                                                                                                                                                                                                                                                         |
+|          | └➔&nbsp;`noCvc`                          | `boolean`     | `true` if the CVC field should be disabled for this payment in the case a stored card is used; otherwise `false` per default. This feature is commonly used when [One-Click Payments][one-click-payments] is enabled. To use this feature it has to be enabled on the contract with Swedbank Pay.                                                                                                                                                                                                                                                                                                                 |
 
 {:.code-header}
 **Response**
@@ -382,7 +382,7 @@ Content-Type: application/json
             "callbackUrl": "https://example.com/payment-callback"
         },
         "payeeInfo": {
-            "payeeId": "12345678-1234-1234-1234-123456789012",
+            "payeeId": "{{ page.merchantId }}"
             "payeeReference": "CD1234",
             "payeeName": "Merchant1",
             "productCategory": "A123",
@@ -440,7 +440,7 @@ Content-Type: application/json
             "callbackUrl": "https://example.com/payment-callback"
         },
         "payeeInfo": {
-            "payeeId": "12345678-1234-1234-1234-123456789012",
+            "payeeId": "{{ page.merchantId }}"
             "payeeReference": "CD1234",
             "payeeName": "Merchant1",
             "productCategory": "A123",
@@ -588,7 +588,7 @@ Content-Type: application/json
       "termsOfServiceUrl": "https://example.com/payment-terms.html"
     },
     "payeeInfo": {
-      "payeeId": "12345678-1234-1234-1234-123456789012",
+      "payeeId": "{{ page.merchantId }}"
       "payeeReference": "CD1234",
       "payeeName": "Merchant1",
       "productCategory": "A123",

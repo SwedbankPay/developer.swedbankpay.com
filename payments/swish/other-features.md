@@ -65,7 +65,7 @@ Content-Type: application/json
             "termsOfServiceUrl": "https://example.com/terms.pdf"
         },
         "payeeInfo": {
-            "payeeId": "bbb33dc5-f44e-4af6-afc0-27fb5fa2f63a",
+            "payeeId": "{{ page.merchantId }}",
             "payeeReference": "ref-123456",
             "payeeName": "Merchant1",
             "productCategory": "A123",

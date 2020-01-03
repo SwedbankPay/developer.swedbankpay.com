@@ -163,7 +163,7 @@ Content-Type: application/json
             "paymentUrl": "https://example.net/payment-cart"
         },
         "payeeInfo": {
-            "payeeId": "12345678-1234-1234-1234-123456789012",
+            "payeeId": "{{ page.merchantId }}"
             "payeeReference": "CD1234",
             "payeeName": "Merchant1",
             "productCategory": "A123"

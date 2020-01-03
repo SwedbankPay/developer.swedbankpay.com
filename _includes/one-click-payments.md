@@ -159,7 +159,7 @@ Content-Type: application/json
     "instrumentData": {
         "id": "/psp/creditcard/payments/instrumentdata/12345678-1234-1234-1234-123456789000",
         "paymentToken": "12345678-1234-1234-1234-123456789000",
-        "payeeId": "61c65499-de5c-454e-bf4c-043f22538d49",
+        "payeeId": "{{ page.merchantId }}",
         "isDeleted": true,
         "isPayeeToken": false,
         "cardBrand": "Visa|MasterCard|...",
