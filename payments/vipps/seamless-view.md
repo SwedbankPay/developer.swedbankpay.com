@@ -224,7 +224,7 @@ Content-Type: application/json
 
 {
    "payment": {
-       "id": "/psp/vipps/payments/{{page.paymentId}}",
+       "id": "/psp/vipps/payments/{{page.paymentId }}",
        "number": 72100003079,
        "created": "2018-09-05T14:18:44.4259255Z",
        "instrument": "Vipps",
@@ -233,7 +233,7 @@ Content-Type: application/json
        "state": "Ready",
        "currency": "NOK",
        "prices": {
-           "id": "/psp/vipps/payments/{{page.paymentId}}/prices"
+           "id": "/psp/vipps/payments/{{page.paymentId }}/prices"
         },
        "amount": 0,
        "description": "Vipps Test",
@@ -242,19 +242,19 @@ Content-Type: application/json
        "userAgent": "Mozilla/5.0 weeeeee",
        "language": "nb-NO",
        "urls": {
-           "id": "/psp/vipps/payments/{{page.paymentId}}/urls"
+           "id": "/psp/vipps/payments/{{page.paymentId }}/urls"
         },
        "payeeInfo": {
-           "id": "/psp/vipps/payments/{{page.paymentId}}/payeeinfo"
+           "id": "/psp/vipps/payments/{{page.paymentId }}/payeeinfo"
         },
        "metadata": {
-           "id": "/psp/vipps/payments/{{page.paymentId}}/metadata"
+           "id": "/psp/vipps/payments/{{page.paymentId }}/metadata"
         }
     },
    "operations": [
         {
            "method": "PATCH",
-           "href": "https://{{ page.apiUrl }}/psp/vipps/payments/{{page.paymentId}}",
+           "href": "https://{{ page.apiUrl }}/psp/vipps/payments/{{page.paymentId }}",
            "rel": "update-payment-abort"
         },
         {
