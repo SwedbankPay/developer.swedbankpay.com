@@ -32,7 +32,7 @@ sidebar:
 The `captures` resource lists the capture transactions performed on a
 specific payment.
 
-{% include transaction-response.md payment-instrument="mobile-pay" transaction="capture" %}
+{% include transaction-response.md payment-instrument="mobilepay" %}
 
 ## Create capture transaction
 
@@ -73,8 +73,7 @@ against a MobilePay payment.
 You can return a specific capture transaction by adding the transaction id to
 the `GET` request.
 
-{% include transaction-response.md payment-instrument="mobile-pay"
-    transaction="capture"%}
+{% include transaction-response.md payment-instrument="mobilepay" %}
 
 ## Capture Sequence
 
@@ -101,7 +100,7 @@ sequenceDiagram
 The `cancellations` resource lists the cancellation transactions on a
 specific payment.
 
-{% include transaction-response.md payment-instrument="mobile-pay" transaction="cancellation" %}
+{% include transaction-response.md payment-instrument="mobilepay" transaction="cancellation" %}
 
 ## Create cancellation transaction
 
@@ -137,7 +136,7 @@ made against a payment.
 You can return a specific cancellation transaction by adding the transaction
 id to the `GET` request.
 
-{% include transaction-response.md payment-instrument="mobile-pay"
+{% include transaction-response.md payment-instrument="mobilepay"
     transaction="cancellation"%}
 
 ## Cancel Sequence
@@ -163,7 +162,7 @@ sequenceDiagram
 The `reversals` resource lists the reversal transactions performed on a
 specific payment.
 
-{% include transaction-response.md payment-instrument="mobile-pay" transaction="reversal" %}
+{% include transaction-response.md payment-instrument="mobilepay" transaction="reversal" %}
 
 ## Create reversal transaction
 
