@@ -45,7 +45,7 @@ operation.
 
 ```http
 POST /psp/mobilepay/payments/{{ page.paymentId }}/captures HTTP/1.1
-Host: {{ page.apiUrl }
+Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
