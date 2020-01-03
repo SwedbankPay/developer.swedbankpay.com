@@ -577,7 +577,7 @@ sequenceDiagram
   Deactivate Merchant
 ```
 
-## Abort a payment
+### Abort a payment
 
 To abort a payment, perform the `update-payment-abort` operation that is
 returned in the payment request. You need to include the following HTTP body:
