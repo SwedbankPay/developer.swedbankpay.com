@@ -203,7 +203,7 @@ against a payment.
 You can return a specific reversal transaction by adding the transaction id to
 the `GET` request.
 
-{% include transaction-response.md payment-instrument="mobile-pay"
+{% include transaction-response.md payment-instrument="mobilepay"
     transaction="reversal"%}
 
 ## Reversal Sequence
