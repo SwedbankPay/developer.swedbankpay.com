@@ -68,7 +68,7 @@ in their own section below.
 
 ```http
 POST /psp/invoice/payments HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -96,7 +96,7 @@ A `FinancingConsumer` payment is an invoice.
 
 ```http
 POST /psp/invoice/payments HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 {
@@ -147,7 +147,7 @@ through a previous payment in order to charge the same card.
 
 ```http
 POST /psp/invoice/payments HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -234,7 +234,7 @@ listed below.
 
 ```http
 POST /psp/invoice/payments HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -313,19 +313,19 @@ Content-Type: application/json
     "operations": [
         {
             "method": "POST",
-            "href": "https://{{ page.apiUrl }}/psp/invoice/payments/{{ page.paymentId }}/approvedlegaladdress",
+            "href": "https://{{ page.apiHost }}/psp/invoice/payments/{{ page.paymentId }}/approvedlegaladdress",
             "rel": "create-approved-legal-address",
             "contentType": "application/json"
         },
         {
             "method": "POST",
-            "href": "https://{{ page.apiUrl }}/psp/invoice/payments/{{ page.paymentId }}/authorizations",
+            "href": "https://{{ page.apiHost }}/psp/invoice/payments/{{ page.paymentId }}/authorizations",
             "rel": "create-authorization",
             "contentType": "application/json"
         },
         {
             "method": "PATCH",
-            "href": "https://{{ page.apiUrl }}/psp/invoice/payments/{{ page.paymentId }}",
+            "href": "https://{{ page.apiHost }}/psp/invoice/payments/{{ page.paymentId }}",
             "rel": "update-payment-abort",
             "contentType": "application/json"
         },
@@ -404,7 +404,7 @@ Swedbank Pay Payments where the payment is authorized.
 
 ```http
 POST /psp/invoice/payments/{{ page.paymentId }}/authorizations HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 {
@@ -499,7 +499,7 @@ Content-Type: application/json
             },
             "operations": [
                 {
-                    "href": "https://{{ page.apiUrl }}/psp/invoice/payments/{{ page.paymentId }}",
+                    "href": "https://{{ page.apiHost }}/psp/invoice/payments/{{ page.paymentId }}",
                     "rel": "edit-authorization",
                     "method": "PATCH"
                 }

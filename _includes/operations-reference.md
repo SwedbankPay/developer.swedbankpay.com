@@ -18,13 +18,13 @@ is given below.
     "operations": [
         {
             "method": "PATCH",
-            "href": "https://{{ page.apiUrl }}/psp/paymentorders/{{ page.paymentOrderId }}",
+            "href": "https://{{ page.apiHost }}/psp/paymentorders/{{ page.paymentOrderId }}",
             "rel": "update-paymentorder-abort",
             "contentType": "application/json"
         },
         {
             "method": "PATCH",
-            "href": "https://{{ page.apiUrl }}/psp/paymentorders/{{ page.paymentOrderId }}",
+            "href": "https://{{ page.apiHost }}/psp/paymentorders/{{ page.paymentOrderId }}",
             "rel": "update-paymentorder-updateorder",
             "contentType": "application/json"
         },
@@ -42,19 +42,19 @@ is given below.
         },
         {
             "method": "POST",
-            "href": "https://{{ page.apiUrl }}/psp/paymentorders/{{ page.paymentOrderId }}/captures",
+            "href": "https://{{ page.apiHost }}/psp/paymentorders/{{ page.paymentOrderId }}/captures",
             "rel": "create-paymentorder-capture",
             "contentType": "application/json"
         },
         {
             "method": "POST",
-            "href": "https://{{ page.apiUrl }}/psp/paymentorders/{{ page.paymentOrderId }}/cancellations",
+            "href": "https://{{ page.apiHost }}/psp/paymentorders/{{ page.paymentOrderId }}/cancellations",
             "rel": "create-paymentorder-cancel",
             "contentType": "application/json"
         },
         {
             "method": "POST",
-            "href": "https://{{ page.apiUrl }}/psp/paymentorders/{{ page.paymentOrderId }}/reversals",
+            "href": "https://{{ page.apiHost }}/psp/paymentorders/{{ page.paymentOrderId }}/reversals",
             "rel": "create-paymentorder-reversal",
             "contentType": "application/json"
         }
@@ -191,7 +191,7 @@ Content-Type: application/json
     "operations": [
         {
             "method": "PATCH",
-            "href": "https://{{ page.apiUrl }}/psp/paymentorders/{{ page.paymentOrderId }}",
+            "href": "https://{{ page.apiHost }}/psp/paymentorders/{{ page.paymentOrderId }}",
             "rel": "update-paymentorder-abort",
             "contentType": "application/json"
         },
@@ -257,7 +257,7 @@ See the abbreviated request and response below:
 
 ```http
 POST /psp/paymentorders/{{ page.paymentOrderId }}/captures HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -368,7 +368,7 @@ is returned in the payment order response. You need to include the following
 
 ```http
 PATCH /psp/paymentorders/{{ page.paymentOrderId }} HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -436,7 +436,7 @@ See the abbreviated request and response below:
 
 ```http
 POST /psp/paymentorders/{{ page.paymentOrderId }}/cancellations HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -499,7 +499,7 @@ If we want to reverse a previously captured amount, we need to perform
 
 ```http
 POST /psp/paymentorders/{{ page.paymentOrderId }}/reversals HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 

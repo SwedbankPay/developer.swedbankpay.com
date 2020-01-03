@@ -71,7 +71,7 @@ is done through the `initiate-consumer-session` operation.
 
 ```http
 POST /psp/consumers HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -255,7 +255,7 @@ the following argument objects:
 ```js
 {
     "actionType": "OnShippingDetailsAvailable",
-    "url": "https://{{ page.apiUrl }}/psp/consumers/<consumerProfileRef>/shipping-details"
+    "url": "https://{{ page.apiHost }}/psp/consumers/<consumerProfileRef>/shipping-details"
 }
 ```
 

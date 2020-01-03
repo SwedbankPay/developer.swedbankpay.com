@@ -8,7 +8,7 @@ a corporation etc) related to a specific payment.
 
 ```http
 GET /psp/{{ instrument }}/payments/{{ page.paymentId }}/payeeInfo HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```

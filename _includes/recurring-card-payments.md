@@ -112,7 +112,7 @@ certain card types are optional and set on contract level." %}
 
 ```http
 POST /psp/creditcard/payments HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -182,7 +182,7 @@ Content-Type: application/json
     },
     "operations": [
         {
-            "href": "https://{{ page.apiUrl }}/psp/creditcard/payments/{{ page.paymentId }}",
+            "href": "https://{{ page.apiHost }}/psp/creditcard/payments/{{ page.paymentId }}",
             "rel": "update-payment-abort",
             "method": "PATCH",
             "contentType": "application/json"

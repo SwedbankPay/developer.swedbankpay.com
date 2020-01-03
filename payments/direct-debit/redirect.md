@@ -30,7 +30,7 @@ response that includes one or more expanded sub-resources inlined.
 ```http
 Request
 POST /psp/directdebit/payments HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -127,12 +127,12 @@ Content-Type: application/json
   },
    "operations": [
         {
-           "href": "https://{{ page.apiUrl }}/psp/directdebit/payments/<paymentId>/sales",
+           "href": "https://{{ page.apiHost }}/psp/directdebit/payments/<paymentId>/sales",
            "rel": "redirect-sale",
            "method": "POST"
         },
         {
-           "href": "http://{{ page.apiUrl }}/psp/directdebit/payments/<paymentId>",
+           "href": "http://{{ page.apiHost }}/psp/directdebit/payments/<paymentId>",
            "rel": "update-payment-abort",
            "method": "PATCH"
         }
@@ -157,7 +157,7 @@ is given below.
    "operations": [
         {
            "method": "PATCH",
-           "href": "https://{{ page.apiUrl }}/psp/directdebit/payments/{{ page.transactionId }}",
+           "href": "https://{{ page.apiHost }}/psp/directdebit/payments/{{ page.transactionId }}",
            "rel": "update-payment-abort"
         },
         {
@@ -203,7 +203,7 @@ specific payment.
 
 ```http
 GET /psp/directdebit/payments/{{ page.paymentId }}/sales HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -266,7 +266,7 @@ Content-Type: application/json
                    "isOperational": "TRUE|FALSE",
                    "operations": [
                         {
-                           "href": "https://{{ page.apiUrl }}/psp/directdebit/payments/{{ page.paymentId }}",
+                           "href": "https://{{ page.apiHost }}/psp/directdebit/payments/{{ page.paymentId }}",
                            "rel": "edit-sale",
                            "method": "PATCH"
                         }
@@ -293,7 +293,7 @@ specific payment.
 
 ```http
 GET /psp/directdebit/payments/{{ page.paymentId }}/reversals HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -350,7 +350,7 @@ A callback request will follow from PayEx.
 
 ```http
 POST /psp/directdebit/payments/{{ page.paymentId }}/reversals HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 

@@ -10,7 +10,7 @@ possible to perform in the current state of the payment.
 
 ```http
 GET /psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/ HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -69,7 +69,7 @@ Content-Type: application/json
     "operations": [
         {
             "method": "PATCH",
-            "href": "https://{{ page.apiUrl }}/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}",
+            "href": "https://{{ page.apiHost }}/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}",
             "rel": "update-payment-abort",
             "contentType": "application/json"
         },
@@ -87,7 +87,7 @@ Content-Type: application/json
         },
         {
             "method": "POST",
-            "href": "https://{{ page.apiUrl }}/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/captures",
+            "href": "https://{{ page.apiHost }}/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/captures",
             "rel": "create-capture",
             "contentType": "application/json"
         }

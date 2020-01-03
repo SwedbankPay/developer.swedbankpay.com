@@ -230,17 +230,17 @@ Content-Type: application/json
     "operations": [
         {
             "method": "POST",
-            "href": "http://{{ page.apiUrl }}/psp/vipps/payments/{{ page.transactionId }}/authorizations",
+            "href": "http://{{ page.apiHost }}/psp/vipps/payments/{{ page.transactionId }}/authorizations",
             "rel": "create-authorization"
         },
         {
             "method": "PATCH",
-            "href": "http://{{ page.apiUrl }}/psp/vipps/payments/{{ page.transactionId }}",
+            "href": "http://{{ page.apiHost }}/psp/vipps/payments/{{ page.transactionId }}",
             "rel": "update-payment-abort"
         },
         {
             "method": "GET",
-            "href": "http://{{ page.apiUrl }}/vipps/payments/authorize/8fb05a835f2fc227dc7bca9abaf649b919ba8a572deb448bff543dd5806dacb7",
+            "href": "http://{{ page.apiHost }}/vipps/payments/authorize/8fb05a835f2fc227dc7bca9abaf649b919ba8a572deb448bff543dd5806dacb7",
             "rel": "redirect-authorization"
         }
     ]
@@ -287,7 +287,7 @@ transactions made on a specific payment.
 HTTP/1.1 200 OK
 Content-Type: application/json
 GET /psp/vipps/payments/{{ page.paymentId }}/authorizations/<transactionId> HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <MerchantToken>
 
 

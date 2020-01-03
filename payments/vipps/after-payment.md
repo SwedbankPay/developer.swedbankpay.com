@@ -39,7 +39,7 @@ response that includes one or more expanded sub-resources inlined.
 
 ```http
 POST /psp/vipps/payments HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -64,7 +64,7 @@ Content-Type: application/json
             "completeUrl": "http://example.com/payment-completed",
             "cancelUrl": "http://example.com/payment-canceled",
             "paymentUrl": "http://example.com/perform-payment",
-            "callbackUrl": "https://{{ page.apiUrl }}/psp/payment-callback",
+            "callbackUrl": "https://{{ page.apiHost }}/psp/payment-callback",
             "logoUrl": "https://example.com/path/to/logo.png",
             "termsOfServiceUrl": "https://example.com/terms.pdf"
 
@@ -155,7 +155,7 @@ Content-Type: application/json
     "operations": [
         {
             "method": "PATCH",
-            "href": "https://{{ page.apiUrl }}/psp/vipps/payments/{{ page.paymentId }}",
+            "href": "https://{{ page.apiHost }}/psp/vipps/payments/{{ page.paymentId }}",
             "rel": "update-payment-abort"
         },
         {
@@ -229,7 +229,7 @@ transactions made on a specific payment.
 
 ```http
 GET /psp/vipps/payments/{{ page.paymentId }}/authorizations HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -287,7 +287,7 @@ to the `GET` request.
 
 ```http
 GET /psp/vipps/payments/{{ page.paymentId }}/authorizations/<transactionId> HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -340,7 +340,7 @@ The `captures` resource lists the capture transactions (one or more) on a specif
 
 ```HTThP
 GET /psp/vipps/vipps/{{ page.paymentId }}/captures HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -399,7 +399,7 @@ finding the `rel` `create-capture`.
 
 ```http
 POST /psp/vipps/payments/{{ page.paymentId }}/captures HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -474,7 +474,7 @@ specific payment.
 
 ```http
 GET /psp/vipps/payments/{{ page.paymentId }}/cancellations HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -534,7 +534,7 @@ Performing a cancellation will cancel all remaning capture amounts on a payment.
 
 ```http
 POST /psp/vipps/payments/{{ page.paymentId }}/cancellations HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -604,7 +604,7 @@ on a specific payment.
 
 ```http
 GET /psp/vipps/payments/{{ page.paymentId }}/reversals HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -660,7 +660,7 @@ available.
 
 ```http
 POST /psp/vipps/payments/{{ page.paymentId }}/reversals HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 

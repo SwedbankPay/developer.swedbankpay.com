@@ -34,7 +34,7 @@ or more expanded sub-resources inlined.
 
 ```http
 POST /psp/vipps/payments HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -59,7 +59,7 @@ Content-Type: application/json
            "completeUrl": "http://example.com/payment-completed",
            "cancelUrl": "http://example.com/payment-canceled",
            "paymentUrl": "http://example.com/perform-payment",
-           "callbackUrl": "https://{{ page.apiUrl }}/psp/payment-callback",
+           "callbackUrl": "https://{{ page.apiHost }}/psp/payment-callback",
            "logoUrl": "https://example.com/path/to/logo.png",
            "termsOfServiceUrl": "https://example.com/terms.pdf"
 
@@ -146,7 +146,7 @@ Content-Type: application/json
    "operations": [
         {
            "method": "PATCH",
-           "href": "https://{{ page.apiUrl }}/psp/vipps/payments/{{ page.paymentId }}",
+           "href": "https://{{ page.apiHost }}/psp/vipps/payments/{{ page.paymentId }}",
            "rel": "update-payment-abort"
         },
         {
@@ -191,7 +191,7 @@ A list of possible operations and their explanation is given below.
    "payment": {},
    "operations": [
         {
-           "href": "http://{{ page.apiUrl }}/psp/vipps/payments/{{ page.paymentId }}",
+           "href": "http://{{ page.apiHost }}/psp/vipps/payments/{{ page.paymentId }}",
            "rel": "update-payment-abort",
            "method": "PATCH"
         },
@@ -201,17 +201,17 @@ A list of possible operations and their explanation is given below.
            "method": "GET"
         },
         {
-           "href": "https://{{ page.apiUrl }}/psp/mobilepay/payments/{{ page.paymentId }}/captures",
+           "href": "https://{{ page.apiHost }}/psp/mobilepay/payments/{{ page.paymentId }}/captures",
            "rel": "create-capture",
            "method": "POST"
         },
         {
-           "href": "https://{{ page.apiUrl }}/psp/mobilepay/payments/{{ page.paymentId }}/cancellations",
+           "href": "https://{{ page.apiHost }}/psp/mobilepay/payments/{{ page.paymentId }}/cancellations",
            "rel": "create-cancellation",
            "method": "POST"
         },
         {
-           "href": "https://{{ page.apiUrl }}/psp/mobilepay/payments/{{ page.paymentId }}/reversals",
+           "href": "https://{{ page.apiHost }}/psp/mobilepay/payments/{{ page.paymentId }}/reversals",
            "rel": "create-reversal",
            "method": "POST"
         }
@@ -262,7 +262,7 @@ transactions made on a specific payment.
 
 ```http
 GET /psp/vipps/payments/{{ page.paymentId }}/authorizations HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -319,7 +319,7 @@ transaction id to the GET request.
 
 ```http
 GET /psp/vipps/payments/{{ page.paymentId }}/authorizations/<transactionId> HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -371,7 +371,7 @@ The captures resource lists the capture transactions (one or more) on a specific
 
 ```http
 GET /psp/vipps/vipps/{{ page.paymentId }}/captures HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -429,7 +429,7 @@ performing the create-capture operation.
 
 ```http
 POST /psp/vipps/payments/{{ page.paymentId }}/captures HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -501,7 +501,7 @@ The cancellations resource lists the cancellation transactions on a specific pay
 
 ```http
 GET /psp/vipps/payments/{{ page.paymentId }}/cancellations HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -558,7 +558,7 @@ You can only cancel a payment - or part of payment - not yet captured.
 
 ```http
 POST /psp/vipps/payments/{{ page.paymentId }}/cancellations HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -627,7 +627,7 @@ specific payment.
 
 ```http
 GET /psp/vipps/payments/{{ page.paymentId }}/reversals HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -683,7 +683,7 @@ captured payment.
 
 ```http
 POST /psp/vipps/payments/{{ page.paymentId }}/reversals HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 

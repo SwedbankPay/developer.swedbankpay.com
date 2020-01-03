@@ -45,7 +45,7 @@ in their own section below.
 
 ```http
 POST /psp/creditcard/payments HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -332,7 +332,7 @@ Content-Type: application/json
     },
     "operations": [
         {
-            "href": "https://{{ page.apiUrl }}/psp/creditcard/payments/{{ page.paymentId }}",
+            "href": "https://{{ page.apiHost }}/psp/creditcard/payments/{{ page.paymentId }}",
             "rel": "update-payment-abort",
             "method": "PATCH",
             "contentType": "application/json"
@@ -363,7 +363,7 @@ through a previous payment in order to charge the same card.
 
 ```http
 POST /psp/creditcard/payments HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -421,7 +421,7 @@ a payout by performing a `POST` creditcard payments with key `operation` set to
 
 ```http
 POST /psp/creditcard/payments HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -565,7 +565,7 @@ listed below.
 
 ```http
 POST /psp/creditcard/payments HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -635,7 +635,7 @@ Content-Type: application/json
     },
     "operations": [
         {
-            "href": "https://{{ page.apiUrl }}/psp/creditcard/payments/{{ page.paymentId }}",
+            "href": "https://{{ page.apiHost }}/psp/creditcard/payments/{{ page.paymentId }}",
             "rel": "update-payment-abort",
             "method": "PATCH",
             "contentType": "application/json"
@@ -748,7 +748,7 @@ Swedbank Pay Payments where the payment is authorized.
 
 ```http
 POST /psp/creditcard/payments/{{ page.paymentId }}/authorizations HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -805,7 +805,7 @@ often help narrow down the specifics of the problem.
 ### Contractual Problem Types
 
 All contract types will have the following URI in front of type:
-`https://{{ page.apiUrl }}/psp/<errordetail>/creditcard`
+`https://{{ page.apiHost }}/psp/<errordetail>/creditcard`
 
 {:.table .table-striped}
 | Type                           | Status | Description                                 |

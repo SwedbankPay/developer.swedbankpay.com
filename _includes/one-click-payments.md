@@ -45,7 +45,7 @@ provided below.
 
 ```http
 GET /psp/creditcard/payments/<payment-id>/<authorizations> HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 ```
 
 {:.code-header}
@@ -53,7 +53,7 @@ Host: {{ page.apiUrl }}
 
 ```http
 GET /psp/creditcard/payments/<payment-id>/<verifications> HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 ```
 
 You need to store the `paymentToken` from the response in your system and keep
@@ -80,7 +80,7 @@ Abbrevated code example:
 
 ```http
 POST /psp/creditcard/payments HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -132,7 +132,7 @@ you use the `Delete payment token` request.
 
 ```http
 PATCH /psp/creditcard/payments/instrumentData/<paymentToken> HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 

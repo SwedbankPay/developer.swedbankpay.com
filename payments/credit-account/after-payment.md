@@ -24,7 +24,7 @@ To `capture` a `CreditAccountSe` transaction, you need to perform the
 
 ```http
 POST /psp/creditcard/payments/<paymentId>/captures HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 

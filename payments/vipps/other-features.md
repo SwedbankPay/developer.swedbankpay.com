@@ -43,7 +43,7 @@ response that includes one or more expanded sub-resources inlined.
 
 ```http
 POST /psp/vipps/payments HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -68,7 +68,7 @@ Content-Type: application/json
             "completeUrl": "http://example.com/payment-completed",
             "cancelUrl": "http://example.com/payment-canceled",
             "paymentUrl": "http://example.com/perform-payment",
-            "callbackUrl": "https://{{ page.apiUrl }}/psp/payment-callback",
+            "callbackUrl": "https://{{ page.apiHost }}/psp/payment-callback",
             "logoUrl": "https://example.com/path/to/logo.png",
             "termsOfServiceUrl": "https://example.com/terms.pdf"
 
@@ -159,7 +159,7 @@ Content-Type: application/json
     "operations": [
         {
             "method": "PATCH",
-            "href": "https://{{ page.apiUrl }}/psp/vipps/payments/{{ page.paymentId }}",
+            "href": "https://{{ page.apiHost }}/psp/vipps/payments/{{ page.paymentId }}",
             "rel": "update-payment-abort"
         },
         {

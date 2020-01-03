@@ -38,7 +38,7 @@ response that includes one or more expanded sub-resources inlined.
 
 ```http
 POST /psp/swish/payments HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -147,12 +147,12 @@ Content-Type: application/json
     "operations": [
         {
             "method": "PATCH",
-            "href": "http://{{ page.apiUrl }}/psp/swish/payments/{{ page.paymentId }}",
+            "href": "http://{{ page.apiHost }}/psp/swish/payments/{{ page.paymentId }}",
             "rel": "update-payment-abort"
         },
         {
             "method": "POST",
-            "href": "http://{{ page.apiUrl }}/psp/swish/payments/{{ page.paymentId }}/sales",
+            "href": "http://{{ page.apiHost }}/psp/swish/payments/{{ page.paymentId }}/sales",
             "rel": "create-sale"
         }
 
@@ -196,7 +196,7 @@ of the problem.
 ### Error types from Swish and third parties
 
 All Swish error types will have the following URI in front of type:
-`https://{{ page.apiUrl }}/psp/<errordetail>/swish`
+`https://{{ page.apiHost }}/psp/<errordetail>/swish`
 
 {:.table .table-striped}
 | Type                 | Status | Error code           | Details                                                                                         |

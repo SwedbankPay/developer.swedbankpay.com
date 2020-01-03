@@ -9,7 +9,7 @@ and `currentPayment`.
 
 ```http
 GET /psp/paymentorders/{{ page.paymentOrderId }}/ HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -50,7 +50,7 @@ Content-Type: application/json
     "operations": [
         {
             "method": "PATCH",
-            "href": "https://{{ page.apiUrl }}/psp/paymentorders/{{ page.paymentOrderId }}",
+            "href": "https://{{ page.apiHost }}/psp/paymentorders/{{ page.paymentOrderId }}",
             "rel": "update-paymentorder-abort",
             "contentType": "application/json"
         },

@@ -135,7 +135,7 @@ An example of an expanded `POST` request is available in the
 
 ```http
 POST /psp/vipps/payments HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -254,7 +254,7 @@ Content-Type: application/json
    "operations": [
         {
            "method": "PATCH",
-           "href": "https://{{ page.apiUrl }}/psp/vipps/payments/{{ page.paymentId }}",
+           "href": "https://{{ page.apiHost }}/psp/vipps/payments/{{ page.paymentId }}",
            "rel": "update-payment-abort"
         },
         {
@@ -343,7 +343,7 @@ Use the mobile number from the consumer to create an authorization transaction.
 
 ```http
 POST /psp/vipps/payments/{{ page.paymentId }}/authorizations HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 

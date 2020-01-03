@@ -66,7 +66,7 @@ These are found under `defaults.values:` and should be used where fitting.
    and response examples.
 5. `paymentToken`: This is used to replace the payment token `GUID` for request
    and response examples.
-6. `apiUrl`: This constant is used to replace the host urls of request and
+6. `apiHost`: This constant is used to replace the host urls of request and
    responses.
 7. `frontEndUrl`: This constant is used to replace the frontend urls in request
    and response examples.
@@ -81,7 +81,7 @@ Example:
 
 ```http
 GET /psp/paymentorders/{{ page.paymentOrderId }}/ HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 ```
 
 ### Use includes

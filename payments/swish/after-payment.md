@@ -35,12 +35,12 @@ is given below.
     "operations": [
         {
             "method": "PATCH",
-            "href": "https://{{ page.apiUrl }}/psp/swish/payments/{{ page.paymentId }}",
+            "href": "https://{{ page.apiHost }}/psp/swish/payments/{{ page.paymentId }}",
             "rel": "update-payment-abort"
         },
         {
             "method": "POST",
-            "href": "https://{{ page.apiUrl }}/psp/swish/payments/{{ page.paymentId }}/sales",
+            "href": "https://{{ page.apiHost }}/psp/swish/payments/{{ page.paymentId }}/sales",
             "rel": "create-sale"
         },
         {
@@ -95,7 +95,7 @@ on a specific payment.
 
 ```http
 GET /psp/swish/payments/{{ page.paymentId }}/sales HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -153,7 +153,7 @@ to manage the purchase, making `msisdn` optional.
 
 ```http
 POST /psp/swish/payments/{{ page.paymentId }}/sales HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -200,7 +200,7 @@ Content-Type: application/json
 
 ```http
 POST /psp/swish/payments/{{ page.paymentId }}/sales HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -264,7 +264,7 @@ specific payment.
 
 ```http
 GET /psp/swish/payments/{{ page.paymentId }}/reversals HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -323,7 +323,7 @@ Swedbank Pay.
 
 ```http
 POST /psp/swish/payments/{{ page.paymentId }}/reversals HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -393,7 +393,7 @@ You need to include the following `HTTP` body:
 
 ```http
 PATCH /psp/payments/{{ page.paymentId }} HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 

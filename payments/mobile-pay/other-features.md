@@ -586,7 +586,7 @@ returned in the payment request. You need to include the following HTTP body:
 **Request**
 
 ```http
-PATCH /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c HTTP/1.1
+PATCH /psp/creditcard/payments/{{ page.paymentId }} HTTP/1.1
 Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
