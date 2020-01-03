@@ -138,7 +138,7 @@ response, enabling you to access information from these sub-resources.
 **HTTP request with expansion**
 
 ```http
-GET /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c?$expand=urls,authorizations HTTP/1.1
+GET /psp/creditcard/payments/{{ page.paymentId }}?$expand=urls,authorizations HTTP/1.1
 Host: {{ page.apiUrl }}
 ```
 
@@ -197,7 +197,7 @@ instrument specific operations.
     "payment": {},
     "operations": [
         {
-            "href": "http://{{ page.apiUrl }}/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+            "href": "http://{{ page.apiUrl }}/psp/creditcard/payments/{{ page.paymentId }}",
             "rel": "update-payment-abort",
             "method": "PATCH"
         },
@@ -213,7 +213,7 @@ instrument specific operations.
             "contentType": "application/javascript"
         },
         {
-            "href": "https://{{ page.apiUrl }}/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures",
+            "href": "https://{{ page.apiUrl }}/psp/creditcard/payments/{{ page.paymentId }}/captures",
             "rel": "create-capture",
             "method": "POST"
         }

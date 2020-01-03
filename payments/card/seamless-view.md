@@ -277,7 +277,7 @@ Content-Type: application/json
 
 {
     "payment": {
-      "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+      "id": "/psp/creditcard/payments/{{ page.paymentId }}",
       "number": 1234567890,
       "instrument": "CreditCard",
       "created": "2016-09-14T13:21:29.3182115Z",
@@ -295,19 +295,19 @@ Content-Type: application/json
       "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
       "userAgent": "Mozilla/5.0...",
       "language": "sv-SE",
-      "prices": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/prices" },
-      "transactions": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions" },
-      "authorizations": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations" },
-      "captures": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures" },
-      "reversals": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals" },
-      "cancellations": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/cancellations" },
-      "urls" : { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/urls" },
-      "payeeInfo" : { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeInfo" },
-      "settings": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/settings" }
+      "prices": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/prices" },
+      "transactions": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/transactions" },
+      "authorizations": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/authorizations" },
+      "captures": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/captures" },
+      "reversals": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/reversals" },
+      "cancellations": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/cancellations" },
+      "urls" : { "id": "/psp/creditcard/payments/{{ page.paymentId }}/urls" },
+      "payeeInfo" : { "id": "/psp/creditcard/payments/{{ page.paymentId }}/payeeInfo" },
+      "settings": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/settings" }
     },
     "operations": [
       {
-        "href": "https://{{ page.apiUrl }}/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+        "href": "https://{{ page.apiUrl }}/psp/creditcard/payments/{{ page.paymentId }}",
         "rel": "update-payment-abort",
         "method": "PATCH",
         "contentType": "application/json"

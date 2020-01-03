@@ -123,7 +123,7 @@ Content-Type: application/json
 
 {
     "payment": {
-        "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+        "id": "/psp/directdebit/payments/{{ page.paymentId }}",
         "number": 1234567890,
         "instrument": "DirectDebit",
         "created": "2018-10-09T13:01:01Z",
@@ -137,13 +137,13 @@ Content-Type: application/json
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",
-        "prices": { "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/prices" },
-        "transactions": { "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions" },
-        "sales": { "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/sales" },
-        "reversals": { "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals" },
-        "payeeInfo" : { "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeInfo" },
-        "urls" : { "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/urls" },
-        "settings": { "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/settings" }
+        "prices": { "id": "/psp/directdebit/payments/{{ page.paymentId }}/prices" },
+        "transactions": { "id": "/psp/directdebit/payments/{{ page.paymentId }}/transactions" },
+        "sales": { "id": "/psp/directdebit/payments/{{ page.paymentId }}/sales" },
+        "reversals": { "id": "/psp/directdebit/payments/{{ page.paymentId }}/reversals" },
+        "payeeInfo" : { "id": "/psp/directdebit/payments/{{ page.paymentId }}/payeeInfo" },
+        "urls" : { "id": "/psp/directdebit/payments/{{ page.paymentId }}/urls" },
+        "settings": { "id": "/psp/directdebit/payments/{{ page.paymentId }}/settings" }
   },
     "operations": [
         {
@@ -223,7 +223,7 @@ a specific payment.
 **Request**
 
 ```http
-GET /psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/sales HTTP/1.1
+GET /psp/directdebit/payments/{{ page.paymentId }}/sales HTTP/1.1
 Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -237,16 +237,16 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "payment": "/psp/directdebit/payments/{{ page.paymentId }}",
     "sales": {
-        "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/sales",
+        "id": "/psp/directdebit/payments/{{ page.paymentId }}/sales",
         "salesList": [
             {
-                "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/sales/12345678-1234-1234-1234-123456789012",
+                "id": "/psp/directdebit/payments/{{ page.paymentId }}/sales/12345678-1234-1234-1234-123456789012",
                 "selectedBank": "NordeaFI",
                 "deviceIsMobile": true,
                 "transaction": {
-                    "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
+                    "id": "/psp/directdebit/payments/{{ page.paymentId }}/transactions/12345678-1234-1234-1234-123456789012",
                     "created": "2018-09-14T01:01:01.01Z",
                     "updated": "2018-09-14T01:01:01.03Z",
                     "type": "Sale",
@@ -265,11 +265,11 @@ Content-Type: application/json
                 }
             },
             {
-                "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/sales/12345678-1234-1234-1234-123456789013",
+                "id": "/psp/directdebit/payments/{{ page.paymentId }}/sales/12345678-1234-1234-1234-123456789013",
                 "selectedBank": "NordeaFI",
                 "deviceIsMobile": true,
                 "transaction": {
-                    "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789013",
+                    "id": "/psp/directdebit/payments/{{ page.paymentId }}/transactions/12345678-1234-1234-1234-123456789013",
                     "created": "2018-09-14T01:01:01.01Z",
                     "updated": "2018-09-14T01:01:01.03Z",
                     "type": "Sale",
@@ -286,7 +286,7 @@ Content-Type: application/json
                     "isOperational": true,
                     "operations": [
                         {
-                            "href": "https://{{ page.apiUrl }}/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+                            "href": "https://{{ page.apiUrl }}/psp/directdebit/payments/{{ page.paymentId }}",
                             "rel": "edit-sale",
                             "method": "PATCH"
                         }
@@ -307,7 +307,7 @@ The `Reversals` resource list the reversals transactions
 **Request**
 
 ```http
-GET /psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals HTTP/1.1
+GET /psp/directdebit/payments/{{ page.paymentId }}/reversals HTTP/1.1
 Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -321,14 +321,14 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "payment": "/psp/directdebit/payments/{{ page.paymentId }}",
     "reversals": {
-        "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals",
+        "id": "/psp/directdebit/payments/{{ page.paymentId }}/reversals",
         "reversalList": [
             {
-                "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals/12345678-1234-1234-1234-123456789012",
+                "id": "/psp/directdebit/payments/{{ page.paymentId }}/reversals/12345678-1234-1234-1234-123456789012",
                 "transaction": {
-                    "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
+                    "id": "/psp/directdebit/payments/{{ page.paymentId }}/transactions/12345678-1234-1234-1234-123456789012",
                     "created": "2016-09-14T01:01:01.01Z",
                     "updated": "2016-09-14T01:01:01.03Z",
                     "type": "Reversal",
@@ -364,7 +364,7 @@ A callback request will follow from Swedbank Pay.
 **Request**
 
 ```http
-POST /psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals HTTP/1.1
+POST /psp/directdebit/payments/{{ page.paymentId }}/reversals HTTP/1.1
 Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -396,11 +396,11 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "payment": "/psp/directdebit/payments/{{ page.paymentId }}",
     "reversal": {
-        "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals/12345678-1234-1234-1234-123456789012",
+        "id": "/psp/directdebit/payments/{{ page.paymentId }}/reversals/12345678-1234-1234-1234-123456789012",
         "transaction": {
-            "id": "/psp/directdebit/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
+            "id": "/psp/directdebit/payments/{{ page.paymentId }}/transactions/12345678-1234-1234-1234-123456789012",
             "created": "2016-09-14T01:01:01.01Z",
             "updated": "2016-09-14T01:01:01.03Z",
             "type": "Reversal",

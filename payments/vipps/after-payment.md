@@ -249,9 +249,9 @@ Content-Type: application/json
             {
                 "vippsTransactionId": "5619328800",
                 "msisdn": "+4798765432",
-                "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/authorizations/3bfb8c66-33be-4871-465b-08d612f01a53",
+                "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/authorizations/{{ page.transactionId }}",
                 "transaction": {
-                    "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/transactions/3bfb8c66-33be-4871-465b-08d612f01a53",
+                    "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/transactions/{{ page.transactionId }}",
                     "created": "2018-09-05T15:01:39.8658084Z",
                     "updated": "2018-09-05T15:01:42.2119509Z",
                     "type": "Authorization",
@@ -304,9 +304,9 @@ Content-Type: application/json
     "authorization": {
         "vippsTransactionId": "5619328800",
         "msisdn": "+4798765432",
-        "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/authorizations/3bfb8c66-33be-4871-465b-08d612f01a53",
+        "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/authorizations/{{ page.transactionId }}",
         "transaction": {
-            "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/transactions/3bfb8c66-33be-4871-465b-08d612f01a53",
+            "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/transactions/{{ page.transactionId }}",
             "created": "2018-09-05T15:01:39.8658084Z",
             "updated": "2018-09-05T15:01:42.2119509Z",
             "type": "Authorization",
@@ -358,9 +358,9 @@ Content-Type: application/json
         "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/captures",
         "captureList": [
             {
-                "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/captures/643cafb6-8b69-4ad9-b2c8-08d612f03245",
+                "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/captures/{{ page.transactionId }}",
                 "transaction": {
-                    "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/transactions/643cafb6-8b69-4ad9-b2c8-08d612f03245",
+                    "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/transactions/{{ page.transactionId }}",
                     "created": "2018-09-05T15:03:56.5180218Z",
                     "updated": "2018-09-06T08:05:01.4179654Z",
                     "type": "Capture",
@@ -437,9 +437,9 @@ Content-Type: application/json
 {
     "payment": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d",
     "capture": {
-        "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/captures/643cafb6-8b69-4ad9-b2c8-08d612f03245",
+        "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/captures/{{ page.transactionId }}",
         "transaction": {
-            "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/transactions/643cafb6-8b69-4ad9-b2c8-08d612f03245",
+            "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/transactions/{{ page.transactionId }}",
             "created": "2018-09-05T15:03:56.5180218Z",
             "updated": "2018-09-05T15:03:57.6300566Z",
             "type": "Capture",
@@ -487,14 +487,14 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/vipps/payments/754c378d-dd77-40cf-3811-08d613932ad6",
+    "payment": "/psp/vipps/payments/{{ page.paymentId }}",
     "cancellations": {
-        "id": "/psp/vipps/payments/754c378d-dd77-40cf-3811-08d613932ad6/cancellations",
+        "id": "/psp/vipps/payments/{{ page.paymentId }}/cancellations",
         "cancellationList": [
             {
-                "id": "/psp/vipps/payments/754c378d-dd77-40cf-3811-08d613932ad6/cancellations/808a2929-6673-4b40-32b6-08d6139342aa",
+                "id": "/psp/vipps/payments/{{ page.paymentId }}/cancellations/{{ page.transactionId }}",
                 "transaction": {
-                    "id": "/psp/vipps/payments/754c378d-dd77-40cf-3811-08d613932ad6/transactions/808a2929-6673-4b40-32b6-08d6139342aa",
+                    "id": "/psp/vipps/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
                     "created": "2018-09-06T10:03:43.9615Z",
                     "updated": "2018-09-06T10:03:45.9503625Z",
                     "type": "Cancellation",
@@ -565,11 +565,11 @@ to the `GET` request.
 HTTP/1.1 200 OK
 Content-Type: application/json
 {
-    "payment": "/psp/vipps/payments/754c378d-dd77-40cf-3811-08d613932ad6",
+    "payment": "/psp/vipps/payments/{{ page.paymentId }}",
     "cancellation": {
-        "id": "/psp/vipps/payments/754c378d-dd77-40cf-3811-08d613932ad6/cancellations/808a2929-6673-4b40-32b6-08d6139342aa",
+        "id": "/psp/vipps/payments/{{ page.paymentId }}/cancellations/{{ page.transactionId }}",
         "transaction": {
-            "id": "/psp/vipps/payments/754c378d-dd77-40cf-3811-08d613932ad6/transactions/808a2929-6673-4b40-32b6-08d6139342aa",
+            "id": "/psp/vipps/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
             "created": "2018-09-06T10:03:43.9615Z",
             "updated": "2018-09-06T10:03:45.9503625Z",
             "type": "Cancellation",
@@ -621,9 +621,9 @@ Content-Type: application/json
         "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/reversals",
         "reversalList": [
             {
-                "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/reversals/b3ac5f69-3d24-4c66-32b7-08d6139342aa",
+                "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/reversals/{{ page.transactionId }}",
                 "transaction": {
-                    "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/transactions/b3ac5f69-3d24-4c66-32b7-08d6139342aa",
+                    "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/transactions/{{ page.transactionId }}",
                     "created": "2018-09-06T10:12:54.738174Z",
                     "updated": "2018-09-06T10:12:55.0671912Z",
                     "type": "Reversal",
@@ -698,9 +698,9 @@ Content-Type: application/json
 {
     "payment": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d",
     "reversal": {
-        "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/reversals/b3ac5f69-3d24-4c66-32b7-08d6139342aa",
+        "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/reversals/{{ page.transactionId }}",
         "transaction": {
-            "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/transactions/b3ac5f69-3d24-4c66-32b7-08d6139342aa",
+            "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/transactions/{{ page.transactionId }}",
             "created": "2018-09-06T10:12:54.738174Z",
             "updated": "2018-09-06T10:12:55.0671912Z",
             "type": "Reversal",

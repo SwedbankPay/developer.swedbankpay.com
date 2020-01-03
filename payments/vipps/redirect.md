@@ -184,7 +184,7 @@ Content-Type: application/json
 
 {
     "payment": {
-        "id": "/psp/vipps/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+        "id": "/psp/vipps/payments/{{ page.paymentId }}",
         "number": 1234567890,
         "created": "2016-09-14T13:21:29.3182115Z",
         "updated": "2016-09-14T13:21:57.6627579Z",
@@ -203,39 +203,39 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",
         "prices": {
-            "id": "/psp/vipps/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/prices"
+            "id": "/psp/vipps/payments/{{ page.paymentId }}/prices"
         },
         "transactions": {
-            "id": "/psp/vipps/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions"
+            "id": "/psp/vipps/payments/{{ page.paymentId }}/transactions"
         },
         "authorizations": {
-            "id": "/psp/vipps/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations"
+            "id": "/psp/vipps/payments/{{ page.paymentId }}/authorizations"
         },
         "reversals": {
-            "id": "/psp/vipps/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals"
+            "id": "/psp/vipps/payments/{{ page.paymentId }}/reversals"
         },
         "cancellations": {
-            "id": "/psp/vipps/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/cancellations"
+            "id": "/psp/vipps/payments/{{ page.paymentId }}/cancellations"
         },
         "urls": {
-            "id": "/psp/vipps/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/urls"
+            "id": "/psp/vipps/payments/{{ page.paymentId }}/urls"
         },
         "payeeInfo": {
-            "id": "/psp/vipps/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeInfo"
+            "id": "/psp/vipps/payments/{{ page.paymentId }}/payeeInfo"
         },
         "settings": {
-            "id": "/psp/vipps/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/settings"
+            "id": "/psp/vipps/payments/{{ page.paymentId }}/settings"
         }
     },
     "operations": [
         {
             "method": "POST",
-            "href": "http://{{ page.apiUrl }}/psp/vipps/payments/c50eef6d-a788-4ec6-64ff-08d4b16740a4/authorizations",
+            "href": "http://{{ page.apiUrl }}/psp/vipps/payments/{{ page.transactionId }}/authorizations",
             "rel": "create-authorization"
         },
         {
             "method": "PATCH",
-            "href": "http://{{ page.apiUrl }}/psp/vipps/payments/c50eef6d-a788-4ec6-64ff-08d4b16740a4",
+            "href": "http://{{ page.apiUrl }}/psp/vipps/payments/{{ page.transactionId }}",
             "rel": "update-payment-abort"
         },
         {
@@ -286,7 +286,7 @@ transactions made on a specific payment.
 
 HTTP/1.1 200 OK
 Content-Type: application/json
-GET /psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/authorizations/<transactionId> HTTP/1.1
+GET /psp/vipps/payments/{{ page.paymentId }}/authorizations/<transactionId> HTTP/1.1
 Host: {{ page.apiUrl }}
 Authorization: Bearer <MerchantToken>
 
@@ -302,13 +302,13 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d",
+    "payment": "/psp/vipps/payments/{{ page.paymentId }}",
     "authorization": {
         "vippsTransactionId": "5619328800",
         "msisdn": "+47xxxxxxxx",
-        "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/authorizations/3bfb8c66-33be-4871-465b-08d612f01a53",
+        "id": "/psp/vipps/payments/{{ page.paymentId }}/authorizations/{{ page.transactionId }}",
         "transaction": {
-            "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/transactions/3bfb8c66-33be-4871-465b-08d612f01a53",
+            "id": "/psp/vipps/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
             "created": "2018-09-05T15:01:39.8658084Z",
             "updated": "2018-09-05T15:01:42.2119509Z",
             "type": "Authorization",

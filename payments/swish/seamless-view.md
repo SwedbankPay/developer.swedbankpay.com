@@ -259,7 +259,7 @@ Content-Type: application/json
 
 {
     "payment": {
-      "id": "/psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+      "id": "/psp/swish/payments/{{ page.paymentId }}",
       "number": 1234567890,
       "instrument": "Swish",
       "created": "2016-09-14T13:21:29.3182115Z",
@@ -277,26 +277,26 @@ Content-Type: application/json
       "initiatingSystemUserAgent": "PostmanRuntime/7.20.1",
       "userAgent": "Mozilla/5.0...",
       "language": "sv-SE",
-      "prices": { "id": "/psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/prices" },
-      "transactions": { "id": "/psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions" },
-      "authorizations": { "id": "/psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations" },
-      "captures": { "id": "/psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures" },
-      "reversals": { "id": "/psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals" },
-      "cancellations": { "id": "/psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/cancellations" },
-      "urls" : { "id": "/psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/urls" },
-      "payeeInfo" : { "id": "/psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeInfo" },
-      "settings": { "id": "/psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/settings" }
+      "prices": { "id": "/psp/swish/payments/{{ page.paymentId }}/prices" },
+      "transactions": { "id": "/psp/swish/payments/{{ page.paymentId }}/transactions" },
+      "authorizations": { "id": "/psp/swish/payments/{{ page.paymentId }}/authorizations" },
+      "captures": { "id": "/psp/swish/payments/{{ page.paymentId }}/captures" },
+      "reversals": { "id": "/psp/swish/payments/{{ page.paymentId }}/reversals" },
+      "cancellations": { "id": "/psp/swish/payments/{{ page.paymentId }}/cancellations" },
+      "urls" : { "id": "/psp/swish/payments/{{ page.paymentId }}/urls" },
+      "payeeInfo" : { "id": "/psp/swish/payments/{{ page.paymentId }}/payeeInfo" },
+      "settings": { "id": "/psp/swish/payments/{{ page.paymentId }}/settings" }
     },
     "operations": [
       {
-        "href": "https://{{ page.apiUrl }}/psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+        "href": "https://{{ page.apiUrl }}/psp/swish/payments/{{ page.paymentId }}",
         "rel": "update-payment-abort",
         "method": "PATCH",
         "contentType": "application/json"
       },
       {
             "method": "POST",
-            "href": "https://{{ page.apiUrl }}/psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/sales",
+            "href": "https://{{ page.apiUrl }}/psp/swish/payments/{{ page.paymentId }}/sales",
             "rel": "create-sale"
       },
       {

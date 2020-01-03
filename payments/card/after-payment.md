@@ -52,7 +52,7 @@ need to perform the `create-capture` operation.
 **Request**
 
 ```http
-POST /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures HTTP/1.1
+POST /psp/creditcard/payments/{{ page.paymentId }}/captures HTTP/1.1
 Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -84,11 +84,11 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "payment": "/psp/creditcard/payments/{{ page.paymentId }}",
     "capture": {
-        "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures/12345678-1234-1234-1234-123456789012",
+        "id": "/psp/creditcard/payments/{{ page.paymentId }}/captures/12345678-1234-1234-1234-123456789012",
         "transaction": {
-            "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
+            "id": "/psp/creditcard/payments/{{ page.paymentId }}/transactions/12345678-1234-1234-1234-123456789012",
             "created": "2016-09-14T01:01:01.01Z",
             "updated": "2016-09-14T01:01:01.03Z",
             "type": "Capture",
@@ -133,7 +133,7 @@ specific payment.
 **Request**
 
 ```http
-GET /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures HTTP/1.1
+GET /psp/creditcard/payments/{{ page.paymentId }}/captures HTTP/1.1
 Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -147,14 +147,14 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "payment": "/psp/creditcard/payments/{{ page.paymentId }}",
     "captures": {
-        "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures",
+        "id": "/psp/creditcard/payments/{{ page.paymentId }}/captures",
         "captureList": [
             {
-                "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures/12345678-1234-1234-1234-123456789012",
+                "id": "/psp/creditcard/payments/{{ page.paymentId }}/captures/12345678-1234-1234-1234-123456789012",
                 "transaction": {
-                    "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
+                    "id": "/psp/creditcard/payments/{{ page.paymentId }}/transactions/12345678-1234-1234-1234-123456789012",
                     "created": "2016-09-14T01:01:01.01Z",
                     "updated": "2016-09-14T01:01:01.03Z",
                     "type": "Capture",
@@ -226,7 +226,7 @@ yet captured - payment.
 **Request**
 
 ```http
-POST /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/cancellations HTTP/1.1
+POST /psp/creditcard/payments/{{ page.paymentId }}/cancellations HTTP/1.1
 Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -257,11 +257,11 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "payment": "/psp/creditcard/payments/{{ page.paymentId }}",
     "cancellation": {
-        "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/cancellations/12345678-1234-1234-1234-123456789012",
+        "id": "/psp/creditcard/payments/{{ page.paymentId }}/cancellations/12345678-1234-1234-1234-123456789012",
         "transaction": {
-            "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
+            "id": "/psp/creditcard/payments/{{ page.paymentId }}/transactions/12345678-1234-1234-1234-123456789012",
             "created": "2016-09-14T01:01:01.01Z",
             "updated": "2016-09-14T01:01:01.03Z",
             "type": "Cancellation",
@@ -307,7 +307,7 @@ payment.
 **Request**
 
 ```http
-GET /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/cancellations HTTP/1.1
+GET /psp/creditcard/payments/{{ page.paymentId }}/cancellations HTTP/1.1
 Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -321,13 +321,13 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "payment": "/psp/creditcard/payments/{{ page.paymentId }}",
     "cancellations": {
-        "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/cancellations",
+        "id": "/psp/creditcard/payments/{{ page.paymentId }}/cancellations",
         "cancellationList": [{
-            "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/cancellations/12345678-1234-1234-1234-123456789012",
+            "id": "/psp/creditcard/payments/{{ page.paymentId }}/cancellations/12345678-1234-1234-1234-123456789012",
             "transaction": {
-                "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
+                "id": "/psp/creditcard/payments/{{ page.paymentId }}/transactions/12345678-1234-1234-1234-123456789012",
                 "created": "2016-09-14T01:01:01.01Z",
                 "updated": "2016-09-14T01:01:01.03Z",
                 "type": "Cancellation",
@@ -391,7 +391,7 @@ The `create-reversal` operation will reverse a previously captured payment.
 **Request**
 
 ```http
-POST /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals HTTP/1.1
+POST /psp/creditcard/payments/{{ page.paymentId }}/reversals HTTP/1.1
 Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -426,11 +426,11 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "payment": "/psp/creditcard/payments/{{ page.paymentId }}",
     "reversal": {
-        "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversal/12345678-1234-1234-1234-123456789012",
+        "id": "/psp/creditcard/payments/{{ page.paymentId }}/reversal/12345678-1234-1234-1234-123456789012",
         "transaction": {
-            "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
+            "id": "/psp/creditcard/payments/{{ page.paymentId }}/transactions/12345678-1234-1234-1234-123456789012",
             "created": "2016-09-14T01:01:01.01Z",
             "updated": "2016-09-14T01:01:01.03Z",
             "type": "Reversal",
@@ -476,7 +476,7 @@ specific payment.
 **Request**
 
 ```http
-GET /psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals HTTP/1.1
+GET /psp/creditcard/payments/{{ page.paymentId }}/reversals HTTP/1.1
 Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -490,13 +490,13 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "payment": "/psp/creditcard/payments/{{ page.paymentId }}",
     "reversals": {
-        "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversal",
+        "id": "/psp/creditcard/payments/{{ page.paymentId }}/reversal",
         "reversalList": [{
-            "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversal/12345678-1234-1234-1234-123456789012",
+            "id": "/psp/creditcard/payments/{{ page.paymentId }}/reversal/12345678-1234-1234-1234-123456789012",
             "transaction": {
-                "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/12345678-1234-1234-1234-123456789012",
+                "id": "/psp/creditcard/payments/{{ page.paymentId }}/transactions/12345678-1234-1234-1234-123456789012",
                 "created": "2016-09-14T01:01:01.01Z",
                 "updated": "2016-09-14T01:01:01.03Z",
                 "type": "Reversal",

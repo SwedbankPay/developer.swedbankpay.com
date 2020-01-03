@@ -73,7 +73,7 @@ Content-Type: application/json
            "subsite": "MySubsite"
             },
        "prefillInfo": {
-        "msisdn": "+47xxxxxxxx"
+        "msisdn": "+4793000001"
         }
     }
 }
@@ -116,7 +116,7 @@ Content-Type: application/json
 
 {
    "payment": {
-       "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d",
+       "id": "/psp/vipps/payments/{{ page.paymentId }}",
        "number": 72100003079,
        "created": "2018-09-05T14:18:44.4259255Z",
        "instrument": "Vipps",
@@ -125,7 +125,7 @@ Content-Type: application/json
        "state": "Ready",
        "currency": "NOK",
        "prices": {
-           "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/prices"
+           "id": "/psp/vipps/payments/{{ page.paymentId }}/prices"
         },
        "amount": 0,
        "description": "Vipps Test",
@@ -134,19 +134,19 @@ Content-Type: application/json
        "userAgent": "Mozilla/5.0 weeeeee",
        "language": "nb-NO",
        "urls": {
-           "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/urls"
+           "id": "/psp/vipps/payments/{{ page.paymentId }}/urls"
         },
        "payeeInfo": {
-           "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/payeeinfo"
+           "id": "/psp/vipps/payments/{{ page.paymentId }}/payeeinfo"
         },
        "metadata": {
-           "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/metadata"
+           "id": "/psp/vipps/payments/{{ page.paymentId }}/metadata"
         }
     },
    "operations": [
         {
            "method": "PATCH",
-           "href": "https://{{ page.apiUrl }}/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d",
+           "href": "https://{{ page.apiUrl }}/psp/vipps/payments/{{ page.paymentId }}",
            "rel": "update-payment-abort"
         },
         {
@@ -191,7 +191,7 @@ A list of possible operations and their explanation is given below.
    "payment": {},
    "operations": [
         {
-           "href": "http://{{ page.apiUrl }}/psp/vipps/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+           "href": "http://{{ page.apiUrl }}/psp/vipps/payments/{{ page.paymentId }}",
            "rel": "update-payment-abort",
            "method": "PATCH"
         },
@@ -201,17 +201,17 @@ A list of possible operations and their explanation is given below.
            "method": "GET"
         },
         {
-           "href": "https://{{ page.apiUrl }}/psp/mobilepay/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/captures",
+           "href": "https://{{ page.apiUrl }}/psp/mobilepay/payments/{{ page.paymentId }}/captures",
            "rel": "create-capture",
            "method": "POST"
         },
         {
-           "href": "https://{{ page.apiUrl }}/psp/mobilepay/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/cancellations",
+           "href": "https://{{ page.apiUrl }}/psp/mobilepay/payments/{{ page.paymentId }}/cancellations",
            "rel": "create-cancellation",
            "method": "POST"
         },
         {
-           "href": "https://{{ page.apiUrl }}/psp/mobilepay/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/reversals",
+           "href": "https://{{ page.apiUrl }}/psp/mobilepay/payments/{{ page.paymentId }}/reversals",
            "rel": "create-reversal",
            "method": "POST"
         }
@@ -261,7 +261,7 @@ transactions made on a specific payment.
 **Request**
 
 ```http
-GET /psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/authorizations HTTP/1.1
+GET /psp/vipps/payments/{{ page.paymentId }}/authorizations HTTP/1.1
 Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -275,16 +275,16 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-   "payment": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d",
+   "payment": "/psp/vipps/payments/{{ page.paymentId }}",
    "authorizations": {
-       "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/authorizations",
+       "id": "/psp/vipps/payments/{{ page.paymentId }}/authorizations",
        "authorizationList": [
             {
                "vippsTransactionId": "5619328800",
-               "msisdn": "+47xxxxxxxx",
-               "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/authorizations/3bfb8c66-33be-4871-465b-08d612f01a53",
+               "msisdn": "+4793000001",
+               "id": "/psp/vipps/payments/{{ page.paymentId }}/authorizations/{{ page.transactionId }}",
                "transaction": {
-                   "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/transactions/3bfb8c66-33be-4871-465b-08d612f01a53",
+                   "id": "/psp/vipps/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
                    "created": "2018-09-05T15:01:39.8658084Z",
                    "updated": "2018-09-05T15:01:42.2119509Z",
                    "type": "Authorization",
@@ -318,7 +318,7 @@ transaction id to the GET request.
 **Request**
 
 ```http
-GET /psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/authorizations/<transactionId> HTTP/1.1
+GET /psp/vipps/payments/{{ page.paymentId }}/authorizations/<transactionId> HTTP/1.1
 Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -332,13 +332,13 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-   "payment": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d",
+   "payment": "/psp/vipps/payments/{{ page.paymentId }}",
    "authorization": {
        "vippsTransactionId": "5619328800",
-       "msisdn": "+47xxxxxxxx",
-       "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/authorizations/3bfb8c66-33be-4871-465b-08d612f01a53",
+       "msisdn": "+4793000001",
+       "id": "/psp/vipps/payments/{{ page.paymentId }}/authorizations/{{ page.transactionId }}",
        "transaction": {
-           "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/transactions/3bfb8c66-33be-4871-465b-08d612f01a53",
+           "id": "/psp/vipps/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
            "created": "2018-09-05T15:01:39.8658084Z",
            "updated": "2018-09-05T15:01:42.2119509Z",
            "type": "Authorization",
@@ -370,7 +370,7 @@ The captures resource lists the capture transactions (one or more) on a specific
 **Request**
 
 ```http
-GET /psp/vipps/vipps/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/captures HTTP/1.1
+GET /psp/vipps/vipps/{{ page.paymentId }}/captures HTTP/1.1
 Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -384,14 +384,14 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-   "payment": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d",
+   "payment": "/psp/vipps/payments/{{ page.paymentId }}",
    "captures": {
-       "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/captures",
+       "id": "/psp/vipps/payments/{{ page.paymentId }}/captures",
        "captureList": [
             {
-               "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/captures/643cafb6-8b69-4ad9-b2c8-08d612f03245",
+               "id": "/psp/vipps/payments/{{ page.paymentId }}/captures/{{ page.transactionId }}",
                "transaction": {
-                   "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/transactions/643cafb6-8b69-4ad9-b2c8-08d612f03245",
+                   "id": "/psp/vipps/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
                    "created": "2018-09-05T15:03:56.5180218Z",
                    "updated": "2018-09-06T08:05:01.4179654Z",
                    "type": "Capture",
@@ -428,7 +428,7 @@ performing the create-capture operation.
 **Request**
 
 ```http
-POST /psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/captures HTTP/1.1
+POST /psp/vipps/payments/{{ page.paymentId }}/captures HTTP/1.1
 Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -464,11 +464,11 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-   "payment": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d",
+   "payment": "/psp/vipps/payments/{{ page.paymentId }}",
    "capture": {
-       "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/captures/643cafb6-8b69-4ad9-b2c8-08d612f03245",
+       "id": "/psp/vipps/payments/{{ page.paymentId }}/captures/{{ page.transactionId }}",
        "transaction": {
-           "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/transactions/643cafb6-8b69-4ad9-b2c8-08d612f03245",
+           "id": "/psp/vipps/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
            "created": "2018-09-05T15:03:56.5180218Z",
            "updated": "2018-09-05T15:03:57.6300566Z",
            "type": "Capture",
@@ -500,7 +500,7 @@ The cancellations resource lists the cancellation transactions on a specific pay
 **Request**
 
 ```http
-GET /psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/cancellations HTTP/1.1
+GET /psp/vipps/payments/{{ page.paymentId }}/cancellations HTTP/1.1
 Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -514,14 +514,14 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-   "payment": "/psp/vipps/payments/754c378d-dd77-40cf-3811-08d613932ad6",
+   "payment": "/psp/vipps/payments/{{ page.paymentId }}",
    "cancellations": {
-       "id": "/psp/vipps/payments/754c378d-dd77-40cf-3811-08d613932ad6/cancellations",
+       "id": "/psp/vipps/payments/{{ page.paymentId }}/cancellations",
        "cancellationList": [
             {
-               "id": "/psp/vipps/payments/754c378d-dd77-40cf-3811-08d613932ad6/cancellations/808a2929-6673-4b40-32b6-08d6139342aa",
+               "id": "/psp/vipps/payments/{{ page.paymentId }}/cancellations/{{ page.transactionId }}",
                "transaction": {
-                   "id": "/psp/vipps/payments/754c378d-dd77-40cf-3811-08d613932ad6/transactions/808a2929-6673-4b40-32b6-08d6139342aa",
+                   "id": "/psp/vipps/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
                    "created": "2018-09-06T10:03:43.9615Z",
                    "updated": "2018-09-06T10:03:45.9503625Z",
                    "type": "Cancellation",
@@ -557,7 +557,7 @@ You can only cancel a payment - or part of payment - not yet captured.
 **Request**
 
 ```http
-POST /psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/cancellations HTTP/1.1
+POST /psp/vipps/payments/{{ page.paymentId }}/cancellations HTTP/1.1
 Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -589,11 +589,11 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-   "payment": "/psp/vipps/payments/754c378d-dd77-40cf-3811-08d613932ad6",
+   "payment": "/psp/vipps/payments/{{ page.paymentId }}",
    "cancellation": {
-       "id": "/psp/vipps/payments/754c378d-dd77-40cf-3811-08d613932ad6/cancellations/808a2929-6673-4b40-32b6-08d6139342aa",
+       "id": "/psp/vipps/payments/{{ page.paymentId }}/cancellations/{{ page.transactionId }}",
        "transaction": {
-           "id": "/psp/vipps/payments/754c378d-dd77-40cf-3811-08d613932ad6/transactions/808a2929-6673-4b40-32b6-08d6139342aa",
+           "id": "/psp/vipps/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
            "created": "2018-09-06T10:03:43.9615Z",
            "updated": "2018-09-06T10:03:45.9503625Z",
            "type": "Cancellation",
@@ -626,7 +626,7 @@ specific payment.
 **Request**
 
 ```http
-GET /psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/reversals HTTP/1.1
+GET /psp/vipps/payments/{{ page.paymentId }}/reversals HTTP/1.1
 Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -640,14 +640,14 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d",
+    "payment": "/psp/vipps/payments/{{ page.paymentId }}",
     "reversals": {
-        "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/reversals",
+        "id": "/psp/vipps/payments/{{ page.paymentId }}/reversals",
         "reversalList": [
             {
-                "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/reversals/b3ac5f69-3d24-4c66-32b7-08d6139342aa",
+                "id": "/psp/vipps/payments/{{ page.paymentId }}/reversals/{{ page.transactionId }}",
                 "transaction": {
-                    "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/transactions/b3ac5f69-3d24-4c66-32b7-08d6139342aa",
+                    "id": "/psp/vipps/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
                     "created": "2018-09-06T10:12:54.738174Z",
                     "updated": "2018-09-06T10:12:55.0671912Z",
                     "type": "Reversal",
@@ -682,7 +682,7 @@ captured payment.
 **Request**
 
 ```http
-POST /psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/reversals HTTP/1.1
+POST /psp/vipps/payments/{{ page.paymentId }}/reversals HTTP/1.1
 Host: {{ page.apiUrl }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -718,11 +718,11 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-   "payment": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d",
+   "payment": "/psp/vipps/payments/{{ page.paymentId }}",
    "reversal": {
-       "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/reversals/b3ac5f69-3d24-4c66-32b7-08d6139342aa",
+       "id": "/psp/vipps/payments/{{ page.paymentId }}/reversals/{{ page.transactionId }}",
        "transaction": {
-           "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/transactions/b3ac5f69-3d24-4c66-32b7-08d6139342aa",
+           "id": "/psp/vipps/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
            "created": "2018-09-06T10:12:54.738174Z",
            "updated": "2018-09-06T10:12:55.0671912Z",
            "type": "Reversal",
