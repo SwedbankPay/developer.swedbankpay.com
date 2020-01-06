@@ -16,17 +16,17 @@ sidebar:
 
 {% include alert-development-section.md %}
 
->The basic redirect **purchase** scenario is the supported way to implement
- MobilePay payments.
+{% include jumbotron.html body= "The basic redirect **purchase** scenario is
+the supported way to implement MobilePay payments." %}
 
 ## Introduction
 
 * When you have prepared your merchant/webshop site, you make a `POST` request
   towards Swedbank Pay with your Purchase information.
-  You will receive a Redirect URL, leading to a secure Swedbank Pay hosted
+* You will receive a Redirect URL, leading to a secure Swedbank Pay hosted
   environment, in response.
 * You need to redirect the browser of the end-user/consumer to that URL so
-  that she may enter her MobilePay details .
+  that the user may enter their MobilePay details .
 * When the payment is completed, Swedbank Pay will redirect the browser back
   to your merchant/webshop site.
 * Finally you need to make a `GET` request towards Swedbank Pay with the
@@ -42,7 +42,7 @@ sidebar:
 
 The API requests are displayed in the [purchase flow](#purchase-flow).
 The options you can choose from when creating a payment with key operation set
-to Value `Purchase` are listed below.
+to value `Purchase` are listed below.
 
 ### Type of authorization (Intent)
 
@@ -54,9 +54,9 @@ purchased products) have to make a [Capture][mobilepay-capture] or
 
 #### General
 
-**Defining CallbackURL**: When implementing a scenario, it is optional to set
-a [CallbackURL][technical-reference-callback] in the POST request.
-If callbackURL is set Swedbank Pay will send a postback request to this URL
+**Defining CallbackURL**: When implementing a scenario, it is strongly recommended
+to set a [CallbackURL][technical-reference-callback] in the POST request.
+If `callbackURL` is set, Swedbank Pay will send a postback request to this URL
 when the consumer has fulfilled the payment.
 
 ## Purchase flow
@@ -101,6 +101,145 @@ sequenceDiagram
   Deactivate Merchant
 ```
 
+## Purchase
+
+{:.code-header}
+**Request**
+
+```http
+POST /psp/mobilepay/payments HTTP/1.1
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+
+{
+    "payment": {
+        "operation": "Purchase",
+        "intent": "Authorization",
+        "currency": "DKK",
+        "prices": [
+            {
+                "type": "Visa",
+                "amount": 1500,
+                "vatAmount": 0,
+                "FeeAmount": 5
+            },
+            {
+                "type": "MasterCard",
+                "amount": 1500,
+                "vatAmount": 0,
+                "FeeAmount": 10
+            }
+        ],
+        "description": "Test Purchase",
+        "payerReference": "AB1234",
+        "userAgent": "Mozilla/5.0...",
+        "language": "da-DK",
+        "urls": {
+            "hostUrls": ["https://example.com", "https://example.net"],
+            "completeUrl": "http://example.com/payment-completed",
+            "cancelUrl": "http://example.com/payment-canceled",
+            "callbackUrl": "http://example.com/payment-callback"
+        },
+        "payeeInfo": {
+            "payeeId": "12345678-1234-1234-1234-123456789012",
+            "payeeReference": "CD1234",
+            "payeeName": "Merchant1",
+            "productCategory": "A123",
+            "orderReference": "or-12456",
+            "subsite": "MySubsite"
+        },
+        "prefillInfo": {
+            "msisdn": "+4522222222"
+        }
+    },
+    "mobilepay": {
+        "shoplogoUrl": "https://example.com/shop-logo.png"
+    }
+}
+```
+
+{:.table .table-striped}
+| Required | Property                        | Data type    | Description                                                                                                                                                                                                   |
+| :------- | :------------------------------ | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| ✔︎︎︎︎︎   | `payment`                       | `object`     | The payment object.                                                                                                                                                                                           |
+| ✔︎︎︎︎︎   | └➔&nbsp;`operation`             | `string`     | `Purchase`                                                                                                                                                                                                    |
+| ✔︎︎︎︎︎   | └➔&nbsp;`intent`                | `string`     | `Authorization`                                                                                                                                                                                               |
+| ✔︎︎︎︎︎   | └➔&nbsp;`currency`              | `string`     | `NOK`, `SEK`, `DKK`, `USD` or `EUR`.                                                                                                                                                                          |
+| ✔︎︎︎︎︎   | └➔&nbsp;`prices`                | `object`     | The prices object.                                                                                                                                                                                            |
+| ✔︎︎︎︎︎   | └─➔&nbsp;`type`                 | `string`     | `Visa` (for card type Visa), `MC` (for card type Mastercard)                                                                                                                                                  |
+| ✔︎︎︎︎︎   | └─➔&nbsp;`amount`               | `integer`    | Amount is entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 DKK, 5000 = 50.00 DKK.                                                                                          |
+| ✔︎︎︎︎︎   | └─➔&nbsp;`vatAmount`            | `integer`    | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                            |
+|          | └─➔&nbsp;`feeAmount`            | `integer`    | If the amount given includes Fee, this may be displayed for the user in the payment page (redirect only).                                                                                                     |
+| ✔︎︎︎︎︎   | └➔&nbsp;`description`           | `string(40)` | A textual description max 40 characters of the purchase.                                                                                                                                                      |
+|          | └➔&nbsp;`payerReference`        | `string`     | The reference to the payer (consumer/end-user) from the merchant system, like mobile number, customer number etc.                                                                                             |
+| ✔︎︎︎︎︎   | └➔&nbsp;`userAgent`             | `string`     | The user agent reference of the consumer's browser - [see user agent definition][user-agent]                                                                                                                  |
+| ✔︎︎︎︎︎   | └➔&nbsp;`language`              | `string`     | `nb-NO`, `sv-SE` or `en-US`.                                                                                                                                                                                  |
+| ✔︎︎︎︎︎   | └➔&nbsp;`urls`                  | `object`     | The URLs object containing the urls used for this payment.                                                                                                                                                    |
+| ✔︎︎︎︎︎   | └─➔&nbsp;`completeUrl`          | `string`     | The URI that Swedbank Pay will redirect back to when the payment page is completed.                                                                                                                           |
+| ✔︎︎︎︎︎   | └─➔&nbsp;`cancelUrl`            | `string`     | The URI that Swedbank Pay will redirect back to when the user presses the cancel button in the payment page.                                                                                                  |
+|          | └─➔&nbsp;`callbackUrl`          | `string`     | The URI that Swedbank Pay will perform an HTTP `POST` against every time a transaction is created on the payment. See [callback][callback-reference] for details.                                             |
+| ✔︎︎︎︎︎   | └➔&nbsp;`payeeInfo`             | `object`     | This object contains the identificators of the payee of this payment.                                                                                                                                         |
+| ✔︎︎︎︎︎   | └─➔&nbsp;`payeeId`              | `string`     | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                         |
+| ✔︎︎︎︎︎   | └─➔&nbsp;`payeeReference`       | `string(50)` | A unique reference from the merchant system. Read more about [`payeeReference`][payee-reference]  |
+|          | └─➔&nbsp;`payeeName`            | `string`     | The payee name (like merchant name) that will be displayed to consumer when redirected to Swedbank Pay.                                                                                                       |
+|          | └─➔&nbsp;`productCategory`      | `string`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                |
+|          | └─➔&nbsp;`orderReference`       | `String(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                       |
+|          | └─➔&nbsp;`subsite`              | `String(40)` | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.                                                   |
+|          | └➔&nbsp;`prefillInfo.msisdn`    | `string`     | umber will be prefilled on payment page, if valid.                                                                                                                                                            |
+|          | └➔&nbsp;`mobilepay.shoplogoUrl` | `string`     | URI to logo that will be visible at MobilePay                                                                                                                                                                 |
+
+{:.code-header}
+**Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "payment": {
+        "prices": {
+            "id": "/psp/mobilepay/payments/{{ page.paymentId }}/prices"
+        },
+        "id": "/psp/mobilepay/payments/{{ page.paymentId }}",
+        "number": 75100000121,
+        "created": "2018-09-11T10:58:27.4236127Z",
+        "updated": "2018-09-11T10:58:30.8254419Z",
+        "instrument": "MobilePay",
+        "operation": "Purchase",
+        "intent": "Authorization",
+        "state": "Ready",
+        "currency": "DKK",
+        "amount": 3000,
+        "description": "Test Purchase",
+        "payerReference": "AB1234",
+        "initiatingSystemUserAgent": "PostmanRuntime/7.2.0",
+        "userAgent": "Mozilla/5.0",
+        "language": "da-DK",
+        "transactions": {
+            "id": "/psp/mobilepay/payments/{{ page.paymentId }}/transactions"
+        },
+        "urls": {
+            "id": "/psp/mobilepay/payments/{{ page.paymentId }}/urls"
+        },
+        "payeeInfo": {
+            "id": "/psp/mobilepay/payments/{{ page.paymentId }}/payeeinfo"
+        }
+    },
+    "operations": [
+        {
+            "method": "PATCH",
+            "href": "https://{{ page.apiUrl }}/psp/mobilepay/payments/{{ page.paymentId }}",
+            "rel": "update-payment-abort"
+        },
+        {
+            "method": "GET",
+            "href": "https://{{ page.frontEndUrl }}/mobilepay/payments/authorize/{{ page.transactionId }}",
+            "rel": "redirect-authorization"
+        }
+    ]
+}
+```
+
 {% include iterator.html prev_href="index"
                          prev_title="Back: Introduction"
                          next_href="after-payment"
@@ -110,4 +249,5 @@ sequenceDiagram
 [mobilepay-screenshot-2]: /assets/img/mobilepay-screenshot-2.png
 [mobilepay-cancel]: /payments/mobile-pay/after-payment#cancellations
 [mobilepay-capture]: /payments/mobile-pay/after-payment#capture
+[payee-reference]: /payments/mobile-pay/other-features#payee-reference
 [technical-reference-callback]: /payments/mobile-pay/other-features#callback
