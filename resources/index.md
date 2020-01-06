@@ -15,7 +15,9 @@ sidebar:
     - url: /resources/release-notes
       title: Release Notes
     - url: /resources/terminology
-      title: Terminology  
+      title: Terminology
+    - url: /resources/gdpr
+      title: Data protetcion
 ---
 
 {% include alert-review-section.md %}
