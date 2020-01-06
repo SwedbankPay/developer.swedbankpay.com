@@ -75,7 +75,7 @@ Content-Type: application/json
         },
         {
             "method": "GET",
-            "href": "{{ page.frontEndUrl }}/{{ payment-instrument }}/core/scripts/client/px.creditcard.client.js?token={{ page.paymentToken }}&operation=authorize",
+            "href": "{{ page.frontEndUrl }}/{{ payment-instrument }}/core/scripts/client/px.{{ payment-instrument }}.client.js?token={{ page.paymentToken }}&operation=authorize",
             "rel": "view-authorization",
             "contentType": "application/javascript"
         },
