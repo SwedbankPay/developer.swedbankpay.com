@@ -238,7 +238,7 @@ Content-Type: application/json
         },
         {
             "method": "POST",
-            "href": "http://{{ page.apiUrl }}/psp/swish/payments/{{ page.paymentId }}/sales",
+            "href": "{{ page.apiUrl }}/psp/swish/payments/{{ page.paymentId }}/sales",
             "rel": "create-sale"
         }
     ]
