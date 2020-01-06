@@ -233,7 +233,7 @@ Content-Type: application/json
     "operations": [
         {
             "method": "PATCH",
-            "href": "http://{{ page.apiUrl }}/psp/swish/payments/{{ page.paymentId }}",
+            "href": "{{ page.apiUrl }}/psp/swish/payments/{{ page.paymentId }}",
             "rel": "update-payment-abort"
         },
         {
