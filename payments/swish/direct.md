@@ -176,7 +176,7 @@ Content-Type: application/json
 |          | └─➔&nbsp;`termsOfServiceUrl`          | `string`      | A URL that contains your terms and conditions for the payment, to be linked on the payment page. Require https.                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`payeenfo`                    | `object`      | The `payeeInfo` contains information about the payee.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`payeeId`                    | `string`      | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-|  ✔︎︎︎︎︎  | └─➔&nbsp;`payeeReference`             | `string(50*)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.                                                                                                                                                                                                                                                                                                                                                                                  |
+|  ✔︎︎︎︎︎  | └─➔&nbsp;`payeeReference`             | `string(50*)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [`payeeReference`][payee-reference] for details.                                                                                                                                                                                                                                                                                                                                                                                  |
 |          | └─➔&nbsp;`payeeName`                  | `string`      | The payee name (like merchant name) that will be displayed to consumer when redirected to Swedbank Pay.                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 |          | └─➔&nbsp;`productCategory`            | `string`      | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                                                                                                                                                                                                                                                                                            |
 |          | └─➔&nbsp;`orderReference`             | `String(50)`  | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
@@ -194,7 +194,7 @@ Content-Type: application/json
 
 {
     "payment": {
-        "id": "/psp/swish/payments/20dfbcb9-587a-4ce9-e63e-08d519f1802f",
+        "id": "/psp/swish/payments/{{ page.paymentId }}",
         "number": 992308,
         "created": "2017-10-23T08:38:57.2248733Z",
         "instrument": "Swish",
@@ -209,16 +209,16 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "urls": {
-            "id": "/psp/swish/payments/20dfbcb9-587a-4ce9-e63e-08d519f1802f/urls"
+            "id": "/psp/swish/payments/{{ page.paymentId }}/urls"
         },
         "payeeInfo": {
-            "id": "/psp/swish/payments/20dfbcb9-587a-4ce9-e63e-08d519f1802f/payeeinfo"
+            "id": "/psp/swish/payments/{{ page.paymentId }}/payeeinfo"
         }
     },
     "operations": [
         {
             "method": "PATCH",
-            "href": "//{{ page.apiUrl }}/psp/swish/payments/20dfbcb9-587a-4ce9-e63e-08d519f1802f",
+            "href": "http://{{ page.apiUrl }}/psp/swish/payments/20dfbcb9-587a-4ce9-e63e-08d519f1802f",
             "rel": "update-payment-abort"
         },
         {
