@@ -50,6 +50,7 @@ Content-Type: application/json
         "language": "sv-SE",
         "generateRecurrenceToken": false,
         "disablePaymentMenu": false,
+        "restrictedToInstruments": ["creditCard", "invoice"],
         "urls": {
             "hostUrls": ["https://example.com", "https://example.net"],
             "completeUrl": "https://example.com/payment-completed",
@@ -146,6 +147,7 @@ Content-Type: application/json
 |  ✔︎︎︎︎︎  | └➔&nbsp;`userAgent`                | `string`     | The user agent of the payer.                                                                                                                                                                                    |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`language`                 | `string`     | The language of the payer.                                                                                                                                                                                      |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`generateRecurrenceToken`  | `bool`       | Determines if a recurrence token should be generated. A recurrence token is primarily used to enable future recurring payments - with the same token - through server-to-server calls. Default value is `false` |
+|          | └➔&nbsp;`restrictedToInstruments`  | `array`      | Limits the options available to the consumer in the payment menu. Default value is all supported payment instruments. Usage of parameter requires special agreement with Swedbank.                              |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`urls`                     | `object`     | The object containing the payee's (such as the webshop or merchant) URLs that are relevant for this payment order. See [URLs for details][urls].                                                                |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`payeeInfo`                | `object`     | The object containing information about the payee.                                                                                                                                                              |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`payeeId`                 | `string`     | The ID of the payee, usually the merchant ID.                                                                                                                                                                   |
