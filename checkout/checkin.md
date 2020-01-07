@@ -294,6 +294,12 @@ Here is an example of what a `GET` request towards the `url` provided in the eve
 With a `consumerProfileRef` safely tucked into our pocket, the Checkin is
 complete and we can move on to [payment menu][payment-menu].
 
+### Note on consumer data
+
+During this stage some consumer data is stored.
+Read more about our [Data Protection Policy][data-protection] for details on which
+information we store and its duration.
+
 {% include iterator.html prev_href="./"
                          prev_title="Back: Introduction"
                          next_href="payment-menu"
@@ -302,6 +308,7 @@ complete and we can move on to [payment menu][payment-menu].
 [capture-operation]: /checkout/after-payment#capture
 [checkin-image]: /assets/img/checkout/your-information.png
 [consumer-reference]: /checkout/other-features#payeereference
+[gdpr-cleanup]: /resources/data-protection#paymentorder-consumer-data
 [initiate-consumer-session]: /checkout/checkin#checkin-back-end
 [msisdn]: https://en.wikipedia.org/wiki/MSISDN
 [operations]: /checkout/other-features#operations
@@ -309,6 +316,7 @@ complete and we can move on to [payment menu][payment-menu].
 [payee-reference]: /checkout/other-features#payeereference
 [payment-menu-image]: /assets/img/checkout/payment-methods.png
 [payment-menu]: #payment-menu
+[payment-menu]: payment-menu
 [payment-order-capture]: /checkout/after-payment#capture
 [payment-order-operations]: /checkout/after-payment#operations
 [payment-order]: #payment-orders
@@ -316,4 +324,3 @@ complete and we can move on to [payment menu][payment-menu].
 [technical-reference-onconsumer-identified]: /checkout/payment-menu-front-end
 [urls]: /checkout/other-features#urls-resource
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
-[payment-menu]: payment-menu

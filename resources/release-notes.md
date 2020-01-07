@@ -14,6 +14,8 @@ sidebar:
       title: Open Source Development Guidelines
     - url: /resources/release-notes
       title: Release Notes
+    - url: /resources/data-protection
+      title: Data Protection
 ---
 
 {% include alert-review-section.md %}
