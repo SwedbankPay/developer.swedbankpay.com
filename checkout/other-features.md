@@ -453,7 +453,7 @@ Content-Type: application/json
                 "name": "Product1",
                 "type": "PRODUCT",
                 "class": "ProductGroup1",
-                "itemUrl": "https://example.com/shop/id=666",
+                "itemUrl": "https://example.com/shop/products/1234",
                 "imageUrl": "https://example.com/products/product1.jpg",
                 "description": "Product description",
                 "discountDescription": "Volume discount",
