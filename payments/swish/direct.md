@@ -218,12 +218,12 @@ Content-Type: application/json
     "operations": [
         {
             "method": "PATCH",
-            "href": "http://{{ page.apiUrl }}/psp/swish/payments/20dfbcb9-587a-4ce9-e63e-08d519f1802f",
+            "href": "{{ page.apiUrl }}/psp/swish/payments/{{ page.paymentId }}",
             "rel": "update-payment-abort"
         },
         {
             "method": "POST",
-            "href": "http://{{ page.apiUrl }}/psp/swish/payments/20dfbcb9-587a-4ce9-e63e-08d519f1802f/sales",
+            "href": "{{ page.apiUrl }}/psp/swish/payments/{{ page.paymentId }}/sales",
             "rel": "create-sale"
         }
     ]
@@ -262,11 +262,11 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/swish/payments/20dfbcb9-587a-4ce9-e63e-08d519f1802f",
+    "payment": "/psp/swish/payments/{{ page.paymentId }}",
     "sale": {
         "date": "23.10.2017 08:39:37 +00:00",
         "paymentRequestToken": "LhXrK84MSpWU2RO09f8kUP-FHiBo-1pB",
-        "id": "/psp/swish/payments/20dfbcb9-587a-4ce9-e63e-08d519f1802f/sales/6bf31479-623f-418a-d69e-08d519f19722",
+        "id": "/psp/swish/payments/{{ page.paymentId }}/sales/{{ page.transactionId }}",
         "transaction": {
             "id": "{{ page.transactionId }}",
             "created": "2017-10-23T08:39:35.6478733Z",
