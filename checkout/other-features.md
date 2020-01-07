@@ -432,7 +432,7 @@ The `view-paymentorder` operation contains the URI of the JavaScript that needs 
 
 ### Update Order
 
-Change amount and vat amount on a payment order. If you implement `updateorder`
+Change amount and vat amount on a payment order. If you implement `UpdateOrder`
 **you need to `refresh()`** the [Payment Menu front end][payment-menu] so the
 new amount is shown to the end customer.
 
@@ -447,8 +447,40 @@ Content-Type: application/json
 {
     "paymentorder": {
         "operation": "UpdateOrder",
-        "amount": 2500,
-        "vatAmount": 120
+        "amount": 1500,
+        "vatAmount": 375,
+        "orderItems": [
+            {
+                "reference": "P1",
+                "name": "Product1",
+                "type": "PRODUCT",
+                "class": "ProductGroup1",
+                "itemUrl": "https://example.com/shop/products/1234",
+                "imageUrl": "https://example.com/products/product1.jpg",
+                "description": "Product description",
+                "discountDescription": "Volume discount",
+                "quantity": 351.3514,
+                "quantityUnit": "pcs",
+                "unitPrice": 300,
+                "discountPrice": 200,
+                "vatPercent": 2500,
+                "amount": 1000,
+                "vatAmount": 250
+            },
+            {
+                "reference": "P2",
+                "name": "Product2",
+                "type": "PRODUCT",
+                "class": "ProductGroup1",
+                "description": "Product description",
+                "quantity": 9876.1531,
+                "quantityUnit": "pcs",
+                "unitPrice": 500,
+                "vatPercent": 2500,
+                "amount": 500,
+                "vatAmount": 125
+            }
+        ]
     }
 }
 ```
@@ -839,10 +871,10 @@ Content-Type: application/json
         "instrument": "CreditCard",
         "created": "2016-09-14T13:21:29.3182115Z",
         "updated": "2016-09-14T13:21:57.6627579Z",
-        "operation": "Purchase|Verify|Recur",
+        "operation": "Purchase",
         "intent": "Authorization",
-        "state": "Ready|Pending|Failed|Aborted",
-        "currency": "NOK|SEK|...",
+        "state": "Ready",
+        "currency": "NOK",
         "amount": 1500,
         "remainingCaptureAmount": 1500,
         "remainingCancellationAmount": 1500,
