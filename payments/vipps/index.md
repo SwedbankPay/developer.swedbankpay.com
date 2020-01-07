@@ -69,7 +69,7 @@ contract setup, this can be re-used.
 
 Vipps is unfortunately not available in our demoshop at the moment, but it will
 be shortly. The demoshop will use a fakeservice which enables you to test a
-successful purchase without using the test app.
+successful purchase without using the Vipps app.
 
 {% include iterator.html  next_href="redirect" next_title="Next: Redirect" %}
 
