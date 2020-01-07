@@ -297,7 +297,8 @@ complete and we can move on to [payment menu][payment-menu].
 ### Note on consumer data
 
 During this stage some consumer data is stored.
-Read more about our policy and what we store [here][gdpr-cleanup]
+Read more about our [Data Protection Policy][data-protection] for details on which
+information we store and its duration.
 
 {% include iterator.html prev_href="./"
                          prev_title="Back: Introduction"
@@ -307,7 +308,7 @@ Read more about our policy and what we store [here][gdpr-cleanup]
 [capture-operation]: /checkout/after-payment#capture
 [checkin-image]: /assets/img/checkout/your-information.png
 [consumer-reference]: /checkout/other-features#payeereference
-[gdpr-cleanup]: /resources/gdpr#paymentorder-consumer-data
+[gdpr-cleanup]: /resources/data-protection#paymentorder-consumer-data
 [initiate-consumer-session]: /checkout/checkin#checkin-back-end
 [msisdn]: https://en.wikipedia.org/wiki/MSISDN
 [operations]: /checkout/other-features#operations
