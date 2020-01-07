@@ -32,8 +32,6 @@ the supported way to implement MobilePay payments." %}
 * Finally you need to make a `GET` request towards Swedbank Pay with the
   `paymentID` received in the first step, which will return the purchase result.
 
-## Screenshots
-
 ![mobilepay enter number][mobilepay-screenshot-1]
 
 ![mobilepay approve payment][mobilepay-screenshot-2]
@@ -46,7 +44,7 @@ to value `Purchase` are listed below.
 
 ### Intent
 
-**Authorization (two-phase)**: The intent of a MobilePay purchase is always
+**`Authorization` (two-phase)**: The intent of a MobilePay purchase is always
 `Authorization`. The amount will be reserved but not charged.
 You will later (i.e. if a physical product, when you are ready to ship the
 purchased products) have to make a [`Capture`][mobilepay-capture] or
@@ -54,10 +52,10 @@ purchased products) have to make a [`Capture`][mobilepay-capture] or
 
 #### General
 
-**Defining CallbackURL**: When implementing a scenario, it is strongly recommended
-to set a [`callbackURL`][technical-reference-callback] in the POST request.
-If `callbackURL` is set, Swedbank Pay will send a postback request to this URL
-when the consumer has fulfilled the payment.
+{% include alert.html type="success" icon="link" body="**Defining
+`callbackUrl`**: When implementing a scenario, it is strongly recommended to set a
+`callbackUrl` in the `POST` request. If `callbackUrl` is set, Swedbank Pay will
+send a `POST` request to this URL when the consumer has fulfilled the payment." %}
 
 ## Purchase flow
 
@@ -72,31 +70,31 @@ complete purchase.
 sequenceDiagram
   Consumer->>Merchant: start purchase
   Activate Merchant
-  Merchant->>PayEx: POST <mobilepay payment> (operation=PURCHASE)
+  Merchant->>SwedbankPay: POST <MobilePay payment> (operation=PURCHASE)
   note left of Merchant: First API request
-  Activate PayEx
-  PayEx-->>Merchant: payment resource
-  Deactivate PayEx
+  Activate SwedbankPay
+  SwedbankPay-->>Merchant: payment resource
+  Deactivate SwedbankPay
   Merchant-->>Consumer: redirect to authorize page
   Deactivate Merchant
   note left of Consumer: redirect to PayEx
 
-  Consumer->>PayEx: enter mobilepay info
-  Activate PayEx
-  PayEx->>Consumer_App: Confirm payment
-  Consumer_App-->>PayEx: Payment confirmed
-  Deactivate PayEx
+  Consumer->>SwedbankPay: enter MobilePay info
+  Activate SwedbankPay
+  SwedbankPay->>MobilePay: Confirm payment
+  MobilePay-->>SwedbankPay: Payment confirmed
+  Deactivate SwedbankPay
 
-  PayEx-->>Consumer: redirect to merchant
+  SwedbankPay-->>Consumer: redirect to merchant
   note left of PayEx: redirect back to merchant
 
   Consumer->>Merchant: access merchant page
   Activate Merchant
-  Merchant->>PayEx: GET <mobilepay payment>
+  Merchant->>SwedbankPay: GET <MobilePay payment>
   note left of Merchant: Second API request
-  Activate PayEx
-  PayEx-->>Merchant: payment resource
-  Deactivate PayEx
+  Activate SwedbankPay
+  SwedbankPay-->>Merchant: payment resource
+  Deactivate SwedbankPay
   Merchant-->>Consumer: display purchase result
   Deactivate Merchant
 ```
@@ -141,7 +139,7 @@ Content-Type: application/json
             "callbackUrl": "http://example.com/payment-callback"
         },
         "payeeInfo": {
-            "payeeId": "12345678-1234-1234-1234-123456789012",
+            "payeeId": "{{ page.merchantId }}",
             "payeeReference": "CD1234",
             "payeeName": "Merchant1",
             "productCategory": "A123",
@@ -238,27 +236,6 @@ Content-Type: application/json
         }
     ]
 }
-```
-
-## Redirect
-
-```mermaid
-sequenceDiagram
-  Consumer->>Merchant: start purchase (pay with MobilePay)
-  activate Merchant
-
-  Merchant->>PSPMobilePay: POST <Create MobilePay payment>
-  note left of Merchant: First API request
-  activate PSPMobilePay
-  PSPMobilePay-->>Merchant: payment response
-  deactivate PSPMobilePay
-  Merchant-->>Consumer: Redirect to payment page
-  note left of Consumer: redirect to PSPMobilePay
-  Consumer-->>PSPMobilePay: Redirect
-  activate PSPMobilePay
-  PSPMobilePay -->> Consumer: Redirect
-  PSPMobilePay ->> Consumer: Confirm payment
-
 ```
 
 {% include iterator.html prev_href="index"
