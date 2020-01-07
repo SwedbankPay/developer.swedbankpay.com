@@ -29,7 +29,7 @@ platforms.
 ## Purchase flow
 
 After the payment is created, the consumer pushes the payment button on Swedbank Pay's
-payment page (redirect) or in the iFrame (seamless view).
+payment page (redirect) or in the `iframe` (seamless view).
 
 ![screenshot of the first Vipps redirect page][vipps-redirect]{:height="500px" width="425px"}
 
@@ -50,8 +50,8 @@ the merchant's site.
 Vipps is one of the instruments using two-phase payments. The `authorization` is
 done when the consumer successfully confirms in the app, and the `abort`,
 `cancel`, `capture` or `reversal` is done by the merchant at a later time. Read
-more about the different operations [here][after-payment] and the payment
-resource [here][payment-resource].
+more about the [different operations][after-payment] and the
+[payment resource][payment-resource].
 
 ### Settlement
 
@@ -62,7 +62,7 @@ acquirer agreement, so the two payment instruments are settled separately.
 ### 3D Secure
 
 As Vipps transactions are processed as card transactions, you will also need a
-3D Secure agreement. If you already have a 3D Secure agreement used in the card
+3-D Secure agreement. If you already have a 3-D Secure agreement used in the card
 contract setup, this can be re-used.
 
 ### Demoshop
