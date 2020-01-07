@@ -44,18 +44,18 @@ The API requests are displayed in the [purchase flow](#purchase-flow).
 The options you can choose from when creating a payment with key operation set
 to value `Purchase` are listed below.
 
-### Type of authorization (Intent)
+### Intent
 
 **Authorization (two-phase)**: The intent of a MobilePay purchase is always
 `Authorization`. The amount will be reserved but not charged.
 You will later (i.e. if a physical product, when you are ready to ship the
-purchased products) have to make a [Capture][mobilepay-capture] or
-[Cancel][mobilepay-cancel] request.
+purchased products) have to make a [`Capture`][mobilepay-capture] or
+[`Cancel`][mobilepay-cancel] request.
 
 #### General
 
 **Defining CallbackURL**: When implementing a scenario, it is strongly recommended
-to set a [CallbackURL][technical-reference-callback] in the POST request.
+to set a [`callbackURL`][technical-reference-callback] in the POST request.
 If `callbackURL` is set, Swedbank Pay will send a postback request to this URL
 when the consumer has fulfilled the payment.
 
@@ -238,6 +238,27 @@ Content-Type: application/json
         }
     ]
 }
+```
+
+## Redirect
+
+```mermaid
+sequenceDiagram
+  Consumer->>Merchant: start purchase (pay with MobilePay)
+  activate Merchant
+
+  Merchant->>PSPMobilePay: POST <Create MobilePay payment>
+  note left of Merchant: First API request
+  activate PSPMobilePay
+  PSPMobilePay-->>Merchant: payment response
+  deactivate PSPMobilePay
+  Merchant-->>Consumer: Redirect to payment page
+  note left of Consumer: redirect to PSPMobilePay
+  Consumer-->>PSPMobilePay: Redirect
+  activate PSPMobilePay
+  PSPMobilePay -->> Consumer: Redirect
+  PSPMobilePay ->> Consumer: Confirm payment
+
 ```
 
 {% include iterator.html prev_href="index"
