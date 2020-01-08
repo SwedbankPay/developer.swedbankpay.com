@@ -67,7 +67,7 @@ sequenceDiagram
     note left of Merchant: Second API request.
     Merchant->>-SwedbankPay: GET <payment.id> ⑥
     activate SwedbankPay
-    SwedbankPay-->>-Merchant: rel: view-payment
+    SwedbankPay-->>-Merchant: rel: view-sales
     activate Merchant
     Merchant-->>-Payer: display purchase result
     activate Payer
@@ -314,7 +314,7 @@ Content-Type: application/json
       {
             "method": "GET",
             "href": "{{ page.frontEndUrl }}/swish/core/scripts/client/px.swish.client.js?token={{ page.paymentToken }}",
-            "rel": "view-payment",
+            "rel": "view-sales",
             "contentType": "application/javascript"
       }
     ]
