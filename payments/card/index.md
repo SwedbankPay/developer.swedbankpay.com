@@ -80,7 +80,7 @@ Our `payment` example below uses the [`purchase`][purchase] operation.
 
 ## Intent
 
-{% include intent.md %}
+{% include intent.md autocapture=true %}
 
 ## Purchase Flow
 
