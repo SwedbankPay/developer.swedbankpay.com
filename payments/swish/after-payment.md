@@ -51,7 +51,7 @@ is given below.
         {
             "method": "GET",
             "href": "{{ page.frontEndUrl }}/swish/core/scripts/client/px.swish.client.js?token={{ page.paymentToken }}",
-            "rel": "view-payment",
+            "rel": "view-sales",
             "contentType": "application/javascript"
         }
     ]
@@ -79,7 +79,7 @@ request for the given operation.
 | `update-payment-abort` | [Aborts][technical-reference-abort] the payment before any financial transactions are performed.                                           |
 | `create-sale`          | Creates a `sales` transaction without redirection to a payment page. `Msisdn` is required in browser based scenarioes.                     |
 | `redirect-sale`        | Contains the redirect-URI that redirects the consumer to a Swedbank Pay hosted payment page prior to creating a sales transaction.         |
-| `view-payment`         | Contains the URI of the JavaScript used to create a Hosted View iframe directly without redirecting the consumer to separate payment page. |
+| `view-sales`         | Contains the URI of the JavaScript used to create a Hosted View iframe directly without redirecting the consumer to separate payment page. |
 
 ## Swish transactions
 
