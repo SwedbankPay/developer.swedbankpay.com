@@ -77,7 +77,7 @@ is given below.
         },
         {
             "method": "GET",
-            "href": "{{ page.frontEndUrl }}/swish/payments/sales/993b479653da83671c074316c7455da05fced9d634431edbb64f3c5f80a863f0",
+            "href": "{{ page.frontEndUrl }}/swish/payments/sales/{{ page.paymentToken }}",
             "rel": "redirect-sale"
         },
         {
