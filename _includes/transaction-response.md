@@ -1,7 +1,9 @@
 {% assign instrument = include.payment-instrument | default: "paymentorder" %}
 {% assign transaction = include.transaction | default: "capture" %}
 {% assign plural = transaction | append: "s" %}
+{% assign hiderequest = include.hiderequest | default: false %}
 
+{% unless hiderequest %}
 {:.code-header}
 **Request**
 
@@ -11,6 +13,8 @@ Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
+
+{% endunless %}
 
 {:.code-header}
 **Response**
