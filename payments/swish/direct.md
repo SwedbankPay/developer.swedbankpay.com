@@ -260,7 +260,7 @@ Content-Type: application/json
 next_href="redirect" next_title="Next: Redirect" %}
 
 [swish-redirect-view]: /assets/screenshots/swish/redirect-view/view/windows-small-window.png
-[callback-url]: /payments/swish/other-features#callback-1
+[callback-url]: /payments/swish/other-features#callback
 [redirect]: /payments/swish/redirect
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
 [payee-reference]: /payments/swish/other-features#payee-reference
