@@ -20,11 +20,11 @@ sidebar:
 
 {% include alert-development-section.md %}
 
-# **Swish Redirect and Payment Status**  
+# Swish Redirect and Payment Status
 
 After the payment is confirmed, the consumer will be redirected from the Swish
-app to the `completeUrl` set in the [create payment request][create-payment]. 
-You need to retrieve payment status with `GET` 
+app to the `completeUrl` set in the [create payment request][create-payment].
+You need to retrieve payment status with `GET`
 [Sales transaction][sales-transaction] before presenting a confirmation page to
 the consumer.
 
