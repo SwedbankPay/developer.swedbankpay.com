@@ -6,6 +6,8 @@ sidebar:
     items:
     - url: /payments/swish
       title: Introduction
+    - url: /payments/swish/direct
+      title: Direct
     - url: /payments/swish/redirect
       title: Redirect
     - url: /payments/swish/seamless-view
@@ -18,7 +20,37 @@ sidebar:
 
 {% include alert-development-section.md %}
 
-## Operations
+# Swish Redirect and Payment Status
+
+After the payment is confirmed, the consumer will be redirected from the Swish
+app to the `completeUrl` set in the [create payment request][create-payment].
+You need to retrieve payment status with `GET`
+[Sales transaction][sales-transaction] before presenting a confirmation page to
+the consumer.
+
+## Options after posting a payment
+
+* **If CallbackURL is set**: Whenever changes to the payment occur a [Callback
+  request][technical-reference-callback] will be posted to the `callbackUrl`,
+  which was generated when the payment was created.
+* You can create a reversal transactions by implementing the Reversal request.
+  You can also access and reverse a payment through your merchant pages in the
+  [Swedbank Pay admin portal][payex-admin-portal].
+
+### Reversal Sequence
+
+A reversal transcation need to match the Payee reference of a completed
+sales transaction.
+
+```mermaid
+sequenceDiagram
+  activate Merchant
+  Merchant->>- SwedbankPay: POST <Swish reversal>
+  activate  SwedbankPay
+  SwedbankPay-->>-Merchant: transaction resource
+```
+
+## Payment Resource
 
 When a payment resource is created and during its lifetime, it will have a set
 of operations that can be performed on it.
@@ -45,7 +77,7 @@ is given below.
         },
         {
             "method": "GET",
-            "href": "{{ page.frontEndUrl }}/swish/payments/sales/993b479653da83671c074316c7455da05fced9d634431edbb64f3c5f80a863f0",
+            "href": "{{ page.frontEndUrl }}/swish/payments/sales/{{ page.paymentToken }}",
             "rel": "redirect-sale"
         },
         {
