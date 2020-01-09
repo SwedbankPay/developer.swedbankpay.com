@@ -1,5 +1,7 @@
 ---
 title: Swedbank Pay Developer Portal
+sidebar:
+  navigation: false
 ---
 
 {% assign design_guide_base_url = design_guide_version_url | default: 'https://design.swedbankpay.com' %}
