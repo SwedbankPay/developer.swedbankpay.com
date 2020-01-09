@@ -26,24 +26,19 @@ sidebar:
 
 ## January 2020
 
-Updated Swish Redirect integration section.
-
-Updated Swish Direct integration section.
-
-Added section about clean up of customer data.
-
-PaymentOrders now support `orderItems`.
-
-Added Terminology page!
-Common terminology for our pages can be found here.
-
-Clearified section about `awaitingActivity` state for payments.
-
-MobilePay section is ready for review!
-
-Removed erronious `noCVC` in examples for `One-Click` payments section.
-
-Refined `onBillingDetailsAvailable` in `Checkout``Checkin` seciton.
+* Updated [Swish Redirect][swish-direct] and [Swish Direct][swish-direct]
+  sections in preparations for review and the transition from PayEx Developer
+  Portal.
+* Added [Data Protection][data-protection] section.
+* Payment Orders now support `orderItems` in all operations.
+* Added [Terminology page][terminology].
+* Clarified what the `awaitingActivity` state for means different payment
+  instruments.
+* MobilePay section is ready for review!
+* Removed erroneous `noCVC` in examples for [One-Click Card Payments][one-click]
+  section.
+* Added description for the `onBillingDetailsAvailable` event in the
+  [Checkin Front End section][checkout-checkin-front-end].
 
 ## December 2019
 
@@ -183,11 +178,17 @@ paymentUrl in place, the retry process becomes much more convenient for both the
 integration and the payer.
 
 [card-payment-url]: /payments/card/other-features#payment-url
-[checkout]: /checkout
-[checkout-payment-url]: /checkout/other-features#payment-url
+[checkout-checkin-front-end]: /checkout/checkin#checkin-front-end
 [checkout-payment-orders]: /checkout/other-features#payment-orders
+[checkout-payment-url]: /checkout/other-features#payment-url
+[checkout]: /checkout
+[data-protection]: /resources/data-protection
 [initiate-consumer-session]: /checkout/checkin#checkin-back-end
+[one-click]: /payments/card/other-features#one-click-payments
 [payment-orders]: /checkout/other-features#creating-a-payment-order
+[swish-direct]: /payments/swish/direct
 [swish-other-features]: /payments/swish/other-features
-[vipps-payment-url]: /payments/vipps/other-features#payment-url
+[swish-redirect]: /payments/swish/redirect
+[terminology]: /resources/terminology
 [vipps-payment-resource]: /payments/vipps/other-features#payment-resource
+[vipps-payment-url]: /payments/vipps/other-features#payment-url
