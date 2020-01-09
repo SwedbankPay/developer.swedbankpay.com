@@ -71,6 +71,12 @@ complete purchase.
 
 ```mermaid
 sequenceDiagram
+  participant Consumer
+  participant Merchant
+  participant SwedbankPay as Swedbank Pay
+  participant MobilePay_API as MobilePay API
+  participant MobilePay_App as MobilePay App
+
   Consumer->>Merchant: start purchase (pay with MobilePay)
   activate Merchant
 
@@ -242,12 +248,12 @@ Content-Type: application/json
     "operations": [
         {
             "method": "PATCH",
-            "href": "https://{{ page.apiUrl }}/psp/mobilepay/payments/{{ page.paymentId }}",
+            "href": "{{ page.apiUrl }}/psp/mobilepay/payments/{{ page.paymentId }}",
             "rel": "update-payment-abort"
         },
         {
             "method": "GET",
-            "href": "https://{{ page.frontEndUrl }}/mobilepay/payments/authorize/{{ page.transactionId }}",
+            "href": "{{ page.frontEndUrl }}/mobilepay/payments/authorize/{{ page.transactionId }}",
             "rel": "redirect-authorization"
         }
     ]
