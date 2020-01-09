@@ -64,7 +64,7 @@ acquirer agreement, so the two payment instruments are settled separately.
 As Vipps transactions are processed as card transactions, a 3-D Secure agreement
 is needed to complete the payment instrument setup. This information is provided
 to you by your acquirer when you set up your agreement with them. If you offer
-both card and Vipps, you will need two separate 3-D Secure agreements, one for
+both Card Payments and Vipps, you will need two separate 3-D Secure agreements, one for
 each payment instrument. Apart from the agreement with the acquirer, no further
 3-D Secure compliance is required from you as a merchant in this regard.
 
