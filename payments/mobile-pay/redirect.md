@@ -16,8 +16,11 @@ sidebar:
 
 {% include alert-development-section.md %}
 
-{% include jumbotron.html body= "The basic redirect **purchase** scenario is
-the supported way to implement MobilePay payments." %}
+{% include jumbotron.html body=" **MobilePay Payments** is a two-phase payment
+instrument which can be implemented by the supported redirect scenario.
+Swedbank Pay receives the MobilePay details from the payer through Swedbank Pay
+Payments. The payment will then be performed by Swedbank Pay and
+confirmed by the payer through the MobilePay app." %}
 
 ## Introduction
 
@@ -68,35 +71,48 @@ complete purchase.
 
 ```mermaid
 sequenceDiagram
-  Consumer->>Merchant: start purchase
-  Activate Merchant
-  Merchant->>SwedbankPay: POST <MobilePay payment> (operation=PURCHASE)
+  Consumer->>Merchant: start purchase (pay with MobilePay)
+  activate Merchant
+
+  Merchant->>SwedbankPay: POST <Create MobilePay payment>
   note left of Merchant: First API request
-  Activate SwedbankPay
+  activate SwedbankPay
   SwedbankPay-->>Merchant: payment resource
-  Deactivate SwedbankPay
-  Merchant-->>Consumer: redirect to authorize page
-  Deactivate Merchant
-  note left of Consumer: redirect to PayEx
+  deactivate SwedbankPay
+  SwedbankPay -->> SwedbankPay: Create payment
+  Merchant-->>Consumer: Redirect to payment page
+  note left of Consumer: redirect to MobilePay
+  Consumer-->>SwedbankPay: enter mobile number
+  activate SwedbankPay
 
-  Consumer->>SwedbankPay: enter MobilePay info
-  Activate SwedbankPay
-  SwedbankPay->>MobilePay: Confirm payment
-  MobilePay-->>SwedbankPay: Payment confirmed
-  Deactivate SwedbankPay
+  SwedbankPay-->>MobilePay_API: Initialize MobilePay payment
+  activate MobilePay_API
+  MobilePay_API-->>SwedbankPay: response
+  SwedbankPay-->>Consumer: Authorization response (State=Pending)
+  note left of Consumer: check your phone
+  deactivate Merchant
 
-  SwedbankPay-->>Consumer: redirect to merchant
-  note left of PayEx: redirect back to merchant
-
-  Consumer->>Merchant: access merchant page
-  Activate Merchant
-  Merchant->>SwedbankPay: GET <MobilePay payment>
+  MobilePay_API-->>MobilePay_App: Confirm Payment UI
+  MobilePay_App-->>MobilePay_App: Confirmation Dialogue
+  MobilePay_App-->>MobilePay_API: Confirmation
+  MobilePay_API-->>SwedbankPay: make payment
+  activate SwedbankPay
+  SwedbankPay-->>SwedbankPay: execute payment
+  SwedbankPay-->>MobilePay_API: response
+  deactivate SwedbankPay
+  deactivate MobilePay_API
+  SwedbankPay-->>SwedbankPay: authorize result
+  SwedbankPay-->>Consumer: authorize result
+  Consumer-->>Merchant: Redirect to merchant
+  note left of Consumer: Redirect to merchant
+  activate Merchant
+  SwedbankPay-->>Merchant: Payment Callback
+  Merchant-->>SwedbankPay: GET <MobilePay payments>
   note left of Merchant: Second API request
-  Activate SwedbankPay
-  SwedbankPay-->>Merchant: payment resource
-  Deactivate SwedbankPay
-  Merchant-->>Consumer: display purchase result
-  Deactivate Merchant
+  SwedbankPay-->>Merchant: Payment resource
+  deactivate SwedbankPay
+  Merchant-->>Consumer: Display authorize result
+  deactivate Merchant
 ```
 
 ## Purchase
