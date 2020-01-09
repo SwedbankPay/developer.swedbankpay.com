@@ -16,7 +16,7 @@ sidebar:
       title: Other Features
 ---
 
-{% include alert-development-section.md %}
+{% include alert-review-section.md %}
 
 {% include jumbotron.html body="The **Seamless View** scenario gives your
 customers the opportunity to pay with Vipps directly within your webshop." %}

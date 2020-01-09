@@ -16,7 +16,7 @@ sidebar:
       title: Other Features
 ---
 
-{% include alert-development-section.md %}
+{% include alert-review-section.md %}
 
 {% include jumbotron.html body="  Enter your phone number,
 get the push message, press the pay button... and you're done!  " %}
