@@ -32,7 +32,7 @@ outside Sweden and Norway can now purchase in our Checkout service. You can
 specify supported countries for shipment in a new input parameter,
 `shippingAddressRestrictedToCountryCodes`, in our checkin module.
 Updated API specification can be found [here][initiate-consumer-session].
-These two parameters, `language` and `shippingAddressRestrictedToCountryCodes`have replaced the former `consumerCountryCode`.
+The parameters `language` and `shippingAddressRestrictedToCountryCodes` have replaced the former `consumerCountryCode`.
 
 The parameters `msisdn` and `email` have been made obsolete due to GDPR rules. This information cannot be sent in without an explicit consent from the consumer.
 
