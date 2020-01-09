@@ -20,6 +20,8 @@ sidebar:
       title: Data Protection
 ---
 
+{% include alert-review-section.md %}
+
 ## Paymentorder consumer data
 
 When creating a payment order and checking in a consumer the consumer may opt to

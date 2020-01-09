@@ -12,13 +12,15 @@ sidebar:
       title: Demoshop
     - url: /resources/development-guidelines
       title: Open Source Development Guidelines
+    - url: /resources/release-notes
+      title: Release Notes
     - url: /resources/terminology
       title: Terminology
     - url: /resources/data-protection
       title: Data Protection
 ---
 
-{% include alert-development-section.md %}
+{% include alert-review-section.md %}
 
 {:.table .table-striped}
 | Term                            | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |

@@ -14,6 +14,8 @@ sidebar:
       title: Open Source Development Guidelines
     - url: /resources/release-notes
       title: Release Notes
+    - url: /resources/terminology
+      title: Terminology
     - url: /resources/data-protection
       title: Data Protection
 ---
@@ -21,6 +23,22 @@ sidebar:
 {% include alert-review-section.md %}
 
 {% include jumbotron.html body="The latest updates about our releases will be published on this page" %}
+
+## January 2020
+
+* Updated [Swish Redirect][swish-direct] and [Swish Direct][swish-direct]
+  sections in preparations for review and the transition from PayEx Developer
+  Portal.
+* Added [Data Protection][data-protection] section.
+* Payment Orders now support `orderItems` in all operations.
+* Added [Terminology page][terminology].
+* Clarified what the `awaitingActivity` state for means different payment
+  instruments.
+* MobilePay section is ready for review!
+* Removed erroneous `noCVC` in examples for [One-Click Card Payments][one-click]
+  section.
+* Added description for the `onBillingDetailsAvailable` event in the
+  [Checkin Front End section][checkout-checkin-front-end].
 
 ## December 2019
 
@@ -160,11 +178,17 @@ paymentUrl in place, the retry process becomes much more convenient for both the
 integration and the payer.
 
 [card-payment-url]: /payments/card/other-features#payment-url
-[checkout]: /checkout
-[checkout-payment-url]: /checkout/other-features#payment-url
+[checkout-checkin-front-end]: /checkout/checkin#checkin-front-end
 [checkout-payment-orders]: /checkout/other-features#payment-orders
+[checkout-payment-url]: /checkout/other-features#payment-url
+[checkout]: /checkout
+[data-protection]: /resources/data-protection
 [initiate-consumer-session]: /checkout/checkin#checkin-back-end
+[one-click]: /payments/card/other-features#one-click-payments
 [payment-orders]: /checkout/other-features#creating-a-payment-order
+[swish-direct]: /payments/swish/direct
 [swish-other-features]: /payments/swish/other-features
-[vipps-payment-url]: /payments/vipps/other-features#payment-url
+[swish-redirect]: /payments/swish/redirect
+[terminology]: /resources/terminology
 [vipps-payment-resource]: /payments/vipps/other-features#payment-resource
+[vipps-payment-url]: /payments/vipps/other-features#payment-url
