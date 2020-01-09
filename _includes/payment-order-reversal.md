@@ -13,10 +13,10 @@ Content-Type: application/json
 
 {
     "transaction": {
+        "description": "Reversal of captured transaction",
         "amount": 1500,
         "vatAmount": 375,
         "payeeReference": "ABC123",
-        "description": "description for transaction",
         "orderItems": [
             {
                 "reference": "P1",
