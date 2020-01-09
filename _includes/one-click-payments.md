@@ -45,7 +45,7 @@ provided below.
 
 ```http
 GET /psp/creditcard/payments/<payment-id>/<authorizations> HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiHost }}
 ```
 
 {:.code-header}
@@ -53,7 +53,7 @@ Host: api.externalintegration.payex.com
 
 ```http
 GET /psp/creditcard/payments/<payment-id>/<verifications> HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiHost }}
 ```
 
 You need to store the `paymentToken` from the response in your system and keep
@@ -80,26 +80,31 @@ Abbrevated code example:
 
 ```http
 POST /psp/creditcard/payments HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
     "payment": {
-        "operation": "<operation>",
-        "intent": "<intent>",
-        "paymentToken": "<paymentToken>"
+        "operation": "Purchase",
+        "intent": "Authorization",
+        "paymentToken": "{{ page.paymentToken }}"
     },
+    "creditCard": {
+        "noCVC": true
+    }
 }
 ```
 
 {:.table .table-striped}
-| Required | Property               | Type     | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| :------: | ---------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|  ✔︎︎︎︎︎  | `payment`              | `object` | The `payment` object.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`operation`    | `string` | Determines the initial operation, that defines the type card payment created.<br> <br> `Purchase`. Used to charge a card. It is followed up by a capture or cancel operation.<br> <br> `Recur`.Used to charge a card on a recurring basis. Is followed up by a capture or cancel operation (if not Autocapture is used, that is).<br> <br>`Payout`. Used to deposit funds directly to credit card. No more requests are necessary from the merchant side.<br> <br>`Verify`. Used when authorizing a card withouth reserveing any funds.  It is followed up by a verification transaction. |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`intent`       | `string` | The intent of the payment identifies how and when the charge will be effectuated. This determine the type transactions used during the payment process.<br> <br>`Authorization`. Reserves the amount, and is followed by a [cancellation][cancel] or [capture][capture] of funds.<br> <br>`AutoCapture`. A one phase-option that enable capture of funds automatically after authorization.                                                                                                                                                                                               |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`paymentToken` | `string` | The `paymentToken` value received in `GET` response towards the Payment Resource is the same `paymentToken` generated in the initial purchase request. The token allow you to use already stored card data to initiate one-click payments.                                                                                                                                                                                                                                                                                                                                                |
+| Required | Property               | Type      | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| :------: | ---------------------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|  ✔︎︎︎︎︎  | `payment`              | `object`  | The `payment` object.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`operation`    | `string`  | Determines the initial operation, that defines the type card payment created.<br> <br> `Purchase`. Used to charge a card. It is followed up by a capture or cancel operation.<br> <br> `Recur`.Used to charge a card on a recurring basis. Is followed up by a capture or cancel operation (if not Autocapture is used, that is).<br> <br>`Payout`. Used to deposit funds directly to credit card. No more requests are necessary from the merchant side.<br> <br>`Verify`. Used when authorizing a card withouth reserveing any funds.  It is followed up by a verification transaction. |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`intent`       | `string`  | The intent of the payment identifies how and when the charge will be effectuated. This determine the type transactions used during the payment process.<br> <br>`Authorization`. Reserves the amount, and is followed by a [cancellation][cancel] or [capture][capture] of funds.<br> <br>`AutoCapture`. A one phase-option that enable capture of funds automatically after authorization.                                                                                                                                                                                               |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`paymentToken` | `string`  | The `paymentToken` value received in `GET` response towards the Payment Resource is the same `paymentToken` generated in the initial purchase request. The token allow you to use already stored card data to initiate one-click payments.                                                                                                                                                                                                                                                                                                                                                |
+|          | └➔&nbsp;`creditCard`   | `object`  | An object that holds different scenarios for card payments.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+|          | └─➔&nbsp;`noCvc`       | `boolean` | `true` if the CVC field should be disabled for this payment in the case a stored card is used; otherwise `false` per default. To use this feature it has to be enabled on the contract with Swedbank Pay.                                                                                                                                                                                                                                                                                                                                                                                 |
 
 {% include alert.html type="neutral" icon="info" body="
 When redirecting to Swedbank Pay the payment page will be
@@ -112,12 +117,22 @@ prefilled with the payer's card details. See example below." %}
 If you, for any reason, need to delete a `paymentToken`
 you use the `Delete payment token` request.
 
+{% include alert.html type="warning"
+                      icon="warning"
+                      body="Please note that this call does not erase the card number stored at Swedbank
+  Pay. A card number is automatically deleted six months after a successful
+  `Delete payment token` request. If you want card information removed
+  at an earlier date, you need to contact ehandelsetup@swedbankpay.dk,
+  verkkokauppa.setup@swedbankpay.fi, ehandelsetup@swedbankpay.no or
+  ehandelsetup@swedbankpay.se; and supply them with
+  the relevant transaction reference or payment token." %}
+
 {:.code-header}
 **Request**
 
 ```http
 PATCH /psp/creditcard/payments/instrumentData/<paymentToken> HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -142,9 +157,9 @@ Content-Type: application/json
 
 {
     "instrumentData": {
-        "id": "/psp/creditcard/payments/instrumentdata/12345678-1234-1234-1234-123456789000",
-        "paymentToken": "12345678-1234-1234-1234-123456789000",
-        "payeeId": "61c65499-de5c-454e-bf4c-043f22538d49",
+        "id": "/psp/creditcard/payments/instrumentdata/{{ page.transactionId }}",
+        "paymentToken": "{{ page.paymentToken }}",
+        "payeeId": "{{ page.merchantId }}",
         "isDeleted": true,
         "isPayeeToken": false,
         "cardBrand": "Visa|MasterCard|...",

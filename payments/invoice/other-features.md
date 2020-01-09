@@ -68,7 +68,7 @@ in their own section below.
 
 ```http
 POST /psp/invoice/payments HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -96,7 +96,7 @@ A `FinancingConsumer` payment is an invoice.
 
 ```http
 POST /psp/invoice/payments HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 {
@@ -147,7 +147,7 @@ through a previous payment in order to charge the same card.
 
 ```http
 POST /psp/invoice/payments HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -189,10 +189,6 @@ This option is commonly used when initiating a subsequent
 [recurring invoice payment][recur] flow - where you do not want
 to charge the consumer right away.
 
-{% include alert.html type="neutral" icon="info" body="Please note that all
-boolean credit card attributes involving rejection of certain card types are
-optional and requires enabling on the contract with Swedbank Pay." %}
-
 ### Verification through Swedbank Pay Payments
 
 * When properly set up in your merchant/webshop site and the payer initiates a
@@ -202,8 +198,8 @@ optional and requires enabling on the contract with Swedbank Pay." %}
   JavaScript source in response.
 * You need to [redirect][redirect] the payer's browser to that specified URL, or
   embed the script source on your site to create a [Seamless
-  View][seamless-view] in an `iframe`; so that she can enter the credit card
-  details in a secure Swedbank Pay hosted environment.
+  View][seamless-view] in an `iframe`; so that she can enter the payment details
+  in a secure Swedbank Pay hosted environment.
 * Swedbank Pay will redirect the payer's browser to - or display directly in the
   `iframe` - one of two specified URLs, depending on whether the payment session
   is followed through completely or cancelled beforehand. Please note that both
@@ -219,9 +215,9 @@ optional and requires enabling on the contract with Swedbank Pay." %}
 ### Screenshots
 
 You will redirect the consumer/end-user to Swedbank Pay hosted pages to collect
-the credit card information.
+the payment information.
 
-![screenshot of the redirect invoice payment page][card-payment]{:height="500px" width="425px"}
+![screenshot of the redirect invoice payment page][invoice-payment]{:height="500px" width="425px"}
 
 ### API Requests
 
@@ -234,7 +230,7 @@ listed below.
 
 ```http
 POST /psp/invoice/payments HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -313,25 +309,25 @@ Content-Type: application/json
     "operations": [
         {
             "method": "POST",
-            "href": "https://api.externalintegration.payex.com/psp/invoice/payments/{{ page.paymentId }}/approvedlegaladdress",
+            "href": "{{ page.apiUrl }}/psp/invoice/payments/{{ page.paymentId }}/approvedlegaladdress",
             "rel": "create-approved-legal-address",
             "contentType": "application/json"
         },
         {
             "method": "POST",
-            "href": "https://api.externalintegration.payex.com/psp/invoice/payments/{{ page.paymentId }}/authorizations",
+            "href": "{{ page.apiUrl }}/psp/invoice/payments/{{ page.paymentId }}/authorizations",
             "rel": "create-authorization",
             "contentType": "application/json"
         },
         {
             "method": "PATCH",
-            "href": "https://api.externalintegration.payex.com/psp/invoice/payments/{{ page.paymentId }}",
+            "href": "{{ page.apiUrl }}/psp/invoice/payments/{{ page.paymentId }}",
             "rel": "update-payment-abort",
             "contentType": "application/json"
         },
         {
             "method": "GET",
-            "href": "https://ecom.externalintegration.payex.com/invoice/payments/authorize/2f9b51a821d40dd015332f14460f91393856725a19e9fb5a834d460af91c9ce2",
+            "href": "{{ page.frontEndUrl }}/invoice/payments/authorize/{{ page.paymentToken }}",
             "rel": "redirect-authorization",
             "contentType": "text/html"
         }
@@ -404,7 +400,7 @@ Swedbank Pay Payments where the payment is authorized.
 
 ```http
 POST /psp/invoice/payments/{{ page.paymentId }}/authorizations HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 {
@@ -499,7 +495,7 @@ Content-Type: application/json
             },
             "operations": [
                 {
-                    "href": "https://api.externalintegration.payex.com/psp/invoice/payments/{{ page.paymentId }}",
+                    "href": "{{ page.apiUrl }}/psp/invoice/payments/{{ page.paymentId }}",
                     "rel": "edit-authorization",
                     "method": "PATCH"
                 }
@@ -578,14 +574,14 @@ Payment" %}
 [callback]: #callback
 [cancel]: /payments/invoice/after-payment#cancellations
 [capture]: /payments/invoice/after-payment#capture
-[card-payment]: /assets/img/checkout/test-purchase.png
 [fi-png]: /assets/img/fi.png
 [financing-consumer]: #financing-consumer
 [invoice-flow]: /payments/invoice#invoice-flow
+[invoice-payment]: /assets/img/checkout/invoice-seamless-view.png
 [no-png]: /assets/img/no.png
 [recur]: #recur
 [redirect]: /payments/invoice/redirect
 [se-png]: /assets/img/se.png
 [seamless-view]: /payments/invoice/seamless-view
-[verify]: #verfify
 [verification-flow]: #verification-flow
+[verify]: #verfify

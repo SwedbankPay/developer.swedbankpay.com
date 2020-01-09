@@ -112,7 +112,7 @@ certain card types are optional and set on contract level." %}
 
 ```http
 POST /psp/creditcard/payments HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -135,7 +135,7 @@ Content-Type: application/json
             "termsOfServiceUrl": "https://example.com/payment-terms.html"
         },
         "payeeInfo": {
-            "payeeId": "12345678-1234-1234-1234-123456789012",
+            "payeeId": "{{ page.merchantId }}"
             "payeeReference": "CD1234",
             "payeeName": "Merchant1",
             "productCategory": "A123",
@@ -182,13 +182,13 @@ Content-Type: application/json
     },
     "operations": [
         {
-            "href": "https://api.externalintegration.payex.com/psp/creditcard/payments/{{ page.paymentId }}",
+            "href": "{{ page.apiUrl }}/psp/creditcard/payments/{{ page.paymentId }}",
             "rel": "update-payment-abort",
             "method": "PATCH",
             "contentType": "application/json"
         },
         {
-            "href": "https://ecom.externalintegration.payex.com/creditcard/payments/verification/123456123412341234123456789012",
+            "href": "{{ page.frontEndUrl }}/creditcard/payments/verification/123456123412341234123456789012",
             "rel": "redirect-verification",
             "method": "GET",
             "contentType": "application/json"

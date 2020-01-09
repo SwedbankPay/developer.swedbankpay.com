@@ -10,8 +10,8 @@ You need to include the following HTTP body:
 **Request**
 
 ```http
-PATCH /psp/{{instrument}}/payments/{{ page.paymentId }} HTTP/1.1
-Host: api.externalintegration.payex.com
+PATCH /psp/{{ instrument }}/payments/{{ page.paymentId }} HTTP/1.1
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -32,7 +32,7 @@ Content-Type: application/json
 
 {
     "payment": {
-        "id": "/psp/{{instrument}}/payments/{{ page.paymentId }}",
+        "id": "/psp/{{ instrument }}/payments/{{ page.paymentId }}",
         "number": 70100130293,
         "created": "2019-01-09T13:11:28.371179Z",
         "updated": "2019-01-09T13:11:46.5949967Z",
@@ -42,22 +42,22 @@ Content-Type: application/json
         "state": "Aborted",
         "currency": "SEK",
         "prices": {
-            "id": "/psp/{{instrument}}/payments/{{ page.paymentId }}/prices"
+            "id": "/psp/{{ instrument }}/payments/{{ page.paymentId }}/prices"
         },
         "amount": 0,
-        "description": "{{instrument}} Test",
+        "description": "{{ instrument }} Test",
         "payerReference": "100500",
         "initiatingSystemUserAgent": "PostmanRuntime/7.1.1",
         "userAgent": "Mozilla/5.0",
         "language": "nb-NO",
         "urls": {
-            "id": "/psp/{{instrument}}/payments/{{ page.paymentId }}/urls"
+            "id": "/psp/{{ instrument }}/payments/{{ page.paymentId }}/urls"
         },
         "payeeInfo": {
-            "id": "/psp/{{instrument}}/payments/{{ page.paymentId }}/payeeinfo"
+            "id": "/psp/{{ instrument }}/payments/{{ page.paymentId }}/payeeinfo"
         },
         "metadata": {
-            "id": "/psp/{{instrument}}/payments/{{ page.paymentId }}/metadata"
+            "id": "/psp/{{ instrument }}/payments/{{ page.paymentId }}/metadata"
         }
     },
     "operations": []

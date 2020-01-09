@@ -7,7 +7,7 @@ in the `operations` list. See the abbreviated request and response below:
 
 ```http
 POST /psp/paymentorders/{{ page.paymentOrderId }}/cancellations HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 

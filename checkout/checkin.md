@@ -71,7 +71,7 @@ is done through the `initiate-consumer-session` operation.
 
 ```http
 POST /psp/consumers HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -83,11 +83,11 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property              | Type     | Description                                                                             |
-| :------: | :-------------------- | :------- | :-------------------------------------------------------------------------------------- |
-|  ✔︎︎︎︎︎  | `operation`           | `string` | `initiate-consumer-session`, the operation to perform.                                  |
-|  ✔︎︎︎︎︎  | `language`            | `string` | Selected language to be used in Checkin. Supported values are `nb-NO`, `sv-SE` and `en-US` |
-|  ✔︎︎︎︎︎  | `shippingAddressRestrictedToCountryCodes`            | `string` | List of supported shipping countries for merchant. Using ISO-3166 standard.  |
+| Required | Property                                  | Type     | Description                                                                                |
+| :------: | :---------------------------------------- | :------- | :----------------------------------------------------------------------------------------- |
+|  ✔︎︎︎︎︎  | `operation`                               | `string` | `initiate-consumer-session`, the operation to perform.                                     |
+|  ✔︎︎︎︎︎  | `language`                                | `string` | Selected language to be used in Checkin. Supported values are `nb-NO`, `sv-SE` and `en-US` |
+|  ✔︎︎︎︎︎  | `shippingAddressRestrictedToCountryCodes` | `string` | List of supported shipping countries for merchant. Using ISO-3166 standard.                |
 
 When the request has been sent, a response containing an array of operations that can be acted upon will be returned:
 
@@ -104,13 +104,13 @@ Content-Type: application/json
         {
             "method": "GET",
             "rel": "redirect-consumer-identification",
-            "href": "https://ecom.externalintegration.payex.com/consumers/sessions/7e380fbb3196ea76cc45814c1d99d59b66db918ce2131b61f585645eff364871",
+            "href": "{{ page.frontEndUrl }}/consumers/sessions/7e380fbb3196ea76cc45814c1d99d59b66db918ce2131b61f585645eff364871",
             "contentType": "text/html"
         },
         {
             "method": "GET",
             "rel": "view-consumer-identification",
-            "href": "https://ecom.externalintegration.payex.com/consumers/core/scripts/client/px.consumer.client.js?token=7e380fbb3196ea76cc45814c1d99d59b66db918ce2131b61f585645eff364871",
+            "href": "{{ page.frontEndUrl }}/consumers/core/scripts/client/px.consumer.client.js?token={{ page.paymentToken }}",
             "contentType": "application/javascript"
         }
     ]
@@ -235,8 +235,8 @@ After that has all loaded, you should see something like this:
 ![Consumer UI][checkin-image]{:width="564" height="293"}
 
 As you can see, the payer's information is pre-filled as provided by the
-initial `POST`. When the payer completes the checkin, the events
-`onConsumerIdentified` and `onShippingDetailsAvailable` will be raised with
+initial `POST`. During and on completion of Checkin, the events
+`onConsumerIdentified`, `onShippingDetailsAvailable` and `onBillingDetailsAvailable` may be raised with
 the following argument objects:
 
 {:.code-header}
@@ -255,12 +255,50 @@ the following argument objects:
 ```js
 {
     "actionType": "OnShippingDetailsAvailable",
-    "url": "https://api.externalintegration.payex.com/psp/consumers/<consumerProfileRef>/shipping-details"
+    "url": "{{ page.apiUrl }}/psp/consumers/<consumerProfileRef>/shipping-details"
+}
+```
+
+{:.code-header}
+**Billing Details Available Event Argument Object**
+
+```js
+{
+    "actionType": "OnBillingDetailsAvailable",
+    "url": "https://api.externalintegration.payex.com/psp/consumers/<consumerProfileRef>/billing-details"
+}
+```
+
+Here is an example of what a `GET` request towards the `url` provided in the event might return:
+
+{:.code-header}
+**Response**
+
+```http
+{
+    "email": "olivia.nyhuus@payex.com",
+    "msisdn": "+4798765432",
+    "billingAddress": {
+        "addressee": "Olivia Nyhus",
+        "coAddress": "",
+        "email": "olivia.nyhuus@payex.com",
+        "msisdn": "+4798765432",
+        "streetAddress": "Saltnestoppen 43",
+        "zipCode": "1642",
+        "city": "saltnes",
+        "countryCode": "NO"
+    }
 }
 ```
 
 With a `consumerProfileRef` safely tucked into our pocket, the Checkin is
 complete and we can move on to [payment menu][payment-menu].
+
+### Note on consumer data
+
+During this stage some consumer data is stored.
+Read more about our [Data Protection Policy][data-protection] for details on which
+information we store and its duration.
 
 {% include iterator.html prev_href="./"
                          prev_title="Back: Introduction"
@@ -270,6 +308,7 @@ complete and we can move on to [payment menu][payment-menu].
 [capture-operation]: /checkout/after-payment#capture
 [checkin-image]: /assets/img/checkout/your-information.png
 [consumer-reference]: /checkout/other-features#payeereference
+[gdpr-cleanup]: /resources/data-protection#paymentorder-consumer-data
 [initiate-consumer-session]: /checkout/checkin#checkin-back-end
 [msisdn]: https://en.wikipedia.org/wiki/MSISDN
 [operations]: /checkout/other-features#operations
@@ -277,6 +316,7 @@ complete and we can move on to [payment menu][payment-menu].
 [payee-reference]: /checkout/other-features#payeereference
 [payment-menu-image]: /assets/img/checkout/payment-methods.png
 [payment-menu]: #payment-menu
+[payment-menu]: payment-menu
 [payment-order-capture]: /checkout/after-payment#capture
 [payment-order-operations]: /checkout/after-payment#operations
 [payment-order]: #payment-orders
@@ -284,4 +324,3 @@ complete and we can move on to [payment menu][payment-menu].
 [technical-reference-onconsumer-identified]: /checkout/payment-menu-front-end
 [urls]: /checkout/other-features#urls-resource
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
-[payment-menu]: payment-menu

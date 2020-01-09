@@ -14,6 +14,10 @@ sidebar:
       title: Open Source Development Guidelines
     - url: /resources/release-notes
       title: Release Notes
+    - url: /resources/terminology
+      title: Terminology
+    - url: /resources/data-protection
+      title: Data Protection
 ---
 
 {% include alert-review-section.md %}
@@ -26,7 +30,7 @@ sidebar:
 During a Swedbank Pay Checkout implementation you can use the test data related
 to the different payment instruments listed below. To see Swedbank Pay Checkout in
 action, please visit our
-[demoshop](https://ecom.externalintegration.payex.com/pspdemoshop)
+[demoshop]({{ page.frontEndUrl }}/pspdemoshop)
 
 To test a logged in user in the Demo Shop, please use the following test data:
 
@@ -49,6 +53,13 @@ To test a logged in user in the Demo Shop, please use the following test data:
 | `Mobile number` | `+46 739000001`           | The mobile phone number of the payer. Format Sweden: +46707777777. |
 | `SSN`           | `971020-2392`             | The social security number of the payer. Sweden: YYYYMMDDXXXX.     |
 | `ZipCode`       | `17674`                   | The city zip code. Format: Sweden XXXXX                            |
+
+### Denmark
+
+{:.table .table-striped}
+| Type            | Data          | Description                                                          |
+| :-------------- | :------------ | :------------------------------------------------------------------- |
+| `Mobile number` | `+4522222222` | The mobile phone number of the payer. Format Denmark: `+45 22222222` |
 
 ## Credit Card Test Data
 
@@ -119,12 +130,12 @@ errors thorugh spesific amounts.
 
 First, POST a Payment (operation purchase) and enter the link to the payment
 page. Example URL: -
-<https://ecom.externalintegration.payex.com/creditcardv2/payments/authorize/739cbaeae33320a5b289e2fc135a8ae443e7b510474c2785683f71c497b49552> .
+<{{ page.frontEndUrl }}/creditcardv2/payments/authorize/{{ page.paymentToken }}> .
 Fill the data for either the Visa or MasterCard as shown below.
 
 {:.table .table-striped}
-| Card type  | Card number        | Expiry | CVC   | Type of test data                    |
-| :--------- | :----------------- | :----- | :---- | :----------------------------------- |
+| Card type  | Card number        | Expiry | CVC   | Type of test data                           |
+| :--------- | :----------------- | :----- | :---- | :------------------------------------------ |
 | Visa       | `4761739001010416` | 12/22  | `268` | 3-D Secure enrolled, ECI 5, Evry & loopback |
 | MasterCard | `5226612199533406` | 09/28  | `602` | 3-D Secure enrolled, ECI 6, Evry & loopback |
 

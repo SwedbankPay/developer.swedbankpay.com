@@ -58,7 +58,7 @@ operation with the following request body:
 
 ```http
 POST /psp/invoice/payments/<paymentId>/captures HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -163,7 +163,7 @@ specific invoice payment.
 
 ```http
 GET /psp/invoice/payments/{{ page.paymentId }}/captures HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -231,7 +231,7 @@ or partially captured invoice payment.
 
 ```http
 POST /psp/invoice/payments/{{ page.paymentId }}/cancellations HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -298,7 +298,7 @@ specific payment.
 ```http
 Request
 GET /psp/invoice/payments/{{ page.paymentId }}/cancellations HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -370,7 +370,7 @@ follows:
 
 ```http
 POST /psp/invoice/payments/{{ page.paymentId }}/reversals HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -445,7 +445,7 @@ The `reversals` resource will list the reversal transactions
 
 ```http
 GET /psp/invoice/payments/{{ page.paymentId }}/reversals HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```

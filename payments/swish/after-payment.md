@@ -6,6 +6,8 @@ sidebar:
     items:
     - url: /payments/swish
       title: Introduction
+    - url: /payments/swish/direct
+      title: Direct
     - url: /payments/swish/redirect
       title: Redirect
     - url: /payments/swish/seamless-view
@@ -18,7 +20,37 @@ sidebar:
 
 {% include alert-development-section.md %}
 
-## Operations
+# Swish Redirect and Payment Status
+
+After the payment is confirmed, the consumer will be redirected from the Swish
+app to the `completeUrl` set in the [create payment request][create-payment].
+You need to retrieve payment status with `GET`
+[Sales transaction][sales-transaction] before presenting a confirmation page to
+the consumer.
+
+## Options after posting a payment
+
+* **If CallbackURL is set**: Whenever changes to the payment occur a [Callback
+  request][technical-reference-callback] will be posted to the `callbackUrl`,
+  which was generated when the payment was created.
+* You can create a reversal transactions by implementing the Reversal request.
+  You can also access and reverse a payment through your merchant pages in the
+  [Swedbank Pay admin portal][payex-admin-portal].
+
+### Reversal Sequence
+
+A reversal transcation need to match the Payee reference of a completed
+sales transaction.
+
+```mermaid
+sequenceDiagram
+  activate Merchant
+  Merchant->>- SwedbankPay: POST <Swish reversal>
+  activate  SwedbankPay
+  SwedbankPay-->>-Merchant: transaction resource
+```
+
+## Payment Resource
 
 When a payment resource is created and during its lifetime, it will have a set
 of operations that can be performed on it.
@@ -35,23 +67,23 @@ is given below.
     "operations": [
         {
             "method": "PATCH",
-            "href": "https://api.externalintegration.payex.com/psp/swish/payments/3648fa94-7fd8-4e32-a14b-08d608f884ff",
+            "href": "{{ page.apiUrl }}/psp/swish/payments/{{ page.paymentId }}",
             "rel": "update-payment-abort"
         },
         {
             "method": "POST",
-            "href": "https://api.externalintegration.payex.com/psp/swish/payments/3648fa94-7fd8-4e32-a14b-08d608f884ff/sales",
+            "href": "{{ page.apiUrl }}/psp/swish/payments/{{ page.paymentId }}/sales",
             "rel": "create-sale"
         },
         {
             "method": "GET",
-            "href": "https://ecom.externalintegration.payex.com/swish/payments/sales/993b479653da83671c074316c7455da05fced9d634431edbb64f3c5f80a863f0",
+            "href": "{{ page.frontEndUrl }}/swish/payments/sales/{{ page.paymentToken }}",
             "rel": "redirect-sale"
         },
         {
             "method": "GET",
-            "href": "https://ecom.externalintegration.payex.com/swish/core/scripts/client/px.swish.client.js?token=cfb9e24832d56fec7ab79709f56accc53d79a699756687d39095b517bc5f011b",
-            "rel": "view-payment",
+            "href": "{{ page.frontEndUrl }}/swish/core/scripts/client/px.swish.client.js?token={{ page.paymentToken }}",
+            "rel": "view-sales",
             "contentType": "application/javascript"
         }
     ]
@@ -79,7 +111,7 @@ request for the given operation.
 | `update-payment-abort` | [Aborts][technical-reference-abort] the payment before any financial transactions are performed.                                           |
 | `create-sale`          | Creates a `sales` transaction without redirection to a payment page. `Msisdn` is required in browser based scenarioes.                     |
 | `redirect-sale`        | Contains the redirect-URI that redirects the consumer to a Swedbank Pay hosted payment page prior to creating a sales transaction.         |
-| `view-payment`         | Contains the URI of the JavaScript used to create a Hosted View iframe directly without redirecting the consumer to separate payment page. |
+| `view-sales`         | Contains the URI of the JavaScript used to create a Hosted View iframe directly without redirecting the consumer to separate payment page. |
 
 ## Swish transactions
 
@@ -95,7 +127,7 @@ on a specific payment.
 
 ```http
 GET /psp/swish/payments/{{ page.paymentId }}/sales HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -153,7 +185,7 @@ to manage the purchase, making `msisdn` optional.
 
 ```http
 POST /psp/swish/payments/{{ page.paymentId }}/sales HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -200,7 +232,7 @@ Content-Type: application/json
 
 ```http
 POST /psp/swish/payments/{{ page.paymentId }}/sales HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -250,7 +282,7 @@ Content-Type: application/json
 The `operation` `redirect-app-swish` is only returned when using in-app flows.
 
 The payment now contains a sale transaction with the status (state)
-`AwaitingActivity`
+`AwaitingActivity`, meaning we are awaiting a response from Swish.
 When the consumer confirms the payment a callback request will follow
 from Swedbank Pay.
 
@@ -264,7 +296,7 @@ specific payment.
 
 ```http
 GET /psp/swish/payments/{{ page.paymentId }}/reversals HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -323,7 +355,7 @@ Swedbank Pay.
 
 ```http
 POST /psp/swish/payments/{{ page.paymentId }}/reversals HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -385,7 +417,7 @@ Content-Type: application/json
 
 ## Abort
 
-To abort a payment order, send a request to `/psp/swish/payments/{{paymentId}}`.
+To abort a payment order, send a request to `/psp/swish/payments/{{ paymentId }}`.
 You need to include the following `HTTP` body:
 
 {:.code-header}
@@ -393,7 +425,7 @@ You need to include the following `HTTP` body:
 
 ```http
 PATCH /psp/payments/{{ page.paymentId }} HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 

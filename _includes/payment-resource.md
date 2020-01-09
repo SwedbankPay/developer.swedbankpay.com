@@ -9,8 +9,8 @@ possible to perform in the current state of the payment.
 **Request**
 
 ```http
-GET /psp/{{payment-instrument}}/payments/{{ page.paymentId }}/ HTTP/1.1
-Host: api.externalintegration.payex.com
+GET /psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/ HTTP/1.1
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -24,7 +24,7 @@ Content-Type: application/json
 
 {
     "payment": {
-        "id": "/psp/{{payment-instrument}}/payments/{{ page.paymentId }}",
+        "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}",
         "number": 1234567890,
         "created": "2016-09-14T13:21:29.3182115Z",
         "updated": "2016-09-14T13:21:57.6627579Z",
@@ -42,52 +42,52 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",
         "prices": {
-            "id": "/psp/{{payment-instrument}}/payments/{{ page.paymentId }}/prices"
+            "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/prices"
         },
         "payeeInfo": {
-            "id": "/psp/{{payment-instrument}}/payments/{{ page.paymentId }}/payeeInfo"
+            "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/payeeInfo"
         },
         "urls": {
-            "id": "/psp/{{payment-instrument}}/payments/{{ page.paymentId }}/urls"
+            "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/urls"
         },
         "transactions": {
-            "id": "/psp/{{payment-instrument}}/payments/{{ page.paymentId }}/transactions"
+            "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/transactions"
         },
         "authorizations": {
-            "id": "/psp/{{payment-instrument}}/payments/{{ page.paymentId }}/authorizations"
+            "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/authorizations"
         },
         "captures": {
-            "id": "/psp/{{payment-instrument}}/payments/{{ page.paymentId }}/captures"
+            "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/captures"
         },
         "reversals": {
-            "id": "/psp/{{payment-instrument}}/payments/{{ page.paymentId }}/reversals"
+            "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/reversals"
         },
         "cancellations": {
-            "id": "/psp/{{payment-instrument}}/payments/{{ page.paymentId }}/cancellations"
+            "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/cancellations"
         }
     },
     "operations": [
         {
             "method": "PATCH",
-            "href": "https://api.externalintegration.payex.com/psp/{{payment-instrument}}/payments/{{ page.paymentId }}",
+            "href": "{{ page.apiUrl }}/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}",
             "rel": "update-payment-abort",
             "contentType": "application/json"
         },
         {
             "method": "GET",
-            "href": "https://ecom.externalintegration.payex.com/{{payment-instrument}}/core/scripts/client/px.creditcard.client.js?token={{ page.transactionId }}&operation=authorize",
+            "href": "{{ page.frontEndUrl }}/{{ payment-instrument }}/core/scripts/client/px.{{ payment-instrument }}.client.js?token={{ page.paymentToken }}&operation=authorize",
             "rel": "view-authorization",
             "contentType": "application/javascript"
         },
         {
             "method": "GET",
-            "href": "https://ecom.externalintegration.payex.com/{{payment-instrument}}/payments/authorize/{{ page.transactionId }}",
+            "href": "{{ page.frontEndUrl }}/{{ payment-instrument }}/payments/authorize/{{ page.transactionId }}",
             "rel": "redirect-authorization",
             "contentType": "text/html"
         },
         {
             "method": "POST",
-            "href": "https://api.externalintegration.payex.com/psp/{{payment-instrument}}/payments/{{ page.paymentId }}/captures",
+            "href": "{{ page.apiUrl }}/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/captures",
             "rel": "create-capture",
             "contentType": "application/json"
         }

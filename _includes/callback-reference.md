@@ -29,6 +29,7 @@ about this update.
   * 864 seconds
   * 1265 seconds
 * The callback is sent from the following IP address: `82.115.146.1`
+* A callback should return a `200 OK` response.
 
 {% if payment-order %}
 {:.code-header}

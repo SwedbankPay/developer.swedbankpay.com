@@ -22,7 +22,7 @@ sidebar:
 of the checkout experience, integrating seamlessly into the merchant website
 through highly customizable and flexible components.
 
-Visit our [demoshop](https://ecom.externalintegration.payex.com/pspdemoshop)
+Visit our [demoshop][demoshop]
 and try out Swedbank Pay Checkout for yourself!" %}
 
 Swedbank Pay Checkout allows your customers to be identified with Swedbank Pay,
@@ -198,6 +198,7 @@ diagram.
 {% include iterator.html next_href="checkin"
                          next_title="Next: Implement Checkin" %}
 
+[after-payment-capture]: after-payment#capture
+[demoshop]: https://ecom.externalintegration.payex.com/pspdemoshop
 [https]: /#connection-and-protocol
 [payment-order]: /checkout/other-features#payment-orders
-[after-payment-capture]: after-payment#capture

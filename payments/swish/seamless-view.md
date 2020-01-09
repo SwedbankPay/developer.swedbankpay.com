@@ -6,6 +6,8 @@ sidebar:
     items:
     - url: /payments/swish
       title: Introduction
+    - url: /payments/swish/direct
+      title: Direct
     - url: /payments/swish/redirect
       title: Redirect
     - url: /payments/swish/seamless-view
@@ -67,7 +69,7 @@ sequenceDiagram
     note left of Merchant: Second API request.
     Merchant->>-SwedbankPay: GET <payment.id> ⑥
     activate SwedbankPay
-    SwedbankPay-->>-Merchant: rel: view-payment
+    SwedbankPay-->>-Merchant: rel: view-sales
     activate Merchant
     Merchant-->>-Payer: display purchase result
     activate Payer
@@ -165,7 +167,7 @@ Content-Type: application/json
             "termsOfServiceUrl": "http://example.com/payment-terms.pdf",
         },
         "payeeInfo": {
-            "payeeId": "12345678-1234-1234-1234-123456789012",
+            "payeeId": "{{ page.merchantId }}"
             "payeeReference": "CD1234",
             "payeeName": "Merchant1",
             "productCategory": "A123",
@@ -202,9 +204,9 @@ Content-Type: application/json
 | Required | Property                              | Type          | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | :------: | :------------------------------------ | :------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 |  ✔︎︎︎︎︎  | `payment`                             | `object`      | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`operation`                   | `string`      | The operation that the `payment` is supposed to perform. The [`purchase`][purchase] operation is used in our example. Take a look at the [create card `payment` section][create-payment] for a full examples of the following `operation` options: [Purchase][purchase].                                                                                                                                                                                                                                               |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`operation`                   | `string`      | The operation that the `payment` is supposed to perform. The [`purchase`][purchase] operation is used in our example. Take a look at the [create card `payment` section][create-payment] for a full examples of the following `operation` options: [Purchase][purchase].                                                                                                                                                                                                                                                                                                  |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`intent`                      | `string`      | `Authorization`. Reserves the amount, and is followed by a [cancellation][cancel] or [capture][capture] of funds.<br> <br> `AutoCapture`. A one phase option that enable capture of funds automatically after authorization.                                                                                                                                                                                                                                                                                                                                              |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`currency`                    | `string`      | `SEK`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`currency`                    | `string`      | `SEK`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`prices`                      | `object`      | The `prices` resource lists the prices related to a specific payment.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`type`                       | `string`      | Use the generic type CreditCard if you want to enable all card brands supported by merchant contract. Use card brands like Visa (for card type Visa), MasterCard (for card type Mastercard) and others if you want to specify different amount for each card brand. If you want to use more than one amount you must have one instance in the prices node for each card brand. You will not be allowed to both specify card brands and CreditCard at the same time in this field. [See the Prices resource and prices object types for more information][price-resource]. |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`amount`                     | `integer`     | Amount is entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 SEK 5000 = 50.00 SEK.                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
@@ -229,8 +231,8 @@ Content-Type: application/json
 |          | └─➔&nbsp;`payeeName`                  | `string`      | The payee name (like merchant name) that will be displayed to consumer when redirected to Swedbank Pay.                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 |          | └─➔&nbsp;`productCategory`            | `string`      | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                                                                                                                                                                                                                                                                                            |
 |          | └─➔&nbsp;`orderReference`             | `String(50)`  | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-|          | └➔&nbsp;`prefillInfo`                  | `object`      | An object that holds prefill information that can be inserted on the payment page.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-|          | └─➔&nbsp;`msisdn`           | `string`     | Number will be prefilled on payment page, if valid. We support international phone numbers defined with country code prefix. ex +46                                                                                                                                                                                                                                                                                                                                                                                                                         |
+|          | └➔&nbsp;`prefillInfo`                 | `object`      | An object that holds prefill information that can be inserted on the payment page.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+|          | └─➔&nbsp;`msisdn`                     | `string`      | Number will be prefilled on payment page, if valid. We support international phone numbers defined with country code prefix. ex +46                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 |          | └─➔&nbsp;`subsite`                    | `String(40)`  | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.                                                                                                                                                                                                                                                                                                                                                                                                               |
 |          | └➔&nbsp;`riskIndicator`               | `array`       | This **optional** array consist of information that helps verifying the payer. Providing these fields decreases the likelyhood of having to promt for 3-D Secure authenticaiton of the payer when they are authenticating the purchacse.                                                                                                                                                                                                                                                                                                                                  |
 |          | └─➔&nbsp;`deliveryEmailAdress`        | `string`      | For electronic delivery, the email address to which the merchandise was delivered. Providing this field when appropriate decreases the likelyhood of a 3-D Secure authentication for the payer.                                                                                                                                                                                                                                                                                                                                                                           |
@@ -247,8 +249,8 @@ Content-Type: application/json
 |          | └─➔&nbsp;`city`                       | `string`      | If `shipIndicator` set to `04`, then prefill this with the payers `city` of the purchase to decrease the risk factor of the purchase.                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 |          | └─➔&nbsp;`zipCode`                    | `string`      | If `shipIndicator` set to `04`, then prefill this with the payers `zipCode` of the purchase to decrease the risk factor of the purchase.                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 |          | └─➔&nbsp;`countryCode`                | `string`      | If `shipIndicator` set to `04`, then prefill this with the payers `countryCode` of the purchase to decrease the risk factor of the purchase.                                                                                                                                                                                                                                                                                                                                                                                                                              |
-|          | └➔&nbsp;`swish`                  | `object`      | An object that holds different scenarios for Swish payments.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-|          | └─➔&nbsp;`enableEcomOnly`           | `boolean`     | `true` if to only enable Swish on browser-based transactions.; otherwise `false` to also enable Swish transactions via mobile app.                                                                                                                                                                                                                                                                                                                                                                                                                         |
+|          | └➔&nbsp;`swish`                       | `object`      | An object that holds different scenarios for Swish payments.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+|          | └─➔&nbsp;`enableEcomOnly`             | `boolean`     | `true` if to only enable Swish on browser-based transactions.; otherwise `false` to also enable Swish transactions via mobile app.                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 
 {:.code-header}
 **Response**
@@ -259,7 +261,7 @@ Content-Type: application/json
 
 {
     "payment": {
-      "id": "/psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+      "id": "/psp/swish/payments/{{ page.paymentId }}",
       "number": 1234567890,
       "instrument": "Swish",
       "created": "2016-09-14T13:21:29.3182115Z",
@@ -277,30 +279,30 @@ Content-Type: application/json
       "initiatingSystemUserAgent": "PostmanRuntime/7.20.1",
       "userAgent": "Mozilla/5.0...",
       "language": "sv-SE",
-      "prices": { "id": "/psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/prices" },
-      "transactions": { "id": "/psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions" },
-      "authorizations": { "id": "/psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations" },
-      "captures": { "id": "/psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures" },
-      "reversals": { "id": "/psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals" },
-      "cancellations": { "id": "/psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/cancellations" },
-      "urls" : { "id": "/psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/urls" },
-      "payeeInfo" : { "id": "/psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeInfo" },
-      "settings": { "id": "/psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/settings" }
+      "prices": { "id": "/psp/swish/payments/{{ page.paymentId }}/prices" },
+      "transactions": { "id": "/psp/swish/payments/{{ page.paymentId }}/transactions" },
+      "authorizations": { "id": "/psp/swish/payments/{{ page.paymentId }}/authorizations" },
+      "captures": { "id": "/psp/swish/payments/{{ page.paymentId }}/captures" },
+      "reversals": { "id": "/psp/swish/payments/{{ page.paymentId }}/reversals" },
+      "cancellations": { "id": "/psp/swish/payments/{{ page.paymentId }}/cancellations" },
+      "urls" : { "id": "/psp/swish/payments/{{ page.paymentId }}/urls" },
+      "payeeInfo" : { "id": "/psp/swish/payments/{{ page.paymentId }}/payeeInfo" },
+      "settings": { "id": "/psp/swish/payments/{{ page.paymentId }}/settings" }
     },
     "operations": [
       {
-        "href": "https://api.externalintegration.payex.com/psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+        "href": "{{ page.apiUrl }}/psp/swish/payments/{{ page.paymentId }}",
         "rel": "update-payment-abort",
         "method": "PATCH",
         "contentType": "application/json"
       },
       {
             "method": "POST",
-            "href": "https://api.externalintegration.payex.com/psp/swish/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/sales",
+            "href": "{{ page.apiUrl }}/psp/swish/payments/{{ page.paymentId }}/sales",
             "rel": "create-sale"
       },
       {
-        "href": "https://ecom.externalintegration.payex.com/swish/payments/authorize/123456123412341234123456789012",
+        "href": "{{ page.frontEndUrl }}/swish/payments/authorize/123456123412341234123456789012",
         "rel": "redirect-sale",
         "method": "GET",
         "contentType": "text/html"
@@ -313,8 +315,8 @@ Content-Type: application/json
       },
       {
             "method": "GET",
-            "href": "https://ecom.externalintegration.payex.com/swish/core/scripts/client/px.swish.client.js?token=123456123412341234123456789012",
-            "rel": "view-payment",
+            "href": "{{ page.frontEndUrl }}/swish/core/scripts/client/px.swish.client.js?token={{ page.paymentToken }}",
+            "rel": "view-sales",
             "contentType": "application/javascript"
       }
     ]

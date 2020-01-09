@@ -180,7 +180,7 @@ Content-Type: application/json
             "termsOfServiceUrl": "http://example.com/payment-terms.pdf",
         },
         "payeeInfo": {
-            "payeeId": "12345678-1234-1234-1234-123456789012",
+            "payeeId": "{{ page.merchantId }}"
             "payeeReference": "CD1234",
             "payeeName": "Merchant1",
             "productCategory": "A123",
@@ -210,7 +210,6 @@ Content-Type: application/json
         "rejectConsumerCards": false,
         "rejectCorporateCards": false,
         "no3DSecure": false,
-        "noCvc": false
     }
 }
 ```
@@ -268,7 +267,6 @@ Content-Type: application/json
 |          | └─➔&nbsp;`rejectConsumerCards`        | `boolean`     | `true` if consumer cards should be declined; otherwise `false` per default. Default value is set by Swedbank Pay and can be changed at your request.                                                                                                                                                                                                                                                                                                                                                                                                                      |
 |          | └─➔&nbsp;`rejectCorporateCards`       | `boolean`     | `true` if corporate cards should be declined; otherwise `false` per default. Default value is set by Swedbank Pay and can be changed at your request.                                                                                                                                                                                                                                                                                                                                                                                                                     |
 |          | └─➔&nbsp;`no3DSecure`                 | `boolean`     | `true` if 3-D Secure should be disabled for this payment in the case a stored card is used; otherwise `false` per default. To use this feature it has to be enabled on the contract with Swedbank Pay.                                                                                                                                                                                                                                                                                                                                                                    |
-|          | └─➔&nbsp;`noCvc`                      | `boolean`     | `true` if the CVC field should be disabled for this payment in the case a stored card is used; otherwise `false` per default. To use this feature it has to be enabled on the contract with Swedbank Pay.                                                                                                                                                                                                                                                                                                                                                                 |
 
 {:.code-header}
 **Response**
@@ -279,7 +277,7 @@ Content-Type: application/json
 
 {
     "payment": {
-      "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+      "id": "/psp/creditcard/payments/{{ page.paymentId }}",
       "number": 1234567890,
       "instrument": "CreditCard",
       "created": "2016-09-14T13:21:29.3182115Z",
@@ -297,25 +295,25 @@ Content-Type: application/json
       "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
       "userAgent": "Mozilla/5.0...",
       "language": "sv-SE",
-      "prices": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/prices" },
-      "transactions": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions" },
-      "authorizations": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations" },
-      "captures": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/captures" },
-      "reversals": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals" },
-      "cancellations": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/cancellations" },
-      "urls" : { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/urls" },
-      "payeeInfo" : { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeInfo" },
-      "settings": { "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/settings" }
+      "prices": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/prices" },
+      "transactions": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/transactions" },
+      "authorizations": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/authorizations" },
+      "captures": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/captures" },
+      "reversals": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/reversals" },
+      "cancellations": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/cancellations" },
+      "urls" : { "id": "/psp/creditcard/payments/{{ page.paymentId }}/urls" },
+      "payeeInfo" : { "id": "/psp/creditcard/payments/{{ page.paymentId }}/payeeInfo" },
+      "settings": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/settings" }
     },
     "operations": [
       {
-        "href": "https://api.externalintegration.payex.com/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+        "href": "{{ page.apiUrl }}/psp/creditcard/payments/{{ page.paymentId }}",
         "rel": "update-payment-abort",
         "method": "PATCH",
         "contentType": "application/json"
       },
       {
-        "href": "https://ecom.externalintegration.payex.com/creditcard/payments/authorize/123456123412341234123456789012",
+        "href": "{{ page.frontEndUrl }}/creditcard/payments/authorize/123456123412341234123456789012",
         "rel": "redirect-authorization",
         "method": "GET",
         "contentType": "text/html"

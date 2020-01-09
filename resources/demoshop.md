@@ -14,6 +14,10 @@ sidebar:
       title: Open Source Development Guidelines
     - url: /resources/release-notes
       title: Release Notes
+    - url: /resources/terminology
+      title: Terminology
+    - url: /resources/data-protection
+      title: Data Protection
 ---
 
 {% include alert-review-section.md %}
@@ -21,4 +25,6 @@ sidebar:
 {% include jumbotron.html body=
 "We are working on a brand new demoshop for you!
 In the meantime, knock yourself out with our existing
-[demoshop](https://ecom.externalintegration.payex.com/pspdemoshop)" %}
+[demoshop][demoshop]" %}
+
+[demoshop]: https://ecom.externalintegration.payex.com/pspdemoshop

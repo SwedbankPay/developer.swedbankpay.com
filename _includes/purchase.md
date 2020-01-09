@@ -30,7 +30,7 @@ Content-Type: application/json
             "termsOfServiceUrl": "http://example.com/payment-terms.pdf",
         },
         "payeeInfo": {
-            "payeeId": "12345678-1234-1234-1234-123456789012",
+            "payeeId": "{{ page.merchantId }}"
             "payeeReference": "CD1234",
             "payeeName": "Merchant1",
             "productCategory": "A123",
@@ -66,7 +66,6 @@ Content-Type: application/json
         "rejectConsumerCards": false,
         "rejectCorporateCards": false,
         "no3DSecure": false,
-        "noCvc": false
     }
 }
 ```
@@ -122,7 +121,6 @@ Content-Type: application/json
 |          | └─➔&nbsp;`rejectConsumerCards`        | `boolean`     | `true` if consumer cards should be declined; otherwise `false` per default. Default value is set by Swedbank Pay and can be changed at your request.                                                                                                                                                                                                                                                                                                                                                                                                                      |
 |          | └─➔&nbsp;`rejectCorporateCards`       | `boolean`     | `true` if corporate cards should be declined; otherwise `false` per default. Default value is set by Swedbank Pay and can be changed at your request.                                                                                                                                                                                                                                                                                                                                                                                                                     |
 |          | └─➔&nbsp;`no3DSecure`                 | `boolean`     | `true` if 3-D Secure should be disabled for this payment in the case a stored card is used; otherwise `false` per default. To use this feature it has to be enabled on the contract with Swedbank Pay.                                                                                                                                                                                                                                                                                                                                                                    |
-|          | └─➔&nbsp;`noCvc`                      | `boolean`     | `true` if the CVC field should be disabled for this payment in the case a stored card is used; otherwise `false` per default. To use this feature it has to be enabled on the contract with Swedbank Pay.                                                                                                                                                                                                                                                                                                                                                                 |
 
 {:.code-header}
 **Response**
@@ -163,13 +161,13 @@ Content-Type: application/json
   },
   "operations": [
     {
-      "href": "https://api.externalintegration.payex.com/psp/creditcard/payments/{{ page.paymentId }}",
+      "href": "{{ page.apiUrl }}/psp/creditcard/payments/{{ page.paymentId }}",
       "rel": "update-payment-abort",
       "method": "PATCH",
       "contentType": "application/json"
     },
     {
-      "href": "https://ecom.externalintegration.payex.com/creditcard/payments/authorize/123456123412341234123456789012",
+      "href": "{{ page.frontEndUrl }}/creditcard/payments/authorize/{{ page.transactionId }}",
       "rel": "redirect-authorization",
       "method": "GET",
       "contentType": "text/html"

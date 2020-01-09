@@ -16,8 +16,7 @@ sidebar:
       title: Other Features
 ---
 
-
-{% include alert-development-section.md %}
+{% include alert-review-section.md %}
 
 {% include jumbotron.html body="**Vipps Payments** is a two-phase
 payment instrument supported by the major Norwegian banks. In the redirect
@@ -163,7 +162,7 @@ Content-Type: application/json
             "paymentUrl": "https://example.net/payment-cart"
         },
         "payeeInfo": {
-            "payeeId": "12345678-1234-1234-1234-123456789012",
+            "payeeId": "{{ page.merchantId }}"
             "payeeReference": "CD1234",
             "payeeName": "Merchant1",
             "productCategory": "A123"
@@ -184,7 +183,7 @@ Content-Type: application/json
 
 {
     "payment": {
-        "id": "/psp/vipps/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+        "id": "/psp/vipps/payments/{{ page.paymentId }}",
         "number": 1234567890,
         "created": "2016-09-14T13:21:29.3182115Z",
         "updated": "2016-09-14T13:21:57.6627579Z",
@@ -203,44 +202,44 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",
         "prices": {
-            "id": "/psp/vipps/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/prices"
+            "id": "/psp/vipps/payments/{{ page.paymentId }}/prices"
         },
         "transactions": {
-            "id": "/psp/vipps/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions"
+            "id": "/psp/vipps/payments/{{ page.paymentId }}/transactions"
         },
         "authorizations": {
-            "id": "/psp/vipps/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/authorizations"
+            "id": "/psp/vipps/payments/{{ page.paymentId }}/authorizations"
         },
         "reversals": {
-            "id": "/psp/vipps/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/reversals"
+            "id": "/psp/vipps/payments/{{ page.paymentId }}/reversals"
         },
         "cancellations": {
-            "id": "/psp/vipps/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/cancellations"
+            "id": "/psp/vipps/payments/{{ page.paymentId }}/cancellations"
         },
         "urls": {
-            "id": "/psp/vipps/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/urls"
+            "id": "/psp/vipps/payments/{{ page.paymentId }}/urls"
         },
         "payeeInfo": {
-            "id": "/psp/vipps/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/payeeInfo"
+            "id": "/psp/vipps/payments/{{ page.paymentId }}/payeeInfo"
         },
         "settings": {
-            "id": "/psp/vipps/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/settings"
+            "id": "/psp/vipps/payments/{{ page.paymentId }}/settings"
         }
     },
     "operations": [
         {
             "method": "POST",
-            "href": "http://api.externalintegration.payex.com/psp/vipps/payments/c50eef6d-a788-4ec6-64ff-08d4b16740a4/authorizations",
+            "href": "{{ page.apiUrl }}/psp/vipps/payments/{{ page.transactionId }}/authorizations",
             "rel": "create-authorization"
         },
         {
             "method": "PATCH",
-            "href": "http://api.externalintegration.payex.com/psp/vipps/payments/c50eef6d-a788-4ec6-64ff-08d4b16740a4",
+            "href": "{{ page.apiUrl }}/psp/vipps/payments/{{ page.transactionId }}",
             "rel": "update-payment-abort"
         },
         {
             "method": "GET",
-            "href": "http://api.externalintegration.payex.com/vipps/payments/authorize/8fb05a835f2fc227dc7bca9abaf649b919ba8a572deb448bff543dd5806dacb7",
+            "href": "{{ page.apiUrl }}/vipps/payments/authorize/8fb05a835f2fc227dc7bca9abaf649b919ba8a572deb448bff543dd5806dacb7",
             "rel": "redirect-authorization"
         }
     ]
@@ -248,31 +247,31 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property                              | Type          | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| :------: | :------------------------------------ | :------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-|  ✔︎︎︎︎︎  | `payment`                             | `object`      | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`operation`                           | `string`      | The operation that the `payment` is supposed to perform. The [`purchase`][purchase] operation is used in our example.                                                                                                                                                                                                                                             |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`intent`                              | `string`      |  `Authorization`. Reserves the amount, and is followed by a [cancellation][cancel] or [capture][capture] of funds.<br> <br>                                                                                                                                                          |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`currency`                            | `string`      | NOK                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`prices`                      | `object`      | The `prices` resource lists the prices related to a specific payment.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-|  ✔︎︎︎︎︎  | └─➔&nbsp;`type`                       | `string`      |                                                                     |
-|  ✔︎︎︎︎︎  | └─➔&nbsp;`amount`                     | `integer`     | Amount is entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK 5000 = 50.00 NOK.                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-|  ✔︎︎︎︎︎  | └─➔&nbsp;`vatAmount`                  | `integer`     | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                                                                                                                                                                                                                                                                                                                                                                                        |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`description`                 | `string(40)`  | A textual description max 40 characters of the purchase.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-|          | └➔&nbsp;`payerReference`              | `string`      | The reference to the payer (consumer/end user) from the merchant system. E.g mobile number, customer number etc.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`userAgent`                   | `string`      | The user agent reference of the consumer's browser - [see user agent definition][user-agent-definition]                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`language`                    | `string`      | nb-NO                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`urls`                        | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-|  ✔︎︎︎︎︎  | └─➔&nbsp;`completeUrl`                | `string`      | The URL that Swedbank Pay will redirect back to when the payment page is completed.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-|          | └─➔&nbsp;`cancelUrl`                  | `string`      | The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only cancelUrl or `paymentUrl` can be used, not both.                                                                                                                                                                                                                                                                                                                                                                     |
-|          | └─➔&nbsp;`callbackUrl`                | `string`      | The URL that Swedbank Pay will perform an HTTP POST against every time a transaction is created on the payment. See [callback][callback] for details.                                                                                                                                                                                                                                                                                                                                                                                                                     |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`payeeInfo`                    | `object`      | The `payeeInfo` contains information about the payee.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-|  ✔︎︎︎︎︎  | └─➔&nbsp;`payeeId`                    | `string`      | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-|  ✔︎︎︎︎︎  | └─➔&nbsp;`payeeReference`             | `string(50*)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.                                                                                                                                                                                                                                                                                                                                                                                  |
-|          | └─➔&nbsp;`payeeName`                  | `string`      | The payee name (like merchant name) that will be displayed to consumer when redirected to Swedbank Pay.                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-|          | └─➔&nbsp;`productCategory`            | `string`      | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                                                                                                                                                                                                                                                                                            |
-|          | └─➔&nbsp;`orderReference`             | `String(50)`  | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-|          | └─➔&nbsp;`subsite`                    | `String(40)`  | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.                                                                                                                                                                                                                                                                                                                                                                                                               |
+| Required | Property                   | Type          | Description                                                                                                                                                                                           |
+| :------: | :------------------------- | :------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|  ✔︎︎︎︎︎  | `payment`                  | `object`      | The `payment` object contains information about the specific payment.                                                                                                                                 |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`operation`        | `string`      | The operation that the `payment` is supposed to perform. The [`purchase`][purchase] operation is used in our example.                                                                                 |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`intent`           | `string`      | `Authorization`. Reserves the amount, and is followed by a [cancellation][cancel] or [capture][capture] of funds.<br> <br>                                                                            |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`currency`         | `string`      | NOK                                                                                                                                                                                                   |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`prices`           | `object`      | The `prices` resource lists the prices related to a specific payment.                                                                                                                                 |
+|  ✔︎︎︎︎︎  | └─➔&nbsp;`type`            | `string`      |                                                                                                                                                                                                       |
+|  ✔︎︎︎︎︎  | └─➔&nbsp;`amount`          | `integer`     | Amount is entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK 5000 = 50.00 NOK.                                                                                   |
+|  ✔︎︎︎︎︎  | └─➔&nbsp;`vatAmount`       | `integer`     | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                    |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`description`      | `string(40)`  | A textual description max 40 characters of the purchase.                                                                                                                                              |
+|          | └➔&nbsp;`payerReference`   | `string`      | The reference to the payer (consumer/end user) from the merchant system. E.g mobile number, customer number etc.                                                                                      |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`userAgent`        | `string`      | The user agent reference of the consumer's browser - [see user agent definition][user-agent-definition]                                                                                               |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`language`         | `string`      | nb-NO                                                                                                                                                                                                 |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`urls`             | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                |
+|  ✔︎︎︎︎︎  | └─➔&nbsp;`completeUrl`     | `string`      | The URL that Swedbank Pay will redirect back to when the payment page is completed.                                                                                                                   |
+|          | └─➔&nbsp;`cancelUrl`       | `string`      | The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only cancelUrl or `paymentUrl` can be used, not both. |
+|          | └─➔&nbsp;`callbackUrl`     | `string`      | The URL that Swedbank Pay will perform an HTTP POST against every time a transaction is created on the payment. See [callback][callback] for details.                                                 |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`payeeInfo`        | `object`      | The `payeeInfo` contains information about the payee.                                                                                                                                                 |
+|  ✔︎︎︎︎︎  | └─➔&nbsp;`payeeId`         | `string`      | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                 |
+|  ✔︎︎︎︎︎  | └─➔&nbsp;`payeeReference`  | `string(50*)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.              |
+|          | └─➔&nbsp;`payeeName`       | `string`      | The payee name (like merchant name) that will be displayed to consumer when redirected to Swedbank Pay.                                                                                               |
+|          | └─➔&nbsp;`productCategory` | `string`      | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.        |
+|          | └─➔&nbsp;`orderReference`  | `String(50)`  | The order reference should reflect the order reference found in the merchant's systems.                                                                                                               |
+|          | └─➔&nbsp;`subsite`         | `String(40)`  | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.                                           |
 
 ## Authorizations
 
@@ -286,8 +285,8 @@ transactions made on a specific payment.
 
 HTTP/1.1 200 OK
 Content-Type: application/json
-GET /psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/authorizations/<transactionId> HTTP/1.1
-Host: api.externalintegration.payex.com
+GET /psp/vipps/payments/{{ page.paymentId }}/authorizations/<transactionId> HTTP/1.1
+Host: {{ page.apiHost }}
 Authorization: Bearer <MerchantToken>
 
 
@@ -302,13 +301,13 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d",
+    "payment": "/psp/vipps/payments/{{ page.paymentId }}",
     "authorization": {
         "vippsTransactionId": "5619328800",
         "msisdn": "+47xxxxxxxx",
-        "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/authorizations/3bfb8c66-33be-4871-465b-08d612f01a53",
+        "id": "/psp/vipps/payments/{{ page.paymentId }}/authorizations/{{ page.transactionId }}",
         "transaction": {
-            "id": "/psp/vipps/payments/84b9e6aa-b8f5-4e7f-fa2f-08d612f7dd5d/transactions/3bfb8c66-33be-4871-465b-08d612f01a53",
+            "id": "/psp/vipps/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
             "created": "2018-09-05T15:01:39.8658084Z",
             "updated": "2018-09-05T15:01:42.2119509Z",
             "type": "Authorization",
@@ -326,13 +325,13 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property                              | Type          | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| :------: | :------------------------------------ | :------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-|  ✔︎︎︎︎︎  | `payment`                             | `string`      | The relative URI of the payment this authorization transactions resource belongs to.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`authorizations.id`                           | `string`      | The relative URI of the current authorization transactions resource.                                                                                                                                                                                                                                             |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`authorizations.authorizationList`                              | `array`      |  The array of authorization transaction objects.                                                                                                                                                          |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`authorizations.authorizationList[]`                            | `object`      | The `authorization` transaction object described in the authorization resource below.
-  |
+| Property | Type                                         | Description |
+| :------: | :------------------------------------------- | :---------- | :------------------------------------------------------------------------------------ |
+|  ✔︎︎︎︎︎  | `payment`                                    | `string`    | The relative URI of the payment this authorization transactions resource belongs to.  |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`authorizations.id`                  | `string`    | The relative URI of the current authorization transactions resource.                  |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`authorizations.authorizationList`   | `array`     | The array of authorization transaction objects.                                       |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`authorizations.authorizationList[]` | `object`    | The `authorization` transaction object described in the authorization resource below. |
+|          |
 
 {% include iterator.html prev_href="./"
                          prev_title="Back: Introduction"

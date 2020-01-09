@@ -13,7 +13,7 @@ specific payment.
 
 ```http
 GET /psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/transactions HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```

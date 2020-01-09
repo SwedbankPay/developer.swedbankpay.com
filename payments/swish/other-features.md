@@ -6,6 +6,8 @@ sidebar:
     items:
     - url: /payments/swish
       title: Introduction
+    - url: /payments/swish/direct
+      title: Direct
     - url: /payments/swish/redirect
       title: Redirect
     - url: /payments/swish/seamless-view
@@ -38,7 +40,7 @@ response that includes one or more expanded sub-resources inlined.
 
 ```http
 POST /psp/swish/payments HTTP/1.1
-Host: api.externalintegration.payex.com
+Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -65,7 +67,7 @@ Content-Type: application/json
             "termsOfServiceUrl": "https://example.com/terms.pdf"
         },
         "payeeInfo": {
-            "payeeId": "bbb33dc5-f44e-4af6-afc0-27fb5fa2f63a",
+            "payeeId": "{{ page.merchantId }}",
             "payeeReference": "ref-123456",
             "payeeName": "Merchant1",
             "productCategory": "A123",
@@ -147,12 +149,12 @@ Content-Type: application/json
     "operations": [
         {
             "method": "PATCH",
-            "href": "http://api.externalintegration.payex.com/psp/swish/payments/{{ page.paymentId }}",
+            "href": "http://{{ page.apiHost }}/psp/swish/payments/{{ page.paymentId }}",
             "rel": "update-payment-abort"
         },
         {
             "method": "POST",
-            "href": "http://api.externalintegration.payex.com/psp/swish/payments/{{ page.paymentId }}/sales",
+            "href": "http://{{ page.apiHost }}/psp/swish/payments/{{ page.paymentId }}/sales",
             "rel": "create-sale"
         }
 
@@ -196,7 +198,7 @@ of the problem.
 ### Error types from Swish and third parties
 
 All Swish error types will have the following URI in front of type:
-`https://api.externalintegration.payex.com/psp/<errordetail>/swish`
+`{{ page.apiUrl }}/psp/<errordetail>/swish`
 
 {:.table .table-striped}
 | Type                 | Status | Error code           | Details                                                                                         |

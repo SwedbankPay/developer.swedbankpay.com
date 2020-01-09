@@ -30,12 +30,12 @@ like to host it locally on your computer, you need to do the following:
 5. Run `bundle exec jekyll serve` to start the website.
 6. Open `http://localhost:4000` in a browser.
 7. In Visual Studio Code, install the following plugins:
-   * `davidanson.vscode-markdownlint`, to lint Markdown files according to an
+   * `davidanson.vscode-markdownlint`, to lint Markdown files according to our
      defined set of rules.
    * `shd101wyy.markdown-preview-enhanced`, to render Markdown to HTML in a
      preview window.
    * `bpruitt-goddard.mermaid-markdown-syntax-highlighting`, to give syntax
-     highlighting Mermaid diagrams in Markdown files.
+     highlighting to Mermaid diagrams in Markdown files.
    * `yzhang.markdown-all-in-one`, to enable a plethora of Markdown features,
      most importantly formatting of Markdown tables with VS Code's built-in
      format functionality.
@@ -45,6 +45,94 @@ like to host it locally on your computer, you need to do the following:
 8. Also in Visual Studio Code, [set up a ruler at 80 characters][vsc-ruler]
    by adding `"editor.rulers": [80]` to its configuration.
 
+## Good to know
+
+Following is a small guide to good to know features and conventions for writing
+and contributing to the documentation.
+
+### Use constants
+
+We have a list of expanding constants that are available on all pages.
+It can be found in [the config file][config-yml].
+These are found under `defaults.values:` and should be used where fitting.
+
+1. `paymentId`: this is used to replace the `GUID` of the payment ID in request
+   and response examples.
+2. `transactionId`: this is used to replace the `GUID` of the transaction ID in
+   request and response examples.
+3. `paymentOrderId`:this is used to replace the `GUID` of the paymentOrder ID in
+   request and response examples.
+4. `merchantId`:this is used to replace the `GUID` of the merchant ID in request
+   and response examples.
+5. `paymentToken`: This is used to replace the payment token `GUID` for request
+   and response examples.
+6. `apiHost`: This constant is used as a replacement for the API host name in requests and
+   responses.
+7. `apiUrl`: This constant is used as a replacement for the API URL in request and
+   response examples.
+8. `frontEndUrl`: This constant is used as a replacement for frontend URLs in request
+   and response examples.
+
+Using these constants makes our documentation more resilient to change and makes
+it somewhat easier to read.
+Having only variables defined a singular place makes it possible to change
+environments and such in the future if a thing is wanted.
+
+All constants are available trough the `page` variable.
+Example:
+
+```http
+GET /psp/paymentorders/{{ page.paymentOrderId }}/ HTTP/1.1
+Host: {{ page.apiHost }}
+```
+
+### Use includes
+
+In the folder `_includes` you'll find all ready to be used includes made in the
+project so far.
+These are made to be as reusable as possible with names being as explicit for
+its usage as possible.
+
+Example showing how to use a simple include:
+
+```markdown
+{% include payee-info.md %}
+```
+
+Some includes can also take variables, if they do this is defined at the
+beginning of the file using the following syntax.
+
+```markdown
+{% assign instrument = include.payment-instrument | default: "paymentorder" %}
+```
+
+This assigns `"paymentOrder"` to the variable `instrument` by default if it
+isn't passed in via the include.
+
+```markdown
+{% include payee-info.md payment-instrument="example" %}
+```
+
+Read more about passing arguments and how includes work [here][liquid-includes].
+
+### Mermaid
+
+Having diagrams easy to read in Markdown as well as rendered in HTML makes
+maintaining it easier.
+Using [mermaid-js][mermaid-github] to generate sequence diagrams is easy using
+our build system or the [Mermaid Live Editor][mermaid-live-editor].
+
+```mermaid
+sequenceDiagram
+  participant SwedbankPay as Swedbank Pay
+
+  activate SwedbankPay
+  SwedbankPay->>-Merchant: POST <callbackUrl>
+  activate Merchant
+  note left of Merchant: Callback by SwedbankPay
+  Merchant->>-SwedbankPay: GET [credit card payment]
+```
+
 ## License
 
 This website is available as open source under the terms of the
@@ -53,6 +141,7 @@ This website is available as open source under the terms of the
 [bundler]: https://bundler.io/
 [ccov]: http://contributor-covenant.org
 [cloning]: https://help.github.com/articles/cloning-a-repository/
+[config-yml]: _config.yml
 [dev-guidelines]: https://developer.swedbankpay.com/resources/development-guidelines
 [dev-portal-image]: ./assets/img/swedbank-pay-developer-portal.png
 [dev-portal]: https://developer.swedbankpay.com/
@@ -64,6 +153,9 @@ This website is available as open source under the terms of the
 [jekyll]: https://jekyllrb.com/
 [last-commit-badge]: https://img.shields.io/github/last-commit/SwedbankPay/developer.swedbankpay.com/master
 [license]: https://opensource.org/licenses/MIT
+[liquid-includes]: https://jekyllrb.com/docs/includes/
+[mermaid-github]: https://github.com/mermaid-js/mermaid
+[mermaid-live-editor]: https://mermaidjs.github.io/mermaid-live-editor
 [ruby]: https://www.ruby-lang.org/en/
 [swp-dp]: https://developer.swedbankpay.com
 [vsc-ruler]: https://stackoverflow.com/a/29972073/61818

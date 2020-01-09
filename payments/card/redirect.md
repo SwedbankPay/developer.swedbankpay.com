@@ -128,7 +128,7 @@ page.
 
 ### Intent
 
-{% include intent.md %}
+{% include intent.md autocapture=true %}
 
 ### Operations
 

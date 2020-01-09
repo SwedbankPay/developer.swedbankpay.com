@@ -39,15 +39,15 @@ payment instruments and their platform availability are listed in the table
 below.
 
 {:.table .table-striped}
-|                                | Payment instrument                  | Seamless View | Redirect | Region                                                                               |
-| :----------------------------: | :---------------------------------- | :-----------: | :------: | :----------------------------------------------------------------------------------- |
+|                                | Payment instrument           | Seamless View | Redirect | Region                                                                               |
+| :----------------------------: | :--------------------------- | :-----------: | :------: | :----------------------------------------------------------------------------------- |
 |     ![CardIcon][card-icon]     | [Card][card]                 |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  | ![EarthIcon][earth-icon]                                                             |
-|  ![InvoiceIcon][invoice-icon]  | [Invoice][invoice]     |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  | ![nor][nor-flag] ![swe][swe-flag] ![fin][fin-flag]                                   |
-| ![EnvelopeIcon][envelope-icon] | [Web Invoice][invoice] |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  | ![nor][nor-flag] ![swe][swe-flag]                                                    |
-|   ![KeypadIcon][keypad-icon]   | [Direct Debit][direct-debit]        |               |  ✔︎︎︎︎︎  | ![swe][swe-flag] ![fin][fin-flag] ![lat][lat-flag] ![lit][lit-flag] ![est][est-flag] |
-|      ![Vipps][vipps-logo]      | [Vipps][vipps]                      |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  | ![nor][nor-flag]                                                                     |
-|      ![Swish][swish-logo]      | [Swish][swish]                      |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  | ![swe][swe-flag]                                                                     |
-|  ![MobilePay][mobilepay-logo]  | [MobilePay][mobile-pay]            |               |  ✔︎︎︎︎︎  | ![dan][dan-flag] ![fin][fin-flag]                                                                      |
+|  ![InvoiceIcon][invoice-icon]  | [Invoice][invoice]           |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  | ![nor][nor-flag] ![swe][swe-flag] ![fin][fin-flag]                                   |
+| ![EnvelopeIcon][envelope-icon] | [Web Invoice][invoice]       |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  | ![nor][nor-flag] ![swe][swe-flag]                                                    |
+|   ![KeypadIcon][keypad-icon]   | [Direct Debit][direct-debit] |               |  ✔︎︎︎︎︎  | ![swe][swe-flag] ![fin][fin-flag] ![lat][lat-flag] ![lit][lit-flag] ![est][est-flag] |
+|      ![Vipps][vipps-logo]      | [Vipps][vipps]               |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  | ![nor][nor-flag]                                                                     |
+|      ![Swish][swish-logo]      | [Swish][swish]               |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  | ![swe][swe-flag]                                                                     |
+|  ![MobilePay][mobilepay-logo]  | [MobilePay][mobile-pay]      |               |  ✔︎︎︎︎︎  | ![dan][dan-flag] ![fin][fin-flag]                                                    |
 
 ## Prerequisites
 
@@ -160,7 +160,7 @@ After creating a payment, you can:
 Please visit our [demoshop][demoshop] to see our Payment Menu and Redirect
 implementation in action.
 
-[demoshop]: https://ecom.externalintegration.payex.com/pspdemoshop
+[demoshop]: {{ page.frontEndUrl }}/pspdemoshop
 [card-icon]: /assets/img/card-icon.png
 [https]: /#connection-and-protocol
 [invoice-icon]: /assets/img/invoice-icon.png
