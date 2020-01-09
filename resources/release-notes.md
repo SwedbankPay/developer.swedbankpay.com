@@ -34,7 +34,7 @@ specify supported countries for shipment in a new input parameter,
 Updated API specification can be found [here][initiate-consumer-session].
 These two parameters, `language` and `shippingAddressRestrictedToCountryCodes`have replaced the former `consumerCountryCode`.
 
-The following parameters have been made obsolete due to GDPR rules: `msisdn`, `email`. This information cannot be sent in without the consent from the consumer.
+The parameters `msisdn` and `email` have been made obsolete due to GDPR rules. This information cannot be sent in without an explicit consent from the consumer.
 
 
 {% comment %}
