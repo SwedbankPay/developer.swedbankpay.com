@@ -22,6 +22,27 @@ sidebar:
 
 {% include jumbotron.html body="The latest updates about our releases will be published on this page" %}
 
+## January 2020
+
+Updated Swish Redirect integration section.
+
+Updated Swish Direct integration section.
+
+Added section about clean up of customer data.
+
+PaymentOrders now support `orderItems`.
+
+Added Terminology page!
+Common terminology for our pages can be found here.
+
+Clearified section about `awaitingActivity` state for payments.
+
+MobilePay section is ready for review!
+
+Removed erronious `noCVC` in examples for `One-Click` payments section.
+
+Refined `onBillingDetailsAvailable` in `Checkout``Checkin` seciton.
+
 ## December 2019
 
 ### Update in checkin module
