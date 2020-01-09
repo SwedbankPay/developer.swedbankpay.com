@@ -20,7 +20,7 @@ sidebar:
       title: Data Protection
 ---
 
-{% include alert-development-section.md %}
+{% include alert-review-section.md %}
 
 {:.table .table-striped}
 | Term                            | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
