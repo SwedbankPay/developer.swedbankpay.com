@@ -19,8 +19,8 @@ sidebar:
 ## Options after posting a payment
 
 When you detect that the payer reach your `completeUrl` , you need to do a `GET`
-request on the payment resource, containing the `paymentID` generated in the
-first step, to receive the state of the transaction. You will also be able to
+request towards the `id` of the payment generated in the
+first step, to receive the state of the transaction. You will then also be able to
 see the available operations after posting a payment.
 
 The `payment` resource is central to all payment instruments. All operations
@@ -262,9 +262,9 @@ Content-Type: application/json
 
 ### Capture Sequence
 
-`Capture` can only be done on a authorized transaction. It is possible to do a
+`Capture` can only be done on an authorized transaction. It is possible to do a
 part-capture where you only capture a part of the authorization amount. You can
-later do more captures on the same payment up to the total authorization amount.
+later do more captures on the same payment up to the total authorized amount.
 
 ```mermaid
 sequenceDiagram
@@ -282,8 +282,8 @@ and the authorization amount.
 
 ### Create cancellation transaction
 
-Perform the `create-cancel` operation to cancel a previously created - and not
-yet captured - payment.
+Perform the `create-cancel` operation to cancel a previously created – and not
+yet captured – payment.
 
 {:.code-header}
 **Request**
