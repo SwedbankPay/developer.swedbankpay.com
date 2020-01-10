@@ -77,7 +77,7 @@ system][swish-certificate-management-system].
 ### Demoshop
 
 You can give Swish a go in our demoshop if you like. For redirect payments, you
-need to toggle `paymenturl` off, if you want to try seamless view, `paymenturl` must
+need to toggle `paymentUrl` off, if you want to try seamless view, `paymentUrl` must
 be toggled on. The demoshop uses the Merchant Swish Simulator, which enables you
 to test without using the Swish App.
 
