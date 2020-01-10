@@ -32,7 +32,7 @@ possible to perform in the current state of the payment.
 **Request**
 
 ```http
-GET /psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/ HTTP/1.1
+GET /psp/creditaccount/payments/{{ page.paymentId }}/ HTTP/1.1
 Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -47,7 +47,7 @@ Content-Type: application/json
 
 {
     "payment": {
-        "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}",
+        "id": "/psp/creditaccount/payments/{{ page.paymentId }}",
         "number": 1234567890,
         "created": "2016-09-14T13:21:29.3182115Z",
         "updated": "2016-09-14T13:21:57.6627579Z",
@@ -65,46 +65,46 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",
         "prices": {
-            "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/prices"
+            "id": "/psp/creditaccount/payments/{{ page.paymentId }}/prices"
         },
         "payeeInfo": {
-            "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/payeeInfo"
+            "id": "/psp/creditaccount/payments/{{ page.paymentId }}/payeeInfo"
         },
         "urls": {
-            "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/urls"
+            "id": "/psp/creditaccount/payments/{{ page.paymentId }}/urls"
         },
         "transactions": {
-            "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/transactions"
+            "id": "/psp/creditaccount/payments/{{ page.paymentId }}/transactions"
         },
         "authorizations": {
-            "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/authorizations"
+            "id": "/psp/creditaccount/payments/{{ page.paymentId }}/authorizations"
         },
         "captures": {
-            "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/captures"
+            "id": "/psp/creditaccount/payments/{{ page.paymentId }}/captures"
         },
         "reversals": {
-            "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/reversals"
+            "id": "/psp/creditaccount/payments/{{ page.paymentId }}/reversals"
         },
         "cancellations": {
-            "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/cancellations"
+            "id": "/psp/creditaccount/payments/{{ page.paymentId }}/cancellations"
         }
     },
     "operations": [
         {
             "method": "PATCH",
-            "href": "{{ page.apiUrl }}/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}",
+            "href": "{{ page.apiUrl }}/psp/creditaccount/payments/{{ page.paymentId }}",
             "rel": "update-payment-abort",
             "contentType": "application/json"
         },
         {
             "method": "GET",
-            "href": "{{ page.frontEndUrl }}/{{ payment-instrument }}/payments/authorize/{{ page.transactionId }}",
+            "href": "{{ page.frontEndUrl }}/creditaccount/payments/authorize/{{ page.transactionId }}",
             "rel": "redirect-authorization",
             "contentType": "text/html"
         },
         {
             "method": "POST",
-            "href": "{{ page.apiUrl }}/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/captures",
+            "href": "{{ page.apiUrl }}/psp/creditaccount/payments/{{ page.paymentId }}/captures",
             "rel": "create-capture",
             "contentType": "application/json"
         }
