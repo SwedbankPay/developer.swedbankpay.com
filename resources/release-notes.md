@@ -32,7 +32,7 @@ sidebar:
 * Added [Data Protection][data-protection] section.
 * Payment Orders now support `orderItems` in all operations.
 * Added [Terminology page][terminology].
-* Clarified what the `awaitingActivity` state for means different payment
+* Clarified what the `awaitingActivity` state means for different payment
   instruments.
 * MobilePay section is ready for review!
 * Removed erroneous `noCVC` in examples for [One-Click Card Payments][one-click]
@@ -53,7 +53,6 @@ Updated API specification can be found [here][initiate-consumer-session].
 The parameters `language` and `shippingAddressRestrictedToCountryCodes` have replaced the former `consumerCountryCode`.
 
 The parameters `msisdn` and `email` have been made obsolete due to GDPR rules. This information cannot be sent in without an explicit consent from the consumer.
-
 
 {% comment %}
 TODO: Release this when the Swish Redirect section is released with the correct screenshot. Change the link below when this is ready.
