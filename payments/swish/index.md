@@ -95,7 +95,7 @@ to test without using the Swish App.
 [SEB-swish]: https://seb.se/foretag/digitala-tjanster/swish-handel
 [sparbanken-oresund]: https://www.sparbankenskane.se/foretag/digitala-tjanster/swish/swish-for-handel/index.htm
 [sparbanken-syd]: https://www.sparbankensyd.se/vardagstjanster/betala/swish-foretag/
-[support-mailto]: mailto:support.ecom@payex.com
+[support-mailto]: mailto:support.ecom@swedbankpay.se
 [swedbank-swish]: https://www.swedbank.se/foretag/betala-och-ta-betalt/ta-betalt/swish/swish-handel/index.htm
 [swish-certificate-management-system]: https://comcert.getswish.net/cert-mgmt-web/authentication.html
 [swish-payment]: /assets/img/payments/swish-redirect-number-input-en.png
