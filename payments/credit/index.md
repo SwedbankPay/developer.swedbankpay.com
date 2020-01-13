@@ -6,6 +6,8 @@ sidebar:
     items:
     - url: /payments/credit/
       title: Introduction
+    - url: /payments/credit/redirect
+      title: Redirect
     - url: /payments/credit/after-payment
       title: After Payment
     - url: /payments/credit/other-features
