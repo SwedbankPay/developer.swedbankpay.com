@@ -64,7 +64,7 @@ Content-Type: application/json
        "created": "2016-09-14T01:01:01.01Z",
        "updated": "2016-09-14T01:01:01.03Z",
        "type": "Capture",
-       "state": "Initialized|Completed|Failed",
+       "state": "Initialized",
        "number": 1234567890,
        "amount": 1000,
        "vatAmount": 250,
@@ -74,7 +74,7 @@ Content-Type: application/json
        "failedActivityName": "Authorize",
        "failedErrorCode": "ThirdPartyErrorCode",
        "failedErrorDescription": "ThirdPartyErrorMessage",
-       "isOperational": "TRUE|FALSE",
+       "isOperational": true,
        "activities": { "id": "/psp/creditaccount/payments/<paymentId>/transactions/<transactionId>/activities" },
        "operations": [
         ]
@@ -86,7 +86,7 @@ Content-Type: application/json
        "created": "2016-09-14T01:01:01.01Z",
        "updated": "2016-09-14T01:01:01.03Z",
        "type": "Capture",
-       "state": "Initialized|Completed|Failed",
+       "state": "Completed",
        "number": 1234567890,
        "amount": 1000,
        "vatAmount": 250,
@@ -96,7 +96,7 @@ Content-Type: application/json
        "failedActivityName": "Authorize",
        "failedErrorCode": "ThirdPartyErrorCode",
        "failedErrorDescription": "ThirdPartyErrorMessage",
-       "isOperational": "TRUE|FALSE",
+       "isOperational": true,
        "activities": { "id": "/psp/creditaccount/payments/<paymentId>/transactions/<transactionId>/activities" },
        "operations": [
         ]

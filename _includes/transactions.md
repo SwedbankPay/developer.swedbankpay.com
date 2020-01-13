@@ -34,14 +34,14 @@ Content-Type: application/json
             "created": "2016-09-14T01:01:01.01Z",
             "updated": "2016-09-14T01:01:01.03Z",
             "type": "Authorization",
-            "state": "Initialized|Completed|Failed",
+            "state": "Initialized",
             "number": 1234567890,
             "amount": 1000,
             "vatAmount": 250,
             "description": "Test authorization",
             "payeeReference": "PR1004",
             "failedReason": "",
-            "isOperational": "TRUE|FALSE",
+            "isOperational": true,
             "operations": []
         }]
     }
