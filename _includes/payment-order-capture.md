@@ -15,7 +15,6 @@ with the sum to capture, and get back the status.
 
 ```mermaid
 sequenceDiagram
-    participant Payer
     participant Merchant
     participant SwedbankPay as Swedbank Pay
 
