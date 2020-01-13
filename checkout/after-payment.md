@@ -30,7 +30,6 @@ operation is performed.
 
 ```mermaid
 sequenceDiagram
-    participant Payer
     participant Merchant
     participant SwedbankPay as Swedbank Pay
 
