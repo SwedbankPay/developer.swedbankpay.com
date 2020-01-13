@@ -157,9 +157,10 @@ After creating a payment, you can:
  All actions after creating the payment can be done by using our APIs, or from
  our admin tool. `abort` is only available when using APIs.
 
-Please visit our [demoshop](https://ecom.externalintegration.payex.com/pspdemoshop) to see our Payment Menu and Redirect
+Please visit our [demoshop][demoshop] to see our Payment Menu and Redirect
 implementation in action.
 
+[demoshop]: {{ page.frontEndUrl }}/pspdemoshop
 [card-icon]: /assets/img/card-icon.png
 [https]: /#connection-and-protocol
 [invoice-icon]: /assets/img/invoice-icon.png
