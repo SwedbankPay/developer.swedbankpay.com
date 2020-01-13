@@ -1,4 +1,4 @@
-{% assign payment-instrument = include.payment-instrument | default: creditcard %}
+{% assign payment-instrument = include.payment-instrument | default: "creditcard" %}
 
 The `payment` resource is central to all payment instruments. All operations
 that target the payment resource directly produce a response similar to the

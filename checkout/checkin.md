@@ -274,7 +274,7 @@ Here is an example of what a `GET` request towards the `url` provided in the eve
 {:.code-header}
 **Response**
 
-```http
+```js
 {
     "email": "olivia.nyhuus@payex.com",
     "msisdn": "+4798765432",

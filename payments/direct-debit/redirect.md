@@ -227,13 +227,13 @@ Content-Type: application/json
             {
                "id": "/psp/directdebit/payments/{{ page.paymentId }}/sales/{{ page.transactionId }}",
                "selectedBank": "NordeaFI",
-               "deviceIsMobile": "TRUE|FALSE",
+               "deviceIsMobile": true,
                "transaction": {
                    "id": "/psp/directdebit/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
                    "created": "2018-09-14T01:01:01.01Z",
                    "updated": "2018-09-14T01:01:01.03Z",
                    "type": "Sale",
-                   "state": "Initialized|Completed|Failed",
+                   "state": "Initialized",
                    "number": 1234567890,
                    "amount": 1000,
                    "vatAmount": 250,
@@ -243,7 +243,7 @@ Content-Type: application/json
                    "failedActivityName": "",
                    "failedErrorCode": "",
                    "failedErrorDescription": "",
-                   "isOperational": "TRUE|FALSE",
+                   "isOperational": true,
                    "operations": [
                     ]
                 }
@@ -251,13 +251,13 @@ Content-Type: application/json
             {
                "id": "/psp/directdebit/payments/{{ page.paymentId }}/sales/{{ page.transactionId }}",
                "selectedBank": "NordeaFI|...",
-               "deviceIsMobile": "TRUE|FALSE",
+               "deviceIsMobile": true,
                "transaction": {
                    "id": "/psp/directdebit/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
                    "created": "2018-09-14T01:01:01.01Z",
                    "updated": "2018-09-14T01:01:01.03Z",
                    "type": "Sale",
-                   "state": "Initialized|Completed|Failed",
+                   "state": "Initialized",
                    "number": 1234567890,
                    "amount": 1000,
                    "vatAmount": 250,
@@ -321,13 +321,13 @@ Content-Type: application/json
                    "created": "2016-09-14T01:01:01.01Z",
                    "updated": "2016-09-14T01:01:01.03Z",
                    "type": "Reversal",
-                   "state": "Initialized|Completed|Failed",
+                   "state": "Completed",
                    "number": 1234567890,
                    "amount": 1000,
                    "vatAmount": 250,
                    "description": "Test transaction",
                    "payeeReference": "AH123456",
-                   "isOperational": "TRUE|FALSE",
+                   "isOperational": true,
                    "operations": []
                 }
             }
@@ -393,13 +393,13 @@ Content-Type: application/json
            "created": "2016-09-14T01:01:01.01Z",
            "updated": "2016-09-14T01:01:01.03Z",
            "type": "Reversal",
-           "state": "Initialized|Completed|Failed",
+           "state": "Completed",
            "number": 1234567890,
            "amount": 1000,
            "vatAmount": 250,
            "description": "Test transaction",
            "payeeReference": "AH123456",
-           "isOperational": "TRUE|FALSE",
+           "isOperational": true,
            "operations": []
         }
     }

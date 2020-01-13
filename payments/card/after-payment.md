@@ -558,10 +558,12 @@ If you, for any reason, need to delete a paymentToken you use the
                       body="Please note that this call does not erase the card number stored at Swedbank
   Pay. A card number is automatically deleted six months after a successful
   `Delete payment token` request. If you want to remove card information
-  beforehand, you need to contact ehandelsetup@swedbankpay.dk,
-  verkkokauppa.setup@swedbankpay.fi, ehandelsetup@swedbankpay.no or
-  ehandelsetup@swedbankpay.se; and supply them with
-  the relevant transaction reference or payment token." %}
+  beforehand, you need to contact
+  [ehandelsetup@swedbankpay.dk](mailto:ehandelsetup@swedbankpay.dk),
+  [verkkokauppa.setup@swedbankpay.fi](mailto:verkkokauppa.setup@swedbankpay.fi),
+  [ehandelsetup@swedbankpay.no](mailto:ehandelsetup@swedbankpay.no) or
+  [ehandelsetup@swedbankpay.se](mailto:ehandelsetup@swedbankpay.se); and supply
+  them with the relevant transaction reference or payment token." %}
 
 {:.code-header}
 **Request**
@@ -574,7 +576,7 @@ Content-Type: application/json
 
 {
   "state": "Deleted",
-  "tokenType" : "PaymentToken|RecurrenceToken",
+  "tokenType" : "PaymentToken",
   "comment": "Comment on why the deletion is happening"
 }
 ```
@@ -593,7 +595,7 @@ Content-Type: application/json
     "payeeId": "{{ page.merchantId }}",
     "isDeleted": true|false,
     "isPayeeToken": false,
-    "cardBrand": "Visa|MasterCard|...",
+    "cardBrand": "MasterCard",
     "maskedPan": "123456xxxxxx1111",
     "expiryDate": "MM/YYYY"
   }
