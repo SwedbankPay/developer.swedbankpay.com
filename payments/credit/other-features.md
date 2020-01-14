@@ -16,7 +16,7 @@ sidebar:
 
 {% include jumbotron.html body="Welcome to Other Features - a subsection of
 Credit Account Payments. This section has extented code examples and features
-that were not covered by the other subsections." %}
+that were not covered by the previous subsections." %}
 
 ## Payment resource
 
@@ -169,7 +169,7 @@ help narrow down the specifics of the problem.
 ### Error types
 
 All error types will have the following URI in front of type:
-`https://api.payex.com/psp/errordetail/invoice/<error-type>`
+`https://api.payex.com/psp/errordetail/careditaccount/<error-type>`
 
 {:.table .table-striped}
 | Type            | Status | Description                   |

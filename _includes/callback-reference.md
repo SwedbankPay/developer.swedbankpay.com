@@ -74,8 +74,8 @@ about this update.
 
 {:.table .table-striped}
 | **Parameter** | **Description**
-| `Payment Instrument` | `CreditCard`, `Invoice`, `Swish`, `Vipps`, `DirectDebit`, `MobilePay`, `CreditAccount`
-| `Transaction Type` | Authorizations, Captures, Cancellations, Reversals
+| `Payment Instrument` | `creditcard`, `invoice`, `swish`, `vipps`, `directdebit`, `mobilepay`, `creditaccount`
+| `Transaction Type` | `authorizations`, `captures`, `cancellations`, `reversals`
 
 The sequence diagram below shows the `HTTP` `POST` you will receive from
 Swedbank Pay, and the two `GET` requests that you make to get the updated
