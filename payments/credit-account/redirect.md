@@ -24,8 +24,7 @@ implement Credit Account Payments." %}
 {% include alert.html type="info"
                       icon="info"
                       body="Swedbank Pay Credit Account is only available as a
-                      payment instrument in Swedbank Pay Checkout and Sweden
-                      at the moment." %}
+                      payment instrument for swedish merchants." %}
 
 ## Introduction
 
