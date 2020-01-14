@@ -153,11 +153,11 @@ for the given operation.
 
 {% include callback-reference.md  payment-instrument="creditaccount" %}
 
-{% include payment-link.md %}
+## PayeeReference
 
-### Prices
+{% include payee-info.md %}
 
-{% include prices.md payment-instrument="creditaccount" %}
+{% include settlement-reconciliation.md %}
 
 ## Problem messages
 
@@ -166,11 +166,7 @@ a problem message. We generally use the problem message type and status code to
 identify the nature of the problem. The problem name and description will often
 help narrow down the specifics of the problem.
 
-## PayeeReference
-
-{% include payee-info.md %}
-
-## Error types
+### Error types
 
 All error types will have the following URI in front of type:
 `https://api.payex.com/psp/errordetail/invoice/<error-type>`
@@ -187,8 +183,6 @@ All error types will have the following URI in front of type:
 | `externalerror` | `502`  | 50 - SystemConfigurationError |
 | `externalerror` | `502`  | 9999 - ServerOtherServer      |
 | `forbidden`     | `403`  | Any other error code          |
-
-{% include settlement-reconciliation.md %}
 
 {% include iterator.html
         prev_href="after-payment"
