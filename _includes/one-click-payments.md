@@ -29,7 +29,9 @@ operation to [`Verify`][verify].
 **`generatePaymentToken` property**
 
 ```js
-"generatePaymentToken": "true"
+{
+    "generatePaymentToken": "true"
+}
 ```
 
 ### Finding paymentToken value
@@ -119,15 +121,16 @@ you use the `Delete payment token` request.
 
 {% include alert.html type="warning"
                       icon="warning"
-                      body="Please note that this call does not erase the card number stored at Swedbank
-  Pay. A card number is automatically deleted six months after a successful
-  `Delete payment token` request. If you want card information removed
-  at an earlier date, you need to contact
+                      body="Please note that this call does not erase the card
+  number stored at Swedbank Pay.
+  A card number is automatically deleted six months after a successful
+  `Deletepayment token` request.
+  If you want card information removed at an earlier date, you need to contact
   [ehandelsetup@swedbankpay.dk](mailto:ehandelsetup@swedbankpay.dk),
   [verkkokauppa.setup@swedbankpay.fi](mailto:verkkokauppa.setup@swedbankpay.fi),
   [ehandelsetup@swedbankpay.no](mailto:ehandelsetup@swedbankpay.no) or
-  [ehandelsetup@swedbankpay.se](mailto:ehandelsetup@swedbankpay.se); and supply them with
-  the relevant transaction reference or payment token." %}
+  [ehandelsetup@swedbankpay.se](mailto:ehandelsetup@swedbankpay.se);
+  and supply them with the relevant transaction reference or payment token." %}
 
 {:.code-header}
 **Request**
