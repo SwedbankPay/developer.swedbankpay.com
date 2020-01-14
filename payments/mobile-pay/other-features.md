@@ -650,7 +650,7 @@ The response will be the `payment` resource with its `state` set to `Aborted`.
 
 {% include recurring-card-payments.md %}
 
-{% include callback-reference.md %}
+{% include callback-reference.md payment-instrument="mobilepay" %}
 
 {% include transactions-reference.md payment-instrument="mobilepay" %}
 
