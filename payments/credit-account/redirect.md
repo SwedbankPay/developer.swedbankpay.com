@@ -65,42 +65,6 @@ of the transaction." %}
 
 ## Credit Account Payment flow
 
-The first example below is the payment sequence when signing is required.
-
-```mermaid
-sequenceDiagram
-    Consumer->>Merchant: Start purchase
-    activate Merchant
-    note left of Merchant: First API request
-    Merchant->>-Swedbank Pay: POST </psp/creditaccount/payments>
-    activate Swedbank Pay
-    Swedbank Pay-->>-Merchant: payment resource
-    activate Merchant
-    Merchant-->>-Consumer: authorization page
-    opt Signing
-        activate Signing
-        Consumer ->> Signing: Sign with BankId
-    deactivate Signing
-    end
-    activate Consumer
-    note left of Consumer: redirect to Swedbank Pay
-    Consumer->>-Swedbank Pay: enter consumer details
-    activate Swedbank Pay
-    Swedbank Pay-->>-Consumer: redirect to merchant
-    activate Consumer
-    note left of Consumer: redirect back to Merchant
-    Consumer->>-Merchant: access merchant page
-    activate Merchant
-    note left of Merchant: Second API request
-    Merchant->>-Swedbank Pay: GET </psp/creditaccount/payments/<paymentId>/>
-    activate Swedbank Pay
-    Swedbank Pay-->>-Merchant: payment resource
-    activate Merchant
-    Merchant-->>-Consumer: display purchase result
-```
-
-The second example below is the payment sequence when signing is not required.
-
 ```mermaid
 sequenceDiagram
     Consumer->>Merchant: Start purchase
