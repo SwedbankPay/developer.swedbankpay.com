@@ -182,7 +182,7 @@ Content-Type: application/json
 
 {% include transactions-reference.md payment-instrument="swish" %}
 
-{% include callback-reference.md %}
+{% include callback-reference.md payment-instrument="swish" %}
 
 {% include payment-link.md hide-3d-secure=true %}
 

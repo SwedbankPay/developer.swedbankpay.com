@@ -255,7 +255,7 @@ some particular processing rules depending on specifications in the contract.
 
 [Read more about the settlement process here][settlement].
 
-{% include callback-reference.md %}
+{% include callback-reference.md payment-instrument="creditcard" %}
 
 ## Problems
 

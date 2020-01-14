@@ -18,13 +18,13 @@ sidebar:
 
 {% include settlement-reconciliation.md %}
 
-{% include callback-reference.md %}
+{% include callback-reference.md payment-instrument="directdebit" %}
 
 {% include payment-link.md %}
 
 {% include transactions-reference.md payment-instrument="directdebit" %}
 
-{% include abort-reference.md %}
+{% include abort-reference.md instrument="directdebit" %}
 
 {% include expand-parameter.md %}
 

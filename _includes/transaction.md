@@ -5,7 +5,7 @@ specific payment.
 
 When a transaction is created it will have one of three states:
 
-* `Initialized -` if there is some error where the source is undeterminable
+* `Initialized` - if there is some error where the source is undeterminable
   (network failure, etc), the transaction will remain Initialized. The
   corresponding state of the payment order will in this case be set to pending.
   No further transactions can be created.
