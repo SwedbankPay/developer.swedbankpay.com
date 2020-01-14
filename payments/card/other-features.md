@@ -753,35 +753,35 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
-  "payment": {
-    "operation": "Purchase",
-    "intent": "Authorization",
-    "currency": "NOK",
-    "prices": [
-      {
-        "type": "CreditCard",
-        "amount": 1500,
-        "vatAmount": 0
-      }
-    ],
-    "description": "Test Purchase",
-    "payerReference": "AB1234",
-    "userAgent": "Mozilla/5.0",
-    "language": "nb-NO",
-    "urls": {
-      "hostUrls": [ "http://test-dummy.net", "http://test-dummy2.net" ],
-      "completeUrl": "http://test-dummy.net/payment-completed",
-      "cancelUrl": "http://test-dummy.net/payment-canceled",
-      "callbackUrl": "http://test-dummy.net/payment-callback",
-      "logoUrl": "http://test-dummy.net/payment-logo.png",
-      "termsOfServiceUrl": "http://test-dummy.net/payment-terms.pdf",
-    },
-    "payeeInfo": {
-      "payeeId": "12345678-1234-1234-1234-123456789012",
-      "payeeReference": "CD1234",
-      "payeeName": "Merchant",
-      "productCategory": "A123"
-    }
+    "payment": {
+        "operation": "Purchase",
+        "intent": "Authorization",
+        "currency": "NOK",
+        "prices": [
+            {
+                "type": "CreditCard",
+                "amount": 1500,
+                "vatAmount": 0
+            }
+        ],
+        "description": "Test Purchase",
+        "payerReference": "AB1234",
+        "userAgent": "Mozilla/5.0",
+        "language": "nb-NO",
+        "urls": {
+            "hostUrls": [ "http://example.net", "http://example2.net" ],
+            "completeUrl": "http://example.com/payment-completed",
+            "cancelUrl": "http://example.com/payment-canceled",
+            "callbackUrl": "http://example.com/payment-callback",
+            "logoUrl": "http://example.com/payment-logo.png",
+            "termsOfServiceUrl": "http://example.com/payment-terms.pdf",
+        },
+        "payeeInfo": {
+            "payeeId": "12345678-1234-1234-1234-123456789012",
+            "payeeReference": "CD1234",
+            "payeeName": "Merchant",
+            "productCategory": "A123"
+        }
 }
 ```
 

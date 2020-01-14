@@ -63,7 +63,7 @@ sequenceDiagram
         Payer->>-IssuingBank: access authentication page
         end
     IssuingBank -->>+ Payer: Redirect back to paymentUrl (merchant)
-    deactivate 3rdParty
+    deactivate IssuingBank
     SwedbankPay-->>Merchant: Event: OnPaymentComplete ④
     activate Merchant
     note left of Merchant: Second API request.
@@ -394,7 +394,7 @@ described below.
 ### `onPaymentCreated`
 
 This event triggers when a user actively attempts to perform a payment. The
-`onPaymentCreate` event is raised with the following event argument object:
+`onPaymentCreated` event is raised with the following event argument object:
 
 {:.code-header}
 **`onPaymentCreated` event object**
@@ -512,7 +512,7 @@ object:
 ```js
 {
     "origin": "creditcard",
-    "messageId": "<unique message ID>",
+    "messageId": "{{ page.transactionId }}",
     "details": "Descriptive text of the error"
 }
 ```
