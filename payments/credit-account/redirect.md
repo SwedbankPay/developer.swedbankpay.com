@@ -1,8 +1,8 @@
 ---
-title: Swedbank Pay Payments Credit Account Redirect
+title: Swedbank Pay Credit Payments – Redirect
 sidebar:
   navigation:
-  - title: Credit Account Payments
+  - title: Credit Payments
     items:
     - url: /payments/credit-account/
       title: Introduction
@@ -16,14 +16,14 @@ sidebar:
 
 {% include alert-review-section.md %}
 
-{% include jumbotron.html body="Swedbank Pay Credit Account is an online payment
+{% include jumbotron.html body="Swedbank Pay Credit Payments is an online payment
 instrument allowing payers to split a purchase into several payments.
 The basic redirect purchase scenario is the simplest and most common way to
-implement Credit Account Payments." %}
+implement Credit Payments." %}
 
 {% include alert.html type="info"
                       icon="info"
-                      body="Swedbank Pay Credit Account is only available as a
+                      body="Swedbank Pay Credit Payments is only available as a
                       payment instrument for swedish merchants." %}
 
 ## Introduction
@@ -211,17 +211,17 @@ Content-Type: application/json
   },
   "operations": [
     {
-      "href": "https://api.payex.com/psp/creditaccount/payments/{{ page.paymentId }}",
+      "href": "{{ page.apiUrl }}/psp/creditaccount/payments/{{ page.paymentId }}",
       "rel": "update-payment-abort",
       "method": "PATCH"
     },
     {
-      "href": "https://api.payex.com/psp/creditaccount/payments/{{ page.paymentId }}/authorizations",
+      "href": "{{ page.apiUrl }}/psp/creditaccount/payments/{{ page.paymentId }}/authorizations",
       "rel": "create-authorize",
       "method": "POST"
     },
     {
-      "href": "https://api.payex.com/psp/creditaccount/payments/{{ page.paymentId }}/approvedlegaladdress",
+      "href": "{{ page.apiUrl }}/psp/creditaccount/payments/{{ page.paymentId }}/approvedlegaladdress",
       "rel": "create-approved-legal-address",
       "method": "POST"
     }
@@ -329,26 +329,6 @@ Content-Type: application/json
 }
 ```
 
-If a `GET` method is used from `paymentUI` with a `paymentToken`, the following
-operations can be returned, depending on state of the payment and the last
-transaction.
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "href": "https://example.com/cancelUrl",
-    "rel": "redirect-merchant-cancel",
-    "method": "GET"
-}
-{
-    "href": "https://example.com/completeUrl",
-    "rel": "redirect-merchant-complete",
-    "method": "GET"
-}
-```
-
 {:.table .table-striped}
 | Property                 | Type         | Description                                                                                                                                                                                      |
 | :----------------------- | :----------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -383,4 +363,4 @@ Content-Type: application/json
 [cancel]: /payments/credit-account/after-payment#cancellations
 [capture]: /payments/credit-account/after-payment#captures
 [payee-reference]: /payments/credit-account/after-payment#payeereference
-[user-agent-definition]: : https://en.wikipedia.org/wiki/User_agent
+[user-agent-definition]: https://en.wikipedia.org/wiki/User_agent
