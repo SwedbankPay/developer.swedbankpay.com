@@ -127,22 +127,22 @@ transaction list. Below is a sequence diagram detailing the interaction.
 
 ```mermaid
 sequenceDiagram
-activate Merchant
-activate PayEx.FrontEnd
-activate PayEx.BackOffice
-Merchant-->>PayEx.FrontEnd: Online payment transactions
-deactivate Merchant
+    activate Merchant
+    activate PayEx.FrontEnd
+    activate PayEx.BackOffice
+    Merchant-->>PayEx.FrontEnd: Online payment transactions
+    deactivate Merchant
 
-PayEx.FrontEnd-->>PayEx.BackOffice: Transaction data
-deactivate PayEx.FrontEnd
-deactivate PayEx.BackOffice
+    PayEx.FrontEnd-->>PayEx.BackOffice: Transaction data
+    deactivate PayEx.FrontEnd
+    deactivate PayEx.BackOffice
 
-activate Merchant
+    activate Merchant
 
-PayEx.BackOffice->>Merchant: Balance Report (PDF-file)
-note left of Merchant: files are sent by e-mail or file transfer
-PayEx.BackOffice->>Merchant: Transaction list (XLSX-file)
-PayEx.BackOffice->>Merchant: Transaction list (XML-file)
+    PayEx.BackOffice->>Merchant: Balance Report (PDF-file)
+    note left of Merchant: files are sent by e-mail or file transfer
+    PayEx.BackOffice->>Merchant: Transaction list (XLSX-file)
+    PayEx.BackOffice->>Merchant: Transaction list (XML-file)
 deactivate Merchant
 ```
 
