@@ -780,7 +780,7 @@ transaction made towards a payment, as previously described.
 
 {% include one-click-payments.md %}
 
-{% include callback-reference.md payment-instrument"creditcard" %}
+{% include callback-reference.md payment-instrument="creditcard" %}
 
 {% include payment-link.md %}
 
