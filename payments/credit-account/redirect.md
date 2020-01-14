@@ -14,7 +14,6 @@ sidebar:
       title: Other Features
 ---
 
-
 {% include alert-review-section.md %}
 
 {% include jumbotron.html body="Swedbank Pay Credit Account is an online payment
@@ -99,7 +98,6 @@ sequenceDiagram
     Swedbank Pay-->>-Merchant: payment resource
     activate Merchant
     Merchant-->>-Consumer: display purchase result
-
 ```
 
 The second example below is the payment sequence when signing is not required.
@@ -386,7 +384,6 @@ Content-Type: application/json
     "rel": "redirect-merchant-complete",
     "method": "GET"
 }
-
 ```
 
 {:.table .table-striped}
