@@ -753,7 +753,6 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
-{
   "payment": {
     "operation": "Purchase",
     "intent": "Authorization",
