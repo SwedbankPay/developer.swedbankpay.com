@@ -132,7 +132,7 @@ Content-Type: application/json
       "productCategory": "PC1234",
     },
     "prefillInfo": {
-      "msisdn": "+46987654321",
+      "msisdn": "+46739000001",
       "email": "leia.ahlstrom@swedbankpay.com"
     }
   },
