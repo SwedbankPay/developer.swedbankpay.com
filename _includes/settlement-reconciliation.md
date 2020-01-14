@@ -127,23 +127,22 @@ transaction list. Below is a sequence diagram detailing the interaction.
 
 ```mermaid
 sequenceDiagram
+    participant SwedbankPay as Swedbank Pay
+
     activate Merchant
-    activate PayEx.FrontEnd
-    activate PayEx.BackOffice
-    Merchant-->>PayEx.FrontEnd: Online payment transactions
+    activate SwedbankPay
+    Merchant-->>SwedbankPay: Online payment transactions
     deactivate Merchant
 
-    PayEx.FrontEnd-->>PayEx.BackOffice: Transaction data
-    deactivate PayEx.FrontEnd
-    deactivate PayEx.BackOffice
+    deactivate SwedbankPay
 
     activate Merchant
 
-    PayEx.BackOffice->>Merchant: Balance Report (PDF-file)
+    SwedbankPay->>Merchant: Balance Report (PDF-file)
     note left of Merchant: files are sent by e-mail or file transfer
-    PayEx.BackOffice->>Merchant: Transaction list (XLSX-file)
-    PayEx.BackOffice->>Merchant: Transaction list (XML-file)
-deactivate Merchant
+    SwedbankPay->>Merchant: Transaction list (XLSX-file)
+    SwedbankPay->>Merchant: Transaction list (XML-file)
+    deactivate Merchant
 ```
 
 **There are two ways** for you to match the information from your system with
