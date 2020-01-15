@@ -131,7 +131,7 @@ Content-Type: application/json
 ### Capture Sequence
 
 `Capture` can only be done on an authorized transaction. It is possible to do a
-part-capture where you only capture a part of the authorization amount. You can
+part-capture where you only capture a part of the authorized amount. You can
 later do more captures on the same payment up to the total authorized amount.
 
 ```mermaid
@@ -146,7 +146,7 @@ sequenceDiagram
 
 `Cancel` can only be done on a authorized transaction. If you do cancel after
 doing a part-capture you will cancel the difference between the capture amount
-and the authorization amount.
+and the authorized amount.
 
 ### Create cancellation transaction
 
