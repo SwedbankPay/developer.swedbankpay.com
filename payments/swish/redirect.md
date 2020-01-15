@@ -18,7 +18,7 @@ sidebar:
       title: Other Features
 ---
 
-% include alert-development-section.md %}
+{% include alert-review-section.md %}
 
 {% include jumbotron.html body="Swish is a one-phase payment instrument supported by the
 major Swedish banks. **Swish Payments Redirect** is where Swedbank

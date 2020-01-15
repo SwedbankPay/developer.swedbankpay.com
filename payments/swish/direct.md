@@ -18,6 +18,7 @@ sidebar:
       title: Other Features
 ---
 
+{% include alert-review-section.md %}
 
 {% include alert.html type="neutral"
                       icon="info"
