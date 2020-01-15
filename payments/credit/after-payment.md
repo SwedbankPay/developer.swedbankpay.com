@@ -6,6 +6,8 @@ sidebar:
     items:
     - url: /payments/credit/
       title: Introduction
+    - url: /payments/credit/redirect
+      title: Redirect
     - url: /payments/credit/after-payment
       title: After Payment
     - url: /payments/credit/other-features
@@ -114,8 +116,8 @@ Content-Type: application/json
 | `capture.transaction` | `object` | The object representation of the generic [transaction resource][transaction-resource] |
 
 {% include iterator.html
-        prev_href="index"
-        prev_title="Back: Introduction"
+        prev_href="redirect"
+        prev_title="Back: Redirect"
         next_href="other-features"
         next_title="Next: Other Features" %}
 
