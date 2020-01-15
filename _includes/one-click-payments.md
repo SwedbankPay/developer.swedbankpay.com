@@ -30,7 +30,7 @@ operation to [`Verify`][verify].
 
 ```js
 {
-    "generatePaymentToken": "true"
+    "generatePaymentToken": true
 }
 ```
 
@@ -46,16 +46,18 @@ provided below.
 **Request Towards Authorizations Resource**
 
 ```http
-GET /psp/creditcard/payments/<payment-id>/<authorizations> HTTP/1.1
+GET /psp/creditcard/payments/{{ page.paymentId }}/authorizations HTTP/1.1
 Host: {{ page.apiHost }}
+Authorization: Bearer <AccessToken>
 ```
 
 {:.code-header}
 **Request Towards Verifications Resource**
 
 ```http
-GET /psp/creditcard/payments/<payment-id>/<verifications> HTTP/1.1
+GET /psp/creditcard/payments/{{ page.paymentId }}/verifications HTTP/1.1
 Host: {{ page.apiHost }}
+Authorization: Bearer <AccessToken>
 ```
 
 You need to store the `paymentToken` from the response in your system and keep
@@ -75,7 +77,7 @@ the `paymentToken` you received in the initial purchase, where you specified the
 See the Other Feature sections for how to create a [card][create-card-payment]
 and [invoice][create-invoice-payment] payment.
 
-Abbrevated code example:
+Abbreviated code example:
 
 {:.code-header}
 **Request**
@@ -136,7 +138,7 @@ you use the `Delete payment token` request.
 **Request**
 
 ```http
-PATCH /psp/creditcard/payments/instrumentData/<paymentToken> HTTP/1.1
+PATCH /psp/creditcard/payments/instrumentData/{{ page.paymentToken }} HTTP/1.1
 Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -162,7 +164,7 @@ Content-Type: application/json
 
 {
     "instrumentData": {
-        "id": "/psp/creditcard/payments/instrumentdata/{{ page.transactionId }}",
+        "id": "/psp/creditcard/payments/instrumentdata/{{ page.paymentToken }}",
         "paymentToken": "{{ page.paymentToken }}",
         "payeeId": "{{ page.merchantId }}",
         "isDeleted": true,
