@@ -18,8 +18,6 @@ sidebar:
       title: Other Features
 ---
 
-{% include alert-review-section.md %}
-
 ## Introduction
 
 * When properly set up in your merchant/webshop site and the payer starts the
