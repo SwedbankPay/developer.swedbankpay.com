@@ -14,7 +14,7 @@ sidebar:
       title: Other Features
 ---
 
-{% include alert-development-section.md %}
+{% include alert-review-section.md %}
 
 > Swedbank Pay Credit Account is an online payment instrument allowing payers
 > to split a purchase into several payments.
