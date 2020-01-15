@@ -1,5 +1,5 @@
 ---
-title: Swedbank Pay Credit Payment Other Features
+title: Swedbank Pay Credit Payments – Other Features
 sidebar:
   navigation:
   - title: Credit Payments
