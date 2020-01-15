@@ -39,7 +39,7 @@ about this update.
 ```js
 {
     "paymentOrder": {
-        "id": "/psp/paymentorders/<paymentorder-id>",
+        "id": "/psp/paymentorders/{{ page.paymentOrderId }}",
         "instrument": "{{ payment-instrument }}"
     },
     "payment": {
@@ -73,13 +73,12 @@ about this update.
 {% endif %}
 
 {:.table .table-striped}
-| **Parameter** | **Description**
-| `Payment Instrument` | `creditcard`, `invoice`, `swish`, `vipps`, `directdebit`, `mobilepay`, `creditaccount`
-| `Transaction Type` | `authorizations`, `captures`, `cancellations`, `reversals`
+| Parameter            | Description                                                |
+| :------------------- | :--------------------------------------------------------- |
+| `<transaction type>` | `authorizations`, `captures`, `cancellations`, `reversals` |
 
-The sequence diagram below shows the `HTTP` `POST` you will receive from
-Swedbank Pay, and the two `GET` requests that you make to get the updated
-status.
+The sequence diagram below shows the HTTP `POST` you will receive from Swedbank
+Pay, and the two `GET` requests that you make to get the updated status.
 
 ```mermaid
 sequenceDiagram
