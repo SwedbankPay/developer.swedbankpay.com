@@ -18,7 +18,7 @@ sidebar:
 
 ## Options after posting a payment
 
-{% include payment-resource.md  payment-instrument="credit" %}
+{% include payment-resource.md  payment-instrument="creditaccount" %}
 
 * *Abort:* It is possible to abort the process if the payment has no successful
   transactions. [See the Abort description here][abort].
