@@ -4,13 +4,13 @@ sidebar:
   navigation:
   - title: Credit Payments
     items:
-    - url: /payments/credit-account/
+    - url: /payments/credit/
       title: Introduction
-    - url: /payments/credit-account/redirect
+    - url: /payments/credit/redirect
       title: Redirect
-    - url: /payments/credit-account/after-payment
+    - url: /payments/credit/after-payment
       title: After Payment
-    - url: /payments/credit-account/other-features
+    - url: /payments/credit/other-features
       title: Other Features
 ---
 
@@ -357,10 +357,10 @@ Content-Type: application/json
         next_href="after-payment"
         next_title="Next: After Payment" %}
 
-[abort]: /payments/credit-account/after-payment#abort
-[after-payment]: /payments/credit-account/after-payment
-[callback-url]: /payments/credit-account/after-payment#callback
-[cancel]: /payments/credit-account/after-payment#cancellations
-[capture]: /payments/credit-account/after-payment#captures
-[payee-reference]: /payments/credit-account/after-payment#payeereference
+[abort]: /payments/credit/after-payment#abort
+[after-payment]: /payments/credit/after-payment
+[callback-url]: /payments/credit/after-payment#callback
+[cancel]: /payments/credit/after-payment#cancellations
+[capture]: /payments/credit/after-payment#captures
+[payee-reference]: /payments/credit/after-payment#payeereference
 [user-agent-definition]: https://en.wikipedia.org/wiki/User_agent
