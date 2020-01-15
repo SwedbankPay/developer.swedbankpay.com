@@ -769,7 +769,7 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0",
         "language": "nb-NO",
         "urls": {
-            "hostUrls": [ "http://example.net", "http://example2.net" ],
+            "hostUrls": [ "http://example.com", "http://example.net" ],
             "completeUrl": "http://example.com/payment-completed",
             "cancelUrl": "http://example.com/payment-canceled",
             "callbackUrl": "http://example.com/payment-callback",

@@ -489,7 +489,7 @@ argument object:
 
 ```js
 {
-    "origin": "owner | merchant",
+    "origin": "owner",
     "openUrl": "https://example.org/terms.html"
 }
 ```
