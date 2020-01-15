@@ -129,7 +129,7 @@ for the given operation.
 
 {% case payment-instrument %}
 
-{% when "creditaccount" %}
+{% when "credit" %}
 
 {:.table .table-striped}
 | Operation                | Description                                                                                                               |
