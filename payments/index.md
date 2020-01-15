@@ -16,8 +16,8 @@ sidebar:
       title: Vipps Payments
     - url: /payments/mobile-pay
       title: Mobile Pay Payments
-    - url: /payments/credit-account
-      title: Credit&nbsp;Account&nbsp;Payments
+    - url: /payments/credit
+      title: Credit Payments
     - url: /payments/direct-debit
       title: Direct Debit Payments
 ---

@@ -1,14 +1,14 @@
 ---
-title: Swedbank Pay Payments Credit Account Other Features
+title: Swedbank Pay Credit Payments – Other Features
 sidebar:
   navigation:
-  - title: Credit Account Payments
+  - title: Credit Payments
     items:
-    - url: /payments/credit-account/
+    - url: /payments/credit/
       title: Introduction
-    - url: /payments/credit-account/after-payment
+    - url: /payments/credit/after-payment
       title: After Payment
-    - url: /payments/credit-account/other-features
+    - url: /payments/credit/other-features
       title: Other Features
 ---
 
