@@ -6,7 +6,7 @@ the course of a purchase. You can find a short description of each state below.
 ### Payments
 
 * `ready` means that the payment has been created successfully, and is now ready
-for further transaction operations, like `authorization`, `sale` or `abort`.
+   for further transaction operations, like `authorization`, `sale` or `abort`.
 
 * `failed` means that something went wrong during the payment process, and no
 further transactions can be created if the payment is in this state. Examples
