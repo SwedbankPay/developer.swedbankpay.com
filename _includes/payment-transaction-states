@@ -1,6 +1,6 @@
 ## Payment States And Transaction States
 
-Both payments and transactions find can be in several different states during
+Both payments and transactions can be in several different states during
 the course of a purchase. You can find a short description of each state below.
 
 ### Payments
