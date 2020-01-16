@@ -29,7 +29,7 @@ it is impossible to determine the exact status of the transaction. An example of
 this can be a network failure. No further actions can be done on a payment in
 this state.
 
-* `completed` means that the transaction has reached it's intended purpose. An
+* `completed` means that the transaction has reached its intended purpose. An
 `authorization` will be `completed` when the funds have been authorized, a
 `capture` will be `completed` when the funds have been captured and a `reversal`
 will be `completed` when the payer has been refunded.
