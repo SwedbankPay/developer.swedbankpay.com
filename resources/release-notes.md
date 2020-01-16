@@ -22,9 +22,27 @@ sidebar:
 
 {% include alert-review-section.md %}
 
-{% include jumbotron.html body="The latest updates about our releases will be published on this page" %}
+{% include jumbotron.html body="The latest updates about our releases will be
+published on this page" %}
+
+{% include alert.html type="neutral" icon="info" header="Version numbers listed
+on this page refers to the version number of this very documentation, not to a
+version of any APIs described by it." %}
 
 ## January 2020
+
+### Version 1.5
+
+* The review of [Invoice Payments][invoice] is complete and as such the section
+  is now released and ready for use.
+* The [Card Payments][card] section has received an overhaul, inching it closer
+  to release.
+* The [Swish Payments][swish], [Vipps Payments][vipps] and [Credit
+  Payments][credit] (née "Credit Account") sections are ready for review.
+* The [Direct Debit][direct-debit] and [MobilePay Payments][mobile-pay] sections
+  have received a few updates, inching them both closer to review.
+
+### Version 1.4
 
 * Updated [Swish Redirect][swish-direct] and [Swish Direct][swish-direct]
   sections in preparations for review and the transition from PayEx Developer
@@ -176,18 +194,25 @@ creation of the payment or payment order needs to be performed again. With
 paymentUrl in place, the retry process becomes much more convenient for both the
 integration and the payer.
 
+[card]: /payments/card
 [card-payment-url]: /payments/card/other-features#payment-url
+[credit]: /payments/credit
 [checkout-checkin-front-end]: /checkout/checkin#checkin-front-end
 [checkout-payment-orders]: /checkout/other-features#payment-orders
 [checkout-payment-url]: /checkout/other-features#payment-url
 [checkout]: /checkout
 [data-protection]: /resources/data-protection
+[direct-debit]: /payments/direct-debit
 [initiate-consumer-session]: /checkout/checkin#checkin-back-end
+[invoice]: /payments/invoice
+[mobile-pay]: /payments/mobile-pay
 [one-click]: /payments/card/other-features#one-click-payments
 [payment-orders]: /checkout/other-features#creating-a-payment-order
+[swish]: /payments/swish
 [swish-direct]: /payments/swish/direct
 [swish-other-features]: /payments/swish/other-features
 [swish-redirect]: /payments/swish/redirect
 [terminology]: /resources/terminology
+[vipps]: /payments/vipps
 [vipps-payment-resource]: /payments/vipps/other-features#payment-resource
 [vipps-payment-url]: /payments/vipps/other-features#payment-url

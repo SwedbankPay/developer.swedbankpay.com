@@ -21,7 +21,7 @@ you are strongly advised to **read this entire page to the end**.
       <div class="card-body text-center d-flex flex-column">
         <img src="{{ design_guide_version_url }}/img/swedbankpay-logo.svg" alt="Swedbank Pay" height="120">
         <h3>Checkout</h3>
-        <p>Speed up checkout by allowing your customers to check-in with Swedbank Pay and pay with their favorite payment instruments through our payment menu.</p>
+        <p>Speed up checkout by allowing your customers to check-in with Swedbank Pay, and pay with their favorite payment instruments through our payment menu.</p>
         <a class="btn btn-guiding btn-outline btn-block mt-auto" href="/checkout/">Checkout Documentation</a>
       </div>
     </div>
@@ -31,7 +31,7 @@ you are strongly advised to **read this entire page to the end**.
       <div class="card-body text-center d-flex flex-column">
         <img src="{{ design_guide_version_url }}/img/swedbankpay-logo.svg" alt="Swedbank Pay" height="120">
         <h3>Payments</h3>
-        <p>You identify the customer, we take care of the payment. Chose from our uniform and wide selection of payment instruments.</p>
+        <p>Identify your customer, while we take care of the payment. Choose from our uniform and wide selection of payment instruments.</p>
         <a class="btn btn-guiding btn-outline btn-block mt-auto" href="/payments/">Payments Documentation</a>
       </div>
     </div>

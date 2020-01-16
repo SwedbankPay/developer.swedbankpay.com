@@ -18,8 +18,6 @@ sidebar:
       title: Other Features
 ---
 
-{% include alert-review-section.md %}
-
 ## API requests
 
 The API requests are displayed in the [invoice flow][invoice-flow].

@@ -18,8 +18,6 @@ sidebar:
       title: Other Features
 ---
 
-{% include alert-review-section.md %}
-
 {% include alert.html type="neutral" icon="report_problem" header="Disclaimer"
 body="Direct Invoice is about to be phased out. This section is only for
 merchants that currently have a contract with this integration." %}

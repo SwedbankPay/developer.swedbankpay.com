@@ -77,13 +77,13 @@ Content-Type: application/json
 |  ✔︎︎︎︎︎  | └➔&nbsp;`intent`             | `string`     | Sale is the only type used for direct debit payments.                                                                                                                                                                                                     |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`currency`           | `string`     | The currency used.                                                                                                                                                                                                                                        |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`prices`             | `object`     | The `prices` resource lists the prices related to a specific payment.                                                                                                                                                                                     |
-|  ✔︎︎︎︎︎  | └─➔&nbsp;`type`              | `string`     | Use the generic type Directdebit if you want to enable all bank types supported by merchant contract, otherwise specify a specific bank type. [See the Prices object types for more information.][technical-reference-price-object].                      |
+|  ✔︎︎︎︎︎  | └─➔&nbsp;`type`              | `string`     | Use the generic type `Directdebit` if you want to enable all bank types supported by merchant contract, otherwise specify a specific bank type. [See the Prices object types for more information.][technical-reference-price-object].                      |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`amount`            | `integer`    | Amount is entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 SEK 5000 = 50.00 SEK.                                                                                                                                       |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`vatAmount`         | `integer`    | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                                                                        |
 |  ✔︎︎︎︎   | └➔&nbsp;`description`        | `string(40)` | A textual description max 40 characters of the purchase.                                                                                                                                                                                                  |
 |          | └➔&nbsp;`payerReference`     | `string`     | The reference to the payer (consumer/end-user) from the merchant system, like mobile number, customer number etc.                                                                                                                                         |
 |  ✔︎︎︎︎   | └➔&nbsp;`userAgent`          | `string`     | The user agent reference of the consumer's browser - [see user agent definition][user-agent].                                                                                                                                                             |
-|  ✔︎︎︎︎   | └➔&nbsp;`language`           | `string`     | nb-NO, sv-SE or en-US.                                                                                                                                                                                                                                    |
+|  ✔︎︎︎︎   | └➔&nbsp;`language`           | `string`     | `nb-NO`, `sv-SE` or `en-US`.                                                                                                                                                                                                                                    |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`urls`               | `object`     | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                    |
 |  ✔︎︎︎︎   | └─➔&nbsp;`completeUrl`       | `string`     | The URI that Swedbank Pay will redirect back to when the payment is followed through. This does not indicate a successful payment, only that it has reached a completion state. A`GET`request needs to be performed on the payment to inspect it further. |
 |  ✔︎︎︎︎   | └─➔&nbsp;`cancelUrl`         | `string`     | The URI that Swedbank Pay will redirect back to when the user presses the cancel button in the payment page.                                                                                                                                              |
@@ -177,21 +177,20 @@ is given below.
 | Property | Description                                                         |
 | :------- | :------------------------------------------------------------------ |
 | `href`   | The target URI to perform the operation against.                    |
-| rel      | The name of the relation the operation has to the current resource. |
-| method   | The HTTP method to use when performing the operation.               |
+| `rel`    | The name of the relation the operation has to the current resource. |
+| `method` | The HTTP method to use when performing the operation.               |
 
 The operations should be performed as described in each response and not as
-described here in the documentation.
-Always use the `href` and `method` as specified in the response by finding the
-appropriate operation based on its `rel` value.
-The only thing that should be hard coded in the client is the value of the
-`rel` and the request that will be sent in the HTTP body of the request for
-the given operation.
+described here in the documentation. Always use the `href` and `method` as
+specified in the response by finding the appropriate operation based on its
+`rel` value. The only thing that should be hard coded in the client is the value
+of the `rel` and the request that will be sent in the HTTP body of the request
+for the given operation.
 
 | Operation              | Description                                                                                                                        |
 | :--------------------- | :--------------------------------------------------------------------------------------------------------------------------------- |
-| _update-payment-abort_ | [Aborts][technical-reference-abort-payment] the payment before any financial transactions are performed.                           |
-| _redirect-sale_        | Contains the redirect-URI that redirects the consumer to a Swedbank Pay hosted payment page prior to creating a sales transaction. |
+| `update-payment-abort` | [Aborts][technical-reference-abort-payment] the payment before any financial transactions are performed.                           |
+| `redirect-sale`        | Contains the redirect-URI that redirects the consumer to a Swedbank Pay hosted payment page prior to creating a sales transaction. |
 
 ## Direct Debit transactions
 
@@ -250,7 +249,7 @@ Content-Type: application/json
             },
             {
                "id": "/psp/directdebit/payments/{{ page.paymentId }}/sales/{{ page.transactionId }}",
-               "selectedBank": "NordeaFI|...",
+               "selectedBank": "NordeaFI",
                "deviceIsMobile": true,
                "transaction": {
                    "id": "/psp/directdebit/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
