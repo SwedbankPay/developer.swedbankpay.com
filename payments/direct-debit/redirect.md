@@ -250,7 +250,7 @@ Content-Type: application/json
             },
             {
                "id": "/psp/directdebit/payments/{{ page.paymentId }}/sales/{{ page.transactionId }}",
-               "selectedBank": "NordeaFI|...",
+               "selectedBank": "NordeaFI",
                "deviceIsMobile": true,
                "transaction": {
                    "id": "/psp/directdebit/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
