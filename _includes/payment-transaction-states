@@ -10,7 +10,7 @@ for further transaction operations, like `authorization`, `sale` or `abort`.
 
 * `failed` means that something went wrong during the payment process, and no
 further transactions can be created if the payment is in this state. Examples
-of possible failures are triggering of an antifraud pattern or if the payer
+of possible failures are triggering of anti-fraud protection or if the payer
 reaches the maximum number of tries.
 
 * `aborted` means that the merchant has aborted the payment before the end user
