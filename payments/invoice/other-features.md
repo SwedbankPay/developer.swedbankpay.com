@@ -18,8 +18,6 @@ sidebar:
       title: Other Features
 ---
 
-{% include alert-review-section.md %}
-
 ## API requests
 
 The API requests are displayed in the [invoice flow][invoice-flow].
@@ -457,7 +455,7 @@ Content-Type: application/json
 |          | └➔&nbsp;`city`                 | `string` | The city name of the billing address adressee.                         |
 |          | └➔&nbsp;`countryCode`          | `string` | The country code of the billing address adressee.                      |
 
-{code-header}
+{:.code-header}
 **Response**
 
 ```json
@@ -529,7 +527,7 @@ transaction made towards a payment, as previously described.
 
 {% include transactions-reference.md payment-instrument="invoice" %}
 
-{% include callback-reference.md %}
+{% include callback-reference.md payment-instrument="invoice" %}
 
 {% include payment-link.md hide-3d-secure=true %}
 

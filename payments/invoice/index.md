@@ -18,8 +18,6 @@ sidebar:
       title: Other Features
 ---
 
-{% include alert-review-section.md %}
-
 {% include jumbotron.html body="**Invoice Payments** is one of the easiest
                                 payment service where Swedbank Pay helps improve
                                 cashflow by purchasing merchant invoices. Choose

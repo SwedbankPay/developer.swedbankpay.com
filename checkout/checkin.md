@@ -274,7 +274,7 @@ Here is an example of what a `GET` request towards the `url` provided in the eve
 {:.code-header}
 **Response**
 
-```http
+```js
 {
     "email": "olivia.nyhuus@payex.com",
     "msisdn": "+4798765432",
@@ -308,7 +308,7 @@ information we store and its duration.
 [capture-operation]: /checkout/after-payment#capture
 [checkin-image]: /assets/img/checkout/your-information.png
 [consumer-reference]: /checkout/other-features#payeereference
-[gdpr-cleanup]: /resources/data-protection#paymentorder-consumer-data
+[data-protection]: /resources/data-protection#paymentorder-consumer-data
 [initiate-consumer-session]: /checkout/checkin#checkin-back-end
 [msisdn]: https://en.wikipedia.org/wiki/MSISDN
 [operations]: /checkout/other-features#operations

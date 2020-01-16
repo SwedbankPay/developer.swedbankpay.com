@@ -60,8 +60,10 @@ sequenceDiagram
         Payer->>IssuingBank: 3-D Secure authentication process
         activate IssuingBank
         IssuingBank->>-Payer: 3-D Secure authentication process
-        Payer->>-SwedbankPay: access authentication page
+        Payer->>-IssuingBank: access authentication page
         end
+    IssuingBank -->>+ Payer: Redirect back to paymentUrl (merchant)
+    deactivate IssuingBank
     SwedbankPay-->>Merchant: Event: OnPaymentComplete ④
     activate Merchant
     note left of Merchant: Second API request.
@@ -233,7 +235,7 @@ Content-Type: application/json
 |  ✔︎︎︎︎︎  | └➔&nbsp;`language`                    | `string`      | nb-NO, sv-SE or en-US.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`urls`                        | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 |          | └─➔&nbsp;`hostUrls`                   | `array`       | The array of URLs valid for embedding of Swedbank Pay Hosted Views. If not supplied, view-operation will not be available.                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-|  ✔︎︎︎︎︎  | └─➔&nbsp;`completeUrl`                | `string`      | The URL that Swedbank Pay will redirect back to when the payment page is completed.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+|  ✔︎︎︎︎︎  | └─➔&nbsp;`completeUrl`                | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further.                                                                                                                                                                                                                                                                        |
 |          | └─➔&nbsp;`cancelUrl`                  | `string`      | The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only cancelUrl or `paymentUrl` can be used, not both.                                                                                                                                                                                                                                                                                                                                                                     |
 |          | └─➔&nbsp;`paymentUrl`                 | `string`      | The URI that Swedbank Pay will redirect back to when the view-operation needs to be loaded, to inspect and act on the current status of the payment. Only used in Seamless Views. If both `cancelUrl` and `paymentUrl` is sent, the `paymentUrl` will used.                                                                                                                                                                                                                                                                                                               |
 |          | └─➔&nbsp;`callbackUrl`                | `string`      | The URL that Swedbank Pay will perform an HTTP POST against every time a transaction is created on the payment. See [callback][callback] for details.                                                                                                                                                                                                                                                                                                                                                                                                                     |
@@ -383,6 +385,145 @@ embedded on your website.
     }).open();
 </script>
 ```
+
+## Seamless View Events
+
+During operation in the seamless view, several events can occur. They are
+described below.
+
+### `onPaymentCreated`
+
+This event triggers when a user actively attempts to perform a payment. The
+`onPaymentCreated` event is raised with the following event argument object:
+
+{:.code-header}
+**`onPaymentCreated` event object**
+
+```js
+{
+    "id": "/psp/creditcard/payments/{{ page.paymentId }}",
+    "instrument": "creditcard",
+}
+```
+
+{:.table .table-striped}
+| Property     | Type     | Description                                                                                     |
+| :----------- | :------- | :---------------------------------------------------------------------------------------------- |
+| `id`         | `string` | The relative URI to the payment.                                                                |
+| `instrument` | `string` | `Creditcard`                                                                                    |
+
+### `onPaymentCompleted`
+
+This event triggers when a payment has completed successfully.
+The `onPaymentCompleted` event is raised with the following event argument
+object:
+
+{:.code-header}
+**`onPaymentCompleted` event object**
+
+```js
+{
+    "id": "/psp/creditcard/payments/{{ page.paymentId }}",
+    "redirectUrl": "https://en.wikipedia.org/wiki/Success"
+}
+```
+
+{:.table .table-striped}
+| Property      | Type     | Description                                                     |
+| :------------ | :------- | :-------------------------------------------------------------- |
+| `id`          | `string` | The relative URI to the payment.                                |
+| `redirectUrl` | `string` | The URI the user will be redirect to after a completed payment. |
+
+### `onPaymentCanceled`
+
+This event triggers when the user cancels the payment.
+The `onPaymentCanceled` event is raised with the following event argument
+object:
+
+{:.code-header}
+**`onPaymentCanceled` event object**
+
+```js
+{
+    "id": "/psp/creditcard/payments/{{ page.paymentId }}",
+    "redirectUrl": "https://en.wikipedia.org/wiki/Canceled"
+}
+```
+
+{:.table .table-striped}
+| Property      | Type     | Description                                                    |
+| :------------ | :------- | :------------------------------------------------------------- |
+| `id`          | `string` | The relative URI to the payment.                               |
+| `redirectUrl` | `string` | The URI the user will be redirect to after a canceled payment. |
+
+### `onPaymentFailed`
+
+This event triggers when a payment has failed, disabling further attempts to
+perform a payment. The `onPaymentFailed` event is raised with the following
+event argument object:
+
+{:.code-header}
+**`onPaymentFailed` event object**
+
+```js
+{
+    "id": "/psp/creditcard/payments/{{ page.paymentId }}",
+    "redirectUrl": "https://en.wikipedia.org/wiki/Failed"
+}
+```
+
+{:.table .table-striped}
+| Property      | Type     | Description                                                  |
+| :------------ | :------- | :----------------------------------------------------------- |
+| `id`          | `string` | The relative URI to the payment.                             |
+| `redirectUrl` | `string` | The URI the user will be redirect to after a failed payment. |
+
+### `onPaymentTermsOfService`
+
+This event triggers when the user clicks on the "Display terms and conditions"
+link. The `onPaymentTermsOfService` event is raised with the following event
+argument object:
+
+{:.code-header}
+**`onPaymentTermsOfService` event object**
+
+```js
+{
+    "origin": "owner",
+    "openUrl": "https://example.org/terms.html"
+}
+```
+
+{:.table .table-striped}
+| Property  | Type     | Description                                                                             |
+| :-------- | :------- | :-------------------------------------------------------------------------------------- |
+| `origin`  | `string` | `owner`, `merchant`. The value is always `merchant` unless Swedbank Pay hosts the view. |
+| `openUrl` | `string` | The URI containing Terms of Service and conditions.                                     |
+
+### `onError`
+
+This event triggers during terminal errors or if the configuration fails
+validation. The `onError` event will be raised with the following event argument
+object:
+
+{:.code-header}
+**`onError` event object**
+
+```js
+{
+    "origin": "creditcard",
+    "messageId": "{{ page.transactionId }}",
+    "details": "Descriptive text of the error"
+}
+```
+
+{:.table .table-striped}
+| Property    | Type     | Description                                                                               |
+| :---------- | :------- | :---------------------------------------------------------------------------------------- |
+| `origin`    | `string` | `creditcard`, identifies the system that originated the error.                            |
+| `messageId` | `string` | A unique identifier for the message.                                                      |
+| `details`   | `string` | A human readable and descriptive text of the error.                                       |
+
 
 {% include iterator.html prev_href="redirect" prev_title="Redirect"
 next_href="after-payment" next_title="Next: After Payment" %}

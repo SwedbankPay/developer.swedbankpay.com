@@ -29,7 +29,9 @@ operation to [`Verify`][verify].
 **`generatePaymentToken` property**
 
 ```js
-"generatePaymentToken": "true"
+{
+    "generatePaymentToken": true
+}
 ```
 
 ### Finding paymentToken value
@@ -44,16 +46,18 @@ provided below.
 **Request Towards Authorizations Resource**
 
 ```http
-GET /psp/creditcard/payments/<payment-id>/<authorizations> HTTP/1.1
+GET /psp/creditcard/payments/{{ page.paymentId }}/authorizations HTTP/1.1
 Host: {{ page.apiHost }}
+Authorization: Bearer <AccessToken>
 ```
 
 {:.code-header}
 **Request Towards Verifications Resource**
 
 ```http
-GET /psp/creditcard/payments/<payment-id>/<verifications> HTTP/1.1
+GET /psp/creditcard/payments/{{ page.paymentId }}/verifications HTTP/1.1
 Host: {{ page.apiHost }}
+Authorization: Bearer <AccessToken>
 ```
 
 You need to store the `paymentToken` from the response in your system and keep
@@ -73,7 +77,7 @@ the `paymentToken` you received in the initial purchase, where you specified the
 See the Other Feature sections for how to create a [card][create-card-payment]
 and [invoice][create-invoice-payment] payment.
 
-Abbrevated code example:
+Abbreviated code example:
 
 {:.code-header}
 **Request**
@@ -119,26 +123,29 @@ you use the `Delete payment token` request.
 
 {% include alert.html type="warning"
                       icon="warning"
-                      body="Please note that this call does not erase the card number stored at Swedbank
-  Pay. A card number is automatically deleted six months after a successful
-  `Delete payment token` request. If you want card information removed
-  at an earlier date, you need to contact ehandelsetup@swedbankpay.dk,
-  verkkokauppa.setup@swedbankpay.fi, ehandelsetup@swedbankpay.no or
-  ehandelsetup@swedbankpay.se; and supply them with
-  the relevant transaction reference or payment token." %}
+                      body="Please note that this call does not erase the card
+  number stored at Swedbank Pay.
+  A card number is automatically deleted six months after a successful
+  `Deletepayment token` request.
+  If you want card information removed at an earlier date, you need to contact
+  [ehandelsetup@swedbankpay.dk](mailto:ehandelsetup@swedbankpay.dk),
+  [verkkokauppa.setup@swedbankpay.fi](mailto:verkkokauppa.setup@swedbankpay.fi),
+  [ehandelsetup@swedbankpay.no](mailto:ehandelsetup@swedbankpay.no) or
+  [ehandelsetup@swedbankpay.se](mailto:ehandelsetup@swedbankpay.se);
+  and supply them with the relevant transaction reference or payment token." %}
 
 {:.code-header}
 **Request**
 
 ```http
-PATCH /psp/creditcard/payments/instrumentData/<paymentToken> HTTP/1.1
+PATCH /psp/creditcard/payments/instrumentData/{{ page.paymentToken }} HTTP/1.1
 Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
     "state": "Deleted",
-    "tokenType": "PaymentToken|RecurrenceToken",
+    "tokenType": "PaymentToken",
     "comment": "Comment on why the deletion is happening"
 }
 ```
@@ -157,12 +164,12 @@ Content-Type: application/json
 
 {
     "instrumentData": {
-        "id": "/psp/creditcard/payments/instrumentdata/{{ page.transactionId }}",
+        "id": "/psp/creditcard/payments/instrumentdata/{{ page.paymentToken }}",
         "paymentToken": "{{ page.paymentToken }}",
         "payeeId": "{{ page.merchantId }}",
         "isDeleted": true,
         "isPayeeToken": false,
-        "cardBrand": "Visa|MasterCard|...",
+        "cardBrand": "Visa",
         "maskedPan": "123456xxxxxx1111",
         "expiryDate": "MM/YYYY"
     }

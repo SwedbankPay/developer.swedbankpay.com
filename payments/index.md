@@ -16,8 +16,8 @@ sidebar:
       title: Vipps Payments
     - url: /payments/mobile-pay
       title: Mobile Pay Payments
-    - url: /payments/credit-account
-      title: Credit&nbsp;Account&nbsp;Payments
+    - url: /payments/credit
+      title: Credit Payments
     - url: /payments/direct-debit
       title: Direct Debit Payments
 ---
@@ -28,9 +28,9 @@ sidebar:
 payment instruments. You can pick and choose among them to tailor the instrument
 package best suited for your business." %}
 
-Is Vipps all you need? Go for Vipps only. Do you want Vipps and Invoice?
-Implement Vipps and Invoice. Want them all? Have them all. Each payment
-instrument is set up with a separate contract and integration.
+Is Card the only payment instrument you need? Go for Card only. Do you want Card
+and Invoice? Implement Card and Invoice. Want them all? Have them all. Each
+payment instrument is set up with a separate contract and integration.
 
 With a couple of exceptions, our payment instruments are available on three
 platforms. Choose between our easy-to-use PCI compliant platforms Redirect

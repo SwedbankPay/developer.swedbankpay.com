@@ -72,11 +72,12 @@ the consumer when the payment has been fulfilled.
 
 ### API Requests
 
-The API requests depend on the payment instrument you are using when implementing
-the Payment Link scenario, see [purchase flow][purchase-flow] One-phase payment
-instruments will not implement `capture`, `cancellation` or `reversal`.
+The API requests depend on the payment instrument you are using when
+implementing the Payment Link scenario, see [purchase flow][purchase-flow].
+One-phase payment instruments will not implement `capture`, `cancellation` or
+`reversal`.
 The options you can choose from when creating a payment with key `operation`
-set to Value `Purchase` are listed below.
+set to `Purchase` are listed below.
 
 ### Screenshots
 

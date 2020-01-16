@@ -1,4 +1,24 @@
-{% assign payment-instrument = include.payment-instrument | default: "creditcard" %}
+---
+title: Swedbank Pay Credit Payments – Other Features
+sidebar:
+  navigation:
+  - title: Credit Payments
+    items:
+    - url: /payments/credit/
+      title: Introduction
+    - url: /payments/credit/after-payment
+      title: After Payment
+    - url: /payments/credit/other-features
+      title: Other Features
+---
+
+{% include alert-review-section.md %}
+
+{% include jumbotron.html body="Welcome to Other Features - a subsection of
+Credit Account Payments. This section has extented code examples and features
+that were not covered by the previous subsections." %}
+
+## Payment resource
 
 The `payment` resource is central to all payment instruments. All operations
 that target the payment resource directly produce a response similar to the
@@ -9,7 +29,7 @@ possible to perform in the current state of the payment.
 **Request**
 
 ```http
-GET /psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/ HTTP/1.1
+GET /psp/creditaccount/payments/{{ page.paymentId }}/ HTTP/1.1
 Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -24,7 +44,7 @@ Content-Type: application/json
 
 {
     "payment": {
-        "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}",
+        "id": "/psp/creditaccount/payments/{{ page.paymentId }}",
         "number": 1234567890,
         "created": "2016-09-14T13:21:29.3182115Z",
         "updated": "2016-09-14T13:21:57.6627579Z",
@@ -42,52 +62,46 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",
         "prices": {
-            "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/prices"
+            "id": "/psp/creditaccount/payments/{{ page.paymentId }}/prices"
         },
         "payeeInfo": {
-            "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/payeeInfo"
+            "id": "/psp/creditaccount/payments/{{ page.paymentId }}/payeeInfo"
         },
         "urls": {
-            "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/urls"
+            "id": "/psp/creditaccount/payments/{{ page.paymentId }}/urls"
         },
         "transactions": {
-            "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/transactions"
+            "id": "/psp/creditaccount/payments/{{ page.paymentId }}/transactions"
         },
         "authorizations": {
-            "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/authorizations"
+            "id": "/psp/creditaccount/payments/{{ page.paymentId }}/authorizations"
         },
         "captures": {
-            "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/captures"
+            "id": "/psp/creditaccount/payments/{{ page.paymentId }}/captures"
         },
         "reversals": {
-            "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/reversals"
+            "id": "/psp/creditaccount/payments/{{ page.paymentId }}/reversals"
         },
         "cancellations": {
-            "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/cancellations"
+            "id": "/psp/creditaccount/payments/{{ page.paymentId }}/cancellations"
         }
     },
     "operations": [
         {
             "method": "PATCH",
-            "href": "{{ page.apiUrl }}/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}",
+            "href": "{{ page.apiUrl }}/psp/creditaccount/payments/{{ page.paymentId }}",
             "rel": "update-payment-abort",
             "contentType": "application/json"
         },
         {
             "method": "GET",
-            "href": "{{ page.frontEndUrl }}/{{ payment-instrument }}/core/scripts/client/px.{{ payment-instrument }}.client.js?token={{ page.paymentToken }}&operation=authorize",
-            "rel": "view-authorization",
-            "contentType": "application/javascript"
-        },
-        {
-            "method": "GET",
-            "href": "{{ page.frontEndUrl }}/{{ payment-instrument }}/payments/authorize/{{ page.transactionId }}",
+            "href": "{{ page.frontEndUrl }}/creditaccount/payments/authorize/{{ page.transactionId }}",
             "rel": "redirect-authorization",
             "contentType": "text/html"
         },
         {
             "method": "POST",
-            "href": "{{ page.apiUrl }}/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/captures",
+            "href": "{{ page.apiUrl }}/psp/creditaccount/payments/{{ page.paymentId }}/captures",
             "rel": "create-capture",
             "contentType": "application/json"
         }
@@ -127,10 +141,6 @@ The only thing that should be hard coded in the client is the value of
 the `rel` and the request that will be sent in the HTTP body of the request
 for the given operation.
 
-{% case payment-instrument %}
-
-{% when "creditaccount" %}
-
 {:.table .table-striped}
 | Operation                | Description                                                                                                               |
 | :----------------------- | :------------------------------------------------------------------------------------------------------------------------ |
@@ -139,15 +149,41 @@ for the given operation.
 | `create-capture`         | Creates a `capture` transaction in order to charge the reserved funds from the consumer.                                  |
 | `create-cancellation`    | Creates a `cancellation` transaction that cancels a created, but not yet captured payment.                                |
 
-{% else %}
+{% include transactions-reference.md payment-instrument="creditaccount" %}
+
+{% include callback-reference.md  payment-instrument="creditaccount" %}
+
+## PayeeReference
+
+{% include payee-info.md %}
+
+{% include settlement-reconciliation.md %}
+
+## Problem messages
+
+When performing unsuccessful operations, the eCommerce API will respond with
+a problem message. We generally use the problem message type and status code to
+identify the nature of the problem. The problem name and description will often
+help narrow down the specifics of the problem.
+
+### Error types
+
+All error types will have the following URI in front of type:
+`https://api.payex.com/psp/errordetail/careditaccount/<error-type>`
 
 {:.table .table-striped}
-| Operation                | Description                                                                                                               |
-| :----------------------- | :------------------------------------------------------------------------------------------------------------------------ |
-| `update-payment-abort`   | `abort`s the payment order before any financial transactions are performed.                                               |
-| `redirect-authorization` | Contains the URI that is used to redirect the consumer to the Swedbank Pay Payments containing the card authorization UI. |
-| `view-authorization`     | Contains the JavaScript `href` that is used to embed  the card authorization UI directly on the webshop/merchant site     |
-| `create-capture`         | Creates a `capture` transaction in order to charge the reserved funds from the consumer.                                  |
-| `create-cancellation`    | Creates a `cancellation` transaction that cancels a created, but not yet captured payment.                                |
+| Type            | Status | Description                   |
+| :-------------- | :----- | :---------------------------- |
+| `externalerror` | `500`  | No error code                 |
+| `inputerror`    | `400`  | 10 - ValidationWarning        |
+| `inputerror`    | `400`  | 30 - ValidationError          |
+| `inputerror`    | `400`  | 3010 - ClientRequestInvalid   |
+| `externalerror` | `502`  | 40 - Error                    |
+| `externalerror` | `502`  | 60 - SystemError              |
+| `externalerror` | `502`  | 50 - SystemConfigurationError |
+| `externalerror` | `502`  | 9999 - ServerOtherServer      |
+| `forbidden`     | `403`  | Any other error code          |
 
-{% endcase %}
+{% include iterator.html
+        prev_href="after-payment"
+        prev_title="Back: After Payment"%}

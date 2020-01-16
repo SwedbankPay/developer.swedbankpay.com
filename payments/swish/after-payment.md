@@ -18,7 +18,7 @@ sidebar:
       title: Other Features
 ---
 
-{% include alert-development-section.md %}
+{% include alert-review-section.md %}
 
 # Swish Redirect and Payment Status
 

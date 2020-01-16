@@ -18,7 +18,8 @@ depending on if you want to make an initial charge or not:
   recurrence token.
 
 * Initiate a recurring payment flow **without charging the credit card**.
-  This is done by creating  a "Verify Payment" and generating a recurrence token.
+  This is done by creating  a "Verify Payment" and generating a recurrence
+  token.
 
 #### Generate RecurrenceToken
 

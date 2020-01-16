@@ -221,7 +221,7 @@ Content-Type: application/json
 |  ✔︎︎︎︎︎  | └➔&nbsp;`language`                       | `string`      | `nb-NO`, `sv-SE` or `en-US`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 |    ✔︎    | └➔&nbsp;`urls`                           | `object`      | The object containing URLs relevant for the `payment`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 |          | └─➔&nbsp;`hostUrls`                      | `array`       | The array of URLs valid for embedding of Swedbank Pay Hosted Views. If not supplied, view-operation will not be available.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-|  ✔︎︎︎︎︎  | └─➔&nbsp;`completeUrl`                   | `string`      | The URL that Swedbank Pay will redirect back to when the payment page is completed.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+|  ✔︎︎︎︎︎  | └─➔&nbsp;`completeUrl`                   | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further.                                                                                                                                                                                                                                                                                                                |
 |          | └─➔&nbsp;`cancelUrl`                     | `string`      | The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only `cancelUrl` or `paymentUrl` can be used, not both.                                                                                                                                                                                                                                                                                                                                                                                                           |
 |          | └─➔&nbsp;`paymentUrl`                    | `string`      | The URI that Swedbank Pay will redirect back to when the view-operation needs to be loaded, to inspect and act on the current status of the payment. Only used in Seamless Views. If both `cancelUrl` and `paymentUrl` is sent, the `paymentUrl` will used.                                                                                                                                                                                                                                                                                                                                                       |
 |          | └─➔&nbsp;`callbackUrl`                   | `string`      | The URL that Swedbank Pay will perform an HTTP `POST` against every time a transaction is created on the payment. See [callback][callback] for details.                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
@@ -743,7 +743,7 @@ sequenceDiagram
 The `redirect-authorization` operation redirects the consumer to
 Swedbank Pay Payments where the payment is authorized.
 
-{code-header}
+{:.code-header}
 **Request**
 
 ```http
@@ -753,13 +753,35 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
-    "transaction": {
-        "cardNumber": "4925000000000004",
-        "cardExpiryMonth": 11,
-        "cardExpiryYear": 22,
-        "cardVerificationCode": "185",
-        "cardholderName": "John Hancock"
-    }
+    "payment": {
+        "operation": "Purchase",
+        "intent": "Authorization",
+        "currency": "NOK",
+        "prices": [
+            {
+                "type": "CreditCard",
+                "amount": 1500,
+                "vatAmount": 0
+            }
+        ],
+        "description": "Test Purchase",
+        "payerReference": "AB1234",
+        "userAgent": "Mozilla/5.0",
+        "language": "nb-NO",
+        "urls": {
+            "hostUrls": [ "http://example.com", "http://example.net" ],
+            "completeUrl": "http://example.com/payment-completed",
+            "cancelUrl": "http://example.com/payment-canceled",
+            "callbackUrl": "http://example.com/payment-callback",
+            "logoUrl": "http://example.com/payment-logo.png",
+            "termsOfServiceUrl": "http://example.com/payment-terms.pdf",
+        },
+        "payeeInfo": {
+            "payeeId": "12345678-1234-1234-1234-123456789012",
+            "payeeReference": "CD1234",
+            "payeeName": "Merchant",
+            "productCategory": "A123"
+        }
 }
 ```
 
@@ -780,7 +802,7 @@ transaction made towards a payment, as previously described.
 
 {% include one-click-payments.md %}
 
-{% include callback-reference.md %}
+{% include callback-reference.md payment-instrument="creditcard" %}
 
 {% include payment-link.md %}
 

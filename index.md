@@ -43,12 +43,12 @@ you are strongly advised to **read this entire page to the end**.
 ## Connection and Protocol
 
 All requests towards Swedbank Pay API Platform are made with **HTTP/1.1** over
-a secure a **TLS 1.1** (or higher) connection. Older HTTP clients running on
+a secure a **TLS 1.2** (or higher) connection. Older HTTP clients running on
 older operating systems and frameworks might receive connection errors when
 connecting to Swedbank Pay's APIs. This is most likely due to the connection
 being made from the client with TLS 1.0 or even SSL, which are all insecure and
 deprecated. If such is the case, ensure that you are able to connect over a
-TLS 1.1 connection by reading information regarding your programming languages
+TLS 1.2 connection by reading information regarding your programming languages
 and environments ([Java][java-tls], [PHP Curl][php-curl-tls],
 [PHP Zend][php-zend-tls], [Ruby][ruby-tls], [Python][python-tls],
 [Node.js Request][node-tls]).
@@ -255,7 +255,7 @@ some particular processing rules depending on specifications in the contract.
 
 [Read more about the settlement process here][settlement].
 
-{% include callback-reference.md %}
+{% include callback-reference.md payment-instrument="creditcard" %}
 
 ## Problems
 

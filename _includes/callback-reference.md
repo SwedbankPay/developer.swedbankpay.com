@@ -1,4 +1,5 @@
 {% assign payment-order = include.payment-order | default: false %}
+{% assign payment-instrument = include.payment-instrument | default: "creditcard" %}
 
 ## Callback
 
@@ -38,15 +39,15 @@ about this update.
 ```js
 {
     "paymentOrder": {
-        "id": "/psp/paymentorders/<paymentorder-id>",
-        "instrument": "<payment instrument>"
+        "id": "/psp/paymentorders/{{ page.paymentOrderId }}",
+        "instrument": "{{ payment-instrument }}"
     },
     "payment": {
-        "id": "/psp/<payment instrument>/payments/<payment-id>",
+        "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}",
         "number": 222222222
     },
     "transaction": {
-        "id": "/psp/<payment instrument>/payments/<payment-id>/<transaction type>/<transaction-id>",
+        "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/<transaction type>/{{ page.transactionId }}",
         "number": 333333333
     }
 }
@@ -59,11 +60,11 @@ about this update.
 ```js
 {
     "payment": {
-        "id": "/psp/<payment instrument>/payments/<payment-id>",
+        "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}",
         "number": 222222222
     },
     "transaction": {
-        "id": "/psp/<payment instrument>/payments/<payment-id>/<transaction type>/<transaction-id>",
+        "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/<transaction type>/{{ page.transactionId }}",
         "number": 333333333
     }
 }
@@ -72,13 +73,12 @@ about this update.
 {% endif %}
 
 {:.table .table-striped}
-| **Parameter** | **Description**
-| `Payment Instrument` | `CreditCard`, `Invoice`, `Swish`, `Vipps`, `DirectDebit`, `MobilePay`
-| `Transaction Type` | Authorizations, Captures, Cancellations, Reversals
+| Parameter            | Description                                                |
+| :------------------- | :--------------------------------------------------------- |
+| `<transaction type>` | `authorizations`, `captures`, `cancellations`, `reversals` |
 
-The sequence diagram below shows the `HTTP` `POST` you will receive from
-Swedbank Pay, and the two `GET` requests that you make to get the updated
-status.
+The sequence diagram below shows the HTTP `POST` you will receive from Swedbank
+Pay, and the two `GET` requests that you make to get the updated status.
 
 ```mermaid
 sequenceDiagram
@@ -90,7 +90,7 @@ sequenceDiagram
     deactivate SwedbankPay
     note left of Merchant: Callback by Swedbank Pay
     Merchant-->>+SwedbankPay: HTTP response
-    Merchant->>+SwedbankPay: GET <payment instrument> payment
+    Merchant->>+SwedbankPay: GET {{ payment-instrument }} payment
     deactivate Merchant
     note left of Merchant: First API request
     SwedbankPay-->>+Merchant: payment resource

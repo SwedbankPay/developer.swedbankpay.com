@@ -70,29 +70,33 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property                       | Type       | Description                                                                                                                                                                                                                          |
-| :------: | :----------------------------- | :--------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|  ✔︎︎︎︎︎  | payment.operation              | string     | Purchase is the only type used for direct debit payments.                                                                                                                                                                            |
-|  ✔︎︎︎︎︎  | payment.intent                 | string     | Sale is the only type used for direct debit payments.                                                                                                                                                                                |
-|  ✔︎︎︎︎︎  | payment.currency               | string     | The currency used.                                                                                                                                                                                                                   |
-|  ✔︎︎︎︎︎  | payment.prices.type            | string     | Use the generic type Directdebit if you want to enable all bank types supported by merchant contract, otherwise specify a specific bank type. [See the Prices object types for more information.][technical-reference-price-object]. |
-|  ✔︎︎︎︎︎  | payment.prices.amount          | integer    | Amount is entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 SEK 5000 = 50.00 SEK.                                                                                                                  |
-|  ✔︎︎︎︎︎  | payment.prices.vatAmount       | integer    | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                                                   |
-|  ✔︎︎︎︎   | payment.description            | string(40) | A textual description max 40 characters of the purchase.                                                                                                                                                                             |
-|          | payment.payerReference         | string     | The reference to the payer (consumer/end-user) from the merchant system, like mobile number, customer number etc.                                                                                                                    |
-|  ✔︎︎︎︎   | payment.userAgent              | string     | The user agent reference of the consumer's browser - [see user agent definition][user-agent].                                                                                                                                        |
-|  ✔︎︎︎︎   | payment.language               | string     | nb-NO, sv-SE or en-US.                                                                                                                                                                                                               |
-|  ✔︎︎︎︎   | payment.urls.completeUrl       | string     | The URI that Swedbank Pay will redirect back to when the payment is followed through.                                                                                                                                                |
-|  ✔︎︎︎︎   | payment.urls.cancelUrl         | string     | The URI that Swedbank Pay will redirect back to when the user presses the cancel button in the payment page.                                                                                                                         |
-|          | payment.urls.callbackUrl       | string     | The URI that Swedbank Pay will perform an HTTP POST against every time a transaction is created on the payment. See [callback][technical-reference-callbackurl] for details.                                                         |
-|          | payment.urls.logoUrl           | string     | The URI that will be used for showing the customer logo. Must be a picture with at most 50px height and 400px width. Require https.                                                                                                  |
-|          | payment.urls.termsOfServiceUrl | string     | A URI that contains your terms and conditions for the payment, to be linked on the payment page. Require https.                                                                                                                      |
-|  ✔︎︎︎︎   | payeeInfo.payeeId              | string     | This is the unique id that identifies this payee (like merchant) set by PayEx.                                                                                                                                                       |
-|  ✔︎︎︎︎   | payeeInfo.payeeReference       | string(35) | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][technical-reference-payeereference] for details.                          |
-|          | payeeInfo.payeeName            | string     | The payee name (like merchant name) that will be displayed to consumer when redirected to PayEx.                                                                                                                                     |
-|          | payeeInfo.productCategory      | string     | A product category or number sent in from the payee/merchant. This is not validated by PayEx, but will be passed through the payment process and may be used in the settlement process.                                              |
-|          | payeeInfo.orderReference       | string(50) | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                              |
-|          | payeeInfo.subsite              | String(40) | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.                                                                          |
+| Required | Property                     | Type         | Description                                                                                                                                                                                                                                               |
+| :------: | :--------------------------- | :----------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|  ✔︎︎︎︎︎  | `payment`                    | `object`     | The `payment` object contains information about the specific payment.                                                                                                                                                                                     |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`operation`          | `string`     | Purchase is the only type used for direct debit payments.                                                                                                                                                                                                 |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`intent`             | `string`     | Sale is the only type used for direct debit payments.                                                                                                                                                                                                     |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`currency`           | `string`     | The currency used.                                                                                                                                                                                                                                        |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`prices`             | `object`     | The `prices` resource lists the prices related to a specific payment.                                                                                                                                                                                     |
+|  ✔︎︎︎︎︎  | └─➔&nbsp;`type`              | `string`     | Use the generic type `Directdebit` if you want to enable all bank types supported by merchant contract, otherwise specify a specific bank type. [See the Prices object types for more information.][technical-reference-price-object].                      |
+|  ✔︎︎︎︎︎  | └─➔&nbsp;`amount`            | `integer`    | Amount is entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 SEK 5000 = 50.00 SEK.                                                                                                                                       |
+|  ✔︎︎︎︎︎  | └─➔&nbsp;`vatAmount`         | `integer`    | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                                                                        |
+|  ✔︎︎︎︎   | └➔&nbsp;`description`        | `string(40)` | A textual description max 40 characters of the purchase.                                                                                                                                                                                                  |
+|          | └➔&nbsp;`payerReference`     | `string`     | The reference to the payer (consumer/end-user) from the merchant system, like mobile number, customer number etc.                                                                                                                                         |
+|  ✔︎︎︎︎   | └➔&nbsp;`userAgent`          | `string`     | The user agent reference of the consumer's browser - [see user agent definition][user-agent].                                                                                                                                                             |
+|  ✔︎︎︎︎   | └➔&nbsp;`language`           | `string`     | `nb-NO`, `sv-SE` or `en-US`.                                                                                                                                                                                                                                    |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`urls`               | `object`     | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                    |
+|  ✔︎︎︎︎   | └─➔&nbsp;`completeUrl`       | `string`     | The URI that Swedbank Pay will redirect back to when the payment is followed through. This does not indicate a successful payment, only that it has reached a completion state. A`GET`request needs to be performed on the payment to inspect it further. |
+|  ✔︎︎︎︎   | └─➔&nbsp;`cancelUrl`         | `string`     | The URI that Swedbank Pay will redirect back to when the user presses the cancel button in the payment page.                                                                                                                                              |
+|          | └─➔&nbsp;`callbackUrl`       | `string`     | The URI that Swedbank Pay will perform an HTTP POST against every time a transaction is created on the payment. See [callback][technical-reference-callbackurl] for details.                                                                              |
+|          | └─➔&nbsp;`logoUrl`           | `string`     | The URI that will be used for showing the customer logo. Must be a picture with at most 50px height and 400px width. Require https.                                                                                                                       |
+|          | └─➔&nbsp;`termsOfServiceUrl` | `string`     | A URI that contains your terms and conditions for the payment, to be linked on the payment page. Require https.                                                                                                                                           |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`payeenfo`           | `object`     | The `payeeInfo` contains information about the payee.                                                                                                                                                                                                     |
+|  ✔︎︎︎︎   | └─➔&nbsp;`payeeId`           | `string`     | This is the unique id that identifies this payee (like merchant) set by PayEx.                                                                                                                                                                            |
+|  ✔︎︎︎︎   | └─➔&nbsp;`payeeReference`    | `string(35)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][technical-reference-payeereference] for details.                                               |
+|          | └─➔&nbsp;`payeeName`         | `string`     | The payee name (like merchant name) that will be displayed to consumer when redirected to PayEx.                                                                                                                                                          |
+|          | └─➔&nbsp;`productCategory`   | `string`     | A product category or number sent in from the payee/merchant. This is not validated by PayEx, but will be passed through the payment process and may be used in the settlement process.                                                                   |
+|          | └─➔&nbsp;`orderReference`    | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                   |
+|          | └─➔&nbsp;`subsite`           | `String(40)` | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.                                                                                               |
 
 {:.code-header}
 **Response**
@@ -173,21 +177,20 @@ is given below.
 | Property | Description                                                         |
 | :------- | :------------------------------------------------------------------ |
 | `href`   | The target URI to perform the operation against.                    |
-| rel      | The name of the relation the operation has to the current resource. |
-| method   | The HTTP method to use when performing the operation.               |
+| `rel`    | The name of the relation the operation has to the current resource. |
+| `method` | The HTTP method to use when performing the operation.               |
 
 The operations should be performed as described in each response and not as
-described here in the documentation.
-Always use the `href` and `method` as specified in the response by finding the
-appropriate operation based on its `rel` value.
-The only thing that should be hard coded in the client is the value of the
-`rel` and the request that will be sent in the HTTP body of the request for
-the given operation.
+described here in the documentation. Always use the `href` and `method` as
+specified in the response by finding the appropriate operation based on its
+`rel` value. The only thing that should be hard coded in the client is the value
+of the `rel` and the request that will be sent in the HTTP body of the request
+for the given operation.
 
 | Operation              | Description                                                                                                                        |
 | :--------------------- | :--------------------------------------------------------------------------------------------------------------------------------- |
-| _update-payment-abort_ | [Aborts][technical-reference-abort-payment] the payment before any financial transactions are performed.                           |
-| _redirect-sale_        | Contains the redirect-URI that redirects the consumer to a Swedbank Pay hosted payment page prior to creating a sales transaction. |
+| `update-payment-abort` | [Aborts][technical-reference-abort-payment] the payment before any financial transactions are performed.                           |
+| `redirect-sale`        | Contains the redirect-URI that redirects the consumer to a Swedbank Pay hosted payment page prior to creating a sales transaction. |
 
 ## Direct Debit transactions
 
@@ -223,13 +226,13 @@ Content-Type: application/json
             {
                "id": "/psp/directdebit/payments/{{ page.paymentId }}/sales/{{ page.transactionId }}",
                "selectedBank": "NordeaFI",
-               "deviceIsMobile": "TRUE|FALSE",
+               "deviceIsMobile": true,
                "transaction": {
                    "id": "/psp/directdebit/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
                    "created": "2018-09-14T01:01:01.01Z",
                    "updated": "2018-09-14T01:01:01.03Z",
                    "type": "Sale",
-                   "state": "Initialized|Completed|Failed",
+                   "state": "Initialized",
                    "number": 1234567890,
                    "amount": 1000,
                    "vatAmount": 250,
@@ -239,21 +242,21 @@ Content-Type: application/json
                    "failedActivityName": "",
                    "failedErrorCode": "",
                    "failedErrorDescription": "",
-                   "isOperational": "TRUE|FALSE",
+                   "isOperational": true,
                    "operations": [
                     ]
                 }
             },
             {
                "id": "/psp/directdebit/payments/{{ page.paymentId }}/sales/{{ page.transactionId }}",
-               "selectedBank": "NordeaFI|...",
-               "deviceIsMobile": "TRUE|FALSE",
+               "selectedBank": "NordeaFI",
+               "deviceIsMobile": true,
                "transaction": {
                    "id": "/psp/directdebit/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
                    "created": "2018-09-14T01:01:01.01Z",
                    "updated": "2018-09-14T01:01:01.03Z",
                    "type": "Sale",
-                   "state": "Initialized|Completed|Failed",
+                   "state": "Initialized",
                    "number": 1234567890,
                    "amount": 1000,
                    "vatAmount": 250,
@@ -317,13 +320,13 @@ Content-Type: application/json
                    "created": "2016-09-14T01:01:01.01Z",
                    "updated": "2016-09-14T01:01:01.03Z",
                    "type": "Reversal",
-                   "state": "Initialized|Completed|Failed",
+                   "state": "Completed",
                    "number": 1234567890,
                    "amount": 1000,
                    "vatAmount": 250,
                    "description": "Test transaction",
                    "payeeReference": "AH123456",
-                   "isOperational": "TRUE|FALSE",
+                   "isOperational": true,
                    "operations": []
                 }
             }
@@ -333,11 +336,11 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property       | Type   | Description                                                                                          |
-| :------------- | :----- | :--------------------------------------------------------------------------------------------------- |
-| payment        | string | The relative URI of the payment that the reversal transactions belong to.                            |
-| reversalList   | array  | The array of reversal transaction objects.                                                           |
-| reversalList[] | object | The reversal transaction object representation of the reversal transaction resource described below. |
+| Property         | Type     | Description                                                                                          |
+| :--------------- | :------- | :--------------------------------------------------------------------------------------------------- |
+| `payment`        | `string` | The relative URI of the payment that the reversal transactions belong to.                            |
+| `reversalList`   | `array`  | The array of reversal transaction objects.                                                           |
+| `reversalList[]` | `object` | The reversal transaction object representation of the reversal transaction resource described below. |
 
 #### Create Reversal transaction
 
@@ -365,12 +368,13 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property                   | Type       | Description                                                                                                                                                          |
-| :------: | :------------------------- | :--------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|  ✔︎︎︎︎︎  | transaction.amount         | integer    | Amount entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 SEK`, `5000` = `50.00 SEK`.                                            |
-|  ✔︎︎︎︎︎  | transaction.vatAmount      | integer    | Amount entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 SEK`, `5000` = `50.00 SEK`.                                            |
-|  ✔︎︎︎︎︎  | transaction.description    | string     | A textual description of the capture.                                                                                                                                |
-|  ✔︎︎︎︎︎  | transaction.payeeReference | string(35) | A  reference that must match the  payeeReference of the sales transaction you want to reverse. See [payeeReference][technical-reference-payeereference] for details. |
+| Required | Property                 | Type         | Description                                                                                                                                                          |
+| :------: | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|  ✔︎︎︎︎︎  | `transaction`            | `object`     | The transaction object.                                                                                                                                              |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`amount`         | `integer`    | Amount entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 SEK`, `5000` = `50.00 SEK`.                                            |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`vatAmount`      | `integer`    | Amount entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 SEK`, `5000` = `50.00 SEK`.                                            |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`description`    | `string`     | A textual description of the capture.                                                                                                                                |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`payeeReference` | `string(35)` | A  reference that must match the  payeeReference of the sales transaction you want to reverse. See [payeeReference][technical-reference-payeereference] for details. |
 
 {:.code-header}
 **Response**
@@ -388,13 +392,13 @@ Content-Type: application/json
            "created": "2016-09-14T01:01:01.01Z",
            "updated": "2016-09-14T01:01:01.03Z",
            "type": "Reversal",
-           "state": "Initialized|Completed|Failed",
+           "state": "Completed",
            "number": 1234567890,
            "amount": 1000,
            "vatAmount": 250,
            "description": "Test transaction",
            "payeeReference": "AH123456",
-           "isOperational": "TRUE|FALSE",
+           "isOperational": true,
            "operations": []
         }
     }
@@ -402,11 +406,12 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property             | Type   | Description                                                                                        |
-| :------------------- | :----- | :------------------------------------------------------------------------------------------------- |
-| payment              | string | The relative URI of the payment this capture transaction belongs to.                               |
-| reversal.id          | string | The relative URI of the created capture transaction.                                               |
-| reversal.transaction | object | The object representation of the generic [transaction resource][technical-reference-transactions]. |
+| Property              | Type     | Description                                                                                                       |
+| :-------------------- | :------- | :---------------------------------------------------------------------------------------------------------------- |
+| `payment`             | `string` | The relative URI of the payment this capture transaction belongs to.                                              |
+| `reversal`            | `object` | The `reversal`resource contains information about the `reversal` transaction made against a direct debit payment. |
+| └➔&nbsp;`id`          | `string` | The relative URI of the created capture transaction.                                                              |
+| └➔&nbsp;`transaction` | `object` | The object representation of the generic [transaction resource][technical-reference-transactions].                |
 
 ## Callback
 

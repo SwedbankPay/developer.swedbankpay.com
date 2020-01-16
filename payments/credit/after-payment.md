@@ -1,18 +1,16 @@
 ---
-title: Swedbank Pay Card Payments – After Payment
+title: Swedbank Pay Credit Payments – After Payment
 sidebar:
   navigation:
-  - title: Card Payments
+  - title: Credit Payments
     items:
-    - url: /payments/card/
+    - url: /payments/credit/
       title: Introduction
-    - url: /payments/card/redirect
+    - url: /payments/credit/redirect
       title: Redirect
-    - url: /payments/card/seamless-view
-      title: Seamless View
-    - url: /payments/card/after-payment
+    - url: /payments/credit/after-payment
       title: After Payment
-    - url: /payments/card/other-features
+    - url: /payments/credit/other-features
       title: Other Features
 ---
 
@@ -20,12 +18,7 @@ sidebar:
 
 ## Options after posting a payment
 
-When you detect that the payer reach your `completeUrl` , you need to do a `GET`
-request on the payment resource, containing the `paymentID` generated in the
-first step, to receive the state of the transaction. You will also be able to
-see the available operations after posting a payment.
-
-{% include payment-resource.md %}
+{% include payment-resource.md  payment-instrument="creditaccount" %}
 
 * *Abort:* It is possible to abort the process if the payment has no successful
   transactions. [See the Abort description here][abort].
@@ -38,43 +31,37 @@ see the available operations after posting a payment.
 
 ## Capture
 
-The capture transaction is the when you ensure that the funds are charged from
-the consumer. This step usaully takes place when the product has exchanged
-possession. One must first do a `GET` request on the payment to find the
+To `capture` a `CreditAccountSe` transaction, you need to perform the
 `create-capture` operation.
 
-### Create capture transaction
-
-To create a `capture` transaction to withdraw money from the payer's card, you
-need to perform the `create-capture` operation.
-
 {:.code-header}
 **Request**
 
 ```http
-POST /psp/creditcard/payments/{{ page.paymentId }}/captures HTTP/1.1
+POST /psp/creditaccount/payments/<paymentId>/captures HTTP/1.1
 Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
-    "transaction": {
-        "amount": 1500,
-        "vatAmount": 250,
-        "description": "Test Capture",
-        "payeeReference": "ABC123"
-    }
+ "transaction": {
+    "amount": 1000,
+   "vatAmount": 250,
+   "description" : "description for transaction",
+   "payeeReference": "customer reference-unique"
+  }
 }
 ```
 
 {:.table .table-striped}
-| Required | Property                 | Type          | Description                                                                                                   |
-| :------: | :----------------------- | :------------ | :------------------------------------------------------------------------------------------------------------ |
-|  ✔︎︎︎︎︎  | `transaction`            | `object`      | The object representation of the generic [transaction resource][transaction-resource].                        |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`amount`         | `integer`     | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 100.00 NOK, 5000 50.00 SEK. |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`vatAmount`      | `integer`     | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 100.00 NOK, 5000 50.00 SEK. |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`description`    | `string`      | A textual description of the capture transaction.                                                             |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`payeeReference` | `string(30*)` | A unique reference for the capture transaction. See [payeeReference][payeeReference] for details.             |
+| Required | Property               | Type        | Description                                                                                                               |
+| :------: | :--------------------- | :---------- | :------------------------------------------------------------------------------------------------------------------------ |
+|    ✔︎    | `capture.amount`         | `integer`     | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 NOK`, `5000` = `50.00 SEK`. |
+|    ✔︎    | `capture.vatAmount`      | `integer`     | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 NOK`, `5000` = `50.00 SEK`. |
+|    ✔︎    | `capture.description`    | `string`      | A textual description of the capture transaction.                                                                         |
+|    ✔︎    | `capture.payeeReference` | `string(30)` | A unique reference for the capture transaction. See [payeeReference][payee-reference] for details.                        |
+
+The `capture` resource contains information about the capture transaction.
 
 {:.code-header}
 **Response**
@@ -84,95 +71,39 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/creditcard/payments/{{ page.paymentId }}",
-    "capture": {
-        "id": "/psp/creditcard/payments/{{ page.paymentId }}/captures/{{ page.transactionId }}",
-        "transaction": {
-            "id": "/psp/creditcard/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
-            "created": "2016-09-14T01:01:01.01Z",
-            "updated": "2016-09-14T01:01:01.03Z",
-            "type": "Capture",
-            "state": "Completed",
-            "number": 1234567890,
-            "amount": 1500,
-            "vatAmount": 250,
-            "description": "Test Capture",
-            "payeeReference": "ABC123",
-            "isOperational": false,
-            "operations": []
-        }
-    }
-}
-```
-
-{:.table .table-striped}
-| Property                  | Type      | Description                                                                                                                                                                                                  |
-| :------------------------ | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `payment`                 | `string`  | The relative URI of the payment this `capture` transaction belongs to.                                                                                                                                       |
-| `capture`                 | `object`  | The `capture` resource contains information about the `capture` transaction made against a card payment.                                                                                                     |
-| └➔&nbsp;`id`              | `string`  | The relative URI of the created `capture` transaction.                                                                                                                                                       |
-| └➔&nbsp;`transaction`     | `object`  | The object representation of the generic [`transaction resource`][transaction-resource].                                                                                                                     |
-| └─➔&nbsp;`id`             | `string`  | The relative URI of the current  `transaction`  resource.                                                                                                                                                    |
-| └─➔&nbsp;`created`        | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
-| └─➔&nbsp;`updated`        | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
-| └─➔&nbsp;`type`           | `string`  | Indicates the transaction type.                                                                                                                                                                              |
-| └─➔&nbsp;`state`          | `string`  | Initialized ,  Completed  or  Failed . Indicates the state of the transaction                                                                                                                                |
-| └─➔&nbsp;`number`         | `string`  | The transaction  number , useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that  id  should be used instead. |
-| └─➔&nbsp;`amount`         | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g.  10000  = 100.00 NOK,  5000  = 50.00 SEK.                                                                                     |
-| └─➔&nbsp;`vatAmount`      | `integer` | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                           |
-| └─➔&nbsp;`description`    | `string`  | A human readable description of maximum 40 characters of the transaction                                                                                                                                     |
-| └─➔&nbsp;`payeeReference` | `string`  | A unique reference for the transaction. See [payeeReference][payeeReference] for details.                                                                                                                    |
-| └─➔&nbsp;`failedReason`   | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
-| └─➔&nbsp;`isOperational`  | `boolean` | `true`  if the transaction is operational; otherwise  `false` .                                                                                                                                              |
-| └─➔&nbsp;`operations`     | `array`   | The array of [operations][operations] that are possible to perform on the transaction in its current state.                                                                                                  |
-
-The `captures` resource list the capture transactions (one or more) on a
-specific payment.
-
-{:.code-header}
-**Request**
-
-```http
-GET /psp/creditcard/payments/{{ page.paymentId }}/captures HTTP/1.1
-Host: {{ page.apiHost }}
-Authorization: Bearer <AccessToken>
-Content-Type: application/json
-```
-
-{:.code-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "payment": "/psp/creditcard/payments/{{ page.paymentId }}",
-    "captures": {
-        "id": "/psp/creditcard/payments/{{ page.paymentId }}/captures",
-        "captureList": [
-            {
-                "id": "/psp/creditcard/payments/{{ page.paymentId }}/captures/{{ page.transactionId }}",
-                "transaction": {
-                    "id": "/psp/creditcard/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
-                    "created": "2016-09-14T01:01:01.01Z",
-                    "updated": "2016-09-14T01:01:01.03Z",
-                    "type": "Capture",
-                    "state": "Completed",
-                    "number": 1234567890,
-                    "amount": 1000,
-                    "vatAmount": 250,
-                    "description": "Test transaction",
-                    "payeeReference": "AH123456",
-                    "failedReason": "",
-                    "isOperational": false,
-                    "operations": []
-                }
-            }
+ "payment": "/psp/creditaccount/payments/<paymentId>",
+ "captures": [
+    {
+      "transaction": {
+       "id": "/psp/creditaccount/payments/<paymentId>/transactions/<transactionId>",
+       "created": "2016-09-14T01:01:01.01Z",
+       "updated": "2016-09-14T01:01:01.03Z",
+       "type": "Capture",
+       "state": "Initialized",
+       "number": 1234567890,
+       "amount": 1000,
+       "vatAmount": 250,
+       "description": "Test transaction",
+       "payeeReference": "AH123456",
+       "failedReason": "ExternalResponseError",
+       "failedActivityName": "Authorize",
+       "failedErrorCode": "ThirdPartyErrorCode",
+       "failedErrorDescription": "ThirdPartyErrorMessage",
+       "isOperational": true,
+       "activities": { "id": "/psp/creditaccount/payments/<paymentId>/transactions/<transactionId>/activities" },
+       "operations": [
         ]
-    }
+      }
+    },
 }
 ```
+
+{:.table .table-striped}
+| Property              | Type     | Description                                                                           |
+| :-------------------- | :------- | :------------------------------------------------------------------------------------ |
+| `payment`             | `string` | The relative URI of the payment this capture transaction belongs to.                  |
+| `capture.id`          | `string` | The relative URI of the created capture transaction.                                  |
+| `capture.transaction` | `object` | The object representation of the generic [transaction resource][transaction-resource] |
 
 {:.table .table-striped}
 | Property                  | Type      | Description                                                                                                                                                                                                  |
@@ -192,21 +123,21 @@ Content-Type: application/json
 | └─➔&nbsp;`amount`         | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g.  10000  = 100.00 NOK,  5000  = 50.00 SEK.                                                                                     |
 | └─➔&nbsp;`vatAmount`      | `integer` | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                           |
 | └─➔&nbsp;`description`    | `string`  | A human readable description of maximum 40 characters of the transaction                                                                                                                                     |
-| └─➔&nbsp;`payeeReference` | `string`  | A unique reference for the transaction. See [payeeReference][payeeReference] for details.                                                                                                                    |
+| └─➔&nbsp;`payeeReference` | `string`  | A unique reference for the transaction. See [payeeReference][payee-reference] for details.                                                                                                                    |
 | └─➔&nbsp;`failedReason`   | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | └─➔&nbsp;`isOperational`  | `boolean` | `true`  if the transaction is operational; otherwise  `false` .                                                                                                                                              |
 | └─➔&nbsp;`operations`     | `array`   | The array of [operations][operations] that are possible to perform on the transaction in its current state.                                                                                                  |
 
 ### Capture Sequence
 
-`Capture` can only be done on a authorized transaction. It is possible to do a
-part-capture where you only capture a part of the authorization amount. You can
-later do more captures on the same payment up to the total authorization amount.
+`Capture` can only be done on an authorized transaction. It is possible to do a
+part-capture where you only capture a part of the authorized amount. You can
+later do more captures on the same payment up to the total authorized amount.
 
 ```mermaid
 sequenceDiagram
   activate Merchant
-  Merchant->>-SwedbankPay: POST [Credit card captures]
+  Merchant->>-SwedbankPay: POST [CreditAccount captures]
   activate SwedbankPay
   SwedbankPay-->>-Merchant: transaction resource
 ```
@@ -215,18 +146,18 @@ sequenceDiagram
 
 `Cancel` can only be done on a authorized transaction. If you do cancel after
 doing a part-capture you will cancel the difference between the capture amount
-and the authorization amount.
+and the authorized amount.
 
 ### Create cancellation transaction
 
-Perform the `create-cancel` operation to cancel a previously created - and not
-yet captured - payment.
+Perform the `create-cancel` operation to cancel a previously created – and not
+yet captured – payment.
 
 {:.code-header}
 **Request**
 
 ```http
-POST /psp/creditcard/payments/{{ page.paymentId }}/cancellations HTTP/1.1
+POST /psp/creditaccount/payments/{{ page.paymentId }}/cancellations HTTP/1.1
 Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -244,7 +175,7 @@ Content-Type: application/json
 | :------: | :----------------------- | :------------ | :------------------------------------------------------------------------------------------------------- |
 |  ✔︎︎︎︎︎  | `transaction`            | `object`      | The `object` representation of the generic [transaction resource][transaction-resource].                 |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`description`    | `string`      | A textual description of the reason for the `cancellation`.                                              |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`payeeReference` | `string(30*)` | A unique reference for the `cancellation` transaction. See [payeeReference][payeeReference] for details. |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`payeeReference` | `string(30*)` | A unique reference for the `cancellation` transaction. See [payeeReference][payee-reference] for details. |
 
 The `cancel` resource contains information about a cancellation transaction
 made against a payment.
@@ -257,11 +188,11 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/creditcard/payments/{{ page.paymentId }}",
+    "payment": "/psp/creditaccount/payments/{{ page.paymentId }}",
     "cancellation": {
-        "id": "/psp/creditcard/payments/{{ page.paymentId }}/cancellations/{{ page.transactionId }}",
+        "id": "/psp/creditaccount/payments/{{ page.paymentId }}/cancellations/{{ page.transactionId }}",
         "transaction": {
-            "id": "/psp/creditcard/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
+            "id": "/psp/creditaccount/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
             "created": "2016-09-14T01:01:01.01Z",
             "updated": "2016-09-14T01:01:01.03Z",
             "type": "Cancellation",
@@ -295,7 +226,7 @@ Content-Type: application/json
 | └─➔&nbsp;`amount`         | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g.  10000  = 100.00 NOK,  5000  = 50.00 SEK.                                                                                     |
 | └─➔&nbsp;`vatAmount`      | `integer` | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                           |
 | └─➔&nbsp;`description`    | `string`  | A human readable description of maximum 40 characters of the transaction                                                                                                                                     |
-| └─➔&nbsp;`payeeReference` | `string`  | A unique reference for the transaction. See [payeeReference][payeeReference] for details.                                                                                                                    |
+| └─➔&nbsp;`payeeReference` | `string`  | A unique reference for the transaction. See [payeeReference][payee-reference] for details.                                                                                                                    |
 | └─➔&nbsp;`failedReason`   | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | └─➔&nbsp;`isOperational`  | `boolean` | `true`  if the transaction is operational; otherwise  `false` .                                                                                                                                              |
 | └─➔&nbsp;`operations`     | `array`   | The array of [operations][operations] that are possible to perform on the transaction in its current state.                                                                                                  |
@@ -307,7 +238,7 @@ payment.
 **Request**
 
 ```http
-GET /psp/creditcard/payments/{{ page.paymentId }}/cancellations HTTP/1.1
+GET /psp/creditaccount/payments/{{ page.paymentId }}/cancellations HTTP/1.1
 Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -321,13 +252,13 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/creditcard/payments/{{ page.paymentId }}",
+    "payment": "/psp/creditaccount/payments/{{ page.paymentId }}",
     "cancellations": {
-        "id": "/psp/creditcard/payments/{{ page.paymentId }}/cancellations",
+        "id": "/psp/creditaccount/payments/{{ page.paymentId }}/cancellations",
         "cancellationList": [{
-            "id": "/psp/creditcard/payments/{{ page.paymentId }}/cancellations/{{ page.transactionId }}",
+            "id": "/psp/creditaccount/payments/{{ page.paymentId }}/cancellations/{{ page.transactionId }}",
             "transaction": {
-                "id": "/psp/creditcard/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
+                "id": "/psp/creditaccount/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
                 "created": "2016-09-14T01:01:01.01Z",
                 "updated": "2016-09-14T01:01:01.03Z",
                 "type": "Cancellation",
@@ -364,7 +295,7 @@ Content-Type: application/json
 | └─➔&nbsp;`amount`          | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g.  10000  = 100.00 NOK,  5000  = 50.00 SEK.                                                                                     |
 | └─➔&nbsp;`vatAmount`       | `integer` | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                           |
 | └─➔&nbsp;`description`     | `string`  | A human readable description of maximum 40 characters of the transaction                                                                                                                                     |
-| └─➔&nbsp;`payeeReference`  | `string`  | A unique reference for the transaction. See [payeeReference][payeeReference] for details.                                                                                                                    |
+| └─➔&nbsp;`payeeReference`  | `string`  | A unique reference for the transaction. See [payeeReference][payee-reference] for details.                                                                                                                    |
 | └─➔&nbsp;`failedReason`    | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | └─➔&nbsp;`isOperational`   | `boolean` | `true` if the transaction is operational; otherwise `false` .                                                                                                                                                |
 | └─➔&nbsp;`operations`      | `array`   | The array of [operations][operations] that are possible to perform on the transaction in its current state.                                                                                                  |
@@ -374,7 +305,7 @@ Content-Type: application/json
 ```mermaid
 sequenceDiagram
   activate Merchant
-  Merchant->>-SwedbankPay: POST [creditcard cancellactions]
+  Merchant->>-SwedbankPay: POST [CreditAccount cancellactions]
   activate SwedbankPay
   SwedbankPay-->>-Merchant: transaction resource
 ```
@@ -391,7 +322,7 @@ The `create-reversal` operation will reverse a previously captured payment.
 **Request**
 
 ```http
-POST /psp/creditcard/payments/{{ page.paymentId }}/reversals HTTP/1.1
+POST /psp/creditaccount/payments/{{ page.paymentId }}/reversals HTTP/1.1
 Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -413,7 +344,7 @@ Content-Type: application/json
 |   ✔︎︎︎︎︎   | └➔&nbsp;`amount` | `integer` | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK. |
 |   ✔︎︎︎︎︎   | └➔&nbsp;`vatAmount` | `integer` | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.|
 |   ✔︎︎︎︎︎   | └➔&nbsp;`description` | `string` | A textual description of the `reversal`.|
-|   ✔︎︎︎︎︎   | └➔&nbsp;`payeeReference` | `string(30*)` | A unique reference for the `reversal` transaction. See [payeeReference][payeeReference] for details.|
+|   ✔︎︎︎︎︎   | └➔&nbsp;`payeeReference` | `string(30*)` | A unique reference for the `reversal` transaction. See [payeeReference][payee-reference] for details.|
 
 The `reversal` resource contains information about the newly created reversal
 transaction.
@@ -426,11 +357,11 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/creditcard/payments/{{ page.paymentId }}",
+    "payment": "/psp/creditaccount/payments/{{ page.paymentId }}",
     "reversal": {
-        "id": "/psp/creditcard/payments/{{ page.paymentId }}/reversal/{{ page.transactionId }}",
+        "id": "/psp/creditaccount/payments/{{ page.paymentId }}/reversal/{{ page.transactionId }}",
         "transaction": {
-            "id": "/psp/creditcard/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
+            "id": "/psp/creditaccount/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
             "created": "2016-09-14T01:01:01.01Z",
             "updated": "2016-09-14T01:01:01.03Z",
             "type": "Reversal",
@@ -464,7 +395,7 @@ Content-Type: application/json
 | └─➔&nbsp;`amount`         | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g.  10000  = 100.00 NOK,  5000  = 50.00 SEK.                                                                                     |
 | └─➔&nbsp;`vatAmount`      | `integer` | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                           |
 | └─➔&nbsp;`description`    | `string`  | A human readable description of maximum 40 characters of the transaction                                                                                                                                     |
-| └─➔&nbsp;`payeeReference` | `string`  | A unique reference for the transaction. See [payeeReference][payeeReference] for details.                                                                                                                    |
+| └─➔&nbsp;`payeeReference` | `string`  | A unique reference for the transaction. See [payeeReference][payee-reference] for details.                                                                                                                    |
 | └─➔&nbsp;`failedReason`   | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | └─➔&nbsp;`isOperational`  | `boolean` | `true`  if the transaction is operational; otherwise  `false` .                                                                                                                                              |
 | └─➔&nbsp;`operations`     | `array`   | The array of [operations][operations] that are possible to perform on the transaction in its current state.                                                                                                  |
@@ -476,7 +407,7 @@ specific payment.
 **Request**
 
 ```http
-GET /psp/creditcard/payments/{{ page.paymentId }}/reversals HTTP/1.1
+GET /psp/creditaccount/payments/{{ page.paymentId }}/reversals HTTP/1.1
 Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -490,13 +421,13 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/creditcard/payments/{{ page.paymentId }}",
+    "payment": "/psp/creditaccount/payments/{{ page.paymentId }}",
     "reversals": {
-        "id": "/psp/creditcard/payments/{{ page.paymentId }}/reversal",
+        "id": "/psp/creditaccount/payments/{{ page.paymentId }}/reversal",
         "reversalList": [{
-            "id": "/psp/creditcard/payments/{{ page.paymentId }}/reversal/{{ page.transactionId }}",
+            "id": "/psp/creditaccount/payments/{{ page.paymentId }}/reversal/{{ page.transactionId }}",
             "transaction": {
-                "id": "/psp/creditcard/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
+                "id": "/psp/creditaccount/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
                 "created": "2016-09-14T01:01:01.01Z",
                 "updated": "2016-09-14T01:01:01.03Z",
                 "type": "Reversal",
@@ -533,7 +464,7 @@ Content-Type: application/json
 | └─➔&nbsp;`amount`         | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g.  10000  = 100.00 NOK,  5000  = 50.00 SEK.                                                                                     |
 | └─➔&nbsp;`vatAmount`      | `integer` | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                           |
 | └─➔&nbsp;`description`    | `string`  | A human readable description of maximum 40 characters of the transaction                                                                                                                                     |
-| └─➔&nbsp;`payeeReference` | `string`  | A unique reference for the transaction. See [payeeReference][payeeReference] for details.                                                                                                                    |
+| └─➔&nbsp;`payeeReference` | `string`  | A unique reference for the transaction. See [payeeReference][payee-reference] for details.                                                                                                                    |
 | └─➔&nbsp;`failedReason`   | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | └─➔&nbsp;`isOperational`  | `boolean` | `true` if the transaction is operational; otherwise `false` .                                                                                                                                                |
 | └─➔&nbsp;`operations`     | `array`   | The array of [operations][operations] that are possible to perform on the transaction in its current state.                                                                                                  |
@@ -543,63 +474,9 @@ Content-Type: application/json
 ```mermaid
 sequenceDiagram
   activate Merchant
-  Merchant->>-SwedbankPay: POST [creditcard reversals]
+  Merchant->>-SwedbankPay: POST [CreditAccount reversals]
   activate SwedbankPay
   SwedbankPay-->>-Merchant: transaction resource
-```
-
-## Remove payment token
-
-If you, for any reason, need to delete a paymentToken you use the
-`Delete payment token` request.
-
-{% include alert.html type="warning"
-                      icon="warning"
-                      body="Please note that this call does not erase the card number stored at Swedbank
-  Pay. A card number is automatically deleted six months after a successful
-  `Delete payment token` request. If you want to remove card information
-  beforehand, you need to contact
-  [ehandelsetup@swedbankpay.dk](mailto:ehandelsetup@swedbankpay.dk),
-  [verkkokauppa.setup@swedbankpay.fi](mailto:verkkokauppa.setup@swedbankpay.fi),
-  [ehandelsetup@swedbankpay.no](mailto:ehandelsetup@swedbankpay.no) or
-  [ehandelsetup@swedbankpay.se](mailto:ehandelsetup@swedbankpay.se); and supply
-  them with the relevant transaction reference or payment token." %}
-
-{:.code-header}
-**Request**
-
-```http
-PATCH /psp/creditcard/payments/instrumentData/<paymentToken> HTTP/1.1
-Host: {{ page.apiHost }}
-Authorization: Bearer <AccessToken>
-Content-Type: application/json
-
-{
-  "state": "Deleted",
-  "tokenType" : "PaymentToken",
-  "comment": "Comment on why the deletion is happening"
-}
-```
-
-{:.code-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "instrumentData": {
-    "id": "/psp/creditcard/payments/instrumentdata/{{ page.paymentId }}",
-    "paymentToken": "{{ page.paymentToken }}",
-    "payeeId": "{{ page.merchantId }}",
-    "isDeleted": true|false,
-    "isPayeeToken": false,
-    "cardBrand": "MasterCard",
-    "maskedPan": "123456xxxxxx1111",
-    "expiryDate": "MM/YYYY"
-  }
-}
 ```
 
 ## Callback
@@ -616,21 +493,24 @@ sequenceDiagram
   activate Merchant
   note left of Merchant: Callback by SwedbankPay
   Merchant-->>SwedbankPay: HTTP response
-  Merchant->>-SwedbankPay: GET [credit card payment]
+  Merchant->>-SwedbankPay: GET [CreditAccount payment]
   activate SwedbankPay
   note left of Merchant: First API request
   SwedbankPay-->>-Merchant: payment resource
 ```
 
-{% include iterator.html prev_href="seamless-view" prev_title="Back: Seamless View"
-next_href="other-features" next_title="Next: Other Features" %}
+{% include iterator.html
+        prev_href="redirect"
+        prev_title="Back: Redirect"
+        next_href="other-features"
+        next_title="Next: Other Features" %}
 
-[transaction-resource]: /payments/card/other-features#transactions
-[payeeReference]: /payments/card/other-features#payeereference
-[payment-resource]: /payments/card/other-features#payment
-[abort]: /payments/card/other-features#abort
-[callback]: /payments/card/other-features#callback
-[cancel]: /payments/card/after-payment#cancellations
-[capture]: /payments/card/after-payment#Capture
-[operations]: /payments/card/other-features#operations
-[reversal]: /payments/card/after-payment#reversals
+[payment-resource]: /payments/credit/other-features#payment
+[abort]: /payments/credit/other-features#abort
+[callback]: /payments/credit/other-features#callback
+[cancel]: /payments/credit/after-payment#cancellations
+[capture]: /payments/credit/after-payment#capture
+[operations]:/payments/credit/after-payment#operations
+[reversal]: /payments/credit/after-payment#reversals
+[payee-reference]: /payments/credit/other-features#payeereference
+[transaction-resource]: /payments/credit/other-features#transactions
