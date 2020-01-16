@@ -24,6 +24,8 @@ sidebar:
 
 {% include payment-resource.md payment-instrument="swish" %}
 
+{% include payment-transaction-states.md %}
+
 ## Create Payment
 
 To create a Swish payment, you perform an HTTP `POST` against the

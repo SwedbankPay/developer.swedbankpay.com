@@ -49,6 +49,8 @@ set to value `FinancingConsumer` are listed below.
 
 {% include payment-resource.md payment-instrument="invoice" %}
 
+{% include payment-transaction-states.md %}
+
 ## Create Payment
 
 Within the invoice payments part of the eCommerce API, you can create four kinds

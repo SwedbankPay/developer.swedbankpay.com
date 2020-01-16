@@ -27,6 +27,8 @@ sidebar:
 This section describes the general sub-resources of the API that are used to
 generate payment requests.
 
+{% include payment-transaction-states.md %}
+
 ### Create Payment
 
 To create a Vipps payment, you perform an HTTP `POST` against the
