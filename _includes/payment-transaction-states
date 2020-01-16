@@ -26,7 +26,7 @@ transactions can be done.
 
 * `ìntialized` is the transaction state when something unexpected occured, and
 it is impossible to determine the exact status of the transaction. An example of
-this can be a network failure. No further actions can be done on a payment in
+this can be a network failure. No further actions can be done on a payment with a transaction in
 this state.
 
 * `completed` means that the transaction has reached its intended purpose. An
