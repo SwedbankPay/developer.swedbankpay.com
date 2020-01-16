@@ -23,11 +23,11 @@ sidebar:
 {% include alert-review-section.md %}
 
 {% include jumbotron.html body="The latest updates about our releases will be
-published on this page" %}
+published on this page." %}
 
-{% include alert.html type="neutral" icon="info" header="Version numbers listed
-on this page refers to the version number of this very documentation, not to a
-version of any APIs described by it." %}
+{% include alert.html type="neutral" icon="info" header="Version numbers"
+body="The version numbers used in headers on this page refers to the version of
+this very documentation, not to a version of any APIs described by it." %}
 
 ## January 2020
 
