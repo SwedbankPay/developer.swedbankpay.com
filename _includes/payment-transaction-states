@@ -35,7 +35,7 @@ this state.
 will be `completed` when the payer has been refunded.
 
 * `failed` means that the transaction has `failed`. The state is final for that
-specific transaction, but it is possible to try again on the same payment, i.e.
+specific transaction, but given that the payment is operational, it is possible to perform more transactions on the same payment, i.e. retry the authorization
 with another card. If the payer reaches the maximum amount of retries, the
 payment itself will be set to `failed`.
 
