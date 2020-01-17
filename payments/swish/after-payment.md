@@ -407,19 +407,6 @@ Content-Type: application/json
 | └➔&nbsp;`id`          | `string` | The relative URI of the created capture transaction.                                     |
 | └➔&nbsp;`transaction` | `object` | The object representation of the generic [transaction][technical-reference-transaction]. |
 
-### Reversal Sequence
-
-A reversal transcation have to match the Payee reference of a
-completed sales transaction.
-
-```mermaid
-sequenceDiagram
-  activate Merchant
-  Merchant->>-SwedbankPay: POST <Swish reversal>
-  activate SwedbankPay
-  SwedbankPay-->>-Merchant: transaction resource
-```
-
 ## Capture
 
 Swish does not support `capture` as it is a one-phase payment method all
