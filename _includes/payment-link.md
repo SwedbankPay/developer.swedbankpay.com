@@ -1,4 +1,5 @@
 {% assign hide-3d-secure = include.hide-3d-secure | default: false %}
+{% assign hide-authorization = include.hide-authorization | default: false %}
 
 ## Payment Link
 
@@ -95,12 +96,16 @@ in one-phase (e.g. [Swish][swish] and credit card with autocapture) and
 two-phase (e.g. [Credit card][credit-card], [MobilePay][mobile-pay],
 [Vipps][vipps]).
 
+{% unless hide-authorization %}
+
 #### Authorization
 
 When using two-phase flows you reserve the amount with an authorization, you
 will have to specify that the _intent_ of the _purchase_ is `Authorize`. The
 amount will be reserved but not charged. You will later (i.e. when you are ready
 to ship the purchased products) have to make a `Capture` or `Cancel` request.
+
+{% endunless %}
 
 #### Capture
 

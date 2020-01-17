@@ -166,9 +166,7 @@ Content-Type: application/json
 
 {% include settlement-reconciliation.md %}
 
-{% include one-click-payments.md %}
-
-{% include payment-link.md %}
+{% include payment-link.md hide-3d-secure=true hide-authorization=true %}
 
 ### Prices
 
@@ -185,8 +183,6 @@ Content-Type: application/json
 {% include transactions-reference.md payment-instrument="swish" %}
 
 {% include callback-reference.md payment-instrument="swish" %}
-
-{% include payment-link.md hide-3d-secure=true %}
 
 ### Problem messages
 
