@@ -1,8 +1,10 @@
 {% assign autocapture = include.autocapture | default: false %}
+{% assign hide-authorization = include.hide-authorization | default: false %}
 
 The intent of the payment identifies how and when the charge will be
 effectuated. This determines the type of transaction used during the payment
 process.
+{% unless hide-authorization%}
 
 * **`Authorization` (two-phase)**: If you want the credit card to reserve the
   amount, you will have to specify that the intent of the purchase is
@@ -10,6 +12,7 @@ process.
   when you are ready to ship the purchased products) have to make a
   [capture][capture] or [cancel][cancel] request later on to fulfill the
   transaction.
+  {% endunless %}
 {% if autocapture %}
 * **`AutoCapture` (one-phase)**:  If you want the credit card to be charged
   right away, you will have to specify that the intent of the purchase is
