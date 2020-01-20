@@ -150,8 +150,6 @@ for the given operation.
 | `redirect-authorization` | Contains the URI that is used to redirect the consumer to the Swedbank Pay Payments containing the card authorization UI. |
 | `create-capture`         | Creates a `capture` transaction in order to charge the reserved funds from the consumer.                                  |
 | `create-cancellation`    | Creates a `cancellation` transaction that cancels a created, but not yet captured payment.                                |
-| `paid-payment`               | Returns the information about a payment that has the status `paid`.                                                                                                                                                                                                       |
-| `failed-payment`             | Returns the information about a payment that has the status `failed`.                                                                                                                                                                                                     |
 
 {% else %}
 
@@ -163,5 +161,7 @@ for the given operation.
 | `view-authorization`     | Contains the JavaScript `href` that is used to embed  the card authorization UI directly on the webshop/merchant site     |
 | `create-capture`         | Creates a `capture` transaction in order to charge the reserved funds from the consumer.                                  |
 | `create-cancellation`    | Creates a `cancellation` transaction that cancels a created, but not yet captured payment.                                |
+| `paid-payment`           | Returns the information about a payment that has the status `paid`.                                                       |
+| `failed-payment`         | Returns the information about a payment that has the status `failed`.                                                     |
 
 {% endcase %}
