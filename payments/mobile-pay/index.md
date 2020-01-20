@@ -19,17 +19,17 @@ sidebar:
 {% include jumbotron.html body="  Enter your phone number,
 get the push message, press the pay button... and you're done!  " %}
 
-Mobile Pay is the main Danish payment app for mobile phones, making it one of
+MobilePay is the main Danish payment app for mobile phones, making it one of
 the essential payment instruments for merchants operating in Denmark. We offer
 it on our redirect and seamless view platforms.
 
 ## Purchase flow
 
-After the payment is created, the consumer is redirected to Mobile Pay's
+After the payment is created, the consumer is redirected to MobilePay's
 own payment page where the phone number is entered, and a push message is sent
 to the phone.
 
-![screenshot of the Mobile Pay number input page][mobilepay-number-input]{:height="600px" width="425px"}
+![screenshot of the MobilePay number input page][mobilepay-number-input]{:height="600px" width="425px"}
 
 A countdown is shown in the browser and the payment request will appear in the
 app, waiting to be confirmed by the consumer. If you are using the redirect
@@ -39,10 +39,10 @@ option, the consumer will be redirected back to the merchant's site.
 
 ### Payment Type
 
-Mobile Pay is one of the instruments using two-phase payments. The
+MobilePay is one of the instruments using two-phase payments. The
 `authorization` is done when the consumer successfully confirms in the app, and
 the `abort`, `cancel`, `capture` or `reversal` is done by the merchant at a
-later time. Read more about the [different operations][after-payment] and the
+later time. Read more about the [different operations][other-features] and the
 [payment resource][payment-resource].
 
 ### Settlement
@@ -75,4 +75,4 @@ MobilePay app.
 
 [mobilepay-number-input]: /assets/img/payments/mobilepay-redirect-en.png
 [payment-resource]: /payments/mobile-pay/other-features#payment-resource
-[after-payment]: /payments/mobile-pay/after-payment
+[other-features]: /payments/mobile-pay/other-features#operations
