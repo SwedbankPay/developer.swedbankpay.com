@@ -99,7 +99,7 @@ Content-Type: application/json
         },
         {
             "method": "GET",
-            "href": "{{ page.api.Url }}/psp/{{ payment-instrument }}/{{ page.paymentId }}/failed",
+            "href": "{{ page.apiUrl }}/psp/{{ payment-instrument }}/{{ page.paymentId }}/failed",
             "rel": "failed-payment",
             "contentType": "application/problem+json"
         }
