@@ -90,6 +90,18 @@ Content-Type: application/json
             "href": "{{ page.apiUrl }}/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/captures",
             "rel": "create-capture",
             "contentType": "application/json"
+        },
+        {
+            "method": "GET",
+            "href": "{{ page.api.Url }}/psp/{{ payment-instrument }}/{{ page.paymentId }}/paid",
+            "rel": "paid-payment",
+            "contentType": "application/json"
+        },
+        {
+            "method": "GET",
+            "href": "{{ page.api.Url }}/psp/{{ payment-instrument }}/{{ page.paymentId }}/failed",
+            "rel": "failed-payment",
+            "contentType": "application/problem+json"
         }
     ]
 }
@@ -138,6 +150,8 @@ for the given operation.
 | `redirect-authorization` | Contains the URI that is used to redirect the consumer to the Swedbank Pay Payments containing the card authorization UI. |
 | `create-capture`         | Creates a `capture` transaction in order to charge the reserved funds from the consumer.                                  |
 | `create-cancellation`    | Creates a `cancellation` transaction that cancels a created, but not yet captured payment.                                |
+| `paid-payment`               | Returns the information about a payment that has the status `paid`.                                                                                                                                                                                                       |
+| `failed-payment`             | Returns the information about a payment that has the status `failed`.                                                                                                                                                                                                     |
 
 {% else %}
 
