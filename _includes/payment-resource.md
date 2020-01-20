@@ -93,7 +93,7 @@ Content-Type: application/json
         },
         {
             "method": "GET",
-            "href": "{{ page.api.Url }}/psp/{{ payment-instrument }}/{{ page.paymentId }}/paid",
+            "href": "{{ page.apiUrl }}/psp/{{ payment-instrument }}/{{ page.paymentId }}/paid",
             "rel": "paid-payment",
             "contentType": "application/json"
         },
