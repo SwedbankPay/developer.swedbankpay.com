@@ -1,4 +1,5 @@
 {% assign payment-instrument = include.payment-instrument | default: "creditcard" %}
+{% assign showStatusOperations = include.showStatusOperations | default: true %}
 
 The `payment` resource is central to all payment instruments. All operations
 that target the payment resource directly produce a response similar to the
@@ -91,6 +92,7 @@ Content-Type: application/json
             "rel": "create-capture",
             "contentType": "application/json"
         },
+{% if showStatusOperations == true %}
         {
             "method": "GET",
             "href": "{{ page.apiUrl }}/psp/{{ payment-instrument }}/{{ page.paymentId }}/paid",
@@ -103,6 +105,7 @@ Content-Type: application/json
             "rel": "failed-payment",
             "contentType": "application/problem+json"
         }
+{% endif %}
     ]
 }
 ```
@@ -153,6 +156,10 @@ for the given operation.
 
 {% else %}
 
+{% case showStatusOperations %}
+
+{% when true %}
+
 {:.table .table-striped}
 | Operation                | Description                                                                                                               |
 | :----------------------- | :------------------------------------------------------------------------------------------------------------------------ |
@@ -163,5 +170,18 @@ for the given operation.
 | `create-cancellation`    | Creates a `cancellation` transaction that cancels a created, but not yet captured payment.                                |
 | `paid-payment`           | Returns the information about a payment that has the status `paid`.                                                       |
 | `failed-payment`         | Returns the information about a payment that has the status `failed`.                                                     |
+
+{% else %}
+
+{:.table .table-striped}
+| Operation                | Description                                                                                                               |
+| :----------------------- | :------------------------------------------------------------------------------------------------------------------------ |
+| `update-payment-abort`   | `abort`s the payment order before any financial transactions are performed.                                               |
+| `redirect-authorization` | Contains the URI that is used to redirect the consumer to the Swedbank Pay Payments containing the card authorization UI. |
+| `view-authorization`     | Contains the JavaScript `href` that is used to embed  the card authorization UI directly on the webshop/merchant site     |
+| `create-capture`         | Creates a `capture` transaction in order to charge the reserved funds from the consumer.                                  |
+| `create-cancellation`    | Creates a `cancellation` transaction that cancels a created, but not yet captured payment.                                |
+
+{% endcase %}
 
 {% endcase %}
