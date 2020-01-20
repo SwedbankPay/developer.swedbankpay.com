@@ -147,12 +147,12 @@ Content-Type: application/json
   },
     "operations": [
         {
-            "href": "{{ page.apiUrl }}/psp/directdebit/payments/<paymentId>/sales",
+            "href": "{{ page.apiUrl }}/psp/directdebit/payments/{{ page.paymentId }}/sales",
             "rel": "redirect-sale",
             "method": "POST"
         },
         {
-            "href": "{{ page.apiUrl }}/psp/directdebit/payments/<paymentId>",
+            "href": "{{ page.apiUrl }}/psp/directdebit/payments/{{ page.paymentId }}",
             "rel": "update-payment-abort",
             "method": "PATCH"
         }

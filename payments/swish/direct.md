@@ -74,7 +74,7 @@ sequenceDiagram
   activate Swish_API
   Swish_API->>-Swish_App: Start redirect
   activate Swish_App
-  
+
   Swish_App--x-Browser: Redirect
   activate Merchant
   Merchant->>- SwedbankPay: GET <Sales transaction>
@@ -243,7 +243,7 @@ request.
 **Request**
 
 ```http
-POST /psp/swish/payments/<paymentId>/sales HTTP/1.1
+POST /psp/swish/payments/{{ page.paymentId }}/sales HTTP/1.1
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 

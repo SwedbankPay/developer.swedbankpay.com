@@ -131,12 +131,12 @@ Content-Type: application/json
   },
    "operations": [
         {
-           "href": "{{ page.apiUrl }}/psp/directdebit/payments/<paymentId>/sales",
+           "href": "{{ page.apiUrl }}/psp/directdebit/payments/{{ page.paymentId }}/sales",
            "rel": "redirect-sale",
            "method": "POST"
         },
         {
-           "href": "http://{{ page.apiHost }}/psp/directdebit/payments/<paymentId>",
+           "href": "http://{{ page.apiHost }}/psp/directdebit/payments/{{ page.paymentId }}",
            "rel": "update-payment-abort",
            "method": "PATCH"
         }

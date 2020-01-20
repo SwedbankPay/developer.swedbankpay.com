@@ -85,7 +85,7 @@ sequenceDiagram
     Consumer->>-Merchant: access merchant page
     activate Merchant
     note left of Merchant: Second API request
-    Merchant->>-Swedbank Pay: GET </psp/creditaccount/payments/<paymentId>/>
+    Merchant->>-Swedbank Pay: GET <payment.id>
     activate Swedbank Pay
     Swedbank Pay-->>-Merchant: payment resource
     activate Merchant
@@ -206,8 +206,8 @@ Content-Type: application/json
     "payeeInfo" : { "id": "/psp/creditaccount/payments/{{ page.paymentId }}/payeeInfo" },
     "urls" : { "id": "/psp/creditaccount/payments/{{ page.paymentId }}c/urls" },
     "settings": { "id": "/psp/creditaccount/payments/{{ page.paymentId }}/settings" },
-    "approvedLegalAddress": { "id": "/psp/creditaccount/payments/<paymentId>/approvedlegaladdress" },
-    "maskedApprovedLegalAddress": { "id": "/psp/creditaccount/payments/<paymentId>/maskedapprovedlegaladdress" }
+    "approvedLegalAddress": { "id": "/psp/creditaccount/payments/{{ page.paymentId }}/approvedlegaladdress" },
+    "maskedApprovedLegalAddress": { "id": "/psp/creditaccount/payments/{{ page.paymentId }}/maskedapprovedlegaladdress" }
   },
   "operations": [
     {

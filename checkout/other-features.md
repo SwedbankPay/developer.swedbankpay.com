@@ -682,7 +682,7 @@ other payment instrument properties, by [expanding the sub-resource][expanding]
 **Request**
 
 ```http
-GET /psp/paymentorders/<paymentorderId>?$expand=currentpayment HTTP/1.1
+GET /psp/paymentorders/{{ page.paymentorderId }}?$expand=currentpayment HTTP/1.1
 Host: {{ page.apiHost }}
 ```
 
@@ -803,7 +803,7 @@ should finish the purchase with a credit card payment instead.
 **Request**
 
 ```http
-GET /psp/paymentorders<paymentorderId>/payments HTTP/1.1
+GET /psp/paymentorders/{{ page.paymentorderId }}/payments HTTP/1.1
 Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -814,7 +814,7 @@ Content-Type: application/json
         "id": "/psp/paymentorders/{{ page.paymentOrderId }}/payments",
         "paymentList" : [
             {
-                "id": "/psp/creditcard/payments/{{ page.paymentOrderId }}",
+                "id": "/psp/creditcard/payments/{{ page.transactionId }}",
                 "instrument" : "CreditCard",
                 "created": "2016-09-14T13:21:29.3182115Z"
             },
