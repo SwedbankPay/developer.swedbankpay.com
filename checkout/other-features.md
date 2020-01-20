@@ -361,7 +361,7 @@ A list of possible operations and their explanation is given below.
         },
         {
             "method": "GET",
-            "href": "{{ page.api.Url }}/psp/paymentorders/{{ page.paymentOrderId }}/paid",
+            "href": "{{ page.apiUrl }}/psp/paymentorders/{{ page.paymentOrderId }}/paid",
             "rel": "paid-paymentorder",
             "contentType": "application/json"
         },
