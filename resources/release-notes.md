@@ -23,11 +23,11 @@ sidebar:
 {% include alert-review-section.md %}
 
 {% include jumbotron.html body="The latest updates about our releases will be
-published on this page" %}
+published on this page." %}
 
-{% include alert.html type="neutral" icon="info" header="Version numbers listed
-on this page refers to the version number of this very documentation, not to a
-version of any APIs described by it." %}
+{% include alert.html type="neutral" icon="info" header="Version numbers"
+body="The version numbers used in headers on this page refers to the version of
+this very documentation, not to a version of any APIs described by it." %}
 
 ## January 2020
 
@@ -37,10 +37,11 @@ version of any APIs described by it." %}
   is now released and ready for use.
 * The [Card Payments][card] section has received an overhaul, inching it closer
   to release.
-* The [Swish Payments][swish], [Vipps Payments][vipps] and [Credit
-  Payments][credit] (née "Credit Account") sections are ready for review.
-* The [Direct Debit][direct-debit] and [MobilePay Payments][mobile-pay] sections
-  have received a few updates, inching them both closer to review.
+* The [Swish Payments][swish] and [Vipps Payments][vipps] sections are ready for
+  review.
+* The [Direct Debit][direct-debit], [MobilePay Payments][mobile-pay] and
+  [Credit Payments][credit] (née "Credit Account") sections have received a few
+  updates, inching them all closer to review.
 
 ### Version 1.4
 

@@ -124,7 +124,7 @@ sequenceDiagram
             Payer ->> Payer: Event: onPaymentCompleted
             Payer ->>+ Merchant: Check payment status
             deactivate Payer
-            Merchant ->>+ SwedbankPay: GET /psp/paymentorders/<paymentOrderId>
+            Merchant ->>+ SwedbankPay: GET <paymentorder.id>
             deactivate Merchant
             SwedbankPay ->>+ Merchant: rel: paid-paymentorder
             deactivate SwedbankPay

@@ -806,10 +806,9 @@ transaction made towards a payment, as previously described.
 
 {% include payment-link.md %}
 
-## PayeeReference
+## PayeeInfo
 
-{% include payee-info.md
-payment-instrument="creditcard" %}
+{% include payee-info.md payment-instrument="creditcard" %}
 
 ## Prices
 
