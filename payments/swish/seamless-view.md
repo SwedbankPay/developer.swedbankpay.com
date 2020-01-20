@@ -114,7 +114,7 @@ Sales information. This will generate a payment object with a unique
 
 ### Intent
 
-{% include intent.md hide-authorization=true %}
+{% include intent.md swish-authorization=true %}
 
 ### Operations
 
