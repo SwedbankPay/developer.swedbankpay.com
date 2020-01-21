@@ -45,7 +45,8 @@ set to value `FinancingConsumer` are listed below.
 
 ## Payment Resource
 
-{% include payment-resource.md payment-instrument="invoice" %}
+{% include payment-resource.md payment-instrument="invoice"
+showStatusOperations=true %}
 
 ## Create Payment
 

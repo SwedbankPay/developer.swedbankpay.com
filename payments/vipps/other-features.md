@@ -24,7 +24,7 @@ sidebar:
 
 ## Payment Resource
 
-{% include payment-resource.md  payment-instrument="vipps" %}
+{% include payment-resource.md  payment-instrument="vipps" showStatusOperations=true%}
 
 ### Create Payment
 

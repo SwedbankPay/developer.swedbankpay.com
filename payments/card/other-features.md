@@ -24,7 +24,7 @@ covered by the other subsections." %}
 
 ## Payment Resource
 
-{% include payment-resource.md %}
+{% include payment-resource.md showStatusOperations=true %}
 
 ## Create Payment
 

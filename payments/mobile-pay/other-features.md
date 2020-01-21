@@ -18,7 +18,7 @@ sidebar:
 
 ## Payment Resource
 
-{% include payment-resource.md  payment-instrument="mobilepay" showStatusOperations='false' %}
+{% include payment-resource.md payment-instrument="mobilepay" %}
 
 ### Create Payment
 

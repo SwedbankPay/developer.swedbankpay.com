@@ -20,7 +20,7 @@ that were not covered by the previous subsections." %}
 
 ## Payment resource
 
-{% include payment-resource.md  payment-instrument="creditaccount" showStatusOperations='false' %}
+{% include payment-resource.md  payment-instrument="creditaccount" %}
 
 {% include transactions-reference.md payment-instrument="creditaccount" %}
 

@@ -24,7 +24,7 @@ They are listed on this very page." %}
 
 ## Payment Orders
 
-{% include payment-order-get.md %}
+{% include payment-order-get.md showStatusOperations=true %}
 
 ### Creating a payment order
 

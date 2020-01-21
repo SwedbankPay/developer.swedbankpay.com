@@ -1,5 +1,5 @@
 {% assign payment-instrument = include.payment-instrument | default: "creditcard" %}
-{% assign showStatusOperations = include.showStatusOperations | default: true %}
+{% assign showStatusOperations = include.showStatusOperations | default: false %}
 
 The `payment` resource is central to all payment instruments. All operations
 that target the payment resource directly produce a response similar to the
@@ -91,8 +91,7 @@ Content-Type: application/json
             "href": "{{ page.apiUrl }}/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/captures",
             "rel": "create-capture",
             "contentType": "application/json"
-        },
-{% if showStatusOperations == true %}
+        }{% if showStatusOperations %},
         {
             "method": "GET",
             "href": "{{ page.apiUrl }}/psp/{{ payment-instrument }}/{{ page.paymentId }}/paid",
@@ -155,10 +154,7 @@ for the given operation.
 | `create-cancellation`    | Creates a `cancellation` transaction that cancels a created, but not yet captured payment.                                |
 
 {% else %}
-
-{% case showStatusOperations %}
-
-{% when true %}
+{% if showStatusOperations %}
 
 {:.table .table-striped}
 | Operation                | Description                                                                                                               |
@@ -182,6 +178,5 @@ for the given operation.
 | `create-capture`         | Creates a `capture` transaction in order to charge the reserved funds from the consumer.                                  |
 | `create-cancellation`    | Creates a `cancellation` transaction that cancels a created, but not yet captured payment.                                |
 
-{% endcase %}
-
+{% endif %}
 {% endcase %}
