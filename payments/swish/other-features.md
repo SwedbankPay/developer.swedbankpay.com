@@ -159,7 +159,7 @@ Content-Type: application/json
 
 {% include settlement-reconciliation.md %}
 
-{% include payment-link.md hide-3d-secure=true hide-authorization=true %}
+{% include payment-link.md show-3d-secure=false show-authorization=false %}
 
 ### Prices
 

@@ -1,5 +1,5 @@
-{% assign hide-3d-secure = include.hide-3d-secure | default: false %}
-{% assign show-authorization = include.show-authorization | default: false %}
+{% assign show-3d-secure = include.show-3d-secure | default: true %}
+{% assign show-authorization = include.show-authorization | default: true %}
 
 ## Payment Link
 
@@ -34,10 +34,10 @@ recommendations in the next section.**" %}
 When the consumer clicks on the Payment Link, the Swedbank Pay payment page will
 open, letting the consumer enter the payment details (varying depending on
 payment instrument) in a secure Swedbank Pay hosted environment.
-{% unless hide-3d-secure %}
+{% if show-3d-secure %}
 When paying with credit card and if required, Swedbank Pay will handle 3-D
 Secure authentication.
-{% endunless %}
+{% endif %}
 
 After completion, Swedbank Pay will redirect the browser back to your
 merchant/webshop site.
@@ -141,10 +141,10 @@ here][technical-reference-callback].
 
 The sequence diagrams display the high level process of the purchase, from
 generating a Payment Link to receiving a Callback.
-{% unless hide-3d-secure %}
+{% if show-3d-secure %}
 This in a generalized flow as
 well as a specific 3-D Secure enabled credit card scenario.
-{% endunless %}
+{% endif %}
 
 {% include alert.html type="neutral" icon="info" body="
 Please note that the the callback may come either before, after or in the
@@ -152,7 +152,7 @@ same moment as the consumer are being redirected to the status page at the
 merchant site when the purchase is fulfilled. Don't rely on the callback being
 timed at any specific moment." %}
 
-{% unless hide-3d-secure %}
+{% if show-3d-secure %}
 When dealing with credit card payments, 3-D Secure authentication of the
 cardholder is an essential topic.
 There are three alternative outcome of a credit card payment:
@@ -166,7 +166,7 @@ There are three alternative outcome of a credit card payment:
   Swedbank Pay will redirect the cardholder to the autentication mechanism
   that is decided by the issuing bank.
   Normally this will be done using BankID or Mobile BankID.
-{% endunless %}
+{% endif %}
 
 ```mermaid
 sequenceDiagram
@@ -188,7 +188,7 @@ sequenceDiagram
     Consumer->>-SwedbankPay: Open link and enter payment information
     activate SwedbankPay
 
-    {%unless hide-3d-secure %}
+    {% if show-3d-secure %}
         opt Card supports 3-D Secure
         SwedbankPay-->>-Consumer: redirect to IssuingBank
         activate Consumer
@@ -196,7 +196,7 @@ sequenceDiagram
         Consumer->>-SwedbankPay: access authentication page
         activate SwedbankPay
         end
-    {% endunless %}
+    {% endif %}
 
     SwedbankPay-->>-Consumer: redirect to merchant site
     activate Consumer

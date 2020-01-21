@@ -1,5 +1,5 @@
 {% assign autocapture = include.autocapture | default: false %}
-{% assign show-authorization = include.show-authorization | default: false %}
+{% assign show-authorization = include.show-authorization | default: true %}
 
 The intent of the payment identifies how and when the charge will be
 effectuated. This determines the type of transaction used during the payment
