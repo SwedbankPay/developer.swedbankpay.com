@@ -152,6 +152,7 @@ Content-Type: application/json
                 "vatAmount": 0
             }
         ],
+        "paymentAgeLimit": 18,
         "description": "Test Purchase",
         "generatePaymentToken": false,
         "generateRecurrenceToken": false,
@@ -163,8 +164,8 @@ Content-Type: application/json
             "cancelUrl": "http://example.com/payment-canceled",
             "paymentUrl": "http://example.com/perform-payment",
             "callbackUrl": "http://example.com/payment-callback",
-            "logoUrl": "http://example.com/payment-logo.png",
-            "termsOfServiceUrl": "http://example.com/payment-terms.pdf",
+            "logoUrl": "https://example.com/payment-logo.png",
+            "termsOfServiceUrl": "https://example.com/payment-terms.pdf",
         },
         "payeeInfo": {
             "payeeId": "{{ page.merchantId }}"
@@ -173,26 +174,12 @@ Content-Type: application/json
             "productCategory": "A123",
             "orderReference": "or123",
         },
+       "payerInfo": {
+       		"socialSecurityNumber": "194810205957"
+       }
         "prefillInfo": {
           "msisdn": "+46987654321"
-        },
-        "riskIndicator": {
-            "deliveryEmailAddress": "test@example.com",
-            "deliveryTimeFrameindicator": "01",
-            "preOrderDate": "19801231",
-            "preOrderPurchaseIndicator": "01",
-            "shipIndicator": "01",
-            "giftCardPurchase": false,
-            "reOrderPurchaseIndicator": "01",
-            "pickUpAddress": {
-                "name": "Leo",
-                "streetAddress": "Gata 535",
-                "coAddress": "street 55",
-                "city": "Stockholm",
-                "zipCode": "55560",
-                "countryCode": "SE"
-            }
-        }
+        }  
     },
     "swish": {
         "enableEcomOnly": true,
@@ -210,7 +197,8 @@ Content-Type: application/json
 |  ✔︎︎︎︎︎  | └➔&nbsp;`prices`                      | `object`      | The `prices` resource lists the prices related to a specific payment.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`type`                       | `string`      | Use the generic type CreditCard if you want to enable all card brands supported by merchant contract. Use card brands like Visa (for card type Visa), MasterCard (for card type Mastercard) and others if you want to specify different amount for each card brand. If you want to use more than one amount you must have one instance in the prices node for each card brand. You will not be allowed to both specify card brands and CreditCard at the same time in this field. [See the Prices resource and prices object types for more information][price-resource]. |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`amount`                     | `integer`     | Amount is entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 SEK 5000 = 50.00 SEK.                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-|  ✔︎︎︎︎︎  | └─➔&nbsp;`vatAmount`                  | `integer`     | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                                                                                                                                                                                                                                                                                                                                                                                        |
+|  ✔︎︎︎︎︎  | └─➔&nbsp;`vatAmount`                  | `integer`     | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.
+|      | └➔&nbsp;`paymentAgeLimit`             | `integer`     | Positive number sets requried age limit to fulfill the payment.
 |  ✔︎︎︎︎︎  | └➔&nbsp;`description`                 | `string(40)`  | A textual description max 40 characters of the purchase.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 |          | └➔&nbsp;`payerReference`              | `string`      | The reference to the payer (consumer/end user) from the merchant system. E.g mobile number, customer number etc.                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 |          | └➔&nbsp;`generatePaymentToken`        | `boolean`     | `true` or `false`. Set this to `true` if you want to create a paymentToken for future use as One Click.                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
@@ -225,12 +213,14 @@ Content-Type: application/json
 |          | └─➔&nbsp;`callbackUrl`                | `string`      | The URL that Swedbank Pay will perform an HTTP POST against every time a transaction is created on the payment. See [callback][callback] for details.                                                                                                                                                                                                                                                                                                                                                                                                                     |
 |          | └─➔&nbsp;`logoUrl`                    | `string`      | The URL that will be used for showing the customer logo. Must be a picture with maximum 50px height and 400px width. Require https.                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 |          | └─➔&nbsp;`termsOfServiceUrl`          | `string`      | A URL that contains your terms and conditions for the payment, to be linked on the payment page. Require https.                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`payeeInfo`                   | `object`      | The `payeeInfo` contains information about the payee.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`payeeInfo`                   | `object`      | The `payeeInfo` contains information about the payee. |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`payeeId`                    | `string`      | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`payeeReference`             | `string(50*)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.                                                                                                                                                                                                                                                                                                                                                                                  |
 |          | └─➔&nbsp;`payeeName`                  | `string`      | The payee name (like merchant name) that will be displayed to consumer when redirected to Swedbank Pay.                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 |          | └─➔&nbsp;`productCategory`            | `string`      | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                                                                                                                                                                                                                                                                                            |
-|          | └─➔&nbsp;`orderReference`             | `String(50)`  | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+|          | └─➔&nbsp;`orderReference`             | `String(50)`  | The order reference should reflect the order reference found in the merchant's systems.     
+|           | └➔&nbsp;`payerInfo`                 |  `object`      | An object that holds payers social security number
+|           |└➔&nbsp;`socialSecurityNumber`       | `string(12)`  |  Can be provided if the merchant wants to lock the payment to a specific SSN, to make sure that only the costumer with the given SSN can make the payment
 |          | └➔&nbsp;`prefillInfo`                 | `object`      | An object that holds prefill information that can be inserted on the payment page.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 |          | └─➔&nbsp;`msisdn`                     | `string`      | Number will be prefilled on payment page, if valid. We support international phone numbers defined with country code prefix. ex +46                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 |          | └─➔&nbsp;`subsite`                    | `String(40)`  | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.                                                                                                                                                                                                                                                                                                                                                                                                               |
