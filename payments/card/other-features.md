@@ -26,6 +26,8 @@ covered by the other subsections." %}
 
 {% include payment-resource.md %}
 
+{% include payment-transaction-states.md %}
+
 ## Create Payment
 
 Within the card payments part of the eCommerce API, you can create four kinds

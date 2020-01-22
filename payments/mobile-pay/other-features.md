@@ -18,6 +18,8 @@ sidebar:
 
 ## Payment Resource
 
+{% include payment-transaction-states.md %}
+
 ### Create Payment
 
 To create a Mobile Pay payment, you perform an HTTP `POST` against the
