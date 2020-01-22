@@ -174,9 +174,6 @@ Content-Type: application/json
             "productCategory": "A123",
             "orderReference": "or123",
         },
-       "payerInfo": {
-       		"socialSecurityNumber": "194810205957"
-       }
         "prefillInfo": {
           "msisdn": "+46987654321"
         }  
