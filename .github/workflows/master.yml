@@ -1,0 +1,43 @@
+name: Master
+on: 
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: Build and deploy
+    runs-on: ubuntu-latest
+    steps:
+      # - uses: actions/checkout@v2
+      - uses: actions/checkout@v1
+      - name: Fetch tags and master for GitVersion
+        run: |
+          git fetch --tags
+          git branch --create-reflog master origin/master
+      - name: Install GitVersion
+        uses: gittools/actions/setup-gitversion@v0.3
+        with:
+          versionSpec: '5.1.x'
+      - name: Use GitVersion
+        id: gitversion # step id used as reference for output values
+        uses: gittools/actions/execute-gitversion@v0.3
+      
+      - name: Build the site in the jekyll/builder container
+        run: |
+          docker run \
+          -v ${{ github.workspace }}:/srv/jekyll \
+          -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
+          jekyll/builder:latest /bin/bash \
+          -c "chmod 777 /srv/jekyll && jekyll build --future"
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Azure Deploy
+        uses: azure/CLI@v1
+        with:
+          inlineScript: |
+            az storage blob upload-batch -s dist -d \$web --account-name payexdesignguide
