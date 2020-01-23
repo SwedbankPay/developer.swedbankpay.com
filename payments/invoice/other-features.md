@@ -48,6 +48,8 @@ set to value `FinancingConsumer` are listed below.
 {% include payment-resource.md payment-instrument="invoice"
 showStatusOperations=true %}
 
+{% include payment-transaction-states.md %}
+
 ## Create Payment
 
 Within the invoice payments part of the eCommerce API, you can create four kinds
@@ -532,7 +534,7 @@ transaction made towards a payment, as previously described.
 
 {% include payment-link.md hide-3d-secure=true %}
 
-## PayeeReference
+## PayeeInfo
 
 {% include payee-info.md %}
 

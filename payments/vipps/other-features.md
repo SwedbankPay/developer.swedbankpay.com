@@ -26,6 +26,8 @@ sidebar:
 
 {% include payment-resource.md  payment-instrument="vipps" showStatusOperations=true%}
 
+{% include payment-transaction-states.md %}
+
 ### Create Payment
 
 To create a Vipps payment, you perform an HTTP `POST` against the

@@ -46,12 +46,12 @@ sequenceDiagram
 
   Payer ->> ecomUI: Access paymentpage
     activate ecomUI
-    ecomUI ->> ecomAPI: GET </psp/creditaccount/payments/> (PaymentId retrieved from token)
+    ecomUI ->> ecomAPI: GET <payment.id>
     activate ecomAPI
     ecomAPI -->> ecomUI: Payment response
     deactivate ecomAPI
     Payer -->> ecomUI: Payer enter SSN and ZIP
-    ecomUI ->> ecomAPI: PATCH </psp/creditaccount/payments/<paymentId>/> (Operation: ConsumerData)
+    ecomUI ->> ecomAPI: PATCH <payment.id> (Operation: ConsumerData)
     activate ecomAPI
     ecomAPI ->> PxR: GetAddressbyPaymentMethod
     activate PxR
@@ -62,7 +62,7 @@ sequenceDiagram
 
     Payer ->> ecomUI: Payer approves address info
 
-    ecomUI ->> ecomAPI: POST </psp/creditaccount/payments/<paymentId>/authorizations>
+    ecomUI ->> ecomAPI: POST <rel:create-authorization>
     activate ecomAPI
     ecomAPI ->> PxR: PurchaseCreditAccountOrder
         activate PxR
@@ -102,7 +102,7 @@ sequenceDiagram
   Payer ->> Merchant: CompleteURL
 
   activate Merchant
-  Merchant ->> ecomAPI: GET </psp/creditaccount/payments/<paymentId>/>
+  Merchant ->> ecomAPI: GET <payment.id/>
   activate ecomAPI
   ecomAPI -->> Merchant: payment resource
   deactivate ecomAPI
@@ -139,7 +139,7 @@ sequenceDiagram
 
       Payer ->> ecomUI: Payer enter SSN and ZIP
 
-      ecomUI ->> ecomAPI: PATCH </psp/creditaccount/payments/<paymentId>/> (Operation: ConsumerData)
+      ecomUI ->> ecomAPI: PATCH <payment.id> (Operation: ConsumerData)
       activate ecomAPI
       ecomAPI ->> PxR: GetAddressbyPaymentMethod
       activate PxR
@@ -150,7 +150,7 @@ sequenceDiagram
 
       Payer ->> ecomUI: Payer approves address info
 
-      ecomUI ->> ecomAPI:  POST </psp/creditaccount/payments/<paymentId>/authorizations>
+      ecomUI ->> ecomAPI:  POST <rel:create-authorization>
       activate ecomAPI
       ecomAPI ->> PxR: PurchaseCreditAccountOrder
           activate PxR
@@ -163,7 +163,7 @@ sequenceDiagram
   Payer ->> Merchant: CompleteURL
 
   activate Merchant
-  Merchant ->> ecomAPI: GET </psp/creditaccount/payments/<paymentId>>
+  Merchant ->> ecomAPI: GET <payment.id>
   activate ecomAPI
   ecomAPI -->> Merchant: Payment resource
   deactivate ecomAPI

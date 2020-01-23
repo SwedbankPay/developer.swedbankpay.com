@@ -24,6 +24,8 @@ sidebar:
 
 {% include payment-resource.md payment-instrument="swish" showStatusOperations=true%}
 
+{% include payment-transaction-states.md %}
+
 ## Create Payment
 
 To create a Swish payment, you perform an HTTP `POST` against the
@@ -98,7 +100,7 @@ Content-Type: application/json
 |    ✔︎    | └➔&nbsp;`description`           | `string(40)` | A textual description max 40 characters of the purchase.                                                                                                                                                                                                  |
 |          | └➔&nbsp;`payerReference`        | `string`     | The reference to the payer (consumer/end-user) from the merchant system, like mobile number, customer number etc.                                                                                                                                         |
 |    ✔︎    | └➔&nbsp;`userAgent`             | `string`     | The user agent reference of the consumer's browser - [see user agent definition][user-agent]                                                                                                                                                              |
-|    ✔︎    | └➔&nbsp;`language`              | `string`     | nb-NO, sv-SE or en-US.                                                                                                                                                                                                                                    |
+|    ✔︎    | └➔&nbsp;`language`              | `string`     | `nb-NO`, `sv-SE` or `en-US`.                                                                                                                                                                                                                                    |
 |    ✔︎    | └➔&nbsp;`urls`                  | `object`     | The URLS object contains information about what urls this payment should use.                                                                                                                                                                             |
 |    ✔︎    | └─➔&nbsp;`hostUrls`             | `array`      | The array of URIs valid for embedding of Swedbank Pay Hosted Views.                                                                                                                                                                                       |
 |    ✔︎    | └─➔&nbsp;`completeUrl`          | `string`     | The URI that Swedbank Pay will redirect back to when the payment page is completed. This does not indicate a successful payment, only that it has reached a completion state. A `GET` request needs to be performed on the payment to inspect it further. |

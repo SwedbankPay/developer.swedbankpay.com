@@ -20,29 +20,31 @@ sidebar:
 
 {% include alert-review-section.md %}
 
-{% include jumbotron.html body="Enter your phone number, get the push message,
+{% include jumbotron.html body="Enter your phone number, open the app,
 push the pay button... and you're done!" %}
 
 Swish is the main Swedish payment app for mobile phones supported by all Swedish
 banks, making it one of the essential payment instruments for merchants
-operating in Sweden. We offer both mobile and browser based purchase flows on
-our redirect and seamless view platforms, in addition to direct API integration
-and Payment Link.
+operating in Sweden. We offer both mobile phone and browser based purchase flows
+on our redirect and seamless view platforms, in addition to direct API
+integration and Payment Link. Using the direct API integration will put you in
+charge of determining which device is being used, and whether the e- or
+m-commerce flow is the most suitable. We will do this for you.
 
 
 ## Purchase Flow
 
-If you are using the browser based flow, the consumer enters his or hers phone
-on Swedbank Pay's payment page (redirect) or in the `iframe` (seamless view)
-after the payment is created.
+If you are using the e-commerce flow, the payer enters a Swish connected
+phone on Swedbank Pay's payment page (redirect) or in the `iframe` (seamless
+view) after the payment is created.
 
 ![screenshot of the Swish redirect payment page with number input][swish-payment]{:height="500px" width="425px"}
 
-After pushing the pay button, a push message is sent to the phone, asking the
-consumer to confirm the purchase in the Swish app. If you are using the redirect
-option, the consumer will be redirected back to the merchant's site.
+After pushing the pay button, the payer needs to open the Swish app and confirm
+the purchase. If you are using the redirect option, the payer will be
+redirected back to the merchant's site.
 
-In the mobile purchase flow, the payment page or `iframe` will only have a pay
+In the m-commerce flow, the payment page or `iframe` will only have a pay
 button, and no number input. The Swish app will be launched automatically when
 you push the pay button.
 
@@ -59,27 +61,27 @@ operations][after-payment] and the [payment resource][payment-resource].
 
 ### Certificate
 
-As a part of the setup, you will need a Swish certificate. As a Swedbank
-costumer you can apply for Swish as part of [Swedbank Pay Settlement
+As a part of the setup, you will need a Swish certificate. There are two ways of
+doing this. You can apply for Swish as part of [Swedbank Pay Settlement
 Service][settlement-service]), and utilize the Swedbank Pay Technical Supplier
 Certificate. A [Swedbank Pay sales representative][payex-mailto] can assist you
 with this.
 
-Otherwise, you can contact one of the following banks
-offering Swish Handel: [Danske Bank][danske-bank],
-[SEB][SEB-swish], [Länsförsäkringar], [Sparbanken Syd][sparbanken-syd],
-[Sparbanken Öresund][sparbanken-oresund], [Nordea][nordea],
-[Handelsbanken][handelsbanken], in order to get an acquiring agreement, a
-Swish alias and access to [Swish Certificate Management
+Otherwise, you can contact one of the following banks offering Swish Handel:
+[Danske Bank][danske-bank], [SEB][SEB-swish], [Länsförsäkringar], [Sparbanken
+Syd][sparbanken-syd], [Sparbanken Öresund][sparbanken-oresund],
+[Nordea][nordea], [Handelsbanken][handelsbanken], in order to get an acquiring
+agreement, a Swish alias and access to [Swish Certificate Management
 system][swish-certificate-management-system].
 
 
 ### Demoshop
 
 You can give Swish a go in our demoshop if you like. For redirect payments, you
-need to toggle `paymentUrl` off, if you want to try seamless view, `paymentUrl` must
-be toggled on. The demoshop uses the Merchant Swish Simulator, which enables you
-to test without using the Swish App.
+need to toggle `paymentUrl` off, if you want to try seamless view, `paymentUrl`
+must be toggled on. The external integration demoshop used for testing is set up
+with the Merchant Swish Simulator, which enables you to test without using the
+Swish App.
 
 
 {% include iterator.html  next_href="redirect" next_title="Next: Redirect" %}

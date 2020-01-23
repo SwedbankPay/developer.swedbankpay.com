@@ -154,7 +154,7 @@ perform a `GET` on the payment after the user returns from the
 **Request**
 
 ```http
-PATCH /psp/creditcard/payments/{{ page.paymentId }}/authorizations/<transactionId> HTTP/1.1
+PATCH /psp/creditcard/payments/{{ page.paymentId }}/authorizations/{{ page.transactionId }} HTTP/1.1
 Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json

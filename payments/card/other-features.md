@@ -26,6 +26,8 @@ covered by the other subsections." %}
 
 {% include payment-resource.md showStatusOperations=true %}
 
+{% include payment-transaction-states.md %}
+
 ## Create Payment
 
 Within the card payments part of the eCommerce API, you can create four kinds
@@ -806,10 +808,9 @@ transaction made towards a payment, as previously described.
 
 {% include payment-link.md %}
 
-## PayeeReference
+## PayeeInfo
 
-{% include payee-info.md
-payment-instrument="creditcard" %}
+{% include payee-info.md payment-instrument="creditcard" %}
 
 ## Prices
 

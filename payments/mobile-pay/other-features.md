@@ -109,7 +109,7 @@ Content-Type: application/json
 |          | └─➔&nbsp;`callbackUrl`          | `string`     | The URI that Swedbank Pay will perform an HTTP `POST` against every time a transaction is created on the payment. See [callback][callback-reference] for details.                                                                                         |
 | ✔︎︎︎︎︎   | └➔&nbsp;`payeeInfo`             | `object`     | This object contains the identificators of the payee of this payment.                                                                                                                                                                                     |
 | ✔︎︎︎︎︎   | └─➔&nbsp;`payeeId`              | `string`     | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                                                                     |
-| ✔︎︎︎︎︎   | └─➔&nbsp;`payeeReference`       | `string(50)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation.. See [[`payeeReference`>>doc:Main.ecommerce.technical-reference.WebHome                                             |  | anchor="HPayeeReference"]] for details. |
+| ✔︎︎︎︎︎   | └─➔&nbsp;`payeeReference`       | `string(50)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [`payeeReference`][payee-reference] for details.                                                                |
 |          | └─➔&nbsp;`payeeName`            | `string`     | The payee name (like merchant name) that will be displayed to consumer when redirected to Swedbank Pay.                                                                                                                                                   |
 |          | └─➔&nbsp;`productCategory`      | `string`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                            |
 |          | └─➔&nbsp;`orderReference`       | `String(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                   |
@@ -425,7 +425,7 @@ Content-Type: application/json
 | ✔︎︎︎︎︎   | └➔&nbsp;`amount`         | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
 | ✔︎︎︎︎︎   | └➔&nbsp;`vatAmount`      | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
 | ✔︎︎︎︎︎   | └➔&nbsp;`description`    | `string`     | A textual description of the capture transaction.                                                                         |
-| ✔︎︎︎︎︎   | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the capture transaction. See [`payeeReference`][payeeReference] for details.                       |
+| ✔︎︎︎︎︎   | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the capture transaction. See [`payeeReference`][payee-reference] for details.                       |
 
 The `capture` resource contains information about the capture transaction made
 against a mobilepay payment.
@@ -470,7 +470,7 @@ Content-Type: application/json
 | :------: | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------- |
 |  ✔︎︎︎︎︎  | `transaction`            | `object`     | The current cancellation.                                                                                |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`description`    | `string`     | A textual description of the reason for the cancellation.                                                |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the cancellation transaction. See [`payeeReference`][payeeReference] for details. |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the cancellation transaction. See [`payeeReference`][payee-reference] for details. |
 
 The `cancel` resource contains information about a cancellation transaction
 made against a payment.
@@ -519,7 +519,7 @@ Content-Type: application/json
 |    ✔︎    | └➔&nbsp;`amount`         | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
 |    ✔︎    | └➔&nbsp;`vatAmount`      | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
 |    ✔︎    | └➔&nbsp;`description`    | `string`     | A textual description of the capture                                                                                      |
-|    ✔︎    | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the reversal transaction. See [`payeeReference`][payeeReference] for details.                      |
+|    ✔︎    | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the reversal transaction. See [`payeeReference`][payee-reference] for details.                      |
 
 The `reversal` resource contains information about a reversal transaction made
 against a payment.
@@ -660,7 +660,7 @@ The response will be the `payment` resource with its `state` set to `Aborted`.
 
 {% include prices.md payment-instrument="mobilepay" %}
 
-## Payee reference
+## PayeeInfo
 
 {% include payee-info.md %}
 
@@ -674,7 +674,7 @@ The response will be the `payment` resource with its `state` set to `Aborted`.
 [cancellation-transaction]: #cancellations
 [capture-transaction]: #captures
 [capture]: #captures
-[payeeReference]: #payee-reference
+[payee-reference]: #payeereference
 [reversal-transaction]: #reversals
 [transaction-resource]: #transactions
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
