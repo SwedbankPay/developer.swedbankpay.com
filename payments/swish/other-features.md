@@ -22,7 +22,7 @@ sidebar:
 
 ## Payment Resource
 
-{% include payment-resource.md payment-instrument="swish" %}
+{% include payment-resource.md payment-instrument="swish" showStatusOperations=true%}
 
 {% include payment-transaction-states.md %}
 
