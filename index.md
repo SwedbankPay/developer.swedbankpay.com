@@ -21,7 +21,7 @@ you are strongly advised to **read this entire page to the end**.
       <div class="card-body text-center d-flex flex-column">
         <img src="{{ design_guide_version_url }}/img/swedbankpay-logo.svg" alt="Swedbank Pay" height="120">
         <h3>Checkout</h3>
-        <p>Speed up checkout by allowing your customers to check-in with Swedbank Pay and pay with their favorite payment instruments through our payment menu.</p>
+        <p>Speed up checkout by allowing your customers to check-in with Swedbank Pay, and pay with their favorite payment instruments through our payment menu.</p>
         <a class="btn btn-guiding btn-outline btn-block mt-auto" href="/checkout/">Checkout Documentation</a>
       </div>
     </div>
@@ -31,7 +31,7 @@ you are strongly advised to **read this entire page to the end**.
       <div class="card-body text-center d-flex flex-column">
         <img src="{{ design_guide_version_url }}/img/swedbankpay-logo.svg" alt="Swedbank Pay" height="120">
         <h3>Payments</h3>
-        <p>You identify the customer, we take care of the payment. Chose from our uniform and wide selection of payment instruments.</p>
+        <p>Identify your customer, while we take care of the payment. Choose from our uniform and wide selection of payment instruments.</p>
         <a class="btn btn-guiding btn-outline btn-block mt-auto" href="/payments/">Payments Documentation</a>
       </div>
     </div>
@@ -237,21 +237,7 @@ specified in the response by finding the appropriate operation based on its
 
 ### PayeeReference
 
-The `payeeReference` given when creating transactions and other resources has
-some particular processing rules depending on specifications in the contract.
-
-1. It must be **unique** for every operation, used to ensure exactly-once
-   delivery of a transactional operation from the merchant system.
-2. Its length and content validation is dependent on whether the
-   `transaction.number` or the `payeeReference` is sent to the acquirer.
-3. If you select Option A in the settlement process (Swedbank Pay will
-   handle the settlement), Swedbank Pay will send the `transaction.number`
-   to the acquirer and the `payeeReference` may have the format of
-   `string(30)`.
-4. If you select Option B in the settlement process (you will handle the
-   settlement yourself), Swedbank Pay will send the `payeeReference` to the
-   acquirer and it will be limited to the format of `string(12)` and all
-   characters must be digits.
+{% include payee-reference.md %}
 
 [Read more about the settlement process here][settlement].
 

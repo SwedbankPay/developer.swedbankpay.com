@@ -72,7 +72,7 @@ rect rgba(138, 205, 195, 0.1)
             Payer ->> Payer: Event: onPaymentCompleted
             Payer ->>+ Merchant: Check payment status
             deactivate Payer
-            Merchant ->>+ SwedbankPay: GET /psp/paymentorders/<paymentOrderId>
+            Merchant ->>+ SwedbankPay: GET <paymentorder.id>
             deactivate Merchant
             SwedbankPay ->>+ Merchant: rel: paid-paymentorder
             deactivate SwedbankPay

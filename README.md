@@ -133,6 +133,17 @@ sequenceDiagram
   Merchant->>-SwedbankPay: GET [credit card payment]
 ```
 
+### Conventions
+
+* **Indentation** is set to 4 spaces across all code examples, regardless of
+  language. Please ensure that you format everything accordingly.
+* When fictuous **domain names** are used in code examples, only `example.com`,
+  `example.net` or `example.org` should be used. `test-dummy.net` and similar
+  "funny" domain names are strongly discouraged.
+* When describing operations performed towards a URL, reference the name (`rel`)
+  of the operation instead of stating the URL explicitly, in order to avoid the
+  encouragement of client-side URL building.
+
 ## License
 
 This website is available as open source under the terms of the

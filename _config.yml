@@ -12,7 +12,7 @@ opengraph:
   image: /assets/img/swedbank-pay-developer-portal.png
 design_guide:
   base_url: https://design.swedbankpay.com
-  version: 4.1.0
+  version: 4.3.0
 search:
   enabled: true
   url: /search
@@ -24,6 +24,8 @@ topbar:
     title: Payments
   - url: /resources/
     title: Resources
+google_analytics:
+  tracking_id: UA-156582708-1
 defaults:
   - values:
       layout: default

@@ -18,8 +18,6 @@ sidebar:
 
 ## Options after posting a payment
 
-{% include payment-resource.md  payment-instrument="creditaccount" %}
-
 * *Abort:* It is possible to abort the process if the payment has no successful
   transactions. [See the Abort description here][abort].
 * If the payment shown above is done as a two phase (`Authorization`), you will
@@ -38,7 +36,7 @@ To `capture` a `CreditAccountSe` transaction, you need to perform the
 **Request**
 
 ```http
-POST /psp/creditaccount/payments/<paymentId>/captures HTTP/1.1
+POST /psp/creditaccount/payments/{{ page.paymentId }}/captures HTTP/1.1
 Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -71,11 +69,11 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
- "payment": "/psp/creditaccount/payments/<paymentId>",
+ "payment": "/psp/creditaccount/payments/{{ page.paymentId }}",
  "captures": [
     {
       "transaction": {
-       "id": "/psp/creditaccount/payments/<paymentId>/transactions/<transactionId>",
+       "id": "/psp/creditaccount/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
        "created": "2016-09-14T01:01:01.01Z",
        "updated": "2016-09-14T01:01:01.03Z",
        "type": "Capture",
@@ -90,7 +88,7 @@ Content-Type: application/json
        "failedErrorCode": "ThirdPartyErrorCode",
        "failedErrorDescription": "ThirdPartyErrorMessage",
        "isOperational": true,
-       "activities": { "id": "/psp/creditaccount/payments/<paymentId>/transactions/<transactionId>/activities" },
+       "activities": { "id": "/psp/creditaccount/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}/activities" },
        "operations": [
         ]
       }

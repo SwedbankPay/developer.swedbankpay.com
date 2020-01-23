@@ -18,8 +18,6 @@ sidebar:
       title: Other Features
 ---
 
-{% include alert-review-section.md %}
-
 ## API requests
 
 The API requests are displayed in the [invoice flow][invoice-flow].
@@ -47,7 +45,10 @@ set to value `FinancingConsumer` are listed below.
 
 ## Payment Resource
 
-{% include payment-resource.md payment-instrument="invoice" %}
+{% include payment-resource.md payment-instrument="invoice"
+showStatusOperations=true %}
+
+{% include payment-transaction-states.md %}
 
 ## Create Payment
 
@@ -533,7 +534,7 @@ transaction made towards a payment, as previously described.
 
 {% include payment-link.md hide-3d-secure=true %}
 
-## PayeeReference
+## PayeeInfo
 
 {% include payee-info.md %}
 

@@ -18,7 +18,7 @@ sidebar:
       title: Other Features
 ---
 
-{% include alert-development-section.md %}
+{% include alert-review-section.md %}
 
 # Swish Redirect and Payment Status
 
@@ -345,8 +345,8 @@ Content-Type: application/json
 
 ### Create Reversal transaction
 
-A reversal transaction can be created after a completed authorization by sending
-a request to `/psp/swish/payments/<payment-id>/reversals`.
+A reversal transaction can be created after a completed authorization by
+performing a request to the `create-reversal` operation.
 A [callback][technical-reference-callback] request will follow from
 Swedbank Pay.
 

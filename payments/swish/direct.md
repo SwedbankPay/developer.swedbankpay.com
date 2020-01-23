@@ -18,6 +18,7 @@ sidebar:
       title: Other Features
 ---
 
+{% include alert-review-section.md %}
 
 {% include alert.html type="neutral"
                       icon="info"
@@ -73,7 +74,7 @@ sequenceDiagram
   activate Swish_API
   Swish_API->>-Swish_App: Start redirect
   activate Swish_App
-  
+
   Swish_App--x-Browser: Redirect
   activate Merchant
   Merchant->>- SwedbankPay: GET <Sales transaction>
@@ -167,7 +168,7 @@ Content-Type: application/json
 |          | └➔&nbsp;`payerReference`     | `string`      | The reference to the payer (consumer/end user) from the merchant system. E.g mobile number, customer number etc.                                                                                                                                                                                   |
 |          | └➔&nbsp;`payeeName`          | `string`      | The payee name will be displayed to consumer when redirected to Swedbank Pay.                                                                                                                                                                                                                      |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`userAgent`          | `string`      | The user agent reference of the consumer's browser - [see user agent definition][user-agent]                                                                                                                                                                                                       |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`language`           | `string`      | nb-NO, sv-SE or en-US.                                                                                                                                                                                                                                                                             |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`language`           | `string`      | `nb-NO`, `sv-SE` or `en-US`.                                                                                                                                                                                                                                                                             |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`urls`               | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                             |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`completeUrl`       | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. |
 |          | └─➔&nbsp;`cancelUrl`         | `string`      | The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only cancelUrl or `paymentUrl` can be used, not both.                                                                                              |
@@ -242,7 +243,7 @@ request.
 **Request**
 
 ```http
-POST /psp/swish/payments/<paymentId>/sales HTTP/1.1
+POST /psp/swish/payments/{{ page.paymentId }}/sales HTTP/1.1
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
