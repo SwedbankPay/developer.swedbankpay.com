@@ -42,6 +42,7 @@ this very documentation, not to a version of any APIs described by it." %}
 * The [Terminology page][terminology] is updated and *3-D Secure 2.0 (3DS2)* ,
   *PSD2* and *SCA* explanations are added.
 * Added descriptions for Payment States And Transaction States everywhere appropriate.
+* Google Analytics has been added to Developer Portal.
   
 ### Version 1.5
 
