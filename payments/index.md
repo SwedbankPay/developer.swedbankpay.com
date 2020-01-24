@@ -16,8 +16,6 @@ sidebar:
       title: Vipps Payments
     - url: /payments/mobile-pay
       title: Mobile Pay Payments
-    - url: /payments/credit
-      title: Credit Payments
     - url: /payments/direct-debit
       title: Direct Debit Payments
 ---
@@ -102,7 +100,7 @@ reserves the consumer's funds, and a `capture` of the funds at a later time,
 usually when the goods are shipped.
 
 This is the most common payment type, and it is used by Card Payments, Vipps
-Payments, MobilePay payments, Invoice Payments and Credit Account Payments. A
+Payments, MobilePay payments and Invoice Payments. A
 capture of an invoice will *not* capture any funds, but trigger the invoice
 distribution and send it to the consumer.
 
