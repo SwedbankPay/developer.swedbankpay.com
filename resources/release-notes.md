@@ -31,6 +31,18 @@ this very documentation, not to a version of any APIs described by it." %}
 
 ## January 2020
 
+### Version 1.6
+
+* [Credit Payments][credit] (née "Credit Account") sections have been deleted
+  from the Swedbank Pay Developer Portal.
+* The [Swish Payments][swish] and [Vipps Payments][vipps] have received a few
+  updates and are now ready for another round of review.
+* [MobilePay Payments][mobile-pay] is now ready for review.
+* `paymentAgeLimit` is now added in [Swish Payments][swish].
+* The Terminology page][terminology] is updated and *3-D Secure 2.0 (3DS2)* ,
+  *PSD2* and *SCA* explanations are added.
+* Added description for Payment States And Transaction States.
+  
 ### Version 1.5
 
 * The review of [Invoice Payments][invoice] is complete and as such the section
@@ -53,7 +65,6 @@ this very documentation, not to a version of any APIs described by it." %}
 * Added [Terminology page][terminology].
 * Clarified what the `awaitingActivity` state means for different payment
   instruments.
-* MobilePay section is ready for review!
 * Removed erroneous `noCVC` in examples for [One-Click Card Payments][one-click]
   section.
 * Added description for the `onBillingDetailsAvailable` event in the
