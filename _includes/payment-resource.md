@@ -53,7 +53,7 @@ Content-Type: application/json
         },
         "transactions": {
             "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/transactions"
-        },{% unless payment-instrument == "swish" %}
+        }{% unless payment-instrument == "swish" %},
         "authorizations": {
             "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/authorizations"
         }{% endunless %},
