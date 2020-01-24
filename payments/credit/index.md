@@ -16,163 +16,58 @@ sidebar:
 
 {% include alert-review-section.md %}
 
-> Swedbank Pay Credit Account is an online payment instrument allowing payers
-> to split a purchase into several payments.
+{% include jumbotron.html body="One account, one invoice, low monthy payments,
+complete overview and a credit limit always at your service. That's our Credit
+Payments." %}
 
-{% include alert.html type="info"
-                      icon="info"
-                      body="Swedbank Pay Credit Account is only available as a
-                      payment instrument in Swedbank Pay Checkout and Sweden
-                      at the moment." %}
+Credit Payments is our payment instrument for part payments, currently available
+in Sweden. Given that the payer passes the credit check, a credit account is
+opened with the first purchase. The credit limit is set by the amount of this
+purchase, rounded up to the nearest SEK 100, but a higher credit limit can be
+obtained with a separate agreement and a new credit check.
 
-## Sequence with unsigned CreditAccount
+All part payment purchases will be gathered on the same account and on the same
+invoice. A complete overview of all the purchases is available in our Consumer
+Portal. The payer is required to make monthly payments of 5 % of the total
+credit used, but no lower than SEK 100. It is also possible to pay the whole
+debt in full at once. The credit limit remains available as the debt gets paid,
+and can be used to make other purchases.
 
-Payment sequence when signing is required.
+## Purchase Flow
 
-```mermaid
-sequenceDiagram
-  Payer ->> Merchant: Request purchase
-  activate Merchant
-  Merchant ->> ecomAPI: POST </psp/creditaccount/payments>
-  activate ecomAPI
-      ecomAPI ->> ecomAPI: validate input
-      ecomAPI ->> ecomAPI: get contract
-      ecomAPI ->> ecomAPI: get customer (merchant)
-      ecomAPI ->> ecomAPI: create payment
-      ecomAPI -->> Merchant: RedirectURL
-  deactivate ecomAPI
-  Merchant ->> Payer: Redirect to RedirectURL
-  deactivate Merchant
+After a Credit Payment is created, the payer is redirected to the payment page
+where Social Security Number, email address, phone number and zip code is
+entered, before the payer proceeds by pushing "Next".
 
-  Payer ->> ecomUI: Access paymentpage
-    activate ecomUI
-    ecomUI ->> ecomAPI: GET <payment.id>
-    activate ecomAPI
-    ecomAPI -->> ecomUI: Payment response
-    deactivate ecomAPI
-    Payer -->> ecomUI: Payer enter SSN and ZIP
-    ecomUI ->> ecomAPI: PATCH <payment.id> (Operation: ConsumerData)
-    activate ecomAPI
-    ecomAPI ->> PxR: GetAddressbyPaymentMethod
-    activate PxR
-    PxR -->> ecomAPI: address response
-    deactivate PxR
-    ecomAPI -->> ecomUI: masked address response
-    deactivate ecomAPI
+![screenshot of the Credit personal info input page][credit-personal-info-input]{:height="700px" width="425px"}
 
-    Payer ->> ecomUI: Payer approves address info
+A lookup is performed by Swedbank Pay to retrieve the payer's legal address,
+which is shown (masked) on the following page. The payer has to confirm that
+this address is correct.
 
-    ecomUI ->> ecomAPI: POST <rel:create-authorization>
-    activate ecomAPI
-    ecomAPI ->> PxR: PurchaseCreditAccountOrder
-        activate PxR
-        PxR -->> ecomAPI: RedirectURL
-        deactivate PxR
-    ecomAPI -->> ecomUI: RedirectUrl
-    deactivate ecomAPI
+![screenshot of the Credit legal address confirmation page][credit-legal-address]{:height="500px" width="425px"}
 
-    ecomUI -->> Payer: Redirect signing
-    deactivate ecomUI
-    Payer ->> PxR: Access signing page
-    activate PxR
-    opt Signing
-        PxR ->> Signing: Request signing
-        activate Signing
-        Payer ->> Signing: Sign with BankId
-    Signing-->PxR: Signing OK
-    deactivate Signing
-    end
-    PxR-->Payer: redirect
-    deactivate PxR
+After this confirmation, a credit check is performed and the account is created,
+the `authorization` is done and the payer is redirected back to the merchant.
 
-    Payer ->> ecomUI: Access payment page
-    activate ecomUI
+## Good To Know
 
-    ecomUI ->> ecomAPI: GET </psp/creditaccount/payments/> (PaymentId retrieved from token)
-    activate ecomAPI
-    ecomAPI ->> PxR: PurchaseCreditAccountStatus
-    activate PxR
-    PxR -->> ecomAPI: Status
-    deactivate PxR
+### Payment Type
 
-    ecomAPI -->> ecomUI: CompleteURL
-    deactivate ecomAPI
-    ecomUI -->> Payer: Redirect CompleteURL
-    deactivate ecomUI
-  Payer ->> Merchant: CompleteURL
+Credit Payments is one of the instruments using two-phase payments. The
+`authorization` is done when the consumer creates the account with the first
+purchase or adds another purchase to the account, and the `abort`, `cancel`,
+`capture` or `reversal` is done by the merchant at a later time. Read more about
+the [different operations][after-payment] and the [payment
+resource][payment-resource].
 
-  activate Merchant
-  Merchant ->> ecomAPI: GET <payment.id/>
-  activate ecomAPI
-  ecomAPI -->> Merchant: payment resource
-  deactivate ecomAPI
-  Merchant -->> Payer: Display purchase result
-  deactivate Merchant
-```
+### Demoshop
 
-## Sequence with signed CreditAccount
+Unfortunately, our demoshop does not support Credit Payments at the moment.
 
-Payment sequence when signing is not required.
+{% include iterator.html  next_href="redirect" next_title="Next: Redirect" %}
 
-```mermaid
-sequenceDiagram
-  Payer ->> Merchant: Request purchase
-  activate Merchant
-  Merchant ->> ecomAPI: POST </psp/creditaccount/payments>
-  activate ecomAPI
-      ecomAPI ->> ecomAPI: validate input
-      ecomAPI ->> ecomAPI: get contract
-      ecomAPI ->> ecomAPI: get customer (merchant)
-      ecomAPI ->> ecomAPI: create payment
-      Merchant -->> ecomAPI: RedirectURL
-  deactivate ecomAPI
-  Payer -->> Merchant: Redirect to RedirectURL
-  deactivate Merchant
-
-
-  Payer ->> ecomUI: Access paymentpage
-      activate ecomUI
-      ecomUI ->> ecomAPI: GET </psp/creditaccount/payments/> (PaymentId retrieved from token)
-      activate ecomAPI
-      ecomUI -->> ecomAPI: Payment response
-      deactivate ecomAPI
-
-      Payer ->> ecomUI: Payer enter SSN and ZIP
-
-      ecomUI ->> ecomAPI: PATCH <payment.id> (Operation: ConsumerData)
-      activate ecomAPI
-      ecomAPI ->> PxR: GetAddressbyPaymentMethod
-      activate PxR
-      PxR -->> ecomAPI: address response
-      deactivate PxR
-      ecomAPI -->> ecomUI: masked address response
-      deactivate ecomAPI
-
-      Payer ->> ecomUI: Payer approves address info
-
-      ecomUI ->> ecomAPI:  POST <rel:create-authorization>
-      activate ecomAPI
-      ecomAPI ->> PxR: PurchaseCreditAccountOrder
-          activate PxR
-          PxR -->> ecomAPI: Purchase OK
-          deactivate PxR
-      ecomAPI -->> ecomUI: CompleteURL
-      deactivate ecomAPI
-      ecomUI -->> Payer: Redirect to CompleteURL
-      deactivate ecomUI
-  Payer ->> Merchant: CompleteURL
-
-  activate Merchant
-  Merchant ->> ecomAPI: GET <payment.id>
-  activate ecomAPI
-  ecomAPI -->> Merchant: Payment resource
-  deactivate ecomAPI
-  Merchant -->> Payer: Display purchase result
-  deactivate Merchant
-```
-
-{% include iterator.html
-        prev_href="../"
-        prev_title="Back: Payments"
-        next_href="after-payment"
-        next_title="Next: After Payment" %}
+[payment-resource]: /payments/credit/other-features#payment-resource
+[after-payment]: /payments/credit/after-payment#operations
+[credit-legal-address]: /assets/img/payments/credit-legal-address425x500.png
+[credit-personal-info-input]: /assets/img/payments/credit-personal-info-input425x700.png
