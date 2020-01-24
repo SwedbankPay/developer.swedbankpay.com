@@ -51,7 +51,7 @@ To capture a `FinancingConsumer` invoice payment, perform the `create-capture`
 operation with the following request body:
 
 ```http
-POST /psp/invoice/payments/<paymentId>/captures HTTP/1.1
+POST /psp/invoice/payments/{{ page.paymentId }}/captures HTTP/1.1
 Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json

@@ -16,8 +16,6 @@ sidebar:
       title: Vipps Payments
     - url: /payments/mobile-pay
       title: Mobile Pay Payments
-    - url: /payments/credit
-      title: Credit Payments
     - url: /payments/direct-debit
       title: Direct Debit Payments
 ---
@@ -42,9 +40,7 @@ below.
 |                                | Payment instrument           | Seamless View | Redirect | Region                                                                               |
 | :----------------------------: | :--------------------------- | :-----------: | :------: | :----------------------------------------------------------------------------------- |
 |     ![CardIcon][card-icon]     | [Card][card]                 |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  | ![EarthIcon][earth-icon]                                                             |
-|  ![InvoiceIcon][invoice-icon]  | [Invoice][invoice]           |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  | ![nor][nor-flag] ![swe][swe-flag] ![fin][fin-flag]                                   |
-| ![EnvelopeIcon][envelope-icon] | [Web Invoice][invoice]       |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  | ![nor][nor-flag] ![swe][swe-flag]                                                    |
-|   ![KeypadIcon][keypad-icon]   | [Direct Debit][direct-debit] |               |  ✔︎︎︎︎︎  | ![swe][swe-flag] ![fin][fin-flag] ![lat][lat-flag] ![lit][lit-flag] ![est][est-flag] |
+|  ![InvoiceIcon][invoice-icon]  | [Invoice][invoice]           |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  | ![nor][nor-flag] ![swe][swe-flag]                                   |
 |      ![Vipps][vipps-logo]      | [Vipps][vipps]               |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  | ![nor][nor-flag]                                                                     |
 |      ![Swish][swish-logo]      | [Swish][swish]               |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  | ![swe][swe-flag]                                                                     |
 |  ![MobilePay][mobilepay-logo]  | [MobilePay][mobile-pay]      |               |  ✔︎︎︎︎︎  | ![dan][dan-flag] ![fin][fin-flag]                                                    |
@@ -104,11 +100,11 @@ reserves the consumer's funds, and a `capture` of the funds at a later time,
 usually when the goods are shipped.
 
 This is the most common payment type, and it is used by Card Payments, Vipps
-Payments, MobilePay payments, Invoice Payments and Credit Account Payments. A
+Payments, MobilePay payments and Invoice Payments. A
 capture of an invoice will *not* capture any funds, but trigger the invoice
 distribution and send it to the consumer.
 
-*One-phase payments* ([Direct Debit][direct-debit], [Swish][swish],
+*One-phase payments* ([Swish][swish],
 [Card][card])
 
 There are two types of one-phase payments – `sale` and `autoCapture`.

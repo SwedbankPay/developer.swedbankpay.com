@@ -53,7 +53,7 @@ sequenceDiagram
     Browser-->>-SwedbankPay: Passing data for authorization
     activate SwedbankPay
 
-    SwedbankPay-->>-Vipps.API: POST <paymentId>/authorizations ⑤
+    SwedbankPay-->>-Vipps.API: POST <rel:create-auhtorization> ⑤
     activate Vipps.API
     Vipps.API-->>-SwedbankPay: response
     activate SwedbankPay

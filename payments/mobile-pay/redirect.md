@@ -14,7 +14,7 @@ sidebar:
       title: Other Features
 ---
 
-{% include alert-development-section.md %}
+{% include alert-review-section.md %}
 
 {% include jumbotron.html body=" **MobilePay Payments** is a two-phase payment
 instrument which can be implemented by the supported redirect scenario.

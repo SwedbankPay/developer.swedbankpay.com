@@ -20,8 +20,6 @@ sidebar:
 
 {% include alert-review-section.md %}
 
-# Swish Redirect and Payment Status
-
 After the payment is confirmed, the consumer will be redirected from the Swish
 app to the `completeUrl` set in the [create payment request][create-payment].
 You need to retrieve payment status with `GET`
@@ -66,11 +64,6 @@ is given below.
 {
     "operations": [
         {
-            "method": "PATCH",
-            "href": "{{ page.apiUrl }}/psp/swish/payments/{{ page.paymentId }}",
-            "rel": "update-payment-abort"
-        },
-        {
             "method": "POST",
             "href": "{{ page.apiUrl }}/psp/swish/payments/{{ page.paymentId }}/sales",
             "rel": "create-sale"
@@ -108,7 +101,6 @@ request for the given operation.
 {:.table .table-striped}
 | Operation              | Description                                                                                                                                |
 | :--------------------- | :----------------------------------------------------------------------------------------------------------------------------------------- |
-| `update-payment-abort` | [Aborts][technical-reference-abort] the payment before any financial transactions are performed.                                           |
 | `create-sale`          | Creates a `sales` transaction without redirection to a payment page. `Msisdn` is required in browser based scenarioes.                     |
 | `redirect-sale`        | Contains the redirect-URI that redirects the consumer to a Swedbank Pay hosted payment page prior to creating a sales transaction.         |
 | `view-sales`         | Contains the URI of the JavaScript used to create a Hosted View iframe directly without redirecting the consumer to separate payment page. |
@@ -345,8 +337,8 @@ Content-Type: application/json
 
 ### Create Reversal transaction
 
-A reversal transaction can be created after a completed authorization by sending
-a request to `/psp/swish/payments/<payment-id>/reversals`.
+A reversal transaction can be created after a completed authorization by
+performing a request to the `create-reversal` operation.
 A [callback][technical-reference-callback] request will follow from
 Swedbank Pay.
 
@@ -414,54 +406,6 @@ Content-Type: application/json
 | `reversal`            | `object` | The `reversal` object contains information about this `reversal`.                        |
 | └➔&nbsp;`id`          | `string` | The relative URI of the created capture transaction.                                     |
 | └➔&nbsp;`transaction` | `object` | The object representation of the generic [transaction][technical-reference-transaction]. |
-
-## Abort
-
-To abort a payment order, send a request to `/psp/swish/payments/{{ paymentId }}`.
-You need to include the following `HTTP` body:
-
-{:.code-header}
-**Request**
-
-```http
-PATCH /psp/payments/{{ page.paymentId }} HTTP/1.1
-Host: {{ page.apiHost }}
-Authorization: Bearer <AccessToken>
-Content-Type: application/json
-
-{
-  "payment": {
-    "operation": "Abort",
-    "abortReason": "CancelledByConsumer"
-  }
-}
-```
-
-{:.table .table-striped}
-| Property              | Type     | Description                                                                              |
-| :-------------------- | :------- | :--------------------------------------------------------------------------------------- |
-| `payment`             | `string` | The `payment` object holds the reason and operation for this request.                    |
-| └➔&nbsp;`operation`   | `string` | `abort` to abort this payment.                                                           |
-| └➔&nbsp;`abortReason` | `object` | A textual reason for this abort. Examples: "CancelledByConsumer", "CancelledByCustomer". |
-
-### Response from abort
-
-The response given when aborting a payment order is equivalent to a `GET`
-request towards the `paymentorders` resource,
-[as displayed above][payment-order], with its `state` set to `Aborted`.
-
-### Reversal Sequence
-
-A reversal transcation have to match the Payee reference of a
-completed sales transaction.
-
-```mermaid
-sequenceDiagram
-  activate Merchant
-  Merchant->>-SwedbankPay: POST <Swish reversal>
-  activate SwedbankPay
-  SwedbankPay-->>-Merchant: transaction resource
-```
 
 ## Capture
 

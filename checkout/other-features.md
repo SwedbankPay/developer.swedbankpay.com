@@ -24,7 +24,7 @@ They are listed on this very page." %}
 
 ## Payment Orders
 
-{% include payment-order-get.md %}
+{% include payment-order-get.md showStatusOperations=true %}
 
 ### Creating a payment order
 
@@ -259,7 +259,7 @@ The `orderItems` property of the `paymentOrder` is an array containing the items
 | :------: | :-------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |  ✔︎︎︎︎︎  | `reference`           | `string`  | A reference that identifies the order item.                                                                                                                                                                                    |
 |  ✔︎︎︎︎︎  | `name`                | `string`  | The name of the order item.                                                                                                                                                                                                    |
-|  ✔︎︎︎︎︎  | `type`                | `string`  | `PRODUCT`, `SERVICE`, `SHIPPING_FEE`, `DISCOUNT`, `VALUE_CODE`, or `OTHER`. The type of the order item.                                                                                                                        |
+|  ✔︎︎︎︎︎  | `type`                | `enum`  | `PRODUCT`, `SERVICE`, `SHIPPING_FEE`, `DISCOUNT`, `VALUE_CODE`, or `OTHER`. The type of the order item.                                                                                                                        |
 |  ✔︎︎︎︎︎  | `class`               | `string`  | The classification of the order item. Can be used for assigning the order item to a specific product category, such as `MobilePhone`. Note that `class` cannot contain spaces. Swedbank Pay may use this field for statistics. |
 |          | `itemUrl`             | `string`  | The URL to a page that can display the purchased item, such as a product page                                                                                                                                                  |
 |          | `imageUrl`            | `string`  | The URL to an image of the order item.                                                                                                                                                                                         |
@@ -267,8 +267,8 @@ The `orderItems` property of the `paymentOrder` is an array containing the items
 |          | `discountDescription` | `string`  | The human readable description of the possible discount.                                                                                                                                                                       |
 |  ✔︎︎︎︎︎  | `quantity`            | `decimal` | The 4 decimal precision quantity of order items being purchased.                                                                                                                                                               |
 |  ✔︎︎︎︎︎  | `quantityUnit`        | `string`  | The unit of the quantity, such as `pcs`, `grams`, or similar.                                                                                                                                                                  |
-|  ✔︎︎︎︎︎  | `unitPrice`           | `integer` | The price per unit of order item, including VAT.                                                                                                                                                                                              |
-|          | `discountPrice`       | `integer` | If the order item is purchased at a discounted price. This property should contain that price, including VAT.                                                                                                                                 |
+|  ✔︎︎︎︎︎  | `unitPrice`           | `integer` | The price per unit of order item, including VAT.                                                                                                                                                                               |
+|          | `discountPrice`       | `integer` | If the order item is purchased at a discounted price. This property should contain that price, including VAT.                                                                                                                  |
 |  ✔︎︎︎︎︎  | `vatPercent`          | `integer` | The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.                                                                                                                                                       |
 |  ✔︎︎︎︎︎  | `amount`              | `integer` | The total amount including VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 SEK` and `5000` equals `50.00 SEK`.                          |
 |  ✔︎︎︎︎︎  | `vatAmount`           | `integer` | The total amount of VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 SEK` and `5000` equals `50.00 SEK`.                                 |
@@ -358,6 +358,18 @@ A list of possible operations and their explanation is given below.
             "href": "{{ page.apiUrl }}/psp/paymentorders/{{ page.paymentOrderId }}/reversals",
             "rel": "create-paymentorder-reversal",
             "contentType": "application/json"
+        },
+        {
+            "method": "GET",
+            "href": "{{ page.apiUrl }}/psp/paymentorders/{{ page.paymentOrderId }}/paid",
+            "rel": "paid-paymentorder",
+            "contentType": "application/json"
+        },
+        {
+            "method": "GET",
+            "href": "{{ page.apiUrl }}/psp/paymentorders/{{ page.paymentOrderId }}/failed",
+            "rel": "failed-paymentorder",
+            "contentType": "application/problem+json"
         }
     ]
 }
@@ -388,6 +400,8 @@ for the given operation.
 | `create-paymentorder-capture`     | The second part of a two-phase transaction where the authorized amount is sent from the payer to the payee. It is possible to do a part-capture on a subset of the authorized amount. Several captures on the same payment are possible, up to the total authorization amount. |
 | `create-paymentorder-cancel`      | Used to cancel authorized and not yet captured transactions. If a cancellation is performed after doing a part-capture, it will only affect the not yet captured authorization amount.                                                                                         |
 | `create-paymentorder-reversal`    | Used to reverse a payment. It is only possible to reverse a payment that has been captured and not yet reversed.                                                                                                                                                               |
+| `paid-paymentorder`               | Returns the information about a paymentorder that has the status `paid`.                                                                                                                                                                                                       |
+| `failed-paymentorder`             | Returns the information about a paymentorder that has the status `failed`.                                                                                                                                                                                                     |
 
 ### View Payment Order
 
@@ -682,7 +696,7 @@ other payment instrument properties, by [expanding the sub-resource][expanding]
 **Request**
 
 ```http
-GET /psp/paymentorders/<paymentorderId>?$expand=currentpayment HTTP/1.1
+GET /psp/paymentorders/{{ page.paymentorderId }}?$expand=currentpayment HTTP/1.1
 Host: {{ page.apiHost }}
 ```
 
@@ -803,7 +817,7 @@ should finish the purchase with a credit card payment instead.
 **Request**
 
 ```http
-GET /psp/paymentorders<paymentorderId>/payments HTTP/1.1
+GET /psp/paymentorders/{{ page.paymentorderId }}/payments HTTP/1.1
 Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -814,7 +828,7 @@ Content-Type: application/json
         "id": "/psp/paymentorders/{{ page.paymentOrderId }}/payments",
         "paymentList" : [
             {
-                "id": "/psp/creditcard/payments/{{ page.paymentOrderId }}",
+                "id": "/psp/creditcard/payments/{{ page.transactionId }}",
                 "instrument" : "CreditCard",
                 "created": "2016-09-14T13:21:29.3182115Z"
             },

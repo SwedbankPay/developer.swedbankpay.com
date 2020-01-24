@@ -24,7 +24,9 @@ covered by the other subsections." %}
 
 ## Payment Resource
 
-{% include payment-resource.md %}
+{% include payment-resource.md showStatusOperations=true %}
+
+{% include payment-transaction-states.md %}
 
 ## Create Payment
 
@@ -806,10 +808,9 @@ transaction made towards a payment, as previously described.
 
 {% include payment-link.md %}
 
-## PayeeReference
+## PayeeInfo
 
-{% include payee-info.md
-payment-instrument="creditcard" %}
+{% include payee-info.md payment-instrument="creditcard" %}
 
 ## Prices
 

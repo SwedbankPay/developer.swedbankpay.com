@@ -23,24 +23,38 @@ sidebar:
 {% include alert-review-section.md %}
 
 {% include jumbotron.html body="The latest updates about our releases will be
-published on this page" %}
+published on this page." %}
 
-{% include alert.html type="neutral" icon="info" header="Version numbers listed
-on this page refers to the version number of this very documentation, not to a
-version of any APIs described by it." %}
+{% include alert.html type="neutral" icon="info" header="Version numbers"
+body="The version numbers used in headers on this page refers to the version of
+this very documentation, not to a version of any APIs described by it." %}
 
 ## January 2020
 
+### Version 1.6
+
+* [Credit Payments][credit] (née "Credit Account") sections have been deleted
+  from the Swedbank Pay Developer Portal.
+* The [Swish Payments][swish] and [Vipps Payments][vipps] have received a few
+  updates and are now ready for another round of review.
+* [MobilePay Payments][mobile-pay] is now ready for review.
+* `paymentAgeLimit` is now added in [Swish Payments][swish].
+* The [Terminology page][terminology] is updated and *3-D Secure 2.0 (3DS2)* ,
+  *PSD2* and *SCA* explanations are added.
+* Added descriptions for Payment States And Transaction States everywhere appropriate.
+* Google Analytics has been added to Developer Portal.
+  
 ### Version 1.5
 
 * The review of [Invoice Payments][invoice] is complete and as such the section
   is now released and ready for use.
 * The [Card Payments][card] section has received an overhaul, inching it closer
   to release.
-* The [Swish Payments][swish], [Vipps Payments][vipps] and [Credit
-  Payments][credit] (née "Credit Account") sections are ready for review.
-* The [Direct Debit][direct-debit] and [MobilePay Payments][mobile-pay] sections
-  have received a few updates, inching them both closer to review.
+* The [Swish Payments][swish] and [Vipps Payments][vipps] sections are ready for
+  review.
+* The [Direct Debit][direct-debit], [MobilePay Payments][mobile-pay] and
+  [Credit Payments][credit] (née "Credit Account") sections have received a few
+  updates, inching them all closer to review.
 
 ### Version 1.4
 
@@ -52,7 +66,6 @@ version of any APIs described by it." %}
 * Added [Terminology page][terminology].
 * Clarified what the `awaitingActivity` state means for different payment
   instruments.
-* MobilePay section is ready for review!
 * Removed erroneous `noCVC` in examples for [One-Click Card Payments][one-click]
   section.
 * Added description for the `onBillingDetailsAvailable` event in the

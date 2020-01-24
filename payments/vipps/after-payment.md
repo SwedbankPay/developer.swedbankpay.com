@@ -286,7 +286,7 @@ to the `GET` request.
 **Request**
 
 ```http
-GET /psp/vipps/payments/{{ page.paymentId }}/authorizations/<transactionId> HTTP/1.1
+GET /psp/vipps/payments/{{ page.paymentId }}/authorizations/{{ page.transactionId }} HTTP/1.1
 Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
