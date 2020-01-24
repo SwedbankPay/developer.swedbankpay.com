@@ -50,7 +50,7 @@ sequenceDiagram
     activate SwedbankPay
     SwedbankPay-->>-Merchant: rel: view-sales ②
     activate Merchant
-    Merchant-->>-Payer: authorization page
+    Merchant-->>-Payer: confirmation page
     activate Payer
     note left of Payer: Open iframe ③
     Payer->>Payer: Input mobile number
@@ -114,7 +114,7 @@ Sales information. This will generate a payment object with a unique
 
 ### Intent
 
-{% include intent.md %}
+{% include intent.md swish-authorization=true %}
 
 ### Operations
 
@@ -189,7 +189,7 @@ Content-Type: application/json
 | :------: | :------------------------------------ | :------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 |  ✔︎︎︎︎︎  | `payment`                             | `object`      | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`operation`                   | `string`      | The operation that the `payment` is supposed to perform. The [`purchase`][purchase] operation is used in our example. Take a look at the [create card `payment` section][create-payment] for a full examples of the following `operation` options: [Purchase][purchase].                                                                                                                                                                                                                                                                                                  |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`intent`                      | `string`      | `Authorization`. Reserves the amount, and is followed by a [cancellation][cancel] or [capture][capture] of funds.<br> <br> `AutoCapture`. A one phase option that enable capture of funds automatically after authorization.                                                                                                                                                                                                                                                                                                                                              |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`intent`                      | `string`      | `AutoCapture`. A one phase option that enable capture of funds.                                                                                                                                                                                                                                                                                                                                              |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`currency`                    | `string`      | `SEK`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`prices`                      | `object`      | The `prices` resource lists the prices related to a specific payment.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`type`                       | `string`      | Use the generic type CreditCard if you want to enable all card brands supported by merchant contract. Use card brands like Visa (for card type Visa), MasterCard (for card type Mastercard) and others if you want to specify different amount for each card brand. If you want to use more than one amount you must have one instance in the prices node for each card brand. You will not be allowed to both specify card brands and CreditCard at the same time in this field. [See the Prices resource and prices object types for more information][price-resource]. |
@@ -198,8 +198,6 @@ Content-Type: application/json
 |      | └➔&nbsp;`paymentAgeLimit`             | `integer`     | Positive number sets requried age limit to fulfill the payment.                                                                          |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`description`                 | `string(40)`  | A textual description max 40 characters of the purchase.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 |          | └➔&nbsp;`payerReference`              | `string`      | The reference to the payer (consumer/end user) from the merchant system. E.g mobile number, customer number etc.                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-|          | └➔&nbsp;`generatePaymentToken`        | `boolean`     | `true` or `false`. Set this to `true` if you want to create a paymentToken for future use as One Click.                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-|          | └➔&nbsp;`generateRecurrenceToken`     | `boolean`     | `true` or `false`. Set this to `true` if you want to create a recurrenceToken for future use Recurring purchases (subscription payments).                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`userAgent`                   | `string`      | The user agent reference of the consumer's browser - [see user agent definition][user-agent-definition]                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`language`                    | `string`      | `nb-NO`, `sv-SE` or `en-US`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`urls`                        | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
@@ -252,7 +250,6 @@ Content-Type: application/json
       "language": "sv-SE",
       "prices": { "id": "/psp/swish/payments/{{ page.paymentId }}/prices" },
       "transactions": { "id": "/psp/swish/payments/{{ page.paymentId }}/transactions" },
-      "authorizations": { "id": "/psp/swish/payments/{{ page.paymentId }}/authorizations" },
       "captures": { "id": "/psp/swish/payments/{{ page.paymentId }}/captures" },
       "reversals": { "id": "/psp/swish/payments/{{ page.paymentId }}/reversals" },
       "cancellations": { "id": "/psp/swish/payments/{{ page.paymentId }}/cancellations" },
@@ -273,14 +270,14 @@ Content-Type: application/json
             "rel": "create-sale"
       },
       {
-        "href": "{{ page.frontEndUrl }}/swish/payments/authorize/123456123412341234123456789012",
+        "href": "{{ page.frontEndUrl }}/swish/payments/authorize/{{ page.paymentToken }}",
         "rel": "redirect-sale",
         "method": "GET",
         "contentType": "text/html"
       },
       {
         "method": "GET",
-        "href": "https://ecom.dev.payex.com/swish/core/scripts/client/px.swish.client.js?token=123456123412341234123456789012",
+        "href": "https://ecom.dev.payex.com/swish/core/scripts/client/px.swish.client.js?token={{ page.paymentToken }}",
         "rel": "view-sales",
         "contentType": "application/javascript"
       },

@@ -150,25 +150,16 @@ Content-Type: application/json
     },
     "operations": [
         {
-            "method": "PATCH",
-            "href": "http://{{ page.apiHost }}/psp/swish/payments/{{ page.paymentId }}",
-            "rel": "update-payment-abort"
-        },
-        {
             "method": "POST",
             "href": "http://{{ page.apiHost }}/psp/swish/payments/{{ page.paymentId }}/sales",
             "rel": "create-sale"
         }
-
-    ]
 }
 ```
 
 {% include settlement-reconciliation.md %}
 
-{% include one-click-payments.md %}
-
-{% include payment-link.md %}
+{% include payment-link.md show-3d-secure=false show-authorization=false %}
 
 ### Prices
 
@@ -180,13 +171,9 @@ Content-Type: application/json
 
 {% include expand-parameter.md %}
 
-#### Transaction
-
 {% include transactions-reference.md payment-instrument="swish" %}
 
 {% include callback-reference.md payment-instrument="swish" %}
-
-{% include payment-link.md hide-3d-secure=true %}
 
 ### Problem messages
 
