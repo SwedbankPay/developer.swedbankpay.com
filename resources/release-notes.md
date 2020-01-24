@@ -39,7 +39,7 @@ this very documentation, not to a version of any APIs described by it." %}
   updates and are now ready for another round of review.
 * [MobilePay Payments][mobile-pay] is now ready for review.
 * `paymentAgeLimit` is now added in [Swish Payments][swish].
-* The Terminology page][terminology] is updated and *3-D Secure 2.0 (3DS2)* ,
+* The [Terminology page][terminology] is updated and *3-D Secure 2.0 (3DS2)* ,
   *PSD2* and *SCA* explanations are added.
 * Added description for Payment States And Transaction States.
   
