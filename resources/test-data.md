@@ -171,7 +171,6 @@ The amounts that can be used and produce error codes
 | 900359                                         | CARD_DECLINED                           |
 | 900362                                         | REJECTED_BY_PAYEX_CARD_BLACKLISTED      |
 | 900391                                         | ACQUIRER_HOST_OFFLINE                   |
-| 9002xx (xx = 10 = ten seconds, example 900210) | ACQUIRER_TIMEOUT                        |
 
 ## Invoice Test Data
 
