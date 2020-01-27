@@ -90,7 +90,7 @@ sequenceDiagram
 
 * ① `rel: redirect-authorization` is the name of one of the operations, sent as
   a response from Swedbank Pay to the Merchant. The href in this operation is
-  the **redirect URL** to a Swedbank Pay payment page.  
+  the **redirect URL** to a Swedbank Pay payment page.
 * ② The consumer is being redirected to a secure Swedbank Pay hosted page
 * ③ The payment window is presented and the consumer can insert card information
   for authorization.
@@ -154,9 +154,9 @@ Property of the JSON document is described in the following section.
 An example of an expanded `POST` request is available in the
 [other features section][purchase].
 
-{% include risk-indicator.md %}
+{% include alert-risk-indicator.md %}
 
-{% include purchase.md %}
+{% include card-purchase.md %}
 
 * You need to redirect the payer's browser to that specified URL in the
   `redirect-authorization` operation so that she can enter the card

@@ -126,7 +126,7 @@ object is optional. If the `POST` request has `orderItems` in the
 `paymentorder`, remember to include `orderItems` in the [capture
 operation](after-payment#capture) as well." %}
 
-{% include risk-indicator.md %}
+{% include alert-risk-indicator.md %}
 
 ### Payment Url
 
@@ -172,7 +172,11 @@ Content-Type: application/json
             "subsite": "MySubsite"
         },
         "payer": {
-            "consumerProfileRef": "7d5788219e5bc43350e75ac633e0480ab30ad20f96797a12b96e54da869714c4"
+            "consumerProfileRef": "{{ page.paymentToken }}",
+            "email": "olivia.nyhuus@payex.com",
+            "msisdn": "+4798765432",
+            "workPhoneNumber" : "+4787654321",
+            "homePhoneNumber" : "+4776543210"
         },
         "orderItems": [
             {
@@ -207,7 +211,7 @@ Content-Type: application/json
             }
         ],
         "riskIndicator": {
-            "deliveryEmailAddress": "test@example.com",
+            "deliveryEmailAddress": "olivia.nyhuus@payex.com",
             "deliveryTimeFrameIndicator": "01",
             "preOrderDate": "19801231",
             "preOrderPurchaseIndicator": "01",
@@ -215,12 +219,12 @@ Content-Type: application/json
             "giftCardPurchase": false,
             "reOrderPurchaseIndicator": "01",
             "pickUpAddress": {
-                "name": "Leo",
-                "streetAddress": "Gata 535",
-                "coAddress": "street 55",
-                "city": "Stockholm",
-                "zipCode": "55560",
-                "countryCode": "SE"
+                "name": "Olivia Nyhus",
+                "streetAddress": "Saltnestoppen 43",
+                "coAddress": "",
+                "city": "Saltnes",
+                "zipCode": "1642",
+                "countryCode": "NO"
             }
         }
     }
