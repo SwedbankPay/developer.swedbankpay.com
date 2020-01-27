@@ -245,7 +245,7 @@ the following argument objects:
 ```js
 {
     "actionType": "OnConsumerIdentified",
-    "consumerProfileRef": "7d5788219e5bc43350e75ac633e0480ab30ad20f96797a12b96e54da869714c4"
+    "consumerProfileRef": "{{ page.paymentToken }}"
 }
 ```
 
@@ -255,7 +255,7 @@ the following argument objects:
 ```js
 {
     "actionType": "OnShippingDetailsAvailable",
-    "url": "{{ page.apiUrl }}/psp/consumers/<consumerProfileRef>/shipping-details"
+    "url": "{{ page.apiUrl }}/psp/consumers/{{ page.paymentToken }}/shipping-details"
 }
 ```
 
@@ -265,7 +265,7 @@ the following argument objects:
 ```js
 {
     "actionType": "OnBillingDetailsAvailable",
-    "url": "https://api.externalintegration.payex.com/psp/consumers/<consumerProfileRef>/billing-details"
+    "url": "{{ page.apiUrl }}/psp/consumers/{{ page.paymentToken }}/billing-details"
 }
 ```
 
@@ -285,7 +285,7 @@ Here is an example of what a `GET` request towards the `url` provided in the eve
         "msisdn": "+4798765432",
         "streetAddress": "Saltnestoppen 43",
         "zipCode": "1642",
-        "city": "saltnes",
+        "city": "Saltnes",
         "countryCode": "NO"
     }
 }
