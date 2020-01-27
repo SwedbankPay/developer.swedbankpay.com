@@ -148,73 +148,7 @@ An example of an expanded `POST` request is available in the
 
 {% include alert-risk-indicator.md %}
 
-{:.code-header}
-**Request**
-
-```http
-POST /psp/creditcard/payments HTTP/1.1
-Authorization: Bearer <AccessToken>
-Content-Type: application/json
-
-{
-    "payment": {
-        "operation": "Purchase",
-        "intent": "Authorization",
-        "currency": "SEK",
-        "prices": [{
-                "type": "CreditCard",
-                "amount": 1500,
-                "vatAmount": 0
-            }
-        ],
-        "description": "Test Purchase",
-        "generatePaymentToken": false,
-        "generateRecurrenceToken": false,
-        "userAgent": "Mozilla/5.0...",
-        "language": "sv-SE",
-        "urls": {
-            "hostUrls": ["http://example.com"],
-            "completeUrl": "http://example.com/payment-completed",
-            "cancelUrl": "http://example.com/payment-canceled",
-            "paymentUrl": "http://example.com/perform-payment",
-            "callbackUrl": "http://example.com/payment-callback",
-            "logoUrl": "http://example.com/payment-logo.png",
-            "termsOfServiceUrl": "http://example.com/payment-terms.pdf",
-        },
-        "payeeInfo": {
-            "payeeId": "{{ page.merchantId }}"
-            "payeeReference": "CD1234",
-            "payeeName": "Merchant1",
-            "productCategory": "A123",
-            "orderReference": "or123",
-        },
-        "riskIndicator": {
-            "deliveryEmailAddress": "test@example.com",
-            "deliveryTimeFrameindicator": "01",
-            "preOrderDate": "19801231",
-            "preOrderPurchaseIndicator": "01",
-            "shipIndicator": "01",
-            "giftCardPurchase": false,
-            "reOrderPurchaseIndicator": "01",
-            "pickUpAddress": {
-                "name": "Leo",
-                "streetAddress": "Gata 535",
-                "coAddress": "street 55",
-                "city": "Stockholm",
-                "zipCode": "55560",
-                "countryCode": "SE"
-            }
-        }
-    },
-    "creditCard": {
-        "rejectCreditCards": false,
-        "rejectDebitCards": false,
-        "rejectConsumerCards": false,
-        "rejectCorporateCards": false,
-        "no3DSecure": false,
-    }
-}
-```
+{% include card-purchase.md seamless_view=true %}
 
 {:.table .table-striped}
 | Required | Property                              | Type          | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
@@ -523,7 +457,6 @@ object:
 | `origin`    | `string` | `creditcard`, identifies the system that originated the error.                            |
 | `messageId` | `string` | A unique identifier for the message.                                                      |
 | `details`   | `string` | A human readable and descriptive text of the error.                                       |
-
 
 {% include iterator.html prev_href="redirect" prev_title="Redirect"
 next_href="after-payment" next_title="Next: After Payment" %}
