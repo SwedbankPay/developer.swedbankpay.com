@@ -86,7 +86,7 @@ sequenceDiagram
         end
 ```
 
-### Explainations
+### Explanations
 
 * ① `rel: redirect-authorization` is the name of one of the operations, sent as
   a response from Swedbank Pay to the Merchant. The href in this operation is
@@ -100,12 +100,13 @@ sequenceDiagram
   request. Please note that both a successful and rejected payment reach
   completion, in contrast to a cancelled payment.
 * ⑥ Send a GET request with the `paymentId` to check the state of the
-  transaction.
+  transaction. Click the link for [a complete list of payment and transaction
+  states][payment-transaction-states]. 
 
 ### 3-D Secure
 
 Swedbank Pay will handle 3-D Secure authentication when this is required.
-When dealing with credit card payments, 3-D Secure authentication of the
+When dealing with card payments, 3-D Secure authentication of the
 cardholder is an essential topic. There are two alternative outcomes of a credit
 card payment:
 
@@ -158,7 +159,7 @@ An example of an expanded `POST` request is available in the
 {% include purchase.md %}
 
 * You need to redirect the payer's browser to that specified URL in the
-  `redirect-authorization` operation so that she can enter the credit card
+  `redirect-authorization` operation so that she can enter the card
   details in a secure Swedbank Pay environment.
 * Swedbank Pay will handle 3-D Secure authentication when this is required.
 * Swedbank Pay will redirect the payer's browser to - one of two specified URLs,
@@ -183,7 +184,7 @@ An example of an expanded `POST` request is available in the
 ### Screenshots for Payments
 
 You will redirect the consumer/end-user to Swedbank Pay hosted pages to collect
-the credit card information.
+the card information.
 
 ![Merchant implemented redirect][redirect-image]{:width="407" height="627"}
 
@@ -206,7 +207,7 @@ The sequence diagram below shows a high level description of a complete
 purchase, and the two requests you have to send to Swedbank Pay. The links will
 take you directly to the corresponding API description.
 
-When dealing with credit card payments, 3-D Secure authentication of the
+When dealing with card payments, 3-D Secure authentication of the
 cardholder is an essential topic. There are two alternative outcomes of a credit
 card payment:
 
@@ -319,3 +320,4 @@ next_href="seamless-view" next_title="Next: Seamless View" %}
 [card-payment]: /assets/img/payments/card-payment.png
 [verify]: /payments/card/other-features#verify
 [user-agent-definition]: https://en.wikipedia.org/wiki/User_agent
+[payment-transaction-states]: /payments/card/other-features#payment-states-and-transaction-states
