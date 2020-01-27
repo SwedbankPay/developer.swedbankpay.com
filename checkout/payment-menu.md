@@ -211,7 +211,7 @@ Content-Type: application/json
             }
         ],
         "riskIndicator": {
-            "deliveryEmailAddress": "test@example.com",
+            "deliveryEmailAddress": "olivia.nyhuus@payex.com",
             "deliveryTimeFrameIndicator": "01",
             "preOrderDate": "19801231",
             "preOrderPurchaseIndicator": "01",
@@ -219,12 +219,12 @@ Content-Type: application/json
             "giftCardPurchase": false,
             "reOrderPurchaseIndicator": "01",
             "pickUpAddress": {
-                "name": "Leo",
-                "streetAddress": "Gata 535",
-                "coAddress": "street 55",
-                "city": "Stockholm",
-                "zipCode": "55560",
-                "countryCode": "SE"
+                "name": "Olivia Nyhus",
+                "streetAddress": "Saltnestoppen 43",
+                "coAddress": "",
+                "city": "Saltnes",
+                "zipCode": "1642",
+                "countryCode": "NO"
             }
         }
     }
