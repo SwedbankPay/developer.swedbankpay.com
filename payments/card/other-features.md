@@ -74,7 +74,7 @@ It is followed up by posting a `capture`, `cancellation` or `reversal` transacti
 An example of a request is provided below. Each individual Property of the JSON
 document is described in the following section.
 
-{% include risk-indicator.md %}
+{% include alert-risk-indicator.md %}
 
 {:.code-header}
 **Request**

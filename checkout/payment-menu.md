@@ -126,7 +126,7 @@ object is optional. If the `POST` request has `orderItems` in the
 `paymentorder`, remember to include `orderItems` in the [capture
 operation](after-payment#capture) as well." %}
 
-{% include risk-indicator.md %}
+{% include alert-risk-indicator.md %}
 
 ### Payment Url
 
