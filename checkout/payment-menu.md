@@ -172,7 +172,11 @@ Content-Type: application/json
             "subsite": "MySubsite"
         },
         "payer": {
-            "consumerProfileRef": "7d5788219e5bc43350e75ac633e0480ab30ad20f96797a12b96e54da869714c4"
+            "consumerProfileRef": "7d5788219e5bc43350e75ac633e0480ab30ad20f96797a12b96e54da869714c4",
+            "email": "olivia.nyhuus@payex.com",
+            "msisdn": "+4798765432",
+            "workPhoneNumber" : "+4787654321",
+            "homePhoneNumber" : "+4776543210"
         },
         "orderItems": [
             {
