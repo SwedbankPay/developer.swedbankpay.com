@@ -1,5 +1,5 @@
 ---
-title: Swedbank Pay Payments
+title: Payments
 ---
 
 {% include jumbotron.html body="Payments is our off-the-rack assortment of

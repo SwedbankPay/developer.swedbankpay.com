@@ -1,5 +1,5 @@
 ---
-title: Swedbank Pay Resources
+title: Terminology
 ---
 
 {% include alert-review-section.md %}

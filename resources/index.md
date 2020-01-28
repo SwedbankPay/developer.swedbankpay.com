@@ -1,5 +1,5 @@
 ---
-title: Swedbank Pay Resources
+title: Resources
 ---
 
 {% include alert-review-section.md %}
