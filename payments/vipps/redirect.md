@@ -1,19 +1,5 @@
 ---
-title: Swedbank Pay Payments Vipps Redirect
-sidebar:
-  navigation:
-  - title: Vipps Payments
-    items:
-    - url: /payments/vipps
-      title: Introduction
-    - url: /payments/vipps/redirect
-      title: Redirect
-    - url: /payments/vipps/seamless-view
-      title: Seamless View
-    - url: /payments/vipps/after-payment
-      title: After Payment
-    - url: /payments/vipps/other-features
-      title: Other Features
+title: Redirect
 ---
 
 {% include alert-review-section.md %}

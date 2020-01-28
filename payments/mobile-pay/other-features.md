@@ -1,17 +1,5 @@
 ---
-title: Swedbank Pay Payments Mobile Pay Other Features
-sidebar:
-  navigation:
-  - title: MobilePay Payments
-    items:
-    - url: /payments/mobile-pay
-      title: Introduction
-    - url: /payments/mobile-pay/redirect
-      title: Redirect
-    - url: /payments/mobile-pay/after-payment
-      title: After Payment
-    - url: /payments/mobile-pay/other-features
-      title: Other Features
+title: Other Features
 ---
 
 {% include alert-review-section.md %}
@@ -425,7 +413,7 @@ Content-Type: application/json
 | ✔︎︎︎︎︎   | └➔&nbsp;`amount`         | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
 | ✔︎︎︎︎︎   | └➔&nbsp;`vatAmount`      | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
 | ✔︎︎︎︎︎   | └➔&nbsp;`description`    | `string`     | A textual description of the capture transaction.                                                                         |
-| ✔︎︎︎︎︎   | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the capture transaction. See [`payeeReference`][payee-reference] for details.                       |
+| ✔︎︎︎︎︎   | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the capture transaction. See [`payeeReference`][payee-reference] for details.                      |
 
 The `capture` resource contains information about the capture transaction made
 against a mobilepay payment.
@@ -466,10 +454,10 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property                 | Type         | Description                                                                                              |
-| :------: | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------- |
-|  ✔︎︎︎︎︎  | `transaction`            | `object`     | The current cancellation.                                                                                |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`description`    | `string`     | A textual description of the reason for the cancellation.                                                |
+| Required | Property                 | Type         | Description                                                                                               |
+| :------: | :----------------------- | :----------- | :-------------------------------------------------------------------------------------------------------- |
+|  ✔︎︎︎︎︎  | `transaction`            | `object`     | The current cancellation.                                                                                 |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`description`    | `string`     | A textual description of the reason for the cancellation.                                                 |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the cancellation transaction. See [`payeeReference`][payee-reference] for details. |
 
 The `cancel` resource contains information about a cancellation transaction
@@ -519,7 +507,7 @@ Content-Type: application/json
 |    ✔︎    | └➔&nbsp;`amount`         | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
 |    ✔︎    | └➔&nbsp;`vatAmount`      | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
 |    ✔︎    | └➔&nbsp;`description`    | `string`     | A textual description of the capture                                                                                      |
-|    ✔︎    | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the reversal transaction. See [`payeeReference`][payee-reference] for details.                      |
+|    ✔︎    | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the reversal transaction. See [`payeeReference`][payee-reference] for details.                     |
 
 The `reversal` resource contains information about a reversal transaction made
 against a payment.

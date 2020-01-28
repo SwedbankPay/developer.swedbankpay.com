@@ -1,21 +1,5 @@
 ---
-title: Swedbank Pay Payments Swish After Payment
-sidebar:
-  navigation:
-  - title: Swish Payments
-    items:
-    - url: /payments/swish
-      title: Introduction
-    - url: /payments/swish/direct
-      title: Direct
-    - url: /payments/swish/redirect
-      title: Redirect
-    - url: /payments/swish/seamless-view
-      title: Seamless View
-    - url: /payments/swish/after-payment
-      title: After Payment
-    - url: /payments/swish/other-features
-      title: Other Features
+title: After Payment
 ---
 
 {% include alert-review-section.md %}
@@ -99,11 +83,11 @@ the `rel` and the request that will be sent in the HTTP body of the
 request for the given operation.
 
 {:.table .table-striped}
-| Operation              | Description                                                                                                                                |
-| :--------------------- | :----------------------------------------------------------------------------------------------------------------------------------------- |
-| `create-sale`          | Creates a `sales` transaction without redirection to a payment page. `Msisdn` is required in browser based scenarioes.                     |
-| `redirect-sale`        | Contains the redirect-URI that redirects the consumer to a Swedbank Pay hosted payment page prior to creating a sales transaction.         |
-| `view-sales`         | Contains the URI of the JavaScript used to create a Hosted View iframe directly without redirecting the consumer to separate payment page. |
+| Operation       | Description                                                                                                                                |
+| :-------------- | :----------------------------------------------------------------------------------------------------------------------------------------- |
+| `create-sale`   | Creates a `sales` transaction without redirection to a payment page. `Msisdn` is required in browser based scenarioes.                     |
+| `redirect-sale` | Contains the redirect-URI that redirects the consumer to a Swedbank Pay hosted payment page prior to creating a sales transaction.         |
+| `view-sales`    | Contains the URI of the JavaScript used to create a Hosted View iframe directly without redirecting the consumer to separate payment page. |
 
 ## Swish transactions
 

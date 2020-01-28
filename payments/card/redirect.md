@@ -1,19 +1,5 @@
 ---
-title: Swedbank Pay Card Payments – Redirect
-sidebar:
-  navigation:
-  - title: Card Payments
-    items:
-    - url: /payments/card/
-      title: Introduction
-    - url: /payments/card/redirect
-      title: Redirect
-    - url: /payments/card/seamless-view
-      title: Seamless View
-    - url: /payments/card/after-payment
-      title: After Payment
-    - url: /payments/card/other-features
-      title: Other Features
+title: Redirect
 ---
 
 {% include jumbotron.html body="The basic redirect purchase scenario is the

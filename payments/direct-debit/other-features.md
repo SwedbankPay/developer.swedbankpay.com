@@ -1,17 +1,5 @@
 ---
-title: Swedbank Pay Payments Direct Debit Other Features
-sidebar:
-  navigation:
-  - title: Direct Debit Payments
-    items:
-    - url: /payments/direct-debit
-      title: Introduction
-    - url: /payments/direct-debit/redirect
-      title: Redirect
-    - url: /payments/direct-debit/after-payment
-      title: After Payment
-    - url: /payments/direct-debit/other-features
-      title: Other Features
+title: Other Features
 ---
 
 {% include alert-development-section.md %}
@@ -99,7 +87,7 @@ Content-Type: application/json
 |    ✔︎    | └➔&nbsp;`description`        | `string(40)` | A textual description max 40 characters of the purchase.                                                                                                                                                                                                    |
 |          | └➔&nbsp;`payerReference`     | `string`     | The reference to the payer (consumer/end-user) from the merchant system, like mobile number, customer number etc.                                                                                                                                           |
 |    ✔︎    | └➔&nbsp;`userAgent`          | `string`     | The user agent reference of the consumer's browser - [see user agent definition][user-agent]                                                                                                                                                                |
-|    ✔︎    | └➔&nbsp;`language`           | `string`     | `nb-NO`, `sv-SE` or `en-US`.                                                                                                                                                                                                                                      |
+|    ✔︎    | └➔&nbsp;`language`           | `string`     | `nb-NO`, `sv-SE` or `en-US`.                                                                                                                                                                                                                                |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`urls`               | `object`     | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                      |
 |    ✔︎    | └─➔&nbsp;`completeUrl`       | `string`     | The URI that Swedbank Pay will redirect back to when the payment is followed through. This does not indicate a successful payment, only that it has reached a completion state. A `GET` request needs to be performed on the payment to inspect it further. |
 |    ✔︎    | └─➔&nbsp;`cancelUrl`         | `string`     | The URI that Swedbank Pay will redirect back to when the user presses the cancel button in the payment page.                                                                                                                                                |

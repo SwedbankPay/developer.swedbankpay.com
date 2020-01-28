@@ -1,23 +1,5 @@
 ---
 title: Swedbank Pay Payments
-sidebar:
-  navigation:
-  - title: Payments
-    items:
-    - url: /payments/
-      title: Introduction
-    - url: /payments/card
-      title: Card Payments
-    - url: /payments/invoice
-      title: Invoice Payments
-    - url: /payments/swish
-      title: Swish Payments
-    - url: /payments/vipps
-      title: Vipps Payments
-    - url: /payments/mobile-pay
-      title: Mobile Pay Payments
-    - url: /payments/direct-debit
-      title: Direct Debit Payments
 ---
 
 {% include jumbotron.html body="Payments is our off-the-rack assortment of
@@ -35,13 +17,13 @@ payment instruments and their platform availability are listed in the table
 below.
 
 {:.table .table-striped}
-|                                | Payment instrument           | Seamless View | Redirect | Region                                                                               |
-| :----------------------------: | :--------------------------- | :-----------: | :------: | :----------------------------------------------------------------------------------- |
-|     ![CardIcon][card-icon]     | [Card][card]                 |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  | ![EarthIcon][earth-icon]                                                             |
-|  ![InvoiceIcon][invoice-icon]  | [Invoice][invoice]           |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  | ![nor][nor-flag] ![swe][swe-flag]                                   |
-|      ![Vipps][vipps-logo]      | [Vipps][vipps]               |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  | ![nor][nor-flag]                                                                     |
-|      ![Swish][swish-logo]      | [Swish][swish]               |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  | ![swe][swe-flag]                                                                     |
-|  ![MobilePay][mobilepay-logo]  | [MobilePay][mobile-pay]      |               |  ✔︎︎︎︎︎  | ![dan][dan-flag] ![fin][fin-flag]                                                    |
+|                              | Payment instrument      | Seamless View | Redirect | Region                            |
+| :--------------------------: | :---------------------- | :-----------: | :------: | :-------------------------------- |
+|    ![CardIcon][card-icon]    | [Card][card]            |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  | ![EarthIcon][earth-icon]          |
+| ![InvoiceIcon][invoice-icon] | [Invoice][invoice]      |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  | ![nor][nor-flag] ![swe][swe-flag] |
+|     ![Vipps][vipps-logo]     | [Vipps][vipps]          |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  | ![nor][nor-flag]                  |
+|     ![Swish][swish-logo]     | [Swish][swish]          |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  | ![swe][swe-flag]                  |
+| ![MobilePay][mobilepay-logo] | [MobilePay][mobile-pay] |               |  ✔︎︎︎︎︎  | ![dan][dan-flag] ![fin][fin-flag] |
 
 ## Prerequisites
 

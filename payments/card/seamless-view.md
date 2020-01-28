@@ -1,19 +1,5 @@
 ---
-title: Swedbank Pay Card Payments – Seamless View
-sidebar:
-  navigation:
-  - title: Card Payments
-    items:
-    - url: /payments/card/
-      title: Introduction
-    - url: /payments/card/redirect
-      title: Redirect
-    - url: /payments/card/seamless-view
-      title: Seamless View
-    - url: /payments/card/after-payment
-      title: After Payment
-    - url: /payments/card/other-features
-      title: Other Features
+title: Seamless View
 ---
 
 {% include jumbotron.html body="The Seamless View purchase scenario
@@ -225,10 +211,10 @@ This event triggers when a user actively attempts to perform a payment. The
 ```
 
 {:.table .table-striped}
-| Property     | Type     | Description                                                                                     |
-| :----------- | :------- | :---------------------------------------------------------------------------------------------- |
-| `id`         | `string` | The relative URI to the payment.                                                                |
-| `instrument` | `string` | `Creditcard`                                                                                    |
+| Property     | Type     | Description                      |
+| :----------- | :------- | :------------------------------- |
+| `id`         | `string` | The relative URI to the payment. |
+| `instrument` | `string` | `Creditcard`                     |
 
 ### `onPaymentCompleted`
 
@@ -336,11 +322,11 @@ object:
 ```
 
 {:.table .table-striped}
-| Property    | Type     | Description                                                                               |
-| :---------- | :------- | :---------------------------------------------------------------------------------------- |
-| `origin`    | `string` | `creditcard`, identifies the system that originated the error.                            |
-| `messageId` | `string` | A unique identifier for the message.                                                      |
-| `details`   | `string` | A human readable and descriptive text of the error.                                       |
+| Property    | Type     | Description                                                    |
+| :---------- | :------- | :------------------------------------------------------------- |
+| `origin`    | `string` | `creditcard`, identifies the system that originated the error. |
+| `messageId` | `string` | A unique identifier for the message.                           |
+| `details`   | `string` | A human readable and descriptive text of the error.            |
 
 {% include iterator.html prev_href="redirect" prev_title="Redirect"
 next_href="after-payment" next_title="Next: After Payment" %}

@@ -1,17 +1,5 @@
 ---
-title: Swedbank Pay Payments Direct Debit After Payment
-sidebar:
-  navigation:
-  - title: Direct Debit Payments
-    items:
-    - url: /payments/direct-debit
-      title: Introduction
-    - url: /payments/direct-debit/redirect
-      title: Redirect
-    - url: /payments/direct-debit/after-payment
-      title: After Payment
-    - url: /payments/direct-debit/other-features
-      title: Other Features
+title: After Payment
 ---
 
 {% include alert-development-section.md %}
