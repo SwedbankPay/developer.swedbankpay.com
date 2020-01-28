@@ -42,6 +42,7 @@ like to host it locally on your computer, you need to do the following:
    * `stkb.rewrap`, to make line-breaking text at 80 characters easier.
    * `supperchong.pretty-json` to format selected JSON snippets in code
      examples.
+   * `sissel.shopify-liquid` for syntax highlighting of [Liquid][liquid].
 8. Also in Visual Studio Code, [set up a ruler at 80 characters][vsc-ruler]
    by adding `"editor.rulers": [80]` to its configuration.
 
@@ -165,6 +166,7 @@ This website is available as open source under the terms of the
 [last-commit-badge]: https://img.shields.io/github/last-commit/SwedbankPay/developer.swedbankpay.com/master
 [license]: https://opensource.org/licenses/MIT
 [liquid-includes]: https://jekyllrb.com/docs/includes/
+[liquid]: https://jekyllrb.com/docs/liquid/
 [mermaid-github]: https://github.com/mermaid-js/mermaid
 [mermaid-live-editor]: https://mermaidjs.github.io/mermaid-live-editor
 [ruby]: https://www.ruby-lang.org/en/

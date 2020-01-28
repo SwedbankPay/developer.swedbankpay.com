@@ -16,8 +16,6 @@ sidebar:
       title: Other Features
 ---
 
-{% include alert-review-section.md %}
-
 {% include jumbotron.html body="The Seamless View purchase scenario
                           represents the opportunity to implement card payments
                           directly in your webshop." %}
