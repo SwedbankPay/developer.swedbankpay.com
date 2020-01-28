@@ -16,8 +16,6 @@ sidebar:
       title: Other Features
 ---
 
-{% include alert-review-section.md %}
-
 {% include jumbotron.html body="The basic redirect purchase scenario is the
 simplest and most common way to implement Card Payments." %}
 
@@ -101,7 +99,7 @@ sequenceDiagram
   completion, in contrast to a cancelled payment.
 * ⑥ Send a GET request with the `paymentId` to check the state of the
   transaction. Click the link for [a complete list of payment and transaction
-  states][payment-transaction-states]. 
+  states][payment-transaction-states].
 
 ### 3-D Secure
 
