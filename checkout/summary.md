@@ -1,21 +1,5 @@
 ---
-title: Swedbank Pay Checkout – Summary
-sidebar:
-  navigation:
-  - title: Checkout
-    items:
-    - url: /checkout/
-      title: Introduction
-    - url: /checkout/checkin
-      title: Checkin
-    - url: /checkout/payment-menu
-      title: Payment Menu
-    - url: /checkout/after-payment
-      title: After Payment
-    - url: /checkout/summary
-      title: Summary
-    - url: /checkout/other-features
-      title: Other Features
+title: Summary
 ---
 
 {% include jumbotron.html body="If you have read this far, you should now be

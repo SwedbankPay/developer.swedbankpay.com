@@ -1,21 +1,5 @@
 ---
-title: Swedbank Pay Checkout – Other Features
-sidebar:
-  navigation:
-  - title: Checkout
-    items:
-    - url: /checkout/
-      title: Introduction
-    - url: /checkout/checkin
-      title: Checkin
-    - url: /checkout/payment-menu
-      title: Payment Menu
-    - url: /checkout/after-payment
-      title: After Payment
-    - url: /checkout/summary
-      title: Summary
-    - url: /checkout/other-features
-      title: Other Features
+title: Other Features
 ---
 
 {% include jumbotron.html body="After a successful integration, it may be worth
@@ -127,7 +111,7 @@ The `orderItems` property of the `paymentOrder` is an array containing the items
 | :------: | :-------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |  ✔︎︎︎︎︎  | `reference`           | `string`  | A reference that identifies the order item.                                                                                                                                                                                    |
 |  ✔︎︎︎︎︎  | `name`                | `string`  | The name of the order item.                                                                                                                                                                                                    |
-|  ✔︎︎︎︎︎  | `type`                | `enum`  | `PRODUCT`, `SERVICE`, `SHIPPING_FEE`, `DISCOUNT`, `VALUE_CODE`, or `OTHER`. The type of the order item.                                                                                                                        |
+|  ✔︎︎︎︎︎  | `type`                | `enum`    | `PRODUCT`, `SERVICE`, `SHIPPING_FEE`, `DISCOUNT`, `VALUE_CODE`, or `OTHER`. The type of the order item.                                                                                                                        |
 |  ✔︎︎︎︎︎  | `class`               | `string`  | The classification of the order item. Can be used for assigning the order item to a specific product category, such as `MobilePhone`. Note that `class` cannot contain spaces. Swedbank Pay may use this field for statistics. |
 |          | `itemUrl`             | `string`  | The URL to a page that can display the purchased item, such as a product page                                                                                                                                                  |
 |          | `imageUrl`            | `string`  | The URL to an image of the order item.                                                                                                                                                                                         |

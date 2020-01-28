@@ -1,21 +1,5 @@
 ---
-title: Swedbank Pay Checkout – Payment Menu
-sidebar:
-  navigation:
-  - title: Checkout
-    items:
-    - url: /checkout/
-      title: Introduction
-    - url: /checkout/checkin
-      title: Checkin
-    - url: /checkout/payment-menu
-      title: Payment Menu
-    - url: /checkout/after-payment
-      title: After Payment
-    - url: /checkout/summary
-      title: Summary
-    - url: /checkout/other-features
-      title: Other Features
+title: Payment Menu
 ---
 
 {% include jumbotron.html body="**Payment Menu** begins where **Checkin** left

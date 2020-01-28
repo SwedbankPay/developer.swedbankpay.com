@@ -1,23 +1,5 @@
 ---
 title: Test Data
-sidebar:
-  navigation:
-  - title: Resources
-    items:
-    - url: /resources/
-      title: Introduction
-    - url: /resources/test-data
-      title: Test Data
-    - url: /resources/demoshop
-      title: Demoshop
-    - url: /resources/development-guidelines
-      title: Open Source Development Guidelines
-    - url: /resources/release-notes
-      title: Release Notes
-    - url: /resources/terminology
-      title: Terminology
-    - url: /resources/data-protection
-      title: Data Protection
 ---
 
 {% include alert-review-section.md %}
@@ -160,17 +142,17 @@ The amounts that can be used and produce error codes
 (transactionThirdPartyError):
 
 {:.table .table-striped}
-| Number                                         | Error message                           |
-| :--------------------------------------------- | :-------------------------------------- |
-| 900313                                         | REJECTED_BY_ACQUIRER_INVALID_AMOUNT     |
-| 900330                                         | REJECTED_BY_ACQUIRER_FORMAT_ERROR       |
-| 900334                                         | REJECTED_BY_ACQUIRER_POSSIBLE_FRAUD     |
-| 900343                                         | REJECTED_BY_ACQUIRER_CARD_STOLEN        |
-| 900354                                         | REJECTED_BY_ACQUIRER_CARD_EXPIRED       |
-| 900351                                         | REJECTED_BY_ACQUIRER_INSUFFICIENT_FUNDS |
-| 900359                                         | CARD_DECLINED                           |
-| 900362                                         | REJECTED_BY_PAYEX_CARD_BLACKLISTED      |
-| 900391                                         | ACQUIRER_HOST_OFFLINE                   |
+| Number | Error message                           |
+| :----- | :-------------------------------------- |
+| 900313 | REJECTED_BY_ACQUIRER_INVALID_AMOUNT     |
+| 900330 | REJECTED_BY_ACQUIRER_FORMAT_ERROR       |
+| 900334 | REJECTED_BY_ACQUIRER_POSSIBLE_FRAUD     |
+| 900343 | REJECTED_BY_ACQUIRER_CARD_STOLEN        |
+| 900354 | REJECTED_BY_ACQUIRER_CARD_EXPIRED       |
+| 900351 | REJECTED_BY_ACQUIRER_INSUFFICIENT_FUNDS |
+| 900359 | CARD_DECLINED                           |
+| 900362 | REJECTED_BY_PAYEX_CARD_BLACKLISTED      |
+| 900391 | ACQUIRER_HOST_OFFLINE                   |
 
 ## Invoice Test Data
 
