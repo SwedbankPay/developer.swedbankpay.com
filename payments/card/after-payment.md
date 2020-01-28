@@ -16,8 +16,6 @@ sidebar:
       title: Other Features
 ---
 
-{% include alert-review-section.md %}
-
 ## Options after posting a payment
 
 When you detect that the payer reach your `completeUrl` , you need to do a `GET`

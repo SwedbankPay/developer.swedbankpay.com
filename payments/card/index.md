@@ -16,12 +16,6 @@ sidebar:
       title: Other Features
 ---
 
-{% comment %}
-TODO: This page needs serious clean-up.
-{% endcomment %}
-
-{% include alert-review-section.md %}
-
 {% include jumbotron.html body="**Card Payments** is the most popular, versatile
 and global way to initate a transaction with a customer. Choose between our
 **Redirect** and **Seamless view** integration options." %}

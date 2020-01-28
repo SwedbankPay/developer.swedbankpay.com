@@ -20,8 +20,6 @@ sidebar:
       title: Direct Debit Payments
 ---
 
-{% include alert-review-section.md %}
-
 {% include jumbotron.html body="Payments is our off-the-rack assortment of
 payment instruments. You can pick and choose among them to tailor the instrument
 package best suited for your business." %}

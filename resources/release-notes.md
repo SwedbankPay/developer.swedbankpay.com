@@ -31,6 +31,11 @@ this very documentation, not to a version of any APIs described by it." %}
 
 ## January 2020
 
+### Version 1.6.2
+
+* The [Payments][payments] and [Card Payments][card] sections are reviewed and
+  released.
+
 ### Version 1.6.1
 
 * `email`, `msisdn`, `workPhoneNumber` and `homePhoneNumber` added to the
@@ -214,14 +219,14 @@ creation of the payment or payment order needs to be performed again. With
 paymentUrl in place, the retry process becomes much more convenient for both the
 integration and the payer.
 
-[card]: /payments/card
 [card-payment-url]: /payments/card/other-features#payment-url
 [card-purchase]: /payments/card/redirect#purchase
-[credit]: /payments/credit
+[card]: /payments/card
 [checkout-checkin-front-end]: /checkout/checkin#checkin-front-end
 [checkout-payment-orders]: /checkout/other-features#payment-orders
 [checkout-payment-url]: /checkout/other-features#payment-url
 [checkout]: /checkout
+[credit]: /payments/credit
 [data-protection]: /resources/data-protection
 [direct-debit]: /payments/direct-debit
 [initiate-consumer-session]: /checkout/checkin#checkin-back-end
@@ -229,11 +234,12 @@ integration and the payer.
 [mobile-pay]: /payments/mobile-pay
 [one-click]: /payments/card/other-features#one-click-payments
 [payment-orders]: /checkout/other-features#creating-a-payment-order
-[swish]: /payments/swish
+[payments]: /payments
 [swish-direct]: /payments/swish/direct
 [swish-other-features]: /payments/swish/other-features
 [swish-redirect]: /payments/swish/redirect
+[swish]: /payments/swish
 [terminology]: /resources/terminology
-[vipps]: /payments/vipps
 [vipps-payment-resource]: /payments/vipps/other-features#payment-resource
 [vipps-payment-url]: /payments/vipps/other-features#payment-url
+[vipps]: /payments/vipps
