@@ -1,5 +1,5 @@
 ---
-title: Introduction
+title: Checkout
 ---
 
 {% include jumbotron.html body="**Swedbank Pay Checkout** is a complete reimagination
