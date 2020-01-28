@@ -31,6 +31,13 @@ this very documentation, not to a version of any APIs described by it." %}
 
 ## January 2020
 
+### Version 1.6.1
+
+* `email`, `msisdn`, `workPhoneNumber` and `homePhoneNumber` added to the
+  `payer` object in [Payment Order requests][checkout-payment-orders].
+* `cardholder` added to [Card Payments Purchase requests][card-purchase].
+* Various improvements and fixes.
+
 ### Version 1.6
 
 * [Credit Payments][credit] (née "Credit Account") sections have been deleted
@@ -43,7 +50,7 @@ this very documentation, not to a version of any APIs described by it." %}
   *PSD2* and *SCA* explanations are added.
 * Added descriptions for Payment States And Transaction States everywhere appropriate.
 * Google Analytics has been added to Developer Portal.
-  
+
 ### Version 1.5
 
 * The review of [Invoice Payments][invoice] is complete and as such the section
@@ -209,6 +216,7 @@ integration and the payer.
 
 [card]: /payments/card
 [card-payment-url]: /payments/card/other-features#payment-url
+[card-purchase]: /payments/card/redirect#purchase
 [credit]: /payments/credit
 [checkout-checkin-front-end]: /checkout/checkin#checkin-front-end
 [checkout-payment-orders]: /checkout/other-features#payment-orders
