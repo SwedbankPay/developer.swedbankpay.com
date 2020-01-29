@@ -31,6 +31,15 @@ this very documentation, not to a version of any APIs described by it." %}
 
 ## January 2020
 
+### Version 1.6.3
+
+* `restrictedToInstruments` added to payment-order-purchase.md
+* `Direct Debit` section removed
+* `Direct Debit` mentions in various includes removed
+* `remote_theme` updated in config.yml
+* `unitPrice` in payment-order-purchase.md updated
+* `MobilePay` typos fixed
+
 ### Version 1.6.2
 
 * The [Payments][payments] and [Card Payments][card] sections are reviewed and
