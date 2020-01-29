@@ -150,7 +150,6 @@ Content-Type: application/json
                 "vatAmount": 0
             }
         ],
-        "paymentAgeLimit": 18,
         "description": "Test Purchase",
         "generatePaymentToken": false,
         "generateRecurrenceToken": false,
@@ -178,6 +177,8 @@ Content-Type: application/json
     },
     "swish": {
         "enableEcomOnly": true,
+        "paymentRestrictedToAgeLimit": 18,
+        "paymentRestrictedToSocialSecurityNumber": "{{ page.consumerSSN }}"
     }
 }
 ```
@@ -192,8 +193,7 @@ Content-Type: application/json
 |  ✔︎︎︎︎︎  | └➔&nbsp;`prices`                      | `object`      | The `prices` resource lists the prices related to a specific payment.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`type`                       | `string`      | Use the generic type CreditCard if you want to enable all card brands supported by merchant contract. Use card brands like Visa (for card type Visa), MasterCard (for card type Mastercard) and others if you want to specify different amount for each card brand. If you want to use more than one amount you must have one instance in the prices node for each card brand. You will not be allowed to both specify card brands and CreditCard at the same time in this field. [See the Prices resource and prices object types for more information][price-resource]. |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`amount`                     | `integer`     | Amount is entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 SEK 5000 = 50.00 SEK.                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-|  ✔︎︎︎︎︎  | └─➔&nbsp;`vatAmount`                  | `integer`     | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                                           |
-|      | └➔&nbsp;`paymentAgeLimit`             | `integer`     | Positive number sets requried age limit to fulfill the payment.                                                                          |
+|  ✔︎︎︎︎︎  | └─➔&nbsp;`vatAmount`                  | `integer`     | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                                       |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`description`                 | `string(40)`  | A textual description max 40 characters of the purchase.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 |          | └➔&nbsp;`payerReference`              | `string`      | The reference to the payer (consumer/end user) from the merchant system. E.g mobile number, customer number etc.                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`userAgent`                   | `string`      | The user agent reference of the consumer's browser - [see user agent definition][user-agent-definition]                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
@@ -216,7 +216,9 @@ Content-Type: application/json
 |          | └─➔&nbsp;`msisdn`                     | `string`      | Number will be prefilled on payment page, if valid. We support international phone numbers defined with country code prefix. ex +46                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 |          | └─➔&nbsp;`subsite`                    | `String(40)`  | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.                                                                                                                                                                                                                                                                                                                                                                                                             |
 |          | └➔&nbsp;`swish`                       | `object`      | An object that holds different scenarios for Swish payments.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-|          | └─➔&nbsp;`enableEcomOnly`             | `boolean`     | `true` if to only enable Swish on browser-based transactions.; otherwise `false` to also enable Swish transactions via mobile app.                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+|          | └─➔&nbsp;`enableEcomOnly`             | `boolean`     | `true` if to only enable Swish on browser-based transactions.; otherwise `false` to also enable Swish transactions via mobile app.
+|          | └➔&nbsp;`paymentRestrictedToAgeLimit`  |`integer` | Positive number sets required age limit to fulfill the payment.
+|          | └➔&nbsp;`paymentRestrictedToSocialSecurityNumber`  |`string` | When provided, the payment will be restricted to a specific social security number. Format: yyyyMMddxxxx.                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 
 {:.code-header}
 **Response**
@@ -227,7 +229,6 @@ Content-Type: application/json
 
 {
     "payment": {
-      "paymentAgeLimit": 18,
       "id": "/psp/swish/payments/{{ page.paymentId }}",
       "number": 1234567890,
       "instrument": "Swish",
