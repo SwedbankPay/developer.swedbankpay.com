@@ -15,7 +15,7 @@ sidebar:
     - url: /payments/vipps
       title: Vipps Payments
     - url: /payments/mobile-pay
-      title: Mobile Pay Payments
+      title: MobilePay Payments
     - url: /payments/direct-debit
       title: Direct Debit Payments
 ---
