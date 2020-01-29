@@ -45,7 +45,8 @@ set to value `FinancingConsumer` are listed below.
 
 ## Payment Resource
 
-{% include payment-resource.md payment-instrument="invoice" %}
+{% include payment-resource.md payment-instrument="invoice"
+showStatusOperations=true %}
 
 {% include payment-transaction-states.md %}
 
@@ -531,7 +532,7 @@ transaction made towards a payment, as previously described.
 
 {% include callback-reference.md payment-instrument="invoice" %}
 
-{% include payment-link.md hide-3d-secure=true %}
+{% include payment-link.md show-3d-secure=false %}
 
 ## PayeeInfo
 

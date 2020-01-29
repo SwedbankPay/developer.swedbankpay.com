@@ -31,6 +31,31 @@ this very documentation, not to a version of any APIs described by it." %}
 
 ## January 2020
 
+### Version 1.6.2
+
+* The [Payments][payments] and [Card Payments][card] sections are reviewed and
+  released.
+
+### Version 1.6.1
+
+* `email`, `msisdn`, `workPhoneNumber` and `homePhoneNumber` added to the
+  `payer` object in [Payment Order requests][checkout-payment-orders].
+* `cardholder` added to [Card Payments Purchase requests][card-purchase].
+* Various improvements and fixes.
+
+### Version 1.6
+
+* [Credit Payments][credit] (née "Credit Account") sections have been deleted
+  from the Swedbank Pay Developer Portal.
+* The [Swish Payments][swish] and [Vipps Payments][vipps] have received a few
+  updates and are now ready for another round of review.
+* [MobilePay Payments][mobile-pay] is now ready for review.
+* `paymentAgeLimit` is now added in [Swish Payments][swish].
+* The [Terminology page][terminology] is updated and *3-D Secure 2.0 (3DS2)* ,
+  *PSD2* and *SCA* explanations are added.
+* Added descriptions for Payment States And Transaction States everywhere appropriate.
+* Google Analytics has been added to Developer Portal.
+
 ### Version 1.5
 
 * The review of [Invoice Payments][invoice] is complete and as such the section
@@ -53,7 +78,6 @@ this very documentation, not to a version of any APIs described by it." %}
 * Added [Terminology page][terminology].
 * Clarified what the `awaitingActivity` state means for different payment
   instruments.
-* MobilePay section is ready for review!
 * Removed erroneous `noCVC` in examples for [One-Click Card Payments][one-click]
   section.
 * Added description for the `onBillingDetailsAvailable` event in the
@@ -195,13 +219,14 @@ creation of the payment or payment order needs to be performed again. With
 paymentUrl in place, the retry process becomes much more convenient for both the
 integration and the payer.
 
-[card]: /payments/card
 [card-payment-url]: /payments/card/other-features#payment-url
-[credit]: /payments/credit
+[card-purchase]: /payments/card/redirect#purchase
+[card]: /payments/card
 [checkout-checkin-front-end]: /checkout/checkin#checkin-front-end
 [checkout-payment-orders]: /checkout/other-features#payment-orders
 [checkout-payment-url]: /checkout/other-features#payment-url
 [checkout]: /checkout
+[credit]: /payments/credit
 [data-protection]: /resources/data-protection
 [direct-debit]: /payments/direct-debit
 [initiate-consumer-session]: /checkout/checkin#checkin-back-end
@@ -209,11 +234,12 @@ integration and the payer.
 [mobile-pay]: /payments/mobile-pay
 [one-click]: /payments/card/other-features#one-click-payments
 [payment-orders]: /checkout/other-features#creating-a-payment-order
-[swish]: /payments/swish
+[payments]: /payments
 [swish-direct]: /payments/swish/direct
 [swish-other-features]: /payments/swish/other-features
 [swish-redirect]: /payments/swish/redirect
+[swish]: /payments/swish
 [terminology]: /resources/terminology
-[vipps]: /payments/vipps
 [vipps-payment-resource]: /payments/vipps/other-features#payment-resource
 [vipps-payment-url]: /payments/vipps/other-features#payment-url
+[vipps]: /payments/vipps

@@ -14,11 +14,11 @@ sidebar:
       title: Other Features
 ---
 
-{% include alert-development-section.md %}
+{% include alert-review-section.md %}
 
 ## Payment Resource
 
-{% include payment-transaction-states.md %}
+{% include payment-resource.md payment-instrument="mobilepay" %}
 
 ### Create Payment
 
