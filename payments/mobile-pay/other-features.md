@@ -1,5 +1,5 @@
 ---
-title: Swedbank Pay Payments Mobile Pay Other Features
+title: Swedbank Pay Payments MobilePay – Other Features
 sidebar:
   navigation:
   - title: MobilePay Payments
@@ -22,7 +22,7 @@ sidebar:
 
 ### Create Payment
 
-To create a Mobile Pay payment, you perform an HTTP `POST` against the
+To create a MobilePay payment, you perform an HTTP `POST` against the
 `/psp/mobilepay/payments` resource. Please read the [general
 information][general-http-info] on how to compose a valid HTTP request before
 proceeding.
@@ -270,7 +270,7 @@ request for the given operation.
 | :----------------------- | :--------------------------------------------------------------------------- |
 | `update-payment-abort`   | [Aborts][abort] the payment before any financial transactions are performed. |
 | `create-authorization`   | Create an [authorization][authorization-transaction] transaction.            |
-| `redirect-authorization` | Used to redirect the consumer to the mobilepay authorization UI.             |
+| `redirect-authorization` | Used to redirect the consumer to the MobilePay authorization UI.             |
 | `create-capture`         | Creates a [capture][capture-transaction] transaction.                        |
 | `create-cancellation`    | Creates a [cancellation][cancellation-transaction] transaction.              |
 | `create-reversal`        | Creates a [reversal][reversal-transaction] transaction.                      |
@@ -395,7 +395,7 @@ specific payment.
 
 ### Create capture transaction
 
-A `capture` transaction - to withdraw money from the payer's mobilepay - can be
+A `capture` transaction - to withdraw money from the payer's MobilePay - can be
 created after a completed authorization by performing the `create-capture`
 operation.
 
