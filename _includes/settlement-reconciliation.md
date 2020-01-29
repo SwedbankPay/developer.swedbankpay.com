@@ -49,7 +49,7 @@ balance report summary is equivalent to the disbursement on the bank statement
 ##### Sales specification
 
 Provides a specification over sales for the given period. The sales total is
-specified per payment area (`CreditCard, Direct Debit, Factoring`) and
+specified per payment area (`CreditCard`, `Invoice`) and
 underlying payment instruments. Each sales row specify Quantity, Sum sales and
 Amount to pay out, the last one is only eligble **if Swedbank Pay handles the
 Settlement process**.
@@ -57,7 +57,7 @@ Settlement process**.
 ##### Fees specification
 
 Provides a specification over fees for the given period. The fees total is
-specified per payment area (`CreditCard, Direct Debit, Factoring`) and
+specified per payment area (`CreditCard`, `Invoice`) and
 underlying payment instruments. Each fees row specify `Quantity` (sales),
 `Amount` (sales), `Unit price`, `Provision` and `fee Amount`. **If you handle
 the settlement process yourselves you will receive a separat invoice for fees**.
@@ -83,8 +83,8 @@ body.
 | :------------ | :--------- | :------------------------------------------------------------------------- |
 | `Prefix`      | `String`   | The `Prefix` used for transactions, only eligible if merchant uses prefix. |
 | Currency      | `ISO 4217` | Settlement currency (e.g. `SEK, NOK, EUR`).                                |
-| `ServiceType` | `String`   | The service type of the service used (e.g. `Creditcard, Direct debit`).    |
-| `Service`     | `String`   | The service used (e.g. `Creditcard, Direct debit`).                        |
+| `ServiceType` | `String`   | The service type of the service used (e.g. `Creditcard`).    |
+| `Service`     | `String`   | The service used (e.g. `Creditcard`).                        |
 | `NoOfDebet`   | `Decimal`  | Total number of debit transactions for the given service.                  |
 | `NoOfCredit`  | `Decimal`  | Total number of credit transactions for the given service.                 |
 | `Amount`      | `Decimal`  | Total amount for the given service (e.g 100.00).                           |
@@ -103,15 +103,14 @@ body.
 | `Date Created`                  | `ISO 8601` | Transaction capture date/time. YYYY-MM-DD hh:mm:ss.                                                                                                   |
 | `Date Modified`                 | `ISO 8601` | Transaction settle date/time. YYYY-MM-DD hh:mm:ss.                                                                                                    |
 | `Provider`                      | `String`   | The service provider (e.g. Babs, Swedbank).                                                                                                           |
-| `Type`                          | `String`   | The service type of the related transaction (e.g. `Creditcard, Direct debit`).                                                                        |
+| `Type`                          | `String`   | The service type of the related transaction (e.g. `Creditcard`).                                                                        |
 | `Amount`                        | `Decimal`  | Total amount of the related transaction (e.g 100.00).                                                                                                 |
 | `Currency`                      | `ISO 4217` | Settlement currency (e.g. `SEK, NOK, EUR`).                                                                                                           |
 | `Product Number`                | `String`   | A product number, as sent by merchant to PayEx.                                                                                                       |
 | `Description`                   | `String`   | A textual description of the transaction, as sent by merchant to PayEx.                                                                               |
 | `VAT Amount`                    | `Decimal`  | VAT Amount for the given transaction (e.g 100.00).                                                                                                    |
 | `VAT Percentage`                | `Decimal`  | VAT Percentage for the given transaction.                                                                                                             |
-| `Credit Card Batch Number`      | `Decimal`  | The reference number from the credit card processor.                                                                                                  |
-| `Direct Debit Bank Reference`   | `Decimal`  | The reference number from the processing bank.                                                                                                        |
+| `Credit Card Batch Number`      | `Decimal`  | The reference number from the credit card processor.                                                                                                  |                                                                
 | `Reference`                     | `Decimal`  | The transaction reference from processor.                                                                                                             |
 | `Swedbank Pay Account Number`   | `Decimal`  | The Account number given, shown in Swedbank Pay admin.                                                                                                |
 | `Referenced Transaction Number` | `Decimal`  | Transaction number for the Authoriation transaction for a two-stage transaction or the number of the debit transaction if it is a credit transaction. |
@@ -270,8 +269,8 @@ charities.
 
 * Since the sub merchants are connected to Swedbank Pay through the super
   merchant instead of having separate setups, this means that you:
-* Only need one agreement for credit card, direct debit, Vipps, Swish,
-  MobilePay,  invoice, credit account and payment gateway.
+* Only need one agreement for credit card, Vipps, Swish,
+  MobilePay, invoice and payment gateway.
 * Only need one acquiring agreement.
 * Only need one Vipps/Swish certificate.
 * Can add more payment instruments easily, as it only has to be done once.

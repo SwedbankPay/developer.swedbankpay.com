@@ -1,5 +1,5 @@
 ---
-title: Swedbank Pay Payments Mobile Pay After Payment
+title: Swedbank Pay MobilePay Payments – After Payment
 sidebar:
   navigation:
   - title: MobilePay Payments
@@ -36,7 +36,7 @@ specific payment.
 
 ## Create capture transaction
 
-A `capture` transaction - to withdraw money from the payer's Mobile Pay - can be
+A `capture` transaction - to withdraw money from the payer's MobilePay - can be
 created after a completed authorization by performing the `create-capture`
 operation.
 
