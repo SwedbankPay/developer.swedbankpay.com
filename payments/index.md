@@ -16,8 +16,6 @@ sidebar:
       title: Vipps Payments
     - url: /payments/mobile-pay
       title: MobilePay Payments
-    - url: /payments/direct-debit
-      title: Direct Debit Payments
 ---
 
 {% include jumbotron.html body="Payments is our off-the-rack assortment of
@@ -107,7 +105,7 @@ distribution and send it to the consumer.
 
 There are two types of one-phase payments – `sale` and `autoCapture`.
 
-`sale` is used by payment instruments such as Direct Debit and [Swish][swish].
+`sale` is used by payment instruments such as [Swish][swish].
 These payments will have a `sale` transaction instead of the `authorization` and
 `capture`. The funds will be captured from the consumer straight away.
 
