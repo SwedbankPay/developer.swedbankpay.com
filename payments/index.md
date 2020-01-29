@@ -15,7 +15,7 @@ sidebar:
     - url: /payments/vipps
       title: Vipps Payments
     - url: /payments/mobile-pay
-      title: Mobile Pay Payments
+      title: MobilePay Payments
 ---
 
 {% include jumbotron.html body="Payments is our off-the-rack assortment of
