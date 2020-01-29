@@ -36,7 +36,7 @@ this very documentation, not to a version of any APIs described by it." %}
 * `restrictedToInstruments` added back to [Payment Order purchase requests][checkout-payment-order-purchase].
 * `Direct Debit` section and mentions in various includes removed
 * `remote_theme` updated in config.yml
-* `unitPrice` in [payment-order-purchase include][checkout-payment-order-purchase] updated
+* `unitPrice` in [Payment Order purchase requests][checkout-payment-order-purchase] updated
 * `MobilePay` typos fixed
 
 ### Version 1.6.2
