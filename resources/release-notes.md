@@ -31,6 +31,13 @@ this very documentation, not to a version of any APIs described by it." %}
 
 ## January 2020
 
+### Version 1.6.3
+
+* `restrictedToInstruments` added back to [Payment Order purchase
+  requests][checkout-payment-order-purchase].
+* `Direct Debit` section and mentions in various includes removed.
+* Various improvements and fixes.
+
 ### Version 1.6.2
 
 * The [Payments][payments] and [Card Payments][card] sections are reviewed and
@@ -224,6 +231,7 @@ integration and the payer.
 [card]: /payments/card
 [checkout-checkin-front-end]: /checkout/checkin#checkin-front-end
 [checkout-payment-orders]: /checkout/other-features#payment-orders
+[checkout-payment-order-purchase]: /checkout/payment-menu#request
 [checkout-payment-url]: /checkout/other-features#payment-url
 [checkout]: /checkout
 [credit]: /payments/credit
