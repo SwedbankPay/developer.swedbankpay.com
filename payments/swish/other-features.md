@@ -184,37 +184,287 @@ the nature of the problem.
 The problem name and description will often help narrow down the specifics
 of the problem.
 
-### Error types from Swish and third parties
+### Error types from Swish Api
 
 All Swish error types will have the following URI in front of type:
-`{{ page.apiUrl }}/psp/<errordetail>/swish`
+`https://api.payex.com/psp/swish/payments/<errortype>`
 
-{:.table .table-striped}
-| Type                 | Status | Error code           | Details                                                                                         |
-| :------------------- | :----- | :------------------- | :---------------------------------------------------------------------------------------------- |
-| `externalerror`      | 500    | No error code        |
-| `inputerror`         | 400    | FF08                 | Input validation failed (PayeeReference)                                                        |
-| `inputerror`         | 400    | BE18                 | Input validation failed (Msisdn)                                                                |
-| `inputerror`         | 400    | PA02                 | Input validation failed (Amount)                                                                |
-| `inputerror`         | 400    | AM06                 | Input validation failed (Amount)                                                                |
-| `inputerror`         | 400    | AM02                 | Input validation failed (Amount)                                                                |
-| `inputerror`         | 400    | AM03                 | Input validation failed (Currency)                                                              |
-| `inputerror`         | 500    | RP02                 | Input validation failed (Description)                                                           |
-| `configurationerror` | 403    | RP01                 | Configuration of contract is not correct, or missing settings                                   |
-| `configurationerror` | 403    | ACMT07               | Configuration of contract is not correct, or missing settings                                   |
-| `systemerror`        | 500    | RP03                 | Unable to complete operation (Invalid callback url)                                             |
-| `swishdeclined`      | 403    | RP06                 | Third party returned error (Duplicate swish payment request)                                    |
-| `swishdeclined`      | 403    | ACMT03               | Third party returned error (Swish msisdn not enrolled)                                          |
-| `swishdeclined`      | 403    | ACMT01               | Third party returned error (Swish msisdn not enrolled)                                          |
-| `swishdeclined`      | 403    | RF02                 | Third party returned error (Reversal declined due to Sale transaction being over 13 months old) |
-| `swishdeclined`      | 403    | RF04                 | Third party returned error (Msisdn has changed owner (organization) between sale and reversal)  |
-| `swishdeclined`      | 403    | RF06                 | Third party returned error (Msisdn has changed owener (SSN) between sale and reversal)          |
-| `swishdeclined`      | 403    | RF07                 | Third party returned error (Swish rejected transaction)                                         |
-| `swishdeclined`      | 403    | FF10                 | Third party returned error (Bank rejected transaction)                                          |
-| `usercancelled`      | 403    | BANKIDCL             | Cancelled by user                                                                               |
-| `swishdeclined`      | 403    | TM01                 | Payment timed out (User din't confirm payment in app)                                           |
-| `swishdeclined`      | 403    | DS24                 | Payment timed out (Bank didn't respond).                                                        |
-| `systemerror`        | 500    | Any other error code |
+### `inputerror`
+
+{:.code-header}
+
+```http
+HTTP/1.1 400 Bad Request
+Content-Type: application/json
+
+{
+    "sessionId": "570ad610-3bd5-43d2-a270-ca1510562972",
+    "type": "https://api.payex.com/psp/swish/payments/inputerror",
+    "title": "Input error",
+    "status": 400,
+    "instance": "https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales",
+    "detail": "Msisdn is invalid."
+}
+```
+##### Caused By
+
+* Msisdn is invalid. <br>
+* Payer's MSISDN is not enrolled at Swish.
+
+### `configerror`
+
+{:.code-header}
+
+```http
+HTTP/1.1 403 Forbidden
+Content-Type: application/json
+
+{
+    "sessionId": "570ad610-3bd5-43d2-a270-ca1510562972",
+    "type": "https://api.payex.com/psp/swish/payments/configerror",
+    "title": "Config error",
+    "status": 403,
+    "instance": "https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales",
+    "detail": "Payee alias is missing or not correct."
+}
+```
+##### Caused By
+* Payee alias is missing or not correct.<br> 
+* PaymentReference is invalid.<br>
+* Amount value is missing or not a valid number.<br>
+* Amount is less than agreed minimum.<br>
+* Amount value is too large.<br>
+* Invalid or missing currency.<br>
+* Wrong formatted message.<br>
+* Amount value is too large, or amount exceeds the amount of the original payment minus any previous refunds.<br>
+* Counterpart is not activated.<br>
+* Payee not enrolled.
+
+### `swishdeclined`
+
+{:.code-header}
+
+```http
+HTTP/1.1 403 Forbidden
+Content-Type: application/json
+
+{
+    "sessionId": "570ad610-3bd5-43d2-a270-ca1510562972",
+    "type": "https://api.payex.com/psp/swish/payments/swishdeclined",
+    "title": "Swish Declined",
+    "status": 403,
+    "instance": "https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales",
+    "detail": "The MSISDN of the original payer seems to have changed owner."
+}
+```
+##### Caused By
+* Original payment not found or original payment is more than than 13 months old.
+* It appears that merchant's organization number has changed since sale was made.
+* The MSISDN of the original payer seems to have changed owner.
+* Transaction declined. Could be that the payer has exceeded their swish limit or have insufficient founds.
+* Payment request not cancellable.
+
+
+### `swisherror`
+
+{:.code-header}
+
+```http
+HTTP/1.1 502 Bad Gateway
+Content-Type: application/json
+
+{
+    "sessionId": "570ad610-3bd5-43d2-a270-ca1510562972",
+    "type": "https://api.payex.com/psp/swish/payments/swisherror",
+    "title": "Error in Swish",
+    "status": 502,
+    "instance": "https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales",
+    "detail": "Bank system processing error."
+}
+```
+##### Caused By
+* Bank system processing error.
+* Swish timed out waiting for an answer from the banks after payment was started.
+
+
+### `swishalreadyinuse`
+
+{:.code-header}
+
+```http
+HTTP/1.1 403 Forbidden
+Content-Type: application/json
+
+{
+    "sessionId": "570ad610-3bd5-43d2-a270-ca1510562972",
+    "type": "https://api.payex.com/psp/swish/payments/swishalreadyinuse",
+    "title": "Error in Swish",
+    "status": 403,
+    "instance": "https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales",
+    "detail": "The payer's Swish is already in use."
+}
+```
+##### Caused By
+* The payer's Swish is already in use.
+
+### `swishtimeout`
+
+{:.code-header}
+
+```http
+HTTP/1.1 403 Forbidden
+Content-Type: application/json
+
+{
+    "sessionId": "570ad610-3bd5-43d2-a270-ca1510562972",
+    "type": "https://api.payex.com/psp/swish/payments/swishtimeout",
+    "title": "Swish Timed Out",
+    "status": 403,
+    "instance": "https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales",
+    "detail": "Swish timed out before the payment was started."
+}
+```
+##### Caused By
+* Swish timed out before the payment was started.
+
+### `bankidcancelled`
+
+{:.code-header}
+
+```http
+HTTP/1.1 409 Conflict
+Content-Type: application/json
+
+{
+    "sessionId": "570ad610-3bd5-43d2-a270-ca1510562972",
+    "type": "https://api.payex.com/psp/swish/payments/bankidcancelled",
+    "title": "BankID Authorization Cancelled",
+    "status": 409,
+    "instance": "https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales",
+    "detail": "The payer cancelled BankID authorization."
+}
+```
+##### Caused By
+* The payer cancelled BankID authorization.
+
+### `bankidalreadyinuse`
+
+{:.code-header}
+
+```http
+HTTP/1.1 409 Conflict
+Content-Type: application/json
+
+{
+    "sessionId": "570ad610-3bd5-43d2-a270-ca1510562972",
+    "type": "https://api.payex.com/psp/swish/payments/bankidalreadyinuse",
+    "title": "BankID Already in Use",
+    "status": 409,
+    "instance": "https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales",
+    "detail": "The payer's BankID is already in use."
+}
+```
+##### Caused By
+* The payer's BankID is already in use
+
+### `bankiderror`
+
+{:.code-header}
+
+```http
+HTTP/1.1 502 Bad Gateway
+Content-Type: application/json
+
+{
+    "sessionId": "570ad610-3bd5-43d2-a270-ca1510562972",
+    "type": "https://api.payex.com/psp/swish/payments/bankiderror",
+    "title": "BankID error",
+    "status": 502,
+    "instance": "https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales",
+    "detail": "Something went wrong with the payer's BankID authorization."
+}
+```
+##### Caused By
+* Something went wrong with the payer's BankID authorization.
+
+### `socialsecuritynumbermismatch`
+
+{:.code-header}
+
+```http
+HTTP/1.1 403 Forbidden
+Content-Type: application/json
+
+{
+    "sessionId": "570ad610-3bd5-43d2-a270-ca1510562972",
+    "type": "https://api.payex.com/psp/swish/payments/socialsecuritynumbermismatch",
+    "title": "Social Security Number Mismatch",
+    "status": 403,
+    "instance": "https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales",
+    "detail": "The payer's social security number does not match with the one required by this payment."
+}
+```
+##### Caused By
+* The payer's social security number does not match with the one required by this payment.
+
+### `paymentagelimitnotmet`
+
+{:.code-header}
+
+```http
+HTTP/1.1 403 Forbidden
+Content-Type: application/json
+
+{
+    "sessionId": "570ad610-3bd5-43d2-a270-ca1510562972",
+    "type": "https://api.payex.com/psp/swish/payments/paymentagelimitnotmet",
+    "title": "Payment Age Limit Not Met",
+    "status": 403,
+    "instance": "https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales",
+    "detail": "The payer does not meet the payment's age limit."
+}
+```
+##### Caused By
+* The payer does not meet the payment's age limit.
+
+### `usercancelled` 
+
+{:.code-header}
+
+```http
+HTTP/1.1 403 Forbidden
+Content-Type: application/json
+
+{
+    "sessionId": "570ad610-3bd5-43d2-a270-ca1510562972",
+    "type": "https://api.payex.com/psp/swish/payments/usercancelled",
+    "title": "User Cancelled",
+    "status": 403,
+    "instance": "https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales",
+    "detail": "The payer cancelled the payment in the Swish app."
+}
+```
+##### Caused By
+* The payer cancelled the payment in the Swish app.
+
+### `systemerror`
+
+{:.code-header}
+
+```http
+HTTP/1.1 500 Internal Server Error
+Content-Type: application/json
+
+{
+    "sessionId": "570ad610-3bd5-43d2-a270-ca1510562972",
+    "type": "https://api.payex.com/psp/swish/payments/systemerror",
+    "title": "Error in System",
+    "status": 500,
+    "instance": "https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales",
+    "detail": "A system error occurred. We are working on it."
+}
+```
+
 
 [payee-reference]: #payeeReference
 [transaction-resource]: #Transactions
