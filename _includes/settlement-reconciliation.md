@@ -57,7 +57,7 @@ Settlement process**.
 ##### Fees specification
 
 Provides a specification over fees for the given period. The fees total is
-specified per payment area (`CreditCard, Factoring`) and
+specified per payment area (`CreditCard`, `Factoring`) and
 underlying payment instruments. Each fees row specify `Quantity` (sales),
 `Amount` (sales), `Unit price`, `Provision` and `fee Amount`. **If you handle
 the settlement process yourselves you will receive a separat invoice for fees**.
