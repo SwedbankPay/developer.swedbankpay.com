@@ -53,7 +53,7 @@ Content-Type: application/json
 ### Prices Object Types
 
 Each payment instrument have one or more prices object types. This is most
-relevant when using card based and direct debit payments as each type correspond
+relevant when using card based payments as each type correspond
 to a card brand or bank respectively.
 
 {% case payment-instrument %}
@@ -77,33 +77,6 @@ contract.
 | `Jcb`           | JCB                                        |
 | `IkanoFinansDK` | Ikano Finans Denmark                       |
 | `Maestro`       | MasterCard Maestro                         |
-
-{% when "directdebit" %}
-
-#### Direct Debit Payments
-
-The generic type `DirectDebit` enables all bank types, supported by merchant
-contract.
-
-{:.table .table-striped}
-| Type         | Description                                      |
-| :----------- | :----------------------------------------------- |
-| `SwedbankLV` | Swedbank Latvia                                  |
-| `SwedbankEE` | Swedbank Estonia                                 |
-| `SwedbankLT` | Swedbank Lithuania                               |
-| `SwedbankSE` | Swedbank Sweden **(Not yet supported)**          |
-| `AalandFI`   | Ålandsbanken Finland **(Not yet supported)**     |
-| `AktiaFI`    | Aktia Finland **(Not yet supported)**            |
-| `DDBFI`      | Danske Bank Finland **(Not yet supported)**      |
-| `HSBSE`      | Handelsbanken Sweden **(Not yet supported)**     |
-| `NordeaFI`   | Nordea Finland **(Not yet supported)**           |
-| `NordeaSE`   | Nordea Sweden **(Not yet supported)**            |
-| `OmaFI`      | Oma säästöpankki Finland **(Not yet supported)** |
-| `OPFI`       | OP Finland **(Not yet supported)**               |
-| `POPFI`      | POP Pankki **(Not yet supported)**               |
-| `SHBFI`      | Handelsbanken Finland **(Not yet supported)**    |
-| `SpankkiFI`  | S-Pankki Finland **(Not yet supported)**         |
-| `SPFI`       | Säästöpankki Finland **(Not yet supported)**     |
 
 {% when "invoice" %}
 
