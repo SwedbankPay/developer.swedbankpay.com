@@ -50,7 +50,7 @@ balance report summary is equivalent to the disbursement on the bank statement
 
 Provides a specification over sales for the given period. The sales total is
 specified per payment area (`CreditCard`, `Factoring`) and
-underlying payment instruments. Each sales row specify Quantity, Sum sales and
+underlying payment instruments. Each sales row specify `Quantity`, `Sum sales` and
 `Amount to pay out`, the last one is only eligble **if Swedbank Pay handles the
 Settlement process**.
 
