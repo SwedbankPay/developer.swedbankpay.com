@@ -49,15 +49,15 @@ balance report summary is equivalent to the disbursement on the bank statement
 ##### Sales specification
 
 Provides a specification over sales for the given period. The sales total is
-specified per payment area (`CreditCard`, `Factoring`) and
-underlying payment instruments. Each sales row specify `Quantity`, `Sum sales` and
-`Amount to pay out`, the last one is only eligble **if Swedbank Pay handles the
+specified per payment area (`CreditCard`, `Invoice`) and
+underlying payment instruments. Each sales row specify Quantity, Sum sales and
+Amount to pay out, the last one is only eligble **if Swedbank Pay handles the
 Settlement process**.
 
 ##### Fees specification
 
 Provides a specification over fees for the given period. The fees total is
-specified per payment area (`CreditCard`, `Factoring`) and
+specified per payment area (`CreditCard`, `Invoice`) and
 underlying payment instruments. Each fees row specify `Quantity` (sales),
 `Amount` (sales), `Unit price`, `Provision` and `fee Amount`. **If you handle
 the settlement process yourselves you will receive a separat invoice for fees**.
