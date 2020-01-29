@@ -1,5 +1,5 @@
 ---
-title: Swedbank Pay MobilePay Payments Redirect
+title: Swedbank Pay MobilePay Payments – Redirect
 sidebar:
   navigation:
   - title: MobilePay Payments
