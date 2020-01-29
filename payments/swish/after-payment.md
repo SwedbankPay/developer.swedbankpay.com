@@ -107,7 +107,8 @@ request for the given operation.
 
 ## Swish transactions
 
-All Swish transactions are described below.
+All Swish transactions are described below. Please note that Swish does not
+support Merchant Initiated Transactions for the time being.
 
 ## Sales
 

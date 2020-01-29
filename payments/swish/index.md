@@ -34,6 +34,10 @@ m-commerce flow is the most suitable. We will do this for you.
 
 ## Purchase Flow
 
+The following is a quick presentation of the purchase flow when using the
+redirect or seamless view. You can find in-depth descriptions of the separate
+flows in the corresponding sections.
+
 If you are using the e-commerce flow, the payer enters a Swish connected
 phone on Swedbank Pay's payment page (redirect) or in the `iframe` (seamless
 view) after the payment is created.
