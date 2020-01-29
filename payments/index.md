@@ -1,5 +1,6 @@
 ---
 title: Payments
+menu-order: 2000
 ---
 
 {% include jumbotron.html body="Payments is our off-the-rack assortment of

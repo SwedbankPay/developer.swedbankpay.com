@@ -1,5 +1,6 @@
 ---
 title: Checkout
+menu-order: 1000
 ---
 
 {% include jumbotron.html body="**Swedbank Pay Checkout** is a complete reimagination

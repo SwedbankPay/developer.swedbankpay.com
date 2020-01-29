@@ -1,5 +1,6 @@
 ---
 title: Resources
+menu-order: 3000
 ---
 
 {% include alert-review-section.md %}
