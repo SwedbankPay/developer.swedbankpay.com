@@ -33,11 +33,10 @@ this very documentation, not to a version of any APIs described by it." %}
 
 ### Version 1.6.3
 
-* `restrictedToInstruments` added to payment-order-purchase.md
-* `Direct Debit` section removed
-* `Direct Debit` mentions in various includes removed
+* `restrictedToInstruments` added to [payment-order-purchase include][checkout-payment-order-purchase]
+* `Direct Debit` section and mentions in various includes removed
 * `remote_theme` updated in config.yml
-* `unitPrice` in payment-order-purchase.md updated
+* `unitPrice` in [payment-order-purchase include][checkout-payment-order-purchase] updated
 * `MobilePay` typos fixed
 
 ### Version 1.6.2
@@ -233,6 +232,7 @@ integration and the payer.
 [card]: /payments/card
 [checkout-checkin-front-end]: /checkout/checkin#checkin-front-end
 [checkout-payment-orders]: /checkout/other-features#payment-orders
+[checkout-payment-order-purchase]: /checkout/payment-menu#request
 [checkout-payment-url]: /checkout/other-features#payment-url
 [checkout]: /checkout
 [credit]: /payments/credit
