@@ -184,7 +184,7 @@ the nature of the problem.
 The problem name and description will often help narrow down the specifics
 of the problem.
 
-### Error types from Swish Api
+### Specific Swish error types
 
 All Swish error types will have the following URI in front of type:
 `https://api.payex.com/psp/swish/payments/<errortype>`
@@ -208,7 +208,7 @@ Content-Type: application/json
 ```
 ##### Caused By
 
-* Msisdn is invalid. <br>
+* MSISDN is invalid. <br>
 * Payer's MSISDN is not enrolled at Swish.
 
 ### `configerror`
