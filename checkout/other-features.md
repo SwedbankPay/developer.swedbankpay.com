@@ -120,7 +120,7 @@ The `orderItems` property of the `paymentOrder` is an array containing the items
 
 {% include alert.html type="neutral"
                       icon="info"
-                      body="`orderItems` must be a part of `Capture` if `orderItems` is included in the `paymentOrder` creation." %}
+                      body="`orderItems` must be a part of `Capture` and `Reversal` if `orderItems` is included in the `paymentOrder` creation." %}
 
 {:.table .table-striped}
 | Required | Property              | Type      | Description                                                                                                                                                                                                                    |
