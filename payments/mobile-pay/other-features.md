@@ -169,6 +169,7 @@ Content-Type: application/json
 }
 ```
 
+{:.table .table-striped}
 | Property                                     | Data type    | Description                                                                                                                                                                                      |
 | :------------------------------------------- | :----------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `payment`                                    | `object`     | The payment object contains information about the retrieved payment.                                                                                                                             |
