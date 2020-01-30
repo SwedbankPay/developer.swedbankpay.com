@@ -157,12 +157,12 @@ operation is meant to be embedded in a `<script>` element in an HTML document.
 <html>
     <head>
         <title>Swedbank Pay Checkout is Awesome!</title>
-        <!-- Here you can specify your own javascript file -->
-        <script src=<YourJavaScriptFileHere></script>
     </head>
     <body>
         <div id="checkin"></div>
         <div id="payment-menu"></div>
+        <!-- Here you can specify your own javascript file -->
+        <script src=<YourJavaScriptFileHere>></script>
     </body>
 </html>
 ```
@@ -175,57 +175,57 @@ it comes to handling the check-in and payment menu.
 **JavaScript**
 
 ```js
-window.onload = function () {
-    var request = new XMLHttpRequest();
-    request.addEventListener('load', function () {
-        // We will assume that our own backend returns the
-        // exact same as what SwedbankPay returns.
-        response = JSON.parse(this.responseText);
-        var script = document.createElement('script');
-        // This assumes that the operations from the response of the POST from the
-        // payment order is returned verbatim from the server to the Ajax:
-        var operation = response.operations.find(function (o) {
-            return o.rel === 'view-consumer-identification';
-        });
-        script.setAttribute('src', operation.href);
-        script.onload = function () {
-            payex.hostedView.consumer({
-                // The container specifies which id the script will look for
-                // to host the checkin component
-                container: "checkin",
-                onConsumerIdentified: function onConsumerIdentified(consumerIdentifiedEvent) {
-                    // consumerIdentifiedEvent.consumerProfileRef contains the reference
-                    // to the identified consumer which we need to pass on to the
-                    // Payment Order to initialize a personalized Payment Menu.
-                    console.log(consumerIdentifiedEvent);
-                },
-                onShippingDetailsAvailable: function onShippingDetailsAvailable(shippingDetailsAvailableEvent) {
-                    console.log(shippingDetailsAvailableEvent);
-                }
-            }).open();
-        };
-        // Appending the script to the head
-        var head = document.getElementsByTagName('head')[0];
-        head.appendChild(script);
+var request = new XMLHttpRequest();
+
+request.addEventListener('load', function () {
+    // We will assume that our own backend returns the
+    // exact same as what SwedbankPay returns.
+    var response = JSON.parse(this.responseText);
+    var script = document.createElement('script');
+    // This assumes that the operations from the response of the POST from the
+    // payment order is returned verbatim from the server to the Ajax:
+    var operation = response.operations.find(function (o) {
+        return o.rel === 'view-consumer-identification';
     });
-    // Place in your own API endpoint here.
-    request.open('POST', <Your-Endpoint-Here>, true);
-    request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
-    // In this example we'll send in all of the information mentioned
-    // before in the request to the endpoint.
-    request.send(JSON.stringify({
-        operation: 'initiate-consumer-session',
-        language: 'sv-SE',
-        shippingAddressRestrictedToCountryCodes : ['NO', 'SE']
-        }
-    }));
-};
+
+    script.setAttribute('src', operation.href);
+    script.onload = function () {
+        payex.hostedView.consumer({
+            // The container specifies which id the script will look for
+            // to host the checkin component
+            container: "checkin",
+            onConsumerIdentified: function onConsumerIdentified(consumerIdentifiedEvent) {
+                // consumerIdentifiedEvent.consumerProfileRef contains the reference
+                // to the identified consumer which we need to pass on to the
+                // Payment Order to initialize a personalized Payment Menu.
+                console.log(consumerIdentifiedEvent);
+            },
+            onShippingDetailsAvailable: function onShippingDetailsAvailable(shippingDetailsAvailableEvent) {
+                console.log(shippingDetailsAvailableEvent);
+            }
+        }).open();
+    };
+    // Appending the script to the head
+    var head = document.getElementsByTagName('head')[0];
+    head.appendChild(script);
+});
+
+// Place in your own API endpoint here.
+request.open('POST', <Your-Endpoint-Here>, true);
+request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+// In this example we'll send in all of the information mentioned
+// before in the request to the endpoint.
+request.send(JSON.stringify({
+    operation: 'initiate-consumer-session',
+    language: 'sv-SE',
+    shippingAddressRestrictedToCountryCodes: ['NO', 'SE']
+}));
 ```
 
 {% include alert.html type="neutral" icon="info" body="
-Note that we attach the `<script>` element to the head,
-but use `window.onload` to ensure everything has loaded in properly
-before accessing the page." %}
+Note that we add the script at the end of the body. This ensures that
+every element (like the divs) has loaded in before we try to
+access them with our script." %}
 
 With the scripts loading in after the entire page is loaded, we can access the
 `<div>` container that the Checkin will be hosted in.
