@@ -162,7 +162,7 @@ operation is meant to be embedded in a `<script>` element in an HTML document.
         <div id="checkin"></div>
         <div id="payment-menu"></div>
         <!-- Here you can specify your own javascript file -->
-        <script src=<YourJavaScriptFileHere>></script>
+        <script src="<Your-JavaScript-File-Here>"></script>
     </body>
 </html>
 ```
@@ -193,7 +193,7 @@ request.addEventListener('load', function () {
         payex.hostedView.consumer({
             // The container specifies which id the script will look for
             // to host the checkin component
-            container: "checkin",
+            container: 'checkin',
             onConsumerIdentified: function onConsumerIdentified(consumerIdentifiedEvent) {
                 // consumerIdentifiedEvent.consumerProfileRef contains the reference
                 // to the identified consumer which we need to pass on to the
@@ -211,7 +211,7 @@ request.addEventListener('load', function () {
 });
 
 // Place in your own API endpoint here.
-request.open('POST', <Your-Endpoint-Here>, true);
+request.open('POST', '<Your-Backend-Endpoint-Here>', true);
 request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
 // In this example we'll send in all of the information mentioned
 // before in the request to the endpoint.
@@ -224,7 +224,7 @@ request.send(JSON.stringify({
 
 {% include alert.html type="neutral" icon="info" body="
 Note that we add the script at the end of the body. This ensures that
-every element (like the divs) has loaded in before we try to
+every element (like the container `<div>` elements) has loaded in before we try to
 access them with our script." %}
 
 With the scripts loading in after the entire page is loaded, we can access the
