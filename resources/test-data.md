@@ -71,6 +71,12 @@ To test a logged in user in the Demo Shop, please use the following test data:
 | `4925000000000004` | After the current month | Any  | Loopback only     |
 | `4581097032723517` | After the current month | Any  | Loopback only     |
 | `4581099940323133` | After the current month | Any  | Loopback only     |
+
+### Mastercard
+
+{:.table .table-striped}
+| Card number        | Expiry                  | CVC  | Type of test data |
+| :----------------- | :---------------------- | :--- | :---------------- |
 | `5226600159865967` | After the current month | Any  | Loopback only     |
 | `5226603115488031` | After the current month | Any  | Loopback only     |
 | `5226604266737382` | After the current month | Any  | Loopback only     |
