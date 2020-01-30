@@ -210,7 +210,7 @@ request.addEventListener('load', function () {
         payex.hostedView.consumer({
             // The container specifies which id the script will look for
             // to host the checkin component
-            container: "checkin",
+            container: 'checkin',
             onConsumerIdentified: function onConsumerIdentified(consumerIdentifiedEvent) {
                 // When the consumer is identified, we need to perform an AJAX request
                 // to our server to forward the consumerProfileRef in a server-to-server
@@ -240,7 +240,7 @@ request.addEventListener('load', function () {
                 });
                 // Like before, you should replace the address here with
                 // your own endpoint.
-                request.open('POST', <Your-Endpoint-Here>, true);
+                request.open('POST', '<Your-Backend-Endpoint-Here>', true);
                 request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
                 // In this example, we send the entire Consumer Identified Event Argument
                 // Object as JSON to the server, as it contains the consumerProfileRef.
@@ -256,7 +256,7 @@ request.addEventListener('load', function () {
     head.appendChild(script);
 });
 // Place in your own API endpoint here.
-request.open('POST', <Your-Endpoint-Here>, true);
+request.open('POST', '<Your-Backend-Endpoint-Here>', true);
 request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
 // We send in the previously mentioned request here to the checkin endpoint.
 request.send(JSON.stringify({
