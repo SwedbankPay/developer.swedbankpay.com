@@ -121,7 +121,7 @@ with the `consumerProfileRef` we obtained in the checkin process described
 above.
 Remember to read up on our [URL resource][urls].
 
-{% include risk-indicator.md %}
+{% include alert-risk-indicator.md %}
 
 ### Payment Url
 
