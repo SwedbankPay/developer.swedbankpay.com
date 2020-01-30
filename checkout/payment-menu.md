@@ -121,11 +121,6 @@ with the `consumerProfileRef` we obtained in the checkin process described
 above.
 Remember to read up on our [URL resource][urls].
 
-{% include alert.html type="neutral" icon="info" body="The `orderItems` property
-object is optional. If the `POST` request has `orderItems` in the
-`paymentorder`, remember to include `orderItems` in the [capture
-operation](after-payment#capture) as well." %}
-
 {% include alert-risk-indicator.md %}
 
 ### Payment Url

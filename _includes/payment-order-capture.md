@@ -28,12 +28,6 @@ sequenceDiagram
         end
 ```
 
-{% include alert.html type="neutral" icon="info" body="
-Note that the `orderItems` property object is optional. If the `POST`
-request has `orderItems` in the `paymentorder`, remember to include `orderItems`
-in the `capture` operation. If the `paymentorder` is without `orderItems`,
-remember to leave this out in the `capture` operation." %}
-
 To capture the authorized payment, we need to perform
 `create-paymentorder-capture` against the accompanying `href` returned in the
 `operations` list. See the abbreviated request and response below:
