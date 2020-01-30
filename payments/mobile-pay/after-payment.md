@@ -80,7 +80,7 @@ the `GET` request.
 `Capture` can only be done on a authorized transaction.
 It is possible to do a part-capture where you only capture a smaller amount
 than the authorization amount.
-You can later do more captures on the sam payment upto the total
+You can later do more captures on the same payment up to the total
 authorization amount.
 
 ```mermaid
