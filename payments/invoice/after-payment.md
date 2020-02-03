@@ -25,7 +25,7 @@ GET request on the payment resource, which contains the paymentID generated in
 the first step, to receive the state of the transaction. You will also be able
 to see the available operations after posting a payment.
 
-{% include payment-resource.md payment-instrument="invoice" %}
+{% include payment-resource.md payment_instrument="invoice" %}
 
 * **Abort:** It is possible to abort the process if the payment has no
   successful transactions. [See the `abort`
@@ -51,8 +51,8 @@ To capture a `FinancingConsumer` invoice payment, perform the `create-capture`
 operation with the following request body:
 
 ```http
-POST /psp/invoice/payments/{{ page.paymentId }}/captures HTTP/1.1
-Host: {{ page.apiHost }}
+POST /psp/invoice/payments/{{ page.payment_id }}/captures HTTP/1.1
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -114,14 +114,14 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/invoice/payments/{{ page.paymentId }}",
+    "payment": "/psp/invoice/payments/{{ page.payment_id }}",
     "capture": {
         "itemDescriptions": {
-            "id": "/psp/invoice/payments/<captureId>/transactions/{{ page.transactionId }}/itemDescriptions"
+            "id": "/psp/invoice/payments/<captureId>/transactions/{{ page.transaction_id }}/itemDescriptions"
         },
-        "invoiceCopy": "/psp/invoice/payments/{{ page.paymentId }}/captures/{{ page.transactionId }}/invoicecopy",
+        "invoiceCopy": "/psp/invoice/payments/{{ page.payment_id }}/captures/{{ page.transaction_id }}/invoicecopy",
         "transaction": {
-            "id": "/psp/invoice/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
             "created": "2016-09-14T01:01:01.01Z",
             "updated": "2016-09-14T01:01:01.03Z",
             "type": "Capture",
@@ -156,8 +156,8 @@ specific invoice payment.
 **Request**
 
 ```http
-GET /psp/invoice/payments/{{ page.paymentId }}/captures HTTP/1.1
-Host: {{ page.apiHost }}
+GET /psp/invoice/payments/{{ page.payment_id }}/captures HTTP/1.1
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -170,14 +170,14 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/invoice/payments/{{ page.paymentId }}",
+    "payment": "/psp/invoice/payments/{{ page.payment_id }}",
     "captures": [{
         "itemDescriptions": {
-            "id": "/psp/invoice/payments/{{ page.paymentId }}/transactions/{{ page.paymentId }}/itemdescriptions"
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/transactions/{{ page.payment_id }}/itemdescriptions"
         },
-        "invoiceCopy": "/psp/invoice/payments/{{ page.paymentId }}/captures/{{ page.paymentId }}/invoicecopy",
+        "invoiceCopy": "/psp/invoice/payments/{{ page.payment_id }}/captures/{{ page.payment_id }}/invoicecopy",
         "transaction": {
-            "id": "/psp/invoice/payments/{{ page.paymentId }}/transactions/{{ page.paymentId }}",
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/transactions/{{ page.payment_id }}",
             "created": "2016-09-14T01:01:01.01Z",
             "updated": "2016-09-14T01:01:01.03Z",
             "type": "Capture",
@@ -224,8 +224,8 @@ or partially captured invoice payment.
 ***Request***
 
 ```http
-POST /psp/invoice/payments/{{ page.paymentId }}/cancellations HTTP/1.1
-Host: {{ page.apiHost }}
+POST /psp/invoice/payments/{{ page.payment_id }}/cancellations HTTP/1.1
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -253,10 +253,10 @@ newly created `cancel` transaction.
 
 ```http
 {
-    "payment": "/psp/invoice/payments/{{ page.paymentId }}",
+    "payment": "/psp/invoice/payments/{{ page.payment_id }}",
     "cancellation": {
         "transaction": {
-            "id": "/psp/invoice/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
             "created": "2016-09-14T01:01:01.01Z",
             "updated": "2016-09-14T01:01:01.03Z",
             "type": "Cancellation",
@@ -291,8 +291,8 @@ specific payment.
 
 ```http
 Request
-GET /psp/invoice/payments/{{ page.paymentId }}/cancellations HTTP/1.1
-Host: {{ page.apiHost }}
+GET /psp/invoice/payments/{{ page.payment_id }}/cancellations HTTP/1.1
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -305,10 +305,10 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/invoice/payments/{{ page.paymentId }}",
+    "payment": "/psp/invoice/payments/{{ page.payment_id }}",
     "cancellations": [{
         "transaction": {
-            "id": "/psp/invoice/payments/{{ page.paymentId }}/transactions/{{ page.paymentId }}",
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/transactions/{{ page.payment_id }}",
             "created": "2016-09-14T01:01:01.01Z",
             "updated": "2016-09-14T01:01:01.03Z",
             "type": "Cancellation",
@@ -363,8 +363,8 @@ follows:
 **Request**
 
 ```http
-POST /psp/invoice/payments/{{ page.paymentId }}/reversals HTTP/1.1
-Host: {{ page.apiHost }}
+POST /psp/invoice/payments/{{ page.payment_id }}/reversals HTTP/1.1
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -401,10 +401,10 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/invoice/payments/{{ page.paymentId }}",
+    "payment": "/psp/invoice/payments/{{ page.payment_id }}",
     "reversal": {
         "transaction": {
-            "id": "/psp/invoice/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
             "created": "2016-09-14T01:01:01.01Z",
             "updated": "2016-09-14T01:01:01.03Z",
             "type": "Reversal",
@@ -438,8 +438,8 @@ The `reversals` resource will list the reversal transactions
 ***Request***
 
 ```http
-GET /psp/invoice/payments/{{ page.paymentId }}/reversals HTTP/1.1
-Host: {{ page.apiHost }}
+GET /psp/invoice/payments/{{ page.payment_id }}/reversals HTTP/1.1
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -452,10 +452,10 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/invoice/payments/{{ page.paymentId }}",
+    "payment": "/psp/invoice/payments/{{ page.payment_id }}",
     "reversal": [{
         "transaction": {
-            "id": "/psp/invoice/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
             "created": "2016-09-14T01:01:01.01Z",
             "updated": "2016-09-14T01:01:01.03Z",
             "type": "Reversal",

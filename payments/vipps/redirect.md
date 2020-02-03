@@ -162,7 +162,7 @@ Content-Type: application/json
             "paymentUrl": "https://example.net/payment-cart"
         },
         "payeeInfo": {
-            "payeeId": "{{ page.merchantId }}"
+            "payeeId": "{{ page.merchant_id }}"
             "payeeReference": "CD1234",
             "payeeName": "Merchant1",
             "productCategory": "A123"
@@ -183,7 +183,7 @@ Content-Type: application/json
 
 {
     "payment": {
-        "id": "/psp/vipps/payments/{{ page.paymentId }}",
+        "id": "/psp/vipps/payments/{{ page.payment_id }}",
         "number": 1234567890,
         "created": "2016-09-14T13:21:29.3182115Z",
         "updated": "2016-09-14T13:21:57.6627579Z",
@@ -202,44 +202,44 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",
         "prices": {
-            "id": "/psp/vipps/payments/{{ page.paymentId }}/prices"
+            "id": "/psp/vipps/payments/{{ page.payment_id }}/prices"
         },
         "transactions": {
-            "id": "/psp/vipps/payments/{{ page.paymentId }}/transactions"
+            "id": "/psp/vipps/payments/{{ page.payment_id }}/transactions"
         },
         "authorizations": {
-            "id": "/psp/vipps/payments/{{ page.paymentId }}/authorizations"
+            "id": "/psp/vipps/payments/{{ page.payment_id }}/authorizations"
         },
         "reversals": {
-            "id": "/psp/vipps/payments/{{ page.paymentId }}/reversals"
+            "id": "/psp/vipps/payments/{{ page.payment_id }}/reversals"
         },
         "cancellations": {
-            "id": "/psp/vipps/payments/{{ page.paymentId }}/cancellations"
+            "id": "/psp/vipps/payments/{{ page.payment_id }}/cancellations"
         },
         "urls": {
-            "id": "/psp/vipps/payments/{{ page.paymentId }}/urls"
+            "id": "/psp/vipps/payments/{{ page.payment_id }}/urls"
         },
         "payeeInfo": {
-            "id": "/psp/vipps/payments/{{ page.paymentId }}/payeeInfo"
+            "id": "/psp/vipps/payments/{{ page.payment_id }}/payeeInfo"
         },
         "settings": {
-            "id": "/psp/vipps/payments/{{ page.paymentId }}/settings"
+            "id": "/psp/vipps/payments/{{ page.payment_id }}/settings"
         }
     },
     "operations": [
         {
             "method": "POST",
-            "href": "{{ page.apiUrl }}/psp/vipps/payments/{{ page.transactionId }}/authorizations",
+            "href": "{{ page.api_url }}/psp/vipps/payments/{{ page.transaction_id }}/authorizations",
             "rel": "create-authorization"
         },
         {
             "method": "PATCH",
-            "href": "{{ page.apiUrl }}/psp/vipps/payments/{{ page.transactionId }}",
+            "href": "{{ page.api_url }}/psp/vipps/payments/{{ page.transaction_id }}",
             "rel": "update-payment-abort"
         },
         {
             "method": "GET",
-            "href": "{{ page.apiUrl }}/vipps/payments/authorize/8fb05a835f2fc227dc7bca9abaf649b919ba8a572deb448bff543dd5806dacb7",
+            "href": "{{ page.api_url }}/vipps/payments/authorize/8fb05a835f2fc227dc7bca9abaf649b919ba8a572deb448bff543dd5806dacb7",
             "rel": "redirect-authorization"
         }
     ]
@@ -285,8 +285,8 @@ transactions made on a specific payment.
 
 HTTP/1.1 200 OK
 Content-Type: application/json
-GET /psp/vipps/payments/{{ page.paymentId }}/authorizations/{{ page.transactionId }} HTTP/1.1
-Host: {{ page.apiHost }}
+GET /psp/vipps/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }} HTTP/1.1
+Host: {{ page.api_host }}
 Authorization: Bearer <MerchantToken>
 
 
@@ -301,13 +301,13 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/vipps/payments/{{ page.paymentId }}",
+    "payment": "/psp/vipps/payments/{{ page.payment_id }}",
     "authorization": {
         "vippsTransactionId": "5619328800",
         "msisdn": "+47xxxxxxxx",
-        "id": "/psp/vipps/payments/{{ page.paymentId }}/authorizations/{{ page.transactionId }}",
+        "id": "/psp/vipps/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }}",
         "transaction": {
-            "id": "/psp/vipps/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
+            "id": "/psp/vipps/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
             "created": "2018-09-05T15:01:39.8658084Z",
             "updated": "2018-09-05T15:01:42.2119509Z",
             "type": "Authorization",

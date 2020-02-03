@@ -41,11 +41,11 @@ set to value `FinancingConsumer` are listed below.
   the consumer has fulfilled the payment.
   [See the Callback API description here.][callback]
 
-{% include authorizations-resource.md payment-instrument="invoice" %}
+{% include authorizations-resource.md payment_instrument="invoice" %}
 
 ## Payment Resource
 
-{% include payment-resource.md payment-instrument="invoice"
+{% include payment-resource.md payment_instrument="invoice"
 showStatusOperations=true %}
 
 {% include payment-transaction-states.md %}
@@ -69,7 +69,7 @@ in their own section below.
 
 ```http
 POST /psp/invoice/payments HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -97,7 +97,7 @@ A `FinancingConsumer` payment is an invoice.
 
 ```http
 POST /psp/invoice/payments HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 {
@@ -125,7 +125,7 @@ Content-Type: application/json
             "termsOfServiceUrl": "http://fexample.com/terms.pdf"
         },
         "payeeInfo": {
-            "payeeId": "{{ page.merchantId }}",
+            "payeeId": "{{ page.merchant_id }}",
             "payeeReference": "PR123",
             "payeeName": "Merchant1",
             "productCategory": "PC1234",
@@ -148,7 +148,7 @@ through a previous payment in order to charge the same card.
 
 ```http
 POST /psp/invoice/payments HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -156,7 +156,7 @@ Content-Type: application/json
     "payment": {
         "operation": "Recur",
         "intent": "Authorization",
-        "recurrenceToken": "{{ page.paymentId }}",
+        "recurrenceToken": "{{ page.payment_id }}",
         "currency": "NOK",
         "amount": 1500,
         "vatAmount": 0,
@@ -167,7 +167,7 @@ Content-Type: application/json
             "callbackUrl": "https://example.com/payment-callback"
         },
         "payeeInfo": {
-            "payeeId": "{{ page.merchantId }}",
+            "payeeId": "{{ page.merchant_id }}",
             "payeeReference": "CD1234",
             "payeeName": "Merchant1",
             "productCategory": "A123",
@@ -231,7 +231,7 @@ listed below.
 
 ```http
 POST /psp/invoice/payments HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -256,7 +256,7 @@ Content-Type: application/json
             "termsOfServiceUrl": "https://example.com/payment-terms.html"
         },
         "payeeInfo": {
-            "payeeId": "{{ page.merchantId }}",
+            "payeeId": "{{ page.merchant_id }}",
             "payeeReference": "CD1234",
             "payeeName": "Merchant1",
             "productCategory": "A123",
@@ -278,7 +278,7 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 {
     "payment": {
-        "id": "/psp/invoice/payments/{{ page.paymentId }}",
+        "id": "/psp/invoice/payments/{{ page.payment_id }}",
         "number": 1234567890,
         "created": "2016-09-14T13:21:29.3182115Z",
         "updated": "2016-09-14T13:21:57.6627579Z",
@@ -292,43 +292,43 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0",
         "language": "nb-NO",
         "transactions": {
-            "id": "/psp/invoice/payments/{{ page.paymentId }}/transactions"
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/transactions"
         },
         "verifications": {
-            "id": "/psp/invoice/payments/{{ page.paymentId }}/verifications"
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/verifications"
         },
         "urls": {
-            "id": "/psp/invoice/payments/{{ page.paymentId }}/urls"
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/urls"
         },
         "payeeInfo": {
-            "id": "/psp/invoice/payments/{{ page.paymentId }}/payeeInfo"
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/payeeInfo"
         },
         "settings": {
-            "id": "/psp/invoice/payments/{{ page.paymentId }}/settings"
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/settings"
         }
     },
     "operations": [
         {
             "method": "POST",
-            "href": "{{ page.apiUrl }}/psp/invoice/payments/{{ page.paymentId }}/approvedlegaladdress",
+            "href": "{{ page.api_url }}/psp/invoice/payments/{{ page.payment_id }}/approvedlegaladdress",
             "rel": "create-approved-legal-address",
             "contentType": "application/json"
         },
         {
             "method": "POST",
-            "href": "{{ page.apiUrl }}/psp/invoice/payments/{{ page.paymentId }}/authorizations",
+            "href": "{{ page.api_url }}/psp/invoice/payments/{{ page.payment_id }}/authorizations",
             "rel": "create-authorization",
             "contentType": "application/json"
         },
         {
             "method": "PATCH",
-            "href": "{{ page.apiUrl }}/psp/invoice/payments/{{ page.paymentId }}",
+            "href": "{{ page.api_url }}/psp/invoice/payments/{{ page.payment_id }}",
             "rel": "update-payment-abort",
             "contentType": "application/json"
         },
         {
             "method": "GET",
-            "href": "{{ page.frontEndUrl }}/invoice/payments/authorize/{{ page.paymentToken }}",
+            "href": "{{ page.front_end_url }}/invoice/payments/authorize/{{ page.payment_token }}",
             "rel": "redirect-authorization",
             "contentType": "text/html"
         }
@@ -400,8 +400,8 @@ Swedbank Pay Payments where the payment is authorized.
 **Request**
 
 ```http
-POST /psp/invoice/payments/{{ page.paymentId }}/authorizations HTTP/1.1
-Host: {{ page.apiHost }}
+POST /psp/invoice/payments/{{ page.payment_id }}/authorizations HTTP/1.1
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 {
@@ -463,20 +463,20 @@ Content-Type: application/json
 
 ```json
 {
-    "payment": "/psp/invoice/payments/{{ page.paymentId }}",
+    "payment": "/psp/invoice/payments/{{ page.payment_id }}",
     "authorization": {
-        "id": "/psp/invoice/payments/{{ page.paymentId }}/authorizations/{{ page.transactionId }}",
+        "id": "/psp/invoice/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }}",
         "consumer": {
-            "id": "/psp/invoice/payments/{{ page.paymentId }}/consumer"
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/consumer"
         },
         "legalAddress": {
-            "id": "/psp/invoice/payments/{{ page.paymentId }}/legaladdress"
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/legaladdress"
         },
         "billingAddress": {
-            "id": "/psp/invoice/payments/{{ page.paymentId }}/billingaddress"
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/billingaddress"
         },
         "transaction": {
-            "id": "/psp/invoice/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
             "created": "2016-09-14T01:01:01.01Z",
             "updated": "2016-09-14T01:01:01.03Z",
             "type": "Authorization",
@@ -492,11 +492,11 @@ Content-Type: application/json
             "failedErrorDescription": "ThirdPartyErrorMessage",
             "isOperational": "TRUE",
             "activities": {
-                "id": "/psp/invoice/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}/activities"
+                "id": "/psp/invoice/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}/activities"
             },
             "operations": [
                 {
-                    "href": "{{ page.apiUrl }}/psp/invoice/payments/{{ page.paymentId }}",
+                    "href": "{{ page.api_url }}/psp/invoice/payments/{{ page.payment_id }}",
                     "rel": "edit-authorization",
                     "method": "PATCH"
                 }
@@ -528,11 +528,11 @@ Content-Type: application/json
 The `authorization` resource contains information about an authorization
 transaction made towards a payment, as previously described.
 
-{% include transactions-reference.md payment-instrument="invoice" %}
+{% include transactions-reference.md payment_instrument="invoice" %}
 
-{% include callback-reference.md payment-instrument="invoice" %}
+{% include callback-reference.md payment_instrument="invoice" %}
 
-{% include payment-link.md show-3d-secure=false %}
+{% include payment-link.md show_3d_secure=false %}
 
 ## PayeeInfo
 
@@ -540,7 +540,7 @@ transaction made towards a payment, as previously described.
 
 ## Prices
 
-{% include prices.md payment-instrument="invoice" %}
+{% include prices.md payment_instrument="invoice" %}
 
 {% include settlement-reconciliation.md %}
 

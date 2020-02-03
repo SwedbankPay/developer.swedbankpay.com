@@ -125,7 +125,7 @@ Remember to read up on our [URL resource][urls].
 
 ### Payment Url
 
-{% include payment-url.md payment-order=true
+{% include payment-url.md payment_order=true
 when="selecting the payment instrument Vipps or in the 3-D Secure verification
 for Credit Card Payments" %}
 
@@ -146,11 +146,11 @@ Content-Type: application/json
 
 {
     "paymentorder": {
-      "id": "/psp/paymentorders/{{ page.paymentOrderId }}"
+      "id": "/psp/paymentorders/{{ page.payment_order_id }}"
     },
     "operations": [
         {
-            "href": "{{ page.frontEndUrl }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token={{ page.paymentToken }}&culture=sv-SE",
+            "href": "{{ page.front_end_url }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token={{ page.payment_token }}&culture=sv-SE",
             "rel": "view-paymentorder",
             "method": "GET",
             "contentType": "application/javascript"

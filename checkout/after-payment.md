@@ -66,7 +66,7 @@ against the URI of `paymentorder.id`:
 **Request**
 
 ```http
-GET /psp/paymentorders/{{ page.paymentOrderId }} HTTP/1.1
+GET /psp/paymentorders/{{ page.payment_order_id }} HTTP/1.1
 Authorization: Bearer <AccessToken>
 ```
 
@@ -83,30 +83,30 @@ Content-Type: application/json
 
 {
     "paymentOrder": {
-        "id": "/psp/paymentorders/{{ page.paymentOrderId }}"
+        "id": "/psp/paymentorders/{{ page.payment_order_id }}"
     },
     "operations": [
         {
             "method": "PATCH",
-            "href": "{{ page.apiUrl }}/psp/paymentorders/{{ page.paymentOrderId }}",
+            "href": "{{ page.api_url }}/psp/paymentorders/{{ page.payment_order_id }}",
             "rel": "update-paymentorder-updateorder",
             "contentType": "application/json"
         },
         {
             "method": "POST",
-            "href": "{{ page.apiUrl }}/psp/paymentorders/{{ page.paymentOrderId }}/captures",
+            "href": "{{ page.api_url }}/psp/paymentorders/{{ page.payment_order_id }}/captures",
             "rel": "create-paymentorder-capture",
             "contentType": "application/json"
         },
         {
             "method": "POST",
-            "href": "{{ page.apiUrl }}/psp/paymentorders/{{ page.paymentOrderId }}/cancellations",
+            "href": "{{ page.api_url }}/psp/paymentorders/{{ page.payment_order_id }}/cancellations",
             "rel": "create-paymentorder-cancel",
             "contentType": "application/json"
         },
         {
             "method": "POST",
-            "href": "{{ page.apiUrl }}/psp/paymentorders/{{ page.paymentOrderId }}/reversals",
+            "href": "{{ page.api_url }}/psp/paymentorders/{{ page.payment_order_id }}/reversals",
             "rel": "create-paymentorder-reversal",
             "contentType": "application/json"
         }

@@ -71,7 +71,7 @@ is done through the `initiate-consumer-session` operation.
 
 ```http
 POST /psp/consumers HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -104,13 +104,13 @@ Content-Type: application/json
         {
             "method": "GET",
             "rel": "redirect-consumer-identification",
-            "href": "{{ page.frontEndUrl }}/consumers/sessions/7e380fbb3196ea76cc45814c1d99d59b66db918ce2131b61f585645eff364871",
+            "href": "{{ page.front_end_url }}/consumers/sessions/7e380fbb3196ea76cc45814c1d99d59b66db918ce2131b61f585645eff364871",
             "contentType": "text/html"
         },
         {
             "method": "GET",
             "rel": "view-consumer-identification",
-            "href": "{{ page.frontEndUrl }}/consumers/core/scripts/client/px.consumer.client.js?token={{ page.paymentToken }}",
+            "href": "{{ page.front_end_url }}/consumers/core/scripts/client/px.consumer.client.js?token={{ page.payment_token }}",
             "contentType": "application/javascript"
         }
     ]
@@ -245,7 +245,7 @@ the following argument objects:
 ```js
 {
     "actionType": "OnConsumerIdentified",
-    "consumerProfileRef": "{{ page.paymentToken }}"
+    "consumerProfileRef": "{{ page.payment_token }}"
 }
 ```
 
@@ -255,7 +255,7 @@ the following argument objects:
 ```js
 {
     "actionType": "OnShippingDetailsAvailable",
-    "url": "{{ page.apiUrl }}/psp/consumers/{{ page.paymentToken }}/shipping-details"
+    "url": "{{ page.api_url }}/psp/consumers/{{ page.payment_token }}/shipping-details"
 }
 ```
 
@@ -265,7 +265,7 @@ the following argument objects:
 ```js
 {
     "actionType": "OnBillingDetailsAvailable",
-    "url": "{{ page.apiUrl }}/psp/consumers/{{ page.paymentToken }}/billing-details"
+    "url": "{{ page.api_url }}/psp/consumers/{{ page.payment_token }}/billing-details"
 }
 ```
 

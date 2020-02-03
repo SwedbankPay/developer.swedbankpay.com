@@ -3,7 +3,7 @@
 
 ```http
 POST /psp/paymentorders HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -27,7 +27,7 @@ Content-Type: application/json
             "termsOfServiceUrl": "https://example.com/termsandconditoons.pdf"
         },
         "payeeInfo": {
-            "payeeId": "{{ page.merchantId }}",
+            "payeeId": "{{ page.merchant_id }}",
             "payeeReference": "AB832",
             "payeeName": "Merchant1",
             "productCategory": "A123",
@@ -35,7 +35,7 @@ Content-Type: application/json
             "subsite": "MySubsite"
         },
         "payer": {
-            "consumerProfileRef": "{{ page.paymentToken }}",
+            "consumerProfileRef": "{{ page.payment_token }}",
             "email": "olivia.nyhuus@payex.com",
             "msisdn": "+4798765432",
             "workPhoneNumber" : "+4787654321",

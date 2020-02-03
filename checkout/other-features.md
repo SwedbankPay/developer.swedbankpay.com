@@ -24,7 +24,7 @@ They are listed on this very page." %}
 
 ## Payment Orders
 
-{% include payment-order-get.md showStatusOperations=true %}
+{% include payment-order-get.md show_status_operations=true %}
 
 ### Creating a payment order
 
@@ -59,7 +59,7 @@ underlying payments or transaction.
 
 #### Payment Url
 
-{% include payment-url.md payment-order=true
+{% include payment-url.md payment_order=true
 when="selecting the payment instrument Vipps or in the 3-D Secure verification
 for Credit Card Payments" %}
 
@@ -72,8 +72,8 @@ contents.
 Request
 
 ```http
-GET /psp/paymentorders/{{ page.paymentOrderId }}/urls/ HTTP/1.1
-Host: {{ page.apiHost }}
+GET /psp/paymentorders/{{ page.payment_order_id }}/urls/ HTTP/1.1
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -86,9 +86,9 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "paymentorder": "/psp/payments/{{ page.paymentOrderId }}",
+    "paymentorder": "/psp/payments/{{ page.payment_order_id }}",
     "urls": {
-        "id": "/psp/payments/{{ page.paymentOrderId }}/urls",
+        "id": "/psp/payments/{{ page.payment_order_id }}/urls",
         "hostUrls": [ "https://example.com", "http://example.net" ],
         "completeUrl": "http://example.com/payment-complete",
         "cancelUrl": "http://example.com/payment-canceled",
@@ -123,7 +123,7 @@ The `orderItems` property of the `paymentOrder` is an array containing the items
 | :------: | :-------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |  ✔︎︎︎︎︎  | `reference`           | `string`  | A reference that identifies the order item.                                                                                                                                                                                    |
 |  ✔︎︎︎︎︎  | `name`                | `string`  | The name of the order item.                                                                                                                                                                                                    |
-|  ✔︎︎︎︎︎  | `type`                | `enum`  | `PRODUCT`, `SERVICE`, `SHIPPING_FEE`, `DISCOUNT`, `VALUE_CODE`, or `OTHER`. The type of the order item.                                                                                                                        |
+|  ✔︎︎︎︎︎  | `type`                | `enum`    | `PRODUCT`, `SERVICE`, `SHIPPING_FEE`, `DISCOUNT`, `VALUE_CODE`, or `OTHER`. The type of the order item.                                                                                                                        |
 |  ✔︎︎︎︎︎  | `class`               | `string`  | The classification of the order item. Can be used for assigning the order item to a specific product category, such as `MobilePhone`. Note that `class` cannot contain spaces. Swedbank Pay may use this field for statistics. |
 |          | `itemUrl`             | `string`  | The URL to a page that can display the purchased item, such as a product page                                                                                                                                                  |
 |          | `imageUrl`            | `string`  | The URL to an image of the order item.                                                                                                                                                                                         |
@@ -178,60 +178,60 @@ A list of possible operations and their explanation is given below.
 ```js
 {
     "paymentOrder": {
-        "id": "/psp/paymentorders/{{ page.paymentOrderId }}",
+        "id": "/psp/paymentorders/{{ page.payment_order_id }}",
     }
     "operations": [
         {
             "method": "PATCH",
-            "href": "{{ page.apiUrl }}/psp/paymentorders/{{ page.paymentOrderId }}",
+            "href": "{{ page.api_url }}/psp/paymentorders/{{ page.payment_order_id }}",
             "rel": "update-paymentorder-abort",
             "contentType": "application/json"
         },
         {
             "method": "PATCH",
-            "href": "{{ page.apiUrl }}/psp/paymentorders/{{ page.paymentOrderId }}",
+            "href": "{{ page.api_url }}/psp/paymentorders/{{ page.payment_order_id }}",
             "rel": "update-paymentorder-updateorder",
             "contentType": "application/json"
         },
         {
             "method": "GET",
-            "href": "{{ page.frontEndUrl }}/paymentmenu/{{ page.paymentToken }}",
+            "href": "{{ page.front_end_url }}/paymentmenu/{{ page.payment_token }}",
             "rel": "redirect-paymentorder",
             "contentType": "text/html"
         },
         {
             "method": "GET",
-            "href": "{{ page.frontEndUrl }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token={{ page.paymentToken }}&culture=nb-NO",
+            "href": "{{ page.front_end_url }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token={{ page.payment_token }}&culture=nb-NO",
             "rel": "view-paymentorder",
             "contentType": "application/javascript"
         },
         {
             "method": "POST",
-            "href": "{{ page.apiUrl }}/psp/paymentorders/{{ page.paymentOrderId }}/captures",
+            "href": "{{ page.api_url }}/psp/paymentorders/{{ page.payment_order_id }}/captures",
             "rel": "create-paymentorder-capture",
             "contentType": "application/json"
         },
         {
             "method": "POST",
-            "href": "{{ page.apiUrl }}/psp/paymentorders/{{ page.paymentOrderId }}/cancellations",
+            "href": "{{ page.api_url }}/psp/paymentorders/{{ page.payment_order_id }}/cancellations",
             "rel": "create-paymentorder-cancel",
             "contentType": "application/json"
         },
         {
             "method": "POST",
-            "href": "{{ page.apiUrl }}/psp/paymentorders/{{ page.paymentOrderId }}/reversals",
+            "href": "{{ page.api_url }}/psp/paymentorders/{{ page.payment_order_id }}/reversals",
             "rel": "create-paymentorder-reversal",
             "contentType": "application/json"
         },
         {
             "method": "GET",
-            "href": "{{ page.apiUrl }}/psp/paymentorders/{{ page.paymentOrderId }}/paid",
+            "href": "{{ page.api_url }}/psp/paymentorders/{{ page.payment_order_id }}/paid",
             "rel": "paid-paymentorder",
             "contentType": "application/json"
         },
         {
             "method": "GET",
-            "href": "{{ page.apiUrl }}/psp/paymentorders/{{ page.paymentOrderId }}/failed",
+            "href": "{{ page.api_url }}/psp/paymentorders/{{ page.payment_order_id }}/failed",
             "rel": "failed-paymentorder",
             "contentType": "application/problem+json"
         }
@@ -279,7 +279,7 @@ The `view-paymentorder` operation contains the URI of the JavaScript that needs 
     </head>
     <body>
         <div id="checkout"></div>
-        <script src="{{ page.frontEndUrl }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token={{ page.paymentToken }}&culture=nb-NO"></script>
+        <script src="{{ page.front_end_url }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token={{ page.payment_token }}&culture=nb-NO"></script>
         <script language="javascript">
             payex.hostedView.paymentMenu({
                 container: 'checkout',
@@ -318,7 +318,7 @@ new amount is shown to the end customer.
 **Request**
 
 ```http
-PATCH /psp/paymentorders/{{ page.paymentOrderId }} HTTP/1.1
+PATCH /psp/paymentorders/{{ page.payment_order_id }} HTTP/1.1
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -373,7 +373,7 @@ Content-Type: application/json
 
 {
     "paymentorder": {
-        "id": "/psp/paymentorders/{{ page.paymentOrderId }}",
+        "id": "/psp/paymentorders/{{ page.payment_order_id }}",
         "created": "2018-09-14T13:21:29.3182115Z",
         "updated": "2018-09-14T13:21:57.6627579Z",
         "operation": "Purchase",
@@ -388,31 +388,31 @@ Content-Type: application/json
         "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",
-        "urls" : { "id": "/psp/paymentorders/{{ page.paymentOrderId }}/urls" },
-        "payeeInfo" : { "id": "/psp/paymentorders/{{ page.paymentOrderId }}/payeeinfo" },
-        "settings": { "id": "/psp/paymentorders/{{ page.paymentOrderId }}/settings" },
-        "payers": { "id": "/psp/paymentorders/{{ page.paymentOrderId }}/payers" },
-        "orderItems" : { "id": "/psp/paymentorders/{{ page.paymentOrderId }}/orderItems" },
-        "metadata": { "id": "/psp/paymentorders/{{ page.paymentOrderId }}/metadata" },
-        "payments": { "id": "/psp/paymentorders/{{ page.paymentOrderId }}/payments" },
-        "currentPayment": { "id": "/psp/paymentorders/{{ page.paymentOrderId }}/currentpayment" }
+        "urls" : { "id": "/psp/paymentorders/{{ page.payment_order_id }}/urls" },
+        "payeeInfo" : { "id": "/psp/paymentorders/{{ page.payment_order_id }}/payeeinfo" },
+        "settings": { "id": "/psp/paymentorders/{{ page.payment_order_id }}/settings" },
+        "payers": { "id": "/psp/paymentorders/{{ page.payment_order_id }}/payers" },
+        "orderItems" : { "id": "/psp/paymentorders/{{ page.payment_order_id }}/orderItems" },
+        "metadata": { "id": "/psp/paymentorders/{{ page.payment_order_id }}/metadata" },
+        "payments": { "id": "/psp/paymentorders/{{ page.payment_order_id }}/payments" },
+        "currentPayment": { "id": "/psp/paymentorders/{{ page.payment_order_id }}/currentpayment" }
     },
     "operations": [
         {
             "method": "PATCH",
-            "href": "{{ page.apiUrl }}/psp/paymentorders/{{ page.paymentOrderId }}",
+            "href": "{{ page.api_url }}/psp/paymentorders/{{ page.payment_order_id }}",
             "rel": "update-paymentorder-abort",
             "contentType": "application/json"
         },
         {
             "method": "GET",
-            "href": "{{ page.frontEndUrl }}/paymentmenu/{{ page.paymentToken }}",
+            "href": "{{ page.front_end_url }}/paymentmenu/{{ page.payment_token }}",
             "rel": "redirect-paymentorder",
             "contentType": "text/html"
         },
         {
             "method": "GET",
-            "href": "{{ page.frontEndUrl }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token={{ page.paymentToken }}&culture=nb-NO",
+            "href": "{{ page.front_end_url }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token={{ page.payment_token }}&culture=nb-NO",
             "rel": "view-paymentorder",
             "contentType": "application/javascript"
         }
@@ -442,8 +442,8 @@ in the request body:
 **Request**
 
 ```http
-PATCH /psp/paymentorders/{{ page.paymentOrderId }} HTTP/1.1
-Host: {{ page.apiHost }}
+PATCH /psp/paymentorders/{{ page.payment_order_id }} HTTP/1.1
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -465,7 +465,7 @@ Content-Type: application/json
 
 {
     "paymentorder": {
-        "id": "/psp/paymentorders/{{ page.paymentOrderId }}",
+        "id": "/psp/paymentorders/{{ page.payment_order_id }}",
         "created": "2018-09-14T13:21:29.3182115Z",
         "updated": "2018-09-14T13:21:57.6627579Z",
         "operation": "Purchase",
@@ -480,31 +480,31 @@ Content-Type: application/json
         "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",
-        "urls" : { "id": "/psp/paymentorders/{{ page.paymentOrderId }}/urls" },
-        "payeeInfo" : { "id": "/psp/paymentorders/{{ page.paymentOrderId }}/payeeinfo" },
-        "settings": { "id": "/psp/paymentorders/{{ page.paymentOrderId }}/settings" },
-        "payers": { "id": "/psp/paymentorders/{{ page.paymentOrderId }}/payers" },
-        "orderItems" : { "id": "/psp/paymentorders/{{ page.paymentOrderId }}/orderItems" },
-        "metadata": { "id": "/psp/paymentorders/{{ page.paymentOrderId }}/metadata" },
-        "payments": { "id": "/psp/paymentorders/{{ page.paymentOrderId }}/payments" },
-        "currentPayment": { "id": "/psp/paymentorders/{{ page.paymentOrderId }}/currentpayment" }
+        "urls" : { "id": "/psp/paymentorders/{{ page.payment_order_id }}/urls" },
+        "payeeInfo" : { "id": "/psp/paymentorders/{{ page.payment_order_id }}/payeeinfo" },
+        "settings": { "id": "/psp/paymentorders/{{ page.payment_order_id }}/settings" },
+        "payers": { "id": "/psp/paymentorders/{{ page.payment_order_id }}/payers" },
+        "orderItems" : { "id": "/psp/paymentorders/{{ page.payment_order_id }}/orderItems" },
+        "metadata": { "id": "/psp/paymentorders/{{ page.payment_order_id }}/metadata" },
+        "payments": { "id": "/psp/paymentorders/{{ page.payment_order_id }}/payments" },
+        "currentPayment": { "id": "/psp/paymentorders/{{ page.payment_order_id }}/currentpayment" }
     },
     "operations": [
         {
             "method": "PATCH",
-            "href": "{{ page.apiUrl }}/psp/paymentorders/{{ page.paymentOrderId }}",
+            "href": "{{ page.api_url }}/psp/paymentorders/{{ page.payment_order_id }}",
             "rel": "update-paymentorder-abort",
             "contentType": "application/json"
         },
         {
             "method": "GET",
-            "href": "{{ page.frontEndUrl }}/paymentmenu/{{ page.paymentToken }}",
+            "href": "{{ page.front_end_url }}/paymentmenu/{{ page.payment_token }}",
             "rel": "redirect-paymentorder",
             "contentType": "text/html"
         },
         {
             "method": "GET",
-            "href": "{{ page.frontEndUrl }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token={{ page.paymentToken }}&culture=nb-NO",
+            "href": "{{ page.front_end_url }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token={{ page.payment_token }}&culture=nb-NO",
             "rel": "view-paymentorder",
             "contentType": "application/javascript"
         }
@@ -560,8 +560,8 @@ other payment instrument properties, by [expanding the sub-resource][expanding]
 **Request**
 
 ```http
-GET /psp/paymentorders/{{ page.paymentorderId }}?$expand=currentpayment HTTP/1.1
-Host: {{ page.apiHost }}
+GET /psp/paymentorders/{{ page.payment_order_id }}?$expand=currentpayment HTTP/1.1
+Host: {{ page.api_host }}
 ```
 
 ### Creating Recurring Payments
@@ -576,14 +576,14 @@ recurrence token during the initial payment order.
 
 ```http
 POST /psp/paymentorders HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
   "paymentorder": {
     "operation": "Recur",
-    "recurrenceToken": "{{ page.paymentOrderId }}",
+    "recurrenceToken": "{{ page.payment_order_id }}",
     "currency": "SEK",
     "amount": 1000,
     "vatAmount": 250,
@@ -594,7 +594,7 @@ Content-Type: application/json
       "callbackUrl": "https://example.com/callback"
     },
     "payeeInfo": {
-      "payeeId": "{{ page.merchantId }}"
+      "payeeId": "{{ page.merchant_id }}"
       "payeeReference": "CD1234",
       "payeeName": "Merchant1",
       "productCategory": "A123",
@@ -681,23 +681,23 @@ should finish the purchase with a credit card payment instead.
 **Request**
 
 ```http
-GET /psp/paymentorders/{{ page.paymentorderId }}/payments HTTP/1.1
-Host: {{ page.apiHost }}
+GET /psp/paymentorders/{{ page.payment_order_id }}/payments HTTP/1.1
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
-    "paymentorder": "/psp/paymentorders/{{ page.paymentOrderId }}",
+    "paymentorder": "/psp/paymentorders/{{ page.payment_order_id }}",
     "payments": {
-        "id": "/psp/paymentorders/{{ page.paymentOrderId }}/payments",
+        "id": "/psp/paymentorders/{{ page.payment_order_id }}/payments",
         "paymentList" : [
             {
-                "id": "/psp/creditcard/payments/{{ page.transactionId }}",
+                "id": "/psp/creditcard/payments/{{ page.transaction_id }}",
                 "instrument" : "CreditCard",
                 "created": "2016-09-14T13:21:29.3182115Z"
             },
             {
-                "id": "/psp/invoice/payments/{{ page.paymentId }}",
+                "id": "/psp/invoice/payments/{{ page.payment_id }}",
                 "instrument" : "Invoice",
                 "created": "2016-09-14T13:21:29.3182115Z"
             }
@@ -726,8 +726,8 @@ payment order container.
 **Request**
 
 ```http
-GET /psp/paymentorders/{{ page.paymentOrderId }}/currentpayment HTTP/1.1
-Host: {{ page.apiHost }}
+GET /psp/paymentorders/{{ page.payment_order_id }}/currentpayment HTTP/1.1
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -740,11 +740,11 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "paymentorder": "/psp/paymentorders/{{ page.paymentOrderId }}",
+    "paymentorder": "/psp/paymentorders/{{ page.payment_order_id }}",
     "menuElementName": "creditcard",
     "payment": {
-        "recurrenceToken": "{{ page.paymentOrderId }}",
-        "id": "/psp/creditcard/payments/{{ page.paymentOrderId }}",
+        "recurrenceToken": "{{ page.payment_order_id }}",
+        "id": "/psp/creditcard/payments/{{ page.payment_order_id }}",
         "number": 1234567890,
         "instrument": "CreditCard",
         "created": "2016-09-14T13:21:29.3182115Z",
@@ -761,17 +761,17 @@ Content-Type: application/json
         "payerReference": "AB1234",
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",
-        "prices": { "id": "/psp/creditcard/payments/{{ page.paymentOrderId }}/prices" },
-        "transactions": { "id": "/psp/creditcard/payments/{{ page.paymentOrderId }}/transactions" },
-        "authorizations": { "id": "/psp/creditcard/payments/{{ page.paymentOrderId }}/authorizations" },
-        "captures": { "id": "/psp/creditcard/payments/{{ page.paymentOrderId }}/captures" },
-        "cancellations": { "id": "/psp/creditcard/payments/{{ page.paymentOrderId }}/cancellations" },
-        "reversals": { "id": "/psp/creditcard/payments/{{ page.paymentOrderId }}/reversals" },
-        "verifications": { "id": "/psp/creditcard/payments/{{ page.paymentOrderId }}/verifications" },
-        "urls" : { "id": "/psp/creditcard/payments/{{ page.paymentOrderId }}/urls" },
-        "payeeInfo" : { "id": "/psp/creditcard/payments/{{ page.paymentOrderId }}/payeeInfo" },
-        "metadata" : { "id": "/psp/creditcard/payments/{{ page.paymentOrderId }}/metadata" },
-        "settings": { "id": "/psp/creditcard/payments/{{ page.paymentOrderId }}/settings" }
+        "prices": { "id": "/psp/creditcard/payments/{{ page.payment_order_id }}/prices" },
+        "transactions": { "id": "/psp/creditcard/payments/{{ page.payment_order_id }}/transactions" },
+        "authorizations": { "id": "/psp/creditcard/payments/{{ page.payment_order_id }}/authorizations" },
+        "captures": { "id": "/psp/creditcard/payments/{{ page.payment_order_id }}/captures" },
+        "cancellations": { "id": "/psp/creditcard/payments/{{ page.payment_order_id }}/cancellations" },
+        "reversals": { "id": "/psp/creditcard/payments/{{ page.payment_order_id }}/reversals" },
+        "verifications": { "id": "/psp/creditcard/payments/{{ page.payment_order_id }}/verifications" },
+        "urls" : { "id": "/psp/creditcard/payments/{{ page.payment_order_id }}/urls" },
+        "payeeInfo" : { "id": "/psp/creditcard/payments/{{ page.payment_order_id }}/payeeInfo" },
+        "metadata" : { "id": "/psp/creditcard/payments/{{ page.payment_order_id }}/metadata" },
+        "settings": { "id": "/psp/creditcard/payments/{{ page.payment_order_id }}/settings" }
     },
     "operations": []
 }
@@ -818,8 +818,8 @@ during login/checkin.
 **Request**
 
 ```http
-GET /psp/paymentorders/{{ page.paymentOrderId }}/payers/ HTTP/1.1
-Host: {{ page.apiHost }}
+GET /psp/paymentorders/{{ page.payment_order_id }}/payers/ HTTP/1.1
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -832,9 +832,9 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "paymentorder": "/psp/paymentorders/{{ page.paymentOrderId }}",
+    "paymentorder": "/psp/paymentorders/{{ page.payment_order_id }}",
     "payer" : {
-        "id": "/psp/paymentorders/{{ page.paymentOrderId }}/payer",
+        "id": "/psp/paymentorders/{{ page.payment_order_id }}/payer",
         "reference": "reference to payer",
         "email": "email",
         "msisdn": "msisdn",
@@ -1031,7 +1031,7 @@ following event argument object:
 
 ```js
 {
-    "id": "/psp/creditcard/payments/{{ page.paymentId }}",
+    "id": "/psp/creditcard/payments/{{ page.payment_id }}",
     "instrument": "creditcard | vipps | swish | invoice",
 }
 ```
@@ -1053,7 +1053,7 @@ object:
 
 ```js
 {
-    "id": "/psp/creditcard/payments/{{ page.paymentId }}",
+    "id": "/psp/creditcard/payments/{{ page.payment_id }}",
     "redirectUrl": "https://en.wikipedia.org/wiki/Success"
 }
 ```
@@ -1075,7 +1075,7 @@ object:
 
 ```js
 {
-    "id": "/psp/creditcard/payments/{{ page.paymentId }}",
+    "id": "/psp/creditcard/payments/{{ page.payment_id }}",
     "redirectUrl": "https://en.wikipedia.org/wiki/Canceled"
 }
 ```
@@ -1097,7 +1097,7 @@ event argument object:
 
 ```js
 {
-    "id": "/psp/creditcard/payments/{{ page.paymentId }}",
+    "id": "/psp/creditcard/payments/{{ page.payment_id }}",
     "redirectUrl": "https://en.wikipedia.org/wiki/Failed"
 }
 ```
@@ -1187,15 +1187,15 @@ object:
 ```js
 {
     "paymentOrder":{
-        "id": "/psp/paymentorders/{{ page.paymentOrderId }}",
+        "id": "/psp/paymentorders/{{ page.payment_order_id }}",
         "instrument": "<payment instrument>"
     },
     "payment":{
-        "id": "/psp/<payment instrument>/payments/{{ page.paymentId }}",
+        "id": "/psp/<payment instrument>/payments/{{ page.payment_id }}",
         "number": 222222222
     },
     "transaction":{
-        "id": "/psp/<payment instrument>/payments/{{ page.paymentId }}/<transaction type>/{{ page.transactionId }}",
+        "id": "/psp/<payment instrument>/payments/{{ page.payment_id }}/<transaction type>/{{ page.transaction_id }}",
         "number": 333333333
     }
 }
@@ -1247,7 +1247,7 @@ The structure of a problem message will look like this:
     "type": "https://api.payex.com/psp/errordetail/creditcard/inputerror",
     "title": "There was an input error",
     "detail": "Please correct the errors and retry the request",
-    "instance": "{{ page.transactionId }}",
+    "instance": "{{ page.transaction_id }}",
     "status": 400,
     "action": "RetryNewData",
     "problems": [{

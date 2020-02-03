@@ -83,8 +83,8 @@ body.
 | :------------ | :--------- | :------------------------------------------------------------------------- |
 | `Prefix`      | `String`   | The `Prefix` used for transactions, only eligible if merchant uses prefix. |
 | Currency      | `ISO 4217` | Settlement currency (e.g. `SEK, NOK, EUR`).                                |
-| `ServiceType` | `String`   | The service type of the service used (e.g. `Creditcard`).    |
-| `Service`     | `String`   | The service used (e.g. `Creditcard`).                        |
+| `ServiceType` | `String`   | The service type of the service used (e.g. `Creditcard`).                  |
+| `Service`     | `String`   | The service used (e.g. `Creditcard`).                                      |
 | `NoOfDebet`   | `Decimal`  | Total number of debit transactions for the given service.                  |
 | `NoOfCredit`  | `Decimal`  | Total number of credit transactions for the given service.                 |
 | `Amount`      | `Decimal`  | Total amount for the given service (e.g 100.00).                           |
@@ -103,14 +103,14 @@ body.
 | `Date Created`                  | `ISO 8601` | Transaction capture date/time. YYYY-MM-DD hh:mm:ss.                                                                                                   |
 | `Date Modified`                 | `ISO 8601` | Transaction settle date/time. YYYY-MM-DD hh:mm:ss.                                                                                                    |
 | `Provider`                      | `String`   | The service provider (e.g. Babs, Swedbank).                                                                                                           |
-| `Type`                          | `String`   | The service type of the related transaction (e.g. `Creditcard`).                                                                        |
+| `Type`                          | `String`   | The service type of the related transaction (e.g. `Creditcard`).                                                                                      |
 | `Amount`                        | `Decimal`  | Total amount of the related transaction (e.g 100.00).                                                                                                 |
 | `Currency`                      | `ISO 4217` | Settlement currency (e.g. `SEK, NOK, EUR`).                                                                                                           |
 | `Product Number`                | `String`   | A product number, as sent by merchant to PayEx.                                                                                                       |
 | `Description`                   | `String`   | A textual description of the transaction, as sent by merchant to PayEx.                                                                               |
 | `VAT Amount`                    | `Decimal`  | VAT Amount for the given transaction (e.g 100.00).                                                                                                    |
 | `VAT Percentage`                | `Decimal`  | VAT Percentage for the given transaction.                                                                                                             |
-| `Credit Card Batch Number`      | `Decimal`  | The reference number from the credit card processor.                                                                                                  |                                                                
+| `Credit Card Batch Number`      | `Decimal`  | The reference number from the credit card processor.                                                                                                  |
 | `Reference`                     | `Decimal`  | The transaction reference from processor.                                                                                                             |
 | `Swedbank Pay Account Number`   | `Decimal`  | The Account number given, shown in Swedbank Pay admin.                                                                                                |
 | `Referenced Transaction Number` | `Decimal`  | Transaction number for the Authoriation transaction for a two-stage transaction or the number of the debit transaction if it is a credit transaction. |
@@ -175,11 +175,11 @@ the reconciliation file.
 
 ```js
 {
-    "payment": "/psp/creditcard/payments/{{ page.paymentId }}",
+    "payment": "/psp/creditcard/payments/{{ page.payment_id }}",
     "capture": {
-        "id": "/psp/creditcard/payments/{{ page.paymentId }}/captures/{{ page.transactionId }}",
+        "id": "/psp/creditcard/payments/{{ page.payment_id }}/captures/{{ page.transaction_id }}",
         "transaction": {
-            "id": "/psp/creditcard/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
+            "id": "/psp/creditcard/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
             "created": "2016-09-14T01:01:01.01Z",
             "updated": "2016-09-14T01:01:01.03Z",
             "type": "Capture",

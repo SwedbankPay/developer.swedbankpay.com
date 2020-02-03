@@ -1,4 +1,4 @@
-{% assign payment-instrument = include.payment-instrument | default: 'creditcard' %}
+{% assign payment_instrument = include.payment_instrument | default: 'creditcard' %}
 
 The `prices` resource lists the prices related to a specific payment.
 
@@ -6,8 +6,8 @@ The `prices` resource lists the prices related to a specific payment.
 **Request**
 
 ```http
-GET /psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/prices/ HTTP/1.1
-Host: {{ page.apiHost }}
+GET /psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/prices/ HTTP/1.1
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -20,9 +20,9 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}",
+    "payment": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}",
     "prices": {
-        "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/prices",
+        "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/prices",
         "priceList": [
             {
                 "type": "VISA",
@@ -56,7 +56,7 @@ Each payment instrument have one or more prices object types. This is most
 relevant when using card based payments as each type correspond
 to a card brand or bank respectively.
 
-{% case payment-instrument %}
+{% case payment_instrument %}
 
 {% when "creditcard" %}
 
