@@ -177,9 +177,9 @@ the reconciliation file.
 {
     "payment": "/psp/creditcard/payments/{{ page.payment_id }}",
     "capture": {
-        "id": "/psp/creditcard/payments/{{ page.payment_id }}/captures/{{ page.transactionId }}",
+        "id": "/psp/creditcard/payments/{{ page.payment_id }}/captures/{{ page.transaction_id }}",
         "transaction": {
-            "id": "/psp/creditcard/payments/{{ page.payment_id }}/transactions/{{ page.transactionId }}",
+            "id": "/psp/creditcard/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
             "created": "2016-09-14T01:01:01.01Z",
             "updated": "2016-09-14T01:01:01.03Z",
             "type": "Capture",

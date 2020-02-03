@@ -154,7 +154,7 @@ perform a `GET` on the payment after the user returns from the
 **Request**
 
 ```http
-PATCH /psp/creditcard/payments/{{ page.payment_id }}/authorizations/{{ page.transactionId }} HTTP/1.1
+PATCH /psp/creditcard/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }} HTTP/1.1
 Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -181,11 +181,11 @@ Content-Type: application/json
 {
     "payment": "/psp/creditcard/payments/{{ page.payment_id }}",
     "authorization": {
-        "id": "/psp/creditcard/payments/{{ page.payment_id }}/authorizations/{{ page.transactionId }}",
-        "paymentToken": "{{ page.transactionId }}",
+        "id": "/psp/creditcard/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }}",
+        "paymentToken": "{{ page.transaction_id }}",
         "maskedPan": "123456xxxxxx1234",
         "expireDate": "mm/yyyy",
-        "panToken": "{{ page.transactionId }}",
+        "panToken": "{{ page.transaction_id }}",
         "cardBrand": "Visa|MC",
         "cardType": "Credit Card|Debit Card",
         "issuingBank": "UTL MAESTRO",
@@ -196,7 +196,7 @@ Content-Type: application/json
         "acquirerTransactionTime": "2017-08-29T13:42:18Z",
         "authenticationStatus": "Y|A|U|N",
         "transaction": {
-            "id": "/psp/creditcard/payments/{{ page.payment_id }}/transactions/{{ page.transactionId }}",
+            "id": "/psp/creditcard/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
             "created": "2016-09-14T01:01:01.01Z",
             "updated": "2016-09-14T01:01:01.03Z",
             "type": "Authorization",

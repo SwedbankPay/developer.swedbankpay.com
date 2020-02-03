@@ -368,7 +368,7 @@ Content-Type: application/json
         "msisdn": "+4798765432",
         "id": "/psp/vipps/payments/{{ page.payment_id }}/authorizations/",
     "transaction": {
-        "id": "/psp/vipps/payments/{{ page.payment_id }}/transactions/{{ page.transactionId }}",
+        "id": "/psp/vipps/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
         "created": "2016-09-14T01:01:01.01Z",
         "updated": "2016-09-14T01:01:01.03Z",
         "type": "Authorization",

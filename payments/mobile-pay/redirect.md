@@ -253,7 +253,7 @@ Content-Type: application/json
         },
         {
             "method": "GET",
-            "href": "{{ page.frontEndUrl }}/mobilepay/payments/authorize/{{ page.transactionId }}",
+            "href": "{{ page.frontEndUrl }}/mobilepay/payments/authorize/{{ page.transaction_id }}",
             "rel": "redirect-authorization"
         }
     ]

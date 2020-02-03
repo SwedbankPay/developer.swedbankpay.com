@@ -117,11 +117,11 @@ Content-Type: application/json
     "payment": "/psp/invoice/payments/{{ page.payment_id }}",
     "capture": {
         "itemDescriptions": {
-            "id": "/psp/invoice/payments/<captureId>/transactions/{{ page.transactionId }}/itemDescriptions"
+            "id": "/psp/invoice/payments/<captureId>/transactions/{{ page.transaction_id }}/itemDescriptions"
         },
-        "invoiceCopy": "/psp/invoice/payments/{{ page.payment_id }}/captures/{{ page.transactionId }}/invoicecopy",
+        "invoiceCopy": "/psp/invoice/payments/{{ page.payment_id }}/captures/{{ page.transaction_id }}/invoicecopy",
         "transaction": {
-            "id": "/psp/invoice/payments/{{ page.payment_id }}/transactions/{{ page.transactionId }}",
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
             "created": "2016-09-14T01:01:01.01Z",
             "updated": "2016-09-14T01:01:01.03Z",
             "type": "Capture",
@@ -256,7 +256,7 @@ newly created `cancel` transaction.
     "payment": "/psp/invoice/payments/{{ page.payment_id }}",
     "cancellation": {
         "transaction": {
-            "id": "/psp/invoice/payments/{{ page.payment_id }}/transactions/{{ page.transactionId }}",
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
             "created": "2016-09-14T01:01:01.01Z",
             "updated": "2016-09-14T01:01:01.03Z",
             "type": "Cancellation",
@@ -404,7 +404,7 @@ Content-Type: application/json
     "payment": "/psp/invoice/payments/{{ page.payment_id }}",
     "reversal": {
         "transaction": {
-            "id": "/psp/invoice/payments/{{ page.payment_id }}/transactions/{{ page.transactionId }}",
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
             "created": "2016-09-14T01:01:01.01Z",
             "updated": "2016-09-14T01:01:01.03Z",
             "type": "Reversal",
@@ -455,7 +455,7 @@ Content-Type: application/json
     "payment": "/psp/invoice/payments/{{ page.payment_id }}",
     "reversal": [{
         "transaction": {
-            "id": "/psp/invoice/payments/{{ page.payment_id }}/transactions/{{ page.transactionId }}",
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
             "created": "2016-09-14T01:01:01.01Z",
             "updated": "2016-09-14T01:01:01.03Z",
             "type": "Reversal",

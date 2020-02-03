@@ -47,7 +47,7 @@ about this update.
         "number": 222222222
     },
     "transaction": {
-        "id": "/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}/<transaction type>/{{ page.transactionId }}",
+        "id": "/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}/<transaction type>/{{ page.transaction_id }}",
         "number": 333333333
     }
 }
@@ -64,7 +64,7 @@ about this update.
         "number": 222222222
     },
     "transaction": {
-        "id": "/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}/<transaction type>/{{ page.transactionId }}",
+        "id": "/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}/<transaction type>/{{ page.transaction_id }}",
         "number": 333333333
     }
 }

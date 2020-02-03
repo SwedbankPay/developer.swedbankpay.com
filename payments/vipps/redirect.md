@@ -229,12 +229,12 @@ Content-Type: application/json
     "operations": [
         {
             "method": "POST",
-            "href": "{{ page.apiUrl }}/psp/vipps/payments/{{ page.transactionId }}/authorizations",
+            "href": "{{ page.apiUrl }}/psp/vipps/payments/{{ page.transaction_id }}/authorizations",
             "rel": "create-authorization"
         },
         {
             "method": "PATCH",
-            "href": "{{ page.apiUrl }}/psp/vipps/payments/{{ page.transactionId }}",
+            "href": "{{ page.apiUrl }}/psp/vipps/payments/{{ page.transaction_id }}",
             "rel": "update-payment-abort"
         },
         {
@@ -285,7 +285,7 @@ transactions made on a specific payment.
 
 HTTP/1.1 200 OK
 Content-Type: application/json
-GET /psp/vipps/payments/{{ page.payment_id }}/authorizations/{{ page.transactionId }} HTTP/1.1
+GET /psp/vipps/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }} HTTP/1.1
 Host: {{ page.apiHost }}
 Authorization: Bearer <MerchantToken>
 
@@ -305,9 +305,9 @@ Content-Type: application/json
     "authorization": {
         "vippsTransactionId": "5619328800",
         "msisdn": "+47xxxxxxxx",
-        "id": "/psp/vipps/payments/{{ page.payment_id }}/authorizations/{{ page.transactionId }}",
+        "id": "/psp/vipps/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }}",
         "transaction": {
-            "id": "/psp/vipps/payments/{{ page.payment_id }}/transactions/{{ page.transactionId }}",
+            "id": "/psp/vipps/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
             "created": "2018-09-05T15:01:39.8658084Z",
             "updated": "2018-09-05T15:01:42.2119509Z",
             "type": "Authorization",

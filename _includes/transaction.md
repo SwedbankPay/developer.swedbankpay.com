@@ -36,7 +36,7 @@ Content-Type: application/json
 {
     "payment": "/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}",
     "transaction": {
-        "id": "/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}/transactions/{{ page.transactionId }}",
+        "id": "/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
         "created": "2016-09-14T01:01:01.01Z",
         "updated": "2016-09-14T01:01:01.03Z",
         "type": "Capture",

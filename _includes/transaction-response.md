@@ -28,9 +28,9 @@ Content-Type: application/json
     "{{ plural }}": {
         "id": "/psp/{{ instrument }}/payments/{{ page.payment_id }}/{{ plural }}",
         "{{ transaction }}List": [{
-            "id": "/psp/{{ instrument }}/payments/{{ page.payment_id }}/{{ plural }}/{{ page.transactionId }}",
+            "id": "/psp/{{ instrument }}/payments/{{ page.payment_id }}/{{ plural }}/{{ page.transaction_id }}",
             "transaction": {
-                "id": "/psp/{{ instrument }}/payments/{{ page.payment_id }}/transactions/{{ page.transactionId }}",
+                "id": "/psp/{{ instrument }}/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
                 "created": "2016-09-14T01:01:01.01Z",
                 "updated": "2016-09-14T01:01:01.03Z",
                 "type": "{{ transaction | capitalize }}",

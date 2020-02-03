@@ -692,7 +692,7 @@ Content-Type: application/json
         "id": "/psp/paymentorders/{{ page.paymentOrderId }}/payments",
         "paymentList" : [
             {
-                "id": "/psp/creditcard/payments/{{ page.transactionId }}",
+                "id": "/psp/creditcard/payments/{{ page.transaction_id }}",
                 "instrument" : "CreditCard",
                 "created": "2016-09-14T13:21:29.3182115Z"
             },
@@ -1195,7 +1195,7 @@ object:
         "number": 222222222
     },
     "transaction":{
-        "id": "/psp/<payment instrument>/payments/{{ page.payment_id }}/<transaction type>/{{ page.transactionId }}",
+        "id": "/psp/<payment instrument>/payments/{{ page.payment_id }}/<transaction type>/{{ page.transaction_id }}",
         "number": 333333333
     }
 }
@@ -1247,7 +1247,7 @@ The structure of a problem message will look like this:
     "type": "https://api.payex.com/psp/errordetail/creditcard/inputerror",
     "title": "There was an input error",
     "detail": "Please correct the errors and retry the request",
-    "instance": "{{ page.transactionId }}",
+    "instance": "{{ page.transaction_id }}",
     "status": 400,
     "action": "RetryNewData",
     "problems": [{

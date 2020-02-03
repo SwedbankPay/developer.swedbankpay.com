@@ -141,9 +141,9 @@ Content-Type: application/json
         "payerAlias": "46739000001",
         "swishPaymentReference": "8D0A30A7804E40479F88FFBA26111F04",
         "swishStatus": "PAID",
-        "id": "/psp/swish/payments/{{ page.payment_id }}/sales/{{ page.transactionId }}",
+        "id": "/psp/swish/payments/{{ page.payment_id }}/sales/{{ page.transaction_id }}",
         "transaction": {
-          "id": "{{ page.transactionId }}",
+          "id": "{{ page.transaction_id }}",
           "created": "2016-09-14T01:01:01.01Z",
           "updated": "2016-09-14T01:01:01.03Z",
           "type": "Sale",
@@ -200,9 +200,9 @@ Content-Type: application/json
     "sale": {
         "date": "23.10.2017 08:39:37 +00:00",
         "paymentRequestToken": "LhXrK84MSpWU2RO09f8kUP-FHiBo-1pB",
-        "id": "/psp/swish/payments/{{ page.payment_id }}/sales/{{ page.transactionId }}",
+        "id": "/psp/swish/payments/{{ page.payment_id }}/sales/{{ page.transaction_id }}",
         "transaction": {
-            "id": "{{ page.transactionId }}",
+            "id": "{{ page.transaction_id }}",
             "created": "2017-10-23T08:39:35.6478733Z",
             "updated": "2017-10-23T08:39:37.3788733Z",
             "type": "Sale",
@@ -246,9 +246,9 @@ Content-Type: application/json
     "sale": {
         "date": "23.10.2017 08:39:37 +00:00",
         "paymentRequestToken": "LhXrK84MSpWU2RO09f8kUP-FHiBo-1pB",
-        "id": "/psp/swish/payments/{{ page.payment_id }}/sales/{{ page.transactionId }}",
+        "id": "/psp/swish/payments/{{ page.payment_id }}/sales/{{ page.transaction_id }}",
         "transaction": {
-            "id": "{{ page.transactionId }}",
+            "id": "{{ page.transaction_id }}",
             "created": "2017-10-23T08:39:35.6478733Z",
             "updated": "2017-10-23T08:39:37.3788733Z",
             "type": "Sale",
@@ -306,9 +306,9 @@ Content-Type: application/json
         "id": "/psp/swish/payments/{{ page.payment_id }}/reversals",
         "reversalList": [
             {
-                "id": "/psp/swish/payments/{{ page.payment_id }}/reversals/{{ page.transactionId }}",
+                "id": "/psp/swish/payments/{{ page.payment_id }}/reversals/{{ page.transaction_id }}",
                 "transaction": {
-                    "id": "/psp/swish/payments/{{ page.payment_id }}/transactions/{{ page.transactionId }}",
+                    "id": "/psp/swish/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
                     "created": "2016-09-14T01:01:01.01Z",
                     "updated": "2016-09-14T01:01:01.03Z",
                     "type": "Reversal",
@@ -380,9 +380,9 @@ Content-Type: application/json
 {
     "payment": "/psp/swish/payments/{{ page.payment_id }}",
     "reversal": {
-        "id": "/psp/swish/payments/{{ page.payment_id }}/reversals/{{ page.transactionId }}",
+        "id": "/psp/swish/payments/{{ page.payment_id }}/reversals/{{ page.transaction_id }}",
         "transaction": {
-            "id": "/psp/swish/payments/{{ page.payment_id }}/transactions/{{ page.transactionId }}",
+            "id": "/psp/swish/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
             "created": "2016-09-14T01:01:01.01Z",
             "updated": "2016-09-14T01:01:01.03Z",
             "type": "Reversal",

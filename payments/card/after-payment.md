@@ -84,9 +84,9 @@ Content-Type: application/json
 {
     "payment": "/psp/creditcard/payments/{{ page.payment_id }}",
     "capture": {
-        "id": "/psp/creditcard/payments/{{ page.payment_id }}/captures/{{ page.transactionId }}",
+        "id": "/psp/creditcard/payments/{{ page.payment_id }}/captures/{{ page.transaction_id }}",
         "transaction": {
-            "id": "/psp/creditcard/payments/{{ page.payment_id }}/transactions/{{ page.transactionId }}",
+            "id": "/psp/creditcard/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
             "created": "2016-09-14T01:01:01.01Z",
             "updated": "2016-09-14T01:01:01.03Z",
             "type": "Capture",
@@ -150,9 +150,9 @@ Content-Type: application/json
         "id": "/psp/creditcard/payments/{{ page.payment_id }}/captures",
         "captureList": [
             {
-                "id": "/psp/creditcard/payments/{{ page.payment_id }}/captures/{{ page.transactionId }}",
+                "id": "/psp/creditcard/payments/{{ page.payment_id }}/captures/{{ page.transaction_id }}",
                 "transaction": {
-                    "id": "/psp/creditcard/payments/{{ page.payment_id }}/transactions/{{ page.transactionId }}",
+                    "id": "/psp/creditcard/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
                     "created": "2016-09-14T01:01:01.01Z",
                     "updated": "2016-09-14T01:01:01.03Z",
                     "type": "Capture",
@@ -257,9 +257,9 @@ Content-Type: application/json
 {
     "payment": "/psp/creditcard/payments/{{ page.payment_id }}",
     "cancellation": {
-        "id": "/psp/creditcard/payments/{{ page.payment_id }}/cancellations/{{ page.transactionId }}",
+        "id": "/psp/creditcard/payments/{{ page.payment_id }}/cancellations/{{ page.transaction_id }}",
         "transaction": {
-            "id": "/psp/creditcard/payments/{{ page.payment_id }}/transactions/{{ page.transactionId }}",
+            "id": "/psp/creditcard/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
             "created": "2016-09-14T01:01:01.01Z",
             "updated": "2016-09-14T01:01:01.03Z",
             "type": "Cancellation",
@@ -323,9 +323,9 @@ Content-Type: application/json
     "cancellations": {
         "id": "/psp/creditcard/payments/{{ page.payment_id }}/cancellations",
         "cancellationList": [{
-            "id": "/psp/creditcard/payments/{{ page.payment_id }}/cancellations/{{ page.transactionId }}",
+            "id": "/psp/creditcard/payments/{{ page.payment_id }}/cancellations/{{ page.transaction_id }}",
             "transaction": {
-                "id": "/psp/creditcard/payments/{{ page.payment_id }}/transactions/{{ page.transactionId }}",
+                "id": "/psp/creditcard/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
                 "created": "2016-09-14T01:01:01.01Z",
                 "updated": "2016-09-14T01:01:01.03Z",
                 "type": "Cancellation",
@@ -426,9 +426,9 @@ Content-Type: application/json
 {
     "payment": "/psp/creditcard/payments/{{ page.payment_id }}",
     "reversal": {
-        "id": "/psp/creditcard/payments/{{ page.payment_id }}/reversal/{{ page.transactionId }}",
+        "id": "/psp/creditcard/payments/{{ page.payment_id }}/reversal/{{ page.transaction_id }}",
         "transaction": {
-            "id": "/psp/creditcard/payments/{{ page.payment_id }}/transactions/{{ page.transactionId }}",
+            "id": "/psp/creditcard/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
             "created": "2016-09-14T01:01:01.01Z",
             "updated": "2016-09-14T01:01:01.03Z",
             "type": "Reversal",
@@ -492,9 +492,9 @@ Content-Type: application/json
     "reversals": {
         "id": "/psp/creditcard/payments/{{ page.payment_id }}/reversal",
         "reversalList": [{
-            "id": "/psp/creditcard/payments/{{ page.payment_id }}/reversal/{{ page.transactionId }}",
+            "id": "/psp/creditcard/payments/{{ page.payment_id }}/reversal/{{ page.transaction_id }}",
             "transaction": {
-                "id": "/psp/creditcard/payments/{{ page.payment_id }}/transactions/{{ page.transactionId }}",
+                "id": "/psp/creditcard/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
                 "created": "2016-09-14T01:01:01.01Z",
                 "updated": "2016-09-14T01:01:01.03Z",
                 "type": "Reversal",

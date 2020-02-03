@@ -330,7 +330,7 @@ object:
 ```js
 {
     "origin": "creditcard",
-    "messageId": "{{ page.transactionId }}",
+    "messageId": "{{ page.transaction_id }}",
     "details": "Descriptive text of the error"
 }
 ```

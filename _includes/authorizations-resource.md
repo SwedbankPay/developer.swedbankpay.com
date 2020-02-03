@@ -28,7 +28,7 @@ Content-Type: application/json
         "id": "/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}/authorizations",
         "authorizationList": [
             {
-                "id": "/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}/authorizations/{{ page.transactionId}}",
+                "id": "/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id}}",
                 "consumer": {
                     "id": "/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}/consumer"
                 },
@@ -39,7 +39,7 @@ Content-Type: application/json
                     "id": "/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}/billingaddress"
                 },
                 "transaction": {
-                    "id": "/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}/transactions/{{ page.transactionId}}",
+                    "id": "/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id}}",
                     "created": "2016-09-14T01:01:01.01Z",
                     "updated": "2016-09-14T01:01:01.03Z",
                     "type": "Authorization",
@@ -156,7 +156,7 @@ Content-Type: application/json
 {
     "payment": "/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}",
     "authorization": {
-        "id": "/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}/authorizations/{{ page.transactionId}}",
+        "id": "/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id}}",
         "consumer": {
             "id": "/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}/consumer"
         },
@@ -167,7 +167,7 @@ Content-Type: application/json
             "id": "/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}/billingaddress"
         },
         "transaction": {
-            "id": "/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}/transactions/{{ page.transactionId}}",
+            "id": "/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id}}",
             "created": "2016-09-14T01:01:01.01Z",
             "updated": "2016-09-14T01:01:01.03Z",
             "type": "Authorization",

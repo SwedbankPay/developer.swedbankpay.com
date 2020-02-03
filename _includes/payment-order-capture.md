@@ -135,9 +135,9 @@ Content-Type: application/json
 {
     "payment": "/psp/creditcard/payments/{{ page.payment_id }}",
     "capture": {
-        "id": "/psp/creditcard/payments/{{ page.payment_id }}/captures/{{ page.transactionId }}",
+        "id": "/psp/creditcard/payments/{{ page.payment_id }}/captures/{{ page.transaction_id }}",
         "transaction": {
-            "id": "/psp/creditcard/payments/{{ page.payment_id }}/transactions/{{ page.transactionId }}",
+            "id": "/psp/creditcard/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
             "type": "Capture",
             "state": "Completed",
             "amount": 15610,

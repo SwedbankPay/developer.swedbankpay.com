@@ -82,7 +82,7 @@ Content-Type: application/json
         },
         {
             "method": "GET",
-            "href": "{{ page.frontEndUrl }}/{{ payment-instrument }}/payments/authorize/{{ page.transactionId }}",
+            "href": "{{ page.frontEndUrl }}/{{ payment-instrument }}/payments/authorize/{{ page.transaction_id }}",
             "rel": "redirect-authorization",
             "contentType": "text/html"
         },{% endunless %}

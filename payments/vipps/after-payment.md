@@ -249,9 +249,9 @@ Content-Type: application/json
             {
                 "vippsTransactionId": "5619328800",
                 "msisdn": "+4798765432",
-                "id": "/psp/vipps/payments/{{ page.payment_id }}/authorizations/{{ page.transactionId }}",
+                "id": "/psp/vipps/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }}",
                 "transaction": {
-                    "id": "/psp/vipps/payments/{{ page.payment_id }}/transactions/{{ page.transactionId }}",
+                    "id": "/psp/vipps/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
                     "created": "2018-09-05T15:01:39.8658084Z",
                     "updated": "2018-09-05T15:01:42.2119509Z",
                     "type": "Authorization",
@@ -286,7 +286,7 @@ to the `GET` request.
 **Request**
 
 ```http
-GET /psp/vipps/payments/{{ page.payment_id }}/authorizations/{{ page.transactionId }} HTTP/1.1
+GET /psp/vipps/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }} HTTP/1.1
 Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -304,9 +304,9 @@ Content-Type: application/json
     "authorization": {
         "vippsTransactionId": "5619328800",
         "msisdn": "+4798765432",
-        "id": "/psp/vipps/payments/{{ page.payment_id }}/authorizations/{{ page.transactionId }}",
+        "id": "/psp/vipps/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }}",
         "transaction": {
-            "id": "/psp/vipps/payments/{{ page.payment_id }}/transactions/{{ page.transactionId }}",
+            "id": "/psp/vipps/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
             "created": "2018-09-05T15:01:39.8658084Z",
             "updated": "2018-09-05T15:01:42.2119509Z",
             "type": "Authorization",
@@ -358,9 +358,9 @@ Content-Type: application/json
         "id": "/psp/vipps/payments/{{ page.payment_id }}/captures",
         "captureList": [
             {
-                "id": "/psp/vipps/payments/{{ page.payment_id }}/captures/{{ page.transactionId }}",
+                "id": "/psp/vipps/payments/{{ page.payment_id }}/captures/{{ page.transaction_id }}",
                 "transaction": {
-                    "id": "/psp/vipps/payments/{{ page.payment_id }}/transactions/{{ page.transactionId }}",
+                    "id": "/psp/vipps/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
                     "created": "2018-09-05T15:03:56.5180218Z",
                     "updated": "2018-09-06T08:05:01.4179654Z",
                     "type": "Capture",
@@ -437,9 +437,9 @@ Content-Type: application/json
 {
     "payment": "/psp/vipps/payments/{{ page.payment_id }}",
     "capture": {
-        "id": "/psp/vipps/payments/{{ page.payment_id }}/captures/{{ page.transactionId }}",
+        "id": "/psp/vipps/payments/{{ page.payment_id }}/captures/{{ page.transaction_id }}",
         "transaction": {
-            "id": "/psp/vipps/payments/{{ page.payment_id }}/transactions/{{ page.transactionId }}",
+            "id": "/psp/vipps/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
             "created": "2018-09-05T15:03:56.5180218Z",
             "updated": "2018-09-05T15:03:57.6300566Z",
             "type": "Capture",
@@ -492,9 +492,9 @@ Content-Type: application/json
         "id": "/psp/vipps/payments/{{ page.payment_id }}/cancellations",
         "cancellationList": [
             {
-                "id": "/psp/vipps/payments/{{ page.payment_id }}/cancellations/{{ page.transactionId }}",
+                "id": "/psp/vipps/payments/{{ page.payment_id }}/cancellations/{{ page.transaction_id }}",
                 "transaction": {
-                    "id": "/psp/vipps/payments/{{ page.payment_id }}/transactions/{{ page.transactionId }}",
+                    "id": "/psp/vipps/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
                     "created": "2018-09-06T10:03:43.9615Z",
                     "updated": "2018-09-06T10:03:45.9503625Z",
                     "type": "Cancellation",
@@ -567,9 +567,9 @@ Content-Type: application/json
 {
     "payment": "/psp/vipps/payments/{{ page.payment_id }}",
     "cancellation": {
-        "id": "/psp/vipps/payments/{{ page.payment_id }}/cancellations/{{ page.transactionId }}",
+        "id": "/psp/vipps/payments/{{ page.payment_id }}/cancellations/{{ page.transaction_id }}",
         "transaction": {
-            "id": "/psp/vipps/payments/{{ page.payment_id }}/transactions/{{ page.transactionId }}",
+            "id": "/psp/vipps/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
             "created": "2018-09-06T10:03:43.9615Z",
             "updated": "2018-09-06T10:03:45.9503625Z",
             "type": "Cancellation",
@@ -621,9 +621,9 @@ Content-Type: application/json
         "id": "/psp/vipps/payments/{{ page.payment_id }}/reversals",
         "reversalList": [
             {
-                "id": "/psp/vipps/payments/{{ page.payment_id }}/reversals/{{ page.transactionId }}",
+                "id": "/psp/vipps/payments/{{ page.payment_id }}/reversals/{{ page.transaction_id }}",
                 "transaction": {
-                    "id": "/psp/vipps/payments/{{ page.payment_id }}/transactions/{{ page.transactionId }}",
+                    "id": "/psp/vipps/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
                     "created": "2018-09-06T10:12:54.738174Z",
                     "updated": "2018-09-06T10:12:55.0671912Z",
                     "type": "Reversal",
@@ -698,9 +698,9 @@ Content-Type: application/json
 {
     "payment": "/psp/vipps/payments/{{ page.payment_id }}",
     "reversal": {
-        "id": "/psp/vipps/payments/{{ page.payment_id }}/reversals/{{ page.transactionId }}",
+        "id": "/psp/vipps/payments/{{ page.payment_id }}/reversals/{{ page.transaction_id }}",
         "transaction": {
-            "id": "/psp/vipps/payments/{{ page.payment_id }}/transactions/{{ page.transactionId }}",
+            "id": "/psp/vipps/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
             "created": "2018-09-06T10:12:54.738174Z",
             "updated": "2018-09-06T10:12:55.0671912Z",
             "type": "Reversal",

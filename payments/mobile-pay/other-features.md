@@ -162,7 +162,7 @@ Content-Type: application/json
         },
         {
             "method": "GET",
-            "href": "https://{{ page.frontEndUrl }}/mobilepay/payments/authorize/{{ page.transactionId }}",
+            "href": "https://{{ page.frontEndUrl }}/mobilepay/payments/authorize/{{ page.transaction_id }}",
             "rel": "redirect-authorization"
         }
     ]
@@ -310,11 +310,11 @@ Content-Type: application/json
 {
     "payment": "/psp/mobilepay/payments/{{ page.payment_id }}",
     "authorization": {
-        "id": "/psp/mobilepay/payments/{{ page.payment_id }}/authorizations/{{ page.transactionId }}",
+        "id": "/psp/mobilepay/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }}",
         "paymentToken": "{{ page.paymentToken }}",
         "maskedPan": "123456xxxxxx1234",
         "expireDate": "mm/yyyy",
-        "panToken": "{{ page.transactionId }}",
+        "panToken": "{{ page.transaction_id }}",
         "cardBrand": "Visa",
         "cardType": "Credit Card",
         "issuingBank": "UTL MAESTRO",
@@ -325,7 +325,7 @@ Content-Type: application/json
         "acquirerTransactionTime": "2017-08-29T13:42:18Z",
         "authenticationStatus": "Y",
         "transaction": {
-            "id": "/psp/mobilepay/payments/{{ page.payment_id }}/transactions/{{ page.transactionId }}",
+            "id": "/psp/mobilepay/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
             "created": "2016-09-14T01:01:01.01Z",
             "updated": "2016-09-14T01:01:01.03Z",
             "type": "Authorization",
