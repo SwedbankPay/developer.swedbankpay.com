@@ -117,8 +117,8 @@ rect rgba(138, 205, 195, 0.1)
 ## Payment Menu Back End
 
 We start by performing a `POST` request towards the `paymentorder` resource
-with the payer information (such as `consumerProfileRef`) we obtained in the checkin process described
-above.
+with the payer information (such as `consumerProfileRef`) we obtained in the
+checkin process described above.
 Remember to read up on our [URL resource][urls].
 
 {% include alert-risk-indicator.md %}
