@@ -21,7 +21,7 @@ When a transaction is created it will have one of three states:
 
 ```http
 GET /psp/{{ payment-instrument }}/payments/{{ page.payment_id }}/transactions HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```

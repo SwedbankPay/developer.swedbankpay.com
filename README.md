@@ -84,7 +84,7 @@ Example:
 
 ```http
 GET /psp/paymentorders/{{ page.payment_order_id }}/ HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 ```
 
 ### Use includes

@@ -7,7 +7,7 @@ If we want to reverse a previously captured amount, we need to perform
 
 ```http
 POST /psp/paymentorders/{{ page.payment_order_id }}/reversals HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 

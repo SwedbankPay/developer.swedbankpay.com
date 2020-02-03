@@ -119,7 +119,7 @@ on a specific payment.
 
 ```http
 GET /psp/swish/payments/{{ page.payment_id }}/sales HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -177,7 +177,7 @@ to manage the purchase, making `msisdn` optional.
 
 ```http
 POST /psp/swish/payments/{{ page.payment_id }}/sales HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -224,7 +224,7 @@ Content-Type: application/json
 
 ```http
 POST /psp/swish/payments/{{ page.payment_id }}/sales HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -288,7 +288,7 @@ specific payment.
 
 ```http
 GET /psp/swish/payments/{{ page.payment_id }}/reversals HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -347,7 +347,7 @@ Swedbank Pay.
 
 ```http
 POST /psp/swish/payments/{{ page.payment_id }}/reversals HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 

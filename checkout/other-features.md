@@ -73,7 +73,7 @@ Request
 
 ```http
 GET /psp/paymentorders/{{ page.payment_order_id }}/urls/ HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -443,7 +443,7 @@ in the request body:
 
 ```http
 PATCH /psp/paymentorders/{{ page.payment_order_id }} HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -561,7 +561,7 @@ other payment instrument properties, by [expanding the sub-resource][expanding]
 
 ```http
 GET /psp/paymentorders/{{ page.payment_order_id }}?$expand=currentpayment HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 ```
 
 ### Creating Recurring Payments
@@ -576,7 +576,7 @@ recurrence token during the initial payment order.
 
 ```http
 POST /psp/paymentorders HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -682,7 +682,7 @@ should finish the purchase with a credit card payment instead.
 
 ```http
 GET /psp/paymentorders/{{ page.payment_order_id }}/payments HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -727,7 +727,7 @@ payment order container.
 
 ```http
 GET /psp/paymentorders/{{ page.payment_order_id }}/currentpayment HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -819,7 +819,7 @@ during login/checkin.
 
 ```http
 GET /psp/paymentorders/{{ page.payment_order_id }}/payers/ HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```

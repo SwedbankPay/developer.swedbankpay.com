@@ -347,7 +347,7 @@ possible to perform in the current state of the payment.
 
 ```http
 GET /psp/invoice/payments/{{ page.payment_id }}/ HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```

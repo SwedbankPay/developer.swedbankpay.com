@@ -135,7 +135,7 @@ An example of an expanded `POST` request is available in the
 
 ```http
 POST /psp/vipps/payments HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -343,7 +343,7 @@ Use the mobile number from the consumer to create an authorization transaction.
 
 ```http
 POST /psp/vipps/payments/{{ page.payment_id }}/authorizations HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 

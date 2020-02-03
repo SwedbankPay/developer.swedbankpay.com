@@ -7,7 +7,7 @@ in the `operations` list. See the abbreviated request and response below:
 
 ```http
 POST /psp/paymentorders/{{ page.payment_order_id }}/cancellations HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 

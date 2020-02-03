@@ -289,7 +289,7 @@ See the abbreviated request and response below:
 
 ```http
 POST /psp/paymentorders/{{ page.payment_order_id }}/captures HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -400,7 +400,7 @@ is returned in the payment order response. You need to include the following
 
 ```http
 PATCH /psp/paymentorders/{{ page.payment_order_id }} HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -468,7 +468,7 @@ See the abbreviated request and response below:
 
 ```http
 POST /psp/paymentorders/{{ page.payment_order_id }}/cancellations HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -531,7 +531,7 @@ If we want to reverse a previously captured amount, we need to perform
 
 ```http
 POST /psp/paymentorders/{{ page.payment_order_id }}/reversals HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 

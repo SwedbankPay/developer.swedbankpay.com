@@ -69,7 +69,7 @@ in their own section below.
 
 ```http
 POST /psp/invoice/payments HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -97,7 +97,7 @@ A `FinancingConsumer` payment is an invoice.
 
 ```http
 POST /psp/invoice/payments HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 {
@@ -148,7 +148,7 @@ through a previous payment in order to charge the same card.
 
 ```http
 POST /psp/invoice/payments HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -231,7 +231,7 @@ listed below.
 
 ```http
 POST /psp/invoice/payments HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -401,7 +401,7 @@ Swedbank Pay Payments where the payment is authorized.
 
 ```http
 POST /psp/invoice/payments/{{ page.payment_id }}/authorizations HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 {

@@ -47,7 +47,7 @@ provided below.
 
 ```http
 GET /psp/creditcard/payments/{{ page.payment_id }}/authorizations HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 ```
 
@@ -56,7 +56,7 @@ Authorization: Bearer <AccessToken>
 
 ```http
 GET /psp/creditcard/payments/{{ page.payment_id }}/verifications HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 ```
 
@@ -84,7 +84,7 @@ Abbreviated code example:
 
 ```http
 POST /psp/creditcard/payments HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -139,7 +139,7 @@ you use the `Delete payment token` request.
 
 ```http
 PATCH /psp/creditcard/payments/instrumentData/{{ page.payment_token }} HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 

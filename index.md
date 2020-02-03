@@ -141,7 +141,7 @@ response, enabling you to access information from these sub-resources.
 
 ```http
 GET /psp/creditcard/payments/{{ page.payment_id }}?$expand=urls,authorizations HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 ```
 
 To avoid unnecessary overhead, you should only expand the nodes you need info
@@ -199,7 +199,7 @@ instrument specific operations.
     "payment": {},
     "operations": [
         {
-            "href": "http://{{ page.apiHost }}/psp/creditcard/payments/{{ page.payment_id }}",
+            "href": "http://{{ page.api_host }}/psp/creditcard/payments/{{ page.payment_id }}",
             "rel": "update-payment-abort",
             "method": "PATCH"
         },

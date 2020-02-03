@@ -286,7 +286,7 @@ transactions made on a specific payment.
 HTTP/1.1 200 OK
 Content-Type: application/json
 GET /psp/vipps/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }} HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <MerchantToken>
 
 

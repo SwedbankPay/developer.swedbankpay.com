@@ -51,7 +51,7 @@ need to perform the `create-capture` operation.
 
 ```http
 POST /psp/creditcard/payments/{{ page.payment_id }}/captures HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -132,7 +132,7 @@ specific payment.
 
 ```http
 GET /psp/creditcard/payments/{{ page.payment_id }}/captures HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -225,7 +225,7 @@ yet captured - payment.
 
 ```http
 POST /psp/creditcard/payments/{{ page.payment_id }}/cancellations HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -306,7 +306,7 @@ payment.
 
 ```http
 GET /psp/creditcard/payments/{{ page.payment_id }}/cancellations HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -390,7 +390,7 @@ The `create-reversal` operation will reverse a previously captured payment.
 
 ```http
 POST /psp/creditcard/payments/{{ page.payment_id }}/reversals HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -475,7 +475,7 @@ specific payment.
 
 ```http
 GET /psp/creditcard/payments/{{ page.payment_id }}/reversals HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -568,7 +568,7 @@ If you, for any reason, need to delete a paymentToken you use the
 
 ```http
 PATCH /psp/creditcard/payments/instrumentData/{{ page.payment_token }} HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 

@@ -405,7 +405,7 @@ operation.
 
 ```http
 POST /psp/mobilepay/payments/{{ page.payment_id }}/captures HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -454,7 +454,7 @@ You can only cancel a payment - or part of payment - not yet captured.
 
 ```http
 POST /psp/mobilepay/payments/{{ page.payment_id }}/cancellations HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -499,7 +499,7 @@ payment.
 
 ```http
 POST /psp/mobilepay/payments/{{ page.payment_id }}/reversals HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -590,7 +590,7 @@ returned in the payment request. You need to include the following HTTP body:
 
 ```http
 PATCH /psp/creditcard/payments/{{ page.payment_id }} HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 

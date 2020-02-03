@@ -42,7 +42,7 @@ response that includes one or more expanded sub-resources inlined.
 
 ```http
 POST /psp/swish/payments HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -151,7 +151,7 @@ Content-Type: application/json
     "operations": [
         {
             "method": "POST",
-            "href": "http://{{ page.apiHost }}/psp/swish/payments/{{ page.payment_id }}/sales",
+            "href": "http://{{ page.api_host }}/psp/swish/payments/{{ page.payment_id }}/sales",
             "rel": "create-sale"
         }
 }

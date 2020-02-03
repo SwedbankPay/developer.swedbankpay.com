@@ -34,6 +34,6 @@ defaults:
       payment_order_id: 09ccd29a-7c4f-4752-9396-12100cbfecce
       merchant_id: 5cabf558-5283-482f-b252-4d58e06f6f3b
       payment_token: afccf3d0016340620756d5ff3e08f69b555fbe2e45ca71f4bd159ebdb0f00065
-      apiHost: api.externalintegration.payex.com
+      api_host: api.externalintegration.payex.com
       apiUrl: https://api.externalintegration.payex.com
       frontEndUrl: https://ecom.externalintegration.payex.com

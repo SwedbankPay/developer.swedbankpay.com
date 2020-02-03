@@ -11,7 +11,7 @@ You need to include the following HTTP body:
 
 ```http
 PATCH /psp/{{ instrument }}/payments/{{ page.payment_id }} HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
