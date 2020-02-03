@@ -2,7 +2,7 @@
 
 {% include jumbotron.html body="When the consumer is identified and
 authenticated by the merchant, the consumer's identity can be included in the
-payment order request." %}
+Payment Order request." %}
 
 **Merhant Authenticated Consumer** is performed as an alternative to
 [Checkin][checkin] when creating the Payment Order upon the initializaiont of

@@ -40,7 +40,7 @@ rect rgba(138, 205, 195, 0.1)
             note left of Payer: Payment Menu
             Payer ->>+ Merchant: Initiate Purchase
             deactivate Payer
-            Merchant ->>+ SwedbankPay: POST /psp/paymentorders (paymentUrl, consumerProfileRef)
+            Merchant ->>+ SwedbankPay: POST /psp/paymentorders (paymentUrl, payer)
             deactivate Merchant
             SwedbankPay -->>+ Merchant: rel:view-paymentorder
             deactivate SwedbankPay
