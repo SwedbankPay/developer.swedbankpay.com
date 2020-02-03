@@ -41,11 +41,11 @@ set to value `FinancingConsumer` are listed below.
   the consumer has fulfilled the payment.
   [See the Callback API description here.][callback]
 
-{% include authorizations-resource.md payment-instrument="invoice" %}
+{% include authorizations-resource.md payment_instrument="invoice" %}
 
 ## Payment Resource
 
-{% include payment-resource.md payment-instrument="invoice"
+{% include payment-resource.md payment_instrument="invoice"
 showStatusOperations=true %}
 
 {% include payment-transaction-states.md %}
@@ -528,11 +528,11 @@ Content-Type: application/json
 The `authorization` resource contains information about an authorization
 transaction made towards a payment, as previously described.
 
-{% include transactions-reference.md payment-instrument="invoice" %}
+{% include transactions-reference.md payment_instrument="invoice" %}
 
-{% include callback-reference.md payment-instrument="invoice" %}
+{% include callback-reference.md payment_instrument="invoice" %}
 
-{% include payment-link.md show-3d-secure=false %}
+{% include payment-link.md show_3d_secure=false %}
 
 ## PayeeInfo
 
@@ -540,7 +540,7 @@ transaction made towards a payment, as previously described.
 
 ## Prices
 
-{% include prices.md payment-instrument="invoice" %}
+{% include prices.md payment_instrument="invoice" %}
 
 {% include settlement-reconciliation.md %}
 

@@ -1,7 +1,7 @@
 {% assign when = include.when | default: "selecting the payment instrument" %}
-{% assign payment-order = include.payment-order | default: false %}
+{% assign payment_order = include.payment_order | default: false %}
 
-{% if payment-order %}
+{% if payment_order %}
     {% assign entity = "Payment Order" %}
 {% else %}
     {% assign entity = "Payment" %}

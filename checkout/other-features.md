@@ -24,7 +24,7 @@ They are listed on this very page." %}
 
 ## Payment Orders
 
-{% include payment-order-get.md showStatusOperations=true %}
+{% include payment-order-get.md show_status_operations=true %}
 
 ### Creating a payment order
 
@@ -59,7 +59,7 @@ underlying payments or transaction.
 
 #### Payment Url
 
-{% include payment-url.md payment-order=true
+{% include payment-url.md payment_order=true
 when="selecting the payment instrument Vipps or in the 3-D Secure verification
 for Credit Card Payments" %}
 

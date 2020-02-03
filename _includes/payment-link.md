@@ -1,5 +1,5 @@
-{% assign show-3d-secure = include.show-3d-secure | default: true %}
-{% assign show-authorization = include.show-authorization | default: true %}
+{% assign show_3d_secure = include.show_3d_secure | default: true %}
+{% assign show_authorization = include.show_authorization | default: true %}
 
 ## Payment Link
 
@@ -34,7 +34,7 @@ recommendations in the next section.**" %}
 When the consumer clicks on the Payment Link, the Swedbank Pay payment page will
 open, letting the consumer enter the payment details (varying depending on
 payment instrument) in a secure Swedbank Pay hosted environment.
-{% if show-3d-secure %}
+{% if show_3d_secure %}
 When paying with credit card and if required, Swedbank Pay will handle 3-D
 Secure authentication.
 {% endif %}
@@ -96,7 +96,7 @@ in one-phase (e.g. [Swish][swish] and credit card with autocapture) and
 two-phase (e.g. [Credit card][credit-card], [MobilePay][mobile-pay],
 [Vipps][vipps]).
 
-{% if show-authorization %}
+{% if show_authorization %}
 
 #### Authorization
 
@@ -141,7 +141,7 @@ here][technical-reference-callback].
 
 The sequence diagrams display the high level process of the purchase, from
 generating a Payment Link to receiving a Callback.
-{% if show-3d-secure %}
+{% if show_3d_secure %}
 This in a generalized flow as
 well as a specific 3-D Secure enabled credit card scenario.
 {% endif %}
@@ -152,7 +152,7 @@ same moment as the consumer are being redirected to the status page at the
 merchant site when the purchase is fulfilled. Don't rely on the callback being
 timed at any specific moment." %}
 
-{% if show-3d-secure %}
+{% if show_3d_secure %}
 When dealing with credit card payments, 3-D Secure authentication of the
 cardholder is an essential topic.
 There are three alternative outcome of a credit card payment:
@@ -188,7 +188,7 @@ sequenceDiagram
     Consumer->>-SwedbankPay: Open link and enter payment information
     activate SwedbankPay
 
-    {% if show-3d-secure %}
+    {% if show_3d_secure %}
         opt Card supports 3-D Secure
         SwedbankPay-->>-Consumer: redirect to IssuingBank
         activate Consumer

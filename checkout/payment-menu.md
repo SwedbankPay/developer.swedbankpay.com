@@ -125,7 +125,7 @@ Remember to read up on our [URL resource][urls].
 
 ### Payment Url
 
-{% include payment-url.md payment-order=true
+{% include payment-url.md payment_order=true
 when="selecting the payment instrument Vipps or in the 3-D Secure verification
 for Credit Card Payments" %}
 

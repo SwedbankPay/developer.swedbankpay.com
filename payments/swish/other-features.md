@@ -22,7 +22,7 @@ sidebar:
 
 ## Payment Resource
 
-{% include payment-resource.md payment-instrument="swish" showStatusOperations=true%}
+{% include payment-resource.md payment_instrument="swish" showStatusOperations=true%}
 
 {% include payment-transaction-states.md %}
 
@@ -159,11 +159,11 @@ Content-Type: application/json
 
 {% include settlement-reconciliation.md %}
 
-{% include payment-link.md show-3d-secure=false show-authorization=false %}
+{% include payment-link.md show_3d_secure=false show_authorization=false %}
 
 ### Prices
 
-{% include prices.md payment-instrument="swish" %}
+{% include prices.md payment_instrument="swish" %}
 
 ### Payee reference
 
@@ -171,9 +171,9 @@ Content-Type: application/json
 
 {% include expand-parameter.md %}
 
-{% include transactions-reference.md payment-instrument="swish" %}
+{% include transactions-reference.md payment_instrument="swish" %}
 
-{% include callback-reference.md payment-instrument="swish" %}
+{% include callback-reference.md payment_instrument="swish" %}
 
 ### Problem messages
 

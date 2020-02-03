@@ -18,7 +18,7 @@ sidebar:
 
 ## Payment Resource
 
-{% include payment-resource.md payment-instrument="mobilepay" %}
+{% include payment-resource.md payment_instrument="mobilepay" %}
 
 ### Create Payment
 
@@ -284,7 +284,7 @@ All MobilePay specific transactions are described below.
 
 The `authorizations` resource contains information about the authorization transactions made on a specific payment.
 
-{% include transaction-response.md payment-instrument="mobile-pay"
+{% include transaction-response.md payment_instrument="mobile-pay"
     transaction="authorization"%}
 
 You can return a specific autorization transaction by adding the transaction id
@@ -391,7 +391,7 @@ to the hyperlink returned in the `redirect-authorization` request.
 The `captures` resource lists the capture transactions (one or more) on a
 specific payment.
 
-{% include transaction-response.md payment-instrument="mobile-pay"
+{% include transaction-response.md payment_instrument="mobile-pay"
     transaction="capture" %}
 
 ### Create capture transaction
@@ -433,7 +433,7 @@ against a mobilepay payment.
 You can return a specific capture transaction by adding the transaction id to
 the `GET` request.
 
-{% include transaction-response.md payment-instrument="mobile-pay"
+{% include transaction-response.md payment_instrument="mobile-pay"
     transaction="capture"%}
 
 ## Cancellations
@@ -441,7 +441,7 @@ the `GET` request.
 The `cancellations` resource lists the cancellation transactions on a specific
 payment.
 
-{% include transaction-response.md payment-instrument="mobile-pay"
+{% include transaction-response.md payment_instrument="mobile-pay"
     transaction="cancellation" %}
 
 ### Create cancellation transaction
@@ -478,7 +478,7 @@ made against a payment.
 You can return a specific cancellation transaction by adding the transaction id
 to the `GET` request.
 
-{% include transaction-response.md payment-instrument="mobile-pay"
+{% include transaction-response.md payment_instrument="mobile-pay"
     transaction="cancellation"%}
 
 ## Reversals
@@ -486,7 +486,7 @@ to the `GET` request.
 The `reversals` resource lists the reversal transactions (one or more) on a
 specific payment.
 
-{% include transaction-response.md payment-instrument="mobile-pay"
+{% include transaction-response.md payment_instrument="mobile-pay"
     transaction="reversal" %}
 
 ### Create reversal transaction
@@ -527,7 +527,7 @@ against a payment.
 You can return a specific reversal transaction by adding the transaction id to
 the `GET` request.
 
-{% include transaction-response.md payment-instrument="mobile-pay"
+{% include transaction-response.md payment_instrument="mobile-pay"
     transaction="reversal"%}
 
 ## Capture Sequence
@@ -653,13 +653,13 @@ The response will be the `payment` resource with its `state` set to `Aborted`.
 
 {% include recurring-card-payments.md %}
 
-{% include callback-reference.md payment-instrument="mobilepay" %}
+{% include callback-reference.md payment_instrument="mobilepay" %}
 
-{% include transactions-reference.md payment-instrument="mobilepay" %}
+{% include transactions-reference.md payment_instrument="mobilepay" %}
 
 ## Prices
 
-{% include prices.md payment-instrument="mobilepay" %}
+{% include prices.md payment_instrument="mobilepay" %}
 
 ## PayeeInfo
 

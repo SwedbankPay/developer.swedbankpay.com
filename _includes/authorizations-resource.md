@@ -1,4 +1,4 @@
-{% assign payment-instrument = include.payment-instrument | default: creditcard %}
+{% assign payment_instrument = include.payment_instrument | default: creditcard %}
 
 ### Authorizations
 
@@ -9,7 +9,7 @@ made on a specific payment.
 **Request**
 
 ```http
-GET /psp/{{ payment-instrument }}/payments/{{ page.payment_id }}/authorizations HTTP/1.1
+GET /psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/authorizations HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -23,23 +23,23 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}",
+    "payment": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}",
     "authorizations": {
-        "id": "/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}/authorizations",
+        "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/authorizations",
         "authorizationList": [
             {
-                "id": "/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id}}",
+                "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id}}",
                 "consumer": {
-                    "id": "/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}/consumer"
+                    "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/consumer"
                 },
                 "legalAddress": {
-                    "id": "/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}/legaladdress"
+                    "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/legaladdress"
                 },
                 "billingAddress": {
-                    "id": "/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}/billingaddress"
+                    "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/billingaddress"
                 },
                 "transaction": {
-                    "id": "/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id}}",
+                    "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id}}",
                     "created": "2016-09-14T01:01:01.01Z",
                     "updated": "2016-09-14T01:01:01.03Z",
                     "type": "Authorization",
@@ -54,12 +54,12 @@ Content-Type: application/json
                     "operations": [
                         {
                             "method": "POST",
-                            "href": "{{ page.api_url }}/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}/authorizations",
+                            "href": "{{ page.api_url }}/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/authorizations",
                             "rel": "create-authorization",
                             "contentType": "application/json"
                         },
                         {
-                            "href": "{{ page.api_url }}/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}",
+                            "href": "{{ page.api_url }}/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}",
                             "rel": "edit-authorization",
                             "method": "PATCH"
                         }
@@ -80,7 +80,7 @@ operation as returned in a previously created invoice payment.
 **Request**
 
 ```http
-POST /psp/{{ payment-instrument }}/payments/{{ page.payment_id }}/authorizations HTTP/1.1
+POST /psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/authorizations HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -154,20 +154,20 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}",
+    "payment": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}",
     "authorization": {
-        "id": "/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id}}",
+        "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id}}",
         "consumer": {
-            "id": "/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}/consumer"
+            "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/consumer"
         },
         "legalAddress": {
-            "id": "/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}/legaladdress"
+            "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/legaladdress"
         },
         "billingAddress": {
-            "id": "/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}/billingaddress"
+            "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/billingaddress"
         },
         "transaction": {
-            "id": "/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id}}",
+            "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id}}",
             "created": "2016-09-14T01:01:01.01Z",
             "updated": "2016-09-14T01:01:01.03Z",
             "type": "Authorization",
@@ -181,7 +181,7 @@ Content-Type: application/json
             "isOperational": false,
             "operations": [
                 {
-                    "href": "{{ page.api_url }}/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}",
+                    "href": "{{ page.api_url }}/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}",
                     "rel": "edit-authorization",
                     "method": "PATCH"
                 }

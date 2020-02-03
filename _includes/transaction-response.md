@@ -1,4 +1,4 @@
-{% assign instrument = include.payment-instrument | default: "paymentorder" %}
+{% assign instrument = include.payment_instrument | default: "paymentorder" %}
 {% assign transaction = include.transaction | default: "capture" %}
 {% assign plural = transaction | append: "s" %}
 {% assign showRequest = include.showRequest | default: true %}

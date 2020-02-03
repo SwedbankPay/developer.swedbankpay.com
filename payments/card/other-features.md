@@ -22,7 +22,7 @@ covered by the other subsections." %}
 
 ## Payment Resource
 
-{% include payment-resource.md showStatusOperations=true %}
+{% include payment-resource.md show_status_operations=true %}
 
 {% include payment-transaction-states.md %}
 
@@ -525,13 +525,13 @@ transaction made towards a payment, as previously described.
 
 {% include one-click-payments.md %}
 
-{% include callback-reference.md payment-instrument="creditcard" %}
+{% include callback-reference.md payment_instrument="creditcard" %}
 
 {% include payment-link.md %}
 
 ## PayeeInfo
 
-{% include payee-info.md payment-instrument="creditcard" %}
+{% include payee-info.md payment_instrument="creditcard" %}
 
 ## Prices
 

@@ -1,5 +1,5 @@
-{% assign payment-order = include.payment-order | default: false %}
-{% assign payment-instrument = include.payment-instrument | default: "creditcard" %}
+{% assign payment_order = include.payment_order | default: false %}
+{% assign payment_instrument = include.payment_instrument | default: "creditcard" %}
 
 ## Callback
 
@@ -32,7 +32,7 @@ about this update.
 * The callback is sent from the following IP address: `82.115.146.1`
 * A callback should return a `200 OK` response.
 
-{% if payment-order %}
+{% if payment_order %}
 {:.code-header}
 **Payment Order Callback**
 
@@ -40,14 +40,14 @@ about this update.
 {
     "paymentOrder": {
         "id": "/psp/paymentorders/{{ page.payment_order_id }}",
-        "instrument": "{{ payment-instrument }}"
+        "instrument": "{{ payment_instrument }}"
     },
     "payment": {
-        "id": "/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}",
+        "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}",
         "number": 222222222
     },
     "transaction": {
-        "id": "/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}/<transaction type>/{{ page.transaction_id }}",
+        "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/<transaction type>/{{ page.transaction_id }}",
         "number": 333333333
     }
 }
@@ -60,11 +60,11 @@ about this update.
 ```js
 {
     "payment": {
-        "id": "/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}",
+        "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}",
         "number": 222222222
     },
     "transaction": {
-        "id": "/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}/<transaction type>/{{ page.transaction_id }}",
+        "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/<transaction type>/{{ page.transaction_id }}",
         "number": 333333333
     }
 }
@@ -90,7 +90,7 @@ sequenceDiagram
     deactivate SwedbankPay
     note left of Merchant: Callback by Swedbank Pay
     Merchant-->>+SwedbankPay: HTTP response
-    Merchant->>+SwedbankPay: GET {{ payment-instrument }} payment
+    Merchant->>+SwedbankPay: GET {{ payment_instrument }} payment
     deactivate Merchant
     note left of Merchant: First API request
     SwedbankPay-->>+Merchant: payment resource

@@ -258,7 +258,7 @@ Content-Type: application/json
 
 ```
 
-{% include transaction-response.md showRequest=false payment-instrument="swish" transaction="sale" %}
+{% include transaction-response.md showRequest=false payment_instrument="swish" transaction="sale" %}
 
 {% include iterator.html prev_href="introduction" prev_title="Back: Introduction"
 next_href="redirect" next_title="Next: Redirect" %}
