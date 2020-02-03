@@ -136,7 +136,7 @@ errors thorugh spesific amounts.
 
 First, POST a Payment (operation purchase) and enter the link to the payment
 page. Example URL: -
-<{{ page.frontEndUrl }}/creditcardv2/payments/authorize/{{ page.paymentToken }}> .
+<{{ page.frontEndUrl }}/creditcardv2/payments/authorize/{{ page.payment_token }}> .
 Fill the data for either the Visa or MasterCard as shown below.
 
 {:.table .table-striped}
@@ -166,17 +166,17 @@ The amounts that can be used and produce error codes
 (transactionThirdPartyError):
 
 {:.table .table-striped}
-| Number                                         | Error message                           |
-| :--------------------------------------------- | :-------------------------------------- |
-| 900313                                         | REJECTED_BY_ACQUIRER_INVALID_AMOUNT     |
-| 900330                                         | REJECTED_BY_ACQUIRER_FORMAT_ERROR       |
-| 900334                                         | REJECTED_BY_ACQUIRER_POSSIBLE_FRAUD     |
-| 900343                                         | REJECTED_BY_ACQUIRER_CARD_STOLEN        |
-| 900354                                         | REJECTED_BY_ACQUIRER_CARD_EXPIRED       |
-| 900351                                         | REJECTED_BY_ACQUIRER_INSUFFICIENT_FUNDS |
-| 900359                                         | CARD_DECLINED                           |
-| 900362                                         | REJECTED_BY_PAYEX_CARD_BLACKLISTED      |
-| 900391                                         | ACQUIRER_HOST_OFFLINE                   |
+| Number | Error message                           |
+| :----- | :-------------------------------------- |
+| 900313 | REJECTED_BY_ACQUIRER_INVALID_AMOUNT     |
+| 900330 | REJECTED_BY_ACQUIRER_FORMAT_ERROR       |
+| 900334 | REJECTED_BY_ACQUIRER_POSSIBLE_FRAUD     |
+| 900343 | REJECTED_BY_ACQUIRER_CARD_STOLEN        |
+| 900354 | REJECTED_BY_ACQUIRER_CARD_EXPIRED       |
+| 900351 | REJECTED_BY_ACQUIRER_INSUFFICIENT_FUNDS |
+| 900359 | CARD_DECLINED                           |
+| 900362 | REJECTED_BY_PAYEX_CARD_BLACKLISTED      |
+| 900391 | ACQUIRER_HOST_OFFLINE                   |
 
 ## Invoice Test Data
 

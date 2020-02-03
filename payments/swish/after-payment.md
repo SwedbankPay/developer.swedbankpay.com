@@ -70,12 +70,12 @@ is given below.
         },
         {
             "method": "GET",
-            "href": "{{ page.frontEndUrl }}/swish/payments/sales/{{ page.paymentToken }}",
+            "href": "{{ page.frontEndUrl }}/swish/payments/sales/{{ page.payment_token }}",
             "rel": "redirect-sale"
         },
         {
             "method": "GET",
-            "href": "{{ page.frontEndUrl }}/swish/core/scripts/client/px.swish.client.js?token={{ page.paymentToken }}",
+            "href": "{{ page.frontEndUrl }}/swish/core/scripts/client/px.swish.client.js?token={{ page.payment_token }}",
             "rel": "view-sales",
             "contentType": "application/javascript"
         }

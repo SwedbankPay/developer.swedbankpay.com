@@ -328,7 +328,7 @@ Content-Type: application/json
         },
         {
             "method": "GET",
-            "href": "{{ page.frontEndUrl }}/invoice/payments/authorize/{{ page.paymentToken }}",
+            "href": "{{ page.frontEndUrl }}/invoice/payments/authorize/{{ page.payment_token }}",
             "rel": "redirect-authorization",
             "contentType": "text/html"
         }

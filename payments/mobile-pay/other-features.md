@@ -311,7 +311,7 @@ Content-Type: application/json
     "payment": "/psp/mobilepay/payments/{{ page.payment_id }}",
     "authorization": {
         "id": "/psp/mobilepay/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }}",
-        "paymentToken": "{{ page.paymentToken }}",
+        "paymentToken": "{{ page.payment_token }}",
         "maskedPan": "123456xxxxxx1234",
         "expireDate": "mm/yyyy",
         "panToken": "{{ page.transaction_id }}",

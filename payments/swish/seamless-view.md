@@ -268,20 +268,20 @@ Content-Type: application/json
             "rel": "create-sale"
       },
       {
-        "href": "{{ page.frontEndUrl }}/swish/payments/authorize/{{ page.paymentToken }}",
+        "href": "{{ page.frontEndUrl }}/swish/payments/authorize/{{ page.payment_token }}",
         "rel": "redirect-sale",
         "method": "GET",
         "contentType": "text/html"
       },
       {
         "method": "GET",
-        "href": "https://ecom.dev.payex.com/swish/core/scripts/client/px.swish.client.js?token={{ page.paymentToken }}",
+        "href": "https://ecom.dev.payex.com/swish/core/scripts/client/px.swish.client.js?token={{ page.payment_token }}",
         "rel": "view-sales",
         "contentType": "application/javascript"
       },
       {
             "method": "GET",
-            "href": "{{ page.frontEndUrl }}/swish/core/scripts/client/px.swish.client.js?token={{ page.paymentToken }}",
+            "href": "{{ page.frontEndUrl }}/swish/core/scripts/client/px.swish.client.js?token={{ page.payment_token }}",
             "rel": "view-sales",
             "contentType": "application/javascript"
       }

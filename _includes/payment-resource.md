@@ -76,7 +76,7 @@ Content-Type: application/json
         }{% unless payment-instrument == "swish" %},
         {
             "method": "GET",
-            "href": "{{ page.frontEndUrl }}/{{ payment-instrument }}/core/scripts/client/px.{{ payment-instrument }}.client.js?token={{ page.paymentToken }}&operation=authorize",
+            "href": "{{ page.frontEndUrl }}/{{ payment-instrument }}/core/scripts/client/px.{{ payment-instrument }}.client.js?token={{ page.payment_token }}&operation=authorize",
             "rel": "view-authorization",
             "contentType": "application/javascript"
         },

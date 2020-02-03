@@ -110,7 +110,7 @@ Content-Type: application/json
         {
             "method": "GET",
             "rel": "view-consumer-identification",
-            "href": "{{ page.frontEndUrl }}/consumers/core/scripts/client/px.consumer.client.js?token={{ page.paymentToken }}",
+            "href": "{{ page.frontEndUrl }}/consumers/core/scripts/client/px.consumer.client.js?token={{ page.payment_token }}",
             "contentType": "application/javascript"
         }
     ]
@@ -245,7 +245,7 @@ the following argument objects:
 ```js
 {
     "actionType": "OnConsumerIdentified",
-    "consumerProfileRef": "{{ page.paymentToken }}"
+    "consumerProfileRef": "{{ page.payment_token }}"
 }
 ```
 
@@ -255,7 +255,7 @@ the following argument objects:
 ```js
 {
     "actionType": "OnShippingDetailsAvailable",
-    "url": "{{ page.apiUrl }}/psp/consumers/{{ page.paymentToken }}/shipping-details"
+    "url": "{{ page.apiUrl }}/psp/consumers/{{ page.payment_token }}/shipping-details"
 }
 ```
 
@@ -265,7 +265,7 @@ the following argument objects:
 ```js
 {
     "actionType": "OnBillingDetailsAvailable",
-    "url": "{{ page.apiUrl }}/psp/consumers/{{ page.paymentToken }}/billing-details"
+    "url": "{{ page.apiUrl }}/psp/consumers/{{ page.payment_token }}/billing-details"
 }
 ```
 

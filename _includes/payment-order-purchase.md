@@ -35,7 +35,7 @@ Content-Type: application/json
             "subsite": "MySubsite"
         },
         "payer": {
-            "consumerProfileRef": "{{ page.paymentToken }}",
+            "consumerProfileRef": "{{ page.payment_token }}",
             "email": "olivia.nyhuus@payex.com",
             "msisdn": "+4798765432",
             "workPhoneNumber" : "+4787654321",

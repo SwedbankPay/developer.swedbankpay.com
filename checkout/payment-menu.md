@@ -150,7 +150,7 @@ Content-Type: application/json
     },
     "operations": [
         {
-            "href": "{{ page.frontEndUrl }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token={{ page.paymentToken }}&culture=sv-SE",
+            "href": "{{ page.frontEndUrl }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token={{ page.payment_token }}&culture=sv-SE",
             "rel": "view-paymentorder",
             "method": "GET",
             "contentType": "application/javascript"

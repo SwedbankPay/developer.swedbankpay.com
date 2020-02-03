@@ -204,12 +204,12 @@ instrument specific operations.
             "method": "PATCH"
         },
         {
-            "href": "{{ page.frontEndUrl }}/creditcard/payments/authorize/{{ page.paymentToken }}",
+            "href": "{{ page.frontEndUrl }}/creditcard/payments/authorize/{{ page.payment_token }}",
             "rel": "redirect-authorization",
             "method": "GET"
         },
         {
-            "href": "{{ page.frontEndUrl }}/swish/core/scripts/client/px.swish.client.js?token={{ page.paymentToken }}",
+            "href": "{{ page.frontEndUrl }}/swish/core/scripts/client/px.swish.client.js?token={{ page.payment_token }}",
             "rel": "view-payment",
             "method": "GET",
             "contentType": "application/javascript"

@@ -567,7 +567,7 @@ If you, for any reason, need to delete a paymentToken you use the
 **Request**
 
 ```http
-PATCH /psp/creditcard/payments/instrumentData/{{ page.paymentToken }} HTTP/1.1
+PATCH /psp/creditcard/payments/instrumentData/{{ page.payment_token }} HTTP/1.1
 Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -588,8 +588,8 @@ Content-Type: application/json
 
 {
   "instrumentData": {
-    "id": "/psp/creditcard/payments/instrumentdata/{{ page.paymentToken }}",
-    "paymentToken": "{{ page.paymentToken }}",
+    "id": "/psp/creditcard/payments/instrumentdata/{{ page.payment_token }}",
+    "paymentToken": "{{ page.payment_token }}",
     "payeeId": "{{ page.merchant_id }}",
     "isDeleted": true|false,
     "isPayeeToken": false,
