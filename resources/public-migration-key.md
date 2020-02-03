@@ -1,5 +1,5 @@
 ---
-title: Public migration key
+title: Public Migration Key
 sidebar:
   navigation:
   - title: Resources
@@ -22,32 +22,25 @@ sidebar:
       title: Public Migration Key
 ---
 
+{% include jumbotron.html body="In order to send sensitive credit card data to
+Swedbank Pay, you need to use our **Public Migration Key** to encrypt the data
+in transmission. Contact our support at
+[support.ecom@payex.com](support.ecom@payex.com) for more information regarding
+this procedure."  %}
 
-## Swedbank Pay Public key for card data migration
-In order to send sensitive credit card data to Swedbank Pay, you need to use our public key. Contact our support at support.ecom@payex.com for more information regarding this procedure.
+* **Key size**: 4096 bits
+* **RealName**: `SwedbankPay`
+* **UserID**: `SwedbankPay <support.ecom@payex.com>`
+* **Fingerprint**: `4725 70B8 16C8 B0C8 835D FCFC 1633 7829 266A 0373`
+* **Key ID**: `1633 7829 266A 0373`
 
-* Key type: RSA
-* Key size: 4096 bits
-* RealName: SwedbankPay
-* UserID: SwedbankPay <support.ecom@payex.com>
-* Fingerprint: 4725 70B8 16C8 B0C8 835D FCFC 1633 7829 266A 0373
-* Key ID: 1633 7829 266A 0373
+To encrypt files with Swedbank Pay's Public Migration Key, you need copy and
+paste it from below and save it to a file called `SwedbankPayProd.key`.
 
-You can import our public key by using this command-line:
+{:.code-header}
+**Public Key**
 
-```
-gpg2 --import SwedbankPay.key
-```
-
-You can encrypt files with this command-line:
-
-```
-gpg2 --armor --encrypt -r SwedbankPay CARDDATA.csv.asc
-```
-
-The gpg tool will then create a file named CARDDATA.csv.asc, which contains the encrypted data.
-
-```
+```pgp
 -----BEGIN PGP PUBLIC KEY BLOCK-----
 
 mQINBF46XsgBEACh1Yz2neopGj1UdGC+jDW+Cspq126X58EK1tWdo6mv3wpzN5GB
@@ -100,3 +93,26 @@ leIbChSz+CL2HAm2+dQ+/mthKIbfJlef6Cc3mGWnTDPgizsoCim2xbaOMDCx6Y2U
 =9U50
 -----END PGP PUBLIC KEY BLOCK-----
 ```
+
+To encrypt files with Swedbank Pay's Public Migration Key, you must import it
+with the following command:
+
+{:.code-header}
+**Import Key**
+
+```sh
+gpg2 --import SwedbankPay.key
+```
+
+You can now encrypt files with Swedbank Pay's Public Migration Key with the
+following command:
+
+{:.code-header}
+**Encrypt File**
+
+```sh
+gpg2 --armor --encrypt -r SwedbankPay CARDDATA.csv.asc
+```
+
+When the above command has executed, the `gpg` tool will have created a file
+named `CARDDATA.csv.asc`, which contains the encrypted data.
