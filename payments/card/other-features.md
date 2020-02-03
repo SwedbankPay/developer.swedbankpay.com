@@ -116,11 +116,13 @@ Content-Type: application/json
 }
 ```
 
+{% include unscheduled-purchase.md %}
+
 ## Payout
 
 > "Payout to Card" is an add-on service that enable you to deposit winnings
-  directly to your end-users' credit cards. This without  the need to collect
-  card details from the end-user a second time.
+  directly to your end-users' credit cards. This can be done without the need to
+  collect card details from the end-user a second time.
 
 ### Introduction
 
