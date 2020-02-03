@@ -219,16 +219,16 @@ This event triggers when a user actively attempts to perform a payment. The
 
 ```js
 {
-    "id": "/psp/creditcard/payments/{{ page.paymentId }}",
+    "id": "/psp/creditcard/payments/{{ page.payment_id }}",
     "instrument": "creditcard",
 }
 ```
 
 {:.table .table-striped}
-| Property     | Type     | Description                                                                                     |
-| :----------- | :------- | :---------------------------------------------------------------------------------------------- |
-| `id`         | `string` | The relative URI to the payment.                                                                |
-| `instrument` | `string` | `Creditcard`                                                                                    |
+| Property     | Type     | Description                      |
+| :----------- | :------- | :------------------------------- |
+| `id`         | `string` | The relative URI to the payment. |
+| `instrument` | `string` | `Creditcard`                     |
 
 ### `onPaymentCompleted`
 
@@ -241,7 +241,7 @@ object:
 
 ```js
 {
-    "id": "/psp/creditcard/payments/{{ page.paymentId }}",
+    "id": "/psp/creditcard/payments/{{ page.payment_id }}",
     "redirectUrl": "https://en.wikipedia.org/wiki/Success"
 }
 ```
@@ -263,7 +263,7 @@ object:
 
 ```js
 {
-    "id": "/psp/creditcard/payments/{{ page.paymentId }}",
+    "id": "/psp/creditcard/payments/{{ page.payment_id }}",
     "redirectUrl": "https://en.wikipedia.org/wiki/Canceled"
 }
 ```
@@ -285,7 +285,7 @@ event argument object:
 
 ```js
 {
-    "id": "/psp/creditcard/payments/{{ page.paymentId }}",
+    "id": "/psp/creditcard/payments/{{ page.payment_id }}",
     "redirectUrl": "https://en.wikipedia.org/wiki/Failed"
 }
 ```
@@ -336,11 +336,11 @@ object:
 ```
 
 {:.table .table-striped}
-| Property    | Type     | Description                                                                               |
-| :---------- | :------- | :---------------------------------------------------------------------------------------- |
-| `origin`    | `string` | `creditcard`, identifies the system that originated the error.                            |
-| `messageId` | `string` | A unique identifier for the message.                                                      |
-| `details`   | `string` | A human readable and descriptive text of the error.                                       |
+| Property    | Type     | Description                                                    |
+| :---------- | :------- | :------------------------------------------------------------- |
+| `origin`    | `string` | `creditcard`, identifies the system that originated the error. |
+| `messageId` | `string` | A unique identifier for the message.                           |
+| `details`   | `string` | A human readable and descriptive text of the error.            |
 
 {% include iterator.html prev_href="redirect" prev_title="Redirect"
 next_href="after-payment" next_title="Next: After Payment" %}

@@ -46,7 +46,7 @@ provided below.
 **Request Towards Authorizations Resource**
 
 ```http
-GET /psp/creditcard/payments/{{ page.paymentId }}/authorizations HTTP/1.1
+GET /psp/creditcard/payments/{{ page.payment_id }}/authorizations HTTP/1.1
 Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 ```
@@ -55,7 +55,7 @@ Authorization: Bearer <AccessToken>
 **Request Towards Verifications Resource**
 
 ```http
-GET /psp/creditcard/payments/{{ page.paymentId }}/verifications HTTP/1.1
+GET /psp/creditcard/payments/{{ page.payment_id }}/verifications HTTP/1.1
 Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 ```

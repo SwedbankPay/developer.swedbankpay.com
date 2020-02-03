@@ -354,11 +354,11 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/creditcard/payments/{{ page.paymentId }}",
+    "payment": "/psp/creditcard/payments/{{ page.payment_id }}",
     "capture": {
-        "id": "/psp/creditcard/payments/{{ page.paymentId }}/captures/{{ page.transactionId }}",
+        "id": "/psp/creditcard/payments/{{ page.payment_id }}/captures/{{ page.transactionId }}",
         "transaction": {
-            "id": "/psp/creditcard/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
+            "id": "/psp/creditcard/payments/{{ page.payment_id }}/transactions/{{ page.transactionId }}",
             "type": "Capture",
             "state": "Completed",
             "amount": 15610,
@@ -424,7 +424,7 @@ Content-Type: application/json
 
 {
     "payment": {
-        "id": "/psp/creditcard/payments/{{ page.paymentId }}",
+        "id": "/psp/creditcard/payments/{{ page.payment_id }}",
         "number": 70100130293,
         "created": "2019-01-09T13:11:28.371179Z",
         "updated": "2019-01-09T13:11:46.5949967Z",
@@ -434,7 +434,7 @@ Content-Type: application/json
         "state": "Aborted",
         "currency": "DKK",
         "prices": {
-            "id": "/psp/creditcard/payments/{{ page.paymentId }}/prices"
+            "id": "/psp/creditcard/payments/{{ page.payment_id }}/prices"
         },
         "amount": 0,
         "description": "creditcard Test",
@@ -443,13 +443,13 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0",
         "language": "nb-NO",
         "urls": {
-            "id": "/psp/creditcard/payments/{{ page.paymentId }}/urls"
+            "id": "/psp/creditcard/payments/{{ page.payment_id }}/urls"
         },
         "payeeInfo": {
-            "id": "/psp/creditcard/payments/{{ page.paymentId }}/payeeinfo"
+            "id": "/psp/creditcard/payments/{{ page.payment_id }}/payeeinfo"
         },
         "metadata": {
-            "id": "/psp/creditcard/payments/{{ page.paymentId }}/metadata"
+            "id": "/psp/creditcard/payments/{{ page.payment_id }}/metadata"
         }
     },
     "operations": []
@@ -497,11 +497,11 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/creditcard/payments/{{ page.paymentId }}",
+    "payment": "/psp/creditcard/payments/{{ page.payment_id }}",
     "cancellation": {
-        "id": "/psp/creditcard/payments/{{ page.paymentId }}/cancellations/{{ page.transactionId }}",
+        "id": "/psp/creditcard/payments/{{ page.payment_id }}/cancellations/{{ page.transactionId }}",
         "transaction": {
-            "id": "/psp/creditcard/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
+            "id": "/psp/creditcard/payments/{{ page.payment_id }}/transactions/{{ page.transactionId }}",
             "type": "Cancel",
             "state": "Completed",
             "amount": 5610,
@@ -564,11 +564,11 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/creditcard/payments/{{ page.paymentId }}",
+    "payment": "/psp/creditcard/payments/{{ page.payment_id }}",
     "reversals": {
-        "id": "/psp/creditcard/payments/{{ page.paymentId }}/cancellations/{{ page.transactionId }}",
+        "id": "/psp/creditcard/payments/{{ page.payment_id }}/cancellations/{{ page.transactionId }}",
         "transaction": {
-            "id": "/psp/creditcard/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
+            "id": "/psp/creditcard/payments/{{ page.payment_id }}/transactions/{{ page.transactionId }}",
             "type": "Reversal",
             "state": "Completed",
             "amount": 5610,

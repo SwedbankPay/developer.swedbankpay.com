@@ -10,7 +10,7 @@ You need to include the following HTTP body:
 **Request**
 
 ```http
-PATCH /psp/{{ instrument }}/payments/{{ page.paymentId }} HTTP/1.1
+PATCH /psp/{{ instrument }}/payments/{{ page.payment_id }} HTTP/1.1
 Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -32,7 +32,7 @@ Content-Type: application/json
 
 {
     "payment": {
-        "id": "/psp/{{ instrument }}/payments/{{ page.paymentId }}",
+        "id": "/psp/{{ instrument }}/payments/{{ page.payment_id }}",
         "number": 70100130293,
         "created": "2019-01-09T13:11:28.371179Z",
         "updated": "2019-01-09T13:11:46.5949967Z",
@@ -42,7 +42,7 @@ Content-Type: application/json
         "state": "Aborted",
         "currency": "SEK",
         "prices": {
-            "id": "/psp/{{ instrument }}/payments/{{ page.paymentId }}/prices"
+            "id": "/psp/{{ instrument }}/payments/{{ page.payment_id }}/prices"
         },
         "amount": 0,
         "description": "{{ instrument }} Test",
@@ -51,13 +51,13 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0",
         "language": "nb-NO",
         "urls": {
-            "id": "/psp/{{ instrument }}/payments/{{ page.paymentId }}/urls"
+            "id": "/psp/{{ instrument }}/payments/{{ page.payment_id }}/urls"
         },
         "payeeInfo": {
-            "id": "/psp/{{ instrument }}/payments/{{ page.paymentId }}/payeeinfo"
+            "id": "/psp/{{ instrument }}/payments/{{ page.payment_id }}/payeeinfo"
         },
         "metadata": {
-            "id": "/psp/{{ instrument }}/payments/{{ page.paymentId }}/metadata"
+            "id": "/psp/{{ instrument }}/payments/{{ page.payment_id }}/metadata"
         }
     },
     "operations": []

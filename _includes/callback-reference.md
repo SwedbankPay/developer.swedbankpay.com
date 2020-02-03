@@ -43,11 +43,11 @@ about this update.
         "instrument": "{{ payment-instrument }}"
     },
     "payment": {
-        "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}",
+        "id": "/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}",
         "number": 222222222
     },
     "transaction": {
-        "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/<transaction type>/{{ page.transactionId }}",
+        "id": "/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}/<transaction type>/{{ page.transactionId }}",
         "number": 333333333
     }
 }
@@ -60,11 +60,11 @@ about this update.
 ```js
 {
     "payment": {
-        "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}",
+        "id": "/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}",
         "number": 222222222
     },
     "transaction": {
-        "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/<transaction type>/{{ page.transactionId }}",
+        "id": "/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}/<transaction type>/{{ page.transactionId }}",
         "number": 333333333
     }
 }

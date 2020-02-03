@@ -44,7 +44,7 @@ operation.
 **Request**
 
 ```http
-POST /psp/mobilepay/payments/{{ page.paymentId }}/captures HTTP/1.1
+POST /psp/mobilepay/payments/{{ page.payment_id }}/captures HTTP/1.1
 Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -109,7 +109,7 @@ You can only cancel a payment - or part of payment - not yet captured.
 **Request**
 
 ```http
-POST /psp/mobilepay/payments/{{ page.paymentId }}/cancellations HTTP/1.1
+POST /psp/mobilepay/payments/{{ page.payment_id }}/cancellations HTTP/1.1
 Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -154,7 +154,7 @@ perform a `GET` on the payment after the user returns from the
 **Request**
 
 ```http
-PATCH /psp/creditcard/payments/{{ page.paymentId }}/authorizations/{{ page.transactionId }} HTTP/1.1
+PATCH /psp/creditcard/payments/{{ page.payment_id }}/authorizations/{{ page.transactionId }} HTTP/1.1
 Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -179,9 +179,9 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/creditcard/payments/{{ page.paymentId }}",
+    "payment": "/psp/creditcard/payments/{{ page.payment_id }}",
     "authorization": {
-        "id": "/psp/creditcard/payments/{{ page.paymentId }}/authorizations/{{ page.transactionId }}",
+        "id": "/psp/creditcard/payments/{{ page.payment_id }}/authorizations/{{ page.transactionId }}",
         "paymentToken": "{{ page.transactionId }}",
         "maskedPan": "123456xxxxxx1234",
         "expireDate": "mm/yyyy",
@@ -196,7 +196,7 @@ Content-Type: application/json
         "acquirerTransactionTime": "2017-08-29T13:42:18Z",
         "authenticationStatus": "Y|A|U|N",
         "transaction": {
-            "id": "/psp/creditcard/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
+            "id": "/psp/creditcard/payments/{{ page.payment_id }}/transactions/{{ page.transactionId }}",
             "created": "2016-09-14T01:01:01.01Z",
             "updated": "2016-09-14T01:01:01.03Z",
             "type": "Authorization",
@@ -210,7 +210,7 @@ Content-Type: application/json
             "isOperational": true,
             "operations": [
                 {
-                    "href": "{{ page.apiUrl }}/psp/creditcard/payments/{{ page.paymentId }}",
+                    "href": "{{ page.apiUrl }}/psp/creditcard/payments/{{ page.payment_id }}",
                     "rel": "edit-authorization",
                     "method": "PATCH"
                 }
@@ -260,7 +260,7 @@ captured payment.
 **Request**
 
 ```http
-POST /psp/mobilepay/payments/{{ page.paymentId }}/reversals HTTP/1.1
+POST /psp/mobilepay/payments/{{ page.payment_id }}/reversals HTTP/1.1
 Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json

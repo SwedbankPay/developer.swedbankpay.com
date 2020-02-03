@@ -218,9 +218,9 @@ Content-Type: application/json
 {
     "payment": {
         "prices": {
-            "id": "/psp/mobilepay/payments/{{ page.paymentId }}/prices"
+            "id": "/psp/mobilepay/payments/{{ page.payment_id }}/prices"
         },
-        "id": "/psp/mobilepay/payments/{{ page.paymentId }}",
+        "id": "/psp/mobilepay/payments/{{ page.payment_id }}",
         "number": 75100000121,
         "created": "2018-09-11T10:58:27.4236127Z",
         "updated": "2018-09-11T10:58:30.8254419Z",
@@ -236,19 +236,19 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0",
         "language": "da-DK",
         "transactions": {
-            "id": "/psp/mobilepay/payments/{{ page.paymentId }}/transactions"
+            "id": "/psp/mobilepay/payments/{{ page.payment_id }}/transactions"
         },
         "urls": {
-            "id": "/psp/mobilepay/payments/{{ page.paymentId }}/urls"
+            "id": "/psp/mobilepay/payments/{{ page.payment_id }}/urls"
         },
         "payeeInfo": {
-            "id": "/psp/mobilepay/payments/{{ page.paymentId }}/payeeinfo"
+            "id": "/psp/mobilepay/payments/{{ page.payment_id }}/payeeinfo"
         }
     },
     "operations": [
         {
             "method": "PATCH",
-            "href": "{{ page.apiUrl }}/psp/mobilepay/payments/{{ page.paymentId }}",
+            "href": "{{ page.apiUrl }}/psp/mobilepay/payments/{{ page.payment_id }}",
             "rel": "update-payment-abort"
         },
         {

@@ -240,7 +240,7 @@ Content-Type: application/json
 
 {
     "payment": {
-        "id": "/psp/invoice/payments/{{ page.paymentId }}",
+        "id": "/psp/invoice/payments/{{ page.payment_id }}",
         "number": 1234567890,
         "instrument": "Invoice",
         "created": "YYYY-MM-DDThh:mm:ssZ",
@@ -250,7 +250,7 @@ Content-Type: application/json
         "state": "Ready",
         "currency": "SEK",
         "prices": {
-            "id": "/psp/invoice/payments/{{ page.paymentId }}/prices"
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/prices"
         },
         "amount": 0,
         "description": "Test Purchase",
@@ -258,31 +258,31 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "urls": {
-            "id": "/psp/invoice/payments/{{ page.paymentId }}/urls"
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/urls"
         },
         "payeeInfo": {
-            "id": "/psp/invoice/payments/{{ page.paymentId }}/payeeinfo"
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/payeeinfo"
         },
         "metadata": {
-            "id": "/psp/invoice/payments/{{ page.paymentId }}/metadata"
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/metadata"
         }
     },
     "operations": [
         {
             "method": "POST",
-            "href": "{{ page.apiUrl }}/psp/invoice/payments/{{ page.paymentId }}/approvedlegaladdress",
+            "href": "{{ page.apiUrl }}/psp/invoice/payments/{{ page.payment_id }}/approvedlegaladdress",
             "rel": "create-approved-legal-address",
             "contentType": "application/json"
         },
         {
             "method": "POST",
-            "href": "{{ page.apiUrl }}/psp/invoice/payments/{{ page.paymentId }}/authorizations",
+            "href": "{{ page.apiUrl }}/psp/invoice/payments/{{ page.payment_id }}/authorizations",
             "rel": "create-authorization",
             "contentType": "application/json"
         },
         {
             "method": "PATCH",
-            "href": "{{ page.apiUrl }}/psp/invoice/payments/{{ page.paymentId }}",
+            "href": "{{ page.apiUrl }}/psp/invoice/payments/{{ page.payment_id }}",
             "rel": "update-payment-abort",
             "contentType": "application/json"
         },

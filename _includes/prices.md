@@ -6,7 +6,7 @@ The `prices` resource lists the prices related to a specific payment.
 **Request**
 
 ```http
-GET /psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/prices/ HTTP/1.1
+GET /psp/{{ payment-instrument }}/payments/{{ page.payment_id }}/prices/ HTTP/1.1
 Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -20,9 +20,9 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}",
+    "payment": "/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}",
     "prices": {
-        "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/prices",
+        "id": "/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}/prices",
         "priceList": [
             {
                 "type": "VISA",

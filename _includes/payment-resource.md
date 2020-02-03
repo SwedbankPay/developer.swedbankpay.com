@@ -10,7 +10,7 @@ possible to perform in the current state of the payment.
 **Request**
 
 ```http
-GET /psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/ HTTP/1.1
+GET /psp/{{ payment-instrument }}/payments/{{ page.payment_id }}/ HTTP/1.1
 Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -25,7 +25,7 @@ Content-Type: application/json
 
 {
     "payment": {
-        "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}",
+        "id": "/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}",
         "number": 1234567890,
         "created": "2016-09-14T13:21:29.3182115Z",
         "updated": "2016-09-14T13:21:57.6627579Z",
@@ -43,34 +43,34 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",
         "prices": {
-            "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/prices"
+            "id": "/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}/prices"
         },
         "payeeInfo": {
-            "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/payeeInfo"
+            "id": "/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}/payeeInfo"
         },
         "urls": {
-            "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/urls"
+            "id": "/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}/urls"
         },
         "transactions": {
-            "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/transactions"
+            "id": "/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}/transactions"
         }{% unless payment-instrument == "swish" %},
         "authorizations": {
-            "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/authorizations"
+            "id": "/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}/authorizations"
         }{% endunless %},
         "captures": {
-            "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/captures"
+            "id": "/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}/captures"
         },
         "reversals": {
-            "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/reversals"
+            "id": "/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}/reversals"
         },
         "cancellations": {
-            "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/cancellations"
+            "id": "/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}/cancellations"
         }
     },
     "operations": [
         {
             "method": "PATCH",
-            "href": "{{ page.apiUrl }}/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}",
+            "href": "{{ page.apiUrl }}/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}",
             "rel": "update-payment-abort",
             "contentType": "application/json"
         }{% unless payment-instrument == "swish" %},
@@ -88,19 +88,19 @@ Content-Type: application/json
         },{% endunless %}
         {
             "method": "POST",
-            "href": "{{ page.apiUrl }}/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/captures",
+            "href": "{{ page.apiUrl }}/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}/captures",
             "rel": "create-capture",
             "contentType": "application/json"
         }{% if showStatusOperations %},
         {
             "method": "GET",
-            "href": "{{ page.apiUrl }}/psp/{{ payment-instrument }}/{{ page.paymentId }}/paid",
+            "href": "{{ page.apiUrl }}/psp/{{ payment-instrument }}/{{ page.payment_id }}/paid",
             "rel": "paid-payment",
             "contentType": "application/json"
         },
         {
             "method": "GET",
-            "href": "{{ page.apiUrl }}/psp/{{ payment-instrument }}/{{ page.paymentId }}/failed",
+            "href": "{{ page.apiUrl }}/psp/{{ payment-instrument }}/{{ page.payment_id }}/failed",
             "rel": "failed-payment",
             "contentType": "application/problem+json"
         }
@@ -156,11 +156,11 @@ for the given operation.
 {% when "swish" %}
 
 {:.table .table-striped}
-| Operation                | Description                                                                                                               |
-| :----------------------- | :------------------------------------------------------------------------------------------------------------------------ |
-| `update-payment-abort`   | `abort`s the payment order before any financial transactions are performed.                                               |
-| `create-capture`         | Creates a `capture` transaction in order to charge the reserved funds from the consumer.                                  |
-| `create-cancellation`    | Creates a `cancellation` transaction that cancels a created, but not yet captured payment.                                |
+| Operation              | Description                                                                                |
+| :--------------------- | :----------------------------------------------------------------------------------------- |
+| `update-payment-abort` | `abort`s the payment order before any financial transactions are performed.                |
+| `create-capture`       | Creates a `capture` transaction in order to charge the reserved funds from the consumer.   |
+| `create-cancellation`  | Creates a `cancellation` transaction that cancels a created, but not yet captured payment. |
 
 {% else %}
 {% if showStatusOperations %}

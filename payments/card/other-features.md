@@ -94,7 +94,7 @@ Content-Type: application/json
     "payment": {
         "operation": "Recur",
         "intent": "Authorization|AutoCapture",
-        "recurrenceToken": "{{ page.paymentId }}",
+        "recurrenceToken": "{{ page.payment_id }}",
         "currency": "NOK",
         "amount": 1500,
         "vatAmount": 0,
@@ -152,7 +152,7 @@ Content-Type: application/json
     "payment": {
         "operation": "Payout",
         "intent": "AutoCapture",
-        "paymentToken": "{{ page.paymentId }}",
+        "paymentToken": "{{ page.payment_id }}",
         "currency": "NOK",
         "amount": 1500,
         "vatAmount": 0,
@@ -183,7 +183,7 @@ Content-Type: application/json
 
 {
   "payment": {
-    "id": "/psp/creditcard/payments/{{ page.paymentId }}",
+    "id": "/psp/creditcard/payments/{{ page.payment_id }}",
     "number": 1234567890,
     "created": "2016-09-14T13:21:29.3182115Z",
     "updated": "2016-09-14T13:21:57.6627579Z",
@@ -198,16 +198,16 @@ Content-Type: application/json
     "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
     "userAgent": "Mozilla/5.0...",
     "language": "nb-NO",
-    "paymentToken": "{{ page.paymentId }}",
-    "prices": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/prices" },
-    "transactions": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/transactions" },
-    "authorizations": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/authorizations" },
-    "captures": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/captures" },
-    "reversals": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/reversals" },
-    "cancellations": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/cancellations" },
-    "urls" : { "id": "/psp/creditcard/payments/{{ page.paymentId }}/urls" },
-    "payeeInfo" : { "id": "/psp/creditcard/payments/{{ page.paymentId }}/payeeInfo" },
-    "settings": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/settings" }
+    "paymentToken": "{{ page.payment_id }}",
+    "prices": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/prices" },
+    "transactions": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/transactions" },
+    "authorizations": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/authorizations" },
+    "captures": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/captures" },
+    "reversals": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/reversals" },
+    "cancellations": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/cancellations" },
+    "urls" : { "id": "/psp/creditcard/payments/{{ page.payment_id }}/urls" },
+    "payeeInfo" : { "id": "/psp/creditcard/payments/{{ page.payment_id }}/payeeInfo" },
+    "settings": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/settings" }
   }
 }
 ```
@@ -337,7 +337,7 @@ Content-Type: application/json
 
 {
     "payment": {
-        "id": "/psp/creditcard/payments/{{ page.paymentId }}",
+        "id": "/psp/creditcard/payments/{{ page.payment_id }}",
         "number": 1234567890,
         "created": "2016-09-14T13:21:29.3182115Z",
         "updated": "2016-09-14T13:21:57.6627579Z",
@@ -350,15 +350,15 @@ Content-Type: application/json
         "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
         "userAgent": "Mozilla/5.0",
         "language": "nb-NO",
-        "transactions": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/transactions" },
-        "verifications": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/verifications" },
-        "urls" : { "id": "/psp/creditcard/payments/{{ page.paymentId }}/urls" },
-        "payeeInfo" : { "id": "/psp/creditcard/payments/{{ page.paymentId }}/payeeInfo" },
-        "settings": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/settings" }
+        "transactions": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/transactions" },
+        "verifications": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/verifications" },
+        "urls" : { "id": "/psp/creditcard/payments/{{ page.payment_id }}/urls" },
+        "payeeInfo" : { "id": "/psp/creditcard/payments/{{ page.payment_id }}/payeeInfo" },
+        "settings": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/settings" }
     },
     "operations": [
         {
-            "href": "{{ page.apiUrl }}/psp/creditcard/payments/{{ page.paymentId }}",
+            "href": "{{ page.apiUrl }}/psp/creditcard/payments/{{ page.payment_id }}",
             "rel": "update-payment-abort",
             "method": "PATCH",
             "contentType": "application/json"
@@ -470,7 +470,7 @@ Swedbank Pay Payments where the payment is authorized.
 **Request**
 
 ```http
-POST /psp/creditcard/payments/{{ page.paymentId }}/authorizations HTTP/1.1
+POST /psp/creditcard/payments/{{ page.payment_id }}/authorizations HTTP/1.1
 Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json

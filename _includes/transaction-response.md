@@ -8,7 +8,7 @@
 **Request**
 
 ```http
-GET /psp/{{ instrument }}/payments/{{ page.paymentId }}/{{ plural }} HTTP/1.1
+GET /psp/{{ instrument }}/payments/{{ page.payment_id }}/{{ plural }} HTTP/1.1
 Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -24,13 +24,13 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/{{ instrument }}/payments/{{ page.paymentId }}",
+    "payment": "/psp/{{ instrument }}/payments/{{ page.payment_id }}",
     "{{ plural }}": {
-        "id": "/psp/{{ instrument }}/payments/{{ page.paymentId }}/{{ plural }}",
+        "id": "/psp/{{ instrument }}/payments/{{ page.payment_id }}/{{ plural }}",
         "{{ transaction }}List": [{
-            "id": "/psp/{{ instrument }}/payments/{{ page.paymentId }}/{{ plural }}/{{ page.transactionId }}",
+            "id": "/psp/{{ instrument }}/payments/{{ page.payment_id }}/{{ plural }}/{{ page.transactionId }}",
             "transaction": {
-                "id": "/psp/{{ instrument }}/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
+                "id": "/psp/{{ instrument }}/payments/{{ page.payment_id }}/transactions/{{ page.transactionId }}",
                 "created": "2016-09-14T01:01:01.01Z",
                 "updated": "2016-09-14T01:01:01.03Z",
                 "type": "{{ transaction | capitalize }}",

@@ -123,7 +123,7 @@ The `orderItems` property of the `paymentOrder` is an array containing the items
 | :------: | :-------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |  ✔︎︎︎︎︎  | `reference`           | `string`  | A reference that identifies the order item.                                                                                                                                                                                    |
 |  ✔︎︎︎︎︎  | `name`                | `string`  | The name of the order item.                                                                                                                                                                                                    |
-|  ✔︎︎︎︎︎  | `type`                | `enum`  | `PRODUCT`, `SERVICE`, `SHIPPING_FEE`, `DISCOUNT`, `VALUE_CODE`, or `OTHER`. The type of the order item.                                                                                                                        |
+|  ✔︎︎︎︎︎  | `type`                | `enum`    | `PRODUCT`, `SERVICE`, `SHIPPING_FEE`, `DISCOUNT`, `VALUE_CODE`, or `OTHER`. The type of the order item.                                                                                                                        |
 |  ✔︎︎︎︎︎  | `class`               | `string`  | The classification of the order item. Can be used for assigning the order item to a specific product category, such as `MobilePhone`. Note that `class` cannot contain spaces. Swedbank Pay may use this field for statistics. |
 |          | `itemUrl`             | `string`  | The URL to a page that can display the purchased item, such as a product page                                                                                                                                                  |
 |          | `imageUrl`            | `string`  | The URL to an image of the order item.                                                                                                                                                                                         |
@@ -697,7 +697,7 @@ Content-Type: application/json
                 "created": "2016-09-14T13:21:29.3182115Z"
             },
             {
-                "id": "/psp/invoice/payments/{{ page.paymentId }}",
+                "id": "/psp/invoice/payments/{{ page.payment_id }}",
                 "instrument" : "Invoice",
                 "created": "2016-09-14T13:21:29.3182115Z"
             }
@@ -1031,7 +1031,7 @@ following event argument object:
 
 ```js
 {
-    "id": "/psp/creditcard/payments/{{ page.paymentId }}",
+    "id": "/psp/creditcard/payments/{{ page.payment_id }}",
     "instrument": "creditcard | vipps | swish | invoice",
 }
 ```
@@ -1053,7 +1053,7 @@ object:
 
 ```js
 {
-    "id": "/psp/creditcard/payments/{{ page.paymentId }}",
+    "id": "/psp/creditcard/payments/{{ page.payment_id }}",
     "redirectUrl": "https://en.wikipedia.org/wiki/Success"
 }
 ```
@@ -1075,7 +1075,7 @@ object:
 
 ```js
 {
-    "id": "/psp/creditcard/payments/{{ page.paymentId }}",
+    "id": "/psp/creditcard/payments/{{ page.payment_id }}",
     "redirectUrl": "https://en.wikipedia.org/wiki/Canceled"
 }
 ```
@@ -1097,7 +1097,7 @@ event argument object:
 
 ```js
 {
-    "id": "/psp/creditcard/payments/{{ page.paymentId }}",
+    "id": "/psp/creditcard/payments/{{ page.payment_id }}",
     "redirectUrl": "https://en.wikipedia.org/wiki/Failed"
 }
 ```
@@ -1191,11 +1191,11 @@ object:
         "instrument": "<payment instrument>"
     },
     "payment":{
-        "id": "/psp/<payment instrument>/payments/{{ page.paymentId }}",
+        "id": "/psp/<payment instrument>/payments/{{ page.payment_id }}",
         "number": 222222222
     },
     "transaction":{
-        "id": "/psp/<payment instrument>/payments/{{ page.paymentId }}/<transaction type>/{{ page.transactionId }}",
+        "id": "/psp/<payment instrument>/payments/{{ page.payment_id }}/<transaction type>/{{ page.transactionId }}",
         "number": 333333333
     }
 }

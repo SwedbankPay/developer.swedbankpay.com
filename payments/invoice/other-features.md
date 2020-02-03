@@ -156,7 +156,7 @@ Content-Type: application/json
     "payment": {
         "operation": "Recur",
         "intent": "Authorization",
-        "recurrenceToken": "{{ page.paymentId }}",
+        "recurrenceToken": "{{ page.payment_id }}",
         "currency": "NOK",
         "amount": 1500,
         "vatAmount": 0,
@@ -278,7 +278,7 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 {
     "payment": {
-        "id": "/psp/invoice/payments/{{ page.paymentId }}",
+        "id": "/psp/invoice/payments/{{ page.payment_id }}",
         "number": 1234567890,
         "created": "2016-09-14T13:21:29.3182115Z",
         "updated": "2016-09-14T13:21:57.6627579Z",
@@ -292,37 +292,37 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0",
         "language": "nb-NO",
         "transactions": {
-            "id": "/psp/invoice/payments/{{ page.paymentId }}/transactions"
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/transactions"
         },
         "verifications": {
-            "id": "/psp/invoice/payments/{{ page.paymentId }}/verifications"
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/verifications"
         },
         "urls": {
-            "id": "/psp/invoice/payments/{{ page.paymentId }}/urls"
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/urls"
         },
         "payeeInfo": {
-            "id": "/psp/invoice/payments/{{ page.paymentId }}/payeeInfo"
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/payeeInfo"
         },
         "settings": {
-            "id": "/psp/invoice/payments/{{ page.paymentId }}/settings"
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/settings"
         }
     },
     "operations": [
         {
             "method": "POST",
-            "href": "{{ page.apiUrl }}/psp/invoice/payments/{{ page.paymentId }}/approvedlegaladdress",
+            "href": "{{ page.apiUrl }}/psp/invoice/payments/{{ page.payment_id }}/approvedlegaladdress",
             "rel": "create-approved-legal-address",
             "contentType": "application/json"
         },
         {
             "method": "POST",
-            "href": "{{ page.apiUrl }}/psp/invoice/payments/{{ page.paymentId }}/authorizations",
+            "href": "{{ page.apiUrl }}/psp/invoice/payments/{{ page.payment_id }}/authorizations",
             "rel": "create-authorization",
             "contentType": "application/json"
         },
         {
             "method": "PATCH",
-            "href": "{{ page.apiUrl }}/psp/invoice/payments/{{ page.paymentId }}",
+            "href": "{{ page.apiUrl }}/psp/invoice/payments/{{ page.payment_id }}",
             "rel": "update-payment-abort",
             "contentType": "application/json"
         },
@@ -400,7 +400,7 @@ Swedbank Pay Payments where the payment is authorized.
 **Request**
 
 ```http
-POST /psp/invoice/payments/{{ page.paymentId }}/authorizations HTTP/1.1
+POST /psp/invoice/payments/{{ page.payment_id }}/authorizations HTTP/1.1
 Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -463,20 +463,20 @@ Content-Type: application/json
 
 ```json
 {
-    "payment": "/psp/invoice/payments/{{ page.paymentId }}",
+    "payment": "/psp/invoice/payments/{{ page.payment_id }}",
     "authorization": {
-        "id": "/psp/invoice/payments/{{ page.paymentId }}/authorizations/{{ page.transactionId }}",
+        "id": "/psp/invoice/payments/{{ page.payment_id }}/authorizations/{{ page.transactionId }}",
         "consumer": {
-            "id": "/psp/invoice/payments/{{ page.paymentId }}/consumer"
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/consumer"
         },
         "legalAddress": {
-            "id": "/psp/invoice/payments/{{ page.paymentId }}/legaladdress"
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/legaladdress"
         },
         "billingAddress": {
-            "id": "/psp/invoice/payments/{{ page.paymentId }}/billingaddress"
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/billingaddress"
         },
         "transaction": {
-            "id": "/psp/invoice/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/transactions/{{ page.transactionId }}",
             "created": "2016-09-14T01:01:01.01Z",
             "updated": "2016-09-14T01:01:01.03Z",
             "type": "Authorization",
@@ -492,11 +492,11 @@ Content-Type: application/json
             "failedErrorDescription": "ThirdPartyErrorMessage",
             "isOperational": "TRUE",
             "activities": {
-                "id": "/psp/invoice/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}/activities"
+                "id": "/psp/invoice/payments/{{ page.payment_id }}/transactions/{{ page.transactionId }}/activities"
             },
             "operations": [
                 {
-                    "href": "{{ page.apiUrl }}/psp/invoice/payments/{{ page.paymentId }}",
+                    "href": "{{ page.apiUrl }}/psp/invoice/payments/{{ page.payment_id }}",
                     "rel": "edit-authorization",
                     "method": "PATCH"
                 }

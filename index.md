@@ -140,7 +140,7 @@ response, enabling you to access information from these sub-resources.
 **HTTP request with expansion**
 
 ```http
-GET /psp/creditcard/payments/{{ page.paymentId }}?$expand=urls,authorizations HTTP/1.1
+GET /psp/creditcard/payments/{{ page.payment_id }}?$expand=urls,authorizations HTTP/1.1
 Host: {{ page.apiHost }}
 ```
 
@@ -199,7 +199,7 @@ instrument specific operations.
     "payment": {},
     "operations": [
         {
-            "href": "http://{{ page.apiHost }}/psp/creditcard/payments/{{ page.paymentId }}",
+            "href": "http://{{ page.apiHost }}/psp/creditcard/payments/{{ page.payment_id }}",
             "rel": "update-payment-abort",
             "method": "PATCH"
         },
@@ -215,7 +215,7 @@ instrument specific operations.
             "contentType": "application/javascript"
         },
         {
-            "href": "{{ page.apiUrl }}/psp/creditcard/payments/{{ page.paymentId }}/captures",
+            "href": "{{ page.apiUrl }}/psp/creditcard/payments/{{ page.payment_id }}/captures",
             "rel": "create-capture",
             "method": "POST"
         }
