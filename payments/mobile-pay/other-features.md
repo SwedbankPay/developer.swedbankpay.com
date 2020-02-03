@@ -162,7 +162,7 @@ Content-Type: application/json
         },
         {
             "method": "GET",
-            "href": "https://{{ page.frontEndUrl }}/mobilepay/payments/authorize/{{ page.transaction_id }}",
+            "href": "https://{{ page.front_end_url }}/mobilepay/payments/authorize/{{ page.transaction_id }}",
             "rel": "redirect-authorization"
         }
     ]
@@ -228,7 +228,7 @@ A list of possible operations and their explanation is given below.
             "method": "PATCH"
         },
         {
-            "href": "https://{{ page.frontEndUrl }}/mobilepay/payments/authorize/{{ page.payment_id }}",
+            "href": "https://{{ page.front_end_url }}/mobilepay/payments/authorize/{{ page.payment_id }}",
             "rel": "redirect-authorization",
             "method": "GET"
         },

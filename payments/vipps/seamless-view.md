@@ -259,12 +259,12 @@ Content-Type: application/json
         },
         {
            "method": "GET",
-           "href": "{{ page.frontEndUrl }}/vipps/payments/authorize/{{ page.payment_token }}",
+           "href": "{{ page.front_end_url }}/vipps/payments/authorize/{{ page.payment_token }}",
            "rel": "redirect-authorization"
         },
         {
             "method": "GET",
-            "href": "{{ page.frontEndUrl }}/vipps/core/scripts/client/px.vipps.client.js?token={{ page.payment_token }}&Culture=sv-SE",
+            "href": "{{ page.front_end_url }}/vipps/core/scripts/client/px.vipps.client.js?token={{ page.payment_token }}&Culture=sv-SE",
             "rel": "view-payment",
             "contentType": "application/javascript"
         }

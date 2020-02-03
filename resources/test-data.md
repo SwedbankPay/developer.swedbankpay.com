@@ -30,7 +30,7 @@ sidebar:
 During a Swedbank Pay Checkout implementation you can use the test data related
 to the different payment instruments listed below. To see Swedbank Pay Checkout in
 action, please visit our
-[demoshop]({{ page.frontEndUrl }}/pspdemoshop)
+[demoshop]({{ page.front_end_url }}/pspdemoshop)
 
 To test a logged in user in the Demo Shop, please use the following test data:
 
@@ -136,7 +136,7 @@ errors thorugh spesific amounts.
 
 First, POST a Payment (operation purchase) and enter the link to the payment
 page. Example URL: -
-<{{ page.frontEndUrl }}/creditcardv2/payments/authorize/{{ page.payment_token }}> .
+<{{ page.front_end_url }}/creditcardv2/payments/authorize/{{ page.payment_token }}> .
 Fill the data for either the Visa or MasterCard as shown below.
 
 {:.table .table-striped}

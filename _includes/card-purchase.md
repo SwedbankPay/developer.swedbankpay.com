@@ -252,13 +252,13 @@ Content-Type: application/json
         },
         {
             "rel": "redirect-authorization",
-            "href": "{{ page.frontEndUrl }}/creditcard/payments/authorize/{{ page.payment_token }}",
+            "href": "{{ page.front_end_url }}/creditcard/payments/authorize/{{ page.payment_token }}",
             "method": "GET",
             "contentType": "text/html"
         },
         {
             "rel": "view-authorization",
-            "href": "{{ page.frontEndUrl }}/creditcard/core/scripts/client/px.creditcard.client.js?token={{ page.payment_token }}",
+            "href": "{{ page.front_end_url }}/creditcard/core/scripts/client/px.creditcard.client.js?token={{ page.payment_token }}",
             "method": "GET",
             "contentType": "application/javascript"
         }

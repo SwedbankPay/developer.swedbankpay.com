@@ -268,7 +268,7 @@ Content-Type: application/json
             "rel": "create-sale"
       },
       {
-        "href": "{{ page.frontEndUrl }}/swish/payments/authorize/{{ page.payment_token }}",
+        "href": "{{ page.front_end_url }}/swish/payments/authorize/{{ page.payment_token }}",
         "rel": "redirect-sale",
         "method": "GET",
         "contentType": "text/html"
@@ -281,7 +281,7 @@ Content-Type: application/json
       },
       {
             "method": "GET",
-            "href": "{{ page.frontEndUrl }}/swish/core/scripts/client/px.swish.client.js?token={{ page.payment_token }}",
+            "href": "{{ page.front_end_url }}/swish/core/scripts/client/px.swish.client.js?token={{ page.payment_token }}",
             "rel": "view-sales",
             "contentType": "application/javascript"
       }

@@ -76,13 +76,13 @@ Content-Type: application/json
         }{% unless payment-instrument == "swish" %},
         {
             "method": "GET",
-            "href": "{{ page.frontEndUrl }}/{{ payment-instrument }}/core/scripts/client/px.{{ payment-instrument }}.client.js?token={{ page.payment_token }}&operation=authorize",
+            "href": "{{ page.front_end_url }}/{{ payment-instrument }}/core/scripts/client/px.{{ payment-instrument }}.client.js?token={{ page.payment_token }}&operation=authorize",
             "rel": "view-authorization",
             "contentType": "application/javascript"
         },
         {
             "method": "GET",
-            "href": "{{ page.frontEndUrl }}/{{ payment-instrument }}/payments/authorize/{{ page.transaction_id }}",
+            "href": "{{ page.front_end_url }}/{{ payment-instrument }}/payments/authorize/{{ page.transaction_id }}",
             "rel": "redirect-authorization",
             "contentType": "text/html"
         },{% endunless %}
