@@ -1292,6 +1292,49 @@ although that might be possible in the future.
 
 {% include payee-info.md %}
 
+## Merchant Authenticated Consumer
+
+{% include jumbotron.html body="Consumer identification handled by the merchant
+and sent with the payment request" %}
+
+This description will only comment on the difference in integration from our
+standard solution. You can only use this integration flow if you have an
+agreement with SwedbankPay to use this functionality. The additional fields below
+should be added to the standard [`paymentOrder`][payment-order].
+
+{% include alert.html type="neutral" icon="warning" body="The only accepted
+authentication method for this flow is BankId. And there needs to exist a data
+agreement between you and SwedbankPay to be able to use this functionality." %}
+
+{:.code-header}
+**Request**
+
+```http
+POST /psp/paymentorders HTTP/1.1
+Host: {{ page.apiHost }}
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+
+{
+    "paymentorder": {
+        "payer": {
+            "nationalIdentifier"{
+                "socialSecurityNumber": "199710202392",
+                "countryCode": "SE"
+        }
+    }
+}
+```
+
+{:.table .table-striped}
+| Required | Property                              | Type         | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| :------: | :------------------------------------ | :----------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|  ✔︎︎︎︎︎  | `paymentorder`                        | `object`     | The payment order object.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+|     | └➔&nbsp;`payer`                       | `object`     | The `payer` object containing information about the payer relevant for the payment order.                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+|     | └─➔&nbsp;`nationalIdentifier`         | `string`     | The national identifier object.                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+|     | └──➔&nbsp;`socialSecurityNumber`         | `string`     | The consumers social security number. Must be part of what you get from your authentication process.                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+|     | └──➔&nbsp;`countryCode`         | `string`     | The countrycode of the consumer.                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+
 {% include settlement-reconciliation.md %}
 
 {% include iterator.html prev_href="summary" prev_title="Back: Summary" %}
