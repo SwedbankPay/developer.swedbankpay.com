@@ -69,6 +69,7 @@ options:
 * [Recur][recur]
 * [Payout][payout]
 * [Verify][verify]
+* [Unscheduled Purchase][unscheduled-purchase]
 
 Our `payment` example below uses the [`purchase`][purchase] operation.
 
@@ -186,3 +187,4 @@ sequenceDiagram
 [recur]: /payments/card/other-features#recur
 [payout]: /payments/card/other-features#payout
 [verify]: /payments/card/other-features#verify
+[unscheduled-purchase]: /payments/card/other-features#unscheduled-purchase
