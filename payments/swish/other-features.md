@@ -187,7 +187,7 @@ of the problem.
 ### Error types from Swish and third parties
 
 All Swish error types will have the following URI in front of type:
-`{{ page.apiUrl }}/psp/<errordetail>/swish`
+`{{ page.api_url }}/psp/<errordetail>/swish`
 
 {:.table .table-striped}
 | Type                 | Status | Error code           | Details                                                                                         |

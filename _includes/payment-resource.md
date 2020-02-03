@@ -70,7 +70,7 @@ Content-Type: application/json
     "operations": [
         {
             "method": "PATCH",
-            "href": "{{ page.apiUrl }}/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}",
+            "href": "{{ page.api_url }}/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}",
             "rel": "update-payment-abort",
             "contentType": "application/json"
         }{% unless payment-instrument == "swish" %},
@@ -88,19 +88,19 @@ Content-Type: application/json
         },{% endunless %}
         {
             "method": "POST",
-            "href": "{{ page.apiUrl }}/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}/captures",
+            "href": "{{ page.api_url }}/psp/{{ payment-instrument }}/payments/{{ page.payment_id }}/captures",
             "rel": "create-capture",
             "contentType": "application/json"
         }{% if showStatusOperations %},
         {
             "method": "GET",
-            "href": "{{ page.apiUrl }}/psp/{{ payment-instrument }}/{{ page.payment_id }}/paid",
+            "href": "{{ page.api_url }}/psp/{{ payment-instrument }}/{{ page.payment_id }}/paid",
             "rel": "paid-payment",
             "contentType": "application/json"
         },
         {
             "method": "GET",
-            "href": "{{ page.apiUrl }}/psp/{{ payment-instrument }}/{{ page.payment_id }}/failed",
+            "href": "{{ page.api_url }}/psp/{{ payment-instrument }}/{{ page.payment_id }}/failed",
             "rel": "failed-payment",
             "contentType": "application/problem+json"
         }

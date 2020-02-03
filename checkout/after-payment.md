@@ -88,25 +88,25 @@ Content-Type: application/json
     "operations": [
         {
             "method": "PATCH",
-            "href": "{{ page.apiUrl }}/psp/paymentorders/{{ page.payment_order_id }}",
+            "href": "{{ page.api_url }}/psp/paymentorders/{{ page.payment_order_id }}",
             "rel": "update-paymentorder-updateorder",
             "contentType": "application/json"
         },
         {
             "method": "POST",
-            "href": "{{ page.apiUrl }}/psp/paymentorders/{{ page.payment_order_id }}/captures",
+            "href": "{{ page.api_url }}/psp/paymentorders/{{ page.payment_order_id }}/captures",
             "rel": "create-paymentorder-capture",
             "contentType": "application/json"
         },
         {
             "method": "POST",
-            "href": "{{ page.apiUrl }}/psp/paymentorders/{{ page.payment_order_id }}/cancellations",
+            "href": "{{ page.api_url }}/psp/paymentorders/{{ page.payment_order_id }}/cancellations",
             "rel": "create-paymentorder-cancel",
             "contentType": "application/json"
         },
         {
             "method": "POST",
-            "href": "{{ page.apiUrl }}/psp/paymentorders/{{ page.payment_order_id }}/reversals",
+            "href": "{{ page.api_url }}/psp/paymentorders/{{ page.payment_order_id }}/reversals",
             "rel": "create-paymentorder-reversal",
             "contentType": "application/json"
         }

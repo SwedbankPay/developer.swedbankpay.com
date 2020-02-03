@@ -65,7 +65,7 @@ is given below.
     "operations": [
         {
             "method": "POST",
-            "href": "{{ page.apiUrl }}/psp/swish/payments/{{ page.payment_id }}/sales",
+            "href": "{{ page.api_url }}/psp/swish/payments/{{ page.payment_id }}/sales",
             "rel": "create-sale"
         },
         {

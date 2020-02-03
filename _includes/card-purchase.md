@@ -246,7 +246,7 @@ Content-Type: application/json
     "operations": [
         {
             "rel": "update-payment-abort",
-            "href": "{{ page.apiUrl }}/psp/creditcard/payments/{{ page.payment_id }}",
+            "href": "{{ page.api_url }}/psp/creditcard/payments/{{ page.payment_id }}",
             "method": "PATCH",
             "contentType": "application/json"
         },

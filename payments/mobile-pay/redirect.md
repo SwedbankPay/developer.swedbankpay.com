@@ -248,7 +248,7 @@ Content-Type: application/json
     "operations": [
         {
             "method": "PATCH",
-            "href": "{{ page.apiUrl }}/psp/mobilepay/payments/{{ page.payment_id }}",
+            "href": "{{ page.api_url }}/psp/mobilepay/payments/{{ page.payment_id }}",
             "rel": "update-payment-abort"
         },
         {

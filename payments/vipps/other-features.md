@@ -69,7 +69,7 @@ Content-Type: application/json
             "completeUrl": "http://example.com/payment-completed",
             "cancelUrl": "http://example.com/payment-canceled",
             "paymentUrl": "http://example.com/perform-payment",
-            "callbackUrl": "{{ page.apiUrl }}/psp/payment-callback",
+            "callbackUrl": "{{ page.api_url }}/psp/payment-callback",
             "logoUrl": "https://example.com/path/to/logo.png",
             "termsOfServiceUrl": "https://example.com/terms.pdf"
 
@@ -160,7 +160,7 @@ Content-Type: application/json
     "operations": [
         {
             "method": "PATCH",
-            "href": "{{ page.apiUrl }}/psp/vipps/payments/{{ page.payment_id }}",
+            "href": "{{ page.api_url }}/psp/vipps/payments/{{ page.payment_id }}",
             "rel": "update-payment-abort"
         },
         {

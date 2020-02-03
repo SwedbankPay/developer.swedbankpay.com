@@ -50,7 +50,7 @@ Content-Type: application/json
     "operations": [
         {
             "method": "PATCH",
-            "href": "{{ page.apiUrl }}/psp/paymentorders/{{ page.payment_order_id }}",
+            "href": "{{ page.api_url }}/psp/paymentorders/{{ page.payment_order_id }}",
             "rel": "update-paymentorder-abort",
             "contentType": "application/json"
         },

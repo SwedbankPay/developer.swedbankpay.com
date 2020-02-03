@@ -317,17 +317,17 @@ Content-Type: application/json
     },
     "operations": [
         {
-            "href": "{{ page.apiUrl }}/psp/invoice/payments/{{ page.payment_id }}",
+            "href": "{{ page.api_url }}/psp/invoice/payments/{{ page.payment_id }}",
             "rel": "update-payment-abort",
             "method": "PATCH"
         },
         {
-            "href": "{{ page.apiUrl }}/psp/invoice/payments/{{ page.payment_id }}/authorizations",
+            "href": "{{ page.api_url }}/psp/invoice/payments/{{ page.payment_id }}/authorizations",
             "rel": "create-authorize",
             "method": "POST"
         },
         {
-            "href": "{{ page.apiUrl }}/psp/invoice/payments/{{ page.payment_id }}/approvedlegaladdress",
+            "href": "{{ page.api_url }}/psp/invoice/payments/{{ page.payment_id }}/approvedlegaladdress",
             "rel": "create-approved-legal-address",
             "method": "POST"
         }
@@ -417,17 +417,17 @@ Content-Type: application/json
     },
     "operations": [
         {
-            "href": "{{ page.apiUrl }}/psp/invoice/payments/{{ page.payment_id }}/captures",
+            "href": "{{ page.api_url }}/psp/invoice/payments/{{ page.payment_id }}/captures",
             "rel": "create-capture",
             "method": "POST"
         },
         {
-            "href": "{{ page.apiUrl }}/psp/invoice/payments/{{ page.payment_id }}/cancellations",
+            "href": "{{ page.api_url }}/psp/invoice/payments/{{ page.payment_id }}/cancellations",
             "rel": "create-cancel",
             "method": "POST"
         },
         {
-            "href": "{{ page.apiUrl }}/psp/invoice/payments/{{ page.payment_id }}/approvedlegaladdress",
+            "href": "{{ page.api_url }}/psp/invoice/payments/{{ page.payment_id }}/approvedlegaladdress",
             "rel": "create-approved-legal-address",
             "method": "POST"
         }

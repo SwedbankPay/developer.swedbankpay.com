@@ -210,7 +210,7 @@ Content-Type: application/json
             "isOperational": true,
             "operations": [
                 {
-                    "href": "{{ page.apiUrl }}/psp/creditcard/payments/{{ page.payment_id }}",
+                    "href": "{{ page.api_url }}/psp/creditcard/payments/{{ page.payment_id }}",
                     "rel": "edit-authorization",
                     "method": "PATCH"
                 }

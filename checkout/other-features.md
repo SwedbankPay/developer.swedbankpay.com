@@ -183,13 +183,13 @@ A list of possible operations and their explanation is given below.
     "operations": [
         {
             "method": "PATCH",
-            "href": "{{ page.apiUrl }}/psp/paymentorders/{{ page.payment_order_id }}",
+            "href": "{{ page.api_url }}/psp/paymentorders/{{ page.payment_order_id }}",
             "rel": "update-paymentorder-abort",
             "contentType": "application/json"
         },
         {
             "method": "PATCH",
-            "href": "{{ page.apiUrl }}/psp/paymentorders/{{ page.payment_order_id }}",
+            "href": "{{ page.api_url }}/psp/paymentorders/{{ page.payment_order_id }}",
             "rel": "update-paymentorder-updateorder",
             "contentType": "application/json"
         },
@@ -207,31 +207,31 @@ A list of possible operations and their explanation is given below.
         },
         {
             "method": "POST",
-            "href": "{{ page.apiUrl }}/psp/paymentorders/{{ page.payment_order_id }}/captures",
+            "href": "{{ page.api_url }}/psp/paymentorders/{{ page.payment_order_id }}/captures",
             "rel": "create-paymentorder-capture",
             "contentType": "application/json"
         },
         {
             "method": "POST",
-            "href": "{{ page.apiUrl }}/psp/paymentorders/{{ page.payment_order_id }}/cancellations",
+            "href": "{{ page.api_url }}/psp/paymentorders/{{ page.payment_order_id }}/cancellations",
             "rel": "create-paymentorder-cancel",
             "contentType": "application/json"
         },
         {
             "method": "POST",
-            "href": "{{ page.apiUrl }}/psp/paymentorders/{{ page.payment_order_id }}/reversals",
+            "href": "{{ page.api_url }}/psp/paymentorders/{{ page.payment_order_id }}/reversals",
             "rel": "create-paymentorder-reversal",
             "contentType": "application/json"
         },
         {
             "method": "GET",
-            "href": "{{ page.apiUrl }}/psp/paymentorders/{{ page.payment_order_id }}/paid",
+            "href": "{{ page.api_url }}/psp/paymentorders/{{ page.payment_order_id }}/paid",
             "rel": "paid-paymentorder",
             "contentType": "application/json"
         },
         {
             "method": "GET",
-            "href": "{{ page.apiUrl }}/psp/paymentorders/{{ page.payment_order_id }}/failed",
+            "href": "{{ page.api_url }}/psp/paymentorders/{{ page.payment_order_id }}/failed",
             "rel": "failed-paymentorder",
             "contentType": "application/problem+json"
         }
@@ -400,7 +400,7 @@ Content-Type: application/json
     "operations": [
         {
             "method": "PATCH",
-            "href": "{{ page.apiUrl }}/psp/paymentorders/{{ page.payment_order_id }}",
+            "href": "{{ page.api_url }}/psp/paymentorders/{{ page.payment_order_id }}",
             "rel": "update-paymentorder-abort",
             "contentType": "application/json"
         },
@@ -492,7 +492,7 @@ Content-Type: application/json
     "operations": [
         {
             "method": "PATCH",
-            "href": "{{ page.apiUrl }}/psp/paymentorders/{{ page.payment_order_id }}",
+            "href": "{{ page.api_url }}/psp/paymentorders/{{ page.payment_order_id }}",
             "rel": "update-paymentorder-abort",
             "contentType": "application/json"
         },

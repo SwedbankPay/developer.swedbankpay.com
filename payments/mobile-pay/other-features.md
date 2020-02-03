@@ -157,7 +157,7 @@ Content-Type: application/json
     "operations": [
         {
             "method": "PATCH",
-            "href": "https://{{ page.apiUrl }}/psp/mobilepay/payments/{{ page.payment_id }}",
+            "href": "https://{{ page.api_url }}/psp/mobilepay/payments/{{ page.payment_id }}",
             "rel": "update-payment-abort"
         },
         {
@@ -223,7 +223,7 @@ A list of possible operations and their explanation is given below.
     "payment": {},
     "operations": [
         {
-            "href": "http://{{ page.apiUrl }}/psp/mobilepay/payments/{{ page.payment_id }}",
+            "href": "http://{{ page.api_url }}/psp/mobilepay/payments/{{ page.payment_id }}",
             "rel": "update-payment-abort",
             "method": "PATCH"
         },
@@ -233,17 +233,17 @@ A list of possible operations and their explanation is given below.
             "method": "GET"
         },
         {
-            "href": "https://{{ page.apiUrl }}/psp/mobilepay/payments/{{ page.payment_id }}/captures",
+            "href": "https://{{ page.api_url }}/psp/mobilepay/payments/{{ page.payment_id }}/captures",
             "rel": "create-capture",
             "method": "POST"
         },
         {
-            "href": "https://{{ page.apiUrl }}/psp/mobilepay/payments/{{ page.payment_id }}/cancellations",
+            "href": "https://{{ page.api_url }}/psp/mobilepay/payments/{{ page.payment_id }}/cancellations",
             "rel": "create-cancellation",
             "method": "POST"
         },
         {
-            "href": "https://{{ page.apiUrl }}/psp/mobilepay/payments/{{ page.payment_id }}/reversals",
+            "href": "https://{{ page.api_url }}/psp/mobilepay/payments/{{ page.payment_id }}/reversals",
             "rel": "create-reversal",
             "method": "POST"
         },
@@ -295,7 +295,7 @@ to the `GET`request.
 
 ```http
 GET /psp/mobilepay/payments/{{ page.payment_id }}/authorizations/ HTTP/1.1
-Host: {{ page.apiUrl }}
+Host: {{ page.api_url }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -338,7 +338,7 @@ Content-Type: application/json
             "failedReason": "",
             "isOperational": false,
             "operations": [{
-                "href": "{{ page.apiUrl }}/psp/mobilepay/payments/{{ page.payment_id }}",
+                "href": "{{ page.api_url }}/psp/mobilepay/payments/{{ page.payment_id }}",
                 "rel": "edit-authorization",
                 "method": "PATCH"
             }]

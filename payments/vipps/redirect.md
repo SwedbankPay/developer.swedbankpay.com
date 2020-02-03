@@ -229,17 +229,17 @@ Content-Type: application/json
     "operations": [
         {
             "method": "POST",
-            "href": "{{ page.apiUrl }}/psp/vipps/payments/{{ page.transaction_id }}/authorizations",
+            "href": "{{ page.api_url }}/psp/vipps/payments/{{ page.transaction_id }}/authorizations",
             "rel": "create-authorization"
         },
         {
             "method": "PATCH",
-            "href": "{{ page.apiUrl }}/psp/vipps/payments/{{ page.transaction_id }}",
+            "href": "{{ page.api_url }}/psp/vipps/payments/{{ page.transaction_id }}",
             "rel": "update-payment-abort"
         },
         {
             "method": "GET",
-            "href": "{{ page.apiUrl }}/vipps/payments/authorize/8fb05a835f2fc227dc7bca9abaf649b919ba8a572deb448bff543dd5806dacb7",
+            "href": "{{ page.api_url }}/vipps/payments/authorize/8fb05a835f2fc227dc7bca9abaf649b919ba8a572deb448bff543dd5806dacb7",
             "rel": "redirect-authorization"
         }
     ]

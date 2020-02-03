@@ -88,7 +88,7 @@ The base URIs of the API Platform are:
 {:.table .table-striped}
 | Environment                      | Base URL                 |
 | :------------------------------- | :----------------------- |
-| [**Test**][external-integration] | `{{ page.apiUrl }}/`     |
+| [**Test**][external-integration] | `{{ page.api_url }}/`    |
 | [**Production**][production]     | `https://api.payex.com/` |
 
 An important part of REST is its use of **hypermedia**. Instead of having to
@@ -215,7 +215,7 @@ instrument specific operations.
             "contentType": "application/javascript"
         },
         {
-            "href": "{{ page.apiUrl }}/psp/creditcard/payments/{{ page.payment_id }}/captures",
+            "href": "{{ page.api_url }}/psp/creditcard/payments/{{ page.payment_id }}/captures",
             "rel": "create-capture",
             "method": "POST"
         }
@@ -330,7 +330,7 @@ can read more about the payment instrument specific problem messages below:
   [iso-639-1]: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
   [iso-3166]: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
   [uuid]: https://en.wikipedia.org/wiki/Universally_unique_identifier
-  [external-integration]: {{ page.apiUrl }}/
+  [external-integration]: {{ page.api_url }}/
   [production]: https://api.payex.com/
   [the-rest-and-then-some]: https://www.youtube.com/watch?v=QIv9YR1bMwY
   [settlement]: #

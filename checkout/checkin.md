@@ -255,7 +255,7 @@ the following argument objects:
 ```js
 {
     "actionType": "OnShippingDetailsAvailable",
-    "url": "{{ page.apiUrl }}/psp/consumers/{{ page.payment_token }}/shipping-details"
+    "url": "{{ page.api_url }}/psp/consumers/{{ page.payment_token }}/shipping-details"
 }
 ```
 
@@ -265,7 +265,7 @@ the following argument objects:
 ```js
 {
     "actionType": "OnBillingDetailsAvailable",
-    "url": "{{ page.apiUrl }}/psp/consumers/{{ page.payment_token }}/billing-details"
+    "url": "{{ page.api_url }}/psp/consumers/{{ page.payment_token }}/billing-details"
 }
 ```
 

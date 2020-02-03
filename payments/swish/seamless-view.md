@@ -257,14 +257,14 @@ Content-Type: application/json
     },
     "operations": [
       {
-        "href": "{{ page.apiUrl }}/psp/swish/payments/{{ page.payment_id }}",
+        "href": "{{ page.api_url }}/psp/swish/payments/{{ page.payment_id }}",
         "rel": "update-payment-abort",
         "method": "PATCH",
         "contentType": "application/json"
       },
       {
             "method": "POST",
-            "href": "{{ page.apiUrl }}/psp/swish/payments/{{ page.payment_id }}/sales",
+            "href": "{{ page.api_url }}/psp/swish/payments/{{ page.payment_id }}/sales",
             "rel": "create-sale"
       },
       {

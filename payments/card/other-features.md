@@ -358,7 +358,7 @@ Content-Type: application/json
     },
     "operations": [
         {
-            "href": "{{ page.apiUrl }}/psp/creditcard/payments/{{ page.payment_id }}",
+            "href": "{{ page.api_url }}/psp/creditcard/payments/{{ page.payment_id }}",
             "rel": "update-payment-abort",
             "method": "PATCH",
             "contentType": "application/json"
@@ -549,7 +549,7 @@ often help narrow down the specifics of the problem.
 ### Contractual Problem Types
 
 All contract types will have the following URI in front of type:
-`{{ page.apiUrl }}/psp/<errordetail>/creditcard`
+`{{ page.api_url }}/psp/<errordetail>/creditcard`
 
 {:.table .table-striped}
 | Type                           | Status | Description                                 |

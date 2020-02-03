@@ -270,19 +270,19 @@ Content-Type: application/json
     "operations": [
         {
             "method": "POST",
-            "href": "{{ page.apiUrl }}/psp/invoice/payments/{{ page.payment_id }}/approvedlegaladdress",
+            "href": "{{ page.api_url }}/psp/invoice/payments/{{ page.payment_id }}/approvedlegaladdress",
             "rel": "create-approved-legal-address",
             "contentType": "application/json"
         },
         {
             "method": "POST",
-            "href": "{{ page.apiUrl }}/psp/invoice/payments/{{ page.payment_id }}/authorizations",
+            "href": "{{ page.api_url }}/psp/invoice/payments/{{ page.payment_id }}/authorizations",
             "rel": "create-authorization",
             "contentType": "application/json"
         },
         {
             "method": "PATCH",
-            "href": "{{ page.apiUrl }}/psp/invoice/payments/{{ page.payment_id }}",
+            "href": "{{ page.api_url }}/psp/invoice/payments/{{ page.payment_id }}",
             "rel": "update-payment-abort",
             "contentType": "application/json"
         },

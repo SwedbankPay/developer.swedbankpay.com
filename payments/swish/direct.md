@@ -222,12 +222,12 @@ Content-Type: application/json
     "operations": [
         {
             "method": "PATCH",
-            "href": "{{ page.apiUrl }}/psp/swish/payments/{{ page.payment_id }}",
+            "href": "{{ page.api_url }}/psp/swish/payments/{{ page.payment_id }}",
             "rel": "update-payment-abort"
         },
         {
             "method": "POST",
-            "href": "{{ page.apiUrl }}/psp/swish/payments/{{ page.payment_id }}/sales",
+            "href": "{{ page.api_url }}/psp/swish/payments/{{ page.payment_id }}/sales",
             "rel": "create-sale"
         }
     ]
