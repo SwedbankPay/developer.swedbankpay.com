@@ -39,7 +39,7 @@ about this update.
 ```js
 {
     "paymentOrder": {
-        "id": "/psp/paymentorders/{{ page.paymentOrderId }}",
+        "id": "/psp/paymentorders/{{ page.payment_order_id }}",
         "instrument": "{{ payment-instrument }}"
     },
     "payment": {

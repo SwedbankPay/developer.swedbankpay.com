@@ -83,7 +83,7 @@ All constants are available trough the `page` variable.
 Example:
 
 ```http
-GET /psp/paymentorders/{{ page.paymentOrderId }}/ HTTP/1.1
+GET /psp/paymentorders/{{ page.payment_order_id }}/ HTTP/1.1
 Host: {{ page.apiHost }}
 ```
 

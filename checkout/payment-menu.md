@@ -146,7 +146,7 @@ Content-Type: application/json
 
 {
     "paymentorder": {
-      "id": "/psp/paymentorders/{{ page.paymentOrderId }}"
+      "id": "/psp/paymentorders/{{ page.payment_order_id }}"
     },
     "operations": [
         {

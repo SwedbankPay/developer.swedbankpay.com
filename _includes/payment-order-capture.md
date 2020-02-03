@@ -36,7 +36,7 @@ To capture the authorized payment, we need to perform
 **Request**
 
 ```http
-POST /psp/paymentorders/{{ page.paymentOrderId }}/captures HTTP/1.1
+POST /psp/paymentorders/{{ page.payment_order_id }}/captures HTTP/1.1
 Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
