@@ -590,7 +590,7 @@ Content-Type: application/json
   "instrumentData": {
     "id": "/psp/creditcard/payments/instrumentdata/{{ page.paymentToken }}",
     "paymentToken": "{{ page.paymentToken }}",
-    "payeeId": "{{ page.merchantId }}",
+    "payeeId": "{{ page.merchant_id }}",
     "isDeleted": true|false,
     "isPayeeToken": false,
     "cardBrand": "MasterCard",

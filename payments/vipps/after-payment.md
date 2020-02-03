@@ -70,7 +70,7 @@ Content-Type: application/json
 
         },
         "payeeInfo": {
-            "payeeId": "{{ page.merchantId }}"
+            "payeeId": "{{ page.merchant_id }}"
             "payeeReference": "Postmantimestamp",
             "payeeName": "Merchant1",
             "productCategory": "A123",

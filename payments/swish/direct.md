@@ -137,7 +137,7 @@ Content-Type: application/json
             "termsOfServiceUrl": "https://example.com/terms.pdf"
         },
         "payeeInfo": {
-            "payeeId": "{{ page.merchantId }}",
+            "payeeId": "{{ page.merchant_id }}",
             "payeeReference": "ref-123456",
             "payeeName": "Merchant1",
             "productCategory": "A123",

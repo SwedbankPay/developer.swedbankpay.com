@@ -594,7 +594,7 @@ Content-Type: application/json
       "callbackUrl": "https://example.com/callback"
     },
     "payeeInfo": {
-      "payeeId": "{{ page.merchantId }}"
+      "payeeId": "{{ page.merchant_id }}"
       "payeeReference": "CD1234",
       "payeeName": "Merchant1",
       "productCategory": "A123",

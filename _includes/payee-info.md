@@ -24,7 +24,7 @@ Content-Type: application/json
     "payment": "/psp/{{ instrument }}/payments/{{ page.payment_id }}",
     "payeeInfo": {
         "id": "/psp/{{ instrument }}/payments/{{ page.payment_id }}/payeeInfo",
-        "payeeId": "{{ page.merchantId }}"
+        "payeeId": "{{ page.merchant_id }}"
         "payeeReference": "EN1234",
         "payeeName": "TestMerchant1",
         "productCategory": "EF1234",
