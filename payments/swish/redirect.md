@@ -131,7 +131,8 @@ Content-Type: application/json
         "operation": "Purchase",
         "intent": "Sale",
         "currency": "SEK",
-        "prices": [{
+        "prices": [
+            {
                 "type": "Swish",
                 "amount": 1500,
                 "vatAmount": 0
@@ -144,9 +145,9 @@ Content-Type: application/json
         "urls": {
             "hostUrls": "https://example.com",
             "paymentUrl": "http://example.com/perform-payment",
-            "completeUrl": "http://example.com/payment-completed",
-            "cancelUrl": "http://example.com/payment-canceled",
-            "callbackUrl": "http://example.com/payment-callback",
+            "completeUrl": "https://example.com/payment-completed",
+            "cancelUrl": "https://example.com/payment-canceled",
+            "callbackUrl": "https://example.com/payment-callback",
             "logoUrl": "https://example.com/logo.png",
             "termsOfServiceUrl": "https://example.com/terms.pdf"
         },

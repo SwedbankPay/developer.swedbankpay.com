@@ -156,12 +156,12 @@ Content-Type: application/json
         "language": "sv-SE",
         "urls": {
             "hostUrls": ["http://example.com"],
-            "paymentUrl": "http://example.com/perform-payment",
             "completeUrl": "http://example.com/payment-completed",
             "cancelUrl": "http://example.com/payment-canceled",
+            "paymentUrl": "http://example.com/perform-payment",
             "callbackUrl": "http://example.com/payment-callback",
-            "logoUrl": "https://example.com/logo.png",
-            "termsOfServiceUrl": "https://example.com/terms.pdf"
+            "logoUrl": "https://example.com/payment-logo.png",
+            "termsOfServiceUrl": "https://example.com/payment-terms.pdf"
         },
         "payeeInfo": {
             "payeeId": "{{ page.merchantId }}",
