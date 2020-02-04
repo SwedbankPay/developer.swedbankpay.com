@@ -121,16 +121,11 @@ with the `consumerProfileRef` we obtained in the checkin process described
 above.
 Remember to read up on our [URL resource][urls].
 
-{% include alert.html type="neutral" icon="info" body="The `orderItems` property
-object is optional. If the `POST` request has `orderItems` in the
-`paymentorder`, remember to include `orderItems` in the [capture
-operation](after-payment#capture) as well." %}
-
 {% include alert-risk-indicator.md %}
 
 ### Payment Url
 
-{% include payment-url.md payment-order=true
+{% include payment-url.md payment_order=true
 when="selecting the payment instrument Vipps or in the 3-D Secure verification
 for Credit Card Payments" %}
 
@@ -151,11 +146,11 @@ Content-Type: application/json
 
 {
     "paymentorder": {
-      "id": "/psp/paymentorders/{{ page.paymentOrderId }}"
+      "id": "/psp/paymentorders/{{ page.payment_order_id }}"
     },
     "operations": [
         {
-            "href": "{{ page.frontEndUrl }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token={{ page.paymentToken }}&culture=sv-SE",
+            "href": "{{ page.front_end_url }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token={{ page.payment_token }}&culture=sv-SE",
             "rel": "view-paymentorder",
             "method": "GET",
             "contentType": "application/javascript"
@@ -194,84 +189,76 @@ The HTML code will be unchanged in this example.
 **JavaScript**
 
 ```js
-window.onload = function () {
-    var request = new XMLHttpRequest();
-    request.addEventListener('load', function () {
-        // We will assume that our own backend returns the
-        // exact same as what SwedbankPay returns.
-        response = JSON.parse(this.responseText);
-
-        var script = document.createElement('script');
-        // This assumes the operations from the response of the POST of the
-        // payment order is returned verbatim from the server to the Ajax:
-        var operation = response.operations.find(function (o) {
-            return o.rel === 'view-consumer-identification';
-        });
-        script.setAttribute('src', operation.href);
-        script.onload = function () {
-            payex.hostedView.consumer({
-                // The container specifies which id the script will look for
-                // to host the checkin component
-                container: "checkin",
-                onConsumerIdentified: function onConsumerIdentified(consumerIdentifiedEvent) {
-                    // When the consumer is identified, we need to perform an AJAX request
-                    // to our server to forward the consumerProfileRef in a server-to-server
-                    // POST request to the Payment Orders resource in order to initialize
-                    // the Payment Menu.
-                    var request = new XMLHttpRequest();
-                        request.addEventListener('load', function() {
-                            response = JSON.parse(this.responseText);
-                            // This is identical to how we get the 'view-consumer-identification'
-                            // script from the check-in.
-                            var script = document.createElement('script');
-                            var operation = response.operations.find(function(o) {
-                                return o.rel === 'view-paymentorder';
-                            });
-                            script.setAttribute('src', operation.href);
-                            script.onload = function() {
-                                // When the 'view-paymentorder' script is loaded, we can initialize the
-                                // Payment Menu inside our 'payment-menu' container.
-                                payex.hostedView.paymentMenu({
-                                    container: 'payment-menu',
-                                    culture: 'sv'
-                                }).open();
-                            };
-                            // Append the Payment Menu script to the <head>
-                            var head = document.getElementsByTagName('head')[0];
-                            head.appendChild(script);
-                        });
-                        // Like before, you should replace the address here with
-                        // your own endpoint.
-                        request.open('POST', <Your-Endpoint-Here>, true);
-                        request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
-                        // In this example, we send the entire Consumer Identified Event Argument
-                        // Object as JSON to the server, as it contains the consumerProfileRef.
-                        request.send(JSON.stringify(consumerIdentifiedEvent));
-                },
-                onShippingDetailsAvailable: function onShippingDetailsAvailable(shippingDetailsAvailableEvent) {
-                    console.log(shippingDetailsAvailableEvent);
-                }
-            }).open();
-        };
-        // Appending the script to the head
-        var head = document.getElementsByTagName('head')[0];
-        head.appendChild(script);
+var request = new XMLHttpRequest();
+request.addEventListener('load', function () {
+    // We will assume that our own backend returns the
+    // exact same as what SwedbankPay returns.
+    response = JSON.parse(this.responseText);
+    var script = document.createElement('script');
+    // This assumes the operations from the response of the POST of the
+    // payment order is returned verbatim from the server to the Ajax:
+    var operation = response.operations.find(function (o) {
+        return o.rel === 'view-consumer-identification';
     });
-    // Place in your own API endpoint here.
-    request.open('POST', <Your-Endpoint-Here>, true);
-    request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
-    // We send in the previously mentioned request here to the checkin endpoint.
-    request.send(JSON.stringify({
-        operation: 'initiate-consumer-session',
-        msisdn: '+46739000001',
-        email: 'leia.ahlstrom@example.com',
-        consumerCountryCode: 'SE',
-        nationalIdentifer: {
-            socialSecurityNumber: '199710202392',
-            countryCode: "SE"
-        }
-    }));
-};
+    script.setAttribute('src', operation.href);
+    script.onload = function () {
+        payex.hostedView.consumer({
+            // The container specifies which id the script will look for
+            // to host the checkin component
+            container: 'checkin',
+            onConsumerIdentified: function onConsumerIdentified(consumerIdentifiedEvent) {
+                // When the consumer is identified, we need to perform an AJAX request
+                // to our server to forward the consumerProfileRef in a server-to-server
+                // POST request to the Payment Orders resource in order to initialize
+                // the Payment Menu.
+                var request = new XMLHttpRequest();
+                request.addEventListener('load', function () {
+                    response = JSON.parse(this.responseText);
+                    // This is identical to how we get the 'view-consumer-identification'
+                    // script from the check-in.
+                    var script = document.createElement('script');
+                    var operation = response.operations.find(function (o) {
+                        return o.rel === 'view-paymentorder';
+                    });
+                    script.setAttribute('src', operation.href);
+                    script.onload = function () {
+                        // When the 'view-paymentorder' script is loaded, we can initialize the
+                        // Payment Menu inside our 'payment-menu' container.
+                        payex.hostedView.paymentMenu({
+                            container: 'payment-menu',
+                            culture: 'sv'
+                        }).open();
+                    };
+                    // Append the Payment Menu script to the <head>
+                    var head = document.getElementsByTagName('head')[0];
+                    head.appendChild(script);
+                });
+                // Like before, you should replace the address here with
+                // your own endpoint.
+                request.open('POST', '<Your-Backend-Endpoint-Here>', true);
+                request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+                // In this example, we send the entire Consumer Identified Event Argument
+                // Object as JSON to the server, as it contains the consumerProfileRef.
+                request.send(JSON.stringify(consumerIdentifiedEvent));
+            },
+            onShippingDetailsAvailable: function onShippingDetailsAvailable(shippingDetailsAvailableEvent) {
+                console.log(shippingDetailsAvailableEvent);
+            }
+        }).open();
+    };
+    // Appending the script to the head
+    var head = document.getElementsByTagName('head')[0];
+    head.appendChild(script);
+});
+// Place in your own API endpoint here.
+request.open('POST', '<Your-Backend-Endpoint-Here>', true);
+request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+// We send in the previously mentioned request here to the checkin endpoint.
+request.send(JSON.stringify({
+    operation: 'initiate-consumer-session',
+    language: 'sv-SE',
+    shippingAddressRestrictedToCountryCodes : ['NO', 'SE']
+}));
 ```
 
 This should bring up the Payment Menu in a Seamless View, looking something like this:

@@ -222,6 +222,7 @@ Content-Type: application/json
 |          | └➔&nbsp;`paymentRestrictedToAgeLimit`  |`integer` | Positive number that sets the required age  needed to fulfill the payment. To use this feature it has to be configured in the contract.
 |          | └➔&nbsp;`paymentRestrictedToSocialSecurityNumber`  |`string` | When provided, the payment will be restricted to a specific social security number. Format: yyyyMMddxxxx. To use this feature it has to be configured in the contract.                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 
+
 {:.code-header}
 **Response**
 
@@ -231,7 +232,7 @@ Content-Type: application/json
 
 {
     "payment": {
-      "id": "/psp/swish/payments/{{ page.paymentId }}",
+      "id": "/psp/swish/payments/{{ page.payment_id }}",
       "number": 1234567890,
       "instrument": "Swish",
       "created": "2016-09-14T13:21:29.3182115Z",
@@ -249,42 +250,42 @@ Content-Type: application/json
       "initiatingSystemUserAgent": "PostmanRuntime/7.20.1",
       "userAgent": "Mozilla/5.0...",
       "language": "sv-SE",
-      "prices": { "id": "/psp/swish/payments/{{ page.paymentId }}/prices" },
-      "transactions": { "id": "/psp/swish/payments/{{ page.paymentId }}/transactions" },
-      "captures": { "id": "/psp/swish/payments/{{ page.paymentId }}/captures" },
-      "reversals": { "id": "/psp/swish/payments/{{ page.paymentId }}/reversals" },
-      "cancellations": { "id": "/psp/swish/payments/{{ page.paymentId }}/cancellations" },
-      "urls" : { "id": "/psp/swish/payments/{{ page.paymentId }}/urls" },
-      "payeeInfo" : { "id": "/psp/swish/payments/{{ page.paymentId }}/payeeInfo" },
-      "settings": { "id": "/psp/swish/payments/{{ page.paymentId }}/settings" }
+      "prices": { "id": "/psp/swish/payments/{{ page.payment_id }}/prices" },
+      "transactions": { "id": "/psp/swish/payments/{{ page.payment_id }}/transactions" },
+      "captures": { "id": "/psp/swish/payments/{{ page.payment_id }}/captures" },
+      "reversals": { "id": "/psp/swish/payments/{{ page.payment_id }}/reversals" },
+      "cancellations": { "id": "/psp/swish/payments/{{ page.payment_id }}/cancellations" },
+      "urls" : { "id": "/psp/swish/payments/{{ page.payment_id }}/urls" },
+      "payeeInfo" : { "id": "/psp/swish/payments/{{ page.payment_id }}/payeeInfo" },
+      "settings": { "id": "/psp/swish/payments/{{ page.payment_id }}/settings" }
     },
     "operations": [
       {
-        "href": "{{ page.apiUrl }}/psp/swish/payments/{{ page.paymentId }}",
+        "href": "{{ page.api_url }}/psp/swish/payments/{{ page.payment_id }}",
         "rel": "update-payment-abort",
         "method": "PATCH",
         "contentType": "application/json"
       },
       {
             "method": "POST",
-            "href": "{{ page.apiUrl }}/psp/swish/payments/{{ page.paymentId }}/sales",
+            "href": "{{ page.api_url }}/psp/swish/payments/{{ page.payment_id }}/sales",
             "rel": "create-sale"
       },
       {
-        "href": "{{ page.frontEndUrl }}/swish/payments/authorize/{{ page.paymentToken }}",
+        "href": "{{ page.front_end_url }}/swish/payments/authorize/{{ page.payment_token }}",
         "rel": "redirect-sale",
         "method": "GET",
         "contentType": "text/html"
       },
       {
         "method": "GET",
-        "href": "https://ecom.dev.payex.com/swish/core/scripts/client/px.swish.client.js?token={{ page.paymentToken }}",
+        "href": "https://ecom.dev.payex.com/swish/core/scripts/client/px.swish.client.js?token={{ page.payment_token }}",
         "rel": "view-sales",
         "contentType": "application/javascript"
       },
       {
             "method": "GET",
-            "href": "{{ page.frontEndUrl }}/swish/core/scripts/client/px.swish.client.js?token={{ page.paymentToken }}",
+            "href": "{{ page.front_end_url }}/swish/core/scripts/client/px.swish.client.js?token={{ page.payment_token }}",
             "rel": "view-sales",
             "contentType": "application/javascript"
       }

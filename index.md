@@ -88,7 +88,7 @@ The base URIs of the API Platform are:
 {:.table .table-striped}
 | Environment                      | Base URL                 |
 | :------------------------------- | :----------------------- |
-| [**Test**][external-integration] | `{{ page.apiUrl }}/`     |
+| [**Test**][external-integration] | `{{ page.api_url }}/`    |
 | [**Production**][production]     | `https://api.payex.com/` |
 
 An important part of REST is its use of **hypermedia**. Instead of having to
@@ -140,8 +140,8 @@ response, enabling you to access information from these sub-resources.
 **HTTP request with expansion**
 
 ```http
-GET /psp/creditcard/payments/{{ page.paymentId }}?$expand=urls,authorizations HTTP/1.1
-Host: {{ page.apiHost }}
+GET /psp/creditcard/payments/{{ page.payment_id }}?$expand=urls,authorizations HTTP/1.1
+Host: {{ page.api_host }}
 ```
 
 To avoid unnecessary overhead, you should only expand the nodes you need info
@@ -199,23 +199,23 @@ instrument specific operations.
     "payment": {},
     "operations": [
         {
-            "href": "http://{{ page.apiHost }}/psp/creditcard/payments/{{ page.paymentId }}",
+            "href": "http://{{ page.api_host }}/psp/creditcard/payments/{{ page.payment_id }}",
             "rel": "update-payment-abort",
             "method": "PATCH"
         },
         {
-            "href": "{{ page.frontEndUrl }}/creditcard/payments/authorize/{{ page.paymentToken }}",
+            "href": "{{ page.front_end_url }}/creditcard/payments/authorize/{{ page.payment_token }}",
             "rel": "redirect-authorization",
             "method": "GET"
         },
         {
-            "href": "{{ page.frontEndUrl }}/swish/core/scripts/client/px.swish.client.js?token={{ page.paymentToken }}",
+            "href": "{{ page.front_end_url }}/swish/core/scripts/client/px.swish.client.js?token={{ page.payment_token }}",
             "rel": "view-payment",
             "method": "GET",
             "contentType": "application/javascript"
         },
         {
-            "href": "{{ page.apiUrl }}/psp/creditcard/payments/{{ page.paymentId }}/captures",
+            "href": "{{ page.api_url }}/psp/creditcard/payments/{{ page.payment_id }}/captures",
             "rel": "create-capture",
             "method": "POST"
         }
@@ -241,7 +241,7 @@ specified in the response by finding the appropriate operation based on its
 
 [Read more about the settlement process here][settlement].
 
-{% include callback-reference.md payment-instrument="creditcard" %}
+{% include callback-reference.md payment_instrument="creditcard" %}
 
 ## Problems
 
@@ -261,7 +261,7 @@ The structure of a problem message will look like this:
     "type": "https://api.payex.com/psp/errordetail/creditcard/inputerror",
     "title": "There was an input error",
     "detail": "Please correct the errors and retry the request",
-    "instance": "{{ page.transactionId }}",
+    "instance": "{{ page.transaction_id }}",
     "status": 400,
     "action": "RetryNewData",
     "problems": [{
@@ -330,7 +330,7 @@ can read more about the payment instrument specific problem messages below:
   [iso-639-1]: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
   [iso-3166]: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
   [uuid]: https://en.wikipedia.org/wiki/Universally_unique_identifier
-  [external-integration]: {{ page.apiUrl }}/
+  [external-integration]: {{ page.api_url }}/
   [production]: https://api.payex.com/
   [the-rest-and-then-some]: https://www.youtube.com/watch?v=QIv9YR1bMwY
   [settlement]: #

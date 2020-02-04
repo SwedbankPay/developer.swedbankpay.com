@@ -136,7 +136,7 @@ Content-Type: application/json
             "termsOfServiceUrl": "https://example.com/terms.pdf"
         },
         "payeeInfo": {
-            "payeeId": "{{ page.payment_id }}",
+            "payeeId": "{{ page.merchant_id }}",
             "payeeReference": "ref-123456",
             "payeeName": "Merchant1",
             "productCategory": "A123",
@@ -200,7 +200,7 @@ Content-Type: application/json
 
 {
     "payment": {
-        "id": "/psp/swish/payments/{{ page.paymentId }}",
+        "id": "/psp/swish/payments/{{ page.payment_id }}",
         "number": 992308,
         "created": "2017-10-23T08:38:57.2248733Z",
         "instrument": "Swish",
@@ -215,21 +215,21 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "urls": {
-            "id": "/psp/swish/payments/{{ page.paymentId }}/urls"
+            "id": "/psp/swish/payments/{{ page.payment_id }}/urls"
         },
         "payeeInfo": {
-            "id": "/psp/swish/payments/{{ page.paymentId }}/payeeinfo"
+            "id": "/psp/swish/payments/{{ page.payment_id }}/payeeinfo"
         }
     },
     "operations": [
         {
             "method": "PATCH",
-            "href": "{{ page.apiUrl }}/psp/swish/payments/{{ page.paymentId }}",
+            "href": "{{ page.api_url }}/psp/swish/payments/{{ page.payment_id }}",
             "rel": "update-payment-abort"
         },
         {
             "method": "POST",
-            "href": "{{ page.apiUrl }}/psp/swish/payments/{{ page.paymentId }}/sales",
+            "href": "{{ page.api_url }}/psp/swish/payments/{{ page.payment_id }}/sales",
             "rel": "create-sale"
         }
     ]
@@ -248,7 +248,7 @@ request.
 **Request**
 
 ```http
-POST /psp/swish/payments/{{ page.paymentId }}/sales HTTP/1.1
+POST /psp/swish/payments/{{ page.payment_id }}/sales HTTP/1.1
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -260,7 +260,7 @@ Content-Type: application/json
 
 ```
 
-{% include transaction-response.md showRequest=false payment-instrument="swish" transaction="sale" %}
+{% include transaction-response.md showRequest=false payment_instrument="swish" transaction="sale" %}
 
 {% include iterator.html prev_href="introduction" prev_title="Back: Introduction"
 next_href="redirect" next_title="Next: Redirect" %}

@@ -6,8 +6,8 @@ in the `operations` list. See the abbreviated request and response below:
 **Request**
 
 ```http
-POST /psp/paymentorders/{{ page.paymentOrderId }}/cancellations HTTP/1.1
-Host: {{ page.apiHost }}
+POST /psp/paymentorders/{{ page.payment_order_id }}/cancellations HTTP/1.1
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -37,11 +37,11 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/creditcard/payments/{{ page.paymentId }}",
+    "payment": "/psp/creditcard/payments/{{ page.payment_id }}",
     "cancellation": {
-        "id": "/psp/creditcard/payments/{{ page.paymentId }}/cancellations/{{ page.transactionId }}",
+        "id": "/psp/creditcard/payments/{{ page.payment_id }}/cancellations/{{ page.transaction_id }}",
         "transaction": {
-            "id": "/psp/creditcard/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
+            "id": "/psp/creditcard/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
             "type": "Cancel",
             "state": "Completed",
             "amount": 5610,

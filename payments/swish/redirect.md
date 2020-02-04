@@ -182,7 +182,8 @@ Content-Type: application/json
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`type`              | `string`      | `Swish`.                                                                                                                                                                                                                                                                                           |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`amount`            | `integer`     | Amount is entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 SEK 5000 = 50.00 SEK.                                                                                                                                                                                |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`vatAmount`         | `integer`     | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                                                                                                                 |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`description`        | `string(40)`  | A textual description max 40 characters of the purchase.                                                                                                                                                                                                                                           |                                                                                                                                                                                                                                 |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`description`        | `string(40)`  | A textual description max 40 characters of the purchase.                                                                                                                                                                                                                                           |
+|          | └─➔&nbsp;`paymentAgeLimit`   | `integer`     | Positive number sets required age limit to fulfill the payment.                                                                                                                                                                                                                                    |
 |          | └➔&nbsp;`payerReference`     | `string`      | The reference to the payer (consumer/end user) from the merchant system. E.g mobile number, customer number etc.                                                                                                                                                                                   |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`userAgent`          | `string`      | The user agent reference of the consumer's browser - [see user agent definition][user-agent-definition]                                                                                                                                                                                            |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`language`           | `string`      | `nb-NO`, `sv-SE` or `en-US`.                                                                                                                                                                                                                                                                       |
@@ -213,7 +214,7 @@ Content-Type: application/json
 
 {
     "payment": {
-        "id": "/psp/swish/payments/{{ page.paymentId }}",
+        "id": "/psp/swish/payments/{{ page.payment_id }}",
         "number": 992308,
         "created": "2017-10-23T08:38:57.2248733Z",
         "instrument": "Swish",
@@ -228,21 +229,21 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "urls": {
-            "id": "/psp/swish/payments/{{ page.paymentId }}/urls"
+            "id": "/psp/swish/payments/{{ page.payment_id }}/urls"
         },
         "payeeInfo": {
-            "id": "/psp/swish/payments/{{ page.paymentId }}/payeeinfo"
+            "id": "/psp/swish/payments/{{ page.payment_id }}/payeeinfo"
         }
     },
     "operations": [
         {
             "method": "PATCH",
-            "href": "{{ page.apiUrl }}/psp/swish/payments/{{ page.paymentId }}",
+            "href": "{{ page.api_url }}/psp/swish/payments/{{ page.payment_id }}",
             "rel": "update-payment-abort"
         },
         {
             "method": "POST",
-            "href": "{{ page.apiUrl }}/psp/swish/payments/{{ page.paymentId }}/sales",
+            "href": "{{ page.api_url }}/psp/swish/payments/{{ page.payment_id }}/sales",
             "rel": "create-sale"
         }
     ]

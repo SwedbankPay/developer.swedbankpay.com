@@ -24,7 +24,7 @@ sidebar:
 
 ## Payment Resource
 
-{% include payment-resource.md  payment-instrument="vipps" showStatusOperations=true%}
+{% include payment-resource.md  payment_instrument="vipps" show_status_operations=true%}
 
 {% include payment-transaction-states.md %}
 
@@ -44,7 +44,7 @@ response that includes one or more expanded sub-resources inlined.
 
 ```http
 POST /psp/vipps/payments HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -69,13 +69,13 @@ Content-Type: application/json
             "completeUrl": "http://example.com/payment-completed",
             "cancelUrl": "http://example.com/payment-canceled",
             "paymentUrl": "http://example.com/perform-payment",
-            "callbackUrl": "{{ page.apiUrl }}/psp/payment-callback",
+            "callbackUrl": "{{ page.api_url }}/psp/payment-callback",
             "logoUrl": "https://example.com/path/to/logo.png",
             "termsOfServiceUrl": "https://example.com/terms.pdf"
 
         },
         "payeeInfo": {
-            "payeeId": "{{ page.merchantId }}"
+            "payeeId": "{{ page.merchant_id }}"
             "payeeReference": "Postmantimestamp",
             "payeeName": "Merchant1",
             "productCategory": "A123",
@@ -130,7 +130,7 @@ Content-Type: application/json
 
 {
     "payment": {
-        "id": "/psp/vipps/payments/{{ page.paymentId }}",
+        "id": "/psp/vipps/payments/{{ page.payment_id }}",
         "number": 72100003079,
         "created": "2018-09-05T14:18:44.4259255Z",
         "instrument": "Vipps",
@@ -139,7 +139,7 @@ Content-Type: application/json
         "state": "Ready",
         "currency": "NOK",
         "prices": {
-            "id": "/psp/vipps/payments/{{ page.paymentId }}/prices"
+            "id": "/psp/vipps/payments/{{ page.payment_id }}/prices"
         },
         "amount": 0,
         "description": "Vipps Test",
@@ -148,24 +148,24 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0 weeeeee",
         "language": "nb-NO",
         "urls": {
-            "id": "/psp/vipps/payments/{{ page.paymentId }}/urls"
+            "id": "/psp/vipps/payments/{{ page.payment_id }}/urls"
         },
         "payeeInfo": {
-            "id": "/psp/vipps/payments/{{ page.paymentId }}/payeeinfo"
+            "id": "/psp/vipps/payments/{{ page.payment_id }}/payeeinfo"
         },
         "metadata": {
-            "id": "/psp/vipps/payments/{{ page.paymentId }}/metadata"
+            "id": "/psp/vipps/payments/{{ page.payment_id }}/metadata"
         }
     },
     "operations": [
         {
             "method": "PATCH",
-            "href": "{{ page.apiUrl }}/psp/vipps/payments/{{ page.paymentId }}",
+            "href": "{{ page.api_url }}/psp/vipps/payments/{{ page.payment_id }}",
             "rel": "update-payment-abort"
         },
         {
             "method": "GET",
-            "href": "{{ page.frontEndUrl }}/vipps/payments/authorize/afccf3d0016340620756d5ff3e08f69b555fbe2e45ca71f4bd159ebdb0f00065",
+            "href": "{{ page.front_end_url }}/vipps/payments/authorize/afccf3d0016340620756d5ff3e08f69b555fbe2e45ca71f4bd159ebdb0f00065",
             "rel": "redirect-authorization"
         }
     ]
@@ -197,13 +197,13 @@ payment altogether or creating an authorization transaction through the
 
 ### Prices
 
-{% include prices.md payment-instrument="vipps" %}
+{% include prices.md payment_instrument="vipps" %}
 
 ### Payee reference
 
 {% include payee-info.md %}
 
-{% include transactions-reference.md payment-instrument="vipps" %}
+{% include transactions-reference.md payment_instrument="vipps" %}
 
 ## Problem messages
 
