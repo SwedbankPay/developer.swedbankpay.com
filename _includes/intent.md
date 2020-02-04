@@ -1,10 +1,10 @@
 {% assign autocapture = include.autocapture | default: false %}
-{% assign show-authorization = include.show-authorization | default: true %}
+{% assign show_authorization = include.show_authorization | default: true %}
 
 The intent of the payment identifies how and when the charge will be
 effectuated. This determines the type of transaction used during the payment
 process.
-{% if show-authorization%}
+{% if show_authorization%}
 
 * **`Authorization` (two-phase)**: If you want the credit card to reserve the
   amount, you will have to specify that the intent of the purchase is

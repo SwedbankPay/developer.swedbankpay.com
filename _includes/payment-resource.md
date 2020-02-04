@@ -1,5 +1,5 @@
-{% assign payment-instrument = include.payment-instrument | default: "creditcard" %}
-{% assign showStatusOperations = include.showStatusOperations | default: false %}
+{% assign payment_instrument = include.payment_instrument | default: "creditcard" %}
+{% assign show_status_operations = include.show_status_operations | default: false %}
 
 The `payment` resource is central to all payment instruments. All operations
 that target the payment resource directly produce a response similar to the
@@ -10,8 +10,8 @@ possible to perform in the current state of the payment.
 **Request**
 
 ```http
-GET /psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/ HTTP/1.1
-Host: {{ page.apiHost }}
+GET /psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/ HTTP/1.1
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -25,7 +25,7 @@ Content-Type: application/json
 
 {
     "payment": {
-        "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}",
+        "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}",
         "number": 1234567890,
         "created": "2016-09-14T13:21:29.3182115Z",
         "updated": "2016-09-14T13:21:57.6627579Z",
@@ -43,64 +43,64 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",
         "prices": {
-            "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/prices"
+            "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/prices"
         },
         "payeeInfo": {
-            "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/payeeInfo"
+            "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/payeeInfo"
         },
         "urls": {
-            "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/urls"
+            "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/urls"
         },
         "transactions": {
-            "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/transactions"
-        }{% unless payment-instrument == "swish" %},
+            "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/transactions"
+        }{% unless payment_instrument == "swish" %},
         "authorizations": {
-            "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/authorizations"
+            "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/authorizations"
         }{% endunless %},
         "captures": {
-            "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/captures"
+            "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/captures"
         },
         "reversals": {
-            "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/reversals"
+            "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/reversals"
         },
         "cancellations": {
-            "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/cancellations"
+            "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/cancellations"
         }
     },
     "operations": [
         {
             "method": "PATCH",
-            "href": "{{ page.apiUrl }}/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}",
+            "href": "{{ page.api_url }}/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}",
             "rel": "update-payment-abort",
             "contentType": "application/json"
-        }{% unless payment-instrument == "swish" %},
+        }{% unless payment_instrument == "swish" %},
         {
             "method": "GET",
-            "href": "{{ page.frontEndUrl }}/{{ payment-instrument }}/core/scripts/client/px.{{ payment-instrument }}.client.js?token={{ page.paymentToken }}&operation=authorize",
+            "href": "{{ page.front_end_url }}/{{ payment_instrument }}/core/scripts/client/px.{{ payment_instrument }}.client.js?token={{ page.payment_token }}&operation=authorize",
             "rel": "view-authorization",
             "contentType": "application/javascript"
         },
         {
             "method": "GET",
-            "href": "{{ page.frontEndUrl }}/{{ payment-instrument }}/payments/authorize/{{ page.transactionId }}",
+            "href": "{{ page.front_end_url }}/{{ payment_instrument }}/payments/authorize/{{ page.transaction_id }}",
             "rel": "redirect-authorization",
             "contentType": "text/html"
         },{% endunless %}
         {
             "method": "POST",
-            "href": "{{ page.apiUrl }}/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/captures",
+            "href": "{{ page.api_url }}/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/captures",
             "rel": "create-capture",
             "contentType": "application/json"
-        }{% if showStatusOperations %},
+        }{% if show_status_operations %},
         {
             "method": "GET",
-            "href": "{{ page.apiUrl }}/psp/{{ payment-instrument }}/{{ page.paymentId }}/paid",
+            "href": "{{ page.api_url }}/psp/{{ payment_instrument }}/{{ page.payment_id }}/paid",
             "rel": "paid-payment",
             "contentType": "application/json"
         },
         {
             "method": "GET",
-            "href": "{{ page.apiUrl }}/psp/{{ payment-instrument }}/{{ page.paymentId }}/failed",
+            "href": "{{ page.api_url }}/psp/{{ payment_instrument }}/{{ page.payment_id }}/failed",
             "rel": "failed-payment",
             "contentType": "application/problem+json"
         }
@@ -141,7 +141,7 @@ The only thing that should be hard coded in the client is the value of
 the `rel` and the request that will be sent in the HTTP body of the request
 for the given operation.
 
-{% case payment-instrument %}
+{% case payment_instrument %}
 
 {% when "creditaccount" %}
 
@@ -156,14 +156,14 @@ for the given operation.
 {% when "swish" %}
 
 {:.table .table-striped}
-| Operation                | Description                                                                                                               |
-| :----------------------- | :------------------------------------------------------------------------------------------------------------------------ |
-| `update-payment-abort`   | `abort`s the payment order before any financial transactions are performed.                                               |
-| `create-capture`         | Creates a `capture` transaction in order to charge the reserved funds from the consumer.                                  |
-| `create-cancellation`    | Creates a `cancellation` transaction that cancels a created, but not yet captured payment.                                |
+| Operation              | Description                                                                                |
+| :--------------------- | :----------------------------------------------------------------------------------------- |
+| `update-payment-abort` | `abort`s the payment order before any financial transactions are performed.                |
+| `create-capture`       | Creates a `capture` transaction in order to charge the reserved funds from the consumer.   |
+| `create-cancellation`  | Creates a `cancellation` transaction that cancels a created, but not yet captured payment. |
 
 {% else %}
-{% if showStatusOperations %}
+{% if show_status_operations %}
 
 {:.table .table-striped}
 | Operation                | Description                                                                                                               |

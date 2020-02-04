@@ -137,7 +137,7 @@ Content-Type: application/json
             "termsOfServiceUrl": "http://example.com/terms.pdf"
         },
         "payeeInfo": {
-            "payeeId": "{{ page.merchantId }}",
+            "payeeId": "{{ page.merchant_id }}",
             "payeeReference": "PR123",
             "payeeName": "Merchant1",
             "productCategory": "PC1234",
@@ -176,7 +176,7 @@ Content-Type: application/json
 |          | └➔&nbsp;`generatePaymentToken`        | `boolean`     | `true` or `false`. Set this to `true` if you want to create a paymentToken for future use as One Click.                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 |          | └➔&nbsp;`generateRecurrenceToken`     | `boolean`     | `true` or `false`. Set this to `true` if you want to create a recurrenceToken for future use Recurring purchases (subscription payments).                                                                                                                                                                                                                                                                                                                                                                                                      |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`userAgent`                   | `string`      | The user agent reference of the consumer's browser - [see user agent definition][user-agent-definition]                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`language`                    | `string`      | `nb-NO`, `sv-SE` or `en-US`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`language`                    | `string`      | `nb-NO`, `sv-SE` or `en-US`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`urls`                        | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 |          | └─➔&nbsp;`hostUrl`                    | `array`       | The array of URLs valid for embedding of Swedbank Pay Hosted Views. If not supplied, view-operation will not be available.                                                                                                                                                                                                                                                                                                                                                                                                                     |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`completeUrl`                | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further.                                                                                                                                                                                                                                             |
@@ -215,7 +215,7 @@ Content-Type: application/json
 
 {
     "payment": {
-        "id": "/psp/invoice/payments/{{ page.paymentId }}",
+        "id": "/psp/invoice/payments/{{ page.payment_id }}",
         "number": 1234567890,
         "instrument": "Invoice",
         "created": "2016-09-14T13:21:29.3182115Z",
@@ -232,52 +232,52 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "prices": {
-            "id": "/psp/invoice/payments/{{ page.paymentId }}/prices"
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/prices"
         },
         "transactions": {
-            "id": "/psp/invoice/payments/{{ page.paymentId }}/transactions"
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/transactions"
         },
         "authorizations": {
-            "id": "/psp/invoice/payments/{{ page.paymentId }}/authorizations"
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/authorizations"
         },
         "captures": {
-            "id": "/psp/invoice/payments/{{ page.paymentId }}/captures"
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/captures"
         },
         "reversals": {
-            "id": "/psp/invoice/payments/{{ page.paymentId }}/reversals"
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/reversals"
         },
         "cancellations": {
-            "id": "/psp/invoice/payments/{{ page.paymentId }}/cancellations"
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/cancellations"
         },
         "payeeInfo": {
-            "id": "/psp/invoice/payments/{{ page.paymentId }}/payeeInfo"
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/payeeInfo"
         },
         "urls": {
-            "id": "/psp/invoice/payments/{{ page.paymentId }}/urls"
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/urls"
         },
         "settings": {
-            "id": "/psp/invoice/payments/{{ page.paymentId }}/settings"
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/settings"
         },
         "approvedLegalAddress": {
-            "id": "/psp/invoice/payments/{{ page.paymentId }}/approvedlegaladdress"
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/approvedlegaladdress"
         },
         "maskedApprovedLegalAddress": {
-            "id": "/psp/invoice/payments/{{ page.paymentId }}/maskedapprovedlegaladdress"
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/maskedapprovedlegaladdress"
         }
     },
     "operations": [
         {
-            "href": "{{ page.apiUrl }}/psp/invoice/payments/{{ page.paymentId }}",
+            "href": "{{ page.api_url }}/psp/invoice/payments/{{ page.payment_id }}",
             "rel": "update-payment-abort",
             "method": "PATCH"
         },
         {
-            "href": "{{ page.apiUrl }}/psp/invoice/payments/{{ page.paymentId }}/authorizations",
+            "href": "{{ page.api_url }}/psp/invoice/payments/{{ page.payment_id }}/authorizations",
             "rel": "create-authorize",
             "method": "POST"
         },
         {
-            "href": "{{ page.apiUrl }}/psp/invoice/payments/{{ page.paymentId }}/approvedlegaladdress",
+            "href": "{{ page.api_url }}/psp/invoice/payments/{{ page.payment_id }}/approvedlegaladdress",
             "rel": "create-approved-legal-address",
             "method": "POST"
         }
@@ -296,8 +296,8 @@ possible to perform in the current state of the payment.
 **Request**
 
 ```http
-GET /psp/invoice/payments/{{ page.paymentId }}/ HTTP/1.1
-Host: {{ page.apiHost }}
+GET /psp/invoice/payments/{{ page.payment_id }}/ HTTP/1.1
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -311,7 +311,7 @@ Content-Type: application/json
 
 {
     "payment": {
-        "id": "/psp/invoice/payments/{{ page.paymentId }}",
+        "id": "/psp/invoice/payments/{{ page.payment_id }}",
         "number": 1234567890,
         "created": "2016-09-14T13:21:29.3182115Z",
         "updated": "2016-09-14T13:21:57.6627579Z",
@@ -329,55 +329,55 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "prices": {
-            "id": "/psp/invoice/payments/{{ page.paymentId }}/prices"
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/prices"
         },
         "transactions": {
-            "id": "/psp/invoice/payments/{{ page.paymentId }}/transactions"
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/transactions"
         },
         "authorizations": {
-            "id": "/psp/invoice/payments/{{ page.paymentId }}/authorizations"
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/authorizations"
         },
         "captures": {
-            "id": "/psp/invoice/payments/{{ page.paymentId }}/captures"
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/captures"
         },
         "reversals": {
-            "id": "/psp/invoice/payments/{{ page.paymentId }}/reversals"
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/reversals"
         },
         "cancellations": {
-            "id": "/psp/invoice/payments/{{ page.paymentId }}/cancellations"
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/cancellations"
         },
         "payeeInfo": {
-            "id": "/psp/invoice/payments/{{ page.paymentId }}/payeeInfo"
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/payeeInfo"
         },
         "urls": {
-            "id": "/psp/invoice/payments/{{ page.paymentId }}/urls"
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/urls"
         },
         "settings": {
-            "id": "/psp/invoice/payments/{{ page.paymentId }}/settings"
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/settings"
         },
         "approvedLegalAddress": {
-            "id": "/psp/invoice/payments/{{ page.paymentId }}/approvedlegaladdress"
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/approvedlegaladdress"
         },
         "maskedApprovedLegalAddress": {
-            "id": "/psp/invoice/payments/{{ page.paymentId }}/maskedapprovedlegaladdress"
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/maskedapprovedlegaladdress"
         }
     },
     "approvedLegalAddress": {
-        "id": "/psp/invoice/payments/{{ page.paymentId }}/approvedlegaladdress"
+        "id": "/psp/invoice/payments/{{ page.payment_id }}/approvedlegaladdress"
     },
     "operations": [
         {
-            "href": "{{ page.apiUrl }}/psp/invoice/payments/{{ page.paymentId }}/captures",
+            "href": "{{ page.api_url }}/psp/invoice/payments/{{ page.payment_id }}/captures",
             "rel": "create-capture",
             "method": "POST"
         },
         {
-            "href": "{{ page.apiUrl }}/psp/invoice/payments/{{ page.paymentId }}/cancellations",
+            "href": "{{ page.api_url }}/psp/invoice/payments/{{ page.payment_id }}/cancellations",
             "rel": "create-cancel",
             "method": "POST"
         },
         {
-            "href": "{{ page.apiUrl }}/psp/invoice/payments/{{ page.paymentId }}/approvedlegaladdress",
+            "href": "{{ page.api_url }}/psp/invoice/payments/{{ page.payment_id }}/approvedlegaladdress",
             "rel": "create-approved-legal-address",
             "method": "POST"
         }

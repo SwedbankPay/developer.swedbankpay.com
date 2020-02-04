@@ -1,5 +1,5 @@
 repository: SwedbankPay/developer.swedbankpay.com
-remote_theme: SwedbankPay/swedbank-pay-design-guide-jekyll-theme
+remote_theme: SwedbankPay/swedbank-pay-design-guide-jekyll-theme@1.0.0
 exclude: ["Gemfile*", "Rakefile"]
 plugins:
   - "jekyll-github-metadata"
@@ -29,11 +29,11 @@ google_analytics:
 defaults:
   - values:
       layout: default
-      paymentId: 7e6cdfc3-1276-44e9-9992-7cf4419750e1
-      transactionId: ec2a9b09-601a-42ae-8e33-a5737e1cf177
-      paymentOrderId: 09ccd29a-7c4f-4752-9396-12100cbfecce
-      merchantId: 5cabf558-5283-482f-b252-4d58e06f6f3b
-      paymentToken: afccf3d0016340620756d5ff3e08f69b555fbe2e45ca71f4bd159ebdb0f00065
-      apiHost: api.externalintegration.payex.com
-      apiUrl: https://api.externalintegration.payex.com
-      frontEndUrl: https://ecom.externalintegration.payex.com
+      payment_id: 7e6cdfc3-1276-44e9-9992-7cf4419750e1
+      transaction_id: ec2a9b09-601a-42ae-8e33-a5737e1cf177
+      payment_order_id: 09ccd29a-7c4f-4752-9396-12100cbfecce
+      merchant_id: 5cabf558-5283-482f-b252-4d58e06f6f3b
+      payment_token: afccf3d0016340620756d5ff3e08f69b555fbe2e45ca71f4bd159ebdb0f00065
+      api_host: api.externalintegration.payex.com
+      api_url: https://api.externalintegration.payex.com
+      front_end_url: https://ecom.externalintegration.payex.com

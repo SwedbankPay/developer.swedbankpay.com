@@ -22,7 +22,7 @@ sidebar:
 
 ## Payment Resource
 
-{% include payment-resource.md payment-instrument="swish" showStatusOperations=true%}
+{% include payment-resource.md payment_instrument="swish" showStatusOperations=true%}
 
 {% include payment-transaction-states.md %}
 
@@ -42,7 +42,7 @@ response that includes one or more expanded sub-resources inlined.
 
 ```http
 POST /psp/swish/payments HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -69,7 +69,7 @@ Content-Type: application/json
             "termsOfServiceUrl": "https://example.com/terms.pdf"
         },
         "payeeInfo": {
-            "payeeId": "{{ page.merchantId }}",
+            "payeeId": "{{ page.merchant_id }}",
             "payeeReference": "ref-123456",
             "payeeName": "Merchant1",
             "productCategory": "A123",
@@ -100,7 +100,7 @@ Content-Type: application/json
 |    ✔︎    | └➔&nbsp;`description`           | `string(40)` | A textual description max 40 characters of the purchase.                                                                                                                                                                                                  |
 |          | └➔&nbsp;`payerReference`        | `string`     | The reference to the payer (consumer/end-user) from the merchant system, like mobile number, customer number etc.                                                                                                                                         |
 |    ✔︎    | └➔&nbsp;`userAgent`             | `string`     | The user agent reference of the consumer's browser - [see user agent definition][user-agent]                                                                                                                                                              |
-|    ✔︎    | └➔&nbsp;`language`              | `string`     | `nb-NO`, `sv-SE` or `en-US`.                                                                                                                                                                                                                                    |
+|    ✔︎    | └➔&nbsp;`language`              | `string`     | `nb-NO`, `sv-SE` or `en-US`.                                                                                                                                                                                                                              |
 |    ✔︎    | └➔&nbsp;`urls`                  | `object`     | The URLS object contains information about what urls this payment should use.                                                                                                                                                                             |
 |    ✔︎    | └─➔&nbsp;`hostUrls`             | `array`      | The array of URIs valid for embedding of Swedbank Pay Hosted Views.                                                                                                                                                                                       |
 |    ✔︎    | └─➔&nbsp;`completeUrl`          | `string`     | The URI that Swedbank Pay will redirect back to when the payment page is completed. This does not indicate a successful payment, only that it has reached a completion state. A `GET` request needs to be performed on the payment to inspect it further. |
@@ -127,7 +127,7 @@ Content-Type: application/json
 
 {
     "payment": {
-        "id": "/psp/swish/payments/{{ page.paymentId }}",
+        "id": "/psp/swish/payments/{{ page.payment_id }}",
         "number": 992308,
         "created": "2017-10-23T08:38:57.2248733Z",
         "instrument": "Swish",
@@ -142,16 +142,16 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "urls": {
-            "id": "/psp/swish/payments/{{ page.paymentId }}/urls"
+            "id": "/psp/swish/payments/{{ page.payment_id }}/urls"
         },
         "payeeInfo": {
-            "id": "/psp/swish/payments/{{ page.paymentId }}/payeeinfo"
+            "id": "/psp/swish/payments/{{ page.payment_id }}/payeeinfo"
         }
     },
     "operations": [
         {
             "method": "POST",
-            "href": "http://{{ page.apiHost }}/psp/swish/payments/{{ page.paymentId }}/sales",
+            "href": "http://{{ page.api_host }}/psp/swish/payments/{{ page.payment_id }}/sales",
             "rel": "create-sale"
         }
 }
@@ -159,11 +159,11 @@ Content-Type: application/json
 
 {% include settlement-reconciliation.md %}
 
-{% include payment-link.md show-3d-secure=false show-authorization=false %}
+{% include payment-link.md show_3d_secure=false show_authorization=false %}
 
 ### Prices
 
-{% include prices.md payment-instrument="swish" %}
+{% include prices.md payment_instrument="swish" %}
 
 ### Payee reference
 
@@ -171,9 +171,9 @@ Content-Type: application/json
 
 {% include expand-parameter.md %}
 
-{% include transactions-reference.md payment-instrument="swish" %}
+{% include transactions-reference.md payment_instrument="swish" %}
 
-{% include callback-reference.md payment-instrument="swish" %}
+{% include callback-reference.md payment_instrument="swish" %}
 
 ### Problem messages
 
@@ -187,7 +187,7 @@ of the problem.
 ### Specific Swish error types
 
 All Swish error types will have the following URI in front of type:
-`https://api.payex.com/psp/swish/payments/<errortype>`
+`{{ page.api_url }}/psp/<errordetail>/swish`
 
 ### `inputerror`
 

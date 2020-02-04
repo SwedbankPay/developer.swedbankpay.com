@@ -1,5 +1,5 @@
 ---
-title: Swedbank Pay Payments Mobile Pay Redirect
+title: Swedbank Pay MobilePay Payments – Redirect
 sidebar:
   navigation:
   - title: MobilePay Payments
@@ -161,7 +161,7 @@ Content-Type: application/json
             "callbackUrl": "http://example.com/payment-callback"
         },
         "payeeInfo": {
-            "payeeId": "{{ page.merchantId }}",
+            "payeeId": "{{ page.merchant_id }}",
             "payeeReference": "CD1234",
             "payeeName": "Merchant1",
             "productCategory": "A123",
@@ -218,9 +218,9 @@ Content-Type: application/json
 {
     "payment": {
         "prices": {
-            "id": "/psp/mobilepay/payments/{{ page.paymentId }}/prices"
+            "id": "/psp/mobilepay/payments/{{ page.payment_id }}/prices"
         },
-        "id": "/psp/mobilepay/payments/{{ page.paymentId }}",
+        "id": "/psp/mobilepay/payments/{{ page.payment_id }}",
         "number": 75100000121,
         "created": "2018-09-11T10:58:27.4236127Z",
         "updated": "2018-09-11T10:58:30.8254419Z",
@@ -236,24 +236,24 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0",
         "language": "da-DK",
         "transactions": {
-            "id": "/psp/mobilepay/payments/{{ page.paymentId }}/transactions"
+            "id": "/psp/mobilepay/payments/{{ page.payment_id }}/transactions"
         },
         "urls": {
-            "id": "/psp/mobilepay/payments/{{ page.paymentId }}/urls"
+            "id": "/psp/mobilepay/payments/{{ page.payment_id }}/urls"
         },
         "payeeInfo": {
-            "id": "/psp/mobilepay/payments/{{ page.paymentId }}/payeeinfo"
+            "id": "/psp/mobilepay/payments/{{ page.payment_id }}/payeeinfo"
         }
     },
     "operations": [
         {
             "method": "PATCH",
-            "href": "{{ page.apiUrl }}/psp/mobilepay/payments/{{ page.paymentId }}",
+            "href": "{{ page.api_url }}/psp/mobilepay/payments/{{ page.payment_id }}",
             "rel": "update-payment-abort"
         },
         {
             "method": "GET",
-            "href": "{{ page.frontEndUrl }}/mobilepay/payments/authorize/{{ page.transactionId }}",
+            "href": "{{ page.front_end_url }}/mobilepay/payments/authorize/{{ page.transaction_id }}",
             "rel": "redirect-authorization"
         }
     ]

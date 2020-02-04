@@ -6,8 +6,8 @@ If we want to reverse a previously captured amount, we need to perform
 **Request**
 
 ```http
-POST /psp/paymentorders/{{ page.paymentOrderId }}/reversals HTTP/1.1
-Host: {{ page.apiHost }}
+POST /psp/paymentorders/{{ page.payment_order_id }}/reversals HTTP/1.1
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -64,7 +64,7 @@ Content-Type: application/json
 |  ✔︎︎︎︎︎  | └➔&nbsp;`orderItems`           | `array`      | The array of items being purchased with the order. Used to print on invoices if the payer chooses to pay with invoice, among other things. Required in `capture` requests if already sent with the initial creation of the Payment Order. Note that this should only contain the items to be captured from the order. |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`reference`           | `string`     | A reference that identifies the order item.                                                                                                                                                                                                                                                                           |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`name`                | `string`     | The name of the order item.                                                                                                                                                                                                                                                                                           |
-|  ✔︎︎︎︎︎  | └─➔&nbsp;`type`                | `enum`     | `PRODUCT`, `SERVICE`, `SHIPPING_FEE`, `PAYMENT_FEE`, `DISCOUNT`, `VALUE_CODE` or `OTHER`. The type of the order item.                                                                                                                                                                                                 |
+|  ✔︎︎︎︎︎  | └─➔&nbsp;`type`                | `enum`       | `PRODUCT`, `SERVICE`, `SHIPPING_FEE`, `PAYMENT_FEE`, `DISCOUNT`, `VALUE_CODE` or `OTHER`. The type of the order item.                                                                                                                                                                                                 |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`class`               | `string`     | The classification of the order item. Can be used for assigning the order item to a specific product category, such as `MobilePhone`. Note that `class` cannot contain spaces. Swedbank Pay may use this field for statistics.                                                                                        |
 |          | └─➔&nbsp;`itemUrl`             | `string`     | The URL to a page that can display the purchased item, product or similar.                                                                                                                                                                                                                                            |
 |          | └─➔&nbsp;`imageUrl`            | `string`     | The URL to an image of the order item.                                                                                                                                                                                                                                                                                |
@@ -72,8 +72,8 @@ Content-Type: application/json
 |          | └─➔&nbsp;`discountDescription` | `string`     | The human readable description of the possible discount.                                                                                                                                                                                                                                                              |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`quantity`            | `integer`    | The 4 decimal precision quantity of order items being purchased.                                                                                                                                                                                                                                                      |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`quantityUnit`        | `string`     | The unit of the quantity, such as `pcs`, `grams`, or similar. This is a free-text field and is used for your own book keeping.                                                                                                                                                                                        |
-|  ✔︎︎︎︎︎  | └─➔&nbsp;`unitPrice`           | `integer`    | The price per unit of order item, including VAT.                                                                                                                                                                                                                                                                                     |
-|          | └─➔&nbsp;`discountPrice`       | `integer`    | If the order item is purchased at a discounted price. This property should contain that price, including VAT.                                                                                                                                                                                                                        |
+|  ✔︎︎︎︎︎  | └─➔&nbsp;`unitPrice`           | `integer`    | The price per unit of order item, including VAT.                                                                                                                                                                                                                                                                      |
+|          | └─➔&nbsp;`discountPrice`       | `integer`    | If the order item is purchased at a discounted price. This property should contain that price, including VAT.                                                                                                                                                                                                         |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`vatPercent`          | `integer`    | The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.                                                                                                                                                                                                                                              |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`amount`              | `integer`    | The total amount including VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 SEK` and `5000` equals `50.00 SEK`.                                                                                                                 |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`vatAmount`           | `integer`    | The total amount of VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 SEK` and `5000` equals `50.00 SEK`.                                                                                                                        |
@@ -88,11 +88,11 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/creditcard/payments/{{ page.paymentOrderId }}",
+    "payment": "/psp/creditcard/payments/{{ page.payment_order_id }}",
     "reversals": {
-        "id": "/psp/creditcard/payments/{{ page.paymentOrderId }}/cancellations/{{ page.transactionId }}",
+        "id": "/psp/creditcard/payments/{{ page.payment_order_id }}/cancellations/{{ page.transaction_id }}",
         "transaction": {
-            "id": "/psp/creditcard/payments/{{ page.paymentOrderId }}/transactions/{{ page.transactionId }}",
+            "id": "/psp/creditcard/payments/{{ page.payment_order_id }}/transactions/{{ page.transaction_id }}",
             "type": "Reversal",
             "state": "Completed",
             "amount": 15610,
