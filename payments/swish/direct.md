@@ -115,7 +115,8 @@ Content-Type: application/json
         "operation": "Purchase",
         "intent": "Sale",
         "currency": "SEK",
-        "prices": [{
+        "prices": [
+            {
                 "type": "Swish",
                 "amount": 1500,
                 "vatAmount": 0

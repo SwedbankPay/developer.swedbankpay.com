@@ -165,10 +165,10 @@ Content-Type: application/json
         },
         "payeeInfo": {
             "payeeId": "{{ page.merchantId }}",
-            "payeeReference": "ref-123456",
+            "payeeReference": "CD1234",
             "payeeName": "Merchant1",
             "productCategory": "A123",
-            "orderReference": "or-123456",
+            "orderReference": "or123",
             "subsite": "MySubsite"
         },
         "prefillInfo": {
