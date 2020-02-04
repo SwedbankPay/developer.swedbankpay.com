@@ -36,5 +36,5 @@ defaults:
       paymentToken: afccf3d0016340620756d5ff3e08f69b555fbe2e45ca71f4bd159ebdb0f00065
       apiHost: api.externalintegration.payex.com
       apiUrl: https://api.externalintegration.payex.com
-      frontEndUrl: https://ecom.externalintegration.payex.com
+      front_end_url: https://ecom.externalintegration.payex.com
       consumerSSN: 199710202392

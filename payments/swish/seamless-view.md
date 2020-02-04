@@ -166,7 +166,7 @@ Content-Type: application/json
             "termsOfServiceUrl": "https://example.com/payment-terms.pdf"
         },
         "payeeInfo": {
-            "payeeId": "{{ page.merchantId }}",
+            "payeeId": "{{ page.merchant_id }}",
             "payeeReference": "CD1234",
             "payeeName": "Merchant1",
             "productCategory": "A123",
