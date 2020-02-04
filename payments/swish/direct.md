@@ -115,8 +115,7 @@ Content-Type: application/json
         "operation": "Purchase",
         "intent": "Sale",
         "currency": "SEK",
-        "prices": [
-            {
+        "prices": [{
                 "type": "Swish",
                 "amount": 1500,
                 "vatAmount": 0
@@ -145,13 +144,14 @@ Content-Type: application/json
         },
         "prefillInfo": {
             "msisdn": "+46739000001"
-        },
-        "swish": {
-            "enableEcomOnly": false,
-            "paymentRestrictedToAgeLimit": 18,
-            "paymentRestrictedToSocialSecurityNumber": "{{ page.consumerSSN }}"
         }
+    },
+    "swish": {
+        "enableEcomOnly": false,
+        "paymentRestrictedToAgeLimit": 18,
+        "paymentRestrictedToSocialSecurityNumber": "{{ page.consumerSSN }}"
     }
+    
 }
 ```
 
