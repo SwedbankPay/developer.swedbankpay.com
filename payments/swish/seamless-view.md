@@ -151,6 +151,8 @@ Content-Type: application/json
             }
         ],
         "description": "Test Purchase",
+        "generatePaymentToken": false,
+        "generateRecurrenceToken": false,
         "payerReference": "AB1234",
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
