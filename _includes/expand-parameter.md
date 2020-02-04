@@ -19,8 +19,8 @@ response, enabling you to access information from these sub-resources.
 **Expansion**
 
 ```http
-GET /psp/creditcard/payments/{{ page.paymentId }}?$expand=urls,authorizations HTTP/1.1
-Host: {{ page.apiHost }}
+GET /psp/creditcard/payments/{{ page.payment_id }}?$expand=urls,authorizations HTTP/1.1
+Host: {{ page.api_host }}
 ```
 
 To avoid unnecessary overhead, you should only expand the nodes you need info

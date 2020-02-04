@@ -1,5 +1,5 @@
 ---
-title: Swedbank Pay Payments Mobile Pay Other Features
+title: Swedbank Pay MobilePay Payments – Other Features
 sidebar:
   navigation:
   - title: MobilePay Payments
@@ -18,11 +18,11 @@ sidebar:
 
 ## Payment Resource
 
-{% include payment-resource.md payment-instrument="mobilepay" %}
+{% include payment-resource.md payment_instrument="mobilepay" %}
 
 ### Create Payment
 
-To create a Mobile Pay payment, you perform an HTTP `POST` against the
+To create a MobilePay payment, you perform an HTTP `POST` against the
 `/psp/mobilepay/payments` resource. Please read the [general
 information][general-http-info] on how to compose a valid HTTP request before
 proceeding.
@@ -127,9 +127,9 @@ Content-Type: application/json
 {
     "payment": {
         "prices": {
-            "id": "/psp/mobilepay/payments/{{ page.paymentId }}/prices"
+            "id": "/psp/mobilepay/payments/{{ page.payment_id }}/prices"
         },
-        "id": "/psp/mobilepay/payments/{{ page.paymentId }}",
+        "id": "/psp/mobilepay/payments/{{ page.payment_id }}",
         "number": 75100000121,
         "created": "2018-09-11T10:58:27.4236127Z",
         "updated": "2018-09-11T10:58:30.8254419Z",
@@ -145,30 +145,31 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0",
         "language": "da-DK",
         "transactions": {
-            "id": "/psp/mobilepay/payments/{{ page.paymentId }}/transactions"
+            "id": "/psp/mobilepay/payments/{{ page.payment_id }}/transactions"
         },
         "urls": {
-            "id": "/psp/mobilepay/payments/{{ page.paymentId }}/urls"
+            "id": "/psp/mobilepay/payments/{{ page.payment_id }}/urls"
         },
         "payeeInfo": {
-            "id": "/psp/mobilepay/payments/{{ page.paymentId }}/payeeinfo"
+            "id": "/psp/mobilepay/payments/{{ page.payment_id }}/payeeinfo"
         }
     },
     "operations": [
         {
             "method": "PATCH",
-            "href": "https://{{ page.apiUrl }}/psp/mobilepay/payments/{{ page.paymentId }}",
+            "href": "https://{{ page.api_url }}/psp/mobilepay/payments/{{ page.payment_id }}",
             "rel": "update-payment-abort"
         },
         {
             "method": "GET",
-            "href": "https://{{ page.frontEndUrl }}/mobilepay/payments/authorize/{{ page.transactionId }}",
+            "href": "https://{{ page.front_end_url }}/mobilepay/payments/authorize/{{ page.transaction_id }}",
             "rel": "redirect-authorization"
         }
     ]
 }
 ```
 
+{:.table .table-striped}
 | Property                                     | Data type    | Description                                                                                                                                                                                      |
 | :------------------------------------------- | :----------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `payment`                                    | `object`     | The payment object contains information about the retrieved payment.                                                                                                                             |
@@ -222,27 +223,27 @@ A list of possible operations and their explanation is given below.
     "payment": {},
     "operations": [
         {
-            "href": "http://{{ page.apiUrl }}/psp/mobilepay/payments/{{ page.paymentId }}",
+            "href": "http://{{ page.api_url }}/psp/mobilepay/payments/{{ page.payment_id }}",
             "rel": "update-payment-abort",
             "method": "PATCH"
         },
         {
-            "href": "https://{{ page.frontEndUrl }}/mobilepay/payments/authorize/{{ page.paymentId }}",
+            "href": "https://{{ page.front_end_url }}/mobilepay/payments/authorize/{{ page.payment_id }}",
             "rel": "redirect-authorization",
             "method": "GET"
         },
         {
-            "href": "https://{{ page.apiUrl }}/psp/mobilepay/payments/{{ page.paymentId }}/captures",
+            "href": "https://{{ page.api_url }}/psp/mobilepay/payments/{{ page.payment_id }}/captures",
             "rel": "create-capture",
             "method": "POST"
         },
         {
-            "href": "https://{{ page.apiUrl }}/psp/mobilepay/payments/{{ page.paymentId }}/cancellations",
+            "href": "https://{{ page.api_url }}/psp/mobilepay/payments/{{ page.payment_id }}/cancellations",
             "rel": "create-cancellation",
             "method": "POST"
         },
         {
-            "href": "https://{{ page.apiUrl }}/psp/mobilepay/payments/{{ page.paymentId }}/reversals",
+            "href": "https://{{ page.api_url }}/psp/mobilepay/payments/{{ page.payment_id }}/reversals",
             "rel": "create-reversal",
             "method": "POST"
         },
@@ -270,7 +271,7 @@ request for the given operation.
 | :----------------------- | :--------------------------------------------------------------------------- |
 | `update-payment-abort`   | [Aborts][abort] the payment before any financial transactions are performed. |
 | `create-authorization`   | Create an [authorization][authorization-transaction] transaction.            |
-| `redirect-authorization` | Used to redirect the consumer to the mobilepay authorization UI.             |
+| `redirect-authorization` | Used to redirect the consumer to the MobilePay authorization UI.             |
 | `create-capture`         | Creates a [capture][capture-transaction] transaction.                        |
 | `create-cancellation`    | Creates a [cancellation][cancellation-transaction] transaction.              |
 | `create-reversal`        | Creates a [reversal][reversal-transaction] transaction.                      |
@@ -283,7 +284,7 @@ All MobilePay specific transactions are described below.
 
 The `authorizations` resource contains information about the authorization transactions made on a specific payment.
 
-{% include transaction-response.md payment-instrument="mobile-pay"
+{% include transaction-response.md payment_instrument="mobile-pay"
     transaction="authorization"%}
 
 You can return a specific autorization transaction by adding the transaction id
@@ -293,8 +294,8 @@ to the `GET`request.
 **Request**
 
 ```http
-GET /psp/mobilepay/payments/{{ page.paymentId }}/authorizations/ HTTP/1.1
-Host: {{ page.apiUrl }}
+GET /psp/mobilepay/payments/{{ page.payment_id }}/authorizations/ HTTP/1.1
+Host: {{ page.api_url }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -307,13 +308,13 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/mobilepay/payments/{{ page.paymentId }}",
+    "payment": "/psp/mobilepay/payments/{{ page.payment_id }}",
     "authorization": {
-        "id": "/psp/mobilepay/payments/{{ page.paymentId }}/authorizations/{{ page.transactionId }}",
-        "paymentToken": "{{ page.paymentToken }}",
+        "id": "/psp/mobilepay/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }}",
+        "paymentToken": "{{ page.payment_token }}",
         "maskedPan": "123456xxxxxx1234",
         "expireDate": "mm/yyyy",
-        "panToken": "{{ page.transactionId }}",
+        "panToken": "{{ page.transaction_id }}",
         "cardBrand": "Visa",
         "cardType": "Credit Card",
         "issuingBank": "UTL MAESTRO",
@@ -324,7 +325,7 @@ Content-Type: application/json
         "acquirerTransactionTime": "2017-08-29T13:42:18Z",
         "authenticationStatus": "Y",
         "transaction": {
-            "id": "/psp/mobilepay/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
+            "id": "/psp/mobilepay/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
             "created": "2016-09-14T01:01:01.01Z",
             "updated": "2016-09-14T01:01:01.03Z",
             "type": "Authorization",
@@ -337,7 +338,7 @@ Content-Type: application/json
             "failedReason": "",
             "isOperational": false,
             "operations": [{
-                "href": "{{ page.apiUrl }}/psp/mobilepay/payments/{{ page.paymentId }}",
+                "href": "{{ page.api_url }}/psp/mobilepay/payments/{{ page.payment_id }}",
                 "rel": "edit-authorization",
                 "method": "PATCH"
             }]
@@ -390,12 +391,12 @@ to the hyperlink returned in the `redirect-authorization` request.
 The `captures` resource lists the capture transactions (one or more) on a
 specific payment.
 
-{% include transaction-response.md payment-instrument="mobile-pay"
+{% include transaction-response.md payment_instrument="mobile-pay"
     transaction="capture" %}
 
 ### Create capture transaction
 
-A `capture` transaction - to withdraw money from the payer's mobilepay - can be
+A `capture` transaction - to withdraw money from the payer's MobilePay - can be
 created after a completed authorization by performing the `create-capture`
 operation.
 
@@ -403,8 +404,8 @@ operation.
 **Request**
 
 ```http
-POST /psp/mobilepay/payments/{{ page.paymentId }}/captures HTTP/1.1
-Host: {{ page.apiHost }}
+POST /psp/mobilepay/payments/{{ page.payment_id }}/captures HTTP/1.1
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -425,14 +426,14 @@ Content-Type: application/json
 | ✔︎︎︎︎︎   | └➔&nbsp;`amount`         | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
 | ✔︎︎︎︎︎   | └➔&nbsp;`vatAmount`      | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
 | ✔︎︎︎︎︎   | └➔&nbsp;`description`    | `string`     | A textual description of the capture transaction.                                                                         |
-| ✔︎︎︎︎︎   | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the capture transaction. See [`payeeReference`][payee-reference] for details.                       |
+| ✔︎︎︎︎︎   | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the capture transaction. See [`payeeReference`][payee-reference] for details.                      |
 
 The `capture` resource contains information about the capture transaction made
 against a mobilepay payment.
 You can return a specific capture transaction by adding the transaction id to
 the `GET` request.
 
-{% include transaction-response.md payment-instrument="mobile-pay"
+{% include transaction-response.md payment_instrument="mobile-pay"
     transaction="capture"%}
 
 ## Cancellations
@@ -440,7 +441,7 @@ the `GET` request.
 The `cancellations` resource lists the cancellation transactions on a specific
 payment.
 
-{% include transaction-response.md payment-instrument="mobile-pay"
+{% include transaction-response.md payment_instrument="mobile-pay"
     transaction="cancellation" %}
 
 ### Create cancellation transaction
@@ -452,8 +453,8 @@ You can only cancel a payment - or part of payment - not yet captured.
 **Request**
 
 ```http
-POST /psp/mobilepay/payments/{{ page.paymentId }}/cancellations HTTP/1.1
-Host: {{ page.apiHost }}
+POST /psp/mobilepay/payments/{{ page.payment_id }}/cancellations HTTP/1.1
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -466,10 +467,10 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property                 | Type         | Description                                                                                              |
-| :------: | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------- |
-|  ✔︎︎︎︎︎  | `transaction`            | `object`     | The current cancellation.                                                                                |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`description`    | `string`     | A textual description of the reason for the cancellation.                                                |
+| Required | Property                 | Type         | Description                                                                                               |
+| :------: | :----------------------- | :----------- | :-------------------------------------------------------------------------------------------------------- |
+|  ✔︎︎︎︎︎  | `transaction`            | `object`     | The current cancellation.                                                                                 |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`description`    | `string`     | A textual description of the reason for the cancellation.                                                 |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the cancellation transaction. See [`payeeReference`][payee-reference] for details. |
 
 The `cancel` resource contains information about a cancellation transaction
@@ -477,7 +478,7 @@ made against a payment.
 You can return a specific cancellation transaction by adding the transaction id
 to the `GET` request.
 
-{% include transaction-response.md payment-instrument="mobile-pay"
+{% include transaction-response.md payment_instrument="mobile-pay"
     transaction="cancellation"%}
 
 ## Reversals
@@ -485,7 +486,7 @@ to the `GET` request.
 The `reversals` resource lists the reversal transactions (one or more) on a
 specific payment.
 
-{% include transaction-response.md payment-instrument="mobile-pay"
+{% include transaction-response.md payment_instrument="mobile-pay"
     transaction="reversal" %}
 
 ### Create reversal transaction
@@ -497,8 +498,8 @@ payment.
 **Request**
 
 ```http
-POST /psp/mobilepay/payments/{{ page.paymentId }}/reversals HTTP/1.1
-Host: {{ page.apiHost }}
+POST /psp/mobilepay/payments/{{ page.payment_id }}/reversals HTTP/1.1
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -519,14 +520,14 @@ Content-Type: application/json
 |    ✔︎    | └➔&nbsp;`amount`         | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
 |    ✔︎    | └➔&nbsp;`vatAmount`      | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
 |    ✔︎    | └➔&nbsp;`description`    | `string`     | A textual description of the capture                                                                                      |
-|    ✔︎    | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the reversal transaction. See [`payeeReference`][payee-reference] for details.                      |
+|    ✔︎    | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the reversal transaction. See [`payeeReference`][payee-reference] for details.                     |
 
 The `reversal` resource contains information about a reversal transaction made
 against a payment.
 You can return a specific reversal transaction by adding the transaction id to
 the `GET` request.
 
-{% include transaction-response.md payment-instrument="mobile-pay"
+{% include transaction-response.md payment_instrument="mobile-pay"
     transaction="reversal"%}
 
 ## Capture Sequence
@@ -588,8 +589,8 @@ returned in the payment request. You need to include the following HTTP body:
 **Request**
 
 ```http
-PATCH /psp/creditcard/payments/{{ page.paymentId }} HTTP/1.1
-Host: {{ page.apiHost }}
+PATCH /psp/creditcard/payments/{{ page.payment_id }} HTTP/1.1
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -610,7 +611,7 @@ Content-Type: application/json
 
 {
     "payment": {
-        "id": "/psp/creditcard/payments/{{ page.paymentId }}",
+        "id": "/psp/creditcard/payments/{{ page.payment_id }}",
         "number": 70100130293,
         "created": "2019-01-09T13:11:28.371179Z",
         "updated": "2019-01-09T13:11:46.5949967Z",
@@ -620,7 +621,7 @@ Content-Type: application/json
         "state": "Aborted",
         "currency": "DKK",
         "prices": {
-            "id": "/psp/creditcard/payments/{{ page.paymentId }}/prices"
+            "id": "/psp/creditcard/payments/{{ page.payment_id }}/prices"
         },
         "amount": 0,
         "description": "creditcard Test",
@@ -629,13 +630,13 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0",
         "language": "nb-NO",
         "urls": {
-            "id": "/psp/creditcard/payments/{{ page.paymentId }}/urls"
+            "id": "/psp/creditcard/payments/{{ page.payment_id }}/urls"
         },
         "payeeInfo": {
-            "id": "/psp/creditcard/payments/{{ page.paymentId }}/payeeinfo"
+            "id": "/psp/creditcard/payments/{{ page.payment_id }}/payeeinfo"
         },
         "metadata": {
-            "id": "/psp/creditcard/payments/{{ page.paymentId }}/metadata"
+            "id": "/psp/creditcard/payments/{{ page.payment_id }}/metadata"
         }
     },
     "operations": []
@@ -652,13 +653,13 @@ The response will be the `payment` resource with its `state` set to `Aborted`.
 
 {% include recurring-card-payments.md %}
 
-{% include callback-reference.md payment-instrument="mobilepay" %}
+{% include callback-reference.md payment_instrument="mobilepay" %}
 
-{% include transactions-reference.md payment-instrument="mobilepay" %}
+{% include transactions-reference.md payment_instrument="mobilepay" %}
 
 ## Prices
 
-{% include prices.md payment-instrument="mobilepay" %}
+{% include prices.md payment_instrument="mobilepay" %}
 
 ## PayeeInfo
 

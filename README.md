@@ -83,8 +83,8 @@ All constants are available trough the `page` variable.
 Example:
 
 ```http
-GET /psp/paymentorders/{{ page.paymentOrderId }}/ HTTP/1.1
-Host: {{ page.apiHost }}
+GET /psp/paymentorders/{{ page.payment_order_id }}/ HTTP/1.1
+Host: {{ page.api_host }}
 ```
 
 ### Use includes
@@ -111,7 +111,7 @@ This assigns `"paymentOrder"` to the variable `instrument` by default if it
 isn't passed in via the include.
 
 ```markdown
-{% include payee-info.md payment-instrument="example" %}
+{% include payee-info.md payment_instrument="example" %}
 ```
 
 Read more about passing arguments and how includes work [here][liquid-includes].

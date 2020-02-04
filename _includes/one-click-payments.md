@@ -46,8 +46,8 @@ provided below.
 **Request Towards Authorizations Resource**
 
 ```http
-GET /psp/creditcard/payments/{{ page.paymentId }}/authorizations HTTP/1.1
-Host: {{ page.apiHost }}
+GET /psp/creditcard/payments/{{ page.payment_id }}/authorizations HTTP/1.1
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 ```
 
@@ -55,8 +55,8 @@ Authorization: Bearer <AccessToken>
 **Request Towards Verifications Resource**
 
 ```http
-GET /psp/creditcard/payments/{{ page.paymentId }}/verifications HTTP/1.1
-Host: {{ page.apiHost }}
+GET /psp/creditcard/payments/{{ page.payment_id }}/verifications HTTP/1.1
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 ```
 
@@ -84,7 +84,7 @@ Abbreviated code example:
 
 ```http
 POST /psp/creditcard/payments HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -92,7 +92,7 @@ Content-Type: application/json
     "payment": {
         "operation": "Purchase",
         "intent": "Authorization",
-        "paymentToken": "{{ page.paymentToken }}"
+        "paymentToken": "{{ page.payment_token }}"
     },
     "creditCard": {
         "noCVC": true
@@ -138,8 +138,8 @@ you use the `Delete payment token` request.
 **Request**
 
 ```http
-PATCH /psp/creditcard/payments/instrumentData/{{ page.paymentToken }} HTTP/1.1
-Host: {{ page.apiHost }}
+PATCH /psp/creditcard/payments/instrumentData/{{ page.payment_token }} HTTP/1.1
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -164,9 +164,9 @@ Content-Type: application/json
 
 {
     "instrumentData": {
-        "id": "/psp/creditcard/payments/instrumentdata/{{ page.paymentToken }}",
-        "paymentToken": "{{ page.paymentToken }}",
-        "payeeId": "{{ page.merchantId }}",
+        "id": "/psp/creditcard/payments/instrumentdata/{{ page.payment_token }}",
+        "paymentToken": "{{ page.payment_token }}",
+        "payeeId": "{{ page.merchant_id }}",
         "isDeleted": true,
         "isPayeeToken": false,
         "cardBrand": "Visa",
