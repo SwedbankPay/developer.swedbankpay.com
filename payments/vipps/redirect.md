@@ -31,19 +31,18 @@ that the payer must confirm through the Vipps mobile app." %}
 * This will generate a payment object with a unique `paymentID`.
 * You will receive a Redirect URL to a hosted page.
 * You need to [redirect][reference-redirect] the payer to the Redirect payment
-  where the user is prompted to enter the registered mobile number.
+  where the payer must push the payment button.
   This triggers a `POST` towards Swedbank Pay.
+* The payer is redirected to a Vipps payment page where he or she is prompted to
+  enter their mobile number.
 * Swedbank Pay handles the dialogue with Vipps and the consumer confirms the
   purchase in the Vipps app.
 * To receive the state of the transaction you need to do a `GET`
   request containing the `paymentID` generated in the first step.
 
-You redirect the payer to Swedbank Pay hosted payment page to collect the
-consumers mobile number.
+You redirect the payer to collect the payer's mobile number.
 
-![Vipps mobile Payments]
-[Vipps-screenshot-1]{:width="426px" :height="632px"}
-![Vipps Payments][Vipps-screenshot-2]{:width="427px" :height="694px"}
+![steps of the vipps purchase flow][vipps-purchase-flow]{:width="1200px" :height="500px"}
 
 ## Purchase flow
 
@@ -347,3 +346,4 @@ Content-Type: application/json
 [seamless-view]: /payments/vipps/seamless-view
 [reference-redirect]: /payments/vipps/redirect
 [vipps-payments]: /payments/vipps/other-features
+[vipps-purchase-flow]: /assets/img/payments/vipps-purchase-flow.png

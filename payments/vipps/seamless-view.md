@@ -28,7 +28,7 @@ In the Seamless View scenario, Swedbank Pay receives a mobile number (MSISDN)
 from the payer through Swedbank Pay Payments. Swedbank Pay performs a payment
 that the payer must confirm through the Vipps mobile app.
 
-![Vipps_flow_PaymentPages.png]
+![steps of the vipps purchase flow][vipps-purchase-flow]{:width="1200px" :height="500px"}
 
 ## Purchase flow
 
@@ -430,3 +430,4 @@ Content-Type: application/json
 [Vipps_flow_PaymentPages.png]: /assets/img/vipps-flow-paymentpages.png
 [Vipps-screenshot-1]: /assets/img/checkout/vipps-hosted-payment.png
 [Vipps-screenshot-2]: /assets/img/checkout/vipps-hosted-payment-no-paymenturl.png
+[vipps-purchase-flow]: /assets/img/payments/vipps-purchase-flow.png
