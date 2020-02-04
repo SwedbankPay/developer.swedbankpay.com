@@ -24,21 +24,24 @@ sidebar:
 
 
 ## Swedbank Pay Public key for card data migration
+In order to send sensitive credit card data to Swedbank Pay, you need to use our public key. Contact our support at support.ecom@payex.com for more information regarding this procedure.
 
-Key type: RSA
-Key size: 4096 bits
-RealName: SwedbankPay
-UserID: SwedbankPay
+* Key type: RSA
+* Key size: 4096 bits
+* RealName: SwedbankPay
+* UserID: SwedbankPay
 
-In order to send sensitive credit card data to Swedbank Pay, you need to use this public pgp key in order to 
+You can import our public key by using this command-line:
+
+```
+gpg2 --import SwedbankPay.key
+```
 
 You can encrypt files with this command-line:
-Import public key
-gpg2 --import SwedbankPay.key
 
-Encrypt file
+```
 gpg2 --armor --encrypt -r SwedbankPay CARDDATA.csv.asc
-
+```
 
 The gpg tool will then create a file named CARDDATA.csv.asc, which contains the encrypted data.
 
