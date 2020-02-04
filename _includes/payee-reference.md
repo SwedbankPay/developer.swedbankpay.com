@@ -1,5 +1,15 @@
+{% assign invoice_payments = include.invoice_payments | default: false%}
+
+{% if invoice_payments %}
+The `payeeReference` is used as a receipt/invoice number when the payer choses
+to pay with Invoice Payments. Depending on the specifications in the contract,
+it has some specific processing rules described below.
+
+{% else %}
+
 The `payeeReference` given when creating transactions and payments has some
 specific processing rules depending on specifications in the contract.
+{% endif %}
 
 * It must be **unique** for every operation, used to ensure exactly-once
   delivery of a transactional operation from the merchant system.
