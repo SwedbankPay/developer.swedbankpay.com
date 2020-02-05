@@ -1,5 +1,7 @@
 ## Unscheduled Purchase
 
+{% include alert-agreement-required.md %}
+
 An `unscheduled purchase`, also called a Merchant Initiated Transaction (MIT),
 is a payment which uses a `paymentToken` generated through a previous payment in
 order to charge the same card at a later time. They are done by the merchant
