@@ -37,4 +37,4 @@ defaults:
       api_host: api.externalintegration.payex.com
       api_url: https://api.externalintegration.payex.com
       front_end_url: https://ecom.externalintegration.payex.com
-      consumer_SSN: 199710202392
+      consumer_ssn_se: 199710202392
