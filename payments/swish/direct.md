@@ -150,7 +150,7 @@ Content-Type: application/json
     "swish": {
         "enableEcomOnly": false,
         "paymentRestrictedToAgeLimit": 18,
-        "paymentRestrictedToSocialSecurityNumber": "{{ page.consumerSSN }}"
+        "paymentRestrictedToSocialSecurityNumber": "{{ page.consumer_ssn_se }}"
     }
     
 }
