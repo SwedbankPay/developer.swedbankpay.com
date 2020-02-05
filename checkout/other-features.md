@@ -1292,6 +1292,8 @@ although that might be possible in the future.
 
 {% include payee-info.md %}
 
+{% include merchant-authenticated-consumer.md %}
+
 {% include settlement-reconciliation.md %}
 
 {% include iterator.html prev_href="summary" prev_title="Back: Summary" %}

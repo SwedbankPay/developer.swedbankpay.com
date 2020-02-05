@@ -138,7 +138,6 @@ Content-Type: application/json
                 "vatAmount": 0
             }
         ],
-        "paymentAgeLimit": 18,
         "description": "Test Purchase",
         "payerReference": "AB1234",
         "userAgent": "Mozilla/5.0...",
@@ -162,10 +161,12 @@ Content-Type: application/json
         },
         "prefillInfo": {
             "msisdn": "+46739000001"
-        },
-        "swish": {
-            "ecomOnlyEnabled": false
         }
+    },
+    "swish": {
+        "enableEcomOnly": false,
+        "paymentRestrictedToAgeLimit": 18,
+        "paymentRestrictedToSocialSecurityNumber": "{{ page.consumer_ssn_se }}"
     }
 }
 ```
@@ -200,8 +201,10 @@ Content-Type: application/json
 |          | └─➔&nbsp;`orderReference`    | `string(50)`  | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                            |
 |          | └─➔&nbsp;`subsite`           | `string(40)`  | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.                                                                                                                                        |
 |          | └─➔&nbsp;`msisdn`            | `string`      | Number will be prefilled on payment page, if valid.                                                                                                                                                                                                                                                |
-|          | └─➔&nbsp;`ecomOnlyEnabled`   | `boolean`     | `true` if to only enable Swish on browser based transactions.; otherwise `false` to also enable Swish transactions in-app.                                                                                                                                                                         |
-
+|          | └➔&nbsp;`swish`               | `object`      | An object that holds different scenarios for Swish payments.                                                                                                                                                                                                                                      |                                                                                                                                                                                                                                        
+|          | └─➔&nbsp;`ecomOnlyEnabled`   | `boolean`     | `true` if to only enable Swish on browser based transactions.; otherwise `false` to also enable Swish transactions via in-app payments                                                                                                                                                             |                                                                                                                                                                                                                          
+|          | └─➔&nbsp;`paymentRestrictedToAgeLimit`  |`integer` |Positive number that sets the required age  needed to fulfill the payment. To use this feature it has to be configured in the contract.                                                                                                                                                        |   
+|          | └─➔&nbsp;`paymentRestrictedToSocialSecurityNumber`  |`string` | When provided, the payment will be restricted to a specific social security number. Format: yyyyMMddxxxx. To use this feature it has to be configured in the contract.                                                                                                                                                 
 {:.code-header}
 **Response**
 
@@ -211,7 +214,6 @@ Content-Type: application/json
 
 {
     "payment": {
-        "paymentAgeLimit": 18,
         "id": "/psp/swish/payments/{{ page.payment_id }}",
         "number": 992308,
         "created": "2017-10-23T08:38:57.2248733Z",
