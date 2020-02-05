@@ -261,7 +261,7 @@ request.send(JSON.stringify({
 }));
 ```
 
-This should bring up the Payment Menu in a Seamless View, looking something like this:
+This should bring up the Payment Menu in a Seamless View, looking like this:
 
 {:.text-center}
 ![Payment Menu with card payment opened][payment-menu-image]{:width="407" height="627"}
