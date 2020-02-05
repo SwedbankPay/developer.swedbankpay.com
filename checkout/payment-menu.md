@@ -40,7 +40,7 @@ rect rgba(138, 205, 195, 0.1)
             note left of Payer: Payment Menu
             Payer ->>+ Merchant: Initiate Purchase
             deactivate Payer
-            Merchant ->>+ SwedbankPay: POST /psp/paymentorders (paymentUrl, consumerProfileRef)
+            Merchant ->>+ SwedbankPay: POST /psp/paymentorders (paymentUrl, payer)
             deactivate Merchant
             SwedbankPay -->>+ Merchant: rel:view-paymentorder
             deactivate SwedbankPay
@@ -117,8 +117,8 @@ rect rgba(138, 205, 195, 0.1)
 ## Payment Menu Back End
 
 We start by performing a `POST` request towards the `paymentorder` resource
-with the `consumerProfileRef` we obtained in the checkin process described
-above.
+with the payer information (such as `consumerProfileRef`) we obtained in the
+checkin process described above.
 Remember to read up on our [URL resource][urls].
 
 {% include alert-risk-indicator.md %}
