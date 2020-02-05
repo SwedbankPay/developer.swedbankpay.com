@@ -22,7 +22,7 @@ Content-Type: application/json
 {
     "payment": {
         "operation": "UnscheduledPurchase",
-        "intent": "Authorization|AutoCapture",
+        "intent": "Authorization",
         "paymentToken": "{{ page.paymentId }}",
         "currency": "NOK",
         "amount": 1500,
@@ -56,9 +56,9 @@ Content-Type: application/json
     "number": 1234567890,
     "created": "2016-09-14T13:21:29.3182115Z",
     "updated": "2016-09-14T13:21:57.6627579Z",
-    "state": "Ready|Pending|Failed|Aborted",
+    "state": "Ready",
     "operation": "PurchaseDirect",
-    "intent": "Authorization|AutoCapture",
+    "intent": "Authorization",
     "currency": "NOK",
     "amount": 1500,
     "remainingCaptureAmount": 1500,
