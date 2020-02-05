@@ -1,7 +1,7 @@
 {% assign invoice_payments = include.invoice_payments | default: false%}
 
 {% if invoice_payments %}
-The `payeeReference` is used as a receipt/invoice number when the payer choses
+The `payeeReference` is used as a receipt/invoice number when the payer chooses
 to pay with Invoice Payments. Depending on the specifications in the contract,
 it has some specific processing rules described below.
 
