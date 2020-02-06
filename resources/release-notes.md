@@ -18,6 +18,8 @@ sidebar:
       title: Terminology
     - url: /resources/data-protection
       title: Data Protection
+    - url: /resources/public-migration-key
+      title: Public Migration Key
 ---
 
 {% include alert-review-section.md %}
@@ -28,6 +30,22 @@ published on this page." %}
 {% include alert.html type="neutral" icon="info" header="Version numbers"
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
+
+## February 2020
+
+### Version 1.7
+
+* README is updated with info about includes.
+* Added  several includes.
+* Updated payeeReference description in Checkout and Invoice section.
+* Using snake case consistently.
+* Added section for unscheduled purchase in Card section.
+* Fixed JavaScript example in Checkin section.
+* Added info about mobile verification in Swish Other Features.
+* Added section about Authenticated Merchants in Checkout section.
+* Cleanup in `Vipps` Other Features.
+* `paymentRestrictedToAgeLimit` and `paymentRestrictedToSocialSecurityNumber` added to `swish` object in [Swish Redirect][swish-redirect]. `paymentAgeLimit`, `socialSecurityNumber` added to the new `payerInfo` object in [Swish Seamless View][swish-seamless-view]. [Properties added in `Swish`.
+* Added section about migration key in Resources section.
 
 ## January 2020
 
@@ -245,6 +263,7 @@ integration and the payer.
 [payments]: /payments
 [swish-direct]: /payments/swish/direct
 [swish-other-features]: /payments/swish/other-features
+[swish-seamless-view]: /payments/swish/seamless-view
 [swish-redirect]: /payments/swish/redirect
 [swish]: /payments/swish
 [terminology]: /resources/terminology

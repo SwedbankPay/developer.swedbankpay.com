@@ -32,7 +32,7 @@ sidebar:
 The `captures` resource lists the capture transactions performed on a
 specific payment.
 
-{% include transaction-response.md payment-instrument="mobilepay" %}
+{% include transaction-response.md payment_instrument="mobilepay" %}
 
 ## Create capture transaction
 
@@ -44,8 +44,8 @@ operation.
 **Request**
 
 ```http
-POST /psp/mobilepay/payments/{{ page.paymentId }}/captures HTTP/1.1
-Host: {{ page.apiHost }}
+POST /psp/mobilepay/payments/{{ page.payment_id }}/captures HTTP/1.1
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -73,7 +73,7 @@ against a MobilePay payment.
 You can return a specific capture transaction by adding the transaction id to
 the `GET` request.
 
-{% include transaction-response.md payment-instrument="mobilepay" %}
+{% include transaction-response.md payment_instrument="mobilepay" %}
 
 ## Capture Sequence
 
@@ -109,8 +109,8 @@ You can only cancel a payment - or part of payment - not yet captured.
 **Request**
 
 ```http
-POST /psp/mobilepay/payments/{{ page.paymentId }}/cancellations HTTP/1.1
-Host: {{ page.apiHost }}
+POST /psp/mobilepay/payments/{{ page.payment_id }}/cancellations HTTP/1.1
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -134,7 +134,7 @@ made against a payment.
 You can return a specific cancellation transaction by adding the transaction
 id to the `GET` request.
 
-{% include transaction-response.md payment-instrument="mobilepay"
+{% include transaction-response.md payment_instrument="mobilepay"
     transaction="cancellation"%}
 
 ### Finalize
@@ -154,8 +154,8 @@ perform a `GET` on the payment after the user returns from the
 **Request**
 
 ```http
-PATCH /psp/creditcard/payments/{{ page.paymentId }}/authorizations/{{ page.transactionId }} HTTP/1.1
-Host: {{ page.apiHost }}
+PATCH /psp/creditcard/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }} HTTP/1.1
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -179,13 +179,13 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/creditcard/payments/{{ page.paymentId }}",
+    "payment": "/psp/creditcard/payments/{{ page.payment_id }}",
     "authorization": {
-        "id": "/psp/creditcard/payments/{{ page.paymentId }}/authorizations/{{ page.transactionId }}",
-        "paymentToken": "{{ page.transactionId }}",
+        "id": "/psp/creditcard/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }}",
+        "paymentToken": "{{ page.transaction_id }}",
         "maskedPan": "123456xxxxxx1234",
         "expireDate": "mm/yyyy",
-        "panToken": "{{ page.transactionId }}",
+        "panToken": "{{ page.transaction_id }}",
         "cardBrand": "Visa|MC",
         "cardType": "Credit Card|Debit Card",
         "issuingBank": "UTL MAESTRO",
@@ -196,7 +196,7 @@ Content-Type: application/json
         "acquirerTransactionTime": "2017-08-29T13:42:18Z",
         "authenticationStatus": "Y|A|U|N",
         "transaction": {
-            "id": "/psp/creditcard/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
+            "id": "/psp/creditcard/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
             "created": "2016-09-14T01:01:01.01Z",
             "updated": "2016-09-14T01:01:01.03Z",
             "type": "Authorization",
@@ -210,7 +210,7 @@ Content-Type: application/json
             "isOperational": true,
             "operations": [
                 {
-                    "href": "{{ page.apiUrl }}/psp/creditcard/payments/{{ page.paymentId }}",
+                    "href": "{{ page.api_url }}/psp/creditcard/payments/{{ page.payment_id }}",
                     "rel": "edit-authorization",
                     "method": "PATCH"
                 }
@@ -249,7 +249,7 @@ sequenceDiagram
 The `reversals` resource lists the reversal transactions performed on a
 specific payment.
 
-{% include transaction-response.md payment-instrument="mobilepay" transaction="reversal" %}
+{% include transaction-response.md payment_instrument="mobilepay" transaction="reversal" %}
 
 ## Create reversal transaction
 
@@ -260,8 +260,8 @@ captured payment.
 **Request**
 
 ```http
-POST /psp/mobilepay/payments/{{ page.paymentId }}/reversals HTTP/1.1
-Host: {{ page.apiHost }}
+POST /psp/mobilepay/payments/{{ page.payment_id }}/reversals HTTP/1.1
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -289,7 +289,7 @@ against a payment.
 You can return a specific reversal transaction by adding the transaction id to
 the `GET` request.
 
-{% include transaction-response.md payment-instrument="mobilepay"
+{% include transaction-response.md payment_instrument="mobilepay"
     transaction="reversal"%}
 
 ## Reversal Sequence

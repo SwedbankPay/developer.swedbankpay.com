@@ -188,7 +188,7 @@ Content-Type: application/json
             "termsOfServiceUrl": "http://example.com/payment-terms.pdf"
         },
         "payeeInfo": {
-            "payeeId": "{{ page.merchantId }}",
+            "payeeId": "{{ page.merchant_id }}",
             "payeeReference": "CD1234",
             "payeeName": "Merchant1",
             "productCategory": "A123"
@@ -225,7 +225,7 @@ Content-Type: application/json
 |          | └─➔&nbsp;`termsOfServiceUrl`      | `string`      | A URL that contains your terms and conditions for the payment, to be linked on the payment page. Require https.                                                                                                                                                                                                                                |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`payeeInfo`               | `object`      | The `payeeInfo` contains information about the payee.                                                                                                                                                                                                                                                                                          |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`payeeId`                | `string`      | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                                                                                                                                                          |
-|  ✔︎︎︎︎︎  | └─➔&nbsp;`payeeReference`         | `string(30*)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.                                                                                                                                                       |
+|  ✔︎︎︎︎︎  | └─➔&nbsp;`payeeReference`         | `string(30*)` | A unique reference from the merchant system, which is used as a receipt/invoice number in Invoice Payments. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.                                                                                        |
 |          | └─➔&nbsp;`payeeName`              | `string`      | The payee name (like merchant name) that will be displayed to consumer when redirected to Swedbank Pay.                                                                                                                                                                                                                                        |
 |          | └─➔&nbsp;`productCategory`        | `string`      | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                                                                 |
 |          | └─➔&nbsp;`orderReference`         | `String(50)`  | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                                                        |
@@ -240,7 +240,7 @@ Content-Type: application/json
 
 {
     "payment": {
-        "id": "/psp/invoice/payments/{{ page.paymentId }}",
+        "id": "/psp/invoice/payments/{{ page.payment_id }}",
         "number": 1234567890,
         "instrument": "Invoice",
         "created": "YYYY-MM-DDThh:mm:ssZ",
@@ -250,7 +250,7 @@ Content-Type: application/json
         "state": "Ready",
         "currency": "SEK",
         "prices": {
-            "id": "/psp/invoice/payments/{{ page.paymentId }}/prices"
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/prices"
         },
         "amount": 0,
         "description": "Test Purchase",
@@ -258,43 +258,43 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "urls": {
-            "id": "/psp/invoice/payments/{{ page.paymentId }}/urls"
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/urls"
         },
         "payeeInfo": {
-            "id": "/psp/invoice/payments/{{ page.paymentId }}/payeeinfo"
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/payeeinfo"
         },
         "metadata": {
-            "id": "/psp/invoice/payments/{{ page.paymentId }}/metadata"
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/metadata"
         }
     },
     "operations": [
         {
             "method": "POST",
-            "href": "{{ page.apiUrl }}/psp/invoice/payments/{{ page.paymentId }}/approvedlegaladdress",
+            "href": "{{ page.api_url }}/psp/invoice/payments/{{ page.payment_id }}/approvedlegaladdress",
             "rel": "create-approved-legal-address",
             "contentType": "application/json"
         },
         {
             "method": "POST",
-            "href": "{{ page.apiUrl }}/psp/invoice/payments/{{ page.paymentId }}/authorizations",
+            "href": "{{ page.api_url }}/psp/invoice/payments/{{ page.payment_id }}/authorizations",
             "rel": "create-authorization",
             "contentType": "application/json"
         },
         {
             "method": "PATCH",
-            "href": "{{ page.apiUrl }}/psp/invoice/payments/{{ page.paymentId }}",
+            "href": "{{ page.api_url }}/psp/invoice/payments/{{ page.payment_id }}",
             "rel": "update-payment-abort",
             "contentType": "application/json"
         },
         {
             "method": "GET",
-            "href": "{{ page.frontEndUrl }}/invoice/payments/authorize/{{ page.paymentToken }}",
+            "href": "{{ page.front_end_url }}/invoice/payments/authorize/{{ page.payment_token }}",
             "rel": "redirect-authorization",
             "contentType": "text/html"
         },
         {
             "method": "GET",
-            "href": "{{ page.frontEndUrl }}/invoice/core/scripts/client/px.invoice.client.js?{{ page.paymentToken }}&operation=authorize",
+            "href": "{{ page.front_end_url }}/invoice/core/scripts/client/px.invoice.client.js?{{ page.payment_token }}&operation=authorize",
             "rel": "view-authorization",
             "contentType": "application/javascript"
         }

@@ -1,4 +1,4 @@
-{% assign payment-instrument = include.payment-instrument | default: 'creditcard' %}
+{% assign payment_instrument = include.payment_instrument | default: 'creditcard' %}
 
 A payment contains sub-resources in the form of `transactions`. Most operations
 performed on a payment ends up as a transaction. The different types of
@@ -12,8 +12,8 @@ specific payment.
 **Request**
 
 ```http
-GET /psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/transactions HTTP/1.1
-Host: {{ page.apiHost }}
+GET /psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/transactions HTTP/1.1
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -26,13 +26,13 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}",
+    "payment": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}",
     "transactions": {
-        "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/transactions",
+        "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/transactions",
         "transactionList": [{
-            "id": "/psp/{{ payment-instrument }}/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
+            "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
             "created": "2016-09-14T01:01:01.01Z",
-            "updated": "2016-09-14T01:01:01.03Z",{% if payment-instrument == "swish" %}
+            "updated": "2016-09-14T01:01:01.03Z",{% if payment_instrument == "swish" %}
             "type": "Sale",{% else %}
             "type": "Authorization",{% endif %}
             "state": "Initialized",

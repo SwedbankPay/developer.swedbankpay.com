@@ -18,6 +18,8 @@ sidebar:
       title: Terminology
     - url: /resources/data-protection
       title: Data Protection
+    - url: /resources/public-migration-key
+      title: Public Migration Key
 ---
 
 {% include alert-review-section.md %}
@@ -30,7 +32,7 @@ sidebar:
 During a Swedbank Pay Checkout implementation you can use the test data related
 to the different payment instruments listed below. To see Swedbank Pay Checkout in
 action, please visit our
-[demoshop]({{ page.frontEndUrl }}/pspdemoshop)
+[demoshop]({{ page.front_end_url }}/pspdemoshop)
 
 To test a logged in user in the Demo Shop, please use the following test data:
 
@@ -71,6 +73,12 @@ To test a logged in user in the Demo Shop, please use the following test data:
 | `4925000000000004` | After the current month | Any  | Loopback only     |
 | `4581097032723517` | After the current month | Any  | Loopback only     |
 | `4581099940323133` | After the current month | Any  | Loopback only     |
+
+### Mastercard
+
+{:.table .table-striped}
+| Card number        | Expiry                  | CVC  | Type of test data |
+| :----------------- | :---------------------- | :--- | :---------------- |
 | `5226600159865967` | After the current month | Any  | Loopback only     |
 | `5226603115488031` | After the current month | Any  | Loopback only     |
 | `5226604266737382` | After the current month | Any  | Loopback only     |
@@ -130,7 +138,7 @@ errors thorugh spesific amounts.
 
 First, POST a Payment (operation purchase) and enter the link to the payment
 page. Example URL: -
-<{{ page.frontEndUrl }}/creditcardv2/payments/authorize/{{ page.paymentToken }}> .
+<{{ page.front_end_url }}/creditcardv2/payments/authorize/{{ page.payment_token }}> .
 Fill the data for either the Visa or MasterCard as shown below.
 
 {:.table .table-striped}
@@ -160,17 +168,17 @@ The amounts that can be used and produce error codes
 (transactionThirdPartyError):
 
 {:.table .table-striped}
-| Number                                         | Error message                           |
-| :--------------------------------------------- | :-------------------------------------- |
-| 900313                                         | REJECTED_BY_ACQUIRER_INVALID_AMOUNT     |
-| 900330                                         | REJECTED_BY_ACQUIRER_FORMAT_ERROR       |
-| 900334                                         | REJECTED_BY_ACQUIRER_POSSIBLE_FRAUD     |
-| 900343                                         | REJECTED_BY_ACQUIRER_CARD_STOLEN        |
-| 900354                                         | REJECTED_BY_ACQUIRER_CARD_EXPIRED       |
-| 900351                                         | REJECTED_BY_ACQUIRER_INSUFFICIENT_FUNDS |
-| 900359                                         | CARD_DECLINED                           |
-| 900362                                         | REJECTED_BY_PAYEX_CARD_BLACKLISTED      |
-| 900391                                         | ACQUIRER_HOST_OFFLINE                   |
+| Number | Error message                           |
+| :----- | :-------------------------------------- |
+| 900313 | REJECTED_BY_ACQUIRER_INVALID_AMOUNT     |
+| 900330 | REJECTED_BY_ACQUIRER_FORMAT_ERROR       |
+| 900334 | REJECTED_BY_ACQUIRER_POSSIBLE_FRAUD     |
+| 900343 | REJECTED_BY_ACQUIRER_CARD_STOLEN        |
+| 900354 | REJECTED_BY_ACQUIRER_CARD_EXPIRED       |
+| 900351 | REJECTED_BY_ACQUIRER_INSUFFICIENT_FUNDS |
+| 900359 | CARD_DECLINED                           |
+| 900362 | REJECTED_BY_PAYEX_CARD_BLACKLISTED      |
+| 900391 | ACQUIRER_HOST_OFFLINE                   |
 
 ## Invoice Test Data
 

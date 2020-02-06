@@ -122,7 +122,6 @@ Content-Type: application/json
                 "vatAmount": 0
             }
         ],
-        "paymentAgeLimit": 18,
         "description": "Test Purchase",
         "payerReference": "AB1234",
         "userAgent": "Mozilla/5.0...",
@@ -137,7 +136,7 @@ Content-Type: application/json
             "termsOfServiceUrl": "https://example.com/terms.pdf"
         },
         "payeeInfo": {
-            "payeeId": "{{ page.merchantId }}",
+            "payeeId": "{{ page.merchant_id }}",
             "payeeReference": "ref-123456",
             "payeeName": "Merchant1",
             "productCategory": "A123",
@@ -146,11 +145,14 @@ Content-Type: application/json
         },
         "prefillInfo": {
             "msisdn": "+46739000001"
-        },
-        "swish": {
-            "ecomOnlyEnabled": false
         }
+    },
+    "swish": {
+        "enableEcomOnly": false,
+        "paymentRestrictedToAgeLimit": 18,
+        "paymentRestrictedToSocialSecurityNumber": "{{ page.consumer_ssn_se }}"
     }
+
 }
 ```
 
@@ -164,13 +166,12 @@ Content-Type: application/json
 |  ✔︎︎︎︎︎  | └➔&nbsp;`prices`             | `object`      | The `prices` resource lists the prices related to a specific payment.                                                                                                                                                                                                                              |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`type`              | `string`      | Swish                                                                                                                                                                                                                                                                                              |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`amount`            | `integer`     | Amount is entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 SEK 5000 = 50.00 SEK.                                                                                                                                                                                |
-|  ✔︎︎︎︎︎  | └─➔&nbsp;`vatAmount`         | `integer`     | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                                                                                                                 |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`paymentAgeLimit`    | `integer`     | Positive number sets required age limit to fulfill the payment.                                                                                                                                                                                                                                    |
+|  ✔︎︎︎︎︎  | └─➔&nbsp;`vatAmount`         | `integer`     | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                                                                                                                 |                                                                                                                                                                                                                               |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`description`        | `string(40)`  | A textual description max 40 characters of the purchase.                                                                                                                                                                                                                                           |
-|          | └➔&nbsp;`payerReference`     | `string`      | The reference to the payer (consumer/end user) from the merchant system. E.g mobile number, customer number etc.                                                                                                                                                                                   |
-|          | └➔&nbsp;`payeeName`          | `string`      | The payee name will be displayed to consumer when redirected to Swedbank Pay.                                                                                                                                                                                                                      |
+|     | └➔&nbsp;`payerReference`     | `string`      | The reference to the payer (consumer/end user) from the merchant system. E.g mobile number, customer number etc.                                                                                                                                                                                        |
+|     | └➔&nbsp;`payeeName`          | `string`      | The payee name will be displayed to consumer when redirected to Swedbank Pay.                                                                                                                                                                                                                           |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`userAgent`          | `string`      | The user agent reference of the consumer's browser - [see user agent definition][user-agent]                                                                                                                                                                                                       |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`language`           | `string`      | `nb-NO`, `sv-SE` or `en-US`.                                                                                                                                                                                                                                                                             |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`language`           | `string`      | `nb-NO`, `sv-SE` or `en-US`.                                                                                                                                                                                                                                                                       |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`urls`               | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                             |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`completeUrl`       | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. |
 |          | └─➔&nbsp;`cancelUrl`         | `string`      | The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only cancelUrl or `paymentUrl` can be used, not both.                                                                                              |
@@ -184,8 +185,11 @@ Content-Type: application/json
 |          | └─➔&nbsp;`productCategory`   | `string`      | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                     |
 |          | └─➔&nbsp;`orderReference`    | `String(50)`  | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                            |
 |          | └─➔&nbsp;`subsite`           | `String(40)`  | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.                                                                                                                                        |
-|          | └─➔&nbsp;`msisdn`            | `String`      | Number will be prefilled on payment page, if valid.                                                                                                                                                                                                                                                |
-|          | └─➔&nbsp;`ecomOnlyEnabled`   | `boolean`     | `true` if to only enable Swish on web based transactions.; otherwise `false` to also enable Swish transactions via in-app payments.                                                                                                                                                                |
+|          | └─➔&nbsp;`msisdn`            | `String`      | Number will be prefilled on payment page, if valid. The mobile number must have a country code prefix and be 8 to 15 digits in length.                                                                                                                                                                                                                                             |
+|          | └➔&nbsp;`swish`               | `object`      | An object that holds different scenarios for Swish payments.                                                                                                                                                                                                                                      |                                                                                                                                                                                                                                        
+|          | └─➔&nbsp;`ecomOnlyEnabled`   | `boolean`     | `true` if to only enable Swish on web based transactions.; otherwise `false` to also enable Swish transactions via in-app payments                                                                                                                                                                 |                                                                                                                                                                                                                          
+|          | └─➔&nbsp;`paymentRestrictedToAgeLimit`  |`integer` | Positive number that sets the required age  needed to fulfill the payment. To use this feature it has to be configured in the contract.                                                                                                                                                       |   
+|          | └─➔&nbsp;`paymentRestrictedToSocialSecurityNumber`  |`string` | When provided, the payment will be restricted to a specific social security number. Format: yyyyMMddxxxx. To use this feature it has to be configured in the contract.
 
 {:.code-header}
 **Response**
@@ -197,8 +201,7 @@ Content-Type: application/json
 
 {
     "payment": {
-        "paymentAgeLimit": 18,
-        "id": "/psp/swish/payments/{{ page.paymentId }}",
+        "id": "/psp/swish/payments/{{ page.payment_id }}",
         "number": 992308,
         "created": "2017-10-23T08:38:57.2248733Z",
         "instrument": "Swish",
@@ -213,21 +216,21 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "urls": {
-            "id": "/psp/swish/payments/{{ page.paymentId }}/urls"
+            "id": "/psp/swish/payments/{{ page.payment_id }}/urls"
         },
         "payeeInfo": {
-            "id": "/psp/swish/payments/{{ page.paymentId }}/payeeinfo"
+            "id": "/psp/swish/payments/{{ page.payment_id }}/payeeinfo"
         }
     },
     "operations": [
         {
             "method": "PATCH",
-            "href": "{{ page.apiUrl }}/psp/swish/payments/{{ page.paymentId }}",
+            "href": "{{ page.api_url }}/psp/swish/payments/{{ page.payment_id }}",
             "rel": "update-payment-abort"
         },
         {
             "method": "POST",
-            "href": "{{ page.apiUrl }}/psp/swish/payments/{{ page.paymentId }}/sales",
+            "href": "{{ page.api_url }}/psp/swish/payments/{{ page.payment_id }}/sales",
             "rel": "create-sale"
         }
     ]
@@ -246,7 +249,7 @@ request.
 **Request**
 
 ```http
-POST /psp/swish/payments/{{ page.paymentId }}/sales HTTP/1.1
+POST /psp/swish/payments/{{ page.payment_id }}/sales HTTP/1.1
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -258,7 +261,7 @@ Content-Type: application/json
 
 ```
 
-{% include transaction-response.md showRequest=false payment-instrument="swish" transaction="sale" %}
+{% include transaction-response.md showRequest=false payment_instrument="swish" transaction="sale" %}
 
 {% include iterator.html prev_href="introduction" prev_title="Back: Introduction"
 next_href="redirect" next_title="Next: Redirect" %}

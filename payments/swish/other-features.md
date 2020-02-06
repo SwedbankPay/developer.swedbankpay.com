@@ -22,7 +22,7 @@ sidebar:
 
 ## Payment Resource
 
-{% include payment-resource.md payment-instrument="swish" showStatusOperations=true%}
+{% include payment-resource.md payment_instrument="swish" showStatusOperations=true%}
 
 {% include payment-transaction-states.md %}
 
@@ -42,7 +42,7 @@ response that includes one or more expanded sub-resources inlined.
 
 ```http
 POST /psp/swish/payments HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -69,7 +69,7 @@ Content-Type: application/json
             "termsOfServiceUrl": "https://example.com/terms.pdf"
         },
         "payeeInfo": {
-            "payeeId": "{{ page.merchantId }}",
+            "payeeId": "{{ page.merchant_id }}",
             "payeeReference": "ref-123456",
             "payeeName": "Merchant1",
             "productCategory": "A123",
@@ -100,7 +100,7 @@ Content-Type: application/json
 |    ✔︎    | └➔&nbsp;`description`           | `string(40)` | A textual description max 40 characters of the purchase.                                                                                                                                                                                                  |
 |          | └➔&nbsp;`payerReference`        | `string`     | The reference to the payer (consumer/end-user) from the merchant system, like mobile number, customer number etc.                                                                                                                                         |
 |    ✔︎    | └➔&nbsp;`userAgent`             | `string`     | The user agent reference of the consumer's browser - [see user agent definition][user-agent]                                                                                                                                                              |
-|    ✔︎    | └➔&nbsp;`language`              | `string`     | `nb-NO`, `sv-SE` or `en-US`.                                                                                                                                                                                                                                    |
+|    ✔︎    | └➔&nbsp;`language`              | `string`     | `nb-NO`, `sv-SE` or `en-US`.                                                                                                                                                                                                                              |
 |    ✔︎    | └➔&nbsp;`urls`                  | `object`     | The URLS object contains information about what urls this payment should use.                                                                                                                                                                             |
 |    ✔︎    | └─➔&nbsp;`hostUrls`             | `array`      | The array of URIs valid for embedding of Swedbank Pay Hosted Views.                                                                                                                                                                                       |
 |    ✔︎    | └─➔&nbsp;`completeUrl`          | `string`     | The URI that Swedbank Pay will redirect back to when the payment page is completed. This does not indicate a successful payment, only that it has reached a completion state. A `GET` request needs to be performed on the payment to inspect it further. |
@@ -115,7 +115,7 @@ Content-Type: application/json
 |          | └➔&nbsp;`productCategory`       | `string`     | A product category or number sent in from the payee/merchant. This is not validated by PayEx, but will be passed through the payment process and may be used in the settlement process.                                                                   |
 |          | └➔&nbsp;`orderReference`        | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                   |
 |          | └➔&nbsp;`subsite`               | `string(40)` | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.                                                                                               |
-|          | └➔&nbsp;`prefillInfo.msisdn`    | `string`     | Number will be prefilled on payment page, if valid.                                                                                                                                                                                                       |
+|          | └➔&nbsp;`prefillInfo.msisdn`    | `string`     | Number will be prefilled on payment page, if valid. The mobile number must have a country code prefix and be 8 to 15 digits in length.                                                                                                                                                                                                        |
 |          | └➔&nbsp;`swish.ecomOnlyEnabled` | `boolean`    | `true` if to only enable Swish on browser based transactions.; otherwise `false` to also enable Swish transactions via mobile app.                                                                                                                        |
 
 {:.code-header}
@@ -127,7 +127,7 @@ Content-Type: application/json
 
 {
     "payment": {
-        "id": "/psp/swish/payments/{{ page.paymentId }}",
+        "id": "/psp/swish/payments/{{ page.payment_id }}",
         "number": 992308,
         "created": "2017-10-23T08:38:57.2248733Z",
         "instrument": "Swish",
@@ -142,28 +142,43 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "urls": {
-            "id": "/psp/swish/payments/{{ page.paymentId }}/urls"
+            "id": "/psp/swish/payments/{{ page.payment_id }}/urls"
         },
         "payeeInfo": {
-            "id": "/psp/swish/payments/{{ page.paymentId }}/payeeinfo"
+            "id": "/psp/swish/payments/{{ page.payment_id }}/payeeinfo"
         }
     },
     "operations": [
         {
             "method": "POST",
-            "href": "http://{{ page.apiHost }}/psp/swish/payments/{{ page.paymentId }}/sales",
+            "href": "http://{{ page.api_host }}/psp/swish/payments/{{ page.payment_id }}/sales",
             "rel": "create-sale"
         }
 }
 ```
 
+### Mobile Number Validation
+
+#### eCommerce
+
+All international mobile numbers are supported. To be valid, the number input
+must be with a country code prefix and consist of 8 to 15 characters. Digits are
+the only characters allowed, and the regex used is `\\+[1-9]\\d{7,14}`. A valid
+Swedish mobile number would be `+46739000001`, a valid Norwegian mobile number
+would be `+4792345678`.
+
+#### mCommerce
+
+No number input is needed in the mCommerce flow. The payer's mobile number must
+be connected to a Swish account.
+
 {% include settlement-reconciliation.md %}
 
-{% include payment-link.md show-3d-secure=false show-authorization=false %}
+{% include payment-link.md show_3d_secure=false show_authorization=false %}
 
 ### Prices
 
-{% include prices.md payment-instrument="swish" %}
+{% include prices.md payment_instrument="swish" %}
 
 ### Payee reference
 
@@ -171,9 +186,9 @@ Content-Type: application/json
 
 {% include expand-parameter.md %}
 
-{% include transactions-reference.md payment-instrument="swish" %}
+{% include transactions-reference.md payment_instrument="swish" %}
 
-{% include callback-reference.md payment-instrument="swish" %}
+{% include callback-reference.md payment_instrument="swish" %}
 
 ### Problem messages
 
@@ -187,7 +202,7 @@ of the problem.
 ### Error types from Swish and third parties
 
 All Swish error types will have the following URI in front of type:
-`{{ page.apiUrl }}/psp/<errordetail>/swish`
+`{{ page.api_url }}/psp/<errordetail>/swish`
 
 {:.table .table-striped}
 | Type                 | Status | Error code           | Details                                                                                         |

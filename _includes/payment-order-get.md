@@ -8,8 +8,8 @@ and `currentPayment`.
 **Request**
 
 ```http
-GET /psp/paymentorders/{{ page.paymentOrderId }}/ HTTP/1.1
-Host: {{ page.apiHost }}
+GET /psp/paymentorders/{{ page.payment_order_id }}/ HTTP/1.1
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -23,7 +23,7 @@ Content-Type: application/json
 
 {
     "paymentorder": {
-        "id": "/psp/paymentorders/{{ page.paymentOrderId }}",
+        "id": "/psp/paymentorders/{{ page.payment_order_id }}",
         "created": "2018-09-14T13:21:29.3182115Z",
         "updated": "2018-09-14T13:21:57.6627579Z",
         "operation": "Purchase",
@@ -38,31 +38,31 @@ Content-Type: application/json
         "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",
-        "urls" : { "id": "/psp/paymentorders/{{ page.paymentOrderId }}/urls" },
-        "payeeInfo" : { "id": "/psp/paymentorders/{{ page.paymentOrderId }}/payeeinfo" },
-        "settings": { "id": "/psp/paymentorders/{{ page.paymentOrderId }}/settings" },
-        "payers": { "id": "/psp/paymentorders/{{ page.paymentOrderId }}/payers" },
-        "orderItems" : { "id": "/psp/paymentorders/{{ page.paymentOrderId }}/orderItems" },
-        "metadata": { "id": "/psp/paymentorders/{{ page.paymentOrderId }}/metadata" },
-        "payments": { "id": "/psp/paymentorders/{{ page.paymentOrderId }}/payments" },
-        "currentPayment": { "id": "/psp/paymentorders/{{ page.paymentOrderId }}/currentpayment" }
+        "urls" : { "id": "/psp/paymentorders/{{ page.payment_order_id }}/urls" },
+        "payeeInfo" : { "id": "/psp/paymentorders/{{ page.payment_order_id }}/payeeinfo" },
+        "settings": { "id": "/psp/paymentorders/{{ page.payment_order_id }}/settings" },
+        "payers": { "id": "/psp/paymentorders/{{ page.payment_order_id }}/payers" },
+        "orderItems" : { "id": "/psp/paymentorders/{{ page.payment_order_id }}/orderItems" },
+        "metadata": { "id": "/psp/paymentorders/{{ page.payment_order_id }}/metadata" },
+        "payments": { "id": "/psp/paymentorders/{{ page.payment_order_id }}/payments" },
+        "currentPayment": { "id": "/psp/paymentorders/{{ page.payment_order_id }}/currentpayment" }
     },
     "operations": [
         {
             "method": "PATCH",
-            "href": "{{ page.apiUrl }}/psp/paymentorders/{{ page.paymentOrderId }}",
+            "href": "{{ page.api_url }}/psp/paymentorders/{{ page.payment_order_id }}",
             "rel": "update-paymentorder-abort",
             "contentType": "application/json"
         },
         {
             "method": "GET",
-            "href": "{{ page.frontEndUrl }}/paymentmenu/{{ page.paymentToken }}",
+            "href": "{{ page.front_end_url }}/paymentmenu/{{ page.payment_token }}",
             "rel": "redirect-paymentorder",
             "contentType": "text/html"
         },
         {
             "method": "GET",
-            "href": "{{ page.frontEndUrl }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token={{ page.paymentToken }}&culture=nb-NO",
+            "href": "{{ page.front_end_url }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token={{ page.payment_token }}&culture=nb-NO",
             "rel": "view-paymentorder",
             "contentType": "application/javascript"
         }

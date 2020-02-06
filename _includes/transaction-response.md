@@ -1,4 +1,4 @@
-{% assign instrument = include.payment-instrument | default: "paymentorder" %}
+{% assign instrument = include.payment_instrument | default: "paymentorder" %}
 {% assign transaction = include.transaction | default: "capture" %}
 {% assign plural = transaction | append: "s" %}
 {% assign showRequest = include.showRequest | default: true %}
@@ -8,8 +8,8 @@
 **Request**
 
 ```http
-GET /psp/{{ instrument }}/payments/{{ page.paymentId }}/{{ plural }} HTTP/1.1
-Host: {{ page.apiHost }}
+GET /psp/{{ instrument }}/payments/{{ page.payment_id }}/{{ plural }} HTTP/1.1
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -24,13 +24,13 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/{{ instrument }}/payments/{{ page.paymentId }}",
+    "payment": "/psp/{{ instrument }}/payments/{{ page.payment_id }}",
     "{{ plural }}": {
-        "id": "/psp/{{ instrument }}/payments/{{ page.paymentId }}/{{ plural }}",
+        "id": "/psp/{{ instrument }}/payments/{{ page.payment_id }}/{{ plural }}",
         "{{ transaction }}List": [{
-            "id": "/psp/{{ instrument }}/payments/{{ page.paymentId }}/{{ plural }}/{{ page.transactionId }}",
+            "id": "/psp/{{ instrument }}/payments/{{ page.payment_id }}/{{ plural }}/{{ page.transaction_id }}",
             "transaction": {
-                "id": "/psp/{{ instrument }}/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
+                "id": "/psp/{{ instrument }}/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
                 "created": "2016-09-14T01:01:01.01Z",
                 "updated": "2016-09-14T01:01:01.03Z",
                 "type": "{{ transaction | capitalize }}",

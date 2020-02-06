@@ -28,7 +28,7 @@ In the Seamless View scenario, Swedbank Pay receives a mobile number (MSISDN)
 from the payer through Swedbank Pay Payments. Swedbank Pay performs a payment
 that the payer must confirm through the Vipps mobile app.
 
-![Vipps_flow_PaymentPages.png]
+![steps of the vipps purchase flow][vipps-purchase-flow]{:width="1200px" :height="500px"}
 
 ## Purchase flow
 
@@ -135,7 +135,7 @@ An example of an expanded `POST` request is available in the
 
 ```http
 POST /psp/vipps/payments HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -166,7 +166,7 @@ Content-Type: application/json
 
         },
        "payeeInfo": {
-           "payeeId": "{{ page.merchantId }}"
+           "payeeId": "{{ page.merchant_id }}"
            "payeeReference": "payeeReference",
            "payeeName": "Merchant1",
            "productCategory": "A123",
@@ -224,7 +224,7 @@ Content-Type: application/json
 
 {
    "payment": {
-       "id": "/psp/vipps/payments/{{ page.paymentId }}",
+       "id": "/psp/vipps/payments/{{ page.payment_id }}",
        "number": 72100003079,
        "created": "2018-09-05T14:18:44.4259255Z",
        "instrument": "Vipps",
@@ -233,7 +233,7 @@ Content-Type: application/json
        "state": "Ready",
        "currency": "NOK",
        "prices": {
-           "id": "/psp/vipps/payments/{{ page.paymentId }}/prices"
+           "id": "/psp/vipps/payments/{{ page.payment_id }}/prices"
         },
        "amount": 0,
        "description": "Vipps Test",
@@ -242,29 +242,29 @@ Content-Type: application/json
        "userAgent": "Mozilla/5.0 weeeeee",
        "language": "nb-NO",
        "urls": {
-           "id": "/psp/vipps/payments/{{ page.paymentId }}/urls"
+           "id": "/psp/vipps/payments/{{ page.payment_id }}/urls"
         },
        "payeeInfo": {
-           "id": "/psp/vipps/payments/{{ page.paymentId }}/payeeinfo"
+           "id": "/psp/vipps/payments/{{ page.payment_id }}/payeeinfo"
         },
        "metadata": {
-           "id": "/psp/vipps/payments/{{ page.paymentId }}/metadata"
+           "id": "/psp/vipps/payments/{{ page.payment_id }}/metadata"
         }
     },
    "operations": [
         {
            "method": "PATCH",
-           "href": "{{ page.apiUrl }}/psp/vipps/payments/{{ page.paymentId }}",
+           "href": "{{ page.api_url }}/psp/vipps/payments/{{ page.payment_id }}",
            "rel": "update-payment-abort"
         },
         {
            "method": "GET",
-           "href": "{{ page.frontEndUrl }}/vipps/payments/authorize/{{ page.paymentToken }}",
+           "href": "{{ page.front_end_url }}/vipps/payments/authorize/{{ page.payment_token }}",
            "rel": "redirect-authorization"
         },
         {
             "method": "GET",
-            "href": "{{ page.frontEndUrl }}/vipps/core/scripts/client/px.vipps.client.js?token={{ page.paymentToken }}&Culture=sv-SE",
+            "href": "{{ page.front_end_url }}/vipps/core/scripts/client/px.vipps.client.js?token={{ page.payment_token }}&Culture=sv-SE",
             "rel": "view-payment",
             "contentType": "application/javascript"
         }
@@ -342,8 +342,8 @@ Use the mobile number from the consumer to create an authorization transaction.
 **Request**
 
 ```http
-POST /psp/vipps/payments/{{ page.paymentId }}/authorizations HTTP/1.1
-Host: {{ page.apiHost }}
+POST /psp/vipps/payments/{{ page.payment_id }}/authorizations HTTP/1.1
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -362,13 +362,13 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/vipps/payments/{{ page.paymentId }}",
+    "payment": "/psp/vipps/payments/{{ page.payment_id }}",
     "authorization": {
         "vippsTransactionId": "5619328800",
         "msisdn": "+4798765432",
-        "id": "/psp/vipps/payments/{{ page.paymentId }}/authorizations/",
+        "id": "/psp/vipps/payments/{{ page.payment_id }}/authorizations/",
     "transaction": {
-        "id": "/psp/vipps/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
+        "id": "/psp/vipps/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
         "created": "2016-09-14T01:01:01.01Z",
         "updated": "2016-09-14T01:01:01.03Z",
         "type": "Authorization",
@@ -430,3 +430,4 @@ Content-Type: application/json
 [Vipps_flow_PaymentPages.png]: /assets/img/vipps-flow-paymentpages.png
 [Vipps-screenshot-1]: /assets/img/checkout/vipps-hosted-payment.png
 [Vipps-screenshot-2]: /assets/img/checkout/vipps-hosted-payment-no-paymenturl.png
+[vipps-purchase-flow]: /assets/img/payments/vipps-purchase-flow.png

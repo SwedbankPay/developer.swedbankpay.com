@@ -1,4 +1,4 @@
-{% assign instrument = include.payment-instrument | default: "paymentorder" %}
+{% assign instrument = include.payment_instrument | default: "paymentorder" %}
 
 The `payeeinfo` resource contains information about the payee (i.e. a merchant,
 a corporation etc) related to a specific payment.
@@ -7,8 +7,8 @@ a corporation etc) related to a specific payment.
 **Request**
 
 ```http
-GET /psp/{{ instrument }}/payments/{{ page.paymentId }}/payeeInfo HTTP/1.1
-Host: {{ page.apiHost }}
+GET /psp/{{ instrument }}/payments/{{ page.payment_id }}/payeeInfo HTTP/1.1
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -21,10 +21,10 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/{{ instrument }}/payments/{{ page.paymentId }}",
+    "payment": "/psp/{{ instrument }}/payments/{{ page.payment_id }}",
     "payeeInfo": {
-        "id": "/psp/{{ instrument }}/payments/{{ page.paymentId }}/payeeInfo",
-        "payeeId": "{{ page.merchantId }}"
+        "id": "/psp/{{ instrument }}/payments/{{ page.payment_id }}/payeeInfo",
+        "payeeId": "{{ page.merchant_id }}"
         "payeeReference": "EN1234",
         "payeeName": "TestMerchant1",
         "productCategory": "EF1234",
@@ -46,4 +46,4 @@ Content-Type: application/json
 
 ### PayeeReference
 
-{% include payee-reference.md %}
+{% include payee-reference.md payment_instrument = instrument %}

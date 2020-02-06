@@ -65,17 +65,17 @@ is given below.
     "operations": [
         {
             "method": "POST",
-            "href": "{{ page.apiUrl }}/psp/swish/payments/{{ page.paymentId }}/sales",
+            "href": "{{ page.api_url }}/psp/swish/payments/{{ page.payment_id }}/sales",
             "rel": "create-sale"
         },
         {
             "method": "GET",
-            "href": "{{ page.frontEndUrl }}/swish/payments/sales/{{ page.paymentToken }}",
+            "href": "{{ page.front_end_url }}/swish/payments/sales/{{ page.payment_token }}",
             "rel": "redirect-sale"
         },
         {
             "method": "GET",
-            "href": "{{ page.frontEndUrl }}/swish/core/scripts/client/px.swish.client.js?token={{ page.paymentToken }}",
+            "href": "{{ page.front_end_url }}/swish/core/scripts/client/px.swish.client.js?token={{ page.payment_token }}",
             "rel": "view-sales",
             "contentType": "application/javascript"
         }
@@ -99,15 +99,17 @@ the `rel` and the request that will be sent in the HTTP body of the
 request for the given operation.
 
 {:.table .table-striped}
-| Operation              | Description                                                                                                                                |
-| :--------------------- | :----------------------------------------------------------------------------------------------------------------------------------------- |
-| `create-sale`          | Creates a `sales` transaction without redirection to a payment page. `Msisdn` is required in browser based scenarioes.                     |
-| `redirect-sale`        | Contains the redirect-URI that redirects the consumer to a Swedbank Pay hosted payment page prior to creating a sales transaction.         |
-| `view-sales`         | Contains the URI of the JavaScript used to create a Hosted View iframe directly without redirecting the consumer to separate payment page. |
+| Operation       | Description                                                                                                                                |
+| :-------------- | :----------------------------------------------------------------------------------------------------------------------------------------- |
+| `create-sale`   | Creates a `sales` transaction without redirection to a payment page. `Msisdn` is required in browser based scenarioes.                     |
+| `redirect-sale` | Contains the redirect-URI that redirects the consumer to a Swedbank Pay hosted payment page prior to creating a sales transaction.         |
+| `view-sales`    | Contains the URI of the JavaScript used to create a Hosted View iframe directly without redirecting the consumer to separate payment page. |
 
 ## Swish transactions
 
-All Swish transactions are described below.
+All Swish transactions are described below. Please note that Swish does not
+support [Merchant Initiated Transactions][unscheduled-purchase] for the time
+being.
 
 ## Sales
 
@@ -118,8 +120,8 @@ on a specific payment.
 **Request**
 
 ```http
-GET /psp/swish/payments/{{ page.paymentId }}/sales HTTP/1.1
-Host: {{ page.apiHost }}
+GET /psp/swish/payments/{{ page.payment_id }}/sales HTTP/1.1
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -132,18 +134,18 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "payment": "/psp/swish/payments/{{ page.paymentId }}",
+  "payment": "/psp/swish/payments/{{ page.payment_id }}",
   "sales": {
-    "id": "/psp/swish/payments/{{ page.paymentId }}/sale",
+    "id": "/psp/swish/payments/{{ page.payment_id }}/sale",
     "saleList": [
       {
         "date": "8/13/2019 8:58:23 AM +00:00",
         "payerAlias": "46739000001",
         "swishPaymentReference": "8D0A30A7804E40479F88FFBA26111F04",
         "swishStatus": "PAID",
-        "id": "/psp/swish/payments/{{ page.paymentId }}/sales/{{ page.transactionId }}",
+        "id": "/psp/swish/payments/{{ page.payment_id }}/sales/{{ page.transaction_id }}",
         "transaction": {
-          "id": "{{ page.transactionId }}",
+          "id": "{{ page.transaction_id }}",
           "created": "2016-09-14T01:01:01.01Z",
           "updated": "2016-09-14T01:01:01.03Z",
           "type": "Sale",
@@ -165,19 +167,19 @@ Content-Type: application/json
 
 ### Create Sales transaction
 
-In browser based solutions the payers `msisdn` (mobile number) is required.
-This is managed either by sending a `POST` request as seen below,
-or by redirecting the end-user to the hosted payment page.
-The `msisdn` is only required for browser based solutions.
-With mobile app based solutions, the consumer uses the device that hosts the Swish app
-to manage the purchase, making `msisdn` optional.
+In browser based solutions the payers `msisdn` (mobile number) is required. This
+is managed either by sending a `POST` request as seen below, or by redirecting
+the end-user to the hosted payment page. The `msisdn` is only required for
+browser based solutions. With mobile app based solutions, the consumer uses the
+device that hosts the Swish app to manage the purchase, making `msisdn`
+optional.
 
 {:.code-header}
 **Browser-based Request**
 
 ```http
-POST /psp/swish/payments/{{ page.paymentId }}/sales HTTP/1.1
-Host: {{ page.apiHost }}
+POST /psp/swish/payments/{{ page.payment_id }}/sales HTTP/1.1
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -196,13 +198,13 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/swish/payments/{{ page.paymentId }}",
+    "payment": "/psp/swish/payments/{{ page.payment_id }}",
     "sale": {
         "date": "23.10.2017 08:39:37 +00:00",
         "paymentRequestToken": "LhXrK84MSpWU2RO09f8kUP-FHiBo-1pB",
-        "id": "/psp/swish/payments/{{ page.paymentId }}/sales/{{ page.transactionId }}",
+        "id": "/psp/swish/payments/{{ page.payment_id }}/sales/{{ page.transaction_id }}",
         "transaction": {
-            "id": "{{ page.transactionId }}",
+            "id": "{{ page.transaction_id }}",
             "created": "2017-10-23T08:39:35.6478733Z",
             "updated": "2017-10-23T08:39:37.3788733Z",
             "type": "Sale",
@@ -223,8 +225,8 @@ Content-Type: application/json
 **In-app Request**
 
 ```http
-POST /psp/swish/payments/{{ page.paymentId }}/sales HTTP/1.1
-Host: {{ page.apiHost }}
+POST /psp/swish/payments/{{ page.payment_id }}/sales HTTP/1.1
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -242,13 +244,13 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/swish/payments/{{ page.paymentId }}",
+    "payment": "/psp/swish/payments/{{ page.payment_id }}",
     "sale": {
         "date": "23.10.2017 08:39:37 +00:00",
         "paymentRequestToken": "LhXrK84MSpWU2RO09f8kUP-FHiBo-1pB",
-        "id": "/psp/swish/payments/{{ page.paymentId }}/sales/{{ page.transactionId }}",
+        "id": "/psp/swish/payments/{{ page.payment_id }}/sales/{{ page.transaction_id }}",
         "transaction": {
-            "id": "{{ page.transactionId }}",
+            "id": "{{ page.transaction_id }}",
             "created": "2017-10-23T08:39:35.6478733Z",
             "updated": "2017-10-23T08:39:37.3788733Z",
             "type": "Sale",
@@ -287,8 +289,8 @@ specific payment.
 **Request**
 
 ```http
-GET /psp/swish/payments/{{ page.paymentId }}/reversals HTTP/1.1
-Host: {{ page.apiHost }}
+GET /psp/swish/payments/{{ page.payment_id }}/reversals HTTP/1.1
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
@@ -301,14 +303,14 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/swish/payments/{{ page.paymentId }}",
+    "payment": "/psp/swish/payments/{{ page.payment_id }}",
     "reversals": {
-        "id": "/psp/swish/payments/{{ page.paymentId }}/reversals",
+        "id": "/psp/swish/payments/{{ page.payment_id }}/reversals",
         "reversalList": [
             {
-                "id": "/psp/swish/payments/{{ page.paymentId }}/reversals/{{ page.transactionId }}",
+                "id": "/psp/swish/payments/{{ page.payment_id }}/reversals/{{ page.transaction_id }}",
                 "transaction": {
-                    "id": "/psp/swish/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
+                    "id": "/psp/swish/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
                     "created": "2016-09-14T01:01:01.01Z",
                     "updated": "2016-09-14T01:01:01.03Z",
                     "type": "Reversal",
@@ -346,8 +348,8 @@ Swedbank Pay.
 **Request**
 
 ```http
-POST /psp/swish/payments/{{ page.paymentId }}/reversals HTTP/1.1
-Host: {{ page.apiHost }}
+POST /psp/swish/payments/{{ page.payment_id }}/reversals HTTP/1.1
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -378,11 +380,11 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/swish/payments/{{ page.paymentId }}",
+    "payment": "/psp/swish/payments/{{ page.payment_id }}",
     "reversal": {
-        "id": "/psp/swish/payments/{{ page.paymentId }}/reversals/{{ page.transactionId }}",
+        "id": "/psp/swish/payments/{{ page.payment_id }}/reversals/{{ page.transaction_id }}",
         "transaction": {
-            "id": "/psp/swish/payments/{{ page.paymentId }}/transactions/{{ page.transactionId }}",
+            "id": "/psp/swish/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
             "created": "2016-09-14T01:01:01.01Z",
             "updated": "2016-09-14T01:01:01.03Z",
             "type": "Reversal",
@@ -432,3 +434,4 @@ Swish does not support `recurring` payments.
 [technical-reference-problemmessages]: /payments/swish/other-features#problem-messages
 [technical-reference-transaction]: /payments/swish/other-features#transaction
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
+[unscheduled-purchase]: /payments/card/other-features#unscheduled-purchase
