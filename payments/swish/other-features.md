@@ -165,7 +165,7 @@ All international mobile numbers are supported. To be valid, the number input
 must be with a country code prefix and consist of 8 to 15 characters. Digits are
 the only characters allowed, and the regex used is `\\+[1-9]\\d{7,14}`. A valid
 Swedish mobile number would be `+46739000001`, a valid Norwegian mobile number
-would be `+4799999999`.
+would be `+4792345678`.
 
 #### mCommerce
 
