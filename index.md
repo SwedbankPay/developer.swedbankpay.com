@@ -8,7 +8,6 @@ sidebar:
 {% assign design_guide_version = site.design_guide.version | default: '4.1.0' %}
 {% assign design_guide_version_url = design_guide_base_url | append: '/v/' | append: design_guide_version %}
 
-{% include alert-review-section.md %}
 
 Welcome to the **Swedbank Pay Developer Portal**. Please make your choice of
 product to integrate below or read on for more general information about

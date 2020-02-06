@@ -22,7 +22,6 @@ sidebar:
       title: Public Migration Key
 ---
 
-{% include alert-review-section.md %}
 
 {% include jumbotron.html body="The latest updates about our releases will be
 published on this page." %}
@@ -32,6 +31,10 @@ body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
 
 ## February 2020
+
+### Version 1.7.1
+
+All sections have been released. :trophy:
 
 ### Version 1.7
 
@@ -44,7 +47,10 @@ this very documentation, not to a version of any APIs described by it." %}
 * Added info about mobile verification in Swish Other Features.
 * Added section about Authenticated Merchants in Checkout section.
 * Cleanup in `Vipps` Other Features.
-* `paymentRestrictedToAgeLimit` and `paymentRestrictedToSocialSecurityNumber` added to `swish` object in [Swish Redirect][swish-redirect]. `paymentAgeLimit`, `socialSecurityNumber` added to the new `payerInfo` object in [Swish Seamless View][swish-seamless-view]. [Properties added in `Swish`.
+* `paymentRestrictedToAgeLimit` and `paymentRestrictedToSocialSecurityNumber`
+  added to `swish` object in [Swish Redirect][swish-redirect]. `paymentAgeLimit`
+  , `socialSecurityNumber` added to the new `payerInfo` object in
+  [Swish Seamless View][swish-seamless-view]. Properties added in `Swish`.
 * Added section about migration key in Resources section.
 
 ## January 2020

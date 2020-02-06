@@ -4,7 +4,7 @@
 authenticated by the merchant, the consumer's identity can be included in the
 Payment Order request." %}
 
-**Merhant Authenticated Consumer** is performed as an alternative to
+**Merchant Authenticated Consumer** is performed as an alternative to
 [Checkin][checkin] when creating the Payment Order upon the initializaiont of
 the [Payment Menu][payment-menu]. You can use Merchant Authenticated Consumer
 only if you have an agreement with Swedbank Pay. The additional

@@ -22,7 +22,6 @@ sidebar:
       title: Public Migration Key
 ---
 
-{% include alert-review-section.md %}
 
 {:.table .table-striped}
 | Term                            | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
