@@ -31,7 +31,6 @@ integration and Payment Link. Using the direct API integration will put you in
 charge of determining which device is being used, and whether the e- or
 m-commerce flow is the most suitable. We will do this for you.
 
-
 ## Purchase Flow
 
 If you are using the e-commerce flow, the payer enters a Swish connected
@@ -74,7 +73,6 @@ Syd][sparbanken-syd], [Sparbanken Öresund][sparbanken-oresund],
 agreement, a Swish alias and access to [Swish Certificate Management
 system][swish-certificate-management-system].
 
-
 ### Demoshop
 
 You can give Swish a go in our demoshop if you like. For redirect payments, you
@@ -83,9 +81,7 @@ must be toggled on. The external integration demoshop used for testing is set up
 with the Merchant Swish Simulator, which enables you to test without using the
 Swish App.
 
-
 {% include iterator.html  next_href="redirect" next_title="Next: Redirect" %}
-
 
 [danske-bank]: https://danskebank.se/sv-se/foretag/medelstora-foretag/onlinetjanster/pages/swish-handel.aspx
 [handelsbanken]: https://www.handelsbanken.se/sv/foretag/konton-betalningar/ta-betalt/swish-for-foretag
