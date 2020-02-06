@@ -20,11 +20,10 @@ link a payment window opens." %}
 
 * You have to distribute the Payment Link to the customer through your order
     system, using channels like e-mail or SMS.
-    * NOTE: When sending information in e-mail/SMS, it is strongly
+  * NOTE: When sending information in e-mail/SMS, it is strongly
         recommended that you add information about your terms and conditions,
         including purchase information and price. **See recommendations in the
         next paragraph.**
-
 
 * When the consumer clicks on the Payment Link, the Swedbank Pay payment page
     will open, letting the consumer enter the payment details (varying depending
@@ -39,7 +38,6 @@ link a payment window opens." %}
     Swedbank Pay, enabling you to make a GET request towards Swedbank Pay with
     the paymentID received in the first step, which will return the purchase
     result.
-
 
 ### Recommendations regarding Payment Link in E-mail/SMS
 
@@ -72,7 +70,6 @@ implementing the Payment Link scenario, see purchase flow. One-phase payment
 instruments will not implement capture or cancellation. The options available
 when creating a payment with operation set to `purchase` are listed below. The
 general REST based API model is described WHEREEEEE?
-
 
 ### Screenshots
 
