@@ -32,6 +32,10 @@ this very documentation, not to a version of any APIs described by it." %}
 
 ## February 2020
 
+### Version 1.7.1
+
+All sections have been released. :trophy:
+
 ### Version 1.7
 
 * README is updated with info about includes.
