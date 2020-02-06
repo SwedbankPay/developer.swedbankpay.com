@@ -1290,7 +1290,7 @@ although that might be possible in the future.
 
 ## Payee Info
 
-{% include payee-info.md %}
+{% include payee-info.md payment_instrument="invoice" %}
 
 {% include merchant-authenticated-consumer.md %}
 

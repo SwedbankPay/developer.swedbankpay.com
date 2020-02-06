@@ -46,4 +46,4 @@ Content-Type: application/json
 
 ### PayeeReference
 
-{% include payee-reference.md %}
+{% include payee-reference.md payment_instrument = instrument %}
