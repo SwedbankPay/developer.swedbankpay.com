@@ -205,6 +205,7 @@ Content-Type: application/json
 |          | └─➔&nbsp;`ecomOnlyEnabled`   | `boolean`     | `true` if to only enable Swish on browser based transactions.; otherwise `false` to also enable Swish transactions via in-app payments.                                                                                                                                                             |                                                                                                                                                                                                                          
 |          | └─➔&nbsp;`paymentRestrictedToAgeLimit`  |`integer` |Positive number that sets the required age  needed to fulfill the payment. To use this feature it has to be configured in the contract.                                                                                                                                                        |   
 |          | └─➔&nbsp;`paymentRestrictedToSocialSecurityNumber`  |`string` | When provided, the payment will be restricted to a specific social security number. Format: yyyyMMddxxxx. To use this feature it has to be configured in the contract.                                                                                                                                                 
+
 {:.code-header}
 **Response**
 

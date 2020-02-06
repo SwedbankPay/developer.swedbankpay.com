@@ -152,7 +152,7 @@ Content-Type: application/json
         "paymentRestrictedToAgeLimit": 18,
         "paymentRestrictedToSocialSecurityNumber": "{{ page.consumer_ssn_se }}"
     }
-    
+
 }
 ```
 
