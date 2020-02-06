@@ -1,14 +1,16 @@
 ## Unscheduled Purchase
 
+{% include alert-agreement-required.md %}
+
 An `unscheduled purchase`, also called a Merchant Initiated Transaction (MIT),
-is a payment which uses a `paymentToken` created through a previous payment in
+is a payment which uses a `paymentToken` generated through a previous payment in
 order to charge the same card at a later time. They are done by the merchant
 without the cardholder being present.  
 
-`unscheduled purchase`s differ from `recur` as they are done as singular
-transactions, and not recurring ones. Examples of this can be car rental
-companies charging the payer's card for toll road expenses after the rental
-period.
+`unscheduled purchase`s differ from `recur` as they are not meant to be
+recurring, but occur as singular transactions. Examples of this can be car
+rental companies charging the payer's card for toll road expenses after the
+rental period.
 
 {:.code-header}
 **Request**
@@ -27,7 +29,7 @@ Content-Type: application/json
         "currency": "NOK",
         "amount": 1500,
         "vatAmount": 0,
-        "description": "Test Recurrence",
+        "description": "Test Unscheduled",
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",
         "urls": {
@@ -56,7 +58,7 @@ Content-Type: application/json
     "number": 1234567890,
     "created": "2016-09-14T13:21:29.3182115Z",
     "updated": "2016-09-14T13:21:57.6627579Z",
-    "state": "Ready|Pending|Failed|Aborted",
+    "state": "Ready",
     "operation": "PurchaseDirect",
     "intent": "Authorization",
     "currency": "NOK",

@@ -107,7 +107,8 @@ request for the given operation.
 
 ## Swish transactions
 
-All Swish transactions are described below.
+All Swish transactions are described below. Please note that Swish does not
+support [Merchant Initiated Transactions][MIT-section] for the time being.
 
 ## Sales
 
@@ -432,3 +433,4 @@ Swish does not support `recurring` payments.
 [technical-reference-problemmessages]: /payments/swish/other-features#problem-messages
 [technical-reference-transaction]: /payments/swish/other-features#transaction
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
+[MIT-section]: /payments/card/other-features#unscheduled-purchase
