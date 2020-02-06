@@ -536,7 +536,7 @@ transaction made towards a payment, as previously described.
 
 ## PayeeInfo
 
-{% include payee-info.md invoice_payments=true %}
+{% include payee-info.md payment_instrument="invoice" %}
 
 ## Prices
 

@@ -1,5 +1,4 @@
 {% assign instrument = include.payment_instrument | default: "paymentorder" %}
-{% assign invoice_payments = include.invoice_payments | default: false%}
 
 The `payeeinfo` resource contains information about the payee (i.e. a merchant,
 a corporation etc) related to a specific payment.
@@ -47,4 +46,4 @@ Content-Type: application/json
 
 ### PayeeReference
 
-{% include payee-reference.md invoice_payments=invoice_payments %}
+{% include payee-reference.md payment_instrument = instrument %}
