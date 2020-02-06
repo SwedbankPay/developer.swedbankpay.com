@@ -189,19 +189,13 @@ payment altogether or creating an authorization transaction through the
 }
 ```
 
-### Payment order
-
-{% include payment-order-get.md %}
-
-{% include operations-reference.md %}
-
 ### Prices
 
 {% include prices.md payment_instrument="vipps" %}
 
 ### Payee reference
 
-{% include payee-info.md %}
+{% include payee-reference.md %}
 
 {% include transactions-reference.md payment_instrument="vipps" %}
 

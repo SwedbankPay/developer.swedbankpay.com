@@ -433,5 +433,5 @@ Swish does not support `recurring` payments.
 [technical-reference-payeeReference]: /payments/swish/other-features#payee-reference
 [technical-reference-problemmessages]: /payments/swish/other-features#problem-messages
 [technical-reference-transaction]: /payments/swish/other-features#transaction
-[user-agent]: https://en.wikipedia.org/wiki/
+[user-agent]: https://en.wikipedia.org/wiki/User_agent
 [unscheduled-purchase]: /payments/card/other-features#unscheduled-purchase

@@ -150,10 +150,10 @@ Content-Type: application/json
                 "vatAmount": 0
             }
         ],
-        "paymentAgeLimit": 18,
         "description": "Test Purchase",
         "generatePaymentToken": false,
         "generateRecurrenceToken": false,
+        "payerReference": "AB1234",
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "urls": {
@@ -163,21 +163,24 @@ Content-Type: application/json
             "paymentUrl": "http://example.com/perform-payment",
             "callbackUrl": "http://example.com/payment-callback",
             "logoUrl": "https://example.com/payment-logo.png",
-            "termsOfServiceUrl": "https://example.com/payment-terms.pdf",
+            "termsOfServiceUrl": "https://example.com/payment-terms.pdf"
         },
         "payeeInfo": {
-            "payeeId": "{{ page.merchant_id }}"
+            "payeeId": "{{ page.merchant_id }}",
             "payeeReference": "CD1234",
             "payeeName": "Merchant1",
             "productCategory": "A123",
             "orderReference": "or123",
+            "subsite": "MySubsite"
         },
         "prefillInfo": {
-          "msisdn": "+46987654321"
+            "msisdn": "+46987654321"
         }  
     },
     "swish": {
-        "enableEcomOnly": true,
+        "enableEcomOnly": false,
+        "paymentRestrictedToAgeLimit": 18,
+        "paymentRestrictedToSocialSecurityNumber": "{{ page.consumer_ssn_se }}"
     }
 }
 ```
@@ -217,7 +220,6 @@ Content-Type: application/json
 |          | └─➔&nbsp;`subsite`           | `String(40)`  | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.                                                                                                                                                                                                                                                                                                                                                                                                               |
 |          | └➔&nbsp;`swish`              | `object`      | An object that holds different scenarios for Swish payments.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 |          | └─➔&nbsp;`enableEcomOnly`    | `boolean`     | `true` if to only enable Swish on browser-based transactions.; otherwise `false` to also enable Swish transactions via mobile app.                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-
 {:.code-header}
 **Response**
 
@@ -227,7 +229,6 @@ Content-Type: application/json
 
 {
     "payment": {
-      "paymentAgeLimit": 18,
       "id": "/psp/swish/payments/{{ page.payment_id }}",
       "number": 1234567890,
       "instrument": "Swish",
