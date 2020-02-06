@@ -22,7 +22,6 @@ sidebar:
       title: Public Migration Key
 ---
 
-{% include alert-review-section.md %}
 
 {% include jumbotron.html body="The latest updates about our releases will be
 published on this page." %}

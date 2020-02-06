@@ -16,7 +16,6 @@ sidebar:
       title: Other Features
 ---
 
-{% include alert-review-section.md %}
 
 {% include jumbotron.html body="**Vipps Payments** is a two-phase
 payment instrument supported by the major Norwegian banks. In the redirect

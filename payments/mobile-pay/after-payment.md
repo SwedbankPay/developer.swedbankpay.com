@@ -14,8 +14,6 @@ sidebar:
       title: Other Features
 ---
 
-{% include alert-review-section.md %}
-
 ## Options after posting a payment
 
 * **Abort**: It is possible to [abort a payment][technical-reference-abort]

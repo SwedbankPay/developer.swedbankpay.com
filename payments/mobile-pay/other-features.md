@@ -14,8 +14,6 @@ sidebar:
       title: Other Features
 ---
 
-{% include alert-review-section.md %}
-
 ## Payment Resource
 
 {% include payment-resource.md payment_instrument="mobilepay" %}
