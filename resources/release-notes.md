@@ -43,7 +43,10 @@ this very documentation, not to a version of any APIs described by it." %}
 * Added info about mobile verification in Swish Other Features.
 * Added section about Authenticated Merchants in Checkout section.
 * Cleanup in `Vipps` Other Features.
-* `paymentRestrictedToAgeLimit` and `paymentRestrictedToSocialSecurityNumber` added to `swish` object in [Swish Redirect][swish-redirect]. `paymentAgeLimit`, `socialSecurityNumber` added to the new `payerInfo` object in [Swish Seamless View][swish-seamless-view]. [Properties added in `Swish`.
+* `paymentRestrictedToAgeLimit` and `paymentRestrictedToSocialSecurityNumber`
+  added to `swish` object in [Swish Redirect][swish-redirect]. `paymentAgeLimit`
+  , `socialSecurityNumber` added to the new `payerInfo` object in
+  [Swish Seamless View][swish-seamless-view]. Properties added in `Swish`.
 * Added section about migration key in Resources section.
 
 ## January 2020
