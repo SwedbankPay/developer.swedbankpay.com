@@ -22,7 +22,6 @@ sidebar:
       title: Public Migration Key
 ---
 
-{% include alert-review-section.md %}
 
 {% include jumbotron.html body="Testing, are we? Good! Here's some data you can
    use to test and verify your integration!" %}

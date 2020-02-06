@@ -22,7 +22,6 @@ sidebar:
       title: Public Migration Key
 ---
 
-{% include alert-review-section.md %}
 
 {% include jumbotron.html body=
 "We are working on a brand new demoshop for you!

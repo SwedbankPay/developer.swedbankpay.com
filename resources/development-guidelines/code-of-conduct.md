@@ -16,7 +16,6 @@ sidebar:
       title: Licence
 ---
 
-{% include alert-review-section.md %}
 
 It is important that the projects governed by Swedbank Pay foster a
 collaborative, open, inclusive, positive and tolerant community. To underscore
