@@ -534,11 +534,7 @@ transaction made towards a payment, as previously described.
 
 {% include payment-link.md show_3d_secure=false %}
 
-## PayeeInfo
-
 {% include payee-info.md payment_instrument="invoice" %}
-
-## Prices
 
 {% include prices.md payment_instrument="invoice" %}
 

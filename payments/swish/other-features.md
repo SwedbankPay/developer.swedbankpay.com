@@ -18,9 +18,6 @@ sidebar:
       title: Other Features
 ---
 
-
-## Payment Resource
-
 {% include payment-resource.md payment_instrument="swish" showStatusOperations=true%}
 
 {% include payment-transaction-states.md %}
@@ -175,11 +172,7 @@ be connected to a Swish account.
 
 {% include payment-link.md show_3d_secure=false show_authorization=false %}
 
-### Prices
-
 {% include prices.md payment_instrument="swish" %}
-
-### Payee reference
 
 {% include payee-info.md %}
 

@@ -20,13 +20,9 @@ sidebar:
 Credit Card. This section has extented code examples and features that were not
 covered by the other subsections." %}
 
-## Payment Resource
-
 {% include payment-resource.md show_status_operations=true %}
 
 {% include payment-transaction-states.md %}
-
-## Create Payment
 
 {% include create-payment.md %}
 
@@ -42,15 +38,11 @@ document is described in the following section.
 
 {% include card-purchase.md full_reference=true %}
 
-## Recur
-
 {% include recur.md %}
 
 {% include unscheduled-purchase.md %}
 
 {% include payout.md %}
-
-## Verify
 
 {% include verify.md %}
 
@@ -60,11 +52,7 @@ document is described in the following section.
 
 {% include payment-link.md %}
 
-## PayeeInfo
-
 {% include payee-info.md payment_instrument="creditcard" %}
-
-## Prices
 
 {% include prices.md %}
 
