@@ -21,8 +21,6 @@ sidebar:
 
 {% include payment-link.md %}
 
-## Payment Resource
-
 {% include payment-resource.md  payment_instrument="vipps" show_status_operations=true%}
 
 {% include payment-transaction-states.md %}
@@ -188,11 +186,7 @@ payment altogether or creating an authorization transaction through the
 }
 ```
 
-### Prices
-
 {% include prices.md payment_instrument="vipps" %}
-
-### Payee reference
 
 {% include payee-reference.md %}
 

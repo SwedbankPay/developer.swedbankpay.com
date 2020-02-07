@@ -1,5 +1,7 @@
-> The `Verify` operation lets you post verification payments, which are used to
-  confirm validity of card information without reserving or charging any amount.
+## Verify
+
+The `Verify` operation lets you post verification payments, which are used to
+confirm validity of card information without reserving or charging any amount.
 
 ### Introduction to Verify
 

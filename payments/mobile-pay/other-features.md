@@ -14,8 +14,6 @@ sidebar:
       title: Other Features
 ---
 
-## Payment Resource
-
 {% include payment-resource.md payment_instrument="mobilepay" %}
 
 ### Create Payment
@@ -655,11 +653,7 @@ The response will be the `payment` resource with its `state` set to `Aborted`.
 
 {% include transactions-reference.md payment_instrument="mobilepay" %}
 
-## Prices
-
 {% include prices.md payment_instrument="mobilepay" %}
-
-## PayeeInfo
 
 {% include payee-info.md %}
 
