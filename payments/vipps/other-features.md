@@ -198,6 +198,8 @@ payment altogether or creating an authorization transaction through the
 
 {% include transactions-reference.md payment_instrument="vipps" %}
 
+{% include callback-reference.md %}
+
 ## Problem messages
 
 When performing unsuccessful operations, the eCommerce API will respond with a
