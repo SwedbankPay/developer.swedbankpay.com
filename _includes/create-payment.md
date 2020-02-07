@@ -1,3 +1,4 @@
+## Create Payment
 
 Within the card payments part of the eCommerce API, you can create four kinds
 of payments  ([purchase][purchase], [recurrence][recurrence], [payout][payout]

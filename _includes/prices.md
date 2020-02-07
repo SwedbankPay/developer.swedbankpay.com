@@ -1,5 +1,7 @@
 {% assign payment_instrument = include.payment_instrument | default: 'creditcard' %}
 
+## Prices
+
 The `prices` resource lists the prices related to a specific payment.
 
 {:.code-header}

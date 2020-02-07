@@ -1,3 +1,4 @@
+## Recur
 
 A `recur` payment is a payment that references a `recurrenceToken` created
 through a previous payment in order to charge the same card.
