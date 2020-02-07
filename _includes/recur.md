@@ -16,7 +16,7 @@ Content-Type: application/json
     "payment": {
         "operation": "Recur",
         "intent": "Authorization|AutoCapture",
-        "recurrenceToken": "{{ page.paymentId }}",
+        "recurrenceToken": "{{ page.payment_id }}",
         "currency": "NOK",
         "amount": 1500,
         "vatAmount": 0,
