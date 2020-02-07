@@ -46,7 +46,7 @@ document is described in the following section.
 
 {% include recur.md %}
 
-## Payout
+{% include unscheduled-purchase.md %}
 
 {% include payout.md %}
 
