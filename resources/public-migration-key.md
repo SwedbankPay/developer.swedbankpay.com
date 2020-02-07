@@ -35,7 +35,7 @@ this procedure."  %}
 * **Key ID**: `1633 7829 266A 0373`
 
 To encrypt files with Swedbank Pay's Public Migration Key, you need copy and
-paste it from below and save it to a file called `SwedbankPayProd.key`.
+paste it from below and save it to a file called `SwedbankPay.key`.
 
 {:.code-header}
 **Public Key**
