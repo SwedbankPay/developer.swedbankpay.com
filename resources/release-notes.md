@@ -32,6 +32,13 @@ this very documentation, not to a version of any APIs described by it." %}
 
 ## February 2020
 
+### Version 1.7.2
+
+Removed several duplicate headers in other-features pages.
+
+Added unscheduled purchase information in
+[card payments][card-unscheduled-purchase].
+
 ### Version 1.7.1
 
 All sections have been released. :trophy:
@@ -252,10 +259,11 @@ integration and the payer.
 
 [card-payment-url]: /payments/card/other-features#payment-url
 [card-purchase]: /payments/card/redirect#purchase
+[card-unscheduled-purchase]: /payments/card/other-features#unscheduled-purchase
 [card]: /payments/card
 [checkout-checkin-front-end]: /checkout/checkin#checkin-front-end
-[checkout-payment-orders]: /checkout/other-features#payment-orders
 [checkout-payment-order-purchase]: /checkout/payment-menu#request
+[checkout-payment-orders]: /checkout/other-features#payment-orders
 [checkout-payment-url]: /checkout/other-features#payment-url
 [checkout]: /checkout
 [credit]: /payments/credit
@@ -269,8 +277,8 @@ integration and the payer.
 [payments]: /payments
 [swish-direct]: /payments/swish/direct
 [swish-other-features]: /payments/swish/other-features
-[swish-seamless-view]: /payments/swish/seamless-view
 [swish-redirect]: /payments/swish/redirect
+[swish-seamless-view]: /payments/swish/seamless-view
 [swish]: /payments/swish
 [terminology]: /resources/terminology
 [vipps-payment-resource]: /payments/vipps/other-features#payment-resource
