@@ -20,9 +20,6 @@ sidebar:
       title: Other Features
 ---
 
-
-## Capture
-
 {% include payment-order-capture.md %}
 
 **Et voilà!** Checkout should now be complete, the payment should be secure and
