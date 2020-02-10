@@ -10,6 +10,8 @@ sidebar:
       title: Checkin
     - url: /checkout/payment-menu
       title: Payment Menu
+    - url: /checkout/capture
+      title: Capture 
     - url: /checkout/after-payment
       title: After Payment
     - url: /checkout/summary
@@ -120,14 +122,6 @@ Content-Type: application/json
 | `paymentorder` | `object` | The payment order object.                                                          |
 | └➔&nbsp;`id`   | `string` | The relative URI to the payment order.                                             |
 | `operations`   | `array`  | The array of possible operations to perform, given the state of the payment order. |
-
-## Capture
-
-{% include payment-order-capture.md %}
-
-**Et voilà!** Checkout should now be complete, the payment should be secure and
-everyone should be happy. But, sometimes you also need to implement the
-cancellation and reversal operations described below.
 
 ## Cancel
 
