@@ -16,7 +16,6 @@ sidebar:
       title: Licence
 ---
 
-{% include alert-review-section.md %}
 
 To make it clear exactly how outside contributors should provide their
 contributions to the project, a CONTRIBUTING.md file should be created at the

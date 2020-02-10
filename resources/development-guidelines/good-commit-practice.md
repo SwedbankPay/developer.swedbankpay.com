@@ -16,7 +16,6 @@ sidebar:
       title: Licence
 ---
 
-{% include alert-review-section.md %}
 
 The following document is a fork of
 [OpenStack's Git Commit Good Practice][good-practice], rewritten to suit

@@ -18,8 +18,6 @@ sidebar:
       title: Other Features
 ---
 
-{% include alert-review-section.md %}
-
 After the payment is confirmed, the consumer will be redirected from the Swish
 app to the `completeUrl` set in the [create payment request][create-payment].
 You need to retrieve payment status with `GET`
@@ -107,7 +105,9 @@ request for the given operation.
 
 ## Swish transactions
 
-All Swish transactions are described below.
+All Swish transactions are described below. Please note that Swish does not
+support [Merchant Initiated Transactions][unscheduled-purchase] for the time
+being.
 
 ## Sales
 
@@ -165,12 +165,12 @@ Content-Type: application/json
 
 ### Create Sales transaction
 
-In browser based solutions the payers `msisdn` (mobile number) is required.
-This is managed either by sending a `POST` request as seen below,
-or by redirecting the end-user to the hosted payment page.
-The `msisdn` is only required for browser based solutions.
-With mobile app based solutions, the consumer uses the device that hosts the Swish app
-to manage the purchase, making `msisdn` optional.
+In browser based solutions the payers `msisdn` (mobile number) is required. This
+is managed either by sending a `POST` request as seen below, or by redirecting
+the end-user to the hosted payment page. The `msisdn` is only required for
+browser based solutions. With mobile app based solutions, the consumer uses the
+device that hosts the Swish app to manage the purchase, making `msisdn`
+optional.
 
 {:.code-header}
 **Browser-based Request**
@@ -432,3 +432,4 @@ Swish does not support `recurring` payments.
 [technical-reference-problemmessages]: /payments/swish/other-features#problem-messages
 [technical-reference-transaction]: /payments/swish/other-features#transaction
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
+[unscheduled-purchase]: /payments/card/other-features#unscheduled-purchase

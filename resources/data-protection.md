@@ -18,9 +18,10 @@ sidebar:
       title: Terminology
     - url: /resources/data-protection
       title: Data Protection
+    - url: /resources/public-migration-key
+      title: Public Migration Key
 ---
 
-{% include alert-review-section.md %}
 
 ## Paymentorder consumer data
 

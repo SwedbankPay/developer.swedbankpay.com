@@ -18,9 +18,10 @@ sidebar:
       title: Terminology
     - url: /resources/data-protection
       title: Data Protection
+    - url: /resources/public-migration-key
+      title: Public Migration Key
 ---
 
-{% include alert-review-section.md %}
 
 {% include jumbotron.html body="The latest updates about our releases will be
 published on this page." %}
@@ -28,6 +29,37 @@ published on this page." %}
 {% include alert.html type="neutral" icon="info" header="Version numbers"
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
+
+## February 2020
+
+### Version 1.7.2
+
+* Removed several duplicate headers in other-features pages.
+* Added unscheduled purchase information in
+  [card payments][card-unscheduled-purchase].
+* We have added card logos when selecting card in payment menu.
+  See [updated screenshot of payment menu][checkout-payment-menu-frontend].
+
+### Version 1.7.1
+
+All sections have been released. :trophy:
+
+### Version 1.7
+
+* README is updated with info about includes.
+* Added  several includes.
+* Updated payeeReference description in Checkout and Invoice section.
+* Using snake case consistently.
+* Added section for unscheduled purchase in Card section.
+* Fixed JavaScript example in Checkin section.
+* Added info about mobile verification in Swish Other Features.
+* Added section about Authenticated Merchants in Checkout section.
+* Cleanup in `Vipps` Other Features.
+* `paymentRestrictedToAgeLimit` and `paymentRestrictedToSocialSecurityNumber`
+  added to `swish` object in [Swish Redirect][swish-redirect]. `paymentAgeLimit`
+  , `socialSecurityNumber` added to the new `payerInfo` object in
+  [Swish Seamless View][swish-seamless-view]. Properties added in `Swish`.
+* Added section about migration key in Resources section.
 
 ## January 2020
 
@@ -228,10 +260,12 @@ integration and the payer.
 
 [card-payment-url]: /payments/card/other-features#payment-url
 [card-purchase]: /payments/card/redirect#purchase
+[card-unscheduled-purchase]: /payments/card/other-features#unscheduled-purchase
 [card]: /payments/card
 [checkout-checkin-front-end]: /checkout/checkin#checkin-front-end
-[checkout-payment-orders]: /checkout/other-features#payment-orders
+[checkout-payment-menu-frontend]: /checkout/payment-menu#payment-menu-front-end
 [checkout-payment-order-purchase]: /checkout/payment-menu#request
+[checkout-payment-orders]: /checkout/other-features#payment-orders
 [checkout-payment-url]: /checkout/other-features#payment-url
 [checkout]: /checkout
 [credit]: /payments/credit
@@ -246,6 +280,7 @@ integration and the payer.
 [swish-direct]: /payments/swish/direct
 [swish-other-features]: /payments/swish/other-features
 [swish-redirect]: /payments/swish/redirect
+[swish-seamless-view]: /payments/swish/seamless-view
 [swish]: /payments/swish
 [terminology]: /resources/terminology
 [vipps-payment-resource]: /payments/vipps/other-features#payment-resource
