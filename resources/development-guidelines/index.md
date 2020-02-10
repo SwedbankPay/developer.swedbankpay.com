@@ -16,7 +16,6 @@ sidebar:
       title: Licence
 ---
 
-{% include alert-review-section.md %}
 
 ## Introduction
 

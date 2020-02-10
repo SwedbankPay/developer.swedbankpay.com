@@ -16,13 +16,10 @@ sidebar:
       title: Other Features
 ---
 
-{% include alert-review-section.md %}
 
 {% include settlement-reconciliation.md %}
 
 {% include payment-link.md %}
-
-## Payment Resource
 
 {% include payment-resource.md  payment_instrument="vipps" show_status_operations=true%}
 
@@ -189,21 +186,13 @@ payment altogether or creating an authorization transaction through the
 }
 ```
 
-### Payment order
-
-{% include payment-order-get.md %}
-
-{% include operations-reference.md %}
-
-### Prices
-
 {% include prices.md payment_instrument="vipps" %}
 
-### Payee reference
-
-{% include payee-info.md %}
+{% include payee-reference.md %}
 
 {% include transactions-reference.md payment_instrument="vipps" %}
+
+{% include callback-reference.md %}
 
 ## Problem messages
 

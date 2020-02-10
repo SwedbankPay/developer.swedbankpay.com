@@ -213,8 +213,8 @@ request.addEventListener('load', function () {
 // Place in your own API endpoint here.
 request.open('POST', '<Your-Backend-Endpoint-Here>', true);
 request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
-// In this example we'll send in all of the information mentioned
-// before in the request to the endpoint.
+// In this example we'll send in all of the information mentioned before,
+// in the request to the endpoint.
 request.send(JSON.stringify({
     operation: 'initiate-consumer-session',
     language: 'sv-SE',

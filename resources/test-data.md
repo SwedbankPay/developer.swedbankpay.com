@@ -18,9 +18,10 @@ sidebar:
       title: Terminology
     - url: /resources/data-protection
       title: Data Protection
+    - url: /resources/public-migration-key
+      title: Public Migration Key
 ---
 
-{% include alert-review-section.md %}
 
 {% include jumbotron.html body="Testing, are we? Good! Here's some data you can
    use to test and verify your integration!" %}

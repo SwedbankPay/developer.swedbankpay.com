@@ -18,9 +18,10 @@ sidebar:
       title: Terminology
     - url: /resources/data-protection
       title: Data Protection
+    - url: /resources/public-migration-key
+      title: Public Migration Key
 ---
 
-{% include alert-review-section.md %}
 
 {% include jumbotron.html body="In this section you find various **resources**
 for Swedbank Pay's API Platform." %}

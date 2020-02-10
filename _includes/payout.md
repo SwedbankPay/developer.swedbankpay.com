@@ -1,16 +1,25 @@
-## Unscheduled Purchase
+## Payout
 
-{% include alert-agreement-required.md %}
+> "Payout to Card" is an add-on service that enable you to deposit winnings
+  directly to your end-users' credit cards. This without  the need to collect
+  card details from the end-user a second time.
 
-An `unscheduled purchase`, also called a Merchant Initiated Transaction (MIT),
-is a payment which uses a `paymentToken` generated through a previous payment in
-order to charge the same card at a later time. They are done by the merchant
-without the cardholder being present.  
+### Introduction
 
-`unscheduled purchase`s differ from `recur` as they are not meant to be
-recurring, but occur as singular transactions. Examples of this can be car
-rental companies charging the payer's card for toll road expenses after the
-rental period.
+* Acquirer for this service is Swedbank. You require a separate Swedbank
+  acquiring number to ensure that payout transactions and regular card
+  transactions are kept separate.
+* You need to have the 3-D Secure protocol enabled.
+* The service is available through a Swedbank Pay hosted payment page.
+* The current implementation is only available for gaming transactions (
+  [MCC][mcc]: 7995).
+* The payout service is not a part of Swedbank Pay Settlement Service.
+
+### API requests
+
+The API requests are displayed in the [payout flow](#payout-flow).  You create
+a payout by performing a `POST` creditcard payments with key `operation` set to
+`payout`.
 
 {:.code-header}
 **Request**
@@ -23,14 +32,14 @@ Content-Type: application/json
 
 {
     "payment": {
-        "operation": "UnscheduledPurchase",
-        "intent": "Authorization",
+        "operation": "Payout",
+        "intent": "AutoCapture",
         "paymentToken": "{{ page.paymentId }}",
         "currency": "NOK",
         "amount": 1500,
         "vatAmount": 0,
-        "description": "Test Unscheduled",
-        "userAgent": "Mozilla/5.0...",
+        "description": "Test Payout",
+        "userAgent": "Mozilla/5.0",
         "language": "nb-NO",
         "urls": {
             "callbackUrl": "https://example.com/payment-callback"
@@ -46,6 +55,8 @@ Content-Type: application/json
     }
 }
 ```
+
+{:.code-header}
 **Response**
 
 ```http
@@ -54,23 +65,22 @@ Content-Type: application/json
 
 {
   "payment": {
-    "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "id": "/psp/creditcard/payments/{{ page.paymentId }}",
     "number": 1234567890,
     "created": "2016-09-14T13:21:29.3182115Z",
     "updated": "2016-09-14T13:21:57.6627579Z",
     "state": "Ready",
-    "operation": "PurchaseDirect",
-    "intent": "Authorization",
+    "operation": "Payout",
     "currency": "NOK",
     "amount": 1500,
     "remainingCaptureAmount": 1500,
     "remainingCancellationAmount": 1500,
     "remainingReversalAmount": 0,
-    "description": "Test Unscheduled",
+    "description": "Test Recurrence",
     "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
     "userAgent": "Mozilla/5.0...",
     "language": "nb-NO",
-    "paymentToken": "{{ page.paymentId }}", 
+    "paymentToken": "{{ page.paymentId }}",
     "prices": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/prices" },
     "transactions": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/transactions" },
     "authorizations": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/authorizations" },
@@ -78,7 +88,24 @@ Content-Type: application/json
     "reversals": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/reversals" },
     "cancellations": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/cancellations" },
     "urls" : { "id": "/psp/creditcard/payments/{{ page.paymentId }}/urls" },
-    "payeeInfo" : { "id": "/psp/creditcard/payments/{{ page.paymentId }}/payeeInfo" }
+    "payeeInfo" : { "id": "/psp/creditcard/payments/{{ page.paymentId }}/payeeInfo" },
+    "settings": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/settings" }
   }
 }
+```
+
+### Payout flow
+
+You must set `Operation` to `Payout` in the initial `POST` request.
+
+```mermaid
+sequenceDiagram
+  activate Consumer
+  Consumer->>-Merchant: Start payout
+  activate Merchant
+  Merchant->>-SwedbankPay: POST [Credit Card Payout]
+  activate SwedbankPay
+  SwedbankPay-->>-Merchant: Payment resource
+  activate Merchant
+  Merchant-->>-Consumer: Display Payout result
 ```
