@@ -235,7 +235,13 @@ After that has all loaded, you should see something like this:
 ![Consumer UI][checkin-image]{:width="564" height="293"}
 
 As you can see, the payer's information is pre-filled as provided by the
-initial `POST`.
+initial `POST`. With a `consumerProfileRef` safely tucked into our pocket,
+the Checkin is complete and we can move on to [Payment menu][payment-menu].
+
+Additional events during the checkin  can also be implemented
+in the `configuration` object, such as `onConsumerIdentified`, `onShippingDetailsAvailable`and
+`onBillingDetailsAvailable`. Read more about these in the
+[Checkin events][checkin-events] section.
 
 ### Note on consumer data
 
@@ -250,6 +256,7 @@ information we store and its duration.
 
 [capture-operation]: /checkout/after-payment#capture
 [checkin-image]: /assets/img/checkout/your-information.png
+[checkin-events]: /checkout/other-features#checkin-events
 [consumer-reference]: /checkout/other-features#payeereference
 [data-protection]: /resources/data-protection#paymentorder-consumer-data
 [initiate-consumer-session]: /checkout/checkin#checkin-back-end
