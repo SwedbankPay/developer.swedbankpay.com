@@ -131,6 +131,8 @@ Content-Type: application/json
 
 {% include payment-order-reversal.md %}
 
+* Note that all of the operations `Cancel`, `Capture` and `Reversal` must be implemented.
+
 {% include iterator.html prev_href="payment-menu"
                          prev_title="Back: Payment Menu"
                          next_href="summary"

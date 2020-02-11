@@ -177,6 +177,10 @@ Then find the `view-paymentorder` operation and embed its `href` in a
 That script will then load the Seamless View for the Payment Menu. We will look
 into how to hook that up next.
 
+{% include alert.html type="neutral" icon="info" body=" `orderReference` must
+be sent as a part of the `POST` request to `paymentorders` and must represent
+the order ID of the webshop or merchant website." %}
+
 ## Payment Menu Front End
 
 To load the payment menu from the JavaScript URL obtained in the back end API

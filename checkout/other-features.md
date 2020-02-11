@@ -1298,6 +1298,17 @@ although that might be possible in the future.
 
 {% include settlement-reconciliation.md %}
 
+{% include alert.html type="neutral" icon="info" body= "Features that are not
+described in the previous sections must not be used, although they are
+available in the API. Flags that can be turned to `true` must be kept
+`false` as described in this standard setup documentation." %}
+
+{% include alert.html type="neutral" icon="info" body= "Your integration must be
+resilient to change. Properties, operations, headers, etc., that aren't 
+understood in any response **must be ignored**. Failing due to a something 
+occurring in a response that your implementation haven't seen before is a 
+malfunction that must be fixed." %}
+
 {% include iterator.html prev_href="summary" prev_title="Back: Summary" %}
 
 [abort]: #operations

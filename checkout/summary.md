@@ -40,38 +40,15 @@ integration validation procedure. These best practices are mentioned below.
   `onShippingDetailsAvailable` event.
 * If a browser refresh is performed after the payer has checked in, the payment
   menu must be shown even though `onConsumerIdentified` is not invoked.
-* The `consumerProfileRef` returned in the response from the `POST` request to
-  the `consumers` resource must be included in the `POST` request to the
-  `paymentorders` resource.
-* The `paymentUrl` must be included in the `POST` request of the Payment Order
-  to ensure the best possible handling of retried payments.
+
 * When the contents of the shopping cart changes or anything else that affects
   the amount occurs, the `paymentorder` must be updated and the Payment Menu
   must be `refresh`ed.
-* Features not described on this page must not be used, although they are
-  available in the API. Flags that can be turned to `true` must be kept
-  `false` as described in this standard setup documentation.
 * When the payer is checked in, he or she must be identified appropriately in
   the Payment Menu (stored credit cards must be visible for the credit card
   payment instrument, for instance).
-* `orderReference` must be sent as a part of the `POST` request to
-  `paymentorders` and must represent the order ID of the webshop or merchant
-  website.
 * The integration needs to handle both one and two phase purchases correctly.
-* All of the operations `Cancel`, `Capture` and `Reversal` must be implemented.
-* The [transaction callback][callback] must be handled appropriately.
-* [Problems][problems] that may occur in Swedbank Pay' API must be handled
-  appropriately.
-* Your integration must be resilient to change. Properties, operations,
-  headers, etc., that aren't understood in any response **must be ignored**.
-  Failing due to a something occurring in a response that your implementation
-  haven't seen before is a malfunction that must be fixed.
-* The `paymentUrl` must be placed on a page where it can invoke the same
-  `JavaScript` URL from the same _Payment_ or _Payment Order_ as the initiated
-  payment page, so a identifier of some sort should be stored either on the page
-  or in the `URL` of the `paymentUrl` so the same original payment view can
-  be initiated. The state identifier is the ID of the order, shopping
-  cart or similar that has the URL of the Payment or Payment Order stored.
+
 
 {% include iterator.html prev_href="after-payment"
                          prev_title="Back: After Payment"
