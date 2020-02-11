@@ -131,10 +131,10 @@ Content-Type: application/json
 
 * Note that all of the operations `Cancel`, `Capture` and `Reversal` must be implemented.
 
-{% include iterator.html prev_href="payment-menu"
-                         prev_title="Back: Payment Menu"
-                         next_href="summary"
-                         next_title="Next: Summary" %}
+{% include iterator.html prev_href="capture"
+                         prev_title="Back: Capture"
+                         next_href="other-features"
+                         next_title="Next: Other Features" %}
 
 [https]: /#connection-and-protocol
 [msisdn]: https://en.wikipedia.org/wiki/MSISDN

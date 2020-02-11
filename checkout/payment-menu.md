@@ -290,8 +290,8 @@ finalizing the payment in the [After Payment section][after-payment].
 
 {% include iterator.html prev_href="checkin"
                          prev_title="Back: Checkin"
-                         next_href="after-payment"
-                         next_title="Next: After Payment" %}
+                         next_href="capture"
+                         next_title="Next: Capture" %}
 
 [after-payment]: after-payment
 [checkin-image]: /assets/img/checkout/your-information.png

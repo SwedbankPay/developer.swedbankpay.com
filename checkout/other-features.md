@@ -1315,7 +1315,7 @@ understood in any response **must be ignored**. Failing due to a something
 occurring in a response that your implementation haven't seen before is a
 malfunction that must be fixed." %}
 
-{% include iterator.html prev_href="summary" prev_title="Back: Summary" %}
+{% include iterator.html prev_href="after-payment" prev_title="Back: After Payment" %}
 
 [abort]: #operations
 [callback-reference]: /checkout/other-features#callback
