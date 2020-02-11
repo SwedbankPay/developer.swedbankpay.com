@@ -235,64 +235,7 @@ After that has all loaded, you should see something like this:
 ![Consumer UI][checkin-image]{:width="564" height="293"}
 
 As you can see, the payer's information is pre-filled as provided by the
-initial `POST`. During and on completion of Checkin, the events
-`onConsumerIdentified`, `onShippingDetailsAvailable` and `onBillingDetailsAvailable` may be raised with
-the following argument objects:
-
-{:.code-header}
-**Consumer Identified Event Argument Object**
-
-```js
-{
-    "actionType": "OnConsumerIdentified",
-    "consumerProfileRef": "{{ page.payment_token }}"
-}
-```
-
-{:.code-header}
-**Shipping Details Available Event Argument Object**
-
-```js
-{
-    "actionType": "OnShippingDetailsAvailable",
-    "url": "{{ page.api_url }}/psp/consumers/{{ page.payment_token }}/shipping-details"
-}
-```
-
-{:.code-header}
-**Billing Details Available Event Argument Object**
-
-```js
-{
-    "actionType": "OnBillingDetailsAvailable",
-    "url": "{{ page.api_url }}/psp/consumers/{{ page.payment_token }}/billing-details"
-}
-```
-
-Here is an example of what a `GET` request towards the `url` provided in the event might return:
-
-{:.code-header}
-**Response**
-
-```js
-{
-    "email": "olivia.nyhuus@payex.com",
-    "msisdn": "+4798765432",
-    "billingAddress": {
-        "addressee": "Olivia Nyhus",
-        "coAddress": "",
-        "email": "olivia.nyhuus@payex.com",
-        "msisdn": "+4798765432",
-        "streetAddress": "Saltnestoppen 43",
-        "zipCode": "1642",
-        "city": "Saltnes",
-        "countryCode": "NO"
-    }
-}
-```
-
-With a `consumerProfileRef` safely tucked into our pocket, the Checkin is
-complete and we can move on to [payment menu][payment-menu].
+initial `POST`.
 
 ### Note on consumer data
 
