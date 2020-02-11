@@ -10,6 +10,8 @@ sidebar:
       title: Checkin
     - url: /checkout/payment-menu
       title: Payment Menu
+    - url: /checkout/capture
+      title: Capture 
     - url: /checkout/after-payment
       title: After Payment
     - url: /checkout/summary
