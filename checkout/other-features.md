@@ -14,8 +14,6 @@ sidebar:
       title: Capture 
     - url: /checkout/after-payment
       title: After Payment
-    - url: /checkout/summary
-      title: Summary
     - url: /checkout/other-features
       title: Other Features
 ---
@@ -925,7 +923,9 @@ object:
 ### `onShippingDetailsAvailable`
 
 Triggered when a consumer has been identified or shipping address has been
-updated.
+updated. The Checkin must be completed before any shipping details are
+finalized, as the Checkin component provides shipping address via the
+`onShippingDetailsAvailable` event.
 
 {:.code-header}
 **`onShippingDetailsAvailable` event object**
@@ -1298,15 +1298,21 @@ although that might be possible in the future.
 
 {% include settlement-reconciliation.md %}
 
+## Updating Payment Menu
+
+When the contents of the shopping cart changes or anything else that affects
+the amount occurs, the `paymentorder` must be updated and the Payment Menu
+must be `refresh`ed.
+
 {% include alert.html type="neutral" icon="info" body= "Features that are not
 described in the previous sections must not be used, although they are
 available in the API. Flags that can be turned to `true` must be kept
 `false` as described in this standard setup documentation." %}
 
 {% include alert.html type="neutral" icon="info" body= "Your integration must be
-resilient to change. Properties, operations, headers, etc., that aren't 
-understood in any response **must be ignored**. Failing due to a something 
-occurring in a response that your implementation haven't seen before is a 
+resilient to change. Properties, operations, headers, etc., that aren't
+understood in any response **must be ignored**. Failing due to a something
+occurring in a response that your implementation haven't seen before is a
 malfunction that must be fixed." %}
 
 {% include iterator.html prev_href="summary" prev_title="Back: Summary" %}

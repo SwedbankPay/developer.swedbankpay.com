@@ -14,8 +14,6 @@ sidebar:
       title: Capture
     - url: /checkout/after-payment
       title: After Payment
-    - url: /checkout/summary
-      title: Summary
     - url: /checkout/other-features
       title: Other Features
 ---

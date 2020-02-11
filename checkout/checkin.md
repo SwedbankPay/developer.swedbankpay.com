@@ -14,8 +14,6 @@ sidebar:
       title: Capture 
     - url: /checkout/after-payment
       title: After Payment
-    - url: /checkout/summary
-      title: Summary
     - url: /checkout/other-features
       title: Other Features
 ---
@@ -169,6 +167,9 @@ operation is meant to be embedded in a `<script>` element in an HTML document.
 </html>
 ```
 
+The Checkin and Payment Menu components (the two `<iframe>` elements) must be
+separate (one must not replace the other).
+
 In the HTML, you only need to add two `<div>` elements to place the
 check-in and payment menu inside of. The JavaScript will handle the rest when
 it comes to handling the check-in and payment menu.
@@ -239,6 +240,9 @@ After that has all loaded, you should see something like this:
 As you can see, the payer's information is pre-filled as provided by the
 initial `POST`. With a `consumerProfileRef` safely tucked into our pocket,
 the Checkin is complete and we can move on to [Payment Menu][payment-menu].
+
+If a browser refresh is performed after the payer has checked in, the payment
+menu must be shown even though `onConsumerIdentified` is not invoked.
 
 Additional events during Checkin  can also be implemented
 in the `configuration` object, such as `onConsumerIdentified`, `onShippingDetailsAvailable`and
