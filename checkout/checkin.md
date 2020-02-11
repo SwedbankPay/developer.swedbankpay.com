@@ -236,9 +236,9 @@ After that has all loaded, you should see something like this:
 
 As you can see, the payer's information is pre-filled as provided by the
 initial `POST`. With a `consumerProfileRef` safely tucked into our pocket,
-the Checkin is complete and we can move on to [Payment menu][payment-menu].
+the Checkin is complete and we can move on to [Payment Menu][payment-menu].
 
-Additional events during the checkin  can also be implemented
+Additional events during Checkin  can also be implemented
 in the `configuration` object, such as `onConsumerIdentified`, `onShippingDetailsAvailable`and
 `onBillingDetailsAvailable`. Read more about these in the
 [Checkin events][checkin-events] section.
