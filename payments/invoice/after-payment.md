@@ -391,7 +391,8 @@ Content-Type: application/json
 |    ✔︎     | `transaction.activity`       | `string`     | `FinancingConsumer`.                                                                                                                                                                    |
 |    ✔︎     | `transaction.amount`         | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. *`10000`* = `100.00 SEK`, *`5000`* = `50.00 SEK`.                                                           |
 |    ✔︎     | `transaction.vatAmount`      | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. *`10000`* = `100.00 SEK`, *`5000`* =`50.00 SEK`.                                                            |
-|    ✔︎     | `transaction.payeeReference` | `string(50)` | The `payeeReference` is the receipt/invoice number, which is a **unique** reference with max 50 characters set by the merchant system. This must be unique for each operation and must follow the regex pattern `[\w]* (a-zA-Z0-9_)`.  |
+|    ✔︎     | `transaction.payeeReference` | `string(50)` | The `payeeReference` is the receipt/invoice number if `receiptReference` is not defined, which is a **unique** reference with max 50 characters set by the merchant system. This must be unique for each operation and must follow the regex pattern `[\w]* (a-zA-Z0-9_)`. |
+|         | `transaction.receiptReference` | `string(50)` | The `receiptReference` is a reference from the merchant system. If sent in, this reference is used as an invoice/receipt number.   
 |    ✔︎     | `transaction.description`    | `string`     | A textual description of the reversal.                                                                                                                                                  |
 
 The `reversal` resource will be returned, containing information about the newly created reversal transaction.
