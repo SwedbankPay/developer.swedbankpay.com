@@ -62,6 +62,7 @@ Content-Type: application/json
         "amount": 13500,
         "vatAmount": 2500,
         "payeeReference": "customer reference-unique",
+        "receiptReference": "3245766",
         "description": "description for transaction",
         "itemDescriptions": [
           {
@@ -95,7 +96,8 @@ Content-Type: application/json
 |    ✔︎     | `transaction.activity`       | `string`     | FinancingConsumer.                                                                                                                                                                      |
 |    ✔︎     | `transaction.Amount`         | `integer`    | Amount entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 SEK`, `5000` = `50.00 SEK`.                                                               |
 |    ✔︎     | `transaction.vatAmount`      | `integer`    | Amount entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 SEK`, `5000` = `50.00 SEK`.                                                               |
-|    ✔︎     | `transaction.payeeReference` | `string(50)` | The `payeeReference` is the receipt/invoice number, which is a **unique** reference with max 50 characters set by the merchant system. This must be unique for each operation and must follow the regex pattern `[\w]* (a-zA-Z0-9_)`. |
+|    ✔︎     | `transaction.payeeReference` | `string(50)` | The `payeeReference` is the receipt/invoice number if `receiptReference` is not defined, which is a **unique** reference with max 50 characters set by the merchant system. This must be unique for each operation and must follow the regex pattern `[\w]* (a-zA-Z0-9_)`. |
+|         | `transaction.receiptReference` | `string(50)` | The `receiptReference` is a reference from the merchant system. If sent in, this reference is used as an invoice/receipt number.                           |
 |    ✔︎     | `transaction.description`    | `string`     | A textual description of the capture                                                                                                                                                    |
 |    ✔︎     | `itemDescriptions.amount`      | `integer`    | Total price for this order line - entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 SEK`, `5000` = `50.00 SEK`.                                    |
 |    ✔︎     | `itemDescriptions.description` | `string`     | A textual description of this product                                                                                                                                                   |
@@ -374,6 +376,7 @@ Content-Type: application/json
         "amount": 1500,
         "vatAmount": 0,
         "payeeReference": "customer reference-unique",
+        "receiptReference": "3245766",
         "description": "description for transaction"
     }
 }
