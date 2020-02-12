@@ -26,7 +26,7 @@ provided below (abbreviated for brevity):
 
 ```http
 POST /psp/paymentorders HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -34,7 +34,7 @@ Content-Type: application/json
     "paymentorder": {
         "payer": {
             "nationalIdentifier": {
-                "socialSecurityNumber": "199710202392",
+                "socialSecurityNumber": "{{ page.consumer_ssn_se }}",
                 "countryCode": "SE"
             }
         }
