@@ -34,7 +34,7 @@ Content-Type: application/json
     "paymentorder": {
         "payer": {
             "nationalIdentifier": {
-                "socialSecurityNumber": "199710202392",
+                "socialSecurityNumber": "{{ page.consumer_ssn_se }}",
                 "countryCode": "SE"
             }
         }

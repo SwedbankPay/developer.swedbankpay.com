@@ -38,22 +38,22 @@ To test a logged in user in the Demo Shop, please use the following test data:
 ### Norway
 
 {:.table .table-striped}
-| Type            | Data                      | Description                                                         |
-| :-------------- | :------------------------ | :------------------------------------------------------------------ |
-| `Email`         | `olivia.nyhuus@payex.com` | The e-mail address of the payer.                                    |
-| `Mobile number` | `+47 98765432`            | The mobile phone number of the payer. Format Norway: +4799999999.   |
-| `SSN`           | `26026708248`             | The social security number of the payer. Format: Norway DDMMYYXXXXX |
-| `ZipCode`       | `1642`                    | The city zip code. Format: Norway XXXX                              |
+| Type            | Data                         | Description                                                           |
+| :-------------- | :--------------------------- | :-------------------------------------------------------------------- |
+| `Email`         | `olivia.nyhuus@payex.com`    | The e-mail address of the payer.                                      |
+| `Mobile number` | `+47 98765432`               | The mobile phone number of the payer. Format Norway: `+47 99999999`.  |
+| `SSN`           | `{{ page.consumer_ssn_no }}` | The social security number of the payer. Format Norway: `DDMMYYXXXXX` |
+| `ZipCode`       | `1642`                       | The city zip code. Format Norway: `XXXX`                              |
 
 ### Sweden
 
 {:.table .table-striped}
-| Type            | Data                      | Description                                                        |
-| :-------------- | :------------------------ | :----------------------------------------------------------------- |
-| `Email`         | `leia.ahlstrom@payex.com` | The e-mail address of the payer.                                   |
-| `Mobile number` | `+46 739000001`           | The mobile phone number of the payer. Format Sweden: +46707777777. |
-| `SSN`           | `971020-2392`             | The social security number of the payer. Sweden: YYYYMMDDXXXX.     |
-| `ZipCode`       | `17674`                   | The city zip code. Format: Sweden XXXXX                            |
+| Type            | Data                         | Description                                                             |
+| :-------------- | :--------------------------- | :---------------------------------------------------------------------- |
+| `Email`         | `leia.ahlstrom@payex.com`    | The e-mail address of the payer.                                        |
+| `Mobile number` | `+46 739000001`              | The mobile phone number of the payer. Format Sweden: `+46 707777777`.   |
+| `SSN`           | `{{ page.consumer_ssn_se }}` | The social security number of the payer. Format Sweden: `YYYYMMDDXXXX`. |
+| `ZipCode`       | `17674`                      | The city zip code. Format Sweden: `XXXXX`                               |
 
 ### Denmark
 
