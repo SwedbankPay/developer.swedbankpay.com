@@ -26,7 +26,7 @@ provided below (abbreviated for brevity):
 
 ```http
 POST /psp/paymentorders HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
