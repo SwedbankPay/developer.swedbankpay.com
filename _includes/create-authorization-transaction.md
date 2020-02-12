@@ -7,7 +7,7 @@ Swedbank Pay Payments where the payment is authorized.
 **Request**
 
 ```http
-POST /psp/creditcard/payments/{{ page.paymentId }}/authorizations HTTP/1.1
+POST /psp/creditcard/payments/{{ page.payment_id }}/authorizations HTTP/1.1
 Host: {{ page.apiHost }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json

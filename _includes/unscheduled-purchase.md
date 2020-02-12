@@ -5,7 +5,7 @@
 An `unscheduled purchase`, also called a Merchant Initiated Transaction (MIT),
 is a payment which uses a `paymentToken` generated through a previous payment in
 order to charge the same card at a later time. They are done by the merchant
-without the cardholder being present.  
+without the cardholder being present.
 
 `unscheduled purchase`s differ from `recur` as they are not meant to be
 recurring, but occur as singular transactions. Examples of this can be car
@@ -25,7 +25,7 @@ Content-Type: application/json
     "payment": {
         "operation": "UnscheduledPurchase",
         "intent": "Authorization",
-        "paymentToken": "{{ page.paymentId }}",
+        "paymentToken": "{{ page.payment_id }}",
         "currency": "NOK",
         "amount": 1500,
         "vatAmount": 0,
@@ -70,15 +70,15 @@ Content-Type: application/json
     "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
     "userAgent": "Mozilla/5.0...",
     "language": "nb-NO",
-    "paymentToken": "{{ page.paymentId }}", 
-    "prices": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/prices" },
-    "transactions": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/transactions" },
-    "authorizations": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/authorizations" },
-    "captures": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/captures" },
-    "reversals": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/reversals" },
-    "cancellations": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/cancellations" },
-    "urls" : { "id": "/psp/creditcard/payments/{{ page.paymentId }}/urls" },
-    "payeeInfo" : { "id": "/psp/creditcard/payments/{{ page.paymentId }}/payeeInfo" }
+    "paymentToken": "{{ page.payment_id }}",
+    "prices": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/prices" },
+    "transactions": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/transactions" },
+    "authorizations": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/authorizations" },
+    "captures": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/captures" },
+    "reversals": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/reversals" },
+    "cancellations": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/cancellations" },
+    "urls" : { "id": "/psp/creditcard/payments/{{ page.payment_id }}/urls" },
+    "payeeInfo" : { "id": "/psp/creditcard/payments/{{ page.payment_id }}/payeeInfo" }
   }
 }
 ```

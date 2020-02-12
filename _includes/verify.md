@@ -107,7 +107,7 @@ Content-Type: application/json
 
 {
     "payment": {
-        "id": "/psp/creditcard/payments/{{ page.paymentId }}",
+        "id": "/psp/creditcard/payments/{{ page.payment_id }}",
         "number": 1234567890,
         "created": "2016-09-14T13:21:29.3182115Z",
         "updated": "2016-09-14T13:21:57.6627579Z",
@@ -120,15 +120,15 @@ Content-Type: application/json
         "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
         "userAgent": "Mozilla/5.0",
         "language": "nb-NO",
-        "transactions": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/transactions" },
-        "verifications": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/verifications" },
-        "urls" : { "id": "/psp/creditcard/payments/{{ page.paymentId }}/urls" },
-        "payeeInfo" : { "id": "/psp/creditcard/payments/{{ page.paymentId }}/payeeInfo" },
-        "settings": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/settings" }
+        "transactions": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/transactions" },
+        "verifications": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/verifications" },
+        "urls" : { "id": "/psp/creditcard/payments/{{ page.payment_id }}/urls" },
+        "payeeInfo" : { "id": "/psp/creditcard/payments/{{ page.payment_id }}/payeeInfo" },
+        "settings": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/settings" }
     },
     "operations": [
         {
-            "href": "{{ page.apiUrl }}/psp/creditcard/payments/{{ page.paymentId }}",
+            "href": "{{ page.apiUrl }}/psp/creditcard/payments/{{ page.payment_id }}",
             "rel": "update-payment-abort",
             "method": "PATCH",
             "contentType": "application/json"
@@ -148,7 +148,7 @@ Content-Type: application/json
 
         {
             "method": "POST",
-            "href": "https://ecom.dev.payex.com/psp/creditcard/confined/payments/{paymentId:guid}/verifications",
+            "href": "https://ecom.dev.payex.com/psp/creditcard/confined/payments/{{ page.payment_id }}/verifications",
             "rel": "direct-verification",
             "contentType": "application/json"
         }
