@@ -178,8 +178,10 @@ Content-Type: application/json
     },
     "swish": {
         "enableEcomOnly": false,
+        {% comment %}
         "paymentRestrictedToAgeLimit": 18,
         "paymentRestrictedToSocialSecurityNumber": "{{ page.consumer_ssn_se }}"
+        {% endcomment %}
     }
 }
 ```
@@ -219,6 +221,11 @@ Content-Type: application/json
 |          | └─➔&nbsp;`subsite`           | `String(40)`  | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.                                                                                                                                                                                                                                                                                                                                                                                                               |
 |          | └➔&nbsp;`swish`              | `object`      | An object that holds different scenarios for Swish payments.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 |          | └─➔&nbsp;`enableEcomOnly`    | `boolean`     | `true` if to only enable Swish on browser-based transactions.; otherwise `false` to also enable Swish transactions via mobile app.                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+{% comment %}
+|          | └─➔&nbsp;`paymentRestrictedToAgeLimit`             | `integer`     | Positive number that sets the required age  needed to fulfill the payment. To use this feature it has to be configured in the contract.                                                                                                                                                            |
+|          | └─➔&nbsp;`paymentRestrictedToSocialSecurityNumber` | `string`      | When provided, the payment will be restricted to a specific social security number. Format: yyyyMMddxxxx. To use this feature it has to be configured in the contract.                                                                                                                             |
+{% endcomment %}
+
 {:.code-header}
 **Response**
 
