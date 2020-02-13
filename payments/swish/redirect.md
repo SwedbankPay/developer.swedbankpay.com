@@ -163,8 +163,7 @@ Content-Type: application/json
         }
     },
     "swish": {
-        "enableEcomOnly": false,
-        {% comment %}
+        "enableEcomOnly": false{% comment %},
         "paymentRestrictedToAgeLimit": 18,
         "paymentRestrictedToSocialSecurityNumber": "{{ page.consumer_ssn_se }}"
         {% endcomment %}
