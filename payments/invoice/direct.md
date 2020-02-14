@@ -177,7 +177,7 @@ Content-Type: application/json
         ],
         "description": "Test Purchase",
         "payerReference": "SomeReference",
-        "generateReccurenceToken": "false",
+        "generateReccurenceToken": false,
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "urls": {
