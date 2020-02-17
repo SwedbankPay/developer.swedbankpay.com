@@ -10,6 +10,8 @@ sidebar:
       title: Checkin
     - url: /checkout/payment-menu
       title: Payment Menu
+    - url: /checkout/capture
+      title: Capture
     - url: /checkout/after-payment
       title: After Payment
     - url: /checkout/summary
@@ -226,7 +228,7 @@ request.addEventListener('load', function () {
                         // Payment Menu inside our 'payment-menu' container.
                         payex.hostedView.paymentMenu({
                             container: 'payment-menu',
-                            culture: 'sv'
+                            culture: 'sv-SE'
                         }).open();
                     };
                     // Append the Payment Menu script to the <head>

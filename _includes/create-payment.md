@@ -17,7 +17,7 @@ in their own section below.
 
 ```http
 POST /psp/creditcard/payments HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 

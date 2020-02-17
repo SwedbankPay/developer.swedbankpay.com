@@ -1,3 +1,5 @@
+## Capture
+
 Capture can only be done on a payment with a successful authorized transaction,
 and if the authorization was not done on a one-phase payment instrument.
 Examples of one-phase payment instruments are [Swish](/payments/swish/index.md)

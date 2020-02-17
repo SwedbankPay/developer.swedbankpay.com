@@ -1,7 +1,7 @@
 {% assign payment_instrument = include.payment_instrument | default: "creditcard" %}
 {% assign show_status_operations = include.show_status_operations | default: false %}
 
-## Payout Resource
+## Payment Resource
 
 The `payment` resource is central to all payment instruments. All operations
 that target the payment resource directly produce a response similar to the

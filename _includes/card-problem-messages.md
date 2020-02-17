@@ -8,7 +8,7 @@ often help narrow down the specifics of the problem.
 ### Contractual Problem Types
 
 All contract types will have the following URI in front of type:
-`{{ page.apiUrl }}/psp/<errordetail>/creditcard`
+`{{ page.api_url }}/psp/<errordetail>/creditcard`
 
 {:.table .table-striped}
 | Type                           | Status | Description                                 |

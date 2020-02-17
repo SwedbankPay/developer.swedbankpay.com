@@ -163,9 +163,10 @@ Content-Type: application/json
         }
     },
     "swish": {
-        "enableEcomOnly": false,
+        "enableEcomOnly": false{% comment %},
         "paymentRestrictedToAgeLimit": 18,
         "paymentRestrictedToSocialSecurityNumber": "{{ page.consumer_ssn_se }}"
+        {% endcomment %}
     }
 }
 ```
@@ -202,8 +203,10 @@ Content-Type: application/json
 |          | └─➔&nbsp;`msisdn`                                  | `string`      | Number will be prefilled on payment page, if valid. The mobile number must have a country code prefix and be 8 to 15 digits in length.                                                                                                                                                             |
 |          | └➔&nbsp;`swish`                                    | `object`      | An object that holds different scenarios for Swish payments.                                                                                                                                                                                                                                       |
 |          | └─➔&nbsp;`ecomOnlyEnabled`                         | `boolean`     | `true` if to only enable Swish on browser based transactions.; otherwise `false` to also enable Swish transactions via in-app payments.                                                                                                                                                            |
+{% comment %}
 |          | └─➔&nbsp;`paymentRestrictedToAgeLimit`             | `integer`     | Positive number that sets the required age  needed to fulfill the payment. To use this feature it has to be configured in the contract.                                                                                                                                                            |
 |          | └─➔&nbsp;`paymentRestrictedToSocialSecurityNumber` | `string`      | When provided, the payment will be restricted to a specific social security number. Format: yyyyMMddxxxx. To use this feature it has to be configured in the contract.                                                                                                                             |
+{% endcomment %}
 
 {:.code-header}
 **Response**
