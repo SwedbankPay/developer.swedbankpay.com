@@ -191,14 +191,20 @@ the nature of the problem.
 The problem name and description will often help narrow down the specifics
 of the problem.
 
-### Swish API errors
+## Swish API errors
 
 All Swish error types will have the following URI in front of type:
-`{{ page.api_url }}/psp/<errordetail>/swish`
+`{{ page.api_url }}/psp/swish/payments/<errortype>`
 
 ### `inputerror`
 
+Caused By:
+
+* MSISDN is invalid.
+* Payer's MSISDN is not enrolled at Swish.
+
 {:.code-header}
+Example response inputerror
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -213,14 +219,24 @@ Content-Type: application/json
     "detail": "Msisdn is invalid."
 }
 ```
-##### Caused By
-
-* MSISDN is invalid. <br>
-* Payer's MSISDN is not enrolled at Swish.
 
 ### `configerror`
 
+Caused By:
+
+* Payee alias is missing or not correct.
+* PaymentReference is invalid.
+* Amount value is missing or not a valid number.
+* Amount is less than agreed minimum.
+* Amount value is too large.
+* Invalid or missing currency.
+* Wrong formatted message.
+* Amount value is too large, or amount exceeds the amount of the original payment minus any previous refunds.
+* Counterpart is not activated.
+* Payee not enrolled.
+
 {:.code-header}
+Example response configerror
 
 ```http
 HTTP/1.1 403 Forbidden
@@ -235,21 +251,19 @@ Content-Type: application/json
     "detail": "Payee alias is missing or not correct."
 }
 ```
-##### Caused By
-* Payee alias is missing or not correct.<br> 
-* PaymentReference is invalid.<br>
-* Amount value is missing or not a valid number.<br>
-* Amount is less than agreed minimum.<br>
-* Amount value is too large.<br>
-* Invalid or missing currency.<br>
-* Wrong formatted message.<br>
-* Amount value is too large, or amount exceeds the amount of the original payment minus any previous refunds.<br>
-* Counterpart is not activated.<br>
-* Payee not enrolled.
 
 ### `swishdeclined`
 
+Caused By:
+
+* Original payment not found or original payment is more than than 13 months old.
+* It appears that merchant's organization number has changed since sale was made.
+* The MSISDN of the original payer seems to have changed owner.
+* Transaction declined. Could be that the payer has exceeded their swish limit or have insufficient founds.
+* Payment request not cancellable.
+
 {:.code-header}
+Example response swishdeclined
 
 ```http
 HTTP/1.1 403 Forbidden
@@ -264,17 +278,16 @@ Content-Type: application/json
     "detail": "The MSISDN of the original payer seems to have changed owner."
 }
 ```
-##### Caused By
-* Original payment not found or original payment is more than than 13 months old.
-* It appears that merchant's organization number has changed since sale was made.
-* The MSISDN of the original payer seems to have changed owner.
-* Transaction declined. Could be that the payer has exceeded their swish limit or have insufficient founds.
-* Payment request not cancellable.
-
 
 ### `swisherror`
 
+Caused By:
+
+* Bank system processing error.
+* Swish timed out waiting for an answer from the banks after payment was started.
+
 {:.code-header}
+Example response swisherror
 
 ```http
 HTTP/1.1 502 Bad Gateway
@@ -289,14 +302,15 @@ Content-Type: application/json
     "detail": "Bank system processing error."
 }
 ```
-##### Caused By
-* Bank system processing error.
-* Swish timed out waiting for an answer from the banks after payment was started.
-
 
 ### `swishalreadyinuse`
 
+Caused By:
+
+* The payer's Swish is already in use.
+  
 {:.code-header}
+Example response swishalreadyinuse
 
 ```http
 HTTP/1.1 403 Forbidden
@@ -311,12 +325,15 @@ Content-Type: application/json
     "detail": "The payer's Swish is already in use."
 }
 ```
-##### Caused By
-* The payer's Swish is already in use.
 
 ### `swishtimeout`
 
+Caused By:
+
+* Swish timed out before the payment was started.
+
 {:.code-header}
+Example response swishtimeout
 
 ```http
 HTTP/1.1 403 Forbidden
@@ -331,12 +348,15 @@ Content-Type: application/json
     "detail": "Swish timed out before the payment was started."
 }
 ```
-##### Caused By
-* Swish timed out before the payment was started.
 
 ### `bankidcancelled`
 
+Caused By:
+
+* The payer cancelled BankID authorization.
+
 {:.code-header}
+Example response bankidcancelled
 
 ```http
 HTTP/1.1 409 Conflict
@@ -351,12 +371,15 @@ Content-Type: application/json
     "detail": "The payer cancelled BankID authorization."
 }
 ```
-##### Caused By
-* The payer cancelled BankID authorization.
 
 ### `bankidalreadyinuse`
 
+Caused By:
+
+* The payer's BankID is already in use
+
 {:.code-header}
+Example response bankidalreadyinuse
 
 ```http
 HTTP/1.1 409 Conflict
@@ -371,12 +394,15 @@ Content-Type: application/json
     "detail": "The payer's BankID is already in use."
 }
 ```
-##### Caused By
-* The payer's BankID is already in use
 
 ### `bankiderror`
 
+Caused By:
+
+* Something went wrong with the payer's BankID authorization.
+
 {:.code-header}
+Example response bankiderror
 
 ```http
 HTTP/1.1 502 Bad Gateway
@@ -391,12 +417,15 @@ Content-Type: application/json
     "detail": "Something went wrong with the payer's BankID authorization."
 }
 ```
-##### Caused By
-* Something went wrong with the payer's BankID authorization.
 
 ### `socialsecuritynumbermismatch`
 
+Caused By:
+
+* The payer's social security number does not match with the one required by this payment.
+
 {:.code-header}
+Example response socialsecuritynumbermismatch
 
 ```http
 HTTP/1.1 403 Forbidden
@@ -411,12 +440,15 @@ Content-Type: application/json
     "detail": "The payer's social security number does not match with the one required by this payment."
 }
 ```
-##### Caused By
-* The payer's social security number does not match with the one required by this payment.
 
 ### `paymentagelimitnotmet`
 
+Caused By:
+
+* The payer does not meet the payment's age limit.
+
 {:.code-header}
+Example response paymentagelimitnotmet
 
 ```http
 HTTP/1.1 403 Forbidden
@@ -431,12 +463,15 @@ Content-Type: application/json
     "detail": "The payer does not meet the payment's age limit."
 }
 ```
-##### Caused By
-* The payer does not meet the payment's age limit.
 
-### `usercancelled` 
+### `usercancelled`
 
+Caused By:
+
+* The payer cancelled the payment in the Swish app.
+  
 {:.code-header}
+Example response usercancelled
 
 ```http
 HTTP/1.1 403 Forbidden
@@ -451,12 +486,11 @@ Content-Type: application/json
     "detail": "The payer cancelled the payment in the Swish app."
 }
 ```
-##### Caused By
-* The payer cancelled the payment in the Swish app.
 
 ### `systemerror`
 
 {:.code-header}
+Example response systemerror
 
 ```http
 HTTP/1.1 500 Internal Server Error
@@ -471,7 +505,6 @@ Content-Type: application/json
     "detail": "A system error occurred. We are working on it."
 }
 ```
-
 
 [payee-reference]: #payeeReference
 [transaction-resource]: #Transactions
