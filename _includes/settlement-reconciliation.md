@@ -107,7 +107,7 @@ body.
 | `Amount`                        | `Decimal`  | Total amount of the related transaction (e.g 100.00).                                                                                                 |
 | `Currency`                      | `ISO 4217` | Settlement currency (e.g. `SEK, NOK, EUR`).                                                                                                           |
 | `Product Number`                | `String`   | A product number, as sent by merchant to PayEx.                                                                                                       |
-| `Description`                   | `String`   | A textual description of the transaction, as sent by merchant to PayEx.                                                                               |
+| `Description`                   | `String(40)`   | A textual description of maximum 40 characters of the transaction, as sent by merchant to PayEx.                                                                               |
 | `VAT Amount`                    | `Decimal`  | VAT Amount for the given transaction (e.g 100.00).                                                                                                    |
 | `VAT Percentage`                | `Decimal`  | VAT Percentage for the given transaction.                                                                                                             |
 | `Credit Card Batch Number`      | `Decimal`  | The reference number from the credit card processor.                                                                                                  |

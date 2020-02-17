@@ -63,7 +63,7 @@ Content-Type: application/json
 |    ✔︎    | `transaction`            | `object`     | Object representing the capture transaction.                                                                              |
 |    ✔︎    | └➔&nbsp;`amount`         | `integer`    | Amount entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
 |    ✔︎    | └➔&nbsp;`vatAmount`      | `integer`    | Amount entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
-|    ✔︎    | └➔&nbsp;`description`    | `string`     | A textual description of the capture transaction.                                                                         |
+|    ✔︎    | └➔&nbsp;`description`    | `string(40)`     | A textual description of maximum 40 characters of the capture transaction.                                                                         |
 |    ✔︎    | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the capture transaction. See [payeeReference][payee-reference] for details.                        |
 
 The `capture` resource contains information about the capture transaction made
@@ -124,7 +124,7 @@ Content-Type: application/json
 | ✔︎   | Property                 | Type         | Description                                                                                             |
 | :--- | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------ |
 | ✔︎   | `transaction`            | `string`     | The transaction object contains information about this cancellation.                                    |
-| ✔︎   | └➔&nbsp;`description`    | `string`     | A textual description of the reason for the cancellation.                                               |
+| ✔︎   | └➔&nbsp;`description`    | `string(40)`     | A textual description of maximum 40 characters of the reason for the cancellation.                                               |
 | ✔︎   | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the cancellation transaction. See [payeeReference][payee-reference] for details. |
 
 The `cancel` resource contains information about a cancellation transaction
@@ -279,7 +279,7 @@ Content-Type: application/json
 | ✔︎   | `transaction`            | `integer`    | The reversal `transaction`.                                                                                               |
 | ✔︎   | └➔&nbsp;`amount`         | `integer`    | Amount entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
 | ✔︎   | └➔&nbsp;`vatAmount`      | `integer`    | Amount entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
-| ✔︎   | └➔&nbsp;`description`    | `string`     | A textual description of the capture                                                                                      |
+| ✔︎   | └➔&nbsp;`description`    | `string(40)`     | A textual description of maximum 40 characters of the capture                                                                                      |
 | ✔︎   | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the reversal transaction. See [payeeReference][payee-reference] for details.                       |
 
 The `reversal` resource contains information about a reversal transaction made

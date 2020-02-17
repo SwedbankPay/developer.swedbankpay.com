@@ -367,7 +367,7 @@ Content-Type: application/json
 |    ✔︎    | `transaction`            | `object`     | The `transaction` object, containing information about this `reversal`.                                                                                                |
 |    ✔︎    | └➔&nbsp;`amount`         | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 SEK`, `5000` = `50.00 SEK`                                               |
 |    ✔︎    | └➔&nbsp;`vatAmount`      | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 SEK`, `5000` = `50.00 SEK`                                               |
-|    ✔︎    | └➔&nbsp;`description`    | `string`     | A textual description of the capture                                                                                                                                   |
+|    ✔︎    | └➔&nbsp;`description`    | `string(40)`     | A textual description of maximum 40 characters of the capture                                                                                                                                   |
 |    ✔︎    | └➔&nbsp;`payeeReference` | `string(35)` | A  reference that must match the  `payeeReference` of the sales transaction you want to reverse. See [payeeReference][technical-reference-payeeReference] for details. |
 
 {:.code-header}
