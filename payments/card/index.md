@@ -10,6 +10,8 @@ sidebar:
       title: Redirect
     - url: /payments/card/seamless-view
       title: Seamless View
+    - url: /payments/card/direct
+      title: Direct
     - url: /payments/card/after-payment
       title: After Payment
     - url: /payments/card/other-features
