@@ -14,12 +14,12 @@ sidebar:
       title: Other Features
 ---
 
-{% include jumbotron.html body="  Enter your phone number,
-get the push message, press the pay button... and you're done!  " %}
+{% include jumbotron.html body="  MobilePay is the fast and simple way of paying with your mobile phone, reaching more than 4 million Danish end-users.  " %}
 
-MobilePay is the main Danish payment app for mobile phones, making it one of
-the essential payment instruments for merchants operating in Denmark. We offer
-it on our redirect and seamless view platforms.
+MobilePay is the main Danish payment app for mobile phones, making it one of the
+essential payment instruments for merchants operating in Denmark. More than 4
+million Danes are users of the app, and more than 100,000 merchants are
+accepting payments. We offer it on our redirect and seamless view platforms.
 
 ## Purchase flow
 
