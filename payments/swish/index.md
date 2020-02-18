@@ -19,16 +19,18 @@ sidebar:
 ---
 
 
-{% include jumbotron.html body="Enter your phone number, open the app,
-push the pay button... and you're done!" %}
+{% include jumbotron.html body="Swish is Sweden's main payment app and the
+preferred online payment method with the highest convertion rates." %}
 
 Swish is the main Swedish payment app for mobile phones supported by all Swedish
 banks, making it one of the essential payment instruments for merchants
-operating in Sweden. We offer both mobile phone and browser based purchase flows
-on our redirect and seamless view platforms, in addition to direct API
-integration and Payment Link. Using the direct API integration will put you in
-charge of determining which device is being used, and whether the e- or
-m-commerce flow is the most suitable. We will do this for you.
+operating in Sweden. According to Kantar Sifo, it is the preferred online
+payment method in the age group 18-40, and the payment method with the best
+convertion rates. We offer both mobile phone and browser based purchase flows on
+our redirect and seamless view platforms, in addition to direct API integration
+and Payment Link. Using the direct API integration will put you in charge of
+determining which device is being used, and whether the e- or m-commerce flow is
+the most suitable. We will do this for you.
 
 ## Purchase Flow
 

@@ -17,8 +17,8 @@ sidebar:
 ---
 
 
-{% include jumbotron.html body="  Enter your phone number,
-get the push message, press the pay button... and you're done!  " %}
+{% include jumbotron.html body=" Vipps is the Norwegian way of paying with your
+mobile phone, fast and simple. " %}
 
 Vipps is the main Norwegian payment app for mobile phones supported by the major
 Norwegian banks, making it one of the essential payment instruments for
