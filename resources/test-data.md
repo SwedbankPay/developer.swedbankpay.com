@@ -261,13 +261,3 @@ To simulate an error message, set description in `POST` Create Payment or
 | RF07        | Transaction declined                           |
 | TM01        | Swish timed out before the payment was started |
 | BANKIDCL    | Payer cancelled BankId signing                 |
-
-## Callback Test Data
-
-{:.table .table-striped}
-| URL                                                              | Response                                             |
-| :--------------------------------------------------------------- | :--------------------------------------------------- |
-| <https://api.internaltest.payex.com/psp/fakecallback>            | `200 OK`                                             |
-| <https://api.internaltest.payex.com/psp/fakecallback/notfound>   | `404 Not Found`                                      |
-| <https://api.internaltest.payex.com/psp/fakecallback/badrequest> | `400 Bad Request`                                    |
-| <https://api.internaltest.payex.com/psp/fakecallback/random>     | `200 OK, 404 Not Found or 400 Bad Request at random` |
