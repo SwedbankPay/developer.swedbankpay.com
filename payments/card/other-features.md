@@ -54,6 +54,8 @@ document is described in the following section.
 
 {% include payment-link.md %}
 
+{% include create-authorization-transaction.md %}
+
 {% include payee-info.md payment_instrument="creditcard" %}
 
 {% include prices.md %}
