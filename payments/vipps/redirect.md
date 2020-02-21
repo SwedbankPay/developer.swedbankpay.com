@@ -151,7 +151,7 @@ Content-Type: application/json
         "pageStripdown": true,
         "language": "nb-NO",
         "urls": {
-            "hostUrls": "https://example.net",
+            "hostUrls": [ "https://example.net" ],
             "completeUrl": "https://example.net/payment-completed",
             "cancelUrl": "https://example.net/payment-canceled",
             "callbackUrl": "https://example.net/payment-callback",
@@ -160,7 +160,7 @@ Content-Type: application/json
             "paymentUrl": "https://example.net/payment-cart"
         },
         "payeeInfo": {
-            "payeeId": "{{ page.merchant_id }}"
+            "payeeId": "{{ page.merchant_id }}",
             "payeeReference": "CD1234",
             "payeeName": "Merchant1",
             "productCategory": "A123"

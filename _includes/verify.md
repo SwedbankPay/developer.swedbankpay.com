@@ -69,37 +69,37 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
-  "payment": {
-    "operation": "Verify",
-    "currency": "NOK",
-    "description": "Test Verification",
-    "payerReference": "AB1234",
-    "userAgent": "Mozilla/5.0...",
-    "language": "nb-NO",
-    "generatePaymentToken": true,
-    "generateRecurrenceToken": false,
-    "urls": {
-      "hostUrls": ["https://example.com"],
-      "completeUrl": "https://example.com/payment-completed",
-      "cancelUrl": "https://example.com/payment-canceled",
-      "logoUrl": "https://example.com/payment-logo.png",
-      "termsOfServiceUrl": "https://example.com/payment-terms.html"
+    "payment": {
+        "operation": "Verify",
+        "currency": "NOK",
+        "description": "Test Verification",
+        "payerReference": "AB1234",
+        "userAgent": "Mozilla/5.0...",
+        "language": "nb-NO",
+        "generatePaymentToken": true,
+        "generateRecurrenceToken": false,
+        "urls": {
+            "hostUrls": ["https://example.com", "https://example.net"],
+            "completeUrl": "https://example.com/payment-completed",
+            "cancelUrl": "https://example.com/payment-canceled",
+            "logoUrl": "https://example.com/payment-logo.png",
+            "termsOfServiceUrl": "https://example.com/payment-terms.html"
+        },
+        "payeeInfo": {
+            "payeeId": "{{ page.merchant_id }}",
+            "payeeReference": "CD1234",
+            "payeeName": "Merchant1",
+            "productCategory": "A123",
+            "orderReference": "or-12456",
+            "subsite": "MySubsite"
+        }
     },
-    "payeeInfo": {
-      "payeeId": "{{ page.merchant_id }}"
-      "payeeReference": "CD1234",
-      "payeeName": "Merchant1",
-      "productCategory": "A123",
-      "orderReference": "or-12456",
-      "subsite": "MySubsite"
+    "creditCard": {
+        "rejectCreditCards": false,
+        "rejectDebitCards": false,
+        "rejectConsumerCards": false,
+        "rejectCorporateCards": false
     }
-  },
-  "creditCard": {
-    "rejectCreditCards": false,
-    "rejectDebitCards": false,
-    "rejectConsumerCards": false,
-    "rejectCorporateCards": false
-  }
 }
 ```
 
