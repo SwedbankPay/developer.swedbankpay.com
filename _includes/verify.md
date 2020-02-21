@@ -53,6 +53,12 @@ The API requests are displayed in the [Verification flow]. The options you can
 choose from when creating a payment with key operation set to Value Verify are
 listed below.
 
+Please note that not including `paymentUrl` in the request will generate a
+`redirect-verification` operation in the response, meant to be used in the
+Redirect flow. Adding `paymentUrl` input will generate the response meant for
+Seamless View, which does not include the `redirect-verification`. The request
+below is the Redirect option.
+
 {:.code-header}
 **Request**
 
@@ -76,7 +82,6 @@ Content-Type: application/json
       "hostUrls": ["https://example.com"],
       "completeUrl": "https://example.com/payment-completed",
       "cancelUrl": "https://example.com/payment-canceled",
-      "paymentUrl": "http://example.com/perform-payment",
       "logoUrl": "https://example.com/payment-logo.png",
       "termsOfServiceUrl": "https://example.com/payment-terms.html"
     },
