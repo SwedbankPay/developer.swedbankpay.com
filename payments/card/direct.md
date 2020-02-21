@@ -98,9 +98,9 @@ Property of the JSON document is described in the following section.
 An example of an expanded `POST` request is available in the
 [other features section][purchase].
 
-{% include risk-indicator.md %}
+{% include alert-risk-indicator.md %}
 
-{% include purchase.md %}
+{% include card-purchase.md %}
 
 ## Type of authorization - Intent
 
