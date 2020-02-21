@@ -33,13 +33,13 @@ payment instruments and their platform availability are listed in the table
 below.
 
 {:.table .table-striped}
-|                              | Payment instrument      | Seamless View | Redirect | Region                            |
-| :--------------------------: | :---------------------- | :-----------: | :------: | :-------------------------------- |
-|    ![CardIcon][card-icon]    | [Card][card]            |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  | ![EarthIcon][earth-icon]          |
-| ![InvoiceIcon][invoice-icon] | [Invoice][invoice]      |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  | ![nor][nor-flag] ![swe][swe-flag] |
-|     ![Vipps][vipps-logo]     | [Vipps][vipps]          |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  | ![nor][nor-flag]                  |
-|     ![Swish][swish-logo]     | [Swish][swish]          |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  | ![swe][swe-flag]                  |
-| ![MobilePay][mobilepay-logo] | [MobilePay][mobile-pay] |               |  ✔︎︎︎︎︎  | ![dan][dan-flag] ![fin][fin-flag] |
+|                                | Payment instrument                  | Seamless View | Redirect | Direct API | Region                                                                               |
+| :----------------------------: | :---------------------------------- | :-----------: | :------: | :--------: | :----------------------------------------------------------------------------------- |
+|     ![CardIcon][card-icon]     | [Credit card][card]                 |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  |   ✔︎︎︎︎︎   | ![EarthIcon][earth-icon]                                                             |
+|  ![InvoiceIcon][invoice-icon]  | [Swedbank Pay Invoice][invoice]     |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  |   ✔︎︎︎︎︎   | ![nor][nor-flag] ![swe][swe-flag] ![fin][fin-flag]                                   |
+|      ![Vipps][vipps-logo]      | [Vipps][vipps]                      |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  |            | ![nor][nor-flag]                                                                     |
+|      ![Swish][swish-logo]      | [Swish][swish]                      |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  | ✔︎︎︎︎︎  ︎  | ![swe][swe-flag]                                                                     |
+|  ![MobilePay][mobilepay-logo]  | [Mobile Pay][mobile-pay]            |               |  ✔︎︎︎︎︎  |            | ![dan][dan-flag] ![fin][fin-flag]                                                                    |
 
 ## Prerequisites
 
@@ -70,7 +70,7 @@ payment is completed.
 
 ### Direct
 
-Direct is the option where you integrate directly using our Direct
+[Direct][direct] is the option where you integrate directly using our Direct
 API. This is an integration with the most flexibility and opportunities. If you
 want to offer Card Payments and choose this option, you have to be PCI-DSS
 compliant.
@@ -177,3 +177,4 @@ implementation in action.
 [mobile-pay]: /payments/mobile-pay
 [seamless-view]: /payments/card/seamless-view
 [redirect]: /payments/card/redirect
+[direct]: /payments/card/direct
