@@ -33,13 +33,13 @@ payment instruments and their platform availability are listed in the table
 below.
 
 {:.table .table-striped}
-|                                | Payment instrument                  | Seamless View | Redirect | Direct API | Region                                                                               |
-| :----------------------------: | :---------------------------------- | :-----------: | :------: | :--------: | :----------------------------------------------------------------------------------- |
-|     ![CardIcon][card-icon]     | [Credit card][card]                 |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  |   ✔︎︎︎︎︎   | ![EarthIcon][earth-icon]                                                             |
-|  ![InvoiceIcon][invoice-icon]  | [Swedbank Pay Invoice][invoice]     |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  |   ✔︎︎︎︎︎   | ![nor][nor-flag] ![swe][swe-flag] ![fin][fin-flag]                                   |
-|      ![Vipps][vipps-logo]      | [Vipps][vipps]                      |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  |            | ![nor][nor-flag]                                                                     |
-|      ![Swish][swish-logo]      | [Swish][swish]                      |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  | ✔︎︎︎︎︎  ︎  | ![swe][swe-flag]                                                                     |
-|  ![MobilePay][mobilepay-logo]  | [Mobile Pay][mobile-pay]            |               |  ✔︎︎︎︎︎  |            | ![dan][dan-flag] ![fin][fin-flag]                                                                    |
+|                              | Payment instrument              | Seamless View | Redirect | Direct API | Region                                             |
+| :--------------------------: | :------------------------------ | :-----------: | :------: | :--------: | :------------------------------------------------- |
+|    ![CardIcon][card-icon]    | [Credit card][card]             |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  |   ✔︎︎︎︎︎   | ![EarthIcon][earth-icon]                           |
+| ![InvoiceIcon][invoice-icon] | [Swedbank Pay Invoice][invoice] |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  |            | ![nor][nor-flag] ![swe][swe-flag] ![fin][fin-flag] |
+|     ![Vipps][vipps-logo]     | [Vipps][vipps]                  |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  |            | ![nor][nor-flag]                                   |
+|     ![Swish][swish-logo]     | [Swish][swish]                  |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  | ✔︎︎︎︎︎  ︎  | ![swe][swe-flag]                                   |
+| ![MobilePay][mobilepay-logo] | [Mobile Pay][mobile-pay]        |               |  ✔︎︎︎︎︎  |            | ![dan][dan-flag] ![fin][fin-flag]                  |
 
 ## Prerequisites
 
