@@ -5,11 +5,10 @@ directly whilst the `redirect-authorization` operation redirects the consumer to
 a Swedbank Pay hosted payment page, where the payment is authorized by the
 consumer.
 
-{% include alert.html type="warning" icon="warning" header="Note" body="In order
-to use the `direct-authorization` operation, the servers and application
-involved in retrieving and transferring the credit card number from the payer to
-Swedbank Pay needs to be [PCI DSS](https://www.pcisecuritystandards.org/)
-certified." %}
+{% include alert.html type="warning" icon="warning" header="PCI-DSS Complicance"
+body="In order to use the `direct-authorization` operation, you need to collect
+card data on your website, which means it must be [PCI-DSS
+Compliant](https://www.pcisecuritystandards.org/)." %}
 
 {:.code-header}
 **Request**

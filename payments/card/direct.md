@@ -20,19 +20,18 @@ sidebar:
 
 {% include alert.html type="warning"
                       icon="warning"
-                      header="Site under development"
+                      header="Section under review"
                       body="This section of the Developer Portal is under
-                      construction and should not be used to integrate against
-                      Swedbank Pay's APIs yet." %}
-
-{% include alert.html type="warning"
-                      icon="error"
-                      header="PCI-DSS Complicance"
-                      body="The direct integration option requires you to collect the card data on your website, which means it must be [PCI-DSS Compliant]( https://www.pcisecuritystandards.org/)." %}
+                      review and may be incomplete or contain minor errors." %}
 
 {% include jumbotron.html body="The Direct Payment scenario **is used by
 customers that are compliant with PCI-DSS regulations**, and is a way to
 implement card payments without using Swedbank Pay hosted payment page." %}
+
+{% include alert.html type="danger" icon="error" header="PCI-DSS Complicance"
+body="The direct integration option requires you to collect the card data on
+your website, which means it must be [PCI-DSS Compliant](
+https://www.pcisecuritystandards.org/)." %}
 
 ## Introduction
 
