@@ -84,12 +84,11 @@ compliant.
                       for all payment instruments, reducing complexity and
                       enabling a more straightforward integration." %}
 
-There are two main payment types, *two-phase* and *one-phase* payments. The two
-seem very similar from a consumer's point of view, but there are key differences
-you should know about.
+There are two main payment types, **two-phase** and **one-phase** payments. The
+two seem very similar from a consumer's point of view, but there are key
+differences you should know about.
 
-*Two-phase payments* ([Card][card], [Invoice][invoice],
-[MobilePay][invoice], [Vipps][vipps])
+### Two-Phase Payments
 
 A two-phase payment is performed in two steps – an `authorization` which
 reserves the consumer's funds, and a `capture` of the funds at a later time,
@@ -100,8 +99,14 @@ Payments, MobilePay payments and Invoice Payments. A
 capture of an invoice will *not* capture any funds, but trigger the invoice
 distribution and send it to the consumer.
 
-*One-phase payments* ([Swish][swish],
-[Card][card])
+The payment instruments that support two-phase payments are:
+
+* [Card][card]
+* [Invoice][invoice]
+* [MobilePay][invoice]
+* [Vipps][vipps]
+
+### One-Phase Payments
 
 There are two types of one-phase payments – `sale` and `autoCapture`.
 
@@ -121,6 +126,11 @@ As the funds are captured instantly, `cancel` is not available for either of the
 one-phase payments. `abort` and `reversal` can be performed the same way as with
 two-phase payments.
 
+The payment instruments that support one-phase payments are:
+
+* [Swish][swish]
+* [Card][card]
+
 ## The Payment Object
 
 The payment is the container object that holds all transactions
@@ -131,23 +141,23 @@ the URIs and operations for further actions, given the state of the payment.
 
 After creating a payment, you can:
 
-* Authorize funds. An authorization transaction reserves the funds. It is
+* `Authorize` funds. An authorization transaction reserves the funds. It is
   possible to `abort` a payment before the end user has completed the payment
   process. And either:
-* Capture funds. Before delivering the merchandise you need to create a capture
+* `Capture` funds. Before delivering the merchandise you need to create a capture
   transaction to ensure that the money is charged from the consumer credit card
   or properly billed by invoice. One-phase payments will combine these two in a
   `sale` or `autoCapture` transaction as described in the section above.
 
   Or:
-* Cancel the authorized amount. Funds that are authorized but not yet captured,
+* `Cancel` the authorized amount. Funds that are authorized but not yet captured,
   can be released back to the consumer. This is done by creating a cancel
   transaction. This is not available for one-phase payments.
-* Reverse captured funds. In some cases you may need to make a reversal of
+* `Reverse` captured funds. In some cases you may need to make a reversal of
   captured funds. This is achieved by creating a reversal transaction.
 
- All actions after creating the payment can be done by using our APIs, or from
- our admin tool. `abort` is only available when using APIs.
+All actions after creating the payment can be done by using our APIs, or from
+our admin tool. `abort` is only available when using APIs.
 
 Please visit our [demoshop][demoshop] to see our Payment Menu and Redirect
 implementation in action.
