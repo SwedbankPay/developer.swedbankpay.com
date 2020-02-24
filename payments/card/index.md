@@ -81,7 +81,7 @@ options:
 * [Verify][verify]
 * [Unscheduled Purchase][unscheduled-purchase]
 
-Our `payment` example below uses the [`purchase`][purchase] operation.
+Our `payment` example below uses the [`Purchase`][purchase] operation.
 
 ## Intent
 

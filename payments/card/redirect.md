@@ -142,7 +142,7 @@ options:
 * [Payout][payout]
 * [Verify][verify]
 
-Our `payment` example uses the [`purchase`][purchase] value.
+Our `payment` example uses the [`Purchase`][purchase] value.
 
 ### Purchase
 
@@ -199,7 +199,7 @@ options:
 * [Payout][payout]
 * [Verify][verify]
 
-Our `payment` example below uses the [`purchase`][purchase] value.
+Our `payment` example below uses the [`Purchase`][purchase] value.
 
 ## Purchase flow mobile
 

@@ -84,7 +84,7 @@ options:
 * [Payout][payout]
 * [Verify][verify]
 
-Our `payment` example above uses the [`purchase`][purchase] value which is
+Our `payment` example above uses the [`Purchase`][purchase] value which is
 explained below.
 
 ### Purchase
@@ -104,7 +104,7 @@ An example of an expanded `POST` request is available in the
 ## Type of authorization - Intent
 
 * **Authorization (two-phase):** If you want the credit card to reserve the
-  amount, you will have to specify that the `intent` of the `purchase` is
+  amount, you will have to specify that the `intent` of the `Purchase` is
   `Authorization`. The amount will be reserved but not charged. You will later
   (i.e. when you are ready to ship the purchased products) have to make a
   [Capture][Capture] or [Cancel][Cancel] request.
@@ -125,7 +125,7 @@ An example of an expanded `POST` request is available in the
 ## Type of capture - Intent
 
 * **AutoCapture (one-phase):** If you want the credit card to be charged right
-  away, you will have to specify that the `intent` of the `purchase` is
+  away, you will have to specify that the `intent` of the `Purchase` is
   `AutoCapture`. The credit card will be charged and you don't need to do any
   more financial operations to this purchase.
 

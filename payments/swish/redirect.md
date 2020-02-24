@@ -115,7 +115,7 @@ of the transaction." %}
 ### API Requests
 
 All valid options when posting in a payment with operation equal to `Purchase`.
-The `purchase` example shown below.
+The `Purchase` example shown below.
 
 {:.code-header}
 **Request**
@@ -175,7 +175,7 @@ Content-Type: application/json
 | Required | Property                                           | Type          | Description                                                                                                                                                                                                                                                                                        |
 | :------: | :------------------------------------------------- | :------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |  ✔︎︎︎︎︎  | `payment`                                          | `object`      | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                              |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`operation`                                | `string`      | The operation that the `payment` is supposed to perform. The [`purchase`][purchase] operation is used in our example.                                                                                                                                                                              |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`operation`                                | `string`      | The operation that the `payment` is supposed to perform. The [`Purchase`][purchase] operation is used in our example.                                                                                                                                                                              |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`intent`                                   | `string`      | `Sale`.                                                                                                                                                                                                                                                                                            |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`currency`                                 | `string`      | `SEK`.                                                                                                                                                                                                                                                                                             |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`prices`                                   | `object`      | The `prices` array lists the prices related to a specific payment.                                                                                                                                                                                                                                 |
