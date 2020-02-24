@@ -66,18 +66,17 @@ Content-Type: application/json
             "callbackUrl": "{{ page.api_url }}/psp/payment-callback",
             "logoUrl": "https://example.com/path/to/logo.png",
             "termsOfServiceUrl": "https://example.com/terms.pdf"
-
         },
         "payeeInfo": {
-            "payeeId": "{{ page.merchant_id }}"
+            "payeeId": "{{ page.merchant_id }}",
             "payeeReference": "Postmantimestamp",
             "payeeName": "Merchant1",
             "productCategory": "A123",
             "orderReference": "or-12456",
             "subsite": "MySubsite"
-            },
+        },
         "prefillInfo": {
-         "msisdn": "+4793000001"
+            "msisdn": "+4793000001"
         }
     }
 }

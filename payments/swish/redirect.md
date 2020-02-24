@@ -84,14 +84,14 @@ sequenceDiagram
   end
   SwedbankPay-->>Browser: Redirect to merchant (If Redirect scenario)
   activate Browser
-  
+
   Browser-->>-Merchant: Redirect
   activate Merchant
   Merchant->>-SwedbankPay: GET <Swish payment>
   activate SwedbankPay
   SwedbankPay-->>-Merchant: Payment response
   activate Merchant
-  Merchant-->>-Browser: Payment Status  
+  Merchant-->>-Browser: Payment Status
 ```
 
 ## Operations
