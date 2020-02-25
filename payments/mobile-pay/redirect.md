@@ -1,8 +1,8 @@
 ---
-title: Swedbank Pay MobilePay Payments – Redirect
+title: Swedbank Pay MobilePay Online Payments – Redirect
 sidebar:
   navigation:
-  - title: MobilePay Payments
+  - title: MobilePay Online Payments
     items:
     - url: /payments/mobile-pay
       title: Introduction
@@ -14,7 +14,7 @@ sidebar:
       title: Other Features
 ---
 
-{% include jumbotron.html body=" **MobilePay Payments** is a two-phase payment
+{% include jumbotron.html body=" **MobilePay Online Payments** is a two-phase payment
 instrument which can be implemented by the supported redirect scenario.
 Swedbank Pay receives the MobilePay details from the payer through Swedbank Pay
 Payments. The payment will then be performed by Swedbank Pay and
@@ -27,7 +27,7 @@ confirmed by the payer through the MobilePay app." %}
 * You will receive a Redirect URL, leading to a secure Swedbank Pay hosted
   environment, in response.
 * You need to redirect the browser of the end-user/consumer to that URL so
-  that the user may enter their MobilePay details .
+  that the user may enter their MobilePay details.
 * When the payment is completed, Swedbank Pay will redirect the browser back
   to your merchant/webshop site.
 * Finally you need to make a `GET` request towards Swedbank Pay with the
@@ -45,18 +45,19 @@ to value `Purchase` are listed below.
 
 ### Intent
 
-**`Authorization` (two-phase)**: The intent of a MobilePay purchase is always
-`Authorization`. The amount will be reserved but not charged.
-You will later (i.e. if a physical product, when you are ready to ship the
-purchased products) have to make a [`Capture`][mobilepay-capture] or
+**`Authorization` (two-phase)**: The intent of a MobilePay Online purchase is
+always `Authorization`. The amount will be reserved but not charged. You will
+later (i.e. if a physical product, when you are ready to ship the purchased
+products) have to make a [`Capture`][mobilepay-capture] or
 [`Cancel`][mobilepay-cancel] request.
 
 #### General
 
 {% include alert.html type="success" icon="link" body="**Defining
-`callbackUrl`**: When implementing a scenario, it is strongly recommended to set a
-`callbackUrl` in the `POST` request. If `callbackUrl` is set, Swedbank Pay will
-send a `POST` request to this URL when the consumer has fulfilled the payment." %}
+`callbackUrl`**: When implementing a scenario, it is strongly recommended to set
+a `callbackUrl` in the `POST` request. If `callbackUrl` is set, Swedbank Pay
+will send a `POST` request to this URL when the consumer has fulfilled the
+payment." %}
 
 ## Purchase flow
 
@@ -78,7 +79,7 @@ sequenceDiagram
   Consumer->>Merchant: start purchase (pay with MobilePay)
   activate Merchant
 
-  Merchant->>SwedbankPay: POST <Create MobilePay payment>
+  Merchant->>SwedbankPay: POST <Create MobilePay Online payment>
   note left of Merchant: First API request
   activate SwedbankPay
   SwedbankPay-->>Merchant: payment resource
@@ -89,7 +90,7 @@ sequenceDiagram
   Consumer-->>SwedbankPay: enter mobile number
   activate SwedbankPay
 
-  SwedbankPay-->>MobilePay_API: Initialize MobilePay payment
+  SwedbankPay-->>MobilePay_API: Initialize MobilePay Online payment
   activate MobilePay_API
   MobilePay_API-->>SwedbankPay: response
   SwedbankPay-->>Consumer: Authorization response (State=Pending)

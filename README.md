@@ -1,6 +1,6 @@
 # developer.swedbankpay.com
 
-[![Swedbank Pay Developer Portal][dev-portal-image]][dev-portal]
+[![Swedbank Pay Developer Portal][opengraph-image]][dev-portal]
 
 [![GitHub Actions Status][gh-actions-badge]][gh-actions]
 ![Last Master Commit][last-commit-badge]
@@ -155,7 +155,7 @@ This website is available as open source under the terms of the
 [cloning]: https://help.github.com/articles/cloning-a-repository/
 [config-yml]: _config.yml
 [dev-guidelines]: https://developer.swedbankpay.com/resources/development-guidelines
-[dev-portal-image]: ./assets/img/swedbank-pay-developer-portal.png
+[opengraph-image]: https://repository-images.githubusercontent.com/210605116/56fb0c00-53e9-11ea-9c5f-7fb8685cce87
 [dev-portal]: https://developer.swedbankpay.com/
 [gems]: https://rubygems.org/
 [gh-actions-badge]: https://github.com/SwedbankPay/developer.swedbankpay.com/workflows/jekyll-build/badge.svg
