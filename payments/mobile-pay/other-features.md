@@ -1,8 +1,8 @@
 ---
-title: Swedbank Pay MobilePay Payments – Other Features
+title: Swedbank Pay MobilePay Online Payments – Other Features
 sidebar:
   navigation:
-  - title: MobilePay Payments
+  - title: MobilePay Online Payments
     items:
     - url: /payments/mobile-pay
       title: Introduction
@@ -18,7 +18,7 @@ sidebar:
 
 ### Create Payment
 
-To create a MobilePay payment, you perform an HTTP `POST` against the
+To create a MobilePay Online payment, you perform an HTTP `POST` against the
 `/psp/mobilepay/payments` resource. Please read the [general
 information][general-http-info] on how to compose a valid HTTP request before
 proceeding.
@@ -263,14 +263,14 @@ request for the given operation.
 | :----------------------- | :--------------------------------------------------------------------------- |
 | `update-payment-abort`   | [Aborts][abort] the payment before any financial transactions are performed. |
 | `create-authorization`   | Create an [authorization][authorization-transaction] transaction.            |
-| `redirect-authorization` | Used to redirect the consumer to the MobilePay authorization UI.             |
+| `redirect-authorization` | Used to redirect the consumer to the MobilePay Online authorization UI.      |
 | `create-capture`         | Creates a [capture][capture-transaction] transaction.                        |
 | `create-cancellation`    | Creates a [cancellation][cancellation-transaction] transaction.              |
 | `create-reversal`        | Creates a [reversal][reversal-transaction] transaction.                      |
 
-## MobilePay transactions
+## MobilePay Online transactions
 
-All MobilePay specific transactions are described below.
+All MobilePay Online specific transactions are described below.
 
 ## Authorizations
 
@@ -421,7 +421,7 @@ Content-Type: application/json
 | ✔︎︎︎︎︎   | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the capture transaction. See [`payeeReference`][payee-reference] for details.                      |
 
 The `capture` resource contains information about the capture transaction made
-against a mobilepay payment.
+against a MobilePay Online payment.
 You can return a specific capture transaction by adding the transaction id to
 the `GET` request.
 
@@ -533,7 +533,7 @@ authorization amount.
 
 ```mermaid
 sequenceDiagram
-  Merchant->>PayEx: POST <creditcard capture>
+  Merchant->>PayEx: POST <mobilepay capture>
   Activate Merchant
   Activate PayEx
   PayEx-->>Merchant: transaction resource
@@ -549,7 +549,7 @@ between the captured amount and the authorized amount.
 
 ```mermaid
 sequenceDiagram
-  Merchant->>PayEx: POST <creditcard cancellation>
+  Merchant->>PayEx: POST <mobilepay cancellation>
   Activate Merchant
   Activate PayEx
   PayEx-->>Merchant: transaction resource
@@ -564,7 +564,7 @@ not yet reversed.
 
 ```mermaid
 sequenceDiagram
-  Merchant->>PayEx: POST <creditcard reversal>
+  Merchant->>PayEx: POST <mobilepay reversal>
   Activate Merchant
   Activate PayEx
   PayEx-->>Merchant: transaction resource

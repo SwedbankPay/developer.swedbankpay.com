@@ -1,8 +1,8 @@
 ---
-title: Swedbank Pay MobilePay Payments – After Payment
+title: Swedbank Pay MobilePay Online Payments – After Payment
 sidebar:
   navigation:
-  - title: MobilePay Payments
+  - title: MobilePay Online Payments
     items:
     - url: /payments/mobile-pay
       title: Introduction
@@ -67,7 +67,7 @@ Content-Type: application/json
 |    ✔︎    | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the capture transaction. See [payeeReference][payee-reference] for details.                        |
 
 The `capture` resource contains information about the capture transaction made
-against a MobilePay payment.
+against a MobilePay Online payment.
 You can return a specific capture transaction by adding the transaction id to
 the `GET` request.
 

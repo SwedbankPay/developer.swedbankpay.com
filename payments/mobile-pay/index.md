@@ -1,8 +1,8 @@
 ---
-title: Swedbank Pay MobilePay Payments
+title: Swedbank Pay MobilePay Online Payments
 sidebar:
   navigation:
-  - title: MobilePay Payments
+  - title: MobilePay Online Payments
     items:
     - url: /payments/mobile-pay
       title: Introduction
@@ -14,12 +14,13 @@ sidebar:
       title: Other Features
 ---
 
-{% include jumbotron.html body="  Enter your phone number,
-get the push message, press the pay button... and you're done!  " %}
+{% include jumbotron.html body="  MobilePay is the fast and simple way of
+paying with your mobile phone, reaching more than 4 million Danish end-users." %}
 
-MobilePay is the main Danish payment app for mobile phones, making it one of
-the essential payment instruments for merchants operating in Denmark. We offer
-it on our redirect and seamless view platforms.
+MobilePay is the main Danish payment app for mobile phones, making it one of the
+essential payment instruments for merchants operating in Denmark. More than 4
+million Danes are users of the app, and more than 100,000 merchants are
+accepting payments. We offer it on our redirect and seamless view platforms.
 
 ## Purchase flow
 
@@ -37,7 +38,7 @@ option, the consumer will be redirected back to the merchant's site.
 
 ### Payment Type
 
-MobilePay is one of the instruments using two-phase payments. The
+MobilePay Online is one of the instruments using two-phase payments. The
 `authorization` is done when the consumer successfully confirms in the app, and
 the `abort`, `cancel`, `capture` or `reversal` is done by the merchant at a
 later time. Read more about the [different operations][other-features] and the
@@ -45,25 +46,25 @@ later time. Read more about the [different operations][other-features] and the
 
 ### Settlement
 
-MobilePay transactions are handled, processed and settled as card transactions
-in our system. They are, however, tagged as MobilePay transactions and have
-their own acquirer agreement, so the two payment instruments are settled
-separately.
+MobilePay Online transactions are handled, processed and settled as card
+transactions in our system. They are, however, tagged as MobilePay Online
+transactions and have their own acquirer agreement, so the two payment
+instruments are settled separately.
 
 ### 3-D Secure
 
-As MobilePay transactions are processed as card transactions, a 3-D Secure
-agreement is needed to complete the payment instrument setup. This information
-is provided to you by your acquirer when you set up your agreement with them. If
-you offer both Card Payments and MobilePay, you will need two separate 3-D
-Secure agreements, one for each payment instrument. Apart from the agreement
-with the acquirer, no further 3-D Secure compliance is required from you as a
-merchant in this regard.
+As MobilePay Online transactions are processed as card transactions, a 3-D
+Secure agreement is needed to complete the payment instrument setup. This
+information is provided to you by your acquirer when you set up your agreement
+with them. If you offer both Card Payments and MobilePay Online, you will need
+two separate 3-D Secure agreements, one for each payment instrument. Apart from
+the agreement with the acquirer, no further 3-D Secure compliance is required
+from you as a merchant in this regard.
 
 ### Demoshop
 
-MobilePay is unfortunately not available in our demoshop at the moment, but it
-will be in the future. The demoshop in the test environments will use a
+MobilePay Online is unfortunately not available in our demoshop at the moment,
+but it will be in the future. The demoshop in the test environments will use a
 fakeservice which enables you to test a successful purchase without using the
 MobilePay app.
 

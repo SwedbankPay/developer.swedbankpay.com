@@ -53,6 +53,12 @@ The API requests are displayed in the [Verification flow]. The options you can
 choose from when creating a payment with key operation set to Value Verify are
 listed below.
 
+Please note that not including `paymentUrl` in the request will generate a
+`redirect-verification` operation in the response, meant to be used in the
+Redirect flow. Adding `paymentUrl` input will generate the response meant for
+Seamless View, which does not include the `redirect-verification`. The request
+below is the Redirect option.
+
 {:.code-header}
 **Request**
 
@@ -63,38 +69,37 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
-  "payment": {
-    "operation": "Verify",
-    "currency": "NOK",
-    "description": "Test Verification",
-    "payerReference": "AB1234",
-    "userAgent": "Mozilla/5.0...",
-    "language": "nb-NO",
-    "generatePaymentToken": true,
-    "generateRecurrenceToken": false,
-    "urls": {
-      "hostUrls": ["https://example.com"],
-      "completeUrl": "https://example.com/payment-completed",
-      "cancelUrl": "https://example.com/payment-canceled",
-      "paymentUrl": "http://example.com/perform-payment",
-      "logoUrl": "https://example.com/payment-logo.png",
-      "termsOfServiceUrl": "https://example.com/payment-terms.html"
+    "payment": {
+        "operation": "Verify",
+        "currency": "NOK",
+        "description": "Test Verification",
+        "payerReference": "AB1234",
+        "userAgent": "Mozilla/5.0...",
+        "language": "nb-NO",
+        "generatePaymentToken": true,
+        "generateRecurrenceToken": false,
+        "urls": {
+            "hostUrls": ["https://example.com", "https://example.net"],
+            "completeUrl": "https://example.com/payment-completed",
+            "cancelUrl": "https://example.com/payment-canceled",
+            "logoUrl": "https://example.com/payment-logo.png",
+            "termsOfServiceUrl": "https://example.com/payment-terms.html"
+        },
+        "payeeInfo": {
+            "payeeId": "{{ page.merchant_id }}",
+            "payeeReference": "CD1234",
+            "payeeName": "Merchant1",
+            "productCategory": "A123",
+            "orderReference": "or-12456",
+            "subsite": "MySubsite"
+        }
     },
-    "payeeInfo": {
-      "payeeId": "{{ page.merchant_id }}"
-      "payeeReference": "CD1234",
-      "payeeName": "Merchant1",
-      "productCategory": "A123",
-      "orderReference": "or-12456",
-      "subsite": "MySubsite"
+    "creditCard": {
+        "rejectCreditCards": false,
+        "rejectDebitCards": false,
+        "rejectConsumerCards": false,
+        "rejectCorporateCards": false
     }
-  },
-  "creditCard": {
-    "rejectCreditCards": false,
-    "rejectDebitCards": false,
-    "rejectConsumerCards": false,
-    "rejectCorporateCards": false
-  }
 }
 ```
 
