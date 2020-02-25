@@ -190,7 +190,7 @@ the card information.
 
 ## API Requests for Payments
 
-The API requests are displayed in the [purchase flow](#purchase-flow-mobile).
+The API requests are displayed in the [purchase flow][purchase].
 You can [create a card `payment`][create-payment] with following `operation`
 options:
 
