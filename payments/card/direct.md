@@ -107,7 +107,7 @@ An example of an expanded `POST` request is available in the
   amount, you will have to specify that the `intent` of the `Purchase` is
   `Authorization`. The amount will be reserved but not charged. You will later
   (i.e. when you are ready to ship the purchased products) have to make a
-  [Capture][Capture] or [Cancel][Cancel] request.
+  [Capture][capture] or [Cancel][cancel] request.
 
 ### General
 
@@ -190,7 +190,7 @@ sequenceDiagram
 ## Options after posting a purchase payment
 
 * If the payment shown above is done as a two-phase (Authorization), you will
-  need to implement the [Capture][Capture] and [Cancel][Cancel] requests.
+  need to implement the [Capture][capture] and [Cancel][cancel] requests.
 * **Abort:** It is possible to [abort a payment][abort] if the payment has no
   successful transactions.
 * For `reversals`, you will need to implement the [Reversal][reversal] request.
@@ -204,9 +204,9 @@ next_href="after-payment" next_title="Next: After Payment" %}
 [abort]: /payments/card/other-features/#abort
 [expansion]: /payments/card/other-features/#expansion
 [callback]: /payments/card/other-features/#callback
-[Cancel]: /payments/card/after-payment/#Cancellations
-[Capture]: /payments/cardd/after-payment/#Capture
-[PCI-link]: https://www.pcisecuritystandards.org/
+[cancel]: /payments/card/after-payment/#Cancellations
+[capture]: /payments/cardd/after-payment/#Capture
+[pci-dss]: https://www.pcisecuritystandards.org/
 [reversal]: /payments/card/after-payment/#Reversals
 [authorization]: /payments/card/other-features/#create-authorization-transaction
 [other features]: /payments/card/other-features#purchase
