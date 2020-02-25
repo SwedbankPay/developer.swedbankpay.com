@@ -200,8 +200,8 @@ All Swish error types will have the following URI in front of type:
 
 Caused By:
 
-* MSISDN is invalid.
-* Payer's MSISDN is not enrolled at Swish.
+- MSISDN is invalid.
+- Payer's MSISDN is not enrolled at Swish.
 
 {:.code-header}
 Example response inputerror
@@ -224,16 +224,16 @@ Content-Type: application/json
 
 Caused By:
 
-* Payee alias is missing or not correct.
-* PaymentReference is invalid.
-* Amount value is missing or not a valid number.
-* Amount is less than agreed minimum.
-* Amount value is too large.
-* Invalid or missing currency.
-* Wrong formatted message.
-* Amount value is too large, or amount exceeds the amount of the original payment minus any previous refunds.
-* Counterpart is not activated.
-* Payee not enrolled.
+- Payee alias is missing or not correct.
+- PaymentReference is invalid.
+- Amount value is missing or not a valid number.
+- Amount is less than agreed minimum.
+- Amount value is too large.
+- Invalid or missing currency.
+- Wrong formatted message.
+- Amount value is too large, or amount exceeds the amount of the original payment minus any previous refunds.
+- Counterpart is not activated.
+- Payee not enrolled.
 
 {:.code-header}
 Example response configerror
@@ -256,11 +256,11 @@ Content-Type: application/json
 
 Caused By:
 
-* Original payment not found or original payment is more than than 13 months old.
-* It appears that merchant's organization number has changed since sale was made.
-* The MSISDN of the original payer seems to have changed owner.
-* Transaction declined. Could be that the payer has exceeded their swish limit or have insufficient founds.
-* Payment request not cancellable.
+- Original payment not found or original payment is more than than 13 months old.
+- It appears that merchant's organization number has changed since sale was made.
+- The MSISDN of the original payer seems to have changed owner.
+- Transaction declined. Could be that the payer has exceeded their swish limit or have insufficient founds.
+- Payment request not cancellable.
 
 {:.code-header}
 Example response swishdeclined
@@ -283,8 +283,8 @@ Content-Type: application/json
 
 Caused By:
 
-* Bank system processing error.
-* Swish timed out waiting for an answer from the banks after payment was started.
+- Bank system processing error.
+- Swish timed out waiting for an answer from the banks after payment was started.
 
 {:.code-header}
 Example response swisherror
@@ -307,7 +307,7 @@ Content-Type: application/json
 
 Caused By:
 
-* The payer's Swish is already in use.
+- The payer's Swish is already in use.
   
 {:.code-header}
 Example response swishalreadyinuse
@@ -330,7 +330,7 @@ Content-Type: application/json
 
 Caused By:
 
-* Swish timed out before the payment was started.
+- Swish timed out before the payment was started.
 
 {:.code-header}
 Example response swishtimeout
@@ -353,7 +353,7 @@ Content-Type: application/json
 
 Caused By:
 
-* The payer cancelled BankID authorization.
+- The payer cancelled BankID authorization.
 
 {:.code-header}
 Example response bankidcancelled
@@ -376,7 +376,7 @@ Content-Type: application/json
 
 Caused By:
 
-* The payer's BankID is already in use
+- The payer's BankID is already in use
 
 {:.code-header}
 Example response bankidalreadyinuse
@@ -399,7 +399,7 @@ Content-Type: application/json
 
 Caused By:
 
-* Something went wrong with the payer's BankID authorization.
+- Something went wrong with the payer's BankID authorization.
 
 {:.code-header}
 Example response bankiderror
@@ -422,7 +422,7 @@ Content-Type: application/json
 
 Caused By:
 
-* The payer's social security number does not match with the one required by this payment.
+- The payer's social security number does not match with the one required by this payment.
 
 {:.code-header}
 Example response socialsecuritynumbermismatch
@@ -445,7 +445,7 @@ Content-Type: application/json
 
 Caused By:
 
-* The payer does not meet the payment's age limit.
+- The payer does not meet the payment's age limit.
 
 {:.code-header}
 Example response paymentagelimitnotmet
@@ -468,7 +468,7 @@ Content-Type: application/json
 
 Caused By:
 
-* The payer cancelled the payment in the Swish app.
+- The payer cancelled the payment in the Swish app.
   
 {:.code-header}
 Example response usercancelled
