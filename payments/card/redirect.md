@@ -194,10 +194,10 @@ The API requests are displayed in the [purchase flow](#purchase-flow-mobile).
 You can [create a card `payment`][create-payment] with following `operation`
 options:
 
-* [Purchase][purchase]
-* [Recur][recur]
-* [Payout][payout]
-* [Verify][verify]
+* [`Purchase`][purchase]
+* [`Recur`][recur]
+* [`Payout`][payout]
+* [`Verify`][verify]
 
 Our `payment` example below uses the [`Purchase`][purchase] value.
 
