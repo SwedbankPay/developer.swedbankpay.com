@@ -101,8 +101,7 @@ sequenceDiagram
 
 ### Payment Url
 
-{% include payment-url.md
-when="at the 3-D Secure verification for Card Payments" %}
+{% include payment-url.md  when="selecting Swish as payment instrument" %}
 
 ## Seamless View Back End
 
