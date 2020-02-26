@@ -239,13 +239,12 @@ Content-Type: application/json
 }
 ```
 
-## Create Sale transaction
+## Create E-Commerce Sale transaction
 
-This operation creates a sales transaction in the direct payment scenario.
-This is managed either by sending a `POST` request as seen
-below, or by directing the end-user to the hosted payment pages. Note that the
-`msisdn` value (the consumer/end-user's mobile number) is required in this
-request.
+This operation creates an e-commerce sales transaction in the direct payment
+scenario. This is managed either by sending a `POST` request as seen below, or
+by directing the end-user to the hosted payment pages. Note that the `msisdn`
+value (the end-user's mobile number) is required in this request.
 
 {:.code-header}
 **Request**
@@ -264,6 +263,88 @@ Content-Type: application/json
 ```
 
 {% include transaction-response.md showRequest=false payment_instrument="swish" transaction="sale" %}
+
+
+## Create M-Commerce Sale transaction
+
+This operation creates an m-commerce sales transaction in the direct payment
+scenario. This is managed either by sending a `POST` request as seen below, or
+by directing the end-user to the hosted payment pages. Note that the `msisdn`
+value (the end-user's mobile number) is left out in this request. The
+`redirect-app-swish` operation and the `paymentRequestToken` is only present in
+the m-commerce flow response, and the `view-qr-code` operation is only present
+in the m-commerce flow with QR code data specified.
+`paymentRestrictedToAgeLimit` must be set in create payment to be present.
+
+{:.code-header}
+**Request**
+
+```http
+POST /psp/swish/payments/{{ page.payment_id }}/sales HTTP/1.1
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+
+{
+    "transaction": {
+    }
+}
+```
+
+{:.code-header}
+**Response**
+```http
+GET /psp/{{ instrument }}/payments/{{ page.payment_id }}/{{ plural }} HTTP/1.1
+Host: {{ page.api_host }}
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+```
+
+{:.code-header}
+**Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+{
+    "payment": "/psp/swish/payments/{{ page.payment_id }}",
+    "sale": {
+        "date": "23.10.2017 08:39:37 +00:00",
+        "paymentRequestToken": "97aabad01f3a4b4282c4e4fa36c8c259",
+        "swishFlowType": "McomSwishFlow",
+        "isPaymentRestrictedToSocialSecurityNumber": false,
+        "paymentRestrictedToAgeLimit": 18,
+        "id": "/psp/swish/payments/{{ page.payment_id }}/sales/6bf31479-623f-418a-d69e-08d519f19722",
+        "transaction": {
+            "id": "6bf31479-623f-418a-d69e-08d519f19722",
+            "created": "2017-10-23T08:39:35.6478733Z",
+            "updated": "2017-10-23T08:39:37.3788733Z",
+            "type": "Sale",
+            "state": "AwaitingActivity",
+            "number": 992309,
+            "amount": 1500,
+            "vatAmount": 0,
+            "description": "Test Purchase",
+            "payeeReference": "Postman1508747933",
+            "isOperational": true,
+            "operations": [
+                {
+                    "href": "swish://paymentrequest?token=LhXrK84MSpWU2RO09f8kUP-FHiBo-1pB",
+                    "method": "GET",
+                    "rel": "redirect-app-swish"
+                },
+                {
+                    "href": "https://api.payex.com/psp/swish/payments/20dfbcb9-587a-4ce9-e63e-08d519f1802f/sales/6bf31479-623f-418a-d69e-08d519f19722/qrcode.png",
+                    "method": "GET",
+                    "rel": "view-qr-code",
+                    "contentType": "image/png|jpg|svg"
+                }
+            ]
+        }
+    }
+}
+```
 
 {% include iterator.html prev_href="introduction" prev_title="Back: Introduction"
 next_href="redirect" next_title="Next: Redirect" %}
