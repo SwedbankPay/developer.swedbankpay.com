@@ -68,7 +68,7 @@ consumer when the payment has been fulfilled.
 The API-requests depend on which payment instrument you are using when
 implementing the Payment Link scenario, see purchase flow. One-phase payment
 instruments will not implement capture or cancellation. The options available
-when creating a payment with operation set to `purchase` are listed below. The
+when creating a payment with operation set to `Purchase` are listed below. The
 general REST based API model is described WHEREEEEE?
 
 ### Screenshots

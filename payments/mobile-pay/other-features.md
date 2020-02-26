@@ -188,7 +188,7 @@ Content-Type: application/json
 
 ## Purchase
 
-Posting a payment (operation `purchase`) returns the options of aborting the
+Posting a payment (operation `Purchase`) returns the options of aborting the
 payment altogether or creating an authorization transaction through the
 `redirect-authorization` hyperlink.
 Use the expand request parameter to get a response that includes one or more
