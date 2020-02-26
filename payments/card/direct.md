@@ -116,7 +116,7 @@ An example of an expanded `POST` request is available in the
   card agreements with an acquirer will require that you use 3-D Secure for card
   holder authentication. However, if your agreement allows you to make a card
   payment without this authentication, or that specific cards can be declined,
-  you may adjust these optional parameters when posting in the payment.
+  you may adjust these optional parameters when creating the payment.
 * *Defining CallbackURL*: When implementing a scenario, it is optional to set
   a [CallbackURL][callback] in the `POST` request. If `CallbackURL` is set, then
   Swedbank Pay will send a postback request to this URL when the consumer has
