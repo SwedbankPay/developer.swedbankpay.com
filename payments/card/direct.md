@@ -206,7 +206,6 @@ next_href="after-payment" next_title="Next: After Payment" %}
 [callback]: /payments/card/other-features/#callback
 [cancel]: /payments/card/after-payment/#Cancellations
 [capture]: /payments/cardd/after-payment/#Capture
-[pci-dss]: https://www.pcisecuritystandards.org/
 [reversal]: /payments/card/after-payment/#Reversals
 [authorization]: /payments/card/other-features/#create-authorization-transaction
 [other features]: /payments/card/other-features#purchase
