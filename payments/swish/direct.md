@@ -162,7 +162,7 @@ Content-Type: application/json
 |  ✔︎︎︎︎︎  | `payment`                                          | `object`      | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                              |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`operation`                                | `string`      | The operation that the `payment` is supposed to perform. The [`Purchase`][purchase] operation is used in our example.                                                                                                                                                                              |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`intent`                                   | `string`      | `Authorization`.                                                                                                                                                                                                                                                                                   |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`currency`                                 | `string`      | NOK, SEK, DKK, USD or EUR.                                                                                                                                                                                                                                                                         |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`currency`                                 | `string`      | SEK.                                                                                                                                                                                                                                                                         |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`prices`                                   | `object`      | The `prices` resource lists the prices related to a specific payment.                                                                                                                                                                                                                              |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`type`                                    | `string`      | Swish                                                                                                                                                                                                                                                                                              |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`amount`                                  | `integer`     | Amount is entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 SEK 5000 = 50.00 SEK.                                                                                                                                                                                |
@@ -271,9 +271,7 @@ This operation creates an m-commerce sales transaction in the direct payment
 scenario. This is managed either by sending a `POST` request as seen below, or
 by directing the end-user to the hosted payment pages. Note that the `msisdn`
 value (the end-user's mobile number) is left out in this request. The
-`redirect-app-swish` operation and the `paymentRequestToken` is only present in
-the m-commerce flow response, and the `view-qr-code` operation is only present
-in the m-commerce flow with QR code data specified.
+`redirect-app-swish` operation is only present in the m-commerce flow response.
 `paymentRestrictedToAgeLimit` must be set in create payment to be present.
 
 {:.code-header}
@@ -311,10 +309,6 @@ Content-Type: application/json
     "payment": "/psp/swish/payments/{{ page.payment_id }}",
     "sale": {
         "date": "23.10.2017 08:39:37 +00:00",
-        "paymentRequestToken": "97aabad01f3a4b4282c4e4fa36c8c259",
-        "swishFlowType": "McomSwishFlow",
-        "isPaymentRestrictedToSocialSecurityNumber": false,
-        "paymentRestrictedToAgeLimit": 18,
         "id": "/psp/swish/payments/{{ page.payment_id }}/sales/6bf31479-623f-418a-d69e-08d519f19722",
         "transaction": {
             "id": "6bf31479-623f-418a-d69e-08d519f19722",
@@ -333,18 +327,35 @@ Content-Type: application/json
                     "href": "swish://paymentrequest?token=LhXrK84MSpWU2RO09f8kUP-FHiBo-1pB",
                     "method": "GET",
                     "rel": "redirect-app-swish"
-                },
-                {
-                    "href": "https://api.payex.com/psp/swish/payments/20dfbcb9-587a-4ce9-e63e-08d519f1802f/sales/6bf31479-623f-418a-d69e-08d519f19722/qrcode.png",
-                    "method": "GET",
-                    "rel": "view-qr-code",
-                    "contentType": "image/png|jpg|svg"
                 }
             ]
         }
     }
 }
 ```
+
+{:.table .table-striped}
+| Property                          | Type      | Required                                                                                                                                                                                                     |
+| :-------------------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `payment`                         | `string`  | The relative URI of the payment this list of {{ transaction }} transactions belong to.                                                                                                                       |
+| `sale`                    | `object`  | The current `sale` resource.                                                                                                                                                                         |
+| └➔&nbsp;`date`                      | `string`  | The date of the current `sale` resource.                                                                                                                                                     |
+| └➔&nbsp;`id`                      | `string`  | The relative URI of the current `sale` resource.                                                                                                                                                     |
+| └➔&nbsp;`transaction` | `object`  | The {{ transaction }} transaction object described in the `{{ transaction }}` resource below.                                                                                                                |
+| └─➔&nbsp;`id`                     | `string`  | The relative URI of the current `transaction` resource.                                                                                                                                                      |
+| └─➔&nbsp;`created`                | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
+| └─➔&nbsp;`updated`                | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
+| └─➔&nbsp;`type`                   | `string`  | Indicates the transaction type.                                                                                                                                                                              |
+| └─➔&nbsp;`state`                  | `string`  | `Initialized`, `awaitingActivity`, `Completed` or `Failed`. Indicates the state of the transaction.                                                                                                                              |
+| └─➔&nbsp;`number`                 | `string`  | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead. |
+| └─➔&nbsp;`amount`                 | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` = 100.00 NOK, `5000` = 50.00 SEK.                                                                                     |
+| └─➔&nbsp;`vatAmount`              | `integer` | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                           |
+| └─➔&nbsp;`description`            | `string`  | A human readable description of maximum 40 characters of the transaction.                                                                                                                                    |
+| └─➔&nbsp;`payeeReference`         | `string`  | A unique reference for the transaction.                                                                                                                                                                      |
+| └─➔&nbsp;`failedReason`           | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
+| └─➔&nbsp;`isOperational`          | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
+| └─➔&nbsp;`operations`             | `array`   | The array of operations that are possible to perform on the transaction in its current state.                                                                                                                |
+
 
 {% include iterator.html prev_href="introduction" prev_title="Back: Introduction"
 next_href="redirect" next_title="Next: Redirect" %}
