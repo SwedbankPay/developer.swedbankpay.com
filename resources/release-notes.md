@@ -32,6 +32,11 @@ this very documentation, not to a version of any APIs described by it." %}
 
 ## February 2020
 
+### Version 1.7.4
+
+* Described the M-Commerce flow for [Swish Direct][swish-direct-mcom].
+* Alphabetize the terms in [Terminology][terminology].
+
 ### Version 1.7.3
 
 * Expanded information about the field `restrictedToInstruments`.
@@ -291,6 +296,7 @@ integration and the payer.
 [payment-orders]: /checkout/other-features#creating-a-payment-order
 [payments]: /payments
 [swish-direct]: /payments/swish/direct
+[swish-direct-mcom]: /payments/swish/direct#create-m-commerce-sale-transaction
 [swish-other-features]: /payments/swish/other-features
 [swish-redirect]: /payments/swish/redirect
 [swish-seamless-view]: /payments/swish/seamless-view
