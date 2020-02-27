@@ -262,6 +262,12 @@ Content-Type: application/json
 
 ```
 
+{:.table .table-striped}
+| Property                          | Type      | Required                                                                                                                                                                                                     |
+| :-------------------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `transaction`                    | `object`  | The  `transaction` object contains information about the specific transaction.                                                                                                                                                                          |
+| └➔&nbsp;`msisdn`                      | `string`  | The end-user's mobile number. It must have a country code prefix and be 8 to 15 digits in length.                                                                                                                                                      |
+
 {% include transaction-response.md showRequest=false payment_instrument="swish" transaction="sale" %}
 
 
@@ -287,6 +293,12 @@ Content-Type: application/json
     }
 }
 ```
+
+{:.table .table-striped}
+| Property                          | Type      | Required                                                                                                                                                                                                     |
+| :-------------------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `transaction`                    | `object`  | The  `transaction` object contains information about the specific transaction.                                                                                                                                                                          |
+
 
 {:.code-header}
 **Response**
