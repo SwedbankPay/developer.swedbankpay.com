@@ -162,7 +162,7 @@ Content-Type: application/json
 |  ✔︎︎︎︎︎  | `payment`                                          | `object`      | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                              |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`operation`                                | `string`      | The operation that the `payment` is supposed to perform. The [`Purchase`][purchase] operation is used in our example.                                                                                                                                                                              |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`intent`                                   | `string`      | `Authorization`.                                                                                                                                                                                                                                                                                   |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`currency`                                 | `string`      | NOK, SEK, DKK, USD or EUR.                                                                                                                                                                                                                                                                         |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`currency`                                 | `string`      | SEK.                                                                                                                                                                                                                                                                         |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`prices`                                   | `object`      | The `prices` resource lists the prices related to a specific payment.                                                                                                                                                                                                                              |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`type`                                    | `string`      | Swish                                                                                                                                                                                                                                                                                              |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`amount`                                  | `integer`     | Amount is entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 SEK 5000 = 50.00 SEK.                                                                                                                                                                                |
@@ -239,13 +239,12 @@ Content-Type: application/json
 }
 ```
 
-## Create Sale transaction
+## Create E-Commerce Sale transaction
 
-This operation creates a sales transaction in the direct payment scenario.
-This is managed either by sending a `POST` request as seen
-below, or by directing the end-user to the hosted payment pages. Note that the
-`msisdn` value (the consumer/end-user's mobile number) is required in this
-request.
+This operation creates an e-commerce sales transaction in the direct payment
+scenario. This is managed either by sending a `POST` request as seen below, or
+by directing the end-user to the hosted payment pages. Note that the `msisdn`
+value (the end-user's mobile number) is required in this request.
 
 {:.code-header}
 **Request**
@@ -263,7 +262,112 @@ Content-Type: application/json
 
 ```
 
+{:.table .table-striped}
+| Property                          | Type      | Required                                                                                                                                                                                                     |
+| :-------------------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `transaction`                    | `object`  | The  `transaction` object contains information about the specific transaction.                                                                                                                                                                          |
+| └➔&nbsp;`msisdn`                      | `string`  | The end-user's mobile number. It must have a country code prefix and be 8 to 15 digits in length.                                                                                                                                                      |
+
 {% include transaction-response.md showRequest=false payment_instrument="swish" transaction="sale" %}
+
+
+## Create M-Commerce Sale transaction
+
+This operation creates an m-commerce sales transaction in the direct payment
+scenario. This is managed either by sending a `POST` request as seen below, or
+by directing the end-user to the hosted payment pages. Note that the `msisdn`
+value (the end-user's mobile number) is left out in this request. The
+`redirect-app-swish` operation is only present in the m-commerce flow response.
+`paymentRestrictedToAgeLimit` must be set in create payment to be present.
+
+{:.code-header}
+**Request**
+
+```http
+POST /psp/swish/payments/{{ page.payment_id }}/sales HTTP/1.1
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+
+{
+    "transaction": {
+    }
+}
+```
+
+{:.table .table-striped}
+| Property                          | Type      | Required                                                                                                                                                                                                     |
+| :-------------------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `transaction`                    | `object`  | The  `transaction` object contains information about the specific transaction.                                                                                                                                                                          |
+
+
+{:.code-header}
+**Response**
+```http
+GET /psp/{{ instrument }}/payments/{{ page.payment_id }}/{{ plural }} HTTP/1.1
+Host: {{ page.api_host }}
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+```
+
+{:.code-header}
+**Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+{
+    "payment": "/psp/swish/payments/{{ page.payment_id }}",
+    "sale": {
+        "date": "23.10.2017 08:39:37 +00:00",
+        "id": "/psp/swish/payments/{{ page.payment_id }}/sales/6bf31479-623f-418a-d69e-08d519f19722",
+        "transaction": {
+            "id": "6bf31479-623f-418a-d69e-08d519f19722",
+            "created": "2017-10-23T08:39:35.6478733Z",
+            "updated": "2017-10-23T08:39:37.3788733Z",
+            "type": "Sale",
+            "state": "AwaitingActivity",
+            "number": 992309,
+            "amount": 1500,
+            "vatAmount": 0,
+            "description": "Test Purchase",
+            "payeeReference": "Postman1508747933",
+            "isOperational": true,
+            "operations": [
+                {
+                    "href": "swish://paymentrequest?token=LhXrK84MSpWU2RO09f8kUP-FHiBo-1pB",
+                    "method": "GET",
+                    "rel": "redirect-app-swish"
+                }
+            ]
+        }
+    }
+}
+```
+
+{:.table .table-striped}
+| Property                          | Type      | Required                                                                                                                                                                                                     |
+| :-------------------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `payment`                         | `string`  | The relative URI of the payment this list of {{ transaction }} transactions belong to.                                                                                                                       |
+| `sale`                    | `object`  | The current `sale` resource.                                                                                                                                                                         |
+| └➔&nbsp;`date`                      | `string`  | The date of the current `sale` resource.                                                                                                                                                     |
+| └➔&nbsp;`id`                      | `string`  | The relative URI of the current `sale` resource.                                                                                                                                                     |
+| └➔&nbsp;`transaction` | `object`  | The {{ transaction }} transaction object described in the `{{ transaction }}` resource below.                                                                                                                |
+| └─➔&nbsp;`id`                     | `string`  | The relative URI of the current `transaction` resource.                                                                                                                                                      |
+| └─➔&nbsp;`created`                | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
+| └─➔&nbsp;`updated`                | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
+| └─➔&nbsp;`type`                   | `string`  | Indicates the transaction type.                                                                                                                                                                              |
+| └─➔&nbsp;`state`                  | `string`  | `Initialized`, `awaitingActivity`, `Completed` or `Failed`. Indicates the state of the transaction.                                                                                                                              |
+| └─➔&nbsp;`number`                 | `string`  | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead. |
+| └─➔&nbsp;`amount`                 | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` = 100.00 NOK, `5000` = 50.00 SEK.                                                                                     |
+| └─➔&nbsp;`vatAmount`              | `integer` | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                           |
+| └─➔&nbsp;`description`            | `string`  | A human readable description of maximum 40 characters of the transaction.                                                                                                                                    |
+| └─➔&nbsp;`payeeReference`         | `string`  | A unique reference for the transaction.                                                                                                                                                                      |
+| └─➔&nbsp;`failedReason`           | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
+| └─➔&nbsp;`isOperational`          | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
+| └─➔&nbsp;`operations`             | `array`   | The array of operations that are possible to perform on the transaction in its current state.                                                                                                                |
+
 
 {% include iterator.html prev_href="introduction" prev_title="Back: Introduction"
 next_href="redirect" next_title="Next: Redirect" %}
