@@ -84,14 +84,14 @@ sequenceDiagram
   end
   SwedbankPay-->>Browser: Redirect to merchant (If Redirect scenario)
   activate Browser
-  
+
   Browser-->>-Merchant: Redirect
   activate Merchant
   Merchant->>-SwedbankPay: GET <Swish payment>
   activate SwedbankPay
   SwedbankPay-->>-Merchant: Payment response
   activate Merchant
-  Merchant-->>-Browser: Payment Status  
+  Merchant-->>-Browser: Payment Status
 ```
 
 ## Operations
@@ -115,7 +115,7 @@ of the transaction." %}
 ### API Requests
 
 All valid options when posting in a payment with operation equal to `Purchase`.
-The `purchase` example shown below.
+The `Purchase` example shown below.
 
 {:.code-header}
 **Request**
@@ -163,9 +163,10 @@ Content-Type: application/json
         }
     },
     "swish": {
-        "enableEcomOnly": false,
+        "enableEcomOnly": false{% comment %},
         "paymentRestrictedToAgeLimit": 18,
         "paymentRestrictedToSocialSecurityNumber": "{{ page.consumer_ssn_se }}"
+        {% endcomment %}
     }
 }
 ```
@@ -174,7 +175,7 @@ Content-Type: application/json
 | Required | Property                                           | Type          | Description                                                                                                                                                                                                                                                                                        |
 | :------: | :------------------------------------------------- | :------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |  ✔︎︎︎︎︎  | `payment`                                          | `object`      | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                              |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`operation`                                | `string`      | The operation that the `payment` is supposed to perform. The [`purchase`][purchase] operation is used in our example.                                                                                                                                                                              |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`operation`                                | `string`      | The operation that the `payment` is supposed to perform. The [`Purchase`][purchase] operation is used in our example.                                                                                                                                                                              |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`intent`                                   | `string`      | `Sale`.                                                                                                                                                                                                                                                                                            |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`currency`                                 | `string`      | `SEK`.                                                                                                                                                                                                                                                                                             |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`prices`                                   | `object`      | The `prices` array lists the prices related to a specific payment.                                                                                                                                                                                                                                 |
@@ -202,8 +203,10 @@ Content-Type: application/json
 |          | └─➔&nbsp;`msisdn`                                  | `string`      | Number will be prefilled on payment page, if valid. The mobile number must have a country code prefix and be 8 to 15 digits in length.                                                                                                                                                             |
 |          | └➔&nbsp;`swish`                                    | `object`      | An object that holds different scenarios for Swish payments.                                                                                                                                                                                                                                       |
 |          | └─➔&nbsp;`ecomOnlyEnabled`                         | `boolean`     | `true` if to only enable Swish on browser based transactions.; otherwise `false` to also enable Swish transactions via in-app payments.                                                                                                                                                            |
+{% comment %}
 |          | └─➔&nbsp;`paymentRestrictedToAgeLimit`             | `integer`     | Positive number that sets the required age  needed to fulfill the payment. To use this feature it has to be configured in the contract.                                                                                                                                                            |
 |          | └─➔&nbsp;`paymentRestrictedToSocialSecurityNumber` | `string`      | When provided, the payment will be restricted to a specific social security number. Format: yyyyMMddxxxx. To use this feature it has to be configured in the contract.                                                                                                                             |
+{% endcomment %}
 
 {:.code-header}
 **Response**

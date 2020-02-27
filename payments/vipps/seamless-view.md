@@ -139,41 +139,40 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
-   "payment": {
-       "operation": "Purchase",
-       "intent": "Authorization",
-       "currency": "NOK",
-       "prices": [
+    "payment": {
+        "operation": "Purchase",
+        "intent": "Authorization",
+        "currency": "NOK",
+        "prices": [
             {
-               "type": "Vipps",
-               "amount": 1500,
-               "vatAmount": 0
+                "type": "Vipps",
+                "amount": 1500,
+                "vatAmount": 0
             }
         ],
-       "description": "Vipps Test",
-       "payerReference": "ABtimestamp",
-       "userAgent": "Mozilla/5.0",
-       "language": "nb-NO",
-       "urls": {
-           "hostUrls": ["https://example.com", "https://example.net"],
-           "completeUrl": "http://example.com/payment-completed",
-           "cancelUrl": "http://example.com/payment-canceled",
-           "paymentUrl": "http://example.com/perform-payment",
-           "callbackUrl": "http://example.com/payment-callback",
-           "logoUrl": "https://example.com/path/to/logo.png",
-           "termsOfServiceUrl": "https://example.com/terms.pdf"
-
+        "description": "Vipps Test",
+        "payerReference": "ABtimestamp",
+        "userAgent": "Mozilla/5.0",
+        "language": "nb-NO",
+        "urls": {
+            "hostUrls": [ "https://example.com", "https://example.net" ],
+            "completeUrl": "http://example.com/payment-completed",
+            "cancelUrl": "http://example.com/payment-canceled",
+            "paymentUrl": "http://example.com/perform-payment",
+            "callbackUrl": "http://example.com/payment-callback",
+            "logoUrl": "https://example.com/path/to/logo.png",
+            "termsOfServiceUrl": "https://example.com/terms.pdf"
         },
-       "payeeInfo": {
-           "payeeId": "{{ page.merchant_id }}"
-           "payeeReference": "payeeReference",
-           "payeeName": "Merchant1",
-           "productCategory": "A123",
-           "orderReference": "or-12456",
-           "subsite": "MySubsite"
-            },
-       "prefillInfo": {
-        "msisdn": "+4798765432"
+        "payeeInfo": {
+            "payeeId": "{{ page.merchant_id }}",
+            "payeeReference": "payeeReference",
+            "payeeName": "Merchant1",
+            "productCategory": "A123",
+            "orderReference": "or-12456",
+            "subsite": "MySubsite"
+        },
+        "prefillInfo": {
+            "msisdn": "+4798765432"
         }
     }
 }
@@ -183,7 +182,7 @@ Content-Type: application/json
 | Required | Property                          | Type          | Description                                                                                                                                                                                                                                                                                        |
 | :------: | :-------------------------------- | :------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |  ✔︎︎︎︎︎  | `payment`                         | `object`      | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                              |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`operation`               | `string`      | The [`purchase`][purchase] operation is used in our example. Take a look at the [create `payment` section][create-payment] for a full example of the [Purchase][purchase] `operation`.                                                                                                             |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`operation`               | `string`      | The [`Purchase`][purchase] operation is used in our example. Take a look at the [create `payment` section][create-payment] for a full example of the [Purchase][purchase] `operation`.                                                                                                             |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`intent`                  | `string`      | `Authorization`. Reserves the amount, and is followed by a [cancellation][cancellations] or [capture][captures] of funds.<br> <br> `AutoCapture`. A one phase option that enable capture of funds automatically after authorization.                                                               |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`currency`                | `string`      | NOK                                                                                                                                                                                                                                                                                                |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`prices`                  | `object`      | The `prices` resource lists the prices related to a specific payment.                                                                                                                                                                                                                              |

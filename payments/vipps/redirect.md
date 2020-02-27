@@ -117,8 +117,8 @@ information](/payments/vipps/other-features#callback)." %}
 ## Operations
 
 The API requests are displayed in the [purchase flow](#purchase-flow).
-You can create a Vipps payment with the `operation` value set to `purchase`. See
-the `purchase` example below.
+You can create a Vipps payment with the `operation` value set to `Purchase`. See
+the `Purchase` example below.
 
 ### Purchase
 
@@ -151,7 +151,7 @@ Content-Type: application/json
         "pageStripdown": true,
         "language": "nb-NO",
         "urls": {
-            "hostUrls": "https://example.net",
+            "hostUrls": [ "https://example.net" ],
             "completeUrl": "https://example.net/payment-completed",
             "cancelUrl": "https://example.net/payment-canceled",
             "callbackUrl": "https://example.net/payment-callback",
@@ -160,7 +160,7 @@ Content-Type: application/json
             "paymentUrl": "https://example.net/payment-cart"
         },
         "payeeInfo": {
-            "payeeId": "{{ page.merchant_id }}"
+            "payeeId": "{{ page.merchant_id }}",
             "payeeReference": "CD1234",
             "payeeName": "Merchant1",
             "productCategory": "A123"
@@ -248,7 +248,7 @@ Content-Type: application/json
 | Required | Property                   | Type          | Description                                                                                                                                                                                                                                                                                        |
 | :------: | :------------------------- | :------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |  ✔︎︎︎︎︎  | `payment`                  | `object`      | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                              |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`operation`        | `string`      | The operation that the `payment` is supposed to perform. The [`purchase`][purchase] operation is used in our example.                                                                                                                                                                              |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`operation`        | `string`      | The operation that the `payment` is supposed to perform. The [`Purchase`][purchase] operation is used in our example.                                                                                                                                                                              |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`intent`           | `string`      | `Authorization`. Reserves the amount, and is followed by a [cancellation][cancel] or [capture][capture] of funds.<br> <br>                                                                                                                                                                         |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`currency`         | `string`      | NOK                                                                                                                                                                                                                                                                                                |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`prices`           | `object`      | The `prices` resource lists the prices related to a specific payment.                                                                                                                                                                                                                              |

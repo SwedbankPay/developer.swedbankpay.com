@@ -10,6 +10,8 @@ sidebar:
       title: Checkin
     - url: /checkout/payment-menu
       title: Payment Menu
+    - urL: /checkout/capture
+      title: Capture 
     - url: /checkout/after-payment
       title: After Payment
     - url: /checkout/summary
@@ -916,7 +918,7 @@ object:
 ```js
 {
   "actionType": "OnConsumerIdentified",
-  "consumerProfileRef": "<consumerProfileRef>"
+  "consumerProfileRef": "{{ page.payment_token }}"
 }
 ```
 
@@ -931,7 +933,7 @@ updated.
 ```js
 {
   "actionType": "OnBillingDetailsAvailable",
-  "url": "/psp/consumers/<ConsumerProfileRef>/shipping-details"
+  "url": "/psp/consumers/{{ page.payment_token }}/shipping-details"
 }
 ```
 
@@ -945,7 +947,7 @@ Triggered when a consumer has been identified
 ```js
 {
   "actionType": "OnBillingDetailsAvailable",
-  "url":"/psp/consumers/<ConsumerProfileRef>/billing-details"
+  "url":"/psp/consumers/{{ page.payment_token }}/billing-details"
 }
 ```
 

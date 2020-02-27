@@ -1,8 +1,8 @@
 ---
-title: Swedbank Pay MobilePay Payments – Other Features
+title: Swedbank Pay MobilePay Online Payments – Other Features
 sidebar:
   navigation:
-  - title: MobilePay Payments
+  - title: MobilePay Online Payments
     items:
     - url: /payments/mobile-pay
       title: Introduction
@@ -18,7 +18,7 @@ sidebar:
 
 ### Create Payment
 
-To create a MobilePay payment, you perform an HTTP `POST` against the
+To create a MobilePay Online payment, you perform an HTTP `POST` against the
 `/psp/mobilepay/payments` resource. Please read the [general
 information][general-http-info] on how to compose a valid HTTP request before
 proceeding.
@@ -166,33 +166,29 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property                                     | Data type    | Description                                                                                                                                                                                      |
-| :------------------------------------------- | :----------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `payment`                                    | `object`     | The payment object contains information about the retrieved payment.                                                                                                                             |
-| └➔&nbsp;`id`                                 | `string`     | The relative URI to the payment.                                                                                                                                                                 |
-| └➔&nbsp;`number`                             | `integer`    | The payment `number`, useful when there's need to reference the payment in human communication. Not usable for programmatic identification of the payment, for that `id` should be used instead. |
-| └➔&nbsp;`created`                            | `string`     | The ISO-8601 date of when the payment was created.                                                                                                                                               |
-| └➔&nbsp;`updated`                            | `string`     | The ISO-8601 date of when the payment was updated.                                                                                                                                               |
-| └➔&nbsp;`instrument`                         | `string`     | The instrument used                                                                                                                                                                              |
-| └➔&nbsp;`operation`                          | `string`     | Purchase                                                                                                                                                                                         |
-| └➔&nbsp;`intent`                             | `string`     | The intent sent in on request                                                                                                                                                                    |
-| └➔&nbsp;`state`                              | `string`     | `Ready`, `Pending`, `Failed` or `Aborted`. Indicates the state of the payment. This field is only for status display purposes.                                                                   |
-| └➔&nbsp;`currency`                           | `string`     | The currency used                                                                                                                                                                                |
-| └➔&nbsp;`prices.amount`                      | `integer`    | Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`.                                                                     |
-| └➔&nbsp;`prices.remainingCaptureAmount`      | `integer`    | The amount available for capture. Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`.                                   |
-| └➔&nbsp;`prices.remainingCancellationAmount` | `integer`    | The amount available for cancellation. Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`.                              |
-| └➔&nbsp;`prices.remainingReversalAmount`     | `integer`    | The amount available for reversal. Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`.                                  |
-| └➔&nbsp;`description`                        | `string(40)` | A textual description of maximum 40 characters of the purchase.                                                                                                                                  |
-| └➔&nbsp;`payerReference`                     | `string`     | The reference to the payer (consumer/end-user) from the merchant system, like mobile number, customer number etc.                                                                                |
-| └➔&nbsp;`initiatingSystemUserAgent`          | `string`     | The system user agent used                                                                                                                                                                       |
-| └➔&nbsp;`userAgent`                          | `string`     | The [user agent][user-agent] string of the consumer's browser.                                                                                                                                   |
-| └➔&nbsp;`language`                           | `string`     | `nb-NO`, `sv-SE` or `en-US`                                                                                                                                                                      |
-| └➔&nbsp;`urls`                               | `string`     | The URI to the `urls` resource where all URIs related to the payment can be retrieved.                                                                                                           |
-| └➔&nbsp;`payeeInfo`                          | `string`     | The URI to the `payeeinfo` resource where the information about the payee of the payment can be retrieved.                                                                                       |
+| Property                            | Data type    | Description                                                                                                                                                                                      |
+| :---------------------------------- | :----------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `payment`                           | `object`     | The payment object contains information about the retrieved payment.                                                                                                                             |
+| └➔&nbsp;`id`                        | `string`     | The relative URI to the payment.                                                                                                                                                                 |
+| └➔&nbsp;`number`                    | `integer`    | The payment `number`, useful when there's need to reference the payment in human communication. Not usable for programmatic identification of the payment, for that `id` should be used instead. |
+| └➔&nbsp;`created`                   | `string`     | The ISO-8601 date of when the payment was created.                                                                                                                                               |
+| └➔&nbsp;`updated`                   | `string`     | The ISO-8601 date of when the payment was updated.                                                                                                                                               |
+| └➔&nbsp;`instrument`                | `string`     | The instrument used                                                                                                                                                                              |
+| └➔&nbsp;`operation`                 | `string`     | Purchase                                                                                                                                                                                         |
+| └➔&nbsp;`intent`                    | `string`     | The intent sent in on request                                                                                                                                                                    |
+| └➔&nbsp;`state`                     | `string`     | `Ready`, `Pending`, `Failed` or `Aborted`. Indicates the state of the payment. This field is only for status display purposes.                                                                   |
+| └➔&nbsp;`currency`                  | `string`     | The currency used                                                                                                                                                                                |
+| └➔&nbsp;`description`               | `string(40)` | A textual description of maximum 40 characters of the purchase.                                                                                                                                  |
+| └➔&nbsp;`payerReference`            | `string`     | The reference to the payer (consumer/end-user) from the merchant system, like mobile number, customer number etc.                                                                                |
+| └➔&nbsp;`initiatingSystemUserAgent` | `string`     | The system user agent used                                                                                                                                                                       |
+| └➔&nbsp;`userAgent`                 | `string`     | The [user agent][user-agent] string of the consumer's browser.                                                                                                                                   |
+| └➔&nbsp;`language`                  | `string`     | `nb-NO`, `sv-SE` or `en-US`                                                                                                                                                                      |
+| └➔&nbsp;`urls`                      | `string`     | The URI to the `urls` resource where all URIs related to the payment can be retrieved.                                                                                                           |
+| └➔&nbsp;`payeeInfo`                 | `string`     | The URI to the `payeeinfo` resource where the information about the payee of the payment can be retrieved.                                                                                       |
 
 ## Purchase
 
-Posting a payment (operation `purchase`) returns the options of aborting the
+Posting a payment (operation `Purchase`) returns the options of aborting the
 payment altogether or creating an authorization transaction through the
 `redirect-authorization` hyperlink.
 Use the expand request parameter to get a response that includes one or more
@@ -267,14 +263,14 @@ request for the given operation.
 | :----------------------- | :--------------------------------------------------------------------------- |
 | `update-payment-abort`   | [Aborts][abort] the payment before any financial transactions are performed. |
 | `create-authorization`   | Create an [authorization][authorization-transaction] transaction.            |
-| `redirect-authorization` | Used to redirect the consumer to the MobilePay authorization UI.             |
+| `redirect-authorization` | Used to redirect the consumer to the MobilePay Online authorization UI.      |
 | `create-capture`         | Creates a [capture][capture-transaction] transaction.                        |
 | `create-cancellation`    | Creates a [cancellation][cancellation-transaction] transaction.              |
 | `create-reversal`        | Creates a [reversal][reversal-transaction] transaction.                      |
 
-## MobilePay transactions
+## MobilePay Online transactions
 
-All MobilePay specific transactions are described below.
+All MobilePay Online specific transactions are described below.
 
 ## Authorizations
 
@@ -425,7 +421,7 @@ Content-Type: application/json
 | ✔︎︎︎︎︎   | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the capture transaction. See [`payeeReference`][payee-reference] for details.                      |
 
 The `capture` resource contains information about the capture transaction made
-against a mobilepay payment.
+against a MobilePay Online payment.
 You can return a specific capture transaction by adding the transaction id to
 the `GET` request.
 
@@ -537,7 +533,7 @@ authorization amount.
 
 ```mermaid
 sequenceDiagram
-  Merchant->>PayEx: POST <creditcard capture>
+  Merchant->>PayEx: POST <mobilepay capture>
   Activate Merchant
   Activate PayEx
   PayEx-->>Merchant: transaction resource
@@ -553,7 +549,7 @@ between the captured amount and the authorized amount.
 
 ```mermaid
 sequenceDiagram
-  Merchant->>PayEx: POST <creditcard cancellation>
+  Merchant->>PayEx: POST <mobilepay cancellation>
   Activate Merchant
   Activate PayEx
   PayEx-->>Merchant: transaction resource
@@ -568,7 +564,7 @@ not yet reversed.
 
 ```mermaid
 sequenceDiagram
-  Merchant->>PayEx: POST <creditcard reversal>
+  Merchant->>PayEx: POST <mobilepay reversal>
   Activate Merchant
   Activate PayEx
   PayEx-->>Merchant: transaction resource

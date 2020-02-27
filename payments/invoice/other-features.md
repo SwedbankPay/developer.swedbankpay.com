@@ -409,7 +409,7 @@ Content-Type: application/json
         "activity": "FinancingConsumer"
     },
     "consumer": {
-        "socialSecurityNumber": "26026708248",
+        "socialSecurityNumber": "{{ page.consumer_ssn_no }}",
         "customerNumber": "123456",
         "email": "olivia.nyhuus@payex.com",
         "msisdn": "+4798765432",

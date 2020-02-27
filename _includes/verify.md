@@ -53,48 +53,53 @@ The API requests are displayed in the [Verification flow]. The options you can
 choose from when creating a payment with key operation set to Value Verify are
 listed below.
 
+Please note that not including `paymentUrl` in the request will generate a
+`redirect-verification` operation in the response, meant to be used in the
+Redirect flow. Adding `paymentUrl` input will generate the response meant for
+Seamless View, which does not include the `redirect-verification`. The request
+below is the Redirect option.
+
 {:.code-header}
 **Request**
 
 ```http
 POST /psp/creditcard/payments HTTP/1.1
-Host: {{ page.apiHost }}
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
-  "payment": {
-    "operation": "Verify",
-    "currency": "NOK",
-    "description": "Test Verification",
-    "payerReference": "AB1234",
-    "userAgent": "Mozilla/5.0...",
-    "language": "nb-NO",
-    "generatePaymentToken": true,
-    "generateRecurrenceToken": false,
-    "urls": {
-      "hostUrls": ["https://example.com"],
-      "completeUrl": "https://example.com/payment-completed",
-      "cancelUrl": "https://example.com/payment-canceled",
-      "paymentUrl": "http://example.com/perform-payment",
-      "logoUrl": "https://example.com/payment-logo.png",
-      "termsOfServiceUrl": "https://example.com/payment-terms.html"
+    "payment": {
+        "operation": "Verify",
+        "currency": "NOK",
+        "description": "Test Verification",
+        "payerReference": "AB1234",
+        "userAgent": "Mozilla/5.0...",
+        "language": "nb-NO",
+        "generatePaymentToken": true,
+        "generateRecurrenceToken": false,
+        "urls": {
+            "hostUrls": ["https://example.com", "https://example.net"],
+            "completeUrl": "https://example.com/payment-completed",
+            "cancelUrl": "https://example.com/payment-canceled",
+            "logoUrl": "https://example.com/payment-logo.png",
+            "termsOfServiceUrl": "https://example.com/payment-terms.html"
+        },
+        "payeeInfo": {
+            "payeeId": "{{ page.merchant_id }}",
+            "payeeReference": "CD1234",
+            "payeeName": "Merchant1",
+            "productCategory": "A123",
+            "orderReference": "or-12456",
+            "subsite": "MySubsite"
+        }
     },
-    "payeeInfo": {
-      "payeeId": "{{ page.merchantId }}"
-      "payeeReference": "CD1234",
-      "payeeName": "Merchant1",
-      "productCategory": "A123",
-      "orderReference": "or-12456",
-      "subsite": "MySubsite"
+    "creditCard": {
+        "rejectCreditCards": false,
+        "rejectDebitCards": false,
+        "rejectConsumerCards": false,
+        "rejectCorporateCards": false
     }
-  },
-  "creditCard": {
-    "rejectCreditCards": false,
-    "rejectDebitCards": false,
-    "rejectConsumerCards": false,
-    "rejectCorporateCards": false
-  }
 }
 ```
 
@@ -107,7 +112,7 @@ Content-Type: application/json
 
 {
     "payment": {
-        "id": "/psp/creditcard/payments/{{ page.paymentId }}",
+        "id": "/psp/creditcard/payments/{{ page.payment_id }}",
         "number": 1234567890,
         "created": "2016-09-14T13:21:29.3182115Z",
         "updated": "2016-09-14T13:21:57.6627579Z",
@@ -120,39 +125,37 @@ Content-Type: application/json
         "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
         "userAgent": "Mozilla/5.0",
         "language": "nb-NO",
-        "transactions": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/transactions" },
-        "verifications": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/verifications" },
-        "urls" : { "id": "/psp/creditcard/payments/{{ page.paymentId }}/urls" },
-        "payeeInfo" : { "id": "/psp/creditcard/payments/{{ page.paymentId }}/payeeInfo" },
-        "settings": { "id": "/psp/creditcard/payments/{{ page.paymentId }}/settings" }
+        "transactions": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/transactions" },
+        "verifications": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/verifications" },
+        "urls" : { "id": "/psp/creditcard/payments/{{ page.payment_id }}/urls" },
+        "payeeInfo" : { "id": "/psp/creditcard/payments/{{ page.payment_id }}/payeeInfo" },
+        "settings": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/settings" }
     },
     "operations": [
         {
-            "href": "{{ page.apiUrl }}/psp/creditcard/payments/{{ page.paymentId }}",
+            "href": "{{ page.api_url }}/psp/creditcard/payments/{{ page.payment_id }}",
             "rel": "update-payment-abort",
             "method": "PATCH",
             "contentType": "application/json"
         },
         {
-            "href": "{{ page.frontEndUrl }}/creditcard/payments/verification/123456123412341234123456789012",
+            "href": "{{ page.front_end_url }}/creditcard/payments/verification/{{ page.payment_token }}",
             "rel": "redirect-verification",
             "method": "GET",
             "contentType": "application/json"
         },
         {
             "method": "GET",
-            "href": "https://ecom.dev.payex.com/creditcard/core/scripts/client/px.creditcard.client.js?token=123456123412341234123456789012",
+            "href": "{{ page.front_end_url }}/creditcard/core/scripts/client/px.creditcard.client.js?token={{ page.payment_token }}",
             "rel": "view-verification",
             "contentType": "application/javascript"
         },
-
         {
             "method": "POST",
-            "href": "https://ecom.dev.payex.com/psp/creditcard/confined/payments/{paymentId:guid}/verifications",
+            "href": "{{ page.front_end_url }}/psp/creditcard/confined/payments/{{ page.payment_id }}/verifications",
             "rel": "direct-verification",
             "contentType": "application/json"
         }
-
     ]
 }
 ```
