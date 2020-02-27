@@ -32,6 +32,17 @@ this very documentation, not to a version of any APIs described by it." %}
 
 ## February 2020
 
+### Version 1.7.3
+
+* Expanded information about the field `restrictedToInstruments`.
+* Added information about the field `receiptReference`.
+* Added information about [direct integration in Credit card][card-direct].
+* Added and fixed several missing headings in template files.
+* Expanded information about `verify`.
+* Created new page for [Checkout Capture][checkout-capture].
+* Mobile Pay Online was previously only refered to as Mobile Pay, this has been
+  corrected.
+
 ### Version 1.7.2
 
 * Removed several duplicate headers in other-features pages.
@@ -258,10 +269,12 @@ creation of the payment or payment order needs to be performed again. With
 paymentUrl in place, the retry process becomes much more convenient for both the
 integration and the payer.
 
+[card-direct]: /payments/card/direct
 [card-payment-url]: /payments/card/other-features#payment-url
 [card-purchase]: /payments/card/redirect#purchase
 [card-unscheduled-purchase]: /payments/card/other-features#unscheduled-purchase
 [card]: /payments/card
+[checkout-capture]: /checkout/capture
 [checkout-checkin-front-end]: /checkout/checkin#checkin-front-end
 [checkout-payment-menu-frontend]: /checkout/payment-menu#payment-menu-front-end
 [checkout-payment-order-purchase]: /checkout/payment-menu#request
