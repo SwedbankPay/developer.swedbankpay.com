@@ -548,6 +548,8 @@ sequenceDiagram
   SwedbankPay-->>-Merchant: transaction resource
 ```
 
+{% include abort-reference.md instrument="creditcard" %}
+
 ## Remove payment token
 
 If you, for any reason, need to delete a paymentToken you use the

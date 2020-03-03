@@ -1,4 +1,5 @@
 {% assign instrument = include.instrument | default: "selecting the payment instrument" %}
+{% assign instrument = include.instrument | default: "creditcard" %}
 
 ## Abort
 
