@@ -129,7 +129,8 @@ Content-Type: application/json
 
 {% include payment-order-reversal.md %}
 
-* Note that all of the operations `Cancel`, `Capture` and `Reversal` must be implemented.
+{% include alert.html type="neutral" icon="info" body=" Note that all of the
+operations `Cancel`, `Capture` and `Reversal` must be implemented." %}
 
 {% include iterator.html prev_href="capture"
                          prev_title="Back: Capture"

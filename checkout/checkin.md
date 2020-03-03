@@ -167,8 +167,9 @@ operation is meant to be embedded in a `<script>` element in an HTML document.
 </html>
 ```
 
-The Checkin and Payment Menu components (the two `<iframe>` elements) must be
-separate (one must not replace the other).
+{% include alert.html type="neutral" icon="info" body="The Checkin and Payment
+Menu components (the two `<iframe>` elements) must be separate
+(one must not replace the other)." %}
 
 In the HTML, you only need to add two `<div>` elements to place the
 check-in and payment menu inside of. The JavaScript will handle the rest when

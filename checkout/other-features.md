@@ -428,8 +428,6 @@ request towards the `paymentorders` resource,
 After updating the Payment Order, remember to call `.refresh()` on the Payment
 Menu in JavaScript." %}
 
-### Capture
-
 {% include payment-order-capture.md %}
 
 ### Abort
@@ -923,9 +921,10 @@ object:
 ### `onShippingDetailsAvailable`
 
 Triggered when a consumer has been identified or shipping address has been
-updated. The Checkin must be completed before any shipping details are
-finalized, as the Checkin component provides shipping address via the
-`onShippingDetailsAvailable` event.
+updated.
+{% include alert.html type="neutral" icon="info" body= "The Checkin must be
+completed before any shipping details are finalized, as the Checkin component
+provides shipping address via the `onShippingDetailsAvailable` event." %}
 
 {:.code-header}
 **`onShippingDetailsAvailable` event object**
@@ -1289,8 +1288,6 @@ although that might be possible in the future.
 | `configurationerror` | `500`  | A error relating to configuration issues.                                                                                                          |
 
 {% include expand-parameter.md %}
-
-## Payee Info
 
 {% include payee-info.md payment_instrument="invoice" %}
 
