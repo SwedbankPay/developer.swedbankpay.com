@@ -194,7 +194,7 @@ of the problem.
 ## Swish API errors
 
 All Swish error types will have the following URI in front of type:
-`{{ page.api_url }}/psp/swish/payments/<errortype>`
+`{{ page.api_url }}/psp/errordetail/<errortype>`
 
 ### `inputerror`
 
@@ -212,7 +212,7 @@ Content-Type: application/json
 
 {
     "sessionId": "570ad610-3bd5-43d2-a270-ca1510562972",
-    "type": "https://api.payex.com/psp/swish/payments/inputerror",
+    "type": "https://api.payex.com/psp/errordetail/inputerror",
     "title": "Input error",
     "status": 400,
     "instance": "https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales",
@@ -244,7 +244,7 @@ Content-Type: application/json
 
 {
     "sessionId": "570ad610-3bd5-43d2-a270-ca1510562972",
-    "type": "https://api.payex.com/psp/swish/payments/configerror",
+    "type": "https://api.payex.com/psp/errordetail/configerror",
     "title": "Config error",
     "status": 403,
     "instance": "https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales",
@@ -271,7 +271,7 @@ Content-Type: application/json
 
 {
     "sessionId": "570ad610-3bd5-43d2-a270-ca1510562972",
-    "type": "https://api.payex.com/psp/swish/payments/swishdeclined",
+    "type": "https://api.payex.com/psp/errordetail/swishdeclined",
     "title": "Swish Declined",
     "status": 403,
     "instance": "https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales",
@@ -295,7 +295,7 @@ Content-Type: application/json
 
 {
     "sessionId": "570ad610-3bd5-43d2-a270-ca1510562972",
-    "type": "https://api.payex.com/psp/swish/payments/swisherror",
+    "type": "https://api.payex.com/psp/errordetail/swisherror",
     "title": "Error in Swish",
     "status": 502,
     "instance": "https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales",
@@ -318,7 +318,7 @@ Content-Type: application/json
 
 {
     "sessionId": "570ad610-3bd5-43d2-a270-ca1510562972",
-    "type": "https://api.payex.com/psp/swish/payments/swishalreadyinuse",
+    "type": "https://api.payex.com/psp/errordetail/swishalreadyinuse",
     "title": "Error in Swish",
     "status": 403,
     "instance": "https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales",
@@ -341,7 +341,7 @@ Content-Type: application/json
 
 {
     "sessionId": "570ad610-3bd5-43d2-a270-ca1510562972",
-    "type": "https://api.payex.com/psp/swish/payments/swishtimeout",
+    "type": "https://api.payex.com/psp/errordetail/swishtimeout",
     "title": "Swish Timed Out",
     "status": 403,
     "instance": "https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales",
@@ -364,7 +364,7 @@ Content-Type: application/json
 
 {
     "sessionId": "570ad610-3bd5-43d2-a270-ca1510562972",
-    "type": "https://api.payex.com/psp/swish/payments/bankidcancelled",
+    "type": "https://api.payex.com/psp/errordetail/bankidcancelled",
     "title": "BankID Authorization Cancelled",
     "status": 409,
     "instance": "https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales",
@@ -387,7 +387,7 @@ Content-Type: application/json
 
 {
     "sessionId": "570ad610-3bd5-43d2-a270-ca1510562972",
-    "type": "https://api.payex.com/psp/swish/payments/bankidalreadyinuse",
+    "type": "https://api.payex.com/psp/errordetail/bankidalreadyinuse",
     "title": "BankID Already in Use",
     "status": 409,
     "instance": "https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales",
@@ -410,7 +410,7 @@ Content-Type: application/json
 
 {
     "sessionId": "570ad610-3bd5-43d2-a270-ca1510562972",
-    "type": "https://api.payex.com/psp/swish/payments/bankiderror",
+    "type": "https://api.payex.com/psp/errordetail/bankiderror",
     "title": "BankID error",
     "status": 502,
     "instance": "https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales",
@@ -433,7 +433,7 @@ Content-Type: application/json
 
 {
     "sessionId": "570ad610-3bd5-43d2-a270-ca1510562972",
-    "type": "https://api.payex.com/psp/swish/payments/socialsecuritynumbermismatch",
+    "type": "https://api.payex.com/psp/errordetail/socialsecuritynumbermismatch",
     "title": "Social Security Number Mismatch",
     "status": 403,
     "instance": "https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales",
@@ -456,7 +456,7 @@ Content-Type: application/json
 
 {
     "sessionId": "570ad610-3bd5-43d2-a270-ca1510562972",
-    "type": "https://api.payex.com/psp/swish/payments/paymentagelimitnotmet",
+    "type": "https://api.payex.com/psp/errordetail/paymentagelimitnotmet",
     "title": "Payment Age Limit Not Met",
     "status": 403,
     "instance": "https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales",
@@ -479,7 +479,7 @@ Content-Type: application/json
 
 {
     "sessionId": "570ad610-3bd5-43d2-a270-ca1510562972",
-    "type": "https://api.payex.com/psp/swish/payments/usercancelled",
+    "type": "https://api.payex.com/psp/errordetail/usercancelled",
     "title": "User Cancelled",
     "status": 403,
     "instance": "https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales",
@@ -498,7 +498,7 @@ Content-Type: application/json
 
 {
     "sessionId": "570ad610-3bd5-43d2-a270-ca1510562972",
-    "type": "https://api.payex.com/psp/swish/payments/systemerror",
+    "type": "https://api.payex.com/psp/errordetail/systemerror",
     "title": "Error in System",
     "status": 500,
     "instance": "https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales",
