@@ -158,18 +158,27 @@ An example of an expanded `POST` request is available in the
 
 {% include card-purchase.md %}
 
-* You need to redirect the payer's browser to that specified URL in the
-  `redirect-authorization` operation so that she can enter the card
-  details in a secure Swedbank Pay environment.
-* Swedbank Pay will handle 3-D Secure authentication when this is required.
-* Swedbank Pay will redirect the payer's browser to - one of two specified URLs,
-  depending on whether the payment session is followed through completely or
-  cancelled beforehand. Please note that both a successful and rejected payment
-  reach completion, in contrast to a cancelled payment.
-* When you detect that the payer reach your `completeUrl`, you need to do a
-  `GET` request to receive the state of the transaction, containing the
-  `paymentID` generated in the first step, to receive the state of the
-  transaction.
+When you receive the redirect url from Swedbank Pay, you redirect the
+payer there to complete the payment. This ensures that card details and other
+personal information is entered in a secure environment. Swedbank Pay handles
+all authentication during this phase.
+
+After an attempted payment, Swedbank Pay will redirect the Payer to one of two
+specified URLs: `completeUrl` or `cancelUrl`. 
+
+If the payer cancel at any point during payment, he or she will reach the
+`cancelUrl`. If the payment session is followed through completely, the payer
+will reach the `completeUrl`. 
+
+Important: Both successful and rejected payments are labeled as `completed`.
+This means that when you reach this point, you need to make sure that the
+payment has gone through before you let the payer know that the payment was
+successful. You do this by doing a GET request. This request has to include the
+payment Id generated from the initial POST request, so that you can receive the
+state of the transaction.
+
+If you have chosen Seamless View, the `completeUrl` and `cancelUrl` will display
+directly inside the iframe.
 
 ### General
 
