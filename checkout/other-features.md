@@ -1308,9 +1308,8 @@ available in the API. Flags that can be turned to `true` must be kept
 
 {% include alert.html type="neutral" icon="info" body= "Your integration must be
 resilient to change. Properties, operations, headers, etc., that aren't
-understood in any response **must be ignored**. Failing due to a something
-occurring in a response that your implementation haven't seen before is a
-malfunction that must be fixed." %}
+understood in any response **must be ignored**. Don't expect a specific order of
+elements. When in doubt, please follow the [robustness principle](https://en.wikipedia.org/wiki/Robustness_principle)." %}
 
 {% include iterator.html prev_href="after-payment" prev_title="Back: After Payment" %}
 
