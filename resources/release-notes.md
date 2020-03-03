@@ -30,6 +30,17 @@ published on this page." %}
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
 
+## March 2020
+
+### Version 1.7.5
+
+* New page! Technical reference into has been moved from the front page
+  to [technical information][home-technical-information].
+* Front page got a slimmer look. :swimmer:
+* Abort reference is back in [credit card reference][credit-card-abort].
+* Swish error code reference got a face lift, check it out
+  [here][swish-api-errors] :candy:.
+
 ## February 2020
 
 ### Version 1.7.4
@@ -286,17 +297,20 @@ integration and the payer.
 [checkout-payment-orders]: /checkout/other-features#payment-orders
 [checkout-payment-url]: /checkout/other-features#payment-url
 [checkout]: /checkout
+[credit-card-abort]: /payments/card/after-payment#abort
 [credit]: /payments/credit
 [data-protection]: /resources/data-protection
 [direct-debit]: /payments/direct-debit
+[home-technical-information]: /home/technical-information
 [initiate-consumer-session]: /checkout/checkin#checkin-back-end
 [invoice]: /payments/invoice
 [mobile-pay]: /payments/mobile-pay
 [one-click]: /payments/card/other-features#one-click-payments
 [payment-orders]: /checkout/other-features#creating-a-payment-order
 [payments]: /payments
-[swish-direct]: /payments/swish/direct
+[swish-api-errors]: /payments/swish/other-features#swish-api-errors
 [swish-direct-mcom]: /payments/swish/direct#create-m-commerce-sale-transaction
+[swish-direct]: /payments/swish/direct
 [swish-other-features]: /payments/swish/other-features
 [swish-redirect]: /payments/swish/redirect
 [swish-seamless-view]: /payments/swish/seamless-view
