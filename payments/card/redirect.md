@@ -10,6 +10,8 @@ sidebar:
       title: Redirect
     - url: /payments/card/seamless-view
       title: Seamless View
+    - url: /payments/card/direct
+      title: Direct
     - url: /payments/card/after-payment
       title: After Payment
     - url: /payments/card/other-features
@@ -140,7 +142,7 @@ options:
 * [Payout][payout]
 * [Verify][verify]
 
-Our `payment` example uses the [`purchase`][purchase] value.
+Our `payment` example uses the [`Purchase`][purchase] value.
 
 ### Purchase
 
@@ -188,16 +190,16 @@ the card information.
 
 ## API Requests for Payments
 
-The API requests are displayed in the [purchase flow](#purchase-flow-mobile).
+The API requests are displayed in the [purchase flow][purchase].
 You can [create a card `payment`][create-payment] with following `operation`
 options:
 
-* [Purchase][purchase]
-* [Recur][recur]
-* [Payout][payout]
-* [Verify][verify]
+* [`Purchase`][purchase]
+* [`Recur`][recur]
+* [`Payout`][payout]
+* [`Verify`][verify]
 
-Our `payment` example below uses the [`purchase`][purchase] value.
+Our `payment` example below uses the [`Purchase`][purchase] value.
 
 ## Purchase flow mobile
 

@@ -1,7 +1,14 @@
 ### Create authorization transaction
 
-The `redirect-authorization` operation redirects the consumer to
-Swedbank Pay Payments where the payment is authorized.
+The `direct-authorization` operation creates an authorization transaction
+directly whilst the `redirect-authorization` operation redirects the consumer to
+a Swedbank Pay hosted payment page, where the payment is authorized by the
+consumer.
+
+{% include alert.html type="warning" icon="warning" header="PCI-DSS Complicance"
+body="In order to use the `direct-authorization` operation, you need to collect
+card data on your website, which means it must be [PCI-DSS
+Compliant](https://www.pcisecuritystandards.org/)." %}
 
 {:.code-header}
 **Request**
@@ -37,7 +44,7 @@ Content-Type: application/json
             "termsOfServiceUrl": "http://example.com/payment-terms.pdf",
         },
         "payeeInfo": {
-            "payeeId": "12345678-1234-1234-1234-123456789012",
+            "payeeId": "{{ page.merchant_id }}",
             "payeeReference": "CD1234",
             "payeeName": "Merchant",
             "productCategory": "A123"
@@ -55,7 +62,7 @@ Content-Type: application/json
 |          | └➔&nbsp;`cardVerificationCode` | `string`  | Card verification code (CVC/CVV/CVC2), usually printed on the back of the card. |
 |          | └➔&nbsp;`cardholderName`       | `string`  | Name of the card holder, usually printed on the face of the card.               |
 
-> Response
+**Response**
 
 The `authorization` resource contains information about an authorization
 transaction made towards a payment, as previously described.
