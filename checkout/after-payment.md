@@ -14,8 +14,6 @@ sidebar:
       title: Capture 
     - url: /checkout/after-payment
       title: After Payment
-    - url: /checkout/summary
-      title: Summary
     - url: /checkout/other-features
       title: Other Features
 ---
@@ -131,10 +129,13 @@ Content-Type: application/json
 
 {% include payment-order-reversal.md %}
 
-{% include iterator.html prev_href="payment-menu"
-                         prev_title="Back: Payment Menu"
-                         next_href="summary"
-                         next_title="Next: Summary" %}
+{% include alert.html type="neutral" icon="info" body=" Note that all of the
+operations `Cancel`, `Capture` and `Reversal` must be implemented." %}
+
+{% include iterator.html prev_href="capture"
+                         prev_title="Back: Capture"
+                         next_href="other-features"
+                         next_title="Next: Other Features" %}
 
 [https]: /#connection-and-protocol
 [msisdn]: https://en.wikipedia.org/wiki/MSISDN
