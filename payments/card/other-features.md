@@ -10,6 +10,8 @@ sidebar:
       title: Redirect
     - url: /payments/card/seamless-view
       title: Seamless View
+    - url: /payments/card/direct
+      title: Direct
     - url: /payments/card/after-payment
       title: After Payment
     - url: /payments/card/other-features
@@ -51,6 +53,8 @@ document is described in the following section.
 {% include callback-reference.md payment_instrument="creditcard" %}
 
 {% include payment-link.md %}
+
+{% include create-authorization-transaction.md %}
 
 {% include payee-info.md payment_instrument="creditcard" %}
 

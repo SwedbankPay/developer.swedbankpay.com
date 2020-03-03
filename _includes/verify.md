@@ -139,25 +139,23 @@ Content-Type: application/json
             "contentType": "application/json"
         },
         {
-            "href": "{{ page.front_end_url }}/creditcard/payments/verification/123456123412341234123456789012",
+            "href": "{{ page.front_end_url }}/creditcard/payments/verification/{{ page.payment_token }}",
             "rel": "redirect-verification",
             "method": "GET",
             "contentType": "application/json"
         },
         {
             "method": "GET",
-            "href": "https://ecom.dev.payex.com/creditcard/core/scripts/client/px.creditcard.client.js?token=123456123412341234123456789012",
+            "href": "{{ page.front_end_url }}/creditcard/core/scripts/client/px.creditcard.client.js?token={{ page.payment_token }}",
             "rel": "view-verification",
             "contentType": "application/javascript"
         },
-
         {
             "method": "POST",
-            "href": "https://ecom.dev.payex.com/psp/creditcard/confined/payments/{{ page.payment_id }}/verifications",
+            "href": "{{ page.front_end_url }}/psp/creditcard/confined/payments/{{ page.payment_id }}/verifications",
             "rel": "direct-verification",
             "contentType": "application/json"
         }
-
     ]
 }
 ```
