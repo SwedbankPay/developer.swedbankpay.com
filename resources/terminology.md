@@ -110,14 +110,14 @@ sidebar:
 [auto-capture]: /payments/card/other-features#capture
 [hateoas]: https://en.wikipedia.org/wiki/HATEOAS
 [invoice-url]: /payments/invoice/
-[two-phase-payments]: /payments/#the-fundamentals
+[two-phase-payments]: /payments#the-fundamentals
 [callback-url]:/payments/card/other-features#callback
 [cancel-url]: /payments/card/after-payment#cancellations
 [checkout-url]: /checkout
-[common-headers]: /#headers
-[restful-api]: payments/#connection-and-protocol
+[common-headers]: #headers
+[restful-api]: payments#connection-and-protocol
 [verify-url]: /payments/card/other-features#verify
-[one-phase-url]: /payments/#the-fundamentals
+[one-phase-url]: /payments#the-fundamentals
 [payout]: /payments/card/other-features#payout
 [recur]: /payments/card/other-features#recur
-[sale-authorization-url]: /payments/#the-fundamentals
+[sale-authorization-url]: /payments#the-fundamentals
