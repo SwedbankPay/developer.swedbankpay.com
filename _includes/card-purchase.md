@@ -31,11 +31,11 @@ Content-Type: application/json
             "cancelUrl": "http://example.com/payment-canceled",{% if seamless_view %}
             "paymentUrl": "http://example.com/perform-payment",{% endif %}
             "callbackUrl": "http://example.com/payment-callback",
-            "logoUrl": "http://example.com/payment-logo.png",
-            "termsOfServiceUrl": "http://example.com/payment-terms.pdf",
+            "logoUrl": "https://example.com/payment-logo.png",
+            "termsOfServiceUrl": "https://example.com/payment-terms.pdf",
         },
         "payeeInfo": {
-            "payeeId": "{{ page.merchant_id }}"
+            "payeeId": "{{ page.merchant_id }}",
             "payeeReference": "CD1234",
             "payeeName": "Merchant1",
             "productCategory": "A123",
@@ -89,7 +89,7 @@ Content-Type: application/json
             "giftCardPurchase": false,
             "reOrderPurchaseIndicator": "01",
             "pickUpAddress": {
-                "name": "Olivia Nyhus",
+                "name": "Olivia Nyhuus",
                 "streetAddress": "Saltnestoppen 43",
                 "coAddress": "",
                 "city": "Saltnes",
@@ -109,7 +109,7 @@ Content-Type: application/json
         "rejectDebitCards": false,
         "rejectConsumerCards": false,
         "rejectCorporateCards": false,
-        "no3DSecure": false,
+        "no3DSecure": false
     }{% endif %}
 }
 ```
