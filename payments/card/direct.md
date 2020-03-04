@@ -117,10 +117,8 @@ An example of an expanded `POST` request is available in the
   holder authentication. However, if your agreement allows you to make a card
   payment without this authentication, or that specific cards can be declined,
   you may adjust these optional parameters when creating the payment.
-* *Defining CallbackURL*: When implementing a scenario, it is optional to set
-  a [CallbackURL][callback] in the `POST` request. If `CallbackURL` is set, then
-  Swedbank Pay will send a postback request to this URL when the consumer has
-  fulfilled the payment. [See the Callback API description here][callback].
+
+{% include alert-callback-url.md payment_instrument="card" %}
 
 ## Type of capture - Intent
 

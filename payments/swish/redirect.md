@@ -104,13 +104,7 @@ to value `Purchase` are listed below.
 
 ### General
 
-{% include alert.html type="success" icon="link" body="
-**Defining CallbackURL**: When implementing a scenario, it is strongly
-recommended to set a [CallbackURL][callback-url] in the `POST` request.
-If `callbackURL` is set Swedbank Pay will send a postback request to this
-URL when the consumer has fulfilled the payment. You need to do a `GET` request,
-containing the `paymentID` generated in the first step, to receive the state
-of the transaction." %}
+{% include alert-callback-url.md payment_instrument="swish" %}
 
 ### API Requests
 

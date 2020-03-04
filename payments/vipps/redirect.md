@@ -105,15 +105,6 @@ You will later (i.e. if a physical product, when you are ready to ship the
 purchased products) have to make a [Capture][capture] or
 [Cancel][cancel] request.
 
-### General
-
-  {% include alert.html type="success" icon="link" body="**Defining
-`callbackUrl`**: When implementing a scenario, it is strongly recommended to set a
-`callbackUrl` in the `POST` request. If `callbackUrl` is set, Swedbank Pay will
-send a `POST` request to this URL when the consumer has fulfilled the payment.
-[See the Callback API description for more
-information](/payments/vipps/other-features#callback)." %}
-
 ## Operations
 
 The API requests are displayed in the [purchase flow](#purchase-flow).
@@ -121,6 +112,9 @@ You can create a Vipps payment with the `operation` value set to `Purchase`. See
 the `Purchase` example below.
 
 ### Purchase
+
+{% include alert-callback-url.md payment_instrument="vipps"
+callback_href="/payments/vipps/other-features#callback" %}
 
 A `Purchase` payment is a straightforward way to charge the the payer.
 It is followed up by posting a capture, cancellation or reversal transaction.

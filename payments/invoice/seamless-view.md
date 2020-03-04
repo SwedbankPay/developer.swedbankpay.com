@@ -101,10 +101,8 @@ you can choose from when creating a payment with key operation set to Value
 * An invoice payment is always two-phased based - you create an
   [`Authorize`][authorize] transaction, that is followed by a
   [`Capture`][capture] or [`Cancel`][cancel] request.
-* **Defining CallbackURL**: When implementing a scenario, it is optional to set
-  a [CallbackURL][callback] in the `POST` request. If callbackURL is set
-  Swedbank Pay will send a postback request to this URL when the consumer has
-  fulfilled the payment. [See the Callback API description here.][callback]
+
+{% include alert-callback-url.md payment_instrument="invoice" %}
 
 ## Seamless View Back End
 

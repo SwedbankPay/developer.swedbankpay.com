@@ -35,11 +35,8 @@ set to value `FinancingConsumer` are listed below.
 
 * An invoice payment is always two-phased based -  you create an Authorize
   transaction, that is followed by a Capture or Cancel request.
-* **Defining CallbackURL**: When implementing a scenario, it is optional
-  to set a [CallbackURL][callback] in the request.
-  If callbackURL is set PayEx will send a postback request to this URL when
-  the consumer has fulfilled the payment.
-  [See the Callback API description here.][callback]
+
+{% include alert-callback-url.md payment_instrument="invoice" %}
 
 {% include authorizations-resource.md payment_instrument="invoice" %}
 
