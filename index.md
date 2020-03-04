@@ -15,7 +15,7 @@ sidebar:
 Welcome to the **Swedbank Pay Developer Portal**. Please make your choice of
 product to integrate below or read on for more general information about
 Swedbank Pay's API platform. If you are new to Swedbank Pay's API Platform,
-you are strongly advised to **read this entire page to the end**.
+you are strongly advised to read through our section with fundamental [technical information][technical-information].
 
 <div class="row">
   <div class="col-12 col-md-6 pt-3 pt-md-0 d-flex">
@@ -41,3 +41,5 @@ you are strongly advised to **read this entire page to the end**.
 </div>
 
 {% include jumbotron.html body="**Swedbank Pay's API Platform** is built using the [REST architectural style](https://en.wikipedia.org/wiki/Representational_state_transfer) and the request and responses come in the [JSON](http://json.org/) format. The API has predictable, resource-oriented URIs and use default HTTP features, like HTTP authentication (using OAuth 2), HTTP methods and headers. These techniques are widely used and understood by most HTTP client libraries." %}
+
+[technical-information]: /home/technical-information
