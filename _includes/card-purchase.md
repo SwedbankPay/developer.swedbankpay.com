@@ -39,7 +39,7 @@ Content-Type: application/json
             "payeeReference": "CD1234",
             "payeeName": "Merchant1",
             "productCategory": "A123",
-            "orderReference": "or123",
+            "orderReference": "or123"
         },{% if full_reference %}
         "cardholder": {
             "firstName": "Olivia",
