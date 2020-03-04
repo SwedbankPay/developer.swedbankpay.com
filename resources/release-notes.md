@@ -32,6 +32,10 @@ this very documentation, not to a version of any APIs described by it." %}
 
 ## March 2020
 
+### Version 1.7.7
+
+This change contains build updates for the page. :octocat:
+
 ### Version 1.7.6
 
 * Several links has been corrected. The chance of 404 is now much lower.
