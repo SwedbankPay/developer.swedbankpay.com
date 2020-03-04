@@ -29,9 +29,8 @@ sidebar:
 ## Swedbank Pay Checkout Test Data
 
 During a Swedbank Pay Checkout implementation you can use the test data related
-to the different payment instruments listed below. To see Swedbank Pay Checkout in
-action, please visit our
-[demoshop]({{ page.front_end_url }}/pspdemoshop)
+to the different payment instruments listed below. To see Swedbank Pay Checkout
+in action, please visit our [demoshop]({{ page.front_end_url }}/pspdemoshop)
 
 To test a logged in user in the Demo Shop, please use the following test data:
 
@@ -73,7 +72,7 @@ To test a logged in user in the Demo Shop, please use the following test data:
 | `4581097032723517` | After the current month | Any  | Loopback only     |
 | `4581099940323133` | After the current month | Any  | Loopback only     |
 
-### Mastercard
+### MasterCard
 
 {:.table .table-striped}
 | Card number        | Expiry                  | CVC  | Type of test data |
@@ -135,10 +134,9 @@ errors thorugh spesific amounts.
 
 ### 3-D Secure Method
 
-First, POST a Payment (operation purchase) and enter the link to the payment
-page. Example URL: -
-<{{ page.front_end_url }}/creditcardv2/payments/authorize/{{ page.payment_token }}> .
-Fill the data for either the Visa or MasterCard as shown below.
+First, [create a Card Payment][create-card-purchase] (operation `Purchase`) and
+visit the URL of the returned `redirect-authorization` operation in a web
+browser. Fill the data for either the Visa or MasterCard as shown below.
 
 {:.table .table-striped}
 | Card type  | Card number        | Expiry | CVC   | Type of test data                           |
@@ -147,7 +145,7 @@ Fill the data for either the Visa or MasterCard as shown below.
 | MasterCard | `5226612199533406` | 09/28  | `602` | 3-D Secure enrolled, ECI 6, Evry & loopback |
 
 After pressing the purchase button you will then be taken to a menu where you
-can select Authentication status, menu is displayed in the picture under:
+can select Authentication status.
 
 <!--- TODO: REMEMBER TO ADD PICTURE HERE -->
 
@@ -159,64 +157,64 @@ status you selected will be sent with the payment.
 
 We have some preset amounts that can be used to produce error codes. When
 making a payment (operation purchase) enter one of these numbers from the list
-below, in the prices object ("amount": <    number>,) before submitting a
+below, in the prices object (`"amount": <number>`) before submitting a
 transaction. Then the error message displayed behind the numbers will be sent
 with your payment in the test environment.
 
 The amounts that can be used and produce error codes
-(transactionThirdPartyError):
+(`transactionThirdPartyError`):
 
 {:.table .table-striped}
-| Number | Error Code                              | Description                              |
-| :----- | :-------------------------------------- | :--------------------------------------- |
-| 900313 | REJECTED_BY_ACQUIRER_INVALID_AMOUNT     | Invalid amount, response-code: 13        |
-| 900330 | REJECTED_BY_ACQUIRER_FORMAT_ERROR       | Format error, response-code: 30          |
-| 900334 | REJECTED_BY_ACQUIRER_POSSIBLE_FRAUD     | Possible fraud, response-code: 34        |
-| 900343 | REJECTED_BY_ACQUIRER_CARD_STOLEN        | Card stolen, response-code: 43           |
-| 900354 | REJECTED_BY_ACQUIRER_CARD_EXPIRED       | Card expired, response-code: 54          |
-| 900351 | REJECTED_BY_ACQUIRER UNKNOWN ERROR      | Unknown error, response-code: 51         |
-| 900359 | REJECTED_BY_ACQUIRER_POSSIBLE_FRAUD     | Possible fraud, response-code: 59        |
-| 900361 | REJECTED_BY_ACQUIRER_INSUFFICIENT_FUNDS | Insufficient funds, response-code: 61    |
-| 900362 | REJECTED_BY_ACQUIRER UNKNOWN ERROR      | Unknown error, response-code: 62         |
-| 900391 | ACQUIRER_HOST_OFFLINE                   | Acquirer host offline, response-code: 91 |
+| Number   | Error Code                                | Description                              |
+| :------- | :---------------------------------------- | :--------------------------------------- |
+| `900313` | `REJECTED_BY_ACQUIRER_INVALID_AMOUNT`     | Invalid amount, response-code: 13        |
+| `900330` | `REJECTED_BY_ACQUIRER_FORMAT_ERROR`       | Format error, response-code: 30          |
+| `900334` | `REJECTED_BY_ACQUIRER_POSSIBLE_FRAUD`     | Possible fraud, response-code: 34        |
+| `900343` | `REJECTED_BY_ACQUIRER_CARD_STOLEN`        | Card stolen, response-code: 43           |
+| `900354` | `REJECTED_BY_ACQUIRER_CARD_EXPIRED`       | Card expired, response-code: 54          |
+| `900351` | `REJECTED_BY_ACQUIRER`                    | Unknown error, response-code: 51         |
+| `900359` | `REJECTED_BY_ACQUIRER_POSSIBLE_FRAUD`     | Possible fraud, response-code: 59        |
+| `900361` | `REJECTED_BY_ACQUIRER_INSUFFICIENT_FUNDS` | Insufficient funds, response-code: 61    |
+| `900362` | `REJECTED_BY_ACQUIRER`                    | Unknown error, response-code: 62         |
+| `900391` | `ACQUIRER_HOST_OFFLINE`                   | Acquirer host offline, response-code: 91 |
 
 ## Invoice Test Data
 
 ### Norway
 
 {:.table .table-striped}
-| Type   | Data             |
-| :----- | :--------------- |
-| SSN    | 26026708248      |
-| Name   | Olivia Nyhuus    |
-| Adress | Saltnestoppen 43 |
-| City   | 1642 Saltnes     |
+| Type    | Data             |
+| :------ | :--------------- |
+| SSN     | 26026708248      |
+| Name    | Olivia Nyhuus    |
+| Address | Saltnestoppen 43 |
+| City    | 1642 Saltnes     |
 
 ### Sweden
 
 {:.table .table-striped}
-| Type   | Data            | Alternative data        |
-| :----- | :-------------- | :---------------------- |
-| SSN    | 600307-1161     | 971020-2392             |
-| Name   | Azra Oliveira   | Leia Ahlstrom           |
-| Adress | Helgestavägen 9 | Helgestavägen 9         |
-| City   | 19792 Bro       | 19792 Bro               |
-| msisdn |                 | +46739000001            |
-| email  |                 | leia.ahlstrom@payex.com |
+| Type    | Data            | Alternative data        |
+| :------ | :-------------- | :---------------------- |
+| SSN     | 600307-1161     | 971020-2392             |
+| Name    | Azra Oliveira   | Leia Ahlstrom           |
+| Address | Helgestavägen 9 | Helgestavägen 9         |
+| City    | 19792 Bro       | 19792 Bro               |
+| MSISDN  |                 | +46739000001            |
+| email   |                 | leia.ahlstrom@payex.com |
 
 ### Finland
 
 {:.table .table-striped}
-| Type   | Data             |
-| :----- | :--------------- |
-| SSN    | 100584-451P      |
-| Name   | Järvilehto Kimmo |
-| Adress | Kiannonkatu 88   |
-| City   | 90500 Oulu       |
+| Type    | Data             |
+| :------ | :--------------- |
+| SSN     | 100584-451P      |
+| Name    | Järvilehto Kimmo |
+| Address | Kiannonkatu 88   |
+| City    | 90500 Oulu       |
 
 ## Invoice Service Test Data
 
-Use any name, adress etc.
+Use any name, address etc.
 
 ## Vipps Test Data
 
@@ -262,3 +260,5 @@ To simulate an error message, set description in `POST` Create Payment or
 | RF07        | Transaction declined                           |
 | TM01        | Swish timed out before the payment was started |
 | BANKIDCL    | Payer cancelled BankId signing                 |
+
+[create-card-purchase]: /payments/card/redirect#purchase
