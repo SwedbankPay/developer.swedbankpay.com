@@ -27,10 +27,7 @@ sidebar:
 
 ## Capture
 
-The `captures` resource lists the capture transactions performed on a
-specific payment.
-
-{% include transaction-response.md payment_instrument="mobilepay" %}
+{% include transaction-list-response.md payment_instrument="mobilepay" %}
 
 ## Create capture transaction
 
@@ -65,11 +62,6 @@ Content-Type: application/json
 |    ✔︎    | └➔&nbsp;`vatAmount`      | `integer`    | Amount entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
 |    ✔︎    | └➔&nbsp;`description`    | `string`     | A textual description of the capture transaction.                                                                         |
 |    ✔︎    | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the capture transaction. See [payeeReference][payee-reference] for details.                        |
-
-The `capture` resource contains information about the capture transaction made
-against a MobilePay Online payment.
-You can return a specific capture transaction by adding the transaction id to
-the `GET` request.
 
 {% include transaction-response.md payment_instrument="mobilepay" %}
 
@@ -127,13 +119,8 @@ Content-Type: application/json
 | ✔︎   | └➔&nbsp;`description`    | `string`     | A textual description of the reason for the cancellation.                                               |
 | ✔︎   | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the cancellation transaction. See [payeeReference][payee-reference] for details. |
 
-The `cancel` resource contains information about a cancellation transaction
-made against a payment.
-You can return a specific cancellation transaction by adding the transaction
-id to the `GET` request.
-
 {% include transaction-response.md payment_instrument="mobilepay"
-    transaction="cancellation"%}
+    transaction="cancel" %}
 
 ### Finalize
 
@@ -169,60 +156,7 @@ Content-Type: application/json
 | :--- | :--------------------- | :------- | :---------- |
 | ✔︎   | `transaction.activity` | `string` | `Finalize`  |
 
-{:.code-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "payment": "/psp/creditcard/payments/{{ page.payment_id }}",
-    "authorization": {
-        "id": "/psp/creditcard/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }}",
-        "paymentToken": "{{ page.transaction_id }}",
-        "maskedPan": "123456xxxxxx1234",
-        "expireDate": "mm/yyyy",
-        "panToken": "{{ page.transaction_id }}",
-        "cardBrand": "Visa|MC",
-        "cardType": "Credit Card|Debit Card",
-        "issuingBank": "UTL MAESTRO",
-        "countryCode": "999",
-        "acquirerTransactionType": "3DSECURE|SSL",
-        "acquirerStan": "39736",
-        "acquirerTerminalId": "39",
-        "acquirerTransactionTime": "2017-08-29T13:42:18Z",
-        "authenticationStatus": "Y|A|U|N",
-        "transaction": {
-            "id": "/psp/creditcard/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
-            "created": "2016-09-14T01:01:01.01Z",
-            "updated": "2016-09-14T01:01:01.03Z",
-            "type": "Authorization",
-            "state": "Initialized",
-            "number": 1234567890,
-            "amount": 1000,
-            "vatAmount": 250,
-            "description": "Test transaction",
-            "payeeReference": "AH123456",
-            "failedReason": "",
-            "isOperational": true,
-            "operations": [
-                {
-                    "href": "{{ page.api_url }}/psp/creditcard/payments/{{ page.payment_id }}",
-                    "rel": "edit-authorization",
-                    "method": "PATCH"
-                }
-            ]
-        }
-    }
-}
-```
-
-{:.table .table-striped}
-| Property        | Type     | Description                                                                             |
-| :-------------- | :------- | :-------------------------------------------------------------------------------------- |
-| `payment`       | `string` | The relative URI of the payment this finalize transaction resource belongs to.          |
-| `authorization` | `object` | The object representation of the [`authorization` transaction resource][authorization]. |
+{% include transaction-response.md payment_instrument="mobilepay" transaction="finalize" %}
 
 ## Cancel Sequence
 
@@ -244,10 +178,8 @@ sequenceDiagram
 
 ## Reversals
 
-The `reversals` resource lists the reversal transactions performed on a
-specific payment.
-
-{% include transaction-response.md payment_instrument="mobilepay" transaction="reversal" %}
+{% include transaction-list-response.md payment_instrument="mobilepay"
+transaction="reversal" %}
 
 ## Create reversal transaction
 
@@ -281,11 +213,6 @@ Content-Type: application/json
 | ✔︎   | └➔&nbsp;`vatAmount`      | `integer`    | Amount entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
 | ✔︎   | └➔&nbsp;`description`    | `string`     | A textual description of the capture                                                                                      |
 | ✔︎   | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the reversal transaction. See [payeeReference][payee-reference] for details.                       |
-
-The `reversal` resource contains information about a reversal transaction made
-against a payment.
-You can return a specific reversal transaction by adding the transaction id to
-the `GET` request.
 
 {% include transaction-response.md payment_instrument="mobilepay"
     transaction="reversal"%}

@@ -1,20 +1,15 @@
 {% assign instrument = include.payment_instrument | default: "paymentorder" %}
 {% assign transaction = include.transaction | default: "capture" %}
-{% assign plural = transaction | append: "s" %}
-{% assign showRequest = include.showRequest | default: true %}
+{% assign mcom = include.mcom | default: false %}
 
-{% if showRequest %}
-{:.code-header}
-**Request**
-
-```http
-GET /psp/{{ instrument }}/payments/{{ page.payment_id }}/{{ plural }} HTTP/1.1
-Host: {{ page.api_host }}
-Authorization: Bearer <AccessToken>
-Content-Type: application/json
-```
-
+{% if transaction == "cancel" %}
+    {% assign plural = "cancellations" %}
+{% else %}
+    {% assign plural = transaction | append: "s" %}
 {% endif %}
+
+The created `{{ transaction }}` resource contains information about the
+`{{ transaction }}` transaction made against a `{{ instrument }}` payment.
 
 {:.code-header}
 **Response**
@@ -25,38 +20,72 @@ Content-Type: application/json
 
 {
     "payment": "/psp/{{ instrument }}/payments/{{ page.payment_id }}",
-    "{{ plural }}": {
-        "id": "/psp/{{ instrument }}/payments/{{ page.payment_id }}/{{ plural }}",
-        "{{ transaction }}List": [{
-            "id": "/psp/{{ instrument }}/payments/{{ page.payment_id }}/{{ plural }}/{{ page.transaction_id }}",
-            "transaction": {
-                "id": "/psp/{{ instrument }}/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
-                "created": "2016-09-14T01:01:01.01Z",
-                "updated": "2016-09-14T01:01:01.03Z",
-                "type": "{{ transaction | capitalize }}",
-                "state": "Completed",
-                "number": 1234567890,
-                "amount": 1000,
-                "vatAmount": 250,
-                "description": "Test transaction",
-                "payeeReference": "AH123456",
-                "failedReason": "",
-                "isOperational": false,
-                "operations": []
-            }
-        }]
+    "{{ transaction }}": {
+        "id": "/psp/{{ instrument }}/payments/{{ page.payment_id }}/{{ plural }}/{{ page.transaction_id }}",{% if instrument == "creditcard" %}
+        "paymentToken": "{{ page.payment_token }}",
+        "maskedPan": "123456xxxxxx1234",
+        "expireDate": "mm/yyyy",
+        "panToken": "{{ page.transaction_id }}",
+        "cardBrand": "Visa",
+        "cardType": "Credit Card",
+        "issuingBank": "UTL MAESTRO",
+        "countryCode": "999",
+        "acquirerTransactionType": "3DSECURE",
+        "acquirerStan": "39736",
+        "acquirerTerminalId": "39",
+        "acquirerTransactionTime": "2017-08-29T13:42:18Z",
+        "authenticationStatus": "Y",{% endif %}
+        "transaction": {
+            "id": "/psp/{{ instrument }}/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
+            "created": "2016-09-14T01:01:01.01Z",
+            "updated": "2016-09-14T01:01:01.03Z",
+            "type": "{{ transaction | capitalize }}",
+            "state": "Completed",
+            "number": 1234567890,
+            "amount": 1000,
+            "vatAmount": 250,
+            "description": "Test transaction",
+            "payeeReference": "AH123456",
+            "failedReason": "",
+            "isOperational": false,
+            "operations": [{% if instrument == "swish" and mcom == true %}
+                {
+                    "href": "swish://paymentrequest?token=LhXrK84MSpWU2RO09f8kUP-FHiBo-1pB",
+                    "method": "GET",
+                    "rel": "redirect-app-swish"
+                },{% endif %}
+                {
+                    "href": "/psp/{{ instrument }}/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
+                    "rel": "edit-{{ transaction }}",
+                    "method": "PATCH"
+                }
+            ]
+        }
     }
 }
+
 ```
 
 {:.table .table-striped}
-| Property                          | Type      | Required                                                                                                                                                                                                     |
+| Property                          | Type      | Description                                                                                                                                                                                                  |
 | :-------------------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `payment`                         | `string`  | The relative URI of the payment this list of {{ transaction }} transactions belong to.                                                                                                                       |
-| `{{ plural }}`                    | `object`  | The current `{{ plural }}` resource.                                                                                                                                                                         |
-| └➔&nbsp;`id`                      | `string`  | The relative URI of the current `{{ plural }}` resource.                                                                                                                                                     |
-| └➔&nbsp;`{{ transaction }}List`   | `array`   | The array of {{ transaction }} transaction objects.                                                                                                                                                          |
-| └➔&nbsp;`{{ transaction }}List[]` | `object`  | The {{ transaction }} transaction object described in the `{{ transaction }}` resource below.                                                                                                                |
+| `payment`                         | `string`  | The relative URI of the payment this authorization transaction resource belongs to.                                                                                                                          |
+| `{{ transaction }}`               | `string`  | The current authorization {{ transaction }} resource.                                                                                                                                                        |
+| └➔&nbsp;`id`                      | `string`  | The relative URI of the current authorization transaction resource.                                                                                                                                          |{% if instrument == "creditcard" %}
+| └➔&nbsp;`paymentToken`            | `string`  | The payment token created for the card used in the authorization.                                                                                                                                            |
+| └➔&nbsp;`maskedPan`               | `string`  | The masked PAN number of the card.                                                                                                                                                                           |
+| └➔&nbsp;`expireDate`              | `string`  | The month and year of when the card expires.                                                                                                                                                                 |
+| └➔&nbsp;`panToken`                | `string`  | The token representing the specific PAN of the card.                                                                                                                                                         |
+| └➔&nbsp;`cardBrand`               | `string`  | `Visa`, `MC`, etc. The brand of the card.                                                                                                                                                                    |
+| └➔&nbsp;`cardType`                | `string`  | `Credit Card` or `Debit Card`. Indicates the type of card used for the authorization.                                                                                                                        |
+| └➔&nbsp;`issuingBank`             | `string`  | The name of the bank that issued the card used for the authorization.                                                                                                                                        |
+| └➔&nbsp;`countryCode`             | `string`  | The country the card is issued in.                                                                                                                                                                           |
+| └➔&nbsp;`acquirerTransactionType` | `string`  | `3DSECURE` or `SSL`. Indicates the transaction type of the acquirer.                                                                                                                                         |
+| └➔&nbsp;`acquirerStan`            | `string`  | The System Trace Audit Number assigned by the acquirer to uniquely identify the transaction.                                                                                                                 |
+| └➔&nbsp;`acquirerTerminalId`      | `string`  | The ID of the acquirer terminal.                                                                                                                                                                             |
+| └➔&nbsp;`acquirerTransactionTime` | `string`  | The ISO-8601 date and time of the acquirer transaction.                                                                                                                                                      |
+| └➔&nbsp;`authenticationStatus`    | `string`  | `Y`, `A`, `U` or `N`. Indicates the status of the authentication.                                                                                                                                            |{% endif %}
+| └➔&nbsp;`transaction`             | `object`  | The object representation of the generic transaction resource.                                                                                                                                               |
 | └─➔&nbsp;`id`                     | `string`  | The relative URI of the current `transaction` resource.                                                                                                                                                      |
 | └─➔&nbsp;`created`                | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
 | └─➔&nbsp;`updated`                | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |

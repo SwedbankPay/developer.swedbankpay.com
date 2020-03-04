@@ -111,43 +111,7 @@ Notes on `FinancingConsumer` captures:
   due date is 14 days.
 * The invoice number is set by PayEx.
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "payment": "/psp/invoice/payments/{{ page.payment_id }}",
-    "capture": {
-        "itemDescriptions": {
-            "id": "/psp/invoice/payments/<captureId>/transactions/{{ page.transaction_id }}/itemDescriptions"
-        },
-        "invoiceCopy": "/psp/invoice/payments/{{ page.payment_id }}/captures/{{ page.transaction_id }}/invoicecopy",
-        "transaction": {
-            "id": "/psp/invoice/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
-            "created": "2016-09-14T01:01:01.01Z",
-            "updated": "2016-09-14T01:01:01.03Z",
-            "type": "Capture",
-            "state": "Completed",
-            "number": 1234567890,
-            "amount": 1000,
-            "vatAmount": 250,
-            "description": "Test transaction",
-            "payeeReference": "AH123456",
-            "failedReason": "",
-            "isOperational": false,
-            "operations": []
-        }
-    }
-}
-```
-
-{:.table .table-striped}
-| Property                    | Type | Description                                                                                           |
-| :-------------------------- | :-------- | :---------------------------------------------------------------------------------------------------- |
-| `payment`                     | `string`  | The relative URI of the payment this capture transaction resource belongs to.                         |
-| `capture.itemDescriptions.id` | `string`  | The relative URI of the item descriptions resource associated with this capture transaction resource. |
-| `capture.invoiceCopy`         | `string`  | The relative URI of the downloadable invoice copy in PDF format.                                      |
-| `capture.transaction`         | `object`  | The object representation of the [transaction][other-features-transaction].                      |
+{% include transaction-response.md payment_instrument="invoice" transaction="capture" %}
 
 #### Inspecting the Captures
 
@@ -250,38 +214,7 @@ Content-Type: application/json
 The `cancel` resource will be returned, containing information about the
 newly created `cancel` transaction.
 
-{:.code-header}
-**Response**
-
-```http
-{
-    "payment": "/psp/invoice/payments/{{ page.payment_id }}",
-    "cancellation": {
-        "transaction": {
-            "id": "/psp/invoice/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
-            "created": "2016-09-14T01:01:01.01Z",
-            "updated": "2016-09-14T01:01:01.03Z",
-            "type": "Cancellation",
-            "state": "Completed",
-            "number": 1234567890,
-            "amount": 1000,
-            "vatAmount": 250,
-            "description": "Test transaction",
-            "payeeReference": "AH123456",
-            "failedReason": "",
-            "isOperational": false,
-            "operations": []
-        }
-    }
-}
-```
-
-{:.table .table-striped}
-| Property               | Type | Description                                                                              |
-| :--------------------- | :-------- | :--------------------------------------------------------------------------------------- |
-| `payment`              | `string`  | The relative URI of the payment this capture transaction belongs to.                     |
-| `reversal.id`          | `string`  | The relative URI of the created capture transaction.                                     |
-| `reversal.transaction` | `object`  | The object representation of the generic [transaction][other-features-transaction]. |
+{% include transaction-response.md payment_instrument="invoice" transaction="cancel" %}
 
 ### Inspecting the Cancellation
 
@@ -299,42 +232,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{:.code-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "payment": "/psp/invoice/payments/{{ page.payment_id }}",
-    "cancellations": [{
-        "transaction": {
-            "id": "/psp/invoice/payments/{{ page.payment_id }}/transactions/{{ page.payment_id }}",
-            "created": "2016-09-14T01:01:01.01Z",
-            "updated": "2016-09-14T01:01:01.03Z",
-            "type": "Cancellation",
-            "state": "Failed",
-            "number": 1234567890,
-            "amount": 1000,
-            "vatAmount": 250,
-            "description": "Test transaction",
-            "payeeReference": "AH123456",
-            "failedReason": "",
-            "isOperational": false,
-            "operations": []
-        }
-    }]
-}
-```
-
-{:.table .table-striped}
-| Property                           | Type | Description                                                                         |
-| :--------------------------------- | :-------- | :---------------------------------------------------------------------------------- |
-| `payment`                          | `string`  | The relative URI of the payment this list of cancellation transactions belong to.   |
-| `cancellations.id`                 | `string`  | The relative URI of the current `cancellations` resource.                           |
-| `cancellations.cancellationList`   | `array`   | The array of the cancellation transaction objects.                                  |
-| `cancellations.cancellationList[]` | `object`  | The object representation of the cancellation transaction resource described below. |
+{% include transaction-list-response.md payment_instrument="invoice" transaction="cancel" %}
 
 #### Cancel Sequence
 
@@ -397,41 +295,7 @@ Content-Type: application/json
 
 The `reversal` resource will be returned, containing information about the newly created reversal transaction.
 
-{:.code-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "payment": "/psp/invoice/payments/{{ page.payment_id }}",
-    "reversal": {
-        "transaction": {
-            "id": "/psp/invoice/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
-            "created": "2016-09-14T01:01:01.01Z",
-            "updated": "2016-09-14T01:01:01.03Z",
-            "type": "Reversal",
-            "state": "Completed",
-            "number": 1234567890,
-            "amount": 1000,
-            "vatAmount": 250,
-            "description": "Test transaction",
-            "payeeReference": "AH123456",
-            "failedReason": "",
-            "isOperational": false,
-            "operations": []
-        }
-    }
-}
-```
-
-{:.table .table-striped}
-| Property               | Type | Description                                                                              |
-| :--------------------- | :-------- | :--------------------------------------------------------------------------------------- |
-| `payment`              | `string`  | The relative URI of the payment this capture transaction belongs to.                     |
-| `reversal.id`          | `string`  | The relative URI of the created capture transaction.                                     |
-| `reversal.transaction` | `object`  | The object representation of the generic [transaction][other-features-transaction]. |
+{% include transaction-response.md payment_instrument="invoice" transaction="reversal" %}
 
 ### Inspecting the Reversal
 
@@ -448,41 +312,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{:.code-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "payment": "/psp/invoice/payments/{{ page.payment_id }}",
-    "reversal": [{
-        "transaction": {
-            "id": "/psp/invoice/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
-            "created": "2016-09-14T01:01:01.01Z",
-            "updated": "2016-09-14T01:01:01.03Z",
-            "type": "Reversal",
-            "state": "Completed",
-            "number": 1234567890,
-            "amount": 1000,
-            "vatAmount": 250,
-            "description": "Test transaction",
-            "payeeReference": "AH123456",
-            "failedReason": "",
-            "isOperational": false,
-            "operations": []
-        }
-    }]
-}
-```
-
-{:.table .table-striped}
-| Property         | Type     | Description                                                                                          |
-| :--------------- | :------- | :--------------------------------------------------------------------------------------------------- |
-| `payment`        | `string` | The relative URI of the payment that the reversal transactions belong to.                            |
-| `reversalList`   | `array`  | The array of reversal transaction objects.                                                           |
-| `reversalList[]` | `object` | The reversal transaction object representation of the reversal transaction resource described below. |
+{% include transaction-list-response.md payment_instrument="invoice" transaction="reversal" %}
 
 #### Reversal Sequence
 

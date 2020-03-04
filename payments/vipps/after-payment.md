@@ -232,53 +232,8 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{:.code-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "payment": "/psp/vipps/payments/{{ page.payment_id }}",
-    "authorizations": {
-        "id": "/psp/vipps/payments/{{ page.payment_id }}/authorizations",
-        "authorizationList": [
-            {
-                "vippsTransactionId": "5619328800",
-                "msisdn": "+4798765432",
-                "id": "/psp/vipps/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }}",
-                "transaction": {
-                    "id": "/psp/vipps/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
-                    "created": "2018-09-05T15:01:39.8658084Z",
-                    "updated": "2018-09-05T15:01:42.2119509Z",
-                    "type": "Authorization",
-                    "state": "Completed",
-                    "number": 72100003090,
-                    "amount": 1500,
-                    "vatAmount": 0,
-                    "description": "Vipps Test",
-                    "payeeReference": "Postman1536157124",
-                    "isOperational": false,
-                    "operations": []
-                }
-            }
-        ]
-    }
-}
-```
-
-{:.table .table-striped}
-| Property                      | Type     | Description                                                                                                                                                                                            |
-| :---------------------------- | :------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `payment`                     | `string` | The relative URI of the payment this authorization transactions resource belongs to.                                                                                                                   |
-| `authorizations`              | `object` | The authorizations object giving access to authorization information pertaining to this transaction.                                                                                                   |
-| └➔&nbsp;`id`                  | `string` | The relative URI of the current authorization transactions resource.                                                                                                                                   |
-| └➔&nbsp;`authorizationList`   | `array`  | The array of authorization transaction objects.                                                                                                                                                        |
-| └➔&nbsp;`authorizationList[]` | `object` | The authorization transaction object described in the `authorization` resource below. The `authorization` resource contains information about an authorization transaction made on a specific payment. |
-
-You can return a specific authorization transaction by adding the transaction id
-to the `GET` request.
+{% include transaction-response.md payment_instrument="vipps"
+transaction="authorization" %}
 
 {:.code-header}
 **Request**
@@ -290,44 +245,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{:.code-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "payment": "/psp/vipps/payments/{{ page.payment_id }}",
-    "authorization": {
-        "vippsTransactionId": "5619328800",
-        "msisdn": "+4798765432",
-        "id": "/psp/vipps/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }}",
-        "transaction": {
-            "id": "/psp/vipps/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
-            "created": "2018-09-05T15:01:39.8658084Z",
-            "updated": "2018-09-05T15:01:42.2119509Z",
-            "type": "Authorization",
-            "state": "Completed",
-            "number": 72100003090,
-            "amount": 1500,
-            "vatAmount": 0,
-            "description": "Vipps Test",
-            "payeeReference": "Postman1536157124",
-            "isOperational": false,
-            "operations": []
-        }
-    }
-}
-```
-
-{:.table .table-striped}
-| Property               | Type     | Description                                                                         |
-| :--------------------- | :------- | :---------------------------------------------------------------------------------- |
-| `payment`              | `string` | The relative URI of the payment this authorization transaction resource belongs to. |
-| `authorization`        | `string` | The authorization object.                                                           |
-| └➔&nbsp;`id`           | `string` | The relative URI of the current authorization transaction resource.                 |
-| └➔&nbsp; `transaction` | `object` | The object representation of the generic [transaction][transaction].                |
+{% include transaction-response.md payment_instrument="vipps" transaction="authorization" %}
 
 ## Captures
 
@@ -343,49 +261,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{:.code-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "payment": "/psp/vipps/payments/{{ page.payment_id }}",
-    "captures": {
-        "id": "/psp/vipps/payments/{{ page.payment_id }}/captures",
-        "captureList": [
-            {
-                "id": "/psp/vipps/payments/{{ page.payment_id }}/captures/{{ page.transaction_id }}",
-                "transaction": {
-                    "id": "/psp/vipps/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
-                    "created": "2018-09-05T15:03:56.5180218Z",
-                    "updated": "2018-09-06T08:05:01.4179654Z",
-                    "type": "Capture",
-                    "state": "Completed",
-                    "number": 72100003092,
-                    "amount": 1500,
-                    "vatAmount": 250,
-                    "description": "description for transaction",
-                    "payeeReference": "cpt1536159837",
-                    "isOperational": false,
-                    "reconciliationNumber": 736941,
-                    "operations": []
-                }
-            }
-        ]
-    }
-}
-```
-
-{:.table .table-striped}
-| Property                | Type     | Description                                                                  |
-| :---------------------- | :------- | :--------------------------------------------------------------------------- |
-| `payment`               | `string` | The relative URI of the payment this list of capture transactions belong to. |
-| `captures`              | `object` | The `captures` list resource.                                                |
-| └➔&nbsp;`id`            | `string` | The relative URI of the current `captures` resource.                         |
-| └➔&nbsp;`captureList`   | `array`  | The array of capture transaction objects.                                    |
-| └➔&nbsp;`captureList[]` | `object` | The capture transaction object described in the `capture` resource below.    |
+{% include transaction-list-response.md payment_instrument="vipps" transaction="capture" %}
 
 ## Create capture transaction
 
@@ -411,56 +287,8 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
-| Required | Property                 | Type         | Description                                                                                                               |
-| :------: | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------ |
-|    ✔︎    | `transaction`            | `integer`    | The transaction object containing a Vipps transaction description.                                                        |
-|    ✔︎    | └➔&nbsp;`amount`         | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 NOK`, `5000` = `50.00 NOK`. |
-|    ✔︎    | └➔&nbsp;`vatAmount`      | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 NOK`, `5000` = `50.00 NOK`. |
-|    ✔︎    | └➔&nbsp;`description`    | `string`     | A textual description of the capture transaction.                                                                         |
-|    ✔︎    | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the capture transaction. See [`payeeReference`][payeeReference] for details.                       |
-
-The `capture` resource contains information about the capture transaction made
-against a Vipps payment.
-You can return a specific capture transaction by adding the transaction id to
-the `GET` request.
-
-{:.code-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "payment": "/psp/vipps/payments/{{ page.payment_id }}",
-    "capture": {
-        "id": "/psp/vipps/payments/{{ page.payment_id }}/captures/{{ page.transaction_id }}",
-        "transaction": {
-            "id": "/psp/vipps/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
-            "created": "2018-09-05T15:03:56.5180218Z",
-            "updated": "2018-09-05T15:03:57.6300566Z",
-            "type": "Capture",
-            "state": "Completed",
-            "number": 72100003092,
-            "amount": 1500,
-            "vatAmount": 250,
-            "description": "description for transaction",
-            "payeeReference": "cpt1536159837",
-            "isOperational": false,
-            "operations": []
-        }
-    }
-}
-```
-
-{:.table .table-striped}
-| Property              | Type     | Description                                                            |
-| :-------------------- | :------- | :--------------------------------------------------------------------- |
-| `payment`             | `string` | The relative URI of the payment this capture transaction belongs to.   |
-| `capture`             | `string` | The capture object, containing a transaction object.                   |
-| └➔&nbsp;`id`          | `string` | The relative URI of the created capture transaction.                   |
-| └➔&nbsp;`transaction` | `object` | The object representation of the generic [`transaction`][transaction]. |
+{% include transaction-response.md payment_instrument="vipps"
+    transaction="capture" %}
 
 ## Cancellations
 
@@ -477,48 +305,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{:.code-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "payment": "/psp/vipps/payments/{{ page.payment_id }}",
-    "cancellations": {
-        "id": "/psp/vipps/payments/{{ page.payment_id }}/cancellations",
-        "cancellationList": [
-            {
-                "id": "/psp/vipps/payments/{{ page.payment_id }}/cancellations/{{ page.transaction_id }}",
-                "transaction": {
-                    "id": "/psp/vipps/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
-                    "created": "2018-09-06T10:03:43.9615Z",
-                    "updated": "2018-09-06T10:03:45.9503625Z",
-                    "type": "Cancellation",
-                    "state": "Completed",
-                    "number": 72100003192,
-                    "amount": 2000,
-                    "vatAmount": 0,
-                    "description": "description for transaction",
-                    "payeeReference": "testabc",
-                    "isOperational": false,
-                    "operations": []
-                }
-            }
-        ]
-    }
-}
-```
-
-{:.table .table-striped}
-| Property                     | Type     | Description                                                                         |
-| :--------------------------- | :------- | :---------------------------------------------------------------------------------- |
-| `payment`                    | `string` | The relative URI of the payment this list of cancellation transactions belong to.   |
-| `cancellations`              | `object` | The `cancellations` object.                                                         |
-| └➔&nbsp;`id`                 | `string` | The relative URI of the current `cancellations` resource.                           |
-| └➔&nbsp;`cancellationList`   | `array`  | The array of the cancellation transaction objects.                                  |
-| └➔&nbsp;`cancellationList[]` | `object` | The object representation of the cancellation transaction resource described below. |
+{% include transaction-list-response.md payment_instrument="vipps" transaction="cancel" %}
 
 ## Create cancellation transaction
 
@@ -544,53 +331,8 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
-| Required | Property                 | Type         | Description                                                                                              |
-| :------: | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------- |
-|  ✔︎︎︎︎︎  | `transaction`            | `object`     | The transaction object describing the cancellation request.                                              |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`description`    | `string`     | A textual description of the reason for the cancellation.                                                |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the cancellation transaction. See [`payeeReference`][payeeReference] for details. |
-
-The `cancel` resource contains information about a cancellation transaction made
-against a payment.
-You can return a specific cancellation transaction by adding the transaction id
-to the `GET` request.
-
-{:.code-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-{
-    "payment": "/psp/vipps/payments/{{ page.payment_id }}",
-    "cancellation": {
-        "id": "/psp/vipps/payments/{{ page.payment_id }}/cancellations/{{ page.transaction_id }}",
-        "transaction": {
-            "id": "/psp/vipps/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
-            "created": "2018-09-06T10:03:43.9615Z",
-            "updated": "2018-09-06T10:03:45.9503625Z",
-            "type": "Cancellation",
-            "state": "Completed",
-            "number": 72100003192,
-            "amount": 2000,
-            "vatAmount": 0,
-            "description": "description for transaction",
-            "payeeReference": "testabc",
-            "isOperational": false,
-            "operations": []
-        }
-    }
-}
-```
-
-{:.table .table-striped}
-| Property              | Type     | Description                                                               |
-| :-------------------- | :------- | :------------------------------------------------------------------------ |
-| `payment`             | `string` | The relative URI of the payment this cancellation transaction belongs to. |
-| `cancellation`        | `object` | The cancellation resource.                                                |
-| └➔&nbsp;`id`          | `string` | The relative URI of the current cancellation transaction resource.        |
-| └➔&nbsp;`transaction` | `object` | The object representation of the generic [transaction][transaction].      |
+{% include transaction-response.md payment_instrument="vipps"
+    transaction="cancel" %}
 
 ## Reversals
 
@@ -607,46 +349,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{:.code-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-{
-    "payment": "/psp/vipps/payments/{{ page.payment_id }}",
-    "reversals": {
-        "id": "/psp/vipps/payments/{{ page.payment_id }}/reversals",
-        "reversalList": [
-            {
-                "id": "/psp/vipps/payments/{{ page.payment_id }}/reversals/{{ page.transaction_id }}",
-                "transaction": {
-                    "id": "/psp/vipps/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
-                    "created": "2018-09-06T10:12:54.738174Z",
-                    "updated": "2018-09-06T10:12:55.0671912Z",
-                    "type": "Reversal",
-                    "state": "Completed",
-                    "number": 72100003193,
-                    "amount": 1500,
-                    "vatAmount": 250,
-                    "description": "description for transaction",
-                    "payeeReference": "cpt1536228775",
-                    "isOperational": false,
-                    "operations": []
-                }
-            }
-        ]
-    }
-}
-```
-
-{:.table .table-striped}
-| Property                 | Type     | Description                                                                                          |
-| :----------------------- | :------- | :--------------------------------------------------------------------------------------------------- |
-| `payment`                | `string` | The relative URI of the payment that the reversal transactions belong to.                            |
-| `reversals`              | `object` | The reversal object.                                                                                 |
-| └➔&nbsp;`reversalList`   | `array`  | The array of reversal transaction objects.                                                           |
-| └➔&nbsp;`reversalList[]` | `object` | The reversal transaction object representation of the reversal transaction resource described below. |
+{% include transaction-list-response.md payment_instrument="vipps" transaction="reversal" %}
 
 ### Create reversal transaction
 
@@ -681,47 +384,8 @@ Content-Type: application/json
 |  ✔︎︎︎︎︎  | └➔&nbsp;`description`    | `string`     | A textual description of the capture                                                                                      |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the reversal transaction. See [`payeeReference`][payeeReference] for details.                      |
 
-The `reversal` resource contains information about a reversal transaction made
-against a payment.
-You can return a specific reversal transaction by adding the transaction id
-to the `GET` request.
-
-{:.code-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "payment": "/psp/vipps/payments/{{ page.payment_id }}",
-    "reversal": {
-        "id": "/psp/vipps/payments/{{ page.payment_id }}/reversals/{{ page.transaction_id }}",
-        "transaction": {
-            "id": "/psp/vipps/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
-            "created": "2018-09-06T10:12:54.738174Z",
-            "updated": "2018-09-06T10:12:55.0671912Z",
-            "type": "Reversal",
-            "state": "Completed",
-            "number": 72100003193,
-            "amount": 1500,
-            "vatAmount": 250,
-            "description": "description for transaction",
-            "payeeReference": "cpt1536228775",
-            "isOperational": false,
-            "operations": []
-        }
-    }
-}
-```
-
-{:.table .table-striped}
-| Property              | Type     | Description                                                            |
-| :-------------------- | :------- | :--------------------------------------------------------------------- |
-| `payment`             | `string` | The relative URI of the payment this capture transaction belongs to.   |
-| `reversal`            | `object` | The reversal object.                                                   |
-| └➔&nbsp;`id`          | `string` | The relative URI of the created capture transaction.                   |
-| └➔&nbsp;`transaction` | `object` | The object representation of the generic [`transaction`][transaction]. |
+{% include transaction-response.md payment_instrument="vipps"
+    transaction="reversal" %}
 
 {% include iterator.html
         prev_href="seamless-view"
