@@ -13,6 +13,8 @@ opengraph:
 design_guide:
   base_url: https://design.swedbankpay.com
   version: 4.3.0
+github:
+  branch: "develop"
 search:
   enabled: true
   url: /search

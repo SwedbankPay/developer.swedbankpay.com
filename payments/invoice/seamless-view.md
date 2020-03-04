@@ -195,7 +195,7 @@ Content-Type: application/json
         }
     },
     "invoice": {
-        "invoiceType": "PayExFinancingSE"
+        "invoiceType": "PayExFinancingSe"
     }
 }
 ```

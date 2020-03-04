@@ -201,16 +201,16 @@ sequenceDiagram
 {% include iterator.html prev_href="seamless-view" prev_title="Back: Seamless View"
 next_href="after-payment" next_title="Next: After Payment" %}
 
-[abort]: /payments/card/other-features/#abort
-[expansion]: /payments/card/other-features/#expansion
-[callback]: /payments/card/other-features/#callback
-[cancel]: /payments/card/after-payment/#Cancellations
-[capture]: /payments/cardd/after-payment/#Capture
-[reversal]: /payments/card/after-payment/#Reversals
-[authorization]: /payments/card/other-features/#create-authorization-transaction
+[abort]: /payments/card/other-features#abort
+[expansion]: /payments/card/other-features#expansion
+[callback]: /payments/card/other-features#callback
+[cancel]: /payments/card/after-payment#cancellations
+[capture]: /payments/card/after-payment#capture
+[reversal]: /payments/card/after-payment#reversals
+[authorization]: /payments/card/other-features#create-authorization-transaction
 [other features]: /payments/card/other-features#purchase
-[purchase]:  /payments/card/other-features/#purchase
-[recur]:  /payments/card/other-features/#recur
-[payout]:  /payments/card/other-features/#purchase
-[verify]: /payments/card/other-features/#verify
-[create-payment]: /payments/card/other-features/#create-payment
+[purchase]:  /payments/card/other-features#purchase
+[recur]:  /payments/card/other-features#recur
+[payout]:  /payments/card/other-features#purchase
+[verify]: /payments/card/other-features#verify
+[create-payment]: /payments/card/other-features#create-payment

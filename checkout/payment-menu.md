@@ -14,8 +14,6 @@ sidebar:
       title: Capture
     - url: /checkout/after-payment
       title: After Payment
-    - url: /checkout/summary
-      title: Summary
     - url: /checkout/other-features
       title: Other Features
 ---
@@ -177,6 +175,10 @@ Then find the `view-paymentorder` operation and embed its `href` in a
 That script will then load the Seamless View for the Payment Menu. We will look
 into how to hook that up next.
 
+{% include alert.html type="neutral" icon="info" body=" `orderReference` must
+be sent as a part of the `POST` request to `paymentorders` and must represent
+the order ID of the webshop or merchant website." %}
+
 ## Payment Menu Front End
 
 To load the payment menu from the JavaScript URL obtained in the back end API
@@ -288,8 +290,8 @@ finalizing the payment in the [After Payment section][after-payment].
 
 {% include iterator.html prev_href="checkin"
                          prev_title="Back: Checkin"
-                         next_href="after-payment"
-                         next_title="Next: After Payment" %}
+                         next_href="capture"
+                         next_title="Next: Capture" %}
 
 [after-payment]: after-payment
 [checkin-image]: /assets/img/checkout/your-information.png
