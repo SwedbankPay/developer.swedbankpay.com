@@ -15,7 +15,8 @@ sidebar:
 Welcome to the **Swedbank Pay Developer Portal**. Please make your choice of
 product to integrate below or read on for more general information about
 Swedbank Pay's API platform. If you are new to Swedbank Pay's API Platform,
-you are strongly advised to read through our section with fundamental [technical information][technical-information].
+you are strongly advised to read through our section with fundamental
+[technical information][technical-information].
 
 <div class="row">
   <div class="col-12 col-md-6 pt-3 pt-md-0 d-flex">
