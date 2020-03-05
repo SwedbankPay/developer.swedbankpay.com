@@ -174,9 +174,10 @@ The amounts that can be used and produce error codes
 | 900334 | REJECTED_BY_ACQUIRER_POSSIBLE_FRAUD     |
 | 900343 | REJECTED_BY_ACQUIRER_CARD_STOLEN        |
 | 900354 | REJECTED_BY_ACQUIRER_CARD_EXPIRED       |
-| 900351 | REJECTED_BY_ACQUIRER_INSUFFICIENT_FUNDS |
-| 900359 | CARD_DECLINED                           |
-| 900362 | REJECTED_BY_PAYEX_CARD_BLACKLISTED      |
+| 900351 | REJECTED_BY_ACQUIRER UNKNOWN ERROR      |
+| 900359 | REJECTED_BY_ACQUIRER_POSSIBLE_FRAUD POSSIBLE FRAUD    |
+| 900361 | REJECTED_BY_ACQUIRER_INSUFFICIENT_FUNDS |
+| 900362 | REJECTED_BY_ACQUIRER UNKNOWN ERROR      |
 | 900391 | ACQUIRER_HOST_OFFLINE                   |
 
 ## Invoice Test Data
@@ -188,7 +189,7 @@ The amounts that can be used and produce error codes
 | :----- | :--------------- |
 | SSN    | 26026708248      |
 | Name   | Olivia Nyhuus    |
-| Adress | SaltnesToppen 43 |
+| Adress | Saltnestoppen 43 |
 | City   | 1642 Saltnes     |
 
 ### Sweden
