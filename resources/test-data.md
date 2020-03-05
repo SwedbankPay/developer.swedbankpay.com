@@ -167,17 +167,17 @@ The amounts that can be used and produce error codes
 (transactionThirdPartyError):
 
 {:.table .table-striped}
-| Number | Error Code                              | Description               |
-| :----- | :-------------------------------------- |:------------------------- |
-| 900313 | REJECTED_BY_ACQUIRER_INVALID_AMOUNT     | Invalid amount, response-code: 13 |
-| 900330 | REJECTED_BY_ACQUIRER_FORMAT_ERROR       | Format error, response-code: 30 |
-| 900334 | REJECTED_BY_ACQUIRER_POSSIBLE_FRAUD     | Possible fraud, response-code: 34 |
-| 900343 | REJECTED_BY_ACQUIRER_CARD_STOLEN        | Card stolen, response-code: 43 |
-| 900354 | REJECTED_BY_ACQUIRER_CARD_EXPIRED       | Card expired, response-code: 54 |
-| 900351 | REJECTED_BY_ACQUIRER UNKNOWN ERROR      | Unknown error, response-code: 51 |
-| 900359 | REJECTED_BY_ACQUIRER_POSSIBLE_FRAUD     | Possible fraud, response-code: 59 |
-| 900361 | REJECTED_BY_ACQUIRER_INSUFFICIENT_FUNDS | Insufficient funds, response-code: 61 |
-| 900362 | REJECTED_BY_ACQUIRER UNKNOWN ERROR      | Unknown error, response-code: 62 |
+| Number | Error Code                              | Description                              |
+| :----- | :-------------------------------------- | :--------------------------------------- |
+| 900313 | REJECTED_BY_ACQUIRER_INVALID_AMOUNT     | Invalid amount, response-code: 13        |
+| 900330 | REJECTED_BY_ACQUIRER_FORMAT_ERROR       | Format error, response-code: 30          |
+| 900334 | REJECTED_BY_ACQUIRER_POSSIBLE_FRAUD     | Possible fraud, response-code: 34        |
+| 900343 | REJECTED_BY_ACQUIRER_CARD_STOLEN        | Card stolen, response-code: 43           |
+| 900354 | REJECTED_BY_ACQUIRER_CARD_EXPIRED       | Card expired, response-code: 54          |
+| 900351 | REJECTED_BY_ACQUIRER UNKNOWN ERROR      | Unknown error, response-code: 51         |
+| 900359 | REJECTED_BY_ACQUIRER_POSSIBLE_FRAUD     | Possible fraud, response-code: 59        |
+| 900361 | REJECTED_BY_ACQUIRER_INSUFFICIENT_FUNDS | Insufficient funds, response-code: 61    |
+| 900362 | REJECTED_BY_ACQUIRER UNKNOWN ERROR      | Unknown error, response-code: 62         |
 | 900391 | ACQUIRER_HOST_OFFLINE                   | Acquirer host offline, response-code: 91 |
 
 ## Invoice Test Data
