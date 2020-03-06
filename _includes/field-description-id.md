@@ -1,5 +1,5 @@
-{%- assign resource = include.resource | default = "payment" -%}
-{%- assign sub_resource = include.sub_resource | default = empty -%}
+{%- assign resource = include.resource | default: "payment" -%}
+{%- assign sub_resource = include.sub_resource | default: empty -%}
 {%- if sub_resource != empty -%}
     {%- capture sub_resource_text -%}
         this `{{ sub_resource }}` belongs to.
