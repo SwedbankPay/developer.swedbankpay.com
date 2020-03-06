@@ -28,7 +28,7 @@ To create a Vipps payment, you perform an HTTP `POST` against the
 `/psp/vipps/payments` resource.
 
 An example of a payment creation request is provided below.
-Each individual property of the JSON document is described in the following
+Each individual field of the JSON document is described in the following
 section.
 Use the [expand][expand-parameter] request parameter to get a
 response that includes one or more expanded sub-resources inlined.
@@ -83,7 +83,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property                     | Type         | Description                                                                                                                                                                                                                                               |
+| Required | Field                     | Type         | Description                                                                                                                                                                                                                                               |
 | :------: | :--------------------------- | :----------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |    ✔︎    | `payment`                    | `object`     | The `payment` object.                                                                                                                                                                                                                                     |
 |    ✔︎    | └➔&nbsp;`operation`          | `string`     | `Purchase`                                                                                                                                                                                                                                                |
@@ -190,7 +190,7 @@ Which operations are available will vary depending on the state of the
 payment resource, what the access token is authorized to do, etc.
 
 {:.table .table-striped}
-| Property | Description                                                         |
+| Field | Description                                                         |
 | :------- | :------------------------------------------------------------------ |
 | `href`   | The target URI to perform the operation against.                    |
 | `rel`    | The name of the relation the operation has to the current resource. |
@@ -376,7 +376,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property                 | Type         | Description                                                                                                               |
+| Required | Field                 | Type         | Description                                                                                                               |
 | :------: | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------ |
 |  ✔︎︎︎︎︎  | `transaction`            | `object`     | The trnsaction object.                                                                                                    |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`amount`         | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 NOK`, `5000` = `50.00 NOK`. |

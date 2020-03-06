@@ -42,7 +42,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property             | Type      | Description                                                                                                                                                                                 |
+| Field             | Type      | Description                                                                                                                                                                                 |
 | :------------------- | :-------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `payment`            | `string`  | {% include field-description-id.md sub_resource="prices" %}                                                                                                                                 |
 | `prices`             | `object`  | The `prices`  resource.                                                                                                                                                                     |

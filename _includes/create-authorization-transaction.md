@@ -53,7 +53,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property                       | Type      | Description                                                                     |
+| Required | Field                       | Type      | Description                                                                     |
 | :------: | :----------------------------- | :-------- | :------------------------------------------------------------------------------ |
 |  ✔︎︎︎︎︎  | `transaction`                  | `object`  | The transaction object.                                                         |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`cardNumber`           | `string`  | Primary Account Number (PAN) of the card, printed on the face of the card.      |

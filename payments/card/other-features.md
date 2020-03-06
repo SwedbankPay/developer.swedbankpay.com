@@ -33,7 +33,7 @@ covered by the other subsections." %}
 A `Purchase` payment is a straightforward way to charge the card of the payer.
 It is followed up by posting a `capture`, `cancellation` or `reversal` transaction.
 
-An example of a request is provided below. Each individual Property of the JSON
+An example of a request is provided below. Each individual field of the JSON
 document is described in the following section.
 
 {% include alert-risk-indicator.md %}

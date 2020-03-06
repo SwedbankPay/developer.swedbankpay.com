@@ -145,8 +145,7 @@ A `FinancingConsumer` payment is a straightforward way to invoice a
 payer. It is followed up by posting a capture, cancellation or reversal
 transaction.
 
-An example of an abbreviated `POST` request is provided below. Each individual
-Property of the JSON document is described in the following section.
+An example of an abbreviated `POST` request is provided below. Each individual field of the JSON document is described in the following section.
 An example of an expanded `POST` request is available in the
 [other features section][financing-consumer].
 
@@ -199,7 +198,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property                          | Type          | Description                                                                                                                                                                                                                                                                                                                                    |
+| Required | Field                          | Type          | Description                                                                                                                                                                                                                                                                                                                                    |
 | :------: | :-------------------------------- | :------------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |  ✔︎︎︎︎︎  | `payment`                         | `object`      | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                                                                          |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`operation`               | `string`      | The operation that the `payment` is supposed to perform. The [`FinancingConsumer`][financing-consumer] operation is used in our example. Take a look at the [create `payment` section][create-payment] for a full examples of the following `operation` options: [FinancingConsumer][financing-consumer], [Recur][recur], and [Verify][verify] |

@@ -55,7 +55,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property                 | Type         | Description                                                                                                               |
+| Required | Field                 | Type         | Description                                                                                                               |
 | :------: | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------ |
 |    ✔︎    | `transaction`            | `object`     | Object representing the capture transaction.                                                                              |
 |    ✔︎    | └➔&nbsp;`amount`         | `integer`    | Amount entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
@@ -113,7 +113,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| ✔︎   | Property                 | Type         | Description                                                                                             |
+| ✔︎   | Field                 | Type         | Description                                                                                             |
 | :--- | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------ |
 | ✔︎   | `transaction`            | `string`     | The transaction object contains information about this cancellation.                                    |
 | ✔︎   | └➔&nbsp;`description`    | `string`     | A textual description of the reason for the cancellation.                                               |
@@ -152,7 +152,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| ✔︎   | Property               | Type     | Description |
+| ✔︎   | Field               | Type     | Description |
 | :--- | :--------------------- | :------- | :---------- |
 | ✔︎   | `transaction.activity` | `string` | `Finalize`  |
 
@@ -206,7 +206,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| ✔︎   | Property                 | Type         | Description                                                                                                               |
+| ✔︎   | Field                 | Type         | Description                                                                                                               |
 | :--- | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------ |
 | ✔︎   | `transaction`            | `integer`    | The reversal `transaction`.                                                                                               |
 | ✔︎   | └➔&nbsp;`amount`         | `integer`    | Amount entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |

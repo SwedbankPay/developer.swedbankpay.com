@@ -68,7 +68,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property                 | Type          | Description                                                                                                   |
+| Required | Field                 | Type          | Description                                                                                                   |
 | :------: | :----------------------- | :------------ | :------------------------------------------------------------------------------------------------------------ |
 |  ✔︎︎︎︎︎  | `transaction`            | `object`      | The object representation of the generic [transaction resource][transaction-resource].                        |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`amount`         | `integer`     | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 100.00 NOK, 5000 50.00 SEK. |
@@ -240,7 +240,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property                 | Type          | Description                                                                                                 |
+| Required | Field                 | Type          | Description                                                                                                 |
 | :------: | :----------------------- | :------------ | :---------------------------------------------------------------------------------------------------------- |
 |  ✔︎︎︎︎︎  | `transaction`            | `object`      | The `object` representation of the generic [transaction resource][transaction-resource].                    |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`description`    | `string`      | A textual description of the reason for the `cancellation`.                                                 |
@@ -407,7 +407,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property                 | Type          | Description                                                                                                       |
+| Required | Field                 | Type          | Description                                                                                                       |
 | :------: | :----------------------- | :------------ | :---------------------------------------------------------------------------------------------------------------- |
 |  ✔︎︎︎︎︎  | `transaction`            | `object`      | The `object` representation of the generic [transaction resource][transaction-resource].                          |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`amount`         | `integer`     | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK. |

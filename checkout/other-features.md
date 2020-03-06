@@ -40,14 +40,14 @@ request towards the `paymentorders` resource, [as displayed above](#payment-orde
 
 ### URLs
 
-When creating a Payment Order, the `urls` property of the `paymentOrder`
+When creating a Payment Order, the `urls` field of the `paymentOrder`
 contains the related URIs, including where the consumer gets redirected when
 going forward with or cancelling a payment session, as well as the callback URI
 that is used to inform the payee (merchant) of changes or updates made to
 underlying payments or transaction.
 
 {:.table .table-striped}
-| Required | Property            | Type     | Description                                                                                                                                                                                                                                                                                              |
+| Required | Field            | Type     | Description                                                                                                                                                                                                                                                                                              |
 | :------: | :------------------ | :------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ✔ ︎︎︎︎︎  | `hostUrls`          | `array`  | The array of URIs valid for embedding of Swedbank Pay Hosted Views.                                                                                                                                                                                                                                      |
 |  ✔︎︎︎︎︎  | `completeUrl`       | `string` | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment order to inspect it further. |
@@ -101,7 +101,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property                    | Type     | Description                                                                                                                                                                                                                                                                                              |
+| Field                    | Type     | Description                                                                                                                                                                                                                                                                                              |
 | :-------------------------- | :------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `paymentorder`              | `string` | {% include field-description-id.md sub_resource="urls" %}                                                                                                                                                                                                                                                |
 | `urls`                      | `object` | The URLs object.                                                                                                                                                                                                                                                                                         |
@@ -116,10 +116,10 @@ Content-Type: application/json
 
 ### Order Items
 
-The `orderItems` property of the `paymentOrder` is an array containing the items being purchased with the order. Used to print on invoices if the payer chooses to pay with invoice, among other things. Order items can be specified on both payment order creation as well as on [Capture][payment-order-capture].
+The `orderItems` field of the `paymentOrder` is an array containing the items being purchased with the order. Used to print on invoices if the payer chooses to pay with invoice, among other things. Order items can be specified on both payment order creation as well as on [Capture][payment-order-capture].
 
 {:.table .table-striped}
-| Required | Property              | Type      | Description                                                                                                                                                                                                                    |
+| Required | Field              | Type      | Description                                                                                                                                                                                                                    |
 | :------: | :-------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |  ✔︎︎︎︎︎  | `reference`           | `string`  | A reference that identifies the order item.                                                                                                                                                                                    |
 |  ✔︎︎︎︎︎  | `name`                | `string`  | The name of the order item.                                                                                                                                                                                                    |
@@ -132,17 +132,17 @@ The `orderItems` property of the `paymentOrder` is an array containing the items
 |  ✔︎︎︎︎︎  | `quantity`            | `decimal` | The 4 decimal precision quantity of order items being purchased.                                                                                                                                                               |
 |  ✔︎︎︎︎︎  | `quantityUnit`        | `string`  | The unit of the quantity, such as `pcs`, `grams`, or similar.                                                                                                                                                                  |
 |  ✔︎︎︎︎︎  | `unitPrice`           | `integer` | The price per unit of order item, including VAT.                                                                                                                                                                               |
-|          | `discountPrice`       | `integer` | If the order item is purchased at a discounted price. This property should contain that price, including VAT.                                                                                                                  |
+|          | `discountPrice`       | `integer` | If the order item is purchased at a discounted price. This field should contain that price, including VAT.                                                                                                                  |
 |  ✔︎︎︎︎︎  | `vatPercent`          | `integer` | The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.                                                                                                                                                       |
 |  ✔︎︎︎︎︎  | `amount`              | `integer` | The total amount including VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 SEK` and `5000` equals `50.00 SEK`.                          |
 |  ✔︎︎︎︎︎  | `vatAmount`           | `integer` | The total amount of VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 SEK` and `5000` equals `50.00 SEK`.                                 |
 
 ### Items
 
-The `items` property of the `paymentOrder` is an array containing items that will affect how the payment is performed.
+The `items` field of the `paymentOrder` is an array containing items that will affect how the payment is performed.
 
 {:.table .table-striped}
-| Required | Property                       | Type      | Description                                                                                                                                           |
+| Required | Field                       | Type      | Description                                                                                                                                           |
 | :------: | :----------------------------- | :-------- | :---------------------------------------------------------------------------------------------------------------------------------------------------- |
 |          | `creditCard`                   | `object`  | The credit card object.                                                                                                                               |
 |          | └➔&nbsp;`rejectDebitCards`     | `bool`    | `true` if debit cards should be declined; otherwise `false` per default. Default value is set by Swedbank Pay and can be changed at your request.     |
@@ -240,12 +240,12 @@ A list of possible operations and their explanation is given below.
 ```
 
 {:.table .table-striped}
-| Property      | Type     | Description                                                                        |
+| Field      | Type     | Description                                                                        |
 | :------------ | :------- | :--------------------------------------------------------------------------------- |
 | `href`        | `string` | The target URI to perform the operation against.                                   |
 | `rel`         | `string` | The name of the relation the operation has to the current resource.                |
 | `method`      | `string` | `GET`, `PATCH`, `POST`, etc. The HTTP method to use when performing the operation. |
-| `contentType` | `string` | The HTTP content type of the resource referenced in the `href` property.           |
+| `contentType` | `string` | The HTTP content type of the resource referenced in the `href` field.           |
 
 The operations should be performed as described in each response and not as
 described here in the documentation. Always use the `href` and `method` as
@@ -541,7 +541,7 @@ with Swedbank Pay in order to work.**
 ### Recurrence Token
 
 * When initiating a `Purchase` payment order, you need to make sure that the
-  property `generateRecurrenceToken` is set to `true`. This recurrence token
+  field `generateRecurrenceToken` is set to `true`. This recurrence token
   will stored in the [authorization transaction][transaction]
   sub-resource on the underlying payment resource.
 * When initiating a `Verify` payment order, a recurrence token will be generated
@@ -705,7 +705,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property              | Type     | Description                                                 |
+| Field              | Type     | Description                                                 |
 | :-------------------- | :------- | :---------------------------------------------------------- |
 | `paymentorder`        | `object` | The payment order object.                                   |
 | `payments`            | `object` | The `payments` object.                                      |
@@ -776,7 +776,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property                           | Type         | Description                                                                                                                                                                                      |
+| Field                           | Type         | Description                                                                                                                                                                                      |
 | :--------------------------------- | :----------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `paymentorder`                     | `string`     | {% include field-description-id.md resource="paymentorder" sub_resource="payment" %}                                                                                                             |
 | `menuElementName`                  | `string`     | `creditcard`, `invoice`, etc. The name of the selected menu element.                                                                                                                             |
@@ -849,7 +849,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property                  | Type     | Description                                                                        |
+| Field                  | Type     | Description                                                                        |
 | :------------------------ | :------- | :--------------------------------------------------------------------------------- |
 | `paymentorder`            | `string` | {% include field-description-id.md resource="paymentorder" sub_resource="payer" %} |
 | `payer`                   | `object` | The payer object.                                                                  |
@@ -957,7 +957,7 @@ Triggered on terminal errors, and when the configuration fails validation.
 ## Enable or Disable Payment Menu
 
 It is possible to disable the payment menu when only one instrument exist by
-setting the `disablePaymentMenu` property to `true`. The default value is
+setting the `disablePaymentMenu` field to `true`. The default value is
 `false`, exemplified below.
 
 {:.code-header}
@@ -974,7 +974,7 @@ setting the `disablePaymentMenu` property to `true`. The default value is
 {:.text-center}
 ![example disablePaymentMenu = false][image_enabled_payment_menu]{:width="464" :height="607"}
 
-Setting `disablePaymentMenu` property to `true` removes all other payment
+Setting `disablePaymentMenu` field to `true` removes all other payment
 instruments but the one that is available.
 This feature is only valuable to set to `true` if you have only one payment
 instrument available. By setting it to `true` will remove the frame around the
@@ -1016,7 +1016,7 @@ following event argument object:
 ```
 
 {:.table .table-striped}
-| Property     | Type     | Description                                                                                                                                                      |
+| Field     | Type     | Description                                                                                                                                                      |
 | :----------- | :------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `name`       | `string` | The name and identifier of specific instrument instances - i.e. if you deploy more than one type of credit card payments, they would be distinguished by `name`. |
 | `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The instrument selected by the user.                                                                                  |
@@ -1038,7 +1038,7 @@ following event argument object:
 ```
 
 {:.table .table-striped}
-| Property     | Type     | Description                                                                                     |
+| Field     | Type     | Description                                                                                     |
 | :----------- | :------- | :---------------------------------------------------------------------------------------------- |
 | `id`         | `string` | {% include field-description-id.md %}                                                           |
 | `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The instrument selected when initiating the payment. |
@@ -1060,7 +1060,7 @@ object:
 ```
 
 {:.table .table-striped}
-| Property      | Type     | Description                                                     |
+| Field      | Type     | Description                                                     |
 | :------------ | :------- | :-------------------------------------------------------------- |
 | `id`          | `string` | {% include field-description-id.md %}                           |
 | `redirectUrl` | `string` | The URI the user will be redirect to after a completed payment. |
@@ -1082,7 +1082,7 @@ object:
 ```
 
 {:.table .table-striped}
-| Property      | Type     | Description                                                    |
+| Field      | Type     | Description                                                    |
 | :------------ | :------- | :------------------------------------------------------------- |
 | `id`          | `string` | {% include field-description-id.md %}                          |
 | `redirectUrl` | `string` | The URI the user will be redirect to after a canceled payment. |
@@ -1104,7 +1104,7 @@ event argument object:
 ```
 
 {:.table .table-striped}
-| Property      | Type     | Description                                                  |
+| Field      | Type     | Description                                                  |
 | :------------ | :------- | :----------------------------------------------------------- |
 | `id`          | `string` | {% include field-description-id.md %}                        |
 | `redirectUrl` | `string` | The URI the user will be redirect to after a failed payment. |
@@ -1126,7 +1126,7 @@ argument object:
 ```
 
 {:.table .table-striped}
-| Property  | Type     | Description                                                                             |
+| Field  | Type     | Description                                                                             |
 | :-------- | :------- | :-------------------------------------------------------------------------------------- |
 | `origin`  | `string` | `owner`, `merchant`. The value is always `merchant` unless Swedbank Pay hosts the view. |
 | `openUrl` | `string` | The URI containing Terms of Service and conditions.                                     |
@@ -1149,7 +1149,7 @@ object:
 ```
 
 {:.table .table-striped}
-| Property    | Type     | Description                                                                               |
+| Field    | Type     | Description                                                                               |
 | :---------- | :------- | :---------------------------------------------------------------------------------------- |
 | `origin`    | `string` | `consumer`, `paymentmenu`, `creditcard`, identifies the system that originated the error. |
 | `messageId` | `string` | A unique identifier for the message.                                                      |
@@ -1259,17 +1259,17 @@ The structure of a problem message will look like this:
 ```
 
 {:.table .table-striped}
-| Property                 | Type      | Description                                                                                                                                                                                                                                            |
+| Field                 | Type      | Description                                                                                                                                                                                                                                            |
 | :----------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `type`                   | `string`  | The URI that identifies the error type. This is the **only property usable for programmatic identification** of the type of error! When dereferenced, it might lead you to a human readable description of the error and how it can be recovered from. |
+| `type`                   | `string`  | The URI that identifies the error type. This is the **only field usable for programmatic identification** of the type of error! When dereferenced, it might lead you to a human readable description of the error and how it can be recovered from. |
 | `title`                  | `string`  | The title contains a human readable description of the error.                                                                                                                                                                                          |
 | `detail`                 | `string`  | A detailed, human readable description of the error.                                                                                                                                                                                                   |
 | `instance`               | `string`  | The identifier of the error instance. This might be of use to Swedbank Pay support personnel in order to find the exact error and the context it occurred in.                                                                                          |
 | `status`                 | `integer` | The HTTP status code that the problem was served with.                                                                                                                                                                                                 |
 | `action`                 | `string`  | The `action` indicates how the error can be recovered from.                                                                                                                                                                                            |
 | `problems`               | `array`   | The array of problem detail objects.                                                                                                                                                                                                                   |
-| └➔&nbsp;`[].name`        | `string`  | The name of the property, header, object, entity or likewise that was erroneous.                                                                                                                                                                       |
-| └➔&nbsp;`[].description` | `string`  | The description of what was wrong with the property, header, object, entity or likewise identified by `name`.                                                                                                                                          |
+| └➔&nbsp;`[].name`        | `string`  | The name of the field, header, object, entity or likewise that was erroneous.                                                                                                                                                                       |
+| └➔&nbsp;`[].description` | `string`  | The description of what was wrong with the field, header, object, entity or likewise identified by `name`.                                                                                                                                          |
 
 ### Common Problems
 

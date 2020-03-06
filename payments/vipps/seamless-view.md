@@ -122,8 +122,7 @@ You can [create a Vipps `payment`][create-payment] with the [purchase][purchase]
 A `Purchase` payment is a straightforward way to charge the card of the payer.
 It is followed up by posting a capture, cancellation or reversal transaction.
 
-An example of an abbreviated `POST` request is provided below. Each individual
-Property of the JSON document is described in the following section.
+An example of an abbreviated `POST` request is provided below. Each individual field of the JSON document is described in the following section.
 An example of an expanded `POST` request is available in the
 [other features section][purchase].
 
@@ -179,7 +178,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property                          | Type          | Description                                                                                                                                                                                                                                                                                        |
+| Required | Field                          | Type          | Description                                                                                                                                                                                                                                                                                        |
 | :------: | :-------------------------------- | :------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |  ✔︎︎︎︎︎  | `payment`                         | `object`      | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                              |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`operation`               | `string`      | The [`Purchase`][purchase] operation is used in our example. Take a look at the [create `payment` section][create-payment] for a full example of the [Purchase][purchase] `operation`.                                                                                                             |

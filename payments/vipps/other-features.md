@@ -31,7 +31,7 @@ To create a Vipps payment, you perform an HTTP `POST` against the
 `/psp/vipps/payments` resource.
 
 An example of a payment creation request is provided below.
-Each individual property of the JSON document is described in the following
+Each individual field of the JSON document is described in the following
 section.
 Use the [expand][technical-reference-expansion] request parameter to get a
 response that includes one or more expanded sub-resources inlined.
@@ -86,7 +86,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property                     | Type         | Description                                                                                                                                                                                                                                               |
+| Required | Field                     | Type         | Description                                                                                                                                                                                                                                               |
 | :------: | :--------------------------- | :----------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |    ✔︎    | `payment`                    | `object`     | The `payment` object.                                                                                                                                                                                                                                     |
 |    ✔︎    | └➔&nbsp;`operation`          | `string`     | `Purchase`                                                                                                                                                                                                                                                |

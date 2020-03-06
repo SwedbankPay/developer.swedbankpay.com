@@ -160,7 +160,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property       | Type     | Description                                                                        |
+| Field       | Type     | Description                                                                        |
 | :------------- | :------- | :--------------------------------------------------------------------------------- |
 | `paymentorder` | `object` | The payment order object.                                                          |
 | └➔&nbsp;`id`   | `string` | {% include field-description-id.md resource="paymentorder" %}                      |

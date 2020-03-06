@@ -284,7 +284,7 @@ Content-Type: application/json
 **Properties**
 
 {:.table .table-striped}
-| Required | Property                   | Type         | Description                                                                                                                                                                                                                                                                |
+| Required | Field                   | Type         | Description                                                                                                                                                                                                                                                                |
 | :------: | :------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |    ✔︎    | `transaction`              | `object`     | The transaction object containing details about the reversal transaction.                                                                                                                                                                                                  |
 |    ✔︎    | └➔&nbsp;`activity`         | `string`     | `FinancingConsumer`.                                                                                                                                                                                                                                                       |

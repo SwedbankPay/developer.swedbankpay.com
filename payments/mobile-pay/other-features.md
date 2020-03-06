@@ -23,8 +23,7 @@ To create a MobilePay Online payment, you perform an HTTP `POST` against the
 information][general-http-info] on how to compose a valid HTTP request before
 proceeding.
 
-An example of a payment creation request is provided below. Each individual
-Property of the JSON document is described in the following section. Use the
+An example of a payment creation request is provided below. Each individual field of the JSON document is described in the following section. Use the
 [expand][technical-reference-expand] request parameter to get a response that
 includes one or more expanded sub-resources inlined.
 
@@ -84,7 +83,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property                        | Data type    | Description                                                                                                                                                                                                                                               |
+| Required | Field                        | Data type    | Description                                                                                                                                                                                                                                               |
 | :------- | :------------------------------ | :----------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ✔︎︎︎︎︎   | `payment`                       | `object`     | The payment object.                                                                                                                                                                                                                                       |
 | ✔︎︎︎︎︎   | └➔&nbsp;`operation`             | `string`     | `Purchase`                                                                                                                                                                                                                                                |
@@ -166,7 +165,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property                            | Data type    | Description                                                                                                                                                                                      |
+| Field                            | Data type    | Description                                                                                                                                                                                      |
 | :---------------------------------- | :----------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `payment`                           | `object`     | The payment object contains information about the retrieved payment.                                                                                                                             |
 | └➔&nbsp;`id`                        | `string`     | {% include field-description-id.md %}                                                                                                                                                            |
@@ -244,7 +243,7 @@ A list of possible operations and their explanation is given below.
 ```
 
 {:.table .table-striped}
-| Property | Description                                                         |
+| Field | Description                                                         |
 | :------- | :------------------------------------------------------------------ |
 | `href`   | The target URI to perform the operation against.                    |
 | `rel`    | The name of the relation the operation has to the current resource. |
@@ -323,7 +322,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property                 | Type         | Description                                                                                                               |
+| Required | Field                 | Type         | Description                                                                                                               |
 | :------- | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------ |
 | ✔︎︎︎︎︎   | `transaction`            | `object`     | The currenct capture object.                                                                                              |
 | ✔︎︎︎︎︎   | └➔&nbsp;`amount`         | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
@@ -362,7 +361,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property                 | Type         | Description                                                                                               |
+| Required | Field                 | Type         | Description                                                                                               |
 | :------: | :----------------------- | :----------- | :-------------------------------------------------------------------------------------------------------- |
 |  ✔︎︎︎︎︎  | `transaction`            | `object`     | The current cancellation.                                                                                 |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`description`    | `string`     | A textual description of the reason for the cancellation.                                                 |
@@ -401,7 +400,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property                 | Type         | Description                                                                                                               |
+| Required | Field                 | Type         | Description                                                                                                               |
 | :------: | :----------------------- | :----------- |
 |    ✔︎    | `transaction`            | `object`     | The current reversal transaction object                                                                                   |
 |    ✔︎    | └➔&nbsp;`amount`         | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |

@@ -155,7 +155,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property                     | Type          | Description                                                                                                                                                                                                                                                                                        |
+| Required | Field                     | Type          | Description                                                                                                                                                                                                                                                                                        |
 | :------: | :--------------------------- | :------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |  ✔︎︎︎︎︎  | `payment`                    | `object`      | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                              |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`operation`          | `string`      | The operation that the `payment` is supposed to perform. The [`Purchase`][purchase] operation is used in our example.                                                                                                                                                                              |
@@ -261,7 +261,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property         | Type     | Required                                                                                          |
+| Field         | Type     | Required                                                                                          |
 | :--------------- | :------- | :------------------------------------------------------------------------------------------------ |
 | `transaction`    | `object` | The `transaction` object contains information about the specific transaction.                     |
 | └➔&nbsp;`msisdn` | `string` | The end-user's mobile number. It must have a country code prefix and be 8 to 15 digits in length. |
@@ -291,7 +291,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property      | Type     | Required                                                             |
+| Field      | Type     | Required                                                             |
 | :------------ | :------- | :------------------------------------------------------------------- |
 | `transaction` | `object` | The  `transaction` object is empty for m-commerce sale transactions. |
 

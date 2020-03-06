@@ -178,7 +178,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property                        | Data type    | Description                                                                                                                                                                                                                                               |
+| Required | Field                        | Data type    | Description                                                                                                                                                                                                                                               |
 | :------- | :------------------------------ | :----------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ✔︎︎︎︎︎   | `payment`                       | `object`     | The payment object.                                                                                                                                                                                                                                       |
 | ✔︎︎︎︎︎   | └➔&nbsp;`operation`             | `string`     | `Purchase`                                                                                                                                                                                                                                                |

@@ -36,7 +36,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property                  | Type         | Description                                                                                                                                                                                                                                                                       |
+| Field                  | Type         | Description                                                                                                                                                                                                                                                                       |
 | :------------------------ | :----------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `payment`                 | `string`     | {% include field-description-id.md sub_resource="payeeInfo" %}                                                                                                                                                                                                                    |
 | └➔&nbsp;`id`              | `string`     | {% include field-description-id.md resource="payeeInfo" %}                                                                                                                                                                                                                        |

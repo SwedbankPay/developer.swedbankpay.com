@@ -188,7 +188,7 @@ diagram.
 * ③ `Show Consumer UI page in iframe` displays the checkin form as content inside
   of the iframe.
 * ④ `onConsumerIdentified (consumerProfileRef)` is an event that triggers when
-  the consumer has been identified, and delivers a property
+  the consumer has been identified, and delivers a field
   `consumerProfileRef` as a reference to be used in the payment menu.
 
 #### Payment Menu

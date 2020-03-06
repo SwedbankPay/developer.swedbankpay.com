@@ -12,7 +12,7 @@ applies to the request response. This means that you can use the expand
 parameter on a `POST`  or `PATCH`request to get a response containing the target
 resource including expanded properties." %}
 
-This example below add the `urls` and `authorizations` property inlines to the
+This example below add the `urls` and `authorizations` field inlines to the
 response, enabling you to access information from these sub-resources.
 
 {:.code-header}

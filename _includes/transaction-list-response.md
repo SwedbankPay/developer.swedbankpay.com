@@ -46,7 +46,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property                          | Type      | Required                                                                                                                                                                                                     |
+| Field                          | Type      | Required                                                                                                                                                                                                     |
 | :-------------------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `payment`                         | `string`  | {% include field-description-id.md sub_resource=plural %}                                                                                                                                                    |
 | `{{ plural }}`                    | `object`  | The current `{{ plural }}` resource.                                                                                                                                                                         |
