@@ -12,6 +12,8 @@ sidebar:
       title: Seamless View
     - url: /payments/card/direct
       title: Direct
+    - url: /payments/card/mobile-card-payments
+      title: Mobile Card Payments
     - url: /payments/card/after-payment
       title: After Payment
     - url: /payments/card/other-features
@@ -624,7 +626,7 @@ sequenceDiagram
   SwedbankPay-->>-Merchant: payment resource
 ```
 
-{% include iterator.html prev_href="direct" prev_title="Back: Direct"
+{% include iterator.html prev_href="mobile-card-payments" prev_title="Back: Mobile Card Payments"
 next_href="other-features" next_title="Next: Other Features" %}
 
 [transaction-resource]: /payments/card/other-features#transactions
