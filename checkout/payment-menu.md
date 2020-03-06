@@ -21,100 +21,10 @@ sidebar:
 {% include jumbotron.html body="**Payment Menu** begins where **Checkin** left
 off, letting the payer complete their purchase." %}
 
-## Introduction
+## Step 3: Create Payment Order
 
-Below, you will se the sequence diagram of the payment menu. Notice that there
-are two optional ways of performing the payment:
-
-* Consumer perform payment **out** of `iframe`.
-* Consumer perform payment **within** `iframe`.
-
-```mermaid
-sequenceDiagram
-    participant Payer
-    participant Merchant
-    participant SwedbankPay as Swedbank Pay
-
-rect rgba(138, 205, 195, 0.1)
-            activate Payer
-            note left of Payer: Payment Menu
-            Payer ->>+ Merchant: Initiate Purchase
-            deactivate Payer
-            Merchant ->>+ SwedbankPay: POST /psp/paymentorders (paymentUrl, payer)
-            deactivate Merchant
-            SwedbankPay -->>+ Merchant: rel:view-paymentorder
-            deactivate SwedbankPay
-            Merchant -->>- Payer: Display Payment Menu on Merchant Page
-            activate Payer
-            Payer ->> Payer: Initiate Payment Menu Hosted View (open iframe)
-            Payer -->>+ SwedbankPay: Show Payment UI page in iframe
-            deactivate Payer
-            SwedbankPay ->>+ Payer: Do payment logic
-            deactivate SwedbankPay
-
-                opt Consumer perform payment out of iFrame
-                    Payer ->> Payer: Redirect to 3rd party
-                    Payer ->>+ 3rdParty: Redirect to 3rdPartyUrl URL
-                    deactivate Payer
-                    3rdParty -->>+ Payer: Redirect back to paymentUrl (merchant)
-                    deactivate 3rdParty
-                    Payer ->> Payer: Initiate Payment Menu Hosted View (open iframe)
-                    Payer ->>+ SwedbankPay: Show Payment UI page in iframe
-                    deactivate Payer
-                    SwedbankPay ->> Payer: Do payment logic
-                end
-
-        SwedbankPay -->> Payer: Payment status
-        deactivate SwedbankPay
-
-            alt If payment is completed
-            activate Payer
-            Payer ->> Payer: Event: onPaymentCompleted
-            Payer ->>+ Merchant: Check payment status
-            deactivate Payer
-            Merchant ->>+ SwedbankPay: GET <paymentorder.id>
-            deactivate Merchant
-            SwedbankPay ->>+ Merchant: rel: paid-paymentorder
-            deactivate SwedbankPay
-            opt Get PaymentOrder Details (if paid-paymentorder operation exist)
-            activate Payer
-            deactivate Payer
-            Merchant ->>+ SwedbankPay: GET rel: paid-paymentorder
-            deactivate Merchant
-            SwedbankPay -->> Merchant: Payment Details
-            deactivate SwedbankPay
-            end
-            end
-
-                opt If payment is failed
-                activate Payer
-                Payer ->> Payer: Event: OnPaymentFailed
-                Payer ->>+ Merchant: Check payment status
-                deactivate Payer
-                Merchant ->>+ SwedbankPay: GET {paymentorder.id}
-                deactivate Merchant
-                SwedbankPay -->>+ Merchant: rel: failed-paymentorder
-                deactivate SwedbankPay
-                opt Get PaymentOrder Details (if failed-paymentorder operation exist)
-                activate Payer
-                deactivate Payer
-                Merchant ->>+ SwedbankPay: GET rel: failed-paymentorder
-                deactivate Merchant
-                SwedbankPay -->> Merchant: Payment Details
-                deactivate SwedbankPay
-                end
-                end
-        activate Merchant
-        Merchant -->>- Payer: Show Purchase complete
-            opt PaymentOrder Callback (if callbackUrls is set)
-            activate Payer
-            deactivate Payer
-                SwedbankPay ->> Merchant: POST Payment Callback
-            end
-            end
-```
-
-## Payment Menu Back End
+Once consumer has been identified, the next step is to initiate the payment
+using `consumerProfileRef` retrieved in the previous step.
 
 We start by performing a `POST` request towards the `paymentorder` resource
 with the payer information (such as `consumerProfileRef`) we obtained in the
@@ -179,7 +89,7 @@ into how to hook that up next.
 be sent as a part of the `POST` request to `paymentorders` and must represent
 the order ID of the webshop or merchant website." %}
 
-## Payment Menu Front End
+## Step 4: Display the Payment Menu
 
 To load the payment menu from the JavaScript URL obtained in the back end API
 response, it needs to be set as a `script` element's `src` attribute. You can
@@ -289,6 +199,97 @@ You may open and close the payment menu using `.open()` and `.close()`
 functions. You can also invoke `.refresh()` to
 [update the Payment Menu][payment-order-operations] after any changes to the
 order.
+
+Below, you will see a complete overview of the payment menu process.
+Notice that there are two ways of performing the payment:
+
+* Consumer perform payment **out** of `iframe`.
+* Consumer perform payment **within** `iframe`.
+
+```mermaid
+sequenceDiagram
+    participant Payer
+    participant Merchant
+    participant SwedbankPay as Swedbank Pay
+
+rect rgba(138, 205, 195, 0.1)
+            activate Payer
+            note left of Payer: Payment Menu
+            Payer ->>+ Merchant: Initiate Purchase
+            deactivate Payer
+            Merchant ->>+ SwedbankPay: POST /psp/paymentorders (paymentUrl, payer)
+            deactivate Merchant
+            SwedbankPay -->>+ Merchant: rel:view-paymentorder
+            deactivate SwedbankPay
+            Merchant -->>- Payer: Display Payment Menu on Merchant Page
+            activate Payer
+            Payer ->> Payer: Initiate Payment Menu Hosted View (open iframe)
+            Payer -->>+ SwedbankPay: Show Payment UI page in iframe
+            deactivate Payer
+            SwedbankPay ->>+ Payer: Do payment logic
+            deactivate SwedbankPay
+
+                opt Consumer perform payment out of iFrame
+                    Payer ->> Payer: Redirect to 3rd party
+                    Payer ->>+ 3rdParty: Redirect to 3rdPartyUrl URL
+                    deactivate Payer
+                    3rdParty -->>+ Payer: Redirect back to paymentUrl (merchant)
+                    deactivate 3rdParty
+                    Payer ->> Payer: Initiate Payment Menu Hosted View (open iframe)
+                    Payer ->>+ SwedbankPay: Show Payment UI page in iframe
+                    deactivate Payer
+                    SwedbankPay ->> Payer: Do payment logic
+                end
+
+        SwedbankPay -->> Payer: Payment status
+        deactivate SwedbankPay
+
+            alt If payment is completed
+            activate Payer
+            Payer ->> Payer: Event: onPaymentCompleted
+            Payer ->>+ Merchant: Check payment status
+            deactivate Payer
+            Merchant ->>+ SwedbankPay: GET <paymentorder.id>
+            deactivate Merchant
+            SwedbankPay ->>+ Merchant: rel: paid-paymentorder
+            deactivate SwedbankPay
+            opt Get PaymentOrder Details (if paid-paymentorder operation exist)
+            activate Payer
+            deactivate Payer
+            Merchant ->>+ SwedbankPay: GET rel: paid-paymentorder
+            deactivate Merchant
+            SwedbankPay -->> Merchant: Payment Details
+            deactivate SwedbankPay
+            end
+            end
+
+                opt If payment is failed
+                activate Payer
+                Payer ->> Payer: Event: OnPaymentFailed
+                Payer ->>+ Merchant: Check payment status
+                deactivate Payer
+                Merchant ->>+ SwedbankPay: GET {paymentorder.id}
+                deactivate Merchant
+                SwedbankPay -->>+ Merchant: rel: failed-paymentorder
+                deactivate SwedbankPay
+                opt Get PaymentOrder Details (if failed-paymentorder operation exist)
+                activate Payer
+                deactivate Payer
+                Merchant ->>+ SwedbankPay: GET rel: failed-paymentorder
+                deactivate Merchant
+                SwedbankPay -->> Merchant: Payment Details
+                deactivate SwedbankPay
+                end
+                end
+        activate Merchant
+        Merchant -->>- Payer: Show Purchase complete
+            opt PaymentOrder Callback (if callbackUrls is set)
+            activate Payer
+            deactivate Payer
+                SwedbankPay ->> Merchant: POST Payment Callback
+            end
+            end
+```
 
 Now that you have completed the Payment Menu integration, you can move on to
 finalizing the payment in the [After Payment section][after-payment].

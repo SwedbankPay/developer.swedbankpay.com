@@ -25,42 +25,7 @@ implement in order to complete the Swedbank Pay Checkout integration. To
 finalize Checkout you first have to Checkin. To check in, the payer needs to be
 identified." %}
 
-## Introduction
-
-An overview of how the process of identifying the payer through Checkin is
-illustrated in the below sequence diagram.
-
-```mermaid
-sequenceDiagram
-    participant Payer
-    participant Merchant
-    participant SwedbankPay as Swedbank Pay
-
-        rect rgba(238, 112, 35, 0.05)
-            note left of Payer: Checkin
-
-    Payer ->>+ Merchant: Start Checkin
-    Merchant ->>+ SwedbankPay: POST /psp/consumers
-    deactivate Merchant
-    SwedbankPay -->>+ Merchant: rel:view-consumer-identification ①
-    deactivate SwedbankPay
-    Merchant -->>- Payer: Show Checkin on Merchant Page
-
-    Payer ->>+ Payer: Initiate Consumer Hosted View (open iframe) ②
-    Payer ->>+ SwedbankPay: Show Consumer UI page in iframe ③
-    deactivate Payer
-    SwedbankPay ->>- Payer: Consumer identification process
-    activate Payer
-    Payer ->>+ SwedbankPay: Consumer identification process
-    deactivate Payer
-    SwedbankPay -->>- Payer: show consumer completed iframe
-    activate Payer
-    Payer ->> Payer: EVENT: onConsumerIdentified (consumerProfileRef) ④
-    deactivate Payer
-    end
-```
-
-## Checkin Back End
+## Step 1: Initiate session for consumer identification 
 
 The payer will be identified with the `consumers` resource and will be
 persisted to streamline future Payment Menu processes. Payer identification
@@ -127,7 +92,7 @@ Content-Type: application/json
 | └➔&nbsp;`contentType` | `string` | The HTTP content type of the target URI. Indicates what sort of resource is to be found at the URI, how it is expected to be used and behave.     |
 | └➔&nbsp;`href`        | `string` | The target URI of the operation.                                                                                                                  |
 
-## Checkin Front End
+## Step 2: Display Swedbank Pay Checkin module
 
 The response from the `POST` of consumer information contains a few operations.
 The combination of `rel`, `method` and `contentType` should give you a clue how
@@ -242,6 +207,38 @@ As you can see, the payer's information is pre-filled as provided by the
 initial `POST`. With a `consumerProfileRef` safely tucked into our pocket,
 the Checkin is complete and we can move on to [Payment Menu][payment-menu].
 
+A complete overview of how the process of identifying the payer through Checkin
+is illustrated in the sequence diagram below.
+
+```mermaid
+sequenceDiagram
+    participant Payer
+    participant Merchant
+    participant SwedbankPay as Swedbank Pay
+
+        rect rgba(238, 112, 35, 0.05)
+            note left of Payer: Checkin
+
+    Payer ->>+ Merchant: Start Checkin
+    Merchant ->>+ SwedbankPay: POST /psp/consumers
+    deactivate Merchant
+    SwedbankPay -->>+ Merchant: rel:view-consumer-identification ①
+    deactivate SwedbankPay
+    Merchant -->>- Payer: Show Checkin on Merchant Page
+
+    Payer ->>+ Payer: Initiate Consumer Hosted View (open iframe) ②
+    Payer ->>+ SwedbankPay: Show Consumer UI page in iframe ③
+    deactivate Payer
+    SwedbankPay ->>- Payer: Consumer identification process
+    activate Payer
+    Payer ->>+ SwedbankPay: Consumer identification process
+    deactivate Payer
+    SwedbankPay -->>- Payer: show consumer completed iframe
+    activate Payer
+    Payer ->> Payer: EVENT: onConsumerIdentified (consumerProfileRef) ④
+    deactivate Payer
+    end
+```
 If a browser refresh is performed after the payer has checked in, the payment
 menu must be shown even though `onConsumerIdentified` is not invoked.
 
