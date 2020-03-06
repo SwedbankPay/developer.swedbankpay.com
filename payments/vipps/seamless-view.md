@@ -205,7 +205,7 @@ Content-Type: application/json
 |          | └─➔&nbsp;`termsOfServiceUrl`      | `string`      | A URL that contains your terms and conditions for the payment, to be linked on the payment page. Require https.                                                                                                                                                                                    |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`payeeInfo`               | `object`      | The `payeeInfo` contains information about the payee.                                                                                                                                                                                                                                              |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`payeeId`                | `string`      | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                                                                                                              |
-|  ✔︎︎︎︎︎  | └─➔&nbsp;`payeeReference`         | `string(50*)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.                                                                                                           |
+|  ✔︎︎︎︎︎  | └─➔&nbsp;`payeeReference`         | `string(50*)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [`payeeReference`][payee-reference] for details.                                                                                                           |
 |          | └─➔&nbsp;`payeeName`              | `string`      | The payee name (like merchant name) that will be displayed to consumer when redirected to Swedbank Pay.                                                                                                                                                                                            |
 |          | └─➔&nbsp;`productCategory`        | `string`      | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                     |
 |          | └─➔&nbsp;`orderReference`         | `String(50)`  | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                            |
@@ -346,9 +346,9 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
-  "transaction": {
-    "msisdn": "+4798765432"
-  }
+    "transaction": {
+        "msisdn": "+4798765432"
+    }
 }
 ```
 
@@ -426,6 +426,6 @@ Content-Type: application/json
 [reversal]: /payments/vipps/after-payment#reversals
 [user-agent-definition]: https://en.wikipedia.org/wiki/User_agent
 [Vipps_flow_PaymentPages.png]: /assets/img/vipps-flow-paymentpages.png
+[vipps-purchase-flow]: /assets/img/payments/vipps-purchase-flow.png
 [Vipps-screenshot-1]: /assets/img/checkout/vipps-hosted-payment.png
 [Vipps-screenshot-2]: /assets/img/checkout/vipps-hosted-payment-no-paymenturl.png
-[vipps-purchase-flow]: /assets/img/payments/vipps-purchase-flow.png
