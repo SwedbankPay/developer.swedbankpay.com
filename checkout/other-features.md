@@ -89,10 +89,10 @@ Content-Type: application/json
     "paymentorder": "/psp/payments/{{ page.payment_order_id }}",
     "urls": {
         "id": "/psp/payments/{{ page.payment_order_id }}/urls",
-        "hostUrls": [ "https://example.com", "http://example.net" ],
-        "completeUrl": "http://example.com/payment-complete",
-        "cancelUrl": "http://example.com/payment-canceled",
-        "paymentUrl": "http://example.com/perform-payment",
+        "hostUrls": [ "https://example.com", "https://example.net" ],
+        "completeUrl": "https://example.com/payment-complete",
+        "cancelUrl": "https://example.com/payment-canceled",
+        "paymentUrl": "https://example.com/perform-payment",
         "callbackUrl": "http://api.example.com/payment-callback",
         "logoUrl": "http://merchant.com/path/to/logo.png",
         "termsOfServiceUrl": "http://merchant.com/path/to/tems"

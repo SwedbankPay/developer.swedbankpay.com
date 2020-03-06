@@ -115,10 +115,10 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",
         "urls": {
-            "completeUrl": "http://example.com/payment-completed",
-            "cancelUrl": "http://example.com/payment-canceled",
-            "callbackUrl": "http://example.com/payment-callback",
-            "logoUrl": "http://example.com/logo.png",
+            "completeUrl": "https://example.com/payment-completed",
+            "cancelUrl": "https://example.com/payment-canceled",
+            "callbackUrl": "https://example.com/payment-callback",
+            "logoUrl": "https://example.com/logo.png",
             "termsOfServiceUrl": "http://fexample.com/terms.pdf"
         },
         "payeeInfo": {
@@ -248,7 +248,7 @@ Content-Type: application/json
             ],
             "completeUrl": "https://example.com/payment-completed",
             "cancelUrl": "https://example.com/payment-canceled",
-            "paymentUrl": "http://example.com/perform-payment",
+            "paymentUrl": "https://example.com/perform-payment",
             "logoUrl": "https://example.com/payment-logo.png",
             "termsOfServiceUrl": "https://example.com/payment-terms.html"
         },

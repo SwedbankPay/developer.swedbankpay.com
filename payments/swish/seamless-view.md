@@ -154,11 +154,11 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "urls": {
-            "hostUrls": ["http://example.com"],
-            "completeUrl": "http://example.com/payment-completed",
-            "cancelUrl": "http://example.com/payment-canceled",
-            "paymentUrl": "http://example.com/perform-payment",
-            "callbackUrl": "http://example.com/payment-callback",
+            "hostUrls": ["https://example.com"],
+            "completeUrl": "https://example.com/payment-completed",
+            "cancelUrl": "https://example.com/payment-canceled",
+            "paymentUrl": "https://example.com/perform-payment",
+            "callbackUrl": "https://example.com/payment-callback",
             "logoUrl": "https://example.com/payment-logo.png",
             "termsOfServiceUrl": "https://example.com/payment-terms.pdf"
         },

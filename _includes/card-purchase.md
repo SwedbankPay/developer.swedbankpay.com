@@ -26,11 +26,11 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",
         "urls": { {% if seamless_view %}
-            "hostUrls": ["http://example.com"],{% endif %}
-            "completeUrl": "http://example.com/payment-completed",
-            "cancelUrl": "http://example.com/payment-canceled",{% if seamless_view %}
-            "paymentUrl": "http://example.com/perform-payment",{% endif %}
-            "callbackUrl": "http://example.com/payment-callback",
+            "hostUrls": ["https://example.com"],{% endif %}
+            "completeUrl": "https://example.com/payment-completed",
+            "cancelUrl": "https://example.com/payment-canceled",{% if seamless_view %}
+            "paymentUrl": "https://example.com/perform-payment",{% endif %}
+            "callbackUrl": "https://example.com/payment-callback",
             "logoUrl": "https://example.com/payment-logo.png",
             "termsOfServiceUrl": "https://example.com/payment-terms.pdf",
         },

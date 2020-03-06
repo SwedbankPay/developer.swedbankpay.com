@@ -60,9 +60,9 @@ Content-Type: application/json
         "language": "nb-NO",
         "urls": {
             "hostUrls": ["https://example.com", "https://example.net"],
-            "completeUrl": "http://example.com/payment-completed",
-            "cancelUrl": "http://example.com/payment-canceled",
-            "paymentUrl": "http://example.com/perform-payment",
+            "completeUrl": "https://example.com/payment-completed",
+            "cancelUrl": "https://example.com/payment-canceled",
+            "paymentUrl": "https://example.com/perform-payment",
             "callbackUrl": "{{ page.api_url }}/psp/payment-callback",
             "logoUrl": "https://example.com/path/to/logo.png",
             "termsOfServiceUrl": "https://example.com/terms.pdf"

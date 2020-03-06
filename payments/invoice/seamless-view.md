@@ -177,12 +177,12 @@ Content-Type: application/json
         "language": "sv-SE",
         "urls": {
             "hosturls": [
-                "http://example.com"
+                "https://example.com"
             ],
-            "completeUrl": "http://example.com/payment-completed",
-            "cancelUrl": "http://example.com/payment-canceled",
-            "callbackUrl": "http://example.com/payment-callback",
-            "termsOfServiceUrl": "http://example.com/payment-terms.pdf"
+            "completeUrl": "https://example.com/payment-completed",
+            "cancelUrl": "https://example.com/payment-canceled",
+            "callbackUrl": "https://example.com/payment-callback",
+            "termsOfServiceUrl": "https://example.com/payment-terms.pdf"
         },
         "payeeInfo": {
             "payeeId": "{{ page.merchant_id }}",

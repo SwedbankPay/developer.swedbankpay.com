@@ -60,9 +60,9 @@ Content-Type: application/json
         "language": "da-DK",
         "urls": {
             "hostUrls": ["https://example.com", "https://example.net"],
-            "completeUrl": "http://example.com/payment-completed",
-            "cancelUrl": "http://example.com/payment-canceled",
-            "callbackUrl": "http://example.com/payment-callback"
+            "completeUrl": "https://example.com/payment-completed",
+            "cancelUrl": "https://example.com/payment-canceled",
+            "callbackUrl": "https://example.com/payment-callback"
         },
         "payeeInfo": {
             "payeeId": "12345678-1234-1234-1234-123456789012",
