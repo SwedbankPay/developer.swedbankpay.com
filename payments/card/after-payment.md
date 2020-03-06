@@ -626,7 +626,7 @@ sequenceDiagram
   SwedbankPay-->>-Merchant: payment resource
 ```
 
-{% include iterator.html prev_href="direct" prev_title="Back: Direct"
+{% include iterator.html prev_href="mobile-card-payments" prev_title="Back: Mobile Card Payments"
 next_href="other-features" next_title="Next: Other Features" %}
 
 [transaction-resource]: /payments/card/other-features#transactions

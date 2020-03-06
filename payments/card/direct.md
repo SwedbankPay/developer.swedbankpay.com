@@ -201,7 +201,7 @@ sequenceDiagram
   when the payment was created.
 
 {% include iterator.html prev_href="seamless-view" prev_title="Back: Seamless View"
-next_href="after-payment" next_title="Next: After Payment" %}
+next_href="mobile-card-payments" next_title="Next: Mobile Card Payments" %}
 
 [abort]: /payments/card/other-features#abort
 [expansion]: /payments/card/other-features#expansion

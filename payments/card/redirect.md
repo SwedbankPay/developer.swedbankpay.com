@@ -202,7 +202,6 @@ next_href="seamless-view" next_title="Next: Seamless View" %}
 [purchase]: /payments/card/other-features#purchase
 [price-resource]: /payments/card/other-features#prices
 [recur]: /payments/card/other-features#recur
-[redirect-image]: /assets/img/checkout/test-purchase.png
 [reversal]: /payments/card/after-payment#reversals
 [card-payment]: /assets/img/payments/card-payment.png
 [verify]: /payments/card/other-features#verify
