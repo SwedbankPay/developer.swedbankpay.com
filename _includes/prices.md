@@ -44,9 +44,9 @@ Content-Type: application/json
 {:.table .table-striped}
 | Property             | Type      | Description                                                                                                                                                                                 |
 | :------------------- | :-------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `payment`            | `string`  | The relative URI of the  `payment`  the prices resource belongs to.                                                                                                                         |
+| `payment`            | `string`  | {% include field-description-id.md sub_resource="prices" %}                                                                                                                                 |
 | `prices`             | `object`  | The `prices`  resource.                                                                                                                                                                     |
-| └➔&nbsp;`id`         | `string`  | The relative URI of the current  `prices`  resource.                                                                                                                                        |
+| └➔&nbsp;`id`         | `string`  | {% include field-description-id.md resource="prices" %}                                                                                                                                     |
 | └➔&nbsp;`priceList`  | `array`   | The array of price objects. **Note:** Even if you specifiy  `CreditCard`  in the input message the system will return all your configured card brands instead when you expan the priceList. |
 | └─➔&nbsp;`type`      | `string`  | The type of the price object.                                                                                                                                                               |
 | └─➔&nbsp;`amount`    | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.                                                                        |

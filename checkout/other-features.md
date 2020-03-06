@@ -103,9 +103,9 @@ Content-Type: application/json
 {:.table .table-striped}
 | Property                    | Type     | Description                                                                                                                                                                                                                                                                                              |
 | :-------------------------- | :------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `paymentorder`              | `string` | The URI to the payment order the resource belong to.                                                                                                                                                                                                                                                     |
+| `paymentorder`              | `string` | {% include field-description-id.md sub_resource="urls" %}                                                                                                                                                                                                                                                |
 | `urls`                      | `object` | The URLs object.                                                                                                                                                                                                                                                                                         |
-| └➔&nbsp;`id`                | `string` | The relative URI to the `urls` resource.                                                                                                                                                                                                                                                                 |
+| └➔&nbsp;`id`                | `string` | {% include field-description-id.md resource="urls" %}                                                                                                                                                                                                                                                    |
 | └➔&nbsp;`hostsUrl`          | `string` | An array of the whitelisted URIs that are allowed as parents to a Hosted View, typically the URI of the web shop or similar that will embed a Hosted View within it.                                                                                                                                     |
 | └➔&nbsp;`completeUrl`       | `string` | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment order to inspect it further. |
 | └➔&nbsp;`cancelUrl`         | `string` | The URI to redirect the payer to if the payment is canceled, either by the payer or by the merchant trough an `abort` request of the `payment` or `paymentorder`.                                                                                                                                        |
@@ -709,9 +709,9 @@ Content-Type: application/json
 | :-------------------- | :------- | :---------------------------------------------------------- |
 | `paymentorder`        | `object` | The payment order object.                                   |
 | `payments`            | `object` | The `payments` object.                                      |
-| └➔&nbsp;`id`          | `string` | The relative URI of the current `payments` resource.        |
+| └➔&nbsp;`id`          | `string` | {% include field-description-id.md resource="payments" %}   |
 | └➔&nbsp;`paymentList` | `array`  | The array of `payment` objects.                             |
-| └─➔&nbsp;`id`         | `string` | The URI of the `payment`.                                   |
+| └─➔&nbsp;`id`         | `string` | {% include field-description-id.md %}                       |
 | └─➔&nbsp;`instrument` | `string` | The name of the payment instrument.                         |
 | └─➔&nbsp;`created`    | `string` | The ISO-8601 date and time of when the payment was created. |
 
@@ -778,11 +778,11 @@ Content-Type: application/json
 {:.table .table-striped}
 | Property                           | Type         | Description                                                                                                                                                                                      |
 | :--------------------------------- | :----------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `paymentorder`                     | `string`     | The URI of the payment order the payment belongs to.                                                                                                                                             |
+| `paymentorder`                     | `string`     | {% include field-description-id.md resource="paymentorder" sub_resource="payment" %}                                                                                                             |
 | `menuElementName`                  | `string`     | `creditcard`, `invoice`, etc. The name of the selected menu element.                                                                                                                             |
 | `payment`                          | `object`     | The payment object.                                                                                                                                                                              |
 | └➔&nbsp;`recurrenceToken`          | `string`     | The created recurrenceToken, if `operation: Verify` or `generateRecurrenceToken: true` was used.                                                                                                 |
-| └➔&nbsp;`id`                       | `string`     | The relative URI to the payment.                                                                                                                                                                 |
+| └➔&nbsp;`id`                       | `string`     | {% include field-description-id.md %}                                                                                                                                                            |
 | └➔&nbsp;`number`                   | `integer`    | The payment `number`, useful when there's need to reference the payment in human communication. Not usable for programmatic identification of the payment, for that `id` should be used instead. |
 | └➔&nbsp;`instrument`               | `string`     | The payment instrument used.                                                                                                                                                                     |
 | └➔&nbsp;`created`                  | `string`     | The ISO-8601 date of when the payment was created.                                                                                                                                               |
@@ -849,20 +849,20 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property                  | Type     | Description                                         |
-| :------------------------ | :------- | :-------------------------------------------------- |
-| `paymentorder`            | `string` | The URI of the payment order the payer belongs to.  |
-| `payer`                   | `object` | The payer object.                                   |
-| └➔&nbsp;`id`              | `string` | The relative URI to the current `payer` resource.   |
-| └➔&nbsp;`email`           | `string` | Payer's registered email address.                   |
-| └➔&nbsp;`msisdn`          | `string` | Payer's registered mobile phone number.             |
-| └➔&nbsp;`shippingAddress` | `object` | The shipping address object related to the `payer`. |
-| └─➔&nbsp;`addresse`       | `object` | The shipping address object related to the `payer`. |
-| └─➔&nbsp;`coAddress`      | `string` | Payer' s c/o address, if applicable.                |
-| └─➔&nbsp;`streetAddress`  | `string` | Payer's street address                              |
-| └─➔&nbsp;`zipCode`        | `string` | Payer's zip code                                    |
-| └─➔&nbsp;`city`           | `string` | Payer's city of residence                           |
-| └─➔&nbsp;`countryCode`    | `string` | Country Code for country of residence.              |
+| Property                  | Type     | Description                                                                        |
+| :------------------------ | :------- | :--------------------------------------------------------------------------------- |
+| `paymentorder`            | `string` | {% include field-description-id.md resource="paymentorder" sub_resource="payer" %} |
+| `payer`                   | `object` | The payer object.                                                                  |
+| └➔&nbsp;`id`              | `string` | {% include field-description-id.md resource="payer" %}                             |
+| └➔&nbsp;`email`           | `string` | Payer's registered email address.                                                  |
+| └➔&nbsp;`msisdn`          | `string` | Payer's registered mobile phone number.                                            |
+| └➔&nbsp;`shippingAddress` | `object` | The shipping address object related to the `payer`.                                |
+| └─➔&nbsp;`addresse`       | `object` | The shipping address object related to the `payer`.                                |
+| └─➔&nbsp;`coAddress`      | `string` | Payer' s c/o address, if applicable.                                               |
+| └─➔&nbsp;`streetAddress`  | `string` | Payer's street address                                                             |
+| └─➔&nbsp;`zipCode`        | `string` | Payer's zip code                                                                   |
+| └─➔&nbsp;`city`           | `string` | Payer's city of residence                                                          |
+| └─➔&nbsp;`countryCode`    | `string` | Country Code for country of residence.                                             |
 
 ## Checkin Events
 
@@ -1040,7 +1040,7 @@ following event argument object:
 {:.table .table-striped}
 | Property     | Type     | Description                                                                                     |
 | :----------- | :------- | :---------------------------------------------------------------------------------------------- |
-| `id`         | `string` | The relative URI to the payment.                                                                |
+| `id`         | `string` | {% include field-description-id.md %}                                                           |
 | `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The instrument selected when initiating the payment. |
 
 ### `onPaymentCompleted`
@@ -1062,7 +1062,7 @@ object:
 {:.table .table-striped}
 | Property      | Type     | Description                                                     |
 | :------------ | :------- | :-------------------------------------------------------------- |
-| `id`          | `string` | The relative URI to the payment.                                |
+| `id`          | `string` | {% include field-description-id.md %}                           |
 | `redirectUrl` | `string` | The URI the user will be redirect to after a completed payment. |
 
 ### `onPaymentCanceled`
@@ -1084,7 +1084,7 @@ object:
 {:.table .table-striped}
 | Property      | Type     | Description                                                    |
 | :------------ | :------- | :------------------------------------------------------------- |
-| `id`          | `string` | The relative URI to the payment.                               |
+| `id`          | `string` | {% include field-description-id.md %}                          |
 | `redirectUrl` | `string` | The URI the user will be redirect to after a canceled payment. |
 
 ### `onPaymentFailed`
@@ -1106,7 +1106,7 @@ event argument object:
 {:.table .table-striped}
 | Property      | Type     | Description                                                  |
 | :------------ | :------- | :----------------------------------------------------------- |
-| `id`          | `string` | The relative URI to the payment.                             |
+| `id`          | `string` | {% include field-description-id.md %}                        |
 | `redirectUrl` | `string` | The URI the user will be redirect to after a failed payment. |
 
 ### `onPaymentTermsOfService`

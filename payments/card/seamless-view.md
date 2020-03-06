@@ -227,10 +227,10 @@ This event triggers when a user actively attempts to perform a payment. The
 ```
 
 {:.table .table-striped}
-| Property     | Type     | Description                      |
-| :----------- | :------- | :------------------------------- |
-| `id`         | `string` | The relative URI to the payment. |
-| `instrument` | `string` | `Creditcard`                     |
+| Property     | Type     | Description                           |
+| :----------- | :------- | :------------------------------------ |
+| `id`         | `string` | {% include field-description-id.md %} |
+| `instrument` | `string` | `Creditcard`                          |
 
 ### `onPaymentCompleted`
 
@@ -251,7 +251,7 @@ object:
 {:.table .table-striped}
 | Property      | Type     | Description                                                     |
 | :------------ | :------- | :-------------------------------------------------------------- |
-| `id`          | `string` | The relative URI to the payment.                                |
+| `id`          | `string` | {% include field-description-id.md %}                           |
 | `redirectUrl` | `string` | The URI the user will be redirect to after a completed payment. |
 
 ### `onPaymentCanceled`
@@ -273,7 +273,7 @@ object:
 {:.table .table-striped}
 | Property      | Type     | Description                                                    |
 | :------------ | :------- | :------------------------------------------------------------- |
-| `id`          | `string` | The relative URI to the payment.                               |
+| `id`          | `string` | {% include field-description-id.md %}                          |
 | `redirectUrl` | `string` | The URI the user will be redirect to after a canceled payment. |
 
 ### `onPaymentFailed`
@@ -295,7 +295,7 @@ event argument object:
 {:.table .table-striped}
 | Property      | Type     | Description                                                  |
 | :------------ | :------- | :----------------------------------------------------------- |
-| `id`          | `string` | The relative URI to the payment.                             |
+| `id`          | `string` | {% include field-description-id.md %}                        |
 | `redirectUrl` | `string` | The URI the user will be redirect to after a failed payment. |
 
 ### `onPaymentTermsOfService`

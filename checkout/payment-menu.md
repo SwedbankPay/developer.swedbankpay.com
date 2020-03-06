@@ -163,7 +163,7 @@ Content-Type: application/json
 | Property       | Type     | Description                                                                        |
 | :------------- | :------- | :--------------------------------------------------------------------------------- |
 | `paymentorder` | `object` | The payment order object.                                                          |
-| └➔&nbsp;`id`   | `string` | The relative URI to the payment order.                                             |
+| └➔&nbsp;`id`   | `string` | {% include field-description-id.md resource="paymentorder" %}                      |
 | `operations`   | `array`  | The array of possible operations to perform, given the state of the payment order. |
 
 The `paymentorder` object is abbreviated since it's just the `id` and
