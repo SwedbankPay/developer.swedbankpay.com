@@ -149,8 +149,7 @@ Our `payment` example uses the [`Purchase`][purchase] value.
 A `Purchase` payment is a straightforward way to charge the card of the payer.
 It is followed up by posting a capture, cancellation or reversal transaction.
 
-An example of an abbreviated `POST` request is provided below. Each individual
-Property of the JSON document is described in the following section.
+An example of an abbreviated `POST` request is provided below. Each individual field of the JSON document is described in the following section.
 An example of an expanded `POST` request is available in the
 [other features section][purchase].
 

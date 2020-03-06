@@ -141,8 +141,7 @@ options:
 A `Purchase` payment is a straightforward way to charge the card of the payer.
 It is followed up by posting a capture, cancellation or reversal transaction.
 
-An example of an abbreviated `POST` request is provided below. Each individual
-Property of the JSON document is described in the following section.
+An example of an abbreviated `POST` request is provided below. Each individual field of the JSON document is described in the following section.
 An example of an expanded `POST` request is available in the
 [other features section][purchase].
 
@@ -227,10 +226,10 @@ This event triggers when a user actively attempts to perform a payment. The
 ```
 
 {:.table .table-striped}
-| Property     | Type     | Description                      |
-| :----------- | :------- | :------------------------------- |
-| `id`         | `string` | The relative URI to the payment. |
-| `instrument` | `string` | `Creditcard`                     |
+| Field     | Type     | Description                           |
+| :----------- | :------- | :------------------------------------ |
+| `id`         | `string` | {% include field-description-id.md %} |
+| `instrument` | `string` | `Creditcard`                          |
 
 ### `onPaymentCompleted`
 
@@ -249,9 +248,9 @@ object:
 ```
 
 {:.table .table-striped}
-| Property      | Type     | Description                                                     |
+| Field      | Type     | Description                                                     |
 | :------------ | :------- | :-------------------------------------------------------------- |
-| `id`          | `string` | The relative URI to the payment.                                |
+| `id`          | `string` | {% include field-description-id.md %}                           |
 | `redirectUrl` | `string` | The URI the user will be redirect to after a completed payment. |
 
 ### `onPaymentCanceled`
@@ -271,9 +270,9 @@ object:
 ```
 
 {:.table .table-striped}
-| Property      | Type     | Description                                                    |
+| Field      | Type     | Description                                                    |
 | :------------ | :------- | :------------------------------------------------------------- |
-| `id`          | `string` | The relative URI to the payment.                               |
+| `id`          | `string` | {% include field-description-id.md %}                          |
 | `redirectUrl` | `string` | The URI the user will be redirect to after a canceled payment. |
 
 ### `onPaymentFailed`
@@ -293,9 +292,9 @@ event argument object:
 ```
 
 {:.table .table-striped}
-| Property      | Type     | Description                                                  |
+| Field      | Type     | Description                                                  |
 | :------------ | :------- | :----------------------------------------------------------- |
-| `id`          | `string` | The relative URI to the payment.                             |
+| `id`          | `string` | {% include field-description-id.md %}                        |
 | `redirectUrl` | `string` | The URI the user will be redirect to after a failed payment. |
 
 ### `onPaymentTermsOfService`
@@ -315,7 +314,7 @@ argument object:
 ```
 
 {:.table .table-striped}
-| Property  | Type     | Description                                                                             |
+| Field  | Type     | Description                                                                             |
 | :-------- | :------- | :-------------------------------------------------------------------------------------- |
 | `origin`  | `string` | `owner`, `merchant`. The value is always `merchant` unless Swedbank Pay hosts the view. |
 | `openUrl` | `string` | The URI containing Terms of Service and conditions.                                     |
@@ -338,7 +337,7 @@ object:
 ```
 
 {:.table .table-striped}
-| Property    | Type     | Description                                                    |
+| Field    | Type     | Description                                                    |
 | :---------- | :------- | :------------------------------------------------------------- |
 | `origin`    | `string` | `creditcard`, identifies the system that originated the error. |
 | `messageId` | `string` | A unique identifier for the message.                           |

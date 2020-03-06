@@ -28,7 +28,7 @@ To create a Swish payment, you perform an HTTP `POST` against the
 `/psp/swish/payments` resource.
 
 An example of a payment creation request is provided below.
-Each individual property of the JSON document is described in the following
+Each individual field of the JSON document is described in the following
 section.
 Use the [expand][technical-reference-expand] request parameter to get a
 response that includes one or more expanded sub-resources inlined.
@@ -83,7 +83,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property                        | Type         | Description                                                                                                                                                                                                                                               |
+| Required | Field                        | Type         | Description                                                                                                                                                                                                                                               |
 | :------: | :------------------------------ | :----------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |    ✔︎    | `payment`                       | `object`     | The `payment`object.                                                                                                                                                                                                                                      |
 |    ✔︎    | └➔&nbsp;`operation`             | `string`     | `Purchase`                                                                                                                                                                                                                                                |
@@ -106,7 +106,7 @@ Content-Type: application/json
 |          | └─➔&nbsp;`termsOfServiceUrl`    | `string`     | A URI that contains your terms and conditions for the payment, to be linked on the payment page. Require https.                                                                                                                                           |
 |    ✔︎    | └➔&nbsp;`payeeInfo`             | `object`     | A object containing info about the payee.                                                                                                                                                                                                                 |
 |    ✔︎    | └─➔&nbsp;`payeeId`              | `string`     | This is the unique id that identifies this payee (like merchant) set by PayEx.                                                                                                                                                                            |
-|    ✔︎    | └─➔&nbsp;`payeeReference`       | `string(35)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][technical-reference-payeeReference] for details.                                               |
+|    ✔︎    | └─➔&nbsp;`payeeReference`       | `string(35)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [`payeeReference`][technical-reference-payeeReference] for details.                                               |
 |          | └➔&nbsp;`payeeName`             | `string`     | The payee name (like merchant name) that will be displayed to consumer when redirected to PayEx.                                                                                                                                                          |
 |          | └➔&nbsp;`productCategory`       | `string`     | A product category or number sent in from the payee/merchant. This is not validated by PayEx, but will be passed through the payment process and may be used in the settlement process.                                                                   |
 |          | └➔&nbsp;`orderReference`        | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                   |
@@ -308,7 +308,7 @@ Content-Type: application/json
 Caused By:
 
 - The payer's Swish is already in use.
-  
+
 {:.code-header}
 Example response swishalreadyinuse
 
@@ -469,7 +469,7 @@ Content-Type: application/json
 Caused By:
 
 - The payer cancelled the payment in the Swish app.
-  
+
 {:.code-header}
 Example response usercancelled
 

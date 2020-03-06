@@ -52,47 +52,62 @@ request.
 
 ```mermaid
 sequenceDiagram
-  Browser->>Merchant: start purchase (pay with VIPPS)
-  activate Merchant
+  participant Browser
+  participant Merchant
+  participant SwedbankPay as Swedbank Pay
+  participant VippsApi as Vipps API
+  participant VippsApp as Vipps App
 
-  Merchant->>SwedbankPay: POST <Create  Vipps payment>
-  note left of Merchant: First API request
-  activate SwedbankPay
-  SwedbankPay-->>Merchant: payment resource
-  deactivate SwedbankPay
-  Merchant-->>Browser: Redirect to payment page
-  note left of Browser:redirect to PayEx
-  Browser-->>SwedbankPay: enter mobile number
-  activate SwedbankPay
+  Browser->>Merchant: Start purchase (pay with Vipps)
+  activate Browser
+    activate Merchant
+      Merchant->>SwedbankPay: POST <Create  Vipps payment>
+      activate SwedbankPay
+        note left of Merchant: First API request
+        SwedbankPay-->>Merchant: Payment resource
+      deactivate SwedbankPay
+      Merchant-->>Browser: Redirect to payment page
+    deactivate Merchant
 
-  SwedbankPay-->>Vipps_API: Initialize Vipps payment
-  activate Vipps_API
-  Vipps_API-->>SwedbankPay: response
-  SwedbankPay-->>Browser: Authorization response (State=Pending)
-  note left of Browser: check your phone
-  deactivate Merchant
+    note left of Browser: Redirect to Swedbank Pay
+    Browser-->>SwedbankPay: Enter mobile number
+    activate SwedbankPay
+      SwedbankPay-->>VippsApi: Initialize Vipps payment
+      activate VippsApi
+        VippsApi-->>SwedbankPay: Response
+        SwedbankPay-->>Browser: Authorization response (State=Pending)
+        note left of Browser: Check your phone
 
-  Vipps_API-->>Vipps_App: Confirm Payment UI
-  Vipps_App-->>Vipps_App: Confirmation Dialogue
-  Vipps_App-->>Vipps_API: Confirmation
-  Vipps_API-->>SwedbankPay: make payment
-  activate SwedbankPay
-  SwedbankPay-->>SwedbankPay: execute payment
-  SwedbankPay-->>Vipps_API: response
-  deactivate SwedbankPay
-  deactivate Vipps_API
-  SwedbankPay-->>SwedbankPay: authorize result
-  SwedbankPay-->>Browser: authorize result
-  Browser-->>Merchant: Redirect to merchant
-  note left of Browser: Redirect to merchant
-  activate Merchant
-  SwedbankPay-->>Merchant: Payment Callback
-  Merchant-->>SwedbankPay: GET <Vipps payments>
-  note left of Merchant: Second API request
-  SwedbankPay-->>Merchant: Payment resource
-  deactivate SwedbankPay
-  Merchant-->>Browser: Display authorize result
-  deactivate Merchant
+        VippsApi-->>VippsApp: Confirm Payment UI
+        activate VippsApp
+          VippsApp-->>VippsApp: Confirmation dialogue
+          VippsApp-->>VippsApi: Confirmation
+        deactivate VippsApp
+
+        VippsApi-->>SwedbankPay: Make payment
+        activate SwedbankPay
+          SwedbankPay-->>SwedbankPay: Execute payment
+          SwedbankPay-->>VippsApi: Response
+        deactivate SwedbankPay
+      deactivate VippsApi
+
+      SwedbankPay-->>SwedbankPay: Authorize result
+      SwedbankPay-->>Browser: Authorize result
+    deactivate SwedbankPay
+
+    Browser-->>Merchant: Redirect to merchant
+    activate Merchant
+      note left of Browser: Redirect to merchant
+
+      SwedbankPay-->>Merchant: Payment callback
+      activate SwedbankPay
+        Merchant-->>SwedbankPay: GET <payment.id>
+        note left of Merchant: Second API request
+        SwedbankPay-->>Merchant: Payment resource
+        Merchant-->>Browser: Display authorize result
+      deactivate SwedbankPay
+    deactivate Merchant
+  deactivate Browser
 ```
 
 ### Intent
@@ -105,22 +120,10 @@ You will later (i.e. if a physical product, when you are ready to ship the
 purchased products) have to make a [Capture][capture] or
 [Cancel][cancel] request.
 
-### General
-
-  {% include alert.html type="success" icon="link" body="**Defining
-`callbackUrl`**: When implementing a scenario, it is strongly recommended to set a
-`callbackUrl` in the `POST` request. If `callbackUrl` is set, Swedbank Pay will
-send a `POST` request to this URL when the consumer has fulfilled the payment.
-[See the Callback API description for more
-information](/payments/vipps/other-features#callback)." %}
-
-## Operations
-
-The API requests are displayed in the [purchase flow](#purchase-flow).
-You can create a Vipps payment with the `operation` value set to `Purchase`. See
-the `Purchase` example below.
-
 ### Purchase
+
+{% include alert-callback-url.md payment_instrument="vipps"
+callback_href="/payments/vipps/other-features#callback" %}
 
 A `Purchase` payment is a straightforward way to charge the the payer.
 It is followed up by posting a capture, cancellation or reversal transaction.
@@ -245,7 +248,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property                   | Type          | Description                                                                                                                                                                                                                                                                                        |
+| Required | Field                   | Type          | Description                                                                                                                                                                                                                                                                                        |
 | :------: | :------------------------- | :------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |  ✔︎︎︎︎︎  | `payment`                  | `object`      | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                              |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`operation`        | `string`      | The operation that the `payment` is supposed to perform. The [`Purchase`][purchase] operation is used in our example.                                                                                                                                                                              |
@@ -265,84 +268,35 @@ Content-Type: application/json
 |          | └─➔&nbsp;`callbackUrl`     | `string`      | The URL that Swedbank Pay will perform an HTTP POST against every time a transaction is created on the payment. See [callback][callback] for details.                                                                                                                                              |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`payeeInfo`        | `object`      | The `payeeInfo` contains information about the payee.                                                                                                                                                                                                                                              |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`payeeId`         | `string`      | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                                                                                                              |
-|  ✔︎︎︎︎︎  | └─➔&nbsp;`payeeReference`  | `string(50*)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.                                                                                                           |
+|  ✔︎︎︎︎︎  | └─➔&nbsp;`payeeReference`  | `string(50*)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [`payeeReference`][payee-reference] for details.                                                                                                           |
 |          | └─➔&nbsp;`payeeName`       | `string`      | The payee name (like merchant name) that will be displayed to consumer when redirected to Swedbank Pay.                                                                                                                                                                                            |
 |          | └─➔&nbsp;`productCategory` | `string`      | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                     |
 |          | └─➔&nbsp;`orderReference`  | `String(50)`  | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                            |
 |          | └─➔&nbsp;`subsite`         | `String(40)`  | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.                                                                                                                                        |
 
-## Authorizations
+### Authorization
 
-The `authorizations` resource contains information about the authorization
-transactions made on a specific payment.
+To create an authorization in the redirect flow, simply perform an HTTP redirect
+of the payer towards the URL in the `href` of the `redirect-authorization`
+operation found in the list of `operations` in the response from the creation of
+the payment.
 
-{:.code-header}
-**Request**
-
-```http
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-GET /psp/vipps/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }} HTTP/1.1
-Host: {{ page.api_host }}
-Authorization: Bearer <MerchantToken>
-
-
-```
-
-{:.code-header}
-**Response**
-
-```http
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "payment": "/psp/vipps/payments/{{ page.payment_id }}",
-    "authorization": {
-        "vippsTransactionId": "5619328800",
-        "msisdn": "+47xxxxxxxx",
-        "id": "/psp/vipps/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }}",
-        "transaction": {
-            "id": "/psp/vipps/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
-            "created": "2018-09-05T15:01:39.8658084Z",
-            "updated": "2018-09-05T15:01:42.2119509Z",
-            "type": "Authorization",
-            "state": "Completed",
-            "number": 72100003090,
-            "amount": 1500,
-            "vatAmount": 0,
-            "description": "Vipps Test",
-            "payeeReference": "Postman1536157124",
-            "isOperational": false,
-            "operations": []
-        }
-    }
-}
-```
-
-{:.table .table-striped}
-| Property | Type                                         | Description |
-| :------: | :------------------------------------------- | :---------- | :------------------------------------------------------------------------------------ |
-|  ✔︎︎︎︎︎  | `payment`                                    | `string`    | The relative URI of the payment this authorization transactions resource belongs to.  |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`authorizations.id`                  | `string`    | The relative URI of the current authorization transactions resource.                  |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`authorizations.authorizationList`   | `array`     | The array of authorization transaction objects.                                       |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`authorizations.authorizationList[]` | `object`    | The `authorization` transaction object described in the authorization resource below. |
-|          |
+Once the payment is successfully authorized by the payer, she is returned to
+`completeUrl` or `cancelUrl` depending on the action performed by the payer.
+On that page as well as in the `callbackUrl`, you need to perform an HTTP `GET`
+request towards the `id` of the payment to inspect its status.
 
 {% include iterator.html prev_href="./"
                          prev_title="Back: Introduction"
                          next_href="seamless-view"
                          next_title="Next: Implement Seamless view" %}
 
-[Vipps_flow_PaymentPages.png]: /assets/img/vipps-flow-paymentpages.png
-[Vipps-screenshot-1]: /assets/img/checkout/vipps-hosted-payment.png
-[Vipps-screenshot-2]: /assets/img/checkout/vipps-hosted-payment-no-paymenturl.png
-[callbackurl]: /payments/vipps/other-features#callback
 [cancel]: /payments/vipps/other-features#cancellations
 [capture]: /payments/vipps/after-payment#captures
 [seamless-view]: /payments/vipps/seamless-view
 [reference-redirect]: /payments/vipps/redirect
 [vipps-payments]: /payments/vipps/other-features
 [vipps-purchase-flow]: /assets/img/payments/vipps-purchase-flow.png
+[payee-reference]: /payments/vipps/other-features#payeereference
+[purchase]: /payments/vipps/other-features#purchase
+[user-agent]: https://en.wikipedia.org/wiki/User_agent

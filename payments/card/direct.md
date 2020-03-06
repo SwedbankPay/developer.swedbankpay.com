@@ -92,8 +92,7 @@ explained below.
 A `Purchase` payment is a straightforward way to charge the card of the payer.
 It is followed up by posting a capture, cancellation or reversal transaction.
 
-An example of an abbreviated `POST` request is provided below. Each individual
-Property of the JSON document is described in the following section.
+An example of an abbreviated `POST` request is provided below. Each individual field of the JSON document is described in the following section.
 An example of an expanded `POST` request is available in the
 [other features section][purchase].
 
@@ -117,10 +116,8 @@ An example of an expanded `POST` request is available in the
   holder authentication. However, if your agreement allows you to make a card
   payment without this authentication, or that specific cards can be declined,
   you may adjust these optional parameters when creating the payment.
-* *Defining CallbackURL*: When implementing a scenario, it is optional to set
-  a [CallbackURL][callback] in the `POST` request. If `CallbackURL` is set, then
-  Swedbank Pay will send a postback request to this URL when the consumer has
-  fulfilled the payment. [See the Callback API description here][callback].
+
+{% include alert-callback-url.md payment_instrument="card" %}
 
 ## Type of capture - Intent
 

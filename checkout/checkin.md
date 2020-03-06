@@ -83,7 +83,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property                                  | Type     | Description                                                                                |
+| Required | Field                                  | Type     | Description                                                                                |
 | :------: | :---------------------------------------- | :------- | :----------------------------------------------------------------------------------------- |
 |  ✔︎︎︎︎︎  | `operation`                               | `string` | `initiate-consumer-session`, the operation to perform.                                     |
 |  ✔︎︎︎︎︎  | `language`                                | `string` | Selected language to be used in Checkin. Supported values are `nb-NO`, `sv-SE` and `en-US` |
@@ -118,7 +118,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property              | Type     | Description                                                                                                                                       |
+| Field              | Type     | Description                                                                                                                                       |
 | :-------------------- | :------- | :------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `token`               | `string` | A session token used to initiate Checkout UI.                                                                                                     |
 | `operations`          | `array`  | The array of operation objects to choose from, described in detail in the table below.                                                            |

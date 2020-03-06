@@ -116,7 +116,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property                       | Data type | Description                                                                                                                                                      |
+| Required | Field                       | Data type | Description                                                                                                                                                      |
 | :------- | :----------------------------- | :-------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ✔︎︎︎︎︎   | `transaction.activity`         | `string`  | `FinancingConsumer`                                                                                                                                              |
 | ✔︎︎︎︎︎   | `consumer`                     | `object`  | The consumer object.                                                                                                                                             |

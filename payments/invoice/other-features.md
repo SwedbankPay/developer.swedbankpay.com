@@ -35,11 +35,8 @@ set to value `FinancingConsumer` are listed below.
 
 * An invoice payment is always two-phased based -  you create an Authorize
   transaction, that is followed by a Capture or Cancel request.
-* **Defining CallbackURL**: When implementing a scenario, it is optional
-  to set a [CallbackURL][callback] in the request.
-  If callbackURL is set PayEx will send a postback request to this URL when
-  the consumer has fulfilled the payment.
-  [See the Callback API description here.][callback]
+
+{% include alert-callback-url.md payment_instrument="invoice" %}
 
 {% include authorizations-resource.md payment_instrument="invoice" %}
 
@@ -61,7 +58,7 @@ To create a invoice payment, you perform an HTTP `POST` against the `payments`
 resource.
 
 There are four different kinds of payment that can be created. These are
-identified with the value of the `operation` property. Each kind are documented
+identified with the value of the `operation` field. Each kind are documented
 in their own section below.
 
 {:.code-header}
@@ -82,7 +79,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property            | Type     | Description                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| Required | Field            | Type     | Description                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | :------: | ------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |  ✔︎︎︎︎︎  | `payment`           | `object` | The `payment` object.                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`operation` | `string` | Determines the initial operation, that defines the type invoice payment created.<br> <br> `FinancingConsumer`. Used to create a new invoice to be sent to the payer.<br> <br> `Recur`. Used to charge a card on a recurring basis. Is followed up by a capture or cancel operation (if not Autocapture is used, that is).<br> <br>`Verify`. Used when authorizing a card withouth reserveing any funds.  It is followed up by a verification transaction. |
@@ -433,7 +430,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property                       | Type     | Description                                                            |
+| Required | Field                       | Type     | Description                                                            |
 | :------: | :----------------------------- | :------- | :--------------------------------------------------------------------- |
 |  ✔︎︎︎︎︎  | `transaction`                  | `object` | The transaction object.                                                |
 |          | └➔&nbsp;`activity`             | `string` | Only the value `"FinancingConsumer"` or `"AccountsReceivableConsumer"` |
@@ -507,13 +504,13 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property                 | Type      | Description                                                                                                                                                                                                  |
+| Field                 | Type      | Description                                                                                                                                                                                                  |
 | :----------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `payment`                | `string`  | The relative URI of the payment this transaction belongs to.                                                                                                                                                 |
+| `payment`                | `string`  | {% include field-description-id.md sub_resource="authorization" %}                                                                                                                                           |
 | `authorization`          | `object`  | The transaction object.                                                                                                                                                                                      |
-| └➔&nbsp;`id`             | `string`  | The relative URI of the current `transaction` resource.                                                                                                                                                      |
+| └➔&nbsp;`id`             | `string`  | {% include field-description-id.md resource="authorization" %}                                                                                                                                               |
 | └➔&nbsp;`created`        | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
-| └➔&nbsp;`updated`        | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
+| └➔&nbsp;`updated`        | `string`  | The ISO-8601 date and time of when the transaction was updated.                                                                                                                                              |
 | └➔&nbsp;`type`           | `string`  | Indicates the transaction type.                                                                                                                                                                              |
 | └➔&nbsp;`state`          | `string`  | `Initialized`, `Completed` or `Failed`. Indicates the state of the transaction.                                                                                                                              |
 | └➔&nbsp;`number`         | `string`  | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead. |

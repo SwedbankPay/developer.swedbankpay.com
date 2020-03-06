@@ -205,7 +205,7 @@ In redirect flow this is supported without any changes in your integration. But
 a configuration on your swish agreement needs to be updated. Contact our support
 in order to activate this.
 
-If you use our hosted view-solution we have added the URL property called
+If you use our hosted view-solution we have added the URL field called
 paymentUrl (previously added for CreditCard, Vipps and Payment Order), that will
 be used when the user is returned from the Swish application. See further
 information regarding paymentUrl at: [[PaymentUrl in
@@ -240,7 +240,7 @@ updated documentation
 
 ### Payment Url Credit Card
 
-We have added the URL property called `paymentUrl` for [Card
+We have added the URL field called `paymentUrl` for [Card
 Seamless View][card-payment-url] (previously added for Vipps and Checkout), that will be used
 when the user is returned from 3rd party. The URL should represent the page in
 where the payment Seamless View was hosted originally, such as the checkout page,
@@ -271,7 +271,7 @@ removed from all requests as the two cannot be used simultaneously.
 For our Seamless Views (currently
 [Vipps][vipps-payment-url]
 or in [Checkout][checkout-payment-url]),
-we have added a new URL property called `paymentUrl` that will be used when
+we have added a new URL field called `paymentUrl` that will be used when
 user is returned from 3rd party. The URL should represent the page of where the
 payment hosted view was hosted originally, such as the checkout page, shopping
 cart page, or similar. Basically, `paymentUrl` should be set to the same URL

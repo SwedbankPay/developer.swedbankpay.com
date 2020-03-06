@@ -21,12 +21,12 @@ when="at the 3-D Secure verification for credit card payments" %}
 ### API Requests To Generate paymentToken
 
 When making the initial purchase request, you need to generate a `paymentToken`.
-You can do this either by by setting the `generatePaymentToken` property to
+You can do this either by by setting the `generatePaymentToken` field to
 `true` (see example below) when doing a card purchase, or set the initial
 operation to [`Verify`][verify].
 
 {:.code-header}
-**`generatePaymentToken` property**
+**`generatePaymentToken` field**
 
 ```js
 {
@@ -70,7 +70,7 @@ to your system, you can use the payment token, using already stored payment
 data, to initiate one-click payments. You will need to make a standard
 purchase, following the sequence as specified in the Redirect or Seamless View
 scenarios for [credit card][card] and [financing invoice][invoice]. When making
-the first `POST` request you insert the `paymentToken` property. This must be
+the first `POST` request you insert the `paymentToken` field. This must be
 the `paymentToken` you received in the initial purchase, where you specified the
 `generatePaymentToken` to `true`.
 
@@ -101,7 +101,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property               | Type      | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| Required | Field               | Type      | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | :------: | ---------------------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |  ✔︎︎︎︎︎  | `payment`              | `object`  | The `payment` object.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`operation`    | `string`  | Determines the initial operation, that defines the type card payment created.<br> <br> `Purchase`. Used to charge a card. It is followed up by a capture or cancel operation.<br> <br> `Recur`.Used to charge a card on a recurring basis. Is followed up by a capture or cancel operation (if not Autocapture is used, that is).<br> <br>`Payout`. Used to deposit funds directly to credit card. No more requests are necessary from the merchant side.<br> <br>`Verify`. Used when authorizing a card withouth reserveing any funds.  It is followed up by a verification transaction. |
@@ -151,8 +151,8 @@ Content-Type: application/json
 ```
 
 {% comment %}
-TODO: Remove pipes from the above code example and add a property table
-      explaining each property here.
+TODO: Remove pipes from the above code example and add a field table
+      explaining each field here.
 {% endcomment %}
 
 {:.code-header}
@@ -177,8 +177,8 @@ Content-Type: application/json
 ```
 
 {% comment %}
-TODO: Remove pipes from the above code example and add a property table
-      explaining each property here.
+TODO: Remove pipes from the above code example and add a field table
+      explaining each field here.
 {% endcomment %}
 
 -----------------------------

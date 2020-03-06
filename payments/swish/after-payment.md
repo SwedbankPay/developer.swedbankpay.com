@@ -82,7 +82,7 @@ is given below.
 ```
 
 {:.table .table-striped}
-| Property | Description                                                         |
+| Field | Description                                                         |
 | :------- | :------------------------------------------------------------------ |
 | `href`   | The target URI to perform the operation against.                    |
 | `rel`    | The name of the relation the operation has to the current resource. |
@@ -293,47 +293,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{:.code-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "payment": "/psp/swish/payments/{{ page.payment_id }}",
-    "reversals": {
-        "id": "/psp/swish/payments/{{ page.payment_id }}/reversals",
-        "reversalList": [
-            {
-                "id": "/psp/swish/payments/{{ page.payment_id }}/reversals/{{ page.transaction_id }}",
-                "transaction": {
-                    "id": "/psp/swish/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
-                    "created": "2016-09-14T01:01:01.01Z",
-                    "updated": "2016-09-14T01:01:01.03Z",
-                    "type": "Reversal",
-                    "state": "Completed",
-                    "number": 1234567890,
-                    "amount": 1000,
-                    "vatAmount": 250,
-                    "description": "Test transaction",
-                    "payeeReference": "AH123456",
-                    "isOperational": true,
-                    "operations": []
-                }
-            }
-        ]
-    }
-}
-```
-
-{:.table .table-striped}
-| Property                 | Type     | Description                                                                                          |
-| :----------------------- | :------- | :--------------------------------------------------------------------------------------------------- |
-| `payment`                | `string` | The relative URI of the payment that the reversal transactions belong to.                            |
-| `reversals`              | `object` | The reversal object.                                                                                 |
-| └➔&nbsp;`reversalList[]` | `array`  | The array of reversal transaction objects.                                                           |
-| └─➔&nbsp;`transaction`   | `object` | The reversal transaction object representation of the reversal transaction resource described below. |
+{% include transaction-list-response.md payment_instrument="swish" transaction="reversal" %}
 
 ### Create Reversal transaction
 
@@ -362,50 +322,15 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property                 | Type         | Description                                                                                                                                                            |
+| Required | Field                 | Type         | Description                                                                                                                                                            |
 | :------: | :----------------------- | :----------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |    ✔︎    | `transaction`            | `object`     | The `transaction` object, containing information about this `reversal`.                                                                                                |
 |    ✔︎    | └➔&nbsp;`amount`         | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 SEK`, `5000` = `50.00 SEK`                                               |
 |    ✔︎    | └➔&nbsp;`vatAmount`      | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 SEK`, `5000` = `50.00 SEK`                                               |
 |    ✔︎    | └➔&nbsp;`description`    | `string`     | A textual description of the capture                                                                                                                                   |
-|    ✔︎    | └➔&nbsp;`payeeReference` | `string(35)` | A  reference that must match the  `payeeReference` of the sales transaction you want to reverse. See [payeeReference][technical-reference-payeeReference] for details. |
+|    ✔︎    | └➔&nbsp;`payeeReference` | `string(35)` | A  reference that must match the  `payeeReference` of the sales transaction you want to reverse. See [`payeeReference`][technical-reference-payeeReference] for details. |
 
-{:.code-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "payment": "/psp/swish/payments/{{ page.payment_id }}",
-    "reversal": {
-        "id": "/psp/swish/payments/{{ page.payment_id }}/reversals/{{ page.transaction_id }}",
-        "transaction": {
-            "id": "/psp/swish/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
-            "created": "2016-09-14T01:01:01.01Z",
-            "updated": "2016-09-14T01:01:01.03Z",
-            "type": "Reversal",
-            "state": "Completed",
-            "number": 1234567890,
-            "amount": 1000,
-            "vatAmount": 250,
-            "description": "Test transaction",
-            "payeeReference": "AH123456",
-            "isOperational": false,
-            "operations": []
-        }
-    }
-}
-```
-
-{:.table .table-striped}
-| Property              | Type     | Description                                                                              |
-| :-------------------- | :------- | :--------------------------------------------------------------------------------------- |
-| `payment`             | `string` | The relative URI of the payment this capture transaction belongs to.                     |
-| `reversal`            | `object` | The `reversal` object contains information about this `reversal`.                        |
-| └➔&nbsp;`id`          | `string` | The relative URI of the created capture transaction.                                     |
-| └➔&nbsp;`transaction` | `object` | The object representation of the generic [transaction][technical-reference-transaction]. |
+{% include transaction-response.md payment_instrument="swish" transaction="reversal" %}
 
 ## Capture
 
