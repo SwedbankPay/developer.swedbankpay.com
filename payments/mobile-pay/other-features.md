@@ -83,7 +83,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Field                        | Data type    | Description                                                                                                                                                                                                                                               |
+| Required | Field                           | Data type    | Description                                                                                                                                                                                                                                               |
 | :------- | :------------------------------ | :----------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ✔︎︎︎︎︎   | `payment`                       | `object`     | The payment object.                                                                                                                                                                                                                                       |
 | ✔︎︎︎︎︎   | └➔&nbsp;`operation`             | `string`     | `Purchase`                                                                                                                                                                                                                                                |
@@ -91,7 +91,7 @@ Content-Type: application/json
 | ✔︎︎︎︎︎   | └➔&nbsp;`currency`              | `string`     | `NOK`, `SEK`, `DKK`, `USD` or `EUR`.                                                                                                                                                                                                                      |
 | ✔︎︎︎︎︎   | └➔&nbsp;`prices`                | `object`     | The prices object.                                                                                                                                                                                                                                        |
 | ✔︎︎︎︎︎   | └─➔&nbsp;`type`                 | `string`     | `Visa` (for card type Visa), `MC` (for card type Mastercard)                                                                                                                                                                                              |
-| ✔︎︎︎︎︎   | └─➔&nbsp;`amount`               | `integer`    | Amount is entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 DKK, 5000 = 50.00 DKK.                                                                                                                                      |
+| ✔︎︎︎︎︎   | └─➔&nbsp;`amount`               | `integer`    | {% include field-description-amount.md currency="DKK" %}                                                                                                                                                                                                  |
 | ✔︎︎︎︎︎   | └─➔&nbsp;`vatAmount`            | `integer`    | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                                                                        |
 |          | └─➔&nbsp;`feeAmount`            | `integer`    | If the amount given includes Fee, this may be displayed for the user in the payment page (redirect only).                                                                                                                                                 |
 | ✔︎︎︎︎︎   | └➔&nbsp;`description`           | `string(40)` | A textual description max 40 characters of the purchase.                                                                                                                                                                                                  |
@@ -165,7 +165,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Field                            | Data type    | Description                                                                                                                                                                                      |
+| Field                               | Data type    | Description                                                                                                                                                                                      |
 | :---------------------------------- | :----------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `payment`                           | `object`     | The payment object contains information about the retrieved payment.                                                                                                                             |
 | └➔&nbsp;`id`                        | `string`     | {% include field-description-id.md %}                                                                                                                                                            |
@@ -243,7 +243,7 @@ A list of possible operations and their explanation is given below.
 ```
 
 {:.table .table-striped}
-| Field | Description                                                         |
+| Field    | Description                                                         |
 | :------- | :------------------------------------------------------------------ |
 | `href`   | The target URI to perform the operation against.                    |
 | `rel`    | The name of the relation the operation has to the current resource. |
@@ -322,7 +322,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Field                 | Type         | Description                                                                                                               |
+| Required | Field                    | Type         | Description                                                                                                               |
 | :------- | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------ |
 | ✔︎︎︎︎︎   | `transaction`            | `object`     | The currenct capture object.                                                                                              |
 | ✔︎︎︎︎︎   | └➔&nbsp;`amount`         | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
@@ -361,7 +361,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Field                 | Type         | Description                                                                                               |
+| Required | Field                    | Type         | Description                                                                                               |
 | :------: | :----------------------- | :----------- | :-------------------------------------------------------------------------------------------------------- |
 |  ✔︎︎︎︎︎  | `transaction`            | `object`     | The current cancellation.                                                                                 |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`description`    | `string`     | A textual description of the reason for the cancellation.                                                 |
@@ -400,7 +400,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Field                 | Type         | Description                                                                                                               |
+| Required | Field                    | Type         | Description                                                                                                               |
 | :------: | :----------------------- | :----------- |
 |    ✔︎    | `transaction`            | `object`     | The current reversal transaction object                                                                                   |
 |    ✔︎    | └➔&nbsp;`amount`         | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
