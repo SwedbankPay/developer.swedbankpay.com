@@ -267,13 +267,13 @@ request.send(JSON.stringify({
 
 
 This should bring up the Payment Menu in a Seamless View. It should look like
-this, depending on wether the payer is logged in (top) or a guest user (bottom):
+this, depending on whether the payer is logged in (top) or a guest user (bottom):
 
 {:.text-center}
 ![Payment Menu with payer logged in and card payment opened][login-payment-menu-image]{:width="450" height="900"}
 
 {:.text-center}
-![Payment Menu with guest payer and card payment opened][anon-payment-menu-image]{:width="450" height="850"}
+![Payment Menu with guest payer and card payment opened][guest-payment-menu-image]{:width="450" height="850"}
 
 When the consumer completes the payment, the Payment Menu script will be
 signaled and a full redirect to the `completeUrl` sent in with the
@@ -298,16 +298,16 @@ finalizing the payment in the [After Payment section][after-payment].
                          next_href="capture"
                          next_title="Next: Capture" %}
 
-[anon-payment-menu-image]: /assets/img/checkout/Newpaymentmenu450x850.png
 [after-payment]: after-payment
 [checkin-image]: /assets/img/checkout/your-information.png
 [consumer-reference]: /checkout/other-features#payeereference
+[guest-payment-menu-image]: /assets/img/checkout/guest-payment-menu-450x850.png
 [initiate-consumer-session]: /checkout/checkin#checkin-back-end
+[login-payment-menu-image]: /assets/img/checkout/logged-in-payment-menu-450x900.png
 [msisdn]: https://en.wikipedia.org/wiki/MSISDN
 [operations]: /checkout/other-features#operations
 [order-items]: #order-items
 [payee-reference]: /checkout/other-features#payeereference
-[login-payment-menu-image]: /assets/img/checkout/LoggedInPaymentMenu450x900.png
 [payment-menu]: #payment-menu
 [payment-order-capture]: /checkout/after-payment#capture
 [payment-order-operations]: /checkout/after-payment#operations
