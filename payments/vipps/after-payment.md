@@ -254,7 +254,7 @@ The `captures` resource lists the capture transactions (one or more) on a specif
 {:.code-header}
 **Request**
 
-```HTThP
+```http
 GET /psp/vipps/vipps/{{ page.payment_id }}/captures HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>

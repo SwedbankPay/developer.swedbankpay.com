@@ -35,6 +35,9 @@ Content-Type: application/json
         "acquirerTerminalId": "39",
         "acquirerTransactionTime": "2017-08-29T13:42:18Z",
         "authenticationStatus": "Y",{% endif %}
+        "itemDescriptions": {
+            "id": "/psp/{{ instrument }}/payments/{{ page.payemnt_id }}/transactions/{{ page.transaction_id }}/itemDescriptions"
+        },
         "transaction": {
             "id": "/psp/{{ instrument }}/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
             "created": "2016-09-14T01:01:01.01Z",
@@ -84,7 +87,9 @@ Content-Type: application/json
 | └➔&nbsp;`acquirerStan`            | `string`  | The System Trace Audit Number assigned by the acquirer to uniquely identify the transaction.                                                                                                                 |
 | └➔&nbsp;`acquirerTerminalId`      | `string`  | The ID of the acquirer terminal.                                                                                                                                                                             |
 | └➔&nbsp;`acquirerTransactionTime` | `string`  | The ISO-8601 date and time of the acquirer transaction.                                                                                                                                                      |
-| └➔&nbsp;`authenticationStatus`    | `string`  | `Y`, `A`, `U` or `N`. Indicates the status of the authentication.                                                                                                                                            |{% endif %}
+| └➔&nbsp;`authenticationStatus`    | `string`  | `Y`, `A`, `U` or `N`. Indicates the status of the authentication.                                                                                                                                            | {% endif %}
+| └➔&nbsp;`itemDescriptions`        | `object`  | The object representation of the `itemDescriptions` resource.                                                                                                                                                |
+| └─➔&nbsp;`id`                     | `string`  | The relative URI of the `itemDescriptions` resource.                                                                                                                                            |
 | └➔&nbsp;`transaction`             | `object`  | The object representation of the generic transaction resource.                                                                                                                                               |
 | └─➔&nbsp;`id`                     | `string`  | The relative URI of the current `transaction` resource.                                                                                                                                                      |
 | └─➔&nbsp;`created`                | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |

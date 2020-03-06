@@ -357,36 +357,33 @@ Content-Type: application/json
 }
 ```
 
-If a `GET` method is used from `paymentUI` with a `paymentToken`, the following
+If a `GET` method is used from payment UI with a `paymentToken`, the following
 operations can be returned, depending on state of the payment and the last
 transaction.
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "href": "https://example.com/cancelUrl",
-    "rel": "redirect-merchant-cancel",
-    "method": "GET"
-}
-{
-    "href": "https://example.com/completeUrl",
-    "rel": "redirect-merchant-complete",
-    "method": "GET"
-}
-{
-    "href": "https://example.com/cancelUrl",
-    "rel": "redirect-merchant-cancel",
-    "method": "GET"
-}
-{
-    "href": "https://example.com/completeUrl",
-    "rel": "redirect-merchant-complete",
-    "method": "GET"
-}
-
-
+```js
+"operations": [
+    {
+        "href": "https://example.com/cancelUrl",
+        "rel": "redirect-merchant-cancel",
+        "method": "GET"
+    },
+    {
+        "href": "https://example.com/completeUrl",
+        "rel": "redirect-merchant-complete",
+        "method": "GET"
+    },
+    {
+        "href": "https://example.com/cancelUrl",
+        "rel": "redirect-merchant-cancel",
+        "method": "GET"
+    },
+    {
+        "href": "https://example.com/completeUrl",
+        "rel": "redirect-merchant-complete",
+        "method": "GET"
+    }
+]
 ```
 
 {:.table .table-striped}
@@ -397,7 +394,7 @@ Content-Type: application/json
 | └➔&nbsp;`number`         | `integer`    | The payment  number , useful when there's need to reference the payment in human communication. Not usable for programmatic identification of the payment, for that  id  should be used instead. |
 | └➔&nbsp;`created`        | `string`     | The ISO-8601 date of when the payment was created.                                                                                                                                               |
 | └➔&nbsp;`updated`        | `string`     | The ISO-8601 date of when the payment was updated.                                                                                                                                               |
-| └➔&nbsp;`state`          | `string`     | Ready ,  Pending ,  Failed  or  Aborted . Indicates the state of the payment. This field is only for status display purposes. To                                                                 |
+| └➔&nbsp;`state`          | `string`     | `Ready`, `Pending`, `Failed` or `Aborted`. Indicates the state of the payment, not the state of any transactions performed on the payment. To find the state of the payment's transactions (such as a successful authorization), see the `transactions` resource or the different specialized type-specific resources such as `authorizations` or `sales`. |
 | └➔&nbsp;`prices`         | `object`     | The `prices` resource lists the prices related to a specific payment.                                                                                                                            |
 | └➔&nbsp;`prices.id`      | `string`     | The relative URI of the current prices resource.                                                                                                                                                 |
 | └➔&nbsp;`description`    | `string(40)` | A textual description of maximum 40 characters of the purchase.                                                                                                                                  |
