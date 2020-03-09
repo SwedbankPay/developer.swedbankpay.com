@@ -428,8 +428,6 @@ request towards the `paymentorders` resource,
 After updating the Payment Order, remember to call `.refresh()` on the Payment
 Menu in JavaScript." %}
 
-{% include payment-order-capture.md %}
-
 ### Abort
 
 To abort a payment order, perform the `update-paymentorder-abort` operation that

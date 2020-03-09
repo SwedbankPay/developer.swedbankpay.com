@@ -1,4 +1,4 @@
-## Capture
+## Step 5: Capture the funds
 
 Capture can only be done on a payment with a successful authorized transaction,
 and if the authorization was not done on a one-phase payment instrument.
