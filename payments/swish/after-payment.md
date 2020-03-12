@@ -82,7 +82,7 @@ is given below.
 ```
 
 {:.table .table-striped}
-| Field | Description                                                         |
+| Field    | Description                                                         |
 | :------- | :------------------------------------------------------------------ |
 | `href`   | The target URI to perform the operation against.                    |
 | `rel`    | The name of the relation the operation has to the current resource. |
@@ -325,7 +325,7 @@ Content-Type: application/json
 | Required | Field                 | Type         | Description                                                                                                                                                            |
 | :------: | :----------------------- | :----------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |    ✔︎    | `transaction`            | `object`     | The `transaction` object, containing information about this `reversal`.                                                                                                |
-|    ✔︎    | └➔&nbsp;`amount`         | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 SEK`, `5000` = `50.00 SEK`                                               |
+|    ✔︎    | └➔&nbsp;`amount`         | `integer`    | {% include field-description-amount.md %}                                                                                                                                |
 |    ✔︎    | └➔&nbsp;`vatAmount`      | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 SEK`, `5000` = `50.00 SEK`                                               |
 |    ✔︎    | └➔&nbsp;`description`    | `string`     | A textual description of the capture                                                                                                                                   |
 |    ✔︎    | └➔&nbsp;`payeeReference` | `string(35)` | A  reference that must match the  `payeeReference` of the sales transaction you want to reverse. See [`payeeReference`][technical-reference-payeeReference] for details. |

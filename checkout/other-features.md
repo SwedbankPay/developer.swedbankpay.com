@@ -134,7 +134,7 @@ The `orderItems` field of the `paymentOrder` is an array containing the items be
 |  ✔︎︎︎︎︎  | `unitPrice`           | `integer` | The price per unit of order item, including VAT.                                                                                                                                                                               |
 |          | `discountPrice`       | `integer` | If the order item is purchased at a discounted price. This field should contain that price, including VAT.                                                                                                                     |
 |  ✔︎︎︎︎︎  | `vatPercent`          | `integer` | The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.                                                                                                                                                       |
-|  ✔︎︎︎︎︎  | `amount`              | `integer` | The total amount including VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 SEK` and `5000` equals `50.00 SEK`.                          |
+|  ✔︎︎︎︎︎  | `amount`              | `integer` | {% include field-description-amount.md %}                                                                                                                                                                                      |
 |  ✔︎︎︎︎︎  | `vatAmount`           | `integer` | The total amount of VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 SEK` and `5000` equals `50.00 SEK`.                                 |
 
 ### Items

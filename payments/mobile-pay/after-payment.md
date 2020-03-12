@@ -58,7 +58,7 @@ Content-Type: application/json
 | Required | Field                 | Type         | Description                                                                                                               |
 | :------: | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------ |
 |    ✔︎    | `transaction`            | `object`     | Object representing the capture transaction.                                                                              |
-|    ✔︎    | └➔&nbsp;`amount`         | `integer`    | Amount entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
+|    ✔︎    | └➔&nbsp;`amount`         | `integer`    | {% include field-description-amount.md %}                                                                                 |
 |    ✔︎    | └➔&nbsp;`vatAmount`      | `integer`    | Amount entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
 |    ✔︎    | └➔&nbsp;`description`    | `string`     | A textual description of the capture transaction.                                                                         |
 |    ✔︎    | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the capture transaction. See [`payeeReference`][payee-reference] for details.                        |
