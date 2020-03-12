@@ -22,4 +22,4 @@ jobs:
           -v ${{ github.workspace }}:/srv/jekyll \
           -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
           jekyll/builder:latest /bin/bash \
-          -c "chmod 777 /srv/jekyll && jekyll build --future JEKYLL_ENV=production"
+          -c "chmod 755 /srv/jekyll && jekyll build --future JEKYLL_ENV=production"
