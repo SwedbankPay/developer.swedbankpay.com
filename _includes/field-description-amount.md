@@ -3,12 +3,11 @@
 {% assign currency = "SEK" %}
 {% endif %}
 {%- capture amount_text -%}
-The amount to charge the payer, entered in the lowest monetary unit of the
-selected currency. E.g.:
-**`10000`** = `100.00` {{ currency }},
+The amount (including VAT, if any) to charge the payer, entered in the lowest monetary unit of the selected currency. E.g.:&nbsp;
+**`10000`** = `100.00` {{ currency }},&nbsp;
 **`5000`** = `50.00` {{ currency }}.
 {%- endcapture -%}
-{{- amount_text | strip_newlines -}}
+{{- amount_text | strip_newlines | replace: "&nbsp;", " " -}}
 {%- comment -%}
 The dashes in the Liquid code tags remove output whitespace. More on that here:
 
