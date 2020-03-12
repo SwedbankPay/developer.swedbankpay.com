@@ -92,7 +92,7 @@ Content-Type: application/json
 | ✔︎︎︎︎︎   | └➔&nbsp;`prices`                | `object`     | The prices object.                                                                                                                                                                                                                                        |
 | ✔︎︎︎︎︎   | └─➔&nbsp;`type`                 | `string`     | `Visa` (for card type Visa), `MC` (for card type Mastercard)                                                                                                                                                                                              |
 | ✔︎︎︎︎︎   | └─➔&nbsp;`amount`               | `integer`    | {% include field-description-amount.md currency="DKK" %}                                                                                                                                                                                                  |
-| ✔︎︎︎︎︎   | └─➔&nbsp;`vatAmount`            | `integer`    | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                                                                        |
+| ✔︎︎︎︎︎   | └─➔&nbsp;`vatAmount`            | `integer`    | {% include field-description-vatamount.md currency="DKK" %}                                                                                                                                                                                               |
 |          | └─➔&nbsp;`feeAmount`            | `integer`    | If the amount given includes Fee, this may be displayed for the user in the payment page (redirect only).                                                                                                                                                 |
 | ✔︎︎︎︎︎   | └➔&nbsp;`description`           | `string(40)` | A textual description max 40 characters of the purchase.                                                                                                                                                                                                  |
 |          | └➔&nbsp;`payerReference`        | `string`     | The reference to the payer (consumer/end-user) from the merchant system, like mobile number, customer number etc.                                                                                                                                         |
@@ -322,13 +322,13 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Field                    | Type         | Description                                                                                                               |
-| :------- | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------ |
-| ✔︎︎︎︎︎   | `transaction`            | `object`     | The currenct capture object.                                                                                              |
-| ✔︎︎︎︎︎   | └➔&nbsp;`amount`         | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
-| ✔︎︎︎︎︎   | └➔&nbsp;`vatAmount`      | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
-| ✔︎︎︎︎︎   | └➔&nbsp;`description`    | `string`     | A textual description of the capture transaction.                                                                         |
-| ✔︎︎︎︎︎   | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the capture transaction. See [`payeeReference`][payee-reference] for details.                      |
+| Required | Field                    | Type         | Description                                                                                          |
+| :------- | :----------------------- | :----------- | :--------------------------------------------------------------------------------------------------- |
+| ✔︎︎︎︎︎   | `transaction`            | `object`     | The currenct capture object.                                                                         |
+| ✔︎︎︎︎︎   | └➔&nbsp;`amount`         | `integer`    | {% include field-description-amount.md %}                                                            |
+| ✔︎︎︎︎︎   | └➔&nbsp;`vatAmount`      | `integer`    | {% include field-description-vatamount.md %}                                                         |
+| ✔︎︎︎︎︎   | └➔&nbsp;`description`    | `string`     | A textual description of the capture transaction.                                                    |
+| ✔︎︎︎︎︎   | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the capture transaction. See [`payeeReference`][payee-reference] for details. |
 
 {% include transaction-response.md payment_instrument="mobilepay"
     transaction="capture"%}
@@ -400,13 +400,13 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Field                    | Type         | Description                                                                                                               |
+| Required | Field                    | Type         | Description                                                                                           |
 | :------: | :----------------------- | :----------- |
-|    ✔︎    | `transaction`            | `object`     | The current reversal transaction object                                                                                   |
-|    ✔︎    | └➔&nbsp;`amount`         | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
-|    ✔︎    | └➔&nbsp;`vatAmount`      | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
-|    ✔︎    | └➔&nbsp;`description`    | `string`     | A textual description of the capture                                                                                      |
-|    ✔︎    | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the reversal transaction. See [`payeeReference`][payee-reference] for details.                     |
+|    ✔︎    | `transaction`            | `object`     | The current reversal transaction object                                                               |
+|    ✔︎    | └➔&nbsp;`amount`         | `integer`    | {% include field-description-amount.md %}                                                             |
+|    ✔︎    | └➔&nbsp;`vatAmount`      | `integer`    | {% include field-description-vatamount.md %}                                                          |
+|    ✔︎    | └➔&nbsp;`description`    | `string`     | A textual description of the capture                                                                  |
+|    ✔︎    | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the reversal transaction. See [`payeeReference`][payee-reference] for details. |
 
 {% include transaction-response.md payment_instrument="mobilepay"
     transaction="reversal"%}

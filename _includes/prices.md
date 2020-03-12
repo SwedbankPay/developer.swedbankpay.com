@@ -50,7 +50,7 @@ Content-Type: application/json
 | └➔&nbsp;`priceList`  | `array`   | The array of price objects. **Note:** Even if you specifiy  `CreditCard`  in the input message the system will return all your configured card brands instead when you expan the priceList. |
 | └─➔&nbsp;`type`      | `string`  | The type of the price object.                                                                                                                                                               |
 | └─➔&nbsp;`amount`    | `integer` | {% include field-description-amount.md %}                                                                                                                                                   |
-| └─➔&nbsp;`vatAmount` | `integer` | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                          |
+| └─➔&nbsp;`vatAmount` | `integer` | {% include field-description-vatamount.md %}                                          |
 
 ### Prices Object Types
 
