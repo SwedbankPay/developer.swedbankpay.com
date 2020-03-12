@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  jekyll-container:
+    build:
+      context: .
+      dockerfile: ./dockerfile
+    ports:
+      - 4000:4000
+      - 35729:35729
+    volumes:
+      - .:/srv/jekyll
