@@ -21,4 +21,4 @@ EXPOSE 35729
 
 ENTRYPOINT [ "bundle", "exec", "jekyll", "serve" ]
 
-CMD [ "bundle", "exec", "jekyll", "serve", "--force_polling","--livereload", "--host", "0.0.0.0"]
+CMD [ "bundle", "exec", "jekyll", "serve", "--force_polling","--livereload", "--host", "0.0.0.0", "-i"]
