@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
-group :development do
-    gem 'rake'
-end
-
-gem 'github-pages', group: :jekyll_plugins
 gem 'jekyll-github-metadata'
-gem 'dotenv'
+gem 'jekyll-assets'
+gem 'jemoji'
+gem 'faraday', '~> 0.17.3'
+gem "jekyll-remote-theme"
+gem "concurrent-ruby", "~> 1.1"
+gem "rubyzip", "~> 2.2"

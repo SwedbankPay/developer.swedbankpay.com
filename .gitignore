@@ -5,3 +5,5 @@ _site/
 .env
 .bundle
 .vs
+.gem-cache/
+_gem-cache/
