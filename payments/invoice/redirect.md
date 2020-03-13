@@ -21,7 +21,7 @@ sidebar:
 ## Introduction
 
 * When properly set up in your merchant/webshop site and the payer starts the
-  purchase process, you need to make a POST request towards Swedbank Pay with
+  purchase process, you need to make a `POST` request towards Swedbank Pay with
   your Purchase information. This will generate a payment object with a unique
   `paymentID`. You will receive a **redirect URL** to a Swedbank Pay payment
   page.
@@ -36,70 +36,18 @@ sidebar:
   `paymentID` generated in the first step, to receive the state of the
   transaction.
 
-### Options before posting a payment
-
-All valid options when posting a payment with operation equal to
-`FinancingConsumer`, are described in
-[other features][financing-consumer].
-
-{:.table .table-striped}
-|               | Norway ![Norwegian flag][no-png] | Finland ![Finish flag][fi-png] | Sweden ![Swedish flag][se-png] |
-| :------------ | :------------------------------- | :----------------------------- | :----------------------------- |
-| `operation`   | `FinancingConsumer`              | `FinancingConsumer`            | `FinancingConsumer`            |
-| `currency`    | `NOK`                            | `EUR`                          | `SEK`                          |
-| `invoiceType` | `PayExFinancingNO`               | `PayExFinancingFI`             | `PayExFinancingSE`             |
+## Step 1: Create a payment
 
 * An invoice payment is always two-phased based - you create an
   `Authorize` transaction, that is followed by a `Capture` or `Cancel` request.
 
 {% include alert-callback-url.md payment_instrument="invoice" %}
 
-## Invoice flow
-
-The sequence diagram below shows the two requests you have to send to Swedbank
-Pay to make a purchase.
-The diagram also shows in high level,
-the sequence of the process of a complete purchase.
-
-```mermaid
-sequenceDiagram
-    Consumer->>Merchant: Start purchase
-    activate Merchant
-    note left of Merchant: First API request
-    Merchant->>-Swedbank Pay: POST <Invoice Payment> (operation=FinancingConsumer)
-    activate Swedbank Pay
-    Swedbank Pay-->>-Merchant: payment resource
-    activate Merchant
-    Merchant-->>-Consumer: authorization page
-    activate Consumer
-    note left of Consumer: redirect to Swedbank Pay
-    Consumer->>-Swedbank Pay: enter consumer details
-    activate Swedbank Pay
-    Swedbank Pay-->>-Consumer: redirect to merchant
-    activate Consumer
-    note left of Consumer: redirect back to Merchant
-    Consumer->>-Merchant: access merchant page
-    activate Merchant
-    note left of Merchant: Second API request
-    Merchant->>-Swedbank Pay: GET <Invoice payment>
-    activate Swedbank Pay
-    Swedbank Pay-->>-Merchant: payment resource
-    activate Merchant
-    Merchant-->>-Consumer: display purchase result
-```
-
-## API Requests
-
-The API requests are displayed in the [purchase flow](#purchase-flow).
-You can complete the invoice payment with following `operation`
-options:
-
-* [Financing Consumer][financing-consumer]
-* [Recur][recur]
-* [Verify][verify]
-
+To initiate the payment process, you need to make a `POST`request to Swedbank Pay.
 Our `payment` example below uses the [`FinancingConsumer`]
-[financing-consumer] value.
+[financing-consumer] value. All valid options when posting a payment with
+operation equal to `FinancingConsumer`, are described in
+[other features][financing-consumer].
 
 ### Financing Consumer
 
@@ -257,177 +205,40 @@ Content-Type: application/json
 }
 ```
 
-## Payment Resource
+## Invoice flow
 
-The `payment` resource is central to all payment instruments. All operations
-that target the payment resource directly produce a response similar to the
-example seen below. The response given contains all operations that are
-possible to perform in the current state of the payment.
+The sequence diagram below shows the two requests you have to send to Swedbank
+Pay to make a purchase.
+The diagram also shows the process of a complete purchase in high level.
 
-{:.code-header}
-**Request**
-
-```http
-GET /psp/invoice/payments/{{ page.payment_id }}/ HTTP/1.1
-Host: {{ page.api_host }}
-Authorization: Bearer <AccessToken>
-Content-Type: application/json
+```mermaid
+sequenceDiagram
+    Consumer->>Merchant: Start purchase
+    activate Merchant
+    note left of Merchant: First API request
+    Merchant->>-Swedbank Pay: POST <Invoice Payment> (operation=FinancingConsumer)
+    activate Swedbank Pay
+    Swedbank Pay-->>-Merchant: payment resource
+    activate Merchant
+    Merchant-->>-Consumer: authorization page
+    activate Consumer
+    note left of Consumer: redirect to Swedbank Pay
+    Consumer->>-Swedbank Pay: enter consumer details
+    activate Swedbank Pay
+    Swedbank Pay-->>-Consumer: redirect to merchant
+    activate Consumer
+    note left of Consumer: redirect back to Merchant
+    Consumer->>-Merchant: access merchant page
+    activate Merchant
+    note left of Merchant: Second API request
+    Merchant->>-Swedbank Pay: GET <Invoice payment>
+    activate Swedbank Pay
+    Swedbank Pay-->>-Merchant: payment resource
+    activate Merchant
+    Merchant-->>-Consumer: display purchase result
 ```
 
-{:.code-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "payment": {
-        "id": "/psp/invoice/payments/{{ page.payment_id }}",
-        "number": 1234567890,
-        "created": "2016-09-14T13:21:29.3182115Z",
-        "updated": "2016-09-14T13:21:57.6627579Z",
-        "state": "Ready",
-        "operation": "Purchase",
-        "intent": "Authorization",
-        "currency": "SEK",
-        "amount": 1500,
-        "remainingCaptureAmount": 1500,
-        "remainingCancellationAmount": 1500,
-        "remainingReversalAmount": 0,
-        "description": "Test Purchase",
-        "payerReference": "AB1234",
-        "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
-        "userAgent": "Mozilla/5.0...",
-        "language": "sv-SE",
-        "prices": {
-            "id": "/psp/invoice/payments/{{ page.payment_id }}/prices"
-        },
-        "transactions": {
-            "id": "/psp/invoice/payments/{{ page.payment_id }}/transactions"
-        },
-        "authorizations": {
-            "id": "/psp/invoice/payments/{{ page.payment_id }}/authorizations"
-        },
-        "captures": {
-            "id": "/psp/invoice/payments/{{ page.payment_id }}/captures"
-        },
-        "reversals": {
-            "id": "/psp/invoice/payments/{{ page.payment_id }}/reversals"
-        },
-        "cancellations": {
-            "id": "/psp/invoice/payments/{{ page.payment_id }}/cancellations"
-        },
-        "payeeInfo": {
-            "id": "/psp/invoice/payments/{{ page.payment_id }}/payeeInfo"
-        },
-        "urls": {
-            "id": "/psp/invoice/payments/{{ page.payment_id }}/urls"
-        },
-        "settings": {
-            "id": "/psp/invoice/payments/{{ page.payment_id }}/settings"
-        },
-        "approvedLegalAddress": {
-            "id": "/psp/invoice/payments/{{ page.payment_id }}/approvedlegaladdress"
-        },
-        "maskedApprovedLegalAddress": {
-            "id": "/psp/invoice/payments/{{ page.payment_id }}/maskedapprovedlegaladdress"
-        }
-    },
-    "approvedLegalAddress": {
-        "id": "/psp/invoice/payments/{{ page.payment_id }}/approvedlegaladdress"
-    },
-    "operations": [
-        {
-            "href": "{{ page.api_url }}/psp/invoice/payments/{{ page.payment_id }}/captures",
-            "rel": "create-capture",
-            "method": "POST"
-        },
-        {
-            "href": "{{ page.api_url }}/psp/invoice/payments/{{ page.payment_id }}/cancellations",
-            "rel": "create-cancel",
-            "method": "POST"
-        },
-        {
-            "href": "{{ page.api_url }}/psp/invoice/payments/{{ page.payment_id }}/approvedlegaladdress",
-            "rel": "create-approved-legal-address",
-            "method": "POST"
-        }
-    ]
-}
-```
-
-If a `GET` method is used from payment UI with a `paymentToken`, the following
-operations can be returned, depending on state of the payment and the last
-transaction.
-
-```js
-"operations": [
-    {
-        "href": "https://example.com/cancelUrl",
-        "rel": "redirect-merchant-cancel",
-        "method": "GET"
-    },
-    {
-        "href": "https://example.com/completeUrl",
-        "rel": "redirect-merchant-complete",
-        "method": "GET"
-    },
-    {
-        "href": "https://example.com/cancelUrl",
-        "rel": "redirect-merchant-cancel",
-        "method": "GET"
-    },
-    {
-        "href": "https://example.com/completeUrl",
-        "rel": "redirect-merchant-complete",
-        "method": "GET"
-    }
-]
-```
-
-{:.table .table-striped}
-| Field                 | Type         | Description                                                                                                                                                                                                                                                                                                                                                |
-| :----------------------- | :----------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `payment`                | `object`     | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                                                                                      |
-| └➔&nbsp;`id`             | `string`     | {% include field-description-id.md %}                                                                                                                                                                                                                                                                                                                      |
-| └➔&nbsp;`number`         | `integer`    | The payment  number , useful when there's need to reference the payment in human communication. Not usable for programmatic identification of the payment, for that  id  should be used instead.                                                                                                                                                           |
-| └➔&nbsp;`created`        | `string`     | The ISO-8601 date of when the payment was created.                                                                                                                                                                                                                                                                                                         |
-| └➔&nbsp;`updated`        | `string`     | The ISO-8601 date of when the payment was updated.                                                                                                                                                                                                                                                                                                         |
-| └➔&nbsp;`state`          | `string`     | `Ready`, `Pending`, `Failed` or `Aborted`. Indicates the state of the payment, not the state of any transactions performed on the payment. To find the state of the payment's transactions (such as a successful authorization), see the `transactions` resource or the different specialized type-specific resources such as `authorizations` or `sales`. |
-| └➔&nbsp;`prices`         | `object`     | The `prices` resource lists the prices related to a specific payment.                                                                                                                                                                                                                                                                                      |
-| └─➔&nbsp;`id`            | `string`     | {% include field-description-id.md resource="prices" %}                                                                                                                                                                                                                                                                                                    |
-| └➔&nbsp;`description`    | `string(40)` | A textual description of maximum 40 characters of the purchase.                                                                                                                                                                                                                                                                                            |
-| └➔&nbsp;`payerReference` | `string`     | The reference to the payer (consumer/end-user) from the merchant system, like e-mail address, mobile number, customer number etc.                                                                                                                                                                                                                          |
-| └➔&nbsp;`userAgent`      | `string`     | The [user agent][user-agent-definition] string of the consumer's browser.                                                                                                                                                                                                                                                                                  |
-| └➔&nbsp;`language`       | `string`     | `nb-NO` , `sv-SE`  or  `en-US`                                                                                                                                                                                                                                                                                                                             |
-| └➔&nbsp;`urls`           | `string`     | The URI to the  urls  resource where all URIs related to the payment can be retrieved.                                                                                                                                                                                                                                                                     |
-| └➔&nbsp;`payeeInfo`      | `string`     | The URI to the  payeeinfo  resource where the information about the payee of the payment can be retrieved.                                                                                                                                                                                                                                                 |
-| `operations`             | `array`      | The array of possible operations to perform                                                                                                                                                                                                                                                                                                                |
-| └─➔&nbsp;`method`        | `string`     | The HTTP method to use when performing the operation.                                                                                                                                                                                                                                                                                                      |
-| └─➔&nbsp;`href`          | `string`     | The target URI to perform the operation against.                                                                                                                                                                                                                                                                                                           |
-| └─➔&nbsp;`rel`           | `string`     | The name of the relation the operation has to the current resource.                                                                                                                                                                                                                                                                                        |
-
-### Operations
-
-The operations should be performed as described in each response and not as
-described here in the documentation.
-Always use the `href` and `method` as specified in the response by finding
-the appropriate operation based on its `rel` value.
-The only thing that should be hard coded in the client is the value of
-the `rel` and the request that will be sent in the HTTP body of the request
-for the given operation.
-
-{:.table .table-striped}
-| Operation                | Description                                                                                                               |
-| :----------------------- | :------------------------------------------------------------------------------------------------------------------------ |
-| `update-payment-abort`   | [Aborts][abort] the payment order before any financial transactions are performed.                                        |
-| `redirect-authorization` | Contains the URI that is used to redirect the consumer to the Swedbank Pay Payments containing the card authorization UI. |
-| `view-authorization`     | Contains the JavaScript `href` that is used to embed  the card authorization UI directly on the webshop/merchant site     |
-| `create-capture`         | Creates a `capture` transaction in order to charge the reserved funds from the consumer.                                  |
-| `create-cancellation`    | Creates a `cancellation` transaction that cancels a created, but not yet captured payment.                                |
-
-### Options after posting a payment
+## Options after posting a payment
 
 Head over to [after payment][after-payment]
 to see what you can do when a payment is completed.
