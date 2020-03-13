@@ -67,7 +67,85 @@ An example of an expanded `POST` request is available in the
 ## Step 2: Create an authorization transaction
 
 The `direct-authorization` operation creates an authorization transaction
-directly.
+directly whilst the `redirect-authorization` operation redirects the consumer to
+a Swedbank Pay hosted payment page, where the payment is authorized by the
+consumer. Below you will see the two first request and response headers, used
+when there is no 3-D secure authentication, and thus no
+`redirect-authentication` is needed. The `panEnrolled` is also set to `FALSE`.
+
+{:.code-header}
+**Request**
+
+```http
+POST /psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/authorizations HTTP/1.1
+Host: {{ page.api_host }}
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+
+{
+    "transaction": {
+        "cardNumber": "4547781087013329",
+        "cardExpiryMonth": "12",
+        "cardExpiryYear": "22",
+        "cardVerificationCode": "749",
+        "cardholderName": "Olivia Nyhuus",
+        "chosenCoBrand": "visa"
+    }
+}
+```
+
+{:.code-header}
+**Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "payment": "/psp/creditcard/payments/45635233-1aa8-46a2-9584-08d7c4e16b79",
+    "authorization": {
+        "direct": true,
+        "cardBrand": "Visa",
+        "cardType": "Credit",
+        "paymentToken": "efe3b291-0231-48d1-98d7-18c93a9d5148",
+        "maskedPan": "492500******0004",
+        "expiryDate": "12/2022",
+        "panToken": "eb488c77-8118-4c9f-b3b3-ff134936df64",
+        "panEnrolled": false,
+        "issuerAuthorizationApprovalCode": "L57226",
+        "acquirerTransactionType": "SSL",
+        "acquirerStan": "57226",
+        "acquirerTerminalId": "45",
+        "acquirerTransactionTime": "2020-03-10T14:13:52Z",
+        "nonPaymentToken": "ed4683a8-6d2a-4a14-b065-746a41316b8f",
+        "transactionInitiator": "CARDHOLDER",
+        "id": "/psp/creditcard/payments/45635233-1aa8-46a2-9584-08d7c4e16b79/authorizations/84c440a1-5745-4a88-f4ed-08d7c4dcbf36",
+        "transaction": {
+            "id": "/psp/creditcard/payments/45635233-1aa8-46a2-9584-08d7c4e16b79/transactions/84c440a1-5745-4a88-f4ed-08d7c4dcbf36",
+            "created": "2020-03-10T13:13:52.2767764Z",
+            "updated": "2020-03-10T13:13:53.280398Z",
+            "type": "Authorization",
+            "state": "Completed",
+            "number": 70100366754,
+            "amount": 4201,
+            "vatAmount": 0,
+            "description": "books & ink",
+            "payeeReference": "cyrusLibrary1583846025",
+            "isOperational": false,
+            "operations": [
+                {
+                    "method": "PATCH",
+                    "href": "https://api.stage.payex.com/psp/creditcard/payments/45635233-1aa8-46a2-9584-08d7c4e16b79/authorizations/84c440a1-5745-4a88-f4ed-08d7c4dcbf36",
+                    "rel": "update-authorization-overchargedamount"
+                }
+            ]
+        }
+    }
+}
+```
+
+If there is 3-D secure authentication, the request and response headers
+will be as shown in the examples below. Notice that here the `redirect-authentication`
 
 {:.code-header}
 **Request**
