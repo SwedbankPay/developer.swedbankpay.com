@@ -49,47 +49,7 @@ https://www.pcisecuritystandards.org/)." %}
 * Finally you make a `GET` request towards Swedbank Pay with the `paymentID`
   received in the first step, which will return the purchase result.
 
-The sequence diagram below shows a high level description of a complete
-purchase, and the requests you have to send to Swedbank Pay. The links will take
-you directly to the corresponding API description.
-
-```mermaid
-sequenceDiagram
-    participant Payer
-    participant Merchant
-    participant SwedbankPay as Swedbank Pay
-
-    activate Payer
-    Payer->>+Merchant: start purchase
-    deactivate Payer
-    Merchant->>+SwedbankPay: POST /psp/creditcard/payments
-    deactivate Merchant
-    note left of Merchant: First API Request
-    SwedbankPay-->>+Merchant: rel: direct-authorization
-    deactivate SwedbankPay
-    Merchant->>+SwedbankPay: GET <payment.id>
-    deactivate Merchant
-    note left of Merchant: Second API request
-    SwedbankPay-->>+Merchant: rel: direct-authorization
-    deactivate SwedbankPay
-    Merchant-->>-Payer: display purchase result
-```
-
-## API Requests
-
-The API requests are displayed in the [purchase flow][purchase].
-You can [create a card `payment`][create-payment] with following `operation`
-options:
-
-* [`Purchase`][purchase]
-* [`Recur`][recur]
-* [`Payout`][payout]
-* [`Verify`][verify]
-
-Our `payment` example above uses the [`Purchase`][purchase] value which is
-explained below.
-
-### Purchase
+## Step 1: Create a Purchase
 
 A `Purchase` payment is a straightforward way to charge the card of the payer.
 It is followed up by posting a capture, cancellation or reversal transaction.
@@ -102,35 +62,198 @@ An example of an expanded `POST` request is available in the
 
 {% include card-purchase.md %}
 
-## Type of authorization - Intent
-
-* **Authorization (two-phase):** If you want the credit card to reserve the
-  amount, you will have to specify that the `intent` of the `Purchase` is
-  `Authorization`. The amount will be reserved but not charged. You will later
-  (i.e. when you are ready to ship the purchased products) have to make a
-  [Capture][capture] or [Cancel][cancel] request.
-
-### General
-
-* *No 3-D Secure and card acceptance*: There are optional paramers that can be
-  used in relation to 3-D Secure and card acceptance. By default, most credit
-  card agreements with an acquirer will require that you use 3-D Secure for card
-  holder authentication. However, if your agreement allows you to make a card
-  payment without this authentication, or that specific cards can be declined,
-  you may adjust these optional parameters when creating the payment.
-
 {% include alert-callback-url.md payment_instrument="card" %}
 
-## Type of capture - Intent
+## Step 2: Create an authorization transaction
 
-* **AutoCapture (one-phase):** If you want the credit card to be charged right
-  away, you will have to specify that the `intent` of the `Purchase` is
-  `AutoCapture`. The credit card will be charged and you don't need to do any
-  more financial operations to this purchase.
+The `direct-authorization` operation creates an authorization transaction
+directly whilst the `redirect-authorization` operation redirects the consumer to
+a Swedbank Pay hosted payment page, where the payment is authorized by the
+consumer. Below you will see the two first request and response headers, used
+when there is no 3-D secure authentication, and thus no
+`redirect-authentication` is needed. The `panEnrolled` is also set to `FALSE`.
 
-## Payment Resource
+{:.code-header}
+**Request**
 
-{% include payment-resource.md %}
+```http
+POST /psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/authorizations HTTP/1.1
+Host: {{ page.api_host }}
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+
+{
+    "transaction": {
+        "cardNumber": "4547781087013329",
+        "cardExpiryMonth": "12",
+        "cardExpiryYear": "22",
+        "cardVerificationCode": "749",
+        "cardholderName": "Olivia Nyhuus",
+        "chosenCoBrand": "visa"
+    }
+}
+```
+
+{:.code-header}
+**Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "payment": "/psp/creditcard/payments/45635233-1aa8-46a2-9584-08d7c4e16b79",
+    "authorization": {
+        "direct": true,
+        "cardBrand": "Visa",
+        "cardType": "Credit",
+        "paymentToken": "efe3b291-0231-48d1-98d7-18c93a9d5148",
+        "maskedPan": "492500******0004",
+        "expiryDate": "12/2022",
+        "panToken": "eb488c77-8118-4c9f-b3b3-ff134936df64",
+        "panEnrolled": false,
+        "issuerAuthorizationApprovalCode": "L57226",
+        "acquirerTransactionType": "SSL",
+        "acquirerStan": "57226",
+        "acquirerTerminalId": "45",
+        "acquirerTransactionTime": "2020-03-10T14:13:52Z",
+        "nonPaymentToken": "ed4683a8-6d2a-4a14-b065-746a41316b8f",
+        "transactionInitiator": "CARDHOLDER",
+        "id": "/psp/creditcard/payments/45635233-1aa8-46a2-9584-08d7c4e16b79/authorizations/84c440a1-5745-4a88-f4ed-08d7c4dcbf36",
+        "transaction": {
+            "id": "/psp/creditcard/payments/45635233-1aa8-46a2-9584-08d7c4e16b79/transactions/84c440a1-5745-4a88-f4ed-08d7c4dcbf36",
+            "created": "2020-03-10T13:13:52.2767764Z",
+            "updated": "2020-03-10T13:13:53.280398Z",
+            "type": "Authorization",
+            "state": "Completed",
+            "number": 70100366754,
+            "amount": 4201,
+            "vatAmount": 0,
+            "description": "books & ink",
+            "payeeReference": "cyrusLibrary1583846025",
+            "isOperational": false,
+            "operations": [
+                {
+                    "method": "PATCH",
+                    "href": "https://api.stage.payex.com/psp/creditcard/payments/45635233-1aa8-46a2-9584-08d7c4e16b79/authorizations/84c440a1-5745-4a88-f4ed-08d7c4dcbf36",
+                    "rel": "update-authorization-overchargedamount"
+                }
+            ]
+        }
+    }
+}
+```
+
+If there is 3-D secure authentication, the request and response headers
+will be as shown in the examples below. Notice that here the `redirect-authentication`
+
+{:.code-header}
+**Request**
+
+```http
+POST /psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/authorizations HTTP/1.1
+Host: {{ page.api_host }}
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+
+{
+    "transaction": {
+        "cardNumber": "4547781087013329",
+        "cardExpiryMonth": "12",
+        "cardExpiryYear": "22",
+        "cardVerificationCode": "749",
+        "cardholderName": "Olivia Nyhuus",
+        "chosenCoBrand": "visa"
+    }
+}
+```
+
+{:.table .table-striped}
+| Required | Field                       | Type      | Description                                                                     |
+| :------: | :----------------------------- | :-------- | :------------------------------------------------------------------------------ |
+|  ✔︎︎︎︎︎  | `transaction`                  | `object`  | The transaction object.                                                         |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`cardNumber`           | `string`  | Primary Account Number (PAN) of the card, printed on the face of the card.      |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`cardExpiryMonth`      | `integer` | Expiry month of the card, printed on the face of the card.                      |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`cardExpiryYear`       | `integer` | Expiry year of the card, printed on the face of the card.                       |
+|          | └➔&nbsp;`cardVerificationCode` | `string`  | Card verification code (CVC/CVV/CVC2), usually printed on the back of the card. |
+|          | └➔&nbsp;`cardholderName`       | `string`  | Name of the cardholder, usually printed on the face of the card.               |
+
+{:.code-header}
+**Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "payment": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}",
+    "authorization": {
+        "direct": true,
+        "cardBrand": "Visa",
+        "cardType": "Credit",
+        "issuingBank": "Utl. Visa",
+        "paymentToken": "{{ page.payment_token }}",
+        "maskedPan": "454778******3329",
+        "expiryDate": "12/2020",
+        "panToken": "cca2d98d-8bb3-4bd6-9cf3-365acbbaff96",
+        "panEnrolled": true,
+        "acquirerTransactionTime": "0001-01-01T00:00:00Z",
+        "id": ""/psp/{{ instrument }}/payments/{{ page.payment_id }}/{{ page.transaction_id }}",
+        "transaction": {
+            "id": ""/psp/{{ instrument }}/payments/{{ page.payment_id }}/{{ page.transaction_id }}",
+            "created": "2020-03-10T13:15:01.9586254Z",
+            "updated": "2020-03-10T13:15:02.0493818Z",
+            "type": "Authorization",
+            "state": "AwaitingActivity",
+            "number": 70100366758,
+            "amount": 4201,
+            "vatAmount": 0,
+            "description": "books & ink",
+            "payeeReference": "cyrusLibrary1583846100",
+            "isOperational": true,
+            "operations": [
+                {
+                    "method": "GET",
+                    "href": "https://api.stage.payex.com/psp/{{ payment_instrument }}/confined/payments/authorizations/authenticate/{{ page.payment_id }}",
+                    "rel": "redirect-authentication"
+                }
+            ]
+        }
+    }
+}
+```
+
+{:.table .table-striped}
+| Field   | Type      | Description                                                                     |
+| :----------------------------- | :-------- | :------------------------------------------------------------------------------ |
+| `payment`                  | `object`  | The payment object.                                                         |
+| `authorization`           | `object`  | The authorization object.     |
+| └➔&nbsp;`direct`      | `string` | The type of the authorization.                       |
+| └➔&nbsp;`cardBrand`       | `string` | `Visa`, `MC`, etc. The brand of the card.                         |
+| └➔&nbsp;`cardType` | `string`  | `Credit Card` or `Debit Card`. Indicates the type of card used for the authorization.  |
+| └➔&nbsp;`issuingBank`       | `string`  |  The name of the bank that issued the card used for the authorization.               |
+| └➔&nbsp;`paymentToken`            | `string`  | The payment token created for the card used in the authorization.              |
+| └➔&nbsp;`maskedPan` | `string`  | The masked PAN number of the card.  |
+| └➔&nbsp;`expiryDate`              | `string`  | The month and year of when the card expires.                                   |
+| └➔&nbsp;`panToken` | `string`  | The token representing the specific PAN of the card.  |
+| └➔&nbsp;`panEnrolled`              | `string`  |    |
+| └➔&nbsp;`acquirerTransactionTime` | `string`  | `3DSECURE` or `SSL`. Indicates the transaction type of the acquirer.     |
+| └➔&nbsp;`id`              | `string`  |      {% include
+field-description-id.md resource="itemDescriptions" %}  |
+| └➔&nbsp;`transaction`              | `object`  |   The object representation of the generic transaction resource.     |
+| └─➔&nbsp;`id` | `string`  | {% include field-description-id.md resource="transaction" %}      |
+| └─➔&nbsp;`created`                | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
+| └─➔&nbsp;`updated`                | `string`  | The ISO-8601 date and time of when the transaction was updated.                                                                                                                                              |
+| └─➔&nbsp;`type`                   | `string`  | Indicates the transaction type.                                                                                                                                                                              |
+| └─➔&nbsp;`state`                  | `string`  | `Initialized`, `Completed` or `Failed`. Indicates the state of the transaction.  |
+| └─➔&nbsp;`number`                 | `string`  | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead. |
+| └─➔&nbsp;`amount`                 | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` = 100.00 NOK, `5000` = 50.00 SEK.                                                                                     |
+|  └─➔&nbsp;`vatAmount`              | `integer` | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                           |
+|  └─➔&nbsp;`description`            | `string`  | A human readable description of maximum 40 characters of the transaction.                                                                                                                                    |
+|  └─➔&nbsp;`payeeReference`         | `string`  | A unique reference for the transaction.                                                                                                                                                                      |
+| └─➔&nbsp;`failedReason`           | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
+| └─➔&nbsp;`isOperational`          | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
+| └─➔&nbsp;`operations`             | `array`   | The array of operations that are possible to perform on the transaction in its current state.                                                                                                                |
 
 ### 3-D Secure authentication
 
@@ -146,6 +269,11 @@ card payment:
   Swedbank Pay will redirect the cardholder to the autentication mechanism that
   is decided by the issuing bank. Normally this will be done using BankID or
   Mobile BankID.
+
+{% include card-general.md %}
+
+The sequence diagram below shows a high level description of a complete
+purchase, and the requests you have to send to Swedbank Pay.
 
 ```mermaid
 sequenceDiagram
