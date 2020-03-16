@@ -43,7 +43,7 @@ sidebar:
 
 {% include alert-callback-url.md payment_instrument="invoice" %}
 
-To initiate the payment process, you need to make a `POST`request to Swedbank Pay.
+To initiate the payment process, you need to make a `POST` request to Swedbank Pay.
 Our `payment` example below uses the [`FinancingConsumer`]
 [financing-consumer] value. All valid options when posting a payment with
 operation equal to `FinancingConsumer`, are described in
