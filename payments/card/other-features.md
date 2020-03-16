@@ -197,6 +197,7 @@ payment"  %}
 [redirect]: /payments/card/redirect
 [hosted-view]: /payments/card/seamless-view
 [one-click-payments]: #one-click-payments
+[payee-reference]: #payee-reference
 [split-settlement]: #split-settlement
 [settlement-and-reconciliation]: #settlement-and-reconciliation
 [recurrence]: #recur
