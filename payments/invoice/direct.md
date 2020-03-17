@@ -29,7 +29,7 @@ Pay helps improve cashflow by purchasing merchant invoices. Swedbank Pay
 receives invoice data, which is used to produce and distribute invoices to the
 consumer/end-user" %}
 
-## Introduction
+## Invoice implementation flow
 
 1. Collect all purchase information and send it in a `POST` request to Swedbank
    Pay.
@@ -42,11 +42,8 @@ consumer/end-user" %}
 1. Send a  `GET` request with the `paymentID` to get the authorization result
 1. Make a Capture by creating a `POST` request
 
-  **By making a Capture, Swedbank Pay will generate
-  the invoice to the consumer and the order is ready for shipping.**
-
 * An invoice payment is always two-phased based - you create an Authorize
-transaction, that is followed by a `Capture` or `Cancel` request. 
+transaction, that is followed by a `Capture` or `Cancel` request.
 The `Capture` , `Cancel`, `Reversal` opions are
 described in [other features][other-features].
 
@@ -54,7 +51,16 @@ described in [other features][other-features].
 Note that the invoice will not be created/distributed before you have
 made a `capture` request." %}.
 
+**By making a Capture, Swedbank Pay will generate
+  the invoice to the consumer and the order is ready for shipping.**
+
 {% include alert-callback-url.md payment_instrument="invoice" %}
+
+## Step 1: Create a Purchase
+
+{% include alert.html type="neutral" icon="info" body="Note that for Finland
+(FI) the invoice integration process is different as the Merchant needs to send
+a `POST` request with the `approvedLegalAddress` (SNN and postal number)" %}
 
 Our `payment` example below uses the [`FinancingConsumer`][financing-consumer] value.
 
@@ -241,11 +247,9 @@ Content-Type: application/json
 | `operations`             | `array`      | The array of possible operations to perform                                                                                                                                                                                                                                                                                                                |
 | └─➔&nbsp;`method`        | `string`     | The HTTP method to use when performing the operation.                                                                                                                                                                                                                                                                                                      |
 | └─➔&nbsp;`href`          | `string`     | The target URI to perform the operation against.                                                                                                                                                                                                                                                                                                           |
-| └─➔&nbsp;`rel`           | `string`     | The name of the relation the
-operation has to the current resource.
-|
+| └─➔&nbsp;`rel`           | `string`     | The name of the relation the operation has to the current resource.|
 
-he sequence diagram below shows a high level description of the invoice
+The sequence diagram below shows a high level description of the invoice
 process, including the four requests you have to send to Swedbank Pay to create
 an authorize transaction for Sweden (SE) and Norway (NO). Note that for Finland
 (FI) the process is different as the Merchant needs to send a `POST` request
