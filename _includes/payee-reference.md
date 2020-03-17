@@ -1,6 +1,8 @@
-{% assign payment_instrument = include.payment_instrument | default: false%}
+{% assign payment_instrument = include.payment_instrument | default: true %}
 
-{% if payment_instrumet == "invoice" %}
+## Payee Reference
+
+{% if payment_instrument == "invoice" %}
 The `payeeReference` is used as a receipt/invoice number when the payer chooses
 to pay with Invoice Payments. Depending on the specifications in the contract,
 it has some specific processing rules described below.
@@ -17,7 +19,8 @@ specific processing rules depending on specifications in the contract.
   `transaction.number` or the `payeeReference` is sent to the acquirer.
   1. If you select *Option A* in the settlement process (Swedbank Pay will
      handle the settlement), Swedbank Pay will send the `transaction.number` to
-     the acquirer and the `payeeReference` may have the format of `string(30)`.
+     the acquirer and the `payeeReference` must be in the format of characters
+     `A-Za-z0-9` (including `-`) and `string(30)`.
   2. If you select *Option B* in the settlement process (you will handle the
      settlement yourself), Swedbank Pay will send the `payeeReference` to the
      acquirer and it will be limited to the format of `string(12)` and all

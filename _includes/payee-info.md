@@ -46,6 +46,6 @@ Content-Type: application/json
 | └➔&nbsp;`productCategory` | `string`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process. You therefore need to ensure that the value given here is valid in the settlement. |
 | └➔&nbsp;`orderReference`  | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                           |
 
-### PayeeReference
+### Payee Reference
 
 {% include payee-reference.md payment_instrument = instrument %}
