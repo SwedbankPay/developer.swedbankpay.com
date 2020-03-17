@@ -12,6 +12,8 @@ sidebar:
       title: Seamless View
     - url: /payments/invoice/direct
       title: Direct
+    - url: /payments/invoice/capture
+      title: Capture
     - url: /payments/invoice/after-payment
       title: After Payment
     - url: /payments/invoice/other-features
@@ -386,7 +388,7 @@ transaction.
 ```
 
 {% include iterator.html prev_href="seamless-view" prev_title="Back: Seamless View"
-next_href="after-payment" next_title="Next: After Payment" %}
+next_href="capture" next_title="Next: Capture" %}
 
 [abort]: /payments/invoice/other-features#abort
 [callback]: /payments/invoice/other-features#callback
