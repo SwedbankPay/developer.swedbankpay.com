@@ -147,8 +147,10 @@ Content-Type: application/json
 
 ## Capture Flow
 
-A `capture` can only be performed on a successfully authorized transaction. A
-partial `capture` is only possible in [Card Payments][card-payments-capture].
+A `capture` can only be performed on a successfully authorized transaction.
+It is possible to do a partial `capture` where you only capture a part of the
+authorized amount. You can do other captures on the same payment later, up to
+the total authorized amount.
 
 ```mermaid
 sequenceDiagram
