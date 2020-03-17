@@ -246,7 +246,7 @@ Content-Type: application/json
 | └─➔&nbsp;`rel`           | `string`     | The name of the relation the
 operation has to the current resource.|
 
-For Sweden and Norway the `approvedLegalAddress`request and respons will be as shown
+For Sweden and Norway the `approvedLegalAddress`request and response will be as shown
 below.
 
 {:.code-header}
