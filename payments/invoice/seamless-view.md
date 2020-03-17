@@ -12,6 +12,8 @@ sidebar:
       title: Seamless View
     - url: /payments/invoice/direct
       title: Direct
+    - url: /payments/invoice/capture
+      title: Capture
     - url: /payments/invoice/after-payment
       title: After Payment
     - url: /payments/invoice/other-features
