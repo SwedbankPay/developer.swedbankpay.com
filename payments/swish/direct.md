@@ -125,7 +125,7 @@ Content-Type: application/json
         "language": "sv-SE",
         "urls": {
             "hostUrls": "https://example.com",
-            "paymentUrl": "http://example.com/perform-payment",
+            "paymentUrl": "https://example.com/perform-payment",
             "completeUrl": "https://example.com/payment-completed",
             "cancelUrl": "https://example.com/payment-canceled",
             "callbackUrl": "https://example.com/payment-callback",
@@ -155,7 +155,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Field                     | Type          | Description                                                                                                                                                                                                                                                                                        |
+| Required | Field                        | Type          | Description                                                                                                                                                                                                                                                                                        |
 | :------: | :--------------------------- | :------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |  ✔︎︎︎︎︎  | `payment`                    | `object`      | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                              |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`operation`          | `string`      | The operation that the `payment` is supposed to perform. The [`Purchase`][purchase] operation is used in our example.                                                                                                                                                                              |
@@ -163,8 +163,8 @@ Content-Type: application/json
 |  ✔︎︎︎︎︎  | └➔&nbsp;`currency`           | `string`      | SEK.                                                                                                                                                                                                                                                                                               |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`prices`             | `object`      | The `prices` resource lists the prices related to a specific payment.                                                                                                                                                                                                                              |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`type`              | `string`      | Swish                                                                                                                                                                                                                                                                                              |
-|  ✔︎︎︎︎︎  | └─➔&nbsp;`amount`            | `integer`     | Amount is entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 SEK 5000 = 50.00 SEK.                                                                                                                                                                                |
-|  ✔︎︎︎︎︎  | └─➔&nbsp;`vatAmount`         | `integer`     | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                                                                                                                 |  |
+|  ✔︎︎︎︎︎  | └─➔&nbsp;`amount`            | `integer`     | {% include field-description-amount.md %}                                                                                                                                                                                                                                                          |
+|  ✔︎︎︎︎︎  | └─➔&nbsp;`vatAmount`         | `integer`     | {% include field-description-vatamount.md %}                                                                                                                                                 |  |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`description`        | `string(40)`  | A textual description max 40 characters of the purchase.                                                                                                                                                                                                                                           |
 |          | └➔&nbsp;`payerReference`     | `string`      | The reference to the payer (consumer/end user) from the merchant system. E.g mobile number, customer number etc.                                                                                                                                                                                   |
 |          | └➔&nbsp;`payeeName`          | `string`      | The payee name will be displayed to consumer when redirected to Swedbank Pay.                                                                                                                                                                                                                      |
@@ -261,7 +261,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Field         | Type     | Required                                                                                          |
+| Field            | Type     | Required                                                                                          |
 | :--------------- | :------- | :------------------------------------------------------------------------------------------------ |
 | `transaction`    | `object` | The `transaction` object contains information about the specific transaction.                     |
 | └➔&nbsp;`msisdn` | `string` | The end-user's mobile number. It must have a country code prefix and be 8 to 15 digits in length. |
@@ -291,7 +291,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Field      | Type     | Required                                                             |
+| Field         | Type     | Required                                                             |
 | :------------ | :------- | :------------------------------------------------------------------- |
 | `transaction` | `object` | The  `transaction` object is empty for m-commerce sale transactions. |
 

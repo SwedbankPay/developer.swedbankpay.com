@@ -46,7 +46,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Field                          | Type      | Required                                                                                                                                                                                                     |
+| Field                             | Type      | Required                                                                                                                                                                                                     |
 | :-------------------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `payment`                         | `string`  | {% include field-description-id.md sub_resource=plural %}                                                                                                                                                    |
 | `{{ plural }}`                    | `object`  | The current `{{ plural }}` resource.                                                                                                                                                                         |
@@ -59,8 +59,8 @@ Content-Type: application/json
 | └─➔&nbsp;`type`                   | `string`  | Indicates the transaction type.                                                                                                                                                                              |
 | └─➔&nbsp;`state`                  | `string`  | `Initialized`, `Completed` or `Failed`. Indicates the state of the transaction.                                                                                                                              |
 | └─➔&nbsp;`number`                 | `string`  | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead. |
-| └─➔&nbsp;`amount`                 | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` = 100.00 NOK, `5000` = 50.00 SEK.                                                                                     |
-| └─➔&nbsp;`vatAmount`              | `integer` | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                           |
+| └─➔&nbsp;`amount`                 | `integer` | {% include field-description-amount.md %}                                                                                                                                                                    |
+| └─➔&nbsp;`vatAmount`              | `integer` | {% include field-description-vatamount.md %}                                                           |
 | └─➔&nbsp;`description`            | `string`  | A human readable description of maximum 40 characters of the transaction.                                                                                                                                    |
 | └─➔&nbsp;`payeeReference`         | `string`  | A unique reference for the transaction.                                                                                                                                                                      |
 | └─➔&nbsp;`failedReason`           | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |

@@ -131,7 +131,7 @@ Content-Type: application/json
             "hostUrls": [ "https://example.com" ],
             "completeUrl": "https://example.com/payment-completed",
             "cancelUrl": "https://example.com/payment-canceled",
-            "paymentUrl": "http://example.com/perform-payment",
+            "paymentUrl": "https://example.com/perform-payment",
             "logoUrl": "https://example.com/payment-logo.png",
             "termsOfServiceUrl": "https://example.com/payment-terms.html"
         },
