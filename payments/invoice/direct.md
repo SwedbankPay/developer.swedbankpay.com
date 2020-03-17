@@ -29,18 +29,15 @@ Pay helps improve cashflow by purchasing merchant invoices. Swedbank Pay
 receives invoice data, which is used to produce and distribute invoices to the
 consumer/end-user" %}
 
-## Invoice implementation flow
+## Invoice Direct implementation flow
 
-1. Collect all purchase information and send it in a `POST` request to Swedbank
-   Pay.
-1. Include personal information (SSN and postal code) and send it to Swedbank
-   Pay.
-1. Make a new `POST` request towards Swedbank Pay to retrieve the name and
-   address of the customer.
-1. Create an authorization transaction by calculating the final price / amount.
-1. Make a third `POST` request with consumer data as input.
-1. Send a  `GET` request with the `paymentID` to get the authorization result
-1. Make a Capture by creating a `POST` request
+* Collect all purchase information and send it in a `POST` request to Swedbank
+  Pay. Make sure to include personal information (SSN and postal code).
+* Make a new `POST` request towards Swedbank Pay to retrieve the name and
+  address of the customer to create a purchase.
+* Create a `POST`request to retrieve the transaction status.
+* Send a  `GET` request with the `paymentID` to get the authorization result.
+* Make a Capture by creating a `POST` request.
 
 * An invoice payment is always two-phased based - you create an Authorize
 transaction, that is followed by a `Capture` or `Cancel` request.
@@ -49,18 +46,17 @@ described in [other features][other-features].
 
 {% include alert.html type="neutral" icon="info" body="
 Note that the invoice will not be created/distributed before you have
-made a `capture` request." %}.
-
-**By making a Capture, Swedbank Pay will generate
-  the invoice to the consumer and the order is ready for shipping.**
+made a `capture` request. By making a Capture, Swedbank Pay will generate
+the invoice to the consumer and the order is ready for shipping." %}
 
 {% include alert-callback-url.md payment_instrument="invoice" %}
 
 ## Step 1: Create a Purchase
 
-{% include alert.html type="neutral" icon="info" body="Note that for Finland
-(FI) the invoice integration process is different as the Merchant needs to send
-a `POST` request with the `approvedLegalAddress` (SNN and postal number)" %}
+{% include alert.html type="neutral" icon="info" body="Note that for Sweden(SE)
+and Norway(NO) the invoice integration process is different as the Merchant
+needs to send a `POST` request with the `approvedLegalAddress`
+(SNN and postal number)" %}
 
 Our `payment` example below uses the [`FinancingConsumer`][financing-consumer] value.
 
@@ -247,13 +243,120 @@ Content-Type: application/json
 | `operations`             | `array`      | The array of possible operations to perform                                                                                                                                                                                                                                                                                                                |
 | └─➔&nbsp;`method`        | `string`     | The HTTP method to use when performing the operation.                                                                                                                                                                                                                                                                                                      |
 | └─➔&nbsp;`href`          | `string`     | The target URI to perform the operation against.                                                                                                                                                                                                                                                                                                           |
-| └─➔&nbsp;`rel`           | `string`     | The name of the relation the operation has to the current resource.|
+| └─➔&nbsp;`rel`           | `string`     | The name of the relation the
+operation has to the current resource.|
+
+For Sweden and Norway the `approvedLegalAddress`request and respons will be as shown
+below.
+
+{:.code-header}
+**Request**
+
+```http
+POST /psp/invoice/payments HTTP/1.1
+Host: {{ page.api_host }}
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+
+{
+    "addressee": {
+        "socialSecurityNumber": "194810205957",
+        "zipCode": "55560"
+    }
+}
+```
+
+{:.code-header}
+**Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+{
+    "payment": "/psp/invoice/payments/{{ page.payment_id }}",
+    "approvedLegalAddress": {
+        "id": "/psp/invoice/payments/{{ page.payment_id }}/approvedlegaladdress",
+        "addressee": "Leo 6",
+        "streetAddress": "Gata 535",
+        "zipCode": "55560",
+        "city": "Vaxholm",
+        "countryCode": "SE"
+    }
+}
+```
+
+## Step 2: Get the transaction result
+
+{:.code-header}
+**Request**
+
+```http
+POST /psp/invoice/payments HTTP/1.1
+Host: {{ page.api_host }}
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+
+{
+    "transaction": {
+        "activity": "FinancingConsumer"
+    },
+    "consumer": {
+        "socialSecurityNumber": "194810205957",
+        "customerNumber": "123456",
+        "email": "someExample@payex.com",
+        "msisdn": "+46765432198",
+        "ip": "127.0.0.1"
+    },
+    "LegalAddress": {
+        "addressee": "Leo 6",
+        "streetAddress": "Gata 535",
+        "zipCode": "55560",
+        "city": "Vaxholm",
+        "countryCode": "SE"
+    }
+}
+```
+
+{:.code-header}
+**Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "payment": "/psp/invoice/payments/{{ page.payment_id }}",
+    "authorization": {
+        "shippingAddress": {
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/shippingaddress"
+        },
+        "legalAddress": {
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/legaladdress"
+        },
+        "id": "/psp/invoice/payments/{{ page.payment_id }}/authorizations/23fc8ea7-57b8-44bb-8313-08d7ca2e1a26",
+        "transaction": {
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/transactions/23fc8ea7-57b8-44bb-8313-08d7ca2e1a26",
+            "created": "2020-03-17T09:46:10.3506297Z",
+            "updated": "2020-03-17T09:46:12.2512221Z",
+            "type": "Authorization",
+            "state": "Completed",
+            "number": 71100537930,
+            "amount": 4201,
+            "vatAmount": 0,
+            "description": "Books & Ink",
+            "payeeReference": "cyrusLibrary1584438350",
+            "isOperational": false,
+            "operations": []
+        }
+    }
+}
+```
 
 The sequence diagram below shows a high level description of the invoice
 process, including the four requests you have to send to Swedbank Pay to create
-an authorize transaction for Sweden (SE) and Norway (NO). Note that for Finland
-(FI) the process is different as the Merchant needs to send a `POST` request
-with the `approvedLegalAddress` (SNN and postal number).
+an authorize transaction for Sweden (SE) and Norway (NO). Note that for Sweden
+(SE) and Norway (NO) the process is different as the Merchant needs to send a
+`POST` request with the `approvedLegalAddress` (SNN and postal number).
 
 ## Invoice flow (SE and NO)
 
