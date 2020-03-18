@@ -344,7 +344,7 @@ Content-Type: application/json
             "amount": 4201,
             "vatAmount": 0,
             "description": "Books & Ink",
-            "payeeReference": "cyrusLibrary1584438350",
+            "payeeReference": "1584438350",
             "isOperational": false,
             "operations": []
         }
