@@ -36,12 +36,12 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0",
         "language": "nb-NO",
         "urls": {
-            "hostUrls": [ "http://example.com", "http://example.net" ],
-            "completeUrl": "http://example.com/payment-completed",
-            "cancelUrl": "http://example.com/payment-canceled",
-            "callbackUrl": "http://example.com/payment-callback",
-            "logoUrl": "http://example.com/payment-logo.png",
-            "termsOfServiceUrl": "http://example.com/payment-terms.pdf",
+            "hostUrls": [ "https://example.com", "https://example.net" ],
+            "completeUrl": "https://example.com/payment-completed",
+            "cancelUrl": "https://example.com/payment-canceled",
+            "callbackUrl": "https://example.com/payment-callback",
+            "logoUrl": "https://example.com/payment-logo.png",
+            "termsOfServiceUrl": "https://example.com/payment-terms.pdf",
         },
         "payeeInfo": {
             "payeeId": "{{ page.merchant_id }}",
@@ -53,7 +53,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property                       | Type      | Description                                                                     |
+| Required | Field                       | Type      | Description                                                                     |
 | :------: | :----------------------------- | :-------- | :------------------------------------------------------------------------------ |
 |  ✔︎︎︎︎︎  | `transaction`                  | `object`  | The transaction object.                                                         |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`cardNumber`           | `string`  | Primary Account Number (PAN) of the card, printed on the face of the card.      |

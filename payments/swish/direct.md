@@ -93,13 +93,11 @@ set to value `Purchase` are listed below.
 
 ### General
 
-{% include alert.html type="success" icon="link" body=" **Defining CallbackURL**:
-When implementing a scenario, it is strongly recommended to set a
-[`callbackURL`][callback-url] in the `POST` request. If `callbackURL` is set,
-Swedbank Pay will send a postback request to this URL when the consumer has
-fulfilled the payment." %}
+{% include alert-callback-url.md payment_instrument="swish" %}
 
 ## Purchase
+
+A `Purchase` payment is created by performing the following request.
 
 {:.code-header}
 **Request**
@@ -127,7 +125,7 @@ Content-Type: application/json
         "language": "sv-SE",
         "urls": {
             "hostUrls": "https://example.com",
-            "paymentUrl": "http://example.com/perform-payment",
+            "paymentUrl": "https://example.com/perform-payment",
             "completeUrl": "https://example.com/payment-completed",
             "cancelUrl": "https://example.com/payment-canceled",
             "callbackUrl": "https://example.com/payment-callback",
@@ -157,37 +155,37 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property                                           | Type          | Description                                                                                                                                                                                                                                                                                        |
-| :------: | :------------------------------------------------- | :------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|  ✔︎︎︎︎︎  | `payment`                                          | `object`      | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                              |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`operation`                                | `string`      | The operation that the `payment` is supposed to perform. The [`Purchase`][purchase] operation is used in our example.                                                                                                                                                                              |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`intent`                                   | `string`      | `Authorization`.                                                                                                                                                                                                                                                                                   |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`currency`                                 | `string`      | SEK.                                                                                                                                                                                                                                                                         |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`prices`                                   | `object`      | The `prices` resource lists the prices related to a specific payment.                                                                                                                                                                                                                              |
-|  ✔︎︎︎︎︎  | └─➔&nbsp;`type`                                    | `string`      | Swish                                                                                                                                                                                                                                                                                              |
-|  ✔︎︎︎︎︎  | └─➔&nbsp;`amount`                                  | `integer`     | Amount is entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 SEK 5000 = 50.00 SEK.                                                                                                                                                                                |
-|  ✔︎︎︎︎︎  | └─➔&nbsp;`vatAmount`                               | `integer`     | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                                                                                                                 |  |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`description`                              | `string(40)`  | A textual description max 40 characters of the purchase.                                                                                                                                                                                                                                           |
-|          | └➔&nbsp;`payerReference`                           | `string`      | The reference to the payer (consumer/end user) from the merchant system. E.g mobile number, customer number etc.                                                                                                                                                                                   |
-|          | └➔&nbsp;`payeeName`                                | `string`      | The payee name will be displayed to consumer when redirected to Swedbank Pay.                                                                                                                                                                                                                      |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`userAgent`                                | `string`      | The user agent reference of the consumer's browser - [see user agent definition][user-agent]                                                                                                                                                                                                       |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`language`                                 | `string`      | `nb-NO`, `sv-SE` or `en-US`.                                                                                                                                                                                                                                                                       |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`urls`                                     | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                             |
-|  ✔︎︎︎︎︎  | └─➔&nbsp;`completeUrl`                             | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. |
-|          | └─➔&nbsp;`cancelUrl`                               | `string`      | The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only cancelUrl or `paymentUrl` can be used, not both.                                                                                              |
-|          | └─➔&nbsp;`callbackUrl`                             | `string`      | The URL that Swedbank Pay will perform an HTTP POST against every time a transaction is created on the payment. See [callback][callback-url] for details.                                                                                                                                          |
-|          | └─➔&nbsp;`logoUrl`                                 | `string`      | The URL that will be used for showing the customer logo. Must be a picture with maximum 50px height and 400px width. Require https.                                                                                                                                                                |
-|          | └─➔&nbsp;`termsOfServiceUrl`                       | `string`      | A URL that contains your terms and conditions for the payment, to be linked on the payment page. Require https.                                                                                                                                                                                    |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`payeenInfo`                               | `object`      | The `payeeInfo` contains information about the payee.                                                                                                                                                                                                                                              |
-|  ✔︎︎︎︎︎  | └─➔&nbsp;`payeeId`                                 | `string`      | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                                                                                                              |
-|  ✔︎︎︎︎︎  | └─➔&nbsp;`payeeReference`                          | `string(50*)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [`payeeReference`][payee-reference] for details.                                                                                                         |
-|          | └─➔&nbsp;`payeeName`                               | `string`      | The payee name (like merchant name) that will be displayed to consumer when redirected to Swedbank Pay.                                                                                                                                                                                            |
-|          | └─➔&nbsp;`productCategory`                         | `string`      | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                     |
-|          | └─➔&nbsp;`orderReference`                          | `String(50)`  | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                            |
-|          | └─➔&nbsp;`subsite`                                 | `String(40)`  | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.                                                                                                                                        |
-|          | └─➔&nbsp;`msisdn`                                  | `String`      | Number will be prefilled on payment page, if valid. The mobile number must have a country code prefix and be 8 to 15 digits in length.                                                                                                                                                             |
-|          | └➔&nbsp;`swish`                                    | `object`      | An object that holds different scenarios for Swish payments.                                                                                                                                                                                                                                       |
-|          | └─➔&nbsp;`ecomOnlyEnabled`                         | `boolean`     | `true` if to only enable Swish on web based transactions.; otherwise `false` to also enable Swish transactions via in-app payments                                                                                                                                                                 |
+| Required | Field                        | Type          | Description                                                                                                                                                                                                                                                                                        |
+| :------: | :--------------------------- | :------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|  ✔︎︎︎︎︎  | `payment`                    | `object`      | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                              |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`operation`          | `string`      | The operation that the `payment` is supposed to perform. The [`Purchase`][purchase] operation is used in our example.                                                                                                                                                                              |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`intent`             | `string`      | `Authorization`.                                                                                                                                                                                                                                                                                   |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`currency`           | `string`      | SEK.                                                                                                                                                                                                                                                                                               |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`prices`             | `object`      | The `prices` resource lists the prices related to a specific payment.                                                                                                                                                                                                                              |
+|  ✔︎︎︎︎︎  | └─➔&nbsp;`type`              | `string`      | Swish                                                                                                                                                                                                                                                                                              |
+|  ✔︎︎︎︎︎  | └─➔&nbsp;`amount`            | `integer`     | {% include field-description-amount.md %}                                                                                                                                                                                                                                                          |
+|  ✔︎︎︎︎︎  | └─➔&nbsp;`vatAmount`         | `integer`     | {% include field-description-vatamount.md %}                                                                                                                                                 |  |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`description`        | `string(40)`  | A textual description max 40 characters of the purchase.                                                                                                                                                                                                                                           |
+|          | └➔&nbsp;`payerReference`     | `string`      | The reference to the payer (consumer/end user) from the merchant system. E.g mobile number, customer number etc.                                                                                                                                                                                   |
+|          | └➔&nbsp;`payeeName`          | `string`      | The payee name will be displayed to consumer when redirected to Swedbank Pay.                                                                                                                                                                                                                      |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`userAgent`          | `string`      | The user agent reference of the consumer's browser - [see user agent definition][user-agent]                                                                                                                                                                                                       |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`language`           | `string`      | `nb-NO`, `sv-SE` or `en-US`.                                                                                                                                                                                                                                                                       |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`urls`               | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                             |
+|  ✔︎︎︎︎︎  | └─➔&nbsp;`completeUrl`       | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. |
+|          | └─➔&nbsp;`cancelUrl`         | `string`      | The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only cancelUrl or `paymentUrl` can be used, not both.                                                                                              |
+|          | └─➔&nbsp;`callbackUrl`       | `string`      | The URL that Swedbank Pay will perform an HTTP POST against every time a transaction is created on the payment. See [callback][callback-url] for details.                                                                                                                                          |
+|          | └─➔&nbsp;`logoUrl`           | `string`      | The URL that will be used for showing the customer logo. Must be a picture with maximum 50px height and 400px width. Require https.                                                                                                                                                                |
+|          | └─➔&nbsp;`termsOfServiceUrl` | `string`      | A URL that contains your terms and conditions for the payment, to be linked on the payment page. Require https.                                                                                                                                                                                    |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`payeenInfo`         | `object`      | The `payeeInfo` contains information about the payee.                                                                                                                                                                                                                                              |
+|  ✔︎︎︎︎︎  | └─➔&nbsp;`payeeId`           | `string`      | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                                                                                                              |
+|  ✔︎︎︎︎︎  | └─➔&nbsp;`payeeReference`    | `string(50*)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [`payeeReference`][payee-reference] for details.                                                                                                         |
+|          | └─➔&nbsp;`payeeName`         | `string`      | The payee name (like merchant name) that will be displayed to consumer when redirected to Swedbank Pay.                                                                                                                                                                                            |
+|          | └─➔&nbsp;`productCategory`   | `string`      | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                     |
+|          | └─➔&nbsp;`orderReference`    | `String(50)`  | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                            |
+|          | └─➔&nbsp;`subsite`           | `String(40)`  | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.                                                                                                                                        |
+|          | └─➔&nbsp;`msisdn`            | `String`      | Number will be prefilled on payment page, if valid. The mobile number must have a country code prefix and be 8 to 15 digits in length.                                                                                                                                                             |
+|          | └➔&nbsp;`swish`              | `object`      | An object that holds different scenarios for Swish payments.                                                                                                                                                                                                                                       |
+|          | └─➔&nbsp;`ecomOnlyEnabled`   | `boolean`     | `true` if to only enable Swish on web based transactions.; otherwise `false` to also enable Swish transactions via in-app payments                                                                                                                                                                 |
 {% comment %}
 |          | └─➔&nbsp;`paymentRestrictedToAgeLimit`             | `integer`     | Positive number that sets the required age  needed to fulfill the payment. To use this feature it has to be configured in the contract.                                                                                                                                                            |
 |          | └─➔&nbsp;`paymentRestrictedToSocialSecurityNumber` | `string`      | When provided, the payment will be restricted to a specific social security number. Format: yyyyMMddxxxx. To use this feature it has to be configured in the contract.                                                                                                                             |
@@ -239,7 +237,7 @@ Content-Type: application/json
 }
 ```
 
-## Create E-Commerce Sale transaction
+## Create E-Commerce Sale Transaction
 
 This operation creates an e-commerce sales transaction in the direct payment
 scenario. This is managed either by sending a `POST` request as seen below, or
@@ -263,22 +261,20 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property                          | Type      | Required                                                                                                                                                                                                     |
-| :-------------------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `transaction`                    | `object`  | The  `transaction` object contains information about the specific transaction.                                                                                                                                                                          |
-| └➔&nbsp;`msisdn`                      | `string`  | The end-user's mobile number. It must have a country code prefix and be 8 to 15 digits in length.                                                                                                                                                      |
+| Field            | Type     | Required                                                                                          |
+| :--------------- | :------- | :------------------------------------------------------------------------------------------------ |
+| `transaction`    | `object` | The `transaction` object contains information about the specific transaction.                     |
+| └➔&nbsp;`msisdn` | `string` | The end-user's mobile number. It must have a country code prefix and be 8 to 15 digits in length. |
 
-{% include transaction-response.md showRequest=false payment_instrument="swish" transaction="sale" %}
+{% include transaction-response.md payment_instrument="swish" transaction="sale" %}
 
-
-## Create M-Commerce Sale transaction
+## Create M-Commerce Sale Transaction
 
 This operation creates an m-commerce sales transaction in the direct payment
 scenario. This is managed either by sending a `POST` request as seen below, or
 by directing the end-user to the hosted payment pages. Note that the `msisdn`
 value (the end-user's mobile number) is left out in this request. The
 `redirect-app-swish` operation is only present in the m-commerce flow response.
-`paymentRestrictedToAgeLimit` must be set in create payment to be present.
 
 {:.code-header}
 **Request**
@@ -295,79 +291,11 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property                          | Type      | Required                                                                                                                                                                                                     |
-| :-------------------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `transaction`                    | `object`  | The  `transaction` object contains information about the specific transaction.                                                                                                                                                                          |
+| Field         | Type     | Required                                                             |
+| :------------ | :------- | :------------------------------------------------------------------- |
+| `transaction` | `object` | The  `transaction` object is empty for m-commerce sale transactions. |
 
-
-{:.code-header}
-**Response**
-```http
-GET /psp/{{ instrument }}/payments/{{ page.payment_id }}/{{ plural }} HTTP/1.1
-Host: {{ page.api_host }}
-Authorization: Bearer <AccessToken>
-Content-Type: application/json
-```
-
-{:.code-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-{
-    "payment": "/psp/swish/payments/{{ page.payment_id }}",
-    "sale": {
-        "date": "23.10.2017 08:39:37 +00:00",
-        "id": "/psp/swish/payments/{{ page.payment_id }}/sales/6bf31479-623f-418a-d69e-08d519f19722",
-        "transaction": {
-            "id": "6bf31479-623f-418a-d69e-08d519f19722",
-            "created": "2017-10-23T08:39:35.6478733Z",
-            "updated": "2017-10-23T08:39:37.3788733Z",
-            "type": "Sale",
-            "state": "AwaitingActivity",
-            "number": 992309,
-            "amount": 1500,
-            "vatAmount": 0,
-            "description": "Test Purchase",
-            "payeeReference": "Postman1508747933",
-            "isOperational": true,
-            "operations": [
-                {
-                    "href": "swish://paymentrequest?token=LhXrK84MSpWU2RO09f8kUP-FHiBo-1pB",
-                    "method": "GET",
-                    "rel": "redirect-app-swish"
-                }
-            ]
-        }
-    }
-}
-```
-
-{:.table .table-striped}
-| Property                          | Type      | Required                                                                                                                                                                                                     |
-| :-------------------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `payment`                         | `string`  | The relative URI of the payment this list of {{ transaction }} transactions belong to.                                                                                                                       |
-| `sale`                    | `object`  | The current `sale` resource.                                                                                                                                                                         |
-| └➔&nbsp;`date`                      | `string`  | The date of the current `sale` resource.                                                                                                                                                     |
-| └➔&nbsp;`id`                      | `string`  | The relative URI of the current `sale` resource.                                                                                                                                                     |
-| └➔&nbsp;`transaction` | `object`  | The {{ transaction }} transaction object described in the `{{ transaction }}` resource below.                                                                                                                |
-| └─➔&nbsp;`id`                     | `string`  | The relative URI of the current `transaction` resource.                                                                                                                                                      |
-| └─➔&nbsp;`created`                | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
-| └─➔&nbsp;`updated`                | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
-| └─➔&nbsp;`type`                   | `string`  | Indicates the transaction type.                                                                                                                                                                              |
-| └─➔&nbsp;`state`                  | `string`  | `Initialized`, `awaitingActivity`, `Completed` or `Failed`. Indicates the state of the transaction.                                                                                                                              |
-| └─➔&nbsp;`number`                 | `string`  | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead. |
-| └─➔&nbsp;`amount`                 | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` = 100.00 NOK, `5000` = 50.00 SEK.                                                                                     |
-| └─➔&nbsp;`vatAmount`              | `integer` | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                           |
-| └─➔&nbsp;`description`            | `string`  | A human readable description of maximum 40 characters of the transaction.                                                                                                                                    |
-| └─➔&nbsp;`payeeReference`         | `string`  | A unique reference for the transaction.                                                                                                                                                                      |
-| └─➔&nbsp;`failedReason`           | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
-| └─➔&nbsp;`isOperational`          | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
-| └─➔&nbsp;`operations`             | `array`   | The array of operations that are possible to perform on the transaction in its current state.                                                                                                                |
-
+{% include transaction-response.md payment_instrument="swish" transaction="sale" mcom=true %}
 
 {% include iterator.html prev_href="introduction" prev_title="Back: Introduction"
 next_href="redirect" next_title="Next: Redirect" %}

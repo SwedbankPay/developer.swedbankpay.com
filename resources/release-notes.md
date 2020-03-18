@@ -32,6 +32,13 @@ this very documentation, not to a version of any APIs described by it." %}
 
 ## March 2020
 
+### Version 1.8.0
+
+* Updated [Invoice Payments Direct][invoice-direct] where
+  `approvedLegalAddress` should now be use for all countries.
+* Small text changes and clarifications.
+* Restructured [Invoice Payments][invoice] and [Card Payments][card].
+
 ### Version 1.7.7
 
 This change contains build updates for the page. :octocat:
@@ -205,7 +212,7 @@ In redirect flow this is supported without any changes in your integration. But
 a configuration on your swish agreement needs to be updated. Contact our support
 in order to activate this.
 
-If you use our hosted view-solution we have added the URL property called
+If you use our hosted view-solution we have added the URL field called
 paymentUrl (previously added for CreditCard, Vipps and Payment Order), that will
 be used when the user is returned from the Swish application. See further
 information regarding paymentUrl at: [[PaymentUrl in
@@ -240,7 +247,7 @@ updated documentation
 
 ### Payment Url Credit Card
 
-We have added the URL property called `paymentUrl` for [Card
+We have added the URL field called `paymentUrl` for [Card
 Seamless View][card-payment-url] (previously added for Vipps and Checkout), that will be used
 when the user is returned from 3rd party. The URL should represent the page in
 where the payment Seamless View was hosted originally, such as the checkout page,
@@ -271,7 +278,7 @@ removed from all requests as the two cannot be used simultaneously.
 For our Seamless Views (currently
 [Vipps][vipps-payment-url]
 or in [Checkout][checkout-payment-url]),
-we have added a new URL property called `paymentUrl` that will be used when
+we have added a new URL field called `paymentUrl` that will be used when
 user is returned from 3rd party. The URL should represent the page of where the
 payment hosted view was hosted originally, such as the checkout page, shopping
 cart page, or similar. Basically, `paymentUrl` should be set to the same URL
@@ -313,6 +320,7 @@ integration and the payer.
 [home-technical-information]: /home/technical-information
 [initiate-consumer-session]: /checkout/checkin#checkin-back-end
 [invoice]: /payments/invoice
+[invoice-direct]: /payments/invoice/direct
 [mobile-pay]: /payments/mobile-pay
 [one-click]: /payments/card/other-features#one-click-payments
 [payment-orders]: /checkout/other-features#creating-a-payment-order

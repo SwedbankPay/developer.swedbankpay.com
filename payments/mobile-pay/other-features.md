@@ -23,8 +23,7 @@ To create a MobilePay Online payment, you perform an HTTP `POST` against the
 information][general-http-info] on how to compose a valid HTTP request before
 proceeding.
 
-An example of a payment creation request is provided below. Each individual
-Property of the JSON document is described in the following section. Use the
+An example of a payment creation request is provided below. Each individual field of the JSON document is described in the following section. Use the
 [expand][technical-reference-expand] request parameter to get a response that
 includes one or more expanded sub-resources inlined.
 
@@ -61,9 +60,9 @@ Content-Type: application/json
         "language": "da-DK",
         "urls": {
             "hostUrls": ["https://example.com", "https://example.net"],
-            "completeUrl": "http://example.com/payment-completed",
-            "cancelUrl": "http://example.com/payment-canceled",
-            "callbackUrl": "http://example.com/payment-callback"
+            "completeUrl": "https://example.com/payment-completed",
+            "cancelUrl": "https://example.com/payment-canceled",
+            "callbackUrl": "https://example.com/payment-callback"
         },
         "payeeInfo": {
             "payeeId": "12345678-1234-1234-1234-123456789012",
@@ -84,7 +83,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property                        | Data type    | Description                                                                                                                                                                                                                                               |
+| Required | Field                           | Data type    | Description                                                                                                                                                                                                                                               |
 | :------- | :------------------------------ | :----------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ✔︎︎︎︎︎   | `payment`                       | `object`     | The payment object.                                                                                                                                                                                                                                       |
 | ✔︎︎︎︎︎   | └➔&nbsp;`operation`             | `string`     | `Purchase`                                                                                                                                                                                                                                                |
@@ -92,8 +91,8 @@ Content-Type: application/json
 | ✔︎︎︎︎︎   | └➔&nbsp;`currency`              | `string`     | `NOK`, `SEK`, `DKK`, `USD` or `EUR`.                                                                                                                                                                                                                      |
 | ✔︎︎︎︎︎   | └➔&nbsp;`prices`                | `object`     | The prices object.                                                                                                                                                                                                                                        |
 | ✔︎︎︎︎︎   | └─➔&nbsp;`type`                 | `string`     | `Visa` (for card type Visa), `MC` (for card type Mastercard)                                                                                                                                                                                              |
-| ✔︎︎︎︎︎   | └─➔&nbsp;`amount`               | `integer`    | Amount is entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 DKK, 5000 = 50.00 DKK.                                                                                                                                      |
-| ✔︎︎︎︎︎   | └─➔&nbsp;`vatAmount`            | `integer`    | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                                                                        |
+| ✔︎︎︎︎︎   | └─➔&nbsp;`amount`               | `integer`    | {% include field-description-amount.md currency="DKK" %}                                                                                                                                                                                                  |
+| ✔︎︎︎︎︎   | └─➔&nbsp;`vatAmount`            | `integer`    | {% include field-description-vatamount.md currency="DKK" %}                                                                                                                                                                                               |
 |          | └─➔&nbsp;`feeAmount`            | `integer`    | If the amount given includes Fee, this may be displayed for the user in the payment page (redirect only).                                                                                                                                                 |
 | ✔︎︎︎︎︎   | └➔&nbsp;`description`           | `string(40)` | A textual description max 40 characters of the purchase.                                                                                                                                                                                                  |
 |          | └➔&nbsp;`payerReference`        | `string`     | The reference to the payer (consumer/end-user) from the merchant system, like mobile number, customer number etc.                                                                                                                                         |
@@ -166,10 +165,10 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property                            | Data type    | Description                                                                                                                                                                                      |
+| Field                               | Data type    | Description                                                                                                                                                                                      |
 | :---------------------------------- | :----------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `payment`                           | `object`     | The payment object contains information about the retrieved payment.                                                                                                                             |
-| └➔&nbsp;`id`                        | `string`     | The relative URI to the payment.                                                                                                                                                                 |
+| └➔&nbsp;`id`                        | `string`     | {% include field-description-id.md %}                                                                                                                                                            |
 | └➔&nbsp;`number`                    | `integer`    | The payment `number`, useful when there's need to reference the payment in human communication. Not usable for programmatic identification of the payment, for that `id` should be used instead. |
 | └➔&nbsp;`created`                   | `string`     | The ISO-8601 date of when the payment was created.                                                                                                                                               |
 | └➔&nbsp;`updated`                   | `string`     | The ISO-8601 date of when the payment was updated.                                                                                                                                               |
@@ -244,7 +243,7 @@ A list of possible operations and their explanation is given below.
 ```
 
 {:.table .table-striped}
-| Property | Description                                                         |
+| Field    | Description                                                         |
 | :------- | :------------------------------------------------------------------ |
 | `href`   | The target URI to perform the operation against.                    |
 | `rel`    | The name of the relation the operation has to the current resource. |
@@ -274,14 +273,6 @@ All MobilePay Online specific transactions are described below.
 
 ## Authorizations
 
-The `authorizations` resource contains information about the authorization transactions made on a specific payment.
-
-{% include transaction-response.md payment_instrument="mobile-pay"
-    transaction="authorization"%}
-
-You can return a specific autorization transaction by adding the transaction id
-to the `GET`request.
-
 {:.code-header}
 **Request**
 
@@ -292,86 +283,8 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{:.code-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "payment": "/psp/mobilepay/payments/{{ page.payment_id }}",
-    "authorization": {
-        "id": "/psp/mobilepay/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }}",
-        "paymentToken": "{{ page.payment_token }}",
-        "maskedPan": "123456xxxxxx1234",
-        "expireDate": "mm/yyyy",
-        "panToken": "{{ page.transaction_id }}",
-        "cardBrand": "Visa",
-        "cardType": "Credit Card",
-        "issuingBank": "UTL MAESTRO",
-        "countryCode": "999",
-        "acquirerTransactionType": "3DSECURE",
-        "acquirerStan": "39736",
-        "acquirerTerminalId": "39",
-        "acquirerTransactionTime": "2017-08-29T13:42:18Z",
-        "authenticationStatus": "Y",
-        "transaction": {
-            "id": "/psp/mobilepay/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
-            "created": "2016-09-14T01:01:01.01Z",
-            "updated": "2016-09-14T01:01:01.03Z",
-            "type": "Authorization",
-            "state": "Completed",
-            "number": 1234567890,
-            "amount": 1000,
-            "vatAmount": 250,
-            "description": "Test transaction",
-            "payeeReference": "AH123456",
-            "failedReason": "",
-            "isOperational": false,
-            "operations": [{
-                "href": "{{ page.api_url }}/psp/mobilepay/payments/{{ page.payment_id }}",
-                "rel": "edit-authorization",
-                "method": "PATCH"
-            }]
-        }
-    }
-}
-```
-
-{:.table .table-striped}
-| Property                          | Type      | Description                                                                                                                                                                                                  |
-| :-------------------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `payment`                         | `string`  | The relative URI of the payment this authorization transaction resource belongs to.                                                                                                                          |
-| `authorization`                   | `string`  | The current authorization transaction resource.                                                                                                                                                              |
-| └➔&nbsp;`id`                      | `string`  | The relative URI of the current authorization transaction resource.                                                                                                                                          |
-| └➔&nbsp;`paymentToken`            | `string`  | The payment token created for the card used in the authorization.                                                                                                                                            |
-| └➔&nbsp;`maskedPan`               | `string`  | The masked PAN number of the card.                                                                                                                                                                           |
-| └➔&nbsp;`expireDate`              | `string`  | The month and year of when the card expires.                                                                                                                                                                 |
-| └➔&nbsp;`panToken`                | `string`  | The token representing the specific PAN of the card.                                                                                                                                                         |
-| └➔&nbsp;`cardBrand`               | `string`  | `Visa`, `MC`, etc. The brand of the card.                                                                                                                                                                    |
-| └➔&nbsp;`cardType`                | `string`  | `Credit Card` or `Debit Card`. Indicates the type of card used for the authorization.                                                                                                                        |
-| └➔&nbsp;`issuingBank`             | `string`  | The name of the bank that issued the card used for the authorization.                                                                                                                                        |
-| └➔&nbsp;`countryCode`             | `string`  | The country the card is issued in.                                                                                                                                                                           |
-| └➔&nbsp;`acquirerTransactionType` | `string`  | `3DSECURE` or `SSL`. Indicates the transaction type of the acquirer.                                                                                                                                         |
-| └➔&nbsp;`acquirerStan`            | `string`  | The System Trace Audit Number assigned by the acquirer to uniquely identify the transaction.                                                                                                                 |
-| └➔&nbsp;`acquirerTerminalId`      | `string`  | The ID of the acquirer terminal.                                                                                                                                                                             |
-| └➔&nbsp;`acquirerTransactionTime` | `string`  | The ISO-8601 date and time of the acquirer transaction.                                                                                                                                                      |
-| └➔&nbsp;`authenticationStatus`    | `string`  | `Y`, `A`, `U` or `N`. Indicates the status of the authentication.                                                                                                                                            |
-| └➔&nbsp;`transaction`             | `object`  | The object representation of the generic transaction resource.                                                                                                                                               |
-| └─➔&nbsp;`id`                     | `string`  | The relative URI of the current `transaction` resource.                                                                                                                                                      |
-| └─➔&nbsp;`created`                | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
-| └─➔&nbsp;`updated`                | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
-| └─➔&nbsp;`type`                   | `string`  | Indicates the transaction type.                                                                                                                                                                              |
-| └─➔&nbsp;`state`                  | `string`  | `Initialized`, `Completed` or `Failed`. Indicates the state of the transaction.                                                                                                                              |
-| └─➔&nbsp;`number`                 | `string`  | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead. |
-| └─➔&nbsp;`amount`                 | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` = 100.00 NOK, `5000` = 50.00 SEK.                                                                                     |
-| └─➔&nbsp;`vatAmount`              | `integer` | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                           |
-| └─➔&nbsp;`description`            | `string`  | A human readable description of maximum 40 characters of the transaction.                                                                                                                                    |
-| └─➔&nbsp;`payeeReference`         | `string`  | A unique reference for the transaction.                                                                                                                                                                      |
-| └─➔&nbsp;`failedReason`           | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
-| └─➔&nbsp;`isOperational`          | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
-| └─➔&nbsp;`operations`             | `array`   | The array of operations that are possible to perform on the transaction in its current state.                                                                                                                |
+{% include transaction-list-response.md payment_instrument="mobilepay"
+    transaction="authorization" %}                                                                                                        |
 
 ### Create authorization transaction
 
@@ -380,10 +293,7 @@ to the hyperlink returned in the `redirect-authorization` request.
 
 ## Captures
 
-The `captures` resource lists the capture transactions (one or more) on a
-specific payment.
-
-{% include transaction-response.md payment_instrument="mobile-pay"
+{% include transaction-list-response.md payment_instrument="mobilepay"
     transaction="capture" %}
 
 ### Create capture transaction
@@ -412,28 +322,20 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property                 | Type         | Description                                                                                                               |
-| :------- | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------ |
-| ✔︎︎︎︎︎   | `transaction`            | `object`     | The currenct capture object.                                                                                              |
-| ✔︎︎︎︎︎   | └➔&nbsp;`amount`         | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
-| ✔︎︎︎︎︎   | └➔&nbsp;`vatAmount`      | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
-| ✔︎︎︎︎︎   | └➔&nbsp;`description`    | `string`     | A textual description of the capture transaction.                                                                         |
-| ✔︎︎︎︎︎   | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the capture transaction. See [`payeeReference`][payee-reference] for details.                      |
+| Required | Field                    | Type         | Description                                                                                          |
+| :------- | :----------------------- | :----------- | :--------------------------------------------------------------------------------------------------- |
+| ✔︎︎︎︎︎   | `transaction`            | `object`     | The currenct capture object.                                                                         |
+| ✔︎︎︎︎︎   | └➔&nbsp;`amount`         | `integer`    | {% include field-description-amount.md %}                                                            |
+| ✔︎︎︎︎︎   | └➔&nbsp;`vatAmount`      | `integer`    | {% include field-description-vatamount.md %}                                                         |
+| ✔︎︎︎︎︎   | └➔&nbsp;`description`    | `string`     | A textual description of the capture transaction.                                                    |
+| ✔︎︎︎︎︎   | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the capture transaction. See [`payeeReference`][payee-reference] for details. |
 
-The `capture` resource contains information about the capture transaction made
-against a MobilePay Online payment.
-You can return a specific capture transaction by adding the transaction id to
-the `GET` request.
-
-{% include transaction-response.md payment_instrument="mobile-pay"
+{% include transaction-response.md payment_instrument="mobilepay"
     transaction="capture"%}
 
 ## Cancellations
 
-The `cancellations` resource lists the cancellation transactions on a specific
-payment.
-
-{% include transaction-response.md payment_instrument="mobile-pay"
+{% include transaction-list-response.md payment_instrument="mobilepay"
     transaction="cancellation" %}
 
 ### Create cancellation transaction
@@ -459,26 +361,18 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property                 | Type         | Description                                                                                               |
+| Required | Field                    | Type         | Description                                                                                               |
 | :------: | :----------------------- | :----------- | :-------------------------------------------------------------------------------------------------------- |
 |  ✔︎︎︎︎︎  | `transaction`            | `object`     | The current cancellation.                                                                                 |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`description`    | `string`     | A textual description of the reason for the cancellation.                                                 |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the cancellation transaction. See [`payeeReference`][payee-reference] for details. |
 
-The `cancel` resource contains information about a cancellation transaction
-made against a payment.
-You can return a specific cancellation transaction by adding the transaction id
-to the `GET` request.
-
-{% include transaction-response.md payment_instrument="mobile-pay"
+{% include transaction-response.md payment_instrument="mobilepay"
     transaction="cancellation"%}
 
 ## Reversals
 
-The `reversals` resource lists the reversal transactions (one or more) on a
-specific payment.
-
-{% include transaction-response.md payment_instrument="mobile-pay"
+{% include transaction-list-response.md payment_instrument="mobilepay"
     transaction="reversal" %}
 
 ### Create reversal transaction
@@ -506,20 +400,15 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property                 | Type         | Description                                                                                                               |
+| Required | Field                    | Type         | Description                                                                                           |
 | :------: | :----------------------- | :----------- |
-|    ✔︎    | `transaction`            | `object`     | The current reversal transaction object                                                                                   |
-|    ✔︎    | └➔&nbsp;`amount`         | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
-|    ✔︎    | └➔&nbsp;`vatAmount`      | `integer`    | Amount Entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 DKK`, `5000` = `50.00 DKK`. |
-|    ✔︎    | └➔&nbsp;`description`    | `string`     | A textual description of the capture                                                                                      |
-|    ✔︎    | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the reversal transaction. See [`payeeReference`][payee-reference] for details.                     |
+|    ✔︎    | `transaction`            | `object`     | The current reversal transaction object                                                               |
+|    ✔︎    | └➔&nbsp;`amount`         | `integer`    | {% include field-description-amount.md %}                                                             |
+|    ✔︎    | └➔&nbsp;`vatAmount`      | `integer`    | {% include field-description-vatamount.md %}                                                          |
+|    ✔︎    | └➔&nbsp;`description`    | `string`     | A textual description of the capture                                                                  |
+|    ✔︎    | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the reversal transaction. See [`payeeReference`][payee-reference] for details. |
 
-The `reversal` resource contains information about a reversal transaction made
-against a payment.
-You can return a specific reversal transaction by adding the transaction id to
-the `GET` request.
-
-{% include transaction-response.md payment_instrument="mobile-pay"
+{% include transaction-response.md payment_instrument="mobilepay"
     transaction="reversal"%}
 
 ## Capture Sequence

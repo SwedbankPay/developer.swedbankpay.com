@@ -36,16 +36,16 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Property                  | Type         | Description                                                                                                                                                                                                                                                                       |
+| Field                  | Type         | Description                                                                                                                                                                                                                                                                       |
 | :------------------------ | :----------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `payment`                 | `string`     | The URI of the payment which the  `payeeinfo`  belongs to.                                                                                                                                                                                                                        |
-| └➔&nbsp;`id`              | `string`     | The URI of the current  `payeeinfo`  resource.                                                                                                                                                                                                                                    |
+| `payment`                 | `string`     | {% include field-description-id.md sub_resource="payeeInfo" %}                                                                                                                                                                                                                    |
+| └➔&nbsp;`id`              | `string`     | {% include field-description-id.md resource="payeeInfo" %}                                                                                                                                                                                                                        |
 | └➔&nbsp;`payeeId`         | `string`     | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay                                                                                                                                                                                              |
 | └➔&nbsp;`payeeReference`  | `string(50)` | A unique reference set by the merchant system. See below for details                                                                                                                                                                                                              |
 | └➔&nbsp;`payeeName`       | `string`     | The payee name (like merchant name) that will be displayed to consumer when redirected to Swedbank Pay.                                                                                                                                                                           |
 | └➔&nbsp;`productCategory` | `string`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process. You therefore need to ensure that the value given here is valid in the settlement. |
 | └➔&nbsp;`orderReference`  | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                           |
 
-### PayeeReference
+### Payee Reference
 
 {% include payee-reference.md payment_instrument = instrument %}

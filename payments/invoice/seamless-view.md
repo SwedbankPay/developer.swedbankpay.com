@@ -12,6 +12,8 @@ sidebar:
       title: Seamless View
     - url: /payments/invoice/direct
       title: Direct
+    - url: /payments/invoice/capture
+      title: Capture
     - url: /payments/invoice/after-payment
       title: After Payment
     - url: /payments/invoice/other-features
@@ -101,10 +103,8 @@ you can choose from when creating a payment with key operation set to Value
 * An invoice payment is always two-phased based - you create an
   [`Authorize`][authorize] transaction, that is followed by a
   [`Capture`][capture] or [`Cancel`][cancel] request.
-* **Defining CallbackURL**: When implementing a scenario, it is optional to set
-  a [CallbackURL][callback] in the `POST` request. If callbackURL is set
-  Swedbank Pay will send a postback request to this URL when the consumer has
-  fulfilled the payment. [See the Callback API description here.][callback]
+
+{% include alert-callback-url.md payment_instrument="invoice" %}
 
 ## Seamless View Back End
 
@@ -147,8 +147,7 @@ A `FinancingConsumer` payment is a straightforward way to invoice a
 payer. It is followed up by posting a capture, cancellation or reversal
 transaction.
 
-An example of an abbreviated `POST` request is provided below. Each individual
-Property of the JSON document is described in the following section.
+An example of an abbreviated `POST` request is provided below. Each individual field of the JSON document is described in the following section.
 An example of an expanded `POST` request is available in the
 [other features section][financing-consumer].
 
@@ -180,12 +179,12 @@ Content-Type: application/json
         "language": "sv-SE",
         "urls": {
             "hosturls": [
-                "http://example.com"
+                "https://example.com"
             ],
-            "completeUrl": "http://example.com/payment-completed",
-            "cancelUrl": "http://example.com/payment-canceled",
-            "callbackUrl": "http://example.com/payment-callback",
-            "termsOfServiceUrl": "http://example.com/payment-terms.pdf"
+            "completeUrl": "https://example.com/payment-completed",
+            "cancelUrl": "https://example.com/payment-canceled",
+            "callbackUrl": "https://example.com/payment-callback",
+            "termsOfServiceUrl": "https://example.com/payment-terms.pdf"
         },
         "payeeInfo": {
             "payeeId": "{{ page.merchant_id }}",
@@ -201,7 +200,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property                          | Type          | Description                                                                                                                                                                                                                                                                                                                                    |
+| Required | Field                             | Type          | Description                                                                                                                                                                                                                                                                                                                                    |
 | :------: | :-------------------------------- | :------------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |  ✔︎︎︎︎︎  | `payment`                         | `object`      | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                                                                          |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`operation`               | `string`      | The operation that the `payment` is supposed to perform. The [`FinancingConsumer`][financing-consumer] operation is used in our example. Take a look at the [create `payment` section][create-payment] for a full examples of the following `operation` options: [FinancingConsumer][financing-consumer], [Recur][recur], and [Verify][verify] |
@@ -209,8 +208,8 @@ Content-Type: application/json
 |  ✔︎︎︎︎︎  | └➔&nbsp;`currency`                | `string`      | NOK or SEK.                                                                                                                                                                                                                                                                                                                                    |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`prices`                  | `object`      | The `prices` resource lists the prices related to a specific payment.                                                                                                                                                                                                                                                                          |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`type`                   | `string`      | Use the invoice value [See the Prices resource and prices object types for more information][price-resource].                                                                                                                                                                                                                                  |
-|  ✔︎︎︎︎︎  | └─➔&nbsp;`amount`                 | `integer`     | Amount is entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 SEK 5000 = 50.00 SEK.                                                                                                                                                                                                                            |
-|  ✔︎︎︎︎︎  | └─➔&nbsp;`vatAmount`              | `integer`     | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                                                                                                                                                             |
+|  ✔︎︎︎︎︎  | └─➔&nbsp;`amount`                 | `integer`     | {% include field-description-amount.md %}                                                                                                                                                                                                                                                                                                      |
+|  ✔︎︎︎︎︎  | └─➔&nbsp;`vatAmount`              | `integer`     | {% include field-description-vatamount.md %}                                                                                                                                                                                             |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`description`             | `string(40)`  | A textual description max 40 characters of the purchase.                                                                                                                                                                                                                                                                                       |
 |          | └➔&nbsp;`payerReference`          | `string`      | The reference to the payer (consumer/end user) from the merchant system. E.g mobile number, customer number etc.                                                                                                                                                                                                                               |
 |          | └➔&nbsp;`generatePaymentToken`    | `boolean`     | `true` or `false`. Set this to `true` if you want to create a paymentToken for future use as One Click.                                                                                                                                                                                                                                        |
@@ -225,7 +224,7 @@ Content-Type: application/json
 |          | └─➔&nbsp;`termsOfServiceUrl`      | `string`      | A URL that contains your terms and conditions for the payment, to be linked on the payment page. Require https.                                                                                                                                                                                                                                |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`payeeInfo`               | `object`      | The `payeeInfo` contains information about the payee.                                                                                                                                                                                                                                                                                          |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`payeeId`                | `string`      | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                                                                                                                                                          |
-|  ✔︎︎︎︎︎  | └─➔&nbsp;`payeeReference`         | `string(30*)` | A unique reference from the merchant system, which is used as a receipt/invoice number in Invoice Payments. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details.                                                                                        |
+|  ✔︎︎︎︎︎  | └─➔&nbsp;`payeeReference`         | `string(30*)` | A unique reference from the merchant system, which is used as a receipt/invoice number in Invoice Payments. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [`payeeReference`][payee-reference] for details.                                                                                      |
 |          | └─➔&nbsp;`payeeName`              | `string`      | The payee name (like merchant name) that will be displayed to consumer when redirected to Swedbank Pay.                                                                                                                                                                                                                                        |
 |          | └─➔&nbsp;`productCategory`        | `string`      | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                                                                 |
 |          | └─➔&nbsp;`orderReference`         | `String(50)`  | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                                                        |

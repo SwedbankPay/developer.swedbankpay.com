@@ -31,7 +31,7 @@ To create a Vipps payment, you perform an HTTP `POST` against the
 `/psp/vipps/payments` resource.
 
 An example of a payment creation request is provided below.
-Each individual property of the JSON document is described in the following
+Each individual field of the JSON document is described in the following
 section.
 Use the [expand][technical-reference-expansion] request parameter to get a
 response that includes one or more expanded sub-resources inlined.
@@ -63,9 +63,9 @@ Content-Type: application/json
         "language": "nb-NO",
         "urls": {
             "hostUrls": ["https://example.com", "https://example.net"],
-            "completeUrl": "http://example.com/payment-completed",
-            "cancelUrl": "http://example.com/payment-canceled",
-            "paymentUrl": "http://example.com/perform-payment",
+            "completeUrl": "https://example.com/payment-completed",
+            "cancelUrl": "https://example.com/payment-canceled",
+            "paymentUrl": "https://example.com/perform-payment",
             "callbackUrl": "{{ page.api_url }}/psp/payment-callback",
             "logoUrl": "https://example.com/path/to/logo.png",
             "termsOfServiceUrl": "https://example.com/terms.pdf"
@@ -86,7 +86,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property                     | Type         | Description                                                                                                                                                                                                                                               |
+| Required | Field                        | Type         | Description                                                                                                                                                                                                                                               |
 | :------: | :--------------------------- | :----------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |    ✔︎    | `payment`                    | `object`     | The `payment` object.                                                                                                                                                                                                                                     |
 |    ✔︎    | └➔&nbsp;`operation`          | `string`     | `Purchase`                                                                                                                                                                                                                                                |
@@ -94,8 +94,8 @@ Content-Type: application/json
 |    ✔︎    | └➔&nbsp;`currency`           | `string`     | NOK                                                                                                                                                                                                                                                       |
 |    ✔︎    | └➔&nbsp;`prices`             | `object`     | The [`prices`][prices] object.                                                                                                                                                                                                                            |
 |    ✔︎    | └─➔&nbsp;`type`              | `string`     | `vipps`                                                                                                                                                                                                                                                   |
-|    ✔︎    | └─➔&nbsp;`amount`            | `integer`    | Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 NOK`, `5000` = `50.00 NOK`.                                                                                                                              |
-|    ✔︎    | └─➔&nbsp;`vatAmount`         | `integer`    | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                                                                        |
+|    ✔︎    | └─➔&nbsp;`amount`            | `integer`    | {% include field-description-amount.md currency="NOK" %}                                                                                                                                                                                                  |
+|    ✔︎    | └─➔&nbsp;`vatAmount`         | `integer`    | {% include field-description-vatamount.md currency="NOK" %}                                                                                                                                                                                               |
 |    ✔︎    | └➔&nbsp;`description`        | `string(40)` | A textual description max 40 characters of the purchase.                                                                                                                                                                                                  |
 |          | └➔&nbsp;`payerReference`     | `string`     | The reference to the payer (consumer/end-user) from the merchant system, like mobile number, customer number etc.                                                                                                                                         |
 |    ✔︎    | └➔&nbsp;`userAgent`          | `string`     | The user agent reference of the consumer's browser - [see user agent][user-agent]]                                                                                                                                                                        |
@@ -110,7 +110,7 @@ Content-Type: application/json
 |          | └─➔&nbsp;`termsOfServiceUrl` | `string`     | A URI that contains your terms and conditions for the payment, to be linked on the payment page. Require https.                                                                                                                                           |
 |    ✔︎    | └➔&nbsp;`payeeInfo`          | `object`     | The object containing information about the payee.                                                                                                                                                                                                        |
 |    ✔︎    | └─➔&nbsp;`payeeId`           | `string`     | This is the unique id that identifies this payee (like merchant) set by PayEx.                                                                                                                                                                            |
-|    ✔︎    | └─➔&nbsp;`payeeReference`    | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][technical-reference-payeeReference] for details.                                               |
+|    ✔︎    | └─➔&nbsp;`payeeReference`    | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [`payeeReference`][technical-reference-payeeReference] for details.                                             |
 |          | └─➔&nbsp;`payeeName`         | `string`     | The payee name (like merchant name) that will be displayed to consumer when redirected to PayEx.                                                                                                                                                          |
 |          | └─➔&nbsp;`productCategory`   | `strin`      | A product category or number sent in from the payee/merchant. This is not validated by PayEx, but will be passed through the payment process and may be used in the settlement process.                                                                   |
 |          | └─➔&nbsp;`orderReference`    | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                   |

@@ -8,7 +8,7 @@ Payment Order request." %}
 [Checkin][checkin] when creating the Payment Order upon the initializaiont of
 the [Payment Menu][payment-menu]. You can use Merchant Authenticated Consumer
 only if you have an agreement with Swedbank Pay. The additional
-`nationalIdentifier` property described below should be added to the
+`nationalIdentifier` field described below should be added to the
 `paymentorder.payer` object already in the Payment Order creation request, as
 an alternative to `consumerProfileRef`.
 
@@ -43,7 +43,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Property                         | Type     | Description                                                                                          |
+| Required | Field                         | Type     | Description                                                                                          |
 | :------: | :------------------------------- | :------- | :--------------------------------------------------------------------------------------------------- |
 |  ✔︎︎︎︎︎  | `paymentorder`                   | `object` | The payment order object.                                                                            |
 |          | └➔&nbsp;`payer`                  | `object` | The `payer` object containing information about the payer relevant for the payment order.            |
