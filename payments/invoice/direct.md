@@ -33,10 +33,14 @@ consumer/end-user" %}
 
 1. Collect all purchase information and send it in a `POST` request to Swedbank
    Pay. Make sure to include personal information (SSN and postal code).
+
 2. Make a new `POST` request towards Swedbank Pay to retrieve the name and
    address of the customer to create a purchase.
+
 3. Create a `POST`request to retrieve the transaction status.
+
 4. Send a  `GET` request with the `paymentID` to get the authorization result.
+
 5. Make a Capture by creating a `POST` request.
 
 * An invoice payment is always two-phased based - you create an Authorize
