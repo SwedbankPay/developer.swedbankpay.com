@@ -22,6 +22,16 @@ sidebar:
 payment instruments. You can pick and choose among them to tailor the instrument
 package best suited for your business." %}
 
+* Lorem ipsum dolor sit amet
+* consectetur adipiscing elit. Fusce ut facilisis lectus. Fusce pellentesque elit eu pretium venenatis. Sed et mi tellus. Mauris viverra fringilla orci eget elementum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum lacinia accumsan ipsum id scelerisque. In hac habitasse platea dictumst. Cras hendrerit
+* tellus a aliquet laoreet
+* sem est congue est
+* a faucibus libero lacus eget metus. Cras pulvinar posuere metus sit amet dictum. Nulla efficitur rhoncus purus sed sollicitudin. Nam sagittis
+* ex vitae egestas malesuada
+* purus ex feugiat dui
+* nec malesuada elit ex tempus augue. Suspendisse et volutpat enim. Suspendisse commodo erat a nibh sagittis
+* eget dictum tortor facilisis. Donec bibendum mattis feugiat.
+
 Is Card the only payment instrument you need? Go for Card only. Do you want Card
 and Invoice? Implement Card and Invoice. Want them all? Have them all. Each
 payment instrument is set up with a separate contract and integration.
