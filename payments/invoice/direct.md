@@ -29,128 +29,35 @@ Pay helps improve cashflow by purchasing merchant invoices. Swedbank Pay
 receives invoice data, which is used to produce and distribute invoices to the
 consumer/end-user" %}
 
-## Introduction
+## Invoice Direct implementation flow
 
 1. Collect all purchase information and send it in a `POST` request to Swedbank
-   Pay.
-1. Include personal information (SSN and postal code) and send it to Swedbank
-   Pay.
-1. Make a new `POST` request towards Swedbank Pay to retrieve the name and
-   address of the customer.
-1. Create an authorization transaction by calculating the final price / amount.
-1. Make a third `POST` request with consumer data as input.
-1. Send a  `GET` request with the `paymentID` to get the authorization result
-1. Make a Capture by creating a `POST` request
+   Pay. Make sure to include personal information (SSN and postal code).
 
-  **By making a Capture, Swedbank Pay will generate
-  the invoice to the consumer and the order is ready for shipping.**
+2. Make a new `POST` request towards Swedbank Pay to retrieve the name and
+   address of the customer to create a purchase.
 
-## Options before posting a payment
+3. Create a `POST`request to retrieve the transaction status.
 
-All valid options when posting a payment with operation equal to
-`FinancingConsumer`, are described in
-[other features][financing-consumer].
+4. Send a  `GET` request with the `paymentID` to get the authorization result.
 
-{:.table .table-striped}
-|               | Norway ![Norwegian flag][no-png] | Finland ![Finish flag][fi-png] | Sweden ![Swedish flag][se-png] |
-| :------------ | :------------------------------- | :----------------------------- | :----------------------------- |
-| `operation`   | `FinancingConsumer`              | `FinancingConsumer`            | `FinancingConsumer`            |
-| `currency`    | `NOK`                            | `EUR`                          | `SEK`                          |
-| `invoiceType` | `PayExFinancingNO`               | `PayExFinancingFI`             | `PayExFinancingSE`             |
+5. Make a Capture by creating a `POST` request.
 
 * An invoice payment is always two-phased based - you create an Authorize
-  transaction, that is followed by a `Capture` or `Cancel` request.
-
-{% include alert-callback-url.md payment_instrument="invoice" %}
+transaction, that is followed by a `Capture` or `Cancel` request.
+The `Capture` , `Cancel`, `Reversal` opions are
+described in [other features][other-features].
 
 {% include alert.html type="neutral" icon="info" body="
 Note that the invoice will not be created/distributed before you have
-made a `capture` request." %}.
+made a `capture` request. By making a Capture, Swedbank Pay will generate
+the invoice to the consumer and the order is ready for shipping." %}
 
-The `Capture` , `Cancel`, `Reversal` opions are
-described in [other features][other-features].
-The links will take you directly to the API description for the specific request.
+{% include alert-callback-url.md payment_instrument="invoice" %}
 
-The sequence diagram below shows a high level description of the invoice
-process, including the four requests you have to send to Swedbank Pay to create
-an authorize transaction for Sweden (SE) and Norway (NO). Note that for Finland
-(FI) the process is different as the Merchant needs to send a `POST` request
-with the `approvedLegalAddress` (SNN and postal number).
+The 3 most important steps in the Invoice Direct flow are shown below.
 
-## Invoice flow (SE and NO)
-
-```mermaid
-sequenceDiagram
-    Consumer->>Merchant: Start purchase (collect SSN and postal number)
-    activate Merchant
-    note left of Merchant: First API request
-    Merchant->>-Swedbank Pay: POST <Invoice Payments> (operation=FinancingConsumer)
-    activate Swedbank Pay
-    Swedbank Pay-->>-Merchant: payment resource
-    activate Merchant
-    note left of Merchant: Second API request
-    Merchant-->>-Swedbank Pay: POST <approvedLegalAddress> (SNN and postal number)
-    activate Swedbank Pay
-    Swedbank Pay-->>Swedbank Pay: Update payment with consumer delivery address
-    Swedbank Pay-->>-Merchant: Approved legaladdress information
-    activate Merchant
-    Merchant-->>-Consumer: Display all details and final price
-    activate Consumer
-    Consumer->>Consumer: Input email and mobile number
-    Consumer->>-Merchant: Confirm purchase
-    activate Merchant
-
-    note left of Merchant: Third API request
-    Merchant->>-Swedbank Pay: POST <invoice authorizations> (Transaction Activity=FinancingConsumer)
-    activate Swedbank Pay
-    Swedbank Pay-->>-Merchant: Transaction result
-    activate Merchant
-    note left of Merchant: Fourth API request
-    Merchant->>-Swedbank Pay: GET <invoice payments>
-    activate Swedbank Pay
-    Swedbank Pay-->>-Merchant: payment resource
-    activate Merchant
-    Merchant-->>-Consumer: Display result
-```
-
-## Invoice Flow (FI)
-
-```mermaid
-sequenceDiagram
-    Consumer->>Merchant: start purchase
-    activate Merchant
-    note left of Merchant: First API request
-    Merchant->>-Swedbank Pay: POST <Invoice Payments> (operation=FinancingConsumer)
-    activate Swedbank Pay
-    Swedbank Pay-->>-Merchant: payment resource
-    activate Merchant
-    Merchant-->>-Consumer: Display All detail and final price
-    activate Consumer
-    Consumer-->>Consumer: Input consumer data
-    Consumer->>-Merchant: Confirm purchase
-    activate Merchant
-    note left of Merchant: Second API request
-    Merchant->>-Swedbank Pay: POST <Invoice autorizations> (Transaction Activity=FinancingConsumer)
-    activate Swedbank Pay
-    Swedbank Pay->>-Merchant: Transaction result
-    activate Merchant
-    note left of Merchant: Third API request
-    Merchant->>-Swedbank Pay: GET <Invoice payments>
-    activate Swedbank Pay
-    Swedbank Pay-->>-Merchant: payment resource
-    activate Merchant
-    Merchant-->>-Consumer: Display result
-```
-
-## API Requests
-
-The API requests are displayed in the [purchase flow](#purchase-flow).
-You can complete the invoice payment with following `operation`
-options:
-
-* [Financing Consumer][financing-consumer]
-* [Recur][recur]
-* [Verify][verify]
+## Step 1: Create a Purchase
 
 Our `payment` example below uses the [`FinancingConsumer`][financing-consumer] value.
 
@@ -337,55 +244,157 @@ Content-Type: application/json
 | `operations`             | `array`      | The array of possible operations to perform                                                                                                                                                                                                                                                                                                                |
 | └─➔&nbsp;`method`        | `string`     | The HTTP method to use when performing the operation.                                                                                                                                                                                                                                                                                                      |
 | └─➔&nbsp;`href`          | `string`     | The target URI to perform the operation against.                                                                                                                                                                                                                                                                                                           |
-| └─➔&nbsp;`rel`           | `string`     | The name of the relation the operation has to the current resource.                                                                                                                                                                                                                                                                                        |
+| └─➔&nbsp;`rel`           | `string`     | The name of the relation the
+operation has to the current resource.|
 
-### Operations
+## Step 2: Get `approvedLegalAddress` confirmation
 
-The operations should be performed as described in each response and not as
-described here in the documentation.
-Always use the `href` and `method` as specified in the response by finding
-the appropriate operation based on its `rel` value.
-The only thing that should be hard coded in the client is the value of
-the `rel` and the request that will be sent in the HTTP body of the request
-for the given operation.
+{:.code-header}
+**Request**
 
-{:.table .table-striped}
-| Operation                | Description                                                                                                               |
-| :----------------------- | :------------------------------------------------------------------------------------------------------------------------ |
-| `update-payment-abort`   | [Aborts][abort] the payment order before any financial transactions are performed.                                        |
-| `redirect-authorization` | Contains the URI that is used to redirect the consumer to the Swedbank Pay Payments containing the card authorization UI. |
-| `view-authorization`     | Contains the JavaScript `href` that is used to embed  the card authorization UI directly on the webshop/merchant site     |
-| `create-capture`         | Creates a `capture` transaction in order to charge the reserved funds from the consumer.                                  |
-| `create-cancellation`    | Creates a `cancellation` transaction that cancels a created, but not yet captured payment.                                |
+```http
+POST /psp/invoice/payments HTTP/1.1
+Host: {{ page.api_host }}
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
 
-If a `GET` method is used from payment UI  with a `paymentToken`, the following
-operations can be returned, depending on state of the payment and the last
-transaction.
-
-```js
-"operations": [
-    {
-        "href": "https://example.com/cancelUrl",
-        "rel": "redirect-merchant-cancel",
-        "method": "GET"
-    },
-    {
-        "href": "https://example.com/completeUrl",
-        "rel": "redirect-merchant-complete",
-        "method": "GET"
-    },
-    {
-        "href": "https://example.com/cancelUrl",
-        "rel": "redirect-merchant-cancel",
-        "method": "GET"
-    },
-    {
-        "href": "https://example.com/completeUrl",
-        "rel": "redirect-merchant-complete",
-        "method": "GET"
+{
+    "addressee": {
+        "socialSecurityNumber": "194810205957",
+        "zipCode": "55560"
     }
-]
+}
 ```
+
+{:.code-header}
+**Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+{
+    "payment": "/psp/invoice/payments/{{ page.payment_id }}",
+    "approvedLegalAddress": {
+        "id": "/psp/invoice/payments/{{ page.payment_id }}/approvedlegaladdress",
+        "addressee": "Leo 6",
+        "streetAddress": "Gata 535",
+        "zipCode": "55560",
+        "city": "Vaxholm",
+        "countryCode": "SE"
+    }
+}
+```
+
+## Step 3: Get the transaction result
+
+{:.code-header}
+**Request**
+
+```http
+POST /psp/invoice/payments HTTP/1.1
+Host: {{ page.api_host }}
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+
+{
+    "transaction": {
+        "activity": "FinancingConsumer"
+    },
+    "consumer": {
+        "socialSecurityNumber": "194810205957",
+        "customerNumber": "123456",
+        "email": "someExample@payex.com",
+        "msisdn": "+46765432198",
+        "ip": "127.0.0.1"
+    },
+    "legalAddress": {
+        "addressee": "Leo 6",
+        "streetAddress": "Gata 535",
+        "zipCode": "55560",
+        "city": "Vaxholm",
+        "countryCode": "SE"
+    }
+}
+```
+
+{:.code-header}
+**Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "payment": "/psp/invoice/payments/{{ page.payment_id }}",
+    "authorization": {
+        "shippingAddress": {
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/shippingaddress"
+        },
+        "legalAddress": {
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/legaladdress"
+        },
+        "id": "/psp/invoice/payments/{{ page.payment_id }}/authorizations/23fc8ea7-57b8-44bb-8313-08d7ca2e1a26",
+        "transaction": {
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/transactions/23fc8ea7-57b8-44bb-8313-08d7ca2e1a26",
+            "created": "2020-03-17T09:46:10.3506297Z",
+            "updated": "2020-03-17T09:46:12.2512221Z",
+            "type": "Authorization",
+            "state": "Completed",
+            "number": 71100537930,
+            "amount": 4201,
+            "vatAmount": 0,
+            "description": "Books & Ink",
+            "payeeReference": "1584438350",
+            "isOperational": false,
+            "operations": []
+        }
+    }
+}
+```
+
+The sequence diagram below shows a high level description of the invoice
+process, including the four requests you have to send to Swedbank Pay to create
+an authorized transaction.
+
+## Invoice flow
+
+```mermaid
+sequenceDiagram
+    Consumer->>Merchant: Start purchase (collect SSN and postal number)
+    activate Merchant
+    note left of Merchant: First API request
+    Merchant->>-Swedbank Pay: POST <Invoice Payments> (operation=FinancingConsumer)
+    activate Swedbank Pay
+    Swedbank Pay-->>-Merchant: payment resource
+    activate Merchant
+    note left of Merchant: Second API request
+    Merchant-->>-Swedbank Pay: POST <approvedLegalAddress> (SNN and postal number)
+    activate Swedbank Pay
+    Swedbank Pay-->>Swedbank Pay: Update payment with consumer delivery address
+    Swedbank Pay-->>-Merchant: Approved legaladdress information
+    activate Merchant
+    Merchant-->>-Consumer: Display all details and final price
+    activate Consumer
+    Consumer->>Consumer: Input email and mobile number
+    Consumer->>-Merchant: Confirm purchase
+    activate Merchant
+
+    note left of Merchant: Third API request
+    Merchant->>-Swedbank Pay: POST <invoice authorizations> (Transaction Activity=FinancingConsumer)
+    activate Swedbank Pay
+    Swedbank Pay-->>-Merchant: Transaction result
+    activate Merchant
+    note left of Merchant: Fourth API request
+    Merchant->>-Swedbank Pay: GET <invoice payments>
+    activate Swedbank Pay
+    Swedbank Pay-->>-Merchant: payment resource
+    activate Merchant
+    Merchant-->>-Consumer: Display result
+```
+
+## Options after posting a purchase payment
+
+Head over to [Capture][capture] to complete the Invoice Direct integration.
 
 {% include iterator.html prev_href="seamless-view" prev_title="Back: Seamless View"
 next_href="capture" next_title="Next: Capture" %}
@@ -393,7 +402,7 @@ next_href="capture" next_title="Next: Capture" %}
 [abort]: /payments/invoice/other-features#abort
 [callback]: /payments/invoice/other-features#callback
 [cancel]: /payments/invoice/after-payment#cancellations
-[capture]: /payments/invoice/after-payment#capture
+[capture]: /payments/invoice/capture
 [fi-png]: /assets/img/fi.png
 [financing-consumer]: /payments/invoice/other-features#financing-consumer
 [financing-invoice-1-png]: /assets/img/checkout/test-purchase.png
