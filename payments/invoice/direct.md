@@ -307,7 +307,7 @@ Content-Type: application/json
         "msisdn": "+46765432198",
         "ip": "127.0.0.1"
     },
-    "LegalAddress": {
+    "legalAddress": {
         "addressee": "Leo 6",
         "streetAddress": "Gata 535",
         "zipCode": "55560",
