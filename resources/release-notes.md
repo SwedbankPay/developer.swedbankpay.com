@@ -32,6 +32,13 @@ this very documentation, not to a version of any APIs described by it." %}
 
 ## March 2020
 
+### Version 1.8.0
+
+* Updated [Invoice Payments Direct][invoice-direct] where
+  `approvedLegalAddress` should now be use for all countries.
+* Small text changes and clarifications.
+* Restructured [Invoice Payments][invoice] and [Card Payments][card].
+
 ### Version 1.7.7
 
 This change contains build updates for the page. :octocat:
@@ -313,6 +320,7 @@ integration and the payer.
 [home-technical-information]: /home/technical-information
 [initiate-consumer-session]: /checkout/checkin#checkin-back-end
 [invoice]: /payments/invoice
+[invoice-direct]: /payments/invoice/direct
 [mobile-pay]: /payments/mobile-pay
 [one-click]: /payments/card/other-features#one-click-payments
 [payment-orders]: /checkout/other-features#creating-a-payment-order
