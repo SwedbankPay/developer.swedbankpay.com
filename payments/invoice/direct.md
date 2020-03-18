@@ -51,12 +51,9 @@ the invoice to the consumer and the order is ready for shipping." %}
 
 {% include alert-callback-url.md payment_instrument="invoice" %}
 
-## Step 1: Create a Purchase
+The 3 most important steps in the Invoice Direct flow are shown below.
 
-{% include alert.html type="neutral" icon="info" body="Note that for Sweden(SE)
-and Norway(NO) the invoice integration process is different as the Merchant
-needs to send a `POST` request with the `approvedLegalAddress`
-(SNN and postal number)" %}
+## Step 1: Create a Purchase
 
 Our `payment` example below uses the [`FinancingConsumer`][financing-consumer] value.
 
@@ -246,8 +243,7 @@ Content-Type: application/json
 | └─➔&nbsp;`rel`           | `string`     | The name of the relation the
 operation has to the current resource.|
 
-For Sweden and Norway the `approvedLegalAddress`request and response will be as shown
-below.
+## Step 2: Get `approvedLegalAddress` confirmation
 
 {:.code-header}
 **Request**
@@ -285,7 +281,7 @@ Content-Type: application/json
 }
 ```
 
-## Step 2: Get the transaction result
+## Step 3: Get the transaction result
 
 {:.code-header}
 **Request**
@@ -354,11 +350,9 @@ Content-Type: application/json
 
 The sequence diagram below shows a high level description of the invoice
 process, including the four requests you have to send to Swedbank Pay to create
-an authorize transaction for Sweden (SE) and Norway (NO). Note that for Sweden
-(SE) and Norway (NO) the process is different as the Merchant needs to send a
-`POST` request with the `approvedLegalAddress` (SNN and postal number).
+an authorized transaction.
 
-## Invoice flow (SE and NO)
+## Invoice flow
 
 ```mermaid
 sequenceDiagram
@@ -394,34 +388,9 @@ sequenceDiagram
     Merchant-->>-Consumer: Display result
 ```
 
-## Invoice Flow (FI)
+## Options after posting a purchase payment
 
-```mermaid
-sequenceDiagram
-    Consumer->>Merchant: start purchase
-    activate Merchant
-    note left of Merchant: First API request
-    Merchant->>-Swedbank Pay: POST <Invoice Payments> (operation=FinancingConsumer)
-    activate Swedbank Pay
-    Swedbank Pay-->>-Merchant: payment resource
-    activate Merchant
-    Merchant-->>-Consumer: Display All detail and final price
-    activate Consumer
-    Consumer-->>Consumer: Input consumer data
-    Consumer->>-Merchant: Confirm purchase
-    activate Merchant
-    note left of Merchant: Second API request
-    Merchant->>-Swedbank Pay: POST <Invoice autorizations> (Transaction Activity=FinancingConsumer)
-    activate Swedbank Pay
-    Swedbank Pay->>-Merchant: Transaction result
-    activate Merchant
-    note left of Merchant: Third API request
-    Merchant->>-Swedbank Pay: GET <Invoice payments>
-    activate Swedbank Pay
-    Swedbank Pay-->>-Merchant: payment resource
-    activate Merchant
-    Merchant-->>-Consumer: Display result
-```
+Head over to [Capture][capture] to complete the Invoice Direct integration.
 
 {% include iterator.html prev_href="seamless-view" prev_title="Back: Seamless View"
 next_href="capture" next_title="Next: Capture" %}
@@ -429,7 +398,7 @@ next_href="capture" next_title="Next: Capture" %}
 [abort]: /payments/invoice/other-features#abort
 [callback]: /payments/invoice/other-features#callback
 [cancel]: /payments/invoice/after-payment#cancellations
-[capture]: /payments/invoice/after-payment#capture
+[capture]: /payments/invoice/capture
 [fi-png]: /assets/img/fi.png
 [financing-consumer]: /payments/invoice/other-features#financing-consumer
 [financing-invoice-1-png]: /assets/img/checkout/test-purchase.png

@@ -244,7 +244,7 @@ sequenceDiagram
 
 Head over to [after payment][after-payment]
 to see what you can do when a payment is completed.
-Here you will also find info on `Capture`, `Cancel`, and `Reversal`.
+Here you will also find info on `Cancel`, and `Reversal`.
 
 {% include iterator.html prev_href="./" prev_title="Back: Introduction"
 next_href="seamless-view" next_title="Next: Seamless View" %}
