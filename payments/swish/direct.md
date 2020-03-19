@@ -296,7 +296,7 @@ Content-Type: application/json
         },
         "transactions": {
             "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/transactions"
-        }
+        },
         "captures": {
             "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/captures"
         },
