@@ -1,10 +1,20 @@
 repository: SwedbankPay/developer.swedbankpay.com
-remote_theme: SwedbankPay/swedbank-pay-design-guide-jekyll-theme@master
+remote_theme: SwedbankPay/swedbank-pay-design-guide-jekyll-theme@1.3.0
 exclude: ["Gemfile*", "Rakefile"]
 plugins:
   - "jekyll-github-metadata"
   - jemoji
   - jekyll-remote-theme
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    guess_lang: true
+    default_lang: html
+    css_class: 'highlight'
+    block:
+      line_numbers: true
+      start_line: 1
 tipue_search:
   include:
     pages: true
