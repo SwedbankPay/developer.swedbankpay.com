@@ -1,9 +1,10 @@
 source 'https://rubygems.org'
 
-gem 'jekyll-github-metadata'
+gem 'jekyll', '~> 4.0', group: :jekyll_plugins
 gem 'jekyll-assets'
+gem 'jekyll-github-metadata'
+gem 'jekyll-remote-theme'
 gem 'jemoji'
+
+# Neccessary to prevent Jekyll errors. See https://github.com/github/personal-website/issues/166
 gem 'faraday', '~> 0.17.3'
-gem "jekyll-remote-theme"
-gem "concurrent-ruby", "~> 1.1"
-gem "rubyzip", "~> 2.2"
