@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  jekyll:
+  portal:
     command: jekyll build --verbose
     environment: 
       environment: 'production'
