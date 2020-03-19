@@ -313,7 +313,7 @@ Content-Type: application/json
             "href": "{{ page.api_url }}/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}",
             "rel": "update-payment-abort",
             "contentType": "application/json"
-        }
+        },
         {
             "method": "POST",
             "href": "{{ page.api_url }}/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/captures",
