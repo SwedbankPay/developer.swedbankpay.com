@@ -1,0 +1,7 @@
+version: '3'
+
+services:
+  jekyll:
+    command: jekyll build --verbose
+    environment: 
+      environment: 'production'
