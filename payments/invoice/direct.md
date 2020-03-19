@@ -285,7 +285,7 @@ Content-Type: application/json
 }
 ```
 
-## Step 3: Get the transaction result
+## Step 3: Complete a Payment
 
 {:.code-header}
 **Request**
