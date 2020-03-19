@@ -2,6 +2,8 @@
 {% assign show_authorization = include.show_authorization | default: true %}
 {% assign sale = include.sale | default: false %}
 
+### Intent
+
 The intent of the payment identifies how and when the charge will be
 effectuated. This determines the type of transaction used during the payment
 process.

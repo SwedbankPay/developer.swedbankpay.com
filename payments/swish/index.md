@@ -54,6 +54,8 @@ you push the pay button.
 
 ## Good To Know
 
+{% include intent.md sale=true show_authorization=false %}
+
 ### Payment Type
 
 Swish is one of the instruments using one-phase payments. The `sale` is done
@@ -86,7 +88,7 @@ must be toggled on. The external integration demoshop used for testing is set up
 with the Merchant Swish Simulator, which enables you to test without using the
 Swish App.
 
-{% include iterator.html  next_href="redirect" next_title="Next: Redirect" %}
+{% include iterator.html  next_href="direct" next_title="Next: Direct" %}
 
 [danske-bank]: https://danskebank.se/sv-se/foretag/medelstora-foretag/onlinetjanster/pages/swish-handel.aspx
 [handelsbanken]: https://www.handelsbanken.se/sv/foretag/konton-betalningar/ta-betalt/swish-for-foretag

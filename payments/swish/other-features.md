@@ -506,5 +506,8 @@ Content-Type: application/json
 }
 ```
 
+{% include iterator.html prev_href="after-payment" prev_title="Back: After
+Payment" %}
+
 [payee-reference]: #payeeReference
 [transaction-resource]: #Transactions
