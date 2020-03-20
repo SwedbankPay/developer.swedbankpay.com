@@ -36,6 +36,14 @@ option, the consumer will be redirected back to the merchant's site.
 
 ## Good To Know
 
+### Intent
+
+**`Authorization` (two-phase)**: The intent of a MobilePay Online purchase is
+always `Authorization`. The amount will be reserved but not charged. You will
+later (i.e. if a physical product, when you are ready to ship the purchased
+products) have to make a [`Capture`][mobilepay-capture] or
+[`Cancel`][mobilepay-cancel] request.
+
 ### Payment Type
 
 MobilePay Online is one of the instruments using two-phase payments. The
