@@ -43,6 +43,16 @@ the merchant's site.
 
 ## Good To Know
 
+### Intent
+
+**`Authorization` (two-phase)**: The intent of the payment identifies how and
+when the charge will be effectuated. This determines the type of transaction
+used during the payment process. The intent of a Vipps purchase is always
+`Authorization`. The amount will be reserved but not charged.
+You will later (i.e. if a physical product, when you are ready to ship the
+purchased products) have to make a [Capture][capture] or
+[Cancel][cancel] request.
+
 ### Payment Type
 
 Vipps is one of the instruments using two-phase payments. The `authorization` is
