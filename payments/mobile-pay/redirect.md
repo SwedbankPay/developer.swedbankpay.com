@@ -47,7 +47,7 @@ payment." %}
 
 When the payer starts the purchase process, you make a `POST` request towards
 Swedbank Pay with the collected Purchase information. This will generate a
-payment object with a unique `paymentID`. See the `POST`request example below.
+payment with a unique `id`. See the `POST`request example below.
 
 {:.code-header}
 **Request**
@@ -189,13 +189,13 @@ Content-Type: application/json
 ## Step 2: Get the transaction status
 
 Finally you need to make a `GET` request towards Swedbank Pay with the
-`paymentID` received in the first step, which will return the purchase result.
+`id` of the payment received in the first step, which will return the purchase result.
 
 {:.code-header}
 **Request**
 
 ```http
-GET /psp/{{ mobilepay }}/payments/{{ page.payment_id }}/ HTTP/1.1
+GET /psp/mobilepay/payments/{{ page.payment_id }}/ HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
