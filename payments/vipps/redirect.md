@@ -37,7 +37,7 @@ that the payer must confirm through the Vipps mobile app." %}
 * Swedbank Pay handles the dialogue with Vipps and the consumer confirms the
   purchase in the Vipps app.
 * To receive the state of the transaction you need to do a `GET`
-  request containing the `paymentID` generated in the first step.
+  request containing the `id` of the payment generated in the first step.
 
 ![steps of the vipps purchase flow][vipps-purchase-flow]{:width="1200px" :height="500px"}
 
