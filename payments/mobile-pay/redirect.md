@@ -195,7 +195,7 @@ Finally you need to make a `GET` request towards Swedbank Pay with the
 **Request**
 
 ```http
-GET /psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/ HTTP/1.1
+GET /psp/{{ mobilepay }}/payments/{{ page.payment_id }}/ HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -210,7 +210,7 @@ Content-Type: application/json
 
 {
     "payment": {
-        "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}",
+        "id": "/psp/mobilepay/payments/{{ page.payment_id }}",
         "number": 1234567890,
         "created": "2016-09-14T13:21:29.3182115Z",
         "updated": "2016-09-14T13:21:57.6627579Z",
@@ -228,64 +228,64 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",
         "prices": {
-            "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/prices"
+            "id": "/psp/mobilepay/payments/{{ page.payment_id }}/prices"
         },
         "payeeInfo": {
-            "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/payeeInfo"
+            "id": "/psp/mobilepay/payments/{{ page.payment_id }}/payeeInfo"
         },
         "urls": {
-            "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/urls"
+            "id": "/psp/mobilepay/payments/{{ page.payment_id }}/urls"
         },
         "transactions": {
-            "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/transactions"
+            "id": "/psp/mobilepay/payments/{{ page.payment_id }}/transactions"
         },
         "authorizations": {
-            "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/authorizations"
+            "id": "/psp/mobilepay/payments/{{ page.payment_id }}/authorizations"
         },
         "captures": {
-            "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/captures"
+            "id": "/psp/mobilepay/payments/{{ page.payment_id }}/captures"
         },
         "reversals": {
-            "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/reversals"
+            "id": "/psp/mobilepay/payments/{{ page.payment_id }}/reversals"
         },
         "cancellations": {
-            "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/cancellations"
+            "id": "/psp/mobilepay/payments/{{ page.payment_id }}/cancellations"
         }
     },
     "operations": [
         {
             "method": "PATCH",
-            "href": "{{ page.api_url }}/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}",
+            "href": "{{ page.api_url }}/psp/mobilepay/payments/{{ page.payment_id }}",
             "rel": "update-payment-abort",
             "contentType": "application/json"
         },
         {
             "method": "GET",
-            "href": "{{ page.front_end_url }}/{{ payment_instrument }}/core/scripts/client/px.{{ payment_instrument }}.client.js?token={{ page.payment_token }}&operation=authorize",
+            "href": "{{ page.front_end_url }}/mobilepay/core/scripts/client/px.mobilepay.client.js?token={{ page.payment_token }}&operation=authorize",
             "rel": "view-authorization",
             "contentType": "application/javascript"
         },
         {
             "method": "GET",
-            "href": "{{ page.front_end_url }}/{{ payment_instrument }}/payments/authorize/{{ page.transaction_id }}",
+            "href": "{{ page.front_end_url }}/mobilepay/payments/authorize/{{ page.transaction_id }}",
             "rel": "redirect-authorization",
             "contentType": "text/html"
         },
         {
             "method": "POST",
-            "href": "{{ page.api_url }}/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/captures",
+            "href": "{{ page.api_url }}/psp/mobilepay/payments/{{ page.payment_id }}/captures",
             "rel": "create-capture",
             "contentType": "application/json"
         },
         {
             "method": "GET",
-            "href": "{{ page.api_url }}/psp/{{ payment_instrument }}/{{ page.payment_id }}/paid",
+            "href": "{{ page.api_url }}/psp/mobilepay/{{ page.payment_id }}/paid",
             "rel": "paid-payment",
             "contentType": "application/json"
         },
         {
             "method": "GET",
-            "href": "{{ page.api_url }}/psp/{{ payment_instrument }}/{{ page.payment_id }}/failed",
+            "href": "{{ page.api_url }}/psp/mobilepay/{{ page.payment_id }}/failed",
             "rel": "failed-payment",
             "contentType": "application/problem+json"
         }
