@@ -18,113 +18,41 @@ sidebar:
 
 
 {% include jumbotron.html body="The **Seamless View** scenario gives your
-customers the opportunity to pay with Vipps directly within your webshop." %}
-
-## Introduction
-
-Vipps is a two-phase payment instrument supported by the major Norwegian banks.
+customers the opportunity to pay with Vipps directly within your webshop.
 In the Seamless View scenario, Swedbank Pay receives a mobile number (MSISDN)
 from the payer through Swedbank Pay Payments. Swedbank Pay performs a payment
-that the payer must confirm through the Vipps mobile app.
+that the payer must confirm through the Vipps mobile app." %}
 
 ![steps of the vipps purchase flow][vipps-purchase-flow]{:width="1200px" :height="500px"}
 
-## Purchase flow
+## Vipps seamless view integration flow
 
-The sequence diagram below shows the two requests you have to send to
-Swedbank Pay to make a purchase.
-The links will take you directly to the API description for the specific
-request.
-
-```mermaid
-sequenceDiagram
-    Browser->>Merchant: start purchase (pay with VIPPS)
-    activate Merchant
-    Merchant->>-SwedbankPay: POST /psp/vipps/payments ①
-    activate SwedbankPay
-    note left of Merchant: First API request
-    SwedbankPay-->>-Merchant: rel: view-payment ②
-    activate Merchant
-    Merchant-->>-Browser: authorization page
-    activate Browser
-    note left of Browser: Open iframe ③
-    Browser->>Browser: Enter mobile number ④
-    Browser-->>-SwedbankPay: Passing data for authorization
-    activate SwedbankPay
-
-    SwedbankPay-->>-Vipps.API: POST <rel:create-auhtorization> ⑤
-    activate Vipps.API
-    Vipps.API-->>-SwedbankPay: response
-    activate SwedbankPay
-    SwedbankPay-->>-Browser: Authorization response (State=AwaitingActivity) ⑥
-    activate Browser
-    note left of Browser: check your phone
-
-    Vipps.API-->>Vipps_App: Confirm Payment UI
-    activate Vipps_App
-    note left of Vipps.API: Dialogue with Vipps ⑦
-    Vipps_App-->>Vipps_App: Confirmation Dialogue
-    Vipps_App-->>-Vipps.API: Confirmation
-    activate Vipps.API
-    Vipps.API-->>-SwedbankPay: make payment
-    activate SwedbankPay
-    SwedbankPay-->>SwedbankPay: execute payment
-    SwedbankPay-->>-Vipps.API: response
-    activate Vipps.API
-    Vipps.API-->>-SwedbankPay: authorize result
-    activate SwedbankPay
-    SwedbankPay-->>-Browser: Display authorize result
-```
-
-### Explainations
-
-* ① When the payer starts the purchase process, you make a `POST` request
+1. When the payer starts the purchase process, you make a `POST` request
   towards Swedbank Pay with the collected Purchase information.
-* ② `rel: view-payment` is a value in one of the operations, sent as a response
+1. `rel: view-payment` is a value in one of the operations, sent as a response
   from Swedbank Pay to the Merchant.
-* ③ `Open iframe` creates the Swedbank Pay hosted iframe.
-* ④ The consumer UI page displays the payment window as content inside of the
+1. `Open iframe` creates the Swedbank Pay hosted iframe.
+    The consumer UI page displays the payment window as content inside of the
   `iframe`. The consumer can insert mobile information for authorization.
-* ⑤ A `POST` request is sent to the Vipps API with the mobile number for
+1. A `POST` request is sent to the Vipps API with the mobile number for
   authorization.
-* ⑥ The response will contain the state of the transaction. It will normally be
+1. The response will contain the state of the transaction. It will normally be
   `AwaitingActivity` in this phase of the payment, meaning we are awaiting a
   response from Vipps.
-* ⑦ Swedbank Pay handles the dialogue with Vipps and the consumer confirms the
+1. Swedbank Pay handles the dialogue with Vipps and the consumer confirms the
   purchase in the Vipps app.
 
-### Payment Url
-
-{% include payment-url.md when="selecting Vipps as payment instrument" %}
-
-## Seamless View Back End
+## Step 1: Create a Purchase
 
 When properly set up in your merchant/webshop site and the payer starts the
 purchase process, you need to make a `POST` request towards Swedbank Pay with
 your Purchase information. This will generate a payment object with a unique
-`paymentID`. You will receive a response in which you can find the **JavaScript source** in the `view-payment` operation.
-
-### Intent
-
-* **Authorization (two-phase)**: The intent of a Vipps purchase is always
-  `Authorization`. The amount will be reserved but not charged.
-  You will later (i.e. if a physical product, when you are ready to ship the
-  purchased products) have to make a [Capture][captures] or
-  [Cancel][cancellations] request.
-
-### Operations
-
-The API requests are displayed in the purchase flow above.
-You can [create a Vipps `payment`][create-payment] with the [purchase][purchase] `operation`
-
-### Purchase
-
-A `Purchase` payment is a straightforward way to charge the card of the payer.
-It is followed up by posting a capture, cancellation or reversal transaction.
-
-An example of an abbreviated `POST` request is provided below. Each individual field of the JSON document is described in the following section.
-An example of an expanded `POST` request is available in the
+`paymentID`. An example of an abbreviated `POST` request is provided below.
+You will receive a response in which you can find the **JavaScript source**
+in the `view-payment` operation. An example of an expanded `POST` request is available in the
 [other features section][purchase].
+
+{% include payment-url.md when="selecting Vipps as payment instrument" %}
 
 {% include alert-risk-indicator.md %}
 
@@ -273,7 +201,7 @@ The key information in the response is the `view-payment` operation. You
 will need to embed its `href` in a `<script>` element. The script will enable
 loading the payment page in an `iframe` in our next step.
 
-## Seamless View Front End
+## Step 2: Display the payment window
 
 You need to embed the script source on your site to create a hosted-view in an
 `iframe`; so that she can enter the required information in a secure Swedbank
@@ -331,7 +259,7 @@ This is how the payment might look like:
 [Vipps-screenshot-1]{:width="426px" :height="632px"}
 ![Vipps Payments][Vipps-screenshot-2]{:width="427px" :height="694px"}
 
-## Authorization Transaction
+## Step 3: Create authorization transaction
 
 Use the mobile number from the consumer to create an authorization transaction.
 
@@ -404,6 +332,53 @@ Content-Type: application/json
 | └➔&nbsp;`failedReason`       | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | └➔&nbsp;`isOperational`      | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
 | └➔&nbsp;`operations`         | `array`   | The array of operations that are possible to perform on the transaction in its current state.                                                                                                                |
+
+## Purchase flow
+
+The sequence diagram below shows the two requests you have to send to
+Swedbank Pay to make a purchase.
+The links will take you directly to the API description for the specific
+request.
+
+```mermaid
+sequenceDiagram
+    Browser->>Merchant: start purchase (pay with VIPPS)
+    activate Merchant
+    Merchant->>-SwedbankPay: POST /psp/vipps/payments ①
+    activate SwedbankPay
+    note left of Merchant: First API request
+    SwedbankPay-->>-Merchant: rel: view-payment ②
+    activate Merchant
+    Merchant-->>-Browser: authorization page
+    activate Browser
+    note left of Browser: Open iframe ③
+    Browser->>Browser: Enter mobile number ④
+    Browser-->>-SwedbankPay: Passing data for authorization
+    activate SwedbankPay
+
+    SwedbankPay-->>-Vipps.API: POST <rel:create-auhtorization> ⑤
+    activate Vipps.API
+    Vipps.API-->>-SwedbankPay: response
+    activate SwedbankPay
+    SwedbankPay-->>-Browser: Authorization response (State=AwaitingActivity) ⑥
+    activate Browser
+    note left of Browser: check your phone
+
+    Vipps.API-->>Vipps_App: Confirm Payment UI
+    activate Vipps_App
+    note left of Vipps.API: Dialogue with Vipps ⑦
+    Vipps_App-->>Vipps_App: Confirmation Dialogue
+    Vipps_App-->>-Vipps.API: Confirmation
+    activate Vipps.API
+    Vipps.API-->>-SwedbankPay: make payment
+    activate SwedbankPay
+    SwedbankPay-->>SwedbankPay: execute payment
+    SwedbankPay-->>-Vipps.API: response
+    activate Vipps.API
+    Vipps.API-->>-SwedbankPay: authorize result
+    activate SwedbankPay
+    SwedbankPay-->>-Browser: Display authorize result
+```
 
 {% include iterator.html
         prev_href="redirect"
