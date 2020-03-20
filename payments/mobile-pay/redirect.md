@@ -270,7 +270,7 @@ Content-Type: application/json
             "href": "{{ page.front_end_url }}/{{ payment_instrument }}/payments/authorize/{{ page.transaction_id }}",
             "rel": "redirect-authorization",
             "contentType": "text/html"
-        },{% endunless %}
+        },
         {
             "method": "POST",
             "href": "{{ page.api_url }}/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/captures",
