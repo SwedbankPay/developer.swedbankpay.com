@@ -189,7 +189,7 @@ Content-Type: application/json
 ## Step 2: Get the transaction status
 
 Finally you need to make a `GET` request towards Swedbank Pay with the
-`paymentID` received in the first step, which will return the purchase result.
+`id` of the payment received in the first step, which will return the purchase result.
 
 {:.code-header}
 **Request**
