@@ -195,7 +195,7 @@ Finally you need to make a `GET` request towards Swedbank Pay with the
 **Request**
 
 ```http
-GET /psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/ HTTP/1.1
+GET /psp/mobilepay/payments/{{ page.payment_id }}/ HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
