@@ -233,7 +233,7 @@ Content-Type: application/json
 
 {
     "payment": {
-        "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}",
+        "id": "/psp/vipps/payments/{{ page.payment_id }}",
         "number": 1234567890,
         "created": "2016-09-14T13:21:29.3182115Z",
         "updated": "2016-09-14T13:21:57.6627579Z",
@@ -251,64 +251,64 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",
         "prices": {
-            "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/prices"
+            "id": "/psp/vipps/payments/{{ page.payment_id }}/prices"
         },
         "payeeInfo": {
-            "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/payeeInfo"
+            "id": "/psp/vipps/payments/{{ page.payment_id }}/payeeInfo"
         },
         "urls": {
-            "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/urls"
+            "id": "/psp/vipps/payments/{{ page.payment_id }}/urls"
         },
         "transactions": {
-            "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/transactions"
+            "id": "/psp/vipps/payments/{{ page.payment_id }}/transactions"
         },
         "authorizations": {
-            "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/authorizations"
+            "id": "/psp/vipps/payments/{{ page.payment_id }}/authorizations"
         },
         "captures": {
-            "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/captures"
+            "id": "/psp/vipps/payments/{{ page.payment_id }}/captures"
         },
         "reversals": {
-            "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/reversals"
+            "id": "/psp/vipps/payments/{{ page.payment_id }}/reversals"
         },
         "cancellations": {
-            "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/cancellations"
+            "id": "/psp/vipps/payments/{{ page.payment_id }}/cancellations"
         }
     },
     "operations": [
         {
             "method": "PATCH",
-            "href": "{{ page.api_url }}/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}",
+            "href": "{{ page.api_url }}/psp/vipps/payments/{{ page.payment_id }}",
             "rel": "update-payment-abort",
             "contentType": "application/json"
         },
         {
             "method": "GET",
-            "href": "{{ page.front_end_url }}/{{ payment_instrument }}/core/scripts/client/px.{{ payment_instrument }}.client.js?token={{ page.payment_token }}&operation=authorize",
+            "href": "{{ page.front_end_url }}/vipps/core/scripts/client/px.vipps.client.js?token={{ page.payment_token }}&operation=authorize",
             "rel": "view-authorization",
             "contentType": "application/javascript"
         },
         {
             "method": "GET",
-            "href": "{{ page.front_end_url }}/{{ payment_instrument }}/payments/authorize/{{ page.transaction_id }}",
+            "href": "{{ page.front_end_url }}/vipps/payments/authorize/{{ page.transaction_id }}",
             "rel": "redirect-authorization",
             "contentType": "text/html"
         },
         {
             "method": "POST",
-            "href": "{{ page.api_url }}/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/captures",
+            "href": "{{ page.api_url }}/psp/vipps/payments/{{ page.payment_id }}/captures",
             "rel": "create-capture",
             "contentType": "application/json"
         },
         {
             "method": "GET",
-            "href": "{{ page.api_url }}/psp/{{ payment_instrument }}/{{ page.payment_id }}/paid",
+            "href": "{{ page.api_url }}/psp/vipps/{{ page.payment_id }}/paid",
             "rel": "paid-payment",
             "contentType": "application/json"
         },
         {
             "method": "GET",
-            "href": "{{ page.api_url }}/psp/{{ payment_instrument }}/{{ page.payment_id }}/failed",
+            "href": "{{ page.api_url }}/psp/vipps/{{ page.payment_id }}/failed",
             "rel": "failed-payment",
             "contentType": "application/problem+json"
         }
@@ -404,8 +404,6 @@ sequenceDiagram
     deactivate Merchant
   deactivate Browser
 ```
-
-### Intent
 
 You will later (i.e. if a physical product, when you are ready to ship the
 purchased products) have to make a [Capture][capture] or
