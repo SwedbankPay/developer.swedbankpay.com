@@ -149,7 +149,7 @@ Content-Type: application/json
 
 ## Step 2b: Create an authorization transaction with 3-D secure
 
-If 3-D secure authentication is needed, the `rel` is set to
+If 3-D Secure authentication is needed, the `rel` is set to
 `redirect-authentication` and the `state` is `AwaitingActivity`. This means that
 the payer will have to be redirected to complete the 3-D secure authentication. See the
 request and response example below.
