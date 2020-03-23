@@ -151,7 +151,7 @@ Content-Type: application/json
 
 If 3-D secure authentication is needed, the `rel` is set to
 `redirect-authentication` and the `state` is `AwaitingActivity`. This means that
-you will be redirected to complete the 3-D secure authentication. See the
+the payer will have to be redirected to complete the 3-D secure authentication. See the
 request and response example below.
 
 {:.code-header}
