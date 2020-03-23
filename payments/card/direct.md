@@ -221,7 +221,7 @@ Content-Type: application/json
             "operations": [
                 {
                     "method": "GET",
-                    "href": "https://api.stage.payex.com/psp/creditcard/confined/payments/authorizations/authenticate/{{ page.payment_id }}",
+                    "href": "https://api.stage.payex.com/psp/creditcard/confined/payments/authorizations/authenticate/{{ page.transaction_id }}",
                     "rel": "redirect-authentication"
                 }
             ]
