@@ -20,7 +20,7 @@ Swedbank Pay receives the MobilePay details from the payer through Swedbank Pay
 Payments. The payment will then be performed by Swedbank Pay and
 confirmed by the payer through the MobilePay app." %}
 
-## Introduction
+## MobilePay redirect integration flow
 
 * When you have prepared your merchant/webshop site, you make a `POST` request
   towards Swedbank Pay with your Purchase information.
@@ -37,90 +37,17 @@ confirmed by the payer through the MobilePay app." %}
 
 ![mobilepay approve payment][mobilepay-screenshot-2]
 
-## API Requests
-
-The API requests are displayed in the [purchase flow](#purchase-flow).
-The options you can choose from when creating a payment with key operation set
-to value `Purchase` are listed below.
-
-### Intent
-
-**`Authorization` (two-phase)**: The intent of a MobilePay Online purchase is
-always `Authorization`. The amount will be reserved but not charged. You will
-later (i.e. if a physical product, when you are ready to ship the purchased
-products) have to make a [`Capture`][mobilepay-capture] or
-[`Cancel`][mobilepay-cancel] request.
-
-#### General
-
 {% include alert.html type="success" icon="link" body="**Defining
 `callbackUrl`**: When implementing a scenario, it is strongly recommended to set
 a `callbackUrl` in the `POST` request. If `callbackUrl` is set, Swedbank Pay
 will send a `POST` request to this URL when the consumer has fulfilled the
 payment." %}
 
-## Purchase flow
+## Step 1: Create a Purchase
 
-The sequence diagram below shows the two requests you have to send to
-Swedbank Pay to make a purchase.
-The links will take you directly to the API description for the specific
-request.
-The diagram also shows in high level, the sequence of the process of a
-complete purchase.
-
-```mermaid
-sequenceDiagram
-  participant Consumer
-  participant Merchant
-  participant SwedbankPay as Swedbank Pay
-  participant MobilePay_API as MobilePay API
-  participant MobilePay_App as MobilePay App
-
-  Consumer->>Merchant: start purchase (pay with MobilePay)
-  activate Merchant
-
-  Merchant->>SwedbankPay: POST <Create MobilePay Online payment>
-  note left of Merchant: First API request
-  activate SwedbankPay
-  SwedbankPay-->>Merchant: payment resource
-  deactivate SwedbankPay
-  SwedbankPay -->> SwedbankPay: Create payment
-  Merchant-->>Consumer: Redirect to payment page
-  note left of Consumer: redirect to MobilePay
-  Consumer-->>SwedbankPay: enter mobile number
-  activate SwedbankPay
-
-  SwedbankPay-->>MobilePay_API: Initialize MobilePay Online payment
-  activate MobilePay_API
-  MobilePay_API-->>SwedbankPay: response
-  SwedbankPay-->>Consumer: Authorization response (State=Pending)
-  note left of Consumer: check your phone
-  deactivate Merchant
-
-  MobilePay_API-->>MobilePay_App: Confirm Payment UI
-  MobilePay_App-->>MobilePay_App: Confirmation Dialogue
-  MobilePay_App-->>MobilePay_API: Confirmation
-  MobilePay_API-->>SwedbankPay: make payment
-  activate SwedbankPay
-  SwedbankPay-->>SwedbankPay: execute payment
-  SwedbankPay-->>MobilePay_API: response
-  deactivate SwedbankPay
-  deactivate MobilePay_API
-  SwedbankPay-->>SwedbankPay: authorize result
-  SwedbankPay-->>Consumer: authorize result
-  Consumer-->>Merchant: Redirect to merchant
-  note left of Consumer: Redirect to merchant
-  activate Merchant
-  SwedbankPay-->>Merchant: Payment Callback
-  Merchant-->>SwedbankPay: GET <MobilePay payments>
-  note left of Merchant: Second API request
-  SwedbankPay-->>Merchant: Payment resource
-  deactivate SwedbankPay
-  Merchant-->>Consumer: Display authorize result
-  deactivate Merchant
-```
-
-## Purchase
+When the payer starts the purchase process, you make a `POST` request towards
+Swedbank Pay with the collected Purchase information. This will generate a
+payment with a unique `id`. See the `POST`request example below.
 
 {:.code-header}
 **Request**
@@ -259,14 +186,204 @@ Content-Type: application/json
 }
 ```
 
+## Step 2: Get the transaction status
+
+Finally you need to make a `GET` request towards Swedbank Pay with the
+`id` of the payment received in the first step, which will return the purchase result.
+
+{:.code-header}
+**Request**
+
+```http
+GET /psp/mobilepay/payments/{{ page.payment_id }}/ HTTP/1.1
+Host: {{ page.api_host }}
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+```
+
+{:.code-header}
+**Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "payment": {
+        "id": "/psp/mobilepay/payments/{{ page.payment_id }}",
+        "number": 1234567890,
+        "created": "2016-09-14T13:21:29.3182115Z",
+        "updated": "2016-09-14T13:21:57.6627579Z",
+        "state": "Ready",
+        "operation": "Purchase",
+        "intent": "Authorization",
+        "currency": "NOK",
+        "amount": 1500,
+        "remainingCaptureAmount": 1500,
+        "remainingCancellationAmount": 1500,
+        "remainingReversalAmount": 0,
+        "description": "Test Purchase",
+        "payerReference": "AB1234",
+        "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
+        "userAgent": "Mozilla/5.0...",
+        "language": "nb-NO",
+        "prices": {
+            "id": "/psp/mobilepay/payments/{{ page.payment_id }}/prices"
+        },
+        "payeeInfo": {
+            "id": "/psp/mobilepay/payments/{{ page.payment_id }}/payeeInfo"
+        },
+        "urls": {
+            "id": "/psp/mobilepay/payments/{{ page.payment_id }}/urls"
+        },
+        "transactions": {
+            "id": "/psp/mobilepay/payments/{{ page.payment_id }}/transactions"
+        },
+        "authorizations": {
+            "id": "/psp/mobilepay/payments/{{ page.payment_id }}/authorizations"
+        },
+        "captures": {
+            "id": "/psp/mobilepay/payments/{{ page.payment_id }}/captures"
+        },
+        "reversals": {
+            "id": "/psp/mobilepay/payments/{{ page.payment_id }}/reversals"
+        },
+        "cancellations": {
+            "id": "/psp/mobilepay/payments/{{ page.payment_id }}/cancellations"
+        }
+    },
+    "operations": [
+        {
+            "method": "PATCH",
+            "href": "{{ page.api_url }}/psp/mobilepay/payments/{{ page.payment_id }}",
+            "rel": "update-payment-abort",
+            "contentType": "application/json"
+        },
+        {
+            "method": "GET",
+            "href": "{{ page.front_end_url }}/mobilepay/core/scripts/client/px.mobilepay.client.js?token={{ page.payment_token }}&operation=authorize",
+            "rel": "view-authorization",
+            "contentType": "application/javascript"
+        },
+        {
+            "method": "GET",
+            "href": "{{ page.front_end_url }}/mobilepay/payments/authorize/{{ page.transaction_id }}",
+            "rel": "redirect-authorization",
+            "contentType": "text/html"
+        },
+        {
+            "method": "POST",
+            "href": "{{ page.api_url }}/psp/mobilepay/payments/{{ page.payment_id }}/captures",
+            "rel": "create-capture",
+            "contentType": "application/json"
+        },
+        {
+            "method": "GET",
+            "href": "{{ page.api_url }}/psp/mobilepay/{{ page.payment_id }}/paid",
+            "rel": "paid-payment",
+            "contentType": "application/json"
+        },
+        {
+            "method": "GET",
+            "href": "{{ page.api_url }}/psp/mobilepay/{{ page.payment_id }}/failed",
+            "rel": "failed-payment",
+            "contentType": "application/problem+json"
+        }
+    ]
+}
+```
+
+{:.table .table-striped}
+| Field                 | Type         | Description                                                                                                                                                                                                                                                                                                                                                |
+| :----------------------- | :----------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `payment`                | `object`     | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                                                                                      |
+| └➔&nbsp;`id`             | `string`     | {% include field-description-id.md %}                                                                                                                                                                                                                                                                                                                      |
+| └➔&nbsp;`number`         | `integer`    | The payment  number , useful when there's need to reference the payment in human communication. Not usable for programmatic identification of the payment, for that  id  should be used instead.                                                                                                                                                           |
+| └➔&nbsp;`created`        | `string`     | The ISO-8601 date of when the payment was created.                                                                                                                                                                                                                                                                                                         |
+| └➔&nbsp;`updated`        | `string`     | The ISO-8601 date of when the payment was updated.                                                                                                                                                                                                                                                                                                         |
+| └➔&nbsp;`state`          | `string`     | `Ready`, `Pending`, `Failed` or `Aborted`. Indicates the state of the payment, not the state of any transactions performed on the payment. To find the state of the payment's transactions (such as a successful authorization), see the `transactions` resource or the different specialized type-specific resources such as `authorizations` or `sales`. |
+| └➔&nbsp;`prices`         | `object`     | The `prices` resource lists the prices related to a specific payment.                                                                                                                                                                                                                                                                                      |
+| └➔&nbsp;`prices.id`      | `string`     | {% include field-description-id.md resource="prices" %}                                                                                                                                                                                                                                                                                                    |
+| └➔&nbsp;`description`    | `string(40)` | A textual description of maximum 40 characters of the purchase.                                                                                                                                                                                                                                                                                            |
+| └➔&nbsp;`payerReference` | `string`     | The reference to the payer (consumer/end-user) from the merchant system, like e-mail address, mobile number, customer number etc.                                                                                                                                                                                                                          |
+| └➔&nbsp;`userAgent`      | `string`     | The [user agent][user-agent] string of the consumer's browser.                                                                                                                                                                                                                                                                                             |
+| └➔&nbsp;`language`       | `string`     | `nb-NO` , `sv-SE`  or  `en-US`                                                                                                                                                                                                                                                                                                                             |
+| └➔&nbsp;`urls`           | `string`     | The URI to the  urls  resource where all URIs related to the payment can be retrieved.                                                                                                                                                                                                                                                                     |
+| └➔&nbsp;`payeeInfo`      | `string`     | The URI to the  payeeinfo  resource where the information about the payee of the payment can be retrieved.                                                                                                                                                                                                                                                 |
+| `operations`             | `array`      | The array of possible operations to perform                                                                                                                                                                                                                                                                                                                |
+| └─➔&nbsp;`method`        | `string`     | The HTTP method to use when performing the operation.                                                                                                                                                                                                                                                                                                      |
+| └─➔&nbsp;`href`          | `string`     | The target URI to perform the operation against.                                                                                                                                                                                                                                                                                                           |
+| └─➔&nbsp;`rel`           | `string`     | The name of the relation the operation has to the current resource.                                                                                                                                                                                                                                                                                        |
+
+## Purchase flow
+
+The sequence diagram below shows the two requests you have to send to
+Swedbank Pay to make a purchase.
+The diagram also shows in high level, the sequence of the process of a
+complete purchase.
+
+```mermaid
+sequenceDiagram
+  participant Consumer
+  participant Merchant
+  participant SwedbankPay as Swedbank Pay
+  participant MobilePay_API as MobilePay API
+  participant MobilePay_App as MobilePay App
+
+  Consumer->>Merchant: start purchase (pay with MobilePay)
+  activate Merchant
+
+  Merchant->>SwedbankPay: POST <Create MobilePay Online payment>
+  note left of Merchant: First API request
+  activate SwedbankPay
+  SwedbankPay-->>Merchant: payment resource
+  deactivate SwedbankPay
+  SwedbankPay -->> SwedbankPay: Create payment
+  Merchant-->>Consumer: Redirect to payment page
+  note left of Consumer: redirect to MobilePay
+  Consumer-->>SwedbankPay: enter mobile number
+  activate SwedbankPay
+
+  SwedbankPay-->>MobilePay_API: Initialize MobilePay Online payment
+  activate MobilePay_API
+  MobilePay_API-->>SwedbankPay: response
+  SwedbankPay-->>Consumer: Authorization response (State=Pending)
+  note left of Consumer: check your phone
+  deactivate Merchant
+
+  MobilePay_API-->>MobilePay_App: Confirm Payment UI
+  MobilePay_App-->>MobilePay_App: Confirmation Dialogue
+  MobilePay_App-->>MobilePay_API: Confirmation
+  MobilePay_API-->>SwedbankPay: make payment
+  activate SwedbankPay
+  SwedbankPay-->>SwedbankPay: execute payment
+  SwedbankPay-->>MobilePay_API: response
+  deactivate SwedbankPay
+  deactivate MobilePay_API
+  SwedbankPay-->>SwedbankPay: authorize result
+  SwedbankPay-->>Consumer: authorize result
+  Consumer-->>Merchant: Redirect to merchant
+  note left of Consumer: Redirect to merchant
+  activate Merchant
+  SwedbankPay-->>Merchant: Payment Callback
+  Merchant-->>SwedbankPay: GET <MobilePay payments>
+  note left of Merchant: Second API request
+  SwedbankPay-->>Merchant: Payment resource
+  deactivate SwedbankPay
+  Merchant-->>Consumer: Display authorize result
+  deactivate Merchant
+```
+
 {% include iterator.html prev_href="index"
                          prev_title="Back: Introduction"
                          next_href="after-payment"
                          next_title="Next: After Payment" %}
 
+[callback-reference]: /payments/mobile-pay/other-features#callback
 [mobilepay-screenshot-1]: /assets/img/mobilepay-screenshot-1.png
 [mobilepay-screenshot-2]: /assets/img/mobilepay-screenshot-2.png
 [mobilepay-cancel]: /payments/mobile-pay/after-payment#cancellations
 [mobilepay-capture]: /payments/mobile-pay/after-payment#capture
 [payee-reference]: /payments/mobile-pay/other-features#payee-reference
+[user-agent]:  https://en.wikipedia.org/wiki/User_agent
 [technical-reference-callback]: /payments/mobile-pay/other-features#callback
