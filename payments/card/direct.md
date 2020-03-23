@@ -70,14 +70,15 @@ The `direct-authorization` operation creates an authorization transaction
 directly whilst the `redirect-authorization` operation redirects the consumer to
 a Swedbank Pay hosted payment page, where the payment is authorized by the
 consumer. Below you will see the two first request and response headers, used
-when there is no 3-D secure authentication, and thus no
-`redirect-authentication` is needed. The `panEnrolled` is also set to `FALSE`.
+when there is no 3-D secure authentication. Therefore, the `state` of the
+transaction is set to `Completed`. No `redirect-authentication` is needed 
+and the `panEnrolled` is also set to `FALSE`.
 
 {:.code-header}
 **Request**
 
 ```http
-POST /psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/authorizations HTTP/1.1
+POST /psp/creditcard/payments/{{ page.payment_id }}/authorizations HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -129,8 +130,8 @@ Content-Type: application/json
             "number": 70100366754,
             "amount": 4201,
             "vatAmount": 0,
-            "description": "books & ink",
-            "payeeReference": "cyrusLibrary1583846025",
+            "description": "Test transaction",
+            "payeeReference": "1583846025",
             "isOperational": false,
             "operations": [
                 {
@@ -151,7 +152,7 @@ will be as shown in the examples below. Notice that here the `redirect-authentic
 **Request**
 
 ```http
-POST /psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/authorizations HTTP/1.1
+POST /psp/creditcard/payments/{{ page.payment_id }}/authorizations HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -186,7 +187,7 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}",
+    "payment": "/psp/creditcard/payments/{{ page.payment_id }}",
     "authorization": {
         "direct": true,
         "cardBrand": "Visa",
@@ -214,7 +215,7 @@ Content-Type: application/json
             "operations": [
                 {
                     "method": "GET",
-                    "href": "https://api.stage.payex.com/psp/{{ payment_instrument }}/confined/payments/authorizations/authenticate/{{ page.payment_id }}",
+                    "href": "https://api.stage.payex.com/psp/creditcard/confined/payments/authorizations/authenticate/{{ page.payment_id }}",
                     "rel": "redirect-authentication"
                 }
             ]
