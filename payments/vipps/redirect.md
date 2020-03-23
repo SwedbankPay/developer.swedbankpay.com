@@ -211,7 +211,7 @@ request towards the `id` of the payment to inspect its status.
 ## Step 3: Get the transaction state
 
 The `GET`request below will give you the transaction state of the payment.
-The `id` of the payment used below was provided in the first step when creating a
+The `paymentId` used below was provided in the fist step when creating a
 purchase.
 
 {:.code-header}
