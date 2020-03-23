@@ -25,23 +25,6 @@ that the payer must confirm through the Vipps mobile app." %}
 
 ![steps of the vipps purchase flow][vipps-purchase-flow]{:width="1200px" :height="500px"}
 
-## Vipps Seamless View integration flow
-
-1. When the payer starts the purchase process, you make a `POST` request
-  towards Swedbank Pay with the collected Purchase information.
-1. `rel: view-payment` is a value in one of the operations, sent as a response
-  from Swedbank Pay to the Merchant.
-1. `Open iframe` creates the Swedbank Pay hosted iframe.
-    The consumer UI page displays the payment window as content inside of the
-  `iframe`. The consumer can insert mobile information for authorization.
-1. A `POST` request is sent to the Vipps API with the mobile number for
-  authorization.
-1. The response will contain the state of the transaction. It will normally be
-  `AwaitingActivity` in this phase of the payment, meaning we are awaiting a
-  response from Vipps.
-1. Swedbank Pay handles the dialogue with Vipps and the consumer confirms the
-  purchase in the Vipps app.
-
 ## Step 1: Create a Purchase
 
 When properly set up in your merchant/webshop site and the payer starts the
@@ -333,7 +316,7 @@ Content-Type: application/json
 | └➔&nbsp;`isOperational`      | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
 | └➔&nbsp;`operations`         | `array`   | The array of operations that are possible to perform on the transaction in its current state.                                                                                                                |
 
-## Purchase flow
+## Vipps Seamless View integration flow
 
 The sequence diagram below shows the two requests you have to send to
 Swedbank Pay to make a purchase.
@@ -379,6 +362,21 @@ sequenceDiagram
     activate SwedbankPay
     SwedbankPay-->>-Browser: Display authorize result
 ```
+
+1. When the payer starts the purchase process, you make a `POST` request
+  towards Swedbank Pay with the collected Purchase information.
+1. `rel: view-payment` is a value in one of the operations, sent as a response
+  from Swedbank Pay to the Merchant.
+1. `Open iframe` creates the Swedbank Pay hosted iframe.
+    The consumer UI page displays the payment window as content inside of the
+  `iframe`. The consumer can insert mobile information for authorization.
+1. A `POST` request is sent to the Vipps API with the mobile number for
+  authorization.
+1. The response will contain the state of the transaction. It will normally be
+  `AwaitingActivity` in this phase of the payment, meaning we are awaiting a
+  response from Vipps.
+1. Swedbank Pay handles the dialogue with Vipps and the consumer confirms the
+  purchase in the Vipps app.
 
 {% include iterator.html
         prev_href="redirect"
