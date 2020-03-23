@@ -25,7 +25,7 @@ that the payer must confirm through the Vipps mobile app." %}
 
 ![steps of the vipps purchase flow][vipps-purchase-flow]{:width="1200px" :height="500px"}
 
-## Vipps seamless view integration flow
+## Vipps Seamless View integration flow
 
 1. When the payer starts the purchase process, you make a `POST` request
   towards Swedbank Pay with the collected Purchase information.
