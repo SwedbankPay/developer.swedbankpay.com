@@ -138,7 +138,7 @@ Content-Type: application/json
             "operations": [
                 {
                     "method": "PATCH",
-                    "href": "https://api.stage.payex.com/psp/creditcard/payments/{{ page.payment_id }}/authorizations/84c440a1-5745-4a88-f4ed-08d7c4dcbf36",
+                    "href": "https://api.stage.payex.com/psp/creditcard/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }}",
                     "rel": "update-authorization-overchargedamount"
                 }
             ]
