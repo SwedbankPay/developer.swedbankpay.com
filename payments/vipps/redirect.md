@@ -27,7 +27,7 @@ that the payer must confirm through the Vipps mobile app." %}
 
 * When the payer starts the purchase process, you make a `POST` request towards
   Swedbank Pay with the collected `Purchase` information. This will generate a
-  payment with a unique `id`.
+  payment object with a unique `paymentID`.
 * You will receive a Redirect URL to a hosted page.
 * You need to [redirect][reference-redirect] the payer to the Redirect payment
   where the payer must push the payment button.
