@@ -12,6 +12,8 @@ sidebar:
       title: Seamless View
     - url: /payments/card/direct
       title: Direct
+    - url: /payments/card/capture
+      title: Capture
     - url: /payments/card/mobile-card-payments
       title: Mobile Card Payments
     - url: /payments/card/after-payment
@@ -54,7 +56,7 @@ https://www.pcisecuritystandards.org/)." %}
 A `Purchase` payment is a straightforward way to charge the card of the payer.
 It is followed up by posting a capture, cancellation or reversal transaction.
 
-An example of an abbreviated `POST` request is provided below. Each individual field of the JSON document is described in the following section.
+An example of an abbreviated `POST` request is provided below.
 An example of an expanded `POST` request is available in the
 [other features section][purchase].
 
@@ -64,15 +66,15 @@ An example of an expanded `POST` request is available in the
 
 {% include alert-callback-url.md payment_instrument="card" %}
 
-## Step 2: Create an authorization transaction
+## Step 2a: Create an authorization transaction
 
 The `direct-authorization` operation creates an authorization transaction
 directly whilst the `redirect-authorization` operation redirects the consumer to
 a Swedbank Pay hosted payment page, where the payment is authorized by the
 consumer. Below you will see the two first request and response headers, used
 when there is no 3-D secure authentication. Therefore, the `state` of the
-transaction is set to `Completed`. No `redirect-authentication` is needed 
-and the `panEnrolled` is also set to `FALSE`.
+transaction is set to `Completed`. No `redirect-authentication` is needed
+and the `panEnrolled` is also set to `false`.
 
 {:.code-header}
 **Request**
@@ -103,12 +105,12 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/creditcard/payments/45635233-1aa8-46a2-9584-08d7c4e16b79",
+    "payment": "/psp/creditcard/payments/{{ page.payment_id }}",
     "authorization": {
         "direct": true,
         "cardBrand": "Visa",
         "cardType": "Credit",
-        "paymentToken": "efe3b291-0231-48d1-98d7-18c93a9d5148",
+        "paymentToken": "{{ page.payment_token }}",
         "maskedPan": "492500******0004",
         "expiryDate": "12/2022",
         "panToken": "eb488c77-8118-4c9f-b3b3-ff134936df64",
@@ -120,9 +122,9 @@ Content-Type: application/json
         "acquirerTransactionTime": "2020-03-10T14:13:52Z",
         "nonPaymentToken": "ed4683a8-6d2a-4a14-b065-746a41316b8f",
         "transactionInitiator": "CARDHOLDER",
-        "id": "/psp/creditcard/payments/45635233-1aa8-46a2-9584-08d7c4e16b79/authorizations/84c440a1-5745-4a88-f4ed-08d7c4dcbf36",
+        "id": "/psp/creditcard/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }},
         "transaction": {
-            "id": "/psp/creditcard/payments/45635233-1aa8-46a2-9584-08d7c4e16b79/transactions/84c440a1-5745-4a88-f4ed-08d7c4dcbf36",
+            "id": "/psp/creditcard/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
             "created": "2020-03-10T13:13:52.2767764Z",
             "updated": "2020-03-10T13:13:53.280398Z",
             "type": "Authorization",
@@ -136,7 +138,7 @@ Content-Type: application/json
             "operations": [
                 {
                     "method": "PATCH",
-                    "href": "https://api.stage.payex.com/psp/creditcard/payments/45635233-1aa8-46a2-9584-08d7c4e16b79/authorizations/84c440a1-5745-4a88-f4ed-08d7c4dcbf36",
+                    "href": "https://api.stage.payex.com/psp/creditcard/payments/{{ page.payment_id }}/authorizations/84c440a1-5745-4a88-f4ed-08d7c4dcbf36",
                     "rel": "update-authorization-overchargedamount"
                 }
             ]
@@ -145,8 +147,12 @@ Content-Type: application/json
 }
 ```
 
-If there is 3-D secure authentication, the request and response headers
-will be as shown in the examples below. Notice that here the `redirect-authentication`
+## Step 2b: Create an authorization transaction with 3-D secure
+
+If 3-D secure authentication is needed, the `rel` is set to
+`redirect-authentication` and the `state` is `AwaitingActivity`. This means that
+you will be redirected to complete the 3-D secure authentication. See the
+request and response example below.
 
 {:.code-header}
 **Request**
@@ -199,9 +205,9 @@ Content-Type: application/json
         "panToken": "cca2d98d-8bb3-4bd6-9cf3-365acbbaff96",
         "panEnrolled": true,
         "acquirerTransactionTime": "0001-01-01T00:00:00Z",
-        "id": ""/psp/{{ instrument }}/payments/{{ page.payment_id }}/{{ page.transaction_id }}",
+        "id": ""/psp/creditcard/payments/{{ page.payment_id }}/{{ page.transaction_id }}",
         "transaction": {
-            "id": ""/psp/{{ instrument }}/payments/{{ page.payment_id }}/{{ page.transaction_id }}",
+            "id": ""/psp/creditcard/payments/{{ page.payment_id }}/{{ page.transaction_id }}",
             "created": "2020-03-10T13:15:01.9586254Z",
             "updated": "2020-03-10T13:15:02.0493818Z",
             "type": "Authorization",
@@ -209,8 +215,8 @@ Content-Type: application/json
             "number": 70100366758,
             "amount": 4201,
             "vatAmount": 0,
-            "description": "books & ink",
-            "payeeReference": "cyrusLibrary1583846100",
+            "description": "Test transaction",
+            "payeeReference": "1583846100",
             "isOperational": true,
             "operations": [
                 {
