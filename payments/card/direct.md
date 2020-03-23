@@ -205,7 +205,7 @@ Content-Type: application/json
         "panToken": "cca2d98d-8bb3-4bd6-9cf3-365acbbaff96",
         "panEnrolled": true,
         "acquirerTransactionTime": "0001-01-01T00:00:00Z",
-        "id": ""/psp/creditcard/payments/{{ page.payment_id }}/{{ page.transaction_id }}",
+        "id": ""/psp/creditcard/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }}",
         "transaction": {
             "id": ""/psp/creditcard/payments/{{ page.payment_id }}/{{ page.transaction_id }}",
             "created": "2020-03-10T13:15:01.9586254Z",
