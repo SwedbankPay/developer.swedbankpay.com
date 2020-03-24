@@ -1089,8 +1089,10 @@ object:
 ### `onPaymentTransactionFailed`
 
 This event triggers when a payment attempt fails, further attempts can be made
-for the payment. The `onPaymentTransactionFailed` event is raised with the
-following event argument object:
+for the payment. An error message will appear in the payment UI, and the
+consumer will be able to try again or choose another payment instrument. The
+`onPaymentTransactionFailed` event is raised with the following event argument
+object:
 
 {:.code-header}
 **`onPaymentTransactionFailed` event object**
