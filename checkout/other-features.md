@@ -1085,6 +1085,31 @@ object:
 | `id`          | `string` | {% include field-description-id.md %}                          |
 | `redirectUrl` | `string` | The URI the user will be redirect to after a canceled payment. |
 
+
+### `onPaymentTransactionFailed`
+
+This event triggers when a payment attempt fails, further attempts can be made
+for the payment. An error message will appear in the payment UI, and the
+consumer will be able to try again or choose another payment instrument. The
+`onPaymentTransactionFailed` event is raised with the following event argument
+object:
+
+{:.code-header}
+**`onPaymentTransactionFailed` event object**
+
+```js
+{
+    "id": "/psp/creditcard/payments/{{ page.payment_id }}",
+    "details": "[HttpCode ProblemTitle]"
+}
+```
+
+{:.table .table-striped}
+| Field         | Type     | Description                                                    |
+| :------------ | :------- | :------------------------------------------------------------- |
+| `id`          | `string` | {% include field-description-id.md %}                          |
+| `details`     | `string` | A human readable and descriptive text of the error.            |
+
 ### `onPaymentFailed`
 
 This event triggers when a payment has failed, disabling further attempts to
