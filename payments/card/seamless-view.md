@@ -10,10 +10,10 @@ sidebar:
       title: Redirect
     - url: /payments/card/seamless-view
       title: Seamless View
-    - url: /payments/card/capture
-      title: Capture
     - url: /payments/card/direct
       title: Direct
+    - url: /payments/card/capture
+      title: Capture
     - url: /payments/card/mobile-card-payments
       title: Mobile Card Payments
     - url: /payments/card/after-payment
@@ -51,7 +51,6 @@ When properly set up in your merchant/webshop site and the payer starts the
 purchase process, you need to make a POST request towards Swedbank Pay with your
 Purchase information. This will generate a payment object with a unique
 `paymentID`. You will receive a **JavaScript source** in response.
-
 
 {% include card-purchase.md seamless_view=true %}
 
@@ -130,7 +129,6 @@ is raised with the following event argument object:
 | `id`         | `string` | {% include field-description-id.md %} |
 | `instrument` | `string` | `Creditcard`                          |
 
-
 ## Purchase Flow
 
 ```mermaid
@@ -179,6 +177,7 @@ sequenceDiagram
         SwedbankPay->>-Merchant: POST Payment Callback
         end
 ```
+
 ### 3-D Secure
 
 {% include card-general.md %}

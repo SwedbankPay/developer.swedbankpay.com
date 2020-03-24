@@ -279,4 +279,8 @@ Content-Type: application/json
 | └─➔&nbsp;`href`                   | `string`     | The target URI to perform the operation against.                                                                                                                                                                                                                                                                                                           |
 | └─➔&nbsp;`rel`                    | `string`     | The name of the relation the operation has to the current resource.                                                                                                                                                                                                                                                                                        |
 
-[user-agent]: https://en.wikipedia.org/wiki/User_agent
+[user-agent-definition]: https://en.wikipedia.org/wiki/User_agent
+[split-settlement]: /checkout/other-features#split-settlement
+[settlement-and-reconciliation]: /payments/card/other-features#settlement-and-reconciliation
+[price-resource]: /payments/card/other-features#prices
+[payee-reference]: /payments/card/other-features#payee-reference-1

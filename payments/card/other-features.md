@@ -10,10 +10,10 @@ sidebar:
       title: Redirect
     - url: /payments/card/seamless-view
       title: Seamless View
-    - url: /payments/card/capture
-      title: Capture
     - url: /payments/card/direct
       title: Direct
+    - url: /payments/card/capture
+      title: Capture
     - url: /payments/card/mobile-card-payments
       title: Mobile Card Payments
     - url: /payments/card/after-payment
@@ -181,8 +181,6 @@ object:
 | `origin`    | `string` | `creditcard`, identifies the system that originated the error. |
 | `messageId` | `string` | A unique identifier for the message.                           |
 | `details`   | `string` | A human readable and descriptive text of the error.            |
-
-
 
 {% include iterator.html prev_href="after-payment" prev_title="Back: After
 payment"  %}

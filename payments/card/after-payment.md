@@ -10,10 +10,10 @@ sidebar:
       title: Redirect
     - url: /payments/card/seamless-view
       title: Seamless View
-    - url: /payments/card/capture
-      title: Capture
     - url: /payments/card/direct
       title: Direct
+    - url: /payments/card/capture
+      title: Capture
     - url: /payments/card/mobile-card-payments
       title: Mobile Card Payments
     - url: /payments/card/after-payment
