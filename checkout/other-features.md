@@ -644,7 +644,7 @@ sequenceDiagram
         note left of Payer: Payment Menu
         Payer ->>+ Merchant: Initiate Purchase
         deactivate Payer
-        Merchant ->>+ SwedbankPay: POST /psp/paymentorders (paymentUrl, payer)
+        Merchant ->>+ SwedbankPay: POST/psp/paymentorders (consumerProfileRefoperation=VERIFY | PURCHASE (generateRecurrenceToken = True))
         deactivate Merchant
         SwedbankPay -->>+ Merchant: rel:view-paymentorder
         deactivate SwedbankPay
@@ -672,7 +672,7 @@ sequenceDiagram
         deactivate ConsumerSubscription
         note left of Merchant: Server-to-Server request at a later date
         activate Merchant
-        Merchant ->>+ SwedbankPay: POST Card Payments (operation=RECUR)
+        Merchant ->>+ SwedbankPay: POST Card Payments (operation=RECUR) (reccurenceToken included)
         deactivate Merchant
         SwedbankPay -->>- Merchant: Payment resource
 
