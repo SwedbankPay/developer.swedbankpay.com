@@ -26,8 +26,8 @@ that the payer must confirm through the Vipps mobile app." %}
 ## Introduction
 
 * When the payer starts the purchase process, you make a `POST` request towards
-  Swedbank Pay with the collected `Purchase` information. This will generate a
-  payment with a unique `id`.
+  Swedbank Pay with the collected `Purchase` information.
+* This will generate a payment object with a unique `paymentID`.
 * You will receive a Redirect URL to a hosted page.
 * You need to [redirect][reference-redirect] the payer to the Redirect payment
   where the payer must push the payment button.
@@ -37,7 +37,9 @@ that the payer must confirm through the Vipps mobile app." %}
 * Swedbank Pay handles the dialogue with Vipps and the consumer confirms the
   purchase in the Vipps app.
 * To receive the state of the transaction you need to do a `GET`
-  request containing the `id` of the payment generated in the first step.
+  request containing the `paymentID` generated in the first step.
+
+You redirect the payer to collect the payer's mobile number.
 
 ![steps of the vipps purchase flow][vipps-purchase-flow]{:width="1200px" :height="500px"}
 
@@ -211,7 +213,7 @@ request towards the `id` of the payment to inspect its status.
 ## Step 3: Get the transaction state
 
 The `GET`request below will give you the transaction state of the payment.
-The `id` of the payment used below was provided in the first step when creating a
+The `paymentId` used below was provided in the fist step when creating a
 purchase.
 
 {:.code-header}
