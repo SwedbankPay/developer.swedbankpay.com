@@ -636,10 +636,12 @@ sequenceDiagram
     participant SwedbankPay as Swedbank Pay
 
     rect rgba(81,43,43,0.1)
-    note left of Payer: Checkin
+        note left of Payer: Checkin
         activate Payer
         Payer ->>+ SwedbankPay: Checkin procedure
         deactivate Payer
+    end
+    rect rgba(55, 91, 134,0.1)
         activate Payer
         note left of Payer: Payment Menu
         Payer ->>+ Merchant: Initiate Purchase
@@ -660,12 +662,16 @@ sequenceDiagram
         Payer -->>+ Merchant: Redirect to Payment Complete URL
         Merchant ->>+ SwedbankPay: GET/psp/paymentorders/<paymentOrderId>
         SwedbankPay -->>+ Merchant: Payment Order Status
+    end
+    rect rgba(63, 204, 164,0.1)
         note left of Payer: Capture
         activate Merchant
         Merchant ->>+ SwedbankPay: POST/psp/paymentorders/<paymentOrderId>/captures
         deactivate Merchant
         SwedbankPay -->>- Merchant: Capture status
         note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>PaymentInstruments that support <br>Authorizations.
+    end
+    rect rgba(94, 108, 23,0.1)
         note left of Payer: Recurring payment
         activate ConsumerSubscription
         ConsumerSubscription ->>+ Merchant: Start recurring payment
@@ -677,12 +683,12 @@ sequenceDiagram
         SwedbankPay -->>- Merchant: Payment resource
 
         opt activate merchant
-        Merchant ->>+ SwedbankPay: Create-capture
-        SwedbankPay -->>- Merchant: Transaction resource
+            Merchant ->>+ SwedbankPay: Create-capture
+            SwedbankPay -->>- Merchant: Transaction resource
         end
         activate Merchant
         Merchant -->>- ConsumerSubscription: display purchase result
-        end
+    end
 ```
 
 ## Purchase Payments
