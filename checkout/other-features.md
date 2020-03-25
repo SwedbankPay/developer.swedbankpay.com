@@ -626,6 +626,71 @@ Content-Type: application/json
 }
 ```
 
+### Purchase Flow
+
+```mermaid
+sequenceDiagram
+    participant Payer
+    participant ConsumerSubscription
+    participant Merchant
+    participant SwedbankPay as Swedbank Pay
+
+    rect rgba(81,43,43,0.1)
+        note left of Payer: Checkin
+        activate Payer
+        Payer ->>+ SwedbankPay: Checkin procedure
+        deactivate Payer
+    end
+    rect rgba(55, 91, 134,0.1)
+        activate Payer
+        note left of Payer: Payment Menu
+        Payer ->>+ Merchant: Initiate Purchase
+        deactivate Payer
+        Merchant ->>+ SwedbankPay: POST/psp/paymentorders (generateRecurrenceToken = True)
+        deactivate Merchant
+        SwedbankPay -->>+ Merchant: rel:view-paymentorder
+        deactivate SwedbankPay
+        Merchant -->>- Payer: Display Payment Menu on Merchant Page
+        activate Payer
+        Payer ->> Payer: Initiate Payment Menu Hosted View (open iframe)
+        Payer -->>+ SwedbankPay: Show Payment UI page in iframe
+        deactivate Payer
+        SwedbankPay ->>+ Payer: Do payment logic
+        deactivate SwedbankPay
+        SwedbankPay -->>+ Merchant: POST Payment Callback
+        SwedbankPay -->>- Payer: Payment Status
+        Payer -->>+ Merchant: Redirect to Payment Complete URL
+        Merchant ->>+ SwedbankPay: GET/psp/paymentorders/<paymentOrderId>
+        SwedbankPay -->>+ Merchant: Payment Order Status
+    end
+    rect rgba(63, 204, 164,0.1)
+        note left of Payer: Capture
+        activate Merchant
+        Merchant ->>+ SwedbankPay: POST/psp/paymentorders/<paymentOrderId>/captures
+        deactivate Merchant
+        SwedbankPay -->>- Merchant: Capture status
+        note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>PaymentInstruments that support <br>Authorizations.
+    end
+    rect rgba(94, 108, 23,0.1)
+        note left of Payer: Recurring payment
+        activate ConsumerSubscription
+        ConsumerSubscription ->>+ Merchant: Start recurring payment
+        deactivate ConsumerSubscription
+        note left of Merchant: Server-to-Server request at a later date
+        activate Merchant
+        Merchant ->>+ SwedbankPay: POST Card Payments (operation=RECUR) (reccurenceToken included)
+        deactivate Merchant
+        SwedbankPay -->>- Merchant: Payment resource
+
+        opt [Intent=Authorization]
+            Merchant ->>+ SwedbankPay: Create-capture
+            SwedbankPay -->>- Merchant: Transaction resource
+        end
+        activate Merchant
+        Merchant -->>- ConsumerSubscription: display purchase result
+    end
+```
+
 ## Purchase Payments
 
 The `Purchase` operation is used in all common purchase scenarios.
