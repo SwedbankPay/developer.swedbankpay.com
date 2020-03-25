@@ -683,7 +683,6 @@ sequenceDiagram
         SwedbankPay -->>- Merchant: Payment resource
 
         opt [Intent=Authorization]
-            activate merchant
             Merchant ->>+ SwedbankPay: Create-capture
             SwedbankPay -->>- Merchant: Transaction resource
         end
