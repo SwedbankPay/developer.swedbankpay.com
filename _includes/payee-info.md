@@ -1,4 +1,20 @@
-{% assign instrument = include.payment_instrument | default: "paymentorder" %}
+{% assign instrument = include.payment_instrument | default: "paymentorders" %}
+{% case instrument %}
+{% when "creditaccount" %}
+    {% assign length = 50 %}
+{% when "creditcard" %}
+    {% assign length = 50 %}
+{% when "invoice" %}
+    {% assign length = 50 %}
+{% when "mobilepay" %}
+    {% assign length = 50 %}
+{% when "paymentorders" %}
+    {% assign length = 30 %}
+{% when "swish" %}
+    {% assign length = 35 %}
+{% when "vipps" %}
+    {% assign length = 30 %}
+{% endcase %}
 
 ## PayeeInfo
 
@@ -41,11 +57,9 @@ Content-Type: application/json
 | `payment`                 | `string`     | {% include field-description-id.md sub_resource="payeeInfo" %}                                                                                                                                                                                                                    |
 | └➔&nbsp;`id`              | `string`     | {% include field-description-id.md resource="payeeInfo" %}                                                                                                                                                                                                                        |
 | └➔&nbsp;`payeeId`         | `string`     | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay                                                                                                                                                                                              |
-| └➔&nbsp;`payeeReference`  | `string(50)` | A unique reference set by the merchant system. See below for details                                                                                                                                                                                                              |
+| └➔&nbsp;`payeeReference`  | `string({{length}})` | A unique reference set by the merchant system. See below for details                                                                                                                                                                                                              |
 | └➔&nbsp;`payeeName`       | `string`     | The payee name (like merchant name) that will be displayed to consumer when redirected to Swedbank Pay.                                                                                                                                                                           |
 | └➔&nbsp;`productCategory` | `string`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process. You therefore need to ensure that the value given here is valid in the settlement. |
 | └➔&nbsp;`orderReference`  | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                           |
-
-### Payee Reference
 
 {% include payee-reference.md payment_instrument = instrument %}

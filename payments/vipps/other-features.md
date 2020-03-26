@@ -187,7 +187,7 @@ payment altogether or creating an authorization transaction through the
 
 {% include prices.md payment_instrument="vipps" %}
 
-{% include payee-reference.md %}
+{% include payee-info.md payment_instrument="vipps" %}
 
 {% include transactions-reference.md payment_instrument="vipps" %}
 
