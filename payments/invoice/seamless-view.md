@@ -1,5 +1,5 @@
 ---
-title: Swedbank Pay Payments Invoice Seamless View
+title: Swedbank Pay Invoice Payments – Seamless View
 sidebar:
   navigation:
   - title: Invoice Payments
@@ -10,6 +10,8 @@ sidebar:
       title: Redirect
     - url: /payments/invoice/seamless-view
       title: Seamless View
+    - url: /payments/card/capture
+      title: Capture
     - url: /payments/invoice/direct
       title: Direct
     - url: /payments/invoice/capture
@@ -34,114 +36,9 @@ does not need to leave your webpage, since we are handling the payment in the
 
 ![screenshot of the invoice payment window][invoice-payment]{:height="425px" width="700px"}
 
-## Purchase Flow
-
-The sequence diagram below shows a high level description of the
-invoice process.
-
-```mermaid
-sequenceDiagram
-    Consumer->>Merchant: Start purchase
-    activate Merchant
-    note left of Merchant: First API request
-    Merchant->>-SwedbankPay: POST /psp/invoice/payments ①
-    activate SwedbankPay
-    SwedbankPay-->>-Merchant: rel: view-authorization ②
-    activate Merchant
-    Merchant-->>-Consumer: Display all details and final price
-    activate Consumer
-    note left of Consumer: Open iframe ③
-    Consumer->>Consumer: Input email and mobile number
-    Consumer->>-Merchant: Confirm purchase
-    activate Merchant
-    note left of Merchant: Second API request
-    Merchant->>-SwedbankPay: Post psp/invoice/authorization ④
-    activate SwedbankPay
-    SwedbankPay-->>-Merchant: Transaction result
-    activate Merchant
-    note left of Merchant: Third API request
-    Merchant->>-SwedbankPay: GET <payment.id> ⑤
-    activate SwedbankPay
-    SwedbankPay-->>-Merchant: payment resource
-    activate Merchant
-    Merchant-->>-Consumer: Display result
-```
-
-{% include alert.html type="neutral" icon="info" body="
-Note that the invoice will not be created/distributed before you have
-made a `capture` request." %}
-
-The Capture/Cancel/Reversal options are described in the [after payment
-section][after-payment]. The link will take you directly to the API descriptions
-for the requests.
-
-### Explainations
-
-* ① Start with collecting all purchase information and make a `POST` request
-  towards Swedbank Pay to create an invoice payment. Use the `FinancingConsumer`
-  operation.
-* ② The response from the payment resource contains operations that can be
-  performed on the resource. The relevant operation in our example is `rel:
-  view-authorization`.
-* ③ `Open iframe` creates the Swedbank Pay hosted iframe.
-* ④ To create the authorization transaction, you need to make a second `POST`
-  request where you send in the consumer data. Use the `FinancingConsumer`
-  activity
-* ⑤ To get the authorization result, you need to follow up with a `GET` request
-  using the paymentID received in the first step.
-
-* Finally, when you are ready to ship your order, you will have to make a `POST`
-  request to make a [Capture][capture]. **At this point Swedbank Pay will
-  generate the invoice to the consumer.**
-
-## API requests
-
-The API requests are displayed in the [invoice flow](#invoice-flow). The options
-you can choose from when creating a payment with key operation set to Value
-`FinancingConsumer` are listed below.
-
-* An invoice payment is always two-phased based - you create an
-  [`Authorize`][authorize] transaction, that is followed by a
-  [`Capture`][capture] or [`Cancel`][cancel] request.
-
 {% include alert-callback-url.md payment_instrument="invoice" %}
 
-## Seamless View Back End
-
-When properly set up in your merchant/webshop site and the payer starts the
-invoice process, you need to make a POST request towards Swedbank Pay with your
-invoice information. This will generate a payment object with a unique
-`paymentID`. You will receive a **JavaScript source** in response.
-
-### Options before posting a payment
-
-Different countries have different values for the properties. The table below
-showcase the values for the respective countries:
-
-#### POST Request Options
-
-{:.table .table-striped}
-|               | Norway ![Norwegian flag][no-png] | FInland ![Finish flag][fi-png] | Sweden ![Swedish flag][se-png] |
-| :------------ | :------------------------------- | :----------------------------- | :----------------------------- |
-| `operation`   | `FinancingConsumer`              | `FinancingConsumer`            | `FinancingConsumer`            |
-| `currency`    | `NOK`                            | `EUR`                          | `SEK`                          |
-| `invoiceType` | `PayExFinancingNO`               | `PayExFinancingFI`             | `PayExFinancingSE`             |
-
-### Intent
-
-{% include intent.md %}
-
-### Operations
-
-The API requests are displayed in the purchase flow above.
-You can [create an invoice `payment`][create-payment] with following `operation`
-options:
-
-* [FinancingConsumer][financing-consumer] (We use this value in our examples)
-* [Recur][recur]
-* [Verify][verify]
-
-### FinancingConsumer
+## Step 1: Create the payment
 
 A `FinancingConsumer` payment is a straightforward way to invoice a
 payer. It is followed up by posting a capture, cancellation or reversal
@@ -150,6 +47,11 @@ transaction.
 An example of an abbreviated `POST` request is provided below. Each individual field of the JSON document is described in the following section.
 An example of an expanded `POST` request is available in the
 [other features section][financing-consumer].
+
+When properly set up in your merchant/webshop site and the payer starts the
+invoice process, you need to make a POST request towards Swedbank Pay with your
+invoice information. This will generate a payment object with a unique
+`paymentID`. You will receive a **JavaScript source** in response.
 
 {:.code-header}
 **Request**
@@ -305,10 +207,10 @@ The key information in the response is the `view-authorization` operation. You
 will need to embed its `href` in a `<script>` element. The script will enable
 loading the payment page in an `iframe` in our next step.
 
-## Seamless View Front End
+## Step 2: Display the Payment
 
 You need to embed the script source on your site to create a hosted-view in an
-`iframe`; so that she can enter the payment details in a secure Swedbank Pay
+`iframe`; so that the payer can enter the payment details in a secure Swedbank Pay
 hosted environment. A simplified integration has these following steps:
 
 1. Create a container that will contain the Seamless View iframe: `<div
@@ -356,6 +258,43 @@ embedded on your website.
     }).open();
 </script>
 ```
+## Purchase Flow
+
+The sequence diagram below shows a high level description of the
+invoice process.
+
+```mermaid
+sequenceDiagram
+    Consumer->>Merchant: Start purchase
+    activate Merchant
+    note left of Merchant: First API request
+    Merchant->>-SwedbankPay: POST /psp/invoice/payments ①
+    activate SwedbankPay
+    SwedbankPay-->>-Merchant: rel: view-authorization ②
+    activate Merchant
+    Merchant-->>-Consumer: Display all details and final price
+    activate Consumer
+    note left of Consumer: Open iframe ③
+    Consumer->>Consumer: Input email and mobile number
+    Consumer->>-Merchant: Confirm purchase
+    activate Merchant
+    note left of Merchant: Second API request
+    Merchant->>-SwedbankPay: Post psp/invoice/authorization ④
+    activate SwedbankPay
+    SwedbankPay-->>-Merchant: Transaction result
+    activate Merchant
+    note left of Merchant: Third API request
+    Merchant->>-SwedbankPay: GET <payment.id> ⑤
+    activate SwedbankPay
+    SwedbankPay-->>-Merchant: payment resource
+    activate Merchant
+    Merchant-->>-Consumer: Display result
+```
+
+{% include alert.html type="neutral" icon="info" body="
+Note that the invoice will not be created/distributed before you have
+made a `capture` request." %}
+
 
 {% include iterator.html prev_href="redirect" prev_title="Back: Redirect"
 next_href="direct" next_title="Next: Direct" %}
