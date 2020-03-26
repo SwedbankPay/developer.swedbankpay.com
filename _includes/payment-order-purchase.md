@@ -60,17 +60,20 @@ Content-Type: application/json
                 "vatAmount": 250
             },
             {
-                "reference": "P2",
-                "name": "Product2",
-                "type": "PRODUCT",
-                "class": "ProductGroup1",
-                "description": "Product 2 description",
+                "reference": "I1",
+                "name": "InvoiceFee",
+                "type": "PAYMENT_FEE",
+                "class": "Fees",
+                "description": "Fee for paying with Invoice",
                 "quantity": 1,
                 "quantityUnit": "pcs",
-                "unitPrice": 500,
-                "vatPercent": 2500,
-                "amount": 500,
-                "vatAmount": 125
+                "unitPrice": 1900,
+                "vatPercent": 0,
+                "amount": 1900,
+                "vatAmount": 0,
+                "restrictedToInstruments": [
+                "Invoice-PayExFinancingSe", "Invoice-CampaignInvoiceSe"
+                ]
             }
         ],
         "riskIndicator": {
