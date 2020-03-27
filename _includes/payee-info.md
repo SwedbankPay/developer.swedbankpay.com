@@ -1,13 +1,6 @@
 {% assign instrument = include.payment_instrument | default: "paymentorders" %}
+{% assign length = 50 %}
 {% case instrument %}
-{% when "creditaccount" %}
-    {% assign length = 50 %}
-{% when "creditcard" %}
-    {% assign length = 50 %}
-{% when "invoice" %}
-    {% assign length = 50 %}
-{% when "mobilepay" %}
-    {% assign length = 50 %}
 {% when "paymentorders" %}
     {% assign length = 30 %}
 {% when "swish" %}
