@@ -60,17 +60,20 @@ Content-Type: application/json
                 "vatAmount": 250
             },
             {
-                "reference": "P2",
-                "name": "Product2",
-                "type": "PRODUCT",
-                "class": "ProductGroup1",
-                "description": "Product 2 description",
+                "reference": "I1",
+                "name": "InvoiceFee",
+                "type": "PAYMENT_FEE",
+                "class": "Fees",
+                "description": "Fee for paying with Invoice",
                 "quantity": 1,
                 "quantityUnit": "pcs",
-                "unitPrice": 500,
-                "vatPercent": 2500,
-                "amount": 500,
-                "vatAmount": 125
+                "unitPrice": 1900,
+                "vatPercent": 0,
+                "amount": 1900,
+                "vatAmount": 0,
+                "restrictedToInstruments": [
+                    "Invoice-PayExFinancingSe", "Invoice-CampaignInvoiceSe"
+                ]
             }
         ],
         "riskIndicator": {
@@ -126,7 +129,7 @@ Content-Type: application/json
 |          | └➔&nbsp;`orderItems`              | `array`      | The array of items being purchased with the order. Used to print on invoices if the payer chooses to pay with invoice, among other things                                                                                                                                                                                                                                                                     |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`reference`              | `string`     | A reference that identifies the order item.                                                                                                                                                                                                                                                                                                                                                                   |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`name`                   | `string`     | The name of the order item.                                                                                                                                                                                                                                                                                                                                                                                   |
-|  ✔︎︎︎︎︎  | └─➔&nbsp;`type`                   | `string`     | `PRODUCT`, `SERVICE`, `SHIPPING_FEE`, `PAYMENT_FEE`, `DISCOUNT`, `VALUE_CODE` or `OTHER`. The type of the order item.                                                                                                                                                                                                                                                                                         |
+|  ✔︎︎︎︎︎  | └─➔&nbsp;`type`                   | `string`     | `PRODUCT`, `SERVICE`, `SHIPPING_FEE`, `PAYMENT_FEE` `DISCOUNT`, `VALUE_CODE` or `OTHER`. The type of the order item. `PAYMENT_FEE` is the amount you are charged with when you are paying with invoice. The amount can be defined in the `amount` field below.                                                                                                                                          |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`class`                  | `string`     | The classification of the order item. Can be used for assigning the order item to a specific product category, such as `MobilePhone`. Note that `class` cannot contain spaces. Swedbank Pay may use this field for statistics.                                                                                                                                                                                |
 |          | └─➔&nbsp;`itemUrl`                | `string`     | The URL to a page that can display the purchased item, product or similar.                                                                                                                                                                                                                                                                                                                                    |
 |   ︎︎︎    | └─➔&nbsp;`imageUrl`               | `string`     | The URL to an image of the order item.                                                                                                                                                                                                                                                                                                                                                                        |
