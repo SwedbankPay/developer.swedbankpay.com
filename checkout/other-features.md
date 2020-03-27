@@ -1150,7 +1150,6 @@ object:
 | `id`          | `string` | {% include field-description-id.md %}                          |
 | `redirectUrl` | `string` | The URI the user will be redirect to after a canceled payment. |
 
-
 ### `onPaymentTransactionFailed`
 
 This event triggers when a payment attempt fails, further attempts can be made
@@ -1377,7 +1376,7 @@ although that might be possible in the future.
 
 {% include expand-parameter.md %}
 
-{% include payee-info.md payment_instrument="invoice" %}
+{% include payee-info.md payment_instrument="paymentorders" %}
 
 {% include merchant-authenticated-consumer.md %}
 

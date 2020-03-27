@@ -174,7 +174,7 @@ be connected to a Swish account.
 
 {% include prices.md payment_instrument="swish" %}
 
-{% include payee-info.md %}
+{% include payee-info.md payment_instrument="swish" %}
 
 {% include expand-parameter.md %}
 
