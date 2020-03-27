@@ -72,7 +72,7 @@ Content-Type: application/json
                 "amount": 1900,
                 "vatAmount": 0,
                 "restrictedToInstruments": [
-                "Invoice-PayExFinancingSe", "Invoice-CampaignInvoiceSe"
+                    "Invoice-PayExFinancingSe", "Invoice-CampaignInvoiceSe"
                 ]
             }
         ],
