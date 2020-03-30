@@ -1,4 +1,5 @@
-{% assign payment_instrument = include.payment_instrument | default: 'creditcard' %}
+{% assign payment_order = include.payment_order | default: false %}
+{% assign payment_instrument = include.payment_instrument | default: "creditcard" %}
 
 ## Settlement and Reconciliation
 
