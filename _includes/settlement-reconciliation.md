@@ -1,3 +1,5 @@
+{% assign payment_instrument = include.payment_instrument | default: 'creditcard' %}
+
 ## Settlement and Reconciliation
 
 {% include jumbotron.html body="Reconciliation is an important step in an
@@ -175,11 +177,11 @@ the reconciliation file.
 
 ```js
 {
-    "payment": "/psp/creditcard/payments/{{ page.payment_id }}",
+    "payment": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}",
     "capture": {
-        "id": "/psp/creditcard/payments/{{ page.payment_id }}/captures/{{ page.transaction_id }}",
+        "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/captures/{{ page.transaction_id }}",
         "transaction": {
-            "id": "/psp/creditcard/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
+            "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
             "created": "2016-09-14T01:01:01.01Z",
             "updated": "2016-09-14T01:01:01.03Z",
             "type": "Capture",

@@ -523,11 +523,11 @@ with its `state` set to `Aborted`.
 
 ### Transactions
 
-{% include transactions.md %}
+{% include transactions.md payment_instrument="paymentorders" %}
 
 #### Transaction
 
-{% include transaction.md %}
+{% include transaction.md payment_instrument="paymentorders" %}
 
 ## Recurring Payments
 
@@ -802,10 +802,10 @@ Content-Type: application/json
 
 {
     "paymentorder": "/psp/paymentorders/{{ page.payment_order_id }}",
-    "menuElementName": "creditcard",
+    "menuElementName": "paymentorders",
     "payment": {
         "recurrenceToken": "{{ page.payment_order_id }}",
-        "id": "/psp/creditcard/payments/{{ page.payment_order_id }}",
+        "id": "/psp/paymentorders/payments/{{ page.payment_order_id }}",
         "number": 1234567890,
         "instrument": "CreditCard",
         "created": "2016-09-14T13:21:29.3182115Z",
@@ -822,17 +822,17 @@ Content-Type: application/json
         "payerReference": "AB1234",
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",
-        "prices": { "id": "/psp/creditcard/payments/{{ page.payment_order_id }}/prices" },
-        "transactions": { "id": "/psp/creditcard/payments/{{ page.payment_order_id }}/transactions" },
-        "authorizations": { "id": "/psp/creditcard/payments/{{ page.payment_order_id }}/authorizations" },
-        "captures": { "id": "/psp/creditcard/payments/{{ page.payment_order_id }}/captures" },
-        "cancellations": { "id": "/psp/creditcard/payments/{{ page.payment_order_id }}/cancellations" },
-        "reversals": { "id": "/psp/creditcard/payments/{{ page.payment_order_id }}/reversals" },
-        "verifications": { "id": "/psp/creditcard/payments/{{ page.payment_order_id }}/verifications" },
-        "urls" : { "id": "/psp/creditcard/payments/{{ page.payment_order_id }}/urls" },
-        "payeeInfo" : { "id": "/psp/creditcard/payments/{{ page.payment_order_id }}/payeeInfo" },
-        "metadata" : { "id": "/psp/creditcard/payments/{{ page.payment_order_id }}/metadata" },
-        "settings": { "id": "/psp/creditcard/payments/{{ page.payment_order_id }}/settings" }
+        "prices": { "id": "/psp/paymentorders/payments/{{ page.payment_order_id }}/prices" },
+        "transactions": { "id": "/psp/paymentorders/payments/{{ page.payment_order_id }}/transactions" },
+        "authorizations": { "id": "/psp/paymentorderspayments/{{ page.payment_order_id }}/authorizations" },
+        "captures": { "id": "/psp/paymentorders/payments/{{ page.payment_order_id }}/captures" },
+        "cancellations": { "id": "/psp/paymentorders/payments/{{ page.payment_order_id }}/cancellations" },
+        "reversals": { "id": "/psp/paymentorders/payments/{{ page.payment_order_id }}/reversals" },
+        "verifications": { "id": "/psp/paymentorders/payments/{{ page.payment_order_id }}/verifications" },
+        "urls" : { "id": "/psp/paymentorderspayments/{{ page.payment_order_id }}/urls" },
+        "payeeInfo" : { "id": "/psp/paymentorders/payments/{{ page.payment_order_id }}/payeeInfo" },
+        "metadata" : { "id": "/psp/paymentorders/payments/{{ page.payment_order_id }}/metadata" },
+        "settings": { "id": "/psp/paymentorders/payments/{{ page.payment_order_id }}/settings" }
     },
     "operations": []
 }
@@ -866,7 +866,7 @@ Content-Type: application/json
 
 ### Prices Resource
 
-{% include prices.md %}
+{% include prices.md payment_instrument="paymentorders" %}
 
 ### Payer Resource
 
@@ -1095,7 +1095,7 @@ following event argument object:
 
 ```js
 {
-    "id": "/psp/creditcard/payments/{{ page.payment_id }}",
+    "id": "/psp/paymentorders/payments/{{ page.payment_id }}",
     "instrument": "creditcard | vipps | swish | invoice",
 }
 ```
@@ -1117,7 +1117,7 @@ object:
 
 ```js
 {
-    "id": "/psp/creditcard/payments/{{ page.payment_id }}",
+    "id": "/psp/paymentorders/payments/{{ page.payment_id }}",
     "redirectUrl": "https://en.wikipedia.org/wiki/Success"
 }
 ```
@@ -1139,7 +1139,7 @@ object:
 
 ```js
 {
-    "id": "/psp/creditcard/payments/{{ page.payment_id }}",
+    "id": "/psp/paymentorders/payments/{{ page.payment_id }}",
     "redirectUrl": "https://en.wikipedia.org/wiki/Canceled"
 }
 ```
@@ -1163,7 +1163,7 @@ object:
 
 ```js
 {
-    "id": "/psp/creditcard/payments/{{ page.payment_id }}",
+    "id": "/psp/paymentorders/payments/{{ page.payment_id }}",
     "details": "[HttpCode ProblemTitle]"
 }
 ```
@@ -1185,7 +1185,7 @@ event argument object:
 
 ```js
 {
-    "id": "/psp/creditcard/payments/{{ page.payment_id }}",
+    "id": "/psp/paymentorders/payments/{{ page.payment_id }}",
     "redirectUrl": "https://en.wikipedia.org/wiki/Failed"
 }
 ```
@@ -1332,7 +1332,7 @@ The structure of a problem message will look like this:
 
 ```js
 {
-    "type": "https://api.payex.com/psp/errordetail/creditcard/inputerror",
+    "type": "https://api.payex.com/psp/errordetail/paymentorders/inputerror",
     "title": "There was an input error",
     "detail": "Please correct the errors and retry the request",
     "instance": "{{ page.transaction_id }}",
@@ -1374,13 +1374,13 @@ although that might be possible in the future.
 | `systemerror`        | `500`  | A generic error message.                                                                                                                           |
 | `configurationerror` | `500`  | A error relating to configuration issues.                                                                                                          |
 
-{% include expand-parameter.md %}
+{% include expand-parameter.md payment_instrument="paymentorders" %}
 
 {% include payee-info.md payment_instrument="paymentorders" %}
 
 {% include merchant-authenticated-consumer.md %}
 
-{% include settlement-reconciliation.md %}
+{% include settlement-reconciliation.md payment_instrument="paymentorders" %}
 
 ## Updating Payment Menu
 

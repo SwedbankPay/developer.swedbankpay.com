@@ -90,11 +90,11 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/creditcard/payments/{{ page.payment_order_id }}",
+    "payment": "/psp/paymentorders/payments/{{ page.payment_order_id }}",
     "reversals": {
-        "id": "/psp/creditcard/payments/{{ page.payment_order_id }}/cancellations/{{ page.transaction_id }}",
+        "id": "/psp/paymentorders/payments/{{ page.payment_order_id }}/cancellations/{{ page.transaction_id }}",
         "transaction": {
-            "id": "/psp/creditcard/payments/{{ page.payment_order_id }}/transactions/{{ page.transaction_id }}",
+            "id": "/psp/paymentorders/payments/{{ page.payment_order_id }}/transactions/{{ page.transaction_id }}",
             "type": "Reversal",
             "state": "Completed",
             "amount": 15610,
