@@ -470,7 +470,7 @@ returned in the payment request. You need to include the following HTTP body:
 **Request**
 
 ```http
-PATCH /psp/creditcard/payments/{{ page.payment_id }} HTTP/1.1
+PATCH /psp/mobilepay/payments/{{ page.payment_id }} HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -492,32 +492,32 @@ Content-Type: application/json
 
 {
     "payment": {
-        "id": "/psp/creditcard/payments/{{ page.payment_id }}",
+        "id": "/psp/mobilepay/payments/{{ page.payment_id }}",
         "number": 70100130293,
         "created": "2019-01-09T13:11:28.371179Z",
         "updated": "2019-01-09T13:11:46.5949967Z",
-        "instrument": "CreditCard",
+        "instrument": "MobilePay",
         "operation": "Purchase",
         "intent": "AutoCapture",
         "state": "Aborted",
         "currency": "DKK",
         "prices": {
-            "id": "/psp/creditcard/payments/{{ page.payment_id }}/prices"
+            "id": "/psp/mobilepay/payments/{{ page.payment_id }}/prices"
         },
         "amount": 0,
-        "description": "creditcard Test",
+        "description": "MobilePay Test",
         "payerReference": "100500",
         "initiatingSystemUserAgent": "PostmanRuntime/7.1.1",
         "userAgent": "Mozilla/5.0",
         "language": "nb-NO",
         "urls": {
-            "id": "/psp/creditcard/payments/{{ page.payment_id }}/urls"
+            "id": "/psp/mobilepay/payments/{{ page.payment_id }}/urls"
         },
         "payeeInfo": {
-            "id": "/psp/creditcard/payments/{{ page.payment_id }}/payeeinfo"
+            "id": "/psp/mobilepay/payments/{{ page.payment_id }}/payeeinfo"
         },
         "metadata": {
-            "id": "/psp/creditcard/payments/{{ page.payment_id }}/metadata"
+            "id": "/psp/mobilepay/payments/{{ page.payment_id }}/metadata"
         }
     },
     "operations": []
@@ -526,13 +526,9 @@ Content-Type: application/json
 
 The response will be the `payment` resource with its `state` set to `Aborted`.
 
-{% include settlement-reconciliation.md %}
-
-{% include one-click-payments.md %}
+{% include settlement-reconciliation.md payment_instrument="mobilepay" %}
 
 {% include payment-link.md %}
-
-{% include recurring-card-payments.md %}
 
 {% include callback-reference.md payment_instrument="mobilepay" %}
 
