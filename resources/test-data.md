@@ -197,8 +197,8 @@ The amounts that can be used and produce error codes
 | :------ | :-------------- | :---------------------- |
 | SSN     | 600307-1161     | 971020-2392             |
 | Name    | Azra Oliveira   | Leia Ahlstrom           |
-| Address | Helgestavägen 9 | Helgestavägen 9         |
-| City    | 19792 Bro       | 19792 Bro               |
+| Address | Helgestavägen 9 | Hökvägen 5              |
+| City    | 19792 Bro       | 17674 Järfälla          |
 | MSISDN  |                 | +46739000001            |
 | email   |                 | leia.ahlstrom@payex.com |
 
