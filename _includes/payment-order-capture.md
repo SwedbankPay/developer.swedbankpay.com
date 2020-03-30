@@ -135,11 +135,11 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/creditcard/payments/{{ page.payment_id }}",
+    "payment": "/psp/paymentorders/payments/{{ page.payment_id }}",
     "capture": {
-        "id": "/psp/creditcard/payments/{{ page.payment_id }}/captures/{{ page.transaction_id }}",
+        "id": "/psp/paymentorders/payments/{{ page.payment_id }}/captures/{{ page.transaction_id }}",
         "transaction": {
-            "id": "/psp/creditcard/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
+            "id": "/psp/paymentorders/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
             "type": "Capture",
             "state": "Completed",
             "amount": 15610,
@@ -168,3 +168,5 @@ Content-Type: application/json
 | └─➔&nbsp;`vatAmount`      | `integer` | {% include field-description-vatamount.md %}                                                                                                                                                                 |
 | └─➔&nbsp;`description`    | `string`  | A human readable description of maximum 40 characters of the transaction.                                                                                                                                    |
 | └─➔&nbsp;`payeeReference` | `string`  | A unique reference for the transaction. See [`payeeReference`][payee-reference] for details.                                                                                                                 |
+
+[payee-reference]: /checkout/other-features#payee-reference
