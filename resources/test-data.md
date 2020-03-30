@@ -196,7 +196,7 @@ The amounts that can be used and produce error codes
 | Type    | Data            | Alternative data        |
 | :------ | :-------------- | :---------------------- |
 | SSN     | 600307-1161     | 971020-2392             |
-| Name    | Azra Oliveira   | Leia Ahlstrom           |
+| Name    | Azra Oliveira   | Leia Ahlström           |
 | Address | Helgestavägen 9 | Hökvägen 5              |
 | City    | 19792 Bro       | 17674 Järfälla          |
 | MSISDN  |                 | +46739000001            |
