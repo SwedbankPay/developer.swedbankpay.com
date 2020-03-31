@@ -22,7 +22,7 @@ Content-Type: application/json
 {
     "payment": "/psp/{{ instrument }}/payments/{{ page.payment_id }}",
     "{{ plural }}": { {% if instrument == "invoice" %}
-    "receiptReference": "AH12355", {% endif %}
+        "receiptReference": "AH12355", {% endif %}
         "id": "/psp/{{ instrument }}/payments/{{ page.payment_id }}/{{ plural }}",
         "{{ transaction }}List": [{
             "id": "/psp/{{ instrument }}/payments/{{ page.payment_id }}/{{ plural }}/{{ page.transaction_id }}",
