@@ -133,8 +133,8 @@ Content-Type: application/json
         "activity": "FinancingConsumer",
         "amount": 1500,
         "vatAmount": 0,
-        "payeeReference": "customer reference-unique",
-        "receiptReference": "3245766",
+        "payeeReference": "ABC856",
+        "receiptReference": "ABC855",
         "description": "description for transaction"
     }
 }
@@ -151,7 +151,7 @@ Content-Type: application/json
 |    ✔︎    | └➔&nbsp;`amount`           | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                                                                  |
 |    ✔︎    | └➔&nbsp;`vatAmount`        | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                                                                               |
 |    ✔︎    | └➔&nbsp;`payeeReference`   | `string(50)` | The `payeeReference` is the receipt/invoice number if `receiptReference` is not defined, which is a **unique** reference with max 50 characters set by the merchant system. This must be unique for each operation and must follow the regex pattern `[\w]* (a-zA-Z0-9_)`. |
-|          | └➔&nbsp;`receiptReference` | `string(50)` | The `receiptReference` is a reference from the merchant system. If sent in, this reference is used as an invoice/receipt number.                                                                                                                                           |
+|          | └➔&nbsp;`receiptReference` | `string(50)` | The `receiptReference` is a reference from the merchant system. This reference is used as an invoice/receipt number.                                                                                                                                           |
 |    ✔︎    | └➔&nbsp;`description`      | `string`     | A textual description of the reversal.                                                                                                                                                                                                                                     |
 
 The `reversal` resource will be returned, containing information about the newly created reversal transaction.
