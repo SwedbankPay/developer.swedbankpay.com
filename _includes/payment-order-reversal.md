@@ -124,5 +124,4 @@ Content-Type: application/json
 | └─➔&nbsp;`vatAmount`      | `integer` | {% include field-description-vatamount.md %}                                                                                                                                                                 |
 | └─➔&nbsp;`description`    | `string`  | A human readable description of maximum 40 characters of the transaction.                                                                                                                                    |
 | └─➔&nbsp;`payeeReference` | `string`  | A unique reference for the transaction. See [`payeeReference`][payee-reference] for details. In Invoice Payments `payeereference` is used as an invoice/receipt number.                                      |
-
 | └➔&nbsp;`receiptReference` | `string(30)` | A unique reference from the merchant system. It is used to supplement `payeeReference` as an additional receipt number. |
