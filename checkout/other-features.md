@@ -61,7 +61,7 @@ underlying payments or transaction.
 
 {% include payment-url.md payment_order=true
 when="selecting the payment instrument Vipps or in the 3-D Secure verification
-for Credit Card Payments" %}
+for Credit Card Payments" full_reference=true %}
 
 #### URLs Resource
 
