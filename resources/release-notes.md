@@ -32,6 +32,19 @@ this very documentation, not to a version of any APIs described by it." %}
 
 ## March 2020
 
+### Version 1.8.1
+
+* Documented allowed characters in `orderItem.class`.
+* Added `receiptReference` in [Invoice Payments][invoice] and
+  [Payment Order][checkout-payment-orders] in capture and reversal.
+* Callback is now moved to Other features in all payments intruments.
+* Clean up of [MobilePay][mobile-pay].
+* Corrected the address of Leia Ahlström in [Test Data][test-data].
+* Updated the documentation in [Card Payments][card-payment-url]
+  to recommend using `shippingAddress`.
+* Updated `payeeReference` to have an unique description for Payment Order and
+  every Payment Instrument.
+
 ### Version 1.8.0
 
 * Updated [Invoice Payments Direct][invoice-direct] where
@@ -333,6 +346,7 @@ integration and the payer.
 [swish-seamless-view]: /payments/swish/seamless-view
 [swish]: /payments/swish
 [terminology]: /resources/terminology
+[test-data]: /resources/test-data
 [vipps-payment-resource]: /payments/vipps/other-features#payment-resource
 [vipps-payment-url]: /payments/vipps/other-features#payment-url
 [vipps]: /payments/vipps
