@@ -21,7 +21,8 @@ Content-Type: application/json
 
 {
     "payment": "/psp/{{ instrument }}/payments/{{ page.payment_id }}",
-    "{{ plural }}": {
+    "{{ plural }}": { {% if instrument == "invoice" %}
+    "receiptReference": "AH12355", {% endif %}
         "id": "/psp/{{ instrument }}/payments/{{ page.payment_id }}/{{ plural }}",
         "{{ transaction }}List": [{
             "id": "/psp/{{ instrument }}/payments/{{ page.payment_id }}/{{ plural }}/{{ page.transaction_id }}",
@@ -62,7 +63,8 @@ Content-Type: application/json
 | └─➔&nbsp;`amount`                 | `integer` | {% include field-description-amount.md %}                                                                                                                                                                    |
 | └─➔&nbsp;`vatAmount`              | `integer` | {% include field-description-vatamount.md %}                                                           |
 | └─➔&nbsp;`description`            | `string`  | A human readable description of maximum 40 characters of the transaction.                                                                                                                                    |
-| └─➔&nbsp;`payeeReference`         | `string`  | A unique reference for the transaction.                                                                                                                                                                      |
+| └─➔&nbsp;`payeeReference`         | `string`  | A unique reference for the transaction.                                                                                                                                                                      | {% if instrument == "invoice" %}
+| └─➔&nbsp;`receiptReference`        | `string` | A unique reference for the transaction. This reference is used as an invoice/receipt number.                                                                                                                 | {% endif %}
 | └─➔&nbsp;`failedReason`           | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | └─➔&nbsp;`isOperational`          | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
 | └─➔&nbsp;`operations`             | `array`   | The array of operations that are possible to perform on the transaction in its current state.                                                                                                                |
