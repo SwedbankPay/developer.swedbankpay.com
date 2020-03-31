@@ -45,68 +45,15 @@ number (msisdn), connected to the Swish app." %}
 The consumer/end-user is redirected to Swedbank Pay hosted pages and prompted
 to insert her phone number to initiate the sales transaction.
 
+Swish is a one-phase payment instrument that is based on sales transactions
+**not** involving `capture` or `cancellation` operations.
+
 ![Consumer paying with Swish using Swedbank Pay]
 [swish-redirect-image]{:width="467px" height="364px"}
 
-## Purchase flow
-
-The sequence diagram below shows the requests you have to send to Swedbank Pay
-to make a purchase.
-The links will take you directly to the API description for the specific
-request.
-
-```mermaid
-sequenceDiagram
-  activate Browser
-  Browser->>-Merchant: start purchase
-  activate Merchant
-  Merchant->>-SwedbankPay: POST <Swish create payment> (operation=PURCHASE)
-  activate SwedbankPay
-  note left of Merchant: First API request
-  SwedbankPay-->>-Merchant: payment resource
-  activate Merchant
-  Merchant-->>-Browser: redirect to payments page
-  activate Browser
-  note left of SwedbankPay: redirect to Swedbank Pay (If Redirect scenario)
-  Browser->>-SwedbankPay: enter mobile number
-  activate SwedbankPay
-  SwedbankPay--x-Browser: Tell consumer to open Swish app
-  Swish_API->>Swish_App: Ask for payment confirmation
-  activate Swish_App
-  Swish_App-->>-Swish_API: Consumer confirms payment
-  activate Swish_API
-  opt Callback
-  Swish_API-->>-SwedbankPay: Payment status
-  activate SwedbankPay
-  SwedbankPay-->>-Swish_API: Callback response
-  activate Swish_API
-  SwedbankPay--x-Merchant: Transaction callback
-  end
-  SwedbankPay-->>Browser: Redirect to merchant (If Redirect scenario)
-  activate Browser
-
-  Browser-->>-Merchant: Redirect
-  activate Merchant
-  Merchant->>-SwedbankPay: GET <Swish payment>
-  activate SwedbankPay
-  SwedbankPay-->>-Merchant: Payment response
-  activate Merchant
-  Merchant-->>-Browser: Payment Status
-```
-
-## Operations
-
-The API requests are displayed in the [purchase flow][purchase-flow].
-Swish is a one-phase payment instrument that is based on sales transactions
-**not** involving `capture` or `cancellation` operations.
-The options you can choose from when creating a payment with key `operation` set
-to value `Purchase` are listed below.
-
-### General
-
 {% include alert-callback-url.md payment_instrument="swish" %}
 
-### API Requests
+## Step 1: Create a Purchase
 
 All valid options when posting in a payment with operation equal to `Purchase`.
 The `Purchase` example shown below.
@@ -247,7 +194,53 @@ Content-Type: application/json
 }
 ```
 
-{% include iterator.html prev_href="./" prev_title="Back: Introduction"
+## Purchase flow
+
+The sequence diagram below shows the requests you have to send to Swedbank Pay
+to make a purchase.
+The links will take you directly to the API description for the specific
+request.
+
+```mermaid
+sequenceDiagram
+  activate Browser
+  Browser->>-Merchant: start purchase
+  activate Merchant
+  Merchant->>-SwedbankPay: POST <Swish create payment> (operation=PURCHASE)
+  activate SwedbankPay
+  note left of Merchant: First API request
+  SwedbankPay-->>-Merchant: payment resource
+  activate Merchant
+  Merchant-->>-Browser: redirect to payments page
+  activate Browser
+  note left of SwedbankPay: redirect to Swedbank Pay (If Redirect scenario)
+  Browser->>-SwedbankPay: enter mobile number
+  activate SwedbankPay
+  SwedbankPay--x-Browser: Tell consumer to open Swish app
+  Swish_API->>Swish_App: Ask for payment confirmation
+  activate Swish_App
+  Swish_App-->>-Swish_API: Consumer confirms payment
+  activate Swish_API
+  opt Callback
+  Swish_API-->>-SwedbankPay: Payment status
+  activate SwedbankPay
+  SwedbankPay-->>-Swish_API: Callback response
+  activate Swish_API
+  SwedbankPay--x-Merchant: Transaction callback
+  end
+  SwedbankPay-->>Browser: Redirect to merchant (If Redirect scenario)
+  activate Browser
+
+  Browser-->>-Merchant: Redirect
+  activate Merchant
+  Merchant->>-SwedbankPay: GET <Swish payment>
+  activate SwedbankPay
+  SwedbankPay-->>-Merchant: Payment response
+  activate Merchant
+  Merchant-->>-Browser: Payment Status
+```
+
+{% include iterator.html prev_href="direct" prev_title="Back: Direct"
 next_href="seamless-view" next_title="Next: Seamless View" %}
 
 [swish-redirect-image]: /assets/screenshots/swish/redirect-view/view/windows-small-window.png

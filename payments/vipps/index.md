@@ -76,5 +76,7 @@ successful purchase without using the Vipps app.
 
 [payment-resource]: /payments/vipps/other-features#payment-resource
 [after-payment]: /payments/vipps/after-payment#operations
+[capture]: /payments/vipps/after-payment#captures
+[cancel]: /payments/vipps/after-payment#cancellations
 [vipps-redirect]: /assets/img/payments/vipps-redirect-en.png
 [vipps-number-input]: /assets/img/payments/vipps-number-input-en.png

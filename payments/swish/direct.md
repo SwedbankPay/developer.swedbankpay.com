@@ -18,9 +18,7 @@ sidebar:
       title: Other Features
 ---
 
-
-{% include alert.html type="neutral"
-                      icon="info"
+{% include jumbotron.html
                       body="Swish is a one-phase payment instrument supported by the
                       major Swedish banks. In the direct scenario,
                       Swedbank Pay receives the Swish registered mobile number
@@ -28,7 +26,7 @@ sidebar:
                       payment that the payer confirms using her Swish mobile
                       app." %}
 
-## Introduction
+## Swish Direct integration flow
 
 * When the payer starts the purchase process, you make a `POST` request towards
   Swedbank Pay with the collected Purchase information.
@@ -40,62 +38,13 @@ sidebar:
   dialogue is completed.
 * Make a `GET` request to check the payment status.
 
-## Purchase flow
-
-The sequence diagram below shows the three requests you have to send to
-Swedbank Pay to make a purchase.
-
-```mermaid
-sequenceDiagram
-  activate Browser
-  Browser->>-Merchant: start purchase
-  activate Merchant
-  Merchant->>-SwedbankPay: POST <Swish payment> (operation=PURCHASE)
-  activate  SwedbankPay
-  note left of Merchant: First API request
-   SwedbankPay-->>-Merchant: payment resource
-   activate Merchant
-
-  Merchant-->>- SwedbankPay: POST <Sales Transaction> (operation=create-sale)
-  activate  SwedbankPay
-   SwedbankPay-->>-Merchant: sales resource
-  activate Merchant
-  note left of Merchant: POST containing MSISDN
-  Merchant--x-Browser: Tell consumer to open Swish app
-  Swish_API->>Swish_App: Ask for payment confirmation
-  activate Swish_App
-  Swish_App-->>-Swish_API: Consumer confirms payment
-  activate Swish_API
-
-  Swish_API-->>- SwedbankPay: Payment status
-  activate  SwedbankPay
-   SwedbankPay-->>-Swish_API: Callback response
-  activate Swish_API
-  Swish_API->>-Swish_App: Start redirect
-  activate Swish_App
-
-  Swish_App--x-Browser: Redirect
-  activate Merchant
-  Merchant->>- SwedbankPay: GET <Sales transaction>
-  activate  SwedbankPay
-   SwedbankPay-->>-Merchant: Payment response
-  activate Merchant
-  Merchant-->>-Browser: Payment Status
-```
-
-## Operations
-
-The API requests are displayed in the [purchase flow][purchase] above.
-Swish is a one-phase payment instrument that is based on sales transactions not
-involving `capture` or `cancellation` operations.
-The options you can choose from when creating a payment with key operation
-set to value `Purchase` are listed below.
-
-### General
+{% include alert.html type="neutral" icon="report_problem"
+body="Swish is a one-phase payment instrument that is based on sales
+transactions not involving `capture` or `cancellation` operations." %}
 
 {% include alert-callback-url.md payment_instrument="swish" %}
 
-## Purchase
+## Step 1: Create a Purchase
 
 A `Purchase` payment is created by performing the following request.
 
@@ -237,7 +186,7 @@ Content-Type: application/json
 }
 ```
 
-## Create E-Commerce Sale Transaction
+## Step 2a: Create E-Commerce Sale Transaction
 
 This operation creates an e-commerce sales transaction in the direct payment
 scenario. This is managed either by sending a `POST` request as seen below, or
@@ -268,7 +217,7 @@ Content-Type: application/json
 
 {% include transaction-response.md payment_instrument="swish" transaction="sale" %}
 
-## Create M-Commerce Sale Transaction
+## Step 2b: Create M-Commerce Sale Transaction
 
 This operation creates an m-commerce sales transaction in the direct payment
 scenario. This is managed either by sending a `POST` request as seen below, or
@@ -295,7 +244,150 @@ Content-Type: application/json
 | :------------ | :------- | :------------------------------------------------------------------- |
 | `transaction` | `object` | The  `transaction` object is empty for m-commerce sale transactions. |
 
-{% include transaction-response.md payment_instrument="swish" transaction="sale" mcom=true %}
+{% include transaction-response.md payment_instrument="swish" transaction="sale"
+mcom=true %}
+
+## Step 3: Get the payment status
+
+{:.code-header}
+**Request**
+
+```http
+GET /psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/ HTTP/1.1
+Host: {{ page.api_host }}
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+```
+
+{:.code-header}
+**Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "payment": {
+        "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}",
+        "number": 1234567890,
+        "created": "2016-09-14T13:21:29.3182115Z",
+        "updated": "2016-09-14T13:21:57.6627579Z",
+        "state": "Ready",
+        "operation": "Purchase",
+        "intent": "Authorization",
+        "currency": "NOK",
+        "amount": 1500,
+        "remainingCaptureAmount": 1500,
+        "remainingCancellationAmount": 1500,
+        "remainingReversalAmount": 0,
+        "description": "Test Purchase",
+        "payerReference": "AB1234",
+        "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
+        "userAgent": "Mozilla/5.0...",
+        "language": "nb-NO",
+        "prices": {
+            "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/prices"
+        },
+        "payeeInfo": {
+            "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/payeeInfo"
+        },
+        "urls": {
+            "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/urls"
+        },
+        "transactions": {
+            "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/transactions"
+        },
+        "captures": {
+            "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/captures"
+        },
+        "reversals": {
+            "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/reversals"
+        },
+        "cancellations": {
+            "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/cancellations"
+        }
+    },
+    "operations": [
+        {
+            "method": "PATCH",
+            "href": "{{ page.api_url }}/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}",
+            "rel": "update-payment-abort",
+            "contentType": "application/json"
+        },
+        {
+            "method": "POST",
+            "href": "{{ page.api_url }}/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/captures",
+            "rel": "create-capture",
+            "contentType": "application/json"
+        }
+    ]
+}
+```
+
+{:.table .table-striped}
+| Field                 | Type         | Description                                                                                                                                                                                                                                                                                                                                                |
+| :----------------------- | :----------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `payment`                | `object`     | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                                                                                      |
+| └➔&nbsp;`id`             | `string`     | {% include field-description-id.md %}                                                                                                                                                                                                                                                                                                                      |
+| └➔&nbsp;`number`         | `integer`    | The payment  number , useful when there's need to reference the payment in human communication. Not usable for programmatic identification of the payment, for that  id  should be used instead.                                                                                                                                                           |
+| └➔&nbsp;`created`        | `string`     | The ISO-8601 date of when the payment was created.                                                                                                                                                                                                                                                                                                         |
+| └➔&nbsp;`updated`        | `string`     | The ISO-8601 date of when the payment was updated.                                                                                                                                                                                                                                                                                                         |
+| └➔&nbsp;`state`          | `string`     | `Ready`, `Pending`, `Failed` or `Aborted`. Indicates the state of the payment, not the state of any transactions performed on the payment. To find the state of the payment's transactions (such as a successful authorization), see the `transactions` resource or the different specialized type-specific resources such as `authorizations` or `sales`. |
+| └➔&nbsp;`prices`         | `object`     | The `prices` resource lists the prices related to a specific payment.                                                                                                                                                                                                                                                                                      |
+| └➔&nbsp;`prices.id`      | `string`     | {% include field-description-id.md resource="prices" %}                                                                                                                                                                                                                                                                                                    |
+| └➔&nbsp;`description`    | `string(40)` | A textual description of maximum 40 characters of the purchase.                                                                                                                                                                                                                                                                                            |
+| └➔&nbsp;`payerReference` | `string`     | The reference to the payer (consumer/end-user) from the merchant system, like e-mail address, mobile number, customer number etc.                                                                                                                                                                                                                          |
+| └➔&nbsp;`userAgent`      | `string`     | The [user agent][user-agent] string of the consumer's browser.                                                                                                                                                                                                                                                                                             |
+| └➔&nbsp;`language`       | `string`     | `nb-NO` , `sv-SE`  or  `en-US`                                                                                                                                                                                                                                                                                                                             |
+| └➔&nbsp;`urls`           | `string`     | The URI to the  urls  resource where all URIs related to the payment can be retrieved.                                                                                                                                                                                                                                                                     |
+| └➔&nbsp;`payeeInfo`      | `string`     | The URI to the  payeeinfo  resource where the information about the payee of the payment can be retrieved.                                                                                                                                                                                                                                                 |
+| `operations`             | `array`      | The array of possible operations to perform                                                                                                                                                                                                                                                                                                                |
+| └─➔&nbsp;`method`        | `string`     | The HTTP method to use when performing the operation.                                                                                                                                                                                                                                                                                                      |
+| └─➔&nbsp;`href`          | `string`     | The target URI to perform the operation against.                                                                                                                                                                                                                                                                                                           |
+| └─➔&nbsp;`rel`           | `string`     | The name of the relation the operation has to the current resource. |
+
+## Purchase flow
+
+The sequence diagram below shows the three requests you have to send to
+Swedbank Pay to make a purchase.
+
+```mermaid
+sequenceDiagram
+  activate Browser
+  Browser->>-Merchant: start purchase
+  activate Merchant
+  Merchant->>-SwedbankPay: POST <Swish payment> (operation=PURCHASE)
+  activate  SwedbankPay
+  note left of Merchant: First API request
+   SwedbankPay-->>-Merchant: payment resource
+   activate Merchant
+
+  Merchant-->>- SwedbankPay: POST <Sales Transaction> (operation=create-sale)
+  activate  SwedbankPay
+   SwedbankPay-->>-Merchant: sales resource
+  activate Merchant
+  note left of Merchant: POST containing MSISDN
+  Merchant--x-Browser: Tell consumer to open Swish app
+  Swish_API->>Swish_App: Ask for payment confirmation
+  activate Swish_App
+  Swish_App-->>-Swish_API: Consumer confirms payment
+  activate Swish_API
+
+  Swish_API-->>- SwedbankPay: Payment status
+  activate  SwedbankPay
+   SwedbankPay-->>-Swish_API: Callback response
+  activate Swish_API
+  Swish_API->>-Swish_App: Start redirect
+  activate Swish_App
+
+  Swish_App--x-Browser: Redirect
+  activate Merchant
+  Merchant->>- SwedbankPay: GET <Sales transaction>
+  activate  SwedbankPay
+   SwedbankPay-->>-Merchant: Payment response
+  activate Merchant
+  Merchant-->>-Browser: Payment Status
+```
 
 {% include iterator.html prev_href="introduction" prev_title="Back: Introduction"
 next_href="redirect" next_title="Next: Redirect" %}

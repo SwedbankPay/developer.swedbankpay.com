@@ -21,112 +21,41 @@ sidebar:
 
 {% include jumbotron.html body="The **Seamless View** scenario gives your
                           customers the opportunity to pay with Swish directly
-                          within your webshop." %}
+                          within your webshop. This gives the consumer a
+                          frictionless experience as we are handling the
+                          payment in the implemented `iframe` on your page" %}
 
-## Introduction
+## Swish Seamless View integration flow
 
-The Seamless View integration provide you with the Swish payment solution
-directly on your website. This gives the consumer a frictionless experience as
-we are handling the payment in the implemented `iframe` on your page (see
-example below).
+1. When the payer starts the purchase process, you make a `POST` request
+  towards Swedbank Pay with the collected Purchase information.
+  `view-sales` is a `rel` value in one of the operations, sent as a response
+  from Swedbank Pay to the Merchant.
+1. `Open iframe` creates the Swedbank Pay hosted iframe.
+1. `Show Consumer UI page in iframe` displays the payment window as content
+  inside of the iframe. The consumer can insert mobile information for
+  authorization.
+1. `Event: OnPaymentComplete` is when the payment is complete. Please note that
+  both a successful and rejected payment reach completion, in contrast to a
+  cancelled payment.
+1. To get the transaction result, you need to follow up with a `GET` request
+  using the `paymentID` received in the first step.
+1. If CallbackURL is set you will receive a payment callback when the Swish
+  dialogue is completed, and you will have to make a `GET` request to check the
+  payment status.
 
 ![screenshot of the seamless view swish payment
 page][seamless-view-img]{:height="250px" width="660px"}
 
-## Purchase flow
-
-```mermaid
-sequenceDiagram
-    participant Payer
-    participant Merchant
-    participant SwedbankPay as Swedbank Pay
-
-    activate Payer
-    Payer->>-Merchant: start purchase
-    activate Merchant
-    note left of Payer: First API request
-    Merchant->>-SwedbankPay: POST /psp/swish/payments ①
-    activate SwedbankPay
-    SwedbankPay-->>-Merchant: rel: view-sales ②
-    activate Merchant
-    Merchant-->>-Payer: confirmation page
-    activate Payer
-    note left of Payer: Open iframe ③
-    Payer->>Payer: Input mobile number
-    Payer->>-SwedbankPay: Show Consumer UI page in iframe - Authorization ④
-    activate SwedbankPay
-        opt Card supports 3-D Secure
-        SwedbankPay-->>-Payer: redirect to IssuingBank
-        activate Payer
-        Payer->>IssuingBank: 3-D Secure authentication process
-        activate IssuingBank
-        IssuingBank->>-Payer: 3-D Secure authentication process
-        Payer->>-SwedbankPay: access authentication page
-        end
-    SwedbankPay-->>Merchant: Event: OnPaymentComplete ⑤
-    activate Merchant
-    note left of Merchant: Second API request.
-    Merchant->>-SwedbankPay: GET <payment.id> ⑥
-    activate SwedbankPay
-    SwedbankPay-->>-Merchant: rel: view-sales
-    activate Merchant
-    Merchant-->>-Payer: display purchase result
-    activate Payer
-
-        opt Callback is set ⑦
-        activate SwedbankPay
-        SwedbankPay->>SwedbankPay: Payment is updated
-        SwedbankPay->>-Merchant: POST Payment Callback
-        end
-```
-
-### Explainations
-
-* ① When the payer starts the purchase process, you make a `POST` request
-  towards Swedbank Pay with the collected Purchase information.
-* ② `view-sales` is a `rel` value in one of the operations, sent as a response
-  from Swedbank Pay to the Merchant.
-* ③ `Open iframe` creates the Swedbank Pay hosted iframe.
-* ④ `Show Consumer UI page in iframe` displays the payment window as content
-  inside of the iframe. The consumer can insert mobile information for
-  authorization.
-* ⑤ `Event: OnPaymentComplete` is when er payment is complete. Please note that
-  both a successful and rejected payment reach completion, in contrast to a
-  cancelled payment.
-* ⑥ To get the transaction result, you need to follow up with a `GET` request
-  using the `paymentID` received in the first step.
-* ⑦ If CallbackURL is set you will receive a payment callback when the Swish
-  dialogue is completed, and you will have to make a `GET` request to check the
-  payment status.
-
-### Payment Url
-
-{% include payment-url.md  when="selecting Swish as payment instrument" %}
-
-## Seamless View Back End
-
-When properly set up in your merchant/webshop site and the payer starts the
-purchase process, you need to make a POST request towards Swedbank Pay with your
-Sales information. This will generate a payment object with a unique
-`paymentID`. You will receive a **JavaScript source** in response.
-
-### Intent
-
-{% include intent.md sale=true show_authorization=false %}
-
-### Operations
-
-The API requests are displayed in the purchase flow above.
-You can [create a Swish `payment`][create-payment] with the [purchase][purchase] `operation`
-
-### Purchase
+## Step 1: Create a Purchase
 
 A `Purchase` payment is a straightforward way to charge the card of the payer.
-It is followed up by posting a capture, cancellation or reversal transaction.
+You need to make a `POST` request towards Swedbank Pay as shown below to create
+a purchase. An example of an expanded `POST` request is available in the
+[other features section][purchase]. This will generate a payment object with a unique
+`paymentID`. You will receive a **JavaScript source** in response.
 
-An example of an abbreviated `POST` request is provided below. Each individual field of the JSON document is described in the following section.
-An example of an expanded `POST` request is available in the
-[other features section][purchase].
+{% include payment-url.md  when="selecting Swish as payment instrument" %}
 
 {:.code-header}
 **Request**
@@ -297,7 +226,7 @@ The key information in the response is the `view-sales` operation. You will need
 to embed its `href` in a `<script>` element. The script will enable loading the
 payment page in an `iframe` in our next step.
 
-## Seamless View Front End
+## Step 2: Display the Payment Window
 
 You need to embed the script source on your site to create a hosted-view in an
 `iframe`; so that she can enter the required information in a secure Swedbank
@@ -348,6 +277,56 @@ embedded on your website.
     }).open();
 </script>
 ```
+
+## Purchase flow
+
+```mermaid
+sequenceDiagram
+    participant Payer
+    participant Merchant
+    participant SwedbankPay as Swedbank Pay
+
+    activate Payer
+    Payer->>-Merchant: start purchase
+    activate Merchant
+    note left of Payer: First API request
+    Merchant->>-SwedbankPay: POST /psp/swish/payments ①
+    activate SwedbankPay
+    SwedbankPay-->>-Merchant: rel: view-sales ②
+    activate Merchant
+    Merchant-->>-Payer: confirmation page
+    activate Payer
+    note left of Payer: Open iframe ③
+    Payer->>Payer: Input mobile number
+    Payer->>-SwedbankPay: Show Consumer UI page in iframe - Authorization ④
+    activate SwedbankPay
+        opt Card supports 3-D Secure
+        SwedbankPay-->>-Payer: redirect to IssuingBank
+        activate Payer
+        Payer->>IssuingBank: 3-D Secure authentication process
+        activate IssuingBank
+        IssuingBank->>-Payer: 3-D Secure authentication process
+        Payer->>-SwedbankPay: access authentication page
+        end
+    SwedbankPay-->>Merchant: Event: OnPaymentComplete ⑤
+    activate Merchant
+    note left of Merchant: Second API request.
+    Merchant->>-SwedbankPay: GET <payment.id> ⑥
+    activate SwedbankPay
+    SwedbankPay-->>-Merchant: rel: view-sales
+    activate Merchant
+    Merchant-->>-Payer: display purchase result
+    activate Payer
+
+        opt Callback is set ⑦
+        activate SwedbankPay
+        SwedbankPay->>SwedbankPay: Payment is updated
+        SwedbankPay->>-Merchant: POST Payment Callback
+        end
+```
+
+{% include iterator.html prev_href="redirect" prev_title="Back: Redirect"
+next_href="after-payment" next_title="Next: After Payment" %}
 
 [callback]: /payments/swish/other-features#callback
 [create-payment]: /payments/swish/after-payment#create-payment

@@ -12,6 +12,8 @@ sidebar:
       title: Seamless View
     - url: /payments/card/direct
       title: Direct
+    - url: /payments/card/capture
+      title: Capture
     - url: /payments/card/mobile-card-payments
       title: Mobile Card Payments
     - url: /payments/card/after-payment
@@ -115,10 +117,10 @@ sequenceDiagram
         end
 
     SwedbankPay-->>-Payer: CompleteUrl ⑤
-    activate Payer
-    Payer->>-SwedbankPay: GET <payment.id> ⑥
+    activate Merchant
+    Merchant->>-SwedbankPay: GET <payment.id> ⑥
     activate SwedbankPay
-    note left of Merchant: Second API request
+    note left of Payer: Second API request
     SwedbankPay-->>-Merchant: rel: redirect-authorization
     activate Merchant
     Merchant-->>-Payer: display purchase result

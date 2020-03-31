@@ -10,10 +10,10 @@ sidebar:
       title: Redirect
     - url: /payments/card/seamless-view
       title: Seamless View
-    - url: /payments/card/capture
-      title: Capture
     - url: /payments/card/direct
       title: Direct
+    - url: /payments/card/capture
+      title: Capture
     - url: /payments/card/mobile-card-payments
       title: Mobile Card Payments
     - url: /payments/card/after-payment
@@ -431,26 +431,6 @@ Content-Type: application/json
     "expiryDate": "MM/YYYY"
   }
 }
-```
-
-## Callback
-
-When a change or update from the back-end system are made on a payment or
-transaction, Swedbank Pay will perform a callback to inform the payee (merchant)
-about this update. `Callback` functionality is explaned in more detail
-[here][callback].
-
-```mermaid
-sequenceDiagram
-  activate SwedbankPay
-  SwedbankPay->>-Merchant: POST <callbackUrl>
-  activate Merchant
-  note left of Merchant: Callback by SwedbankPay
-  Merchant-->>SwedbankPay: HTTP response
-  Merchant->>-SwedbankPay: GET [credit card payment]
-  activate SwedbankPay
-  note left of Merchant: First API request
-  SwedbankPay-->>-Merchant: payment resource
 ```
 
 {% include iterator.html prev_href="mobile-card-payments" prev_title="Back: Mobile Card Payments"

@@ -124,7 +124,7 @@ The `orderItems` field of the `paymentOrder` is an array containing the items be
 |  ✔︎︎︎︎︎  | `reference`           | `string`  | A reference that identifies the order item.                                                                                                                                                                                    |
 |  ✔︎︎︎︎︎  | `name`                | `string`  | The name of the order item.                                                                                                                                                                                                    |
 |  ✔︎︎︎︎︎  | `type`                | `enum`    | `PRODUCT`, `SERVICE`, `SHIPPING_FEE`, `DISCOUNT`, `VALUE_CODE`, or `OTHER`. The type of the order item.                                                                                                                        |
-|  ✔︎︎︎︎︎  | `class`               | `string`  | The classification of the order item. Can be used for assigning the order item to a specific product category, such as `MobilePhone`. Note that `class` cannot contain spaces. Swedbank Pay may use this field for statistics. |
+|  ✔︎︎︎︎︎  | `class`               | `string`  | The classification of the order item. Can be used for assigning the order item to a specific product category, such as `MobilePhone`. Note that `class` cannot contain spaces and must follow the regex pattern `[\w]* (a-zA-Z0-9_)`. Swedbank Pay may use this field for statistics. |
 |          | `itemUrl`             | `string`  | The URL to a page that can display the purchased item, such as a product page                                                                                                                                                  |
 |          | `imageUrl`            | `string`  | The URL to an image of the order item.                                                                                                                                                                                         |
 |          | `description`         | `string`  | The human readable description of the order item.                                                                                                                                                                              |
@@ -523,11 +523,11 @@ with its `state` set to `Aborted`.
 
 ### Transactions
 
-{% include transactions.md %}
+{% include transactions.md payment_instrument="paymentorders" %}
 
 #### Transaction
 
-{% include transaction.md %}
+{% include transaction.md payment_instrument="paymentorders" %}
 
 ## Recurring Payments
 
@@ -624,6 +624,71 @@ Content-Type: application/json
     }
   }
 }
+```
+
+### Purchase Flow
+
+```mermaid
+sequenceDiagram
+    participant Payer
+    participant ConsumerSubscription
+    participant Merchant
+    participant SwedbankPay as Swedbank Pay
+
+    rect rgba(81,43,43,0.1)
+        note left of Payer: Checkin
+        activate Payer
+        Payer ->>+ SwedbankPay: Checkin procedure
+        deactivate Payer
+    end
+    rect rgba(55, 91, 134,0.1)
+        activate Payer
+        note left of Payer: Payment Menu
+        Payer ->>+ Merchant: Initiate Purchase
+        deactivate Payer
+        Merchant ->>+ SwedbankPay: POST/psp/paymentorders (generateRecurrenceToken = True)
+        deactivate Merchant
+        SwedbankPay -->>+ Merchant: rel:view-paymentorder
+        deactivate SwedbankPay
+        Merchant -->>- Payer: Display Payment Menu on Merchant Page
+        activate Payer
+        Payer ->> Payer: Initiate Payment Menu Hosted View (open iframe)
+        Payer -->>+ SwedbankPay: Show Payment UI page in iframe
+        deactivate Payer
+        SwedbankPay ->>+ Payer: Do payment logic
+        deactivate SwedbankPay
+        SwedbankPay -->>+ Merchant: POST Payment Callback
+        SwedbankPay -->>- Payer: Payment Status
+        Payer -->>+ Merchant: Redirect to Payment Complete URL
+        Merchant ->>+ SwedbankPay: GET/psp/paymentorders/<paymentOrderId>
+        SwedbankPay -->>+ Merchant: Payment Order Status
+    end
+    rect rgba(63, 204, 164,0.1)
+        note left of Payer: Capture
+        activate Merchant
+        Merchant ->>+ SwedbankPay: POST/psp/paymentorders/<paymentOrderId>/captures
+        deactivate Merchant
+        SwedbankPay -->>- Merchant: Capture status
+        note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>PaymentInstruments that support <br>Authorizations.
+    end
+    rect rgba(94, 108, 23,0.1)
+        note left of Payer: Recurring payment
+        activate ConsumerSubscription
+        ConsumerSubscription ->>+ Merchant: Start recurring payment
+        deactivate ConsumerSubscription
+        note left of Merchant: Server-to-Server request at a later date
+        activate Merchant
+        Merchant ->>+ SwedbankPay: POST Card Payments (operation=RECUR) (reccurenceToken included)
+        deactivate Merchant
+        SwedbankPay -->>- Merchant: Payment resource
+
+        opt [Intent=Authorization]
+            Merchant ->>+ SwedbankPay: Create-capture
+            SwedbankPay -->>- Merchant: Transaction resource
+        end
+        activate Merchant
+        Merchant -->>- ConsumerSubscription: display purchase result
+    end
 ```
 
 ## Purchase Payments
@@ -737,10 +802,10 @@ Content-Type: application/json
 
 {
     "paymentorder": "/psp/paymentorders/{{ page.payment_order_id }}",
-    "menuElementName": "creditcard",
+    "menuElementName": "paymentorders",
     "payment": {
         "recurrenceToken": "{{ page.payment_order_id }}",
-        "id": "/psp/creditcard/payments/{{ page.payment_order_id }}",
+        "id": "/psp/paymentorders/payments/{{ page.payment_order_id }}",
         "number": 1234567890,
         "instrument": "CreditCard",
         "created": "2016-09-14T13:21:29.3182115Z",
@@ -757,17 +822,17 @@ Content-Type: application/json
         "payerReference": "AB1234",
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",
-        "prices": { "id": "/psp/creditcard/payments/{{ page.payment_order_id }}/prices" },
-        "transactions": { "id": "/psp/creditcard/payments/{{ page.payment_order_id }}/transactions" },
-        "authorizations": { "id": "/psp/creditcard/payments/{{ page.payment_order_id }}/authorizations" },
-        "captures": { "id": "/psp/creditcard/payments/{{ page.payment_order_id }}/captures" },
-        "cancellations": { "id": "/psp/creditcard/payments/{{ page.payment_order_id }}/cancellations" },
-        "reversals": { "id": "/psp/creditcard/payments/{{ page.payment_order_id }}/reversals" },
-        "verifications": { "id": "/psp/creditcard/payments/{{ page.payment_order_id }}/verifications" },
-        "urls" : { "id": "/psp/creditcard/payments/{{ page.payment_order_id }}/urls" },
-        "payeeInfo" : { "id": "/psp/creditcard/payments/{{ page.payment_order_id }}/payeeInfo" },
-        "metadata" : { "id": "/psp/creditcard/payments/{{ page.payment_order_id }}/metadata" },
-        "settings": { "id": "/psp/creditcard/payments/{{ page.payment_order_id }}/settings" }
+        "prices": { "id": "/psp/paymentorders/payments/{{ page.payment_order_id }}/prices" },
+        "transactions": { "id": "/psp/paymentorders/payments/{{ page.payment_order_id }}/transactions" },
+        "authorizations": { "id": "/psp/paymentorderspayments/{{ page.payment_order_id }}/authorizations" },
+        "captures": { "id": "/psp/paymentorders/payments/{{ page.payment_order_id }}/captures" },
+        "cancellations": { "id": "/psp/paymentorders/payments/{{ page.payment_order_id }}/cancellations" },
+        "reversals": { "id": "/psp/paymentorders/payments/{{ page.payment_order_id }}/reversals" },
+        "verifications": { "id": "/psp/paymentorders/payments/{{ page.payment_order_id }}/verifications" },
+        "urls" : { "id": "/psp/paymentorderspayments/{{ page.payment_order_id }}/urls" },
+        "payeeInfo" : { "id": "/psp/paymentorders/payments/{{ page.payment_order_id }}/payeeInfo" },
+        "metadata" : { "id": "/psp/paymentorders/payments/{{ page.payment_order_id }}/metadata" },
+        "settings": { "id": "/psp/paymentorders/payments/{{ page.payment_order_id }}/settings" }
     },
     "operations": []
 }
@@ -801,7 +866,7 @@ Content-Type: application/json
 
 ### Prices Resource
 
-{% include prices.md %}
+{% include prices.md payment_instrument="paymentorders" %}
 
 ### Payer Resource
 
@@ -1030,7 +1095,7 @@ following event argument object:
 
 ```js
 {
-    "id": "/psp/creditcard/payments/{{ page.payment_id }}",
+    "id": "/psp/paymentorders/payments/{{ page.payment_id }}",
     "instrument": "creditcard | vipps | swish | invoice",
 }
 ```
@@ -1052,7 +1117,7 @@ object:
 
 ```js
 {
-    "id": "/psp/creditcard/payments/{{ page.payment_id }}",
+    "id": "/psp/paymentorders/payments/{{ page.payment_id }}",
     "redirectUrl": "https://en.wikipedia.org/wiki/Success"
 }
 ```
@@ -1074,7 +1139,7 @@ object:
 
 ```js
 {
-    "id": "/psp/creditcard/payments/{{ page.payment_id }}",
+    "id": "/psp/paymentorders/payments/{{ page.payment_id }}",
     "redirectUrl": "https://en.wikipedia.org/wiki/Canceled"
 }
 ```
@@ -1084,6 +1149,30 @@ object:
 | :------------ | :------- | :------------------------------------------------------------- |
 | `id`          | `string` | {% include field-description-id.md %}                          |
 | `redirectUrl` | `string` | The URI the user will be redirect to after a canceled payment. |
+
+### `onPaymentTransactionFailed`
+
+This event triggers when a payment attempt fails, further attempts can be made
+for the payment. An error message will appear in the payment UI, and the
+consumer will be able to try again or choose another payment instrument. The
+`onPaymentTransactionFailed` event is raised with the following event argument
+object:
+
+{:.code-header}
+**`onPaymentTransactionFailed` event object**
+
+```js
+{
+    "id": "/psp/paymentorders/payments/{{ page.payment_id }}",
+    "details": "[HttpCode ProblemTitle]"
+}
+```
+
+{:.table .table-striped}
+| Field         | Type     | Description                                                    |
+| :------------ | :------- | :------------------------------------------------------------- |
+| `id`          | `string` | {% include field-description-id.md %}                          |
+| `details`     | `string` | A human readable and descriptive text of the error.            |
 
 ### `onPaymentFailed`
 
@@ -1096,7 +1185,7 @@ event argument object:
 
 ```js
 {
-    "id": "/psp/creditcard/payments/{{ page.payment_id }}",
+    "id": "/psp/paymentorders/payments/{{ page.payment_id }}",
     "redirectUrl": "https://en.wikipedia.org/wiki/Failed"
 }
 ```
@@ -1243,7 +1332,7 @@ The structure of a problem message will look like this:
 
 ```js
 {
-    "type": "https://api.payex.com/psp/errordetail/creditcard/inputerror",
+    "type": "https://api.payex.com/psp/errordetail/paymentorders/inputerror",
     "title": "There was an input error",
     "detail": "Please correct the errors and retry the request",
     "instance": "{{ page.transaction_id }}",
@@ -1285,13 +1374,13 @@ although that might be possible in the future.
 | `systemerror`        | `500`  | A generic error message.                                                                                                                           |
 | `configurationerror` | `500`  | A error relating to configuration issues.                                                                                                          |
 
-{% include expand-parameter.md %}
+{% include expand-parameter.md payment_instrument="paymentorders" %}
 
-{% include payee-info.md payment_instrument="invoice" %}
+{% include payee-info.md payment_instrument="paymentorders" %}
 
 {% include merchant-authenticated-consumer.md %}
 
-{% include settlement-reconciliation.md %}
+{% include settlement-reconciliation.md payment_instrument="paymentorders" %}
 
 ## Updating Payment Menu
 

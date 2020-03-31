@@ -17,7 +17,7 @@ Content-Type: application/json
         "amount": 1500,
         "vatAmount": 375,
         "payeeReference": "ABC123",
-        "receiptReference": "3245766",
+        "receiptReference": "ABC122",
         "orderItems": [
             {
                 "reference": "P1",
@@ -60,14 +60,14 @@ Content-Type: application/json
 |  ✔︎︎︎︎︎  | `transaction`                  | `object`     | The transaction object.                                                                                                                                                                                                                                                                                               |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`amount`               | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                                                                                                             |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`vatAmount`            | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                                                                                                                          |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`payeeReference`       | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [`payeeReference`][payee-reference] for details. In Invoice Payments `payeereference` is used as an invoice/receipt number, if the `receiptreference` is not defined.       |
-|          | └➔&nbsp;`receiptReference`     | `string(30)` | A reference from the merchant system. In Invoice Payments `receiptreference` is used as an invoice/receipt number.                                                                                                                                                                                                    |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`payeeReference`       | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [`payeeReference`][payee-reference] for details. In Invoice Payments `payeeReference` is used as an invoice/receipt number, if the `receiptReference` is not defined.       |
+|     | └➔&nbsp;`receiptReference`       | `string(30)` | A unique reference from the merchant system. It is used to supplement `payeeReference` as an additional receipt number.          |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`description`          | `string`     | Textual description of why the transaction is reversed.                                                                                                                                                                                                                                                               |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`orderItems`           | `array`      | The array of items being purchased with the order. Used to print on invoices if the payer chooses to pay with invoice, among other things. Required in `capture` requests if already sent with the initial creation of the Payment Order. Note that this should only contain the items to be captured from the order. |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`reference`           | `string`     | A reference that identifies the order item.                                                                                                                                                                                                                                                                           |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`name`                | `string`     | The name of the order item.                                                                                                                                                                                                                                                                                           |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`type`                | `enum`       | `PRODUCT`, `SERVICE`, `SHIPPING_FEE`, `PAYMENT_FEE`, `DISCOUNT`, `VALUE_CODE` or `OTHER`. The type of the order item.                                                                                                                                                                                                 |
-|  ✔︎︎︎︎︎  | └─➔&nbsp;`class`               | `string`     | The classification of the order item. Can be used for assigning the order item to a specific product category, such as `MobilePhone`. Note that `class` cannot contain spaces. Swedbank Pay may use this field for statistics.                                                                                        |
+|  ✔︎︎︎︎︎  | └─➔&nbsp;`class`               | `string`     | The classification of the order item. Can be used for assigning the order item to a specific product category, such as `MobilePhone`. Note that `class` cannot contain spaces and must follow the regex pattern `[\w]* (a-zA-Z0-9_)`. Swedbank Pay may use this field for statistics.                                                                                        |
 |          | └─➔&nbsp;`itemUrl`             | `string`     | The URL to a page that can display the purchased item, product or similar.                                                                                                                                                                                                                                            |
 |          | └─➔&nbsp;`imageUrl`            | `string`     | The URL to an image of the order item.                                                                                                                                                                                                                                                                                |
 |          | └─➔&nbsp;`description`         | `string`     | The human readable description of the order item.                                                                                                                                                                                                                                                                     |
@@ -90,17 +90,18 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/creditcard/payments/{{ page.payment_order_id }}",
+    "payment": "/psp/paymentorders/payments/{{ page.payment_order_id }}",
     "reversals": {
-        "id": "/psp/creditcard/payments/{{ page.payment_order_id }}/cancellations/{{ page.transaction_id }}",
+        "id": "/psp/paymentorders/payments/{{ page.payment_order_id }}/cancellations/{{ page.transaction_id }}",
         "transaction": {
-            "id": "/psp/creditcard/payments/{{ page.payment_order_id }}/transactions/{{ page.transaction_id }}",
+            "id": "/psp/paymentorders/payments/{{ page.payment_order_id }}/transactions/{{ page.transaction_id }}",
             "type": "Reversal",
             "state": "Completed",
             "amount": 15610,
             "vatAmount": 3122,
             "description": "Reversing the capture amount",
-            "payeeReference": "ABC987"
+            "payeeReference": "ABC987",
+            "receiptReference": "ABC986"
         }
     }
 }
@@ -123,3 +124,4 @@ Content-Type: application/json
 | └─➔&nbsp;`vatAmount`      | `integer` | {% include field-description-vatamount.md %}                                                                                                                                                                 |
 | └─➔&nbsp;`description`    | `string`  | A human readable description of maximum 40 characters of the transaction.                                                                                                                                    |
 | └─➔&nbsp;`payeeReference` | `string`  | A unique reference for the transaction. See [`payeeReference`][payee-reference] for details. In Invoice Payments `payeereference` is used as an invoice/receipt number.                                      |
+| └➔&nbsp;`receiptReference` | `string(30)` | A unique reference from the merchant system. It is used to supplement `payeeReference` as an additional receipt number. |

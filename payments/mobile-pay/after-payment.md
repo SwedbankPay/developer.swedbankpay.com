@@ -122,42 +122,6 @@ Content-Type: application/json
 {% include transaction-response.md payment_instrument="mobilepay"
     transaction="cancel" %}
 
-### Finalize
-
-Finalizing a preauthorized payment is done as a `PATCH`  after a successful
-`Authorization` transaction has been created.
-The common use-case for the finalize operation is to authorize the payment
-(that has the preauthorization intent) and complete all payment related
-activities as soon as possible - in order to complete (finalize) everything
-server-to-server afterwards.
-The only allowed activity is `Finalize`. To use the operation, you should
-perform a `GET` on the payment after the user returns from the
-`redirect-authorization` operation and find the operation
-`update-authorization-finalize`.
-
-{:.code-header}
-**Request**
-
-```http
-PATCH /psp/creditcard/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }} HTTP/1.1
-Host: {{ page.api_host }}
-Authorization: Bearer <AccessToken>
-Content-Type: application/json
-
-{
-    "transaction": {
-        "activity": "Finalize"
-    }
-}
-```
-
-{:.table .table-striped}
-| ✔︎   | Field                  | Type     | Description |
-| :--- | :--------------------- | :------- | :---------- |
-| ✔︎   | `transaction.activity` | `string` | `Finalize`  |
-
-{% include transaction-response.md payment_instrument="mobilepay" transaction="finalize" %}
-
 ## Cancel Sequence
 
 Cancel can only be done on a authorized transaction.

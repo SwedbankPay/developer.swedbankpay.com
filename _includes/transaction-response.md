@@ -48,7 +48,8 @@ Content-Type: application/json
             "amount": 1000,
             "vatAmount": 250,
             "description": "Test transaction",
-            "payeeReference": "AH123456",
+            "payeeReference": "AH123456", {% if instrument == "invoice" %}
+            "receiptReference": "AH12355", {% endif %}
             "failedReason": "",
             "isOperational": false,
             "operations": [{% if instrument == "swish" and mcom == true %}
@@ -101,6 +102,7 @@ Content-Type: application/json
 | └─➔&nbsp;`vatAmount`              | `integer` | {% include field-description-vatamount.md %}                                                           |
 | └─➔&nbsp;`description`            | `string`  | A human readable description of maximum 40 characters of the transaction.                                                                                                                                    |
 | └─➔&nbsp;`payeeReference`         | `string`  | A unique reference for the transaction.                                                                                                                                                                      |
+| └─➔&nbsp;`receiptReference`       | `string`  | A unique reference for the transaction. This reference is used as an invoice/receipt number.                                                                                                                 |
 | └─➔&nbsp;`failedReason`           | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | └─➔&nbsp;`isOperational`          | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
 | └─➔&nbsp;`operations`             | `array`   | The array of operations that are possible to perform on the transaction in its current state.                                                                                                                |

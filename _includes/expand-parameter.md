@@ -1,3 +1,5 @@
+{% assign payment_instrument = include.payment_instrument | default: 'creditcard' %}
+
 ### Expansion
 
 The payment resource contain the ID of related sub-resources in its response
@@ -19,7 +21,7 @@ response, enabling you to access information from these sub-resources.
 **Expansion**
 
 ```http
-GET /psp/creditcard/payments/{{ page.payment_id }}?$expand=urls,authorizations HTTP/1.1
+GET /psp/{{ payment_instrument }}/payments/{{ page.payment_id }}?$expand=urls,authorizations HTTP/1.1
 Host: {{ page.api_host }}
 ```
 

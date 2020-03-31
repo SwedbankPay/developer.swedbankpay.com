@@ -174,7 +174,7 @@ be connected to a Swish account.
 
 {% include prices.md payment_instrument="swish" %}
 
-{% include payee-info.md %}
+{% include payee-info.md payment_instrument="swish" %}
 
 {% include expand-parameter.md %}
 
@@ -505,6 +505,9 @@ Content-Type: application/json
     "detail": "A system error occurred. We are working on it."
 }
 ```
+
+{% include iterator.html prev_href="after-payment" prev_title="Back: After
+Payment" %}
 
 [payee-reference]: #payeeReference
 [transaction-resource]: #Transactions
