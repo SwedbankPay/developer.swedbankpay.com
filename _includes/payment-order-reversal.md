@@ -17,7 +17,7 @@ Content-Type: application/json
         "amount": 1500,
         "vatAmount": 375,
         "payeeReference": "ABC123",
-        "receiptReference": "3245766",
+        "receiptReference": "ABC122",
         "orderItems": [
             {
                 "reference": "P1",
@@ -60,8 +60,8 @@ Content-Type: application/json
 |  ✔︎︎︎︎︎  | `transaction`                  | `object`     | The transaction object.                                                                                                                                                                                                                                                                                               |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`amount`               | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                                                                                                             |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`vatAmount`            | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                                                                                                                          |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`payeeReference`       | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [`payeeReference`][payee-reference] for details. In Invoice Payments `payeereference` is used as an invoice/receipt number, if the `receiptreference` is not defined.       |
-|          | └➔&nbsp;`receiptReference`     | `string(30)` | A reference from the merchant system. In Invoice Payments `receiptreference` is used as an invoice/receipt number.                                                                                                                                                                                                    |
+|  ✔︎︎︎︎︎  | └➔&nbsp;`payeeReference`       | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [`payeeReference`][payee-reference] for details. In Invoice Payments `payeeReference` is used as an invoice/receipt number, if the `receiptReference` is not defined.       |
+|     | └➔&nbsp;`receiptReference`       | `string(30)` | A unique reference from the merchant system. It is used to supplement `payeeReference` as an additional receipt number.          |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`description`          | `string`     | Textual description of why the transaction is reversed.                                                                                                                                                                                                                                                               |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`orderItems`           | `array`      | The array of items being purchased with the order. Used to print on invoices if the payer chooses to pay with invoice, among other things. Required in `capture` requests if already sent with the initial creation of the Payment Order. Note that this should only contain the items to be captured from the order. |
 |  ✔︎︎︎︎︎  | └─➔&nbsp;`reference`           | `string`     | A reference that identifies the order item.                                                                                                                                                                                                                                                                           |
@@ -100,7 +100,8 @@ Content-Type: application/json
             "amount": 15610,
             "vatAmount": 3122,
             "description": "Reversing the capture amount",
-            "payeeReference": "ABC987"
+            "payeeReference": "ABC987",
+            "receiptReference": "ABC986"
         }
     }
 }
@@ -123,3 +124,5 @@ Content-Type: application/json
 | └─➔&nbsp;`vatAmount`      | `integer` | {% include field-description-vatamount.md %}                                                                                                                                                                 |
 | └─➔&nbsp;`description`    | `string`  | A human readable description of maximum 40 characters of the transaction.                                                                                                                                    |
 | └─➔&nbsp;`payeeReference` | `string`  | A unique reference for the transaction. See [`payeeReference`][payee-reference] for details. In Invoice Payments `payeereference` is used as an invoice/receipt number.                                      |
+
+| └➔&nbsp;`receiptReference` | `string(30)` | A unique reference from the merchant system. It is used to supplement `payeeReference` as an additional receipt number. |
