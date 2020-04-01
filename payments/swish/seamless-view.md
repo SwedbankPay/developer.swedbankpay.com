@@ -323,6 +323,7 @@ next_href="after-payment" next_title="Next: After Payment" %}
 
 [callback]: /payments/swish/other-features#callback
 [create-payment]: /payments/swish/after-payment#create-payment
+[description]: /payments/swish/other-features#description
 [payee-reference]: /payments/swish/other-features#payeereference
 [price-resource]: /payments/swish/other-features#prices
 [purchase]: /payments/swish/other-features#purchase
