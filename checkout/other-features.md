@@ -33,6 +33,8 @@ To create a payment order, you perform a `POST` request towards the
 
 {% include payment-order-purchase.md %}
 
+{% include description.md %}
+
 #### Response
 
 The response given when creating a payment order is equivalent to a `GET`

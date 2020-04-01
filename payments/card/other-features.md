@@ -46,6 +46,8 @@ document is described in the following section.
 
 {% include complete-url.md %}
 
+{% include description.md %}
+
 {% include recur.md %}
 
 {% include unscheduled-purchase.md %}
