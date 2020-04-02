@@ -33,39 +33,43 @@ both the integration and the payer.
 
 {% if full_reference %}
 
-This parameter is used by the Seamless view flow (must be used for App webview
-design). Some payment instruments only works when owning the full
-browser page (no iframes), this will be solved by redirecting
-out of the Seamless view (3-D secure etc).
+`paymentUrl` is used by the Seamless View flow and **must** be used for
+WebView-based app implementations. Some payment instruments only work when
+owning the full browser page (no use of `<iframe>`), this will be solved by
+doing a full browser (top frame) redirect out of the Seamless View. 3-D Secure
+requires this, for example.
 
-For mobile flows some payment instruments works best when App2App switching is
-enabled and handled automatically (Swish, Vipps etc).
-To solve this it is important that the third party app or site understand
-where to redirect the consumer back to after the flow on their end is completed.
+For mobile flows, some payment instruments work best when app-to-app switching
+is enabled and handled automatically (Swish, Vipps etc). To solve this, it is
+important that the third party app or site understand where to redirect the
+consumer back to after the flow on their end is completed.
 
-The paymentUrl is where you provide Swedbank Pay with an endpoint that we will
-provide to the third party for handling this redirect back to your site/app.
-When receiving the consumer back on the `paymentUrl` either in an app or on the
-web page it is important to restore the Seamless view to let the payment finalize the flow.
-For InApp it is important that you either implement the `OnPaymentCompleted`
-event or let the Seamless view redirect to the `completeUrl` before intercepting
-the web view. If you intercept the web view when the consumer device is
-redirected to the `paymentUrl` it can lead to issues. If you want to handle payment
-errors in your own code, you should also subscribe to other events provided by
-the Seamless view javascript and shut down the Seamless view if any of this
-events occurs. Events to subscribe to for full control over the payment flow:
+The `paymentUrl` is the URL Swedbank Pay will provide to the third party for
+handling the redirect back to your site or app. When receiving the consumer back
+on the `paymentUrl` either in an app or web page it is important to restore the
+Seamless View to let the payment finalize the flow. For in-app it is important
+that you either implement the `onPaymentCompleted` event or let the Seamless
+View redirect to the `completeUrl` before intercepting the WebView. If you
+intercept the WebView when the consumer device is redirected to the `paymentUrl`
+it can lead to issues. If you want to handle payment errors in your own code,
+you should also subscribe to other events provided by the Seamless View
+JavaScript and shut down the Seamless View if any of these events occur.
 
-* `OnError`: will trigger any time a system error occur from the javascript
-* `OnPaymentFailed`: will call registrered endpoint if provided. If not
-subscribed to will redirect to conpleteUrl
-* `OnPaymentCanceled`: will be called if the payment is aborted by the consumer
-or triggered by you with the Abort command on the payment
-* `OnPaymentTransactionFailed`: this will trigger if one payment attempt failed.
-Standard functionality are to let the consumer be able to retry the payment from
-the payment page.
+Events to subscribe to for full control over the payment flow are:
 
-When implementing the seamless view flow into a web view in your mobile app,
-you should send in a custom scheme in the `paymentUrl` for handling automatic
-switching between your app and the payment app on the mobile device.
+{:.table .table-striped}
+| Event                        | Description                                                                                                                                         |
+| :--------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `onError`                    | Will trigger any time a system error occur from the JavaScript.                                                                                     |
+| `onPaymentFailed`            | will call registrered endpoint if provided. If not subscribed to will redirect to conpleteUrl                                                       |
+| `onPaymentCanceled`          | will be called if the payment is aborted by the consumer or triggered by you with the Abort command on the payment                                  |
+| `onPaymentTransactionFailed` | this will trigger if one payment attempt failed. Standard functionality are to let the consumer be able to retry the payment from the payment page. |
 
+When implementing the Seamless View flow into a WebView in your mobile app, you
+should use a [custom scheme][custom-scheme] or [Universal Link][universal-link]
+in the `paymentUrl` for handling automatic switching between your app and the
+payment app on the mobile device.
+
+[custom-scheme]: https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content/defining_a_custom_url_scheme_for_your_app
+[universal-link]: https://developer.apple.com/ios/universal-links/
 {% endif %}
