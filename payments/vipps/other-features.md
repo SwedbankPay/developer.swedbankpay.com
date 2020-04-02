@@ -193,7 +193,11 @@ payment altogether or creating an authorization transaction through the
 
 {% include prices.md payment_instrument="vipps" %}
 
+{% include description.md %}
+
 {% include payee-info.md payment_instrument="vipps" %}
+
+{% include payee-reference.md %}
 
 {% include transactions-reference.md payment_instrument="vipps" %}
 

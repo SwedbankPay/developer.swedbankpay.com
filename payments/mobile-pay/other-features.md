@@ -201,6 +201,8 @@ expanded sub-resources inlined.
 }
 ```
 
+{% include description.md %}
+
 ## Operations
 
 When a payment resource is created and during its lifetime, it will have a set
