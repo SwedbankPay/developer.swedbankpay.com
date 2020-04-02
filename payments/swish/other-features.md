@@ -172,6 +172,12 @@ be connected to a Swish account.
 
 {% include payment-link.md show_3d_secure=false show_authorization=false %}
 
+{% include complete-url.md %}
+
+## Payment Url
+
+{% include payment-url.md full_reference=true %}
+
 {% include prices.md payment_instrument="swish" %}
 
 {% include payee-info.md payment_instrument="swish" %}

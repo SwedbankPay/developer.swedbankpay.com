@@ -267,6 +267,8 @@ request for the given operation.
 | `create-cancellation`    | Creates a [cancellation][cancellation-transaction] transaction.              |
 | `create-reversal`        | Creates a [reversal][reversal-transaction] transaction.                      |
 
+{% include complete-url.md %}
+
 ## MobilePay Online transactions
 
 All MobilePay Online specific transactions are described below.

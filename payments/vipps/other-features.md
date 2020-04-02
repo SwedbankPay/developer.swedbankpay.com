@@ -185,6 +185,12 @@ payment altogether or creating an authorization transaction through the
 }
 ```
 
+{% include complete-url.md %}
+
+## Payment Url
+
+{% include payment-url.md full_reference=true %}
+
 {% include prices.md payment_instrument="vipps" %}
 
 {% include payee-info.md payment_instrument="vipps" %}

@@ -61,7 +61,7 @@ underlying payments or transaction.
 
 {% include payment-url.md payment_order=true
 when="selecting the payment instrument Vipps or in the 3-D Secure verification
-for Credit Card Payments" %}
+for Credit Card Payments" full_reference=true %}
 
 #### URLs Resource
 
@@ -266,6 +266,8 @@ for the given operation.
 | `create-paymentorder-reversal`    | Used to reverse a payment. It is only possible to reverse a payment that has been captured and not yet reversed.                                                                                                                                                               |
 | `paid-paymentorder`               | Returns the information about a paymentorder that has the status `paid`.                                                                                                                                                                                                       |
 | `failed-paymentorder`             | Returns the information about a paymentorder that has the status `failed`.                                                                                                                                                                                                     |
+
+{% include complete-url.md %}
 
 ### View Payment Order
 
