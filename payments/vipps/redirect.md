@@ -75,7 +75,6 @@ Content-Type: application/json
         "description": "Test Purchase",
         "payerReference": "AB1234",
         "userAgent": "Mozilla/5.0...",
-        "pageStripdown": true,
         "language": "nb-NO",
         "urls": {
             "hostUrls": [ "https://example.net" ],
