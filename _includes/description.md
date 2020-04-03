@@ -57,3 +57,4 @@ Content-Type: application/json
 
 [description-field-redirect]: /assets/screenshots/description-field/description-field-redirect.png
 [description-field-seamless]: /assets/screenshots/description-field/description-field-seamless.png
+
