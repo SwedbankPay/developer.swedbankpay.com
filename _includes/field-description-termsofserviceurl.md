@@ -16,5 +16,3 @@ It's essential to have control over newlines in this file. If unintentional
 newlines sneak into what's rendered by this include, it will break all tables
 it is included in, so please beware.
 {%- endcomment -%}
-
-
