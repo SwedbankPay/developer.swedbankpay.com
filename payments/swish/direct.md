@@ -389,7 +389,7 @@ sequenceDiagram
   Merchant-->>-Browser: Payment Status
 ```
 
-{% include iterator.html prev_href="introduction" prev_title="Back: Introduction"
+{% include iterator.html prev_href="./" prev_title="Back: Introduction"
 next_href="redirect" next_title="Next: Redirect" %}
 
 [swish-redirect-view]: /assets/screenshots/swish/redirect-view/view/windows-small-window.png

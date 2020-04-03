@@ -69,7 +69,7 @@ operations][after-payment] and the [payment resource][payment-resource].
 
 As a part of the setup, you will need a Swish certificate. There are two ways of
 doing this. You can apply for Swish as part of [Swedbank Pay Settlement
-Service][settlement-service]), and utilize the Swedbank Pay Technical Supplier
+Service][settlement-and-reconciliation]), and utilize the Swedbank Pay Technical Supplier
 Certificate. A [Swedbank Pay sales representative][payex-mailto] can assist you
 with this.
 
@@ -88,7 +88,7 @@ must be toggled on. The external integration demoshop used for testing is set up
 with the Merchant Swish Simulator, which enables you to test without using the
 Swish App.
 
-{% include iterator.html  next_href="direct" next_title="Next: Direct" %}
+{% include iterator.html next_href="direct" next_title="Next: Direct" %}
 
 [danske-bank]: https://danskebank.se/sv-se/foretag/medelstora-foretag/onlinetjanster/pages/swish-handel.aspx
 [handelsbanken]: https://www.handelsbanken.se/sv/foretag/konton-betalningar/ta-betalt/swish-for-foretag
@@ -98,6 +98,7 @@ Swish App.
 [payex-admin-portal]: https://admin.payex.com/psp/login/
 [payex-mailto]: mailto:sales@payex.com
 [SEB-swish]: https://seb.se/foretag/digitala-tjanster/swish-handel
+[settlement-and-reconciliation]: /payments/swish/other-features#settlement-and-reconciliation
 [sparbanken-oresund]: https://www.sparbankenskane.se/foretag/digitala-tjanster/swish/swish-for-handel/index.htm
 [sparbanken-syd]: https://www.sparbankensyd.se/vardagstjanster/betala/swish-foretag/
 [support-mailto]: mailto:support.ecom@swedbankpay.se
