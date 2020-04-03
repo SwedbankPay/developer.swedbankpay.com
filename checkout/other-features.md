@@ -116,7 +116,7 @@ Content-Type: application/json
 
 ### Order Items
 
-The `orderItems` field of the `paymentOrder` is an array containing the items being purchased with the order. Used to print on invoices if the payer chooses to pay with invoice, among other things. Order items is required in all requests. It should be specified on both payment order creation as well as on [Capture][payment-order-capture].
+The `orderItems` field of the `paymentOrder` is an array containing the items being purchased with the order. Used to print on invoices if the payer chooses to pay with invoice, among other things. `orderItems` is required in all requests. It should be specified on both payment order creation as well as on [Capture][payment-order-capture].
 
 {:.table .table-striped}
 | Required | Field                 | Type      | Description                                                                                                                                                                                                                    |
