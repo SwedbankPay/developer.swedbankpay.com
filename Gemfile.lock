@@ -57,6 +57,7 @@ GEM
     jekyll-github-metadata (2.13.0)
       jekyll (>= 3.4, < 5.0)
       octokit (~> 4.0, != 4.4.0)
+    jekyll-material-icon-tag (1.0.4)
     jekyll-remote-theme (0.4.2)
       addressable (~> 2.0)
       jekyll (>= 3.5, < 5.0)
@@ -73,6 +74,7 @@ GEM
     kramdown (2.1.0)
     kramdown-parser-gfm (1.1.0)
       kramdown (~> 2.0)
+    kramdown-plantuml (1.0.1)
     liquid (4.0.3)
     listen (3.2.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
@@ -140,8 +142,10 @@ DEPENDENCIES
   jekyll (~> 4.0)
   jekyll-assets
   jekyll-github-metadata
+  jekyll-material-icon-tag
   jekyll-remote-theme
   jemoji
+  kramdown-plantuml
 
 BUNDLED WITH
    2.1.4
