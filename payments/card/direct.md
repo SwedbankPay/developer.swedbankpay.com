@@ -78,15 +78,15 @@ body="**Step 2** is to create an authorization transaction. Implement only
 Step 2a if **3-D secure authentication is enabled**. Note that if the issuer
 does **not require** 3-D Secure authentication, implement only Step 2b.
 You will see that the requests are the same for both steps.
-The significant difference is in the response headers,
-where Step 2a has `redirect-authentication`, which is needed for the payer to be
-redirected to complete the 3-D secure authentication." %}
+The difference is in the operations,
+where Step 2a has the `redirect-authentication` operation in its response.
+This is needed for the payer to be redirected to complete the 3-D secure authentication." %}
 
 ## Step 2a: Create an authorization transaction with 3-D secure
 
 If 3-D Secure authentication is required, the `rel` is set to
 `redirect-authentication` and the `state` is set to `AwaitingActivity`. This means that
-the payer will be redirected to complete the 3-D secure authentication. See the
+the payer will have to be redirected to complete the 3-D secure authentication. See the
 request and response example below.
 
 {:.code-header}
