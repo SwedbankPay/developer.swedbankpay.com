@@ -28,9 +28,12 @@ sidebar:
                       body="This section of the Developer Portal is under
                       review and may be incomplete or contain minor errors." %}
 
-{% include jumbotron.html body="The Direct Payment scenario **is used by
-customers that are compliant with PCI-DSS regulations**, and is a way to
-implement card payments without using Swedbank Pay hosted payment page." %}
+{% include jumbotron.html body="The Direct Payment scenario **is used by customers
+that are compliant with PCI-DSS regulations**, and is a way to implement Card
+Payments without using Swedbank Pay hosted payment page.
+Consumers will need to be redirected to 3-D Secure page at the issuing bank if
+that is required by the bank. It is up to each issuing bank if this
+is required for every payment." %}
 
 {% include alert.html type="danger" icon="error" header="PCI-DSS Complicance"
 body="The direct integration option requires you to collect the card data on
@@ -43,11 +46,15 @@ https://www.pcisecuritystandards.org/)." %}
   with gathered `Purchase` information.
 * The action taken next is the `direct-authorization` operation that is returned
   in the first request. You `POST` the payer's card data to the URL in
-  the[`direct-authorization` operation][authorization].
-* If 3-D Secure authentication is required, you will then receive a URL where
-  you will have to redirect the payer.
-* When the payment is completed, the payer needs to be redirected back to your
-  merchant/webshop site.
+  the [`direct-authorization`][authorization] operation.
+* If the issuer requires 3-D Secure authentication, you will then receive an
+  operation called `redirect-authentication`. You must redirect the payer to this
+  URL to let them authenticate against the issuers 3-D secure page.
+* When the 3-D Secure flow is completed, the payer needs to be redirected
+  back to your merchant/webshop site.
+* If the issuer does not require 3-D Secure authentication, the payment will
+  already be completed in the `direct-authorization` call. Note that this could
+  mean both that the payment is OK or Failed.
 * Finally you make a `GET` request towards Swedbank Pay with the `paymentID`
   received in the first step, which will return the purchase result.
 
@@ -66,92 +73,20 @@ An example of an expanded `POST` request is available in the
 
 {% include alert-callback-url.md payment_instrument="card" %}
 
-## Step 2a: Create an authorization transaction
+{% include alert.html type="neutral" icon="report_problem"
+body="**Step 2** is to create an authorization transaction. Implement only
+Step 2a if **3-D secure authentication is enabled**. Note that if the issuer
+does **not require** 3-D Secure authentication, implement only Step 2b.
+You will see that the requests are the same for both steps.
+The significant difference is in the response headers,
+where Step 2a has `redirect-authentication`, which is needed for the payer to be
+redirected to complete the 3-D secure authentication." %}
 
-The `direct-authorization` operation creates an authorization transaction
-directly whilst the `redirect-authorization` operation redirects the consumer to
-a Swedbank Pay hosted payment page, where the payment is authorized by the
-consumer. Below you will see the two first request and response headers, used
-when there is no 3-D secure authentication. Therefore, the `state` of the
-transaction is set to `Completed`. No `redirect-authentication` is needed
-and the `panEnrolled` is also set to `false`.
+## Step 2a: Create an authorization transaction with 3-D secure
 
-{:.code-header}
-**Request**
-
-```http
-POST /psp/creditcard/payments/{{ page.payment_id }}/authorizations HTTP/1.1
-Host: {{ page.api_host }}
-Authorization: Bearer <AccessToken>
-Content-Type: application/json
-
-{
-    "transaction": {
-        "cardNumber": "4547781087013329",
-        "cardExpiryMonth": "12",
-        "cardExpiryYear": "22",
-        "cardVerificationCode": "749",
-        "cardholderName": "Olivia Nyhuus",
-        "chosenCoBrand": "visa"
-    }
-}
-```
-
-{:.code-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "payment": "/psp/creditcard/payments/{{ page.payment_id }}",
-    "authorization": {
-        "direct": true,
-        "cardBrand": "Visa",
-        "cardType": "Credit",
-        "paymentToken": "{{ page.payment_token }}",
-        "maskedPan": "492500******0004",
-        "expiryDate": "12/2022",
-        "panToken": "eb488c77-8118-4c9f-b3b3-ff134936df64",
-        "panEnrolled": false,
-        "issuerAuthorizationApprovalCode": "L57226",
-        "acquirerTransactionType": "SSL",
-        "acquirerStan": "57226",
-        "acquirerTerminalId": "45",
-        "acquirerTransactionTime": "2020-03-10T14:13:52Z",
-        "nonPaymentToken": "ed4683a8-6d2a-4a14-b065-746a41316b8f",
-        "transactionInitiator": "CARDHOLDER",
-        "id": "/psp/creditcard/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }},
-        "transaction": {
-            "id": "/psp/creditcard/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
-            "created": "2020-03-10T13:13:52.2767764Z",
-            "updated": "2020-03-10T13:13:53.280398Z",
-            "type": "Authorization",
-            "state": "Completed",
-            "number": 70100366754,
-            "amount": 4201,
-            "vatAmount": 0,
-            "description": "Test transaction",
-            "payeeReference": "1583846025",
-            "isOperational": false,
-            "operations": [
-                {
-                    "method": "PATCH",
-                    "href": "https://api.stage.payex.com/psp/creditcard/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }}",
-                    "rel": "update-authorization-overchargedamount"
-                }
-            ]
-        }
-    }
-}
-```
-
-## Step 2b: Create an authorization transaction with 3-D secure
-
-If 3-D Secure authentication is needed, the `rel` is set to
-`redirect-authentication` and the `state` is `AwaitingActivity`. This means that
-the payer will have to be redirected to complete the 3-D secure authentication. See the
+If 3-D Secure authentication is required, the `rel` is set to
+`redirect-authentication` and the `state` is set to `AwaitingActivity`. This means that
+the payer will be redirected to complete the 3-D secure authentication. See the
 request and response example below.
 
 {:.code-header}
@@ -205,9 +140,9 @@ Content-Type: application/json
         "panToken": "cca2d98d-8bb3-4bd6-9cf3-365acbbaff96",
         "panEnrolled": true,
         "acquirerTransactionTime": "0001-01-01T00:00:00Z",
-        "id": ""/psp/creditcard/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }}",
+        "id": "/psp/creditcard/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }}",
         "transaction": {
-            "id": ""/psp/creditcard/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
+            "id": "/psp/creditcard/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
             "created": "2020-03-10T13:15:01.9586254Z",
             "updated": "2020-03-10T13:15:02.0493818Z",
             "type": "Authorization",
@@ -262,22 +197,85 @@ field-description-id.md resource="itemDescriptions" %}  |
 | └─➔&nbsp;`isOperational`          | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
 | └─➔&nbsp;`operations`             | `array`   | The array of operations that are possible to perform on the transaction in its current state.                                                                                                                |
 
-### 3-D Secure authentication
+## Step 2b: Create an authorization transaction with no 3-D secure authentication
 
-When dealing with credit card payments, 3-D Secure authentication of the
-cardholder is an essential topic. There are two alternative outcomes of a credit
-card payment:
+The `direct-authorization` operation creates an authorization transaction
+directly. This is used if the issuer does not require 3-D Secure authentication,
+and thus the payment will be completed directly after the call to `direct-authorization` transaction.
+Therefore, the `state` of the transaction is set to `Completed`.
+You can see an example of this below, with the two first request and response
+headers used when there is **no** 3-D secure authentication.
 
-* *3-D Secure enabled (by default):* 3-D Secure should be enabled, and
-  Swedbank Pay will check if the card is enrolled with 3-D Secure. This depends
-  on the issuer of the card. If the card is not enrolled with 3-D Secure, no
-  authentication of the cardholder is done.
-* *Card supports 3-D Secure:* If the card is enrolled with 3-D Secure,
-  Swedbank Pay will redirect the cardholder to the autentication mechanism that
-  is decided by the issuing bank. Normally this will be done using BankID or
-  Mobile BankID.
+{:.code-header}
+**Request**
 
-{% include card-general.md %}
+```http
+POST /psp/creditcard/payments/{{ page.payment_id }}/authorizations HTTP/1.1
+Host: {{ page.api_host }}
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+
+{
+    "transaction": {
+        "cardNumber": "4547781087013329",
+        "cardExpiryMonth": "12",
+        "cardExpiryYear": "22",
+        "cardVerificationCode": "749",
+        "cardholderName": "Olivia Nyhuus",
+        "chosenCoBrand": "visa"
+    }
+}
+```
+
+{:.code-header}
+**Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "payment": "/psp/creditcard/payments/{{ page.payment_id }}",
+    "authorization": {
+        "direct": true,
+        "cardBrand": "Visa",
+        "cardType": "Credit",
+        "paymentToken": "{{ page.payment_token }}",
+        "maskedPan": "492500******0004",
+        "expiryDate": "12/2022",
+        "panToken": "eb488c77-8118-4c9f-b3b3-ff134936df64",
+        "panEnrolled": false,
+        "issuerAuthorizationApprovalCode": "L57226",
+        "acquirerTransactionType": "SSL",
+        "acquirerStan": "57226",
+        "acquirerTerminalId": "45",
+        "acquirerTransactionTime": "2020-03-10T14:13:52Z",
+        "nonPaymentToken": "ed4683a8-6d2a-4a14-b065-746a41316b8f",
+        "transactionInitiator": "CARDHOLDER",
+        "id": "/psp/creditcard/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }}",
+        "transaction": {
+            "id": "/psp/creditcard/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
+            "created": "2020-03-10T13:13:52.2767764Z",
+            "updated": "2020-03-10T13:13:53.280398Z",
+            "type": "Authorization",
+            "state": "Completed",
+            "number": 70100366754,
+            "amount": 4201,
+            "vatAmount": 0,
+            "description": "Test transaction",
+            "payeeReference": "1583846025",
+            "isOperational": false,
+            "operations": [
+                {
+                    "method": "PATCH",
+                    "href": "https://api.stage.payex.com/psp/creditcard/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }}",
+                    "rel": "update-authorization-overchargedamount"
+                }
+            ]
+        }
+    }
+}
+```
 
 The sequence diagram below shows a high level description of a complete
 purchase, and the requests you have to send to Swedbank Pay.
