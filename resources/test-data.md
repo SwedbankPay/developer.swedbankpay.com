@@ -6,6 +6,8 @@ sidebar:
     items:
     - url: /resources/
       title: Introduction
+    - url: /sdk-libraries/
+      title: SDKs and Libraries 
     - url: /resources/test-data
       title: Test Data
     - url: /resources/demoshop

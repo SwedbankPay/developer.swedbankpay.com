@@ -6,6 +6,8 @@ sidebar:
     items:
     - url: /resources/
       title: Introduction
+    - url: /sdk-libraries/
+      title: SDKs and Libraries 
     - url: /resources/test-data
       title: Test Data
     - url: /resources/demoshop
@@ -90,7 +92,6 @@ sidebar:
 | **Swedbank Pay Direct API**     | A payment flow where the implementer (Swedbank Pay customer) handles all user intreraction and make direct API calls to Swedbank Pay (server-to-server).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | **Swedbank Pay Seamless View**  | A payment flow were the consumer interact with pages developed by Swedbank Pay directly through an iframe, directly embedded in the webshop/merchant site.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | **Swedbank Pay Payment Pages**  | A payment flow where the consumer get redirected to a payment page developed and hosted by Swedbank Pay.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-
 
 ### T
 
