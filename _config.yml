@@ -5,6 +5,8 @@ plugins:
   - "jekyll-github-metadata"
   - jemoji
   - jekyll-remote-theme
+  - jekyll-material-icon-tag
+  - "kramdown-plantuml"
 kramdown:
   input: GFM
   syntax_highlighter: rouge
