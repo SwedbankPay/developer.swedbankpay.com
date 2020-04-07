@@ -28,12 +28,12 @@ sidebar:
                       body="This section of the Developer Portal is under
                       review and may be incomplete or contain minor errors." %}
 
-{% include jumbotron.html body="The Direct Payment scenario **is used by customers
-that are compliant with PCI-DSS regulations**, and is a way to implement Card
-Payments without using Swedbank Pay hosted payment page.
+{% include jumbotron.html body="The Direct Payment scenario **is used by
+customers that are compliant with PCI-DSS regulations**, and is a way to
+implement Card Payments without using a Swedbank Pay hosted payment page.
 Consumers will need to be redirected to 3-D Secure page at the issuing bank if
-that is required by the bank. It is up to each issuing bank if this
-is required for every payment." %}
+required by the bank. Whether 3-D Secure authentication is required for every
+payment is up to each issuing bank." %}
 
 {% include alert.html type="danger" icon="error" header="PCI-DSS Complicance"
 body="The direct integration option requires you to collect the card data on
