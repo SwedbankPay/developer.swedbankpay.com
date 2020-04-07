@@ -73,14 +73,13 @@ An example of an expanded `POST` request is available in the
 
 {% include alert-callback-url.md payment_instrument="card" %}
 
-{% include alert.html type="neutral" icon="report_problem"
-body="**Step 2** is to create an authorization transaction. Implement only
-Step 2a if **3-D secure authentication is enabled**. Note that if the issuer
-does **not require** 3-D Secure authentication, implement only Step 2b.
-You will see that the requests are the same for both steps.
-The difference is in the operations,
-where Step 2a has the `redirect-authentication` operation in its response.
-This is needed for the payer to be redirected to complete the 3-D secure authentication." %}
+{% include alert.html type="neutral" icon="report_problem" body="**Step 2** is
+to create an authorization transaction. Implement only Step 2a if **3-D Secure
+authentication is enabled**. Note that if the issuer does **not require** 3-D
+Secure authentication, implement only Step 2b. You will see that the requests
+are the same for both steps. The difference is in the operations, where Step 2a
+has the `redirect-authentication` operation in its response. This is needed for
+the payer to be redirected to complete the 3-D Secure authentication." %}
 
 ## Step 2a: Create an authorization transaction with 3-D secure
 
