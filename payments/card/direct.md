@@ -203,7 +203,7 @@ directly. This is used if the issuer does not require 3-D Secure authentication,
 and thus the payment will be completed directly after the call to `direct-authorization` transaction.
 Therefore, the `state` of the transaction is set to `Completed`.
 You can see an example of this below, with the two first request and response
-headers used when there is **no** 3-D secure authentication.
+headers used when there is **no** 3-D Secure authentication.
 
 {:.code-header}
 **Request**
