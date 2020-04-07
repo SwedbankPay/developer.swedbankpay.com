@@ -196,7 +196,7 @@ field-description-id.md resource="itemDescriptions" %}  |
 | └─➔&nbsp;`isOperational`          | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
 | └─➔&nbsp;`operations`             | `array`   | The array of operations that are possible to perform on the transaction in its current state.                                                                                                                |
 
-## Step 2b: Create an authorization transaction with no 3-D secure authentication
+## Step 2b: Create an authorization transaction without 3-D Secure
 
 The `direct-authorization` operation creates an authorization transaction
 directly. This is used if the issuer does not require 3-D Secure authentication,
