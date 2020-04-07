@@ -16,8 +16,8 @@ Hi! Welcome to the **Swedbank Pay Developer Portal**.
 
 ### New to our API Platform
 
-That's okay, go ahead and look at the fundamental [technical information][technical-information].
-It will help you further on.
+That's okay, go ahead and look at the fundamental [technical
+information][technical-information]. It will help you further on.
 
 ### Know what product to integrate
 
