@@ -84,9 +84,9 @@ the payer to be redirected to complete the 3-D Secure authentication." %}
 ## Step 2a: Create an authorization transaction with 3-D secure
 
 If 3-D Secure authentication is required, the `rel` is set to
-`redirect-authentication` and the `state` is set to `AwaitingActivity`. This means that
-the payer will have to be redirected to complete the 3-D secure authentication. See the
-request and response example below.
+`redirect-authentication` and the `state` is set to `AwaitingActivity`. This
+means that the payer will have to be redirected to complete the 3-D Secure
+authentication. See the request and response example below.
 
 {:.code-header}
 **Request**
