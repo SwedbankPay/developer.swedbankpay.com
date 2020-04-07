@@ -7,8 +7,8 @@ When a change or update from the back-end system are made on a payment or
 transaction, Swedbank Pay will perform a callback to inform the payee (merchant)
 about this update.
 
-Setting a `callbackUrl` in the HTTP `POST` API is **mandatory**. Below there
-are three example scenarios to why this is important:
+Providing a `callbackUrl` in `POST` requests is **mandatory**. Below we provide
+three example scenarios of why this is important:
 
 1. If the payer closes the payment window, the merchant will never know what
     happened to the payment if `callbackUrl` is not implemented.
