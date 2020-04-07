@@ -12,11 +12,22 @@ sidebar:
 {% assign design_guide_version = site.design_guide.version | default: '4.1.0' %}
 {% assign design_guide_version_url = design_guide_base_url | append: '/v/' | append: design_guide_version %}
 
-Welcome to the **Swedbank Pay Developer Portal**. Please make your choice of
-product to integrate below or read on for more general information about
-Swedbank Pay's API platform. If you are new to Swedbank Pay's API Platform,
-you are strongly advised to read through our section with fundamental
-[technical information][technical-information].
+Hi! Welcome to the **Swedbank Pay Developer Portal**.
+<br>
+<br>
+
+**New to our API Platform?**
+
+That's okay, go ahead and look at the fundamental [technical information][technical-information].
+It will help you further on.
+<br>
+<br>
+
+**Know what product to integrate?**
+
+Nice, let's dive in. Click on the product below to get started.
+<br>
+<br>
 
 <div class="row">
   <div class="col-12 col-md-6 pt-3 pt-md-0 d-flex">
