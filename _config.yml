@@ -1,9 +1,22 @@
 repository: SwedbankPay/developer.swedbankpay.com
-remote_theme: SwedbankPay/swedbank-pay-design-guide-jekyll-theme@1.0.1
+remote_theme: SwedbankPay/swedbank-pay-design-guide-jekyll-theme@1.4.0
 exclude: ["Gemfile*", "Rakefile"]
 plugins:
   - "jekyll-github-metadata"
   - jemoji
+  - jekyll-remote-theme
+  - jekyll-material-icon-tag
+  - "kramdown-plantuml"
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    guess_lang: true
+    default_lang: html
+    css_class: 'highlight'
+    block:
+      line_numbers: true
+      start_line: 1
 tipue_search:
   include:
     pages: true
@@ -12,7 +25,7 @@ opengraph:
   image: /assets/img/swedbank-pay-developer-portal.png
 design_guide:
   base_url: https://design.swedbankpay.com
-  version: 4.3.0
+  version: 4.5.0
 search:
   enabled: true
   url: /search

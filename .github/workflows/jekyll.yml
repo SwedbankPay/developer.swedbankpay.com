@@ -1,4 +1,4 @@
-name: jekyll-build
+name: Jekyll site CI
 
 on: [push, pull_request]
 
@@ -8,11 +8,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Build the site in the jekyll/builder container
+    - uses: actions/checkout@v2
+    - name: Docker compose up
       run: |
-        docker run \
-          -v ${{ github.workspace }}:/srv/jekyll \
-          -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
-          jekyll/builder:latest /bin/bash \
-          -c "chmod 777 /srv/jekyll && jekyll build --future"
+        docker-compose \
+          -f docker-compose.yml \
+          -f docker-compose.ci.yml \
+          up -d
