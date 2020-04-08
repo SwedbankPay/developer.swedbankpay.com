@@ -19,8 +19,8 @@ process.
 {% endif %}
 {% if autocapture %}
 * **`AutoCapture` (one-phase)**: If you want the credit card to be charged
-  ( without additional operations), you will have to specify that the
-  intent of the purchase is `AutoCapture`. This is normally only allowed if
+  (without additional operations), you will have to specify that the
+  `intent` of the `Purchase` is `AutoCapture`. This is normally only allowed if
   the consumer purchases digital products with instant delivery/shipment.
   Check with your acquirer before using this feature. The amount will be
   reserved via the authorization and the credit card will be charged
