@@ -11,19 +11,21 @@ process.
 {% if show_authorization %}
 
 * **`Authorization` (two-phase)**: If you want the credit card to reserve the
-  amount, you will have to specify that the intent of the purchase is
-  Authorization. The amount will be reserved but not charged. You will (i.e.
-  when you are ready to ship the purchased products) have to make a
-  [capture][capture] or [cancel][cancel] request later on to fulfill the
-  transaction.
+  amount, you will have to specify that the `intent` of the `Purchase` is
+  Authorization. The amount will be reserved but not charged.
+  You will (i.e. when you are ready to ship the purchased products) have to
+  make a [Capture][capture] or [Cancel][cancel] request later on to fulfill
+  the transaction.
 {% endif %}
 {% if autocapture %}
-* **`AutoCapture` (one-phase)**:  If you want the credit card to be charged
-  right away, you will have to specify that the intent of the purchase is
-  `AutoCapture`. This is only allowed if the consumer purchases digital
-  products. The credit card will be charged automatically after authorization
-  and you don't need to do any more financial operations to fulfill the
-  transaction.
+* **`AutoCapture` (one-phase)**: If you want the credit card to be charged
+  (without additional operations), you will have to specify that the
+  `intent` of the `Purchase` is `AutoCapture`. This is normally only allowed if
+  the consumer purchases digital products with instant delivery/shipment.
+  Check with your acquirer before using this feature. The amount will be
+  reserved via the authorization and the credit card will be charged
+  automatically. You don't need to do any more financial
+  operations to fulfill the transaction.
 {% endif %}
 {% if sale %}
 * **`Sale` (one-phase)**: The `sale` intent is used by the payment instruments
