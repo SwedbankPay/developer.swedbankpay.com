@@ -26,31 +26,34 @@ Swish is the main Swedish payment app for mobile phones supported by all Swedish
 banks, making it one of the essential payment instruments for merchants
 operating in Sweden. According to Kantar Sifo, it is the preferred online
 payment method in the age group 18-40, and the payment method with the best
-convertion rates. We offer both mobile phone and browser based purchase flows on
-our redirect and seamless view platforms, in addition to direct API integration
-and Payment Link. Using the direct API integration will put you in charge of
-determining which device is being used, and whether the e- or m-commerce flow is
-the most suitable. We will do this for you.
+convertion rates.
 
-## Purchase Flow
+We offer both desktop and mobile phone payment flows in our Redirect and
+Seamless View integrations, in addition to Direct API and Payment Link.
+Three flexible ways of integrating, two conversion optimized payment flows.
+Using the Direct API integration will put you in charge of
+determining which device is being used, and whether the e- or m-commerce flow is
+the most suitable. We will do this for you in Redirect and Seamless view.
+
+## Payment Flow
 
 The following is a quick presentation of the purchase flow when using the
-redirect or seamless view. You can find in-depth descriptions of the separate
+Redirect or Seamless view. You can find in-depth descriptions of the separate
 flows in the corresponding sections.
 
-If you are using the e-commerce flow, the payer enters a Swish connected
-phone on Swedbank Pay's payment page (redirect) or in the `iframe` (seamless
-view) after the payment is created.
+In the desktop intended e-commerce flow, the payer enters a Swish connected mobile
+phone number on Swedbank Pay's payment page (Redirect) or in the `iframe` (Seamless
+View) after the payment is created.
 
 ![screenshot of the Swish redirect payment page with number input][swish-payment]{:height="500px" width="425px"}
 
 After pushing the pay button, the payer needs to open the Swish app and confirm
-the purchase. If you are using the redirect option, the payer will be
-redirected back to the merchant's site.
+the payment. If you are using the Redirect option, the payer will be
+Redirected back to the merchant's site.
 
-In the m-commerce flow, the payment page or `iframe` will only have a pay
-button, and no number input. The Swish app will be launched automatically when
-you push the pay button.
+In the mobile phone intended m-commerce flow, the payment page or `iframe` will
+only have a pay button, and no mobile phone number input is needed.
+The Swish app will be launched automatically when you push the pay button.
 
 ## Good To Know
 
@@ -67,23 +70,26 @@ operations][after-payment] and the [payment resource][payment-resource].
 
 ### Certificate
 
-As a part of the setup, you will need a Swish certificate. There are two ways of
-doing this. You can apply for Swish as part of [Swedbank Pay Settlement
-Service][settlement-and-reconciliation]), and utilize the Swedbank Pay Technical Supplier
-Certificate. A [Swedbank Pay sales representative][payex-mailto] can assist you
-with this.
+We recommend that you apply for Swish as part of our Settlement Service and
+utilize our Technical Supplier Certificate. A Swedbank Pay sales representative
+can assist you with this. The Settlement Service will provide you with
+aggregated and reconciled reports and payments. The Technical Supplier
+Certificate means setup will be quicker and you will not have to assign a point
+of contact to monitor and renew a certificate.
 
-Otherwise, you can contact one of the following banks offering Swish Handel:
-[Danske Bank][danske-bank], [SEB][SEB-swish], [Länsförsäkringar], [Sparbanken
-Syd][sparbanken-syd], [Sparbanken Öresund][sparbanken-oresund],
+You could also contact one of the following banks offering Swish Handel:
+[Danske Bank][danske-bank], [SEB][SEB-swish],
+[Länsförsäkringar][Länsförsäkringar],
+[Sparbanken Syd][sparbanken-syd], [Sparbanken Öresund][sparbanken-oresund],
 [Nordea][nordea], [Handelsbanken][handelsbanken], in order to get an acquiring
 agreement, a Swish alias and access to [Swish Certificate Management
-system][swish-certificate-management-system].
+system][swish-certificate-management-system](several banks do however support
+Technical Supplier Certificate setups so you can ask them for that).
 
 ### Demoshop
 
-You can give Swish a go in our demoshop if you like. For redirect payments, you
-need to toggle `paymentUrl` off, if you want to try seamless view, `paymentUrl`
+You can give Swish a go in our demoshop if you like. For Redirect payments, you
+need to toggle `paymentUrl` off, if you want to try Seamless View, `paymentUrl`
 must be toggled on. The external integration demoshop used for testing is set up
 with the Merchant Swish Simulator, which enables you to test without using the
 Swish App.
