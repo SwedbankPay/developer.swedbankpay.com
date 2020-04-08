@@ -83,7 +83,7 @@ You could also contact one of the following banks offering Swish Handel:
 [Sparbanken Syd][sparbanken-syd], [Sparbanken Öresund][sparbanken-oresund],
 [Nordea][nordea], [Handelsbanken][handelsbanken], in order to get an acquiring
 agreement, a Swish alias and access to [Swish Certificate Management
-system][swish-certificate-management-system](everal banks do however support
+system][swish-certificate-management-system](several banks do however support
 Technical Supplier Certificate setups so you can ask them for that).
 
 ### Demoshop
