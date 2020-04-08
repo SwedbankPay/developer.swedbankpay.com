@@ -44,7 +44,7 @@ body="The direct integration option requires you to collect the card data on
 your website, which means it must be [PCI-DSS Compliant](
 https://www.pcisecuritystandards.org/)." %}
 
-## Summary
+## Payment flow
 
 Below is a quick stepwise summary of how the Direct Card Payment scenario works.
 
