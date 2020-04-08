@@ -11,7 +11,7 @@ process.
 {% if show_authorization %}
 
 * **`Authorization` (two-phase)**: If you want the credit card to reserve the
-  amount, you will have to specify that the intent of the purchase is
+  amount, you will have to specify that the `intent` of the `Purchase` is
   Authorization. The amount will be reserved but not charged.
   You will (i.e. when you are ready to ship the purchased products) have to
   make a [Capture][capture] or [Cancel][cancel] request later on to fulfill
