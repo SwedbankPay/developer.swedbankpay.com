@@ -116,14 +116,14 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Field                             | Type      | Description                                                                     |
+| Required | Field                          | Type      | Description                                                                     |
 | :------: | :----------------------------- | :-------- | :------------------------------------------------------------------------------ |
 |  ✔︎︎︎︎︎  | `transaction`                  | `object`  | The transaction object.                                                         |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`cardNumber`           | `string`  | Primary Account Number (PAN) of the card, printed on the face of the card.      |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`cardExpiryMonth`      | `integer` | Expiry month of the card, printed on the face of the card.                      |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`cardExpiryYear`       | `integer` | Expiry year of the card, printed on the face of the card.                       |
 |          | └➔&nbsp;`cardVerificationCode` | `string`  | Card verification code (CVC/CVV/CVC2), usually printed on the back of the card. |
-|          | └➔&nbsp;`cardholderName`       | `string`  | Name of the cardholder, usually printed on the face of the card.                 |
+|          | └➔&nbsp;`cardholderName`       | `string`  | Name of the cardholder, usually printed on the face of the card.                |
 
 {:.code-header}
 **Response**
@@ -174,36 +174,35 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Field                                                  | Type      | Description                                                                                                                                                                                                  |
-| :----------------------------------------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `payment`                                              | `object`  | The payment object.                                                                                                                                                                                          |
-| `authorization`                                        | `object`  | The authorization object.                                                                                                                                                                                    |
-| └➔&nbsp;`direct`                                       | `string`  | The type of the authorization.                                                                                                                                                                               |
-| └➔&nbsp;`cardBrand`                                    | `string`  | `Visa`, `MC`, etc. The brand of the card.                                                                                                                                                                    |
-| └➔&nbsp;`cardType`                                     | `string`  | `Credit Card` or `Debit Card`. Indicates the type of card used for the authorization.                                                                                                                        |
-| └➔&nbsp;`issuingBank`                                  | `string`  | The name of the bank that issued the card used for the authorization.                                                                                                                                        |
-| └➔&nbsp;`paymentToken`                                 | `string`  | The payment token created for the card used in the authorization.                                                                                                                                            |
-| └➔&nbsp;`maskedPan`                                    | `string`  | The masked PAN number of the card.                                                                                                                                                                           |
-| └➔&nbsp;`expiryDate`                                   | `string`  | The month and year of when the card expires.                                                                                                                                                                 |
-| └➔&nbsp;`panToken`                                     | `string`  | The token representing the specific PAN of the card.                                                                                                                                                         |
-| └➔&nbsp;`panEnrolled`                                  | `string`  |                                                                                                                                                                                                              |
-| └➔&nbsp;`acquirerTransactionTime`                      | `string`  | `3DSECURE` or `SSL`. Indicates the transaction type of the acquirer.                                                                                                                                         |
-| └➔&nbsp;`id`                                           | `string`  | {% include                                                                                                                                                                                                   |
-| field-description-id.md resource="itemDescriptions" %} |
-| └➔&nbsp;`transaction`                                  | `object`  | The object representation of the generic transaction resource.                                                                                                                                               |
-| └─➔&nbsp;`id`                                          | `string`  | {% include field-description-id.md resource="transaction" %}                                                                                                                                                 |
-| └─➔&nbsp;`created`                                     | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
-| └─➔&nbsp;`updated`                                     | `string`  | The ISO-8601 date and time of when the transaction was updated.                                                                                                                                              |
-| └─➔&nbsp;`type`                                        | `string`  | Indicates the transaction type.                                                                                                                                                                              |
-| └─➔&nbsp;`state`                                       | `string`  | `Initialized`, `Completed` or `Failed`. Indicates the state of the transaction.                                                                                                                              |
-| └─➔&nbsp;`number`                                      | `string`  | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead. |
-| └─➔&nbsp;`amount`                                      | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` = 100.00 NOK, `5000` = 50.00 SEK.                                                                                     |
-| └─➔&nbsp;`vatAmount`                                   | `integer` | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                           |
-| └─➔&nbsp;`description`                                 | `string`  | A human readable description of maximum 40 characters of the transaction.                                                                                                                                    |
-| └─➔&nbsp;`payeeReference`                              | `string`  | A unique reference for the transaction.                                                                                                                                                                      |
-| └─➔&nbsp;`failedReason`                                | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
-| └─➔&nbsp;`isOperational`                               | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
-| └─➔&nbsp;`operations`                                  | `array`   | The array of operations that are possible to perform on the transaction in its current state.                                                                                                                |
+| Field                             | Type      | Description                                                                                                                                                                                                  |
+| :-------------------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `payment`                         | `object`  | The payment object.                                                                                                                                                                                          |
+| `authorization`                   | `object`  | The authorization object.                                                                                                                                                                                    |
+| └➔&nbsp;`direct`                  | `string`  | The type of the authorization.                                                                                                                                                                               |
+| └➔&nbsp;`cardBrand`               | `string`  | `Visa`, `MC`, etc. The brand of the card.                                                                                                                                                                    |
+| └➔&nbsp;`cardType`                | `string`  | `Credit Card` or `Debit Card`. Indicates the type of card used for the authorization.                                                                                                                        |
+| └➔&nbsp;`issuingBank`             | `string`  | The name of the bank that issued the card used for the authorization.                                                                                                                                        |
+| └➔&nbsp;`paymentToken`            | `string`  | The payment token created for the card used in the authorization.                                                                                                                                            |
+| └➔&nbsp;`maskedPan`               | `string`  | The masked PAN number of the card.                                                                                                                                                                           |
+| └➔&nbsp;`expiryDate`              | `string`  | The month and year of when the card expires.                                                                                                                                                                 |
+| └➔&nbsp;`panToken`                | `string`  | The token representing the specific PAN of the card.                                                                                                                                                         |
+| └➔&nbsp;`panEnrolled`             | `string`  |                                                                                                                                                                                                              |
+| └➔&nbsp;`acquirerTransactionTime` | `string`  | `3DSECURE` or `SSL`. Indicates the transaction type of the acquirer.                                                                                                                                         |
+| └➔&nbsp;`id`                      | `string`  | {% include field-description-id.md resource="itemDescriptions" %}                                                                                                                                            |
+| └➔&nbsp;`transaction`             | `object`  | The object representation of the generic transaction resource.                                                                                                                                               |
+| └─➔&nbsp;`id`                     | `string`  | {% include field-description-id.md resource="transaction" %}                                                                                                                                                 |
+| └─➔&nbsp;`created`                | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
+| └─➔&nbsp;`updated`                | `string`  | The ISO-8601 date and time of when the transaction was updated.                                                                                                                                              |
+| └─➔&nbsp;`type`                   | `string`  | Indicates the transaction type.                                                                                                                                                                              |
+| └─➔&nbsp;`state`                  | `string`  | `Initialized`, `Completed` or `Failed`. Indicates the state of the transaction.                                                                                                                              |
+| └─➔&nbsp;`number`                 | `string`  | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead. |
+| └─➔&nbsp;`amount`                 | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` = 100.00 NOK, `5000` = 50.00 SEK.                                                                                     |
+| └─➔&nbsp;`vatAmount`              | `integer` | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                           |
+| └─➔&nbsp;`description`            | `string`  | A human readable description of maximum 40 characters of the transaction.                                                                                                                                    |
+| └─➔&nbsp;`payeeReference`         | `string`  | A unique reference for the transaction.                                                                                                                                                                      |
+| └─➔&nbsp;`failedReason`           | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
+| └─➔&nbsp;`isOperational`          | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
+| └─➔&nbsp;`operations`             | `array`   | The array of operations that are possible to perform on the transaction in its current state.                                                                                                                |
 
 If the issuer does not require 3-D Secure authentication, the payment will be
 completed after the `direct-authorization` request and the `state` of the
@@ -245,14 +244,14 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Field                       | Type      | Description                                                                     |
+| Required | Field                          | Type      | Description                                                                     |
 | :------: | :----------------------------- | :-------- | :------------------------------------------------------------------------------ |
 |  ✔︎︎︎︎︎  | `transaction`                  | `object`  | The transaction object.                                                         |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`cardNumber`           | `string`  | Primary Account Number (PAN) of the card, printed on the face of the card.      |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`cardExpiryMonth`      | `integer` | Expiry month of the card, printed on the face of the card.                      |
 |  ✔︎︎︎︎︎  | └➔&nbsp;`cardExpiryYear`       | `integer` | Expiry year of the card, printed on the face of the card.                       |
 |          | └➔&nbsp;`cardVerificationCode` | `string`  | Card verification code (CVC/CVV/CVC2), usually printed on the back of the card. |
-|          | └➔&nbsp;`cardholderName`       | `string`  | Name of the cardholder, usually printed on the face of the card.               |
+|          | └➔&nbsp;`cardholderName`       | `string`  | Name of the cardholder, usually printed on the face of the card.                |
 
 {:.code-header}
 **Response**
