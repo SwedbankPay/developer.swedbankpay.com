@@ -51,5 +51,18 @@ Content-Type: application/json
 |          | └──➔&nbsp;`socialSecurityNumber` | `string` | The consumers social security number. Must be part of what you get from your authentication process. |
 |          | └──➔&nbsp;`countryCode`          | `string` | The countrycode of the consumer.                                                                     |
 
+When the consumer is authenticated by the Merchant, some payment instruments
+will allow a more frictionless payment process. Invoice One-Click payments does
+not require the last 4/5 digits in the payers social security number (SSN).
+Below you can see an example of how the payment window looks like with the
+One-Click payment without SSN to the left. And the payer can press the pay
+button directly. To the right, the payment window
+from the response and request from above with the required SSN number.
+
+![One-Click Payments without SSN][mac-no-ssn]{:width="436" height="393"}
+![Payments with SSN][mac-with-ssn]{:width="436" height="393"}
+
 [checkin]: /checkout/checkin
 [payment-menu]: /checkout/payment-menu
+[mac-no-ssn]: /assets/img/checkout/mac-no-ssn.png
+[mac-with-ssn]: /assets/img/checkout/mac-with-ssn.png
