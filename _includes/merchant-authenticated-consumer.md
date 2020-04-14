@@ -53,11 +53,13 @@ Content-Type: application/json
 
 When the consumer is authenticated by the Merchant, some payment instruments
 will allow a more frictionless payment process. Invoice One-Click payments does
-not require the last 4/5 digits in the payers social security number (SSN).
-Below you can see an example of how the payment window looks like with the
-One-Click payment without SSN to the left. And the payer can press the pay
-button directly. To the right, the payment window
-from the response and request from above with the required SSN number.
+not require the last 4/5 digits in the payer's social security number (SSN), for
+instance.
+
+Below you can see an example of how the payment window looks like with and 
+without Merchant Authenticated Consumer. To the left, the SSN is removed
+altogether because the payer is authenticated by the Merchant, and to the right
+the last 4/5 digits of the SSN required as usual.
 
 ![One-Click Payments without SSN][mac-no-ssn]{:width="436" height="393"}
 ![Payments with SSN][mac-with-ssn]{:width="436" height="393"}
