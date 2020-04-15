@@ -22,7 +22,6 @@ sidebar:
       title: Public Migration Key
 ---
 
-
 {% include jumbotron.html body="The latest updates about our releases will be
 published on this page." %}
 
@@ -32,10 +31,18 @@ this very documentation, not to a version of any APIs described by it." %}
 
 ## April 2020
 
+### Version 1.8.3
+
+* Bug fixes to Mermaid diagram and alert styling, plus improvements to code
+  block styling after the update to [Swedbank Pay Design Guide][design-guide]
+  4.5.0.
+* Added examples with screenshots of the effects of [Merchant Authenticated
+  Consumer][mac-checkout].
+
 ### Version 1.8.2
 
-* Added a more thorough description on `paymentUrl` and `completeUrl` in all relevant
-  payments.
+* Added a more thorough description on `paymentUrl` and `completeUrl` in all
+  relevant payments.
 * Updated `orderItems` to be required in all requests and responses.
 * Clean up of [Swish Payments][swish]
 * Removed `pageStripDown` in [Vipps Redirect][vipps].
@@ -366,3 +373,4 @@ integration and the payer.
 [vipps-payment-resource]: /payments/vipps/other-features#payment-resource
 [vipps-payment-url]: /payments/vipps/other-features#payment-url
 [vipps]: /payments/vipps
+[design-guide]: https://design.swedbankpay.com/
