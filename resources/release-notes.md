@@ -36,7 +36,7 @@ this very documentation, not to a version of any APIs described by it." %}
 
 * Added a more thorough description on `paymentUrl` and `completeUrl` in all relevant
   payments.
-* Updated òrderItem`to be required in all requests and responses.
+* Updated `orderItems` to be required in all requests and responses.
 * Clean up of [Swish Payments][swish]
 * Removed `pageStripDown` in [Vipps Redirect][vipps].
 * Updated [Card Payments Direct][card-direct] to have a correct integration
