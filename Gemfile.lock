@@ -141,7 +141,7 @@ DEPENDENCIES
   faraday (~> 1.0.1)
   jekyll (~> 4.0)
   jekyll-assets
-  jekyll-github-metadata
+  jekyll-github-metadata (~> 2.13)
   jekyll-material-icon-tag
   jekyll-remote-theme
   jemoji
