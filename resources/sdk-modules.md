@@ -1,5 +1,5 @@
 ---
-title: SDKs and Libraries
+title: SDKs and Modules
 sidebar:
   navigation:
   - title: Resources
@@ -7,7 +7,7 @@ sidebar:
     - url: /resources/
       title: Introduction
     - url: /resources/sdk-modules/
-      title: SDKs and Libraries
+      title: SDKs and Modules
     - url: /resources/test-data
       title: Test Data
     - url: /resources/demoshop
@@ -24,9 +24,35 @@ sidebar:
       title: Public Migration Key
 ---
 
-{% include jumbotron.html body="We have multiple Open Source-based SDKs and Libraries to use with Swedbank Pay APIs" %}
+{% include jumbotron.html body="We have multiple Open Source-based SDKs and
+Modules to use with Swedbank Pay APIs." %}
 
-## Swedbank Pay Official SDKs
+## Introduction
+
+Swedbank Pay offers APIs, SDKs, libraries, modules, extensions and plugins as
+different ways to integrate and use our products and services. It might not
+be obvious to everyone what these are, so to describe them we use the analogy
+of **baking a cake**.
+
+### APIs
+
+APIs (Application Programming Interface) are the lowest level building block of
+our offering and can be compared to **raw ingredients**. They give you a whole
+lot of flexibility, but also requires you to have more knowledge in how to use
+them correctly and you need to know which recipe to cook in order to get a
+workable cake out in the other end. To efficiently use an API, you need to be
+a trained baker.
+
+### SDKs
+
+SDKs (Software Development Kit), also known as libraries, can be compared to
+a **cake mix**. It requires less knowledge of the ingredients and how to use
+them and a recipe is provided for you. Because of this, you also have less
+flexibility because you can't bake any cake, you can only bake the one the mix
+is for. You still have to mix everything together, so you need some experience
+in the kitchen is required, but less than using the "raw" API.
+
+## Official SDKs
 
 {:.table .table-striped}
 | Language | Repository | Status |
