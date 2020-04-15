@@ -24,6 +24,8 @@ sidebar:
       title: Public Migration Key
 ---
 
+{% assign active_repositories = site.github.public_repositories | where: 'archived', false %}
+
 {% include jumbotron.html body="We have multiple Open Source-based SDKs and
 Modules to use with Swedbank Pay APIs." %}
 
@@ -68,13 +70,22 @@ be to allow consumers of your website to pay with a payment provider such as
 Swedbank Pay.
 
 {:.table .table-striped}
-| Module                            | Repository                                                       | Status                                                                                                                                    |
-| :---------------------------------- | :--------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------- |
-| [WooCommerce Checkout][swedbank-pay-woocommerce-checkout]         | [SwedbankPay/swedbank-pay-sdk-php][swedbank-pay-sdk-php]         | [![](https://poser.pugx.org/swedbank-pay/swedbank-pay-sdk-php/version)](https://packagist.org/packages/swedbank-pay/swedbank-pay-sdk-php) |
-| [WooCommerce Payments][swedbank-pay-woocommerce-payments]         | [SwedbankPay/swedbank-pay-sdk-php][swedbank-pay-sdk-php]         | [![](https://poser.pugx.org/swedbank-pay/swedbank-pay-sdk-php/version)](https://packagist.org/packages/swedbank-pay/swedbank-pay-sdk-php) |
-| [Magento Checkout][swedbank-pay-sdk-dotnet]     | [SwedbankPay/swedbank-pay-sdk-dotnet][swedbank-pay-sdk-dotnet]   | Beta                                                                                                                                      |
-| [Magento Payments][swedbank-pay-sdk-dotnet]     | [SwedbankPay/swedbank-pay-sdk-dotnet][swedbank-pay-sdk-dotnet]   | Beta                                                                                                                                      |
-| [Episerver Checkout][swedbank-pay-sdk-dotnet]     | [SwedbankPay/swedbank-pay-sdk-dotnet][swedbank-pay-sdk-dotnet]   | Beta                                                                                                                                      |
+|     | Platform                         | Module                                                       |
+| :-: | :------------------------------- | :----------------------------------------------------------- |
+{%- for repository in active_repositories -%}
+  {%- if repository.topics contains 'module' %}
+|   {%- if repository.topics contains 'swedbank-pay-checkout' -%} {% icon shopping_cart %}
+    {%- elsif repository.topics contains 'swedbank-pay-payments' -%} {% icon credit_card %}
+    {%- else -%} ?
+    {%- endif -%}
+|   {% if repository.topics contains 'episerver' -%} Episerver
+    {%- elsif repository.topics contains 'magento2' -%} Magento 2
+    {%- elsif repository.topics contains 'woocommerce' -%} WooCommerce
+    {%- else -%} ?
+    {%- endif -%}
+|   [{{ repository.name }}]({{ repository.html_url }}) | {{ repository.latest_release.tag_name }}
+  {%- endif -%}
+{%- endfor %}
 
 ## Official SDKs
 
