@@ -52,23 +52,51 @@ flexibility because you can't bake any cake, you can only bake the one the mix
 is for. You still have to mix everything together, so you need some experience
 in the kitchen is required, but less than using the "raw" API.
 
-## Official SDKs
+### Modules
+
+Modules, also known as extensions or plugins, can be compared to a **readily
+baked cake** purchased at a bakery. You don't need any baking skills to have
+one, but you also have very little flexibility in what goes into the cake or
+how it tastes.
+
+## Official Modules
+
+**Modules, extensions and plugins** are typically used as a way to extend
+webshop platforms such as [WooCommerce][woocommerce] and [Magento][magento] with
+functionality that isn't provided in the core platform. Such functionality may
+be to allow consumers of your website to pay with a payment provider such as
+Swedbank Pay.
 
 {:.table .table-striped}
-| Language | Repository | Status |
-| :------- | :--------- | :----- |
-| [PHP][swedbank-pay-sdk-php] | [SwedbankPay/swedbank-pay-sdk-php][swedbank-pay-sdk-php] | [![Swedbank Pay SDK for PHP on Packagist][swedbank-pay-sdk-php-packagist-badge]][swedbank-pay-sdk-php-packagist] |
-| [.NET][swedbank-pay-sdk-dotnet] | [SwedbankPay/swedbank-pay-sdk-dotnet][swedbank-pay-sdk-dotnet] | Beta |
-| [iOS][swedbank-pay-sdk-ios] | [SwedbankPay/swedbank-pay-sdk-ios][swedbank-pay-sdk-ios] | Beta |
-| [Android][swedbank-pay-sdk-android] | [SwedbankPay/swedbank-pay-sdk-android][swedbank-pay-sdk-android] | Beta |
+| Module                            | Repository                                                       | Status                                                                                                                                    |
+| :---------------------------------- | :--------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------- |
+| [WooCommerce Checkout][swedbank-pay-woocommerce-checkout]         | [SwedbankPay/swedbank-pay-sdk-php][swedbank-pay-sdk-php]         | [![](https://poser.pugx.org/swedbank-pay/swedbank-pay-sdk-php/version)](https://packagist.org/packages/swedbank-pay/swedbank-pay-sdk-php) |
+| [WooCommerce Payments][swedbank-pay-woocommerce-payments]         | [SwedbankPay/swedbank-pay-sdk-php][swedbank-pay-sdk-php]         | [![](https://poser.pugx.org/swedbank-pay/swedbank-pay-sdk-php/version)](https://packagist.org/packages/swedbank-pay/swedbank-pay-sdk-php) |
+| [Magento Checkout][swedbank-pay-sdk-dotnet]     | [SwedbankPay/swedbank-pay-sdk-dotnet][swedbank-pay-sdk-dotnet]   | Beta                                                                                                                                      |
+| [Magento Payments][swedbank-pay-sdk-dotnet]     | [SwedbankPay/swedbank-pay-sdk-dotnet][swedbank-pay-sdk-dotnet]   | Beta                                                                                                                                      |
+| [Episerver Checkout][swedbank-pay-sdk-dotnet]     | [SwedbankPay/swedbank-pay-sdk-dotnet][swedbank-pay-sdk-dotnet]   | Beta                                                                                                                                      |
+
+## Official SDKs
+
+**SDKs and libraries** are
+
+{:.table .table-striped}
+| Language                            | Repository                                                       | Status                                                                                                                                    |
+| :---------------------------------- | :--------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------- |
+| [PHP][swedbank-pay-sdk-php]         | [SwedbankPay/swedbank-pay-sdk-php][swedbank-pay-sdk-php]         | [![Swedbank Pay SDK for PHP on Packagist][swedbank-pay-sdk-php-packagist-badge]][swedbank-pay-sdk-php-packagist] |
+| [.NET][swedbank-pay-sdk-dotnet]     | [SwedbankPay/swedbank-pay-sdk-dotnet][swedbank-pay-sdk-dotnet]   | Beta                                                                                                                                      |
+| [iOS][swedbank-pay-sdk-ios]         | [SwedbankPay/swedbank-pay-sdk-ios][swedbank-pay-sdk-ios]         | Beta                                                                                                                                      |
+| [Android][swedbank-pay-sdk-android] | [SwedbankPay/swedbank-pay-sdk-android][swedbank-pay-sdk-android] | Beta                                                                                                                                      |
 
 ## Unofficial SDKs
 
 {:.table .table-striped}
-| Language | Repository | Status |
-| :------- | :--------- | :----- |
+| Language                           | Repository                                         | Status                                                                                             |
+| :--------------------------------- | :------------------------------------------------- | :------------------------------------------------------------------------------------------------- |
 | [Node.js][bjerkio-swedbank-pay-js] | [bjerkio/swedbank-pay-js][bjerkio-swedbank-pay-js] | [![npm version](https://badge.fury.io/js/swedbank-pay.svg)](https://badge.fury.io/js/swedbank-pay) |
 
+[woocommerce]: https://woocommerce.com/
+[magento]: https://magento.com/
 [swedbank-pay-sdk-php]: https://github.com/SwedbankPay/swedbank-pay-sdk-php
 [swedbank-pay-sdk-php-packagist-badge]: https://poser.pugx.org/swedbank-pay/swedbank-pay-sdk-php/version
 [swedbank-pay-sdk-php-packagist]: https://packagist.org/packages/swedbank-pay/swedbank-pay-sdk-php
