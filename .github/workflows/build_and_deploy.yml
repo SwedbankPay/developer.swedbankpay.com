@@ -10,6 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-java@v1
+        with:
+          java-version: '1.8'
+      - uses: kamiazya/setup-graphviz@v1
+      - name: Installs libfontconfig
+        run: sudo apt-get install -y libfontconfig
       - uses: NullableInt/jekyll-builder-for-github-pages-action@master
         with:
           secret_gh_pages_api_token: ${{ secrets.GH_PAGES_TOKEN }}
@@ -20,3 +26,4 @@ jobs:
           DEBUG: "true"
           GITHUB_ACTOR: payex-dev
           JEKYLL_GITHUB_TOKEN : ${{ secrets.GH_PAGES_TOKEN }}
+          JEKYLL_ENV: production

@@ -18,18 +18,26 @@ well as [Swedbank Pay Open Source Development Guidelines][dev-guidelines].
 ## Usage
 
 To view this website, browse to [developer.swedbankpay.com][swp-dp]. If you'd
-like to host it locally on your computer, you need to do the following:
+like to host it locally on your computer, you have to options;
+[docker][docker], or [manual][manual-install] install.
 
+### Docker
+
+1. Install [docker][docker-install] for your operating system.
+2. Run `docker-compose up`
+
+### Manual install
 1. [Clone this repository][cloning].
 2. Jekyll is written in [Ruby][ruby], so you'll need to download and install
    that. If you're installing on Windows, choose setup with DevKit.
 3. To install the [Ruby Gems][gems] this web site requires, you first need to
    install [Bundler][bundler].
-4. Once Ruby and Bundler is in place, type `bundle install` inside the root
+4. Install [Graphviz][graphviz], this will require Java.
+5. Once Ruby ,Bundler, and Graphviz, is in place, type `bundle install` inside the root
    folder of this repository.
-5. Run `bundle exec jekyll serve` to start the website.
-6. Open `http://localhost:4000` in a browser.
-7. In Visual Studio Code, install the following plugins:
+6. Run `bundle exec jekyll serve` to start the website.
+7. Open `http://localhost:4000` in a browser.
+8. In Visual Studio Code, install the following plugins:
    * `davidanson.vscode-markdownlint`, to lint Markdown files according to our
      defined set of rules.
    * `shd101wyy.markdown-preview-enhanced`, to render Markdown to HTML in a
@@ -43,7 +51,7 @@ like to host it locally on your computer, you need to do the following:
    * `supperchong.pretty-json` to format selected JSON snippets in code
      examples.
    * `sissel.shopify-liquid` for syntax highlighting of [Liquid][liquid].
-8. Also in Visual Studio Code, [set up a ruler at 80 characters][vsc-ruler]
+9. Also in Visual Studio Code, [set up a ruler at 80 characters][vsc-ruler]
    by adding `"editor.rulers": [80]` to its configuration.
 
 ## Good to know
@@ -155,20 +163,24 @@ This website is available as open source under the terms of the
 [cloning]: https://help.github.com/articles/cloning-a-repository/
 [config-yml]: _config.yml
 [dev-guidelines]: https://developer.swedbankpay.com/resources/development-guidelines
-[opengraph-image]: https://repository-images.githubusercontent.com/210605116/56fb0c00-53e9-11ea-9c5f-7fb8685cce87
 [dev-portal]: https://developer.swedbankpay.com/
+[docker-install]: https://www.docker.com/
+[docker]: #docker
 [gems]: https://rubygems.org/
 [gh-actions-badge]: https://github.com/SwedbankPay/developer.swedbankpay.com/workflows/jekyll-build/badge.svg
 [gh-actions]: https://github.com/SwedbankPay/developer.swedbankpay.com/actions
 [gh-pages]: https://pages.github.com/
 [github]: https://github.com/SwedbankPay/developer.swedbankpay.com/
+[graphviz]: https://graphviz.org/download/
 [jekyll]: https://jekyllrb.com/
 [last-commit-badge]: https://img.shields.io/github/last-commit/SwedbankPay/developer.swedbankpay.com/master
 [license]: https://opensource.org/licenses/MIT
 [liquid-includes]: https://jekyllrb.com/docs/includes/
 [liquid]: https://jekyllrb.com/docs/liquid/
+[manual-install]: #manual-install
 [mermaid-github]: https://github.com/mermaid-js/mermaid
 [mermaid-live-editor]: https://mermaidjs.github.io/mermaid-live-editor
+[opengraph-image]: https://repository-images.githubusercontent.com/210605116/56fb0c00-53e9-11ea-9c5f-7fb8685cce87
 [ruby]: https://www.ruby-lang.org/en/
 [swp-dp]: https://developer.swedbankpay.com
 [vsc-ruler]: https://stackoverflow.com/a/29972073/61818

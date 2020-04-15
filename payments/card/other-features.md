@@ -44,6 +44,8 @@ document is described in the following section.
 
 {% include card-purchase.md full_reference=true %}
 
+{% include complete-url.md %}
+
 {% include recur.md %}
 
 {% include unscheduled-purchase.md %}

@@ -1,9 +1,22 @@
 repository: SwedbankPay/developer.swedbankpay.com
-remote_theme: SwedbankPay/swedbank-pay-design-guide-jekyll-theme@1.0.1
+remote_theme: SwedbankPay/swedbank-pay-design-guide-jekyll-theme@1.4.0
 exclude: ["Gemfile*", "Rakefile"]
 plugins:
   - "jekyll-github-metadata"
   - jemoji
+  - jekyll-remote-theme
+  - jekyll-material-icon-tag
+  - "kramdown-plantuml"
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    guess_lang: true
+    default_lang: html
+    css_class: 'highlight'
+    block:
+      line_numbers: true
+      start_line: 1
 tipue_search:
   include:
     pages: true
@@ -12,7 +25,7 @@ opengraph:
   image: /assets/img/swedbank-pay-developer-portal.png
 design_guide:
   base_url: https://design.swedbankpay.com
-  version: 4.3.0
+  version: 4.5.0
 search:
   enabled: true
   url: /search
@@ -33,7 +46,7 @@ defaults:
       transaction_id: ec2a9b09-601a-42ae-8e33-a5737e1cf177
       payment_order_id: 09ccd29a-7c4f-4752-9396-12100cbfecce
       merchant_id: 5cabf558-5283-482f-b252-4d58e06f6f3b
-      payment_token: afccf3d0016340620756d5ff3e08f69b555fbe2e45ca71f4bd159ebdb0f00065
+      payment_token: 5a17c24e-d459-4567-bbad-aa0f17a76119
       api_host: api.externalintegration.payex.com
       api_url: https://api.externalintegration.payex.com
       front_end_url: https://ecom.externalintegration.payex.com

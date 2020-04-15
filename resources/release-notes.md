@@ -30,6 +30,20 @@ published on this page." %}
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
 
+## April 2020
+
+### Version 1.8.2
+
+* Added a more thorough description on `paymentUrl` and `completeUrl` in all relevant
+  payments.
+* Updated `orderItems` to be required in all requests and responses.
+* Clean up of [Swish Payments][swish]
+* Removed `pageStripDown` in [Vipps Redirect][vipps].
+* Updated [Card Payments Direct][card-direct] to have a correct integration
+  flow.
+* Updated the [main page][frontpage] to be more welcoming.
+* Updated information on [Merchant Authenticated Consumer][mac-checkout].
+
 ## March 2020
 
 ### Version 1.8.1
@@ -330,11 +344,13 @@ integration and the payer.
 [credit]: /payments/credit
 [data-protection]: /resources/data-protection
 [direct-debit]: /payments/direct-debit
+[frontpage]: https://developer.swedbankpay.com/
 [home-technical-information]: /home/technical-information
 [initiate-consumer-session]: /checkout/checkin#checkin-back-end
 [invoice]: /payments/invoice
 [invoice-direct]: /payments/invoice/direct
 [mobile-pay]: /payments/mobile-pay
+[mac-checkout]: /checkout/other-features#merchant-authenticated-consumer
 [one-click]: /payments/card/other-features#one-click-payments
 [payment-orders]: /checkout/other-features#creating-a-payment-order
 [payments]: /payments
