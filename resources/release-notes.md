@@ -22,20 +22,27 @@ sidebar:
       title: Public Migration Key
 ---
 
-
 {% include jumbotron.html body="The latest updates about our releases will be
 published on this page." %}
 
-{% include alert.html type="neutral" icon="info" header="Version numbers"
+{% include alert.html type="informative" icon="info" header="Version numbers"
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
 
 ## April 2020
 
+### Version 1.8.3
+
+* Bug fixes to Mermaid diagram and alert styling, plus improvements to code
+  block styling after the update to [Swedbank Pay Design Guide][design-guide]
+  4.5.0.
+* Added examples with screenshots of the effects of [Merchant Authenticated
+  Consumer][mac-checkout].
+
 ### Version 1.8.2
 
-* Added a more thorough description on `paymentUrl` and `completeUrl` in all relevant
-  payments.
+* Added a more thorough description on `paymentUrl` and `completeUrl` in all
+  relevant payments.
 * Updated `orderItems` to be required in all requests and responses.
 * Clean up of [Swish Payments][swish]
 * Removed `pageStripDown` in [Vipps Redirect][vipps].
@@ -343,14 +350,15 @@ integration and the payer.
 [credit-card-abort]: /payments/card/after-payment#abort
 [credit]: /payments/credit
 [data-protection]: /resources/data-protection
+[design-guide]: https://design.swedbankpay.com/
 [direct-debit]: /payments/direct-debit
 [frontpage]: https://developer.swedbankpay.com/
 [home-technical-information]: /home/technical-information
 [initiate-consumer-session]: /checkout/checkin#checkin-back-end
-[invoice]: /payments/invoice
 [invoice-direct]: /payments/invoice/direct
-[mobile-pay]: /payments/mobile-pay
+[invoice]: /payments/invoice
 [mac-checkout]: /checkout/other-features#merchant-authenticated-consumer
+[mobile-pay]: /payments/mobile-pay
 [one-click]: /payments/card/other-features#one-click-payments
 [payment-orders]: /checkout/other-features#creating-a-payment-order
 [payments]: /payments
