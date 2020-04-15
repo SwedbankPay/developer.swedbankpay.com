@@ -164,7 +164,7 @@ Content-Type: application/json
             "operations": [
                 {
                     "method": "PATCH",
-                    "href": "https://api.internaltest.payex.com/psp/creditcard/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }}",
+                    "href": "{{ page.api_url}}/psp/creditcard/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }}",
                     "rel": "update-authorization-overchargedamount"
                 }
             ]
