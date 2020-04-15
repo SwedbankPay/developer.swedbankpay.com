@@ -350,14 +350,15 @@ integration and the payer.
 [credit-card-abort]: /payments/card/after-payment#abort
 [credit]: /payments/credit
 [data-protection]: /resources/data-protection
+[design-guide]: https://design.swedbankpay.com/
 [direct-debit]: /payments/direct-debit
 [frontpage]: https://developer.swedbankpay.com/
 [home-technical-information]: /home/technical-information
 [initiate-consumer-session]: /checkout/checkin#checkin-back-end
-[invoice]: /payments/invoice
 [invoice-direct]: /payments/invoice/direct
-[mobile-pay]: /payments/mobile-pay
+[invoice]: /payments/invoice
 [mac-checkout]: /checkout/other-features#merchant-authenticated-consumer
+[mobile-pay]: /payments/mobile-pay
 [one-click]: /payments/card/other-features#one-click-payments
 [payment-orders]: /checkout/other-features#creating-a-payment-order
 [payments]: /payments
@@ -373,4 +374,3 @@ integration and the payer.
 [vipps-payment-resource]: /payments/vipps/other-features#payment-resource
 [vipps-payment-url]: /payments/vipps/other-features#payment-url
 [vipps]: /payments/vipps
-[design-guide]: https://design.swedbankpay.com/
