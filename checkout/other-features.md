@@ -426,7 +426,7 @@ The response given when changing a payment order is equivalent to a `GET`
 request towards the `paymentorders` resource,
 [as displayed above][payment-orders-resource].
 
-{% include alert.html type="neutral" icon="info" body="
+{% include alert.html type="informative" icon="info" body="
 After updating the Payment Order, remember to call `.refresh()` on the Payment
 Menu in JavaScript." %}
 
@@ -987,7 +987,7 @@ object:
 
 Triggered when a consumer has been identified or shipping address has been
 updated.
-{% include alert.html type="neutral" icon="info" body= "The Checkin must be
+{% include alert.html type="informative" icon="info" body= "The Checkin must be
 completed before any shipping details are finalized, as the Checkin component
 provides shipping address via the `onShippingDetailsAvailable` event." %}
 
@@ -1390,12 +1390,12 @@ When the contents of the shopping cart changes or anything else that affects
 the amount occurs, the `paymentorder` must be updated and the Payment Menu
 must be `refresh`ed.
 
-{% include alert.html type="neutral" icon="info" body= "Features that are not
+{% include alert.html type="informative" icon="info" body= "Features that are not
 described in the previous sections must not be used, although they are
 available in the API. Flags that can be turned to `true` must be kept
 `false` as described in this standard setup documentation." %}
 
-{% include alert.html type="neutral" icon="info" body= "Your integration must be
+{% include alert.html type="informative" icon="info" body= "Your integration must be
 resilient to change. Properties, operations, headers, etc., that aren't
 understood in any response **must be ignored**. Don't expect a specific order of
 elements. When in doubt, please follow the [robustness principle](https://en.wikipedia.org/wiki/Robustness_principle)." %}

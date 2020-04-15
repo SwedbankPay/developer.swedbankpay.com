@@ -140,7 +140,7 @@ Content-Type: application/json
 | ✔︎︎︎︎︎   | └➔&nbsp;`city`                 | `string`  | The city to the consumer.                                                                                                                                        |
 | ✔︎︎︎︎︎   | └➔&nbsp;`countryCode`          | `string`  | `SE`, `NO`, or `FI`.                                                                                                                                             |
 
-{% include alert.html type="neutral" icon="info" body="
+{% include alert.html type="informative" icon="info" body="
 Note: The legal address must be the registered address of the consumer." %}
 
 The `authorization` resource will be returned, containing information about

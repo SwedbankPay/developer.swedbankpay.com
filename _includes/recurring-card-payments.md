@@ -63,7 +63,7 @@ subsequent [`recurring payment`][card-payment-recur] `POST`.
 This will be a server-to-server affair, as we have both payment instrument
 details and recurrence token from the initial payment.
 
-{% include alert.html type="neutral" icon="info" body="
+{% include alert.html type="informative" icon="info" body="
 Please note that this `POST`request is made directly on the payment level,
 and will not create a payment order." %}
 
@@ -104,7 +104,7 @@ card information, without reserving or charging any amount.
 This option is often used to initiate a recurring payment
 flow where you do not want to charge the consumer right away.
 
-{% include alert.html type="neutral" icon="info" body="
+{% include alert.html type="informative" icon="info" body="
 Please note that all boolean credit card attributes involving rejection of
 certain card types are optional and set on contract level." %}
 

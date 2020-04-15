@@ -8,7 +8,7 @@ parameter `expand`. This is an effective way to limit the number of necessary
 calls to the API, as you return several properties related to a Payment resource
 in a single request.
 
-{% include alert.html type="neutral" icon="info" body="
+{% include alert.html type="informative" icon="info" body="
 Note that the `expand` parameter is available to all API requests but only
 applies to the request response. This means that you can use the expand
 parameter on a `POST`  or `PATCH`request to get a response containing the target

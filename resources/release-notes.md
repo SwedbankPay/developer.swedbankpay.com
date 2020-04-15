@@ -26,7 +26,7 @@ sidebar:
 {% include jumbotron.html body="The latest updates about our releases will be
 published on this page." %}
 
-{% include alert.html type="neutral" icon="info" header="Version numbers"
+{% include alert.html type="informative" icon="info" header="Version numbers"
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
 

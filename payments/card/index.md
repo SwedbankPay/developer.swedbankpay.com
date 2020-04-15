@@ -26,21 +26,21 @@ sidebar:
 and global way to initate a transaction with a customer. Choose between our
 **Seamless View**, **Redirect**, or **Direct** integration options." %}
 
-{% include alert.html type="neutral"
+{% include alert.html type="informative"
                       icon="branding_watermark"
                       body="**Seamless View** is our solution for a payment
                       experience that is integrated directly on your website.
                       The payment process will be executed in an `iframe` on
                       your page." %}
 
-{% include alert.html type="neutral"
+{% include alert.html type="informative"
                       icon="cached"
                       body="**Redirect** will take the consumer to a Swedbank
                       Pay hosted payment page where they can perform a safe
                       transaction. The consumer will be redirected back to your
                       website after the completion of the payment." %}
 
-{% include alert.html type="neutral"
+{% include alert.html type="informative"
                       icon="open_in_browser"
                       body="**Direct** integration is a way to implement card
                       payments without using Swedbank Pay hosted payment pages.

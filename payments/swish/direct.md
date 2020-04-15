@@ -38,7 +38,7 @@ sidebar:
   dialogue is completed.
 * Make a `GET` request to check the payment status.
 
-{% include alert.html type="neutral" icon="report_problem"
+{% include alert.html type="informative" icon="report_problem"
 body="Swish is a one-phase payment instrument that is based on sales
 transactions not involving `capture` or `cancellation` operations." %}
 

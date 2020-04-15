@@ -20,7 +20,7 @@ sidebar:
       title: Other Features
 ---
 
-{% include alert.html type="neutral" icon="report_problem" header="Disclaimer"
+{% include alert.html type="informative" icon="report_problem" header="Disclaimer"
 body="Direct Invoice is about to be phased out. This section is only for
 merchants that currently have a contract with this integration." %}
 
@@ -48,7 +48,7 @@ transaction, that is followed by a `Capture` or `Cancel` request.
 The `Capture` , `Cancel`, `Reversal` opions are
 described in [other features][other-features].
 
-{% include alert.html type="neutral" icon="info" body="
+{% include alert.html type="informative" icon="info" body="
 Note that the invoice will not be created/distributed before you have
 made a `capture` request. By making a Capture, Swedbank Pay will generate
 the invoice to the consumer and the order is ready for shipping." %}

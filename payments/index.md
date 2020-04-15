@@ -77,7 +77,7 @@ compliant.
 
 ## The Fundamentals
 
-{% include alert.html type="neutral"
+{% include alert.html type="informative"
                       icon="info"
                       body="All Payments APIs in the Swedbank Pay API Platform
                       share a common foundation with a similar payment process
