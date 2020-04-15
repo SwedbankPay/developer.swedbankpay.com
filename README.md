@@ -41,7 +41,7 @@ like to host it locally on your computer, you have to options;
 
 ### Visual Studio Code plugins
 
-We use several Visual Studio Code plugins to ensure quality and structure
+We use several [Visual Studio Code][vs-code] plugins to ensure quality and structure
 is as constistent between users as possible.
 
 * `davidanson.vscode-markdownlint`, to lint Markdown files according to our
@@ -190,4 +190,5 @@ This website is available as open source under the terms of the
 [opengraph-image]: https://repository-images.githubusercontent.com/210605116/56fb0c00-53e9-11ea-9c5f-7fb8685cce87
 [ruby]: https://www.ruby-lang.org/en/
 [swp-dp]: https://developer.swedbankpay.com
+[vs-code]: https://code.visualstudio.com/
 [vsc-ruler]: https://stackoverflow.com/a/29972073/61818
