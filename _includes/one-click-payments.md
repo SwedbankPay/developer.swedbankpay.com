@@ -110,7 +110,7 @@ Content-Type: application/json
 |          | └➔&nbsp;`creditCard`   | `object`  | An object that holds different scenarios for card payments.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 |          | └─➔&nbsp;`noCvc`       | `boolean` | `true` if the CVC field should be disabled for this payment in the case a stored card is used; otherwise `false` per default. To use this feature it has to be enabled on the contract with Swedbank Pay.                                                                                                                                                                                                                                                                                                                                                                                 |
 
-{% include alert.html type="neutral" icon="info" body="
+{% include alert.html type="informative" icon="info" body="
 When redirecting to Swedbank Pay the payment page will be
 prefilled with the payer's card details. See example below." %}
 

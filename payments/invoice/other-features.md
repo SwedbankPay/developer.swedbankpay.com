@@ -179,7 +179,7 @@ Content-Type: application/json
 
 ## Verify
 
-{% include alert.html type="neutral" icon="info" body="The `Verify` operation
+{% include alert.html type="informative" icon="info" body="The `Verify` operation
 lets you post verification payments, which are used to confirm validity of card
 information without reserving or charging any amount." %}
 

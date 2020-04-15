@@ -26,7 +26,7 @@ state identifier is the ID of the order, shopping cart or similar that has the
 URL of the Payment stored.
 {% endcapture %}
 
-{% include alert.html type="neutral" icon="info" body=notice %}
+{% include alert.html type="informative" icon="info" body=notice %}
 
 With `paymentUrl` in place, the retry process becomes much more convenient for
 both the integration and the payer.

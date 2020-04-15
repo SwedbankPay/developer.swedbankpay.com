@@ -292,7 +292,7 @@ sequenceDiagram
     Merchant-->>-Consumer: Display result
 ```
 
-{% include alert.html type="neutral" icon="info" body="
+{% include alert.html type="informative" icon="info" body="
 Note that the invoice will not be created/distributed before you have
 made a `capture` request." %}
 

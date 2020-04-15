@@ -26,7 +26,7 @@ response.
 You have to distribute the Payment Link to the consumer through your order
 system, using channels like e-mail or SMS.
 
-{% include alert.html type="neutral" icon="info" body="When sending information
+{% include alert.html type="informative" icon="info" body="When sending information
 in e-mail/SMS, it is strongly recommended that you add information about your
 terms and conditions, including purchase information and price. **See
 recommendations in the next section.**" %}
@@ -146,7 +146,7 @@ This in a generalized flow as
 well as a specific 3-D Secure enabled credit card scenario.
 {% endif %}
 
-{% include alert.html type="neutral" icon="info" body="
+{% include alert.html type="informative" icon="info" body="
 Please note that the the callback may come either before, after or in the
 same moment as the consumer are being redirected to the status page at the
 merchant site when the purchase is fulfilled. Don't rely on the callback being

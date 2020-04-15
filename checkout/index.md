@@ -11,7 +11,7 @@ sidebar:
     - url: /checkout/payment-menu
       title: Payment Menu
     - url: /checkout/capture
-      title: Capture 
+      title: Capture
     - url: /checkout/after-payment
       title: After Payment
     - url: /checkout/other-features
@@ -53,7 +53,7 @@ Swedbank Pay Checkout.
 Under, you will see a sequence diagram showing the sequence of a Swedbank Pay
 checkout.
 
-{% include alert.html type="neutral" icon="info" body="
+{% include alert.html type="informative" icon="info" body="
 Note that in this diagram, the Payer refers to the merchant front-end
 (website) while Merchant refers to the merchant back-end." %}
 

@@ -26,7 +26,7 @@ sidebar:
                                 between our **Direct**, **Redirect** and
                                 **Seamless view** integration options." %}
 
-{% include alert.html type="neutral"
+{% include alert.html type="informative"
                       icon="open_in_browser"
                       body="The **Direct** integration puts the control in your
                       hands. You control the collection of the purchase
@@ -35,7 +35,7 @@ sidebar:
                       to produce and distribute invoices to the
                       consumer/end-user." %}
 
-{% include alert.html type="neutral"
+{% include alert.html type="informative"
                       icon="cached"
                       body="**Redirect** is the easiest way to implement Invoice
                       Payments. Redirect will take your consumer to a Swedbank
@@ -43,7 +43,7 @@ sidebar:
                       transaction. The consumer will be redirected back to your
                       website after the completion of the payment." %}
 
-{% include alert.html type="neutral"
+{% include alert.html type="informative"
                       icon="branding_watermark"
                       body="**Seamless View** is our solution for a payment
                       experience that is integrated directly on your website.
@@ -53,7 +53,7 @@ sidebar:
 ### Important steps before you launch Swedbank Pay Invoice Payments at your website
 
 Prior to launching Swedbank Pay Invoice Payments at your site, make sure that
-you have done the following:  
+you have done the following:
 
 1. Sent a merchant logo in .JPG format to the [Swedish
    setup][setup-mail-sweden], [Norwegian setup][setup-mail-norway] or [Finnish
