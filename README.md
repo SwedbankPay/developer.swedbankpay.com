@@ -27,6 +27,7 @@ like to host it locally on your computer, you have to options;
 2. Run `docker-compose up`
 
 ### Manual install
+
 1. [Clone this repository][cloning].
 2. Jekyll is written in [Ruby][ruby], so you'll need to download and install
    that. If you're installing on Windows, choose setup with DevKit.
@@ -37,22 +38,28 @@ like to host it locally on your computer, you have to options;
    folder of this repository.
 6. Run `bundle exec jekyll serve` to start the website.
 7. Open `http://localhost:4000` in a browser.
-8. In Visual Studio Code, install the following plugins:
-   * `davidanson.vscode-markdownlint`, to lint Markdown files according to our
+
+### Visual Studio Code plugins
+
+We use several Visual Studio Code plugins to ensure quality and structure
+is as constistent between users as possible.
+
+* `davidanson.vscode-markdownlint`, to lint Markdown files according to our
      defined set of rules.
-   * `shd101wyy.markdown-preview-enhanced`, to render Markdown to HTML in a
+* `shd101wyy.markdown-preview-enhanced`, to render Markdown to HTML in a
      preview window.
-   * `bpruitt-goddard.mermaid-markdown-syntax-highlighting`, to give syntax
+* `bpruitt-goddard.mermaid-markdown-syntax-highlighting`, to give syntax
      highlighting to Mermaid diagrams in Markdown files.
-   * `yzhang.markdown-all-in-one`, to enable a plethora of Markdown features,
+* `yzhang.markdown-all-in-one`, to enable a plethora of Markdown features,
      most importantly formatting of Markdown tables with VS Code's built-in
      format functionality.
-   * `stkb.rewrap`, to make line-breaking text at 80 characters easier.
-   * `supperchong.pretty-json` to format selected JSON snippets in code
+* `stkb.rewrap`, to make line-breaking text at 80 characters easier.
+* `supperchong.pretty-json` to format selected JSON snippets in code
      examples.
-   * `sissel.shopify-liquid` for syntax highlighting of [Liquid][liquid].
-9. Also in Visual Studio Code, [set up a ruler at 80 characters][vsc-ruler]
-   by adding `"editor.rulers": [80]` to its configuration.
+* `sissel.shopify-liquid` for syntax highlighting of [Liquid][liquid].
+
+Also in Visual Studio Code, [set up a ruler at 80 characters][vsc-ruler]
+by adding `"editor.rulers": [80]` to its configuration.
 
 ## Good to know
 
