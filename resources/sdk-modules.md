@@ -6,7 +6,7 @@ sidebar:
     items:
     - url: /resources/
       title: Introduction
-    - url: /resources/sdk-libraries/
+    - url: /resources/sdk-modules/
       title: SDKs and Libraries
     - url: /resources/test-data
       title: Test Data
