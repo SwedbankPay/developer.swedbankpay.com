@@ -31,7 +31,7 @@ sidebar:
 {:.table .table-striped}
 | Language | Repository | Status |
 | :------- | :--------- | :----- |
-| [PHP][swedbank-pay-sdk-php] | [SwedbankPay/swedbank-pay-sdk-php][swedbank-pay-sdk-php] | [![](https://poser.pugx.org/swedbank-pay/swedbank-pay-sdk-php/version)](https://packagist.org/packages/swedbank-pay/swedbank-pay-sdk-php) |
+| [PHP][swedbank-pay-sdk-php] | [SwedbankPay/swedbank-pay-sdk-php][swedbank-pay-sdk-php] | [![Swedbank Pay SDK for PHP on Packagist][swedbank-pay-sdk-php-packagist-badge]][swedbank-pay-sdk-php-packagist] |
 | [.NET][swedbank-pay-sdk-dotnet] | [SwedbankPay/swedbank-pay-sdk-dotnet][swedbank-pay-sdk-dotnet] | Beta |
 | [iOS][swedbank-pay-sdk-ios] | [SwedbankPay/swedbank-pay-sdk-ios][swedbank-pay-sdk-ios] | Beta |
 | [Android][swedbank-pay-sdk-android] | [SwedbankPay/swedbank-pay-sdk-android][swedbank-pay-sdk-android] | Beta |
@@ -44,6 +44,8 @@ sidebar:
 | [Node.js][bjerkio-swedbank-pay-js] | [bjerkio/swedbank-pay-js][bjerkio-swedbank-pay-js] | [![npm version](https://badge.fury.io/js/swedbank-pay.svg)](https://badge.fury.io/js/swedbank-pay) |
 
 [swedbank-pay-sdk-php]: https://github.com/SwedbankPay/swedbank-pay-sdk-php
+[swedbank-pay-sdk-php-packagist-badge]: https://poser.pugx.org/swedbank-pay/swedbank-pay-sdk-php/version
+[swedbank-pay-sdk-php-packagist]: https://packagist.org/packages/swedbank-pay/swedbank-pay-sdk-php
 [swedbank-pay-sdk-dotnet]: https://github.com/SwedbankPay/swedbank-pay-sdk-dotnet
 [swedbank-pay-sdk-ios]: https://github.com/SwedbankPay/swedbank-pay-sdk-ios
 [swedbank-pay-sdk-android]: https://github.com/SwedbankPay/swedbank-pay-sdk-android
