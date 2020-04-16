@@ -104,7 +104,7 @@ SDKs are often used as a building block to construct a Module.
 | :------- | :-- | :--------- |
 {%- for repository in active_repositories -%}
   {%- if repository.topics contains 'sdk' %}
-| [{{ repository.language }}]({{ repository.html_url }}) |
+| ![{{ repository.language }}](https://img.shields.io/github/languages/top/{{ repository.full_name }}.svg) |
     {%- if repository.homepage != empty -%}[{{ repository.description }}]({{ repository.homepage }})
     {%- else -%} {{ repository.description }}
     {%- endif -%} | [`{{ repository.name }}`]({{ repository.html_url }})
