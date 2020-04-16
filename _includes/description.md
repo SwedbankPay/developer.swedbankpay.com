@@ -1,5 +1,3 @@
-## Description
-
 The `description` field is a textual definition max 40 characters of the
 purchase. It is needed to specify what the purchase actually is for
 the consumer. Below you will find a abbreviated code example of Card Payments
