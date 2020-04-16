@@ -160,10 +160,4 @@ please wait for a future, stable release." %}
 
 [woocommerce]: https://woocommerce.com/
 [magento]: https://magento.com/
-[swedbank-pay-sdk-php]: https://github.com/SwedbankPay/swedbank-pay-sdk-php
-[swedbank-pay-sdk-php-packagist-badge]: https://poser.pugx.org/swedbank-pay/swedbank-pay-sdk-php/version
-[swedbank-pay-sdk-php-packagist]: https://packagist.org/packages/swedbank-pay/swedbank-pay-sdk-php
-[swedbank-pay-sdk-dotnet]: https://github.com/SwedbankPay/swedbank-pay-sdk-dotnet
-[swedbank-pay-sdk-ios]: https://github.com/SwedbankPay/swedbank-pay-sdk-ios
-[swedbank-pay-sdk-android]: https://github.com/SwedbankPay/swedbank-pay-sdk-android
 [bjerkio-swedbank-pay-js]: https://github.com/bjerkio/swedbank-pay-js
