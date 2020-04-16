@@ -69,6 +69,12 @@ functionality that isn't provided in the core platform. Such functionality may
 be to allow consumers of your website to pay with a payment provider such as
 Swedbank Pay.
 
+{% include alert.html type="warning" icon="warning" header="Unsupported"
+body="These modules are at an early stage of development and are not supported
+as of yet by Swedbank Pay. They are provided as a convenience to speed up your
+development, so please feel free to play around. However, if you need support,
+please wait for a future, stable release." %}
+
 {:.table .table-striped}
 |       | Platform | Module | Repository |
 | :---: | :------- | :----- | :--------- |
@@ -99,6 +105,12 @@ programming language and environment.
 
 SDKs are often used as a building block to construct a Module.
 
+{% include alert.html type="warning" icon="warning" header="Unsupported"
+body="These SDKs are at an early stage of development and are not supported
+as of yet by Swedbank Pay. They are provided as a convenience to speed up your
+development, so please feel free to play around. However, if you need support,
+please wait for a future, stable release." %}
+
 {:.table .table-striped}
 | Language | SDK  | Repository |
 | :------: | :--- | :--------- |
@@ -113,6 +125,11 @@ SDKs are often used as a building block to construct a Module.
 
 ## Unofficial SDKs
 
+{% include alert.html type="warning" icon="warning" header="Unsupported"
+body="Unofficial SDKs are offered as a convenience to speed up your development,
+but are not supported in any way by Swedbank Pay – not now, nor in the future."
+%}
+
 {:.table .table-striped}
 |                         Language                          | Repository                                           | Status                                                                                             |
 | :-------------------------------------------------------: | :--------------------------------------------------- | :------------------------------------------------------------------------------------------------- |
@@ -122,6 +139,12 @@ SDKs are often used as a building block to construct a Module.
 
 **Software libraries** are bundles of code often used by an SDK or in a Module
 to solve one or a set of specific problems.
+
+{% include alert.html type="warning" icon="warning" header="Unsupported"
+body="These libraries are at an early stage of development and are not supported
+as of yet by Swedbank Pay. They are provided as a convenience to speed up your
+development, so please feel free to play around. However, if you need support,
+please wait for a future, stable release." %}
 
 {:.table .table-striped}
 | Language | Library | Repository |
