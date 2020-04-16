@@ -8,7 +8,7 @@ often help narrow down the specifics of the problem.
 ### Contractual Problem Types
 
 All contract types will have the following URI in front of type:
-`{{ page.api_url }}/psp/<errordetail>/creditcard`
+`{{ page.api_url }}/psp/<errordetail>/creditcard/<type>`
 
 {:.table .table-striped}
 | Type                           | Status | Description                                 |
@@ -24,7 +24,7 @@ All contract types will have the following URI in front of type:
 ### Acquirer and 3-D Secure Problem Types
 
 All acquirer error types will have the following URI in front of type:
-`https://api.payex.com/psp/errordetail/creditcard/<error-type>`
+`https://api.payex.com/psp/errordetail/<error-type>`
 
 {:.table .table-striped}
 | Type                           | Status | Description                                                                                   |
