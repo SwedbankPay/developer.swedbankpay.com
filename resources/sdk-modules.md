@@ -83,21 +83,28 @@ Swedbank Pay.
     {%- elsif repository.topics contains 'woocommerce' -%} WooCommerce
     {%- else -%} ?
     {%- endif -%}
-|   [{{ repository.name }}]({{ repository.html_url }}) | {{ repository.latest_release.tag_name }}
+|   [{{ repository.name }}]({{ repository.html_url }}) |
   {%- endif -%}
 {%- endfor %}
 
 ## Official SDKs
 
-**SDKs and libraries** are
+**Software Development Kits** allow developers to integrate with Swedbank Pay's
+APIs without having to write a lot of low-level code dealing with HTTP, status
+codes, problem messages, parsing, serializaiton, etc. Developers can use their
+language of choice and write against a set of typed objects native to their
+programming language and environment.
+
+SDKs are often used as a building block to construct a Module.
 
 {:.table .table-striped}
-| Language                            | Repository                                                       | Status                                                                                                                                    |
-| :---------------------------------- | :--------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------- |
-| [PHP][swedbank-pay-sdk-php]         | [SwedbankPay/swedbank-pay-sdk-php][swedbank-pay-sdk-php]         | [![Swedbank Pay SDK for PHP on Packagist][swedbank-pay-sdk-php-packagist-badge]][swedbank-pay-sdk-php-packagist] |
-| [.NET][swedbank-pay-sdk-dotnet]     | [SwedbankPay/swedbank-pay-sdk-dotnet][swedbank-pay-sdk-dotnet]   | Beta                                                                                                                                      |
-| [iOS][swedbank-pay-sdk-ios]         | [SwedbankPay/swedbank-pay-sdk-ios][swedbank-pay-sdk-ios]         | Beta                                                                                                                                      |
-| [Android][swedbank-pay-sdk-android] | [SwedbankPay/swedbank-pay-sdk-android][swedbank-pay-sdk-android] | Beta                                                                                                                                      |
+| Language                            | Repository                                                       |
+| :---------------------------------- | :--------------------------------------------------------------- |
+{%- for repository in active_repositories -%}
+  {%- if repository.topics contains 'sdk' %}
+| [{{ repository.language }}]({{ repository.html_url }}) | [{{ repository.name }}]({{ repository.html_url }}) |
+  {%- endif -%}
+{%- endfor %}
 
 ## Unofficial SDKs
 
