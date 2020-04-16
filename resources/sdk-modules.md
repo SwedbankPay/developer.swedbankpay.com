@@ -70,8 +70,8 @@ be to allow consumers of your website to pay with a payment provider such as
 Swedbank Pay.
 
 {:.table .table-striped}
-|     | Platform                         | Module                                                       |
-| :-: | :------------------------------- | :----------------------------------------------------------- |
+|     | Platform | Module | Repository |
+| :-: | :------- | :----- | :--------- |
 {%- for repository in active_repositories -%}
   {%- if repository.topics contains 'module' %}
 |   {%- if repository.topics contains 'swedbank-pay-checkout' -%} {% icon shopping_cart %}
@@ -83,7 +83,9 @@ Swedbank Pay.
     {%- elsif repository.topics contains 'woocommerce' -%} WooCommerce
     {%- else -%} ?
     {%- endif -%}
-|   [{{ repository.name }}]({{ repository.html_url }}) |
+|   {% if repository.homepage != empty -%}[{{ repository.description }}]({{ repository.homepage }})
+    {%- else -%} {{ repository.description }}
+    {%- endif -%} | [`{{ repository.name }}`]({{ repository.html_url }})
   {%- endif -%}
 {%- endfor %}
 
@@ -98,11 +100,14 @@ programming language and environment.
 SDKs are often used as a building block to construct a Module.
 
 {:.table .table-striped}
-| Language                            | Repository                                                       |
-| :---------------------------------- | :--------------------------------------------------------------- |
+| Language | SDK | Repository |
+| :------- | :-- | :--------- |
 {%- for repository in active_repositories -%}
   {%- if repository.topics contains 'sdk' %}
-| [{{ repository.language }}]({{ repository.html_url }}) | [{{ repository.name }}]({{ repository.html_url }}) |
+| [{{ repository.language }}]({{ repository.html_url }}) |
+    {%- if repository.homepage != empty -%}[{{ repository.description }}]({{ repository.homepage }})
+    {%- else -%} {{ repository.description }}
+    {%- endif -%} | [`{{ repository.name }}`]({{ repository.html_url }})
   {%- endif -%}
 {%- endfor %}
 
