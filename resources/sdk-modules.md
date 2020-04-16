@@ -70,8 +70,8 @@ be to allow consumers of your website to pay with a payment provider such as
 Swedbank Pay.
 
 {:.table .table-striped}
-|     | Platform | Module | Repository |
-| :-: | :------- | :----- | :--------- |
+|       | Platform | Module | Repository |
+| :---: | :------- | :----- | :--------- |
 {%- for repository in active_repositories -%}
   {%- if repository.topics contains 'module' %}
 |   {%- if repository.topics contains 'swedbank-pay-checkout' -%} {% icon shopping_cart %}
@@ -100,8 +100,8 @@ programming language and environment.
 SDKs are often used as a building block to construct a Module.
 
 {:.table .table-striped}
-| Language | SDK | Repository |
-| :------: | :-- | :--------- |
+| Language | SDK  | Repository |
+| :------: | :--- | :--------- |
 {%- for repository in active_repositories -%}
   {%- if repository.topics contains 'sdk' %}
 | ![{{ repository.language }}](https://img.shields.io/badge/{{ repository.language | downcase | url_encode }}-blue.svg) |
@@ -114,9 +114,9 @@ SDKs are often used as a building block to construct a Module.
 ## Unofficial SDKs
 
 {:.table .table-striped}
-| Language                           | Repository                                         | Status                                                                                             |
-| :--------------------------------- | :------------------------------------------------- | :------------------------------------------------------------------------------------------------- |
-| [Node.js][bjerkio-swedbank-pay-js] | [bjerkio/swedbank-pay-js][bjerkio-swedbank-pay-js] | [![npm version](https://badge.fury.io/js/swedbank-pay.svg)](https://badge.fury.io/js/swedbank-pay) |
+|                         Language                          | Repository                                           | Status                                                                                             |
+| :-------------------------------------------------------: | :--------------------------------------------------- | :------------------------------------------------------------------------------------------------- |
+| ![Node.js](https://img.shields.io/badge/node.js-blue.svg) | [`bjerkio/swedbank-pay-js`][bjerkio-swedbank-pay-js] | [![npm version](https://badge.fury.io/js/swedbank-pay.svg)](https://badge.fury.io/js/swedbank-pay) |
 
 ## Official Libraries
 
