@@ -118,6 +118,23 @@ SDKs are often used as a building block to construct a Module.
 | :--------------------------------- | :------------------------------------------------- | :------------------------------------------------------------------------------------------------- |
 | [Node.js][bjerkio-swedbank-pay-js] | [bjerkio/swedbank-pay-js][bjerkio-swedbank-pay-js] | [![npm version](https://badge.fury.io/js/swedbank-pay.svg)](https://badge.fury.io/js/swedbank-pay) |
 
+## Official Libraries
+
+**Software libraries** are bundles of code often used by an SDK or in a Module
+to solve one or a set of specific problems.
+
+{:.table .table-striped}
+| Language | Library | Repository |
+| :------: | :------ | :--------- |
+{%- for repository in active_repositories -%}
+  {%- if repository.topics contains 'library' %}
+| ![{{ repository.language }}](https://img.shields.io/badge/{{ repository.language | downcase | url_encode }}-blue.svg) |
+    {%- if repository.homepage != empty -%}[{{ repository.description }}]({{ repository.homepage }})
+    {%- else -%} {{ repository.description }}
+    {%- endif -%} | [`{{ repository.name }}`]({{ repository.html_url }})
+  {%- endif -%}
+{%- endfor %}
+
 [woocommerce]: https://woocommerce.com/
 [magento]: https://magento.com/
 [swedbank-pay-sdk-php]: https://github.com/SwedbankPay/swedbank-pay-sdk-php
