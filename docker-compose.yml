@@ -8,7 +8,6 @@ services:
         - jekyll/jekyll:4.0.0
       dockerfile: .docker/Dockerfile
     container_name: developer_portal
-    image: jekyll/jekyll:4.0.0
     ports:
       - 4000:4000
       - 35729:35729
