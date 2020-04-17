@@ -41,13 +41,13 @@ Forwarded: for=82.115.151.177; host=example.com; proto=https
 ```
 
 {:.table .table-striped}
-| Required | Header              | Description                                                                                                                                                                                                                                                                    |
-| :------: | :------------------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|    ✔︎    | **`Content-Type`**  | The [content type][content-type] of the body of the HTTP request. Usually set to `application/json`.                                                                                                                                                                           |
-|    ✔︎    | **`Accept`**        | The [content type][content-type] accepted by the client. Usually set to `application/json` and `application/problem+json` so both regular responses as well as errors can be received properly.                                                                                |
-|    ✔︎    | **`Authorization`** | The OAuth 2 Access Token is generated in [Swedbank Pay Admin][admin]. See the [admin guide][admin-guide] on how to get started.                                                                                                                                                |
-|          | **`Session-Id`**    | A trace identifier used to trace calls through the API Platform (ref [RFC 7329][rfc-7329]). Each request must mint a new [GUID/UUID][uuid]. If no `Session-Id` is provided, Swedbank Pay will generate one for the request.                                                    |
-|          | **`Forwarded`**     | The IP address of the consumer as well as the host and protocol of the consumer-facing web page. When the header is present, only the `for` parameter containing the consumer IP address is required, the other parameters are optional. See [RFC 7239][rfc-7239] for details. |
+|     Required     | Header              | Description                                                                                                                                                                                                                                                                    |
+| :--------------: | :------------------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| {% icon check %}︎ | **`Content-Type`**  | The [content type][content-type] of the body of the HTTP request. Usually set to `application/json`.                                                                                                                                                                           |
+| {% icon check %}︎ | **`Accept`**        | The [content type][content-type] accepted by the client. Usually set to `application/json` and `application/problem+json` so both regular responses as well as errors can be received properly.                                                                                |
+| {% icon check %}︎ | **`Authorization`** | The OAuth 2 Access Token is generated in [Swedbank Pay Admin][admin]. See the [admin guide][admin-guide] on how to get started.                                                                                                                                                |
+|                  | **`Session-Id`**    | A trace identifier used to trace calls through the API Platform (ref [RFC 7329][rfc-7329]). Each request must mint a new [GUID/UUID][uuid]. If no `Session-Id` is provided, Swedbank Pay will generate one for the request.                                                    |
+|                  | **`Forwarded`**     | The IP address of the consumer as well as the host and protocol of the consumer-facing web page. When the header is present, only the `for` parameter containing the consumer IP address is required, the other parameters are optional. See [RFC 7239][rfc-7239] for details. |
 
 ## URI Usage
 
@@ -192,7 +192,7 @@ instrument specific operations.
 ```
 
 {:.table .table-striped}
-| Field | Description                                                         |
+| Field    | Description                                                         |
 | :------- | :------------------------------------------------------------------ |
 | `href`   | The target URI to perform the operation against.                    |
 | `rel`    | The name of the relation the operation has to the current resource. |
@@ -240,15 +240,15 @@ The structure of a problem message will look like this:
 ```
 
 {:.table .table-striped}
-| Field              | Type      | Description                                                                                                                                                                                                                                            |
-| :-------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Field                 | Type      | Description                                                                                                                                                                                                                                         |
+| :-------------------- | :-------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `type`                | `string`  | The URI that identifies the error type. This is the **only field usable for programmatic identification** of the type of error! When dereferenced, it might lead you to a human readable description of the error and how it can be recovered from. |
-| `title`               | `string`  | The title contains a human readable description of the error.                                                                                                                                                                                          |
-| `detail`              | `string`  | A detailed, human readable description of the error and how you can recover from it.                                                                                                                                                                   |
-| `instance`            | `string`  | The identifier of the error instance. This might be of use to Swedbank Pay support personnel in order to find the exact error and the context it occurred in.                                                                                          |
-| `status`              | `integer` | The HTTP status code that the problem was served with.                                                                                                                                                                                                 |
-| `action`              | `string`  | The `action` indicates how the error can be recovered from.                                                                                                                                                                                            |
-| `problems`            | `array`   | The array of problem detail objects.                                                                                                                                                                                                                   |
+| `title`               | `string`  | The title contains a human readable description of the error.                                                                                                                                                                                       |
+| `detail`              | `string`  | A detailed, human readable description of the error and how you can recover from it.                                                                                                                                                                |
+| `instance`            | `string`  | The identifier of the error instance. This might be of use to Swedbank Pay support personnel in order to find the exact error and the context it occurred in.                                                                                       |
+| `status`              | `integer` | The HTTP status code that the problem was served with.                                                                                                                                                                                              |
+| `action`              | `string`  | The `action` indicates how the error can be recovered from.                                                                                                                                                                                         |
+| `problems`            | `array`   | The array of problem detail objects.                                                                                                                                                                                                                |
 | └➔&nbsp;`name`        | `string`  | The name of the field, header, object, entity or likewise that was erroneous.                                                                                                                                                                       |
 | └➔&nbsp;`description` | `string`  | The human readable description of what was wrong with the field, header, object, entity or likewise identified by `name`.                                                                                                                           |
 

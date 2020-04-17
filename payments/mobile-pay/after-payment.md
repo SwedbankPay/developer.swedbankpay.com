@@ -55,13 +55,13 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Field                    | Type         | Description                                                                                          |
-| :------: | :----------------------- | :----------- | :--------------------------------------------------------------------------------------------------- |
-|    ✔︎    | `transaction`            | `object`     | Object representing the capture transaction.                                                         |
-|    ✔︎    | └➔&nbsp;`amount`         | `integer`    | {% include field-description-amount.md %}                                                            |
-|    ✔︎    | └➔&nbsp;`vatAmount`      | `integer`    | {% include field-description-vatamount.md %}                                                         |
-|    ✔︎    | └➔&nbsp;`description`    | `string`     | A textual description of the capture transaction.                                                    |
-|    ✔︎    | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the capture transaction. See [`payeeReference`][payee-reference] for details. |
+|     Required     | Field                    | Type         | Description                                                                                          |
+| :--------------: | :----------------------- | :----------- | :--------------------------------------------------------------------------------------------------- |
+| {% icon check %}︎ | `transaction`            | `object`     | Object representing the capture transaction.                                                         |
+| {% icon check %}︎ | └➔&nbsp;`amount`         | `integer`    | {% include field-description-amount.md %}                                                            |
+| {% icon check %}︎ | └➔&nbsp;`vatAmount`      | `integer`    | {% include field-description-vatamount.md %}                                                         |
+| {% icon check %}︎ | └➔&nbsp;`description`    | `string`     | A textual description of the capture transaction.                                                    |
+| {% icon check %}︎ | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the capture transaction. See [`payeeReference`][payee-reference] for details. |
 
 {% include transaction-response.md payment_instrument="mobilepay" %}
 
@@ -113,11 +113,11 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| ✔︎   | Field                    | Type         | Description                                                                                               |
-| :--- | :----------------------- | :----------- | :-------------------------------------------------------------------------------------------------------- |
-| ✔︎   | `transaction`            | `string`     | The transaction object contains information about this cancellation.                                      |
-| ✔︎   | └➔&nbsp;`description`    | `string`     | A textual description of the reason for the cancellation.                                                 |
-| ✔︎   | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the cancellation transaction. See [`payeeReference`][payee-reference] for details. |
+| {% icon check %}︎ | Field                    | Type         | Description                                                                                               |
+| :--------------- | :----------------------- | :----------- | :-------------------------------------------------------------------------------------------------------- |
+| {% icon check %}︎ | `transaction`            | `string`     | The transaction object contains information about this cancellation.                                      |
+| {% icon check %}︎ | └➔&nbsp;`description`    | `string`     | A textual description of the reason for the cancellation.                                                 |
+| {% icon check %}︎ | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the cancellation transaction. See [`payeeReference`][payee-reference] for details. |
 
 {% include transaction-response.md payment_instrument="mobilepay"
     transaction="cancel" %}
@@ -170,13 +170,13 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| ✔︎   | Field                    | Type         | Description                                                                                           |
-| :--- | :----------------------- | :----------- | :---------------------------------------------------------------------------------------------------- |
-| ✔︎   | `transaction`            | `integer`    | The reversal `transaction`.                                                                           |
-| ✔︎   | └➔&nbsp;`amount`         | `integer`    | {% include field-description-amount.md %}                                                             |
-| ✔︎   | └➔&nbsp;`vatAmount`      | `integer`    | {% include field-description-vatamount.md %}                                                          |
-| ✔︎   | └➔&nbsp;`description`    | `string`     | A textual description of the capture                                                                  |
-| ✔︎   | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the reversal transaction. See [`payeeReference`][payee-reference] for details. |
+| {% icon check %}︎ | Field                    | Type         | Description                                                                                           |
+| :--------------- | :----------------------- | :----------- | :---------------------------------------------------------------------------------------------------- |
+| {% icon check %}︎ | `transaction`            | `integer`    | The reversal `transaction`.                                                                           |
+| {% icon check %}︎ | └➔&nbsp;`amount`         | `integer`    | {% include field-description-amount.md %}                                                             |
+| {% icon check %}︎ | └➔&nbsp;`vatAmount`      | `integer`    | {% include field-description-vatamount.md %}                                                          |
+| {% icon check %}︎ | └➔&nbsp;`description`    | `string`     | A textual description of the capture                                                                  |
+| {% icon check %}︎ | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the reversal transaction. See [`payeeReference`][payee-reference] for details. |
 
 {% include transaction-response.md payment_instrument="mobilepay"
     transaction="reversal"%}

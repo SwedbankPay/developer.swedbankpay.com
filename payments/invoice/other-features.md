@@ -572,14 +572,14 @@ Payment" %}
 [callback]: #callback
 [cancel]: /payments/invoice/after-payment#cancellations
 [capture]: /payments/invoice/after-payment#capture
-[fi-png]: /assets/img/fi.png
+[fi-png]: /assets/img/flag-finland.png
 [financing-consumer]: #financing-consumer
 [invoice-flow]: /payments/invoice#invoice-flow
 [invoice-payment]: /assets/img/checkout/invoice-seamless-view.png
-[no-png]: /assets/img/no.png
+[no-png]: /assets/img/flag-norway.png
 [recur]: #recur
 [redirect]: /payments/invoice/redirect
-[se-png]: /assets/img/se.png
+[se-png]: /assets/img/flag-sweden.png
 [seamless-view]: /payments/invoice/seamless-view
 [verification-flow]: #verification-flow
 [verify]: #verfify

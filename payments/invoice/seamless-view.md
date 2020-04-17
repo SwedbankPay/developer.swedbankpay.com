@@ -305,14 +305,14 @@ next_href="direct" next_title="Next: Direct" %}
 [cancel]: /payments/invoice/after-payment#cancellations
 [capture]: /payments/invoice/after-payment#captures
 [create-payment]: /payments/invoice/other-features#create-payment
-[fi-png]: /assets/img/fi.png
+[fi-png]: /assets/img/flag-finland.png
 [financing-consumer]: /payments/invoice/other-features#financing-consumer
 [invoice-payment]: /assets/img/checkout/invoice-seamless-view.png
-[no-png]: /assets/img/no.png
+[no-png]: /assets/img/flag-norway.png
 [payee-reference]: /payments/invoice/other-features#payeereference
 [price-resource]: /payments/invoice/other-features#prices
 [recur]: /payments/invoice/other-features#recur
-[se-png]: /assets/img/se.png
+[se-png]: /assets/img/flag-sweden.png
 [setup-mail]: mailto:setup.ecom@PayEx.com
 [user-agent-definition]: https://en.wikipedia.org/wiki/User_agent
 [verify]: /payments/invoice/other-features#verify
