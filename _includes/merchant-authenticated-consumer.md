@@ -43,20 +43,20 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Field                         | Type     | Description                                                                                          |
-| :------: | :------------------------------- | :------- | :--------------------------------------------------------------------------------------------------- |
-|  ✔︎︎︎︎︎  | `paymentorder`                   | `object` | The payment order object.                                                                            |
-|          | └➔&nbsp;`payer`                  | `object` | The `payer` object containing information about the payer relevant for the payment order.            |
-|          | └─➔&nbsp;`nationalIdentifier`    | `string` | The national identifier object.                                                                      |
-|          | └──➔&nbsp;`socialSecurityNumber` | `string` | The consumers social security number. Must be part of what you get from your authentication process. |
-|          | └──➔&nbsp;`countryCode`          | `string` | The countrycode of the consumer.                                                                     |
+|     Required     | Field                            | Type     | Description                                                                                          |
+| :--------------: | :------------------------------- | :------- | :--------------------------------------------------------------------------------------------------- |
+| {% icon check %} | `paymentorder`                   | `object` | The payment order object.                                                                            |
+|                  | └➔&nbsp;`payer`                  | `object` | The `payer` object containing information about the payer relevant for the payment order.            |
+|                  | └─➔&nbsp;`nationalIdentifier`    | `string` | The national identifier object.                                                                      |
+|                  | └──➔&nbsp;`socialSecurityNumber` | `string` | The consumers social security number. Must be part of what you get from your authentication process. |
+|                  | └──➔&nbsp;`countryCode`          | `string` | The countrycode of the consumer.                                                                     |
 
 When the consumer is authenticated by the Merchant, some payment instruments
 will allow a more frictionless payment process. Invoice One-Click payments does
 not require the last 4/5 digits in the payer's social security number (SSN), for
 instance.
 
-Below you can see an example of how the payment window looks like with and 
+Below you can see an example of how the payment window looks like with and
 without Merchant Authenticated Consumer. To the left, the SSN is removed
 altogether because the payer is authenticated by the Merchant, and to the right
 the last 4/5 digits of the SSN required as usual.

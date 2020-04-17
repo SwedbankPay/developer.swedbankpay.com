@@ -20,11 +20,11 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Field                    | Type         | Description                                                                                                                                                                              |
-| :------: | :----------------------- | :----------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|  ✔︎︎︎︎︎  | `transaction`            | `object`     | The transaction object.                                                                                                                                                                  |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`payeeReference` | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details. |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`description`    | `string`     | A textual description of why the transaction is cancelled.                                                                                                                               |
+|     Required     | Field                    | Type         | Description                                                                                                                                                                              |
+| :--------------: | :----------------------- | :----------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| {% icon check %} | `transaction`            | `object`     | The transaction object.                                                                                                                                                                  |
+| {% icon check %} | └➔&nbsp;`payeeReference` | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [payeeReference][payee-reference] for details. |
+| {% icon check %} | └➔&nbsp;`description`    | `string`     | A textual description of why the transaction is cancelled.                                                                                                                               |
 
 If the cancellation request succeeds, the response should be similar to the
 example below:
