@@ -405,7 +405,7 @@ next_href="capture" next_title="Next: Capture" %}
 [capture]: /payments/invoice/capture
 [fi-png]: /assets/img/flag-finland.png
 [financing-consumer]: /payments/invoice/other-features#financing-consumer
-[financing-invoice-1-png]: /assets/img/checkout/test-purchaflag-sweden.png
+[financing-invoice-1-png]: /assets/img/checkout/test-purchase.png
 [financing-invoice-2-png]: /assets/screenshots/invoice/redirect-view/iframe-verify-data.png
 [no-png]: /assets/img/flag-norway.png
 [other-features]: /payments/invoice/other-features

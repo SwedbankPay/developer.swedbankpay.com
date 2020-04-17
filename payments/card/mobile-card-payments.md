@@ -156,6 +156,6 @@ next_href="after-payment" next_title="Next: After Payment" %}
 [create-payment]: /payments/card/other-features#create-payment
 [payout]: /payments/card/other-features#payout
 [purchase]: /payments/card/other-features#purchase
-[redirect-image]: /assets/img/checkout/test-purchaflag-sweden.png
+[redirect-image]: /assets/img/checkout/test-purchase.png
 [recur]: /payments/card/other-features#recur
 [verify]: /payments/card/other-features#verify
