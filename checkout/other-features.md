@@ -47,15 +47,15 @@ that is used to inform the payee (merchant) of changes or updates made to
 underlying payments or transaction.
 
 {:.table .table-striped}
-| Required | Field               | Type     | Description                                                                                                                                                                                                                                                                                              |
-| :------: | :------------------ | :------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ✔ ︎︎︎︎︎  | `hostUrls`          | `array`  | The array of URIs valid for embedding of Swedbank Pay Hosted Views.                                                                                                                                                                                                                                      |
-|  ✔︎︎︎︎︎  | `completeUrl`       | `string` | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment order to inspect it further. |
-|  ✔︎︎︎︎︎  | `termsOfServiceUrl` | `string` | {% include field-description-termsofserviceurl.md %}                                                                                                                                                                            |
-|          | `cancelUrl`         | `string` | The URI to redirect the payer to if the payment is canceled, either by the payer or by the merchant trough an `abort` request of the `payment` or `paymentorder`.                                                                                                                                        |
-|          | `paymentUrl`        | `string` | The URI that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment.                                                                                                                                                       |
-|          | `callbackUrl`       | `string` | The URI to the API endpoint receiving `POST` requests on transaction activity related to the payment order.                                                                                                                                                                                              |
-|          | `logoUrl`           | `string` | The URI to the logo that will be displayed on redirect pages. **HTTPS is a requirement**.                                                                                                                                                                                                                |
+|     Required      | Field               | Type     | Description                                                                                                                                                                                                                                                                                              |
+| :---------------: | :------------------ | :------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| {% icon check %} ︎︎︎︎︎ | `hostUrls`          | `array`  | The array of URIs valid for embedding of Swedbank Pay Hosted Views.                                                                                                                                                                                                                                      |
+| {% icon check %}  | `completeUrl`       | `string` | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment order to inspect it further. |
+| {% icon check %}  | `termsOfServiceUrl` | `string` | {% include field-description-termsofserviceurl.md %}                                                                                                                                                                                                                                                     |
+|                   | `cancelUrl`         | `string` | The URI to redirect the payer to if the payment is canceled, either by the payer or by the merchant trough an `abort` request of the `payment` or `paymentorder`.                                                                                                                                        |
+|                   | `paymentUrl`        | `string` | The URI that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment.                                                                                                                                                       |
+|                   | `callbackUrl`       | `string` | The URI to the API endpoint receiving `POST` requests on transaction activity related to the payment order.                                                                                                                                                                                              |
+|                   | `logoUrl`           | `string` | The URI to the logo that will be displayed on redirect pages. **HTTPS is a requirement**.                                                                                                                                                                                                                |
 
 #### Payment Url
 
@@ -112,30 +112,30 @@ Content-Type: application/json
 | └➔&nbsp;`paymentUrl`        | `string` | The URI that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment.                                                                                                                                                       |
 | └➔&nbsp;`callbackUrl`       | `string` | The URI that Swedbank Pay will perform an HTTP `POST` against every time a transaction is created on the payment. See [callback][callback-reference] for details.                                                                                                                                        |
 | └➔&nbsp;`logoUrl`           | `string` | The URI that will be used for showing the customer logo. Must be a picture with at most 50px height and 400px width.                                                                                                                                                                                     |
-| └➔&nbsp;`termsOfServiceUrl` | `string` | {% include field-description-termsofserviceurl.md %}                                                                                                                                                                                                         |
+| └➔&nbsp;`termsOfServiceUrl` | `string` | {% include field-description-termsofserviceurl.md %}                                                                                                                                                                                                                                                     |
 
 ### Order Items
 
 The `orderItems` field of the `paymentOrder` is an array containing the items being purchased with the order. Used to print on invoices if the payer chooses to pay with invoice, among other things. `orderItems` is required in all requests. It should be specified on both payment order creation as well as on [Capture][payment-order-capture].
 
 {:.table .table-striped}
-| Required | Field                 | Type      | Description                                                                                                                                                                                                                    |
-| :------: | :-------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|  ✔︎︎︎︎︎  | `reference`           | `string`  | A reference that identifies the order item.                                                                                                                                                                                    |
-|  ✔︎︎︎︎︎  | `name`                | `string`  | The name of the order item.                                                                                                                                                                                                    |
-|  ✔︎︎︎︎︎  | `type`                | `enum`    | `PRODUCT`, `SERVICE`, `SHIPPING_FEE`, `DISCOUNT`, `VALUE_CODE`, or `OTHER`. The type of the order item.                                                                                                                        |
-|  ✔︎︎︎︎︎  | `class`               | `string`  | The classification of the order item. Can be used for assigning the order item to a specific product category, such as `MobilePhone`. Note that `class` cannot contain spaces and must follow the regex pattern `[\w]* (a-zA-Z0-9_)`. Swedbank Pay may use this field for statistics. |
-|          | `itemUrl`             | `string`  | The URL to a page that can display the purchased item, such as a product page                                                                                                                                                  |
-|          | `imageUrl`            | `string`  | The URL to an image of the order item.                                                                                                                                                                                         |
-|          | `description`         | `string`  | The human readable description of the order item.                                                                                                                                                                              |
-|          | `discountDescription` | `string`  | The human readable description of the possible discount.                                                                                                                                                                       |
-|  ✔︎︎︎︎︎  | `quantity`            | `decimal` | The 4 decimal precision quantity of order items being purchased.                                                                                                                                                               |
-|  ✔︎︎︎︎︎  | `quantityUnit`        | `string`  | The unit of the quantity, such as `pcs`, `grams`, or similar.                                                                                                                                                                  |
-|  ✔︎︎︎︎︎  | `unitPrice`           | `integer` | The price per unit of order item, including VAT.                                                                                                                                                                               |
-|          | `discountPrice`       | `integer` | If the order item is purchased at a discounted price. This field should contain that price, including VAT.                                                                                                                     |
-|  ✔︎︎︎︎︎  | `vatPercent`          | `integer` | The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.                                                                                                                                                       |
-|  ✔︎︎︎︎︎  | `amount`              | `integer` | {% include field-description-amount.md %}                                                                                                                                                                                      |
-|  ✔︎︎︎︎︎  | `vatAmount`           | `integer` | {% include field-description-vatamount.md %}                                                                                                                                                                                   |
+|     Required     | Field                 | Type      | Description                                                                                                                                                                                                                                                                           |
+| :--------------: | :-------------------- | :-------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| {% icon check %} | `reference`           | `string`  | A reference that identifies the order item.                                                                                                                                                                                                                                           |
+| {% icon check %} | `name`                | `string`  | The name of the order item.                                                                                                                                                                                                                                                           |
+| {% icon check %} | `type`                | `enum`    | `PRODUCT`, `SERVICE`, `SHIPPING_FEE`, `DISCOUNT`, `VALUE_CODE`, or `OTHER`. The type of the order item.                                                                                                                                                                               |
+| {% icon check %} | `class`               | `string`  | The classification of the order item. Can be used for assigning the order item to a specific product category, such as `MobilePhone`. Note that `class` cannot contain spaces and must follow the regex pattern `[\w]* (a-zA-Z0-9_)`. Swedbank Pay may use this field for statistics. |
+|                  | `itemUrl`             | `string`  | The URL to a page that can display the purchased item, such as a product page                                                                                                                                                                                                         |
+|                  | `imageUrl`            | `string`  | The URL to an image of the order item.                                                                                                                                                                                                                                                |
+|                  | `description`         | `string`  | The human readable description of the order item.                                                                                                                                                                                                                                     |
+|                  | `discountDescription` | `string`  | The human readable description of the possible discount.                                                                                                                                                                                                                              |
+| {% icon check %} | `quantity`            | `decimal` | The 4 decimal precision quantity of order items being purchased.                                                                                                                                                                                                                      |
+| {% icon check %} | `quantityUnit`        | `string`  | The unit of the quantity, such as `pcs`, `grams`, or similar.                                                                                                                                                                                                                         |
+| {% icon check %} | `unitPrice`           | `integer` | The price per unit of order item, including VAT.                                                                                                                                                                                                                                      |
+|                  | `discountPrice`       | `integer` | If the order item is purchased at a discounted price. This field should contain that price, including VAT.                                                                                                                                                                            |
+| {% icon check %} | `vatPercent`          | `integer` | The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.                                                                                                                                                                                                              |
+| {% icon check %} | `amount`              | `integer` | {% include field-description-amount.md %}                                                                                                                                                                                                                                             |
+| {% icon check %} | `vatAmount`           | `integer` | {% include field-description-vatamount.md %}                                                                                                                                                                                                                                          |
 
 ### Items
 
@@ -426,7 +426,7 @@ The response given when changing a payment order is equivalent to a `GET`
 request towards the `paymentorders` resource,
 [as displayed above][payment-orders-resource].
 
-{% include alert.html type="neutral" icon="info" body="
+{% include alert.html type="informative" icon="info" body="
 After updating the Payment Order, remember to call `.refresh()` on the Payment
 Menu in JavaScript." %}
 
@@ -987,7 +987,7 @@ object:
 
 Triggered when a consumer has been identified or shipping address has been
 updated.
-{% include alert.html type="neutral" icon="info" body= "The Checkin must be
+{% include alert.html type="informative" icon="info" body= "The Checkin must be
 completed before any shipping details are finalized, as the Checkin component
 provides shipping address via the `onShippingDetailsAvailable` event." %}
 
@@ -1171,10 +1171,10 @@ object:
 ```
 
 {:.table .table-striped}
-| Field         | Type     | Description                                                    |
-| :------------ | :------- | :------------------------------------------------------------- |
-| `id`          | `string` | {% include field-description-id.md %}                          |
-| `details`     | `string` | A human readable and descriptive text of the error.            |
+| Field     | Type     | Description                                         |
+| :-------- | :------- | :-------------------------------------------------- |
+| `id`      | `string` | {% include field-description-id.md %}               |
+| `details` | `string` | A human readable and descriptive text of the error. |
 
 ### `onPaymentFailed`
 
@@ -1363,7 +1363,7 @@ The structure of a problem message will look like this:
 ### Common Problems
 
 All common problem types will have a URI in the format
-`https://api.payex.com/psp/errordetail/<payment-instrument>/<error-type>`.
+`https://api.payex.com/psp/errordetail/<error-type>`.
 The **URI is an identifier** and is currently not possible to dereference,
 although that might be possible in the future.
 
@@ -1390,12 +1390,12 @@ When the contents of the shopping cart changes or anything else that affects
 the amount occurs, the `paymentorder` must be updated and the Payment Menu
 must be `refresh`ed.
 
-{% include alert.html type="neutral" icon="info" body= "Features that are not
+{% include alert.html type="informative" icon="info" body= "Features that are not
 described in the previous sections must not be used, although they are
 available in the API. Flags that can be turned to `true` must be kept
 `false` as described in this standard setup documentation." %}
 
-{% include alert.html type="neutral" icon="info" body= "Your integration must be
+{% include alert.html type="informative" icon="info" body= "Your integration must be
 resilient to change. Properties, operations, headers, etc., that aren't
 understood in any response **must be ignored**. Don't expect a specific order of
 elements. When in doubt, please follow the [robustness principle](https://en.wikipedia.org/wiki/Robustness_principle)." %}

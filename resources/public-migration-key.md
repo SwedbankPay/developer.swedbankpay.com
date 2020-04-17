@@ -6,6 +6,8 @@ sidebar:
     items:
     - url: /resources/
       title: Introduction
+    - url: /resources/sdk-modules/
+      title: SDKs and Modules
     - url: /resources/test-data
       title: Test Data
     - url: /resources/demoshop
@@ -105,7 +107,7 @@ gpg2 --import SwedbankPay.key
 ```
 
 After this is imported, you should verify the key with comparing the fingerprint on key, with the fingerprint on this information site.
-If this is a match, you should mark the key as trusted with the following command: 
+If this is a match, you should mark the key as trusted with the following command:
 
 {:.code-header}
 **Trust Key**
@@ -113,6 +115,7 @@ If this is a match, you should mark the key as trusted with the following comman
 ```sh
 gpg2 --edit-key SwedbankPay
 ```
+
 Select `trust` and `5`
 
 You can now encrypt files with Swedbank Pay's Public Migration Key with the

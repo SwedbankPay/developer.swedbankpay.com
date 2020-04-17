@@ -10,7 +10,7 @@ This option is commonly used when initiating a subsequent
 [recurring card payment][recurrence] flow - where you do not want
 to charge the consumer right away.
 
-{% include alert.html type="neutral" icon="info" body="
+{% include alert.html type="informative" icon="info" body="
 Please note that all boolean credit card attributes involving rejection of
 certain card types are optional and requires enabling on the contract with
 Swedbank Pay." %}

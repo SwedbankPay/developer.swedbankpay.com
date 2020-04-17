@@ -322,13 +322,13 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Field                    | Type         | Description                                                                                                                                                              |
-| :------: | :----------------------- | :----------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|    ✔︎    | `transaction`            | `object`     | The `transaction` object, containing information about this `reversal`.                                                                                                  |
-|    ✔︎    | └➔&nbsp;`amount`         | `integer`    | {% include field-description-amount.md %}                                                                                                                                |
-|    ✔︎    | └➔&nbsp;`vatAmount`      | `integer`    | {% include field-description-vatamount.md %}                                                                                                                             |
-|    ✔︎    | └➔&nbsp;`description`    | `string`     | A textual description of the capture                                                                                                                                     |
-|    ✔︎    | └➔&nbsp;`payeeReference` | `string(35)` | A  reference that must match the  `payeeReference` of the sales transaction you want to reverse. See [`payeeReference`][technical-reference-payeeReference] for details. |
+|     Required     | Field                    | Type         | Description                                                                                                                                                              |
+| :--------------: | :----------------------- | :----------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| {% icon check %}︎ | `transaction`            | `object`     | The `transaction` object, containing information about this `reversal`.                                                                                                  |
+| {% icon check %}︎ | └➔&nbsp;`amount`         | `integer`    | {% include field-description-amount.md %}                                                                                                                                |
+| {% icon check %}︎ | └➔&nbsp;`vatAmount`      | `integer`    | {% include field-description-vatamount.md %}                                                                                                                             |
+| {% icon check %}︎ | └➔&nbsp;`description`    | `string`     | A textual description of the capture                                                                                                                                     |
+| {% icon check %}︎ | └➔&nbsp;`payeeReference` | `string(35)` | A  reference that must match the  `payeeReference` of the sales transaction you want to reverse. See [`payeeReference`][technical-reference-payeeReference] for details. |
 
 {% include transaction-response.md payment_instrument="swish" transaction="reversal" %}
 

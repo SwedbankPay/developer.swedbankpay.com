@@ -32,7 +32,7 @@ sidebar:
 customers that are **compliant with PCI-DSS regulations**, and is a way to
 implement Card Payments without using a Swedbank Pay hosted payment page." %}
 
-{% include alert.html type="neutral" icon="info" header="Note on 3-D Secure
+{% include alert.html type="informative" icon="info" header="Note on 3-D Secure
 Authentication" body="Although there is no need to redirect to a Swedbank Pay
 hosted payment page in the Direct Card Payment scenario, consumers will need to
 be **redirected to a 3-D Secure page hosted by the issuing bank if the bank
@@ -81,7 +81,7 @@ expanded `POST` request is available in the [other features section][purchase].
 
 {% include alert-callback-url.md payment_instrument="card" %}
 
-{% include alert.html type="neutral" icon="report_problem" body="**Step 2** is
+{% include alert.html type="informative" icon="report_problem" body="**Step 2** is
 to create an authorization transaction. Implement only Step 2a if **3-D Secure
 authentication is enabled**. Note that if the issuer does **not require** 3-D
 Secure authentication, implement only Step 2b. You will see that the requests
@@ -116,14 +116,14 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Field                          | Type      | Description                                                                     |
-| :------: | :----------------------------- | :-------- | :------------------------------------------------------------------------------ |
-|  ✔︎︎︎︎︎  | `transaction`                  | `object`  | The transaction object.                                                         |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`cardNumber`           | `string`  | Primary Account Number (PAN) of the card, printed on the face of the card.      |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`cardExpiryMonth`      | `integer` | Expiry month of the card, printed on the face of the card.                      |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`cardExpiryYear`       | `integer` | Expiry year of the card, printed on the face of the card.                       |
-|          | └➔&nbsp;`cardVerificationCode` | `string`  | Card verification code (CVC/CVV/CVC2), usually printed on the back of the card. |
-|          | └➔&nbsp;`cardholderName`       | `string`  | Name of the cardholder, usually printed on the face of the card.                |
+|     Required     | Field                          | Type      | Description                                                                     |
+| :--------------: | :----------------------------- | :-------- | :------------------------------------------------------------------------------ |
+| {% icon check %} | `transaction`                  | `object`  | The transaction object.                                                         |
+| {% icon check %} | └➔&nbsp;`cardNumber`           | `string`  | Primary Account Number (PAN) of the card, printed on the face of the card.      |
+| {% icon check %} | └➔&nbsp;`cardExpiryMonth`      | `integer` | Expiry month of the card, printed on the face of the card.                      |
+| {% icon check %} | └➔&nbsp;`cardExpiryYear`       | `integer` | Expiry year of the card, printed on the face of the card.                       |
+|                  | └➔&nbsp;`cardVerificationCode` | `string`  | Card verification code (CVC/CVV/CVC2), usually printed on the back of the card. |
+|                  | └➔&nbsp;`cardholderName`       | `string`  | Name of the cardholder, usually printed on the face of the card.                |
 
 {:.code-header}
 **Response**
@@ -209,7 +209,7 @@ completed after the `direct-authorization` request and the `state` of the
 `transaction` will be set to `Completed`. If the issuer requires 3-D Secure
 authentication, read step 2b below for how to complete the authorization.
 
-{% include alert.html type="neutral" icon="info" header="Completed means final,
+{% include alert.html type="informative" icon="info" header="Completed means final,
 not successful." body="Note that `Completed` does not indicate a successful
 payment, only that it has reached a final (complete) state. A `GET` request
 needs to be performed on the payment to inspect it further." %}
@@ -244,14 +244,14 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Field                          | Type      | Description                                                                     |
-| :------: | :----------------------------- | :-------- | :------------------------------------------------------------------------------ |
-|  ✔︎︎︎︎︎  | `transaction`                  | `object`  | The transaction object.                                                         |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`cardNumber`           | `string`  | Primary Account Number (PAN) of the card, printed on the face of the card.      |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`cardExpiryMonth`      | `integer` | Expiry month of the card, printed on the face of the card.                      |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`cardExpiryYear`       | `integer` | Expiry year of the card, printed on the face of the card.                       |
-|          | └➔&nbsp;`cardVerificationCode` | `string`  | Card verification code (CVC/CVV/CVC2), usually printed on the back of the card. |
-|          | └➔&nbsp;`cardholderName`       | `string`  | Name of the cardholder, usually printed on the face of the card.                |
+|     Required     | Field                          | Type      | Description                                                                     |
+| :--------------: | :----------------------------- | :-------- | :------------------------------------------------------------------------------ |
+| {% icon check %} | `transaction`                  | `object`  | The transaction object.                                                         |
+| {% icon check %} | └➔&nbsp;`cardNumber`           | `string`  | Primary Account Number (PAN) of the card, printed on the face of the card.      |
+| {% icon check %} | └➔&nbsp;`cardExpiryMonth`      | `integer` | Expiry month of the card, printed on the face of the card.                      |
+| {% icon check %} | └➔&nbsp;`cardExpiryYear`       | `integer` | Expiry year of the card, printed on the face of the card.                       |
+|                  | └➔&nbsp;`cardVerificationCode` | `string`  | Card verification code (CVC/CVV/CVC2), usually printed on the back of the card. |
+|                  | └➔&nbsp;`cardholderName`       | `string`  | Name of the cardholder, usually printed on the face of the card.                |
 
 {:.code-header}
 **Response**
@@ -289,7 +289,7 @@ Content-Type: application/json
             "operations": [
                 {
                     "method": "GET",
-                    "href": "https://api.stage.payex.com/psp/creditcard/confined/payments/authorizations/authenticate/{{ page.transaction_id }}",
+                    "href": "{{ page.api_url }}/psp/creditcard/confined/payments/authorizations/authenticate/{{ page.transaction_id }}",
                     "rel": "redirect-authentication"
                 }
             ]

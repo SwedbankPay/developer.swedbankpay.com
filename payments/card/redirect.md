@@ -62,7 +62,7 @@ If the payer cancel at any point during payment, he or she will reach the
 `cancelUrl`. If the payment session is followed through completely, the payer
 will reach the `completeUrl`.
 
-{% include alert.html type="neutral" icon="info" body="Important: Both
+{% include alert.html type="informative" icon="info" body="Important: Both
 successful and rejected payments are labeled as `completed`." %}
 
 This means that when you reach this point, you need to make sure that the

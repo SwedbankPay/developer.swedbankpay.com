@@ -11,7 +11,7 @@ sidebar:
     - url: /checkout/payment-menu
       title: Payment Menu
     - url: /checkout/capture
-      title: Capture 
+      title: Capture
     - url: /checkout/after-payment
       title: After Payment
     - url: /checkout/other-features
@@ -25,7 +25,7 @@ implement in order to complete the Swedbank Pay Checkout integration. To
 finalize Checkout you first have to Checkin. To check in, the payer needs to be
 identified." %}
 
-## Step 1: Initiate session for consumer identification 
+## Step 1: Initiate session for consumer identification
 
 The payer will be identified with the `consumers` resource and will be
 persisted to streamline future Payment Menu processes. Payer identification
@@ -48,11 +48,11 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Field                                  | Type     | Description                                                                                |
-| :------: | :---------------------------------------- | :------- | :----------------------------------------------------------------------------------------- |
-|  ✔︎︎︎︎︎  | `operation`                               | `string` | `initiate-consumer-session`, the operation to perform.                                     |
-|  ✔︎︎︎︎︎  | `language`                                | `string` | Selected language to be used in Checkin. Supported values are `nb-NO`, `sv-SE` and `en-US` |
-|  ✔︎︎︎︎︎  | `shippingAddressRestrictedToCountryCodes` | `string` | List of supported shipping countries for merchant. Using ISO-3166 standard.                |
+|     Required     | Field                                     | Type     | Description                                                                                |
+| :--------------: | :---------------------------------------- | :------- | :----------------------------------------------------------------------------------------- |
+| {% icon check %} | `operation`                               | `string` | `initiate-consumer-session`, the operation to perform.                                     |
+| {% icon check %} | `language`                                | `string` | Selected language to be used in Checkin. Supported values are `nb-NO`, `sv-SE` and `en-US` |
+| {% icon check %} | `shippingAddressRestrictedToCountryCodes` | `string` | List of supported shipping countries for merchant. Using ISO-3166 standard.                |
 
 When the request has been sent, a response containing an array of operations that can be acted upon will be returned:
 
@@ -83,7 +83,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Field              | Type     | Description                                                                                                                                       |
+| Field                 | Type     | Description                                                                                                                                       |
 | :-------------------- | :------- | :------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `token`               | `string` | A session token used to initiate Checkout UI.                                                                                                     |
 | `operations`          | `array`  | The array of operation objects to choose from, described in detail in the table below.                                                            |
@@ -132,7 +132,7 @@ operation is meant to be embedded in a `<script>` element in an HTML document.
 </html>
 ```
 
-{% include alert.html type="neutral" icon="info" body="The Checkin and Payment
+{% include alert.html type="informative" icon="info" body="The Checkin and Payment
 Menu components (the two `<iframe>` elements) must be separate
 (one must not replace the other)." %}
 
@@ -191,7 +191,7 @@ request.send(JSON.stringify({
 }));
 ```
 
-{% include alert.html type="neutral" icon="info" body="
+{% include alert.html type="informative" icon="info" body="
 Note that we add the script at the end of the body. This ensures that
 every element (like the container `<div>` elements) has loaded in before we try to
 access them with our script." %}
@@ -239,6 +239,7 @@ sequenceDiagram
     deactivate Payer
     end
 ```
+
 If a browser refresh is performed after the payer has checked in, the payment
 menu must be shown even though `onConsumerIdentified` is not invoked.
 
