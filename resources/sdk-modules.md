@@ -69,31 +69,7 @@ functionality that isn't provided in the core platform. Such functionality may
 be to allow consumers of your website to pay with a payment provider such as
 Swedbank Pay.
 
-{% include alert.html type="warning" icon="warning" header="Unsupported"
-body="These modules are at an early stage of development and are not supported
-as of yet by Swedbank Pay. They are provided as a convenience to speed up your
-development, so please feel free to play around. However, if you need support,
-please wait for a future, stable release." %}
-
-{:.table .table-striped}
-|       | Platform | Module | Repository |
-| :---: | :------- | :----- | :--------- |
-{%- for repository in active_repositories -%}
-  {%- if repository.topics contains 'module' %}
-|   {%- if repository.topics contains 'swedbank-pay-checkout' -%} {% icon shopping_cart %}
-    {%- elsif repository.topics contains 'swedbank-pay-payments' -%} {% icon credit_card %}
-    {%- else -%} ?
-    {%- endif -%}
-|   {% if repository.topics contains 'episerver' -%} Episerver
-    {%- elsif repository.topics contains 'magento2' -%} Magento 2
-    {%- elsif repository.topics contains 'woocommerce' -%} WooCommerce
-    {%- else -%} ?
-    {%- endif -%}
-|   {% if repository.homepage != empty -%}[{{ repository.description }}]({{ repository.homepage }})
-    {%- else -%} {{ repository.description }}
-    {%- endif -%} | [`{{ repository.name }}`]({{ repository.html_url }})
-  {%- endif -%}
-{%- endfor %}
+{% include repository-table.md type='Module' %}
 
 ## Official SDKs
 
@@ -105,23 +81,7 @@ programming language and environment.
 
 SDKs are often used as a building block to construct a Module.
 
-{% include alert.html type="warning" icon="warning" header="Unsupported"
-body="These SDKs are at an early stage of development and are not supported
-as of yet by Swedbank Pay. They are provided as a convenience to speed up your
-development, so please feel free to play around. However, if you need support,
-please wait for a future, stable release." %}
-
-{:.table .table-striped}
-| Language | SDK  | Repository |
-| :------: | :--- | :--------- |
-{%- for repository in active_repositories -%}
-  {%- if repository.topics contains 'sdk' %}
-| ![{{ repository.language }}](https://img.shields.io/badge/{{ repository.language | downcase | url_encode }}-blue.svg) |
-    {%- if repository.homepage != empty -%}[{{ repository.description }}]({{ repository.homepage }})
-    {%- else -%} {{ repository.description }}
-    {%- endif -%} | [`{{ repository.name }}`]({{ repository.html_url }})
-  {%- endif -%}
-{%- endfor %}
+{% include repository-table.md type='SDK' use_language=true %}
 
 ## Unofficial SDKs
 
@@ -131,32 +91,16 @@ but are not supported in any way by Swedbank Pay – not now, nor in the future
 %}
 
 {:.table .table-striped}
-|                         Language                          | Repository                                           | Status                                                                                             |
-| :-------------------------------------------------------: | :--------------------------------------------------- | :------------------------------------------------------------------------------------------------- |
-| ![Node.js](https://img.shields.io/badge/node.js-blue.svg) | [`bjerkio/swedbank-pay-js`][bjerkio-swedbank-pay-js] | [![npm version](https://badge.fury.io/js/swedbank-pay.svg)](https://badge.fury.io/js/swedbank-pay) |
+|              Platform               | Repository                                           | Status                                                                                             |
+| :---------------------------------: | :--------------------------------------------------- | :------------------------------------------------------------------------------------------------- |
+| {% include logo.md platform="js" %} | [`bjerkio/swedbank-pay-js`][bjerkio-swedbank-pay-js] | [![npm version](https://badge.fury.io/js/swedbank-pay.svg)](https://badge.fury.io/js/swedbank-pay) |
 
 ## Official Libraries
 
 **Software libraries** are bundles of code often used by an SDK or in a Module
 to solve one or a set of specific problems.
 
-{% include alert.html type="warning" icon="warning" header="Unsupported"
-body="These libraries are at an early stage of development and are not supported
-as of yet by Swedbank Pay. They are provided as a convenience to speed up your
-development, so please feel free to play around. However, if you need support,
-please wait for a future, stable release." %}
-
-{:.table .table-striped}
-| Language | Library | Repository |
-| :------: | :------ | :--------- |
-{%- for repository in active_repositories -%}
-  {%- if repository.topics contains 'library' %}
-| ![{{ repository.language }}](https://img.shields.io/badge/{{ repository.language | downcase | url_encode }}-blue.svg) |
-    {%- if repository.homepage != empty -%}[{{ repository.description }}]({{ repository.homepage }})
-    {%- else -%} {{ repository.description }}
-    {%- endif -%} | [`{{ repository.name }}`]({{ repository.html_url }})
-  {%- endif -%}
-{%- endfor %}
+{% include repository-table.md type='Library' use_language=true %}
 
 [woocommerce]: https://woocommerce.com/
 [magento]: https://magento.com/
