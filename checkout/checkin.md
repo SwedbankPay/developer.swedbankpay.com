@@ -48,11 +48,11 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Field                                  | Type     | Description                                                                                |
-| :------: | :---------------------------------------- | :------- | :----------------------------------------------------------------------------------------- |
-|  {% icon check %}  | `operation`                               | `string` | `initiate-consumer-session`, the operation to perform.                                     |
-|  {% icon check %}  | `language`                                | `string` | Selected language to be used in Checkin. Supported values are `nb-NO`, `sv-SE` and `en-US` |
-|  {% icon check %}  | `shippingAddressRestrictedToCountryCodes` | `string` | List of supported shipping countries for merchant. Using ISO-3166 standard.                |
+|     Required     | Field                                     | Type     | Description                                                                                |
+| :--------------: | :---------------------------------------- | :------- | :----------------------------------------------------------------------------------------- |
+| {% icon check %} | `operation`                               | `string` | `initiate-consumer-session`, the operation to perform.                                     |
+| {% icon check %} | `language`                                | `string` | Selected language to be used in Checkin. Supported values are `nb-NO`, `sv-SE` and `en-US` |
+| {% icon check %} | `shippingAddressRestrictedToCountryCodes` | `string` | List of supported shipping countries for merchant. Using ISO-3166 standard.                |
 
 When the request has been sent, a response containing an array of operations that can be acted upon will be returned:
 
@@ -83,7 +83,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Field              | Type     | Description                                                                                                                                       |
+| Field                 | Type     | Description                                                                                                                                       |
 | :-------------------- | :------- | :------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `token`               | `string` | A session token used to initiate Checkout UI.                                                                                                     |
 | `operations`          | `array`  | The array of operation objects to choose from, described in detail in the table below.                                                            |
