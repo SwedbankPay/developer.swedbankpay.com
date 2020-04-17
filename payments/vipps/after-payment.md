@@ -378,11 +378,11 @@ Content-Type: application/json
 {:.table .table-striped}
 | Required | Field                    | Type         | Description                                                                                           |
 | :------: | :----------------------- | :----------- | :---------------------------------------------------------------------------------------------------- |
-|  ✔︎︎︎︎︎  | `transaction`            | `object`     | The trnsaction object.                                                                                |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`amount`         | `integer`    | {% include field-description-amount.md currency="NOK" %}                                              |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`vatAmount`      | `integer`    | {% include field-description-vatamount.md currency="NOK" %}                                           |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`description`    | `string`     | A textual description of the capture                                                                  |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the reversal transaction. See [`payeeReference`][payee-reference] for details. |
+|  {% icon check %}  | `transaction`            | `object`     | The trnsaction object.                                                                                |
+|  {% icon check %}  | └➔&nbsp;`amount`         | `integer`    | {% include field-description-amount.md currency="NOK" %}                                              |
+|  {% icon check %}  | └➔&nbsp;`vatAmount`      | `integer`    | {% include field-description-vatamount.md currency="NOK" %}                                           |
+|  {% icon check %}  | └➔&nbsp;`description`    | `string`     | A textual description of the capture                                                                  |
+|  {% icon check %}  | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the reversal transaction. See [`payeeReference`][payee-reference] for details. |
 
 {% include transaction-response.md payment_instrument="vipps"
     transaction="reversal" %}

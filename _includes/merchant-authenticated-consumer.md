@@ -45,7 +45,7 @@ Content-Type: application/json
 {:.table .table-striped}
 | Required | Field                         | Type     | Description                                                                                          |
 | :------: | :------------------------------- | :------- | :--------------------------------------------------------------------------------------------------- |
-|  ✔︎︎︎︎︎  | `paymentorder`                   | `object` | The payment order object.                                                                            |
+|  {% icon check %}  | `paymentorder`                   | `object` | The payment order object.                                                                            |
 |          | └➔&nbsp;`payer`                  | `object` | The `payer` object containing information about the payer relevant for the payment order.            |
 |          | └─➔&nbsp;`nationalIdentifier`    | `string` | The national identifier object.                                                                      |
 |          | └──➔&nbsp;`socialSecurityNumber` | `string` | The consumers social security number. Must be part of what you get from your authentication process. |

@@ -118,10 +118,10 @@ Content-Type: application/json
 {:.table .table-striped}
 | Required | Field                          | Type      | Description                                                                     |
 | :------: | :----------------------------- | :-------- | :------------------------------------------------------------------------------ |
-|  ✔︎︎︎︎︎  | `transaction`                  | `object`  | The transaction object.                                                         |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`cardNumber`           | `string`  | Primary Account Number (PAN) of the card, printed on the face of the card.      |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`cardExpiryMonth`      | `integer` | Expiry month of the card, printed on the face of the card.                      |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`cardExpiryYear`       | `integer` | Expiry year of the card, printed on the face of the card.                       |
+|  {% icon check %}  | `transaction`                  | `object`  | The transaction object.                                                         |
+|  {% icon check %}  | └➔&nbsp;`cardNumber`           | `string`  | Primary Account Number (PAN) of the card, printed on the face of the card.      |
+|  {% icon check %}  | └➔&nbsp;`cardExpiryMonth`      | `integer` | Expiry month of the card, printed on the face of the card.                      |
+|  {% icon check %}  | └➔&nbsp;`cardExpiryYear`       | `integer` | Expiry year of the card, printed on the face of the card.                       |
 |          | └➔&nbsp;`cardVerificationCode` | `string`  | Card verification code (CVC/CVV/CVC2), usually printed on the back of the card. |
 |          | └➔&nbsp;`cardholderName`       | `string`  | Name of the cardholder, usually printed on the face of the card.                |
 
@@ -246,10 +246,10 @@ Content-Type: application/json
 {:.table .table-striped}
 | Required | Field                          | Type      | Description                                                                     |
 | :------: | :----------------------------- | :-------- | :------------------------------------------------------------------------------ |
-|  ✔︎︎︎︎︎  | `transaction`                  | `object`  | The transaction object.                                                         |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`cardNumber`           | `string`  | Primary Account Number (PAN) of the card, printed on the face of the card.      |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`cardExpiryMonth`      | `integer` | Expiry month of the card, printed on the face of the card.                      |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`cardExpiryYear`       | `integer` | Expiry year of the card, printed on the face of the card.                       |
+|  {% icon check %}  | `transaction`                  | `object`  | The transaction object.                                                         |
+|  {% icon check %}  | └➔&nbsp;`cardNumber`           | `string`  | Primary Account Number (PAN) of the card, printed on the face of the card.      |
+|  {% icon check %}  | └➔&nbsp;`cardExpiryMonth`      | `integer` | Expiry month of the card, printed on the face of the card.                      |
+|  {% icon check %}  | └➔&nbsp;`cardExpiryYear`       | `integer` | Expiry year of the card, printed on the face of the card.                       |
 |          | └➔&nbsp;`cardVerificationCode` | `string`  | Card verification code (CVC/CVV/CVC2), usually printed on the back of the card. |
 |          | └➔&nbsp;`cardholderName`       | `string`  | Name of the cardholder, usually printed on the face of the card.                |
 

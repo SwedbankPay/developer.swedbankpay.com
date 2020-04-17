@@ -32,11 +32,11 @@ Content-Type: application/json
 {:.table .table-striped}
 | Required | Field                 | Type          | Description                                                                                                   |
 | :------: | :----------------------- | :------------ | :------------------------------------------------------------------------------------------------------------ |
-|  ✔︎︎︎︎︎  | `transaction`            | `object`      | The object representation of the generic [transaction resource][transaction-resource].                        |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`amount`         | `integer`     | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 100.00 NOK, 5000 50.00 SEK. |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`vatAmount`      | `integer`     | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 100.00 NOK, 5000 50.00 SEK. |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`description`    | `string`      | A textual description of the capture transaction.                                                             |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`payeeReference` | `string(30*)` | A unique reference for the capture transaction. See [`payeeReference`][payee-reference] for details.          |
+|  {% icon check %}  | `transaction`            | `object`      | The object representation of the generic [transaction resource][transaction-resource].                        |
+|  {% icon check %}  | └➔&nbsp;`amount`         | `integer`     | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 100.00 NOK, 5000 50.00 SEK. |
+|  {% icon check %}  | └➔&nbsp;`vatAmount`      | `integer`     | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 100.00 NOK, 5000 50.00 SEK. |
+|  {% icon check %}  | └➔&nbsp;`description`    | `string`      | A textual description of the capture transaction.                                                             |
+|  {% icon check %}  | └➔&nbsp;`payeeReference` | `string(30*)` | A unique reference for the capture transaction. See [`payeeReference`][payee-reference] for details.          |
 
 {:.code-header}
 **Response**
