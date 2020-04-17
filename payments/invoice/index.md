@@ -113,12 +113,12 @@ sequenceDiagram
 [after-payment]: /payments/invoice/after-payment
 [callback-api]: /payments/invoice/other-features#callback
 [financing-consumer]: /payments/invoice/other-features#financing-consumer
-[no-png]: /assets/img/no.png
+[no-png]: /assets/img/flag-norway.png
 [optional-features]: /payments/invoice/optional-features
 [recur]: /payments/invoice/other-features#recur
 [redirect]: /payments/invoice/redirect
 [purchase]: /payments/invoice/other-features#purchase
-[se-png]: /assets/img/se.png
+[se-png]: /assets/img/flag-sweden.png
 [setup-mail-finland]: verkkokauppa.setup@swedbankpay.fi
 [setup-mail-norway]: mailto:ehandelsetup@swedbankpay.no
 [setup-mail-sweden]: mailto:ehandelsetup@swedbankpay.se

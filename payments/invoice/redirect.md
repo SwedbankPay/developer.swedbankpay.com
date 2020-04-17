@@ -255,11 +255,11 @@ next_href="seamless-view" next_title="Next: Seamless View" %}
 [callback]: /payments/invoice/other-features#callback
 [cancel]: /payments/invoice/after-payment#cancellations
 [capture]: /payments/invoice/after-payment#captures
-[fi-png]: /assets/img/fi.png
+[fi-png]: /assets/img/flag-finland.png
 [financing-consumer]: /payments/invoice/other-features#financing-consumer
-[no-png]: /assets/img/no.png
+[no-png]: /assets/img/flag-norway.png
 [payee-reference]: /payments/invoice/other-features#payee-info
 [recur]: /payments/invoice/other-features#recur
-[se-png]: /assets/img/se.png
+[se-png]: /assets/img/flag-sweden.png
 [user-agent-definition]: https://en.wikipedia.org/wiki/User_agent
 [verify]: /payments/invoice/other-features#verify

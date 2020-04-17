@@ -1409,7 +1409,7 @@ elements. When in doubt, please follow the [robustness principle](https://en.wik
 [current-payment]: #current-payment-resource
 [expanding]: #expansion
 [http-api-problems]: https://tools.ietf.org/html/rfc7807
-[image_disabled_payment_menu]: /assets/img/checkout/test-purchase.png
+[image_disabled_payment_menu]: /assets/img/checkout/test-purchaflag-sweden.png
 [image_enabled_payment_menu]: /assets/img/checkout/payment-menu.png
 [invoice-payments-problems]: /payments/invoice/other-features#problem-messages
 [operations]: #operations
