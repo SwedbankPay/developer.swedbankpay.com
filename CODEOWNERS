@@ -1,0 +1,9 @@
+#
+# Add more specific rules as needed.
+# The latest match takes precedence
+
+# Add tech writers to reviewers
+*   @marinafrydenb @arebra
+
+# If a config file or a build file is edited
+*.yml   @marinafrydenb @arebra @asbjornu @trieutran91 @nullableint
