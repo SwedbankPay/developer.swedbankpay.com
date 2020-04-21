@@ -9,14 +9,16 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Valid commit messages
+      shell: bash
       run: |
         echo "DX-723: Some commit message" > commit-msg.txt
-        sh ./.githooks/commit-msg commit-msg.txt
+        bash ./.githooks/commit-msg commit-msg.txt
 
     - name: Invalid commit messages
+      shell: bash
       run: |
         echo "Some commit message" > commit-msg.txt
-        sh ./.githooks/commit-msg commit-msg.txt
+        bash ./.githooks/commit-msg commit-msg.txt
 
   pre-commit:
     runs-on: ubuntu-latest
@@ -24,11 +26,13 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Valid branch names
+      shell: bash
       run: |
         git checkout -b feature/dx-123_hello
-        sh ./.githooks/pre-commit
+        bash ./.githooks/pre-commit
 
     - name: Invalid branch names
+      shell: bash
       run: |
         git checkout -b feature/hello
-        sh ./.githooks/pre-commit
+        bash ./.githooks/pre-commit
