@@ -1,14 +1,29 @@
 #!/bin/sh
 
-branchname="$(git rev-parse --abbrev-ref HEAD)"
-validbranchregex="(hotfix|feature|release|bugfix)\/([A-Z]+\-[0-9]+).*"
-[[ $branchname =~ $validbranchregex ]]
-taskname=${BASH_REMATCH[2]}
+branch_name="$(git rev-parse --abbrev-ref HEAD)"
+valid_branch_regex="^(hotfix|feature|release|bugfix)\/([A-Z]+\-[0-9]+)"
 
-commitmessage="$(cat $1)"
+if [[ ! $branch_name =~ $valid_branch_regex ]]; then
+    echo "Commit error!"
+    echo "The branch '$branch_name' is not named according to our standards."
+    echo ""
+    echo "Expected format:"
+    echo "  $valid_branch_regex"
+    echo ""
+    echo "Examples:"
+    echo "  feature/dx-839_some_great_description"
+    echo "  release/1.8.1"
+    echo "  hotfix/dx-123_very_hot_fix"
+    exit 2
+fi
 
-if [[ $commitmessage != $taskname* ]]
-then
-	echo "Commit message does not start with $taskname. This is case sensitive"
-	exit 2
+task_id=${BASH_REMATCH[2]}
+
+commit_message="$(cat $1)"
+
+if [[ $commit_message != $task_id* ]]; then
+    echo "Commit error!"
+    echo "The commit message needs to start with '$task_id'."
+    echo "This is case sensitive."
+    exit 2
 fi
