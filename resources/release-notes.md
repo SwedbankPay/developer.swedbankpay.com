@@ -33,6 +33,13 @@ this very documentation, not to a version of any APIs described by it." %}
 
 ## April 2020
 
+### Version 1.8.4
+
+* Corrected `URL` links for Error and Problem sections for [Card Payments][card],
+  [Checkout][checkout] and [Swish Payments][swish].
+* Added new icon tag for table required checkmarks.
+* Added new flag images.
+  
 ### Version 1.8.3
 
 * Bug fixes to Mermaid diagram and alert styling, plus improvements to code
