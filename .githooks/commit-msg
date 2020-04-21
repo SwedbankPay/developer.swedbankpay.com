@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Redirect output to stderr.
+exec 1>&2
+
 branchname="$(git rev-parse --abbrev-ref HEAD)"
 validbranchname="(hotfix|feature|release|bugfix)\/([A-Z]+\-[\d]+)"
 
