@@ -3,7 +3,7 @@
 # The latest match takes precedence
 
 # Add tech writers to reviewers
-*   @marinafrydenb @arebra
+*   @SwedbankPay/techwriters 
 
 # If a config file or a build file is edited
-*.yml   @marinafrydenb @arebra @asbjornu @trieutran91 @nullableint
+*.yml   @SwedbankPay/dx 
