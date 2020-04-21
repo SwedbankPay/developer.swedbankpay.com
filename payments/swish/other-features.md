@@ -200,7 +200,7 @@ of the problem.
 ## Swish API errors
 
 All Swish error types will have the following URI in front of type:
-`{{ page.api_url }}/psp/errordetail/<errortype>`
+`https://api.payex.com/psp/errordetail/<error-type>`
 
 ### `inputerror`
 
