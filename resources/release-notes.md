@@ -33,8 +33,9 @@ this very documentation, not to a version of any APIs described by it." %}
 
 ## April 2020
 
-### Version 1.8.4
+### Version 1.9.0
 
+* Added a new section [SDKs and Modules][sdk-modules] in Resources.
 * Corrected `URL` links for Error and Problem sections for [Card Payments][card],
   [Checkout][checkout] and [Swish Payments][swish].
 * Added new icon tag for table required checkmarks.
@@ -371,6 +372,7 @@ integration and the payer.
 [one-click]: /payments/card/other-features#one-click-payments
 [payment-orders]: /checkout/other-features#creating-a-payment-order
 [payments]: /payments
+[sdk-modules]: /resources/sdk-modules
 [swish-api-errors]: /payments/swish/other-features#swish-api-errors
 [swish-direct-mcom]: /payments/swish/direct#create-m-commerce-sale-transaction
 [swish-direct]: /payments/swish/direct
