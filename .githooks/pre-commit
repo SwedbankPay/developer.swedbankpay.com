@@ -39,12 +39,21 @@ EOF
 fi
 
 
-branchname="$(git rev-parse --abbrev-ref HEAD)"
-validbranchregex="(hotfix|feature|release|bugfix)\/([A-Z]+\-[0-9]+).*"
+branch_name="$(git rev-parse --abbrev-ref HEAD)"
+valid_branch_regex="^(hotfix|feature|release|bugfix)\/([A-Z]+\-[0-9]+).*"
 
-if [[ ! $branchname =~ $validbranchregex ]]
+if [[ ! $branch_name =~ $valid_branch_regex ]]
 then
-    echo "There is something wrong with your branch name. Branch names in this project must adhere to this contract: $validbranchregex. Your commit will be rejected."
+    echo "Commit error!"
+    echo "The branch '$branch_name' is not named according to our standards."
+    echo ""
+    echo "Expected format:"
+    echo "  $valid_branch_regex"
+    echo ""
+    echo "Examples:"
+    echo "  feature/dx-839_some_great_description"
+    echo "  release/1.8.1"
+    echo "  hotfix/dx-123_very_hot_fix"
     exit 1
 fi
 
