@@ -5,10 +5,10 @@ validbranchregex="(hotfix|feature|release|bugfix)\/([A-Z]+\-[0-9]+).*"
 [[ $branchname =~ $validbranchregex ]]
 taskname=${BASH_REMATCH[2]}
 
-commitedtaskname="$(grep '(^[A-Z]+\-[\d]+)' $1)"
+commitmessage="$(cat $1)"
 
-if [[ ! $taskname =~ $commitedtaskname ]]
+if [[ $commitmessage != $taskname* ]]
 then
-	echo "Task $commitedtaskname does not match branch $taskname. This is case sensitive"
+	echo "Commit message does not start with $taskname. This is case sensitive"
 	exit 2
 fi
