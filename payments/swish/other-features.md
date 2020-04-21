@@ -493,6 +493,29 @@ Content-Type: application/json
 }
 ```
 
+### `swishgatewaytimeout`
+
+Caused By:
+
+- During a create a sale call to e-com, Swish responded with 504 (Gateway Timeout).
+
+{:.code-header}
+Example response swishgatewaytimeout
+
+```http
+HTTP/1.1 504 Gateway Timeout
+Content-Type: application/json
+
+{
+    "sessionId": "570ad610-3bd5-43d2-a270-ca1510562972",
+    "type": "https://api.payex.com/psp/errordetail/swishgatewaytimeout",
+    "title": "Swish Gateway Timeout",
+    "status": 504,
+    "instance": "https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales",
+    "detail": "Request to Swish timed out."
+}
+```
+
 ### `systemerror`
 
 {:.code-header}
