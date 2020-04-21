@@ -1,0 +1,20 @@
+#!/bin/sh
+
+branchname="$(git rev-parse --abbrev-ref HEAD)"
+validbranchname="(hotfix|feature|release|bugfix)\/([A-Z]+\-[\d]+)"
+
+if [[ ! $local_branch =~ $valid_branch_regex ]]
+then
+    echo >&2 "There is something wrong with your branch name. Branch names in this project must adhere to this contract: $validbranchname. Your commit will be rejected."
+    exit 1
+fi
+
+commitedtaskname="$(grep '([A-Z]+\-[\d]+)', "$1")"
+taskname=${BASH_REMATCH[2]}
+
+if [[ ! $taskname == $commitedtaskname ]]
+then
+	echo >&2 "Task $commitedtaskname does not match branch $taskname. This is case sensitive"
+	exit 2
+fi
+exit 2
