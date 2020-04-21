@@ -1,0 +1,34 @@
+name: Jekyll site CI
+
+on: [push, pull_request]
+
+jobs:
+  commit-msg:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Valid commit messages
+      run: |
+        echo "DX-723: Some commit message" > commit-msg.txt
+        sh ./.githooks/commit-msg commit-msg.txt
+
+    - name: Invalid commit messages
+      run: |
+        echo "Some commit message" > commit-msg.txt
+        sh ./.githooks/commit-msg commit-msg.txt
+
+  pre-commit:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Valid branch names
+      run: |
+        git checkout -b feature/dx-123_hello
+        sh ./.githooks/pre-commit
+
+    - name: Invalid branch names
+      run: |
+        git checkout -b feature/hello
+        sh ./.githooks/pre-commit
