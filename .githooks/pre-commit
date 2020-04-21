@@ -41,6 +41,8 @@ fi
 branchname="$(git rev-parse --abbrev-ref HEAD)"
 validbranchname="(hotfix|feature|release|bugfix)\/([A-Z]+\-[\d]+)"
 
+echo $branchname
+
 if [[ ! $branchname =~ $valid_branch_regex ]]
 then
     echo "There is something wrong with your branch name. Branch names in this project must adhere to this contract: $validbranchname. Your commit will be rejected."
