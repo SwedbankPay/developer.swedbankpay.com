@@ -40,7 +40,7 @@ this very documentation, not to a version of any APIs described by it." %}
   and [Swish Payments][swish].
 * Required checkmarks have a new, fresh look: {% icon check %}
 * Flags now also sport a new look: ![nor][nor-flag] ![swe][swe-flag]
-  [dan][dan-flag] ![fin][fin-flag]
+  ![dan][dan-flag] ![fin][fin-flag]
   
 ### Version 1.8.3
 
