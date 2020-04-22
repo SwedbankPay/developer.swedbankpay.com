@@ -220,8 +220,9 @@ Content-Type: application/json
 
 ## E-Commerce Purchase Flow
 
-The sequence diagram below shows the three requests you have to send to
-Swedbank Pay to make a purchase.
+The sequence diagram below shows the two requests you have to send to
+Swedbank Pay to make a purchase. The Callback response is a simplified example
+in this flow, and can be seen in depth in the [Callback][callback-url] section.
 
 ```mermaid
 sequenceDiagram
@@ -239,22 +240,22 @@ sequenceDiagram
    SwedbankPay-->>-Merchant: Transactions resource
   activate Merchant
   note left of Merchant: POST containing MSISDN
-  Merchant--x-Browser: Tell consumer to open Swish app
+  Merchant->>-Browser: Tell consumer to open Swish app
   Swish_API->>Swish_App: Ask for payment confirmation
   activate Swish_App
   Swish_App-->>-Swish_API: Consumer confirms payment
   activate Swish_API
 
-  Swish_API-->>- SwedbankPay: Payment status
+  Swish_API->>-SwedbankPay: Payment status
   activate  SwedbankPay
    SwedbankPay-->>-Swish_API: Callback response
 
   activate Merchant
-  Merchant->>- SwedbankPay: GET <Sales transaction>
+  Merchant->>- SwedbankPay: GET <Swish payment>
   activate  SwedbankPay
    SwedbankPay-->>-Merchant: Payment response
   activate Merchant
-  Merchant-->>-Browser: Payment Status
+  Merchant->>-Browser: Payment Status
 ```
 
 ## Step 2b: Create M-Commerce Sale Transaction
@@ -394,17 +395,17 @@ Swedbank Pay to make a purchase.
 ```mermaid
 sequenceDiagram
   activate Browser
-  Browser->>-Merchant: start purchase
+  Browser->>-Merchant: Start purchase
   activate Merchant
   Merchant->>-SwedbankPay: POST <Swish payment> (operation=PURCHASE)
   activate  SwedbankPay
   note left of Merchant: First API request
-   SwedbankPay-->>-Merchant: payment resource
+   SwedbankPay-->>-Merchant: Payment resource
    activate Merchant
 
-  Merchant-->>- SwedbankPay: POST <Sales Transaction> (operation=create-sale)
+  Merchant->>- SwedbankPay: POST <Sales Transaction> (operation=create-sale)
   activate  SwedbankPay
-   SwedbankPay-->>-Merchant: sales resource
+   SwedbankPay-->>-Merchant: Transaction resource
   activate Merchant
   note left of Merchant: POST containing MSISDN
   Merchant--x-Browser: Tell consumer to open Swish app
@@ -422,7 +423,7 @@ sequenceDiagram
 
   Swish_App--x-Browser: Redirect
   activate Merchant
-  Merchant->>- SwedbankPay: GET <Sales transaction>
+  Merchant->>- SwedbankPay: GET <Swish Payment>
   activate  SwedbankPay
    SwedbankPay-->>-Merchant: Payment response
   activate Merchant
