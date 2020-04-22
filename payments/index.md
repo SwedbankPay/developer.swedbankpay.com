@@ -33,13 +33,13 @@ payment instruments and their platform availability are listed in the table
 below.
 
 {:.table .table-striped}
-|                              | Payment instrument              | Seamless View | Redirect | Direct API | Region                                             |
-| :--------------------------: | :------------------------------ | :-----------: | :------: | :--------: | :------------------------------------------------- |
-|    ![CardIcon][card-icon]    | [Credit card][card]             |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  |   ✔︎︎︎︎︎   | ![EarthIcon][earth-icon]                           |
-| ![InvoiceIcon][invoice-icon] | [Swedbank Pay Invoice][invoice] |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  |            | ![nor][nor-flag] ![swe][swe-flag] ![fin][fin-flag] |
-|     ![Vipps][vipps-logo]     | [Vipps][vipps]                  |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  |            | ![nor][nor-flag]                                   |
-|     ![Swish][swish-logo]     | [Swish][swish]                  |    ✔︎︎︎︎︎     |  ✔︎︎︎︎︎  | ✔︎︎︎︎︎  ︎  | ![swe][swe-flag]                                   |
-| ![MobilePay][mobilepay-logo] | [Mobile Pay][mobile-pay]        |               |  ✔︎︎︎︎︎  |            | ![dan][dan-flag] ![fin][fin-flag]                  |
+|                              | Payment instrument              |  Seamless View   |     Redirect     |     Direct API     | Region                                             |
+| :--------------------------: | :------------------------------ | :--------------: | :--------------: | :----------------: | :------------------------------------------------- |
+|    ![CardIcon][card-icon]    | [Credit card][card]             | [% icon check %} | [% icon check %} |  [% icon check %}  | ![EarthIcon][earth-icon]                           |
+| ![InvoiceIcon][invoice-icon] | [Swedbank Pay Invoice][invoice] | [% icon check %} | [% icon check %} |                    | ![nor][nor-flag] ![swe][swe-flag] ![fin][fin-flag] |
+|     ![Vipps][vipps-logo]     | [Vipps][vipps]                  | [% icon check %} | [% icon check %} |                    | ![nor][nor-flag]                                   |
+|     ![Swish][swish-logo]     | [Swish][swish]                  | [% icon check %} | [% icon check %} | [% icon check %}  ︎ | ![swe][swe-flag]                                   |
+| ![MobilePay][mobilepay-logo] | [Mobile Pay][mobile-pay]        |                  | [% icon check %} |                    | ![dan][dan-flag] ![fin][fin-flag]                  |
 
 ## Prerequisites
 
@@ -172,13 +172,13 @@ implementation in action.
 [swish-logo]: /assets/img/swish-icon.png
 [mobilepay-logo]: /assets/img/mobilepay-icon.png
 [earth-icon]: /assets/img/globe-icon.png
-[nor-flag]: /assets/img/no.png
-[swe-flag]: /assets/img/se.png
-[fin-flag]: /assets/img/fi.png
-[lat-flag]: /assets/img/latvia-flag.png
-[lit-flag]: /assets/img/lithuania-flag.png
-[est-flag]: /assets/img/estonia-flag.png
-[dan-flag]: /assets/img/danish-flag.png
+[nor-flag]: /assets/img/flag-norway.png
+[swe-flag]: /assets/img/flag-sweden.png
+[fin-flag]: /assets/img/flag-finland.png
+[lat-flag]: /assets/img/flag-latvia.png
+[lit-flag]: /assets/img/flag-lithuania.png
+[est-flag]: /assets/img/flag-estonia.png
+[dan-flag]: /assets/img/flag-denmark.png
 [card]: /payments/card
 [invoice]: /payments/invoice
 [direct-debit]: /payments/direct-debit

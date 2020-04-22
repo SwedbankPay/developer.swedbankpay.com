@@ -69,11 +69,11 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Field                    | Type          | Description                                                                                                 |
-| :------: | :----------------------- | :------------ | :---------------------------------------------------------------------------------------------------------- |
-|  ✔︎︎︎︎︎  | `transaction`            | `object`      | The `object` representation of the generic [transaction resource][transaction-resource].                    |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`description`    | `string`      | A textual description of the reason for the `cancellation`.                                                 |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`payeeReference` | `string(30*)` | A unique reference for the `cancellation` transaction. See [`payeeReference`][payee-reference] for details. |
+|     Required     | Field                    | Type          | Description                                                                                                 |
+| :--------------: | :----------------------- | :------------ | :---------------------------------------------------------------------------------------------------------- |
+| {% icon check %} | `transaction`            | `object`      | The `object` representation of the generic [transaction resource][transaction-resource].                    |
+| {% icon check %} | └➔&nbsp;`description`    | `string`      | A textual description of the reason for the `cancellation`.                                                 |
+| {% icon check %} | └➔&nbsp;`payeeReference` | `string(30*)` | A unique reference for the `cancellation` transaction. See [`payeeReference`][payee-reference] for details. |
 
 The `cancel` resource contains information about a cancellation transaction
 made against a payment.
@@ -236,13 +236,13 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Field                    | Type          | Description                                                                                             |
-| :------: | :----------------------- | :------------ | :------------------------------------------------------------------------------------------------------ |
-|  ✔︎︎︎︎︎  | `transaction`            | `object`      | The `object` representation of the generic [transaction resource][transaction-resource].                |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`amount`         | `integer`     | {% include field-description-amount.md %}                                                               |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`vatAmount`      | `integer`     | {% include field-description-vatamount.md %}                                                            |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`description`    | `string`      | A textual description of the `reversal`.                                                                |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`payeeReference` | `string(30*)` | A unique reference for the `reversal` transaction. See [`payeeReference`][payee-reference] for details. |
+|     Required     | Field                    | Type          | Description                                                                                             |
+| :--------------: | :----------------------- | :------------ | :------------------------------------------------------------------------------------------------------ |
+| {% icon check %} | `transaction`            | `object`      | The `object` representation of the generic [transaction resource][transaction-resource].                |
+| {% icon check %} | └➔&nbsp;`amount`         | `integer`     | {% include field-description-amount.md %}                                                               |
+| {% icon check %} | └➔&nbsp;`vatAmount`      | `integer`     | {% include field-description-vatamount.md %}                                                            |
+| {% icon check %} | └➔&nbsp;`description`    | `string`      | A textual description of the `reversal`.                                                                |
+| {% icon check %} | └➔&nbsp;`payeeReference` | `string(30*)` | A unique reference for the `reversal` transaction. See [`payeeReference`][payee-reference] for details. |
 
 The `reversal` resource contains information about the newly created reversal
 transaction.

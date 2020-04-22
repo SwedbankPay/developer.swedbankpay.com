@@ -81,11 +81,11 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Field               | Type     | Description                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| :------: | ------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|  ✔︎︎︎︎︎  | `payment`           | `object` | The `payment` object.                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`operation` | `string` | Determines the initial operation, that defines the type invoice payment created.<br> <br> `FinancingConsumer`. Used to create a new invoice to be sent to the payer.<br> <br> `Recur`. Used to charge a card on a recurring basis. Is followed up by a capture or cancel operation (if not Autocapture is used, that is).<br> <br>`Verify`. Used when authorizing a card withouth reserveing any funds.  It is followed up by a verification transaction. |
-|  ✔︎︎︎︎︎  | └➔&nbsp;`intent`    | `string` | The intent of the payment identifies how and when the charge will be effectuated. This determine the type transactions used during the payment process.<br> <br>`Authorization`. Reserves the amount, and is followed by a [cancellation][cancel] or [capture][capture] of funds.                                                                                                                                                                         |
+|     Required     | Field               | Type     | Description                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| :--------------: | ------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| {% icon check %} | `payment`           | `object` | The `payment` object.                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| {% icon check %} | └➔&nbsp;`operation` | `string` | Determines the initial operation, that defines the type invoice payment created.<br> <br> `FinancingConsumer`. Used to create a new invoice to be sent to the payer.<br> <br> `Recur`. Used to charge a card on a recurring basis. Is followed up by a capture or cancel operation (if not Autocapture is used, that is).<br> <br>`Verify`. Used when authorizing a card withouth reserveing any funds.  It is followed up by a verification transaction. |
+| {% icon check %} | └➔&nbsp;`intent`    | `string` | The intent of the payment identifies how and when the charge will be effectuated. This determine the type transactions used during the payment process.<br> <br>`Authorization`. Reserves the amount, and is followed by a [cancellation][cancel] or [capture][capture] of funds.                                                                                                                                                                         |
 
 ## Financing Consumer
 
@@ -432,30 +432,30 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required | Field                          | Type     | Description                                                            |
-| :------: | :----------------------------- | :------- | :--------------------------------------------------------------------- |
-|  ✔︎︎︎︎︎  | `transaction`                  | `object` | The transaction object.                                                |
-|          | └➔&nbsp;`activity`             | `string` | Only the value `"FinancingConsumer"` or `"AccountsReceivableConsumer"` |
-|          | `consumer`                     | `object` | The consumer object.                                                   |
-|          | └➔&nbsp;`socialSecurityNumber` | `string` | The social security number of the consumer.                            |
-|          | └➔&nbsp;`customerNumber`       | `string` | Customer number of the consumer.                                       |
-|          | └➔&nbsp;`email`                | `string` | The customer email address.                                            |
-|          | └➔&nbsp;`msisdn`               | `string` | The MSISDN of the consumer.                                            |
-|          | └➔&nbsp;`ip`                   | `string` | The IP address of the consumer.                                        |
-|          | `legalAddress`                 | `object` | The Address object.                                                    |
-|          | └➔&nbsp;`addressee`            | `string` | The full name of the addressee of this invoice                         |
-|          | └➔&nbsp;`coAddress`            | `string` | The co Address of the addressee.                                       |
-|          | └➔&nbsp;`streetAddress`        | `string` | The street address of the addresse.                                    |
-|          | └➔&nbsp;`zipCode`              | `string` | The zip code of the addresse.                                          |
-|          | └➔&nbsp;`city`                 | `string` | The city name  of the addresse.                                        |
-|          | └➔&nbsp;`countryCode`          | `string` | The country code of the addresse.                                      |
-|          | `billingAddress`               | `object` | The BillingAddress object for the billing address of the addresse.     |
-|          | └➔&nbsp;`addressee`            | `string` | The full name of the billing address adressee.                         |
-|          | └➔&nbsp;`coAddress`            | `string` | The co address of the billing address adressee.                        |
-|          | └➔&nbsp;`streetAddress`        | `string` | The street address of the billing address adressee.                    |
-|          | └➔&nbsp;`zipCode`              | `string` | The zip code of the billing address adressee.                          |
-|          | └➔&nbsp;`city`                 | `string` | The city name of the billing address adressee.                         |
-|          | └➔&nbsp;`countryCode`          | `string` | The country code of the billing address adressee.                      |
+|     Required     | Field                          | Type     | Description                                                            |
+| :--------------: | :----------------------------- | :------- | :--------------------------------------------------------------------- |
+| {% icon check %} | `transaction`                  | `object` | The transaction object.                                                |
+|                  | └➔&nbsp;`activity`             | `string` | Only the value `"FinancingConsumer"` or `"AccountsReceivableConsumer"` |
+|                  | `consumer`                     | `object` | The consumer object.                                                   |
+|                  | └➔&nbsp;`socialSecurityNumber` | `string` | The social security number of the consumer.                            |
+|                  | └➔&nbsp;`customerNumber`       | `string` | Customer number of the consumer.                                       |
+|                  | └➔&nbsp;`email`                | `string` | The customer email address.                                            |
+|                  | └➔&nbsp;`msisdn`               | `string` | The MSISDN of the consumer.                                            |
+|                  | └➔&nbsp;`ip`                   | `string` | The IP address of the consumer.                                        |
+|                  | `legalAddress`                 | `object` | The Address object.                                                    |
+|                  | └➔&nbsp;`addressee`            | `string` | The full name of the addressee of this invoice                         |
+|                  | └➔&nbsp;`coAddress`            | `string` | The co Address of the addressee.                                       |
+|                  | └➔&nbsp;`streetAddress`        | `string` | The street address of the addresse.                                    |
+|                  | └➔&nbsp;`zipCode`              | `string` | The zip code of the addresse.                                          |
+|                  | └➔&nbsp;`city`                 | `string` | The city name  of the addresse.                                        |
+|                  | └➔&nbsp;`countryCode`          | `string` | The country code of the addresse.                                      |
+|                  | `billingAddress`               | `object` | The BillingAddress object for the billing address of the addresse.     |
+|                  | └➔&nbsp;`addressee`            | `string` | The full name of the billing address adressee.                         |
+|                  | └➔&nbsp;`coAddress`            | `string` | The co address of the billing address adressee.                        |
+|                  | └➔&nbsp;`streetAddress`        | `string` | The street address of the billing address adressee.                    |
+|                  | └➔&nbsp;`zipCode`              | `string` | The zip code of the billing address adressee.                          |
+|                  | └➔&nbsp;`city`                 | `string` | The city name of the billing address adressee.                         |
+|                  | └➔&nbsp;`countryCode`          | `string` | The country code of the billing address adressee.                      |
 
 {:.code-header}
 **Response**
@@ -517,7 +517,7 @@ Content-Type: application/json
 | └➔&nbsp;`state`          | `string`  | `Initialized`, `Completed` or `Failed`. Indicates the state of the transaction.                                                                                                                              |
 | └➔&nbsp;`number`         | `string`  | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead. |
 | └➔&nbsp;`amount`         | `integer` | {% include field-description-amount.md %}                                                                                                                                                                    |
-| └➔&nbsp;`vatAmount`      | `integer` | {% include field-description-vatamount.md %}                                                           |
+| └➔&nbsp;`vatAmount`      | `integer` | {% include field-description-vatamount.md %}                                                                                                                                                                 |
 | └➔&nbsp;`description`    | `string`  | A human readable description of maximum 40 characters of the transaction.                                                                                                                                    |
 | └➔&nbsp;`payeeReference` | `string`  | The `payeeReference` is the receipt/invoice number and is a unique reference for each transaction.                                                                                                           |
 | └➔&nbsp;`failedReason`   | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
@@ -572,14 +572,14 @@ Payment" %}
 [callback]: #callback
 [cancel]: /payments/invoice/after-payment#cancellations
 [capture]: /payments/invoice/after-payment#capture
-[fi-png]: /assets/img/fi.png
+[fi-png]: /assets/img/flag-finland.png
 [financing-consumer]: #financing-consumer
 [invoice-flow]: /payments/invoice#invoice-flow
 [invoice-payment]: /assets/img/checkout/invoice-seamless-view.png
-[no-png]: /assets/img/no.png
+[no-png]: /assets/img/flag-norway.png
 [recur]: #recur
 [redirect]: /payments/invoice/redirect
-[se-png]: /assets/img/se.png
+[se-png]: /assets/img/flag-sweden.png
 [seamless-view]: /payments/invoice/seamless-view
 [verification-flow]: #verification-flow
 [verify]: #verfify
