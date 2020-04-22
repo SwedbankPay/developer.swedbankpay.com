@@ -30,4 +30,8 @@ fi
 
 task_id=${BASH_REMATCH[2]}
 
-echo "$task_id"' '$(cat "$COMMIT_MSG_FILE") > "$COMMIT_MSG_FILE"
+commit_message="$(cat $1)"
+
+if [[ $commit_message != $task_id* ]]; then
+  echo "$task_id"' '$(cat "$COMMIT_MSG_FILE") > "$COMMIT_MSG_FILE"
+fi
