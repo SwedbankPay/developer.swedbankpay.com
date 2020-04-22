@@ -33,6 +33,15 @@ this very documentation, not to a version of any APIs described by it." %}
 
 ## April 2020
 
+### Version 1.9.0
+
+* Added a new section [SDKs and Modules][sdk-modules] in Resources.
+* Corrected problem `type` URIs for [Card Payments][card], [Checkout][checkout]
+  and [Swish Payments][swish].
+* Required checkmarks have a new, fresh look: {% icon check %}
+* Flags now also sport a new look: ![nor][nor-flag] ![swe][swe-flag]
+  ![dan][dan-flag] ![fin][fin-flag]
+  
 ### Version 1.8.3
 
 * Bug fixes to Mermaid diagram and alert styling, plus improvements to code
@@ -364,6 +373,14 @@ integration and the payer.
 [one-click]: /payments/card/other-features#one-click-payments
 [payment-orders]: /checkout/other-features#creating-a-payment-order
 [payments]: /payments
+[sdk-modules]: /resources/sdk-modules
+[nor-flag]: /assets/img/flag-norway.png
+[swe-flag]: /assets/img/flag-sweden.png
+[fin-flag]: /assets/img/flag-finland.png
+[lat-flag]: /assets/img/flag-latvia.png
+[lit-flag]: /assets/img/flag-lithuania.png
+[est-flag]: /assets/img/flag-estonia.png
+[dan-flag]: /assets/img/flag-denmark.png
 [swish-api-errors]: /payments/swish/other-features#swish-api-errors
 [swish-direct-mcom]: /payments/swish/direct#create-m-commerce-sale-transaction
 [swish-direct]: /payments/swish/direct
