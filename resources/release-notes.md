@@ -36,10 +36,11 @@ this very documentation, not to a version of any APIs described by it." %}
 ### Version 1.9.0
 
 * Added a new section [SDKs and Modules][sdk-modules] in Resources.
-* Corrected `URL` links for Error and Problem sections for [Card Payments][card],
-  [Checkout][checkout] and [Swish Payments][swish].
-* Added new icon tag for table required checkmarks.
-* Added new flag images.
+* Corrected problem `type` URIs for [Card Payments][card], [Checkout][checkout]
+  and [Swish Payments][swish].
+* Required checkmarks have a new, fresh look: {% icon check %}
+* Flags now also sport a new look: ![nor][nor-flag] ![swe][swe-flag]
+  [dan][dan-flag] ![fin][fin-flag]
   
 ### Version 1.8.3
 
