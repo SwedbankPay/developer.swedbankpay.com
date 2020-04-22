@@ -374,6 +374,13 @@ integration and the payer.
 [payment-orders]: /checkout/other-features#creating-a-payment-order
 [payments]: /payments
 [sdk-modules]: /resources/sdk-modules
+[nor-flag]: /assets/img/flag-norway.png
+[swe-flag]: /assets/img/flag-sweden.png
+[fin-flag]: /assets/img/flag-finland.png
+[lat-flag]: /assets/img/flag-latvia.png
+[lit-flag]: /assets/img/flag-lithuania.png
+[est-flag]: /assets/img/flag-estonia.png
+[dan-flag]: /assets/img/flag-denmark.png
 [swish-api-errors]: /payments/swish/other-features#swish-api-errors
 [swish-direct-mcom]: /payments/swish/direct#create-m-commerce-sale-transaction
 [swish-direct]: /payments/swish/direct
