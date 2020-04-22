@@ -11,14 +11,7 @@ jobs:
     - name: Valid commit messages
       shell: bash
       run: |
-        echo "DX-723: Some commit message" > commit-msg.txt
-        bash ./.githooks/commit-msg commit-msg.txt
-
-    - name: Invalid commit messages
-      shell: bash
-      run: |
-        echo "Some commit message" > commit-msg.txt
-        bash ./.githooks/commit-msg commit-msg.txt
+        bash ../commit-msg-test
 
   pre-commit:
     runs-on: ubuntu-latest
