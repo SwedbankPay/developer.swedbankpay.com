@@ -15,6 +15,17 @@ intended to be a safe, welcoming space for collaboration, and contributors
 are expected to adhere to the [Contributor Covenant][ccov] code of conduct as
 well as [Swedbank Pay Open Source Development Guidelines][dev-guidelines].
 
+### Set up Git Hooks
+
+Open a terminal in the root of the project repository and run the following:
+
+```sh
+git config core.hooksPath .githooks
+```
+
+This will set up a few checks to ensure your branch name and commit messages
+follow our standards.
+
 ## Usage
 
 To view this website, browse to [developer.swedbankpay.com][swp-dp]. If you'd
@@ -24,7 +35,7 @@ like to host it locally on your computer, you have to options;
 ### Docker
 
 1. Install [docker][docker-install] for your operating system.
-2. Run `docker-compose up`
+2. Run `docker-compose up --build`
 
 ### Manual install
 

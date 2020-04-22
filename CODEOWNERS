@@ -1,0 +1,9 @@
+#
+# Add more specific rules as needed.
+# The latest match takes precedence
+
+# Add tech writers to reviewers
+*   @SwedbankPay/techwriters 
+
+# If a config file or a build file is edited
+*.yml   @SwedbankPay/dx 
