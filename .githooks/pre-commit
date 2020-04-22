@@ -38,9 +38,14 @@ EOF
 	exit 1
 fi
 
-
+# Regex explanation:
+# First group matches the branch type
+# then we match a slash (/).
+# After this we match one out of two things:
+# The ticket number, not case sensitive, OR
+# the number. This is to support release branches.
+valid_branch_regex="^(hotfix|feature|release|bugfix)\/([a-zA-Z]+\-[0-9]+|[0-9]\..*).*"
 branch_name="$(git rev-parse --abbrev-ref HEAD)"
-valid_branch_regex="^(hotfix|feature|release|bugfix)\/([A-Z]+\-[0-9]+).*"
 
 if [[ ! $branch_name =~ $valid_branch_regex ]]
 then
