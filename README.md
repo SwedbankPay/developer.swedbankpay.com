@@ -24,7 +24,7 @@ like to host it locally on your computer, you have to options;
 ### Docker
 
 1. Install [docker][docker-install] for your operating system.
-2. Run `docker-compose up`
+2. Run `docker-compose up --build`
 
 ### Manual install
 
