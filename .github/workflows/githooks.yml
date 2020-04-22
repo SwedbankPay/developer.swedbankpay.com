@@ -11,7 +11,7 @@ jobs:
     - name: Valid commit messages
       shell: bash
       run: |
-        bash ../commit-msg-test
+        bash ./.github/tests/commit-msg-test.sh
 
   pre-commit:
     runs-on: ubuntu-latest
