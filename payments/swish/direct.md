@@ -222,7 +222,7 @@ Content-Type: application/json
 
 The sequence diagram below shows the two requests you have to send to
 Swedbank Pay to make a purchase. The Callback response is a simplified example
-in this flow, and can be seen in depth in the [Callback][callback-url] section.
+in this flow. Go to the [Callback][callback-url] section to view the complete flow.
 
 ```mermaid
 sequenceDiagram
@@ -232,28 +232,29 @@ sequenceDiagram
   Merchant->>-SwedbankPay: POST <Swish payment> (operation=PURCHASE)
   activate  SwedbankPay
   note left of Merchant: First API request
-   SwedbankPay-->>-Merchant: Payment resource
-   activate Merchant
+  SwedbankPay-->>-Merchant: Payment resource
+  activate Merchant
 
   Merchant->>- SwedbankPay: POST <Sales Transaction> (operation=create-sale)
   activate  SwedbankPay
-   SwedbankPay-->>-Merchant: Transactions resource
+  SwedbankPay-->>-Merchant: Transactions resource
   activate Merchant
   note left of Merchant: POST containing MSISDN
   Merchant->>-Browser: Tell consumer to open Swish app
   Swish_API->>Swish_App: Ask for payment confirmation
   activate Swish_App
   Swish_App-->>-Swish_API: Consumer confirms payment
-  activate Swish_API
-
-  Swish_API->>-SwedbankPay: Payment status
-  activate  SwedbankPay
-   SwedbankPay-->>-Swish_API: Callback response
+        alt Callback
+        activate SwedbankPay
+        SwedbankPay-->>-Swish_API: Callback response
+        activate SwedbankPay
+        SwedbankPay->>-Merchant: Transaction Callback
+        end
 
   activate Merchant
   Merchant->>- SwedbankPay: GET <Swish payment>
   activate  SwedbankPay
-   SwedbankPay-->>-Merchant: Payment response
+  SwedbankPay-->>-Merchant: Payment response
   activate Merchant
   Merchant->>-Browser: Payment Status
 ```
@@ -390,7 +391,8 @@ Content-Type: application/json
 ## M-Commerce Purchase Flow
 
 The sequence diagram below shows the three requests you have to send to
-Swedbank Pay to make a purchase.
+Swedbank Pay to make a purchase. The Callback response is a simplified example
+in this flow. Go to the [Callback][callback-url] section to view the complete flow.
 
 ```mermaid
 sequenceDiagram
@@ -408,20 +410,22 @@ sequenceDiagram
    SwedbankPay-->>-Merchant: Transaction resource
   activate Merchant
   note left of Merchant: POST containing MSISDN
-  Merchant--x-Browser: Tell consumer to open Swish app
+  Merchant-->>-Browser: Tell consumer to open Swish app
   Swish_API->>Swish_App: Ask for payment confirmation
   activate Swish_App
   Swish_App-->>-Swish_API: Consumer confirms payment
-  activate Swish_API
-
-  Swish_API-->>- SwedbankPay: Payment status
-  activate  SwedbankPay
-   SwedbankPay-->>-Swish_API: Callback response
+  
   activate Swish_API
   Swish_API->>-Swish_App: Start redirect
   activate Swish_App
 
-  Swish_App--x-Browser: Redirect
+  Swish_App-->>-Browser: Redirect
+        alt Callback
+        activate SwedbankPay
+        SwedbankPay-->>-Swish_API: Callback response
+        activate SwedbankPay
+        SwedbankPay->>-Merchant: Transaction Callback
+        end
   activate Merchant
   Merchant->>- SwedbankPay: GET <Swish Payment>
   activate  SwedbankPay
