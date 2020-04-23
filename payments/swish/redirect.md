@@ -62,7 +62,7 @@ The `Purchase` example shown below.
 **Request**
 
 ```http
-POST /psp/swish/payments
+POST /psp/swish/payments HTTP/1.1
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
