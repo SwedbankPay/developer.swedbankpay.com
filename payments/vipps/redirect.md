@@ -366,11 +366,15 @@ sequenceDiagram
     deactivate Merchant
 
     note left of Browser: Redirect to Swedbank Pay
-    Browser-->>SwedbankPay: Enter mobile number
+    Browser->>SwedbankPay: Redirect
     activate SwedbankPay
       SwedbankPay-->>VippsApi: Initialize Vipps payment
       activate VippsApi
         VippsApi-->>SwedbankPay: Response
+        activate SwedbankPay
+        SwedbankPay-->>-Browser: Display payment page
+        activate Browser
+        Browser->>Browser: Enter mobile number
         SwedbankPay-->>Browser: Authorization response (State=Pending)
         note left of Browser: Check your phone
 
@@ -400,7 +404,7 @@ sequenceDiagram
         Merchant-->>SwedbankPay: GET <payment.id>
         note left of Merchant: Second API request
         SwedbankPay-->>Merchant: Payment resource
-        Merchant-->>Browser: Display authorize result
+        Merchant-->>Browser: Display purchase result
       deactivate SwedbankPay
     deactivate Merchant
   deactivate Browser
