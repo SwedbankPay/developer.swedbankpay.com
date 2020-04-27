@@ -57,7 +57,7 @@ operation equal to `FinancingConsumer`, are described in
 **Request**
 
 ```http
-POST /psp/creditcard/payments HTTP/1.1
+POST /psp/invoice/payments HTTP/1.1
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 

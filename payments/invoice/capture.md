@@ -165,7 +165,6 @@ deactivate PayEx
 ```
 
 [direct]: /payments/invoice/direct
-[card-payments-capture]: /payments/card-payments/capture
 [redirect]: /payments/invoice/redirect
 [seamless-view]: /payments/invoice/seamless-view
 

@@ -10,8 +10,6 @@ sidebar:
       title: Redirect
     - url: /payments/invoice/seamless-view
       title: Seamless View
-    - url: /payments/card/capture
-      title: Capture
     - url: /payments/invoice/direct
       title: Direct
     - url: /payments/invoice/capture
