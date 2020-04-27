@@ -147,5 +147,3 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`amount`                 | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                                                                                                                                                                                                     |
 | {% icon check %} | └─➔&nbsp;`vatAmount`              | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                                                                                                                                                                                                                  |
 {% include risk-indicator-table.md %}
-
-[description]: /checkout/other-features#description

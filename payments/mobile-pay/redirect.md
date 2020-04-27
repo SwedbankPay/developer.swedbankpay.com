@@ -379,7 +379,6 @@ sequenceDiagram
                          next_href="after-payment"
                          next_title="Next: After Payment" %}
 
-[description]: /payments/mobile-pay/other-features#description
 [callback-reference]: /payments/mobile-pay/other-features#callback
 [mobilepay-screenshot-1]: /assets/img/mobilepay-screenshot-1.png
 [mobilepay-screenshot-2]: /assets/img/mobilepay-screenshot-2.png

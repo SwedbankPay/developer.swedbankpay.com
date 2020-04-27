@@ -437,7 +437,6 @@ sequenceDiagram
 {% include iterator.html prev_href="./" prev_title="Back: Introduction"
 next_href="redirect" next_title="Next: Redirect" %}
 
-[description]: /payments/swish/other-features#description
 [swish-redirect-view]: /assets/screenshots/swish/redirect-view/view/windows-small-window.png
 [callback-url]: /payments/swish/other-features#callback
 [redirect]: /payments/swish/redirect

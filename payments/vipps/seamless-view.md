@@ -389,7 +389,6 @@ sequenceDiagram
 [callbackurl]: /payments/vipps/other-features#callback
 [cancellations]: /payments/vipps/after-payment#cancellations
 [captures]: /payments/vipps/after-payment#captures
-[description]: /payments/vipps/other-features#description
 [create-payment]: /payments/vipps/other-features#create-payment
 [hosted-view]: /payments/vipps/seamless-view
 [payee-reference]: /payments/vipps/other-features#payeereference
