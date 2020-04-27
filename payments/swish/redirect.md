@@ -197,9 +197,8 @@ Content-Type: application/json
 ## Redirect Purchase flow
 
 The sequence diagram below shows the requests you have to send to Swedbank Pay
-to make a purchase.
-The links will take you directly to the API description for the specific
-request.
+to make a purchase. The Callback response is a simplified example
+in this flow. Go to the [Callback][callback-url] section to view the complete flow.
 
 ```mermaid
 sequenceDiagram
