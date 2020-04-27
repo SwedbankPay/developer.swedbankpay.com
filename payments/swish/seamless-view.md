@@ -282,47 +282,50 @@ embedded on your website.
 
 ```mermaid
 sequenceDiagram
-    participant Payer
-    participant Merchant
-    participant SwedbankPay as Swedbank Pay
+    activate Browser
+    Browser->>-Merchant: Start purchase
+    activate Merchant
+    Merchant->>-SwedbankPay: POST <Swish create payment> (operation=PURCHASE)
+    activate SwedbankPay
+    note left of Merchant: First API request
+    SwedbankPay-->>-Merchant: Payment resource
+    activate Merchant
+    Merchant-->>-Browser: Response with redirectUrl
+    activate Browser
+    Browser->>-SwedbankPay: Redirect to Payment page
+    note left of SwedbankPay: redirect to Swedbank Pay
+    activate Browser
+    Browser->>-Browser: Enter mobile number
+    note left of Browser: open iFrame
+    activate Merchant
+    Merchant->>-SwedbankPay: POST <Sale transaction>
+    activate SwedbankPay
+    SwedbankPay-->>-Merchant: Transaction Resource
+    activate SwedbankPay
+    SwedbankPay--x-Browser: Tell consumer to open Swish app
+    Swish_API->>Swish_App: Ask for payment confirmation
+    activate Swish_App
+    Swish_App-->>-Swish_API: Consumer confirms payment
+    activate Swish_API
 
-    activate Payer
-    Payer->>-Merchant: start purchase
-    activate Merchant
-    note left of Payer: First API request
-    Merchant->>-SwedbankPay: POST /psp/swish/payments ①
-    activate SwedbankPay
-    SwedbankPay-->>-Merchant: rel: view-sales ②
-    activate Merchant
-    Merchant-->>-Payer: confirmation page
-    activate Payer
-    note left of Payer: Open iframe ③
-    Payer->>Payer: Input mobile number
-    Payer->>-SwedbankPay: Show Consumer UI page in iframe - Authorization ④
-    activate SwedbankPay
-        opt Card supports 3-D Secure
-        SwedbankPay-->>-Payer: redirect to IssuingBank
-        activate Payer
-        Payer->>IssuingBank: 3-D Secure authentication process
-        activate IssuingBank
-        IssuingBank->>-Payer: 3-D Secure authentication process
-        Payer->>-SwedbankPay: access authentication page
-        end
-    SwedbankPay-->>Merchant: Event: OnPaymentComplete ⑤
-    activate Merchant
-    note left of Merchant: Second API request.
-    Merchant->>-SwedbankPay: GET <payment.id> ⑥
-    activate SwedbankPay
-    SwedbankPay-->>-Merchant: rel: view-sales
-    activate Merchant
-    Merchant-->>-Payer: display purchase result
-    activate Payer
-
-        opt Callback is set ⑦
+        alt Callback
+        Swish_API-->>-SwedbankPay: Payment status
         activate SwedbankPay
-        SwedbankPay->>SwedbankPay: Payment is updated
-        SwedbankPay->>-Merchant: POST Payment Callback
+        SwedbankPay-->>-Swish_API: Callback response
+        activate Swish_API
+        SwedbankPay-->-Merchant: Transaction callback
         end
+
+    activate SwedbankPay
+    SwedbankPay->>-Browser: Redirect to merchant
+    activate Browser
+    Browser-->>-Merchant: Redirect
+    activate Merchant
+    Merchant->>-SwedbankPay: GET <Swish payment>
+    activate SwedbankPay
+    SwedbankPay-->>-Merchant: Payment response
+    activate Merchant
+    Merchant-->>-Browser: Payment Status
 ```
 
 {% include iterator.html prev_href="redirect" prev_title="Back: Redirect"
