@@ -186,7 +186,7 @@ Content-Type: application/json
 }
 ```
 
-## Step 2a: Create e-commerce Sale Transaction
+## Step 2a: Create E-Commerce Sale Transaction
 
 This operation creates an e-commerce sales transaction in the Direct payment
 scenario. This is managed either by sending a `POST` request as seen below, or
@@ -218,7 +218,7 @@ Content-Type: application/json
 {% include transaction-response.md payment_instrument="swish" transaction="sale"
 %}
 
-## e-commerce Purchase Flow
+## E-Commerce Purchase Flow
 
 The sequence diagram below shows the two requests you have to send to
 Swedbank Pay to make a purchase. The Callback response is a simplified example
@@ -226,24 +226,25 @@ in this flow. Go to the [Callback][callback-url] section to view the complete fl
 
 ```mermaid
 sequenceDiagram
-  activate Browser
-  Browser->>-Merchant: Start purchase
-  activate Merchant
-  Merchant->>-SwedbankPay: POST <Swish payment> (operation=PURCHASE)
-  activate  SwedbankPay
-  note left of Merchant: First API request
-  SwedbankPay-->>-Merchant: Payment resource
-  activate Merchant
+    activate Browser
+    Browser->>-Merchant: Start purchase
+    activate Merchant
+    Merchant->>-SwedbankPay: POST <Swish payment> (operation=PURCHASE)
+    activate  SwedbankPay
+    note left of Merchant: First API request
+    SwedbankPay-->>-Merchant: Payment resource
+    activate Merchant
 
-  Merchant->>- SwedbankPay: POST <Sales Transaction> (operation=create-sale)
-  activate  SwedbankPay
-  SwedbankPay-->>-Merchant: Transactions resource
-  activate Merchant
-  note left of Merchant: POST containing MSISDN
-  Merchant->>-Browser: Tell consumer to open Swish app
-  Swish_API->>Swish_App: Ask for payment confirmation
-  activate Swish_App
-  Swish_App-->>-Swish_API: Consumer confirms payment
+    Merchant->>- SwedbankPay: POST <Sales Transaction> (operation=create-sale)
+    activate  SwedbankPay
+    SwedbankPay-->>-Merchant: Transactions resource
+    activate Merchant
+    note left of Merchant: POST containing MSISDN
+    Merchant->>-Browser: Tell consumer to open Swish app
+    Swish_API->>Swish_App: Ask for payment confirmation
+    activate Swish_App
+    Swish_App-->>-Swish_API: Consumer confirms payment
+
         alt Callback
         activate SwedbankPay
         SwedbankPay-->>-Swish_API: Callback response
@@ -251,15 +252,15 @@ sequenceDiagram
         SwedbankPay->>-Merchant: Transaction Callback
         end
 
-  activate Merchant
-  Merchant->>- SwedbankPay: GET <Swish payment>
-  activate  SwedbankPay
-  SwedbankPay-->>-Merchant: Payment response
-  activate Merchant
-  Merchant->>-Browser: Payment Status
+    activate Merchant
+    Merchant->>- SwedbankPay: GET <Swish payment>
+    activate  SwedbankPay
+    SwedbankPay-->>-Merchant: Payment response
+    activate Merchant
+    Merchant->>-Browser: Payment Status
 ```
 
-## Step 2b: Create m-commerce Sale Transaction
+## Step 2b: Create M-Commerce Sale Transaction
 
 This operation creates an m-commerce sales transaction in the Direct payment
 scenario. This is managed either by sending a `POST` request as seen below, or
@@ -388,7 +389,7 @@ Content-Type: application/json
 | └─➔&nbsp;`href`          | `string`     | The target URI to perform the operation against.                                                                                                                                                                                                                                                                                                           |
 | └─➔&nbsp;`rel`           | `string`     | The name of the relation the operation has to the current resource.                                                                                                                                                                                                                                                                                        |
 
-## m-commerce Purchase Flow
+## M-Commerce Purchase Flow
 
 The sequence diagram below shows the three requests you have to send to
 Swedbank Pay to make a purchase. The Callback response is a simplified example
@@ -396,42 +397,41 @@ in this flow. Go to the [Callback][callback-url] section to view the complete fl
 
 ```mermaid
 sequenceDiagram
-  activate Browser
-  Browser->>-Merchant: Start purchase
-  activate Merchant
-  Merchant->>-SwedbankPay: POST <Swish payment> (operation=PURCHASE)
-  activate  SwedbankPay
-  note left of Merchant: First API request
-   SwedbankPay-->>-Merchant: Payment resource
-   activate Merchant
+    activate Browser
+    Browser->>-Merchant: Start purchase
+    activate Merchant
+    Merchant->>-SwedbankPay: POST <Swish payment> (operation=PURCHASE)
+    activate  SwedbankPay
+    note left of Merchant: First API request
+    SwedbankPay-->>-Merchant: Payment resource
+    activate Merchant
+    Merchant->>- SwedbankPay: POST <Sales Transaction> (operation=create-sale)
+    activate  SwedbankPay
+    SwedbankPay-->>-Merchant: Transaction resource
+    activate Merchant
+    note left of Merchant: POST containing MSISDN
+    Merchant-->>-Browser: Tell consumer to open Swish app
+    Swish_API->>Swish_App: Ask for payment confirmation
+    activate Swish_App
+    Swish_App-->>-Swish_API: Consumer confirms payment
+    activate Swish_API
+    Swish_API->>-Swish_App: Start redirect
+    activate Swish_App
+    Swish_App-->>-Browser: Redirect
 
-  Merchant->>- SwedbankPay: POST <Sales Transaction> (operation=create-sale)
-  activate  SwedbankPay
-   SwedbankPay-->>-Merchant: Transaction resource
-  activate Merchant
-  note left of Merchant: POST containing MSISDN
-  Merchant-->>-Browser: Tell consumer to open Swish app
-  Swish_API->>Swish_App: Ask for payment confirmation
-  activate Swish_App
-  Swish_App-->>-Swish_API: Consumer confirms payment
-  
-  activate Swish_API
-  Swish_API->>-Swish_App: Start redirect
-  activate Swish_App
-
-  Swish_App-->>-Browser: Redirect
         alt Callback
         activate SwedbankPay
         SwedbankPay-->>-Swish_API: Callback response
         activate SwedbankPay
         SwedbankPay->>-Merchant: Transaction Callback
         end
-  activate Merchant
-  Merchant->>- SwedbankPay: GET <Swish Payment>
-  activate  SwedbankPay
-   SwedbankPay-->>-Merchant: Payment response
-  activate Merchant
-  Merchant-->>-Browser: Payment Status
+
+    activate Merchant
+    Merchant->>- SwedbankPay: GET <Swish Payment>
+    activate  SwedbankPay
+    SwedbankPay-->>-Merchant: Payment response
+    activate Merchant
+    Merchant-->>-Browser: Payment Status
 ```
 
 {% include iterator.html prev_href="./" prev_title="Back: Introduction"
