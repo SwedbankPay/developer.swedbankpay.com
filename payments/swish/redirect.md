@@ -202,47 +202,49 @@ in this flow. Go to the [Callback][callback-url] section to view the complete fl
 
 ```mermaid
 sequenceDiagram
-  activate Browser
-  Browser->>-Merchant: Start purchase
-  activate Merchant
-  Merchant->>-SwedbankPay: POST <Swish create payment> (operation=PURCHASE)
-  activate SwedbankPay
-  note left of Merchant: First API request
-  SwedbankPay-->>-Merchant: Payment resource
-  activate Merchant
-  Merchant-->>-Browser: Response with redirectUrl
-  activate Browser
-  Browser->>-SwedbankPay: Redirect to Payment page
-  note left of SwedbankPay: redirect to Swedbank Pay
-  activate Browser
-  Browser->>-SwedbankPay: Enter mobile number
-  activate Merchant
-  Merchant->>-SwedbankPay: POST <Sale transaction>
-  activate SwedbankPay
-  SwedbankPay-->>-Merchant: Transaction Resource
-  activate SwedbankPay
-  SwedbankPay--x-Browser: Tell consumer to open Swish app
-  Swish_API->>Swish_App: Ask for payment confirmation
-  activate Swish_App
-  Swish_App-->>-Swish_API: Consumer confirms payment
-  activate Swish_API
-      alt Callback
-      Swish_API-->>-SwedbankPay: Payment status
-      activate SwedbankPay
-      SwedbankPay-->>-Swish_API: Callback response
-      activate Swish_API
-      SwedbankPay-->-Merchant: Transaction callback
-      end
-  activate SwedbankPay
-  SwedbankPay->>-Browser: Redirect to merchant
-  activate Browser
-  Browser-->>-Merchant: Redirect
-  activate Merchant
-  Merchant->>-SwedbankPay: GET <Swish payment>
-  activate SwedbankPay
-  SwedbankPay-->>-Merchant: Payment response
-  activate Merchant
-  Merchant-->>-Browser: Payment Status
+    activate Browser
+    Browser->>-Merchant: Start purchase
+    activate Merchant
+    Merchant->>-SwedbankPay: POST <Swish create payment> (operation=PURCHASE)
+    activate SwedbankPay
+    note left of Merchant: First API request
+    SwedbankPay-->>-Merchant: Payment resource
+    activate Merchant
+    Merchant-->>-Browser: Response with redirectUrl
+    activate Browser
+    Browser->>-SwedbankPay: Redirect to Payment page
+    note left of SwedbankPay: Redirect to Swedbank Pay
+    activate Browser
+    Browser->>-SwedbankPay: Enter mobile number
+    activate Merchant
+    Merchant->>-SwedbankPay: POST <Sale transaction>
+    activate SwedbankPay
+    SwedbankPay-->>-Merchant: Transaction Resource
+    activate SwedbankPay
+    SwedbankPay--x-Browser: Tell consumer to open Swish app
+    Swish_API->>Swish_App: Ask for payment confirmation
+    activate Swish_App
+    Swish_App-->>-Swish_API: Consumer confirms payment
+    activate Swish_API
+
+        alt Callback
+        Swish_API-->>-SwedbankPay: Payment status
+        activate SwedbankPay
+        SwedbankPay-->>-Swish_API: Callback response
+        activate Swish_API
+        SwedbankPay-->-Merchant: Transaction callback
+        end
+
+    activate SwedbankPay
+    SwedbankPay->>-Browser: Redirect to merchant
+    activate Browser
+    Browser-->>-Merchant: Redirect
+    activate Merchant
+    Merchant->>-SwedbankPay: GET <Swish payment>
+    activate SwedbankPay
+    SwedbankPay-->>-Merchant: Payment response
+    activate Merchant
+    Merchant-->>-Browser: Payment Status
 ```
 
 {% include iterator.html prev_href="direct" prev_title="Back: Direct"
