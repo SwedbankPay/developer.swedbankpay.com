@@ -186,9 +186,9 @@ Content-Type: application/json
 }
 ```
 
-## Step 2a: Create E-Commerce Sale Transaction
+## Step 2a: Create e-commerce Sale Transaction
 
-This operation creates an E-Commerce sales transaction in the Direct payment
+This operation creates an e-commerce sales transaction in the Direct payment
 scenario. This is managed either by sending a `POST` request as seen below, or
 by directing the end-user to the hosted payment pages. Note that the `msisdn`
 value (the end-user's mobile number) is required in this request.
@@ -218,7 +218,7 @@ Content-Type: application/json
 {% include transaction-response.md payment_instrument="swish" transaction="sale"
 %}
 
-## E-Commerce Purchase Flow
+## e-commerce Purchase Flow
 
 The sequence diagram below shows the two requests you have to send to
 Swedbank Pay to make a purchase. The Callback response is a simplified example
@@ -259,13 +259,13 @@ sequenceDiagram
   Merchant->>-Browser: Payment Status
 ```
 
-## Step 2b: Create M-Commerce Sale Transaction
+## Step 2b: Create m-commerce Sale Transaction
 
-This operation creates an M-Commerce sales transaction in the Direct payment
+This operation creates an m-commerce sales transaction in the Direct payment
 scenario. This is managed either by sending a `POST` request as seen below, or
 by directing the end-user to the hosted payment pages. Note that the `msisdn`
 value (the end-user's mobile number) is left out in this request. The
-`redirect-app-swish` operation is only present in the M-Commerce flow response.
+`redirect-app-swish` operation is only present in the m-commerce flow response.
 
 {:.code-header}
 **Request**
@@ -388,7 +388,7 @@ Content-Type: application/json
 | └─➔&nbsp;`href`          | `string`     | The target URI to perform the operation against.                                                                                                                                                                                                                                                                                                           |
 | └─➔&nbsp;`rel`           | `string`     | The name of the relation the operation has to the current resource.                                                                                                                                                                                                                                                                                        |
 
-## M-Commerce Purchase Flow
+## m-commerce Purchase Flow
 
 The sequence diagram below shows the three requests you have to send to
 Swedbank Pay to make a purchase. The Callback response is a simplified example
