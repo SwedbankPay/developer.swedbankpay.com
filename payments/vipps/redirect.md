@@ -348,66 +348,73 @@ request.
 
 ```mermaid
 sequenceDiagram
-  participant Browser
-  participant Merchant
-  participant SwedbankPay as Swedbank Pay
-  participant VippsApi as Vipps API
-  participant VippsApp as Vipps App
+    participant Browser
+    participant Merchant
+    participant SwedbankPay as Swedbank Pay
+    participant VippsApi as Vipps API
+    participant VippsApp as Vipps App
 
-  Browser->>Merchant: Start purchase (pay with Vipps)
-  activate Browser
+    Browser->>Merchant: Start purchase (pay with Vipps)
+    activate Browser
     activate Merchant
-      Merchant->>SwedbankPay: POST <Create  Vipps payment>
-      activate SwedbankPay
-        note left of Merchant: First API request
-        SwedbankPay-->>Merchant: Payment resource
-      deactivate SwedbankPay
-      Merchant-->>Browser: Redirect to payment page
+    Merchant->>SwedbankPay: POST <Create  Vipps payment>
+    activate SwedbankPay
+    note left of Merchant: First API request
+    SwedbankPay-->>Merchant: Payment resource
+    deactivate SwedbankPay
+    Merchant-->>Browser: Redirect to payment page
     deactivate Merchant
 
     note left of Browser: Redirect to Swedbank Pay
     Browser->>SwedbankPay: Redirect
     activate SwedbankPay
-      SwedbankPay-->>VippsApi: Initialize Vipps payment
-      activate VippsApi
-        VippsApi-->>SwedbankPay: Response
-        activate SwedbankPay
-        SwedbankPay-->>-Browser: Display payment page
-        activate Browser
-        Browser->>Browser: Enter mobile number
-        SwedbankPay-->>Browser: Authorization response (State=Pending)
-        note left of Browser: Check your phone
+    SwedbankPay-->>VippsApi: Initialize Vipps payment
+    activate VippsApi
+    VippsApi-->>SwedbankPay: Response
+    activate SwedbankPay
+    SwedbankPay-->>-Browser: Display payment page
+    activate Browser
+    Browser->>Browser: Enter mobile number
+    SwedbankPay-->>Browser: Authorization response (State=Pending)
+    note left of Browser: Check your phone
 
-        VippsApi-->>VippsApp: Confirm Payment UI
-        activate VippsApp
-          VippsApp-->>VippsApp: Confirmation dialogue
-          VippsApp-->>VippsApi: Confirmation
-        deactivate VippsApp
+    VippsApi-->>VippsApp: Confirm Payment UI
+    activate VippsApp
+    VippsApp-->>VippsApp: Confirmation dialogue
+    VippsApp-->>VippsApi: Confirmation
+    deactivate VippsApp
 
-        VippsApi-->>SwedbankPay: Make payment
-        activate SwedbankPay
-          SwedbankPay-->>SwedbankPay: Execute payment
-          SwedbankPay-->>VippsApi: Response
-        deactivate SwedbankPay
-      deactivate VippsApi
+    VippsApi-->>SwedbankPay: Make payment
+    activate SwedbankPay
+    SwedbankPay-->>SwedbankPay: Execute payment
+    SwedbankPay-->>VippsApi: Response
+    deactivate SwedbankPay
+    deactivate VippsApi
 
-      SwedbankPay-->>SwedbankPay: Authorize result
-      SwedbankPay-->>Browser: Authorize result
+    SwedbankPay-->>SwedbankPay: Authorize result
+    SwedbankPay-->>Browser: Authorize result
     deactivate SwedbankPay
 
     Browser-->>Merchant: Redirect to merchant
     activate Merchant
-      note left of Browser: Redirect to merchant
+    note left of Browser: Redirect to merchant
 
-      SwedbankPay-->>Merchant: Payment callback
-      activate SwedbankPay
-        Merchant-->>SwedbankPay: GET <payment.id>
-        note left of Merchant: Second API request
-        SwedbankPay-->>Merchant: Payment resource
-        Merchant-->>Browser: Display purchase result
-      deactivate SwedbankPay
+        alt Callback
+        activate VippsApi
+        VippsApi-->>-SwedbankPay: Payment status
+        activate SwedbankPay
+        SwedbankPay-->>-VippsApi: Callback response
+        SwedbankPay-->-Merchant: Transaction callback
+        end
+
+    activate SwedbankPay
+    Merchant-->>SwedbankPay: GET <payment.id>
+    note left of Merchant: Second API request
+    SwedbankPay-->>Merchant: Payment resource
+    Merchant-->>Browser: Display purchase result
+    deactivate SwedbankPay
     deactivate Merchant
-  deactivate Browser
+    deactivate Browser
 ```
 
 You will later (i.e. if a physical product, when you are ready to ship the
