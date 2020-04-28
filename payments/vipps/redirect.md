@@ -400,11 +400,9 @@ sequenceDiagram
     note left of Browser: Redirect to merchant
 
         alt Callback
-        activate VippsApi
-        VippsApi-->>-SwedbankPay: Payment status
         activate SwedbankPay
         SwedbankPay-->>-VippsApi: Callback response
-        SwedbankPay-->-Merchant: Transaction callback
+        SwedbankPay->>-Merchant: Transaction callback
         end
 
     activate SwedbankPay
