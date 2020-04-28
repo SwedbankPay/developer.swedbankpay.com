@@ -1,4 +1,4 @@
-{% assign payment_instrument = include.payment_instrument | default: "creditcard" %}
+{% assign payment_instrument = include.payment_instrument %}
 {%- capture description -%}
     A 40 character length textual [description](/payments/{{ payment_instrument }}/other-features#description) of the purchase.
 {%- endcapture -%}
