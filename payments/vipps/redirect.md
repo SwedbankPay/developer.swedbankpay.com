@@ -339,7 +339,7 @@ Content-Type: application/json
 | └─➔&nbsp;`href`          | `string`     | The target URI to perform the operation against.                                                                                                                                                                                                                                                                                                           |
 | └─➔&nbsp;`rel`           | `string`     | The name of the relation the operation has to the current resource.                                                                                                                                                                                                                                                                                        |
 
-## Purchase flow
+## Vipps Redirect Purchase flow
 
 The sequence diagram below shows the two requests you have to send to
 Swedbank Pay to make a purchase.

@@ -325,17 +325,17 @@ request.
 
 ```mermaid
 sequenceDiagram
-    Browser->>Merchant: start purchase (pay with VIPPS)
     activate Merchant
     Merchant->>-SwedbankPay: POST /psp/vipps/payments ①
     activate SwedbankPay
     note left of Merchant: First API request
-    SwedbankPay-->>-Merchant: rel: view-payment ②
+    SwedbankPay-->>-Merchant: Payment response with rel: view-payment
     activate Merchant
-    Merchant-->>-Browser: authorization page
-    activate Browser
-    note left of Browser: Open iframe ③
-    Browser->>Browser: Enter mobile number ④
+    Merchant-->>-SwedbankPay: script init og iFrame
+    activate SwedbankPay
+    SwedbankPay-->>-Merchant: Display Payment Page
+    activate Merchant
+    Merchant->>Browser: Enter mobile number ④
     Browser-->>-SwedbankPay: Passing data for authorization
     activate SwedbankPay
 
