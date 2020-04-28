@@ -1,5 +1,7 @@
+{% assign payment_instrument = include.payment_instrument | default: true %}
+
 {%- capture description -%}
-    A 40 character length textual [description][description] of the purchase.
+    A 40 character length textual [description](/{{ payment_instrument }}/other-features#description) of the purchase.
 {%- endcapture -%}
 {{- description | strip_newlines -}}
 

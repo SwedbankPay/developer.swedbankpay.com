@@ -5,10 +5,11 @@ the consumer. Below you will find a abbreviated code example of Card Payments
 As you can see the `description` field is set to be
 `"test purchase - orderNumber28749347"` in the the code example.
 The images below will show you the payment UI for the
-Redirect and Seamless View scenario. Notice that for Redirect, the description
-will be shown as `"test purchase - orderNumber28749347"`, as set in the code example.
-For the Seamless view scenario, the description is not shown in the payment
-window, but it is still required in the initial request.
+Redirect and Seamless View scenario.
+{% include alert.html type="neutral" icon="info" body="Notice that for Redirect,
+the description will be shown as `test purchase - orderNumber28749347`, as set
+in the code example. For the Seamless View scenario, the description is not
+shown in the payment window, but it is still required in the initial request." %}
 
 {:.code-header}
 **Request**
@@ -55,4 +56,3 @@ Content-Type: application/json
 
 [description-field-redirect]: /assets/screenshots/description-field/description-field-redirect.png
 [description-field-seamless]: /assets/screenshots/description-field/description-field-seamless.png
-
