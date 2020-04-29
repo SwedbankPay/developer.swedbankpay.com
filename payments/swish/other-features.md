@@ -93,7 +93,7 @@ Content-Type: application/json
 | {% icon check %}︎ | └─➔&nbsp;`type`                 | `string`     | `Swish`                                                                                                                                                                                                                                                   |
 | {% icon check %}︎ | └─➔&nbsp;`amount`               | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                                                 |
 | {% icon check %}︎ | └─➔&nbsp;`vatAmount`            | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                                                              |
-| {% icon check %}︎ | └➔&nbsp;`description`           | `string(40)` | A textual description max 40 characters of the purchase.                                                                                                                                                                                                  |
+| {% icon check %}︎ | └➔&nbsp;`description`           | `string(40)` | {% include field-description-description.md payment_instrument="swish" %}                                                                                                                                                                                                  |
 |                  | └➔&nbsp;`payerReference`        | `string`     | The reference to the payer (consumer/end-user) from the merchant system, like mobile number, customer number etc.                                                                                                                                         |
 | {% icon check %}︎ | └➔&nbsp;`userAgent`             | `string`     | The user agent reference of the consumer's browser - [see user agent definition][user-agent]                                                                                                                                                              |
 | {% icon check %}︎ | └➔&nbsp;`language`              | `string`     | `nb-NO`, `sv-SE` or `en-US`.                                                                                                                                                                                                                              |
@@ -171,6 +171,8 @@ be connected to a Swish account.
 {% include settlement-reconciliation.md %}
 
 {% include payment-link.md show_3d_secure=false show_authorization=false %}
+
+## Description
 
 {% include description.md %}
 
