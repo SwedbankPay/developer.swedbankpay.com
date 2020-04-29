@@ -326,41 +326,50 @@ request.
 ```mermaid
 sequenceDiagram
     activate Merchant
-    Merchant->>-SwedbankPay: POST /psp/vipps/payments ①
+    Merchant->>-SwedbankPay: POST /psp/vipps/payments
     activate SwedbankPay
     note left of Merchant: First API request
     SwedbankPay-->>-Merchant: Payment response with rel: view-payment
     activate Merchant
-    Merchant-->>-SwedbankPay: script init og iFrame
+    Merchant->>-SwedbankPay: script init of iFrame
     activate SwedbankPay
     SwedbankPay-->>-Merchant: Display Payment Page
     activate Merchant
-    Merchant->>Browser: Enter mobile number ④
-    Browser-->>-SwedbankPay: Passing data for authorization
-    activate SwedbankPay
+    Merchant->>Merchant: Enter mobile number
+    Merchant ->>- SwedbankPay: Mobile number
 
-    SwedbankPay-->>-Vipps.API: POST <rel:create-auhtorization> ⑤
-    activate Vipps.API
-    Vipps.API-->>-SwedbankPay: response
     activate SwedbankPay
-    SwedbankPay-->>-Browser: Authorization response (State=AwaitingActivity) ⑥
-    activate Browser
-    note left of Browser: check your phone
+    SwedbankPay->>-Vipps_API: POST <rel:create-auhtorization>
+    activate Vipps_API
+    Vipps_API-->>-SwedbankPay: Response
+    activate SwedbankPay
+    SwedbankPay-->>-Merchant: Display to instructions page
 
-    Vipps.API-->>Vipps_App: Confirm Payment UI
+    Vipps_API-->>Vipps_App: Confirm Payment UI
     activate Vipps_App
-    note left of Vipps.API: Dialogue with Vipps ⑦
     Vipps_App-->>Vipps_App: Confirmation Dialogue
-    Vipps_App-->>-Vipps.API: Confirmation
-    activate Vipps.API
-    Vipps.API-->>-SwedbankPay: make payment
+    Vipps_App-->>-Vipps_API: Confirmation
+
+    activate Vipps_API
+    Vipps_API->>-SwedbankPay: Make payment
     activate SwedbankPay
-    SwedbankPay-->>SwedbankPay: execute payment
-    SwedbankPay-->>-Vipps.API: response
-    activate Vipps.API
-    Vipps.API-->>-SwedbankPay: authorize result
+    SwedbankPay-->>-SwedbankPay: Execute payment
     activate SwedbankPay
-    SwedbankPay-->>-Browser: Display authorize result
+    SwedbankPay-->>-Vipps_API: Make Payment Response
+
+        alt Callback
+        activate SwedbankPay
+        SwedbankPay-->>-Vipps_API: Callback response
+        activate SwedbankPay
+        SwedbankPay->>-Merchant: Transaction Callback
+        end
+
+    activate Merchant
+    Merchant->>- SwedbankPay: GET <Vipps payment>
+    activate  SwedbankPay
+    SwedbankPay-->>-Merchant: Payment response
+    activate Merchant
+    Merchant-->>-Merchant: Display payment Status
 ```
 
 1. When the payer starts the purchase process, you make a `POST` request
