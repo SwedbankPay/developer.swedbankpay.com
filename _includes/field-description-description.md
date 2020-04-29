@@ -1,13 +1,11 @@
-{% assign payment_instrument = include.payment_instrument %}
-{%- if payment_instrument == "checkout" -%}
-{%- capture description -%}
-    A 40 character length textual [description](/{{ payment_instrument }}/other-features#description) of the purchase.
-{%- endcapture -%}
-{%- else -%}
-{%- capture description -%}
-    A 40 character length textual [description](/payments/{{ payment_instrument }}/other-features#description) of the purchase.
-{%- endcapture -%}
+{%- assign payment_instrument = include.payment_instrument -%}
+{%- assign description_url=payment_instrument | prepend: "/" | append: "/other-features#description" -%}
+{%- if payment_instrument != "checkout" -%}
+    {%- assign description_url=description_url | prepend:  "/payments" -%}
 {%- endif -%}
+{%- capture description -%}
+    A 40 character length textual [description]({{ description_url }}) of the purchase.
+{%- endcapture -%}
 {{- description | strip_newlines -}}
 
 {%- comment -%}
