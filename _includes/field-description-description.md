@@ -7,7 +7,6 @@
     A 40 character length textual [description]({{ description_url }}) of the purchase.
 {%- endcapture -%}
 {{- description | strip_newlines -}}
-
 {%- comment -%}
 The dashes in the Liquid code tags remove output whitespace. More on that here:
 
