@@ -339,13 +339,13 @@ sequenceDiagram
     Merchant ->>- SwedbankPay: Mobile number
 
     activate SwedbankPay
-    SwedbankPay->>-Vipps_API: POST <rel:create-auhtorization>
+    SwedbankPay->>+Vipps_API: POST <rel:create-auhtorization>
     activate Vipps_API
-    Vipps_API-->>-SwedbankPay: Response
+    Vipps_API-->>+SwedbankPay: Response
     activate SwedbankPay
     SwedbankPay-->>-Merchant: Display to instructions page
 
-    Vipps_API-->>Vipps_App: Confirm Payment UI
+    Vipps_API-->>-Vipps_App: Confirm Payment UI
     activate Vipps_App
     Vipps_App-->>Vipps_App: Confirmation Dialogue
     Vipps_App-->>-Vipps_API: Confirmation
