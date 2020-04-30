@@ -244,8 +244,7 @@ Content-Type: application/json
 | `operations`             | `array`      | The array of possible operations to perform                                                                                                                                                                                                                                                                                                                |
 | └─➔&nbsp;`method`        | `string`     | The HTTP method to use when performing the operation.                                                                                                                                                                                                                                                                                                      |
 | └─➔&nbsp;`href`          | `string`     | The target URI to perform the operation against.                                                                                                                                                                                                                                                                                                           |
-| └─➔&nbsp;`rel`           | `string`     | The name of the relation the
-operation has to the current resource.|
+| └─➔&nbsp;`rel`           | `string`     | The name of the relation the operation has to the current resource.                |
 
 ## Step 2: Get `approvedLegalAddress` confirmation
 

@@ -9,7 +9,7 @@
 {% endif %}
 
 The created `{{ transaction }}` resource contains information about the
-`{{ transaction }}` transaction made against a `{{ instrument }}` payment.
+`{{ transaction }}` transaction made against a `{{ payment_instrument }}` payment.
 
 {:.code-header}
 **Response**
@@ -19,9 +19,9 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/{{ instrument }}/payments/{{ page.payment_id }}",
+    "payment": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}",
     "{{ transaction }}": {
-        "id": "/psp/{{ instrument }}/payments/{{ page.payment_id }}/{{ plural }}/{{ page.transaction_id }}",{% if instrument == "creditcard" %}
+        "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/{{ plural }}/{{ page.transaction_id }}",{% if instrument == "creditcard" %}
         "paymentToken": "{{ page.payment_token }}",
         "maskedPan": "123456xxxxxx1234",
         "expireDate": "mm/yyyy",
@@ -36,10 +36,10 @@ Content-Type: application/json
         "acquirerTransactionTime": "2017-08-29T13:42:18Z",
         "authenticationStatus": "Y",{% endif %}
         "itemDescriptions": {
-            "id": "/psp/{{ instrument }}/payments/{{ page.payemnt_id }}/transactions/{{ page.transaction_id }}/itemDescriptions"
+            "id": "/psp/{{ payment_instrument }}/payments/{{ page.payemnt_id }}/transactions/{{ page.transaction_id }}/itemDescriptions"
         },
         "transaction": {
-            "id": "/psp/{{ instrument }}/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
+            "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
             "created": "2016-09-14T01:01:01.01Z",
             "updated": "2016-09-14T01:01:01.03Z",
             "type": "{{ transaction | capitalize }}",
@@ -59,7 +59,7 @@ Content-Type: application/json
                     "rel": "redirect-app-swish"
                 },{% endif %}
                 {
-                    "href": "/psp/{{ instrument }}/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
+                    "href": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
                     "rel": "edit-{{ transaction }}",
                     "method": "PATCH"
                 }
