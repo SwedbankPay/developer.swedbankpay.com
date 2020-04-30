@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo $(pwd)
+original_branch_name="$(git rev-parse --abbrev-ref HEAD)"
 
 $(touch commit-msg.txt)
 
@@ -46,5 +46,7 @@ printf "dx-123: Some commit message" > commit-msg.txt
 test_result=$(.githooks/commit-msg commit-msg.txt)
 test $? -ne 0 || echo "Case number check failed"
 
-echo $test_result
+#echo $test_result
 echo $?
+
+"$(git checkout -B $original_branch_name)"
