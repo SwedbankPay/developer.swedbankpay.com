@@ -21,7 +21,7 @@ Content-Type: application/json
 {
     "payment": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}",
     "{{ transaction }}": {
-        "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/{{ plural }}/{{ page.transaction_id }}",{% if instrument == "creditcard" %}
+        "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/{{ plural }}/{{ page.transaction_id }}",{% if payment_instrument == "creditcard" %}
         "paymentToken": "{{ page.payment_token }}",
         "maskedPan": "123456xxxxxx1234",
         "expireDate": "mm/yyyy",
@@ -48,11 +48,11 @@ Content-Type: application/json
             "amount": 1000,
             "vatAmount": 250,
             "description": "Test transaction",
-            "payeeReference": "AH123456", {% if instrument == "invoice" %}
+            "payeeReference": "AH123456", {% if payment_instrument == "invoice" %}
             "receiptReference": "AH12355", {% endif %}
             "failedReason": "",
             "isOperational": false,
-            "operations": [{% if instrument == "swish" and mcom == true %}
+            "operations": [{% if payment_instrument == "swish" and mcom == true %}
                 {
                     "href": "swish://paymentrequest?token=LhXrK84MSpWU2RO09f8kUP-FHiBo-1pB",
                     "method": "GET",
@@ -75,7 +75,7 @@ Content-Type: application/json
 | :-------------------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `payment`                         | `string`  | {% include field-description-id.md sub_resource=transaction %}                                                                                                                                               |
 | `{{ transaction }}`               | `string`  | The current `{{ transaction }}` transaction resource.                                                                                                                                                        |
-| └➔&nbsp;`id`                      | `string`  | {% include field-description-id.md resource=transaction %}                                                                                                                                                   | {% if instrument == "creditcard" %} |
+| └➔&nbsp;`id`                      | `string`  | {% include field-description-id.md resource=transaction %}                                                                                                                                                   | {% if payment_instrument == "creditcard" %} |
 | └➔&nbsp;`paymentToken`            | `string`  | The payment token created for the card used in the authorization.                                                                                                                                            |
 | └➔&nbsp;`maskedPan`               | `string`  | The masked PAN number of the card.                                                                                                                                                                           |
 | └➔&nbsp;`expireDate`              | `string`  | The month and year of when the card expires.                                                                                                                                                                 |
