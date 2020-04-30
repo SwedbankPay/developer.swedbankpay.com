@@ -1,6 +1,6 @@
 #!/bin/bash
 
-original_branch_name="$(git rev-parse --abbrev-ref HEAD)"
+original_branch_name=$(git rev-parse --abbrev-ref HEAD)
 
 $(touch commit-msg.txt)
 
@@ -43,10 +43,14 @@ test $? -eq 0 || echo "Bugfix branch not supported (lower case)"
 #Negative tests
 $(git checkout -B feature/DX-123 --no-track --quiet)
 printf "dx-123: Some commit message" > commit-msg.txt
-test_result=$(.githooks/commit-msg commit-msg.txt)
-test $? -ne 0 || echo "Case number check failed"
+$(.githooks/commit-msg commit-msg.txt)
+$? -ne 0 || echo "Case prefix check failed"
 
-#echo $test_result
-echo $?
+$(git checkout -B feature/DX-123 --no-track --quiet)
+printf "DX-234: Some commit message" > commit-msg.txt
+$(.githooks/commit-msg commit-msg.txt)
+$? -ne 0 || echo "Case number check failed"
 
-"$(git checkout -B $original_branch_name)"
+$(git checkout -B $original_branch_name)
+
+echo "All tests good"

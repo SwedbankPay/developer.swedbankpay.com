@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 # Regex explanation:
 # First group matches the branch type
 # then we match a slash (/).
