@@ -1,17 +1,16 @@
-The `description` field is a textual definition max 40 characters of the
-purchase. It is needed to specify what the purchase actually is for
-the consumer. Below you will find a abbreviated code example of Card Payments
-`Purchase`.
+The `description` field is a 40 character length textual summary of the
+purchase. It is needed to specify what payer is actually purchasing. Below you
+will find an abbreviated Card Payments `Purchase` request.
 
-As you can see the `description` field is set to be
-`"test purchase - orderNumber28749347"` in the the code example.
-The images below will show you the payment UI for the
-Redirect and Seamless View scenario.
+As you can see the `description` field is set to be `test purchase -
+orderNumber28749347` in the the code example. The images below will show you the
+payment UI for the Redirect and Seamless View scenario.
 
 {% include alert.html type="neutral" icon="info" body="Notice that for Redirect,
 the description will be shown as `test purchase - orderNumber28749347`, as set
 in the code example. For the Seamless View scenario, the description is not
-shown in the payment window, but it is still required in the initial request." %}
+shown in the payment window, but it is still required in the initial request."
+%}
 
 {:.code-header}
 **Request**
