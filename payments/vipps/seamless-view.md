@@ -99,7 +99,7 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`type`                   | `string`      | Use the Vipps value. [See the Prices resource and prices object types for more information][price-resource].                                                                                                                                                                                       |
 | {% icon check %} | └─➔&nbsp;`amount`                 | `integer`     | {% include field-description-amount.md currency="NOK" %}                                                                                                                                                                                                                                           |
 | {% icon check %} | └─➔&nbsp;`vatAmount`              | `integer`     | {% include field-description-vatamount.md currency="NOK" %}                                                                                                                                                                                                                                        |
-| {% icon check %} | └➔&nbsp;`description`             | `string(40)`  | A textual description max 40 characters of the purchase.                                                                                                                                                                                                                                           |
+| {% icon check %} | └➔&nbsp;`description`             | `string(40)`  | {% include field-description-description.md payment_instrument="vipps" %}                                                                                                                                                                                                                                           |
 |                  | └➔&nbsp;`payerReference`          | `string`      | The reference to the payer (consumer/end user) from the merchant system. E.g mobile number, customer number etc.                                                                                                                                                                                   |
 |                  | └➔&nbsp;`generatePaymentToken`    | `boolean`     | `true` or `false`. Set this to `true` if you want to create a paymentToken for future use as One Click.                                                                                                                                                                                            |
 |                  | └➔&nbsp;`generateRecurrenceToken` | `boolean`     | `true` or `false`. Set this to `true` if you want to create a recurrenceToken for future use Recurring purchases (subscription payments).                                                                                                                                                          |
@@ -310,7 +310,7 @@ Content-Type: application/json
 | └➔&nbsp;`number`             | `string`  | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead. |
 | └➔&nbsp;`amount`             | `integer` | {% include field-description-amount.md currency="NOK" %}                                                                                                                                                     |
 | └➔&nbsp;`vatAmount`          | `integer` | {% include field-description-vatamount.md currency="NOK" %}                                                                                                                                                  |
-| └➔&nbsp;`description`        | `string`  | A human readable description of maximum 40 characters of the transaction.                                                                                                                                    |
+| └➔&nbsp;`description`        | `string`  | {% include field-description-description.md payment_instrument="vipps" %}                                                                                                                                    |
 | └➔&nbsp;`payeeReference`     | `string`  | A unique reference for the transaction.                                                                                                                                                                      |
 | └➔&nbsp;`failedReason`       | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | └➔&nbsp;`isOperational`      | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
@@ -325,42 +325,51 @@ request.
 
 ```mermaid
 sequenceDiagram
-    Browser->>Merchant: start purchase (pay with VIPPS)
     activate Merchant
-    Merchant->>-SwedbankPay: POST /psp/vipps/payments ①
+    Merchant->>-SwedbankPay: POST /psp/vipps/payments
     activate SwedbankPay
     note left of Merchant: First API request
-    SwedbankPay-->>-Merchant: rel: view-payment ②
+    SwedbankPay-->>-Merchant: Payment response with rel: view-payment
     activate Merchant
-    Merchant-->>-Browser: authorization page
-    activate Browser
-    note left of Browser: Open iframe ③
-    Browser->>Browser: Enter mobile number ④
-    Browser-->>-SwedbankPay: Passing data for authorization
+    Merchant->>-SwedbankPay: script init of iFrame
     activate SwedbankPay
+    SwedbankPay-->>-Merchant: Display Payment Page
+    activate Merchant
+    Merchant->>Merchant: Enter mobile number
+    Merchant ->>- SwedbankPay: Mobile number
 
-    SwedbankPay-->>-Vipps.API: POST <rel:create-auhtorization> ⑤
-    activate Vipps.API
-    Vipps.API-->>-SwedbankPay: response
     activate SwedbankPay
-    SwedbankPay-->>-Browser: Authorization response (State=AwaitingActivity) ⑥
-    activate Browser
-    note left of Browser: check your phone
+    SwedbankPay->>+Vipps_API: POST <rel:create-auhtorization>
+    activate Vipps_API
+    Vipps_API-->>+SwedbankPay: Response
+    activate SwedbankPay
+    SwedbankPay-->>-Merchant: Display to instructions page
 
-    Vipps.API-->>Vipps_App: Confirm Payment UI
+    Vipps_API-->>-Vipps_App: Confirm Payment UI
     activate Vipps_App
-    note left of Vipps.API: Dialogue with Vipps ⑦
     Vipps_App-->>Vipps_App: Confirmation Dialogue
-    Vipps_App-->>-Vipps.API: Confirmation
-    activate Vipps.API
-    Vipps.API-->>-SwedbankPay: make payment
+    Vipps_App-->>-Vipps_API: Confirmation
+
+    activate Vipps_API
+    Vipps_API->>-SwedbankPay: Make payment
     activate SwedbankPay
-    SwedbankPay-->>SwedbankPay: execute payment
-    SwedbankPay-->>-Vipps.API: response
-    activate Vipps.API
-    Vipps.API-->>-SwedbankPay: authorize result
+    SwedbankPay-->>-SwedbankPay: Execute payment
     activate SwedbankPay
-    SwedbankPay-->>-Browser: Display authorize result
+    SwedbankPay-->>-Vipps_API: Make Payment Response
+
+        alt Callback
+        activate SwedbankPay
+        SwedbankPay-->>-Vipps_API: Callback response
+        activate SwedbankPay
+        SwedbankPay->>-Merchant: Transaction Callback
+        end
+
+    activate Merchant
+    Merchant->>- SwedbankPay: GET <Vipps payment>
+    activate  SwedbankPay
+    SwedbankPay-->>-Merchant: Payment response
+    activate Merchant
+    Merchant-->>-Merchant: Display payment Status
 ```
 
 1. When the payer starts the purchase process, you make a `POST` request
