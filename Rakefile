@@ -21,8 +21,7 @@ task :clean do
 end
 
 # Test generated output has valid HTML and links.
-task :test do
-  Rake::Task["build"].execute
+task :test => :build do
   options = { :assume_extension => true }
   HTMLProofer.check_directory("./_site", options).run
 end
