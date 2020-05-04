@@ -13,8 +13,12 @@ SHA1=$3
 valid_branch_regex="^(hotfix|feature|release|bugfix)\/([a-zA-Z]+\-[0-9]+|[0-9]\..*).*"
 branch_name="$(git rev-parse --abbrev-ref HEAD)"
 
-if [[ ! $branch_name =~ $valid_branch_regex ]]
-then
+if [[ $branch_name == "HEAD" ]]; then
+    echo "Branch is HEAD, skipping commit message preparation."
+    exit 0
+fi
+
+if [[ ! $branch_name =~ $valid_branch_regex ]]; then
     echo "Commit error!"
     echo "The branch '$branch_name' is not named according to our standards."
     echo ""
@@ -33,5 +37,5 @@ task_id=${BASH_REMATCH[2]}
 commit_message="$(cat $1)"
 
 if [[ $commit_message != $task_id* ]]; then
-  echo "$task_id"' '$(cat "$COMMIT_MSG_FILE") > "$COMMIT_MSG_FILE"
+    echo "$task_id"' '$(cat "$COMMIT_MSG_FILE") > "$COMMIT_MSG_FILE"
 fi
