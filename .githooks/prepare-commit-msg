@@ -13,8 +13,13 @@ SHA1=$3
 valid_branch_regex="^(hotfix|feature|release|bugfix)\/([a-zA-Z]+\-[0-9]+|[0-9]\..*).*"
 branch_name="$(git rev-parse --abbrev-ref HEAD)"
 
+if [[ "$NO_VERIFY" ]]; then
+    echo "NO_VERIFY environment variable set, skipping commit message preparation." 1>&2
+    exit 0
+fi
+
 if [[ $branch_name == "HEAD" ]]; then
-    echo "Branch is HEAD, skipping commit message preparation."
+    echo "Branch is HEAD, skipping commit message preparation."  1>&2
     exit 0
 fi
 
