@@ -5,4 +5,5 @@ services:
     command: rake test --trace
     build:
       context: .
-      dockerfile: .docker/Dockerfile-test
+      dockerfile: .docker/Dockerfile
+    entrypoint: .docker/bundle-install
