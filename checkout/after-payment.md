@@ -115,7 +115,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Field       | Type     | Description                                                                        |
+| Field          | Type     | Description                                                                        |
 | :------------- | :------- | :--------------------------------------------------------------------------------- |
 | `paymentorder` | `object` | The payment order object.                                                          |
 | └➔&nbsp;`id`   | `string` | {% include field-description-id.md resource="paymentorder" %}                      |
@@ -139,7 +139,7 @@ operations `Cancel`, `Capture` and `Reversal` must be implemented." %}
 
 [https]: /#connection-and-protocol
 [msisdn]: https://en.wikipedia.org/wiki/MSISDN
-[payee-reference]: /checkout/other-features#payeereference
+[payee-reference]: /checkout/other-features#payee-reference
 [payment-order-operations]: /checkout/other-features#operations
 [payment-menu-back-end]: /payment#payment-menu-back-end
 [payment-menu-front-end]: /payment#payment-menu-front-end

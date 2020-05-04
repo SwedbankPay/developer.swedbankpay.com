@@ -70,7 +70,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Field       | Type     | Description                                                                        |
+| Field          | Type     | Description                                                                        |
 | :------------- | :------- | :--------------------------------------------------------------------------------- |
 | `paymentorder` | `object` | The payment order object.                                                          |
 | └➔&nbsp;`id`   | `string` | {% include field-description-id.md resource="paymentorder" %}                      |
@@ -301,14 +301,14 @@ finalizing the payment in the [After Payment section][after-payment].
 
 [after-payment]: after-payment
 [checkin-image]: /assets/img/checkout/your-information.png
-[consumer-reference]: /checkout/other-features#payeereference
+[consumer-reference]: /checkout/other-features#payee-reference
 [guest-payment-menu-image]: /assets/img/checkout/guest-payment-menu-450x850.png
 [initiate-consumer-session]: /checkout/checkin#checkin-back-end
 [login-payment-menu-image]: /assets/img/checkout/logged-in-payment-menu-450x900.png
 [msisdn]: https://en.wikipedia.org/wiki/MSISDN
 [operations]: /checkout/other-features#operations
 [order-items]: #order-items
-[payee-reference]: /checkout/other-features#payeereference
+[payee-reference]: /checkout/other-features#payee-reference
 [payment-menu]: #payment-menu
 [payment-order-capture]: /checkout/after-payment#capture
 [payment-order-operations]: /checkout/after-payment#operations

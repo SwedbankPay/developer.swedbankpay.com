@@ -437,7 +437,7 @@ Content-Type: application/json
 next_href="other-features" next_title="Next: Other Features" %}
 
 [transaction-resource]: /payments/card/other-features#transactions
-[payee-reference]: /payments/card/other-features#payeereference
+[payee-reference]: /payments/card/other-features#payee-reference
 [payment-resource]: /payments/card/other-features#payment
 [abort]: /payments/card/other-features#abort
 [callback]: /payments/card/other-features#callback

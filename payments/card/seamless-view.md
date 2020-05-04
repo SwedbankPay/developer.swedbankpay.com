@@ -124,7 +124,7 @@ is raised with the following event argument object:
 ```
 
 {:.table .table-striped}
-| Field     | Type     | Description                           |
+| Field        | Type     | Description                           |
 | :----------- | :------- | :------------------------------------ |
 | `id`         | `string` | {% include field-description-id.md %} |
 | `instrument` | `string` | `Creditcard`                          |
@@ -219,7 +219,7 @@ next_href="capture" next_title="Next: Capture" %}
 [capture]: /payments/card/after-payment#Capture
 [create-payment]: /payments/card/other-features#create-payment
 [expansion]: /payments/card/other-features#expansion
-[payee-reference]: /payments/card/other-features#payeereference
+[payee-reference]: /payments/card/other-features#payee-reference
 [payout]: /payments/card/other-features#payout
 [purchase]: /payments/card/other-features#purchase
 [price-resource]: /payments/card/other-features#prices

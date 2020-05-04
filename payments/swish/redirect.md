@@ -123,7 +123,7 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`type`              | `string`      | `Swish`.                                                                                                                                                                                                                                                                                           |
 | {% icon check %} | └─➔&nbsp;`amount`            | `integer`     | {% include field-description-amount.md %}                                                                                                                                                                                                                                                          |
 | {% icon check %} | └─➔&nbsp;`vatAmount`         | `integer`     | {% include field-description-vatamount.md %}                                                                                                                                                                                                                                                       |
-| {% icon check %} | └➔&nbsp;`description`        | `string(40)`  | {% include field-description-description.md payment_instrument="swish" %}                                                                                                                                                                                                                                          |
+| {% icon check %} | └➔&nbsp;`description`        | `string(40)`  | {% include field-description-description.md payment_instrument="swish" %}                                                                                                                                                                                                                          |
 |                  | └─➔&nbsp;`paymentAgeLimit`   | `integer`     | Positive number sets required age limit to fulfill the payment.                                                                                                                                                                                                                                    |
 |                  | └➔&nbsp;`payerReference`     | `string`      | The reference to the payer (consumer/end user) from the merchant system. E.g mobile number, customer number etc.                                                                                                                                                                                   |
 | {% icon check %} | └➔&nbsp;`userAgent`          | `string`      | The user agent reference of the consumer's browser - [see user agent definition][user-agent-definition]                                                                                                                                                                                            |
@@ -253,7 +253,7 @@ next_href="seamless-view" next_title="Next: Seamless View" %}
 [swish-redirect-image]: /assets/screenshots/swish/redirect-view/view/windows-small-window.png
 [callback-url]: /payments/swish/other-fetures#callback
 [seamless-view]: /payments/swish/seamless-view
-[payee-reference]: /payments/swish/other-features#payeereference
+[payee-reference]: /payments/swish/other-features#payee-reference
 [purchase-flow]: #purchase-flow
 [redirect]: /payments/swish/redirect
 [technical-reference-callback]: /payments/swish/other-fetures#callback

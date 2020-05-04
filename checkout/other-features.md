@@ -865,7 +865,7 @@ Content-Type: application/json
 | └─➔&nbsp;`remainingCaptureAmount`  | `integer`    | The available amount to capture.                                                                                                                                                                 |
 | └─➔&nbsp;`remainingCancelAmount`   | `integer`    | The available amount to cancel.                                                                                                                                                                  |
 | └─➔&nbsp;`remainingReversalAmount` | `integer`    | The available amount to reverse.                                                                                                                                                                 |
-| └➔&nbsp;`description`              | `string(40)` | {% include field-description-description.md payment_instrument="checkout" %}                                                                                                                                  |
+| └➔&nbsp;`description`              | `string(40)` | {% include field-description-description.md payment_instrument="checkout" %}                                                                                                                     |
 | └➔&nbsp;`payerReference`           | `string`     | The reference to the consumer from the merchant system, like mobile number, customer number etc.                                                                                                 |
 | └➔&nbsp;`userAgent`                | `string`     | The [user agent][user-agent] string of the consumer's browser.                                                                                                                                   |
 | └➔&nbsp;`language`                 | `string`     | `nb-NO`, `sv-SE` or `en-US`                                                                                                                                                                      |
@@ -1409,7 +1409,7 @@ elements. When in doubt, please follow the [robustness principle](https://en.wik
 [abort]: #operations
 [callback-reference]: /checkout/other-features#callback
 [card-payments-problems]: /payments/card/other-features#problem-messages
-[consumer-reference]: /checkout/other-features#payeereference
+[consumer-reference]: /checkout/other-features#payee-reference
 [current-payment]: #current-payment-resource
 [expanding]: #expansion
 [http-api-problems]: https://tools.ietf.org/html/rfc7807
@@ -1418,7 +1418,7 @@ elements. When in doubt, please follow the [robustness principle](https://en.wik
 [invoice-payments-problems]: /payments/invoice/other-features#problem-messages
 [operations]: #operations
 [order-items]: /checkout/other-features#order-items
-[payee-reference]: /checkout/other-features#payeereference
+[payee-reference]: /checkout/other-features#payee-reference
 [payment-menu]: /checkout/payment-menu
 [payment-order-capture]: #capture
 [payment-order]: #payment-orders
@@ -1426,7 +1426,7 @@ elements. When in doubt, please follow the [robustness principle](https://en.wik
 [payment-orders-resource-payments]: #current-payment-resource
 [payment-orders-resource]: /checkout/other-features#payment-orders
 [payment-orders]: /checkout/other-features#payment-orders
-[payment-resource-payeeinfo]: /checkout/other-features#payeereference
+[payment-resource-payeeinfo]: /checkout/other-features#payee-reference
 [payment-resource-urls]: #urls-resource
 [payment-resource]: #payments-resource
 [pci-dss]: https://www.pcisecuritystandards.org/

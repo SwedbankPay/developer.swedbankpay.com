@@ -99,7 +99,7 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`type`                   | `string`      | Use the Vipps value. [See the Prices resource and prices object types for more information][price-resource].                                                                                                                                                                                       |
 | {% icon check %} | └─➔&nbsp;`amount`                 | `integer`     | {% include field-description-amount.md currency="NOK" %}                                                                                                                                                                                                                                           |
 | {% icon check %} | └─➔&nbsp;`vatAmount`              | `integer`     | {% include field-description-vatamount.md currency="NOK" %}                                                                                                                                                                                                                                        |
-| {% icon check %} | └➔&nbsp;`description`             | `string(40)`  | {% include field-description-description.md payment_instrument="vipps" %}                                                                                                                                                                                                                                           |
+| {% icon check %} | └➔&nbsp;`description`             | `string(40)`  | {% include field-description-description.md payment_instrument="vipps" %}                                                                                                                                                                                                                          |
 |                  | └➔&nbsp;`payerReference`          | `string`      | The reference to the payer (consumer/end user) from the merchant system. E.g mobile number, customer number etc.                                                                                                                                                                                   |
 |                  | └➔&nbsp;`generatePaymentToken`    | `boolean`     | `true` or `false`. Set this to `true` if you want to create a paymentToken for future use as One Click.                                                                                                                                                                                            |
 |                  | └➔&nbsp;`generateRecurrenceToken` | `boolean`     | `true` or `false`. Set this to `true` if you want to create a recurrenceToken for future use Recurring purchases (subscription payments).                                                                                                                                                          |
@@ -400,7 +400,7 @@ sequenceDiagram
 [captures]: /payments/vipps/after-payment#captures
 [create-payment]: /payments/vipps/other-features#create-payment
 [hosted-view]: /payments/vipps/seamless-view
-[payee-reference]: /payments/vipps/other-features#payeereference
+[payee-reference]: /payments/vipps/other-features#payee-reference
 [price-resource]: /payments/vipps/other-features#prices
 [purchase]: /payments/vipps/other-features#purchase
 [reference-redirect]: /payments/vipps/redirect
