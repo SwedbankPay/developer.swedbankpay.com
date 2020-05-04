@@ -22,7 +22,7 @@ end
 
 # Test generated output has valid HTML and links.
 task :test do
-  Jekyll::Commands::Build.process(profile: true)
+  Rake::Task["build"].execute
   options = { :assume_extension => true }
   HTMLProofer.check_directory("./_site", options).run
 end
