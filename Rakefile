@@ -22,7 +22,11 @@ end
 
 # Test generated output has valid HTML and links.
 task :test => :build do
-  options = { :assume_extension => true }
+  options = {
+              :assume_extension => true,
+              :check_html => true,
+              :enforce_https => true
+            }
   HTMLProofer.check_directory("./_site", options).run
 end
 
