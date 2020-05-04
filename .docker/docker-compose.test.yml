@@ -1,7 +1,7 @@
 version: '3.7'
 
 services:
-  jekyll:
+  portal:
     command: rake test --trace
     build:
       context: .
