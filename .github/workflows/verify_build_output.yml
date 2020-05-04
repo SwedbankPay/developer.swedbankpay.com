@@ -1,0 +1,19 @@
+name: Verify build output
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    name: Jekyll output
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Docker compose up with rake
+      run: |
+        docker-compose \
+          -f docker-compose.yml \
+          -f .docker/docker-compose.test.yml \
+          up \
+          --build \
+          --abort-on-container-exit \
+          --exit-code-from jekyll
