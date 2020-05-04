@@ -16,4 +16,4 @@ jobs:
           up \
           --build \
           --abort-on-container-exit \
-          --exit-code-from developer_portal
+          --exit-code-from portal
