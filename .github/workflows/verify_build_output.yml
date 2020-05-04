@@ -16,4 +16,4 @@ jobs:
           up \
           --build \
           --abort-on-container-exit \
-          --exit-code-from jekyll
+          --exit-code-from portal
