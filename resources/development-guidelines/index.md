@@ -217,11 +217,15 @@ summarize all changes made since the last release and highlight new features,
 possibly by referring to blog entries or similar that describes them in more
 detail.
 
+To help with writing release notes, projects can use the tool
+[GitReleaseNotes][git-release-notes].
+
 [apple-app-store]: https://appstore.com/
 [code-of-conduct]: /resources/development-guidelines/code-of-conduct
 [continuous-integration]: https://en.wikipedia.org/wiki/Continuous_integration
 [contributing]: /resources/development-guidelines/contributing
 [domain-driven-design]: https://martinfowler.com/tags/domain%20driven%20design.html
+[git-release-notes]: https://github.com/GitTools/GitReleaseNotes
 [git-version]: https://github.com/GitTools/GitVersion
 [gitflow]: https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow/
 [github-flow]: https://guides.github.com/introduction/flow/
