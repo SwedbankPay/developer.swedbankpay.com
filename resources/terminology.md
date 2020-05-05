@@ -116,7 +116,7 @@ sidebar:
 [cancel-url]: /payments/card/after-payment#cancellations
 [checkout-url]: /checkout
 [common-headers]: #headers
-[restful-api]: payments#connection-and-protocol
+[restful-api]: /home/technical-information#connection-and-protocol
 [verify-url]: /payments/card/other-features#verify
 [one-phase-url]: /payments#the-fundamentals
 [payout]: /payments/card/other-features#payout

@@ -137,7 +137,7 @@ operations `Cancel`, `Capture` and `Reversal` must be implemented." %}
                          next_href="other-features"
                          next_title="Next: Other Features" %}
 
-[https]: /#connection-and-protocol
+[https]: /home/technical-information#connection-and-protocol
 [msisdn]: https://en.wikipedia.org/wiki/MSISDN
 [payee-reference]: /checkout/other-features#payee-reference
 [payment-order-operations]: /checkout/other-features#operations
