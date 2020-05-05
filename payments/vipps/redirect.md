@@ -424,7 +424,7 @@ purchased products) have to make a [Capture][capture] or
                          next_href="seamless-view"
                          next_title="Next: Implement Seamless view" %}
 
-[cancel]: /payments/vipps/other-features#cancellations
+[cancel]: /payments/vipps/after-payment#cancellations
 [capture]: /payments/vipps/after-payment#captures
 [seamless-view]: /payments/vipps/seamless-view
 [reference-redirect]: /payments/vipps/redirect
