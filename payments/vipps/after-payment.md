@@ -93,7 +93,7 @@ Content-Type: application/json
 | {% icon check %}︎ | └─➔&nbsp;`type`              | `string`     | `vipps`                                                                                                                                                                                                                                                   |
 | {% icon check %}︎ | └─➔&nbsp;`amount`            | `integer`    | {% include field-description-amount.md currency="NOK" %}                                                                                                                                                                                                  |
 | {% icon check %}︎ | └─➔&nbsp;`vatAmount`         | `integer`    | {% include field-description-vatamount.md currency="NOK" %}                                                                                                                                                                                               |
-| {% icon check %}︎ | └➔&nbsp;`description`        | `string(40)` | {% include field-description-description.md payment_instrument="vipps" %}                                                                                                                                                                                                  |
+| {% icon check %}︎ | └➔&nbsp;`description`        | `string(40)` | {% include field-description-description.md payment_instrument="vipps" %}                                                                                                                                                                                 |
 |                  | └➔&nbsp;`payerReference`     | `string`     | The reference to the payer (consumer/end-user) from the merchant system, like mobile number, customer number etc.                                                                                                                                         |
 | {% icon check %}︎ | └➔&nbsp;`userAgent`          | `string`     | The user agent reference of the consumer's browser - [see user agent][user-agent]                                                                                                                                                                         |
 | {% icon check %}︎ | └➔&nbsp;`language`           | `string`     | `nb-NO`, `sv-SE` or `en-US`.                                                                                                                                                                                                                              |
@@ -387,13 +387,15 @@ Content-Type: application/json
 {% include transaction-response.md payment_instrument="vipps"
     transaction="reversal" %}
 
+{% include abort-reference.md payment_instrument="vipps" %}
+
 {% include iterator.html
         prev_href="seamless-view"
         prev_title="Back: Seamless View"
         next_href="other-features"
         next_title="Next: Other Features" %}
 
-[abort]: /payments/vipps/other-features#abort
+[abort]: /payments/vipps/after-payment#abort
 [expand-parameter]: /#expansion
 [callback]: /payments/vipps/other-features#callback
 [cancel]: #cancellations

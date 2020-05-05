@@ -240,24 +240,25 @@ All Vipps error types will have the following URI in front of type:
 `https://api.payex.com/psp/errordetail/vipps/<error-type>`
 
 {:.table .table-striped}
-| Type | Status | Note
-| *CARD_BLACKLISTED* | 400 |
-| *PAYMENT_TOKEN_ERROR* | 403 |
-| *CARD_DECLINED* | 403 |
-| *ACQUIRER_ERROR* | 403 |
-| *ACQUIRER_CARD_BLACKLISTED* | 403 |
-| *ACQUIRER_CARD_EXPIRED* | 403 |
-| *ACQUIRER_CARD_STOLEN* | 403 |
-| *ACQUIRER_INSUFFICIENT_FUNDS* | 403 |
-| *ACQUIRER_INVALID_AMOUNT* | 403 |
-| *ACQUIRER_POSSIBLE_FRAUD* | 403 |
-| *FRAUD_DETECTED* | 403 |
-| *BAD_REQUEST* | 500 |
-| *INTERNAL_SERVER_ERROR* | 500 |
-| *BAD_GATEWAY* | 502 |
-| *ACQUIRER_GATEWAY_ERROR* | 502 |
-| *ACQUIRER_GATEWAY_TIMEOUT* | 504 |
-| *UNKNOWN_ERROR* | 500 |
+| Type                          | Status | Note |
+| :---------------------------- | :----- | :--- |
+| *CARD_BLACKLISTED*            | 400    |      |
+| *PAYMENT_TOKEN_ERROR*         | 403    |      |
+| *CARD_DECLINED*               | 403    |      |
+| *ACQUIRER_ERROR*              | 403    |      |
+| *ACQUIRER_CARD_BLACKLISTED*   | 403    |      |
+| *ACQUIRER_CARD_EXPIRED*       | 403    |      |
+| *ACQUIRER_CARD_STOLEN*        | 403    |      |
+| *ACQUIRER_INSUFFICIENT_FUNDS* | 403    |      |
+| *ACQUIRER_INVALID_AMOUNT*     | 403    |      |
+| *ACQUIRER_POSSIBLE_FRAUD*     | 403    |      |
+| *FRAUD_DETECTED*              | 403    |      |
+| *BAD_REQUEST*                 | 500    |      |
+| *INTERNAL_SERVER_ERROR*       | 500    |      |
+| *BAD_GATEWAY*                 | 502    |      |
+| *ACQUIRER_GATEWAY_ERROR*      | 502    |      |
+| *ACQUIRER_GATEWAY_TIMEOUT*    | 504    |      |
+| *UNKNOWN_ERROR*               | 500    |      |
 
 {% include iterator.html
         prev_href="after-payment"
