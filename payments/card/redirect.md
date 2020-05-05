@@ -175,7 +175,7 @@ next_href="seamless-view" next_title="Next: Seamless View" %}
 [cancel]: /payments/card/after-payment#cancellations
 [capture]: /payments/card/after-payment#Capture
 [create-payment]: /payments/card/other-features#create-payment
-[expansion]: /payments/card/other-features#expansion
+[expansion]: /home/technical-information#expansion
 [payee-reference]: /payments/card/other-features#payee-reference
 [payout]: /payments/card/other-features#payout
 [purchase]: /payments/card/other-features#purchase

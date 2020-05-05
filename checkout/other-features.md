@@ -1411,7 +1411,7 @@ elements. When in doubt, please follow the [robustness principle](https://en.wik
 [card-payments-problems]: /payments/card/other-features#problem-messages
 [consumer-reference]: /checkout/other-features#payee-reference
 [current-payment]: #current-payment-resource
-[expanding]: #expansion
+[expanding]: /home/technical-information#expansion
 [http-api-problems]: https://tools.ietf.org/html/rfc7807
 [image_disabled_payment_menu]: /assets/img/checkout/test-purchase.png
 [image_enabled_payment_menu]: /assets/img/checkout/guest-payment-menu-450x850.png

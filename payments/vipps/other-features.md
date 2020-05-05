@@ -268,6 +268,6 @@ All Vipps error types will have the following URI in front of type:
 [payment-order]: #payment-order
 [prices]: #prices
 [problems-reference]: #problem-messages
-[technical-reference-expansion]: /payments/vipps/other-features#expansion
+[technical-reference-expansion]: /home/technical-information#expansion
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
 [technical-reference-payeeReference]: #payee-reference

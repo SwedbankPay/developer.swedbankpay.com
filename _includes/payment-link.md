@@ -42,7 +42,7 @@ Secure authentication.
 After completion, Swedbank Pay will redirect the browser back to your
 merchant/webshop site.
 
-If [`callbackURL`][technical-reference-callbackurl] is set the merchant system
+If [`callbackURL`][technical-reference-callback] is set the merchant system
 will receive a callback from Swedbank Pay, enabling you to make a `GET` request
 towards Swedbank Pay with the `id` of the payment received in the first step,
 which will return the purchase result.
@@ -132,7 +132,7 @@ yet reversed.
 #### General
 
 When implementing the Payment Link scenario, it is optional to set a
-[`callbackURL`][technical-reference-callbackurl] in the `POST` request. If
+[`callbackURL`][technical-reference-callback] in the `POST` request. If
 callbackURL is set Swedbank Pay will send a request to this URL when the
 consumer as fulfilled the payment. [See the Callback API description
 here][technical-reference-callback].
@@ -225,15 +225,14 @@ sequenceDiagram
   [See the Callback API description here][technical-reference-callback].
 
 [card-payment]: /assets/img/payments/card-payment.png
-[abort]: #abort
+[abort]: /payments/card/after-payment#abort
 [credit-card]: /payments/card
 [mobile-pay]: /payments/mobile-pay
 [payment-instruments-card-payment-pages]: /payments/card/
 [payment-instruments-mobilepay-payment-pages]: /payments/mobile-pay/
-[purchase-flow]: ../#purchase-flow
+[purchase-flow]: /payments/card/#purchase-flow
 [swish]: /payments/swish
 [technical-reference-callback]: #callback
-[technical-reference-callbackurl]: #callback
 [test_purchase]: /assets/img/checkout/test-purchase.png
 [card-payment]: /assets/img/payments/card-payment.png
 [vipps]: /payments/vipps

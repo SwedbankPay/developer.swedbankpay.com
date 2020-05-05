@@ -355,7 +355,7 @@ next_href="other-features" next_title="Next: Other Features" %}
 [payment-order]: #create-payment
 [technical-reference-abort]: #abort
 [technical-reference-callback]: /payments/swish/other-features#callback
-[technical-reference-expand]: /payments/swish/other-features#expansion
+[technical-reference-expand]: /home/technical-information#expansion
 [technical-reference-payeeReference]: /payments/swish/other-features#payee-reference
 [technical-reference-problemmessages]: /payments/swish/other-features#problem-messages
 [technical-reference-transaction]: /payments/swish/other-features#transaction

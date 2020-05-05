@@ -396,7 +396,7 @@ Content-Type: application/json
         next_title="Next: Other Features" %}
 
 [abort]: /payments/vipps/after-payment#abort
-[expand-parameter]: /#expansion
+[expand-parameter]: /home/technical-information#expansion
 [callback]: /payments/vipps/other-features#callback
 [cancel]: #cancellations
 [capture]: #captures
