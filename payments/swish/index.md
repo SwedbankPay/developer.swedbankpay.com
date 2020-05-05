@@ -83,8 +83,8 @@ You could also contact one of the following banks offering Swish Handel:
 [Sparbanken Syd][sparbanken-syd], [Sparbanken Öresund][sparbanken-oresund],
 [Nordea][nordea], [Handelsbanken][handelsbanken], in order to get an acquiring
 agreement, a Swish alias and access to [Swish Certificate Management
-system][swish-certificate-management-system](several banks do however support
-Technical Supplier Certificate setups so you can ask them for that).
+system](several banks do however support Technical Supplier Certificate setups
+so you can ask them for that).
 
 ### Demoshop
 
@@ -105,11 +105,10 @@ Swish App.
 [payex-mailto]: mailto:sales@payex.com
 [SEB-swish]: https://seb.se/foretag/digitala-tjanster/swish-handel
 [settlement-and-reconciliation]: /payments/swish/other-features#settlement-and-reconciliation
-[sparbanken-oresund]: https://www.sparbankenskane.se/foretag/digitala-tjanster/swish/swish-for-handel/index.htm
+[sparbanken-oresund]: https://www.sparbankenskane.se/foretag/digitala-tjanster/swish/swish-handel.html
 [sparbanken-syd]: https://www.sparbankensyd.se/vardagstjanster/betala/swish-foretag/
 [support-mailto]: mailto:support.ecom@swedbankpay.se
 [swedbank-swish]: https://www.swedbank.se/foretag/betala-och-ta-betalt/ta-betalt/swish/swish-handel/index.htm
-[swish-certificate-management-system]: https://comcert.getswish.net/cert-mgmt-web/authentication.html
 [swish-payment]: /assets/img/payments/swish-redirect-number-input-en.png
 [payment-resource]: /payments/swish/other-features#payment-resource
 [after-payment]: /payments/swish/after-payment
