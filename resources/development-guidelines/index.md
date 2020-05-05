@@ -217,27 +217,20 @@ summarize all changes made since the last release and highlight new features,
 possibly by referring to blog entries or similar that describes them in more
 detail.
 
-To help with writing release notes, projects can use the tool
-[GitReleaseNotes][git-release-notes]. Even if no tool is used, the release
-notes should adhere to the [Semantic Release Notes][semantic-release-notes]
-specification.
-
-[principles-of-object-oriented-design]: http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod
-[domain-driven-design]: http://martinfowler.com/tags/domain%20driven%20design.html
-[markdown]: https://help.github.com/articles/github-flavored-markdown/
+[apple-app-store]: https://appstore.com/
+[code-of-conduct]: /resources/development-guidelines/code-of-conduct
 [continuous-integration]: https://en.wikipedia.org/wiki/Continuous_integration
+[contributing]: /resources/development-guidelines/contributing
+[domain-driven-design]: https://martinfowler.com/tags/domain%20driven%20design.html
+[git-version]: https://github.com/GitTools/GitVersion
 [gitflow]: https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow/
 [github-flow]: https://guides.github.com/introduction/flow/
-[owasp-top-10]: https://www.owasp.org/index.php/Top_10_2013-Top_10
-[sans-25]: https://www.sans.org/top25-software-errors/
-[software-licence]: /resources/development-guidelines/license
-[contributing]: /resources/development-guidelines/contributing
-[code-of-conduct]: /resources/development-guidelines/code-of-conduct
-[semantic-versioning]: http://semver.org/
-[git-version]: https://github.com/GitTools/GitVersion
 [gitversion-task]: https://www.nuget.org/packages/GitVersionTask
-[apple-app-store]: http://www.appstore.com/
 [google-play]: https://play.google.com/store
+[markdown]: https://help.github.com/articles/github-flavored-markdown/
+[owasp-top-10]: https://www.owasp.org/index.php/Top_10_2013-Top_10
+[principles-of-object-oriented-design]: https://wiki.c2.com/?PrinciplesOfObjectOrientedDesign
 [release]: https://help.github.com/articles/creating-releases/
-[git-release-notes]: https://github.com/GitTools/GitReleaseNotes
-[semantic-release-notes]: http://www.semanticreleasenotes.org/
+[sans-25]: https://www.sans.org/top25-software-errors/
+[semantic-versioning]: http://semver.org/
+[software-licence]: /resources/development-guidelines/license
