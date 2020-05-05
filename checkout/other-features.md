@@ -1041,7 +1041,7 @@ setting the `disablePaymentMenu` field to `true`. The default value is
 ```
 
 {:.text-center}
-![example disablePaymentMenu = false][image_enabled_payment_menu]{:width="464" :height="607"}
+![example disablePaymentMenu = false][image_enabled_payment_menu]{:width="450" :height="850"}
 
 Setting `disablePaymentMenu` field to `true` removes all other payment
 instruments but the one that is available.
@@ -1414,7 +1414,7 @@ elements. When in doubt, please follow the [robustness principle](https://en.wik
 [expanding]: #expansion
 [http-api-problems]: https://tools.ietf.org/html/rfc7807
 [image_disabled_payment_menu]: /assets/img/checkout/test-purchase.png
-[image_enabled_payment_menu]: /assets/img/checkout/payment-menu.png
+[image_enabled_payment_menu]: /assets/img/checkout/guest-payment-menu-450x850.png
 [invoice-payments-problems]: /payments/invoice/other-features#problem-messages
 [operations]: #operations
 [order-items]: /checkout/other-features#order-items
