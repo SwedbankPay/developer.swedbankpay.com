@@ -232,5 +232,5 @@ detail.
 [principles-of-object-oriented-design]: https://wiki.c2.com/?PrinciplesOfObjectOrientedDesign
 [release]: https://help.github.com/articles/creating-releases/
 [sans-25]: https://www.sans.org/top25-software-errors/
-[semantic-versioning]: http://semver.org/
+[semantic-versioning]: https://semver.org/
 [software-licence]: /resources/development-guidelines/license
