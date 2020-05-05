@@ -251,9 +251,9 @@ sequenceDiagram
 next_href="seamless-view" next_title="Next: Seamless View" %}
 
 [swish-redirect-image]: /assets/screenshots/swish/redirect-view/view/windows-small-window.png
-[callback-url]: /payments/swish/other-fetures#callback
+[callback-url]: /payments/swish/other-features#callback
 [seamless-view]: /payments/swish/seamless-view
 [payee-reference]: /payments/swish/other-features#payee-reference
 [purchase-flow]: #purchase-flow
 [redirect]: /payments/swish/redirect
-[technical-reference-callback]: /payments/swish/other-fetures#callback
+[technical-reference-callback]: /payments/swish/other-features#callback
