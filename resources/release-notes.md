@@ -191,7 +191,7 @@ All sections have been released. :trophy:
   to release.
 * The [Swish Payments][swish] and [Vipps Payments][vipps] sections are ready for
   review.
-* The [Direct Debit][direct-debit], [MobilePay Payments][mobile-pay] and
+* The Direct Debit, [MobilePay Payments][mobile-pay] and
   [Credit Payments][credit] (née "Credit Account") sections have received a few
   updates, inching them all closer to review.
 
@@ -348,24 +348,23 @@ integration and the payer.
 
 [card-direct]: /payments/card/direct
 [card-payment-url]: /payments/card/other-features#payment-url
-[card-purchase]: /payments/card/redirect#purchase
+[card-purchase]: /payments/card/redirect#step-1-create-a-purchase
 [card-unscheduled-purchase]: /payments/card/other-features#unscheduled-purchase
 [card]: /payments/card
 [checkout-capture]: /checkout/capture
-[checkout-checkin-front-end]: /checkout/checkin#checkin-front-end
-[checkout-payment-menu-frontend]: /checkout/payment-menu#payment-menu-front-end
+[checkout-checkin-front-end]: /checkout/checkin#step-1-initiate-session-for-consumer-identification
+[checkout-payment-menu-frontend]: /checkout/checkin#step-2-display-swedbank-pay-checkin-module
 [checkout-payment-order-purchase]: /checkout/payment-menu#request
 [checkout-payment-orders]: /checkout/other-features#payment-orders
 [checkout-payment-url]: /checkout/other-features#payment-url
 [checkout]: /checkout
 [credit-card-abort]: /payments/card/after-payment#abort
-[credit]: /payments/credit
+[credit]: /payments/card
 [data-protection]: /resources/data-protection
 [design-guide]: https://design.swedbankpay.com/
-[direct-debit]: /payments/direct-debit
 [frontpage]: https://developer.swedbankpay.com/
 [home-technical-information]: /home/technical-information
-[initiate-consumer-session]: /checkout/checkin#checkin-back-end
+[initiate-consumer-session]: /checkout/checkin#step-1-initiate-session-for-consumer-identification
 [invoice-direct]: /payments/invoice/direct
 [invoice]: /payments/invoice
 [mac-checkout]: /checkout/other-features#merchant-authenticated-consumer
@@ -382,7 +381,7 @@ integration and the payer.
 [est-flag]: /assets/img/flag-estonia.png
 [dan-flag]: /assets/img/flag-denmark.png
 [swish-api-errors]: /payments/swish/other-features#swish-api-errors
-[swish-direct-mcom]: /payments/swish/direct#create-m-commerce-sale-transaction
+[swish-direct-mcom]: /payments/swish/direct#step-2b-create-m-commerce-sale-transaction
 [swish-direct]: /payments/swish/direct
 [swish-other-features]: /payments/swish/other-features
 [swish-redirect]: /payments/swish/redirect
