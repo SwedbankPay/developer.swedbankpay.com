@@ -15,9 +15,3 @@ jobs:
           -f docker-compose.yml \
           -f .docker/docker-compose.ci.yml \
           up
-    - name: ls
-      run: ls -la
-    - name: HTMLProofer
-      uses: chabad360/htmlproofer@v1.1
-      with:
-        directory: "./_site"
