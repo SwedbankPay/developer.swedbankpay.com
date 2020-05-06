@@ -15,7 +15,7 @@
 
 {{ payment_instrument_title }} supports the folowing languages:
 {% for language_code in language_codes %}
-{%- if forloop.last -%}
+{%- if forloop.last %}
  and {% comment %}Keep this to preserve the space after 'and'!{% endcomment %}
 {%- elsif forloop.first -%}
 {%- else -%}
