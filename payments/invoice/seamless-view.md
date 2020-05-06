@@ -301,7 +301,7 @@ next_href="direct" next_title="Next: Direct" %}
 [authorize]: /payments/invoice/other-features#authorizations
 [callback]: /payments/invoice/other-features#callback
 [cancel]: /payments/invoice/after-payment#cancellations
-[capture]: /payments/invoice/after-payment#captures
+[capture]: /payments/invoice/capture
 [create-payment]: /payments/invoice/other-features#create-payment
 [fi-png]: /assets/img/flag-finland.png
 [financing-consumer]: /payments/invoice/other-features#financing-consumer
