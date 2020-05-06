@@ -13,7 +13,7 @@
 
 {%- assign language_codes = language_codes | split: ',' -%}
 
-{{ payment_instrument_title }} supports the folowing languages:
+{{ payment_instrument_title }} supports the following languages:
 {% for language_code in language_codes %}
 {%- if forloop.last %}
  and {% comment %}Keep this to preserve the space after 'and'!{% endcomment %}
