@@ -36,4 +36,4 @@ process.
 {% endif %}
 
 [capture]: ./after-payment#capture
-[cancel]: ./after-payment#cancellations
+[cancel]: ./after-payment#cancel
