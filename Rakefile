@@ -27,7 +27,8 @@ task :test => :build do
               :check_html => true,
               :enforce_https => true,
               :only_4xx => true,
-              :check_unrendered_link => true
+              :check_unrendered_link => true,
+              :url_ignore => ["https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default"]
             }
   HTMLProofer.check_directory("./_site", options).run
 end
