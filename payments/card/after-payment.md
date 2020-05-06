@@ -29,7 +29,7 @@ request on the payment resource, containing the `paymentID` generated in the
 first step, to receive the state of the transaction. You will also be able to
 see the available operations after posting a payment.
 
-{% include payment-resource.md %}
+{% include payment-resource.md payment_instrument="card" %}
 
 * *Abort:* It is possible to abort the process if the payment has no successful
   transactions. [See the Abort description here][abort].
