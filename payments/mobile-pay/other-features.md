@@ -548,13 +548,11 @@ The response will be the `payment` resource with its `state` set to `Aborted`.
                          prev_title="Back: After Payment" %}
 
 [abort]: #abort-a-payment
-[authorization-transaction]: #authorizations
+[authorization-transaction]: /payments/mobile-pay/redirect#type-of-authorization-intent
 [callback-reference]: #callback
-[cancel]: #cancellations
 [cancellation-transaction]: #cancellations
 [capture-transaction]: #captures
 [capture]: #captures
 [payee-reference]: #payee-reference
 [reversal-transaction]: #reversals
-[transaction-resource]: #transactions
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
