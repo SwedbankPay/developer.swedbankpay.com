@@ -26,7 +26,8 @@ task :test => :build do
               :assume_extension => true,
               :check_html => true,
               :enforce_https => true,
-              :only_4xx => true
+              :only_4xx => true,
+              :check_unrendered_link => true
             }
   HTMLProofer.check_directory("./_site", options).run
 end
