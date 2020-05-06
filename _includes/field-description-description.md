@@ -1,4 +1,7 @@
 {%- assign payment_instrument = include.payment_instrument -%}
+{%- if payment_instrument == "mobilepay"-%}
+    {%- assign payment_instrument ="mobile-pay" -%}
+{%- endif -%}
 {%- assign description_url=payment_instrument | prepend: "/" | append: "/other-features#description" -%}
 {%- if payment_instrument != "checkout"-%}
     {%- assign description_url=description_url | prepend:  "/payments" -%}
