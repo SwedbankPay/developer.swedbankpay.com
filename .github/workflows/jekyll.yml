@@ -14,4 +14,9 @@ jobs:
         docker-compose \
           -f docker-compose.yml \
           -f .docker/docker-compose.ci.yml \
-          up -d
+          up
+
+    - name: HTMLProofer
+      uses: chabad360/htmlproofer@v1.1
+      with:
+        directory: "./_site"
