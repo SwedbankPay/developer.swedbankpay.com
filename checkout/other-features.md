@@ -163,7 +163,7 @@ The `paymentOrders` resource utilize several sub-resources, relating to
 underlying [payments][payment-orders-resource-payments],
 [the current payment active][current-payment],
 [payers][payment-orders-resource-payers] and [URLs][payment-resource-urls].
-Common sub-resources like [payeeinfo][payment-resource-payeeinfo], that are
+Common sub-resources like [payeeinfo][payee-reference], that are
 structurally identical for both payments and payments orders, are described in
 the [Payment Resources][payment-resource] section.
 
@@ -262,7 +262,7 @@ for the given operation.
 | Operation                         | Description                                                                                                                                                                                                                                                                    |
 | :-------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `update-paymentorder-abort`       | [Aborts][abort] the payment order before any financial transactions are performed.                                                                                                                                                                                             |
-| `update-paymentorder-updateorder` | [Updates the order][update-order] with a change in the `amount` and/or `vatAmount`.                                                                                                                                                                                            |
+| `update-paymentorder-updateorder` | Updates the order with a change in the `amount` and/or `vatAmount`.                                                                                                                                                                                                            |
 | `redirect-paymentorder`           | Contains the URI that is used to redirect the consumer to the Swedbank Pay Payments containing the Payment Menu.                                                                                                                                                               |
 | `view-paymentorder`               | Contains the JavaScript `href` that is used to embed the Payment Menu UI directly on the webshop/merchant site.                                                                                                                                                                |
 | `create-paymentorder-capture`     | The second part of a two-phase transaction where the authorized amount is sent from the payer to the payee. It is possible to do a part-capture on a subset of the authorized amount. Several captures on the same payment are possible, up to the total authorization amount. |
@@ -878,7 +878,7 @@ Content-Type: application/json
 
 The `payer` resource contains payer information related to the payment order.
 The information is retrieved via a consumer profile token
-(`consumerProfileRef`), from the [Consumers resource][consumer-reference]
+(`consumerProfileRef`), from the [Consumers resource][payee-reference]
 during login/checkin.
 
 {:.code-header}
@@ -1409,7 +1409,6 @@ elements. When in doubt, please follow the [robustness principle](https://en.wik
 [abort]: #operations
 [callback-reference]: /checkout/other-features#callback
 [card-payments-problems]: /payments/card/other-features#problem-messages
-[consumer-reference]: /checkout/other-features#payee-reference
 [current-payment]: #current-payment-resource
 [expanding]: /home/technical-information#expansion
 [http-api-problems]: https://tools.ietf.org/html/rfc7807
@@ -1420,20 +1419,18 @@ elements. When in doubt, please follow the [robustness principle](https://en.wik
 [order-items]: /checkout/other-features#order-items
 [payee-reference]: /checkout/other-features#payee-reference
 [payment-menu]: /checkout/payment-menu
-[payment-order-capture]: #capture
+[payment-order-capture]: /checkout/capture
 [payment-order]: #payment-orders
 [payment-orders-resource-payers]: #payer-resource
 [payment-orders-resource-payments]: #current-payment-resource
 [payment-orders-resource]: /checkout/other-features#payment-orders
 [payment-orders]: /checkout/other-features#payment-orders
-[payment-resource-payeeinfo]: /checkout/other-features#payee-reference
 [payment-resource-urls]: #urls-resource
 [payment-resource]: #payments-resource
 [pci-dss]: https://www.pcisecuritystandards.org/
 [swish-payments-problems]: /payments/swish/other-features#problem-messages
 [transaction]: #transaction
-[update-order]: /checkout/after-payment#update-order
 [urls]: #urls-resource
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
-[verification-transaction]: #verify-payment-orders
+[verification-transaction]: #verify-payments
 [vipps-payments-problems]: /payments/vipps/other-features#problem-messages
