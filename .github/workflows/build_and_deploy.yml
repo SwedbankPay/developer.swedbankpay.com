@@ -27,8 +27,3 @@ jobs:
           GITHUB_ACTOR: payex-dev
           JEKYLL_GITHUB_TOKEN : ${{ secrets.GH_PAGES_TOKEN }}
           JEKYLL_ENV: production
-
-      - name: HTMLProofer
-        uses: chabad360/htmlproofer@v1.1
-        with:
-          directory: "./_site"
