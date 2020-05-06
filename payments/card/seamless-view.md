@@ -216,7 +216,7 @@ next_href="capture" next_title="Next: Capture" %}
 [after-payment]: /payments/card/after-payment
 [callback]: /payments/card/other-features#callback
 [cancel]: /payments/card/after-payment#cancellations
-[capture]: /payments/card/after-payment#Capture
+[capture]: /payments/card/capture
 [create-payment]: /payments/card/other-features#create-payment
 [expansion]: /home/technical-information#expansion
 [payee-reference]: /payments/card/other-features#payee-reference
