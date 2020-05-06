@@ -5,3 +5,5 @@ services:
     command: jekyll build --verbose
     environment: 
       environment: 'production'
+    volumes:
+      - ./_site:/srv/jekyll/_site
