@@ -23,13 +23,13 @@ end
 # Test generated output has valid HTML and links.
 task :test => :build do
   options = {
-              :assume_extension => true,
-              :check_html => true,
-              :enforce_https => true,
-              :only_4xx => true,
-              :check_unrendered_link => true,
-              :url_ignore => ["https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default"]
-            }
+    :assume_extension => true,
+    :check_html => true,
+    :enforce_https => true,
+    :only_4xx => true,
+    :check_unrendered_link => true,
+    :url_ignore => ["https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default"]
+  }
   HTMLProofer.check_directory("./_site", options).run
 end
 
