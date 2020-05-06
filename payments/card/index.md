@@ -91,8 +91,6 @@ Our `payment` example below uses the [`Purchase`][purchase] operation.
 
 {% include intent.md autocapture=true %}
 
-## Language
-
 {% include language.md payment_instrument="creditcard" %}
 
 ## Purchase Flow
