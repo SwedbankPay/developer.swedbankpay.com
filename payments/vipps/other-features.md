@@ -96,7 +96,7 @@ Content-Type: application/json
 | {% icon check %}︎ | └─➔&nbsp;`type`              | `string`     | `vipps`                                                                                                                                                                                                                                                   |
 | {% icon check %}︎ | └─➔&nbsp;`amount`            | `integer`    | {% include field-description-amount.md currency="NOK" %}                                                                                                                                                                                                  |
 | {% icon check %}︎ | └─➔&nbsp;`vatAmount`         | `integer`    | {% include field-description-vatamount.md currency="NOK" %}                                                                                                                                                                                               |
-| {% icon check %}︎ | └➔&nbsp;`description`        | `string(40)` | A textual description max 40 characters of the purchase.                                                                                                                                                                                                  |
+| {% icon check %}︎ | └➔&nbsp;`description`        | `string(40)` | {% include field-description-description.md payment_instrument="vipps" %}                                                                                                                                                                                 |
 |                  | └➔&nbsp;`payerReference`     | `string`     | The reference to the payer (consumer/end-user) from the merchant system, like mobile number, customer number etc.                                                                                                                                         |
 | {% icon check %}︎ | └➔&nbsp;`userAgent`          | `string`     | The user agent reference of the consumer's browser - [see user agent][user-agent]]                                                                                                                                                                        |
 | {% icon check %}︎ | └➔&nbsp;`language`           | `string`     | `nb-NO`, `sv-SE` or `en-US`.                                                                                                                                                                                                                              |
@@ -203,7 +203,7 @@ payment altogether or creating an authorization transaction through the
 
 {% include transactions-reference.md payment_instrument="vipps" %}
 
-{% include callback-reference.md %}
+{% include callback-reference.md payment_instrument="vipps" %}
 
 ## Problem messages
 

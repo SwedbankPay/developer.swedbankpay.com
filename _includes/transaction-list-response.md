@@ -1,4 +1,4 @@
-{% assign payment_instrument = include.payment_payment_instrument | default: "paymentorder" %}
+{% assign payment_instrument = include.payment_instrument | default: "paymentorder" %}
 {% assign transaction = include.transaction | default: "capture" %}
 
 {% if transaction == "cancel" %}
@@ -63,8 +63,8 @@ Content-Type: application/json
 | └─➔&nbsp;`amount`                 | `integer` | {% include field-description-amount.md %}                                                                                                                                                                    |
 | └─➔&nbsp;`vatAmount`              | `integer` | {% include field-description-vatamount.md %}                                                                                                                                                                 |
 | └─➔&nbsp;`description`            | `string`  | {% include field-description-description.md payment_instrument=payment_instrument %}                                                                                                                         |
-| └─➔&nbsp;`payeeReference`         | `string`  | A unique reference for the transaction.                                                                                                                                                                      | {% if payment_instrument == "invoice" %}
-| └─➔&nbsp;`receiptReference`       | `string`  | A unique reference for the transaction. This reference is used as an invoice/receipt number.                                                                                                                 | {% endif %}
+| └─➔&nbsp;`payeeReference`         | `string`  | A unique reference for the transaction.                                                                                                                                                                      | {% if payment_instrument == "invoice" %} |
+| └─➔&nbsp;`receiptReference`       | `string`  | A unique reference for the transaction. This reference is used as an invoice/receipt number.                                                                                                                 | {% endif %}                              |
 | └─➔&nbsp;`failedReason`           | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | └─➔&nbsp;`isOperational`          | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
 | └─➔&nbsp;`operations`             | `array`   | The array of operations that are possible to perform on the transaction in its current state.                                                                                                                |
