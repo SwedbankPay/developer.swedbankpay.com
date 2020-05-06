@@ -12,7 +12,7 @@ end
 # Rake Jekyll tasks
 task :build do
   puts 'Building site...'.bold
-  Jekyll::Commands::Build.process(profile: true)
+  Jekyll::Commands::Build.process(profile: false)
 end
 
 task :clean do
