@@ -72,6 +72,10 @@ Vipps is unfortunately not available in our demoshop at the moment, but it will
 be shortly. The demoshop will use a fakeservice which enables you to test a
 successful purchase without using the Vipps app.
 
+## Languages
+
+{% include language.md payment_instrument="vipps" %}
+
 {% include iterator.html  next_href="redirect" next_title="Next: Redirect" %}
 
 [payment-resource]: /payments/vipps/other-features#payment-resource

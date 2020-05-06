@@ -2,8 +2,8 @@
 {% case payment_instrument %}
 {% when "creditcard" %}
 {%- capture language -%}
-`sv-SE`, `nb-NO`, `da-DK`, `de-DE`, `ee-EE`, `en-US`, `es-ES`, `fr-FR`, `lv-LV`, `lt-LT`,
-`ru-RU` or `fi-FI`.
+`sv-SE`, `nb-NO`, `da-DK`, `de-DE`, `ee-EE`, `en-US`, `es-ES`, `fr-FR`, `lv-LV`,
+`lt-LT`, `ru-RU` or `fi-FI`.
 {%- endcapture -%}
 
 {% when "mobilepay" %}

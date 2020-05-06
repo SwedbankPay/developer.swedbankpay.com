@@ -94,6 +94,10 @@ must be toggled on. The external integration demoshop used for testing is set up
 with the Merchant Swish Simulator, which enables you to test without using the
 Swish App.
 
+## Languages
+
+{% include language.md payment_instrument="swish" %}
+
 {% include iterator.html next_href="direct" next_title="Next: Direct" %}
 
 [after-payment]: /payments/swish/after-payment
