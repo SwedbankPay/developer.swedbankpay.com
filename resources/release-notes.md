@@ -35,7 +35,7 @@ this very documentation, not to a version of any APIs described by it." %}
 
 ### Version 1.9.2
 
-This version contains only fixes for the backend build and support system.
+* Corrected table in [payments page][payments]
 
 ### Version 1.9.1
 
