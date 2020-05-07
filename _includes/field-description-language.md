@@ -1,0 +1,29 @@
+{%- assign payment_instrument = include.payment_instrument -%}
+{% case payment_instrument %}
+{% when "creditcard" %}
+{%- capture language -%}
+`sv-SE`, `nb-NO`, `da-DK`, `de-DE`, `ee-EE`, `en-US`, `es-ES`, `fr-FR`, `lv-LV`,
+`lt-LT`, `ru-RU` or `fi-FI`.
+{%- endcapture -%}
+
+{% when "mobilepay" %}
+{%- capture language -%}
+`sv-SE`, `nb-NO`, `da-DK`, `fi-FI` or `ee-EE`.
+{%- endcapture -%}
+
+{% else %}
+{%- capture language -%}
+`sv-SE`, `nb-NO` or `ee-EE`.
+{%- endcapture -%}
+{% endcase %}
+
+{{- language | strip_newlines -}}
+{%- comment -%}
+The dashes in the Liquid code tags remove output whitespace. More on that here:
+
+https://shopify.github.io/liquid/basics/whitespace/
+
+It's essential to have control over newlines in this file. If unintentional
+newlines sneak into what's rendered by this include, it will break all tables
+it is included in, so please beware.
+{%- endcomment -%}

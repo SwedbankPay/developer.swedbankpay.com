@@ -75,6 +75,8 @@ options:
 Our `payment` example uses the [`FinancingConsumer`][financing-consumer]
 operation.
 
+{% include languages.md payment_instrument="invoice" %}
+
 ## Invoice flow
 
 This is an example of the Redirect scenario. For other integrations, take a
@@ -117,9 +119,9 @@ sequenceDiagram
 [optional-features]: /payments/invoice/optional-features
 [recur]: /payments/invoice/other-features#recur
 [redirect]: /payments/invoice/redirect
-[purchase]: /payments/invoice/other-features#purchase
+[purchase]: /payments/invoice/other-features#create-payment
 [se-png]: /assets/img/flag-sweden.png
-[setup-mail-finland]: verkkokauppa.setup@swedbankpay.fi
+[setup-mail-finland]: mailto:verkkokauppa.setup@swedbankpay.fi
 [setup-mail-norway]: mailto:ehandelsetup@swedbankpay.no
 [setup-mail-sweden]: mailto:ehandelsetup@swedbankpay.se
 [verify]: /payments/invoice/other-features#verify

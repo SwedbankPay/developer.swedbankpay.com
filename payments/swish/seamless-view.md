@@ -116,7 +116,7 @@ Content-Type: application/json
 |     Required     | Field                        | Type          | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | :--------------: | :--------------------------- | :------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | {% icon check %} | `payment`                    | `object`      | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| {% icon check %} | └➔&nbsp;`operation`          | `string`      | The operation that the `payment` is supposed to perform. The [`Purchase`][purchase] operation is used in our example. Take a look at the [create card `payment` section][create-payment] for a full examples of the following `operation` options: [Purchase][purchase].                                                                                                                                                                                                                                                                                                  |
+| {% icon check %} | └➔&nbsp;`operation`          | `string`      | The operation that the `payment` is supposed to perform. The [`Purchase`][purchase] operation is used in our example. Take a look at the [create swish `payment` section][create-payment] for a full examples of the following `operation` options: [Purchase][purchase].                                                                                                                                                                                                                                                                                                 |
 | {% icon check %} | └➔&nbsp;`intent`             | `string`      | `AutoCapture`. A one phase option that enable capture of funds.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | {% icon check %} | └➔&nbsp;`currency`           | `string`      | `SEK`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | {% icon check %} | └➔&nbsp;`prices`             | `object`      | The `prices` resource lists the prices related to a specific payment.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
@@ -124,10 +124,10 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`amount`            | `integer`     | {% include field-description-amount.md %}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | {% icon check %} | └─➔&nbsp;`vatAmount`         | `integer`     | {% include field-description-vatamount.md %}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 |                  | └➔&nbsp;`paymentAgeLimit`    | `integer`     | Positive number sets requried age limit to fulfill the payment.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| {% icon check %} | └➔&nbsp;`description`        | `string(40)`  | A textual description max 40 characters of the purchase.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| {% icon check %} | └➔&nbsp;`description`        | `string(40)`  | {% include field-description-description.md payment_instrument="swish" %}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 |                  | └➔&nbsp;`payerReference`     | `string`      | The reference to the payer (consumer/end user) from the merchant system. E.g mobile number, customer number etc.                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | {% icon check %} | └➔&nbsp;`userAgent`          | `string`      | The user agent reference of the consumer's browser - [see user agent definition][user-agent-definition]                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| {% icon check %} | └➔&nbsp;`language`           | `string`      | `nb-NO`, `sv-SE` or `en-US`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| {% icon check %} | └➔&nbsp;`language`           | `string`      | {% include field-description-language.md payment_instrument="swish" %}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | {% icon check %} | └➔&nbsp;`urls`               | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 |                  | └─➔&nbsp;`hostUrls`          | `array`       | The array of URLs valid for embedding of Swedbank Pay Hosted Views. If not supplied, view-operation will not be available.                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | {% icon check %} | └─➔&nbsp;`completeUrl`       | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further.                                                                                                                                                                                                                                                                        |
@@ -238,7 +238,7 @@ Pay hosted environment. A simplified integration has these following steps:
    obtained in the `POST` request in the `<script>` element. Example:
 
 ```html
-    <script id="payment-page-script" src="https://ecom.dev.payex.com/swish/core/ scripts/client/px.swish.client.js"></script>
+<script id="payment-page-script" src="https://ecom.dev.payex.com/swish/core/scripts/client/px.swish.client.js"></script>
 ```
 
 The previous two steps gives this HTML:
@@ -278,61 +278,54 @@ embedded on your website.
 </script>
 ```
 
-## Purchase flow
+## Seamless View Purchase flow
+
+The sequence diagram below shows the requests you have to send to Swedbank Pay
+to make a purchase. The Callback response is a simplified example
+in this flow. Go to the [Callback][callback] section to view the complete flow.
 
 ```mermaid
 sequenceDiagram
-    participant Payer
-    participant Merchant
-    participant SwedbankPay as Swedbank Pay
+    activate Browser
+    Browser->>-Merchant: Start Purchase
+    activate Merchant
+    Merchant->>-SwedbankPay: POST <Swish create payment> (operation=PURCHASE)
+    activate SwedbankPay
+    note left of Merchant: First API request
+    SwedbankPay-->>-Merchant: Payment Response with rel:view-payment
+    activate Merchant
+    Merchant->>Merchant: Build html with view-payment script
+    Merchant-->>-SwedbankPay: Init iFrame
+    activate SwedbankPay
+    SwedbankPay->>-SwedbankPay: Enter mobile number
+    activate SwedbankPay
+    SwedbankPay->>-Merchant: Tell consumer to open Swish app
+    Swish_API->>Swish_App: Ask for payment confirmation
+    activate Swish_App
+    Swish_App-->>-Swish_API: Consumer confirms payment
 
-    activate Payer
-    Payer->>-Merchant: start purchase
-    activate Merchant
-    note left of Payer: First API request
-    Merchant->>-SwedbankPay: POST /psp/swish/payments ①
-    activate SwedbankPay
-    SwedbankPay-->>-Merchant: rel: view-sales ②
-    activate Merchant
-    Merchant-->>-Payer: confirmation page
-    activate Payer
-    note left of Payer: Open iframe ③
-    Payer->>Payer: Input mobile number
-    Payer->>-SwedbankPay: Show Consumer UI page in iframe - Authorization ④
-    activate SwedbankPay
-        opt Card supports 3-D Secure
-        SwedbankPay-->>-Payer: redirect to IssuingBank
-        activate Payer
-        Payer->>IssuingBank: 3-D Secure authentication process
-        activate IssuingBank
-        IssuingBank->>-Payer: 3-D Secure authentication process
-        Payer->>-SwedbankPay: access authentication page
-        end
-    SwedbankPay-->>Merchant: Event: OnPaymentComplete ⑤
-    activate Merchant
-    note left of Merchant: Second API request.
-    Merchant->>-SwedbankPay: GET <payment.id> ⑥
-    activate SwedbankPay
-    SwedbankPay-->>-Merchant: rel: view-sales
-    activate Merchant
-    Merchant-->>-Payer: display purchase result
-    activate Payer
-
-        opt Callback is set ⑦
+        alt Callback
         activate SwedbankPay
-        SwedbankPay->>SwedbankPay: Payment is updated
-        SwedbankPay->>-Merchant: POST Payment Callback
+        SwedbankPay-->>Swish_API: Callback response
+        SwedbankPay->>-Merchant: Transaction callback
         end
+
+    activate Merchant
+    Merchant->>-SwedbankPay: GET <Swish payment>
+    activate SwedbankPay
+    SwedbankPay-->>-Merchant: Payment response
+    activate Merchant
+    Merchant->>-Browser: Payment Status
 ```
 
 {% include iterator.html prev_href="redirect" prev_title="Back: Redirect"
 next_href="after-payment" next_title="Next: After Payment" %}
 
 [callback]: /payments/swish/other-features#callback
-[create-payment]: /payments/swish/after-payment#create-payment
-[payee-reference]: /payments/swish/other-features#payeereference
+[create-payment]: /payments/swish/other-features#create-payment
+[payee-reference]: /payments/swish/other-features#payee-reference
 [price-resource]: /payments/swish/other-features#prices
-[purchase]: /payments/swish/other-features#purchase
+[purchase]: /payments/swish/other-features#create-payment
 [sales-transaction]: /payments/swish/after-payment#sales
 [seamless-view-img]: /assets/img/checkout/swish-seamless-view.png
 [swish-payments]: /payments/swish/after-payment#payment-resource

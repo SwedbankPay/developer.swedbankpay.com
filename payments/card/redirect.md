@@ -44,7 +44,7 @@ Each individual field of the JSON document is described in the following section
 An example of an expanded `POST` request is available in the
 [other features section][purchase].
 
-{% include alert-callback-url.md %}
+{% include alert-callback-url.md payment_instrument="card" %}
 
 {% include alert-risk-indicator.md %}
 
@@ -173,10 +173,10 @@ next_href="seamless-view" next_title="Next: Seamless View" %}
 [abort]: /payments/card/other-features#abort
 [callback]: /payments/card/other-features#callback
 [cancel]: /payments/card/after-payment#cancellations
-[capture]: /payments/card/after-payment#Capture
+[capture]: /payments/card/capture
 [create-payment]: /payments/card/other-features#create-payment
-[expansion]: /payments/card/other-features#expansion
-[payee-reference]: /payments/card/other-features#payeereference
+[expansion]: /home/technical-information#expansion
+[payee-reference]: /payments/card/other-features#payee-reference
 [payout]: /payments/card/other-features#payout
 [purchase]: /payments/card/other-features#purchase
 [price-resource]: /payments/card/other-features#prices

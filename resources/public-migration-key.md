@@ -6,7 +6,7 @@ sidebar:
     items:
     - url: /resources/
       title: Introduction
-    - url: /resources/sdk-modules/
+    - url: /resources/sdk-modules
       title: SDKs and Modules
     - url: /resources/test-data
       title: Test Data
@@ -27,7 +27,7 @@ sidebar:
 {% include jumbotron.html body="In order to send sensitive credit card data to
 Swedbank Pay, you need to use our **Public Migration Key** to encrypt the data
 in transmission. Contact our support at
-[support.ecom@payex.com](support.ecom@payex.com) for more information regarding
+[support.ecom@payex.com](mailto:support.ecom@payex.com) for more information regarding
 this procedure."  %}
 
 * **Key size**: 4096 bits

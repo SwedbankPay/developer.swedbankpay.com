@@ -96,10 +96,10 @@ Content-Type: application/json
 | {% icon check %}︎ | └─➔&nbsp;`type`              | `string`     | `vipps`                                                                                                                                                                                                                                                   |
 | {% icon check %}︎ | └─➔&nbsp;`amount`            | `integer`    | {% include field-description-amount.md currency="NOK" %}                                                                                                                                                                                                  |
 | {% icon check %}︎ | └─➔&nbsp;`vatAmount`         | `integer`    | {% include field-description-vatamount.md currency="NOK" %}                                                                                                                                                                                               |
-| {% icon check %}︎ | └➔&nbsp;`description`        | `string(40)` | A textual description max 40 characters of the purchase.                                                                                                                                                                                                  |
+| {% icon check %}︎ | └➔&nbsp;`description`        | `string(40)` | {% include field-description-description.md payment_instrument="vipps" %}                                                                                                                                                                                 |
 |                  | └➔&nbsp;`payerReference`     | `string`     | The reference to the payer (consumer/end-user) from the merchant system, like mobile number, customer number etc.                                                                                                                                         |
 | {% icon check %}︎ | └➔&nbsp;`userAgent`          | `string`     | The user agent reference of the consumer's browser - [see user agent][user-agent]]                                                                                                                                                                        |
-| {% icon check %}︎ | └➔&nbsp;`language`           | `string`     | `nb-NO`, `sv-SE` or `en-US`.                                                                                                                                                                                                                              |
+| {% icon check %}︎ | └➔&nbsp;`language`           | `string`     | {% include field-description-language.md payment_instrument="vipps" %}                                                                                                                                                                                                                              |
 | {% icon check %}︎ | └➔&nbsp;`urls`               | `object`     | The object containing URLs relevant for the `payment`.                                                                                                                                                                                                    |
 | {% icon check %}︎ | └─➔&nbsp;`hostUrls`          | `array`      | The array of URIs valid for embedding of Swedbank Pay Hosted Views.                                                                                                                                                                                       |
 | {% icon check %}︎ | └─➔&nbsp;`completeUrl`       | `string`     | The URI that Swedbank Pay will redirect back to when the payment page is completed. This does not indicate a successful payment, only that it has reached a completion state. A `GET` request needs to be performed on the payment to inspect it further. |
@@ -193,11 +193,17 @@ payment altogether or creating an authorization transaction through the
 
 {% include prices.md payment_instrument="vipps" %}
 
+## Description
+
+{% include description.md %}
+
 {% include payee-info.md payment_instrument="vipps" %}
+
+{% include payee-reference.md %}
 
 {% include transactions-reference.md payment_instrument="vipps" %}
 
-{% include callback-reference.md %}
+{% include callback-reference.md payment_instrument="vipps" %}
 
 ## Problem messages
 
@@ -234,24 +240,25 @@ All Vipps error types will have the following URI in front of type:
 `https://api.payex.com/psp/errordetail/vipps/<error-type>`
 
 {:.table .table-striped}
-| Type | Status | Note
-| *CARD_BLACKLISTED* | 400 |
-| *PAYMENT_TOKEN_ERROR* | 403 |
-| *CARD_DECLINED* | 403 |
-| *ACQUIRER_ERROR* | 403 |
-| *ACQUIRER_CARD_BLACKLISTED* | 403 |
-| *ACQUIRER_CARD_EXPIRED* | 403 |
-| *ACQUIRER_CARD_STOLEN* | 403 |
-| *ACQUIRER_INSUFFICIENT_FUNDS* | 403 |
-| *ACQUIRER_INVALID_AMOUNT* | 403 |
-| *ACQUIRER_POSSIBLE_FRAUD* | 403 |
-| *FRAUD_DETECTED* | 403 |
-| *BAD_REQUEST* | 500 |
-| *INTERNAL_SERVER_ERROR* | 500 |
-| *BAD_GATEWAY* | 502 |
-| *ACQUIRER_GATEWAY_ERROR* | 502 |
-| *ACQUIRER_GATEWAY_TIMEOUT* | 504 |
-| *UNKNOWN_ERROR* | 500 |
+| Type                            | Status |
+| :------------------------------ | :----- |
+| *`CARD_BLACKLISTED`*            | `400`  |
+| *`PAYMENT_TOKEN_ERROR`*         | `403`  |
+| *`CARD_DECLINED`*               | `403`  |
+| *`ACQUIRER_ERROR`*              | `403`  |
+| *`ACQUIRER_CARD_BLACKLISTED`*   | `403`  |
+| *`ACQUIRER_CARD_EXPIRED`*       | `403`  |
+| *`ACQUIRER_CARD_STOLEN`*        | `403`  |
+| *`ACQUIRER_INSUFFICIENT_FUNDS`* | `403`  |
+| *`ACQUIRER_INVALID_AMOUNT`*     | `403`  |
+| *`ACQUIRER_POSSIBLE_FRAUD`*     | `403`  |
+| *`FRAUD_DETECTED`*              | `403`  |
+| *`BAD_REQUEST`*                 | `500`  |
+| *`INTERNAL_SERVER_ERROR`*       | `500`  |
+| *`BAD_GATEWAY`*                 | `502`  |
+| *`ACQUIRER_GATEWAY_ERROR`*      | `502`  |
+| *`ACQUIRER_GATEWAY_TIMEOUT`*    | `504`  |
+| *`UNKNOWN_ERROR`*               | `500`  |
 
 {% include iterator.html
         prev_href="after-payment"
@@ -261,6 +268,6 @@ All Vipps error types will have the following URI in front of type:
 [payment-order]: #payment-order
 [prices]: #prices
 [problems-reference]: #problem-messages
-[technical-reference-expansion]: /payments/vipps/other-features#expansion
+[technical-reference-expansion]: /home/technical-information#expansion
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
-[technical-reference-payeeReference]: #payeereference
+[technical-reference-payeeReference]: #payee-reference

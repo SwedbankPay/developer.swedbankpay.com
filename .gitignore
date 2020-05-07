@@ -7,3 +7,5 @@ _site/
 .vs
 .gem-cache/
 _gem-cache/
+
+commit-msg.txt

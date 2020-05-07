@@ -94,10 +94,10 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`amount`               | `integer`    | {% include field-description-amount.md currency="DKK" %}                                                                                                                                                                                                  |
 | {% icon check %} | └─➔&nbsp;`vatAmount`            | `integer`    | {% include field-description-vatamount.md currency="DKK" %}                                                                                                                                                                                               |
 |                  | └─➔&nbsp;`feeAmount`            | `integer`    | If the amount given includes Fee, this may be displayed for the user in the payment page (redirect only).                                                                                                                                                 |
-| {% icon check %} | └➔&nbsp;`description`           | `string(40)` | A textual description max 40 characters of the purchase.                                                                                                                                                                                                  |
+| {% icon check %} | └➔&nbsp;`description`           | `string(40)` | {% include field-description-description.md payment_instrument="mobilepay" %}                                                                                                                                                                                                  |
 |                  | └➔&nbsp;`payerReference`        | `string`     | The reference to the payer (consumer/end-user) from the merchant system, like mobile number, customer number etc.                                                                                                                                         |
 | {% icon check %} | └➔&nbsp;`userAgent`             | `string`     | The user agent reference of the consumer's browser - [see user agent definition][user-agent]                                                                                                                                                              |
-| {% icon check %} | └➔&nbsp;`language`              | `string`     | `nb-NO`, `sv-SE` or `en-US`.                                                                                                                                                                                                                              |
+| {% icon check %} | └➔&nbsp;`language`              | `string`     | {% include field-description-language.md payment_instrument="mobilepay" %}                                                                                                                                                                                                                              |
 | {% icon check %} | └➔&nbsp;`urls`                  | `object`     | The URLs object containing the urls used for this payment.                                                                                                                                                                                                |
 | {% icon check %} | └─➔&nbsp;`completeUrl`          | `string`     | The URI that Swedbank Pay will redirect back to when the payment page is completed. This does not indicate a successful payment, only that it has reached a completion state. A `GET` request needs to be performed on the payment to inspect it further. |
 | {% icon check %} | └─➔&nbsp;`cancelUrl`            | `string`     | The URI that Swedbank Pay will redirect back to when the user presses the cancel button in the payment page.                                                                                                                                              |
@@ -177,11 +177,11 @@ Content-Type: application/json
 | └➔&nbsp;`intent`                    | `string`     | The intent sent in on request                                                                                                                                                                    |
 | └➔&nbsp;`state`                     | `string`     | `Ready`, `Pending`, `Failed` or `Aborted`. Indicates the state of the payment. This field is only for status display purposes.                                                                   |
 | └➔&nbsp;`currency`                  | `string`     | The currency used                                                                                                                                                                                |
-| └➔&nbsp;`description`               | `string(40)` | A textual description of maximum 40 characters of the purchase.                                                                                                                                  |
+| └➔&nbsp;`description`               | `string(40)` | {% include field-description-description.md payment_instrument="mobile-pay" %}                                                                                                                   |
 | └➔&nbsp;`payerReference`            | `string`     | The reference to the payer (consumer/end-user) from the merchant system, like mobile number, customer number etc.                                                                                |
 | └➔&nbsp;`initiatingSystemUserAgent` | `string`     | The system user agent used                                                                                                                                                                       |
 | └➔&nbsp;`userAgent`                 | `string`     | The [user agent][user-agent] string of the consumer's browser.                                                                                                                                   |
-| └➔&nbsp;`language`                  | `string`     | `nb-NO`, `sv-SE` or `en-US`                                                                                                                                                                      |
+| └➔&nbsp;`language`                  | `string`     | {% include field-description-language.md payment_instrument="mobilepay" %}                                                                                                                                                                      |
 | └➔&nbsp;`urls`                      | `string`     | The URI to the `urls` resource where all URIs related to the payment can be retrieved.                                                                                                           |
 | └➔&nbsp;`payeeInfo`                 | `string`     | The URI to the `payeeinfo` resource where the information about the payee of the payment can be retrieved.                                                                                       |
 
@@ -532,6 +532,10 @@ The response will be the `payment` resource with its `state` set to `Aborted`.
 
 {% include payment-link.md %}
 
+## Description
+
+{% include description.md %}
+
 {% include callback-reference.md payment_instrument="mobilepay" %}
 
 {% include transactions-reference.md payment_instrument="mobilepay" %}
@@ -544,13 +548,11 @@ The response will be the `payment` resource with its `state` set to `Aborted`.
                          prev_title="Back: After Payment" %}
 
 [abort]: #abort-a-payment
-[authorization-transaction]: #authorizations
+[authorization-transaction]: /payments/mobile-pay/other-features#authorizations
 [callback-reference]: #callback
-[cancel]: #cancellations
 [cancellation-transaction]: #cancellations
 [capture-transaction]: #captures
 [capture]: #captures
-[payee-reference]: #payeereference
+[payee-reference]: #payee-reference
 [reversal-transaction]: #reversals
-[transaction-resource]: #transactions
 [user-agent]: https://en.wikipedia.org/wiki/User_agent

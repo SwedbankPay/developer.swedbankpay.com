@@ -1,4 +1,4 @@
-{% assign instrument = include.payment_instrument | default: "paymentorder" %}
+{% assign payment_instrument = include.payment_instrument | default: "test two here" %}
 {% assign transaction = include.transaction | default: "capture" %}
 {% assign mcom = include.mcom | default: false %}
 
@@ -9,7 +9,7 @@
 {% endif %}
 
 The created `{{ transaction }}` resource contains information about the
-`{{ transaction }}` transaction made against a `{{ instrument }}` payment.
+`{{ transaction }}` transaction made against a `{{ payment_instrument }}` payment.
 
 {:.code-header}
 **Response**
@@ -19,9 +19,9 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/{{ instrument }}/payments/{{ page.payment_id }}",
+    "payment": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}",
     "{{ transaction }}": {
-        "id": "/psp/{{ instrument }}/payments/{{ page.payment_id }}/{{ plural }}/{{ page.transaction_id }}",{% if instrument == "creditcard" %}
+        "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/{{ plural }}/{{ page.transaction_id }}",{% if payment_instrument == "creditcard" %}
         "paymentToken": "{{ page.payment_token }}",
         "maskedPan": "123456xxxxxx1234",
         "expireDate": "mm/yyyy",
@@ -36,10 +36,10 @@ Content-Type: application/json
         "acquirerTransactionTime": "2017-08-29T13:42:18Z",
         "authenticationStatus": "Y",{% endif %}
         "itemDescriptions": {
-            "id": "/psp/{{ instrument }}/payments/{{ page.payemnt_id }}/transactions/{{ page.transaction_id }}/itemDescriptions"
+            "id": "/psp/{{ payment_instrument }}/payments/{{ page.payemnt_id }}/transactions/{{ page.transaction_id }}/itemDescriptions"
         },
         "transaction": {
-            "id": "/psp/{{ instrument }}/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
+            "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
             "created": "2016-09-14T01:01:01.01Z",
             "updated": "2016-09-14T01:01:01.03Z",
             "type": "{{ transaction | capitalize }}",
@@ -48,18 +48,18 @@ Content-Type: application/json
             "amount": 1000,
             "vatAmount": 250,
             "description": "Test transaction",
-            "payeeReference": "AH123456", {% if instrument == "invoice" %}
+            "payeeReference": "AH123456", {% if payment_instrument == "invoice" %}
             "receiptReference": "AH12355", {% endif %}
             "failedReason": "",
             "isOperational": false,
-            "operations": [{% if instrument == "swish" and mcom == true %}
+            "operations": [{% if payment_instrument == "swish" and mcom == true %}
                 {
                     "href": "swish://paymentrequest?token=LhXrK84MSpWU2RO09f8kUP-FHiBo-1pB",
                     "method": "GET",
                     "rel": "redirect-app-swish"
                 },{% endif %}
                 {
-                    "href": "/psp/{{ instrument }}/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
+                    "href": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
                     "rel": "edit-{{ transaction }}",
                     "method": "PATCH"
                 }
@@ -75,7 +75,7 @@ Content-Type: application/json
 | :-------------------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `payment`                         | `string`  | {% include field-description-id.md sub_resource=transaction %}                                                                                                                                               |
 | `{{ transaction }}`               | `string`  | The current `{{ transaction }}` transaction resource.                                                                                                                                                        |
-| └➔&nbsp;`id`                      | `string`  | {% include field-description-id.md resource=transaction %}                                                                                                                                                   | {% if instrument == "creditcard" %} |
+| └➔&nbsp;`id`                      | `string`  | {% include field-description-id.md resource=transaction %}                                                                                                                                                   | {% if payment_instrument == "creditcard" %} |
 | └➔&nbsp;`paymentToken`            | `string`  | The payment token created for the card used in the authorization.                                                                                                                                            |
 | └➔&nbsp;`maskedPan`               | `string`  | The masked PAN number of the card.                                                                                                                                                                           |
 | └➔&nbsp;`expireDate`              | `string`  | The month and year of when the card expires.                                                                                                                                                                 |
@@ -88,7 +88,7 @@ Content-Type: application/json
 | └➔&nbsp;`acquirerStan`            | `string`  | The System Trace Audit Number assigned by the acquirer to uniquely identify the transaction.                                                                                                                 |
 | └➔&nbsp;`acquirerTerminalId`      | `string`  | The ID of the acquirer terminal.                                                                                                                                                                             |
 | └➔&nbsp;`acquirerTransactionTime` | `string`  | The ISO-8601 date and time of the acquirer transaction.                                                                                                                                                      |
-| └➔&nbsp;`authenticationStatus`    | `string`  | `Y`, `A`, `U` or `N`. Indicates the status of the authentication.                                                                                                                                            | {% endif %}                         |
+| └➔&nbsp;`authenticationStatus`    | `string`  | `Y`, `A`, `U` or `N`. Indicates the status of the authentication.                                                                                                                                            | {% endif %}                                 |
 | └➔&nbsp;`itemDescriptions`        | `object`  | The object representation of the `itemDescriptions` resource.                                                                                                                                                |
 | └─➔&nbsp;`id`                     | `string`  | {% include field-description-id.md resource="itemDescriptions" %}                                                                                                                                            |
 | └➔&nbsp;`transaction`             | `object`  | The object representation of the generic transaction resource.                                                                                                                                               |
@@ -99,8 +99,8 @@ Content-Type: application/json
 | └─➔&nbsp;`state`                  | `string`  | `Initialized`, `Completed` or `Failed`. Indicates the state of the transaction.                                                                                                                              |
 | └─➔&nbsp;`number`                 | `string`  | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead. |
 | └─➔&nbsp;`amount`                 | `integer` | {% include field-description-amount.md %}                                                                                                                                                                    |
-| └─➔&nbsp;`vatAmount`              | `integer` | {% include field-description-vatamount.md %}                                                           |
-| └─➔&nbsp;`description`            | `string`  | A human readable description of maximum 40 characters of the transaction.                                                                                                                                    |
+| └─➔&nbsp;`vatAmount`              | `integer` | {% include field-description-vatamount.md %}                                                                                                                                                                 |
+| └─➔&nbsp;`description`            | `string`  | {% include field-description-description.md payment_instrument=payment_instrument %}                                                                                                                         |
 | └─➔&nbsp;`payeeReference`         | `string`  | A unique reference for the transaction.                                                                                                                                                                      |
 | └─➔&nbsp;`receiptReference`       | `string`  | A unique reference for the transaction. This reference is used as an invoice/receipt number.                                                                                                                 |
 | └─➔&nbsp;`failedReason`           | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |

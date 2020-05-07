@@ -45,7 +45,7 @@ Forwarded: for=82.115.151.177; host=example.com; proto=https
 | :--------------: | :------------------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | {% icon check %}︎ | **`Content-Type`**  | The [content type][content-type] of the body of the HTTP request. Usually set to `application/json`.                                                                                                                                                                           |
 | {% icon check %}︎ | **`Accept`**        | The [content type][content-type] accepted by the client. Usually set to `application/json` and `application/problem+json` so both regular responses as well as errors can be received properly.                                                                                |
-| {% icon check %}︎ | **`Authorization`** | The OAuth 2 Access Token is generated in [Swedbank Pay Admin][admin]. See the [admin guide][admin-guide] on how to get started.                                                                                                                                                |
+| {% icon check %}︎ | **`Authorization`** | The OAuth 2 Access Token is generated in [Swedbank Pay Admin][admin].                                                                                                                                                                                                          |
 |                  | **`Session-Id`**    | A trace identifier used to trace calls through the API Platform (ref [RFC 7329][rfc-7329]). Each request must mint a new [GUID/UUID][uuid]. If no `Session-Id` is provided, Swedbank Pay will generate one for the request.                                                    |
 |                  | **`Forwarded`**     | The IP address of the consumer as well as the host and protocol of the consumer-facing web page. When the header is present, only the `for` parameter containing the consumer IP address is required, the other parameters are optional. See [RFC 7239][rfc-7239] for details. |
 
@@ -280,29 +280,28 @@ can read more about the payment instrument specific problem messages below:
 * [Swish Payments][swish-problems]
 * [Vipps Payments][vipps-problems]
 
-  [java-tls]: https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default
-  [php-curl-tls]: https://stackoverflow.com/a/32926813/61818
-  [php-zend-tls]: https://zend18.zendesk.com/hc/en-us/articles/219131697-HowTo-Implement-TLS-1-2-Support-with-the-cURL-PHP-Extension-in-Zend-Server
-  [ruby-tls]: https://stackoverflow.com/a/11059873/61818
-  [python-tls]: https://docs.python.org/2/library/ssl.html#ssl.PROTOCOL_TLSv1_2
-  [node-tls]: https://stackoverflow.com/a/44635449/61818
-  [ssllabs]: https://www.ssllabs.com/ssltest/analyze.html?d=api.payex.com
-  [content-type]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type
-  [admin]: https://admin.externalintegration.payex.com/psp/login
-  [admin-guide]: #
-  [rfc-7329]: https://tools.ietf.org/html/rfc7329
-  [rfc-7239]: https://tools.ietf.org/html/rfc7239
-  [rfc-7807]: https://tools.ietf.org/html/rfc7807
-  [iso-4217]: https://en.wikipedia.org/wiki/ISO_4217
-  [iso-8601]: https://en.wikipedia.org/wiki/ISO_8601
-  [iso-639-1]: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
-  [iso-3166]: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
-  [uuid]: https://en.wikipedia.org/wiki/Universally_unique_identifier
-  [external-integration]: {{ page.api_url }}/
-  [production]: https://api.payex.com/
-  [the-rest-and-then-some]: https://www.youtube.com/watch?v=QIv9YR1bMwY
-  [settlement]: #
-  [card-problems]: #
-  [invoice-problems]: #
-  [swish-problems]: #
-  [vipps-problems]: #
+[admin]: https://admin.externalintegration.payex.com/psp/login
+[card-problems]: /payments/card/other-features#problems
+[content-type]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type
+[external-integration]: {{ page.api_url }}/
+[invoice-problems]: /payments/invoice/other-features#problems
+[iso-3166]: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
+[iso-4217]: https://en.wikipedia.org/wiki/ISO_4217
+[iso-639-1]: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+[iso-8601]: https://en.wikipedia.org/wiki/ISO_8601
+[java-tls]: https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default
+[node-tls]: https://stackoverflow.com/a/44635449/61818
+[php-curl-tls]: https://stackoverflow.com/a/32926813/61818
+[php-zend-tls]: https://zend18.zendesk.com/hc/en-us/articles/219131697-HowTo-Implement-TLS-1-2-Support-with-the-cURL-PHP-Extension-in-Zend-Server
+[production]: https://api.payex.com/
+[python-tls]: https://docs.python.org/2/library/ssl.html#ssl.PROTOCOL_TLSv1_2
+[rfc-7239]: https://tools.ietf.org/html/rfc7239
+[rfc-7329]: https://tools.ietf.org/html/rfc7329
+[rfc-7807]: https://tools.ietf.org/html/rfc7807
+[ruby-tls]: https://stackoverflow.com/a/11059873/61818
+[settlement]: /payments/invoice/other-features#settlement-and-reconciliation
+[ssllabs]: https://www.ssllabs.com/ssltest/analyze.html?d=api.payex.com
+[swish-problems]: /payments/swish/other-features#swish-api-errors
+[the-rest-and-then-some]: https://www.youtube.com/watch?v=QIv9YR1bMwY
+[uuid]: https://en.wikipedia.org/wiki/Universally_unique_identifier
+[vipps-problems]: /payments/vipps/other-features#problem-messages

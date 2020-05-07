@@ -33,6 +33,10 @@ To create a payment order, you perform a `POST` request towards the
 
 {% include payment-order-purchase.md %}
 
+## Description
+
+{% include description.md %}
+
 #### Response
 
 The response given when creating a payment order is equivalent to a `GET`
@@ -159,7 +163,7 @@ The `paymentOrders` resource utilize several sub-resources, relating to
 underlying [payments][payment-orders-resource-payments],
 [the current payment active][current-payment],
 [payers][payment-orders-resource-payers] and [URLs][payment-resource-urls].
-Common sub-resources like [payeeinfo][payment-resource-payeeinfo], that are
+Common sub-resources like [payeeinfo][payee-reference], that are
 structurally identical for both payments and payments orders, are described in
 the [Payment Resources][payment-resource] section.
 
@@ -258,7 +262,7 @@ for the given operation.
 | Operation                         | Description                                                                                                                                                                                                                                                                    |
 | :-------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `update-paymentorder-abort`       | [Aborts][abort] the payment order before any financial transactions are performed.                                                                                                                                                                                             |
-| `update-paymentorder-updateorder` | [Updates the order][update-order] with a change in the `amount` and/or `vatAmount`.                                                                                                                                                                                            |
+| `update-paymentorder-updateorder` | Updates the order with a change in the `amount` and/or `vatAmount`.                                                                                                                                                                                                            |
 | `redirect-paymentorder`           | Contains the URI that is used to redirect the consumer to the Swedbank Pay Payments containing the Payment Menu.                                                                                                                                                               |
 | `view-paymentorder`               | Contains the JavaScript `href` that is used to embed the Payment Menu UI directly on the webshop/merchant site.                                                                                                                                                                |
 | `create-paymentorder-capture`     | The second part of a two-phase transaction where the authorized amount is sent from the payer to the payee. It is possible to do a part-capture on a subset of the authorized amount. Several captures on the same payment are possible, up to the total authorization amount. |
@@ -861,10 +865,10 @@ Content-Type: application/json
 | └─➔&nbsp;`remainingCaptureAmount`  | `integer`    | The available amount to capture.                                                                                                                                                                 |
 | └─➔&nbsp;`remainingCancelAmount`   | `integer`    | The available amount to cancel.                                                                                                                                                                  |
 | └─➔&nbsp;`remainingReversalAmount` | `integer`    | The available amount to reverse.                                                                                                                                                                 |
-| └➔&nbsp;`description`              | `string(40)` | A textual description of maximum 40 characters of the purchase.                                                                                                                                  |
+| └➔&nbsp;`description`              | `string(40)` | {% include field-description-description.md payment_instrument="checkout" %}                                                                                                                     |
 | └➔&nbsp;`payerReference`           | `string`     | The reference to the consumer from the merchant system, like mobile number, customer number etc.                                                                                                 |
 | └➔&nbsp;`userAgent`                | `string`     | The [user agent][user-agent] string of the consumer's browser.                                                                                                                                   |
-| └➔&nbsp;`language`                 | `string`     | `nb-NO`, `sv-SE` or `en-US`                                                                                                                                                                      |
+| └➔&nbsp;`language`                 | `string`     | {% include field-description-language.md payment_instrument="checkout" %}                                                                                                                                                                      |
 
 ### Prices Resource
 
@@ -874,7 +878,7 @@ Content-Type: application/json
 
 The `payer` resource contains payer information related to the payment order.
 The information is retrieved via a consumer profile token
-(`consumerProfileRef`), from the [Consumers resource][consumer-reference]
+(`consumerProfileRef`), from the [Consumers resource][payee-reference]
 during login/checkin.
 
 {:.code-header}
@@ -1037,7 +1041,7 @@ setting the `disablePaymentMenu` field to `true`. The default value is
 ```
 
 {:.text-center}
-![example disablePaymentMenu = false][image_enabled_payment_menu]{:width="464" :height="607"}
+![example disablePaymentMenu = false][image_enabled_payment_menu]{:width="450" :height="850"}
 
 Setting `disablePaymentMenu` field to `true` removes all other payment
 instruments but the one that is available.
@@ -1405,31 +1409,28 @@ elements. When in doubt, please follow the [robustness principle](https://en.wik
 [abort]: #operations
 [callback-reference]: /checkout/other-features#callback
 [card-payments-problems]: /payments/card/other-features#problem-messages
-[consumer-reference]: /checkout/other-features#payeereference
 [current-payment]: #current-payment-resource
-[expanding]: #expansion
+[expanding]: /home/technical-information#expansion
 [http-api-problems]: https://tools.ietf.org/html/rfc7807
 [image_disabled_payment_menu]: /assets/img/checkout/test-purchase.png
-[image_enabled_payment_menu]: /assets/img/checkout/payment-menu.png
+[image_enabled_payment_menu]: /assets/img/checkout/guest-payment-menu-450x850.png
 [invoice-payments-problems]: /payments/invoice/other-features#problem-messages
 [operations]: #operations
 [order-items]: /checkout/other-features#order-items
-[payee-reference]: /checkout/other-features#payeereference
+[payee-reference]: /checkout/other-features#payee-reference
 [payment-menu]: /checkout/payment-menu
-[payment-order-capture]: #capture
+[payment-order-capture]: /checkout/capture
 [payment-order]: #payment-orders
 [payment-orders-resource-payers]: #payer-resource
 [payment-orders-resource-payments]: #current-payment-resource
 [payment-orders-resource]: /checkout/other-features#payment-orders
 [payment-orders]: /checkout/other-features#payment-orders
-[payment-resource-payeeinfo]: /checkout/other-features#payeereference
 [payment-resource-urls]: #urls-resource
 [payment-resource]: #payments-resource
 [pci-dss]: https://www.pcisecuritystandards.org/
 [swish-payments-problems]: /payments/swish/other-features#problem-messages
 [transaction]: #transaction
-[update-order]: /checkout/after-payment#update-order
 [urls]: #urls-resource
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
-[verification-transaction]: #verify-payment-orders
+[verification-transaction]: #verify-payments
 [vipps-payments-problems]: /payments/vipps/other-features#problem-messages

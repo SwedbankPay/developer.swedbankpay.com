@@ -16,7 +16,7 @@ jobs:
       - uses: kamiazya/setup-graphviz@v1
       - name: Installs libfontconfig
         run: sudo apt-get install -y libfontconfig
-      - uses: NullableInt/jekyll-builder-for-github-pages-action@master
+      - uses: SwedbankPay/jekyll-builder-for-github-pages-action@master
         with:
           secret_gh_pages_api_token: ${{ secrets.GH_PAGES_TOKEN }}
           git_committer_email: dev@payex.com

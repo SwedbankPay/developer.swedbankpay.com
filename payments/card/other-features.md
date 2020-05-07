@@ -26,7 +26,7 @@ sidebar:
 Credit Card. This section has extented code examples and features that were not
 covered by the other subsections." %}
 
-{% include payment-resource.md show_status_operations=true %}
+{% include payment-resource.md payment_instrument="card" show_status_operations=true %}
 
 {% include payment-transaction-states.md %}
 
@@ -45,6 +45,10 @@ document is described in the following section.
 {% include card-purchase.md full_reference=true %}
 
 {% include complete-url.md %}
+
+## Description
+
+{% include description.md %}
 
 {% include recur.md %}
 
@@ -89,7 +93,7 @@ object:
 ```
 
 {:.table .table-striped}
-| Field      | Type     | Description                                                     |
+| Field         | Type     | Description                                                     |
 | :------------ | :------- | :-------------------------------------------------------------- |
 | `id`          | `string` | {% include field-description-id.md %}                           |
 | `redirectUrl` | `string` | The URI the user will be redirect to after a completed payment. |
@@ -111,7 +115,7 @@ object:
 ```
 
 {:.table .table-striped}
-| Field      | Type     | Description                                                    |
+| Field         | Type     | Description                                                    |
 | :------------ | :------- | :------------------------------------------------------------- |
 | `id`          | `string` | {% include field-description-id.md %}                          |
 | `redirectUrl` | `string` | The URI the user will be redirect to after a canceled payment. |
@@ -133,7 +137,7 @@ event argument object:
 ```
 
 {:.table .table-striped}
-| Field      | Type     | Description                                                  |
+| Field         | Type     | Description                                                  |
 | :------------ | :------- | :----------------------------------------------------------- |
 | `id`          | `string` | {% include field-description-id.md %}                        |
 | `redirectUrl` | `string` | The URI the user will be redirect to after a failed payment. |
@@ -155,7 +159,7 @@ argument object:
 ```
 
 {:.table .table-striped}
-| Field  | Type     | Description                                                                             |
+| Field     | Type     | Description                                                                             |
 | :-------- | :------- | :-------------------------------------------------------------------------------------- |
 | `origin`  | `string` | `owner`, `merchant`. The value is always `merchant` unless Swedbank Pay hosts the view. |
 | `openUrl` | `string` | The URI containing Terms of Service and conditions.                                     |
@@ -178,7 +182,7 @@ object:
 ```
 
 {:.table .table-striped}
-| Field    | Type     | Description                                                    |
+| Field       | Type     | Description                                                    |
 | :---------- | :------- | :------------------------------------------------------------- |
 | `origin`    | `string` | `creditcard`, identifies the system that originated the error. |
 | `messageId` | `string` | A unique identifier for the message.                           |
@@ -190,7 +194,7 @@ payment"  %}
 [purchase]: #purchase
 [user-agent-definition]: https://en.wikipedia.org/wiki/User_agent
 [cancel]: /payments/card/after-payment#cancellations
-[capture]: /payments/card/after-payment#Capture
+[capture]: /payments/card/capture
 [callback]: /payments/card/other-features#callback
 [mcc]: https://en.wikipedia.org/wiki/Merchant_category_code
 [price-resource]: /payments/card/other-features#prices

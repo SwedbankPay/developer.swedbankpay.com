@@ -6,7 +6,7 @@ sidebar:
     items:
     - url: /resources/
       title: Introduction
-    - url: /resources/sdk-modules/
+    - url: /resources/sdk-modules
       title: SDKs and Modules
     - url: /resources/test-data
       title: Test Data
@@ -115,8 +115,8 @@ sidebar:
 [callback-url]:/payments/card/other-features#callback
 [cancel-url]: /payments/card/after-payment#cancellations
 [checkout-url]: /checkout
-[common-headers]: #headers
-[restful-api]: payments#connection-and-protocol
+[common-headers]: /home/technical-information#headers
+[restful-api]: /home/technical-information#connection-and-protocol
 [verify-url]: /payments/card/other-features#verify
 [one-phase-url]: /payments#the-fundamentals
 [payout]: /payments/card/other-features#payout

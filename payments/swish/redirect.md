@@ -62,7 +62,7 @@ The `Purchase` example shown below.
 **Request**
 
 ```http
-POST /psp/swish/payments
+POST /psp/swish/payments HTTP/1.1
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -123,11 +123,11 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`type`              | `string`      | `Swish`.                                                                                                                                                                                                                                                                                           |
 | {% icon check %} | └─➔&nbsp;`amount`            | `integer`     | {% include field-description-amount.md %}                                                                                                                                                                                                                                                          |
 | {% icon check %} | └─➔&nbsp;`vatAmount`         | `integer`     | {% include field-description-vatamount.md %}                                                                                                                                                                                                                                                       |
-| {% icon check %} | └➔&nbsp;`description`        | `string(40)`  | A textual description max 40 characters of the purchase.                                                                                                                                                                                                                                           |
+| {% icon check %} | └➔&nbsp;`description`        | `string(40)`  | {% include field-description-description.md payment_instrument="swish" %}                                                                                                                                                                                                                          |
 |                  | └─➔&nbsp;`paymentAgeLimit`   | `integer`     | Positive number sets required age limit to fulfill the payment.                                                                                                                                                                                                                                    |
 |                  | └➔&nbsp;`payerReference`     | `string`      | The reference to the payer (consumer/end user) from the merchant system. E.g mobile number, customer number etc.                                                                                                                                                                                   |
 | {% icon check %} | └➔&nbsp;`userAgent`          | `string`      | The user agent reference of the consumer's browser - [see user agent definition][user-agent-definition]                                                                                                                                                                                            |
-| {% icon check %} | └➔&nbsp;`language`           | `string`      | `nb-NO`, `sv-SE` or `en-US`.                                                                                                                                                                                                                                                                       |
+| {% icon check %} | └➔&nbsp;`language`           | `string`      | {% include field-description-language.md payment_instrument="swish" %}                                                                                                                                                                                                                                                                       |
 | {% icon check %} | └➔&nbsp;`urls`               | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                             |
 | {% icon check %} | └─➔&nbsp;`completeUrl`       | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. |
 |                  | └─➔&nbsp;`cancelUrl`         | `string`      | The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only cancelUrl or `paymentUrl` can be used, not both.                                                                                              |
@@ -194,59 +194,66 @@ Content-Type: application/json
 }
 ```
 
-## Purchase flow
+## Redirect Purchase flow
 
 The sequence diagram below shows the requests you have to send to Swedbank Pay
-to make a purchase.
-The links will take you directly to the API description for the specific
-request.
+to make a purchase. The Callback response is a simplified example
+in this flow. Go to the [Callback][callback-url] section to view the complete flow.
 
 ```mermaid
 sequenceDiagram
-  activate Browser
-  Browser->>-Merchant: start purchase
-  activate Merchant
-  Merchant->>-SwedbankPay: POST <Swish create payment> (operation=PURCHASE)
-  activate SwedbankPay
-  note left of Merchant: First API request
-  SwedbankPay-->>-Merchant: payment resource
-  activate Merchant
-  Merchant-->>-Browser: redirect to payments page
-  activate Browser
-  note left of SwedbankPay: redirect to Swedbank Pay (If Redirect scenario)
-  Browser->>-SwedbankPay: enter mobile number
-  activate SwedbankPay
-  SwedbankPay--x-Browser: Tell consumer to open Swish app
-  Swish_API->>Swish_App: Ask for payment confirmation
-  activate Swish_App
-  Swish_App-->>-Swish_API: Consumer confirms payment
-  activate Swish_API
-  opt Callback
-  Swish_API-->>-SwedbankPay: Payment status
-  activate SwedbankPay
-  SwedbankPay-->>-Swish_API: Callback response
-  activate Swish_API
-  SwedbankPay--x-Merchant: Transaction callback
-  end
-  SwedbankPay-->>Browser: Redirect to merchant (If Redirect scenario)
-  activate Browser
+    activate Browser
+    Browser->>-Merchant: Start purchase
+    activate Merchant
+    Merchant->>-SwedbankPay: POST <Swish create payment> (operation=PURCHASE)
+    activate SwedbankPay
+    note left of Merchant: First API request
+    SwedbankPay-->>-Merchant: Payment resource
+    activate Merchant
+    Merchant-->>-Browser: Response with redirectUrl
+    activate Browser
+    Browser->>-SwedbankPay: Redirect to Payment page
+    note left of SwedbankPay: Redirect to Swedbank Pay
+    activate Browser
+    Browser->>-SwedbankPay: Enter mobile number
+    activate Merchant
+    Merchant->>-SwedbankPay: POST <Sale transaction>
+    activate SwedbankPay
+    SwedbankPay-->>-Merchant: Transaction Resource
+    activate SwedbankPay
+    SwedbankPay--x-Browser: Tell consumer to open Swish app
+    Swish_API->>Swish_App: Ask for payment confirmation
+    activate Swish_App
+    Swish_App-->>-Swish_API: Consumer confirms payment
+    activate Swish_API
 
-  Browser-->>-Merchant: Redirect
-  activate Merchant
-  Merchant->>-SwedbankPay: GET <Swish payment>
-  activate SwedbankPay
-  SwedbankPay-->>-Merchant: Payment response
-  activate Merchant
-  Merchant-->>-Browser: Payment Status
+        alt Callback
+        Swish_API-->>-SwedbankPay: Payment status
+        activate SwedbankPay
+        SwedbankPay-->>-Swish_API: Callback response
+        activate Swish_API
+        SwedbankPay-->-Merchant: Transaction callback
+        end
+
+    activate SwedbankPay
+    SwedbankPay->>-Browser: Redirect to merchant
+    activate Browser
+    Browser-->>-Merchant: Redirect
+    activate Merchant
+    Merchant->>-SwedbankPay: GET <Swish payment>
+    activate SwedbankPay
+    SwedbankPay-->>-Merchant: Payment response
+    activate Merchant
+    Merchant-->>-Browser: Payment Status
 ```
 
 {% include iterator.html prev_href="direct" prev_title="Back: Direct"
 next_href="seamless-view" next_title="Next: Seamless View" %}
 
 [swish-redirect-image]: /assets/screenshots/swish/redirect-view/view/windows-small-window.png
-[callback-url]: /payments/swish/other-fetures#callback
+[callback-url]: /payments/swish/other-features#callback
 [seamless-view]: /payments/swish/seamless-view
-[payee-reference]: /payments/swish/other-features#payeereference
+[payee-reference]: /payments/swish/other-features#payee-reference
 [purchase-flow]: #purchase-flow
 [redirect]: /payments/swish/redirect
-[technical-reference-callback]: /payments/swish/other-fetures#callback
+[technical-reference-callback]: /payments/swish/other-features#callback

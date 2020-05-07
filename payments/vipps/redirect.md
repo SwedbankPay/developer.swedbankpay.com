@@ -181,10 +181,10 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`type`            | `string`      |                                                                                                                                                                                                                                                                                                    |
 | {% icon check %} | └─➔&nbsp;`amount`          | `integer`     | {% include field-description-amount.md currency="NOK" %}                                                                                                                                                                                                                                           |
 | {% icon check %} | └─➔&nbsp;`vatAmount`       | `integer`     | {% include field-description-vatamount.md currency="NOK" %}                                                                                                                                                                                                                                        |
-| {% icon check %} | └➔&nbsp;`description`      | `string(40)`  | A textual description max 40 characters of the purchase.                                                                                                                                                                                                                                           |
+| {% icon check %} | └➔&nbsp;`description`      | `string(40)`  | {% include field-description-description.md payment_instrument="vipps" %}                                                                                                                                                                                                                          |
 |                  | └➔&nbsp;`payerReference`   | `string`      | The reference to the payer (consumer/end user) from the merchant system. E.g mobile number, customer number etc.                                                                                                                                                                                   |
 | {% icon check %} | └➔&nbsp;`userAgent`        | `string`      | The user agent reference of the consumer's browser - [see user agent definition][user-agent-definition]                                                                                                                                                                                            |
-| {% icon check %} | └➔&nbsp;`language`         | `string`      | nb-NO                                                                                                                                                                                                                                                                                              |
+| {% icon check %} | └➔&nbsp;`language`         | `string`      | {% include field-description-language.md payment_instrument="vipps" %}                                                                                                                                                                                                                                                                                              |
 | {% icon check %} | └➔&nbsp;`urls`             | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                             |
 | {% icon check %} | └─➔&nbsp;`completeUrl`     | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. |
 |                  | └─➔&nbsp;`cancelUrl`       | `string`      | The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only cancelUrl or `paymentUrl` can be used, not both.                                                                                              |
@@ -328,10 +328,10 @@ Content-Type: application/json
 | └➔&nbsp;`state`          | `string`     | `Ready`, `Pending`, `Failed` or `Aborted`. Indicates the state of the payment, not the state of any transactions performed on the payment. To find the state of the payment's transactions (such as a successful authorization), see the `transactions` resource or the different specialized type-specific resources such as `authorizations` or `sales`. |
 | └➔&nbsp;`prices`         | `object`     | The `prices` resource lists the prices related to a specific payment.                                                                                                                                                                                                                                                                                      |
 | └➔&nbsp;`prices.id`      | `string`     | {% include field-description-id.md resource="prices" %}                                                                                                                                                                                                                                                                                                    |
-| └➔&nbsp;`description`    | `string(40)` | A textual description of maximum 40 characters of the purchase.                                                                                                                                                                                                                                                                                            |
+| └➔&nbsp;`description`    | `string(40)` | {% include field-description-description.md payment_instrument="vipps" %}                                                                                                                                                                                                                                                                                  |
 | └➔&nbsp;`payerReference` | `string`     | The reference to the payer (consumer/end-user) from the merchant system, like e-mail address, mobile number, customer number etc.                                                                                                                                                                                                                          |
 | └➔&nbsp;`userAgent`      | `string`     | The [user agent][user-agent] string of the consumer's browser.                                                                                                                                                                                                                                                                                             |
-| └➔&nbsp;`language`       | `string`     | `nb-NO` , `sv-SE`  or  `en-US`                                                                                                                                                                                                                                                                                                                             |
+| └➔&nbsp;`language`       | `string`     | {% include field-description-language.md payment_instrument="vipps" %}                                                                                                                                                                                                                                                                                                                             |
 | └➔&nbsp;`urls`           | `string`     | The URI to the  urls  resource where all URIs related to the payment can be retrieved.                                                                                                                                                                                                                                                                     |
 | └➔&nbsp;`payeeInfo`      | `string`     | The URI to the  payeeinfo  resource where the information about the payee of the payment can be retrieved.                                                                                                                                                                                                                                                 |
 | `operations`             | `array`      | The array of possible operations to perform                                                                                                                                                                                                                                                                                                                |
@@ -339,7 +339,7 @@ Content-Type: application/json
 | └─➔&nbsp;`href`          | `string`     | The target URI to perform the operation against.                                                                                                                                                                                                                                                                                                           |
 | └─➔&nbsp;`rel`           | `string`     | The name of the relation the operation has to the current resource.                                                                                                                                                                                                                                                                                        |
 
-## Purchase flow
+## Vipps Redirect integration flow
 
 The sequence diagram below shows the two requests you have to send to
 Swedbank Pay to make a purchase.
@@ -348,62 +348,71 @@ request.
 
 ```mermaid
 sequenceDiagram
-  participant Browser
-  participant Merchant
-  participant SwedbankPay as Swedbank Pay
-  participant VippsApi as Vipps API
-  participant VippsApp as Vipps App
+    participant Browser
+    participant Merchant
+    participant SwedbankPay as Swedbank Pay
+    participant VippsApi as Vipps API
+    participant VippsApp as Vipps App
 
-  Browser->>Merchant: Start purchase (pay with Vipps)
-  activate Browser
+    Browser->>Merchant: Start purchase (pay with Vipps)
+    activate Browser
     activate Merchant
-      Merchant->>SwedbankPay: POST <Create  Vipps payment>
-      activate SwedbankPay
-        note left of Merchant: First API request
-        SwedbankPay-->>Merchant: Payment resource
-      deactivate SwedbankPay
-      Merchant-->>Browser: Redirect to payment page
+    Merchant->>SwedbankPay: POST <Create  Vipps payment>
+    activate SwedbankPay
+    note left of Merchant: First API request
+    SwedbankPay-->>Merchant: Payment resource
+    deactivate SwedbankPay
+    Merchant-->>Browser: Redirect to payment page
     deactivate Merchant
 
     note left of Browser: Redirect to Swedbank Pay
-    Browser-->>SwedbankPay: Enter mobile number
+    Browser->>SwedbankPay: Redirect
     activate SwedbankPay
-      SwedbankPay-->>VippsApi: Initialize Vipps payment
-      activate VippsApi
-        VippsApi-->>SwedbankPay: Response
-        SwedbankPay-->>Browser: Authorization response (State=Pending)
-        note left of Browser: Check your phone
+    SwedbankPay-->>VippsApi: Initialize Vipps payment
+    activate VippsApi
+    VippsApi-->>SwedbankPay: Response
+    activate SwedbankPay
+    SwedbankPay-->>-Browser: Display payment page
+    activate Browser
+    Browser->>Browser: Enter mobile number
+    SwedbankPay-->>Browser: Authorization response (State=Pending)
+    note left of Browser: Check your phone
 
-        VippsApi-->>VippsApp: Confirm Payment UI
-        activate VippsApp
-          VippsApp-->>VippsApp: Confirmation dialogue
-          VippsApp-->>VippsApi: Confirmation
-        deactivate VippsApp
+    VippsApi-->>VippsApp: Confirm Payment UI
+    activate VippsApp
+    VippsApp-->>VippsApp: Confirmation dialogue
+    VippsApp-->>VippsApi: Confirmation
+    deactivate VippsApp
 
-        VippsApi-->>SwedbankPay: Make payment
-        activate SwedbankPay
-          SwedbankPay-->>SwedbankPay: Execute payment
-          SwedbankPay-->>VippsApi: Response
-        deactivate SwedbankPay
-      deactivate VippsApi
+    VippsApi-->>SwedbankPay: Make payment
+    activate SwedbankPay
+    SwedbankPay-->>SwedbankPay: Execute payment
+    SwedbankPay-->>VippsApi: Response
+    deactivate SwedbankPay
+    deactivate VippsApi
 
-      SwedbankPay-->>SwedbankPay: Authorize result
-      SwedbankPay-->>Browser: Authorize result
+    SwedbankPay-->>SwedbankPay: Authorize result
+    SwedbankPay-->>Browser: Authorize result
     deactivate SwedbankPay
 
     Browser-->>Merchant: Redirect to merchant
     activate Merchant
-      note left of Browser: Redirect to merchant
+    note left of Browser: Redirect to merchant
 
-      SwedbankPay-->>Merchant: Payment callback
-      activate SwedbankPay
-        Merchant-->>SwedbankPay: GET <payment.id>
-        note left of Merchant: Second API request
-        SwedbankPay-->>Merchant: Payment resource
-        Merchant-->>Browser: Display authorize result
-      deactivate SwedbankPay
+        alt Callback
+        activate SwedbankPay
+        SwedbankPay-->>-VippsApi: Callback response
+        SwedbankPay->>-Merchant: Transaction callback
+        end
+
+    activate SwedbankPay
+    Merchant-->>SwedbankPay: GET <payment.id>
+    note left of Merchant: Second API request
+    SwedbankPay-->>Merchant: Payment resource
+    Merchant-->>Browser: Display purchase result
+    deactivate SwedbankPay
     deactivate Merchant
-  deactivate Browser
+    deactivate Browser
 ```
 
 You will later (i.e. if a physical product, when you are ready to ship the
@@ -415,12 +424,12 @@ purchased products) have to make a [Capture][capture] or
                          next_href="seamless-view"
                          next_title="Next: Implement Seamless view" %}
 
-[cancel]: /payments/vipps/other-features#cancellations
+[cancel]: /payments/vipps/after-payment#cancellations
 [capture]: /payments/vipps/after-payment#captures
 [seamless-view]: /payments/vipps/seamless-view
 [reference-redirect]: /payments/vipps/redirect
 [vipps-payments]: /payments/vipps/other-features
 [vipps-purchase-flow]: /assets/img/payments/vipps-purchase-flow.png
-[payee-reference]: /payments/vipps/other-features#payeereference
+[payee-reference]: /payments/vipps/other-features#payee-reference
 [purchase]: /payments/vipps/other-features#purchase
 [user-agent]: https://en.wikipedia.org/wiki/User_agent

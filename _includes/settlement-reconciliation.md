@@ -306,10 +306,10 @@ super merchant will in turn have to invoice this amount to the sub merchant.
 
 [payex-checkout]: /checkout
 [attachement-1]: /assets/documents/testredovisning-payexcheckout.pdf
-[attachement-2]: assets/documents/r1234-0001-redov.service.pdf
+[attachement-2]: /assets/documents/r1234-0001-redov.service.pdf
 [attachement-3]: /assets/documents/transaktionsstatistik-redovisningsservice.xlsx
 [attachement-4]: /assets/documents/transaktionsstatistik-redovisningsservice.xml
-[attachement-5]: assets/documents/r1234-0001-eget-konto.pdf
-[attachement-6]: assets/documents/r1234-0001-eget-konto.pdf
-[attachement-7]: assets/documents/testredovisning-eget-konto.xlsx
+[attachement-5]: /assets/documents/r1234-0001-eget-konto.pdf
+[attachement-6]: /assets/documents/r1234-0001-eget-konto.pdf
+[attachement-7]: /assets/documents/testredovisning-eget-konto.xlsx
 [omni-client-email]: mailto:omni.client@swedbankpay.se

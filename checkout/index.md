@@ -195,9 +195,11 @@ diagram.
 
 * ⑤ `Authorize Payment` is when the payer has accepted the payment.
 
+{% include languages.md payment_instrument="checkout" %}
+
 {% include iterator.html next_href="checkin"
                          next_title="Next: Implement Checkin" %}
 
-[after-payment-capture]: after-payment#capture
-[https]: /#connection-and-protocol
+[after-payment-capture]: /checkout/capture
+[https]: /home/technical-information#connection-and-protocol
 [payment-order]: /checkout/other-features#payment-orders

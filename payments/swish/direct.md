@@ -1,5 +1,5 @@
 ---
-title: Swedbank Pay Payments Swish
+title: Swedbank Pay Payments Swish Direct
 sidebar:
   navigation:
   - title: Swish Payments
@@ -20,13 +20,13 @@ sidebar:
 
 {% include jumbotron.html
                       body="Swish is a one-phase payment instrument supported by the
-                      major Swedish banks. In the direct scenario,
+                      major Swedish banks. In the Direct scenario,
                       Swedbank Pay receives the Swish registered mobile number
                       directly from the merchant UI. Swedbank Pay performs a
                       payment that the payer confirms using her Swish mobile
                       app." %}
 
-## Swish Direct integration flow
+## Payment Flow
 
 * When the payer starts the purchase process, you make a `POST` request towards
   Swedbank Pay with the collected Purchase information.
@@ -114,11 +114,11 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`type`              | `string`      | Swish                                                                                                                                                                                                                                                                                              |
 | {% icon check %} | └─➔&nbsp;`amount`            | `integer`     | {% include field-description-amount.md %}                                                                                                                                                                                                                                                          |
 | {% icon check %} | └─➔&nbsp;`vatAmount`         | `integer`     | {% include field-description-vatamount.md %}                                                                                                                                                                                                                                                       |  |
-| {% icon check %} | └➔&nbsp;`description`        | `string(40)`  | A textual description max 40 characters of the purchase.                                                                                                                                                                                                                                           |
+| {% icon check %} | └➔&nbsp;`description`        | `string(40)`  | {% include field-description-description.md payment_instrument="swish" %}                                                                                                                                                                                                                          |
 |                  | └➔&nbsp;`payerReference`     | `string`      | The reference to the payer (consumer/end user) from the merchant system. E.g mobile number, customer number etc.                                                                                                                                                                                   |
 |                  | └➔&nbsp;`payeeName`          | `string`      | The payee name will be displayed to consumer when redirected to Swedbank Pay.                                                                                                                                                                                                                      |
 | {% icon check %} | └➔&nbsp;`userAgent`          | `string`      | The user agent reference of the consumer's browser - [see user agent definition][user-agent]                                                                                                                                                                                                       |
-| {% icon check %} | └➔&nbsp;`language`           | `string`      | `nb-NO`, `sv-SE` or `en-US`.                                                                                                                                                                                                                                                                       |
+| {% icon check %} | └➔&nbsp;`language`           | `string`      | {% include field-description-language.md payment_instrument="swish" %}                                                                                                                                                                                                                                                                       |
 | {% icon check %} | └➔&nbsp;`urls`               | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                             |
 | {% icon check %} | └─➔&nbsp;`completeUrl`       | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. |
 |                  | └─➔&nbsp;`cancelUrl`         | `string`      | The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only cancelUrl or `paymentUrl` can be used, not both.                                                                                              |
@@ -188,7 +188,7 @@ Content-Type: application/json
 
 ## Step 2a: Create E-Commerce Sale Transaction
 
-This operation creates an e-commerce sales transaction in the direct payment
+This operation creates an e-commerce sales transaction in the Direct payment
 scenario. This is managed either by sending a `POST` request as seen below, or
 by directing the end-user to the hosted payment pages. Note that the `msisdn`
 value (the end-user's mobile number) is required in this request.
@@ -215,11 +215,54 @@ Content-Type: application/json
 | `transaction`    | `object` | The `transaction` object contains information about the specific transaction.                     |
 | └➔&nbsp;`msisdn` | `string` | The end-user's mobile number. It must have a country code prefix and be 8 to 15 digits in length. |
 
-{% include transaction-response.md payment_instrument="swish" transaction="sale" %}
+{% include transaction-response.md payment_instrument="swish" transaction="sale"
+%}
+
+## E-Commerce Purchase Flow
+
+The sequence diagram below shows the two requests you have to send to
+Swedbank Pay to make a purchase. The Callback response is a simplified example
+in this flow. Go to the [Callback][callback-url] section to view the complete flow.
+
+```mermaid
+sequenceDiagram
+    activate Browser
+    Browser->>-Merchant: Start purchase
+    activate Merchant
+    Merchant->>-SwedbankPay: POST <Swish payment> (operation=PURCHASE)
+    activate  SwedbankPay
+    note left of Merchant: First API request
+    SwedbankPay-->>-Merchant: Payment resource
+    activate Merchant
+
+    Merchant->>- SwedbankPay: POST <Sales Transaction> (operation=create-sale)
+    activate  SwedbankPay
+    SwedbankPay-->>-Merchant: Transactions resource
+    activate Merchant
+    note left of Merchant: POST containing MSISDN
+    Merchant->>-Browser: Tell consumer to open Swish app
+    Swish_API->>Swish_App: Ask for payment confirmation
+    activate Swish_App
+    Swish_App-->>-Swish_API: Consumer confirms payment
+
+        alt Callback
+        activate SwedbankPay
+        SwedbankPay-->>-Swish_API: Callback response
+        activate SwedbankPay
+        SwedbankPay->>-Merchant: Transaction Callback
+        end
+
+    activate Merchant
+    Merchant->>- SwedbankPay: GET <Swish payment>
+    activate  SwedbankPay
+    SwedbankPay-->>-Merchant: Payment response
+    activate Merchant
+    Merchant->>-Browser: Payment Status
+```
 
 ## Step 2b: Create M-Commerce Sale Transaction
 
-This operation creates an m-commerce sales transaction in the direct payment
+This operation creates an m-commerce sales transaction in the Direct payment
 scenario. This is managed either by sending a `POST` request as seen below, or
 by directing the end-user to the hosted payment pages. Note that the `msisdn`
 value (the end-user's mobile number) is left out in this request. The
@@ -335,10 +378,10 @@ Content-Type: application/json
 | └➔&nbsp;`state`          | `string`     | `Ready`, `Pending`, `Failed` or `Aborted`. Indicates the state of the payment, not the state of any transactions performed on the payment. To find the state of the payment's transactions (such as a successful authorization), see the `transactions` resource or the different specialized type-specific resources such as `authorizations` or `sales`. |
 | └➔&nbsp;`prices`         | `object`     | The `prices` resource lists the prices related to a specific payment.                                                                                                                                                                                                                                                                                      |
 | └➔&nbsp;`prices.id`      | `string`     | {% include field-description-id.md resource="prices" %}                                                                                                                                                                                                                                                                                                    |
-| └➔&nbsp;`description`    | `string(40)` | A textual description of maximum 40 characters of the purchase.                                                                                                                                                                                                                                                                                            |
+| └➔&nbsp;`description`    | `string(40)` | {% include field-description-description.md payment_instrument="swish" %}                                                                                                                                                                                                                                                                                  |
 | └➔&nbsp;`payerReference` | `string`     | The reference to the payer (consumer/end-user) from the merchant system, like e-mail address, mobile number, customer number etc.                                                                                                                                                                                                                          |
 | └➔&nbsp;`userAgent`      | `string`     | The [user agent][user-agent] string of the consumer's browser.                                                                                                                                                                                                                                                                                             |
-| └➔&nbsp;`language`       | `string`     | `nb-NO` , `sv-SE`  or  `en-US`                                                                                                                                                                                                                                                                                                                             |
+| └➔&nbsp;`language`       | `string`     | {% include field-description-language.md payment_instrument="swish" %}                                                                                                                                                                                                                                                                                                                             |
 | └➔&nbsp;`urls`           | `string`     | The URI to the  urls  resource where all URIs related to the payment can be retrieved.                                                                                                                                                                                                                                                                     |
 | └➔&nbsp;`payeeInfo`      | `string`     | The URI to the  payeeinfo  resource where the information about the payee of the payment can be retrieved.                                                                                                                                                                                                                                                 |
 | `operations`             | `array`      | The array of possible operations to perform                                                                                                                                                                                                                                                                                                                |
@@ -346,47 +389,49 @@ Content-Type: application/json
 | └─➔&nbsp;`href`          | `string`     | The target URI to perform the operation against.                                                                                                                                                                                                                                                                                                           |
 | └─➔&nbsp;`rel`           | `string`     | The name of the relation the operation has to the current resource.                                                                                                                                                                                                                                                                                        |
 
-## Purchase flow
+## M-Commerce Purchase Flow
 
 The sequence diagram below shows the three requests you have to send to
-Swedbank Pay to make a purchase.
+Swedbank Pay to make a purchase. The Callback response is a simplified example
+in this flow. Go to the [Callback][callback-url] section to view the complete flow.
 
 ```mermaid
 sequenceDiagram
-  activate Browser
-  Browser->>-Merchant: start purchase
-  activate Merchant
-  Merchant->>-SwedbankPay: POST <Swish payment> (operation=PURCHASE)
-  activate  SwedbankPay
-  note left of Merchant: First API request
-   SwedbankPay-->>-Merchant: payment resource
-   activate Merchant
+    activate Browser
+    Browser->>-Merchant: Start purchase
+    activate Merchant
+    Merchant->>-SwedbankPay: POST <Swish payment> (operation=PURCHASE)
+    activate  SwedbankPay
+    note left of Merchant: First API request
+    SwedbankPay-->>-Merchant: Payment resource
+    activate Merchant
+    Merchant->>- SwedbankPay: POST <Sales Transaction> (operation=create-sale)
+    activate  SwedbankPay
+    SwedbankPay-->>-Merchant: Transaction resource
+    activate Merchant
+    note left of Merchant: POST containing MSISDN
+    Merchant-->>-Browser: Tell consumer to open Swish app
+    Swish_API->>Swish_App: Ask for payment confirmation
+    activate Swish_App
+    Swish_App-->>-Swish_API: Consumer confirms payment
+    activate Swish_API
+    Swish_API->>-Swish_App: Start redirect
+    activate Swish_App
+    Swish_App-->>-Browser: Redirect
 
-  Merchant-->>- SwedbankPay: POST <Sales Transaction> (operation=create-sale)
-  activate  SwedbankPay
-   SwedbankPay-->>-Merchant: sales resource
-  activate Merchant
-  note left of Merchant: POST containing MSISDN
-  Merchant--x-Browser: Tell consumer to open Swish app
-  Swish_API->>Swish_App: Ask for payment confirmation
-  activate Swish_App
-  Swish_App-->>-Swish_API: Consumer confirms payment
-  activate Swish_API
+        alt Callback
+        activate SwedbankPay
+        SwedbankPay-->>-Swish_API: Callback response
+        activate SwedbankPay
+        SwedbankPay->>-Merchant: Transaction Callback
+        end
 
-  Swish_API-->>- SwedbankPay: Payment status
-  activate  SwedbankPay
-   SwedbankPay-->>-Swish_API: Callback response
-  activate Swish_API
-  Swish_API->>-Swish_App: Start redirect
-  activate Swish_App
-
-  Swish_App--x-Browser: Redirect
-  activate Merchant
-  Merchant->>- SwedbankPay: GET <Sales transaction>
-  activate  SwedbankPay
-   SwedbankPay-->>-Merchant: Payment response
-  activate Merchant
-  Merchant-->>-Browser: Payment Status
+    activate Merchant
+    Merchant->>- SwedbankPay: GET <Swish Payment>
+    activate  SwedbankPay
+    SwedbankPay-->>-Merchant: Payment response
+    activate Merchant
+    Merchant-->>-Browser: Payment Status
 ```
 
 {% include iterator.html prev_href="./" prev_title="Back: Introduction"
@@ -397,5 +442,5 @@ next_href="redirect" next_title="Next: Redirect" %}
 [redirect]: /payments/swish/redirect
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
 [payee-reference]: /payments/swish/other-features#payee-reference
-[purchase]: /payments/swish/direct#purchase-flow
+[purchase]: /payments/swish/direct#m-commerce-purchase-flow
 [sales-transaction]: /payments/swish/other-features#sales

@@ -93,10 +93,10 @@ Content-Type: application/json
 | {% icon check %}︎ | └─➔&nbsp;`type`              | `string`     | `vipps`                                                                                                                                                                                                                                                   |
 | {% icon check %}︎ | └─➔&nbsp;`amount`            | `integer`    | {% include field-description-amount.md currency="NOK" %}                                                                                                                                                                                                  |
 | {% icon check %}︎ | └─➔&nbsp;`vatAmount`         | `integer`    | {% include field-description-vatamount.md currency="NOK" %}                                                                                                                                                                                               |
-| {% icon check %}︎ | └➔&nbsp;`description`        | `string(40)` | A textual description max 40 characters of the purchase.                                                                                                                                                                                                  |
+| {% icon check %}︎ | └➔&nbsp;`description`        | `string(40)` | {% include field-description-description.md payment_instrument="vipps" %}                                                                                                                                                                                 |
 |                  | └➔&nbsp;`payerReference`     | `string`     | The reference to the payer (consumer/end-user) from the merchant system, like mobile number, customer number etc.                                                                                                                                         |
 | {% icon check %}︎ | └➔&nbsp;`userAgent`          | `string`     | The user agent reference of the consumer's browser - [see user agent][user-agent]                                                                                                                                                                         |
-| {% icon check %}︎ | └➔&nbsp;`language`           | `string`     | `nb-NO`, `sv-SE` or `en-US`.                                                                                                                                                                                                                              |
+| {% icon check %}︎ | └➔&nbsp;`language`           | `string`     | {% include field-description-language.md payment_instrument="vipps" %}                                                                                                                                                                                                                              |
 | {% icon check %}︎ | └➔&nbsp;`urls`               | `object`     | The object containing URLs relevant for the `payment`.                                                                                                                                                                                                    |
 | {% icon check %}︎ | └─➔&nbsp;`hostUrls`          | `array`      | The array of URIs valid for embedding of Swedbank Pay Hosted Views.                                                                                                                                                                                       |
 | {% icon check %}︎ | └─➔&nbsp;`completeUrl`       | `string`     | The URI that Swedbank Pay will redirect back to when the payment page is completed. This does not indicate a successful payment, only that it has reached a completion state. A `GET` request needs to be performed on the payment to inspect it further. |
@@ -232,8 +232,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{% include transaction-response.md payment_instrument="vipps"
-transaction="authorization" %}
+{% include transaction-response.md payment_instrument="vipps" transaction="authorization" %}
 
 {:.code-header}
 **Request**
@@ -287,8 +286,7 @@ Content-Type: application/json
 }
 ```
 
-{% include transaction-response.md payment_instrument="vipps"
-    transaction="capture" %}
+{% include transaction-response.md payment_instrument="vipps" transaction="capture" %}
 
 ## Cancellations
 
@@ -331,8 +329,7 @@ Content-Type: application/json
 }
 ```
 
-{% include transaction-response.md payment_instrument="vipps"
-    transaction="cancel" %}
+{% include transaction-response.md payment_instrument="vipps" transaction="cancel" %}
 
 ## Reversals
 
@@ -384,8 +381,9 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`description`    | `string`     | A textual description of the capture                                                                  |
 | {% icon check %} | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the reversal transaction. See [`payeeReference`][payee-reference] for details. |
 
-{% include transaction-response.md payment_instrument="vipps"
-    transaction="reversal" %}
+{% include transaction-response.md payment_instrument="vipps" transaction="reversal" %}
+
+{% include abort-reference.md payment_instrument="vipps" %}
 
 {% include iterator.html
         prev_href="seamless-view"
@@ -393,8 +391,8 @@ Content-Type: application/json
         next_href="other-features"
         next_title="Next: Other Features" %}
 
-[abort]: /payments/vipps/other-features#abort
-[expand-parameter]: /#expansion
+[abort]: /payments/vipps/after-payment#abort
+[expand-parameter]: /home/technical-information#expansion
 [callback]: /payments/vipps/other-features#callback
 [cancel]: #cancellations
 [capture]: #captures

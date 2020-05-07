@@ -164,7 +164,7 @@ implementation in action.
 
 [demoshop]: {{ page.front_end_url }}/pspdemoshop
 [card-icon]: /assets/img/card-icon.png
-[https]: /#connection-and-protocol
+[https]: /home/technical-information#connection-and-protocol
 [invoice-icon]: /assets/img/invoice-icon.png
 [envelope-icon]: /assets/img/envelope-icon.png
 [keypad-icon]: /assets/img/keypad-icon.png

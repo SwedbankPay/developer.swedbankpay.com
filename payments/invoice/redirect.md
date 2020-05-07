@@ -57,7 +57,7 @@ operation equal to `FinancingConsumer`, are described in
 **Request**
 
 ```http
-POST /psp/creditcard/payments HTTP/1.1
+POST /psp/invoice/payments HTTP/1.1
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -109,11 +109,11 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`type`                   | `string`      | Use the `Invoice` type here                                                                                                                                                                                                                                                                                           |
 | {% icon check %} | └─➔&nbsp;`amount`                 | `integer`     | {% include field-description-amount.md %}                                                                                                                                                                                                                                                                             |
 | {% icon check %} | └─➔&nbsp;`vatAmount`              | `integer`     | {% include field-description-vatamount.md %}                                                                                                                                                                                                                                                                          |
-| {% icon check %} | └➔&nbsp;`description`             | `string(40)`  | A textual description max 40 characters of the purchase.                                                                                                                                                                                                                                                              |
+| {% icon check %} | └➔&nbsp;`description`             | `string(40)`  | {% include field-description-description.md payment_instrument="invoice" %}                                                                                                                                                                                                                                           |
 |                  | └➔&nbsp;`payerReference`          | `string`      | The reference to the payer (consumer/end user) from the merchant system. E.g mobile number, customer number etc.                                                                                                                                                                                                      |
 |                  | └➔&nbsp;`generateRecurrenceToken` | `boolean`     | `true` or `false`. Set this to `true` if you want to create a recurrenceToken for future use Recurring purchases (subscription payments).                                                                                                                                                                             |
 | {% icon check %} | └➔&nbsp;`userAgent`               | `string`      | The user agent reference of the consumer's browser - [see user agent definition][user-agent-definition]                                                                                                                                                                                                               |
-| {% icon check %} | └➔&nbsp;`language`                | `string`      | `nb-NO`, `sv-SE` or `en-US`.                                                                                                                                                                                                                                                                                          |
+| {% icon check %} | └➔&nbsp;`language`                | `string`      | {% include field-description-language.md payment_instrument="invoice" %}                                                                                                                                                                                                                                                                                          |
 | {% icon check %} | └➔&nbsp;`urls`                    | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                                                |
 |                  | └─➔&nbsp;`hostUrl`                | `array`       | The array of URLs valid for embedding of Swedbank Pay Hosted Views. If not supplied, view-operation will not be available.                                                                                                                                                                                            |
 | {% icon check %} | └─➔&nbsp;`completeUrl`            | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further.                    |
@@ -254,11 +254,11 @@ next_href="seamless-view" next_title="Next: Seamless View" %}
 [after-payment]: /payments/invoice/after-payment
 [callback]: /payments/invoice/other-features#callback
 [cancel]: /payments/invoice/after-payment#cancellations
-[capture]: /payments/invoice/after-payment#captures
+[capture]: /payments/invoice/capture
 [fi-png]: /assets/img/flag-finland.png
 [financing-consumer]: /payments/invoice/other-features#financing-consumer
 [no-png]: /assets/img/flag-norway.png
-[payee-reference]: /payments/invoice/other-features#payee-info
+[payee-reference]: /payments/invoice/other-features#payeeinfo
 [recur]: /payments/invoice/other-features#recur
 [se-png]: /assets/img/flag-sweden.png
 [user-agent-definition]: https://en.wikipedia.org/wiki/User_agent
