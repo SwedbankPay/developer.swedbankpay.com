@@ -868,7 +868,7 @@ Content-Type: application/json
 | └➔&nbsp;`description`              | `string(40)` | {% include field-description-description.md payment_instrument="checkout" %}                                                                                                                     |
 | └➔&nbsp;`payerReference`           | `string`     | The reference to the consumer from the merchant system, like mobile number, customer number etc.                                                                                                 |
 | └➔&nbsp;`userAgent`                | `string`     | The [user agent][user-agent] string of the consumer's browser.                                                                                                                                   |
-| └➔&nbsp;`language`                 | `string`     | `nb-NO`, `sv-SE` or `en-US`                                                                                                                                                                      |
+| └➔&nbsp;`language`                 | `string`     | {% include field-description-language.md payment_instrument="checkout" %}                                                                                                                                                                      |
 
 ### Prices Resource
 

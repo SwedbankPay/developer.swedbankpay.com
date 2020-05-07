@@ -75,6 +75,8 @@ options:
 Our `payment` example uses the [`FinancingConsumer`][financing-consumer]
 operation.
 
+{% include languages.md payment_instrument="invoice" %}
+
 ## Invoice flow
 
 This is an example of the Redirect scenario. For other integrations, take a
