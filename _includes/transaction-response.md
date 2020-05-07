@@ -1,4 +1,4 @@
-{% assign payment_instrument = include.payment_instrument | default: "paymentorder" %}
+{% assign payment_instrument = include.payment_instrument | default: "test two here" %}
 {% assign transaction = include.transaction | default: "capture" %}
 {% assign mcom = include.mcom | default: false %}
 
@@ -88,7 +88,7 @@ Content-Type: application/json
 | └➔&nbsp;`acquirerStan`            | `string`  | The System Trace Audit Number assigned by the acquirer to uniquely identify the transaction.                                                                                                                 |
 | └➔&nbsp;`acquirerTerminalId`      | `string`  | The ID of the acquirer terminal.                                                                                                                                                                             |
 | └➔&nbsp;`acquirerTransactionTime` | `string`  | The ISO-8601 date and time of the acquirer transaction.                                                                                                                                                      |
-| └➔&nbsp;`authenticationStatus`    | `string`  | `Y`, `A`, `U` or `N`. Indicates the status of the authentication.                                                                                                                                            | {% endif %}                         |
+| └➔&nbsp;`authenticationStatus`    | `string`  | `Y`, `A`, `U` or `N`. Indicates the status of the authentication.                                                                                                                                            | {% endif %}                                 |
 | └➔&nbsp;`itemDescriptions`        | `object`  | The object representation of the `itemDescriptions` resource.                                                                                                                                                |
 | └─➔&nbsp;`id`                     | `string`  | {% include field-description-id.md resource="itemDescriptions" %}                                                                                                                                            |
 | └➔&nbsp;`transaction`             | `object`  | The object representation of the generic transaction resource.                                                                                                                                               |
@@ -99,8 +99,8 @@ Content-Type: application/json
 | └─➔&nbsp;`state`                  | `string`  | `Initialized`, `Completed` or `Failed`. Indicates the state of the transaction.                                                                                                                              |
 | └─➔&nbsp;`number`                 | `string`  | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead. |
 | └─➔&nbsp;`amount`                 | `integer` | {% include field-description-amount.md %}                                                                                                                                                                    |
-| └─➔&nbsp;`vatAmount`              | `integer` | {% include field-description-vatamount.md %}                                                           |
-| └─➔&nbsp;`description`            | `string`  | {% include field-description-description.md payment_instrument=payment_instrument %}                                                                                                                                    |
+| └─➔&nbsp;`vatAmount`              | `integer` | {% include field-description-vatamount.md %}                                                                                                                                                                 |
+| └─➔&nbsp;`description`            | `string`  | {% include field-description-description.md payment_instrument=payment_instrument %}                                                                                                                         |
 | └─➔&nbsp;`payeeReference`         | `string`  | A unique reference for the transaction.                                                                                                                                                                      |
 | └─➔&nbsp;`receiptReference`       | `string`  | A unique reference for the transaction. This reference is used as an invoice/receipt number.                                                                                                                 |
 | └─➔&nbsp;`failedReason`           | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |

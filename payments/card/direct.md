@@ -198,7 +198,7 @@ Content-Type: application/json
 | └─➔&nbsp;`number`                 | `string`  | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead. |
 | └─➔&nbsp;`amount`                 | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` = 100.00 NOK, `5000` = 50.00 SEK.                                                                                     |
 | └─➔&nbsp;`vatAmount`              | `integer` | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                           |
-| └─➔&nbsp;`description`            | `string`  | {% include field-description-description.md payment_instrument="card" %}                                                                                                                                    |
+| └─➔&nbsp;`description`            | `string`  | {% include field-description-description.md payment_instrument="card" %}                                                                                                                                     |
 | └─➔&nbsp;`payeeReference`         | `string`  | A unique reference for the transaction.                                                                                                                                                                      |
 | └─➔&nbsp;`failedReason`           | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | └─➔&nbsp;`isOperational`          | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
@@ -323,7 +323,7 @@ Content-Type: application/json
 | └─➔&nbsp;`number`                 | `string`  | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead. |
 | └─➔&nbsp;`amount`                 | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` = 100.00 NOK, `5000` = 50.00 SEK.                                                                                     |
 | └─➔&nbsp;`vatAmount`              | `integer` | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                           |
-| └─➔&nbsp;`description`            | `string`  | {% include field-description-description.md payment_instrument="card" %}                                                                                                                                    |
+| └─➔&nbsp;`description`            | `string`  | {% include field-description-description.md payment_instrument="card" %}                                                                                                                                     |
 | └─➔&nbsp;`payeeReference`         | `string`  | A unique reference for the transaction.                                                                                                                                                                      |
 | └─➔&nbsp;`failedReason`           | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | └─➔&nbsp;`isOperational`          | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
@@ -403,11 +403,11 @@ sequenceDiagram
 {% include iterator.html prev_href="seamless-view" prev_title="Back: Seamless View"
 next_href="mobile-card-payments" next_title="Next: Mobile Card Payments" %}
 
-[abort]: /payments/card/other-features#abort
-[expansion]: /payments/card/other-features#expansion
+[abort]: /payments/card/after-payment#abort
+[expansion]: /home/technical-information#expansion
 [callback]: /payments/card/other-features#callback
 [cancel]: /payments/card/after-payment#cancellations
-[capture]: /payments/card/after-payment#capture
+[capture]: /payments/card/capture
 [reversal]: /payments/card/after-payment#reversals
 [authorization]: /payments/card/other-features#create-authorization-transaction
 [other features]: /payments/card/other-features#purchase

@@ -1,4 +1,4 @@
-{% assign payment_instrument = include.payment_instrument | default: "creditcard" %}
+{% assign payment_instrument = include.payment_instrument | default: "card" %}
 {% assign callback_href = "/payments/" | append: payment_instrument | append: "/other-features#callback" %}
 
 {% capture body %}

@@ -29,7 +29,7 @@ request on the payment resource, containing the `paymentID` generated in the
 first step, to receive the state of the transaction. You will also be able to
 see the available operations after posting a payment.
 
-{% include payment-resource.md %}
+{% include payment-resource.md payment_instrument="card" %}
 
 * *Abort:* It is possible to abort the process if the payment has no successful
   transactions. [See the Abort description here][abort].
@@ -436,12 +436,12 @@ Content-Type: application/json
 {% include iterator.html prev_href="mobile-card-payments" prev_title="Back: Mobile Card Payments"
 next_href="other-features" next_title="Next: Other Features" %}
 
-[transaction-resource]: /payments/card/other-features#transactions
-[payee-reference]: /payments/card/other-features#payeereference
-[payment-resource]: /payments/card/other-features#payment
-[abort]: /payments/card/other-features#abort
+[abort]: /payments/card/after-payment#abort
 [callback]: /payments/card/other-features#callback
 [cancel]: /payments/card/after-payment#cancellations
 [capture]: /payments/card/after-payment#Capture
 [operations]: /payments/card/other-features#operations
+[payee-reference]: /payments/card/other-features#payee-reference
+[payment-resource]: /payments/card/other-features#payment
 [reversal]: /payments/card/after-payment#reversals
+[transaction-resource]: /payments/card/other-features#transactions

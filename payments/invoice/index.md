@@ -117,9 +117,9 @@ sequenceDiagram
 [optional-features]: /payments/invoice/optional-features
 [recur]: /payments/invoice/other-features#recur
 [redirect]: /payments/invoice/redirect
-[purchase]: /payments/invoice/other-features#purchase
+[purchase]: /payments/invoice/other-features#create-payment
 [se-png]: /assets/img/flag-sweden.png
-[setup-mail-finland]: verkkokauppa.setup@swedbankpay.fi
+[setup-mail-finland]: mailto:verkkokauppa.setup@swedbankpay.fi
 [setup-mail-norway]: mailto:ehandelsetup@swedbankpay.no
 [setup-mail-sweden]: mailto:ehandelsetup@swedbankpay.se
 [verify]: /payments/invoice/other-features#verify

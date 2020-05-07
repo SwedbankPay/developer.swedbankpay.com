@@ -262,13 +262,13 @@ information we store and its duration.
 [capture-operation]: /checkout/after-payment#capture
 [checkin-image]: /assets/img/checkout/your-information.png
 [checkin-events]: /checkout/other-features#checkin-events
-[consumer-reference]: /checkout/other-features#payeereference
+[consumer-reference]: /checkout/other-features#payee-reference
 [data-protection]: /resources/data-protection#paymentorder-consumer-data
 [initiate-consumer-session]: /checkout/checkin#checkin-back-end
 [msisdn]: https://en.wikipedia.org/wiki/MSISDN
 [operations]: /checkout/other-features#operations
 [order-items]: #order-items
-[payee-reference]: /checkout/other-features#payeereference
+[payee-reference]: /checkout/other-features#payee-reference
 [payment-menu-image]: /assets/img/checkout/payment-methods.png
 [payment-menu]: #payment-menu
 [payment-menu]: payment-menu

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -e -x
+
+gem install bundler
+bundle install
+
+exec $exe "$@"

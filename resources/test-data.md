@@ -6,7 +6,7 @@ sidebar:
     items:
     - url: /resources/
       title: Introduction
-    - url: /resources/sdk-modules/
+    - url: /resources/sdk-modules
       title: SDKs and Modules
     - url: /resources/test-data
       title: Test Data
@@ -263,4 +263,4 @@ To simulate an error message, set description in `POST` Create Payment or
 | TM01        | Swish timed out before the payment was started |
 | BANKIDCL    | Payer cancelled BankId signing                 |
 
-[create-card-purchase]: /payments/card/redirect#purchase
+[create-card-purchase]: /payments/card/redirect#step-1-create-a-purchase

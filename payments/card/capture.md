@@ -28,7 +28,7 @@ sidebar:
 everyone should be happy. But, sometimes you also need to implement the
 cancellation and reversal operations described in After Payment.
 
-{% include iterator.html prev_href="payment-menu"
-                         prev_title="Back: Payment Menu"
+{% include iterator.html prev_href="direct"
+                         prev_title="Back: Direct"
                          next_href="after-payment"
                          next_title="Next: After Payment" %}
