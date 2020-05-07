@@ -62,7 +62,7 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0",
         "language": "nb-NO",
         "urls": {
-            "hostUrls": ["https://example.com", "https://example.net"],
+            "hostUrls": [ "https://example.com", "https://example.net" ],
             "completeUrl": "https://example.com/payment-completed",
             "cancelUrl": "https://example.com/payment-canceled",
             "paymentUrl": "https://example.com/perform-payment",
