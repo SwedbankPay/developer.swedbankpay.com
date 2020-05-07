@@ -33,6 +33,10 @@ this very documentation, not to a version of any APIs described by it." %}
 
 ## May 2020
 
+### Version 1.9.2
+
+* Corrected table in [payments page][payments]
+
 ### Version 1.9.1
 
 * Corrected sequence diagrams in [Swish Payments][swish] and
