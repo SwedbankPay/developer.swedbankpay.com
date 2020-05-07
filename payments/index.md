@@ -35,11 +35,11 @@ below.
 {:.table .table-striped}
 |                              | Payment instrument              |  Seamless View   |     Redirect     |     Direct API     | Region                                             |
 | :--------------------------: | :------------------------------ | :--------------: | :--------------: | :----------------: | :------------------------------------------------- |
-|    ![CardIcon][card-icon]    | [Credit card][card]             | [% icon check %} | [% icon check %} |  [% icon check %}  | ![EarthIcon][earth-icon]                           |
-| ![InvoiceIcon][invoice-icon] | [Swedbank Pay Invoice][invoice] | [% icon check %} | [% icon check %} |                    | ![nor][nor-flag] ![swe][swe-flag] ![fin][fin-flag] |
-|     ![Vipps][vipps-logo]     | [Vipps][vipps]                  | [% icon check %} | [% icon check %} |                    | ![nor][nor-flag]                                   |
-|     ![Swish][swish-logo]     | [Swish][swish]                  | [% icon check %} | [% icon check %} | [% icon check %}  ︎ | ![swe][swe-flag]                                   |
-| ![MobilePay][mobilepay-logo] | [Mobile Pay][mobile-pay]        |                  | [% icon check %} |                    | ![dan][dan-flag] ![fin][fin-flag]                  |
+|    ![CardIcon][card-icon]    | [Credit card][card]             | {% icon check %} | {% icon check %} |  {% icon check %}  | ![EarthIcon][earth-icon]                           |
+| ![InvoiceIcon][invoice-icon] | [Swedbank Pay Invoice][invoice] | {% icon check %} | {% icon check %} |                    | ![nor][nor-flag] ![swe][swe-flag] ![fin][fin-flag] |
+|     ![Vipps][vipps-logo]     | [Vipps][vipps]                  | {% icon check %} | {% icon check %} |                    | ![nor][nor-flag]                                   |
+|     ![Swish][swish-logo]     | [Swish][swish]                  | {% icon check %} | {% icon check %} | {% icon check %}  ︎ | ![swe][swe-flag]                                   |
+| ![MobilePay][mobilepay-logo] | [Mobile Pay][mobile-pay]        |                  | {% icon check %} |                    | ![dan][dan-flag] ![fin][fin-flag]                  |
 
 ## Prerequisites
 
