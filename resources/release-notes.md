@@ -33,6 +33,10 @@ this very documentation, not to a version of any APIs described by it." %}
 
 ## May 2020
 
+### Version 1.9.2
+
+This version contains only fixes for the backend build and support system.
+
 ### Version 1.9.1
 
 * Corrected sequence diagrams in [Swish Payments][swish] and
