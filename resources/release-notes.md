@@ -31,6 +31,17 @@ published on this page." %}
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
 
+## May 2020
+
+### Version 1.9.1
+
+* Corrected sequence diagrams in [Swish Payments][swish] and
+  [Vipps Payments][vipps].
+* The `description` field is now more thoroughly described for all requests it's
+  present in.
+* The `language` field is now better described for all requests it's present in.
+* All broken links should now be unbroken.
+
 ## April 2020
 
 ### Version 1.9.0
