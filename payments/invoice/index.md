@@ -75,7 +75,7 @@ options:
 Our `payment` example uses the [`FinancingConsumer`][financing-consumer]
 operation.
 
-{% include language.md payment_instrument="invoice" %}
+{% include languages.md payment_instrument="invoice" %}
 
 ## Invoice flow
 
