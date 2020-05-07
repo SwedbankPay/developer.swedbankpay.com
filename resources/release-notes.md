@@ -37,9 +37,10 @@ this very documentation, not to a version of any APIs described by it." %}
 
 * Corrected sequence diagrams in [Swish Payments][swish] and
   [Vipps Payments][vipps].
-* Added `description` field for all payment instruments.
-* Added `language` description for all payment instruments.
-* Corrected all broken links in Developer Portal.
+* The `description` field is now more thoroughly described for all requests it's
+  present in.
+* The `language` field is now better described for all requests it's present in.
+* All broken links should now be unbroken.
 
 ## April 2020
 
