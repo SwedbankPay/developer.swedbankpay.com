@@ -36,8 +36,9 @@ if [[ ! $branch_name =~ $valid_branch_regex ]]; then
 fi
 
 task_id=${BASH_REMATCH[2]}
-
+task_id=$(echo $task_id | tr '[:lower:]' '[:upper:]')
 commit_message="$(cat $1)"
+commit_message=$(echo $commit_message | tr '[:lower:]' '[:upper:]')
 
 if [[ $commit_message != $task_id* ]]; then
     echo "Commit error!"
