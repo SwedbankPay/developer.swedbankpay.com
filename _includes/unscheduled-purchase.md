@@ -46,6 +46,7 @@ Content-Type: application/json
     }
 }
 ```
+
 **Response**
 
 ```http
@@ -59,7 +60,7 @@ Content-Type: application/json
     "created": "2016-09-14T13:21:29.3182115Z",
     "updated": "2016-09-14T13:21:57.6627579Z",
     "state": "Ready",
-    "operation": "PurchaseDirect",
+    "operation": "Purchase",
     "intent": "Authorization",
     "currency": "NOK",
     "amount": 1500,
