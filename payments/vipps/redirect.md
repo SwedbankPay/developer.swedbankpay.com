@@ -32,8 +32,7 @@ that the payer must confirm through the Vipps mobile app." %}
 * You need to [redirect][reference-redirect] the payer to the Redirect payment
   where the payer must push the payment button.
   This triggers a `POST` towards Swedbank Pay.
-* The payer is redirected to a Vipps payment page where he or she is prompted to
-  enter their mobile number.
+* The payer is redirected to a Vipps payment page to enter the mobile number.
 * Swedbank Pay handles the dialogue with Vipps and the consumer confirms the
   purchase in the Vipps app.
 * To receive the state of the transaction you need to do a `GET`

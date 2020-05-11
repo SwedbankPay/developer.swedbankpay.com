@@ -187,7 +187,7 @@ loading the payment page in an `iframe` in our next step.
 ## Step 2: Display the payment window
 
 You need to embed the script source on your site to create a hosted-view in an
-`iframe`; so that she can enter the required information in a secure Swedbank
+`iframe`; so that the payer can enter the required information in a secure Swedbank
 Pay hosted environment. A simplified integration has these following steps:
 
 1. Create a container that will contain the Seamless View iframe: `<div

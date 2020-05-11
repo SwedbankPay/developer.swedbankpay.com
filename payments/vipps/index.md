@@ -32,7 +32,7 @@ payment page (redirect) or in the `iframe` (seamless view).
 
 ![screenshot of the first Vipps redirect page][vipps-redirect]{:height="500px" width="425px"}
 
-He or she is then redirected to Vipps' own payment
+The payer is then redirected to Vipps' own payment
 page where the phone number is entered, and a push message is sent to the phone.
 
 ![screenshot of the Vipps number input page][vipps-number-input]{:height="500px" width="450px"}

@@ -58,7 +58,7 @@ all authentication during this phase.
 After an attempted payment, Swedbank Pay will redirect the Payer to one of two
 specified URLs: `completeUrl` or `cancelUrl`.
 
-If the payer cancel at any point during payment, he or she will reach the
+If the payer cancel at any point during payment, he or she will be redirected to 
 `cancelUrl`. If the payment session is followed through completely, the payer
 will reach the `completeUrl`.
 
