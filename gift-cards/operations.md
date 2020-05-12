@@ -28,24 +28,19 @@ For security and headers see [Security][security].
 ## Get New Gift Card
 
 {:.code-header}
-**Headers:**
+**Request**
 
 ```http
-POST /api/payments/gift-card/get-new-gift-card
+POST /api/payments/gift-card/get-new-gift-card HTTP/1.1
 Authorization: Bearer <AccessToken>
-HMAC: HMAC authentication filter
+Hmac: HMAC authentication filter
 Content-Type: application/json
-```
 
-{:.code-header}
-**Request:**
-
-```json
 {
-  "amount": 10000,
-  "email": "example@exampleprovider.com",
-  "msisdn": 99999999,
-  "productId": 7854
+    "amount": 10000,
+    "email": "example@exampleprovider.com",
+    "msisdn": 99999999,
+    "productId": 7854
 }
 ```
 
@@ -58,59 +53,57 @@ Content-Type: application/json
 |                  | `productId` | `string`  | A human readable and descriptive text of the error.                                        |
 
 {:.code-header}
-**Response:**
+**Response**
 
-```json
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
 {
-  "_links": [
-    {
-      "deprecation": "string",
-      "href": "string",
-      "hreflang": "string",
-      "media": "string",
-      "rel": "string",
-      "templated": true,
-      "title": "string",
-      "type": "string"
-    }
-  ],
-  "accountSummaryGiftCard": {
-    "accountKey": 7013360000000001000,
-    "balance": 10000,
-    "cvc": 123,
-    "expiryDate": "2020-01-15"
-  },
-  "paymentId": 4526987
+    "_links": [
+        {
+            "deprecation": "string",
+            "href": "string",
+            "hreflang": "string",
+            "media": "string",
+            "rel": "string",
+            "templated": true,
+            "title": "string",
+            "type": "string"
+        }
+    ],
+    "accountSummaryGiftCard": {
+        "accountKey": 7013360000000001000,
+        "balance": 10000,
+        "cvc": 123,
+        "expiryDate": "2020-01-15"
+    },
+    "paymentId": 4526987
 }
 ```
 
 ## Pre Deposit
 
 {:.code-header}
-**Headers:**
+**Request**
 
 ```http
-POST /api/payments/gift-card/pre-deposit
+POST /api/payments/gift-card/pre-deposit HTTP/1.1
 Authorization: Bearer <AccessToken>
-HMAC: HMAC authentication filter
+Hmac: HMAC authentication filter
 Content-Type: application/json
-```
 
-{:.code-header}
-**Request:**
-
-```json
 {
-  "amount": 10000,
-  "currency": "NOK",
-  "description": "string",
-  "orderRef": "UUID",
-  "simpleAccountIdentifier": {
-    "accountKey": 7013360000000001000,
-    "cvc": 123,
-    "expiryDate": "12/20"
-  },
-  "transactionRef": "UUID"
+    "amount": 10000,
+    "currency": "NOK",
+    "description": "string",
+    "orderRef": "UUID",
+    "simpleAccountIdentifier": {
+        "accountKey": 7013360000000001000,
+        "cvc": 123,
+        "expiryDate": "12/20"
+    },
+    "transactionRef": "UUID"
 }
 ```
 
@@ -132,20 +125,20 @@ Content-Type: application/json
 
 ```json
 {
-  "_links": [
-    {
-      "deprecation": "string",
-      "href": "string",
-      "hreflang": "string",
-      "media": "string",
-      "rel": "string",
-      "templated": true,
-      "title": "string",
-      "type": "string"
-    }
-  ],
-  "balance": 10000,
-  "paymentId": 4526987
+    "_links": [
+        {
+            "deprecation": "string",
+            "href": "string",
+            "hreflang": "string",
+            "media": "string",
+            "rel": "string",
+            "templated": true,
+            "title": "string",
+            "type": "string"
+        }
+    ],
+    "balance": 10000,
+    "paymentId": 4526987
 }
 ```
 
@@ -153,4 +146,4 @@ Content-Type: application/json
 [purchase]: /gift-cards/other-features#purchase
 [deposit]: /gift-cards/other-features#deposit
 [balance]: /gift-cards/other-features#balance
-[auth]: /gift-cards/other-features#auth
+[auth]: /gift-cards/other-features#authentication

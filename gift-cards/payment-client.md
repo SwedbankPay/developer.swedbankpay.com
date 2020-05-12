@@ -40,13 +40,14 @@ vas-payment-api-client
 
 ## First App run
 
-{% include alert.html type="warning" icon="informative" body="The application
-expects a PostgreSQL server to be running on localhost with a username `test`
-and password `test` to exist." %}
+{% include alert.html type="informative" icon="informative" header="PostgreSQL"
+body="The application expects a PostgreSQL server to be running on localhost
+with a username `test` and password `test` to exist." %}
 
-This can automatically be configured if PostgreSQL server is started in docker
-with environment variables `POSTGRES_USER=test` and `POSTGRES_PASSWORD=test` are
-set (See [docker-compose.yml][docker-compose].
+The username and password for PostgreSQL can automatically be configured if
+PostgreSQL server is started in Docker with environment variables
+`POSTGRES_USER=test` and `POSTGRES_PASSWORD=test` are set (See
+[docker-compose.yml][docker-compose]).
 
 Clone the [Payment Client repository][payment-client] from Github.
 
@@ -62,12 +63,12 @@ Run the Spring Boot App:
 mvn --projects backend spring-boot:run
 ```
 
-Now go to http://localhost:8080/ and have a look at your new client.
+Now go to `http://localhost:8080/` and have a look at your new client.
 
 ## Testing application
 
-1. Add a new Merchant with the details provided by Swedbank Pay
-2. Click on Gift Cards and add a new Gift card
+1. Add a new Merchant with the details provided by Swedbank Pay.
+2. Click on Gift Cards and add a new Gift card.
 
 ## Build docker image
 

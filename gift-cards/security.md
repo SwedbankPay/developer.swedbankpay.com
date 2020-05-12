@@ -18,7 +18,7 @@ sidebar:
 
 ----
 
-#### OAuth2
+## OAuth2
 
 The Gift Card API requires an OAuth2 access token for interaction. This
 application automatically handles token fetching and refreshing by using [Spring
@@ -62,7 +62,7 @@ public class Oauth2RestTemplateConfiguration {
 }
 ```
 
-#### HMAC
+## HMAC
 
 The API also requires HMAC authentication to be present in a request. In this
 client the HMAC value is automatically calculated by
@@ -123,7 +123,7 @@ In this example `USER` is user and `SECRET` is secret.
 The plain string to `digest` would then be:
 
 ```http
-POST /payment-api/api/payments/payment-account/balance
+POST /payment-api/api/payments/payment-account/balance HTTP/1.1
 Hmac: HmacSHA512 user:21a0213e-30eb-85ab-b355-a310d31af30e:oY5Q5Rf1anCz7DRm3GyWR0dvJDnhl/psylfnNCn6FA0NOrQS3L0fvyUsQ1IQ9gQPeLUt9J3IM2zwoSfZpDgRJA==
 Content-Type: application/json
 
@@ -147,7 +147,7 @@ Final `Hmac` header value:
 HmacSHA512 user:21a0213e-30eb-85ab-b355-a310d31af30e:oY5Q5Rf1anCz7DRm3GyWR0dvJDnhl/psylfnNCn6FA0NOrQS3L0fvyUsQ1IQ9gQPeLUt9J3IM2zwoSfZpDgRJA==
 ```
 
-#### Postman example script for generation HMAC header
+### Postman example script for generation HMAC header
 
 {:.code-header}
 **In pre-request script copy/paste the following snippet:**
@@ -214,7 +214,7 @@ function guid() {
 }
 ```
 
-### Security documentation
+## Security Documentation
 
 * [OAuth2][oauth2]
 * [Client Credentials][client-credentials]
@@ -223,7 +223,7 @@ function guid() {
 
 ## Test client
 
-* For more information how to implement the api, see [Test Client][test-client]
+* For more information how to implement the api, see [Test Client][test-client].
 
 [test-client]: /gift-cards/payment-client
 [spring-security]: https://docs.spring.io/spring-security-oauth2-boot/docs/current/reference/htmlsingle/#boot-features-security-custom-user-info-client

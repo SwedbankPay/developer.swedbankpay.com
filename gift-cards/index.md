@@ -18,8 +18,8 @@ sidebar:
 
 ## Overview
 
-This API is a gateway for receiving payments through our system. It's ment to
-simplify external integration for prepaid cards.
+The Gift Cards API is a gateway for receiving gift card payments through our
+system. It's ment to simplify external integration for prepaid gift cards.
 
 ## Prerequisites
 
@@ -27,9 +27,10 @@ simplify external integration for prepaid cards.
 * Credentials (Merchant Access Token) from Swedbank Pay retrieved from Swedbank
   Pay Admin.
 
-## implementation
+## Implementation
 
-For implementation see:
+For implementation of the Gift Cards API, please read through the following
+documentation:
 
 * [Test Client] [test-client]
 * [Swagger][swagger]

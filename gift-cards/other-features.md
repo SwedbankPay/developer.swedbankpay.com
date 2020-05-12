@@ -19,19 +19,14 @@ sidebar:
 ## Purchase
 
 {:.code-header}
-**Headers:**
+**Request**
 
 ```http
-POST /api/payments/payment-account/{paymentAccountId}/payment/purchase
+POST /api/payments/payment-account/{paymentAccountId}/payment/purchase HTTP/1.1
 Authorization: Bearer <AccessToken>
-HMAC: HMAC authentication filter
+Hmac: HMAC authentication filter
 Content-Type: application/json
-```
 
-{:.code-header}
-**Request:**
-
-```json
 {
     "accountIdentifier": {
         "accountId": 123456789,
@@ -100,7 +95,7 @@ Content-Type: application/json
 |                  | `stan`                  | `string`  | Systems trace audit number.                                                                                                                                                             |
 
 {:.code-header}
-**Response:**
+**Response**
 
 ```json
 {
@@ -157,26 +152,21 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Field   | Type   | Description                               |
-| :------ | :----- | :---------------------------------------- |
-| `state` | `enum` | `OK`, `FAILED`, `REVERSED` or `DUPLICATE` |
+| Field   | Type   | Description                                                              |
+| :------ | :----- | :----------------------------------------------------------------------- |
+| `state` | `enum` | `OK`, `FAILED`, `REVERSED` or `DUPLICATE`. The state of the transaction. |
 
 ## Deposit
 
 {:.code-header}
-**Headers:**
+**Request**
 
 ```http
-POST /api/payments/payment-account/{paymentAccountId}/payment/deposit
+POST /api/payments/payment-account/{paymentAccountId}/payment/deposit HTTP/1.1
 Authorization: Bearer <AccessToken>
-HMAC: HMAC authentication filter
+Hmac: HMAC authentication filter
 Content-Type: application/json
-```
 
-{:.code-header}
-**Request:**
-
-```json
 {
     "accountIdentifier": {
         "accountId": 123456789,
@@ -283,26 +273,21 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Field   | Type   | Description                               |
-| :------ | :----- | :---------------------------------------- |
-| `state` | `enum` | `OK`, `FAILED`, `REVERSED` or `DUPLICATE` |
+| Field   | Type   | Description                                                              |
+| :------ | :----- | :----------------------------------------------------------------------- |
+| `state` | `enum` | `OK`, `FAILED`, `REVERSED` or `DUPLICATE`. The state of the transaction. |
 
 ## Balance
 
 {:.code-header}
-**Headers:**
+**Request**
 
 ```http
-POST /api/payments/payment-account/balance
+POST /api/payments/payment-account/balance HTTP/1.1
 Authorization: Bearer <AccessToken>
-HMAC: HMAC authentication filter
+Hmac: HMAC authentication filter
 Content-Type: application/json
-```
 
-{:.code-header}
-**Request:**
-
-```json
 {
     "accountIdentifier": {
         "accountId": 123456789,
@@ -367,19 +352,14 @@ Content-Type: application/json
 ## Authentication
 
 {:.code-header}
-**Headers:**
+**Request**
 
 ```http
-POST /api/payments/payment-account/{paymentAccountId}/payment/authorize
+POST /api/payments/payment-account/{paymentAccountId}/payment/authorize HTTP/1.1
 Authorization: Bearer <AccessToken>
-HMAC: HMAC authentication filter
+Hmac: HMAC authentication filter
 Content-Type: application/json
-```
 
-{:.code-header}
-**Request:**
-
-```json
 {
     "accountIdentifier": {
         "accountId": 123456789,
@@ -486,6 +466,6 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Field   | Type   | Description                               |
-| :------ | :----- | :---------------------------------------- |
-| `state` | `enum` | `OK`, `FAILED`, `REVERSED` or `DUPLICATE` |
+| Field   | Type   | Description                                                              |
+| :------ | :----- | :----------------------------------------------------------------------- |
+| `state` | `enum` | `OK`, `FAILED`, `REVERSED` or `DUPLICATE`. The state of the transaction. |
