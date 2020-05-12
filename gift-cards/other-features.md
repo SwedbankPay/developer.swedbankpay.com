@@ -4,15 +4,15 @@ sidebar:
   navigation:
   - title: Payment Api
     items:
-    - url: /giftcard/
+    - url: /gift-cards/
       title: Introduction
-    - url: /giftcard/operations
+    - url: /gift-cards/operations
       title: Operations
-    - url: /giftcard/security
+    - url: /gift-cards/security
       title: Security
-    - url: /giftcard/payment-client
+    - url: /gift-cards/payment-client
       title: Test Client
-    - url: /giftcard/other-features
+    - url: /gift-cards/other-features
       title: Other Features
 ---
 

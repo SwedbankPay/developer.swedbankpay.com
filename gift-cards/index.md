@@ -4,15 +4,15 @@ sidebar:
   navigation:
   - title: Payment Api
     items:
-    - url: /giftcard/
+    - url: /gift-cards/
       title: Introduction
-    - url: /giftcard/operations
+    - url: /gift-cards/operations
       title: Operations
-    - url: /giftcard/security
+    - url: /gift-cards/security
       title: Security
-    - url: /giftcard/payment-client
+    - url: /gift-cards/payment-client
       title: Test Client
-    - url: /giftcard/other-features
+    - url: /gift-cards/other-features
       title: Other Features
 ---
 
@@ -37,5 +37,5 @@ For implementation see:
 * [Swagger](https://stage-evc.payex.com/payment-api/swagger-ui.html)
 * [Operations] [operations]
 
-[test-client]: /giftcard/payment-client
-[operations]: /giftcard/operations
+[test-client]: /gift-cards/payment-client
+[operations]: /gift-cards/operations
