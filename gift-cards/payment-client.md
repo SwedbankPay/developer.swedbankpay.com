@@ -40,10 +40,15 @@ vas-payment-api-client
 
 ## First App run
 
-__NB! The application expects a PostgreSQL server to be running on localhost with a username `test` and password `test` to exist.__
-__This can automatically be configured if PostgreSQL server is started in docker with environment variables `POSTGRES_USER=test` and `POSTGRES_PASSWORD=test` are set (See [docker-compose.yml](https://github.com/PayEx/vas-payment-api-client/blob/master/docker-compose.yml)).__
+{% include alert.html type="warning" icon="informative" body="The application
+expects a PostgreSQL server to be running on localhost with a username `test`
+and password `test` to exist." %}
 
-Clone the repository from Github: [Payment Client](https://github.com/PayEx/vas-payment-api-client):
+This can automatically be configured if PostgreSQL server is started in docker
+with environment variables `POSTGRES_USER=test` and `POSTGRES_PASSWORD=test` are
+set (See [docker-compose.yml][docker-compose].
+
+Clone the [Payment Client repository][payment-client] from Github.
 
 Inside the root directory, do a:
 
@@ -61,7 +66,7 @@ Now go to http://localhost:8080/ and have a look at your new client.
 
 ## Testing application
 
-1. Add a new Merchant with the details provided by PayEx
+1. Add a new Merchant with the details provided by Swedbank Pay
 2. Click on Gift Cards and add a new Gift card
 
 ## Build docker image
@@ -75,3 +80,6 @@ mvn --projects backend clean compile jib:dockerBuild
 ```bash
 docker-compose up -d
 ```
+
+[docker-compose]: https://github.com/PayEx/vas-payment-api-client/blob/master/docker-compose.yml
+[payment-client]: https://github.com/PayEx/vas-payment-api-client
