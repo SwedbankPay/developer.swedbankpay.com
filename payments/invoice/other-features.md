@@ -38,7 +38,7 @@ set to value `FinancingConsumer` are listed below.
 * An invoice payment is always two-phased based -  you create an Authorize
   transaction, that is followed by a Capture or Cancel request.
 
-{% include alert-callback-url.md payment_instrument="invoice" %}
+{% include alert-callback-url.md documentation_section="invoice" %}
 
 {% include authorizations-resource.md payment_instrument="invoice" %}
 
@@ -518,7 +518,7 @@ Content-Type: application/json
 | └➔&nbsp;`number`         | `string`  | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead. |
 | └➔&nbsp;`amount`         | `integer` | {% include field-description-amount.md %}                                                                                                                                                                    |
 | └➔&nbsp;`vatAmount`      | `integer` | {% include field-description-vatamount.md %}                                                                                                                                                                 |
-| └➔&nbsp;`description`    | `string`  | {% include field-description-description.md payment_instrument="invoice" %}                                                                                                                                  |
+| └➔&nbsp;`description`    | `string`  | {% include field-description-description.md documentation_section="invoice" %}                                                                                                                                  |
 | └➔&nbsp;`payeeReference` | `string`  | The `payeeReference` is the receipt/invoice number and is a unique reference for each transaction.                                                                                                           |
 | └➔&nbsp;`failedReason`   | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | └➔&nbsp;`isOperational`  | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |

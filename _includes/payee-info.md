@@ -1,6 +1,6 @@
-{% assign instrument = include.payment_instrument | default: "paymentorders" %}
+{% assign api_resource = include.api_resource | default: "paymentorders" %}
 {% assign length = 50 %}
-{% case instrument %}
+{% case api_resource %}
 {% when "paymentorders" %}
     {% assign length = 30 %}
 {% when "swish" %}
@@ -18,7 +18,7 @@ a corporation etc) related to a specific payment.
 **Request**
 
 ```http
-GET /psp/{{ instrument }}/payments/{{ page.payment_id }}/payeeInfo HTTP/1.1
+GET /psp/{{ api_resource }}/payments/{{ page.payment_id }}/payeeInfo HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -32,9 +32,9 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/{{ instrument }}/payments/{{ page.payment_id }}",
+    "payment": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
     "payeeInfo": {
-        "id": "/psp/{{ instrument }}/payments/{{ page.payment_id }}/payeeInfo",
+        "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/payeeInfo",
         "payeeId": "{{ page.merchant_id }}"
         "payeeReference": "EN1234",
         "payeeName": "TestMerchant1",
@@ -55,4 +55,4 @@ Content-Type: application/json
 | └➔&nbsp;`productCategory` | `string`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process. You therefore need to ensure that the value given here is valid in the settlement. |
 | └➔&nbsp;`orderReference`  | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                           |
 
-{% include payee-reference.md payment_instrument = instrument %}
+{% include payee-reference.md documentation_section = documentation_section %}

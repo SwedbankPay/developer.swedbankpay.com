@@ -865,14 +865,14 @@ Content-Type: application/json
 | └─➔&nbsp;`remainingCaptureAmount`  | `integer`    | The available amount to capture.                                                                                                                                                                 |
 | └─➔&nbsp;`remainingCancelAmount`   | `integer`    | The available amount to cancel.                                                                                                                                                                  |
 | └─➔&nbsp;`remainingReversalAmount` | `integer`    | The available amount to reverse.                                                                                                                                                                 |
-| └➔&nbsp;`description`              | `string(40)` | {% include field-description-description.md payment_instrument="checkout" %}                                                                                                                     |
+| └➔&nbsp;`description`              | `string(40)` | {% include field-description-description.md documentation_section="checkout" %}                                                                                                                     |
 | └➔&nbsp;`payerReference`           | `string`     | The reference to the consumer from the merchant system, like mobile number, customer number etc.                                                                                                 |
 | └➔&nbsp;`userAgent`                | `string`     | The [user agent][user-agent] string of the consumer's browser.                                                                                                                                   |
-| └➔&nbsp;`language`                 | `string`     | {% include field-description-language.md payment_instrument="checkout" %}                                                                                                                                                                      |
+| └➔&nbsp;`language`                 | `string`     | {% include field-description-language.md documentation_section="checkout" %}                                                                                                                                                                      |
 
 ### Prices Resource
 
-{% include prices.md payment_instrument="paymentorders" %}
+{% include prices.md api_resource="paymentorders" %}
 
 ### Payer Resource
 

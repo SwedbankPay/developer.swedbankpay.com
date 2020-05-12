@@ -29,7 +29,7 @@ request on the payment resource, containing the `paymentID` generated in the
 first step, to receive the state of the transaction. You will also be able to
 see the available operations after posting a payment.
 
-{% include payment-resource.md payment_instrument="card" %}
+{% include payment-resource.md api_resource="card" %}
 
 * *Abort:* It is possible to abort the process if the payment has no successful
   transactions. [See the Abort description here][abort].
@@ -123,7 +123,7 @@ Content-Type: application/json
 | └─➔&nbsp;`number`         | `string`  | The transaction  number , useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that  id  should be used instead. |
 | └─➔&nbsp;`amount`         | `integer` | {% include field-description-amount.md %}                                                                                                                                                                    |
 | └─➔&nbsp;`vatAmount`      | `integer` | {% include field-description-vatamount.md %}                                                                                                                                                                 |
-| └─➔&nbsp;`description`    | `string`  | {% include field-description-description.md payment_instrument="card" %}                                                                                                                                     |
+| └─➔&nbsp;`description`    | `string`  | {% include field-description-description.md documentation_section="card" %}                                                                                                                                     |
 | └─➔&nbsp;`payeeReference` | `string`  | A unique reference for the transaction. See [`payeeReference`][payee-reference] for details.                                                                                                                 |
 | └─➔&nbsp;`failedReason`   | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | └─➔&nbsp;`isOperational`  | `boolean` | `true`  if the transaction is operational; otherwise  `false` .                                                                                                                                              |
@@ -192,7 +192,7 @@ Content-Type: application/json
 | └─➔&nbsp;`number`          | `string`  | The transaction  number , useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that  id  should be used instead. |
 | └─➔&nbsp;`amount`          | `integer` | {% include field-description-amount.md %}                                                                                                                                                                    |
 | └─➔&nbsp;`vatAmount`       | `integer` | {% include field-description-vatamount.md %}                                                                                                                                                                 |
-| └─➔&nbsp;`description`     | `string`  | {% include field-description-description.md payment_instrument="card" %}                                                                                                                                     |
+| └─➔&nbsp;`description`     | `string`  | {% include field-description-description.md documentation_section="card" %}                                                                                                                                     |
 | └─➔&nbsp;`payeeReference`  | `string`  | A unique reference for the transaction. See [`payeeReference`][payee-reference] for details.                                                                                                                 |
 | └─➔&nbsp;`failedReason`    | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | └─➔&nbsp;`isOperational`   | `boolean` | `true` if the transaction is operational; otherwise `false` .                                                                                                                                                |
@@ -292,7 +292,7 @@ Content-Type: application/json
 | └─➔&nbsp;`number`         | `string`  | The transaction  number , useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that  id  should be used instead. |
 | └─➔&nbsp;`amount`         | `integer` | {% include field-description-amount.md %}                                                                                                                                                                    |
 | └─➔&nbsp;`vatAmount`      | `integer` | {% include field-description-vatamount.md %}                                                                                                                                                                 |
-| └─➔&nbsp;`description`    | `string`  | {% include field-description-description.md payment_instrument="card" %}                                                                                                                                     |
+| └─➔&nbsp;`description`    | `string`  | {% include field-description-description.md documentation_section="card" %}                                                                                                                                     |
 | └─➔&nbsp;`payeeReference` | `string`  | A unique reference for the transaction. See [`payeeReference`][payee-reference] for details.                                                                                                                 |
 | └─➔&nbsp;`failedReason`   | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | └─➔&nbsp;`isOperational`  | `boolean` | `true`  if the transaction is operational; otherwise  `false` .                                                                                                                                              |
@@ -361,7 +361,7 @@ Content-Type: application/json
 | └─➔&nbsp;`number`         | `string`  | The transaction  number , useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that  id  should be used instead. |
 | └─➔&nbsp;`amount`         | `integer` | {% include field-description-amount.md %}                                                                                                                                                                    |
 | └─➔&nbsp;`vatAmount`      | `integer` | {% include field-description-vatamount.md %}                                                                                                                                                                 |
-| └─➔&nbsp;`description`    | `string`  | {% include field-description-description.md payment_instrument="card" %}                                                                                                                                     |
+| └─➔&nbsp;`description`    | `string`  | {% include field-description-description.md documentation_section="card" %}                                                                                                                                     |
 | └─➔&nbsp;`payeeReference` | `string`  | A unique reference for the transaction. See [`payeeReference`][payee-reference] for details.                                                                                                                 |
 | └─➔&nbsp;`failedReason`   | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | └─➔&nbsp;`isOperational`  | `boolean` | `true` if the transaction is operational; otherwise `false` .                                                                                                                                                |

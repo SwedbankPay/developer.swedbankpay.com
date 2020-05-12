@@ -51,7 +51,7 @@ Content-Type: application/json
 |     Required     | Field                                     | Type     | Description                                                                                |
 | :--------------: | :---------------------------------------- | :------- | :----------------------------------------------------------------------------------------- |
 | {% icon check %} | `operation`                               | `string` | `initiate-consumer-session`, the operation to perform.                                     |
-| {% icon check %} | `language`                                | `string` | Selected language to be used in Checkin. Supported values are {% include field-description-language.md payment_instrument="checkout" %} |
+| {% icon check %} | `language`                                | `string` | Selected language to be used in Checkin. Supported values are {% include field-description-language.md documentation_section="checkout" %} |
 | {% icon check %} | `shippingAddressRestrictedToCountryCodes` | `string` | List of supported shipping countries for merchant. Using ISO-3166 standard.                |
 
 When the request has been sent, a response containing an array of operations that can be acted upon will be returned:

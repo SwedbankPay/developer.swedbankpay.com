@@ -1,22 +1,22 @@
-{%- assign payment_instrument = include.payment_instrument -%}
-{%- assign payment_instrument_title = payment_instrument | capitalize -%}
+{%- assign documentation_section = include.documentation_section -%}
+{%- assign documentation_section_title = documentation_section | capitalize -%}
 {%- assign language_codes = "en-US, nb-NO, sv-SE" -%}
 
 ## Languages
 
 ​
-{%- case payment_instrument -%}
+{%- case documentation_section -%}
     {%- when "creditcard" -%}
-        {%- assign payment_instrument_title = "Card" -%}
+        {%- assign documentation_section_title = "Card" -%}
         {%- assign language_codes="da-DK, de-DE, ee-EE, en-US, es-ES, fi-FI, fr-FR, lt-LT, lv-LV, nb-NO, ru-RU, sv-SE" -%}
     {%- when "mobilepay" -%}
-        {%- assign payment_instrument_title = "MobilePay" -%}
+        {%- assign documentation_section_title = "MobilePay" -%}
         {%- assign language_codes="da-DK, en-US, fi-FI, nb-NO, sv-SE" -%}
 {%- endcase -%}
 
 {%- assign language_codes = language_codes | split: ',' -%}
 
-{{ payment_instrument_title }} supports the following languages:
+{{ documentation_section_title }} supports the following languages:
 {% for language_code in language_codes %}
 {%- if forloop.last %}
  and {% comment %}Keep this to preserve the space after 'and'!{% endcomment %}

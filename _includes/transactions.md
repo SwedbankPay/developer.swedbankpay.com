@@ -1,4 +1,4 @@
-{% assign payment_instrument = include.payment_instrument | default: 'creditcard' %}
+{% assign api_resource = include.api_resource | default: 'creditcard' %}
 
 A payment contains sub-resources in the form of `transactions`. Most operations
 performed on a payment ends up as a transaction. The different types of
@@ -12,10 +12,10 @@ specific payment.
 **Request**
 
 ```http
-GET /psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/transactions HTTP/1.1
+GET /psp/{{ api_resource }}/payments/{{ page.payment_id }}/transactions HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{% include transaction-list-response.md payment_instrument=payment_instrument transaction="transaction" %}
+{% include transaction-list-response.md api_resource=api_resource transaction="transaction" %}

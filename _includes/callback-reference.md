@@ -1,5 +1,5 @@
 {% assign payment_order = include.payment_order | default: false %}
-{% assign payment_instrument = include.payment_instrument | default: "creditcard" %}
+{% assign api_resource = include.api_resource | default: "creditcard" %}
 
 ## Callback
 
@@ -48,14 +48,14 @@ three example scenarios of why this is important:
 {
     "paymentOrder": {
         "id": "/psp/paymentorders/{{ page.payment_order_id }}",
-        "instrument": "{{ payment_instrument }}"
+        "instrument": "{{ api_resource }}"
     },
     "payment": {
-        "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}",
+        "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
         "number": 222222222
     },
     "transaction": {
-        "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/<transaction type>/{{ page.transaction_id }}",
+        "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/<transaction type>/{{ page.transaction_id }}",
         "number": 333333333
     }
 }
@@ -68,11 +68,11 @@ three example scenarios of why this is important:
 ```js
 {
     "payment": {
-        "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}",
+        "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
         "number": 222222222
     },
     "transaction": {
-        "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/<transaction type>/{{ page.transaction_id }}",
+        "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/<transaction type>/{{ page.transaction_id }}",
         "number": 333333333
     }
 }
@@ -98,7 +98,7 @@ sequenceDiagram
     deactivate SwedbankPay
     note left of Merchant: Callback by Swedbank Pay
     Merchant-->>+SwedbankPay: HTTP response
-    Merchant->>+SwedbankPay: GET {{ payment_instrument }} payment
+    Merchant->>+SwedbankPay: GET {{ api_resource }} payment
     deactivate Merchant
     note left of Merchant: First API request
     SwedbankPay-->>+Merchant: payment resource
