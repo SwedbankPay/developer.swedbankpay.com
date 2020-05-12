@@ -1,0 +1,161 @@
+---
+title: Payment Api – Operations
+sidebar:
+  navigation:
+  - title: Payment Api
+    items:
+    - url: /giftcard/
+      title: Introduction
+    - url: /giftcard/operations
+      title: Operations
+    - url: /giftcard/security
+      title: Security
+    - url: /giftcard/payment-client
+      title: Test Client
+    - url: /giftcard/other-features
+      title: Other Features
+---
+
+----
+
+# Operations
+* [Purchase][purchase]
+* [Deposit][deposit]
+* [Balance][balance]
+* [Auth][auth]
+
+# Gift card resource
+
+For Security and headers see: [Security][security]
+
+## Get New Gift Card
+
+{:.code-header}
+**Headers:**
+```
+POST /api/payments/gift-card/get-new-gift-card
+Authorization: Bearer <AccessToken>
+HMAC: HMAC authentication filter
+Content-Type: application/json
+```
+
+{:.code-header}
+**Request:**
+
+```json
+{
+  "amount": 10000,
+  "email": "example@exampleprovider.com",
+  "msisdn": 99999999,
+  "productId": 7854
+}
+```
+
+
+{:.table .table-striped}
+|     Required     | Field    | Type     | Description                                                    |
+| :--------------: | :---------- | :------- | :------------------------------------------------------------- |
+| {% icon check %} | `amount`    | `integer` | Total amount of Payment (in cents), ie. 100Kr -> 10000. If amount is 0 no deposit is made.|
+|  | `email` | `string` | customers email.                           |
+|  | `msisdn`   | `string` | customers mobile number.            |
+|  | `productId`   | `string` | A human readable and descriptive text of the error.            |
+
+{:.code-header}
+**Response:**
+
+```json
+{
+  "_links": [
+    {
+      "deprecation": "string",
+      "href": "string",
+      "hreflang": "string",
+      "media": "string",
+      "rel": "string",
+      "templated": true,
+      "title": "string",
+      "type": "string"
+    }
+  ],
+  "accountSummaryGiftCard": {
+    "accountKey": 7013360000000001000,
+    "balance": 10000,
+    "cvc": 123,
+    "expiryDate": "2020-01-15"
+  },
+  "paymentId": 4526987
+}
+```
+
+## Pre Deposit
+
+{:.code-header}
+**Headers:**
+```
+POST /api/payments/gift-card/pre-deposit
+Authorization: Bearer <AccessToken>
+HMAC: HMAC authentication filter
+Content-Type: application/json
+```
+
+{:.code-header}
+**Request:**
+```json
+{
+  "amount": 10000,
+  "currency": "NOK",
+  "description": "string",
+  "orderRef": "UUID",
+  "simpleAccountIdentifier": {
+    "accountKey": 7013360000000001000,
+    "cvc": 123,
+    "expiryDate": "12/20"
+  },
+  "transactionRef": "UUID"
+}
+```
+
+{:.table .table-striped}
+|     Required     | Field    | Type     | Description                                                    |
+| :--------------: | :---------- | :------- | :------------------------------------------------------------- |
+| {% icon check %} | `amount`    | `integer` | Total amount of Payment (in cents), ie. 100Kr -> 10000. If amount is 0 no deposit is made.|
+| {% icon check %} | `currency`  | `string` | Currency for Payment.                           |
+|  				   | `description`      | `string` | Payment description.            |
+| {% icon check %} | `orderRef`   | `string` | Merchant ref, Unique from merchant per session.  |
+| 				   | `transactionRef`   | `string` | Unique ID for each transaction. |
+| {% icon check %} | `SimpleAccountIdentifier`   | `Object` |  |
+| {% icon check %} | `accountKey`   | `string` | Primary Account Number (PAN) for card/account. This is mandatory if ‘track2’ is not present. |
+| 				   | `cvc`   | `string` | Card Verification Code. |
+| 				   | `expiryDate`   | `string` | Expiry date on card (only applicable for PaymentInstrumentType ‘creditcard’) where expiry date is printed on card. Format MM/YY. |
+       
+
+{:.code-header}
+**Response:**
+
+```json
+{
+  "_links": [
+    {
+      "deprecation": "string",
+      "href": "string",
+      "hreflang": "string",
+      "media": "string",
+      "rel": "string",
+      "templated": true,
+      "title": "string",
+      "type": "string"
+    }
+  ],
+  "balance": 10000,
+  "paymentId": 4526987
+}
+```
+
+
+
+
+[security]: /giftcard/security
+[purchase]: /giftcard/other-features#purchase
+[deposit]: /giftcard/other-features#deposit
+[balance]: /giftcard/other-features#balance
+[auth]: /giftcard/other-features#auth 
