@@ -17,10 +17,12 @@ sidebar:
 ---
 
 ----
+
 # Purchase
 
 {:.code-header}
 **Headers:**
+
 ```
 POST /api/payments/payment-account/{paymentAccountId}/payment/purchase
 Authorization: Bearer <AccessToken>
@@ -30,6 +32,7 @@ Content-Type: application/json
 
 {:.code-header}
 **Request:**
+
 ```json
 {
   "accountIdentifier": {
@@ -68,40 +71,35 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-|     Required     | Field    				| Type     | Description                                                    |
-| :--------------: | :---------- 			| :------- | :------------------------------------------------------------- |
+|     Required     | Field        | Type     | Description                                                    |
+| :--------------: | :----------    | :------- | :------------------------------------------------------------- |
 | {% icon check %} | `accountIdentifier`    | `Object` | |
-| 				   | `accountId`  			| `string` | PayEx internal id for card/account.                           |
-| {% icon check %} | `accountKey`      		| `string` | Primary Account Number (PAN) for card/account. This is mandatory if ‘track2’ is not present.            |
-|  				   | `cvc`   				| `string` | Card Verification Code.  |
-| 				   | `encryptedPin`   		| `string` | If ‘000’ is set on authorization request, encrypted PIN block will be returned here. |
-| 				   | `expiryDate`   		| `string` | Expiry date on card (only applicable for PaymentInstrumentType ‘creditcard’) where expiry date is printed on card. Format MM/YY |
-|  				   | `securityCode`   		| `string` | Card Security Code. |
-| 				   | `track2`   			| `string` | Track 2 excluding start and end sentinel. |
-| 				   | `additionalData`   	| `string` | Optional additional data stored on transaction. |
-| {% icon check %} | `amount`   			| `integer`| Total amount of Payment (in cents), ie. 100Kr -> 10000. |
-| {% icon check %} | `currency`   			| `string` | Currency for Payment. |
-| 				   | `description`   		| `string` | Payment description. |
-| {% icon check %} | `merchant`   			| `object` |  |
-| {% icon check %} | `merchantName`   		| `string` | Name of merchant where payment was performed  |
-|  				   | `terminalId`   		| `string` | Used to identify terminal.  |
-| {% icon check %} | `paymentOrderRef`   	| `string` | Unique ID to bind 2-phase transactions.  |
+|        | `accountId`     | `string` | PayEx internal id for card/account.                           |
+| {% icon check %} | `accountKey`        | `string` | Primary Account Number (PAN) for card/account. This is mandatory if ‘track2’ is not present.            |
+|         | `cvc`       | `string` | Card Verification Code.  |
+|        | `encryptedPin`     | `string` | If ‘000’ is set on authorization request, encrypted PIN block will be returned here. |
+|        | `expiryDate`     | `string` | Expiry date on card (only applicable for PaymentInstrumentType ‘creditcard’) where expiry date is printed on card. Format MM/YY |
+|         | `securityCode`     | `string` | Card Security Code. |
+|        | `track2`      | `string` | Track 2 excluding start and end sentinel. |
+|        | `additionalData`    | `string` | Optional additional data stored on transaction. |
+| {% icon check %} | `amount`      | `integer`| Total amount of Payment (in cents), ie. 100Kr -> 10000. |
+| {% icon check %} | `currency`      | `string` | Currency for Payment. |
+|        | `description`     | `string` | Payment description. |
+| {% icon check %} | `merchant`      | `object` |  |
+| {% icon check %} | `merchantName`     | `string` | Name of merchant where payment was performed  |
+|         | `terminalId`     | `string` | Used to identify terminal.  |
+| {% icon check %} | `paymentOrderRef`    | `string` | Unique ID to bind 2-phase transactions.  |
 | {% icon check %} | `paymentTransactionRef`| `string` | Unique ID for each payment.  |
-|  				   | `products`   			| `list`   | |
-| {% icon check %} | `amount`   		    | `integer`| Monetary value of purchased product (in cents).  |
-|  				   | `description`   		| `string` | Optional product description.  |
-| {% icon check %} | `productId`   		    | `string` | Used to identify a product.  |       
-| {% icon check %} | `quantity`   		    | `number` | Number of product units sold (both integer and decimal numbers supported).  |
-| {% icon check %} | `unitOfMeasure`   		| `string` | Type of measurement, L=Litre, U=Unit, G=Grams This may refer to the number of packs, number of bottles etc., O=present, this denotes that there is no measurement. Enum:[ L, U, G, O ]. |
-|  				   | `vatAmount`   			| `integer`| Monetary value of vat-amount for purchased product (in cents).  |
-|  				   | `vatRate`   			| `number` | Vat-rate for purchased product (both integer and decimal numbers supported).  |
-|  				   | `repeat`   			| `boolean`| Notifies this is a repeat message.  |
-|  				   | `stan`   				| `string` | Systems trace audit number.  |
-
-
-
-   
-    
+|         | `products`      | `list`   | |
+| {% icon check %} | `amount`         | `integer`| Monetary value of purchased product (in cents).  |
+|         | `description`     | `string` | Optional product description.  |
+| {% icon check %} | `productId`         | `string` | Used to identify a product.  |
+| {% icon check %} | `quantity`         | `number` | Number of product units sold (both integer and decimal numbers supported).  |
+| {% icon check %} | `unitOfMeasure`     | `string` | Type of measurement, L=Litre, U=Unit, G=Grams This may refer to the number of packs, number of bottles etc., O=present, this denotes that there is no measurement. Enum:[ L, U, G, O ]. |
+|         | `vatAmount`      | `integer`| Monetary value of vat-amount for purchased product (in cents).  |
+|         | `vatRate`      | `number` | Vat-rate for purchased product (both integer and decimal numbers supported).  |
+|         | `repeat`      | `boolean`| Notifies this is a repeat message.  |
+|         | `stan`       | `string` | Systems trace audit number.  |
 
 {:.code-header}
 **Response:**
@@ -164,6 +162,7 @@ Content-Type: application/json
 
 {:.code-header}
 **Headers:**
+
 ```
 POST /api/payments/payment-account/{paymentAccountId}/payment/deposit
 Authorization: Bearer <AccessToken>
@@ -173,6 +172,7 @@ Content-Type: application/json
 
 {:.code-header}
 **Request:**
+
 ```json
 {
   "accountIdentifier": {
@@ -200,31 +200,31 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-|     Required     | Field    				| Type     | Description                                                    |
-| :--------------: | :---------- 			| :------- | :------------------------------------------------------------- |
+|     Required     | Field        | Type     | Description                                                    |
+| :--------------: | :----------    | :------- | :------------------------------------------------------------- |
 | {% icon check %} | `accountIdentifier`    | `Object` | |
-| 				   | `accountId`  			| `string` | PayEx internal id for card/account.                           |
-| {% icon check %} | `accountKey`      		| `string` | Primary Account Number (PAN) for card/account. This is mandatory if ‘track2’ is not present.            |
-|  				   | `cvc`   				| `string` | Card Verification Code.  |
-| 				   | `encryptedPin`   		| `string` | If ‘000’ is set on authorization request, encrypted PIN block will be returned here. |
-| 				   | `expiryDate`   		| `string` | Expiry date on card (only applicable for PaymentInstrumentType ‘creditcard’) where expiry date is printed on card. Format MM/YY |
-|  				   | `securityCode`   		| `string` | Card Security Code. |
-| 				   | `track2`   			| `string` | Track 2 excluding start and end sentinel. |
-| 				   | `additionalData`   	| `string` | Optional additional data stored on transaction. |
-| {% icon check %} | `amount`   			| `integer`| Total amount of Payment (in cents), ie. 100Kr -> 10000. |
-| {% icon check %} | `currency`   			| `string` | Currency for Payment. |
-| 				   | `description`   		| `string` | Payment description. |
-| {% icon check %} | `merchant`   			| `object` |  |
-| {% icon check %} | `merchantName`   		| `string` | Name of merchant where payment was performed  |
-|  				   | `terminalId`   		| `string` | Used to identify terminal.  |
-| {% icon check %} | `paymentOrderRef`   	| `string` | Unique ID to bind 2-phase transactions.  |
+|        | `accountId`     | `string` | PayEx internal id for card/account.                           |
+| {% icon check %} | `accountKey`        | `string` | Primary Account Number (PAN) for card/account. This is mandatory if ‘track2’ is not present.            |
+|         | `cvc`       | `string` | Card Verification Code.  |
+|        | `encryptedPin`     | `string` | If ‘000’ is set on authorization request, encrypted PIN block will be returned here. |
+|        | `expiryDate`     | `string` | Expiry date on card (only applicable for PaymentInstrumentType ‘creditcard’) where expiry date is printed on card. Format MM/YY |
+|         | `securityCode`     | `string` | Card Security Code. |
+|        | `track2`      | `string` | Track 2 excluding start and end sentinel. |
+|        | `additionalData`    | `string` | Optional additional data stored on transaction. |
+| {% icon check %} | `amount`      | `integer`| Total amount of Payment (in cents), ie. 100Kr -> 10000. |
+| {% icon check %} | `currency`      | `string` | Currency for Payment. |
+|        | `description`     | `string` | Payment description. |
+| {% icon check %} | `merchant`      | `object` |  |
+| {% icon check %} | `merchantName`     | `string` | Name of merchant where payment was performed  |
+|         | `terminalId`     | `string` | Used to identify terminal.  |
+| {% icon check %} | `paymentOrderRef`    | `string` | Unique ID to bind 2-phase transactions.  |
 | {% icon check %} | `paymentTransactionRef`| `string` | Unique ID for each payment.  |
-|  				   | `repeat`   			| `boolean`| Notifies this is a repeat message.  |
-|  				   | `stan`   				| `string` | Systems trace audit number.  | 
-
+|         | `repeat`      | `boolean`| Notifies this is a repeat message.  |
+|         | `stan`       | `string` | Systems trace audit number.  |
 
 {:.code-header}
 **Response:**
+
 ```json
 {
   "_links": [
@@ -283,6 +283,7 @@ Content-Type: application/json
 
 {:.code-header}
 **Headers:**
+
 ```
 POST /api/payments/payment-account/balance
 Authorization: Bearer <AccessToken>
@@ -292,6 +293,7 @@ Content-Type: application/json
 
 {:.code-header}
 **Request:**
+
 ```json
 {
   "accountIdentifier": {
@@ -307,17 +309,16 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-|     Required     | Field    				| Type     | Description                                                    |
-| :--------------: | :---------- 			| :------- | :------------------------------------------------------------- |
+|     Required     | Field        | Type     | Description                                                    |
+| :--------------: | :----------    | :------- | :------------------------------------------------------------- |
 | {% icon check %} | `accountIdentifier`    | `Object` | |
-| 				   | `accountId`  			| `string` | PayEx internal id for card/account.                           |
-| {% icon check %} | `accountKey`      		| `string` | Primary Account Number (PAN) for card/account. This is mandatory if ‘track2’ is not present.            |
-|  				   | `cvc`   				| `string` | Card Verification Code.  |
-| 				   | `encryptedPin`   		| `string` | If ‘000’ is set on authorization request, encrypted PIN block will be returned here. |
-| 				   | `expiryDate`   		| `string` | Expiry date on card (only applicable for PaymentInstrumentType ‘creditcard’) where expiry date is printed on card. Format MM/YY |
-|  				   | `securityCode`   		| `string` | Card Security Code. |
-| 				   | `track2`   			| `string` | Track 2 excluding start and end sentinel. |
-
+|        | `accountId`     | `string` | PayEx internal id for card/account.                           |
+| {% icon check %} | `accountKey`        | `string` | Primary Account Number (PAN) for card/account. This is mandatory if ‘track2’ is not present.            |
+|         | `cvc`       | `string` | Card Verification Code.  |
+|        | `encryptedPin`     | `string` | If ‘000’ is set on authorization request, encrypted PIN block will be returned here. |
+|        | `expiryDate`     | `string` | Expiry date on card (only applicable for PaymentInstrumentType ‘creditcard’) where expiry date is printed on card. Format MM/YY |
+|         | `securityCode`     | `string` | Card Security Code. |
+|        | `track2`      | `string` | Track 2 excluding start and end sentinel. |
 
 {:.code-header}
 **Response:**
@@ -359,6 +360,7 @@ Content-Type: application/json
 
 {:.code-header}
 **Headers:**
+
 ```
 POST /api/payments/payment-account/{paymentAccountId}/payment/authorize
 Authorization: Bearer <AccessToken>
@@ -368,6 +370,7 @@ Content-Type: application/json
 
 {:.code-header}
 **Request:**
+
 ```json
 {
   "accountIdentifier": {
@@ -395,30 +398,31 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-|     Required     | Field    				| Type     | Description                                                    |
-| :--------------: | :---------- 			| :------- | :------------------------------------------------------------- |
+|     Required     | Field        | Type     | Description                                                    |
+| :--------------: | :----------    | :------- | :------------------------------------------------------------- |
 | {% icon check %} | `accountIdentifier`    | `Object` | |
-| 				   | `accountId`  			| `string` | PayEx internal id for card/account.                           |
-| {% icon check %} | `accountKey`      		| `string` | Primary Account Number (PAN) for card/account. This is mandatory if ‘track2’ is not present.            |
-|  				   | `cvc`   				| `string` | Card Verification Code.  |
-| 				   | `encryptedPin`   		| `string` | If ‘000’ is set on authorization request, encrypted PIN block will be returned here. |
-| 				   | `expiryDate`   		| `string` | Expiry date on card (only applicable for PaymentInstrumentType ‘creditcard’) where expiry date is printed on card. Format MM/YY |
-|  				   | `securityCode`   		| `string` | Card Security Code. |
-| 				   | `track2`   			| `string` | Track 2 excluding start and end sentinel. |
-| 				   | `additionalData`   	| `string` | Optional additional data stored on transaction. |
-| {% icon check %} | `amount`   			| `integer`| Total amount of Payment (in cents), ie. 100Kr -> 10000. |
-| {% icon check %} | `currency`   			| `string` | Currency for Payment. |
-| 				   | `description`   		| `string` | Payment description. |
-| {% icon check %} | `merchant`   			| `object` |  |
-| {% icon check %} | `merchantName`   		| `string` | Name of merchant where payment was performed  |
-|  				   | `terminalId`   		| `string` | Used to identify terminal.  |
-| {% icon check %} | `paymentOrderRef`   	| `string` | Unique ID to bind 2-phase transactions.  |
+|        | `accountId`     | `string` | PayEx internal id for card/account.                           |
+| {% icon check %} | `accountKey`        | `string` | Primary Account Number (PAN) for card/account. This is mandatory if ‘track2’ is not present.            |
+|         | `cvc`       | `string` | Card Verification Code.  |
+|        | `encryptedPin`     | `string` | If ‘000’ is set on authorization request, encrypted PIN block will be returned here. |
+|        | `expiryDate`     | `string` | Expiry date on card (only applicable for PaymentInstrumentType ‘creditcard’) where expiry date is printed on card. Format MM/YY |
+|         | `securityCode`     | `string` | Card Security Code. |
+|        | `track2`      | `string` | Track 2 excluding start and end sentinel. |
+|        | `additionalData`    | `string` | Optional additional data stored on transaction. |
+| {% icon check %} | `amount`      | `integer`| Total amount of Payment (in cents), ie. 100Kr -> 10000. |
+| {% icon check %} | `currency`      | `string` | Currency for Payment. |
+|        | `description`     | `string` | Payment description. |
+| {% icon check %} | `merchant`      | `object` |  |
+| {% icon check %} | `merchantName`     | `string` | Name of merchant where payment was performed  |
+|         | `terminalId`     | `string` | Used to identify terminal.  |
+| {% icon check %} | `paymentOrderRef`    | `string` | Unique ID to bind 2-phase transactions.  |
 | {% icon check %} | `paymentTransactionRef`| `string` | Unique ID for each payment.  |
-|  				   | `repeat`   			| `boolean`| Notifies this is a repeat message.  |
-|  				   | `stan`   				| `string` | Systems trace audit number.  | 
+|         | `repeat`      | `boolean`| Notifies this is a repeat message.  |
+|         | `stan`       | `string` | Systems trace audit number.  |
 
 {:.code-header}
 **Response:**
+
 ```json
 {
   "_links": [
@@ -472,4 +476,3 @@ Content-Type: application/json
   "updated": "2020-05-12T07:02:36.719Z"
 }
 ```
-

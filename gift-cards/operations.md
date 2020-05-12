@@ -19,6 +19,7 @@ sidebar:
 ----
 
 # Operations
+
 * [Purchase][purchase]
 * [Deposit][deposit]
 * [Balance][balance]
@@ -32,6 +33,7 @@ For Security and headers see: [Security][security]
 
 {:.code-header}
 **Headers:**
+
 ```
 POST /api/payments/gift-card/get-new-gift-card
 Authorization: Bearer <AccessToken>
@@ -50,7 +52,6 @@ Content-Type: application/json
   "productId": 7854
 }
 ```
-
 
 {:.table .table-striped}
 |     Required     | Field    | Type     | Description                                                    |
@@ -91,6 +92,7 @@ Content-Type: application/json
 
 {:.code-header}
 **Headers:**
+
 ```
 POST /api/payments/gift-card/pre-deposit
 Authorization: Bearer <AccessToken>
@@ -100,6 +102,7 @@ Content-Type: application/json
 
 {:.code-header}
 **Request:**
+
 ```json
 {
   "amount": 10000,
@@ -120,14 +123,13 @@ Content-Type: application/json
 | :--------------: | :---------- | :------- | :------------------------------------------------------------- |
 | {% icon check %} | `amount`    | `integer` | Total amount of Payment (in cents), ie. 100Kr -> 10000. If amount is 0 no deposit is made.|
 | {% icon check %} | `currency`  | `string` | Currency for Payment.                           |
-|  				   | `description`      | `string` | Payment description.            |
+|         | `description`      | `string` | Payment description.            |
 | {% icon check %} | `orderRef`   | `string` | Merchant ref, Unique from merchant per session.  |
-| 				   | `transactionRef`   | `string` | Unique ID for each transaction. |
+|        | `transactionRef`   | `string` | Unique ID for each transaction. |
 | {% icon check %} | `SimpleAccountIdentifier`   | `Object` |  |
 | {% icon check %} | `accountKey`   | `string` | Primary Account Number (PAN) for card/account. This is mandatory if ‘track2’ is not present. |
-| 				   | `cvc`   | `string` | Card Verification Code. |
-| 				   | `expiryDate`   | `string` | Expiry date on card (only applicable for PaymentInstrumentType ‘creditcard’) where expiry date is printed on card. Format MM/YY. |
-       
+|        | `cvc`   | `string` | Card Verification Code. |
+|        | `expiryDate`   | `string` | Expiry date on card (only applicable for PaymentInstrumentType ‘creditcard’) where expiry date is printed on card. Format MM/YY. |
 
 {:.code-header}
 **Response:**
@@ -151,11 +153,8 @@ Content-Type: application/json
 }
 ```
 
-
-
-
 [security]: /giftcard/security
 [purchase]: /giftcard/other-features#purchase
 [deposit]: /giftcard/other-features#deposit
 [balance]: /giftcard/other-features#balance
-[auth]: /giftcard/other-features#auth 
+[auth]: /giftcard/other-features#auth

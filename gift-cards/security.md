@@ -17,11 +17,12 @@ sidebar:
 ---
 
 ----
+
 #### OAuth2
 
-The Payment Api requires an OAuth2 access token for interaction.  
-This application automatically handles token fetching and refreshing by using [Spring Security](https://docs.spring.io/spring-security-oauth2-boot/docs/current/reference/htmlsingle/#boot-features-security-custom-user-info-client).   
-Configuration values are set in [application.yml](https://github.com/PayEx/vas-payment-api-client/blob/master/backend/src/main/resources/application.yml): 
+The Payment Api requires an OAuth2 access token for interaction.
+This application automatically handles token fetching and refreshing by using [Spring Security](https://docs.spring.io/spring-security-oauth2-boot/docs/current/reference/htmlsingle/#boot-features-security-custom-user-info-client).
+Configuration values are set in [application.yml](https://github.com/PayEx/vas-payment-api-client/blob/master/backend/src/main/resources/application.yml):
 
 ```yaml
 # "XXX" Should be replaced by value provided by Swebank Pay
@@ -33,10 +34,12 @@ vas-payment-api:
             clientId: "${CLIENT_ID}:XXX"
             clientSecret: "${CLIENT_SECRET}:XXX"
             accessTokenUri: "${VAS_AUTH_SERVER_URL}:XXX"
-            scope: publicapi 
-            
+            scope: publicapi
+
 ```
+
 And the implementation of these are located in [Oauth2RestTemplateConfiguration.java](https://github.com/PayEx/vas-payment-api-client/blob/master/backend/src/main/java/com/payex/vas/demo/config/security/Oauth2RestTemplateConfiguration.java):
+
 ```java
 public class Oauth2RestTemplateConfiguration {
     //...
@@ -58,16 +61,20 @@ public class Oauth2RestTemplateConfiguration {
 ```
 
 #### HMAC
-The API also requires HMAC authentication to be present in a request.  
-In this client the HMAC value is automatically calculated by [HmacSignatureBuilder.java](https://github.com/PayEx/vas-payment-api-client/blob/master/backend/src/main/java/com/payex/vas/demo/config/security/HmacSignatureBuilder.java) and added to all outgoing requests in [ExternalRequestInterceptor.java](https://github.com/PayEx/vas-payment-api-client/blob/master/backend/src/main/java/com/payex/vas/demo/config/ExternalRequestInterceptor.java) 
 
-HMAC is implemented using SHA-512 secure hash algorithm. 
+The API also requires HMAC authentication to be present in a request.
+In this client the HMAC value is automatically calculated by [HmacSignatureBuilder.java](https://github.com/PayEx/vas-payment-api-client/blob/master/backend/src/main/java/com/payex/vas/demo/config/security/HmacSignatureBuilder.java) and added to all outgoing requests in [ExternalRequestInterceptor.java](https://github.com/PayEx/vas-payment-api-client/blob/master/backend/src/main/java/com/payex/vas/demo/config/ExternalRequestInterceptor.java)
+
+HMAC is implemented using SHA-512 secure hash algorithm.
 
 Expected `Hmac` header format is:
+
 ```text
-HmacSHA512 <user>:<nonce>:<digest>	
+HmacSHA512 <user>:<nonce>:<digest>
 ```
-where `digest` is a Base64 formatted HMAC SHA512 digest of the following string: 
+
+where `digest` is a Base64 formatted HMAC SHA512 digest of the following string:
+
 ```text
 METHOD\n
 RESOURCE\n
@@ -77,11 +84,11 @@ DATE\n
 PAYLOAD\n
 ```
 
-`METHOD` (mandatory) the requested method (in upper case) 
-`RESOURCE` (mandatory) the path to desired resource (without hostname and any query parameters)  
-`NONSE` (mandatory) a unique value for each request ([UUID](https://tools.ietf.org/rfc/rfc4122.txt)) 
+`METHOD` (mandatory) the requested method (in upper case)
+`RESOURCE` (mandatory) the path to desired resource (without hostname and any query parameters)
+`NONSE` (mandatory) a unique value for each request ([UUID](https://tools.ietf.org/rfc/rfc4122.txt))
 `DATE`(optional) same as `Transmission-Time` if provided as seperate header. Uses [ISO8601 standard](https://en.wikipedia.org/wiki/ISO_8601)
-`PAYLOAD` (optional) body of request 
+`PAYLOAD` (optional) body of request
 
 Example request:
 
@@ -95,18 +102,19 @@ curl -X POST \
   -H 'Transmission-Time: 2019-06-18T09:19:15.208257Z' \
   -H 'Session-Id: e0447bd2-ab64-b456-b17b-da274bb8428e' \
   -d '{
-	"accountIdentifier": {
-		"accountKey": "7013369000000000000",
-		"cvc": "123",
-		"expiryDate": "2019-12-31",
-		"instrument": "GC"
-	}
+ "accountIdentifier": {
+  "accountKey": "7013369000000000000",
+  "cvc": "123",
+  "expiryDate": "2019-12-31",
+  "instrument": "GC"
+ }
 }'
 ```
 
-In this example `USER` is user and `SECRET` is secret. 
+In this example `USER` is user and `SECRET` is secret.
 
 The plain string to `digest` would then be:
+
 ```text
 POST
 /payment-api/api/payments/payment-account/balance
@@ -114,21 +122,21 @@ user
 21a0213e-30eb-85ab-b355-a310d31af30e
 2019-06-18T09:19:15.208257Z
 {
-	"accountIdentifier": {
-		"accountKey": "7013360000000000000",
-		"cvc": "123",
-		"expiryDate": "2020-12-31",
-		"instrument": "CC"
-	}
+ "accountIdentifier": {
+  "accountKey": "7013360000000000000",
+  "cvc": "123",
+  "expiryDate": "2020-12-31",
+  "instrument": "CC"
+ }
 }
 ```
 
 The plain `digest` string is then hashed with `HmacSHA512` algorithm and the `SECRET`.
 Finally we Base64 encode the hashed value. This is the final `digest` to be provided in the `Hmac` header.
 
+Final `Hmac` header value:
 
-Final `Hmac` header value: 
-```text 
+```text
 HmacSHA512 user:21a0213e-30eb-85ab-b355-a310d31af30e:oY5Q5Rf1anCz7DRm3GyWR0dvJDnhl/psylfnNCn6FA0NOrQS3L0fvyUsQ1IQ9gQPeLUt9J3IM2zwoSfZpDgRJA==
 ```
 
@@ -199,15 +207,14 @@ function guid() {
 }
 ```
 
-
-
 ### Security documentation
+
 * [OAuth2](https://oauth.net/2/)
 * [Client Credentials](https://www.oauth.com/oauth2-servers/access-tokens/client-credentials/)
 * [The RESTful CookBook: HMAC](http://restcookbook.com/Basics/loggingin/)
 * [HMAC - Wikipedia](https://en.wikipedia.org/wiki/HMAC)
 
-## Test client:
+## Test client
 
 * For more information how to implement the api, see [Test Client][test-client]
 
