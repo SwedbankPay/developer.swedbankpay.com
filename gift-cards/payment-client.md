@@ -2,7 +2,7 @@
 title: Test Client
 sidebar:
   navigation:
-  - title: Payment Api
+  - title: Gift Cards
     items:
     - url: /gift-cards/
       title: Introduction

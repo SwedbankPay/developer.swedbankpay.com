@@ -1,8 +1,8 @@
 ---
-title: Payment Api – Introduction
+title: Gift Cards – Introduction
 sidebar:
   navigation:
-  - title: Payment Api
+  - title: Gift Cards
     items:
     - url: /gift-cards/
       title: Introduction

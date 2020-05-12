@@ -1,8 +1,8 @@
 ---
-title: Payment Api – Security
+title: Gift Cards – Security
 sidebar:
   navigation:
-  - title: Payment Api
+  - title: Gift Cards
     items:
     - url: /gift-cards/
       title: Introduction
