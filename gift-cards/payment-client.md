@@ -82,5 +82,5 @@ mvn --projects backend clean compile jib:dockerBuild
 docker-compose up -d
 ```
 
-[docker-compose]: https://github.com/PayEx/vas-payment-api-client/blob/master/docker-compose.yml
-[payment-client]: https://github.com/PayEx/vas-payment-api-client
+[docker-compose]: https://github.com/SwedbankPay/vas-payment-api-client/blob/master/docker-compose.yml
+[payment-client]: https://github.com/SwedbankPay/vas-payment-api-client

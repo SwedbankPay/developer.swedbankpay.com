@@ -228,10 +228,10 @@ function guid() {
 
 [test-client]: /gift-cards/payment-client
 [spring-security]: https://docs.spring.io/spring-security-oauth2-boot/docs/current/reference/htmlsingle/#boot-features-security-custom-user-info-client
-[application-yml]: https://github.com/PayEx/vas-payment-api-client/blob/master/backend/src/main/resources/application.yml
-[oauth-rest-java]: https://github.com/PayEx/vas-payment-api-client/blob/master/backend/src/main/java/com/payex/vas/demo/config/security/Oauth2RestTemplateConfiguration.java
-[hmac-signature-builder]: https://github.com/PayEx/vas-payment-api-client/blob/master/backend/src/main/java/com/payex/vas/demo/config/security/HmacSignatureBuilder.java
-[external-request-interceptor]: https://github.com/PayEx/vas-payment-api-client/blob/master/backend/src/main/java/com/payex/vas/demo/config/ExternalRequestInterceptor.java
+[application-yml]: https://github.com/SwedbankPay/vas-payment-api-client/blob/master/backend/src/main/resources/application.yml
+[oauth-rest-java]: https://github.com/SwedbankPay/vas-payment-api-client/blob/master/backend/src/main/java/com/swedbankpay/vas/demo/config/security/Oauth2RestTemplateConfiguration.java
+[hmac-signature-builder]: https://github.com/SwedbankPay/vas-payment-api-client/blob/master/backend/src/main/java/com/swedbankpay/vas/demo/config/security/HmacSignatureBuilder.java
+[external-request-interceptor]: https://github.com/SwedbankPay/vas-payment-api-client/blob/master/backend/src/main/java/com/swedbankpay/vas/demo/config/ExternalRequestInterceptor.java
 [uuid]: https://tools.ietf.org/rfc/rfc4122.txt
 [iso-8601]: https://en.wikipedia.org/wiki/ISO_8601
 [oauth2]: https://oauth.net/2/
