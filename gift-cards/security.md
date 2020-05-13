@@ -120,13 +120,14 @@ curl -X POST \
 
 In this example `USER` is user and `SECRET` is secret.
 
-The plain string to `digest` would then be:
+The plain text string to `digest` would then look like the following:
 
-```http
-POST /payment-api/api/payments/payment-account/balance HTTP/1.1
-Hmac: HmacSHA512 user:21a0213e-30eb-85ab-b355-a310d31af30e:oY5Q5Rf1anCz7DRm3GyWR0dvJDnhl/psylfnNCn6FA0NOrQS3L0fvyUsQ1IQ9gQPeLUt9J3IM2zwoSfZpDgRJA==
-Content-Type: application/json
-
+```text
+POST
+/payment-api/api/payments/payment-account/balance
+user
+21a0213e-30eb-85ab-b355-a310d31af30e
+2019-06-18T09:19:15.208257Z
 {
     "accountIdentifier": {
         "accountKey": "7013360000000000000",
