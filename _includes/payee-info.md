@@ -1,6 +1,6 @@
-{% assign api_resource = include.api_resource | default: "paymentorders" %}
+{% assign payment_instrument = include.payment_instrument | default: "paymentorders" %}
 {% assign length = 50 %}
-{% case api_resource %}
+{% case payment_instrument %}
 {% when "paymentorders" %}
     {% assign length = 30 %}
 {% when "swish" %}
@@ -18,7 +18,7 @@ a corporation etc) related to a specific payment.
 **Request**
 
 ```http
-GET /psp/{{ api_resource }}/payments/{{ page.payment_id }}/payeeInfo HTTP/1.1
+GET /psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/payeeInfo HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -32,9 +32,9 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
+    "payment": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}",
     "payeeInfo": {
-        "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/payeeInfo",
+        "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/payeeInfo",
         "payeeId": "{{ page.merchant_id }}"
         "payeeReference": "EN1234",
         "payeeName": "TestMerchant1",

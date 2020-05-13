@@ -21,7 +21,7 @@ sidebar:
 
 {% include payment-link.md %}
 
-{% include payment-resource.md  payment_instrument="vipps" show_status_operations=true%}
+{% include payment-resource.md  api_resource="vipps" show_status_operations=true%}
 
 {% include payment-transaction-states.md %}
 
@@ -191,7 +191,7 @@ payment altogether or creating an authorization transaction through the
 
 {% include payment-url.md full_reference=true %}
 
-{% include prices.md payment_instrument="vipps" %}
+{% include prices.md api_resource="vipps" %}
 
 ## Description
 
@@ -203,7 +203,7 @@ payment altogether or creating an authorization transaction through the
 
 {% include transactions-reference.md api_resource="vipps" %}
 
-{% include callback-reference.md payment_instrument="vipps" %}
+{% include callback-reference.md api_resource="vipps" %}
 
 ## Problem messages
 

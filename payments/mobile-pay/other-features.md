@@ -14,7 +14,7 @@ sidebar:
       title: Other Features
 ---
 
-{% include payment-resource.md payment_instrument="mobilepay" %}
+{% include payment-resource.md api_resource="mobilepay" %}
 
 ### Create Payment
 
@@ -528,7 +528,7 @@ Content-Type: application/json
 
 The response will be the `payment` resource with its `state` set to `Aborted`.
 
-{% include settlement-reconciliation.md payment_instrument="mobilepay" %}
+{% include settlement-reconciliation.md api_resource="mobilepay" %}
 
 {% include payment-link.md %}
 
@@ -536,11 +536,11 @@ The response will be the `payment` resource with its `state` set to `Aborted`.
 
 {% include description.md %}
 
-{% include callback-reference.md payment_instrument="mobilepay" %}
+{% include callback-reference.md api_resource="mobilepay" %}
 
 {% include transactions-reference.md api_resource="mobilepay" %}
 
-{% include prices.md payment_instrument="mobilepay" %}
+{% include prices.md api_resource="mobilepay" %}
 
 {% include payee-info.md payment_instrument="mobilepay" %}
 

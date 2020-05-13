@@ -18,7 +18,7 @@ sidebar:
       title: Other Features
 ---
 
-{% include payment-resource.md payment_instrument="swish" showStatusOperations=true%}
+{% include payment-resource.md api_resource="swish" showStatusOperations=true%}
 
 {% include payment-transaction-states.md %}
 
@@ -182,7 +182,7 @@ be connected to a Swish account.
 
 {% include payment-url.md full_reference=true %}
 
-{% include prices.md payment_instrument="swish" %}
+{% include prices.md api_resource="swish" %}
 
 {% include payee-info.md payment_instrument="swish" %}
 
@@ -190,7 +190,7 @@ be connected to a Swish account.
 
 {% include transactions-reference.md api_resource="swish" %}
 
-{% include callback-reference.md payment_instrument="swish" %}
+{% include callback-reference.md api_resource="swish" %}
 
 ### Problem messages
 

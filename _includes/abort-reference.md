@@ -1,4 +1,4 @@
-{% assign instrument = include.instrument | default: "selecting the payment instrument" %}
+{% assign api_resource = include.api_resource | default: "selecting the payment instrument" %}
 
 ## Abort
 
@@ -10,7 +10,7 @@ You need to include the following HTTP body:
 **Request**
 
 ```http
-PATCH /psp/{{ instrument }}/payments/{{ page.payment_id }} HTTP/1.1
+PATCH /psp/{{ api_resource }}/payments/{{ page.payment_id }} HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -32,32 +32,32 @@ Content-Type: application/json
 
 {
     "payment": {
-        "id": "/psp/{{ instrument }}/payments/{{ page.payment_id }}",
+        "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
         "number": 70100130293,
         "created": "2019-01-09T13:11:28.371179Z",
         "updated": "2019-01-09T13:11:46.5949967Z",
-        "instrument": "{{ instrument | capitalize }}",
+        "instrument": "{{ api_resource | capitalize }}",
         "operation": "Purchase",
         "intent": "Authorization",
         "state": "Aborted",
         "currency": "SEK",
         "prices": {
-            "id": "/psp/{{ instrument }}/payments/{{ page.payment_id }}/prices"
+            "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/prices"
         },
         "amount": 0,
-        "description": "{{ instrument }} Test",
+        "description": "{{ api_resource }} Test",
         "payerReference": "100500",
         "initiatingSystemUserAgent": "PostmanRuntime/7.1.1",
         "userAgent": "Mozilla/5.0",
         "language": "nb-NO",
         "urls": {
-            "id": "/psp/{{ instrument }}/payments/{{ page.payment_id }}/urls"
+            "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/urls"
         },
         "payeeInfo": {
-            "id": "/psp/{{ instrument }}/payments/{{ page.payment_id }}/payeeinfo"
+            "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/payeeinfo"
         },
         "metadata": {
-            "id": "/psp/{{ instrument }}/payments/{{ page.payment_id }}/metadata"
+            "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/metadata"
         }
     },
     "operations": []

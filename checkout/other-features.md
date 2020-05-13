@@ -1380,13 +1380,13 @@ although that might be possible in the future.
 | `systemerror`        | `500`  | A generic error message.                                                                                                                           |
 | `configurationerror` | `500`  | A error relating to configuration issues.                                                                                                          |
 
-{% include expand-parameter.md payment_instrument="paymentorders" %}
+{% include expand-parameter.md api_resource="paymentorders" %}
 
 {% include payee-info.md payment_instrument="paymentorders" %}
 
 {% include merchant-authenticated-consumer.md %}
 
-{% include settlement-reconciliation.md payment_instrument="paymentorders" %}
+{% include settlement-reconciliation.md api_resource="paymentorders" %}
 
 ## Updating Payment Menu
 

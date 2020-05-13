@@ -26,7 +26,7 @@ sidebar:
 Credit Card. This section has extented code examples and features that were not
 covered by the other subsections." %}
 
-{% include payment-resource.md payment_instrument="card" show_status_operations=true %}
+{% include payment-resource.md api_resource="card" show_status_operations=true %}
 
 {% include payment-transaction-states.md %}
 
@@ -60,7 +60,7 @@ document is described in the following section.
 
 {% include one-click-payments.md %}
 
-{% include callback-reference.md payment_instrument="creditcard" %}
+{% include callback-reference.md api_resource="creditcard" %}
 
 {% include payment-link.md %}
 

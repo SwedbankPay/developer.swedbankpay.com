@@ -296,7 +296,7 @@ mcom=true %}
 **Request**
 
 ```http
-GET /psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/ HTTP/1.1
+GET /psp/{{ api_resource }}/payments/{{ page.payment_id }}/ HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -311,7 +311,7 @@ Content-Type: application/json
 
 {
     "payment": {
-        "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}",
+        "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
         "number": 1234567890,
         "created": "2016-09-14T13:21:29.3182115Z",
         "updated": "2016-09-14T13:21:57.6627579Z",
@@ -329,37 +329,37 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",
         "prices": {
-            "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/prices"
+            "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/prices"
         },
         "payeeInfo": {
-            "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/payeeInfo"
+            "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/payeeInfo"
         },
         "urls": {
-            "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/urls"
+            "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/urls"
         },
         "transactions": {
-            "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/transactions"
+            "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/transactions"
         },
         "captures": {
-            "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/captures"
+            "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/captures"
         },
         "reversals": {
-            "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/reversals"
+            "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/reversals"
         },
         "cancellations": {
-            "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/cancellations"
+            "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/cancellations"
         }
     },
     "operations": [
         {
             "method": "PATCH",
-            "href": "{{ page.api_url }}/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}",
+            "href": "{{ page.api_url }}/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
             "rel": "update-payment-abort",
             "contentType": "application/json"
         },
         {
             "method": "POST",
-            "href": "{{ page.api_url }}/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/captures",
+            "href": "{{ page.api_url }}/psp/{{ api_resource }}/payments/{{ page.payment_id }}/captures",
             "rel": "create-capture",
             "contentType": "application/json"
         }

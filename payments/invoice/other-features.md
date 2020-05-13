@@ -40,11 +40,11 @@ set to value `FinancingConsumer` are listed below.
 
 {% include alert-callback-url.md documentation_section="invoice" %}
 
-{% include authorizations-resource.md payment_instrument="invoice" %}
+{% include authorizations-resource.md api_resource="invoice" %}
 
 ## Payment Resource
 
-{% include payment-resource.md payment_instrument="invoice"
+{% include payment-resource.md api_resource="invoice"
 showStatusOperations=true %}
 
 {% include payment-transaction-states.md %}
@@ -529,7 +529,7 @@ transaction made towards a payment, as previously described.
 
 {% include transactions-reference.md api_resource="invoice" %}
 
-{% include callback-reference.md payment_instrument="invoice" %}
+{% include callback-reference.md api_resource="invoice" %}
 
 {% include payment-link.md show_3d_secure=false %}
 
@@ -541,7 +541,7 @@ transaction made towards a payment, as previously described.
 
 {% include payee-info.md payment_instrument="invoice" %}
 
-{% include prices.md payment_instrument="invoice" %}
+{% include prices.md api_resource="invoice" %}
 
 {% include settlement-reconciliation.md %}
 
