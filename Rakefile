@@ -11,8 +11,24 @@ end
 
 # Rake Jekyll tasks
 task :build do
-  puts 'Building site...'.bold
-  Jekyll::Commands::Build.process(profile: true)
+  git_branch = `git rev-parse --abbrev-ref HEAD`
+  git_branch.strip!
+
+  if git_branch == 'HEAD' then
+    git_branch = `git describe --contains --always --all`
+    git_branch.strip!
+  end
+
+  puts "Building Jekyll site (#{git_branch})...".bold
+
+  options = {
+    "github" => {
+      "branch" => git_branch
+    },
+    "profile" => true
+  }
+
+  Jekyll::Commands::Build.process(options)
 end
 
 task :clean do
