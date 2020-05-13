@@ -232,7 +232,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{% include transaction-response.md payment_instrument="vipps" transaction="authorization" %}
+{% include transaction-response.md api_resource="vipps" transaction="authorization" %}
 
 {:.code-header}
 **Request**
@@ -244,7 +244,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{% include transaction-response.md payment_instrument="vipps" transaction="authorization" %}
+{% include transaction-response.md api_resource="vipps" transaction="authorization" %}
 
 ## Captures
 
@@ -260,7 +260,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{% include transaction-list-response.md payment_instrument="vipps" transaction="capture" %}
+{% include transaction-list-response.md api_resource="vipps" transaction="capture" %}
 
 ## Create capture transaction
 
@@ -286,7 +286,7 @@ Content-Type: application/json
 }
 ```
 
-{% include transaction-response.md payment_instrument="vipps" transaction="capture" %}
+{% include transaction-response.md api_resource="vipps" transaction="capture" %}
 
 ## Cancellations
 
@@ -303,7 +303,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{% include transaction-list-response.md payment_instrument="vipps" transaction="cancel" %}
+{% include transaction-list-response.md api_resource="vipps" transaction="cancel" %}
 
 ## Create cancellation transaction
 
@@ -329,7 +329,7 @@ Content-Type: application/json
 }
 ```
 
-{% include transaction-response.md payment_instrument="vipps" transaction="cancel" %}
+{% include transaction-response.md api_resource="vipps" transaction="cancel" %}
 
 ## Reversals
 
@@ -346,7 +346,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{% include transaction-list-response.md payment_instrument="vipps" transaction="reversal" %}
+{% include transaction-list-response.md api_resource="vipps" transaction="reversal" %}
 
 ### Create reversal transaction
 
@@ -381,7 +381,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`description`    | `string`     | A textual description of the capture                                                                  |
 | {% icon check %} | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the reversal transaction. See [`payeeReference`][payee-reference] for details. |
 
-{% include transaction-response.md payment_instrument="vipps" transaction="reversal" %}
+{% include transaction-response.md api_resource="vipps" transaction="reversal" %}
 
 {% include abort-reference.md payment_instrument="vipps" %}
 

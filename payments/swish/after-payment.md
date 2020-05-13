@@ -293,7 +293,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{% include transaction-list-response.md payment_instrument="swish" transaction="reversal" %}
+{% include transaction-list-response.md api_resource="swish" transaction="reversal" %}
 
 ### Create Reversal transaction
 
@@ -330,7 +330,7 @@ Content-Type: application/json
 | {% icon check %}︎ | └➔&nbsp;`description`    | `string`     | A textual description of the capture                                                                                                                                     |
 | {% icon check %}︎ | └➔&nbsp;`payeeReference` | `string(35)` | A  reference that must match the  `payeeReference` of the sales transaction you want to reverse. See [`payeeReference`][technical-reference-payeeReference] for details. |
 
-{% include transaction-response.md payment_instrument="swish" transaction="reversal" %}
+{% include transaction-response.md api_resource="swish" transaction="reversal" %}
 
 ## Capture
 

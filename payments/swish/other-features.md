@@ -188,7 +188,7 @@ be connected to a Swish account.
 
 {% include expand-parameter.md %}
 
-{% include transactions-reference.md payment_instrument="swish" %}
+{% include transactions-reference.md api_resource="swish" %}
 
 {% include callback-reference.md payment_instrument="swish" %}
 

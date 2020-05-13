@@ -76,7 +76,7 @@ Content-Type: application/json
 The `cancel` resource will be returned, containing information about the
 newly created `cancel` transaction.
 
-{% include transaction-response.md payment_instrument="invoice" transaction="cancel" %}
+{% include transaction-response.md api_resource="invoice" transaction="cancel" %}
 
 ### Inspecting the Cancellation
 
@@ -94,7 +94,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{% include transaction-list-response.md payment_instrument="invoice" transaction="cancel" %}
+{% include transaction-list-response.md api_resource="invoice" transaction="cancel" %}
 
 #### Cancel Sequence
 
@@ -158,7 +158,7 @@ Content-Type: application/json
 
 The `reversal` resource will be returned, containing information about the newly created reversal transaction.
 
-{% include transaction-response.md payment_instrument="invoice" transaction="reversal" %}
+{% include transaction-response.md api_resource="invoice" transaction="reversal" %}
 
 ### Inspecting the Reversal
 
@@ -175,7 +175,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{% include transaction-list-response.md payment_instrument="invoice" transaction="reversal" %}
+{% include transaction-list-response.md api_resource="invoice" transaction="reversal" %}
 
 #### Reversal Sequence
 

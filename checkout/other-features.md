@@ -529,11 +529,11 @@ with its `state` set to `Aborted`.
 
 ### Transactions
 
-{% include transactions.md payment_instrument="paymentorders" %}
+{% include transactions.md api_resource="paymentorders" %}
 
 #### Transaction
 
-{% include transaction.md payment_instrument="paymentorders" %}
+{% include transaction.md api_resource="paymentorders" %}
 
 ## Recurring Payments
 

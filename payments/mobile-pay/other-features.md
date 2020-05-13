@@ -285,7 +285,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{% include transaction-list-response.md payment_instrument="mobilepay"
+{% include transaction-list-response.md api_resource="mobilepay"
     transaction="authorization" %}                                                                                                        |
 
 ### Create authorization transaction
@@ -295,7 +295,7 @@ to the hyperlink returned in the `redirect-authorization` request.
 
 ## Captures
 
-{% include transaction-list-response.md payment_instrument="mobilepay"
+{% include transaction-list-response.md api_resource="mobilepay"
     transaction="capture" %}
 
 ### Create capture transaction
@@ -332,12 +332,12 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`description`    | `string`     | A textual description of the capture transaction.                                                    |
 | {% icon check %} | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the capture transaction. See [`payeeReference`][payee-reference] for details. |
 
-{% include transaction-response.md payment_instrument="mobilepay"
+{% include transaction-response.md api_resource="mobilepay"
     transaction="capture"%}
 
 ## Cancellations
 
-{% include transaction-list-response.md payment_instrument="mobilepay"
+{% include transaction-list-response.md api_resource="mobilepay"
     transaction="cancellation" %}
 
 ### Create cancellation transaction
@@ -369,12 +369,12 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`description`    | `string`     | A textual description of the reason for the cancellation.                                                 |
 | {% icon check %} | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the cancellation transaction. See [`payeeReference`][payee-reference] for details. |
 
-{% include transaction-response.md payment_instrument="mobilepay"
+{% include transaction-response.md api_resource="mobilepay"
     transaction="cancellation"%}
 
 ## Reversals
 
-{% include transaction-list-response.md payment_instrument="mobilepay"
+{% include transaction-list-response.md api_resource="mobilepay"
     transaction="reversal" %}
 
 ### Create reversal transaction
@@ -410,7 +410,7 @@ Content-Type: application/json
 | {% icon check %}︎ | └➔&nbsp;`description`    | `string`     | A textual description of the capture                                                                  |
 | {% icon check %}︎ | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the reversal transaction. See [`payeeReference`][payee-reference] for details. |
 
-{% include transaction-response.md payment_instrument="mobilepay"
+{% include transaction-response.md api_resource="mobilepay"
     transaction="reversal"%}
 
 ## Capture Sequence
@@ -538,7 +538,7 @@ The response will be the `payment` resource with its `state` set to `Aborted`.
 
 {% include callback-reference.md payment_instrument="mobilepay" %}
 
-{% include transactions-reference.md payment_instrument="mobilepay" %}
+{% include transactions-reference.md api_resource="mobilepay" %}
 
 {% include prices.md payment_instrument="mobilepay" %}
 
