@@ -1382,7 +1382,7 @@ although that might be possible in the future.
 
 {% include expand-parameter.md api_resource="paymentorders" %}
 
-{% include payee-info.md payment_instrument="paymentorders" %}
+{% include payee-info.md api_resource="paymentorders" %}
 
 {% include merchant-authenticated-consumer.md %}
 

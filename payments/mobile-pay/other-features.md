@@ -542,7 +542,7 @@ The response will be the `payment` resource with its `state` set to `Aborted`.
 
 {% include prices.md api_resource="mobilepay" %}
 
-{% include payee-info.md payment_instrument="mobilepay" %}
+{% include payee-info.md api_resource="mobilepay" %}
 
 {% include iterator.html prev_href="after-payment"
                          prev_title="Back: After Payment" %}

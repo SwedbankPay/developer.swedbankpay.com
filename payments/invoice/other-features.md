@@ -539,7 +539,7 @@ transaction made towards a payment, as previously described.
 
 {% include description.md %}
 
-{% include payee-info.md payment_instrument="invoice" %}
+{% include payee-info.md api_resource="invoice" %}
 
 {% include prices.md api_resource="invoice" %}
 

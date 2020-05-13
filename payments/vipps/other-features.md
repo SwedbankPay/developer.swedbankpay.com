@@ -197,7 +197,7 @@ payment altogether or creating an authorization transaction through the
 
 {% include description.md %}
 
-{% include payee-info.md payment_instrument="vipps" %}
+{% include payee-info.md api_resource="vipps" %}
 
 {% include payee-reference.md %}
 

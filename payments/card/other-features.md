@@ -66,7 +66,7 @@ document is described in the following section.
 
 {% include create-authorization-transaction.md %}
 
-{% include payee-info.md payment_instrument="creditcard" %}
+{% include payee-info.md api_resource="creditcard" %}
 
 {% include prices.md %}
 
