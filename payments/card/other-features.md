@@ -215,7 +215,7 @@ payment"  %}
 [capture]: /payments/card/capture
 [callback]: /payments/card/other-features#callback
 [card-badge]: /assets/img/card-badge.png
-[dankort-eu]:  https://www.dankort.dk/Pages/Dankort-eller-Visa.aspx
+[dankort-eu]: https://www.dankort.dk/Pages/Dankort-eller-Visa.aspx
 [mcc]: https://en.wikipedia.org/wiki/Merchant_category_code
 [price-resource]: /payments/card/other-features#prices
 [redirect]: /payments/card/redirect
