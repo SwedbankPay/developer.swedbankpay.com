@@ -72,20 +72,19 @@ document is described in the following section.
 
 ## Co-badge Card Choice for Dankort
 
-Due to new EU rules (09.06.2016) regarding cards that have
-more than one payment application, we have developed support for the end users of
-Dankort to be able to choose their preferred payment application on the
-SwedbankPay payment page.
-Read more about this EU legislation at [Dankort][dankort-eu].
+Due to EU regulations from 2016-06-09 regarding cards that have more than
+one payment application, we have developed support for the end users of Dankort
+to be able to choose their preferred payment application on the Swedbank Pay
+payment page. Read more about this EU legislation at [Dankort][dankort-eu].
 
 As a merchant you are able to set a priority selection of payment application by
 contacting [SwedbankPay Support][swedbankpay-support]. The end user will always
 be able to override this priority selection on the payment page.
 
-If you want more information about Co-badge Card Choice for Dankort users please contact
-[SwedankPay Support][swedbankpay-support]. The example below shows the
-payment window where there payer can select between Dankort or Visa before completing
-the payment.
+If you want more information about Co-badge Card Choice for Dankort users please
+contact [SwedankPay Support][swedbankpay-support]. The example below shows the
+payment window where there payer can choose between Dankort or Visa before
+completing the payment.
 
 ![card-badge][card-badge]{:height="500px" width="425px"}
 
