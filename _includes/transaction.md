@@ -1,4 +1,5 @@
 {% assign api_resource = include.api_resource | default: 'creditcard' %}
+{% assign documentation_section = include.documentation_section %}
 
 The `transaction` resource contains the generic details of a transaction on a
 specific payment.

@@ -27,7 +27,8 @@ sidebar:
 
 ## Capture
 
-{% include transaction-list-response.md api_resource="mobilepay" %}
+{% include transaction-list-response.md api_resource="mobilepay"
+documentation_section="mobilepay" %}
 
 ## Create capture transaction
 

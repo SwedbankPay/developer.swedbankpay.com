@@ -26,7 +26,8 @@ sidebar:
 Credit Card. This section has extented code examples and features that were not
 covered by the other subsections." %}
 
-{% include payment-resource.md api_resource="card" show_status_operations=true %}
+{% include payment-resource.md api_resource="card" documentation_section="card"
+show_status_operations=true %}
 
 {% include payment-transaction-states.md %}
 

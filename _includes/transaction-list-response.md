@@ -1,5 +1,6 @@
 {% assign api_resource = include.api_resource  | default: "paymentorder" %}
 {% assign transaction = include.transaction | default: "capture" %}
+{% assign documentation_section = include.documentation_section %}
 
 {% if transaction == "cancel" %}
     {% assign plural = "cancellations" %}

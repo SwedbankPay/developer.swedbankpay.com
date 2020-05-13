@@ -1,4 +1,5 @@
 {% assign api_resource = include.api_resource | default: "creditcard" %}
+{% assign documentation_section = include.documentation_section %}
 {% assign show_status_operations = include.show_status_operations | default: false %}
 
 ## Payment Resource

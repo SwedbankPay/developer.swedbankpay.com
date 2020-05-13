@@ -14,7 +14,7 @@ sidebar:
       title: Other Features
 ---
 
-{% include payment-resource.md api_resource="mobilepay" %}
+{% include payment-resource.md api_resource="mobilepay" documentation_section="mobilepay" %}
 
 ### Create Payment
 
@@ -177,7 +177,7 @@ Content-Type: application/json
 | └➔&nbsp;`intent`                    | `string`     | The intent sent in on request                                                                                                                                                                    |
 | └➔&nbsp;`state`                     | `string`     | `Ready`, `Pending`, `Failed` or `Aborted`. Indicates the state of the payment. This field is only for status display purposes.                                                                   |
 | └➔&nbsp;`currency`                  | `string`     | The currency used                                                                                                                                                                                |
-| └➔&nbsp;`description`               | `string(40)` | {% include field-description-description.md documentation_section="mobile-pay" %}                                                                                                                   |
+| └➔&nbsp;`description`               | `string(40)` | {% include field-description-description.md documentation_section="mobilepay" %}                                                                                                                   |
 | └➔&nbsp;`payerReference`            | `string`     | The reference to the payer (consumer/end-user) from the merchant system, like mobile number, customer number etc.                                                                                |
 | └➔&nbsp;`initiatingSystemUserAgent` | `string`     | The system user agent used                                                                                                                                                                       |
 | └➔&nbsp;`userAgent`                 | `string`     | The [user agent][user-agent] string of the consumer's browser.                                                                                                                                   |

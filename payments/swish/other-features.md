@@ -18,7 +18,8 @@ sidebar:
       title: Other Features
 ---
 
-{% include payment-resource.md api_resource="swish" showStatusOperations=true%}
+{% include payment-resource.md api_resource="swish" documentation_section="swish"
+showStatusOperations=true%}
 
 {% include payment-transaction-states.md %}
 

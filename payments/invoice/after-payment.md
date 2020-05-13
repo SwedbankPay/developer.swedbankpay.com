@@ -27,7 +27,7 @@ GET request on the payment resource, which contains the paymentID generated in
 the first step, to receive the state of the transaction. You will also be able
 to see the available operations after posting a payment.
 
-{% include payment-resource.md api_resource="invoice" %}
+{% include payment-resource.md api_resource="invoice" documentation_section="invoice" %}
 
 * **Abort:** It is possible to abort the process if the payment has no
   successful transactions. [See the `abort`

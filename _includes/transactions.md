@@ -1,4 +1,5 @@
 {% assign api_resource = include.api_resource | default: 'creditcard' %}
+{% assign documentation_section = include.documentation_section %}
 
 A payment contains sub-resources in the form of `transactions`. Most operations
 performed on a payment ends up as a transaction. The different types of
