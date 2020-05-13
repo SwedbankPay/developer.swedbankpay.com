@@ -70,6 +70,21 @@ document is described in the following section.
 
 {% include prices.md %}
 
+## Co-badge Card Choice
+
+Due to EU rules that entered into force 09.06.2016 regarding cards that have
+more than one payment application we have developed support for the end user
+to be able to choose payment application on SwedbankPay payment page.
+
+As a merchant you are able to set a priority selection of payment application by
+contacting [SwedbankPay Support][swedbankpay-support]. The end user will always
+be able to override this priority selection on the payment page.
+
+If you want more information about Co-badge Card Choice please contact
+[SwedankPay Support][swedbankpay-support].
+
+![card-badge][card-badge]{:height="500px" width="425px"}
+
 {% include settlement-reconciliation.md %}
 
 {% include card-problem-messages.md %}
@@ -196,6 +211,7 @@ payment"  %}
 [cancel]: /payments/card/after-payment#cancellations
 [capture]: /payments/card/capture
 [callback]: /payments/card/other-features#callback
+[card-badge]: /assets/img/card-badge.png
 [mcc]: https://en.wikipedia.org/wiki/Merchant_category_code
 [price-resource]: /payments/card/other-features#prices
 [redirect]: /payments/card/redirect
@@ -204,6 +220,7 @@ payment"  %}
 [payee-reference]: #payee-reference
 [split-settlement]: #split-settlement
 [settlement-and-reconciliation]: #settlement-and-reconciliation
+[swedbankpay-support]: https://www.swedbankpay.se/support
 [recurrence]: #recur
 [verify]: #verify
 [payout]: #payout
