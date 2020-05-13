@@ -9,6 +9,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Docker compose up with rake
+      env:
+        GITHUB_BRANCH: ${{ github.head_ref }}
       run: |
         docker-compose \
           -f docker-compose.yml \

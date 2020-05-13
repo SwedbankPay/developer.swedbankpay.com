@@ -11,7 +11,7 @@ end
 
 # Rake Jekyll tasks
 task :build do
-  git_branch = `git rev-parse --abbrev-ref HEAD`
+  git_branch = ENV.has_key?("GITHUB_BRANCH") ? ENV["GITHUB_BRANCH"] : `git rev-parse --abbrev-ref HEAD`
   git_branch.strip!
   git_parent_commits = `git show --no-patch --format="%P"`.split(" ")
 
