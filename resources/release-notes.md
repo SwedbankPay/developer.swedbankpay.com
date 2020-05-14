@@ -35,7 +35,7 @@ this very documentation, not to a version of any APIs described by it." %}
 
 ### Version 1.10.0
 
-* Added a new section [Gift Cards][gift-cards] for Payment API documentation.
+* Added a new [Gift Cards][gift-cards] section with descriptions of our Gift Cards API.
 * Added a new section [Co-badge Card Choice for Dankort][co-badge-card] in
   [Card Payments][card-payment-url].
 
