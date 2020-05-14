@@ -3,8 +3,8 @@
 
 ## Transactions
 
-{% include transactions.md api_resource=api_resource  %}
+{% include transactions.md api_resource=api_resource %}
 
 ### Transaction
 
-{% include transaction.md api_resource=api_resource  %}
+{% include transaction.md api_resource=api_resource %}

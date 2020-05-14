@@ -262,7 +262,8 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{% include transaction-list-response.md api_resource="vipps" transaction="capture" %}
+{% include transaction-list-response.md api_resource="vipps"
+documentation_section="vipps" transaction="capture" %}
 
 ## Create capture transaction
 
@@ -306,7 +307,8 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{% include transaction-list-response.md api_resource="vipps" transaction="cancel" %}
+{% include transaction-list-response.md api_resource="vipps"
+documentation_section="vipps" transaction="cancel" %}
 
 ## Create cancellation transaction
 
@@ -350,7 +352,8 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{% include transaction-list-response.md api_resource="vipps" transaction="reversal" %}
+{% include transaction-list-response.md api_resource="vipps"
+documentation_section="vipps" transaction="reversal" %}
 
 ### Create reversal transaction
 

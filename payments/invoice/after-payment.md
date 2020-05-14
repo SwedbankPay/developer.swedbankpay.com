@@ -95,7 +95,8 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{% include transaction-list-response.md api_resource="invoice" transaction="cancel" %}
+{% include transaction-list-response.md api_resource="invoice"
+documentation_section="invoice" transaction="cancel" %}
 
 #### Cancel Sequence
 
@@ -177,7 +178,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{% include transaction-list-response.md api_resource="invoice" transaction="reversal" %}
+{% include transaction-list-response.md api_resource="invoice" documentation_section="invoice" transaction="reversal" %}
 
 #### Reversal Sequence
 

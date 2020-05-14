@@ -285,8 +285,8 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{% include transaction-list-response.md api_resource="mobilepay"
-    transaction="authorization" %}                                                                                                        |
+{% include transaction-list-response.md api_resource="mobilepay" documentation_section="mobilepay"
+transaction="authorization" %}
 
 ### Create authorization transaction
 
@@ -296,7 +296,7 @@ to the hyperlink returned in the `redirect-authorization` request.
 ## Captures
 
 {% include transaction-list-response.md api_resource="mobilepay"
-    transaction="capture" %}
+documentation_section="mobilepay" transaction="capture" %}
 
 ### Create capture transaction
 
@@ -338,7 +338,7 @@ documentation_section="mobilepay" transaction="capture"%}
 ## Cancellations
 
 {% include transaction-list-response.md api_resource="mobilepay"
-    transaction="cancellation" %}
+documentation_section="mobilepay" transaction="cancellation" %}
 
 ### Create cancellation transaction
 
@@ -375,7 +375,7 @@ documentation_section="mobilepay" transaction="cancellation"%}
 ## Reversals
 
 {% include transaction-list-response.md api_resource="mobilepay"
-    transaction="reversal" %}
+documentation_section="mobilepay" transaction="reversal" %}
 
 ### Create reversal transaction
 

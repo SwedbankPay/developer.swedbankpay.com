@@ -293,7 +293,8 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{% include transaction-list-response.md api_resource="swish" transaction="reversal" %}
+{% include transaction-list-response.md api_resource="swish"
+documentation_section="swish" transaction="reversal" %}
 
 ### Create Reversal transaction
 
