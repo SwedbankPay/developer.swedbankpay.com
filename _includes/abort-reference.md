@@ -1,4 +1,4 @@
-{% assign api_resource = include.api_resource | default: "selecting the payment instrument" %}
+{% assign api_resource = include.api_resource | default: "api-resource-not-set" %}
 
 ## Abort
 
