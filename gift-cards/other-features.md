@@ -67,7 +67,7 @@ Content-Type: application/json
 |     Required     | Field                   | Type      | Description                                                                                                                                                                             |
 | :--------------: | :---------------------- | :-------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | {% icon check %} | `accountIdentifier`     | `Object`  |                                                                                                                                                                                         |
-|                  | `accountId`             | `string`  | PayEx internal id for card/account.                                                                                                                                                     |
+|                  | `accountId`             | `string`  | Swedbank Pay internal id for card/account.                                                                                                                                                     |
 | {% icon check %} | `accountKey`            | `string`  | Primary Account Number (PAN) for card/account. This is mandatory if ‘track2’ is not present.                                                                                            |
 |                  | `cvc`                   | `string`  | Card Verification Code.                                                                                                                                                                 |
 |                  | `encryptedPin`          | `string`  | If ‘000’ is set on authorization request, encrypted PIN block will be returned here.                                                                                                    |
@@ -196,7 +196,7 @@ Content-Type: application/json
 |     Required     | Field                   | Type      | Description                                                                                                                     |
 | :--------------: | :---------------------- | :-------- | :------------------------------------------------------------------------------------------------------------------------------ |
 | {% icon check %} | `accountIdentifier`     | `Object`  |                                                                                                                                 |
-|                  | `accountId`             | `string`  | PayEx internal id for card/account.                                                                                             |
+|                  | `accountId`             | `string`  | Swedbank Pay internal id for card/account.                                                                                             |
 | {% icon check %} | `accountKey`            | `string`  | Primary Account Number (PAN) for card/account. This is mandatory if ‘track2’ is not present.                                    |
 |                  | `cvc`                   | `string`  | Card Verification Code.                                                                                                         |
 |                  | `encryptedPin`          | `string`  | If ‘000’ is set on authorization request, encrypted PIN block will be returned here.                                            |
@@ -305,7 +305,7 @@ Content-Type: application/json
 |     Required     | Field               | Type     | Description                                                                                                                     |
 | :--------------: | :------------------ | :------- | :------------------------------------------------------------------------------------------------------------------------------ |
 | {% icon check %} | `accountIdentifier` | `Object` |                                                                                                                                 |
-|                  | `accountId`         | `string` | PayEx internal id for card/account.                                                                                             |
+|                  | `accountId`         | `string` | Swedbank Pay internal id for card/account.                                                                                             |
 | {% icon check %} | `accountKey`        | `string` | Primary Account Number (PAN) for card/account. This is mandatory if ‘track2’ is not present.                                    |
 |                  | `cvc`               | `string` | Card Verification Code.                                                                                                         |
 |                  | `encryptedPin`      | `string` | If ‘000’ is set on authorization request, encrypted PIN block will be returned here.                                            |
@@ -389,7 +389,7 @@ Content-Type: application/json
 |     Required     | Field                   | Type      | Description                                                                                                                     |
 | :--------------: | :---------------------- | :-------- | :------------------------------------------------------------------------------------------------------------------------------ |
 | {% icon check %} | `accountIdentifier`     | `Object`  |                                                                                                                                 |
-|                  | `accountId`             | `string`  | PayEx internal id for card/account.                                                                                             |
+|                  | `accountId`             | `string`  | Swedbank Pay internal id for card/account.                                                                                             |
 | {% icon check %} | `accountKey`            | `string`  | Primary Account Number (PAN) for card/account. This is mandatory if ‘track2’ is not present.                                    |
 |                  | `cvc`                   | `string`  | Card Verification Code.                                                                                                         |
 |                  | `encryptedPin`          | `string`  | If ‘000’ is set on authorization request, encrypted PIN block will be returned here.                                            |
