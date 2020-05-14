@@ -7,3 +7,5 @@ services:
       context: .
       dockerfile: .docker/Dockerfile
     entrypoint: .docker/bundle-install
+    environment:
+      - GITHUB_BRANCH=${GITHUB_BRANCH}
