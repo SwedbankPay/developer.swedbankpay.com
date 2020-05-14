@@ -1,1 +1,1 @@
-FROM swedbankpay/jekyll-plantuml:1.0.10
+FROM swedbankpay/jekyll-plantuml:1.1.1
