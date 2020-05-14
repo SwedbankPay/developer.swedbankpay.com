@@ -35,6 +35,8 @@ topbar:
     title: Checkout
   - url: /payments/
     title: Payments
+  - url: /gift-cards/
+    title: Gift Cards
   - url: /resources/
     title: Resources
 google_analytics:
