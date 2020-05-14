@@ -16,31 +16,42 @@ Hi! Welcome to the **Swedbank Pay Developer Portal**.
 
 ### New to our API Platform
 
-That's okay, go ahead and look at the fundamental [technical
-information][technical-information]. It will help you further on.
+Are you new to Swedbank Pay's API Platform? That's okay, go ahead and look at
+the fundamental [technical information][technical-information]. It will help you
+further on.
 
 ### Know what product to integrate
 
 Nice, let's dive in. Click on the product below to get started.
 
 <div class="row">
-  <div class="col-12 col-md-6 pt-3 pt-md-0 d-flex">
+  <div class="col-12 col-md-4 pt-3 pt-md-0 d-flex">
     <div class="doc-card card card-plain">
       <div class="card-body text-center d-flex flex-column">
-        <img src="{{ design_guide_version_url }}/img/swedbankpay-logo.svg" alt="Swedbank Pay" height="120">
+        {% icon shopping_cart %}
         <h3>Checkout</h3>
         <p>Speed up checkout by allowing your customers to check-in with Swedbank Pay, and pay with their favorite payment instruments through our payment menu.</p>
-        <a class="btn btn-guiding btn-outline btn-block mt-auto" href="/checkout/">Checkout Documentation</a>
+        <a class="btn btn-guiding btn-outline btn-block mt-auto" href="/checkout/">{% icon shopping_cart %}&nbsp; Checkout</a>
       </div>
     </div>
   </div>
-  <div class="col-12 col-md-6 pt-3 pt-md-0 d-flex">
+  <div class="col-12 col-md-4 pt-3 pt-md-0 d-flex">
     <div class="doc-card card card-plain">
       <div class="card-body text-center d-flex flex-column">
-        <img src="{{ design_guide_version_url }}/img/swedbankpay-logo.svg" alt="Swedbank Pay" height="120">
+        {% icon credit_card %}
         <h3>Payments</h3>
         <p>Identify your customer, while we take care of the payment. Choose from our uniform and wide selection of payment instruments.</p>
-        <a class="btn btn-guiding btn-outline btn-block mt-auto" href="/payments/">Payments Documentation</a>
+        <a class="btn btn-guiding btn-outline btn-block mt-auto" href="/payments/">{% icon credit_card %}&nbsp; Payments</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-md-4 pt-3 pt-md-0 d-flex">
+    <div class="doc-card card card-plain">
+      <div class="card-body text-center d-flex flex-column">
+        {% icon card_giftcard %}
+        <h3>Gift Cards</h3>
+        <p>Our Gift Cards API allows you to perform payments with Swedbank Pay issued gift cards.</p>
+        <a class="btn btn-guiding btn-outline btn-block mt-auto" href="/gift-cards/">{% icon card_giftcard %}&nbsp; Gift Cards</a>
       </div>
     </div>
   </div>

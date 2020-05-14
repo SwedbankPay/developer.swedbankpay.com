@@ -9,7 +9,17 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Docker compose up with rake
+      env:
+        HEAD_REF: ${{ github.head_ref }}
+        REF: ${{ github.ref }}
       run: |
+        if [[ ! -z "$HEAD_REF" ]]; then
+          GITHUB_BRANCH=${HEAD_REF}
+        else
+          GITHUB_BRANCH=${REF#refs/heads/}
+        fi
+
+        GITHUB_BRANCH=${GITHUB_BRANCH} \
         docker-compose \
           -f docker-compose.yml \
           -f .docker/docker-compose.test.yml \
