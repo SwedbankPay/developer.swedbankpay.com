@@ -215,8 +215,8 @@ Content-Type: application/json
 | `transaction`    | `object` | The `transaction` object contains information about the specific transaction.                     |
 | └➔&nbsp;`msisdn` | `string` | The end-user's mobile number. It must have a country code prefix and be 8 to 15 digits in length. |
 
-{% include transaction-response.md api_resource="swish" transaction="sale"
-%}
+{% include transaction-response.md api_resource="swish"
+documentation_section="swish" transaction="sale" %}
 
 ## E-Commerce Purchase Flow
 
@@ -287,8 +287,8 @@ Content-Type: application/json
 | :------------ | :------- | :------------------------------------------------------------------- |
 | `transaction` | `object` | The  `transaction` object is empty for m-commerce sale transactions. |
 
-{% include transaction-response.md api_resource="swish" transaction="sale"
-mcom=true %}
+{% include transaction-response.md api_resource="swish"
+documentation_section="swish" transaction="sale" mcom=true %}
 
 ## Step 3: Get the payment status
 

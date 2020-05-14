@@ -333,7 +333,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the capture transaction. See [`payeeReference`][payee-reference] for details. |
 
 {% include transaction-response.md api_resource="mobilepay"
-    transaction="capture"%}
+documentation_section="mobilepay" transaction="capture"%}
 
 ## Cancellations
 
@@ -370,7 +370,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the cancellation transaction. See [`payeeReference`][payee-reference] for details. |
 
 {% include transaction-response.md api_resource="mobilepay"
-    transaction="cancellation"%}
+documentation_section="mobilepay" transaction="cancellation"%}
 
 ## Reversals
 
@@ -411,7 +411,7 @@ Content-Type: application/json
 | {% icon check %}︎ | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the reversal transaction. See [`payeeReference`][payee-reference] for details. |
 
 {% include transaction-response.md api_resource="mobilepay"
-    transaction="reversal"%}
+documentation_section="mobilepay" transaction="reversal"%}
 
 ## Capture Sequence
 

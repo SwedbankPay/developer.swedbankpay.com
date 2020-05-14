@@ -95,7 +95,8 @@ Notes on `FinancingConsumer` captures:
   due date is 14 days.
 * The invoice number is set by Swedbank Pay.
 
-{% include transaction-response.md api_resource="invoice" transaction="capture" %}
+{% include transaction-response.md api_resource="invoice"
+documentation_section="invoice" transaction="capture" %}
 
 ## Step 2: Inspecting the Captures
 

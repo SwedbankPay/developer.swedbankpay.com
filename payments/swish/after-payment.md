@@ -330,7 +330,8 @@ Content-Type: application/json
 | {% icon check %}︎ | └➔&nbsp;`description`    | `string`     | A textual description of the capture                                                                                                                                     |
 | {% icon check %}︎ | └➔&nbsp;`payeeReference` | `string(35)` | A  reference that must match the  `payeeReference` of the sales transaction you want to reverse. See [`payeeReference`][technical-reference-payeeReference] for details. |
 
-{% include transaction-response.md api_resource="swish" transaction="reversal" %}
+{% include transaction-response.md api_resource="swish"
+documentation_section="swish" transaction="reversal" %}
 
 ## Capture
 

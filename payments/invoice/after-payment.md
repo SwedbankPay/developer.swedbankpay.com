@@ -76,7 +76,8 @@ Content-Type: application/json
 The `cancel` resource will be returned, containing information about the
 newly created `cancel` transaction.
 
-{% include transaction-response.md api_resource="invoice" transaction="cancel" %}
+{% include transaction-response.md api_resource="invoice"
+documentation_section="invoice" transaction="cancel" %}
 
 ### Inspecting the Cancellation
 
@@ -158,7 +159,8 @@ Content-Type: application/json
 
 The `reversal` resource will be returned, containing information about the newly created reversal transaction.
 
-{% include transaction-response.md api_resource="invoice" transaction="reversal" %}
+{% include transaction-response.md api_resource="invoice"
+documentation_section="invoice" transaction="reversal" %}
 
 ### Inspecting the Reversal
 
