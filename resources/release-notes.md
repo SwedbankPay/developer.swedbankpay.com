@@ -33,6 +33,12 @@ this very documentation, not to a version of any APIs described by it." %}
 
 ## May 2020
 
+### Version 1.10.0
+
+* Added a new section [Gift Cards][gift-cards] for Payment API documentation.
+* Added a new section [Co-badge Card Choice for Dankort][co-badge-card] in
+  [Card Payments][card-payment-url].
+
 ### Version 1.9.2
 
 * Corrected table in [payments page][payments]
@@ -373,11 +379,13 @@ integration and the payer.
 [checkout-payment-orders]: /checkout/other-features#payment-orders
 [checkout-payment-url]: /checkout/other-features#payment-url
 [checkout]: /checkout
+[co-badge-card]: /payments/card/other-features#co-badge-card-choice-for-dankort
 [credit-card-abort]: /payments/card/after-payment#abort
 [credit]: /payments/card
 [data-protection]: /resources/data-protection
 [design-guide]: https://design.swedbankpay.com/
 [frontpage]: https://developer.swedbankpay.com/
+[gift-cards]: /gift-cards
 [home-technical-information]: /home/technical-information
 [initiate-consumer-session]: /checkout/checkin#step-1-initiate-session-for-consumer-identification
 [invoice-direct]: /payments/invoice/direct
