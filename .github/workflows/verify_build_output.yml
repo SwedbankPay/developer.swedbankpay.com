@@ -19,9 +19,7 @@ jobs:
           GITHUB_BRANCH=${REF#refs/heads/}
         fi
 
-        echo "Branch: ${GITHUB_BRANCH}
-        echo "::set-env name=GITHUB_BRANCH::${GITHUB_BRANCH}
-
+        GITHUB_BRANCH=${GITHUB_BRANCH} \
         docker-compose \
           -f docker-compose.yml \
           -f .docker/docker-compose.test.yml \
