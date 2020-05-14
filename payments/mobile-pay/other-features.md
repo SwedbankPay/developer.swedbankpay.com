@@ -14,7 +14,7 @@ sidebar:
       title: Other Features
 ---
 
-{% include payment-resource.md api_resource="mobilepay" documentation_section="mobilepay" %}
+{% include payment-resource.md api_resource="mobilepay" documentation_section="mobile-pay" %}
 
 ### Create Payment
 
@@ -94,7 +94,7 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`amount`               | `integer`    | {% include field-description-amount.md currency="DKK" %}                                                                                                                                                                                                  |
 | {% icon check %} | └─➔&nbsp;`vatAmount`            | `integer`    | {% include field-description-vatamount.md currency="DKK" %}                                                                                                                                                                                               |
 |                  | └─➔&nbsp;`feeAmount`            | `integer`    | If the amount given includes Fee, this may be displayed for the user in the payment page (redirect only).                                                                                                                                                 |
-| {% icon check %} | └➔&nbsp;`description`           | `string(40)` | {% include field-description-description.md documentation_section="mobilepay" %}                                                                                                                                                                                                  |
+| {% icon check %} | └➔&nbsp;`description`           | `string(40)` | {% include field-description-description.md documentation_section="mobile-pay" %}                                                                                                                                                                                                  |
 |                  | └➔&nbsp;`payerReference`        | `string`     | The reference to the payer (consumer/end-user) from the merchant system, like mobile number, customer number etc.                                                                                                                                         |
 | {% icon check %} | └➔&nbsp;`userAgent`             | `string`     | The user agent reference of the consumer's browser - [see user agent definition][user-agent]                                                                                                                                                              |
 | {% icon check %} | └➔&nbsp;`language`              | `string`     | {% include field-description-language.md documentation_section="mobilepay" %}                                                                                                                                                                                                                              |
@@ -177,7 +177,7 @@ Content-Type: application/json
 | └➔&nbsp;`intent`                    | `string`     | The intent sent in on request                                                                                                                                                                    |
 | └➔&nbsp;`state`                     | `string`     | `Ready`, `Pending`, `Failed` or `Aborted`. Indicates the state of the payment. This field is only for status display purposes.                                                                   |
 | └➔&nbsp;`currency`                  | `string`     | The currency used                                                                                                                                                                                |
-| └➔&nbsp;`description`               | `string(40)` | {% include field-description-description.md documentation_section="mobilepay" %}                                                                                                                   |
+| └➔&nbsp;`description`               | `string(40)` | {% include field-description-description.md documentation_section="mobile-pay" %}                                                                                                                   |
 | └➔&nbsp;`payerReference`            | `string`     | The reference to the payer (consumer/end-user) from the merchant system, like mobile number, customer number etc.                                                                                |
 | └➔&nbsp;`initiatingSystemUserAgent` | `string`     | The system user agent used                                                                                                                                                                       |
 | └➔&nbsp;`userAgent`                 | `string`     | The [user agent][user-agent] string of the consumer's browser.                                                                                                                                   |
@@ -285,7 +285,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{% include transaction-list-response.md api_resource="mobilepay" documentation_section="mobilepay"
+{% include transaction-list-response.md api_resource="mobilepay" documentation_section="mobile-pay"
 transaction="authorization" %}
 
 ### Create authorization transaction
@@ -296,7 +296,7 @@ to the hyperlink returned in the `redirect-authorization` request.
 ## Captures
 
 {% include transaction-list-response.md api_resource="mobilepay"
-documentation_section="mobilepay" transaction="capture" %}
+documentation_section="mobile-pay" transaction="capture" %}
 
 ### Create capture transaction
 
@@ -333,12 +333,12 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the capture transaction. See [`payeeReference`][payee-reference] for details. |
 
 {% include transaction-response.md api_resource="mobilepay"
-documentation_section="mobilepay" transaction="capture"%}
+documentation_section="mobile-pay" transaction="capture"%}
 
 ## Cancellations
 
 {% include transaction-list-response.md api_resource="mobilepay"
-documentation_section="mobilepay" transaction="cancellation" %}
+documentation_section="mobile-pay" transaction="cancellation" %}
 
 ### Create cancellation transaction
 
@@ -370,12 +370,12 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the cancellation transaction. See [`payeeReference`][payee-reference] for details. |
 
 {% include transaction-response.md api_resource="mobilepay"
-documentation_section="mobilepay" transaction="cancellation"%}
+documentation_section="mobile-pay" transaction="cancellation"%}
 
 ## Reversals
 
 {% include transaction-list-response.md api_resource="mobilepay"
-documentation_section="mobilepay" transaction="reversal" %}
+documentation_section="mobile-pay" transaction="reversal" %}
 
 ### Create reversal transaction
 
@@ -411,7 +411,7 @@ Content-Type: application/json
 | {% icon check %}︎ | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the reversal transaction. See [`payeeReference`][payee-reference] for details. |
 
 {% include transaction-response.md api_resource="mobilepay"
-documentation_section="mobilepay" transaction="reversal"%}
+documentation_section="mobile-pay" transaction="reversal"%}
 
 ## Capture Sequence
 
@@ -539,7 +539,7 @@ The response will be the `payment` resource with its `state` set to `Aborted`.
 {% include callback-reference.md api_resource="mobilepay" %}
 
 {% include transactions-reference.md api_resource="mobilepay"
-documentation_section="mobilepay" %}
+documentation_section="mobile-pay" %}
 
 {% include prices.md api_resource="mobilepay" %}
 
