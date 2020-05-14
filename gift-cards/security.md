@@ -16,8 +16,6 @@ sidebar:
       title: Other Features
 ---
 
-----
-
 ## OAuth2
 
 The Gift Card API requires an OAuth2 access token for interaction. This
@@ -64,8 +62,11 @@ public class Oauth2RestTemplateConfiguration {
 
 ## HMAC
 
-The API also requires HMAC authentication to be present in a request. In this
-client the HMAC value is automatically calculated by
+A Hash-based Message Authentication Code ([HMAC][hmac]) is used to verify the
+data integrity and authenticity of the HTTP requests made towards our API.
+
+An HMAC header therefore needs  to be present in every request. In this client
+the HMAC value is automatically calculated by
 [HmacSignatureBuilder.java][hmac-signature-builder] and added to all outgoing
 requests in [ExternalRequestInterceptor.java][external-request-interceptor]
 
@@ -150,8 +151,10 @@ HmacSHA512 user:21a0213e-30eb-85ab-b355-a310d31af30e:oY5Q5Rf1anCz7DRm3GyWR0dvJDn
 
 ### Postman example script for generation HMAC header
 
+In pre-request script copy/paste the following snippet.
+
 {:.code-header}
-**In pre-request script copy/paste the following snippet:**
+**JavaScript**
 
 ```javascript
 var user = 'Systemtest';

@@ -27,7 +27,7 @@ sidebar:
 
 ## Project setup
 
-```
+```text
 vas-payment-api-client
 ├─┬ backend     → backend module with Spring Boot code
 │ ├── src
