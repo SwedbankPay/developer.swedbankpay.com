@@ -1,12 +1,12 @@
 {%- assign documentation_section = include.documentation_section -%}
 {% case documentation_section %}
-{% when "creditcard" %}
+{% when "card" %}
 {%- capture language -%}
 `sv-SE`, `nb-NO`, `da-DK`, `de-DE`, `ee-EE`, `en-US`, `es-ES`, `fr-FR`, `lv-LV`,
 `lt-LT`, `ru-RU` or `fi-FI`.
 {%- endcapture -%}
 
-{% when "mobilepay" %}
+{% when "mobile-pay" %}
 {%- capture language -%}
 `sv-SE`, `nb-NO`, `da-DK`, `fi-FI` or `ee-EE`.
 {%- endcapture -%}

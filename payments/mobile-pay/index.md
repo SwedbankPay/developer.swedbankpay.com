@@ -76,7 +76,7 @@ but it will be in the future. The demoshop in the test environments will use a
 fakeservice which enables you to test a successful purchase without using the
 MobilePay app.
 
-{% include languages.md documentation_section="mobilepay" %}
+{% include languages.md documentation_section="mobile-pay" %}
 
 {% include iterator.html
                          next_href="redirect"

@@ -6,10 +6,10 @@
 
 ​
 {%- case documentation_section -%}
-    {%- when "creditcard" -%}
+    {%- when "card" -%}
         {%- assign documentation_section_title = "Card" -%}
         {%- assign language_codes="da-DK, de-DE, ee-EE, en-US, es-ES, fi-FI, fr-FR, lt-LT, lv-LV, nb-NO, ru-RU, sv-SE" -%}
-    {%- when "mobilepay" -%}
+    {%- when "mobile-pay" -%}
         {%- assign documentation_section_title = "MobilePay" -%}
         {%- assign language_codes="da-DK, en-US, fi-FI, nb-NO, sv-SE" -%}
 {%- endcase -%}
