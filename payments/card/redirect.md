@@ -121,7 +121,7 @@ sequenceDiagram
     Merchant->>-SwedbankPay: GET <payment.id> ⑥
     activate SwedbankPay
     note left of Payer: Second API request
-    SwedbankPay-->>-Merchant: rel: redirect-authorization
+    SwedbankPay-->>-Merchant: Payment result
     activate Merchant
     Merchant-->>-Payer: display purchase result
 
