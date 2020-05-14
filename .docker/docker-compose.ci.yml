@@ -2,6 +2,6 @@ version: '3.7'
 
 services:
   portal:
-    command: jekyll build --verbose
-    environment: 
+    command: .docker/ci-build-publish
+    environment:
       environment: 'production'
