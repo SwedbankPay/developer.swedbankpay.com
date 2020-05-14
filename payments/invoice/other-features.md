@@ -527,7 +527,8 @@ Content-Type: application/json
 The `authorization` resource contains information about an authorization
 transaction made towards a payment, as previously described.
 
-{% include transactions-reference.md api_resource="invoice" %}
+{% include transactions-reference.md api_resource="invoice"
+documentation_section="invoice" %}
 
 {% include callback-reference.md api_resource="invoice" %}
 

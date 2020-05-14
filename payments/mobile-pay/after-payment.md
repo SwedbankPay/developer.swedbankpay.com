@@ -143,7 +143,7 @@ sequenceDiagram
 
 ## Reversals
 
-{% include transaction-list-response.md api_resource="mobilepay"
+{% include transaction-list-response.md api_resource="mobilepay" documentation_section="mobilepay"
 transaction="reversal" %}
 
 ## Create reversal transaction

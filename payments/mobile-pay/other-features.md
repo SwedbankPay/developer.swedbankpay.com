@@ -538,7 +538,8 @@ The response will be the `payment` resource with its `state` set to `Aborted`.
 
 {% include callback-reference.md api_resource="mobilepay" %}
 
-{% include transactions-reference.md api_resource="mobilepay" %}
+{% include transactions-reference.md api_resource="mobilepay"
+documentation_section="mobilepay" %}
 
 {% include prices.md api_resource="mobilepay" %}
 
