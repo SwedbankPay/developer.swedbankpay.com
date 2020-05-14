@@ -19,4 +19,5 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{% include transaction-list-response.md api_resource=api_resource transaction="transaction" %}
+{% include transaction-list-response.md api_resource=api_resource
+documentation_section=documentation_section transaction="transaction" %}
