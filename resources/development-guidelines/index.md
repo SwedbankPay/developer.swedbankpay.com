@@ -111,8 +111,8 @@ be perceived as accessible:
      status of pull request accordingly. If a test fails, the contributor
      should be alerted of its failure through GitHub’s interface.
 6. All code contributions should be run through a public continuous integration
-   server so build failures are visible to the contributor such that he or she
-   can fix it without any project manager’s involvement.
+   server so build failures are visible to the contributor such that it can be 
+   fixed without any project manager’s involvement.
 7. The development and branching process should preferably be based on an
    existing scheme such as [GitFlow][gitflow] or [GitHub Flow][github-flow].
 8. All development should be done in public.

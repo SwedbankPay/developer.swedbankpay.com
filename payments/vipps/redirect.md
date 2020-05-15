@@ -32,8 +32,7 @@ that the payer must confirm through the Vipps mobile app." %}
 * You need to [redirect][reference-redirect] the payer to the Redirect payment
   where the payer must push the payment button.
   This triggers a `POST` towards Swedbank Pay.
-* The payer is redirected to a Vipps payment page where he or she is prompted to
-  enter their mobile number.
+* The payer is redirected to a Vipps payment page to enter the mobile number.
 * Swedbank Pay handles the dialogue with Vipps and the consumer confirms the
   purchase in the Vipps app.
 * To receive the state of the transaction you need to do a `GET`
@@ -204,9 +203,9 @@ of the payer towards the URL in the `href` of the `redirect-authorization`
 operation found in the list of `operations` in the response from the creation of
 the payment.
 
-Once the payment is successfully authorized by the payer, she is returned to
-`completeUrl` or `cancelUrl` depending on the action performed by the payer.
-On that page as well as in the `callbackUrl`, you need to perform an HTTP `GET`
+Once the payment is successfully authorized, the payer is returned to either the
+`completeUrl` or the `cancelUrl`; depending on the action performed.
+On the page as well as in the `callbackUrl` you need to perform an HTTP `GET` 
 request towards the `id` of the payment to inspect its status.
 
 ## Step 3: Get the transaction state

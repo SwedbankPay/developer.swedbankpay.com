@@ -198,7 +198,7 @@ to charge the consumer right away.
   JavaScript source in response.
 * You need to [redirect][redirect] the payer's browser to that specified URL, or
   embed the script source on your site to create a [Seamless
-  View][seamless-view] in an `iframe`; so that she can enter the payment details
+  View][seamless-view] in an `iframe`; so that the payer can enter the payment details
   in a secure Swedbank Pay hosted environment.
 * Swedbank Pay will redirect the payer's browser to - or display directly in the
   `iframe` - one of two specified URLs, depending on whether the payment session

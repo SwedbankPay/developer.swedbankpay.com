@@ -31,8 +31,8 @@ number (msisdn), connected to the Swish app." %}
   Swedbank Pay with the collected Purchase information. This will generate a
   payment object with a unique `paymentID`. You either receive a Redirect URL to
   a hosted page or a JavaScript source in response.
-* You need to redirect the payer to the payment page where she is
-  prompted to enter the Swish registered mobile number.
+* You need to redirect the payer to the payment page to enter the Swish 
+  registered mobile number.
   This triggers the initiation of a sales transaction.
 * Swedbank Pay handles the dialogue with Swish and the consumer confirms the
   purchase in the Swish app.
