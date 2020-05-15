@@ -1,4 +1,3 @@
-{% assign payment_order = include.payment_order | default: false %}
 {% assign api_resource = include.api_resource | default: "creditcard" %}
 
 ## Settlement and Reconciliation
