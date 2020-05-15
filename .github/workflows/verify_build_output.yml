@@ -8,22 +8,35 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Docker compose up with rake
+
+    - name: Find branch
+      id: branch
       env:
         HEAD_REF: ${{ github.head_ref }}
         REF: ${{ github.ref }}
       run: |
         if [[ ! -z "$HEAD_REF" ]]; then
+          # Use the head_ref on merge commits
           GITHUB_BRANCH=${HEAD_REF}
         else
+          # Use the branch head reference on regular commits
           GITHUB_BRANCH=${REF#refs/heads/}
         fi
 
-        GITHUB_BRANCH=${GITHUB_BRANCH} \
+        if [[ $GITHUB_BRANCH == refs/tags* ]]; then
+          # Default to the master branch on tags
+          $GITHUB_BRANCH = "master"
+        fi
+
+        echo "::set-output name=branch-name::${GITHUB_BRANCH}"
+
+    - name: HTMLProofer
+      env:
+        GITHUB_BRANCH: ${{ steps.branch.outputs.branch-name }}
+      run: |
         docker-compose \
           -f docker-compose.yml \
           -f .docker/docker-compose.test.yml \
           up \
-          --build \
           --abort-on-container-exit \
           --exit-code-from portal

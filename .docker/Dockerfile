@@ -1,1 +1,0 @@
-FROM swedbankpay/jekyll-plantuml:1.1.1
