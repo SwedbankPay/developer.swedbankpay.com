@@ -3,6 +3,5 @@ version: '3.7'
 services:
   portal:
     command: rake test --trace
-    entrypoint: .docker/bundle-install
     environment:
       - GITHUB_BRANCH=${GITHUB_BRANCH}
