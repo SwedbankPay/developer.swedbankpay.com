@@ -38,13 +38,13 @@ set to value `FinancingConsumer` are listed below.
 * An invoice payment is always two-phased based -  you create an Authorize
   transaction, that is followed by a Capture or Cancel request.
 
-{% include alert-callback-url.md payment_instrument="invoice" %}
+{% include alert-callback-url.md api_resource="invoice" %}
 
-{% include authorizations-resource.md payment_instrument="invoice" %}
+{% include authorizations-resource.md api_resource="invoice" %}
 
 ## Payment Resource
 
-{% include payment-resource.md payment_instrument="invoice"
+{% include payment-resource.md api_resource="invoice" documentation_section="invoice"
 showStatusOperations=true %}
 
 {% include payment-transaction-states.md %}
@@ -518,7 +518,7 @@ Content-Type: application/json
 | └➔&nbsp;`number`         | `string`  | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead. |
 | └➔&nbsp;`amount`         | `integer` | {% include field-description-amount.md %}                                                                                                                                                                    |
 | └➔&nbsp;`vatAmount`      | `integer` | {% include field-description-vatamount.md %}                                                                                                                                                                 |
-| └➔&nbsp;`description`    | `string`  | {% include field-description-description.md payment_instrument="invoice" %}                                                                                                                                  |
+| └➔&nbsp;`description`    | `string`  | {% include field-description-description.md documentation_section="invoice" %}                                                                                                                                  |
 | └➔&nbsp;`payeeReference` | `string`  | The `payeeReference` is the receipt/invoice number and is a unique reference for each transaction.                                                                                                           |
 | └➔&nbsp;`failedReason`   | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | └➔&nbsp;`isOperational`  | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
@@ -527,9 +527,10 @@ Content-Type: application/json
 The `authorization` resource contains information about an authorization
 transaction made towards a payment, as previously described.
 
-{% include transactions-reference.md payment_instrument="invoice" %}
+{% include transactions-reference.md api_resource="invoice"
+documentation_section="invoice" %}
 
-{% include callback-reference.md payment_instrument="invoice" %}
+{% include callback-reference.md api_resource="invoice" %}
 
 {% include payment-link.md show_3d_secure=false %}
 
@@ -539,9 +540,9 @@ transaction made towards a payment, as previously described.
 
 {% include description.md %}
 
-{% include payee-info.md payment_instrument="invoice" %}
+{% include payee-info.md api_resource="invoice" %}
 
-{% include prices.md payment_instrument="invoice" %}
+{% include prices.md api_resource="invoice" %}
 
 {% include settlement-reconciliation.md %}
 

@@ -1,8 +1,8 @@
-{% assign payment_instrument = include.payment_instrument | default: true %}
+{% assign api_resource = include.api_resource | default: true %}
 
 ## Payee Reference
 
-{% if payment_instrument == "invoice" %}
+{% if api_resource == "invoice" %}
 The `payeeReference` is used as a receipt/invoice number when the payer chooses
 to pay with Invoice Payments. Depending on the specifications in the contract,
 it has some specific processing rules described below.

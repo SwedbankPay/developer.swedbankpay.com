@@ -529,11 +529,13 @@ with its `state` set to `Aborted`.
 
 ### Transactions
 
-{% include transactions.md payment_instrument="paymentorders" %}
+{% include transactions.md api_resource="paymentorders"
+documentation_section="checkout" %}
 
 #### Transaction
 
-{% include transaction.md payment_instrument="paymentorders" %}
+{% include transaction.md api_resource="paymentorders"
+documentation_section="checkout" %}
 
 ## Recurring Payments
 
@@ -865,14 +867,14 @@ Content-Type: application/json
 | └─➔&nbsp;`remainingCaptureAmount`  | `integer`    | The available amount to capture.                                                                                                                                                                 |
 | └─➔&nbsp;`remainingCancelAmount`   | `integer`    | The available amount to cancel.                                                                                                                                                                  |
 | └─➔&nbsp;`remainingReversalAmount` | `integer`    | The available amount to reverse.                                                                                                                                                                 |
-| └➔&nbsp;`description`              | `string(40)` | {% include field-description-description.md payment_instrument="checkout" %}                                                                                                                     |
+| └➔&nbsp;`description`              | `string(40)` | {% include field-description-description.md documentation_section="checkout" %}                                                                                                                     |
 | └➔&nbsp;`payerReference`           | `string`     | The reference to the consumer from the merchant system, like mobile number, customer number etc.                                                                                                 |
 | └➔&nbsp;`userAgent`                | `string`     | The [user agent][user-agent] string of the consumer's browser.                                                                                                                                   |
-| └➔&nbsp;`language`                 | `string`     | {% include field-description-language.md payment_instrument="checkout" %}                                                                                                                                                                      |
+| └➔&nbsp;`language`                 | `string`     | {% include field-description-language.md api_resource="paymentorders" %}                                                                                                                                                                      |
 
 ### Prices Resource
 
-{% include prices.md payment_instrument="paymentorders" %}
+{% include prices.md api_resource="paymentorders" %}
 
 ### Payer Resource
 
@@ -1380,13 +1382,13 @@ although that might be possible in the future.
 | `systemerror`        | `500`  | A generic error message.                                                                                                                           |
 | `configurationerror` | `500`  | A error relating to configuration issues.                                                                                                          |
 
-{% include expand-parameter.md payment_instrument="paymentorders" %}
+{% include expand-parameter.md api_resource="paymentorders" %}
 
-{% include payee-info.md payment_instrument="paymentorders" %}
+{% include payee-info.md api_resource="paymentorders" %}
 
 {% include merchant-authenticated-consumer.md %}
 
-{% include settlement-reconciliation.md payment_instrument="paymentorders" %}
+{% include settlement-reconciliation.md api_resource="paymentorders" %}
 
 ## Updating Payment Menu
 

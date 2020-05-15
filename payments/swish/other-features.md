@@ -18,7 +18,8 @@ sidebar:
       title: Other Features
 ---
 
-{% include payment-resource.md payment_instrument="swish" showStatusOperations=true%}
+{% include payment-resource.md api_resource="swish" documentation_section="swish"
+showStatusOperations=true%}
 
 {% include payment-transaction-states.md %}
 
@@ -93,10 +94,10 @@ Content-Type: application/json
 | {% icon check %}︎ | └─➔&nbsp;`type`                 | `string`     | `Swish`                                                                                                                                                                                                                                                   |
 | {% icon check %}︎ | └─➔&nbsp;`amount`               | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                                                 |
 | {% icon check %}︎ | └─➔&nbsp;`vatAmount`            | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                                                              |
-| {% icon check %}︎ | └➔&nbsp;`description`           | `string(40)` | {% include field-description-description.md payment_instrument="swish" %}                                                                                                                                                                                 |
+| {% icon check %}︎ | └➔&nbsp;`description`           | `string(40)` | {% include field-description-description.md documentation_section="swish" %}                                                                                                                                                                                 |
 |                  | └➔&nbsp;`payerReference`        | `string`     | The reference to the payer (consumer/end-user) from the merchant system, like mobile number, customer number etc.                                                                                                                                         |
 | {% icon check %}︎ | └➔&nbsp;`userAgent`             | `string`     | The user agent reference of the consumer's browser - [see user agent definition][user-agent]                                                                                                                                                              |
-| {% icon check %}︎ | └➔&nbsp;`language`              | `string`     | {% include field-description-language.md payment_instrument="swish" %}                                                                                                                                                                                                                              |
+| {% icon check %}︎ | └➔&nbsp;`language`              | `string`     | {% include field-description-language.md api_resource="swish" %}                                                                                                                                                                                                                              |
 | {% icon check %}︎ | └➔&nbsp;`urls`                  | `object`     | The URLS object contains information about what urls this payment should use.                                                                                                                                                                             |
 | {% icon check %}︎ | └─➔&nbsp;`hostUrls`             | `array`      | The array of URIs valid for embedding of Swedbank Pay Hosted Views.                                                                                                                                                                                       |
 | {% icon check %}︎ | └─➔&nbsp;`completeUrl`          | `string`     | The URI that Swedbank Pay will redirect back to when the payment page is completed. This does not indicate a successful payment, only that it has reached a completion state. A `GET` request needs to be performed on the payment to inspect it further. |
@@ -182,15 +183,15 @@ be connected to a Swish account.
 
 {% include payment-url.md full_reference=true %}
 
-{% include prices.md payment_instrument="swish" %}
+{% include prices.md api_resource="swish" %}
 
-{% include payee-info.md payment_instrument="swish" %}
+{% include payee-info.md api_resource="swish" %}
 
 {% include expand-parameter.md %}
 
-{% include transactions-reference.md payment_instrument="swish" %}
+{% include transactions-reference.md api_resource="swish" documentation_section="swish" %}
 
-{% include callback-reference.md payment_instrument="swish" %}
+{% include callback-reference.md api_resource="swish" %}
 
 ### Problem messages
 
