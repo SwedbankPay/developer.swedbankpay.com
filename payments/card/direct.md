@@ -79,7 +79,7 @@ expanded `POST` request is available in the [other features section][purchase].
 
 {% include card-purchase.md %}
 
-{% include alert-callback-url.md api_resource="card" %}
+{% include alert-callback-url.md api_resource="creditcard" %}
 
 {% include alert.html type="informative" icon="report_problem" body="**Step 2** is
 to create an authorization transaction. Implement only Step 2a if **3-D Secure
