@@ -2,6 +2,6 @@ version: '3.7'
 
 services:
   portal:
-    command: .docker/ci-build-publish
+    command: gh-pages-publish
     environment:
       environment: 'production'
