@@ -60,7 +60,7 @@ We recommend that you include following information:
 * Some order-id (or similar) that exists in the merchant order system.
 * The price and currency.
 * Details about shipping method and expected delivery (if physical goods will be
-  sent  to the consumer).
+  sent  to the payer).
 * Directions to (a link to a page) the merchant's terms and conditions (such as
   return policy) and information of how the consumer can contact the merchant.
 * Details informing that the payer accepts the Terms & Conditions
