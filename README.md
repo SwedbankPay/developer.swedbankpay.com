@@ -130,7 +130,7 @@ Some includes can also take variables, if they do this is defined at the
 beginning of the file using the following syntax.
 
 ```markdown
-{% assign api_resource = include.api_resource | default: "paymentorder" %}
+{% assign api_resource = include.api_resource | default: "paymentorders" %}
 ```
 
 This assigns `"paymentOrder"` to the variable `api_resource` by default if it
