@@ -42,7 +42,7 @@ sidebar:
 body="Swish is a one-phase payment instrument that is based on sales
 transactions not involving `capture` or `cancellation` operations." %}
 
-{% include alert-callback-url.md documentation_section="swish" %}
+{% include alert-callback-url.md api_resource="swish" %}
 
 ## Step 1: Create a Purchase
 

@@ -38,7 +38,7 @@ set to value `FinancingConsumer` are listed below.
 * An invoice payment is always two-phased based -  you create an Authorize
   transaction, that is followed by a Capture or Cancel request.
 
-{% include alert-callback-url.md documentation_section="invoice" %}
+{% include alert-callback-url.md api_resource="invoice" %}
 
 {% include authorizations-resource.md api_resource="invoice" %}
 

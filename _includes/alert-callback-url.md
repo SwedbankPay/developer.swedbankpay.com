@@ -1,4 +1,4 @@
-{% assign documentation_section = include.documentation_section | default: "card" %}
+{% assign api_resource = include.api_resource | default: "creditcard" %}
 {% assign callback_href = "/payments/" | append: documentation_section | append: "/other-features#callback" %}
 
 {% capture body %}

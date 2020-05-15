@@ -43,7 +43,7 @@ sidebar:
 * An invoice payment is always two-phased based - you create an
   `Authorize` transaction, that is followed by a `Capture` or `Cancel` request.
 
-{% include alert-callback-url.md documentation_section="invoice" %}
+{% include alert-callback-url.md api_resource="invoice" %}
 
 To initiate the payment process, you need to make a `POST` request to Swedbank Pay.
 Our `payment` example below uses the [`FinancingConsumer`]

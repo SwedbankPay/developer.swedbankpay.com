@@ -44,7 +44,7 @@ Each individual field of the JSON document is described in the following section
 An example of an expanded `POST` request is available in the
 [other features section][purchase].
 
-{% include alert-callback-url.md documentation_section="creditcard" %}
+{% include alert-callback-url.md api_resource="creditcard" %}
 
 {% include alert-risk-indicator.md %}
 

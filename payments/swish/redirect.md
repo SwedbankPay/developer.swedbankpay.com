@@ -51,7 +51,7 @@ Swish is a one-phase payment instrument that is based on sales transactions
 ![Consumer paying with Swish using Swedbank Pay]
 [swish-redirect-image]{:width="467px" height="364px"}
 
-{% include alert-callback-url.md documentation_section="swish" %}
+{% include alert-callback-url.md api_resource="swish" %}
 
 ## Step 1: Create a Purchase
 

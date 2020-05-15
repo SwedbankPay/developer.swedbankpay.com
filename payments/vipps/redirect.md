@@ -45,7 +45,7 @@ You redirect the payer to collect the payer's mobile number.
 
 ## Step 1: Create a Purchase
 
-{% include alert-callback-url.md documentation_section="vipps"
+{% include alert-callback-url.md api_resource="vipps"
 callback_href="/payments/vipps/other-features#callback" %}
 
 A `Purchase` payment is a straightforward way to charge the the payer. Below

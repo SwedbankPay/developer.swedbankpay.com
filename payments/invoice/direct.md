@@ -53,7 +53,7 @@ Note that the invoice will not be created/distributed before you have
 made a `capture` request. By making a Capture, Swedbank Pay will generate
 the invoice to the consumer and the order is ready for shipping." %}
 
-{% include alert-callback-url.md documentation_section="invoice" %}
+{% include alert-callback-url.md api_resource="invoice" %}
 
 The 3 most important steps in the Invoice Direct flow are shown below.
 
