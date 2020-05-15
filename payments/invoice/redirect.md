@@ -91,9 +91,10 @@ Content-Type: application/json
             "payeeName": "Merchant1",
             "productCategory": "PC1234",
             "subsite": "MySubsite"
-        }
+        },
     "invoice": {
         "invoiceType": "PayExFinancingSe"
+        }
     }
 }
 ```
