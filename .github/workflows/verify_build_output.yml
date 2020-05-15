@@ -38,6 +38,5 @@ jobs:
           -f docker-compose.yml \
           -f .docker/docker-compose.test.yml \
           up \
-          --build \
           --abort-on-container-exit \
           --exit-code-from portal
