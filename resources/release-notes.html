@@ -1,0 +1,857 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="theme-color" content="#000">
+        <meta name="application-name" content="Release Notes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="apple-mobile-web-app-title"
+            content="Release Notes">
+        <meta name="msapplication-TileColor" content="#000">
+        <meta name="msapplication-TileImage" content="https://design.swedbankpay.com/v/4.5.0/icons/mstile-144x144.png">
+        <meta property="og:type" value="website" />
+        
+        <meta property="og:url" value="/resources/release-notes.html" />
+        <meta property="og:title" value="Release Notes" />
+        <meta name="title" content="Release Notes" />
+        
+        <meta property="og:description" value="Swedbank Pay Developer Portal" />
+        <meta name="description" content="Swedbank Pay Developer Portal" />
+        
+        <meta property="og:image" value="/assets/img/swedbank-pay-developer-portal.png" />
+        <title>Release Notes</title>
+        <link rel="stylesheet" href="https://design.swedbankpay.com/v/4.5.0/styles/dg-style.css" />
+        <link rel="stylesheet" href="/assets/css/swedbank-pay-design-guide-theme.css" />
+        <link rel="stylesheet" href="/assets/css/pygments-autumn.css" />
+        <link rel="shortcut icon" href="https://design.swedbankpay.com/v/4.5.0/icons/favicon.ico">
+        <link rel="icon" type="image/png" sizes="16x16" href="https://design.swedbankpay.com/v/4.5.0/icons/favicon-16x16.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="https://design.swedbankpay.com/v/4.5.0/icons/favicon-32x32.png">
+        <link rel="apple-touch-icon" sizes="57x57"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="167x167"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-icon-167x167.png">
+        <link rel="apple-touch-icon" sizes="180x180"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-icon-180x180.png">
+        <link rel="apple-touch-icon" sizes="1024x1024"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-icon-1024x1024.png">
+        <link rel="apple-touch-startup-image"
+            media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 1)"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-startup-image-320x460.png">
+        <link rel="apple-touch-startup-image"
+            media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-startup-image-640x920.png">
+        <link rel="apple-touch-startup-image"
+            media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-startup-image-640x1096.png">
+        <link rel="apple-touch-startup-image"
+            media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-startup-image-750x1294.png">
+        <link rel="apple-touch-startup-image"
+            media="(device-width: 414px) and (device-height: 736px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-startup-image-1182x2208.png">
+        <link rel="apple-touch-startup-image"
+            media="(device-width: 414px) and (device-height: 736px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 3)"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-startup-image-1242x2148.png">
+        <link rel="apple-touch-startup-image"
+            media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 1)"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-startup-image-748x1024.png">
+        <link rel="apple-touch-startup-image"
+            media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 1)"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-startup-image-768x1004.png">
+        <link rel="apple-touch-startup-image"
+            media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-startup-image-1496x2048.png">
+        <link rel="apple-touch-startup-image"
+            media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-startup-image-1536x2008.png">
+        <link rel="icon" type="image/png" sizes="228x228" href="https://design.swedbankpay.com/v/4.5.0/icons/coast-228x228.png">
+        <script src="/assets/js/mermaid.min.js"></script>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="/assets/tipuesearch/tipuesearch_content.js"></script>
+        <script src="/assets/tipuesearch/tipuesearch_set.js"></script>
+        <script src="/assets/tipuesearch/tipuesearch.min.js"></script>
+        
+    </head>
+
+    <body>
+        <div id="designguide">
+            <header class="topbar topbar-md-wide designguide-header">
+                <button type="button" class="topbar-btn"><i class="material-icons topbar-btn-icon">menu</i></button>
+                <a href="" class="topbar-logo"><img src="https://design.swedbankpay.com/v/4.5.0/img/swedbankpay-logo.svg" alt="logo"></a>
+                <nav class="topbar-nav">
+                    <div class="topbar-link-container">
+                        <button type="button" class="topbar-close"><i class="material-icons">close</i></button>
+
+                        
+                        
+
+                        
+
+                        <a href="/"><span>Home</span></a>
+
+                        
+                        
+                        <a href="/checkout/"><span>Checkout</span></a>
+                        
+                        
+                        <a href="/payments/"><span>Payments</span></a>
+                        
+                        
+                        <a href="/gift-cards/"><span>Gift Cards</span></a>
+                        
+                        
+                        <a href="/resources/"><span>Resources</span></a>
+                        
+
+                        <div class="topbar-info topbar-link-right">
+                            <div class="topbar-info-contact">
+                                <a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/resources/release-notes.md" target="_blank" rel="noopener noreferrer" title="Edit this page on GitHub">
+                                    <svg aria-labelledby="simpleicons-github-icon" role="img" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <title id="simpleicons-github-icon">Edit this page on GitHub</title>
+                                        <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+
+            <div class="documentation">
+                <div class="row">
+                    <div class="col-xxl-2 col-md-3">
+                        <div class="doc-sidebar">
+                            
+                            <form class="doc-search" action="/search">
+                                <input type="text" class="form-control" name="q" id="tipue_search_input" placeholder="Search..." autocomplete="off" pattern=".{3,}" title="At least 3 characters">
+                            </form>
+                            
+                            
+                            <nav class="documentation-nav">
+                                
+                                
+                                <div class="nav-group active">
+                                    <div class="nav-heading">
+                                        <i class="material-icons">keyboard_arrow_right</i>
+                                        <span>Resources</span>
+                                    </div>
+
+                                    
+                                    <ul>
+                                        
+                                        
+                                        <li><a href="/resources/"><span>Introduction</span></a></li>
+                                        
+                                        
+                                        <li><a href="/resources/sdk-modules"><span>SDKs and Modules</span></a></li>
+                                        
+                                        
+                                        <li><a href="/resources/test-data"><span>Test Data</span></a></li>
+                                        
+                                        
+                                        <li><a href="/resources/demoshop"><span>Demoshop</span></a></li>
+                                        
+                                        
+                                        <li><a href="/resources/development-guidelines"><span>Open Source Development Guidelines</span></a></li>
+                                        
+                                        
+                                        <li><a aria-current="page" class="active" href="/resources/release-notes"><span>Release Notes</span></a></li>
+                                        
+                                        
+                                        <li><a href="/resources/terminology"><span>Terminology</span></a></li>
+                                        
+                                        
+                                        <li><a href="/resources/data-protection"><span>Data Protection</span></a></li>
+                                        
+                                        
+                                        <li><a href="/resources/public-migration-key"><span>Public Migration Key</span></a></li>
+                                        
+                                    </ul>
+                                    
+                                </div>
+                                
+                            </nav>
+                            
+                        </div>
+                    </div>
+
+                    <main class="doc-view col-xxl-10 col-md-9">
+                        <div class="doc-container">
+                            <h1>Release Notes</h1>
+                            <div class="row">
+                                <div class="doc-body col-lg-10">
+                                    
+                                    <div class="jumbotron">
+    <p>The latest updates about our releases will be
+published on this page.</p>
+
+</div>
+
+<div class="alert alert-complex alert-informative">
+<header class="alert-header">
+            
+                <i class="material-icons alert-icon">info</i>
+      <h3>
+        
+        
+          Version numbers
+        
+        
+      </h3></header>
+    
+
+    
+        
+            <div class="alert-body">
+                <p>The version numbers used in headers on this page refers to the version of
+this very documentation, not to a version of any APIs described by it.</p>
+            </div>
+        
+    
+</div>
+    
+      <h2 id="may-2020">
+        
+        
+          May 2020 <a href="#may-2020" class="header-anchor"></a>
+        
+        
+      </h2>
+    
+      <h3 id="version-1100">
+        
+        
+          Version 1.10.0 <a href="#version-1100" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>Added a new <a href="/gift-cards">Gift Cards</a> section with descriptions of our Gift Cards API.</li>
+  <li>Added a new section <a href="/payments/card/other-features#co-badge-card-choice-for-dankort">Co-badge Card Choice for Dankort</a> in
+<a href="/payments/card/other-features#payment-url">Card Payments</a>.</li>
+</ul>
+    
+      <h3 id="version-192">
+        
+        
+          Version 1.9.2 <a href="#version-192" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>Corrected table in <a href="/payments">payments page</a>
+</li>
+</ul>
+    
+      <h3 id="version-191">
+        
+        
+          Version 1.9.1 <a href="#version-191" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>Corrected sequence diagrams in <a href="/payments/swish">Swish Payments</a> and
+<a href="/payments/vipps">Vipps Payments</a>.</li>
+  <li>The <code class="language-html highlighter-rouge">description</code> field is now more thoroughly described for all requests it’s
+present in.</li>
+  <li>The <code class="language-html highlighter-rouge">language</code> field is now better described for all requests it’s present in.</li>
+  <li>All broken links should now be unbroken.</li>
+</ul>
+    
+      <h2 id="april-2020">
+        
+        
+          April 2020 <a href="#april-2020" class="header-anchor"></a>
+        
+        
+      </h2>
+    
+      <h3 id="version-190">
+        
+        
+          Version 1.9.0 <a href="#version-190" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>Added a new section <a href="/resources/sdk-modules">SDKs and Modules</a> in Resources.</li>
+  <li>Corrected problem <code class="language-html highlighter-rouge">type</code> URIs for <a href="/payments/card">Card Payments</a>, <a href="/checkout">Checkout</a>
+and <a href="/payments/swish">Swish Payments</a>.</li>
+  <li>Required checkmarks have a new, fresh look: <i class="material-icons">check</i>
+</li>
+  <li>Flags now also sport a new look: <img src="/assets/img/flag-norway.png" alt="nor"> <img src="/assets/img/flag-sweden.png" alt="swe">
+<img src="/assets/img/flag-denmark.png" alt="dan"> <img src="/assets/img/flag-finland.png" alt="fin">
+</li>
+</ul>
+    
+      <h3 id="version-183">
+        
+        
+          Version 1.8.3 <a href="#version-183" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>Bug fixes to Mermaid diagram and alert styling, plus improvements to code
+block styling after the update to <a href="https://design.swedbankpay.com/">Swedbank Pay Design Guide</a>
+4.5.0.</li>
+  <li>Added examples with screenshots of the effects of <a href="/checkout/other-features#merchant-authenticated-consumer">Merchant Authenticated
+Consumer</a>.</li>
+</ul>
+    
+      <h3 id="version-182">
+        
+        
+          Version 1.8.2 <a href="#version-182" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>Added a more thorough description on <code class="language-html highlighter-rouge">paymentUrl</code> and <code class="language-html highlighter-rouge">completeUrl</code> in all
+relevant payments.</li>
+  <li>Updated <code class="language-html highlighter-rouge">orderItems</code> to be required in all requests and responses.</li>
+  <li>Clean up of <a href="/payments/swish">Swish Payments</a>
+</li>
+  <li>Removed <code class="language-html highlighter-rouge">pageStripDown</code> in <a href="/payments/vipps">Vipps Redirect</a>.</li>
+  <li>Updated <a href="/payments/card/direct">Card Payments Direct</a> to have a correct integration
+flow.</li>
+  <li>Updated the <a href="https://developer.swedbankpay.com/">main page</a> to be more welcoming.</li>
+  <li>Updated information on <a href="/checkout/other-features#merchant-authenticated-consumer">Merchant Authenticated Consumer</a>.</li>
+</ul>
+    
+      <h2 id="march-2020">
+        
+        
+          March 2020 <a href="#march-2020" class="header-anchor"></a>
+        
+        
+      </h2>
+    
+      <h3 id="version-181">
+        
+        
+          Version 1.8.1 <a href="#version-181" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>Documented allowed characters in <code class="language-html highlighter-rouge">orderItem.class</code>.</li>
+  <li>Added <code class="language-html highlighter-rouge">receiptReference</code> in <a href="/payments/invoice">Invoice Payments</a> and
+<a href="/checkout/other-features#payment-orders">Payment Order</a> in capture and reversal.</li>
+  <li>Callback is now moved to Other features in all payments intruments.</li>
+  <li>Clean up of <a href="/payments/mobile-pay">MobilePay</a>.</li>
+  <li>Corrected the address of Leia Ahlström in <a href="/resources/test-data">Test Data</a>.</li>
+  <li>Updated the documentation in <a href="/payments/card/other-features#payment-url">Card Payments</a>
+to recommend using <code class="language-html highlighter-rouge">shippingAddress</code>.</li>
+  <li>Updated <code class="language-html highlighter-rouge">payeeReference</code> to have an unique description for Payment Order and
+every Payment Instrument.</li>
+</ul>
+    
+      <h3 id="version-180">
+        
+        
+          Version 1.8.0 <a href="#version-180" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>Updated <a href="/payments/invoice/direct">Invoice Payments Direct</a> where
+<code class="language-html highlighter-rouge">approvedLegalAddress</code> should now be use for all countries.</li>
+  <li>Small text changes and clarifications.</li>
+  <li>Restructured <a href="/payments/invoice">Invoice Payments</a> and <a href="/payments/card">Card Payments</a>.</li>
+</ul>
+    
+      <h3 id="version-177">
+        
+        
+          Version 1.7.7 <a href="#version-177" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<p>This change contains build updates for the page. <img class="emoji" title=":octocat:" alt=":octocat:" src="https://github.githubassets.com/images/icons/emoji/octocat.png" height="20" width="20"></p>
+    
+      <h3 id="version-176">
+        
+        
+          Version 1.7.6 <a href="#version-176" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>Several links has been corrected. The chance of 404 is now much lower.</li>
+  <li>Other small text changes and clarifications.</li>
+</ul>
+    
+      <h3 id="version-175">
+        
+        
+          Version 1.7.5 <a href="#version-175" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>New page! Technical reference into has been moved from the front page
+to <a href="/home/technical-information">technical information</a>.</li>
+  <li>Front page got a slimmer look. <img class="emoji" title=":swimmer:" alt=":swimmer:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f3ca.png" height="20" width="20">
+</li>
+  <li>Abort reference is back in <a href="/payments/card/after-payment#abort">credit card reference</a>.</li>
+  <li>Swish error code reference got a face lift, check it out
+<a href="/payments/swish/other-features#swish-api-errors">here</a> <img class="emoji" title=":candy:" alt=":candy:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f36c.png" height="20" width="20">.</li>
+</ul>
+    
+      <h2 id="february-2020">
+        
+        
+          February 2020 <a href="#february-2020" class="header-anchor"></a>
+        
+        
+      </h2>
+    
+      <h3 id="version-174">
+        
+        
+          Version 1.7.4 <a href="#version-174" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>Described the M-Commerce flow for <a href="/payments/swish/direct#step-2b-create-m-commerce-sale-transaction">Swish Direct</a>.</li>
+  <li>Alphabetize the terms in <a href="/resources/terminology">Terminology</a>.</li>
+</ul>
+    
+      <h3 id="version-173">
+        
+        
+          Version 1.7.3 <a href="#version-173" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>Expanded information about the field <code class="language-html highlighter-rouge">restrictedToInstruments</code>.</li>
+  <li>Added information about the field <code class="language-html highlighter-rouge">receiptReference</code>.</li>
+  <li>Added information about <a href="/payments/card/direct">direct integration in Credit card</a>.</li>
+  <li>Added and fixed several missing headings in template files.</li>
+  <li>Expanded information about <code class="language-html highlighter-rouge">verify</code>.</li>
+  <li>Created new page for <a href="/checkout/capture">Checkout Capture</a>.</li>
+  <li>Mobile Pay Online was previously only refered to as Mobile Pay, this has been
+corrected.</li>
+</ul>
+    
+      <h3 id="version-172">
+        
+        
+          Version 1.7.2 <a href="#version-172" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>Removed several duplicate headers in other-features pages.</li>
+  <li>Added unscheduled purchase information in
+<a href="/payments/card/other-features#unscheduled-purchase">card payments</a>.</li>
+  <li>We have added card logos when selecting card in payment menu.
+See <a href="/checkout/checkin#step-2-display-swedbank-pay-checkin-module">updated screenshot of payment menu</a>.</li>
+</ul>
+    
+      <h3 id="version-171">
+        
+        
+          Version 1.7.1 <a href="#version-171" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<p>All sections have been released. <img class="emoji" title=":trophy:" alt=":trophy:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f3c6.png" height="20" width="20"></p>
+    
+      <h3 id="version-17">
+        
+        
+          Version 1.7 <a href="#version-17" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>README is updated with info about includes.</li>
+  <li>Added  several includes.</li>
+  <li>Updated payeeReference description in Checkout and Invoice section.</li>
+  <li>Using snake case consistently.</li>
+  <li>Added section for unscheduled purchase in Card section.</li>
+  <li>Fixed JavaScript example in Checkin section.</li>
+  <li>Added info about mobile verification in Swish Other Features.</li>
+  <li>Added section about Authenticated Merchants in Checkout section.</li>
+  <li>Cleanup in <code class="language-html highlighter-rouge">Vipps</code> Other Features.</li>
+  <li>
+<code class="language-html highlighter-rouge">paymentRestrictedToAgeLimit</code> and <code class="language-html highlighter-rouge">paymentRestrictedToSocialSecurityNumber</code>
+added to <code class="language-html highlighter-rouge">swish</code> object in <a href="/payments/swish/redirect">Swish Redirect</a>. <code class="language-html highlighter-rouge">paymentAgeLimit</code>
+, <code class="language-html highlighter-rouge">socialSecurityNumber</code> added to the new <code class="language-html highlighter-rouge">payerInfo</code> object in
+<a href="/payments/swish/seamless-view">Swish Seamless View</a>. Properties added in <code class="language-html highlighter-rouge">Swish</code>.</li>
+  <li>Added section about migration key in Resources section.</li>
+</ul>
+    
+      <h2 id="january-2020">
+        
+        
+          January 2020 <a href="#january-2020" class="header-anchor"></a>
+        
+        
+      </h2>
+    
+      <h3 id="version-163">
+        
+        
+          Version 1.6.3 <a href="#version-163" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>
+<code class="language-html highlighter-rouge">restrictedToInstruments</code> added back to <a href="/checkout/payment-menu#request">Payment Order purchase
+requests</a>.</li>
+  <li>
+<code class="language-html highlighter-rouge">Direct Debit</code> section and mentions in various includes removed.</li>
+  <li>Various improvements and fixes.</li>
+</ul>
+    
+      <h3 id="version-162">
+        
+        
+          Version 1.6.2 <a href="#version-162" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>The <a href="/payments">Payments</a> and <a href="/payments/card">Card Payments</a> sections are reviewed and
+released.</li>
+</ul>
+    
+      <h3 id="version-161">
+        
+        
+          Version 1.6.1 <a href="#version-161" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>
+<code class="language-html highlighter-rouge">email</code>, <code class="language-html highlighter-rouge">msisdn</code>, <code class="language-html highlighter-rouge">workPhoneNumber</code> and <code class="language-html highlighter-rouge">homePhoneNumber</code> added to the
+<code class="language-html highlighter-rouge">payer</code> object in <a href="/checkout/other-features#payment-orders">Payment Order requests</a>.</li>
+  <li>
+<code class="language-html highlighter-rouge">cardholder</code> added to <a href="/payments/card/redirect#step-1-create-a-purchase">Card Payments Purchase requests</a>.</li>
+  <li>Various improvements and fixes.</li>
+</ul>
+    
+      <h3 id="version-16">
+        
+        
+          Version 1.6 <a href="#version-16" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>
+<a href="/payments/card">Credit Payments</a> (née “Credit Account”) sections have been deleted
+from the Swedbank Pay Developer Portal.</li>
+  <li>The <a href="/payments/swish">Swish Payments</a> and <a href="/payments/vipps">Vipps Payments</a> have received a few
+updates and are now ready for another round of review.</li>
+  <li>
+<a href="/payments/mobile-pay">MobilePay Payments</a> is now ready for review.</li>
+  <li>
+<code class="language-html highlighter-rouge">paymentAgeLimit</code> is now added in <a href="/payments/swish">Swish Payments</a>.</li>
+  <li>The <a href="/resources/terminology">Terminology page</a> is updated and <em>3-D Secure 2.0 (3DS2)</em> ,
+<em>PSD2</em> and <em>SCA</em> explanations are added.</li>
+  <li>Added descriptions for Payment States And Transaction States everywhere appropriate.</li>
+  <li>Google Analytics has been added to Developer Portal.</li>
+</ul>
+    
+      <h3 id="version-15">
+        
+        
+          Version 1.5 <a href="#version-15" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>The review of <a href="/payments/invoice">Invoice Payments</a> is complete and as such the section
+is now released and ready for use.</li>
+  <li>The <a href="/payments/card">Card Payments</a> section has received an overhaul, inching it closer
+to release.</li>
+  <li>The <a href="/payments/swish">Swish Payments</a> and <a href="/payments/vipps">Vipps Payments</a> sections are ready for
+review.</li>
+  <li>The Direct Debit, <a href="/payments/mobile-pay">MobilePay Payments</a> and
+<a href="/payments/card">Credit Payments</a> (née “Credit Account”) sections have received a few
+updates, inching them all closer to review.</li>
+</ul>
+    
+      <h3 id="version-14">
+        
+        
+          Version 1.4 <a href="#version-14" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>Updated <a href="/payments/swish/direct">Swish Redirect</a> and <a href="/payments/swish/direct">Swish Direct</a>
+sections in preparations for review and the transition from PayEx Developer
+Portal.</li>
+  <li>Added <a href="/resources/data-protection">Data Protection</a> section.</li>
+  <li>Payment Orders now support <code class="language-html highlighter-rouge">orderItems</code> in all operations.</li>
+  <li>Added <a href="/resources/terminology">Terminology page</a>.</li>
+  <li>Clarified what the <code class="language-html highlighter-rouge">awaitingActivity</code> state means for different payment
+instruments.</li>
+  <li>Removed erroneous <code class="language-html highlighter-rouge">noCVC</code> in examples for <a href="/payments/card/other-features#one-click-payments">One-Click Card Payments</a>
+section.</li>
+  <li>Added description for the <code class="language-html highlighter-rouge">onBillingDetailsAvailable</code> event in the
+<a href="/checkout/checkin#step-1-initiate-session-for-consumer-identification">Checkin Front End section</a>.</li>
+</ul>
+    
+      <h2 id="december-2019">
+        
+        
+          December 2019 <a href="#december-2019" class="header-anchor"></a>
+        
+        
+      </h2>
+    
+      <h3 id="update-in-checkin-module">
+        
+        
+          Update in checkin module <a href="#update-in-checkin-module" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<p>We have added support for specifying language as input in checkin module,
+<code class="language-html highlighter-rouge">language</code>. Supported languages are Norwegian, Swedish and English. Consumers
+outside Sweden and Norway can now purchase in our Checkout service. You can
+specify supported countries for shipment in a new input parameter,
+<code class="language-html highlighter-rouge">shippingAddressRestrictedToCountryCodes</code>, in our checkin module.
+Updated API specification can be found <a href="/checkout/checkin#step-1-initiate-session-for-consumer-identification">here</a>.
+The parameters <code class="language-html highlighter-rouge">language</code> and <code class="language-html highlighter-rouge">shippingAddressRestrictedToCountryCodes</code> have replaced the former <code class="language-html highlighter-rouge">consumerCountryCode</code>.</p>
+
+<p>The parameters <code class="language-html highlighter-rouge">msisdn</code> and <code class="language-html highlighter-rouge">email</code> have been made obsolete due to GDPR rules. This information cannot be sent in without an explicit consent from the consumer.</p>
+    
+      <h2 id="november-2019">
+        
+        
+          November 2019 <a href="#november-2019" class="header-anchor"></a>
+        
+        
+      </h2>
+    
+      <h3 id="welcome-swedbank-pay-developer-portal">
+        
+        
+          Welcome, Swedbank Pay Developer Portal <a href="#welcome-swedbank-pay-developer-portal" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<p>PayEx’ Commerce offerings are being rebranded to <strong>Swedbank Pay</strong> and as a
+result of that rebranding, PayEx Checkout is now known as Swedbank Pay Checkout
+and its documentation can be found on <a href="/checkout">here</a>.</p>
+    
+      <h3 id="support-international-phone-numbers-in-swish">
+        
+        
+          Support international phone numbers in Swish <a href="#support-international-phone-numbers-in-swish" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<p>We have added support for sending in international phone numbers in the request.
+Check our Swish documentation <a href="/payments/swish/other-features">here</a>.
+This is supported in API, and when consumer enters their phone number on the
+payment page.</p>
+    
+      <h3 id="order-items">
+        
+        
+          Order Items <a href="#order-items" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<p>The input parameter <code class="language-html highlighter-rouge">quantity</code> in OrderItems-node is now updated to decimal.
+You may send up to 4 decimals. See updated documentation
+<a href="/checkout/other-features#creating-a-payment-order">here</a></p>
+    
+      <h2 id="october-2019">
+        
+        
+          October 2019 <a href="#october-2019" class="header-anchor"></a>
+        
+        
+      </h2>
+    
+      <h3 id="payment-url-credit-card">
+        
+        
+          Payment Url Credit Card <a href="#payment-url-credit-card" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<p>We have added the URL field called <code class="language-html highlighter-rouge">paymentUrl</code> for <a href="/payments/card/other-features#payment-url">Card
+Seamless View</a> (previously added for Vipps and Checkout), that will be used
+when the user is returned from 3rd party. The URL should represent the page in
+where the payment Seamless View was hosted originally, such as the checkout page,
+shopping cart page, or similar. Basically, <code class="language-html highlighter-rouge">paymentUrl</code> should be set to the
+same URL as that of the page where the JavaScript for the hosted payment view
+was added, in order to initiate the payment. Please note that the <code class="language-html highlighter-rouge">paymentUrl</code>
+must be able to invoke the same JavaScript URL from the same Payment as the one
+that initiated the payment originally, so it should include some sort of state
+identifier in the URL. The state identifier is the ID of the order, shopping
+cart or similar that has the URL of the Payment stored. When the JavaScript is
+invoked after return of the consumer, the consumer will either be redirected to
+the <code class="language-html highlighter-rouge">completeUrl</code> (event onPaymentCompleted) or if payment has failed, see an
+error-message and get the option to retry the payment.</p>
+    
+      <h2 id="august-2019">
+        
+        
+          August 2019 <a href="#august-2019" class="header-anchor"></a>
+        
+        
+      </h2>
+    
+      <h3 id="order-items-1">
+        
+        
+          Order Items <a href="#order-items-1" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<p>On <a href="/checkout/other-features#creating-a-payment-order">Payment Orders</a>,
+<code class="language-html highlighter-rouge">itemDescriptions</code> and <code class="language-html highlighter-rouge">vatSummary</code> has been replaced with the more
+versatile and powerful <code class="language-html highlighter-rouge">orderItems</code>. While <code class="language-html highlighter-rouge">itemDescriptions</code> will continue
+to work, it is recommended that all integrations switch over to <code class="language-html highlighter-rouge">orderItems</code>
+as soon as possible. When <code class="language-html highlighter-rouge">orderItems</code> is used, <code class="language-html highlighter-rouge">itemDescriptions</code> must be
+removed from all requests as the two cannot be used simultaneously.</p>
+    
+      <h3 id="payment-url">
+        
+        
+          Payment Url <a href="#payment-url" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<p>For our Seamless Views (currently
+<a href="/payments/vipps/other-features#payment-url">Vipps</a>
+or in <a href="/checkout/other-features#payment-url">Checkout</a>),
+we have added a new URL field called <code class="language-html highlighter-rouge">paymentUrl</code> that will be used when
+user is returned from 3rd party. The URL should represent the page of where the
+payment hosted view was hosted originally, such as the checkout page, shopping
+cart page, or similar. Basically, <code class="language-html highlighter-rouge">paymentUrl</code> should be set to the same URL
+as that of the page where the JavaScript for the hosted payment view was added
+to in order to initiate the payment. Please note that the <code class="language-html highlighter-rouge">paymentUrl</code> must be
+able to invoke the same JavaScript URL from the same Payment or Payment Order as
+the one that initiated the payment originally, so it should include some sort of
+state identifier in the URL. The state identifier is the ID of the order,
+shopping cart or similar that has the URL of the Payment or Payment Order
+stored. When the JavaScript is invoked after return of the consumer, the
+consumer will either be redirected to the <code class="language-html highlighter-rouge">completeUrl</code>, or, if payment failed,
+see an error-message, and get the option to retry the payment.</p>
+
+<p>If <code class="language-html highlighter-rouge">paymentUrl</code> is not implemented, retry of payments will not be possible in
+either individual payment instruments such as
+<a href="/payments/vipps/other-features#payment-resource">Vipps</a>
+or in <a href="/checkout/other-features#payment-orders">Checkout</a>.
+It makes it more tedious to retry payment as the whole process including the
+creation of the payment or payment order needs to be performed again. With
+paymentUrl in place, the retry process becomes much more convenient for both the
+integration and the payer.</p>
+                                    
+                                </div>
+
+                                <div class="col-2 d-none d-lg-block">
+                                    <nav class="doc-toc">
+                                        <ul>
+  <li class="toc-2"><a href="#may-2020">May 2020</a></li>
+  <li class="toc-2"><a href="#april-2020">April 2020</a></li>
+  <li class="toc-2"><a href="#march-2020">March 2020</a></li>
+  <li class="toc-2"><a href="#february-2020">February 2020</a></li>
+  <li class="toc-2"><a href="#january-2020">January 2020</a></li>
+  <li class="toc-2"><a href="#december-2019">December 2019</a></li>
+  <li class="toc-2"><a href="#november-2019">November 2019</a></li>
+  <li class="toc-2"><a href="#october-2019">October 2019</a></li>
+  <li class="toc-2"><a href="#august-2019">August 2019</a></li>
+</ul>
+
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+            </div>
+
+            <footer class="page-footer">
+                <p class="page-footer-rights">© Swedbank Pay</p>
+            </footer>
+        </div>
+
+        <script src="https://design.swedbankpay.com/v/4.5.0/scripts/dg.js"></script>
+        <script src="/assets/js/swedbank-pay-design-guide-theme.js"></script>
+        
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-156582708-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-156582708-1');
+</script>
+
+        
+    </body>
+    
+    <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+    
+
+</html>

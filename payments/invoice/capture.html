@@ -1,0 +1,774 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="theme-color" content="#000">
+        <meta name="application-name" content="Swedbank Pay Payments Invoice Capture">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="apple-mobile-web-app-title"
+            content="Swedbank Pay Payments Invoice Capture">
+        <meta name="msapplication-TileColor" content="#000">
+        <meta name="msapplication-TileImage" content="https://design.swedbankpay.com/v/4.5.0/icons/mstile-144x144.png">
+        <meta property="og:type" value="website" />
+        
+        <meta property="og:url" value="/payments/invoice/capture.html" />
+        <meta property="og:title" value="Swedbank Pay Payments Invoice Capture" />
+        <meta name="title" content="Swedbank Pay Payments Invoice Capture" />
+        
+        <meta property="og:description" value="Swedbank Pay Developer Portal" />
+        <meta name="description" content="Swedbank Pay Developer Portal" />
+        
+        <meta property="og:image" value="/assets/img/swedbank-pay-developer-portal.png" />
+        <title>Swedbank Pay Payments Invoice Capture</title>
+        <link rel="stylesheet" href="https://design.swedbankpay.com/v/4.5.0/styles/dg-style.css" />
+        <link rel="stylesheet" href="/assets/css/swedbank-pay-design-guide-theme.css" />
+        <link rel="stylesheet" href="/assets/css/pygments-autumn.css" />
+        <link rel="shortcut icon" href="https://design.swedbankpay.com/v/4.5.0/icons/favicon.ico">
+        <link rel="icon" type="image/png" sizes="16x16" href="https://design.swedbankpay.com/v/4.5.0/icons/favicon-16x16.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="https://design.swedbankpay.com/v/4.5.0/icons/favicon-32x32.png">
+        <link rel="apple-touch-icon" sizes="57x57"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="167x167"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-icon-167x167.png">
+        <link rel="apple-touch-icon" sizes="180x180"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-icon-180x180.png">
+        <link rel="apple-touch-icon" sizes="1024x1024"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-icon-1024x1024.png">
+        <link rel="apple-touch-startup-image"
+            media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 1)"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-startup-image-320x460.png">
+        <link rel="apple-touch-startup-image"
+            media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-startup-image-640x920.png">
+        <link rel="apple-touch-startup-image"
+            media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-startup-image-640x1096.png">
+        <link rel="apple-touch-startup-image"
+            media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-startup-image-750x1294.png">
+        <link rel="apple-touch-startup-image"
+            media="(device-width: 414px) and (device-height: 736px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-startup-image-1182x2208.png">
+        <link rel="apple-touch-startup-image"
+            media="(device-width: 414px) and (device-height: 736px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 3)"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-startup-image-1242x2148.png">
+        <link rel="apple-touch-startup-image"
+            media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 1)"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-startup-image-748x1024.png">
+        <link rel="apple-touch-startup-image"
+            media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 1)"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-startup-image-768x1004.png">
+        <link rel="apple-touch-startup-image"
+            media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-startup-image-1496x2048.png">
+        <link rel="apple-touch-startup-image"
+            media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-startup-image-1536x2008.png">
+        <link rel="icon" type="image/png" sizes="228x228" href="https://design.swedbankpay.com/v/4.5.0/icons/coast-228x228.png">
+        <script src="/assets/js/mermaid.min.js"></script>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="/assets/tipuesearch/tipuesearch_content.js"></script>
+        <script src="/assets/tipuesearch/tipuesearch_set.js"></script>
+        <script src="/assets/tipuesearch/tipuesearch.min.js"></script>
+        
+    </head>
+
+    <body>
+        <div id="designguide">
+            <header class="topbar topbar-md-wide designguide-header">
+                <button type="button" class="topbar-btn"><i class="material-icons topbar-btn-icon">menu</i></button>
+                <a href="" class="topbar-logo"><img
+                        src="https://design.swedbankpay.com/v/4.5.0/img/swedbankpay-logo.svg" alt="logo"></a>
+                <nav class="topbar-nav">
+                    <div class="topbar-link-container">
+                        <button type="button" class="topbar-close"><i class="material-icons">close</i></button>
+
+                        
+                        
+
+                        
+
+                        <a 
+                            href="/"><span>Home</span></a>
+
+                        
+                        
+                        <a 
+                            href="/checkout/"><span>Checkout</span></a>
+                        
+                        
+                        <a 
+                            href="/payments/"><span>Payments</span></a>
+                        
+                        
+                        <a 
+                            href="/gift-cards/"><span>Gift Cards</span></a>
+                        
+                        
+                        <a 
+                            href="/resources/"><span>Resources</span></a>
+                        
+
+                        <div class="topbar-info topbar-link-right">
+                            <div class="topbar-info-contact">
+                                <a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/payments/invoice/capture.md" target="_blank"
+                                    rel="noopener noreferrer" title="Edit this page on GitHub">
+                                    <svg aria-labelledby="simpleicons-github-icon" role="img" viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <title id="simpleicons-github-icon">Edit this page on GitHub</title>
+                                        <path
+                                            d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+
+            <div class="documentation">
+                <div class="row">
+                    <div class="col-xxl-2 col-md-3">
+                        <div class="doc-sidebar">
+                            
+                            <form class="doc-search" action="/search">
+                                <input type="text" class="form-control" name="q" id="tipue_search_input"
+                                    placeholder="Search..." autocomplete="off" pattern=".{3,}"
+                                    title="At least 3 characters">
+                            </form>
+                            
+                            
+                            <nav class="documentation-nav">
+                                
+                                
+                                <div class="nav-group active">
+                                    <div class="nav-heading">
+                                        <i class="material-icons">keyboard_arrow_right</i>
+                                        <span>Invoice Payments</span>
+                                    </div>
+
+                                    
+                                    <ul>
+                                        
+                                        
+                                        <li><a  href="/payments/invoice"><span>Introduction</span></a></li>
+                                        
+                                        
+                                        <li><a  href="/payments/invoice/redirect"><span>Redirect</span></a></li>
+                                        
+                                        
+                                        <li><a  href="/payments/invoice/seamless-view"><span>Seamless View</span></a></li>
+                                        
+                                        
+                                        <li><a  href="/payments/invoice/direct"><span>Direct</span></a></li>
+                                        
+                                        
+                                        <li><a  aria-current="page" class="active"
+                                                 href="/payments/invoice/capture"><span>Capture</span></a></li>
+                                        
+                                        
+                                        <li><a  href="/payments/invoice/after-payment"><span>After Payment</span></a></li>
+                                        
+                                        
+                                        <li><a  href="/payments/invoice/other-features"><span>Other Features</span></a></li>
+                                        
+                                    </ul>
+                                    
+                                </div>
+                                
+                            </nav>
+                            
+                        </div>
+                    </div>
+
+                    <main class="doc-view col-xxl-10 col-md-9">
+                        <div class="doc-container">
+                            <h1>Swedbank Pay Payments Invoice Capture</h1>
+                            <div class="row">
+                                <div class="doc-body col-lg-10">
+                                    
+                                    <h2 id="capture">
+        
+        
+          Capture <a href="#capture" class="header-anchor"></a>
+        
+        
+      </h2>
+
+<p>The final step in the integration process for Invoice <a href="/payments/invoice/redirect">Redirect</a>,
+<a href="/payments/invoice/seamless-view">Seamless View</a> and <a href="/payments/invoice/direct">Direct</a> is to complete a Capture.</p>
+
+<p>An invoice capture will generate the invoice and distribute it to the consumer.
+This differs from i.e. Card Payments, where a capture operation will fully or
+partially charge the consumer’s authorized amount.</p>
+    
+      <h2 id="step-1-create-financingconsumer-capture">
+        
+        
+          Step 1: Create <code class="language-html highlighter-rouge">FinancingConsumer</code> Capture <a href="#step-1-create-financingconsumer-capture" class="header-anchor"></a>
+        
+        
+      </h2>
+
+<p>To capture a <code class="language-html highlighter-rouge">FinancingConsumer</code> invoice payment, perform the <code class="language-html highlighter-rouge">create-capture</code>
+operation with the following request body:</p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+</pre></td><td class="rouge-code"><pre><span class="nf">POST</span> <span class="nn">/psp/invoice/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/captures</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">api.externalintegration.payex.com</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nl">"transaction"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"activity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FinancingConsumer"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">13500</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"vatAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2500</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABC856"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"receiptReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABC855"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"description for transaction"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"itemDescriptions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">12500</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"item description 1"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"item description 2"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"vatSummary"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">12500</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"vatPercent"</span><span class="p">:</span><span class="w"> </span><span class="mi">2500</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"vatAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2500</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"vatPercent"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"vatAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th style="text-align: center">Required</th>
+      <th style="text-align: left">Parameter name</th>
+      <th style="text-align: left">Datatype</th>
+      <th style="text-align: left">Value (with description)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i>︎</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">transaction.activity</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">FinancingConsumer.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i>︎</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">transaction.Amount</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
+      <td style="text-align: left">Amount entered in the lowest momentary units of the selected currency. E.g. <code class="language-html highlighter-rouge">10000</code> = <code class="language-html highlighter-rouge">100.00 SEK</code>, <code class="language-html highlighter-rouge">5000</code> = <code class="language-html highlighter-rouge">50.00 SEK</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i>︎</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">transaction.vatAmount</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
+      <td style="text-align: left">Amount entered in the lowest momentary units of the selected currency. E.g. <code class="language-html highlighter-rouge">10000</code> = <code class="language-html highlighter-rouge">100.00 SEK</code>, <code class="language-html highlighter-rouge">5000</code> = <code class="language-html highlighter-rouge">50.00 SEK</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i>︎</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">transaction.payeeReference</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string(50)</code></td>
+      <td style="text-align: left">The <code class="language-html highlighter-rouge">payeeReference</code> is the receipt/invoice number if <code class="language-html highlighter-rouge">receiptReference</code> is not defined, which is a <strong>unique</strong> reference with max 50 characters set by the merchant system. This must be unique for each operation and must follow the regex pattern <code class="language-html highlighter-rouge">[\w]* (a-zA-Z0-9_)</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">transaction.receiptReference</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string(50)</code></td>
+      <td style="text-align: left">The <code class="language-html highlighter-rouge">receiptReference</code> is a reference from the merchant system. This reference is used as an invoice/receipt number to supplement <code class="language-html highlighter-rouge">payeeReference</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i>︎</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">transaction.description</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">A textual description of the capture</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i>︎</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">itemDescriptions.amount</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
+      <td style="text-align: left">Total price for this order line - entered in the lowest momentary units of the selected currency. E.g. <code class="language-html highlighter-rouge">10000</code> = <code class="language-html highlighter-rouge">100.00 SEK</code>, <code class="language-html highlighter-rouge">5000</code> = <code class="language-html highlighter-rouge">50.00 SEK</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i>︎</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">itemDescriptions.description</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">A textual description of this product</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i>︎</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">vatSummary.amount</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
+      <td style="text-align: left">Total price for this order line - entered in the lowest momentary units of the selected currency. E.g. <code class="language-html highlighter-rouge">10000</code> = <code class="language-html highlighter-rouge">100.00 SEK</code>, <code class="language-html highlighter-rouge">5000</code> = <code class="language-html highlighter-rouge">50.00 SEK</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i>︎</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">vatSummary.vatAmount</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
+      <td style="text-align: left">VAT Amount entered in the lowest momentary units of the selected currency. E.g. <code class="language-html highlighter-rouge">10000</code> = <code class="language-html highlighter-rouge">100.00 SEK</code>, <code class="language-html highlighter-rouge">5000</code> =<code class="language-html highlighter-rouge">50.00 SEK</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i>︎</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">vatSummary.vatPercent</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The VAT in percent. Supported values : “0.00”, “6.00”, “8.00”, “10.00”, “12.00”, “14.00”, “15.00”, “22.00”, “24.00”, “25.00”</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Notes on <code class="language-html highlighter-rouge">FinancingConsumer</code> captures:</p>
+
+<ul>
+  <li>The due date is set by Swedbank Pay based on the agreement with merchant. Standard
+due date is 14 days.</li>
+  <li>The invoice number is set by Swedbank Pay.</li>
+</ul>
+
+<p>The created <code class="language-html highlighter-rouge">capture</code> resource contains information about the
+<code class="language-html highlighter-rouge">capture</code> transaction made against a <code class="language-html highlighter-rouge">invoice</code> payment.</p>
+
+<p class="code-header"><strong>Response</strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+</pre></td><td class="rouge-code"><pre><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/invoice/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"capture"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/invoice/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/captures/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"itemDescriptions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/invoice/payments//transactions/ec2a9b09-601a-42ae-8e33-a5737e1cf177/itemDescriptions"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"transaction"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/invoice/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-14T01:01:01.01Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-14T01:01:01.03Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Capture"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Completed"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"vatAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">250</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test transaction"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AH123456"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"receiptReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AH12355"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"failedReason"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"isOperational"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/invoice/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"edit-capture"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PATCH"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th style="text-align: left">Field</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">payment</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">capture</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">capture</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The current <code class="language-html highlighter-rouge">capture</code> transaction resource.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">id</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">capture</code> resource this <code class="language-html highlighter-rouge">capture</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">itemDescriptions</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">object</code></td>
+      <td style="text-align: left">The object representation of the <code class="language-html highlighter-rouge">itemDescriptions</code> resource.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">id</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">itemDescriptions</code> resource this <code class="language-html highlighter-rouge">capture</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">transaction</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">object</code></td>
+      <td style="text-align: left">The object representation of the generic transaction resource.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">id</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">transaction</code> resource this <code class="language-html highlighter-rouge">capture</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">created</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The ISO-8601 date and time of when the transaction was created.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">updated</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The ISO-8601 date and time of when the transaction was updated.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">type</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">Indicates the transaction type.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">state</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">Initialized</code>, <code class="language-html highlighter-rouge">Completed</code> or <code class="language-html highlighter-rouge">Failed</code>. Indicates the state of the transaction.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">number</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The transaction <code class="language-html highlighter-rouge">number</code>, useful when there’s need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that <code class="language-html highlighter-rouge">id</code> should be used instead.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">amount</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
+      <td style="text-align: left">The amount (including VAT, if any) to charge the payer, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">vatAmount</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
+      <td style="text-align: left">The amount of VAT to charge the payer, entered in the lowest monetary unit ofthe selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK. If the <code class="language-html highlighter-rouge">amount</code> given includes VAT, <code class="language-html highlighter-rouge">vatAmount</code> may be displayed for the user inthe payment page (redirect only). Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT amount charged.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">description</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">A 40 character length textual <a href="/payments/invoice/other-features#description">description</a> of the purchase.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">A unique reference for the transaction.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">receiptReference</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">A unique reference for the transaction. This reference is used as an invoice/receipt number.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">failedReason</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The human readable explanation of why the payment failed.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">isOperational</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">bool</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">true</code> if the transaction is operational; otherwise <code class="language-html highlighter-rouge">false</code>.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">operations</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">array</code></td>
+      <td style="text-align: left">The array of operations that are possible to perform on the transaction in its current state.</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+    
+      <h2 id="step-2-inspecting-the-captures">
+        
+        
+          Step 2: Inspecting the Captures <a href="#step-2-inspecting-the-captures" class="header-anchor"></a>
+        
+        
+      </h2>
+
+<p>The <code class="language-html highlighter-rouge">captures</code> resource lists the capture transactions performed on a
+specific invoice payment.</p>
+
+<p class="code-header"><strong>Request</strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="nf">GET</span> <span class="nn">/psp/invoice/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/captures</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">api.externalintegration.payex.com</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p class="code-header"><strong>Response</strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+</pre></td><td class="rouge-code"><pre><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/invoice/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"captures"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="nl">"itemDescriptions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/invoice/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions/7e6cdfc3-1276-44e9-9992-7cf4419750e1/itemdescriptions"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"receiptReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABC855"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"invoiceCopy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/invoice/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/captures/7e6cdfc3-1276-44e9-9992-7cf4419750e1/invoicecopy"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transaction"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/invoice/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-14T01:01:01.01Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-14T01:01:01.03Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Capture"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Failed"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"vatAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">250</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test transaction"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AH123456"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"failedReason"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"isOperational"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+    
+      <h2 id="capture-flow">
+        
+        
+          Capture Flow <a href="#capture-flow" class="header-anchor"></a>
+        
+        
+      </h2>
+
+<p>A <code class="language-html highlighter-rouge">capture</code> can only be performed on a successfully authorized transaction.
+It is possible to do a partial <code class="language-html highlighter-rouge">capture</code> where you only capture a part of the
+authorized amount. You can do other captures on the same payment later, up to
+the total authorized amount.</p>
+
+<pre><code class="language-mermaid">sequenceDiagram
+
+Merchant-&gt;&gt;PayEx: Post &lt;Invoice captures&gt;
+activate Merchant
+activate PayEx
+PayEx--&gt;&gt;Merchant: transaction resource
+deactivate Merchant
+deactivate PayEx
+</code></pre>
+
+<nav class="iterator d-flex">
+    
+        <a class="mr-auto btn btn-guiding" role="button" rel="prev" href="direct">
+            Back: Direct
+        </a>
+    
+
+    
+        <a class="ml-auto btn btn-executive" role="button" rel="next" href="after-payment">
+            Next: After Payment
+        </a>
+    
+</nav>
+                                    
+                                </div>
+
+                                <div class="col-2 d-none d-lg-block">
+                                    <nav class="doc-toc">
+                                        <ul>
+  <li class="toc-2"><a href="#capture">Capture</a></li>
+  <li class="toc-2"><a href="#step-1-create-financingconsumer-capture">Step 1: Create <code class="language-html highlighter-rouge">FinancingConsumer</code> Capture</a></li>
+  <li class="toc-2"><a href="#step-2-inspecting-the-captures">Step 2: Inspecting the Captures</a></li>
+  <li class="toc-2"><a href="#capture-flow">Capture Flow</a></li>
+</ul>
+
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+            </div>
+
+            <footer class="page-footer">
+                <p class="page-footer-rights">© Swedbank Pay</p>
+            </footer>
+        </div>
+
+        <script src="https://design.swedbankpay.com/v/4.5.0/scripts/dg.js"></script>
+        <script src="/assets/js/swedbank-pay-design-guide-theme.js"></script>
+        
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-156582708-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-156582708-1');
+</script>
+
+        
+    </body>
+    
+    <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+    
+
+</html>

@@ -1,0 +1,81 @@
+@charset "UTF-8";
+/* TODO: Implement a table element style that @extends .table and .table-striped so we don't have to decorate all Markdown tables. */
+img { max-width: 100%; }
+
+p.code-header { display: block; padding: 5px 19px; background-color: #e1d7d1; color: #512b2b; border-bottom: 1px solid #b8a294; margin-bottom: 0; }
+
+h1 > a.header-anchor, h2 > a.header-anchor, h3 > a.header-anchor, h4 > a.header-anchor, h5 > a.header-anchor, h6 > a.header-anchor { color: #ebf8f2; text-decoration: none; }
+
+h1:hover > a.header-anchor, h2:hover > a.header-anchor, h3:hover > a.header-anchor, h4:hover > a.header-anchor, h5:hover > a.header-anchor, h6:hover > a.header-anchor { color: #8acdc3; }
+
+h1 > a.header-anchor:hover, h2 > a.header-anchor:hover, h3 > a.header-anchor:hover, h4 > a.header-anchor:hover, h5 > a.header-anchor:hover, h6 > a.header-anchor:hover { color: #257886; }
+
+a.header-anchor::before { content: '#'; }
+
+.jumbotron { /* TODO: Make .jumbotron @extend .slab. */ font-family: Roboto, sans-serif; font-size: 21px; font-weight: 1; min-height: 1rem; padding: 3rem; margin-bottom: 1rem; border-radius: 4px; background-color: #ebe7e2; }
+
+.jumbotron strong { font-weight: bold; }
+
+.jumbotron p:last-of-type { margin-bottom: 0; }
+
+a[href^='//']:not([href*='']):after, a[href^='http://']:not([href*='']):after, a[href^='https://']:not([href*='']):after { content: url("../img/external-url.svg"); margin-left: .3rem; display: inline-block; width: .8rem; background-repeat: none; color: #257886; }
+
+#designguide .designguide-header .topbar-info a:after { content: none; display: inline; }
+
+.iterator { margin: 1rem 0; }
+
+.iterator a.btn { display: inline-block; width: 49%; min-width: 8rem; }
+
+.iterator a.btn[rel='prev']:before { content: '❮'; float: left; }
+
+.iterator a.btn[rel='next']:before { content: '❯'; float: right; }
+
+.documentation code[data-processed='true'].language-mermaid { background: none; border: none; padding: 0px; }
+
+.documentation .highlighter-rouge { margin-bottom: 1rem; }
+
+.documentation .highlighter-rouge code { padding: 0; background-color: none; border: none; font-size: 1rem; }
+
+.documentation .highlighter-rouge pre.highlight { background-color: #f5f2f0; margin: 0; }
+
+.documentation .highlighter-rouge .rouge-table { position: relative; }
+
+.documentation .highlighter-rouge .rouge-table, .documentation .highlighter-rouge .rouge-table tbody, .documentation .highlighter-rouge .rouge-table tr { display: block; }
+
+.documentation .highlighter-rouge .rouge-table pre { font-family: 'Akkurat Mono', monospace; }
+
+.documentation .highlighter-rouge .rouge-table .rouge-gutter { text-align: right; padding: 0 .7rem; position: absolute; left: 0; top: 0; background-color: #f5f2f0; border-right: 1px solid #e1d7d1; }
+
+.documentation .highlighter-rouge .rouge-table .rouge-code { padding-left: 50px; display: block; overflow-x: auto; }
+
+.documentation .language-mermaid svg { width: 100% !important; height: 100%; }
+
+.documentation .language-mermaid rect.actor { fill: #fbf2ea !important; stroke: #f3d7bf !important; }
+
+.documentation .language-mermaid .activation0, .documentation .language-mermaid .activation1, .documentation .language-mermaid .activation2 { fill: #f2f7eb !important; stroke: #dae8c7 !important; }
+
+.documentation .language-mermaid text.actor { font-family: Arial, sans-serif !important; font-size: 1rem !important; }
+
+.documentation .language-mermaid .actor-line { stroke: #fbf2ea !important; stroke-width: 4 !important; }
+
+.documentation .language-mermaid .messageLine0 { stroke-width: 2 !important; stroke-dasharray: "2 2"; marker-end: "url(#arrowhead)"; stroke: #222 !important; }
+
+.documentation .language-mermaid .messageLine1 { stroke-width: 1.5; stroke-dasharray: "2 2"; stroke: #2f2424 !important; }
+
+.documentation .language-mermaid #arrowhead { fill: #2f2424 !important; }
+
+.documentation .language-mermaid .messageText { fill: #222 !important; stroke: none; font-family: Arial, sans-serif !important; font-size: 1rem !important; }
+
+.documentation .language-mermaid .labelBox { stroke: #efb7b6 !important; fill: #efb7b6 !important; }
+
+.documentation .language-mermaid .labelText { fill: #222 !important; stroke: none; font-family: Arial, sans-serif !important; }
+
+.documentation .language-mermaid .loopText { fill: #222 !important; stroke: none; font-family: Arial, sans-serif !important; font-size: 1rem !important; }
+
+.documentation .language-mermaid .loopLine { stroke-width: 2; stroke-dasharray: "2 2"; marker-end: "url(#arrowhead)"; stroke: #efb7b6 !important; }
+
+.documentation .language-mermaid .note { stroke: #97b7e4 !important; fill: #e8eff9 !important; }
+
+.documentation .language-mermaid .noteText { fill: #222 !important; stroke: none; font-family: Arial, sans-serif !important; font-size: 1rem !important; }
+
+/*# sourceMappingURL=swedbank-pay-design-guide-theme.css.map */

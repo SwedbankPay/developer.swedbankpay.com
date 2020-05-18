@@ -1,0 +1,578 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="theme-color" content="#000">
+        <meta name="application-name" content="SDKs and Modules">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="apple-mobile-web-app-title"
+            content="SDKs and Modules">
+        <meta name="msapplication-TileColor" content="#000">
+        <meta name="msapplication-TileImage" content="https://design.swedbankpay.com/v/4.5.0/icons/mstile-144x144.png">
+        <meta property="og:type" value="website" />
+        
+        <meta property="og:url" value="/resources/sdk-modules.html" />
+        <meta property="og:title" value="SDKs and Modules" />
+        <meta name="title" content="SDKs and Modules" />
+        
+        <meta property="og:description" value="Swedbank Pay Developer Portal" />
+        <meta name="description" content="Swedbank Pay Developer Portal" />
+        
+        <meta property="og:image" value="/assets/img/swedbank-pay-developer-portal.png" />
+        <title>SDKs and Modules</title>
+        <link rel="stylesheet" href="https://design.swedbankpay.com/v/4.5.0/styles/dg-style.css" />
+        <link rel="stylesheet" href="/assets/css/swedbank-pay-design-guide-theme.css" />
+        <link rel="stylesheet" href="/assets/css/pygments-autumn.css" />
+        <link rel="shortcut icon" href="https://design.swedbankpay.com/v/4.5.0/icons/favicon.ico">
+        <link rel="icon" type="image/png" sizes="16x16" href="https://design.swedbankpay.com/v/4.5.0/icons/favicon-16x16.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="https://design.swedbankpay.com/v/4.5.0/icons/favicon-32x32.png">
+        <link rel="apple-touch-icon" sizes="57x57"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="167x167"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-icon-167x167.png">
+        <link rel="apple-touch-icon" sizes="180x180"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-icon-180x180.png">
+        <link rel="apple-touch-icon" sizes="1024x1024"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-icon-1024x1024.png">
+        <link rel="apple-touch-startup-image"
+            media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 1)"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-startup-image-320x460.png">
+        <link rel="apple-touch-startup-image"
+            media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-startup-image-640x920.png">
+        <link rel="apple-touch-startup-image"
+            media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-startup-image-640x1096.png">
+        <link rel="apple-touch-startup-image"
+            media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-startup-image-750x1294.png">
+        <link rel="apple-touch-startup-image"
+            media="(device-width: 414px) and (device-height: 736px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-startup-image-1182x2208.png">
+        <link rel="apple-touch-startup-image"
+            media="(device-width: 414px) and (device-height: 736px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 3)"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-startup-image-1242x2148.png">
+        <link rel="apple-touch-startup-image"
+            media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 1)"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-startup-image-748x1024.png">
+        <link rel="apple-touch-startup-image"
+            media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 1)"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-startup-image-768x1004.png">
+        <link rel="apple-touch-startup-image"
+            media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-startup-image-1496x2048.png">
+        <link rel="apple-touch-startup-image"
+            media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-startup-image-1536x2008.png">
+        <link rel="icon" type="image/png" sizes="228x228" href="https://design.swedbankpay.com/v/4.5.0/icons/coast-228x228.png">
+        <script src="/assets/js/mermaid.min.js"></script>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="/assets/tipuesearch/tipuesearch_content.js"></script>
+        <script src="/assets/tipuesearch/tipuesearch_set.js"></script>
+        <script src="/assets/tipuesearch/tipuesearch.min.js"></script>
+        
+    </head>
+
+    <body>
+        <div id="designguide">
+            <header class="topbar topbar-md-wide designguide-header">
+                <button type="button" class="topbar-btn"><i class="material-icons topbar-btn-icon">menu</i></button>
+                <a href="" class="topbar-logo"><img
+                        src="https://design.swedbankpay.com/v/4.5.0/img/swedbankpay-logo.svg" alt="logo"></a>
+                <nav class="topbar-nav">
+                    <div class="topbar-link-container">
+                        <button type="button" class="topbar-close"><i class="material-icons">close</i></button>
+
+                        
+                        
+
+                        
+
+                        <a 
+                            href="/"><span>Home</span></a>
+
+                        
+                        
+                        <a 
+                            href="/checkout/"><span>Checkout</span></a>
+                        
+                        
+                        <a 
+                            href="/payments/"><span>Payments</span></a>
+                        
+                        
+                        <a 
+                            href="/gift-cards/"><span>Gift Cards</span></a>
+                        
+                        
+                        <a 
+                            href="/resources/"><span>Resources</span></a>
+                        
+
+                        <div class="topbar-info topbar-link-right">
+                            <div class="topbar-info-contact">
+                                <a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/resources/sdk-modules.md" target="_blank"
+                                    rel="noopener noreferrer" title="Edit this page on GitHub">
+                                    <svg aria-labelledby="simpleicons-github-icon" role="img" viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <title id="simpleicons-github-icon">Edit this page on GitHub</title>
+                                        <path
+                                            d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+
+            <div class="documentation">
+                <div class="row">
+                    <div class="col-xxl-2 col-md-3">
+                        <div class="doc-sidebar">
+                            
+                            <form class="doc-search" action="/search">
+                                <input type="text" class="form-control" name="q" id="tipue_search_input"
+                                    placeholder="Search..." autocomplete="off" pattern=".{3,}"
+                                    title="At least 3 characters">
+                            </form>
+                            
+                            
+                            <nav class="documentation-nav">
+                                
+                                
+                                <div class="nav-group active">
+                                    <div class="nav-heading">
+                                        <i class="material-icons">keyboard_arrow_right</i>
+                                        <span>Resources</span>
+                                    </div>
+
+                                    
+                                    <ul>
+                                        
+                                        
+                                        <li><a  href="/resources/"><span>Introduction</span></a></li>
+                                        
+                                        
+                                        <li><a  aria-current="page" class="active"
+                                                 href="/resources/sdk-modules"><span>SDKs and Modules</span></a></li>
+                                        
+                                        
+                                        <li><a  href="/resources/test-data"><span>Test Data</span></a></li>
+                                        
+                                        
+                                        <li><a  href="/resources/demoshop"><span>Demoshop</span></a></li>
+                                        
+                                        
+                                        <li><a  href="/resources/development-guidelines"><span>Open Source Development Guidelines</span></a></li>
+                                        
+                                        
+                                        <li><a  href="/resources/release-notes"><span>Release Notes</span></a></li>
+                                        
+                                        
+                                        <li><a  href="/resources/terminology"><span>Terminology</span></a></li>
+                                        
+                                        
+                                        <li><a  href="/resources/data-protection"><span>Data Protection</span></a></li>
+                                        
+                                        
+                                        <li><a  href="/resources/public-migration-key"><span>Public Migration Key</span></a></li>
+                                        
+                                    </ul>
+                                    
+                                </div>
+                                
+                            </nav>
+                            
+                        </div>
+                    </div>
+
+                    <main class="doc-view col-xxl-10 col-md-9">
+                        <div class="doc-container">
+                            <h1>SDKs and Modules</h1>
+                            <div class="row">
+                                <div class="doc-body col-lg-10">
+                                    
+                                    <div class="jumbotron">
+    <p>We have multiple Open Source-based SDKs and
+Modules to use with Swedbank Pay APIs.</p>
+
+</div>
+      <h2 id="introduction">
+        
+        
+          Introduction <a href="#introduction" class="header-anchor"></a>
+        
+        
+      </h2>
+
+<p>Swedbank Pay offers APIs, SDKs, libraries, modules, extensions and plugins as
+different ways to integrate and use our products and services. It might not
+be obvious to everyone what these are, so to describe them we use the analogy
+of <strong>baking a cake</strong>.</p>
+    
+      <h3 id="apis">
+        
+        
+          APIs <a href="#apis" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<p>APIs (Application Programming Interface) are the lowest level building block of
+our offering and can be compared to <strong>raw ingredients</strong>. They give you a whole
+lot of flexibility, but also requires you to have more knowledge in how to use
+them correctly and you need to know which recipe to cook in order to get a
+workable cake out in the other end. To efficiently use an API, you need to be
+a trained baker.</p>
+    
+      <h3 id="sdks">
+        
+        
+          SDKs <a href="#sdks" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<p>SDKs (Software Development Kit), also known as libraries, can be compared to
+a <strong>cake mix</strong>. It requires less knowledge of the ingredients and how to use
+them and a recipe is provided for you. Because of this, you also have less
+flexibility because you can’t bake any cake, you can only bake the one the mix
+is for. You still have to mix everything together, so you need some experience
+in the kitchen is required, but less than using the “raw” API.</p>
+    
+      <h3 id="modules">
+        
+        
+          Modules <a href="#modules" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<p>Modules, also known as extensions or plugins, can be compared to a <strong>readily
+baked cake</strong> purchased at a bakery. You don’t need any baking skills to have
+one, but you also have very little flexibility in what goes into the cake or
+how it tastes.</p>
+    
+      <h2 id="official-modules">
+        
+        
+          Official Modules <a href="#official-modules" class="header-anchor"></a>
+        
+        
+      </h2>
+
+<p><strong>Modules, extensions and plugins</strong> are typically used as a way to extend
+webshop platforms such as <a href="https://woocommerce.com/">WooCommerce</a> and <a href="https://magento.com/">Magento</a> with
+functionality that isn’t provided in the core platform. Such functionality may
+be to allow consumers of your website to pay with a payment provider such as
+Swedbank Pay.</p>
+
+<div class="alert alert-complex alert-warning">
+    <header class="alert-header">
+            
+                <i class="material-icons alert-icon">warning</i>
+      <h3>
+        
+        
+          Unsupported
+        
+        
+      </header>
+    
+
+    
+        
+            <div class="alert-body">
+                <p>These Modules are at an early stage of development
+and are not supported as of yet by Swedbank Pay. They are provided as a
+convenience to speed up your development, so please feel free to play around.
+However, if you need support, please wait for a future, stable release.</p>
+            </div>
+        
+    
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th style="text-align: center">Platform</th>
+      <th style="text-align: left">Module</th>
+      <th style="text-align: left">Repository</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><img src="/assets/img/logos/episerver.svg" alt="episerver" /></td>
+      <td style="text-align: left">Swedbank Pay <strong>Checkout</strong> for Episerver</td>
+      <td style="text-align: left"><a href="https://github.com/SwedbankPay/swedbank-pay-episerver-checkout"><code class="language-html highlighter-rouge">…episerver-checkout</code></a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><img src="/assets/img/logos/magento.svg" alt="magento" /></td>
+      <td style="text-align: left"><a href="https://marketplace.magento.com/swedbank-pay-magento2-checkout.html">Swedbank Pay <strong>Checkout</strong> for Magento 2</a></td>
+      <td style="text-align: left"><a href="https://github.com/SwedbankPay/swedbank-pay-magento2-checkout"><code class="language-html highlighter-rouge">…magento2-checkout</code></a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><img src="/assets/img/logos/magento.svg" alt="magento" /></td>
+      <td style="text-align: left"><a href="https://packagist.org/packages/swedbank-pay/magento2-payments">Swedbank Pay <strong>Payments</strong> for Magento 2</a></td>
+      <td style="text-align: left"><a href="https://github.com/SwedbankPay/swedbank-pay-magento2-payments"><code class="language-html highlighter-rouge">…magento2-payments</code></a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><img src="/assets/img/logos/woocommerce.svg" alt="woocommerce" /></td>
+      <td style="text-align: left"><a href="https://wordpress.org/plugins/swedbank-pay-checkout/">Swedbank Pay <strong>Checkout</strong> for WooCommerce</a></td>
+      <td style="text-align: left"><a href="https://github.com/SwedbankPay/swedbank-pay-woocommerce-checkout"><code class="language-html highlighter-rouge">…woocommerce-checkout</code></a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><img src="/assets/img/logos/woocommerce.svg" alt="woocommerce" /></td>
+      <td style="text-align: left"><a href="https://wordpress.org/plugins/swedbank-pay-payments/">Swedbank Pay <strong>Payments</strong> for WooCommerce</a></td>
+      <td style="text-align: left"><a href="https://github.com/SwedbankPay/swedbank-pay-woocommerce-payments"><code class="language-html highlighter-rouge">…woocommerce-payments</code></a></td>
+    </tr>
+  </tbody>
+</table>
+    
+      <h2 id="official-sdks">
+        
+        
+          Official SDKs <a href="#official-sdks" class="header-anchor"></a>
+        
+        
+      </h2>
+
+<p><strong>Software Development Kits</strong> allow developers to integrate with Swedbank Pay’s
+APIs without having to write a lot of low-level code dealing with HTTP, status
+codes, problem messages, parsing, serializaiton, etc. Developers can use their
+language of choice and write against a set of typed objects native to their
+programming language and environment.</p>
+
+<p>SDKs are often used as a building block to construct a Module.</p>
+
+<div class="alert alert-complex alert-warning">
+    <header class="alert-header">
+            
+                <i class="material-icons alert-icon">warning</i>
+      <h3>
+        
+        
+          Unsupported
+        
+        
+      </header>
+    
+
+    
+        
+            <div class="alert-body">
+                <p>These SDKs are at an early stage of development
+and are not supported as of yet by Swedbank Pay. They are provided as a
+convenience to speed up your development, so please feel free to play around.
+However, if you need support, please wait for a future, stable release.</p>
+            </div>
+        
+    
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th style="text-align: center">Platform</th>
+      <th style="text-align: left">SDK</th>
+      <th style="text-align: left">Repository</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><img src="/assets/img/logos/android.svg" alt="Kotlin" /></td>
+      <td style="text-align: left">Swedbank Pay SDK for Android</td>
+      <td style="text-align: left"><a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android"><code class="language-html highlighter-rouge">…sdk-android</code></a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><img src="/assets/img/logos/dotnet.svg" alt="C#" /></td>
+      <td style="text-align: left"><a href="https://www.nuget.org/packages/SwedbankPay.Sdk">Swedbank Pay SDK for .NET</a></td>
+      <td style="text-align: left"><a href="https://github.com/SwedbankPay/swedbank-pay-sdk-dotnet"><code class="language-html highlighter-rouge">…sdk-dotnet</code></a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><img src="/assets/img/logos/swift.svg" alt="Swift" /></td>
+      <td style="text-align: left">Swedbank Pay SDK for iOS</td>
+      <td style="text-align: left"><a href="https://github.com/SwedbankPay/swedbank-pay-sdk-ios"><code class="language-html highlighter-rouge">…sdk-ios</code></a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><img src="/assets/img/logos/php.svg" alt="PHP" /></td>
+      <td style="text-align: left"><a href="https://packagist.org/packages/swedbank-pay/swedbank-pay-sdk-php">Swedbank Pay SDK for PHP</a></td>
+      <td style="text-align: left"><a href="https://github.com/SwedbankPay/swedbank-pay-sdk-php"><code class="language-html highlighter-rouge">…sdk-php</code></a></td>
+    </tr>
+  </tbody>
+</table>
+    
+      <h2 id="unofficial-sdks">
+        
+        
+          Unofficial SDKs <a href="#unofficial-sdks" class="header-anchor"></a>
+        
+        
+      </h2>
+
+<div class="alert alert-complex alert-warning">
+    <header class="alert-header">
+            
+                <i class="material-icons alert-icon">warning</i>
+      <h3>
+        
+        
+          Unsupported
+        
+        
+      </header>
+    
+
+    
+        
+            <div class="alert-body">
+                <p>Unofficial SDKs are offered as a convenience to speed up your development,
+but are not supported in any way by Swedbank Pay – not now, nor in the future.</p>
+            </div>
+        
+    
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th style="text-align: center">Platform</th>
+      <th style="text-align: left">Repository</th>
+      <th style="text-align: left">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><img src="/assets/img/logos/js.svg" alt="js" /></td>
+      <td style="text-align: left"><a href="https://github.com/bjerkio/swedbank-pay-js"><code class="language-html highlighter-rouge">bjerkio/swedbank-pay-js</code></a></td>
+      <td style="text-align: left"><a href="https://badge.fury.io/js/swedbank-pay"><img src="https://badge.fury.io/js/swedbank-pay.svg" alt="npm version" /></a></td>
+    </tr>
+  </tbody>
+</table>
+    
+      <h2 id="official-libraries">
+        
+        
+          Official Libraries <a href="#official-libraries" class="header-anchor"></a>
+        
+        
+      </h2>
+
+<p><strong>Software libraries</strong> are bundles of code often used by an SDK or in a Module
+to solve one or a set of specific problems.</p>
+
+<div class="alert alert-complex alert-warning">
+    <header class="alert-header">
+            
+                <i class="material-icons alert-icon">warning</i>
+      <h3>
+        
+        
+          Unsupported
+        
+        
+      </header>
+    
+
+    
+        
+            <div class="alert-body">
+                <p>These Libraries are at an early stage of development
+and are not supported as of yet by Swedbank Pay. They are provided as a
+convenience to speed up your development, so please feel free to play around.
+However, if you need support, please wait for a future, stable release.</p>
+            </div>
+        
+    
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th style="text-align: center">Platform</th>
+      <th style="text-align: left">Library</th>
+      <th style="text-align: left">Repository</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><img src="/assets/img/logos/php.svg" alt="PHP" /></td>
+      <td style="text-align: left"><a href="https://packagist.org/packages/swedbank-pay/magento2-core">Swedbank Pay <strong>Checkout</strong> for Magento 2 Core</a></td>
+      <td style="text-align: left"><a href="https://github.com/SwedbankPay/swedbank-pay-magento2-core"><code class="language-html highlighter-rouge">…magento2-core</code></a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><img src="/assets/img/logos/dotnet.svg" alt="C#" /></td>
+      <td style="text-align: left"><a href="https://www.nuget.org/packages/SwedbankPay.Sdk.Extensions">Swedbank Pay SDK for .NET Extensions</a></td>
+      <td style="text-align: left"><a href="https://github.com/SwedbankPay/swedbank-pay-sdk-dotnet-extensions"><code class="language-html highlighter-rouge">…sdk-dotnet-extensions</code></a></td>
+    </tr>
+  </tbody>
+</table>
+                                    
+                                </div>
+
+                                <div class="col-2 d-none d-lg-block">
+                                    <nav class="doc-toc">
+                                        <ul>
+  <li class="toc-2"><a href="#introduction">Introduction</a></li>
+  <li class="toc-2"><a href="#official-modules">Official Modules</a></li>
+  <li class="toc-2"><a href="#official-sdks">Official SDKs</a></li>
+  <li class="toc-2"><a href="#unofficial-sdks">Unofficial SDKs</a></li>
+  <li class="toc-2"><a href="#official-libraries">Official Libraries</a></li>
+</ul>
+
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+            </div>
+
+            <footer class="page-footer">
+                <p class="page-footer-rights">© Swedbank Pay</p>
+            </footer>
+        </div>
+
+        <script src="https://design.swedbankpay.com/v/4.5.0/scripts/dg.js"></script>
+        <script src="/assets/js/swedbank-pay-design-guide-theme.js"></script>
+        
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-156582708-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-156582708-1');
+</script>
+
+        
+    </body>
+    
+    <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+    
+
+</html>

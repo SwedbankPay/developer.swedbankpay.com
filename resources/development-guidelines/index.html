@@ -1,0 +1,548 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="theme-color" content="#000">
+        <meta name="application-name" content="Swedbank Pay Open Source Development Guidelines">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="apple-mobile-web-app-title"
+            content="Swedbank Pay Open Source Development Guidelines">
+        <meta name="msapplication-TileColor" content="#000">
+        <meta name="msapplication-TileImage" content="https://design.swedbankpay.com/v/4.5.0/icons/mstile-144x144.png">
+        <meta property="og:type" value="website" />
+        
+        <meta property="og:url" value="/resources/development-guidelines/" />
+        <meta property="og:title" value="Swedbank Pay Open Source Development Guidelines" />
+        <meta name="title" content="Swedbank Pay Open Source Development Guidelines" />
+        
+        <meta property="og:description" value="Swedbank Pay Developer Portal" />
+        <meta name="description" content="Swedbank Pay Developer Portal" />
+        
+        <meta property="og:image" value="/assets/img/swedbank-pay-developer-portal.png" />
+        <title>Swedbank Pay Open Source Development Guidelines</title>
+        <link rel="stylesheet" href="https://design.swedbankpay.com/v/4.5.0/styles/dg-style.css" />
+        <link rel="stylesheet" href="/assets/css/swedbank-pay-design-guide-theme.css" />
+        <link rel="stylesheet" href="/assets/css/pygments-autumn.css" />
+        <link rel="shortcut icon" href="https://design.swedbankpay.com/v/4.5.0/icons/favicon.ico">
+        <link rel="icon" type="image/png" sizes="16x16" href="https://design.swedbankpay.com/v/4.5.0/icons/favicon-16x16.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="https://design.swedbankpay.com/v/4.5.0/icons/favicon-32x32.png">
+        <link rel="apple-touch-icon" sizes="57x57"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="167x167"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-icon-167x167.png">
+        <link rel="apple-touch-icon" sizes="180x180"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-icon-180x180.png">
+        <link rel="apple-touch-icon" sizes="1024x1024"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-icon-1024x1024.png">
+        <link rel="apple-touch-startup-image"
+            media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 1)"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-startup-image-320x460.png">
+        <link rel="apple-touch-startup-image"
+            media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-startup-image-640x920.png">
+        <link rel="apple-touch-startup-image"
+            media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-startup-image-640x1096.png">
+        <link rel="apple-touch-startup-image"
+            media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-startup-image-750x1294.png">
+        <link rel="apple-touch-startup-image"
+            media="(device-width: 414px) and (device-height: 736px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-startup-image-1182x2208.png">
+        <link rel="apple-touch-startup-image"
+            media="(device-width: 414px) and (device-height: 736px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 3)"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-startup-image-1242x2148.png">
+        <link rel="apple-touch-startup-image"
+            media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 1)"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-startup-image-748x1024.png">
+        <link rel="apple-touch-startup-image"
+            media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 1)"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-startup-image-768x1004.png">
+        <link rel="apple-touch-startup-image"
+            media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-startup-image-1496x2048.png">
+        <link rel="apple-touch-startup-image"
+            media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)"
+            href="https://design.swedbankpay.com/v/4.5.0/icons/apple-touch-startup-image-1536x2008.png">
+        <link rel="icon" type="image/png" sizes="228x228" href="https://design.swedbankpay.com/v/4.5.0/icons/coast-228x228.png">
+        <script src="/assets/js/mermaid.min.js"></script>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="/assets/tipuesearch/tipuesearch_content.js"></script>
+        <script src="/assets/tipuesearch/tipuesearch_set.js"></script>
+        <script src="/assets/tipuesearch/tipuesearch.min.js"></script>
+        
+    </head>
+
+    <body>
+        <div id="designguide">
+            <header class="topbar topbar-md-wide designguide-header">
+                <button type="button" class="topbar-btn"><i class="material-icons topbar-btn-icon">menu</i></button>
+                <a href="" class="topbar-logo"><img
+                        src="https://design.swedbankpay.com/v/4.5.0/img/swedbankpay-logo.svg" alt="logo"></a>
+                <nav class="topbar-nav">
+                    <div class="topbar-link-container">
+                        <button type="button" class="topbar-close"><i class="material-icons">close</i></button>
+
+                        
+                        
+
+                        
+
+                        <a 
+                            href="/"><span>Home</span></a>
+
+                        
+                        
+                        <a 
+                            href="/checkout/"><span>Checkout</span></a>
+                        
+                        
+                        <a 
+                            href="/payments/"><span>Payments</span></a>
+                        
+                        
+                        <a 
+                            href="/gift-cards/"><span>Gift Cards</span></a>
+                        
+                        
+                        <a 
+                            href="/resources/"><span>Resources</span></a>
+                        
+
+                        <div class="topbar-info topbar-link-right">
+                            <div class="topbar-info-contact">
+                                <a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/resources/development-guidelines/index.md" target="_blank"
+                                    rel="noopener noreferrer" title="Edit this page on GitHub">
+                                    <svg aria-labelledby="simpleicons-github-icon" role="img" viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <title id="simpleicons-github-icon">Edit this page on GitHub</title>
+                                        <path
+                                            d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+
+            <div class="documentation">
+                <div class="row">
+                    <div class="col-xxl-2 col-md-3">
+                        <div class="doc-sidebar">
+                            
+                            <form class="doc-search" action="/search">
+                                <input type="text" class="form-control" name="q" id="tipue_search_input"
+                                    placeholder="Search..." autocomplete="off" pattern=".{3,}"
+                                    title="At least 3 characters">
+                            </form>
+                            
+                            
+                            <nav class="documentation-nav">
+                                
+                                
+                                <div class="nav-group active">
+                                    <div class="nav-heading">
+                                        <i class="material-icons">keyboard_arrow_right</i>
+                                        <span>Swedbank Pay Development Guidelines</span>
+                                    </div>
+
+                                    
+                                    <ul>
+                                        
+                                        
+                                        <li><a  href="/resources/development-guidelines"><span>Introduction</span></a></li>
+                                        
+                                        
+                                        <li><a  href="/resources/development-guidelines/code-of-conduct"><span>Code Of Conduct</span></a></li>
+                                        
+                                        
+                                        <li><a  href="/resources/development-guidelines/contributing"><span>Contributing</span></a></li>
+                                        
+                                        
+                                        <li><a  href="/resources/development-guidelines/good-commit-practice"><span>Good Commit Practice</span></a></li>
+                                        
+                                        
+                                        <li><a  href="/resources/development-guidelines/licence"><span>Licence</span></a></li>
+                                        
+                                    </ul>
+                                    
+                                </div>
+                                
+                            </nav>
+                            
+                        </div>
+                    </div>
+
+                    <main class="doc-view col-xxl-10 col-md-9">
+                        <div class="doc-container">
+                            <h1>Swedbank Pay Open Source Development Guidelines</h1>
+                            <div class="row">
+                                <div class="doc-body col-lg-10">
+                                    
+                                    <h2 id="introduction">
+        
+        
+          Introduction <a href="#introduction" class="header-anchor"></a>
+        
+        
+      </h2>
+
+<p>Swedbank Pay is committed to creating a vibrant community around its open
+source initiative on GitHub and will alongside its partners expose the Swedbank
+Pay Payment APIs in high quality client modules and libraries. The development
+of these modules and libraries should be as transparent and accessible to the
+public as possible. The consequence and meaning of this will be explained in
+the following chapters of this guideline.</p>
+
+<p>Having the source code, tests, documentation, issues and such all in one place
+makes the projects governing the modules and libraries easier to grasp and
+understand for new users. GitHub is the world’s most popular developer and
+source code hosting platform and offers everything we need in an easy to use
+package. It is therefore a great choice for hosting the source code for the
+open source modules and all of their related resources.</p>
+    
+      <h2 id="principles">
+        
+        
+          Principles <a href="#principles" class="header-anchor"></a>
+        
+        
+      </h2>
+
+<p>For an open source project to become successful, it should follow a few core
+principles:</p>
+    
+      <h3 id="transparency">
+        
+        
+          Transparency <a href="#transparency" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<p>Being transparent is one of the most important virtues of an open source
+project. Being able to inspect the source code, read the documentation, view
+potentially reported bugs and understand the development process in an
+accessible and easy to understand way is critical to be able to assert the
+quality of the project.</p>
+
+<p>Being transparent also makes it apparent that we don’t have anything to hide,
+underlining our confidence in the quality of what we publish, which of course
+should be top notch.</p>
+    
+      <h3 id="quality">
+        
+        
+          Quality <a href="#quality" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<p>An important factor to ensure the quality of any given piece of code is to
+test it. The test should preferably be automated and be run on every code
+check-in. The automation can be done through a language-native test framework
+like NUnit, JUnit or PHPUnit and then have a continuous integration system like
+Travis or TeamCity execute these tests every time code is pushed to the
+repository on GitHub.</p>
+
+<p>Code quality of course depends on a lot of other factors too, such as:</p>
+
+<ul>
+  <li>Following best practice of the language and environment the code is being
+written in.</li>
+  <li>Adhering to established style guides.</li>
+  <li>Good understanding of
+<a href="https://wiki.c2.com/?PrinciplesOfObjectOrientedDesign">The Principles of Object Oriented Design</a>.</li>
+  <li>A good domain architecture, modelled after
+<a href="https://martinfowler.com/tags/domain%20driven%20design.html">Domain Driven Design</a>.</li>
+</ul>
+    
+      <h3 id="accessibility">
+        
+        
+          Accessibility <a href="#accessibility" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<p>The perhaps most important measure of success for an open source project is
+whether people outside of the project’s core development group contribute to
+it or not. The contributions can be everything from reported issues to
+correcting typographic errors in documentation to pull requests for minor or
+major code contributions.</p>
+
+<p>To be able to attract outside contributors, the project needs to be
+accessible. While accessibility is an abstract term, it can be broken
+down into smaller and more concrete parts that are easier to measure and
+understand.</p>
+
+<p>Is the development process for the project easy to understand? Where are
+outstanding features listed, who are the developers working on which features
+and where do they reside? How easy is it to fork the project and make a pull
+request that has a high chance of being merged?</p>
+
+<p>These are questions that should be asked and that can be answered confidently
+if the project is managed in a good and orderly fashion. The following list
+enumerates the most important aspects that a project should be governed by to
+be perceived as accessible:</p>
+
+<ol>
+  <li>Outstanding features and bugs should be easy to find in the list of “issues”
+in the project’s repository.</li>
+  <li>The project’s documentation should be easily accessible in or linked to from
+the project’s <code class="language-html highlighter-rouge">README</code> file.</li>
+  <li>The <code class="language-html highlighter-rouge">README</code> file and associated documentation should be written in simple
+<a href="https://help.github.com/articles/github-flavored-markdown/">Markdown</a> markup so it is easy to correct by anyone simply by
+using GitHub’s online Markdown editing features.</li>
+  <li>How to contribute should be clearly explained in a <code class="language-html highlighter-rouge">CONTRIBUTING</code> file.</li>
+  <li>The process of contributing should be as simple as possible.
+    <ol>
+      <li>The project should follow the norm and best practice of the language and
+  environment it is written in.</li>
+      <li>There should be tests in the project that are easy to get up and running
+  on a developer machine without installing any external services, tools or
+  libraries, unless they are handled by a package manager like NuGet.</li>
+      <li>Contributed code should be checked by a
+  <a href="https://en.wikipedia.org/wiki/Continuous_integration">continuous integration</a> server that labels the
+  status of pull request accordingly. If a test fails, the contributor
+  should be alerted of its failure through GitHub’s interface.</li>
+    </ol>
+  </li>
+  <li>All code contributions should be run through a public continuous integration
+server so build failures are visible to the contributor such that he or she
+can fix it without any project manager’s involvement.</li>
+  <li>The development and branching process should preferably be based on an
+existing scheme such as <a href="https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow/">GitFlow</a> or <a href="https://guides.github.com/introduction/flow/">GitHub Flow</a>.</li>
+  <li>All development should be done in public.
+    <ol>
+      <li>Code should be pushed to GitHub regularly, so it’s possible to see
+  progress.</li>
+      <li>For incomplete features and bugfixes, <a href="https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow/">GitFlow</a> with branch
+  prefixes such as <code class="language-html highlighter-rouge">feature/</code> and <code class="language-html highlighter-rouge">hotfix/</code> should be used</li>
+      <li>All code in development should be pushed as often as possible.</li>
+    </ol>
+  </li>
+</ol>
+    
+      <h3 id="security">
+        
+        
+          Security <a href="#security" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<p>All source code should be written in a secure way so it avoids the problems
+enumerated in <a href="https://owasp.org/www-project-top-ten/">OWASP Top 10</a> and <a href="https://www.sans.org/top25-software-errors/">SANS 25</a>. It should
+preferably exist a test for each of these problems such that it is continually
+verified that the code does not contain any of these problems now or in the
+future.</p>
+
+<p>No source code should contain secrets, passwords or otherwise sensitive
+information. If such code is committed by accident, history should be
+rewritten through interactive rebasing as soon as possible and force-pushed.</p>
+    
+      <h2 id="licensing">
+        
+        
+          Licensing <a href="#licensing" class="header-anchor"></a>
+        
+        
+      </h2>
+
+<p>All of PayEx’ open source software should be licensed under a liberal
+[software license][software-license].</p>
+    
+      <h2 id="copyright">
+        
+        
+          Copyright <a href="#copyright" class="header-anchor"></a>
+        
+        
+      </h2>
+
+<p>The copyright for code written in PayEx’ open source projects is shared
+between Swedbank Pay and the individual authors of the source code. This
+should be stated in the above mentioned LICENSE file as well as in each
+individual source code file and other metadata
+(such as .NET assembly information, etc.):</p>
+
+<p><code class="language-html highlighter-rouge">Copyright © Swedbank Pay and Project Contributors</code></p>
+    
+      <h2 id="how-to-contribute">
+        
+        
+          How to Contribute <a href="#how-to-contribute" class="header-anchor"></a>
+        
+        
+      </h2>
+
+<p><a href="/resources/development-guidelines/contributing">Contributing</a> details how we ensure that contributors to a
+project adheres to the rules and principles defined by the project.</p>
+    
+      <h2 id="code-of-conduct">
+        
+        
+          Code of Conduct <a href="#code-of-conduct" class="header-anchor"></a>
+        
+        
+      </h2>
+
+<p>Every project governed by Swedbank Pay or in its name should have a
+<a href="/resources/development-guidelines/code-of-conduct">Code of Conduct</a>.</p>
+    
+      <h2 id="release-management">
+        
+        
+          Release Management <a href="#release-management" class="header-anchor"></a>
+        
+        
+      </h2>
+
+<p>An essential part of any software project is having it released in one form or
+another so other people can use it. To be able to release software efficiently,
+several different strategies and methodologies need to exist and be followed.
+They will be described in the following chapters.</p>
+    
+      <h3 id="versioning">
+        
+        
+          Versioning <a href="#versioning" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<p>To release software, it needs to be versioned. PayEx’ open source modules
+should be versioned according to <a href="https://semver.org/">semantic versioning</a>.
+This means that whenever backward compatibility is broken, the major version
+should be incremented. When a new feature is added, the minor version should
+be incremented and when bug fixes and other minor changes are introduced,
+the revision number should be incremented.</p>
+
+<p>A version of the software should correspond to a commit in the Git repository.
+This commit should be tagged with the version number it represents and the
+commit should be in the branch corresponding with what’s being released;
+stable code should be in the master branch, while pre-release, alpha or beta
+code should be in the develop branch or in a release/ prefixed branch.</p>
+
+<p>If a stable version <code class="language-html highlighter-rouge">1.2.5</code> of a project is to be released, the commit
+representing that version should be tagged in Git with the value <code class="language-html highlighter-rouge">1.2.5</code>
+and the commit should exist in the master branch.</p>
+
+<p>To help with automating versioning in .NET based projects,
+<a href="https://github.com/GitTools/GitVersion">GitVersion</a> can be used. For most uses,
+<a href="https://www.nuget.org/packages/GitVersionTask">GitVersionTask</a> performs the job perfectly.
+It understands <a href="https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow/">GitFlow</a> and increments the version number
+automatically based on which branch the code being built exists on.</p>
+    
+      <h3 id="branching-strategy">
+        
+        
+          Branching strategy <a href="#branching-strategy" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<p>To make versioning easier, the Git repository should follow <a href="https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow/">GitFlow</a>,
+<a href="https://guides.github.com/introduction/flow/">GitHub Flow</a> or derivates, so released and stable code is kept in
+ the master branch, while unstable and pre-released code
+  — if such is required — is kept in the develop branch.</p>
+
+<p>While they can be considered optional since all ongoing development can be
+done directly in the develop branch; features, hotfixes and such should
+preferably be done in separate branches using the GitFlow-standard branch
+prefixes <code class="language-html highlighter-rouge">feature</code>, <code class="language-html highlighter-rouge">hotfix/</code>, etc.</p>
+    
+      <h3 id="releases">
+        
+        
+          Releases <a href="#releases" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<p>Software written for an environment that has a marketplace or other
+official storefront for applications
+(or “modules”, “extensions” and what have you) such as
+<a href="https://appstore.com/">Apple’s App Store</a> or <a href="https://play.google.com/store">Google Play</a>,
+should try to publish the released software in these marketplaces.</p>
+
+<p>Releases should correspond to a tagged version number and a <a href="https://help.github.com/articles/creating-releases/">Release</a>
+for the version should be created on GitHub. The GitHub Release should
+summarize all changes made since the last release and highlight new features,
+possibly by referring to blog entries or similar that describes them in more
+detail.</p>
+
+<p>To help with writing release notes, projects can use the tool
+<a href="https://github.com/GitTools/GitReleaseNotes">GitReleaseNotes</a>.</p>
+                                    
+                                </div>
+
+                                <div class="col-2 d-none d-lg-block">
+                                    <nav class="doc-toc">
+                                        <ul>
+  <li class="toc-2"><a href="#introduction">Introduction</a></li>
+  <li class="toc-2"><a href="#principles">Principles</a></li>
+  <li class="toc-2"><a href="#licensing">Licensing</a></li>
+  <li class="toc-2"><a href="#copyright">Copyright</a></li>
+  <li class="toc-2"><a href="#how-to-contribute">How to Contribute</a></li>
+  <li class="toc-2"><a href="#code-of-conduct">Code of Conduct</a></li>
+  <li class="toc-2"><a href="#release-management">Release Management</a></li>
+</ul>
+
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+            </div>
+
+            <footer class="page-footer">
+                <p class="page-footer-rights">© Swedbank Pay</p>
+            </footer>
+        </div>
+
+        <script src="https://design.swedbankpay.com/v/4.5.0/scripts/dg.js"></script>
+        <script src="/assets/js/swedbank-pay-design-guide-theme.js"></script>
+        
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-156582708-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-156582708-1');
+</script>
+
+        
+    </body>
+    
+    <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+    
+
+</html>
