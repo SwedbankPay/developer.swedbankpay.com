@@ -4,4 +4,7 @@ services:
   portal:
     command: gh-pages-publish
     environment:
-      environment: 'production'
+      - GITHUB_TOKEN=${GITHUB_TOKEN}
+      - GITHUB_ACTOR=${GITHUB_ACTOR}
+      - GITHUB_ACTOR_EMAIL=${GITHUB_ACTOR_EMAIL}
+      - GITHUB_REPO=${GITHUB_REPO}

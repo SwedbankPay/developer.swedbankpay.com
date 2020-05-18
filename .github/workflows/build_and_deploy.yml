@@ -11,14 +11,10 @@ jobs:
     - uses: actions/checkout@v2
     - name: Docker compose up
       env:
-        secret_gh_pages_api_token: ${{ secrets.GITHUB_TOKEN }}
-        git_committer_email: dev@payex.com
-        git_committer_name: payex-dev
-        gh_pages_publishing_source: gh-pages
-        DEBUG: "true"
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GITHUB_ACTOR: payex-dev
-        JEKYLL_GITHUB_TOKEN : ${{ secrets.GITHUB_TOKEN }}
-        JEKYLL_ENV: production
+        GITHUB_ACTOR_EMAIL: dev@payex.com
+        GITHUB_REPO: ${{ github.repository }}
       run: |
         docker-compose \
           -f docker-compose.yml \
