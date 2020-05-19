@@ -14,10 +14,14 @@ jobs:
       env:
         HEAD_REF: ${{ github.head_ref }}
         REF: ${{ github.ref }}
-        GITHUB_CONTEXT: ${{ toJson(github) }}
+        EVENT_NAME: ${{ github.event_name }}
+        PULL_REPO: ${{ github.event.pull_request.head.repo.full_name }}
+        REPO: ${{ github.repository }}
       run: |
-        echo "$GITHUB_CONTEXT"
-        if [[ ! -z "$HEAD_REF" ]]; then
+        if [[ "$EVENT_NAME" == "pull_request" && "$PULL_REPO" != "$REPO" ]]; then
+          # We have a pull-request from a forked repository. Not sure this actually works.
+          GITHUB_BRANCH="${PULL_REPO}${HEAD_REF}"
+        elif [[ ! -z "$HEAD_REF" ]]; then
           # Use the head_ref on merge commits
           GITHUB_BRANCH=${HEAD_REF}
         else
