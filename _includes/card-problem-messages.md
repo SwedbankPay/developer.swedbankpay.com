@@ -34,7 +34,7 @@ All contract types will have the following URI in front of type:
 | `authenticationstatusrejected` | `403`  | The authentication status was rejected.     |
 | `frauddetected`                | `403`  | The transaction was fraudulent.             |
 | `3dsecuredeclined`             | `403`  | 3-D Secure declined the transaction.        |
-| `velocitycheck`                | `429`  | The limit for how many times a card or different cards can be used for attempting a purchase        |
+| `velocitycheck`                | `429`  | Indicates that the limit for how many times a card or different cards can be used for attempting a purchase has been reached.        |
 
 ### Acquirer and 3-D Secure Problem Types
 
