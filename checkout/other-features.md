@@ -1282,6 +1282,7 @@ object:
 
 ```js
 {
+    "orderReference": "OR-123456",
     "paymentOrder":{
         "id": "/psp/paymentorders/{{ page.payment_order_id }}",
         "instrument": "<payment instrument>"
@@ -1300,6 +1301,7 @@ object:
 {:.table .table-striped}
 | Parameter            | Description                                                           |
 | :------------------- | :-------------------------------------------------------------------- |
+| `orderReference`     | The orderReference sent in on create paymentOrder                     |
 | `Payment Instrument` | `CreditCard`, `Invoice`, `Swish`, `Vipps`, `DirectDebit`, `MobilePay` |
 | `Transaction Type`   | `Authorization`, `Capture`, `Cancellation`, `Reversal`                |
 
