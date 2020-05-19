@@ -5,36 +5,22 @@ problem message. We generally use the problem message `type` and `status` code
 to identify the nature of the problem. The problem `name` and `description` will
 often help narrow down the specifics of the problem.
 
-### Common Problem Types
-
-All common types will have the following URI in front of type:
-`https://api.payex.com/psp/errordetail/<error-type>`
-
-{:.table .table-striped}
-| Type                 | Status | Description                                                                                                                                        |
-| :------------------- | :----: | :------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `inputerror`         | `400`  | The server cannot or will not process the request due to an apparent client error (e.g. malformed request syntax, size to large, invalid request). |
-| `forbidden`          | `403`  | The request was valid, but the server is refusing the action. The necessary permissions to access the resource might be lacking.                   |
-| `notfound`           | `404`  | The requested resource could not be found, but may be available in the future. Subsequent requests are permissible.                                |
-| `systemerror`        | `500`  | A generic error message.                                                                                                                           |
-| `configurationerror` | `500`  | A error relating to configuration issues.                                                                                                          |
-
 ### Contractual Problem Types
 
 All contract types will have the following URI in front of type:
 `https://api.payex.com/psp/errordetail/creditcard/<error-type>`
 
 {:.table .table-striped}
-| Type                           | Status | Description                                 |
-| :----------------------------- | :----: | :------------------------------------------ |
-| `cardbranddisabled`            | `403`  | The card brand is disabled.                 |
-| `accountholdertyperejected`    | `403`  | The account holder type is rejected.        |
-| `cardtyperejected`             | `403`  | The card type is rejected.                  |
-| `3dsecurerequired`             | `403`  | The transaction was rejected by 3-D Secure. |
-| `authenticationstatusrejected` | `403`  | The authentication status was rejected.     |
-| `frauddetected`                | `403`  | The transaction was fraudulent.             |
-| `3dsecuredeclined`             | `403`  | 3-D Secure declined the transaction.        |
-| `velocitycheck`                | `429`  | Indicates that the limit for how many times a card or different cards can be used for attempting a purchase has been reached.        |
+| Type                           | Status | Description                                                                                                                    |
+|:-------------------------------|:------:|:-------------------------------------------------------------------------------------------------------------------------------|
+| `cardbranddisabled`            | `403`  | The card brand is disabled.                                                                                                    |
+| `accountholdertyperejected`    | `403`  | The account holder type is rejected.                                                                                           |
+| `cardtyperejected`             | `403`  | The card type is rejected.                                                                                                     |
+| `3dsecurerequired`             | `403`  | The transaction was rejected by 3-D Secure.                                                                                    |
+| `authenticationstatusrejected` | `403`  | The authentication status was rejected.                                                                                        |
+| `frauddetected`                | `403`  | The transaction was fraudulent.                                                                                                |
+| `3dsecuredeclined`             | `403`  | 3-D Secure declined the transaction.                                                                                           |
+| `velocitycheck`                | `429`  | Indicates that the limit for how  many times a card or different cards can be used for attempting a purchase has been reached. |
 
 ### Acquirer and 3-D Secure Problem Types
 
@@ -43,7 +29,7 @@ All acquirer error types will have the following URI in front of type:
 
 {:.table .table-striped}
 | Type                           | Status | Description                                                                                   |
-| :----------------------------- | :----: | :-------------------------------------------------------------------------------------------- |
+|:-------------------------------|:------:|:----------------------------------------------------------------------------------------------|
 | `3dsecureerror`                | `400`  | 3D Secure not working, try again some time later                                              |
 | `cardblacklisted`              | `400`  | Card blacklisted, Consumer need to contact their Card-issuing bank                            |
 | `paymenttokenerror`            | `403`  | There was an error with the payment token.                                                    |

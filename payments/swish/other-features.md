@@ -201,6 +201,8 @@ the nature of the problem.
 The problem name and description will often help narrow down the specifics
 of the problem.
 
+{% include common-problem-types.md %}
+
 ## Swish API errors
 
 All Swish error types will have the following URI in front of type:
