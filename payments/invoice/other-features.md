@@ -571,6 +571,8 @@ All invoice error types will have the following URI in front of type:
 | `externalerror` |  502   | 9999 - ServerOtherServer      |
 | `forbidden`     |  403   | Any other error code          |
 
+{% include common-problem-types.md %}
+
 {% include iterator.html prev_href="after-payment" prev_title="Back: After
 Payment" %}
 

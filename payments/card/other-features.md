@@ -92,6 +92,8 @@ completing the payment.
 
 {% include settlement-reconciliation.md %}
 
+{% include common-problem-types.md %}
+
 {% include card-problem-messages.md %}
 
 ### Seamless View Events
