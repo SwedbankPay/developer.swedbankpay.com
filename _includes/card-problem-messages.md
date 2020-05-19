@@ -5,6 +5,20 @@ problem message. We generally use the problem message `type` and `status` code
 to identify the nature of the problem. The problem `name` and `description` will
 often help narrow down the specifics of the problem.
 
+### Common Problem Types
+
+All common types will have the following URI in front of type:
+`https://api.payex.com/psp/errordetail/<error-type>`
+
+{:.table .table-striped}
+| Type                           | Status | Description                                 |
+| :----------------------------- | :----: | :------------------------------------------ |
+| `inputerror`                   | `400`  | The server cannot or will not process the request due to an apparent client error (e.g. malformed request syntax, size to large, invalid request).                     |
+| `forbidden`                    | `403`  | The request was valid, but the server is refusing the action. The necessary permissions to access the resource might be lacking.  |
+| `notfound`                     | `404`  | The requested resource could not be found, but may be available in the future. Subsequent requests are permissible.      |
+| `systemerror`                  | `500`  | A generic error message. |
+| `configurationerror`           | `500`  | A error relating to configuration issues.      |
+
 ### Contractual Problem Types
 
 All contract types will have the following URI in front of type:
@@ -20,6 +34,7 @@ All contract types will have the following URI in front of type:
 | `authenticationstatusrejected` | `403`  | The authentication status was rejected.     |
 | `frauddetected`                | `403`  | The transaction was fraudulent.             |
 | `3dsecuredeclined`             | `403`  | 3-D Secure declined the transaction.        |
+| `velocitycheck`                | `429`  | The limit for how many times a card or different cards can be used for attempting a purchase        |
 
 ### Acquirer and 3-D Secure Problem Types
 
