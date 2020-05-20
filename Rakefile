@@ -9,11 +9,25 @@ class String
   end
 end
 
+# Get environment variable or fallback to the provided git command
+def get_env(key, fallback_git_command)
+  env = ENV.has_key?(key) ? ENV[key] : `git #{fallback_git_command}`
+  env = env.frozen? ? env.dup : env
+  env.strip!
+  env
+end
+
 # Rake Jekyll tasks
 task :build do
-  git_branch = ENV.has_key?("GITHUB_BRANCH") ? ENV["GITHUB_BRANCH"] : `git rev-parse --abbrev-ref HEAD`
-  git_branch = git_branch.frozen? ? git_branch.dup : git_branch
-  git_branch.strip!
+  git_branch = get_env("GITHUB_BRANCH", "rev-parse --abbrev-ref HEAD")
+  git_repo_url = get_env("GITHUB_REPOSITORY_URL", "config --get remote.origin.url")
+
+  # Translate from SSH to HTTPS URL.
+  git_repo_url = /^git\@github\.com\:(?<repo_name>.*)\.git$/.match(git_repo_url) do |match|
+    repo_name = match[:repo_name]
+    "https://github.com/#{repo_name}"
+  end
+
   git_parent_commits = `git show --no-patch --format="%P"`.split(" ")
 
   if git_parent_commits.length > 1
@@ -34,10 +48,11 @@ task :build do
     puts "No merge commit, moving along with branch '#{git_branch}'."
   end
 
-  puts "Building Jekyll site (#{git_branch})...".bold
+  puts "Building Jekyll site (#{git_repo_url}/#{git_branch})...".bold
 
   options = {
     "github" => {
+      "repository_url" => git_repo_url,
       "branch" => git_branch,
     },
     "profile" => true,
