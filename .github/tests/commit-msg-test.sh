@@ -51,6 +51,6 @@ printf "DX-234: Some commit message" > commit-msg.txt
 .githooks/commit-msg commit-msg.txt
 $? -ne 0 || echo "Case number check failed"
 
-git checkout -B $original_branch_name
+git checkout -B "$original_branch_name"
 
 echo "All tests good"
