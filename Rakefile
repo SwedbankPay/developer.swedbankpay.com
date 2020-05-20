@@ -63,11 +63,12 @@ task :build do
 
   options = {
     "github" => {
-      "repository_url" => git_repo_url,
       "branch" => git_branch,
     },
     "profile" => true,
   }
+
+  options["github"]["repository_url"] = git_repo_url unless git_repo_url.empty?
 
   Jekyll::Commands::Build.process(options)
 end
