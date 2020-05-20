@@ -183,7 +183,7 @@ for the given operation.
 | `update-payment-abort` | `abort`s the payment order before any financial transactions are performed.                                                        |
 | `create-sale`          | Creates a `sales` transaction without redirection to a payment page.                                                               |
 | `redirect-sale`        | Contains the redirect-URI that redirects the consumer to a Swedbank Pay hosted payment page prior to creating a sales transaction. |
-| `view-sales`            | Contains the URI of the JavaScript used to create a Hosted View iframe directly for the `sale` transaction twithout redirecting the consumer to separate payment page.   |
+| `view-sales`            | Contains the URI of the JavaScript used to create a Seamless View iframe directly for the `sale` transaction without redirecting the consumer to a separate payment page.   |
 | `view-payment`         | Contains the URI of the JavaScript used to create a Hosted View iframe directly without redirecting the consumer to separate payment page.   |
 
 {% else %}
