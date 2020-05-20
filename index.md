@@ -14,13 +14,13 @@ sidebar:
 
 Hi! Welcome to the **Swedbank Pay Developer Portal**.
 
-### New to our API Platform
+### New to our API Platform?
 
 Are you new to Swedbank Pay's API Platform? That's okay, go ahead and look at
 the fundamental [technical information][technical-information]. It will help you
 further on.
 
-### Know what product to integrate
+### Know what product to integrate?
 
 Nice, let's dive in. Click on the product below to get started.
 
