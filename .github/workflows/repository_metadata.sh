@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 if [[ "$EVENT_NAME" == "pull_request" && "$PULL_REPO_NAME" != "$REPO_NAME" ]]; then
     # We have a pull-request from a forked repository. Not sure this actually works.
