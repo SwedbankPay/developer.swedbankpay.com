@@ -7,14 +7,25 @@ class String
   def bold
     "\033[1m#{self}\033[0m"
   end
+
+  def safe_strip
+    value = self.frozen? ? self.dup : self
+    value.strip!
+    value
+  end
 end
 
 # Get environment variable or fallback to the provided git command
 def get_env(key, fallback_git_command)
-  env = ENV.has_key?(key) ? ENV[key] : `git #{fallback_git_command}`
-  env = env.frozen? ? env.dup : env
-  env.strip!
-  env
+  if ENV.has_key?(key)
+    value = ENV[key].safe_strip
+    puts "Environment variable #{key} used with value: #{value}."
+  else
+    value = `git #{fallback_git_command}`.safe_strip
+    puts "No Environment variable for #{key} found. Fallback Git command provided the value: #{value}."
+  end
+
+  value
 end
 
 # Rake Jekyll tasks
@@ -23,9 +34,9 @@ task :build do
   git_repo_url = get_env("GITHUB_REPOSITORY_URL", "config --get remote.origin.url")
 
   # Translate from SSH to HTTPS URL.
-  git_repo_url = /^git\@github\.com\:(?<repo_name>.*)\.git$/.match(git_repo_url) do |match|
+  /^git\@github\.com\:(?<repo_name>.*)\.git$/.match(git_repo_url) do |match|
     repo_name = match[:repo_name]
-    "https://github.com/#{repo_name}"
+    git_repo_url = "https://github.com/#{repo_name}"
   end
 
   git_parent_commits = `git show --no-patch --format="%P"`.split(" ")
@@ -48,7 +59,7 @@ task :build do
     puts "No merge commit, moving along with branch '#{git_branch}'."
   end
 
-  puts "Building Jekyll site (#{git_repo_url}/#{git_branch})...".bold
+  puts "Building Jekyll site (#{git_repo_url}, #{git_branch})...".bold
 
   options = {
     "github" => {
