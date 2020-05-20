@@ -75,8 +75,27 @@ Content-Type: application/json
             "method": "PATCH",
             "href": "{{ page.api_url }}/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
             "rel": "update-payment-abort",
-            "contentType": "application/json"
-        }{% unless api_resource == "swish" %},
+        }{% if api_resource == "swish" %},
+        {
+            "method": "POST",
+            "href": "{{ page.api_url }}/psp/{{ api_resource }}/payments/{{ page.payment_id }}/sales",
+            "rel": "create-sale"
+        },
+        {
+            "method": "GET",
+            "href": "{{ page.front_end_url }}/{{ api_resource }}/payments/authorize/{{ page.payment_token }}",
+            "rel": "redirect-sale"
+        },
+        {
+            "method": "GET",
+            "href": "{{ page.front_end_url }}/{{ api_resource }}/core/scripts/client.js?token={{ page.payment_token }}",
+            "rel": "view-sales",
+        },
+        {
+            "method": "GET",
+            "href": "{{ page.front_end_url }}/{{ api_resource }}/core/scripts/client.js?token={{ page.payment_token }}",
+            "rel": "view-payment"
+        }{% else %},
         {
             "method": "GET",
             "href": "{{ page.front_end_url }}/{{ api_resource}}/core/scripts/client/px.{{ api_resource }}.client.js?token={{ page.payment_token }}&operation=authorize",
@@ -88,7 +107,7 @@ Content-Type: application/json
             "href": "{{ page.front_end_url }}/{{ api_resource }}/payments/authorize/{{ page.transaction_id }}",
             "rel": "redirect-authorization",
             "contentType": "text/html"
-        },{% endunless %}
+        },
         {
             "method": "POST",
             "href": "{{ page.api_url }}/psp/{{ api_resource }}/payments/{{ page.payment_id }}/captures",
@@ -106,15 +125,15 @@ Content-Type: application/json
             "href": "{{ page.api_url }}/psp/{{ api_resource }}/{{ page.payment_id }}/failed",
             "rel": "failed-payment",
             "contentType": "application/problem+json"
-        }
+        }{% endif %}
 {% endif %}
     ]
 }
 ```
 
 {:.table .table-striped}
-| Field                 | Type         | Description                                                                                                                                                                                                                                                                                                                                                |
-| :----------------------- | :----------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Field                    | Type         | Description                                                                                                                                                                                                                                                                                                                                                |
+|:-------------------------|:-------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `payment`                | `object`     | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                                                                                      |
 | └➔&nbsp;`id`             | `string`     | {% include field-description-id.md %}                                                                                                                                                                                                                                                                                                                      |
 | └➔&nbsp;`number`         | `integer`    | The payment  number , useful when there's need to reference the payment in human communication. Not usable for programmatic identification of the payment, for that  id  should be used instead.                                                                                                                                                           |
@@ -123,10 +142,10 @@ Content-Type: application/json
 | └➔&nbsp;`state`          | `string`     | `Ready`, `Pending`, `Failed` or `Aborted`. Indicates the state of the payment, not the state of any transactions performed on the payment. To find the state of the payment's transactions (such as a successful authorization), see the `transactions` resource or the different specialized type-specific resources such as `authorizations` or `sales`. |
 | └➔&nbsp;`prices`         | `object`     | The `prices` resource lists the prices related to a specific payment.                                                                                                                                                                                                                                                                                      |
 | └➔&nbsp;`prices.id`      | `string`     | {% include field-description-id.md resource="prices" %}                                                                                                                                                                                                                                                                                                    |
-| └➔&nbsp;`description`    | `string(40)` | {% include field-description-description.md documentation_section=documentation_section %}                                                                                                                                                                                                                                                                                            |
+| └➔&nbsp;`description`    | `string(40)` | {% include field-description-description.md documentation_section=documentation_section %}                                                                                                                                                                                                                                                                 |
 | └➔&nbsp;`payerReference` | `string`     | The reference to the payer (consumer/end-user) from the merchant system, like e-mail address, mobile number, customer number etc.                                                                                                                                                                                                                          |
 | └➔&nbsp;`userAgent`      | `string`     | The [user agent][user-agent] string of the consumer's browser.                                                                                                                                                                                                                                                                                             |
-| └➔&nbsp;`language`       | `string`     | {% include field-description-language.md api_resource=api_resource %}                                                                                                                                                                                                                                                                                                                              |
+| └➔&nbsp;`language`       | `string`     | {% include field-description-language.md api_resource=api_resource %}                                                                                                                                                                                                                                                                                      |
 | └➔&nbsp;`urls`           | `string`     | The URI to the  urls  resource where all URIs related to the payment can be retrieved.                                                                                                                                                                                                                                                                     |
 | └➔&nbsp;`payeeInfo`      | `string`     | The URI to the  payeeinfo  resource where the information about the payee of the payment can be retrieved.                                                                                                                                                                                                                                                 |
 | `operations`             | `array`      | The array of possible operations to perform                                                                                                                                                                                                                                                                                                                |
@@ -150,7 +169,7 @@ for the given operation.
 
 {:.table .table-striped}
 | Operation                | Description                                                                                                               |
-| :----------------------- | :------------------------------------------------------------------------------------------------------------------------ |
+|:-------------------------|:--------------------------------------------------------------------------------------------------------------------------|
 | `update-payment-abort`   | `abort`s the payment order before any financial transactions are performed.                                               |
 | `redirect-authorization` | Contains the URI that is used to redirect the consumer to the Swedbank Pay Payments containing the card authorization UI. |
 | `create-capture`         | Creates a `capture` transaction in order to charge the reserved funds from the consumer.                                  |
@@ -159,18 +178,20 @@ for the given operation.
 {% when "swish" %}
 
 {:.table .table-striped}
-| Operation              | Description                                                                                |
-| :--------------------- | :----------------------------------------------------------------------------------------- |
-| `update-payment-abort` | `abort`s the payment order before any financial transactions are performed.                |
-| `create-capture`       | Creates a `capture` transaction in order to charge the reserved funds from the consumer.   |
-| `create-cancellation`  | Creates a `cancellation` transaction that cancels a created, but not yet captured payment. |
+| Operation              | Description                                                                                                                        |
+|:-----------------------|:-----------------------------------------------------------------------------------------------------------------------------------|
+| `update-payment-abort` | `abort`s the payment order before any financial transactions are performed.                                                        |
+| `create-sale`          | Creates a `sales` transaction without redirection to a payment page.                                                               |
+| `redirect-sale`        | Contains the redirect-URI that redirects the consumer to a Swedbank Pay hosted payment page prior to creating a sales transaction. |
+| `view-sales`            | Contains the URI of the JavaScript used to create a Hosted View iframe directly for the `sale` transaction twithout redirecting the consumer to separate payment page.   |
+| `view-payment`         | Contains the URI of the JavaScript used to create a Hosted View iframe directly without redirecting the consumer to separate payment page.   |
 
 {% else %}
 {% if show_status_operations %}
 
 {:.table .table-striped}
 | Operation                | Description                                                                                                               |
-| :----------------------- | :------------------------------------------------------------------------------------------------------------------------ |
+|:-------------------------|:--------------------------------------------------------------------------------------------------------------------------|
 | `update-payment-abort`   | `abort`s the payment order before any financial transactions are performed.                                               |
 | `redirect-authorization` | Contains the URI that is used to redirect the consumer to the Swedbank Pay Payments containing the card authorization UI. |
 | `view-authorization`     | Contains the JavaScript `href` that is used to embed  the card authorization UI directly on the webshop/merchant site     |
@@ -183,7 +204,7 @@ for the given operation.
 
 {:.table .table-striped}
 | Operation                | Description                                                                                                               |
-| :----------------------- | :------------------------------------------------------------------------------------------------------------------------ |
+|:-------------------------|:--------------------------------------------------------------------------------------------------------------------------|
 | `update-payment-abort`   | `abort`s the payment order before any financial transactions are performed.                                               |
 | `redirect-authorization` | Contains the URI that is used to redirect the consumer to the Swedbank Pay Payments containing the card authorization UI. |
 | `view-authorization`     | Contains the JavaScript `href` that is used to embed  the card authorization UI directly on the webshop/merchant site     |
