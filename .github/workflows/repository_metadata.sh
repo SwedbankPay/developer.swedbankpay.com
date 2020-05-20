@@ -14,7 +14,7 @@ fi
 
 if [[ $GITHUB_BRANCH == refs/tags* ]]; then
     # Default to the master branch on tags
-    $GITHUB_BRANCH = "master"
+    GITHUB_BRANCH = "master"
 fi
 
 echo "::set-output name=branch::${GITHUB_BRANCH}"
