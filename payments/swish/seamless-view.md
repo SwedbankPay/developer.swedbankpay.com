@@ -214,7 +214,7 @@ Content-Type: application/json
       },
       {
         "method": "GET",
-        "href": "https://ecom.dev.payex.com/swish/core/scripts/client/px.swish.client.js?token={{ page.payment_token }}",
+        "href": "{{ page.front_end_url }}/swish/core/scripts/client/px.swish.client.js?token={{ page.payment_token }}",
         "rel": "view-payment",
         "contentType": "application/javascript"
       }
