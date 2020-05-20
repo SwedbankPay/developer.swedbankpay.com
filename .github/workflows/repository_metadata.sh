@@ -4,7 +4,7 @@ if [[ "$EVENT_NAME" == "pull_request" && "$PULL_REPO_NAME" != "$REPO_NAME" ]]; t
     # We have a pull-request from a forked repository. Not sure this actually works.
     GITHUB_BRANCH="${HEAD_REF}"
     GITHUB_REPOSITORY_URL="$PULL_REPO_URL"
-elif [[ ! -z "$HEAD_REF" ]]; then
+elif [[ -n "$HEAD_REF" ]]; then
     # Use the head_ref on merge commits
     GITHUB_BRANCH="${HEAD_REF}"
 else
@@ -14,7 +14,7 @@ fi
 
 if [[ $GITHUB_BRANCH == refs/tags* ]]; then
     # Default to the master branch on tags
-    $GITHUB_BRANCH = "master"
+    GITHUB_BRANCH="master"
 fi
 
 echo "::set-output name=branch::${GITHUB_BRANCH}"
