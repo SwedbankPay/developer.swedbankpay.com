@@ -196,9 +196,9 @@ Content-Type: application/json
         "contentType": "application/json"
       },
       {
-            "method": "POST",
-            "href": "{{ page.api_url }}/psp/swish/payments/{{ page.payment_id }}/sales",
-            "rel": "create-sale"
+        "method": "POST",
+        "href": "{{ page.api_url }}/psp/swish/payments/{{ page.payment_id }}/sales",
+        "rel": "create-sale"
       },
       {
         "href": "{{ page.front_end_url }}/swish/payments/authorize/{{ page.payment_token }}",
@@ -213,10 +213,10 @@ Content-Type: application/json
         "contentType": "application/javascript"
       },
       {
-            "method": "GET",
-            "href": "{{ page.front_end_url }}/swish/core/scripts/client/px.swish.client.js?token={{ page.payment_token }}",
-            "rel": "view-sales",
-            "contentType": "application/javascript"
+        "method": "GET",
+        "href": "{{ page.front_end_url }}/swish/core/scripts/client/px.swish.client.js?token={{ page.payment_token }}",
+        "rel": "view-payment",
+        "contentType": "application/javascript"
       }
     ]
 }
