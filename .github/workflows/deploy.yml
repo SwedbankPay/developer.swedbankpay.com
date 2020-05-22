@@ -1,4 +1,4 @@
-name: Publish site
+name: Deploy to GitHub Pages
 
 on: 
   push:
@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    name: Docker build site and publish
+    name: Deploy to GitHub Pages
     runs-on: ubuntu-latest
 
     steps:
