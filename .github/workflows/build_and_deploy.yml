@@ -15,7 +15,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Docker compose up
-      if: startsWith(github.ref, 'refs/tags/')
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GITHUB_ACTOR: payex-dev
@@ -24,7 +23,7 @@ jobs:
       run: |
         docker-compose \
           -f docker-compose.yml \
-          -f .docker/docker-compose.ci.yml \
+          -f .docker/docker-compose.cd.yml \
           up \
           --build \
           --abort-on-container-exit \

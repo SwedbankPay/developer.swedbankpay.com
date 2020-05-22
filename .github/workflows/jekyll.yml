@@ -13,6 +13,5 @@ jobs:
       run: |
         docker-compose \
           -f docker-compose.yml \
-          up \
-          --abort-on-container-exit \
-          --exit-code-from portal
+          -f .docker/docker-compose.ci.yml \
+          up
