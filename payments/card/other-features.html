@@ -237,7 +237,7 @@ possible to perform in the current state of the payment.</p>
 2
 3
 4
-</pre></td><td class="rouge-code"><pre><span class="nf">GET</span> <span class="nn">/psp/card/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</pre></td><td class="rouge-code"><pre><span class="nf">GET</span> <span class="nn">/psp/creditcard/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">api.externalintegration.payex.com</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
@@ -331,13 +331,12 @@ possible to perform in the current state of the payment.</p>
 84
 85
 86
-87
 </pre></td><td class="rouge-code"><pre><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
 <span class="p">{</span><span class="w">
     </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/card/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/creditcard/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
         </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-14T13:21:29.3182115Z"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-14T13:21:57.6627579Z"</span><span class="p">,</span><span class="w">
@@ -355,64 +354,63 @@ possible to perform in the current state of the payment.</p>
         </span><span class="nl">"userAgent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mozilla/5.0..."</span><span class="p">,</span><span class="w">
         </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nb-NO"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"prices"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/card/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/prices"</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/creditcard/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/prices"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"payeeInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/card/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/payeeInfo"</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/creditcard/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/payeeInfo"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"urls"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/card/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/urls"</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/creditcard/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/urls"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"transactions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/card/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions"</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/creditcard/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"authorizations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/card/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/authorizations"</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/creditcard/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/authorizations"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"captures"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/card/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/captures"</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/creditcard/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/captures"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"reversals"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/card/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/reversals"</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/creditcard/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/reversals"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"cancellations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/card/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/cancellations"</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/creditcard/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/cancellations"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PATCH"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.externalintegration.payex.com/psp/card/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.externalintegration.payex.com/psp/creditcard/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"update-payment-abort"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/json"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://ecom.externalintegration.payex.com/card/core/scripts/client/px.card.client.js?token=5a17c24e-d459-4567-bbad-aa0f17a76119&amp;operation=authorize"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://ecom.externalintegration.payex.com/creditcard/core/scripts/client/px.creditcard.client.js?token=5a17c24e-d459-4567-bbad-aa0f17a76119&amp;operation=authorize"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"view-authorization"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/javascript"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://ecom.externalintegration.payex.com/card/payments/authorize/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://ecom.externalintegration.payex.com/creditcard/payments/authorize/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"redirect-authorization"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text/html"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"POST"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.externalintegration.payex.com/psp/card/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/captures"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.externalintegration.payex.com/psp/creditcard/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/captures"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"create-capture"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/json"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.externalintegration.payex.com/psp/card/7e6cdfc3-1276-44e9-9992-7cf4419750e1/paid"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.externalintegration.payex.com/psp/creditcard/7e6cdfc3-1276-44e9-9992-7cf4419750e1/paid"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paid-payment"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/json"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.externalintegration.payex.com/psp/card/7e6cdfc3-1276-44e9-9992-7cf4419750e1/failed"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.externalintegration.payex.com/psp/creditcard/7e6cdfc3-1276-44e9-9992-7cf4419750e1/failed"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed-payment"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/problem+json"</span><span class="w">
         </span><span class="p">}</span><span class="w">
@@ -488,7 +486,7 @@ possible to perform in the current state of the payment.</p>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">language</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">sv-SE</code>, <code class="language-html highlighter-rouge">nb-NO</code> or <code class="language-html highlighter-rouge">ee-EE</code>.</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">sv-SE</code>, <code class="language-html highlighter-rouge">nb-NO</code>, <code class="language-html highlighter-rouge">da-DK</code>, <code class="language-html highlighter-rouge">de-DE</code>, <code class="language-html highlighter-rouge">ee-EE</code>, <code class="language-html highlighter-rouge">en-US</code>, <code class="language-html highlighter-rouge">es-ES</code>, <code class="language-html highlighter-rouge">fr-FR</code>, <code class="language-html highlighter-rouge">lv-LV</code>,<code class="language-html highlighter-rouge">lt-LT</code>, <code class="language-html highlighter-rouge">ru-RU</code> or <code class="language-html highlighter-rouge">fi-FI</code>.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">urls</code></td>
@@ -2450,7 +2448,7 @@ your Verify information. This will generate a payment object with a unique
 JavaScript source in response.</li>
   <li>You need to <a href="/payments/card/redirect">redirect</a> the payer’s browser to that specified URL, or
 embed the script source on your site to create a <a href="/payments/card/seamless-view">Hosted View</a> in
-an <code class="language-html highlighter-rouge">iframe</code>; so that she can enter the credit card details in a secure
+an <code class="language-html highlighter-rouge">iframe</code>; so that the payer can enter the credit card details in a secure
 Swedbank Pay hosted environment.</li>
   <li>Swedbank Pay will handle 3-D Secure authentication when this is required.</li>
   <li>Swedbank Pay will redirect the payer’s browser to - or display directly in the
@@ -3368,10 +3366,10 @@ consumer will pay for.</li>
   <li>Some order-id (or similar) that exists in the merchant order system.</li>
   <li>The price and currency.</li>
   <li>Details about shipping method and expected delivery (if physical goods will be
-sent  to the consumer).</li>
+sent  to the payer).</li>
   <li>Directions to (a link to a page) the merchant’s terms and conditions (such as
 return policy) and information of how the consumer can contact the merchant.</li>
-  <li>Details informing the consumer that he or she accepts the Terms &amp; Conditions
+  <li>Details informing that the payer accepts the Terms &amp; Conditions
 when clicking on the Payment Link.</li>
 </ul>
     
@@ -4716,6 +4714,54 @@ merchant. The reversal amount will be charged from the sub merchants prefix. If
 the sub merchants balance is 0 (zero), the super merchant will be invoiced. The
 super merchant will in turn have to invoice this amount to the sub merchant.</p>
     
+      <h3 id="common-problem-types">
+        
+        
+          Common Problem Types <a href="#common-problem-types" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<p>All common types will have the following URI in front of type:
+<code class="language-html highlighter-rouge">https://api.payex.com/psp/errordetail/<span class="nt">&lt;error-type&gt;</span></code></p>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: center">Status</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">inputerror</code></td>
+      <td style="text-align: center"><code class="language-html highlighter-rouge">400</code></td>
+      <td style="text-align: left">The server cannot or will not process the request due to an apparent client error (e.g. malformed request syntax, size to large, invalid request).</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">forbidden</code></td>
+      <td style="text-align: center"><code class="language-html highlighter-rouge">403</code></td>
+      <td style="text-align: left">The request was valid, but the server is refusing the action. The necessary permissions to access the resource might be lacking.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">notfound</code></td>
+      <td style="text-align: center"><code class="language-html highlighter-rouge">404</code></td>
+      <td style="text-align: left">The requested resource could not be found, but may be available in the future. Subsequent requests are permissible.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">systemerror</code></td>
+      <td style="text-align: center"><code class="language-html highlighter-rouge">500</code></td>
+      <td style="text-align: left">A generic error message.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">configurationerror</code></td>
+      <td style="text-align: center"><code class="language-html highlighter-rouge">500</code></td>
+      <td style="text-align: left">A error relating to configuration issues.</td>
+    </tr>
+  </tbody>
+</table>
+    
       <h2 id="problems">
         
         
@@ -4783,6 +4829,11 @@ often help narrow down the specifics of the problem.</p>
       <td style="text-align: left"><code class="language-html highlighter-rouge">3dsecuredeclined</code></td>
       <td style="text-align: center"><code class="language-html highlighter-rouge">403</code></td>
       <td style="text-align: left">3-D Secure declined the transaction.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">velocitycheck</code></td>
+      <td style="text-align: center"><code class="language-html highlighter-rouge">429</code></td>
+      <td style="text-align: left">Indicates that the limit for how  many times a card or different cards can be used for attempting a purchase has been reached.</td>
     </tr>
   </tbody>
 </table>

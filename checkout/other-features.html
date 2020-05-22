@@ -4837,7 +4837,9 @@ from the initial transaction time:
 12
 13
 14
+15
 </pre></td><td class="rouge-code"><pre><span class="p">{</span>
+    <span class="dl">"</span><span class="s2">orderReference</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">OR-123456</span><span class="dl">"</span><span class="p">,</span>
     <span class="dl">"</span><span class="s2">paymentOrder</span><span class="dl">"</span><span class="p">:{</span>
         <span class="dl">"</span><span class="s2">id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">/psp/paymentorders/09ccd29a-7c4f-4752-9396-12100cbfecce</span><span class="dl">"</span><span class="p">,</span>
         <span class="dl">"</span><span class="s2">instrument</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">&lt;payment instrument&gt;</span><span class="dl">"</span>
@@ -4861,6 +4863,10 @@ from the initial transaction time:
     </tr>
   </thead>
   <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">orderReference</code></td>
+      <td style="text-align: left">The orderReference sent in on create paymentOrder</td>
+    </tr>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">Payment Instrument</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">CreditCard</code>, <code class="language-html highlighter-rouge">Invoice</code>, <code class="language-html highlighter-rouge">Swish</code>, <code class="language-html highlighter-rouge">Vipps</code>, <code class="language-html highlighter-rouge">DirectDebit</code>, <code class="language-html highlighter-rouge">MobilePay</code></td>
@@ -4995,51 +5001,49 @@ structure as specified in the
   </tbody>
 </table>
     
-      <h3 id="common-problems">
+      <h3 id="common-problem-types">
         
         
-          Common Problems <a href="#common-problems" class="header-anchor"></a>
+          Common Problem Types <a href="#common-problem-types" class="header-anchor"></a>
         
         
       </h3>
 
-<p>All common problem types will have a URI in the format
-<code class="language-html highlighter-rouge">https://api.payex.com/psp/errordetail/<span class="nt">&lt;error-type&gt;</span></code>.
-The <strong>URI is an identifier</strong> and is currently not possible to dereference,
-although that might be possible in the future.</p>
+<p>All common types will have the following URI in front of type:
+<code class="language-html highlighter-rouge">https://api.payex.com/psp/errordetail/<span class="nt">&lt;error-type&gt;</span></code></p>
 
 <table class="table table-striped">
   <thead>
     <tr>
       <th style="text-align: left">Type</th>
-      <th style="text-align: left">Status</th>
+      <th style="text-align: center">Status</th>
       <th style="text-align: left">Description</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">inputerror</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">400</code></td>
+      <td style="text-align: center"><code class="language-html highlighter-rouge">400</code></td>
       <td style="text-align: left">The server cannot or will not process the request due to an apparent client error (e.g. malformed request syntax, size to large, invalid request).</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">forbidden</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">403</code></td>
+      <td style="text-align: center"><code class="language-html highlighter-rouge">403</code></td>
       <td style="text-align: left">The request was valid, but the server is refusing the action. The necessary permissions to access the resource might be lacking.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">notfound</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">404</code></td>
+      <td style="text-align: center"><code class="language-html highlighter-rouge">404</code></td>
       <td style="text-align: left">The requested resource could not be found, but may be available in the future. Subsequent requests are permissible.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">systemerror</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">500</code></td>
+      <td style="text-align: center"><code class="language-html highlighter-rouge">500</code></td>
       <td style="text-align: left">A generic error message.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">configurationerror</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">500</code></td>
+      <td style="text-align: center"><code class="language-html highlighter-rouge">500</code></td>
       <td style="text-align: left">A error relating to configuration issues.</td>
     </tr>
   </tbody>

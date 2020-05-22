@@ -353,7 +353,6 @@ possible to perform in the current state of the payment.</p>
             </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PATCH"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.externalintegration.payex.com/psp/mobilepay/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"update-payment-abort"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/json"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
@@ -373,6 +372,7 @@ possible to perform in the current state of the payment.</p>
             </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"create-capture"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/json"</span><span class="w">
         </span><span class="p">}</span><span class="w">
+
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></pre></td></tr></tbody></table></code></pre></div></div>
@@ -444,7 +444,7 @@ possible to perform in the current state of the payment.</p>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">language</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">sv-SE</code>, <code class="language-html highlighter-rouge">nb-NO</code> or <code class="language-html highlighter-rouge">ee-EE</code>.</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">sv-SE</code>, <code class="language-html highlighter-rouge">nb-NO</code>, <code class="language-html highlighter-rouge">da-DK</code>, <code class="language-html highlighter-rouge">fi-FI</code> or <code class="language-html highlighter-rouge">ee-EE</code>.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">urls</code></td>
@@ -1400,12 +1400,6 @@ towards the specific transaction’s <code class="language-html highlighter-roug
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">operations</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">array</code></td>
       <td style="text-align: left">The array of operations that are possible to perform on the transaction in its current state.</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td style="text-align: left"> </td>
-      <td style="text-align: left"> </td>
-      <td style="text-align: left"> </td>
       <td> </td>
     </tr>
   </tbody>
@@ -3733,10 +3727,10 @@ consumer will pay for.</li>
   <li>Some order-id (or similar) that exists in the merchant order system.</li>
   <li>The price and currency.</li>
   <li>Details about shipping method and expected delivery (if physical goods will be
-sent  to the consumer).</li>
+sent  to the payer).</li>
   <li>Directions to (a link to a page) the merchant’s terms and conditions (such as
 return policy) and information of how the consumer can contact the merchant.</li>
-  <li>Details informing the consumer that he or she accepts the Terms &amp; Conditions
+  <li>Details informing that the payer accepts the Terms &amp; Conditions
 when clicking on the Payment Link.</li>
 </ul>
     
@@ -4428,7 +4422,7 @@ gets the state <code class="language-html highlighter-rouge">failed</code> as we
 2
 3
 4
-</pre></td><td class="rouge-code"><pre><span class="nf">GET</span> <span class="nn">/psp/mobile-pay/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</pre></td><td class="rouge-code"><pre><span class="nf">GET</span> <span class="nn">/psp/mobilepay/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">api.externalintegration.payex.com</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
@@ -4461,9 +4455,9 @@ gets the state <code class="language-html highlighter-rouge">failed</code> as we
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
 <span class="p">{</span><span class="w">
-    </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/mobile-pay/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/mobilepay/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"transaction"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/mobile-pay/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/mobilepay/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-14T01:01:01.01Z"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-14T01:01:01.03Z"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Capture"</span><span class="p">,</span><span class="w">

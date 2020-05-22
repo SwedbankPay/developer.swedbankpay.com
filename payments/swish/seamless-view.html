@@ -696,9 +696,9 @@ both the integration and the payer.</p>
         </span><span class="nl">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/json"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"POST"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.externalintegration.payex.com/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/sales"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"create-sale"</span><span class="w">
+        </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"POST"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.externalintegration.payex.com/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/sales"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"create-sale"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://ecom.externalintegration.payex.com/swish/payments/authorize/5a17c24e-d459-4567-bbad-aa0f17a76119"</span><span class="p">,</span><span class="w">
@@ -713,10 +713,10 @@ both the integration and the payer.</p>
         </span><span class="nl">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/javascript"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://ecom.externalintegration.payex.com/swish/core/scripts/client/px.swish.client.js?token=5a17c24e-d459-4567-bbad-aa0f17a76119"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"view-sales"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/javascript"</span><span class="w">
+        </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://ecom.externalintegration.payex.com/swish/core/scripts/client/px.swish.client.js?token=5a17c24e-d459-4567-bbad-aa0f17a76119"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"view-payment"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/javascript"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -735,7 +735,7 @@ payment page in an <code class="language-html highlighter-rouge">iframe</code> i
       </h2>
 
 <p>You need to embed the script source on your site to create a hosted-view in an
-<code class="language-html highlighter-rouge">iframe</code>; so that she can enter the required information in a secure Swedbank
+<code class="language-html highlighter-rouge">iframe</code>; so that the payer can enter the required information in a secure Swedbank
 Pay hosted environment. A simplified integration has these following steps:</p>
 
 <ol>

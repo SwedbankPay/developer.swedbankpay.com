@@ -375,7 +375,6 @@ possible to perform in the current state of the payment.</p>
             </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PATCH"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.externalintegration.payex.com/psp/invoice/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"update-payment-abort"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/json"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
@@ -395,6 +394,7 @@ possible to perform in the current state of the payment.</p>
             </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"create-capture"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/json"</span><span class="w">
         </span><span class="p">}</span><span class="w">
+
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></pre></td></tr></tbody></table></code></pre></div></div>
@@ -585,7 +585,7 @@ You need to include the following HTTP body:</p>
 9
 10
 11
-</pre></td><td class="rouge-code"><pre><span class="nf">PATCH</span> <span class="nn">/psp/invoice/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</pre></td><td class="rouge-code"><pre><span class="nf">PATCH</span> <span class="nn">/psp/api-resource-not-set/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">api.externalintegration.payex.com</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
@@ -640,32 +640,32 @@ You need to include the following HTTP body:</p>
 
 <span class="p">{</span><span class="w">
     </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/invoice/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/api-resource-not-set/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="mi">70100130293</span><span class="p">,</span><span class="w">
         </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-01-09T13:11:28.371179Z"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-01-09T13:11:46.5949967Z"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"instrument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invoice"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"instrument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Api-resource-not-set"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"operation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Purchase"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"intent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Authorization"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aborted"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SEK"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"prices"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/invoice/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/prices"</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/api-resource-not-set/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/prices"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invoice Test"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api-resource-not-set Test"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"payerReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100500"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"initiatingSystemUserAgent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PostmanRuntime/7.1.1"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"userAgent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mozilla/5.0"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nb-NO"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"urls"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/invoice/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/urls"</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/api-resource-not-set/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/urls"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"payeeInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/invoice/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/payeeinfo"</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/api-resource-not-set/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/payeeinfo"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/invoice/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/metadata"</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/api-resource-not-set/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/metadata"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">

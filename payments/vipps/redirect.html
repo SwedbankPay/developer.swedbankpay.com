@@ -227,8 +227,7 @@ Swedbank Pay with the collected <code class="language-html highlighter-rouge">Pu
   <li>You need to <a href="/payments/vipps/redirect">redirect</a> the payer to the Redirect payment
 where the payer must push the payment button.
 This triggers a <code class="language-html highlighter-rouge">POST</code> towards Swedbank Pay.</li>
-  <li>The payer is redirected to a Vipps payment page where he or she is prompted to
-enter their mobile number.</li>
+  <li>The payer is redirected to a Vipps payment page to enter the mobile number.</li>
   <li>Swedbank Pay handles the dialogue with Vipps and the consumer confirms the
 purchase in the Vipps app.</li>
   <li>To receive the state of the transaction you need to do a <code class="language-html highlighter-rouge">GET</code>
@@ -661,9 +660,9 @@ of the payer towards the URL in the <code class="language-html highlighter-rouge
 operation found in the list of <code class="language-html highlighter-rouge">operations</code> in the response from the creation of
 the payment.</p>
 
-<p>Once the payment is successfully authorized by the payer, she is returned to
-<code class="language-html highlighter-rouge">completeUrl</code> or <code class="language-html highlighter-rouge">cancelUrl</code> depending on the action performed by the payer.
-On that page as well as in the <code class="language-html highlighter-rouge">callbackUrl</code>, you need to perform an HTTP <code class="language-html highlighter-rouge">GET</code>
+<p>Once the payment is successfully authorized, the payer is returned to either the
+<code class="language-html highlighter-rouge">completeUrl</code> or the <code class="language-html highlighter-rouge">cancelUrl</code>; depending on the action performed.
+On the page as well as in the <code class="language-html highlighter-rouge">callbackUrl</code> you need to perform an HTTP <code class="language-html highlighter-rouge">GET</code> 
 request towards the <code class="language-html highlighter-rouge">id</code> of the payment to inspect its status.</p>
     
       <h2 id="step-3-get-the-transaction-state">
