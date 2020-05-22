@@ -33,6 +33,10 @@ this very documentation, not to a version of any APIs described by it." %}
 
 ## May 2020
 
+### Version 1.10.1
+
+* Updated [Swish Redirect][swish-redirect] requests.
+
 ### Version 1.10.0
 
 * Added a new [Gift Cards][gift-cards] section with descriptions of our Gift Cards API.
