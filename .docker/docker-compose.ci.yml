@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   portal:
-    command: gh-pages-publish
+    command: deploy
     environment:
       - GITHUB_TOKEN=${GITHUB_TOKEN}
       - GITHUB_ACTOR=${GITHUB_ACTOR}
