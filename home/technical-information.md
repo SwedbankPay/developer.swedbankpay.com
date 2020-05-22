@@ -81,6 +81,91 @@ advice, your integration most assuredly will break when Swedbank Pay makes
 updates in the future.
 " %}
 
+### URIs that can be stored
+
+URIs that are used to create new resources can be stored and hard coded.
+Also, the URI of the generated resource can be stored on your end to GET it at a
+later point. Note that the URIs should be stored as opaque identifiers and
+should not be parsed or interpreted in any way.
+URIs that are returned as part of the `operations` in each response should not be stored.
+See the abbreviated example below where `psp/creditcard/payments` from the
+`POST` header is an example of the URI that can be stored, as it is used to
+generate a new resource. Also, the `/psp/creditcard/payments/{{ page.payment_id}}`
+can also be stored as it is generated from the `payment.id`.
+
+The URIs generated under the `operations` such as `update-payment-abort`
+`{{ page.api_url }}/psp/creditcard/payments/{{ page.payment_id }}` should not be
+stored.
+
+{:.code-header}
+**Request**
+
+```http
+POST /psp/creditcard/payments HTTP/1.1
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+
+{
+    "payment": {
+        "operation": "Purchase",
+        "intent": "Authorization",
+        "currency": "SEK",
+        "prices": [{
+                "type": "CreditCard",
+                "amount": 1500,
+                "vatAmount": 0
+            }
+        ],
+        "description": "Test Purchase",
+        "generatePaymentToken": false,
+        "generateRecurrenceToken": false,
+        "userAgent": "Mozilla/5.0...",
+        "language": "nb-NO",
+     }
+ }
+```
+
+{:.code-header}
+**Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "payment": {
+        "id": "/psp/creditcard/payments/{{ page.payment_id }}",
+        "number": 1234567890,
+        "instrument": "CreditCard",
+        "created": "2016-09-14T13:21:29.3182115Z",
+        "updated": "2016-09-14T13:21:57.6627579Z",
+        "state": "Ready",
+        "operation": "Purchase",
+        "intent": "Authorization",
+        },
+    "operations": [
+        {
+            "rel": "update-payment-abort",
+            "href": "{{ page.api_url }}/psp/creditcard/payments/{{ page.payment_id }}",
+            "method": "PATCH",
+            "contentType": "application/json"
+        },
+        {
+            "rel": "redirect-authorization",
+            "href": "{{ page.front_end_url }}/creditcard/payments/authorize/{{ page.payment_token }}",
+            "method": "GET",
+            "contentType": "text/html"
+        },
+        {
+            "rel": "view-authorization",
+            "href": "{{ page.front_end_url }}/creditcard/core/scripts/client/px.creditcard.client.js?token={{ page.payment_token }}",
+            "method": "GET",
+            "contentType": "application/javascript"
+        }
+    ]
+}
+```
+
 ## Uniform Responses
 
 When a `POST` or `PATCH` request is performed, the whole target resource
