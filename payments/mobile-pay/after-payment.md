@@ -27,7 +27,8 @@ sidebar:
 
 ## Capture
 
-{% include transaction-list-response.md payment_instrument="mobilepay" %}
+{% include transaction-list-response.md api_resource="mobilepay"
+documentation_section="mobile-pay" %}
 
 ## Create capture transaction
 
@@ -63,7 +64,7 @@ Content-Type: application/json
 | {% icon check %}︎ | └➔&nbsp;`description`    | `string`     | A textual description of the capture transaction.                                                    |
 | {% icon check %}︎ | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the capture transaction. See [`payeeReference`][payee-reference] for details. |
 
-{% include transaction-response.md payment_instrument="mobilepay" %}
+{% include transaction-response.md api_resource="mobilepay" documentation_section="mobile-pay" %}
 
 ## Capture Sequence
 
@@ -119,8 +120,8 @@ Content-Type: application/json
 | {% icon check %}︎ | └➔&nbsp;`description`    | `string`     | A textual description of the reason for the cancellation.                                                 |
 | {% icon check %}︎ | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the cancellation transaction. See [`payeeReference`][payee-reference] for details. |
 
-{% include transaction-response.md payment_instrument="mobilepay"
-    transaction="cancel" %}
+{% include transaction-response.md api_resource="mobilepay"
+documentation_section="mobile-pay" transaction="cancel" %}
 
 ## Cancel Sequence
 
@@ -142,7 +143,7 @@ sequenceDiagram
 
 ## Reversals
 
-{% include transaction-list-response.md payment_instrument="mobilepay"
+{% include transaction-list-response.md api_resource="mobilepay" documentation_section="mobile-pay"
 transaction="reversal" %}
 
 ## Create reversal transaction
@@ -178,8 +179,8 @@ Content-Type: application/json
 | {% icon check %}︎ | └➔&nbsp;`description`    | `string`     | A textual description of the capture                                                                  |
 | {% icon check %}︎ | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the reversal transaction. See [`payeeReference`][payee-reference] for details. |
 
-{% include transaction-response.md payment_instrument="mobilepay"
-    transaction="reversal"%}
+{% include transaction-response.md api_resource="mobilepay"
+documentation_section="mobile-pay" transaction="reversal"%}
 
 ## Reversal Sequence
 

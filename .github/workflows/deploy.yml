@@ -1,10 +1,12 @@
-name: Docker build site and publish
+name: Deploy to GitHub Pages
 
-on: [push, pull_request]
+on: 
+  push:
+    branches: [ master ]
 
 jobs:
   build:
-    name: Docker build site and publish
+    name: Deploy to GitHub Pages
     runs-on: ubuntu-latest
 
     steps:
@@ -18,7 +20,7 @@ jobs:
       run: |
         docker-compose \
           -f docker-compose.yml \
-          -f .docker/docker-compose.ci.yml \
+          -f .docker/docker-compose.deploy.yml \
           up \
           --build \
           --abort-on-container-exit \

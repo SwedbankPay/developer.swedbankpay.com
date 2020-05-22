@@ -1,9 +1,11 @@
-{% assign payment_instrument = include.payment_instrument | default: 'creditcard' %}
+{% assign api_resource  = include.api_resource  | default: 'creditcard' %}
+{% assign documentation_section = include.documentation_section %}
 
 ## Transactions
 
-{% include transactions.md payment_instrument=payment_instrument %}
+{% include transactions.md api_resource=api_resource
+documentation_section=documentation_section %}
 
 ### Transaction
 
-{% include transaction.md payment_instrument=payment_instrument %}
+{% include transaction.md api_resource=api_resource documentation_section=documentation_section %}

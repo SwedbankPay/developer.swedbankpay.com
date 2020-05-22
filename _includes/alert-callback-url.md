@@ -1,5 +1,10 @@
-{% assign payment_instrument = include.payment_instrument | default: "card" %}
-{% assign callback_href = "/payments/" | append: payment_instrument | append: "/other-features#callback" %}
+{% assign api_resource = include.api_resource %}
+{% if api_resource == "creditcard" %}
+    {% assign callback_href = "/payments/card" | append: "/other-features#callback" %}
+
+{% else %}
+    {% assign callback_href = "/payments/" | append: api_resource | append: "/other-features#callback" %}
+{% endif %}
 
 {% capture body %}
 It is mandatory to set a [`callbackUrl`]({{

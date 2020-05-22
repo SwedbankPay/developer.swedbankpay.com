@@ -1,13 +1,8 @@
-{%- assign payment_instrument = include.payment_instrument -%}
-{%- if payment_instrument == "mobilepay"-%}
-    {%- assign payment_instrument ="mobile-pay" -%}
-{%- endif -%}
-{%- if payment_instrument == "paymentorders"-%}
-    {%- assign payment_instrument ="checkout" -%}
-{%- endif -%}
-{%- assign description_url=payment_instrument | prepend: "/" | append: "/other-features#description" -%}
-{%- if payment_instrument != "checkout"-%}
-    {%- assign description_url=description_url | prepend:  "/payments" -%}
+{%- assign documentation_section = include.documentation_section -%}
+{%- if documentation_section == "checkout"-%}
+    {%- assign description_url = documentation_section | prepend: "/" | append: "/other-features#description" -%}
+{%- else -%}
+    {%- assign description_url = documentation_section| prepend: "/payments/" | append: "/other-features#description" -%}
 {%- endif -%}
 {%- capture description -%}
     A 40 character length textual [description]({{ description_url }}) of the purchase.

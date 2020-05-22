@@ -79,7 +79,7 @@ expanded `POST` request is available in the [other features section][purchase].
 
 {% include card-purchase.md %}
 
-{% include alert-callback-url.md payment_instrument="card" %}
+{% include alert-callback-url.md api_resource="creditcard" %}
 
 {% include alert.html type="informative" icon="report_problem" body="**Step 2** is
 to create an authorization transaction. Implement only Step 2a if **3-D Secure
@@ -198,7 +198,7 @@ Content-Type: application/json
 | └─➔&nbsp;`number`                 | `string`  | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead. |
 | └─➔&nbsp;`amount`                 | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` = 100.00 NOK, `5000` = 50.00 SEK.                                                                                     |
 | └─➔&nbsp;`vatAmount`              | `integer` | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                           |
-| └─➔&nbsp;`description`            | `string`  | {% include field-description-description.md payment_instrument="card" %}                                                                                                                                     |
+| └─➔&nbsp;`description`            | `string`  | {% include field-description-description.md documentation_section="card" %}                                                                                                                                     |
 | └─➔&nbsp;`payeeReference`         | `string`  | A unique reference for the transaction.                                                                                                                                                                      |
 | └─➔&nbsp;`failedReason`           | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | └─➔&nbsp;`isOperational`          | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
@@ -323,7 +323,7 @@ Content-Type: application/json
 | └─➔&nbsp;`number`                 | `string`  | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead. |
 | └─➔&nbsp;`amount`                 | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` = 100.00 NOK, `5000` = 50.00 SEK.                                                                                     |
 | └─➔&nbsp;`vatAmount`              | `integer` | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                           |
-| └─➔&nbsp;`description`            | `string`  | {% include field-description-description.md payment_instrument="card" %}                                                                                                                                     |
+| └─➔&nbsp;`description`            | `string`  | {% include field-description-description.md documentation_section="card" %}                                                                                                                                     |
 | └─➔&nbsp;`payeeReference`         | `string`  | A unique reference for the transaction.                                                                                                                                                                      |
 | └─➔&nbsp;`failedReason`           | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | └─➔&nbsp;`isOperational`          | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |

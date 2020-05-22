@@ -33,6 +33,11 @@ this very documentation, not to a version of any APIs described by it." %}
 
 ## May 2020
 
+### Version 1.10.1
+
+* Updated [Swish Redirect][swish-redirect] requests.
+* Added `orderReference` information in Payment Order Callback in [Checkout Other features][checkout-callback].
+
 ### Version 1.10.0
 
 * Added a new [Gift Cards][gift-cards] section with descriptions of our Gift Cards API.
@@ -379,6 +384,7 @@ integration and the payer.
 [checkout-payment-orders]: /checkout/other-features#payment-orders
 [checkout-payment-url]: /checkout/other-features#payment-url
 [checkout]: /checkout
+[checkout-callback]: /checkout/other-features#callback
 [co-badge-card]: /payments/card/other-features#co-badge-card-choice-for-dankort
 [credit-card-abort]: /payments/card/after-payment#abort
 [credit]: /payments/card

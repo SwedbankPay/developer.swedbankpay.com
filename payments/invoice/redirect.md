@@ -43,7 +43,7 @@ sidebar:
 * An invoice payment is always two-phased based - you create an
   `Authorize` transaction, that is followed by a `Capture` or `Cancel` request.
 
-{% include alert-callback-url.md payment_instrument="invoice" %}
+{% include alert-callback-url.md api_resource="invoice" %}
 
 To initiate the payment process, you need to make a `POST` request to Swedbank Pay.
 Our `payment` example below uses the [`FinancingConsumer`]
@@ -91,9 +91,10 @@ Content-Type: application/json
             "payeeName": "Merchant1",
             "productCategory": "PC1234",
             "subsite": "MySubsite"
-        }
+        },
     "invoice": {
         "invoiceType": "PayExFinancingSe"
+        }
     }
 }
 ```
@@ -109,11 +110,11 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`type`                   | `string`      | Use the `Invoice` type here                                                                                                                                                                                                                                                                                           |
 | {% icon check %} | └─➔&nbsp;`amount`                 | `integer`     | {% include field-description-amount.md %}                                                                                                                                                                                                                                                                             |
 | {% icon check %} | └─➔&nbsp;`vatAmount`              | `integer`     | {% include field-description-vatamount.md %}                                                                                                                                                                                                                                                                          |
-| {% icon check %} | └➔&nbsp;`description`             | `string(40)`  | {% include field-description-description.md payment_instrument="invoice" %}                                                                                                                                                                                                                                           |
+| {% icon check %} | └➔&nbsp;`description`             | `string(40)`  | {% include field-description-description.md documentation_section="invoice" %}                                                                                                                                                                                                                                           |
 |                  | └➔&nbsp;`payerReference`          | `string`      | The reference to the payer (consumer/end user) from the merchant system. E.g mobile number, customer number etc.                                                                                                                                                                                                      |
 |                  | └➔&nbsp;`generateRecurrenceToken` | `boolean`     | `true` or `false`. Set this to `true` if you want to create a recurrenceToken for future use Recurring purchases (subscription payments).                                                                                                                                                                             |
 | {% icon check %} | └➔&nbsp;`userAgent`               | `string`      | The user agent reference of the consumer's browser - [see user agent definition][user-agent-definition]                                                                                                                                                                                                               |
-| {% icon check %} | └➔&nbsp;`language`                | `string`      | {% include field-description-language.md payment_instrument="invoice" %}                                                                                                                                                                                                                                                                                          |
+| {% icon check %} | └➔&nbsp;`language`                | `string`      | {% include field-description-language.md api_resource="invoice" %}                                                                                                                                                                                                                                                                                          |
 | {% icon check %} | └➔&nbsp;`urls`                    | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                                                |
 |                  | └─➔&nbsp;`hostUrl`                | `array`       | The array of URLs valid for embedding of Swedbank Pay Hosted Views. If not supplied, view-operation will not be available.                                                                                                                                                                                            |
 | {% icon check %} | └─➔&nbsp;`completeUrl`            | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further.                    |

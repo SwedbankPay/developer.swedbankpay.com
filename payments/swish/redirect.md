@@ -31,8 +31,8 @@ number (msisdn), connected to the Swish app." %}
   Swedbank Pay with the collected Purchase information. This will generate a
   payment object with a unique `paymentID`. You either receive a Redirect URL to
   a hosted page or a JavaScript source in response.
-* You need to redirect the payer to the payment page where she is
-  prompted to enter the Swish registered mobile number.
+* You need to redirect the payer to the payment page to enter the Swish
+  registered mobile number.
   This triggers the initiation of a sales transaction.
 * Swedbank Pay handles the dialogue with Swish and the consumer confirms the
   purchase in the Swish app.
@@ -51,7 +51,7 @@ Swish is a one-phase payment instrument that is based on sales transactions
 ![Consumer paying with Swish using Swedbank Pay]
 [swish-redirect-image]{:width="467px" height="364px"}
 
-{% include alert-callback-url.md payment_instrument="swish" %}
+{% include alert-callback-url.md api_resource="swish" %}
 
 ## Step 1: Create a Purchase
 
@@ -123,11 +123,11 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`type`              | `string`      | `Swish`.                                                                                                                                                                                                                                                                                           |
 | {% icon check %} | └─➔&nbsp;`amount`            | `integer`     | {% include field-description-amount.md %}                                                                                                                                                                                                                                                          |
 | {% icon check %} | └─➔&nbsp;`vatAmount`         | `integer`     | {% include field-description-vatamount.md %}                                                                                                                                                                                                                                                       |
-| {% icon check %} | └➔&nbsp;`description`        | `string(40)`  | {% include field-description-description.md payment_instrument="swish" %}                                                                                                                                                                                                                          |
+| {% icon check %} | └➔&nbsp;`description`        | `string(40)`  | {% include field-description-description.md documentation_section="swish" %}                                                                                                                                                                                                                          |
 |                  | └─➔&nbsp;`paymentAgeLimit`   | `integer`     | Positive number sets required age limit to fulfill the payment.                                                                                                                                                                                                                                    |
 |                  | └➔&nbsp;`payerReference`     | `string`      | The reference to the payer (consumer/end user) from the merchant system. E.g mobile number, customer number etc.                                                                                                                                                                                   |
 | {% icon check %} | └➔&nbsp;`userAgent`          | `string`      | The user agent reference of the consumer's browser - [see user agent definition][user-agent-definition]                                                                                                                                                                                            |
-| {% icon check %} | └➔&nbsp;`language`           | `string`      | {% include field-description-language.md payment_instrument="swish" %}                                                                                                                                                                                                                                                                       |
+| {% icon check %} | └➔&nbsp;`language`           | `string`      | {% include field-description-language.md api_resource="swish" %}                                                                                                                                                                                                                                                                       |
 | {% icon check %} | └➔&nbsp;`urls`               | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                             |
 | {% icon check %} | └─➔&nbsp;`completeUrl`       | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. |
 |                  | └─➔&nbsp;`cancelUrl`         | `string`      | The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only cancelUrl or `paymentUrl` can be used, not both.                                                                                              |
@@ -158,38 +158,49 @@ Content-Type: application/json
 
 {
     "payment": {
-        "id": "/psp/swish/payments/{{ page.payment_id }}",
-        "number": 992308,
-        "created": "2017-10-23T08:38:57.2248733Z",
-        "instrument": "Swish",
-        "operation": "Purchase",
-        "intent": "Sale",
-        "state": "Ready",
-        "currency": "SEK",
-        "amount": 0,
-        "description": "Purchase",
-        "payerReference": "AB1234",
-        "initiatingSystemUserAgent": "Mozilla/5.0",
-        "userAgent": "Mozilla/5.0...",
-        "language": "sv-SE",
-        "urls": {
-            "id": "/psp/swish/payments/{{ page.payment_id }}/urls"
-        },
-        "payeeInfo": {
-            "id": "/psp/swish/payments/{{ page.payment_id }}/payeeinfo"
-        }
+      "id": "/psp/swish/payments/{{ page.payment_id }}",
+      "number": 1234567890,
+      "instrument": "Swish",
+      "created": "2016-09-14T13:21:29.3182115Z",
+      "updated": "2016-09-14T13:21:57.6627579Z",
+      "state": "Ready",
+      "operation": "Purchase",
+      "intent": "Sale",
+      "currency": "SEK",
+      "amount": 1500,
+      "remainingCaptureAmount": 1500,
+      "remainingCancellationAmount": 1500,
+      "remainingReversalAmount": 0,
+      "description": "Test Purchase",
+      "payerReference": "AB1234",
+      "initiatingSystemUserAgent": "Mozilla/5.0.",
+      "userAgent": "Mozilla/5.0...",
+      "language": "sv-SE",
+      "prices": { "id": "/psp/swish/payments/{{ page.payment_id }}/prices" },
+      "transactions": { "id": "/psp/swish/payments/{{ page.payment_id }}/transactions" },
+      "captures": { "id": "/psp/swish/payments/{{ page.payment_id }}/captures" },
+      "reversals": { "id": "/psp/swish/payments/{{ page.payment_id }}/reversals" },
+      "cancellations": { "id": "/psp/swish/payments/{{ page.payment_id }}/cancellations" },
+      "urls" : { "id": "/psp/swish/payments/{{ page.payment_id }}/urls" },
+      "payeeInfo" : { "id": "/psp/swish/payments/{{ page.payment_id }}/payeeInfo" },
+      "settings": { "id": "/psp/swish/payments/{{ page.payment_id }}/settings" }
     },
     "operations": [
-        {
-            "method": "PATCH",
-            "href": "{{ page.api_url }}/psp/swish/payments/{{ page.payment_id }}",
-            "rel": "update-payment-abort"
-        },
-        {
+      {
             "method": "POST",
             "href": "{{ page.api_url }}/psp/swish/payments/{{ page.payment_id }}/sales",
             "rel": "create-sale"
-        }
+      },
+      {
+            "method": "GET",
+            "href": "{{ page.front_end_url }}/swish/payments/authorize/{{ page.payment_token }}",
+            "rel": "redirect-sale",
+      },
+      {
+            "method": "PATCH",
+            "href": "{{ page.api_url }}/swish/payments/{{ page.payment_id }}",
+            "rel": "update-payment-abort"
+      },
     ]
 }
 ```

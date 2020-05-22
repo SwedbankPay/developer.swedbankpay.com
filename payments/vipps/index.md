@@ -32,7 +32,7 @@ payment page (redirect) or in the `iframe` (seamless view).
 
 ![screenshot of the first Vipps redirect page][vipps-redirect]{:height="500px" width="425px"}
 
-He or she is then redirected to Vipps' own payment
+The payer is then redirected to Vipps' own payment
 page where the phone number is entered, and a push message is sent to the phone.
 
 ![screenshot of the Vipps number input page][vipps-number-input]{:height="500px" width="450px"}
@@ -72,7 +72,7 @@ Vipps is unfortunately not available in our demoshop at the moment, but it will
 be shortly. The demoshop will use a fakeservice which enables you to test a
 successful purchase without using the Vipps app.
 
-{% include languages.md payment_instrument="vipps" %}
+{% include languages.md api_resource="vipps" %}
 
 {% include iterator.html  next_href="redirect" next_title="Next: Redirect" %}
 

@@ -1,8 +1,8 @@
 #!/bin/bash
 
 COMMIT_MSG_FILE=$1
-COMMIT_SOURCE=$2
-SHA1=$3
+# COMMIT_SOURCE=$2
+# SHA1=$3
 
 # Regex explanation:
 # First group matches the branch type
@@ -38,11 +38,12 @@ if [[ ! $branch_name =~ $valid_branch_regex ]]; then
 fi
 
 task_id=${BASH_REMATCH[2]}
-task_id=$(echo $task_id | tr '[:lower:]' '[:upper:]')
-commit_message="$(cat $1)"
-commit_message=$(echo $commit_message | tr '[:lower:]' '[:upper:]')
+task_id=$(echo "$task_id" | tr '[:lower:]' '[:upper:]')
+commit_message="$(cat "$1")"
+commit_message=$(echo "$commit_message" | tr '[:lower:]' '[:upper:]')
 
 if [[ $commit_message != $task_id* ]]; then
     echo "Prefixing commit message with $task_id:"
-    echo "$task_id:"' '$(cat "$COMMIT_MSG_FILE") > "$COMMIT_MSG_FILE"
+    commit_message_content=$(cat "$COMMIT_MSG_FILE")
+    echo "$task_id:"' '"$commit_message_content" > "$COMMIT_MSG_FILE"
 fi

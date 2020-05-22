@@ -44,7 +44,7 @@ Each individual field of the JSON document is described in the following section
 An example of an expanded `POST` request is available in the
 [other features section][purchase].
 
-{% include alert-callback-url.md payment_instrument="card" %}
+{% include alert-callback-url.md api_resource="creditcard" %}
 
 {% include alert-risk-indicator.md %}
 
@@ -58,9 +58,9 @@ all authentication during this phase.
 After an attempted payment, Swedbank Pay will redirect the Payer to one of two
 specified URLs: `completeUrl` or `cancelUrl`.
 
-If the payer cancel at any point during payment, he or she will reach the
-`cancelUrl`. If the payment session is followed through completely, the payer
-will reach the `completeUrl`.
+If the payer cancel at any point, the payer will be redirected to the
+`cancelUrl`. If the payment is followed through completely the payer will
+reach the `completeUrl`.
 
 {% include alert.html type="informative" icon="info" body="Important: Both
 successful and rejected payments are labeled as `completed`." %}

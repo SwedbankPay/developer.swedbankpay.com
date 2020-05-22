@@ -1,5 +1,4 @@
-{% assign payment_order = include.payment_order | default: false %}
-{% assign payment_instrument = include.payment_instrument | default: "creditcard" %}
+{% assign api_resource = include.api_resource | default: "creditcard" %}
 
 ## Settlement and Reconciliation
 
@@ -178,11 +177,11 @@ the reconciliation file.
 
 ```js
 {
-    "payment": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}",
+    "payment": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
     "capture": {
-        "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/captures/{{ page.transaction_id }}",
+        "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/captures/{{ page.transaction_id }}",
         "transaction": {
-            "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
+            "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
             "created": "2016-09-14T01:01:01.01Z",
             "updated": "2016-09-14T01:01:01.03Z",
             "type": "Capture",

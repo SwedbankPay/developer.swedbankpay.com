@@ -9,30 +9,21 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Find branch
-      id: branch
+    - name: Repository Metadata
+      id: repository
       env:
         HEAD_REF: ${{ github.head_ref }}
         REF: ${{ github.ref }}
-      run: |
-        if [[ ! -z "$HEAD_REF" ]]; then
-          # Use the head_ref on merge commits
-          GITHUB_BRANCH=${HEAD_REF}
-        else
-          # Use the branch head reference on regular commits
-          GITHUB_BRANCH=${REF#refs/heads/}
-        fi
-
-        if [[ $GITHUB_BRANCH == refs/tags* ]]; then
-          # Default to the master branch on tags
-          $GITHUB_BRANCH = "master"
-        fi
-
-        echo "::set-output name=branch-name::${GITHUB_BRANCH}"
+        EVENT_NAME: ${{ github.event_name }}
+        PULL_REPO_NAME: ${{ github.event.pull_request.head.repo.full_name }}
+        PULL_REPO_URL: ${{ github.event.pull_request.head.repo.html_url }}
+        REPO_NAME: ${{ github.repository }}
+      run: ./.github/workflows/repository_metadata.sh
 
     - name: HTMLProofer
       env:
-        GITHUB_BRANCH: ${{ steps.branch.outputs.branch-name }}
+        GITHUB_BRANCH: ${{ steps.repository.outputs.branch }}
+        GITHUB_REPOSITORY_URL: ${{ steps.repository.outputs.url }}
       run: |
         docker-compose \
           -f docker-compose.yml \

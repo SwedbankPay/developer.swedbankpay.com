@@ -124,10 +124,10 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`amount`            | `integer`     | {% include field-description-amount.md %}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | {% icon check %} | └─➔&nbsp;`vatAmount`         | `integer`     | {% include field-description-vatamount.md %}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 |                  | └➔&nbsp;`paymentAgeLimit`    | `integer`     | Positive number sets requried age limit to fulfill the payment.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| {% icon check %} | └➔&nbsp;`description`        | `string(40)`  | {% include field-description-description.md payment_instrument="swish" %}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| {% icon check %} | └➔&nbsp;`description`        | `string(40)`  | {% include field-description-description.md documentation_section="swish" %}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 |                  | └➔&nbsp;`payerReference`     | `string`      | The reference to the payer (consumer/end user) from the merchant system. E.g mobile number, customer number etc.                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | {% icon check %} | └➔&nbsp;`userAgent`          | `string`      | The user agent reference of the consumer's browser - [see user agent definition][user-agent-definition]                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| {% icon check %} | └➔&nbsp;`language`           | `string`      | {% include field-description-language.md payment_instrument="swish" %}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| {% icon check %} | └➔&nbsp;`language`           | `string`      | {% include field-description-language.md api_resource="swish" %}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | {% icon check %} | └➔&nbsp;`urls`               | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 |                  | └─➔&nbsp;`hostUrls`          | `array`       | The array of URLs valid for embedding of Swedbank Pay Hosted Views. If not supplied, view-operation will not be available.                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | {% icon check %} | └─➔&nbsp;`completeUrl`       | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further.                                                                                                                                                                                                                                                                        |
@@ -196,9 +196,9 @@ Content-Type: application/json
         "contentType": "application/json"
       },
       {
-            "method": "POST",
-            "href": "{{ page.api_url }}/psp/swish/payments/{{ page.payment_id }}/sales",
-            "rel": "create-sale"
+        "method": "POST",
+        "href": "{{ page.api_url }}/psp/swish/payments/{{ page.payment_id }}/sales",
+        "rel": "create-sale"
       },
       {
         "href": "{{ page.front_end_url }}/swish/payments/authorize/{{ page.payment_token }}",
@@ -213,10 +213,10 @@ Content-Type: application/json
         "contentType": "application/javascript"
       },
       {
-            "method": "GET",
-            "href": "{{ page.front_end_url }}/swish/core/scripts/client/px.swish.client.js?token={{ page.payment_token }}",
-            "rel": "view-sales",
-            "contentType": "application/javascript"
+        "method": "GET",
+        "href": "{{ page.front_end_url }}/swish/core/scripts/client/px.swish.client.js?token={{ page.payment_token }}",
+        "rel": "view-payment",
+        "contentType": "application/javascript"
       }
     ]
 }
@@ -229,7 +229,7 @@ payment page in an `iframe` in our next step.
 ## Step 2: Display the Payment Window
 
 You need to embed the script source on your site to create a hosted-view in an
-`iframe`; so that she can enter the required information in a secure Swedbank
+`iframe`; so that the payer can enter the required information in a secure Swedbank
 Pay hosted environment. A simplified integration has these following steps:
 
 1. Create a container that will contain the Seamless View iframe: `<div

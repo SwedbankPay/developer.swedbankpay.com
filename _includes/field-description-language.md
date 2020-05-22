@@ -1,5 +1,5 @@
-{%- assign payment_instrument = include.payment_instrument -%}
-{% case payment_instrument %}
+{%- assign api_resource = include.api_resource -%}
+{% case api_resource %}
 {% when "creditcard" %}
 {%- capture language -%}
 `sv-SE`, `nb-NO`, `da-DK`, `de-DE`, `ee-EE`, `en-US`, `es-ES`, `fr-FR`, `lv-LV`,

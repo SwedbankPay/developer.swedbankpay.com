@@ -21,7 +21,8 @@ sidebar:
 
 {% include payment-link.md %}
 
-{% include payment-resource.md  payment_instrument="vipps" show_status_operations=true%}
+{% include payment-resource.md  api_resource="vipps" documentation_section="vipps"
+show_status_operations=true%}
 
 {% include payment-transaction-states.md %}
 
@@ -96,10 +97,10 @@ Content-Type: application/json
 | {% icon check %}︎ | └─➔&nbsp;`type`              | `string`     | `vipps`                                                                                                                                                                                                                                                   |
 | {% icon check %}︎ | └─➔&nbsp;`amount`            | `integer`    | {% include field-description-amount.md currency="NOK" %}                                                                                                                                                                                                  |
 | {% icon check %}︎ | └─➔&nbsp;`vatAmount`         | `integer`    | {% include field-description-vatamount.md currency="NOK" %}                                                                                                                                                                                               |
-| {% icon check %}︎ | └➔&nbsp;`description`        | `string(40)` | {% include field-description-description.md payment_instrument="vipps" %}                                                                                                                                                                                 |
+| {% icon check %}︎ | └➔&nbsp;`description`        | `string(40)` | {% include field-description-description.md documentation_section="vipps" %}                                                                                                                                                                                 |
 |                  | └➔&nbsp;`payerReference`     | `string`     | The reference to the payer (consumer/end-user) from the merchant system, like mobile number, customer number etc.                                                                                                                                         |
 | {% icon check %}︎ | └➔&nbsp;`userAgent`          | `string`     | The user agent reference of the consumer's browser - [see user agent][user-agent]]                                                                                                                                                                        |
-| {% icon check %}︎ | └➔&nbsp;`language`           | `string`     | {% include field-description-language.md payment_instrument="vipps" %}                                                                                                                                                                                                                              |
+| {% icon check %}︎ | └➔&nbsp;`language`           | `string`     | {% include field-description-language.md api_resource="vipps" %}                                                                                                                                                                                                                              |
 | {% icon check %}︎ | └➔&nbsp;`urls`               | `object`     | The object containing URLs relevant for the `payment`.                                                                                                                                                                                                    |
 | {% icon check %}︎ | └─➔&nbsp;`hostUrls`          | `array`      | The array of URIs valid for embedding of Swedbank Pay Hosted Views.                                                                                                                                                                                       |
 | {% icon check %}︎ | └─➔&nbsp;`completeUrl`       | `string`     | The URI that Swedbank Pay will redirect back to when the payment page is completed. This does not indicate a successful payment, only that it has reached a completion state. A `GET` request needs to be performed on the payment to inspect it further. |
@@ -191,19 +192,20 @@ payment altogether or creating an authorization transaction through the
 
 {% include payment-url.md full_reference=true %}
 
-{% include prices.md payment_instrument="vipps" %}
+{% include prices.md api_resource="vipps" %}
 
 ## Description
 
 {% include description.md %}
 
-{% include payee-info.md payment_instrument="vipps" %}
+{% include payee-info.md api_resource="vipps" %}
 
 {% include payee-reference.md %}
 
-{% include transactions-reference.md payment_instrument="vipps" %}
+{% include transactions-reference.md api_resource="vipps"
+documentation_section="vipps" %}
 
-{% include callback-reference.md payment_instrument="vipps" %}
+{% include callback-reference.md api_resource="vipps" %}
 
 ## Problem messages
 
@@ -213,6 +215,8 @@ We generally use the problem message type and status code to identify the
 nature of the problem.
 The problem name and description will often help narrow down the specifics of
 the problem.
+
+{% include common-problem-types.md %}
 
 ### Error types from Vipps (Init-call)
 

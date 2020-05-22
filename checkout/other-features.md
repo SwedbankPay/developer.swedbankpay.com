@@ -529,11 +529,13 @@ with its `state` set to `Aborted`.
 
 ### Transactions
 
-{% include transactions.md payment_instrument="paymentorders" %}
+{% include transactions.md api_resource="paymentorders"
+documentation_section="checkout" %}
 
 #### Transaction
 
-{% include transaction.md payment_instrument="paymentorders" %}
+{% include transaction.md api_resource="paymentorders"
+documentation_section="checkout" %}
 
 ## Recurring Payments
 
@@ -865,14 +867,14 @@ Content-Type: application/json
 | └─➔&nbsp;`remainingCaptureAmount`  | `integer`    | The available amount to capture.                                                                                                                                                                 |
 | └─➔&nbsp;`remainingCancelAmount`   | `integer`    | The available amount to cancel.                                                                                                                                                                  |
 | └─➔&nbsp;`remainingReversalAmount` | `integer`    | The available amount to reverse.                                                                                                                                                                 |
-| └➔&nbsp;`description`              | `string(40)` | {% include field-description-description.md payment_instrument="checkout" %}                                                                                                                     |
+| └➔&nbsp;`description`              | `string(40)` | {% include field-description-description.md documentation_section="checkout" %}                                                                                                                     |
 | └➔&nbsp;`payerReference`           | `string`     | The reference to the consumer from the merchant system, like mobile number, customer number etc.                                                                                                 |
 | └➔&nbsp;`userAgent`                | `string`     | The [user agent][user-agent] string of the consumer's browser.                                                                                                                                   |
-| └➔&nbsp;`language`                 | `string`     | {% include field-description-language.md payment_instrument="checkout" %}                                                                                                                                                                      |
+| └➔&nbsp;`language`                 | `string`     | {% include field-description-language.md api_resource="paymentorders" %}                                                                                                                                                                      |
 
 ### Prices Resource
 
-{% include prices.md payment_instrument="paymentorders" %}
+{% include prices.md api_resource="paymentorders" %}
 
 ### Payer Resource
 
@@ -1280,6 +1282,7 @@ object:
 
 ```js
 {
+    "orderReference": "OR-123456",
     "paymentOrder":{
         "id": "/psp/paymentorders/{{ page.payment_order_id }}",
         "instrument": "<payment instrument>"
@@ -1298,6 +1301,7 @@ object:
 {:.table .table-striped}
 | Parameter            | Description                                                           |
 | :------------------- | :-------------------------------------------------------------------- |
+| `orderReference`     | The orderReference sent in on create paymentOrder                     |
 | `Payment Instrument` | `CreditCard`, `Invoice`, `Swish`, `Vipps`, `DirectDebit`, `MobilePay` |
 | `Transaction Type`   | `Authorization`, `Capture`, `Cancellation`, `Reversal`                |
 
@@ -1364,29 +1368,15 @@ The structure of a problem message will look like this:
 | └➔&nbsp;`[].name`        | `string`  | The name of the field, header, object, entity or likewise that was erroneous.                                                                                                                                                                       |
 | └➔&nbsp;`[].description` | `string`  | The description of what was wrong with the field, header, object, entity or likewise identified by `name`.                                                                                                                                          |
 
-### Common Problems
+{% include common-problem-types.md %}
 
-All common problem types will have a URI in the format
-`https://api.payex.com/psp/errordetail/<error-type>`.
-The **URI is an identifier** and is currently not possible to dereference,
-although that might be possible in the future.
+{% include expand-parameter.md api_resource="paymentorders" %}
 
-{:.table .table-striped}
-| Type                 | Status | Description                                                                                                                                        |
-| :------------------- | :----- | :------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `inputerror`         | `400`  | The server cannot or will not process the request due to an apparent client error (e.g. malformed request syntax, size to large, invalid request). |
-| `forbidden`          | `403`  | The request was valid, but the server is refusing the action. The necessary permissions to access the resource might be lacking.                   |
-| `notfound`           | `404`  | The requested resource could not be found, but may be available in the future. Subsequent requests are permissible.                                |
-| `systemerror`        | `500`  | A generic error message.                                                                                                                           |
-| `configurationerror` | `500`  | A error relating to configuration issues.                                                                                                          |
-
-{% include expand-parameter.md payment_instrument="paymentorders" %}
-
-{% include payee-info.md payment_instrument="paymentorders" %}
+{% include payee-info.md api_resource="paymentorders" %}
 
 {% include merchant-authenticated-consumer.md %}
 
-{% include settlement-reconciliation.md payment_instrument="paymentorders" %}
+{% include settlement-reconciliation.md api_resource="paymentorders" %}
 
 ## Updating Payment Menu
 

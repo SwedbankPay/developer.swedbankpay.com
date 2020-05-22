@@ -1,4 +1,5 @@
-{% assign payment_instrument = include.payment_instrument | default: 'creditcard' %}
+{% assign api_resource = include.api_resource | default: 'creditcard' %}
+{% assign documentation_section = include.documentation_section %}
 
 The `transaction` resource contains the generic details of a transaction on a
 specific payment.
@@ -20,7 +21,7 @@ When a transaction is created it will have one of three states:
 **Request**
 
 ```http
-GET /psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/transactions HTTP/1.1
+GET /psp/{{ api_resource }}/payments/{{ page.payment_id }}/transactions HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -34,9 +35,9 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}",
+    "payment": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
     "transaction": {
-        "id": "/psp/{{ payment_instrument }}/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
+        "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
         "created": "2016-09-14T01:01:01.01Z",
         "updated": "2016-09-14T01:01:01.03Z",
         "type": "Capture",
@@ -66,7 +67,7 @@ Content-Type: application/json
 | └➔&nbsp;`number`         | `string`  | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead. |
 | └➔&nbsp;`amount`         | `integer` | {% include field-description-amount.md %}                                                                                     |
 | └➔&nbsp;`vatAmount`      | `integer` | {% include field-description-vatamount.md %}                                                           |
-| └➔&nbsp;`description`    | `string`  | {% include field-description-description.md payment_instrument=payment_instrument %}                                                                                                                                    |
+| └➔&nbsp;`description`    | `string`  | {% include field-description-description.md documentation_section=documentation_section %}                                                                                                                                    |
 | └➔&nbsp;`payeeReference` | `string`  | A unique reference for the transaction.                                                                                                                                                                      |
 | └➔&nbsp;`failedReason`   | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | └➔&nbsp;`isOperational`  | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
