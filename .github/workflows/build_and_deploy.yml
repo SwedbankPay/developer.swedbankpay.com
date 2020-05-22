@@ -1,6 +1,11 @@
 name: Docker build site and publish
 
-on: [push, pull_request]
+on: 
+  push:
+    branches: [ master ]
+    tags: [ '*' ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
   build:
@@ -18,7 +23,7 @@ jobs:
       run: |
         docker-compose \
           -f docker-compose.yml \
-          -f .docker/docker-compose.ci.yml \
+          -f .docker/docker-compose.deploy.yml \
           up \
           --build \
           --abort-on-container-exit \
