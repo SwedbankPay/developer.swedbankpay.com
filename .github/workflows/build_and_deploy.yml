@@ -23,7 +23,7 @@ jobs:
       run: |
         docker-compose \
           -f docker-compose.yml \
-          -f .docker/docker-compose.cd.yml \
+          -f .docker/docker-compose.deploy.yml \
           up \
           --build \
           --abort-on-container-exit \
