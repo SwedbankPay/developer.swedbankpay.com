@@ -90,13 +90,13 @@ PAYLOAD\n
 ```
 
 {:.table .table-striped}
-|     Required     | Field                   | Description                                                                                                                     |
-| :--------------: | :---------------------- | :------------------------------------------------------------------------------------------------------------------------------ |
-| {% icon check %} | `METHOD`     | The requested method (in upper case)                                                                                                                                 |
-| {% icon check %} | `RESOURCE` | The path to desired resource (without hostname and any query parameters)
-| {% icon check %} | `NONSE` | A unique value for each request ([UUID][uuid]
-|                  | `DATE` | Same as `Transmission-Time` if provided as seperate header. Uses [ISO8601 standard][iso-8601]
-|                  | `PAYLOAD` | The body of request
+|     Required     | Field      | Description                                                                                   |
+| :--------------: | :--------- | :-------------------------------------------------------------------------------------------- |
+| {% icon check %} | `METHOD`   | The requested method (in upper case)                                                          |
+| {% icon check %} | `RESOURCE` | The path to desired resource (without hostname and any query parameters)                      |
+| {% icon check %} | `NONSE`    | A unique value for each request ([UUID][uuid]                                                 |
+|                  | `DATE`     | Same as `Transmission-Time` if provided as seperate header. Uses [ISO8601 standard][iso-8601] |
+|                  | `PAYLOAD`  | The body of request                                                                           |
 
 Example request:
 
@@ -230,7 +230,7 @@ function guid() {
 * For more information how to implement the api, see [Test Client][test-client].
 
 [test-client]: /gift-cards/payment-client
-[spring-security]: https://docs.spring.io/spring-security-oauth2-boot/docs/current/reference/htmlsingle/#boot-features-security-custom-user-info-client
+[spring-security]: https://spring.io/projects/spring-security-oauth
 [application-yml]: https://github.com/SwedbankPay/vas-payment-api-client/blob/master/backend/src/main/resources/application.yml
 [oauth-rest-java]: https://github.com/SwedbankPay/vas-payment-api-client/blob/master/backend/src/main/java/com/swedbankpay/vas/demo/config/security/Oauth2RestTemplateConfiguration.java
 [hmac-signature-builder]: https://github.com/SwedbankPay/vas-payment-api-client/blob/master/backend/src/main/java/com/swedbankpay/vas/demo/config/security/HmacSignatureBuilder.java
