@@ -229,15 +229,15 @@ function guid() {
 
 * For more information how to implement the api, see [Test Client][test-client].
 
-[test-client]: /gift-cards/payment-client
-[spring-security]: https://spring.io/projects/spring-security-oauth
 [application-yml]: https://github.com/SwedbankPay/vas-payment-api-client/blob/master/backend/src/main/resources/application.yml
-[oauth-rest-java]: https://github.com/SwedbankPay/vas-payment-api-client/blob/master/backend/src/main/java/com/swedbankpay/vas/demo/config/security/Oauth2RestTemplateConfiguration.java
-[hmac-signature-builder]: https://github.com/SwedbankPay/vas-payment-api-client/blob/master/backend/src/main/java/com/swedbankpay/vas/demo/config/security/HmacSignatureBuilder.java
-[external-request-interceptor]: https://github.com/SwedbankPay/vas-payment-api-client/blob/master/backend/src/main/java/com/swedbankpay/vas/demo/config/ExternalRequestInterceptor.java
-[uuid]: https://tools.ietf.org/rfc/rfc4122.txt
-[iso-8601]: https://en.wikipedia.org/wiki/ISO_8601
-[oauth2]: https://oauth.net/2/
 [client-credentials]: https://www.oauth.com/oauth2-servers/access-tokens/client-credentials/
-[restful-cookbook-hmac]: http://restcookbook.com/Basics/loggingin/
+[external-request-interceptor]: https://github.com/SwedbankPay/vas-payment-api-client/blob/master/backend/src/main/java/com/swedbankpay/vas/demo/config/ExternalRequestInterceptor.java
+[hmac-signature-builder]: https://github.com/SwedbankPay/vas-payment-api-client/blob/master/backend/src/main/java/com/swedbankpay/vas/demo/config/security/HmacSignatureBuilder.java
 [hmac]: https://en.wikipedia.org/wiki/HMAC
+[iso-8601]: https://en.wikipedia.org/wiki/ISO_8601
+[oauth-rest-java]: https://github.com/SwedbankPay/vas-payment-api-client/blob/master/backend/src/main/java/com/swedbankpay/vas/demo/config/security/Oauth2RestTemplateConfiguration.java
+[oauth2]: https://oauth.net/2/
+[restful-cookbook-hmac]: http://restcookbook.com/Basics/loggingin/
+[spring-security]: https://spring.io/projects/spring-security-oauth
+[test-client]: /gift-cards/payment-client
+[uuid]: https://tools.ietf.org/rfc/rfc4122.txt

@@ -36,6 +36,6 @@ documentation:
 * [Swagger][swagger]
 * [Operations] [operations]
 
-[test-client]: /gift-cards/payment-client
 [operations]: /gift-cards/operations
 [swagger]: https://stage-evc.payex.com/payment-api/swagger-ui.html
+[test-client]: /gift-cards/payment-client

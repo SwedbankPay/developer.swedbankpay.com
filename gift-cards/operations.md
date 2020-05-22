@@ -142,8 +142,8 @@ Content-Type: application/json
 }
 ```
 
-[security]: /gift-cards/security
-[purchase]: /gift-cards/other-features#purchase
-[deposit]: /gift-cards/other-features#deposit
-[balance]: /gift-cards/other-features#balance
 [auth]: /gift-cards/other-features#authentication
+[balance]: /gift-cards/other-features#balance
+[deposit]: /gift-cards/other-features#deposit
+[purchase]: /gift-cards/other-features#purchase
+[security]: /gift-cards/security
