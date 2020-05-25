@@ -93,8 +93,9 @@ should not be parsed or interpreted in any way.
 URIs that are returned as part of the `operations` in each response should not be stored.
 See the abbreviated example below where `psp/creditcard/payments` from the
 `POST` header is an example of the URI that can be stored, as it is used to
-generate a new resource. Also, the `/psp/creditcard/payments/{{ page.payment_id}}`
-can also be stored as it is generated from the `payment.id`.
+create a new resource. Also, the `/psp/creditcard/payments/{{ page.payment_id}}`
+URI can be stored in order to retrieve the created payment with an HTTP `GET`
+request later.
 
 The URIs found within `operations` such as the `href` of `update-payment-abort`,
 `{{ page.api_url }}/psp/creditcard/payments/{{ page.payment_id }}` should not be
