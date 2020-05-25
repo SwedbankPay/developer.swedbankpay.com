@@ -94,7 +94,7 @@ should not be parsed or interpreted in any way.
 
 {% include alert.html type="warning" icon="warning" header="Operation URIs"
 body="URIs that are returned as part of the `operations` in each response should
-not be stored.." %}
+not be stored." %}
 
 See the abbreviated example below where `psp/creditcard/payments` from the
 `POST` header is an example of the URI that can be stored, as it is used to
