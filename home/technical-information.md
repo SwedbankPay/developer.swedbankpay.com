@@ -96,7 +96,7 @@ See the abbreviated example below where `psp/creditcard/payments` from the
 generate a new resource. Also, the `/psp/creditcard/payments/{{ page.payment_id}}`
 can also be stored as it is generated from the `payment.id`.
 
-The URIs generated under the `operations` such as `update-payment-abort`
+The URIs found within `operations` such as the `href` of `update-payment-abort`,
 `{{ page.api_url }}/psp/creditcard/payments/{{ page.payment_id }}` should not be
 stored.
 
