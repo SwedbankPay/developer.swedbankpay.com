@@ -87,7 +87,7 @@ updates in the future.
 general, URIs should be **discovered** in responses to previous requets, **not
 stored**." %}
 URIs that are used to create new resources can be stored and hard coded.
-Also, the URI of the generated resource can be stored on your end to GET it at a
+Also, the URI of the generated resource can be stored on your end to `GET` it at a
 later point. Note that the URIs should be stored as opaque identifiers and
 should not be parsed or interpreted in any way.
 URIs that are returned as part of the `operations` in each response should not be stored.
