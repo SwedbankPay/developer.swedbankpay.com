@@ -16,11 +16,6 @@ sidebar:
       title: Other Features
 ---
 
-* [Purchase][purchase]
-* [Deposit][deposit]
-* [Balance][balance]
-* [Auth][auth]
-
 ## Gift card resource
 
 For security and headers see [Security][security].
