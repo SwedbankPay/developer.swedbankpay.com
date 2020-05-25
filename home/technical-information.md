@@ -90,7 +90,11 @@ However, URIs that are used to create new resources can be stored or hard coded.
 Also, the URI of the generated resource can be stored on your end to `GET` it at a
 later point. Note that the URIs should be stored as opaque identifiers and
 should not be parsed or interpreted in any way.
-URIs that are returned as part of the `operations` in each response should not be stored.
+
+{% include alert.html type="warning" icon="warning" header="Operation URIs"
+body="URIs that are returned as part of the `operations` in each response should
+not be stored.." %}
+
 See the abbreviated example below where `psp/creditcard/payments` from the
 `POST` header is an example of the URI that can be stored, as it is used to
 create a new resource. Also, the `/psp/creditcard/payments/{{ page.payment_id}}`
