@@ -81,7 +81,7 @@ advice, your integration most assuredly will break when Swedbank Pay makes
 updates in the future.
 " %}
 
-### URIs that can be stored
+### Storing URIs
 
 URIs that are used to create new resources can be stored and hard coded.
 Also, the URI of the generated resource can be stored on your end to GET it at a
