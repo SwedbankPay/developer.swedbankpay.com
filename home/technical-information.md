@@ -86,7 +86,7 @@ updates in the future.
 {% include alert.html type="success" icon="link" header="Storing URIs" body="In
 general, URIs should be **discovered** in responses to previous requets, **not
 stored**." %}
-URIs that are used to create new resources can be stored and hard coded.
+However, URIs that are used to create new resources can be stored or hard coded.
 Also, the URI of the generated resource can be stored on your end to `GET` it at a
 later point. Note that the URIs should be stored as opaque identifiers and
 should not be parsed or interpreted in any way.
