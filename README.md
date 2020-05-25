@@ -29,13 +29,14 @@ follow our standards.
 ## Usage
 
 To view this website, browse to [developer.swedbankpay.com][swp-dp]. If you'd
-like to host it locally on your computer, you have to options;
+like to host it locally on your computer, you have two options;
 [docker][docker], or [manual][manual-install] install.
+The Docker installation is the one we recommend to use for its simplicity.
 
 ### Docker
 
 1. Install [docker][docker-install] for your operating system.
-2. Run `docker-compose up --build`
+2. Run `docker-compose up`
 
 ### Manual install
 
