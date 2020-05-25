@@ -24,8 +24,8 @@ system. It's ment to simplify external integration for prepaid gift cards.
 ## Prerequisites
 
 * An agreement which includes Swedbank Pay Payments.
-* Credentials (Merchant Access Token) from Swedbank Pay retrieved from Swedbank
-  Pay Admin.
+* Gift Card Credentials from Swedbank Pay retrieved from the Swedbank Pay Admin
+* (VAS CAM).
 
 ## Implementation
 
