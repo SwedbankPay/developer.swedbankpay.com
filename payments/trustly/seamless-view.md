@@ -10,10 +10,6 @@ sidebar:
       title: Redirect
     - url: /payments/trustly/seamless-view
       title: Seamless View
-    - url: /payments/trustly/direct
-      title: Direct
-    - url: /payments/trustly/capture
-      title: Capture
     - url: /payments/trustly/after-payment
       title: After Payment
     - url: /payments/trustly/other-features
