@@ -23,92 +23,17 @@ GET request on the payment resource, which contains the paymentID generated in
 the first step, to receive the state of the transaction. You will also be able
 to see the available operations after posting a payment.
 
-{% include payment-resource.md api_resource="invoice" documentation_section="invoice" %}
+{% include payment-resource.md api_resource="trustly" documentation_section="trustly" %}
 
 * **Abort:** It is possible to abort the process if the payment has no
   successful transactions. [See the `abort`
   description][abort-description].
-* An invoice authorization must be followed by a `capture` or
-  `cancel` request.
 * For reversals, you will need to implement the `reversal` request.
 * **If CallbackURL is set:** Whenever changes to the payment occur a [Callback
   request][callback-request] will be posted to the callbackUrl, which was
   generated when the payment was created.
 
-{% include abort-reference.md instrument="invoice" %}
-
-### Cancellations
-
-#### Create cancel transaction
-
-Perform the `create-cancellation` operation to cancel a previously authorized
-or partially captured invoice payment.
-
-{:.code-header}
-***Request***
-
-```http
-POST /psp/invoice/payments/{{ page.payment_id }}/cancellations HTTP/1.1
-Host: {{ page.api_host }}
-Authorization: Bearer <AccessToken>
-Content-Type: application/json
-
-{
-    "transaction": {
-        "activity": "FinancingConsumer",
-        "payeeReference": "customer order reference-unique",
-        "description": "description for transaction"
-    }
-}
-```
-
-{:.table .table-striped}
-|     Required     | Parameter name               | Datatype     | Value (with description)                                                                                                                                                                                                              |
-| :--------------: | :--------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| {% icon check %}︎ | `transaction.activity`       | `string`     | `FinancingConsumer`.                                                                                                                                                                                                                  |
-| {% icon check %}︎ | `transaction.payeeReference` | `string`     | The `payeeReference` is the receipt/invoice number, which is a **unique** reference with max 50 characters set by the merchant system. This must be unique for each operation and must follow the regex pattern `[\w]* (a-zA-Z0-9_)`. |
-| {% icon check %}︎ | `transaction.description`    | `string(50)` | A textual description for the cancellation.                                                                                                                                                                                           |
-
-The `cancel` resource will be returned, containing information about the
-newly created `cancel` transaction.
-
-{% include transaction-response.md api_resource="invoice"
-documentation_section="invoice" transaction="cancel" %}
-
-### Inspecting the Cancellation
-
-The `cancellations` resource lists the cancellation transaction made on a
-specific payment.
-
-{:.code-header}
-**Request**
-
-```http
-Request
-GET /psp/invoice/payments/{{ page.payment_id }}/cancellations HTTP/1.1
-Host: {{ page.api_host }}
-Authorization: Bearer <AccessToken>
-Content-Type: application/json
-```
-
-{% include transaction-list-response.md api_resource="invoice"
-documentation_section="invoice" transaction="cancel" %}
-
-#### Cancel Sequence
-
-A `cancel` can only be performed on a successfully authorized transaction which
-has not been captured yet. If you perform a cancellation after doing a partial
-capture, you will only cancel the remaining authorized amount.
-
-```mermaid
-sequenceDiagram
-Merchant->>PayEx: Post <Invoice cancellations>
-activate Merchant
-activate PayEx
-PayEx-->>Merchant: transaction resource
-deactivate Merchant
-deactivate PayEx
-```
+{% include abort-reference.md instrument="trustly" %}
 
 ### Reversals
 
@@ -123,14 +48,14 @@ follows:
 **Request**
 
 ```http
-POST /psp/invoice/payments/{{ page.payment_id }}/reversals HTTP/1.1
+POST /psp/trustly/payments/{{ page.payment_id }}/reversals HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
     "transaction": {
-        "activity": "FinancingConsumer",
+        "activity": "Sale",
         "amount": 1500,
         "vatAmount": 0,
         "payeeReference": "ABC856",
@@ -156,8 +81,8 @@ Content-Type: application/json
 
 The `reversal` resource will be returned, containing information about the newly created reversal transaction.
 
-{% include transaction-response.md api_resource="invoice"
-documentation_section="invoice" transaction="reversal" %}
+{% include transaction-response.md api_resource="trustly"
+documentation_section="trustly" transaction="reversal" %}
 
 ### Inspecting the Reversal
 
@@ -168,22 +93,21 @@ The `reversals` resource will list the reversal transactions
 ***Request***
 
 ```http
-GET /psp/invoice/payments/{{ page.payment_id }}/reversals HTTP/1.1
+GET /psp/trustly/payments/{{ page.payment_id }}/reversals HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{% include transaction-list-response.md api_resource="invoice" documentation_section="invoice" transaction="reversal" %}
+{% include transaction-list-response.md api_resource="trustly" documentation_section="trustly" transaction="reversal" %}
 
 #### Reversal Sequence
 
-`Reversal` can only be done on an captured transaction where there are
-some captured amount not yet reversed.
+`Reversal` can only be done on completed Sales transactions.
 
 ```mermaid
 sequenceDiagram
-    Merchant->>PayEx: Post <Invoice reversals>
+    Merchant->>PayEx: Post <Trustly reversals>
     activate Merchant
     activate PayEx
     PayEx-->>Merchant: transaction resource
@@ -196,8 +120,8 @@ next_href="other-features" next_title="Next: Other Features" %}
 
 ----------------------------------------------------------
 [abort-description]: #abort
-[callback-request]: /payments/invoice/other-features#callback
-[invoice-captures]: #captures
-[invoice-cancellations]: #cancellations
-[invoice-reversals]: #reversals
-[other-features-transaction]: /payments/invoice/other-features#transactions
+[callback-request]: /payments/trustly/other-features#callback
+[trustly-captures]: #captures
+[trustly-cancellations]: #cancellations
+[trustly-reversals]: #reversals
+[other-features-transaction]: /payments/trustly/other-features#transactions
