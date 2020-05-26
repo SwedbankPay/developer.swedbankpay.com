@@ -28,7 +28,7 @@ sidebar:
   `paymentID`. You will receive a **redirect URL** to a Swedbank Pay payment
   page.
 * You need to redirect the payer's browser to that specified URL so that the
-  payer can enter the credit card details in a secure Swedbank Pay environment.
+  payer can enter the invoice details in a secure Swedbank Pay environment.
 * Swedbank Pay will redirect the payer's browser to - one of two specified URLs,
   depending on whether the payment session is followed through completely or
   cancelled beforehand. Please note that both a successful and rejected payment
