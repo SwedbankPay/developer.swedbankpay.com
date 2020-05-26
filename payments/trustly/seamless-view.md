@@ -28,7 +28,7 @@ payment pages seamlessly integrated in an `iframe` on your website. The costumer
 does not need to leave your webpage, since we are handling the payment in the
 `iframe` on your page.
 
-![screenshot of the Trustly payment window][trustly-payment]{:height="425px" width="700px"}
+![screenshot of the Trustly payment window][trustly-payment-embedded-view]{:height="425px" width="700px"}
 
 {% include alert-callback-url.md api_resource="trustly" %}
 
@@ -287,7 +287,7 @@ next_href="direct" next_title="Next: Direct" %}
 [create-payment]: /payments/trustly/other-features#create-payment
 [fi-png]: /assets/img/flag-finland.png
 [financing-consumer]: /payments/trustly/other-features#financing-consumer
-[trustly-payment]: /assets/img/checkout/trustly-seamless-view.png
+[trustly-payment-embedded-view]: /assets/screenshots/trustly/consumer-information-view.png
 [no-png]: /assets/img/flag-norway.png
 [payee-reference]: /payments/trustly/other-features#payee-reference
 [price-resource]: /payments/trustly/other-features#prices
