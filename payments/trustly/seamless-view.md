@@ -1,8 +1,8 @@
 ---
-title: Swedbank Pay Invoice Payments
+title: Swedbank Pay Trustly Payments
 sidebar:
   navigation:
-  - title: Invoice Payments
+  - title: Trustly Payments
     items:
     - url: /payments/trustly
       title: Introduction
@@ -17,7 +17,7 @@ sidebar:
 ---
 
 {% include jumbotron.html body="The Seamless View scenario represents the
-                                opportunity to implement Invoice directly in
+                                opportunity to implement Trustly directly in
                                 your webshop." %}
 
 ## Introduction
@@ -28,103 +28,102 @@ payment pages seamlessly integrated in an `iframe` on your website. The costumer
 does not need to leave your webpage, since we are handling the payment in the
 `iframe` on your page.
 
-![screenshot of the invoice payment window][invoice-payment]{:height="425px" width="700px"}
+![screenshot of the Trustly payment window][trustly-payment]{:height="425px" width="700px"}
 
-{% include alert-callback-url.md api_resource="invoice" %}
+{% include alert-callback-url.md api_resource="trustly" %}
 
 ## Step 1: Create the payment
 
-A `FinancingConsumer` payment is a straightforward way to invoice a
-payer. It is followed up by posting a capture, cancellation or reversal
+A Trustly payment is a straightforward way to perform a direct-bank payment. It is followed up by posting a capture, cancellation or reversal
 transaction.
 
 An example of an abbreviated `POST` request is provided below. Each individual field of the JSON document is described in the following section.
 An example of an expanded `POST` request is available in the
-[other features section][financing-consumer].
+[other features section].
 
 When properly set up in your merchant/webshop site and the payer starts the
-invoice process, you need to make a POST request towards Swedbank Pay with your
-invoice information. This will generate a payment object with a unique
+payment process, you need to make a POST request towards Swedbank Pay with your
+payment information. This will generate a payment object with a unique
 `paymentID`. You will receive a **JavaScript source** in response.
 
 {:.code-header}
 **Request**
 
 ```http
-POST /psp/invoice/payments HTTP/1.1
+POST /psp/trustly/payments HTTP/1.1
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
     "payment": {
-        "operation": "FinancingConsumer",
+        "operation": "Purchase",
         "intent": "Authorization",
         "currency": "SEK",
         "prices": [
             {
-                "type": "Invoice",
-                "amount": 4201,
+                "type": "Trustly",
+                "amount": 1500,
                 "vatAmount": 0
             }
         ],
-        "description": "Test Invoice",
+        "description": "Test Purchase",
+        "payerReference": "SomeReference",
         "userAgent": "Mozilla/5.0...",
-        "generatePaymentToken": false,
-        "generateRecurrenceToken": false,
-        "paymentToken": ""
         "language": "sv-SE",
         "urls": {
-            "hosturls": [
-                "https://example.com"
-            ],
             "completeUrl": "https://example.com/payment-completed",
             "cancelUrl": "https://example.com/payment-canceled",
             "callbackUrl": "https://example.com/payment-callback",
-            "termsOfServiceUrl": "https://example.com/payment-terms.pdf"
+            "logoUrl": "https://example.com/logo.png",
+            "termsOfServiceUrl": "https://example.com/terms.pdf"
         },
         "payeeInfo": {
             "payeeId": "{{ page.merchant_id }}",
-            "payeeReference": "CD1234",
+            "payeeReference": "PR123",
             "payeeName": "Merchant1",
-            "productCategory": "A123"
+            "productCategory": "PC1234",
+            "subsite": "MySubsite"
+        },
+        "prefillInfo": {
+            "firstName": "Ola",
+            "lastName": "Nordmann"
         }
-    },
-    "invoice": {
-        "invoiceType": "PayExFinancingSe"
     }
 }
 ```
 
 {:.table .table-striped}
-|     Required     | Field                             | Type          | Description                                                                                                                                                                                                                                                                                                                                    |
-| :--------------: | :-------------------------------- | :------------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| {% icon check %} | `payment`                         | `object`      | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                                                                          |
-| {% icon check %} | └➔&nbsp;`operation`               | `string`      | The operation that the `payment` is supposed to perform. The [`FinancingConsumer`][financing-consumer] operation is used in our example. Take a look at the [create `payment` section][create-payment] for a full examples of the following `operation` options: [FinancingConsumer][financing-consumer], [Recur][recur], and [Verify][verify] |
-| {% icon check %} | └➔&nbsp;`intent`                  | `string`      | `Authorization`. Reserves the amount, and is followed by a [cancellation][cancel] or [capture][capture] of funds.                                                                                                                                                                                                                              |
-| {% icon check %} | └➔&nbsp;`currency`                | `string`      | NOK or SEK.                                                                                                                                                                                                                                                                                                                                    |
-| {% icon check %} | └➔&nbsp;`prices`                  | `object`      | The `prices` resource lists the prices related to a specific payment.                                                                                                                                                                                                                                                                          |
-| {% icon check %} | └─➔&nbsp;`type`                   | `string`      | Use the invoice value [See the Prices resource and prices object types for more information][price-resource].                                                                                                                                                                                                                                  |
-| {% icon check %} | └─➔&nbsp;`amount`                 | `integer`     | {% include field-description-amount.md %}                                                                                                                                                                                                                                                                                                      |
-| {% icon check %} | └─➔&nbsp;`vatAmount`              | `integer`     | {% include field-description-vatamount.md %}                                                                                                                                                                                                                                                                                                   |
-| {% icon check %} | └➔&nbsp;`description`             | `string(40)`  | {% include field-description-description.md documentation_section="invoice" %}                                                                                                                                                                                                                                                                    |
-|                  | └➔&nbsp;`payerReference`          | `string`      | The reference to the payer (consumer/end user) from the merchant system. E.g mobile number, customer number etc.                                                                                                                                                                                                                               |
-|                  | └➔&nbsp;`generatePaymentToken`    | `boolean`     | `true` or `false`. Set this to `true` if you want to create a paymentToken for future use as One Click.                                                                                                                                                                                                                                        |
-|                  | └➔&nbsp;`generateRecurrenceToken` | `boolean`     | `true` or `false`. Set this to `true` if you want to create a recurrenceToken for future use Recurring purchases (subscription payments).                                                                                                                                                                                                      |
-| {% icon check %} | └➔&nbsp;`userAgent`               | `string`      | The user agent reference of the consumer's browser - [see user agent definition][user-agent-definition]                                                                                                                                                                                                                                        |
-| {% icon check %} | └➔&nbsp;`language`                | `string`      | {% include field-description-language.md api_resource="invoice" %}                                                                                                                                                                                                                                                                                                                   |
-| {% icon check %} | └➔&nbsp;`urls`|`object`| The`urls`resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                                                                         |
-|                  | └─➔&nbsp;`hostUrls`|`array`| The array of URLs valid for embedding of Swedbank Pay Hosted Views. If not supplied, view-operation will not be available.                                                                                                                                                                                                                     |
-| {% icon check %} | └─➔&nbsp;`completeUrl`|`string`| The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A`GET`request needs to be performed on the payment to inspect it further.                                             |
-|                  | └─➔&nbsp;`cancelUrl`|`string`| The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with`paymentUrl`; only cancelUrl or`paymentUrl`can be used, not both.                                                                                                                                          |
-|                  | └─➔&nbsp;`callbackUrl`|`string`| The URL that Swedbank Pay will perform an HTTP POST against every time a transaction is created on the payment. See [callback][callback] for details.                                                                                                                                                                                          |
-|                  | └─➔&nbsp;`termsOfServiceUrl`|`string`| {% include field-description-termsofserviceurl.md %}                                                                                                                                                                                                                                                                                           |
-| {% icon check %} | └➔&nbsp;`payeeInfo`|`object`| The`payeeInfo`contains information about the payee.                                                                                                                                                                                                                                                                                          |
-| {% icon check %} | └─➔&nbsp;`payeeId`|`string`| This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                                                                                                                                                          |
-| {% icon check %} | └─➔&nbsp;`payeeReference`|`string(30*)`| A unique reference from the merchant system, which is used as a receipt/invoice number in Invoice Payments. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [`payeeReference`][payee-reference] for details.                                                                                      |
-|                  | └─➔&nbsp;`payeeName`|`string`| The payee name (like merchant name) that will be displayed to consumer when redirected to Swedbank Pay.                                                                                                                                                                                                                                        |
-|                  | └─➔&nbsp;`productCategory`|`string`| A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                                                                 |
-|                  | └─➔&nbsp;`orderReference`|`String(50)`| The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                                                        |
-| {% icon check %} | └─➔&nbsp;`invoiceType`|`String`      | `PayExFinancingSe`, `PayExFinancingNo` or `PayExFinancingFi` depending on which country you're doing business with Swedbank Pay in. (Other external financing partner names must be agreed upon with Swedbank Pay.)                                                                                                                                         |
+|     Required     | Field                             | Type          | Description                                                                                                                                                                                                                                                                                                           |
+| :--------------: | :-------------------------------- | :------------ | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| {% icon check %} | `payment`                         | `object`      | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                                                 |
+| {% icon check %} | └➔&nbsp;`operation`               | `string`      | The operation that the `payment` is supposed to perform. For Trustly, this will always be `Purchase` as it is currently the only available operation. |
+| {% icon check %} | └➔&nbsp;`intent`                  | `string`      | `Sale` is the only intent option for Trustly. Performs the payment when the end-user gets redirected and completes the payment, and is followed by a [cancellation][cancel] or [capture][capture] of funds.                                                                                                                                                               |
+| {% icon check %} | └➔&nbsp;`currency`                | `string`      | NOK, SEK, DKK, USD or EUR.                                                                                                                                                                                                                                                                                            |
+| {% icon check %} | └➔&nbsp;`prices`                  | `object`      | The `prices` resource lists the prices related to a specific payment.                                                                                                                                                                                                                                                 |
+| {% icon check %} | └─➔&nbsp;`type`                   | `string`      | Use the `Trustly` type here                                                                                                                                                                                                                                                                                           |
+| {% icon check %} | └─➔&nbsp;`amount`                 | `integer`     | {% include field-description-amount.md %}                                                                                                                                                                                                                                                                             |
+| {% icon check %} | └─➔&nbsp;`vatAmount`              | `integer`     | {% include field-description-vatamount.md %}                                                                                                                                                                                                                                                                          |
+| {% icon check %} | └➔&nbsp;`description`             | `string(40)`  | {% include field-description-description.md documentation_section="trustly" %}                                                                                                                                                                                                                                           |
+|                  | └➔&nbsp;`payerReference`          | `string`      | The reference to the payer (consumer/end user) from the merchant system. E.g mobile number, customer number etc.                                                                                                                                                                                                      |
+| {% icon check %} | └➔&nbsp;`userAgent`               | `string`      | The user agent reference of the consumer's browser - [see user agent definition][user-agent-definition]                                                                                                                                                                                                               |
+| {% icon check %} | └➔&nbsp;`language`                | `string`      | {% include field-description-language.md api_resource="trustly" %}                                                                                                                                                                                                                                                                                          |
+| {% icon check %} | └➔&nbsp;`urls`                    | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                                                |
+|                  | └─➔&nbsp;`hostUrl`                | `array`       | The array of URLs valid for embedding of Swedbank Pay Hosted Views. If not supplied, view-operation will not be available.                                                                                                                                                                                            |
+| {% icon check %} | └─➔&nbsp;`completeUrl`            | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further.                    |
+|                  | └─➔&nbsp;`cancelUrl`              | `string`      | The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only `cancelUrl` or `paymentUrl` can be used, not both.                                                                                                               |
+|                  | └─➔&nbsp;`callbackUrl`            | `string`      | The URL that Swedbank Pay will perform an HTTP `POST` against every time a transaction is created on the payment. See [callback][callback] for details.                                                                                                                                                               |
+|                  | └─➔&nbsp;`logoUrl`                | `string`      | The URL that will be used for showing the customer logo. Must be a picture with maximum 50px height and 400px width. Require https.                                                                                                                                                                                   |
+|                  | └─➔&nbsp;`termsOfServiceUrl`      | `string`      | {% include field-description-termsofserviceurl.md %}                                                                                                                                                                                                                                                                  |
+| {% icon check %} | └➔&nbsp;`payeeInfo`               | `object`      | The `payeeInfo` contains information about the payee.                                                                                                                                                                                                                                                                 |
+| {% icon check %} | └─➔&nbsp;`payeeId`                | `string`      | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                                                                                                                                 |
+| {% icon check %} | └─➔&nbsp;`payeeReference`         | `string(30*)` | A unique reference from the merchant system, which is used as a receipt/invoice number in Trustly Payments. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [`payeeReference`][payee-reference] for details.                                                             |
+|                  | └─➔&nbsp;`payeeName`              | `string`      | The payee name (like merchant name) that will be displayed to consumer when redirected to Swedbank Pay.                                                                                                                                                                                                               |
+|                  | └─➔&nbsp;`productCategory`        | `string`      | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                                        |
+|                  | └─➔&nbsp;`orderReference`         | `String(50)`  | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                               |
+|                  | └─➔&nbsp;`subsite`                | `String(40)`  | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.                                                                                                                                                           |
+|                  | └─➔&nbsp;`prefillInfo`            | `object`      | Object representing information of what the UI text fields should be populated with                                                                                                                                                                                                                                   |
+|                  | └─➔&nbsp;`firstName`              | `string`      | Prefilled value to put in the first name text box.                                                                                                                                                                                                                                                                    |
+|                  | └─➔&nbsp;`lastName`               | `string`      | Prefilled value to put in the last name text box.                                                                                                                                                                                                                                                                     |
 
 {:.code-header}
 **Response**
@@ -135,69 +134,61 @@ Content-Type: application/json
 
 {
     "payment": {
-        "id": "/psp/invoice/payments/{{ page.payment_id }}",
-        "number": 1234567890,
-        "instrument": "Invoice",
-        "created": "YYYY-MM-DDThh:mm:ssZ",
-        "updated": "YYYY-MM-DDThh:mm:ssZ",
-        "operation": "FinancingConsumer",
-        "intent": "Authorization",
+        "id": "/psp/trustly/payments/{{ page.payment_id }}",
+        "number": 99590008046,
+        "created": "2020-05-26T12:31:19.3106483Z",
+        "updated": "2020-05-26T12:31:19.4513673Z",
+        "instrument": "Trustly",
+        "operation": "Purchase",
+        "intent": "Sale",
         "state": "Ready",
         "currency": "SEK",
         "prices": {
-            "id": "/psp/invoice/payments/{{ page.payment_id }}/prices"
+            "id": "/psp/trustly/payments/{{ page.payment_id }}/prices"
         },
         "amount": 0,
         "description": "Test Purchase",
-        "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
+        "payerReference": "SomeReference",
+        "initiatingSystemUserAgent": "PostmanRuntime/7.25.0",
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "urls": {
-            "id": "/psp/invoice/payments/{{ page.payment_id }}/urls"
+            "id": "/psp/trustly/payments/{{ page.payment_id }}/urls"
         },
         "payeeInfo": {
-            "id": "/psp/invoice/payments/{{ page.payment_id }}/payeeinfo"
+            "id": "/psp/trustly/payments/{{ page.payment_id }}/payeeinfo"
         },
         "metadata": {
-            "id": "/psp/invoice/payments/{{ page.payment_id }}/metadata"
+            "id": "/psp/trustly/payments/{{ page.payment_id }}/metadata"
         }
     },
     "operations": [
         {
-            "method": "POST",
-            "href": "{{ page.api_url }}/psp/invoice/payments/{{ page.payment_id }}/approvedlegaladdress",
-            "rel": "create-approved-legal-address",
-            "contentType": "application/json"
-        },
-        {
-            "method": "POST",
-            "href": "{{ page.api_url }}/psp/invoice/payments/{{ page.payment_id }}/authorizations",
-            "rel": "create-authorization",
-            "contentType": "application/json"
-        },
-        {
             "method": "PATCH",
-            "href": "{{ page.api_url }}/psp/invoice/payments/{{ page.payment_id }}",
-            "rel": "update-payment-abort",
-            "contentType": "application/json"
+            "href": "{{ page.api_url }}/psp/trustly/payments/{{ page.payment_id }}",
+            "rel": "update-payment-abort"
+        },
+        {
+            "method": "POST",
+            "href": "{{ page.api_url }}/psp/trustly/payments/{{ page.payment_id }}/sales",
+            "rel": "create-sale"
         },
         {
             "method": "GET",
-            "href": "{{ page.front_end_url }}/invoice/payments/authorize/{{ page.payment_token }}",
-            "rel": "redirect-authorization",
-            "contentType": "text/html"
+            "href": "https://ecom.externalintegration.payex.com/trustly/payments/sales/8f3ba6c8f4e3f6125ae6c18bec15c612747cf2c35dc5cac35d4bebc10cf7317e",
+            "rel": "redirect-sale"
         },
         {
             "method": "GET",
-            "href": "{{ page.front_end_url }}/invoice/core/scripts/client/px.invoice.client.js?{{ page.payment_token }}&operation=authorize",
-            "rel": "view-authorization",
+            "href": "https://ecom.externalintegration.payex.com/trustly/core/scripts/client/px.trustly.client.js?token=8f3ba6c8f4e3f6125ae6c18bec15c612747cf2c35dc5cac35d4bebc10cf7317e&operation=sale",
+            "rel": "view-sales",
             "contentType": "application/javascript"
         }
     ]
 }
 ```
 
-The key information in the response is the `view-authorization` operation. You
+The key information in the response is the `view-sales` operation. You
 will need to embed its `href` in a `<script>` element. The script will enable
 loading the payment page in an `iframe` in our next step.
 
@@ -213,7 +204,7 @@ hosted environment. A simplified integration has these following steps:
    obtained in the `POST` request in the `<script>` element. Example:
 
 ```html
-    <script id="payment-page-script" src="https://ecom.dev.payex.com/invoice/core/ scripts/client/px.invoice.client.js"></script>
+    <script id="payment-page-script" src="https://ecom.externalintegration.payex.com/trustly/core/ scripts/client/px.trustly.client.js"></script>
 ```
 
 The previous two steps gives this HTML:
@@ -231,7 +222,7 @@ The previous two steps gives this HTML:
     </head>
     <body>
         <div id="swedbank-pay-seamless-view-page">
-          <script id="payment-page-script" src="https://ecom.dev.payex.com/invoice/core/scripts/client/px.invoice.client.js"></script>
+          <script id="payment-page-script" src="https://ecom.externalintegration.payex.com/trustly/core/scripts/client/px.trustly.client.js"></script>
         </div>
     </body>
 </html>
@@ -245,7 +236,7 @@ embedded on your website.
 
 ```js
 <script language="javascript">
-    payex.hostedView.invoice({
+    payex.hostedView.trustly({
         // The container specifies which id the script will look for to host the
         // iframe component.
         container: "swedbank-pay-seamless-view-page"
@@ -256,57 +247,52 @@ embedded on your website.
 ## Purchase Flow
 
 The sequence diagram below shows a high level description of the
-invoice process.
+Trustly payment process.
 
 ```mermaid
 sequenceDiagram
     Consumer->>Merchant: Start purchase
     activate Merchant
     note left of Merchant: First API request
-    Merchant->>-SwedbankPay: POST /psp/invoice/payments ①
+    Merchant->>-SwedbankPay: POST /psp/invoice/payments
     activate SwedbankPay
-    SwedbankPay-->>-Merchant: rel: view-authorization ②
+    SwedbankPay-->>-Merchant: rel: view-authorization
     activate Merchant
     Merchant-->>-Consumer: Display all details and final price
     activate Consumer
     note left of Consumer: Open iframe ③
-    Consumer->>Consumer: Input email and mobile number
-    Consumer->>-Merchant: Confirm purchase
+    Consumer->>Consumer: Input first name and last name
+    Consumer->>-SwedbankPay: Confirm purchase
+    activate SwedbankPay
+    SwedbankPay->>-Trustly: Perform payment
+    activate Trustly
+    Trustly-->>-Merchant: Transaction result
     activate Merchant
     note left of Merchant: Second API request
-    Merchant->>-SwedbankPay: Post psp/invoice/authorization ④
-    activate SwedbankPay
-    SwedbankPay-->>-Merchant: Transaction result
-    activate Merchant
-    note left of Merchant: Third API request
-    Merchant->>-SwedbankPay: GET <payment.id> ⑤
+    Merchant->>-SwedbankPay: GET <payment.id>
     activate SwedbankPay
     SwedbankPay-->>-Merchant: payment resource
     activate Merchant
     Merchant-->>-Consumer: Display result
 ```
 
-{% include alert.html type="informative" icon="info" body="
-Note that the invoice will not be created/distributed before you have
-made a `capture` request." %}
-
 {% include iterator.html prev_href="redirect" prev_title="Back: Redirect"
 next_href="direct" next_title="Next: Direct" %}
 
-[after-payment]: /payments/invoice/after-payment
-[authorize]: /payments/invoice/other-features#authorizations
-[callback]: /payments/invoice/other-features#callback
-[cancel]: /payments/invoice/after-payment#cancellations
-[capture]: /payments/invoice/capture
-[create-payment]: /payments/invoice/other-features#create-payment
+[after-payment]: /payments/trustly/after-payment
+[authorize]: /payments/trustly/other-features#authorizations
+[callback]: /payments/trustly/other-features#callback
+[cancel]: /payments/trustly/after-payment#cancellations
+[capture]: /payments/trustly/capture
+[create-payment]: /payments/trustly/other-features#create-payment
 [fi-png]: /assets/img/flag-finland.png
-[financing-consumer]: /payments/invoice/other-features#financing-consumer
-[invoice-payment]: /assets/img/checkout/invoice-seamless-view.png
+[financing-consumer]: /payments/trustly/other-features#financing-consumer
+[trustly-payment]: /assets/img/checkout/trustly-seamless-view.png
 [no-png]: /assets/img/flag-norway.png
-[payee-reference]: /payments/invoice/other-features#payee-reference
-[price-resource]: /payments/invoice/other-features#prices
-[recur]: /payments/invoice/other-features#recur
+[payee-reference]: /payments/trustly/other-features#payee-reference
+[price-resource]: /payments/trustly/other-features#prices
+[recur]: /payments/trustly/other-features#recur
 [se-png]: /assets/img/flag-sweden.png
 [setup-mail]: mailto:setup.ecom@PayEx.com
 [user-agent-definition]: https://en.wikipedia.org/wiki/User_agent
-[verify]: /payments/invoice/other-features#verify
+[verify]: /payments/trustly/other-features#verify

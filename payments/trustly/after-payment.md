@@ -1,8 +1,8 @@
 ---
-title: Swedbank Pay Invoice Payments
+title: Swedbank Pay Trustly Payments
 sidebar:
   navigation:
-  - title: Invoice Payments
+  - title: Trustly Payments
     items:
     - url: /payments/trustly
       title: Introduction
