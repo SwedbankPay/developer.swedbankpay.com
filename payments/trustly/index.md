@@ -59,6 +59,14 @@ look at the respective sections. The sequence diagram below shows the two
 requests you have to send to Swedbank Pay to make a purchase. The diagram also
 shows the steps in a [sale][sale] process.
 
+The Trustly integration uses the Deposit call by performing a payment. After
+SwedbankPay perform a `Deposit` call https://trustly.com/en/developer/api#/deposit, the end-user will be presented with the returned IFrame URL in order to perform
+the payment with their prefered bank. Once the user has completed the payment,
+SwedbankPay will receive a notification asynchronously from Trustly, hence why
+the UI will initiate polling toward our back-end. The payment status after being
+redirect to `completeUrl` will then indicate if the payment was successful or
+not, or if the payment is still in progress.
+
 ```plantuml
 @startuml
 Actor EndUser
