@@ -19,9 +19,9 @@ sidebar:
 ## Options after posting a payment
 
 When you detect that the payer has reached your `completeUrl`, you need to do a
-GET request on the payment resource, which contains the paymentID generated in
-the first step, to receive the state of the transaction. You will also be able
-to see the available operations after posting a payment.
+`GET` request on the payment resource, which contains the `id` of the `payment`
+generated in the first step, to receive the state of the transaction. You will
+also be able to see the available `operations` after posting a payment.
 
 {% include payment-resource.md api_resource="trustly" documentation_section="trustly" %}
 
@@ -107,12 +107,12 @@ Content-Type: application/json
 
 ```mermaid
 sequenceDiagram
-    Merchant->>PayEx: Post <Trustly reversals>
+    Merchant->>SwedbankPay: Post <Trustly reversals>
     activate Merchant
-    activate PayEx
-    PayEx-->>Merchant: transaction resource
+    activate SwedbankPay
+    SwedbankPay-->>Merchant: transaction resource
     deactivate Merchant
-    deactivate PayEx
+    deactivate SwedbankPay
 ```
 
 {% include iterator.html prev_href="capture" prev_title="Back: Capture"
