@@ -54,7 +54,7 @@ Content-Type: application/json
 {
     "payment": {
         "operation": "Purchase",
-        "intent": "Authorization",
+        "intent": "Sale",
         "currency": "SEK",
         "prices": [
             {
