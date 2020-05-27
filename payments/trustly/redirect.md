@@ -20,8 +20,8 @@ sidebar:
 
 * When properly set up in your merchant/webshop site and the payer starts the
   purchase process, you need to make a `POST` request towards Swedbank Pay with
-  your Purchase information. This will generate a payment object with a unique
-  `paymentID`. You will receive a **redirect URL** to a Swedbank Pay payment
+  your Purchase information. This will generate a `payment` resource with a unique
+  `id`. You will receive a **redirect URL** to a Swedbank Pay payment
   page (`redirect-sale` operation).
 * You need to redirect the payer's browser to that specified URL so that the
   payer can enter the payment details in a secure Swedbank Pay environment.
@@ -31,7 +31,7 @@ sidebar:
   reach completion, in contrast to a cancelled payment.
 * When you detect that the payer reach your `completeUrl` , you need to do a
   `GET` request to receive the state of the transaction, containing the
-  `paymentID` generated in the first step, to receive the state of the
+  `id` URI generated in the first step, to receive the state of the
   transaction.
 
 ## Step 1: Create a payment

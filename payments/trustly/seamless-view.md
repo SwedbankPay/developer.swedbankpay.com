@@ -24,9 +24,9 @@ sidebar:
 
 Seamless View provides an integration of the payment process directly on your
 website. This solution offers a smooth shopping experience with Swedbank Pay
-payment pages seamlessly integrated in an `iframe` on your website. The costumer
+Payments seamlessly integrated in an `iframe` on your website. The payer
 does not need to leave your webpage, since we are handling the payment in the
-`iframe` on your page.
+`iframe` on your website.
 
 ![screenshot of the Trustly payment window][trustly-payment-embedded-view]{:height="425px" width="700px"}
 
@@ -43,8 +43,8 @@ An example of an expanded `POST` request is available in the
 
 When properly set up in your merchant/webshop site and the payer starts the
 payment process, you need to make a POST request towards Swedbank Pay with your
-payment information. This will generate a payment object with a unique
-`paymentID`. You will receive a **JavaScript source** in response.
+payment information. This will generate a `payment` resource with a unique
+`id` URI. You will receive a **JavaScript source** in response.
 
 {:.code-header}
 **Request**
@@ -194,7 +194,7 @@ loading the payment page in an `iframe` in our next step.
 
 ## Step 2: Display the Payment
 
-You need to embed the script source on your site to create a hosted-view in an
+You need to embed the script source on your site to create a Seamless View in an
 `iframe`; so that the payer can enter the payment details in a secure Swedbank Pay
 hosted environment. A simplified integration has these following steps:
 
