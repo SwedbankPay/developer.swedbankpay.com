@@ -37,9 +37,10 @@ does not need to leave your webpage, since we are handling the payment in the
 A Trustly payment is a straightforward way to perform a direct-bank payment. It can be followed up by posting a cancellation or reversal
 transaction.
 
-An example of an abbreviated `POST` request is provided below. Each individual field of the JSON document is described in the following section.
-An example of an expanded `POST` request is available in the
-[other features section].
+An example of an abbreviated `POST` request is provided below.
+Each individual field of the JSON document is described in the following section.
+An example of an expanded `POST` request is available in [Payment resource]
+[payment-resource].
 
 When properly set up in your merchant/webshop site and the payer starts the
 payment process, you need to make a `POST` request towards Swedbank Pay with your
@@ -294,6 +295,7 @@ next_href="after-payment" next_title="Next: After Payment" %}
 [trustly-payment-embedded-view]: /assets/screenshots/trustly/consumer-information-input.png
 [no-png]: /assets/img/flag-norway.png
 [payee-reference]: /payments/trustly/other-features#payee-reference
+[payment-resource]: /payments/trustly/other-features#payment-resource
 [price-resource]: /payments/trustly/other-features#prices
 [recur]: /payments/trustly/other-features#recur
 [se-png]: /assets/img/flag-sweden.png

@@ -47,8 +47,6 @@ document is described in the following section.
 
 {% include complete-url.md %}
 
-## Description
-
 {% include description.md %}
 
 {% include recur.md %}

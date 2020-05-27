@@ -536,8 +536,6 @@ documentation_section="invoice" %}
 
 {% include complete-url.md %}
 
-## Description
-
 {% include description.md %}
 
 {% include payee-info.md api_resource="invoice" %}

@@ -532,8 +532,6 @@ The response will be the `payment` resource with its `state` set to `Aborted`.
 
 {% include payment-link.md %}
 
-## Description
-
 {% include description.md %}
 
 {% include callback-reference.md api_resource="mobilepay" %}
