@@ -50,7 +50,7 @@ The API requests are displayed in the sales flow below.
 
 ## Languages
 
-Trustly is supported in Swedish.
+The displayed languages that we currently support is English (`en-us`), Norwegian (`nb-no`), Swedish (`sv-se`), and Finish (`fi-fi`).
 
 ## Trustly flow
 
