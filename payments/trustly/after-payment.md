@@ -30,7 +30,7 @@ also be able to see the available `operations` after posting a payment.
   description][abort-description].
 * For reversals, you will need to implement the `reversal` request.
 * **If CallbackURL is set:** Whenever changes to the payment occur a [Callback
-  request][callback-request] will be posted to the callbackUrl, which was
+  request][callback-request] will be posted to the `callbackUrl`, which was
   set when the payment was created.
 
 {% include abort-reference.md instrument="trustly" %}
