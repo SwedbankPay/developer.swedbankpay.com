@@ -34,7 +34,7 @@ showStatusOperations=true %}
 
 ## Create Payment
 
-Within the Trustly payments part of the eCommerce API, you can create one type of payment and you can inspect and alter the details of the
+In Trustly Payments, you can create one type of payment and you can inspect and alter the details of the
 individual transactions within the payment.
 
 To create a Trustly payment, you perform an HTTP `POST` against the `payments`
