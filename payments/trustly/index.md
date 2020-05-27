@@ -18,13 +18,13 @@ sidebar:
 
 {% include jumbotron.html body="**Trustly Payments** is one of the easiest
                                 payment service where Swedbank Pay helps improve
-                                cashflow by purchasing merchant invoices. Choose
+                                cashflow through direct bank payments. Choose
                                 between our **Redirect** and
                                 **Seamless view** integration options." %}
 
 {% include alert.html type="informative"
                       icon="cached"
-                      body="**Redirect** is the easiest way to implement Invoice
+                      body="**Redirect** is the easiest way to direct bank Invoice
                       Payments. Redirect will take your consumer to a Swedbank
                       Pay hosted payment page where they can perform a secure
                       transaction. The consumer will be redirected back to your
