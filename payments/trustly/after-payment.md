@@ -1,5 +1,5 @@
 ---
-title: Swedbank Pay Trustly Payments After Payment
+title: Swedbank Pay Trustly Payments – After Payment
 sidebar:
   navigation:
   - title: Trustly Payments
