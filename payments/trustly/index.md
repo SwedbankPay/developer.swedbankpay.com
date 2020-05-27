@@ -22,11 +22,11 @@ provide **Direct Bank** payments on your website. Choose between our
 
 {% include alert.html type="informative"
                       icon="cached"
-                      body="**Redirect** is the easiest way to perform
-                      payments. Redirect will take your consumer to a Swedbank
-                      Pay hosted payment page where they can perform a secure
-                      transaction. The consumer will be redirected back to your
-                      website after the completion of the payment." %}
+                      body="**Redirect** is the easiest way to do **Direct
+                      Bank** payments. Redirect will take the payer to a
+                      Swedbank Pay hosted payment page where they can perform a
+                      secure transaction. The consumer will be redirected back
+                      to your website after the completion of the payment." %}
 
 {% include alert.html type="informative" icon="branding_watermark"
                       body="**Seamless View** is our solution for a payment
@@ -39,11 +39,19 @@ provide **Direct Bank** payments on your website. Choose between our
 Prior to launching Trustly Payments at your site, make sure that
 you have done the following:
 
-1. Make sure that the payment option is displayed with a Trustly logo.
+1. Make sure that the payment option is displayed with a Trustly logo,
+   corresponding to the [Trustly Guidelines][trustly-guidelines].
 
-## API Requests
+{% include intent.md sale=true show_authorization=false %}
 
-The API requests are displayed in the sales flow below.
+### Payment Type
+
+Trustly is one of the instruments using one-phase payments. The `sale` is done
+when the consumer successfully confirms in the app, capturing the funds
+instantly. The `abort` operation is still available, but the `cancel` and
+`capture` operations are not. The `reversal`, if needed, is done by the
+merchant at a later time. Read more about the [different
+operations][after-payment] and the [payment resource][payment-resource].
 
 ## Languages
 
@@ -56,6 +64,7 @@ The displayed languages that we currently support is English (`en-us`), Norwegia
 [financing-consumer]: /payments/trustly/other-features#financing-consumer
 [no-png]: /assets/img/flag-norway.png
 [optional-features]: /payments/trustly/optional-features
+[payment-resource]: /payments/swish/other-features#payment-resource
 [recur]: /payments/trustly/other-features#recur
 [redirect]: /payments/trustly/redirect
 [purchase]: /payments/trustly/other-features#create-payment
@@ -63,4 +72,5 @@ The displayed languages that we currently support is English (`en-us`), Norwegia
 [setup-mail-finland]: mailto:verkkokauppa.setup@swedbankpay.fi
 [setup-mail-norway]: mailto:ehandelsetup@swedbankpay.no
 [setup-mail-sweden]: mailto:ehandelsetup@swedbankpay.se
+[trustly-guidelines]: https://trustly.com/en/developer/documents
 [verify]: /payments/trustly/other-features#verify

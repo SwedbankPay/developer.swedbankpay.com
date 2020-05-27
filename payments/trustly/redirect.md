@@ -183,7 +183,7 @@ look at the respective sections. The sequence diagram below shows the two
 requests you have to send to Swedbank Pay to make a purchase. The diagram also
 shows the steps in a [`sale`][sale] process.
 
-Swedbank Pay Trustly Payments uses the [`Deposit` call][deposit] to perform 
+Swedbank Pay Trustly Payments uses the [`Deposit` call][deposit] to perform
 a payment. After this, the end-user will be presented with the returned `iframe`
 URL in order to perform the payment with their prefered bank.
 Once the user has completed the payment, Swedbank Pay will receive a
@@ -237,17 +237,12 @@ Here you will also find info on `Cancel`, and `Reversal`.
 {% include iterator.html prev_href="./" prev_title="Back: Introduction"
 next_href="seamless-view" next_title="Next: Seamless View" %}
 
-
 [deposit]: https://trustly.com/en/developer/api#/deposit
 [after-payment]: /payments/trustly/after-payment
 [callback]: /payments/trustly/other-features#callback
 [cancel]: /payments/trustly/after-payment#cancellations
-[reversal]: /payments/trustly/reversals
-[fi-png]: /assets/img/flag-finland.png
-[financing-consumer]: /payments/trustly/other-features#financing-consumer
-[no-png]: /assets/img/flag-norway.png
+[reversal]: /payments/trustly/after-payment/reversals
 [payee-reference]: /payments/trustly/other-features#payeeinfo
 [recur]: /payments/trustly/other-features#recur
-[se-png]: /assets/img/flag-sweden.png
 [user-agent-definition]: https://en.wikipedia.org/wiki/User_agent
 [verify]: /payments/trustly/other-features#verify

@@ -35,9 +35,9 @@ also be able to see the available `operations` after posting a payment.
 
 {% include abort-reference.md instrument="trustly" %}
 
-### Reversals
+## Reversals
 
-#### Create reversal transaction
+### Create reversal transaction
 
 The `create-reversal` operation will reverse a previously captured payment and
 refund the amount to the consumer. To reverse a payment, perform the
@@ -99,7 +99,7 @@ Content-Type: application/json
 
 {% include transaction-list-response.md api_resource="trustly" documentation_section="trustly" transaction="reversal" %}
 
-#### Reversal Sequence
+### Reversal Sequence
 
 `Reversal` can only be done on completed Sales transactions.
 
