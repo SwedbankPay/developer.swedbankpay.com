@@ -40,8 +40,6 @@ Prior to launching Trustly Payments at your site, make sure that
 the payment option is displayed with a Trustly logo, corresponding
 to [Trustly's guidelines][trustly-guidelines].
 
-{% include intent.md show_authorization=false sale=true %}
-
 ## Payment Type
 
 Trustly is one of the instruments using one-phase payments. The `sale` is done
