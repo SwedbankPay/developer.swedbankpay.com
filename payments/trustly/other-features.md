@@ -1,5 +1,5 @@
 ---
-title: Swedbank Pay Trustly Payments Other Features
+title: Swedbank Pay Trustly Payments – Other Features
 sidebar:
   navigation:
   - title: Trustly Payments
