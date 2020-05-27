@@ -102,7 +102,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`userAgent`               | `string`      | The user agent reference of the consumer's browser - [see user agent definition][user-agent-definition]                                                                                                                                                                                                               |
 | {% icon check %} | └➔&nbsp;`language`                | `string`      | {% include field-description-language.md api_resource="trustly" %}                                                                                                                                                                                                                                                                                          |
 | {% icon check %} | └➔&nbsp;`urls`                    | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                                                |
-|                  | └─➔&nbsp;`hostUrl`                | `array`       | The array of URLs valid for embedding of Swedbank Pay Hosted Views. If not supplied, view-operation will not be available.                                                                                                                                                                                            |
+|                  | └─➔&nbsp;`hostUrl`                | `array`       | The array of URLs valid for embedding of Swedbank Pay Seamless View. If not supplied, view-operation will not be available.                                                                                                                                                                                            |
 | {% icon check %} | └─➔&nbsp;`completeUrl`            | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further.                    |
 |                  | └─➔&nbsp;`cancelUrl`              | `string`      | The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only `cancelUrl` or `paymentUrl` can be used, not both.                                                                                                               |
 |                  | └─➔&nbsp;`callbackUrl`            | `string`      | The URL that Swedbank Pay will perform an HTTP `POST` against every time a transaction is created on the payment. See [callback][callback] for details.                                                                                                                                                               |
@@ -178,9 +178,19 @@ Content-Type: application/json
 
 ## Trustly flow
 
-The sequence diagram below shows the two requests you have to send to Swedbank
-Pay to make a purchase.
-The diagram also shows the process of a complete purchase in high level.
+This is an example of the Redirect scenario. For other integrations, take a
+look at the respective sections. The sequence diagram below shows the two
+requests you have to send to Swedbank Pay to make a purchase. The diagram also
+shows the steps in a [`sale`][sale] process.
+
+Swedbank Pay Trustly Payments uses the [`Deposit` call][deposit] to perform 
+a payment. After this, the end-user will be presented with the returned `iframe`
+URL in order to perform the payment with their prefered bank.
+Once the user has completed the payment, Swedbank Pay will receive a
+notification asynchronously from Trustly, hence why
+the UI will initiate polling toward our back-end. The payment status after being
+redirect to `completeUrl` will then indicate if the payment was successful or
+not, or if the payment is still in progress.
 
 ```mermaid
 sequenceDiagram
@@ -225,7 +235,8 @@ Here you will also find info on `Cancel`, and `Reversal`.
 {% include iterator.html prev_href="./" prev_title="Back: Introduction"
 next_href="seamless-view" next_title="Next: Seamless View" %}
 
-[abort]: /payments/trustly/after-payment#abort
+
+[deposit]: https://trustly.com/en/developer/api#/deposit
 [after-payment]: /payments/trustly/after-payment
 [callback]: /payments/trustly/other-features#callback
 [cancel]: /payments/trustly/after-payment#cancellations
