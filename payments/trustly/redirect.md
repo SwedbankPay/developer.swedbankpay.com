@@ -1,5 +1,5 @@
 ---
-title: Swedbank Pay Trustly Payments
+title: Swedbank Pay Trustly Payments Redirect
 sidebar:
   navigation:
   - title: Trustly Payments
@@ -35,9 +35,6 @@ sidebar:
   transaction.
 
 ## Step 1: Create a payment
-
-* An Trustly payment is always one-phased based - you create an
-  `Authorize` transaction, that is followed by a `Capture` or `Cancel` request.
 
 {% include alert-callback-url.md api_resource="trustly" %}
 
@@ -187,19 +184,24 @@ The diagram also shows the process of a complete purchase in high level.
 
 ```mermaid
 sequenceDiagram
+    participant SwedbankPay as Swedbank Pay
+    participant Merchant
+    participant Consumer
+    participant Trustly
+
     Consumer->>Merchant: Start purchase
     activate Merchant
     note left of Merchant: First API request
-    Merchant->>-Swedbank Pay: POST <Trustly Payment> (operation=Purchase)
-    activate Swedbank Pay
-    Swedbank Pay-->>-Merchant: payment resource
+    Merchant->>-SwedbankPay: POST <Trustly Payment> (operation=Purchase)
+    activate SwedbankPay
+    SwedbankPay-->>-Merchant: payment resource
     activate Merchant
     Merchant-->>-Consumer: authorization page
     activate Consumer
     note left of Consumer: redirect to Swedbank Pay
-    Consumer->>-Swedbank Pay: enter consumer details
-    activate Swedbank Pay
-    Swedbank Pay-->-Trustly: perform payment in Trustly
+    Consumer->>-SwedbankPay: enter consumer details
+    activate SwedbankPay
+    SwedbankPay-->-Trustly: perform payment in Trustly
     activate Trustly
     Trustly-->>-Consumer: redirect to merchant
     activate Consumer
@@ -207,9 +209,9 @@ sequenceDiagram
     Consumer->>-Merchant: access merchant page
     activate Merchant
     note left of Merchant: Second API request
-    Merchant->>-Swedbank Pay: GET <Trustly payment>
-    activate Swedbank Pay
-    Swedbank Pay-->>-Merchant: payment resource
+    Merchant->>-SwedbankPay: GET <Trustly payment>
+    activate SwedbankPay
+    SwedbankPay-->>-Merchant: payment resource
     activate Merchant
     Merchant-->>-Consumer: display purchase result
 ```

@@ -24,8 +24,8 @@ sidebar:
 
 {% include alert.html type="informative"
                       icon="cached"
-                      body="**Redirect** is the easiest way to direct bank Invoice
-                      Payments. Redirect will take your consumer to a Swedbank
+                      body="**Redirect** is the easiest way to perform
+                      payments. Redirect will take your consumer to a Swedbank
                       Pay hosted payment page where they can perform a secure
                       transaction. The consumer will be redirected back to your
                       website after the completion of the payment." %}
@@ -37,7 +37,7 @@ sidebar:
                       The payment process will be executed in an `iframe` on
                       your page." %}
 
-### Important steps before you launch Swedbank Pay Invoice Payments at your website
+### Important steps before you launch Swedbank Pay Trustly Payments at your website
 
 Prior to launching Trustly Payments at your site, make sure that
 you have done the following:

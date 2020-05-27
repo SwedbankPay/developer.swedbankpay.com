@@ -1,5 +1,5 @@
 ---
-title: Swedbank Pay Trustly Payments
+title: Swedbank Pay Trustly Payments After Payment
 sidebar:
   navigation:
   - title: Trustly Payments
@@ -105,6 +105,9 @@ Content-Type: application/json
 
 ```mermaid
 sequenceDiagram
+    participant SwedbankPay as Swedbank Pay
+    participant Merchant
+
     Merchant->>SwedbankPay: Post <Trustly reversals>
     activate Merchant
     activate SwedbankPay
@@ -113,13 +116,12 @@ sequenceDiagram
     deactivate SwedbankPay
 ```
 
-{% include iterator.html prev_href="capture" prev_title="Back: Capture"
+{% include iterator.html prev_href="seamless-view" prev_title="Back: Seamless View"
 next_href="other-features" next_title="Next: Other Features" %}
 
 ----------------------------------------------------------
 [abort-description]: #abort
 [callback-request]: /payments/trustly/other-features#callback
-[trustly-captures]: #captures
 [trustly-cancellations]: #cancellations
 [trustly-reversals]: #reversals
 [other-features-transaction]: /payments/trustly/other-features#transactions

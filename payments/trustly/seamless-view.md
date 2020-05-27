@@ -1,5 +1,5 @@
 ---
-title: Swedbank Pay Trustly Payments
+title: Swedbank Pay Trustly Payments Seamless view
 sidebar:
   navigation:
   - title: Trustly Payments
@@ -97,7 +97,7 @@ Content-Type: application/json
 | :--------------: | :-------------------------------- | :------------ | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | {% icon check %} | `payment`                         | `object`      | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                                                 |
 | {% icon check %} | └➔&nbsp;`operation`               | `string`      | The operation that the `payment` is supposed to perform. For Trustly, this will always be `Purchase` as it is currently the only available operation. |
-| {% icon check %} | └➔&nbsp;`intent`                  | `string`      | `Sale` is the only intent option for Trustly. Performs the payment when the end-user gets redirected and completes the payment, and is followed by a [cancellation][cancel] or [capture][capture] of funds.                                                                                                                                                               |
+| {% icon check %} | └➔&nbsp;`intent`                  | `string`      | `Sale` is the only intent option for Trustly. Performs the payment when the end-user gets redirected and completes the payment.                                                                                                                                                               |
 | {% icon check %} | └➔&nbsp;`currency`                | `string`      | NOK, SEK, DKK, USD or EUR.                                                                                                                                                                                                                                                                                            |
 | {% icon check %} | └➔&nbsp;`prices`                  | `object`      | The `prices` resource lists the prices related to a specific payment.                                                                                                                                                                                                                                                 |
 | {% icon check %} | └─➔&nbsp;`type`                   | `string`      | Use the `Trustly` type here                                                                                                                                                                                                                                                                                           |
@@ -251,10 +251,15 @@ Trustly payment process.
 
 ```mermaid
 sequenceDiagram
+    participant SwedbankPay as Swedbank Pay
+    participant Merchant
+    participant Consumer
+    participant Trustly
+
     Consumer->>Merchant: Start purchase
     activate Merchant
     note left of Merchant: First API request
-    Merchant->>-SwedbankPay: POST /psp/invoice/payments
+    Merchant->>-SwedbankPay: POST /psp/trustly/payments
     activate SwedbankPay
     SwedbankPay-->>-Merchant: rel: view-authorization
     activate Merchant
@@ -277,13 +282,12 @@ sequenceDiagram
 ```
 
 {% include iterator.html prev_href="redirect" prev_title="Back: Redirect"
-next_href="direct" next_title="Next: Direct" %}
+next_href="after-payment" next_title="Next: After Payment" %}
 
 [after-payment]: /payments/trustly/after-payment
 [authorize]: /payments/trustly/other-features#authorizations
 [callback]: /payments/trustly/other-features#callback
 [cancel]: /payments/trustly/after-payment#cancellations
-[capture]: /payments/trustly/capture
 [create-payment]: /payments/trustly/other-features#create-payment
 [fi-png]: /assets/img/flag-finland.png
 [financing-consumer]: /payments/trustly/other-features#financing-consumer
