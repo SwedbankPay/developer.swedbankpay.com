@@ -41,9 +41,9 @@ to see the available operations after posting a payment.
 
 {% include abort-reference.md instrument="invoice" %}
 
-### Cancellations
+## Cancellations
 
-#### Create cancel transaction
+### Create cancel transaction
 
 Perform the `create-cancellation` operation to cancel a previously authorized
 or partially captured invoice payment.
@@ -88,7 +88,6 @@ specific payment.
 **Request**
 
 ```http
-Request
 GET /psp/invoice/payments/{{ page.payment_id }}/cancellations HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
@@ -98,7 +97,7 @@ Content-Type: application/json
 {% include transaction-list-response.md api_resource="invoice"
 documentation_section="invoice" transaction="cancel" %}
 
-#### Cancel Sequence
+### Cancel Sequence
 
 A `cancel` can only be performed on a successfully authorized transaction which
 has not been captured yet. If you perform a cancellation after doing a partial
@@ -114,9 +113,9 @@ deactivate Merchant
 deactivate PayEx
 ```
 
-### Reversals
+## Reversals
 
-#### Create reversal transaction
+### Create reversal transaction
 
 The `create-reversal` operation will reverse a previously captured payment and
 refund the amount to the consumer. To reverse a payment, perform the
@@ -143,9 +142,6 @@ Content-Type: application/json
     }
 }
 ```
-
-{:.code-header}
-**Properties**
 
 {:.table .table-striped}
 |     Required     | Field                      | Type         | Description                                                                                                                                                                                                                                                                |
@@ -180,7 +176,7 @@ Content-Type: application/json
 
 {% include transaction-list-response.md api_resource="invoice" documentation_section="invoice" transaction="reversal" %}
 
-#### Reversal Sequence
+### Reversal Sequence
 
 `Reversal` can only be done on an captured transaction where there are
 some captured amount not yet reversed.
