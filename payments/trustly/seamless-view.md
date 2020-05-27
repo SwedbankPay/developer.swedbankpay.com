@@ -287,7 +287,7 @@ next_href="direct" next_title="Next: Direct" %}
 [create-payment]: /payments/trustly/other-features#create-payment
 [fi-png]: /assets/img/flag-finland.png
 [financing-consumer]: /payments/trustly/other-features#financing-consumer
-[trustly-payment-embedded-view]: /assets/screenshots/trustly/consumer-information-view.png
+[trustly-payment-embedded-view]: /assets/screenshots/trustly/consumer-information-input.png
 [no-png]: /assets/img/flag-norway.png
 [payee-reference]: /payments/trustly/other-features#payee-reference
 [price-resource]: /payments/trustly/other-features#prices
