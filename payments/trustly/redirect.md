@@ -190,7 +190,9 @@ Once the user has completed the payment, Swedbank Pay will receive a
 notification asynchronously from Trustly, hence why
 the UI will initiate polling toward our back-end. The payment status after being
 redirect to `completeUrl` will then indicate if the payment was successful or
-not, or if the payment is still in progress.
+not, or if the payment is still in progress. If the payment is still in
+progress, when reaching `completeUrl`, the Swedbank Pay has then not received a
+notification from Trustly that the payment has gone through yet.
 
 ```mermaid
 sequenceDiagram
