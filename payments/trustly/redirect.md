@@ -180,8 +180,7 @@ Content-Type: application/json
 
 This is an example of the Redirect scenario. For other integrations, take a
 look at the respective sections. The sequence diagram below shows the two
-requests you have to send to Swedbank Pay to make a purchase. The diagram also
-shows the steps in a [`sale`][sale] process.
+requests you have to send to Swedbank Pay to make a purchase.
 
 Swedbank Pay Trustly Payments uses the [`Deposit`][deposit] to perform
 a payment. After this, the end-user will be presented with the returned `iframe`
