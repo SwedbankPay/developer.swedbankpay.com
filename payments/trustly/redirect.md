@@ -25,11 +25,11 @@ sidebar:
   page (`redirect-sale` operation).
 * You need to redirect the payer's browser to that specified URL so that the
   payer can enter the payment details in a secure Swedbank Pay environment.
-* Swedbank Pay will redirect the payer's browser to - one of two specified URLs,
+* Swedbank Pay will redirect the payer's browser to one of two specified URLs,
   depending on whether the payment session is followed through completely or
   cancelled beforehand. Please note that both a successful and rejected payment
   reach completion, in contrast to a cancelled payment.
-* When you detect that the payer reach your `completeUrl` , you need to do a
+* When you detect that the payer reach your `completeUrl`, you need to do a
   `GET` request to receive the state of the transaction, containing the
   `id` URI generated in the first step, to receive the state of the
   transaction.
@@ -183,7 +183,7 @@ look at the respective sections. The sequence diagram below shows the two
 requests you have to send to Swedbank Pay to make a purchase. The diagram also
 shows the steps in a [`sale`][sale] process.
 
-Swedbank Pay Trustly Payments uses the [`Deposit` call][deposit] to perform
+Swedbank Pay Trustly Payments uses the [`Deposit`][deposit] to perform
 a payment. After this, the end-user will be presented with the returned `iframe`
 URL in order to perform the payment with their prefered bank.
 Once the user has completed the payment, Swedbank Pay will receive a

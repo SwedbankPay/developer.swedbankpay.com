@@ -44,7 +44,7 @@ you have done the following:
 
 {% include intent.md sale=true show_authorization=false %}
 
-### Payment Type
+## Payment Type
 
 Trustly is one of the instruments using one-phase payments. The `sale` is done
 when the consumer successfully confirms in the app, capturing the funds
@@ -61,16 +61,9 @@ The displayed languages that we currently support is English (`en-us`), Norwegia
 
 [after-payment]: /payments/trustly/after-payment
 [callback-api]: /payments/trustly/other-features#callback
-[financing-consumer]: /payments/trustly/other-features#financing-consumer
-[no-png]: /assets/img/flag-norway.png
 [optional-features]: /payments/trustly/optional-features
 [payment-resource]: /payments/swish/other-features#payment-resource
 [recur]: /payments/trustly/other-features#recur
 [redirect]: /payments/trustly/redirect
 [purchase]: /payments/trustly/other-features#create-payment
-[se-png]: /assets/img/flag-sweden.png
-[setup-mail-finland]: mailto:verkkokauppa.setup@swedbankpay.fi
-[setup-mail-norway]: mailto:ehandelsetup@swedbankpay.no
-[setup-mail-sweden]: mailto:ehandelsetup@swedbankpay.se
 [trustly-guidelines]: https://trustly.com/en/developer/documents
-[verify]: /payments/trustly/other-features#verify
