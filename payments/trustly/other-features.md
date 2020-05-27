@@ -38,7 +38,7 @@ Within the Trustly payments part of the eCommerce API, you can create one type o
 individual transactions within the payment.
 
 To create a Trustly payment, you perform an HTTP `POST` against the `payments`
-resource. Trustly payments does currently only support one kind of operation (``) and intent ().
+resource. Trustly payments does currently only support the `Purchase` operation and `Sale` intent.
 
 {:.code-header}
 **Request**
@@ -145,7 +145,7 @@ problem message. We generally use the problem message `type` and `status` code
 to identify the nature of the problem. The problem `name` and `description` will
 often help narrow down the specifics of the problem.
 
-### Error types from Swedbank Pay Invoice and third parties
+### Error types from Swedbank Pay Trustly and third parties
 
 All Trustly error types will have the following URI in front of type:
 `https://api.payex.com/psp/errordetail/trustly/<error-type>`
