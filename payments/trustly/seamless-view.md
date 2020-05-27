@@ -42,7 +42,7 @@ An example of an expanded `POST` request is available in the
 [other features section].
 
 When properly set up in your merchant/webshop site and the payer starts the
-payment process, you need to make a POST request towards Swedbank Pay with your
+payment process, you need to make a `POST` request towards Swedbank Pay with your
 payment information. This will generate a `payment` resource with a unique
 `id` URI. You will receive a **JavaScript source** in response.
 
