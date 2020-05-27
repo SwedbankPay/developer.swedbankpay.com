@@ -37,10 +37,8 @@ provide **Direct Bank** payments on your website. Choose between our
 ### Important steps before you launch Swedbank Pay Trustly Payments at your website
 
 Prior to launching Trustly Payments at your site, make sure that
-you have done the following:
-
-1. Make sure that the payment option is displayed with a Trustly logo,
-   corresponding to the [Trustly Guidelines][trustly-guidelines].
+the payment option is displayed with a Trustly logo, corresponding
+to [Trustly's guidelines][trustly-guidelines].
 
 {% include intent.md sale=true show_authorization=false %}
 
