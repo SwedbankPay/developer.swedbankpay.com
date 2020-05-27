@@ -34,7 +34,7 @@ does not need to leave your webpage, since we are handling the payment in the
 
 ## Step 1: Create the payment
 
-A Trustly payment is a straightforward way to perform a direct-bank payment. It is followed up by posting a capture, cancellation or reversal
+A Trustly payment is a straightforward way to perform a direct-bank payment. It is followed up by posting a cancellation or reversal
 transaction.
 
 An example of an abbreviated `POST` request is provided below. Each individual field of the JSON document is described in the following section.
