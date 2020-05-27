@@ -39,7 +39,7 @@ also be able to see the available `operations` after posting a payment.
 
 ### Create reversal transaction
 
-The `create-reversal` operation will reverse a previously captured payment and
+The `create-reversal` operation will reverse a payment and
 refund the amount to the consumer. To reverse a payment, perform the
 `create-reversal` operation. The HTTP body of the request should look as
 follows:
@@ -137,9 +137,6 @@ documentation_section="vipps" transaction="cancel" %}
 ## Create cancellation transaction
 
 A payment may be cancelled if the operation `create-cancellation` is available.
-You can only cancel a payment, or part of it, if it has yet to be captured.
-To revert a capture, or part of a capture, you must perform a `reversal`.
-Performing a cancellation will cancel all remaning capture amounts on a payment.
 
 {:.code-header}
 **Request**
