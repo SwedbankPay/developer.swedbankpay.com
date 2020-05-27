@@ -87,7 +87,8 @@ documentation_section="trustly" transaction="reversal" %}
 ### Inspecting the Reversal
 
 The `reversals` resource will list the reversal transactions
-(one or more) on a specific payment.
+(one or more) on a specific payment. It will be found on a `payment` that has a
+succesful `sale` operation.
 
 {:.code-header}
 ***Request***
