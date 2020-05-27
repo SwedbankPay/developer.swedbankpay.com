@@ -16,6 +16,8 @@ sidebar:
       title: Vipps Payments
     - url: /payments/mobile-pay
       title: MobilePay Payments
+    - url: /payments/trustly
+      title: Trustly Payments
 ---
 
 {% include jumbotron.html body="Payments is our off-the-rack assortment of
@@ -40,6 +42,7 @@ below.
 |     ![Vipps][vipps-logo]     | [Vipps][vipps]                  | {% icon check %} | {% icon check %} |                    | ![nor][nor-flag]                                   |
 |     ![Swish][swish-logo]     | [Swish][swish]                  | {% icon check %} | {% icon check %} | {% icon check %}  ︎ | ![swe][swe-flag]                                   |
 | ![MobilePay][mobilepay-logo] | [Mobile Pay][mobile-pay]        |                  | {% icon check %} |                    | ![dan][dan-flag] ![fin][fin-flag]                  |
+|                              | [Trustly][trustly]              | {% icon check %} | {% icon check %} |                    | ![swe][swe-flag] ![fin][fin-flag]                  |
 
 ## Prerequisites
 
@@ -130,6 +133,7 @@ The payment instruments that support one-phase payments are:
 
 * [Swish][swish]
 * [Card][card]
+* [Trustly][trustly]
 
 ## The Payment Object
 
@@ -188,3 +192,4 @@ implementation in action.
 [seamless-view]: /payments/card/seamless-view
 [redirect]: /payments/card/redirect
 [direct]: /payments/card/direct
+[trustly]: /payments/trustly
