@@ -1,5 +1,5 @@
 ---
-title: Swedbank Pay Trustly Payments Seamless view
+title: Swedbank Pay Trustly Payments – Seamless view
 sidebar:
   navigation:
   - title: Trustly Payments
