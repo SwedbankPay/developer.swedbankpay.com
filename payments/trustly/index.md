@@ -40,7 +40,7 @@ Prior to launching Trustly Payments at your site, make sure that
 the payment option is displayed with a Trustly logo, corresponding
 to [Trustly's guidelines][trustly-guidelines].
 
-{% include intent.md sale=true show_authorization=false %}
+{% include intent.md show_authorization=false sale=true %}
 
 ## Payment Type
 

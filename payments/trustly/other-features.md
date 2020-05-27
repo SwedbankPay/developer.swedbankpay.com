@@ -154,7 +154,6 @@ Payment" %}
 [cancel]: /payments/trustly/after-payment#cancellations
 [fi-png]: /assets/img/flag-finland.png
 [financing-consumer]: #financing-consumer
-[trustly-flow]: /payments/trustly#trustly-flow
 [trustly-payment]: /assets/img/checkout/trustly-seamless-view.png
 [no-png]: /assets/img/flag-norway.png
 [recur]: #recur

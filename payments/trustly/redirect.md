@@ -240,7 +240,7 @@ next_href="seamless-view" next_title="Next: Seamless View" %}
 [after-payment]: /payments/trustly/after-payment
 [callback]: /payments/trustly/other-features#callback
 [cancel]: /payments/trustly/after-payment#cancellations
-[reversal]: /payments/trustly/after-payment/reversals
+[reversal]: /payments/trustly/after-payment#reversals
 [payee-reference]: /payments/trustly/other-features#payeeinfo
 [recur]: /payments/trustly/other-features#recur
 [user-agent-definition]: https://en.wikipedia.org/wiki/User_agent

@@ -122,6 +122,6 @@ next_href="other-features" next_title="Next: Other Features" %}
 ----------------------------------------------------------
 [abort-description]: #abort
 [callback-request]: /payments/trustly/other-features#callback
-[trustly-cancellations]: #cancellations
-[trustly-reversals]: #reversals
+[trustly-cancellations]: /payments/trustly/after-payment#cancellations
+[trustly-reversals]: /payments/trustly/after-payment##reversals
 [other-features-transaction]: /payments/trustly/other-features#transactions
