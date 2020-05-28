@@ -1302,7 +1302,8 @@ resilient to change. Properties, operations, headers, etc., that aren't
 understood in any response **must be ignored**. Don't expect a specific order of
 elements. When in doubt, please follow the [robustness principle](https://en.wikipedia.org/wiki/Robustness_principle)." %}
 
-{% include iterator.html prev_href="after-payment" prev_title="Back: After Payment" %}
+{% include iterator.html prev_href="after-payment" prev_title="Back: After
+Payment" %}
 
 [abort]: #operations
 [callback-reference]: /payment-menu/other-features#callback

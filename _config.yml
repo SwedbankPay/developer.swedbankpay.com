@@ -33,8 +33,6 @@ topbar:
   navigation:
   - url: /checkout/
     title: Checkout
-  - url: /payment-menu/
-    title: Payment Menu
   - url: /payments/
     title: Payments
   - url: /gift-cards/
