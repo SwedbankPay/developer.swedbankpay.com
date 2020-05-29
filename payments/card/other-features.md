@@ -96,7 +96,7 @@ completing the payment.
 
 ### Seamless View Events
 
-### `onPaymentCompleted`
+#### `onPaymentCompleted`
 
 This event triggers when a payment has completed successfully.
 The `onPaymentCompleted` event is raised with the following event argument
@@ -118,7 +118,7 @@ object:
 | `id`          | `string` | {% include field-description-id.md %}                           |
 | `redirectUrl` | `string` | The URI the user will be redirect to after a completed payment. |
 
-### `onPaymentCanceled`
+#### `onPaymentCanceled`
 
 This event triggers when the user cancels the payment.
 The `onPaymentCanceled` event is raised with the following event argument
@@ -140,7 +140,7 @@ object:
 | `id`          | `string` | {% include field-description-id.md %}                          |
 | `redirectUrl` | `string` | The URI the user will be redirect to after a canceled payment. |
 
-### `onPaymentFailed`
+#### `onPaymentFailed`
 
 This event triggers when a payment has failed, disabling further attempts to
 perform a payment. The `onPaymentFailed` event is raised with the following
@@ -162,7 +162,7 @@ event argument object:
 | `id`          | `string` | {% include field-description-id.md %}                        |
 | `redirectUrl` | `string` | The URI the user will be redirect to after a failed payment. |
 
-### `onPaymentTermsOfService`
+#### `onPaymentTermsOfService`
 
 This event triggers when the user clicks on the "Display terms and conditions"
 link. The `onPaymentTermsOfService` event is raised with the following event
@@ -184,7 +184,7 @@ argument object:
 | `origin`  | `string` | `owner`, `merchant`. The value is always `merchant` unless Swedbank Pay hosts the view. |
 | `openUrl` | `string` | The URI containing Terms of Service and conditions.                                     |
 
-### `onError`
+#### `onError`
 
 This event triggers during terminal errors or if the configuration fails
 validation. The `onError` event will be raised with the following event argument

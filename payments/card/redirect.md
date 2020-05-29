@@ -134,18 +134,18 @@ sequenceDiagram
 
 ### Explanations
 
-* ① `rel: redirect-authorization` is the name of one of the operations, sent as
+*   ① `rel: redirect-authorization` is the name of one of the operations, sent as
   a response from Swedbank Pay to the Merchant. The href in this operation is
   the **redirect URL** to a Swedbank Pay payment page.
-* ② The consumer is being redirected to a secure Swedbank Pay hosted page
-* ③ The payment window is presented and the consumer can insert card information
+*   ② The consumer is being redirected to a secure Swedbank Pay hosted page
+*   ③ The payment window is presented and the consumer can insert card information
   for authorization.
-* ④ If needed the consumer must go through an authorization challenge to verify
+*   ④ If needed the consumer must go through an authorization challenge to verify
   the identity.
-* ⑤ The Payer reaches the CompleteUrl which you defined in the initial POST
+*   ⑤ The Payer reaches the CompleteUrl which you defined in the initial POST
   request. Please note that both a successful and rejected payment reach
   completion, in contrast to a cancelled payment.
-* ⑥ Send a GET request with the `paymentId` to check the state of the
+*   ⑥ Send a GET request with the `paymentId` to check the state of the
   transaction. Click the link for [a complete list of payment and transaction
   states][payment-transaction-states].
 
@@ -158,11 +158,11 @@ When dealing with card payments, 3-D Secure authentication of the
 cardholder is an essential topic. There are two alternative outcomes of a credit
 card payment:
 
-1. 3-D Secure enabled - by default, 3-D Secure should be enabled, and Swedbank
+1.  3-D Secure enabled - by default, 3-D Secure should be enabled, and Swedbank
    Pay will check if the card is enrolled with 3-D Secure. This depends on the
    issuer of the card. If the card is not enrolled with 3-D Secure, no
    authentication of the cardholder is done.
-2. Card supports 3-D Secure - if the card is enrolled with 3-D Secure, Swedbank
+2.  Card supports 3-D Secure - if the card is enrolled with 3-D Secure, Swedbank
    Pay will redirect the cardholder to the autentication mechanism that is
    decided by the issuing bank. Normally this will be done using BankID or
    Mobile BankID.

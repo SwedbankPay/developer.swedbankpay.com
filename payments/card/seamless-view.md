@@ -64,9 +64,9 @@ You need to embed the script source on your site to create a hosted-view in an
 `iframe`; so that the payer can enter the credit card details in a secure Swedbank Pay
 hosted environment. A simplified integration has these following steps:
 
-1. Create a container that will contain the Seamless View iframe: `<div
+1.  Create a container that will contain the Seamless View iframe: `<div
    id="swedbank-pay-seamless-view-page">`.
-2. Create a `<script>` source within the container. Embed the `href` value
+2.  Create a `<script>` source within the container. Embed the `href` value
    obtained in the `POST` request in the `<script>` element. Example:
 
 ```html
@@ -187,24 +187,24 @@ When dealing with credit card payments, 3-D Secure authentication of the
 cardholder is an essential topic. There are two alternative outcome of a credit
 card payment:
 
-1. 3-D Secure enabled - by default, 3-D Secure should be enabled, and Swedbank
+1.  3-D Secure enabled - by default, 3-D Secure should be enabled, and Swedbank
    Pay will check if the card is enrolled with 3-D Secure. This depends on the
    issuer of the card. If the card is not enrolled with 3-D Secure, no
    authentication of the cardholder is done.
-2. Card supports 3-D Secure - if the card is enrolled with 3-D Secure, Swedbank
+2.  Card supports 3-D Secure - if the card is enrolled with 3-D Secure, Swedbank
    Pay will redirect the cardholder to the autentication mechanism that is
    decided by the issuing bank. Normally this will be done using BankID or
    Mobile BankID.
 
 ### Explanations
 
-* ① `rel: view-authorization` is a value in one of the operations, sent as a
+*   ① `rel: view-authorization` is a value in one of the operations, sent as a
   response from Swedbank Pay to the Merchant.
-* ② `Open iframe` creates the Swedbank Pay hosted iframe.
-* ③ `Show Consumer UI page in iframe` displays the payment window as content
+*   ② `Open iframe` creates the Swedbank Pay hosted iframe.
+*   ③ `Show Consumer UI page in iframe` displays the payment window as content
   inside of the iframe. The consumer can insert card information for
   authorization.
-* ④ `Event: OnPaymentComplete` is when er payment is complete. Please note that
+*   ④ `Event: OnPaymentComplete` is when er payment is complete. Please note that
   both a successful and rejected payment reach completion, in contrast to a
   cancelled payment.
 

@@ -22,7 +22,6 @@ sidebar:
       title: Other Features
 ---
 
-
 ## Card Payments in Mobile Apps
 
 The implementation sequence for Card Payments in mobile apps
@@ -43,10 +42,10 @@ The API requests are displayed in the [purchase flow][purchase].
 You can [create a card `payment`][create-payment] with following `operation`
 options:
 
-* [`Purchase`][purchase]
-* [`Recur`][recur]
-* [`Payout`][payout]
-* [`Verify`][verify]
+*   [`Purchase`][purchase]
+*   [`Recur`][recur]
+*   [`Payout`][payout]
+*   [`Verify`][verify]
 
 Our `payment` example below uses the [`Purchase`][purchase] value.
 
@@ -60,11 +59,11 @@ When dealing with card payments, 3-D Secure authentication of the
 cardholder is an essential topic. There are two alternative outcomes of a credit
 card payment:
 
-* 3-D Secure enabled - by default, 3-D Secure should be enabled, and Swedbank
+*   3-D Secure enabled - by default, 3-D Secure should be enabled, and Swedbank
   Pay will check if the card is enrolled with 3-D Secure. This depends on the
   issuer of the card. If the card is not enrolled with 3-D Secure, no
   authentication of the cardholder is done.
-* Card supports 3-D Secure - if the card is enrolled with 3-D Secure, Swedbank
+*   Card supports 3-D Secure - if the card is enrolled with 3-D Secure, Swedbank
   Pay will redirect the cardholder to the autentication mechanism that is
   decided by the issuing bank. Normally this will be done using BankID or Mobile
   BankID.
