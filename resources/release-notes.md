@@ -42,80 +42,80 @@ this very documentation, not to a version of any APIs described by it." %}
 
 ### Version 1.10.1
 
-*   Updated [Swish Redirect][swish-redirect] requests.
-*   Added `orderReference` information in Payment Order Callback in [Checkout Other features][checkout-callback].
+* Updated [Swish Redirect][swish-redirect] requests.
+* Added `orderReference` information in Payment Order Callback in [Checkout Other features][checkout-callback].
 
 ### Version 1.10.0
 
-*   Added a new [Gift Cards][gift-cards] section with descriptions of our Gift Cards API.
-*   Added a new section [Co-badge Card Choice for Dankort][co-badge-card] in
+* Added a new [Gift Cards][gift-cards] section with descriptions of our Gift Cards API.
+* Added a new section [Co-badge Card Choice for Dankort][co-badge-card] in
   [Card Payments][card-payment-url].
 
 ### Version 1.9.2
 
-*   Corrected table in [payments page][payments]
+* Corrected table in [payments page][payments]
 
 ### Version 1.9.1
 
-*   Corrected sequence diagrams in [Swish Payments][swish] and
+* Corrected sequence diagrams in [Swish Payments][swish] and
   [Vipps Payments][vipps].
-*   The `description` field is now more thoroughly described for all requests it's
+* The `description` field is now more thoroughly described for all requests it's
   present in.
-*   The `language` field is now better described for all requests it's present in.
-*   All broken links should now be unbroken.
+* The `language` field is now better described for all requests it's present in.
+* All broken links should now be unbroken.
 
 ## April 2020
 
 ### Version 1.9.0
 
-*   Added a new section [SDKs and Modules][sdk-modules] in Resources.
-*   Corrected problem `type` URIs for [Card Payments][card], [Checkout][checkout]
+* Added a new section [SDKs and Modules][sdk-modules] in Resources.
+* Corrected problem `type` URIs for [Card Payments][card], [Checkout][checkout]
   and [Swish Payments][swish].
-*   Required checkmarks have a new, fresh look: {% icon check %}
-*   Flags now also sport a new look: ![nor][nor-flag] ![swe][swe-flag]
+* Required checkmarks have a new, fresh look: {% icon check %}
+* Flags now also sport a new look: ![nor][nor-flag] ![swe][swe-flag]
   ![dan][dan-flag] ![fin][fin-flag]
 
 ### Version 1.8.3
 
-*   Bug fixes to Mermaid diagram and alert styling, plus improvements to code
+* Bug fixes to Mermaid diagram and alert styling, plus improvements to code
   block styling after the update to [Swedbank Pay Design Guide][design-guide]
   4.5.0.
-*   Added examples with screenshots of the effects of [Merchant Authenticated
+* Added examples with screenshots of the effects of [Merchant Authenticated
   Consumer][mac-checkout].
 
 ### Version 1.8.2
 
-*   Added a more thorough description on `paymentUrl` and `completeUrl` in all
+* Added a more thorough description on `paymentUrl` and `completeUrl` in all
   relevant payments.
-*   Updated `orderItems` to be required in all requests and responses.
-*   Clean up of [Swish Payments][swish]
-*   Removed `pageStripDown` in [Vipps Redirect][vipps].
-*   Updated [Card Payments Direct][card-direct] to have a correct integration
+* Updated `orderItems` to be required in all requests and responses.
+* Clean up of [Swish Payments][swish]
+* Removed `pageStripDown` in [Vipps Redirect][vipps].
+* Updated [Card Payments Direct][card-direct] to have a correct integration
   flow.
-*   Updated the [main page][frontpage] to be more welcoming.
-*   Updated information on [Merchant Authenticated Consumer][mac-checkout].
+* Updated the [main page][frontpage] to be more welcoming.
+* Updated information on [Merchant Authenticated Consumer][mac-checkout].
 
 ## March 2020
 
 ### Version 1.8.1
 
-*   Documented allowed characters in `orderItem.class`.
-*   Added `receiptReference` in [Invoice Payments][invoice] and
+* Documented allowed characters in `orderItem.class`.
+* Added `receiptReference` in [Invoice Payments][invoice] and
   [Payment Order][checkout-payment-orders] in capture and reversal.
-*   Callback is now moved to Other features in all payments intruments.
-*   Clean up of [MobilePay][mobile-pay].
-*   Corrected the address of Leia Ahlström in [Test Data][test-data].
-*   Updated the documentation in [Card Payments][card-payment-url]
+* Callback is now moved to Other features in all payments intruments.
+* Clean up of [MobilePay][mobile-pay].
+* Corrected the address of Leia Ahlström in [Test Data][test-data].
+* Updated the documentation in [Card Payments][card-payment-url]
   to recommend using `shippingAddress`.
-*   Updated `payeeReference` to have an unique description for Payment Order and
+* Updated `payeeReference` to have an unique description for Payment Order and
   every Payment Instrument.
 
 ### Version 1.8.0
 
-*   Updated [Invoice Payments Direct][invoice-direct] where
+* Updated [Invoice Payments Direct][invoice-direct] where
   `approvedLegalAddress` should now be use for all countries.
-*   Small text changes and clarifications.
-*   Restructured [Invoice Payments][invoice] and [Card Payments][card].
+* Small text changes and clarifications.
+* Restructured [Invoice Payments][invoice] and [Card Payments][card].
 
 ### Version 1.7.7
 
@@ -123,42 +123,42 @@ This change contains build updates for the page. :octocat:
 
 ### Version 1.7.6
 
-*   Several links has been corrected. The chance of 404 is now much lower.
-*   Other small text changes and clarifications.
+* Several links has been corrected. The chance of 404 is now much lower.
+* Other small text changes and clarifications.
 
 ### Version 1.7.5
 
-*   New page! Technical reference into has been moved from the front page
+* New page! Technical reference into has been moved from the front page
   to [technical information][home-technical-information].
-*   Front page got a slimmer look. :swimmer:
-*   Abort reference is back in [credit card reference][credit-card-abort].
-*   Swish error code reference got a face lift, check it out
+* Front page got a slimmer look. :swimmer:
+* Abort reference is back in [credit card reference][credit-card-abort].
+* Swish error code reference got a face lift, check it out
   [here][swish-api-errors] :candy:.
 
 ## February 2020
 
 ### Version 1.7.4
 
-*   Described the M-Commerce flow for [Swish Direct][swish-direct-mcom].
-*   Alphabetize the terms in [Terminology][terminology].
+* Described the M-Commerce flow for [Swish Direct][swish-direct-mcom].
+* Alphabetize the terms in [Terminology][terminology].
 
 ### Version 1.7.3
 
-*   Expanded information about the field `restrictedToInstruments`.
-*   Added information about the field `receiptReference`.
-*   Added information about [direct integration in Credit card][card-direct].
-*   Added and fixed several missing headings in template files.
-*   Expanded information about `verify`.
-*   Created new page for [Checkout Capture][checkout-capture].
-*   Mobile Pay Online was previously only refered to as Mobile Pay, this has been
+* Expanded information about the field `restrictedToInstruments`.
+* Added information about the field `receiptReference`.
+* Added information about [direct integration in Credit card][card-direct].
+* Added and fixed several missing headings in template files.
+* Expanded information about `verify`.
+* Created new page for [Checkout Capture][checkout-capture].
+* Mobile Pay Online was previously only refered to as Mobile Pay, this has been
   corrected.
 
 ### Version 1.7.2
 
-*   Removed several duplicate headers in other-features pages.
-*   Added unscheduled purchase information in
+* Removed several duplicate headers in other-features pages.
+* Added unscheduled purchase information in
   [card payments][card-unscheduled-purchase].
-*   We have added card logos when selecting card in payment menu.
+* We have added card logos when selecting card in payment menu.
   See [updated screenshot of payment menu][checkout-payment-menu-frontend].
 
 ### Version 1.7.1
@@ -167,80 +167,80 @@ All sections have been released. :trophy:
 
 ### Version 1.7
 
-*   README is updated with info about includes.
-*   Added  several includes.
-*   Updated payeeReference description in Checkout and Invoice section.
-*   Using snake case consistently.
-*   Added section for unscheduled purchase in Card section.
-*   Fixed JavaScript example in Checkin section.
-*   Added info about mobile verification in Swish Other Features.
-*   Added section about Authenticated Merchants in Checkout section.
-*   Cleanup in `Vipps` Other Features.
-*   `paymentRestrictedToAgeLimit` and `paymentRestrictedToSocialSecurityNumber`
+* README is updated with info about includes.
+* Added  several includes.
+* Updated payeeReference description in Checkout and Invoice section.
+* Using snake case consistently.
+* Added section for unscheduled purchase in Card section.
+* Fixed JavaScript example in Checkin section.
+* Added info about mobile verification in Swish Other Features.
+* Added section about Authenticated Merchants in Checkout section.
+* Cleanup in `Vipps` Other Features.
+* `paymentRestrictedToAgeLimit` and `paymentRestrictedToSocialSecurityNumber`
   added to `swish` object in [Swish Redirect][swish-redirect]. `paymentAgeLimit`
   , `socialSecurityNumber` added to the new `payerInfo` object in
   [Swish Seamless View][swish-seamless-view]. Properties added in `Swish`.
-*   Added section about migration key in Resources section.
+* Added section about migration key in Resources section.
 
 ## January 2020
 
 ### Version 1.6.3
 
-*   `restrictedToInstruments` added back to [Payment Order purchase
+* `restrictedToInstruments` added back to [Payment Order purchase
   requests][checkout-payment-order-purchase].
-*   `Direct Debit` section and mentions in various includes removed.
-*   Various improvements and fixes.
+* `Direct Debit` section and mentions in various includes removed.
+* Various improvements and fixes.
 
 ### Version 1.6.2
 
-*   The [Payments][payments] and [Card Payments][card] sections are reviewed and
+* The [Payments][payments] and [Card Payments][card] sections are reviewed and
   released.
 
 ### Version 1.6.1
 
-*   `email`, `msisdn`, `workPhoneNumber` and `homePhoneNumber` added to the
+* `email`, `msisdn`, `workPhoneNumber` and `homePhoneNumber` added to the
   `payer` object in [Payment Order requests][checkout-payment-orders].
-*   `cardholder` added to [Card Payments Purchase requests][card-purchase].
-*   Various improvements and fixes.
+* `cardholder` added to [Card Payments Purchase requests][card-purchase].
+* Various improvements and fixes.
 
 ### Version 1.6
 
-*   [Credit Payments][credit] (née "Credit Account") sections have been deleted
+* [Credit Payments][credit] (née "Credit Account") sections have been deleted
   from the Swedbank Pay Developer Portal.
-*   The [Swish Payments][swish] and [Vipps Payments][vipps] have received a few
+* The [Swish Payments][swish] and [Vipps Payments][vipps] have received a few
   updates and are now ready for another round of review.
-*   [MobilePay Payments][mobile-pay] is now ready for review.
-*   `paymentAgeLimit` is now added in [Swish Payments][swish].
-*   The [Terminology page][terminology] is updated and *3-D Secure 2.0 (3DS2)*   ,
+* [MobilePay Payments][mobile-pay] is now ready for review.
+* `paymentAgeLimit` is now added in [Swish Payments][swish].
+* The [Terminology page][terminology] is updated and *3-D Secure 2.0 (3DS2)*   ,
   *PSD2*   and *SCA*   explanations are added.
-*   Added descriptions for Payment States And Transaction States everywhere appropriate.
-*   Google Analytics has been added to Developer Portal.
+* Added descriptions for Payment States And Transaction States everywhere appropriate.
+* Google Analytics has been added to Developer Portal.
 
 ### Version 1.5
 
-*   The review of [Invoice Payments][invoice] is complete and as such the section
+* The review of [Invoice Payments][invoice] is complete and as such the section
   is now released and ready for use.
-*   The [Card Payments][card] section has received an overhaul, inching it closer
+* The [Card Payments][card] section has received an overhaul, inching it closer
   to release.
-*   The [Swish Payments][swish] and [Vipps Payments][vipps] sections are ready for
+* The [Swish Payments][swish] and [Vipps Payments][vipps] sections are ready for
   review.
-*   The Direct Debit, [MobilePay Payments][mobile-pay] and
+* The Direct Debit, [MobilePay Payments][mobile-pay] and
   [Credit Payments][credit] (née "Credit Account") sections have received a few
   updates, inching them all closer to review.
 
 ### Version 1.4
 
-*   Updated [Swish Redirect][swish-direct] and [Swish Direct][swish-direct]
+* Updated [Swish Redirect][swish-direct] and [Swish Direct][swish-direct]
   sections in preparations for review and the transition from PayEx Developer
   Portal.
-*   Added [Data Protection][data-protection] section.
-*   Payment Orders now support `orderItems` in all operations.
-*   Added [Terminology page][terminology].
-*   Clarified what the `awaitingActivity` state means for different payment
+* Added [Data Protection][data-protection] section.
+* Payment Orders now support `orderItems` in all operations.
+* Added [Terminology page][terminology].
+* Clarified what the `awaitingActivity` state means for different payment
   instruments.
-*   Removed erroneous `noCVC` in examples for [One-Click Card Payments][one-click]
+* Removed erroneous `noCVC` in examples for [One-Click Card Payments][one-click]
   section.
-*   Added description for the `onBillingDetailsAvailable` event in the
+* Added description for the `onBillingDetailsAvailable` event in the
   [Checkin Front End section][checkout-checkin-front-end].
 
 ## December 2019
@@ -426,7 +426,7 @@ integration and the payer.
 [swish]: /payments/swish
 [terminology]: /resources/terminology
 [test-data]: /resources/test-data
-[trustly-payments]: /payments/trustly-payments
+[trustly-payments]: /payments/trustly
 [vipps-payment-resource]: /payments/vipps/other-features#payment-resource
 [vipps-payment-url]: /payments/vipps/other-features#payment-url
 [vipps]: /payments/vipps
