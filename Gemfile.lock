@@ -69,7 +69,7 @@ GEM
     jekyll-github-metadata (2.13.0)
       jekyll (>= 3.4, < 5.0)
       octokit (~> 4.0, != 4.4.0)
-    jekyll-material-icon-tag (1.0.4)
+    jekyll-material-icon-tag (1.1.1)
     jekyll-remote-theme (0.4.2)
       addressable (~> 2.0)
       jekyll (>= 3.5, < 5.0)
