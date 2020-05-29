@@ -24,7 +24,6 @@ sidebar:
       title: Public Migration Key
 ---
 
-
 {% include jumbotron.html body="Testing, are we? Good! Here's some data you can
    use to test and verify your integration!" %}
 
@@ -36,7 +35,7 @@ in action, please visit our [demoshop]({{ page.front_end_url }}/pspdemoshop)
 
 To test a logged in user in the Demo Shop, please use the following test data:
 
-### Norway
+### Checkout test data for Norway
 
 {:.table .table-striped}
 | Type            | Data                         | Description                                                           |
@@ -46,7 +45,7 @@ To test a logged in user in the Demo Shop, please use the following test data:
 | `SSN`           | `{{ page.consumer_ssn_no }}` | The social security number of the payer. Format Norway: `DDMMYYXXXXX` |
 | `ZipCode`       | `1642`                       | The city zip code. Format Norway: `XXXX`                              |
 
-### Sweden
+### Checkout test data for Sweden
 
 {:.table .table-striped}
 | Type            | Data                         | Description                                                             |
@@ -56,7 +55,7 @@ To test a logged in user in the Demo Shop, please use the following test data:
 | `SSN`           | `{{ page.consumer_ssn_se }}` | The social security number of the payer. Format Sweden: `YYYYMMDDXXXX`. |
 | `ZipCode`       | `17674`                      | The city zip code. Format Sweden: `XXXXX`                               |
 
-### Denmark
+### Checkout test data for Denmark
 
 {:.table .table-striped}
 | Type            | Data          | Description                                                          |
@@ -182,7 +181,7 @@ The amounts that can be used and produce error codes
 
 ## Invoice Test Data
 
-### Norway
+### Invoice test data for Norway
 
 {:.table .table-striped}
 | Type    | Data             |
@@ -192,7 +191,7 @@ The amounts that can be used and produce error codes
 | Address | Saltnestoppen 43 |
 | City    | 1642 Saltnes     |
 
-### Sweden
+### Invoice test data for Sweden
 
 {:.table .table-striped}
 | Type    | Data            | Alternative data        |
@@ -204,7 +203,7 @@ The amounts that can be used and produce error codes
 | MSISDN  |                 | +46739000001            |
 | email   |                 | leia.ahlstrom@payex.com |
 
-### Finland
+### Invoice test data for Finland
 
 {:.table .table-striped}
 | Type    | Data             |
