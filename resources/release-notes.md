@@ -33,6 +33,13 @@ this very documentation, not to a version of any APIs described by it." %}
 
 ## May 2020
 
+### Version 1.11.0
+
+* Added a new [Trustly Payments][trustly-payments] section in Payments with description of
+  Trustly Payments API.
+* Added information about [Storing URIs][storing-uri] in the [Technical
+  Information][home-technical-information] section.
+
 ### Version 1.10.1
 
 *   Updated [Swish Redirect][swish-redirect] requests.
@@ -409,6 +416,7 @@ integration and the payer.
 [lit-flag]: /assets/img/flag-lithuania.png
 [est-flag]: /assets/img/flag-estonia.png
 [dan-flag]: /assets/img/flag-denmark.png
+[storing-uri]: /home/technical-information#storing-uris
 [swish-api-errors]: /payments/swish/other-features#swish-api-errors
 [swish-direct-mcom]: /payments/swish/direct#step-2b-create-m-commerce-sale-transaction
 [swish-direct]: /payments/swish/direct
@@ -418,6 +426,7 @@ integration and the payer.
 [swish]: /payments/swish
 [terminology]: /resources/terminology
 [test-data]: /resources/test-data
+[trustly-payments]: /payments/trustly-payments
 [vipps-payment-resource]: /payments/vipps/other-features#payment-resource
 [vipps-payment-url]: /payments/vipps/other-features#payment-url
 [vipps]: /payments/vipps
