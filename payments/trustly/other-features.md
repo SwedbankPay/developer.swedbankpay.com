@@ -150,13 +150,10 @@ Payment" %}
 
 [callback]: #callback
 [cancel]: /payments/trustly/after-payment#cancellations
-[fi-png]: /assets/img/flag-finland.png
 [financing-consumer]: #financing-consumer
 [trustly-payment]: /assets/img/checkout/trustly-seamless-view.png
-[no-png]: /assets/img/flag-norway.png
 [recur]: #recur
 [redirect]: /payments/trustly/redirect
-[se-png]: /assets/img/flag-sweden.png
 [seamless-view]: /payments/trustly/seamless-view
 [verification-flow]: #verification-flow
 [verify]: #verify

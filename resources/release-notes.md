@@ -71,8 +71,14 @@ this very documentation, not to a version of any APIs described by it." %}
 *   Corrected problem `type` URIs for [Card Payments][card], [Checkout][checkout]
   and [Swish Payments][swish].
 *   Required checkmarks have a new, fresh look: {% icon check %}
-*   Flags now also sport a new look: ![nor][nor-flag] ![swe][swe-flag]
-  ![dan][dan-flag] ![fin][fin-flag]
+*   Flags now also sport a new look:
+    <i class="flag-icon flag-icon-no"></i>
+    <i class="flag-icon flag-icon-se"></i>
+    <i class="flag-icon flag-icon-dk"></i>
+    <i class="flag-icon flag-icon-fi"></i>
+    <i class="flag-icon flag-icon-lt"></i>
+    <i class="flag-icon flag-icon-lv"></i>
+    <i class="flag-icon flag-icon-ee"></i>
 
 ### Version 1.8.3
 
@@ -408,13 +414,6 @@ integration and the payer.
 [payment-orders]: /checkout/other-features#creating-a-payment-order
 [payments]: /payments
 [sdk-modules]: /resources/sdk-modules
-[nor-flag]: /assets/img/flag-norway.png
-[swe-flag]: /assets/img/flag-sweden.png
-[fin-flag]: /assets/img/flag-finland.png
-[lat-flag]: /assets/img/flag-latvia.png
-[lit-flag]: /assets/img/flag-lithuania.png
-[est-flag]: /assets/img/flag-estonia.png
-[dan-flag]: /assets/img/flag-denmark.png
 [storing-uri]: /home/technical-information#storing-uris
 [swish-api-errors]: /payments/swish/other-features#swish-api-errors
 [swish-direct-mcom]: /payments/swish/direct#step-2b-create-m-commerce-sale-transaction

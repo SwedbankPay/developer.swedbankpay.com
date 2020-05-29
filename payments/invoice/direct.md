@@ -402,16 +402,13 @@ next_href="capture" next_title="Next: Capture" %}
 [callback]: /payments/invoice/other-features#callback
 [cancel]: /payments/invoice/after-payment#cancellations
 [capture]: /payments/invoice/capture
-[fi-png]: /assets/img/flag-finland.png
 [financing-consumer]: /payments/invoice/other-features#financing-consumer
 [financing-invoice-1-png]: /assets/img/checkout/test-purchase.png
 [financing-invoice-2-png]: /assets/screenshots/invoice/redirect-view/iframe-verify-data.png
-[no-png]: /assets/img/flag-norway.png
 [other-features]: /payments/invoice/other-features
 [payee-reference]: /payments/invoice/other-features#payeeinfo
 [recur]: /payments/invoice/other-features#recur
 [redirect]: /payments/invoice/redirect
-[se-png]: /assets/img/flag-sweden.png
 [setup-mail]: mailto:setup.ecom@PayEx.com
 [user-agent-definition]: https://en.wikipedia.org/wiki/User_agent
 [verify]: /payments/invoice/other-features#verify
