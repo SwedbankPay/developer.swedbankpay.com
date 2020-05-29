@@ -30,11 +30,11 @@ in transmission. Contact our support at
 [support.ecom@payex.com](mailto:support.ecom@payex.com) for more information regarding
 this procedure."  %}
 
-* **Key size**: 4096 bits
-* **RealName**: `SwedbankPay`
-* **UserID**: `SwedbankPay <support.ecom@payex.com>`
-* **Fingerprint**: `4725 70B8 16C8 B0C8 835D FCFC 1633 7829 266A 0373`
-* **Key ID**: `1633 7829 266A 0373`
+*   **Key size**: 4096 bits
+*   **RealName**: `SwedbankPay`
+*   **UserID**: `SwedbankPay <support.ecom@payex.com>`
+*   **Fingerprint**: `4725 70B8 16C8 B0C8 835D FCFC 1633 7829 266A 0373`
+*   **Key ID**: `1633 7829 266A 0373`
 
 To encrypt files with Swedbank Pay's Public Migration Key, you need copy and
 paste it from below and save it to a file called `SwedbankPay.key`.

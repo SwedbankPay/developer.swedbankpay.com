@@ -2,19 +2,19 @@
 title: Swedbank Pay Payments Swish Other Features
 sidebar:
   navigation:
-  - title: Swish Payments
+  -   title: Swish Payments
     items:
-    - url: /payments/swish
+    -   url: /payments/swish
       title: Introduction
-    - url: /payments/swish/direct
+    -   url: /payments/swish/direct
       title: Direct
-    - url: /payments/swish/redirect
+    -   url: /payments/swish/redirect
       title: Redirect
-    - url: /payments/swish/seamless-view
+    -   url: /payments/swish/seamless-view
       title: Seamless View
-    - url: /payments/swish/after-payment
+    -   url: /payments/swish/after-payment
       title: After Payment
-    - url: /payments/swish/other-features
+    -   url: /payments/swish/other-features
       title: Other Features
 ---
 
@@ -94,10 +94,10 @@ Content-Type: application/json
 | {% icon check %}︎ | └─➔&nbsp;`type`                 | `string`     | `Swish`                                                                                                                                                                                                                                                   |
 | {% icon check %}︎ | └─➔&nbsp;`amount`               | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                                                 |
 | {% icon check %}︎ | └─➔&nbsp;`vatAmount`            | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                                                              |
-| {% icon check %}︎ | └➔&nbsp;`description`           | `string(40)` | {% include field-description-description.md documentation_section="swish" %}                                                                                                                                                                                 |
+| {% icon check %}︎ | └➔&nbsp;`description`           | `string(40)` | {% include field-description-description.md documentation_section="swish" %}                                                                                                                                                                              |
 |                  | └➔&nbsp;`payerReference`        | `string`     | The reference to the payer (consumer/end-user) from the merchant system, like mobile number, customer number etc.                                                                                                                                         |
-| {% icon check %}︎ | └➔&nbsp;`userAgent`             | `string`     | The user agent reference of the consumer's browser - [see user agent definition][user-agent]                                                                                                                                                              |
-| {% icon check %}︎ | └➔&nbsp;`language`              | `string`     | {% include field-description-language.md api_resource="swish" %}                                                                                                                                                                                                                              |
+| {% icon check %}︎ | └➔&nbsp;`userAgent`             | `string`     | The user agent reference of the consumer's browser -   [see user agent definition][user-agent]                                                                                                                                                            |
+| {% icon check %}︎ | └➔&nbsp;`language`              | `string`     | {% include field-description-language.md api_resource="swish" %}                                                                                                                                                                                          |
 | {% icon check %}︎ | └➔&nbsp;`urls`                  | `object`     | The URLS object contains information about what urls this payment should use.                                                                                                                                                                             |
 | {% icon check %}︎ | └─➔&nbsp;`hostUrls`             | `array`      | The array of URIs valid for embedding of Swedbank Pay Hosted Views.                                                                                                                                                                                       |
 | {% icon check %}︎ | └─➔&nbsp;`completeUrl`          | `string`     | The URI that Swedbank Pay will redirect back to when the payment page is completed. This does not indicate a successful payment, only that it has reached a completion state. A `GET` request needs to be performed on the payment to inspect it further. |
@@ -106,9 +106,9 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`logoUrl`              | `string`     | The URI that will be used for showing the customer logo. Must be a picture with at most 50px height and 400px width. Require https.                                                                                                                       |
 |                  | └─➔&nbsp;`termsOfServiceUrl`    | `string`     | {% include field-description-termsofserviceurl.md %}                                                                                                                                                                                                      |
 | {% icon check %}︎ | └➔&nbsp;`payeeInfo`             | `object`     | A object containing info about the payee.                                                                                                                                                                                                                 |
-| {% icon check %}︎ | └─➔&nbsp;`payeeId`              | `string`     | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                                                                            |
+| {% icon check %}︎ | └─➔&nbsp;`payeeId`              | `string`     | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                                                                     |
 | {% icon check %}︎ | └─➔&nbsp;`payeeReference`       | `string(35)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [`payeeReference`][technical-reference-payeeReference] for details.                                             |
-|                  | └➔&nbsp;`payeeName`             | `string`     | The payee name (like merchant name) that will be displayed to consumer when redirected to Swedbank Pay.                                                                                                                                                          |
+|                  | └➔&nbsp;`payeeName`             | `string`     | The payee name (like merchant name) that will be displayed to consumer when redirected to Swedbank Pay.                                                                                                                                                   |
 |                  | └➔&nbsp;`productCategory`       | `string`     | A product category or number sent in from the payee/merchant. This is not validated by PayEx, but will be passed through the payment process and may be used in the settlement process.                                                                   |
 |                  | └➔&nbsp;`orderReference`        | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                   |
 |                  | └➔&nbsp;`subsite`               | `string(40)` | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.                                                                                               |
@@ -173,8 +173,6 @@ be connected to a Swish account.
 
 {% include payment-link.md show_3d_secure=false show_authorization=false %}
 
-## Description
-
 {% include description.md %}
 
 {% include complete-url.md %}
@@ -213,8 +211,8 @@ All Swish error types will have the following URI in front of type:
 
 Caused By:
 
-- MSISDN is invalid.
-- Payer's MSISDN is not enrolled at Swish.
+-   MSISDN is invalid.
+-   Payer's MSISDN is not enrolled at Swish.
 
 {:.code-header}
 Example response inputerror
@@ -237,16 +235,16 @@ Content-Type: application/json
 
 Caused By:
 
-- Payee alias is missing or not correct.
-- PaymentReference is invalid.
-- Amount value is missing or not a valid number.
-- Amount is less than agreed minimum.
-- Amount value is too large.
-- Invalid or missing currency.
-- Wrong formatted message.
-- Amount value is too large, or amount exceeds the amount of the original payment minus any previous refunds.
-- Counterpart is not activated.
-- Payee not enrolled.
+-   Payee alias is missing or not correct.
+-   PaymentReference is invalid.
+-   Amount value is missing or not a valid number.
+-   Amount is less than agreed minimum.
+-   Amount value is too large.
+-   Invalid or missing currency.
+-   Wrong formatted message.
+-   Amount value is too large, or amount exceeds the amount of the original payment minus any previous refunds.
+-   Counterpart is not activated.
+-   Payee not enrolled.
 
 {:.code-header}
 Example response configerror
@@ -269,11 +267,11 @@ Content-Type: application/json
 
 Caused By:
 
-- Original payment not found or original payment is more than than 13 months old.
-- It appears that merchant's organization number has changed since sale was made.
-- The MSISDN of the original payer seems to have changed owner.
-- Transaction declined. Could be that the payer has exceeded their swish limit or have insufficient founds.
-- Payment request not cancellable.
+-   Original payment not found or original payment is more than than 13 months old.
+-   It appears that merchant's organization number has changed since sale was made.
+-   The MSISDN of the original payer seems to have changed owner.
+-   Transaction declined. Could be that the payer has exceeded their swish limit or have insufficient founds.
+-   Payment request not cancellable.
 
 {:.code-header}
 Example response swishdeclined
@@ -296,8 +294,8 @@ Content-Type: application/json
 
 Caused By:
 
-- Bank system processing error.
-- Swish timed out waiting for an answer from the banks after payment was started.
+-   Bank system processing error.
+-   Swish timed out waiting for an answer from the banks after payment was started.
 
 {:.code-header}
 Example response swisherror
@@ -320,7 +318,7 @@ Content-Type: application/json
 
 Caused By:
 
-- The payer's Swish is already in use.
+-   The payer's Swish is already in use.
 
 {:.code-header}
 Example response swishalreadyinuse
@@ -343,7 +341,7 @@ Content-Type: application/json
 
 Caused By:
 
-- Swish timed out before the payment was started.
+-   Swish timed out before the payment was started.
 
 {:.code-header}
 Example response swishtimeout
@@ -366,7 +364,7 @@ Content-Type: application/json
 
 Caused By:
 
-- The payer cancelled BankID authorization.
+-   The payer cancelled BankID authorization.
 
 {:.code-header}
 Example response bankidcancelled
@@ -389,7 +387,7 @@ Content-Type: application/json
 
 Caused By:
 
-- The payer's BankID is already in use
+-   The payer's BankID is already in use
 
 {:.code-header}
 Example response bankidalreadyinuse
@@ -412,7 +410,7 @@ Content-Type: application/json
 
 Caused By:
 
-- Something went wrong with the payer's BankID authorization.
+-   Something went wrong with the payer's BankID authorization.
 
 {:.code-header}
 Example response bankiderror
@@ -435,7 +433,7 @@ Content-Type: application/json
 
 Caused By:
 
-- The payer's social security number does not match with the one required by this payment.
+-   The payer's social security number does not match with the one required by this payment.
 
 {:.code-header}
 Example response socialsecuritynumbermismatch
@@ -458,7 +456,7 @@ Content-Type: application/json
 
 Caused By:
 
-- The payer does not meet the payment's age limit.
+-   The payer does not meet the payment's age limit.
 
 {:.code-header}
 Example response paymentagelimitnotmet
@@ -481,7 +479,7 @@ Content-Type: application/json
 
 Caused By:
 
-- The payer cancelled the payment in the Swish app.
+-   The payer cancelled the payment in the Swish app.
 
 {:.code-header}
 Example response usercancelled
@@ -504,7 +502,7 @@ Content-Type: application/json
 
 Caused By:
 
-- During a create a sale call to e-com, Swish responded with 504 (Gateway Timeout).
+-   During a create a sale call to e-com, Swish responded with 504 (Gateway Timeout).
 
 {:.code-header}
 Example response swishgatewaytimeout

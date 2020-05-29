@@ -97,28 +97,28 @@ body.
 **Body fields**
 
 {:.table .table-striped}
-| Field                           | Type       | Description                                                                                                                                           |
-| :------------------------------ | :--------- | :---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Swedbank Pay Batch Number`     | `Decimal`  | A batch number common to all types of transactions processed by Swedbank Pay.                                                                                |
-| `Transaction Number`            | `Decimal`  | A unique identifier of the transaction, can be traced in Swedbank Pay Admin user interface.                                                           |
-| `Order id`                      | `String`   | A unique identifier of the order, as sent from the merchant to Swedbank Pay. Transactions that are related to the same order are associated with this ID.    |
-| `Date Created`                  | `ISO 8601` | Transaction capture date/time. YYYY-MM-DD hh:mm:ss.                                                                                                   |
-| `Date Modified`                 | `ISO 8601` | Transaction settle date/time. YYYY-MM-DD hh:mm:ss.                                                                                                    |
-| `Provider`                      | `String`   | The service provider (e.g. Babs, Swedbank).                                                                                                           |
-| `Type`                          | `String`   | The service type of the related transaction (e.g. `Creditcard`).                                                                                      |
-| `Amount`                        | `Decimal`  | Total amount of the related transaction (e.g 100.00).                                                                                                 |
-| `Currency`                      | `ISO 4217` | Settlement currency (e.g. `SEK, NOK, EUR`).                                                                                                           |
-| `Product Number`                | `String`   | A product number, as sent by merchant to Swedbank Pay.                                                                                                       |
-| `Description`                   | `String`   | A textual description of the transaction, as sent by merchant to Swedbank Pay.                                                                               |
-| `VAT Amount`                    | `Decimal`  | VAT Amount for the given transaction (e.g 100.00).                                                                                                    |
-| `VAT Percentage`                | `Decimal`  | VAT Percentage for the given transaction.                                                                                                             |
-| `Credit Card Batch Number`      | `Decimal`  | The reference number from the credit card processor.                                                                                                  |
-| `Reference`                     | `Decimal`  | The transaction reference from processor.                                                                                                             |
-| `Swedbank Pay Account Number`   | `Decimal`  | The Account number given, shown in Swedbank Pay admin.                                                                                                |
-| `Referenced Transaction Number` | `Decimal`  | Transaction number for the Authoriation transaction for a two-stage transaction or the number of the debit transaction if it is a credit transaction. |
-| `Sales Channel`                 | `String`   | The channel through which the transaction was sent to Swedbank Pay (e.g Transaction via eCommerce APIs).                                              |
-| `Brand`                         | `String`   | If eligible, Branding information as sent by merchant to Swedbank Pay.                                                                                       |
-| `Point Of Sale`                 | `String`   | If eligible, POS information as sent by merchant to Swedbank Pay.                                                                                            |
+| Field                           | Type       | Description                                                                                                                                               |
+| :------------------------------ | :--------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Swedbank Pay Batch Number`     | `Decimal`  | A batch number common to all types of transactions processed by Swedbank Pay.                                                                             |
+| `Transaction Number`            | `Decimal`  | A unique identifier of the transaction, can be traced in Swedbank Pay Admin user interface.                                                               |
+| `Order id`                      | `String`   | A unique identifier of the order, as sent from the merchant to Swedbank Pay. Transactions that are related to the same order are associated with this ID. |
+| `Date Created`                  | `ISO 8601` | Transaction capture date/time. YYYY-MM-DD hh:mm:ss.                                                                                                       |
+| `Date Modified`                 | `ISO 8601` | Transaction settle date/time. YYYY-MM-DD hh:mm:ss.                                                                                                        |
+| `Provider`                      | `String`   | The service provider (e.g. Babs, Swedbank).                                                                                                               |
+| `Type`                          | `String`   | The service type of the related transaction (e.g. `Creditcard`).                                                                                          |
+| `Amount`                        | `Decimal`  | Total amount of the related transaction (e.g 100.00).                                                                                                     |
+| `Currency`                      | `ISO 4217` | Settlement currency (e.g. `SEK, NOK, EUR`).                                                                                                               |
+| `Product Number`                | `String`   | A product number, as sent by merchant to Swedbank Pay.                                                                                                    |
+| `Description`                   | `String`   | A textual description of the transaction, as sent by merchant to Swedbank Pay.                                                                            |
+| `VAT Amount`                    | `Decimal`  | VAT Amount for the given transaction (e.g 100.00).                                                                                                        |
+| `VAT Percentage`                | `Decimal`  | VAT Percentage for the given transaction.                                                                                                                 |
+| `Credit Card Batch Number`      | `Decimal`  | The reference number from the credit card processor.                                                                                                      |
+| `Reference`                     | `Decimal`  | The transaction reference from processor.                                                                                                                 |
+| `Swedbank Pay Account Number`   | `Decimal`  | The Account number given, shown in Swedbank Pay admin.                                                                                                    |
+| `Referenced Transaction Number` | `Decimal`  | Transaction number for the Authoriation transaction for a two-stage transaction or the number of the debit transaction if it is a credit transaction.     |
+| `Sales Channel`                 | `String`   | The channel through which the transaction was sent to Swedbank Pay (e.g Transaction via eCommerce APIs).                                                  |
+| `Brand`                         | `String`   | If eligible, Branding information as sent by merchant to Swedbank Pay.                                                                                    |
+| `Point Of Sale`                 | `String`   | If eligible, POS information as sent by merchant to Swedbank Pay.                                                                                         |
 
 ### Reconciliation
 
@@ -149,11 +149,11 @@ sequenceDiagram
 **There are two ways** for you to match the information from your system with
 the information given in the reconciliation files from Swedbank Pay:
 
-1. You can use information **generated by your** system (you will have to set a
-   unique payeeReference when you make the transaction), or
-2. You can use the transaction number **generated by Swedbank Pay** (this is called
-   transaction number and is returned from Swedbank Pay after you have created
-   the transaction).
+1.  You can use information **generated by your** system (you will have to set a
+    unique payeeReference when you make the transaction), or
+2.  You can use the transaction number **generated by Swedbank Pay** (this is called
+    transaction number and is returned from Swedbank Pay after you have created
+    the transaction).
 
 A credit card transaction is made when you either make a capture or a reversal.
 In the input data for making a capture, you will set the `payeeReference`. The
@@ -199,10 +199,10 @@ the reconciliation file.
 }
 ```
 
-* `payeeReference` sent to Swedbank Pay is equal to `OrderId` in the
-  reconciliation file.
-* `capture.transaction.number` returned from Swedbank Pay is equal to
-  `TransactionNo` in reconciliation file.
+*   `payeeReference` sent to Swedbank Pay is equal to `OrderId` in the
+    reconciliation file.
+*   `capture.transaction.number` returned from Swedbank Pay is equal to
+    `TransactionNo` in reconciliation file.
 
 ### Samples
 
@@ -242,48 +242,50 @@ charities.
 
 #### What we need from you as a company
 
-* Send us a KYC form for each sub merchant you want to include. We will also do
-  a KYC check on your sub merchants, providing extra security for you.
-* Give every sub merchant who sells goods/services at your website or in your
-  app a unique prefix number. This needs to be included in the KYC form you send
-  to us. We recommend using the same customer number they have in your system.
-* Attach the prefix number to all the goods/services the sub merchant
-  sells through your website or app, so the goods/services can be matched to the
-  correct merchant in our back office system.
-* A partner agreement is needed for the automatic deduction of revenue cuts and
-  fees.
+*   Send us a KYC form for each sub merchant you want to include.
+    We will also do a KYC check on your sub merchants, providing extra security
+    for you.
+*   Give every sub merchant who sells goods/services at your website or in your
+    app a unique prefix number. This needs to be included in the KYC form you
+    send to us.
+    We recommend using the same customer number they have in your system.
+*   Attach the prefix number to all the goods/services the sub merchant
+    sells through your website or app, so the goods/services can be matched
+    to the correct merchant in our back office system.
+*   A partner agreement is needed for the automatic deduction of revenue cuts
+    and fees.
 
 #### How it works
 
-1. We set up the sub merchant prefix in our systems.
-2. The prefix number is added in the subsite field in the API call when you
-   create the payment for the goods or service.
-3. The customer selects payment instrument and completes the payment.
-4. The payment goes into the client funds account.
-5. Swedbank Pay matches the transaction and the merchant using the prefix
-   number.
-6. The settlement is split and connected to the correct merchant.
-7. Revenue cuts for the super merchant and fees from Swedbank Pay are deducted
-   automatically.
-8. Payout to the sub merchant is done.
+1.  We set up the sub merchant prefix in our systems.
+2.  The prefix number is added in the subsite field in the API call when you
+    create the payment for the goods or service.
+3.  The customer selects payment instrument and completes the payment.
+4.  The payment goes into the client funds account.
+5.  Swedbank Pay matches the transaction and the merchant using the prefix
+    number.
+6.  The settlement is split and connected to the correct merchant.
+7.  Revenue cuts for the super merchant and fees from Swedbank Pay are deducted
+    automatically.
+8.  Payout to the sub merchant is done.
 
 #### The upsides
 
-* Since the sub merchants are connected to Swedbank Pay through the super
-  merchant instead of having separate setups, this means that you:
-* Only need one agreement for credit card, Vipps, Swish,
-  MobilePay, invoice and payment gateway.
-* Only need one acquiring agreement.
-* Only need one Vipps/Swish certificate.
-* Can add more payment instruments easily, as it only has to be done once.
-* Can set up new sub merchants quickly, as the only thing needed is a KYC
-  form and a prefix number. This shortens the setup time for both you and us
-  to a matter of hours.
-* The automatic settlement split and deduction of fees and revenue cuts
-  minimizes the work for your accounting department, as you do not have to
-  invoice your sub merchants.
-* The prefix split is available with all the payment instruments we offer on our
-  eCom platform.
+*   Since the sub merchants are connected to Swedbank Pay through the super
+    merchant instead of having separate setups, this means that you:
+*   Only need one agreement for credit card, Vipps, Swish,
+    MobilePay, invoice and payment gateway.
+*   Only need one acquiring agreement.
+*   Only need one Vipps/Swish certificate.
+*   Can add more payment instruments easily, as it only has to be done once.
+*   Can set up new sub merchants quickly, as the only thing needed is a KYC
+    form and a prefix number. This shortens the setup time for both you and us
+    to a matter of hours.
+*   The automatic settlement split and deduction of fees and revenue cuts
+    minimizes the work for your accounting department, as you do not have to
+    invoice your sub merchants.
+*   The prefix split is available with all the payment instruments we offer on our
+    eCom platform.
 
 #### Good to know
 

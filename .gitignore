@@ -7,5 +7,7 @@ _site/
 .vs
 .gem-cache/
 _gem-cache/
+node_modules/
+vendor/
 
 commit-msg.txt

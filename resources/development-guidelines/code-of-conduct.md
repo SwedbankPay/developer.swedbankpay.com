@@ -16,7 +16,6 @@ sidebar:
       title: Licence
 ---
 
-
 It is important that the projects governed by Swedbank Pay foster a
 collaborative, open, inclusive, positive and tolerant community. To underscore
 this, a `CODE_OF_CONDUCT.md` file from
@@ -36,13 +35,13 @@ body size, race, ethnicity, age, religion, or nationality.
 
 Examples of unacceptable behavior by participants include:
 
-* The use of sexualized language or imagery
-* Personal attacks
-* Trolling or insulting/derogatory comments
-* Public or private harassment
-* Publishing other's private information, such as physical or electronic
-  addresses, without explicit permission
-* Other unethical or unprofessional conduct
+*   The use of sexualized language or imagery
+*   Personal attacks
+*   Trolling or insulting/derogatory comments
+*   Public or private harassment
+*   Publishing other's private information, such as physical or electronic
+    addresses, without explicit permission
+*   Other unethical or unprofessional conduct
 
 Project maintainers have the right and responsibility to remove, edit, or
 reject comments, commits, code, wiki edits, issues, and other contributions

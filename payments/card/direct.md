@@ -48,22 +48,22 @@ https://www.pcisecuritystandards.org/)." %}
 
 Below is a quick stepwise summary of how the Direct Card Payment scenario works.
 
-- The payer places an order and you make a `Purchase` request towards Swedbank
+*   The payer places an order and you make a `Purchase` request towards Swedbank
   Pay with the gathered payment information.
-- The action taken next is the `direct-authorization` operation that is returned
+*   The action taken next is the `direct-authorization` operation that is returned
   in the first request. You `POST` the payer's card data to the URL in the
   [`direct-authorization`][authorization] operation.
-- If the issuer requires 3-D Secure authentication, you will then receive an
+*   If the issuer requires 3-D Secure authentication, you will then receive an
   operation called `redirect-authentication`. You must redirect the payer to
   this URL to let them authenticate against the issuer's 3-D Secure page.
-  - When the 3-D Secure flow is completed, the payer will be redirected back to
+      -    When the 3-D Secure flow is completed, the payer will be redirected back to
       the URL provided in `completeUrl` or `cancelUrl`, depending on the actions
       performed by the payer.
-  - If the issuer does not require 3-D Secure authentication, the payment will
+      -   If the issuer does not require 3-D Secure authentication, the payment will
       already be `Completed` after performing the `direct-authorization`
       request. Note that `Completed` just indicates that the payment is in a
       final state; the financial transaction could be either OK or failed.
-- Finally you make a `GET` request towards Swedbank Pay with the `id` of the
+*   Finally you make a `GET` request towards Swedbank Pay with the `id` of the
   payment created in the first step, which will return the result of the
   authorization.
 
@@ -198,7 +198,7 @@ Content-Type: application/json
 | └─➔&nbsp;`number`                 | `string`  | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead. |
 | └─➔&nbsp;`amount`                 | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` = 100.00 NOK, `5000` = 50.00 SEK.                                                                                     |
 | └─➔&nbsp;`vatAmount`              | `integer` | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                           |
-| └─➔&nbsp;`description`            | `string`  | {% include field-description-description.md documentation_section="card" %}                                                                                                                                     |
+| └─➔&nbsp;`description`            | `string`  | {% include field-description-description.md documentation_section="card" %}                                                                                                                                  |
 | └─➔&nbsp;`payeeReference`         | `string`  | A unique reference for the transaction.                                                                                                                                                                      |
 | └─➔&nbsp;`failedReason`           | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | └─➔&nbsp;`isOperational`          | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
@@ -323,7 +323,7 @@ Content-Type: application/json
 | └─➔&nbsp;`number`                 | `string`  | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead. |
 | └─➔&nbsp;`amount`                 | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` = 100.00 NOK, `5000` = 50.00 SEK.                                                                                     |
 | └─➔&nbsp;`vatAmount`              | `integer` | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                           |
-| └─➔&nbsp;`description`            | `string`  | {% include field-description-description.md documentation_section="card" %}                                                                                                                                     |
+| └─➔&nbsp;`description`            | `string`  | {% include field-description-description.md documentation_section="card" %}                                                                                                                                  |
 | └─➔&nbsp;`payeeReference`         | `string`  | A unique reference for the transaction.                                                                                                                                                                      |
 | └─➔&nbsp;`failedReason`           | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | └─➔&nbsp;`isOperational`          | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
@@ -391,12 +391,12 @@ sequenceDiagram
 
 ## Options after posting a purchase payment
 
-- If the payment shown above is done as a two-phase (Authorization), you will
+*   If the payment shown above is done as a two-phase (Authorization), you will
   need to implement the [Capture][capture] and [Cancel][cancel] requests.
-- **Abort:** It is possible to [abort a payment][abort] if the payment has no
+*   **Abort:** It is possible to [abort a payment][abort] if the payment has no
   successful transactions.
-- For `reversals`, you will need to implement the [Reversal][reversal] request.
-- **Callback from Swedbank Pay:** Whenever changes to the payment occur a
+*   For `reversals`, you will need to implement the [Reversal][reversal] request.
+*   **Callback from Swedbank Pay:** Whenever changes to the payment occur a
   [Callback request][callback] will be posted to the `callbackUrl`, generated
   when the payment was created.
 

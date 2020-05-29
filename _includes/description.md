@@ -1,3 +1,5 @@
+## Description
+
 The `description` field is a 40 character length textual summary of the
 purchase. It is needed to specify what payer is actually purchasing. Below you
 will find an abbreviated Card Payments `Purchase` request.

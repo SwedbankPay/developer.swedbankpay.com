@@ -35,7 +35,7 @@ set to value `FinancingConsumer` are listed below.
 | `currency`    | `NOK`                            | `EUR`                          | `SEK`                          |
 | `invoiceType` | `PayExFinancingNO`               | `PayExFinancingFI`             | `PayExFinancingSE`             |
 
-* An invoice payment is always two-phased based -  you create an Authorize
+*   An invoice payment is always two-phased based -  you create an Authorize
   transaction, that is followed by a Capture or Cancel request.
 
 {% include alert-callback-url.md api_resource="invoice" %}
@@ -191,26 +191,26 @@ to charge the consumer right away.
 
 ### Verification through Swedbank Pay Payments
 
-* When properly set up in your merchant/webshop site and the payer initiates a
+*   When properly set up in your merchant/webshop site and the payer initiates a
   verification operation, you make a `POST` request towards Swedbank Pay with
   your Verify information. This will generate a payment object with a unique
   `paymentID`. You either receive a Redirect URL to a hosted page or a
   JavaScript source in response.
-* You need to [redirect][redirect] the payer's browser to that specified URL, or
-  embed the script source on your site to create a [Seamless
-  View][seamless-view] in an `iframe`; so that the payer can enter the payment details
-  in a secure Swedbank Pay hosted environment.
-* Swedbank Pay will redirect the payer's browser to - or display directly in the
-  `iframe` - one of two specified URLs, depending on whether the payment session
-  is followed through completely or cancelled beforehand. Please note that both
-  a successful and rejected payment reach completion, in contrast to a cancelled
-  payment.
-* When you detect that the payer reach your completeUrl , you need to do a `GET`
-  request to receive the state of the transaction.
-* Finally you will make a `GET` request towards Swedbank Pay with the
-  `paymentID` received in the first step, which will return the payment result
-  and a `paymentToken` that can be used for subsequent [recurring
-  server-to-server based payments][recur].
+*   You need to [redirect][redirect] the payer's browser to that specified URL,
+    or embed the script source on your site to create a
+    [Seamless View][seamless-view] in an `iframe`; so that the payer can enter
+    the payment details in a secure Swedbank Pay hosted environment.
+*   Swedbank Pay will redirect the payer's browser to - or display directly in
+    the `iframe` - one of two specified URLs, depending on whether the payment
+    session is followed through completely or cancelled beforehand.
+    Please note that both a successful and rejected payment reach completion,
+    in contrast to a cancelled payment.
+*   When you detect that the payer reach your completeUrl , you need to do a
+    `GET`  request to receive the state of the transaction.
+*   Finally you will make a `GET` request towards Swedbank Pay with the
+    `paymentID` received in the first step, which will return the payment result
+    and a `paymentToken` that can be used for subsequent [recurring
+    server-to-server based payments][recur].
 
 ### Screenshots
 
@@ -219,7 +219,7 @@ the payment information.
 
 ![screenshot of the redirect invoice payment page][invoice-payment]{:height="500px" width="425px"}
 
-### API Requests
+### API Requests verification flow
 
 The API requests are displayed in the [Verification flow][verification-flow]. The options you can
 choose from when creating a payment with key operation set to Value Verify are
@@ -518,7 +518,7 @@ Content-Type: application/json
 | └➔&nbsp;`number`         | `string`  | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead. |
 | └➔&nbsp;`amount`         | `integer` | {% include field-description-amount.md %}                                                                                                                                                                    |
 | └➔&nbsp;`vatAmount`      | `integer` | {% include field-description-vatamount.md %}                                                                                                                                                                 |
-| └➔&nbsp;`description`    | `string`  | {% include field-description-description.md documentation_section="invoice" %}                                                                                                                                  |
+| └➔&nbsp;`description`    | `string`  | {% include field-description-description.md documentation_section="invoice" %}                                                                                                                               |
 | └➔&nbsp;`payeeReference` | `string`  | The `payeeReference` is the receipt/invoice number and is a unique reference for each transaction.                                                                                                           |
 | └➔&nbsp;`failedReason`   | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | └➔&nbsp;`isOperational`  | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
@@ -535,8 +535,6 @@ documentation_section="invoice" %}
 {% include payment-link.md show_3d_secure=false %}
 
 {% include complete-url.md %}
-
-## Description
 
 {% include description.md %}
 

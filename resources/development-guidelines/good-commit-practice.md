@@ -16,7 +16,6 @@ sidebar:
       title: Licence
 ---
 
-
 The following document is a fork of
 [OpenStack's Git Commit Good Practice][good-practice], rewritten to suit
 Swedbank Pay needs. It is based on experience doing code development, bug
@@ -29,8 +28,8 @@ come up with some general guidelines for what to do, or conversely what not
 to do, when publishing Git commits for merge with a project. This topic can
 be split into two areas of concern:
 
-1. The structured set/split of the code changes
-1. The information provided in the commit message
+1.  The structured set/split of the code changes
+2.  The information provided in the commit message
 
 ## Executive Summary
 
@@ -63,15 +62,15 @@ The cardinal rule for creating good commits is to ensure there is only one
 "logical change" per commit. There are many reasons why this is an important
 rule:
 
-* The smaller the amount of code being changed, the quicker and easier it is
+*   The smaller the amount of code being changed, the quicker and easier it is
   to review and identify potential flaws.
-* If a change is found to be flawed later, it may be necessary to revert the
+*   If a change is found to be flawed later, it may be necessary to revert the
   broken commit. This is much easier to do if there are not other unrelated
   code changes entangled with the original commit.
-* When troubleshooting problems using Git's [bisect][bisect] capability,
+*   When troubleshooting problems using Git's [bisect][bisect] capability,
   small well defined changes will aid in isolating exactly where the code
   problem was introduced.
-* When browsing history using Git annotate/blame, small well defined changes
+*   When browsing history using Git annotate/blame, small well defined changes
   also aid in isolating exactly where & why a piece of code came from.
 
 ## Things to avoid when creating commits
@@ -124,7 +123,7 @@ implementation. If patch impacts a public HTTP, use the APIImpact flag
 The basic rule to follow is:
 
 > If a code change can be split into a sequence of patches/commits, then it
-> should be split. **Less is *not* more. More is more**.
+> should be split. **Less is *not*   more. More is more**.
 
 ### Examples of bad practice
 
@@ -145,28 +144,28 @@ Date:   Fri Jun 1 01:44:02 2012 +0000
 
     Refactor libvirt create calls
 
-* minimizes duplicated code for create
-* makes wait_for_destroy happen on shutdown instead of undefine
-* allows for destruction of an instance while leaving the domain
-* uses reset for hard reboot instead of create/destroy
-* makes resume_host_state use new methods instead of hard_reboot
-* makes rescue/unrescue not use hard reboot to recreate domain
+*   minimizes duplicated code for create
+*   makes wait_for_destroy happen on shutdown instead of undefine
+*   allows for destruction of an instance while leaving the domain
+*   uses reset for hard reboot instead of create/destroy
+*   makes resume_host_state use new methods instead of hard_reboot
+*   makes rescue/unrescue not use hard reboot to recreate domain
 
     Change-Id: I2072f93ad6c889d534b04009671147af653048e7
 ```
 
 There are at least two independent changes made in this commit.
 
-1. The switch to use the new `reset` API for the `hard_reboot` method.
-2. The adjustment to internal driver methods to not use `hard_reboot`.
+1.  The switch to use the new `reset` API for the `hard_reboot` method.
+2.  The adjustment to internal driver methods to not use `hard_reboot`.
 
 What is the problem with this?
 
-* First there is no compelling reason why these changes needed to be made at
+*   First there is no compelling reason why these changes needed to be made at
   the same time. A first commit could have included the changes to stop calling
   `hard_reboot` in various places. A second commit could have re-written the
   `hard_reboot` impl.
-* Second, as the switch to using the libvirt ##reset## method was buried in
+*   Second, as the switch to using the libvirt ##reset## method was buried in
   the large code refactoring, reviewers missed the fact that this was
   introducing a dependency on a newer libvirt API version. This commit was
   identified as the culprit reasonably quickly, but a trivial revert is not
@@ -212,13 +211,13 @@ code. This makes it hard to identify likely regressions in support for
 QCow2/Raw images. This should have been split into at least four separate
 commits:
 
-1. Replace the `use_cow_images` config FLAG with the new FLAG
+1.  Replace the `use_cow_images` config FLAG with the new FLAG
    `libvirt_local_images_type`, with back-compat code for support of
    legacy `use_cow_images` FLAG 2. Creation of internal "Image" class and
    subclasses for Raw & QCow2 image type impls.
-2. Refactor libvirt driver to replace raw/qcow2 image management code, with
+2.  Refactor libvirt driver to replace raw/qcow2 image management code, with
    calls to the new `Image` class APIs.
-3. Introduce the new "LVM" `Image` class implementation.
+3.  Introduce the new "LVM" `Image` class implementation.
 
 ### Examples of good practice
 
@@ -290,7 +289,7 @@ to remember:
 When reading bug reports, after a number of back & forth comments, it is often
 as clear as mud, what the root cause problem is. The commit message should
 have a clear statement as to what the original problem is. The bug is merely
-interesting historical background on *how* the problem was identified. It
+interesting historical background on *how*   the problem was identified. It
 should be possible to review a proposed patch for correctness without needing
 to read the bug ticket.
 
@@ -309,10 +308,10 @@ What is self-evident to one person, might be clear as mud to another person.
 Always document what the original problem was and how it is being fixed, for
 any change except the most obvious typos, or whitespace only commits.
 
-### Describe *why* a change is being made
+### Describe *why*   a change is being made
 
 A common mistake is to just document how the code has been written, without
-describing *why* the developer chose to do it that way. By all means describe
+describing *why*   the developer chose to do it that way. By all means describe
 the overall code structure, particularly for large changes, but more
 importantly describe the intent/motivation behind the changes.
 
@@ -351,7 +350,7 @@ tradeoffs have been done in terms of short term goals vs. long term wishes.
 
 In other words, if you rebase your change please don't add
 "Patch set 2: rebased" to your commit message.  That isn't going to be
-relevant once your change has merged.  Please *do* make a note of that in
+relevant once your change has merged.  Please *do*   make a note of that in
 Gerrit as a comment on your change, however.  It helps reviewers know what
 changed between patch sets.  This also applies to comments such as
 "Added unit tests", "Fixed localization problems", or any other such patch
@@ -360,7 +359,8 @@ set to patch set changes that don't affect the overall intent of your commit.
 The main rule to follow is:
 
 > The commit message must contain all the information required to fully
-  understand & review the patch for correctness. **Less is *not* more. More is more.**
+> understand & review the patch for correctness.
+> **Less is *not*   more.More is more.**
 
 ### Including external references
 
@@ -385,20 +385,20 @@ the stats tools to observe it when collecting statistics.
 
 ### Summary of Git commit message structure
 
-* Provide a brief description of the change in the first line.
-* Insert a single blank line after the first line.
-* Provide a detailed description of the change in the following lines,
+*   Provide a brief description of the change in the first line.
+*   Insert a single blank line after the first line.
+*   Provide a detailed description of the change in the following lines,
   breaking paragraphs where needed.
-* The first line should be limited to 50 characters and should not end with
-* a period.
-* Subsequent lines should be wrapped at 72 characters.
-* vim (the default `$EDITOR` on most distros) can wrap automatically lines
+*   The first line should be limited to 50 characters and should not end with
+*   a period.
+*   Subsequent lines should be wrapped at 72 characters.
+*   vim (the default `$EDITOR` on most distros) can wrap automatically lines
   for you. In most cases you just need to copy the example vimrc file
   (which can be found somewhere like `/usr/share/vim/vim74/vimrc_example.vim`)
   to `/.vimrc` if you don't have one already.
-* After editing a paragraph, you can re-wrap it by pressing escape, ensuring
+*   After editing a paragraph, you can re-wrap it by pressing escape, ensuring
   the cursor is within the paragraph and typing `gqip`.
-* Put external references at the very end of the commit message.
+*   Put external references at the very end of the commit message.
 
 {:.code-header}
 For example:
@@ -460,7 +460,7 @@ Date:   Fri Jun 15 11:12:45 2012 -0600
 
     Fixes bug 1013765
 
-* Add template argument to ec2utils.id_to_ec2_id() calls
+*   Add template argument to ec2utils.id_to_ec2_id() calls
 
     Change-Id: I5e574f8e60d091ef8862ad814e2c8ab993daa366
 
@@ -562,11 +562,11 @@ Date:   Mon Jun 11 17:16:10 2012 +0100
 
 Some things to note about this example commit message
 
-* It describes what the original problem is (bad KVM defaults)
-* It describes the functional change being made (the new PIT/RTC policies)
-* It describes what the result of the change is (new the XML/QEMU args)
-* It describes scope for future improvement (the possible per-OS type config)
-* It uses the Closes-Bug notation
+*   It describes what the original problem is (bad KVM defaults)
+*   It describes the functional change being made (the new PIT/RTC policies)
+*   It describes what the result of the change is (new the XML/QEMU args)
+*   It describes scope for future improvement (the possible per-OS type config)
+*   It uses the Closes-Bug notation
 
 {:.code-header}
 **Example 2**
@@ -604,10 +604,10 @@ Date:   Wed Jun 6 22:45:25 2012 -0400
 
 Some things to note about this example commit message
 
-* It describes what the problem scenario is (mixed arch deployments)
-* It describes the intent of the fix  (make the schedular filter on arch)
-* It describes the rough architecture of the fix (how libvirt returns arch)
-* It notes the limitations of the fix (work needed on Xen)
+*   It describes what the problem scenario is (mixed arch deployments)
+*   It describes the intent of the fix  (make the schedular filter on arch)
+*   It describes the rough architecture of the fix (how libvirt returns arch)
+*   It notes the limitations of the fix (work needed on Xen)
 
 [good-practice]: https://wiki.openstack.org/wiki/GitCommitMessages
 [bisect]: https://git-scm.com/book/en/v2/Git-Tools-Debugging-with-Git

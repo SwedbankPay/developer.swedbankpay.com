@@ -81,6 +81,104 @@ advice, your integration most assuredly will break when Swedbank Pay makes
 updates in the future.
 " %}
 
+### Storing URIs
+
+{% include alert.html type="success" icon="link" header="Storing URIs" body="In
+general, URIs should be **discovered** in responses to previous requets, **not
+stored**." %}
+
+However, URIs that are used to create new resources can be stored or hard coded.
+Also, the URI of the generated resource can be stored on your end to `GET` it at a
+later point. Note that the URIs should be stored as opaque identifiers and
+should not be parsed or interpreted in any way.
+
+{% include alert.html type="warning" icon="warning" header="Operation URIs"
+body="URIs that are returned as part of the `operations` in each response should
+not be stored." %}
+
+See the abbreviated example below where `psp/creditcard/payments` from the
+`POST` header is an example of the URI that can be stored, as it is used to
+create a new resource. Also, the `/psp/creditcard/payments/{{ page.payment_id}}`
+URI can be stored in order to retrieve the created payment with an HTTP `GET`
+request later.
+
+The URIs found within `operations` such as the `href` of `update-payment-abort`,
+`{{ page.api_url }}/psp/creditcard/payments/{{ page.payment_id }}` should not be
+stored.
+
+In order to find which operations you can perform on a resource and the URI of
+the operation to perform, you need to retrieve the resource with an HTTP `GET`
+request first and then find the operation in question within the `operations`
+field.
+{:.code-header}
+**Request**
+
+```http
+POST /psp/creditcard/payments HTTP/1.1
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+
+{
+    "payment": {
+        "operation": "Purchase",
+        "intent": "Authorization",
+        "currency": "SEK",
+        "prices": [{
+                "type": "CreditCard",
+                "amount": 1500,
+                "vatAmount": 0
+            }
+        ],
+        "description": "Test Purchase",
+        "generatePaymentToken": false,
+        "generateRecurrenceToken": false,
+        "userAgent": "Mozilla/5.0...",
+        "language": "nb-NO",
+     }
+ }
+```
+
+{:.code-header}
+**Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "payment": {
+        "id": "/psp/creditcard/payments/{{ page.payment_id }}",
+        "number": 1234567890,
+        "instrument": "CreditCard",
+        "created": "2016-09-14T13:21:29.3182115Z",
+        "updated": "2016-09-14T13:21:57.6627579Z",
+        "state": "Ready",
+        "operation": "Purchase",
+        "intent": "Authorization",
+        },
+    "operations": [
+        {
+            "rel": "update-payment-abort",
+            "href": "{{ page.api_url }}/psp/creditcard/payments/{{ page.payment_id }}",
+            "method": "PATCH",
+            "contentType": "application/json"
+        },
+        {
+            "rel": "redirect-authorization",
+            "href": "{{ page.front_end_url }}/creditcard/payments/authorize/{{ page.payment_token }}",
+            "method": "GET",
+            "contentType": "text/html"
+        },
+        {
+            "rel": "view-authorization",
+            "href": "{{ page.front_end_url }}/creditcard/core/scripts/client/px.creditcard.client.js?token={{ page.payment_token }}",
+            "method": "GET",
+            "contentType": "application/javascript"
+        }
+    ]
+}
+```
+
 ## Uniform Responses
 
 When a `POST` or `PATCH` request is performed, the whole target resource
@@ -275,10 +373,10 @@ Problem types for a specific payment instrument will have a URI in the format
 `https://api.payex.com/psp/errordetail/<payment-instrument>/<error-type>`. You
 can read more about the payment instrument specific problem messages below:
 
-* [Card Payments][card-problems]
-* [Invoice Payments][invoice-problems]
-* [Swish Payments][swish-problems]
-* [Vipps Payments][vipps-problems]
+*   [Card Payments][card-problems]
+*   [Invoice Payments][invoice-problems]
+*   [Swish Payments][swish-problems]
+*   [Vipps Payments][vipps-problems]
 
 [admin]: https://admin.externalintegration.payex.com/psp/login
 [card-problems]: /payments/card/other-features#problems

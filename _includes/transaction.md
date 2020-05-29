@@ -6,16 +6,17 @@ specific payment.
 
 When a transaction is created it will have one of three states:
 
-* `Initialized` - if there is some error where the source is undeterminable
-  (network failure, etc), the transaction will remain Initialized. The
-  corresponding state of the payment order will in this case be set to pending.
-  No further transactions can be created.
-* `Completed` - if everything went ok the transaction will follow through to
-  completion.
-* `Failed` - if the transaction has failed (i.e. a denial from the acquiring
-  bank) it is possible to retry (i.e the consumer tries using another credit
-  card) up to a maximum amount of retries (in that case which the payment order
-  gets the state `failed` as well).
+*   `Initialized` - if there is some error where the source is undeterminable
+    (network failure, etc), the transaction will remain Initialized. The
+    corresponding state of the payment order will in this case be set to
+    pending.
+    No further transactions can be created.
+*   `Completed` - if everything went ok the transaction will follow through to
+    completion.
+*   `Failed` - if the transaction has failed (i.e. a denial from the acquiring
+    bank) it is possible to retry (i.e the consumer tries using another credit
+    card) up to a maximum amount of retries (in that case which the payment
+    order gets the state `failed` as well).
 
 {:.code-header}
 **Request**
@@ -65,9 +66,9 @@ Content-Type: application/json
 | └➔&nbsp;`type`           | `string`  | Indicates the transaction type.                                                                                                                                                                              |
 | └➔&nbsp;`state`          | `string`  | `Initialized`, `Completed` or `Failed`. Indicates the state of the transaction.                                                                                                                              |
 | └➔&nbsp;`number`         | `string`  | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead. |
-| └➔&nbsp;`amount`         | `integer` | {% include field-description-amount.md %}                                                                                     |
-| └➔&nbsp;`vatAmount`      | `integer` | {% include field-description-vatamount.md %}                                                           |
-| └➔&nbsp;`description`    | `string`  | {% include field-description-description.md documentation_section=documentation_section %}                                                                                                                                    |
+| └➔&nbsp;`amount`         | `integer` | {% include field-description-amount.md %}                                                                                                                                                                    |
+| └➔&nbsp;`vatAmount`      | `integer` | {% include field-description-vatamount.md %}                                                                                                                                                                 |
+| └➔&nbsp;`description`    | `string`  | {% include field-description-description.md documentation_section=documentation_section %}                                                                                                                   |
 | └➔&nbsp;`payeeReference` | `string`  | A unique reference for the transaction.                                                                                                                                                                      |
 | └➔&nbsp;`failedReason`   | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | └➔&nbsp;`isOperational`  | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |

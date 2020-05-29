@@ -16,14 +16,14 @@ sidebar:
 
 ## Options after posting a payment
 
-* **Abort**: It is possible to [abort a payment][technical-reference-abort]
-  if the payment has no successful transactions.
-* If the payment shown above has a completed `authorization`,
-  you will need to implement the `Capture` and `Cancel` requests.
-* For reversals, you will need to implement the `Reversal` request.
-* **If CallbackURL is set**: Whenever changes to the payment occur
-  a [Callback request][technical-reference-callback] will be posted to
-  the `callbackUrl`, generated when the payment was created.
+*   **Abort**: It is possible to [abort a payment][technical-reference-abort]
+    if the payment has no successful transactions.
+*   If the payment shown above has a completed `authorization`,
+    you will need to implement the `Capture` and `Cancel` requests.
+*   For reversals, you will need to implement the `Reversal` request.
+*   **If CallbackURL is set**: Whenever changes to the payment occur
+    a [Callback request][technical-reference-callback] will be posted to
+    the `callbackUrl`, generated when the payment was created.
 
 ## Capture
 
