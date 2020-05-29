@@ -16,7 +16,6 @@ sidebar:
       title: Licence
 ---
 
-
 ## Licensing
 
 The licensing of PayEx’ open source software should be one approved by the
