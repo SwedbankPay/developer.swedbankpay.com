@@ -16,17 +16,12 @@ sidebar:
       title: Other Features
 ---
 
-{% include jumbotron.html body="**Payment Menu** begins where **Checkin** left
-off, letting the payer complete their purchase." %}
+{% include jumbotron.html body="**Payment Order** lets the payer complete their purchase." %}
 
 ## Step 1: Create Payment Order
 
-Once consumer has been identified, the next step is to initiate the payment
-using `consumerProfileRef` retrieved in the previous step.
-
 We start by performing a `POST` request towards the `paymentorder` resource
-with the payer information (such as `consumerProfileRef`) we obtained in the
-checkin process described above.
+with the payer information, such as `consumerProfileRef`.
 Remember to read up on our [URL resource][urls].
 
 {% include alert-risk-indicator.md %}
@@ -291,8 +286,8 @@ rect rgba(138, 205, 195, 0.1)
 Now that you have completed the Payment Menu integration, you can move on to
 finalizing the payment in the [After Payment section][after-payment].
 
-{% include iterator.html prev_href="checkin"
-                         prev_title="Back: Checkin"
+{% include iterator.html prev_href="index"
+                         prev_title="Back: Introduction"
                          next_href="capture"
                          next_title="Next: Capture" %}
 
