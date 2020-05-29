@@ -24,7 +24,6 @@ sidebar:
       title: Public Migration Key
 ---
 
-
 {% include jumbotron.html body=
 "We are working on a brand new demoshop for you!
 In the meantime, knock yourself out with our existing

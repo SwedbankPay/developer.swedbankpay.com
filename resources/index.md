@@ -24,7 +24,6 @@ sidebar:
       title: Public Migration Key
 ---
 
-
 {% include jumbotron.html body="In this section you find various **resources**
 for Swedbank Pay's API Platform." %}
 
