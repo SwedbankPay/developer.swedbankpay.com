@@ -35,8 +35,7 @@ this very documentation, not to a version of any APIs described by it." %}
 
 ### Version 1.11.0
 
-*   Added a new [Trustly Payments][trustly-payments] section in Payments with description of
-  Trustly Payments API.
+*   Added a new [Trustly Payments][trustly-payments] section.
 *   Added information about [Storing URIs][storing-uri] in the [Technical
   Information][home-technical-information] section.
 
