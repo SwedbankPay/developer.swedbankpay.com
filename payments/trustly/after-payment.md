@@ -25,13 +25,13 @@ also be able to see the available `operations` after posting a payment.
 
 {% include payment-resource.md api_resource="trustly" documentation_section="trustly" %}
 
-* **Abort:** It is possible to abort the process if the payment has no
-  successful transactions. [See the `abort`
-  description][abort-description].
-* For reversals, you will need to implement the `reversal` request.
-* **If CallbackURL is set:** Whenever changes to the payment occur a [Callback
-  request][callback-request] will be posted to the `callbackUrl`, which was
-  set when the payment was created.
+*   **Abort:** It is possible to abort the process if the payment has no
+    successful transactions. [See the `abort`
+    description][abort-description].
+*   For reversals, you will need to implement the `reversal` request.
+*   **If CallbackURL is set:** Whenever changes to the payment occur a
+    [Callback request][callback-request] will be posted to the `callbackUrl`,
+    which was set when the payment was created.
 
 {% include abort-reference.md instrument="trustly" %}
 
