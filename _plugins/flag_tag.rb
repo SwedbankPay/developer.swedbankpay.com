@@ -7,7 +7,7 @@ module Jekyll
       @country_code = country_code
     end
 
-    def render(context)
+    def render(_)
       "<i class=\"flag-icon flag-icon-#{@country_code}\"></i>"
     end
   end
