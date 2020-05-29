@@ -173,8 +173,6 @@ be connected to a Swish account.
 
 {% include payment-link.md show_3d_secure=false show_authorization=false %}
 
-## Description
-
 {% include description.md %}
 
 {% include complete-url.md %}

@@ -16,6 +16,8 @@ sidebar:
       title: Vipps Payments
     - url: /payments/mobile-pay
       title: MobilePay Payments
+    - url: /payments/trustly
+      title: Trustly Payments
 ---
 
 {% include jumbotron.html body="Payments is our off-the-rack assortment of
@@ -32,14 +34,15 @@ and Seamless View – or use Swedbank Pay Direct API to integrate directly. Our
 payment instruments and their platform availability are listed in the table
 below.
 
-{:.table .table-striped}
-|                              | Payment instrument              |  Seamless View   |     Redirect     |     Direct API     | Region                                             |
-| :--------------------------: | :------------------------------ | :--------------: | :--------------: | :----------------: | :------------------------------------------------- |
-|    ![CardIcon][card-icon]    | [Credit card][card]             | {% icon check %} | {% icon check %} |  {% icon check %}  | ![EarthIcon][earth-icon]                           |
-| ![InvoiceIcon][invoice-icon] | [Swedbank Pay Invoice][invoice] | {% icon check %} | {% icon check %} |                    | ![nor][nor-flag] ![swe][swe-flag] ![fin][fin-flag] |
-|     ![Vipps][vipps-logo]     | [Vipps][vipps]                  | {% icon check %} | {% icon check %} |                    | ![nor][nor-flag]                                   |
-|     ![Swish][swish-logo]     | [Swish][swish]                  | {% icon check %} | {% icon check %} | {% icon check %}  ︎ | ![swe][swe-flag]                                   |
-| ![MobilePay][mobilepay-logo] | [Mobile Pay][mobile-pay]        |                  | {% icon check %} |                    | ![dan][dan-flag] ![fin][fin-flag]                  |
+{:.table .table-plain}
+|                              | Payment instrument              |  Seamless View   |     Redirect     |     Direct API     | Region                                            |
+|:----------------------------:|:--------------------------------|:----------------:|:----------------:|:------------------:|:--------------------------------------------------|
+|    {% icon credit_card %}    | [Card Payments][card]           | {% icon check %} | {% icon check %} |  {% icon check %}  | ![EarthIcon][earth-icon]                          |
+| {% icon insert_drive_file %} | [Swedbank Pay Invoice][invoice] | {% icon check %} | {% icon check %} |                    | ![nor][nor-flag] ![swe][swe-flag]![fin][fin-flag] |
+|     ![Vipps][vipps-logo]     | [Vipps][vipps]                  | {% icon check %} | {% icon check %} |                    | ![nor][nor-flag]                                  |
+|     ![Swish][swish-logo]     | [Swish][swish]                  | {% icon check %} | {% icon check %} | {% icon check %}  ︎ | ![swe][swe-flag]                                  |
+| ![MobilePay][mobilepay-logo] | [Mobile Pay][mobile-pay]        |                  | {% icon check %} |                    | ![dan][dan-flag] ![fin][fin-flag]                 |
+|   ![Trustly][trustly-logo]   | [Trustly][trustly]              | {% icon check %} | {% icon check %} |                    | ![swe][swe-flag] ![fin][fin-flag]                 |
 
 ## Prerequisites
 
@@ -130,6 +133,7 @@ The payment instruments that support one-phase payments are:
 
 * [Swish][swish]
 * [Card][card]
+* [Trustly][trustly]
 
 ## The Payment Object
 
@@ -163,14 +167,15 @@ Please visit our [demoshop][demoshop] to see our Payment Menu and Redirect
 implementation in action.
 
 [demoshop]: {{ page.front_end_url }}/pspdemoshop
-[card-icon]: /assets/img/card-icon.png
+[card-icon]: /assets/img/icon-card-simple.svg
 [https]: /home/technical-information#connection-and-protocol
-[invoice-icon]: /assets/img/invoice-icon.png
+[invoice-icon]: /assets/img/icon-invoice-simple.svg
 [envelope-icon]: /assets/img/envelope-icon.png
 [keypad-icon]: /assets/img/keypad-icon.png
-[vipps-logo]: /assets/img/vipps-icon.png
-[swish-logo]: /assets/img/swish-icon.png
-[mobilepay-logo]: /assets/img/mobilepay-icon.png
+[vipps-logo]: /assets/img/icon-vipps-simple.svg
+[swish-logo]: /assets/img/icon-swish-simple.svg
+[mobilepay-logo]: /assets/img/icon-mobilepay-simple.svg
+[trustly-logo]: /assets/img/icon-trustly-simple.svg
 [earth-icon]: /assets/img/globe-icon.png
 [nor-flag]: /assets/img/flag-norway.png
 [swe-flag]: /assets/img/flag-sweden.png
@@ -188,3 +193,4 @@ implementation in action.
 [seamless-view]: /payments/card/seamless-view
 [redirect]: /payments/card/redirect
 [direct]: /payments/card/direct
+[trustly]: /payments/trustly

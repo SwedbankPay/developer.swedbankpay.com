@@ -33,8 +33,6 @@ To create a payment order, you perform a `POST` request towards the
 
 {% include payment-order-purchase.md %}
 
-## Description
-
 {% include description.md %}
 
 #### Response
