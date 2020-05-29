@@ -20,10 +20,10 @@ sidebar:
 
 ## Prerequisites
 
-* Java 11
-* VueJS
-* Maven
-* Postgres
+*   Java 11
+*   VueJS
+*   Maven
+*   Postgres
 
 ## Project setup
 
@@ -67,8 +67,8 @@ Now go to `http://localhost:8080/` and have a look at your new client.
 
 ## Testing application
 
-1. Add a new Merchant with the details provided by Swedbank Pay.
-2. Click on Gift Cards and add a new Gift card.
+1.  Add a new Merchant with the details provided by Swedbank Pay.
+2.  Click on Gift Cards and add a new Gift card.
 
 ## Build docker image
 
