@@ -19,24 +19,25 @@ sidebar:
 ---
 
 {% include jumbotron.html
-                      body="Swish is a one-phase payment instrument supported by the
-                      major Swedish banks. In the Direct scenario,
-                      Swedbank Pay receives the Swish registered mobile number
-                      directly from the merchant UI. Swedbank Pay performs a
-                      payment that the payer confirms using her Swish mobile
-                      app." %}
+                body="Swish is a one-phase payment instrument supported by the
+                major Swedish banks. In the Direct scenario,
+                Swedbank Pay receives the Swish registered mobile number
+                directly from the merchant UI. Swedbank Pay performs a
+                payment that the payer confirms using her Swish mobile
+                app." %}
 
 ## Payment Flow
 
-* When the payer starts the purchase process, you make a `POST` request towards
-  Swedbank Pay with the collected Purchase information.
-* The next step is to collect the consumer's Swish registered mobile number
-  and make a `POST` request towards Swedbank Pay to create a sales transaction.
-* Swedbank Pay will handle the dialogue with Swish and the consumer will have to
-  confirm the purchase in the Swish app.
-* If `callbackURL` is set, you will receive a payment callback when the Swish
-  dialogue is completed.
-* Make a `GET` request to check the payment status.
+*   When the payer starts the purchase process, you make a `POST` request
+    towards Swedbank Pay with the collected Purchase information.
+*   The next step is to collect the consumer's Swish registered mobile number
+    and make a `POST` request towards Swedbank Pay to create a sales
+    transaction.
+*   Swedbank Pay will handle the dialogue with Swish and the consumer will have
+    to confirm the purchase in the Swish app.
+*   If `callbackURL` is set, you will receive a payment callback when the Swish
+    dialogue is completed.
+*   Make a `GET` request to check the payment status.
 
 {% include alert.html type="informative" icon="report_problem"
 body="Swish is a one-phase payment instrument that is based on sales
@@ -114,11 +115,11 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`type`              | `string`      | Swish                                                                                                                                                                                                                                                                                              |
 | {% icon check %} | └─➔&nbsp;`amount`            | `integer`     | {% include field-description-amount.md %}                                                                                                                                                                                                                                                          |
 | {% icon check %} | └─➔&nbsp;`vatAmount`         | `integer`     | {% include field-description-vatamount.md %}                                                                                                                                                                                                                                                       |  |
-| {% icon check %} | └➔&nbsp;`description`        | `string(40)`  | {% include field-description-description.md documentation_section="swish" %}                                                                                                                                                                                                                          |
+| {% icon check %} | └➔&nbsp;`description`        | `string(40)`  | {% include field-description-description.md documentation_section="swish" %}                                                                                                                                                                                                                       |
 |                  | └➔&nbsp;`payerReference`     | `string`      | The reference to the payer (consumer/end user) from the merchant system. E.g mobile number, customer number etc.                                                                                                                                                                                   |
 |                  | └➔&nbsp;`payeeName`          | `string`      | The payee name will be displayed to consumer when redirected to Swedbank Pay.                                                                                                                                                                                                                      |
 | {% icon check %} | └➔&nbsp;`userAgent`          | `string`      | The user agent reference of the consumer's browser - [see user agent definition][user-agent]                                                                                                                                                                                                       |
-| {% icon check %} | └➔&nbsp;`language`           | `string`      | {% include field-description-language.md api_resource="swish" %}                                                                                                                                                                                                                                                                       |
+| {% icon check %} | └➔&nbsp;`language`           | `string`      | {% include field-description-language.md api_resource="swish" %}                                                                                                                                                                                                                                   |
 | {% icon check %} | └➔&nbsp;`urls`               | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                             |
 | {% icon check %} | └─➔&nbsp;`completeUrl`       | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. |
 |                  | └─➔&nbsp;`cancelUrl`         | `string`      | The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only cancelUrl or `paymentUrl` can be used, not both.                                                                                              |
@@ -378,10 +379,10 @@ Content-Type: application/json
 | └➔&nbsp;`state`          | `string`     | `Ready`, `Pending`, `Failed` or `Aborted`. Indicates the state of the payment, not the state of any transactions performed on the payment. To find the state of the payment's transactions (such as a successful authorization), see the `transactions` resource or the different specialized type-specific resources such as `authorizations` or `sales`. |
 | └➔&nbsp;`prices`         | `object`     | The `prices` resource lists the prices related to a specific payment.                                                                                                                                                                                                                                                                                      |
 | └➔&nbsp;`prices.id`      | `string`     | {% include field-description-id.md resource="prices" %}                                                                                                                                                                                                                                                                                                    |
-| └➔&nbsp;`description`    | `string(40)` | {% include field-description-description.md documentation_section="swish" %}                                                                                                                                                                                                                                                                                  |
+| └➔&nbsp;`description`    | `string(40)` | {% include field-description-description.md documentation_section="swish" %}                                                                                                                                                                                                                                                                               |
 | └➔&nbsp;`payerReference` | `string`     | The reference to the payer (consumer/end-user) from the merchant system, like e-mail address, mobile number, customer number etc.                                                                                                                                                                                                                          |
 | └➔&nbsp;`userAgent`      | `string`     | The [user agent][user-agent] string of the consumer's browser.                                                                                                                                                                                                                                                                                             |
-| └➔&nbsp;`language`       | `string`     | {% include field-description-language.md api_resource="swish" %}                                                                                                                                                                                                                                                                                                                             |
+| └➔&nbsp;`language`       | `string`     | {% include field-description-language.md api_resource="swish" %}                                                                                                                                                                                                                                                                                           |
 | └➔&nbsp;`urls`           | `string`     | The URI to the  urls  resource where all URIs related to the payment can be retrieved.                                                                                                                                                                                                                                                                     |
 | └➔&nbsp;`payeeInfo`      | `string`     | The URI to the  payeeinfo  resource where the information about the payee of the payment can be retrieved.                                                                                                                                                                                                                                                 |
 | `operations`             | `array`      | The array of possible operations to perform                                                                                                                                                                                                                                                                                                                |

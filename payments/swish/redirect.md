@@ -18,7 +18,6 @@ sidebar:
       title: Other Features
 ---
 
-
 {% include jumbotron.html body="Swish is a one-phase payment instrument supported by the
 major Swedish banks. **Swish Payments Redirect** is where Swedbank
 Pay performs a payment that the payer confirms in the Swish mobile app.
@@ -27,20 +26,20 @@ number (msisdn), connected to the Swish app." %}
 
 ## Introduction
 
-* When the payer starts the purchase process, you make a `POST` request towards
-  Swedbank Pay with the collected Purchase information. This will generate a
-  payment object with a unique `paymentID`. You either receive a Redirect URL to
-  a hosted page or a JavaScript source in response.
-* You need to redirect the payer to the payment page to enter the Swish
-  registered mobile number.
-  This triggers the initiation of a sales transaction.
-* Swedbank Pay handles the dialogue with Swish and the consumer confirms the
-  purchase in the Swish app.
-* Swedbank Pay will redirect the payer's browser to - or display directly in the
-  iFrame - one of two specified URLs, depending on whether the payment session
-  is followed through completely or cancelled beforehand. Please note that both
-  a successful and rejected payment reach completion, in contrast to a cancelled
-  payment.
+*   When the payer starts the purchase process, you make a `POST` request
+    towards Swedbank Pay with the collected Purchase information. This will
+    generate a payment object with a unique `paymentID`. You either receive a
+    Redirect URL to a hosted page or a JavaScript source in response.
+*   You need to redirect the payer to the payment page to enter the Swish
+    registered mobile number.
+    This triggers the initiation of a sales transaction.
+*   Swedbank Pay handles the dialogue with Swish and the consumer confirms the
+    purchase in the Swish app.
+*   Swedbank Pay will redirect the payer's browser to - or display directly in
+    the iFrame - one of two specified URLs, depending on whether the payment
+    session is followed through completely or cancelled beforehand.
+    Please note that both a successful and rejected payment reach completion,
+    in contrast to a cancelled payment.
 
 The consumer/end-user is redirected to Swedbank Pay hosted pages and prompted
 to insert her phone number to initiate the sales transaction.
@@ -123,11 +122,11 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`type`              | `string`      | `Swish`.                                                                                                                                                                                                                                                                                           |
 | {% icon check %} | └─➔&nbsp;`amount`            | `integer`     | {% include field-description-amount.md %}                                                                                                                                                                                                                                                          |
 | {% icon check %} | └─➔&nbsp;`vatAmount`         | `integer`     | {% include field-description-vatamount.md %}                                                                                                                                                                                                                                                       |
-| {% icon check %} | └➔&nbsp;`description`        | `string(40)`  | {% include field-description-description.md documentation_section="swish" %}                                                                                                                                                                                                                          |
+| {% icon check %} | └➔&nbsp;`description`        | `string(40)`  | {% include field-description-description.md documentation_section="swish" %}                                                                                                                                                                                                                       |
 |                  | └─➔&nbsp;`paymentAgeLimit`   | `integer`     | Positive number sets required age limit to fulfill the payment.                                                                                                                                                                                                                                    |
 |                  | └➔&nbsp;`payerReference`     | `string`      | The reference to the payer (consumer/end user) from the merchant system. E.g mobile number, customer number etc.                                                                                                                                                                                   |
 | {% icon check %} | └➔&nbsp;`userAgent`          | `string`      | The user agent reference of the consumer's browser - [see user agent definition][user-agent-definition]                                                                                                                                                                                            |
-| {% icon check %} | └➔&nbsp;`language`           | `string`      | {% include field-description-language.md api_resource="swish" %}                                                                                                                                                                                                                                                                       |
+| {% icon check %} | └➔&nbsp;`language`           | `string`      | {% include field-description-language.md api_resource="swish" %}                                                                                                                                                                                                                                   |
 | {% icon check %} | └➔&nbsp;`urls`               | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                             |
 | {% icon check %} | └─➔&nbsp;`completeUrl`       | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. |
 |                  | └─➔&nbsp;`cancelUrl`         | `string`      | The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only cancelUrl or `paymentUrl` can be used, not both.                                                                                              |

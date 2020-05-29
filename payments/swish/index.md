@@ -18,7 +18,6 @@ sidebar:
       title: Other Features
 ---
 
-
 {% include jumbotron.html body="Swish is Sweden's main payment app and the
 preferred online payment method with the highest convertion rates." %}
 
