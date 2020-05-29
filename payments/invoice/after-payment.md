@@ -29,13 +29,13 @@ to see the available operations after posting a payment.
 
 {% include payment-resource.md api_resource="invoice" documentation_section="invoice" %}
 
-* **Abort:** It is possible to abort the process if the payment has no
+*   **Abort:** It is possible to abort the process if the payment has no
   successful transactions. [See the `abort`
   description][abort-description].
-* An invoice authorization must be followed by a `capture` or
+*   An invoice authorization must be followed by a `capture` or
   `cancel` request.
-* For reversals, you will need to implement the `reversal` request.
-* **If CallbackURL is set:** Whenever changes to the payment occur a [Callback
+*   For reversals, you will need to implement the `reversal` request.
+*   **If CallbackURL is set:** Whenever changes to the payment occur a [Callback
   request][callback-request] will be posted to the callbackUrl, which was
   generated when the payment was created.
 
