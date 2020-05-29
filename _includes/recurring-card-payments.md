@@ -13,18 +13,18 @@ instrument details and a payment token to Swedbank Pay by initial purchase or
 There are two ways to initiate recurring payments procedures,
 depending on if you want to make an initial charge or not:
 
-* Initiate a recurring payment flow and **charge the credit card**.
-  This is done by creating a "Purchase Payment" and generating a
-  recurrence token.
+*   Initiate a recurring payment flow and **charge the credit card**.
+    This is done by creating a "Purchase Payment" and generating a
+    recurrence token.
 
-* Initiate a recurring payment flow **without charging the credit card**.
-  This is done by creating  a "Verify Payment" and generating a recurrence
-  token.
+*   Initiate a recurring payment flow **without charging the credit card**.
+    This is done by creating  a "Verify Payment" and generating a recurrence
+    token.
 
 #### Generate RecurrenceToken
 
-* When posting a `Purchase` payment, you need to make sure that the field
-  `generateRecurrenceToken` is set to `true`
+*   When posting a `Purchase` payment, you need to make sure that the field
+    `generateRecurrenceToken` is set to `true`
 
 {:.code-header}
 **Field**
@@ -33,16 +33,16 @@ depending on if you want to make an initial charge or not:
 "generateRecurrenceToken": true
 ```
 
-* When posting a `Verify` payment, a payment token will be generated
-  automatically.
+*   When posting a `Verify` payment, a payment token will be generated
+    automatically.
 
 #### Creating a Payment
 
-* You need to `POST` a [Purchase payment][card-payment-purchase] / and
-  generate a recurrence token (safekeep for later recurring use).
+*   You need to `POST` a [Purchase payment][card-payment-purchase] / and
+    generate a recurrence token (safekeep for later recurring use).
 
-* You need to `POST` a [Verify payment][payment-verify], that will
-  automatically generate a recurrence token (for later recurring use).
+*   You need to `POST` a [Verify payment][payment-verify], that will
+    automatically generate a recurrence token (for later recurring use).
 
 #### Retrieve Recurrence Token
 
@@ -73,29 +73,30 @@ You have the following options after a server-to-server Recur payment `POST`.
 
 ##### Autorization (intent)
 
-* **Authorization (two-phase):** If you want the credit card to reserve the
-  amount, you will have to specify that the intent of the purchase is
-  Authorization.
-  The amount will be reserved but not charged.
-  You will later (i.e. when you are ready to ship the purchased products)
-  have to make a [Capture][card-payment-capture] or
-  [Cancel][card-payment-cancel] request.
+*   **Authorization (two-phase):** If you want the credit card to reserve the
+    amount, you will have to specify that the intent of the purchase is
+    Authorization.
+    The amount will be reserved but not charged.
+    You will later (i.e. when you are ready to ship the purchased products)
+    have to make a [Capture][card-payment-capture] or
+    [Cancel][card-payment-cancel] request.
 
 ##### Capture (intent)
 
-* **AutoCapture (one-phase)**: If you want the credit card to be charged right
-  away, you will have to specify that the intent of the purchase is AutoCapture.
-  This is only allowed if the consumer purchases digital products. The credit
-  card will be charged and you don't need to do any more financial operations to
-  this purchase.​​​​​
+*   **AutoCapture (one-phase)**: If you want the credit card to be charged right
+    away, you will have to specify that the intent of the purchase is
+    AutoCapture.
+    This is only allowed if the consumer purchases digital products. The credit
+    card will be charged and you don't need to do any more financial operations
+    to this purchase.​​​​​
 
 ##### General
 
-* **Defining CallbackURL**: When implementing a scenario,
-  it is optional to set a [`CallbackURL`][technical-reference-callback]
-  in the `POST` request.
-  If callbackURL is set Swedbank Pay will send a postback request to this URL
-  when the consumer has fulfilled the payment.
+*   **Defining CallbackURL**: When implementing a scenario,
+    it is optional to set a [`CallbackURL`][technical-reference-callback]
+    in the `POST` request.
+    If callbackURL is set Swedbank Pay will send a postback request to this URL
+    when the consumer has fulfilled the payment.
 
 ### Verify
 

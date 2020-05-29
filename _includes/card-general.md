@@ -7,4 +7,3 @@ authentication, or that specific cards can be declined, you may adjust these
 optional parameters when posting in the payment. This is specified in the
 technical reference section for creating credit card payments – you will find
 the link in the sequence diagram below." %}
-

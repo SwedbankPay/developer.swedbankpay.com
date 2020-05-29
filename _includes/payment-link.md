@@ -54,17 +54,17 @@ Payment Link, it is recommended to include contextual information that help
 the consumer understand what will happen when clicking on the Payment Link.
 We recommend that you include following information:
 
-* The name of the merchant/shop that initiates the payment
-* An understandable product description, describing what kind of service the
-  consumer will pay for.
-* Some order-id (or similar) that exists in the merchant order system.
-* The price and currency.
-* Details about shipping method and expected delivery (if physical goods will be
-  sent  to the payer).
-* Directions to (a link to a page) the merchant's terms and conditions (such as
-  return policy) and information of how the consumer can contact the merchant.
-* Details informing that the payer accepts the Terms & Conditions
-  when clicking on the Payment Link.
+*   The name of the merchant/shop that initiates the payment
+*   An understandable product description, describing what kind of service the
+    consumer will pay for.
+*   Some order-id (or similar) that exists in the merchant order system.
+*   The price and currency.
+*   Details about shipping method and expected delivery (if physical goods will be
+    sent  to the payer).
+*   Directions to (a link to a page) the merchant's terms and conditions (such as
+    return policy) and information of how the consumer can contact the merchant.
+*   Details informing that the payer accepts the Terms & Conditions
+    when clicking on the Payment Link.
 
 ### Receipt Recommendations
 
@@ -157,15 +157,15 @@ When dealing with credit card payments, 3-D Secure authentication of the
 cardholder is an essential topic.
 There are three alternative outcome of a credit card payment:
 
-* 3-D Secure enabled - by default, 3-D Secure should be enabled,
-  and Swedbank Pay will check if the card is enrolled with 3-D Secure.
-  This depends on the issuer of the card.
-  If the card is not enrolled with 3-D Secure,
-  no authentication of the cardholder is done.
-* Card supports 3-D Secure - if the card is enrolled with 3-D Secure,
-  Swedbank Pay will redirect the cardholder to the autentication mechanism
-  that is decided by the issuing bank.
-  Normally this will be done using BankID or Mobile BankID.
+*   3-D Secure enabled - by default, 3-D Secure should be enabled,
+    and Swedbank Pay will check if the card is enrolled with 3-D Secure.
+    This depends on the issuer of the card.
+    If the card is not enrolled with 3-D Secure,
+    no authentication of the cardholder is done.
+*   Card supports 3-D Secure - if the card is enrolled with 3-D Secure,
+    Swedbank Pay will redirect the cardholder to the autentication mechanism
+    that is decided by the issuing bank.
+    Normally this will be done using BankID or Mobile BankID.
 {% endif %}
 
 ```mermaid
@@ -213,16 +213,16 @@ sequenceDiagram
 
 #### Options after posting a payment
 
-* If the payment enable a two-phase flow (`Authorize`),
-  you will need to implement the `Capture` and `Cancel` requests.
-* It is possible to "abort" the validity of the Payment Link.
-  [See the Abort description here][abort].
-* For reversals, you will need to implement the `Reversal` request.
-* When implementing the Payment Link scenario, it is optional to set a
-  `callbackURL` in the `POST` request.
-  If `callbackURL` is set Swedbank Pay will send a postback request to this
-  URL when the consumer as fulfilled the payment.
-  [See the Callback API description here][technical-reference-callback].
+*   If the payment enable a two-phase flow (`Authorize`),
+    you will need to implement the `Capture` and `Cancel` requests.
+*   It is possible to "abort" the validity of the Payment Link.
+    [See the Abort description here][abort].
+*   For reversals, you will need to implement the `Reversal` request.
+*   When implementing the Payment Link scenario, it is optional to set a
+    `callbackURL` in the `POST` request.
+    If `callbackURL` is set Swedbank Pay will send a postback request to this
+    URL when the consumer as fulfilled the payment.
+    [See the Callback API description here][technical-reference-callback].
 
 [card-payment]: /assets/img/payments/card-payment.png
 [abort]: /payments/card/after-payment#abort
