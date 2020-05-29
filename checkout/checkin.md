@@ -48,11 +48,11 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-|     Required     | Field                                     | Type     | Description                                                                                |
-| :--------------: | :---------------------------------------- | :------- | :----------------------------------------------------------------------------------------- |
-| {% icon check %} | `operation`                               | `string` | `initiate-consumer-session`, the operation to perform.                                     |
+|     Required     | Field                                     | Type     | Description                                                                                                                            |
+| :--------------: | :---------------------------------------- | :------- | :------------------------------------------------------------------------------------------------------------------------------------- |
+| {% icon check %} | `operation`                               | `string` | `initiate-consumer-session`, the operation to perform.                                                                                 |
 | {% icon check %} | `language`                                | `string` | Selected language to be used in Checkin. Supported values are {% include field-description-language.md api_resource="paymentorders" %} |
-| {% icon check %} | `shippingAddressRestrictedToCountryCodes` | `string` | List of supported shipping countries for merchant. Using ISO-3166 standard.                |
+| {% icon check %} | `shippingAddressRestrictedToCountryCodes` | `string` | List of supported shipping countries for merchant. Using ISO-3166 standard.                                                            |
 
 When the request has been sent, a response containing an array of operations that can be acted upon will be returned:
 
@@ -102,17 +102,17 @@ and its `application/javascript` content type gives us a clue that the
 operation is meant to be embedded in a `<script>` element in an HTML document.
 
 {% include alert.html type="warning"
-                      icon="warning"
-                      header=""
-                      body="In our example we will focus on using the
-                      `view-consumer-identification` solution.
-                      The `redirect-consumer-identification` method redirects
-                      the user to Swedbank's own site to handle the checkin
-                      and is used in other implementations.
-                      `redirect-consumer-identification` **should only be used in
-                      test enviroments**. It is not suitable for the production
-                      environment as there is no simple way of retrieving the
-                      `consumerProfileRef`."%}
+                    icon="warning"
+                    header=""
+                    body="In our example we will focus on using the
+                    `view-consumer-identification` solution.
+                    The `redirect-consumer-identification` method redirects
+                    the user to Swedbank's own site to handle the checkin
+                    and is used in other implementations.
+                    `redirect-consumer-identification` **should only be used in
+                    test enviroments**. It is not suitable for the production
+                    environment as there is no simple way of retrieving the
+                    `consumerProfileRef`."%}
 
 {:.code-header}
 **HTML**
