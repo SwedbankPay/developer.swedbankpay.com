@@ -70,6 +70,6 @@ should use a [custom scheme][custom-scheme] or [Universal Link][universal-link]
 in the `paymentUrl` for handling automatic switching between your app and the
 payment app on the mobile device.
 
+{% endif %}
 [custom-scheme]: https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content/defining_a_custom_url_scheme_for_your_app
 [universal-link]: https://developer.apple.com/ios/universal-links/
-{% endif %}

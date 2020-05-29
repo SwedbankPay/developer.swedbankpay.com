@@ -16,7 +16,6 @@ sidebar:
       title: Other Features
 ---
 
-
 {% include jumbotron.html body=" Vipps is the Norwegian way of paying with your
 mobile phone, fast and simple. " %}
 

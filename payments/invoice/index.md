@@ -55,12 +55,12 @@ sidebar:
 Prior to launching Swedbank Pay Invoice Payments at your site, make sure that
 you have done the following:
 
-1. Sent a merchant logo in .JPG format to the [Swedish
-   setup][setup-mail-sweden], [Norwegian setup][setup-mail-norway] or [Finnish
-   setup][setup-mail-finland], depending on your country. The logo will be
-   displayed on all your invoices. Minimum accepted size is 600x200 pixels, and
-   at least 300 DPI.
-2. Included a link to "Terms and Conditions" for Invoice.
+1.  Sent a merchant logo in .JPG format to the [Swedish
+    setup][setup-mail-sweden], [Norwegian setup][setup-mail-norway] or [Finnish
+    setup][setup-mail-finland], depending on your country. The logo will be
+    displayed on all your invoices. Minimum accepted size is 600x200 pixels, and
+    at least 300 DPI.
+2.  Included a link to "Terms and Conditions" for Invoice.
 
 ## API Requests
 

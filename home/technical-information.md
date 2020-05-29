@@ -373,10 +373,10 @@ Problem types for a specific payment instrument will have a URI in the format
 `https://api.payex.com/psp/errordetail/<payment-instrument>/<error-type>`. You
 can read more about the payment instrument specific problem messages below:
 
-* [Card Payments][card-problems]
-* [Invoice Payments][invoice-problems]
-* [Swish Payments][swish-problems]
-* [Vipps Payments][vipps-problems]
+*   [Card Payments][card-problems]
+*   [Invoice Payments][invoice-problems]
+*   [Swish Payments][swish-problems]
+*   [Vipps Payments][vipps-problems]
 
 [admin]: https://admin.externalintegration.payex.com/psp/login
 [card-problems]: /payments/card/other-features#problems

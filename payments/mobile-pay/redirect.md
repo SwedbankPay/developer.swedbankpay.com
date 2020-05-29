@@ -22,16 +22,17 @@ confirmed by the payer through the MobilePay app." %}
 
 ## MobilePay redirect integration flow
 
-* When you have prepared your merchant/webshop site, you make a `POST` request
-  towards Swedbank Pay with your Purchase information.
-* You will receive a Redirect URL, leading to a secure Swedbank Pay hosted
-  environment, in response.
-* You need to redirect the browser of the end-user/consumer to that URL so
-  that the user may enter their MobilePay details.
-* When the payment is completed, Swedbank Pay will redirect the browser back
-  to your merchant/webshop site.
-* Finally you need to make a `GET` request towards Swedbank Pay with the
-  `paymentID` received in the first step, which will return the purchase result.
+*   When you have prepared your merchant/webshop site, you make a `POST` request
+    towards Swedbank Pay with your Purchase information.
+*   You will receive a Redirect URL, leading to a secure Swedbank Pay hosted
+    environment, in response.
+*   You need to redirect the browser of the end-user/consumer to that URL so
+    that the user may enter their MobilePay details.
+*   When the payment is completed, Swedbank Pay will redirect the browser back
+    to your merchant/webshop site.
+*   Finally you need to make a `GET` request towards Swedbank Pay with the
+    `paymentID` received in the first step, which will return the purchase
+    result.
 
 ![mobilepay enter number][mobilepay-screenshot-1]
 
@@ -116,10 +117,10 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`amount`               | `integer`    | {% include field-description-amount.md currency="DKK" %}                                                                                                                                                                                                  |
 | {% icon check %} | └─➔&nbsp;`vatAmount`            | `integer`    | {% include field-description-vatamount.md currency="DKK" %}                                                                                                                                                                                               |
 |                  | └─➔&nbsp;`feeAmount`            | `integer`    | If the amount given includes Fee, this may be displayed for the user in the payment page (redirect only).                                                                                                                                                 |
-| {% icon check %} | └➔&nbsp;`description`           | `string(40)` | {% include field-description-description.md documentation_section="mobile-pay" %}                                                                                                                                                                                                  |
+| {% icon check %} | └➔&nbsp;`description`           | `string(40)` | {% include field-description-description.md documentation_section="mobile-pay" %}                                                                                                                                                                         |
 |                  | └➔&nbsp;`payerReference`        | `string`     | The reference to the payer (consumer/end-user) from the merchant system, like mobile number, customer number etc.                                                                                                                                         |
 | {% icon check %} | └➔&nbsp;`userAgent`             | `string`     | The user agent reference of the consumer's browser - [see user agent definition][user-agent]                                                                                                                                                              |
-| {% icon check %} | └➔&nbsp;`language`              | `string`     | {% include field-description-language.md api_resource="mobilepay" %}                                                                                                                                                                                                                               |
+| {% icon check %} | └➔&nbsp;`language`              | `string`     | {% include field-description-language.md api_resource="mobilepay" %}                                                                                                                                                                                      |
 | {% icon check %} | └➔&nbsp;`urls`                  | `object`     | The URLs object containing the urls used for this payment.                                                                                                                                                                                                |
 | {% icon check %} | └─➔&nbsp;`completeUrl`          | `string`     | The URI that Swedbank Pay will redirect back to when the payment page is completed. This does not indicate a successful payment, only that it has reached a completion state. A `GET` request needs to be performed on the payment to inspect it further. |
 | {% icon check %} | └─➔&nbsp;`cancelUrl`            | `string`     | The URI that Swedbank Pay will redirect back to when the user presses the cancel button in the payment page.                                                                                                                                              |
@@ -304,10 +305,10 @@ Content-Type: application/json
 | └➔&nbsp;`state`          | `string`     | `Ready`, `Pending`, `Failed` or `Aborted`. Indicates the state of the payment, not the state of any transactions performed on the payment. To find the state of the payment's transactions (such as a successful authorization), see the `transactions` resource or the different specialized type-specific resources such as `authorizations` or `sales`. |
 | └➔&nbsp;`prices`         | `object`     | The `prices` resource lists the prices related to a specific payment.                                                                                                                                                                                                                                                                                      |
 | └➔&nbsp;`prices.id`      | `string`     | {% include field-description-id.md resource="prices" %}                                                                                                                                                                                                                                                                                                    |
-| └➔&nbsp;`description`    | `string(40)` | {% include field-description-description.md documentation_section="mobile-pay" %}                                                                                                                                                                                                                                                                                            |
+| └➔&nbsp;`description`    | `string(40)` | {% include field-description-description.md documentation_section="mobile-pay" %}                                                                                                                                                                                                                                                                          |
 | └➔&nbsp;`payerReference` | `string`     | The reference to the payer (consumer/end-user) from the merchant system, like e-mail address, mobile number, customer number etc.                                                                                                                                                                                                                          |
 | └➔&nbsp;`userAgent`      | `string`     | The [user agent][user-agent] string of the consumer's browser.                                                                                                                                                                                                                                                                                             |
-| └➔&nbsp;`language`       | `string`     | {% include field-description-language.md api_respurce="mobile-pay" %}                                                                                                                                                                                                                                                                                                                             |
+| └➔&nbsp;`language`       | `string`     | {% include field-description-language.md api_respurce="mobile-pay" %}                                                                                                                                                                                                                                                                                      |
 | └➔&nbsp;`urls`           | `string`     | The URI to the  urls  resource where all URIs related to the payment can be retrieved.                                                                                                                                                                                                                                                                     |
 | └➔&nbsp;`payeeInfo`      | `string`     | The URI to the  payeeinfo  resource where the information about the payee of the payment can be retrieved.                                                                                                                                                                                                                                                 |
 | `operations`             | `array`      | The array of possible operations to perform                                                                                                                                                                                                                                                                                                                |

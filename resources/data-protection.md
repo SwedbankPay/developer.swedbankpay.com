@@ -24,7 +24,6 @@ sidebar:
       title: Public Migration Key
 ---
 
-
 ## Paymentorder consumer data
 
 When creating a payment order and checking in a consumer the consumer may opt to
@@ -39,10 +38,10 @@ This data is deleted after **28 days**.
 
 ### Data stored temporarily or on a profile
 
-* Billing address
-* Country code
-* First name
-* Last name
-* Legal address
-* Social security number
-* Social security number country code
+*   Billing address
+*   Country code
+*   First name
+*   Last name
+*   Legal address
+*   Social security number
+*   Social security number country code

@@ -1,19 +1,19 @@
 ## Payout
 
 > "Payout to Card" is an add-on service that enable you to deposit winnings
-  directly to your end-users' credit cards. This without  the need to collect
-  card details from the end-user a second time.
+> directly to your end-users' credit cards. This without  the need to collect
+> card details from the end-user a second time.
 
 ### Introduction
 
-* Acquirer for this service is Swedbank. You require a separate Swedbank
-  acquiring number to ensure that payout transactions and regular card
-  transactions are kept separate.
-* You need to have the 3-D Secure protocol enabled.
-* The service is available through a Swedbank Pay hosted payment page.
-* The current implementation is only available for gaming transactions (
-  [MCC][mcc]: 7995).
-* The payout service is not a part of Swedbank Pay Settlement Service.
+*   Acquirer for this service is Swedbank. You require a separate Swedbank
+    acquiring number to ensure that payout transactions and regular card
+    transactions are kept separate.
+*   You need to have the 3-D Secure protocol enabled.
+*   The service is available through a Swedbank Pay hosted payment page.
+*   The current implementation is only available for gaming transactions (
+    [MCC][mcc]: 7995).
+*   The payout service is not a part of Swedbank Pay Settlement Service.
 
 ### API requests
 

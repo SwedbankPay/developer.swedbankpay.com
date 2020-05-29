@@ -91,9 +91,9 @@ Content-Type: application/json
 
 Notes on `FinancingConsumer` captures:
 
-* The due date is set by Swedbank Pay based on the agreement with merchant. Standard
+*   The due date is set by Swedbank Pay based on the agreement with merchant. Standard
   due date is 14 days.
-* The invoice number is set by Swedbank Pay.
+*   The invoice number is set by Swedbank Pay.
 
 {% include transaction-response.md api_resource="invoice"
 documentation_section="invoice" transaction="capture" %}
@@ -165,9 +165,9 @@ deactivate Merchant
 deactivate PayEx
 ```
 
+{% include iterator.html prev_href="direct" prev_title="Back: Direct"
+next_href="after-payment" next_title="Next: After Payment" %}
+
 [direct]: /payments/invoice/direct
 [redirect]: /payments/invoice/redirect
 [seamless-view]: /payments/invoice/seamless-view
-
-{% include iterator.html prev_href="direct" prev_title="Back: Direct"
-next_href="after-payment" next_title="Next: After Payment" %}

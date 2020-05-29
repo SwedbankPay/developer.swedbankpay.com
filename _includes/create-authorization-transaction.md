@@ -62,7 +62,5 @@ Content-Type: application/json
 |                  | └➔&nbsp;`cardVerificationCode` | `string`  | Card verification code (CVC/CVV/CVC2), usually printed on the back of the card. |
 |                  | └➔&nbsp;`cardholderName`       | `string`  | Name of the card holder, usually printed on the face of the card.               |
 
-**Response**
-
 The `authorization` resource contains information about an authorization
 transaction made towards a payment, as previously described.

@@ -16,7 +16,6 @@ sidebar:
       title: Other Features
 ---
 
-
 {% include jumbotron.html body="The **Seamless View** scenario gives your
 customers the opportunity to pay with Vipps directly within your webshop.
 In the Seamless View scenario, Swedbank Pay receives a mobile number (MSISDN)
@@ -99,12 +98,12 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`type`                   | `string`      | Use the Vipps value. [See the Prices resource and prices object types for more information][price-resource].                                                                                                                                                                                       |
 | {% icon check %} | └─➔&nbsp;`amount`                 | `integer`     | {% include field-description-amount.md currency="NOK" %}                                                                                                                                                                                                                                           |
 | {% icon check %} | └─➔&nbsp;`vatAmount`              | `integer`     | {% include field-description-vatamount.md currency="NOK" %}                                                                                                                                                                                                                                        |
-| {% icon check %} | └➔&nbsp;`description`             | `string(40)`  | {% include field-description-description.md documentation_section="vipps" %}                                                                                                                                                                                                                          |
+| {% icon check %} | └➔&nbsp;`description`             | `string(40)`  | {% include field-description-description.md documentation_section="vipps" %}                                                                                                                                                                                                                       |
 |                  | └➔&nbsp;`payerReference`          | `string`      | The reference to the payer (consumer/end user) from the merchant system. E.g mobile number, customer number etc.                                                                                                                                                                                   |
 |                  | └➔&nbsp;`generatePaymentToken`    | `boolean`     | `true` or `false`. Set this to `true` if you want to create a paymentToken for future use as One Click.                                                                                                                                                                                            |
 |                  | └➔&nbsp;`generateRecurrenceToken` | `boolean`     | `true` or `false`. Set this to `true` if you want to create a recurrenceToken for future use Recurring purchases (subscription payments).                                                                                                                                                          |
 | {% icon check %} | └➔&nbsp;`userAgent`               | `string`      | The user agent reference of the consumer's browser - [see user agent definition][user-agent-definition]                                                                                                                                                                                            |
-| {% icon check %} | └➔&nbsp;`language`                | `string`      | {% include field-description-language.md api_resource="vipps" %}                                                                                                                                                                                                                                                                                    |
+| {% icon check %} | └➔&nbsp;`language`                | `string`      | {% include field-description-language.md api_resource="vipps" %}                                                                                                                                                                                                                                   |
 | {% icon check %} | └➔&nbsp;`urls`                    | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                             |
 |                  | └─➔&nbsp;`hostUrls`               | `array`       | The array of URLs valid for embedding of Swedbank Pay Hosted Views. If not supplied, view-operation will not be available.                                                                                                                                                                         |
 | {% icon check %} | └─➔&nbsp;`completeUrl`            | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. |
@@ -190,10 +189,10 @@ You need to embed the script source on your site to create a hosted-view in an
 `iframe`; so that the payer can enter the required information in a secure Swedbank
 Pay hosted environment. A simplified integration has these following steps:
 
-1. Create a container that will contain the Seamless View iframe: `<div
-   id="swedbank-pay-seamless-view-page">`.
-2. Create a `<script>` source within the container. Embed the `href` value
-   obtained in the `POST` request in the `<script>` element. Example:
+1.  Create a container that will contain the Seamless View iframe: `<div
+    id="swedbank-pay-seamless-view-page">`.
+2.  Create a `<script>` source within the container. Embed the `href` value
+    obtained in the `POST` request in the `<script>` element. Example:
 
 ```html
     <script id="payment-page-script" src="https://ecom.dev.payex.com/vipps/core/ scripts/client/px.vipps.client.js"></script>
@@ -310,7 +309,7 @@ Content-Type: application/json
 | └➔&nbsp;`number`             | `string`  | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead. |
 | └➔&nbsp;`amount`             | `integer` | {% include field-description-amount.md currency="NOK" %}                                                                                                                                                     |
 | └➔&nbsp;`vatAmount`          | `integer` | {% include field-description-vatamount.md currency="NOK" %}                                                                                                                                                  |
-| └➔&nbsp;`description`        | `string`  | {% include field-description-description.md documentation_section="vipps" %}                                                                                                                                    |
+| └➔&nbsp;`description`        | `string`  | {% include field-description-description.md documentation_section="vipps" %}                                                                                                                                 |
 | └➔&nbsp;`payeeReference`     | `string`  | A unique reference for the transaction.                                                                                                                                                                      |
 | └➔&nbsp;`failedReason`       | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | └➔&nbsp;`isOperational`      | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
@@ -372,20 +371,20 @@ sequenceDiagram
     Merchant-->>-Merchant: Display payment Status
 ```
 
-1. When the payer starts the purchase process, you make a `POST` request
-  towards Swedbank Pay with the collected Purchase information.
-1. `rel: view-payment` is a value in one of the operations, sent as a response
-  from Swedbank Pay to the Merchant.
-1. `Open iframe` creates the Swedbank Pay hosted iframe.
-    The consumer UI page displays the payment window as content inside of the
-  `iframe`. The consumer can insert mobile information for authorization.
-1. A `POST` request is sent to the Vipps API with the mobile number for
-  authorization.
-1. The response will contain the state of the transaction. It will normally be
-  `AwaitingActivity` in this phase of the payment, meaning we are awaiting a
-  response from Vipps.
-1. Swedbank Pay handles the dialogue with Vipps and the consumer confirms the
-  purchase in the Vipps app.
+1.  When the payer starts the purchase process, you make a `POST` request
+   towards Swedbank Pay with the collected Purchase information.
+2.  `rel: view-payment` is a value in one of the operations, sent as a response
+   from Swedbank Pay to the Merchant.
+3.  `Open iframe` creates the Swedbank Pay hosted iframe.
+     The consumer UI page displays the payment window as content inside of the
+   `iframe`. The consumer can insert mobile information for authorization.
+4.  A `POST` request is sent to the Vipps API with the mobile number for
+   authorization.
+5.  The response will contain the state of the transaction. It will normally be
+   `AwaitingActivity` in this phase of the payment, meaning we are awaiting a
+   response from Vipps.
+6.  Swedbank Pay handles the dialogue with Vipps and the consumer confirms the
+   purchase in the Vipps app.
 
 {% include iterator.html
         prev_href="redirect"

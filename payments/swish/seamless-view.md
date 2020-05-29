@@ -18,7 +18,6 @@ sidebar:
       title: Other Features
 ---
 
-
 {% include jumbotron.html body="The **Seamless View** scenario gives your
                           customers the opportunity to pay with Swish directly
                           within your webshop. This gives the consumer a
@@ -27,22 +26,22 @@ sidebar:
 
 ## Swish Seamless View integration flow
 
-1. When the payer starts the purchase process, you make a `POST` request
-  towards Swedbank Pay with the collected Purchase information.
-  `view-sales` is a `rel` value in one of the operations, sent as a response
-  from Swedbank Pay to the Merchant.
-1. `Open iframe` creates the Swedbank Pay hosted iframe.
-1. `Show Consumer UI page in iframe` displays the payment window as content
-  inside of the iframe. The consumer can insert mobile information for
-  authorization.
-1. `Event: OnPaymentComplete` is when the payment is complete. Please note that
-  both a successful and rejected payment reach completion, in contrast to a
-  cancelled payment.
-1. To get the transaction result, you need to follow up with a `GET` request
-  using the `paymentID` received in the first step.
-1. If CallbackURL is set you will receive a payment callback when the Swish
-  dialogue is completed, and you will have to make a `GET` request to check the
-  payment status.
+1.  When the payer starts the purchase process, you make a `POST` request
+   towards Swedbank Pay with the collected Purchase information.
+   `view-sales` is a `rel` value in one of the operations, sent as a response
+   from Swedbank Pay to the Merchant.
+2.  `Open iframe` creates the Swedbank Pay hosted iframe.
+3.  `Show Consumer UI page in iframe` displays the payment window as content
+    inside of the iframe. The consumer can insert mobile information for
+    authorization.
+4.  `Event: OnPaymentComplete` is when the payment is complete. Please note that
+    both a successful and rejected payment reach completion, in contrast to a
+    cancelled payment.
+5.  To get the transaction result, you need to follow up with a `GET` request
+    using the `paymentID` received in the first step.
+6.  If CallbackURL is set you will receive a payment callback when the Swish
+    dialogue is completed, and you will have to make a `GET` request to check
+    the payment status.
 
 ![screenshot of the seamless view swish payment
 page][seamless-view-img]{:height="250px" width="660px"}
@@ -124,10 +123,10 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`amount`            | `integer`     | {% include field-description-amount.md %}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | {% icon check %} | └─➔&nbsp;`vatAmount`         | `integer`     | {% include field-description-vatamount.md %}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 |                  | └➔&nbsp;`paymentAgeLimit`    | `integer`     | Positive number sets requried age limit to fulfill the payment.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| {% icon check %} | └➔&nbsp;`description`        | `string(40)`  | {% include field-description-description.md documentation_section="swish" %}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| {% icon check %} | └➔&nbsp;`description`        | `string(40)`  | {% include field-description-description.md documentation_section="swish" %}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 |                  | └➔&nbsp;`payerReference`     | `string`      | The reference to the payer (consumer/end user) from the merchant system. E.g mobile number, customer number etc.                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | {% icon check %} | └➔&nbsp;`userAgent`          | `string`      | The user agent reference of the consumer's browser - [see user agent definition][user-agent-definition]                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| {% icon check %} | └➔&nbsp;`language`           | `string`      | {% include field-description-language.md api_resource="swish" %}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| {% icon check %} | └➔&nbsp;`language`           | `string`      | {% include field-description-language.md api_resource="swish" %}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | {% icon check %} | └➔&nbsp;`urls`               | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 |                  | └─➔&nbsp;`hostUrls`          | `array`       | The array of URLs valid for embedding of Swedbank Pay Hosted Views. If not supplied, view-operation will not be available.                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | {% icon check %} | └─➔&nbsp;`completeUrl`       | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further.                                                                                                                                                                                                                                                                        |
@@ -232,10 +231,10 @@ You need to embed the script source on your site to create a hosted-view in an
 `iframe`; so that the payer can enter the required information in a secure Swedbank
 Pay hosted environment. A simplified integration has these following steps:
 
-1. Create a container that will contain the Seamless View iframe: `<div
-   id="swedbank-pay-seamless-view-page">`.
-2. Create a `<script>` source within the container. Embed the `href` value
-   obtained in the `POST` request in the `<script>` element. Example:
+1.  Create a container that will contain the Seamless View iframe: `<div
+    id="swedbank-pay-seamless-view-page">`.
+2.  Create a `<script>` source within the container. Embed the `href` value
+    obtained in the `POST` request in the `<script>` element. Example:
 
 ```html
 <script id="payment-page-script" src="https://ecom.dev.payex.com/swish/core/scripts/client/px.swish.client.js"></script>

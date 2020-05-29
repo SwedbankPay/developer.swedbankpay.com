@@ -1,8 +1,0 @@
-MD034: false
-MD013: false
-MD041: false
-MD010: true
-MD026: false
-MD033:
-  allowed_elements:
-    - br

@@ -227,7 +227,8 @@ function guid() {
 
 ## Test client
 
-* For more information how to implement the api, see [Test Client][test-client].
+*   For more information how to implement the api, see
+    [Test Client][test-client].
 
 [application-yml]: https://github.com/SwedbankPay/vas-payment-api-client/blob/master/backend/src/main/resources/application.yml
 [client-credentials]: https://www.oauth.com/oauth2-servers/access-tokens/client-credentials/

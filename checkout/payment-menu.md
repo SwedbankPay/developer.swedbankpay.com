@@ -202,8 +202,8 @@ order.
 Below, you will see a complete overview of the payment menu process.
 Notice that there are two ways of performing the payment:
 
-* Consumer perform payment **out** of `iframe`.
-* Consumer perform payment **within** `iframe`.
+*   Consumer perform payment **out** of `iframe`.
+*   Consumer perform payment **within** `iframe`.
 
 ```mermaid
 sequenceDiagram

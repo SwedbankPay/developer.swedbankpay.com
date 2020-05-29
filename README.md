@@ -35,40 +35,41 @@ The Docker installation is the one we recommend to use for its simplicity.
 
 ### Docker
 
-1. Install [docker][docker-install] for your operating system.
-2. Run `docker-compose up`
+1.  Install [docker][docker-install] for your operating system.
+2.  Run `docker-compose up`
 
 ### Manual install
 
-1. [Clone this repository][cloning].
-2. Jekyll is written in [Ruby][ruby], so you'll need to download and install
-   that. If you're installing on Windows, choose setup with DevKit.
-3. To install the [Ruby Gems][gems] this web site requires, you first need to
-   install [Bundler][bundler].
-4. Install [Graphviz][graphviz], this will require Java.
-5. Once Ruby ,Bundler, and Graphviz, is in place, type `bundle install` inside the root
-   folder of this repository.
-6. Run `bundle exec jekyll serve` to start the website.
-7. Open `http://localhost:4000` in a browser.
+1.  [Clone this repository][cloning].
+2.  Jekyll is written in [Ruby][ruby], so you'll need to download and install
+    that. If you're installing on Windows, choose setup with DevKit.
+3.  To install the [Ruby Gems][gems] this web site requires, you first need to
+    install [Bundler][bundler].
+4.  Install [Graphviz][graphviz], this will require Java.
+5.  Once Ruby ,Bundler, and Graphviz, is in place, type `bundle install` inside the root
+    folder of this repository.
+6.  Run `bundle exec jekyll serve` to start the website.
+7.  Open `http://localhost:4000` in a browser.
 
 ### Visual Studio Code plugins
 
 We use several [Visual Studio Code][vs-code] plugins to ensure quality and structure
 is as constistent between users as possible.
 
-* `davidanson.vscode-markdownlint`, to lint Markdown files according to our
+*   Use `mrmlnc.vscode-remark` in combination with
+    `drewbourne.vscode-remark-lint` to lint Markdown files according to our
      defined set of rules.
-* `shd101wyy.markdown-preview-enhanced`, to render Markdown to HTML in a
+*   `shd101wyy.markdown-preview-enhanced`, to render Markdown to HTML in a
      preview window.
-* `bpruitt-goddard.mermaid-markdown-syntax-highlighting`, to give syntax
+*   `bpruitt-goddard.mermaid-markdown-syntax-highlighting`, to give syntax
      highlighting to Mermaid diagrams in Markdown files.
-* `yzhang.markdown-all-in-one`, to enable a plethora of Markdown features,
+*   `yzhang.markdown-all-in-one`, to enable a plethora of Markdown features,
      most importantly formatting of Markdown tables with VS Code's built-in
      format functionality.
-* `stkb.rewrap`, to make line-breaking text at 80 characters easier.
-* `supperchong.pretty-json` to format selected JSON snippets in code
+*   `stkb.rewrap`, to make line-breaking text at 80 characters easier.
+*   `supperchong.pretty-json` to format selected JSON snippets in code
      examples.
-* `sissel.shopify-liquid` for syntax highlighting of [Liquid][liquid].
+*   `sissel.shopify-liquid` for syntax highlighting of [Liquid][liquid].
 
 Also in Visual Studio Code, [set up a ruler at 80 characters][vsc-ruler]
 by adding `"editor.rulers": [80]` to its configuration.
@@ -84,22 +85,22 @@ We have a list of expanding constants that are available on all pages.
 It can be found in [the config file][config-yml].
 These are found under `defaults.values:` and should be used where fitting.
 
-1. `paymentId`: this is used to replace the `GUID` of the payment ID in request
-   and response examples.
-2. `transactionId`: this is used to replace the `GUID` of the transaction ID in
-   request and response examples.
-3. `paymentOrderId`:this is used to replace the `GUID` of the paymentOrder ID in
-   request and response examples.
-4. `merchantId`:this is used to replace the `GUID` of the merchant ID in request
-   and response examples.
-5. `paymentToken`: This is used to replace the payment token `GUID` for request
-   and response examples.
-6. `apiHost`: This constant is used as a replacement for the API host name in requests and
-   responses.
-7. `apiUrl`: This constant is used as a replacement for the API URL in request and
-   response examples.
-8. `frontEndUrl`: This constant is used as a replacement for frontend URLs in request
-   and response examples.
+1.  `paymentId`: this is used to replace the `GUID` of the payment ID in request
+    and response examples.
+2.  `transactionId`: this is used to replace the `GUID` of the transaction ID in
+    request and response examples.
+3.  `paymentOrderId`:this is used to replace the `GUID` of the paymentOrder ID in
+    request and response examples.
+4.  `merchantId`:this is used to replace the `GUID` of the merchant ID in request
+    and response examples.
+5.  `paymentToken`: This is used to replace the payment token `GUID` for request
+    and response examples.
+6.  `apiHost`: This constant is used as a replacement for the API host name in requests and
+    responses.
+7.  `apiUrl`: This constant is used as a replacement for the API URL in request and
+    response examples.
+8.  `frontEndUrl`: This constant is used as a replacement for frontend URLs in request
+    and response examples.
 
 Using these constants makes our documentation more resilient to change and makes
 it somewhat easier to read.
@@ -163,14 +164,14 @@ sequenceDiagram
 
 ### Conventions
 
-* **Indentation** is set to 4 spaces across all code examples, regardless of
-  language. Please ensure that you format everything accordingly.
-* When fictuous **domain names** are used in code examples, only `example.com`,
-  `example.net` or `example.org` should be used. `test-dummy.net` and similar
-  "funny" domain names are strongly discouraged.
-* When describing operations performed towards a URL, reference the name (`rel`)
-  of the operation instead of stating the URL explicitly, in order to avoid the
-  encouragement of client-side URL building.
+*   **Indentation** is set to 4 spaces across all code examples, regardless of
+    language. Please ensure that you format everything accordingly.
+*   When fictuous **domain names** are used in code examples, only
+    `example.com`, `example.net` or `example.org` should be used.
+    `test-dummy.net` and similar "funny" domain names are strongly discouraged.
+*   When describing operations performed towards a URL, reference the name
+    (`rel`) of the operation instead of stating the URL explicitly, in order to
+    avoid the encouragement of client-side URL building.
 
 ## License
 

@@ -33,11 +33,11 @@ methods in just a few simple steps.
 
 To start integrating Swedbank Pay Checkout, you need the following:
 
-* [HTTPS][https] enabled web server.
-* Agreement that includes Swedbank Pay Checkout.
-* Obtained credentials (merchant Access Token) from Swedbank Pay through
-  Swedbank Pay Admin. Please observe that Swedbank Pay Checkout encompass
-  both the **`consumer`** and **`paymentmenu`** scope.
+*   [HTTPS][https] enabled web server.
+*   Agreement that includes Swedbank Pay Checkout.
+*   Obtained credentials (merchant Access Token) from Swedbank Pay through
+    Swedbank Pay Admin. Please observe that Swedbank Pay Checkout encompass
+    both the **`consumer`** and **`paymentmenu`** scope.
 
 ## Introduction
 
@@ -182,18 +182,18 @@ diagram.
 
 #### Checkin
 
-* ① `rel: view-consumer-identification` is a value in one of the operations,
-  sent as a response from Swedbank Pay to the Merchant.
-* ② `Initiate Consumer Hosted View (open iframe)` creates the iframe.
-* ③ `Show Consumer UI page in iframe` displays the checkin form as content inside
-  of the iframe.
-* ④ `onConsumerIdentified (consumerProfileRef)` is an event that triggers when
-  the consumer has been identified, and delivers a field
-  `consumerProfileRef` as a reference to be used in the payment menu.
+*   ① `rel: view-consumer-identification` is a value in one of the operations,
+    sent as a response from Swedbank Pay to the Merchant.
+*   ② `Initiate Consumer Hosted View (open iframe)` creates the iframe.
+*   ③ `Show Consumer UI page in iframe` displays the checkin form as content inside
+    of the iframe.
+*   ④ `onConsumerIdentified (consumerProfileRef)` is an event that triggers when
+    the consumer has been identified, and delivers a field
+    `consumerProfileRef` as a reference to be used in the payment menu.
 
 #### Payment Menu
 
-* ⑤ `Authorize Payment` is when the payer has accepted the payment.
+*   ⑤ `Authorize Payment` is when the payer has accepted the payment.
 
 {% include languages.md api_resource="paymentorders" %}
 

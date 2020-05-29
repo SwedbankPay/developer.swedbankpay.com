@@ -8,4 +8,6 @@ documentation_section=documentation_section %}
 
 ### Transaction
 
-{% include transaction.md api_resource=api_resource documentation_section=documentation_section %}
+{% include transaction.md
+           api_resource=api_resource
+           documentation_section=documentation_section %}
