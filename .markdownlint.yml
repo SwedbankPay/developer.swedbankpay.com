@@ -1,0 +1,15 @@
+MD007:
+  indent: 4
+MD034: false
+MD013: false
+MD041: false
+MD010: true
+MD026: false
+MD030:
+  ul_single: 3
+  ol_single: 2
+  ul_multi: 3
+  ol_multi: 2
+MD033:
+  allowed_elements:
+    - br

@@ -56,9 +56,7 @@ The Docker installation is the one we recommend to use for its simplicity.
 We use several [Visual Studio Code][vs-code] plugins to ensure quality and structure
 is as constistent between users as possible.
 
-*   Use `mrmlnc.vscode-remark` in combination with
-    `drewbourne.vscode-remark-lint` to lint Markdown files according to our
-     defined set of rules.
+*   davidanson.vscode-markdownlint, to lint Markdown files according to our defined set of rules.
 *   `shd101wyy.markdown-preview-enhanced`, to render Markdown to HTML in a
      preview window.
 *   `bpruitt-goddard.mermaid-markdown-syntax-highlighting`, to give syntax
