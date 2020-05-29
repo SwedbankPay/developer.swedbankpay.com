@@ -71,14 +71,8 @@ this very documentation, not to a version of any APIs described by it." %}
 *   Corrected problem `type` URIs for [Card Payments][card], [Checkout][checkout]
   and [Swish Payments][swish].
 *   Required checkmarks have a new, fresh look: {% icon check %}
-*   Flags now also sport a new look:
-    <i class="flag-icon flag-icon-no"></i>
-    <i class="flag-icon flag-icon-se"></i>
-    <i class="flag-icon flag-icon-dk"></i>
-    <i class="flag-icon flag-icon-fi"></i>
-    <i class="flag-icon flag-icon-lt"></i>
-    <i class="flag-icon flag-icon-lv"></i>
-    <i class="flag-icon flag-icon-ee"></i>
+*   Flags now also sport a new look: {% flag no %} {% flag se %} {% flag dk %}
+    {% flag fi %} {% flag lt %} {% flag lv %} {% flag ee %}
 
 ### Version 1.8.3
 

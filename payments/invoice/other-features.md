@@ -29,11 +29,11 @@ set to value `FinancingConsumer` are listed below.
 ### Options before posting a payment
 
 {:.table .table-striped}
-|               | Norway <i class="flag-icon flag-icon-no"></i> | Fionland <i class="flag-icon flag-icon-fi"></i> | Sweden <i class="flag-icon flag-icon-se"></i> |
-| :------------ | :-------------------------------------------- | :---------------------------------------------- | :-------------------------------------------- |
-| `operation`   | `FinancingConsumer`                           | `FinancingConsumer`                             | `FinancingConsumer`                           |
-| `currency`    | `NOK`                                         | `EUR`                                           | `SEK`                                         |
-| `invoiceType` | `PayExFinancingNO`                            | `PayExFinancingFI`                              | `PayExFinancingSE`                            |
+|               | Norway {% flag no %} | Finland {% flag fi %} | Sweden {% flag se %} |
+| :------------ | :------------------- | :-------------------- | :------------------- |
+| `operation`   | `FinancingConsumer`  | `FinancingConsumer`   | `FinancingConsumer`  |
+| `currency`    | `NOK`                | `EUR`                 | `SEK`                |
+| `invoiceType` | `PayExFinancingNO`   | `PayExFinancingFI`    | `PayExFinancingSE`   |
 
 *   An invoice payment is always two-phased based -  you create an Authorize
   transaction, that is followed by a Capture or Cancel request.

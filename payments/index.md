@@ -35,14 +35,14 @@ payment instruments and their platform availability are listed in the table
 below.
 
 {:.table .table-plain}
-|                              | Payment instrument              |  Seamless View   |     Redirect     |     Direct API     | Region                                                                                                               |
-| :--------------------------: | :------------------------------ | :--------------: | :--------------: | :----------------: | :------------------------------------------------------------------------------------------------------------------- |
-|    {% icon credit_card %}    | [Card Payments][card]           | {% icon check %} | {% icon check %} |  {% icon check %}  | ![EarthIcon][earth-icon]                                                                                             |
-| {% icon insert_drive_file %} | [Swedbank Pay Invoice][invoice] | {% icon check %} | {% icon check %} |                    | <i class="flag-icon flag-icon-no"></i> <i class="flag-icon flag-icon-se"></i> <i class="flag-icon flag-icon-fi"></i> |
-|     ![Vipps][vipps-logo]     | [Vipps][vipps]                  | {% icon check %} | {% icon check %} |                    | <i class="flag-icon flag-icon-no"></i>                                                                               |
-|     ![Swish][swish-logo]     | [Swish][swish]                  | {% icon check %} | {% icon check %} | {% icon check %}  ︎ | <i class="flag-icon flag-icon-se"></i>                                                                               |
-| ![MobilePay][mobilepay-logo] | [Mobile Pay][mobile-pay]        |                  | {% icon check %} |                    | <i class="flag-icon flag-icon-dk"></i> <i class="flag-icon flag-icon-fi"></i>                                        |
-|   ![Trustly][trustly-logo]   | [Trustly][trustly]              | {% icon check %} | {% icon check %} |                    | <i class="flag-icon flag-icon-se"></i> <i class="flag-icon flag-icon-fi"></i>                                        |
+|                              | Payment instrument              |  Seamless View   |     Redirect     |     Direct API     | Region                                    |
+| :--------------------------: | :------------------------------ | :--------------: | :--------------: | :----------------: | :---------------------------------------- |
+|    {% icon credit_card %}    | [Card Payments][card]           | {% icon check %} | {% icon check %} |  {% icon check %}  | ![EarthIcon][earth-icon]                  |
+| {% icon insert_drive_file %} | [Swedbank Pay Invoice][invoice] | {% icon check %} | {% icon check %} |                    | {% flag no %} {% flag se %} {% flag fi %} |
+|     ![Vipps][vipps-logo]     | [Vipps][vipps]                  | {% icon check %} | {% icon check %} |                    | {% flag no %}                             |
+|     ![Swish][swish-logo]     | [Swish][swish]                  | {% icon check %} | {% icon check %} | {% icon check %}  ︎ | {% flag se %}                             |
+| ![MobilePay][mobilepay-logo] | [Mobile Pay][mobile-pay]        |                  | {% icon check %} |                    | {% flag dk %} {% flag fi %}               |
+|   ![Trustly][trustly-logo]   | [Trustly][trustly]              | {% icon check %} | {% icon check %} |                    | {% flag se %} {% flag fi %}               |
 
 ## Prerequisites
 
