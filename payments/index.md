@@ -48,10 +48,10 @@ below.
 
 To start integrating Swedbank Pay Payments, you need the following:
 
-* An [HTTPS][https] enabled web server.
-* An agreement which includes Swedbank Pay Payments.
-* Credentials (Merchant Access Token) from Swedbank Pay retrieved from
-  Swedbank Pay Admin.
+*   An [HTTPS][https] enabled web server.
+*   An agreement which includes Swedbank Pay Payments.
+*   Credentials (Merchant Access Token) from Swedbank Pay retrieved from
+    Swedbank Pay Admin.
 
 ## Platform options
 
@@ -145,20 +145,20 @@ the URIs and operations for further actions, given the state of the payment.
 
 After creating a payment, you can:
 
-* `Authorize` funds. An authorization transaction reserves the funds. It is
-  possible to `abort` a payment before the end user has completed the payment
-  process. And either:
-* `Capture` funds. Before delivering the merchandise you need to create a capture
-  transaction to ensure that the money is charged from the consumer credit card
-  or properly billed by invoice. One-phase payments will combine these two in a
-  `sale` or `autoCapture` transaction as described in the section above.
+*   `Authorize` funds. An authorization transaction reserves the funds. It is
+    possible to `abort` a payment before the end user has completed the payment
+    process. And either:
+*   `Capture` funds. Before delivering the merchandise you need to create a capture
+    transaction to ensure that the money is charged from the consumer credit card
+    or properly billed by invoice. One-phase payments will combine these two in a
+    `sale` or `autoCapture` transaction as described in the section above.
 
-  Or:
-* `Cancel` the authorized amount. Funds that are authorized but not yet captured,
-  can be released back to the consumer. This is done by creating a cancel
-  transaction. This is not available for one-phase payments.
-* `Reverse` captured funds. In some cases you may need to make a reversal of
-  captured funds. This is achieved by creating a reversal transaction.
+Or:
+*   `Cancel` the authorized amount. Funds that are authorized but not yet captured,
+    can be released back to the consumer. This is done by creating a cancel
+    transaction. This is not available for one-phase payments.
+*   `Reverse` captured funds. In some cases you may need to make a reversal of
+    captured funds. This is achieved by creating a reversal transaction.
 
 All actions after creating the payment can be done by using our APIs, or from
 our admin tool. `abort` is only available when using APIs.
