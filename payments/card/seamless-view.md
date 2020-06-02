@@ -151,12 +151,12 @@ sequenceDiagram
     Payer->>Payer: Input creditcard information
     Payer->>-SwedbankPay: Show Consumer UI page in iframe - Authorization ③
     activate SwedbankPay
-        opt Card supports 3-D Secure
+        opt If 3-D Secure is required
         SwedbankPay-->>-Payer: redirect to IssuingBank
         activate Payer
         Payer->>IssuingBank: 3-D Secure authentication process
         activate IssuingBank
-        IssuingBank->>-Payer: 3-D Secure authentication process
+        IssuingBank-->>-Payer: 3-D Secure authentication process response
         Payer->>-IssuingBank: access authentication page
         end
     IssuingBank -->>+ Payer: Redirect back to paymentUrl (merchant)
