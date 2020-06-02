@@ -11,10 +11,10 @@ transactions list - are available for all merchants using Swedbank Pay.
 
 *   By default, the settlement files will be sent to you by via e-mail.
 *   We also have the option to send it via SFTP as well, if this is something you
-would like then you need to state this to your sales representative, so they
-can inform the setup team when the time is ready.
+    would like then you need to state this to your sales representative, so they
+    can inform the setup team when the time is ready.
 *   The settlement frequency is defined in the agreement and you will receive it
-(per default) once a month, or once a week.
+    (per default) once a month, or once a week.
 *   You do not need to subscribe, the files will be delivered by default.
 
 Contact [omni.client@swedbankpay.se][omni-client-email] for further
