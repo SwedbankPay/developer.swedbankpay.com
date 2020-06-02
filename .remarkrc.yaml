@@ -1,6 +1,5 @@
 plugins:
   - "remark-frontmatter"
-  - "remark-slug"
   - "remark-inline-links"
   - "remark-lint"
   - "remark-lint-no-empty-sections"
