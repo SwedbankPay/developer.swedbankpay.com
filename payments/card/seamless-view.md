@@ -138,29 +138,38 @@ sequenceDiagram
     participant SwedbankPay as Swedbank Pay
 
     activate Payer
-    Payer->>-Merchant: start purchase
+    Payer->>-Merchant: Start purchase
     activate Merchant
     note left of Payer: First API request
     Merchant->>-SwedbankPay: POST /psp/creditcard/payments
     activate SwedbankPay
     SwedbankPay-->>-Merchant: rel: view-authorization ①
     activate Merchant
-    Merchant-->>-Payer: authorization page
+    Merchant-->>-Payer: Authorization page
     activate Payer
     note left of Payer: Open iframe ②
     Payer->>Payer: Input creditcard information
     Payer->>-SwedbankPay: Show Consumer UI page in iframe - Authorization ③
     activate SwedbankPay
+
         opt If 3-D Secure is required
-        SwedbankPay-->>-Payer: redirect to IssuingBank
+        SwedbankPay-->>-Payer: Redirect to IssuingBank
         activate Payer
         Payer->>IssuingBank: 3-D Secure authentication process
         activate IssuingBank
         IssuingBank-->>-Payer: 3-D Secure authentication process response
-        Payer->>-IssuingBank: access authentication page
+        Payer->>-IssuingBank: Access authentication page
+        activate IssuingBank
+        IssuingBank -->>+Payer: Redirect to PaymentUrl
+        Payer->>-Merchant: Redirect back to PaymentUrl (merchant)
         end
-    IssuingBank -->>+ Payer: Redirect back to paymentUrl (merchant)
-    deactivate IssuingBank
+
+        alt Callback is set
+        activate SwedbankPay
+        SwedbankPay->>SwedbankPay: Payment is updated
+        SwedbankPay->>-Merchant: POST Payment Callback
+        end
+
     SwedbankPay-->>Merchant: Event: OnPaymentComplete ④
     activate Merchant
     note left of Merchant: Second API request.
@@ -168,14 +177,8 @@ sequenceDiagram
     activate SwedbankPay
     SwedbankPay-->>-Merchant: rel: view-payment
     activate Merchant
-    Merchant-->>-Payer: display purchase result
+    Merchant-->>-Payer: Display purchase result
     activate Payer
-
-        opt Callback is set
-        activate SwedbankPay
-        SwedbankPay->>SwedbankPay: Payment is updated
-        SwedbankPay->>-Merchant: POST Payment Callback
-        end
 ```
 
 ### 3-D Secure

@@ -104,7 +104,7 @@ sequenceDiagram
     Payer->>Payer: Input creditcard information ③
     Payer->>-SwedbankPay: Submit creditcard information
 
-        alt If 3-D Secure required
+        opt If 3-D Secure required
         note left of Payer: Authentication Challenge ④
         SwedbankPay-->>Payer: Redirect to IssuingBank
         activate Payer
@@ -119,6 +119,13 @@ sequenceDiagram
     SwedbankPay-->>-Payer: Redirect to CompleteUrl ⑤
     activate Payer
     Payer->>-Merchant: Access CompleteUrl
+
+        alt Callback is set
+        activate SwedbankPay
+        SwedbankPay->>SwedbankPay: Payment is updated
+        SwedbankPay->>-Merchant: POST Payment Callback
+        end
+
     activate Merchant
     Merchant->>-SwedbankPay: GET <payment.id> ⑥
     activate SwedbankPay
@@ -126,12 +133,6 @@ sequenceDiagram
     SwedbankPay-->>-Merchant: Payment result
     activate Merchant
     Merchant-->>-Payer: Display purchase result
-
-        opt Callback is set
-        activate SwedbankPay
-        SwedbankPay->>SwedbankPay: Payment is updated
-        SwedbankPay->>-Merchant: POST Payment Callback
-        end
 ```
 
 ### Explanations
