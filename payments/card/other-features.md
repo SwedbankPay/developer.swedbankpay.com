@@ -230,5 +230,6 @@ payment"  %}
 [swedbankpay-support]: https://www.swedbankpay.se/support
 [recurrence]: #recur
 [verify]: #verify
+[verification-flow]: /payments/card/other-features#verification-flow
 [payout]: #payout
 [card-payment]: /assets/img/payments/card-payment.png

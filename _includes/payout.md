@@ -1,8 +1,8 @@
 ## Payout
 
-> "Payout to Card" is an add-on service that enable you to deposit winnings
-> directly to your end-users' credit cards. This without  the need to collect
-> card details from the end-user a second time.
+{% include jumbotron.html body="**Payout to Card** is an add-on service that
+enable you to deposit winnings directly to your end-users' credit cards. This
+without  the need to collect card details from the end-user a second time." %}
 
 ### Introduction
 

@@ -47,7 +47,6 @@ Content-Type: application/json
             "logoUrl": "https://example.com/payment-logo.png",
             "termsOfServiceUrl": "https://example.com/payment-terms.pdf",
         }
-    ]
 }
 ```
 
