@@ -145,6 +145,8 @@ often help narrow down the specifics of the problem.
 
 {% include common-problem-types.md %}
 
+{% include seamless-view-events.md api_resource="trustly" %}
+
 {% include iterator.html prev_href="after-payment" prev_title="Back: After
 Payment" %}
 

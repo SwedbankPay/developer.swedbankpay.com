@@ -55,15 +55,8 @@ it can lead to issues. If you want to handle payment errors in your own code,
 you should also subscribe to other events provided by the Seamless View
 JavaScript and shut down the Seamless View if any of these events occur.
 
-Events to subscribe to for full control over the payment flow are:
-
-{:.table .table-striped}
-| Event                        | Description                                                                                                                                         |
-| :--------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `onError`                    | Will trigger any time a system error occur from the JavaScript.                                                                                     |
-| `onPaymentFailed`            | will call registrered endpoint if provided. If not subscribed to will redirect to conpleteUrl                                                       |
-| `onPaymentCanceled`          | will be called if the payment is aborted by the consumer or triggered by you with the Abort command on the payment                                  |
-| `onPaymentTransactionFailed` | this will trigger if one payment attempt failed. Standard functionality are to let the consumer be able to retry the payment from the payment page. |
+Events to subscribe to for full control over the payment flow are can be found
+in [Seamless view events][seamless-view-events].
 
 When implementing the Seamless View flow into a WebView in your mobile app, you
 should use a [custom scheme][custom-scheme] or [Universal Link][universal-link]
