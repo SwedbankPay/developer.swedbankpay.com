@@ -93,6 +93,7 @@
         <script src="/assets/tipuesearch/tipuesearch_set.js"></script>
         <script src="/assets/tipuesearch/tipuesearch.min.js"></script>
         
+        <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
     </head>
 
     <body>
@@ -133,8 +134,8 @@
 
                         <div class="topbar-info topbar-link-right">
                             <div class="topbar-info-contact">
-                                <a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/checkout/other-features.md" target="_blank"
-                                    rel="noopener noreferrer" title="Edit this page on GitHub">
+                                <a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/checkout/other-features.md"
+                                    target="_blank" rel="noopener noreferrer" title="Edit this page on GitHub">
                                     <svg aria-labelledby="simpleicons-github-icon" role="img" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <title id="simpleicons-github-icon">Edit this page on GitHub</title>
@@ -1137,13 +1138,13 @@ shown in the payment window, but it is still required in the initial request.</p
 
 <p><img src="/assets/screenshots/description-field/description-field-seamless.png" alt="description field in seamless-view" width="1200px" /></p>
     
-      <h4 id="response">
+      <h3 id="response">
         
         
           Response <a href="#response" class="header-anchor"></a>
         
         
-      </h4>
+      </h3>
 
 <p>The response given when creating a payment order is equivalent to a <code class="language-html highlighter-rouge">GET</code>
 request towards the <code class="language-html highlighter-rouge">paymentorders</code> resource, <a href="#payment-orders">as displayed above</a></p>
@@ -3143,14 +3144,15 @@ specific payment.</p>
 <ul>
   <li><code class="language-html highlighter-rouge">Initialized</code> - if there is some error where the source is undeterminable
 (network failure, etc), the transaction will remain Initialized. The
-corresponding state of the payment order will in this case be set to pending.
+corresponding state of the payment order will in this case be set to
+pending.
 No further transactions can be created.</li>
   <li><code class="language-html highlighter-rouge">Completed</code> - if everything went ok the transaction will follow through to
 completion.</li>
   <li><code class="language-html highlighter-rouge">Failed</code> - if the transaction has failed (i.e. a denial from the acquiring
 bank) it is possible to retry (i.e the consumer tries using another credit
-card) up to a maximum amount of retries (in that case which the payment order
-gets the state <code class="language-html highlighter-rouge">failed</code> as well).</li>
+card) up to a maximum amount of retries (in that case which the payment
+order gets the state <code class="language-html highlighter-rouge">failed</code> as well).</li>
 </ul>
 
 <p class="code-header"><strong>Request</strong></p>
@@ -3324,8 +3326,8 @@ with Swedbank Pay in order to work.</strong></p>
 field <code class="language-html highlighter-rouge">generateRecurrenceToken</code> is set to <code class="language-html highlighter-rouge">true</code>. This recurrence token
 will stored in the <a href="#transaction">authorization transaction</a>
 sub-resource on the underlying payment resource.</li>
-  <li>When initiating a <code class="language-html highlighter-rouge">Verify</code> payment order, a recurrence token will be generated
-automatically. This recurrence token is stored in the
+  <li>When initiating a <code class="language-html highlighter-rouge">Verify</code> payment order, a recurrence token will be
+generated automatically. This recurrence token is stored in the
 <a href="#verify-payments">verification</a>  sub-resource on the underlying
 payment resource.</li>
 </ul>
@@ -4791,24 +4793,37 @@ object:</p>
         
       </h2>
 
+<p>When a change or update from the back-end system are made on a payment or
+transaction, Swedbank Pay will perform a callback to inform the payee (merchant)
+about this update.</p>
+
+<p>Providing a <code class="language-html highlighter-rouge">callbackUrl</code> in <code class="language-html highlighter-rouge">POST</code> requests is <strong>mandatory</strong>. Below we provide
+three example scenarios of why this is important:</p>
+
+<ol>
+  <li>If the payer closes the payment window, the merchant will never know what
+happened to the payment if <code class="language-html highlighter-rouge">callbackUrl</code> is not implemented.</li>
+  <li>If the payer stops up in a payment app such as Vipps or Swish, the payer
+will never come back to the merchant. This means that the merchant won’t know what
+happened to the payment unless <code class="language-html highlighter-rouge">callbackUrl</code> is implemented.</li>
+  <li>If a payer experiences a network error or something else happens that
+prevents the payer from being redirected from Swedbank Pay back to the
+merchant website, the <code class="language-html highlighter-rouge">callbackUrl</code> is what ensures that you receive the
+information about what happened with the payment.</li>
+</ol>
+
 <ul>
-  <li>Setting a <code class="language-html highlighter-rouge">callbackUrl</code> in the HTTP <code class="language-html highlighter-rouge">POST</code> API is optional, but highly
-recommended. If a payer closes the browser window, a network error or
-something else happens that prevents the payer from being redirect from
-Swedbank Pay back to the merchant website, the callback is what ensures that
-you receive information about what happened with the payment.</li>
   <li>When a change or update from the back-end system are made on a payment or
 transaction, Swedbank Pay will perform an asynchronous server-to-server
 callback to inform the payee (merchant) about this update.</li>
-  <li>Swedbank Pay will make an HTTP <code class="language-html highlighter-rouge">POST</code> to the <code class="language-html highlighter-rouge">callbackUrl</code> that was
-specified when the payee (merchant) created the payment.</li>
-  <li>When the <code class="language-html highlighter-rouge">callbackUrl</code> receives such a callback, an HTTP <code class="language-html highlighter-rouge">GET</code> request must
-be made on the payment or on the transaction.
-The retrieved payment or transaction resource will give you the necessary
-information about the recent change/update.</li>
-  <li>The callback will be retried if it fails.
-Below are the retry timings, in seconds
-from the initial transaction time:
+  <li>Swedbank Pay will make an HTTP <code class="language-html highlighter-rouge">POST</code> to the <code class="language-html highlighter-rouge">callbackUrl</code> that was specified
+when the payee (merchant) created the payment.</li>
+  <li>When the <code class="language-html highlighter-rouge">callbackUrl</code> receives such a callback, an <code class="language-html highlighter-rouge">HTTP</code> <code class="language-html highlighter-rouge">GET</code> request must
+be made on the payment or on the transaction. The retrieved payment or
+transaction resource will give you the necessary information about the recent
+change/update.</li>
+  <li>The callback will be retried if it fails. Below are the retry timings, in
+seconds from the initial transaction time:
     <ul>
       <li>30 seconds</li>
       <li>60 seconds</li>
@@ -4818,8 +4833,75 @@ from the initial transaction time:
       <li>1265 seconds</li>
     </ul>
   </li>
-  <li>The callback is sent from the following IP address <code class="language-html highlighter-rouge">82.115.146.1</code>.</li>
+  <li>The callback is sent from the following IP address: <code class="language-html highlighter-rouge">82.115.146.1</code></li>
+  <li>A callback should return a <code class="language-html highlighter-rouge">200 OK</code> response.</li>
 </ul>
+
+<p class="code-header"><strong>Payment Order Callback</strong></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre><span class="p">{</span>
+    <span class="dl">"</span><span class="s2">paymentOrder</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="dl">"</span><span class="s2">id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">/psp/paymentorders/09ccd29a-7c4f-4752-9396-12100cbfecce</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">instrument</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">paymentorders</span><span class="dl">"</span>
+    <span class="p">},</span>
+    <span class="dl">"</span><span class="s2">payment</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="dl">"</span><span class="s2">id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">/psp/paymentorders/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">number</span><span class="dl">"</span><span class="p">:</span> <span class="mi">222222222</span>
+    <span class="p">},</span>
+    <span class="dl">"</span><span class="s2">transaction</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="dl">"</span><span class="s2">id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">/psp/paymentorders/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/&lt;transaction type&gt;/ec2a9b09-601a-42ae-8e33-a5737e1cf177</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">number</span><span class="dl">"</span><span class="p">:</span> <span class="mi">333333333</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th style="text-align: left">Parameter</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge"><span class="nt">&lt;transaction</span> <span class="na">type</span><span class="nt">&gt;</span></code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">authorizations</code>, <code class="language-html highlighter-rouge">captures</code>, <code class="language-html highlighter-rouge">cancellations</code>, <code class="language-html highlighter-rouge">reversals</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The sequence diagram below shows the HTTP <code class="language-html highlighter-rouge">POST</code> you will receive from Swedbank
+Pay, and the two <code class="language-html highlighter-rouge">GET</code> requests that you make to get the updated status.</p>
+
+<pre><code class="language-mermaid">sequenceDiagram
+    Participant Merchant
+    Participant SwedbankPay as Swedbank Pay
+
+    activate SwedbankPay
+    SwedbankPay-&gt;&gt;+Merchant: POST &lt;callbackUrl&gt;
+    deactivate SwedbankPay
+    note left of Merchant: Callback by Swedbank Pay
+    Merchant--&gt;&gt;+SwedbankPay: HTTP response
+    Merchant-&gt;&gt;+SwedbankPay: GET paymentorders payment
+    deactivate Merchant
+    note left of Merchant: First API request
+    SwedbankPay--&gt;&gt;+Merchant: payment resource
+    deactivate SwedbankPay
+</code></pre>
 
 <p class="code-header"><strong>Payment Order Callback</strong></p>
 
@@ -5873,16 +5955,18 @@ charities.</p>
       </h4>
 
 <ul>
-  <li>Send us a KYC form for each sub merchant you want to include. We will also do
-a KYC check on your sub merchants, providing extra security for you.</li>
+  <li>Send us a KYC form for each sub merchant you want to include.
+We will also do a KYC check on your sub merchants, providing extra security
+for you.</li>
   <li>Give every sub merchant who sells goods/services at your website or in your
-app a unique prefix number. This needs to be included in the KYC form you send
-to us. We recommend using the same customer number they have in your system.</li>
+app a unique prefix number. This needs to be included in the KYC form you
+send to us.
+We recommend using the same customer number they have in your system.</li>
   <li>Attach the prefix number to all the goods/services the sub merchant
-sells through your website or app, so the goods/services can be matched to the
-correct merchant in our back office system.</li>
-  <li>A partner agreement is needed for the automatic deduction of revenue cuts and
-fees.</li>
+sells through your website or app, so the goods/services can be matched
+to the correct merchant in our back office system.</li>
+  <li>A partner agreement is needed for the automatic deduction of revenue cuts
+and fees.</li>
 </ul>
     
       <h4 id="how-it-works">
@@ -6050,7 +6134,6 @@ elements. When in doubt, please follow the <a href="https://en.wikipedia.org/wik
   <li class="toc-2"><a href="#settlement-and-reconciliation">Settlement and Reconciliation</a></li>
   <li class="toc-2"><a href="#updating-payment-menu">Updating Payment Menu</a></li>
 </ul>
-
                                     </nav>
                                 </div>
                             </div>

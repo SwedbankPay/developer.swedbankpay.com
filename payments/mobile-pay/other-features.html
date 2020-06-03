@@ -93,6 +93,7 @@
         <script src="/assets/tipuesearch/tipuesearch_set.js"></script>
         <script src="/assets/tipuesearch/tipuesearch.min.js"></script>
         
+        <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
     </head>
 
     <body>
@@ -133,8 +134,8 @@
 
                         <div class="topbar-info topbar-link-right">
                             <div class="topbar-info-contact">
-                                <a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/payments/mobile-pay/other-features.md" target="_blank"
-                                    rel="noopener noreferrer" title="Edit this page on GitHub">
+                                <a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/payments/mobile-pay/other-features.md"
+                                    target="_blank" rel="noopener noreferrer" title="Edit this page on GitHub">
                                     <svg aria-labelledby="simpleicons-github-icon" role="img" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <title id="simpleicons-github-icon">Edit this page on GitHub</title>
@@ -3537,16 +3538,18 @@ charities.</p>
       </h4>
 
 <ul>
-  <li>Send us a KYC form for each sub merchant you want to include. We will also do
-a KYC check on your sub merchants, providing extra security for you.</li>
+  <li>Send us a KYC form for each sub merchant you want to include.
+We will also do a KYC check on your sub merchants, providing extra security
+for you.</li>
   <li>Give every sub merchant who sells goods/services at your website or in your
-app a unique prefix number. This needs to be included in the KYC form you send
-to us. We recommend using the same customer number they have in your system.</li>
+app a unique prefix number. This needs to be included in the KYC form you
+send to us.
+We recommend using the same customer number they have in your system.</li>
   <li>Attach the prefix number to all the goods/services the sub merchant
-sells through your website or app, so the goods/services can be matched to the
-correct merchant in our back office system.</li>
-  <li>A partner agreement is needed for the automatic deduction of revenue cuts and
-fees.</li>
+sells through your website or app, so the goods/services can be matched
+to the correct merchant in our back office system.</li>
+  <li>A partner agreement is needed for the automatic deduction of revenue cuts
+and fees.</li>
 </ul>
     
       <h4 id="how-it-works">
@@ -4085,10 +4088,10 @@ three example scenarios of why this is important:</p>
 
 <ol>
   <li>If the payer closes the payment window, the merchant will never know what
- happened to the payment if <code class="language-html highlighter-rouge">callbackUrl</code> is not implemented.</li>
+happened to the payment if <code class="language-html highlighter-rouge">callbackUrl</code> is not implemented.</li>
   <li>If the payer stops up in a payment app such as Vipps or Swish, the payer
- will never come back to the merchant. This means that the merchant won’t know what
- happened to the payment unless <code class="language-html highlighter-rouge">callbackUrl</code> is implemented.</li>
+will never come back to the merchant. This means that the merchant won’t know what
+happened to the payment unless <code class="language-html highlighter-rouge">callbackUrl</code> is implemented.</li>
   <li>If a payer experiences a network error or something else happens that
 prevents the payer from being redirected from Swedbank Pay back to the
 merchant website, the <code class="language-html highlighter-rouge">callbackUrl</code> is what ensures that you receive the
@@ -4406,14 +4409,15 @@ specific payment.</p>
 <ul>
   <li><code class="language-html highlighter-rouge">Initialized</code> - if there is some error where the source is undeterminable
 (network failure, etc), the transaction will remain Initialized. The
-corresponding state of the payment order will in this case be set to pending.
+corresponding state of the payment order will in this case be set to
+pending.
 No further transactions can be created.</li>
   <li><code class="language-html highlighter-rouge">Completed</code> - if everything went ok the transaction will follow through to
 completion.</li>
   <li><code class="language-html highlighter-rouge">Failed</code> - if the transaction has failed (i.e. a denial from the acquiring
 bank) it is possible to retry (i.e the consumer tries using another credit
-card) up to a maximum amount of retries (in that case which the payment order
-gets the state <code class="language-html highlighter-rouge">failed</code> as well).</li>
+card) up to a maximum amount of retries (in that case which the payment
+order gets the state <code class="language-html highlighter-rouge">failed</code> as well).</li>
 </ul>
 
 <p class="code-header"><strong>Request</strong></p>
@@ -4878,7 +4882,6 @@ characters <strong>must be digits</strong>.</li>
   <li class="toc-2"><a href="#payeeinfo">PayeeInfo</a></li>
   <li class="toc-2"><a href="#payee-reference">Payee Reference</a></li>
 </ul>
-
                                     </nav>
                                 </div>
                             </div>

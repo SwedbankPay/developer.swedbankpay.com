@@ -93,6 +93,7 @@
         <script src="/assets/tipuesearch/tipuesearch_set.js"></script>
         <script src="/assets/tipuesearch/tipuesearch.min.js"></script>
         
+        <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
     </head>
 
     <body>
@@ -133,8 +134,8 @@
 
                         <div class="topbar-info topbar-link-right">
                             <div class="topbar-info-contact">
-                                <a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/payments/vipps/other-features.md" target="_blank"
-                                    rel="noopener noreferrer" title="Edit this page on GitHub">
+                                <a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/payments/vipps/other-features.md"
+                                    target="_blank" rel="noopener noreferrer" title="Edit this page on GitHub">
                                     <svg aria-labelledby="simpleicons-github-icon" role="img" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <title id="simpleicons-github-icon">Edit this page on GitHub</title>
@@ -709,16 +710,18 @@ charities.</p>
       </h4>
 
 <ul>
-  <li>Send us a KYC form for each sub merchant you want to include. We will also do
-a KYC check on your sub merchants, providing extra security for you.</li>
+  <li>Send us a KYC form for each sub merchant you want to include.
+We will also do a KYC check on your sub merchants, providing extra security
+for you.</li>
   <li>Give every sub merchant who sells goods/services at your website or in your
-app a unique prefix number. This needs to be included in the KYC form you send
-to us. We recommend using the same customer number they have in your system.</li>
+app a unique prefix number. This needs to be included in the KYC form you
+send to us.
+We recommend using the same customer number they have in your system.</li>
   <li>Attach the prefix number to all the goods/services the sub merchant
-sells through your website or app, so the goods/services can be matched to the
-correct merchant in our back office system.</li>
-  <li>A partner agreement is needed for the automatic deduction of revenue cuts and
-fees.</li>
+sells through your website or app, so the goods/services can be matched
+to the correct merchant in our back office system.</li>
+  <li>A partner agreement is needed for the automatic deduction of revenue cuts
+and fees.</li>
 </ul>
     
       <h4 id="how-it-works">
@@ -1516,14 +1519,15 @@ the course of a purchase. You can find a short description of each state below.<
 
 <ul>
   <li>
-    <p><code class="language-html highlighter-rouge">ready</code> means that the payment has been created successfully, and is now ready
- for further transaction operations, like <code class="language-html highlighter-rouge">authorization</code>, <code class="language-html highlighter-rouge">sale</code> or <code class="language-html highlighter-rouge">abort</code>.</p>
+    <p><code class="language-html highlighter-rouge">ready</code> means that the payment has been created successfully, and is now
+ready for further transaction operations, like <code class="language-html highlighter-rouge">authorization</code>, <code class="language-html highlighter-rouge">sale</code> or
+<code class="language-html highlighter-rouge">abort</code>.</p>
   </li>
   <li>
     <p><code class="language-html highlighter-rouge">failed</code> means that something went wrong during the payment process, and no
-further transactions can be created if the payment is in this state. Examples
-of possible failures are triggering of anti-fraud protection or if the payer
-reaches the maximum number of attempts for a given payment.</p>
+further transactions can be created if the payment is in this state.
+Examples of possible failures are triggering of anti-fraud protection or if
+the payer reaches the maximum number of attempts for a given payment.</p>
   </li>
   <li>
     <p><code class="language-html highlighter-rouge">aborted</code> means that the merchant has aborted the payment before the end user
@@ -1532,8 +1536,8 @@ for abort operations.</p>
   </li>
   <li>
     <p><code class="language-html highlighter-rouge">pending</code> is the state of a payment when a transaction is in an <code class="language-html highlighter-rouge">initialized</code>
-state. See more below. As long as a payment is <code class="language-html highlighter-rouge">pending</code>, no further
-transactions can be done.</p>
+  state. See more below. As long as a payment is <code class="language-html highlighter-rouge">pending</code>, no further
+  transactions can be done.</p>
   </li>
 </ul>
     
@@ -1548,27 +1552,30 @@ transactions can be done.</p>
 <ul>
   <li>
     <p><code class="language-html highlighter-rouge">ìntialized</code> is the transaction state when something unexpected occured, and
-it is impossible to determine the exact status of the transaction. An example of
-this can be a network failure. No further actions can be done on a payment with a transaction in
-this state.</p>
+   it is impossible to determine the exact status of the transaction.
+   An example of this can be a network failure.
+   No further actions can be done on a payment with a transaction in this state.</p>
   </li>
   <li>
     <p><code class="language-html highlighter-rouge">completed</code> means that the transaction has reached its intended purpose. An
 <code class="language-html highlighter-rouge">authorization</code> will be <code class="language-html highlighter-rouge">completed</code> when the funds have been authorized, a
-<code class="language-html highlighter-rouge">capture</code> will be <code class="language-html highlighter-rouge">completed</code> when the funds have been captured and a <code class="language-html highlighter-rouge">reversal</code>
-will be <code class="language-html highlighter-rouge">completed</code> when the payer has been refunded.</p>
+<code class="language-html highlighter-rouge">capture</code> will be <code class="language-html highlighter-rouge">completed</code> when the funds have been captured and a
+<code class="language-html highlighter-rouge">reversal</code> will be <code class="language-html highlighter-rouge">completed</code> when the payer has been refunded.</p>
   </li>
   <li>
-    <p><code class="language-html highlighter-rouge">failed</code> means that the transaction has <code class="language-html highlighter-rouge">failed</code>. The state is final for that
-specific transaction, but given that the payment is operational, it is possible to perform more transactions on the same payment, i.e. retry the authorization
-with another card. If the payer reaches the maximum amount of retries, the
-payment itself will be set to <code class="language-html highlighter-rouge">failed</code>.</p>
+    <p><code class="language-html highlighter-rouge">failed</code> means that the transaction has <code class="language-html highlighter-rouge">failed</code>. The state is final for
+that specific transaction, but given that the payment is operational, it is
+possible to perform more transactions on the same payment, i.e. retry the
+authorization with another card.
+If the payer reaches the maximum amount of retries, the payment itself will
+be set to <code class="language-html highlighter-rouge">failed</code>.</p>
   </li>
   <li>
     <p><code class="language-html highlighter-rouge">awaitingActivity</code> is in use for a selection of payment instruments. A
-transaction reaches this state when a payer is sent away from Swedbank Pay to do
-a confirmation or verification. Examples of this can be payment apps like Swish,
-Vipps or MobilePay, or 3-D Secure verifications for card payments.</p>
+transaction reaches this state when a payer is sent away from Swedbank Pay
+to do a confirmation or verification. Examples of this can be payment apps
+like Swish, Vipps or MobilePay, or 3-D Secure verifications for card
+payments.</p>
   </li>
 </ul>
     
@@ -2732,14 +2739,15 @@ specific payment.</p>
 <ul>
   <li><code class="language-html highlighter-rouge">Initialized</code> - if there is some error where the source is undeterminable
 (network failure, etc), the transaction will remain Initialized. The
-corresponding state of the payment order will in this case be set to pending.
+corresponding state of the payment order will in this case be set to
+pending.
 No further transactions can be created.</li>
   <li><code class="language-html highlighter-rouge">Completed</code> - if everything went ok the transaction will follow through to
 completion.</li>
   <li><code class="language-html highlighter-rouge">Failed</code> - if the transaction has failed (i.e. a denial from the acquiring
 bank) it is possible to retry (i.e the consumer tries using another credit
-card) up to a maximum amount of retries (in that case which the payment order
-gets the state <code class="language-html highlighter-rouge">failed</code> as well).</li>
+card) up to a maximum amount of retries (in that case which the payment
+order gets the state <code class="language-html highlighter-rouge">failed</code> as well).</li>
 </ul>
 
 <p class="code-header"><strong>Request</strong></p>
@@ -2904,10 +2912,10 @@ three example scenarios of why this is important:</p>
 
 <ol>
   <li>If the payer closes the payment window, the merchant will never know what
- happened to the payment if <code class="language-html highlighter-rouge">callbackUrl</code> is not implemented.</li>
+happened to the payment if <code class="language-html highlighter-rouge">callbackUrl</code> is not implemented.</li>
   <li>If the payer stops up in a payment app such as Vipps or Swish, the payer
- will never come back to the merchant. This means that the merchant won’t know what
- happened to the payment unless <code class="language-html highlighter-rouge">callbackUrl</code> is implemented.</li>
+will never come back to the merchant. This means that the merchant won’t know what
+happened to the payment unless <code class="language-html highlighter-rouge">callbackUrl</code> is implemented.</li>
   <li>If a payer experiences a network error or something else happens that
 prevents the payer from being redirected from Swedbank Pay back to the
 merchant website, the <code class="language-html highlighter-rouge">callbackUrl</code> is what ensures that you receive the
@@ -3236,7 +3244,6 @@ the problem.</p>
   <li class="toc-2"><a href="#callback">Callback</a></li>
   <li class="toc-2"><a href="#problem-messages">Problem messages</a></li>
 </ul>
-
                                     </nav>
                                 </div>
                             </div>

@@ -93,6 +93,7 @@
         <script src="/assets/tipuesearch/tipuesearch_set.js"></script>
         <script src="/assets/tipuesearch/tipuesearch.min.js"></script>
         
+        <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
     </head>
 
     <body>
@@ -133,8 +134,8 @@
 
                         <div class="topbar-info topbar-link-right">
                             <div class="topbar-info-contact">
-                                <a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/payments/invoice/redirect.md" target="_blank"
-                                    rel="noopener noreferrer" title="Edit this page on GitHub">
+                                <a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/payments/invoice/redirect.md"
+                                    target="_blank" rel="noopener noreferrer" title="Edit this page on GitHub">
                                     <svg aria-labelledby="simpleicons-github-icon" role="img" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <title id="simpleicons-github-icon">Edit this page on GitHub</title>
@@ -219,20 +220,20 @@
 
 <ul>
   <li>When properly set up in your merchant/webshop site and the payer starts the
-purchase process, you need to make a <code class="language-html highlighter-rouge">POST</code> request towards Swedbank Pay with
-your Purchase information. This will generate a payment object with a unique
-<code class="language-html highlighter-rouge">paymentID</code>. You will receive a <strong>redirect URL</strong> to a Swedbank Pay payment
-page.</li>
+  purchase process, you need to make a <code class="language-html highlighter-rouge">POST</code> request towards Swedbank Pay with
+  your Purchase information. This will generate a payment object with a unique
+  <code class="language-html highlighter-rouge">paymentID</code>. You will receive a <strong>redirect URL</strong> to a Swedbank Pay payment
+  page.</li>
   <li>You need to redirect the payer’s browser to that specified URL so that the
-payer can enter the credit card details in a secure Swedbank Pay environment.</li>
+  payer can enter the invoice details in a secure Swedbank Pay environment.</li>
   <li>Swedbank Pay will redirect the payer’s browser to - one of two specified URLs,
-depending on whether the payment session is followed through completely or
-cancelled beforehand. Please note that both a successful and rejected payment
-reach completion, in contrast to a cancelled payment.</li>
+  depending on whether the payment session is followed through completely or
+  cancelled beforehand. Please note that both a successful and rejected payment
+  reach completion, in contrast to a cancelled payment.</li>
   <li>When you detect that the payer reach your <code class="language-html highlighter-rouge">completeUrl</code> , you need to do a
-<code class="language-html highlighter-rouge">GET</code> request to receive the state of the transaction, containing the
-<code class="language-html highlighter-rouge">paymentID</code> generated in the first step, to receive the state of the
-transaction.</li>
+  <code class="language-html highlighter-rouge">GET</code> request to receive the state of the transaction, containing the
+  <code class="language-html highlighter-rouge">paymentID</code> generated in the first step, to receive the state of the
+  transaction.</li>
 </ul>
     
       <h2 id="step-1-create-a-payment">
@@ -245,7 +246,7 @@ transaction.</li>
 
 <ul>
   <li>An invoice payment is always two-phased based - you create an
-<code class="language-html highlighter-rouge">Authorize</code> transaction, that is followed by a <code class="language-html highlighter-rouge">Capture</code> or <code class="language-html highlighter-rouge">Cancel</code> request.</li>
+  <code class="language-html highlighter-rouge">Authorize</code> transaction, that is followed by a <code class="language-html highlighter-rouge">Capture</code> or <code class="language-html highlighter-rouge">Cancel</code> request.</li>
 </ul>
 
 <div class="alert alert-complex alert-success">
@@ -770,7 +771,6 @@ Here you will also find info on <code class="language-html highlighter-rouge">Ca
   <li class="toc-2"><a href="#invoice-flow">Invoice flow</a></li>
   <li class="toc-2"><a href="#options-after-posting-a-payment">Options after posting a payment</a></li>
 </ul>
-
                                     </nav>
                                 </div>
                             </div>

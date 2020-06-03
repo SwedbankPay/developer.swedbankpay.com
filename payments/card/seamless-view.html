@@ -93,6 +93,7 @@
         <script src="/assets/tipuesearch/tipuesearch_set.js"></script>
         <script src="/assets/tipuesearch/tipuesearch.min.js"></script>
         
+        <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
     </head>
 
     <body>
@@ -133,8 +134,8 @@
 
                         <div class="topbar-info topbar-link-right">
                             <div class="topbar-info-contact">
-                                <a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/payments/card/seamless-view.md" target="_blank"
-                                    rel="noopener noreferrer" title="Edit this page on GitHub">
+                                <a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/payments/card/seamless-view.md"
+                                    target="_blank" rel="noopener noreferrer" title="Edit this page on GitHub">
                                     <svg aria-labelledby="simpleicons-github-icon" role="img" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <title id="simpleicons-github-icon">Edit this page on GitHub</title>
@@ -1184,9 +1185,9 @@ hosted environment. A simplified integration has these following steps:</p>
 
 <ol>
   <li>Create a container that will contain the Seamless View iframe: <code class="language-html highlighter-rouge"><span class="nt">&lt;div</span>
-<span class="na">id=</span><span class="s">"swedbank-pay-seamless-view-page"</span><span class="nt">&gt;</span></code>.</li>
+   <span class="na">id=</span><span class="s">"swedbank-pay-seamless-view-page"</span><span class="nt">&gt;</span></code>.</li>
   <li>Create a <code class="language-html highlighter-rouge"><span class="nt">&lt;script&gt;</span></code> source within the container. Embed the <code class="language-html highlighter-rouge">href</code> value
-obtained in the <code class="language-html highlighter-rouge">POST</code> request in the <code class="language-html highlighter-rouge"><span class="nt">&lt;script&gt;</span></code> element. Example:</li>
+   obtained in the <code class="language-html highlighter-rouge">POST</code> request in the <code class="language-html highlighter-rouge"><span class="nt">&lt;script&gt;</span></code> element. Example:</li>
 </ol>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
@@ -1374,13 +1375,13 @@ card payment:</p>
 
 <ol>
   <li>3-D Secure enabled - by default, 3-D Secure should be enabled, and Swedbank
-Pay will check if the card is enrolled with 3-D Secure. This depends on the
-issuer of the card. If the card is not enrolled with 3-D Secure, no
-authentication of the cardholder is done.</li>
+   Pay will check if the card is enrolled with 3-D Secure. This depends on the
+   issuer of the card. If the card is not enrolled with 3-D Secure, no
+   authentication of the cardholder is done.</li>
   <li>Card supports 3-D Secure - if the card is enrolled with 3-D Secure, Swedbank
-Pay will redirect the cardholder to the autentication mechanism that is
-decided by the issuing bank. Normally this will be done using BankID or
-Mobile BankID.</li>
+   Pay will redirect the cardholder to the autentication mechanism that is
+   decided by the issuing bank. Normally this will be done using BankID or
+   Mobile BankID.</li>
 </ol>
     
       <h3 id="explanations">
@@ -1393,14 +1394,14 @@ Mobile BankID.</li>
 
 <ul>
   <li>① <code class="language-html highlighter-rouge">rel: view-authorization</code> is a value in one of the operations, sent as a
-response from Swedbank Pay to the Merchant.</li>
+  response from Swedbank Pay to the Merchant.</li>
   <li>② <code class="language-html highlighter-rouge">Open iframe</code> creates the Swedbank Pay hosted iframe.</li>
   <li>③ <code class="language-html highlighter-rouge">Show Consumer UI page in iframe</code> displays the payment window as content
-inside of the iframe. The consumer can insert card information for
-authorization.</li>
+  inside of the iframe. The consumer can insert card information for
+  authorization.</li>
   <li>④ <code class="language-html highlighter-rouge">Event: OnPaymentComplete</code> is when er payment is complete. Please note that
-both a successful and rejected payment reach completion, in contrast to a
-cancelled payment.</li>
+  both a successful and rejected payment reach completion, in contrast to a
+  cancelled payment.</li>
 </ul>
 
 <nav class="iterator d-flex">
@@ -1427,7 +1428,6 @@ cancelled payment.</li>
   <li class="toc-2"><a href="#step-2-display-the-payment">Step 2: Display the Payment</a></li>
   <li class="toc-2"><a href="#purchase-flow">Purchase Flow</a></li>
 </ul>
-
                                     </nav>
                                 </div>
                             </div>

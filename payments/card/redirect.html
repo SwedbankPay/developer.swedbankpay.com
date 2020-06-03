@@ -93,6 +93,7 @@
         <script src="/assets/tipuesearch/tipuesearch_set.js"></script>
         <script src="/assets/tipuesearch/tipuesearch.min.js"></script>
         
+        <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
     </head>
 
     <body>
@@ -133,8 +134,8 @@
 
                         <div class="topbar-info topbar-link-right">
                             <div class="topbar-info-contact">
-                                <a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/payments/card/redirect.md" target="_blank"
-                                    rel="noopener noreferrer" title="Edit this page on GitHub">
+                                <a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/payments/card/redirect.md"
+                                    target="_blank" rel="noopener noreferrer" title="Edit this page on GitHub">
                                     <svg aria-labelledby="simpleicons-github-icon" role="img" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <title id="simpleicons-github-icon">Edit this page on GitHub</title>
@@ -1285,19 +1286,19 @@ directly inside the iframe.</p>
 
 <ul>
   <li>① <code class="language-html highlighter-rouge">rel: redirect-authorization</code> is the name of one of the operations, sent as
-a response from Swedbank Pay to the Merchant. The href in this operation is
-the <strong>redirect URL</strong> to a Swedbank Pay payment page.</li>
+  a response from Swedbank Pay to the Merchant. The href in this operation is
+  the <strong>redirect URL</strong> to a Swedbank Pay payment page.</li>
   <li>② The consumer is being redirected to a secure Swedbank Pay hosted page</li>
   <li>③ The payment window is presented and the consumer can insert card information
-for authorization.</li>
+  for authorization.</li>
   <li>④ If needed the consumer must go through an authorization challenge to verify
-the identity.</li>
+  the identity.</li>
   <li>⑤ The Payer reaches the CompleteUrl which you defined in the initial POST
-request. Please note that both a successful and rejected payment reach
-completion, in contrast to a cancelled payment.</li>
+  request. Please note that both a successful and rejected payment reach
+  completion, in contrast to a cancelled payment.</li>
   <li>⑥ Send a GET request with the <code class="language-html highlighter-rouge">paymentId</code> to check the state of the
-transaction. Click the link for <a href="/payments/card/other-features#payment-states-and-transaction-states">a complete list of payment and transaction
-states</a>.</li>
+  transaction. Click the link for <a href="/payments/card/other-features#payment-states-and-transaction-states">a complete list of payment and transaction
+  states</a>.</li>
 </ul>
     
       <h3 id="3-d-secure">
@@ -1337,13 +1338,13 @@ card payment:</p>
 
 <ol>
   <li>3-D Secure enabled - by default, 3-D Secure should be enabled, and Swedbank
-Pay will check if the card is enrolled with 3-D Secure. This depends on the
-issuer of the card. If the card is not enrolled with 3-D Secure, no
-authentication of the cardholder is done.</li>
+   Pay will check if the card is enrolled with 3-D Secure. This depends on the
+   issuer of the card. If the card is not enrolled with 3-D Secure, no
+   authentication of the cardholder is done.</li>
   <li>Card supports 3-D Secure - if the card is enrolled with 3-D Secure, Swedbank
-Pay will redirect the cardholder to the autentication mechanism that is
-decided by the issuing bank. Normally this will be done using BankID or
-Mobile BankID.</li>
+   Pay will redirect the cardholder to the autentication mechanism that is
+   decided by the issuing bank. Normally this will be done using BankID or
+   Mobile BankID.</li>
 </ol>
 
 <nav class="iterator d-flex">
@@ -1367,7 +1368,6 @@ Mobile BankID.</li>
                                         <ul>
   <li class="toc-2"><a href="#step-1-create-a-purchase">Step 1: Create a Purchase</a></li>
 </ul>
-
                                     </nav>
                                 </div>
                             </div>

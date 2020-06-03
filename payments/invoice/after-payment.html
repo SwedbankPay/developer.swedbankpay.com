@@ -93,6 +93,7 @@
         <script src="/assets/tipuesearch/tipuesearch_set.js"></script>
         <script src="/assets/tipuesearch/tipuesearch.min.js"></script>
         
+        <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
     </head>
 
     <body>
@@ -133,8 +134,8 @@
 
                         <div class="topbar-info topbar-link-right">
                             <div class="topbar-info-contact">
-                                <a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/payments/invoice/after-payment.md" target="_blank"
-                                    rel="noopener noreferrer" title="Edit this page on GitHub">
+                                <a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/payments/invoice/after-payment.md"
+                                    target="_blank" rel="noopener noreferrer" title="Edit this page on GitHub">
                                     <svg aria-labelledby="simpleicons-github-icon" role="img" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <title id="simpleicons-github-icon">Edit this page on GitHub</title>
@@ -550,14 +551,14 @@ for the given operation.</p>
 
 <ul>
   <li><strong>Abort:</strong> It is possible to abort the process if the payment has no
-successful transactions. <a href="#abort">See the <code class="language-html highlighter-rouge">abort</code>
-description</a>.</li>
+  successful transactions. <a href="#abort">See the <code class="language-html highlighter-rouge">abort</code>
+  description</a>.</li>
   <li>An invoice authorization must be followed by a <code class="language-html highlighter-rouge">capture</code> or
-<code class="language-html highlighter-rouge">cancel</code> request.</li>
+  <code class="language-html highlighter-rouge">cancel</code> request.</li>
   <li>For reversals, you will need to implement the <code class="language-html highlighter-rouge">reversal</code> request.</li>
   <li><strong>If CallbackURL is set:</strong> Whenever changes to the payment occur a <a href="/payments/invoice/other-features#callback">Callback
-request</a> will be posted to the callbackUrl, which was
-generated when the payment was created.</li>
+  request</a> will be posted to the callbackUrl, which was
+  generated when the payment was created.</li>
 </ul>
     
       <h2 id="abort">
@@ -674,21 +675,21 @@ You need to include the following HTTP body:</p>
 
 <p>The response will be the <code class="language-html highlighter-rouge">payment</code> resource with its <code class="language-html highlighter-rouge">state</code> set to <code class="language-html highlighter-rouge">Aborted</code>.</p>
     
-      <h3 id="cancellations">
+      <h2 id="cancellations">
         
         
           Cancellations <a href="#cancellations" class="header-anchor"></a>
         
         
-      </h3>
+      </h2>
     
-      <h4 id="create-cancel-transaction">
+      <h3 id="create-cancel-transaction">
         
         
           Create cancel transaction <a href="#create-cancel-transaction" class="header-anchor"></a>
         
         
-      </h4>
+      </h3>
 
 <p>Perform the <code class="language-html highlighter-rouge">create-cancellation</code> operation to cancel a previously authorized
 or partially captured invoice payment.</p>
@@ -982,9 +983,7 @@ specific payment.</p>
 2
 3
 4
-5
-</pre></td><td class="rouge-code"><pre><span class="err">Request
-</span><span class="nf">GET</span> <span class="nn">/psp/invoice/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/cancellations</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</pre></td><td class="rouge-code"><pre><span class="nf">GET</span> <span class="nn">/psp/invoice/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/cancellations</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">api.externalintegration.payex.com</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
@@ -1182,13 +1181,13 @@ towards the specific transaction’s <code class="language-html highlighter-roug
   </tbody>
 </table>
     
-      <h4 id="cancel-sequence">
+      <h3 id="cancel-sequence">
         
         
           Cancel Sequence <a href="#cancel-sequence" class="header-anchor"></a>
         
         
-      </h4>
+      </h3>
 
 <p>A <code class="language-html highlighter-rouge">cancel</code> can only be performed on a successfully authorized transaction which
 has not been captured yet. If you perform a cancellation after doing a partial
@@ -1203,21 +1202,21 @@ deactivate Merchant
 deactivate PayEx
 </code></pre>
     
-      <h3 id="reversals">
+      <h2 id="reversals">
         
         
           Reversals <a href="#reversals" class="header-anchor"></a>
         
         
-      </h3>
+      </h2>
     
-      <h4 id="create-reversal-transaction">
+      <h3 id="create-reversal-transaction">
         
         
           Create reversal transaction <a href="#create-reversal-transaction" class="header-anchor"></a>
         
         
-      </h4>
+      </h3>
 
 <p>The <code class="language-html highlighter-rouge">create-reversal</code> operation will reverse a previously captured payment and
 refund the amount to the consumer. To reverse a payment, perform the
@@ -1257,8 +1256,6 @@ follows:</p>
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></pre></td></tr></tbody></table></code></pre></div></div>
-
-<p class="code-header"><strong>Properties</strong></p>
 
 <table class="table table-striped">
   <thead>
@@ -1742,13 +1739,13 @@ towards the specific transaction’s <code class="language-html highlighter-roug
   </tbody>
 </table>
     
-      <h4 id="reversal-sequence">
+      <h3 id="reversal-sequence">
         
         
           Reversal Sequence <a href="#reversal-sequence" class="header-anchor"></a>
         
         
-      </h4>
+      </h3>
 
 <p><code class="language-html highlighter-rouge">Reversal</code> can only be done on an captured transaction where there are
 some captured amount not yet reversed.</p>
@@ -1785,8 +1782,9 @@ some captured amount not yet reversed.</p>
   <li class="toc-2"><a href="#options-after-posting-a-payment">Options after posting a payment</a></li>
   <li class="toc-2"><a href="#payment-resource">Payment Resource</a></li>
   <li class="toc-2"><a href="#abort">Abort</a></li>
+  <li class="toc-2"><a href="#cancellations">Cancellations</a></li>
+  <li class="toc-2"><a href="#reversals">Reversals</a></li>
 </ul>
-
                                     </nav>
                                 </div>
                             </div>

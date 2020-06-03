@@ -93,6 +93,7 @@
         <script src="/assets/tipuesearch/tipuesearch_set.js"></script>
         <script src="/assets/tipuesearch/tipuesearch.min.js"></script>
         
+        <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
     </head>
 
     <body>
@@ -133,8 +134,8 @@
 
                         <div class="topbar-info topbar-link-right">
                             <div class="topbar-info-contact">
-                                <a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/payments/index.md" target="_blank"
-                                    rel="noopener noreferrer" title="Edit this page on GitHub">
+                                <a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/payments/index.md"
+                                    target="_blank" rel="noopener noreferrer" title="Edit this page on GitHub">
                                     <svg aria-labelledby="simpleicons-github-icon" role="img" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <title id="simpleicons-github-icon">Edit this page on GitHub</title>
@@ -191,6 +192,9 @@
                                         
                                         <li><a  href="/payments/mobile-pay"><span>MobilePay Payments</span></a></li>
                                         
+                                        
+                                        <li><a  href="/payments/trustly"><span>Trustly Payments</span></a></li>
+                                        
                                     </ul>
                                     
                                 </div>
@@ -223,7 +227,7 @@ and Seamless View – or use Swedbank Pay Direct API to integrate directly. Our
 payment instruments and their platform availability are listed in the table
 below.</p>
 
-<table class="table table-striped">
+<table class="table table-plain">
   <thead>
     <tr>
       <th style="text-align: center"> </th>
@@ -236,23 +240,23 @@ below.</p>
   </thead>
   <tbody>
     <tr>
-      <td style="text-align: center"><img src="/assets/img/card-icon.png" alt="CardIcon" /></td>
-      <td style="text-align: left"><a href="/payments/card">Credit card</a></td>
+      <td style="text-align: center"><i class="material-icons">credit_card</i></td>
+      <td style="text-align: left"><a href="/payments/card">Card Payments</a></td>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left"><img src="/assets/img/globe-icon.png" alt="EarthIcon" /></td>
     </tr>
     <tr>
-      <td style="text-align: center"><img src="/assets/img/invoice-icon.png" alt="InvoiceIcon" /></td>
+      <td style="text-align: center"><i class="material-icons">insert_drive_file</i></td>
       <td style="text-align: left"><a href="/payments/invoice">Swedbank Pay Invoice</a></td>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: center"> </td>
-      <td style="text-align: left"><img src="/assets/img/flag-norway.png" alt="nor" /> <img src="/assets/img/flag-sweden.png" alt="swe" /> <img src="/assets/img/flag-finland.png" alt="fin" /></td>
+      <td style="text-align: left"><img src="/assets/img/flag-norway.png" alt="nor" /> <img src="/assets/img/flag-sweden.png" alt="swe" /><img src="/assets/img/flag-finland.png" alt="fin" /></td>
     </tr>
     <tr>
-      <td style="text-align: center"><img src="/assets/img/vipps-icon.png" alt="Vipps" /></td>
+      <td style="text-align: center"><img src="/assets/img/icon-vipps-simple.svg" alt="Vipps" /></td>
       <td style="text-align: left"><a href="/payments/vipps">Vipps</a></td>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: center"><i class="material-icons">check</i></td>
@@ -260,7 +264,7 @@ below.</p>
       <td style="text-align: left"><img src="/assets/img/flag-norway.png" alt="nor" /></td>
     </tr>
     <tr>
-      <td style="text-align: center"><img src="/assets/img/swish-icon.png" alt="Swish" /></td>
+      <td style="text-align: center"><img src="/assets/img/icon-swish-simple.svg" alt="Swish" /></td>
       <td style="text-align: left"><a href="/payments/swish">Swish</a></td>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: center"><i class="material-icons">check</i></td>
@@ -268,12 +272,20 @@ below.</p>
       <td style="text-align: left"><img src="/assets/img/flag-sweden.png" alt="swe" /></td>
     </tr>
     <tr>
-      <td style="text-align: center"><img src="/assets/img/mobilepay-icon.png" alt="MobilePay" /></td>
+      <td style="text-align: center"><img src="/assets/img/icon-mobilepay-simple.svg" alt="MobilePay" /></td>
       <td style="text-align: left"><a href="/payments/mobile-pay">Mobile Pay</a></td>
       <td style="text-align: center"> </td>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: center"> </td>
       <td style="text-align: left"><img src="/assets/img/flag-denmark.png" alt="dan" /> <img src="/assets/img/flag-finland.png" alt="fin" /></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><img src="/assets/img/icon-trustly-simple.svg" alt="Trustly" /></td>
+      <td style="text-align: left"><a href="/payments/trustly">Trustly</a></td>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: left"><img src="/assets/img/flag-sweden.png" alt="swe" /> <img src="/assets/img/flag-finland.png" alt="fin" /></td>
     </tr>
   </tbody>
 </table>
@@ -429,6 +441,7 @@ two-phase payments.</p>
 <ul>
   <li><a href="/payments/swish">Swish</a></li>
   <li><a href="/payments/card">Card</a></li>
+  <li><a href="/payments/trustly">Trustly</a></li>
 </ul>
     
       <h2 id="the-payment-object">
@@ -451,14 +464,14 @@ the URIs and operations for further actions, given the state of the payment.</p>
   <li><code class="language-html highlighter-rouge">Authorize</code> funds. An authorization transaction reserves the funds. It is
 possible to <code class="language-html highlighter-rouge">abort</code> a payment before the end user has completed the payment
 process. And either:</li>
-  <li>
-    <p><code class="language-html highlighter-rouge">Capture</code> funds. Before delivering the merchandise you need to create a capture
+  <li><code class="language-html highlighter-rouge">Capture</code> funds. Before delivering the merchandise you need to create a capture
 transaction to ensure that the money is charged from the consumer credit card
 or properly billed by invoice. One-phase payments will combine these two in a
-<code class="language-html highlighter-rouge">sale</code> or <code class="language-html highlighter-rouge">autoCapture</code> transaction as described in the section above.</p>
+<code class="language-html highlighter-rouge">sale</code> or <code class="language-html highlighter-rouge">autoCapture</code> transaction as described in the section above.</li>
+</ul>
 
-    <p>Or:</p>
-  </li>
+<p>Or:</p>
+<ul>
   <li><code class="language-html highlighter-rouge">Cancel</code> the authorized amount. Funds that are authorized but not yet captured,
 can be released back to the consumer. This is done by creating a cancel
 transaction. This is not available for one-phase payments.</li>
@@ -482,7 +495,6 @@ implementation in action.</p>
   <li class="toc-2"><a href="#the-fundamentals">The Fundamentals</a></li>
   <li class="toc-2"><a href="#the-payment-object">The Payment Object</a></li>
 </ul>
-
                                     </nav>
                                 </div>
                             </div>

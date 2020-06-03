@@ -93,6 +93,7 @@
         <script src="/assets/tipuesearch/tipuesearch_set.js"></script>
         <script src="/assets/tipuesearch/tipuesearch.min.js"></script>
         
+        <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
     </head>
 
     <body>
@@ -133,8 +134,8 @@
 
                         <div class="topbar-info topbar-link-right">
                             <div class="topbar-info-contact">
-                                <a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/payments/swish/direct.md" target="_blank"
-                                    rel="noopener noreferrer" title="Edit this page on GitHub">
+                                <a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/payments/swish/direct.md"
+                                    target="_blank" rel="noopener noreferrer" title="Edit this page on GitHub">
                                     <svg aria-labelledby="simpleicons-github-icon" role="img" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <title id="simpleicons-github-icon">Edit this page on GitHub</title>
@@ -208,11 +209,11 @@
                                     
                                     <div class="jumbotron">
     <p>Swish is a one-phase payment instrument supported by the
-                      major Swedish banks. In the Direct scenario,
-                      Swedbank Pay receives the Swish registered mobile number
-                      directly from the merchant UI. Swedbank Pay performs a
-                      payment that the payer confirms using her Swish mobile
-                      app.</p>
+                major Swedish banks. In the Direct scenario,
+                Swedbank Pay receives the Swish registered mobile number
+                directly from the merchant UI. Swedbank Pay performs a
+                payment that the payer confirms using her Swish mobile
+                app.</p>
 
 </div>
       <h2 id="payment-flow">
@@ -224,12 +225,13 @@
       </h2>
 
 <ul>
-  <li>When the payer starts the purchase process, you make a <code class="language-html highlighter-rouge">POST</code> request towards
-Swedbank Pay with the collected Purchase information.</li>
+  <li>When the payer starts the purchase process, you make a <code class="language-html highlighter-rouge">POST</code> request
+towards Swedbank Pay with the collected Purchase information.</li>
   <li>The next step is to collect the consumer’s Swish registered mobile number
-and make a <code class="language-html highlighter-rouge">POST</code> request towards Swedbank Pay to create a sales transaction.</li>
-  <li>Swedbank Pay will handle the dialogue with Swish and the consumer will have to
-confirm the purchase in the Swish app.</li>
+and make a <code class="language-html highlighter-rouge">POST</code> request towards Swedbank Pay to create a sales
+transaction.</li>
+  <li>Swedbank Pay will handle the dialogue with Swish and the consumer will have
+to confirm the purchase in the Swish app.</li>
   <li>If <code class="language-html highlighter-rouge">callbackURL</code> is set, you will receive a payment callback when the Swish
 dialogue is completed.</li>
   <li>Make a <code class="language-html highlighter-rouge">GET</code> request to check the payment status.</li>
@@ -1587,7 +1589,6 @@ in this flow. Go to the <a href="/payments/swish/other-features#callback">Callba
   <li class="toc-2"><a href="#step-3-get-the-payment-status">Step 3: Get the payment status</a></li>
   <li class="toc-2"><a href="#m-commerce-purchase-flow">M-Commerce Purchase Flow</a></li>
 </ul>
-
                                     </nav>
                                 </div>
                             </div>

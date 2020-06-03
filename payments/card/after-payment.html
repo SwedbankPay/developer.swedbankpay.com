@@ -93,6 +93,7 @@
         <script src="/assets/tipuesearch/tipuesearch_set.js"></script>
         <script src="/assets/tipuesearch/tipuesearch.min.js"></script>
         
+        <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
     </head>
 
     <body>
@@ -133,8 +134,8 @@
 
                         <div class="topbar-info topbar-link-right">
                             <div class="topbar-info-contact">
-                                <a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/payments/card/after-payment.md" target="_blank"
-                                    rel="noopener noreferrer" title="Edit this page on GitHub">
+                                <a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/payments/card/after-payment.md"
+                                    target="_blank" rel="noopener noreferrer" title="Edit this page on GitHub">
                                     <svg aria-labelledby="simpleicons-github-icon" role="img" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <title id="simpleicons-github-icon">Edit this page on GitHub</title>
@@ -553,13 +554,13 @@ for the given operation.</p>
 
 <ul>
   <li><em>Abort:</em> It is possible to abort the process if the payment has no successful
-transactions. <a href="/payments/card/after-payment#abort">See the Abort description here</a>.</li>
+  transactions. <a href="/payments/card/after-payment#abort">See the Abort description here</a>.</li>
   <li>If the payment shown above is done as a two phase (<code class="language-html highlighter-rouge">Authorization</code>), you will
-need to implement the <code class="language-html highlighter-rouge">Capture</code> and <code class="language-html highlighter-rouge">Cancel</code> requests.</li>
+  need to implement the <code class="language-html highlighter-rouge">Capture</code> and <code class="language-html highlighter-rouge">Cancel</code> requests.</li>
   <li>For <code class="language-html highlighter-rouge">reversals</code>, you will need to implement the <a href="/payments/card/after-payment#reversals">Reversal request</a>.</li>
   <li>If <code class="language-html highlighter-rouge">CallbackURL</code> is set: Whenever changes to the payment occur a <a href="/payments/card/other-features#callback">Callback
-request</a> will be posted to the <code class="language-html highlighter-rouge">callbackUrl</code>, which was generated
-when the payment was created.</li>
+  request</a> will be posted to the <code class="language-html highlighter-rouge">callbackUrl</code>, which was generated
+  when the payment was created.</li>
 </ul>
     
       <h2 id="cancellations">
@@ -1660,7 +1661,6 @@ You need to include the following HTTP body:</p>
   <li class="toc-2"><a href="#abort">Abort</a></li>
   <li class="toc-2"><a href="#remove-payment-token">Remove payment token</a></li>
 </ul>
-
                                     </nav>
                                 </div>
                             </div>

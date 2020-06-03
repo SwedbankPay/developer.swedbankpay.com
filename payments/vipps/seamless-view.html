@@ -93,6 +93,7 @@
         <script src="/assets/tipuesearch/tipuesearch_set.js"></script>
         <script src="/assets/tipuesearch/tipuesearch.min.js"></script>
         
+        <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
     </head>
 
     <body>
@@ -133,8 +134,8 @@
 
                         <div class="topbar-info topbar-link-right">
                             <div class="topbar-info-contact">
-                                <a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/payments/vipps/seamless-view.md" target="_blank"
-                                    rel="noopener noreferrer" title="Edit this page on GitHub">
+                                <a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/payments/vipps/seamless-view.md"
+                                    target="_blank" rel="noopener noreferrer" title="Edit this page on GitHub">
                                     <svg aria-labelledby="simpleicons-github-icon" role="img" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <title id="simpleicons-github-icon">Edit this page on GitHub</title>
@@ -1015,19 +1016,19 @@ request.</p>
 
 <ol>
   <li>When the payer starts the purchase process, you make a <code class="language-html highlighter-rouge">POST</code> request
-  towards Swedbank Pay with the collected Purchase information.</li>
+   towards Swedbank Pay with the collected Purchase information.</li>
   <li><code class="language-html highlighter-rouge">rel: view-payment</code> is a value in one of the operations, sent as a response
-  from Swedbank Pay to the Merchant.</li>
+   from Swedbank Pay to the Merchant.</li>
   <li><code class="language-html highlighter-rouge">Open iframe</code> creates the Swedbank Pay hosted iframe.
  The consumer UI page displays the payment window as content inside of the
-  <code class="language-html highlighter-rouge">iframe</code>. The consumer can insert mobile information for authorization.</li>
+   <code class="language-html highlighter-rouge">iframe</code>. The consumer can insert mobile information for authorization.</li>
   <li>A <code class="language-html highlighter-rouge">POST</code> request is sent to the Vipps API with the mobile number for
-  authorization.</li>
+   authorization.</li>
   <li>The response will contain the state of the transaction. It will normally be
-  <code class="language-html highlighter-rouge">AwaitingActivity</code> in this phase of the payment, meaning we are awaiting a
-  response from Vipps.</li>
+   <code class="language-html highlighter-rouge">AwaitingActivity</code> in this phase of the payment, meaning we are awaiting a
+   response from Vipps.</li>
   <li>Swedbank Pay handles the dialogue with Vipps and the consumer confirms the
-  purchase in the Vipps app.</li>
+   purchase in the Vipps app.</li>
 </ol>
 
 <nav class="iterator d-flex">
@@ -1054,7 +1055,6 @@ request.</p>
   <li class="toc-2"><a href="#step-3-create-authorization-transaction">Step 3: Create authorization transaction</a></li>
   <li class="toc-2"><a href="#vipps-seamless-view-integration-flow">Vipps Seamless View integration flow</a></li>
 </ul>
-
                                     </nav>
                                 </div>
                             </div>

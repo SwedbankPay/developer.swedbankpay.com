@@ -93,6 +93,7 @@
         <script src="/assets/tipuesearch/tipuesearch_set.js"></script>
         <script src="/assets/tipuesearch/tipuesearch.min.js"></script>
         
+        <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
     </head>
 
     <body>
@@ -133,8 +134,8 @@
 
                         <div class="topbar-info topbar-link-right">
                             <div class="topbar-info-contact">
-                                <a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/payments/card/direct.md" target="_blank"
-                                    rel="noopener noreferrer" title="Edit this page on GitHub">
+                                <a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/payments/card/direct.md"
+                                    target="_blank" rel="noopener noreferrer" title="Edit this page on GitHub">
                                     <svg aria-labelledby="simpleicons-github-icon" role="img" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <title id="simpleicons-github-icon">Edit this page on GitHub</title>
@@ -303,13 +304,13 @@ your website, which means it must be <a href="https://www.pcisecuritystandards.o
 
 <ul>
   <li>The payer places an order and you make a <code class="language-html highlighter-rouge">Purchase</code> request towards Swedbank
-Pay with the gathered payment information.</li>
+  Pay with the gathered payment information.</li>
   <li>The action taken next is the <code class="language-html highlighter-rouge">direct-authorization</code> operation that is returned
-in the first request. You <code class="language-html highlighter-rouge">POST</code> the payer’s card data to the URL in the
-<a href="/payments/card/other-features#create-authorization-transaction"><code class="language-html highlighter-rouge">direct-authorization</code></a> operation.</li>
+  in the first request. You <code class="language-html highlighter-rouge">POST</code> the payer’s card data to the URL in the
+  <a href="/payments/card/other-features#create-authorization-transaction"><code class="language-html highlighter-rouge">direct-authorization</code></a> operation.</li>
   <li>If the issuer requires 3-D Secure authentication, you will then receive an
-operation called <code class="language-html highlighter-rouge">redirect-authentication</code>. You must redirect the payer to
-this URL to let them authenticate against the issuer’s 3-D Secure page.
+  operation called <code class="language-html highlighter-rouge">redirect-authentication</code>. You must redirect the payer to
+  this URL to let them authenticate against the issuer’s 3-D Secure page.
     <ul>
       <li>When the 3-D Secure flow is completed, the payer will be redirected back to
   the URL provided in <code class="language-html highlighter-rouge">completeUrl</code> or <code class="language-html highlighter-rouge">cancelUrl</code>, depending on the actions
@@ -321,8 +322,8 @@ this URL to let them authenticate against the issuer’s 3-D Secure page.
     </ul>
   </li>
   <li>Finally you make a <code class="language-html highlighter-rouge">GET</code> request towards Swedbank Pay with the <code class="language-html highlighter-rouge">id</code> of the
-payment created in the first step, which will return the result of the
-authorization.</li>
+  payment created in the first step, which will return the result of the
+  authorization.</li>
 </ul>
     
       <h2 id="step-1-create-a-purchase">
@@ -2047,13 +2048,13 @@ purchase, and the requests you have to send to Swedbank Pay.</p>
 
 <ul>
   <li>If the payment shown above is done as a two-phase (Authorization), you will
-need to implement the <a href="/payments/card/capture">Capture</a> and <a href="/payments/card/after-payment#cancellations">Cancel</a> requests.</li>
+  need to implement the <a href="/payments/card/capture">Capture</a> and <a href="/payments/card/after-payment#cancellations">Cancel</a> requests.</li>
   <li><strong>Abort:</strong> It is possible to <a href="/payments/card/after-payment#abort">abort a payment</a> if the payment has no
-successful transactions.</li>
+  successful transactions.</li>
   <li>For <code class="language-html highlighter-rouge">reversals</code>, you will need to implement the <a href="/payments/card/after-payment#reversals">Reversal</a> request.</li>
   <li><strong>Callback from Swedbank Pay:</strong> Whenever changes to the payment occur a
-<a href="/payments/card/other-features#callback">Callback request</a> will be posted to the <code class="language-html highlighter-rouge">callbackUrl</code>, generated
-when the payment was created.</li>
+  <a href="/payments/card/other-features#callback">Callback request</a> will be posted to the <code class="language-html highlighter-rouge">callbackUrl</code>, generated
+  when the payment was created.</li>
 </ul>
 
 <nav class="iterator d-flex">
@@ -2081,7 +2082,6 @@ when the payment was created.</li>
   <li class="toc-2"><a href="#step-2b-create-authorization-with-3-d-secure-authentication">Step 2b: Create authorization with 3-D Secure authentication</a></li>
   <li class="toc-2"><a href="#options-after-posting-a-purchase-payment">Options after posting a purchase payment</a></li>
 </ul>
-
                                     </nav>
                                 </div>
                             </div>
