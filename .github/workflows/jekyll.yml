@@ -1,17 +1,16 @@
-name: Jekyll site CI
+name: Jekyll Build
 
 on: [push, pull_request]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
-    - name: Docker compose up
+    - name: Jekyll Build
       run: |
         docker-compose \
           -f docker-compose.yml \
-          -f .docker/docker-compose.ci.yml \
+          -f .docker/docker-compose.build.yml \
           up
