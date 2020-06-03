@@ -334,6 +334,8 @@ Content-Type: application/json
 {% include transaction-response.md api_resource="swish"
 documentation_section="swish" transaction="reversal" %}
 
+{% include abort-reference.md api_resource="swish" %}
+
 ## Capture
 
 Swish does not support `capture` as it is a one-phase payment method all
