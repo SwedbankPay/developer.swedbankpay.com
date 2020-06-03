@@ -39,7 +39,7 @@ to see the available operations after posting a payment.
   request][callback-request] will be posted to the callbackUrl, which was
   generated when the payment was created.
 
-{% include abort-reference.md instrument="invoice" %}
+{% include abort-reference.md api_resource="invoice" %}
 
 ## Cancellations
 

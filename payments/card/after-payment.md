@@ -377,7 +377,7 @@ sequenceDiagram
   SwedbankPay-->>-Merchant: transaction resource
 ```
 
-{% include abort-reference.md instrument="creditcard" %}
+{% include abort-reference.md api_resource="creditcard" %}
 
 ## Remove payment token
 
