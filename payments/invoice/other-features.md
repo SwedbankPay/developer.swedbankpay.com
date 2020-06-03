@@ -571,7 +571,7 @@ All invoice error types will have the following URI in front of type:
 
 {% include common-problem-types.md %}
 
-{% include seamless-view-events.md api_resource="invoice" %}
+{% include payment-menu-events.md api_resource="invoice" %}
 
 {% include iterator.html prev_href="after-payment" prev_title="Back: After
 Payment" %}

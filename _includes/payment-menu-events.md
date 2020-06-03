@@ -1,6 +1,20 @@
-{% assign api_resource = include.api_resource | default: "creditcard" %}
+{% assign api_resource = include.api_resource %}
+
+{% if api_resource == "paymentorders" %}
+
+## Payment Menu Events
+
+During operation in the Payment Menu, several events can occur. They are
+described below.
+
+{% else %}
 
 ## Seamless View Events
+
+During operation in the Seamless View, several events can occur. They are
+described below.
+
+{% endif %}
 
 ### `onPaymentCompleted`
 
@@ -112,4 +126,77 @@ object:
 | :---------- | :------- | :------------------------------------------------------------- |
 | `origin`    | `string` | `{{ api_resource }}`, identifies the system that originated the error. |
 | `messageId` | `string` | A unique identifier for the message.                           |
-| `details`   | `string` | A human readable and descriptive text of the error.            |
+| `details`   | `string` | A human readable and descriptive text of the error.
+|
+
+{% if api_resource == "paymentorders" %}
+
+### `onPaymentMenuInstrumentSelected`
+
+This event triggers when a user actively changes payment instrument in the
+Payment Menu. The `onPaymentMenuInstrumentSelected` event is raised with the
+following event argument object:
+
+{:.code-header}
+**`onPaymentMenuInstrumentSelected` event object**
+
+```js
+{
+    "name": "menu identifier",
+    "instrument": "creditcard | vipps | swish | invoice",
+}
+```
+
+{:.table .table-striped}
+| Field        | Type     | Description                                                                                                                                                      |
+| :----------- | :------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `name`       | `string` | The name and identifier of specific instrument instances - i.e. if you deploy more than one type of credit card payments, they would be distinguished by `name`. |
+| `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The instrument selected by the user.                                                                                  |
+
+### `onPaymentCreated`
+
+This event triggers when a user has selected a payment instrument and actively
+attempts to perform a payment. The `onPaymentCreate` event is raised with the
+following event argument object:
+
+{:.code-header}
+**`onPaymentCreated` event object**
+
+```js
+{
+    "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
+    "instrument": "creditcard | vipps | swish | invoice",
+}
+```
+
+{:.table .table-striped}
+| Field        | Type     | Description                                                                                     |
+| :----------- | :------- | :---------------------------------------------------------------------------------------------- |
+| `id`         | `string` | {% include field-description-id.md %}                                                           |
+| `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The instrument selected when initiating the payment. |
+
+### `onPaymentTransactionFailed`
+
+This event triggers when a payment attempt fails, further attempts can be made
+for the payment. An error message will appear in the payment UI, and the
+consumer will be able to try again or choose another payment instrument. The
+`onPaymentTransactionFailed` event is raised with the following event argument
+object:
+
+{:.code-header}
+**`onPaymentTransactionFailed` event object**
+
+```js
+{
+    "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
+    "details": "[HttpCode ProblemTitle]"
+}
+```
+
+{:.table .table-striped}
+| Field     | Type     | Description                                         |
+| :-------- | :------- | :-------------------------------------------------- |
+| `id`      | `string` | {% include field-description-id.md %}               |
+| `details` | `string` | A human readable and descriptive text of the error. |
+
+{% endif %}

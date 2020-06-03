@@ -59,6 +59,9 @@ document is described in the following section.
 
 {% include one-click-payments.md %}
 
+{% include payment-url.md
+when="at the 3-D Secure verification for credit card payments" full_reference=true %}
+
 {% include callback-reference.md api_resource="creditcard" %}
 
 {% include payment-link.md %}
@@ -94,7 +97,7 @@ completing the payment.
 
 {% include card-problem-messages.md %}
 
-{% include seamless-view-events.md api_resource="creditcard" %}
+{% include payment-menu-events.md api_resource="creditcard" %}
 
 {% include iterator.html prev_href="after-payment" prev_title="Back: After
 payment"  %}
@@ -113,6 +116,7 @@ payment"  %}
 [hosted-view]: /payments/card/seamless-view
 [one-click-payments]: #one-click-payments
 [payee-reference]: #payee-reference
+[seamless-view-events]: /payments/card/other-features#seamless-view-events
 [split-settlement]: #split-settlement
 [settlement-and-reconciliation]: #settlement-and-reconciliation
 [swedbankpay-support]: https://www.swedbankpay.se/support
