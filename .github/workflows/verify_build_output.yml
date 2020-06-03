@@ -1,10 +1,10 @@
-name: Verify build output
+name: Verify Output
 
 on: [push, pull_request]
 
 jobs:
-  test:
-    name: Jekyll output
+  verify:
+    name: Verify
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
