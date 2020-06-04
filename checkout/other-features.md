@@ -1166,6 +1166,8 @@ The structure of a problem message will look like this:
 
 {% include settlement-reconciliation.md api_resource="paymentorders" %}
 
+{% include payment-menu-events.md api_resource="paymentorders" %}
+
 ## Updating Payment Menu
 
 When the contents of the shopping cart changes or anything else that affects
@@ -1182,8 +1184,6 @@ resilient to change. Properties, operations, headers, etc., that aren't
 understood in any response **must be ignored**. Don't expect a specific order of
 elements. When in doubt, please follow the [robustness
 principle](https://en.wikipedia.org/wiki/Robustness_principle)." %}
-
-{% include payment-menu-events.md api_resource="paymentorders" %}
 
 {% include iterator.html prev_href="after-payment" prev_title="Back: After Payment" %}
 
