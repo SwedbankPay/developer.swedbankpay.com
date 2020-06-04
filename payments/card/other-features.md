@@ -97,7 +97,7 @@ completing the payment.
 
 {% include card-problem-messages.md %}
 
-{% include payment-menu-events.md api_resource="creditcard" %}
+{% include seamless-view-events.md api_resource="creditcard" %}
 
 {% include iterator.html prev_href="after-payment" prev_title="Back: After
 payment"  %}

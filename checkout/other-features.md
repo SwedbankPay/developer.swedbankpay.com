@@ -1166,7 +1166,7 @@ The structure of a problem message will look like this:
 
 {% include settlement-reconciliation.md api_resource="paymentorders" %}
 
-{% include payment-menu-events.md api_resource="paymentorders" %}
+{% include seamless-view-events.md api_resource="paymentorders" %}
 
 ## Updating Payment Menu
 

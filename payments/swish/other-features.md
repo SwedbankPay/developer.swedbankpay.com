@@ -538,7 +538,7 @@ Content-Type: application/json
 }
 ```
 
-{% include payment-menu-events.md api_resource="swish" %}
+{% include seamless-view-events.md api_resource="swish" %}
 
 {% include iterator.html prev_href="after-payment" prev_title="Back: After
 Payment" %}

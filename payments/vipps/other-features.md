@@ -259,7 +259,7 @@ All Vipps error types will have the following URI in front of type:
 | *`ACQUIRER_GATEWAY_TIMEOUT`*    | `504`  |
 | *`UNKNOWN_ERROR`*               | `500`  |
 
-{% include payment-menu-events.md api_resource="vipps" %}
+{% include seamless-view-events.md api_resource="vipps" %}
 
 {% include iterator.html
         prev_href="after-payment"
