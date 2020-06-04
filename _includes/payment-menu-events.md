@@ -1,20 +1,15 @@
 {% assign api_resource = include.api_resource %}
 
 {% if api_resource == "paymentorders" %}
-
-## Payment Menu Events
-
-During operation in the Payment Menu, several events can occur. They are
-described below.
-
+    {% assign product="Payment Menu" %}
 {% else %}
-
-## Seamless View Events
-
-During operation in the Seamless View, several events can occur. They are
-described below.
-
+    {% assign product="Seamless View" %}
 {% endif %}
+
+## {{ product }} Events
+
+During operation in the {{ product }}, several events can occur. They are
+described below.
 
 ### `onPaymentCompleted`
 
