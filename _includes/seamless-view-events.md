@@ -151,7 +151,7 @@ following event argument object:
 ### `onPaymentCreated`
 
 This event triggers when a user has selected a payment instrument and actively
-attempts to perform a payment. The `onPaymentCreate` event is raised with the
+attempts to perform a payment. The `onPaymentCreated` event is raised with the
 following event argument object:
 
 {:.code-header}
