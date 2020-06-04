@@ -33,6 +33,14 @@ this very documentation, not to a version of any APIs described by it." %}
 
 ## May 2020
 
+### Version 1.11.1
+
+*   Added additional information on the settlement files in [Settlement &
+    Reconciliation][settlement-reconcilitation] for all Payments.
+*   Corrected [Card Payments Redirect][card-redirect] and [Card Payments
+  Seamless View][card-seamless-view] sequence diagrams.
+*   Added [Abort][swish-abort] in [Swish Payments][swish].
+
 ### Version 1.11.0
 
 *   Added a new [Trustly Payments][trustly-payments] section.
@@ -383,6 +391,8 @@ integration and the payer.
 [card-purchase]: /payments/card/redirect#step-1-create-a-purchase
 [card-unscheduled-purchase]: /payments/card/other-features#unscheduled-purchase
 [card]: /payments/card
+[card-redirect]: /payments/card/redirect
+[card-seamless-view]: /payments/card/seamless-view
 [checkout-capture]: /checkout/capture
 [checkout-checkin-front-end]: /checkout/checkin#step-1-initiate-session-for-consumer-identification
 [checkout-payment-menu-frontend]: /checkout/checkin#step-2-display-swedbank-pay-checkin-module
@@ -407,6 +417,7 @@ integration and the payer.
 [one-click]: /payments/card/other-features#one-click-payments
 [payment-orders]: /checkout/other-features#creating-a-payment-order
 [payments]: /payments
+[settlement-reconcilitation]: /payments/card/other-features#settlement-and-reconciliation
 [sdk-modules]: /resources/sdk-modules
 [storing-uri]: /home/technical-information#storing-uris
 [swish-api-errors]: /payments/swish/other-features#swish-api-errors
@@ -416,6 +427,7 @@ integration and the payer.
 [swish-redirect]: /payments/swish/redirect
 [swish-seamless-view]: /payments/swish/seamless-view
 [swish]: /payments/swish
+[swish-abort]: /payments/swish/after-payment#abort
 [terminology]: /resources/terminology
 [test-data]: /resources/test-data
 [trustly-payments]: /payments/trustly
