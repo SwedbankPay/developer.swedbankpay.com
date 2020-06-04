@@ -187,7 +187,7 @@ payment altogether or creating an authorization transaction through the
 
 {% include complete-url.md %}
 
-{% include payment-url.md full_reference=true %}
+{% include payment-url.md api_resource="vipps" full_reference=true %}
 
 {% include prices.md api_resource="vipps" %}
 
@@ -272,3 +272,4 @@ All Vipps error types will have the following URI in front of type:
 [technical-reference-expansion]: /home/technical-information#expansion
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
 [technical-reference-payeeReference]: #payee-reference
+[seamless-view-events]: #seamless-view-events

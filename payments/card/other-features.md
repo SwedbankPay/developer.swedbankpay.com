@@ -59,7 +59,7 @@ document is described in the following section.
 
 {% include one-click-payments.md %}
 
-{% include payment-url.md
+{% include payment-url.md api_resource="card"
 when="at the 3-D Secure verification for credit card payments" full_reference=true %}
 
 {% include callback-reference.md api_resource="creditcard" %}
@@ -116,12 +116,11 @@ payment"  %}
 [hosted-view]: /payments/card/seamless-view
 [one-click-payments]: #one-click-payments
 [payee-reference]: #payee-reference
-[seamless-view-events]: /payments/card/other-features#seamless-view-events
 [split-settlement]: #split-settlement
 [settlement-and-reconciliation]: #settlement-and-reconciliation
 [swedbankpay-support]: https://www.swedbankpay.se/support
 [recurrence]: #recur
 [verify]: #verify
-[verification-flow]: /payments/card/other-features#verification-flow
+[seamless-view-events]: #seamless-view-events
 [payout]: #payout
 [card-payment]: /assets/img/payments/card-payment.png

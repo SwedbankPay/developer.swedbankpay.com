@@ -585,5 +585,6 @@ Payment" %}
 [recur]: #recur
 [redirect]: /payments/invoice/redirect
 [seamless-view]: /payments/invoice/seamless-view
+[seamless-view-events]: #seamless-view-events
 [verification-flow]: #verification-flow
 [verify]: #verify

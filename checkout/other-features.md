@@ -59,7 +59,7 @@ underlying payments or transaction.
 |                   | `callbackUrl`       | `string` | The URI to the API endpoint receiving `POST` requests on transaction activity related to the payment order.                                                                                                                                                                                              |
 |                   | `logoUrl`           | `string` | The URI to the logo that will be displayed on redirect pages. **HTTPS is a requirement**.                                                                                                                                                                                                                |
 
-{% include payment-url.md payment_order=true
+{% include payment-url.md api_resource="checkout" payment_order=true
 when="selecting the payment instrument Vipps or in the 3-D Secure verification
 for Credit Card Payments" full_reference=true %}
 
@@ -1200,6 +1200,7 @@ principle](https://en.wikipedia.org/wiki/Robustness_principle)." %}
 [order-items]: /checkout/other-features#order-items
 [payee-reference]: /checkout/other-features#payee-reference
 [payment-menu]: /checkout/payment-menu
+[payment-menu-events]: #payment-menu-events
 [payment-order-capture]: /checkout/capture
 [payment-order]: #payment-orders
 [payment-orders-resource-payers]: #payer-resource

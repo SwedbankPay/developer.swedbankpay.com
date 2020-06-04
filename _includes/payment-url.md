@@ -1,4 +1,5 @@
 {% assign when = include.when | default: "selecting the payment instrument" %}
+{% assign api_resource = include.api_resource %}
 {% assign payment_order = include.payment_order | default: false %}
 {% assign full_reference = include.full_reference | default: false %}
 
@@ -58,7 +59,9 @@ you should also subscribe to other events provided by the Seamless View
 JavaScript and shut down the Seamless View if any of these events occur.
 
 Events to subscribe to for full control over the payment flow are can be found
-in [Seamless View Events][seamless-view-events].
+in {% if api_resource == "checkout" %} [Payment Menu Events][payment-menu-events].
+{% else %} [Seamless View Events][seamless-view-events].
+{% endif %}
 
 When implementing the Seamless View flow into a WebView in your mobile app, you
 should use a [custom scheme][custom-scheme] or [Universal Link][universal-link]

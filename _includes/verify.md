@@ -49,7 +49,7 @@ the credit card information.
 
 ### API Requests
 
-The API requests are displayed in the [Verification flow][verification-flow]. The options you can
+The API requests are displayed in the Verification flow below. The options you can
 choose from when creating a payment with key operation set to Value Verify are
 listed below.
 

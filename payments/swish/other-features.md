@@ -177,7 +177,7 @@ be connected to a Swish account.
 
 {% include complete-url.md %}
 
-{% include payment-url.md full_reference=true %}
+{% include payment-url.md api_resource="swish" full_reference=true %}
 
 {% include prices.md api_resource="swish" %}
 
@@ -545,3 +545,4 @@ Payment" %}
 
 [payee-reference]: #payee-reference
 [transaction-resource]: #Transactions
+[seamless-view-events]: #seamless-view-events
