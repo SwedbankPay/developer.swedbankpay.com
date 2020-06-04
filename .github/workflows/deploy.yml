@@ -1,12 +1,11 @@
 name: Deploy to GitHub Pages
 
-on: 
+on:
   push:
     branches: [ master ]
 
 jobs:
-  build:
-    name: Deploy to GitHub Pages
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
