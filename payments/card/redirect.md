@@ -94,42 +94,45 @@ sequenceDiagram
     note left of Payer: First API request
     SwedbankPay-->>-Merchant: rel: redirect-authorization ①
     activate Merchant
-    Merchant-->>-Payer: authorization page
+    Merchant-->>-Payer: Redirect to authorization page
     activate Payer
-    Payer->>-SwedbankPay: access authorization page
+    Payer->>-SwedbankPay: Access authorization page
     activate SwedbankPay
     note left of Payer: redirect to SwedbankPay ②
-    SwedbankPay-->>-Payer: display purchase information
+    SwedbankPay-->>-Payer: Display purchase information
     activate Payer
-    Payer->>Payer: input creditcard information ③
-    Payer->>-SwedbankPay: submit creditcard information
+    Payer->>Payer: Input creditcard information ③
+    Payer->>-SwedbankPay: Submit creditcard information
 
-        opt Card supports 3-D Secure
+        opt If 3-D Secure required
         note left of Payer: Authentication Challenge ④
-        SwedbankPay-->>Payer: redirect to IssuingBank
+        SwedbankPay-->>Payer: Redirect to IssuingBank
         activate Payer
         Payer->>-IssuingBank: 3-D Secure authentication process
         activate IssuingBank
-        IssuingBank->>-Payer: 3-D Secure authentication process
+        IssuingBank-->>-Payer: 3-D Secure authentication process response
         activate Payer
-        Payer->>-SwedbankPay: access authentication page
+        Payer->>-SwedbankPay: Access authentication page
         activate SwedbankPay
         end
 
-    SwedbankPay-->>-Payer: CompleteUrl ⑤
+    SwedbankPay-->>-Payer: Redirect to CompleteUrl ⑤
+    activate Payer
+    Payer->>-Merchant: Access CompleteUrl
+
+        alt Callback is set
+        activate SwedbankPay
+        SwedbankPay->>SwedbankPay: Payment is updated
+        SwedbankPay->>-Merchant: POST Payment Callback
+        end
+
     activate Merchant
     Merchant->>-SwedbankPay: GET <payment.id> ⑥
     activate SwedbankPay
     note left of Payer: Second API request
     SwedbankPay-->>-Merchant: Payment result
     activate Merchant
-    Merchant-->>-Payer: display purchase result
-
-        opt Callback is set
-        activate SwedbankPay
-        SwedbankPay->>SwedbankPay: Payment is updated
-        SwedbankPay->>-Merchant: POST Payment Callback
-        end
+    Merchant-->>-Payer: Display purchase result
 ```
 
 ### Explanations

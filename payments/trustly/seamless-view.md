@@ -290,15 +290,12 @@ next_href="after-payment" next_title="Next: After Payment" %}
 [callback]: /payments/trustly/other-features#callback
 [cancel]: /payments/trustly/after-payment#cancellations
 [create-payment]: /payments/trustly/other-features#create-payment
-[fi-png]: /assets/img/flag-finland.png
 [financing-consumer]: /payments/trustly/other-features#financing-consumer
 [trustly-payment-embedded-view]: /assets/screenshots/trustly/consumer-information-input.png
-[no-png]: /assets/img/flag-norway.png
 [payee-reference]: /payments/trustly/other-features#payee-reference
 [payment-resource]: /payments/trustly/other-features#payment-resource
 [price-resource]: /payments/trustly/other-features#prices
 [recur]: /payments/trustly/other-features#recur
-[se-png]: /assets/img/flag-sweden.png
 [setup-mail]: mailto:setup.ecom@PayEx.com
 [user-agent-definition]: https://en.wikipedia.org/wiki/User_agent
 [verify]: /payments/trustly/other-features#verify

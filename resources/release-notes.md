@@ -33,6 +33,14 @@ this very documentation, not to a version of any APIs described by it." %}
 
 ## May 2020
 
+### Version 1.11.1
+
+*   Added additional information on the settlement files in [Settlement &
+    Reconciliation][settlement-reconcilitation] for all Payments.
+*   Corrected [Card Payments Redirect][card-redirect] and [Card Payments
+  Seamless View][card-seamless-view] sequence diagrams.
+*   Added [Abort][swish-abort] in [Swish Payments][swish].
+
 ### Version 1.11.0
 
 *   Added a new [Trustly Payments][trustly-payments] section.
@@ -71,8 +79,8 @@ this very documentation, not to a version of any APIs described by it." %}
 *   Corrected problem `type` URIs for [Card Payments][card], [Checkout][checkout]
   and [Swish Payments][swish].
 *   Required checkmarks have a new, fresh look: {% icon check %}
-*   Flags now also sport a new look: ![nor][nor-flag] ![swe][swe-flag]
-  ![dan][dan-flag] ![fin][fin-flag]
+*   Flags now also sport a new look: {% flag no %} {% flag se %} {% flag dk %}
+    {% flag fi %} {% flag lt %} {% flag lv %} {% flag ee %}
 
 ### Version 1.8.3
 
@@ -383,6 +391,8 @@ integration and the payer.
 [card-purchase]: /payments/card/redirect#step-1-create-a-purchase
 [card-unscheduled-purchase]: /payments/card/other-features#unscheduled-purchase
 [card]: /payments/card
+[card-redirect]: /payments/card/redirect
+[card-seamless-view]: /payments/card/seamless-view
 [checkout-capture]: /checkout/capture
 [checkout-checkin-front-end]: /checkout/checkin#step-1-initiate-session-for-consumer-identification
 [checkout-payment-menu-frontend]: /checkout/checkin#step-2-display-swedbank-pay-checkin-module
@@ -407,14 +417,8 @@ integration and the payer.
 [one-click]: /payments/card/other-features#one-click-payments
 [payment-orders]: /checkout/other-features#creating-a-payment-order
 [payments]: /payments
+[settlement-reconcilitation]: /payments/card/other-features#settlement-and-reconciliation
 [sdk-modules]: /resources/sdk-modules
-[nor-flag]: /assets/img/flag-norway.png
-[swe-flag]: /assets/img/flag-sweden.png
-[fin-flag]: /assets/img/flag-finland.png
-[lat-flag]: /assets/img/flag-latvia.png
-[lit-flag]: /assets/img/flag-lithuania.png
-[est-flag]: /assets/img/flag-estonia.png
-[dan-flag]: /assets/img/flag-denmark.png
 [storing-uri]: /home/technical-information#storing-uris
 [swish-api-errors]: /payments/swish/other-features#swish-api-errors
 [swish-direct-mcom]: /payments/swish/direct#step-2b-create-m-commerce-sale-transaction
@@ -423,6 +427,7 @@ integration and the payer.
 [swish-redirect]: /payments/swish/redirect
 [swish-seamless-view]: /payments/swish/seamless-view
 [swish]: /payments/swish
+[swish-abort]: /payments/swish/after-payment#abort
 [terminology]: /resources/terminology
 [test-data]: /resources/test-data
 [trustly-payments]: /payments/trustly

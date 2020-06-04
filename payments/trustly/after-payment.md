@@ -33,7 +33,7 @@ also be able to see the available `operations` after posting a payment.
     [Callback request][callback-request] will be posted to the `callbackUrl`,
     which was set when the payment was created.
 
-{% include abort-reference.md instrument="trustly" %}
+{% include abort-reference.md api_resource="trustly" %}
 
 ## Reversals
 
