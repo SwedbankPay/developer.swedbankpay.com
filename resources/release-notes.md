@@ -387,7 +387,7 @@ paymentUrl in place, the retry process becomes much more convenient for both the
 integration and the payer.
 
 [card-direct]: /payments/card/direct
-[card-payment-url]: /payments/card/other-features#paymenturl
+[card-payment-url]: /payments/card/other-features#payment-url
 [card-purchase]: /payments/card/redirect#step-1-create-a-purchase
 [card-unscheduled-purchase]: /payments/card/other-features#unscheduled-purchase
 [card]: /payments/card
@@ -398,7 +398,7 @@ integration and the payer.
 [checkout-payment-menu-frontend]: /checkout/checkin#step-2-display-swedbank-pay-checkin-module
 [checkout-payment-order-purchase]: /checkout/payment-menu#request
 [checkout-payment-orders]: /checkout/other-features#payment-orders
-[checkout-payment-url]: /checkout/other-features#paymenturl
+[checkout-payment-url]: /checkout/other-features#payment-url
 [checkout]: /checkout
 [checkout-callback]: /checkout/other-features#callback
 [co-badge-card]: /payments/card/other-features#co-badge-card-choice-for-dankort
@@ -432,5 +432,5 @@ integration and the payer.
 [test-data]: /resources/test-data
 [trustly-payments]: /payments/trustly
 [vipps-payment-resource]: /payments/vipps/other-features#payment-resource
-[vipps-payment-url]: /payments/vipps/other-features#paymenturl
+[vipps-payment-url]: /payments/vipps/other-features#payment-url
 [vipps]: /payments/vipps
