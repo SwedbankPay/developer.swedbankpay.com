@@ -1200,7 +1200,6 @@ principle](https://en.wikipedia.org/wiki/Robustness_principle)." %}
 [order-items]: /checkout/other-features#order-items
 [payee-reference]: /checkout/other-features#payee-reference
 [payment-menu]: /checkout/payment-menu
-[payment-menu-events]: #payment-menu-events
 [payment-order-capture]: /checkout/capture
 [payment-order]: #payment-orders
 [payment-orders-resource-payers]: #payer-resource

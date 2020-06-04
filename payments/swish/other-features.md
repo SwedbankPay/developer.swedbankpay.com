@@ -545,4 +545,3 @@ Payment" %}
 
 [payee-reference]: #payee-reference
 [transaction-resource]: #Transactions
-[seamless-view-events]: #seamless-view-events

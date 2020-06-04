@@ -121,6 +121,5 @@ payment"  %}
 [swedbankpay-support]: https://www.swedbankpay.se/support
 [recurrence]: #recur
 [verify]: #verify
-[seamless-view-events]: #seamless-view-events
 [payout]: #payout
 [card-payment]: /assets/img/payments/card-payment.png
