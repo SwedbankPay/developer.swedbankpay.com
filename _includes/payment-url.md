@@ -58,7 +58,7 @@ you should also subscribe to other events provided by the Seamless View
 JavaScript and shut down the Seamless View if any of these events occur.
 
 Events to subscribe to for full control over the payment flow are can be found
-in [Seamless view events][seamless-view-events].
+in [Seamless View Events][seamless-view-events].
 
 When implementing the Seamless View flow into a WebView in your mobile app, you
 should use a [custom scheme][custom-scheme] or [Universal Link][universal-link]
