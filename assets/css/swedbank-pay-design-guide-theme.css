@@ -2,6 +2,8 @@
 /* TODO: Implement a table element style that @extends .table and .table-striped so we don't have to decorate all Markdown tables. */
 img { max-width: 100%; }
 
+.table th > .material-icons, .table td > .material-icons { float: none; }
+
 p.code-header { display: block; padding: 5px 19px; background-color: #e1d7d1; color: #512b2b; border-bottom: 1px solid #b8a294; margin-bottom: 0; }
 
 h1 > a.header-anchor, h2 > a.header-anchor, h3 > a.header-anchor, h4 > a.header-anchor, h5 > a.header-anchor, h6 > a.header-anchor { color: #ebf8f2; text-decoration: none; }
@@ -18,9 +20,15 @@ a.header-anchor::before { content: '#'; }
 
 .jumbotron p:last-of-type { margin-bottom: 0; }
 
-a[href^='//']:not([href*='']):after, a[href^='http://']:not([href*='']):after, a[href^='https://']:not([href*='']):after { content: url("../img/external-url.svg"); margin-left: .3rem; display: inline-block; width: .8rem; background-repeat: none; color: #257886; }
+a[href^='//']:not([href*='https://github.com']):after, a[href^='http://']:not([href*='https://github.com']):after, a[href^='https://']:not([href*='https://github.com']):after { content: url("../img/external-url.svg"); margin-left: .3rem; display: inline-block; width: .8rem; background-repeat: none; color: #257886; }
+
+#designguide .designguide-header .topbar-info a { margin-left: 5px; color: rgba(34, 34, 34, 0.75); fill: rgba(34, 34, 34, 0.75); border: none; }
 
 #designguide .designguide-header .topbar-info a:after { content: none; display: inline; }
+
+#designguide .designguide-header .topbar-info a svg { overflow: visible; width: 2rem; height: 2rem; display: inline-block; vertical-align: top; }
+
+#designguide .designguide-header .topbar-info a:hover { color: rgba(0, 0, 0, 0.75); fill: rgba(0, 0, 0, 0.75); }
 
 .iterator { margin: 1rem 0; }
 
