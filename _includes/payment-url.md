@@ -1,4 +1,5 @@
 {% assign when = include.when | default: "selecting the payment instrument" %}
+{% assign api_resource = include.api_resource %}
 {% assign payment_order = include.payment_order | default: false %}
 {% assign full_reference = include.full_reference | default: false %}
 
@@ -7,6 +8,8 @@
 {% else %}
     {% assign entity = "Payment" %}
 {% endif %}
+
+## Payment Url
 
 For our Seamless Views, the field called `paymentUrl` will be used when the
 consumer is redirected out of the Seamless View (the `iframe`). The consumer is
@@ -55,15 +58,10 @@ it can lead to issues. If you want to handle payment errors in your own code,
 you should also subscribe to other events provided by the Seamless View
 JavaScript and shut down the Seamless View if any of these events occur.
 
-Events to subscribe to for full control over the payment flow are:
-
-{:.table .table-striped}
-| Event                        | Description                                                                                                                                         |
-| :--------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `onError`                    | Will trigger any time a system error occur from the JavaScript.                                                                                     |
-| `onPaymentFailed`            | will call registrered endpoint if provided. If not subscribed to will redirect to conpleteUrl                                                       |
-| `onPaymentCanceled`          | will be called if the payment is aborted by the consumer or triggered by you with the Abort command on the payment                                  |
-| `onPaymentTransactionFailed` | this will trigger if one payment attempt failed. Standard functionality are to let the consumer be able to retry the payment from the payment page. |
+Events to subscribe to for full control over the payment flow are can be found
+in {% if api_resource == "checkout" %} [Payment Menu Events](/{{ api_resource }}/other-features#payment-menu-events).
+{% else %} [Seamless View Events](/payments/{{ api_resource }}/other-features#seamless-view-events).
+{% endif %}
 
 When implementing the Seamless View flow into a WebView in your mobile app, you
 should use a [custom scheme][custom-scheme] or [Universal Link][universal-link]

@@ -177,9 +177,7 @@ be connected to a Swish account.
 
 {% include complete-url.md %}
 
-## Payment Url
-
-{% include payment-url.md full_reference=true %}
+{% include payment-url.md api_resource="swish" full_reference=true %}
 
 {% include prices.md api_resource="swish" %}
 
@@ -539,6 +537,8 @@ Content-Type: application/json
     "detail": "A system error occurred. We are working on it."
 }
 ```
+
+{% include seamless-view-events.md api_resource="swish" %}
 
 {% include iterator.html prev_href="after-payment" prev_title="Back: After
 Payment" %}

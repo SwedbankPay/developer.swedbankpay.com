@@ -33,8 +33,6 @@ Remember to read up on our [URL resource][urls].
 
 {% include alert-risk-indicator.md %}
 
-### Payment Url
-
 {% include payment-url.md payment_order=true
 when="selecting the payment instrument Vipps or in the 3-D Secure verification
 for Credit Card Payments" %}
