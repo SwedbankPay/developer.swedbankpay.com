@@ -387,7 +387,7 @@ sequenceDiagram
     Merchant-->>Payer: Display purchase result
     deactivate Merchant
     deactivate Payer
-  ````
+  ```
 
 ## Options after posting a purchase payment
 
