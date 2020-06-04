@@ -56,10 +56,10 @@ Below is a quick stepwise summary of how the Direct Card Payment scenario works.
 *   If the issuer requires 3-D Secure authentication, you will then receive an
   operation called `redirect-authentication`. You must redirect the payer to
   this URL to let them authenticate against the issuer's 3-D Secure page.
-      -    When the 3-D Secure flow is completed, the payer will be redirected back to
+    -   When the 3-D Secure flow is completed, the payer will be redirected back to
       the URL provided in `completeUrl` or `cancelUrl`, depending on the actions
       performed by the payer.
-      -   If the issuer does not require 3-D Secure authentication, the payment will
+    -   If the issuer does not require 3-D Secure authentication, the payment will
       already be `Completed` after performing the `direct-authorization`
       request. Note that `Completed` just indicates that the payment is in a
       final state; the financial transaction could be either OK or failed.
@@ -343,51 +343,51 @@ purchase, and the requests you have to send to Swedbank Pay.
 
 ```mermaid
 sequenceDiagram
-  participant Payer
-  participant Merchant
-  participant SwedbankPay as Swedbank Pay
-  participant IssuingBank as Issuing Bank
-
-  activate Payer
+    participant Payer
+    participant Merchant
+    participant SwedbankPay as Swedbank Pay
+    participant IssuingBank as Issuing Bank
+    activate Payer
     Payer->>Merchant: Start purchase
     activate Merchant
-      Merchant->>SwedbankPay: POST /psp/creditcard/payments
-      activate SwedbankPay
-        note left of Merchant: First API request
-        SwedbankPay->>Merchant: Payment resource
-      deactivate SwedbankPay
-      Merchant->>Payer: Credit card form
+    Merchant->>SwedbankPay: POST /psp/creditcard/payments
+    activate SwedbankPay
+    note left of Merchant: First API request
+    SwedbankPay->>Merchant: Payment resource
+    deactivate SwedbankPay
+    Merchant->>Payer: Credit card form
     deactivate Merchant
-
     Payer->>Merchant: Submit credit card form
     activate Merchant
-      Merchant->>SwedbankPay: POST rel:direct-authorization
-      activate SwedbankPay
-        note left of Merchant: Second API request
-        SwedbankPay->>Merchant: Authorization resource
-      deactivate SwedbankPay
-      opt 3-D Secure required
-        Merchant->>Payer: Redirect to rel:redirect-authentication
-        deactivate Merchant
-        note left of Payer: redirect to card issuing bank
-        Payer->>IssuingBank: Perform 3-D Secure authentication
-        activate IssuingBank
-          IssuingBank->>Payer: Redirected to merchant's completeUrl
-        deactivate IssuingBank
-        note left of Payer: redirect back to merchant
-        Payer->>Merchant: Access merchant's completeUrl
-        activate Merchant
-        Merchant->>SwedbankPay: GET <payment.id>
-        activate SwedbankPay
-          note left of Merchant: Third API request
-          SwedbankPay-->Merchant: Payment resource
-        deactivate SwedbankPay
-        Merchant->>Merchant: Inspect payment status
-      end
-      Merchant-->>Payer: Display purchase result
+    Merchant->>SwedbankPay: POST rel:direct-authorization
+    activate SwedbankPay
+    note left of Merchant: Second API request
+    SwedbankPay->>Merchant: Authorization resource
+    deactivate SwedbankPay
+        alt No 3DSecure required
+            Merchant->>Payer: Redirected to merchant's completeUrl
+        else 3DSecure required
+            Merchant->>Payer: Redirect to rel:redirect-authentication
+            deactivate Merchant
+            note left of Payer: redirect to card issuing bank
+            Payer->>IssuingBank: Perform 3-D Secure authentication
+            activate IssuingBank
+            IssuingBank->>Payer: Redirected to merchant's completeUrl
+            deactivate IssuingBank
+        end
+    note left of Payer: redirect back to merchant
+    Payer->>Merchant: Access merchant's completeUrl
+    activate Merchant
+    Merchant->>SwedbankPay: GET <payment.id>
+    activate SwedbankPay
+    note left of Merchant: Third API request
+    SwedbankPay-->Merchant: Payment resource
+    deactivate SwedbankPay
+    Merchant->>Merchant: Inspect payment status
+    Merchant-->>Payer: Display purchase result
     deactivate Merchant
-  deactivate Payer
-```
+    deactivate Payer
+  ````
 
 ## Options after posting a purchase payment
 
