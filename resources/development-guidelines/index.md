@@ -2,17 +2,17 @@
 title: Swedbank Pay Open Source Development Guidelines
 sidebar:
   navigation:
-  -   title: Swedbank Pay Development Guidelines
+  - title: Swedbank Pay Development Guidelines
     items:
-    -   url: /resources/development-guidelines
+    - url: /resources/development-guidelines
       title: Introduction
-    -   url: /resources/development-guidelines/code-of-conduct
+    - url: /resources/development-guidelines/code-of-conduct
       title: Code Of Conduct
-    -   url: /resources/development-guidelines/contributing
+    - url: /resources/development-guidelines/contributing
       title: Contributing
-    -   url: /resources/development-guidelines/good-commit-practice
+    - url: /resources/development-guidelines/good-commit-practice
       title: Good Commit Practice
-    -   url: /resources/development-guidelines/licence
+    - url: /resources/development-guidelines/licence
       title: Licence
 ---
 
@@ -110,7 +110,7 @@ be perceived as accessible:
      status of pull request accordingly. If a test fails, the contributor
      should be alerted of its failure through GitHub’s interface.
 6.  All code contributions should be run through a public continuous integration
-   server so build failures are visible to the contributor such that it can be 
+   server so build failures are visible to the contributor such that it can be
    fixed without any project manager’s involvement.
 7.  The development and branching process should preferably be based on an
    existing scheme such as [GitFlow][gitflow] or [GitHub Flow][github-flow].

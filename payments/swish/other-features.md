@@ -2,19 +2,19 @@
 title: Swedbank Pay Payments Swish Other Features
 sidebar:
   navigation:
-  -   title: Swish Payments
+  - title: Swish Payments
     items:
-    -   url: /payments/swish
+    - url: /payments/swish
       title: Introduction
-    -   url: /payments/swish/direct
+    - url: /payments/swish/direct
       title: Direct
-    -   url: /payments/swish/redirect
+    - url: /payments/swish/redirect
       title: Redirect
-    -   url: /payments/swish/seamless-view
+    - url: /payments/swish/seamless-view
       title: Seamless View
-    -   url: /payments/swish/after-payment
+    - url: /payments/swish/after-payment
       title: After Payment
-    -   url: /payments/swish/other-features
+    - url: /payments/swish/other-features
       title: Other Features
 ---
 
@@ -77,7 +77,7 @@ Content-Type: application/json
             "msisdn": "+46739000001"
         },
         "swish": {
-            "ecomOnlyEnabled": false
+            "enableEcomOnly": false
         }
     }
 }
@@ -113,7 +113,7 @@ Content-Type: application/json
 |                  | └➔&nbsp;`orderReference`        | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                   |
 |                  | └➔&nbsp;`subsite`               | `string(40)` | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.                                                                                               |
 |                  | └➔&nbsp;`prefillInfo.msisdn`    | `string`     | Number will be prefilled on payment page, if valid. The mobile number must have a country code prefix and be 8 to 15 digits in length.                                                                                                                    |
-|                  | └➔&nbsp;`swish.ecomOnlyEnabled` | `boolean`    | `true` if to only enable Swish on browser based transactions.; otherwise `false` to also enable Swish transactions via mobile app.                                                                                                                        |
+|                  | └➔&nbsp;`swish.enableEcomOnly` | `boolean`    | `true` if to only enable Swish on browser based transactions.; otherwise `false` to also enable Swish transactions via mobile app.                                                                                                                        |
 
 {:.code-header}
 **Response**
@@ -177,9 +177,7 @@ be connected to a Swish account.
 
 {% include complete-url.md %}
 
-## Payment Url
-
-{% include payment-url.md full_reference=true %}
+{% include payment-url.md api_resource="swish" documentation_section="swish" full_reference=true %}
 
 {% include prices.md api_resource="swish" %}
 
@@ -539,6 +537,8 @@ Content-Type: application/json
     "detail": "A system error occurred. We are working on it."
 }
 ```
+
+{% include seamless-view-events.md api_resource="swish" %}
 
 {% include iterator.html prev_href="after-payment" prev_title="Back: After
 Payment" %}

@@ -99,7 +99,7 @@ Content-Type: application/json
 | {% icon check %} | `payment`                    | `object`      | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                              |
 | {% icon check %} | └➔&nbsp;`operation`          | `string`      | The operation that the `payment` is supposed to perform. For Trustly, this will always be `Purchase` as it is currently the only available operation.                                                                                                                                              |
 | {% icon check %} | └➔&nbsp;`intent`             | `string`      | `Sale` is the only intent option for Trustly. Performs the payment when the end-user gets redirected and completes the payment.                                                                                                                                                                    |
-| {% icon check %} | └➔&nbsp;`currency`           | `string`      | NOK, SEK, DKK, USD or EUR.                                                                                                                                                                                                                                                                         |
+| {% icon check %} | └➔&nbsp;`currency`                | `string`      | `SEK`, `EUR`. The currency of the provided `amount`.                                                                                                                                                                                                                                                                                            |
 | {% icon check %} | └➔&nbsp;`prices`             | `object`      | The `prices` resource lists the prices related to a specific payment.                                                                                                                                                                                                                              |
 | {% icon check %} | └─➔&nbsp;`type`              | `string`      | Use the `Trustly` type here                                                                                                                                                                                                                                                                        |
 | {% icon check %} | └─➔&nbsp;`amount`            | `integer`     | {% include field-description-amount.md %}                                                                                                                                                                                                                                                          |
@@ -290,15 +290,12 @@ next_href="after-payment" next_title="Next: After Payment" %}
 [callback]: /payments/trustly/other-features#callback
 [cancel]: /payments/trustly/after-payment#cancellations
 [create-payment]: /payments/trustly/other-features#create-payment
-[fi-png]: /assets/img/flag-finland.png
 [financing-consumer]: /payments/trustly/other-features#financing-consumer
 [trustly-payment-embedded-view]: /assets/screenshots/trustly/consumer-information-input.png
-[no-png]: /assets/img/flag-norway.png
 [payee-reference]: /payments/trustly/other-features#payee-reference
 [payment-resource]: /payments/trustly/other-features#payment-resource
 [price-resource]: /payments/trustly/other-features#prices
 [recur]: /payments/trustly/other-features#recur
-[se-png]: /assets/img/flag-sweden.png
 [setup-mail]: mailto:setup.ecom@PayEx.com
 [user-agent-definition]: https://en.wikipedia.org/wiki/User_agent
 [verify]: /payments/trustly/other-features#verify

@@ -1,6 +1,18 @@
 {% assign api_resource = include.api_resource | default: "creditcard" %}
 {% assign documentation_section = include.documentation_section %}
-{% assign show_status_operations = include.show_status_operations | default: false %}
+{% assign show_status_operations = include.show_status_operations | default:
+false %}
+{% case api_resource %}
+{% when "vipps" %}
+  {% assign language = "nb-NO" %}
+  {% assign currency = "NOK" %}
+{% when "mobilepay" %}
+  {% assign language = "da-DK" %}
+  {% assign currency = "DKK" %}
+{% else %}
+  {% assign language = "sv-SE" %}
+  {% assign currency = "SEK" %}
+{% endcase %}
 
 ## Payment Resource
 
@@ -35,7 +47,7 @@ Content-Type: application/json
         "state": "Ready",
         "operation": "Purchase",
         "intent": "Authorization",
-        "currency": "NOK",
+        "currency": "{{ currency }}",
         "amount": 1500,
         "remainingCaptureAmount": 1500,
         "remainingCancellationAmount": 1500,
@@ -44,7 +56,7 @@ Content-Type: application/json
         "payerReference": "AB1234",
         "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
         "userAgent": "Mozilla/5.0...",
-        "language": "nb-NO",
+        "language": "{{ language }}",
         "prices": {
             "id": "/psp/{{ api_resource}}/payments/{{ page.payment_id }}/prices"
         },

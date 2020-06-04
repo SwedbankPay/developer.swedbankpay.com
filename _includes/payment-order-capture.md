@@ -1,9 +1,16 @@
+{% assign documentation_section=include.documentation_section %}
+
+{% if documentation_section == "checkout" %}
 ## Step 5: Capture the funds
+{% else %}
+## Step 3: Capture the funds
+{% endif %}
+
 
 Capture can only be done on a payment with a successful authorized transaction,
 and if the authorization was not done on a one-phase payment instrument.
 Examples of one-phase payment instruments are [Swish][swish] and [Vipps][vipps],
- while payment instruments such as [Credit Card][card] are two-phase payments,
+ while payment instruments such as [Card Payments][card] are two-phase payments,
  requiring a `Capture` to be performed.
 
 It is possible to do a part-capture where you only capture a smaller amount

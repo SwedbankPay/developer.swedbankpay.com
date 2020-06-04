@@ -1,3 +1,18 @@
+{% assign api_resource = include.api_resource | default: "creditcard" %}
+{% assign show_status_operations = include.show_status_operations | default:
+false %}
+{% case api_resource %}
+{% when "vipps" %}
+  {% assign language = "nb-NO" %}
+  {% assign currency = "NOK" %}
+{% when "mobilepay" %}
+  {% assign language = "da-DK" %}
+  {% assign currency = "DKK" %}
+{% else %}
+  {% assign language = "sv-SE" %}
+  {% assign currency = "SEK" %}
+{% endcase %}
+
 ## Description
 
 The `description` field is a 40 character length textual summary of the
@@ -8,7 +23,7 @@ As you can see the `description` field is set to be `test purchase -
 orderNumber28749347` in the the code example. The images below will show you the
 payment UI for the Redirect and Seamless View scenario.
 
-{% include alert.html type="neutral" icon="info" body="Notice that for Redirect,
+{% include alert.html type="informative" icon="info" body="Notice that for Redirect,
 the description will be shown as `test purchase - orderNumber28749347`, as set
 in the code example. For the Seamless View scenario, the description is not
 shown in the payment window, but it is still required in the initial request."
@@ -26,7 +41,7 @@ Content-Type: application/json
     "payment": {
         "operation": "Purchase",
         "intent": "Authorization",
-        "currency": "SEK",
+        "currency": "{{ currency }}",
         "prices": [{
                 "type": "CreditCard",
                 "amount": 1500,
@@ -37,7 +52,7 @@ Content-Type: application/json
         "generatePaymentToken": false,
         "generateRecurrenceToken": false,
         "userAgent": "Mozilla/5.0...",
-        "language": "nb-NO",
+        "language": "{{ language }}",
         "urls":
             "hostUrls": ["https://example.com"],
             "completeUrl": "https://example.com/payment-completed",
@@ -47,7 +62,6 @@ Content-Type: application/json
             "logoUrl": "https://example.com/payment-logo.png",
             "termsOfServiceUrl": "https://example.com/payment-terms.pdf",
         }
-    ]
 }
 ```
 

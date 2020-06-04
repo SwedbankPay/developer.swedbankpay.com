@@ -20,8 +20,8 @@ sidebar:
 
 {% include payment-link.md %}
 
-{% include payment-resource.md  api_resource="vipps" documentation_section="vipps"
-show_status_operations=true%}
+{% include payment-resource.md  api_resource="vipps"
+documentation_section="vipps" show_status_operations=true%}
 
 {% include payment-transaction-states.md %}
 
@@ -187,9 +187,7 @@ payment altogether or creating an authorization transaction through the
 
 {% include complete-url.md %}
 
-## Payment Url
-
-{% include payment-url.md full_reference=true %}
+{% include payment-url.md api_resource="vipps" documentation_section="vipps" full_reference=true %}
 
 {% include prices.md api_resource="vipps" %}
 
@@ -260,6 +258,8 @@ All Vipps error types will have the following URI in front of type:
 | *`ACQUIRER_GATEWAY_ERROR`*      | `502`  |
 | *`ACQUIRER_GATEWAY_TIMEOUT`*    | `504`  |
 | *`UNKNOWN_ERROR`*               | `500`  |
+
+{% include seamless-view-events.md api_resource="vipps" %}
 
 {% include iterator.html
         prev_href="after-payment"

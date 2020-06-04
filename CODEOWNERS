@@ -7,7 +7,9 @@
 
 # If a config file or a build file is edited
 *.yml   @SwedbankPay/dx 
+*.yaml   @SwedbankPay/dx 
 Gemfile @SwedbankPay/dx 
 *.lock  @SwedbankPay/dx 
+*.json  @SwedbankPay/dx 
 Rakefile @SwedbankPay/dx 
 CODEOWNERS @SwedbankPay/dx 

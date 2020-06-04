@@ -7,11 +7,18 @@ economic transaction. When a payment is reconciled,  captured amounts for the
 payment are matched against the corresponding settlement." %}
 
 The information needed to reconcile captured funds - the balance report and
-transactions list - are available for all merchants using Swedbank Pay. By default you
-receive these files by e-mail, but it is also possible to get them via FTP
-access. Contact [omni.client@swedbankpay.se][omni-client-email] for further
-inquiries regarding this. The settlement frequency is defined in the agreement
-and you will receive a report for each payout and/or invoice.
+transactions list - are available for all merchants using Swedbank Pay.
+
+*   By default, the settlement files will be sent to you by via e-mail.
+*   We also have the option to send it via SFTP as well, if this is something you
+    would like then you need to state this to your sales representative, so they
+    can inform the setup team when the time is ready.
+*   The settlement frequency is defined in the agreement and you will receive it
+    (per default) once a month, or once a week.
+*   You do not need to subscribe, the files will be delivered by default.
+
+Contact [omni.client@swedbankpay.se][omni-client-email] for further
+inquiries regarding this.
 
 ### Settlement
 
@@ -82,7 +89,7 @@ body.
 
 {:.table .table-striped}
 | Field         | Type       | Description                                                                |
-| :------------ | :--------- | :------------------------------------------------------------------------- |
+|:--------------|:-----------|:---------------------------------------------------------------------------|
 | `Prefix`      | `String`   | The `Prefix` used for transactions, only eligible if merchant uses prefix. |
 | Currency      | `ISO 4217` | Settlement currency (e.g. `SEK, NOK, EUR`).                                |
 | `ServiceType` | `String`   | The service type of the service used (e.g. `Creditcard`).                  |
@@ -98,7 +105,7 @@ body.
 
 {:.table .table-striped}
 | Field                           | Type       | Description                                                                                                                                               |
-| :------------------------------ | :--------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|:--------------------------------|:-----------|:----------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `Swedbank Pay Batch Number`     | `Decimal`  | A batch number common to all types of transactions processed by Swedbank Pay.                                                                             |
 | `Transaction Number`            | `Decimal`  | A unique identifier of the transaction, can be traced in Swedbank Pay Admin user interface.                                                               |
 | `Order id`                      | `String`   | A unique identifier of the order, as sent from the merchant to Swedbank Pay. Transactions that are related to the same order are associated with this ID. |
@@ -213,16 +220,16 @@ downloaded below.
 
 #### Option A: Swedbank Pay handles the settlement process
 
-* **[PDF Balance Report for Swedbank Pay Checkout][attachement-1]**
-* [PDF Balance Report][attachement-2]
-* [XLSX Transaction List][attachement-3]
-* [XML Transaction List][attachement-4]
+*   **[PDF Balance Report for Swedbank Pay Checkout][attachement-1]**
+*   [PDF Balance Report][attachement-2]
+*   [XLSX Transaction List][attachement-3]
+*   [XML Transaction List][attachement-4]
 
 #### Option B: You will handle the settlement process yourself
 
-* [PDF Balance Report][attachement-5]
-* [XLSX Transaction List][attachement-6]
-* [XML Transaction List][attachement-7]
+*   [PDF Balance Report][attachement-5]
+*   [XLSX Transaction List][attachement-6]
+*   [XML Transaction List][attachement-7]
 
 ### Split Settlement
 

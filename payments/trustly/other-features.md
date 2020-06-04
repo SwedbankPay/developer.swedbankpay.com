@@ -92,7 +92,7 @@ Content-Type: application/json
 | {% icon check %} | `payment`                         | `object`      | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                                                 |
 | {% icon check %} | └➔&nbsp;`operation`               | `string`      | The operation that the `payment` is supposed to perform. For Trustly, this will always be `Purchase` as it is currently the only available operation. |
 | {% icon check %} | └➔&nbsp;`intent`                  | `string`      | `Sale` is the only intent option for Trustly. Performs the payment when the end-user gets redirected and completes the payment.                                                                                                                                                               |
-| {% icon check %} | └➔&nbsp;`currency`                | `string`      | NOK, SEK, DKK, USD or EUR.                                                                                                                                                                                                                                                                                            |
+| {% icon check %} | └➔&nbsp;`currency`                | `string`      | `SEK`, `EUR`. The currency of the provided `amount`.                                                                                                                                                                                                                                                                                            |
 | {% icon check %} | └➔&nbsp;`prices`                  | `object`      | The `prices` resource lists the prices related to a specific payment.                                                                                                                                                                                                                                                 |
 | {% icon check %} | └─➔&nbsp;`type`                   | `string`      | Use the `Trustly` type here                                                                                                                                                                                                                                                                                           |
 | {% icon check %} | └─➔&nbsp;`amount`                 | `integer`     | {% include field-description-amount.md %}                                                                                                                                                                                                                                                                             |
@@ -145,18 +145,17 @@ often help narrow down the specifics of the problem.
 
 {% include common-problem-types.md %}
 
+{% include seamless-view-events.md api_resource="trustly" %}
+
 {% include iterator.html prev_href="after-payment" prev_title="Back: After
 Payment" %}
 
 [callback]: #callback
 [cancel]: /payments/trustly/after-payment#cancellations
-[fi-png]: /assets/img/flag-finland.png
 [financing-consumer]: #financing-consumer
 [trustly-payment]: /assets/img/checkout/trustly-seamless-view.png
-[no-png]: /assets/img/flag-norway.png
 [recur]: #recur
 [redirect]: /payments/trustly/redirect
-[se-png]: /assets/img/flag-sweden.png
 [seamless-view]: /payments/trustly/seamless-view
 [verification-flow]: #verification-flow
 [verify]: #verify

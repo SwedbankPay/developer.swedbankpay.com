@@ -8,10 +8,6 @@ sidebar:
       title: Technical Information
 ---
 
-{% assign design_guide_base_url = design_guide_version_url | default: 'https://design.swedbankpay.com' %}
-{% assign design_guide_version = site.design_guide.version | default: '4.1.0' %}
-{% assign design_guide_version_url = design_guide_base_url | append: '/v/' | append: design_guide_version %}
-
 Hi! Welcome to the **Swedbank Pay Developer Portal**.
 
 ### New to our API Platform?
@@ -35,6 +31,19 @@ Nice, let's dive in. Click on the product below to get started.
       </div>
     </div>
   </div>
+  {% comment %}
+  <div class="row">
+  <div class="col-12 col-md-4 pt-3 pt-md-0 d-flex">
+    <div class="doc-card card card-plain">
+      <div class="card-body text-center d-flex flex-column">
+        {% icon featured_play_list %}
+        <h3>Payment Menu</h3>
+        <p>Allow your customers to pay with their favorite payment instruments through our Swedbank Pay Payment Menu.</p>
+        <a class="btn btn-guiding btn-outline btn-block mt-auto" href="/checkout/">{% icon shopping_cart %}&nbsp; Checkout</a>
+      </div>
+    </div>
+  </div>
+  {% endcomment %}
   <div class="col-12 col-md-4 pt-3 pt-md-0 d-flex">
     <div class="doc-card card card-plain">
       <div class="card-body text-center d-flex flex-column">

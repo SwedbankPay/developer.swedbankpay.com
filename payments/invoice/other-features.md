@@ -29,11 +29,11 @@ set to value `FinancingConsumer` are listed below.
 ### Options before posting a payment
 
 {:.table .table-striped}
-|               | Norway ![Norwegian flag][no-png] | FInland ![Finish flag][fi-png] | Sweden ![Swedish flag][se-png] |
-| :------------ | :------------------------------- | :----------------------------- | :----------------------------- |
-| `operation`   | `FinancingConsumer`              | `FinancingConsumer`            | `FinancingConsumer`            |
-| `currency`    | `NOK`                            | `EUR`                          | `SEK`                          |
-| `invoiceType` | `PayExFinancingNO`               | `PayExFinancingFI`             | `PayExFinancingSE`             |
+|               | Norway {% flag no %} | Finland {% flag fi %} | Sweden {% flag se %} |
+| :------------ | :------------------- | :-------------------- | :------------------- |
+| `operation`   | `FinancingConsumer`  | `FinancingConsumer`   | `FinancingConsumer`  |
+| `currency`    | `NOK`                | `EUR`                 | `SEK`                |
+| `invoiceType` | `PayExFinancingNO`   | `PayExFinancingFI`    | `PayExFinancingSE`   |
 
 *   An invoice payment is always two-phased based -  you create an Authorize
   transaction, that is followed by a Capture or Cancel request.
@@ -571,20 +571,19 @@ All invoice error types will have the following URI in front of type:
 
 {% include common-problem-types.md %}
 
+{% include seamless-view-events.md api_resource="invoice" %}
+
 {% include iterator.html prev_href="after-payment" prev_title="Back: After
 Payment" %}
 
 [callback]: #callback
 [cancel]: /payments/invoice/after-payment#cancellations
 [capture]: /payments/invoice/capture
-[fi-png]: /assets/img/flag-finland.png
 [financing-consumer]: #financing-consumer
 [invoice-flow]: /payments/invoice#invoice-flow
 [invoice-payment]: /assets/img/checkout/invoice-seamless-view.png
-[no-png]: /assets/img/flag-norway.png
 [recur]: #recur
 [redirect]: /payments/invoice/redirect
-[se-png]: /assets/img/flag-sweden.png
 [seamless-view]: /payments/invoice/seamless-view
 [verification-flow]: #verification-flow
 [verify]: #verify

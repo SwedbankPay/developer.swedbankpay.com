@@ -109,7 +109,7 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`productCategory`      | `string`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                            |
 |                  | └─➔&nbsp;`orderReference`       | `String(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                   |
 |                  | └─➔&nbsp;`subsite`              | `String(40)` | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.                                                                                               |
-|                  | └➔&nbsp;`prefillInfo.msisdn`    | `string`     | umber will be prefilled on payment page, if valid.                                                                                                                                                                                                        |
+|                  | └➔&nbsp;`prefillInfo.msisdn`    | `string`     | Number will be prefilled on payment page, if valid.                                                                                                                                                                                                        |
 |                  | └➔&nbsp;`mobilepay.shoplogoUrl` | `string`     | URI to logo that will be visible at MobilePay                                                                                                                                                                                                             |
 
 {:.code-header}
@@ -463,76 +463,13 @@ sequenceDiagram
   Deactivate Merchant
 ```
 
-### Abort a payment
-
-To abort a payment, perform the `update-payment-abort` operation that is
-returned in the payment request. You need to include the following HTTP body:
-
-{:.code-header}
-**Request**
-
-```http
-PATCH /psp/mobilepay/payments/{{ page.payment_id }} HTTP/1.1
-Host: {{ page.api_host }}
-Authorization: Bearer <AccessToken>
-Content-Type: application/json
-
-{
-  "payment": {
-    "operation": "Abort",
-    "abortReason": "CancelledByConsumer"
-  }
-}
-```
-
-{:.code-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "payment": {
-        "id": "/psp/mobilepay/payments/{{ page.payment_id }}",
-        "number": 70100130293,
-        "created": "2019-01-09T13:11:28.371179Z",
-        "updated": "2019-01-09T13:11:46.5949967Z",
-        "instrument": "MobilePay",
-        "operation": "Purchase",
-        "intent": "AutoCapture",
-        "state": "Aborted",
-        "currency": "DKK",
-        "prices": {
-            "id": "/psp/mobilepay/payments/{{ page.payment_id }}/prices"
-        },
-        "amount": 0,
-        "description": "MobilePay Test",
-        "payerReference": "100500",
-        "initiatingSystemUserAgent": "PostmanRuntime/7.1.1",
-        "userAgent": "Mozilla/5.0",
-        "language": "nb-NO",
-        "urls": {
-            "id": "/psp/mobilepay/payments/{{ page.payment_id }}/urls"
-        },
-        "payeeInfo": {
-            "id": "/psp/mobilepay/payments/{{ page.payment_id }}/payeeinfo"
-        },
-        "metadata": {
-            "id": "/psp/mobilepay/payments/{{ page.payment_id }}/metadata"
-        }
-    },
-    "operations": []
-}
-```
-
 The response will be the `payment` resource with its `state` set to `Aborted`.
 
 {% include settlement-reconciliation.md api_resource="mobilepay" %}
 
 {% include payment-link.md %}
 
-{% include description.md %}
+{% include description.md api_resource="mobilepay" %}
 
 {% include callback-reference.md api_resource="mobilepay" %}
 
@@ -546,7 +483,7 @@ documentation_section="mobile-pay" %}
 {% include iterator.html prev_href="after-payment"
                          prev_title="Back: After Payment" %}
 
-[abort]: #abort-a-payment
+[abort]: /payments/mobile-pay/after-payment#abort
 [authorization-transaction]: /payments/mobile-pay/other-features#authorizations
 [callback-reference]: #callback
 [cancellation-transaction]: #cancellations

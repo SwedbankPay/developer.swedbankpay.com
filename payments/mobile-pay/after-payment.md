@@ -16,7 +16,7 @@ sidebar:
 
 ## Options after posting a payment
 
-*   **Abort**: It is possible to [abort a payment][technical-reference-abort]
+*   **Abort**: It is possible to [abort a payment][abort]
     if the payment has no successful transactions.
 *   If the payment shown above has a completed `authorization`,
     you will need to implement the `Capture` and `Cancel` requests.
@@ -199,6 +199,9 @@ sequenceDiagram
     Deactivate Merchant
 ```
 
+{% include abort-reference.md api_resource="mobilepay"
+documentation_section="mobile-pay" %}
+
 {% include iterator.html prev_href="redirect"
                          prev_title="Back: Redirect"
                          next_href="other-features"
@@ -209,7 +212,7 @@ sequenceDiagram
 [mobilepay-capture]: /payments/mobile-pay/other-features#capture-sequence
 [mobilepay-reversal]: /payments/mobile-pay/other-features#reversal-sequence
 [payee-reference]: /payments/mobile-pay/other-features#payee-reference
-[technical-reference-abort]: /payments/mobile-pay/other-features#abort-a-payment
+[abort]: /payments/mobile-pay/after-payment#abort
 [technical-reference-callback]: /payments/mobile-pay/other-features#callback
 [technical-reference-payeeReference]: /payments/mobile-pay/other-features#payee-reference
 [transaction-resource]: /payments/mobile-pay/other-features#transactions
