@@ -37,8 +37,8 @@ this very documentation, not to a version of any APIs described by it." %}
 
 *   Added additional information on the settlement files in [Settlement &
     Reconciliation][settlement-reconcilitation] for all Payments.
-*   Corrected sequence diagrams til [Card Payments Redirect][card-redirect] and [Card Payments
-  Seamless View][card-seamless-view].
+*   Corrected [Card Payments Redirect][card-redirect] and [Card Payments
+  Seamless View][card-seamless-view] sequence diagrams.
 *   Added [Abort][swish-abort] in [Swish Payments][swish].
 
 ### Version 1.11.0
