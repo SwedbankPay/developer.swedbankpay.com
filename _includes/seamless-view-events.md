@@ -160,7 +160,7 @@ following event argument object:
 ```js
 {
     "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
-    "instrument": "creditcard | vipps | swish | invoice",
+    "instrument": "creditcard",
 }
 ```
 
