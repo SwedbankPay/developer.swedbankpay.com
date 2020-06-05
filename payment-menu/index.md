@@ -27,9 +27,9 @@ methods in just a few simple steps.
 
 To start integrating Swedbank Pay Payment Menu, you need the following:
 
-* [HTTPS][https] enabled web server.
-* Agreement that includes Swedbank Pay Payment Menu.
-* Obtained credentials (merchant Access Token) from Swedbank Pay through
+*   [HTTPS][https] enabled web server.
+*   Agreement that includes Swedbank Pay Payment Menu.
+*   Obtained credentials (merchant Access Token) from Swedbank Pay through
   Swedbank Pay Admin.
 
 ## Introduction
@@ -125,6 +125,9 @@ sequenceDiagram
 {% include alert.html type="informative" icon="info" body="
 Note that in this diagram, the Payer refers to the merchant front-end
 (website) while Merchant refers to the merchant back-end." %}
+
+{% include iterator.html next_href="payment-order"
+                         next_title="Next: Payment Order" %}
 
 [after-payment-capture]: /payment-menu/capture
 [https]: /home/technical-information#connection-and-protocol
