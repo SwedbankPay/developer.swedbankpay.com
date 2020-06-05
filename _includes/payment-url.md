@@ -1,9 +1,8 @@
 {% assign when = include.when | default: "selecting the payment instrument" %}
 {% assign api_resource = include.api_resource %}
-{% assign payment_order = include.payment_order | default: false %}
 {% assign full_reference = include.full_reference | default: false %}
 
-{% if payment_order %}
+{% if api_resource == "checkout" %}
     {% assign entity = "Payment Order" %}
 {% else %}
     {% assign entity = "Payment" %}
