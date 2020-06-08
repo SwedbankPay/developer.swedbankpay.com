@@ -1,39 +1,34 @@
 ---
-title: Swedbank Pay Checkout – Payment Menu
+title: Swedbank Pay Payment Menu – Payment Order
 sidebar:
   navigation:
-  - title: Checkout
+  - title: Payment Menu
     items:
-    - url: /checkout/
+    - url: /payment-menu/
       title: Introduction
-    - url: /checkout/checkin
-      title: Checkin
-    - url: /checkout/payment-menu
+    - url: /payment-menu/payment-order
       title: Payment Menu
-    - url: /checkout/capture
+    - url: /payment-menu/capture
       title: Capture
-    - url: /checkout/after-payment
+    - url: /payment-menu/after-payment
       title: After Payment
-    - url: /checkout/other-features
+    - url: /payment-menu/other-features
       title: Other Features
 ---
 
-{% include jumbotron.html body="**Payment Menu** begins where **Checkin** left
-off, letting the payer complete their purchase." %}
+{% include jumbotron.html body="**Payment Order** lets the payer complete their purchase." %}
 
-## Step 3: Create Payment Order
-
-Once consumer has been identified, the next step is to initiate the payment
-using `consumerProfileRef` retrieved in the previous step.
+## Step 1: Create Payment Order
 
 We start by performing a `POST` request towards the `paymentorder` resource
-with the payer information (such as `consumerProfileRef`) we obtained in the
-checkin process described above.
+with the payer information, such as `consumerProfileRef`.
 Remember to read up on our [URL resource][urls].
 
 {% include alert-risk-indicator.md %}
 
-{% include payment-url.md api_resource="paymentorders" 
+### Payment Url
+
+{% include payment-url.md api_resource="paymentorders"
 when="selecting the payment instrument Vipps or in the 3-D Secure verification
 for Credit Card Payments" %}
 
@@ -87,7 +82,7 @@ into how to hook that up next.
 be sent as a part of the `POST` request to `paymentorders` and must represent
 the order ID of the webshop or merchant website." %}
 
-## Step 4: Display the Payment Menu
+## Step 2: Display the Payment Menu
 
 To load the payment menu from the JavaScript URL obtained in the back end API
 response, it needs to be set as a `script` element's `src` attribute. You can
@@ -200,8 +195,8 @@ order.
 Below, you will see a complete overview of the payment menu process.
 Notice that there are two ways of performing the payment:
 
-*   Consumer perform payment **out** of `iframe`.
-*   Consumer perform payment **within** `iframe`.
+* Consumer perform payment **out** of `iframe`.
+* Consumer perform payment **within** `iframe`.
 
 ```mermaid
 sequenceDiagram
@@ -291,28 +286,28 @@ rect rgba(138, 205, 195, 0.1)
 Now that you have completed the Payment Menu integration, you can move on to
 finalizing the payment in the [After Payment section][after-payment].
 
-{% include iterator.html prev_href="checkin"
-                         prev_title="Back: Checkin"
+{% include iterator.html prev_href="index"
+                         prev_title="Back: Introduction"
                          next_href="capture"
                          next_title="Next: Capture" %}
 
 [after-payment]: after-payment
 [checkin-image]: /assets/img/checkout/your-information.png
-[consumer-reference]: /checkout/other-features#payee-reference
+[consumer-reference]: /payment-menu/other-features#payee-reference
 [guest-payment-menu-image]: /assets/img/checkout/guest-payment-menu-450x850.png
 [initiate-consumer-session]: /checkout/checkin#step-1-initiate-session-for-consumer-identification
 [login-payment-menu-image]: /assets/img/checkout/logged-in-payment-menu-450x900.png
 [msisdn]: https://en.wikipedia.org/wiki/MSISDN
-[operations]: /checkout/other-features#operations
+[operations]: /payment-menu/other-features#operations
 [order-items]: #order-items
-[payee-reference]: /checkout/other-features#payee-reference
+[payee-reference]: /payment-menu/other-features#payee-reference
 [payment-menu]: #payment-menu
-[payment-order-capture]: /checkout/after-payment#capture
-[payment-order-operations]: /checkout/after-payment#operations
+[payment-order-capture]: /payment-menu/after-payment#capture
+[payment-order-operations]: /payment-menu/after-payment#operations
 [payment-order]: #payment-orders
 [paymentorder-items]: #items
-[settlement-and-reconciliation]: /checkout/other-features#settlement-and-reconciliation
-[split-settlement]: /checkout/other-features#split-settlement
-[technical-reference-onconsumer-identified]: /checkout/checkin#step-2-display-swedbank-pay-checkin-module
-[urls]: /checkout/other-features#urls-resource
+[settlement-and-reconciliation]: /payment-menu/other-features#settlement-and-reconciliation
+[split-settlement]: /payment-menu/other-features#split-settlement
+[technical-reference-onconsumer-identified]: /payment-menu/checkin#step-2-display-swedbank-pay-checkin-module
+[urls]: /payment-menu/other-features#urls-resource
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
