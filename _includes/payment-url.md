@@ -59,10 +59,11 @@ you should also subscribe to other events provided by the Seamless View
 JavaScript and shut down the Seamless View if any of these events occur.
 
 Events to subscribe to for full control over the payment flow are can be found
-in {% if documentation_section == "payment-menu" or documentation_section=="checkout" %}
-[Payment Menu Events](/{{ documentation_section}}/other-features#payment-menu-events).
+in {% if api_resource=="paymentorders" %} {% assign documentation_section="checkout" %}
+[Payment Menu Events](/{{ documentation_section
+}}/other-features#payment-menu-events).
 {% else %}
-[Seamless View Events](/payments/{{ documentation_section }}/other-features#seamless-view-events).
+[Seamless View Events](/payments/{{ api_resource }}/other-features#seamless-view-events).
 {% endif %}
 
 When implementing the Seamless View flow into a WebView in your mobile app, you

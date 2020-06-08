@@ -187,7 +187,7 @@ payment altogether or creating an authorization transaction through the
 
 {% include complete-url.md %}
 
-{% include payment-url.md api_resource="vipps" documentation_section="vipps" full_reference=true %}
+{% include payment-url.md api_resource="vipps" full_reference=true %}
 
 {% include prices.md api_resource="vipps" %}
 
