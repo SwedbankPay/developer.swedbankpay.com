@@ -16,7 +16,8 @@ sidebar:
       title: Other Features
 ---
 
-{% include jumbotron.html body="When the consumer has **completed** the entire
+{% include jumbotron.html body="% include jumbotron.html body="When the payer
+is **finished** interacting with the
 [Payment Menu](payment-menu), you need to implement the
 relevant **after-payment operations** in your order system. Which these
 operations are and how they are executed is described below." %}
@@ -31,7 +32,6 @@ sequenceDiagram
     participant Merchant
     participant SwedbankPay as Swedbank Pay
 
-    rect rgba(81,43,43,0.1)
         activate Merchant
         note left of Payer: Capture
         Merchant ->>+ SwedbankPay: rel:create-paymentorder-capture
@@ -135,9 +135,7 @@ operations `Cancel`, `Capture` and `Reversal` must be implemented." %}
                          next_href="other-features"
                          next_title="Next: Other Features" %}
 
-[https]: /home/technical-information#connection-and-protocol
 [msisdn]: https://en.wikipedia.org/wiki/MSISDN
 [payee-reference]: /payment-menu/other-features#payee-reference
 [payment-order-operations]: /payment-menu/other-features#operations
-[payment-menu-back-end]: /payment#payment-menu-back-end
 [payment-menu-front-end]: /payment#payment-menu-front-end

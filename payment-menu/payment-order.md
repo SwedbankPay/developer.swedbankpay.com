@@ -292,13 +292,8 @@ finalizing the payment in the [After Payment section][after-payment].
                          next_title="Next: Capture" %}
 
 [after-payment]: after-payment
-[checkin-image]: /assets/img/checkout/your-information.png
-[consumer-reference]: /payment-menu/other-features#payee-reference
 [guest-payment-menu-image]: /assets/img/checkout/guest-payment-menu-450x850.png
-[initiate-consumer-session]: /checkout/checkin#step-1-initiate-session-for-consumer-identification
 [login-payment-menu-image]: /assets/img/checkout/logged-in-payment-menu-450x900.png
-[msisdn]: https://en.wikipedia.org/wiki/MSISDN
-[operations]: /payment-menu/other-features#operations
 [order-items]: #order-items
 [payee-reference]: /payment-menu/other-features#payee-reference
 [payment-menu]: #payment-menu
