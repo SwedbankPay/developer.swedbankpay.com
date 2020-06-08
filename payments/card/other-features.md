@@ -59,7 +59,7 @@ document is described in the following section.
 
 {% include one-click-payments.md %}
 
-{% include payment-url.md api_resource="card"
+{% include payment-url.md api_resource="card" documentation_section="card"
 when="at the 3-D Secure verification for credit card payments" full_reference=true %}
 
 {% include callback-reference.md api_resource="creditcard" %}
