@@ -18,7 +18,7 @@ sidebar:
 
 {% include payment-order-capture.md %}
 
-**Et voilà!** Checkout should now be complete, the payment should be secure and
+**Et voilà!** The payment should now be complete and
 everyone should be happy. But, sometimes you also need to implement the
 cancellation and reversal operations described below.
 
