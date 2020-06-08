@@ -63,7 +63,7 @@ in {% if api_resource=="paymentorders" %} {% assign documentation_section="check
 [Payment Menu Events](/{{ documentation_section
 }}/other-features#payment-menu-events).
 {% else %}
-[Seamless View Events](/payments/{{ api_resource }}/other-features#seamless-view-events).
+[Seamless View Events](/payments/{{ documentation_section }}/other-features#seamless-view-events).
 {% endif %}
 
 When implementing the Seamless View flow into a WebView in your mobile app, you
