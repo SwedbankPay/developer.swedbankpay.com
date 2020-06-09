@@ -19,7 +19,7 @@ sidebar:
 {% include jumbotron.html body="The **Swedbank Pay Payment Menu** integrates
 seamlessly into the merchant website, allowing the payer to choose between the
 increasing number of payment instrument Swedbank Pay has on offer and
-remembering which instrument they prefer and have paid with previously.
+remembering which instrument they prefer and have paid with previously." %}
 
 Swedbank Pay Payment Menu allows your customers to pay with their favorite payment
 instruments in just a few simple steps.
