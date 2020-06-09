@@ -1,6 +1,7 @@
 {% assign api_resource = include.api_resource | default: "creditcard" %}
 {% assign documentation_section = include.documentation_section %}
 {% assign show_status_operations = include.show_status_operations | default: false %}
+{% assign currency = include.currency | default: "SEK" %}
 
 ## Payment Resource
 
@@ -35,7 +36,7 @@ Content-Type: application/json
         "state": "Ready",
         "operation": "Purchase",
         "intent": "Authorization",
-        "currency": "SEK",
+        "currency": "{{ currency }}",
         "amount": 1500,
         "remainingCaptureAmount": 1500,
         "remainingCancellationAmount": 1500,
