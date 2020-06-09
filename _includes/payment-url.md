@@ -59,7 +59,7 @@ you should also subscribe to other events provided by the Seamless View
 JavaScript and shut down the Seamless View if any of these events occur.
 
 Events to subscribe to for full control over the payment flow are can be found
-in {% if api_resource=="paymentorders" %}
+in {% if api_resource == "paymentorders" %}
 [Payment Menu Events](/{{ documentation_section }}/other-features#payment-menu-events).
 {% else %}
 [Seamless View Events](/payments/{{ documentation_section }}/other-features#seamless-view-events).
