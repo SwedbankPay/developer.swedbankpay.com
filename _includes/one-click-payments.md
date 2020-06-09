@@ -90,7 +90,7 @@ Content-Type: application/json
         "paymentToken": "{{ page.payment_token }}"
     },
     "creditCard": {
-        "noCVC": true
+        "noCvc": true
     }
 }
 ```
