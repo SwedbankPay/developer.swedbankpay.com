@@ -35,7 +35,7 @@ Content-Type: application/json
         "state": "Ready",
         "operation": "Purchase",
         "intent": "Authorization",
-        "currency": "NOK",
+        "currency": "SEK",
         "amount": 1500,
         "remainingCaptureAmount": 1500,
         "remainingCancellationAmount": 1500,
@@ -44,7 +44,7 @@ Content-Type: application/json
         "payerReference": "AB1234",
         "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
         "userAgent": "Mozilla/5.0...",
-        "language": "nb-NO",
+        "language": "sv-SE",
         "prices": {
             "id": "/psp/{{ api_resource}}/payments/{{ page.payment_id }}/prices"
         },

@@ -78,6 +78,13 @@ MobilePay app.
 
 {% include languages.md api_resource="mobilepay" %}
 
+## Payment availability
+
+Even though MobilePay supports several currencies, the payment instrument itself
+is only available for consumers in Denmark and Finland. This allows a shop in
+Norway to take payments in NOK from a Danish payer if the shop supports
+shipping to Denmark, for instance.
+
 {% include iterator.html
                          next_href="redirect"
                          next_title="Next: Redirect" %}
