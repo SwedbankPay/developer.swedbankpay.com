@@ -33,7 +33,7 @@ Remember to read up on our [URL resource][urls].
 
 {% include alert-risk-indicator.md %}
 
-{% include payment-url.md payment_order=true
+{% include payment-url.md api_resource="paymentorders" documentation_section="checkout"
 when="selecting the payment instrument Vipps or in the 3-D Secure verification
 for Credit Card Payments" %}
 
