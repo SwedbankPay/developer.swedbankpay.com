@@ -483,7 +483,7 @@ documentation_section="mobile-pay" %}
 {% include iterator.html prev_href="after-payment"
                          prev_title="Back: After Payment" %}
 
-[abort]: #abort-a-payment
+[abort]: /payments/mobile-pay/after-payment#abort
 [authorization-transaction]: /payments/mobile-pay/other-features#authorizations
 [callback-reference]: #callback
 [cancellation-transaction]: #cancellations
