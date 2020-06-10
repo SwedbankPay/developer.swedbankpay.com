@@ -1,7 +1,6 @@
 {% assign api_resource = include.api_resource | default: "creditcard" %}
 {% assign documentation_section = include.documentation_section %}
 {% assign show_status_operations = include.show_status_operations | default: false %}
-{% assign currency = include.currency | default: "SEK" %}
 
 ## Payment Resource
 
@@ -35,8 +34,9 @@ Content-Type: application/json
         "updated": "2016-09-14T13:21:57.6627579Z",
         "state": "Ready",
         "operation": "Purchase",
-        "intent": "Authorization",
-        "currency": "{{ currency }}",
+        "intent": "Authorization", {% if documentation_section == "vipps" %}
+        "currency": "NOK",  {% else %}
+        "currency": "SEK",    {% endif %}
         "amount": 1500,
         "remainingCaptureAmount": 1500,
         "remainingCancellationAmount": 1500,
@@ -44,8 +44,9 @@ Content-Type: application/json
         "description": "Test Purchase",
         "payerReference": "AB1234",
         "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
-        "userAgent": "Mozilla/5.0...",
-        "language": "sv-SE",
+        "userAgent": "Mozilla/5.0...", {% if documentation_section == "vipps" %}
+        "language": "nb-NO", {% else %}
+        "language": "sv-SE", {% endif %}
         "prices": {
             "id": "/psp/{{ api_resource}}/payments/{{ page.payment_id }}/prices"
         },

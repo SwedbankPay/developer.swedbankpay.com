@@ -21,9 +21,7 @@ sidebar:
 {% include payment-link.md %}
 
 {% include payment-resource.md  api_resource="vipps"
-documentation_section="vipps"
-currency="NOK"
-show_status_operations=true%}
+documentation_section="vipps" show_status_operations=true%}
 
 {% include payment-transaction-states.md %}
 
