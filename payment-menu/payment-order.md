@@ -7,7 +7,7 @@ sidebar:
     - url: /payment-menu/
       title: Introduction
     - url: /payment-menu/payment-order
-      title: Payment Menu
+      title: Payment Order
     - url: /payment-menu/capture
       title: Capture
     - url: /payment-menu/after-payment
