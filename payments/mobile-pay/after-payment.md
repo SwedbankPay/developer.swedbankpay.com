@@ -212,7 +212,7 @@ documentation_section="mobile-pay" %}
 [mobilepay-capture]: /payments/mobile-pay/other-features#capture-sequence
 [mobilepay-reversal]: /payments/mobile-pay/other-features#reversal-sequence
 [payee-reference]: /payments/mobile-pay/other-features#payee-reference
-[abort]: /payments/mobile-pay/after-payments#abort
+[abort]: /payments/mobile-pay/after-payment#abort
 [technical-reference-callback]: /payments/mobile-pay/other-features#callback
 [technical-reference-payeeReference]: /payments/mobile-pay/other-features#payee-reference
 [transaction-resource]: /payments/mobile-pay/other-features#transactions
