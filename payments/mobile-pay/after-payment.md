@@ -199,6 +199,9 @@ sequenceDiagram
     Deactivate Merchant
 ```
 
+{% include abort-reference.md api_resource="mobilepay"
+documentation_section="mobile-pay" %}
+
 {% include iterator.html prev_href="redirect"
                          prev_title="Back: Redirect"
                          next_href="other-features"
