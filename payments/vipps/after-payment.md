@@ -390,7 +390,7 @@ Content-Type: application/json
 {% include transaction-response.md api_resource="vipps"
 documentation_section="vipps" transaction="reversal" %}
 
-{% include abort-reference.md api_resource="vipps" language="nb-NO" currency="NOK" %}
+{% include abort-reference.md api_resource="vipps" %}
 
 {% include iterator.html
         prev_href="seamless-view"
