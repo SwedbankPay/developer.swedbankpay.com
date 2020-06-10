@@ -1,6 +1,4 @@
 {% assign api_resource = include.api_resource | default: "api-resource-not-set" %}
-{% assign language = include.language | default: "sv-SE" %}
-{% assign currency = include.currency | default: "SEK" %}
 {% if api_resource == "vipps" %}
   {% assign language = "nb-NO" %}
   {% assign currency = "NOK" %}

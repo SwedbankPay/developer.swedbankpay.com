@@ -2,8 +2,6 @@
 {% assign documentation_section = include.documentation_section %}
 {% assign show_status_operations = include.show_status_operations | default:
 false %}
-{% assign currency = include.currency %}
-{% assign language = include.language %}
 {% if api_resource == "vipps" %}
   {% assign language = "nb-NO" %}
   {% assign currency = "NOK" %}
