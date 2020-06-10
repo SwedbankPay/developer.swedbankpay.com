@@ -511,7 +511,7 @@ Content-Type: application/json
         "payerReference": "100500",
         "initiatingSystemUserAgent": "PostmanRuntime/7.1.1",
         "userAgent": "Mozilla/5.0",
-        "language": "nb-NO",
+        "language": "da-DK",
         "urls": {
             "id": "/psp/mobilepay/payments/{{ page.payment_id }}/urls"
         },
@@ -532,7 +532,7 @@ The response will be the `payment` resource with its `state` set to `Aborted`.
 
 {% include payment-link.md %}
 
-{% include description.md %}
+{% include description.md api_resource="mobilepay" %}
 
 {% include callback-reference.md api_resource="mobilepay" %}
 

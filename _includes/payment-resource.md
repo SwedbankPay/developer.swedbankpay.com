@@ -2,13 +2,17 @@
 {% assign documentation_section = include.documentation_section %}
 {% assign show_status_operations = include.show_status_operations | default:
 false %}
-{% if api_resource == "vipps" %}
+{% case api_resource %}
+{% when "vipps" %}
   {% assign language = "nb-NO" %}
   {% assign currency = "NOK" %}
+{% when "mobilepay" %}
+  {% assign language = "da-DK" %}
+  {% assign currency = "DKK" %}
 {% else %}
   {% assign language = "sv-SE" %}
   {% assign currency = "SEK" %}
-{% endif %}
+{% endcase %}
 
 ## Payment Resource
 
