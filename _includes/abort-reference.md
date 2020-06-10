@@ -1,4 +1,6 @@
 {% assign api_resource = include.api_resource | default: "api-resource-not-set" %}
+{% assign language = include.language | default: "sv-SE" %}
+{% assign currency = include.currency | default: "SEK" %}
 
 ## Abort
 
@@ -40,7 +42,7 @@ Content-Type: application/json
         "operation": "Purchase",
         "intent": "Authorization",
         "state": "Aborted",
-        "currency": "SEK",
+        "currency": "{{ currency }}",
         "prices": {
             "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/prices"
         },
@@ -49,7 +51,7 @@ Content-Type: application/json
         "payerReference": "100500",
         "initiatingSystemUserAgent": "PostmanRuntime/7.1.1",
         "userAgent": "Mozilla/5.0",
-        "language": "nb-NO",
+        "language": "{{ language }}",
         "urls": {
             "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/urls"
         },
