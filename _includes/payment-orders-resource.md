@@ -147,7 +147,7 @@ request.send(JSON.stringify({
 ```
 
 This should bring up the Payment Menu in a Seamless View. It should look like
-this, depending on whether the payer is logged in (top) or a guest user (bottom):
+this, depending on whether the payer is identified (top) or a guest user (bottom):
 
 {:.text-center}
 ![Payment Menu with payer logged in and card payment opened][login-payment-menu-image]{:width="450" height="900"}

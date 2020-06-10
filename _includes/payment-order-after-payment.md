@@ -1,23 +1,3 @@
-## Introduction
-
-Below is the final part of the sequence diagram illustrating how a capture
-operation is performed.
-
-```mermaid
-sequenceDiagram
-    participant Merchant
-    participant SwedbankPay as Swedbank Pay
-
-    rect rgba(81,43,43,0.1)
-        activate Merchant
-        note left of Payer: Capture
-        Merchant ->>+ SwedbankPay: rel:create-paymentorder-capture
-        deactivate Merchant
-        SwedbankPay -->>- Merchant: Capture status
-        note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>PaymentInstruments that support <br>Authorizations.
-        end
-```
-
 ## Operations
 
 Most payment instruments are two-phase payments –
