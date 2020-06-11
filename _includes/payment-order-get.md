@@ -1,5 +1,5 @@
 The `paymentorders` resource is used when initiating a payment process through
-[Payment Menu][payment-menu] and [Swedbank Pay Checkout](/checkout/index). The payment
+[Payment Menu][payment-menu] and [Swedbank Pay Checkout][checkout]. The payment
 order is a container for the payment instrument object selected by the payer. This
 will generate a payment that is accessed through the sub-resources `payments`
 and `currentPayment`.
@@ -95,4 +95,6 @@ Content-Type: application/json
 | └➔&nbsp;`operations`     | `array`      | The array of possible operations to perform, given the state of the payment order. [See Operations for details][operations].                                                                                              |
 
 -----------------------------------------
-[payment-menu]: /checkout/payment-menu
+[payment-menu]: /payment-menu
+[checkout]: /checkout
+

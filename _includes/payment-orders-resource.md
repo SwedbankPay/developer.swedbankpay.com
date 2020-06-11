@@ -3,8 +3,8 @@
 ## Step 1: Create Payment Order
 
 We start by performing a `POST` request towards the `paymentorder` resource
-with the payer information, {% if documentation_section == "checkout" %} such as
-`consumerProfileRef`. {% endif %}
+with the payer information{% if documentation_section == "checkout" %}, such as
+`consumerProfileRef`{% endif %}. 
 Remember to read up on our [URL resource][urls].
 
 {% include alert-risk-indicator.md %}

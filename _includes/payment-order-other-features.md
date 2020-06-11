@@ -12,8 +12,6 @@ To create a payment order, you perform a `POST` request towards the
 
 {% include payment-order-purchase.md %}
 
-## Description
-
 {% include description.md %}
 
 #### Response
@@ -296,7 +294,7 @@ The `view-paymentorder` operation contains the URI of the JavaScript that needs 
 ### Update Order
 
 Change amount and vat amount on a payment order. If you implement `UpdateOrder`
-**you need to `refresh()`** the [Payment Menu front end][payment-menu] so the
+**you need to `refresh()`** the [Payment Menu front end][payment-menu-front-end] so the
 new amount is shown to the end customer.
 
 {:.code-header}
@@ -352,7 +350,6 @@ Content-Type: application/json
 **Response**
 
 ```http
-Response
 HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -440,7 +437,6 @@ Content-Type: application/json
 **Response**
 
 ```http
-Response
 HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -850,8 +846,6 @@ Content-Type: application/json
 | └➔&nbsp;`payerReference`           | `string`     | The reference to the consumer from the merchant system, like mobile number, customer number etc.                                                                                                 |
 | └➔&nbsp;`userAgent`                | `string`     | The [user agent][user-agent] string of the consumer's browser.                                                                                                                                   |
 | └➔&nbsp;`language`                 | `string`     | {% include field-description-language.md api_resource="paymentorders" %}                                                                                                                                                                      |
-
-### Prices Resource
 
 {% include prices.md api_resource="paymentorders" %}
 
@@ -1295,7 +1289,8 @@ elements. When in doubt, please follow the [robustness principle](https://en.wik
 [operations]: #operations
 [order-items]: /payment-menu/other-features#order-items
 [payee-reference]: /payment-menu/other-features#payee-reference
-[payment-menu]: /payment-menu/payment-menu
+[payment-menu]: /payment-menu
+[payment-menu-front-end]: /payment-menu/payment-order#step-2-display-the-payment-menu
 [payment-order-capture]: /payment-menu/capture
 [payment-order]: #payment-orders
 [payment-orders-resource-payers]: #payer-resource
