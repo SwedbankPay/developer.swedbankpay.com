@@ -1,7 +1,10 @@
+{% assign documentation_section = include.documentation_section %}
+
 ## Step 1: Create Payment Order
 
 We start by performing a `POST` request towards the `paymentorder` resource
-with the payer information, such as `consumerProfileRef`.
+with the payer information, {% if documentation_section == "checkout" %} such as
+`consumerProfileRef`. {% endif %}
 Remember to read up on our [URL resource][urls].
 
 {% include alert-risk-indicator.md %}
@@ -66,8 +69,9 @@ To load the payment menu from the JavaScript URL obtained in the back end API
 response, it needs to be set as a `script` element's `src` attribute. You can
 cause a page reload and do this with static HTML or you can avoid the page
 refresh by invoking the POST to create the payment order through Ajax and then
-create the script element with JavaScript, all inside the event handler for
-[`onConsumerIdentified`][technical-reference-onconsumer-identified].
+create the script element with JavaScript, {% if documentation_section == "checkout" %}
+all inside the event handler for
+[`onConsumerIdentified`][technical-reference-onconsumer-identified]. {% endif %}
 The HTML code will be unchanged in this example.
 
 {:.code-header}
@@ -90,7 +94,7 @@ request.addEventListener('load', function () {
         payex.hostedView.consumer({
             // The container specifies which id the script will look for
             // to host the checkin component
-            container: 'checkin',
+            container: 'checkin', {% if documentation_section == "checkout" %}
             onConsumerIdentified: function onConsumerIdentified(consumerIdentifiedEvent) {
                 // When the consumer is identified, we need to perform an AJAX request
                 // to our server to forward the consumerProfileRef in a server-to-server
@@ -125,7 +129,7 @@ request.addEventListener('load', function () {
                 // In this example, we send the entire Consumer Identified Event Argument
                 // Object as JSON to the server, as it contains the consumerProfileRef.
                 request.send(JSON.stringify(consumerIdentifiedEvent));
-            },
+            }, {% endif %}
             onShippingDetailsAvailable: function onShippingDetailsAvailable(shippingDetailsAvailableEvent) {
                 console.log(shippingDetailsAvailableEvent);
             }
@@ -145,7 +149,6 @@ request.send(JSON.stringify({
     shippingAddressRestrictedToCountryCodes : ['NO', 'SE']
 }));
 ```
-
 This should bring up the Payment Menu in a Seamless View. It should look like
 this, depending on whether the payer is identified (top) or a guest user (bottom):
 
@@ -173,8 +176,8 @@ order.
 Below, you will see a complete overview of the payment menu process.
 Notice that there are two ways of performing the payment:
 
-* Consumer perform payment **out** of `iframe`.
-* Consumer perform payment **within** `iframe`.
+*   Consumer perform payment **out** of `iframe`.
+*   Consumer perform payment **within** `iframe`.
 
 ```mermaid
 sequenceDiagram
