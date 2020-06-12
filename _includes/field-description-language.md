@@ -8,12 +8,12 @@
 
 {% when "mobilepay" %}
 {%- capture language -%}
-`sv-SE`, `nb-NO`, `da-DK`, `fi-FI` or `ee-EE`.
+`sv-SE`, `nb-NO`, `da-DK`, `fi-FI` or `en-US`.
 {%- endcapture -%}
 
 {% else %}
 {%- capture language -%}
-`sv-SE`, `nb-NO` or `ee-EE`.
+`sv-SE`, `nb-NO` or `en-US`.
 {%- endcapture -%}
 {% endcase %}
 
