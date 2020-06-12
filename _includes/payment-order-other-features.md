@@ -40,7 +40,7 @@ underlying payments or transaction.
 
 #### Payment Url
 
-{% include payment-url.md payment_order=true
+{% include payment-url.md api_resource="paymentorders" documentation_section="payment-menu"
 when="selecting the payment instrument Vipps or in the 3-D Secure verification
 for Credit Card Payments" full_reference=true %}
 
