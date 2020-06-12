@@ -1,4 +1,11 @@
+{% assign documentation_section=include.documentation_section %}
+
+{% if documentation_section == "checkout" %}
 ## Step 5: Capture the funds
+{% else %}
+## Step 3: Capture the funds
+{% endif %}
+
 
 Capture can only be done on a payment with a successful authorized transaction,
 and if the authorization was not done on a one-phase payment instrument.

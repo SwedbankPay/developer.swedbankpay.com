@@ -16,7 +16,7 @@ sidebar:
       title: Other Features
 ---
 
-{% include payment-order-capture.md %}
+{% include payment-order-capture.md documentation_section="payment-menu"%}
 
 **Et voilà!** The payment should now be complete and
 everyone should be happy. But, sometimes you also need to implement the
