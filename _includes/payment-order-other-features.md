@@ -520,11 +520,11 @@ with Swedbank Pay in order to work.**
 
 ### Recurrence Token
 
-*   When initiating a `Purchase` payment order, you need to make sure that the
+* When initiating a `Purchase` payment order, you need to make sure that the
   field `generateRecurrenceToken` is set to `true`. This recurrence token
   will stored in the [authorization transaction][transaction]
   sub-resource on the underlying payment resource.
-*   When initiating a `Verify` payment order, a recurrence token will be generated
+*  When initiating a `Verify` payment order, a recurrence token will be generated
   automatically. This recurrence token is stored in the
   [verification][verification-transaction]  sub-resource on the underlying
   payment resource.
@@ -841,10 +841,10 @@ Content-Type: application/json
 | └─➔&nbsp;`remainingCaptureAmount`  | `integer`    | The available amount to capture.                                                                                                                                                                 |
 | └─➔&nbsp;`remainingCancelAmount`   | `integer`    | The available amount to cancel.                                                                                                                                                                  |
 | └─➔&nbsp;`remainingReversalAmount` | `integer`    | The available amount to reverse.                                                                                                                                                                 |
-| └➔&nbsp;`description`              | `string(40)` | {% include field-description-description.md documentation_section="checkout" %}                                                                                                                     |
+| └➔&nbsp;`description`              | `string(40)` | {% include field-description-description.md documentation_section="checkout" %}                                                                                                                  |
 | └➔&nbsp;`payerReference`           | `string`     | The reference to the consumer from the merchant system, like mobile number, customer number etc.                                                                                                 |
 | └➔&nbsp;`userAgent`                | `string`     | The [user agent][user-agent] string of the consumer's browser.                                                                                                                                   |
-| └➔&nbsp;`language`                 | `string`     | {% include field-description-language.md api_resource="paymentorders" %}                                                                                                                                                                      |
+| └➔&nbsp;`language`                 | `string`     | {% include field-description-language.md api_resource="paymentorders" %}                                                                                                                         |
 
 {% include prices.md api_resource="paymentorders" %}
 
