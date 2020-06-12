@@ -87,9 +87,7 @@ Content-Type: application/json
 {% include alert.html type="informative" icon="info" body=" Note that all of the
 operations `Cancel`, `Capture` and `Reversal` must be implemented." %}
 
-[https]: /home/technical-information#connection-and-protocol
-[msisdn]: https://en.wikipedia.org/wiki/MSISDN
-[payee-reference]: /checkout/other-features#payee-reference
+
+
+
 [payment-order-operations]: /checkout/other-features#operations
-[payment-menu-back-end]: /payment#payment-menu-back-end
-[payment-menu-front-end]: /payment#payment-menu-front-end

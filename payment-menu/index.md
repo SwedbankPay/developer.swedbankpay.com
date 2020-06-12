@@ -51,4 +51,4 @@ Note that in this diagram, the Payer refers to the merchant front-end
 
 [after-payment-capture]: /payment-menu/capture
 [https]: /home/technical-information#connection-and-protocol
-[payment-order]: /payment-menu/other-features#payment-orders
+

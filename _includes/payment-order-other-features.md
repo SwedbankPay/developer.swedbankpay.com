@@ -17,7 +17,7 @@ To create a payment order, you perform a `POST` request towards the
 #### Response
 
 The response given when creating a payment order is equivalent to a `GET`
-request towards the `paymentorders` resource, [as displayed above](#payment-orders)
+request towards the `paymentorders` resource, as displayed above.
 
 ### URLs
 
@@ -139,7 +139,7 @@ The `items` field of the `paymentOrder` is an array containing items that will a
 The `paymentOrders` resource utilize several sub-resources, relating to
 underlying [payments][payment-orders-resource-payments],
 [the current payment active][current-payment],
-[payers][payment-orders-resource-payers] and [URLs][payment-resource-urls].
+[payers][payment-orders-resource-payers] and [urls][payment-resource-urls].
 Common sub-resources like [payeeinfo][payee-reference], that are
 structurally identical for both payments and payments orders, are described in
 the [Payment Resources][payment-resource] section.
@@ -490,8 +490,7 @@ Content-Type: application/json
 ```
 
 The response given when aborting a payment order is equivalent to a `GET`
-request towards the `paymentorders` resource,
-[as displayed above][payment-orders],
+request towards the `paymentorders` resource, as displayed above.
 with its `state` set to `Aborted`.
 
 ### Cancel
@@ -1279,30 +1278,21 @@ elements. When in doubt, please follow the [robustness principle](https://en.wik
 
 [abort]: #operations
 [callback-reference]: /payment-menu/other-features#callback
-[card-payments-problems]: /payments/card/other-features#problem-messages
 [current-payment]: #current-payment-resource
 [expanding]: /home/technical-information#expansion
 [http-api-problems]: https://tools.ietf.org/html/rfc7807
 [image_disabled_payment_menu]: /assets/img/checkout/test-purchase.png
 [image_enabled_payment_menu]: /assets/img/checkout/guest-payment-menu-450x850.png
-[invoice-payments-problems]: /payments/invoice/other-features#problem-messages
-[operations]: #operations
-[order-items]: /payment-menu/other-features#order-items
 [payee-reference]: /payment-menu/other-features#payee-reference
-[payment-menu]: /payment-menu
 [payment-menu-front-end]: /payment-menu/payment-order#step-2-display-the-payment-menu
 [payment-order-capture]: /payment-menu/capture
-[payment-order]: #payment-orders
 [payment-orders-resource-payers]: #payer-resource
 [payment-orders-resource-payments]: #current-payment-resource
 [payment-orders-resource]: /payment-menu/other-features#payment-orders
 [payment-orders]: /payment-menu/other-features#payment-orders
 [payment-resource-urls]: #urls-resource
 [payment-resource]: #payments-resource
-[pci-dss]: https://www.pcisecuritystandards.org/
-[swish-payments-problems]: /payments/swish/other-features#problem-messages
 [transaction]: #transaction
 [urls]: #urls-resource
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
 [verification-transaction]: #verify-payments
-[vipps-payments-problems]: /payments/vipps/other-features#problem-messages

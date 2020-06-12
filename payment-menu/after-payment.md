@@ -17,7 +17,7 @@ sidebar:
 ---
 
 {% include jumbotron.html body="When the consumer has **completed** the entire
-[Payment Order[payment-order], you need to implement the
+[Payment Order][payment-order], you need to implement the
 relevant **after-payment operations** in your order system. Which these
 operations are and how they are executed is described below." %}
 
@@ -29,4 +29,4 @@ operations are and how they are executed is described below." %}
                          next_title="Next: Other Features" %}
 
 
-[payment-order]: /payment-order
+[payment-order]: /payment-menu/payment-order
