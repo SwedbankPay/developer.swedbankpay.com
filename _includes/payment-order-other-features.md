@@ -139,7 +139,7 @@ The `items` field of the `paymentOrder` is an array containing items that will a
 The `paymentOrders` resource utilize several sub-resources, relating to
 underlying [payments][payment-orders-resource-payments],
 [the current payment active][current-payment],
-[payers][payment-orders-resource-payers] and [urls][payment-resource-urls].
+[payers][payment-orders-resource-payers] and [urls][urls].
 Common sub-resources like [payeeinfo][payee-reference], that are
 structurally identical for both payments and payments orders, are described in
 the [Payment Resources][payment-resource] section.
@@ -520,11 +520,11 @@ with Swedbank Pay in order to work.**
 
 ### Recurrence Token
 
-* When initiating a `Purchase` payment order, you need to make sure that the
+*   When initiating a `Purchase` payment order, you need to make sure that the
   field `generateRecurrenceToken` is set to `true`. This recurrence token
   will stored in the [authorization transaction][transaction]
   sub-resource on the underlying payment resource.
-* When initiating a `Verify` payment order, a recurrence token will be generated
+*   When initiating a `Verify` payment order, a recurrence token will be generated
   automatically. This recurrence token is stored in the
   [verification][verification-transaction]  sub-resource on the underlying
   payment resource.
@@ -1289,7 +1289,6 @@ elements. When in doubt, please follow the [robustness principle](https://en.wik
 [payment-orders-resource-payers]: #payer-resource
 [payment-orders-resource-payments]: #current-payment-resource
 [payment-orders-resource]: /payment-menu/other-features#payment-orders
-[payment-orders]: /payment-menu/other-features#payment-orders
 [payment-resource-urls]: #urls-resource
 [payment-resource]: #payments-resource
 [transaction]: #transaction

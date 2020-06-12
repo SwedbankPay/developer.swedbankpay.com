@@ -87,7 +87,4 @@ Content-Type: application/json
 {% include alert.html type="informative" icon="info" body=" Note that all of the
 operations `Cancel`, `Capture` and `Reversal` must be implemented." %}
 
-
-
-
 [payment-order-operations]: /checkout/other-features#operations
