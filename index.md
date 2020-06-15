@@ -30,7 +30,8 @@ Nice, let's dive in. Click on the product below to get started.
         <a class="btn btn-guiding btn-outline btn-block mt-auto" href="/checkout/">{% icon shopping_cart %}&nbsp; Checkout</a>
       </div>
     </div>
-  </div> {% comment %}
+  </div>
+  {% comment %}
   <div class="row">
   <div class="col-12 col-md-4 pt-3 pt-md-0 d-flex">
     <div class="doc-card card card-plain">
