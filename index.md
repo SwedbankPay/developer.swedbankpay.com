@@ -42,7 +42,8 @@ Nice, let's dive in. Click on the product below to get started.
         <a class="btn btn-guiding btn-outline btn-block mt-auto" href="/checkout/">{% icon shopping_cart %}&nbsp; Checkout</a>
       </div>
     </div>
-  </div> {% endcomment %}
+  </div>
+  {% endcomment %}
   <div class="col-12 col-md-4 pt-3 pt-md-0 d-flex">
     <div class="doc-card card card-plain">
       <div class="card-body text-center d-flex flex-column">
