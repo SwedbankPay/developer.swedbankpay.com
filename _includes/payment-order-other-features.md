@@ -947,7 +947,10 @@ menu and show only the instrument.
 ```
 
 {:.text-center}
-![example disablePaymentMenu = true][image_disabled_payment_menu]{:width="463" :height="553"}
+![example disablePaymentMenu = true][image_disabled_payment_menu]{:width="463"
+:height="553"}
+
+{% if documentation_section == "payment-menu" %}
 
 ## Payment Menu Events
 
@@ -1134,92 +1137,14 @@ object:
 | `messageId` | `string` | A unique identifier for the message.                                                      |
 | `details`   | `string` | A human readable and descriptive text of the error.                                       |
 
-## Callback
-
-* Setting a `callbackUrl` in the HTTP `POST` API is optional, but highly
-  recommended. If a payer closes the browser window, a network error or
-  something else happens that prevents the payer from being redirect from
-  Swedbank Pay back to the merchant website, the callback is what ensures that
-  you receive information about what happened with the payment.
-* When a change or update from the back-end system are made on a payment or
-  transaction, Swedbank Pay will perform an asynchronous server-to-server
-  callback to inform the payee (merchant) about this update.
-* Swedbank Pay will make an HTTP `POST` to the `callbackUrl` that was
-  specified when the payee (merchant) created the payment.
-* When the `callbackUrl` receives such a callback, an HTTP `GET` request must
-  be made on the payment or on the transaction.
-  The retrieved payment or transaction resource will give you the necessary
-  information about the recent change/update.
-* The callback will be retried if it fails.
-  Below are the retry timings, in seconds
-  from the initial transaction time:
-  * 30 seconds
-  * 60 seconds
-  * 360 seconds
-  * 432 seconds
-  * 864 seconds
-  * 1265 seconds
-* The callback is sent from the following IP address `82.115.146.1`.
-
-{:.code-header}
-**Payment Order Callback**
-
-```js
-{
-    "orderReference": "OR-123456",
-    "paymentOrder":{
-        "id": "/psp/paymentorders/{{ page.payment_order_id }}",
-        "instrument": "<payment instrument>"
-    },
-    "payment":{
-        "id": "/psp/<payment instrument>/payments/{{ page.payment_id }}",
-        "number": 222222222
-    },
-    "transaction":{
-        "id": "/psp/<payment instrument>/payments/{{ page.payment_id }}/<transaction type>/{{ page.transaction_id }}",
-        "number": 333333333
-    }
-}
-```
-
-{:.table .table-striped}
-| Parameter            | Description                                                           |
-| :------------------- | :-------------------------------------------------------------------- |
-| `orderReference`     | The orderReference sent in on create paymentOrder                     |
-| `Payment Instrument` | `CreditCard`, `Invoice`, `Swish`, `Vipps`, `DirectDebit`, `MobilePay` |
-| `Transaction Type`   | `Authorization`, `Capture`, `Cancellation`, `Reversal`                |
-
-The sequence diagram below shows the HTTP `POST` you will receive from Swedbank
-Pay, and the two `GET` requests that you make to get the updated status.
-
-```mermaid
-sequenceDiagram
-    participant Merchant
-    participant SwedbankPay as Swedbank Pay
-    activate Merchant
-        activate SwedbankPay
-            SwedbankPay->Merchant: POST <callbackUrl>
-            note left of Merchant: Callback by Swedbank Pay
-            Merchant-->SwedbankPay: HTTP response
-        deactivate SwedbankPay
-    deactivate Merchant
-
-    activate Merchant
-        Merchant->SwedbankPay: GET <payment instrument> payment
-        activate SwedbankPay
-            note left of Merchant: First API request
-            SwedbankPay-->Merchant: payment resource
-        deactivate SwedbankPay
-    deactivate Merchant
-```
-
-{% if documentation_section == "checkout" %}
+{% else %}
 
 ## Checkin Events	
 The Checkin Seamless View can inform about events that occur during Checkin	
 through JavaScript event callbacks which can be implemented in the	
 `configuration` object passed to the `payex.hostedView.consumer(configuration)`	
 object.	
+
 ```mermaid	
 sequenceDiagram	
   participant Consumer	
@@ -1243,11 +1168,13 @@ sequenceDiagram
     SwedbankPay->>Merchant: OnShippingDetailsAvailable	
   end	
 ```	
+
 ### `onConsumerIdentified`	
 This event triggers when a consumer has performed Checkin and is identified,	
 if the Payment Menu is not loaded and in the DOM.	
 The `onConsumerIdentified` event is raised with the following event argument	
 object:	
+
 {:.code-header}	
 **`onConsumerIdentified` event object**	
 ```js	
@@ -1261,7 +1188,8 @@ Triggered when a consumer has been identified or shipping address has been
 updated.	
 {% include alert.html type="informative" icon="info" body= "The Checkin must be	
 completed before any shipping details are finalized, as the Checkin component	
-provides shipping address via the `onShippingDetailsAvailable` event." %}	
+provides shipping address via the `onShippingDetailsAvailable` event." %}
+
 {:.code-header}	
 **`onShippingDetailsAvailable` event object**	
 ```js	
@@ -1272,6 +1200,7 @@ provides shipping address via the `onShippingDetailsAvailable` event." %}
 ```	
 ### `onBillingDetailsAvailable`	
 Triggered when a consumer has been identified	
+
 {:.code-header}	
 **`onBillingDetailsAvailable` event object**	
 ```js	
@@ -1283,43 +1212,9 @@ Triggered when a consumer has been identified
 ### `onError`	
 Triggered on terminal errors, and when the configuration fails validation.	
 
-## Enable or Disable Payment Menu	
-It is possible to disable the payment menu when only one instrument exist by	
-setting the `disablePaymentMenu` field to `true`. The default value is	
-`false`, exemplified below.	
-{:.code-header}	
-**Request**	
-```js	
-{	
-    "paymentorder": {	
-        "disablePaymentMenu": false	
-    {	
-}	
-```	
-{:.text-center}	
-![example disablePaymentMenu = false][image_enabled_payment_menu]{:width="450" :height="850"}	
-Setting `disablePaymentMenu` field to `true` removes all other payment	
-instruments but the one that is available.	
-This feature is only valuable to set to `true` if you have only one payment	
-instrument available. By setting it to `true` will remove the frame around the	
-menu and show only the instrument.	
-{:.code-header}	
-**Request**	
-```js	
-{	
-    "paymentorder": {	
-        "disablePaymentMenu": true	
-    {	
-}	
-```	
-{:.text-center}	
-![example disablePaymentMenu = true][image_disabled_payment_menu]{:width="463" :height="553"}	
-{% include callback-reference.md	
-    payment_order=true	
-    api_resource="paymentorders" %}	
-
 {% endif %}
 
+{% include callback-reference.md payment_order=true	api_resource="paymentorders" %}	
 
 ## Problems
 

@@ -42,10 +42,6 @@ You can either capture the total amount, or do a part-capture (as described
 under [After Payment][after-payment-capture]). Connect these steps and you have
 Swedbank Pay Payment Menu.
 
-{% include alert.html type="informative" icon="info" body="
-Note that in this diagram, the Payer refers to the merchant front-end
-(website) while Merchant refers to the merchant back-end." %}
-
 {% include iterator.html next_href="payment-order"
                          next_title="Next: Payment Order" %}
 
