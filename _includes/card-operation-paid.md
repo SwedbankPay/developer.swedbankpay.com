@@ -24,7 +24,7 @@ Content-Type: application/json
     "id": "/psp/{{ api_resource }}/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/paid",
     "number": 1234567890,
     "transaction": {
-      "id": "/psp{{ api_resource }}/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/transactions/5adc265f-f87f-4313-577e-08d3dca1a37e",
+      "id": "/psp{{ api_resource }}/payments/{{ site.payment_id }}/transactions/{{ site.transaction_id }}",
       "number" : 1234567891
     },
     "payeeReference": "CD123",
