@@ -19,7 +19,7 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "payment": "/psp/{{ api_resource }}/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
+  "payment": "/psp/{{ api_resource }}/payments/{{ site.payment_id }}",
   "paid": {
     "id": "/psp/{{ api_resource }}/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/paid",
     "number": 1234567890,
