@@ -1,18 +1,7 @@
-### Create authorization transaction
+## Card authorization transaction
 
-The `direct-authorization` operation creates an authorization transaction
-directly whilst the `redirect-authorization` operation redirects the consumer to
-a Swedbank Pay hosted payment page, where the payment is authorized by the
-consumer.
-
-{% include alert.html type="warning" icon="warning" header="PCI-DSS Complicance"
-body="In order to use the `direct-authorization` operation, you need to collect
-card data on your website, which means it must be [PCI-DSS
-Compliant](https://www.pcisecuritystandards.org/)." %}
-
-
-{:.code-header}
-**Request**
+The `authorization` resource contains information about an authorization
+transaction made towards a payment.
 
 {:.code-header}
 **Request**
@@ -88,7 +77,45 @@ Content-Type: application/json
 }
 ```
 
-## TransactionId Authorizations
+:.table .table-striped}
+| Field                             | Type      | Description                                                                                                                                                                                                  |
+| :-------------------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `payment`                         | `object`  | The payment object.                                                                                                                                                                                          |
+| `authorization`                   | `object`  | The authorization object.                                                                                                                                                                                    |
+| └➔&nbsp;`direct`                  | `string`  | The type of the authorization.                                                                                                                                                                               |
+| └➔&nbsp;`cardBrand`               | `string`  | `Visa`, `MC`, etc. The brand of the card.                                                                                                                                                                    |
+| └➔&nbsp;`cardType`                | `string`  | `Credit Card` or `Debit Card`. Indicates the type of card used for the authorization.                                                                                                                        |
+| └➔&nbsp;`issuingBank`             | `string`  | The name of the bank that issued the card used for the authorization.                                                                                                                                        |
+| └➔&nbsp;`paymentToken`            | `string`  | The payment token created for the card used in the authorization.                                                                                                                                            |
+| └➔&nbsp;`maskedPan`               | `string`  | The masked PAN number of the card.                                                                                                                                                                           |
+| └➔&nbsp;`expiryDate`              | `string`  | The month and year of when the card expires.                                                                                                                                                                 |
+| └➔&nbsp;`panToken`                | `string`  | The token representing the specific PAN of the card.                                                                                                                                                         |
+| └➔&nbsp;`panEnrolled`             | `string`  |                                                                                                                                                                                                              |
+| └➔&nbsp;`acquirerTransactionTime` | `string`  | `3DSECURE` or `SSL`. Indicates the transaction type of the acquirer.                                                                                                                                         |
+| └➔&nbsp;`id`                      | `string`  | {% include field-description-id.md resource="itemDescriptions" %}                                                                                                                                            |
+| └➔&nbsp;`nonPaymentToken`         | `string`  | Result of our own tokenization of the card used. Activated in POS on merchant or merchant group.                                                                                                             |
+| └➔&nbsp;`externalNonPaymentToken` | `string`  |  Result of external tokenization. This value varies depending on cards, acquirer, customer, etc. For ICA cards, the token comes in response from Swedbank. For Mass Transit(SL) it is populated with PAR if it comes in response from the redeemer (Visa). If not, our own token (Mastercard / Amex).                                                                                                             
+                                                                                             | 
+| └➔&nbsp;`transaction`             | `object`  | The transaction object, containing information about the current transaction.                                                                                                                                              |
+| └─➔&nbsp;`id`                     | `string`  | {% include field-description-id.md resource="transaction" %}                                                                                                                                                 |
+| └─➔&nbsp;`created`                | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
+| └─➔&nbsp;`updated`                | `string`  | The ISO-8601 date and time of when the transaction was updated.                                                                                                                                              |
+| └─➔&nbsp;`type`                   | `string`  | Indicates the transaction type.                                                                                                                                                                              |
+| └─➔&nbsp;`state`                  | `string`  | `Initialized`, `Completed` or `Failed`. Indicates the state of the transaction.                                                                                                                              |
+| └─➔&nbsp;`number`                 | `string`  | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead. |
+| └─➔&nbsp;`amount`                 | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` = 100.00 NOK, `5000` = 50.00 SEK.                                                                                     |
+| └─➔&nbsp;`vatAmount`              | `integer` | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                           |
+| └─➔&nbsp;`description`            | `string`  | {% include field-description-description.md documentation_section="card" %}                                                                                                                                  |
+| └─➔&nbsp;`payeeReference`         | `string`  | A unique reference for the transaction.                                                                                                                                                                      |
+| └─➔&nbsp;`failedReason`           | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
+| └─➔&nbsp;`isOperational`          | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
+| └─➔&nbsp;`operations`             | `array`   | The array of operations that are possible to perform on the transaction in its current state.                                                                                                                |
+
+
+## `transactionId` Authorization
+
+{:.code-header}
+**Request**
 
 ```http
 POST /psp/creditcard/payments/{{ page.payment_id }}/authorizations HTTP/1.1
@@ -124,7 +151,7 @@ Content-Type: application/json
     "expiryDate" : "mm/yyyy",
     "panToken" : "12345678-1234-1234-1234-123456789012"
     "cardBrand": "Visa",
-    "cardType": "Credit|Debit",
+    "cardType": "Credit",
     "issuingBank": "UTL MAESTRO",
     "countryCode": "999",
     "acquirerTransactionType": "3DSECURE",
@@ -135,13 +162,12 @@ Content-Type: application/json
     "authenticationStatus": "Y",
     "nonPaymentToken" : "",
     "externalNonPaymentToken" : "",
-    "externalSiteId" : "",
     "transaction": {
       "id": "/psp/creditcard/payments/{{ page.payment_id }}/transactions/12345678-1234-1234-1234-123456789012",
       "created": "2016-09-14T01:01:01.01Z",
       "updated": "2016-09-14T01:01:01.03Z",
       "type": "Authorization",
-      "state": "Initialized|Completed|Failed",
+      "state": "Initialized",
       "number": 1234567890,
       "amount": 1000,
       "vatAmount": 250,
@@ -153,14 +179,6 @@ Content-Type: application/json
       "failedErrorDescription": "General decline, response-code: 05",
       "isOperational": "TRUE",
       "activities": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/transactions/12345678-1234-1234-1234-123456789012/activities" },
-      "problem": {
-            "type": "https://api.payex.com/psp/errordetail/creditcard/3DSECUREERROR",
-            "title": "Error when complete authorization",
-            "status": 400,
-            "detail": "Unable to complete 3DSecure verification!",
-            "problems": [
-            ]
-        }
       "operations": [
         {
           "href": "https://api.payex.com/psp/creditcard/payments/{{ page.payment_id }}",
@@ -183,8 +201,6 @@ Content-Type: application/json
 |                  | └➔&nbsp;`cardVerificationCode` | `string`  | Card verification code (CVC/CVV/CVC2), usually printed on the back of the card. |
 |                  | └➔&nbsp;`cardholderName`       | `string`  | Name of the card holder, usually printed on the face of the card.               |
 
-The `authorization` resource contains information about an authorization
-transaction made towards a payment, as previously described.
 
 {:.table .table-striped}
 | Field                             | Type      | Description                                                                                                                                                                                                  |
@@ -202,6 +218,10 @@ transaction made towards a payment, as previously described.
 | └➔&nbsp;`panEnrolled`             | `string`  |                                                                                                                                                                                                              |
 | └➔&nbsp;`acquirerTransactionTime` | `string`  | `3DSECURE` or `SSL`. Indicates the transaction type of the acquirer.                                                                                                                                         |
 | └➔&nbsp;`id`                      | `string`  | {% include field-description-id.md resource="itemDescriptions" %}                                                                                                                                            |
+| └➔&nbsp;`nonPaymentToken`         | `string`  | Result of our own tokenization of the card used. Activated in POS on merchant or merchant group.
+                                                                                            |
+| └➔&nbsp;`externalNonPaymentToken` | `string`  | Result of external tokenization. This value varies depending on cards, acquirer, customer, etc. For ICA cards, the token comes in response from Swedbank. For Mass Transit(SL) it is populated with PAR if it comes in response from the redeemer (Visa). If not, our own token (Mastercard / Amex).
+                                                                |                                                                                              
 | └➔&nbsp;`transaction`             | `object`  | The object representation of the generic transaction resource.                                                                                                                                               |
 | └─➔&nbsp;`id`                     | `string`  | {% include field-description-id.md resource="transaction" %}                                                                                                                                                 |
 | └─➔&nbsp;`created`                | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |

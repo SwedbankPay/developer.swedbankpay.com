@@ -29,6 +29,8 @@ covered by the other subsections." %}
 {% include payment-resource.md api_resource="creditcard" documentation_section="card"
 show_status_operations=true %}
 
+{% include card-operation-paid.md %}
+
 {% include payment-transaction-states.md %}
 
 {% include create-payment.md %}
@@ -66,7 +68,7 @@ when="at the 3-D Secure verification for credit card payments" full_reference=tr
 
 {% include payment-link.md %}
 
-{% include create-authorization-transaction.md %}
+{% include card-authorization-transaction.md %}
 
 {% include payee-info.md api_resource="creditcard" %}
 
