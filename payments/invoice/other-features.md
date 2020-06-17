@@ -42,10 +42,8 @@ set to value `FinancingConsumer` are listed below.
 
 {% include authorizations-resource.md api_resource="invoice" %}
 
-## Payment Resource
-
 {% include payment-resource.md api_resource="invoice" documentation_section="invoice"
-showStatusOperations=true %}
+show_status_operations=true %}
 
 {% include payment-transaction-states.md %}
 

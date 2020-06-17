@@ -289,6 +289,12 @@ Content-Type: application/json
         },
         {
             "method": "GET",
+            "href": "{{ page.front_end_url }}/vipps/core/scripts/client/px.vipps.client.js?token={{ page.payment_token }}&operation=authorize",
+            "rel": "view-payment",
+            "contentType": "application/javascript"
+        },
+        {
+            "method": "GET",
             "href": "{{ page.front_end_url }}/vipps/payments/authorize/{{ page.transaction_id }}",
             "rel": "redirect-authorization",
             "contentType": "text/html"

@@ -16,19 +16,12 @@ sidebar:
       title: Other Features
 ---
 
-## API requests
-
-The API requests are displayed in the [Trustly payment flow][trustly-flow].
-The options you can choose from when creating a payment are listed below.
+{% include payment-resource.md api_resource="trustly" documentation_section="trustly"
+show_status_operations=true %}
 
 {% include alert-callback-url.md api_resource="trustly" %}
 
 {% include authorizations-resource.md api_resource="trustly" %}
-
-## Payment Resource
-
-{% include payment-resource.md api_resource="trustly" documentation_section="trustly"
-showStatusOperations=true %}
 
 {% include payment-transaction-states.md %}
 
