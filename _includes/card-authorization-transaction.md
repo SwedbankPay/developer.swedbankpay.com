@@ -5,8 +5,7 @@ transaction made towards a payment. To create a new `authorization` transaction,
 perform a `POST` towards the URI obtained from the `payment.authorization.id`
 from the `payment` resource below. All operations
 that target the payment resource directly produce a response similar to the
-example seen below. The response given contains all operations that are
-possible to perform in the current state of the payment.
+example seen below. 
 
 {:.code-header}
 **Request**
@@ -49,49 +48,19 @@ Content-Type: application/json
         },
         "payeeInfo": {
             "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/payeeInfo"
-      
+        },
         "transactions": {
             "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/transactions"
-        }{% unless api_resource == "swish" %},
+        },
         "authorizations": {
             "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/authorizations"
-        }{% endunless %},
-        "captures": {
-            "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/captures"
-        },
-        "reversals": {
-            "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/reversals"
         },
         "cancellations": {
             "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/cancellations"
         }
     },
     "operations": [
-        {
-            "method": "PATCH",
-            "href": "{{ page.api_url }}/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
-            "rel": "update-payment-abort",
-        }{% if api_resource == "swish" %},
-        {
-            "method": "POST",
-            "href": "{{ page.api_url }}/psp/{{ api_resource }}/payments/{{ page.payment_id }}/sales",
-            "rel": "create-sale"
-        },
-        {
-            "method": "GET",
-            "href": "{{ page.front_end_url }}/{{ api_resource }}/payments/authorize/{{ page.payment_token }}",
-            "rel": "redirect-sale"
-        },
-        {
-            "method": "GET",
-            "href": "{{ page.front_end_url }}/{{ api_resource }}/core/scripts/client.js?token={{ page.payment_token }}",
-            "rel": "view-sales",
-        },
-        {
-            "method": "GET",
-            "href": "{{ page.front_end_url }}/{{ api_resource }}/core/scripts/client.js?token={{ page.payment_token }}",
-            "rel": "view-payment"
-        }{% else %},
+
         {
             "method": "GET",
             "href": "{{ page.front_end_url }}/{{ api_resource}}/core/scripts/client/px.{{ api_resource }}.client.js?token={{ page.payment_token }}&operation=authorize",
@@ -103,33 +72,10 @@ Content-Type: application/json
             "href": "{{ page.front_end_url }}/{{ api_resource }}/payments/authorize/{{ page.transaction_id }}",
             "rel": "redirect-authorization",
             "contentType": "text/html"
-        },
-        {
-            "method": "POST",
-            "href": "{{ page.api_url }}/psp/{{ api_resource }}/payments/{{ page.payment_id }}/captures",
-            "rel": "create-capture",
-            "contentType": "application/json"
-        }{% if show_status_operations %},
-        {
-            "method": "GET",
-            "href": "{{ page.api_url }}/psp/{{ api_resource }}/{{ page.payment_id }}/paid",
-            "rel": "paid-payment",
-            "contentType": "application/json"
-        },
-        {
-            "method": "GET",
-            "href": "{{ page.api_url }}/psp/{{ api_resource }}/{{ page.payment_id }}/failed",
-            "rel": "failed-payment",
-            "contentType": "application/problem+json"
-        }{% endif %}
-{% endif %}
+        }
     ]
 }
 ```
-
-{:.table .table-striped}
-| Field                    | Type         | Description                                                                                                                                                                                                                                                                                                                                                |
-| :----------------------- | :----------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 
 {:.code-header}
 **Request**
@@ -220,7 +166,7 @@ Content-Type: application/json
 
 
 
-:.table .table-striped}
+{:.table .table-striped}
 | Field                             | Type      | Description                                                                                                                                                                                                  |
 | :-------------------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `payment`                         | `object`  | The payment object.                                                                                                                                                                                          |
