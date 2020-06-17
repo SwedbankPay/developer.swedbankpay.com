@@ -3,7 +3,133 @@
 The `authorization` resource contains information about an authorization
 transaction made towards a payment. To create a new `authorization` transaction,
 perform a `POST` towards the URI obtained from the `payment.authorization.id`
-property.
+from the `payment` resource below. All operations
+that target the payment resource directly produce a response similar to the
+example seen below. The response given contains all operations that are
+possible to perform in the current state of the payment.
+
+{:.code-header}
+**Request**
+
+```http
+GET /psp/{{ api_resource }}/payments/{{ page.payment_id }}/ HTTP/1.1
+Host: {{ page.api_host }}
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+```
+
+{:.code-header}
+**Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "payment": {
+        "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
+        "number": 1234567890,
+        "created": "2016-09-14T13:21:29.3182115Z",
+        "updated": "2016-09-14T13:21:57.6627579Z",
+        "state": "Ready",
+        "operation": "Purchase",
+        "intent": "Authorization",
+        "currency": "{{ currency }}",
+        "amount": 1500,
+        "remainingCaptureAmount": 1500,
+        "remainingCancellationAmount": 1500,
+        "remainingReversalAmount": 0,
+        "description": "Test Purchase",
+        "payerReference": "AB1234",
+        "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
+        "userAgent": "Mozilla/5.0...",
+        "language": "{{ language }}",
+        "prices": {
+            "id": "/psp/{{ api_resource}}/payments/{{ page.payment_id }}/prices"
+        },
+        "payeeInfo": {
+            "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/payeeInfo"
+      
+        "transactions": {
+            "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/transactions"
+        }{% unless api_resource == "swish" %},
+        "authorizations": {
+            "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/authorizations"
+        }{% endunless %},
+        "captures": {
+            "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/captures"
+        },
+        "reversals": {
+            "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/reversals"
+        },
+        "cancellations": {
+            "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/cancellations"
+        }
+    },
+    "operations": [
+        {
+            "method": "PATCH",
+            "href": "{{ page.api_url }}/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
+            "rel": "update-payment-abort",
+        }{% if api_resource == "swish" %},
+        {
+            "method": "POST",
+            "href": "{{ page.api_url }}/psp/{{ api_resource }}/payments/{{ page.payment_id }}/sales",
+            "rel": "create-sale"
+        },
+        {
+            "method": "GET",
+            "href": "{{ page.front_end_url }}/{{ api_resource }}/payments/authorize/{{ page.payment_token }}",
+            "rel": "redirect-sale"
+        },
+        {
+            "method": "GET",
+            "href": "{{ page.front_end_url }}/{{ api_resource }}/core/scripts/client.js?token={{ page.payment_token }}",
+            "rel": "view-sales",
+        },
+        {
+            "method": "GET",
+            "href": "{{ page.front_end_url }}/{{ api_resource }}/core/scripts/client.js?token={{ page.payment_token }}",
+            "rel": "view-payment"
+        }{% else %},
+        {
+            "method": "GET",
+            "href": "{{ page.front_end_url }}/{{ api_resource}}/core/scripts/client/px.{{ api_resource }}.client.js?token={{ page.payment_token }}&operation=authorize",
+            "rel": "view-authorization",
+            "contentType": "application/javascript"
+        },
+        {
+            "method": "GET",
+            "href": "{{ page.front_end_url }}/{{ api_resource }}/payments/authorize/{{ page.transaction_id }}",
+            "rel": "redirect-authorization",
+            "contentType": "text/html"
+        },
+        {
+            "method": "POST",
+            "href": "{{ page.api_url }}/psp/{{ api_resource }}/payments/{{ page.payment_id }}/captures",
+            "rel": "create-capture",
+            "contentType": "application/json"
+        }{% if show_status_operations %},
+        {
+            "method": "GET",
+            "href": "{{ page.api_url }}/psp/{{ api_resource }}/{{ page.payment_id }}/paid",
+            "rel": "paid-payment",
+            "contentType": "application/json"
+        },
+        {
+            "method": "GET",
+            "href": "{{ page.api_url }}/psp/{{ api_resource }}/{{ page.payment_id }}/failed",
+            "rel": "failed-payment",
+            "contentType": "application/problem+json"
+        }{% endif %}
+{% endif %}
+    ]
+}
+```
+
+{:.table .table-striped}
+| Field                    | Type         | Description                                                                                                                                                                                                                                                                                                                                                |
+| :----------------------- | :----------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 
 {:.code-header}
 **Request**

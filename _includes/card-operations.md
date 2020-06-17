@@ -1,4 +1,4 @@
-### `paid-payment` Operation
+### Operation `paid-payment`
 
 The `paid-payment` operation confirms that the transaction has been successful
 and that the payment is completed. Under `details` you can see which card was
