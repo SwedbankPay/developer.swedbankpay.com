@@ -1,4 +1,8 @@
-### Card operation `paid-payment` 
+### `paid-payment` Operation
+
+The `paid-payment` operation confirms that the transaction has been successful
+and that the payment is completed. Under `details` you can see which card was
+used to complete the payment. 
 
 
 {:.code-header}
@@ -21,7 +25,7 @@ Content-Type: application/json
 {
   "payment": "/psp/{{ api_resource }}/payments/{{ site.payment_id }}",
   "paid": {
-    "id": "/psp/{{ api_resource }}/payments/5adc265f-f87f-4313-577e-08d3dca1a26c/paid",
+    "id": "/psp/{{ api_resource }}/payments/{{ site.payment_id }}/paid",
     "number": 1234567890,
     "transaction": {
       "id": "/psp{{ api_resource }}/payments/{{ site.payment_id }}/transactions/{{ site.transaction_id }}",
@@ -33,19 +37,19 @@ Content-Type: application/json
     "tokens": [
       {
         "type": "payment",
-        "token": "12345678-1234-1234-1234-1234567890AB",
+        "token": "{{ page.payment_token }}",
         "name": "4925xxxxxx000004",
         "expiryDate" : "mm/yyyy"
       },
       {
         "type": "recurrence",
-        "token": "87654321-4321-4321-4321-BA0987654321",
+        "token": "{{ page.payment_token }}",
         "name": "4925xxxxxx000004",
         "expiryDate" : "mm/yyyy"
       },
       {
         "type": "transactionsOnFile",
-        "token": "87654321-4321-4321-4321-BA0987654332",
+        "token": "{{ page.payment_token }}",
         "name": "4925xxxxxx000004",
         "expiryDate" : "mm/yyyy"
       }
