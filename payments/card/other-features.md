@@ -29,7 +29,7 @@ covered by the other subsections." %}
 {% include payment-resource.md api_resource="creditcard" documentation_section="card"
 show_status_operations=true %}
 
-{% include card-operation-paid.md %}
+{% include card-operations.md %}
 
 {% include payment-transaction-states.md %}
 
