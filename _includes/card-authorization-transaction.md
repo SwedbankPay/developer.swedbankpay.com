@@ -25,53 +25,10 @@ Content-Type: application/json
 {
     "payment": {
         "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
-        "number": 1234567890,
-        "created": "2016-09-14T13:21:29.3182115Z",
-        "updated": "2016-09-14T13:21:57.6627579Z",
-        "state": "Ready",
-        "operation": "Purchase",
-        "intent": "Authorization",
-        "currency": "{{ currency }}",
-        "amount": 1500,
-        "remainingCaptureAmount": 1500,
-        "remainingCancellationAmount": 1500,
-        "remainingReversalAmount": 0,
-        "description": "Test Purchase",
-        "payerReference": "AB1234",
-        "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
-        "userAgent": "Mozilla/5.0...",
-        "language": "{{ language }}",
-        "prices": {
-            "id": "/psp/{{ api_resource}}/payments/{{ page.payment_id }}/prices"
-        },
-        "payeeInfo": {
-            "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/payeeInfo"
-        },
-        "transactions": {
-            "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/transactions"
-        },
         "authorizations": {
             "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/authorizations"
         },
-        "cancellations": {
-            "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/cancellations"
-        }
-    },
-    "operations": [
-
-        {
-            "method": "GET",
-            "href": "{{ page.front_end_url }}/{{ api_resource}}/core/scripts/client/px.{{ api_resource }}.client.js?token={{ page.payment_token }}&operation=authorize",
-            "rel": "view-authorization",
-            "contentType": "application/javascript"
-        },
-        {
-            "method": "GET",
-            "href": "{{ page.front_end_url }}/{{ api_resource }}/payments/authorize/{{ page.transaction_id }}",
-            "rel": "redirect-authorization",
-            "contentType": "text/html"
-        }
-    ]
+    }
 }
 ```
 
