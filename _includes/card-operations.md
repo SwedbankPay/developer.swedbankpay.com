@@ -4,7 +4,6 @@ The `paid-payment` operation confirms that the transaction has been successful
 and that the payment is completed. Under `details` you can see which card was
 used to complete the payment. 
 
-
 {:.code-header}
 **Response**
 
