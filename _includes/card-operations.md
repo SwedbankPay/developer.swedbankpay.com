@@ -8,7 +8,7 @@ used to complete the payment.
 **Response**
 
 ```http
-GET /psp/creditcard/payments/<paymentId>/paid HTTP/1.1
+GET /psp/creditcard/payments/{{ site.payment_id }}/paid HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
