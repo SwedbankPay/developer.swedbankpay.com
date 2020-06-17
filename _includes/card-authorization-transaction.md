@@ -1,7 +1,9 @@
 ## Card authorization transaction
 
 The `authorization` resource contains information about an authorization
-transaction made towards a payment.
+transaction made towards a payment. To create a new `authorization` transaction,
+perform a `POST` towards the URI obtained from the `payment.authorization.id`
+property.
 
 {:.code-header}
 **Request**
@@ -125,5 +127,4 @@ Content-Type: application/json
 | └─➔&nbsp;`failedReason`           | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | └─➔&nbsp;`isOperational`          | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
 | └─➔&nbsp;`operations`             | `array`   | The array of operations that are possible to perform on the transaction in its current state.                                                                                                                |
-
 
