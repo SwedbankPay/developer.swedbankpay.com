@@ -3,9 +3,7 @@
 The `authorization` resource contains information about an authorization
 transaction made towards a payment. To create a new `authorization` transaction,
 perform a `POST` towards the URI obtained from the `payment.authorization.id`
-from the `payment` resource below. All operations
-that target the payment resource directly produce a response similar to the
-example seen below. 
+from the `payment` resource below. The example is abbreviated for brevity.
 
 {:.code-header}
 **Request**
@@ -199,4 +197,3 @@ Content-Type: application/json
 | └─➔&nbsp;`failedReason`           | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | └─➔&nbsp;`isOperational`          | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
 | └─➔&nbsp;`operations`             | `array`   | The array of operations that are possible to perform on the transaction in its current state.                                                                                                                |
-
