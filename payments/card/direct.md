@@ -188,6 +188,7 @@ Content-Type: application/json
 | └➔&nbsp;`panToken`                | `string`  | The token representing the specific PAN of the card.                                                                                                                                                         |
 | └➔&nbsp;`panEnrolled`             | `string`  |                                                                                                                                                                                                              |
 | └➔&nbsp;`acquirerTransactionTime` | `string`  | `3DSECURE` or `SSL`. Indicates the transaction type of the acquirer.                                                                                                                                         |
+| └➔&nbsp;`nonPaymentToken`         | `string`  | Swedbank Pay's tokenization of the card used; identifies the card, but can not be used for payment transactions. Needs to be activated by Swedbank Pay before use.                                                                                                                                         |
 | └➔&nbsp;`id`                      | `string`  | {% include field-description-id.md resource="itemDescriptions" %}                                                                                                                                            |
 | └➔&nbsp;`transaction`             | `object`  | The object representation of the generic transaction resource.                                                                                                                                               |
 | └─➔&nbsp;`id`                     | `string`  | {% include field-description-id.md resource="transaction" %}                                                                                                                                                 |
@@ -409,7 +410,7 @@ next_href="mobile-card-payments" next_title="Next: Mobile Card Payments" %}
 [cancel]: /payments/card/after-payment#cancellations
 [capture]: /payments/card/capture
 [reversal]: /payments/card/after-payment#reversals
-[authorization]: /payments/card/other-features#create-authorization-transaction
+[authorization]: /payments/card/other-features#card-authorization-transaction
 [other features]: /payments/card/other-features#purchase
 [purchase]:  /payments/card/other-features#purchase
 [recur]:  /payments/card/other-features#recur
