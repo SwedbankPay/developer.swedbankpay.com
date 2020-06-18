@@ -241,7 +241,6 @@ for the given operation.
 | `view-payment`         | Contains the URI of the JavaScript used to create a Seamless View iframe directly without redirecting the consumer to separate payment page.                                |
 
 
-
 {% when "trustly" %}
 
 {:.table .table-striped}
