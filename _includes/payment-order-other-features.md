@@ -953,190 +953,7 @@ menu and show only the instrument.
 
 {% if local_documentation_section == "payment-menu" %}
 
-## Payment Menu Events
-
-During operation in the Payment Menu, several events can occur. They are
-described below.
-
-### `onPaymentMenuInstrumentSelected`
-
-This event triggers when a user actively changes payment instrument in the
-Payment Menu. The `onPaymentMenuInstrumentSelected` event is raised with the
-following event argument object:
-
-{:.code-header}
-**`onPaymentMenuInstrumentSelected` event object**
-
-```js
-{
-    "name": "menu identifier",
-    "instrument": "creditcard | vipps | swish | invoice",
-}
-```
-
-{:.table .table-striped}
-| Field        | Type     | Description                                                                                                                                                      |
-| :----------- | :------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `name`       | `string` | The name and identifier of specific instrument instances - i.e. if you deploy more than one type of credit card payments, they would be distinguished by `name`. |
-| `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The instrument selected by the user.                                                                                  |
-
-### `onPaymentCreated`
-
-This event triggers when a user has selected a payment instrument and actively
-attempts to perform a payment. The `onPaymentCreate` event is raised with the
-following event argument object:
-
-{:.code-header}
-**`onPaymentCreated` event object**
-
-```js
-{
-    "id": "/psp/paymentorders/payments/{{ page.payment_id }}",
-    "instrument": "creditcard | vipps | swish | invoice",
-}
-```
-
-{:.table .table-striped}
-| Field        | Type     | Description                                                                                     |
-| :----------- | :------- | :---------------------------------------------------------------------------------------------- |
-| `id`         | `string` | {% include field-description-id.md %}                                                           |
-| `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The instrument selected when initiating the payment. |
-
-### `onPaymentCompleted`
-
-This event triggers when a payment has completed successfully.
-The `onPaymentCompleted` event is raised with the following event argument
-object:
-
-{:.code-header}
-**`onPaymentCompleted` event object**
-
-```js
-{
-    "id": "/psp/paymentorders/payments/{{ page.payment_id }}",
-    "redirectUrl": "https://en.wikipedia.org/wiki/Success"
-}
-```
-
-{:.table .table-striped}
-| Field         | Type     | Description                                                     |
-| :------------ | :------- | :-------------------------------------------------------------- |
-| `id`          | `string` | {% include field-description-id.md %}                           |
-| `redirectUrl` | `string` | The URI the user will be redirect to after a completed payment. |
-
-### `onPaymentCanceled`
-
-This event triggers when the user cancels the payment.
-The `onPaymentCanceled` event is raised with the following event argument
-object:
-
-{:.code-header}
-**`onPaymentCanceled` event object**
-
-```js
-{
-    "id": "/psp/paymentorders/payments/{{ page.payment_id }}",
-    "redirectUrl": "https://en.wikipedia.org/wiki/Canceled"
-}
-```
-
-{:.table .table-striped}
-| Field         | Type     | Description                                                    |
-| :------------ | :------- | :------------------------------------------------------------- |
-| `id`          | `string` | {% include field-description-id.md %}                          |
-| `redirectUrl` | `string` | The URI the user will be redirect to after a canceled payment. |
-
-### `onPaymentTransactionFailed`
-
-This event triggers when a payment attempt fails, further attempts can be made
-for the payment. An error message will appear in the payment UI, and the
-consumer will be able to try again or choose another payment instrument. The
-`onPaymentTransactionFailed` event is raised with the following event argument
-object:
-
-{:.code-header}
-**`onPaymentTransactionFailed` event object**
-
-```js
-{
-    "id": "/psp/paymentorders/payments/{{ page.payment_id }}",
-    "details": "[HttpCode ProblemTitle]"
-}
-```
-
-{:.table .table-striped}
-| Field     | Type     | Description                                         |
-| :-------- | :------- | :-------------------------------------------------- |
-| `id`      | `string` | {% include field-description-id.md %}               |
-| `details` | `string` | A human readable and descriptive text of the error. |
-
-### `onPaymentFailed`
-
-This event triggers when a payment has failed, disabling further attempts to
-perform a payment. The `onPaymentFailed` event is raised with the following
-event argument object:
-
-{:.code-header}
-**`onPaymentFailed` event object**
-
-```js
-{
-    "id": "/psp/paymentorders/payments/{{ page.payment_id }}",
-    "redirectUrl": "https://en.wikipedia.org/wiki/Failed"
-}
-```
-
-{:.table .table-striped}
-| Field         | Type     | Description                                                  |
-| :------------ | :------- | :----------------------------------------------------------- |
-| `id`          | `string` | {% include field-description-id.md %}                        |
-| `redirectUrl` | `string` | The URI the user will be redirect to after a failed payment. |
-
-### `onPaymentTermsOfService`
-
-This event triggers when the user clicks on the "Display terms and conditions"
-link. The `onPaymentTermsOfService` event is raised with the following event
-argument object:
-
-{:.code-header}
-**`onPaymentTermsOfService` event object**
-
-```js
-{
-    "origin": "owner | merchant",
-    "openUrl": "https://example.org/terms.html"
-}
-```
-
-{:.table .table-striped}
-| Field     | Type     | Description                                                                             |
-| :-------- | :------- | :-------------------------------------------------------------------------------------- |
-| `origin`  | `string` | `owner`, `merchant`. The value is always `merchant` unless Swedbank Pay hosts the view. |
-| `openUrl` | `string` | The URI containing Terms of Service and conditions.                                     |
-
-### `onError`
-
-This event triggers during terminal errors or if the configuration fails
-validation. The `onError` event will be raised with the following event argument
-object:
-
-{:.code-header}
-**`onError` event object**
-
-```js
-{
-    "origin": "consumer | paymentmenu | creditcard | invoice | ...",
-    "messageId": "<unique message ID>",
-    "details": "Descriptive text of the error"
-}
-```
-
-{:.table .table-striped}
-| Field       | Type     | Description                                                                               |
-| :---------- | :------- | :---------------------------------------------------------------------------------------- |
-| `origin`    | `string` | `consumer`, `paymentmenu`, `creditcard`, identifies the system that originated the error. |
-| `messageId` | `string` | A unique identifier for the message.                                                      |
-| `details`   | `string` | A human readable and descriptive text of the error.                                       |
+{% include seamless-view-events.md api_resource="paymentorders" %}
 
 {% else %}
 
@@ -1219,12 +1036,13 @@ Triggered when a consumer has been identified
   "url":"/psp/consumers/{{ page.payment_token }}/billing-details"
 }
 ```
+{% endif  %}
 
 ### `onError`
 
 Triggered on terminal errors, and when the configuration fails validation.
 
-{% endif %}
+
 
 {% include callback-reference.md payment_order=true api_resource="paymentorders" %}
 
