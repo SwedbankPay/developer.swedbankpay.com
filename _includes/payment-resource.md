@@ -82,12 +82,8 @@ Content-Type: application/json
             "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/cancellations"
         }
     },
-    "operations": [
-        {
-            "method": "PATCH",
-            "href": "{{ page.api_url }}/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
-            "rel": "update-payment-abort",
-        }{% if api_resource == "swish" %},
+    "operations": [ {% case api_resource %}
+    {% when "swish" %}
         {
             "method": "POST",
             "href": "{{ page.api_url }}/psp/{{ api_resource }}/payments/{{ page.payment_id }}/sales",
@@ -108,7 +104,35 @@ Content-Type: application/json
             "href": "{{ page.front_end_url }}/{{ api_resource }}/core/scripts/client.js?token={{ page.payment_token }}",
             "rel": "view-payment"
             "contentType:": "application/javascript"
-        }{% else %},
+        },
+        {% when "trustly" %}
+        {
+            "method": "POST",
+            "href": "{{ page.api_url }}/psp/{{ api_resource }}/payments/{{ page.payment_id }}/sales",
+            "rel": "create-sale"
+        },
+        {
+            "method": "GET",
+            "href": "{{ page.front_end_url }}/{{ api_resource }}/payments/authorize/{{ page.payment_token }}",
+            "rel": "redirect-sale"
+        },
+        {
+            "method": "GET",
+            "href": "{{ page.front_end_url }}/{{ api_resource }}/core/scripts/client.js?token={{ page.payment_token }}",
+            "rel": "view-sales",
+        },
+        {
+            "method": "GET",
+            "href": "{{ page.front_end_url }}/{{ api_resource }}/payments/authorize/{{ page.transaction_id }}",
+            "rel": "redirect-authorization",
+            "contentType": "text/html"
+        }, {% when "invoice" %}
+        {
+            "method": "POST",
+            "href": "{{ page.front_end_url }}/{{ api_resource}}/core/scripts/client/px.{{ api_resource }}.client.js?token={{ page.payment_token }}&operation=authorize",
+            "rel": "create-authorization",
+            "contentType": "application/json"
+        },
         {
             "method": "GET",
             "href": "{{ page.front_end_url }}/{{ api_resource}}/core/scripts/client/px.{{ api_resource }}.client.js?token={{ page.payment_token }}&operation=authorize",
@@ -121,12 +145,30 @@ Content-Type: application/json
             "rel": "redirect-authorization",
             "contentType": "text/html"
         },
+        {% else %},
         {
+            "method": "GET",
+            "href": "{{ page.front_end_url }}/{{ api_resource}}/core/scripts/client/px.{{ api_resource }}.client.js?token={{ page.payment_token }}&operation=authorize",
+            "rel": "view-authorization",
+            "contentType": "application/javascript"
+        },
+        {
+            "method": "GET",
+            "href": "{{ page.front_end_url }}/{{ api_resource }}/payments/authorize/{{ page.transaction_id }}",
+            "rel": "redirect-authorization",
+            "contentType": "text/html"
+        },{% endcase %}{% if show_status_operations %}
+        {
+            "method": "PATCH",
+            "href": "{{ page.api_url }}/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
+            "rel": "update-payment-abort",
+        },
+        { 
             "method": "POST",
             "href": "{{ page.api_url }}/psp/{{ api_resource }}/payments/{{ page.payment_id }}/captures",
             "rel": "create-capture",
             "contentType": "application/json"
-        }{% if show_status_operations %},
+        },
         {
             "method": "GET",
             "href": "{{ page.api_url }}/psp/{{ api_resource }}/{{ page.payment_id }}/paid",
@@ -139,7 +181,6 @@ Content-Type: application/json
             "rel": "failed-payment",
             "contentType": "application/problem+json"
         }{% endif %}
-{% endif %}
     ]
 }
 ```
@@ -199,8 +240,37 @@ for the given operation.
 | `view-sales`           | Contains the URI of the JavaScript used to create a Seamless View iframe directly for the `sale` transaction without redirecting the consumer to a separate payment page. |
 | `view-payment`         | Contains the URI of the JavaScript used to create a Seamless View iframe directly without redirecting the consumer to separate payment page.                                |
 
+
+
+{% when "trustly" %}
+
+{:.table .table-striped}
+| Operation                | Description                                                                                                               |
+| :----------------------- | :------------------------------------------------------------------------------------------------------------------------ |
+| `update-payment-abort`   | `abort`s the payment order before any financial transactions are performed.                                               |
+| `redirect-authorization` | Contains the URI that is used to redirect the consumer to the Swedbank Pay Payments containing the card authorization UI. |
+| `create-capture`         | Creates a `capture` transaction in order to charge the reserved funds from the consumer.                                  |
+| `create-cancellation`    | Creates a `cancellation` transaction that cancels a created, but not yet captured payment.                                |
+| `paid-payment`           | Returns the information about a payment that has the status `paid`.                                                       |
+| `failed-payment`         | Returns the information about a payment that has the status `failed`.                                                     |
+| `view-sales`             | Contains the URI of the JavaScript used to create a Seamless View iframe directly for the `sale` transaction without redirecting the consumer to a separate payment page. |
+
+{% when "invoice" %}
+
+{:.table .table-striped}
+| Operation                | Description                                                                                                               |
+| :----------------------- | :------------------------------------------------------------------------------------------------------------------------ |
+| `update-payment-abort`   | `abort`s the payment order before any financial transactions are performed.                                               |
+| `redirect-authorization` | Contains the URI that is used to redirect the consumer to the Swedbank Pay Payments containing the card authorization UI. |
+| `view-authorization`     | Contains the JavaScript `href` that is used to embed  the card authorization UI directly on the webshop/merchant site     |
+| `create-capture`         | Creates a `capture` transaction in order to charge the reserved funds from the consumer.                                  |
+| `create-cancellation`    | Creates a `cancellation` transaction that cancels a created, but not yet captured payment.                                |
+| `paid-payment`           | Returns the information about a payment that has the status `paid`.                                                       |
+| `failed-payment`         | Returns the information about a payment that has the status `failed`.                                                     |
+
+
+
 {% else %}
-{% if show_status_operations %}
 
 {:.table .table-striped}
 | Operation                | Description                                                                                                               |
@@ -214,18 +284,6 @@ for the given operation.
 | `paid-payment`           | Returns the information about a payment that has the status `paid`.                                                       |
 | `failed-payment`         | Returns the information about a payment that has the status `failed`.                                                     |
 
-{% else %}
-
-{:.table .table-striped}
-| Operation                | Description                                                                                                               |
-| :----------------------- | :------------------------------------------------------------------------------------------------------------------------ |
-| `update-payment-abort`   | `abort`s the payment order before any financial transactions are performed.                                               |
-| `redirect-authorization` | Contains the URI that is used to redirect the consumer to the Swedbank Pay Payments containing the card authorization UI. |
-| `view-authorization`     | Contains the JavaScript `href` that is used to embed  the card authorization UI directly on the webshop/merchant site     |
-| `create-capture`         | Creates a `capture` transaction in order to charge the reserved funds from the consumer.                                  |
-| `create-cancellation`    | Creates a `cancellation` transaction that cancels a created, but not yet captured payment.                                |
-
-{% endif %}
 {% endcase %}
 
 [user-agent]: https://en.wikipedia.org/wiki/User_agent

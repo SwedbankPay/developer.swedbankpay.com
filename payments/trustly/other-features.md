@@ -16,8 +16,8 @@ sidebar:
       title: Other Features
 ---
 
-{% include payment-resource.md api_resource="trustly" documentation_section="trustly"
-show_status_operations=true %}
+{% include payment-resource.md api_resource="trustly"
+documentation_section="trustly" show_status_operations=true %}
 
 {% include alert-callback-url.md api_resource="trustly" %}
 

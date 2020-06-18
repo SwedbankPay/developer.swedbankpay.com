@@ -16,12 +16,8 @@ sidebar:
       title: Other Features
 ---
 
-{% include settlement-reconciliation.md %}
-
-{% include payment-link.md %}
-
 {% include payment-resource.md  api_resource="vipps"
-documentation_section="vipps" show_status_operations=true%}
+documentation_section="vipps" show_status_operations=true %}
 
 {% include payment-transaction-states.md %}
 
@@ -202,6 +198,8 @@ documentation_section="vipps" %}
 
 {% include callback-reference.md api_resource="vipps" %}
 
+{% include payment-link.md %}
+
 ## Problem messages
 
 When performing unsuccessful operations, the eCommerce API will respond with a
@@ -260,6 +258,8 @@ All Vipps error types will have the following URI in front of type:
 | *`UNKNOWN_ERROR`*               | `500`  |
 
 {% include seamless-view-events.md api_resource="vipps" %}
+
+{% include settlement-reconciliation.md %}
 
 {% include iterator.html
         prev_href="after-payment"
