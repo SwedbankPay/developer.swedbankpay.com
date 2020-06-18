@@ -105,7 +105,7 @@ Content-Type: application/json
             "rel": "view-payment"
             "contentType:": "application/javascript"
         },
-        {% when "trustly" %}
+        {%- when "trustly" -%}
         {
             "method": "POST",
             "href": "{{ page.api_url }}/psp/{{ api_resource }}/payments/{{ page.payment_id }}/sales",
