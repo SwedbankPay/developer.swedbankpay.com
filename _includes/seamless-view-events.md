@@ -11,6 +11,29 @@
 During operation in the {{ product }}, several events can occur. They are
 described below.
 
+### `onPaymentPending`
+This events triggers when a payment enters a paying state ( `Sale`, `Authorize`,
+`Cancel`etc). The `onPaymentPending` event
+will be followed by either `onPaymentCompleted`, `onPaymentFailed` or 
+`onPaymentTransactionFailed` based on the result of the payment. Read more about
+these events below. 
+
+{:.code-header}
+**`onPaymentPending` event object**
+
+```js
+{
+    "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}"
+}
+```
+
+{:.table .table-striped}
+| Field         | Type     | Description                                                     |
+| :------------ | :------- | :-------------------------------------------------------------- |
+| `id`          | `string` | {% include field-description-id.md %}                           |
+
+
+
 ### `onPaymentCompleted`
 
 This event triggers when a payment has completed successfully.
