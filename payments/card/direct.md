@@ -410,7 +410,7 @@ next_href="mobile-card-payments" next_title="Next: Mobile Card Payments" %}
 [cancel]: /payments/card/after-payment#cancellations
 [capture]: /payments/card/capture
 [reversal]: /payments/card/after-payment#reversals
-[authorization]: /payments/card/other-features#create-authorization-transaction
+[authorization]: /payments/card/other-features#card-authorization-transaction
 [other features]: /payments/card/other-features#purchase
 [purchase]:  /payments/card/other-features#purchase
 [recur]:  /payments/card/other-features#recur
