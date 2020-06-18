@@ -240,7 +240,6 @@ for the given operation.
 | `view-sales`           | Contains the URI of the JavaScript used to create a Seamless View iframe directly for the `sale` transaction without redirecting the consumer to a separate payment page. |
 | `view-payment`         | Contains the URI of the JavaScript used to create a Seamless View iframe directly without redirecting the consumer to separate payment page.                                |
 
-
 {% when "trustly" %}
 
 {:.table .table-striped}
