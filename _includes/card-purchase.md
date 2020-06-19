@@ -248,6 +248,12 @@ Content-Type: application/json
             "href": "{{ page.front_end_url }}/creditcard/core/scripts/client/px.creditcard.client.js?token={{ page.payment_token }}",
             "method": "GET",
             "contentType": "application/javascript"
+        },
+        {
+            "rel": "view-payment",
+            "href": "{{ page.front_end_url }}/creditcard/core/scripts/client/px.creditcard.client.js?token={{ page.payment_token }}",
+            "method": "GET",
+            "contentType": "application/javascript"
         }
     ]
 }

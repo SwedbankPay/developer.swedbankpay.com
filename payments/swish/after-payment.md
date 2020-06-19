@@ -33,76 +33,6 @@ the consumer.
     You can also access and reverse a payment through your merchant pages in the
     [Swedbank Pay admin portal][payex-admin-portal].
 
-### Reversal Sequence
-
-A reversal transcation need to match the Payee reference of a completed
-sales transaction.
-
-```mermaid
-sequenceDiagram
-  activate Merchant
-  Merchant->>- SwedbankPay: POST <Swish reversal>
-  activate  SwedbankPay
-  SwedbankPay-->>-Merchant: transaction resource
-```
-
-## Payment Resource
-
-When a payment resource is created and during its lifetime, it will have a set
-of operations that can be performed on it.
-Which operations are available will vary depending on the state of the payment
-resource, what the access token is authorized to do, etc.
-A list of possible operations for Swish Payments and their explanation
-is given below.
-
-{:.code-header}
-**Operations**
-
-```js
-{
-    "operations": [
-        {
-            "method": "POST",
-            "href": "{{ page.api_url }}/psp/swish/payments/{{ page.payment_id }}/sales",
-            "rel": "create-sale"
-        },
-        {
-            "method": "GET",
-            "href": "{{ page.front_end_url }}/swish/payments/sales/{{ page.payment_token }}",
-            "rel": "redirect-sale"
-        },
-        {
-            "method": "GET",
-            "href": "{{ page.front_end_url }}/swish/core/scripts/client/px.swish.client.js?token={{ page.payment_token }}",
-            "rel": "view-sales",
-            "contentType": "application/javascript"
-        }
-    ]
-}
-```
-
-{:.table .table-striped}
-| Field    | Description                                                         |
-| :------- | :------------------------------------------------------------------ |
-| `href`   | The target URI to perform the operation against.                    |
-| `rel`    | The name of the relation the operation has to the current resource. |
-| `method` | The HTTP method to use when performing the operation.               |
-
-The operations should be performed as described in each response and not as
-described here in the documentation.
-Always use the `href` and `method` as specified in the response by finding the
-appropriate operation based on its `rel` value.
-The only thing that should be hard coded in the client is the value of
-the `rel` and the request that will be sent in the HTTP body of the
-request for the given operation.
-
-{:.table .table-striped}
-| Operation       | Description                                                                                                                                |
-| :-------------- | :----------------------------------------------------------------------------------------------------------------------------------------- |
-| `create-sale`   | Creates a `sales` transaction without redirection to a payment page. `Msisdn` is required in browser based scenarioes.                     |
-| `redirect-sale` | Contains the redirect-URI that redirects the consumer to a Swedbank Pay hosted payment page prior to creating a sales transaction.         |
-| `view-sales`    | Contains the URI of the JavaScript used to create a Hosted View iframe directly without redirecting the consumer to separate payment page. |
-
 ## Swish transactions
 
 All Swish transactions are described below. Please note that Swish does not
@@ -282,6 +212,19 @@ from Swedbank Pay.
 
 The `Reversals` resource list the reversals transactions (one or more) on a
 specific payment.
+
+### Reversal Sequence
+
+A reversal transcation need to match the Payee reference of a completed
+sales transaction.
+
+```mermaid
+sequenceDiagram
+  activate Merchant
+  Merchant->>- SwedbankPay: POST <Swish reversal>
+  activate  SwedbankPay
+  SwedbankPay-->>-Merchant: transaction resource
+```
 
 {:.code-header}
 **Request**

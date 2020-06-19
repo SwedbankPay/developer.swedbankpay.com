@@ -18,8 +18,8 @@ sidebar:
       title: Other Features
 ---
 
-{% include payment-resource.md api_resource="swish" documentation_section="swish"
-showStatusOperations=true%}
+{% include payment-resource.md api_resource="swish"
+documentation_section="swish" show_status_operations=true %}
 
 {% include payment-transaction-states.md %}
 
@@ -151,6 +151,7 @@ Content-Type: application/json
             "href": "http://{{ page.api_host }}/psp/swish/payments/{{ page.payment_id }}/sales",
             "rel": "create-sale"
         }
+    ]
 }
 ```
 
