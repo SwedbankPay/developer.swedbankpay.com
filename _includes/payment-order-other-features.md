@@ -303,7 +303,7 @@ amount or there are added or removed order items in the payment order.
 `UpdateOrder` you need to `refresh()` the 
 [Payment Menu front end][payment-menu-front-end]
 if the payment order is updated asynchronously with AJAX or in another browser tab, so that 
-the new amount is shown to the end customer." %}
+the new amount is shown to the payer." %}
 
 If the page is refreshed by a full page reload, `refresh()` is not necessary. 
 
