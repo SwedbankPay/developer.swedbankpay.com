@@ -482,8 +482,8 @@ Content-Type: application/json
 The response given when changing a payment order is equivalent to a `GET`
 request towards the `paymentorders` resource,
 [as displayed above][payment-orders-resource]. Even though the fields are the
-same, the `UpdateOrder` request will overwrite the fields were sent in 
-the create `Purchase` request.
+same, the `UpdateOrder` request will overwrite the fields thart were sent in 
+the initial `Purchase` request.
 
 ### Abort
 
