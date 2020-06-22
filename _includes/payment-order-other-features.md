@@ -1269,7 +1269,7 @@ The structure of a problem message will look like this:
 
 {% include merchant-authenticated-consumer.md %}
 
-## One-click Payments
+## One-Click Payments
 
 One-Click Payments should be used if you want to present your own Payment Menu 
 in all channels you want to support. This means that if you are both on the 
