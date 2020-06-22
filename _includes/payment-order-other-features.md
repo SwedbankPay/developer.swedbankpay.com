@@ -300,8 +300,7 @@ The `UpdateOrder` operation is used when there is a change in the amount, vat
 amount or there are added or removed order items in the payment order. 
 
 {% include alert.html type="informative" icon="info" body="If you implement 
-`UpdateOrder` you need to `refresh()` the 
-[Payment Menu front end][payment-menu-front-end]
+`UpdateOrder` you need to `refresh()` the Payment Menu frontend
 if the payment order is updated asynchronously with AJAX or in another browser tab, so that 
 the new amount is shown to the payer." %}
 
@@ -1191,7 +1190,6 @@ elements. When in doubt, please follow the [robustness principle](https://en.wik
 [image_disabled_payment_menu]: /assets/img/checkout/test-purchase.png
 [image_enabled_payment_menu]: /assets/img/checkout/guest-payment-menu-450x850.png
 [payee-reference]: /payment-menu/other-features#payee-reference
-[payment-menu-front-end]: /payment-menu/payment-order#step-2-display-the-payment-menu
 [payment-order-capture]: /payment-menu/capture
 [payment-orders-resource-payers]: #payer-resource
 [payment-orders-resource-payments]: #current-payment-resource
