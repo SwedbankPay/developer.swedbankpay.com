@@ -296,8 +296,8 @@ The `view-paymentorder` operation contains the URI of the JavaScript that needs 
 
 ### Update Order
 
-`Updateorder` is used when there is a change in the amount, vat amount or
-added/removed order items in a payment order. 
+The `UpdateOrder` operation is used when there is a change in the amount, vat
+amount or there are added or removed order items in the payment order. 
 
 {% include alert.html type="informative" icon="info" body="If you implement 
 `UpdateOrder` you need to `refresh()` the 
