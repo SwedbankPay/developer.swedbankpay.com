@@ -1278,7 +1278,7 @@ the One-Click Payment functionality. You will need to ask the system to generate
 a `paymentToken` (with `generatePaymentToken` in a `Purchase` or `Verify`
 request) to be able to use this feature. You will also need to turn the 
 `Payment Order` into instrument mode (only show one instrument) 
-with the input parameter instrument.
+with the request parameter `instrument`.
 
 {% include settlement-reconciliation.md api_resource="paymentorders" %}
 
