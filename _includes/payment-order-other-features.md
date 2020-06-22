@@ -305,7 +305,7 @@ amount or there are added or removed order items in the payment order.
 **only if** it is performed asynchronously with AJAX or in another tab, so that 
 the new amount is shown to the end customer." %}
 
-If the page is alreasy refreshed, `refresh()` is not necessary. 
+If the page is refreshed by a full page reload, `refresh()` is not necessary. 
 
 In case the shopping cart is changed in another tab, that should also lead to an 
 `UpdateOrder`. On `window.onfocus` in the tab that had Payment Menu initialized,
