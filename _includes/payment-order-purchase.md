@@ -14,6 +14,7 @@ Content-Type: application/json
         "amount": 1500,
         "vatAmount": 375,
         "description": "Test Purchase",
+        "generatePaymentToken": true,
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "generateRecurrenceToken": false,
@@ -97,6 +98,91 @@ Content-Type: application/json
 }
 ```
 
+{:.code-header}
+**Response**
+
+```http
+POST /psp/paymentorders HTTP/1.1
+Host: {{ page.api_host }}
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+
+
+    "paymentOrder": {
+        "id": "/psp/paymentorders/{{ page.payment_order_id }}",
+        "paymentToken" : "{{ page.payment_token }}",
+        "created": "2020-06-22T10:56:56.2927632Z",
+        "updated": "2020-06-22T10:56:56.4035291Z",
+        "operation": "Purchase",
+        "state": "Ready",
+        "currency": "SEK",
+        "amount": 10000,
+        "vatAmount": 0,
+        "orderItems": {
+            "id": "/psp/paymentorders/{{ page.payment_order_id }}/orderitems"
+        },
+        "description": "test description",
+        "initiatingSystemUserAgent": "Mozilla/5.0",
+        "userAgent": "Mozilla/5.0",
+        "language": "sv-SE",
+        "urls": {
+            "id": "/psp/paymentorders/{{ page.payment_order_id }}/urls"
+        },
+        "payeeInfo": {
+            "id": "/psp/paymentorders/{{ page.payment_order_id }}/payeeInfo"
+        },
+        "payments": {
+            "id": "/psp/paymentorders/{{ page.payment_order_id }}/payments"
+        },
+        "currentPayment": {
+            "id": "/psp/paymentorders/{{ page.payment_order_id }}/currentpayment"
+        },
+        "items": [
+            {
+                "creditCard": {
+                    "cardBrands": [
+                        "Visa",
+                        "MasterCard"
+                    ]
+                }
+            }
+        ]
+    }
+    "operations": [
+        {
+            "method": "PATCH",
+            "href": "{{ page.front_end_url }}/paymentorders/{{ page.payment_order_id }}",
+            "rel": "update-paymentorder-updateorder",
+            "contentType": "application/json"
+        },
+        {
+            "method": "PATCH",
+            "href": "{{ page.api_url }}/paymentorders/{{ page.payment_order_id }}",
+            "rel": "update-paymentorder-abort",
+            "contentType": "application/json"
+        },
+        {
+            "method": "PATCH",
+            "href": "{{ page.front_end_url }}/paymentorders/{{ page.payment_order_id }}",
+            "rel": "update-paymentorder-expandinstrument",
+            "contentType": "application/json"
+        },
+        {
+            "method": "GET",
+            "href": "{{ page.front_end_url }}/paymentmenu/{{ page.payment_token }}",
+            "rel": "redirect-paymentorder",
+            "contentType": "text/html"
+        },
+        {
+            "method": "GET",
+            "href": "{{ page.front_end_url }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token={{ page.payment_token }}&culture=nb-NO",
+            "rel": "view-paymentorder",
+            "contentType": "application/javascript"
+        }
+    ]
+}
+```
+
 {:.table .table-striped}
 |     Required     | Field                             | Type         | Description                                                                                                                                                                                                                                                                                                                                                                                                   |
 | :--------------: | :-------------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -106,6 +192,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`amount`                  | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                                                                                                                                                                                                     |
 | {% icon check %} | └➔&nbsp;`vatAmount`               | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                                                                                                                                                                                                                  |
 | {% icon check %} | └➔&nbsp;`description`             | `string`     | The description of the payment order.                                                                                                                                                                                                                                                                                                                                                                         |
+| {% icon check %} | └➔&nbsp;`generatePaymentToken`    | `bool`       | `true` or `false`. Set this to `true` if you want to create a paymentToken for future use as [One Click Payments][one-click-payments].                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | {% icon check %} | └➔&nbsp;`userAgent`               | `string`     | The user agent of the payer.                                                                                                                                                                                                                                                                                                                                                                                  |
 | {% icon check %} | └➔&nbsp;`language`                | `string`     | The language of the payer.                                                                                                                                                                                                                                                                                                                                                                                    |
 | {% icon check %} | └➔&nbsp;`generateRecurrenceToken` | `bool`       | Determines if a recurrence token should be generated. A recurrence token is primarily used to enable future recurring payments - with the same token - through server-to-server calls. Default value is `false`.                                                                                                                                                                                              |
@@ -147,3 +234,30 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`amount`                 | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                                                                                                                                                                                                     |
 | {% icon check %} | └─➔&nbsp;`vatAmount`              | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                                                                                                                                                                                                                  |
 {% include risk-indicator-table.md %}
+
+{:.table .table-striped}
+| Field                    | Type         | Description                                                                                                                                                                                                               |
+| :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `paymentorder`           | `object`     | The payment order object.                                                                                                                                                                                                 |
+| └➔&nbsp;`id`             | `string`     | {% include field-description-id.md resource="paymentorder" %}                                                                                                                                                             |
+| └➔&nbsp;`paymentToken`   | `string`     | he payment token created for the purchase used in the authorization to create [One Click Payments][one-click-payments].                                                                                                   |
+| └➔&nbsp;`created`        | `string`     | The ISO-8601 date of when the payment order was created.                                                                                                                                                                  |
+| └➔&nbsp;`updated`        | `string`     | The ISO-8601 date of when the payment order was updated.                                                                                                                                                                  |
+| └➔&nbsp;`operation`      | `string`     | `Purchase`                                                                                                                                                                                                                |
+| └➔&nbsp;`state`          | `string`     | `Ready`, `Pending`, `Failed` or `Aborted`. Indicates the state of the payment order. Does not reflect the state of any ongoing payments initiated from the payment order. This field is only for status display purposes. |
+| └➔&nbsp;`currency`       | `string`     | The currency of the payment order.                                                                                                                                                                                        |
+| └➔&nbsp;`amount`         | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                 |
+| └➔&nbsp;`vatAmount`      | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                              |
+| └➔&nbsp;`description`    | `string(40)` | {% include field-description-description.md documentation_section="checkout" %}                                                                                                                                                          |
+| └➔&nbsp;`userAgent`      | `string`     | The [user agent][user-agent] string of the consumer's browser.                                                                                                                                                            |
+| └➔&nbsp;`language`       | `string`     | {% include field-description-language.md api_resource="paymentorders" %}                                                                                                                                                                                               |
+| └➔&nbsp;`urls`           | `string`     | The URI to the `urls` resource where all URIs related to the payment order can be retrieved.                                                                                                                              |
+| └➔&nbsp;`payeeInfo`      | `string`     | The URI to the `payeeinfo` resource where the information about the payee of the payment order can be retrieved.                                                                                                          |
+| └➔&nbsp;`payers`         | `string`     | The URI to the `payers` resource where information about the payee of the payment order can be retrieved.                                                                                                                 |
+| └➔&nbsp;`orderItems`     | `string`     | The URI to the `orderItems` resource where information about the order items can be retrieved.                                                                                                                            |
+| └➔&nbsp;`metadata`       | `string`     | The URI to the `payments` resource where information about all underlying payments can be retrieved.                                                                                                                      |
+| └➔&nbsp;`payments`       | `string`     | The URI to the `payments` resource where information about all underlying payments can be retrieved.                                                                                                                      |
+| └➔&nbsp;`currentPayment` | `string`     | The URI to the `currentPayment` resource where information about the current – and sole active – payment can be retrieved.                                                                                                |
+| └➔&nbsp;`operations`     | `array`      | The array of possible operations to perform, given the state of the payment order. [See Operations for details][operations].                                                                                              |
+
+[one-click-payments]: payment-menu/other-features.htmlone-click-payments
