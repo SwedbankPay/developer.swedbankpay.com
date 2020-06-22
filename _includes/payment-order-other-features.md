@@ -307,7 +307,7 @@ the new amount is shown to the payer." %}
 
 If the page is refreshed by a full page reload, `refresh()` is not necessary. 
 
-In case the shopping cart is changed in another tab, that should also lead to an 
+In case the shopping cart is changed in another browser tab, that should also lead to an 
 `UpdateOrder`. On `window.onfocus` in the tab that had Payment Menu initialized,
 `refresh()` should be invoked so the correct amount is authorized.
 
