@@ -1345,8 +1345,8 @@ elements. When in doubt, please follow the [robustness principle](https://en.wik
 [payment-resource-urls]: #urls-resource
 [payment-resource]: #payments-resource
 [one-click-payments]: /payment-menu/other-features#one-click-payments
-[split-settlement]: /payment-menu/other-features.html#split-settlement
-[settlement-and-reconciliation]: /payment-menu/other-features.html#settlement-and-reconciliation
+[split-settlement]: /payment-menu/other-features#split-settlement
+[settlement-and-reconciliation]: /payment-menu/other-features#settlement-and-reconciliation
 [transaction]: #transaction
 [urls]: #urls-resource
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
