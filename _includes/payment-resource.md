@@ -285,4 +285,3 @@ for the given operation.
 {% endcase %}
 
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
-[merchant-identified-payer]: /payment-menu/other-features#merchant-identified-payer
