@@ -13,7 +13,7 @@ The `paymentorders` resource and how you interact with it is described below.
 To create a payment order, you perform a `POST` request towards the
 `paymentorders` resource:
 
-{% include payment-order-purchase.md %}
+{% include payment-order-purchase.md documentation_section=documentation_section %}
 
 {% include description.md %}
 
@@ -856,6 +856,7 @@ Content-Type: application/json
     }
 }
 ```
+
 {:.table .table-striped}
 |     Required     | Field                             | Type         | Description                                                                                                                                                                                                                                                                                                                                                                                                   |
 | :--------------: | :-------------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -868,7 +869,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`generatePaymentToken`    | `bool`       | `true` or `false`. Set this to `true` if you want to create a paymentToken for future use as [One Click Payments][one-click-payments].                                                                                                                                                                                                                                                                                                        |
 | {% icon check %} | └➔&nbsp;`userAgent`               | `string`     | The user agent of the payer.                                                                                                                                                                                                                                                                                                                                                                                  |
 | {% icon check %} | └➔&nbsp;`language`                | `string`     | The language of the payer.                                                                                                                                                                                                                                                                                                                                                                                    |
-| {% icon check %} | └➔&nbsp;`generateRecurrenceToken` | `bool`       | Determines if a recurrence token should be generated. A recurrence token is primarily used to enable future [recurring payments][recur] - with the same token - through server-to-server calls. Default value is `true`.                                                                                                                                                                                              |
+| {% icon check %} | └➔&nbsp;`generateRecurrenceToken` | `bool`       | Determines if a recurrence token should be generated. A recurrence token is primarily used to enable future [recurring payments](/{{ documentation_section }}/other-features#recurring-payments) - with the same token - through server-to-server calls. Default value is `true`.                                                                                                                                                                                              |
 |                  | └➔&nbsp;`restrictedToInstruments` | `array`      | `CreditCard`, `Invoice`, `Vipps`, `Swish` and/or `CreditAccount`. `Invoice` supports the subtypes `PayExFinancingNo`, `PayExFinancingSe` and `PayMonthlyInvoiceSe`, separated by a dash, e.g.; `Invoice-PayExFinancingNo`. Limits the options available to the consumer in the payment menu. Default value is all supported payment instruments. Usage of this field requires an agreement with Swedbank Pay. |
 | {% icon check %} | └➔&nbsp;`urls`                    | `object`     | The `urls` object, containing the URLs relevant for the payment order.                                                                                                                                                                                                                                                                                                                                        |
 | {% icon check %} | └─➔&nbsp;`hostUrls`               | `array`      | The array of URIs valid for embedding of Swedbank Pay Hosted Views.                                                                                                                                                                                                                                                                                                                                           |
@@ -1392,7 +1393,6 @@ elements. When in doubt, please follow the [robustness principle](https://en.wik
 [one-click-payments]: /payment-menu/other-features#one-click-payments
 [split-settlement]: /payment-menu/other-features#split-settlement
 [settlement-and-reconciliation]: /payment-menu/other-features#settlement-and-reconciliation
-[recur]: /payment-menu/other-features#recurring-payments
 [transaction]: #transaction
 [urls]: #urls-resource
 [user-agent]: https://en.wikipedia.org/wiki/User_agent

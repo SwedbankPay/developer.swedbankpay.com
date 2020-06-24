@@ -39,7 +39,7 @@ for Credit Card Payments" %}
 
 ### Request
 
-{% include payment-order-purchase.md %}
+{% include payment-order-purchase.md documentation_section="checkout" %}
 
 ### Response
 
