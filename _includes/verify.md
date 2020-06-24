@@ -77,7 +77,7 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",
         "generatePaymentToken": true,
-        "generateRecurrenceToken": false,
+        "generateRecurrenceToken": true,
         "urls": {
             "hostUrls": ["https://example.com", "https://example.net"],
             "completeUrl": "https://example.com/payment-completed",
