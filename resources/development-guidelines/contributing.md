@@ -45,7 +45,7 @@ If you choose option 3 (forking the repository), then please read on.
 ## Making Changes
 
 *   Create a new [branch][branching] from where you want to base your work.
-    *   This is usually the `master` branch.
+    *   This is usually the `develop` branch.
     *   Please avoid working directly on the `master` branch.
 *   Make [commits][commit] of logical units in the new branch.
 *   Check for unnecessary whitespace with `git diff --check` before committing.
