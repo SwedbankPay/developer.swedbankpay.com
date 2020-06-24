@@ -1021,7 +1021,7 @@ Content-Type: application/json
 | └─➔&nbsp;`remainingCancelAmount`   | `integer`    | The available amount to cancel.                                                                                                                                                                  |
 | └─➔&nbsp;`remainingReversalAmount` | `integer`    | The available amount to reverse.                                                                                                                                                                 |
 | └➔&nbsp;`description`              | `string(40)` | {% include field-description-description.md documentation_section="checkout" %}                                                                                                                  |
-| └➔&nbsp;`payerReference`           | `string`     | The reference to the consumer from the merchant system, like mobile number, customer number etc. Used in [Merchant Identified Payer][merchant-identified-payer].                                                                                                                                                                                                |
+| └➔&nbsp;`payerReference`           | `string`     | {% include field-description-payer-reference.md documentation_section=documentation_section %}                                                                                                   |
 | └➔&nbsp;`userAgent`                | `string`     | The [user agent][user-agent] string of the consumer's browser.                                                                                                                                   |
 | └➔&nbsp;`language`                 | `string`     | {% include field-description-language.md api_resource="paymentorders" %}                                                                                                                         |
 
@@ -1269,7 +1269,8 @@ The structure of a problem message will look like this:
 
 {% include merchant-authenticated-consumer.md %}
 
-{% include merchant-identified-payer.md %}
+{% include merchant-identified-payer.md documentation_section="checkout"%}
+
 
 ## One-Click Payments
 
@@ -1307,7 +1308,6 @@ elements. When in doubt, please follow the [robustness principle](https://en.wik
 [http-api-problems]: https://tools.ietf.org/html/rfc7807
 [image_disabled_payment_menu]: /assets/img/checkout/test-purchase.png
 [image_enabled_payment_menu]: /assets/img/checkout/guest-payment-menu-450x850.png
-[merchant-identified-payer]: /payment-menu/other-features#merchant-identified-payer
 [payee-reference]: /payment-menu/other-features#payee-reference
 [payment-menu-front-end]: /payment-menu/payment-order#step-2-display-the-payment-menu
 [payment-order-capture]: /payment-menu/capture
