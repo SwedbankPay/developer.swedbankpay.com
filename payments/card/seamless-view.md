@@ -100,7 +100,7 @@ embedded on your website.
 {:.code-header}
 **JavaScript**
 
-```js
+```html
 <script language="javascript">
     payex.hostedView.creditCard({
         // The container specifies which id the script will look for to host the
@@ -127,7 +127,7 @@ is raised with the following event argument object:
 | Field        | Type     | Description                           |
 | :----------- | :------- | :------------------------------------ |
 | `id`         | `string` | {% include field-description-id.md %} |
-| `instrument` | `string` | `Creditcard`                          |
+| `instrument` | `string` | `creditcard`                          |
 
 ## Purchase Flow
 

@@ -46,7 +46,7 @@ object:
 ```js
 {
     "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
-    "redirectUrl": "https://en.wikipedia.org/wiki/Success"
+    "redirectUrl": "https://example.com/complete"
 }
 ```
 
@@ -68,7 +68,7 @@ object:
 ```js
 {
     "id": "/psp/{{ api_resource }}payments/{{ page.payment_id }}",
-    "redirectUrl": "https://en.wikipedia.org/wiki/Canceled"
+    "redirectUrl": "https://example.com/canceled"
 }
 ```
 
@@ -90,7 +90,7 @@ event argument object:
 ```js
 {
     "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
-    "redirectUrl": "https://en.wikipedia.org/wiki/Failed"
+    "redirectUrl": "https://example.com/failed"
 }
 ```
 
@@ -112,7 +112,7 @@ argument object:
 ```js
 {
     "origin": "owner",
-    "openUrl": "https://example.org/terms.html"
+    "openUrl": "https://example.com/terms-of-service"
 }
 ```
 
@@ -216,5 +216,25 @@ object:
 | :-------- | :------- | :-------------------------------------------------- |
 | `id`      | `string` | {% include field-description-id.md %}               |
 | `details` | `string` | A human readable and descriptive text of the error. |
+
+### `onExternalRedirect`
+
+This event triggers when a user is redirected to a separate web page, for
+example 3-D Secure or Bank ID signing. The `onExternalRedirect` event is raised
+with the following event argument object:
+
+{:.code-header}
+**`onExternalRedirect` event object**
+
+```js
+{
+    "redirectUrl": "https://external.example.com/"
+}
+```
+
+{:.table .table-striped}
+| Field         | Type     | Description                                                                         |
+| :------------ | :------- | :---------------------------------------------------------------------------------- |
+| `redirectUrl` | `string` | The URI the user will be redirected to when a third party requires additional data. |
 
 {% endif %}
