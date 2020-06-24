@@ -210,8 +210,8 @@ object:
 ```
 
 {:.table .table-striped}
-| Field         | Type     | Description                                                     |
-| :------------ | :------- | :-------------------------------------------------------------- |
-| `redirectUrl` | `string` | The URI the user will be redirected to when a third party requires additional data. |
+| Field         | Type     | Description                                                                         |
+ | :------------ | :------- | :---------------------------------------------------------------------------------- |
+ | `redirectUrl` | `string` | The URI the user will be redirected to when a third party requires additional data. |
 
 {% endif %}
