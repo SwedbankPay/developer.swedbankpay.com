@@ -194,4 +194,24 @@ object:
 | `id`      | `string` | {% include field-description-id.md %}               |
 | `details` | `string` | A human readable and descriptive text of the error. |
 
+### `onExternalRedirect`
+
+This event triggers when a user is redirected to a separate web page, for example 3DSecure or BankID signing.
+The `onExternalRedirect` event is raised with the following event argument
+object:
+
+{:.code-header}
+**`onExternalRedirect` event object**
+
+```js
+{
+    "redirectUrl": "https://en.wikipedia.org/wiki/Redirect"
+}
+```
+
+{:.table .table-striped}
+| Field         | Type     | Description                                                     |
+| :------------ | :------- | :-------------------------------------------------------------- |
+| `redirectUrl` | `string` | The URI the user will be redirected to when a third party requires additional data. |
+
 {% endif %}
