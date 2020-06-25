@@ -1,3 +1,5 @@
+{% assign documentation_section = include.documentation_section %}
+
 {:.code-header}
 **Request**
 
