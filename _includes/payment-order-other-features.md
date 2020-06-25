@@ -200,8 +200,8 @@ Content-Type: application/json
         "operation": "Purchase",
         "state": "Ready",
         "currency": "SEK",
-        "amount": 10000,
-        "vatAmount": 0,
+        "amount": 1500,
+        "vatAmount": 375,
         "orderItems": {
             "id": "/psp/paymentorders/{{ page.payment_order_id }}/orderitems"
         }
