@@ -13,7 +13,7 @@ The `paymentorders` resource and how you interact with it is described below.
 To create a payment order, you perform a `POST` request towards the
 `paymentorders` resource:
 
-{% include payment-order-purchase.md documentation_section=documentation_section %}
+{% include payment-order-purchase.md documentation_section=local_documentation_section %}
 
 {% include description.md %}
 
@@ -292,16 +292,16 @@ The `view-paymentorder` operation contains the URI of the JavaScript that needs 
 ### Update Order
 
 The `UpdateOrder` operation is used when there is a change in the amount, vat
-amount or there are added or removed order items in the payment order. 
+amount or there are added or removed order items in the payment order.
 
-{% include alert.html type="informative" icon="info" body="If you implement 
+{% include alert.html type="informative" icon="info" body="If you implement
 `UpdateOrder` you need to `refresh()` the Payment Menu frontend
-if the payment order is updated asynchronously with AJAX or in another browser tab, so that 
+if the payment order is updated asynchronously with AJAX or in another browser tab, so that
 the new amount is shown to the payer." %}
 
-If the page is refreshed by a full page reload, `refresh()` is not necessary. 
+If the page is refreshed by a full page reload, `refresh()` is not necessary.
 
-In case the shopping cart is changed in another browser tab, that should also lead to an 
+In case the shopping cart is changed in another browser tab, that should also lead to an
 `UpdateOrder`. On `window.onfocus` in the tab that had Payment Menu initialized,
 `refresh()` should be invoked so the correct amount is authorized.
 
@@ -374,7 +374,7 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`quantity`            | `integer`    | The 4 decimal precision quantity of order items being purchased.                                                                                                                                                                                                                      |
 | {% icon check %} | └─➔&nbsp;`quantityUnit`        | `string`     | The unit of the quantity, such as `pcs`, `grams`, or similar. This is a free-text field and is used for your own book keeping.                                                                                                                                                        |
 | {% icon check %} | └─➔&nbsp;`unitPrice`           | `integer`    | The price per unit of order item, including VAT.                                                                                                                                                                                                                                      |
-| {% icon check %} | └─➔&nbsp;`discountPrice`       | `integer`    | If the order item is purchased at a discounted price. This field should contain that price, including VAT.                                                                                                                                                                     
+| {% icon check %} | └─➔&nbsp;`discountPrice`       | `integer`    | If the order item is purchased at a discounted price. This field should contain that price, including VAT.
 | {% icon check %} | └─➔&nbsp;`vatPercent`          | `integer`    | The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.                                                                                                                                                                                                              |
 | {% icon check %} | └─➔&nbsp;`amount`              | `integer`    | The total amount including VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `500`0 equals `50.00 NOK`.                                                                                 |
 | {% icon check %} | └─➔&nbsp;`vatAmount`           | `integer`    | The total amount of VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `500`0 equals `50.00 NOK`.                                                                                        |
@@ -476,7 +476,7 @@ Content-Type: application/json
 The response given when changing a payment order is equivalent to a `GET`
 request towards the `paymentorders` resource,
 [as displayed above][payment-orders-resource]. Even though the fields are the
-same, the `UpdateOrder` request will overwrite the fields thart were sent in 
+same, the `UpdateOrder` request will overwrite the fields thart were sent in
 the initial `Purchase` request.
 
 ### Abort
@@ -685,10 +685,10 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`language`            | `string`     | {% include field-description-language.md api_resource="paymentorders" %}                                                                                                                                                                                                                                           |
 | {% icon check %} | └─➔&nbsp;`urls`                | `string`     | {he URI to the `urls` resource where all URIs related to the payment order can be retrieved.                                                                                                                                                                                                                                           |
 | {% icon check %} | └─➔&nbsp;`callbackUrl`         | `string`      | The URL that Swedbank Pay will perform an HTTP `POST` against every time a transaction is created on the payment. See [callback][callback-reference] for details.                                                                                                                                                                                                                                                                                                                               |
-| {% icon check %} | └➔&nbsp;`payeeInfo`            | `string`      | The `payeeInfo` object, containing information about the payee (the recipient of the money).                                                                                                                                                   
+| {% icon check %} | └➔&nbsp;`payeeInfo`            | `string`      | The `payeeInfo` object, containing information about the payee (the recipient of the money).
 |
 | {% icon check %} | └─➔&nbsp;`payeeId`             | `string`      | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                                                                                                                                                                                           |
-| {% icon check %} | └➔&nbsp;`payeeReference`       | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [`payeeReference`][payee-reference] for details. In Invoice Payments `payeereference` is used as an invoice/receipt number.                 
+| {% icon check %} | └➔&nbsp;`payeeReference`       | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [`payeeReference`][payee-reference] for details. In Invoice Payments `payeereference` is used as an invoice/receipt number.
 |
 | {% icon check %} | └─➔&nbsp;`payeeName`           | `string`      | The payee name (like merchant name) that will be displayed to consumer when redirected to Swedbank Pay.                                                                                                                                                                                                                                                                                                              |
 | {% icon check %} | └─➔&nbsp;`productCategory`     | `string`      | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                                                                                                                                           |
@@ -710,8 +710,7 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`amount`              | `integer`    | The total amount including VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 SEK` and `5000` equals `50.00 SEK`.                                                                                 |
 | {% icon check %} | └─➔&nbsp;`vatAmount`           | `integer`    | The total amount of VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 SEK` and `5000` equals `50.00 SEK`.                                                                                        |
 
-
-### Purchase Flow 
+### Purchase Flow
 
 ```mermaid
 sequenceDiagram
@@ -869,7 +868,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`generatePaymentToken`    | `bool`       | `true` or `false`. Set this to `true` if you want to create a paymentToken for future use as [One Click Payments][one-click-payments].                                                                                                                                                                                                                                                                                                        |
 | {% icon check %} | └➔&nbsp;`userAgent`               | `string`     | The user agent of the payer.                                                                                                                                                                                                                                                                                                                                                                                  |
 | {% icon check %} | └➔&nbsp;`language`                | `string`     | The language of the payer.                                                                                                                                                                                                                                                                                                                                                                                    |
-| {% icon check %} | └➔&nbsp;`generateRecurrenceToken` | `bool`       | Determines whether a recurrence token should be generated. A recurrence token is primarily used to enable future [recurring payments](/{{ documentation_section }}/other-features#recurring-payments) – with the same token – through server-to-server calls. Default value is `true`.                                                                                                                                                                                              |
+| {% icon check %} | └➔&nbsp;`generateRecurrenceToken` | `bool`       | Determines whether a recurrence token should be generated. A recurrence token is primarily used to enable future [recurring payments](/{{ local_documentation_section }}/other-features#recurring-payments) – with the same token – through server-to-server calls. Default value is `true`.                                                                                                                                                                                              |
 |                  | └➔&nbsp;`restrictedToInstruments` | `array`      | `CreditCard`, `Invoice`, `Vipps`, `Swish` and/or `CreditAccount`. `Invoice` supports the subtypes `PayExFinancingNo`, `PayExFinancingSe` and `PayMonthlyInvoiceSe`, separated by a dash, e.g.; `Invoice-PayExFinancingNo`. Limits the options available to the consumer in the payment menu. Default value is all supported payment instruments. Usage of this field requires an agreement with Swedbank Pay. |
 | {% icon check %} | └➔&nbsp;`urls`                    | `object`     | The `urls` object, containing the URLs relevant for the payment order.                                                                                                                                                                                                                                                                                                                                        |
 | {% icon check %} | └─➔&nbsp;`hostUrls`               | `array`      | The array of URIs valid for embedding of Swedbank Pay Hosted Views.                                                                                                                                                                                                                                                                                                                                           |
@@ -885,7 +884,6 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`productCategory`        | `string`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                                                                                                                                |
 |                  | └─➔&nbsp;`orderReference`         | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                                                                                                                       |
 |                  | └─➔&nbsp;`subsite`                | `String(40)` | The subsite field can be used to perform [split settlement][split-settlement] on the payment. The subsites must be resolved with Swedbank Pay [reconciliation][settlement-and-reconciliation] before being used.                                                                                                                                                                                              |
-
 
 {:.code-header}
 **Response**
@@ -944,6 +942,7 @@ Content-Type: application/json
     ]
 }
 ```
+
 {:.table .table-striped}
 | Field                               | Data type    | Description                                                                                                                                                                                      |
 | :---------------------------------- | :----------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -965,7 +964,6 @@ Content-Type: application/json
 | └➔&nbsp;`urls`                      | `string`     | The URI to the `urls` resource where all URIs related to the payment can be retrieved.                                                                                                           |
 | └➔&nbsp;`payeeInfo`                 | `string`     | The URI to the `payeeinfo` resource where the information about the payee of the payment can be retrieved.                          |
 | └➔&nbsp;`operations`                 | `array`      | The array of possible operations to perform, given the state of the payment order. [See Operations for details][operations].                                                                                              |
-
 
 ## Payments Resource
 
@@ -1290,13 +1288,12 @@ Triggered when a consumer has been identified
   "url":"/psp/consumers/{{ page.payment_token }}/billing-details"
 }
 ```
+
 {% endif  %}
 
 ### `onError`
 
 Triggered on terminal errors, and when the configuration fails validation.
-
-
 
 {% include callback-reference.md payment_order=true api_resource="paymentorders" %}
 
@@ -1349,13 +1346,13 @@ The structure of a problem message will look like this:
 
 ## One-Click Payments
 
-One-Click Payments should be used if you want to present your own Payment Menu 
-in all channels you want to support. This means that if you are both on the 
-web and in-app you will need to build your own payment menu to be able to use 
+One-Click Payments should be used if you want to present your own Payment Menu
+in all channels you want to support. This means that if you are both on the
+web and in-app you will need to build your own payment menu to be able to use
 the One-Click Payment functionality. You will need to ask the system to generate
 a `paymentToken` (with `generatePaymentToken` in a `Purchase` or `Verify`
-request) to be able to use this feature. You will also need to turn the 
-`Payment Order` into instrument mode (only show one instrument) 
+request) to be able to use this feature. You will also need to turn the
+`Payment Order` into instrument mode (only show one instrument)
 with the request parameter `instrument`.
 
 {% include settlement-reconciliation.md api_resource="paymentorders" %}
