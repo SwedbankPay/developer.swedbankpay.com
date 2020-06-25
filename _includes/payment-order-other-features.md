@@ -142,6 +142,13 @@ Common sub-resources like [payeeinfo][payee-reference], that are
 structurally identical for both payments and payments orders, are described in
 the [Payment Resources][payment-resource] section.
 
+## Instrument Mode
+
+You will have the possibility to use the `PaymentOrder` API but instead of 
+getting a menu with all instrument setup on your account, you will be able to 
+decide for each payment which instrument to show. 
+This is possible by using the request field `instrument`.
+
 ## Operations
 
 When a payment order resource is created and during its lifetime, it will have
