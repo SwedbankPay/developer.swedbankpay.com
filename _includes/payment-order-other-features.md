@@ -1097,7 +1097,8 @@ Content-Type: application/json
 | └─➔&nbsp;`remainingCancelAmount`   | `integer`    | The available amount to cancel.                                                                                                                                                                  |
 | └─➔&nbsp;`remainingReversalAmount` | `integer`    | The available amount to reverse.                                                                                                                                                                 |
 | └➔&nbsp;`description`              | `string(40)` | {% include field-description-description.md documentation_section="checkout" %}                                                                                                                  |
-| └➔&nbsp;`payerReference`           | `string`     | The reference to the consumer from the merchant system, like mobile number, customer number etc.                                                                                                 |
+| └➔&nbsp;`payerReference`           | `string`     | The reference to the consumer from the merchant system, like mobile number,
+customer number etc. Used in [Merchant Identified Payer](/{{ documentation_section }}/other-features#merchant-identified-payer).                                                                                                                       |
 | └➔&nbsp;`userAgent`                | `string`     | The [user agent][user-agent] string of the consumer's browser.                                                                                                                                   |
 | └➔&nbsp;`language`                 | `string`     | {% include field-description-language.md api_resource="paymentorders" %}                                                                                                                         |
 
@@ -1343,6 +1344,9 @@ The structure of a problem message will look like this:
 {% include payee-info.md api_resource="paymentorders" %}
 
 {% include merchant-authenticated-consumer.md %}
+
+{% include merchant-identified-payer.md documentation_section="checkout"%}
+
 
 ## One-Click Payments
 
