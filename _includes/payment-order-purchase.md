@@ -19,6 +19,7 @@ Content-Type: application/json
         "generatePaymentToken": true,
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
+        "instrument": "CreditCard"
         "generateRecurrenceToken": true,
         "restrictedToInstruments": ["CreditCard", "Invoice"],
         "urls": {
