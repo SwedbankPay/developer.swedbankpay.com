@@ -15,3 +15,4 @@ different payment tokens (`paymentToken` or `recurrenceToken`) linked to the
 specific `payerReference`. You should always look up this information for 
 each payment as the payer can have added new payment information through the a 
 web interface since the last time the app was used.
+
