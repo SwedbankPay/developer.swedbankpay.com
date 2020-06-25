@@ -142,6 +142,74 @@ Common sub-resources like [payeeinfo][payee-reference], that are
 structurally identical for both payments and payments orders, are described in
 the [Payment Resources][payment-resource] section.
 
+## Instrument Mode
+
+In "Instrument Mode" the Payment Menu will display only one specific payment
+instrument instead of all configured on your merchant account. The Payment Order
+resource works just like it otherwise would, allowing you to remain largely
+indifferent to the payment instrument in use.
+
+The Payment Menu is switched to "Instrument Mode" by providing the request field
+`instrument` as described in the abbreviated example below. 
+
+{:.code-header}
+**Request**
+
+```http
+POST /psp/paymentorders HTTP/1.1
+Host: {{ page.api_host }}
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+
+{
+    "paymentorder": {
+        "operation": "Purchase",
+        "currency": "SEK",
+        "amount": 1500,
+        "vatAmount": 375,
+        "description": "Test Purchase",
+        "generatePaymentToken": true,
+        "userAgent": "Mozilla/5.0...",
+        "language": "sv-SE",
+        "instrument": "CreditCard"
+        "generateRecurrenceToken": true,
+        "restrictedToInstruments": ["CreditCard", "Invoice"],
+        "urls": {
+            "hostUrls": [ "https://example.com", "https://example.net" ],
+        }
+    }
+}
+```
+
+{:.code-header}
+**Response**
+
+```http
+POST /psp/paymentorders HTTP/1.1
+Host: {{ page.api_host }}
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+
+{
+    "paymentOrder": {
+        "id": "/psp/paymentorders/{{ page.payment_order_id }}",
+        "instrument": "CreditCard"
+        "paymentToken" : "{{ page.payment_token }}",
+        "created": "2020-06-22T10:56:56.2927632Z",
+        "updated": "2020-06-22T10:56:56.4035291Z",
+        "operation": "Purchase",
+        "state": "Ready",
+        "currency": "SEK",
+        "amount": 1500,
+        "vatAmount": 375,
+        "orderItems": {
+            "id": "/psp/paymentorders/{{ page.payment_order_id }}/orderitems"
+        }
+    }
+}    
+```
+
+
 ## Operations
 
 When a payment order resource is created and during its lifetime, it will have
