@@ -148,6 +148,7 @@ In "Instrument Mode" the Payment Menu will display only one specific payment
 instrument instead of all configured on your merchant account. The Payment Order
 resource works just like it otherwise would, allowing you to remain largely
 indifferent to the payment instrument in use.
+
 The Payment Menu is switched to "Instrument Mode" by providing the request field
 `instrument` as described in the abbreviated example below. 
 
