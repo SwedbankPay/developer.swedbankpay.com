@@ -462,7 +462,6 @@ Your implementation is encouraged to define its own problem types for any domain
 
 [swagger]: https://github.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant/blob/master/documentation/swedbankpaysdk_openapi.yaml
 [swagger-editor]: https://editor.swagger.io/?url=https://raw.githubusercontent.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant/master/documentation/swedbankpaysdk_openapi.yaml
-[advanced]: advanced
 [payment-url]: /checkout/payment-menu#payment-url
 [initiate-consumer-session]: /checkout/checkin#step-1-initiate-session-for-consumer-identification
 [create-payment-order]: /checkout/payment-menu#step-3-create-payment-order
