@@ -109,7 +109,7 @@ see which problem and the `description` of the problem with the corresponding er
 **Request**
 
 ```http
-GET /psp/{{ api_resource }}/payments/{{ site.payment_id }}/paid HTTP/1.1
+GET /psp/{{ api_resource }}/payments/{{ site.payment_id }}/failed HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
