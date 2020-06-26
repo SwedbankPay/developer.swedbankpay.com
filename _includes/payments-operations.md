@@ -116,9 +116,26 @@ Content-Type: application/json
 The `failed-payment` operation means that something went wrong during the 
 payment process, the transaction was not authorized, and no further transactions
 can be created if the payment is in this state.
-Under `details` you can see the problem message and under `problems` you can 
-see which problem and the `description` of the problem with the corresponding errorcode.
- 
+
+A `failed-payment` operation looks like the following:
+
+```json
+{
+   "href": "{{ site.api_url }}/psp/{{ api_resource }}/payments/{{ site.payment_id }}/failed",
+   "rel": "failed-payment",
+   "method": "GET",
+   "contentType": "application/problem+json"
+}
+```
+
+To inspect why the payment failed, you need to perform an HTTP `GET` request
+towards the operation's `href` field.
+
+Under `details` you can see the problem message and under `problems` you can
+see which problem and the `description` of the problem with the corresponding
+error code.
+
+An example of how the request and response look like is given below.
 
 {:.code-header}
 **Request**
