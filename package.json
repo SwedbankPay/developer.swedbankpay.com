@@ -34,7 +34,7 @@
     "remark-lint-no-auto-link-without-protocol": "^1.0.0",
     "remark-lint-no-blockquote-without-marker": "^3.0.0",
     "remark-lint-no-consecutive-blank-lines": "^1.0.0",
-    "remark-lint-no-duplicate-definitions": "^1.0.0",
+    "remark-lint-no-duplicate-definitions": "^2.0.0",
     "remark-lint-no-duplicate-headings": "^1.0.0",
     "remark-lint-no-emphasis-as-heading": "^1.0.0",
     "remark-lint-no-empty-sections": "^4.0.0",
