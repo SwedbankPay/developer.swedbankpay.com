@@ -88,7 +88,7 @@ To test a logged in user in the Demo Shop, please use the following test data:
 {:.table .table-striped}
 | Card number       | Expiry                  | CVC   | Type of test data |
 | :---------------- | :---------------------- | :---- | :---------------- |
-| `377601000000000` | After the current month | `525` | Amex & loopback   |
+| `377601000000000` | After the current month | `5252` | Amex & loopback   |
 
 ### JCB
 
