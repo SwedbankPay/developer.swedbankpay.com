@@ -210,7 +210,7 @@ Note that there is an [argument][dokka-payfrag-argbuilder-usebrowser] for debugg
 [checkin-paymentorder]: /checkout/payment-menu#step-3-create-payment-order
 [dokka-paymentorderurls-init]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-payment-order-urls/-init-.md
 [dokka-activity-paymentvm]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/androidx.fragment.app.-fragment-activity/payment-view-model.md
-[backend-payment-orders]: merchant-backend#payment-orders
+[backend-payment-orders]: merchant-backend#payment-orders-endpoint
 [rfc-7807]: https://tools.ietf.org/html/rfc7807
 [swedbankpay-problems]: /home/technical-information#problems
 [backend-problems]: merchant-backend#problems

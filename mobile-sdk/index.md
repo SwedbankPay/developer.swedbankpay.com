@@ -8,7 +8,7 @@ sidebar:
       title: Introduction
     - url: /mobile-sdk/merchant-backend
       title: Merchant Backend
-    - url: /mobile-sdk/merchant-backend-setup
+    - url: /mobile-sdk/merchant-backend-samples
       title: Merchant Backend Sample Code
     - url: /mobile-sdk/android
       title: Android

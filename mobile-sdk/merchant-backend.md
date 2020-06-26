@@ -26,7 +26,7 @@ body=disclaimer %}
 
 {% include jumbotron.html body="To use the **Swedbank Pay Mobile SDK**, you must have a backend server hosting the Mobile SDK API." %}
 
-The Mobile SDK Merchant Backend API contains a total of five endpoints, three of which have statically defined paths (though only one is actually required to; see [Advanced Configuration][advanced]). An OpenAPI specification is [available][swagger]. (It may be easier to view it in the [Swagger Editor][swagger-editor].)
+The Mobile SDK Merchant Backend API contains a total of five endpoints, three of which have statically defined paths. An OpenAPI specification is [available][swagger]. (It may be easier to view it in the [Swagger Editor][swagger-editor].)
 
 The main part of the API is designed as a transparent wrapper around the Swedbank Pay API, which is the same one used in Checkout. Additionally, two "helper" endpoints are specified, which facilitate the proper routing of the [Payment Url][payment-url] back to the originating app.
 
