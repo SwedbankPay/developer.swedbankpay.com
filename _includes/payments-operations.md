@@ -160,6 +160,21 @@ The `aborted-payment` operation means that the merchant has aborted the payment
 before the end user has fulfilled the payment process. You can see this under
 `abortReason` in the response.
 
+An `aborted-payment` operation looks like the following:
+
+```json
+{
+    "href": "{{ site.api_url }}/psp/creditcard/payments/<paymentId>/aborted",
+    "rel": "aborted-payment",
+    "method": "GET",
+    "contentType": "application/json"
+}
+```
+
+To inspect why the payment was aborted, you need to perform an HTTP `GET`
+request towards the operation's `href` field. An example of how the request and
+response looks like is given below.
+
 {:.code-header}
 **Request**
 
