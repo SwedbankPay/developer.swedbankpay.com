@@ -5,10 +5,10 @@ and that the payment is completed. Under `details` you can see which card was
 used to complete the payment. 
 
 {:.code-header}
-**Response**
+**Request**
 
 ```http
-GET /psp/creditcard/payments/{{ site.payment_id }}/paid HTTP/1.1
+GET /psp/{{ api_resource }}/payments/{{ site.payment_id }}/paid HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -95,3 +95,77 @@ Content-Type: application/json
 | └─➔&nbsp;`acquirerTransactionTime`| `string`  | The ISO-8601 date and time of the acquirer transaction.                                                                                                                                                      |
 | └─➔&nbsp;`nonPaymentToken`        | `string`  |  Result of our own tokenization of the card used. Activated in POS on merchant or merchant group.                                                                                                            |
 | └─➔&nbsp;`externalNonPaymentToken`| `string`  | Result of external tokenization. This value varies depending on cards, acquirer, customer, etc. For ICA cards, the token comes in response from Swedbank. For Mass Transit(SL) it is populated with PAR if it comes in response from the redeemer (Visa). If not, our own token (Mastercard / Amex).                                                                                                                                                      |
+
+### Operation `failed-payment`
+
+The `failed-payment` operation means that something went wrong during the 
+payment process, the transaction was not authorized, and no further transactions
+can be created if the payment is in this state.
+Under `details` you can see the problem message and under `problems` you can 
+see which problem and the `description` of the problem with the corresponding errorcode.
+ 
+
+{:.code-header}
+**Request**
+
+```http
+GET /psp/{{ api_resource }}/payments/{{ site.payment_id }}/paid HTTP/1.1
+Host: {{ page.api_host }}
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+```
+
+{:.code-header}
+**Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+   "problem": {
+       "type": "https://api.payex.com/psp/errordetail/{{ api_resource }}/acquirererror",
+       "title": "Operation failed",
+       "status": 403,
+       "detail": "Unable to complete Authorization transaction, look at problem node!",
+       "problems": [
+        {
+          "name": "ExternalResponse",
+          "description": "REJECTED_BY_ACQUIRER-unknown error, response-code: 51"
+        }
+        ]
+     }
+  }
+}
+```
+
+### Operation `aborted-payment`
+
+The `aborted-payment` operation means that the merchant has aborted the payment 
+before the end user has fulfilled the payment process. You can see this under
+`abortReason` in the response.
+
+{:.code-header}
+**Request**
+
+```http
+GET /psp/{{ api_resource }}/payments/{{ site.payment_id }}/paid HTTP/1.1
+Host: {{ page.api_host }}
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+```
+
+{:.code-header}
+**Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "payment": "/psp/{{ api_resource }}/payments/{{ site.payment_id }}",
+  "aborted": {
+    "abortReason": "Aborted by consumer"
+  }
+}
+```

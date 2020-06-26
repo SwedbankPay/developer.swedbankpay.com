@@ -169,6 +169,12 @@ Content-Type: application/json
             "rel": "create-capture",
             "contentType": "application/json"
         },
+        { 
+            "method": "GET",
+            "href": "{{ page.api_url }}/psp/{{ api_resource }}/payments/{{ page.payment_id }}/aborted",
+            "rel": "aborted-payment",
+            "contentType": "application/json"
+        },
         {
             "method": "GET",
             "href": "{{ page.api_url }}/psp/{{ api_resource }}/{{ page.payment_id }}/paid",
