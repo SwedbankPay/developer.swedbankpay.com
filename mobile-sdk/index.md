@@ -110,8 +110,7 @@ sequenceDiagram
     end
 ```
 
-
-* ① The payment process may navigate to 3rd party web pages. This is glossed over in this diagram, but the process and its implications are discussed further in the next pages.
+*   ① The payment process may navigate to 3rd party web pages. This is glossed over in this diagram, but the process and its implications are discussed further in the next pages.
 
 ### The Checkin Flow
 
@@ -126,4 +125,3 @@ Internally, the SDK uses the same [Checkin][checkin] flow as would be used on a 
 [checkin]: /checkout/checkin
 [payment-menu]: /checkout/payment-menu
 [after-payment-capture]: /checkout/capture
-

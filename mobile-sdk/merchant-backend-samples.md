@@ -28,8 +28,8 @@ body=disclaimer %}
 
 You can find sample implementations of the Merchant Backend at [this Github repository][backend-samples]. Currently there are available the following:
 
-* [node.js][node-sample]
-* [Java][java-sample]
+*   [node.js][node-sample]
+*   [Java][java-sample]
 
 Please refer to the sample code documentation for instructions for running a local development server, and/or deploying to selected cloud services. Do note that if you are running a local server over http, you will need to allow insecure communications in the mobile application; otherwise any payments will immediately fail due to a security error.
 

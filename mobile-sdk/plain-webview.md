@@ -17,4 +17,3 @@ sidebar:
 ---
 
 {% include jumbotron.html body="The **Swedbank Pay Mobile SDK** aims to provide an easy way of integrating Swedbank Pay Checkout into a mobile application. It is, however, an opinionated library, and in particular is has no support for Swedbank Pay Payments at this point. Experience from developing the SDK may, however be valuable for integrators wishing to show Payments pages in a Web View inside a mobile application. This page serves as a repository of that experience." %}
-

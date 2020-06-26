@@ -177,7 +177,7 @@ Content-Type: application/json
 | :--------------: | :------------- | :------- | :----------------------------------------------------------- |
 | {% icon check %} | `paymentorder` | `object` | The payment order to create                                  |
 
-* ① The contents of `paymentorder` are omitted here. See [Checkout Documentation](create-payment-order) for details.
+*   ① The contents of `paymentorder` are omitted here. See [Checkout Documentation][create-payment-order] for details.
 
 At this point, the Merchant Backend will preform necessary processing, and make a corresponding request to the Swedbank Pay API, using its secret access token.
 
@@ -264,8 +264,8 @@ HTTP/1.1 301 Moved Permanently ①
 Location: intent://example.com/swedbank-pay-mobile/sdk-callback/android-intent?package=your.ecom.app&id=abb50c53-53c1-4138-923f-59fcf0acd08d#Intent;scheme=https;action=com.swedbankpay.mobilesdk.VIEW_PAYMENTORDER;package=your.ecom.app;end; ②
 ```
 
-* ① 302 Found is perhaps a more appropriate status. This may be changed in the future, after testing that the routing works correctly with that status.
-* ② The `intent` url is transformed to an Android Intent using the data after the `#Intent;` token. The uri of that intent is the intent url up to that token, with the `intent` scheme replaced according to the `scheme=` parameter – in this case `https`.
+*   ① 302 Found is perhaps a more appropriate status. This may be changed in the future, after testing that the routing works correctly with that status.
+*   ② The `intent` url is transformed to an Android Intent using the data after the `#Intent;` token. The uri of that intent is the intent url up to that token, with the `intent` scheme replaced according to the `scheme=` parameter – in this case `https`.
 
 Using a payment url crafted this way causes an intent with the payment url to be delivered to the application when a third-party page navigates to the payment url. The SDK receives this intent, recognizes the payment url, and reloads the payment menu.
 
@@ -285,8 +285,8 @@ In order to have a foolproof system with optimal user experience, we must theref
 
 1.  The initial navigation to the payment url is opened in the application: no requirements for the payment url
 2.  The initial navigation to the payment url is opened in Safari: need a way to link back to the payment url such that it is opened in the application instead
-    * 2a: The second navigation to the payment url is opened in the application: no further requirements for the payment url
-    * 2b: The second navigation to the payment url is also opened in Safari: out of nice-UX options; need to redirect to a custom scheme url
+    *   2a: The second navigation to the payment url is opened in the application: no further requirements for the payment url
+    *   2b: The second navigation to the payment url is also opened in Safari: out of nice-UX options; need to redirect to a custom scheme url
 
 This state of matters necessitates an unintuitive and cumbersome system involving two hosts and a custom url scheme. The usage of two hosts is unavoidable if maximum compatibility combined with optimum user experience is desired. The custom url scheme is unavoidable if an escape hatch in badly behaving scenarios is desired. However, universal links need be configured only to one of the involved hosts, namely the one hosting the payment url. Thus, the page with a link back to the payment url can be on a generic server hosted by Swedbank Pay. \[Development note: the Swedbank Pay server for this purpose is not yet publicly available.\]
 
@@ -294,13 +294,13 @@ This state of matters necessitates an unintuitive and cumbersome system involvin
 
 The iOS payment url helper endpoint expects the following query parameters:
 
-* `scheme`: The custom scheme for Swedbank Pay SDK payment urls in the application
-* `language`: The language to use in the back-link web page in the case 2 above
+*   `scheme`: The custom scheme for Swedbank Pay SDK payment urls in the application
+*   `language`: The language to use in the back-link web page in the case 2 above
 
 The endpoint also accepts two optional query parameters:
 
-* `app`: The name of the application to show in the back-link web page
-* `fallback`: If `true`, redirects to a custom-scheme url instead of the back-link web page
+*   `app`: The name of the application to show in the back-link web page
+*   `fallback`: If `true`, redirects to a custom-scheme url instead of the back-link web page
 
 Like the Android payment url helper endpoint, the iOS payment url helper endpoint imposes no requirements on any other query parameters.
 
@@ -399,8 +399,7 @@ Location: yourecomapp://example.com/swedbank-pay-mobile/sdk-callback/ios-univers
 
 Note that this custom-scheme link is otherwise equal to the universal link opened in case 2a; accordingly, the SDK handles this by allowing the scheme of the payment url to be either the original scheme, or the custom scheme registered to the application.
 
-
-* ① 302 Found is again a more appropriate status. This may be changed in the future.
+*   ① 302 Found is again a more appropriate status. This may be changed in the future.
 
 #### Apple App Site Association
 
