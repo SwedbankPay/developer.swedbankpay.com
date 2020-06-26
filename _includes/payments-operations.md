@@ -156,7 +156,7 @@ Content-Type: application/json
 
 {
    "problem": {
-       "type": "https://api.payex.com/psp/errordetail/{{ api_resource }}/acquirererror",
+       "type": "{{ site.api_url }}/psp/errordetail/{{ api_resource }}/acquirererror",
        "title": "Operation failed",
        "status": 403,
        "detail": "Unable to complete Authorization transaction, look at problem node!",
