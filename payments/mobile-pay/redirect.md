@@ -85,7 +85,8 @@ Content-Type: application/json
             "hostUrls": [ "https://example.com", "https://example.net" ],
             "completeUrl": "https://example.com/payment-completed",
             "cancelUrl": "https://example.com/payment-canceled",
-            "callbackUrl": "https://example.com/payment-callback"
+            "callbackUrl": "https://example.com/payment-callback",
+            "termsOfServiceUrl": "https://example.com/payment-terms.pdf"
         },
         "payeeInfo": {
             "payeeId": "{{ page.merchant_id }}",
@@ -125,6 +126,7 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`completeUrl`          | `string`     | The URI that Swedbank Pay will redirect back to when the payment page is completed. This does not indicate a successful payment, only that it has reached a completion state. A `GET` request needs to be performed on the payment to inspect it further. |
 | {% icon check %} | └─➔&nbsp;`cancelUrl`            | `string`     | The URI that Swedbank Pay will redirect back to when the user presses the cancel button in the payment page.                                                                                                                                              |
 |                  | └─➔&nbsp;`callbackUrl`          | `string`     | The URI that Swedbank Pay will perform an HTTP `POST` against every time a transaction is created on the payment. See [callback][callback-reference] for details.                                                                                         |
+| {% icon check %} | └─➔&nbsp;`termsOfServiceUrl`    | `string`     | {% include field-description-termsofserviceurl.md %}                                                                                                                                                                                                      |
 | {% icon check %} | └➔&nbsp;`payeeInfo`             | `object`     | This object contains the identificators of the payee of this payment.                                                                                                                                                                                     |
 | {% icon check %} | └─➔&nbsp;`payeeId`              | `string`     | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                                                                     |
 | {% icon check %} | └─➔&nbsp;`payeeReference`       | `string(50)` | A unique reference from the merchant system. Read more about [`payeeReference`][payee-reference]                                                                                                                                                          |
