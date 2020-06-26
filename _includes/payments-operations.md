@@ -4,6 +4,21 @@ The `paid-payment` operation confirms that the transaction has been successful
 and that the payment is completed. Under `details` you can see which card was
 used to complete the payment. 
 
+A `paid-payment` operation looks like the following:
+
+```json
+{
+   "href": "{{ site.api_url }}/psp/{{ api_resource }}/payments/{{ site.payment_id }}/paid",
+   "rel": "paid-payment",
+   "method": "GET",
+   "contentType": "application/json"
+}
+```
+
+To inspect the paid payment, you need to perform an HTTP `GET` request
+towards the operation's `href` field. An example of how the request and
+response look like is given below.
+
 {:.code-header}
 **Request**
 
