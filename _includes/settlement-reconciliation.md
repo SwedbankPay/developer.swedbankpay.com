@@ -221,15 +221,15 @@ downloaded below.
 #### Option A: Swedbank Pay handles the settlement process
 
 *   **[PDF Balance Report for Swedbank Pay Checkout][attachement-1]**
-*   [PDF Balance Report][attachement-2]
-*   [XLSX Transaction List][attachement-3]
-*   [XML Transaction List][attachement-4]
+*   [PDF Balance Report][balance-report-sbp-pdf]
+*   [XLSX Transaction List][trans-list-sbp-xlsx]
+*   [XML Transaction List][trans-list-sbp-xml]
 
 #### Option B: You will handle the settlement process yourself
 
-*   [PDF Balance Report][attachement-5]
-*   [XLSX Transaction List][attachement-6]
-*   [XML Transaction List][attachement-7]
+*   [PDF Balance Report][balance-report-pdf]
+*   [XLSX Transaction List][trans-list-xlsx]
+*   [XML Transaction List][trans-list-xml]
 
 ### Split Settlement
 
@@ -314,10 +314,10 @@ super merchant will in turn have to invoice this amount to the sub merchant.
 
 [payex-checkout]: /checkout
 [attachement-1]: /assets/documents/testredovisning-payexcheckout.pdf
-[attachement-2]: /assets/documents/r1234-0001-redov.service.pdf
-[attachement-3]: /assets/documents/transaktionsstatistik-redovisningsservice.xlsx
-[attachement-4]: /assets/documents/transaktionsstatistik-redovisningsservice.xml
-[attachement-5]: /assets/documents/r1234-0001-eget-konto.pdf
-[attachement-6]: /assets/documents/r1234-0001-eget-konto.pdf
-[attachement-7]: /assets/documents/testredovisning-eget-konto.xlsx
+[balance-report-sbp-pdf]: /assets/documents/r1234-0001-redov.service.pdf
+[trans-list-sbp-xlsx]: /assets/documents/transaktionsstatistik-redovisningsservice.xlsx
+[trans-list-sbp-xml]: /assets/documents/transaktionsstatistik-redovisningsservice.xml
+[balance-report-pdf]: /assets/documents/balance-report.pdf
+[trans-list-xlsx]: /assets/documents/transaction-list.xlsx
+[trans-list-xml]: /assets/documents/transaction-list.xml
 [omni-client-email]: mailto:omni.client@swedbankpay.se
