@@ -25,6 +25,8 @@ documentation_section="trustly" show_status_operations=true %}
 
 {% include payment-transaction-states.md %}
 
+{% include payments-operations.md api_resource="trustly" %}
+
 ## Create Payment
 
 In Trustly Payments, you can create one type of payment and you can inspect and alter the details of the

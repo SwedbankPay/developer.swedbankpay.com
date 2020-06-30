@@ -4,11 +4,26 @@ The `paid-payment` operation confirms that the transaction has been successful
 and that the payment is completed. Under `details` you can see which card was
 used to complete the payment. 
 
+A `paid-payment` operation looks like the following:
+
+```json
+{
+   "href": "{{ site.api_url }}/psp/{{ api_resource }}/payments/{{ site.payment_id }}/paid",
+   "rel": "paid-payment",
+   "method": "GET",
+   "contentType": "application/json"
+}
+```
+
+To inspect the paid payment, you need to perform an HTTP `GET` request
+towards the operation's `href` field. An example of how the request and
+response look like is given below.
+
 {:.code-header}
-**Response**
+**Request**
 
 ```http
-GET /psp/creditcard/payments/{{ site.payment_id }}/paid HTTP/1.1
+GET /psp/{{ api_resource }}/payments/{{ site.payment_id }}/paid HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -95,3 +110,109 @@ Content-Type: application/json
 | └─➔&nbsp;`acquirerTransactionTime`| `string`  | The ISO-8601 date and time of the acquirer transaction.                                                                                                                                                      |
 | └─➔&nbsp;`nonPaymentToken`        | `string`  |  Result of our own tokenization of the card used. Activated in POS on merchant or merchant group.                                                                                                            |
 | └─➔&nbsp;`externalNonPaymentToken`| `string`  | Result of external tokenization. This value varies depending on cards, acquirer, customer, etc. For ICA cards, the token comes in response from Swedbank. For Mass Transit(SL) it is populated with PAR if it comes in response from the redeemer (Visa). If not, our own token (Mastercard / Amex).                                                                                                                                                      |
+
+### Operation `failed-payment`
+
+The `failed-payment` operation means that something went wrong during the 
+payment process, the transaction was not authorized, and no further transactions
+can be created if the payment is in this state.
+
+A `failed-payment` operation looks like the following:
+
+```json
+{
+   "href": "{{ site.api_url }}/psp/{{ api_resource }}/payments/{{ site.payment_id }}/failed",
+   "rel": "failed-payment",
+   "method": "GET",
+   "contentType": "application/problem+json"
+}
+```
+
+To inspect why the payment failed, you need to perform an HTTP `GET` request
+towards the operation's `href` field.
+
+Under `details` you can see the problem message and under `problems` you can
+see which problem and the `description` of the problem with the corresponding
+error code.
+
+An example of how the request and response look like is given below.
+
+{:.code-header}
+**Request**
+
+```http
+GET /psp/{{ api_resource }}/payments/{{ site.payment_id }}/failed HTTP/1.1
+Host: {{ page.api_host }}
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+```
+
+{:.code-header}
+**Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+   "problem": {
+       "type": "{{ site.api_url }}/psp/errordetail/{{ api_resource }}/acquirererror",
+       "title": "Operation failed",
+       "status": 403,
+       "detail": "Unable to complete Authorization transaction, look at problem node!",
+       "problems": [
+        {
+          "name": "ExternalResponse",
+          "description": "REJECTED_BY_ACQUIRER-unknown error, response-code: 51"
+        }
+        ]
+     }
+  }
+}
+```
+
+### Operation `aborted-payment`
+
+The `aborted-payment` operation means that the merchant has aborted the payment 
+before the end user has fulfilled the payment process. You can see this under
+`abortReason` in the response.
+
+An `aborted-payment` operation looks like the following:
+
+```json
+{
+    "href": "{{ site.api_url }}/psp/creditcard/payments/<paymentId>/aborted",
+    "rel": "aborted-payment",
+    "method": "GET",
+    "contentType": "application/json"
+}
+```
+
+To inspect why the payment was aborted, you need to perform an HTTP `GET`
+request towards the operation's `href` field. An example of how the request and
+response looks like is given below.
+
+{:.code-header}
+**Request**
+
+```http
+GET /psp/{{ api_resource }}/payments/{{ site.payment_id }}/aborted HTTP/1.1
+Host: {{ page.api_host }}
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+```
+
+{:.code-header}
+**Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "payment": "/psp/{{ api_resource }}/payments/{{ site.payment_id }}",
+  "aborted": {
+    "abortReason": "Aborted by consumer"
+  }
+}
+```

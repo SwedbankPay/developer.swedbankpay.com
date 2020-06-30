@@ -47,6 +47,8 @@ documentation_section="invoice" show_status_operations=true %}
 
 {% include payment-transaction-states.md %}
 
+{% include payments-operations.md api_resource="invoice" %}
+
 ## Create Payment
 
 Within the invoice payments part of the eCommerce API, you can create four kinds

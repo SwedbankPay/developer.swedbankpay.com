@@ -23,6 +23,8 @@ documentation_section="swish" show_status_operations=true %}
 
 {% include payment-transaction-states.md %}
 
+{% include payments-operations.md api_resource="swish" %}
+
 ## Create Payment
 
 To create a Swish payment, you perform an HTTP `POST` against the

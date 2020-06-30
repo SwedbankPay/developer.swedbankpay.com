@@ -21,6 +21,8 @@ documentation_section="vipps" show_status_operations=true %}
 
 {% include payment-transaction-states.md %}
 
+{% include payments-operations.md api_resource="vipps" %}
+
 ### Create Payment
 
 To create a Vipps payment, you perform an HTTP `POST` against the

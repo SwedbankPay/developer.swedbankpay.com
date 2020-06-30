@@ -14,7 +14,10 @@ sidebar:
       title: Other Features
 ---
 
-{% include payment-resource.md api_resource="mobilepay" documentation_section="mobile-pay" %}
+{% include payment-resource.md api_resource="mobilepay"
+documentation_section="mobile-pay" %}
+
+{% include payments-operations.md api_resource="mobilepay" %}
 
 ### Create Payment
 
