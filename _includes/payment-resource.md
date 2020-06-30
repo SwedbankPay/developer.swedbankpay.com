@@ -157,38 +157,13 @@ Content-Type: application/json
             "href": "{{ page.front_end_url }}/{{ api_resource }}/payments/authorize/{{ page.transaction_id }}",
             "rel": "redirect-authorization",
             "contentType": "text/html"
-        },{% endcase %}{% if show_status_operations %}
-        {
-            "method": "PATCH",
-            "href": "{{ page.api_url }}/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
-            "rel": "update-payment-abort",
-        },
-        {
-            "method": "POST",
-            "href": "{{ page.api_url }}/psp/{{ api_resource }}/payments/{{ page.payment_id }}/captures",
-            "rel": "create-capture",
-            "contentType": "application/json"
-        },
-        { 
-            "method": "GET",
-            "href": "{{ page.api_url }}/psp/{{ api_resource }}/payments/{{ page.payment_id }}/aborted",
-            "rel": "aborted-payment",
-            "contentType": "application/json"
-        },
-        {
-            "method": "GET",
-            "href": "{{ page.api_url }}/psp/{{ api_resource }}/{{ page.payment_id }}/paid",
-            "rel": "paid-payment",
-            "contentType": "application/json"
-        },
-        {
-            "method": "GET",
-            "href": "{{ page.api_url }}/psp/{{ api_resource }}/{{ page.payment_id }}/failed",
-            "rel": "failed-payment",
-            "contentType": "application/problem+json"
-        }{% endif %},
-        {% include api-operation.md api_resource="creditcard" api_operation="view-mat" %},
-        {% include api-operation.md api_resource="creditcard" api_operation="view-mat" %}
+        },{% endcase %}
+        {% if show_status_operations -%}
+        {% include api-operation.md api_resource=api_resource api_operation="update-payment-abort" %},
+        {% include api-operation.md api_resource=api_resource api_operation="create-capture" api_href_end="captures" %},
+        {% include api-operation.md api_resource=api_resource api_operation="paid-payment" api_href_end="paid" %},
+        {% include api-operation.md api_resource=api_resource api_operation="failed-payment" api_href_end="failed" %}
+        {%- endif %}
     ]
 }
 ```
