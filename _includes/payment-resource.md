@@ -163,7 +163,7 @@ Content-Type: application/json
             "href": "{{ page.api_url }}/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
             "rel": "update-payment-abort",
         },
-        { 
+        {
             "method": "POST",
             "href": "{{ page.api_url }}/psp/{{ api_resource }}/payments/{{ page.payment_id }}/captures",
             "rel": "create-capture",
@@ -187,8 +187,8 @@ Content-Type: application/json
             "rel": "failed-payment",
             "contentType": "application/problem+json"
         }{% endif %},
-        {% include api-operations.md api_resource="creditcard" api_operation="view-mat" %},
-        {% include api-operations.md api_resource="creditcard" api_operation="view-mat" %}
+        {% include api-operation.md api_resource="creditcard" api_operation="view-mat" %},
+        {% include api-operation.md api_resource="creditcard" api_operation="view-mat" %}
     ]
 }
 ```

@@ -23,4 +23,3 @@
 
 {%- endcapture -%}
 {{code}}
-
