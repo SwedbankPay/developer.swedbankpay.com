@@ -186,7 +186,9 @@ Content-Type: application/json
             "href": "{{ page.api_url }}/psp/{{ api_resource }}/{{ page.payment_id }}/failed",
             "rel": "failed-payment",
             "contentType": "application/problem+json"
-        }{% endif %}
+        }{% endif %},
+        {% include api-operations.md api_resource="creditcard" api_operation="view-mat" %},
+        {% include api-operations.md api_resource="creditcard" api_operation="view-mat" %}
     ]
 }
 ```
