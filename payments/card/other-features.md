@@ -26,7 +26,7 @@ sidebar:
 Credit Card. This section has extented code examples and features that were not
 covered by the other subsections." %}
 
-{% include api-operation.md api_resource="creditcard" api_operation="redirect-authorization" %}
+{% include api-operation.md api_resource="creditcard" operation="redirect-authorization" %}
 
 {% include payment-resource.md api_resource="creditcard"
 documentation_section="card" show_status_operations=true %}

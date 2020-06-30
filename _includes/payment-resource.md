@@ -159,10 +159,10 @@ Content-Type: application/json
             "contentType": "text/html"
         },{% endcase %}
         {% if show_status_operations -%}
-        {% include api-operation.md api_resource=api_resource api_operation="update-payment-abort" %},
-        {% include api-operation.md api_resource=api_resource api_operation="create-capture" api_href_end="captures" %},
-        {% include api-operation.md api_resource=api_resource api_operation="paid-payment" api_href_end="paid" %},
-        {% include api-operation.md api_resource=api_resource api_operation="failed-payment" api_href_end="failed" %}
+        {% include api-operation.md api_resource=api_resource operation="update-payment-abort" %},
+        {% include api-operation.md api_resource=api_resource operation="create-capture" href_tail="captures" %},
+        {% include api-operation.md api_resource=api_resource operation="paid-payment" href_tail="paid" %},
+        {% include api-operation.md api_resource=api_resource operation="failed-payment" href_tail="failed" %}
         {%- endif %}
     ]
 }

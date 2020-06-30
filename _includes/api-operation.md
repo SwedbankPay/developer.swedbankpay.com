@@ -1,14 +1,14 @@
 {%- assign api_resource = include.api_resource  | default: "UNKNOWN_RESOURCE" -%}
-{%- assign api_operation = include.api_operation -%}
-{%- assign api_content_type = include.api_content_type | default: "application/javascript" -%}
-{%- assign api_href_end = include.api_href_end -%}
-{%- capture api_href -%}
+{%- assign operation = include.operation -%}
+{%- assign content_type = include.content_type | default: "application/javascript" -%}
+{%- assign href_tail = include.href_tail -%}
+{%- capture href -%}
 {{- page.api_url }}/psp/{{ api_resource }}/payments/{{ page.payment_id }}
 {%- endcapture -%}
-{%- if api_href_end != nil && api_href_end != empty -%}
-    {%- assign api_href = api_href | append: '/' | append: api_href_end -%}
+{%- if href_tail != nil && href_tail != empty -%}
+    {%- assign href = href | append: '/' | append: href_tail -%}
 {%- endif -%}
-{%- assign operation_begins_with = api_operation | split: "-" | first -%}
+{%- assign operation_begins_with = operation | split: "-" | first -%}
 {%- case operation_begins_with -%}
     {%- when "view" or "redirect" or "failed" or "paid" or "aborted" -%}
         {%- assign api_method = "GET" -%}
@@ -20,9 +20,9 @@
 {% capture code -%}
         {
             "method": "{{ api_method }}",
-            "href": "{{ api_href }}",
-            "rel": "{{ api_operation }}",
-            "contentType": "{{ api_content_type }}"
+            "href": "{{ href }}",
+            "rel": "{{ operation }}",
+            "contentType": "{{ content_type }}"
         }
 {%- endcapture -%}
 {{- code -}}
