@@ -81,8 +81,8 @@ cardholder is an essential topic. 3D Secure 2.0 is an improved version of the
 old protocol, now allowing frictionless payments where transactions can be
 completed without input from the cardholder. Therefore, there are certain fields
 that should be included when implementing 3D Secure 2.0. These are listed below: 
-*  `payment.riskIndicator`
-*  `payment.cardholder`
+*   `payment.riskIndicator`
+*   `payment.cardholder`
 
 ## Co-badge Card Choice for Dankort
 
