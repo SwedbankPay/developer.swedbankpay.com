@@ -1221,9 +1221,9 @@ Content-Type: application/json
 | `paymentorder`            | `string` | {% include field-description-id.md resource="paymentorder" sub_resource="payer" %} |
 | `payer`                   | `object` | The payer object.                                                                  |
 | └➔&nbsp;`id`              | `string` | {% include field-description-id.md resource="payer" %}                             |
-| └➔&nbsp;`email`           | `string` | Payer's registered email address. The field is related to [3D Secure 2.0](/{{ documentation_section }}/other-features#3d-secure-20).   |
+| └➔&nbsp;`email`           | `string` | Payer's registered email address. The field is related to [3-D Secure 2.0](/{{ documentation_section }}/other-features#3d-secure-20).   |
 | └➔&nbsp;`msisdn`          | `string` | Payer's registered mobile phone number.
-The field is related to [3D Secure 2.0](/{{ documentation_section }}/other-features#3d-secure-20).|
+The field is related to [3-D Secure 2.0](/{{ documentation_section }}/other-features#3d-secure-20).|
 | └➔&nbsp;`shippingAddress` | `object` | The shipping address object related to the `payer`.                                |
 | └─➔&nbsp;`addresse`       | `object` | The shipping address object related to the `payer`.                                |
 | └─➔&nbsp;`coAddress`      | `string` | Payer' s c/o address, if applicable.                                               |
@@ -1429,13 +1429,13 @@ with the request parameter `instrument`.
 
 {% include settlement-reconciliation.md api_resource="paymentorders" %}
 
-## 3D Secure 2.0
+## 3-D Secure 2.0
 
-When dealing with card payments, 3D Secure authentication of the
-cardholder is an essential topic. 3D Secure 2.0 is an improved version of the
+When dealing with card payments, 3-D Secure authentication of the
+cardholder is an essential topic. 3-D Secure 2.0 is an improved version of the
 old protocol, now allowing frictionless payments where transactions can be
 completed without input from the cardholder. Therefore, there are certain fields
-that should be included when implementing 3D Secure 2.0. These are listed below: 
+that should be included when implementing 3-D Secure 2.0. These are listed below: 
 *   `payment.riskIndicator`
 *   `payment.cardholder`
 *   `paymentorder.payer.email` 
