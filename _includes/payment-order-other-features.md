@@ -1221,9 +1221,9 @@ Content-Type: application/json
 | `paymentorder`            | `string` | {% include field-description-id.md resource="paymentorder" sub_resource="payer" %} |
 | `payer`                   | `object` | The payer object.                                                                  |
 | └➔&nbsp;`id`              | `string` | {% include field-description-id.md resource="payer" %}                             |
-| └➔&nbsp;`email`           | `string` | Payer's registered email address. The field is related to [3D Secure 2.0](/{{ documentation_section }}/other-features#3D-secure-20).   |
+| └➔&nbsp;`email`           | `string` | Payer's registered email address. The field is related to [3D Secure 2.0](/{{ documentation_section }}/other-features#3d-secure-20).   |
 | └➔&nbsp;`msisdn`          | `string` | Payer's registered mobile phone number.
-The field is related to [3D Secure 2.0](/{{ documentation_section }}/other-features#3D-secure-20).|
+The field is related to [3D Secure 2.0](/{{ documentation_section }}/other-features#3d-secure-20).|
 | └➔&nbsp;`shippingAddress` | `object` | The shipping address object related to the `payer`.                                |
 | └─➔&nbsp;`addresse`       | `object` | The shipping address object related to the `payer`.                                |
 | └─➔&nbsp;`coAddress`      | `string` | Payer' s c/o address, if applicable.                                               |
