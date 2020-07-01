@@ -74,6 +74,16 @@ when="at the 3-D Secure verification for credit card payments" full_reference=tr
 
 {% include prices.md %}
 
+## 3D Secure 2.0
+
+When dealing with card payments, 3D Secure authentication of the
+cardholder is an essential topic. 3D Secure 2.0 is an improved version of the
+old protocol, now allowing frictionless payments where transactions can be
+completed without input from the cardholder. Therefore, there are certain fields
+that should be included when implementing 3D Secure 2.0. These are listed below: 
+*  `payment.riskIndicator`
+*  `payment.cardholder`
+
 ## Co-badge Card Choice for Dankort
 
 Due to new [EU regulations from 2016-06-09][eu-regulation] regarding cards that have

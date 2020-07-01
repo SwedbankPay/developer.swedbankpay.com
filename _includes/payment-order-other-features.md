@@ -1431,6 +1431,18 @@ with the request parameter `instrument`.
 
 ## 3D Secure 2.0
 
+When dealing with card payments, 3D Secure authentication of the
+cardholder is an essential topic. 3D Secure 2.0 is an improved version of the
+old protocol, now allowing frictionless payments where transactions can be
+completed without input from the cardholder. Therefore, there are certain fields
+that should be included when implementing 3D Secure 2.0. These are listed below: 
+*  `payment.riskIndicator`
+*  `payment.cardholder`
+*  `paymentorder.payer.email` 
+*  `paymentorder.payer.msisdn`
+*  `paymentorder.payer.workPhoneNumber` 
+*  `paymentorder.payer.homePhoneNumber`
+
 ## Updating Payment Menu
 
 When the contents of the shopping cart changes or anything else that affects
