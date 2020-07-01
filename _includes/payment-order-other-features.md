@@ -1435,13 +1435,51 @@ When dealing with card payments, 3-D Secure authentication of the
 cardholder is an essential topic. 3-D Secure 2.0 is an improved version of the
 old protocol, now allowing frictionless payments where transactions can be
 completed without input from the cardholder. Therefore, there are certain fields
-that should be included when implementing 3-D Secure 2.0. These are listed below: 
-*   `payment.riskIndicator`
-*   `payment.cardholder`
+that should be included when implementing 3-D Secure 2.0. These are listed below
+in the abbreviated `payer` resource that contains payer information related to 
+the payment order.
+
 *   `paymentorder.payer.email` 
 *   `paymentorder.payer.msisdn`
 *   `paymentorder.payer.workPhoneNumber` 
 *   `paymentorder.payer.homePhoneNumber`
+
+{:.code-header}
+**Request**
+
+```http
+GET /psp/paymentorders/{{ page.payment_order_id }}/payers/ HTTP/1.1
+Host: {{ page.api_host }}
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+```
+
+{:.code-header}
+**Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "paymentorder": "/psp/paymentorders/{{ page.payment_order_id }}",
+    "payer" : {
+        "id": "/psp/paymentorders/{{ page.payment_order_id }}/payer",
+        "reference": "reference to payer",
+        "email": "email",
+        "msisdn": "msisdn",
+        "shippingAddress": {
+            "addressee": "firstName + lastName",
+            "coAddress": "coAddress",
+            "streetAddress": "streetAddress",
+            "zipCode": "zipCode",
+            "city": "city",
+            "countryCode": "countryCode"
+        }
+    }
+}
+```
+
 
 ## Updating Payment Menu
 

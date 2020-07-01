@@ -80,9 +80,51 @@ When dealing with card payments, 3-D Secure authentication of the
 cardholder is an essential topic. 3-D Secure 2.0 is an improved version of the
 old protocol, now allowing frictionless payments where transactions can be
 completed without input from the cardholder. Therefore, there are certain fields
-that should be included when implementing 3-D Secure 2.0. These are listed below: 
+that should be included when implementing 3-D Secure 2.0. These are listed below
+and can be seen in the abbreviated request example below.
+
 *   `payment.riskIndicator`
 *   `payment.cardholder`
+
+{:.code-header}
+**Request**
+
+```http
+POST /psp/creditcard/payments HTTP/1.1
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+
+{
+    "payment": {
+        "operation": "Purchase",
+        "intent": "Authorization",
+        "currency": "SEK",
+        "description": "Test Purchase",
+        "urls": {
+            "hostUrls": ["https://example.com"]
+        },
+        "cardholder": {
+            "firstName": "Olivia",
+            "lastName": "Nyhuus",
+            "email": "olivia.nyhuus@payex.com",
+            "msisdn": "+4798765432",
+            "homePhoneNumber": "+4787654321",
+            "workPhoneNumber": "+4776543210",
+        },
+        "riskIndicator": {
+            "deliveryEmailAddress": "olivia.nyhuus@payex.com",
+            "deliveryTimeFrameIndicator": "01",
+            "preOrderDate": "19801231",
+            "preOrderPurchaseIndicator": "01",
+            "shipIndicator": "01",
+            "giftCardPurchase": false,
+            "reOrderPurchaseIndicator": "01",
+        }
+    }
+}
+```
+  
+
 
 ## Co-badge Card Choice for Dankort
 
