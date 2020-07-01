@@ -1221,8 +1221,9 @@ Content-Type: application/json
 | `paymentorder`            | `string` | {% include field-description-id.md resource="paymentorder" sub_resource="payer" %} |
 | `payer`                   | `object` | The payer object.                                                                  |
 | └➔&nbsp;`id`              | `string` | {% include field-description-id.md resource="payer" %}                             |
-| └➔&nbsp;`email`           | `string` | Payer's registered email address.                                                  |
-| └➔&nbsp;`msisdn`          | `string` | Payer's registered mobile phone number.                                            |
+| └➔&nbsp;`email`           | `string` | Payer's registered email address. The field is related to [3D Secure 2.0](/{{ documentation_section }}/other-features#3D-secure-20).   |
+| └➔&nbsp;`msisdn`          | `string` | Payer's registered mobile phone number.
+The field is related to [3D Secure 2.0](/{{ documentation_section }}/other-features#3D-secure-20).|
 | └➔&nbsp;`shippingAddress` | `object` | The shipping address object related to the `payer`.                                |
 | └─➔&nbsp;`addresse`       | `object` | The shipping address object related to the `payer`.                                |
 | └─➔&nbsp;`coAddress`      | `string` | Payer' s c/o address, if applicable.                                               |
@@ -1427,6 +1428,8 @@ request) to be able to use this feature. You will also need to turn the
 with the request parameter `instrument`.
 
 {% include settlement-reconciliation.md api_resource="paymentorders" %}
+
+## 3D Secure 2.0
 
 ## Updating Payment Menu
 
