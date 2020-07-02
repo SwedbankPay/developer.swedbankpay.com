@@ -13,7 +13,7 @@ The `paymentorders` resource and how you interact with it is described below.
 To create a payment order, you perform a `POST` request towards the
 `paymentorders` resource:
 
-{% include payment-order-purchase.md documentation_section=local_documentation_section %}
+{% include payment-order-purchase.md local_documentation_section=documentation_section %}
 
 {% include description.md %}
 
