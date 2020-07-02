@@ -1221,8 +1221,8 @@ Content-Type: application/json
 | `paymentorder`            | `string` | {% include field-description-id.md resource="paymentorder" sub_resource="payer" %}                                                                 |
 | `payer`                   | `object` | The payer object.                                                                                                                                  |
 | └➔&nbsp;`id`              | `string` | {% include field-description-id.md resource="payer" %}                                                                                             |
-| └➔&nbsp;`email`           | `string` | Payer's registered email address. The field is related to [3-D Secure 2.0](/{{ local_documentation_section }}/other-features#3-d-secure-2).       |
-| └➔&nbsp;`msisdn`          | `string` | Payer's registered mobile phone number. The field is related to [3-D Secure 2.0](/{{ local_documentation_section }}/other-features#3-d-secure-20). |
+| └➔&nbsp;`email`           | `string` | Payer's registered email address. The field is related to [3-D Secure 2](/{{ local_documentation_section }}/other-features#3-d-secure-2).       |
+| └➔&nbsp;`msisdn`          | `string` | Payer's registered mobile phone number. The field is related to [3-D Secure 2](/{{ local_documentation_section }}/other-features#3-d-secure-2). |
 | └➔&nbsp;`shippingAddress` | `object` | The shipping address object related to the `payer`.                                                                                                |
 | └─➔&nbsp;`addresse`       | `object` | The shipping address object related to the `payer`.                                                                                                |
 | └─➔&nbsp;`coAddress`      | `string` | Payer' s c/o address, if applicable.                                                                                                               |
@@ -1431,53 +1431,50 @@ with the request parameter `instrument`.
 ## 3-D Secure 2
 
 When dealing with card payments, 3-D Secure authentication of the
-cardholder is an essential topic. 3-D Secure 2.0 is an improved version of the
+cardholder is an essential topic. 3-D Secure 2 is an improved version of the
 old protocol, now allowing frictionless payments where transactions can be
 completed without input from the cardholder. Therefore, there are certain fields
-that should be included when implementing 3-D Secure 2.0. These are listed below
-in the abbreviated `payer` resource that contains payer information related to
-the payment order.
-
-*   `paymentorder.payer.email`
-*   `paymentorder.payer.msisdn`
-*   `paymentorder.payer.workPhoneNumber`
-*   `paymentorder.payer.homePhoneNumber`
+that should be included when implementing 3-D Secure 2. These are listed below
+in the abbreviated `Purchase` request. 
 
 {:.code-header}
 **Request**
 
 ```http
-GET /psp/paymentorders/{{ page.payment_order_id }}/payers/ HTTP/1.1
+POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
-```
-
-{:.code-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
 
 {
-    "paymentorder": "/psp/paymentorders/{{ page.payment_order_id }}",
-    "payer" : {
-        "id": "/psp/paymentorders/{{ page.payment_order_id }}/payer",
-        "reference": "reference to payer",
-        "email": "email",
-        "msisdn": "msisdn",
-        "shippingAddress": {
-            "addressee": "firstName + lastName",
-            "coAddress": "coAddress",
-            "streetAddress": "streetAddress",
-            "zipCode": "zipCode",
-            "city": "city",
-            "countryCode": "countryCode"
+    "paymentorder": {
+        "operation": "Purchase",
+        "currency": "SEK",
+        "amount": 1500,
+        "vatAmount": 375,
+        "description": "Test Purchase",
+        "generatePaymentToken": true,
+        "userAgent": "Mozilla/5.0...",
+        "urls": {
+            "hostUrls": [ "https://example.com", "https://example.net" ]
+        },
+        "payer": {
+            "email": "olivia.nyhuus@payex.com",
+            "msisdn": "+4798765432",
+            "workPhoneNumber" : "+4787654321",
+            "homePhoneNumber" : "+4776543210"
         }
     }
 }
 ```
+
+{:.table .table-striped}
+|     Required     | Field                             | Type         | Description                                                                                                                                                                                                                                                                                                                                                                                                   |
+| :--------------: | :-------------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+|                  | └─➔&nbsp;`email`                  | `string`     | The e-mail address of the payer. Will be used to prefill the Checkin as well as on the payer's profile, if not already set. Increases the chance for [frictionless 3-D Secure 2 flow](/{{ documentation_section }}/other-features#3-d-secure-2).                                                                                                                                         |
+|                  | └─➔&nbsp;`msisdn`                 | `string`     | The mobile phone number of the Payer. Will be prefilled on Checkin page and used on the payer's profile, if not already set. The mobile number must have a country code prefix and be 8 to 15 digits in length. The field is related to [3-D Secure 2](/{{ documentation_section }}/other-features#3-d-secure-2).                                                                                          |
+|                  | └─➔&nbsp;`workPhoneNumber`        | `string`     | The work phone number of the payer. Optional (increased chance for frictionless flow if set) and is related to [3-D Secure 2.0](/{{ documentation_section }}/other-features#3-d-secure-20).                                                                                                                                                                                                                   |
+|                  | └─➔&nbsp;`homePhoneNumber`        | `string`     | The home phone number of the payer. Optional (increased chance for frictionless flow if set) and is related to [3-D Secure 2.0](/{{ documentation_section }}/other-features#3-d-secure-20).                                                                                                                                                                                                                   |
 
 ## Updating Payment Menu
 
