@@ -74,7 +74,7 @@ when="at the 3-D Secure verification for credit card payments" full_reference=tr
 
 {% include prices.md %}
 
-## 3-D Secure 2.0
+## 3-D Secure 2
 
 When dealing with card payments, 3-D Secure authentication of the
 cardholder is an essential topic. 3-D Secure 2.0 is an improved version of the
