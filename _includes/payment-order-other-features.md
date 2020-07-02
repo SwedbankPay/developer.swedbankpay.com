@@ -1428,7 +1428,7 @@ with the request parameter `instrument`.
 
 {% include settlement-reconciliation.md api_resource="paymentorders" %}
 
-## 3-D Secure 2.0
+## 3-D Secure 2
 
 When dealing with card payments, 3-D Secure authentication of the
 cardholder is an essential topic. 3-D Secure 2.0 is an improved version of the
