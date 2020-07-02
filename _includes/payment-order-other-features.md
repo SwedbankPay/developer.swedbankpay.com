@@ -1216,20 +1216,20 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Field                     | Type     | Description                                                                        |
-| :------------------------ | :------- | :--------------------------------------------------------------------------------- |
-| `paymentorder`            | `string` | {% include field-description-id.md resource="paymentorder" sub_resource="payer" %} |
-| `payer`                   | `object` | The payer object.                                                                  |
-| └➔&nbsp;`id`              | `string` | {% include field-description-id.md resource="payer" %}                             |
-| └➔&nbsp;`email`           | `string` | Payer's registered email address. The field is related to [3-D Secure 2.0](/{{ documentation_section }}/other-features#3d-secure-20).                                                                                               |
-| └➔&nbsp;`msisdn`          | `string` | Payer's registered mobile phone number. The field is related to [3-D Secure 2.0](/{{ documentation_section }}/other-features#3d-secure-20).                                                                                               |
-| └➔&nbsp;`shippingAddress` | `object` | The shipping address object related to the `payer`.                                |
-| └─➔&nbsp;`addresse`       | `object` | The shipping address object related to the `payer`.                                |
-| └─➔&nbsp;`coAddress`      | `string` | Payer' s c/o address, if applicable.                                               |
-| └─➔&nbsp;`streetAddress`  | `string` | Payer's street address                                                             |
-| └─➔&nbsp;`zipCode`        | `string` | Payer's zip code                                                                   |
-| └─➔&nbsp;`city`           | `string` | Payer's city of residence                                                          |
-| └─➔&nbsp;`countryCode`    | `string` | Country Code for country of residence.                                             |
+| Field                     | Type     | Description                                                                                                                                  |
+| :------------------------ | :------- | :------------------------------------------------------------------------------------------------------------------------------------------- |
+| `paymentorder`            | `string` | {% include field-description-id.md resource="paymentorder" sub_resource="payer" %}                                                           |
+| `payer`                   | `object` | The payer object.                                                                                                                            |
+| └➔&nbsp;`id`              | `string` | {% include field-description-id.md resource="payer" %}                                                                                       |
+| └➔&nbsp;`email`           | `string` | Payer's registered email address. The field is related to [3-D Secure 2.0](/{{ documentation_section }}/other-features#3-d-secure-20).       |
+| └➔&nbsp;`msisdn`          | `string` | Payer's registered mobile phone number. The field is related to [3-D Secure 2.0](/{{ documentation_section }}/other-features#3-d-secure-20). |
+| └➔&nbsp;`shippingAddress` | `object` | The shipping address object related to the `payer`.                                                                                          |
+| └─➔&nbsp;`addresse`       | `object` | The shipping address object related to the `payer`.                                                                                          |
+| └─➔&nbsp;`coAddress`      | `string` | Payer' s c/o address, if applicable.                                                                                                         |
+| └─➔&nbsp;`streetAddress`  | `string` | Payer's street address                                                                                                                       |
+| └─➔&nbsp;`zipCode`        | `string` | Payer's zip code                                                                                                                             |
+| └─➔&nbsp;`city`           | `string` | Payer's city of residence                                                                                                                    |
+| └─➔&nbsp;`countryCode`    | `string` | Country Code for country of residence.                                                                                                       |
 
 ## Enable or Disable Payment Menu
 
@@ -1435,12 +1435,12 @@ cardholder is an essential topic. 3-D Secure 2.0 is an improved version of the
 old protocol, now allowing frictionless payments where transactions can be
 completed without input from the cardholder. Therefore, there are certain fields
 that should be included when implementing 3-D Secure 2.0. These are listed below
-in the abbreviated `payer` resource that contains payer information related to 
+in the abbreviated `payer` resource that contains payer information related to
 the payment order.
 
-*   `paymentorder.payer.email` 
+*   `paymentorder.payer.email`
 *   `paymentorder.payer.msisdn`
-*   `paymentorder.payer.workPhoneNumber` 
+*   `paymentorder.payer.workPhoneNumber`
 *   `paymentorder.payer.homePhoneNumber`
 
 {:.code-header}
@@ -1478,7 +1478,6 @@ Content-Type: application/json
     }
 }
 ```
-
 
 ## Updating Payment Menu
 

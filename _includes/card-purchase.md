@@ -299,4 +299,4 @@ Content-Type: application/json
 [settlement-and-reconciliation]: /payments/card/other-features#settlement-and-reconciliation
 [price-resource]: /payments/card/other-features#prices
 [payee-reference]: /payments/card/other-features#payee-reference
-[3ds2]: /payments/card/other-features#3d-secure-20
+[3ds2]: /payments/card/other-features#3-d-secure-20
