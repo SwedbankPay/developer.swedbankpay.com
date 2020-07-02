@@ -13,7 +13,7 @@ The `paymentorders` resource and how you interact with it is described below.
 To create a payment order, you perform a `POST` request towards the
 `paymentorders` resource:
 
-{% include payment-order-purchase.md local_documentation_section=documentation_section %}
+{% include payment-order-purchase.md documentation_section=local_documentation_section %}
 
 {% include description.md %}
 
@@ -1216,20 +1216,20 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Field                     | Type     | Description                                                                                                                                  |
-| :------------------------ | :------- | :------------------------------------------------------------------------------------------------------------------------------------------- |
-| `paymentorder`            | `string` | {% include field-description-id.md resource="paymentorder" sub_resource="payer" %}                                                           |
-| `payer`                   | `object` | The payer object.                                                                                                                            |
-| └➔&nbsp;`id`              | `string` | {% include field-description-id.md resource="payer" %}                                                                                       |
-| └➔&nbsp;`email`           | `string` | Payer's registered email address. The field is related to [3-D Secure 2.0](/{{ documentation_section }}/other-features#3-d-secure-20).       |
-| └➔&nbsp;`msisdn`          | `string` | Payer's registered mobile phone number. The field is related to [3-D Secure 2.0](/{{ documentation_section }}/other-features#3-d-secure-20). |
-| └➔&nbsp;`shippingAddress` | `object` | The shipping address object related to the `payer`.                                                                                          |
-| └─➔&nbsp;`addresse`       | `object` | The shipping address object related to the `payer`.                                                                                          |
-| └─➔&nbsp;`coAddress`      | `string` | Payer' s c/o address, if applicable.                                                                                                         |
-| └─➔&nbsp;`streetAddress`  | `string` | Payer's street address                                                                                                                       |
-| └─➔&nbsp;`zipCode`        | `string` | Payer's zip code                                                                                                                             |
-| └─➔&nbsp;`city`           | `string` | Payer's city of residence                                                                                                                    |
-| └─➔&nbsp;`countryCode`    | `string` | Country Code for country of residence.                                                                                                       |
+| Field                     | Type     | Description                                                                                                                                        |
+| :------------------------ | :------- | :------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `paymentorder`            | `string` | {% include field-description-id.md resource="paymentorder" sub_resource="payer" %}                                                                 |
+| `payer`                   | `object` | The payer object.                                                                                                                                  |
+| └➔&nbsp;`id`              | `string` | {% include field-description-id.md resource="payer" %}                                                                                             |
+| └➔&nbsp;`email`           | `string` | Payer's registered email address. The field is related to [3-D Secure 2.0](/{{ local_documentation_section }}/other-features#3-d-secure-20).       |
+| └➔&nbsp;`msisdn`          | `string` | Payer's registered mobile phone number. The field is related to [3-D Secure 2.0](/{{ local_documentation_section }}/other-features#3-d-secure-20). |
+| └➔&nbsp;`shippingAddress` | `object` | The shipping address object related to the `payer`.                                                                                                |
+| └─➔&nbsp;`addresse`       | `object` | The shipping address object related to the `payer`.                                                                                                |
+| └─➔&nbsp;`coAddress`      | `string` | Payer' s c/o address, if applicable.                                                                                                               |
+| └─➔&nbsp;`streetAddress`  | `string` | Payer's street address                                                                                                                             |
+| └─➔&nbsp;`zipCode`        | `string` | Payer's zip code                                                                                                                                   |
+| └─➔&nbsp;`city`           | `string` | Payer's city of residence                                                                                                                          |
+| └─➔&nbsp;`countryCode`    | `string` | Country Code for country of residence.                                                                                                             |
 
 ## Enable or Disable Payment Menu
 
