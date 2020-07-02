@@ -1462,19 +1462,35 @@ Content-Type: application/json
             "email": "olivia.nyhuus@payex.com",
             "msisdn": "+4798765432",
             "workPhoneNumber" : "+4787654321",
-            "homePhoneNumber" : "+4776543210"
+            "homePhoneNumber" : "+4776543210",
+            "shippingAddress": {
+                "addressee": "Olivia Nyhuus",
+               "streetAddress": "Saltnestoppen 43",
+                "coAddress": "",
+                "city": "Saltnes",
+                "zipCode": "1642",
+                "countryCode": "NO"
+            }
         }
     }
 }
 ```
 
 {:.table .table-striped}
-|     Required     | Field                             | Type         | Description                                                                                                                                                                                                                                                                                                                                                                                                   |
-| :--------------: | :-------------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-|                  | └─➔&nbsp;`email`                  | `string`     | The e-mail address of the payer. Will be used to prefill the Checkin as well as on the payer's profile, if not already set. Increases the chance for [frictionless 3-D Secure 2 flow](/{{ documentation_section }}/other-features#3-d-secure-2).                                                                                                                                         |
-|                  | └─➔&nbsp;`msisdn`                 | `string`     | The mobile phone number of the Payer. Will be prefilled on Checkin page and used on the payer's profile, if not already set. The mobile number must have a country code prefix and be 8 to 15 digits in length. The field is related to [3-D Secure 2](/{{ documentation_section }}/other-features#3-d-secure-2).                                                                                          |
-|                  | └─➔&nbsp;`workPhoneNumber`        | `string`     | The work phone number of the payer. Optional (increased chance for frictionless flow if set) and is related to [3-D Secure 2](/{{ documentation_section }}/other-features#3-d-secure-2).                                                                                                                                                                                                                   |
-|                  | └─➔&nbsp;`homePhoneNumber`        | `string`     | The home phone number of the payer. Optional (increased chance for frictionless flow if set) and is related to [3-D Secure 2](/{{ documentation_section }}/other-features#3-d-secure-2).                                                                                                                                                                                                                   |
+| Field                     | Type     | Description                                                                                                                                        |
+| :------------------------ | :------- | :------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `paymentorder`            | `string` | {% include field-description-id.md resource="paymentorder" sub_resource="payer" %}                                                                 |
+| `payer`                   | `object` | The payer object.                                                                                                                                  |
+| └➔&nbsp;`id`              | `string` | {% include field-description-id.md resource="payer" %}                                                                                             |
+| └➔&nbsp;`email`           | `string` | Payer's registered email address. The field is related to [3-D Secure 2](/{{ local_documentation_section }}/other-features#3-d-secure-2).       |
+| └➔&nbsp;`msisdn`          | `string` | Payer's registered mobile phone number. The field is related to [3-D Secure 2](/{{ local_documentation_section }}/other-features#3-d-secure-2). |
+| └➔&nbsp;`shippingAddress` | `object` | The shipping address object related to the `payer`. The field is related to [3-D Secure 2](/{{ local_documentation_section }}/other-features#3-d-secure-2).                                                                                                |
+| └─➔&nbsp;`addresse`       | `object` | The shipping address object related to the `payer`.                                                                                                |
+| └─➔&nbsp;`coAddress`      | `string` | Payer' s c/o address, if applicable.                                                                                                               |
+| └─➔&nbsp;`streetAddress`  | `string` | Payer's street address                                                                                                                             |
+| └─➔&nbsp;`zipCode`        | `string` | Payer's zip code                                                                                                                                   |
+| └─➔&nbsp;`city`           | `string` | Payer's city of residence                                                                                                                          |
+| └─➔&nbsp;`countryCode`    | `string` | Country Code for country of residence.                                                                                                             |
 
 ## Updating Payment Menu
 
