@@ -11,3 +11,18 @@ services:
     volumes:
       - .:/srv/jekyll
       - .bundle:/usr/local/bundle
+  lasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.8.0
+    ports:
+      - '9200:9200'
+      - '9300:9300'
+    environment:
+      - bootstrap.memory_lock=true
+      - discovery.type=single-node
+      - "ES_JAVA_OPTS=-Xms2g -Xmx2g"
+      - cluster.routing.allocation.disk.threshold_enabled=false
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    user: 'elasticsearch'
