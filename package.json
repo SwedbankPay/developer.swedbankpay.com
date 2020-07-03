@@ -22,7 +22,7 @@
     "remark-lint-file-extension": "^1.0.0",
     "remark-lint-final-definition": "^2.0.0",
     "remark-lint-final-newline": "^1.0.0",
-    "remark-lint-hard-break-spaces": "^2.0.0",
+    "remark-lint-hard-break-spaces": "^2.0.1",
     "remark-lint-heading-increment": "^2.0.0",
     "remark-lint-heading-style": "^2.0.0",
     "remark-lint-heading-whitespace": "^1.0.0",
