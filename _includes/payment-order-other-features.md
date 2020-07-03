@@ -1464,7 +1464,7 @@ Content-Type: application/json
             "workPhoneNumber" : "+4787654321",
             "homePhoneNumber" : "+4776543210",
             "shippingAddress": {
-                "addressee": "Olivia Nyhuus",
+               "addressee": "Olivia Nyhuus",
                "streetAddress": "Saltnestoppen 43",
                 "coAddress": "",
                 "city": "Saltnes",
