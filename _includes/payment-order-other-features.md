@@ -1485,7 +1485,7 @@ Content-Type: application/json
 | └➔&nbsp;`email`           | `string` | Payer's registered email address. The field is related to [3-D Secure 2](/{{ local_documentation_section }}/other-features#3-d-secure-2).       |
 | └➔&nbsp;`msisdn`          | `string` | Payer's registered mobile phone number. The field is related to [3-D Secure 2](/{{ local_documentation_section }}/other-features#3-d-secure-2). |
 | └➔&nbsp;`shippingAddress` | `object` | The shipping address object related to the `payer`. The field is related to [3-D Secure 2](/{{ local_documentation_section }}/other-features#3-d-secure-2).                                                                                                |
-| └─➔&nbsp;`addresse`       | `object` | The shipping address object related to the `payer`.                                                                                                |
+| └─➔&nbsp;`addresse`       | `string` | The name of the addressee – the receiver of the shipped goods.                                                                                                |
 | └─➔&nbsp;`coAddress`      | `string` | Payer' s c/o address, if applicable.                                                                                                               |
 | └─➔&nbsp;`streetAddress`  | `string` | Payer's street address                                                                                                                             |
 | └─➔&nbsp;`zipCode`        | `string` | Payer's zip code                                                                                                                                   |
