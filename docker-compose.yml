@@ -11,7 +11,7 @@ services:
     volumes:
       - .:/srv/jekyll
       - .bundle:/usr/local/bundle
-  lasticsearch:
+  elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.8.0
     ports:
       - '9200:9200'
@@ -26,3 +26,18 @@ services:
         soft: -1
         hard: -1
     user: 'elasticsearch'
+    volumes:
+      - .elasticsearch-data:/usr/share/elasticsearch/data
+  kibana:
+    container_name: kibana
+    image: docker.elastic.co/kibana/kibana:7.4.0
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    ports:
+      - 5601:5601
+    depends_on:
+      - elasticsearch
+
+volumes:
+  elasticsearch-data:
+    driver: local
