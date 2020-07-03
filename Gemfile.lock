@@ -140,6 +140,9 @@ GEM
     sawyer (0.8.2)
       addressable (>= 2.3.5)
       faraday (> 0.8, < 2.0)
+    searchyll (0.10.2)
+      jekyll (>= 3.0)
+      nokogiri
     sprockets (2.12.5)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -190,8 +193,8 @@ DEPENDENCIES
   jemoji
   kramdown (>= 2.3.0)
   kramdown-plantuml
-  rake (~> 13.0.3)
-  swedbank-pay-design-guide-jekyll-theme (~> 1.9)
+  rake (~> 13.0.1)
+  searchyll
 
 BUNDLED WITH
    2.1.4
