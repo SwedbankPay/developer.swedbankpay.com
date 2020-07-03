@@ -1479,7 +1479,7 @@ Content-Type: application/json
 {:.table .table-striped}
 | Field                     | Type     | Description                                                                                                                                        |
 | :------------------------ | :------- | :------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `paymentorder`            | `string` | {% include field-description-id.md resource="paymentorder" sub_resource="payer" %}                                                                 |
+| `paymentorder`            | `object` | {% include field-description-id.md resource="paymentorder" sub_resource="payer" %}                                                                 |
 | `payer`                   | `object` | The payer object.                                                                                                                                  |
 | └➔&nbsp;`id`              | `string` | {% include field-description-id.md resource="payer" %}                                                                                             |
 | └➔&nbsp;`email`           | `string` | Payer's registered email address. The field is related to [3-D Secure 2](/{{ local_documentation_section }}/other-features#3-d-secure-2).       |
