@@ -1428,69 +1428,7 @@ with the request parameter `instrument`.
 
 {% include settlement-reconciliation.md api_resource="paymentorders" %}
 
-## 3-D Secure 2
-
-When dealing with card payments, 3-D Secure authentication of the
-cardholder is an essential topic. 3-D Secure 2 is an improved version of the
-old protocol, now allowing frictionless payments where transactions can be
-completed without input from the cardholder. Therefore, there are certain fields
-that should be included when implementing 3-D Secure 2. These are listed below
-in the abbreviated `Purchase` request. 
-
-{:.code-header}
-**Request**
-
-```http
-POST /psp/paymentorders HTTP/1.1
-Host: {{ page.api_host }}
-Authorization: Bearer <AccessToken>
-Content-Type: application/json
-
-{
-    "paymentorder": {
-        "operation": "Purchase",
-        "currency": "SEK",
-        "amount": 1500,
-        "vatAmount": 375,
-        "description": "Test Purchase",
-        "generatePaymentToken": true,
-        "userAgent": "Mozilla/5.0...",
-        "urls": {
-            "hostUrls": [ "https://example.com", "https://example.net" ]
-        },
-        "payer": {
-            "email": "olivia.nyhuus@payex.com",
-            "msisdn": "+4798765432",
-            "workPhoneNumber" : "+4787654321",
-            "homePhoneNumber" : "+4776543210",
-            "shippingAddress": {
-               "addressee": "Olivia Nyhuus",
-               "streetAddress": "Saltnestoppen 43",
-                "coAddress": "",
-                "city": "Saltnes",
-                "zipCode": "1642",
-                "countryCode": "NO"
-            }
-        }
-    }
-}
-```
-
-{:.table .table-striped}
-| Field                     | Type     | Description                                                                                                                                        |
-| :------------------------ | :------- | :------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `paymentorder`            | `object` | {% include field-description-id.md resource="paymentorder" sub_resource="payer" %}                                                                 |
-| `payer`                   | `object` | The payer object.                                                                                                                                  |
-| └➔&nbsp;`id`              | `string` | {% include field-description-id.md resource="payer" %}                                                                                             |
-| └➔&nbsp;`email`           | `string` | Payer's registered email address. The field is related to [3-D Secure 2](/{{ local_documentation_section }}/other-features#3-d-secure-2).       |
-| └➔&nbsp;`msisdn`          | `string` | Payer's registered mobile phone number. The field is related to [3-D Secure 2](/{{ local_documentation_section }}/other-features#3-d-secure-2). |
-| └➔&nbsp;`shippingAddress` | `object` | The shipping address object related to the `payer`. The field is related to [3-D Secure 2](/{{ local_documentation_section }}/other-features#3-d-secure-2).                                                                                                |
-| └─➔&nbsp;`addresse`       | `string` | The name of the addressee – the receiver of the shipped goods.                                                                                                |
-| └─➔&nbsp;`coAddress`      | `string` | Payer' s c/o address, if applicable.                                                                                                               |
-| └─➔&nbsp;`streetAddress`  | `string` | Payer's street address                                                                                                                             |
-| └─➔&nbsp;`zipCode`        | `string` | Payer's zip code                                                                                                                                   |
-| └─➔&nbsp;`city`           | `string` | Payer's city of residence                                                                                                                          |
-| └─➔&nbsp;`countryCode`    | `string` | Country Code for country of residence.                                                                                                             |
+{% include 3d-secure-2.md api_resource="paymentorder" %}
 
 ## Updating Payment Menu
 
