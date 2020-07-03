@@ -7,6 +7,7 @@ plugins:
   - jekyll-remote-theme
   - jekyll-material-icon-tag
   - "kramdown-plantuml"
+  - searchyll
 kramdown:
   input: GFM
   syntax_highlighter: rouge
@@ -54,3 +55,10 @@ defaults:
       front_end_url: https://ecom.externalintegration.payex.com
       consumer_ssn_se: 199710202392
       consumer_ssn_no: 26026708248
+
+
+elasticsearch:
+  url: "http://localhost:9200/"     # Required. Supports auth and SSL: https://user:pass@someurl.com
+                                    # Can also read URLs stored in environment variable named
+                                    # BONSAI_URL and ELASTICSEARCH_URL.
+  index_name: "developer"           # Optional. Default is "jekyll".
