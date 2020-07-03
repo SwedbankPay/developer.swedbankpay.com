@@ -26,7 +26,7 @@
     "remark-lint-heading-increment": "^2.0.0",
     "remark-lint-heading-style": "^2.0.0",
     "remark-lint-heading-whitespace": "^1.0.0",
-    "remark-lint-link-title-style": "^2.0.0",
+    "remark-lint-link-title-style": "^2.0.1",
     "remark-lint-list-item-bullet-indent": "^2.0.0",
     "remark-lint-list-item-content-indent": "^2.0.0",
     "remark-lint-list-item-indent": "^2.0.0",
