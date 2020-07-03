@@ -10,7 +10,7 @@
     "remark-frontmatter": "^2.0.0",
     "remark-heading-gap": "^3.0.0",
     "remark-lint": "^7.0.0",
-    "remark-lint-blockquote-indentation": "^2.0.0",
+    "remark-lint-blockquote-indentation": "^2.0.1",
     "remark-lint-checkbox-character-style": "^2.0.0",
     "remark-lint-checkbox-content-indent": "^2.0.0",
     "remark-lint-code": "^2.0.0",
