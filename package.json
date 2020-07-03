@@ -52,7 +52,7 @@
     "remark-lint-no-multiple-toplevel-headings": "^2.0.0",
     "remark-lint-no-reference-like-url": "^2.0.0",
     "remark-lint-no-repeat-punctuation": "^0.1.3",
-    "remark-lint-no-shell-dollars": "^2.0.1",
+    "remark-lint-no-shell-dollars": "^2.0.2",
     "remark-lint-no-shortcut-reference-image": "^2.0.0",
     "remark-lint-no-table-indentation": "^2.0.0",
     "remark-lint-no-tabs": "^2.0.0",
