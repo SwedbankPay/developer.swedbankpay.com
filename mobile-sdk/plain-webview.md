@@ -12,6 +12,10 @@ sidebar:
       title: Merchant Backend Sample Code
     - url: /mobile-sdk/android
       title: Android
+    - url: /mobile-sdk/ios
+      title: iOS
+    - url: /mobile-sdk/flowcharts
+      title: Process Diagrams
     - url: /mobile-sdk/plain-webview
       title: Using a Web View Instead
 ---

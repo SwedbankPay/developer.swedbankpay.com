@@ -12,6 +12,10 @@ sidebar:
       title: Merchant Backend Sample Code
     - url: /mobile-sdk/android
       title: Android
+    - url: /mobile-sdk/ios
+      title: iOS
+    - url: /mobile-sdk/flowcharts
+      title: Process Diagrams
 ---
 
 {% capture disclaimer %}
@@ -36,10 +40,93 @@ The Android component of the Swedbank Pay Mobile SDK is distributed through JCen
 
 ## Usage
 
+```mermaid
+sequenceDiagram
+    participant App
+    participant SDK
+    participant Merchant
+    participant SwedbankPay as Swedbank Pay
+    participant Ext as External App
+
+    rect rgba(238, 112, 35, 0.05)
+        note left of App: Configuration
+        App ->> SDK: Configuration.Builder("https://example.com/swedbank-pay-mobile/").build()
+        SDK -->> App: configuration
+        App ->> SDK: PaymentFragment.defaultConfiguration = configuration
+    end
+
+    opt Unless Guest Payment
+        App ->> SDK: Consumer(language = ..., shippingAddressRestrictedToCountryCodes = ...)
+        SDK -->> App: consumer
+    end
+
+    rect rgba(138, 205, 195, 0.1)
+        note left of App: Prepare Payment
+        App ->> SDK: PaymentOrderUrls(context, "https://example.com/swedbank-pay-mobile/")
+        SDK -->> App: paymentOrderUrls
+        App ->> SDK: PaymentOrder(urls = paymentOrderUrls, ...)
+        SDK -->> App: paymentOrder
+    end
+
+    App ->> SDK: activity.paymentViewModel.[rich]state.observe(...)
+    App ->> SDK: PaymentFragment.ArgumentsBuilder().consumer(consumer).paymentOrder(paymentOrder).build()
+    SDK -->> App: arguments
+    App ->> SDK: PaymentFragment()
+    SDK -->> App: paymentFragment
+    App ->> SDK: paymentFragment.arguments = arguments
+    App ->> App: Show paymentFragment
+
+    rect rgba(138, 205, 195, 0.1)
+        note left of App: Discover Endpoints
+        SDK ->> Merchant: GET /swedbank-pay-mobile/
+        Merchant -->> SDK: { "consumers": "/swedbank-pay-mobile/consumers", "paymentorders": "/swedbank-pay-mobile/paymentorders" }
+    end
+
+    opt Unless Guest Payment
+        SDK ->> Merchant: POST /swedbank-pay-mobile/consumers
+        Merchant ->> SwedbankPay: POST /psp/consumers
+        SwedbankPay -->> Merchant: rel: view-consumer-identification
+        Merchant -->> SDK: rel: view-consumer-identification
+        SDK ->> SDK: Show html page with view-consumer-identification
+        SwedbankPay ->> SDK: Consumer identification process
+        SDK ->> SwedbankPay: Consumer identification process
+        SwedbankPay ->> SDK: consumerProfileRef
+        SDK ->> SDK: paymentOrder.payer = { consumerProfileRef }
+    end
+
+    rect rgba(138, 205, 195, 0.1)
+        note left of App: Payment Menu
+        SDK ->> Merchant: POST /swedbank-pay-mobile/paymentorders
+        Merchant ->> SwedbankPay: POST /psp/paymentorders
+        SwedbankPay -->> Merchant: rel: view-paymentorder
+        Merchant -->> SDK: rel: view-paymentorder
+        SDK ->> SDK: Show html page with view-paymentorder
+        SwedbankPay ->> SDK: Payment process
+        SDK ->> SwedbankPay: Payment process
+        opt Redirect to Third-Party Page
+            SDK ->> SDK: Show third-party page
+            SDK ->> SDK: Intercept navigation to paymentUrl
+            SDK ->> SDK: Reload html page with view-paymentorder
+        end
+        opt Launch External Application
+            SDK ->> Ext: Start external application
+            Ext ->> Merchant: Open paymentUrl
+            Merchant ->> Ext: 301 Moved Permanently\nLocation: intent://<...>action=;action=com.swedbankpay.mobilesdk.VIEW_PAYMENTORDER
+            Ext ->> SDK: Start activity\naction=com.swedbankpay.mobilesdk.VIEW_PAYMENTORDER
+            SDK ->> SDK: Reload html page with view-paymentorder
+        end
+        SDK ->> SDK: Intercept navigation to completeUrl
+        SDK ->> SDK: paymentViewModel.state <- SUCCESS
+        SDK ->> App: observer.onChanged(SUCCESS)
+    end
+
+    App ->> App: Remove paymentFragment
+```
+
 The public API of the Android SDK is in the package [`com.swedbankpay.mobilesdk`][dokka-pkg]. The main component is [`PaymentFragment`][dokka-payfrag], a `Fragment` that handles a single payment order. To use a `PaymentFragment`, it must have a [`Configuration`][dokka-config]. In most cases it is enough to construct a single `Configuration` and set it as the [default][dokka-payfrag-defconf]. In more advanced cases you will need to subclass `PaymentFragment` and override [`getConfiguration`][dokka-payfrag-getconf].
 
 ```kotlin
-val backendUrl = "https://example.com/swedbankpay-mobile-sdk/"
+val backendUrl = "https://example.com/swedbank-pay-mobile/"
 
 val configuration = Configuration.Builder(backendUrl)
     .build()
@@ -48,7 +135,7 @@ PaymentFragment.defaultConfiguration = configuration
 
 To start a payment, you need a [`PaymentOrder`][dokka-paymentorder], and, unless making a guest payment, a [`Consumer`][dokka-consumer]. Using a `Consumer` makes future payments by the same payer easier.
 
-The semantics of `Consumer` fields are the same as the fields of the [POST /psp/consumers][checkin-consumer]. There are default values for the `operation` and `language` fields (`ConsumerOperation.INITIATE_CONSUMER_SESSION` and `Language.ENGLISH`, respectively).
+The semantics of `Consumer` properties are the same as the fields of the [POST /psp/consumers][checkin-consumer]. There are default values for the `operation` and `language` properties (`ConsumerOperation.INITIATE_CONSUMER_SESSION` and `Language.ENGLISH`, respectively).
 
 ```kotlin
 val consumer = Consumer(
@@ -57,7 +144,7 @@ val consumer = Consumer(
 )
 ```
 
-Similarly, the semantics of `PaymentOrder` fields are the same as the fields of the [POST /psp/paymentorders][checkin-paymentorder] request. Sensible default values are provided for many of the fields. The `urls` field has no default per se, but there are [convenience constructors][dokka-paymentorderurls-init] available for it, and it is recommended that you use them. Assuming you have the Android Payment Url Helper endpoint set up with the specified static path relative to your backend url, then using the one of the `PaymentOrderUrls(context: Context, backendUrl: String)` variants will set the `paymentUrl` correctly. \[Development note: TODO a variant that allows spcifiying the url of the helper endpoint directly.\].
+Similarly, the semantics of `PaymentOrder` properties are the same as the fields of the [POST /psp/paymentorders][checkin-paymentorder] request. Sensible default values are provided for many of the properties. The `urls` property has no default per se, but there are [convenience constructors][dokka-paymentorderurls-init] available for it, and it is recommended that you use them. Assuming you have the Android Payment Url Helper endpoint set up with the specified static path relative to your backend url (i.e. `sdk-callback/android-intent`), then using the one of the `PaymentOrderUrls(context: Context, backendUrl: String)` variants will set the `paymentUrl` correctly.
 
 ```kotlin
 val paymentOrder = PaymentOrder(
@@ -65,6 +152,7 @@ val paymentOrder = PaymentOrder(
     amount = 1500L,
     vatAmount = 375L,
     description = "Test Purchase",
+    language = Language.SWEDISH,
     urls = PaymentOrderUrls(context, backendUrl),
     payeeInfo = PayeeInfo(
         // ①
@@ -144,35 +232,35 @@ paymentViewModel.richState.observe(this, Observer {
     if (it.state.isFinal == true) {
         when (val problem = it.problem) {
             is Problem.Client.MobileSDK.Unauthorized ->
-                Log.d(TAG, "Credentials invalidated: ${problem.message})")
+                Log.d(TAG, "Credentials invalidated: ${problem.message}")
 
             if Problem.Client.MobileSDK ->
-                Log.d(TAG, "Other client error at Merchant Backend: ${problem.raw})")
+                Log.d(TAG, "Other client error at Merchant Backend: ${problem.raw}")
 
             is Problem.Client.SwedbankPay.InputError ->
                 Log.d(TAG, "Payment rejected by Swedbank Pay: ${problem.detail}; Fix: ${problem.action}")
 
             is Problem.Client.Unknown ->
                 if (problem.type == "https://example.com/problems/special-problem") {
-                    Log.d(TAG, "Special problem occurred: ${problem.detail})
+                    Log.d(TAG, "Special problem occurred: ${problem.detail}")
                 } else {
-                    Log.d(TAG, "Unexpected problem: ${problem.raw})
+                    Log.d(TAG, "Unexpected problem: ${problem.raw}")
                 }
 
             is Problem.Server.MobileSDK.BackendConnectionTimeout ->
                 Log.d(TAG, "Swedbank Pay timeout: ${problem.message}")
 
             is Problem.Server.SwedbankPay.SystemError ->
-                Log.d(TAG, "Generic server error at Swedbank Pay: ${problem.detail}"
+                Log.d(TAG, "Generic server error at Swedbank Pay: ${problem.detail}")
 
             is SwedbankPayProblem ->
                 Log.d(TAG, "Other problem at Swedbank Pay: ${problem.detail}; Fix: ${problem.action}")
 
             is UnknownProblem ->
-                Log.d(TAG, "Unexpected problem: ${problem.raw})
+                Log.d(TAG, "Unexpected problem: ${problem.raw}")
 
             is UnexpectedContentProblem ->
-                Log.d(TAG, "Unexpected response from Merchant Backend: ${problem.body}"
+                Log.d(TAG, "Unexpected response from Merchant Backend: ${problem.body}")
         }
     }
 })
@@ -187,7 +275,9 @@ If a third party application is launched, it will signal the return to the payme
 Note that there is an [argument][dokka-payfrag-argbuilder-usebrowser] for debugging purposes that cause third-party web pages to be opened in an external application. In that case the process continues analogously to the external application case. Using this argument should not be necessary, however. If you do find a case that does not work inside the PaymentFragment, but does work when using the browser for third-party sites, please file a bug on the Android SDK.
 
 {% include iterator.html prev_href="merchant-backend-samples"
-                         prev_title="Back: Merchant Backend Sample Code" %}
+                         prev_title="Back: Merchant Backend Sample Code"
+                         next_href="ios"
+                         next_title="Next: iOS" %}
 
 [dokka-pkg]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/index.md
 [dokka-payfrag]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-payment-fragment/index.md
