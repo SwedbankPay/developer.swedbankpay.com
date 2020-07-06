@@ -29,7 +29,7 @@ covered by the other subsections." %}
 {% include payment-resource.md api_resource="creditcard"
 documentation_section="card" show_status_operations=true %}
 
-{% include payments-operations.md api_resource="creditcard" %}
+{% include payments-operations.md api_resource="creditcard" documentation_section="card" %}
 
 {% include payment-transaction-states.md %}
 
@@ -70,7 +70,7 @@ when="at the 3-D Secure verification for credit card payments" full_reference=tr
 
 {% include card-authorization-transaction.md %}
 
-{% include payee-info.md api_resource="creditcard" %}
+{% include payee-info.md api_resource="creditcard" documentation_section="card" %}
 
 {% include prices.md %}
 
@@ -105,7 +105,7 @@ completing the payment.
 payment"  %}
 
 [purchase]: #purchase
-[user-agent-definition]: https://en.wikipedia.org/wiki/User_agent
+[user-agent]: https://en.wikipedia.org/wiki/User_agent
 [cancel]: /payments/card/after-payment#cancellations
 [capture]: /payments/card/capture
 [callback]: /payments/card/other-features#callback

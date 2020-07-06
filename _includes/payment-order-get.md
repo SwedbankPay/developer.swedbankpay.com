@@ -97,3 +97,4 @@ Content-Type: application/json
 -----------------------------------------
 [payment-menu]: /payment-menu
 [checkout]: /checkout
+[operations]: /checkout/other-features#operations

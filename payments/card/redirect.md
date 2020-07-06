@@ -187,5 +187,5 @@ next_href="seamless-view" next_title="Next: Seamless View" %}
 [reversal]: /payments/card/after-payment#reversals
 [card-payment]: /assets/img/payments/card-payment.png
 [verify]: /payments/card/other-features#verify
-[user-agent-definition]: https://en.wikipedia.org/wiki/User_agent
+[user-agent]: https://en.wikipedia.org/wiki/User_agent
 [payment-transaction-states]: /payments/card/other-features#payment-states-and-transaction-states
