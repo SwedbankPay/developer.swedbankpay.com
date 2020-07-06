@@ -4,7 +4,7 @@
 {% if api_resource == "creditcard" %}
     {% assign api_resource_field_name = "payment" %}
 {% else %}
-    {% assign api_resource_tag = api_resource %}
+    {% assign api_resource_field_name = api_resource %}
 {% endif %}
 
 ## 3-D Secure 2
