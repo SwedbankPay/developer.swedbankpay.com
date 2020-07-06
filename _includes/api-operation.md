@@ -1,6 +1,6 @@
 {%- assign api_resource = include.api_resource  | default: "UNKNOWN_RESOURCE" -%}
 {%- assign operation = include.operation -%}
-{%- assign content_type = include.content_type | default: "application/javascript" -%}
+{%- assign content_type = include.content_type | default: "application/json" -%}
 {%- assign href_tail = include.href_tail -%}
 {%- capture href -%}
 {{- page.api_url }}/psp/{{ api_resource }}/payments/{{ page.payment_id }}
