@@ -63,15 +63,15 @@ The cardinal rule for creating good commits is to ensure there is only one
 rule:
 
 *   The smaller the amount of code being changed, the quicker and easier it is
-  to review and identify potential flaws.
+    to review and identify potential flaws.
 *   If a change is found to be flawed later, it may be necessary to revert the
-  broken commit. This is much easier to do if there are not other unrelated
-  code changes entangled with the original commit.
+    broken commit. This is much easier to do if there are not other unrelated
+    code changes entangled with the original commit.
 *   When troubleshooting problems using Git's [bisect][bisect] capability,
-  small well defined changes will aid in isolating exactly where the code
-  problem was introduced.
+    small well defined changes will aid in isolating exactly where the code
+    problem was introduced.
 *   When browsing history using Git annotate/blame, small well defined changes
-  also aid in isolating exactly where & why a piece of code came from.
+    also aid in isolating exactly where & why a piece of code came from.
 
 ## Things to avoid when creating commits
 
@@ -123,7 +123,7 @@ implementation. If patch impacts a public HTTP, use the APIImpact flag
 The basic rule to follow is:
 
 > If a code change can be split into a sequence of patches/commits, then it
-> should be split. **Less is *not*   more. More is more**.
+> should be split. **Less is _not_   more. More is more**.
 
 ### Examples of bad practice
 
@@ -162,14 +162,14 @@ There are at least two independent changes made in this commit.
 What is the problem with this?
 
 *   First there is no compelling reason why these changes needed to be made at
-  the same time. A first commit could have included the changes to stop calling
-  `hard_reboot` in various places. A second commit could have re-written the
-  `hard_reboot` impl.
+    the same time. A first commit could have included the changes to stop calling
+    `hard_reboot` in various places. A second commit could have re-written the
+    `hard_reboot` impl.
 *   Second, as the switch to using the libvirt ##reset## method was buried in
-  the large code refactoring, reviewers missed the fact that this was
-  introducing a dependency on a newer libvirt API version. This commit was
-  identified as the culprit reasonably quickly, but a trivial revert is not
-  possible, due to the wide variety of unrelated changes included.
+    the large code refactoring, reviewers missed the fact that this was
+    introducing a dependency on a newer libvirt API version. This commit was
+    identified as the culprit reasonably quickly, but a trivial revert is not
+    possible, due to the wide variety of unrelated changes included.
 
 {:.code-header}
 **Example 2**
@@ -212,11 +212,11 @@ QCow2/Raw images. This should have been split into at least four separate
 commits:
 
 1.  Replace the `use_cow_images` config FLAG with the new FLAG
-   `libvirt_local_images_type`, with back-compat code for support of
-   legacy `use_cow_images` FLAG 2. Creation of internal "Image" class and
-   subclasses for Raw & QCow2 image type impls.
+    `libvirt_local_images_type`, with back-compat code for support of
+    legacy `use_cow_images` FLAG 2. Creation of internal "Image" class and
+    subclasses for Raw & QCow2 image type impls.
 2.  Refactor libvirt driver to replace raw/qcow2 image management code, with
-   calls to the new `Image` class APIs.
+    calls to the new `Image` class APIs.
 3.  Introduce the new "LVM" `Image` class implementation.
 
 ### Examples of good practice
@@ -224,7 +224,7 @@ commits:
 {:.code-header}
 **Example 1**
 
-```http
+````http
 commit 3114a97ba188895daff4a3d337b2c73855d4632d
 Author: [removed]
 Date:   Mon Jun 11 17:16:10 2012 +0100
@@ -270,7 +270,7 @@ Date:   Wed May 30 14:57:03 2012 -0400
     ...snip...
     Add refresh_provider_fw_rules() to compute rpcapi.
     ...many more commits...
-```
+````
 
 This sequence of commits refactored the entire RPC API layer inside nova to
 allow pluggable messaging implementations. With such a major change in a core
@@ -289,7 +289,7 @@ to remember:
 When reading bug reports, after a number of back & forth comments, it is often
 as clear as mud, what the root cause problem is. The commit message should
 have a clear statement as to what the original problem is. The bug is merely
-interesting historical background on *how*   the problem was identified. It
+interesting historical background on _how_   the problem was identified. It
 should be possible to review a proposed patch for correctness without needing
 to read the bug ticket.
 
@@ -308,10 +308,10 @@ What is self-evident to one person, might be clear as mud to another person.
 Always document what the original problem was and how it is being fixed, for
 any change except the most obvious typos, or whitespace only commits.
 
-### Describe *why*   a change is being made
+### Describe _why_   a change is being made
 
 A common mistake is to just document how the code has been written, without
-describing *why*   the developer chose to do it that way. By all means describe
+describing _why_   the developer chose to do it that way. By all means describe
 the overall code structure, particularly for large changes, but more
 importantly describe the intent/motivation behind the changes.
 
@@ -350,7 +350,7 @@ tradeoffs have been done in terms of short term goals vs. long term wishes.
 
 In other words, if you rebase your change please don't add
 "Patch set 2: rebased" to your commit message.  That isn't going to be
-relevant once your change has merged.  Please *do*   make a note of that in
+relevant once your change has merged.  Please _do_   make a note of that in
 Gerrit as a comment on your change, however.  It helps reviewers know what
 changed between patch sets.  This also applies to comments such as
 "Added unit tests", "Fixed localization problems", or any other such patch
@@ -360,7 +360,7 @@ The main rule to follow is:
 
 > The commit message must contain all the information required to fully
 > understand & review the patch for correctness.
-> **Less is *not*   more.More is more.**
+> **Less is _not_   more.More is more.**
 
 ### Including external references
 
@@ -378,7 +378,7 @@ Git to include a `Signed-off-by` tag (generated by 'git commit -s'), this is
 not required. Prior to gaining the ability to submit code, it should rather be
 required that all contributors sign a CLA, which serves an equivalent purpose.
 
-We encourage the use of Co-Authored-By: name <name@example.com> in commit
+We encourage the use of Co-Authored-By: name [name@example.com](mailto:name@example.com) in commit
 messages to indicate people who worked on a particular patch. It's a
 convention for recognizing multiple authors, and our projects would encourage
 the stats tools to observe it when collecting statistics.
@@ -388,16 +388,16 @@ the stats tools to observe it when collecting statistics.
 *   Provide a brief description of the change in the first line.
 *   Insert a single blank line after the first line.
 *   Provide a detailed description of the change in the following lines,
-  breaking paragraphs where needed.
+    breaking paragraphs where needed.
 *   The first line should be limited to 50 characters and should not end with
 *   a period.
 *   Subsequent lines should be wrapped at 72 characters.
 *   vim (the default `$EDITOR` on most distros) can wrap automatically lines
-  for you. In most cases you just need to copy the example vimrc file
-  (which can be found somewhere like `/usr/share/vim/vim74/vimrc_example.vim`)
-  to `/.vimrc` if you don't have one already.
+    for you. In most cases you just need to copy the example vimrc file
+    (which can be found somewhere like `/usr/share/vim/vim74/vimrc_example.vim`)
+    to `/.vimrc` if you don't have one already.
 *   After editing a paragraph, you can re-wrap it by pressing escape, ensuring
-  the cursor is within the paragraph and typing `gqip`.
+    the cursor is within the paragraph and typing `gqip`.
 *   Put external references at the very end of the commit message.
 
 {:.code-header}

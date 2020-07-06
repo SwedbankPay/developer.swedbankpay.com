@@ -60,13 +60,13 @@ repository on GitHub.
 
 Code quality of course depends on a lot of other factors too, such as:
 
--   Following best practice of the language and environment the code is being
-  written in.
--   Adhering to established style guides.
--   Good understanding of
-  [The Principles of Object Oriented Design][principles-of-object-oriented-design].
--   A good domain architecture, modelled after
-  [Domain Driven Design][domain-driven-design].
+*   Following best practice of the language and environment the code is being
+    written in.
+*   Adhering to established style guides.
+*   Good understanding of
+    [The Principles of Object Oriented Design][principles-of-object-oriented-design].
+*   A good domain architecture, modelled after
+    [Domain Driven Design][domain-driven-design].
 
 ### Accessibility
 
@@ -92,33 +92,33 @@ enumerates the most important aspects that a project should be governed by to
 be perceived as accessible:
 
 1.  Outstanding features and bugs should be easy to find in the list of “issues”
-   in the project’s repository.
+    in the project’s repository.
 2.  The project’s documentation should be easily accessible in or linked to from
-   the project’s `README` file.
+    the project’s `README` file.
 3.  The `README` file and associated documentation should be written in simple
-   [Markdown][markdown] markup so it is easy to correct by anyone simply by
-   using GitHub’s online Markdown editing features.
+    [Markdown][markdown] markup so it is easy to correct by anyone simply by
+    using GitHub’s online Markdown editing features.
 4.  How to contribute should be clearly explained in a `CONTRIBUTING` file.
 5.  The process of contributing should be as simple as possible.
     1.  The project should follow the norm and best practice of the language and
-     environment it is written in.
+        environment it is written in.
     2.  There should be tests in the project that are easy to get up and running
-     on a developer machine without installing any external services, tools or
-     libraries, unless they are handled by a package manager like NuGet.
+        on a developer machine without installing any external services, tools or
+        libraries, unless they are handled by a package manager like NuGet.
     3.  Contributed code should be checked by a
-     [continuous integration][continuous-integration] server that labels the
-     status of pull request accordingly. If a test fails, the contributor
-     should be alerted of its failure through GitHub’s interface.
+        [continuous integration][continuous-integration] server that labels the
+        status of pull request accordingly. If a test fails, the contributor
+        should be alerted of its failure through GitHub’s interface.
 6.  All code contributions should be run through a public continuous integration
-   server so build failures are visible to the contributor such that it can be
-   fixed without any project manager’s involvement.
+    server so build failures are visible to the contributor such that it can be
+    fixed without any project manager’s involvement.
 7.  The development and branching process should preferably be based on an
-   existing scheme such as [GitFlow][gitflow] or [GitHub Flow][github-flow].
+    existing scheme such as [GitFlow][gitflow] or [GitHub Flow][github-flow].
 8.  All development should be done in public.
     1.  Code should be pushed to GitHub regularly, so it’s possible to see
-     progress.
+        progress.
     2.  For incomplete features and bugfixes, [GitFlow][gitflow] with branch
-     prefixes such as `feature/` and `hotfix/` should be used
+        prefixes such as `feature/` and `hotfix/` should be used
     3.  All code in development should be pushed as often as possible.
 
 ### Security
