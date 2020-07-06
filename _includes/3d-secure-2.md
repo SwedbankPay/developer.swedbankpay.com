@@ -1,4 +1,6 @@
 {% assign api_resource = include.api_resource %}
+{% assign documentation_section = include.documentation_section %}
+
 
 {% if api_resource == "creditcard" %}
     {% assign api_resource_tag = "payment" %}
@@ -114,9 +116,9 @@ Content-Type: application/json
 | `paymentorder`            | `object` | {% include field-description-id.md resource="paymentorder" sub_resource="payer" %}                                                                 |
 | `payer`                   | `object` | The payer object.                                                                                                                                  |
 | └➔&nbsp;`id`              | `string` | {% include field-description-id.md resource="payer" %}                                                                                             |
-| └➔&nbsp;`email`           | `string` | Payer's registered email address. The field is related to [3-D Secure 2](/{{ local_documentation_section }}/other-features#3-d-secure-2).       |
-| └➔&nbsp;`msisdn`          | `string` | Payer's registered mobile phone number. The field is related to [3-D Secure 2](/{{ local_documentation_section }}/other-features#3-d-secure-2). |
-| └➔&nbsp;`shippingAddress` | `object` | The shipping address object related to the `payer`. The field is related to [3-D Secure 2](/{{ local_documentation_section }}/other-features#3-d-secure-2).                                                                                                |
+| └➔&nbsp;`email`           | `string` | Payer's registered email address. The field is related to [3-D Secure 2](/{{ documentation_section }}/other-features#3-d-secure-2).       |
+| └➔&nbsp;`msisdn`          | `string` | Payer's registered mobile phone number. The field is related to [3-D Secure 2](/{{ documentation_section }}/other-features#3-d-secure-2). |
+| └➔&nbsp;`shippingAddress` | `object` | The shipping address object related to the `payer`. The field is related to [3-D Secure 2](/{{ documentation_section }}/other-features#3-d-secure-2).                                                                                                |
 | └─➔&nbsp;`addresse`       | `string` | The name of the addressee – the receiver of the shipped goods.                                                                                                |
 | └─➔&nbsp;`coAddress`      | `string` | Payer' s c/o address, if applicable.                                                                                                               |
 | └─➔&nbsp;`streetAddress`  | `string` | Payer's street address                                                                                                                             |
@@ -126,3 +128,4 @@ Content-Type: application/json
 
 {% endif %}
 
+[3ds2]: /payments/card/other-features#3-d-secure-2
