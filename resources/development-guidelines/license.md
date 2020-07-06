@@ -218,7 +218,7 @@ therefore a good fit and should be chosen when possible:
    you may not use this file except in compliance with the License.
    You may obtain a copy of the License at
 
-       http://www.apache.org/licenses/LICENSE-2.0
+       https://www.apache.org/licenses/LICENSE-2.0
 
    Unless required by applicable law or agreed to in writing, software
    distributed under the License is distributed on an "AS IS" BASIS,
@@ -232,4 +232,4 @@ repository and preferably be included as a header in all source code files in
 the same repository.
 
 [osi]: https://opensource.org/
-[license]: http://www.apache.org/licenses/LICENSE-2.0
+[license]: https://www.apache.org/licenses/LICENSE-2.0
