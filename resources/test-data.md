@@ -127,6 +127,14 @@ To test a logged in user in the Demo Shop, please use the following test data:
 | `4571994016401817` | 10/17  | `212` | NETS & loopback   |
 | `4571994016471869` | 01/19  | `829` | NETS & loopback   |
 
+### Forbrugsforeningen
+
+{:.table .table-striped}
+| Card number        | Expiry | CVC   | Type of test data |
+| :----------------- | :----- | :---- | :---------------- |
+| `6007220000000004` | 12/22  | `123` | Loopback only     |
+
+
 ## Failure Testing
 
 For testing errors in transactions there are two different methods. The first
