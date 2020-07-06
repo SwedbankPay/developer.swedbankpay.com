@@ -10,5 +10,6 @@ _gem-cache/
 .elasticsearch-data/
 node_modules/
 vendor/
+*.generated*
 commit-msg.txt
 *.generated*
