@@ -2,7 +2,7 @@
 
 [![Swedbank Pay Developer Portal][opengraph-image]][dev-portal]
 
-[![GitHub Actions Status][gh-actions-badge]][gh-actions]
+[![Test][gh-actions-badge]][gh-actions]
 ![Last Master Commit][last-commit-badge]
 
 This is the repository for [Swedbank Pay Developer Portal][swp-dp]. It is run as a
@@ -185,7 +185,7 @@ This website is available as open source under the terms of the
 [docker-install]: https://www.docker.com/
 [docker]: #docker
 [gems]: https://rubygems.org/
-[gh-actions-badge]: https://github.com/SwedbankPay/developer.swedbankpay.com/workflows/jekyll-build/badge.svg
+[gh-actions-badge]: https://github.com/SwedbankPay/developer.swedbankpay.com/workflows/Test/badge.svg
 [gh-actions]: https://github.com/SwedbankPay/developer.swedbankpay.com/actions
 [gh-pages]: https://pages.github.com/
 [github]: https://github.com/SwedbankPay/developer.swedbankpay.com/
