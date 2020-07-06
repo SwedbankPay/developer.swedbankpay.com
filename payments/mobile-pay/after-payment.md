@@ -79,11 +79,11 @@ sequenceDiagram
     participant SwedbankPay as Swedbank Pay
 
     Merchant->>SwedbankPay: POST <mobilepay capture>
-    Activate Merchant
-    Activate SwedbankPay
+    activate Merchant
+    activate SwedbankPay
     SwedbankPay-->>Merchant: transaction resource
-    Deactivate SwedbankPay
-    Deactivate Merchant
+    deactivate SwedbankPay
+    deactivate Merchant
 ```
 
 ## Cancellations
@@ -134,11 +134,11 @@ sequenceDiagram
     participant SwedbankPay as Swedbank Pay
 
     Merchant->>SwedbankPay: POST <mobilepay cancellation>
-    Activate Merchant
-    Activate SwedbankPay
+    activate Merchant
+    activate SwedbankPay
     SwedbankPay-->>Merchant: transaction resource
-    Deactivate SwedbankPay
-    Deactivate Merchant
+    deactivate SwedbankPay
+    deactivate Merchant
 ```
 
 ## Reversals
@@ -189,14 +189,14 @@ captured amount not yet reversed.
 
 ```mermaid
 sequenceDiagram
-    participant SwedbankPay as Swedbank Pay
+  participant SwedbankPay as Swedbank Pay
 
-    Merchant->>SwedbankPay: POST <mobilepay reversal>
-    Activate Merchant
-    Activate SwedbankPay
-    SwedbankPay-->>Merchant: transaction resource
-    Deactivate SwedbankPay
-    Deactivate Merchant
+  Merchant->>SwedbankPay: POST <mobilepay reversal>
+  activate Merchant
+  activate SwedbankPay
+  SwedbankPay-->>Merchant: transaction resource
+  deactivate SwedbankPay
+  deactivate Merchant
 ```
 
 {% include abort-reference.md api_resource="mobilepay"

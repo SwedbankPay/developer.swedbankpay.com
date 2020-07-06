@@ -103,12 +103,14 @@ capture, you will only cancel the remaining authorized amount.
 
 ```mermaid
 sequenceDiagram
-Merchant->>PayEx: Post <Invoice cancellations>
-activate Merchant
-activate PayEx
-PayEx-->>Merchant: transaction resource
-deactivate Merchant
-deactivate PayEx
+  participant SwedbankPay as Swedbank Pay
+
+  Merchant->>SwedbankPay: Post <Invoice cancellations>
+  activate Merchant
+  activate SwedbankPay
+  SwedbankPay-->>Merchant: transaction resource
+  deactivate Merchant
+  deactivate SwedbankPay
 ```
 
 ## Reversals
@@ -181,12 +183,14 @@ some captured amount not yet reversed.
 
 ```mermaid
 sequenceDiagram
-    Merchant->>PayEx: Post <Invoice reversals>
+    participant SwedbankPay as Swedbank Pay
+
+    Merchant->>SwedbankPay: Post <Invoice reversals>
     activate Merchant
-    activate PayEx
-    PayEx-->>Merchant: transaction resource
+    activate SwedbankPay
+    SwedbankPay-->>Merchant: transaction resource
     deactivate Merchant
-    deactivate PayEx
+    deactivate SwedbankPay
 ```
 
 {% include iterator.html prev_href="capture" prev_title="Back: Capture"
