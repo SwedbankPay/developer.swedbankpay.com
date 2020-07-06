@@ -1,5 +1,5 @@
 ---
-title: Licence
+title: License
 sidebar:
   navigation:
   - title: Swedbank Pay Development Guidelines
@@ -12,8 +12,8 @@ sidebar:
       title: Contributing
     - url: /resources/development-guidelines/good-commit-practice
       title: Good Commit Practice
-    - url: /resources/development-guidelines/licence
-      title: Licence
+    - url: /resources/development-guidelines/license
+      title: License
 ---
 
 ## Licensing

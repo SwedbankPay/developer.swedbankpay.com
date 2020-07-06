@@ -12,8 +12,8 @@ sidebar:
       title: Contributing
     - url: /resources/development-guidelines/good-commit-practice
       title: Good Commit Practice
-    - url: /resources/development-guidelines/licence
-      title: Licence
+    - url: /resources/development-guidelines/license
+      title: License
 ---
 
 ## Introduction
@@ -236,4 +236,4 @@ To help with writing release notes, projects can use the tool
 [release]: https://help.github.com/articles/creating-releases/
 [sans-25]: https://www.sans.org/top25-software-errors/
 [semantic-versioning]: https://semver.org/
-[software-licence]: /resources/development-guidelines/license
+[software-license]: /resources/development-guidelines/license
