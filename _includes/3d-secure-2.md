@@ -136,4 +136,3 @@ Content-Type: application/json
 
 [3ds2]: /payments/card/other-features#3-d-secure-2
 
-
