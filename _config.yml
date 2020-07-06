@@ -58,9 +58,11 @@ defaults:
       consumer_ssn_se: 199710202392
       consumer_ssn_no: 26026708248
 
-
 elasticsearch:
   url: "http://localhost:9200/"     # Required. Supports auth and SSL: https://user:pass@someurl.com
                                     # Can also read URLs stored in environment variable named
                                     # BONSAI_URL and ELASTICSEARCH_URL.
-  index_name: "developer"           # Optional. Default is "jekyll".
+  number_of_shards: 1               # Optional. Default is 1 primary shard.
+  number_of_replicas: 0             # Optional. Default is 1 replica.
+  index_name: "developer"              # Optional. Default is "jekyll".
+  default_type: "post"              # Optional. Default type is "post".
