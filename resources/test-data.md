@@ -132,7 +132,7 @@ To test a logged in user in the Demo Shop, please use the following test data:
 {:.table .table-striped}
 | Card number        | Expiry | CVC   | Type of test data |
 | :----------------- | :----- | :---- | :---------------- |
-| `6007220000000004` | 12/22  | `123` | NETS & loopback   |
+| `6007220000000004` | 12/22  | `123` | Loopback only     |
 
 
 ## Failure Testing
