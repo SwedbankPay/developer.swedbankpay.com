@@ -18,10 +18,10 @@ sidebar:
 
 ## Licensing
 
-The licensing of PayEx’ open source software should be one approved by the [Open
-Source Initiative][osi] and preferably one that is compatible with closed
-source, enterprise software. The [Apache 2.0 License][license] is therefore a
-good fit and should be chosen when possible:
+The licensing of Swedbank Pay's open source software should be one approved by
+the [Open Source Initiative][osi] and preferably one that is compatible with
+closed source, enterprise software. The [Apache 2.0 License][license] is
+therefore a good fit and should be chosen when possible:
 
 ```license
                                  Apache License

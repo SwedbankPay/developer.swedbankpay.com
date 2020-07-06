@@ -156,13 +156,14 @@ the total authorized amount.
 
 ```mermaid
 sequenceDiagram
+  participant SwedbankPay as Swedbank Pay
 
-Merchant->>PayEx: Post <Invoice captures>
-activate Merchant
-activate PayEx
-PayEx-->>Merchant: transaction resource
-deactivate Merchant
-deactivate PayEx
+  Merchant->>SwedbankPay: Post <Invoice captures>
+  activate Merchant
+  activate SwedbankPay
+  SwedbankPay-->>Merchant: transaction resource
+  deactivate Merchant
+  deactivate SwedbankPay
 ```
 
 {% include iterator.html prev_href="direct" prev_title="Back: Direct"

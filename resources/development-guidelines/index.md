@@ -135,16 +135,15 @@ rewritten through interactive rebasing as soon as possible and force-pushed.
 
 ## Licensing
 
-All of PayEx' open source software should be licensed under a liberal
-[software license][software-license].
+All of Swedbank Pay' open source software should be licensed under a liberal and
+enterprise, closed source-compatible [software license][software-license].
 
 ## Copyright
 
-The copyright for code written in PayEx’ open source projects is shared
-between Swedbank Pay and the individual authors of the source code. This
-should be stated in the above mentioned LICENSE file as well as in each
-individual source code file and other metadata
-(such as .NET assembly information, etc.):
+The copyright for code written in Swedbank Pay's open source projects is shared
+between Swedbank Pay and the individual authors of the source code. This should
+be stated in the above mentioned LICENSE file as well as in each individual
+source code file and other metadata (such as .NET assembly information, etc.):
 
 `Copyright © Swedbank Pay and Project Contributors`
 
@@ -167,12 +166,12 @@ They will be described in the following chapters.
 
 ### Versioning
 
-To release software, it needs to be versioned. PayEx’ open source modules
-should be versioned according to [semantic versioning][semantic-versioning].
-This means that whenever backward compatibility is broken, the major version
-should be incremented. When a new feature is added, the minor version should
-be incremented and when bug fixes and other minor changes are introduced,
-the revision number should be incremented.
+To release software, it needs to be versioned. Swedbank Pay's open source
+packages should be versioned according to [semantic
+versioning][semantic-versioning]. This means that whenever backward
+compatibility is broken, the major version should be incremented. When a new
+feature is added, the minor version should be incremented and when bug fixes and
+other minor changes are introduced, the revision number should be incremented.
 
 A version of the software should correspond to a commit in the Git repository.
 This commit should be tagged with the version number it represents and the
