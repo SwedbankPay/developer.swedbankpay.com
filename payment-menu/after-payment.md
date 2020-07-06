@@ -28,5 +28,4 @@ operations are and how they are executed is described below." %}
                          next_href="other-features"
                          next_title="Next: Other Features" %}
 
-
 [payment-order]: /payment-menu/payment-order

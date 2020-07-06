@@ -296,17 +296,8 @@ Swish does not support `recurring` payments.
 {% include iterator.html prev_href="seamless-view" prev_title="Back: Seamless view"
 next_href="other-features" next_title="Next: Other Features" %}
 
-[core-payment-resources]: /payments
 [create-payment]: /payments/swish/other-features#create-payment
-[general-http-info]: /home/technical-information
-[payee-reference]: /payments/swish/other-features#payee-reference
 [payex-admin-portal]: https://admin.payex.com/psp/login/
-[payment-order]: #create-payment
 [sales-transaction]: #sales
-[technical-reference-abort]: #abort
 [technical-reference-callback]: /payments/swish/other-features#callback
-[technical-reference-expand]: /home/technical-information#expansion
-[technical-reference-problemmessages]: /payments/swish/other-features#problem-messages
-[technical-reference-transaction]: /payments/swish/other-features#transaction
 [unscheduled-purchase]: /payments/card/other-features#unscheduled-purchase
-[user-agent]: https://en.wikipedia.org/wiki/User_agent

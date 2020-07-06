@@ -268,9 +268,6 @@ All Vipps error types will have the following URI in front of type:
         prev_title="Back: After Payment" %}
 
 [callbackreference]: #callback
-[payment-order]: #payment-order
 [prices]: #prices
-[problems-reference]: #problem-messages
 [technical-reference-expansion]: /home/technical-information#expansion
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
-[payee-reference]: #payee-reference

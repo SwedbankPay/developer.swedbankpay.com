@@ -173,6 +173,5 @@ sequenceDiagram
   SwedbankPay-->>-Merchant: transaction resource
 ```
 
-[payee-reference]: /payments/card/other-features#payee-reference
 [operations]: /payments/card/other-features#operations
 [transaction-resource]: /payments/card/other-features#transactions
