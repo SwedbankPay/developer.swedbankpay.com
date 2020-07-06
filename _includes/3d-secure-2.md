@@ -2,7 +2,7 @@
 {% assign documentation_section = include.documentation_section %}
 
 {% if api_resource == "creditcard" %}
-    {% assign api_resource_tag = "payment" %}
+    {% assign api_resource_field_name = "payment" %}
 {% else %}
     {% assign api_resource_tag = api_resource %}
 {% endif %}
@@ -135,4 +135,3 @@ Content-Type: application/json
 {% endif %}
 
 [3ds2]: /payments/card/other-features#3-d-secure-2
-
