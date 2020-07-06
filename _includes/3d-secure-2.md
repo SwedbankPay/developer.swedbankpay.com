@@ -25,7 +25,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
-    "{{ api_resource_tag }}": {
+    "{{ api_resource_field_name }}": {
         "operation": "Purchase",
         "intent": "Authorization",
         "currency": "SEK",
