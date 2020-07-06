@@ -1,13 +1,11 @@
-{% assign api_resource = include.api_resource %}
+{% assign api_resource = include.api_resource %} 
 {% assign documentation_section = include.documentation_section %}
-
 
 {% if api_resource == "creditcard" %}
     {% assign api_resource_tag = "payment" %}
 {% else %}
     {% assign api_resource_tag = api_resource %}
 {% endif %}
-
 
 ## 3-D Secure 2
 
@@ -134,7 +132,7 @@ Content-Type: application/json
 | └─➔&nbsp;`giftCardPurchase`           | `bool`   | `true` if this is a purchase of a gift card.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | └─➔&nbsp;`reOrderPurchaseIndicator`   | `string` | Indicates whether the payer is placing an order for merchandise with a future availability or release date. <br>`01` (Merchandise available) <br>`02` (Future availability).                                                                                                                                                                                                                                                                                                                                                                                     |
 
-
 {% endif %}
 
 [3ds2]: /payments/card/other-features#3-d-secure-2
+
