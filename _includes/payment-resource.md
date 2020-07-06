@@ -82,88 +82,31 @@ Content-Type: application/json
             "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/cancellations"
         }
     },
-    "operations": [ {% case api_resource %}
-    {% when "swish" %}
-        {
-            "method": "POST",
-            "href": "{{ page.api_url }}/psp/{{ api_resource }}/payments/{{ page.payment_id }}/sales",
-            "rel": "create-sale"
-        },
-        {
-            "method": "GET",
-            "href": "{{ page.front_end_url }}/{{ api_resource }}/payments/authorize/{{ page.payment_token }}",
-            "rel": "redirect-sale"
-        },
-        {
-            "method": "GET",
-            "href": "{{ page.front_end_url }}/{{ api_resource }}/core/scripts/client.js?token={{ page.payment_token }}",
-            "rel": "view-sales",
-        },
-        {
-            "method": "GET",
-            "href": "{{ page.front_end_url }}/{{ api_resource }}/core/scripts/client.js?token={{ page.payment_token }}",
-            "rel": "view-payment"
-            "contentType:": "application/javascript"
-        },
+    "operations": [ {%- case api_resource -%}
+    {%- when "swish" -%}
+        {% include api-operation.md api_resource=api_resource operation="create-sale" href_tail="sales" %},
+        {% include api-operation.md api_resource=api_resource operation="redirect-sale" %},
+        {% include api-operation.md api_resource=api_resource operation="view-sales" %},
+        {% include api-operation.md api_resource=api_resource operation="view-payment" %},
         {%- when "trustly" -%}
-        {
-            "method": "POST",
-            "href": "{{ page.api_url }}/psp/{{ api_resource }}/payments/{{ page.payment_id }}/sales",
-            "rel": "create-sale"
-        },
-        {
-            "method": "GET",
-            "href": "{{ page.front_end_url }}/{{ api_resource }}/payments/authorize/{{ page.payment_token }}",
-            "rel": "redirect-sale"
-        },
-        {
-            "method": "GET",
-            "href": "{{ page.front_end_url }}/{{ api_resource }}/core/scripts/client.js?token={{ page.payment_token }}",
-            "rel": "view-sales",
-        },
-        {
-            "method": "GET",
-            "href": "{{ page.front_end_url }}/{{ api_resource }}/payments/authorize/{{ page.transaction_id }}",
-            "rel": "redirect-authorization",
-            "contentType": "text/html"
-        }, {% when "invoice" %}
-        {
-            "method": "POST",
-            "href": "{{ page.front_end_url }}/{{ api_resource}}/core/scripts/client/px.{{ api_resource }}.client.js?token={{ page.payment_token }}&operation=authorize",
-            "rel": "create-authorization",
-            "contentType": "application/json"
-        },
-        {
-            "method": "GET",
-            "href": "{{ page.front_end_url }}/{{ api_resource}}/core/scripts/client/px.{{ api_resource }}.client.js?token={{ page.payment_token }}&operation=authorize",
-            "rel": "view-authorization",
-            "contentType": "application/javascript"
-        },
-        {
-            "method": "GET",
-            "href": "{{ page.front_end_url }}/{{ api_resource }}/payments/authorize/{{ page.transaction_id }}",
-            "rel": "redirect-authorization",
-            "contentType": "text/html"
-        },
+        {% include api-operation.md api_resource=api_resource operation="create-sale" href_tail="sales" %},
+        {% include api-operation.md api_resource=api_resource operation="redirect-sale" %},
+        {% include api-operation.md api_resource=api_resource operation="view-sales" %},
+        {% include api-operation.md api_resource=api_resource operation="redirect-authorization" %}, 
+        {%- when "invoice" -%}
+        {% include api-operation.md api_resource=api_resource operation="create-authorization" href_tail="operation=authorize" %},
+        {% include api-operation.md api_resource=api_resource operation="view-authorization" href_tail="operation=authorize" %},
+        {% include api-operation.md api_resource=api_resource operation="redirect-authorization" %},
         {% else %},
-        {
-            "method": "GET",
-            "href": "{{ page.front_end_url }}/{{ api_resource}}/core/scripts/client/px.{{ api_resource }}.client.js?token={{ page.payment_token }}&operation=authorize",
-            "rel": "view-authorization",
-            "contentType": "application/javascript"
-        },
-        {
-            "method": "GET",
-            "href": "{{ page.front_end_url }}/{{ api_resource }}/payments/authorize/{{ page.transaction_id }}",
-            "rel": "redirect-authorization",
-            "contentType": "text/html"
-        },{% endcase %}
-        {% if show_status_operations -%}
+        {% include api-operation.md api_resource=api_resource operation="view-authorization" href_tail="operation=authorize" %},
+        {% include api-operation.md api_resource=api_resource operation="redirect-authorization" %},
+        {%- endcase -%}
+        {% if show_status_operations %}
         {% include api-operation.md api_resource=api_resource operation="update-payment-abort" %},
         {% include api-operation.md api_resource=api_resource operation="create-capture" href_tail="captures" %},
         {% include api-operation.md api_resource=api_resource operation="paid-payment" href_tail="paid" %},
         {% include api-operation.md api_resource=api_resource operation="failed-payment" href_tail="failed" %}
-        {%- endif %}
+        {% endif %}
     ]
 }
 ```
