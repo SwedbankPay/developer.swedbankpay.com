@@ -106,7 +106,6 @@ completing the payment.
 {% include iterator.html prev_href="after-payment" prev_title="Back: After
 payment"  %}
 
-
 [purchase]: #purchase
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
 [cancel]: /payments/card/after-payment#cancellations
