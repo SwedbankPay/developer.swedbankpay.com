@@ -266,9 +266,9 @@ Content-Type: application/json
 | └➔&nbsp;`currentPayment` | `string`     | The URI to the `currentPayment` resource where information about the current – and sole active – payment can be retrieved.                                                                                                |
 | └➔&nbsp;`operations`     | `array`      | The array of possible operations to perform, given the state of the payment order. [See Operations for details][operations].                                                                                              |
 
-[one-click-payments]: /payment-menu/other-features#one-click-payments
-[settlement-and-reconciliation]: /payment-menu/other-features#settlement-and-reconciliation
 [initiate-consumer-session]: /checkout/checkin#step-1-initiate-session-for-consumer-identification
-[user-agent]: https://en.wikipedia.org/wiki/User_agent
+[one-click-payments]: /payment-menu/other-features#one-click-payments
 [operations]: /checkout/other-features#operations
+[settlement-and-reconciliation]: /payment-menu/other-features#settlement-and-reconciliation
 [split-settlement]: /payment-menu/other-features#split-settlement
+[user-agent]: https://en.wikipedia.org/wiki/User_agent

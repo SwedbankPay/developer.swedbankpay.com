@@ -63,15 +63,15 @@ The cardinal rule for creating good commits is to ensure there is only one
 rule:
 
 *   The smaller the amount of code being changed, the quicker and easier it is
-  to review and identify potential flaws.
+    to review and identify potential flaws.
 *   If a change is found to be flawed later, it may be necessary to revert the
-  broken commit. This is much easier to do if there are not other unrelated
-  code changes entangled with the original commit.
-*   When troubleshooting problems using Git's [bisect][bisect] capability,
-  small well defined changes will aid in isolating exactly where the code
-  problem was introduced.
+    broken commit. This is much easier to do if there are not other unrelated
+    code changes entangled with the original commit.
+*   When troubleshooting problems using Git's [bisect][bisect] capability, small
+    well defined changes will aid in isolating exactly where the code problem
+    was introduced.
 *   When browsing history using Git annotate/blame, small well defined changes
-  also aid in isolating exactly where & why a piece of code came from.
+    also aid in isolating exactly where & why a piece of code came from.
 
 ## Things to avoid when creating commits
 
@@ -212,11 +212,11 @@ QCow2/Raw images. This should have been split into at least four separate
 commits:
 
 1.  Replace the `use_cow_images` config FLAG with the new FLAG
-   `libvirt_local_images_type`, with back-compat code for support of
-   legacy `use_cow_images` FLAG 2. Creation of internal "Image" class and
-   subclasses for Raw & QCow2 image type impls.
+    `libvirt_local_images_type`, with back-compat code for support of legacy
+    `use_cow_images` FLAG 2. Creation of internal "Image" class and subclasses
+    for Raw & QCow2 image type impls.
 2.  Refactor libvirt driver to replace raw/qcow2 image management code, with
-   calls to the new `Image` class APIs.
+    calls to the new `Image` class APIs.
 3.  Introduce the new "LVM" `Image` class implementation.
 
 ### Examples of good practice
@@ -388,16 +388,16 @@ the stats tools to observe it when collecting statistics.
 *   Provide a brief description of the change in the first line.
 *   Insert a single blank line after the first line.
 *   Provide a detailed description of the change in the following lines,
-  breaking paragraphs where needed.
+    breaking paragraphs where needed.
 *   The first line should be limited to 50 characters and should not end with
 *   a period.
 *   Subsequent lines should be wrapped at 72 characters.
-*   vim (the default `$EDITOR` on most distros) can wrap automatically lines
-  for you. In most cases you just need to copy the example vimrc file
-  (which can be found somewhere like `/usr/share/vim/vim74/vimrc_example.vim`)
-  to `/.vimrc` if you don't have one already.
+*   vim (the default `$EDITOR` on most distros) can wrap automatically lines for
+    you. In most cases you just need to copy the example vimrc file (which can
+    be found somewhere like `/usr/share/vim/vim74/vimrc_example.vim`) to
+    `/.vimrc` if you don't have one already.
 *   After editing a paragraph, you can re-wrap it by pressing escape, ensuring
-  the cursor is within the paragraph and typing `gqip`.
+    the cursor is within the paragraph and typing `gqip`.
 *   Put external references at the very end of the commit message.
 
 {:.code-header}
