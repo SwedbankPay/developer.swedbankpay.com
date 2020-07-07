@@ -1,19 +1,19 @@
 version: "3.7"
 
 services:
-  portal:
-    container_name: developer_portal
-    image: swedbankpay/jekyll-plantuml:2.1.4
-    command: serve
-    environment:
-      - DEBUG=true
-    ports:
-      - 4000:4000
-      - 35729:35729
-    volumes:
-      - .:/srv/jekyll
-    depends_on:
-      - elasticsearch
+  #portal:
+  #  container_name: developer_portal
+  #  image: swedbankpay/jekyll-plantuml:2.0.3
+  #  command: serve
+  #  environment:
+  #    - DEBUG=true
+  #  ports:
+  #    - 4000:4000
+  #    - 35729:35729
+  #  volumes:
+  #    - .:/srv/jekyll
+  #  depends_on:
+  #    - elasticsearch
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.8.0
     ports:
