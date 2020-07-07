@@ -1429,7 +1429,7 @@ with the request parameter `instrument`.
 {% include settlement-reconciliation.md api_resource="paymentorders" %}
 
 {% include 3d-secure-2.md api_resource="paymentorders" documentation_section =
-documentation_section %}
+local_documentation_section %}
 
 ## Updating Payment Menu
 

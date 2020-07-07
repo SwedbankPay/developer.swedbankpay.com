@@ -74,7 +74,7 @@ when="at the 3-D Secure verification for credit card payments" full_reference=tr
 
 {% include prices.md %}
 
-{% include 3d-secure-2.md api_resource="creditcard" %}
+{% include 3d-secure-2.md api_resource="creditcard" documentation_section="card" %}
 
 ## Co-badge Card Choice for Dankort
 
