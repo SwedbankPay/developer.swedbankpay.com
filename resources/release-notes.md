@@ -39,7 +39,7 @@ this very documentation, not to a version of any APIs described by it." %}
     Card Payments[card-3ds2]. 
 *   Updated reconciliation files in [Settlement &
     Reconciliation][settlement-reconcilitation].
-*   Added testcard for Forbrugsforningen in [Test data][test].
+*   Added testcard for Forbrugsforeningen in [Test data][test-data].
 *   Documented `paid`/`failed`/`aborted` operations for all Payments. 
 *   Added additional information on `payerReference`, `generateRecurrenceToken`,
     `paymentToken`, `generatePaymentToken`, `recurrenceToken` and
