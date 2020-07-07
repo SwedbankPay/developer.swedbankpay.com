@@ -10,14 +10,14 @@
 {%- endif -%}
 {%- assign operation_begins_with = operation | split: "-" | first -%}
 {%- case operation_begins_with -%}
+    {%- when "failed" or "aborted" or "paid" -%}
+        {%- assign api_method = "GET" -%}
     {%- when "view" -%}
         {%- assign api_method = "GET" -%}
         {%- assign content_type = "application/javascript" -%}
     {%- when "redirect" -%}
         {%- assign api_method = "GET" -%}
         {%- assign content_type = "text/html" -%}
-    {%- when "failed" or "paid" or "aborted" -%
-        {%- assign api_method = "GET" -%}
     {%- when "update" -%}
         {%- assign api_method = "PATCH" -%}
     {%- else -%}
