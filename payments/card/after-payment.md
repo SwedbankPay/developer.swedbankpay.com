@@ -67,11 +67,11 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-|     Required     | Field                    | Type          | Description                                                                                                 |
-| :--------------: | :----------------------- | :------------ | :---------------------------------------------------------------------------------------------------------- |
-| {% icon check %} | `transaction`            | `object`      | The `object` representation of the generic [transaction resource][transaction-resource].                    |
-| {% icon check %} | └➔&nbsp;`description`    | `string`      | A textual description of the reason for the `cancellation`.                                                 |
-| {% icon check %} | └➔&nbsp;`payeeReference` | `string(30*)` | A unique reference for the `cancellation` transaction. See [`payeeReference`][payee-reference] for details. |
+|     Required     | Field                    | Type          | Description                                                                                    |
+| :--------------: | :----------------------- | :------------ | :--------------------------------------------------------------------------------------------- |
+| {% icon check %} | `transaction`            | `object`      | The `object` representation of the generic [transaction resource][transaction-resource].       |
+| {% icon check %} | └➔&nbsp;`description`    | `string`      | A textual description of the reason for the `cancellation`.                                    |
+| {% icon check %} | └➔&nbsp;`payeeReference` | `string(30*)` | {% include field-description-payee-reference.md documentation_section=documentation_section %} |
 
 The `cancel` resource contains information about a cancellation transaction
 made against a payment.
@@ -122,7 +122,7 @@ Content-Type: application/json
 | └─➔&nbsp;`amount`         | `integer` | {% include field-description-amount.md %}                                                                                                                                                                    |
 | └─➔&nbsp;`vatAmount`      | `integer` | {% include field-description-vatamount.md %}                                                                                                                                                                 |
 | └─➔&nbsp;`description`    | `string`  | {% include field-description-description.md documentation_section="card" %}                                                                                                                                  |
-| └─➔&nbsp;`payeeReference` | `string`  | A unique reference for the transaction. See [`payeeReference`][payee-reference] for details.                                                                                                                 |
+| └─➔&nbsp;`payeeReference` | `string`  | {% include field-description-payee-reference.md documentation_section="card" %}                                                                                                                              |
 | └─➔&nbsp;`failedReason`   | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | └─➔&nbsp;`isOperational`  | `boolean` | `true`  if the transaction is operational; otherwise  `false` .                                                                                                                                              |
 | └─➔&nbsp;`operations`     | `array`   | The array of [operations][operations] that are possible to perform on the transaction in its current state.                                                                                                  |
@@ -191,7 +191,7 @@ Content-Type: application/json
 | └─➔&nbsp;`amount`          | `integer` | {% include field-description-amount.md %}                                                                                                                                                                    |
 | └─➔&nbsp;`vatAmount`       | `integer` | {% include field-description-vatamount.md %}                                                                                                                                                                 |
 | └─➔&nbsp;`description`     | `string`  | {% include field-description-description.md documentation_section="card" %}                                                                                                                                  |
-| └─➔&nbsp;`payeeReference`  | `string`  | A unique reference for the transaction. See [`payeeReference`][payee-reference] for details.                                                                                                                 |
+| └─➔&nbsp;`payeeReference`  | `string`  | {% include field-description-payee-reference.md documentation_section="card" %}                                                                                                                              |
 | └─➔&nbsp;`failedReason`    | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | └─➔&nbsp;`isOperational`   | `boolean` | `true` if the transaction is operational; otherwise `false` .                                                                                                                                                |
 | └─➔&nbsp;`operations`      | `array`   | The array of [operations][operations] that are possible to perform on the transaction in its current state.                                                                                                  |
@@ -234,13 +234,13 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-|     Required     | Field                    | Type          | Description                                                                                             |
-| :--------------: | :----------------------- | :------------ | :------------------------------------------------------------------------------------------------------ |
-| {% icon check %} | `transaction`            | `object`      | The `object` representation of the generic [transaction resource][transaction-resource].                |
-| {% icon check %} | └➔&nbsp;`amount`         | `integer`     | {% include field-description-amount.md %}                                                               |
-| {% icon check %} | └➔&nbsp;`vatAmount`      | `integer`     | {% include field-description-vatamount.md %}                                                            |
-| {% icon check %} | └➔&nbsp;`description`    | `string`      | A textual description of the `reversal`.                                                                |
-| {% icon check %} | └➔&nbsp;`payeeReference` | `string(30*)` | A unique reference for the `reversal` transaction. See [`payeeReference`][payee-reference] for details. |
+|     Required     | Field                    | Type          | Description                                                                                    |
+| :--------------: | :----------------------- | :------------ | :--------------------------------------------------------------------------------------------- |
+| {% icon check %} | `transaction`            | `object`      | The `object` representation of the generic [transaction resource][transaction-resource].       |
+| {% icon check %} | └➔&nbsp;`amount`         | `integer`     | {% include field-description-amount.md %}                                                      |
+| {% icon check %} | └➔&nbsp;`vatAmount`      | `integer`     | {% include field-description-vatamount.md %}                                                   |
+| {% icon check %} | └➔&nbsp;`description`    | `string`      | A textual description of the `reversal`.                                                       |
+| {% icon check %} | └➔&nbsp;`payeeReference` | `string(30*)` | {% include field-description-payee-reference.md documentation_section=documentation_section %} |
 
 The `reversal` resource contains information about the newly created reversal
 transaction.
@@ -291,7 +291,7 @@ Content-Type: application/json
 | └─➔&nbsp;`amount`         | `integer` | {% include field-description-amount.md %}                                                                                                                                                                    |
 | └─➔&nbsp;`vatAmount`      | `integer` | {% include field-description-vatamount.md %}                                                                                                                                                                 |
 | └─➔&nbsp;`description`    | `string`  | {% include field-description-description.md documentation_section="card" %}                                                                                                                                  |
-| └─➔&nbsp;`payeeReference` | `string`  | A unique reference for the transaction. See [`payeeReference`][payee-reference] for details.                                                                                                                 |
+| └─➔&nbsp;`payeeReference` | `string`  | {% include field-description-payee-reference.md documentation_section=documentation_section %}                                                                                                               |
 | └─➔&nbsp;`failedReason`   | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | └─➔&nbsp;`isOperational`  | `boolean` | `true`  if the transaction is operational; otherwise  `false` .                                                                                                                                              |
 | └─➔&nbsp;`operations`     | `array`   | The array of [operations][operations] that are possible to perform on the transaction in its current state.                                                                                                  |
@@ -360,7 +360,7 @@ Content-Type: application/json
 | └─➔&nbsp;`amount`         | `integer` | {% include field-description-amount.md %}                                                                                                                                                                    |
 | └─➔&nbsp;`vatAmount`      | `integer` | {% include field-description-vatamount.md %}                                                                                                                                                                 |
 | └─➔&nbsp;`description`    | `string`  | {% include field-description-description.md documentation_section="card" %}                                                                                                                                  |
-| └─➔&nbsp;`payeeReference` | `string`  | A unique reference for the transaction. See [`payeeReference`][payee-reference] for details.                                                                                                                 |
+| └─➔&nbsp;`payeeReference` | `string`  | {% include field-description-payee-reference.md documentation_section="card" %}                                                                                                                              |
 | └─➔&nbsp;`failedReason`   | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | └─➔&nbsp;`isOperational`  | `boolean` | `true` if the transaction is operational; otherwise `false` .                                                                                                                                                |
 | └─➔&nbsp;`operations`     | `array`   | The array of [operations][operations] that are possible to perform on the transaction in its current state.                                                                                                  |
@@ -436,10 +436,7 @@ next_href="other-features" next_title="Next: Other Features" %}
 
 [abort]: /payments/card/after-payment#abort
 [callback]: /payments/card/other-features#callback
-[cancel]: /payments/card/after-payment#cancellations
-[capture]: /payments/card/after-payment#Capture
 [operations]: /payments/card/other-features#operations
 [payee-reference]: /payments/card/other-features#payee-reference
-[payment-resource]: /payments/card/other-features#payment
 [reversal]: /payments/card/after-payment#reversals
 [transaction-resource]: /payments/card/other-features#transactions

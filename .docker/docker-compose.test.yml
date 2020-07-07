@@ -1,8 +1,0 @@
-version: '3.7'
-
-services:
-  portal:
-    command: rake test --trace
-    environment:
-      - GITHUB_BRANCH=${GITHUB_BRANCH}
-      - GITHUB_REPOSITORY_URL=${GITHUB_REPOSITORY_URL}

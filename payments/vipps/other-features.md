@@ -21,7 +21,7 @@ documentation_section="vipps" show_status_operations=true %}
 
 {% include payment-transaction-states.md %}
 
-{% include payments-operations.md api_resource="vipps" %}
+{% include payments-operations.md api_resource="vipps" documentation_section="vipps" %}
 
 ### Create Payment
 
@@ -108,7 +108,7 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`termsOfServiceUrl` | `string`     | {% include field-description-termsofserviceurl.md %}                                                                                                                                                                                                      |
 | {% icon check %}︎ | └➔&nbsp;`payeeInfo`          | `object`     | The object containing information about the payee.                                                                                                                                                                                                        |
 | {% icon check %}︎ | └─➔&nbsp;`payeeId`           | `string`     | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                                                                     |
-| {% icon check %}︎ | └─➔&nbsp;`payeeReference`    | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [`payeeReference`][technical-reference-payeeReference] for details.                                             |
+| {% icon check %}︎ | └─➔&nbsp;`payeeReference`    | `string(30)` | {% include field-description-payee-reference.md documentation_section="vipps" %}                                                                                                                                                                          |
 |                  | └─➔&nbsp;`payeeName`         | `string`     | The payee name (like merchant name) that will be displayed to consumer when redirected to Swedbank Pay.                                                                                                                                                   |
 |                  | └─➔&nbsp;`productCategory`   | `strin`      | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                            |
 |                  | └─➔&nbsp;`orderReference`    | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                   |
@@ -191,7 +191,7 @@ payment altogether or creating an authorization transaction through the
 
 {% include description.md %}
 
-{% include payee-info.md api_resource="vipps" %}
+{% include payee-info.md api_resource="vipps" documentation_section="vipps" %}
 
 {% include payee-reference.md %}
 
@@ -268,9 +268,6 @@ All Vipps error types will have the following URI in front of type:
         prev_title="Back: After Payment" %}
 
 [callbackreference]: #callback
-[payment-order]: #payment-order
 [prices]: #prices
-[problems-reference]: #problem-messages
 [technical-reference-expansion]: /home/technical-information#expansion
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
-[technical-reference-payeeReference]: #payee-reference

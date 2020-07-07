@@ -23,7 +23,7 @@ sidebar:
 relevant **after-payment operations** in your order system. Which these
 operations are and how they are executed is described below." %}
 
-{% include payment-order-after-payment.md %}
+{% include payment-order-after-payment.md documentation_section="checkout" %}
 
 {% include iterator.html prev_href="capture"
                          prev_title="Back: Capture"

@@ -20,9 +20,9 @@ sidebar:
 
 After the payment is confirmed, the consumer will be redirected from the Swish
 app to the `completeUrl` set in the [create payment request][create-payment].
-You need to retrieve payment status with `GET`
-[Sales transaction][sales-transaction] before presenting a confirmation page to
-the consumer.
+You need to retrieve payment status with `GET` [Sales
+transaction][sales-transaction] before presenting a confirmation page to the
+consumer.
 
 ## Options after posting a payment
 
@@ -266,13 +266,13 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-|     Required     | Field                    | Type         | Description                                                                                                                                                              |
-| :--------------: | :----------------------- | :----------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| {% icon check %}︎ | `transaction`            | `object`     | The `transaction` object, containing information about this `reversal`.                                                                                                  |
-| {% icon check %}︎ | └➔&nbsp;`amount`         | `integer`    | {% include field-description-amount.md %}                                                                                                                                |
-| {% icon check %}︎ | └➔&nbsp;`vatAmount`      | `integer`    | {% include field-description-vatamount.md %}                                                                                                                             |
-| {% icon check %}︎ | └➔&nbsp;`description`    | `string`     | A textual description of the capture                                                                                                                                     |
-| {% icon check %}︎ | └➔&nbsp;`payeeReference` | `string(35)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [`payeeReference`][technical-reference-payeeReference] for details. |
+|     Required     | Field                    | Type         | Description                                                                      |
+| :--------------: | :----------------------- | :----------- | :------------------------------------------------------------------------------- |
+| {% icon check %}︎ | `transaction`            | `object`     | The `transaction` object, containing information about this `reversal`.          |
+| {% icon check %}︎ | └➔&nbsp;`amount`         | `integer`    | {% include field-description-amount.md %}                                        |
+| {% icon check %}︎ | └➔&nbsp;`vatAmount`      | `integer`    | {% include field-description-vatamount.md %}                                     |
+| {% icon check %}︎ | └➔&nbsp;`description`    | `string`     | A textual description of the capture                                             |
+| {% icon check %}︎ | └➔&nbsp;`payeeReference` | `string(35)` | {% include field-description-payee-reference.md documentation_section="swish" %} |
 
 {% include transaction-response.md api_resource="swish"
 documentation_section="swish" transaction="reversal" %}
@@ -296,15 +296,8 @@ Swish does not support `recurring` payments.
 {% include iterator.html prev_href="seamless-view" prev_title="Back: Seamless view"
 next_href="other-features" next_title="Next: Other Features" %}
 
-[core-payment-resources]: /payments
-[general-http-info]: /resources/
+[create-payment]: /payments/swish/other-features#create-payment
 [payex-admin-portal]: https://admin.payex.com/psp/login/
-[payment-order]: #create-payment
-[technical-reference-abort]: #abort
+[sales-transaction]: #sales
 [technical-reference-callback]: /payments/swish/other-features#callback
-[technical-reference-expand]: /home/technical-information#expansion
-[technical-reference-payeeReference]: /payments/swish/other-features#payee-reference
-[technical-reference-problemmessages]: /payments/swish/other-features#problem-messages
-[technical-reference-transaction]: /payments/swish/other-features#transaction
-[user-agent]: https://en.wikipedia.org/wiki/User_agent
 [unscheduled-purchase]: /payments/card/other-features#unscheduled-purchase

@@ -280,3 +280,4 @@ rect rgba(138, 205, 195, 0.1)
 
 [guest-payment-menu-image]: /assets/img/checkout/guest-payment-menu-450x850.png
 [login-payment-menu-image]: /assets/img/checkout/logged-in-payment-menu-450x900.png
+[payment-order-operations]: /checkout/after-payment#operations

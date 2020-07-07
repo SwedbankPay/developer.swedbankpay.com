@@ -47,7 +47,7 @@ documentation_section="invoice" show_status_operations=true %}
 
 {% include payment-transaction-states.md %}
 
-{% include payments-operations.md api_resource="invoice" %}
+{% include payments-operations.md api_resource="invoice" documentation_section="invoice" %}
 
 ## Create Payment
 
@@ -519,7 +519,7 @@ Content-Type: application/json
 | └➔&nbsp;`amount`         | `integer` | {% include field-description-amount.md %}                                                                                                                                                                    |
 | └➔&nbsp;`vatAmount`      | `integer` | {% include field-description-vatamount.md %}                                                                                                                                                                 |
 | └➔&nbsp;`description`    | `string`  | {% include field-description-description.md documentation_section="invoice" %}                                                                                                                               |
-| └➔&nbsp;`payeeReference` | `string`  | The `payeeReference` is the receipt/invoice number and is a unique reference for each transaction.                                                                                                           |
+| └➔&nbsp;`payeeReference` | `string`  | {% include field-description-payee-reference.md documentation_section="invoice" describe_receipt=true %}                                                                                                     |
 | └➔&nbsp;`failedReason`   | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | └➔&nbsp;`isOperational`  | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
 | └➔&nbsp;`operations`     | `array`   | The array of operations that are possible to perform on the transaction in its current state.                                                                                                                |
@@ -538,7 +538,7 @@ documentation_section="invoice" %}
 
 {% include description.md %}
 
-{% include payee-info.md api_resource="invoice" %}
+{% include payee-info.md api_resource="invoice" documentation_section="invoice" %}
 
 {% include prices.md api_resource="invoice" %}
 

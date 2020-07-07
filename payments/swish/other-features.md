@@ -23,18 +23,17 @@ documentation_section="swish" show_status_operations=true %}
 
 {% include payment-transaction-states.md %}
 
-{% include payments-operations.md api_resource="swish" %}
+{% include payments-operations.md api_resource="swish" documentation_section="swish" %}
 
 ## Create Payment
 
 To create a Swish payment, you perform an HTTP `POST` against the
 `/psp/swish/payments` resource.
 
-An example of a payment creation request is provided below.
-Each individual field of the JSON document is described in the following
-section.
-Use the [expand][technical-reference-expand] request parameter to get a
-response that includes one or more expanded sub-resources inlined.
+An example of a payment creation request is provided below. Each individual
+field of the JSON document is described in the following section. Use the
+[expand][expand] request parameter to get a response that includes one or more
+expanded sub-resources inlined.
 
 {:.code-header}
 **Request**
@@ -98,7 +97,7 @@ Content-Type: application/json
 | {% icon check %}︎ | └─➔&nbsp;`vatAmount`           | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                                                              |
 | {% icon check %}︎ | └➔&nbsp;`description`          | `string(40)` | {% include field-description-description.md documentation_section="swish" %}                                                                                                                                                                              |
 |                  | └➔&nbsp;`payerReference`       | `string`     | The reference to the payer (consumer/end-user) from the merchant system, like mobile number, customer number etc.                                                                                                                                         |
-| {% icon check %}︎ | └➔&nbsp;`userAgent`            | `string`     | The user agent reference of the consumer's browser -   [see user agent definition][user-agent]                                                                                                                                                            |
+| {% icon check %}︎ | └➔&nbsp;`userAgent`            | `string`     | The user agent reference of the consumer's browser -   The [`User-Agent` string][user-agent] of the consumer's web browser.                                                                                                                               |
 | {% icon check %}︎ | └➔&nbsp;`language`             | `string`     | {% include field-description-language.md api_resource="swish" %}                                                                                                                                                                                          |
 | {% icon check %}︎ | └➔&nbsp;`urls`                 | `object`     | The URLS object contains information about what urls this payment should use.                                                                                                                                                                             |
 | {% icon check %}︎ | └─➔&nbsp;`hostUrls`            | `array`      | The array of URIs valid for embedding of Swedbank Pay Hosted Views.                                                                                                                                                                                       |
@@ -109,7 +108,7 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`termsOfServiceUrl`   | `string`     | {% include field-description-termsofserviceurl.md %}                                                                                                                                                                                                      |
 | {% icon check %}︎ | └➔&nbsp;`payeeInfo`            | `object`     | A object containing info about the payee.                                                                                                                                                                                                                 |
 | {% icon check %}︎ | └─➔&nbsp;`payeeId`             | `string`     | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                                                                     |
-| {% icon check %}︎ | └─➔&nbsp;`payeeReference`      | `string(35)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [`payeeReference`][technical-reference-payeeReference] for details.                                             |
+| {% icon check %}︎ | └─➔&nbsp;`payeeReference`      | `string(35)` | {% include field-description-payee-reference.md documentation_section="swish" %}                                                                                                                                                                          |
 |                  | └➔&nbsp;`payeeName`            | `string`     | The payee name (like merchant name) that will be displayed to consumer when redirected to Swedbank Pay.                                                                                                                                                   |
 |                  | └➔&nbsp;`productCategory`      | `string`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                            |
 |                  | └➔&nbsp;`orderReference`       | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                   |
@@ -184,7 +183,7 @@ be connected to a Swish account.
 
 {% include prices.md api_resource="swish" %}
 
-{% include payee-info.md api_resource="swish" %}
+{% include payee-info.md api_resource="swish" documentation_section="swish" %}
 
 {% include expand-parameter.md %}
 
@@ -546,5 +545,6 @@ Content-Type: application/json
 {% include iterator.html prev_href="after-payment" prev_title="Back: After
 Payment" %}
 
+[expand]: /home/technical-information#expansion
 [payee-reference]: #payee-reference
 [transaction-resource]: #Transactions

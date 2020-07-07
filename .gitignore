@@ -9,5 +9,5 @@ _site/
 _gem-cache/
 node_modules/
 vendor/
-
 commit-msg.txt
+*.generated*
