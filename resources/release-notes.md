@@ -31,6 +31,26 @@ published on this page." %}
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
 
+## July 2020
+
+## Version 1.12.0
+
+*   Added information on 3-D Secure 2 for [Checkout][checkout-3ds2] and 
+    Card Payments[card-3ds2]. 
+*   Updated reconciliation files in [Settlement &
+    Reconciliation][settlement-reconcilitation].
+*   Added testcard for Forbrugsforningen in [Test data][test].
+*   Documented `paid`/`failed`/`aborted` operations for all Payments. 
+*   Added additional information on `payerReference`, `generateRecurrenceToken`,
+    `paymentToken`, `generatePaymentToken`, `recurrenceToken` and
+    `instrument`for `PaymentOrder` operations in [Checkout][checkout].
+*   Corrected and updated `view`- operations for all Payment instruments. 
+*   Updated [Seamless View Events][seamless-view-events-card] for all Payments.
+*   Added `nonPaymentToken` and `externalNonPaymentToken` description in
+    [Card Payments][card].
+*   Small corrections to [Swish Payments][swish] documentation. 
+*   Clarified the [`updateOrder`][update-order-checkout] documentation. 
+
 ## May 2020
 
 ### Version 1.11.1
@@ -391,6 +411,7 @@ integration and the payer.
 [card-purchase]: /payments/card/redirect#step-1-create-a-purchase
 [card-unscheduled-purchase]: /payments/card/other-features#unscheduled-purchase
 [card]: /payments/card
+[card-3ds2]: /payments/card/other-features#3-d-secure-2
 [card-redirect]: /payments/card/redirect
 [card-seamless-view]: /payments/card/seamless-view
 [checkout-capture]: /checkout/capture
@@ -400,6 +421,7 @@ integration and the payer.
 [checkout-payment-orders]: /checkout/other-features#payment-orders
 [checkout-payment-url]: /checkout/other-features#payment-url
 [checkout]: /checkout
+[checkout-3ds2]: /checkout/other-features#3-d-secure-2
 [checkout-callback]: /checkout/other-features#callback
 [co-badge-card]: /payments/card/other-features#co-badge-card-choice-for-dankort
 [credit-card-abort]: /payments/card/after-payment#abort
@@ -417,6 +439,7 @@ integration and the payer.
 [one-click]: /payments/card/other-features#one-click-payments
 [payment-orders]: /checkout/other-features#creating-a-payment-order
 [payments]: /payments
+[update-order-checkout]: /checkout/other-features#update-order
 [settlement-reconcilitation]: /payments/card/other-features#settlement-and-reconciliation
 [sdk-modules]: /resources/sdk-modules
 [storing-uri]: /home/technical-information#storing-uris
@@ -426,6 +449,7 @@ integration and the payer.
 [swish-other-features]: /payments/swish/other-features
 [swish-redirect]: /payments/swish/redirect
 [swish-seamless-view]: /payments/swish/seamless-view
+[seamless-view-events-card]: payments/card/other-features#seamless-view-events
 [swish]: /payments/swish
 [swish-abort]: /payments/swish/after-payment#abort
 [terminology]: /resources/terminology
