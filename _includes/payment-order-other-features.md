@@ -1166,7 +1166,7 @@ Content-Type: application/json
 | └─➔&nbsp;`remainingReversalAmount`                                                                                               | `integer`    | The available amount to reverse.                                                                                                                                                                 |
 | └➔&nbsp;`description`                                                                                                            | `string(40)` | {% include field-description-description.md documentation_section="checkout" %}                                                                                                                  |
 | └➔&nbsp;`payerReference`                                                                                                         | `string`     | The reference to the consumer from the merchant system, like mobile number,                                                                                                                      |
-| customer number etc. Used in [Merchant Identified Payer](/{{ documentation_section }}/other-features#merchant-identified-payer). |
+customer number etc. Used in [Merchant Identified Payer](/{{ local_documentation_section }}/other-features#merchant-identified-payer).                                                                                                                       |
 | └➔&nbsp;`userAgent`                                                                                                              | `string`     | The [user agent][user-agent] string of the consumer's browser.                                                                                                                                   |
 | └➔&nbsp;`language`                                                                                                               | `string`     | {% include field-description-language.md api_resource="paymentorders" %}                                                                                                                         |
 
@@ -1216,20 +1216,20 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Field                     | Type     | Description                                                                        |
-| :------------------------ | :------- | :--------------------------------------------------------------------------------- |
-| `paymentorder`            | `string` | {% include field-description-id.md resource="paymentorder" sub_resource="payer" %} |
-| `payer`                   | `object` | The payer object.                                                                  |
-| └➔&nbsp;`id`              | `string` | {% include field-description-id.md resource="payer" %}                             |
-| └➔&nbsp;`email`           | `string` | Payer's registered email address.                                                  |
-| └➔&nbsp;`msisdn`          | `string` | Payer's registered mobile phone number.                                            |
-| └➔&nbsp;`shippingAddress` | `object` | The shipping address object related to the `payer`.                                |
-| └─➔&nbsp;`addresse`       | `object` | The shipping address object related to the `payer`.                                |
-| └─➔&nbsp;`coAddress`      | `string` | Payer' s c/o address, if applicable.                                               |
-| └─➔&nbsp;`streetAddress`  | `string` | Payer's street address                                                             |
-| └─➔&nbsp;`zipCode`        | `string` | Payer's zip code                                                                   |
-| └─➔&nbsp;`city`           | `string` | Payer's city of residence                                                          |
-| └─➔&nbsp;`countryCode`    | `string` | Country Code for country of residence.                                             |
+| Field                     | Type     | Description                                                                                                                                        |
+| :------------------------ | :------- | :------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `paymentorder`            | `string` | {% include field-description-id.md resource="paymentorder" sub_resource="payer" %}                                                                 |
+| `payer`                   | `object` | The payer object.                                                                                                                                  |
+| └➔&nbsp;`id`              | `string` | {% include field-description-id.md resource="payer" %}                                                                                             |
+| └➔&nbsp;`email`           | `string` | Payer's registered email address. The field is related to [3-D Secure 2](/{{ local_documentation_section }}/other-features#3-d-secure-2).       |
+| └➔&nbsp;`msisdn`          | `string` | Payer's registered mobile phone number. The field is related to [3-D Secure 2](/{{ local_documentation_section }}/other-features#3-d-secure-2). |
+| └➔&nbsp;`shippingAddress` | `object` | The shipping address object related to the `payer`.                                                                                                |
+| └─➔&nbsp;`addresse`       | `string` | The name of the addressee – the receiver of the shipped goods.                                                                                                |
+| └─➔&nbsp;`coAddress`      | `string` | Payer' s c/o address, if applicable.                                                                                                               |
+| └─➔&nbsp;`streetAddress`  | `string` | Payer's street address                                                                                                                             |
+| └─➔&nbsp;`zipCode`        | `string` | Payer's zip code                                                                                                                                   |
+| └─➔&nbsp;`city`           | `string` | Payer's city of residence                                                                                                                          |
+| └─➔&nbsp;`countryCode`    | `string` | Country Code for country of residence.                                                                                                             |
 
 ## Enable or Disable Payment Menu
 
@@ -1427,6 +1427,9 @@ request) to be able to use this feature. You will also need to turn the
 with the request parameter `instrument`.
 
 {% include settlement-reconciliation.md api_resource="paymentorders" %}
+
+{% include 3d-secure-2.md api_resource="paymentorders" documentation_section =
+local_documentation_section %}
 
 ## Updating Payment Menu
 
