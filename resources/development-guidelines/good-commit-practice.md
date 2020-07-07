@@ -360,7 +360,7 @@ The main rule to follow is:
 
 > The commit message must contain all the information required to fully
 > understand & review the patch for correctness.
-> **Less is *not*   more.More is more.**
+> **Less is *not* more. More is more.**
 
 ### Including external references
 
