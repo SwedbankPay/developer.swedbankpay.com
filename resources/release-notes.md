@@ -36,7 +36,7 @@ this very documentation, not to a version of any APIs described by it." %}
 ## Version 1.12.0
 
 *   Added information on 3-D Secure 2 for [Checkout][checkout-3ds2] and 
-    Card Payments[card-3ds2]. 
+    [Card Payments][card-3ds2]. 
 *   Updated reconciliation files in [Settlement &
     Reconciliation][settlement-reconcilitation].
 *   Added test card for Forbrugsforeningen in [Test data][test-data].
