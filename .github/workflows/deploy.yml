@@ -16,9 +16,9 @@ jobs:
           GITHUB_ACTOR: payex-dev
           GITHUB_ACTOR_EMAIL: dev@payex.com
           GITHUB_REPO: ${{ github.repository }}
-          run: |
-            docker-compose run \
-              -e PAGES_REPO_NWO=${{ github.repository }} \
-              -e JEKYLL_GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} \
-              portal deploy \
-              --env=production
+        run: |
+          docker-compose run \
+            -e PAGES_REPO_NWO=${{ github.repository }} \
+            -e JEKYLL_GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} \
+            portal deploy \
+            --env=production
