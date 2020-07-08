@@ -10,7 +10,7 @@
 {%- capture payee_reference -%}
     A unique reference from the merchant system. It is set per operation to
     ensure an exactly-once delivery of a transactional operation. See
-    [`payeeReference`]({{ payee_reference_url }}] for details.
+    [`payeeReference`]({{ payee_reference_url }}) for details.
 
     {%- if describe_receipt -%}
         In Invoice Payments `payeeReference` is used as an invoice/receipt
