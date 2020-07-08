@@ -1,7 +1,7 @@
 {%- assign documentation_section = include.documentation_section -%}
 {%- assign describe_receipt = include.describe_receipt | default: false -%}
 {%- capture payee_reference_url -%}
-    {%- if documentation_section == "checkout" -%}
+   {%- if documentation_section == "checkout" or documentation_section == "payment-menu" -%}
         /{{ documentation_section }}/other-features#payee-reference
     {%- else -%}
         /payments/{{ documentation_section }}/other-features#payee-reference
@@ -10,7 +10,7 @@
 {%- capture payee_reference -%}
     A unique reference from the merchant system. It is set per operation to
     ensure an exactly-once delivery of a transactional operation. See
-    [`payeeReference`]({{ payee_reference_url }}] for details.
+    [`payeeReference`]({{ payee_reference_url }}) for details.
 
     {%- if describe_receipt -%}
         In Invoice Payments `payeeReference` is used as an invoice/receipt
