@@ -40,7 +40,7 @@ this very documentation, not to a version of any APIs described by it." %}
 *   Updated reconciliation files in [Settlement &
     Reconciliation][settlement-reconcilitation].
 *   Added testcard for Forbrugsforeningen in [Test data][test-data].
-*   Documented `paid`/`failed`/`aborted` operations for all Payments. 
+*   Documented `paid`, `failed` and `aborted` across all resources.
 *   Added additional information on `payerReference`, `generateRecurrenceToken`,
     `paymentToken`, `generatePaymentToken`, `recurrenceToken` and
     `instrument` for the `paymentorder` resource in [Checkout][checkout].
