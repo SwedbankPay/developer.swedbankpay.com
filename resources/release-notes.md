@@ -45,7 +45,7 @@ this very documentation, not to a version of any APIs described by it." %}
     `paymentToken`, `generatePaymentToken`, `recurrenceToken` and
     `instrument`for `PaymentOrder` operations in [Checkout][checkout].
 *   Corrected and updated `view`- operations for all Payment instruments. 
-*   Updated [Seamless View Events][seamless-view-events-card] for all Payments.
+*   Updated [Seamless View Events][seamless-view-events-card] for all resources.
 *   Described `nonPaymentToken` and `externalNonPaymentToken` in
     [Card Payments][card].
 *   Small corrections to [Swish Payments][swish] documentation. 
