@@ -1,9 +1,10 @@
-version: '3.7'
+version: "3.7"
 
 services:
   portal:
     container_name: developer_portal
-    image: swedbankpay/jekyll-plantuml:1.3.8
+    image: swedbankpay/jekyll-plantuml:2.0.4
+    command: serve
     ports:
       - 4000:4000
       - 35729:35729

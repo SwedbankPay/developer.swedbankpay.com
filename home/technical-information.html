@@ -85,31 +85,31 @@
                     <div class="topbar-link-container">
                         <button type="button" class="topbar-close"><i class="material-icons">close</i></button>
 
+                        
+                        
 
+                        
 
-
-
-
-                        <a
+                        <a 
                             href="/"><span>Home</span></a>
 
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/checkout/"><span>Checkout</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/payments/"><span>Payments</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/gift-cards/"><span>Gift Cards</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/resources/"><span>Resources</span></a>
-
+                        
 
                         <div class="topbar-info topbar-link-right">
                             <div class="topbar-info-contact">
@@ -132,35 +132,36 @@
                 <div class="row">
                     <div class="col-xxl-2 col-md-3">
                         <div class="doc-sidebar">
-
+                            
                             <form class="doc-search" action="/search">
                                 <input type="text" class="form-control" name="q" id="tipue_search_input"
                                     placeholder="Search..." autocomplete="off" pattern=".{3,}"
                                     title="At least 3 characters">
                             </form>
-
-
+                            
+                            
                             <nav class="documentation-nav">
-
-
+                                
+                                
                                 <div class="nav-group active">
                                     <div class="nav-heading">
                                         <i class="material-icons">keyboard_arrow_right</i>
                                         <span>Home</span>
                                     </div>
 
-
+                                    
                                     <ul>
-
-
-                                        <li><a  href="/home/technical-information"><span>Technical Information</span></a></li>
-
+                                        
+                                        
+                                        <li><a  aria-current="page" class="active"
+                                                 href="/home/technical-information"><span>Technical Information</span></a></li>
+                                        
                                     </ul>
-
+                                    
                                 </div>
-
+                                
                             </nav>
-
+                            
                         </div>
                     </div>
 
@@ -169,13 +170,13 @@
                             <h1>Swedbank Pay Developer Portal</h1>
                             <div class="row">
                                 <div class="doc-body col-lg-10">
-
+                                    
                                     <h2 id="connection-and-protocol">
-
-
+        
+        
           Connection and Protocol <a href="#connection-and-protocol" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>All requests towards Swedbank Pay API Platform are made with <strong>HTTP/1.1</strong> over
@@ -191,13 +192,13 @@ and environments (<a href="https://blogs.oracle.com/java-platform-group/jdk-8-wi
 
 <p>You can inspect <a href="https://www.ssllabs.com/ssltest/analyze.html?d=api.payex.com">Swedbank Pay’s TLS and cipher suite</a> support at
 SSL Labs. Support for HTTP/2 in our APIs is being investigated.</p>
-
+    
       <h2 id="headers">
-
-
+        
+        
           Headers <a href="#headers" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>All requests against the API Platform should have a few common headers:</p>
@@ -254,13 +255,13 @@ SSL Labs. Support for HTTP/2 in our APIs is being investigated.</p>
     </tr>
   </tbody>
 </table>
-
+    
       <h2 id="uri-usage">
-
-
+        
+        
           URI Usage <a href="#uri-usage" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>The base URIs of the API Platform are:</p>
@@ -294,19 +295,19 @@ resource. To get an <a href="https://www.youtube.com/watch?v=QIv9YR1bMwY">introd
 
 <div class="alert alert-complex alert-warning">
     <header class="alert-header">
-
+            
                 <i class="material-icons alert-icon">warning</i>
       <h3>
-
-
+        
+        
           Don’t build URIs
-
-
+        
+        
       </header>
+    
 
-
-
-
+    
+        
             <div class="alert-body">
                 <p>It is very important that only the base URIs of Swedbank Pay’s APIs are stored
 in your system. All other URIs are returned dynamically in the response.
@@ -320,40 +321,40 @@ identified resource – nothing more, nothing less. If you don’t follow this
 advice, your integration most assuredly will break when Swedbank Pay makes
 updates in the future.</p>
             </div>
-
-
+        
+    
 </div>
-
+    
       <h3 id="storing-uris">
-
-
+        
+        
           Storing URIs <a href="#storing-uris" class="header-anchor"></a>
-
-
+        
+        
       </h3>
 
 <div class="alert alert-complex alert-success">
     <header class="alert-header">
-
+            
                 <i class="material-icons alert-icon">link</i>
       <h3>
-
-
+        
+        
           Storing URIs
-
-
+        
+        
       </header>
+    
 
-
-
-
+    
+        
             <div class="alert-body">
                 <p>In
 general, URIs should be <strong>discovered</strong> in responses to previous requets, <strong>not
 stored</strong>.</p>
             </div>
-
-
+        
+    
 </div>
 
 <p>However, URIs that are used to create new resources can be stored or hard coded.
@@ -363,25 +364,25 @@ should not be parsed or interpreted in any way.</p>
 
 <div class="alert alert-complex alert-warning">
     <header class="alert-header">
-
+            
                 <i class="material-icons alert-icon">warning</i>
       <h3>
-
-
+        
+        
           Operation URIs
-
-
+        
+        
       </header>
+    
 
-
-
-
+    
+        
             <div class="alert-body">
                 <p>URIs that are returned as part of the <code class="language-html highlighter-rouge">operations</code> in each response should
 not be stored.</p>
             </div>
-
-
+        
+    
 </div>
 
 <p>See the abbreviated example below where <code class="language-html highlighter-rouge">psp/creditcard/payments</code> from the
@@ -519,26 +520,26 @@ field.</p>
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></pre></td></tr></tbody></table></code></pre></div></div>
-
+    
       <h2 id="uniform-responses">
-
-
+        
+        
           Uniform Responses <a href="#uniform-responses" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>When a <code class="language-html highlighter-rouge">POST</code> or <code class="language-html highlighter-rouge">PATCH</code> request is performed, the whole target resource
 representation is returned in the response, as when performing a <code class="language-html highlighter-rouge">GET</code>
 request on the resource URI. This is an economic approach that limits the
 number of necessary <code class="language-html highlighter-rouge">GET</code> requests.</p>
-
+    
       <h2 id="expansion">
-
-
+        
+        
           Expansion <a href="#expansion" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>The payment resource contain the ID of related sub-resources in its response
@@ -565,58 +566,58 @@ response, enabling you to access information from these sub-resources.</p>
 
 <p>To avoid unnecessary overhead, you should only expand the nodes you need info
 about.</p>
-
+    
       <h2 id="data-types">
-
-
+        
+        
           Data Types <a href="#data-types" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>Some datatypes, like currency, dates and amounts, are managed in a coherent
 manner across the entire API Platform.</p>
-
+    
       <h3 id="currency">
-
-
+        
+        
           Currency <a href="#currency" class="header-anchor"></a>
-
-
+        
+        
       </h3>
 
 <p>All currencies are expressed according to the <a href="https://en.wikipedia.org/wiki/ISO_4217">ISO 4217</a> standard,
 e.g <code class="language-html highlighter-rouge">SEK</code>, <code class="language-html highlighter-rouge">EUR</code>, <code class="language-html highlighter-rouge">NOK</code>.</p>
-
+    
       <h3 id="dates">
-
-
+        
+        
           Dates <a href="#dates" class="header-anchor"></a>
-
-
+        
+        
       </h3>
 
 <p>All dates are expressed according to the <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> standard that
 combine dates, time and timezone data into a string, e.g. <code class="language-html highlighter-rouge">2018-09-14T13:21:57.6627579Z</code>.</p>
-
+    
       <h3 id="locale">
-
-
+        
+        
           Locale <a href="#locale" class="header-anchor"></a>
-
-
+        
+        
       </h3>
 
 <p>When defining locale, we use the combination of language
 (<a href="https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes">ISO 639-1</a>) and country codes (<a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166</a>), e.g.
 <code class="language-html highlighter-rouge">nb-NO</code>, <code class="language-html highlighter-rouge">sv-SE</code>, <code class="language-html highlighter-rouge">en-US</code>.</p>
-
+    
       <h3 id="monetary-amounts">
-
-
+        
+        
           Monetary Amounts <a href="#monetary-amounts" class="header-anchor"></a>
-
-
+        
+        
       </h3>
 
 <p>All monetary amounts are entered in the lowest momentary units of the selected
@@ -646,13 +647,13 @@ amount is multiplied by 100.</p>
     </tr>
   </tbody>
 </table>
-
+    
       <h2 id="operations">
-
-
+        
+        
           Operations <a href="#operations" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>When a resource is created and during its lifetime, it will have a set of
@@ -745,21 +746,21 @@ instrument specific operations.</p>
 described here in the documentation</strong>. Always use the <code class="language-html highlighter-rouge">href</code> and <code class="language-html highlighter-rouge">method</code> as
 specified in the response by finding the appropriate operation based on its
 <code class="language-html highlighter-rouge">rel</code> value.</p>
-
+    
       <h3 id="payeereference">
-
-
+        
+        
           PayeeReference <a href="#payeereference" class="header-anchor"></a>
-
-
+        
+        
       </h3>
-
+    
       <h2 id="payee-reference">
-
-
+        
+        
           Payee Reference <a href="#payee-reference" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>The <code class="language-html highlighter-rouge">payeeReference</code> given when creating transactions and payments has some
@@ -784,13 +785,13 @@ characters <strong>must be digits</strong>.</li>
 </ul>
 
 <p><a href="/payments/invoice/other-features#settlement-and-reconciliation">Read more about the settlement process here</a>.</p>
-
+    
       <h2 id="callback">
-
-
+        
+        
           Callback <a href="#callback" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>When a change or update from the back-end system are made on a payment or
@@ -894,13 +895,13 @@ Pay, and the two <code class="language-html highlighter-rouge">GET</code> reques
     SwedbankPay--&gt;&gt;+Merchant: payment resource
     deactivate SwedbankPay
 </code></pre>
-
+    
       <h2 id="problems">
-
-
+        
+        
           Problems <a href="#problems" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>When performing operations against the API, it will respond with a problem
@@ -995,13 +996,13 @@ message will follow the same structure as specified in the
     </tr>
   </tbody>
 </table>
-
+    
       <h3 id="common-problems">
-
-
+        
+        
           Common Problems <a href="#common-problems" class="header-anchor"></a>
-
-
+        
+        
       </h3>
 
 <p>All common problem types will have a URI in the format
@@ -1046,13 +1047,13 @@ possible in the future.</p>
     </tr>
   </tbody>
 </table>
-
+    
       <h3 id="payment-instrument-specific-problems">
-
-
+        
+        
           Payment Instrument Specific Problems <a href="#payment-instrument-specific-problems" class="header-anchor"></a>
-
-
+        
+        
       </h3>
 
 <p>Problem types for a specific payment instrument will have a URI in the format
@@ -1065,7 +1066,7 @@ can read more about the payment instrument specific problem messages below:</p>
   <li><a href="/payments/swish/other-features#swish-api-errors">Swish Payments</a></li>
   <li><a href="/payments/vipps/other-features#problem-messages">Vipps Payments</a></li>
 </ul>
-
+                                    
                                 </div>
 
                                 <div class="col-2 d-none d-lg-block">

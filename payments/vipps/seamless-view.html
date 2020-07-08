@@ -85,31 +85,31 @@
                     <div class="topbar-link-container">
                         <button type="button" class="topbar-close"><i class="material-icons">close</i></button>
 
+                        
+                        
 
+                        
 
-
-
-
-                        <a
+                        <a 
                             href="/"><span>Home</span></a>
 
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/checkout/"><span>Checkout</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/payments/"><span>Payments</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/gift-cards/"><span>Gift Cards</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/resources/"><span>Resources</span></a>
-
+                        
 
                         <div class="topbar-info topbar-link-right">
                             <div class="topbar-info-contact">
@@ -132,47 +132,48 @@
                 <div class="row">
                     <div class="col-xxl-2 col-md-3">
                         <div class="doc-sidebar">
-
+                            
                             <form class="doc-search" action="/search">
                                 <input type="text" class="form-control" name="q" id="tipue_search_input"
                                     placeholder="Search..." autocomplete="off" pattern=".{3,}"
                                     title="At least 3 characters">
                             </form>
-
-
+                            
+                            
                             <nav class="documentation-nav">
-
-
+                                
+                                
                                 <div class="nav-group active">
                                     <div class="nav-heading">
                                         <i class="material-icons">keyboard_arrow_right</i>
                                         <span>Vipps Payments</span>
                                     </div>
 
-
+                                    
                                     <ul>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/vipps"><span>Introduction</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/vipps/redirect"><span>Redirect</span></a></li>
-
-
-                                        <li><a  href="/payments/vipps/seamless-view"><span>Seamless View</span></a></li>
-
-
+                                        
+                                        
+                                        <li><a  aria-current="page" class="active"
+                                                 href="/payments/vipps/seamless-view"><span>Seamless View</span></a></li>
+                                        
+                                        
                                         <li><a  href="/payments/vipps/after-payment"><span>After Payment</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/vipps/other-features"><span>Other Features</span></a></li>
-
+                                        
                                     </ul>
-
+                                    
                                 </div>
-
+                                
                             </nav>
-
+                            
                         </div>
                     </div>
 
@@ -181,7 +182,7 @@
                             <h1>Swedbank Pay Payments Vipps Seamless View</h1>
                             <div class="row">
                                 <div class="doc-body col-lg-10">
-
+                                    
                                     <div class="jumbotron">
     <p>The <strong>Seamless View</strong> scenario gives your
 customers the opportunity to pay with Vipps directly within your webshop.
@@ -193,11 +194,11 @@ that the payer must confirm through the Vipps mobile app.</p>
 
 <p><img src="/assets/img/payments/vipps-purchase-flow.png" alt="steps of the vipps purchase flow" width="1200px" /></p>
       <h2 id="step-1-create-a-purchase">
-
-
+        
+        
           Step 1: Create a Purchase <a href="#step-1-create-a-purchase" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>When properly set up in your merchant/webshop site and the payer starts the
@@ -207,6 +208,14 @@ your Purchase information. This will generate a payment object with a unique
 You will receive a response in which you can find the <strong>JavaScript source</strong>
 in the <code class="language-html highlighter-rouge">view-payment</code> operation. An example of an expanded <code class="language-html highlighter-rouge">POST</code> request is available in the
 <a href="/payments/vipps/other-features#purchase">other features section</a>.</p>
+    
+      <h2 id="payment-url">
+        
+        
+          Payment Url <a href="#payment-url" class="header-anchor"></a>
+        
+        
+      </h2>
 
 <p>For our Seamless Views, the field called <code class="language-html highlighter-rouge">paymentUrl</code> will be used when the
 consumer is redirected out of the Seamless View (the <code class="language-html highlighter-rouge">iframe</code>). The consumer is
@@ -219,41 +228,41 @@ the JavaScript for the Seamless View was added to in order to initiate the
 payment process.</p>
 
 <div class="alert  alert-informative">
-
-
+    
+        
             <i class="material-icons alert-icon">info</i>
+        
+    
 
-
-
-
-
+    
+        
             <p>Please note that the <code class="language-html highlighter-rouge">paymentUrl</code> must be able to invoke the same JavaScript URL
 from the same Payment as the one that initiated the payment process
 originally, so it should include some sort of state identifier in the URL. The
 state identifier is the ID of the order, shopping cart or similar that has the
 URL of the Payment stored.</p>
-
-
+        
+    
 </div>
 
 <p>With <code class="language-html highlighter-rouge">paymentUrl</code> in place, the retry process becomes much more convenient for
 both the integration and the payer.</p>
 
 <div class="alert  alert-success">
-
-
+    
+        
             <i class="material-icons alert-icon">info</i>
+        
+    
 
-
-
-
-
+    
+        
             <p>To minimize the risk for
 a challenge request (Strong Customer Authentication – “SCA”) on card payments,
 it’s recommended that you add as much data as possible to the <code class="language-html highlighter-rouge">riskIndicator</code>
 object in the request below.</p>
-
-
+        
+    
 </div>
 
 <p class="code-header"><strong>Request</strong></p>
@@ -432,13 +441,13 @@ object in the request below.</p>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">userAgent</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The user agent reference of the consumer’s browser - <a href="https://en.wikipedia.org/wiki/User_agent">see user agent definition</a></td>
+      <td style="text-align: left">The <a href="https://en.wikipedia.org/wiki/User_agent"><code class="language-html highlighter-rouge">User-Agent</code> string</a> of the consumer’s web browser.</td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">language</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">sv-SE</code>, <code class="language-html highlighter-rouge">nb-NO</code> or <code class="language-html highlighter-rouge">ee-EE</code>.</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">sv-SE</code>, <code class="language-html highlighter-rouge">nb-NO</code> or <code class="language-html highlighter-rouge">en-US</code>.</td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
@@ -504,7 +513,7 @@ object in the request below.</p>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string(50*)</code></td>
-      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See <a href="/payments/vipps/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payments/vipps/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.</td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
@@ -598,6 +607,12 @@ object in the request below.</p>
 49
 50
 51
+52
+53
+54
+55
+56
+57
 </pre></td><td class="rouge-code"><pre><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
@@ -644,6 +659,12 @@ object in the request below.</p>
         </span><span class="p">{</span><span class="w">
             </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://ecom.externalintegration.payex.com/vipps/core/scripts/client/px.vipps.client.js?token=5a17c24e-d459-4567-bbad-aa0f17a76119&amp;Culture=sv-SE"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"view-authorization"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/javascript"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://ecom.externalintegration.payex.com/vipps/core/scripts/client/px.vipps.client.js?token=5a17c24e-d459-4567-bbad-aa0f17a76119&amp;Culture=sv-SE"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"view-payment"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/javascript"</span><span class="w">
         </span><span class="p">}</span><span class="w">
@@ -654,13 +675,13 @@ object in the request below.</p>
 <p>The key information in the response is the <code class="language-html highlighter-rouge">view-payment</code> operation. You
 will need to embed its <code class="language-html highlighter-rouge">href</code> in a <code class="language-html highlighter-rouge"><span class="nt">&lt;script&gt;</span></code> element. The script will enable
 loading the payment page in an <code class="language-html highlighter-rouge">iframe</code> in our next step.</p>
-
+    
       <h2 id="step-2-display-the-payment-window">
-
-
+        
+        
           Step 2: Display the payment window <a href="#step-2-display-the-payment-window" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>You need to embed the script source on your site to create a hosted-view in an
@@ -735,13 +756,13 @@ embedded on your website.</p>
 
 <p><img src="/assets/img/checkout/vipps-hosted-payment.png" alt="Vipps mobile Payments" width="426px" />
 <img src="/assets/img/checkout/vipps-hosted-payment-no-paymenturl.png" alt="Vipps Payments" width="427px" /></p>
-
+    
       <h2 id="step-3-create-authorization-transaction">
-
-
+        
+        
           Step 3: Create authorization transaction <a href="#step-3-create-authorization-transaction" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>Use the mobile number from the consumer to create an authorization transaction.</p>
@@ -911,7 +932,7 @@ embedded on your website.</p>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">A unique reference for the transaction.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payments/vipps/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">failedReason</code></td>
@@ -930,13 +951,13 @@ embedded on your website.</p>
     </tr>
   </tbody>
 </table>
-
+    
       <h2 id="vipps-seamless-view-integration-flow">
-
-
+        
+        
           Vipps Seamless View integration flow <a href="#vipps-seamless-view-integration-flow" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>The sequence diagram below shows the two requests you have to send to
@@ -1010,25 +1031,26 @@ request.</p>
 </ol>
 
 <nav class="iterator d-flex">
-
+    
         <a class="mr-auto btn btn-guiding" role="button" rel="prev" href="redirect">
             Back: Redirect
         </a>
+    
 
-
-
+    
         <a class="ml-auto btn btn-executive" role="button" rel="next" href="after-payment">
             Next: After payments
         </a>
-
+    
 </nav>
-
+                                    
                                 </div>
 
                                 <div class="col-2 d-none d-lg-block">
                                     <nav class="doc-toc">
                                         <ul>
   <li class="toc-2"><a href="#step-1-create-a-purchase">Step 1: Create a Purchase</a></li>
+  <li class="toc-2"><a href="#payment-url">Payment Url</a></li>
   <li class="toc-2"><a href="#step-2-display-the-payment-window">Step 2: Display the payment window</a></li>
   <li class="toc-2"><a href="#step-3-create-authorization-transaction">Step 3: Create authorization transaction</a></li>
   <li class="toc-2"><a href="#vipps-seamless-view-integration-flow">Vipps Seamless View integration flow</a></li>

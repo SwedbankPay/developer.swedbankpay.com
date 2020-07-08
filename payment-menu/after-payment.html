@@ -5,17 +5,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="theme-color" content="#000">
-        <meta name="application-name" content="Swedbank Pay Checkout – After Payment">
+        <meta name="application-name" content="Swedbank Pay Payment Menu – After Payment">
         <meta name="msapplication-TileColor" content="#000">
         <meta name="msapplication-TileImage" content="https://design.swedbankpay.com/v/4.6.1/icons/mstile-144x144.png">
         <meta property="og:type" value="website" />
-        <meta property="og:url" value="https://developer.swedbankpay.com/checkout/after-payment.html" />
-        <meta property="og:title" value="Swedbank Pay Checkout – After Payment" />
-        <meta name="title" content="Swedbank Pay Checkout – After Payment" />
+        <meta property="og:url" value="https://developer.swedbankpay.com/payment-menu/after-payment.html" />
+        <meta property="og:title" value="Swedbank Pay Payment Menu – After Payment" />
+        <meta name="title" content="Swedbank Pay Payment Menu – After Payment" />
         <meta property="og:description" value="Swedbank Pay Developer Portal" />
         <meta name="description" content="Swedbank Pay Developer Portal" />
         <meta property="og:image" value="/assets/img/swedbank-pay-developer-portal.png" />
-        <title>Swedbank Pay Checkout – After Payment</title>
+        <title>Swedbank Pay Payment Menu – After Payment</title>
         <link rel="stylesheet" href="https://design.swedbankpay.com/v/4.6.1/styles/dg-style.css" />
         <link rel="stylesheet" href="/assets/css/swedbank-pay-design-guide-theme.css" />
         <link rel="stylesheet" href="/assets/css/pygments-autumn.css" />
@@ -25,7 +25,7 @@
         <link rel="icon" type="image/png" sizes="228x228" href="https://design.swedbankpay.com/v/4.6.1/icons/coast-228x228.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Swedbank Pay Checkout – After Payment">
+<meta name="apple-mobile-web-app-title" content="Swedbank Pay Payment Menu – After Payment">
 <link rel="apple-touch-icon" sizes="57x57" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-57x57.png">
 <link rel="apple-touch-icon" sizes="60x60" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-60x60.png">
 <link rel="apple-touch-icon" sizes="72x72" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-72x72.png">
@@ -113,7 +113,7 @@
 
                         <div class="topbar-info topbar-link-right">
                             <div class="topbar-info-contact">
-                                <a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/checkout/after-payment.md" target="_blank"
+                                <a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/payment-menu/after-payment.md" target="_blank"
                                     rel="noopener noreferrer" title="Edit this page on GitHub">
                                     <svg aria-labelledby="simpleicons-github-icon" role="img" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -146,30 +146,27 @@
                                 <div class="nav-group active">
                                     <div class="nav-heading">
                                         <i class="material-icons">keyboard_arrow_right</i>
-                                        <span>Checkout</span>
+                                        <span>Payment Menu</span>
                                     </div>
 
                                     
                                     <ul>
                                         
                                         
-                                        <li><a  href="/checkout/"><span>Introduction</span></a></li>
+                                        <li><a  href="/payment-menu/"><span>Introduction</span></a></li>
                                         
                                         
-                                        <li><a  href="/checkout/checkin"><span>Checkin</span></a></li>
+                                        <li><a  href="/payment-menu/payment-order"><span>Payment Order</span></a></li>
                                         
                                         
-                                        <li><a  href="/checkout/payment-menu"><span>Payment Menu</span></a></li>
-                                        
-                                        
-                                        <li><a  href="/checkout/capture"><span>Capture</span></a></li>
+                                        <li><a  href="/payment-menu/capture"><span>Capture</span></a></li>
                                         
                                         
                                         <li><a  aria-current="page" class="active"
-                                                 href="/checkout/after-payment"><span>After Payment</span></a></li>
+                                                 href="/payment-menu/after-payment"><span>After Payment</span></a></li>
                                         
                                         
-                                        <li><a  href="/checkout/other-features"><span>Other Features</span></a></li>
+                                        <li><a  href="/payment-menu/other-features"><span>Other Features</span></a></li>
                                         
                                     </ul>
                                     
@@ -182,13 +179,13 @@
 
                     <main class="doc-view col-xxl-10 col-md-9">
                         <div class="doc-container">
-                            <h1>Swedbank Pay Checkout – After Payment</h1>
+                            <h1>Swedbank Pay Payment Menu – After Payment</h1>
                             <div class="row">
                                 <div class="doc-body col-lg-10">
                                     
                                     <div class="jumbotron">
-    <p>When the consumer has <strong>completed</strong> the entire
-<a href="checkin">Checkin</a> and <a href="payment-menu">Payment Menu</a>, you need to implement the
+    <p>When the payer is <strong>done</strong> interacting
+with the Payment Menu, you need to implement the
 relevant <strong>after-payment operations</strong> in your order system. Which these
 operations are and how they are executed is described below.</p>
 
@@ -403,7 +400,7 @@ in the <code class="language-html highlighter-rouge">operations</code> list. See
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string(30)</code></td>
-      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/checkout/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payment-menu/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.</td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
@@ -534,7 +531,7 @@ example below:</p>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/checkout/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payment-menu/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
     </tr>
   </tbody>
 </table>
@@ -679,7 +676,7 @@ example below:</p>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string(30)</code></td>
-      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/checkout/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payment-menu/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
@@ -913,7 +910,7 @@ example below:</p>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/checkout/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payment-menu/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">receiptReference</code></td>

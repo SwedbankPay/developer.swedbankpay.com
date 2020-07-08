@@ -38,7 +38,7 @@ a[href^='//']:not([href*='https://developer.swedbankpay.com']):after, a[href^='h
 
 .iterator a.btn[rel='next']:before { content: '❯'; float: right; }
 
-.documentation code[data-processed='true'].language-mermaid { background: none; border: none; padding: 0px; }
+.documentation code.language-mermaid[data-processed='true'] { background: none; border: none; padding: 0px; }
 
 .documentation .highlighter-rouge { margin-bottom: 1rem; }
 

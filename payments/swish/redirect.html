@@ -85,31 +85,31 @@
                     <div class="topbar-link-container">
                         <button type="button" class="topbar-close"><i class="material-icons">close</i></button>
 
+                        
+                        
 
+                        
 
-
-
-
-                        <a
+                        <a 
                             href="/"><span>Home</span></a>
 
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/checkout/"><span>Checkout</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/payments/"><span>Payments</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/gift-cards/"><span>Gift Cards</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/resources/"><span>Resources</span></a>
-
+                        
 
                         <div class="topbar-info topbar-link-right">
                             <div class="topbar-info-contact">
@@ -132,50 +132,51 @@
                 <div class="row">
                     <div class="col-xxl-2 col-md-3">
                         <div class="doc-sidebar">
-
+                            
                             <form class="doc-search" action="/search">
                                 <input type="text" class="form-control" name="q" id="tipue_search_input"
                                     placeholder="Search..." autocomplete="off" pattern=".{3,}"
                                     title="At least 3 characters">
                             </form>
-
-
+                            
+                            
                             <nav class="documentation-nav">
-
-
+                                
+                                
                                 <div class="nav-group active">
                                     <div class="nav-heading">
                                         <i class="material-icons">keyboard_arrow_right</i>
                                         <span>Swish Payments</span>
                                     </div>
 
-
+                                    
                                     <ul>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/swish"><span>Introduction</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/swish/direct"><span>Direct</span></a></li>
-
-
-                                        <li><a  href="/payments/swish/redirect"><span>Redirect</span></a></li>
-
-
+                                        
+                                        
+                                        <li><a  aria-current="page" class="active"
+                                                 href="/payments/swish/redirect"><span>Redirect</span></a></li>
+                                        
+                                        
                                         <li><a  href="/payments/swish/seamless-view"><span>Seamless View</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/swish/after-payment"><span>After Payment</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/swish/other-features"><span>Other Features</span></a></li>
-
+                                        
                                     </ul>
-
+                                    
                                 </div>
-
+                                
                             </nav>
-
+                            
                         </div>
                     </div>
 
@@ -184,7 +185,7 @@
                             <h1>Swedbank Pay Payments Swish Redirect</h1>
                             <div class="row">
                                 <div class="doc-body col-lg-10">
-
+                                    
                                     <div class="jumbotron">
     <p>Swish is a one-phase payment instrument supported by the
 major Swedish banks. <strong>Swish Payments Redirect</strong> is where Swedbank
@@ -194,11 +195,11 @@ number (msisdn), connected to the Swish app.</p>
 
 </div>
       <h2 id="introduction">
-
-
+        
+        
           Introduction <a href="#introduction" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <ul>
@@ -228,19 +229,19 @@ to insert her phone number to initiate the sales transaction.</p>
 
 <div class="alert alert-complex alert-success">
     <header class="alert-header">
-
+            
                 <i class="material-icons alert-icon">link</i>
       <h3>
-
-
+        
+        
           Callback URL
-
-
+        
+        
       </header>
+    
 
-
-
-
+    
+        
             <div class="alert-body">
                 <p>It is mandatory to set a <a href="/payments/swish/other-features#callback"><code class="language-html highlighter-rouge">callbackUrl</code></a> in the <code class="language-html highlighter-rouge">POST</code> request creating the payment. If <code class="language-html highlighter-rouge">callbackUrl</code>
 is set, Swedbank Pay will send a <code class="language-html highlighter-rouge">POST</code> request to this URL when the consumer
@@ -248,16 +249,16 @@ has fulfilled the payment. Upon receiving this <code class="language-html highli
 <code class="language-html highlighter-rouge">GET</code> request towards the <code class="language-html highlighter-rouge">id</code> of the payment generated initially must be made
 to receive the state of the transaction.</p>
             </div>
-
-
+        
+    
 </div>
-
+    
       <h2 id="step-1-create-a-purchase">
-
-
+        
+        
           Step 1: Create a Purchase <a href="#step-1-create-a-purchase" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>All valid options when posting in a payment with operation equal to <code class="language-html highlighter-rouge">Purchase</code>.
@@ -377,7 +378,7 @@ The <code class="language-html highlighter-rouge">Purchase</code> example shown 
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">operation</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The operation that the <code class="language-html highlighter-rouge">payment</code> is supposed to perform. The [<code class="language-html highlighter-rouge">Purchase</code>][purchase] operation is used in our example.</td>
+      <td style="text-align: left">The operation that the <code class="language-html highlighter-rouge">payment</code> is supposed to perform. The <a href="/payments/swish/other-features#purchase-flow"><code class="language-html highlighter-rouge">Purchase</code></a> operation is used in our example.</td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
@@ -437,13 +438,13 @@ The <code class="language-html highlighter-rouge">Purchase</code> example shown 
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">userAgent</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The user agent reference of the consumer’s browser - [see user agent definition][user-agent-definition]</td>
+      <td style="text-align: left">The <a href="https://en.wikipedia.org/wiki/User_agent"><code class="language-html highlighter-rouge">User-Agent</code> string</a> of the consumer’s web browser.</td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">language</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">sv-SE</code>, <code class="language-html highlighter-rouge">nb-NO</code> or <code class="language-html highlighter-rouge">ee-EE</code>.</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">sv-SE</code>, <code class="language-html highlighter-rouge">nb-NO</code> or <code class="language-html highlighter-rouge">en-US</code>.</td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
@@ -497,7 +498,7 @@ The <code class="language-html highlighter-rouge">Purchase</code> example shown 
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string(50*)</code></td>
-      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See <a href="/payments/swish/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payments/swish/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.</td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
@@ -525,6 +526,12 @@ The <code class="language-html highlighter-rouge">Purchase</code> example shown 
     </tr>
     <tr>
       <td style="text-align: center"> </td>
+      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">prefillInfo</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">object</code></td>
+      <td style="text-align: left">An object holding information which, when available, will be prefilled on the payment page.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">msisdn</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">Number will be prefilled on payment page, if valid. The mobile number must have a country code prefix and be 8 to 15 digits in length.</td>
@@ -537,7 +544,7 @@ The <code class="language-html highlighter-rouge">Purchase</code> example shown 
     </tr>
     <tr>
       <td style="text-align: center"> </td>
-      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">ecomOnlyEnabled</code></td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">enableEcomOnly</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">boolean</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">true</code> if to only enable Swish on browser based transactions.; otherwise <code class="language-html highlighter-rouge">false</code> to also enable Swish transactions via in-app payments.</td>
     </tr>
@@ -647,13 +654,13 @@ The <code class="language-html highlighter-rouge">Purchase</code> example shown 
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></pre></td></tr></tbody></table></code></pre></div></div>
-
+    
       <h2 id="redirect-purchase-flow">
-
-
+        
+        
           Redirect Purchase flow <a href="#redirect-purchase-flow" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>The sequence diagram below shows the requests you have to send to Swedbank Pay
@@ -707,19 +714,19 @@ in this flow. Go to the <a href="/payments/swish/other-features#callback">Callba
 </code></pre>
 
 <nav class="iterator d-flex">
-
+    
         <a class="mr-auto btn btn-guiding" role="button" rel="prev" href="direct">
             Back: Direct
         </a>
+    
 
-
-
+    
         <a class="ml-auto btn btn-executive" role="button" rel="next" href="seamless-view">
             Next: Seamless View
         </a>
-
+    
 </nav>
-
+                                    
                                 </div>
 
                                 <div class="col-2 d-none d-lg-block">

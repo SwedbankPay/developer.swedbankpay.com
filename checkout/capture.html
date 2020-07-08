@@ -85,31 +85,31 @@
                     <div class="topbar-link-container">
                         <button type="button" class="topbar-close"><i class="material-icons">close</i></button>
 
+                        
+                        
 
+                        
 
-
-
-
-                        <a
+                        <a 
                             href="/"><span>Home</span></a>
 
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/checkout/"><span>Checkout</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/payments/"><span>Payments</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/gift-cards/"><span>Gift Cards</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/resources/"><span>Resources</span></a>
-
+                        
 
                         <div class="topbar-info topbar-link-right">
                             <div class="topbar-info-contact">
@@ -132,50 +132,51 @@
                 <div class="row">
                     <div class="col-xxl-2 col-md-3">
                         <div class="doc-sidebar">
-
+                            
                             <form class="doc-search" action="/search">
                                 <input type="text" class="form-control" name="q" id="tipue_search_input"
                                     placeholder="Search..." autocomplete="off" pattern=".{3,}"
                                     title="At least 3 characters">
                             </form>
-
-
+                            
+                            
                             <nav class="documentation-nav">
-
-
+                                
+                                
                                 <div class="nav-group active">
                                     <div class="nav-heading">
                                         <i class="material-icons">keyboard_arrow_right</i>
                                         <span>Checkout</span>
                                     </div>
 
-
+                                    
                                     <ul>
-
-
+                                        
+                                        
                                         <li><a  href="/checkout/"><span>Introduction</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/checkout/checkin"><span>Checkin</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/checkout/payment-menu"><span>Payment Menu</span></a></li>
-
-
-                                        <li><a  href="/checkout/capture"><span>Capture</span></a></li>
-
-
+                                        
+                                        
+                                        <li><a  aria-current="page" class="active"
+                                                 href="/checkout/capture"><span>Capture</span></a></li>
+                                        
+                                        
                                         <li><a  href="/checkout/after-payment"><span>After Payment</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/checkout/other-features"><span>Other Features</span></a></li>
-
+                                        
                                     </ul>
-
+                                    
                                 </div>
-
+                                
                             </nav>
-
+                            
                         </div>
                     </div>
 
@@ -184,19 +185,19 @@
                             <h1>Swedbank Pay Checkout – Capture</h1>
                             <div class="row">
                                 <div class="doc-body col-lg-10">
-
+                                    
                                     <h2 id="step-5-capture-the-funds">
-
-
+        
+        
           Step 5: Capture the funds <a href="#step-5-capture-the-funds" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>Capture can only be done on a payment with a successful authorized transaction,
 and if the authorization was not done on a one-phase payment instrument.
 Examples of one-phase payment instruments are <a href="/payments/swish/">Swish</a> and <a href="/payments/vipps/">Vipps</a>,
- while payment instruments such as <a href="/payments/card">Credit Card</a> are two-phase payments,
+ while payment instruments such as <a href="/payments/card">Card Payments</a> are two-phase payments,
  requiring a <code class="language-html highlighter-rouge">Capture</code> to be performed.</p>
 
 <p>It is possible to do a part-capture where you only capture a smaller amount
@@ -359,13 +360,13 @@ with the sum to capture, and get back the status.</p>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string(30)</code></td>
-      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See <a href="/checkout/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details. In Invoice Payments <code class="language-html highlighter-rouge">payeereference</code> is used as an invoice/receipt number.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/checkout/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">receiptReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string(30)</code></td>
-      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation.  It is used to supplement <code class="language-html highlighter-rouge">payeeReference</code> as an additional receipt number.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is used to supplement <code class="language-html highlighter-rouge">payeeReference</code> as an additional receipt number.</td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
@@ -677,7 +678,7 @@ with the sum to capture, and get back the status.</p>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">A unique reference for the transaction. See <a href="/checkout/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/checkout/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
     </tr>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">receiptReference</code></td>
@@ -692,19 +693,19 @@ everyone should be happy. But, sometimes you also need to implement the
 cancellation and reversal operations described below.</p>
 
 <nav class="iterator d-flex">
-
+    
         <a class="mr-auto btn btn-guiding" role="button" rel="prev" href="payment-menu">
             Back: Payment Menu
         </a>
+    
 
-
-
+    
         <a class="ml-auto btn btn-executive" role="button" rel="next" href="after-payment">
             Next: After Payment
         </a>
-
+    
 </nav>
-
+                                    
                                 </div>
 
                                 <div class="col-2 d-none d-lg-block">

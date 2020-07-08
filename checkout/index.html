@@ -85,31 +85,31 @@
                     <div class="topbar-link-container">
                         <button type="button" class="topbar-close"><i class="material-icons">close</i></button>
 
+                        
+                        
 
+                        
 
-
-
-
-                        <a
+                        <a 
                             href="/"><span>Home</span></a>
 
-
-
-                        <a
+                        
+                        
+                        <a  aria-current="page" class="active" 
                             href="/checkout/"><span>Checkout</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/payments/"><span>Payments</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/gift-cards/"><span>Gift Cards</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/resources/"><span>Resources</span></a>
-
+                        
 
                         <div class="topbar-info topbar-link-right">
                             <div class="topbar-info-contact">
@@ -132,50 +132,51 @@
                 <div class="row">
                     <div class="col-xxl-2 col-md-3">
                         <div class="doc-sidebar">
-
+                            
                             <form class="doc-search" action="/search">
                                 <input type="text" class="form-control" name="q" id="tipue_search_input"
                                     placeholder="Search..." autocomplete="off" pattern=".{3,}"
                                     title="At least 3 characters">
                             </form>
-
-
+                            
+                            
                             <nav class="documentation-nav">
-
-
+                                
+                                
                                 <div class="nav-group active">
                                     <div class="nav-heading">
                                         <i class="material-icons">keyboard_arrow_right</i>
                                         <span>Checkout</span>
                                     </div>
 
-
+                                    
                                     <ul>
-
-
-                                        <li><a  href="/checkout/"><span>Introduction</span></a></li>
-
-
+                                        
+                                        
+                                        <li><a  aria-current="page" class="active"
+                                                 href="/checkout/"><span>Introduction</span></a></li>
+                                        
+                                        
                                         <li><a  href="/checkout/checkin"><span>Checkin</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/checkout/payment-menu"><span>Payment Menu</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/checkout/capture"><span>Capture</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/checkout/after-payment"><span>After Payment</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/checkout/other-features"><span>Other Features</span></a></li>
-
+                                        
                                     </ul>
-
+                                    
                                 </div>
-
+                                
                             </nav>
-
+                            
                         </div>
                     </div>
 
@@ -184,7 +185,7 @@
                             <h1>Swedbank Pay Checkout – Introduction</h1>
                             <div class="row">
                                 <div class="doc-body col-lg-10">
-
+                                    
                                     <div class="jumbotron">
     <p><strong>Swedbank Pay Checkout</strong> is a complete reimagination
 of the checkout experience, integrating seamlessly into the merchant website
@@ -199,11 +200,11 @@ and try out Swedbank Pay Checkout for yourself!</p>
 enabling existing Swedbank Pay Checkout users to pay with their favorite payment
 methods in just a few simple steps.</p>
       <h2 id="prerequisites">
-
-
+        
+        
           Prerequisites <a href="#prerequisites" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>To start integrating Swedbank Pay Checkout, you need the following:</p>
@@ -215,13 +216,13 @@ methods in just a few simple steps.</p>
 Swedbank Pay Admin. Please observe that Swedbank Pay Checkout encompass
 both the <strong><code class="language-html highlighter-rouge">consumer</code></strong> and <strong><code class="language-html highlighter-rouge">paymentmenu</code></strong> scope.</li>
 </ul>
-
+    
       <h2 id="introduction">
-
-
+        
+        
           Introduction <a href="#introduction" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>To get started with Swedbank Pay Checkout, you should learn about its different
@@ -237,18 +238,18 @@ Swedbank Pay Checkout.</p>
 checkout.</p>
 
 <div class="alert  alert-informative">
-
-
+    
+        
             <i class="material-icons alert-icon">info</i>
+        
+    
 
-
-
-
-
+    
+        
             <p>Note that in this diagram, the Payer refers to the merchant front-end
 (website) while Merchant refers to the merchant back-end.</p>
-
-
+        
+    
 </div>
 
 <pre><code class="language-mermaid">sequenceDiagram
@@ -367,24 +368,24 @@ checkout.</p>
         note right of Merchant: Capture here only if the purchased&lt;br/&gt;goods don't require shipping.&lt;br/&gt;If shipping is required, perform capture&lt;br/&gt;after the goods have shipped.&lt;br&gt;Should only be used for &lt;br&gt;PaymentInstruments that support &lt;br&gt;Authorizations.
         end
 </code></pre>
-
+    
       <h3 id="explanations">
-
-
+        
+        
           Explanations <a href="#explanations" class="header-anchor"></a>
-
-
+        
+        
       </h3>
 
 <p>Under, you see a list of notes that explains some of the sequences in the
 diagram.</p>
-
+    
       <h4 id="checkin">
-
-
+        
+        
           Checkin <a href="#checkin" class="header-anchor"></a>
-
-
+        
+        
       </h4>
 
 <ul>
@@ -397,25 +398,25 @@ of the iframe.</li>
 the consumer has been identified, and delivers a field
 <code class="language-html highlighter-rouge">consumerProfileRef</code> as a reference to be used in the payment menu.</li>
 </ul>
-
+    
       <h4 id="payment-menu">
-
-
+        
+        
           Payment Menu <a href="#payment-menu" class="header-anchor"></a>
-
-
+        
+        
       </h4>
 
 <ul>
   <li>⑤ <code class="language-html highlighter-rouge">Authorize Payment</code> is when the payer has accepted the payment.</li>
 </ul>
-
+    
       <h2 id="languages">
-
-
+        
+        
           Languages <a href="#languages" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>​Checkout supports the following languages:
@@ -424,15 +425,15 @@ English (US) <code class="language-html highlighter-rouge">en-US</code>, Norwegi
          <code class="language-html highlighter-rouge">sv-SE</code>.</p>
 
 <nav class="iterator d-flex">
+    
 
-
-
+    
         <a class="ml-auto btn btn-executive" role="button" rel="next" href="checkin">
             Next: Implement Checkin
         </a>
-
+    
 </nav>
-
+                                    
                                 </div>
 
                                 <div class="col-2 d-none d-lg-block">

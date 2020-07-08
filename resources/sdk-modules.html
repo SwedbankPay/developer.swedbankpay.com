@@ -85,31 +85,31 @@
                     <div class="topbar-link-container">
                         <button type="button" class="topbar-close"><i class="material-icons">close</i></button>
 
+                        
+                        
 
+                        
 
-
-
-
-                        <a
+                        <a 
                             href="/"><span>Home</span></a>
 
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/checkout/"><span>Checkout</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/payments/"><span>Payments</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/gift-cards/"><span>Gift Cards</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/resources/"><span>Resources</span></a>
-
+                        
 
                         <div class="topbar-info topbar-link-right">
                             <div class="topbar-info-contact">
@@ -132,59 +132,60 @@
                 <div class="row">
                     <div class="col-xxl-2 col-md-3">
                         <div class="doc-sidebar">
-
+                            
                             <form class="doc-search" action="/search">
                                 <input type="text" class="form-control" name="q" id="tipue_search_input"
                                     placeholder="Search..." autocomplete="off" pattern=".{3,}"
                                     title="At least 3 characters">
                             </form>
-
-
+                            
+                            
                             <nav class="documentation-nav">
-
-
+                                
+                                
                                 <div class="nav-group active">
                                     <div class="nav-heading">
                                         <i class="material-icons">keyboard_arrow_right</i>
                                         <span>Resources</span>
                                     </div>
 
-
+                                    
                                     <ul>
-
-
+                                        
+                                        
                                         <li><a  href="/resources/"><span>Introduction</span></a></li>
-
-
-                                        <li><a  href="/resources/sdk-modules"><span>SDKs and Modules</span></a></li>
-
-
+                                        
+                                        
+                                        <li><a  aria-current="page" class="active"
+                                                 href="/resources/sdk-modules"><span>SDKs and Modules</span></a></li>
+                                        
+                                        
                                         <li><a  href="/resources/test-data"><span>Test Data</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/resources/demoshop"><span>Demoshop</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/resources/development-guidelines"><span>Open Source Development Guidelines</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/resources/release-notes"><span>Release Notes</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/resources/terminology"><span>Terminology</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/resources/data-protection"><span>Data Protection</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/resources/public-migration-key"><span>Public Migration Key</span></a></li>
-
+                                        
                                     </ul>
-
+                                    
                                 </div>
-
+                                
                             </nav>
-
+                            
                         </div>
                     </div>
 
@@ -193,31 +194,31 @@
                             <h1>SDKs and Modules</h1>
                             <div class="row">
                                 <div class="doc-body col-lg-10">
-
+                                    
                                     <div class="jumbotron">
     <p>We have multiple Open Source-based SDKs and
 Modules to use with Swedbank Pay APIs.</p>
 
 </div>
       <h2 id="introduction">
-
-
+        
+        
           Introduction <a href="#introduction" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>Swedbank Pay offers APIs, SDKs, libraries, modules, extensions and plugins as
 different ways to integrate and use our products and services. It might not
 be obvious to everyone what these are, so to describe them we use the analogy
 of <strong>baking a cake</strong>.</p>
-
+    
       <h3 id="apis">
-
-
+        
+        
           APIs <a href="#apis" class="header-anchor"></a>
-
-
+        
+        
       </h3>
 
 <p>APIs (Application Programming Interface) are the lowest level building block of
@@ -226,13 +227,13 @@ lot of flexibility, but also requires you to have more knowledge in how to use
 them correctly and you need to know which recipe to cook in order to get a
 workable cake out in the other end. To efficiently use an API, you need to be
 a trained baker.</p>
-
+    
       <h3 id="sdks">
-
-
+        
+        
           SDKs <a href="#sdks" class="header-anchor"></a>
-
-
+        
+        
       </h3>
 
 <p>SDKs (Software Development Kit), also known as libraries, can be compared to
@@ -241,26 +242,26 @@ them and a recipe is provided for you. Because of this, you also have less
 flexibility because you can’t bake any cake, you can only bake the one the mix
 is for. You still have to mix everything together, so you need some experience
 in the kitchen is required, but less than using the “raw” API.</p>
-
+    
       <h3 id="modules">
-
-
+        
+        
           Modules <a href="#modules" class="header-anchor"></a>
-
-
+        
+        
       </h3>
 
 <p>Modules, also known as extensions or plugins, can be compared to a <strong>readily
 baked cake</strong> purchased at a bakery. You don’t need any baking skills to have
 one, but you also have very little flexibility in what goes into the cake or
 how it tastes.</p>
-
+    
       <h2 id="official-modules">
-
-
+        
+        
           Official Modules <a href="#official-modules" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p><strong>Modules, extensions and plugins</strong> are typically used as a way to extend
@@ -271,27 +272,27 @@ Swedbank Pay.</p>
 
 <div class="alert alert-complex alert-warning">
     <header class="alert-header">
-
+            
                 <i class="material-icons alert-icon">warning</i>
       <h3>
-
-
+        
+        
           Unsupported
-
-
+        
+        
       </header>
+    
 
-
-
-
+    
+        
             <div class="alert-body">
                 <p>These Modules are at an early stage of development
 and are not supported as of yet by Swedbank Pay. They are provided as a
 convenience to speed up your development, so please feel free to play around.
 However, if you need support, please wait for a future, stable release.</p>
             </div>
-
-
+        
+    
 </div>
 
 <table class="table table-striped">
@@ -305,7 +306,7 @@ However, if you need support, please wait for a future, stable release.</p>
   <tbody>
     <tr>
       <td style="text-align: center"><img src="/assets/img/logos/episerver.svg" alt="episerver" /></td>
-      <td style="text-align: left">Swedbank Pay <strong>Checkout</strong> for Episerver</td>
+      <td style="text-align: left"><a href="https://marketplace.episerver.com/apps/swedbank/swedbankpay/">Swedbank Pay <strong>Checkout</strong> for Episerver</a></td>
       <td style="text-align: left"><a href="https://github.com/SwedbankPay/swedbank-pay-episerver-checkout"><code class="language-html highlighter-rouge">…episerver-checkout</code></a></td>
     </tr>
     <tr>
@@ -330,13 +331,13 @@ However, if you need support, please wait for a future, stable release.</p>
     </tr>
   </tbody>
 </table>
-
+    
       <h2 id="official-sdks">
-
-
+        
+        
           Official SDKs <a href="#official-sdks" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p><strong>Software Development Kits</strong> allow developers to integrate with Swedbank Pay’s
@@ -349,27 +350,27 @@ programming language and environment.</p>
 
 <div class="alert alert-complex alert-warning">
     <header class="alert-header">
-
+            
                 <i class="material-icons alert-icon">warning</i>
       <h3>
-
-
+        
+        
           Unsupported
-
-
+        
+        
       </header>
+    
 
-
-
-
+    
+        
             <div class="alert-body">
                 <p>These SDKs are at an early stage of development
 and are not supported as of yet by Swedbank Pay. They are provided as a
 convenience to speed up your development, so please feel free to play around.
 However, if you need support, please wait for a future, stable release.</p>
             </div>
-
-
+        
+    
 </div>
 
 <table class="table table-striped">
@@ -383,7 +384,7 @@ However, if you need support, please wait for a future, stable release.</p>
   <tbody>
     <tr>
       <td style="text-align: center"><img src="/assets/img/logos/android.svg" alt="Kotlin" /></td>
-      <td style="text-align: left">Swedbank Pay SDK for Android</td>
+      <td style="text-align: left"><a href="https://bintray.com/swedbankpay/swedbank-pay-sdk-android/swedbank-pay-sdk-android">Swedbank Pay SDK for Android</a></td>
       <td style="text-align: left"><a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android"><code class="language-html highlighter-rouge">…sdk-android</code></a></td>
     </tr>
     <tr>
@@ -393,8 +394,13 @@ However, if you need support, please wait for a future, stable release.</p>
     </tr>
     <tr>
       <td style="text-align: center"><img src="/assets/img/logos/swift.svg" alt="Swift" /></td>
-      <td style="text-align: left">Swedbank Pay SDK for iOS</td>
+      <td style="text-align: left"><a href="https://cocoapods.org/pods/SwedbankPaySDK">Swedbank Pay SDK for iOS</a></td>
       <td style="text-align: left"><a href="https://github.com/SwedbankPay/swedbank-pay-sdk-ios"><code class="language-html highlighter-rouge">…sdk-ios</code></a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: left"><a href="https://www.npmjs.com/package/@swedbank-pay/sdk">🌳 Swedbank Pay JavaScript / TypeScript SDK</a></td>
+      <td style="text-align: left"><a href="https://github.com/SwedbankPay/swedbank-pay-sdk-js"><code class="language-html highlighter-rouge">…sdk-js</code></a></td>
     </tr>
     <tr>
       <td style="text-align: center"><img src="/assets/img/logos/php.svg" alt="PHP" /></td>
@@ -403,36 +409,36 @@ However, if you need support, please wait for a future, stable release.</p>
     </tr>
   </tbody>
 </table>
-
+    
       <h2 id="unofficial-sdks">
-
-
+        
+        
           Unofficial SDKs <a href="#unofficial-sdks" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <div class="alert alert-complex alert-warning">
     <header class="alert-header">
-
+            
                 <i class="material-icons alert-icon">warning</i>
       <h3>
-
-
+        
+        
           Unsupported
-
-
+        
+        
       </header>
+    
 
-
-
-
+    
+        
             <div class="alert-body">
                 <p>Unofficial SDKs are offered as a convenience to speed up your development,
 but are not supported in any way by Swedbank Pay – not now, nor in the future.</p>
             </div>
-
-
+        
+    
 </div>
 
 <table class="table table-striped">
@@ -451,13 +457,13 @@ but are not supported in any way by Swedbank Pay – not now, nor in the future
     </tr>
   </tbody>
 </table>
-
+    
       <h2 id="official-libraries">
-
-
+        
+        
           Official Libraries <a href="#official-libraries" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p><strong>Software libraries</strong> are bundles of code often used by an SDK or in a Module
@@ -465,27 +471,27 @@ to solve one or a set of specific problems.</p>
 
 <div class="alert alert-complex alert-warning">
     <header class="alert-header">
-
+            
                 <i class="material-icons alert-icon">warning</i>
       <h3>
-
-
+        
+        
           Unsupported
-
-
+        
+        
       </header>
+    
 
-
-
-
+    
+        
             <div class="alert-body">
                 <p>These Libraries are at an early stage of development
 and are not supported as of yet by Swedbank Pay. They are provided as a
 convenience to speed up your development, so please feel free to play around.
 However, if you need support, please wait for a future, stable release.</p>
             </div>
-
-
+        
+    
 </div>
 
 <table class="table table-striped">
@@ -509,7 +515,7 @@ However, if you need support, please wait for a future, stable release.</p>
     </tr>
   </tbody>
 </table>
-
+                                    
                                 </div>
 
                                 <div class="col-2 d-none d-lg-block">

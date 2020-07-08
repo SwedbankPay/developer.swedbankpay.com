@@ -5,17 +5,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="theme-color" content="#000">
-        <meta name="application-name" content="Swedbank Pay Checkout – Payment Menu">
+        <meta name="application-name" content="Swedbank Pay Payment Menu – Payment Order">
         <meta name="msapplication-TileColor" content="#000">
         <meta name="msapplication-TileImage" content="https://design.swedbankpay.com/v/4.6.1/icons/mstile-144x144.png">
         <meta property="og:type" value="website" />
-        <meta property="og:url" value="https://developer.swedbankpay.com/checkout/payment-menu.html" />
-        <meta property="og:title" value="Swedbank Pay Checkout – Payment Menu" />
-        <meta name="title" content="Swedbank Pay Checkout – Payment Menu" />
+        <meta property="og:url" value="https://developer.swedbankpay.com/payment-menu/payment-order.html" />
+        <meta property="og:title" value="Swedbank Pay Payment Menu – Payment Order" />
+        <meta name="title" content="Swedbank Pay Payment Menu – Payment Order" />
         <meta property="og:description" value="Swedbank Pay Developer Portal" />
         <meta name="description" content="Swedbank Pay Developer Portal" />
         <meta property="og:image" value="/assets/img/swedbank-pay-developer-portal.png" />
-        <title>Swedbank Pay Checkout – Payment Menu</title>
+        <title>Swedbank Pay Payment Menu – Payment Order</title>
         <link rel="stylesheet" href="https://design.swedbankpay.com/v/4.6.1/styles/dg-style.css" />
         <link rel="stylesheet" href="/assets/css/swedbank-pay-design-guide-theme.css" />
         <link rel="stylesheet" href="/assets/css/pygments-autumn.css" />
@@ -25,7 +25,7 @@
         <link rel="icon" type="image/png" sizes="228x228" href="https://design.swedbankpay.com/v/4.6.1/icons/coast-228x228.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Swedbank Pay Checkout – Payment Menu">
+<meta name="apple-mobile-web-app-title" content="Swedbank Pay Payment Menu – Payment Order">
 <link rel="apple-touch-icon" sizes="57x57" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-57x57.png">
 <link rel="apple-touch-icon" sizes="60x60" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-60x60.png">
 <link rel="apple-touch-icon" sizes="72x72" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-72x72.png">
@@ -113,7 +113,7 @@
 
                         <div class="topbar-info topbar-link-right">
                             <div class="topbar-info-contact">
-                                <a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/checkout/payment-menu.md" target="_blank"
+                                <a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/payment-menu/payment-order.md" target="_blank"
                                     rel="noopener noreferrer" title="Edit this page on GitHub">
                                     <svg aria-labelledby="simpleicons-github-icon" role="img" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -146,30 +146,27 @@
                                 <div class="nav-group active">
                                     <div class="nav-heading">
                                         <i class="material-icons">keyboard_arrow_right</i>
-                                        <span>Checkout</span>
+                                        <span>Payment Menu</span>
                                     </div>
 
                                     
                                     <ul>
                                         
                                         
-                                        <li><a  href="/checkout/"><span>Introduction</span></a></li>
-                                        
-                                        
-                                        <li><a  href="/checkout/checkin"><span>Checkin</span></a></li>
+                                        <li><a  href="/payment-menu/"><span>Introduction</span></a></li>
                                         
                                         
                                         <li><a  aria-current="page" class="active"
-                                                 href="/checkout/payment-menu"><span>Payment Menu</span></a></li>
+                                                 href="/payment-menu/payment-order"><span>Payment Order</span></a></li>
                                         
                                         
-                                        <li><a  href="/checkout/capture"><span>Capture</span></a></li>
+                                        <li><a  href="/payment-menu/capture"><span>Capture</span></a></li>
                                         
                                         
-                                        <li><a  href="/checkout/after-payment"><span>After Payment</span></a></li>
+                                        <li><a  href="/payment-menu/after-payment"><span>After Payment</span></a></li>
                                         
                                         
-                                        <li><a  href="/checkout/other-features"><span>Other Features</span></a></li>
+                                        <li><a  href="/payment-menu/other-features"><span>Other Features</span></a></li>
                                         
                                     </ul>
                                     
@@ -182,30 +179,24 @@
 
                     <main class="doc-view col-xxl-10 col-md-9">
                         <div class="doc-container">
-                            <h1>Swedbank Pay Checkout – Payment Menu</h1>
+                            <h1>Swedbank Pay Payment Menu – Payment Order</h1>
                             <div class="row">
                                 <div class="doc-body col-lg-10">
                                     
                                     <div class="jumbotron">
-    <p><strong>Payment Menu</strong> begins where <strong>Checkin</strong> left
-off, letting the payer complete their purchase.</p>
+    <p><strong>Payment Order</strong> lets the payer complete their purchase.</p>
 
 </div>
-      <h2 id="step-3-create-payment-order">
+      <h2 id="step-1-create-payment-order">
         
         
-          Step 3: Create Payment Order <a href="#step-3-create-payment-order" class="header-anchor"></a>
+          Step 1: Create Payment Order <a href="#step-1-create-payment-order" class="header-anchor"></a>
         
         
       </h2>
 
-<p>Once consumer has been identified, the next step is to initiate the payment
-using <code class="language-html highlighter-rouge">consumerProfileRef</code> retrieved in the previous step.</p>
-
-<p>We start by performing a <code class="language-html highlighter-rouge">POST</code> request towards the <code class="language-html highlighter-rouge">paymentorder</code> resource
-with the payer information (such as <code class="language-html highlighter-rouge">consumerProfileRef</code>) we obtained in the
-checkin process described above.
-Remember to read up on our <a href="/checkout/other-features#urls-resource">URL resource</a>.</p>
+<p>We start by performing a <code class="language-html highlighter-rouge">POST</code> request towards the <code class="language-html highlighter-rouge">paymentorder</code> resource in
+order to create a Payment Order.</p>
 
 <div class="alert  alert-success">
     
@@ -237,7 +228,7 @@ consumer is redirected out of the Seamless View (the <code class="language-html 
 redirected out of frame when selecting the payment instrument Vipps or in the 3-D Secure verification
 for Credit Card Payments.</p>
 
-<p>The URL should represent the page of where the Payment Order Seamless View was
+<p>The URL should represent the page of where the Payment Seamless View was
 hosted originally, such as the checkout page, shopping cart page, or similar.
 Basically, <code class="language-html highlighter-rouge">paymentUrl</code> should be set to the same URL as that of the page where
 the JavaScript for the Seamless View was added to in order to initiate the
@@ -253,7 +244,7 @@ payment process.</p>
     
         
             <p>Please note that the <code class="language-html highlighter-rouge">paymentUrl</code> must be able to invoke the same JavaScript URL
-from the same Payment Order as the one that initiated the payment process
+from the same Payment as the one that initiated the payment process
 originally, so it should include some sort of state identifier in the URL. The
 state identifier is the ID of the order, shopping cart or similar that has the
 URL of the Payment stored.</p>
@@ -680,7 +671,7 @@ both the integration and the payer.</p>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">instrument</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The payment instrument used. Selected by using the <a href="/checkout/other-features#instrument-mode">Instrument Mode</a>.</td>
+      <td style="text-align: left">The payment instrument used. Selected by using the <a href="/payment-menu/other-features#instrument-mode">Instrument Mode</a>.</td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
@@ -704,7 +695,7 @@ both the integration and the payer.</p>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">generateRecurrenceToken</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">bool</code></td>
-      <td style="text-align: left">Determines whether a recurrence token should be generated. A recurrence token is primarily used to enable future <a href="/checkout/other-features#recurring-payments">recurring payments</a> – with the same token – through server-to-server calls. Default value is <code class="language-html highlighter-rouge">false</code>.</td>
+      <td style="text-align: left">Determines whether a recurrence token should be generated. A recurrence token is primarily used to enable future <a href="/payment-menu/other-features#recurring-payments">recurring payments</a> – with the same token – through server-to-server calls. Default value is <code class="language-html highlighter-rouge">false</code>.</td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
@@ -770,7 +761,7 @@ both the integration and the payer.</p>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string(30)</code></td>
-      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/checkout/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payment-menu/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
@@ -812,25 +803,25 @@ both the integration and the payer.</p>
       <td style="text-align: center"> </td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">email</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The e-mail address of the payer. Will be used to prefill the Checkin as well as on the payer’s profile, if not already set. Increases the chance for <a href="/checkout/other-features#3-d-secure-2">frictionless 3-D Secure 2 flow</a>.</td>
+      <td style="text-align: left">The e-mail address of the payer. Will be used to prefill the Checkin as well as on the payer’s profile, if not already set. Increases the chance for <a href="/payment-menu/other-features#3-d-secure-2">frictionless 3-D Secure 2 flow</a>.</td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">msisdn</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The mobile phone number of the Payer. Will be prefilled on Checkin page and used on the payer’s profile, if not already set. The mobile number must have a country code prefix and be 8 to 15 digits in length. The field is related to <a href="/checkout/other-features#3-d-secure-2">3-D Secure 2</a>.</td>
+      <td style="text-align: left">The mobile phone number of the Payer. Will be prefilled on Checkin page and used on the payer’s profile, if not already set. The mobile number must have a country code prefix and be 8 to 15 digits in length. The field is related to <a href="/payment-menu/other-features#3-d-secure-2">3-D Secure 2</a>.</td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">workPhoneNumber</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The work phone number of the payer. Optional (increased chance for frictionless flow if set) and is related to <a href="/checkout/other-features#3-d-secure-2">3-D Secure 2</a>.</td>
+      <td style="text-align: left">The work phone number of the payer. Optional (increased chance for frictionless flow if set) and is related to <a href="/payment-menu/other-features#3-d-secure-2">3-D Secure 2</a>.</td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">homePhoneNumber</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The home phone number of the payer. Optional (increased chance for frictionless flow if set) and is related to <a href="/checkout/other-features#3-d-secure-2">3-D Secure 2</a>.</td>
+      <td style="text-align: left">The home phone number of the payer. Optional (increased chance for frictionless flow if set) and is related to <a href="/payment-menu/other-features#3-d-secure-2">3-D Secure 2</a>.</td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
@@ -932,7 +923,7 @@ both the integration and the payer.</p>
       <td style="text-align: center"> </td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">riskIndicator</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">array</code></td>
-      <td style="text-align: left">This <strong>optional</strong> object consist of information that helps verifying the payer. Providing these fields decreases the likelihood of having to promt for <a href="/checkout/other-features#3-d-secure-2">3-D Secure authentication</a> of the payer when they are authenticating the purchase.</td>
+      <td style="text-align: left">This <strong>optional</strong> object consist of information that helps verifying the payer. Providing these fields decreases the likelihood of having to promt for <a href="/payment-menu/other-features#3-d-secure-2">3-D Secure authentication</a> of the payer when they are authenticating the purchase.</td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
@@ -1043,7 +1034,7 @@ both the integration and the payer.</p>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">instrument</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The payment instrument used. Selected by using the <a href="/checkout/other-features#instrument-mode">Instrument Mode</a>.</td>
+      <td style="text-align: left">The payment instrument used. Selected by using the <a href="/payment-menu/other-features#instrument-mode">Instrument Mode</a>.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">paymentToken</code></td>
@@ -1180,7 +1171,7 @@ both the integration and the payer.</p>
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://ecom.externalintegration.payex.com/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=5a17c24e-d459-4567-bbad-aa0f17a76119&amp;culture=sv-SE"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
             </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"view-paymentorder"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/javascript"</span><span class="w">
@@ -1220,10 +1211,32 @@ both the integration and the payer.</p>
 <code class="language-html highlighter-rouge">operations</code> we are interested in. Store the <code class="language-html highlighter-rouge">id</code> of the Payment Order
 in your system to look up status on the completed payment later.</p>
 
-<p>Then find the <code class="language-html highlighter-rouge">view-paymentorder</code> operation and embed its <code class="language-html highlighter-rouge">href</code> in a
-<code class="language-html highlighter-rouge"><span class="nt">&lt;script&gt;</span></code> element.
-That script will then load the Seamless View for the Payment Menu. We will look
-into how to hook that up next.</p>
+<div class="alert alert-complex alert-informative">
+    <header class="alert-header">
+            
+                <i class="material-icons alert-icon">info</i>
+      <h3>
+        
+        
+          URL Storage
+        
+        
+      </header>
+    
+
+    
+        
+            <div class="alert-body">
+                <p>The <code class="language-html highlighter-rouge">id</code> of the Payment Order should be stored for later retrieval. <a href="/home/technical-information#uri-usage">Read
+more about URL usage</a>.</p>
+            </div>
+        
+    
+</div>
+
+<p>Then find the <code class="language-html highlighter-rouge">view-paymentorder</code> operation and embed its <code class="language-html highlighter-rouge">href</code> in a <code class="language-html highlighter-rouge"><span class="nt">&lt;script&gt;</span></code>
+element. That script will then load the Seamless View for the Payment Menu. We
+will look into how to hook that up next.</p>
 
 <div class="alert  alert-informative">
     
@@ -1241,21 +1254,53 @@ the order ID of the webshop or merchant website.</p>
     
 </div>
     
-      <h2 id="step-4-display-the-payment-menu">
+      <h2 id="step-2-display-the-payment-menu">
         
         
-          Step 4: Display the Payment Menu <a href="#step-4-display-the-payment-menu" class="header-anchor"></a>
+          Step 2: Display the Payment Menu <a href="#step-2-display-the-payment-menu" class="header-anchor"></a>
         
         
       </h2>
 
 <p>To load the payment menu from the JavaScript URL obtained in the back end API
-response, it needs to be set as a <code class="language-html highlighter-rouge">script</code> element’s <code class="language-html highlighter-rouge">src</code> attribute. You can
-cause a page reload and do this with static HTML or you can avoid the page
-refresh by invoking the POST to create the payment order through Ajax and then
-create the script element with JavaScript, all inside the event handler for
-<a href="/checkout/checkin#step-2-display-swedbank-pay-checkin-module"><code class="language-html highlighter-rouge">onConsumerIdentified</code></a>.
-The HTML code will be unchanged in this example.</p>
+response, it needs to be set as a <code class="language-html highlighter-rouge">script</code> element’s <code class="language-html highlighter-rouge">src</code> attribute in an HTML
+document.</p>
+
+<p>You can cause a page reload and do this with backend-rendered HTML or you can
+avoid the page refresh by invoking the POST to create the payment order through
+Ajax and then create the script element with JavaScript. We will demonstrate how
+to do a JavaScript-based integration below.</p>
+
+<p>First the minimum HTML required to initialize the Payment Menu:</p>
+
+<p class="code-header"><strong>HTML</strong></p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;title&gt;</span>Swedbank Pay Payment Menu<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"payment-menu"</span><span class="nt">&gt;&lt;/div&gt;</span>
+        <span class="c">&lt;!-- Here you can specify your own JavaScript file --&gt;</span>
+        <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"&lt;Your-JavaScript-File&gt;"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>What happens inside <code class="language-html highlighter-rouge"><span class="nt">&lt;Your-JavaScript-File&gt;</span></code> should look something alike the
+following:</p>
 
 <p class="code-header"><strong>JavaScript</strong></p>
 
@@ -1289,134 +1334,55 @@ The HTML code will be unchanged in this example.</p>
 28
 29
 30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68
-69
-70
 </pre></td><td class="rouge-code"><pre><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
 <span class="nx">request</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">load</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-    <span class="c1">// We will assume that our own backend returns the</span>
-    <span class="c1">// exact same as what SwedbankPay returns.</span>
     <span class="nx">response</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
     <span class="kd">var</span> <span class="nx">script</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">script</span><span class="dl">'</span><span class="p">);</span>
-    <span class="c1">// This assumes the operations from the response of the POST of the</span>
-    <span class="c1">// payment order is returned verbatim from the server to the Ajax:</span>
+    <span class="c1">// The JavaScript expects a JSON response looking like the created</span>
+    <span class="c1">// Payment Order, containing the operation 'view-paymentorder.</span>
     <span class="kd">var</span> <span class="nx">operation</span> <span class="o">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">operations</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">o</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nx">o</span><span class="p">.</span><span class="nx">rel</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">view-consumer-identification</span><span class="dl">'</span><span class="p">;</span>
+        <span class="k">return</span> <span class="nx">o</span><span class="p">.</span><span class="nx">rel</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">view-paymentorder</span><span class="dl">'</span><span class="p">;</span>
     <span class="p">});</span>
     <span class="nx">script</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">'</span><span class="s1">src</span><span class="dl">'</span><span class="p">,</span> <span class="nx">operation</span><span class="p">.</span><span class="nx">href</span><span class="p">);</span>
     <span class="nx">script</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="nx">payex</span><span class="p">.</span><span class="nx">hostedView</span><span class="p">.</span><span class="nx">consumer</span><span class="p">({</span>
-            <span class="c1">// The container specifies which id the script will look for</span>
-            <span class="c1">// to host the checkin component</span>
-            <span class="na">container</span><span class="p">:</span> <span class="dl">'</span><span class="s1">checkin</span><span class="dl">'</span><span class="p">,</span>
-            <span class="na">onConsumerIdentified</span><span class="p">:</span> <span class="kd">function</span> <span class="nx">onConsumerIdentified</span><span class="p">(</span><span class="nx">consumerIdentifiedEvent</span><span class="p">)</span> <span class="p">{</span>
-                <span class="c1">// When the consumer is identified, we need to perform an AJAX request</span>
-                <span class="c1">// to our server to forward the consumerProfileRef in a server-to-server</span>
-                <span class="c1">// POST request to the Payment Orders resource in order to initialize</span>
-                <span class="c1">// the Payment Menu.</span>
-                <span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
-                <span class="nx">request</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">load</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-                    <span class="nx">response</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
-                    <span class="c1">// This is identical to how we get the 'view-consumer-identification'</span>
-                    <span class="c1">// script from the check-in.</span>
-                    <span class="kd">var</span> <span class="nx">script</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">script</span><span class="dl">'</span><span class="p">);</span>
-                    <span class="kd">var</span> <span class="nx">operation</span> <span class="o">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">operations</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">o</span><span class="p">)</span> <span class="p">{</span>
-                        <span class="k">return</span> <span class="nx">o</span><span class="p">.</span><span class="nx">rel</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">view-paymentorder</span><span class="dl">'</span><span class="p">;</span>
-                    <span class="p">});</span>
-                    <span class="nx">script</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">'</span><span class="s1">src</span><span class="dl">'</span><span class="p">,</span> <span class="nx">operation</span><span class="p">.</span><span class="nx">href</span><span class="p">);</span>
-                    <span class="nx">script</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-                        <span class="c1">// When the 'view-paymentorder' script is loaded, we can initialize the</span>
-                        <span class="c1">// Payment Menu inside our 'payment-menu' container.</span>
-                        <span class="nx">payex</span><span class="p">.</span><span class="nx">hostedView</span><span class="p">.</span><span class="nx">paymentMenu</span><span class="p">({</span>
-                            <span class="na">container</span><span class="p">:</span> <span class="dl">'</span><span class="s1">payment-menu</span><span class="dl">'</span><span class="p">,</span>
-                            <span class="na">culture</span><span class="p">:</span> <span class="dl">'</span><span class="s1">sv-SE</span><span class="dl">'</span>
-                        <span class="p">}).</span><span class="nx">open</span><span class="p">();</span>
-                    <span class="p">};</span>
-                    <span class="c1">// Append the Payment Menu script to the &lt;head&gt;</span>
-                    <span class="kd">var</span> <span class="nx">head</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="dl">'</span><span class="s1">head</span><span class="dl">'</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
-                    <span class="nx">head</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">script</span><span class="p">);</span>
-                <span class="p">});</span>
-                <span class="c1">// Like before, you should replace the address here with</span>
-                <span class="c1">// your own endpoint.</span>
-                <span class="nx">request</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">&lt;Your-Backend-Endpoint-Here&gt;</span><span class="dl">'</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
-                <span class="nx">request</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">application/json; charset=utf-8</span><span class="dl">'</span><span class="p">);</span>
-                <span class="c1">// In this example, we send the entire Consumer Identified Event Argument</span>
-                <span class="c1">// Object as JSON to the server, as it contains the consumerProfileRef.</span>
-                <span class="nx">request</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">consumerIdentifiedEvent</span><span class="p">));</span>
-            <span class="p">},</span>
-            <span class="na">onShippingDetailsAvailable</span><span class="p">:</span> <span class="kd">function</span> <span class="nx">onShippingDetailsAvailable</span><span class="p">(</span><span class="nx">shippingDetailsAvailableEvent</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">shippingDetailsAvailableEvent</span><span class="p">);</span>
-            <span class="p">}</span>
+        <span class="c1">// Initialize the Payment Menu and inject it into the 'payment-menu'</span>
+        <span class="c1">// container &lt;div&gt; defined in the HTML document above.</span>
+        <span class="nx">payex</span><span class="p">.</span><span class="nx">hostedView</span><span class="p">.</span><span class="nx">paymentMenu</span><span class="p">({</span>
+            <span class="na">container</span><span class="p">:</span> <span class="dl">'</span><span class="s1">payment-menu</span><span class="dl">'</span><span class="p">,</span>
+            <span class="na">culture</span><span class="p">:</span> <span class="dl">'</span><span class="s1">sv-SE</span><span class="dl">'</span>
         <span class="p">}).</span><span class="nx">open</span><span class="p">();</span>
     <span class="p">};</span>
-    <span class="c1">// Appending the script to the head</span>
+    <span class="c1">// Append the Payment Menu script to the &lt;head&gt;</span>
     <span class="kd">var</span> <span class="nx">head</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="dl">'</span><span class="s1">head</span><span class="dl">'</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
     <span class="nx">head</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">script</span><span class="p">);</span>
 <span class="p">});</span>
-<span class="c1">// Place in your own API endpoint here.</span>
-<span class="nx">request</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">&lt;Your-Backend-Endpoint-Here&gt;</span><span class="dl">'</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+<span class="c1">// You should replace the address here with your own backend endpoint.</span>
+<span class="nx">request</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">&lt;Your-Backend-Endpoint&gt;</span><span class="dl">'</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
 <span class="nx">request</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">application/json; charset=utf-8</span><span class="dl">'</span><span class="p">);</span>
-<span class="c1">// We send in the previously mentioned request here to the checkin endpoint.</span>
-<span class="nx">request</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
-    <span class="na">operation</span><span class="p">:</span> <span class="dl">'</span><span class="s1">initiate-consumer-session</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">language</span><span class="p">:</span> <span class="dl">'</span><span class="s1">sv-SE</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">shippingAddressRestrictedToCountryCodes</span> <span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">NO</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">SE</span><span class="dl">'</span><span class="p">]</span>
-<span class="p">}));</span>
+<span class="c1">// We will send an object containing the amount the Payment Order should be</span>
+<span class="c1">// created with. This should of course not be hard coded and you may want to</span>
+<span class="c1">// send more data from the front-end to the back-end to create a Payment Order</span>
+<span class="c1">// for your particular use-case.</span>
+<span class="nx">request</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span> <span class="na">amount</span><span class="p">:</span> <span class="mi">1200</span> <span class="p">}));</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>This should bring up the Payment Menu in a Seamless View. It should look like
-this, depending on whether the payer is logged in (top) or a guest user (bottom):</p>
+this, depending on whether the payer is identified (top) or a guest user
+(bottom):</p>
 
-<p class="text-center"><img src="/assets/img/checkout/logged-in-payment-menu-450x900.png" alt="Payment Menu with payer logged in and card payment opened" width="450" height="900" /></p>
+<p class="text-center"><img src="/assets/img/checkout/logged-in-payment-menu-450x900.png" alt="Payment Menu with payer identified in and card payment opened" width="450" height="900" /></p>
 
 <p class="text-center"><img src="/assets/img/checkout/guest-payment-menu-450x850.png" alt="Payment Menu with guest payer and card payment opened" width="450" height="850" /></p>
 
-<p>When the consumer completes the payment, the Payment Menu script will be
+<p>When the payer completes the payment, the Payment Menu script will be
 signaled and a full redirect to the <code class="language-html highlighter-rouge">completeUrl</code> sent in with the
 Payment Order will be performed. When the <code class="language-html highlighter-rouge">completeUrl</code> on your server is hit,
 you can inspect the status on the stored <code class="language-html highlighter-rouge">paymentorder.id</code> on the server, and
-then perform <code class="language-html highlighter-rouge">capture</code>.
-If the payment is a <code class="language-html highlighter-rouge">Sale</code> or one-phase purchase, it will be automatically
-captured. A third scenario is if the goods are sent
-physically to the payer; then you should await capture until after the
-goods have been sent.</p>
+then perform <code class="language-html highlighter-rouge">capture</code>.</p>
+
+<p>If the payment is a <code class="language-html highlighter-rouge">Sale</code> or one-phase purchase, it will be automatically
+captured. A third scenario is if the goods are sent physically to the payer;
+then you should await capture until after the goods have been sent.</p>
 
 <p>You may open and close the payment menu using <code class="language-html highlighter-rouge">.open()</code> and <code class="language-html highlighter-rouge">.close()</code>
 functions. You can also invoke <code class="language-html highlighter-rouge">.refresh()</code> to
@@ -1430,6 +1396,21 @@ Notice that there are two ways of performing the payment:</p>
   <li>Consumer perform payment <strong>out</strong> of <code class="language-html highlighter-rouge">iframe</code>.</li>
   <li>Consumer perform payment <strong>within</strong> <code class="language-html highlighter-rouge">iframe</code>.</li>
 </ul>
+
+<div class="alert  alert-informative">
+    
+        
+            <i class="material-icons alert-icon">info</i>
+        
+    
+
+    
+        
+            <p>Note that in this diagram, the Payer refers to the merchant front-end
+(website) while Merchant refers to the merchant back-end.</p>
+        
+    
+</div>
 
 <pre><code class="language-mermaid">sequenceDiagram
     participant Payer
@@ -1469,59 +1450,56 @@ rect rgba(138, 205, 195, 0.1)
         deactivate SwedbankPay
 
             alt If payment is completed
-            activate Payer
-            Payer -&gt;&gt; Payer: Event: onPaymentCompleted
-            Payer -&gt;&gt;+ Merchant: Check payment status
-            deactivate Payer
-            Merchant -&gt;&gt;+ SwedbankPay: GET &lt;paymentorder.id&gt;
-            deactivate Merchant
-            SwedbankPay -&gt;&gt;+ Merchant: rel: paid-paymentorder
-            deactivate SwedbankPay
-            opt Get PaymentOrder Details (if paid-paymentorder operation exist)
-            activate Payer
-            deactivate Payer
-            Merchant -&gt;&gt;+ SwedbankPay: GET rel: paid-paymentorder
-            deactivate Merchant
-            SwedbankPay --&gt;&gt; Merchant: Payment Details
-            deactivate SwedbankPay
-            end
-            end
-
-                opt If payment is failed
-                activate Payer
-                Payer -&gt;&gt; Payer: Event: OnPaymentFailed
-                Payer -&gt;&gt;+ Merchant: Check payment status
-                deactivate Payer
-                Merchant -&gt;&gt;+ SwedbankPay: GET {paymentorder.id}
-                deactivate Merchant
-                SwedbankPay --&gt;&gt;+ Merchant: rel: failed-paymentorder
-                deactivate SwedbankPay
-                opt Get PaymentOrder Details (if failed-paymentorder operation exist)
+              activate Payer
+              Payer -&gt;&gt; Payer: Event: onPaymentCompleted
+              Payer -&gt;&gt;+ Merchant: Check payment status
+              deactivate Payer
+              Merchant -&gt;&gt;+ SwedbankPay: GET &lt;paymentorder.id&gt;
+              deactivate Merchant
+              SwedbankPay -&gt;&gt;+ Merchant: rel: paid-paymentorder
+              deactivate SwedbankPay
+              opt Get PaymentOrder Details (if paid-paymentorder operation exist)
                 activate Payer
                 deactivate Payer
-                Merchant -&gt;&gt;+ SwedbankPay: GET rel: failed-paymentorder
+                Merchant -&gt;&gt;+ SwedbankPay: GET rel: paid-paymentorder
                 deactivate Merchant
                 SwedbankPay --&gt;&gt; Merchant: Payment Details
                 deactivate SwedbankPay
-                end
-                end
+              end
+            end
+
+            opt If payment is failed
+              activate Payer
+              Payer -&gt;&gt; Payer: Event: OnPaymentFailed
+              Payer -&gt;&gt;+ Merchant: Check payment status
+              deactivate Payer
+              Merchant -&gt;&gt;+ SwedbankPay: GET {paymentorder.id}
+              deactivate Merchant
+              SwedbankPay --&gt;&gt;+ Merchant: rel: failed-paymentorder
+              deactivate SwedbankPay
+              opt Get PaymentOrder Details (if failed-paymentorder operation exist)
+              activate Payer
+              deactivate Payer
+              Merchant -&gt;&gt;+ SwedbankPay: GET rel: failed-paymentorder
+              deactivate Merchant
+              SwedbankPay --&gt;&gt; Merchant: Payment Details
+              deactivate SwedbankPay
+              end
+            end
         activate Merchant
         Merchant --&gt;&gt;- Payer: Show Purchase complete
             opt PaymentOrder Callback (if callbackUrls is set)
-            activate Payer
-            deactivate Payer
-                SwedbankPay -&gt;&gt; Merchant: POST Payment Callback
-            end
+              activate Payer
+              deactivate Payer
+                  SwedbankPay -&gt;&gt; Merchant: POST Payment Callback
+              end
             end
 </code></pre>
 
-<p>Now that you have completed the Payment Menu integration, you can move on to
-finalizing the payment in the <a href="after-payment">After Payment section</a>.</p>
-
 <nav class="iterator d-flex">
     
-        <a class="mr-auto btn btn-guiding" role="button" rel="prev" href="checkin">
-            Back: Checkin
+        <a class="mr-auto btn btn-guiding" role="button" rel="prev" href="index">
+            Back: Introduction
         </a>
     
 
@@ -1537,9 +1515,9 @@ finalizing the payment in the <a href="after-payment">After Payment section</a>.
                                 <div class="col-2 d-none d-lg-block">
                                     <nav class="doc-toc">
                                         <ul>
-  <li class="toc-2"><a href="#step-3-create-payment-order">Step 3: Create Payment Order</a></li>
+  <li class="toc-2"><a href="#step-1-create-payment-order">Step 1: Create Payment Order</a></li>
   <li class="toc-2"><a href="#payment-url">Payment Url</a></li>
-  <li class="toc-2"><a href="#step-4-display-the-payment-menu">Step 4: Display the Payment Menu</a></li>
+  <li class="toc-2"><a href="#step-2-display-the-payment-menu">Step 2: Display the Payment Menu</a></li>
 </ul>
                                     </nav>
                                 </div>

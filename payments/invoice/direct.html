@@ -85,31 +85,31 @@
                     <div class="topbar-link-container">
                         <button type="button" class="topbar-close"><i class="material-icons">close</i></button>
 
+                        
+                        
 
+                        
 
-
-
-
-                        <a
+                        <a 
                             href="/"><span>Home</span></a>
 
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/checkout/"><span>Checkout</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/payments/"><span>Payments</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/gift-cards/"><span>Gift Cards</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/resources/"><span>Resources</span></a>
-
+                        
 
                         <div class="topbar-info topbar-link-right">
                             <div class="topbar-info-contact">
@@ -132,53 +132,54 @@
                 <div class="row">
                     <div class="col-xxl-2 col-md-3">
                         <div class="doc-sidebar">
-
+                            
                             <form class="doc-search" action="/search">
                                 <input type="text" class="form-control" name="q" id="tipue_search_input"
                                     placeholder="Search..." autocomplete="off" pattern=".{3,}"
                                     title="At least 3 characters">
                             </form>
-
-
+                            
+                            
                             <nav class="documentation-nav">
-
-
+                                
+                                
                                 <div class="nav-group active">
                                     <div class="nav-heading">
                                         <i class="material-icons">keyboard_arrow_right</i>
                                         <span>Invoice Payments</span>
                                     </div>
 
-
+                                    
                                     <ul>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/invoice"><span>Introduction</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/invoice/redirect"><span>Redirect</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/invoice/seamless-view"><span>Seamless View</span></a></li>
-
-
-                                        <li><a  href="/payments/invoice/direct"><span>Direct</span></a></li>
-
-
+                                        
+                                        
+                                        <li><a  aria-current="page" class="active"
+                                                 href="/payments/invoice/direct"><span>Direct</span></a></li>
+                                        
+                                        
                                         <li><a  href="/payments/invoice/capture"><span>Capture</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/invoice/after-payment"><span>After Payment</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/invoice/other-features"><span>Other Features</span></a></li>
-
+                                        
                                     </ul>
-
+                                    
                                 </div>
-
+                                
                             </nav>
-
+                            
                         </div>
                     </div>
 
@@ -187,27 +188,27 @@
                             <h1>Swedbank Pay Payments Invoice Direct</h1>
                             <div class="row">
                                 <div class="doc-body col-lg-10">
-
+                                    
                                     <div class="alert alert-complex alert-informative"><header class="alert-header">
-
+            
                 <i class="material-icons alert-icon">report_problem</i>
       <h3>
-
-
+        
+        
           Disclaimer
-
-
+        
+        
       </header>
+    
 
-
-
-
+    
+        
             <div class="alert-body">
                 <p>Direct Invoice is about to be phased out. This section is only for
 merchants that currently have a contract with this integration.</p>
             </div>
-
-
+        
+    
 </div>
 
 <div class="jumbotron">
@@ -217,13 +218,13 @@ receives invoice data, which is used to produce and distribute invoices to the
 consumer/end-user</p>
 
 </div>
-
+    
       <h2 id="invoice-direct-implementation-flow">
-
-
+        
+        
           Invoice Direct implementation flow <a href="#invoice-direct-implementation-flow" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <ol>
@@ -254,36 +255,36 @@ described in <a href="/payments/invoice/other-features">other features</a>.</li>
 </ul>
 
 <div class="alert  alert-informative">
-
-
+    
+        
             <i class="material-icons alert-icon">info</i>
+        
+    
 
-
-
-
-
+    
+        
             <p>Note that the invoice will not be created/distributed before you have
 made a <code class="language-html highlighter-rouge">capture</code> request. By making a Capture, Swedbank Pay will generate
 the invoice to the consumer and the order is ready for shipping.</p>
-
-
+        
+    
 </div>
 
 <div class="alert alert-complex alert-success">
     <header class="alert-header">
-
+            
                 <i class="material-icons alert-icon">link</i>
       <h3>
-
-
+        
+        
           Callback URL
-
-
+        
+        
       </header>
+    
 
-
-
-
+    
+        
             <div class="alert-body">
                 <p>It is mandatory to set a <a href="/payments/invoice/other-features#callback"><code class="language-html highlighter-rouge">callbackUrl</code></a> in the <code class="language-html highlighter-rouge">POST</code> request creating the payment. If <code class="language-html highlighter-rouge">callbackUrl</code>
 is set, Swedbank Pay will send a <code class="language-html highlighter-rouge">POST</code> request to this URL when the consumer
@@ -291,28 +292,28 @@ has fulfilled the payment. Upon receiving this <code class="language-html highli
 <code class="language-html highlighter-rouge">GET</code> request towards the <code class="language-html highlighter-rouge">id</code> of the payment generated initially must be made
 to receive the state of the transaction.</p>
             </div>
-
-
+        
+    
 </div>
 
 <p>The 3 most important steps in the Invoice Direct flow are shown below.</p>
-
+    
       <h2 id="step-1-create-a-purchase">
-
-
+        
+        
           Step 1: Create a Purchase <a href="#step-1-create-a-purchase" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>Our <code class="language-html highlighter-rouge">payment</code> example below uses the <a href="/payments/invoice/other-features#financing-consumer"><code class="language-html highlighter-rouge">FinancingConsumer</code></a> value.</p>
-
+    
       <h3 id="financing-consumer">
-
-
+        
+        
           Financing Consumer <a href="#financing-consumer" class="header-anchor"></a>
-
-
+        
+        
       </h3>
 
 <p class="code-header"><strong>Request</strong></p>
@@ -481,13 +482,13 @@ to receive the state of the transaction.</p>
       <td style="text-align: center"><i class="material-icons">check</i>︎︎︎︎︎</td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">userAgent</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The user agent reference of the consumer’s browser - <a href="https://en.wikipedia.org/wiki/User_agent">see user agent definition</a></td>
+      <td style="text-align: left">The <a href="https://en.wikipedia.org/wiki/User_agent"><code class="language-html highlighter-rouge">User-Agent</code> string</a> of the consumer’s web browser.</td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i>︎︎︎︎︎</td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">language</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">sv-SE</code>, <code class="language-html highlighter-rouge">nb-NO</code> or <code class="language-html highlighter-rouge">ee-EE</code>.</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">sv-SE</code>, <code class="language-html highlighter-rouge">nb-NO</code> or <code class="language-html highlighter-rouge">en-US</code>.</td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i>︎︎︎︎︎</td>
@@ -547,7 +548,7 @@ to receive the state of the transaction.</p>
       <td style="text-align: center"><i class="material-icons">check</i>︎︎︎︎︎</td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string(30*)</code></td>
-      <td style="text-align: left">A unique reference from the merchant system, which is used as a receipt/invoice number in Invoice Payments. It is set per operation to ensure an exactly-once delivery of a transactional operation. See <a href="/payments/invoice/other-features#payeeinfo"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payments/invoice/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
@@ -796,12 +797,12 @@ to receive the state of the transaction.</p>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">userAgent</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The <a href="https://en.wikipedia.org/wiki/User_agent">user agent</a> string of the consumer’s browser.</td>
+      <td style="text-align: left">The <a href="https://en.wikipedia.org/wiki/User_agent"><code class="language-html highlighter-rouge">User-Agent</code> string</a> of the consumer’s web browser.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">language</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">sv-SE</code>, <code class="language-html highlighter-rouge">nb-NO</code> or <code class="language-html highlighter-rouge">ee-EE</code>.</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">sv-SE</code>, <code class="language-html highlighter-rouge">nb-NO</code> or <code class="language-html highlighter-rouge">en-US</code>.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">urls</code></td>
@@ -835,13 +836,13 @@ to receive the state of the transaction.</p>
     </tr>
   </tbody>
 </table>
-
+    
       <h2 id="step-2-get-approvedlegaladdress-confirmation">
-
-
+        
+        
           Step 2: Get <code class="language-html highlighter-rouge">approvedLegalAddress</code> confirmation <a href="#step-2-get-approvedlegaladdress-confirmation" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p class="code-header"><strong>Request</strong></p>
@@ -899,13 +900,13 @@ to receive the state of the transaction.</p>
 <span class="s">    }</span>
 <span class="s">}</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
-
+    
       <h2 id="step-3-complete-a-payment">
-
-
+        
+        
           Step 3: Complete a Payment <a href="#step-3-complete-a-payment" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p class="code-header"><strong>Request</strong></p>
@@ -1025,13 +1026,13 @@ to receive the state of the transaction.</p>
 <p>The sequence diagram below shows a high level description of the invoice
 process, including the four requests you have to send to Swedbank Pay to create
 an authorized transaction.</p>
-
+    
       <h2 id="invoice-flow">
-
-
+        
+        
           Invoice flow <a href="#invoice-flow" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <pre><code class="language-mermaid">sequenceDiagram
@@ -1066,31 +1067,31 @@ an authorized transaction.</p>
     activate Merchant
     Merchant--&gt;&gt;-Consumer: Display result
 </code></pre>
-
+    
       <h2 id="options-after-posting-a-purchase-payment">
-
-
+        
+        
           Options after posting a purchase payment <a href="#options-after-posting-a-purchase-payment" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>Head over to <a href="/payments/invoice/capture">Capture</a> to complete the Invoice Direct integration.</p>
 
 <nav class="iterator d-flex">
-
+    
         <a class="mr-auto btn btn-guiding" role="button" rel="prev" href="seamless-view">
             Back: Seamless View
         </a>
+    
 
-
-
+    
         <a class="ml-auto btn btn-executive" role="button" rel="next" href="capture">
             Next: Capture
         </a>
-
+    
 </nav>
-
+                                    
                                 </div>
 
                                 <div class="col-2 d-none d-lg-block">

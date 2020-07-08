@@ -85,31 +85,31 @@
                     <div class="topbar-link-container">
                         <button type="button" class="topbar-close"><i class="material-icons">close</i></button>
 
+                        
+                        
 
+                        
 
-
-
-
-                        <a
+                        <a 
                             href="/"><span>Home</span></a>
 
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/checkout/"><span>Checkout</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/payments/"><span>Payments</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/gift-cards/"><span>Gift Cards</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/resources/"><span>Resources</span></a>
-
+                        
 
                         <div class="topbar-info topbar-link-right">
                             <div class="topbar-info-contact">
@@ -132,47 +132,48 @@
                 <div class="row">
                     <div class="col-xxl-2 col-md-3">
                         <div class="doc-sidebar">
-
+                            
                             <form class="doc-search" action="/search">
                                 <input type="text" class="form-control" name="q" id="tipue_search_input"
                                     placeholder="Search..." autocomplete="off" pattern=".{3,}"
                                     title="At least 3 characters">
                             </form>
-
-
+                            
+                            
                             <nav class="documentation-nav">
-
-
+                                
+                                
                                 <div class="nav-group active">
                                     <div class="nav-heading">
                                         <i class="material-icons">keyboard_arrow_right</i>
                                         <span>Gift Cards</span>
                                     </div>
 
-
+                                    
                                     <ul>
-
-
+                                        
+                                        
                                         <li><a  href="/gift-cards/"><span>Introduction</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/gift-cards/operations"><span>Operations</span></a></li>
-
-
-                                        <li><a  href="/gift-cards/security"><span>Security</span></a></li>
-
-
+                                        
+                                        
+                                        <li><a  aria-current="page" class="active"
+                                                 href="/gift-cards/security"><span>Security</span></a></li>
+                                        
+                                        
                                         <li><a  href="/gift-cards/payment-client"><span>Test Client</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/gift-cards/other-features"><span>Other Features</span></a></li>
-
+                                        
                                     </ul>
-
+                                    
                                 </div>
-
+                                
                             </nav>
-
+                            
                         </div>
                     </div>
 
@@ -181,13 +182,13 @@
                             <h1>Gift Cards – Security</h1>
                             <div class="row">
                                 <div class="doc-body col-lg-10">
-
+                                    
                                     <h2 id="oauth2">
-
-
+        
+        
           OAuth2 <a href="#oauth2" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>The Gift Card API requires an OAuth2 access token for interaction. This
@@ -257,13 +258,13 @@ Security</a>. Configuration values are set in
     <span class="c1">//...</span>
 <span class="o">}</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
-
+    
       <h2 id="hmac">
-
-
+        
+        
           HMAC <a href="#hmac" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>A Hash-based Message Authentication Code (<a href="https://en.wikipedia.org/wiki/HMAC">HMAC</a>) is used to verify the
@@ -412,13 +413,13 @@ to be provided in the <code class="language-html highlighter-rouge">Hmac</code> 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 </pre></td><td class="rouge-code"><pre>HmacSHA512 user:21a0213e-30eb-85ab-b355-a310d31af30e:oY5Q5Rf1anCz7DRm3GyWR0dvJDnhl/psylfnNCn6FA0NOrQS3L0fvyUsQ1IQ9gQPeLUt9J3IM2zwoSfZpDgRJA==
 </pre></td></tr></tbody></table></code></pre></div></div>
-
+    
       <h3 id="postman-example-script-for-generation-hmac-header">
-
-
+        
+        
           Postman example script for generation HMAC header <a href="#postman-example-script-for-generation-hmac-header" class="header-anchor"></a>
-
-
+        
+        
       </h3>
 
 <p>In pre-request script copy/paste the following snippet.</p>
@@ -544,13 +545,13 @@ to be provided in the <code class="language-html highlighter-rouge">Hmac</code> 
         <span class="nx">s4</span><span class="p">()</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">-</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">s4</span><span class="p">()</span> <span class="o">+</span> <span class="nx">s4</span><span class="p">()</span> <span class="o">+</span> <span class="nx">s4</span><span class="p">();</span>
 <span class="p">}</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
-
+    
       <h2 id="security-documentation">
-
-
+        
+        
           Security Documentation <a href="#security-documentation" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <ul>
@@ -559,20 +560,20 @@ to be provided in the <code class="language-html highlighter-rouge">Hmac</code> 
   <li><a href="http://restcookbook.com/Basics/loggingin/">The RESTful CookBook: HMAC</a></li>
   <li><a href="https://en.wikipedia.org/wiki/HMAC">HMAC - Wikipedia</a></li>
 </ul>
-
+    
       <h2 id="test-client">
-
-
+        
+        
           Test client <a href="#test-client" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <ul>
   <li>For more information how to implement the api, see
 <a href="/gift-cards/payment-client">Test Client</a>.</li>
 </ul>
-
+                                    
                                 </div>
 
                                 <div class="col-2 d-none d-lg-block">

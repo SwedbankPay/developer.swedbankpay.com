@@ -85,31 +85,31 @@
                     <div class="topbar-link-container">
                         <button type="button" class="topbar-close"><i class="material-icons">close</i></button>
 
+                        
+                        
 
+                        
 
-
-
-
-                        <a
+                        <a 
                             href="/"><span>Home</span></a>
 
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/checkout/"><span>Checkout</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/payments/"><span>Payments</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/gift-cards/"><span>Gift Cards</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/resources/"><span>Resources</span></a>
-
+                        
 
                         <div class="topbar-info topbar-link-right">
                             <div class="topbar-info-contact">
@@ -132,50 +132,51 @@
                 <div class="row">
                     <div class="col-xxl-2 col-md-3">
                         <div class="doc-sidebar">
-
+                            
                             <form class="doc-search" action="/search">
                                 <input type="text" class="form-control" name="q" id="tipue_search_input"
                                     placeholder="Search..." autocomplete="off" pattern=".{3,}"
                                     title="At least 3 characters">
                             </form>
-
-
+                            
+                            
                             <nav class="documentation-nav">
-
-
+                                
+                                
                                 <div class="nav-group active">
                                     <div class="nav-heading">
                                         <i class="material-icons">keyboard_arrow_right</i>
                                         <span>Swish Payments</span>
                                     </div>
 
-
+                                    
                                     <ul>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/swish"><span>Introduction</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/swish/direct"><span>Direct</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/swish/redirect"><span>Redirect</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/swish/seamless-view"><span>Seamless View</span></a></li>
-
-
-                                        <li><a  href="/payments/swish/after-payment"><span>After Payment</span></a></li>
-
-
+                                        
+                                        
+                                        <li><a  aria-current="page" class="active"
+                                                 href="/payments/swish/after-payment"><span>After Payment</span></a></li>
+                                        
+                                        
                                         <li><a  href="/payments/swish/other-features"><span>Other Features</span></a></li>
-
+                                        
                                     </ul>
-
+                                    
                                 </div>
-
+                                
                             </nav>
-
+                            
                         </div>
                     </div>
 
@@ -184,18 +185,18 @@
                             <h1>Swedbank Pay Payments Swish After Payment</h1>
                             <div class="row">
                                 <div class="doc-body col-lg-10">
-
+                                    
                                     <p>After the payment is confirmed, the consumer will be redirected from the Swish
-app to the <code class="language-html highlighter-rouge">completeUrl</code> set in the [create payment request][create-payment].
-You need to retrieve payment status with <code class="language-html highlighter-rouge">GET</code>
-[Sales transaction][sales-transaction] before presenting a confirmation page to
-the consumer.</p>
+app to the <code class="language-html highlighter-rouge">completeUrl</code> set in the <a href="/payments/swish/other-features#create-payment">create payment request</a>.
+You need to retrieve payment status with <code class="language-html highlighter-rouge">GET</code> <a href="#sales">Sales
+transaction</a> before presenting a confirmation page to the
+consumer.</p>
       <h2 id="options-after-posting-a-payment">
-
-
+        
+        
           Options after posting a payment <a href="#options-after-posting-a-payment" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <ul>
@@ -206,156 +207,25 @@ which was generated when the payment was created.</li>
 You can also access and reverse a payment through your merchant pages in the
 <a href="https://admin.payex.com/psp/login/">Swedbank Pay admin portal</a>.</li>
 </ul>
-
-      <h3 id="reversal-sequence">
-
-
-          Reversal Sequence <a href="#reversal-sequence" class="header-anchor"></a>
-
-
-      </h3>
-
-<p>A reversal transcation need to match the Payee reference of a completed
-sales transaction.</p>
-
-<pre><code class="language-mermaid">sequenceDiagram
-  activate Merchant
-  Merchant-&gt;&gt;- SwedbankPay: POST &lt;Swish reversal&gt;
-  activate  SwedbankPay
-  SwedbankPay--&gt;&gt;-Merchant: transaction resource
-</code></pre>
-
-      <h2 id="payment-resource">
-
-
-          Payment Resource <a href="#payment-resource" class="header-anchor"></a>
-
-
-      </h2>
-
-<p>When a payment resource is created and during its lifetime, it will have a set
-of operations that can be performed on it.
-Which operations are available will vary depending on the state of the payment
-resource, what the access token is authorized to do, etc.
-A list of possible operations for Swish Payments and their explanation
-is given below.</p>
-
-<p class="code-header"><strong>Operations</strong></p>
-
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-</pre></td><td class="rouge-code"><pre><span class="p">{</span>
-    <span class="dl">"</span><span class="s2">operations</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="dl">"</span><span class="s2">method</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span>
-            <span class="dl">"</span><span class="s2">href</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://api.externalintegration.payex.com/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/sales</span><span class="dl">"</span><span class="p">,</span>
-            <span class="dl">"</span><span class="s2">rel</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">create-sale</span><span class="dl">"</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="dl">"</span><span class="s2">method</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">GET</span><span class="dl">"</span><span class="p">,</span>
-            <span class="dl">"</span><span class="s2">href</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://ecom.externalintegration.payex.com/swish/payments/sales/5a17c24e-d459-4567-bbad-aa0f17a76119</span><span class="dl">"</span><span class="p">,</span>
-            <span class="dl">"</span><span class="s2">rel</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">redirect-sale</span><span class="dl">"</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="dl">"</span><span class="s2">method</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">GET</span><span class="dl">"</span><span class="p">,</span>
-            <span class="dl">"</span><span class="s2">href</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://ecom.externalintegration.payex.com/swish/core/scripts/client/px.swish.client.js?token=5a17c24e-d459-4567-bbad-aa0f17a76119</span><span class="dl">"</span><span class="p">,</span>
-            <span class="dl">"</span><span class="s2">rel</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">view-sales</span><span class="dl">"</span><span class="p">,</span>
-            <span class="dl">"</span><span class="s2">contentType</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">application/javascript</span><span class="dl">"</span>
-        <span class="p">}</span>
-    <span class="p">]</span>
-<span class="p">}</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
-
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th style="text-align: left">Field</th>
-      <th style="text-align: left">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">href</code></td>
-      <td style="text-align: left">The target URI to perform the operation against.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">rel</code></td>
-      <td style="text-align: left">The name of the relation the operation has to the current resource.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">method</code></td>
-      <td style="text-align: left">The HTTP method to use when performing the operation.</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>The operations should be performed as described in each response and not as
-described here in the documentation.
-Always use the <code class="language-html highlighter-rouge">href</code> and <code class="language-html highlighter-rouge">method</code> as specified in the response by finding the
-appropriate operation based on its <code class="language-html highlighter-rouge">rel</code> value.
-The only thing that should be hard coded in the client is the value of
-the <code class="language-html highlighter-rouge">rel</code> and the request that will be sent in the HTTP body of the
-request for the given operation.</p>
-
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th style="text-align: left">Operation</th>
-      <th style="text-align: left">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">create-sale</code></td>
-      <td style="text-align: left">Creates a <code class="language-html highlighter-rouge">sales</code> transaction without redirection to a payment page. <code class="language-html highlighter-rouge">Msisdn</code> is required in browser based scenarioes.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">redirect-sale</code></td>
-      <td style="text-align: left">Contains the redirect-URI that redirects the consumer to a Swedbank Pay hosted payment page prior to creating a sales transaction.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">view-sales</code></td>
-      <td style="text-align: left">Contains the URI of the JavaScript used to create a Hosted View iframe directly without redirecting the consumer to separate payment page.</td>
-    </tr>
-  </tbody>
-</table>
-
+    
       <h2 id="swish-transactions">
-
-
+        
+        
           Swish transactions <a href="#swish-transactions" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>All Swish transactions are described below. Please note that Swish does not
 support <a href="/payments/card/other-features#unscheduled-purchase">Merchant Initiated Transactions</a> for the time
 being.</p>
-
+    
       <h2 id="sales">
-
-
+        
+        
           Sales <a href="#sales" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>The <code class="language-html highlighter-rouge">sales</code> resource lists the sales transactions (one or more)
@@ -442,13 +312,13 @@ on a specific payment.</p>
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></pre></td></tr></tbody></table></code></pre></div></div>
-
+    
       <h3 id="create-sales-transaction">
-
-
+        
+        
           Create Sales transaction <a href="#create-sales-transaction" class="header-anchor"></a>
-
-
+        
+        
       </h3>
 
 <p>In browser based solutions the payers <code class="language-html highlighter-rouge">msisdn</code> (mobile number) is required. This
@@ -630,17 +500,35 @@ optional.</p>
 <code class="language-html highlighter-rouge">AwaitingActivity</code>, meaning we are awaiting a response from Swish.
 When the consumer confirms the payment a callback request will follow
 from Swedbank Pay.</p>
-
+    
       <h2 id="reversals">
-
-
+        
+        
           Reversals <a href="#reversals" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>The <code class="language-html highlighter-rouge">Reversals</code> resource list the reversals transactions (one or more) on a
 specific payment.</p>
+    
+      <h3 id="reversal-sequence">
+        
+        
+          Reversal Sequence <a href="#reversal-sequence" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<p>A reversal transcation need to match the Payee reference of a completed
+sales transaction.</p>
+
+<pre><code class="language-mermaid">sequenceDiagram
+  activate Merchant
+  Merchant-&gt;&gt;- SwedbankPay: POST &lt;Swish reversal&gt;
+  activate  SwedbankPay
+  SwedbankPay--&gt;&gt;-Merchant: transaction resource
+</code></pre>
 
 <p class="code-header"><strong>Request</strong></p>
 
@@ -693,7 +581,7 @@ towards the specific transaction’s <code class="language-html highlighter-roug
 
 <span class="p">{</span><span class="w">
     </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"reversals"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"reversals"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> 
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/reversals"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"reversalList"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
             </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/reversals/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
@@ -814,7 +702,7 @@ towards the specific transaction’s <code class="language-html highlighter-roug
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">A unique reference for the transaction.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payments/swish/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
       <td> </td>
     </tr>
     <tr>
@@ -837,13 +725,13 @@ towards the specific transaction’s <code class="language-html highlighter-roug
     </tr>
   </tbody>
 </table>
-
+    
       <h3 id="create-reversal-transaction">
-
-
+        
+        
           Create Reversal transaction <a href="#create-reversal-transaction" class="header-anchor"></a>
-
-
+        
+        
       </h3>
 
 <p>A reversal transaction can be created after a completed authorization by
@@ -919,7 +807,7 @@ Swedbank Pay.</p>
       <td style="text-align: center"><i class="material-icons">check</i>︎</td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string(35)</code></td>
-      <td style="text-align: left">A  reference that must match the  <code class="language-html highlighter-rouge">payeeReference</code> of the sales transaction you want to reverse. See <a href="/payments/swish/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payments/swish/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.</td>
     </tr>
   </tbody>
 </table>
@@ -983,7 +871,7 @@ Swedbank Pay.</p>
             </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
             </span><span class="nl">"vatAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">250</span><span class="p">,</span><span class="w">
             </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test transaction"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AH123456"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AH123456"</span><span class="p">,</span><span class="w"> 
             </span><span class="nl">"failedReason"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
             </span><span class="nl">"isOperational"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
             </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -1102,7 +990,7 @@ Swedbank Pay.</p>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">A unique reference for the transaction.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payments/swish/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1131,13 +1019,13 @@ Swedbank Pay.</p>
     </tr>
   </tbody>
 </table>
-
+    
       <h2 id="abort">
-
-
+        
+        
           Abort <a href="#abort" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>To abort a payment, perform the <code class="language-html highlighter-rouge">update-payment-abort</code> operation that is
@@ -1229,7 +1117,7 @@ You need to include the following HTTP body:</p>
         </span><span class="nl">"payerReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100500"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"initiatingSystemUserAgent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PostmanRuntime/7.1.1"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"userAgent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mozilla/5.0"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nb-NO"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sv-SE"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"urls"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/urls"</span><span class="w">
         </span><span class="p">},</span><span class="w">
@@ -1245,60 +1133,59 @@ You need to include the following HTTP body:</p>
 </span></pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>The response will be the <code class="language-html highlighter-rouge">payment</code> resource with its <code class="language-html highlighter-rouge">state</code> set to <code class="language-html highlighter-rouge">Aborted</code>.</p>
-
+    
       <h2 id="capture">
-
-
+        
+        
           Capture <a href="#capture" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>Swish does not support <code class="language-html highlighter-rouge">capture</code> as it is a one-phase payment method all
 completed payments are captured.</p>
-
+    
       <h2 id="cancel">
-
-
+        
+        
           Cancel <a href="#cancel" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>Swish does not support <code class="language-html highlighter-rouge">cancel</code> as <code class="language-html highlighter-rouge">cancel</code> can only be used on two-phase
 payments before they are captured or reversed.</p>
-
+    
       <h2 id="recurring">
-
-
+        
+        
           Recurring <a href="#recurring" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>Swish does not support <code class="language-html highlighter-rouge">recurring</code> payments.</p>
 
 <nav class="iterator d-flex">
-
+    
         <a class="mr-auto btn btn-guiding" role="button" rel="prev" href="seamless-view">
             Back: Seamless view
         </a>
+    
 
-
-
+    
         <a class="ml-auto btn btn-executive" role="button" rel="next" href="other-features">
             Next: Other Features
         </a>
-
+    
 </nav>
-
+                                    
                                 </div>
 
                                 <div class="col-2 d-none d-lg-block">
                                     <nav class="doc-toc">
                                         <ul>
   <li class="toc-2"><a href="#options-after-posting-a-payment">Options after posting a payment</a></li>
-  <li class="toc-2"><a href="#payment-resource">Payment Resource</a></li>
   <li class="toc-2"><a href="#swish-transactions">Swish transactions</a></li>
   <li class="toc-2"><a href="#sales">Sales</a></li>
   <li class="toc-2"><a href="#reversals">Reversals</a></li>

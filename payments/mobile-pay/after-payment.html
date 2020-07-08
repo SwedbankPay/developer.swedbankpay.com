@@ -85,31 +85,31 @@
                     <div class="topbar-link-container">
                         <button type="button" class="topbar-close"><i class="material-icons">close</i></button>
 
+                        
+                        
 
+                        
 
-
-
-
-                        <a
+                        <a 
                             href="/"><span>Home</span></a>
 
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/checkout/"><span>Checkout</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/payments/"><span>Payments</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/gift-cards/"><span>Gift Cards</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/resources/"><span>Resources</span></a>
-
+                        
 
                         <div class="topbar-info topbar-link-right">
                             <div class="topbar-info-contact">
@@ -132,44 +132,45 @@
                 <div class="row">
                     <div class="col-xxl-2 col-md-3">
                         <div class="doc-sidebar">
-
+                            
                             <form class="doc-search" action="/search">
                                 <input type="text" class="form-control" name="q" id="tipue_search_input"
                                     placeholder="Search..." autocomplete="off" pattern=".{3,}"
                                     title="At least 3 characters">
                             </form>
-
-
+                            
+                            
                             <nav class="documentation-nav">
-
-
+                                
+                                
                                 <div class="nav-group active">
                                     <div class="nav-heading">
                                         <i class="material-icons">keyboard_arrow_right</i>
                                         <span>MobilePay Online Payments</span>
                                     </div>
 
-
+                                    
                                     <ul>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/mobile-pay"><span>Introduction</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/mobile-pay/redirect"><span>Redirect</span></a></li>
-
-
-                                        <li><a  href="/payments/mobile-pay/after-payment"><span>After Payment</span></a></li>
-
-
+                                        
+                                        
+                                        <li><a  aria-current="page" class="active"
+                                                 href="/payments/mobile-pay/after-payment"><span>After Payment</span></a></li>
+                                        
+                                        
                                         <li><a  href="/payments/mobile-pay/other-features"><span>Other Features</span></a></li>
-
+                                        
                                     </ul>
-
+                                    
                                 </div>
-
+                                
                             </nav>
-
+                            
                         </div>
                     </div>
 
@@ -178,17 +179,17 @@
                             <h1>Swedbank Pay MobilePay Online Payments – After Payment</h1>
                             <div class="row">
                                 <div class="doc-body col-lg-10">
-
+                                    
                                     <h2 id="options-after-posting-a-payment">
-
-
+        
+        
           Options after posting a payment <a href="#options-after-posting-a-payment" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <ul>
-  <li><strong>Abort</strong>: It is possible to <a href="/payments/mobile-pay/other-features#abort-a-payment">abort a payment</a>
+  <li><strong>Abort</strong>: It is possible to <a href="/payments/mobile-pay/after-payment#abort">abort a payment</a>
 if the payment has no successful transactions.</li>
   <li>If the payment shown above has a completed <code class="language-html highlighter-rouge">authorization</code>,
 you will need to implement the <code class="language-html highlighter-rouge">Capture</code> and <code class="language-html highlighter-rouge">Cancel</code> requests.</li>
@@ -197,13 +198,13 @@ you will need to implement the <code class="language-html highlighter-rouge">Cap
 a <a href="/payments/mobile-pay/other-features#callback">Callback request</a> will be posted to
 the <code class="language-html highlighter-rouge">callbackUrl</code>, generated when the payment was created.</li>
 </ul>
-
+    
       <h2 id="capture">
-
-
+        
+        
           Capture <a href="#capture" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>The <code class="language-html highlighter-rouge">capture</code> resource contains information about the
@@ -245,7 +246,7 @@ towards the specific transaction’s <code class="language-html highlighter-roug
 
 <span class="p">{</span><span class="w">
     </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/mobilepay/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"captures"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"captures"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> 
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/mobilepay/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/captures"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"captureList"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
             </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/mobilepay/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/captures/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
@@ -366,7 +367,7 @@ towards the specific transaction’s <code class="language-html highlighter-roug
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">A unique reference for the transaction.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payments/mobile-pay/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
       <td> </td>
     </tr>
     <tr>
@@ -389,13 +390,13 @@ towards the specific transaction’s <code class="language-html highlighter-roug
     </tr>
   </tbody>
 </table>
-
+    
       <h2 id="create-capture-transaction">
-
-
+        
+        
           Create capture transaction <a href="#create-capture-transaction" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>A <code class="language-html highlighter-rouge">capture</code> transaction - to withdraw money from the payer’s MobilePay - can be
@@ -470,7 +471,7 @@ operation.</p>
       <td style="text-align: center"><i class="material-icons">check</i>︎</td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string(50)</code></td>
-      <td style="text-align: left">A unique reference for the capture transaction. See <a href="/payments/mobile-pay/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payments/mobile-pay/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.</td>
     </tr>
   </tbody>
 </table>
@@ -534,7 +535,7 @@ operation.</p>
             </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
             </span><span class="nl">"vatAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">250</span><span class="p">,</span><span class="w">
             </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test transaction"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AH123456"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AH123456"</span><span class="p">,</span><span class="w"> 
             </span><span class="nl">"failedReason"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
             </span><span class="nl">"isOperational"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
             </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -653,7 +654,7 @@ operation.</p>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">A unique reference for the transaction.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payments/mobile-pay/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
       <td> </td>
     </tr>
     <tr>
@@ -682,13 +683,13 @@ operation.</p>
     </tr>
   </tbody>
 </table>
-
+    
       <h2 id="capture-sequence">
-
-
+        
+        
           Capture Sequence <a href="#capture-sequence" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p><code class="language-html highlighter-rouge">Capture</code> can only be done on a authorized transaction.
@@ -701,30 +702,30 @@ authorization amount.</p>
     participant SwedbankPay as Swedbank Pay
 
     Merchant-&gt;&gt;SwedbankPay: POST &lt;mobilepay capture&gt;
-    Activate Merchant
-    Activate SwedbankPay
+    activate Merchant
+    activate SwedbankPay
     SwedbankPay--&gt;&gt;Merchant: transaction resource
-    Deactivate SwedbankPay
-    Deactivate Merchant
+    deactivate SwedbankPay
+    deactivate Merchant
 </code></pre>
-
+    
       <h2 id="cancellations">
-
-
+        
+        
           Cancellations <a href="#cancellations" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>The <code class="language-html highlighter-rouge">cancellations</code> resource lists the cancellation transactions on a
 specific payment.</p>
-
+    
       <h3 id="create-cancellation-transaction">
-
-
+        
+        
           Create cancellation transaction <a href="#create-cancellation-transaction" class="header-anchor"></a>
-
-
+        
+        
       </h3>
 
 <p>Perform the <code class="language-html highlighter-rouge">create-cancel</code> operation to cancel a previously created payment.
@@ -782,7 +783,7 @@ You can only cancel a payment - or part of payment - not yet captured.</p>
       <td style="text-align: left"><i class="material-icons">check</i>︎</td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string(50)</code></td>
-      <td style="text-align: left">A unique reference for the cancellation transaction. See <a href="/payments/mobile-pay/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payments/mobile-pay/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.</td>
     </tr>
   </tbody>
 </table>
@@ -846,7 +847,7 @@ You can only cancel a payment - or part of payment - not yet captured.</p>
             </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
             </span><span class="nl">"vatAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">250</span><span class="p">,</span><span class="w">
             </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test transaction"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AH123456"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AH123456"</span><span class="p">,</span><span class="w"> 
             </span><span class="nl">"failedReason"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
             </span><span class="nl">"isOperational"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
             </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -965,7 +966,7 @@ You can only cancel a payment - or part of payment - not yet captured.</p>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">A unique reference for the transaction.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payments/mobile-pay/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
       <td> </td>
     </tr>
     <tr>
@@ -994,13 +995,13 @@ You can only cancel a payment - or part of payment - not yet captured.</p>
     </tr>
   </tbody>
 </table>
-
+    
       <h2 id="cancel-sequence">
-
-
+        
+        
           Cancel Sequence <a href="#cancel-sequence" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>Cancel can only be done on a authorized transaction.
@@ -1011,19 +1012,19 @@ between the capture amount and the authorization amount.</p>
     participant SwedbankPay as Swedbank Pay
 
     Merchant-&gt;&gt;SwedbankPay: POST &lt;mobilepay cancellation&gt;
-    Activate Merchant
-    Activate SwedbankPay
+    activate Merchant
+    activate SwedbankPay
     SwedbankPay--&gt;&gt;Merchant: transaction resource
-    Deactivate SwedbankPay
-    Deactivate Merchant
+    deactivate SwedbankPay
+    deactivate Merchant
 </code></pre>
-
+    
       <h2 id="reversals">
-
-
+        
+        
           Reversals <a href="#reversals" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>The <code class="language-html highlighter-rouge">reversal</code> resource contains information about the
@@ -1065,7 +1066,7 @@ towards the specific transaction’s <code class="language-html highlighter-roug
 
 <span class="p">{</span><span class="w">
     </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/mobilepay/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"reversals"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"reversals"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> 
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/mobilepay/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/reversals"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"reversalList"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
             </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/mobilepay/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/reversals/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
@@ -1186,7 +1187,7 @@ towards the specific transaction’s <code class="language-html highlighter-roug
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">A unique reference for the transaction.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payments/mobile-pay/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1209,13 +1210,13 @@ towards the specific transaction’s <code class="language-html highlighter-roug
     </tr>
   </tbody>
 </table>
-
+    
       <h2 id="create-reversal-transaction">
-
-
+        
+        
           Create reversal transaction <a href="#create-reversal-transaction" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>The <code class="language-html highlighter-rouge">create-reversal</code> operation reverses a previously created and
@@ -1289,7 +1290,7 @@ captured payment.</p>
       <td style="text-align: left"><i class="material-icons">check</i>︎</td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string(50)</code></td>
-      <td style="text-align: left">A unique reference for the reversal transaction. See <a href="/payments/mobile-pay/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payments/mobile-pay/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.</td>
     </tr>
   </tbody>
 </table>
@@ -1353,7 +1354,7 @@ captured payment.</p>
             </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
             </span><span class="nl">"vatAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">250</span><span class="p">,</span><span class="w">
             </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test transaction"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AH123456"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AH123456"</span><span class="p">,</span><span class="w"> 
             </span><span class="nl">"failedReason"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
             </span><span class="nl">"isOperational"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
             </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -1472,7 +1473,7 @@ captured payment.</p>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">A unique reference for the transaction.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payments/mobile-pay/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1501,43 +1502,157 @@ captured payment.</p>
     </tr>
   </tbody>
 </table>
-
+    
       <h2 id="reversal-sequence">
-
-
+        
+        
           Reversal Sequence <a href="#reversal-sequence" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>Reversal can only be done on a payment where there are some
 captured amount not yet reversed.</p>
 
 <pre><code class="language-mermaid">sequenceDiagram
-    participant SwedbankPay as Swedbank Pay
+  participant SwedbankPay as Swedbank Pay
 
-    Merchant-&gt;&gt;SwedbankPay: POST &lt;mobilepay reversal&gt;
-    Activate Merchant
-    Activate SwedbankPay
-    SwedbankPay--&gt;&gt;Merchant: transaction resource
-    Deactivate SwedbankPay
-    Deactivate Merchant
+  Merchant-&gt;&gt;SwedbankPay: POST &lt;mobilepay reversal&gt;
+  activate Merchant
+  activate SwedbankPay
+  SwedbankPay--&gt;&gt;Merchant: transaction resource
+  deactivate SwedbankPay
+  deactivate Merchant
 </code></pre>
+    
+      <h2 id="abort">
+        
+        
+          Abort <a href="#abort" class="header-anchor"></a>
+        
+        
+      </h2>
+
+<p>To abort a payment, perform the <code class="language-html highlighter-rouge">update-payment-abort</code> operation that is
+returned in the payment request.
+You need to include the following HTTP body:</p>
+
+<p class="code-header"><strong>Request</strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre><span class="nf">PATCH</span> <span class="nn">/psp/mobilepay/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">api.externalintegration.payex.com</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="w">
+  </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"operation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Abort"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"abortReason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CancelledByConsumer"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+
+<p class="code-header"><strong>Response</strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+</pre></td><td class="rouge-code"><pre><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/mobilepay/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="mi">70100130293</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-01-09T13:11:28.371179Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-01-09T13:11:46.5949967Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"instrument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mobilepay"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"operation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Purchase"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"intent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Authorization"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aborted"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DKK"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"prices"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/mobilepay/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/prices"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mobilepay Test"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"payerReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100500"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"initiatingSystemUserAgent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PostmanRuntime/7.1.1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"userAgent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mozilla/5.0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"da-DK"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"urls"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/mobilepay/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/urls"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"payeeInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/mobilepay/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/payeeinfo"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/mobilepay/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/metadata"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>The response will be the <code class="language-html highlighter-rouge">payment</code> resource with its <code class="language-html highlighter-rouge">state</code> set to <code class="language-html highlighter-rouge">Aborted</code>.</p>
 
 <nav class="iterator d-flex">
-
+    
         <a class="mr-auto btn btn-guiding" role="button" rel="prev" href="redirect">
             Back: Redirect
         </a>
+    
 
-
-
+    
         <a class="ml-auto btn btn-executive" role="button" rel="next" href="other-features">
             Next: Other Features
         </a>
-
+    
 </nav>
-
+                                    
                                 </div>
 
                                 <div class="col-2 d-none d-lg-block">
@@ -1552,6 +1667,7 @@ captured amount not yet reversed.</p>
   <li class="toc-2"><a href="#reversals">Reversals</a></li>
   <li class="toc-2"><a href="#create-reversal-transaction">Create reversal transaction</a></li>
   <li class="toc-2"><a href="#reversal-sequence">Reversal Sequence</a></li>
+  <li class="toc-2"><a href="#abort">Abort</a></li>
 </ul>
                                     </nav>
                                 </div>

@@ -85,31 +85,31 @@
                     <div class="topbar-link-container">
                         <button type="button" class="topbar-close"><i class="material-icons">close</i></button>
 
+                        
+                        
 
+                        
 
-
-
-
-                        <a
+                        <a 
                             href="/"><span>Home</span></a>
 
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/checkout/"><span>Checkout</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/payments/"><span>Payments</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/gift-cards/"><span>Gift Cards</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/resources/"><span>Resources</span></a>
-
+                        
 
                         <div class="topbar-info topbar-link-right">
                             <div class="topbar-info-contact">
@@ -132,50 +132,50 @@
                 <div class="row">
                     <div class="col-xxl-2 col-md-3">
                         <div class="doc-sidebar">
-
+                            
                             <form class="doc-search" action="/search">
                                 <input type="text" class="form-control" name="q" id="tipue_search_input"
                                     placeholder="Search..." autocomplete="off" pattern=".{3,}"
                                     title="At least 3 characters">
                             </form>
-
-
+                            
+                            
                             <nav class="documentation-nav">
-
-
+                                
+                                
                                 <div class="nav-group active">
                                     <div class="nav-heading">
                                         <i class="material-icons">keyboard_arrow_right</i>
                                         <span>Swish Payments</span>
                                     </div>
 
-
+                                    
                                     <ul>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/swish"><span>Introduction</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/swish/direct"><span>Direct</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/swish/redirect"><span>Redirect</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/swish/seamless-view"><span>Seamless View</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/swish/after-payment"><span>After Payment</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/swish/other-features"><span>Other Features</span></a></li>
-
+                                        
                                     </ul>
-
+                                    
                                 </div>
-
+                                
                             </nav>
-
+                            
                         </div>
                     </div>
 
@@ -184,7 +184,7 @@
                             <h1>Swedbank Pay Payments Swish</h1>
                             <div class="row">
                                 <div class="doc-body col-lg-10">
-
+                                    
                                     <div class="jumbotron">
     <p>Swish is Sweden’s main payment app and the
 preferred online payment method with the highest convertion rates.</p>
@@ -204,11 +204,11 @@ Using the Direct API integration will put you in charge of
 determining which device is being used, and whether the e- or m-commerce flow is
 the most suitable. We will do this for you in Redirect and Seamless view.</p>
       <h2 id="payment-flow">
-
-
+        
+        
           Payment Flow <a href="#payment-flow" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>The following is a quick presentation of the purchase flow when using the
@@ -228,21 +228,21 @@ Redirected back to the merchant’s site.</p>
 <p>In the mobile phone intended m-commerce flow, the payment page or <code class="language-html highlighter-rouge">iframe</code> will
 only have a pay button, and no mobile phone number input is needed.
 The Swish app will be launched automatically when you push the pay button.</p>
-
+    
       <h2 id="good-to-know">
-
-
+        
+        
           Good To Know <a href="#good-to-know" class="header-anchor"></a>
-
-
+        
+        
       </h2>
-
+    
       <h3 id="intent">
-
-
+        
+        
           Intent <a href="#intent" class="header-anchor"></a>
-
-
+        
+        
       </h3>
 
 <p>The intent of the payment identifies how and when the charge will be
@@ -250,29 +250,19 @@ effectuated. This determines the type of transaction used during the payment
 process.</p>
 
 <ul>
-  <li>
-    <p><strong><code class="language-html highlighter-rouge">Authorization</code> (two-phase)</strong>: If you want the credit card to reserve the
-amount, you will have to specify that the <code class="language-html highlighter-rouge">intent</code> of the <code class="language-html highlighter-rouge">Purchase</code> is
-Authorization. The amount will be reserved but not charged.
-You will (i.e. when you are ready to ship the purchased products) have to
-make a <a href="./after-payment#capture">Capture</a> or <a href="./after-payment#cancel">Cancel</a> request later on to fulfill
-the transaction.</p>
-  </li>
-  <li>
-    <p><strong><code class="language-html highlighter-rouge">Sale</code> (one-phase)</strong>: The <code class="language-html highlighter-rouge">sale</code> intent is used by the payment instruments
+  <li><strong><code class="language-html highlighter-rouge">Sale</code> (one-phase)</strong>: The <code class="language-html highlighter-rouge">sale</code> intent is used by the payment instruments
 like Swish, where the funds are reserved and drawn from the payer’s account
 immediately. This means you don’t need to do any more financial operations to
 fulfill the transaction. The only available after payment operation is
-<code class="language-html highlighter-rouge">reversal</code>.</p>
-  </li>
+<code class="language-html highlighter-rouge">reversal</code>.</li>
 </ul>
-
+    
       <h3 id="payment-type">
-
-
+        
+        
           Payment Type <a href="#payment-type" class="header-anchor"></a>
-
-
+        
+        
       </h3>
 
 <p>Swish is one of the instruments using one-phase payments. The <code class="language-html highlighter-rouge">sale</code> is done
@@ -281,13 +271,13 @@ instantly. The <code class="language-html highlighter-rouge">abort</code> operat
 <code class="language-html highlighter-rouge">capture</code> operations are not. The <code class="language-html highlighter-rouge">reversal</code>, if needed, is done by the
 merchant at a later time. Read more about the <a href="/payments/swish/after-payment">different
 operations</a> and the <a href="/payments/swish/other-features#payment-resource">payment resource</a>.</p>
-
+    
       <h3 id="certificate">
-
-
+        
+        
           Certificate <a href="#certificate" class="header-anchor"></a>
-
-
+        
+        
       </h3>
 
 <p>We recommend that you apply for Swish as part of our Settlement Service and
@@ -305,13 +295,13 @@ of contact to monitor and renew a certificate.</p>
 agreement, a Swish alias and access to Swish Certificate Management
 system (several banks do however support Technical Supplier Certificate setups
 so you can ask them for that).</p>
-
+    
       <h3 id="demoshop">
-
-
+        
+        
           Demoshop <a href="#demoshop" class="header-anchor"></a>
-
-
+        
+        
       </h3>
 
 <p>You can give Swish a go in our demoshop if you like. For Redirect payments, you
@@ -319,13 +309,13 @@ need to toggle <code class="language-html highlighter-rouge">paymentUrl</code> o
 must be toggled on. The external integration demoshop used for testing is set up
 with the Merchant Swish Simulator, which enables you to test without using the
 Swish App.</p>
-
+    
       <h2 id="languages">
-
-
+        
+        
           Languages <a href="#languages" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>​Swish supports the following languages:
@@ -334,15 +324,15 @@ English (US) <code class="language-html highlighter-rouge">en-US</code>, Norwegi
          <code class="language-html highlighter-rouge">sv-SE</code>.</p>
 
 <nav class="iterator d-flex">
+    
 
-
-
+    
         <a class="ml-auto btn btn-executive" role="button" rel="next" href="direct">
             Next: Direct
         </a>
-
+    
 </nav>
-
+                                    
                                 </div>
 
                                 <div class="col-2 d-none d-lg-block">

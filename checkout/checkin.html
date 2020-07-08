@@ -85,31 +85,31 @@
                     <div class="topbar-link-container">
                         <button type="button" class="topbar-close"><i class="material-icons">close</i></button>
 
+                        
+                        
 
+                        
 
-
-
-
-                        <a
+                        <a 
                             href="/"><span>Home</span></a>
 
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/checkout/"><span>Checkout</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/payments/"><span>Payments</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/gift-cards/"><span>Gift Cards</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/resources/"><span>Resources</span></a>
-
+                        
 
                         <div class="topbar-info topbar-link-right">
                             <div class="topbar-info-contact">
@@ -132,50 +132,51 @@
                 <div class="row">
                     <div class="col-xxl-2 col-md-3">
                         <div class="doc-sidebar">
-
+                            
                             <form class="doc-search" action="/search">
                                 <input type="text" class="form-control" name="q" id="tipue_search_input"
                                     placeholder="Search..." autocomplete="off" pattern=".{3,}"
                                     title="At least 3 characters">
                             </form>
-
-
+                            
+                            
                             <nav class="documentation-nav">
-
-
+                                
+                                
                                 <div class="nav-group active">
                                     <div class="nav-heading">
                                         <i class="material-icons">keyboard_arrow_right</i>
                                         <span>Checkout</span>
                                     </div>
 
-
+                                    
                                     <ul>
-
-
+                                        
+                                        
                                         <li><a  href="/checkout/"><span>Introduction</span></a></li>
-
-
-                                        <li><a  href="/checkout/checkin"><span>Checkin</span></a></li>
-
-
+                                        
+                                        
+                                        <li><a  aria-current="page" class="active"
+                                                 href="/checkout/checkin"><span>Checkin</span></a></li>
+                                        
+                                        
                                         <li><a  href="/checkout/payment-menu"><span>Payment Menu</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/checkout/capture"><span>Capture</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/checkout/after-payment"><span>After Payment</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/checkout/other-features"><span>Other Features</span></a></li>
-
+                                        
                                     </ul>
-
+                                    
                                 </div>
-
+                                
                             </nav>
-
+                            
                         </div>
                     </div>
 
@@ -184,7 +185,7 @@
                             <h1>Swedbank Pay Checkout – Checkin</h1>
                             <div class="row">
                                 <div class="doc-body col-lg-10">
-
+                                    
                                     <div class="jumbotron">
     <p>Swedbank Pay Checkout consists of two parts:
 <strong>Checkin</strong> and <strong>Payment Menu</strong>. In the sections that follow you’ll find
@@ -195,11 +196,11 @@ identified.</p>
 
 </div>
       <h2 id="step-1-initiate-session-for-consumer-identification">
-
-
+        
+        
           Step 1: Initiate session for consumer identification <a href="#step-1-initiate-session-for-consumer-identification" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>The payer will be identified with the <code class="language-html highlighter-rouge">consumers</code> resource and will be
@@ -250,7 +251,7 @@ is done through the <code class="language-html highlighter-rouge">initiate-consu
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">language</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">Selected language to be used in Checkin. Supported values are <code class="language-html highlighter-rouge">sv-SE</code>, <code class="language-html highlighter-rouge">nb-NO</code> or <code class="language-html highlighter-rouge">ee-EE</code>.</td>
+      <td style="text-align: left">Selected language to be used in Checkin. Supported values are <code class="language-html highlighter-rouge">sv-SE</code>, <code class="language-html highlighter-rouge">nb-NO</code> or <code class="language-html highlighter-rouge">en-US</code>.</td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
@@ -348,13 +349,13 @@ is done through the <code class="language-html highlighter-rouge">initiate-consu
     </tr>
   </tbody>
 </table>
-
+    
       <h2 id="step-2-display-swedbank-pay-checkin-module">
-
-
+        
+        
           Step 2: Display Swedbank Pay Checkin module <a href="#step-2-display-swedbank-pay-checkin-module" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>The response from the <code class="language-html highlighter-rouge">POST</code> of consumer information contains a few operations.
@@ -365,14 +366,14 @@ and its <code class="language-html highlighter-rouge">application/javascript</co
 operation is meant to be embedded in a <code class="language-html highlighter-rouge"><span class="nt">&lt;script&gt;</span></code> element in an HTML document.</p>
 
 <div class="alert  alert-warning">
-
-
+    
+        
             <i class="material-icons alert-icon">warning</i>
+        
+    
 
-
-
-
-
+    
+        
             <p>In our example we will focus on using the
                     <code class="language-html highlighter-rouge">view-consumer-identification</code> solution.
                     The <code class="language-html highlighter-rouge">redirect-consumer-identification</code> method redirects
@@ -382,8 +383,8 @@ operation is meant to be embedded in a <code class="language-html highlighter-ro
                     test enviroments</strong>. It is not suitable for the production
                     environment as there is no simple way of retrieving the
                     <code class="language-html highlighter-rouge">consumerProfileRef</code>.</p>
-
-
+        
+    
 </div>
 
 <p class="code-header"><strong>HTML</strong></p>
@@ -415,19 +416,19 @@ operation is meant to be embedded in a <code class="language-html highlighter-ro
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <div class="alert  alert-informative">
-
-
+    
+        
             <i class="material-icons alert-icon">info</i>
+        
+    
 
-
-
-
-
+    
+        
             <p>The Checkin and Payment
 Menu components (the two <code class="language-html highlighter-rouge"><span class="nt">&lt;iframe&gt;</span></code> elements) must be separate
 (one must not replace the other).</p>
-
-
+        
+    
 </div>
 
 <p>In the HTML, you only need to add two <code class="language-html highlighter-rouge"><span class="nt">&lt;div&gt;</span></code> elements to place the
@@ -529,19 +530,19 @@ it comes to handling the check-in and payment menu.</p>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <div class="alert  alert-informative">
-
-
+    
+        
             <i class="material-icons alert-icon">info</i>
+        
+    
 
-
-
-
-
+    
+        
             <p>Note that we add the script at the end of the body. This ensures that
 every element (like the container <code class="language-html highlighter-rouge"><span class="nt">&lt;div&gt;</span></code> elements) has loaded in before we try to
 access them with our script.</p>
-
-
+        
+    
 </div>
 
 <p>With the scripts loading in after the entire page is loaded, we can access the
@@ -593,13 +594,13 @@ menu must be shown even though <code class="language-html highlighter-rouge">onC
 in the <code class="language-html highlighter-rouge">configuration</code> object, such as <code class="language-html highlighter-rouge">onConsumerIdentified</code>, <code class="language-html highlighter-rouge">onShippingDetailsAvailable</code>and
 <code class="language-html highlighter-rouge">onBillingDetailsAvailable</code>. Read more about these in the
 <a href="/checkout/other-features#checkin-events">Checkin events</a> section.</p>
-
+    
       <h3 id="note-on-consumer-data">
-
-
+        
+        
           Note on consumer data <a href="#note-on-consumer-data" class="header-anchor"></a>
-
-
+        
+        
       </h3>
 
 <p>During this stage some consumer data is stored.
@@ -607,19 +608,19 @@ Read more about our <a href="/resources/data-protection#paymentorder-consumer-da
 information we store and its duration.</p>
 
 <nav class="iterator d-flex">
-
+    
         <a class="mr-auto btn btn-guiding" role="button" rel="prev" href="./">
             Back: Introduction
         </a>
+    
 
-
-
+    
         <a class="ml-auto btn btn-executive" role="button" rel="next" href="payment-menu">
             Next: Payment Menu
         </a>
-
+    
 </nav>
-
+                                    
                                 </div>
 
                                 <div class="col-2 d-none d-lg-block">

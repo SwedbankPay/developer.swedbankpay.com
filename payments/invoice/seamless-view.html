@@ -85,31 +85,31 @@
                     <div class="topbar-link-container">
                         <button type="button" class="topbar-close"><i class="material-icons">close</i></button>
 
+                        
+                        
 
+                        
 
-
-
-
-                        <a
+                        <a 
                             href="/"><span>Home</span></a>
 
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/checkout/"><span>Checkout</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/payments/"><span>Payments</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/gift-cards/"><span>Gift Cards</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/resources/"><span>Resources</span></a>
-
+                        
 
                         <div class="topbar-info topbar-link-right">
                             <div class="topbar-info-contact">
@@ -132,53 +132,54 @@
                 <div class="row">
                     <div class="col-xxl-2 col-md-3">
                         <div class="doc-sidebar">
-
+                            
                             <form class="doc-search" action="/search">
                                 <input type="text" class="form-control" name="q" id="tipue_search_input"
                                     placeholder="Search..." autocomplete="off" pattern=".{3,}"
                                     title="At least 3 characters">
                             </form>
-
-
+                            
+                            
                             <nav class="documentation-nav">
-
-
+                                
+                                
                                 <div class="nav-group active">
                                     <div class="nav-heading">
                                         <i class="material-icons">keyboard_arrow_right</i>
                                         <span>Invoice Payments</span>
                                     </div>
 
-
+                                    
                                     <ul>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/invoice"><span>Introduction</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/invoice/redirect"><span>Redirect</span></a></li>
-
-
-                                        <li><a  href="/payments/invoice/seamless-view"><span>Seamless View</span></a></li>
-
-
+                                        
+                                        
+                                        <li><a  aria-current="page" class="active"
+                                                 href="/payments/invoice/seamless-view"><span>Seamless View</span></a></li>
+                                        
+                                        
                                         <li><a  href="/payments/invoice/direct"><span>Direct</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/invoice/capture"><span>Capture</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/invoice/after-payment"><span>After Payment</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/invoice/other-features"><span>Other Features</span></a></li>
-
+                                        
                                     </ul>
-
+                                    
                                 </div>
-
+                                
                             </nav>
-
+                            
                         </div>
                     </div>
 
@@ -187,7 +188,7 @@
                             <h1>Swedbank Pay Invoice Payments – Seamless View</h1>
                             <div class="row">
                                 <div class="doc-body col-lg-10">
-
+                                    
                                     <div class="jumbotron">
     <p>The Seamless View scenario represents the
                                 opportunity to implement Invoice directly in
@@ -195,11 +196,11 @@
 
 </div>
       <h2 id="introduction">
-
-
+        
+        
           Introduction <a href="#introduction" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>Seamless View provides an integration of the payment process directly on your
@@ -212,19 +213,19 @@ does not need to leave your webpage, since we are handling the payment in the
 
 <div class="alert alert-complex alert-success">
     <header class="alert-header">
-
+            
                 <i class="material-icons alert-icon">link</i>
       <h3>
-
-
+        
+        
           Callback URL
-
-
+        
+        
       </header>
+    
 
-
-
-
+    
+        
             <div class="alert-body">
                 <p>It is mandatory to set a <a href="/payments/invoice/other-features#callback"><code class="language-html highlighter-rouge">callbackUrl</code></a> in the <code class="language-html highlighter-rouge">POST</code> request creating the payment. If <code class="language-html highlighter-rouge">callbackUrl</code>
 is set, Swedbank Pay will send a <code class="language-html highlighter-rouge">POST</code> request to this URL when the consumer
@@ -232,16 +233,16 @@ has fulfilled the payment. Upon receiving this <code class="language-html highli
 <code class="language-html highlighter-rouge">GET</code> request towards the <code class="language-html highlighter-rouge">id</code> of the payment generated initially must be made
 to receive the state of the transaction.</p>
             </div>
-
-
+        
+    
 </div>
-
+    
       <h2 id="step-1-create-the-payment">
-
-
+        
+        
           Step 1: Create the payment <a href="#step-1-create-the-payment" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>A <code class="language-html highlighter-rouge">FinancingConsumer</code> payment is a straightforward way to invoice a
@@ -431,13 +432,13 @@ invoice information. This will generate a payment object with a unique
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">userAgent</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The user agent reference of the consumer’s browser - <a href="https://en.wikipedia.org/wiki/User_agent">see user agent definition</a></td>
+      <td style="text-align: left">The <a href="https://en.wikipedia.org/wiki/User_agent"><code class="language-html highlighter-rouge">User-Agent</code> string</a> of the consumer’s web browser.</td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">language</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">sv-SE</code>, <code class="language-html highlighter-rouge">nb-NO</code> or <code class="language-html highlighter-rouge">ee-EE</code>.</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">sv-SE</code>, <code class="language-html highlighter-rouge">nb-NO</code> or <code class="language-html highlighter-rouge">en-US</code>.</td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
@@ -491,7 +492,7 @@ invoice information. This will generate a payment object with a unique
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string(30*)</code></td>
-      <td style="text-align: left">A unique reference from the merchant system, which is used as a receipt/invoice number in Invoice Payments. It is set per operation to ensure an exactly-once delivery of a transactional operation. See <a href="/payments/invoice/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payments/invoice/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
@@ -657,13 +658,13 @@ invoice information. This will generate a payment object with a unique
 <p>The key information in the response is the <code class="language-html highlighter-rouge">view-authorization</code> operation. You
 will need to embed its <code class="language-html highlighter-rouge">href</code> in a <code class="language-html highlighter-rouge"><span class="nt">&lt;script&gt;</span></code> element. The script will enable
 loading the payment page in an <code class="language-html highlighter-rouge">iframe</code> in our next step.</p>
-
+    
       <h2 id="step-2-display-the-payment">
-
-
+        
+        
           Step 2: Display the Payment <a href="#step-2-display-the-payment" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>You need to embed the script source on your site to create a hosted-view in an
@@ -733,13 +734,13 @@ embedded on your website.</p>
     <span class="p">}).</span><span class="nx">open</span><span class="p">();</span>
 <span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
 </span></pre></td></tr></tbody></table></code></pre></div></div>
-
+    
       <h2 id="purchase-flow">
-
-
+        
+        
           Purchase Flow <a href="#purchase-flow" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>The sequence diagram below shows a high level description of the
@@ -773,34 +774,34 @@ invoice process.</p>
 </code></pre>
 
 <div class="alert  alert-informative">
-
-
+    
+        
             <i class="material-icons alert-icon">info</i>
+        
+    
 
-
-
-
-
+    
+        
             <p>Note that the invoice will not be created/distributed before you have
 made a <code class="language-html highlighter-rouge">capture</code> request.</p>
-
-
+        
+    
 </div>
 
 <nav class="iterator d-flex">
-
+    
         <a class="mr-auto btn btn-guiding" role="button" rel="prev" href="redirect">
             Back: Redirect
         </a>
+    
 
-
-
+    
         <a class="ml-auto btn btn-executive" role="button" rel="next" href="direct">
             Next: Direct
         </a>
-
+    
 </nav>
-
+                                    
                                 </div>
 
                                 <div class="col-2 d-none d-lg-block">

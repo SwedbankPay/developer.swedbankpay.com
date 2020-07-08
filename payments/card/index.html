@@ -85,31 +85,31 @@
                     <div class="topbar-link-container">
                         <button type="button" class="topbar-close"><i class="material-icons">close</i></button>
 
+                        
+                        
 
+                        
 
-
-
-
-                        <a
+                        <a 
                             href="/"><span>Home</span></a>
 
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/checkout/"><span>Checkout</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/payments/"><span>Payments</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/gift-cards/"><span>Gift Cards</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/resources/"><span>Resources</span></a>
-
+                        
 
                         <div class="topbar-info topbar-link-right">
                             <div class="topbar-info-contact">
@@ -132,56 +132,57 @@
                 <div class="row">
                     <div class="col-xxl-2 col-md-3">
                         <div class="doc-sidebar">
-
+                            
                             <form class="doc-search" action="/search">
                                 <input type="text" class="form-control" name="q" id="tipue_search_input"
                                     placeholder="Search..." autocomplete="off" pattern=".{3,}"
                                     title="At least 3 characters">
                             </form>
-
-
+                            
+                            
                             <nav class="documentation-nav">
-
-
+                                
+                                
                                 <div class="nav-group active">
                                     <div class="nav-heading">
                                         <i class="material-icons">keyboard_arrow_right</i>
                                         <span>Card Payments</span>
                                     </div>
 
-
+                                    
                                     <ul>
-
-
-                                        <li><a  href="/payments/card/"><span>Introduction</span></a></li>
-
-
+                                        
+                                        
+                                        <li><a  aria-current="page" class="active"
+                                                 href="/payments/card/"><span>Introduction</span></a></li>
+                                        
+                                        
                                         <li><a  href="/payments/card/redirect"><span>Redirect</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/card/seamless-view"><span>Seamless View</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/card/direct"><span>Direct</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/card/capture"><span>Capture</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/card/mobile-card-payments"><span>Mobile Card Payments</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/card/after-payment"><span>After Payment</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/card/other-features"><span>Other Features</span></a></li>
-
+                                        
                                     </ul>
-
+                                    
                                 </div>
-
+                                
                             </nav>
-
+                            
                         </div>
                     </div>
 
@@ -190,7 +191,7 @@
                             <h1>Swedbank Pay Card Payments – Introduction</h1>
                             <div class="row">
                                 <div class="doc-body col-lg-10">
-
+                                    
                                     <div class="jumbotron">
     <p><strong>Card Payments</strong> is the most popular, versatile
 and global way to initate a transaction with a customer. Choose between our
@@ -199,55 +200,55 @@ and global way to initate a transaction with a customer. Choose between our
 </div>
 
 <div class="alert  alert-informative">
-
-
+    
+        
             <i class="material-icons alert-icon">branding_watermark</i>
+        
+    
 
-
-
-
-
+    
+        
             <p><strong>Seamless View</strong> is our solution for a payment
                       experience that is integrated directly on your website.
                       The payment process will be executed in an <code class="language-html highlighter-rouge">iframe</code> on
                       your page.</p>
-
-
+        
+    
 </div>
 
 <div class="alert  alert-informative">
-
-
+    
+        
             <i class="material-icons alert-icon">cached</i>
+        
+    
 
-
-
-
-
+    
+        
             <p><strong>Redirect</strong> will take the consumer to a Swedbank
                       Pay hosted payment page where they can perform a safe
                       transaction. The consumer will be redirected back to your
                       website after the completion of the payment.</p>
-
-
+        
+    
 </div>
 
 <div class="alert  alert-informative">
-
-
+    
+        
             <i class="material-icons alert-icon">open_in_browser</i>
+        
+    
 
-
-
-
-
+    
+        
             <p><strong>Direct</strong> integration is a way to implement card
                       payments without using Swedbank Pay hosted payment pages.
                       This option allow you to collect the card data on your
                       page. That implies that the process must be <a href="https://www.pcisecuritystandards.org/">PCI-DSS
                       Compliant</a></p>
-
-
+        
+    
 </div>
 
 <ul>
@@ -277,14 +278,14 @@ card information.</p>
 
 <p><img src="/assets/img/payments/card-payment.png" alt="screenshot of the redirect card payment page" height="500px" width="425px" /></p>
       <h2 id="operations">
-
-
+        
+        
           Operations <a href="#operations" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
-<p>The API requests are displayed in the <a href="#purchase-flow">purchase flow</a>.
+<p>The API requests are displayed in the <a href="/payments/card/other-features#purchase">purchase flow</a>.
 You can <a href="/payments/card/other-features#create-payment">create a card payment</a> with following <code class="language-html highlighter-rouge">operation</code>
 options:</p>
 
@@ -297,21 +298,21 @@ options:</p>
 </ul>
 
 <p>Our <code class="language-html highlighter-rouge">payment</code> example below uses the <a href="/payments/card/other-features#purchase"><code class="language-html highlighter-rouge">Purchase</code></a> operation.</p>
-
+    
       <h2 id="intent">
-
-
+        
+        
           Intent <a href="#intent" class="header-anchor"></a>
-
-
+        
+        
       </h2>
-
+    
       <h3 id="intent-1">
-
-
+        
+        
           Intent <a href="#intent-1" class="header-anchor"></a>
-
-
+        
+        
       </h3>
 
 <p>The intent of the payment identifies how and when the charge will be
@@ -319,45 +320,35 @@ effectuated. This determines the type of transaction used during the payment
 process.</p>
 
 <ul>
-  <li>
-    <p><strong><code class="language-html highlighter-rouge">Authorization</code> (two-phase)</strong>: If you want the credit card to reserve the
-amount, you will have to specify that the <code class="language-html highlighter-rouge">intent</code> of the <code class="language-html highlighter-rouge">Purchase</code> is
-Authorization. The amount will be reserved but not charged.
-You will (i.e. when you are ready to ship the purchased products) have to
-make a <a href="/payments/card/capture">Capture</a> or <a href="/payments/card/after-payment#cancellations">Cancel</a> request later on to fulfill
-the transaction.</p>
-  </li>
-  <li>
-    <p><strong><code class="language-html highlighter-rouge">AutoCapture</code> (one-phase)</strong>: If you want the credit card to be charged
+  <li><strong><code class="language-html highlighter-rouge">AutoCapture</code> (one-phase)</strong>: If you want the credit card to be charged
 (without additional operations), you will have to specify that the
 <code class="language-html highlighter-rouge">intent</code> of the <code class="language-html highlighter-rouge">Purchase</code> is <code class="language-html highlighter-rouge">AutoCapture</code>. This is normally only allowed if
 the consumer purchases digital products with instant delivery/shipment.
 Check with your acquirer before using this feature. The amount will be
 reserved via the authorization and the credit card will be charged
 automatically. You don’t need to do any more financial
-operations to fulfill the transaction.</p>
-  </li>
+operations to fulfill the transaction.</li>
 </ul>
-
+    
       <h2 id="languages">
-
-
+        
+        
           Languages <a href="#languages" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>​Card supports the following languages:
 Danish <code class="language-html highlighter-rouge">da-DK</code>, German <code class="language-html highlighter-rouge">de-DE</code>, Estonian <code class="language-html highlighter-rouge">ee-EE</code>, English (US) <code class="language-html highlighter-rouge">en-US</code>, Spanish <code class="language-html highlighter-rouge">es-ES</code>, Finnish <code class="language-html highlighter-rouge">fi-FI</code>, French <code class="language-html highlighter-rouge">fr-FR</code>, Lithuanian <code class="language-html highlighter-rouge">lt-LT</code>, Latvian <code class="language-html highlighter-rouge">lv-LV</code>, Norwegian <code class="language-html highlighter-rouge">nb-NO</code>, Russian <code class="language-html highlighter-rouge">ru-RU</code>
  and Swedish
          <code class="language-html highlighter-rouge">sv-SE</code>.</p>
-
+    
       <h2 id="purchase-flow">
-
-
+        
+        
           Purchase Flow <a href="#purchase-flow" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>The sequence diagram below shows a high level description of a complete
@@ -458,15 +449,15 @@ card payment:</p>
 </code></pre>
 
 <nav class="iterator d-flex">
+    
 
-
-
+    
         <a class="ml-auto btn btn-executive" role="button" rel="next" href="redirect">
             Next: Redirect
         </a>
-
+    
 </nav>
-
+                                    
                                 </div>
 
                                 <div class="col-2 d-none d-lg-block">

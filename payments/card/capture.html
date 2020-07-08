@@ -85,31 +85,31 @@
                     <div class="topbar-link-container">
                         <button type="button" class="topbar-close"><i class="material-icons">close</i></button>
 
+                        
+                        
 
+                        
 
-
-
-
-                        <a
+                        <a 
                             href="/"><span>Home</span></a>
 
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/checkout/"><span>Checkout</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/payments/"><span>Payments</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/gift-cards/"><span>Gift Cards</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/resources/"><span>Resources</span></a>
-
+                        
 
                         <div class="topbar-info topbar-link-right">
                             <div class="topbar-info-contact">
@@ -132,56 +132,57 @@
                 <div class="row">
                     <div class="col-xxl-2 col-md-3">
                         <div class="doc-sidebar">
-
+                            
                             <form class="doc-search" action="/search">
                                 <input type="text" class="form-control" name="q" id="tipue_search_input"
                                     placeholder="Search..." autocomplete="off" pattern=".{3,}"
                                     title="At least 3 characters">
                             </form>
-
-
+                            
+                            
                             <nav class="documentation-nav">
-
-
+                                
+                                
                                 <div class="nav-group active">
                                     <div class="nav-heading">
                                         <i class="material-icons">keyboard_arrow_right</i>
                                         <span>Card Payments</span>
                                     </div>
 
-
+                                    
                                     <ul>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/card/"><span>Introduction</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/card/redirect"><span>Redirect</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/card/seamless-view"><span>Seamless View</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/card/direct"><span>Direct</span></a></li>
-
-
-                                        <li><a  href="/payments/card/capture"><span>Capture</span></a></li>
-
-
+                                        
+                                        
+                                        <li><a  aria-current="page" class="active"
+                                                 href="/payments/card/capture"><span>Capture</span></a></li>
+                                        
+                                        
                                         <li><a  href="/payments/card/mobile-card-payments"><span>Mobile Card Payments</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/card/after-payment"><span>After Payment</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/card/other-features"><span>Other Features</span></a></li>
-
+                                        
                                     </ul>
-
+                                    
                                 </div>
-
+                                
                             </nav>
-
+                            
                         </div>
                     </div>
 
@@ -190,26 +191,26 @@
                             <h1>Swedbank Pay Card Payments – Capture</h1>
                             <div class="row">
                                 <div class="doc-body col-lg-10">
-
+                                    
                                     <h2 id="capture">
-
-
+        
+        
           Capture <a href="#capture" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>The capture transaction is where you ensure that the funds are charged from
 the consumer. This step usually takes place when the product has exchanged
 possession. You must first do a <code class="language-html highlighter-rouge">GET</code> request on the payment to find the
 <code class="language-html highlighter-rouge">create-capture</code> operation.</p>
-
+    
       <h3 id="create-capture-transaction">
-
-
+        
+        
           Create capture transaction <a href="#create-capture-transaction" class="header-anchor"></a>
-
-
+        
+        
       </h3>
 
 <p>To create a <code class="language-html highlighter-rouge">capture</code> transaction to withdraw money from the payer’s card, you
@@ -259,7 +260,7 @@ need to perform the <code class="language-html highlighter-rouge">create-capture
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">transaction</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">object</code></td>
-      <td style="text-align: left">The object representation of the generic [transaction resource][transaction-resource].</td>
+      <td style="text-align: left">The object representation of the generic <a href="/payments/card/other-features#transactions">transaction resource</a>.</td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
@@ -283,7 +284,7 @@ need to perform the <code class="language-html highlighter-rouge">create-capture
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string(30*)</code></td>
-      <td style="text-align: left">A unique reference for the capture transaction. See [<code class="language-html highlighter-rouge">payeeReference</code>][payee-reference] for details.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payments/card/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.</td>
     </tr>
   </tbody>
 </table>
@@ -365,7 +366,7 @@ need to perform the <code class="language-html highlighter-rouge">create-capture
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">transaction</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">object</code></td>
-      <td style="text-align: left">The object representation of the generic [<code class="language-html highlighter-rouge">transaction resource</code>][transaction-resource].</td>
+      <td style="text-align: left">The object representation of the generic <a href="/payments/card/other-features#transactions"><code class="language-html highlighter-rouge">transaction resource</code></a>.</td>
     </tr>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">id</code></td>
@@ -415,7 +416,7 @@ need to perform the <code class="language-html highlighter-rouge">create-capture
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">A unique reference for the transaction. See [payeeReference][payeeReference] for details.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payments/card/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.</td>
     </tr>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">failedReason</code></td>
@@ -430,7 +431,7 @@ need to perform the <code class="language-html highlighter-rouge">create-capture
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">operations</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">array</code></td>
-      <td style="text-align: left">The array of [operations][operations] that are possible to perform on the transaction in its current state.</td>
+      <td style="text-align: left">The array of <a href="/payments/card/other-features#operations">operations</a> that are possible to perform on the transaction in its current state.</td>
     </tr>
   </tbody>
 </table>
@@ -549,7 +550,7 @@ specific payment.</p>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">transaction</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">object</code></td>
-      <td style="text-align: left">The object representation of the generic [transaction resource][transaction-resource].</td>
+      <td style="text-align: left">The object representation of the generic <a href="/payments/card/other-features#transactions">transaction resource</a>.</td>
     </tr>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">id</code></td>
@@ -599,7 +600,7 @@ specific payment.</p>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">A unique reference for the transaction. See [payeeReference][payeeReference] for details.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payments/card/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.</td>
     </tr>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">failedReason</code></td>
@@ -614,17 +615,17 @@ specific payment.</p>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">operations</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">array</code></td>
-      <td style="text-align: left">The array of [operations][operations] that are possible to perform on the transaction in its current state.</td>
+      <td style="text-align: left">The array of <a href="/payments/card/other-features#operations">operations</a> that are possible to perform on the transaction in its current state.</td>
     </tr>
   </tbody>
 </table>
-
+    
       <h3 id="capture-sequence">
-
-
+        
+        
           Capture Sequence <a href="#capture-sequence" class="header-anchor"></a>
-
-
+        
+        
       </h3>
 
 <p><code class="language-html highlighter-rouge">Capture</code> can only be done on an authorized transaction. It is possible to do a
@@ -643,19 +644,19 @@ everyone should be happy. But, sometimes you also need to implement the
 cancellation and reversal operations described in After Payment.</p>
 
 <nav class="iterator d-flex">
-
+    
         <a class="mr-auto btn btn-guiding" role="button" rel="prev" href="direct">
             Back: Direct
         </a>
+    
 
-
-
+    
         <a class="ml-auto btn btn-executive" role="button" rel="next" href="after-payment">
             Next: After Payment
         </a>
-
+    
 </nav>
-
+                                    
                                 </div>
 
                                 <div class="col-2 d-none d-lg-block">

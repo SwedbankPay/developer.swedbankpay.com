@@ -85,31 +85,31 @@
                     <div class="topbar-link-container">
                         <button type="button" class="topbar-close"><i class="material-icons">close</i></button>
 
+                        
+                        
 
+                        
 
-
-
-
-                        <a
+                        <a 
                             href="/"><span>Home</span></a>
 
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/checkout/"><span>Checkout</span></a>
-
-
-                        <a
+                        
+                        
+                        <a  aria-current="page" class="active" 
                             href="/payments/"><span>Payments</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/gift-cards/"><span>Gift Cards</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/resources/"><span>Resources</span></a>
-
+                        
 
                         <div class="topbar-info topbar-link-right">
                             <div class="topbar-info-contact">
@@ -132,53 +132,54 @@
                 <div class="row">
                     <div class="col-xxl-2 col-md-3">
                         <div class="doc-sidebar">
-
+                            
                             <form class="doc-search" action="/search">
                                 <input type="text" class="form-control" name="q" id="tipue_search_input"
                                     placeholder="Search..." autocomplete="off" pattern=".{3,}"
                                     title="At least 3 characters">
                             </form>
-
-
+                            
+                            
                             <nav class="documentation-nav">
-
-
+                                
+                                
                                 <div class="nav-group active">
                                     <div class="nav-heading">
                                         <i class="material-icons">keyboard_arrow_right</i>
                                         <span>Payments</span>
                                     </div>
 
-
+                                    
                                     <ul>
-
-
-                                        <li><a  href="/payments/"><span>Introduction</span></a></li>
-
-
+                                        
+                                        
+                                        <li><a  aria-current="page" class="active"
+                                                 href="/payments/"><span>Introduction</span></a></li>
+                                        
+                                        
                                         <li><a  href="/payments/card"><span>Card Payments</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/invoice"><span>Invoice Payments</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/swish"><span>Swish Payments</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/vipps"><span>Vipps Payments</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/mobile-pay"><span>MobilePay Payments</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/trustly"><span>Trustly Payments</span></a></li>
-
+                                        
                                     </ul>
-
+                                    
                                 </div>
-
+                                
                             </nav>
-
+                            
                         </div>
                     </div>
 
@@ -187,7 +188,7 @@
                             <h1>Swedbank Pay Payments</h1>
                             <div class="row">
                                 <div class="doc-body col-lg-10">
-
+                                    
                                     <div class="jumbotron">
     <p>Payments is our off-the-rack assortment of
 payment instruments. You can pick and choose among them to tailor the instrument
@@ -268,11 +269,11 @@ below.</p>
   </tbody>
 </table>
       <h2 id="prerequisites">
-
-
+        
+        
           Prerequisites <a href="#prerequisites" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>To start integrating Swedbank Pay Payments, you need the following:</p>
@@ -283,91 +284,91 @@ below.</p>
   <li>Credentials (Merchant Access Token) from Swedbank Pay retrieved from
 Swedbank Pay Admin.</li>
 </ul>
-
+    
       <h2 id="platform-options">
-
-
+        
+        
           Platform options <a href="#platform-options" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>Here are our three platform options at a glance. You can read more about the
 integration process by visiting the sections for each payment instrument.</p>
-
+    
       <h3 id="seamless-view">
-
-
+        
+        
           Seamless View <a href="#seamless-view" class="header-anchor"></a>
-
-
+        
+        
       </h3>
 
 <p>With <a href="/payments/card/seamless-view">Seamless Views</a> you can initiate the payment process
 directly in an <code class="language-html highlighter-rouge">iframe</code> on your site. If you prefer that the consumer isn’t
 redirected away from you, this option enables you to embed our payment page
 seamlessly into your shopping experience.</p>
-
+    
       <h3 id="redirect">
-
-
+        
+        
           Redirect <a href="#redirect" class="header-anchor"></a>
-
-
+        
+        
       </h3>
 
 <p>The <a href="/payments/card/redirect">Redirect</a> platform redirects the consumers to a Swedbank Pay
 hosted payment page. The consumer will be redirected back to your page when the
 payment is completed.</p>
-
+    
       <h3 id="direct">
-
-
+        
+        
           Direct <a href="#direct" class="header-anchor"></a>
-
-
+        
+        
       </h3>
 
 <p><a href="/payments/card/direct">Direct</a> is the option where you integrate directly using our Direct
 API. This is an integration with the most flexibility and opportunities. If you
 want to offer Card Payments and choose this option, you have to be PCI-DSS
 compliant.</p>
-
+    
       <h2 id="the-fundamentals">
-
-
+        
+        
           The Fundamentals <a href="#the-fundamentals" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <div class="alert  alert-informative">
-
-
+    
+        
             <i class="material-icons alert-icon">info</i>
+        
+    
 
-
-
-
-
+    
+        
             <p>All Payments APIs in the Swedbank Pay API Platform
                       share a common foundation with a similar payment process
                       for all payment instruments, reducing complexity and
                       enabling a more straightforward integration.</p>
-
-
+        
+    
 </div>
 
 <p>There are two main payment types, <strong>two-phase</strong> and <strong>one-phase</strong> payments. The
 two seem very similar from a consumer’s point of view, but there are key
 differences you should know about.</p>
-
+    
       <h3 id="two-phase-payments">
-
-
+        
+        
           Two-Phase Payments <a href="#two-phase-payments" class="header-anchor"></a>
-
-
+        
+        
       </h3>
 
 <p>A two-phase payment is performed in two steps – an <code class="language-html highlighter-rouge">authorization</code> which
@@ -387,13 +388,13 @@ distribution and send it to the consumer.</p>
   <li><a href="/payments/invoice">MobilePay</a></li>
   <li><a href="/payments/vipps">Vipps</a></li>
 </ul>
-
+    
       <h3 id="one-phase-payments">
-
-
+        
+        
           One-Phase Payments <a href="#one-phase-payments" class="header-anchor"></a>
-
-
+        
+        
       </h3>
 
 <p>There are two types of one-phase payments – <code class="language-html highlighter-rouge">sale</code> and <code class="language-html highlighter-rouge">autoCapture</code>.</p>
@@ -421,13 +422,13 @@ two-phase payments.</p>
   <li><a href="/payments/card">Card</a></li>
   <li><a href="/payments/trustly">Trustly</a></li>
 </ul>
-
+    
       <h2 id="the-payment-object">
-
-
+        
+        
           The Payment Object <a href="#the-payment-object" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>The payment is the container object that holds all transactions
@@ -462,7 +463,7 @@ our admin tool. <code class="language-html highlighter-rouge">abort</code> is on
 
 <p>Please visit our <a href="https://ecom.externalintegration.payex.com/pspdemoshop">demoshop</a> to see our Payment Menu and Redirect
 implementation in action.</p>
-
+                                    
                                 </div>
 
                                 <div class="col-2 d-none d-lg-block">

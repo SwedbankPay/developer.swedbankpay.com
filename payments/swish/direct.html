@@ -85,31 +85,31 @@
                     <div class="topbar-link-container">
                         <button type="button" class="topbar-close"><i class="material-icons">close</i></button>
 
+                        
+                        
 
+                        
 
-
-
-
-                        <a
+                        <a 
                             href="/"><span>Home</span></a>
 
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/checkout/"><span>Checkout</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/payments/"><span>Payments</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/gift-cards/"><span>Gift Cards</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/resources/"><span>Resources</span></a>
-
+                        
 
                         <div class="topbar-info topbar-link-right">
                             <div class="topbar-info-contact">
@@ -132,50 +132,51 @@
                 <div class="row">
                     <div class="col-xxl-2 col-md-3">
                         <div class="doc-sidebar">
-
+                            
                             <form class="doc-search" action="/search">
                                 <input type="text" class="form-control" name="q" id="tipue_search_input"
                                     placeholder="Search..." autocomplete="off" pattern=".{3,}"
                                     title="At least 3 characters">
                             </form>
-
-
+                            
+                            
                             <nav class="documentation-nav">
-
-
+                                
+                                
                                 <div class="nav-group active">
                                     <div class="nav-heading">
                                         <i class="material-icons">keyboard_arrow_right</i>
                                         <span>Swish Payments</span>
                                     </div>
 
-
+                                    
                                     <ul>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/swish"><span>Introduction</span></a></li>
-
-
-                                        <li><a  href="/payments/swish/direct"><span>Direct</span></a></li>
-
-
+                                        
+                                        
+                                        <li><a  aria-current="page" class="active"
+                                                 href="/payments/swish/direct"><span>Direct</span></a></li>
+                                        
+                                        
                                         <li><a  href="/payments/swish/redirect"><span>Redirect</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/swish/seamless-view"><span>Seamless View</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/swish/after-payment"><span>After Payment</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/swish/other-features"><span>Other Features</span></a></li>
-
+                                        
                                     </ul>
-
+                                    
                                 </div>
-
+                                
                             </nav>
-
+                            
                         </div>
                     </div>
 
@@ -184,7 +185,7 @@
                             <h1>Swedbank Pay Payments Swish Direct</h1>
                             <div class="row">
                                 <div class="doc-body col-lg-10">
-
+                                    
                                     <div class="jumbotron">
     <p>Swish is a one-phase payment instrument supported by the
                 major Swedish banks. In the Direct scenario,
@@ -195,11 +196,11 @@
 
 </div>
       <h2 id="payment-flow">
-
-
+        
+        
           Payment Flow <a href="#payment-flow" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <ul>
@@ -216,35 +217,35 @@ dialogue is completed.</li>
 </ul>
 
 <div class="alert  alert-informative">
-
-
+    
+        
             <i class="material-icons alert-icon">report_problem</i>
+        
+    
 
-
-
-
-
+    
+        
             <p>Swish is a one-phase payment instrument that is based on sales
 transactions not involving <code class="language-html highlighter-rouge">capture</code> or <code class="language-html highlighter-rouge">cancellation</code> operations.</p>
-
-
+        
+    
 </div>
 
 <div class="alert alert-complex alert-success">
     <header class="alert-header">
-
+            
                 <i class="material-icons alert-icon">link</i>
       <h3>
-
-
+        
+        
           Callback URL
-
-
+        
+        
       </header>
+    
 
-
-
-
+    
+        
             <div class="alert-body">
                 <p>It is mandatory to set a <a href="/payments/swish/other-features#callback"><code class="language-html highlighter-rouge">callbackUrl</code></a> in the <code class="language-html highlighter-rouge">POST</code> request creating the payment. If <code class="language-html highlighter-rouge">callbackUrl</code>
 is set, Swedbank Pay will send a <code class="language-html highlighter-rouge">POST</code> request to this URL when the consumer
@@ -252,16 +253,16 @@ has fulfilled the payment. Upon receiving this <code class="language-html highli
 <code class="language-html highlighter-rouge">GET</code> request towards the <code class="language-html highlighter-rouge">id</code> of the payment generated initially must be made
 to receive the state of the transaction.</p>
             </div>
-
-
+        
+    
 </div>
-
+    
       <h2 id="step-1-create-a-purchase">
-
-
+        
+        
           Step 1: Create a Purchase <a href="#step-1-create-a-purchase" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>A <code class="language-html highlighter-rouge">Purchase</code> payment is created by performing the following request.</p>
@@ -454,14 +455,14 @@ to receive the state of the transaction.</p>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">userAgent</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The user agent reference of the consumer’s browser - <a href="https://en.wikipedia.org/wiki/User_agent">see user agent definition</a></td>
+      <td style="text-align: left">The <a href="https://en.wikipedia.org/wiki/User_agent"><code class="language-html highlighter-rouge">User-Agent</code> string</a> of the consumer’s web browser.</td>
       <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">language</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">sv-SE</code>, <code class="language-html highlighter-rouge">nb-NO</code> or <code class="language-html highlighter-rouge">ee-EE</code>.</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">sv-SE</code>, <code class="language-html highlighter-rouge">nb-NO</code> or <code class="language-html highlighter-rouge">en-US</code>.</td>
       <td> </td>
     </tr>
     <tr>
@@ -524,7 +525,7 @@ to receive the state of the transaction.</p>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string(50*)</code></td>
-      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See <a href="/payments/swish/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payments/swish/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.</td>
       <td> </td>
     </tr>
     <tr>
@@ -557,6 +558,13 @@ to receive the state of the transaction.</p>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
+      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">prefillInfo</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">object</code></td>
+      <td style="text-align: left">An object holding information which, when available, will be prefilled on the payment page.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">msisdn</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">String</code></td>
       <td style="text-align: left">Number will be prefilled on payment page, if valid. The mobile number must have a country code prefix and be 8 to 15 digits in length.</td>
@@ -571,7 +579,7 @@ to receive the state of the transaction.</p>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
-      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">ecomOnlyEnabled</code></td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">enableEcomOnly</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">boolean</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">true</code> if to only enable Swish on web based transactions.; otherwise <code class="language-html highlighter-rouge">false</code> to also enable Swish transactions via in-app payments</td>
       <td> </td>
@@ -662,13 +670,13 @@ to receive the state of the transaction.</p>
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></pre></td></tr></tbody></table></code></pre></div></div>
-
+    
       <h2 id="step-2a-create-e-commerce-sale-transaction">
-
-
+        
+        
           Step 2a: Create E-Commerce Sale Transaction <a href="#step-2a-create-e-commerce-sale-transaction" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>This operation creates an e-commerce sales transaction in the Direct payment
@@ -781,7 +789,7 @@ value (the end-user’s mobile number) is required in this request.</p>
             </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
             </span><span class="nl">"vatAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">250</span><span class="p">,</span><span class="w">
             </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test transaction"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AH123456"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AH123456"</span><span class="p">,</span><span class="w"> 
             </span><span class="nl">"failedReason"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
             </span><span class="nl">"isOperational"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
             </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -900,7 +908,7 @@ value (the end-user’s mobile number) is required in this request.</p>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">A unique reference for the transaction.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payments/swish/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
       <td> </td>
     </tr>
     <tr>
@@ -929,13 +937,13 @@ value (the end-user’s mobile number) is required in this request.</p>
     </tr>
   </tbody>
 </table>
-
+    
       <h2 id="e-commerce-purchase-flow">
-
-
+        
+        
           E-Commerce Purchase Flow <a href="#e-commerce-purchase-flow" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>The sequence diagram below shows the two requests you have to send to
@@ -976,13 +984,13 @@ in this flow. Go to the <a href="/payments/swish/other-features#callback">Callba
     activate Merchant
     Merchant-&gt;&gt;-Browser: Payment Status
 </code></pre>
-
+    
       <h2 id="step-2b-create-m-commerce-sale-transaction">
-
-
+        
+        
           Step 2b: Create M-Commerce Sale Transaction <a href="#step-2b-create-m-commerce-sale-transaction" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>This operation creates an m-commerce sales transaction in the Direct payment
@@ -1092,7 +1100,7 @@ value (the end-user’s mobile number) is left out in this request. The
             </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
             </span><span class="nl">"vatAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">250</span><span class="p">,</span><span class="w">
             </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test transaction"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AH123456"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AH123456"</span><span class="p">,</span><span class="w"> 
             </span><span class="nl">"failedReason"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
             </span><span class="nl">"isOperational"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
             </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -1216,7 +1224,7 @@ value (the end-user’s mobile number) is left out in this request. The
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">A unique reference for the transaction.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payments/swish/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1245,13 +1253,13 @@ value (the end-user’s mobile number) is left out in this request. The
     </tr>
   </tbody>
 </table>
-
+    
       <h2 id="step-3-get-the-payment-status">
-
-
+        
+        
           Step 3: Get the payment status <a href="#step-3-get-the-payment-status" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p class="code-header"><strong>Request</strong></p>
@@ -1455,7 +1463,7 @@ value (the end-user’s mobile number) is left out in this request. The
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">language</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">sv-SE</code>, <code class="language-html highlighter-rouge">nb-NO</code> or <code class="language-html highlighter-rouge">ee-EE</code>.</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">sv-SE</code>, <code class="language-html highlighter-rouge">nb-NO</code> or <code class="language-html highlighter-rouge">en-US</code>.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">urls</code></td>
@@ -1489,13 +1497,13 @@ value (the end-user’s mobile number) is left out in this request. The
     </tr>
   </tbody>
 </table>
-
+    
       <h2 id="m-commerce-purchase-flow">
-
-
+        
+        
           M-Commerce Purchase Flow <a href="#m-commerce-purchase-flow" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>The sequence diagram below shows the three requests you have to send to
@@ -1541,19 +1549,19 @@ in this flow. Go to the <a href="/payments/swish/other-features#callback">Callba
 </code></pre>
 
 <nav class="iterator d-flex">
-
+    
         <a class="mr-auto btn btn-guiding" role="button" rel="prev" href="./">
             Back: Introduction
         </a>
+    
 
-
-
+    
         <a class="ml-auto btn btn-executive" role="button" rel="next" href="redirect">
             Next: Redirect
         </a>
-
+    
 </nav>
-
+                                    
                                 </div>
 
                                 <div class="col-2 d-none d-lg-block">

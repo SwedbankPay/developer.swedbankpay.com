@@ -85,31 +85,31 @@
                     <div class="topbar-link-container">
                         <button type="button" class="topbar-close"><i class="material-icons">close</i></button>
 
+                        
+                        
 
+                        
 
-
-
-
-                        <a
+                        <a 
                             href="/"><span>Home</span></a>
 
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/checkout/"><span>Checkout</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/payments/"><span>Payments</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/gift-cards/"><span>Gift Cards</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/resources/"><span>Resources</span></a>
-
+                        
 
                         <div class="topbar-info topbar-link-right">
                             <div class="topbar-info-contact">
@@ -132,47 +132,48 @@
                 <div class="row">
                     <div class="col-xxl-2 col-md-3">
                         <div class="doc-sidebar">
-
+                            
                             <form class="doc-search" action="/search">
                                 <input type="text" class="form-control" name="q" id="tipue_search_input"
                                     placeholder="Search..." autocomplete="off" pattern=".{3,}"
                                     title="At least 3 characters">
                             </form>
-
-
+                            
+                            
                             <nav class="documentation-nav">
-
-
+                                
+                                
                                 <div class="nav-group active">
                                     <div class="nav-heading">
                                         <i class="material-icons">keyboard_arrow_right</i>
                                         <span>Vipps Payments</span>
                                     </div>
 
-
+                                    
                                     <ul>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/vipps"><span>Introduction</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/vipps/redirect"><span>Redirect</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/vipps/seamless-view"><span>Seamless View</span></a></li>
-
-
-                                        <li><a  href="/payments/vipps/after-payment"><span>After Payment</span></a></li>
-
-
+                                        
+                                        
+                                        <li><a  aria-current="page" class="active"
+                                                 href="/payments/vipps/after-payment"><span>After Payment</span></a></li>
+                                        
+                                        
                                         <li><a  href="/payments/vipps/other-features"><span>Other Features</span></a></li>
-
+                                        
                                     </ul>
-
+                                    
                                 </div>
-
+                                
                             </nav>
-
+                            
                         </div>
                     </div>
 
@@ -181,24 +182,13 @@
                             <h1>Swedbank Pay Payments Vipps After Payment</h1>
                             <div class="row">
                                 <div class="doc-body col-lg-10">
-
-                                    <h2 id="payment-resource">
-
-
-          Payment Resource <a href="#payment-resource" class="header-anchor"></a>
-
-
-      </h2>
-
-<p>This section describes the general sub-resources of the API that are used to
-generate payment requests.</p>
-
-      <h3 id="create-payment">
-
-
+                                    
+                                    <h3 id="create-payment">
+        
+        
           Create Payment <a href="#create-payment" class="header-anchor"></a>
-
-
+        
+        
       </h3>
 
 <p>To create a Vipps payment, you perform an HTTP <code class="language-html highlighter-rouge">POST</code> against the
@@ -380,7 +370,7 @@ response that includes one or more expanded sub-resources inlined.</p>
       <td style="text-align: center"><i class="material-icons">check</i>︎</td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">language</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">sv-SE</code>, <code class="language-html highlighter-rouge">nb-NO</code> or <code class="language-html highlighter-rouge">ee-EE</code>.</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">sv-SE</code>, <code class="language-html highlighter-rouge">nb-NO</code> or <code class="language-html highlighter-rouge">en-US</code>.</td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i>︎</td>
@@ -446,7 +436,7 @@ response that includes one or more expanded sub-resources inlined.</p>
       <td style="text-align: center"><i class="material-icons">check</i>︎</td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string(30)</code></td>
-      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See <a href="/payments/vipps/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payments/vipps/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.</td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
@@ -458,7 +448,7 @@ response that includes one or more expanded sub-resources inlined.</p>
       <td style="text-align: center"> </td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">productCategory</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">strin</code></td>
-      <td style="text-align: left">A product category or number sent in from the payee/merchant. This is not validated by PayEx, but will be passed through the payment process and may be used in the settlement process.</td>
+      <td style="text-align: left">A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.</td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
@@ -574,13 +564,13 @@ response that includes one or more expanded sub-resources inlined.</p>
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></pre></td></tr></tbody></table></code></pre></div></div>
-
+    
       <h3 id="purchase">
-
-
+        
+        
           Purchase <a href="#purchase" class="header-anchor"></a>
-
-
+        
+        
       </h3>
 
 <p>Posting a payment (operation <code class="language-html highlighter-rouge">Purchase</code>) returns the options of aborting the
@@ -600,13 +590,13 @@ payment altogether or creating an authorization transaction through the
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
-
+    
       <h2 id="operations">
-
-
+        
+        
           Operations <a href="#operations" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>When a payment resource is created and during its lifetime,
@@ -675,23 +665,23 @@ the given operation.</p>
     </tr>
   </tbody>
 </table>
-
+    
       <h2 id="vipps-transactions">
-
-
+        
+        
           Vipps transactions <a href="#vipps-transactions" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>All Vipps after payment transactions are described below.</p>
-
+    
       <h2 id="authorizations">
-
-
+        
+        
           Authorizations <a href="#authorizations" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>The <code class="language-html highlighter-rouge">authorizations</code> resource contains information about the authorization
@@ -768,7 +758,7 @@ transactions made on a specific payment.</p>
             </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
             </span><span class="nl">"vatAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">250</span><span class="p">,</span><span class="w">
             </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test transaction"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AH123456"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AH123456"</span><span class="p">,</span><span class="w"> 
             </span><span class="nl">"failedReason"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
             </span><span class="nl">"isOperational"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
             </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -887,7 +877,7 @@ transactions made on a specific payment.</p>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">A unique reference for the transaction.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payments/vipps/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
       <td> </td>
     </tr>
     <tr>
@@ -988,7 +978,7 @@ transactions made on a specific payment.</p>
             </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
             </span><span class="nl">"vatAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">250</span><span class="p">,</span><span class="w">
             </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test transaction"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AH123456"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AH123456"</span><span class="p">,</span><span class="w"> 
             </span><span class="nl">"failedReason"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
             </span><span class="nl">"isOperational"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
             </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -1107,7 +1097,7 @@ transactions made on a specific payment.</p>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">A unique reference for the transaction.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payments/vipps/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1136,13 +1126,13 @@ transactions made on a specific payment.</p>
     </tr>
   </tbody>
 </table>
-
+    
       <h2 id="captures">
-
-
+        
+        
           Captures <a href="#captures" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>The <code class="language-html highlighter-rouge">captures</code> resource lists the capture transactions (one or more) on a specific payment.</p>
@@ -1198,7 +1188,7 @@ towards the specific transaction’s <code class="language-html highlighter-roug
 
 <span class="p">{</span><span class="w">
     </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/vipps/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"captures"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"captures"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> 
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/vipps/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/captures"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"captureList"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
             </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/vipps/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/captures/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
@@ -1319,7 +1309,7 @@ towards the specific transaction’s <code class="language-html highlighter-roug
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">A unique reference for the transaction.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payments/vipps/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1342,13 +1332,13 @@ towards the specific transaction’s <code class="language-html highlighter-roug
     </tr>
   </tbody>
 </table>
-
+    
       <h2 id="create-capture-transaction">
-
-
+        
+        
           Create capture transaction <a href="#create-capture-transaction" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>A <code class="language-html highlighter-rouge">capture</code> transaction can be created after a completed authorization by
@@ -1443,7 +1433,7 @@ finding the <code class="language-html highlighter-rouge">rel</code> <code class
             </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
             </span><span class="nl">"vatAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">250</span><span class="p">,</span><span class="w">
             </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test transaction"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AH123456"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AH123456"</span><span class="p">,</span><span class="w"> 
             </span><span class="nl">"failedReason"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
             </span><span class="nl">"isOperational"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
             </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -1562,7 +1552,7 @@ finding the <code class="language-html highlighter-rouge">rel</code> <code class
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">A unique reference for the transaction.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payments/vipps/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1591,13 +1581,13 @@ finding the <code class="language-html highlighter-rouge">rel</code> <code class
     </tr>
   </tbody>
 </table>
-
+    
       <h2 id="cancellations">
-
-
+        
+        
           Cancellations <a href="#cancellations" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>The <code class="language-html highlighter-rouge">cancellations</code> resource lists the cancellation transactions on a
@@ -1654,7 +1644,7 @@ towards the specific transaction’s <code class="language-html highlighter-roug
 
 <span class="p">{</span><span class="w">
     </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/vipps/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"cancellations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"cancellations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> 
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/vipps/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/cancellations"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"cancelList"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
             </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/vipps/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/cancellations/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
@@ -1775,7 +1765,7 @@ towards the specific transaction’s <code class="language-html highlighter-roug
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">A unique reference for the transaction.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payments/vipps/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1798,13 +1788,13 @@ towards the specific transaction’s <code class="language-html highlighter-roug
     </tr>
   </tbody>
 </table>
-
+    
       <h2 id="create-cancellation-transaction">
-
-
+        
+        
           Create cancellation transaction <a href="#create-cancellation-transaction" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>A payment may be cancelled if the <code class="language-html highlighter-rouge">rel</code> <code class="language-html highlighter-rouge">create-cancellation</code> is available.
@@ -1897,7 +1887,7 @@ Performing a cancellation will cancel all remaning capture amounts on a payment.
             </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
             </span><span class="nl">"vatAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">250</span><span class="p">,</span><span class="w">
             </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test transaction"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AH123456"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AH123456"</span><span class="p">,</span><span class="w"> 
             </span><span class="nl">"failedReason"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
             </span><span class="nl">"isOperational"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
             </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -2016,7 +2006,7 @@ Performing a cancellation will cancel all remaning capture amounts on a payment.
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">A unique reference for the transaction.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payments/vipps/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
       <td> </td>
     </tr>
     <tr>
@@ -2045,13 +2035,13 @@ Performing a cancellation will cancel all remaning capture amounts on a payment.
     </tr>
   </tbody>
 </table>
-
+    
       <h2 id="reversals">
-
-
+        
+        
           Reversals <a href="#reversals" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>The <code class="language-html highlighter-rouge">reversals</code> resource lists the reversal transactions (one or more)
@@ -2108,7 +2098,7 @@ towards the specific transaction’s <code class="language-html highlighter-roug
 
 <span class="p">{</span><span class="w">
     </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/vipps/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"reversals"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"reversals"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> 
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/vipps/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/reversals"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"reversalList"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
             </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/vipps/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/reversals/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
@@ -2229,7 +2219,7 @@ towards the specific transaction’s <code class="language-html highlighter-roug
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">A unique reference for the transaction.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payments/vipps/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
       <td> </td>
     </tr>
     <tr>
@@ -2252,13 +2242,13 @@ towards the specific transaction’s <code class="language-html highlighter-roug
     </tr>
   </tbody>
 </table>
-
+    
       <h3 id="create-reversal-transaction">
-
-
+        
+        
           Create reversal transaction <a href="#create-reversal-transaction" class="header-anchor"></a>
-
-
+        
+        
       </h3>
 
 <p>A <code class="language-html highlighter-rouge">reversal</code> transaction can be created if the <code class="language-html highlighter-rouge">rel</code> <code class="language-html highlighter-rouge">create-reversal</code> is
@@ -2332,7 +2322,7 @@ available.</p>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string(50)</code></td>
-      <td style="text-align: left">A unique reference for the reversal transaction. See <a href="/payments/vipps/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payments/vipps/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.</td>
     </tr>
   </tbody>
 </table>
@@ -2396,7 +2386,7 @@ available.</p>
             </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
             </span><span class="nl">"vatAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">250</span><span class="p">,</span><span class="w">
             </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test transaction"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AH123456"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AH123456"</span><span class="p">,</span><span class="w"> 
             </span><span class="nl">"failedReason"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
             </span><span class="nl">"isOperational"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
             </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -2515,7 +2505,7 @@ available.</p>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">A unique reference for the transaction.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payments/vipps/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
       <td> </td>
     </tr>
     <tr>
@@ -2544,13 +2534,13 @@ available.</p>
     </tr>
   </tbody>
 </table>
-
+    
       <h2 id="abort">
-
-
+        
+        
           Abort <a href="#abort" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>To abort a payment, perform the <code class="language-html highlighter-rouge">update-payment-abort</code> operation that is
@@ -2633,7 +2623,7 @@ You need to include the following HTTP body:</p>
         </span><span class="nl">"operation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Purchase"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"intent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Authorization"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aborted"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SEK"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOK"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"prices"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/vipps/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/prices"</span><span class="w">
         </span><span class="p">},</span><span class="w">
@@ -2660,25 +2650,24 @@ You need to include the following HTTP body:</p>
 <p>The response will be the <code class="language-html highlighter-rouge">payment</code> resource with its <code class="language-html highlighter-rouge">state</code> set to <code class="language-html highlighter-rouge">Aborted</code>.</p>
 
 <nav class="iterator d-flex">
-
+    
         <a class="mr-auto btn btn-guiding" role="button" rel="prev" href="seamless-view">
             Back: Seamless View
         </a>
+    
 
-
-
+    
         <a class="ml-auto btn btn-executive" role="button" rel="next" href="other-features">
             Next: Other Features
         </a>
-
+    
 </nav>
-
+                                    
                                 </div>
 
                                 <div class="col-2 d-none d-lg-block">
                                     <nav class="doc-toc">
                                         <ul>
-  <li class="toc-2"><a href="#payment-resource">Payment Resource</a></li>
   <li class="toc-2"><a href="#operations">Operations</a></li>
   <li class="toc-2"><a href="#vipps-transactions">Vipps transactions</a></li>
   <li class="toc-2"><a href="#authorizations">Authorizations</a></li>

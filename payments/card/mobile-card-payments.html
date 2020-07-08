@@ -85,31 +85,31 @@
                     <div class="topbar-link-container">
                         <button type="button" class="topbar-close"><i class="material-icons">close</i></button>
 
+                        
+                        
 
+                        
 
-
-
-
-                        <a
+                        <a 
                             href="/"><span>Home</span></a>
 
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/checkout/"><span>Checkout</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/payments/"><span>Payments</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/gift-cards/"><span>Gift Cards</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/resources/"><span>Resources</span></a>
-
+                        
 
                         <div class="topbar-info topbar-link-right">
                             <div class="topbar-info-contact">
@@ -132,56 +132,57 @@
                 <div class="row">
                     <div class="col-xxl-2 col-md-3">
                         <div class="doc-sidebar">
-
+                            
                             <form class="doc-search" action="/search">
                                 <input type="text" class="form-control" name="q" id="tipue_search_input"
                                     placeholder="Search..." autocomplete="off" pattern=".{3,}"
                                     title="At least 3 characters">
                             </form>
-
-
+                            
+                            
                             <nav class="documentation-nav">
-
-
+                                
+                                
                                 <div class="nav-group active">
                                     <div class="nav-heading">
                                         <i class="material-icons">keyboard_arrow_right</i>
                                         <span>Card Payments</span>
                                     </div>
 
-
+                                    
                                     <ul>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/card/"><span>Introduction</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/card/redirect"><span>Redirect</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/card/seamless-view"><span>Seamless View</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/card/direct"><span>Direct</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/card/capture"><span>Capture</span></a></li>
-
-
-                                        <li><a  href="/payments/card/mobile-card-payments"><span>Mobile Card Payments</span></a></li>
-
-
+                                        
+                                        
+                                        <li><a  aria-current="page" class="active"
+                                                 href="/payments/card/mobile-card-payments"><span>Mobile Card Payments</span></a></li>
+                                        
+                                        
                                         <li><a  href="/payments/card/after-payment"><span>After Payment</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/card/other-features"><span>Other Features</span></a></li>
-
+                                        
                                     </ul>
-
+                                    
                                 </div>
-
+                                
                             </nav>
-
+                            
                         </div>
                     </div>
 
@@ -190,39 +191,39 @@
                             <h1>Swedbank Pay Card Payments – Mobile</h1>
                             <div class="row">
                                 <div class="doc-body col-lg-10">
-
+                                    
                                     <h2 id="card-payments-in-mobile-apps">
-
-
+        
+        
           Card Payments in Mobile Apps <a href="#card-payments-in-mobile-apps" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>The implementation sequence for Card Payments in mobile apps
 is identical to the standard
 Redirect scenario, but also includes explanations of how to include this
 redirect in mobile apps or in mobile web pages.</p>
-
+    
       <h3 id="screenshots-for-payments">
-
-
+        
+        
           Screenshots for Payments <a href="#screenshots-for-payments" class="header-anchor"></a>
-
-
+        
+        
       </h3>
 
 <p>You will redirect the consumer/end-user to Swedbank Pay hosted pages to collect
 the card information.</p>
 
 <p><img src="/assets/img/checkout/test-purchase.png" alt="Merchant implemented redirect" width="407" height="627" /></p>
-
+    
       <h2 id="api-requests-for-payments">
-
-
+        
+        
           API Requests for Payments <a href="#api-requests-for-payments" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>The API requests are displayed in the <a href="/payments/card/other-features#purchase">purchase flow</a>.
@@ -237,13 +238,13 @@ options:</p>
 </ul>
 
 <p>Our <code class="language-html highlighter-rouge">payment</code> example below uses the <a href="/payments/card/other-features#purchase"><code class="language-html highlighter-rouge">Purchase</code></a> value.</p>
-
+    
       <h2 id="purchase-flow-mobile">
-
-
+        
+        
           Purchase flow mobile <a href="#purchase-flow-mobile" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>The sequence diagram below shows a high level description of a complete
@@ -345,19 +346,19 @@ card payment:</p>
 </code></pre>
 
 <nav class="iterator d-flex">
-
+    
         <a class="mr-auto btn btn-guiding" role="button" rel="prev" href="direct">
             Back: Direct
         </a>
+    
 
-
-
+    
         <a class="ml-auto btn btn-executive" role="button" rel="next" href="after-payment">
             Next: After Payment
         </a>
-
+    
 </nav>
-
+                                    
                                 </div>
 
                                 <div class="col-2 d-none d-lg-block">

@@ -85,31 +85,31 @@
                     <div class="topbar-link-container">
                         <button type="button" class="topbar-close"><i class="material-icons">close</i></button>
 
+                        
+                        
 
+                        
 
-
-
-
-                        <a
+                        <a 
                             href="/"><span>Home</span></a>
 
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/checkout/"><span>Checkout</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/payments/"><span>Payments</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/gift-cards/"><span>Gift Cards</span></a>
-
-
-                        <a
+                        
+                        
+                        <a 
                             href="/resources/"><span>Resources</span></a>
-
+                        
 
                         <div class="topbar-info topbar-link-right">
                             <div class="topbar-info-contact">
@@ -132,53 +132,54 @@
                 <div class="row">
                     <div class="col-xxl-2 col-md-3">
                         <div class="doc-sidebar">
-
+                            
                             <form class="doc-search" action="/search">
                                 <input type="text" class="form-control" name="q" id="tipue_search_input"
                                     placeholder="Search..." autocomplete="off" pattern=".{3,}"
                                     title="At least 3 characters">
                             </form>
-
-
+                            
+                            
                             <nav class="documentation-nav">
-
-
+                                
+                                
                                 <div class="nav-group active">
                                     <div class="nav-heading">
                                         <i class="material-icons">keyboard_arrow_right</i>
                                         <span>Invoice Payments</span>
                                     </div>
 
-
+                                    
                                     <ul>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/invoice"><span>Introduction</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/invoice/redirect"><span>Redirect</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/invoice/seamless-view"><span>Seamless View</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/invoice/direct"><span>Direct</span></a></li>
-
-
-                                        <li><a  href="/payments/invoice/capture"><span>Capture</span></a></li>
-
-
+                                        
+                                        
+                                        <li><a  aria-current="page" class="active"
+                                                 href="/payments/invoice/capture"><span>Capture</span></a></li>
+                                        
+                                        
                                         <li><a  href="/payments/invoice/after-payment"><span>After Payment</span></a></li>
-
-
+                                        
+                                        
                                         <li><a  href="/payments/invoice/other-features"><span>Other Features</span></a></li>
-
+                                        
                                     </ul>
-
+                                    
                                 </div>
-
+                                
                             </nav>
-
+                            
                         </div>
                     </div>
 
@@ -187,13 +188,13 @@
                             <h1>Swedbank Pay Payments Invoice Capture</h1>
                             <div class="row">
                                 <div class="doc-body col-lg-10">
-
+                                    
                                     <h2 id="capture">
-
-
+        
+        
           Capture <a href="#capture" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>The final step in the integration process for Invoice <a href="/payments/invoice/redirect">Redirect</a>,
@@ -202,13 +203,13 @@
 <p>An invoice capture will generate the invoice and distribute it to the consumer.
 This differs from i.e. Card Payments, where a capture operation will fully or
 partially charge the consumer’s authorized amount.</p>
-
+    
       <h2 id="step-1-create-financingconsumer-capture">
-
-
+        
+        
           Step 1: Create <code class="language-html highlighter-rouge">FinancingConsumer</code> Capture <a href="#step-1-create-financingconsumer-capture" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>To capture a <code class="language-html highlighter-rouge">FinancingConsumer</code> invoice payment, perform the <code class="language-html highlighter-rouge">create-capture</code>
@@ -437,8 +438,8 @@ operation with the following request body:</p>
             </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
             </span><span class="nl">"vatAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">250</span><span class="p">,</span><span class="w">
             </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test transaction"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AH123456"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"receiptReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AH12355"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AH123456"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"receiptReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AH12355"</span><span class="p">,</span><span class="w"> 
             </span><span class="nl">"failedReason"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
             </span><span class="nl">"isOperational"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
             </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -557,7 +558,7 @@ operation with the following request body:</p>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">A unique reference for the transaction.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payments/invoice/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
       <td> </td>
     </tr>
     <tr>
@@ -586,13 +587,13 @@ operation with the following request body:</p>
     </tr>
   </tbody>
 </table>
-
+    
       <h2 id="step-2-inspecting-the-captures">
-
-
+        
+        
           Step 2: Inspecting the Captures <a href="#step-2-inspecting-the-captures" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>The <code class="language-html highlighter-rouge">captures</code> resource lists the capture transactions performed on a
@@ -669,13 +670,13 @@ specific invoice payment.</p>
     </span><span class="p">}]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></pre></td></tr></tbody></table></code></pre></div></div>
-
+    
       <h2 id="capture-flow">
-
-
+        
+        
           Capture Flow <a href="#capture-flow" class="header-anchor"></a>
-
-
+        
+        
       </h2>
 
 <p>A <code class="language-html highlighter-rouge">capture</code> can only be performed on a successfully authorized transaction.
@@ -684,29 +685,30 @@ authorized amount. You can do other captures on the same payment later, up to
 the total authorized amount.</p>
 
 <pre><code class="language-mermaid">sequenceDiagram
+  participant SwedbankPay as Swedbank Pay
 
-Merchant-&gt;&gt;PayEx: Post &lt;Invoice captures&gt;
-activate Merchant
-activate PayEx
-PayEx--&gt;&gt;Merchant: transaction resource
-deactivate Merchant
-deactivate PayEx
+  Merchant-&gt;&gt;SwedbankPay: Post &lt;Invoice captures&gt;
+  activate Merchant
+  activate SwedbankPay
+  SwedbankPay--&gt;&gt;Merchant: transaction resource
+  deactivate Merchant
+  deactivate SwedbankPay
 </code></pre>
 
 <nav class="iterator d-flex">
-
+    
         <a class="mr-auto btn btn-guiding" role="button" rel="prev" href="direct">
             Back: Direct
         </a>
+    
 
-
-
+    
         <a class="ml-auto btn btn-executive" role="button" rel="next" href="after-payment">
             Next: After Payment
         </a>
-
+    
 </nav>
-
+                                    
                                 </div>
 
                                 <div class="col-2 d-none d-lg-block">

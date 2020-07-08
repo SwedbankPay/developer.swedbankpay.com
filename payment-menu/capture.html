@@ -5,17 +5,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="theme-color" content="#000">
-        <meta name="application-name" content="Swedbank Pay Checkout – After Payment">
+        <meta name="application-name" content="Swedbank Pay Payment Menu – Capture">
         <meta name="msapplication-TileColor" content="#000">
         <meta name="msapplication-TileImage" content="https://design.swedbankpay.com/v/4.6.1/icons/mstile-144x144.png">
         <meta property="og:type" value="website" />
-        <meta property="og:url" value="https://developer.swedbankpay.com/checkout/after-payment.html" />
-        <meta property="og:title" value="Swedbank Pay Checkout – After Payment" />
-        <meta name="title" content="Swedbank Pay Checkout – After Payment" />
+        <meta property="og:url" value="https://developer.swedbankpay.com/payment-menu/capture.html" />
+        <meta property="og:title" value="Swedbank Pay Payment Menu – Capture" />
+        <meta name="title" content="Swedbank Pay Payment Menu – Capture" />
         <meta property="og:description" value="Swedbank Pay Developer Portal" />
         <meta name="description" content="Swedbank Pay Developer Portal" />
         <meta property="og:image" value="/assets/img/swedbank-pay-developer-portal.png" />
-        <title>Swedbank Pay Checkout – After Payment</title>
+        <title>Swedbank Pay Payment Menu – Capture</title>
         <link rel="stylesheet" href="https://design.swedbankpay.com/v/4.6.1/styles/dg-style.css" />
         <link rel="stylesheet" href="/assets/css/swedbank-pay-design-guide-theme.css" />
         <link rel="stylesheet" href="/assets/css/pygments-autumn.css" />
@@ -25,7 +25,7 @@
         <link rel="icon" type="image/png" sizes="228x228" href="https://design.swedbankpay.com/v/4.6.1/icons/coast-228x228.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Swedbank Pay Checkout – After Payment">
+<meta name="apple-mobile-web-app-title" content="Swedbank Pay Payment Menu – Capture">
 <link rel="apple-touch-icon" sizes="57x57" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-57x57.png">
 <link rel="apple-touch-icon" sizes="60x60" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-60x60.png">
 <link rel="apple-touch-icon" sizes="72x72" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-72x72.png">
@@ -113,7 +113,7 @@
 
                         <div class="topbar-info topbar-link-right">
                             <div class="topbar-info-contact">
-                                <a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/checkout/after-payment.md" target="_blank"
+                                <a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/payment-menu/capture.md" target="_blank"
                                     rel="noopener noreferrer" title="Edit this page on GitHub">
                                     <svg aria-labelledby="simpleicons-github-icon" role="img" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -146,30 +146,27 @@
                                 <div class="nav-group active">
                                     <div class="nav-heading">
                                         <i class="material-icons">keyboard_arrow_right</i>
-                                        <span>Checkout</span>
+                                        <span>Payment Menu</span>
                                     </div>
 
                                     
                                     <ul>
                                         
                                         
-                                        <li><a  href="/checkout/"><span>Introduction</span></a></li>
+                                        <li><a  href="/payment-menu/"><span>Introduction</span></a></li>
                                         
                                         
-                                        <li><a  href="/checkout/checkin"><span>Checkin</span></a></li>
-                                        
-                                        
-                                        <li><a  href="/checkout/payment-menu"><span>Payment Menu</span></a></li>
-                                        
-                                        
-                                        <li><a  href="/checkout/capture"><span>Capture</span></a></li>
+                                        <li><a  href="/payment-menu/payment-order"><span>Payment Order</span></a></li>
                                         
                                         
                                         <li><a  aria-current="page" class="active"
-                                                 href="/checkout/after-payment"><span>After Payment</span></a></li>
+                                                 href="/payment-menu/capture"><span>Capture</span></a></li>
                                         
                                         
-                                        <li><a  href="/checkout/other-features"><span>Other Features</span></a></li>
+                                        <li><a  href="/payment-menu/after-payment"><span>After Payment</span></a></li>
+                                        
+                                        
+                                        <li><a  href="/payment-menu/other-features"><span>Other Features</span></a></li>
                                         
                                     </ul>
                                     
@@ -182,373 +179,48 @@
 
                     <main class="doc-view col-xxl-10 col-md-9">
                         <div class="doc-container">
-                            <h1>Swedbank Pay Checkout – After Payment</h1>
+                            <h1>Swedbank Pay Payment Menu – Capture</h1>
                             <div class="row">
                                 <div class="doc-body col-lg-10">
                                     
-                                    <div class="jumbotron">
-    <p>When the consumer has <strong>completed</strong> the entire
-<a href="checkin">Checkin</a> and <a href="payment-menu">Payment Menu</a>, you need to implement the
-relevant <strong>after-payment operations</strong> in your order system. Which these
-operations are and how they are executed is described below.</p>
-
-</div>
-      <h2 id="operations">
+                                    <h2 id="step-3-capture-the-funds">
         
         
-          Operations <a href="#operations" class="header-anchor"></a>
+          Step 3: Capture the funds <a href="#step-3-capture-the-funds" class="header-anchor"></a>
         
         
       </h2>
 
-<p>Most payment instruments are two-phase payments –
-in which a successful payment order will result in an authorized transaction –
-that must be followed up by a capture or cancellation transaction in a later
-stage. One-phase payments like Swish are settled directly without the option to
-capture or cancel. For a full list of the available operations, see the
-<a href="/checkout/other-features#operations">techincal reference</a>.</p>
+<p>Capture can only be done on a payment with a successful authorized transaction,
+and if the authorization was not done on a one-phase payment instrument.
+Examples of one-phase payment instruments are <a href="/payments/swish/">Swish</a> and <a href="/payments/vipps/">Vipps</a>,
+ while payment instruments such as <a href="/payments/card">Card Payments</a> are two-phase payments,
+ requiring a <code class="language-html highlighter-rouge">Capture</code> to be performed.</p>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th style="text-align: left">Operation</th>
-      <th style="text-align: left">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">create-paymentorder-capture</code></td>
-      <td style="text-align: left">The second part of a two-phase transaction where the authorized amount is sent from the payer to the payee. It is possible to do a part-capture on a subset of the authorized amount. Several captures on the same payment are possible, up to the total authorization amount.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">create-paymentorder-cancel</code></td>
-      <td style="text-align: left">Used to cancel authorized and not yet captured transactions. If a cancellation is performed after doing a part-capture, it will only affect the not yet captured authorization amount.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">create-paymentorder-reversal</code></td>
-      <td style="text-align: left">Used to reverse a payment. It is only possible to reverse a payment that has been captured and not yet reversed.</td>
-    </tr>
-  </tbody>
-</table>
+<p>It is possible to do a part-capture where you only capture a smaller amount
+than the authorized amount. You can later do more captures on the same payment
+up to the total authorization amount.</p>
 
-<p>To identify the operations that are available we need to do a <code class="language-html highlighter-rouge">GET</code> request
-against the URI of <code class="language-html highlighter-rouge">paymentorder.id</code>:</p>
+<p>This is done by requesting the order information from the server, to get the
+request link to perform the capture. With this, you can request the capture
+with the sum to capture, and get back the status.</p>
 
-<p class="code-header"><strong>Request</strong></p>
+<pre><code class="language-mermaid">sequenceDiagram
+    participant Merchant
+    participant SwedbankPay as Swedbank Pay
 
-<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-</pre></td><td class="rouge-code"><pre><span class="nf">GET</span> <span class="nn">/psp/paymentorders/09ccd29a-7c4f-4752-9396-12100cbfecce</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
+    rect rgba(81,43,43,0.1)
+        activate Merchant
+        note left of Payer: Capture
+        Merchant -&gt;&gt;+ SwedbankPay: rel:create-paymentorder-capture
+        deactivate Merchant
+        SwedbankPay --&gt;&gt;- Merchant: Capture status
+        note right of Merchant: Capture here only if the purchased&lt;br/&gt;goods don't require shipping.&lt;br/&gt;If shipping is required, perform capture&lt;br/&gt;after the goods have shipped.&lt;br&gt;Should only be used for &lt;br&gt;PaymentInstruments that support &lt;br&gt;Authorizations.
+    end
+</code></pre>
 
-<p>The (abbreviated) response containing an <code class="language-html highlighter-rouge">updateorder</code>, <code class="language-html highlighter-rouge">capture</code>,
-<code class="language-html highlighter-rouge">cancellation</code>, and <code class="language-html highlighter-rouge">reversal</code> operation should look similar to the response
-below:</p>
-
-<p class="code-header"><strong>Response</strong></p>
-
-<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-</pre></td><td class="rouge-code"><pre><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
-<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
-
-<span class="p">{</span><span class="w">
-    </span><span class="nl">"paymentOrder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/paymentorders/09ccd29a-7c4f-4752-9396-12100cbfecce"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PATCH"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.externalintegration.payex.com/psp/paymentorders/09ccd29a-7c4f-4752-9396-12100cbfecce"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"update-paymentorder-updateorder"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/json"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"POST"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.externalintegration.payex.com/psp/paymentorders/09ccd29a-7c4f-4752-9396-12100cbfecce/captures"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"create-paymentorder-capture"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/json"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"POST"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.externalintegration.payex.com/psp/paymentorders/09ccd29a-7c4f-4752-9396-12100cbfecce/cancellations"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"create-paymentorder-cancel"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/json"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"POST"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.externalintegration.payex.com/psp/paymentorders/09ccd29a-7c4f-4752-9396-12100cbfecce/reversals"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"create-paymentorder-reversal"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/json"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></div></div>
-
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th style="text-align: left">Field</th>
-      <th style="text-align: left">Type</th>
-      <th style="text-align: left">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">paymentorder</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">object</code></td>
-      <td style="text-align: left">The payment order object.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">id</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">paymentorder</code> resource .    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">operations</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">array</code></td>
-      <td style="text-align: left">The array of possible operations to perform, given the state of the payment order.</td>
-    </tr>
-  </tbody>
-</table>
-    
-      <h2 id="cancel">
-        
-        
-          Cancel <a href="#cancel" class="header-anchor"></a>
-        
-        
-      </h2>
-
-<p>If we want to cancel up to the total authorized (not captured) amount, we need
-to perform <code class="language-html highlighter-rouge">create-paymentorder-cancel</code> against the accompanying <code class="language-html highlighter-rouge">href</code> returned
-in the <code class="language-html highlighter-rouge">operations</code> list. See the abbreviated request and response below:</p>
-
-<p class="code-header"><strong>Request</strong></p>
-
-<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-</pre></td><td class="rouge-code"><pre><span class="nf">POST</span> <span class="nn">/psp/paymentorders/09ccd29a-7c4f-4752-9396-12100cbfecce/cancellations</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">api.externalintegration.payex.com</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
-<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
-
-<span class="p">{</span><span class="w">
-    </span><span class="nl">"transaction"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABC123"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cancelling parts of the total amount"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></div></div>
-
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th style="text-align: center">Required</th>
-      <th style="text-align: left">Field</th>
-      <th style="text-align: left">Type</th>
-      <th style="text-align: left">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center"><i class="material-icons">check</i></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">transaction</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">object</code></td>
-      <td style="text-align: left">The transaction object.</td>
-    </tr>
-    <tr>
-      <td style="text-align: center"><i class="material-icons">check</i></td>
-      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">string(30)</code></td>
-      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/checkout/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.</td>
-    </tr>
-    <tr>
-      <td style="text-align: center"><i class="material-icons">check</i></td>
-      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">description</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">A textual description of why the transaction is cancelled.</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>If the cancellation request succeeds, the response should be similar to the
-example below:</p>
-
-<p class="code-header"><strong>Response</strong></p>
-
-<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-</pre></td><td class="rouge-code"><pre><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
-<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
-
-<span class="p">{</span><span class="w">
-    </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/paymentorders/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"cancellation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/paymentorders/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/cancellations/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"transaction"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/paymentorders/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cancel"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Completed"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">5610</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"vatAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1122</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cancelling parts of the authorized payment"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AB832"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></div></div>
-
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th style="text-align: left">Property</th>
-      <th style="text-align: left">Type</th>
-      <th style="text-align: left">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">payment</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI of the payment this cancellation transaction belongs to.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">cancellation</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">object</code></td>
-      <td style="text-align: left">The cancellation object, containing information about the cancellation transaction.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">id</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI of the cancellation transaction.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">transaction</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">object</code></td>
-      <td style="text-align: left">The transaction object, containing information about the current transaction.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">id</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI of the current <code class="language-html highlighter-rouge">transaction</code> resource.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">created</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The ISO-8601 date and time of when the transaction was created.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">updated</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The ISO-8601 date and time of when the transaction was updated.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">type</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">Indicates the transaction type.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">state</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">Initialized</code>, <code class="language-html highlighter-rouge">Completed</code> or <code class="language-html highlighter-rouge">Failed</code>. Indicates the state of the transaction.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">number</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The transaction <code class="language-html highlighter-rouge">number</code>, useful when there’s need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that <code class="language-html highlighter-rouge">id</code> should be used instead.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">amount</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
-      <td style="text-align: left">The amount (including VAT, if any) to charge the payer, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">vatAmount</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
-      <td style="text-align: left">The amount of VAT to charge the payer, entered in the lowest monetary unit ofthe selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK. If the <code class="language-html highlighter-rouge">amount</code> given includes VAT, <code class="language-html highlighter-rouge">vatAmount</code> may be displayed for the user inthe payment page (redirect only). Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT amount charged.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">description</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">A human readable description of maximum 40 characters of the transaction.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/checkout/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
-    </tr>
-  </tbody>
-</table>
-    
-      <h2 id="reversal">
-        
-        
-          Reversal <a href="#reversal" class="header-anchor"></a>
-        
-        
-      </h2>
-
-<p>If we want to reverse a previously captured amount, we need to perform
-<code class="language-html highlighter-rouge">create-paymentorder-reversal</code> against the accompanying <code class="language-html highlighter-rouge">href</code> returned in the
+<p>To capture the authorized payment, we need to perform
+<code class="language-html highlighter-rouge">create-paymentorder-capture</code> against the accompanying <code class="language-html highlighter-rouge">href</code> returned in the
 <code class="language-html highlighter-rouge">operations</code> list. See the abbreviated request and response below:</p>
 
 <p class="code-header"><strong>Request</strong></p>
@@ -599,18 +271,18 @@ example below:</p>
 44
 45
 46
-</pre></td><td class="rouge-code"><pre><span class="nf">POST</span> <span class="nn">/psp/paymentorders/09ccd29a-7c4f-4752-9396-12100cbfecce/reversals</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</pre></td><td class="rouge-code"><pre><span class="nf">POST</span> <span class="nn">/psp/paymentorders/09ccd29a-7c4f-4752-9396-12100cbfecce/captures</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">api.externalintegration.payex.com</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
 <span class="p">{</span><span class="w">
     </span><span class="nl">"transaction"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Reversal of captured transaction"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Capturing the authorized payment"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w">
         </span><span class="nl">"vatAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">375</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABC123"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"receiptReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABC122"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AB832"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"receiptReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AB831"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"orderItems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
                 </span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"P1"</span><span class="p">,</span><span class="w">
@@ -665,6 +337,12 @@ example below:</p>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">description</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The description of the capture transaction.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">amount</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
       <td style="text-align: left">The amount (including VAT, if any) to charge the payer, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
@@ -679,19 +357,13 @@ example below:</p>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string(30)</code></td>
-      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/checkout/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payment-menu/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">receiptReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string(30)</code></td>
       <td style="text-align: left">A unique reference from the merchant system. It is used to supplement <code class="language-html highlighter-rouge">payeeReference</code> as an additional receipt number.</td>
-    </tr>
-    <tr>
-      <td style="text-align: center"><i class="material-icons">check</i></td>
-      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">description</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">Textual description of why the transaction is reversed.</td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
@@ -730,7 +402,7 @@ example below:</p>
       <td style="text-align: left">The URL to a page that can display the purchased item, product or similar.</td>
     </tr>
     <tr>
-      <td style="text-align: center"> </td>
+      <td style="text-align: center">︎︎︎</td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">imageUrl</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The URL to an image of the order item.</td>
@@ -789,10 +461,100 @@ example below:</p>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
       <td style="text-align: left">The total amount of VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. <code class="language-html highlighter-rouge">10000</code> equals <code class="language-html highlighter-rouge">100.00 SEK</code> and <code class="language-html highlighter-rouge">5000</code> equals <code class="language-html highlighter-rouge">50.00 SEK</code>.</td>
     </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">reference</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">A reference that identifies the order item.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">name</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The name of the order item.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">type</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">enum</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">PRODUCT</code>, <code class="language-html highlighter-rouge">SERVICE</code>, <code class="language-html highlighter-rouge">SHIPPING_FEE</code>, <code class="language-html highlighter-rouge">PAYMENT_FEE</code>, <code class="language-html highlighter-rouge">DISCOUNT</code>, <code class="language-html highlighter-rouge">VALUE_CODE</code> or <code class="language-html highlighter-rouge">OTHER</code>. The type of the order item.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">class</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The classification of the order item. Can be used for assigning the order item to a specific product category, such as <code class="language-html highlighter-rouge">MobilePhone</code>. Note that <code class="language-html highlighter-rouge">class</code> cannot contain spaces and must follow the regex pattern <code class="language-html highlighter-rouge">[\w]* (a-zA-Z0-9_)</code>. Swedbank Pay may use this field for statistics.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">︎︎︎</td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">itemUrl</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The URL to a page that can display the purchased item, such as a product page</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">︎︎︎</td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">imageUrl</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The URL to an image of the order item.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">︎︎︎</td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">description</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The human readable description of the order item.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">︎︎︎</td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">discountDescription</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The human readable description of the possible discount.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">quantity</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">decimal</code></td>
+      <td style="text-align: left">The 4 decimal precision quantity of order items being purchased.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">quantityUnit</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The unit of the quantity, such as <code class="language-html highlighter-rouge">pcs</code>, <code class="language-html highlighter-rouge">grams</code>, or similar.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">unitPrice</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
+      <td style="text-align: left">The price per unit of order item, including VAT.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">︎︎︎</td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">discountPrice</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
+      <td style="text-align: left">If the order item is purchased at a discounted price. This field should contain that price, including VAT.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">vatPercent</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
+      <td style="text-align: left">The percent value of the VAT multiplied by 100, so <code class="language-html highlighter-rouge">25%</code> becomes <code class="language-html highlighter-rouge">2500</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">amount</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
+      <td style="text-align: left">The total amount including VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. <code class="language-html highlighter-rouge">10000</code> equals <code class="language-html highlighter-rouge">100.00 NOK</code> and <code class="language-html highlighter-rouge">500</code>0 equals <code class="language-html highlighter-rouge">50.00 NOK</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">vatAmount</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
+      <td style="text-align: left">The total amount of VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. <code class="language-html highlighter-rouge">10000</code> equals <code class="language-html highlighter-rouge">100.00 NOK</code> and <code class="language-html highlighter-rouge">500</code>0 equals <code class="language-html highlighter-rouge">50.00 NOK</code>.</td>
+    </tr>
   </tbody>
 </table>
 
-<p>If the reversal request succeeds, the response should be similar to the example below:</p>
+<p>If the capture succeeds, it should respond with something like the following:</p>
 
 <p class="code-header"><strong>Response</strong></p>
 
@@ -819,18 +581,18 @@ example below:</p>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
 <span class="p">{</span><span class="w">
-    </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/paymentorders/payments/09ccd29a-7c4f-4752-9396-12100cbfecce"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"reversals"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/paymentorders/payments/09ccd29a-7c4f-4752-9396-12100cbfecce/cancellations/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/paymentorders/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"capture"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/paymentorders/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/captures/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"transaction"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/paymentorders/payments/09ccd29a-7c4f-4752-9396-12100cbfecce/transactions/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Reversal"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/paymentorders/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Capture"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Completed"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">15610</span><span class="p">,</span><span class="w">
             </span><span class="nl">"vatAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">3122</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Reversing the capture amount"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABC987"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"receiptReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABC986"</span><span class="w">
+            </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Capturing the authorized payment"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AB832"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"receiptReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AB831"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -848,17 +610,17 @@ example below:</p>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">payment</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI of the payment this reversal transaction belongs to.</td>
+      <td style="text-align: left">The relative URI of the payment this capture transaction belongs to.</td>
     </tr>
     <tr>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">reversals</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">capture</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">object</code></td>
-      <td style="text-align: left">The reversal object, containing information about the reversal transaction.</td>
+      <td style="text-align: left">The capture object, containing the information about the capture transaction.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">id</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI of the reversal transaction.</td>
+      <td style="text-align: left">The relative URI of the created capture transaction.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">transaction</code></td>
@@ -908,7 +670,7 @@ example below:</p>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">description</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">A human readable description of maximum 40 characters of the transaction.</td>
+      <td style="text-align: left">A 40 character length textual <a href="/checkout/other-features#description">description</a> of the purchase.</td>
     </tr>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
@@ -916,38 +678,27 @@ example below:</p>
       <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/checkout/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
     </tr>
     <tr>
-      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">receiptReference</code></td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">receiptReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string(30)</code></td>
-      <td style="text-align: left">A unique reference from the merchant system. It is used to supplement <code class="language-html highlighter-rouge">payeeReference</code> as an additional receipt number.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation.  It is used to supplement <code class="language-html highlighter-rouge">payeeReference</code> as an additional receipt number.</td>
     </tr>
   </tbody>
 </table>
 
-<div class="alert  alert-informative">
-    
-        
-            <i class="material-icons alert-icon">info</i>
-        
-    
-
-    
-        
-            <p>Note that all of the
-operations <code class="language-html highlighter-rouge">Cancel</code>, <code class="language-html highlighter-rouge">Capture</code> and <code class="language-html highlighter-rouge">Reversal</code> must be implemented.</p>
-        
-    
-</div>
+<p><strong>Et voilà!</strong> The payment should now be complete and
+everyone should be happy. But, sometimes you also need to implement the
+cancellation and reversal operations described in <a href="/payment-menu/after-payment">After Payment</a>.</p>
 
 <nav class="iterator d-flex">
     
-        <a class="mr-auto btn btn-guiding" role="button" rel="prev" href="capture">
-            Back: Capture
+        <a class="mr-auto btn btn-guiding" role="button" rel="prev" href="payment-order">
+            Back: Payment Order
         </a>
     
 
     
-        <a class="ml-auto btn btn-executive" role="button" rel="next" href="other-features">
-            Next: Other Features
+        <a class="ml-auto btn btn-executive" role="button" rel="next" href="after-payment">
+            Next: After Payment
         </a>
     
 </nav>
@@ -957,9 +708,7 @@ operations <code class="language-html highlighter-rouge">Cancel</code>, <code cl
                                 <div class="col-2 d-none d-lg-block">
                                     <nav class="doc-toc">
                                         <ul>
-  <li class="toc-2"><a href="#operations">Operations</a></li>
-  <li class="toc-2"><a href="#cancel">Cancel</a></li>
-  <li class="toc-2"><a href="#reversal">Reversal</a></li>
+  <li class="toc-2"><a href="#step-3-capture-the-funds">Step 3: Capture the funds</a></li>
 </ul>
                                     </nav>
                                 </div>
