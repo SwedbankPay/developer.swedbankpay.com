@@ -43,7 +43,7 @@ this very documentation, not to a version of any APIs described by it." %}
 *   Documented `paid`/`failed`/`aborted` operations for all Payments. 
 *   Added additional information on `payerReference`, `generateRecurrenceToken`,
     `paymentToken`, `generatePaymentToken`, `recurrenceToken` and
-    `instrument`for `PaymentOrder` operations in [Checkout][checkout].
+    `instrument` for the `paymentorder` resource in [Checkout][checkout].
 *   Corrected and updated `view-` operations for all resources. 
 *   Updated [Seamless View Events][seamless-view-events-card] for all resources.
 *   Described `nonPaymentToken` and `externalNonPaymentToken` in
