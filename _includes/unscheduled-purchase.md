@@ -47,6 +47,7 @@ Content-Type: application/json
 }
 ```
 
+{:.code-header}
 **Response**
 
 ```http

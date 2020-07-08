@@ -13,11 +13,6 @@ use of a `paymentToken`.
 The details in this section describe explicitly the parameters that must
 be set to enable one-click purchases.
 
-### Payment Url
-
-{% include payment-url.md
-when="at the 3-D Secure verification for credit card payments" full_reference=true %}
-
 ### API Requests To Generate paymentToken
 
 When making the initial purchase request, you need to generate a `paymentToken`.
@@ -95,7 +90,7 @@ Content-Type: application/json
         "paymentToken": "{{ page.payment_token }}"
     },
     "creditCard": {
-        "noCVC": true
+        "noCvc": true
     }
 }
 ```
@@ -126,7 +121,7 @@ you use the `Delete payment token` request.
                       body="Please note that this call does not erase the card
   number stored at Swedbank Pay.
   A card number is automatically deleted six months after a successful
-  `Deletepayment token` request.
+  `Delete payment token` request.
   If you want card information removed at an earlier date, you need to contact
   [ehandelsetup@swedbankpay.dk](mailto:ehandelsetup@swedbankpay.dk),
   [verkkokauppa.setup@swedbankpay.fi](mailto:verkkokauppa.setup@swedbankpay.fi),

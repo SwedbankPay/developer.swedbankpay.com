@@ -35,6 +35,13 @@ if [[ ! $branch_name =~ $valid_branch_regex ]]; then
     exit 2
 fi
 
+prefix=${BASH_REMATCH[1]}
+
+if [[ "$prefix" == "release" ]]; then
+    echo "Release branch '$branch_name' require no task ID."
+    exit 0
+fi
+
 task_id=${BASH_REMATCH[2]}
 task_id=$(echo "$task_id" | tr '[:lower:]' '[:upper:]')
 commit_message="$(cat "$1")"

@@ -33,15 +33,13 @@ Remember to read up on our [URL resource][urls].
 
 {% include alert-risk-indicator.md %}
 
-### Payment Url
-
-{% include payment-url.md payment_order=true
+{% include payment-url.md api_resource="paymentorders" documentation_section="checkout"
 when="selecting the payment instrument Vipps or in the 3-D Secure verification
 for Credit Card Payments" %}
 
 ### Request
 
-{% include payment-order-purchase.md %}
+{% include payment-order-purchase.md documentation_section="checkout" %}
 
 ### Response
 
@@ -299,22 +297,8 @@ finalizing the payment in the [After Payment section][after-payment].
                          next_title="Next: Capture" %}
 
 [after-payment]: after-payment
-[checkin-image]: /assets/img/checkout/your-information.png
-[consumer-reference]: /checkout/other-features#payee-reference
 [guest-payment-menu-image]: /assets/img/checkout/guest-payment-menu-450x850.png
-[initiate-consumer-session]: /checkout/checkin#step-1-initiate-session-for-consumer-identification
 [login-payment-menu-image]: /assets/img/checkout/logged-in-payment-menu-450x900.png
-[msisdn]: https://en.wikipedia.org/wiki/MSISDN
-[operations]: /checkout/other-features#operations
-[order-items]: #order-items
-[payee-reference]: /checkout/other-features#payee-reference
-[payment-menu]: #payment-menu
-[payment-order-capture]: /checkout/after-payment#capture
 [payment-order-operations]: /checkout/after-payment#operations
-[payment-order]: #payment-orders
-[paymentorder-items]: #items
-[settlement-and-reconciliation]: /checkout/other-features#settlement-and-reconciliation
-[split-settlement]: /checkout/other-features#split-settlement
 [technical-reference-onconsumer-identified]: /checkout/checkin#step-2-display-swedbank-pay-checkin-module
 [urls]: /checkout/other-features#urls-resource
-[user-agent]: https://en.wikipedia.org/wiki/User_agent

@@ -1,3 +1,6 @@
+{% assign documentation_section = include.documentation_section %}
+{% assign local_documentation_section = documentation_section %}
+
 {:.code-header}
 **Request**
 
@@ -14,9 +17,11 @@ Content-Type: application/json
         "amount": 1500,
         "vatAmount": 375,
         "description": "Test Purchase",
+        "generatePaymentToken": true,
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
-        "generateRecurrenceToken": false,
+        "instrument": "CreditCard"
+        "generateRecurrenceToken": true,
         "restrictedToInstruments": ["CreditCard", "Invoice"],
         "urls": {
             "hostUrls": [ "https://example.com", "https://example.net" ],
@@ -97,6 +102,92 @@ Content-Type: application/json
 }
 ```
 
+{:.code-header}
+**Response**
+
+```http
+POST /psp/paymentorders HTTP/1.1
+Host: {{ page.api_host }}
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+
+
+    "paymentOrder": {
+        "id": "/psp/paymentorders/{{ page.payment_order_id }}",
+        "instrument": "CreditCard"
+        "paymentToken" : "{{ page.payment_token }}",
+        "created": "2020-06-22T10:56:56.2927632Z",
+        "updated": "2020-06-22T10:56:56.4035291Z",
+        "operation": "Purchase",
+        "state": "Ready",
+        "currency": "SEK",
+        "amount": 10000,
+        "vatAmount": 0,
+        "orderItems": {
+            "id": "/psp/paymentorders/{{ page.payment_order_id }}/orderitems"
+        },
+        "description": "test description",
+        "initiatingSystemUserAgent": "Mozilla/5.0",
+        "userAgent": "Mozilla/5.0",
+        "language": "sv-SE",
+        "urls": {
+            "id": "/psp/paymentorders/{{ page.payment_order_id }}/urls"
+        },
+        "payeeInfo": {
+            "id": "/psp/paymentorders/{{ page.payment_order_id }}/payeeInfo"
+        },
+        "payments": {
+            "id": "/psp/paymentorders/{{ page.payment_order_id }}/payments"
+        },
+        "currentPayment": {
+            "id": "/psp/paymentorders/{{ page.payment_order_id }}/currentpayment"
+        },
+        "items": [
+            {
+                "creditCard": {
+                    "cardBrands": [
+                        "Visa",
+                        "MasterCard"
+                    ]
+                }
+            }
+        ]
+    }
+    "operations": [
+        {
+            "method": "PATCH",
+            "href": "{{ page.front_end_url }}/paymentorders/{{ page.payment_order_id }}",
+            "rel": "update-paymentorder-updateorder",
+            "contentType": "application/json"
+        },
+        {
+            "method": "PATCH",
+            "href": "{{ page.api_url }}/paymentorders/{{ page.payment_order_id }}",
+            "rel": "update-paymentorder-abort",
+            "contentType": "application/json"
+        },
+        {
+            "method": "PATCH",
+            "href": "{{ page.front_end_url }}/paymentorders/{{ page.payment_order_id }}",
+            "rel": "update-paymentorder-expandinstrument",
+            "contentType": "application/json"
+        },
+        {
+            "method": "GET",
+            "href": "{{ page.front_end_url }}/paymentmenu/{{ page.payment_token }}",
+            "rel": "redirect-paymentorder",
+            "contentType": "text/html"
+        },
+        {
+            "method": "GET",
+            "href": "{{ page.front_end_url }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token={{ page.payment_token }}&culture=nb-NO",
+            "rel": "view-paymentorder",
+            "contentType": "application/javascript"
+        }
+    ]
+}
+```
+
 {:.table .table-striped}
 |     Required     | Field                             | Type         | Description                                                                                                                                                                                                                                                                                                                                                                                                   |
 | :--------------: | :-------------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -106,9 +197,11 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`amount`                  | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                                                                                                                                                                                                     |
 | {% icon check %} | └➔&nbsp;`vatAmount`               | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                                                                                                                                                                                                                  |
 | {% icon check %} | └➔&nbsp;`description`             | `string`     | The description of the payment order.                                                                                                                                                                                                                                                                                                                                                                         |
+| {% icon check %} | └➔&nbsp;`instrument`              | `string`     | The payment instrument used. Selected by using the [Instrument Mode](/{{ documentation_section }}/other-features#instrument-mode).                                                                                                                                                                                                                                                                            |
+| {% icon check %} | └➔&nbsp;`generatePaymentToken`    | `bool`       | `true` or `false`. Set this to `true` if you want to create a `paymentToken` to use in future [One Click Payments][one-click-payments].                                                                                                                                                                                                                                                                       |
 | {% icon check %} | └➔&nbsp;`userAgent`               | `string`     | The user agent of the payer.                                                                                                                                                                                                                                                                                                                                                                                  |
 | {% icon check %} | └➔&nbsp;`language`                | `string`     | The language of the payer.                                                                                                                                                                                                                                                                                                                                                                                    |
-| {% icon check %} | └➔&nbsp;`generateRecurrenceToken` | `bool`       | Determines if a recurrence token should be generated. A recurrence token is primarily used to enable future recurring payments - with the same token - through server-to-server calls. Default value is `false`.                                                                                                                                                                                              |
+| {% icon check %} | └➔&nbsp;`generateRecurrenceToken` | `bool`       | Determines whether a recurrence token should be generated. A recurrence token is primarily used to enable future [recurring payments](/{{ local_documentation_section }}/other-features#recurring-payments) – with the same token – through server-to-server calls. Default value is `false`.                                                                                                                       |
 |                  | └➔&nbsp;`restrictedToInstruments` | `array`      | `CreditCard`, `Invoice`, `Vipps`, `Swish` and/or `CreditAccount`. `Invoice` supports the subtypes `PayExFinancingNo`, `PayExFinancingSe` and `PayMonthlyInvoiceSe`, separated by a dash, e.g.; `Invoice-PayExFinancingNo`. Limits the options available to the consumer in the payment menu. Default value is all supported payment instruments. Usage of this field requires an agreement with Swedbank Pay. |
 | {% icon check %} | └➔&nbsp;`urls`                    | `object`     | The `urls` object, containing the URLs relevant for the payment order.                                                                                                                                                                                                                                                                                                                                        |
 | {% icon check %} | └─➔&nbsp;`hostUrls`               | `array`      | The array of URIs valid for embedding of Swedbank Pay Hosted Views.                                                                                                                                                                                                                                                                                                                                           |
@@ -119,17 +212,17 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`termsOfServiceUrl`      | `string`     | {% include field-description-termsofserviceurl.md %}                                                                                                                                                                                                                                                                                                                                                          |
 | {% icon check %} | └➔&nbsp;`payeeInfo`               | `string`     | The `payeeInfo` object, containing information about the payee.                                                                                                                                                                                                                                                                                                                                               |
 | {% icon check %} | └─➔&nbsp;`payeeId`                | `string`     | The ID of the payee, usually the merchant ID.                                                                                                                                                                                                                                                                                                                                                                 |
-| {% icon check %} | └─➔&nbsp;`payeeReference`         | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [`payeeReference`][payee-reference] for details.                                                                                                                                                                                                                    |
+| {% icon check %} | └─➔&nbsp;`payeeReference`         | `string(30)` | {% include field-description-payee-reference.md documentation_section=documentation_section describe_receipt=true %}                                                                                                                                                                                                                                                                                          |
 |                  | └─➔&nbsp;`payeeName`              | `string`     | The name of the payee, usually the name of the merchant.                                                                                                                                                                                                                                                                                                                                                      |
 |                  | └─➔&nbsp;`productCategory`        | `string`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                                                                                                                                |
 |                  | └─➔&nbsp;`orderReference`         | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                                                                                                                       |
 |                  | └─➔&nbsp;`subsite`                | `String(40)` | The subsite field can be used to perform [split settlement][split-settlement] on the payment. The subsites must be resolved with Swedbank Pay [reconciliation][settlement-and-reconciliation] before being used.                                                                                                                                                                                              |
 |                  | └➔&nbsp;`payer`                   | `object`     | The `payer` object containing information about the payer relevant for the payment order.                                                                                                                                                                                                                                                                                                                     |
 |        ︎︎︎         | └─➔&nbsp;`consumerProfileRef`     | `string`     | The consumer profile reference as obtained through [initiating a consumer session][initiate-consumer-session].                                                                                                                                                                                                                                                                                                |
-|                  | └─➔&nbsp;`email`                  | `string`     | The e-mail address of the payer. Will be used to prefill the Checkin as well as on the payer's profile, if not already set.                                                                                                                                                                                                                                                                                   |
-|                  | └─➔&nbsp;`msisdn`                 | `string`     | The mobile phone number of the Payer. Will be prefilled on Checkin page and used on the payer's profile, if not already set. The mobile number must have a country code prefix and be 8 to 15 digits in length.                                                                                                                                                                                               |
-|                  | └─➔&nbsp;`workPhoneNumber`        | `string`     | The work phone number of the payer. Optional (increased chance for frictionless flow if set)                                                                                                                                                                                                                                                                                                                  |
-|                  | └─➔&nbsp;`homePhoneNumber`        | `string`     | The home phone number of the payer. Optional (increased chance for frictionless flow if set)                                                                                                                                                                                                                                                                                                                  |
+|                  | └─➔&nbsp;`email`                  | `string`     | The e-mail address of the payer. Will be used to prefill the Checkin as well as on the payer's profile, if not already set. Increases the chance for [frictionless 3-D Secure 2 flow](/{{ local_documentation_section }}/other-features#3-d-secure-2).                                                                                                                                         |
+|                  | └─➔&nbsp;`msisdn`                 | `string`     | The mobile phone number of the Payer. Will be prefilled on Checkin page and used on the payer's profile, if not already set. The mobile number must have a country code prefix and be 8 to 15 digits in length. The field is related to [3-D Secure 2](/{{ local_documentation_section }}/other-features#3-d-secure-2).                                                                                          |
+|                  | └─➔&nbsp;`workPhoneNumber`        | `string`     | The work phone number of the payer. Optional (increased chance for frictionless flow if set) and is related to [3-D Secure 2](/{{ local_documentation_section }}/other-features#3-d-secure-2).                                                                                                                                                                                                                   |
+|                  | └─➔&nbsp;`homePhoneNumber`        | `string`     | The home phone number of the payer. Optional (increased chance for frictionless flow if set) and is related to [3-D Secure 2](/{{ local_documentation_section }}/other-features#3-d-secure-2).                                                                                                                                                                                                                   |
 | {% icon check %} | └➔&nbsp;`orderItems`              | `array`      | {% include field-description-orderitems.md %}                                                                                                                                                                                                                                                                                                                                                                 |
 | {% icon check %} | └─➔&nbsp;`reference`              | `string`     | A reference that identifies the order item.                                                                                                                                                                                                                                                                                                                                                                   |
 | {% icon check %} | └─➔&nbsp;`name`                   | `string`     | The name of the order item.                                                                                                                                                                                                                                                                                                                                                                                   |
@@ -146,4 +239,37 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`vatPercent`             | `integer`    | The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.                                                                                                                                                                                                                                                                                                                                      |
 | {% icon check %} | └─➔&nbsp;`amount`                 | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                                                                                                                                                                                                     |
 | {% icon check %} | └─➔&nbsp;`vatAmount`              | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                                                                                                                                                                                                                  |
-{% include risk-indicator-table.md %}
+{% include risk-indicator-table.md documentation_section=local_documentation_section %}
+
+{:.table .table-striped}
+| Field                    | Type         | Description                                                                                                                                                                                                               |
+| :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `paymentorder`           | `object`     | The payment order object.                                                                                                                                                                                                 |
+| └➔&nbsp;`id`             | `string`     | {% include field-description-id.md resource="paymentorder" %}                                                                                                                                                             |
+| └➔&nbsp;`instrument`     | `string`     | The payment instrument used. Selected by using the [Instrument Mode](/{{ documentation_section }}/other-features#instrument-mode).                                                                                        |
+| └➔&nbsp;`paymentToken`   | `string`     | he payment token created for the purchase used in the authorization to create [One Click Payments][one-click-payments].                                                                                                   |
+| └➔&nbsp;`created`        | `string`     | The ISO-8601 date of when the payment order was created.                                                                                                                                                                  |
+| └➔&nbsp;`updated`        | `string`     | The ISO-8601 date of when the payment order was updated.                                                                                                                                                                  |
+| └➔&nbsp;`operation`      | `string`     | `Purchase`                                                                                                                                                                                                                |
+| └➔&nbsp;`state`          | `string`     | `Ready`, `Pending`, `Failed` or `Aborted`. Indicates the state of the payment order. Does not reflect the state of any ongoing payments initiated from the payment order. This field is only for status display purposes. |
+| └➔&nbsp;`currency`       | `string`     | The currency of the payment order.                                                                                                                                                                                        |
+| └➔&nbsp;`amount`         | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                 |
+| └➔&nbsp;`vatAmount`      | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                              |
+| └➔&nbsp;`description`    | `string(40)` | {% include field-description-description.md documentation_section="checkout" %}                                                                                                                                           |
+| └➔&nbsp;`userAgent`      | `string`     | The [user agent][user-agent] string of the consumer's browser.                                                                                                                                                            |
+| └➔&nbsp;`language`       | `string`     | {% include field-description-language.md api_resource="paymentorders" %}                                                                                                                                                  |
+| └➔&nbsp;`urls`           | `string`     | The URI to the `urls` resource where all URIs related to the payment order can be retrieved.                                                                                                                              |
+| └➔&nbsp;`payeeInfo`      | `string`     | The URI to the `payeeinfo` resource where the information about the payee of the payment order can be retrieved.                                                                                                          |
+| └➔&nbsp;`payers`         | `string`     | The URI to the `payers` resource where information about the payee of the payment order can be retrieved.                                                                                                                 |
+| └➔&nbsp;`orderItems`     | `string`     | The URI to the `orderItems` resource where information about the order items can be retrieved.                                                                                                                            |
+| └➔&nbsp;`metadata`       | `string`     | The URI to the `payments` resource where information about all underlying payments can be retrieved.                                                                                                                      |
+| └➔&nbsp;`payments`       | `string`     | The URI to the `payments` resource where information about all underlying payments can be retrieved.                                                                                                                      |
+| └➔&nbsp;`currentPayment` | `string`     | The URI to the `currentPayment` resource where information about the current – and sole active – payment can be retrieved.                                                                                                |
+| └➔&nbsp;`operations`     | `array`      | The array of possible operations to perform, given the state of the payment order. [See Operations for details][operations].                                                                                              |
+
+[initiate-consumer-session]: /checkout/checkin#step-1-initiate-session-for-consumer-identification
+[one-click-payments]: /payment-menu/other-features#one-click-payments
+[operations]: /checkout/other-features#operations
+[settlement-and-reconciliation]: /payment-menu/other-features#settlement-and-reconciliation
+[split-settlement]: /payment-menu/other-features#split-settlement
+[user-agent]: https://en.wikipedia.org/wiki/User_agent

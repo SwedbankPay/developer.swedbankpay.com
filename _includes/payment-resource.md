@@ -1,6 +1,18 @@
 {% assign api_resource = include.api_resource | default: "creditcard" %}
 {% assign documentation_section = include.documentation_section %}
-{% assign show_status_operations = include.show_status_operations | default: false %}
+{% assign show_status_operations = include.show_status_operations | default:
+false %}
+{% case api_resource %}
+{% when "vipps" %}
+  {% assign language = "nb-NO" %}
+  {% assign currency = "NOK" %}
+{% when "mobilepay" %}
+  {% assign language = "da-DK" %}
+  {% assign currency = "DKK" %}
+{% else %}
+  {% assign language = "sv-SE" %}
+  {% assign currency = "SEK" %}
+{% endcase %}
 
 ## Payment Resource
 
@@ -35,7 +47,7 @@ Content-Type: application/json
         "state": "Ready",
         "operation": "Purchase",
         "intent": "Authorization",
-        "currency": "NOK",
+        "currency": "{{ currency }}",
         "amount": 1500,
         "remainingCaptureAmount": 1500,
         "remainingCancellationAmount": 1500,
@@ -44,7 +56,7 @@ Content-Type: application/json
         "payerReference": "AB1234",
         "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
         "userAgent": "Mozilla/5.0...",
-        "language": "nb-NO",
+        "language": "{{ language }}",
         "prices": {
             "id": "/psp/{{ api_resource}}/payments/{{ page.payment_id }}/prices"
         },
@@ -70,63 +82,31 @@ Content-Type: application/json
             "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/cancellations"
         }
     },
-    "operations": [
-        {
-            "method": "PATCH",
-            "href": "{{ page.api_url }}/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
-            "rel": "update-payment-abort",
-        }{% if api_resource == "swish" %},
-        {
-            "method": "POST",
-            "href": "{{ page.api_url }}/psp/{{ api_resource }}/payments/{{ page.payment_id }}/sales",
-            "rel": "create-sale"
-        },
-        {
-            "method": "GET",
-            "href": "{{ page.front_end_url }}/{{ api_resource }}/payments/authorize/{{ page.payment_token }}",
-            "rel": "redirect-sale"
-        },
-        {
-            "method": "GET",
-            "href": "{{ page.front_end_url }}/{{ api_resource }}/core/scripts/client.js?token={{ page.payment_token }}",
-            "rel": "view-sales",
-        },
-        {
-            "method": "GET",
-            "href": "{{ page.front_end_url }}/{{ api_resource }}/core/scripts/client.js?token={{ page.payment_token }}",
-            "rel": "view-payment"
-        }{% else %},
-        {
-            "method": "GET",
-            "href": "{{ page.front_end_url }}/{{ api_resource}}/core/scripts/client/px.{{ api_resource }}.client.js?token={{ page.payment_token }}&operation=authorize",
-            "rel": "view-authorization",
-            "contentType": "application/javascript"
-        },
-        {
-            "method": "GET",
-            "href": "{{ page.front_end_url }}/{{ api_resource }}/payments/authorize/{{ page.transaction_id }}",
-            "rel": "redirect-authorization",
-            "contentType": "text/html"
-        },
-        {
-            "method": "POST",
-            "href": "{{ page.api_url }}/psp/{{ api_resource }}/payments/{{ page.payment_id }}/captures",
-            "rel": "create-capture",
-            "contentType": "application/json"
-        }{% if show_status_operations %},
-        {
-            "method": "GET",
-            "href": "{{ page.api_url }}/psp/{{ api_resource }}/{{ page.payment_id }}/paid",
-            "rel": "paid-payment",
-            "contentType": "application/json"
-        },
-        {
-            "method": "GET",
-            "href": "{{ page.api_url }}/psp/{{ api_resource }}/{{ page.payment_id }}/failed",
-            "rel": "failed-payment",
-            "contentType": "application/problem+json"
-        }{% endif %}
-{% endif %}
+    "operations": [ {%- case api_resource -%}
+    {%- when "swish" -%}
+        {% include api-operation.md api_resource=api_resource operation="create-sale" href_tail="sales" %},
+        {% include api-operation.md api_resource=api_resource operation="redirect-sale" %},
+        {% include api-operation.md api_resource=api_resource operation="view-sales" %},
+        {% include api-operation.md api_resource=api_resource operation="view-payment" %},
+        {%- when "trustly" -%}
+        {% include api-operation.md api_resource=api_resource operation="create-sale" href_tail="sales" %},
+        {% include api-operation.md api_resource=api_resource operation="redirect-sale" %},
+        {% include api-operation.md api_resource=api_resource operation="view-sales" %},
+        {% include api-operation.md api_resource=api_resource operation="redirect-authorization" %}, 
+        {%- when "invoice" -%}
+        {% include api-operation.md api_resource=api_resource operation="create-authorization" href_tail="operation=authorize" %},
+        {% include api-operation.md api_resource=api_resource operation="view-authorization" href_tail="operation=authorize" %},
+        {% include api-operation.md api_resource=api_resource operation="redirect-authorization" %},
+        {% else %},
+        {% include api-operation.md api_resource=api_resource operation="view-authorization" href_tail="operation=authorize" %},
+        {% include api-operation.md api_resource=api_resource operation="redirect-authorization" %},
+        {%- endcase -%}
+        {% if show_status_operations %}
+        {% include api-operation.md api_resource=api_resource operation="update-payment-abort" %},
+        {% include api-operation.md api_resource=api_resource operation="create-capture" href_tail="captures" %},
+        {% include api-operation.md api_resource=api_resource operation="paid-payment" href_tail="paid" %},
+        {% include api-operation.md api_resource=api_resource operation="failed-payment" href_tail="failed" %}
+        {% endif %}
     ]
 }
 ```
@@ -142,8 +122,8 @@ Content-Type: application/json
 | └➔&nbsp;`state`          | `string`     | `Ready`, `Pending`, `Failed` or `Aborted`. Indicates the state of the payment, not the state of any transactions performed on the payment. To find the state of the payment's transactions (such as a successful authorization), see the `transactions` resource or the different specialized type-specific resources such as `authorizations` or `sales`. |
 | └➔&nbsp;`prices`         | `object`     | The `prices` resource lists the prices related to a specific payment.                                                                                                                                                                                                                                                                                      |
 | └➔&nbsp;`prices.id`      | `string`     | {% include field-description-id.md resource="prices" %}                                                                                                                                                                                                                                                                                                    |
-| └➔&nbsp;`description`    | `string(40)` | {% include field-description-description.md documentation_section=documentation_section %}                                                                                                                                                                                                                                                                 |
-| └➔&nbsp;`payerReference` | `string`     | The reference to the payer (consumer/end-user) from the merchant system, like e-mail address, mobile number, customer number etc.                                                                                                                                                                                                                          |
+| └➔&nbsp;`description`    | `string` | {% include field-description-description.md documentation_section=documentation_section %}                                                                                                                                                                                                                                                                     |
+| └➔&nbsp;`payerReference`    | `string(40)` | The reference to the payer (consumer/end user) from the merchant system. Can be mobile number, e-mail address, account number, a UUID, etc.                                                                                                                                                                                                         |
 | └➔&nbsp;`userAgent`      | `string`     | The [user agent][user-agent] string of the consumer's browser.                                                                                                                                                                                                                                                                                             |
 | └➔&nbsp;`language`       | `string`     | {% include field-description-language.md api_resource=api_resource %}                                                                                                                                                                                                                                                                                      |
 | └➔&nbsp;`urls`           | `string`     | The URI to the  urls  resource where all URIs related to the payment can be retrieved.                                                                                                                                                                                                                                                                     |
@@ -184,10 +164,22 @@ for the given operation.
 | `create-sale`          | Creates a `sales` transaction without redirection to a payment page.                                                                                                      |
 | `redirect-sale`        | Contains the redirect-URI that redirects the consumer to a Swedbank Pay hosted payment page prior to creating a sales transaction.                                        |
 | `view-sales`           | Contains the URI of the JavaScript used to create a Seamless View iframe directly for the `sale` transaction without redirecting the consumer to a separate payment page. |
-| `view-payment`         | Contains the URI of the JavaScript used to create a Hosted View iframe directly without redirecting the consumer to separate payment page.                                |
+| `view-payment`         | Contains the URI of the JavaScript used to create a Seamless View iframe directly without redirecting the consumer to separate payment page.                                |
 
-{% else %}
-{% if show_status_operations %}
+{% when "trustly" %}
+
+{:.table .table-striped}
+| Operation                | Description                                                                                                               |
+| :----------------------- | :------------------------------------------------------------------------------------------------------------------------ |
+| `update-payment-abort`   | `abort`s the payment order before any financial transactions are performed.                                               |
+| `redirect-authorization` | Contains the URI that is used to redirect the consumer to the Swedbank Pay Payments containing the card authorization UI. |
+| `create-capture`         | Creates a `capture` transaction in order to charge the reserved funds from the consumer.                                  |
+| `create-cancellation`    | Creates a `cancellation` transaction that cancels a created, but not yet captured payment.                                |
+| `paid-payment`           | Returns the information about a payment that has the status `paid`.                                                       |
+| `failed-payment`         | Returns the information about a payment that has the status `failed`.                                                     |
+| `view-sales`             | Contains the URI of the JavaScript used to create a Seamless View iframe directly for the `sale` transaction without redirecting the consumer to a separate payment page. |
+
+{% when "invoice" %}
 
 {:.table .table-striped}
 | Operation                | Description                                                                                                               |
@@ -200,6 +192,8 @@ for the given operation.
 | `paid-payment`           | Returns the information about a payment that has the status `paid`.                                                       |
 | `failed-payment`         | Returns the information about a payment that has the status `failed`.                                                     |
 
+
+
 {% else %}
 
 {:.table .table-striped}
@@ -208,10 +202,12 @@ for the given operation.
 | `update-payment-abort`   | `abort`s the payment order before any financial transactions are performed.                                               |
 | `redirect-authorization` | Contains the URI that is used to redirect the consumer to the Swedbank Pay Payments containing the card authorization UI. |
 | `view-authorization`     | Contains the JavaScript `href` that is used to embed  the card authorization UI directly on the webshop/merchant site     |
+| `view-payment`           | Contains the URI of the JavaScript to create a Seamless view iframe directly without redirecting the consumer to separate payment page.     |
 | `create-capture`         | Creates a `capture` transaction in order to charge the reserved funds from the consumer.                                  |
 | `create-cancellation`    | Creates a `cancellation` transaction that cancels a created, but not yet captured payment.                                |
+| `paid-payment`           | Returns the information about a payment that has the status `paid`.                                                       |
+| `failed-payment`         | Returns the information about a payment that has the status `failed`.                                                     |
 
-{% endif %}
 {% endcase %}
 
 [user-agent]: https://en.wikipedia.org/wiki/User_agent

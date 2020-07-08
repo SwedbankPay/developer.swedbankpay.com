@@ -1,26 +1,24 @@
-name: Deploy to GitHub Pages
+name: Deploy
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Docker compose up
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        GITHUB_ACTOR: payex-dev
-        GITHUB_ACTOR_EMAIL: dev@payex.com
-        GITHUB_REPO: ${{ github.repository }}
-      run: |
-        docker-compose \
-          -f docker-compose.yml \
-          -f .docker/docker-compose.deploy.yml \
-          up \
-          --build \
-          --abort-on-container-exit \
-          --exit-code-from portal
+      - uses: actions/checkout@v2
+      - name: Docker compose up
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_ACTOR: payex-dev
+          GITHUB_ACTOR_EMAIL: dev@payex.com
+          GITHUB_REPO: ${{ github.repository }}
+        run: |
+          docker-compose run \
+            -e PAGES_REPO_NWO=${{ github.repository }} \
+            -e JEKYLL_GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} \
+            portal deploy \
+            --env=production

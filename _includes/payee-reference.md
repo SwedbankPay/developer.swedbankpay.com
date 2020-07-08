@@ -1,4 +1,4 @@
-{% assign api_resource = include.api_resource | default: true %}
+{% assign api_resource = include.api_resource %}
 
 ## Payee Reference
 

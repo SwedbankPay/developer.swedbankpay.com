@@ -16,14 +16,12 @@ sidebar:
       title: Other Features
 ---
 
-{% include settlement-reconciliation.md %}
-
-{% include payment-link.md %}
-
-{% include payment-resource.md  api_resource="vipps" documentation_section="vipps"
-show_status_operations=true%}
+{% include payment-resource.md  api_resource="vipps"
+documentation_section="vipps" show_status_operations=true %}
 
 {% include payment-transaction-states.md %}
+
+{% include payments-operations.md api_resource="vipps" documentation_section="vipps" %}
 
 ### Create Payment
 
@@ -110,9 +108,9 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`termsOfServiceUrl` | `string`     | {% include field-description-termsofserviceurl.md %}                                                                                                                                                                                                      |
 | {% icon check %}︎ | └➔&nbsp;`payeeInfo`          | `object`     | The object containing information about the payee.                                                                                                                                                                                                        |
 | {% icon check %}︎ | └─➔&nbsp;`payeeId`           | `string`     | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                                                                     |
-| {% icon check %}︎ | └─➔&nbsp;`payeeReference`    | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [`payeeReference`][technical-reference-payeeReference] for details.                                             |
+| {% icon check %}︎ | └─➔&nbsp;`payeeReference`    | `string(30)` | {% include field-description-payee-reference.md documentation_section="vipps" %}                                                                                                                                                                          |
 |                  | └─➔&nbsp;`payeeName`         | `string`     | The payee name (like merchant name) that will be displayed to consumer when redirected to Swedbank Pay.                                                                                                                                                   |
-|                  | └─➔&nbsp;`productCategory`   | `strin`      | A product category or number sent in from the payee/merchant. This is not validated by PayEx, but will be passed through the payment process and may be used in the settlement process.                                                                   |
+|                  | └─➔&nbsp;`productCategory`   | `strin`      | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                            |
 |                  | └─➔&nbsp;`orderReference`    | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                   |
 |                  | └─➔&nbsp;`prefillInfo`       | `string`     | The mobile number that will be pre-filled in the Swedbank Pay Payments. The consumer may change this number in the UI.                                                                                                                                    |
 |                  | └─➔&nbsp;`subsite`           | `string(40)` | The `subsite` field can be used to perform split settlement on the payment. The `subsites` must be resolved with Swedbank Pay reconciliation before being used.                                                                                           |
@@ -187,15 +185,13 @@ payment altogether or creating an authorization transaction through the
 
 {% include complete-url.md %}
 
-## Payment Url
-
-{% include payment-url.md full_reference=true %}
+{% include payment-url.md api_resource="vipps" documentation_section="vipps" full_reference=true %}
 
 {% include prices.md api_resource="vipps" %}
 
 {% include description.md %}
 
-{% include payee-info.md api_resource="vipps" %}
+{% include payee-info.md api_resource="vipps" documentation_section="vipps" %}
 
 {% include payee-reference.md %}
 
@@ -203,6 +199,8 @@ payment altogether or creating an authorization transaction through the
 documentation_section="vipps" %}
 
 {% include callback-reference.md api_resource="vipps" %}
+
+{% include payment-link.md %}
 
 ## Problem messages
 
@@ -261,14 +259,15 @@ All Vipps error types will have the following URI in front of type:
 | *`ACQUIRER_GATEWAY_TIMEOUT`*    | `504`  |
 | *`UNKNOWN_ERROR`*               | `500`  |
 
+{% include seamless-view-events.md api_resource="vipps" %}
+
+{% include settlement-reconciliation.md %}
+
 {% include iterator.html
         prev_href="after-payment"
         prev_title="Back: After Payment" %}
 
 [callbackreference]: #callback
-[payment-order]: #payment-order
 [prices]: #prices
-[problems-reference]: #problem-messages
 [technical-reference-expansion]: /home/technical-information#expansion
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
-[technical-reference-payeeReference]: #payee-reference

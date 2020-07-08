@@ -230,9 +230,8 @@ sequenceDiagram
 [mobile-pay]: /payments/mobile-pay
 [payment-instruments-card-payment-pages]: /payments/card/
 [payment-instruments-mobilepay-payment-pages]: /payments/mobile-pay/
-[purchase-flow]: /payments/card/#purchase-flow
+[purchase-flow]: /payments/card/other-features#purchase-flow
 [swish]: /payments/swish
 [technical-reference-callback]: #callback
-[test_purchase]: /assets/img/checkout/test-purchase.png
 [card-payment]: /assets/img/payments/card-payment.png
 [vipps]: /payments/vipps

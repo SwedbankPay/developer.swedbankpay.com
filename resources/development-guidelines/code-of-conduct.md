@@ -12,8 +12,8 @@ sidebar:
       title: Contributing
     - url: /resources/development-guidelines/good-commit-practice
       title: Good Commit Practice
-    - url: /resources/development-guidelines/licence
-      title: Licence
+    - url: /resources/development-guidelines/license
+      title: License
 ---
 
 It is important that the projects governed by Swedbank Pay foster a

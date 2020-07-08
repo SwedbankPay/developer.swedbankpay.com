@@ -180,8 +180,8 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`amount`          | `integer`     | {% include field-description-amount.md currency="NOK" %}                                                                                                                                                                                                                                           |
 | {% icon check %} | └─➔&nbsp;`vatAmount`       | `integer`     | {% include field-description-vatamount.md currency="NOK" %}                                                                                                                                                                                                                                        |
 | {% icon check %} | └➔&nbsp;`description`      | `string(40)`  | {% include field-description-description.md documentation_section="vipps" %}                                                                                                                                                                                                                       |
-|                  | └➔&nbsp;`payerReference`   | `string`      | The reference to the payer (consumer/end user) from the merchant system. E.g mobile number, customer number etc.                                                                                                                                                                                   |
-| {% icon check %} | └➔&nbsp;`userAgent`        | `string`      | The user agent reference of the consumer's browser - [see user agent definition][user-agent-definition]                                                                                                                                                                                            |
+|                  | └➔&nbsp;`payerReference`   | `string`      | The reference to the payer (consumer/end user) from the merchant system. E.g mobile number, customer number etc.                                                                                                                                                                               |
+| {% icon check %} | └➔&nbsp;`userAgent`         | `string`      | The [`User-Agent` string][user-agent] of the consumer's web browser.                                                                                                                                                                                                                              |
 | {% icon check %} | └➔&nbsp;`language`         | `string`      | {% include field-description-language.md api_resource="vipps" %}                                                                                                                                                                                                                                   |
 | {% icon check %} | └➔&nbsp;`urls`             | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                             |
 | {% icon check %} | └─➔&nbsp;`completeUrl`     | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. |
@@ -189,7 +189,7 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`callbackUrl`     | `string`      | The URL that Swedbank Pay will perform an HTTP POST against every time a transaction is created on the payment. See [callback][callback] for details.                                                                                                                                              |
 | {% icon check %} | └➔&nbsp;`payeeInfo`        | `object`      | The `payeeInfo` contains information about the payee.                                                                                                                                                                                                                                              |
 | {% icon check %} | └─➔&nbsp;`payeeId`         | `string`      | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                                                                                                              |
-| {% icon check %} | └─➔&nbsp;`payeeReference`  | `string(50*)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [`payeeReference`][payee-reference] for details.                                                                                                         |
+| {% icon check %} | └─➔&nbsp;`payeeReference`  | `string(50*)` | {% include field-description-payee-reference.md documentation_section="vipps" %}                                                                                                                                                                                                                   |
 |                  | └─➔&nbsp;`payeeName`       | `string`      | The payee name (like merchant name) that will be displayed to consumer when redirected to Swedbank Pay.                                                                                                                                                                                            |
 |                  | └─➔&nbsp;`productCategory` | `string`      | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                     |
 |                  | └─➔&nbsp;`orderReference`  | `String(50)`  | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                            |
@@ -204,7 +204,7 @@ the payment.
 
 Once the payment is successfully authorized, the payer is returned to either the
 `completeUrl` or the `cancelUrl`; depending on the action performed.
-On the page as well as in the `callbackUrl` you need to perform an HTTP `GET` 
+On the page as well as in the `callbackUrl` you need to perform an HTTP `GET`
 request towards the `id` of the payment to inspect its status.
 
 ## Step 3: Get the transaction state
@@ -285,6 +285,12 @@ Content-Type: application/json
             "method": "GET",
             "href": "{{ page.front_end_url }}/vipps/core/scripts/client/px.vipps.client.js?token={{ page.payment_token }}&operation=authorize",
             "rel": "view-authorization",
+            "contentType": "application/javascript"
+        },
+        {
+            "method": "GET",
+            "href": "{{ page.front_end_url }}/vipps/core/scripts/client/px.vipps.client.js?token={{ page.payment_token }}&operation=authorize",
+            "rel": "view-payment",
             "contentType": "application/javascript"
         },
         {
@@ -422,12 +428,13 @@ purchased products) have to make a [Capture][capture] or
                          next_href="seamless-view"
                          next_title="Next: Implement Seamless view" %}
 
+[callback]: /payments/vipps/other-features#callback
 [cancel]: /payments/vipps/after-payment#cancellations
 [capture]: /payments/vipps/after-payment#captures
-[seamless-view]: /payments/vipps/seamless-view
-[reference-redirect]: /payments/vipps/redirect
-[vipps-payments]: /payments/vipps/other-features
-[vipps-purchase-flow]: /assets/img/payments/vipps-purchase-flow.png
 [payee-reference]: /payments/vipps/other-features#payee-reference
 [purchase]: /payments/vipps/other-features#purchase
+[reference-redirect]: /payments/vipps/redirect
+[seamless-view]: /payments/vipps/seamless-view
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
+[vipps-payments]: /payments/vipps/other-features
+[vipps-purchase-flow]: /assets/img/payments/vipps-purchase-flow.png

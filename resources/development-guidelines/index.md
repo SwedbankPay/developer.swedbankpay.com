@@ -12,8 +12,8 @@ sidebar:
       title: Contributing
     - url: /resources/development-guidelines/good-commit-practice
       title: Good Commit Practice
-    - url: /resources/development-guidelines/licence
-      title: Licence
+    - url: /resources/development-guidelines/license
+      title: License
 ---
 
 ## Introduction
@@ -60,13 +60,13 @@ repository on GitHub.
 
 Code quality of course depends on a lot of other factors too, such as:
 
--   Following best practice of the language and environment the code is being
-  written in.
--   Adhering to established style guides.
--   Good understanding of
-  [The Principles of Object Oriented Design][principles-of-object-oriented-design].
--   A good domain architecture, modelled after
-  [Domain Driven Design][domain-driven-design].
+*   Following best practice of the language and environment the code is being
+    written in.
+*   Adhering to established style guides.
+*   Good understanding of
+    [The Principles of Object Oriented Design][principles-of-object-oriented-design].
+*   A good domain architecture, modelled after
+    [Domain Driven Design][domain-driven-design].
 
 ### Accessibility
 
@@ -92,33 +92,33 @@ enumerates the most important aspects that a project should be governed by to
 be perceived as accessible:
 
 1.  Outstanding features and bugs should be easy to find in the list of “issues”
-   in the project’s repository.
+    in the project’s repository.
 2.  The project’s documentation should be easily accessible in or linked to from
-   the project’s `README` file.
+    the project’s `README` file.
 3.  The `README` file and associated documentation should be written in simple
-   [Markdown][markdown] markup so it is easy to correct by anyone simply by
-   using GitHub’s online Markdown editing features.
+    [Markdown][markdown] markup so it is easy to correct by anyone simply by
+    using GitHub’s online Markdown editing features.
 4.  How to contribute should be clearly explained in a `CONTRIBUTING` file.
 5.  The process of contributing should be as simple as possible.
     1.  The project should follow the norm and best practice of the language and
-     environment it is written in.
+        environment it is written in.
     2.  There should be tests in the project that are easy to get up and running
-     on a developer machine without installing any external services, tools or
-     libraries, unless they are handled by a package manager like NuGet.
+        on a developer machine without installing any external services, tools or
+        libraries, unless they are handled by a package manager like NuGet.
     3.  Contributed code should be checked by a
-     [continuous integration][continuous-integration] server that labels the
-     status of pull request accordingly. If a test fails, the contributor
-     should be alerted of its failure through GitHub’s interface.
+        [continuous integration][continuous-integration] server that labels the
+        status of pull request accordingly. If a test fails, the contributor
+        should be alerted of its failure through GitHub’s interface.
 6.  All code contributions should be run through a public continuous integration
-   server so build failures are visible to the contributor such that it can be
-   fixed without any project manager’s involvement.
+    server so build failures are visible to the contributor such that it can be
+    fixed without any project manager’s involvement.
 7.  The development and branching process should preferably be based on an
-   existing scheme such as [GitFlow][gitflow] or [GitHub Flow][github-flow].
+    existing scheme such as [GitFlow][gitflow] or [GitHub Flow][github-flow].
 8.  All development should be done in public.
     1.  Code should be pushed to GitHub regularly, so it’s possible to see
-     progress.
+        progress.
     2.  For incomplete features and bugfixes, [GitFlow][gitflow] with branch
-     prefixes such as `feature/` and `hotfix/` should be used
+        prefixes such as `feature/` and `hotfix/` should be used
     3.  All code in development should be pushed as often as possible.
 
 ### Security
@@ -135,16 +135,15 @@ rewritten through interactive rebasing as soon as possible and force-pushed.
 
 ## Licensing
 
-All of PayEx' open source software should be licensed under a liberal
-[software license][software-license].
+All of Swedbank Pay' open source software should be licensed under a liberal and
+enterprise, closed source-compatible [software license][software-license].
 
 ## Copyright
 
-The copyright for code written in PayEx’ open source projects is shared
-between Swedbank Pay and the individual authors of the source code. This
-should be stated in the above mentioned LICENSE file as well as in each
-individual source code file and other metadata
-(such as .NET assembly information, etc.):
+The copyright for code written in Swedbank Pay's open source projects is shared
+between Swedbank Pay and the individual authors of the source code. This should
+be stated in the above mentioned LICENSE file as well as in each individual
+source code file and other metadata (such as .NET assembly information, etc.):
 
 `Copyright © Swedbank Pay and Project Contributors`
 
@@ -167,12 +166,12 @@ They will be described in the following chapters.
 
 ### Versioning
 
-To release software, it needs to be versioned. PayEx’ open source modules
-should be versioned according to [semantic versioning][semantic-versioning].
-This means that whenever backward compatibility is broken, the major version
-should be incremented. When a new feature is added, the minor version should
-be incremented and when bug fixes and other minor changes are introduced,
-the revision number should be incremented.
+To release software, it needs to be versioned. Swedbank Pay's open source
+packages should be versioned according to [semantic
+versioning][semantic-versioning]. This means that whenever backward
+compatibility is broken, the major version should be incremented. When a new
+feature is added, the minor version should be incremented and when bug fixes and
+other minor changes are introduced, the revision number should be incremented.
 
 A version of the software should correspond to a commit in the Git repository.
 This commit should be tagged with the version number it represents and the
@@ -236,4 +235,4 @@ To help with writing release notes, projects can use the tool
 [release]: https://help.github.com/articles/creating-releases/
 [sans-25]: https://www.sans.org/top25-software-errors/
 [semantic-versioning]: https://semver.org/
-[software-licence]: /resources/development-guidelines/license
+[software-license]: /resources/development-guidelines/license

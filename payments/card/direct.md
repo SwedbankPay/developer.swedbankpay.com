@@ -56,10 +56,10 @@ Below is a quick stepwise summary of how the Direct Card Payment scenario works.
 *   If the issuer requires 3-D Secure authentication, you will then receive an
   operation called `redirect-authentication`. You must redirect the payer to
   this URL to let them authenticate against the issuer's 3-D Secure page.
-      -    When the 3-D Secure flow is completed, the payer will be redirected back to
+    -   When the 3-D Secure flow is completed, the payer will be redirected back to
       the URL provided in `completeUrl` or `cancelUrl`, depending on the actions
       performed by the payer.
-      -   If the issuer does not require 3-D Secure authentication, the payment will
+    -   If the issuer does not require 3-D Secure authentication, the payment will
       already be `Completed` after performing the `direct-authorization`
       request. Note that `Completed` just indicates that the payment is in a
       final state; the financial transaction could be either OK or failed.
@@ -188,6 +188,7 @@ Content-Type: application/json
 | └➔&nbsp;`panToken`                | `string`  | The token representing the specific PAN of the card.                                                                                                                                                         |
 | └➔&nbsp;`panEnrolled`             | `string`  |                                                                                                                                                                                                              |
 | └➔&nbsp;`acquirerTransactionTime` | `string`  | `3DSECURE` or `SSL`. Indicates the transaction type of the acquirer.                                                                                                                                         |
+| └➔&nbsp;`nonPaymentToken`         | `string`  | Swedbank Pay's tokenization of the card used; identifies the card, but can not be used for payment transactions. Needs to be activated by Swedbank Pay before use.                                           |
 | └➔&nbsp;`id`                      | `string`  | {% include field-description-id.md resource="itemDescriptions" %}                                                                                                                                            |
 | └➔&nbsp;`transaction`             | `object`  | The object representation of the generic transaction resource.                                                                                                                                               |
 | └─➔&nbsp;`id`                     | `string`  | {% include field-description-id.md resource="transaction" %}                                                                                                                                                 |
@@ -199,7 +200,7 @@ Content-Type: application/json
 | └─➔&nbsp;`amount`                 | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` = 100.00 NOK, `5000` = 50.00 SEK.                                                                                     |
 | └─➔&nbsp;`vatAmount`              | `integer` | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                           |
 | └─➔&nbsp;`description`            | `string`  | {% include field-description-description.md documentation_section="card" %}                                                                                                                                  |
-| └─➔&nbsp;`payeeReference`         | `string`  | A unique reference for the transaction.                                                                                                                                                                      |
+| └─➔&nbsp;`payeeReference`         | `string`  | {% include field-description-payee-reference.md documentation_section="card" %}                                                                                                                              |
 | └─➔&nbsp;`failedReason`           | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | └─➔&nbsp;`isOperational`          | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
 | └─➔&nbsp;`operations`             | `array`   | The array of operations that are possible to perform on the transaction in its current state.                                                                                                                |
@@ -324,7 +325,7 @@ Content-Type: application/json
 | └─➔&nbsp;`amount`                 | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` = 100.00 NOK, `5000` = 50.00 SEK.                                                                                     |
 | └─➔&nbsp;`vatAmount`              | `integer` | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                           |
 | └─➔&nbsp;`description`            | `string`  | {% include field-description-description.md documentation_section="card" %}                                                                                                                                  |
-| └─➔&nbsp;`payeeReference`         | `string`  | A unique reference for the transaction.                                                                                                                                                                      |
+| └─➔&nbsp;`payeeReference`         | `string`  | {% include field-description-payee-reference.md documentation_section="card" %}                                                                                                                              |
 | └─➔&nbsp;`failedReason`           | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | └─➔&nbsp;`isOperational`          | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
 | └─➔&nbsp;`operations`             | `array`   | The array of operations that are possible to perform on the transaction in its current state.                                                                                                                |
@@ -343,50 +344,50 @@ purchase, and the requests you have to send to Swedbank Pay.
 
 ```mermaid
 sequenceDiagram
-  participant Payer
-  participant Merchant
-  participant SwedbankPay as Swedbank Pay
-  participant IssuingBank as Issuing Bank
-
-  activate Payer
+    participant Payer
+    participant Merchant
+    participant SwedbankPay as Swedbank Pay
+    participant IssuingBank as Issuing Bank
+    activate Payer
     Payer->>Merchant: Start purchase
     activate Merchant
-      Merchant->>SwedbankPay: POST /psp/creditcard/payments
-      activate SwedbankPay
-        note left of Merchant: First API request
-        SwedbankPay->>Merchant: Payment resource
-      deactivate SwedbankPay
-      Merchant->>Payer: Credit card form
+    Merchant->>SwedbankPay: POST /psp/creditcard/payments
+    activate SwedbankPay
+    note left of Merchant: First API request
+    SwedbankPay->>Merchant: Payment resource
+    deactivate SwedbankPay
+    Merchant->>Payer: Credit card form
     deactivate Merchant
-
     Payer->>Merchant: Submit credit card form
     activate Merchant
-      Merchant->>SwedbankPay: POST rel:direct-authorization
-      activate SwedbankPay
-        note left of Merchant: Second API request
-        SwedbankPay->>Merchant: Authorization resource
-      deactivate SwedbankPay
-      opt 3-D Secure required
-        Merchant->>Payer: Redirect to rel:redirect-authentication
-        deactivate Merchant
-        note left of Payer: redirect to card issuing bank
-        Payer->>IssuingBank: Perform 3-D Secure authentication
-        activate IssuingBank
-          IssuingBank->>Payer: Redirected to merchant's completeUrl
-        deactivate IssuingBank
-        note left of Payer: redirect back to merchant
-        Payer->>Merchant: Access merchant's completeUrl
-        activate Merchant
-        Merchant->>SwedbankPay: GET <payment.id>
-        activate SwedbankPay
-          note left of Merchant: Third API request
-          SwedbankPay-->Merchant: Payment resource
-        deactivate SwedbankPay
-        Merchant->>Merchant: Inspect payment status
-      end
-      Merchant-->>Payer: Display purchase result
+    Merchant->>SwedbankPay: POST rel:direct-authorization
+    activate SwedbankPay
+    note left of Merchant: Second API request
+    SwedbankPay->>Merchant: Authorization resource
+    deactivate SwedbankPay
+        alt No 3DSecure required
+            Merchant->>Payer: Redirected to merchant's completeUrl
+        else 3DSecure required
+            Merchant->>Payer: Redirect to rel:redirect-authentication
+            deactivate Merchant
+            note left of Payer: redirect to card issuing bank
+            Payer->>IssuingBank: Perform 3-D Secure authentication
+            activate IssuingBank
+            IssuingBank->>Payer: Redirected to merchant's completeUrl
+            deactivate IssuingBank
+        end
+    note left of Payer: redirect back to merchant
+    Payer->>Merchant: Access merchant's completeUrl
+    activate Merchant
+    Merchant->>SwedbankPay: GET <payment.id>
+    activate SwedbankPay
+    note left of Merchant: Third API request
+    SwedbankPay-->Merchant: Payment resource
+    deactivate SwedbankPay
+    Merchant->>Merchant: Inspect payment status
+    Merchant-->>Payer: Display purchase result
     deactivate Merchant
-  deactivate Payer
+    deactivate Payer
 ```
 
 ## Options after posting a purchase payment
@@ -409,7 +410,7 @@ next_href="mobile-card-payments" next_title="Next: Mobile Card Payments" %}
 [cancel]: /payments/card/after-payment#cancellations
 [capture]: /payments/card/capture
 [reversal]: /payments/card/after-payment#reversals
-[authorization]: /payments/card/other-features#create-authorization-transaction
+[authorization]: /payments/card/other-features#card-authorization-transaction
 [other features]: /payments/card/other-features#purchase
 [purchase]:  /payments/card/other-features#purchase
 [recur]:  /payments/card/other-features#recur

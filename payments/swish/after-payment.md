@@ -20,9 +20,9 @@ sidebar:
 
 After the payment is confirmed, the consumer will be redirected from the Swish
 app to the `completeUrl` set in the [create payment request][create-payment].
-You need to retrieve payment status with `GET`
-[Sales transaction][sales-transaction] before presenting a confirmation page to
-the consumer.
+You need to retrieve payment status with `GET` [Sales
+transaction][sales-transaction] before presenting a confirmation page to the
+consumer.
 
 ## Options after posting a payment
 
@@ -32,76 +32,6 @@ the consumer.
 *   You can create a reversal transactions by implementing the Reversal request.
     You can also access and reverse a payment through your merchant pages in the
     [Swedbank Pay admin portal][payex-admin-portal].
-
-### Reversal Sequence
-
-A reversal transcation need to match the Payee reference of a completed
-sales transaction.
-
-```mermaid
-sequenceDiagram
-  activate Merchant
-  Merchant->>- SwedbankPay: POST <Swish reversal>
-  activate  SwedbankPay
-  SwedbankPay-->>-Merchant: transaction resource
-```
-
-## Payment Resource
-
-When a payment resource is created and during its lifetime, it will have a set
-of operations that can be performed on it.
-Which operations are available will vary depending on the state of the payment
-resource, what the access token is authorized to do, etc.
-A list of possible operations for Swish Payments and their explanation
-is given below.
-
-{:.code-header}
-**Operations**
-
-```js
-{
-    "operations": [
-        {
-            "method": "POST",
-            "href": "{{ page.api_url }}/psp/swish/payments/{{ page.payment_id }}/sales",
-            "rel": "create-sale"
-        },
-        {
-            "method": "GET",
-            "href": "{{ page.front_end_url }}/swish/payments/sales/{{ page.payment_token }}",
-            "rel": "redirect-sale"
-        },
-        {
-            "method": "GET",
-            "href": "{{ page.front_end_url }}/swish/core/scripts/client/px.swish.client.js?token={{ page.payment_token }}",
-            "rel": "view-sales",
-            "contentType": "application/javascript"
-        }
-    ]
-}
-```
-
-{:.table .table-striped}
-| Field    | Description                                                         |
-| :------- | :------------------------------------------------------------------ |
-| `href`   | The target URI to perform the operation against.                    |
-| `rel`    | The name of the relation the operation has to the current resource. |
-| `method` | The HTTP method to use when performing the operation.               |
-
-The operations should be performed as described in each response and not as
-described here in the documentation.
-Always use the `href` and `method` as specified in the response by finding the
-appropriate operation based on its `rel` value.
-The only thing that should be hard coded in the client is the value of
-the `rel` and the request that will be sent in the HTTP body of the
-request for the given operation.
-
-{:.table .table-striped}
-| Operation       | Description                                                                                                                                |
-| :-------------- | :----------------------------------------------------------------------------------------------------------------------------------------- |
-| `create-sale`   | Creates a `sales` transaction without redirection to a payment page. `Msisdn` is required in browser based scenarioes.                     |
-| `redirect-sale` | Contains the redirect-URI that redirects the consumer to a Swedbank Pay hosted payment page prior to creating a sales transaction.         |
-| `view-sales`    | Contains the URI of the JavaScript used to create a Hosted View iframe directly without redirecting the consumer to separate payment page. |
 
 ## Swish transactions
 
@@ -283,6 +213,19 @@ from Swedbank Pay.
 The `Reversals` resource list the reversals transactions (one or more) on a
 specific payment.
 
+### Reversal Sequence
+
+A reversal transcation need to match the Payee reference of a completed
+sales transaction.
+
+```mermaid
+sequenceDiagram
+  activate Merchant
+  Merchant->>- SwedbankPay: POST <Swish reversal>
+  activate  SwedbankPay
+  SwedbankPay-->>-Merchant: transaction resource
+```
+
 {:.code-header}
 **Request**
 
@@ -323,13 +266,13 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-|     Required     | Field                    | Type         | Description                                                                                                                                                              |
-| :--------------: | :----------------------- | :----------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| {% icon check %}︎ | `transaction`            | `object`     | The `transaction` object, containing information about this `reversal`.                                                                                                  |
-| {% icon check %}︎ | └➔&nbsp;`amount`         | `integer`    | {% include field-description-amount.md %}                                                                                                                                |
-| {% icon check %}︎ | └➔&nbsp;`vatAmount`      | `integer`    | {% include field-description-vatamount.md %}                                                                                                                             |
-| {% icon check %}︎ | └➔&nbsp;`description`    | `string`     | A textual description of the capture                                                                                                                                     |
-| {% icon check %}︎ | └➔&nbsp;`payeeReference` | `string(35)` | A  reference that must match the  `payeeReference` of the sales transaction you want to reverse. See [`payeeReference`][technical-reference-payeeReference] for details. |
+|     Required     | Field                    | Type         | Description                                                                      |
+| :--------------: | :----------------------- | :----------- | :------------------------------------------------------------------------------- |
+| {% icon check %}︎ | `transaction`            | `object`     | The `transaction` object, containing information about this `reversal`.          |
+| {% icon check %}︎ | └➔&nbsp;`amount`         | `integer`    | {% include field-description-amount.md %}                                        |
+| {% icon check %}︎ | └➔&nbsp;`vatAmount`      | `integer`    | {% include field-description-vatamount.md %}                                     |
+| {% icon check %}︎ | └➔&nbsp;`description`    | `string`     | A textual description of the capture                                             |
+| {% icon check %}︎ | └➔&nbsp;`payeeReference` | `string(35)` | {% include field-description-payee-reference.md documentation_section="swish" %} |
 
 {% include transaction-response.md api_resource="swish"
 documentation_section="swish" transaction="reversal" %}
@@ -353,15 +296,8 @@ Swish does not support `recurring` payments.
 {% include iterator.html prev_href="seamless-view" prev_title="Back: Seamless view"
 next_href="other-features" next_title="Next: Other Features" %}
 
-[core-payment-resources]: /payments
-[general-http-info]: /resources/
+[create-payment]: /payments/swish/other-features#create-payment
 [payex-admin-portal]: https://admin.payex.com/psp/login/
-[payment-order]: #create-payment
-[technical-reference-abort]: #abort
+[sales-transaction]: #sales
 [technical-reference-callback]: /payments/swish/other-features#callback
-[technical-reference-expand]: /home/technical-information#expansion
-[technical-reference-payeeReference]: /payments/swish/other-features#payee-reference
-[technical-reference-problemmessages]: /payments/swish/other-features#problem-messages
-[technical-reference-transaction]: /payments/swish/other-features#transaction
-[user-agent]: https://en.wikipedia.org/wiki/User_agent
 [unscheduled-purchase]: /payments/card/other-features#unscheduled-purchase

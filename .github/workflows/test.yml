@@ -1,0 +1,58 @@
+name: Test
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: build
+        run: |
+          docker-compose run \
+            -e PAGES_REPO_NWO=${{ github.repository }} \
+            -e JEKYLL_GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} \
+            portal build
+      - name: Upload site
+        uses: actions/upload-artifact@v2
+        with:
+          name: build-site
+          path: _site
+
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Verify build
+        run: |
+          docker-compose run \
+            -e PAGES_REPO_NWO=${{ github.repository }} \
+            -e JEKYLL_GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} \
+            portal build \
+            --env=production \
+            --verify \
+            --ignore-url http://restcookbook.com/Basics/loggingin/ \
+            --ignore-url https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default
+
+      - name: Upload build output artifacts
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: verify-site
+          path: _site
+
+      - name: Verify absolute URL
+        run: grep 'https://developer.swedbankpay.com/' $(pwd)/_site/index.html
+
+      - name: Verify base URL
+        run: grep 'src="/assets/' $(pwd)/_site/index.html
+
+  remark-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm install
+      - uses: prologic/action-remark-lint@v0.0.5
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-check

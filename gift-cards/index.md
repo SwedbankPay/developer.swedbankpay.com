@@ -33,9 +33,9 @@ system. It's ment to simplify external integration for prepaid gift cards.
 For implementation of the Gift Cards API, please read through the following
 documentation:
 
-* [Test Client][test-client]
-* [Swagger][swagger]
-* [Operations][operations]
+*   [Test Client][test-client]
+*   [Swagger][swagger]
+*   [Operations][operations]
 
 [operations]: /gift-cards/operations
 [swagger]: https://stage-evc.payex.com/payment-api/swagger-ui.html

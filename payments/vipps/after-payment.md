@@ -16,11 +16,6 @@ sidebar:
       title: Other Features
 ---
 
-## Payment Resource
-
-This section describes the general sub-resources of the API that are used to
-generate payment requests.
-
 ### Create Payment
 
 To create a Vipps payment, you perform an HTTP `POST` against the
@@ -106,9 +101,9 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`termsOfServiceUrl` | `string`     | {% include field-description-termsofserviceurl.md %}                                                                                                                                                                                                      |
 | {% icon check %}︎ | └➔&nbsp;`payeeInfo`          | `object`     | The object containing information about the payee.                                                                                                                                                                                                        |
 | {% icon check %}︎ | └─➔&nbsp;`payeeId`           | `string`     | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                                                                     |
-| {% icon check %}︎ | └─➔&nbsp;`payeeReference`    | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation. See [`payeeReference`][payee-reference] for details.                                                                |
+| {% icon check %}︎ | └─➔&nbsp;`payeeReference`    | `string(30)` | {% include field-description-payee-reference.md documentation_section="vipps" %}                                                                                                                                                                          |
 |                  | └─➔&nbsp;`payeeName`         | `string`     | The payee name (like merchant name) that will be displayed to consumer when redirected to Swedbank Pay.                                                                                                                                                   |
-|                  | └─➔&nbsp;`productCategory`   | `strin`      | A product category or number sent in from the payee/merchant. This is not validated by PayEx, but will be passed through the payment process and may be used in the settlement process.                                                                   |
+|                  | └─➔&nbsp;`productCategory`   | `strin`      | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                            |
 |                  | └─➔&nbsp;`orderReference`    | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                   |
 |                  | └─➔&nbsp;`prefillInfo`       | `string`     | The mobile number that will be pre-filled in the Swedbank Pay Payments. The consumer may change this number in the UI.                                                                                                                                    |
 |                  | └─➔&nbsp;`subsite`           | `string(40)` | The `subsite` field can be used to perform split settlement on the payment. The `subsites` must be resolved with Swedbank Pay reconciliation before being used.                                                                                           |
@@ -379,13 +374,13 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-|     Required     | Field                    | Type         | Description                                                                                           |
-| :--------------: | :----------------------- | :----------- | :---------------------------------------------------------------------------------------------------- |
-| {% icon check %} | `transaction`            | `object`     | The trnsaction object.                                                                                |
-| {% icon check %} | └➔&nbsp;`amount`         | `integer`    | {% include field-description-amount.md currency="NOK" %}                                              |
-| {% icon check %} | └➔&nbsp;`vatAmount`      | `integer`    | {% include field-description-vatamount.md currency="NOK" %}                                           |
-| {% icon check %} | └➔&nbsp;`description`    | `string`     | A textual description of the capture                                                                  |
-| {% icon check %} | └➔&nbsp;`payeeReference` | `string(50)` | A unique reference for the reversal transaction. See [`payeeReference`][payee-reference] for details. |
+|     Required     | Field                    | Type         | Description                                                                      |
+| :--------------: | :----------------------- | :----------- | :------------------------------------------------------------------------------- |
+| {% icon check %} | `transaction`            | `object`     | The trnsaction object.                                                           |
+| {% icon check %} | └➔&nbsp;`amount`         | `integer`    | {% include field-description-amount.md currency="NOK" %}                         |
+| {% icon check %} | └➔&nbsp;`vatAmount`      | `integer`    | {% include field-description-vatamount.md currency="NOK" %}                      |
+| {% icon check %} | └➔&nbsp;`description`    | `string`     | A textual description of the capture                                             |
+| {% icon check %} | └➔&nbsp;`payeeReference` | `string(50)` | {% include field-description-payee-reference.md documentation_section="vipps" %} |
 
 {% include transaction-response.md api_resource="vipps"
 documentation_section="vipps" transaction="reversal" %}

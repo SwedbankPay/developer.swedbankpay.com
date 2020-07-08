@@ -42,12 +42,12 @@ set to value `FinancingConsumer` are listed below.
 
 {% include authorizations-resource.md api_resource="invoice" %}
 
-## Payment Resource
-
-{% include payment-resource.md api_resource="invoice" documentation_section="invoice"
-showStatusOperations=true %}
+{% include payment-resource.md api_resource="invoice"
+documentation_section="invoice" show_status_operations=true %}
 
 {% include payment-transaction-states.md %}
+
+{% include payments-operations.md api_resource="invoice" documentation_section="invoice" %}
 
 ## Create Payment
 
@@ -519,7 +519,7 @@ Content-Type: application/json
 | └➔&nbsp;`amount`         | `integer` | {% include field-description-amount.md %}                                                                                                                                                                    |
 | └➔&nbsp;`vatAmount`      | `integer` | {% include field-description-vatamount.md %}                                                                                                                                                                 |
 | └➔&nbsp;`description`    | `string`  | {% include field-description-description.md documentation_section="invoice" %}                                                                                                                               |
-| └➔&nbsp;`payeeReference` | `string`  | The `payeeReference` is the receipt/invoice number and is a unique reference for each transaction.                                                                                                           |
+| └➔&nbsp;`payeeReference` | `string`  | {% include field-description-payee-reference.md documentation_section="invoice" describe_receipt=true %}                                                                                                     |
 | └➔&nbsp;`failedReason`   | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | └➔&nbsp;`isOperational`  | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
 | └➔&nbsp;`operations`     | `array`   | The array of operations that are possible to perform on the transaction in its current state.                                                                                                                |
@@ -538,7 +538,7 @@ documentation_section="invoice" %}
 
 {% include description.md %}
 
-{% include payee-info.md api_resource="invoice" %}
+{% include payee-info.md api_resource="invoice" documentation_section="invoice" %}
 
 {% include prices.md api_resource="invoice" %}
 
@@ -570,6 +570,8 @@ All invoice error types will have the following URI in front of type:
 | `forbidden`     |  403   | Any other error code          |
 
 {% include common-problem-types.md %}
+
+{% include seamless-view-events.md api_resource="invoice" %}
 
 {% include iterator.html prev_href="after-payment" prev_title="Back: After
 Payment" %}

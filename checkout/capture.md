@@ -18,7 +18,7 @@ sidebar:
       title: Other Features
 ---
 
-{% include payment-order-capture.md %}
+{% include payment-order-capture.md documentation_section="checkout"%}
 
 **Et voilà!** Checkout should now be complete, the payment should be secure and
 everyone should be happy. But, sometimes you also need to implement the

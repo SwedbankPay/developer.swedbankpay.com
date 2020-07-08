@@ -49,7 +49,7 @@ the credit card information.
 
 ### API Requests
 
-The API requests are displayed in the [Verification flow]. The options you can
+The API requests are displayed in the Verification flow below. The options you can
 choose from when creating a payment with key operation set to Value Verify are
 listed below.
 
@@ -77,7 +77,7 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",
         "generatePaymentToken": true,
-        "generateRecurrenceToken": false,
+        "generateRecurrenceToken": true,
         "urls": {
             "hostUrls": ["https://example.com", "https://example.net"],
             "completeUrl": "https://example.com/payment-completed",

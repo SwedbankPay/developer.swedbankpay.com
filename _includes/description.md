@@ -1,3 +1,18 @@
+{% assign api_resource = include.api_resource | default: "creditcard" %}
+{% assign show_status_operations = include.show_status_operations | default:
+false %}
+{% case api_resource %}
+{% when "vipps" %}
+  {% assign language = "nb-NO" %}
+  {% assign currency = "NOK" %}
+{% when "mobilepay" %}
+  {% assign language = "da-DK" %}
+  {% assign currency = "DKK" %}
+{% else %}
+  {% assign language = "sv-SE" %}
+  {% assign currency = "SEK" %}
+{% endcase %}
+
 ## Description
 
 The `description` field is a 40 character length textual summary of the
@@ -26,7 +41,7 @@ Content-Type: application/json
     "payment": {
         "operation": "Purchase",
         "intent": "Authorization",
-        "currency": "SEK",
+        "currency": "{{ currency }}",
         "prices": [{
                 "type": "CreditCard",
                 "amount": 1500,
@@ -37,7 +52,7 @@ Content-Type: application/json
         "generatePaymentToken": false,
         "generateRecurrenceToken": false,
         "userAgent": "Mozilla/5.0...",
-        "language": "nb-NO",
+        "language": "{{ language }}",
         "urls":
             "hostUrls": ["https://example.com"],
             "completeUrl": "https://example.com/payment-completed",
@@ -47,7 +62,6 @@ Content-Type: application/json
             "logoUrl": "https://example.com/payment-logo.png",
             "termsOfServiceUrl": "https://example.com/payment-terms.pdf",
         }
-    ]
 }
 ```
 
