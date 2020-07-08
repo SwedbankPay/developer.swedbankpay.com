@@ -46,7 +46,7 @@ this very documentation, not to a version of any APIs described by it." %}
     `instrument`for `PaymentOrder` operations in [Checkout][checkout].
 *   Corrected and updated `view`- operations for all Payment instruments. 
 *   Updated [Seamless View Events][seamless-view-events-card] for all Payments.
-*   Added `nonPaymentToken` and `externalNonPaymentToken` description in
+*   Described `nonPaymentToken` and `externalNonPaymentToken` in
     [Card Payments][card].
 *   Small corrections to [Swish Payments][swish] documentation. 
 *   Clarified the [`updateOrder`][update-order-checkout] documentation. 
