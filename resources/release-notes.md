@@ -31,9 +31,9 @@ published on this page." %}
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
 
-## July 2020
+## 07 July 2020
 
-## Version 1.12.0
+### Version 1.12.0
 
 *   Added information on 3-D Secure 2 for [Checkout][checkout-3ds2] and 
     [Card Payments][card-3ds2]. 
@@ -51,7 +51,7 @@ this very documentation, not to a version of any APIs described by it." %}
 *   Small corrections to [Swish Payments][swish] documentation. 
 *   Clarified the [`updateOrder`][update-order-checkout] documentation. 
 
-## May 2020
+## 04 June 2020
 
 ### Version 1.11.1
 
@@ -61,16 +61,22 @@ this very documentation, not to a version of any APIs described by it." %}
     Seamless View][card-seamless-view] sequence diagrams.
 *   Added [Abort][swish-abort] in [Swish Payments][swish].
 
+## 29 May 2020
+
 ### Version 1.11.0
 
 *   Added a new [Trustly Payments][trustly-payments] section.
 *   Added information about [Storing URIs][storing-uri] in the [Technical
     Information][home-technical-information] section.
 
+## 22 May 2020
+
 ### Version 1.10.1
 
 *   Updated [Swish Redirect][swish-redirect] requests.
 *   Added `orderReference` information in Payment Order Callback in [Checkout Other features][checkout-callback].
+
+## 14 May 2020
 
 ### Version 1.10.0
 
@@ -78,9 +84,13 @@ this very documentation, not to a version of any APIs described by it." %}
 *   Added a new section [Co-badge Card Choice for Dankort][co-badge-card] in
     [Card Payments][card-payment-url].
 
+## 07 May 2020
+
 ### Version 1.9.2
 
 *   Corrected table in [payments page][payments]
+
+## 07 May 2020
 
 ### Version 1.9.1
 
@@ -449,7 +459,7 @@ integration and the payer.
 [swish-other-features]: /payments/swish/other-features
 [swish-redirect]: /payments/swish/redirect
 [swish-seamless-view]: /payments/swish/seamless-view
-[seamless-view-events-card]: payments/card/other-features#seamless-view-events
+[seamless-view-events-card]: /payments/card/other-features#seamless-view-events
 [swish]: /payments/swish
 [swish-abort]: /payments/swish/after-payment#abort
 [terminology]: /resources/terminology
