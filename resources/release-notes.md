@@ -90,8 +90,6 @@ this very documentation, not to a version of any APIs described by it." %}
 
 *   Corrected table in [payments page][payments]
 
-## 07 May 2020
-
 ### Version 1.9.1
 
 *   Corrected sequence diagrams in [Swish Payments][swish] and
