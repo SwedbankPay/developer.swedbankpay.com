@@ -1251,9 +1251,9 @@ setting the `disablePaymentMenu` field to `true`. The default value is
 ![example disablePaymentMenu = false][image_enabled_payment_menu]{:width="450" :height="850"}
 
 Setting `disablePaymentMenu` field to `true` removes all other payment
-instruments but the one that is available.
-This feature is only valuable to set to `true` if you have only one payment
-instrument available. By setting it to `true` will remove the frame around the
+instruments, except the one that is available.
+This feature should be set to `true` if you have only one payment
+instrument available. Setting it to `true` will remove the frame around the
 menu and show only the instrument.
 
 {:.code-header}
