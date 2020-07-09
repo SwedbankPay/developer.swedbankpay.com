@@ -167,8 +167,8 @@ Content-Type: application/json
         "currency": "SEK",
         "amount": 1500,
         "vatAmount": 375,
-        "description": "Test Purchase",
-        "generatePaymentToken": true,
+        "description": "Test Purchase",{% if local_documentation_section == "payment-menu" %}
+        "generatePaymentToken": true,{% endif %}
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "instrument": "CreditCard"
@@ -193,8 +193,8 @@ Content-Type: application/json
 {
     "paymentOrder": {
         "id": "/psp/paymentorders/{{ page.payment_order_id }}",
-        "instrument": "CreditCard"
-        "paymentToken" : "{{ page.payment_token }}",
+        "instrument": "CreditCard"{% if local_documentation_section == "payment-menu" %}
+        "paymentToken" : "{{ page.payment_token }}",{% endif %}
         "created": "2020-06-22T10:56:56.2927632Z",
         "updated": "2020-06-22T10:56:56.4035291Z",
         "operation": "Purchase",
@@ -896,8 +896,8 @@ Content-Type: application/json
         "description": "Test Verification",
         "payerReference": "AB1234",
         "userAgent": "Mozilla/5.0...",
-        "language": "nb-NO",
-        "generatePaymentToken": true,
+        "language": "nb-NO",{% if local_documentation_section == "payment-menu" %}
+        "generatePaymentToken": true,{% endif %}
         "generateRecurrenceToken": true,
         "urls": {
             "hostUrls": ["https://example.com", "https://example.net"],
@@ -932,8 +932,8 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`currency`                | `string`     | The currency of the payment.                                                                                                                                                                                                                                                                                                                                                                                  |
 | {% icon check %} | └➔&nbsp;`amount`                  | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                                                                                                                                                                                                     |
 | {% icon check %} | └➔&nbsp;`vatAmount`               | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                                                                                                                                                                                                                  |
-| {% icon check %} | └➔&nbsp;`description`             | `string`     | The description of the payment order.                                                                                                                                                                                                                                                                                                                                                                         |
-| {% icon check %} | └➔&nbsp;`generatePaymentToken`    | `bool`       | `true` or `false`. Set this to `true` if you want to create a paymentToken for future use as [One Click Payments][one-click-payments].                                                                                                                                                                                                                                                                        |
+| {% icon check %} | └➔&nbsp;`description`             | `string`     | The description of the payment order.                                                                                                                                                                                                                                                                                                                                                                         |{% if local_documentation_section == "payment-menu" %}
+| {% icon check %} | └➔&nbsp;`generatePaymentToken`    | `bool`       | `true` or `false`. Set this to `true` if you want to create a paymentToken for future use as [One Click Payments][one-click-payments].                                                                                                                                                                                                                                                                      |{% endif %}
 | {% icon check %} | └➔&nbsp;`userAgent`               | `string`     | The user agent of the payer.                                                                                                                                                                                                                                                                                                                                                                                  |
 | {% icon check %} | └➔&nbsp;`language`                | `string`     | The language of the payer.                                                                                                                                                                                                                                                                                                                                                                                    |
 | {% icon check %} | └➔&nbsp;`generateRecurrenceToken` | `bool`       | Determines whether a recurrence token should be generated. A recurrence token is primarily used to enable future [recurring payments](/{{ local_documentation_section }}/other-features#recurring-payments) – with the same token – through server-to-server calls. Default value is `false`.                                                                                                                 |
@@ -962,8 +962,8 @@ Content-Type: application/json
 
 {
     "payment": {
-        "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
-        "paymentToken" : "{{ page.payment_token }}",
+        "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",{% if local_documentation_section == "payment-menu" %}
+        "paymentToken" : "{{ page.payment_token }}",{% endif %}
         "number": 1234567890,
         "created": "2016-09-14T13:21:29.3182115Z",
         "updated": "2016-09-14T13:21:57.6627579Z",
@@ -1015,8 +1015,8 @@ Content-Type: application/json
 | Field                               | Data type    | Description                                                                                                                                                                                      |
 | :---------------------------------- | :----------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `payment`                           | `object`     | The payment object contains information about the retrieved payment.                                                                                                                             |
-| └➔&nbsp;`id`                        | `string`     | {% include field-description-id.md %}                                                                                                                                                            |
-| └➔&nbsp;`paymentToken`              | `string`     | The payment token created for the purchase used in the authorization to create [One Click Payments][one-click-payments].                                                                         |
+| └➔&nbsp;`id`                        | `string`     | {% include field-description-id.md %}                                                                                                                                                            |{% if local_documentation_section == "payment-menu" %}
+| └➔&nbsp;`paymentToken`              | `string`     | The payment token created for the purchase used in the authorization to create [One Click Payments][one-click-payments].                                                                  |{% endif %}
 | └➔&nbsp;`number`                    | `integer`    | The payment `number`, useful when there's need to reference the payment in human communication. Not usable for programmatic identification of the payment, for that `id` should be used instead. |
 | └➔&nbsp;`created`                   | `string`     | The ISO-8601 date of when the payment was created.                                                                                                                                               |
 | └➔&nbsp;`updated`                   | `string`     | The ISO-8601 date of when the payment was updated.                                                                                                                                               |
@@ -1414,6 +1414,8 @@ The structure of a problem message will look like this:
 
 {% include merchant-identified-payer.md documentation_section="checkout"%}
 
+{% if local_documentation_section == "payment-menu" %}
+
 ## One-Click Payments
 
 One-Click Payments should be used if you want to present your own Payment Menu
@@ -1424,6 +1426,8 @@ a `paymentToken` (with `generatePaymentToken` in a `Purchase` or `Verify`
 request) to be able to use this feature. You will also need to turn the
 `Payment Order` into instrument mode (only show one instrument)
 with the request parameter `instrument`.
+
+{% endif %}
 
 {% include settlement-reconciliation.md api_resource="paymentorders" %}
 
