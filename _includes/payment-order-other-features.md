@@ -1174,9 +1174,11 @@ Content-Type: application/json
 ### Payer Resource
 
 The `payer` resource contains payer information related to the payment order.
+{% if local_documentation_section == "checkout" %}
 The information is retrieved via a consumer profile token
 (`consumerProfileRef`), from the [Consumers resource][payee-reference]
 during login/checkin.
+{% endif %}
 
 {:.code-header}
 **Request**
