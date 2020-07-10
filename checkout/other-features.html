@@ -544,7 +544,6 @@ and <code class="language-html highlighter-rouge">currentPayment</code>.</p>
 92
 93
 94
-95
 </pre></td><td class="rouge-code"><pre><span class="nf">POST</span> <span class="nn">/psp/paymentorders</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">api.externalintegration.payex.com</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
@@ -557,7 +556,6 @@ and <code class="language-html highlighter-rouge">currentPayment</code>.</p>
         </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w">
         </span><span class="nl">"vatAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">375</span><span class="p">,</span><span class="w">
         </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test Purchase"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"generatePaymentToken"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="nl">"userAgent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mozilla/5.0..."</span><span class="p">,</span><span class="w">
         </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sv-SE"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"instrument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CreditCard"</span><span class="w">
@@ -723,7 +721,6 @@ and <code class="language-html highlighter-rouge">currentPayment</code>.</p>
 77
 78
 79
-80
 </pre></td><td class="rouge-code"><pre><span class="nf">POST</span> <span class="nn">/psp/paymentorders</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">api.externalintegration.payex.com</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
@@ -732,8 +729,7 @@ and <code class="language-html highlighter-rouge">currentPayment</code>.</p>
 <span class="w">
     </span><span class="nl">"paymentOrder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/paymentorders/09ccd29a-7c4f-4752-9396-12100cbfecce"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"instrument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CreditCard"</span><span class="w">
-        </span><span class="nl">"paymentToken"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5a17c24e-d459-4567-bbad-aa0f17a76119"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"instrument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CreditCard"</span><span class="w"> 
         </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-06-22T10:56:56.2927632Z"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-06-22T10:56:56.4035291Z"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"operation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Purchase"</span><span class="p">,</span><span class="w">
@@ -857,12 +853,6 @@ and <code class="language-html highlighter-rouge">currentPayment</code>.</p>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">instrument</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The payment instrument used. Selected by using the <a href="/checkout/other-features#instrument-mode">Instrument Mode</a>.</td>
-    </tr>
-    <tr>
-      <td style="text-align: center"><i class="material-icons">check</i></td>
-      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">generatePaymentToken</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">bool</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">true</code> or <code class="language-html highlighter-rouge">false</code>. Set this to <code class="language-html highlighter-rouge">true</code> if you want to create a <code class="language-html highlighter-rouge">paymentToken</code> to use in future <a href="/payment-menu/other-features#one-click-payments">One Click Payments</a>.</td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
@@ -1222,11 +1212,6 @@ and <code class="language-html highlighter-rouge">currentPayment</code>.</p>
       <td style="text-align: left">The payment instrument used. Selected by using the <a href="/checkout/other-features#instrument-mode">Instrument Mode</a>.</td>
     </tr>
     <tr>
-      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">paymentToken</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">he payment token created for the purchase used in the authorization to create <a href="/payment-menu/other-features#one-click-payments">One Click Payments</a>.</td>
-    </tr>
-    <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">created</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The ISO-8601 date of when the payment order was created.</td>
@@ -1383,7 +1368,6 @@ shown in the payment window, but it is still required in the initial request.</p
 27
 28
 29
-30
 </pre></td><td class="rouge-code"><pre><span class="nf">POST</span> <span class="nn">/psp/creditcard/payments</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
@@ -1400,7 +1384,6 @@ shown in the payment window, but it is still required in the initial request.</p
             </span><span class="p">}</span><span class="w">
         </span><span class="p">],</span><span class="w">
         </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test purchase - orderNumber28749347"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"generatePaymentToken"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="nl">"generateRecurrenceToken"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="nl">"userAgent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mozilla/5.0..."</span><span class="p">,</span><span class="w">
         </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sv-SE"</span><span class="p">,</span><span class="w">
@@ -1933,7 +1916,6 @@ indifferent to the payment instrument in use.</p>
 20
 21
 22
-23
 </pre></td><td class="rouge-code"><pre><span class="nf">POST</span> <span class="nn">/psp/paymentorders</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">api.externalintegration.payex.com</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
@@ -1946,7 +1928,6 @@ indifferent to the payment instrument in use.</p>
         </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w">
         </span><span class="nl">"vatAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">375</span><span class="p">,</span><span class="w">
         </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test Purchase"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"generatePaymentToken"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="nl">"userAgent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mozilla/5.0..."</span><span class="p">,</span><span class="w">
         </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sv-SE"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"instrument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CreditCard"</span><span class="w">
@@ -1982,7 +1963,6 @@ indifferent to the payment instrument in use.</p>
 19
 20
 21
-22
 </pre></td><td class="rouge-code"><pre><span class="nf">POST</span> <span class="nn">/psp/paymentorders</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">api.externalintegration.payex.com</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
@@ -1992,7 +1972,6 @@ indifferent to the payment instrument in use.</p>
     </span><span class="nl">"paymentOrder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/paymentorders/09ccd29a-7c4f-4752-9396-12100cbfecce"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"instrument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CreditCard"</span><span class="w">
-        </span><span class="nl">"paymentToken"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5a17c24e-d459-4567-bbad-aa0f17a76119"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-06-22T10:56:56.2927632Z"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-06-22T10:56:56.4035291Z"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"operation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Purchase"</span><span class="p">,</span><span class="w">
@@ -4494,7 +4473,6 @@ operation.</p>
 35
 36
 37
-38
 </pre></td><td class="rouge-code"><pre><span class="nf">POST</span> <span class="nn">/psp/paymentorders/payments</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">api.externalintegration.payex.com</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
@@ -4508,7 +4486,6 @@ operation.</p>
         </span><span class="nl">"payerReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AB1234"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"userAgent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mozilla/5.0..."</span><span class="p">,</span><span class="w">
         </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nb-NO"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"generatePaymentToken"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="nl">"generateRecurrenceToken"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="nl">"urls"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="nl">"hostUrls"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"https://example.com"</span><span class="p">,</span><span class="w"> </span><span class="s2">"https://example.net"</span><span class="p">],</span><span class="w">
@@ -4580,12 +4557,6 @@ operation.</p>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">description</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The description of the payment order.</td>
-    </tr>
-    <tr>
-      <td style="text-align: center"><i class="material-icons">check</i></td>
-      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">generatePaymentToken</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">bool</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">true</code> or <code class="language-html highlighter-rouge">false</code>. Set this to <code class="language-html highlighter-rouge">true</code> if you want to create a paymentToken for future use as <a href="/payment-menu/other-features#one-click-payments">One Click Payments</a>.</td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
@@ -4751,14 +4722,12 @@ operation.</p>
 49
 50
 51
-52
 </pre></td><td class="rouge-code"><pre><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
 <span class="p">{</span><span class="w">
     </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/paymentorders/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"paymentToken"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5a17c24e-d459-4567-bbad-aa0f17a76119"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
         </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-14T13:21:29.3182115Z"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-14T13:21:57.6627579Z"</span><span class="p">,</span><span class="w">
@@ -4824,11 +4793,6 @@ operation.</p>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">id</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">transactions</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">paymentToken</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The payment token created for the purchase used in the authorization to create <a href="/payment-menu/other-features#one-click-payments">One Click Payments</a>.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">number</code></td>
@@ -5545,9 +5509,9 @@ setting the <code class="language-html highlighter-rouge">disablePaymentMenu</co
 <p class="text-center"><img src="/assets/img/checkout/guest-payment-menu-450x850.png" alt="example disablePaymentMenu = false" width="450" /></p>
 
 <p>Setting <code class="language-html highlighter-rouge">disablePaymentMenu</code> field to <code class="language-html highlighter-rouge">true</code> removes all other payment
-instruments but the one that is available.
-This feature is only valuable to set to <code class="language-html highlighter-rouge">true</code> if you have only one payment
-instrument available. By setting it to <code class="language-html highlighter-rouge">true</code> will remove the frame around the
+instruments, except the one that is available.
+This feature should be set to <code class="language-html highlighter-rouge">true</code> if you have only one payment
+instrument available. Setting it to <code class="language-html highlighter-rouge">true</code> will remove the frame around the
 menu and show only the instrument.</p>
 
 <p class="code-header"><strong>Request</strong></p>
@@ -6305,23 +6269,6 @@ different payment tokens (<code class="language-html highlighter-rouge">paymentT
 specific <code class="language-html highlighter-rouge">payerReference</code>. You should always look up this information for 
 each payment as the payer can have added new payment information through the a 
 web interface since the last time the app was used.</p>
-    
-      <h2 id="one-click-payments">
-        
-        
-          One-Click Payments <a href="#one-click-payments" class="header-anchor"></a>
-        
-        
-      </h2>
-
-<p>One-Click Payments should be used if you want to present your own Payment Menu
-in all channels you want to support. This means that if you are both on the
-web and in-app you will need to build your own payment menu to be able to use
-the One-Click Payment functionality. You will need to ask the system to generate
-a <code class="language-html highlighter-rouge">paymentToken</code> (with <code class="language-html highlighter-rouge">generatePaymentToken</code> in a <code class="language-html highlighter-rouge">Purchase</code> or <code class="language-html highlighter-rouge">Verify</code>
-request) to be able to use this feature. You will also need to turn the
-<code class="language-html highlighter-rouge">Payment Order</code> into instrument mode (only show one instrument)
-with the request parameter <code class="language-html highlighter-rouge">instrument</code>.</p>
     
       <h2 id="settlement-and-reconciliation">
         
@@ -7228,7 +7175,6 @@ elements. When in doubt, please follow the <a href="https://en.wikipedia.org/wik
   <li class="toc-2"><a href="#payee-reference">Payee Reference</a></li>
   <li class="toc-2"><a href="#merchant-authenticated-consumer">Merchant Authenticated Consumer</a></li>
   <li class="toc-2"><a href="#merchant-identified-payer">Merchant Identified Payer</a></li>
-  <li class="toc-2"><a href="#one-click-payments">One-Click Payments</a></li>
   <li class="toc-2"><a href="#settlement-and-reconciliation">Settlement and Reconciliation</a></li>
   <li class="toc-2"><a href="#3-d-secure-2">3-D Secure 2</a></li>
   <li class="toc-2"><a href="#updating-payment-menu">Updating Payment Menu</a></li>

@@ -368,7 +368,6 @@ both the integration and the payer.</p>
 92
 93
 94
-95
 </pre></td><td class="rouge-code"><pre><span class="nf">POST</span> <span class="nn">/psp/paymentorders</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">api.externalintegration.payex.com</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
@@ -381,7 +380,6 @@ both the integration and the payer.</p>
         </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w">
         </span><span class="nl">"vatAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">375</span><span class="p">,</span><span class="w">
         </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test Purchase"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"generatePaymentToken"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="nl">"userAgent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mozilla/5.0..."</span><span class="p">,</span><span class="w">
         </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sv-SE"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"instrument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CreditCard"</span><span class="w">
@@ -547,7 +545,6 @@ both the integration and the payer.</p>
 77
 78
 79
-80
 </pre></td><td class="rouge-code"><pre><span class="nf">POST</span> <span class="nn">/psp/paymentorders</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">api.externalintegration.payex.com</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
@@ -556,8 +553,7 @@ both the integration and the payer.</p>
 <span class="w">
     </span><span class="nl">"paymentOrder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/paymentorders/09ccd29a-7c4f-4752-9396-12100cbfecce"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"instrument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CreditCard"</span><span class="w">
-        </span><span class="nl">"paymentToken"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5a17c24e-d459-4567-bbad-aa0f17a76119"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"instrument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CreditCard"</span><span class="w"> 
         </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-06-22T10:56:56.2927632Z"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-06-22T10:56:56.4035291Z"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"operation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Purchase"</span><span class="p">,</span><span class="w">
@@ -681,12 +677,6 @@ both the integration and the payer.</p>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">instrument</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The payment instrument used. Selected by using the <a href="/checkout/other-features#instrument-mode">Instrument Mode</a>.</td>
-    </tr>
-    <tr>
-      <td style="text-align: center"><i class="material-icons">check</i></td>
-      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">generatePaymentToken</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">bool</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">true</code> or <code class="language-html highlighter-rouge">false</code>. Set this to <code class="language-html highlighter-rouge">true</code> if you want to create a <code class="language-html highlighter-rouge">paymentToken</code> to use in future <a href="/payment-menu/other-features#one-click-payments">One Click Payments</a>.</td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
@@ -1044,11 +1034,6 @@ both the integration and the payer.</p>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">instrument</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The payment instrument used. Selected by using the <a href="/checkout/other-features#instrument-mode">Instrument Mode</a>.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">paymentToken</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">he payment token created for the purchase used in the authorization to create <a href="/payment-menu/other-features#one-click-payments">One Click Payments</a>.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">created</code></td>
