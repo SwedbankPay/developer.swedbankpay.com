@@ -16,7 +16,7 @@ To create a payment order, you perform a `POST` request towards the
 {% include payment-order-purchase.md
 documentation_section=local_documentation_section operation_status_bool="true" %}
 
-{% include description.md %}
+{% include description.md api_resource = "paymentorders" %}
 
 ### URLs
 
