@@ -167,13 +167,12 @@ Content-Type: application/json
         "currency": "SEK",
         "amount": 1500,
         "vatAmount": 375,
-        "description": "Test Purchase",{% if local_documentation_section == "payment-menu" %}
-        "generatePaymentToken": true,{% endif %}
+        "description": "Test Purchase",
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "instrument": "CreditCard"
-        "generateRecurrenceToken": true,
-        "restrictedToInstruments": ["CreditCard", "Invoice"],
+        "generateRecurrenceToken": true,{% if local_documentation_section == "payment-menu" %}
+        "generatePaymentToken": true,{% endif %}
         "urls": {
             "hostUrls": [ "https://example.com", "https://example.net" ],
         }
