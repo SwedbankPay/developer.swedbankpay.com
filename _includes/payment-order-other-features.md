@@ -1411,7 +1411,9 @@ The structure of a problem message will look like this:
 
 {% include payee-info.md api_resource="paymentorders" documentation_section=documentation_section %}
 
+{% if local_documentation_section == "checkout" %}
 {% include merchant-authenticated-consumer.md %}
+{% endif %}
 
 {% include merchant-identified-payer.md documentation_section="checkout"%}
 
