@@ -33,7 +33,7 @@ this very documentation, not to a version of any APIs described by it." %}
 
 ## 10 July 2020
 
-### Version 1.12.1@
+### Version 1.12.1
 
 *   Corrected the documentation by removing `generatePaymentToken` and
     `paymentToken` from [Checkout][checkout].
