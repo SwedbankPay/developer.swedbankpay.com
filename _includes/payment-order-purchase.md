@@ -16,8 +16,8 @@ Content-Type: application/json
         "currency": "SEK",
         "amount": 1500,
         "vatAmount": 375,
-        "description": "Test Purchase",
-        "generatePaymentToken": true,
+        "description": "Test Purchase",{% if local_documentation_section == "payment-menu" %}
+        "generatePaymentToken": true,{% endif %}
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "instrument": "CreditCard"
@@ -114,8 +114,8 @@ Content-Type: application/json
 
     "paymentOrder": {
         "id": "/psp/paymentorders/{{ page.payment_order_id }}",
-        "instrument": "CreditCard"
-        "paymentToken" : "{{ page.payment_token }}",
+        "instrument": "CreditCard" {% if local_documentation_section == "payment-menu" %}
+        "paymentToken" : "{{ page.payment_token }}",{% endif %}
         "created": "2020-06-22T10:56:56.2927632Z",
         "updated": "2020-06-22T10:56:56.4035291Z",
         "operation": "Purchase",
@@ -197,8 +197,8 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`amount`                  | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                                                                                                                                                                                                     |
 | {% icon check %} | └➔&nbsp;`vatAmount`               | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                                                                                                                                                                                                                  |
 | {% icon check %} | └➔&nbsp;`description`             | `string`     | The description of the payment order.                                                                                                                                                                                                                                                                                                                                                                         |
-| {% icon check %} | └➔&nbsp;`instrument`              | `string`     | The payment instrument used. Selected by using the [Instrument Mode](/{{ documentation_section }}/other-features#instrument-mode).                                                                                                                                                                                                                                                                            |
-| {% icon check %} | └➔&nbsp;`generatePaymentToken`    | `bool`       | `true` or `false`. Set this to `true` if you want to create a `paymentToken` to use in future [One Click Payments][one-click-payments].                                                                                                                                                                                                                                                                       |
+| {% icon check %} | └➔&nbsp;`instrument`              | `string`     | The payment instrument used. Selected by using the [Instrument Mode](/{{ documentation_section }}/other-features#instrument-mode).                                                                                                                                                                                                                                                                                                                                                                                                                             |{% if local_documentation_section == "payment-menu" %}
+| {% icon check %} | └➔&nbsp;`generatePaymentToken`    | `bool`       | `true` or `false`. Set this to `true` if you want to create a `paymentToken` to use in future [One Click Payments][one-click-payments].                                                                                                                                                                                                                                                                       |{% endif %}
 | {% icon check %} | └➔&nbsp;`userAgent`               | `string`     | The user agent of the payer.                                                                                                                                                                                                                                                                                                                                                                                  |
 | {% icon check %} | └➔&nbsp;`language`                | `string`     | The language of the payer.                                                                                                                                                                                                                                                                                                                                                                                    |
 | {% icon check %} | └➔&nbsp;`generateRecurrenceToken` | `bool`       | Determines whether a recurrence token should be generated. A recurrence token is primarily used to enable future [recurring payments](/{{ local_documentation_section }}/other-features#recurring-payments) – with the same token – through server-to-server calls. Default value is `false`.                                                                                                                       |
@@ -246,8 +246,8 @@ Content-Type: application/json
 | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `paymentorder`           | `object`     | The payment order object.                                                                                                                                                                                                 |
 | └➔&nbsp;`id`             | `string`     | {% include field-description-id.md resource="paymentorder" %}                                                                                                                                                             |
-| └➔&nbsp;`instrument`     | `string`     | The payment instrument used. Selected by using the [Instrument Mode](/{{ documentation_section }}/other-features#instrument-mode).                                                                                        |
-| └➔&nbsp;`paymentToken`   | `string`     | he payment token created for the purchase used in the authorization to create [One Click Payments][one-click-payments].                                                                                                   |
+| └➔&nbsp;`instrument`     | `string`     | The payment instrument used. Selected by using the [Instrument Mode](/{{ documentation_section }}/other-features#instrument-mode).                                                                    |{% if local_documentation_section == "payment-menu" %}
+| └➔&nbsp;`paymentToken`   | `string`     | The payment token created for the purchase used in the authorization to create [One Click Payments][one-click-payments].                                                                               |{% endif %}
 | └➔&nbsp;`created`        | `string`     | The ISO-8601 date of when the payment order was created.                                                                                                                                                                  |
 | └➔&nbsp;`updated`        | `string`     | The ISO-8601 date of when the payment order was updated.                                                                                                                                                                  |
 | └➔&nbsp;`operation`      | `string`     | `Purchase`                                                                                                                                                                                                                |

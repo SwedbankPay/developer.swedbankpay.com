@@ -1,4 +1,5 @@
 {% assign api_resource = include.api_resource | default: "creditcard" %}
+{% assign documentation_section = include.documentation_section %}
 {% assign show_status_operations = include.show_status_operations | default:
 false %}
 {% case api_resource %}
@@ -48,8 +49,8 @@ Content-Type: application/json
                 "vatAmount": 0
             }
         ],
-        "description": "test purchase - orderNumber28749347",
-        "generatePaymentToken": false,
+        "description": "test purchase - orderNumber28749347",{% if documentation_section == "payment_menu" %}
+        "generatePaymentToken": false,{% endif %}
         "generateRecurrenceToken": false,
         "userAgent": "Mozilla/5.0...",
         "language": "{{ language }}",
