@@ -1,10 +1,6 @@
 {% assign documentation_section = include.documentation_section %}
 {% assign local_documentation_section = documentation_section %}
-{% if operation_status_bool == "true" %}
-    {% assign operation_status = "true" %}
- {% else %}
-     {% assign operation_status = "false" %}
- {% endif %}
+{% assign operation_status_bool = include.operation_status_bool | default: "false" %}
 
 {:.code-header}
 **Request**
@@ -25,8 +21,8 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "instrument": "CreditCard"
-        "generateRecurrenceToken": {{ operation_status }},{% if local_documentation_section == "payment-menu" %}
-        "generatePaymentToken": {{ operation_status }},{% endif %}
+        "generateRecurrenceToken": {{ operation_status_bool }},{% if local_documentation_section == "payment-menu" %}
+        "generatePaymentToken": {{ operation_status_bool }},{% endif %}
         "urls": {
             "hostUrls": [ "https://example.com", "https://example.net" ],
             "completeUrl": "https://example.com/payment-completed",
