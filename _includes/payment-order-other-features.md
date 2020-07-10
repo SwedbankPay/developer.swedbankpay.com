@@ -13,7 +13,8 @@ The `paymentorders` resource and how you interact with it is described below.
 To create a payment order, you perform a `POST` request towards the
 `paymentorders` resource:
 
-{% include payment-order-purchase.md documentation_section=local_documentation_section %}
+{% include payment-order-purchase.md
+documentation_section=local_documentation_section operation_status_bool="true" %}
 
 {% include description.md %}
 
@@ -1457,7 +1458,7 @@ elements. When in doubt, please follow the [robustness principle](https://en.wik
 [current-payment]: #current-payment-resource
 [expanding]: /home/technical-information#expansion
 [http-api-problems]: https://tools.ietf.org/html/rfc7807
-[image_disabled_payment_menu]: /assets/img/checkout/test-purchase.png
+[image_disabled_payment_menu]: /assets/img/checkout/disabled-payment-menu.png
 [image_enabled_payment_menu]: /assets/img/checkout/guest-payment-menu-450x850.png
 [one-click-payments]: /payment-menu/other-features#one-click-payments
 [operations]: #operations
