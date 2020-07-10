@@ -312,7 +312,39 @@ merchant. The reversal amount will be charged from the sub merchants prefix. If
 the sub merchants balance is 0 (zero), the super merchant will be invoiced. The
 super merchant will in turn have to invoice this amount to the sub merchant.
 
-[payex-checkout]: /checkout
+##### Pba mapping tables
+
+
+{:.table .table-striped}
+| XLSX                            | XLM       | Request API    |    Response API
+|
+|:--------------------------------|:-----------|:----------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------|
+| `Swedbank Pay Batch Number`     | `SwedbankbatchNo`       |                                                                |
+| `Transaction Number`            | `TransactionNo`         |                                                                |
+| `Order id`                      | `OrderId`               |                                                                |
+| `Date Created`                  | `DateCreated`           |                                                                |
+| `Date Modified`                 | `DateModified`          |                                                                |
+| `Provider`                      | `Provider`              |                                                                |
+| `Type`                          | `Type`                  |                                                                |
+| `Amount`                        | `Amount`                |                                                                |
+| `Currency`                      | `Currency`              | payment.currency  |  payment.currency                          |
+| `Product Number`                | `MerchantProductNo`     |                                                                |
+| `Description`                   | `Description`           |                                                                |
+| `VAT Amount`                    | `VATAmount`             |                                                                |
+| `VAT Percentage`                | `VatoPercentage`        |                                                                |
+| `Credit Card Batch Number`      | `CreditCardBatchNo`     |                                                                |
+| `Direct Debit Bank Reference`   | `DirectDebitbankRef`    |                                                                |
+| `Reference`                     | `Reference`             |                                                                |
+| `Swedbank Account Number`       | `SwedbankAccountNo`     |                                                                |
+| `Referenced Transaction Number` | `ReferencedTransaction` |                                                                |
+| `Sales Channel`                 | `SalesChannel`          |                                                                |
+| `Brand`                         |                         |                                                                |
+| `Point Of Sale`                 |                         |                                                                |
+
+#### Reversal
+
+{% include pba-tables.md documentation_section=documentation_section %}
+
 [attachement-1]: /assets/documents/testredovisning-payexcheckout.pdf
 [balance-report-sbp-pdf]: /assets/documents/r1234-0001-redov.service.pdf
 [trans-list-sbp-xlsx]: /assets/documents/transaktionsstatistik-redovisningsservice.xlsx
