@@ -171,7 +171,7 @@ would be `+4792345678`.
 No number input is needed in the mCommerce flow. The payer's mobile number must
 be connected to a Swish account.
 
-{% include settlement-reconciliation.md %}
+{% include settlement-reconciliation.md documentation_section="swish" %}
 
 {% include payment-link.md show_3d_secure=false show_authorization=false %}
 
