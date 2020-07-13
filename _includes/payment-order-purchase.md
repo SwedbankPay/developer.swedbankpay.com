@@ -1,5 +1,6 @@
 {% assign documentation_section = include.documentation_section %}
 {% assign local_documentation_section = documentation_section %}
+{% assign operation_status_bool = include.operation_status_bool | default: "false" %}
 
 {:.code-header}
 **Request**
@@ -16,13 +17,12 @@ Content-Type: application/json
         "currency": "SEK",
         "amount": 1500,
         "vatAmount": 375,
-        "description": "Test Purchase",{% if local_documentation_section == "payment-menu" %}
-        "generatePaymentToken": true,{% endif %}
+        "description": "Test Purchase",
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "instrument": "CreditCard"
-        "generateRecurrenceToken": true,
-        "restrictedToInstruments": ["CreditCard", "Invoice"],
+        "generateRecurrenceToken": {{ operation_status_bool }},{% if local_documentation_section == "payment-menu" %}
+        "generatePaymentToken": {{ operation_status_bool }},{% endif %}
         "urls": {
             "hostUrls": [ "https://example.com", "https://example.net" ],
             "completeUrl": "https://example.com/payment-completed",
@@ -39,8 +39,8 @@ Content-Type: application/json
             "orderReference": "or-123456",
             "subsite": "MySubsite"
         },
-        "payer": {
-            "consumerProfileRef": "{{ page.payment_token }}",
+        "payer": {  {% if local_documentation_section == "checkout" %}
+            "consumerProfileRef": "{{ page.payment_token }}",{% endif %}
             "email": "olivia.nyhuus@payex.com",
             "msisdn": "+4798765432",
             "workPhoneNumber" : "+4787654321",
@@ -76,9 +76,6 @@ Content-Type: application/json
                 "vatPercent": 0,
                 "amount": 1900,
                 "vatAmount": 0,
-                "restrictedToInstruments": [
-                    "Invoice-PayExFinancingSe", "Invoice-CampaignInvoiceSe"
-                ]
             }
         ],
         "riskIndicator": {
@@ -197,12 +194,11 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`amount`                  | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                                                                                                                                                                                                     |
 | {% icon check %} | └➔&nbsp;`vatAmount`               | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                                                                                                                                                                                                                  |
 | {% icon check %} | └➔&nbsp;`description`             | `string`     | The description of the payment order.                                                                                                                                                                                                                                                                                                                                                                         |
-| {% icon check %} | └➔&nbsp;`instrument`              | `string`     | The payment instrument used. Selected by using the [Instrument Mode](/{{ documentation_section }}/other-features#instrument-mode).                                                                                                                                                                                                                                                                                                                                                                                                                             |{% if local_documentation_section == "payment-menu" %}
+| {% icon check %} | └➔&nbsp;`instrument`              | `string`     | The payment instrument used. Selected by using the [Instrument Mode](/{{ documentation_section }}/other-features#instrument-mode).                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| {% icon check %} | └➔&nbsp;`generateRecurrenceToken` | `bool`       | Determines whether a recurrence token should be generated. A recurrence token is primarily used to enable future [recurring payments](/{{ local_documentation_section }}/other-features#recurring-payments) – with the same token – through server-to-server calls. Default value is `false`.                                                                                                                       |{% if local_documentation_section == "payment-menu" %}
 | {% icon check %} | └➔&nbsp;`generatePaymentToken`    | `bool`       | `true` or `false`. Set this to `true` if you want to create a `paymentToken` to use in future [One Click Payments][one-click-payments].                                                                                                                                                                                                                                                                       |{% endif %}
 | {% icon check %} | └➔&nbsp;`userAgent`               | `string`     | The user agent of the payer.                                                                                                                                                                                                                                                                                                                                                                                  |
 | {% icon check %} | └➔&nbsp;`language`                | `string`     | The language of the payer.                                                                                                                                                                                                                                                                                                                                                                                    |
-| {% icon check %} | └➔&nbsp;`generateRecurrenceToken` | `bool`       | Determines whether a recurrence token should be generated. A recurrence token is primarily used to enable future [recurring payments](/{{ local_documentation_section }}/other-features#recurring-payments) – with the same token – through server-to-server calls. Default value is `false`.                                                                                                                       |
-|                  | └➔&nbsp;`restrictedToInstruments` | `array`      | `CreditCard`, `Invoice`, `Vipps`, `Swish` and/or `CreditAccount`. `Invoice` supports the subtypes `PayExFinancingNo`, `PayExFinancingSe` and `PayMonthlyInvoiceSe`, separated by a dash, e.g.; `Invoice-PayExFinancingNo`. Limits the options available to the consumer in the payment menu. Default value is all supported payment instruments. Usage of this field requires an agreement with Swedbank Pay. |
 | {% icon check %} | └➔&nbsp;`urls`                    | `object`     | The `urls` object, containing the URLs relevant for the payment order.                                                                                                                                                                                                                                                                                                                                        |
 | {% icon check %} | └─➔&nbsp;`hostUrls`               | `array`      | The array of URIs valid for embedding of Swedbank Pay Hosted Views.                                                                                                                                                                                                                                                                                                                                           |
 | {% icon check %} | └─➔&nbsp;`completeUrl`            | `string`     | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment order to inspect it further.                                                                                                      |
@@ -217,8 +213,8 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`productCategory`        | `string`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                                                                                                                                |
 |                  | └─➔&nbsp;`orderReference`         | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                                                                                                                       |
 |                  | └─➔&nbsp;`subsite`                | `String(40)` | The subsite field can be used to perform [split settlement][split-settlement] on the payment. The subsites must be resolved with Swedbank Pay [reconciliation][settlement-and-reconciliation] before being used.                                                                                                                                                                                              |
-|                  | └➔&nbsp;`payer`                   | `object`     | The `payer` object containing information about the payer relevant for the payment order.                                                                                                                                                                                                                                                                                                                     |
-|        ︎︎︎         | └─➔&nbsp;`consumerProfileRef`     | `string`     | The consumer profile reference as obtained through [initiating a consumer session][initiate-consumer-session].                                                                                                                                                                                                                                                                                                |
+|                  | └➔&nbsp;`payer`                   | `object`     | The `payer` object containing information about the payer relevant for the payment order.                                                                                                                                                                                                                                                                                                                     | {% if local_documentation_section == "checkout" %}
+|        ︎︎︎         | └─➔&nbsp;`consumerProfileRef`     | `string`     | The consumer profile reference as obtained through [initiating a consumer session][initiate-consumer-session].                                                                                                                                                                                                                                                                                                | {% endif %}
 |                  | └─➔&nbsp;`email`                  | `string`     | The e-mail address of the payer. Will be used to prefill the Checkin as well as on the payer's profile, if not already set. Increases the chance for [frictionless 3-D Secure 2 flow](/{{ local_documentation_section }}/other-features#3-d-secure-2).                                                                                                                                         |
 |                  | └─➔&nbsp;`msisdn`                 | `string`     | The mobile phone number of the Payer. Will be prefilled on Checkin page and used on the payer's profile, if not already set. The mobile number must have a country code prefix and be 8 to 15 digits in length. The field is related to [3-D Secure 2](/{{ local_documentation_section }}/other-features#3-d-secure-2).                                                                                          |
 |                  | └─➔&nbsp;`workPhoneNumber`        | `string`     | The work phone number of the payer. Optional (increased chance for frictionless flow if set) and is related to [3-D Secure 2](/{{ local_documentation_section }}/other-features#3-d-secure-2).                                                                                                                                                                                                                   |

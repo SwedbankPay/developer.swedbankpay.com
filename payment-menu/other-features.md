@@ -20,7 +20,8 @@ sidebar:
 investigating which **other features** are available in the Swedbank Pay Payment Menu.
 They are listed on this very page." %}
 
-{% include payment-order-other-features.md documentation_section="payment-menu" %}
+{% include payment-order-other-features.md documentation_section="payment-menu"
+operation_status_bool = "true" %}
 
 {% include iterator.html prev_href="after-payment" prev_title="Back: After
 Payment" %}
