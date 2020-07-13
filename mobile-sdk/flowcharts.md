@@ -221,10 +221,11 @@ If the external flow ended with `paymentUrl` opened in the browser, we need a wa
 On iOS, the situation is more complicated. As mentioned above, `paymentUrl` is a Universal Link, and navigation to it should be routed to the app. However, Universal Links are a bit unreliable, in that they require certain conditions to be fulfilled; otherwise, they are opened in the browser like regular links. Unfortunately, one of the conditions, namely that the navigation originated from the user pressing on a link, is often not fulfilled in the external pages used by payment methods. Therefore, we must have a system that works correctly, even if `paymentUrl` is opened in the browser.
 
 On iOS, we use the following system:
- - `paymentUrl` redirects (301) to a trampoline page hosted at a different domain
- - the trampoline page has a button
- - pressing that button navigates to `paymentUrl` but with an extra parameter
- - `paymentUrl` with the extra parameter redirects to a custom-scheme url
+
+*   `paymentUrl` redirects (301) to a trampoline page hosted at a different domain
+*   the trampoline page has a button
+*   pressing that button navigates to `paymentUrl` but with an extra parameter
+*   `paymentUrl` with the extra parameter redirects to a custom-scheme url
 
 The trampoline page is on a different domain due to another requirement of Universal Links: they are only routed to the app if opened from a different domain. Now, both `paymentUrl` and `paymentUrl` with the extra parameter are Universal Links, and as the second navigation is "forced" to originate from User Interaction, it should be routed to the app. However, if something still goes sideways, and experience says it can, and even this "augmented" `paymentUrl` is opened in the browser, then we finally redirect to a custom-scheme url, which has no choice but to be routed to the app. The reason we do not do this immediately is because using custom schemes triggers a confirmation dialog the developer has no control over, and we want to avoid that.
 

@@ -178,12 +178,11 @@ In the simplest case you could listen for a navigation to the `completeUrl` or `
 
 If your `completeUrl`, or `cancelUrl` for that matter, do some processing and redirect further, you can adapt these patterns to listen to your custom urls instead.
 
-
 ### Adding JavaScript Hooks
 
 On both iOS and Android, it is possible to add custom JavaScript interfaces to a web view. These interfaces then result in callbacks to native (Swift/Kotlin/ObjC/Java) methods, where you can execute your application specific actions. To observe payment completion and cancellation this way, you need to modify your `completeUrl` and `cancelUrl` pages to call these mobile-app-specific JavaScript interfaces. How you do this is beyond our scope here.
 
-#### iOS
+#### JavaScript Hooks: iOS
 
 On iOS, JavaScript interfaces are added through the `WKUserContentController` of the `WKWebView`. The `WKUserContentController` is set by the `WKWebViewConfiguration` used when creating the `WKWebView`; you cannot change the `WKUserContentController` of a `WKWebView`. You can, however, modify the `WKUserContentController` of a live `WKWebView`, if you want more fine-grained control on which interfaces are exposed at what time.
 
@@ -230,7 +229,7 @@ On iOS, the interfaces added by `WKUserContentController.add(_:name:)` are expos
     window.webkit.messageHandlers.canceled.postMessage()
 ```
 
-#### Android
+#### JavaScript Hooks: Android
 
 {% include alert.html type="warning" icon="warning" header="Security Warning" body="Never use `WebView.addJavascriptInterface` on Android versions earlier than 4.2 (`Build.VERSION_CODES.JELLY_BEAN_MR1`)!" %}
 
@@ -285,7 +284,7 @@ Sometimes, a payment flow calls for launching an external application, like Bank
 
 Determining whether a url should launch an external app is straightforward, though on Android it involves a bit of a judgement call. Let us take a look at the arguably simpler iOS case first.
 
-### iOS
+### External Applications: iOS
 
 You cannot query the system for an arbitrary url to see if it can be opened – this is a deliberate privacy measure. What can be done, and what also happens to be exactly what we want to do, is to attempt to open a url and receive a callback telling us whether it succeeded. Nowadays, the recommended way of opening external applications is to use Universal Links, anyway, which are, on the surface, indistiguishable from web links.
 
@@ -340,7 +339,7 @@ You cannot query the system for an arbitrary url to see if it can be opened – 
     }
 ```
 
-### Android
+### External Applications: Android
 
 On Android, web pages attempting to launch external apps happens in one of three ways:
 
