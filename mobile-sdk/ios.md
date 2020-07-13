@@ -167,7 +167,7 @@ let consumer = SwedbankPaySDK.Consumer(
 )
 ```
 
-Similarly, the semantics of `SwedbankPaySDK.PaymentOrder` properties are the same as the fields of the [POST /psp/paymentorders][checkin-paymentorder] request. Sensible default values are provided for many of the properties. In a similar fashion to how the Android SDK works, while there is no default value for the `urls` property, there are convenience constructors for the `SwedbankPaySDK.PaymentOrderUrls` type, which are recommended for general use. Assuming you have the iOS Payment Url Helper endpoint set up with the specified static path relative to your backend url (i.e. `sdk-callback/ios-universal-link`), then using one of the `SwedbankPaySDK.Configuration` taking convenience constructors variants will set the `paymentUrl` correctly. \[Development note: TODO a variant that allows spcifiying the url of the helper endpoint directly.\]
+Similarly, the semantics of `SwedbankPaySDK.PaymentOrder` properties are the same as the fields of the [POST /psp/paymentorders][checkin-paymentorder] request. Sensible default values are provided for many of the properties. In a similar fashion to how the Android SDK works, while there is no default value for the `urls` property, there are convenience constructors for the `SwedbankPaySDK.PaymentOrderUrls` type, which are recommended for general use. Assuming you have the iOS Payment Url Helper endpoint set up with the specified static path relative to your backend url (i.e. `sdk-callback/ios-universal-link`), then using one of the `SwedbankPaySDK.Configuration` taking convenience constructors variants will set the `paymentUrl` correctly.
 
 ```swift
 let paymentOrder = SwedbankPaySDK.PaymentOrder(
@@ -454,9 +454,15 @@ sequenceDiagram
 [ios-custom-scheme]: https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content/defining_a_custom_url_scheme_for_your_app
 [ios-universal-links]: https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content
 [ios-universal-links-routing]: https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content#3001753
-[ios-paymenturl-helper]: merchant-backend#i-o-s-payment-url-helper
+[ios-paymenturl-helper]: merchant-backend#ios-payment-url-helper
 [uiappdelegate-continueuseractivity]: https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1623072-application
 [uiappdelegate-openurl]: https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1623112-application
 [backend-aasa]: merchant-backend#apple-app-site-association
 [xcode-add-cap]: https://help.apple.com/xcode/mac/current/#/dev88ff319e7
 [xcode-add-assoc-domain]: https://developer.apple.com/documentation/safariservices/supporting_associated_domains_in_your_app#3001207
+[rfc-7807]: https://tools.ietf.org/html/rfc7807
+[swedbankpay-problems]: /home/technical-information#problems
+[backend-problems]: merchant-backend#problems
+[checkin-consumer]: /checkout/checkin#step-1-initiate-session-for-consumer-identification
+[checkin-paymentorder]: /checkout/payment-menu#step-3-create-payment-order
+[paymenturl]: /checkout/payment-menu#payment-url
