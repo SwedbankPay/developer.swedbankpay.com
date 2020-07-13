@@ -213,6 +213,17 @@ the reconciliation file.
 *   `capture.transaction.number` returned from Swedbank Pay is equal to
     `TransactionNo` in reconciliation file.
 
+Below you will see the API mapping tables to the fields in the PBA reports for
+`Create payment`, `Capture` and `Reversal`.
+
+{% include pba-tables.md documentation_section=documentation_section operation_title="create-payment" %}
+{% if documentation_section =="swish" %}
+{% include pba-tables.md documentation_section=documentation_section operation_title="sale" %}
+{% else %}
+{% include pba-tables.md documentation_section=documentation_section operation_title="capture" %}
+{% endif %}
+{% include pba-tables.md documentation_section=documentation_section operation_title="reversal" %}
+
 ### Samples
 
 The content of the files depends on the type of agreement you have made with
@@ -313,13 +324,6 @@ In cases where you need to do reversals, this will be performed by the super
 merchant. The reversal amount will be charged from the sub merchants prefix. If
 the sub merchants balance is 0 (zero), the super merchant will be invoiced. The
 super merchant will in turn have to invoice this amount to the sub merchant.
-
-{% if documentation_section =="swish" %}
-{% include pba-tables.md documentation_section=documentation_section operation_title="sale" %}
-{% else %}
-{% include pba-tables.md documentation_section=documentation_section operation_title="capture" %}
-{% endif %}
-{% include pba-tables.md documentation_section=documentation_section operation_title="create-payment" %}
 
 [attachement-1]: /assets/documents/testredovisning-payexcheckout.pdf
 [balance-report-sbp-pdf]: /assets/documents/r1234-0001-redov.service.pdf

@@ -475,7 +475,7 @@ sequenceDiagram
 
 The response will be the `payment` resource with its `state` set to `Aborted`.
 
-{% include settlement-reconciliation.md api_resource="mobilepay" %}
+{% include settlement-reconciliation.md api_resource="mobilepay" documentation_section="mobile-pay" %}
 
 {% include payment-link.md %}
 
