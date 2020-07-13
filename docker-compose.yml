@@ -3,7 +3,7 @@ version: "3.7"
 services:
   portal:
     container_name: developer_portal
-    image: swedbankpay/jekyll-plantuml:2.0.4
+    image: swedbankpay/jekyll-plantuml:2.0.5
     command: serve
     environment:
       - DEBUG=true
@@ -12,35 +12,35 @@ services:
       - 35729:35729
     volumes:
       - .:/srv/jekyll
-  #  depends_on:
-  #    - elasticsearch
-  #elasticsearch:
-  #  image: docker.elastic.co/elasticsearch/elasticsearch:7.8.0
-  #  ports:
-  #    - '9200:9200'
-  #    - '9300:9300'
-  #  environment:
-  #    - bootstrap.memory_lock=true
-  #    - discovery.type=single-node
-  #    - "ES_JAVA_OPTS=-Xms2g -Xmx2g"
-  #    - cluster.routing.allocation.disk.threshold_enabled=false
-  #  ulimits:
-  #    memlock:
-  #      soft: -1
-  #      hard: -1
-  #  user: 'elasticsearch'
-  #  volumes:
-  #    - .elasticsearch-data:/usr/share/elasticsearch/data
-  #kibana:
-  #  container_name: kibana
-  #  image: docker.elastic.co/kibana/kibana:7.4.0
-  #  environment:
-  #    - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
-  #  ports:
-  #    - 5601:5601
-  #  depends_on:
-  #    - elasticsearch
+    depends_on:
+      - kibana
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.8.0
+    ports:
+      - '9200:9200'
+      - '9300:9300'
+    environment:
+      - bootstrap.memory_lock=true
+      - discovery.type=single-node
+      - "ES_JAVA_OPTS=-Xms2g -Xmx2g"
+      - cluster.routing.allocation.disk.threshold_enabled=false
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    user: 'elasticsearch'
+    volumes:
+      - elasticsearch-data:/usr/share/elasticsearch/data
+  kibana:
+    container_name: kibana
+    image: docker.elastic.co/kibana/kibana:7.4.0
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    ports:
+      - 5601:5601
+    depends_on:
+      - elasticsearch
 
 volumes:
-  .elasticsearch-data:
+  elasticsearch-data:
     driver: local
