@@ -16,6 +16,8 @@ sidebar:
       title: iOS
     - url: /mobile-sdk/flowcharts
       title: Process Diagrams
+    - url: /mobile-sdk/plain-webview
+      title: Using a Web View Instead
 ---
 
 {% capture disclaimer %}

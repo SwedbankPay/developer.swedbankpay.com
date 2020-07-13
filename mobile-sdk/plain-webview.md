@@ -552,6 +552,9 @@ Now, all of the above is speculation, and not really worth getting too deep into
 
 The iOS (and possibly Android) SDKs will contain a list of known-good 3DS pages. Feel free to use this as a resource in your own implementation.
 
+{% include iterator.html prev_href="flowcharts"
+                         prev_title="Back: Process Diagrams" %}
+
 [ios-universal-links]: https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content
 [sdk-paymenturl]: ios#payment-url-and-external-applications
 [android-autoverify]: https://developer.android.com/training/app-links/verify-site-associations
