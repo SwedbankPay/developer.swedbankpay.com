@@ -65,7 +65,7 @@ Content-Type: application/json
 ```
 
 {% if api_resource == "paymentorders" %}
-![description paymentorders][description-paymentorders]{:width="600px"
+![The description field as presented in the Payment Menu][description-paymentorders]{:width="600px"
 :height="300px"}
 
 {% else %}
