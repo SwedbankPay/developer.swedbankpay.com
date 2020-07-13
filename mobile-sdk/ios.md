@@ -466,3 +466,4 @@ sequenceDiagram
 [checkin-consumer]: /checkout/checkin#step-1-initiate-session-for-consumer-identification
 [checkin-paymentorder]: /checkout/payment-menu#step-3-create-payment-order
 [paymenturl]: /checkout/payment-menu#payment-url
+[backend-payment-orders]: merchant-backend#payment-orders-endpoint
