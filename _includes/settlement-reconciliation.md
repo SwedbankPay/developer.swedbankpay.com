@@ -34,7 +34,7 @@ Swedbank Pay handles the settlement process on your behalf, (_called
 
 ##### Swedbank Pay Checkout
 
-When choosing [Swedbank Pay Checkout][payex-checkout] we always handle the
+When choosing [Swedbank Pay Checkout][checkout] we always handle the
 settlement process for you, gathering all your eCommerce payments in one place.
 Straighforward and time efficient.
 
@@ -327,6 +327,7 @@ super merchant will in turn have to invoice this amount to the sub merchant.
 
 [attachement-1]: /assets/documents/testredovisning-payexcheckout.pdf
 [balance-report-sbp-pdf]: /assets/documents/r1234-0001-redov.service.pdf
+[checkout]: /checkout/
 [trans-list-sbp-xlsx]: /assets/documents/transaktionsstatistik-redovisningsservice.xlsx
 [trans-list-sbp-xml]: /assets/documents/transaktionsstatistik-redovisningsservice.xml
 [balance-report-pdf]: /assets/documents/balance-report.pdf

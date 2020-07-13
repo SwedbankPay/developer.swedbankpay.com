@@ -13,11 +13,11 @@
 {% if operation_title != "create-payment" %}
 {%- capture code -%}
 
-#### {{ operation_title_field_name }}
+{:.code-header}
+**{{ operation_title_field_name }}**
 
 {:.table .table-striped}
-| XLSX                            | XLM       | Request API    |    Response API
-|                                 |
+| XLSX                            | XLM       | Request API    |    Response API|                                 |
 | :------------------------------ | :---------------------- | :------------------------------------------------------------------------------------------------------ | :----------------------------------------------------------------------------- |
 | `Swedbank Pay Batch Number`     | `SwedbankbatchNo`       |                                                                                                         |
 | `Transaction Number`            | `TransactionNo`         |                                                                                                         | transaction.number                                                             |
@@ -47,11 +47,11 @@
 
 {% if operation_title == "create-payment" %}
 
-#### Create Payment
+{:.code-header}
+**Create Payment**
 
 {:.table .table-striped}
-| XLSX                            | XLM       | Request API    |    Response API
-|                                 |
+| XLSX                            | XLM       | Request API    |    Response API|                                 |
 | :------------------------------ | :---------------------- | :---------------------------------------------------------------------------- | :--------------- |
 | `Swedbank Pay Batch Number`     | `SwedbankbatchNo`       |                                                                               |
 | `Transaction Number`            | `TransactionNo`         |                                                                               |
