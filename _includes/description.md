@@ -70,7 +70,7 @@ Content-Type: application/json
 
 {% else %}
 
-![description all payments][description-all-payments]{:width="1200px"
+![The description field as presented in {{ documentation_section_title }}][description-all-payments]{:width="1200px"
 :height="500px"}
 
 {% endif %}
