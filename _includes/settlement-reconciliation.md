@@ -91,7 +91,7 @@ body.
 
 {:.table .table-striped}
 | Field         | Type       | Description                                                                |
-|:--------------|:-----------|:---------------------------------------------------------------------------|
+| :------------ | :--------- | :------------------------------------------------------------------------- |
 | `Prefix`      | `String`   | The `Prefix` used for transactions, only eligible if merchant uses prefix. |
 | Currency      | `ISO 4217` | Settlement currency (e.g. `SEK, NOK, EUR`).                                |
 | `ServiceType` | `String`   | The service type of the service used (e.g. `Creditcard`).                  |
@@ -107,7 +107,7 @@ body.
 
 {:.table .table-striped}
 | Field                           | Type       | Description                                                                                                                                               |
-|:--------------------------------|:-----------|:----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| :------------------------------ | :--------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Swedbank Pay Batch Number`     | `Decimal`  | A batch number common to all types of transactions processed by Swedbank Pay.                                                                             |
 | `Transaction Number`            | `Decimal`  | A unique identifier of the transaction, can be traced in Swedbank Pay Admin user interface.                                                               |
 | `Order id`                      | `String`   | A unique identifier of the order, as sent from the merchant to Swedbank Pay. Transactions that are related to the same order are associated with this ID. |
