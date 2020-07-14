@@ -44,7 +44,7 @@
 **Create Payment**
 
 {:.table .table-striped}
-| XLSX                            | XLM       | Request API    |    Response API|                                 |
+| XLSX                            | XML       | API Request    |    API Response |                                 |
 | :------------------------------ | :---------------------- | :---------------------------------------------------------------------------- | :--------------- |
 | `Swedbank Pay Batch Number`     | `SwedbankbatchNo`       |                                                                               |
 | `Transaction Number`            | `TransactionNo`         |                                                                               |
