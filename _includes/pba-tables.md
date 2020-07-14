@@ -9,7 +9,7 @@
 **{{ operation_title_field_name }}**
 
 {:.table .table-striped}
-| XLSX                            | XML                     | API Request                                                                     |
+| XLSX                            | XML                     | API                                                                             |
 | :------------------------------ | :---------------------- | :------------------------------------------------------------------------------ |
 | `Swedbank Pay Batch Number`     | `SwedbankbatchNo`       |                                                                                 |
 | `Transaction Number`            | `TransactionNo`         | `transaction.number`                                                            |
@@ -41,7 +41,7 @@
 **Create Payment**
 
 {:.table .table-striped}
-| XLSX                            | XML                     | API Request                                                                     |
+| XLSX                            | XML                     | API                                                                             |
 | :------------------------------ | :---------------------- | :------------------------------------------------------------------------------ |
 | `Swedbank Pay Batch Number`     | `SwedbankbatchNo`       |                                                                                 |
 | `Transaction Number`            | `TransactionNo`         |                                                                                 |
