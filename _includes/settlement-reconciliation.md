@@ -214,7 +214,7 @@ the reconciliation file.
     `TransactionNo` in reconciliation file.
 
 Below you will see the API mapping tables to the fields in the PBA reports for
-`Create payment`, `Capture` and `Reversal`.
+`Create payment`, {% if documentation_section =="swish" %}`Sale` {% else %} `Capture` {% endif %} and `Reversal`.
 
 {% include pba-tables.md documentation_section=documentation_section operation_title="create-payment" %}
 {% if documentation_section =="swish" %}
