@@ -19,7 +19,7 @@
 | `Date Modified`                 | `DateModified`          |                                                                                                         | {% if documentation_section=="swish" or documentation_section=="invoice" %}transaction.created {% endif %} |
 | `Provider`                      | `Provider`              |                                                                                                         |
 | `Type`                          | `Type`                  |                                                                                                         |
-| `Amount`                        | `Amount`                | transaction.amount                                                                                      | transaction.amount                                                             |
+| `Amount`                        | `Amount`                | `transaction.amount`                                                                                      | `transaction.amount`                                                             |
 | `Currency`                      | `Currency`              | {% if operation_title == "create-payment" %}payment.currency {% endif %}                                |
 | `Product Number`                | `MerchantProductNo`     |                                                                                                         |
 | `Description`                   | `Description`           | {% unless documentation_section=="mobile-pay" %} transaction.description                               | transaction.description {% endunless %}                                        |
