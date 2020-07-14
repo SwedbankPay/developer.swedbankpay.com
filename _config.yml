@@ -6,7 +6,7 @@ plugins:
   - jemoji
   - jekyll-material-icon-tag
   - "kramdown-plantuml"
-  - searchyll
+  #- searchyll
 kramdown:
   input: GFM
   syntax_highlighter: rouge

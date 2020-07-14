@@ -163,9 +163,10 @@ GEM
       faraday (>= 1.0.1)
       html-proofer
       jekyll (>= 3.7, < 5.0)
+      jekyll-assets
       jekyll-github-metadata
       jekyll-material-icon-tag
-      jekyll-redirect-from
+      jekyll_asset_pipeline
       jemoji
       kramdown-plantuml
       nokogiri (~> 1.10)
@@ -198,7 +199,7 @@ DEPENDENCIES
   jemoji
   kramdown-plantuml
   rake (~> 13.0.1)
-  searchyll!
+  searchyll
   swedbank-pay-design-guide-jekyll-theme
 
 BUNDLED WITH
