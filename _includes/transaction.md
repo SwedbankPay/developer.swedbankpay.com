@@ -55,6 +55,49 @@ Content-Type: application/json
 }
 ```
 
+In the event that a transaction is `failed`, the `transaction` response will contain
+a `problem` property as seen in the example below.
+
+{:.code-header}
+**Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "payment": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
+    "transaction": {
+        "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
+        "created": "2016-09-14T01:01:01.01Z",
+        "updated": "2016-09-14T01:01:01.03Z",
+        "type": "Capture",
+        "state": "Failed",
+        "number": 1234567890,
+        "amount": 1000,
+        "vatAmount": 250,
+        "description": "Test transaction",
+        "payeeReference": "AH123456",
+        “failedReason”: “ExternalResponseError”,
+        “failedActivityName”: “Authorize”,
+        “failedErrorCode”: “REJECTED_BY_ACQUIRER”,
+        “failedErrorDescription”: “General decline, response-code: 05",
+        “isOperational”: “TRUE”,
+        “activities”: { “id”: “/psp/{{ api_resource }}/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}/activities” },
+        “problem”: {
+          “type”: “https://api.payex.com/psp/errordetail/{{ api_resource }}/3DSECUREERROR”,
+          “title”: “Error when complete authorization”,
+          “status”: 400,
+          “detail”: “Unable to complete 3DSecure verification!“,
+          “problems”: [
+          ]
+    }
+    “operations”: [
+    ]
+  }
+}
+```
+
 {:.table .table-striped}
 | Property                 | Type      | Description                                                                                                                                                                                                  |
 | :----------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
