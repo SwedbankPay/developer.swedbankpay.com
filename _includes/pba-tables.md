@@ -1,14 +1,7 @@
 {% assign operation_title = include.operation_title %}
 {% assign documentation_section = include.documentation_section  %}
 
-{%- case operation_title -%}
-{%- when "capture" -%}
-    {%- assign operation_title_field_name = "Capture" -%}
-{%- when "reversal" -%}
-    {%- assign operation_title_field_name = "Reversal" -%}
-{%- when "sale" -%}
-    {%- assign operation_title_field_name = "Sale" -%}
-{%- endcase -%}
+{%- assign operation_title_field_name = operation_title | capitalize -%}
 
 {% if operation_title != "create-payment" %}
 {%- capture code -%}
