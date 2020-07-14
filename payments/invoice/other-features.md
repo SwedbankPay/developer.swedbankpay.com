@@ -542,7 +542,7 @@ documentation_section="invoice" %}
 
 {% include prices.md api_resource="invoice" %}
 
-{% include settlement-reconciliation.md %}
+{% include settlement-reconciliation.md documentation_section="invoice" %}
 
 ## Problems
 
