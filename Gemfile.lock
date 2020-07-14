@@ -199,6 +199,7 @@ DEPENDENCIES
   kramdown-plantuml
   rake (~> 13.0.1)
   searchyll
+  swedbank-pay-design-guide-jekyll-theme
 
 BUNDLED WITH
    2.1.4

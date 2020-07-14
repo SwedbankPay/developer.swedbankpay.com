@@ -16,3 +16,6 @@ gem 'html-proofer-unrendered-markdown'
 gem 'jekyll-redirect-from'
 gem "kramdown", ">= 2.3.0"
 gem 'searchyll'
+gem "jekyll_asset_pipeline"
+gem "swedbank-pay-design-guide-jekyll-theme"
+
