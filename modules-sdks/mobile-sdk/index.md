@@ -4,8 +4,8 @@ sidebar:
   navigation:
   - title: Mobile SDK
     items:
-    - url: /modules-sdks/mobile-sdk/index
-      title: Mobile SDK Introduction
+    - url: /modules-sdks/mobile-sdk/
+      title: Introduction
     - url: /modules-sdks/mobile-sdk/merchant-backend
       title: Merchant Backend
     - url: /modules-sdks/mobile-sdk/merchant-backend-sample-code
