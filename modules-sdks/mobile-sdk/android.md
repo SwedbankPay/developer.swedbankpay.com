@@ -2,26 +2,23 @@
 title: Android
 sidebar:
   navigation:
-  - title: SDKs and Modules
+  - title: Mobile SDK
     items:
-    - url: /sdk-modules/index
-      title: Introduction
-    - url: /sdk-modules/mobile
-      title: Mobile SDKs
-    - url: /sdk-modules/merchant-backend
+    - url: /modules-sdks/mobile-sdk
+      title: Mobile SDK
+    - url: /modules-sdks/mobile-sdk/merchant-backend
       title: Merchant Backend
-    - url: /sdk-modules/merchant-backend-sample-code
+    - url: /modules-sdks/mobile-sdk/merchant-backend-sample-code
       title: Merchant Backend Sample Code
-    - url: /sdk-modules/android
+    - url: /modules-sdks/mobile-sdk/android
       title: Android
-    - url: /sdk-modules/ios
+    - url: /modules-sdks/mobile-sdk/ios
       title: iOS
-    - url: /sdk-modules/process-diagrams
+    - url: /modules-sdks/mobile-sdk/process-diagrams
       title: Process Diagrams
-    - url: /sdk-modules/plain-webview
+    - url: /modules-sdks/mobile-sdk/plain-webview
       title: Plain Webview
 ---
-
 {% capture disclaimer %}
 The SDK is at an early stage of development
 and is not supported as of yet by Swedbank Pay. It is provided as a

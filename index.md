@@ -6,7 +6,7 @@ sidebar:
     items:
     - url: /home/technical-information
       title: Technical Information
-    - url: /sdk-modules
+    - url: /modules-sdks
       title: SDKs and Modules
 ---
 

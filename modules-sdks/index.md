@@ -1,25 +1,13 @@
 ---
-title: SDKs and Modules Introduction
+title: Modules & SDKs Introduction
 sidebar:
   navigation:
-  - title: SDKs and Modules
+  - title: Modules & SDKs
     items:
-    - url: /sdk-modules/index
+    - url: /modules-sdks/index
       title: Introduction
-    - url: /sdk-modules/mobile
-      title: Mobile SDKs
-    - url: /sdk-modules/merchant-backend
-      title: Merchant Backend
-    - url: /sdk-modules/merchant-backend-sample-code
-      title: Merchant Backend Sample Code
-    - url: /sdk-modules/android
-      title: Android
-    - url: /sdk-modules/ios
-      title: iOS
-    - url: /sdk-modules/process-diagrams
-      title: Process Diagrams
-    - url: /sdk-modules/plain-webview
-      title: Plain Webview
+    - url: /modules-sdks/mobile-sdk
+      title: Mobile SDK
 ---
 
 {% assign active_repositories = site.github.public_repositories | where: 'archived', false %}
