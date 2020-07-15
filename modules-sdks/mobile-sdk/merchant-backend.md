@@ -461,8 +461,8 @@ All these Merchant Backend problem types will have a URI in the format `https://
 
 Your implementation is encouraged to define its own problem types for any domain-specific errors; you should namespace those problem types under a domain name under your control – usually the host name of the Merchant Backend.
 
-{% include iterator.html prev_href="mobile"
-                         prev_title="Back: Mobile SDKs"
+{% include iterator.html prev_href="./"
+                         prev_title="Back: Introduction"
                          next_href="merchant-backend-sample-code"
                          next_title="Next: Merchant Backend Sample Code" %}
 

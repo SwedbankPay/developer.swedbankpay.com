@@ -416,7 +416,7 @@ integration and the payer.
 [payment-orders]: /checkout/other-features#creating-a-payment-order
 [payments]: /payments
 [settlement-reconcilitation]: /payments/card/other-features#settlement-and-reconciliation
-[sdk-modules]: /resources/sdk-modules
+[sdk-modules]: /modules-sdks
 [storing-uri]: /home/technical-information#storing-uris
 [swish-api-errors]: /payments/swish/other-features#swish-api-errors
 [swish-direct-mcom]: /payments/swish/direct#step-2b-create-m-commerce-sale-transaction
