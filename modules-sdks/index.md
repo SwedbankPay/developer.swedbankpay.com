@@ -1,5 +1,6 @@
 ---
 title: Modules & SDKs Introduction
+redirect_from: /resources/sdk-modules
 sidebar:
   navigation:
   - title: Modules & SDKs
