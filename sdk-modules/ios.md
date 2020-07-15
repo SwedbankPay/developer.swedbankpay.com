@@ -445,7 +445,7 @@ sequenceDiagram
 
 {% include iterator.html prev_href="android"
                          prev_title="Back: Android"
-                         next_href="flowcharts"
+                         next_href="process-diagrams"
                          next_title="Next: Process Diagrams" %}
 
 [cocoapods]: https://cocoapods.org/

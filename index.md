@@ -6,6 +6,8 @@ sidebar:
     items:
     - url: /home/technical-information
       title: Technical Information
+    - url: /sdk-modules
+      title: SDKs and Modules
 ---
 
 Hi! Welcome to the **Swedbank Pay Developer Portal**.

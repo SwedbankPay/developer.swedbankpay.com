@@ -1,5 +1,5 @@
 ---
-title: Swedbank Pay SDKs and Modules Introduction
+title: SDKs and Modules Introduction
 sidebar:
   navigation:
   - title: SDKs and Modules
