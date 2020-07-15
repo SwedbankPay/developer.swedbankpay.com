@@ -1,23 +1,25 @@
 ---
-title: Swedbank Pay Mobile SDK – Process Diagrams
+title: Process Diagrams
 sidebar:
   navigation:
-  - title: Mobile SDK
+  - title: SDKs and Modules
     items:
-    - url: /mobile-sdk/
+    - url: /sdk-modules/index
       title: Introduction
-    - url: /mobile-sdk/merchant-backend
+    - url: /sdk-modules/mobile
+      title: Mobile SDKs
+    - url: /sdk-modules/merchant-backend
       title: Merchant Backend
-    - url: /mobile-sdk/merchant-backend-samples
+    - url: /sdk-modules/merchant-backend-sample-code
       title: Merchant Backend Sample Code
-    - url: /mobile-sdk/android
+    - url: /sdk-modules/android
       title: Android
-    - url: /mobile-sdk/ios
+    - url: /sdk-modules/ios
       title: iOS
-    - url: /mobile-sdk/flowcharts
+    - url: /sdk-modules/process-diagrams
       title: Process Diagrams
-    - url: /mobile-sdk/plain-webview
-      title: Using a Web View Instead
+    - url: /sdk-modules/plain-webview
+      title: Plain Webview
 ---
 
 {% capture disclaimer %}

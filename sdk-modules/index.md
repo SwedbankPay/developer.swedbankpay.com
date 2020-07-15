@@ -1,27 +1,25 @@
 ---
-title: SDKs and Modules
+title: Swedbank Pay SDKs and Modules Introduction
 sidebar:
   navigation:
-  - title: Resources
+  - title: SDKs and Modules
     items:
-    - url: /resources/
+    - url: /sdk-modules/index
       title: Introduction
-    - url: /resources/sdk-modules
-      title: SDKs and Modules
-    - url: /resources/test-data
-      title: Test Data
-    - url: /resources/demoshop
-      title: Demoshop
-    - url: /resources/development-guidelines
-      title: Open Source Development Guidelines
-    - url: /resources/release-notes
-      title: Release Notes
-    - url: /resources/terminology
-      title: Terminology
-    - url: /resources/data-protection
-      title: Data Protection
-    - url: /resources/public-migration-key
-      title: Public Migration Key
+    - url: /sdk-modules/mobile
+      title: Mobile SDKs
+    - url: /sdk-modules/merchant-backend
+      title: Merchant Backend
+    - url: /sdk-modules/merchant-backend-sample-code
+      title: Merchant Backend Sample Code
+    - url: /sdk-modules/android
+      title: Android
+    - url: /sdk-modules/ios
+      title: iOS
+    - url: /sdk-modules/process-diagrams
+      title: Process Diagrams
+    - url: /sdk-modules/plain-webview
+      title: Plain Webview
 ---
 
 {% assign active_repositories = site.github.public_repositories | where: 'archived', false %}
