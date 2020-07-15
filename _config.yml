@@ -39,8 +39,6 @@ topbar:
     title: Gift Cards
   - url: /resources/
     title: Resources
-  - url: /mobile-sdk/
-    title: Mobile SDK
 google_analytics:
   tracking_id: UA-156582708-1
 defaults:
