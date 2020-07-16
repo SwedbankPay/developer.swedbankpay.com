@@ -124,7 +124,6 @@ Content-Type: application/json
             "vatAmount": 250,
             "description": "Test transaction",
             "payeeReference": "AH123456",
-            "failedReason": "",
             "isOperational": false,
             "operations": [
                 {
