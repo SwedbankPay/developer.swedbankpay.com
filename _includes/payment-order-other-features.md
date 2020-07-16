@@ -642,12 +642,12 @@ documentation_section=documentation_section %}
 ### Transactions
 
 {% include transactions.md api_resource="paymentorders"
-documentation_section=documentation_section %}
+documentation_section=local_documentation_section %}
 
 #### Transaction
 
 {% include transaction.md api_resource="paymentorders"
-documentation_section=documentation_section %}
+documentation_section=local_documentation_section %}
 
 ## Recurring Payments
 
