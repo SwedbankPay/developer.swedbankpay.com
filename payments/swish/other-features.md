@@ -191,7 +191,7 @@ be connected to a Swish account.
 
 {% include callback-reference.md api_resource="swish" %}
 
-### Problem messages
+## Problems
 
 When performing unsuccessful operations, the eCommerce API will respond with a
 problem message.

@@ -56,7 +56,8 @@ Content-Type: application/json
 ```
 
 In the event that a transaction is `failed`, the `transaction` response will contain
-a `problem` property as seen in the example below.
+a `problem` property as seen in the example below. To view all the problems that
+can occur due to an unsuccesful transaction, head over to the [problems section](/payments/{{ documentation_section }}/other-features#problems).
 
 {:.code-header}
 **Response**
