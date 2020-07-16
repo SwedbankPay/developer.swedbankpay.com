@@ -66,3 +66,5 @@ elasticsearch:
   number_of_replicas: 1             # Optional. Default is 1 replica.
   index_name: "developer"           # Optional. Default is "jekyll".
   default_type: "post"              # Optional. Default type is "post".
+  environments:
+    - 'production'

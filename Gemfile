@@ -13,9 +13,7 @@ gem 'kramdown-plantuml'
 gem 'rake', '~> 13.0.3'
 gem 'html-proofer'
 gem 'html-proofer-unrendered-markdown'
-gem 'jekyll-redirect-from'
-gem "kramdown", ">= 2.3.0"
-gem 'searchyll'
+gem 'searchyll', git: 'https://github.com/NullableInt/searchyll.git', branch: 'feature/production_switch'
 gem "jekyll_asset_pipeline"
 gem "swedbank-pay-design-guide-jekyll-theme"
 
