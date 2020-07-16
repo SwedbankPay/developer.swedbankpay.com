@@ -6,7 +6,7 @@ plugins:
   - jemoji
   - jekyll-material-icon-tag
   - "kramdown-plantuml"
-  #- searchyll
+  - searchyll
 kramdown:
   input: GFM
   syntax_highlighter: rouge
@@ -59,7 +59,7 @@ defaults:
       consumer_ssn_no: 26026708248
 
 elasticsearch:
-  url: "http://localhost:9200/"     # Required. Supports auth and SSL: https://user:pass@someurl.com
+  url: "http://elasticsearch:9200/"     # Required. Supports auth and SSL: https://user:pass@someurl.com
                                     # Can also read URLs stored in environment variable named
                                     # BONSAI_URL and ELASTICSEARCH_URL.
   number_of_shards: 1               # Optional. Default is 1 primary shard.
