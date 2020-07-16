@@ -202,7 +202,7 @@ documentation_section="vipps" %}
 
 {% include payment-link.md %}
 
-## Problem messages
+## Problems
 
 When performing unsuccessful operations, the eCommerce API will respond with a
 problem message.
