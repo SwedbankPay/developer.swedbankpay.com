@@ -82,17 +82,17 @@ Content-Type: application/json
         “failedActivityName”: “Authorize”,
         “failedErrorCode”: “REJECTED_BY_ACQUIRER”,
         “failedErrorDescription”: “General decline, response-code: 05",
-        “isOperational”: “TRUE”,
-        “activities”: { “id”: “/psp/{{ api_resource }}/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}/activities” },
-        “problem”: {
-          “type”: “https://api.payex.com/psp/errordetail/{{ api_resource }}/3DSECUREERROR”,
-          “title”: “Error when complete authorization”,
-          “status”: 400,
-          “detail”: “Unable to complete 3DSecure verification!“,
-          “problems”: [
+        "isOperational": true,
+        "activities": { "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}/activities" },
+        "problem": {
+          "type": "https://api.payex.com/psp/errordetail/{{ api_resource }}/3DSECUREERROR",
+          "title": "Error when complete authorization",
+          "status": 400,
+          "detail": "Unable to complete 3DSecure verification!",
+          "problems": [
           ]
     }
-    “operations”: [
+    "operations": [
     ]
   }
 }
