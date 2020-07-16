@@ -78,10 +78,6 @@ Content-Type: application/json
         "vatAmount": 250,
         "description": "Test transaction",
         "payeeReference": "AH123456",
-        “failedReason”: “ExternalResponseError”,
-        “failedActivityName”: “Authorize”,
-        “failedErrorCode”: “REJECTED_BY_ACQUIRER”,
-        “failedErrorDescription”: “General decline, response-code: 05",
         "isOperational": true,
         "activities": { "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}/activities" },
         "problem": {
