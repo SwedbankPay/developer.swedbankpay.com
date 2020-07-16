@@ -1,6 +1,12 @@
 {% assign api_resource = include.api_resource | default: 'creditcard' %}
 {% assign documentation_section = include.documentation_section %}
 
+{% if documentation_section == "checkout" or documentation_section == "payment-menu" %}
+{% assign documentation_url = documentation_section %}
+{% else %}
+{% assign documentation_url = "payments/" | append: documentation_section %}
+{% endif %}
+
 The `transaction` resource contains the generic details of a transaction on a
 specific payment.
 
@@ -57,7 +63,7 @@ Content-Type: application/json
 
 In the event that a transaction is `failed`, the `transaction` response will contain
 a `problem` property as seen in the example below. To view all the problems that
-can occur due to an unsuccesful transaction, head over to the [problems section](/payments/{{ documentation_section }}/other-features#problems).
+can occur due to an unsuccesful transaction, head over to the [problems section](/{{ documentation_url }}/other-features#problems).
 
 {:.code-header}
 **Response**
