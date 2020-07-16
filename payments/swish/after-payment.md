@@ -54,44 +54,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{:.code-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "payment": "/psp/swish/payments/{{ page.payment_id }}",
-  "sales": {
-    "id": "/psp/swish/payments/{{ page.payment_id }}/sale",
-    "saleList": [
-      {
-        "date": "8/13/2019 8:58:23 AM +00:00",
-        "payerAlias": "46739000001",
-        "swishPaymentReference": "8D0A30A7804E40479F88FFBA26111F04",
-        "swishStatus": "PAID",
-        "id": "/psp/swish/payments/{{ page.payment_id }}/sales/{{ page.transaction_id }}",
-        "transaction": {
-          "id": "{{ page.transaction_id }}",
-          "created": "2016-09-14T01:01:01.01Z",
-          "updated": "2016-09-14T01:01:01.03Z",
-          "type": "Sale",
-          "state": "Initialized",
-          "number": 1234567890,
-          "amount": 1000,
-          "vatAmount": 250,
-          "description": "Test transaction",
-          "payeeReference": "AH123456",
-          "isOperational": true,
-          "reconciliationNumber": 737283,
-          "operations": []
-        }
-      }
-    ]
-  }
-}
-```
+{% include transaction-list-response.md api_resource="swish" documentation_section="swish" transaction="sale" %}
 
 ### Create Sales transaction
 
