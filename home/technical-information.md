@@ -402,4 +402,4 @@ can read more about the payment instrument specific problem messages below:
 [swish-problems]: /payments/swish/other-features#swish-api-errors
 [the-rest-and-then-some]: https://www.youtube.com/watch?v=QIv9YR1bMwY
 [uuid]: https://en.wikipedia.org/wiki/Universally_unique_identifier
-[vipps-problems]: /payments/vipps/other-features#problem-messages
+[vipps-problems]: /payments/vipps/other-features#problems
