@@ -1377,7 +1377,7 @@ tag can't be used in Jekyll just yet. Once a new release of Liquid has been made
 and Jekyll upgrades to it, we should also upgrade and replace all `include` with
 `render` tags.
 
-https://github.com/Shopify/liquid/pull/1122
+[`render` tag](https://github.com/Shopify/liquid/pull/1122)
 {% endcomment %}
 {% include problems/problems.md documentation_section=nil %}
 
