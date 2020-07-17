@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="theme-color" content="#000">
+        <meta name="application-name" content="Merchant Backend">
+        <meta name="msapplication-TileColor" content="#000">
+        <meta name="msapplication-TileImage" content="https://design.swedbankpay.com/v/4.6.1/icons/mstile-144x144.png">
+        <meta property="og:type" value="website" />
+        <meta property="og:url" value="https://developer.swedbankpay.com/modules-sdks/mobile-sdk/merchant-backend.html" />
+        <meta property="og:title" value="Merchant Backend" />
+        <meta name="title" content="Merchant Backend" />
+        <meta property="og:description" value="Swedbank Pay Developer Portal" />
+        <meta name="description" content="Swedbank Pay Developer Portal" />
+        <meta property="og:image" value="/assets/img/swedbank-pay-developer-portal.png" />
+        <title>Merchant Backend</title>
+        <link rel="stylesheet" href="https://design.swedbankpay.com/v/4.6.1/styles/dg-style.css" />
+        <link rel="stylesheet" href="/assets/css/swedbank-pay-design-guide-theme.css" />
+        <link rel="stylesheet" href="/assets/css/pygments-autumn.css" />
+        <link rel="shortcut icon" href="https://design.swedbankpay.com/v/4.6.1/icons/favicon.ico">
+        <link rel="icon" type="image/png" sizes="16x16" href="https://design.swedbankpay.com/v/4.6.1/icons/favicon-16x16.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="https://design.swedbankpay.com/v/4.6.1/icons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="228x228" href="https://design.swedbankpay.com/v/4.6.1/icons/coast-228x228.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Merchant Backend">
+<link rel="apple-touch-icon" sizes="57x57" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="167x167" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-167x167.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-180x180.png">
+<link rel="apple-touch-icon" sizes="1024x1024" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-1024x1024.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 320px) and (device-height: 480px) and (orientation: ) and (-webkit-device-pixel-ratio: 1)"
+    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-320x460.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 320px) and (device-height: 480px) and (orientation: ) and (-webkit-device-pixel-ratio: 2)"
+    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-640x920.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 320px) and (device-height: 568px) and (orientation: ) and (-webkit-device-pixel-ratio: 2)"
+    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-640x1096.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 375px) and (device-height: 667px) and (orientation: ) and (-webkit-device-pixel-ratio: 2)"
+    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-750x1294.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 414px) and (device-height: 736px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)"
+    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-1182x2208.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 414px) and (device-height: 736px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 3)"
+    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-1242x2148.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 1)"
+    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-748x1024.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 1)"
+    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-768x1004.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)"
+    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-1496x2048.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)"
+    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-1536x2008.png">
+<script src="/assets/js/mermaid.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="/assets/tipuesearch/tipuesearch_content.js"></script>
+        <script src="/assets/tipuesearch/tipuesearch_set.js"></script>
+        <script src="/assets/tipuesearch/tipuesearch.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
+    </head>
+
+    <body>
+        <div id="designguide">
+            <header class="topbar topbar-md-wide designguide-header">
+                <button type="button" class="topbar-btn"><i class="material-icons topbar-btn-icon">menu</i></button>
+                <a href="https://developer.swedbankpay.com" class="topbar-logo"><img
+                        src="https://design.swedbankpay.com/v/4.6.1/img/swedbankpay-logo.svg" alt="logo"></a>
+                <nav class="topbar-nav">
+                    <div class="topbar-link-container">
+                        <button type="button" class="topbar-close"><i class="material-icons">close</i></button>
+
+                        
+                        
+
+                        
+
+                        <a 
+                            href="/"><span>Home</span></a>
+
+                        
+                        
+                        <a 
+                            href="/checkout/"><span>Checkout</span></a>
+                        
+                        
+                        <a 
+                            href="/payments/"><span>Payments</span></a>
+                        
+                        
+                        <a 
+                            href="/gift-cards/"><span>Gift Cards</span></a>
+                        
+                        
+                        <a 
+                            href="/resources/"><span>Resources</span></a>
+                        
+
+                        <div class="topbar-info topbar-link-right">
+                            <div class="topbar-info-contact">
+                                <a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/modules-sdks/mobile-sdk/merchant-backend.md" target="_blank"
+                                    rel="noopener noreferrer" title="Edit this page on GitHub">
+                                    <svg aria-labelledby="simpleicons-github-icon" role="img" viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <title id="simpleicons-github-icon">Edit this page on GitHub</title>
+                                        <path
+                                            d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+
+            <div class="documentation">
+                <div class="row">
+                    <div class="col-xxl-2 col-md-3">
+                        <div class="doc-sidebar">
+                            
+                            <form class="doc-search" action="/search">
+                                <input type="text" class="form-control" name="q" id="tipue_search_input"
+                                    placeholder="Search..." autocomplete="off" pattern=".{3,}"
+                                    title="At least 3 characters">
+                            </form>
+                            
+                            
+                            <nav class="documentation-nav">
+                                
+                                
+                                <div class="nav-group active">
+                                    <div class="nav-heading">
+                                        <i class="material-icons">keyboard_arrow_right</i>
+                                        <span>Mobile SDK</span>
+                                    </div>
+
+                                    
+                                    <ul>
+                                        
+                                        
+                                        <li><a  href="/modules-sdks/mobile-sdk/"><span>Introduction</span></a></li>
+                                        
+                                        
+                                        <li><a  aria-current="page" class="active"
+                                                 href="/modules-sdks/mobile-sdk/merchant-backend"><span>Merchant Backend</span></a></li>
+                                        
+                                        
+                                        <li><a  href="/modules-sdks/mobile-sdk/merchant-backend-sample-code"><span>Merchant Backend Sample Code</span></a></li>
+                                        
+                                        
+                                        <li><a  href="/modules-sdks/mobile-sdk/android"><span>Android</span></a></li>
+                                        
+                                        
+                                        <li><a  href="/modules-sdks/mobile-sdk/ios"><span>iOS</span></a></li>
+                                        
+                                        
+                                        <li><a  href="/modules-sdks/mobile-sdk/process-diagrams"><span>Process Diagrams</span></a></li>
+                                        
+                                        
+                                        <li><a  href="/modules-sdks/mobile-sdk/plain-webview"><span>Plain Webview</span></a></li>
+                                        
+                                    </ul>
+                                    
+                                </div>
+                                
+                            </nav>
+                            
+                        </div>
+                    </div>
+
+                    <main class="doc-view col-xxl-10 col-md-9">
+                        <div class="doc-container">
+                            <h1>Merchant Backend</h1>
+                            <div class="row">
+                                <div class="doc-body col-lg-10">
+                                    
+                                    <div class="alert alert-complex alert-warning"><header class="alert-header">
+            
+                <i class="material-icons alert-icon">warning</i>
+      <h3>
+        
+        
+          Unsupported
+        
+        
+      </header>
+    
+
+    
+        
+            <div class="alert-body">
+                <p>The SDK is at an early stage of development
+and is not supported as of yet by Swedbank Pay. It is provided as a
+convenience to speed up your development, so please feel free to play around.
+However, if you need support, please wait for a future, stable release.</p>
+            </div>
+        
+    
+</div>
+
+<div class="jumbotron">
+    <p>To use the <strong>Swedbank Pay Mobile SDK</strong>, you must have a backend server hosting the Mobile SDK API.</p>
+
+</div>
+
+<p>The Mobile SDK Merchant Backend API contains a total of five endpoints, three of which have statically defined paths. An OpenAPI specification is <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant/blob/master/documentation/swedbankpaysdk_openapi.yaml">available</a>. (It may be easier to view it in the <a href="https://editor.swagger.io/?url=https://raw.githubusercontent.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant/master/documentation/swedbankpaysdk_openapi.yaml">Swagger Editor</a>.)</p>
+
+<p>The main part of the API is designed as a transparent wrapper around the Swedbank Pay API, which is the same one used in Checkout. Additionally, two “helper” endpoints are specified, which facilitate the proper routing of the <a href="/checkout/payment-menu#payment-url">Payment Url</a> back to the originating app.</p>
+    
+      <h2 id="authentication-and-authorization">
+        
+        
+          Authentication and Authorization <a href="#authentication-and-authorization" class="header-anchor"></a>
+        
+        
+      </h2>
+
+<p>You should have some authorization and authentication measures in place to prevent misuse of your Merchant Backend API. The sample implementations have a very rudimentary API key header check. This may or may not be sufficient to your purposes. You should adapt the sample implementation or create your own according to your security needs.</p>
+
+<p>The mobile component of the SDK allows adding your own headers to the requests it makes. Therefore you can build your own authentication and authorization measures by adding custom headers in the app, and checking that they have the correct content in the backend.</p>
+    
+      <h2 id="root-endpoint">
+        
+        
+          Root Endpoint <a href="#root-endpoint" class="header-anchor"></a>
+        
+        
+      </h2>
+
+<p>The root endpoint is used to discover the main API endpoints. The URL of the root endpoint is what is configured as the “Backend URL” in the mobile SDK component. The point of this is to not bind your service to any particular path or even domain. In most cases, however, you can serve a static response for the root endpoint, with the other endpoint urls being relative to the root endpoint. The sample implementations do this.</p>
+
+<p class="code-header"><strong>Request</strong></p>
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="nf">GET</span> <span class="nn">/swedbank-pay-mobile/</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">example.com</span>
+<span class="na">Your-Api-Key</span><span class="p">:</span> <span class="s">secretish</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p class="code-header"><strong>Response</strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nl">"consumers"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/swedbank-pay-mobile/consumers"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"paymentorders"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/swedbank-pay-mobile/paymentorders"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th style="text-align: left">Field</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">consumers</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">URL of the “consumers” endpoint. Resolved against the root endpoint URL.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">paymentorders</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">URL of the “paymentorders” endpoint. Resolved against the root endpoint URL.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>N.B! The API as specified allows assigning endpoints to hosts other that the root endpoint host. However, as this seen to be an uncommon use case, the mobile component of the SDK is, by default, configured to only accept links to the domain of the root endpoint, or its subdomains. If your configuration uses other hosts, you must manually allow them in your mobile app’s configuration.</p>
+    
+      <h2 id="consumers-endpoint">
+        
+        
+          Consumers Endpoint <a href="#consumers-endpoint" class="header-anchor"></a>
+        
+        
+      </h2>
+
+<p>The <code class="language-html highlighter-rouge">consumers</code> endpoint is used to start a consumer identification session. It is specified as a transparent wrapper around the corresponding <a href="/checkout/checkin#step-1-initiate-session-for-consumer-identification">Swedbank Pay API</a>. The sample implementations do superficial input validation, and forward the request to the Swedbank Pay API without further processing. You are free to override this default behaviour as you see fit in your implementation, but the default should be fine for most use-cases. The expected response is the same as the expected response to the Swedbank Pay API. The default is to pass the response from Swedbank as-is; you should probably not modify this behaviour. Specifically, the response must contain the <code class="language-html highlighter-rouge">view-consumer-identification</code> operation.</p>
+
+<p class="code-header"><strong>Request</strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre><span class="nf">POST</span> <span class="nn">/swedbank-pay-mobile/consumers</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">example.com</span>
+<span class="na">Your-Api-Key</span><span class="p">:</span> <span class="s">secretish</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nl">"operation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"initiate-consumer-session"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sv-SE"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"shippingAddressRestrictedToCountryCodes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"NO"</span><span class="p">,</span><span class="w"> </span><span class="s2">"SE"</span><span class="p">,</span><span class="w"> </span><span class="s2">"DK"</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th style="text-align: center">Required</th>
+      <th style="text-align: left">Field</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">operation</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">initiate-consumer-session</code>, the operation to perform.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">language</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">Selected language to be used in Checkin. Supported values are <code class="language-html highlighter-rouge">sv-SE</code>, <code class="language-html highlighter-rouge">nb-NO</code> or <code class="language-html highlighter-rouge">en-US</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">shippingAddressRestrictedToCountryCodes</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">List of supported shipping countries for merchant. Using ISO-3166 standard.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>At this point, the Merchant Backend will make a corresponding request to the Swedbank Pay API, using its secret access token.</p>
+
+<p class="code-header"><strong>Forwarded Request</strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre><span class="nf">POST</span> <span class="nn">/psp/consumers</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">api.externalintegration.payex.com</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nl">"operation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"initiate-consumer-session"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sv-SE"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"shippingAddressRestrictedToCountryCodes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"NO"</span><span class="p">,</span><span class="w"> </span><span class="s2">"SE"</span><span class="p">,</span><span class="w"> </span><span class="s2">"DK"</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>The Merchant Backend will then forward the response it received back to the calling app.</p>
+
+<p class="code-header"><strong>Response &amp; Forwarded Response</strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre></td><td class="rouge-code"><pre><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7e380fbb3196ea76cc45814c1d99d59b66db918ce2131b61f585645eff364871"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"redirect-consumer-identification"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://ecom.externalintegration.payex.com/consumers/sessions/7e380fbb3196ea76cc45814c1d99d59b66db918ce2131b61f585645eff364871"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text/html"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"view-consumer-identification"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://ecom.externalintegration.payex.com/consumers/core/scripts/client/px.consumer.client.js?token=5a17c24e-d459-4567-bbad-aa0f17a76119"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/javascript"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th style="text-align: left">Field</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">token</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">A session token used to initiate Checkout UI.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">operations</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">array</code></td>
+      <td style="text-align: left">The array of operation objects to choose from, described in detail in the table below.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">rel</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The relational name of the operation, used as a programmatic identifier to find the correct operation given the current state of the application.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">method</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The HTTP method to use when performing the operation.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">contentType</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The HTTP content type of the target URI. Indicates what sort of resource is to be found at the URI, how it is expected to be used and behave.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">href</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The target URI of the operation.</td>
+    </tr>
+  </tbody>
+</table>
+    
+      <h2 id="payment-orders-endpoint">
+        
+        
+          Payment Orders Endpoint <a href="#payment-orders-endpoint" class="header-anchor"></a>
+        
+        
+      </h2>
+
+<p>The <code class="language-html highlighter-rouge">paymentorders</code> endpoint is used to create a new Payment Order. It is specified as a transparent wrapper around the corresponding <a href="/checkout/payment-menu#step-3-create-payment-order">Swedbank Pay API</a>. However, it is to be expected that your backend will need to process the payment order both before making the Swedbank Pay API call, and after receiving the response from Swedbank Pay. The sample implementations validate the input, then create an internal unique identitifer for the payment order, and set that as <code class="language-html highlighter-rouge">paymentorder.payeeInfo.payeeReference</code>, before making the Swedbank Pay call. After receiving the response, the backend stores the <code class="language-html highlighter-rouge">id</code> of the Payment Order for future use, and forwards the response to the SDK.</p>
+
+<p>A production implementation should validate the payment order also from a business logic perspective. This is, naturally, outside the scope of the SDK, as is any other processing you may wish to perform with the payment order. The SDK expects the same form of response as returned from the Swedbank Pay API. Specifically, the response must contain the <code class="language-html highlighter-rouge">view-paymentorder</code> operation.</p>
+
+<p class="code-header"><strong>Request</strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="nf">POST</span> <span class="nn">/swedbank-pay-mobile/paymentorders</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">example.com</span>
+<span class="na">Your-Api-Key</span><span class="p">:</span> <span class="s">secretish</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nl">"paymentorder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"①"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th style="text-align: center">Required</th>
+      <th style="text-align: left">Field</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">paymentorder</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">object</code></td>
+      <td style="text-align: left">The payment order to create</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li>① The contents of <code class="language-html highlighter-rouge">paymentorder</code> are omitted here. See <a href="/checkout/payment-menu#step-3-create-payment-order">Checkout Documentation</a> for details.</li>
+</ul>
+
+<p>At this point, the Merchant Backend will preform necessary processing, and make a corresponding request to the Swedbank Pay API, using its secret access token.</p>
+
+<p class="code-header"><strong>Forwarded Request</strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="nf">POST</span> <span class="nn">/psp/paymentorders</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">api.externalintegration.payex.com</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nl">"paymentorder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>The Merchant Backend will then forward the response it received back to the calling app.</p>
+
+<p class="code-header"><strong>Response &amp; Forwarded Response</strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="rouge-code"><pre><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">201</span> <span class="ne">Created</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nl">"paymentorder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/paymentorders/09ccd29a-7c4f-4752-9396-12100cbfecce"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://ecom.externalintegration.payex.com/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=5a17c24e-d459-4567-bbad-aa0f17a76119&amp;culture=sv-SE"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"view-paymentorder"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/javascript"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+    
+      <h2 id="payment-url-helper-endpoints">
+        
+        
+          Payment Url Helper Endpoints <a href="#payment-url-helper-endpoints" class="header-anchor"></a>
+        
+        
+      </h2>
+
+<p>The <a href="/checkout/payment-menu#payment-url">Payment Url</a> helper endpoints do not interact directly with Swedbank Pay. Instead, they are used to route any navigations to the payment order’s payment url to the app using the SDK.</p>
+
+<p>The payment url allows navigations to third-party sites to happen as a part of the payment process. To continue the payment after any third-party processes, navigating to the payment url is expected to load the payment menu again. In the case of an app using the SDK, this means that the payment url must be routed to that app, and the app must react to that url by reloading the payment menu. Furthermore, for maximum compatibility, the payment url should be a regular https url.</p>
+
+<p>Since we want the payment urls to be https urls, they must be hosted somewhere. These helper endpoints facilitate that. Each platform has its own payment url helper, due to the platforms’ different requirements for url routing. The endpoints take query arguments to enable apps using the SDK to locally generate unique payment urls for each payment order. The endpoints have no side-effects, and will always return the same response for the same query arguments.</p>
+
+<p>The payment url helper endpoints are specified with static paths relative to the root endpoint url. This is done so that payment urls can be generated locally on the app, without needing to make a network round trip at that point. The SDK has no hard requirement for the helper endpoint urls to have such a relationship to the root endpoint url, but it does contain utility methods for easier integration when that is the case. If you wish to host the payment url helper endpoints elsewhere, or, indeed, replicate the behaviour with some other schema for the payment urls, you must manually set <code class="language-html highlighter-rouge">paymentorder.urls.paymentUrl</code> to the correct value when creating your payment orders.</p>
+
+<p>Importantly, the payment url helper endpoints must be accessible without any authentication headers. This is because the scenario where they will be used is when a third-party site wishes to navigate back to the payment order. Such a site will necessarily not have any authentication tokens related to your backend. Consequently, it is important to ensure that these endpoints do not inadvertently disclose information.</p>
+
+<p>The sample implementations serve these payment url helper endpoints at the specified static paths.</p>
+
+<p>N.B! The SDK generates unique payment urls by adding unique query arguments to the helper endpoint url. These payment urls only have meaning on the generating device, in the generating app. Opening them on another device will be unable to navigate the user to the originating payment menu.</p>
+    
+      <h3 id="android-payment-url-helper">
+        
+        
+          Android Payment Url Helper <a href="#android-payment-url-helper" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<p>The Android payment url helper endpoint expects a query parameter named <code class="language-html highlighter-rouge">package</code>: the package name of the Android application to redirect to. It has no requirements as to the existence or value of other query parameters. As the application using the SDK knows its own package name, it can use this endpoint to generate a payment url that is routed back to itself.</p>
+
+<p>The specified path for the Android payment url helper endpoint is <code class="language-html highlighter-rouge">sdk-callback/android-intent</code>. The default constructors of the Android SDK form payment urls by appending <code class="language-html highlighter-rouge">sdk-callback/android-intent</code> to the backend url, i.e. the root endpoint, and adding the <code class="language-html highlighter-rouge">package</code> query parameter with the containing application’s package name, and an <code class="language-html highlighter-rouge">id</code> query parameter with a random value.</p>
+
+<p>The endpoint responds to a correct request with a redirect response, the redirect location being an <a href="https://developer.chrome.com/multidevice/android/intents">Intent-scheme Url</a>. That url is constructed such that it uses the value of the <code class="language-html highlighter-rouge">package</code> query parameter as the target package of the intent. The action of the intent shall be <code class="language-html highlighter-rouge">com.swedbankpay.mobilesdk.VIEW_PAYMENTORDER</code>; the SDK has an intent filter for this action. The uri (data) of the intent shall be the full url used in the request: if the endpoint was requested with the url.</p>
+
+<p class="code-header"><strong>Request</strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="nf">GET</span> <span class="nn">/swedbank-pay-mobile/sdk-callback/android-intent?package=your.ecom.app&amp;id=abb50c53-53c1-4138-923f-59fcf0acd08d</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">example.com</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th style="text-align: center">Required</th>
+      <th style="text-align: left">Field</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">package</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The package name of the Android application to redirect to</td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="code-header"><strong>Response</strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">301</span> <span class="ne">Moved Permanently ①</span>
+<span class="na">Location</span><span class="p">:</span> <span class="s">intent://example.com/swedbank-pay-mobile/sdk-callback/android-intent?package=your.ecom.app&amp;id=abb50c53-53c1-4138-923f-59fcf0acd08d#Intent;scheme=https;action=com.swedbankpay.mobilesdk.VIEW_PAYMENTORDER;package=your.ecom.app;end; ②</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<ul>
+  <li>① 302 Found is perhaps a more appropriate status. This may be changed in the future, after testing that the routing works correctly with that status.</li>
+  <li>② The <code class="language-html highlighter-rouge">intent</code> url is transformed to an Android Intent using the data after the <code class="language-html highlighter-rouge">#Intent;</code> token. The uri of that intent is the intent url up to that token, with the <code class="language-html highlighter-rouge">intent</code> scheme replaced according to the <code class="language-html highlighter-rouge">scheme=</code> parameter – in this case <code class="language-html highlighter-rouge">https</code>.</li>
+</ul>
+
+<p>Using a payment url crafted this way causes an intent with the payment url to be delivered to the application when a third-party page navigates to the payment url. The SDK receives this intent, recognizes the payment url, and reloads the payment menu.</p>
+
+<p>N.B! It is possible to craft arbitrary <code class="language-html highlighter-rouge">com.swedbankpay.mobilesdk.VIEW_PAYMENTORDER</code> intents using this endpoint. However, further processing of such intents is dependent on local data, and thus this endpoint leaks no information. Indeed, it is conceptually possible for two different devices to use the same payment url to refer to different payments. Your implementation may restrict the requests it serves; e.g. you may only allow a specific <code class="language-html highlighter-rouge">package</code>.</p>
+    
+      <h3 id="ios-payment-url-helper">
+        
+        
+          iOS Payment Url Helper <a href="#ios-payment-url-helper" class="header-anchor"></a>
+        
+        
+      </h3>
+    
+      <h4 id="background">
+        
+        
+          Background <a href="#background" class="header-anchor"></a>
+        
+        
+      </h4>
+
+<p>The iOS payment url helper endpoint is more involved than the Android one. While a similar mechanism could be used with <a href="https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content/defining_a_custom_url_scheme_for_your_app">custom url schemes</a>, doing so will not provide optimal user experience: custom schemes will show a confirmation dialog before being routed to the handling application, and the content of that dialog is not under developer control. Instead, the best practice for assigning urls to applications is to use <a href="https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content">Universal Links</a>.</p>
+
+<p>With the merchant backend host and the iOS application using the SDK configured correctly, the payment url becomes a universal link. Universal links function such that they are given directly to the handling application. This means that if the navigation to the payment url is handled as a unversal link, the actual payment url is never dereferenced before being handled by the application. In this scenario, is does not matter what kind of response would be received by making a <code class="language-html highlighter-rouge">GET</code> request to the payment url. Unfortunately, this is not guaranteed to happen.</p>
+
+<p>As <a href="https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content#3001753">documented</a>, universal links open the registered application “when [the user] tap[s] links to your website within Safari”, but “When a user browses your website in Safari and taps a universal link in the same domain, the system opens that link in Safari – If the user taps a universal link in a different domain, the system opens the link in your app.” This presents two preconditions: the navigation must originate from user interaction, and the domain of the universal link must be different to the domain of the current page. Also, practice has shown that universal links may still sometimes fail to work as intended, so we must have some way of escaping that situation.</p>
+
+<p>In order to have a foolproof system with optimal user experience, we must therefore work correctly in different scenarios:</p>
+
+<ol>
+  <li>The initial navigation to the payment url is opened in the application: no requirements for the payment url</li>
+  <li>The initial navigation to the payment url is opened in Safari: need a way to link back to the payment url such that it is opened in the application instead
+    <ul>
+      <li>2a: The second navigation to the payment url is opened in the application: no further requirements for the payment url</li>
+      <li>2b: The second navigation to the payment url is also opened in Safari: out of nice-UX options; need to redirect to a custom scheme url</li>
+    </ul>
+  </li>
+</ol>
+
+<p>This state of matters necessitates an unintuitive and cumbersome system involving two hosts and a custom url scheme. The usage of two hosts is unavoidable if maximum compatibility combined with optimum user experience is desired. The custom url scheme is unavoidable if an escape hatch in badly behaving scenarios is desired. However, universal links need be configured only to one of the involved hosts, namely the one hosting the payment url. Thus, the page with a link back to the payment url can be on a generic server hosted by Swedbank Pay. [Development note: the Swedbank Pay server for this purpose is not yet publicly available.]</p>
+    
+      <h4 id="ios-payment-url-system">
+        
+        
+          iOS Payment Url System <a href="#ios-payment-url-system" class="header-anchor"></a>
+        
+        
+      </h4>
+
+<p>The iOS payment url helper endpoint expects the following query parameters:</p>
+
+<ul>
+  <li><code class="language-html highlighter-rouge">scheme</code>: The custom scheme for Swedbank Pay SDK payment urls in the application</li>
+  <li><code class="language-html highlighter-rouge">language</code>: The language to use in the back-link web page in the case 2 above</li>
+</ul>
+
+<p>The endpoint also accepts two optional query parameters:</p>
+
+<ul>
+  <li><code class="language-html highlighter-rouge">app</code>: The name of the application to show in the back-link web page</li>
+  <li><code class="language-html highlighter-rouge">fallback</code>: If <code class="language-html highlighter-rouge">true</code>, redirects to a custom-scheme url instead of the back-link web page</li>
+</ul>
+
+<p>Like the Android payment url helper endpoint, the iOS payment url helper endpoint imposes no requirements on any other query parameters.</p>
+
+<p>The specified path for the iOS payment url helper endpoint is <code class="language-html highlighter-rouge">sdk-callback/ios-universal-link</code>. The default constructors of the iOS SDK form payment urls by appending <code class="language-html highlighter-rouge">sdk-callback/ios-universal-link</code> to the backend url, i.e. the root endpoint, and adding the <code class="language-html highlighter-rouge">scheme</code> query parameter with the custom scheme registered in the app for handling Swedbank Pay SDK payment urls, the <code class="language-html highlighter-rouge">language</code> parameter with the chosen language, the <code class="language-html highlighter-rouge">app</code> parameter with the application name (if available), and an <code class="language-html highlighter-rouge">id</code> query parameter with a random value. The <code class="language-html highlighter-rouge">fallback</code> parameter is <em>not</em> set for the payment url.</p>
+
+<p>Let us consider the cases above, when a third-party page wants to navigate back to the payment menu. Case 1 requires no further analysis. The univeral link system works as we intend, the payment url is opened in the app as-is.</p>
+
+<p>Case 2 causes the payment url to be opened in Safari. In this case we want to show a web page with a link back to the payment url, so the user can tap the link and it will be opened in the application, as provided by the conditions outlined above. Since this page must be served from a different domain, the payment url itself must respond with a redirect response.</p>
+
+<p class="code-header"><strong>Request</strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="nf">GET</span> <span class="nn">/swedbank-pay-mobile/sdk-callback/ios-universal-link?scheme=yourecomapp&amp;language=en-US&amp;id=abb50c53-53c1-4138-923f-59fcf0acd08d&amp;app=Your%20Ecom%20App</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">example.com</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th style="text-align: center">Required</th>
+      <th style="text-align: left">Field</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">scheme</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The custom scheme for handling Swedbank Pay payment urls in the app</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">language</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The language to use in the back-link page</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">app</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The application name to display in the back-link page</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">fallback</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">boolean</code></td>
+      <td style="text-align: left">If <code class="language-html highlighter-rouge">true</code>, redirect to custom scheme rather than back-link page</td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="code-header"><strong>Response</strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">301</span> <span class="ne">Moved Permanently ①</span>
+<span class="na">Location</span><span class="p">:</span> <span class="s">https://payment.url.trampoline.host/payment/url/trampoline/path?target=https%3A%2F%2Fexample.com%2Fswedbank-pay-mobile%2Fsdk-callback%2Fios-universal-link%3Fscheme%3Dyourecomapp%26language%3Den-US%26id%3Dabb50c53-53c1-4138-923f-59fcf0acd08d%26app%3DYour%2520Ecom%2520App%26fallback%3Dtrue&amp;language=en-US&amp;app=Your%20Ecom%20App</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><del>This example uses the public server hosted by Swedbank Pay</del> [Development note: The public server is not yet available. The authority and path of url will be updated reflect the correct values for the public server when available.], but you can also host the back-link page yourself if desired.</p>
+
+<p>Safari will immediately follow the redirect:</p>
+
+<p class="code-header"><strong>Request</strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="nf">GET</span> <span class="nn">/payment/url/trampoline/path?target=https%3A%2F%2Fexample.com%2Fswedbank-pay-mobile%2Fsdk-callback%2Fios-universal-link%3Fscheme%3Dyourecomapp%26language%3Den-US%26id%3Dabb50c53-53c1-4138-923f-59fcf0acd08d%26app%3DYour%2520Ecom%2520App%26fallback%3Dtrue&amp;language=en-US&amp;app=Your%20Ecom%20App</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">payment.url.trampoline.host</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th style="text-align: center">Required</th>
+      <th style="text-align: left">Field</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">target</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The link to open when the button on the page is tapped</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">language</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The language to use in the page</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">app</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The application name to display in the page</td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="code-header"><strong>Response</strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="rouge-code"><pre><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">text/html</span>
+
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+<span class="nt">&lt;title&gt;</span>Your Ecom App Payment by Swedbank Pay<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"https://design.swedbankpay.com/v/4.3.0/styles/dg-style.css"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"text-center"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"https://design.swedbankpay.com/v/4.3.0/img/swedbankpay-logo.svg"</span> <span class="na">alt=</span><span class="s">"Swedbank Pay"</span> <span class="na">height=</span><span class="s">"120"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;p&gt;&lt;a</span> <span class="na">class=</span><span class="s">"btn btn-executive"</span> <span class="na">href=</span><span class="s">"https://example.com/swedbank-pay-mobile/sdk-callback/ios-universal-link?scheme=yourecomapp&amp;language=en-US&amp;id=abb50c53-53c1-4138-923f-59fcf0acd08d&amp;app=Your%20Ecom%20App&amp;fallback=true"</span><span class="nt">&gt;</span>Back to Your Ecom App<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>The back-link page contains a link to the payment url, but with an added with the <code class="language-html highlighter-rouge">fallback=true</code> parameter. In case 2a the link will be opened in the application, and we are done. In case 2b, however, the link is again opened in Safari. Since the back-link page did not work, it makes no sense to redirect back to it again. Instead we will redirect to a custom scheme url, as those will always be opened in the registered application, albeit only after a confirmation dialog. Of course, this means that we need to know that the payment url is being opened from the back-link page. The <code class="language-html highlighter-rouge">fallback=true</code> parameter signals to the iOS payment url helper endpoint to alter its behaviour this way.</p>
+
+<p>You may note that in case 2a the application was not opened with the original payment url, but with one with an extra query parameter. The SDK handles this by considering the query part of the payment url separately, allowing additional parameters.</p>
+
+<p>Case 2b continues by making a request to the payment url with the added <code class="language-html highlighter-rouge">fallback=true</code> parameter. The endpoint responds with a redirect similar to the Android one: the scheme is replaced with the custom scheme, and the rest of the request url is unmodified.</p>
+
+<p class="code-header"><strong>Request</strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="nf">GET</span> <span class="nn">/swedbank-pay-mobile/sdk-callback/ios-universal-link?scheme=yourecomapp&amp;language=en-US&amp;id=abb50c53-53c1-4138-923f-59fcf0acd08d&amp;app=Your%20Ecom%20App&amp;fallback=true</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">example.com</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p class="code-header"><strong>Response</strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">301</span> <span class="ne">Moved Permanently ①</span>
+<span class="na">Location</span><span class="p">:</span> <span class="s">yourecomapp://example.com/swedbank-pay-mobile/sdk-callback/ios-universal-link?scheme=yourecomapp&amp;language=en-US&amp;id=abb50c53-53c1-4138-923f-59fcf0acd08d&amp;app=Your%20Ecom%20App&amp;fallback=true</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Note that this custom-scheme link is otherwise equal to the universal link opened in case 2a; accordingly, the SDK handles this by allowing the scheme of the payment url to be either the original scheme, or the custom scheme registered to the application.</p>
+
+<ul>
+  <li>① 302 Found is again a more appropriate status. This may be changed in the future.</li>
+</ul>
+    
+      <h4 id="apple-app-site-association">
+        
+        
+          Apple App Site Association <a href="#apple-app-site-association" class="header-anchor"></a>
+        
+        
+      </h4>
+
+<p>The iOS payment url helper endpoint must be configured as a universal link to the application for it to work correctly. Doing this requires an <a href="https://developer.apple.com/documentation/safariservices/supporting_associated_domains_in_your_app#3001215">Apple app site association</a> file on the host of the iOS payment url. This file must be at a path relative to the host root (namely <code class="language-html highlighter-rouge">/.well-known/apple-app-site-association</code>), and is thus outside the scope of, but linked to, the merchant backend API.</p>
+
+<p>The example implementations assume they are rooted at host root, and serve an Apple app site association using a configurable application ID.</p>
+
+<p class="code-header"><strong>Request</strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="nf">GET</span> <span class="nn">/.well-known/apple-app-site-association</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">example.com</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p class="code-header"><strong>Response</strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nl">"applinks"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"apps"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="nl">"details"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"appID"</span><span class="p">:</span><span class="s2">"YOURTEAMID.your.ecom.app"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"paths"</span><span class="p">:[</span><span class="s2">"/swedbank-pay-mobile/sdk-callback/*"</span><span class="p">]</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+    
+      <h2 id="problems">
+        
+        
+          Problems <a href="#problems" class="header-anchor"></a>
+        
+        
+      </h2>
+
+<p>If there are any errors in servicing a request, they should be reported using <a href="https://tools.ietf.org/html/rfc7807">Problem Details for HTTP APIs (RFC 7807)</a> messages, like the <a href="/home/technical-information#problems">Swedbank Pay APIs do</a>. In particular, if the Swedbank Pay API response contains a problem, that problem should be forwarded to the client making the original request.</p>
+    
+      <h3 id="merchant-backend-problems">
+        
+        
+          Merchant Backend Problems <a href="#merchant-backend-problems" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<p>The following problem types are defined for Merchant Backend specific errors. The mobile SDK components contain data types for easy processing of these error types. The sample implementations emit these errors in the specified circumstances; your own implementation is encouraged to do so as well.</p>
+
+<p>All these Merchant Backend problem types will have a URI in the format <code class="language-html highlighter-rouge">https://api.payex.com/psp/errordetail/mobilesdk/<span class="nt">&lt;error-type&gt;</span></code>.</p>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: center">Status</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">gatewaytimeout</code></td>
+      <td style="text-align: center"><code class="language-html highlighter-rouge">504</code></td>
+      <td style="text-align: left">The Swedbank Pay API did not respond in time.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">badgateway</code></td>
+      <td style="text-align: center"><code class="language-html highlighter-rouge">502</code></td>
+      <td style="text-align: left">The Merchant Backend did not understand the response from the Swedbank Pay API.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">unauthorized</code></td>
+      <td style="text-align: center"><code class="language-html highlighter-rouge">401</code></td>
+      <td style="text-align: left">The request did not have proper credentials to perform the operation.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">badrequest</code></td>
+      <td style="text-align: center"><code class="language-html highlighter-rouge">400</code></td>
+      <td style="text-align: left">The Merchant Backend did not undestand the request.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Your implementation is encouraged to define its own problem types for any domain-specific errors; you should namespace those problem types under a domain name under your control – usually the host name of the Merchant Backend.</p>
+
+<nav class="iterator d-flex">
+    
+        <a class="mr-auto btn btn-guiding" role="button" rel="prev" href="./">
+            Back: Introduction
+        </a>
+    
+
+    
+        <a class="ml-auto btn btn-executive" role="button" rel="next" href="merchant-backend-sample-code">
+            Next: Merchant Backend Sample Code
+        </a>
+    
+</nav>
+                                    
+                                </div>
+
+                                <div class="col-2 d-none d-lg-block">
+                                    <nav class="doc-toc">
+                                        <ul>
+  <li class="toc-2"><a href="#authentication-and-authorization">Authentication and Authorization</a></li>
+  <li class="toc-2"><a href="#root-endpoint">Root Endpoint</a></li>
+  <li class="toc-2"><a href="#consumers-endpoint">Consumers Endpoint</a></li>
+  <li class="toc-2"><a href="#payment-orders-endpoint">Payment Orders Endpoint</a></li>
+  <li class="toc-2"><a href="#payment-url-helper-endpoints">Payment Url Helper Endpoints</a></li>
+  <li class="toc-2"><a href="#problems">Problems</a></li>
+</ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+            </div>
+
+            <footer class="page-footer">
+                <p class="page-footer-rights">© Swedbank Pay</p>
+            </footer>
+        </div>
+
+        <script src="https://design.swedbankpay.com/v/4.6.1/scripts/dg.js"></script>
+        <script src="/assets/js/swedbank-pay-design-guide-theme.js"></script>
+            <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-156582708-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-156582708-1');
+</script>
+
+    </body>
+</html>

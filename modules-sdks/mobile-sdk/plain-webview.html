@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="theme-color" content="#000">
+        <meta name="application-name" content="Plain Webview">
+        <meta name="msapplication-TileColor" content="#000">
+        <meta name="msapplication-TileImage" content="https://design.swedbankpay.com/v/4.6.1/icons/mstile-144x144.png">
+        <meta property="og:type" value="website" />
+        <meta property="og:url" value="https://developer.swedbankpay.com/modules-sdks/mobile-sdk/plain-webview.html" />
+        <meta property="og:title" value="Plain Webview" />
+        <meta name="title" content="Plain Webview" />
+        <meta property="og:description" value="Swedbank Pay Developer Portal" />
+        <meta name="description" content="Swedbank Pay Developer Portal" />
+        <meta property="og:image" value="/assets/img/swedbank-pay-developer-portal.png" />
+        <title>Plain Webview</title>
+        <link rel="stylesheet" href="https://design.swedbankpay.com/v/4.6.1/styles/dg-style.css" />
+        <link rel="stylesheet" href="/assets/css/swedbank-pay-design-guide-theme.css" />
+        <link rel="stylesheet" href="/assets/css/pygments-autumn.css" />
+        <link rel="shortcut icon" href="https://design.swedbankpay.com/v/4.6.1/icons/favicon.ico">
+        <link rel="icon" type="image/png" sizes="16x16" href="https://design.swedbankpay.com/v/4.6.1/icons/favicon-16x16.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="https://design.swedbankpay.com/v/4.6.1/icons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="228x228" href="https://design.swedbankpay.com/v/4.6.1/icons/coast-228x228.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Plain Webview">
+<link rel="apple-touch-icon" sizes="57x57" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="167x167" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-167x167.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-180x180.png">
+<link rel="apple-touch-icon" sizes="1024x1024" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-1024x1024.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 320px) and (device-height: 480px) and (orientation: ) and (-webkit-device-pixel-ratio: 1)"
+    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-320x460.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 320px) and (device-height: 480px) and (orientation: ) and (-webkit-device-pixel-ratio: 2)"
+    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-640x920.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 320px) and (device-height: 568px) and (orientation: ) and (-webkit-device-pixel-ratio: 2)"
+    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-640x1096.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 375px) and (device-height: 667px) and (orientation: ) and (-webkit-device-pixel-ratio: 2)"
+    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-750x1294.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 414px) and (device-height: 736px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)"
+    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-1182x2208.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 414px) and (device-height: 736px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 3)"
+    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-1242x2148.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 1)"
+    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-748x1024.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 1)"
+    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-768x1004.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)"
+    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-1496x2048.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)"
+    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-1536x2008.png">
+<script src="/assets/js/mermaid.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="/assets/tipuesearch/tipuesearch_content.js"></script>
+        <script src="/assets/tipuesearch/tipuesearch_set.js"></script>
+        <script src="/assets/tipuesearch/tipuesearch.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
+    </head>
+
+    <body>
+        <div id="designguide">
+            <header class="topbar topbar-md-wide designguide-header">
+                <button type="button" class="topbar-btn"><i class="material-icons topbar-btn-icon">menu</i></button>
+                <a href="https://developer.swedbankpay.com" class="topbar-logo"><img
+                        src="https://design.swedbankpay.com/v/4.6.1/img/swedbankpay-logo.svg" alt="logo"></a>
+                <nav class="topbar-nav">
+                    <div class="topbar-link-container">
+                        <button type="button" class="topbar-close"><i class="material-icons">close</i></button>
+
+                        
+                        
+
+                        
+
+                        <a 
+                            href="/"><span>Home</span></a>
+
+                        
+                        
+                        <a 
+                            href="/checkout/"><span>Checkout</span></a>
+                        
+                        
+                        <a 
+                            href="/payments/"><span>Payments</span></a>
+                        
+                        
+                        <a 
+                            href="/gift-cards/"><span>Gift Cards</span></a>
+                        
+                        
+                        <a 
+                            href="/resources/"><span>Resources</span></a>
+                        
+
+                        <div class="topbar-info topbar-link-right">
+                            <div class="topbar-info-contact">
+                                <a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/modules-sdks/mobile-sdk/plain-webview.md" target="_blank"
+                                    rel="noopener noreferrer" title="Edit this page on GitHub">
+                                    <svg aria-labelledby="simpleicons-github-icon" role="img" viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <title id="simpleicons-github-icon">Edit this page on GitHub</title>
+                                        <path
+                                            d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+
+            <div class="documentation">
+                <div class="row">
+                    <div class="col-xxl-2 col-md-3">
+                        <div class="doc-sidebar">
+                            
+                            <form class="doc-search" action="/search">
+                                <input type="text" class="form-control" name="q" id="tipue_search_input"
+                                    placeholder="Search..." autocomplete="off" pattern=".{3,}"
+                                    title="At least 3 characters">
+                            </form>
+                            
+                            
+                            <nav class="documentation-nav">
+                                
+                                
+                                <div class="nav-group active">
+                                    <div class="nav-heading">
+                                        <i class="material-icons">keyboard_arrow_right</i>
+                                        <span>Mobile SDK</span>
+                                    </div>
+
+                                    
+                                    <ul>
+                                        
+                                        
+                                        <li><a  href="/modules-sdks/mobile-sdk/"><span>Introduction</span></a></li>
+                                        
+                                        
+                                        <li><a  href="/modules-sdks/mobile-sdk/merchant-backend"><span>Merchant Backend</span></a></li>
+                                        
+                                        
+                                        <li><a  href="/modules-sdks/mobile-sdk/merchant-backend-sample-code"><span>Merchant Backend Sample Code</span></a></li>
+                                        
+                                        
+                                        <li><a  href="/modules-sdks/mobile-sdk/android"><span>Android</span></a></li>
+                                        
+                                        
+                                        <li><a  href="/modules-sdks/mobile-sdk/ios"><span>iOS</span></a></li>
+                                        
+                                        
+                                        <li><a  href="/modules-sdks/mobile-sdk/process-diagrams"><span>Process Diagrams</span></a></li>
+                                        
+                                        
+                                        <li><a  aria-current="page" class="active"
+                                                 href="/modules-sdks/mobile-sdk/plain-webview"><span>Plain Webview</span></a></li>
+                                        
+                                    </ul>
+                                    
+                                </div>
+                                
+                            </nav>
+                            
+                        </div>
+                    </div>
+
+                    <main class="doc-view col-xxl-10 col-md-9">
+                        <div class="doc-container">
+                            <h1>Plain Webview</h1>
+                            <div class="row">
+                                <div class="doc-body col-lg-10">
+                                    
+                                    <div class="alert alert-complex alert-warning"><header class="alert-header">
+            
+                <i class="material-icons alert-icon">warning</i>
+      <h3>
+        
+        
+          Unsupported
+        
+        
+      </header>
+    
+
+    
+        
+            <div class="alert-body">
+                <p>This page is prodived for informational purposes only,
+and is not part of the Mobile SDK documentation proper.</p>
+            </div>
+        
+    
+</div>
+
+<div class="jumbotron">
+    <p>The <strong>Swedbank Pay Mobile SDK</strong> aims to provide an easy way of integrating Swedbank Pay Checkout into a mobile application. It is, however, an opinionated library, and in particular is has no support for Swedbank Pay Payments at this point. Experience from developing the SDK may still be valuable for integrators wishing to show Payments pages in a Web View inside a mobile application. This page serves as a repository of that experience.</p>
+
+</div>
+    
+      <h2 id="the-mobile-sdk-and-you">
+        
+        
+          The Mobile SDK And You <a href="#the-mobile-sdk-and-you" class="header-anchor"></a>
+        
+        
+      </h2>
+
+<p>A major goal for the Mobile SDK is to provide a platform where you can start developing your mobile e-commerce application rapidly, in a regular, native mobile application development workflow. Hence, it is designed to be a fairly self-contained whole, with a prescribed interface between the mobile client side and the backend server side. This, of course, means that to use the SDK, your backend must implement the API used by the SDK. If you already have a working solution for web pages, this may not be ideal; indeed, you may wish to reuse your existing web page using Checkout or Payments, and expect to embed it inside your mobile application using a web view.</p>
+
+<p>Indeed, on a high level this is what the SDK mobile client components do, in addition to providing native Swift and Kotlin APIs to the servie. The SDK internally generates a web page that shows the Checkout payment menu, so the developer need not concern themselves with html or other web-specific technologies. An exisiting web implementation would not really benefit from the extra discoverability and quality-of-life improvements of a mobile-native API, so the SDK’s value proposition seems to be little benefit for substantial reimplementation work.</p>
+
+<p>That said, there are important considerations in embedding a Swedbank-Pay-enabled web page in a web view; considerations, which have been taken into account in the development of the SDK. There are currently no plans to offer any first-party components to help with embedding an existing Swedbank Pay web page, but this page shall serve as best-effort documentation for anyone attempting such.</p>
+    
+      <h2 id="basics">
+        
+        
+          Basics <a href="#basics" class="header-anchor"></a>
+        
+        
+      </h2>
+
+<p>Let us assume that the urls of the payment are as follows:</p>
+
+<ul>
+  <li><code class="language-html highlighter-rouge">https://example.com/perform-payment</code> is the page containing the Payment Menu or Payment Seamless View, i.e. the <code class="language-html highlighter-rouge">paymentUrl</code></li>
+  <li><code class="language-html highlighter-rouge">https://example.com/payment-completed</code> is the <code class="language-html highlighter-rouge">completeUrl</code></li>
+  <li><code class="language-html highlighter-rouge">https://example.com/payment-canceled</code> is the <code class="language-html highlighter-rouge">cancelUrl</code></li>
+</ul>
+
+<p>Swedbank Pay payments use JavaScript, so that needs to be enabled:</p>
+
+<p class="code-header"><strong>iOS</strong></p>
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre>    <span class="c1">// WKPreferences.javaScriptEnabled is true by default,</span>
+    <span class="c1">// so usually there is no need to to do this.</span>
+    <span class="c1">// Other properties of WKWebViewConfiguration will be</span>
+    <span class="c1">// needed for later steps, though, so it is good to have</span>
+    <span class="c1">// it from the beginning.</span>
+    <span class="k">let</span> <span class="nv">configuration</span> <span class="o">=</span> <span class="kt">WKWebViewConfiguration</span><span class="p">()</span>
+    <span class="n">configuration</span><span class="o">.</span><span class="n">preferences</span><span class="o">.</span><span class="n">javaScriptEnabled</span> <span class="o">=</span> <span class="kc">true</span>
+
+    <span class="c1">// Note: You can only set a configuration by using this initializer.</span>
+    <span class="c1">// You cannot set a configuration in Interface Builder.</span>
+    <span class="k">let</span> <span class="nv">webView</span> <span class="o">=</span> <span class="kt">WKWebView</span><span class="p">(</span><span class="nv">frame</span><span class="p">:</span> <span class="o">.</span><span class="n">zero</span><span class="p">,</span> <span class="nv">configuration</span><span class="p">:</span> <span class="n">configuration</span><span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p class="code-header"><strong>Android</strong></p>
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre>    <span class="kd">val</span> <span class="py">webView</span> <span class="p">=</span> <span class="nc">WebView</span><span class="p">(</span><span class="n">context</span><span class="p">)</span> <span class="c1">// or get it from a layout</span>
+
+    <span class="c1">// WebSettings.javaScriptEnabled is false by default,</span>
+    <span class="c1">// so failing to do this will result in the payment page not working.</span>
+    <span class="c1">// Setting javaScriptEnabled to true causes a linter warning,</span>
+    <span class="c1">// which can be suppressed with an annotation.</span>
+    <span class="n">webView</span><span class="p">.</span><span class="n">settings</span><span class="p">.</span><span class="n">javaScriptEnabled</span> <span class="p">=</span> <span class="k">true</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Some pages use the DOM Storage API, which must be enabled separately on Android:</p>
+
+<p class="code-header"><strong>Android</strong></p>
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>    <span class="n">webView</span><span class="p">.</span><span class="n">settings</span><span class="p">.</span><span class="n">domStorageEnabled</span> <span class="p">=</span> <span class="k">true</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>With this setup, you can load to the web view the page that shows the Payment Menu or the Payment Seamless View, and see what happens. You should be able to see the Swedbank Pay payment interface, and in many cases also complete a payment. It is not unlikely, though, that some payment methods will not work as expected. Also, you will be more or less stuck after the payment is complete.</p>
+
+<p class="code-header"><strong>iOS</strong></p>
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>    <span class="k">let</span> <span class="nv">paymentUrl</span> <span class="o">=</span> <span class="kt">URL</span><span class="p">(</span><span class="nv">string</span><span class="p">:</span> <span class="s">"https://example.com/perform-payment"</span><span class="p">)</span><span class="o">!</span>
+    <span class="n">webView</span><span class="o">.</span><span class="nf">load</span><span class="p">(</span><span class="kt">URLRequest</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="n">paymentUrl</span><span class="p">))</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p class="code-header"><strong>Android</strong></p>
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>    <span class="n">webView</span><span class="p">.</span><span class="nf">loadUrl</span><span class="p">(</span><span class="s">"https://example.com/perform-payment"</span><span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+    
+      <h2 id="completion">
+        
+        
+          Completion <a href="#completion" class="header-anchor"></a>
+        
+        
+      </h2>
+
+<p>There are two ways of being notified of payment completion: listening for navigations, or using JavaScript hooks. Which one you want to use is partly a matter of taste, but if your existing system does some processing in the <code class="language-html highlighter-rouge">completeUrl</code> page, it may be easier to use JavaScript hooks.</p>
+    
+      <h3 id="listening-for-navigations">
+        
+        
+          Listening for Navigations <a href="#listening-for-navigations" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<p>The iOS <code class="language-html highlighter-rouge">WKNavigationDelegate</code> protocol and Android <code class="language-html highlighter-rouge">WebViewClient</code> class can be used to listen for navigations, and change their behaviour.</p>
+
+<p class="code-header"><strong>iOS</strong></p>
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>    <span class="c1">// This example uses Self as the delegate.</span>
+    <span class="c1">// It could be a separate object also.</span>
+    <span class="n">webView</span><span class="o">.</span><span class="n">navigationDelegate</span> <span class="o">=</span> <span class="k">self</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>    <span class="kd">extension</span> <span class="kt">MyClass</span> <span class="p">:</span> <span class="kt">WKNavigationDelegate</span> <span class="p">{</span>
+        <span class="c1">// WKNavigationDelegate methods</span>
+    <span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p class="code-header"><strong>Android</strong></p>
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>    <span class="n">webView</span><span class="p">.</span><span class="n">webViewClient</span> <span class="p">=</span> <span class="kd">object</span> <span class="err">: </span><span class="nc">WebViewClient</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// WebViewClient methods</span>
+    <span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>In the simplest case you could listen for a navigation to the <code class="language-html highlighter-rouge">completeUrl</code> or <code class="language-html highlighter-rouge">cancelUrl</code>, and intercept it.</p>
+
+<p class="code-header"><strong>iOS</strong></p>
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td><td class="rouge-code"><pre>    <span class="kd">func</span> <span class="nf">webView</span><span class="p">(</span>
+        <span class="n">_</span> <span class="nv">webView</span><span class="p">:</span> <span class="kt">WKWebView</span><span class="p">,</span>
+        <span class="n">decidePolicyFor</span> <span class="nv">navigationAction</span><span class="p">:</span> <span class="kt">WKNavigationAction</span><span class="p">,</span>
+        <span class="nv">decisionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">WKNavigationActionPolicy</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span>
+    <span class="p">)</span> <span class="p">{</span>
+        <span class="k">switch</span> <span class="n">navigationAction</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">url</span><span class="p">?</span><span class="o">.</span><span class="n">absoluteString</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="s">"https://example.com/payment-completed"</span><span class="p">:</span>
+            <span class="nf">decisionHandler</span><span class="p">(</span><span class="o">.</span><span class="n">cancel</span><span class="p">)</span>
+            <span class="c1">// Handle payment completion (success/failure)</span>
+
+        <span class="k">case</span> <span class="s">"https://example.com/payment-canceled"</span><span class="p">:</span>
+            <span class="nf">decisionHandler</span><span class="p">(</span><span class="o">.</span><span class="n">cancel</span><span class="p">)</span>
+            <span class="c1">// Handle payment cancellation</span>
+
+        <span class="k">default</span><span class="p">:</span>
+            <span class="nf">decisionHandler</span><span class="p">(</span><span class="o">.</span><span class="n">allow</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p class="code-header"><strong>Android</strong></p>
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td><td class="rouge-code"><pre>    <span class="k">override</span> <span class="k">fun</span> <span class="nf">shouldOverrideUrlLoading</span><span class="p">(</span>
+        <span class="n">view</span><span class="p">:</span> <span class="nc">WebView</span><span class="p">?,</span>
+        <span class="n">url</span><span class="p">:</span> <span class="nc">String</span><span class="p">?</span>
+    <span class="p">):</span> <span class="nc">Boolean</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">when</span> <span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="p">{</span>
+            <span class="s">"https://example.com/payment-completed"</span> <span class="p">-&gt;</span> <span class="p">{</span>
+                <span class="c1">// Handle payment completion (success/failure)</span>
+                <span class="k">true</span>
+            <span class="p">}</span>
+
+            <span class="s">"https://example.com/payment-canceled"</span> <span class="p">-&gt;</span> <span class="p">{</span>
+                <span class="c1">// Handle payment cancellation</span>
+                <span class="k">true</span>
+            <span class="p">}</span>
+
+            <span class="k">else</span> <span class="p">-&gt;</span> <span class="k">false</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>If your <code class="language-html highlighter-rouge">completeUrl</code>, or <code class="language-html highlighter-rouge">cancelUrl</code> for that matter, do some processing and redirect further, you can adapt these patterns to listen to your custom urls instead.</p>
+    
+      <h3 id="adding-javascript-hooks">
+        
+        
+          Adding JavaScript Hooks <a href="#adding-javascript-hooks" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<p>On both iOS and Android, it is possible to add custom JavaScript interfaces to a web view. These interfaces then result in callbacks to native (Swift/Kotlin/ObjC/Java) methods, where you can execute your application specific actions. To observe payment completion and cancellation this way, you need to modify your <code class="language-html highlighter-rouge">completeUrl</code> and <code class="language-html highlighter-rouge">cancelUrl</code> pages to call these mobile-app-specific JavaScript interfaces. How you do this is beyond our scope here.</p>
+    
+      <h4 id="javascript-hooks-ios">
+        
+        
+          JavaScript Hooks: iOS <a href="#javascript-hooks-ios" class="header-anchor"></a>
+        
+        
+      </h4>
+
+<p>On iOS, JavaScript interfaces are added through the <code class="language-html highlighter-rouge">WKUserContentController</code> of the <code class="language-html highlighter-rouge">WKWebView</code>. The <code class="language-html highlighter-rouge">WKUserContentController</code> is set by the <code class="language-html highlighter-rouge">WKWebViewConfiguration</code> used when creating the <code class="language-html highlighter-rouge">WKWebView</code>; you cannot change the <code class="language-html highlighter-rouge">WKUserContentController</code> of a <code class="language-html highlighter-rouge">WKWebView</code>. You can, however, modify the <code class="language-html highlighter-rouge">WKUserContentController</code> of a live <code class="language-html highlighter-rouge">WKWebView</code>, if you want more fine-grained control on which interfaces are exposed at what time.</p>
+
+<p class="code-header"><strong>iOS</strong></p>
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre>    <span class="k">let</span> <span class="nv">userContentController</span> <span class="o">=</span> <span class="n">webView</span>
+        <span class="o">.</span><span class="n">configuration</span>
+        <span class="o">.</span><span class="n">userContentController</span>
+    <span class="c1">// Alternatively, add the script message handler(s)</span>
+    <span class="c1">// to configuration.userContentController</span>
+    <span class="c1">// before creating the WKWebView.</span>
+
+    <span class="c1">// This example uses Self as the handler.</span>
+    <span class="c1">// It could be a separate object also.</span>
+    <span class="n">userContentController</span><span class="o">.</span><span class="nf">add</span><span class="p">(</span><span class="k">self</span><span class="p">,</span> <span class="nv">name</span><span class="p">:</span> <span class="s">"completed"</span><span class="p">)</span>
+    <span class="n">userContentController</span><span class="o">.</span><span class="nf">add</span><span class="p">(</span><span class="k">self</span><span class="p">,</span> <span class="nv">name</span><span class="p">:</span> <span class="s">"canceled"</span><span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="rouge-code"><pre>    <span class="kd">extension</span> <span class="kt">MyClass</span> <span class="p">:</span> <span class="kt">WKScriptMessageHandler</span> <span class="p">{</span>
+        <span class="kd">func</span> <span class="nf">userContentController</span><span class="p">(</span>
+            <span class="n">_</span> <span class="nv">userContentController</span><span class="p">:</span> <span class="kt">WKUserContentController</span><span class="p">,</span>
+            <span class="n">didReceive</span> <span class="nv">message</span><span class="p">:</span> <span class="kt">WKScriptMessage</span>
+        <span class="p">)</span> <span class="p">{</span>
+            <span class="k">switch</span> <span class="n">message</span><span class="o">.</span><span class="n">name</span> <span class="p">{</span>
+            <span class="k">case</span> <span class="s">"completed"</span><span class="p">:</span>
+                <span class="c1">// Handle payment completion (success/failure)</span>
+
+            <span class="k">case</span> <span class="s">"canceled"</span><span class="p">:</span>
+                <span class="c1">// Handle payment cancellation</span>
+            <span class="p">}</span>
+
+            <span class="c1">// the argument of the call is available at message.body</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>On iOS, the interfaces added by <code class="language-html highlighter-rouge">WKUserContentController.add(_:name:)</code> are exposed in JavaScript as <code class="language-html highlighter-rouge">window.webkit.messageHandlers.<span class="nt">&lt;name&gt;</span>.postMessage(body)</code>, so your <code class="language-html highlighter-rouge">completeUrl</code> and <code class="language-html highlighter-rouge">cancelUrl</code> pages would need to eventually execute code like</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>    <span class="nb">window</span><span class="p">.</span><span class="nx">webkit</span><span class="p">.</span><span class="nx">messageHandlers</span><span class="p">.</span><span class="nx">completed</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">(</span><span class="dl">"</span><span class="s2">success</span><span class="dl">"</span><span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>    <span class="nb">window</span><span class="p">.</span><span class="nx">webkit</span><span class="p">.</span><span class="nx">messageHandlers</span><span class="p">.</span><span class="nx">canceled</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">()</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+    
+      <h4 id="javascript-hooks-android">
+        
+        
+          JavaScript Hooks: Android <a href="#javascript-hooks-android" class="header-anchor"></a>
+        
+        
+      </h4>
+
+<div class="alert alert-complex alert-warning">
+    <header class="alert-header">
+            
+                <i class="material-icons alert-icon">warning</i>
+      <h3>
+        
+        
+          Security Warning
+        
+        
+      </header>
+    
+
+    
+        
+            <div class="alert-body">
+                <p>Never use <code class="language-html highlighter-rouge">WebView.addJavascriptInterface</code> on Android versions earlier than 4.2 (<code class="language-html highlighter-rouge">Build.VERSION_CODES.JELLY_BEAN_MR1</code>)!</p>
+            </div>
+        
+    
+</div>
+
+<p>On Android, JavaScript interfaces are added by the <code class="language-html highlighter-rouge">WebView.addJavascriptInterface</code> method. Any public methods with the <code class="language-html highlighter-rouge">@JavascriptInterface</code> annotation of the passed-in object are exposed in JavaScript.</p>
+
+<p class="code-header"><strong>Android</strong></p>
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>    <span class="n">webView</span><span class="p">.</span><span class="nf">addJavascriptInterface</span><span class="p">(</span>
+        <span class="nc">MyJsInterface</span><span class="p">(),</span>
+        <span class="s">"callbacks"</span>
+    <span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre></td><td class="rouge-code"><pre>    <span class="kd">class</span> <span class="nc">MyJsInterface</span> <span class="p">{</span>
+        <span class="c1">// IMPORTANT!</span>
+        <span class="c1">// Methods annotated with @JavascriptInterface are</span>
+        <span class="c1">// NOT called on the main thread. They are called on</span>
+        <span class="c1">// a private, background, WebView thread.</span>
+        <span class="c1">// Make sure to only call methods that are safe</span>
+        <span class="c1">// to call in a background thread, or move execution to</span>
+        <span class="c1">// the main thread, e.g. by ViewModel.viewModelScope</span>
+        <span class="c1">// or LifecycleOwner.lifecycleScope (remember that</span>
+        <span class="c1">// FragmentActivity and Fragment implement LifecycleOwner).</span>
+
+        <span class="nd">@JavascriptInterface</span>
+        <span class="k">fun</span> <span class="nf">completed</span><span class="p">(</span><span class="n">status</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// Handle payment completion (success/failure)</span>
+        <span class="p">}</span>
+
+        <span class="nd">@JavascriptInterface</span>
+        <span class="k">fun</span> <span class="nf">canceled</span><span class="p">()</span> <span class="p">{</span>
+            <span class="c1">// Handle payment cancellation</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>On Android, the objects added by <code class="language-html highlighter-rouge">WebView.addJavascriptInterface</code> are exposed as globals with the specified name, and their <code class="language-html highlighter-rouge">@JavascriptInterface public</code> methods with their JVM names (N.B! Be careful not to break the JVM names with Proguard or similar). Thus, your <code class="language-html highlighter-rouge">completeUrl</code> and <code class="language-html highlighter-rouge">cancelUrl</code> pages would need to eventually execute code like</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>    <span class="nx">callbacks</span><span class="p">.</span><span class="nx">completed</span><span class="p">(</span><span class="dl">"</span><span class="s2">success</span><span class="dl">"</span><span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>    <span class="nx">callbacks</span><span class="p">.</span><span class="nx">canceled</span><span class="p">()</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+    
+      <h2 id="external-applications">
+        
+        
+          External Applications <a href="#external-applications" class="header-anchor"></a>
+        
+        
+      </h2>
+
+<p>Before starting to implement lauching external applications, you should try to get at least one card payment working. With completion observing in place, you should be able to complete a payment flow, at least using the External Integration environment and its test cards.</p>
+
+<p>Sometimes, a payment flow calls for launching an external application, like BankID or Swish. A web page does this by opening a url that is handled by the app in question. To accommodate for this, we extend the “Listening for Navigations” approach above. If you opted for JavaScript hooks for completion, you will now need to add a navigation listener for external apps.</p>
+
+<p>Determining whether a url should launch an external app is straightforward, though on Android it involves a bit of a judgement call. Let us take a look at the arguably simpler iOS case first.</p>
+    
+      <h3 id="external-applications-ios">
+        
+        
+          External Applications: iOS <a href="#external-applications-ios" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<p>You cannot query the system for an arbitrary url to see if it can be opened – this is a deliberate privacy measure. What can be done, and what also happens to be exactly what we want to do, is to attempt to open a url and receive a callback telling us whether it succeeded. Nowadays, the recommended way of opening external applications is to use Universal Links, anyway, which are, on the surface, indistiguishable from web links.</p>
+
+<p class="code-header"><strong>iOS</strong></p>
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+</pre></td><td class="rouge-code"><pre>    <span class="kd">func</span> <span class="nf">webView</span><span class="p">(</span>
+        <span class="n">_</span> <span class="nv">webView</span><span class="p">:</span> <span class="kt">WKWebView</span><span class="p">,</span>
+        <span class="n">decidePolicyFor</span> <span class="nv">navigationAction</span><span class="p">:</span> <span class="kt">WKNavigationAction</span><span class="p">,</span>
+        <span class="nv">decisionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">WKNavigationActionPolicy</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span>
+    <span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Check for completeUrl and cancelUrl here, if applicable.</span>
+
+        <span class="k">if</span> <span class="k">let</span> <span class="nv">url</span> <span class="o">=</span> <span class="n">navigationAction</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">url</span> <span class="p">{</span>
+            <span class="nf">openInExternalApp</span><span class="p">(</span>
+                <span class="nv">url</span><span class="p">:</span> <span class="n">url</span><span class="p">,</span>
+                <span class="nv">decisionHandler</span><span class="p">:</span> <span class="n">decisionHandler</span>
+            <span class="p">)</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="c1">// N.B. This should never happen.</span>
+            <span class="nf">decisionHandler</span><span class="p">(</span><span class="o">.</span><span class="n">allow</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="kd">private</span> <span class="kd">func</span> <span class="nf">openInExternalApp</span><span class="p">(</span>
+        <span class="nv">url</span><span class="p">:</span> <span class="kt">URL</span><span class="p">,</span>
+        <span class="nv">decisionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">WKNavigationActionPolicy</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span>
+    <span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// First, check for universal link</span>
+        <span class="kt">UIApplication</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="nf">open</span><span class="p">(</span>
+            <span class="n">url</span><span class="p">,</span>
+            <span class="nv">options</span><span class="p">:</span> <span class="p">[</span><span class="o">.</span><span class="nv">universalLinksOnly</span><span class="p">:</span> <span class="kc">true</span><span class="p">]</span>
+        <span class="p">)</span> <span class="p">{</span> <span class="n">universalLinkOpened</span> <span class="k">in</span>
+            <span class="k">if</span> <span class="n">universalLinkOpened</span> <span class="p">{</span>
+                <span class="c1">// Url was opened in external app, so do not open it in WKWebView.</span>
+                <span class="nf">decisionHandler</span><span class="p">(</span><span class="o">.</span><span class="n">cancel</span><span class="p">)</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="c1">// Url was not opened in external app, see if WKWebView can handle it.</span>
+                <span class="k">if</span> <span class="k">let</span> <span class="nv">scheme</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="n">scheme</span><span class="p">,</span>
+                    <span class="kt">WKWebView</span><span class="o">.</span><span class="nf">handlesURLScheme</span><span class="p">(</span><span class="n">scheme</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="c1">// Regular http(s) url, proceed.</span>
+                    <span class="nf">decisionHandler</span><span class="p">(</span><span class="o">.</span><span class="n">allow</span><span class="p">)</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="c1">// Custom-scheme url. Try to open it.</span>
+                    <span class="kt">UIApplication</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="nf">open</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+                    <span class="c1">// Cancel the navigation regardless of the result,</span>
+                    <span class="c1">// as WKWebView does not know what to do with the url anyway.</span>
+                    <span class="nf">decisionHandler</span><span class="p">(</span><span class="o">.</span><span class="n">cancel</span><span class="p">)</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+    
+      <h3 id="external-applications-android">
+        
+        
+          External Applications: Android <a href="#external-applications-android" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<p>On Android, web pages attempting to launch external apps happens in one of three ways:</p>
+
+<ul>
+  <li>Custom-scheme links</li>
+  <li>Http(s) links matching a pattern</li>
+  <li>Intent-scheme links</li>
+</ul>
+
+<p>Each of these maps into an <code class="language-html highlighter-rouge">Intent</code>. For custom-scheme and patterned http(s) links, that <code class="language-html highlighter-rouge">Intent</code> has the original url as its <code class="language-html highlighter-rouge">uri</code>, an <code class="language-html highlighter-rouge">action</code> of <code class="language-html highlighter-rouge">android.intent.action.VIEW</code>, and the categories <code class="language-html highlighter-rouge">android.intent.category.BROWSABLE</code> and <code class="language-html highlighter-rouge">android.intent.category.DEFAULT</code>. An <code class="language-html highlighter-rouge">Intent</code> created from an intent-scheme url can have any <code class="language-html highlighter-rouge">action</code> and categories, although they too should have an implicit <code class="language-html highlighter-rouge">android.intent.category.BROWSABLE</code> category. Their <code class="language-html highlighter-rouge">uri</code> is parsed from the intent-scheme url, but we need not trouble ourselves with the specifics here.</p>
+
+<p>On Android we can, and indeed should, query the system whether it can launch Activities from arbitrary Intents. We should note, however, that an Android system is likely to have an app that accepts all http(s) url, namely the browser. Hence, we should exercise a bit of discretion when choosing to launch activities in place of web view navigations.</p>
+
+<p class="code-header"><strong>Android</strong></p>
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+</pre></td><td class="rouge-code"><pre>    <span class="k">override</span> <span class="k">fun</span> <span class="nf">shouldOverrideUrlLoading</span><span class="p">(</span>
+        <span class="n">view</span><span class="p">:</span> <span class="nc">WebView</span><span class="p">?,</span>
+        <span class="n">url</span><span class="p">:</span> <span class="nc">String</span><span class="p">?</span>
+    <span class="p">):</span> <span class="nc">Boolean</span> <span class="p">{</span>
+        <span class="c1">// Check for completeUrl and cancelUrl here, if applicable.</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">url</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span> <span class="k">return</span> <span class="k">false</span> <span class="c1">// should never happen</span>
+
+        <span class="kd">val</span> <span class="py">uri</span> <span class="p">=</span> <span class="nc">Uri</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nf">openInExternalApp</span><span class="p">(</span><span class="n">uri</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">true</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="c1">// uri was not opened in a external app.</span>
+            <span class="c1">// Let WebView take care of it, if it is</span>
+            <span class="c1">// a normal http(s) url.</span>
+            <span class="k">return</span> <span class="k">when</span> <span class="p">(</span><span class="n">uri</span><span class="p">.</span><span class="n">scheme</span><span class="p">)</span> <span class="p">{</span>
+                <span class="s">"http"</span><span class="p">,</span> <span class="s">"https"</span> <span class="p">-&gt;</span> <span class="k">false</span>
+                <span class="k">else</span> <span class="p">-&gt;</span> <span class="k">true</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="k">fun</span> <span class="nf">openInExternalApp</span><span class="p">(</span><span class="n">uri</span><span class="p">:</span> <span class="nc">Uri</span><span class="p">):</span> <span class="nc">Boolean</span> <span class="p">{</span>
+        <span class="k">when</span> <span class="p">(</span><span class="n">uri</span><span class="p">.</span><span class="n">scheme</span><span class="p">)</span> <span class="p">{</span>
+            <span class="s">"intent"</span> <span class="p">-&gt;</span> <span class="p">{</span>
+                <span class="nf">openIntentUri</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+                <span class="c1">// intent uris are always intercepted,</span>
+                <span class="c1">// as WebView cannot handle them anyway</span>
+                <span class="k">return</span> <span class="k">true</span>
+            <span class="p">}</span>
+            <span class="k">else</span> <span class="p">-&gt;</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">openRegularUri</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="k">fun</span> <span class="nf">openIntentUri</span><span class="p">(</span><span class="n">uri</span><span class="p">:</span> <span class="nc">Uri</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">val</span> <span class="py">intent</span> <span class="p">=</span> <span class="k">try</span> <span class="p">{</span>
+            <span class="nc">Intent</span><span class="p">.</span><span class="nf">parseUri</span><span class="p">(</span>
+                <span class="n">uri</span><span class="p">.</span><span class="nf">toString</span><span class="p">(),</span>
+                <span class="nc">Intent</span><span class="p">.</span><span class="nc">URI_INTENT_SCHEME</span>
+            <span class="p">)</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">_</span><span class="p">:</span> <span class="nc">URISyntaxException</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span>
+        <span class="p">}</span>
+        <span class="c1">// Web pages should only be allowed to start activities</span>
+        <span class="c1">// with CATEGORY_BROWSABLE.</span>
+        <span class="n">intent</span><span class="p">.</span><span class="nf">addCategory</span><span class="p">(</span><span class="nc">Intent</span><span class="p">.</span><span class="nc">CATEGORY_BROWSABLE</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nf">canStartActivity</span><span class="p">(</span><span class="n">intent</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">try</span> <span class="p">{</span>
+                <span class="nf">startActivity</span><span class="p">(</span><span class="n">intent</span><span class="p">)</span>
+            <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">_</span><span class="p">:</span> <span class="nc">Exception</span><span class="p">)</span> <span class="p">{</span>
+                <span class="c1">// Could not start activity.</span>
+                <span class="c1">// There is little we can do here.</span>
+            <span class="p">}</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nf">openIntentUriFallbackUrl</span><span class="p">(</span><span class="n">intent</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="k">fun</span> <span class="nf">openIntentUriFallbackUrl</span><span class="p">(</span><span class="n">intent</span><span class="p">:</span> <span class="nc">Intent</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">val</span> <span class="py">fallbackUrl</span> <span class="p">=</span> <span class="n">intent</span><span class="p">.</span><span class="nf">getStringExtra</span><span class="p">(</span><span class="s">"browser_fallback_url"</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">fallbackUrl</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kd">val</span> <span class="py">fallbackIntent</span> <span class="p">=</span> <span class="nc">Intent</span><span class="p">(</span>
+                <span class="nc">Intent</span><span class="p">.</span><span class="nc">ACTION_VIEW</span><span class="p">,</span>
+                <span class="nc">Uri</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">fallbackUrl</span><span class="p">)</span>
+            <span class="p">).</span><span class="nf">addCategory</span><span class="p">(</span><span class="nc">Intent</span><span class="p">.</span><span class="nc">CATEGORY_BROWSABLE</span><span class="p">)</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nf">canStartActivity</span><span class="p">(</span><span class="n">fallbackIntent</span><span class="p">))</span> <span class="p">{</span>
+                <span class="k">try</span> <span class="p">{</span>
+                    <span class="nf">startActivity</span><span class="p">(</span><span class="n">fallbackIntent</span><span class="p">)</span>
+                <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">_</span><span class="p">:</span> <span class="nc">Exception</span><span class="p">)</span> <span class="p">{}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+
+    <span class="k">private</span> <span class="k">fun</span> <span class="nf">openRegularUri</span><span class="p">(</span><span class="n">uri</span><span class="p">:</span> <span class="nc">Uri</span><span class="p">):</span> <span class="nc">Boolean</span> <span class="p">{</span>
+        <span class="kd">val</span> <span class="py">intent</span> <span class="p">=</span> <span class="nc">Intent</span><span class="p">(</span><span class="nc">Intent</span><span class="p">.</span><span class="nc">ACTION_VIEW</span><span class="p">,</span> <span class="n">uri</span><span class="p">)</span>
+            <span class="p">.</span><span class="nf">addCategory</span><span class="p">(</span><span class="nc">Intent</span><span class="p">.</span><span class="nc">CATEGORY_BROWSABLE</span><span class="p">)</span>
+        <span class="kd">val</span> <span class="py">resolveInfo</span> <span class="p">=</span> <span class="nf">resolveActivity</span><span class="p">(</span><span class="n">intent</span><span class="p">)</span>
+        <span class="kd">val</span> <span class="py">shouldStartActivity</span> <span class="p">=</span> <span class="n">resolveInfo</span> <span class="p">!=</span> <span class="k">null</span> <span class="p">&amp;&amp;</span> <span class="k">when</span> <span class="p">(</span><span class="n">uri</span><span class="p">.</span><span class="n">scheme</span><span class="p">)</span> <span class="p">{</span>
+            <span class="s">"http"</span><span class="p">,</span> <span class="s">"https"</span> <span class="p">-&gt;</span> <span class="nf">shouldStartActivityForHttpUri</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="n">resolveInfo</span><span class="p">)</span>
+            <span class="k">else</span> <span class="p">-&gt;</span> <span class="k">true</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">shouldStartActivity</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">try</span> <span class="p">{</span>
+                <span class="nf">startActivity</span><span class="p">(</span><span class="n">intent</span><span class="p">)</span>
+                <span class="k">return</span> <span class="k">true</span>
+            <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">_</span><span class="p">:</span> <span class="nc">Exception</span><span class="p">)</span> <span class="p">{}</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="k">false</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="k">fun</span> <span class="nf">resolveActivity</span><span class="p">(</span><span class="n">intent</span><span class="p">:</span> <span class="nc">Intent</span><span class="p">):</span> <span class="nc">ResolveInfo</span><span class="p">?</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">packageManager</span><span class="p">.</span><span class="nf">resolveActivity</span><span class="p">(</span>
+            <span class="n">intent</span><span class="p">,</span>
+            <span class="nc">PackageManager</span><span class="p">.</span><span class="nc">MATCH_DEFAULT_ONLY</span>
+        <span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="k">fun</span> <span class="nf">canStartActivity</span><span class="p">(</span><span class="n">intent</span><span class="p">:</span> <span class="nc">Intent</span><span class="p">):</span> <span class="nc">Boolean</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nf">resolveActivity</span><span class="p">(</span><span class="n">intent</span><span class="p">)</span> <span class="p">!=</span> <span class="k">null</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="k">fun</span> <span class="nf">shouldStartActivityForHttpUri</span><span class="p">(</span>
+        <span class="n">resolveInfo</span><span class="p">:</span> <span class="nc">ResolveInfo</span>
+    <span class="p">):</span> <span class="nc">Boolean</span> <span class="p">{</span>
+        <span class="c1">// Only open http(s) links in external apps</span>
+        <span class="c1">// if the intent filter is a "good" match.</span>
+        <span class="c1">// Requiring a matching host in the intent filter</span>
+        <span class="c1">// is the most reasonable generic choice, but</span>
+        <span class="c1">// you can exercise more fine-grained control here</span>
+        <span class="c1">// if you wish.</span>
+        <span class="kd">val</span> <span class="py">matchCategory</span> <span class="p">=</span> <span class="n">resolveInfo</span><span class="p">.</span><span class="n">match</span> <span class="n">and</span> <span class="nc">IntentFilter</span><span class="p">.</span><span class="nc">MATCH_CATEGORY_MASK</span>
+        <span class="k">return</span> <span class="n">matchCategory</span> <span class="p">&gt;=</span> <span class="nc">IntentFilter</span><span class="p">.</span><span class="nc">MATCH_CATEGORY_HOST</span>
+    <span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+    
+      <h2 id="getting-back-from-external-applications">
+        
+        
+          Getting Back from External Applications <a href="#getting-back-from-external-applications" class="header-anchor"></a>
+        
+        
+      </h2>
+
+<p>In some cases on Android, getting back from the external application requires no further setup. In particular, this is the case with BankID, if the web page launches it in the recommended manner. In other cases, including any scenario on iOS, the external app will attempt to return to the payment by opening the <code class="language-html highlighter-rouge">paymentUrl</code>. Assuming the <code class="language-html highlighter-rouge">paymentUrl</code> is an https url, it would normally be opened in the browser application (usually Safari or Chrome), so we need to build a system that gets it back to the application where the payment is being processed in a web view.</p>
+    
+      <h3 id="using-a-custom-scheme-paymenturl">
+        
+        
+          Using a Custom-Scheme paymentUrl <a href="#using-a-custom-scheme-paymenturl" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<p>Perhaps the simplest way of making <code class="language-html highlighter-rouge">paymentUrl</code> open in the application is to make it a custom-scheme url rather than an https url. This does come with a few disadvantages, though:</p>
+
+<ul>
+  <li>On iOS, the system will show a confirmation popup, which cannot be customized, before opening a custom-scheme url</li>
+  <li>Related to the above, there is no way of making sure your application is the only one installed that handles the scheme</li>
+  <li><code class="language-html highlighter-rouge">paymentUrl</code> is passed to systems outside Swedbank Pay; systems that may only be compatible with http(s) urls</li>
+</ul>
+
+<p>It is somewhat of a Quick and Dirty solution. We do not recommend this approach.</p>
+    
+      <h3 id="ios-make-paymenturl-a-universal-link">
+        
+        
+          iOS: Make paymentUrl a Universal Link <a href="#ios-make-paymenturl-a-universal-link" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<p>On iOS, the recommended way of assigning urls to apps is to use <a href="https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content">Universal Links</a>. This fits our use-case quite well, and indeed it is what the SDK is designed to do too. When an external app executes the <code class="language-html highlighter-rouge">UIApplication.shared.open("https://example.com/perform-payment")</code>, then, assuming Universal Links are configured correctly, that url will not be opened in Safari, but will instead be opened in the application. You must then examine the url, determine that it is a <code class="language-html highlighter-rouge">paymentUrl</code> from your app, and reload the <code class="language-html highlighter-rouge">paymentUrl</code> in your web view. The payment process should then continue normally. Make sure that any navigation listeners and JavaScript hooks are in place before loading the <code class="language-html highlighter-rouge">paymentUrl</code>.</p>
+
+<p>Now, Universal Links depend on correct configuration, and during development you may find yourself with a broken configuration from time to time. But perhaps even more importantly, Universal Links cannot really be 100% guaranteed to work every time. Please see the iOS SDK documentation for some discussion, but also note that even with correct configuration, the system could fail to retrieve your apple-app-site-association file for any given installation, which could render your universal links temporarily inoperable on that device. This means that your <code class="language-html highlighter-rouge">paymentUrl</code> needs to show some sensible content in case it is opened in Safari. There are a few ways of going at this, but one possibility, assuming you have a working implementation for web in place, is to show your regular payment page, allow the payment to complete there, and then try to launch your application, perhaps by a custom-scheme url, or a universal link to a separate domain. Take a look at <a href="/modules-sdks/mobile-sdk/ios#payment-url-and-external-applications">what the SDK does</a> to not be trapped by unhappy circumstances.</p>
+
+<p>Note that the Universal Links documentation is not explicit on which <code class="language-html highlighter-rouge">UIApplicationDelegate</code> method is called when an application opens a universal link with <code class="language-html highlighter-rouge">UIApplication.open(_:options:completionHandler:)</code> (i.e. <code class="language-html highlighter-rouge">application(_:open:options:)</code> or <code class="language-html highlighter-rouge">application(_:continue:restorationHandler:)</code>). It is probably best to implement both. Universal Links opened from Safari will callback to <code class="language-html highlighter-rouge">application(_:continue:restorationHandler:)</code>.</p>
+    
+      <h3 id="android-add-an-intent-filter-for-paymenturl">
+        
+        
+          Android: Add an Intent Filter for paymentUrl <a href="#android-add-an-intent-filter-for-paymenturl" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<p>Android has always supported apps handling urls matching a pattern. Therefore, it seems sensible to just create an intent filter matching any <code class="language-html highlighter-rouge">paymentUrl</code> you might create. As <code class="language-html highlighter-rouge">paymentUrl</code>s are entirely under your control, you can design a system where they fit a pattern that can be realized as an intent filter. You then receive the url in the relevant app component in the normal manner, and proceed to reload the <code class="language-html highlighter-rouge">paymentUrl</code> in your web view. The payment process will then continue normally.</p>
+
+<p>The downsides of this are:</p>
+
+<ul>
+  <li>You are restricted in how you can change the way you form <code class="language-html highlighter-rouge">paymentUrl</code>s</li>
+  <li>There are other apps that can also handle the <code class="language-html highlighter-rouge">paymentUrl</code>, namely the browser</li>
+</ul>
+
+<p>Because of the latter, when an external application opens <code class="language-html highlighter-rouge">paymentUrl</code>, there are three things that can happen:</p>
+
+<ul>
+  <li><code class="language-html highlighter-rouge">paymentUrl</code> is opened in your app</li>
+  <li><code class="language-html highlighter-rouge">paymentUrl</code> is opened in another app, e.g. Chrome</li>
+  <li>an app chooser is shown</li>
+</ul>
+
+<p>The second one is obviously undesirable. The last one is also not great. The user is not expecting to “open a url”, and may well make the “wrong” choice here, and it is anyway a bad user experience.</p>
+    
+      <h4 id="autoverify-to-the-rescue">
+        
+        
+          Autoverify to the Rescue? <a href="#autoverify-to-the-rescue" class="header-anchor"></a>
+        
+        
+      </h4>
+
+<p>Since Android 6.0 it has been possible to use a <a href="https://developer.android.com/training/app-links/verify-site-associations">mechanism</a> very similar to Apple’s Universal Links to “strongly” assing http(s) urls to applications. This works by adding an <code class="language-html highlighter-rouge">android:autoVerify="true"</code> attribute to the intent filter, plus a <code class="language-html highlighter-rouge">.well-known/assetlinks.json</code> file to the server. This could solve the problems above, but it has its own issues, namely:</p>
+
+<ul>
+  <li>Requires Android 6.0</li>
+  <li>Is really quite cumbersome to setup</li>
+</ul>
+
+<p>The SDK does not use this method.</p>
+    
+      <h3 id="android-have-paymenturl-redirect-to-an-intent-url">
+        
+        
+          Android: Have paymentUrl Redirect to an Intent Url <a href="#android-have-paymenturl-redirect-to-an-intent-url" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<p>Another option on Android is to allow the https <code class="language-html highlighter-rouge">paymentUrl</code> to be opened in Chrome normally, but have that url redirect to an <a href="https://developer.chrome.com/multidevice/android/intents">intent url</a>. That intent url can be made specific to your application, making it so that unless the user has installed an application with the same package id (from a non-Google-Play source, presumably), it will always be opened in your app. This is what the SDK does.</p>
+
+<p>The SDK does this by having <code class="language-html highlighter-rouge">paymentUrl</code> return an http redirect response. This appears to work in all cases, though the documentation is not explicit on this. Now, as here we seem to want to have <code class="language-html highlighter-rouge">paymentUrl</code> be the url loaded in the WebView, this does not work out-of-the-box. One option is to override <code class="language-html highlighter-rouge">shouldInterceptRequest</code> in your <code class="language-html highlighter-rouge">WebViewClient</code>, and special-case the loading of <code class="language-html highlighter-rouge">paymentUrl</code>. Another solution could be loading <code class="language-html highlighter-rouge">paymentUrl</code> normally, but adding a script to the page that checks for a JavaScript interface you provide in the WebView, and it is not there, then it would issue the redirect to the intent url. The documentation does state that Chrome will not launch an app “When the Intent URI is initiated without user gesture.” As this is not what has been done in the SDK, we have not first-hand knowledge on best practices here. A redirect that happens during the page load may be allowed here. If it is not, then a button or some other way of issuing the redirect from user interaction is needed.</p>
+
+<p>For reference, the way the SDK handles <code class="language-html highlighter-rouge">paymentUrl</code>s on Android looks like this from the perspective of the backend:</p>
+
+<p class="code-header"><strong>Request</strong></p>
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="err">    GET /perform-payment
+    Host: example.com
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+
+<p class="code-header"><strong>Response</strong></p>
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="err">    </span><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">301</span> <span class="ne">Moved Permanently</span>
+<span class="s">    Location: intent://example.com/perform-payment#Intent;scheme=https;action=com.swedbankpay.mobilesdk.VIEW_PAYMENTORDER;package=com.example.app;end;`;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>It uses an action defined by the SDK, and the package name of the containing application, making sure the intent is routed to the correct application, and to the correct SDK component. Note that the uri of the resulting intent is the <code class="language-html highlighter-rouge">paymentUrl</code>.</p>
+    
+      <h2 id="dealing-with-picky-web-pages">
+        
+        
+          Dealing with Picky Web Pages <a href="#dealing-with-picky-web-pages" class="header-anchor"></a>
+        
+        
+      </h2>
+
+<p>Testing has shown, that on iOS some 3D-Secure pages do not like being opened in a web view. It does seem that this is mostly related to BankID integrations. We believe the problem stems from a configuration that sets a cookie in the browser, launches BankID, then BankID opens a different web page (not the <code class="language-html highlighter-rouge">paymentUrl</code>), which expects to find that cookie. Now, if the first page was opened in a web view, the cookie is in that web view, but as the second page will be opened in Safari, the cookie will be nowhere to be found. Furthermore, at least in one instance, the original page in the web view will not receive any notification on the BankID process, despite being launched from there. We have not encountered this on Android, but it is quite possible for a similar situation to happen there also.</p>
+
+<p>Now, all of the above is speculation, and not really worth getting too deep into. The end result, however, is that some 3DS pages must be opened in Safari on iOS. The jury is still out if the same is true on Android. Fortunately, with the <code class="language-html highlighter-rouge">paymentUrl</code> handling in place, this is straightforward to do: simply treat any urls not known to be working as “external app urls”, i.e. open them with <code class="language-html highlighter-rouge">UIApplication.shared.open(url)</code> and call the <code class="language-html highlighter-rouge">decisionHandler</code> with <code class="language-html highlighter-rouge">.cancel</code>. The payment will eventually navigate to <code class="language-html highlighter-rouge">paymentUrl</code> in Safari, and should return to the app. It should be noted, though, that in many cases the initial navigation to <code class="language-html highlighter-rouge">paymentUrl</code> will be opened in Safari instead of the app in these cases. This acerbates the need for fallback mechanisms.</p>
+
+<p>The iOS (and possibly Android) SDKs will contain a list of known-good 3DS pages. Feel free to use this as a resource in your own implementation.</p>
+
+<nav class="iterator d-flex">
+    
+        <a class="mr-auto btn btn-guiding" role="button" rel="prev" href="process-diagrams">
+            Back: Process Diagrams
+        </a>
+    
+
+    
+</nav>
+                                    
+                                </div>
+
+                                <div class="col-2 d-none d-lg-block">
+                                    <nav class="doc-toc">
+                                        <ul>
+  <li class="toc-2"><a href="#the-mobile-sdk-and-you">The Mobile SDK And You</a></li>
+  <li class="toc-2"><a href="#basics">Basics</a></li>
+  <li class="toc-2"><a href="#completion">Completion</a></li>
+  <li class="toc-2"><a href="#external-applications">External Applications</a></li>
+  <li class="toc-2"><a href="#getting-back-from-external-applications">Getting Back from External Applications</a></li>
+  <li class="toc-2"><a href="#dealing-with-picky-web-pages">Dealing with Picky Web Pages</a></li>
+</ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+            </div>
+
+            <footer class="page-footer">
+                <p class="page-footer-rights">© Swedbank Pay</p>
+            </footer>
+        </div>
+
+        <script src="https://design.swedbankpay.com/v/4.6.1/scripts/dg.js"></script>
+        <script src="/assets/js/swedbank-pay-design-guide-theme.js"></script>
+            <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-156582708-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-156582708-1');
+</script>
+
+    </body>
+</html>

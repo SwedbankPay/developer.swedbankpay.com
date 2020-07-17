@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="theme-color" content="#000">
+        <meta name="application-name" content="iOS">
+        <meta name="msapplication-TileColor" content="#000">
+        <meta name="msapplication-TileImage" content="https://design.swedbankpay.com/v/4.6.1/icons/mstile-144x144.png">
+        <meta property="og:type" value="website" />
+        <meta property="og:url" value="https://developer.swedbankpay.com/modules-sdks/mobile-sdk/ios.html" />
+        <meta property="og:title" value="iOS" />
+        <meta name="title" content="iOS" />
+        <meta property="og:description" value="Swedbank Pay Developer Portal" />
+        <meta name="description" content="Swedbank Pay Developer Portal" />
+        <meta property="og:image" value="/assets/img/swedbank-pay-developer-portal.png" />
+        <title>iOS</title>
+        <link rel="stylesheet" href="https://design.swedbankpay.com/v/4.6.1/styles/dg-style.css" />
+        <link rel="stylesheet" href="/assets/css/swedbank-pay-design-guide-theme.css" />
+        <link rel="stylesheet" href="/assets/css/pygments-autumn.css" />
+        <link rel="shortcut icon" href="https://design.swedbankpay.com/v/4.6.1/icons/favicon.ico">
+        <link rel="icon" type="image/png" sizes="16x16" href="https://design.swedbankpay.com/v/4.6.1/icons/favicon-16x16.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="https://design.swedbankpay.com/v/4.6.1/icons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="228x228" href="https://design.swedbankpay.com/v/4.6.1/icons/coast-228x228.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="iOS">
+<link rel="apple-touch-icon" sizes="57x57" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="167x167" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-167x167.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-180x180.png">
+<link rel="apple-touch-icon" sizes="1024x1024" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-1024x1024.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 320px) and (device-height: 480px) and (orientation: ) and (-webkit-device-pixel-ratio: 1)"
+    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-320x460.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 320px) and (device-height: 480px) and (orientation: ) and (-webkit-device-pixel-ratio: 2)"
+    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-640x920.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 320px) and (device-height: 568px) and (orientation: ) and (-webkit-device-pixel-ratio: 2)"
+    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-640x1096.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 375px) and (device-height: 667px) and (orientation: ) and (-webkit-device-pixel-ratio: 2)"
+    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-750x1294.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 414px) and (device-height: 736px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)"
+    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-1182x2208.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 414px) and (device-height: 736px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 3)"
+    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-1242x2148.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 1)"
+    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-748x1024.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 1)"
+    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-768x1004.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)"
+    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-1496x2048.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)"
+    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-1536x2008.png">
+<script src="/assets/js/mermaid.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="/assets/tipuesearch/tipuesearch_content.js"></script>
+        <script src="/assets/tipuesearch/tipuesearch_set.js"></script>
+        <script src="/assets/tipuesearch/tipuesearch.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
+    </head>
+
+    <body>
+        <div id="designguide">
+            <header class="topbar topbar-md-wide designguide-header">
+                <button type="button" class="topbar-btn"><i class="material-icons topbar-btn-icon">menu</i></button>
+                <a href="https://developer.swedbankpay.com" class="topbar-logo"><img
+                        src="https://design.swedbankpay.com/v/4.6.1/img/swedbankpay-logo.svg" alt="logo"></a>
+                <nav class="topbar-nav">
+                    <div class="topbar-link-container">
+                        <button type="button" class="topbar-close"><i class="material-icons">close</i></button>
+
+                        
+                        
+
+                        
+
+                        <a 
+                            href="/"><span>Home</span></a>
+
+                        
+                        
+                        <a 
+                            href="/checkout/"><span>Checkout</span></a>
+                        
+                        
+                        <a 
+                            href="/payments/"><span>Payments</span></a>
+                        
+                        
+                        <a 
+                            href="/gift-cards/"><span>Gift Cards</span></a>
+                        
+                        
+                        <a 
+                            href="/resources/"><span>Resources</span></a>
+                        
+
+                        <div class="topbar-info topbar-link-right">
+                            <div class="topbar-info-contact">
+                                <a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/modules-sdks/mobile-sdk/ios.md" target="_blank"
+                                    rel="noopener noreferrer" title="Edit this page on GitHub">
+                                    <svg aria-labelledby="simpleicons-github-icon" role="img" viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <title id="simpleicons-github-icon">Edit this page on GitHub</title>
+                                        <path
+                                            d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+
+            <div class="documentation">
+                <div class="row">
+                    <div class="col-xxl-2 col-md-3">
+                        <div class="doc-sidebar">
+                            
+                            <form class="doc-search" action="/search">
+                                <input type="text" class="form-control" name="q" id="tipue_search_input"
+                                    placeholder="Search..." autocomplete="off" pattern=".{3,}"
+                                    title="At least 3 characters">
+                            </form>
+                            
+                            
+                            <nav class="documentation-nav">
+                                
+                                
+                                <div class="nav-group active">
+                                    <div class="nav-heading">
+                                        <i class="material-icons">keyboard_arrow_right</i>
+                                        <span>Mobile SDK</span>
+                                    </div>
+
+                                    
+                                    <ul>
+                                        
+                                        
+                                        <li><a  href="/modules-sdks/mobile-sdk"><span>Mobile SDK</span></a></li>
+                                        
+                                        
+                                        <li><a  href="/modules-sdks/mobile-sdk/merchant-backend"><span>Merchant Backend</span></a></li>
+                                        
+                                        
+                                        <li><a  href="/modules-sdks/mobile-sdk/merchant-backend-sample-code"><span>Merchant Backend Sample Code</span></a></li>
+                                        
+                                        
+                                        <li><a  href="/modules-sdks/mobile-sdk/android"><span>Android</span></a></li>
+                                        
+                                        
+                                        <li><a  aria-current="page" class="active"
+                                                 href="/modules-sdks/mobile-sdk/ios"><span>iOS</span></a></li>
+                                        
+                                        
+                                        <li><a  href="/modules-sdks/mobile-sdk/process-diagrams"><span>Process Diagrams</span></a></li>
+                                        
+                                        
+                                        <li><a  href="/modules-sdks/mobile-sdk/plain-webview"><span>Plain Webview</span></a></li>
+                                        
+                                    </ul>
+                                    
+                                </div>
+                                
+                            </nav>
+                            
+                        </div>
+                    </div>
+
+                    <main class="doc-view col-xxl-10 col-md-9">
+                        <div class="doc-container">
+                            <h1>iOS</h1>
+                            <div class="row">
+                                <div class="doc-body col-lg-10">
+                                    
+                                    <div class="alert alert-complex alert-warning"><header class="alert-header">
+            
+                <i class="material-icons alert-icon">warning</i>
+      <h3>
+        
+        
+          Unsupported
+        
+        
+      </header>
+    
+
+    
+        
+            <div class="alert-body">
+                <p>The SDK is at an early stage of development
+and is not supported as of yet by Swedbank Pay. It is provided as a
+convenience to speed up your development, so please feel free to play around.
+However, if you need support, please wait for a future, stable release.</p>
+            </div>
+        
+    
+</div>
+    
+      <h2 id="installation">
+        
+        
+          Installation <a href="#installation" class="header-anchor"></a>
+        
+        
+      </h2>
+
+<p>The iOS component of the Swedbank Pay Mobile SDK is distributed through <a href="https://cocoapods.org/">CocoaPods</a>. If you do not have CocoaPods installed on your development machine, please install it first according to the <a href="https://guides.cocoapods.org/using/getting-started.html">instructions</a> at the CocoaPods web page.</p>
+
+<p><a href="https://guides.cocoapods.org/using/using-cocoapods.html">Add CocoaPods</a> to your project, if needed. Then, add the dependency:</p>
+
+<p><code class="language-html highlighter-rouge">pod 'SwedbankPaySDK', '0.1.23'</code></p>
+
+<p>[Development note: There is not yet a stable release of the SDK. Be prepared for potential API changes before the first stable release.]</p>
+
+<p>Do not forget to run <code class="language-html highlighter-rouge">pod install</code> after editing the <code class="language-html highlighter-rouge">Podfile</code>.</p>
+    
+      <h3 id="url-scheme-and-associated-domain">
+        
+        
+          Url Scheme and Associated Domain <a href="#url-scheme-and-associated-domain" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<p>The <a href="/checkout/payment-menu#payment-url">Payment Url</a> handling in the iOS SDK uses <a href="https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content">Universal Links</a>, and additionaly a <a href="https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content/defining_a_custom_url_scheme_for_your_app">custom url scheme</a> as a fallback mechanism. You must therefore set these up in the app before using the SDK.</p>
+
+<p>The easiest way to add a url scheme to your app is to select the project file, go to the <code class="language-html highlighter-rouge">Info</code> tab, scroll down to <code class="language-html highlighter-rouge">URL Types</code>, and click the <code class="language-html highlighter-rouge">+</code> button to add a new scheme. Insert a single <strong>unique</strong> url scheme to the <code class="language-html highlighter-rouge">URL Schemes</code> field. You can choose the url <code class="language-html highlighter-rouge">Identifier</code> freely, but remember that that too should be unique. The <code class="language-html highlighter-rouge">Role</code> for the url type should be <code class="language-html highlighter-rouge">Editor</code>. Finally, to mark this url type as the Swedbank Pay payment url scheme, open the <code class="language-html highlighter-rouge">Additional url type properties</code>, and add a property with the key <code class="language-html highlighter-rouge">com.swedbank.SwedbankPaySDK.callback</code>, type <code class="language-html highlighter-rouge">Boolean</code>, and value <code class="language-html highlighter-rouge">YES</code>.</p>
+
+<p><img src="/assets/img/mobile-sdk/ios-custom-scheme-1.png" alt="Payment url scheme added in project Info tab" /></p>
+
+<p>You can also edit the <code class="language-html highlighter-rouge">Info.plist</code> file directly, if you wish.</p>
+
+<p><img src="/assets/img/mobile-sdk/ios-custom-scheme-2.png" alt="Payment url scheme added in Info.plist editor" /></p>
+
+<p>To set up universal links in your application, you first need to <a href="https://help.apple.com/xcode/mac/current/#/dev88ff319e7">add the Associated Domains capability</a>. Then, add your Merchant Backend’s domain as an <a href="https://developer.apple.com/documentation/safariservices/supporting_associated_domains_in_your_app#3001207"><code class="language-html highlighter-rouge">applinks</code> associated domain</a>. Additionally, your merchant backend must have the appropriate <a href="merchant-backend#apple-app-site-association">Apple App Site Association</a> file configured.</p>
+
+<p><img src="/assets/img/mobile-sdk/ios-assoc-domain.png" alt="Associated Domains Configured" /></p>
+    
+      <h2 id="usage">
+        
+        
+          Usage <a href="#usage" class="header-anchor"></a>
+        
+        
+      </h2>
+
+<pre><code class="language-mermaid">sequenceDiagram
+    participant App
+    participant SDK
+    participant Merchant
+    participant SwedbankPay as Swedbank Pay
+    participant Ext as External App
+
+    rect rgba(238, 112, 35, 0.05)
+        note left of App: Configuration
+        App -&gt;&gt; SDK: SwedbankPaySDK.Configuration(backendUrl: "https://example.com/swedbank-pay-mobile/", headers: [:])
+        SDK --&gt;&gt; App: configuration
+    end
+
+    opt Unless Guest Payment
+        App -&gt;&gt; SDK: SwedbankPaySDK.Consumer(language = ..., shippingAddressRestrictedToCountryCodes = ...)
+        SDK --&gt;&gt; App: consumer
+    end
+
+    rect rgba(138, 205, 195, 0.1)
+        note left of App: Prepare Payment
+        App -&gt;&gt; SDK: PaymentOrderUrls(configuration: configuration, language: ...)
+        SDK --&gt;&gt; App: paymentOrderUrls
+        App -&gt;&gt; SDK: PaymentOrder(urls: paymentOrderUrls, ...)
+        SDK --&gt;&gt; App: paymentOrder
+    end
+
+    App -&gt;&gt; SDK: SwedbankPaySDKController(configuration: configuration, consumer: consumer, paymentOrder: paymentOrder)
+    SDK --&gt;&gt; App: swedbankPaySdkController
+    App -&gt;&gt; SDK: swedbankPaySdkController.delegate = ...
+    App -&gt;&gt; App: Show swedbankPaySdkController
+
+    rect rgba(138, 205, 195, 0.1)
+        note left of App: Discover Endpoints
+        SDK -&gt;&gt; Merchant: GET /swedbank-pay-mobile/
+        Merchant --&gt;&gt; SDK: { "consumers": "/swedbank-pay-mobile/consumers", "paymentorders": "/swedbank-pay-mobile/paymentorders" }
+    end
+
+    opt Unless Guest Payment
+        SDK -&gt;&gt; Merchant: POST /swedbank-pay-mobile/consumers
+        Merchant -&gt;&gt; SwedbankPay: POST /psp/consumers
+        SwedbankPay --&gt;&gt; Merchant: rel: view-consumer-identification
+        Merchant --&gt;&gt; SDK: rel: view-consumer-identification
+        SDK -&gt;&gt; SDK: Show html page with view-consumer-identification
+        SwedbankPay -&gt;&gt; SDK: Consumer identification process
+        SDK -&gt;&gt; SwedbankPay: Consumer identification process
+        SwedbankPay -&gt;&gt; SDK: consumerProfileRef
+        SDK -&gt;&gt; SDK: paymentOrder.payer = { consumerProfileRef }
+    end
+
+    rect rgba(138, 205, 195, 0.1)
+        note left of App: Payment Menu
+        SDK -&gt;&gt; Merchant: POST /swedbank-pay-mobile/paymentorders
+        Merchant -&gt;&gt; SwedbankPay: POST /psp/paymentorders
+        SwedbankPay --&gt;&gt; Merchant: rel: view-paymentorder
+        Merchant --&gt;&gt; SDK: rel: view-paymentorder
+        SDK -&gt;&gt; SDK: Show html page with view-paymentorder
+        SwedbankPay -&gt;&gt; SDK: Payment process
+        SDK -&gt;&gt; SwedbankPay: Payment process
+        opt Redirect to Third-Party Page inside SwedbankPaySDKController ①
+            SDK -&gt;&gt; SDK: Show third-party page
+            SDK -&gt;&gt; SDK: Intercept navigation to paymentUrl
+            SDK -&gt;&gt; SDK: Reload html page with view-paymentorder
+        end
+        opt Redirect to Third-Party Page in Safari ②
+            SDK -&gt;&gt; Ext: Launch Safari
+            Ext -&gt;&gt; SDK: Return from Safari
+        end
+        opt Launch External Application
+            SDK -&gt;&gt; Ext: Start external application
+            Ext -&gt;&gt; SDK: Return from external application ③
+        end
+        SDK -&gt;&gt; SDK: Intercept navigation to completeUrl
+        SDK -&gt;&gt; SDK: delegate.paymentComplete()
+    end
+
+    App -&gt;&gt; App: Remove paymentFragment
+</code></pre>
+
+<ul>
+  <li>① Only pages tested to work with WKWebView are opened inside SwedbankPaySDKController. This list is updated as new pages are verified.</li>
+  <li>② Other pages are opened in Safari. See <a href="#payment-url-and-external-applications">the section on external applications</a> for details on how the process returns to the SDK afterwards.</li>
+  <li>③ See <a href="#payment-url-and-external-applications">the section on external applications</a> for details.</li>
+</ul>
+
+<p>The iOS SDK is contained in the module <code class="language-html highlighter-rouge">SwedbankPaySDK</code>.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="kd">import</span> <span class="kt">SwedbankPaySDK</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>The main component of the SDK is <code class="language-html highlighter-rouge">SwedbankPaySDKController</code>, a <code class="language-html highlighter-rouge">UIViewController</code> that handles a single payment order. When initializing a <code class="language-html highlighter-rouge">SwedbankPaySDKController</code>, you must provide a <code class="language-html highlighter-rouge">SwedbankPaySDK.Configuration</code> that describes the server environment the <code class="language-html highlighter-rouge">SwedbankPaySDKController</code> is working with, along with a <code class="language-html highlighter-rouge">SwedbankPaySDK.PaymentOrder</code>, and, unless making a guest payment, a <code class="language-html highlighter-rouge">SwedbankPaySDK.Consumer</code>. Providing a <code class="language-html highlighter-rouge">SwedbankPaySDK.Consumer</code> makes future payments by the same payer easier.</p>
+
+<p>The <code class="language-html highlighter-rouge">SwedbankPaySDK.Configuration</code> is, in most cases, static for a given server environment. Therefore, it makes sense to keep it in a convenient constant. The <code class="language-html highlighter-rouge">SwedbankPaySDK.Configuration</code> constructor can determine your application’s custom scheme for payment urls automatically, if you have set it up as described above.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="k">let</span> <span class="nv">swedbankPayConfig</span> <span class="o">=</span> <span class="kt">SwedbankPaySDK</span><span class="o">.</span><span class="kt">Configuration</span><span class="p">(</span>
+    <span class="nv">backendUrl</span><span class="p">:</span> <span class="s">"https://example.com/swedbank-pay-mobile/"</span><span class="p">,</span>
+    <span class="nv">headers</span><span class="p">:</span> <span class="p">[:]</span>
+<span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>The semantics of <code class="language-html highlighter-rouge">SwedbankPaySDK.Consumer</code> properties are the same as the fields of the <a href="/checkout/checkin#step-1-initiate-session-for-consumer-identification">POST /psp/consumers</a>. There are default values for the <code class="language-html highlighter-rouge">operation</code> and <code class="language-html highlighter-rouge">language</code> properties (<code class="language-html highlighter-rouge">.InitiateConsumerSession</code> and <code class="language-html highlighter-rouge">.English</code>, respectively).</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="k">let</span> <span class="nv">consumer</span> <span class="o">=</span> <span class="kt">SwedbankPaySDK</span><span class="o">.</span><span class="kt">Consumer</span><span class="p">(</span>
+    <span class="n">language</span> <span class="o">=</span> <span class="o">.</span><span class="kt">Swedish</span><span class="p">,</span>
+    <span class="nv">shippingAddressRestrictedToCountryCodes</span><span class="p">:</span> <span class="o">=</span> <span class="p">[</span><span class="s">"NO"</span><span class="p">,</span> <span class="s">"SE"</span><span class="p">,</span> <span class="s">"DK"</span><span class="p">]</span>
+<span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Similarly, the semantics of <code class="language-html highlighter-rouge">SwedbankPaySDK.PaymentOrder</code> properties are the same as the fields of the <a href="/checkout/payment-menu#step-3-create-payment-order">POST /psp/paymentorders</a> request. Sensible default values are provided for many of the properties. In a similar fashion to how the Android SDK works, while there is no default value for the <code class="language-html highlighter-rouge">urls</code> property, there are convenience constructors for the <code class="language-html highlighter-rouge">SwedbankPaySDK.PaymentOrderUrls</code> type, which are recommended for general use. Assuming you have the iOS Payment Url Helper endpoint set up with the specified static path relative to your backend url (i.e. <code class="language-html highlighter-rouge">sdk-callback/ios-universal-link</code>), then using one of the <code class="language-html highlighter-rouge">SwedbankPaySDK.Configuration</code> taking convenience constructors variants will set the <code class="language-html highlighter-rouge">paymentUrl</code> correctly.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+</pre></td><td class="rouge-code"><pre><span class="k">let</span> <span class="nv">paymentOrder</span> <span class="o">=</span> <span class="kt">SwedbankPaySDK</span><span class="o">.</span><span class="kt">PaymentOrder</span><span class="p">(</span>
+    <span class="n">currency</span> <span class="o">=</span> <span class="s">"SEK"</span><span class="p">,</span>
+    <span class="n">amount</span> <span class="o">=</span> <span class="mi">1500</span><span class="p">,</span>
+    <span class="n">vatAmount</span> <span class="o">=</span> <span class="mi">375</span><span class="p">,</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="s">"Test Purchase"</span><span class="p">,</span>
+    <span class="n">language</span> <span class="o">=</span> <span class="o">.</span><span class="kt">Swedish</span><span class="p">,</span>
+    <span class="n">urls</span> <span class="o">=</span> <span class="kt">SwedbankPaySDK</span><span class="o">.</span><span class="kt">PaymentOrderUrls</span><span class="p">(</span>
+        <span class="nv">configuration</span><span class="p">:</span> <span class="n">swedbankPayConfig</span><span class="p">,</span>
+        <span class="nv">language</span><span class="p">:</span> <span class="o">.</span><span class="kt">Swedish</span>
+    <span class="p">),</span>
+    <span class="n">payeeInfo</span> <span class="o">=</span> <span class="kt">SwedbankPaySDK</span><span class="o">.</span><span class="kt">PayeeInfo</span><span class="p">(</span>
+        <span class="c1">// ①</span>
+        <span class="n">payeeName</span> <span class="o">=</span> <span class="s">"Merchant1"</span><span class="p">,</span>
+        <span class="n">productCategory</span> <span class="o">=</span> <span class="s">"A123"</span><span class="p">,</span>
+        <span class="n">orderReference</span> <span class="o">=</span> <span class="s">"or-123456"</span><span class="p">,</span>
+        <span class="n">subsite</span> <span class="o">=</span> <span class="s">"MySubsite"</span>
+    <span class="p">),</span>
+
+    <span class="n">orderItems</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="kt">SwedbankPaySDK</span><span class="o">.</span><span class="kt">OrderItem</span><span class="p">(</span>
+            <span class="n">reference</span> <span class="o">=</span> <span class="s">"P1"</span><span class="p">,</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="s">"Product1"</span><span class="p">,</span>
+            <span class="n">type</span> <span class="o">=</span> <span class="o">.</span><span class="kt">Product</span><span class="p">,</span>
+            <span class="kd">class</span> <span class="o">=</span> <span class="s">"ProductGroup1"</span><span class="p">,</span>
+            <span class="n">itemUrl</span> <span class="o">=</span> <span class="kt">URL</span><span class="p">(</span><span class="nv">string</span><span class="p">:</span> <span class="s">"https://example.com/products/123"</span><span class="p">),</span>
+            <span class="n">imageUrl</span> <span class="o">=</span> <span class="kt">URL</span><span class="p">(</span><span class="nv">string</span><span class="p">:</span> <span class="s">"https://example.com/product123.jpg"</span><span class="p">),</span>
+            <span class="n">description</span> <span class="o">=</span> <span class="s">"Product 1 description"</span><span class="p">,</span>
+            <span class="n">discountDescription</span> <span class="o">=</span> <span class="s">"Volume discount"</span><span class="p">,</span>
+            <span class="n">quantity</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+            <span class="n">quantityUnit</span> <span class="o">=</span> <span class="s">"pcs"</span><span class="p">,</span>
+            <span class="n">unitPrice</span> <span class="o">=</span> <span class="mi">300</span><span class="p">,</span>
+            <span class="n">discountPrice</span> <span class="o">=</span> <span class="mi">200</span><span class="p">,</span>
+            <span class="n">vatPercent</span> <span class="o">=</span> <span class="mi">2500</span><span class="p">,</span>
+            <span class="n">amount</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span>
+            <span class="n">vatAmount</span> <span class="o">=</span> <span class="mi">250</span>
+        <span class="p">)</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<ul>
+  <li>① payeeId and payeeReference are required fields, but default to the empty string. The assumption here is that your Merchant Backend will override the values set here. If your system works better with the Mobile Client setting them instead, they are available here also.</li>
+</ul>
+
+<p>To start a payment, create a <code class="language-html highlighter-rouge">SwedbankPaySDKController</code> and display it. The payment process starts as soon as the <code class="language-html highlighter-rouge">SwedbankPaySDKController</code> is visible.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="n">val</span> <span class="n">paymentController</span> <span class="o">=</span> <span class="kt">SwedbankPaySDKController</span><span class="p">(</span>
+    <span class="nv">configuration</span><span class="p">:</span> <span class="n">swedbankPayConfig</span><span class="p">,</span>
+    <span class="nv">consumer</span><span class="p">:</span> <span class="n">consumer</span><span class="p">,</span>
+    <span class="nv">paymentOrder</span><span class="p">:</span> <span class="n">paymentOrder</span>
+<span class="p">)</span>
+
+<span class="nf">present</span><span class="p">(</span><span class="n">paymentController</span><span class="p">,</span> <span class="nv">animated</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
+<span class="c1">// There are, of course many other ways of displaying a view controller</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>To observe the payment process, set a <code class="language-html highlighter-rouge">delegate</code> to the <code class="language-html highlighter-rouge">SwedbankPaySDKController</code>. When the delegate is informed that the payment process is finished, you should remove the <code class="language-html highlighter-rouge">SwedbankPaySDKController</code> and inform the user of the result.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="n">paymentController</span><span class="o">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="k">self</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="rouge-code"><pre><span class="kd">func</span> <span class="nf">paymentComplete</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nf">dismiss</span><span class="p">(</span><span class="nv">animated</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
+    <span class="c1">// Check payment status from your backend</span>
+    <span class="c1">// Notify user</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">paymentCanceled</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nf">dismiss</span><span class="p">(</span><span class="nv">animated</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
+    <span class="c1">// Notify user</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">paymentFailed</span><span class="p">(</span><span class="nv">failureReason</span><span class="p">:</span> <span class="kt">SwedbankPaySDKController</span><span class="o">.</span><span class="kt">FailureReason</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">dismiss</span><span class="p">(</span><span class="nv">animated</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
+    <span class="c1">// Notify user</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Note that checking the payment status after completion is outside the scope of the Mobile SDK. Your backend should collect any information it needs to perform this check when it services the request to the <a href="merchant-backend#payment-orders-endpoint">Payment Orders endpoint</a> made by the <code class="language-html highlighter-rouge">SwedbankPaySDKController</code>.</p>
+    
+      <h2 id="problems">
+        
+        
+          Problems <a href="#problems" class="header-anchor"></a>
+        
+        
+      </h2>
+
+<p>If errors are encountered in the payment process, the Merchant Backend is expected to respond with a <a href="https://tools.ietf.org/html/rfc7807">Problem Details for HTTP APIs (RFC 7807)</a> message. If the payment fails because of a problem, the <code class="language-html highlighter-rouge">failureReason</code> argument of the <code class="language-html highlighter-rouge">paymentFailed</code> delegate call will have a value of <code class="language-html highlighter-rouge">.Problem</code>, the associated value being the problem as parsed from the response. The iOS SDK will parse any RFC 7807 problem, but it has specialized data types for known problem types, namely the <a href="/home/technical-information#problems">Common Problems</a> and the <a href="merchant-backend#problems">Merchand Backend Problems</a>.</p>
+
+<p>[Development note: the problem parsing is broken as of version 0.1.23, and will not create the correct values for unexpected responses.]</p>
+
+<p>Problems are expressed in Swift as <code class="language-html highlighter-rouge">enum</code>s with associated values, representing a hierarchy of problem types. At the root of the hierarchy is <code class="language-html highlighter-rouge">enum SwedbankPaySDK.Problem</code>, with two cases: <code class="language-html highlighter-rouge">.Client</code> and <code class="language-html highlighter-rouge">.Server</code>. A <code class="language-html highlighter-rouge">.Client</code> problem is one caused by client behaviour, and is to be fixed by changing the request made to the server. Generally, a <code class="language-html highlighter-rouge">.Client</code> problem is a programming error, with the possible exception of <code class="language-html highlighter-rouge">.Client(.MobileSDK(.Unauthorized))</code>. A <code class="language-html highlighter-rouge">.Server</code> problem is one caused by a malfunction or lack of service in the server evironment. A <code class="language-html highlighter-rouge">.Server</code> problem is fixed by correcting the behaviour of the malfunctioning server, or simply trying again later.</p>
+
+<p>Both <code class="language-html highlighter-rouge">.Client</code> and <code class="language-html highlighter-rouge">.Server</code> have an associated value, of type <code class="language-html highlighter-rouge">SwedbankPaySDK.ClientProblem</code> and <code class="language-html highlighter-rouge">SwedbankPaySDK.ServerProblem</code> respectively, that further classify the problems as <code class="language-html highlighter-rouge">.MobileSDK</code>, <code class="language-html highlighter-rouge">.SwedbankPay</code>, <code class="language-html highlighter-rouge">.Unknown</code> or <code class="language-html highlighter-rouge">.UnexpectedContent</code>. <code class="language-html highlighter-rouge">MobileSDK</code> problems are ones with <a href="merchant-backend#problems">Merchant Backend problem types</a>, while <code class="language-html highlighter-rouge">SwedbankPay</code> problems have <a href="/home/technical-information#problems">Swedbank Pay API problem types</a>. <code class="language-html highlighter-rouge">Unknown</code> problems are of types that the SDK has no knowledge of. <code class="language-html highlighter-rouge">.UnexpectedContent</code> problems are not proper RFC 7807 problems, but are emitted when the SDK cannot make sense of the response it received from the backend.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+</pre></td><td class="rouge-code"><pre><span class="kd">func</span> <span class="nf">paymentFailed</span><span class="p">(</span><span class="nv">failureReason</span><span class="p">:</span> <span class="kt">SwedbankPaySDKController</span><span class="o">.</span><span class="kt">FailureReason</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// remove SwedbankPaySDKController</span>
+
+    <span class="k">switch</span> <span class="n">failureReason</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="o">.</span><span class="kt">Problem</span><span class="p">(</span><span class="o">.</span><span class="kt">Client</span><span class="p">(</span><span class="o">.</span><span class="kt">MobileSDK</span><span class="p">(</span><span class="o">.</span><span class="kt">Unauthorized</span><span class="p">(</span><span class="k">let</span> <span class="nv">message</span><span class="p">,</span> <span class="n">_</span><span class="p">)))):</span>
+            <span class="nf">print</span><span class="p">(</span><span class="s">"Credentials invalidated: </span><span class="se">\(</span><span class="n">message</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+
+        <span class="k">case</span> <span class="o">.</span><span class="kt">Problem</span><span class="p">(</span><span class="o">.</span><span class="kt">Client</span><span class="p">(</span><span class="o">.</span><span class="kt">MobileSDK</span><span class="p">)):</span>
+            <span class="nf">print</span><span class="p">(</span><span class="s">"Other client error at merchant backend"</span><span class="p">)</span>
+
+        <span class="k">case</span> <span class="o">.</span><span class="kt">Problem</span><span class="p">(</span><span class="o">.</span><span class="kt">Client</span><span class="p">(</span><span class="o">.</span><span class="kt">SwedbankPay</span><span class="p">(</span><span class="k">let</span> <span class="nv">problem</span><span class="p">)))</span> <span class="k">where</span> <span class="n">problem</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="o">.</span><span class="kt">InputError</span><span class="p">:</span>
+            <span class="nf">print</span><span class="p">(</span><span class="s">"Payment rejected by Swedbank Pay: </span><span class="se">\(</span><span class="n">problem</span><span class="o">.</span><span class="n">detail</span><span class="se">)</span><span class="s">; Fix: </span><span class="se">\(</span><span class="n">problem</span><span class="o">.</span><span class="n">action</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+
+        <span class="k">case</span> <span class="o">.</span><span class="kt">Problem</span><span class="p">(</span><span class="o">.</span><span class="kt">Client</span><span class="p">(</span><span class="o">.</span><span class="kt">Unknown</span><span class="p">(</span><span class="k">let</span> <span class="nv">problem</span><span class="p">))):</span>
+            <span class="k">if</span> <span class="n">problem</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s">"https://example.com/problems/special-problem"</span> <span class="p">{</span>
+                <span class="nf">print</span><span class="p">(</span><span class="s">"Special problem occurred: </span><span class="se">\(</span><span class="n">problem</span><span class="o">.</span><span class="n">detail</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nf">print</span><span class="p">(</span><span class="s">"Unexpected problem: </span><span class="se">\(</span><span class="n">problem</span><span class="o">.</span><span class="n">raw</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+            <span class="p">}</span>
+
+        <span class="k">case</span> <span class="o">.</span><span class="kt">Problem</span><span class="p">(</span><span class="o">.</span><span class="kt">Server</span><span class="p">(</span><span class="o">.</span><span class="kt">MobileSDK</span><span class="p">(</span><span class="o">.</span><span class="kt">BackendConnectionTimeout</span><span class="p">(</span><span class="k">let</span> <span class="nv">message</span><span class="p">,</span> <span class="n">_</span><span class="p">)))):</span>
+            <span class="nf">print</span><span class="p">(</span><span class="s">"Swedbank Pay timeout: </span><span class="se">\(</span><span class="n">message</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+
+        <span class="k">case</span> <span class="o">.</span><span class="kt">Problem</span><span class="p">(</span><span class="o">.</span><span class="kt">Server</span><span class="p">(</span><span class="o">.</span><span class="kt">SwedbankPay</span><span class="p">(</span><span class="k">let</span> <span class="nv">problem</span><span class="p">)))</span> <span class="k">where</span> <span class="n">problem</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="o">.</span><span class="kt">SystemError</span><span class="p">:</span>
+            <span class="nf">print</span><span class="p">(</span><span class="s">"Generic server error at Swedbank Pay: </span><span class="se">\(</span><span class="n">problem</span><span class="o">.</span><span class="n">detail</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+
+        <span class="k">default</span><span class="p">:</span>
+            <span class="k">break</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+    
+      <h2 id="payment-url-and-external-applications">
+        
+        
+          Payment URL and External Applications <a href="#payment-url-and-external-applications" class="header-anchor"></a>
+        
+        
+      </h2>
+
+<p>The payment process may involve navigating to third-party web pages, or even launching external applications. To resume processing the payment in the payment menu, each payment order must have a <a href="/checkout/payment-menu#payment-url">Payment Url</a>. Let us now discuss how that payment url is used in the iOS environment. In any case, using the convenience constructors for <code class="language-html highlighter-rouge">SwedbankPaySDK.PaymentOrderUrls</code> is recommended; they will generate a unique payment url, which will be routed to the application in all cases, assuming the application and the merchant backend are configured correctly.</p>
+
+<p><code class="language-html highlighter-rouge">SwedbankPaySDKController</code> internally uses a <code class="language-html highlighter-rouge">WKWebView</code>, and in many cases third-party pages can be opened inside that web view. In these cases the SDK can intercept the navigation to the payment url and reload the payment menu without further setup. Unfortunately, our testing has revealed that some web pages used in confirmation flows are incompatible with being opened in a web view. Because of these cases, <code class="language-html highlighter-rouge">SwedbankPaySDKController</code> will only open known-good pages internally, and will open other pages in Safari instead. The SDK contains a list of domain names of pages tested to work in the web view. You can also specify your own list of domains, and there are debugging features available for testin unknown pages in the web view. Pull requests updating the list of good domains in the SDK are welcome.</p>
+
+<pre><code class="language-mermaid">sequenceDiagram
+    participant SDK
+    participant Web as Web View
+    participant Safari
+
+    Web -&gt;&gt; SDK: Navigate to third-party web page
+    SDK -&gt;&gt; SDK: Check if page is in list of good domains
+    alt Domain is good
+        SDK -&gt;&gt; Web: Allow navigation
+        Web -&gt;&gt; Web: Load third-party page
+    else Domain is not good
+        SDK -&gt;&gt; Web: Cancel navigation
+        SDK -&gt;&gt; Safari: Open third-party page
+    end
+</code></pre>
+
+<p>Returning to the payment menu from inside the web view is simple: detect the navigation and override it to reload the payment menu instead.</p>
+
+<pre><code class="language-mermaid">sequenceDiagram
+    participant Page as 3rd Party Page
+    participant Web as Web View
+    participant SDK
+
+    Page -&gt;&gt; Web: Navigate to payment url
+    Web -&gt;&gt; SDK: Navigate to payment url
+    SDK -&gt;&gt; Web: Cancel navigation
+    SDK -&gt;&gt; SDK: Reload payment menu
+</code></pre>
+
+<p>Returning to the payment menu from Safari is more involved. The merchant backend page <a href="merchant-backend#ios-payment-url-helper">explains</a> the process from the backend perspective; let us now view it from the iOS side.</p>
+
+<p>When the third party page wants to return to the payment menu, it navigates to the payment url. As this navigation is happening inside Safari, the payment url must provide some meaningful respose when Safari makes the request. However, even before that happens, consider the case where the payment url is a <a href="https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content">universal link</a> for the application using the SDK. Assuming the <a href="https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content#3001753">conditions</a> for opening universal links in the registered application are met, then Safari will never actually request the payment url, but will instead open the application, giving it the universal link in its Application Delegate’s <a href="https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1623072-application"><code class="language-html highlighter-rouge">application(_:continue:restorationHandler:)</code></a> method. Recall that we enabled universal links for the backend url’s domain <a href="#url-scheme-and-associated-domain">in the installation instructions</a>. Note that the merchant backend must also be properly configured to <a href="merchant-backend#apple-app-site-association">enable univeral links</a>.</p>
+
+<p>The application delegate is, of course, squarely in the domain of the application; the SDK cannot hook into it automatically. Therefore, you need to implement the <a href="https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1623072-application"><code class="language-html highlighter-rouge">application(_:continue:restorationHandler:)</code></a> method, and pass control over to the SDK when a Swedbank Pay SDK Payment Url is passed into it. Do this by calling the <code class="language-html highlighter-rouge">SwedbankPaySDK.continue(userActivity:)</code> method.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre>    <span class="kd">func</span> <span class="nf">application</span><span class="p">(</span>
+        <span class="n">_</span> <span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span>
+        <span class="k">continue</span> <span class="nv">userActivity</span><span class="p">:</span> <span class="kt">NSUserActivity</span><span class="p">,</span>
+        <span class="nv">restorationHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">([</span><span class="kt">UIUserActivityRestoring</span><span class="p">]?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kt">SwedbankPaySDK</span><span class="o">.</span><span class="nf">continue</span><span class="p">(</span><span class="nv">userActivity</span><span class="p">:</span> <span class="n">userActivity</span><span class="p">)</span>
+    <span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<pre><code class="language-mermaid">sequenceDiagram
+    participant Page as 3rd Party Page
+    participant Safari
+    participant App as Application
+    participant SDK
+
+    Page -&gt;&gt; Safari: Navigate to payment url
+    Safari -&gt;&gt; Safari: Recognize universal link
+    Safari -&gt;&gt; App: Bring to foreground
+    Safari -&gt;&gt; App: application(application, continue: userActivity, restorationHandler: restorationHandler)
+    App -&gt;&gt; SDK: SwedbankPaySDK.continue(userActivity: userActivity)
+    SDK -&gt;&gt; SDK: Reload payment menu
+</code></pre>
+
+<p>Testing has shown, however, that the navigation to the payment url is not always processed as a universal link, and is instead opened in Safari. A major reason for this happening are the conditions placed on routing a universal link to the registered application. A crucial condition to consider is that the navigation must have started from user interaction. It appears that many third party pages involved in verification flows will navigate to the payment url not from user interaction directly, but through e.g. timers. This will, unfortunately, prevent the link from being opened in the application.</p>
+
+<p>As it stands, we need a way to get back to the application even when the payment url is opened in Safari. The simplest way of accomplishing this is to respond with a redirect to a <a href="https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content/defining_a_custom_url_scheme_for_your_app">custom scheme url</a>. Doing that will, however, always show an unattractive confirmation alert before the user is directed to the application. Therefore, let us first consider if there is a way to reattempt the universal link navigation, while attempting to maximize the chance of it being routed to the application.</p>
+
+<p>Reviewing the <a href="https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content#3001753">conditions</a> for universal links opening in the registered application, we note two things: Firstly, the navigation must originate from user interaction. Thus, opening the payment url in Safari must produce a page with a control the user can interact with, which must trigger a navigation to the payment url. Secondly, the navigation must be to a domain different to the current page. This means that opening the payment url must redirect to a page on a different domain, so that a navigation back to the payment url from that page is given to the application to handle.</p>
+
+<p>As explained on the <a href="merchant-backend#ios-payment-url-helper">mechant backend page</a>, we solve this by having the payment url respond with a redirect response to a page with a link to the payment url (but see below).</p>
+
+<pre><code class="language-mermaid">sequenceDiagram
+    participant User
+    participant Page as 3rd Party Page
+    participant Safari
+    participant Merchant as Payment Url Host
+    participant Trampoline as Payment Url Trampoline
+    participant App as Application
+    participant SDK
+
+    Page -&gt;&gt; Safari: Navigate to payment url (at Merchant)
+    Safari -&gt;&gt; Merchant: GET &lt;payment url&gt;
+    Merchant -&gt;&gt; Safari: 301 Moved Permanently Location: &lt;redirect url&gt;
+    Safari -&gt;&gt; Trampoline: GET &lt;redirect url&gt;
+    Trampoline -&gt;&gt; Safari: &lt;http&gt;...&lt;a href="&lt;payment url&gt;"&gt;...&lt;/http&gt;
+    Safari -&gt;&gt; User: Page with "Back to Application" button
+    User -&gt;&gt; Safari: Tap on button
+
+    rect rgba(238, 112, 35, 0.05)
+      note left of Safari: Same as direct path
+      Safari -&gt;&gt; Safari: Recognize universal link
+      Safari -&gt;&gt; App: Bring to foreground
+      Safari -&gt;&gt; App: application(application, continue: userActivity, restorationHandler: restorationHandler)
+      App -&gt;&gt; SDK: SwedbankPaySDK.continue(userActivity: userActivity)
+      SDK -&gt;&gt; SDK: Reload payment menu
+    end
+</code></pre>
+
+<p>Finally, to prevent the user being stuck in a situation where universal links fail to work despite our efforts, and to help in the development phase where configurations may end up being broken from time to time, we also have a custom scheme fallback. The way this works is that the when the payment url link is tapped on the page where the payment url redirected to, then in that instance the payment url will redirect to a custom scheme url instead. Now this is, of course, more or less impossible to do, so we relax the requirements of the payment url slightly: In addition to the original payment url, the SDK accepts a payment url with any number of additional query parameters added (note that none may be removed or modified, though). This enables us to alter the behaviour of the backend on the “same” payment url.</p>
+
+<p>To forward the custom-scheme payment urls to the SDK, implement the <a href="https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1623112-application"><code class="language-html highlighter-rouge">application(_:open:options:)</code></a> method in your application delegate, and call <code class="language-html highlighter-rouge">SwedbankPaySDK.open(url: url)</code> to let the SDK handle the url.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre>    <span class="kd">func</span> <span class="nf">application</span><span class="p">(</span>
+        <span class="n">_</span> <span class="nv">app</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span>
+        <span class="kd">open</span> <span class="nv">url</span><span class="p">:</span> <span class="kt">URL</span><span class="p">,</span>
+        <span class="nv">options</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIApplication</span><span class="o">.</span><span class="kt">OpenURLOptionsKey</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">[:]</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kt">SwedbankPaySDK</span><span class="o">.</span><span class="nf">open</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="n">url</span><span class="p">)</span>
+    <span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<pre><code class="language-mermaid">sequenceDiagram
+    participant User
+    participant Page as 3rd Party Page
+    participant Safari
+    participant Merchant as Payment Url Host
+    participant Trampoline as Payment Url Trampoline
+    participant App as Application
+    participant SDK
+
+    Page -&gt;&gt; Safari: Navigate to payment url (at Merchant)
+    Safari -&gt;&gt; Merchant: GET &lt;payment url&gt;
+    Merchant -&gt;&gt; Safari: 301 Moved Permanently Location: &lt;redirect url&gt;
+    Safari -&gt;&gt; Trampoline: GET &lt;redirect url&gt;
+    Trampoline -&gt;&gt; Safari: &lt;http&gt;...&lt;a href="&lt;payment url with fallback flag&gt;"&gt;...&lt;/http&gt;
+    Safari -&gt;&gt; User: Page with "Back to Application" button
+    User -&gt;&gt; Safari: Tap on button
+    Safari -&gt;&gt; Merchant: GET &lt;payment url with fallback flag&gt;
+    Merchant -&gt;&gt; Safari: 301 Moved Permanently Location: &lt;custom scheme url&gt;
+    Safari -&gt;&gt; User: Confirmation Dialog
+    User -&gt;&gt; Safari: Accept App Launch
+    Safari -&gt;&gt; App: Bring to foreground
+    Safari -&gt;&gt; App: application(application, open: url)
+    App -&gt;&gt; SDK: SwedbankPaySDK.open(url: url)
+    SDK -&gt;&gt; SDK: Reload payment menu
+</code></pre>
+
+<nav class="iterator d-flex">
+    
+        <a class="mr-auto btn btn-guiding" role="button" rel="prev" href="android">
+            Back: Android
+        </a>
+    
+
+    
+        <a class="ml-auto btn btn-executive" role="button" rel="next" href="process-diagrams">
+            Next: Process Diagrams
+        </a>
+    
+</nav>
+                                    
+                                </div>
+
+                                <div class="col-2 d-none d-lg-block">
+                                    <nav class="doc-toc">
+                                        <ul>
+  <li class="toc-2"><a href="#installation">Installation</a></li>
+  <li class="toc-2"><a href="#usage">Usage</a></li>
+  <li class="toc-2"><a href="#problems">Problems</a></li>
+  <li class="toc-2"><a href="#payment-url-and-external-applications">Payment URL and External Applications</a></li>
+</ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+            </div>
+
+            <footer class="page-footer">
+                <p class="page-footer-rights">© Swedbank Pay</p>
+            </footer>
+        </div>
+
+        <script src="https://design.swedbankpay.com/v/4.6.1/scripts/dg.js"></script>
+        <script src="/assets/js/swedbank-pay-design-guide-theme.js"></script>
+            <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-156582708-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-156582708-1');
+</script>
+
+    </body>
+</html>

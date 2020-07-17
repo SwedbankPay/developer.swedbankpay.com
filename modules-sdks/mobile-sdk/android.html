@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="theme-color" content="#000">
+        <meta name="application-name" content="Android">
+        <meta name="msapplication-TileColor" content="#000">
+        <meta name="msapplication-TileImage" content="https://design.swedbankpay.com/v/4.6.1/icons/mstile-144x144.png">
+        <meta property="og:type" value="website" />
+        <meta property="og:url" value="https://developer.swedbankpay.com/modules-sdks/mobile-sdk/android.html" />
+        <meta property="og:title" value="Android" />
+        <meta name="title" content="Android" />
+        <meta property="og:description" value="Swedbank Pay Developer Portal" />
+        <meta name="description" content="Swedbank Pay Developer Portal" />
+        <meta property="og:image" value="/assets/img/swedbank-pay-developer-portal.png" />
+        <title>Android</title>
+        <link rel="stylesheet" href="https://design.swedbankpay.com/v/4.6.1/styles/dg-style.css" />
+        <link rel="stylesheet" href="/assets/css/swedbank-pay-design-guide-theme.css" />
+        <link rel="stylesheet" href="/assets/css/pygments-autumn.css" />
+        <link rel="shortcut icon" href="https://design.swedbankpay.com/v/4.6.1/icons/favicon.ico">
+        <link rel="icon" type="image/png" sizes="16x16" href="https://design.swedbankpay.com/v/4.6.1/icons/favicon-16x16.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="https://design.swedbankpay.com/v/4.6.1/icons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="228x228" href="https://design.swedbankpay.com/v/4.6.1/icons/coast-228x228.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Android">
+<link rel="apple-touch-icon" sizes="57x57" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="167x167" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-167x167.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-180x180.png">
+<link rel="apple-touch-icon" sizes="1024x1024" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-1024x1024.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 320px) and (device-height: 480px) and (orientation: ) and (-webkit-device-pixel-ratio: 1)"
+    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-320x460.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 320px) and (device-height: 480px) and (orientation: ) and (-webkit-device-pixel-ratio: 2)"
+    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-640x920.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 320px) and (device-height: 568px) and (orientation: ) and (-webkit-device-pixel-ratio: 2)"
+    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-640x1096.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 375px) and (device-height: 667px) and (orientation: ) and (-webkit-device-pixel-ratio: 2)"
+    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-750x1294.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 414px) and (device-height: 736px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)"
+    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-1182x2208.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 414px) and (device-height: 736px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 3)"
+    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-1242x2148.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 1)"
+    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-748x1024.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 1)"
+    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-768x1004.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)"
+    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-1496x2048.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)"
+    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-1536x2008.png">
+<script src="/assets/js/mermaid.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="/assets/tipuesearch/tipuesearch_content.js"></script>
+        <script src="/assets/tipuesearch/tipuesearch_set.js"></script>
+        <script src="/assets/tipuesearch/tipuesearch.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
+    </head>
+
+    <body>
+        <div id="designguide">
+            <header class="topbar topbar-md-wide designguide-header">
+                <button type="button" class="topbar-btn"><i class="material-icons topbar-btn-icon">menu</i></button>
+                <a href="https://developer.swedbankpay.com" class="topbar-logo"><img
+                        src="https://design.swedbankpay.com/v/4.6.1/img/swedbankpay-logo.svg" alt="logo"></a>
+                <nav class="topbar-nav">
+                    <div class="topbar-link-container">
+                        <button type="button" class="topbar-close"><i class="material-icons">close</i></button>
+
+                        
+                        
+
+                        
+
+                        <a 
+                            href="/"><span>Home</span></a>
+
+                        
+                        
+                        <a 
+                            href="/checkout/"><span>Checkout</span></a>
+                        
+                        
+                        <a 
+                            href="/payments/"><span>Payments</span></a>
+                        
+                        
+                        <a 
+                            href="/gift-cards/"><span>Gift Cards</span></a>
+                        
+                        
+                        <a 
+                            href="/resources/"><span>Resources</span></a>
+                        
+
+                        <div class="topbar-info topbar-link-right">
+                            <div class="topbar-info-contact">
+                                <a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/modules-sdks/mobile-sdk/android.md" target="_blank"
+                                    rel="noopener noreferrer" title="Edit this page on GitHub">
+                                    <svg aria-labelledby="simpleicons-github-icon" role="img" viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <title id="simpleicons-github-icon">Edit this page on GitHub</title>
+                                        <path
+                                            d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+
+            <div class="documentation">
+                <div class="row">
+                    <div class="col-xxl-2 col-md-3">
+                        <div class="doc-sidebar">
+                            
+                            <form class="doc-search" action="/search">
+                                <input type="text" class="form-control" name="q" id="tipue_search_input"
+                                    placeholder="Search..." autocomplete="off" pattern=".{3,}"
+                                    title="At least 3 characters">
+                            </form>
+                            
+                            
+                            <nav class="documentation-nav">
+                                
+                                
+                                <div class="nav-group active">
+                                    <div class="nav-heading">
+                                        <i class="material-icons">keyboard_arrow_right</i>
+                                        <span>Mobile SDK</span>
+                                    </div>
+
+                                    
+                                    <ul>
+                                        
+                                        
+                                        <li><a  href="/modules-sdks/mobile-sdk/"><span>Introduction</span></a></li>
+                                        
+                                        
+                                        <li><a  href="/modules-sdks/mobile-sdk/merchant-backend"><span>Merchant Backend</span></a></li>
+                                        
+                                        
+                                        <li><a  href="/modules-sdks/mobile-sdk/merchant-backend-sample-code"><span>Merchant Backend Sample Code</span></a></li>
+                                        
+                                        
+                                        <li><a  aria-current="page" class="active"
+                                                 href="/modules-sdks/mobile-sdk/android"><span>Android</span></a></li>
+                                        
+                                        
+                                        <li><a  href="/modules-sdks/mobile-sdk/ios"><span>iOS</span></a></li>
+                                        
+                                        
+                                        <li><a  href="/modules-sdks/mobile-sdk/process-diagrams"><span>Process Diagrams</span></a></li>
+                                        
+                                        
+                                        <li><a  href="/modules-sdks/mobile-sdk/plain-webview"><span>Plain Webview</span></a></li>
+                                        
+                                    </ul>
+                                    
+                                </div>
+                                
+                            </nav>
+                            
+                        </div>
+                    </div>
+
+                    <main class="doc-view col-xxl-10 col-md-9">
+                        <div class="doc-container">
+                            <h1>Android</h1>
+                            <div class="row">
+                                <div class="doc-body col-lg-10">
+                                    
+                                    <div class="alert alert-complex alert-warning"><header class="alert-header">
+            
+                <i class="material-icons alert-icon">warning</i>
+      <h3>
+        
+        
+          Unsupported
+        
+        
+      </header>
+    
+
+    
+        
+            <div class="alert-body">
+                <p>The SDK is at an early stage of development
+and is not supported as of yet by Swedbank Pay. It is provided as a
+convenience to speed up your development, so please feel free to play around.
+However, if you need support, please wait for a future, stable release.</p>
+            </div>
+        
+    
+</div>
+
+<div class="jumbotron">
+    <p>With a Merchant Backend in place, we can start developing a mobile application with Swedbank Pay payments. Let us begin with Android.</p>
+
+</div>
+    
+      <h2 id="installation">
+        
+        
+          Installation <a href="#installation" class="header-anchor"></a>
+        
+        
+      </h2>
+
+<p>The Android component of the Swedbank Pay Mobile SDK is distributed through JCenter, which is a default repository in Android Studio projects. Therefore, most applications can integrate the SDK by simply adding the dependency:</p>
+
+<p><code class="language-html highlighter-rouge">implementation 'com.swedbankpay.mobilesdk:mobilesdk:1.0.0-beta17'</code></p>
+
+<p>[Development note: There is not yet a stable release of the SDK. In particular, be prepared for potential API changes before the first stable release. That said, the beta17 version of the Android SDK component is fairly stable, and we do not foresee any major changes to it at this point.]</p>
+    
+      <h2 id="usage">
+        
+        
+          Usage <a href="#usage" class="header-anchor"></a>
+        
+        
+      </h2>
+
+<pre><code class="language-mermaid">sequenceDiagram
+    participant App
+    participant SDK
+    participant Merchant
+    participant SwedbankPay as Swedbank Pay
+    participant Ext as External App
+
+    rect rgba(238, 112, 35, 0.05)
+        note left of App: Configuration
+        App -&gt;&gt; SDK: Configuration.Builder("https://example.com/swedbank-pay-mobile/").build()
+        SDK --&gt;&gt; App: configuration
+        App -&gt;&gt; SDK: PaymentFragment.defaultConfiguration = configuration
+    end
+
+    opt Unless Guest Payment
+        App -&gt;&gt; SDK: Consumer(language = ..., shippingAddressRestrictedToCountryCodes = ...)
+        SDK --&gt;&gt; App: consumer
+    end
+
+    rect rgba(138, 205, 195, 0.1)
+        note left of App: Prepare Payment
+        App -&gt;&gt; SDK: PaymentOrderUrls(context, "https://example.com/swedbank-pay-mobile/")
+        SDK --&gt;&gt; App: paymentOrderUrls
+        App -&gt;&gt; SDK: PaymentOrder(urls = paymentOrderUrls, ...)
+        SDK --&gt;&gt; App: paymentOrder
+    end
+
+    App -&gt;&gt; SDK: activity.paymentViewModel.[rich]state.observe(...)
+    App -&gt;&gt; SDK: PaymentFragment.ArgumentsBuilder().consumer(consumer).paymentOrder(paymentOrder).build()
+    SDK --&gt;&gt; App: arguments
+    App -&gt;&gt; SDK: PaymentFragment()
+    SDK --&gt;&gt; App: paymentFragment
+    App -&gt;&gt; SDK: paymentFragment.arguments = arguments
+    App -&gt;&gt; App: Show paymentFragment
+
+    rect rgba(138, 205, 195, 0.1)
+        note left of App: Discover Endpoints
+        SDK -&gt;&gt; Merchant: GET /swedbank-pay-mobile/
+        Merchant --&gt;&gt; SDK: { "consumers": "/swedbank-pay-mobile/consumers", "paymentorders": "/swedbank-pay-mobile/paymentorders" }
+    end
+
+    opt Unless Guest Payment
+        SDK -&gt;&gt; Merchant: POST /swedbank-pay-mobile/consumers
+        Merchant -&gt;&gt; SwedbankPay: POST /psp/consumers
+        SwedbankPay --&gt;&gt; Merchant: rel: view-consumer-identification
+        Merchant --&gt;&gt; SDK: rel: view-consumer-identification
+        SDK -&gt;&gt; SDK: Show html page with view-consumer-identification
+        SwedbankPay -&gt;&gt; SDK: Consumer identification process
+        SDK -&gt;&gt; SwedbankPay: Consumer identification process
+        SwedbankPay -&gt;&gt; SDK: consumerProfileRef
+        SDK -&gt;&gt; SDK: paymentOrder.payer = { consumerProfileRef }
+    end
+
+    rect rgba(138, 205, 195, 0.1)
+        note left of App: Payment Menu
+        SDK -&gt;&gt; Merchant: POST /swedbank-pay-mobile/paymentorders
+        Merchant -&gt;&gt; SwedbankPay: POST /psp/paymentorders
+        SwedbankPay --&gt;&gt; Merchant: rel: view-paymentorder
+        Merchant --&gt;&gt; SDK: rel: view-paymentorder
+        SDK -&gt;&gt; SDK: Show html page with view-paymentorder
+        SwedbankPay -&gt;&gt; SDK: Payment process
+        SDK -&gt;&gt; SwedbankPay: Payment process
+        opt Redirect to Third-Party Page
+            SDK -&gt;&gt; SDK: Show third-party page
+            SDK -&gt;&gt; SDK: Intercept navigation to paymentUrl
+            SDK -&gt;&gt; SDK: Reload html page with view-paymentorder
+        end
+        opt Launch External Application
+            SDK -&gt;&gt; Ext: Start external application
+            Ext -&gt;&gt; Merchant: Open paymentUrl
+            Merchant -&gt;&gt; Ext: 301 Moved Permanently\nLocation: intent://&lt;...&gt;action=;action=com.swedbankpay.mobilesdk.VIEW_PAYMENTORDER
+            Ext -&gt;&gt; SDK: Start activity\naction=com.swedbankpay.mobilesdk.VIEW_PAYMENTORDER
+            SDK -&gt;&gt; SDK: Reload html page with view-paymentorder
+        end
+        SDK -&gt;&gt; SDK: Intercept navigation to completeUrl
+        SDK -&gt;&gt; SDK: paymentViewModel.state &lt;- SUCCESS
+        SDK -&gt;&gt; App: observer.onChanged(SUCCESS)
+    end
+
+    App -&gt;&gt; App: Remove paymentFragment
+</code></pre>
+
+<p>The public API of the Android SDK is in the package <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/index.md"><code class="language-html highlighter-rouge">com.swedbankpay.mobilesdk</code></a>. The main component is <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-payment-fragment/index.md"><code class="language-html highlighter-rouge">PaymentFragment</code></a>, a <code class="language-html highlighter-rouge">Fragment</code> that handles a single payment order. To use a <code class="language-html highlighter-rouge">PaymentFragment</code>, it must have a <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-configuration/index.md"><code class="language-html highlighter-rouge">Configuration</code></a>. In most cases it is enough to construct a single <code class="language-html highlighter-rouge">Configuration</code> and set it as the <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-payment-fragment/default-configuration.md">default</a>. In more advanced cases you will need to subclass <code class="language-html highlighter-rouge">PaymentFragment</code> and override <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-payment-fragment/get-configuration.md"><code class="language-html highlighter-rouge">getConfiguration</code></a>.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="kd">val</span> <span class="py">backendUrl</span> <span class="p">=</span> <span class="s">"https://example.com/swedbank-pay-mobile/"</span>
+
+<span class="kd">val</span> <span class="py">configuration</span> <span class="p">=</span> <span class="nc">Configuration</span><span class="p">.</span><span class="nc">Builder</span><span class="p">(</span><span class="n">backendUrl</span><span class="p">)</span>
+    <span class="p">.</span><span class="nf">build</span><span class="p">()</span>
+<span class="nc">PaymentFragment</span><span class="p">.</span><span class="n">defaultConfiguration</span> <span class="p">=</span> <span class="n">configuration</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>To start a payment, you need a <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-payment-order/index.md"><code class="language-html highlighter-rouge">PaymentOrder</code></a>, and, unless making a guest payment, a <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-consumer/index.md"><code class="language-html highlighter-rouge">Consumer</code></a>. Using a <code class="language-html highlighter-rouge">Consumer</code> makes future payments by the same payer easier.</p>
+
+<p>The semantics of <code class="language-html highlighter-rouge">Consumer</code> properties are the same as the fields of the <a href="/checkout/checkin#step-1-initiate-session-for-consumer-identification">POST /psp/consumers</a>. There are default values for the <code class="language-html highlighter-rouge">operation</code> and <code class="language-html highlighter-rouge">language</code> properties (<code class="language-html highlighter-rouge">ConsumerOperation.INITIATE_CONSUMER_SESSION</code> and <code class="language-html highlighter-rouge">Language.ENGLISH</code>, respectively).</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="kd">val</span> <span class="py">consumer</span> <span class="p">=</span> <span class="nc">Consumer</span><span class="p">(</span>
+    <span class="n">language</span> <span class="p">=</span> <span class="nc">Language</span><span class="p">.</span><span class="nc">SWEDISH</span><span class="p">,</span>
+    <span class="n">shippingAddressRestrictedToCountryCodes</span> <span class="p">=</span> <span class="nf">listOf</span><span class="p">(</span><span class="s">"NO"</span><span class="p">,</span> <span class="s">"SE"</span><span class="p">,</span> <span class="s">"DK"</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Similarly, the semantics of <code class="language-html highlighter-rouge">PaymentOrder</code> properties are the same as the fields of the <a href="/checkout/payment-menu#step-3-create-payment-order">POST /psp/paymentorders</a> request. Sensible default values are provided for many of the properties. The <code class="language-html highlighter-rouge">urls</code> property has no default per se, but there are <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-payment-order-urls/-init-.md">convenience constructors</a> available for it, and it is recommended that you use them. Assuming you have the Android Payment Url Helper endpoint set up with the specified static path relative to your backend url (i.e. <code class="language-html highlighter-rouge">sdk-callback/android-intent</code>), then using the one of the <code class="language-html highlighter-rouge">PaymentOrderUrls(context: Context, backendUrl: String)</code> variants will set the <code class="language-html highlighter-rouge">paymentUrl</code> correctly.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+</pre></td><td class="rouge-code"><pre><span class="kd">val</span> <span class="py">paymentOrder</span> <span class="p">=</span> <span class="nc">PaymentOrder</span><span class="p">(</span>
+    <span class="n">currency</span> <span class="p">=</span> <span class="nc">Currency</span><span class="p">.</span><span class="nf">getInstance</span><span class="p">(</span><span class="s">"SEK"</span><span class="p">),</span>
+    <span class="n">amount</span> <span class="p">=</span> <span class="mi">1500L</span><span class="p">,</span>
+    <span class="n">vatAmount</span> <span class="p">=</span> <span class="mi">375L</span><span class="p">,</span>
+    <span class="n">description</span> <span class="p">=</span> <span class="s">"Test Purchase"</span><span class="p">,</span>
+    <span class="n">language</span> <span class="p">=</span> <span class="nc">Language</span><span class="p">.</span><span class="nc">SWEDISH</span><span class="p">,</span>
+    <span class="n">urls</span> <span class="p">=</span> <span class="nc">PaymentOrderUrls</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">backendUrl</span><span class="p">),</span>
+    <span class="n">payeeInfo</span> <span class="p">=</span> <span class="nc">PayeeInfo</span><span class="p">(</span>
+        <span class="c1">// ①</span>
+        <span class="n">payeeName</span> <span class="p">=</span> <span class="s">"Merchant1"</span><span class="p">,</span>
+        <span class="n">productCategory</span> <span class="p">=</span> <span class="s">"A123"</span><span class="p">,</span>
+        <span class="n">orderReference</span> <span class="p">=</span> <span class="s">"or-123456"</span><span class="p">,</span>
+        <span class="n">subsite</span> <span class="p">=</span> <span class="s">"MySubsite"</span>
+    <span class="p">),</span>
+
+    <span class="n">orderItems</span> <span class="p">=</span> <span class="nf">listOf</span><span class="p">(</span>
+        <span class="nc">OrderItem</span><span class="p">(</span>
+            <span class="n">reference</span> <span class="p">=</span> <span class="s">"P1"</span><span class="p">,</span>
+            <span class="n">name</span> <span class="p">=</span> <span class="s">"Product1"</span><span class="p">,</span>
+            <span class="n">type</span> <span class="p">=</span> <span class="nc">ItemType</span><span class="p">.</span><span class="nc">PRODUCT</span><span class="p">,</span>
+            <span class="n">`class`</span> <span class="p">=</span> <span class="s">"ProductGroup1"</span><span class="p">,</span>
+            <span class="n">itemUrl</span> <span class="p">=</span> <span class="s">"https://example.com/products/123"</span><span class="p">,</span>
+            <span class="n">imageUrl</span> <span class="p">=</span> <span class="s">"https://example.com/product123.jpg"</span><span class="p">,</span>
+            <span class="n">description</span> <span class="p">=</span> <span class="s">"Product 1 description"</span><span class="p">,</span>
+            <span class="n">discountDescription</span> <span class="p">=</span> <span class="s">"Volume discount"</span><span class="p">,</span>
+            <span class="n">quantity</span> <span class="p">=</span> <span class="mi">4</span><span class="p">,</span>
+            <span class="n">quantityUnit</span> <span class="p">=</span> <span class="s">"pcs"</span><span class="p">,</span>
+            <span class="n">unitPrice</span> <span class="p">=</span> <span class="mi">300L</span><span class="p">,</span>
+            <span class="n">discountPrice</span> <span class="p">=</span> <span class="mi">200L</span><span class="p">,</span>
+            <span class="n">vatPercent</span> <span class="p">=</span> <span class="mi">2500</span><span class="p">,</span>
+            <span class="n">amount</span> <span class="p">=</span> <span class="mi">1000L</span><span class="p">,</span>
+            <span class="n">vatAmount</span> <span class="p">=</span> <span class="mi">250L</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<ul>
+  <li>① payeeId and payeeReference are required fields, but default to the empty string. The assumption here is that your Merchant Backend will override the values set here. If your system works better with the Mobile Client setting them instead, they are available here also.</li>
+</ul>
+
+<p>To start a payment, create a <code class="language-html highlighter-rouge">PaymentFragment</code> and set its arguments according to the payment. The <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-configuration/-builder/index.md"><code class="language-html highlighter-rouge">PaymentFragment.ArgumentsBuilder</code></a> class is provided to help with creating the argument bundle. In most cases you only need to worry about the <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-payment-fragment/-arguments-builder/consumer.md"><code class="language-html highlighter-rouge">consumer</code></a> and <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-payment-fragment/-arguments-builder/payment-order.md"><code class="language-html highlighter-rouge">paymentOrder</code></a> properties. The payment process starts as soon as the <code class="language-html highlighter-rouge">PaymentFragment</code> is visible.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre><span class="kd">val</span> <span class="py">arguments</span> <span class="p">=</span> <span class="nc">PaymentFragment</span><span class="p">.</span><span class="nc">ArgumentsBuilder</span><span class="p">()</span>
+    <span class="p">.</span><span class="nf">consumer</span><span class="p">(</span><span class="n">consumer</span><span class="p">)</span>
+    <span class="p">.</span><span class="nf">paymentOrder</span><span class="p">(</span><span class="n">paymentOrder</span><span class="p">)</span>
+    <span class="p">.</span><span class="nf">build</span><span class="p">()</span>
+
+<span class="kd">val</span> <span class="py">paymentFragment</span> <span class="p">=</span> <span class="nc">PaymentFragment</span><span class="p">()</span>
+<span class="n">paymentFragment</span><span class="p">.</span><span class="n">arguments</span> <span class="p">=</span> <span class="n">arguments</span>
+
+<span class="c1">// Now use FragmentManager to show paymentFragment.</span>
+<span class="c1">// You can also make a navigation graph with PaymentFragment</span>
+<span class="c1">// and do something like</span>
+<span class="c1">// findNavController().navigate(R.id.showPaymentFragment, arguments)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>To observe the payment process, use the <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-payment-view-model/index.md"><code class="language-html highlighter-rouge">PaymentViewModel</code></a> <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/androidx.fragment.app.-fragment-activity/payment-view-model.md">of the containing <code class="language-html highlighter-rouge">Activity</code></a>. When the <code class="language-html highlighter-rouge">PaymentViewModel</code> <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-payment-view-model/state.md">signals</a> that the payment process has reached a <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-payment-view-model/-state/is-final.md">final</a> state, you should remove the <code class="language-html highlighter-rouge">PaymentFragment</code> and inform the user of the result.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre><span class="n">paymentViewModel</span><span class="p">.</span><span class="n">state</span><span class="p">.</span><span class="nf">observe</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nc">Observer</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">it</span><span class="p">.</span><span class="n">isFinal</span> <span class="p">==</span> <span class="k">true</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Remove PaymentFragment</span>
+        <span class="c1">// Check payment status from your backend</span>
+        <span class="c1">// Notify user</span>
+    <span class="p">}</span>
+<span class="p">})</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Note that checking the payment status after completion is outside the scope of the Mobile SDK. Your backend should collect any information it needs to perform this check when it services the request to the <a href="merchant-backend#payment-orders-endpoint">Payment Orders endpoint</a> made by the <code class="language-html highlighter-rouge">PaymentFragment</code>.</p>
+    
+      <h2 id="problems">
+        
+        
+          Problems <a href="#problems" class="header-anchor"></a>
+        
+        
+      </h2>
+
+<p>If errors are encountered in the payment process, the Merchant Backend is expected to respond with a <a href="https://tools.ietf.org/html/rfc7807">Problem Details for HTTP APIs (RFC 7807)</a> message. If a problem occurs, the application can receive it by observing the <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-payment-view-model/rich-state.md"><code class="language-html highlighter-rouge">richState</code></a> of the <code class="language-html highlighter-rouge">PaymentViewModel</code>. If a problem has occurred, it will be in the <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-payment-view-model/-rich-state/problem.md"><code class="language-html highlighter-rouge">problem</code></a> property of the <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-payment-view-model/-rich-state/index.md"><code class="language-html highlighter-rouge">RichState</code></a>. The Android SDK will parse any RFC 7807 problem, but it has specialized data types for known problem types, namely the <a href="/home/technical-information#problems">Common Problems</a> and the <a href="merchant-backend#problems">Merchand Backend Problems</a>.</p>
+
+<p>Problems are presented as a <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-problem/index.md">class hierarchy</a> representing different problem categories. All problems parsed from RFC 7807 messages are classified as either <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-problem/-client/index.md"><code class="language-html highlighter-rouge">Client</code></a> or <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-problem/-server/index.md"><code class="language-html highlighter-rouge">Server</code></a> problems. A <code class="language-html highlighter-rouge">Client</code> problem is one caused by client behaviour, and is to be fixed by changing the request made to the server. Generally, a <code class="language-html highlighter-rouge">Client</code> problem is a programming error, with the possible exception of <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-problem/-client/-mobile-s-d-k/-unauthorized/index.md"><code class="language-html highlighter-rouge">Problem.Client.MobileSDK.Unauthorized</code></a>. A <code class="language-html highlighter-rouge">Server</code> problem is one caused by a malfunction or lack of service in the server evironment. A <code class="language-html highlighter-rouge">Server</code> problem is fixed by correcting the behaviour of the malfunctioning server, or simply trying again later.</p>
+
+<p>Further, both <code class="language-html highlighter-rouge">Client</code> and <code class="language-html highlighter-rouge">Server</code> problems are categorized as <code class="language-html highlighter-rouge">MobileSDK</code>, <code class="language-html highlighter-rouge">SwedbankPay</code>, or <code class="language-html highlighter-rouge">Unknown</code>. <code class="language-html highlighter-rouge">MobileSDK</code> problems are ones with <a href="merchant-backend#problems">Merchant Backend problem types</a>, while <code class="language-html highlighter-rouge">SwedbankPay</code> problems have <a href="/home/technical-information#problems">Swedbank Pay API problem types</a>. <code class="language-html highlighter-rouge">Unknown</code> problems are of types that the SDK has no knowledge of. There are also the interfaces <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-swedbank-pay-problem/index.md"><code class="language-html highlighter-rouge">SwedbankPayProblem</code></a>, which encompasses both <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-problem/-client/-swedbank-pay/index.md"><code class="language-html highlighter-rouge">Client</code></a> and <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-problem/-server/-swedbank-pay/index.md"><code class="language-html highlighter-rouge">Server</code></a> type <code class="language-html highlighter-rouge">SwedbankPay</code> problems, and <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-unknown-problem/index.md"><code class="language-html highlighter-rouge">UnknownProblem</code></a>, which contains both <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-problem/-client/-unknown/index.md"><code class="language-html highlighter-rouge">Client</code></a> and <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-problem/-server/-unknown/index.md"><code class="language-html highlighter-rouge">Server</code></a> type <code class="language-html highlighter-rouge">Unknown</code> problems.</p>
+
+<p>Lastly, there are the <code class="language-html highlighter-rouge">UnexpectedContent</code> problems, which again exist in both <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-problem/-client/-unexpected-content/index.md"><code class="language-html highlighter-rouge">Client</code></a> and <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-problem/-server/-unexpected-content/index.md"><code class="language-html highlighter-rouge">Server</code></a> variants. These are not proper RFC 7807 problems, but they represent a situtation where the Android SDK was unable to parse a response it received. They can be considered problem types of the Android SDK itself. There is also the <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-unexpected-content-problem/index.md"><code class="language-html highlighter-rouge">UnexpectedContentProblem</code></a> interface, containing both kinds of <code class="language-html highlighter-rouge">UnexpectedContent</code> problems. To complement this, there is also a <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-proper-problem/index.md"><code class="language-html highlighter-rouge">ProperProblem</code></a> interface, which contains all problems parsed from RFC 7807 messages. Be careful when using <code class="language-html highlighter-rouge">ProperProblem</code> in a <code class="language-html highlighter-rouge">when</code> clause, however, as it will match everything except <code class="language-html highlighter-rouge">UnexpectedContent</code> problems, so unless the condition for <code class="language-html highlighter-rouge">is ProperProblem</code> is the last one, your code may not do what you intend it to.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+</pre></td><td class="rouge-code"><pre><span class="n">paymentViewModel</span><span class="p">.</span><span class="n">richState</span><span class="p">.</span><span class="nf">observe</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nc">Observer</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">it</span><span class="p">.</span><span class="n">state</span><span class="p">.</span><span class="n">isFinal</span> <span class="p">==</span> <span class="k">true</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">when</span> <span class="p">(</span><span class="kd">val</span> <span class="py">problem</span> <span class="p">=</span> <span class="n">it</span><span class="p">.</span><span class="n">problem</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">is</span> <span class="nc">Problem</span><span class="p">.</span><span class="nc">Client</span><span class="p">.</span><span class="nc">MobileSDK</span><span class="p">.</span><span class="nc">Unauthorized</span> <span class="p">-&gt;</span>
+                <span class="nc">Log</span><span class="p">.</span><span class="nf">d</span><span class="p">(</span><span class="nc">TAG</span><span class="p">,</span> <span class="s">"Credentials invalidated: ${problem.message}"</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="nc">Problem</span><span class="p">.</span><span class="nc">Client</span><span class="p">.</span><span class="nc">MobileSDK</span> <span class="p">-&gt;</span>
+                <span class="nc">Log</span><span class="p">.</span><span class="nf">d</span><span class="p">(</span><span class="nc">TAG</span><span class="p">,</span> <span class="s">"Other client error at Merchant Backend: ${problem.raw}"</span><span class="p">)</span>
+
+            <span class="k">is</span> <span class="nc">Problem</span><span class="p">.</span><span class="nc">Client</span><span class="p">.</span><span class="nc">SwedbankPay</span><span class="p">.</span><span class="nc">InputError</span> <span class="p">-&gt;</span>
+                <span class="nc">Log</span><span class="p">.</span><span class="nf">d</span><span class="p">(</span><span class="nc">TAG</span><span class="p">,</span> <span class="s">"Payment rejected by Swedbank Pay: ${problem.detail}; Fix: ${problem.action}"</span><span class="p">)</span>
+
+            <span class="k">is</span> <span class="nc">Problem</span><span class="p">.</span><span class="nc">Client</span><span class="p">.</span><span class="nc">Unknown</span> <span class="p">-&gt;</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">problem</span><span class="p">.</span><span class="n">type</span> <span class="p">==</span> <span class="s">"https://example.com/problems/special-problem"</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nc">Log</span><span class="p">.</span><span class="nf">d</span><span class="p">(</span><span class="nc">TAG</span><span class="p">,</span> <span class="s">"Special problem occurred: ${problem.detail}"</span><span class="p">)</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="nc">Log</span><span class="p">.</span><span class="nf">d</span><span class="p">(</span><span class="nc">TAG</span><span class="p">,</span> <span class="s">"Unexpected problem: ${problem.raw}"</span><span class="p">)</span>
+                <span class="p">}</span>
+
+            <span class="k">is</span> <span class="nc">Problem</span><span class="p">.</span><span class="nc">Server</span><span class="p">.</span><span class="nc">MobileSDK</span><span class="p">.</span><span class="nc">BackendConnectionTimeout</span> <span class="p">-&gt;</span>
+                <span class="nc">Log</span><span class="p">.</span><span class="nf">d</span><span class="p">(</span><span class="nc">TAG</span><span class="p">,</span> <span class="s">"Swedbank Pay timeout: ${problem.message}"</span><span class="p">)</span>
+
+            <span class="k">is</span> <span class="nc">Problem</span><span class="p">.</span><span class="nc">Server</span><span class="p">.</span><span class="nc">SwedbankPay</span><span class="p">.</span><span class="nc">SystemError</span> <span class="p">-&gt;</span>
+                <span class="nc">Log</span><span class="p">.</span><span class="nf">d</span><span class="p">(</span><span class="nc">TAG</span><span class="p">,</span> <span class="s">"Generic server error at Swedbank Pay: ${problem.detail}"</span><span class="p">)</span>
+
+            <span class="k">is</span> <span class="nc">SwedbankPayProblem</span> <span class="p">-&gt;</span>
+                <span class="nc">Log</span><span class="p">.</span><span class="nf">d</span><span class="p">(</span><span class="nc">TAG</span><span class="p">,</span> <span class="s">"Other problem at Swedbank Pay: ${problem.detail}; Fix: ${problem.action}"</span><span class="p">)</span>
+
+            <span class="k">is</span> <span class="nc">UnknownProblem</span> <span class="p">-&gt;</span>
+                <span class="nc">Log</span><span class="p">.</span><span class="nf">d</span><span class="p">(</span><span class="nc">TAG</span><span class="p">,</span> <span class="s">"Unexpected problem: ${problem.raw}"</span><span class="p">)</span>
+
+            <span class="k">is</span> <span class="nc">UnexpectedContentProblem</span> <span class="p">-&gt;</span>
+                <span class="nc">Log</span><span class="p">.</span><span class="nf">d</span><span class="p">(</span><span class="nc">TAG</span><span class="p">,</span> <span class="s">"Unexpected response from Merchant Backend: ${problem.body}"</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">})</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+    
+      <h2 id="payment-url-and-external-applications">
+        
+        
+          Payment URL and External Applications <a href="#payment-url-and-external-applications" class="header-anchor"></a>
+        
+        
+      </h2>
+
+<p>The payment process may involve navigating to third-party web pages, or even launching external applications. To resume processing the payment in the payment menu, each payment order must have a <a href="/checkout/payment-menu#payment-url">Payment Url</a>. As mentioned above, the SDK has convenience constructors to set up a payment url for you, and as the SDK handles showing third-party web pages inside the <code class="language-html highlighter-rouge">PaymentFragment</code>, it automatically intercepts any navigation to the payment url, and reloads the payment menu. This requires no additional setup.</p>
+
+<p>If a third party application is launched, it will signal the return to the payment menu by opening the payment url, using a standard <code class="language-html highlighter-rouge">ACTION_VIEW</code> <code class="language-html highlighter-rouge">Intent</code>. The payment url is built such that it uses the <a href="merchant-backend#android-payment-url-helper">Android Payment Url Helper</a>, which converts the url to an <a href="https://developer.chrome.com/multidevice/android/intents">intent url</a>. The SDK has an intent filter for that intent, so the SDK will receive it, bringing the containing application to the foreground, and reloading the payment menu. If your Merchant Backend serves the Android Payment Url Helper endpoint at the specified path, no further setup is needed.</p>
+
+<p>Note that there is an <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-payment-fragment/-arguments-builder/use-browser.md">argument</a> for debugging purposes that cause third-party web pages to be opened in an external application. In that case the process continues analogously to the external application case. Using this argument should not be necessary, however. If you do find a case that does not work inside the PaymentFragment, but does work when using the browser for third-party sites, please file a bug on the Android SDK.</p>
+
+<nav class="iterator d-flex">
+    
+        <a class="mr-auto btn btn-guiding" role="button" rel="prev" href="merchant-backend-sample-code">
+            Back: Merchant Backend Sample Code
+        </a>
+    
+
+    
+        <a class="ml-auto btn btn-executive" role="button" rel="next" href="ios">
+            Next: iOS
+        </a>
+    
+</nav>
+                                    
+                                </div>
+
+                                <div class="col-2 d-none d-lg-block">
+                                    <nav class="doc-toc">
+                                        <ul>
+  <li class="toc-2"><a href="#installation">Installation</a></li>
+  <li class="toc-2"><a href="#usage">Usage</a></li>
+  <li class="toc-2"><a href="#problems">Problems</a></li>
+  <li class="toc-2"><a href="#payment-url-and-external-applications">Payment URL and External Applications</a></li>
+</ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+            </div>
+
+            <footer class="page-footer">
+                <p class="page-footer-rights">© Swedbank Pay</p>
+            </footer>
+        </div>
+
+        <script src="https://design.swedbankpay.com/v/4.6.1/scripts/dg.js"></script>
+        <script src="/assets/js/swedbank-pay-design-guide-theme.js"></script>
+            <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-156582708-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-156582708-1');
+</script>
+
+    </body>
+</html>

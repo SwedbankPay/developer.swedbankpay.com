@@ -355,11 +355,6 @@ both the integration and the payer.</p>
 88
 89
 90
-91
-92
-93
-94
-95
 </pre></td><td class="rouge-code"><pre><span class="nf">POST</span> <span class="nn">/psp/paymentorders</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">api.externalintegration.payex.com</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
@@ -372,12 +367,11 @@ both the integration and the payer.</p>
         </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w">
         </span><span class="nl">"vatAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">375</span><span class="p">,</span><span class="w">
         </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test Purchase"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"generatePaymentToken"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="nl">"userAgent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mozilla/5.0..."</span><span class="p">,</span><span class="w">
         </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sv-SE"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"instrument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CreditCard"</span><span class="w">
-        </span><span class="nl">"generateRecurrenceToken"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"restrictedToInstruments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"CreditCard"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Invoice"</span><span class="p">],</span><span class="w">
+        </span><span class="nl">"generateRecurrenceToken"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"generatePaymentToken"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="nl">"urls"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="nl">"hostUrls"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"https://example.com"</span><span class="p">,</span><span class="w"> </span><span class="s2">"https://example.net"</span><span class="w"> </span><span class="p">],</span><span class="w">
             </span><span class="nl">"completeUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/payment-completed"</span><span class="p">,</span><span class="w">
@@ -394,8 +388,7 @@ both the integration and the payer.</p>
             </span><span class="nl">"orderReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"or-123456"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"subsite"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MySubsite"</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"payer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"consumerProfileRef"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a17c24e-d459-4567-bbad-aa0f17a76119"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"payer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">  
             </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"olivia.nyhuus@payex.com"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"msisdn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+4798765432"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"workPhoneNumber"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"+4787654321"</span><span class="p">,</span><span class="w">
@@ -431,9 +424,6 @@ both the integration and the payer.</p>
                 </span><span class="nl">"vatPercent"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1900</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"vatAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"restrictedToInstruments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                    </span><span class="s2">"Invoice-PayExFinancingSe"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Invoice-CampaignInvoiceSe"</span><span class="w">
-                </span><span class="p">]</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">],</span><span class="w">
         </span><span class="nl">"riskIndicator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -675,6 +665,12 @@ both the integration and the payer.</p>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">generateRecurrenceToken</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">bool</code></td>
+      <td style="text-align: left">Determines whether a recurrence token should be generated. A recurrence token is primarily used to enable future <a href="/payment-menu/other-features#recurring-payments">recurring payments</a> – with the same token – through server-to-server calls. Default value is <code class="language-html highlighter-rouge">false</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">generatePaymentToken</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">bool</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">true</code> or <code class="language-html highlighter-rouge">false</code>. Set this to <code class="language-html highlighter-rouge">true</code> if you want to create a <code class="language-html highlighter-rouge">paymentToken</code> to use in future <a href="/payment-menu/other-features#one-click-payments">One Click Payments</a>.</td>
@@ -690,18 +686,6 @@ both the integration and the payer.</p>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">language</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The language of the payer.</td>
-    </tr>
-    <tr>
-      <td style="text-align: center"><i class="material-icons">check</i></td>
-      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">generateRecurrenceToken</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">bool</code></td>
-      <td style="text-align: left">Determines whether a recurrence token should be generated. A recurrence token is primarily used to enable future <a href="/payment-menu/other-features#recurring-payments">recurring payments</a> – with the same token – through server-to-server calls. Default value is <code class="language-html highlighter-rouge">false</code>.</td>
-    </tr>
-    <tr>
-      <td style="text-align: center"> </td>
-      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">restrictedToInstruments</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">array</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">CreditCard</code>, <code class="language-html highlighter-rouge">Invoice</code>, <code class="language-html highlighter-rouge">Vipps</code>, <code class="language-html highlighter-rouge">Swish</code> and/or <code class="language-html highlighter-rouge">CreditAccount</code>. <code class="language-html highlighter-rouge">Invoice</code> supports the subtypes <code class="language-html highlighter-rouge">PayExFinancingNo</code>, <code class="language-html highlighter-rouge">PayExFinancingSe</code> and <code class="language-html highlighter-rouge">PayMonthlyInvoiceSe</code>, separated by a dash, e.g.; <code class="language-html highlighter-rouge">Invoice-PayExFinancingNo</code>. Limits the options available to the consumer in the payment menu. Default value is all supported payment instruments. Usage of this field requires an agreement with Swedbank Pay.</td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
@@ -792,12 +776,6 @@ both the integration and the payer.</p>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payer</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">object</code></td>
       <td style="text-align: left">The <code class="language-html highlighter-rouge">payer</code> object containing information about the payer relevant for the payment order.</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">︎︎︎</td>
-      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">consumerProfileRef</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The consumer profile reference as obtained through <a href="/checkout/checkin#step-1-initiate-session-for-consumer-identification">initiating a consumer session</a>.</td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>

@@ -5,17 +5,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="theme-color" content="#000">
-        <meta name="application-name" content="Swedbank Pay Card Payments – Mobile">
+        <meta name="application-name" content="Merchant Backend Sample Code">
         <meta name="msapplication-TileColor" content="#000">
         <meta name="msapplication-TileImage" content="https://design.swedbankpay.com/v/4.6.1/icons/mstile-144x144.png">
         <meta property="og:type" value="website" />
-        <meta property="og:url" value="https://developer.swedbankpay.com/payments/card/mobile-card-payments.html" />
-        <meta property="og:title" value="Swedbank Pay Card Payments – Mobile" />
-        <meta name="title" content="Swedbank Pay Card Payments – Mobile" />
+        <meta property="og:url" value="https://developer.swedbankpay.com/modules-sdks/mobile-sdk/merchant-backend-sample-code.html" />
+        <meta property="og:title" value="Merchant Backend Sample Code" />
+        <meta name="title" content="Merchant Backend Sample Code" />
         <meta property="og:description" value="Swedbank Pay Developer Portal" />
         <meta name="description" content="Swedbank Pay Developer Portal" />
         <meta property="og:image" value="/assets/img/swedbank-pay-developer-portal.png" />
-        <title>Swedbank Pay Card Payments – Mobile</title>
+        <title>Merchant Backend Sample Code</title>
         <link rel="stylesheet" href="https://design.swedbankpay.com/v/4.6.1/styles/dg-style.css" />
         <link rel="stylesheet" href="/assets/css/swedbank-pay-design-guide-theme.css" />
         <link rel="stylesheet" href="/assets/css/pygments-autumn.css" />
@@ -25,7 +25,7 @@
         <link rel="icon" type="image/png" sizes="228x228" href="https://design.swedbankpay.com/v/4.6.1/icons/coast-228x228.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Swedbank Pay Card Payments – Mobile">
+<meta name="apple-mobile-web-app-title" content="Merchant Backend Sample Code">
 <link rel="apple-touch-icon" sizes="57x57" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-57x57.png">
 <link rel="apple-touch-icon" sizes="60x60" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-60x60.png">
 <link rel="apple-touch-icon" sizes="72x72" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-72x72.png">
@@ -113,7 +113,7 @@
 
                         <div class="topbar-info topbar-link-right">
                             <div class="topbar-info-contact">
-                                <a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/payments/card/mobile-card-payments.md" target="_blank"
+                                <a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/modules-sdks/mobile-sdk/merchant-backend-sample-code.md" target="_blank"
                                     rel="noopener noreferrer" title="Edit this page on GitHub">
                                     <svg aria-labelledby="simpleicons-github-icon" role="img" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -146,36 +146,33 @@
                                 <div class="nav-group active">
                                     <div class="nav-heading">
                                         <i class="material-icons">keyboard_arrow_right</i>
-                                        <span>Card Payments</span>
+                                        <span>Mobile SDK</span>
                                     </div>
 
                                     
                                     <ul>
                                         
                                         
-                                        <li><a  href="/payments/card/"><span>Introduction</span></a></li>
+                                        <li><a  href="/modules-sdks/mobile-sdk"><span>Mobile SDK</span></a></li>
                                         
                                         
-                                        <li><a  href="/payments/card/redirect"><span>Redirect</span></a></li>
-                                        
-                                        
-                                        <li><a  href="/payments/card/seamless-view"><span>Seamless View</span></a></li>
-                                        
-                                        
-                                        <li><a  href="/payments/card/direct"><span>Direct</span></a></li>
-                                        
-                                        
-                                        <li><a  href="/payments/card/capture"><span>Capture</span></a></li>
+                                        <li><a  href="/modules-sdks/mobile-sdk/merchant-backend"><span>Merchant Backend</span></a></li>
                                         
                                         
                                         <li><a  aria-current="page" class="active"
-                                                 href="/payments/card/mobile-card-payments"><span>Mobile Card Payments</span></a></li>
+                                                 href="/modules-sdks/mobile-sdk/merchant-backend-sample-code"><span>Merchant Backend Sample Code</span></a></li>
                                         
                                         
-                                        <li><a  href="/payments/card/after-payment"><span>After Payment</span></a></li>
+                                        <li><a  href="/modules-sdks/mobile-sdk/android"><span>Android</span></a></li>
                                         
                                         
-                                        <li><a  href="/payments/card/other-features"><span>Other Features</span></a></li>
+                                        <li><a  href="/modules-sdks/mobile-sdk/ios"><span>iOS</span></a></li>
+                                        
+                                        
+                                        <li><a  href="/modules-sdks/mobile-sdk/process-diagrams"><span>Process Diagrams</span></a></li>
+                                        
+                                        
+                                        <li><a  href="/modules-sdks/mobile-sdk/plain-webview"><span>Plain Webview</span></a></li>
                                         
                                     </ul>
                                     
@@ -188,173 +185,60 @@
 
                     <main class="doc-view col-xxl-10 col-md-9">
                         <div class="doc-container">
-                            <h1>Swedbank Pay Card Payments – Mobile</h1>
+                            <h1>Merchant Backend Sample Code</h1>
                             <div class="row">
                                 <div class="doc-body col-lg-10">
                                     
-                                    <h2 id="card-payments-in-mobile-apps">
+                                    <div class="alert alert-complex alert-warning"><header class="alert-header">
+            
+                <i class="material-icons alert-icon">warning</i>
+      <h3>
         
         
-          Card Payments in Mobile Apps <a href="#card-payments-in-mobile-apps" class="header-anchor"></a>
+          Unsupported
         
         
-      </h2>
-
-<p>The implementation sequence for Card Payments in mobile apps
-is identical to the standard
-Redirect scenario, but also includes explanations of how to include this
-redirect in mobile apps or in mobile web pages.</p>
+      </header>
     
-      <h3 id="screenshots-for-payments">
-        
-        
-          Screenshots for Payments <a href="#screenshots-for-payments" class="header-anchor"></a>
-        
-        
-      </h3>
 
-<p>You will redirect the consumer/end-user to Swedbank Pay hosted pages to collect
-the card information.</p>
-
-<p><img src="/assets/img/checkout/disabled-payment-menu.png" alt="Merchant implemented redirect" width="407" height="627" /></p>
     
-      <h2 id="api-requests-for-payments">
         
+            <div class="alert-body">
+                <p>The SDK is at an early stage of development
+and is not supported as of yet by Swedbank Pay. It is provided as a
+convenience to speed up your development, so please feel free to play around.
+However, if you need support, please wait for a future, stable release.</p>
+            </div>
         
-          API Requests for Payments <a href="#api-requests-for-payments" class="header-anchor"></a>
-        
-        
-      </h2>
+    
+</div>
 
-<p>The API requests are displayed in the <a href="/payments/card/other-features#purchase">purchase flow</a>.
-You can <a href="/payments/card/other-features#create-payment">create a card <code class="language-html highlighter-rouge">payment</code></a> with following <code class="language-html highlighter-rouge">operation</code>
-options:</p>
+<div class="jumbotron">
+    <p>You can use Swedbank Pay provided sample code to jump-start your <strong>Swedbank Pay Mobile SDK</strong> application.</p>
+
+</div>
+
+<p>You can find sample implementations of the Merchant Backend at <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant">this Github repository</a>. Currently there are available the following:</p>
 
 <ul>
-  <li><a href="/payments/card/other-features#purchase"><code class="language-html highlighter-rouge">Purchase</code></a></li>
-  <li><a href="/payments/card/other-features#recur"><code class="language-html highlighter-rouge">Recur</code></a></li>
-  <li><a href="/payments/card/other-features#payout"><code class="language-html highlighter-rouge">Payout</code></a></li>
-  <li><a href="/payments/card/other-features#verify"><code class="language-html highlighter-rouge">Verify</code></a></li>
+  <li><a href="https://github.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant/tree/master/examples/node.js">node.js</a></li>
+  <li><a href="https://github.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant/tree/master/examples/java/merchant">Java</a></li>
 </ul>
 
-<p>Our <code class="language-html highlighter-rouge">payment</code> example below uses the <a href="/payments/card/other-features#purchase"><code class="language-html highlighter-rouge">Purchase</code></a> value.</p>
-    
-      <h2 id="purchase-flow-mobile">
-        
-        
-          Purchase flow mobile <a href="#purchase-flow-mobile" class="header-anchor"></a>
-        
-        
-      </h2>
+<p>Please refer to the sample code documentation for instructions for running a local development server, and/or deploying to selected cloud services. Do note that if you are running a local server over http, you will need to allow insecure communications in the mobile application; otherwise any payments will immediately fail due to a security error.</p>
 
-<p>The sequence diagram below shows a high level description of a complete
-purchase, and the two requests you have to send to Swedbank Pay. The links will
-take you directly to the corresponding API description.</p>
-
-<p>When dealing with card payments, 3-D Secure authentication of the
-cardholder is an essential topic. There are two alternative outcomes of a credit
-card payment:</p>
-
-<ul>
-  <li>3-D Secure enabled - by default, 3-D Secure should be enabled, and Swedbank
-  Pay will check if the card is enrolled with 3-D Secure. This depends on the
-  issuer of the card. If the card is not enrolled with 3-D Secure, no
-  authentication of the cardholder is done.</li>
-  <li>Card supports 3-D Secure - if the card is enrolled with 3-D Secure, Swedbank
-  Pay will redirect the cardholder to the autentication mechanism that is
-  decided by the issuing bank. Normally this will be done using BankID or Mobile
-  BankID.</li>
-</ul>
-
-<pre><code class="language-mermaid">sequenceDiagram
-    participant Payer
-    participant Merchant
-    participant SwedbankPay as Swedbank Pay
-
-    activate Payer
-    Payer-&gt;&gt;-Merchant: start purchase
-    activate Merchant
-    Merchant-&gt;&gt;-SwedbankPay: POST /psp/creditcard/payments
-    activate SwedbankPay
-    note left of Merchant: First API Request
-    SwedbankPay--&gt;&gt;-Merchant: payment resource
-    activate Merchant
-    Merchant--&gt;&gt;-Payer: authorization page
-    activate Payer
-    note left of Payer: redirect to SwedbankPay
-    Payer-&gt;&gt;-Merchant: access merchant page
-    activate Merchant
-    Merchant-&gt;&gt;-SwedbankPay: GET &lt;payment.id&gt;
-    activate SwedbankPay
-    note left of Merchant: Second API request
-    SwedbankPay--&gt;&gt;-Merchant: rel: redirect-authorization
-    activate Merchant
-    Merchant--&gt;&gt;-Payer: display purchase result
-</code></pre>
-
-<pre><code class="language-mermaid">sequenceDiagram
-    participant Payer
-    participant Merchant
-    participant SwedbankPay as Swedbank Pay
-
-    activate Payer
-    Payer-&gt;&gt;-Merchant: start purchase
-    activate Payer
-    Merchant-&gt;&gt;-SwedbankPay: POST /psp/creditcard/payments
-    activate Merchant
-    note left of Payer: First API request
-    SwedbankPay--&gt;-Merchant: payment resource
-    activate SwedbankPay
-    Merchant--&gt;&gt;-Payer: authorization page
-    activate Merchant
-    Payer-&gt;&gt;-SwedbankPay: access authorization page
-    activate Payer
-    note left of Payer: redirect to SwedbankPay
-    SwedbankPay--&gt;&gt;-Payer: display purchase information
-    activate SwedbankPay
-    Payer-&gt;&gt;Payer: input creditcard information
-    Payer-&gt;&gt;-SwedbankPay: submit creditcard information
-    activate Payer
-
-        opt Card supports 3-D Secure
-        SwedbankPay--&gt;&gt;-Payer: redirect to IssuingBank
-        activate SwedbankPay
-        Payer-&gt;&gt;IssuingBank: 3-D Secure authentication process
-        Payer-&gt;&gt;-SwedbankPay: access authentication page
-        activate Payer
-        end
-
-    SwedbankPay--&gt;&gt;-Payer: redirect to merchant
-    activate SwedbankPay
-    note left of Payer: redirect back to merchant
-    Payer-&gt;&gt;-Merchant: access merchant page
-    activate Payer
-    Merchant-&gt;&gt;-SwedbankPay: GET &lt;payment.id&gt;
-    activate Merchant
-    note left of Merchant: Second API request
-    SwedbankPay--&gt;&gt;-Merchant: rel: redirect-authorization
-    activate SwedbankPay
-    Merchant--&gt;&gt;Payer: display purchase result
-    activate Merchant
-
-        opt Callback is set
-        activate SwedbankPay
-        SwedbankPay-&gt;&gt;SwedbankPay: Payment is updated
-        SwedbankPay-&gt;&gt;Merchant: POST Payment Callback
-        activate SwedbankPay
-        end
-</code></pre>
+<p>The samples provide a fully functioning API for the SDK, but the implementations are, of course, devoid of any business logic. They should, nevertheless, provide a good starting point toward integration with your business systems.</p>
 
 <nav class="iterator d-flex">
     
-        <a class="mr-auto btn btn-guiding" role="button" rel="prev" href="direct">
-            Back: Direct
+        <a class="mr-auto btn btn-guiding" role="button" rel="prev" href="merchant-backend">
+            Back: Merchant Backend
         </a>
     
 
     
-        <a class="ml-auto btn btn-executive" role="button" rel="next" href="after-payment">
-            Next: After Payment
+        <a class="ml-auto btn btn-executive" role="button" rel="next" href="android">
+            Next: Android
         </a>
     
 </nav>
@@ -363,11 +247,7 @@ card payment:</p>
 
                                 <div class="col-2 d-none d-lg-block">
                                     <nav class="doc-toc">
-                                        <ul>
-  <li class="toc-2"><a href="#card-payments-in-mobile-apps">Card Payments in Mobile Apps</a></li>
-  <li class="toc-2"><a href="#api-requests-for-payments">API Requests for Payments</a></li>
-  <li class="toc-2"><a href="#purchase-flow-mobile">Purchase flow mobile</a></li>
-</ul>
+                                        
                                     </nav>
                                 </div>
                             </div>
