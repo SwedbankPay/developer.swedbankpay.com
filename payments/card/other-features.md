@@ -101,7 +101,7 @@ completing the payment.
 
 {% include problems.md %}
 
-{% include card-problem-messages.md %}
+{% include problems-card.md %}
 
 {% include seamless-view-events.md api_resource="creditcard" %}
 
