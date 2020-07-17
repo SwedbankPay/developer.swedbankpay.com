@@ -261,7 +261,7 @@ All Vipps error types will have the following URI in front of type:
 
 {% include seamless-view-events.md api_resource="vipps" %}
 
-{% include settlement-reconciliation.md %}
+{% include settlement-reconciliation.md documentation_section="vipps" %}
 
 {% include iterator.html
         prev_href="after-payment"

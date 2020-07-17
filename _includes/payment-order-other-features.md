@@ -1432,7 +1432,8 @@ with the request parameter `instrument`.
 
 {% endif %}
 
-{% include settlement-reconciliation.md api_resource="paymentorders" %}
+{% include settlement-reconciliation.md api_resource="paymentorders"
+documentation_section="payment-menu" %}
 
 {% include 3d-secure-2.md api_resource="paymentorders" documentation_section =
 local_documentation_section %}

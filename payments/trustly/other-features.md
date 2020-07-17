@@ -129,7 +129,7 @@ documentation_section="trustly" %}
 
 {% include prices.md api_resource="trustly" %}
 
-{% include settlement-reconciliation.md %}
+{% include settlement-reconciliation.md documentation_section="trustly" %}
 
 ## Problems
 
