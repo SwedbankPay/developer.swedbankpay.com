@@ -568,7 +568,7 @@ All invoice error types will have the following URI in front of type:
 | `externalerror` |  502   | 9999 - ServerOtherServer      |
 | `forbidden`     |  403   | Any other error code          |
 
-{% include common-problem-types.md %}
+{% include problems.md %}
 
 {% include seamless-view-events.md api_resource="invoice" %}
 

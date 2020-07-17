@@ -99,7 +99,7 @@ completing the payment.
 
 {% include settlement-reconciliation.md documentation_section="card" %}
 
-{% include common-problem-types.md %}
+{% include problems.md %}
 
 {% include card-problem-messages.md %}
 
