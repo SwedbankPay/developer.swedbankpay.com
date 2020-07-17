@@ -11,7 +11,7 @@ A `paid-payment` operation looks like the following:
 
 ```json
 {
-   "href": "{{ site.api_url }}/psp/{{ api_resource }}/payments/{{ site.payment_id }}/paid",
+   "href": "{{ page.api_url }}/psp/{{ api_resource }}/payments/{{ page.payment_id }}/paid",
    "rel": "paid-payment",
    "method": "GET",
    "contentType": "application/json"
@@ -26,7 +26,7 @@ response look like is given below.
 **Request**
 
 ```http
-GET /psp/{{ api_resource }}/payments/{{ site.payment_id }}/paid HTTP/1.1
+GET /psp/{{ api_resource }}/payments/{{ page.payment_id }}/paid HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -40,12 +40,12 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "payment": "/psp/{{ api_resource }}/payments/{{ site.payment_id }}",
+  "payment": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
   "paid": {
-    "id": "/psp/{{ api_resource }}/payments/{{ site.payment_id }}/paid",
+    "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/paid",
     "number": 1234567890,
     "transaction": {
-      "id": "/psp{{ api_resource }}/payments/{{ site.payment_id }}/transactions/{{ site.transaction_id }}",
+      "id": "/psp{{ api_resource }}/payments/{{ page.payment_id }}/transactions/{{ site.transaction_id }}",
       "number" : 1234567891
     },
     "payeeReference": "CD123",
@@ -124,7 +124,7 @@ A `failed-payment` operation looks like the following:
 
 ```json
 {
-   "href": "{{ site.api_url }}/psp/{{ api_resource }}/payments/{{ site.payment_id }}/failed",
+   "href": "{{ page.api_url }}/psp/{{ api_resource }}/payments/{{ page.payment_id }}/failed",
    "rel": "failed-payment",
    "method": "GET",
    "contentType": "application/problem+json"
@@ -144,7 +144,7 @@ An example of how the request and response look like is given below.
 **Request**
 
 ```http
-GET /psp/{{ api_resource }}/payments/{{ site.payment_id }}/failed HTTP/1.1
+GET /psp/{{ api_resource }}/payments/{{ page.payment_id }}/failed HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -159,7 +159,7 @@ Content-Type: application/json
 
 {
    "problem": {
-       "type": "{{ site.api_url }}/psp/errordetail/{{ api_resource }}/acquirererror",
+       "type": "{{ page.api_url }}/psp/errordetail/{{ api_resource }}/acquirererror",
        "title": "Operation failed",
        "status": 403,
        "detail": "Unable to complete Authorization transaction, look at problem node!",
@@ -184,7 +184,7 @@ An `aborted-payment` operation looks like the following:
 
 ```json
 {
-    "href": "{{ site.api_url }}/psp/creditcard/payments/<paymentId>/aborted",
+    "href": "{{ page.api_url }}/psp/creditcard/payments/<paymentId>/aborted",
     "rel": "aborted-payment",
     "method": "GET",
     "contentType": "application/json"
@@ -199,7 +199,7 @@ response looks like is given below.
 **Request**
 
 ```http
-GET /psp/{{ api_resource }}/payments/{{ site.payment_id }}/aborted HTTP/1.1
+GET /psp/{{ api_resource }}/payments/{{ page.payment_id }}/aborted HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -213,7 +213,7 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "payment": "/psp/{{ api_resource }}/payments/{{ site.payment_id }}",
+  "payment": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
   "aborted": {
     "abortReason": "Aborted by consumer"
   }
