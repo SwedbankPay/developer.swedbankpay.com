@@ -29,6 +29,14 @@ published on this page." %}
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
 
+## 17 July 2020
+
+### Version 1.13.0
+
+*   Added documentation on Mobile SDK in [Modules & SDKS][modules-sdks] section. 
+*   Added tables for mapping API fields in settlement files in 
+    [Settlement and Reconciliation][settlement-reconcilitation].
+
 ## 10 July 2020
 
 ### Version 1.12.1
@@ -449,6 +457,7 @@ integration and the payer.
 [invoice]: /payments/invoice
 [mac-checkout]: /checkout/other-features#merchant-authenticated-consumer
 [mobile-pay]: /payments/mobile-pay
+[modules-sdks]: /modules-sdks
 [one-click]: /payments/card/other-features#one-click-payments
 [payment-orders]: /checkout/other-features#creating-a-payment-order
 [payments]: /payments
