@@ -1,5 +1,5 @@
-{% assign api_resource = include.api_resource | default: "test two here" %}
 {% assign documentation_section = include.documentation_section %}
+{% assign api_resource = include.api_resource | default: "test two here" %}
 {% assign transaction = include.transaction | default: "capture" %}
 {% assign mcom = include.mcom | default: false %}
 

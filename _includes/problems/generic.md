@@ -9,7 +9,7 @@ can read more about the payment instrument specific problem messages below:
 *   [Swish Payments][swish-problems]
 *   [Vipps Payments][vipps-problems]
 
-[swish-problems]: /payments/swish/other-features#swish-api-errors
+[swish-problems]: /payments/swish/other-features#problems
 [vipps-problems]: /payments/vipps/other-features#problems
 [card-problems]: /payments/card/other-features#problems
 [invoice-problems]: /payments/invoice/other-features#problems

@@ -54,7 +54,10 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{% include transaction-list-response.md api_resource="swish" documentation_section="swish" transaction="sale" %}
+{% include transaction-list-response.md
+    api_resource="swish"
+    documentation_section="swish"
+    transaction="sale" %}
 
 ### Create Sales transaction
 
@@ -199,8 +202,10 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{% include transaction-list-response.md api_resource="swish"
-documentation_section="swish" transaction="reversal" %}
+{% include transaction-list-response.md
+    api_resource="swish"
+    documentation_section="swish"
+    transaction="reversal" %}
 
 ### Create Reversal transaction
 
@@ -237,8 +242,10 @@ Content-Type: application/json
 | {% icon check %}︎ | └➔&nbsp;`description`    | `string`     | A textual description of the capture                                             |
 | {% icon check %}︎ | └➔&nbsp;`payeeReference` | `string(35)` | {% include field-description-payee-reference.md documentation_section="swish" %} |
 
-{% include transaction-response.md api_resource="swish"
-documentation_section="swish" transaction="reversal" %}
+{% include transaction-response.md
+    api_resource="swish"
+    documentation_section="swish"
+    transaction="reversal" %}
 
 {% include abort-reference.md api_resource="swish" %}
 
@@ -256,8 +263,11 @@ payments before they are captured or reversed.
 
 Swish does not support `recurring` payments.
 
-{% include iterator.html prev_href="seamless-view" prev_title="Back: Seamless view"
-next_href="other-features" next_title="Next: Other Features" %}
+{% include iterator.html
+    prev_href="seamless-view"
+    prev_title="Back: Seamless view"
+    next_href="other-features"
+    next_title="Next: Other Features" %}
 
 [create-payment]: /payments/swish/other-features#create-payment
 [payex-admin-portal]: https://admin.payex.com/psp/login/

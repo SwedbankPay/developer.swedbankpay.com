@@ -16,19 +16,20 @@ sidebar:
 
 ## Options after posting a payment
 
-*   **Abort**: It is possible to [abort a payment][abort]
-    if the payment has no successful transactions.
-*   If the payment shown above has a completed `authorization`,
-    you will need to implement the `Capture` and `Cancel` requests.
+*   **Abort**: It is possible to [abort a payment][abort] if the payment has no
+    successful transactions.
+*   If the payment shown above has a completed `authorization`, you will need to
+    implement the `Capture` and `Cancel` requests.
 *   For reversals, you will need to implement the `Reversal` request.
-*   **If CallbackURL is set**: Whenever changes to the payment occur
-    a [Callback request][technical-reference-callback] will be posted to
-    the `callbackUrl`, generated when the payment was created.
+*   **If CallbackURL is set**: Whenever changes to the payment occur a [Callback
+    request][technical-reference-callback] will be posted to the `callbackUrl`,
+    generated when the payment was created.
 
 ## Capture
 
-{% include transaction-list-response.md api_resource="mobilepay"
-documentation_section="mobile-pay" %}
+{% include transaction-list-response.md
+    api_resource="mobilepay"
+    documentation_section="mobile-pay" %}
 
 ## Create capture transaction
 
@@ -64,7 +65,9 @@ Content-Type: application/json
 | {% icon check %}︎ | └➔&nbsp;`description`    | `string`     | A textual description of the capture transaction.                                     |
 | {% icon check %}︎ | └➔&nbsp;`payeeReference` | `string(50)` | {% include field-description-payee-reference.md documentation_section="mobile-pay" %} |
 
-{% include transaction-response.md api_resource="mobilepay" documentation_section="mobile-pay" %}
+{% include transaction-response.md
+    api_resource="mobilepay"
+    documentation_section="mobile-pay" %}
 
 ## Capture Sequence
 
@@ -143,8 +146,10 @@ sequenceDiagram
 
 ## Reversals
 
-{% include transaction-list-response.md api_resource="mobilepay" documentation_section="mobile-pay"
-transaction="reversal" %}
+{% include transaction-list-response.md
+    api_resource="mobilepay"
+    documentation_section="mobile-pay"
+    transaction="reversal" %}
 
 ## Create reversal transaction
 
@@ -208,10 +213,4 @@ documentation_section="mobile-pay" %}
                          next_title="Next: Other Features" %}
 
 [abort]: /payments/mobile-pay/after-payment#abort
-[authorization]: /payments/mobile-pay/redirect#type-of-authorization-intent
-[mobilepay-cancel]: /payments/mobile-pay/other-features#cancel-sequence
-[mobilepay-capture]: /payments/mobile-pay/other-features#capture-sequence
-[mobilepay-reversal]: /payments/mobile-pay/other-features#reversal-sequence
-[payee-reference]: /payments/mobile-pay/other-features#payee-reference
 [technical-reference-callback]: /payments/mobile-pay/other-features#callback
-[transaction-resource]: /payments/mobile-pay/other-features#transactions

@@ -67,11 +67,11 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-|     Required     | Field                    | Type          | Description                                                                                    |
-| :--------------: | :----------------------- | :------------ | :--------------------------------------------------------------------------------------------- |
-| {% icon check %} | `transaction`            | `object`      | The `object` representation of the generic [transaction resource][transaction-resource].       |
-| {% icon check %} | └➔&nbsp;`description`    | `string`      | A textual description of the reason for the `cancellation`.                                    |
-| {% icon check %} | └➔&nbsp;`payeeReference` | `string(30*)` | {% include field-description-payee-reference.md documentation_section="card" %} |
+|     Required     | Field                    | Type          | Description                                                                              |
+| :--------------: | :----------------------- | :------------ | :--------------------------------------------------------------------------------------- |
+| {% icon check %} | `transaction`            | `object`      | The `object` representation of the generic [transaction resource][transaction-resource]. |
+| {% icon check %} | └➔&nbsp;`description`    | `string`      | A textual description of the reason for the `cancellation`.                              |
+| {% icon check %} | └➔&nbsp;`payeeReference` | `string(30*)` | {% include field-description-payee-reference.md documentation_section="card" %}          |
 
 The `cancel` resource contains information about a cancellation transaction
 made against a payment.
@@ -179,13 +179,13 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-|     Required     | Field                    | Type          | Description                                                                                    |
-| :--------------: | :----------------------- | :------------ | :--------------------------------------------------------------------------------------------- |
-| {% icon check %} | `transaction`            | `object`      | The `object` representation of the generic [transaction resource][transaction-resource].       |
-| {% icon check %} | └➔&nbsp;`amount`         | `integer`     | {% include field-description-amount.md %}                                                      |
-| {% icon check %} | └➔&nbsp;`vatAmount`      | `integer`     | {% include field-description-vatamount.md %}                                                   |
-| {% icon check %} | └➔&nbsp;`description`    | `string`      | A textual description of the `reversal`.                                                       |
-| {% icon check %} | └➔&nbsp;`payeeReference` | `string(30*)` | {% include field-description-payee-reference.md documentation_section="card" %}                |
+|     Required     | Field                    | Type          | Description                                                                              |
+| :--------------: | :----------------------- | :------------ | :--------------------------------------------------------------------------------------- |
+| {% icon check %} | `transaction`            | `object`      | The `object` representation of the generic [transaction resource][transaction-resource]. |
+| {% icon check %} | └➔&nbsp;`amount`         | `integer`     | {% include field-description-amount.md %}                                                |
+| {% icon check %} | └➔&nbsp;`vatAmount`      | `integer`     | {% include field-description-vatamount.md %}                                             |
+| {% icon check %} | └➔&nbsp;`description`    | `string`      | A textual description of the `reversal`.                                                 |
+| {% icon check %} | └➔&nbsp;`payeeReference` | `string(30*)` | {% include field-description-payee-reference.md documentation_section="card" %}          |
 
 The `reversal` resource contains information about the newly created reversal
 transaction.
@@ -328,6 +328,5 @@ next_href="other-features" next_title="Next: Other Features" %}
 [abort]: /payments/card/after-payment#abort
 [callback]: /payments/card/other-features#callback
 [operations]: /payments/card/other-features#operations
-[payee-reference]: /payments/card/other-features#payee-reference
 [reversal]: /payments/card/after-payment#reversals
 [transaction-resource]: /payments/card/other-features#transactions

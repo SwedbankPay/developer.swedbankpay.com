@@ -1,5 +1,4 @@
-{% assign local_documentation_section = include.documentation_section %}
-{% assign problem_include_file = local_documentation_section | default: 'generic' | prepend: 'problems/' | append: '.md' %}
+{% assign problem_include_file = include.documentation_section | default: 'generic' | prepend: 'problems/' | append: '.md' %}
 
 ## Problems
 
