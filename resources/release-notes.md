@@ -33,8 +33,8 @@ this very documentation, not to a version of any APIs described by it." %}
 
 ### Version 1.13.0
 
-*   Added documentation on Mobile SDK in [Modules & SDKS][modules-sdks] section. 
-*   Added tables for mapping API fields in settlement files in 
+*   Added documentation on Mobile SDK in [Modules & SDKs][modules-sdks] section.
+*   Added tables for mapping API fields to settlement files in
     [Settlement and Reconciliation][settlement-reconcilitation].
 
 ## 10 July 2020
@@ -48,8 +48,8 @@ this very documentation, not to a version of any APIs described by it." %}
 
 ### Version 1.12.0
 
-*   Added information on 3-D Secure 2 for [Checkout][checkout-3ds2] and 
-    [Card Payments][card-3ds2]. 
+*   Added information on 3-D Secure 2 for [Checkout][checkout-3ds2] and
+    [Card Payments][card-3ds2].
 *   Updated reconciliation files in [Settlement &
     Reconciliation][settlement-reconcilitation].
 *   Added test card for Forbrugsforeningen in [Test data][test-data].
@@ -57,12 +57,12 @@ this very documentation, not to a version of any APIs described by it." %}
 *   Added additional information on `payerReference`, `generateRecurrenceToken`,
     `paymentToken`, `generatePaymentToken`, `recurrenceToken` and
     `instrument` for the `paymentorder` resource in [Checkout][checkout].
-*   Corrected and updated `view-` operations for all resources. 
+*   Corrected and updated `view-` operations for all resources.
 *   Updated [Seamless View Events][seamless-view-events-card] for all resources.
 *   Described `nonPaymentToken` and `externalNonPaymentToken` in
     [Card Payments][card].
-*   Small corrections to [Swish Payments][swish] documentation. 
-*   Clarified the [`updateOrder`][update-order-checkout] documentation. 
+*   Small corrections to [Swish Payments][swish] documentation.
+*   Clarified the [`updateOrder`][update-order-checkout] documentation.
 
 ## 04 June 2020
 
