@@ -99,9 +99,7 @@ completing the payment.
 
 {% include settlement-reconciliation.md documentation_section="card" %}
 
-{% include problems/problems.md %}
-
-{% include problems/card.md %}
+{% include problems/problems.md documentation_section="card" %}
 
 {% include seamless-view-events.md api_resource="creditcard" %}
 

@@ -21,7 +21,7 @@ documentation_section="trustly" show_status_operations=true %}
 
 {% include alert-callback-url.md api_resource="trustly" %}
 
-{% include authorizations-resource.md api_resource="trustly" %}
+{% include authorizations-resource.md documentation_section="trustly" api_resource="trustly" %}
 
 {% include payment-transaction-states.md %}
 
@@ -130,14 +130,7 @@ Content-Type: application/json
 
 {% include settlement-reconciliation.md documentation_section="trustly" %}
 
-## Problems
-
-When performing unsuccessful operations, the eCommerce API will respond with a
-problem message. We generally use the problem message `type` and `status` code
-to identify the nature of the problem. The problem `name` and `description` will
-often help narrow down the specifics of the problem.
-
-{% include problems/problems.md %}
+{% include problems/problems.md documentation_section="trustly" %}
 
 {% include seamless-view-events.md api_resource="trustly" %}
 

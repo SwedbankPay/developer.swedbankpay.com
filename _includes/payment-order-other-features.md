@@ -1361,46 +1361,25 @@ Triggered on terminal errors, and when the configuration fails validation.
 
 {% include callback-reference.md payment_order=true api_resource="paymentorders" %}
 
-## Problems
+{% comment %}
+Include parameters aren't scoped to the inside of the include, they are just
+overridden with whatever value they are given at the time the include is being
+executed. This means that if a variable is declared matching the name of an
+include parameter, the parameter will get the value of the variable from the
+parent scope regardless of whether it is passed to the include or not.
 
-When performing operations against the API, it will respond with a problem
-message that contain details of the error type if the request could not be
-successfully performed.
-Regardless of why the error occurred, the problem message will follow the same
-structure as specified in the
-[Problem Details for HTTP APIs][http-api-problems]] specification.
+This is the reason we are explicitly passing `documentation_section=nil` to the
+problems include.
 
-The structure of a problem message will look like this:
+Variable scoping is fixed in the new `{% render %}` tag implemented in Liquid,
+but since no release has been made in Liquid since March 2019, this newly added
+tag can't be used in Jekyll just yet. Once a new release of Liquid has been made
+and Jekyll upgrades to it, we should also upgrade and replace all `include` with
+`render` tags.
 
-```js
-{
-    "type": "https://api.payex.com/psp/errordetail/paymentorders/inputerror",
-    "title": "There was an input error",
-    "detail": "Please correct the errors and retry the request",
-    "instance": "{{ page.transaction_id }}",
-    "status": 400,
-    "action": "RetryNewData",
-    "problems": [{
-        "name": "CreditCardParameters.Issuer",
-        "description": "minimum one issuer must be enabled "
-    }]
-}
-```
-
-{:.table .table-striped}
-| Field                    | Type      | Description                                                                                                                                                                                                                                         |
-| :----------------------- | :-------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `type`                   | `string`  | The URI that identifies the error type. This is the **only field usable for programmatic identification** of the type of error! When dereferenced, it might lead you to a human readable description of the error and how it can be recovered from. |
-| `title`                  | `string`  | The title contains a human readable description of the error.                                                                                                                                                                                       |
-| `detail`                 | `string`  | A detailed, human readable description of the error.                                                                                                                                                                                                |
-| `instance`               | `string`  | The identifier of the error instance. This might be of use to Swedbank Pay support personnel in order to find the exact error and the context it occurred in.                                                                                       |
-| `status`                 | `integer` | The HTTP status code that the problem was served with.                                                                                                                                                                                              |
-| `action`                 | `string`  | The `action` indicates how the error can be recovered from.                                                                                                                                                                                         |
-| `problems`               | `array`   | The array of problem detail objects.                                                                                                                                                                                                                |
-| └➔&nbsp;`[].name`        | `string`  | The name of the field, header, object, entity or likewise that was erroneous.                                                                                                                                                                       |
-| └➔&nbsp;`[].description` | `string`  | The description of what was wrong with the field, header, object, entity or likewise identified by `name`.                                                                                                                                          |
-
-{% include problems/problems.md %}
+https://github.com/Shopify/liquid/pull/1122
+{% endcomment %}
+{% include problems/problems.md documentation_section=nil %}
 
 {% include expand-parameter.md api_resource="paymentorders" %}
 

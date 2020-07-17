@@ -201,62 +201,7 @@ payment altogether or creating an authorization transaction through the
 
 {% include payment-link.md %}
 
-## Problems
-
-When performing unsuccessful operations, the eCommerce API will respond with a
-problem message.
-We generally use the problem message type and status code to identify the
-nature of the problem.
-The problem name and description will often help narrow down the specifics of
-the problem.
-
-{% include problems/problems.md %}
-
-### Error types from Vipps (Init-call)
-
-All Vipps error types will have the following URI in front of type:
-`https://api.payex.com/psp/errordetail/vipps/<error-type>`
-
-{:.table .table-striped}
-| Type          | Status | Note       |
-| :------------ | :----- | :--------- |
-| *VIPPS_ERROR* | 403    | All errors |
-
-### Error types from Vipps (Callback)
-
-All Vipps error types will have the following URI in front of type:
-`https://api.payex.com/psp/errordetail/vipps/<error-type>`
-
-{:.table .table-striped}
-| Type             | Status | Note                       |
-| :--------------- | :----- | :------------------------- |
-| *VIPPS_DECLINED* | 400    | Any status that is not YES |
-
-### Error types from Acquirer
-
-All Vipps error types will have the following URI in front of type:
-`https://api.payex.com/psp/errordetail/vipps/<error-type>`
-
-{:.table .table-striped}
-| Type                            | Status |
-| :------------------------------ | :----- |
-| *`CARD_BLACKLISTED`*            | `400`  |
-| *`PAYMENT_TOKEN_ERROR`*         | `403`  |
-| *`CARD_DECLINED`*               | `403`  |
-| *`ACQUIRER_ERROR`*              | `403`  |
-| *`ACQUIRER_CARD_BLACKLISTED`*   | `403`  |
-| *`ACQUIRER_CARD_EXPIRED`*       | `403`  |
-| *`ACQUIRER_CARD_STOLEN`*        | `403`  |
-| *`ACQUIRER_INSUFFICIENT_FUNDS`* | `403`  |
-| *`ACQUIRER_INVALID_AMOUNT`*     | `403`  |
-| *`ACQUIRER_POSSIBLE_FRAUD`*     | `403`  |
-| *`FRAUD_DETECTED`*              | `403`  |
-| *`BAD_REQUEST`*                 | `500`  |
-| *`INTERNAL_SERVER_ERROR`*       | `500`  |
-| *`BAD_GATEWAY`*                 | `502`  |
-| *`ACQUIRER_GATEWAY_ERROR`*      | `502`  |
-| *`ACQUIRER_GATEWAY_TIMEOUT`*    | `504`  |
-| *`UNKNOWN_ERROR`*               | `500`  |
+{% include problems/problems.md documentation_section="vipps" %}
 
 {% include seamless-view-events.md api_resource="vipps" %}
 
