@@ -210,7 +210,7 @@ nature of the problem.
 The problem name and description will often help narrow down the specifics of
 the problem.
 
-{% include problems.md %}
+{% include problems/problems.md %}
 
 ### Error types from Vipps (Init-call)
 

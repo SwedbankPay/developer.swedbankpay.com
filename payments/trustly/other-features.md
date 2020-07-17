@@ -137,7 +137,7 @@ problem message. We generally use the problem message `type` and `status` code
 to identify the nature of the problem. The problem `name` and `description` will
 often help narrow down the specifics of the problem.
 
-{% include problems.md %}
+{% include problems/problems.md %}
 
 {% include seamless-view-events.md api_resource="trustly" %}
 

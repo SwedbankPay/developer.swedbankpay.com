@@ -1400,7 +1400,7 @@ The structure of a problem message will look like this:
 | └➔&nbsp;`[].name`        | `string`  | The name of the field, header, object, entity or likewise that was erroneous.                                                                                                                                                                       |
 | └➔&nbsp;`[].description` | `string`  | The description of what was wrong with the field, header, object, entity or likewise identified by `name`.                                                                                                                                          |
 
-{% include problems.md %}
+{% include problems/problems.md %}
 
 {% include expand-parameter.md api_resource="paymentorders" %}
 
