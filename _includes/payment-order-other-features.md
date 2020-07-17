@@ -13,9 +13,10 @@ The `paymentorders` resource and how you interact with it is described below.
 To create a payment order, you perform a `POST` request towards the
 `paymentorders` resource:
 
-{% include payment-order-purchase.md documentation_section=local_documentation_section %}
+{% include payment-order-purchase.md
+documentation_section=local_documentation_section operation_status_bool="true" %}
 
-{% include description.md %}
+{% include description.md api_resource = "paymentorders" %}
 
 ### URLs
 
@@ -167,13 +168,12 @@ Content-Type: application/json
         "currency": "SEK",
         "amount": 1500,
         "vatAmount": 375,
-        "description": "Test Purchase",{% if local_documentation_section == "payment-menu" %}
-        "generatePaymentToken": true,{% endif %}
+        "description": "Test Purchase",
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "instrument": "CreditCard"
-        "generateRecurrenceToken": true,
-        "restrictedToInstruments": ["CreditCard", "Invoice"],
+        "generateRecurrenceToken": true,{% if local_documentation_section == "payment-menu" %}
+        "generatePaymentToken": true,{% endif %}
         "urls": {
             "hostUrls": [ "https://example.com", "https://example.net" ],
         }
@@ -937,7 +937,6 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`userAgent`               | `string`     | The user agent of the payer.                                                                                                                                                                                                                                                                                                                                                                                  |
 | {% icon check %} | └➔&nbsp;`language`                | `string`     | The language of the payer.                                                                                                                                                                                                                                                                                                                                                                                    |
 | {% icon check %} | └➔&nbsp;`generateRecurrenceToken` | `bool`       | Determines whether a recurrence token should be generated. A recurrence token is primarily used to enable future [recurring payments](/{{ local_documentation_section }}/other-features#recurring-payments) – with the same token – through server-to-server calls. Default value is `false`.                                                                                                                 |
-|                  | └➔&nbsp;`restrictedToInstruments` | `array`      | `CreditCard`, `Invoice`, `Vipps`, `Swish` and/or `CreditAccount`. `Invoice` supports the subtypes `PayExFinancingNo`, `PayExFinancingSe` and `PayMonthlyInvoiceSe`, separated by a dash, e.g.; `Invoice-PayExFinancingNo`. Limits the options available to the consumer in the payment menu. Default value is all supported payment instruments. Usage of this field requires an agreement with Swedbank Pay. |
 | {% icon check %} | └➔&nbsp;`urls`                    | `object`     | The `urls` object, containing the URLs relevant for the payment order.                                                                                                                                                                                                                                                                                                                                        |
 | {% icon check %} | └─➔&nbsp;`hostUrls`               | `array`      | The array of URIs valid for embedding of Swedbank Pay Hosted Views.                                                                                                                                                                                                                                                                                                                                           |
 | {% icon check %} | └─➔&nbsp;`completeUrl`            | `string`     | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment order to inspect it further.                                                                                                      |
@@ -1174,9 +1173,11 @@ Content-Type: application/json
 ### Payer Resource
 
 The `payer` resource contains payer information related to the payment order.
+{% if local_documentation_section == "checkout" %}
 The information is retrieved via a consumer profile token
 (`consumerProfileRef`), from the [Consumers resource][payee-reference]
 during login/checkin.
+{% endif %}
 
 {:.code-header}
 **Request**
@@ -1410,7 +1411,9 @@ The structure of a problem message will look like this:
 
 {% include payee-info.md api_resource="paymentorders" documentation_section=documentation_section %}
 
+{% if local_documentation_section == "checkout" %}
 {% include merchant-authenticated-consumer.md %}
+{% endif %}
 
 {% include merchant-identified-payer.md documentation_section="checkout"%}
 
@@ -1429,7 +1432,8 @@ with the request parameter `instrument`.
 
 {% endif %}
 
-{% include settlement-reconciliation.md api_resource="paymentorders" %}
+{% include settlement-reconciliation.md api_resource="paymentorders"
+documentation_section="payment-menu" %}
 
 {% include 3d-secure-2.md api_resource="paymentorders" documentation_section =
 local_documentation_section %}
@@ -1454,7 +1458,7 @@ elements. When in doubt, please follow the [robustness principle](https://en.wik
 [current-payment]: #current-payment-resource
 [expanding]: /home/technical-information#expansion
 [http-api-problems]: https://tools.ietf.org/html/rfc7807
-[image_disabled_payment_menu]: /assets/img/checkout/test-purchase.png
+[image_disabled_payment_menu]: /assets/img/checkout/disabled-payment-menu.png
 [image_enabled_payment_menu]: /assets/img/checkout/guest-payment-menu-450x850.png
 [one-click-payments]: /payment-menu/other-features#one-click-payments
 [operations]: #operations

@@ -403,7 +403,7 @@ next_href="capture" next_title="Next: Capture" %}
 [cancel]: /payments/invoice/after-payment#cancellations
 [capture]: /payments/invoice/capture
 [financing-consumer]: /payments/invoice/other-features#financing-consumer
-[financing-invoice-1-png]: /assets/img/checkout/test-purchase.png
+[financing-invoice-1-png]: /assets/img/checkout/disabled-payment-menu.png
 [financing-invoice-2-png]: /assets/screenshots/invoice/redirect-view/iframe-verify-data.png
 [other-features]: /payments/invoice/other-features
 [payee-reference]: /payments/invoice/other-features#payeeinfo

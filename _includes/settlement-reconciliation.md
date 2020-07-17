@@ -1,4 +1,6 @@
 {% assign api_resource = include.api_resource | default: "creditcard" %}
+{% assign documentation_section = include.documentation_section %}
+{% assign operation_title = include.operation_title %}
 
 ## Settlement and Reconciliation
 
@@ -32,7 +34,7 @@ Swedbank Pay handles the settlement process on your behalf, (_called
 
 ##### Swedbank Pay Checkout
 
-When choosing [Swedbank Pay Checkout][payex-checkout] we always handle the
+When choosing [Swedbank Pay Checkout][checkout] we always handle the
 settlement process for you, gathering all your eCommerce payments in one place.
 Straighforward and time efficient.
 
@@ -89,7 +91,7 @@ body.
 
 {:.table .table-striped}
 | Field         | Type       | Description                                                                |
-|:--------------|:-----------|:---------------------------------------------------------------------------|
+| :------------ | :--------- | :------------------------------------------------------------------------- |
 | `Prefix`      | `String`   | The `Prefix` used for transactions, only eligible if merchant uses prefix. |
 | Currency      | `ISO 4217` | Settlement currency (e.g. `SEK, NOK, EUR`).                                |
 | `ServiceType` | `String`   | The service type of the service used (e.g. `Creditcard`).                  |
@@ -105,7 +107,7 @@ body.
 
 {:.table .table-striped}
 | Field                           | Type       | Description                                                                                                                                               |
-|:--------------------------------|:-----------|:----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| :------------------------------ | :--------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Swedbank Pay Batch Number`     | `Decimal`  | A batch number common to all types of transactions processed by Swedbank Pay.                                                                             |
 | `Transaction Number`            | `Decimal`  | A unique identifier of the transaction, can be traced in Swedbank Pay Admin user interface.                                                               |
 | `Order id`                      | `String`   | A unique identifier of the order, as sent from the merchant to Swedbank Pay. Transactions that are related to the same order are associated with this ID. |
@@ -211,6 +213,17 @@ the reconciliation file.
 *   `capture.transaction.number` returned from Swedbank Pay is equal to
     `TransactionNo` in reconciliation file.
 
+Below you will see the API mapping tables to the fields in the settlement 
+report for `Create payment`, {% if documentation_section =="swish" %}`Sale` {% else %} `Capture` {% endif %} and `Reversal`.
+
+{% include pba-tables.md documentation_section=documentation_section operation_title="create-payment" %}
+{% if documentation_section =="swish" %}
+{% include pba-tables.md documentation_section=documentation_section operation_title="sale" %}
+{% else %}
+{% include pba-tables.md documentation_section=documentation_section operation_title="capture" %}
+{% endif %}
+{% include pba-tables.md documentation_section=documentation_section operation_title="reversal" %}
+
 ### Samples
 
 The content of the files depends on the type of agreement you have made with
@@ -312,9 +325,9 @@ merchant. The reversal amount will be charged from the sub merchants prefix. If
 the sub merchants balance is 0 (zero), the super merchant will be invoiced. The
 super merchant will in turn have to invoice this amount to the sub merchant.
 
-[payex-checkout]: /checkout
 [attachement-1]: /assets/documents/testredovisning-payexcheckout.pdf
 [balance-report-sbp-pdf]: /assets/documents/r1234-0001-redov.service.pdf
+[checkout]: /checkout/
 [trans-list-sbp-xlsx]: /assets/documents/transaktionsstatistik-redovisningsservice.xlsx
 [trans-list-sbp-xml]: /assets/documents/transaktionsstatistik-redovisningsservice.xml
 [balance-report-pdf]: /assets/documents/balance-report.pdf

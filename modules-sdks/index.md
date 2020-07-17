@@ -1,27 +1,14 @@
 ---
-title: SDKs and Modules
+title: Modules & SDKs Introduction
+redirect_from: /resources/sdk-modules
 sidebar:
   navigation:
-  - title: Resources
+  - title: Modules & SDKs
     items:
-    - url: /resources/
+    - url: /modules-sdks/index
       title: Introduction
-    - url: /resources/sdk-modules
-      title: SDKs and Modules
-    - url: /resources/test-data
-      title: Test Data
-    - url: /resources/demoshop
-      title: Demoshop
-    - url: /resources/development-guidelines
-      title: Open Source Development Guidelines
-    - url: /resources/release-notes
-      title: Release Notes
-    - url: /resources/terminology
-      title: Terminology
-    - url: /resources/data-protection
-      title: Data Protection
-    - url: /resources/public-migration-key
-      title: Public Migration Key
+    - url: /modules-sdks/mobile-sdk
+      title: Mobile SDK
 ---
 
 {% assign active_repositories = site.github.public_repositories | where: 'archived', false %}

@@ -6,8 +6,6 @@ sidebar:
     items:
     - url: /resources/
       title: Introduction
-    - url: /resources/sdk-modules
-      title: SDKs and Modules
     - url: /resources/test-data
       title: Test Data
     - url: /resources/demoshop
@@ -31,6 +29,14 @@ published on this page." %}
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
 
+## 17 July 2020
+
+### Version 1.13.0
+
+*   Added documentation on Mobile SDK in [Modules & SDKs][modules-sdks] section.
+*   Added tables for mapping API fields to settlement files in
+    [Settlement and Reconciliation][settlement-reconcilitation].
+
 ## 10 July 2020
 
 ### Version 1.12.1
@@ -42,8 +48,8 @@ this very documentation, not to a version of any APIs described by it." %}
 
 ### Version 1.12.0
 
-*   Added information on 3-D Secure 2 for [Checkout][checkout-3ds2] and 
-    [Card Payments][card-3ds2]. 
+*   Added information on 3-D Secure 2 for [Checkout][checkout-3ds2] and
+    [Card Payments][card-3ds2].
 *   Updated reconciliation files in [Settlement &
     Reconciliation][settlement-reconcilitation].
 *   Added test card for Forbrugsforeningen in [Test data][test-data].
@@ -51,12 +57,12 @@ this very documentation, not to a version of any APIs described by it." %}
 *   Added additional information on `payerReference`, `generateRecurrenceToken`,
     `paymentToken`, `generatePaymentToken`, `recurrenceToken` and
     `instrument` for the `paymentorder` resource in [Checkout][checkout].
-*   Corrected and updated `view-` operations for all resources. 
+*   Corrected and updated `view-` operations for all resources.
 *   Updated [Seamless View Events][seamless-view-events-card] for all resources.
 *   Described `nonPaymentToken` and `externalNonPaymentToken` in
     [Card Payments][card].
-*   Small corrections to [Swish Payments][swish] documentation. 
-*   Clarified the [`updateOrder`][update-order-checkout] documentation. 
+*   Small corrections to [Swish Payments][swish] documentation.
+*   Clarified the [`updateOrder`][update-order-checkout] documentation.
 
 ## 04 June 2020
 
@@ -451,12 +457,13 @@ integration and the payer.
 [invoice]: /payments/invoice
 [mac-checkout]: /checkout/other-features#merchant-authenticated-consumer
 [mobile-pay]: /payments/mobile-pay
+[modules-sdks]: /modules-sdks
 [one-click]: /payments/card/other-features#one-click-payments
 [payment-orders]: /checkout/other-features#creating-a-payment-order
 [payments]: /payments
 [update-order-checkout]: /checkout/other-features#update-order
 [settlement-reconcilitation]: /payments/card/other-features#settlement-and-reconciliation
-[sdk-modules]: /resources/sdk-modules
+[sdk-modules]: /modules-sdks
 [storing-uri]: /home/technical-information#storing-uris
 [swish-api-errors]: /payments/swish/other-features#swish-api-errors
 [swish-direct-mcom]: /payments/swish/direct#step-2b-create-m-commerce-sale-transaction
