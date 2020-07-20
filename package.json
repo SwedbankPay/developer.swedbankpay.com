@@ -6,7 +6,7 @@
     "braces": ">=2.3.1",
     "dictionary-en-us": "^3.0.0",
     "remark": "^12.0.1",
-    "remark-cli": "^8.0.0",
+    "remark-cli": "^8.0.1",
     "remark-frontmatter": "^2.0.0",
     "remark-heading-gap": "^3.0.0",
     "remark-lint": "^7.0.0",
