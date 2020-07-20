@@ -301,88 +301,17 @@ described here in the documentation**. Always use the `href` and `method` as
 specified in the response by finding the appropriate operation based on its
 `rel` value.
 
-### PayeeReference
-
 {% include payee-reference.md %}
 
 [Read more about the settlement process here][settlement].
 
 {% include callback-reference.md api_resource="creditcard" %}
 
-## Problems
-
-When performing operations against the API, it will respond with a problem
-message that contain details of the error type if the request could not be
-successfully performed. Regardless of why the error occurred, the problem
-message will follow the same structure as specified in the
-[Problem Details for HTTP APIs (RFC 7807)][rfc-7807] specification.
-
-The structure of a problem message will look like this:
-
-{:.code-header}
-**Problem Example**
-
-```js
-{
-    "type": "https://api.payex.com/psp/errordetail/creditcard/inputerror",
-    "title": "There was an input error",
-    "detail": "Please correct the errors and retry the request",
-    "instance": "{{ page.transaction_id }}",
-    "status": 400,
-    "action": "RetryNewData",
-    "problems": [{
-        "name": "CreditCardParameters.Issuer",
-        "description": "minimum one issuer must be enabled"
-    }]
-}
-```
-
-{:.table .table-striped}
-| Field                 | Type      | Description                                                                                                                                                                                                                                         |
-| :-------------------- | :-------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `type`                | `string`  | The URI that identifies the error type. This is the **only field usable for programmatic identification** of the type of error! When dereferenced, it might lead you to a human readable description of the error and how it can be recovered from. |
-| `title`               | `string`  | The title contains a human readable description of the error.                                                                                                                                                                                       |
-| `detail`              | `string`  | A detailed, human readable description of the error and how you can recover from it.                                                                                                                                                                |
-| `instance`            | `string`  | The identifier of the error instance. This might be of use to Swedbank Pay support personnel in order to find the exact error and the context it occurred in.                                                                                       |
-| `status`              | `integer` | The HTTP status code that the problem was served with.                                                                                                                                                                                              |
-| `action`              | `string`  | The `action` indicates how the error can be recovered from.                                                                                                                                                                                         |
-| `problems`            | `array`   | The array of problem detail objects.                                                                                                                                                                                                                |
-| └➔&nbsp;`name`        | `string`  | The name of the field, header, object, entity or likewise that was erroneous.                                                                                                                                                                       |
-| └➔&nbsp;`description` | `string`  | The human readable description of what was wrong with the field, header, object, entity or likewise identified by `name`.                                                                                                                           |
-
-### Common Problems
-
-All common problem types will have a URI in the format
-`https://api.payex.com/psp/errordetail/<error-type>`. The
-**URI is an identifier** that you can hard-code and implement logic around. It
-is currently not not possible to dereference this URI, although that might be
-possible in the future.
-
-{:.table .table-striped}
-| Type                 | Status | Description                                                                                                                                        |
-| :------------------- | :----: | :------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `inputerror`         | `400`  | The server cannot or will not process the request due to an apparent client error (e.g. malformed request syntax, size to large, invalid request). |
-| `forbidden`          | `403`  | The request was valid, but the server is refusing the action. The necessary permissions to access the resource might be lacking.                   |
-| `notfound`           | `404`  | The requested resource could not be found, but may be available in the future. Subsequent requests are permissible.                                |
-| `systemerror`        | `500`  | A generic error message.                                                                                                                           |
-| `configurationerror` | `500`  | A error relating to configuration issues.                                                                                                          |
-
-### Payment Instrument Specific Problems
-
-Problem types for a specific payment instrument will have a URI in the format
-`https://api.payex.com/psp/errordetail/<payment-instrument>/<error-type>`. You
-can read more about the payment instrument specific problem messages below:
-
-*   [Card Payments][card-problems]
-*   [Invoice Payments][invoice-problems]
-*   [Swish Payments][swish-problems]
-*   [Vipps Payments][vipps-problems]
+{% include problems/problems.md %}
 
 [admin]: https://admin.externalintegration.payex.com/psp/login
-[card-problems]: /payments/card/other-features#problems
 [content-type]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type
 [external-integration]: {{ page.api_url }}/
-[invoice-problems]: /payments/invoice/other-features#problems
 [iso-3166]: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
 [iso-4217]: https://en.wikipedia.org/wiki/ISO_4217
 [iso-639-1]: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
@@ -395,11 +324,8 @@ can read more about the payment instrument specific problem messages below:
 [python-tls]: https://docs.python.org/2/library/ssl.html#ssl.PROTOCOL_TLSv1_2
 [rfc-7239]: https://tools.ietf.org/html/rfc7239
 [rfc-7329]: https://tools.ietf.org/html/rfc7329
-[rfc-7807]: https://tools.ietf.org/html/rfc7807
 [ruby-tls]: https://stackoverflow.com/a/11059873/61818
 [settlement]: /payments/invoice/other-features#settlement-and-reconciliation
 [ssllabs]: https://www.ssllabs.com/ssltest/analyze.html?d=api.payex.com
-[swish-problems]: /payments/swish/other-features#swish-api-errors
 [the-rest-and-then-some]: https://www.youtube.com/watch?v=QIv9YR1bMwY
 [uuid]: https://en.wikipedia.org/wiki/Universally_unique_identifier
-[vipps-problems]: /payments/vipps/other-features#problem-messages

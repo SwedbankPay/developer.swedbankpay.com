@@ -465,7 +465,7 @@ integration and the payer.
 [settlement-reconcilitation]: /payments/card/other-features#settlement-and-reconciliation
 [sdk-modules]: /modules-sdks
 [storing-uri]: /home/technical-information#storing-uris
-[swish-api-errors]: /payments/swish/other-features#swish-api-errors
+[swish-api-errors]: /payments/swish/other-features#problems
 [swish-direct-mcom]: /payments/swish/direct#step-2b-create-m-commerce-sale-transaction
 [swish-direct]: /payments/swish/direct
 [swish-other-features]: /payments/swish/other-features

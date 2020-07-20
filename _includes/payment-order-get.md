@@ -1,8 +1,16 @@
+{% capture product %}
+    {% if include.documentation_section == "payment-menu" %}
+        [Payment Menu][payment-menu]
+    {% else %}
+        [Swedbank Pay Checkout][checkout]
+    {% endif %}
+{% endcapture %}
+{% assign product = product | strip %}
+
 The `paymentorders` resource is used when initiating a payment process through
-[Payment Menu][payment-menu] and [Swedbank Pay Checkout][checkout]. The payment
-order is a container for the payment instrument object selected by the payer. This
-will generate a payment that is accessed through the sub-resources `payments`
-and `currentPayment`.
+{{ product }}. The payment order is a container for the payment instrument
+object selected by the payer. This will generate a payment that is accessed
+through the sub-resources `payments` and `currentPayment`.
 
 {:.code-header}
 **Request**
@@ -82,9 +90,9 @@ Content-Type: application/json
 | └➔&nbsp;`currency`       | `string`     | The currency of the payment order.                                                                                                                                                                                        |
 | └➔&nbsp;`amount`         | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                 |
 | └➔&nbsp;`vatAmount`      | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                              |
-| └➔&nbsp;`description`    | `string(40)` | {% include field-description-description.md documentation_section="checkout" %}                                                                                                                                                          |
+| └➔&nbsp;`description`    | `string(40)` | {% include field-description-description.md documentation_section=include.documentation_section %}                                                                                                                        |
 | └➔&nbsp;`userAgent`      | `string`     | The [user agent][user-agent] string of the consumer's browser.                                                                                                                                                            |
-| └➔&nbsp;`language`       | `string`     | {% include field-description-language.md api_resource="paymentorders" %}                                                                                                                                                                                               |
+| └➔&nbsp;`language`       | `string`     | {% include field-description-language.md api_resource="paymentorders" %}                                                                                                                                                  |
 | └➔&nbsp;`urls`           | `string`     | The URI to the `urls` resource where all URIs related to the payment order can be retrieved.                                                                                                                              |
 | └➔&nbsp;`payeeInfo`      | `string`     | The URI to the `payeeinfo` resource where the information about the payee of the payment order can be retrieved.                                                                                                          |
 | └➔&nbsp;`payers`         | `string`     | The URI to the `payers` resource where information about the payee of the payment order can be retrieved.                                                                                                                 |
@@ -92,9 +100,8 @@ Content-Type: application/json
 | └➔&nbsp;`metadata`       | `string`     | The URI to the `payments` resource where information about all underlying payments can be retrieved.                                                                                                                      |
 | └➔&nbsp;`payments`       | `string`     | The URI to the `payments` resource where information about all underlying payments can be retrieved.                                                                                                                      |
 | └➔&nbsp;`currentPayment` | `string`     | The URI to the `currentPayment` resource where information about the current – and sole active – payment can be retrieved.                                                                                                |
-| └➔&nbsp;`operations`     | `array`      | The array of possible operations to perform, given the state of the payment order. [See Operations for details][operations].                                                                                              |
+| └➔&nbsp;`operations`     | `array`      | The array of possible operations to perform, given the state of the payment order. [See Operations for details](#operations).                                                                                             |
 
 -----------------------------------------
 [payment-menu]: /payment-menu
 [checkout]: /checkout
-[operations]: /checkout/other-features#operations

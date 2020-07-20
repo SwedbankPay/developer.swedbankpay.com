@@ -21,7 +21,7 @@ documentation_section="trustly" show_status_operations=true %}
 
 {% include alert-callback-url.md api_resource="trustly" %}
 
-{% include authorizations-resource.md api_resource="trustly" %}
+{% include authorizations-resource.md documentation_section="trustly" api_resource="trustly" %}
 
 {% include payment-transaction-states.md %}
 
@@ -94,7 +94,7 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`vatAmount`         | `integer`     | {% include field-description-vatamount.md %}                                                                                                                                                                                                                                                       |
 | {% icon check %} | └➔&nbsp;`description`        | `string(40)`  | {% include field-description-description.md documentation_section="trustly" %}                                                                                                                                                                                                                     |
 |                  | └➔&nbsp;`payerReference`     | `string`      | The reference to the payer (consumer/end user) from the merchant system. E.g mobile number, customer number etc.                                                                                                                                                                                   |
-| {% icon check %} | └➔&nbsp;`userAgent`           | `string`      | The [`User-Agent` string][user-agent] of the consumer's web browser.                                                                                                                                                                                                                                |
+| {% icon check %} | └➔&nbsp;`userAgent`          | `string`      | The [`User-Agent` string][user-agent] of the consumer's web browser.                                                                                                                                                                                                                               |
 | {% icon check %} | └➔&nbsp;`language`           | `string`      | {% include field-description-language.md api_resource="trustly" %}                                                                                                                                                                                                                                 |
 | {% icon check %} | └➔&nbsp;`urls`               | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                             |
 |                  | └─➔&nbsp;`hostUrl`           | `array`       | The array of URLs valid for embedding of Swedbank Pay Seamless View. If not supplied, view-operation will not be available.                                                                                                                                                                        |
@@ -114,8 +114,7 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`firstName`         | `string`      | Prefilled value to put in the first name text box.                                                                                                                                                                                                                                                 |
 |                  | └─➔&nbsp;`lastName`          | `string`      | Prefilled value to put in the last name text box.                                                                                                                                                                                                                                                  |
 
-{% include transactions-reference.md api_resource="trustly"
-documentation_section="trustly" %}
+{% include transactions.md api_resource="trustly" documentation_section="trustly" %}
 
 {% include callback-reference.md api_resource="trustly" %}
 
@@ -131,14 +130,7 @@ documentation_section="trustly" %}
 
 {% include settlement-reconciliation.md documentation_section="trustly" %}
 
-## Problems
-
-When performing unsuccessful operations, the eCommerce API will respond with a
-problem message. We generally use the problem message `type` and `status` code
-to identify the nature of the problem. The problem `name` and `description` will
-often help narrow down the specifics of the problem.
-
-{% include common-problem-types.md %}
+{% include problems/problems.md documentation_section="trustly" %}
 
 {% include seamless-view-events.md api_resource="trustly" %}
 

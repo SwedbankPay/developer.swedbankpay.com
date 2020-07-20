@@ -1,18 +1,16 @@
-## Problems
+### Card Problems
 
-When performing unsuccessful operations, the eCommerce API will respond with a
-problem message. We generally use the problem message `type` and `status` code
-to identify the nature of the problem. The problem `name` and `description` will
-often help narrow down the specifics of the problem.
+There are a few problems specific to the `creditcard` resource that you may want
+to guard against in your integrations. All credit card problem types will have
+the following URI structure:
 
-### Contractual Problem Types
-
-All contract types will have the following URI in front of type:
 `https://api.payex.com/psp/errordetail/creditcard/<error-type>`
+
+#### Contractual Problem Types
 
 {:.table .table-striped}
 | Type                           | Status | Description                                                                                                                    |
-|:-------------------------------|:------:|:-------------------------------------------------------------------------------------------------------------------------------|
+| :----------------------------- | :----: | :----------------------------------------------------------------------------------------------------------------------------- |
 | `cardbranddisabled`            | `403`  | The card brand is disabled.                                                                                                    |
 | `accountholdertyperejected`    | `403`  | The account holder type is rejected.                                                                                           |
 | `cardtyperejected`             | `403`  | The card type is rejected.                                                                                                     |
@@ -22,14 +20,11 @@ All contract types will have the following URI in front of type:
 | `3dsecuredeclined`             | `403`  | 3-D Secure declined the transaction.                                                                                           |
 | `velocitycheck`                | `429`  | Indicates that the limit for how  many times a card or different cards can be used for attempting a purchase has been reached. |
 
-### Acquirer and 3-D Secure Problem Types
-
-All acquirer error types will have the following URI in front of type:
-`https://api.payex.com/psp/errordetail/creditcard/<error-type>`
+#### Acquirer and 3-D Secure Problem Types
 
 {:.table .table-striped}
 | Type                           | Status | Description                                                                                   |
-|:-------------------------------|:------:|:----------------------------------------------------------------------------------------------|
+| :----------------------------- | :----: | :-------------------------------------------------------------------------------------------- |
 | `3dsecureerror`                | `400`  | 3D Secure not working, try again some time later                                              |
 | `cardblacklisted`              | `400`  | Card blacklisted, Consumer need to contact their Card-issuing bank                            |
 | `paymenttokenerror`            | `403`  | There was an error with the payment token.                                                    |

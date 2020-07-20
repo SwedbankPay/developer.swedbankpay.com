@@ -1,8 +1,7 @@
 {%- assign documentation_section = include.documentation_section -%}
-{%- if documentation_section == "checkout"-%}
-    {%- assign description_url = documentation_section | prepend: "/" | append: "/other-features#description" -%}
-{%- else -%}
-    {%- assign description_url = documentation_section| prepend: "/payments/" | append: "/other-features#description" -%}
+{%- assign description_url = documentation_section | prepend: "/" | append: "/other-features#description" -%}
+{%- if documentation_section != "checkout" and documentation_section != "payment-menu" -%}
+    {%- assign description_url = description_url | prepend: "/payments" -%}
 {%- endif -%}
 {%- capture description -%}
     A 40 character length textual [description]({{ description_url }}) of the purchase.

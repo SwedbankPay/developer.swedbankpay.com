@@ -1,5 +1,5 @@
-{% assign api_resource = include.api_resource | default: "test two here" %}
 {% assign documentation_section = include.documentation_section %}
+{% assign api_resource = include.api_resource | default: "test two here" %}
 {% assign transaction = include.transaction | default: "capture" %}
 {% assign mcom = include.mcom | default: false %}
 
@@ -44,15 +44,21 @@ Content-Type: application/json
             "created": "2016-09-14T01:01:01.01Z",
             "updated": "2016-09-14T01:01:01.03Z",
             "type": "{{ transaction | capitalize }}",
-            "state": "Completed",
+            "state": {% if transaction=="transaction" %}"Failed"{% else %}"Completed"{% endif %},
             "number": 1234567890,
             "amount": 1000,
             "vatAmount": 250,
             "description": "Test transaction",
             "payeeReference": "AH123456", {% if api_resource == "invoice" %}
             "receiptReference": "AH12355", {% endif %}
-            "failedReason": "",
             "isOperational": false,
+            "problem": {
+                "type": "https://api.payex.com/psp/errordetail/{{ api_resource }}/3DSECUREERROR",
+                "title": "Error when complete authorization",
+                "status": 400,
+                "detail": "Unable to complete 3DSecure verification!",
+                "problems": [
+                ] {% unless transaction=="transaction" %}
             "operations": [{% if api_resource == "swish" and mcom == true %}
                 {
                     "href": "swish://paymentrequest?token=LhXrK84MSpWU2RO09f8kUP-FHiBo-1pB",
@@ -64,7 +70,7 @@ Content-Type: application/json
                     "rel": "edit-{{ transaction }}",
                     "method": "PATCH"
                 }
-            ]
+            ]{% endunless %}
         }
     }
 }

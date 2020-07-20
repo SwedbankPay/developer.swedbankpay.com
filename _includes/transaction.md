@@ -1,5 +1,17 @@
 {% assign api_resource = include.api_resource | default: 'creditcard' %}
 {% assign documentation_section = include.documentation_section %}
+{% assign header_level = include.header_level | default: 3 %}
+{% assign next_header_level = header_level | plus: 1 %}
+{% capture top_h %}{% for i in (1..header_level) %}#{% endfor %}{% endcapture %}
+{% capture sub_h %}{% for i in (1..next_header_level) %}#{% endfor %}{% endcapture %}
+
+{% if documentation_section == "checkout" or documentation_section == "payment-menu" %}
+{% assign this_documentation_url = documentation_section %}
+{% else %}
+{% assign this_documentation_url = "payments/" | append: documentation_section %}
+{% endif %}
+
+{{ top_h }} Transaction
 
 The `transaction` resource contains the generic details of a transaction on a
 specific payment.
@@ -55,21 +67,14 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
-| Property                 | Type      | Description                                                                                                                                                                                                  |
-| :----------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `payment`                | `string`  | The relative URI of the payment this transaction belongs to.                                                                                                                                                 |
-| `transaction`            | `object`  | The transaction object.                                                                                                                                                                                      |
-| └➔&nbsp;`id`             | `string`  | The relative URI of the current `transaction` resource.                                                                                                                                                      |
-| └➔&nbsp;`created`        | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
-| └➔&nbsp;`updated`        | `string`  | The ISO-8601 date and time of when the transaction was updated.                                                                                                                                              |
-| └➔&nbsp;`type`           | `string`  | Indicates the transaction type.                                                                                                                                                                              |
-| └➔&nbsp;`state`          | `string`  | `Initialized`, `Completed` or `Failed`. Indicates the state of the transaction.                                                                                                                              |
-| └➔&nbsp;`number`         | `string`  | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead. |
-| └➔&nbsp;`amount`         | `integer` | {% include field-description-amount.md %}                                                                                                                                                                    |
-| └➔&nbsp;`vatAmount`      | `integer` | {% include field-description-vatamount.md %}                                                                                                                                                                 |
-| └➔&nbsp;`description`    | `string`  | {% include field-description-description.md documentation_section=documentation_section %}                                                                                                                   |
-| └➔&nbsp;`payeeReference` | `string`  | {% include field-description-payee-reference.md documentation_section=documentation_section describe_receipt=true %}                                                                                         |
-| └➔&nbsp;`failedReason`   | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
-| └➔&nbsp;`isOperational`  | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
-| └➔&nbsp;`operations`     | `array`   | The array of operations that are possible to perform on the transaction in its current state.                                                                                                                |
+{{ sub_h }} Transaction Problems
+
+In the event that a transaction is `failed`, the `transaction` response will
+contain a `problem` property as seen in the example below. To view all the
+problems that can occur due to an unsuccesful transaction, head over to the
+[problems section](/{{ this_documentation_url }}/other-features#problems).
+
+{% include transaction-response.md
+    documentation_section=documentation_section
+    api_resource=api_resource
+    transaction="transaction" %}

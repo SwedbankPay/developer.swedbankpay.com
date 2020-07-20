@@ -1,6 +1,6 @@
+{% assign documentation_section = include.documentation_section %}
 {% assign api_resource = include.api_resource  | default: "paymentorders" %}
 {% assign transaction = include.transaction | default: "capture" %}
-{% assign documentation_section = include.documentation_section %}
 
 {% if transaction == "cancel" %}
     {% assign plural = "cancellations" %}
@@ -26,7 +26,18 @@ Content-Type: application/json
         "receiptReference": "AH12355", {% endif %}
         "id": "/psp/{{ api_resource  }}/payments/{{ page.payment_id }}/{{ plural }}",
         "{{ transaction }}List": [{
-            "id": "/psp/{{ api_resource  }}/payments/{{ page.payment_id }}/{{ plural }}/{{ page.transaction_id }}",
+            "id": "/psp/{{ api_resource  }}/payments/{{ page.payment_id }}/{{ plural }}/{{ page.transaction_id }}",{% if api_resource=="swish" %}
+            "swishPaymentReference": "8D0A30A7804E40479F88FFBA26111F04",
+            "swishStatus": "PAID",{% endif %}{% if transaction=="authorization" %}
+            "consumer": {
+                    "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/consumer"
+                },
+                "legalAddress": {
+                    "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/legaladdress"
+                },
+                "billingAddress": {
+                    "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/billingaddress"
+                },{% endif %}
             "transaction": {
                 "id": "/psp/{{ api_resource  }}/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
                 "created": "2016-09-14T01:01:01.01Z",
@@ -38,9 +49,20 @@ Content-Type: application/json
                 "vatAmount": 250,
                 "description": "Test transaction",
                 "payeeReference": "AH123456",
-                "failedReason": "",
                 "isOperational": false,
-                "operations": []
+                "operations": [{% if transaction=="authorization" %}
+                       {
+                            "method": "POST",
+                            "href": "{{ page.api_url }}/psp/{{ api_resource }}/payments/{{ page.payment_id }}/authorizations",
+                            "rel": "create-authorization",
+                            "contentType": "application/json"
+                        },
+                        {
+                            "href": "{{ page.api_url }}/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
+                            "rel": "edit-authorization",
+                            "method": "PATCH"
+                        }
+                {% endif %}]
             }
         }]
     }
@@ -66,6 +88,5 @@ Content-Type: application/json
 | └─➔&nbsp;`description`            | `string`  | {% include field-description-description.md documentation_section=documentation_section %}                                                                                                                   |
 | └─➔&nbsp;`payeeReference`         | `string`  | {% include field-description-payee-reference.md documentation_section=documentation_section describe_receipt=true %}                                                                                         | {% if api_resource == "invoice" %} |
 | └─➔&nbsp;`receiptReference`       | `string`  | A unique reference for the transaction. This reference is used as an invoice/receipt number.                                                                                                                 | {% endif %}                        |
-| └─➔&nbsp;`failedReason`           | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | └─➔&nbsp;`isOperational`          | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
 | └─➔&nbsp;`operations`             | `array`   | The array of operations that are possible to perform on the transaction in its current state.                                                                                                                |

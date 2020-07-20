@@ -68,6 +68,8 @@ when="at the 3-D Secure verification for credit card payments" full_reference=tr
 
 {% include payment-link.md %}
 
+{% include transactions.md api_resource="creditcard" documentation_section="card" %}
+
 {% include card-authorization-transaction.md %}
 
 {% include payee-info.md api_resource="creditcard" documentation_section="card" %}
@@ -97,9 +99,7 @@ completing the payment.
 
 {% include settlement-reconciliation.md documentation_section="card" %}
 
-{% include common-problem-types.md %}
-
-{% include card-problem-messages.md %}
+{% include problems/problems.md documentation_section="card" %}
 
 {% include seamless-view-events.md api_resource="creditcard" %}
 
