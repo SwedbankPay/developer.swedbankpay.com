@@ -98,7 +98,7 @@ directly.
 **Request**
 
 ```http
-POST /psp/creditcard/payments/{{ page.payment_id }}/authorizations HTTP/1.1
+POST /psp/creditcard/confined/payments/{{ page.payment_id }}/authorizations HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -227,7 +227,7 @@ authentication. See the request and response examples below.
 **Request**
 
 ```http
-POST /psp/creditcard/payments/{{ page.payment_id }}/authorizations HTTP/1.1
+POST /psp/creditcard/confined/payments/{{ page.payment_id }}/authorizations HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
