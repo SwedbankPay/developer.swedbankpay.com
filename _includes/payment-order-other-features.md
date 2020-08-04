@@ -148,13 +148,28 @@ the [Payment Resources][payment-resource] section.
 
 ## Instrument Mode
 
-In "Instrument Mode" the Payment Menu will display only one specific payment
-instrument instead of all configured on your merchant account. The Payment Order
-resource works just like it otherwise would, allowing you to remain largely
-indifferent to the payment instrument in use.
-
 The Payment Menu is switched to "Instrument Mode" by providing the request field
 `instrument` as described in the abbreviated example below.
+
+If you do not want to use SwedbankPay PaymentMenu or do have multiple payment 
+providers on your site we strongly recommend that you implement the 
+Instrument Mode functionality. To use this feature you will need to add a 
+specific parameter on the request. This will enable you to enforce the 
+SwedbankPay PaymentMenu to only render in single instrument mode. So even if 
+SwedbankPay is set up to provide more than one instrument you will be able to 
+let it only show one at a time.
+
+It is important to use this feature if you need to build your own menu. 
+In this case you should use the Instrument parameter to enforce what instrument 
+to show. Lets say that you have an agreement with SwedbankPay for both Creditcard
+and Swish/Vipps processing. When the consumer choose to pay with either of 
+these instruments you should add the Instrument parameter with the specific 
+instrument. If the consumer later changes their mind and choose the other 
+instrument you can make a call to SwedbankPay to change the instrument on the 
+active payment. This is important because we do not let you generate multiple 
+payments with the same `orderReference`. So to ensure that you can still use the 
+same `orderReference` you should only make one payment for a purchase and instead 
+change the instrument to reflect what the consumer has chosen in your menu.
 
 {:.code-header}
 **Request**
