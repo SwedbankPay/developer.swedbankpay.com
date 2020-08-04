@@ -260,6 +260,12 @@ Content-Type: application/json
             "method": "GET",
             "contentType": "application/javascript"
         }
+        {
+            "rel": "direct-authorization",
+            "href": ""{{ page.front_end_url }}/creditcard/payments/{{ page.payment_token }}/authorizations",
+            "method": "POST",
+            "contentType": "application/json"
+        }
     ]
 }
 ```
