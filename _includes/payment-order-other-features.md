@@ -231,6 +231,55 @@ Content-Type: application/json
 }
 ```
 
+{% if include.documentation_section == "payment-menu" %}
+
+## Payer Aware PaymentMenu
+
+If you want to let your consumers have the best possible experience, you should
+implement the Payer Aware PaymentMenu. To do so you will need to identify each 
+consumer with a unique identifier. It is important that you enforce a good 
+SCA strategy. The consumer identifier must then be sent with the creation of the
+payment to SwedbankPay. This will enable SwedbankPay to render an unique payment 
+menu experience for each consumer. It will also help the possibility to get a 
+frictionless purchase.
+
+You can also let your consumers be able to store payment information for later 
+easy payments. To enable this feature you will need to set the 
+`generatePaymentToken` value to `true`. This will enable the SwedbankPay payment 
+menu to show stored payment details for this consumer when they later do 
+purchases and chose to store this information. The default is to ask the 
+consumer if they want to store their payment details, so even if you told 
+SwedbankPay to `generatePaymentToken` it is up to the consumer if they want to 
+do this.
+
+There can be times where you want to enforce your consumers to generate a 
+`paymentToken`. To enforce this you will need to set
+`disableStoredPaymentDetails` to `true`. This will turn off all stored payment 
+details for this purchase. The consumer will also not be asked if they want to 
+store the payment detail that will be part of the purchase. When you use this 
+feature it is important that you in advance have asked the consumer if it is ok 
+to store their payment details for later use.
+
+Most often you will use the `disableStoredPaymentDetails` when you combine this 
+feature with the Instrument Mode capability. If you build your own menu and want
+to show stored payment details in your own menu you will need to set the 
+`disableStoredPaymentDetails` to `true`. It is important that you then store 
+the `paymentToken` in your system or call SwedbankPay with the `payerReference`
+to get all active `paymentToken` registered on that consumer when building your
+menu.
+
+Not all payment instruments provided by SwedbankPay support Payer Awareness 
+today. So only the supported instruments will support this features.
+
+Remember that you will have the responsibility to enforce GDPR requirements and 
+let the consumer remove active paymentTokens when they want. It is up to you how
+to implement this functionality on your site but SwedbankPay will have the 
+API needed for you to ensure that cleaning up old data is easy. It is possible 
+to query for all active PaymentTokens registered on a specific `payerReference`.
+Then you can either remove all tokens on that consumer or only a subset of all tokens.
+
+{% endif %}
+
 ## Operations
 
 When a payment order resource is created and during its lifetime, it will have
