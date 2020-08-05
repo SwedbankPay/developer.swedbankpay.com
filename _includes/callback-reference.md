@@ -47,8 +47,8 @@ three example scenarios of why this is important:
 ```js
 {
     "paymentOrder": {
-        "id": "/psp/paymentorders/{{ page.payment_order_id }}",
-        "instrument": "{{ api_resource }}"
+        "id": "/psp/<payment instrument>/{{ page.payment_order_id }}",
+        "instrument": "<payment instrument>"
     },
     "payment": {
         "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
@@ -68,11 +68,11 @@ three example scenarios of why this is important:
 ```js
 {
     "payment": {
-        "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
+        "id": "/psp/<payment instrument>/payments/{{ page.payment_id }}",
         "number": 222222222
     },
     "transaction": {
-        "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/<transaction type>/{{ page.transaction_id }}",
+        "id": "/psp/<payment instrument>/payments/{{ page.payment_id }}/<transaction type>/{{ page.transaction_id }}",
         "number": 333333333
     }
 }
@@ -83,7 +83,8 @@ three example scenarios of why this is important:
 {:.table .table-striped}
 | Parameter            | Description                                                |
 | :------------------- | :--------------------------------------------------------- |
-| `<transaction type>` | `authorizations`, `captures`, `cancellations`, `reversals` |
+| `<transaction type>` | `authorizations`, `captures`, `cancellations`,`reversals` |
+| `<payment instrument>` | `creditcard`, `invoice`, `swish`, `vipps`,`mobilepay`, `callback` |
 
 The sequence diagram below shows the HTTP `POST` you will receive from Swedbank
 Pay, and the two `GET` requests that you make to get the updated status.
