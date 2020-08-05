@@ -243,15 +243,6 @@ Vipps.
 | 99999997      | User not Registered with Vipps                                  |
 | 99999998      | Merchant not available or active                                |
 
-Since there is no user dialog when testing Vipps in external integration, the
-following mobile numbers can be used to simulate consumer action/behaviour in
-Vipps application.
-
-{:.table .table-striped}
-| Mobile number | Simulation                                                                        |
-| :------------ | :-------------------------------------------------------------------------------- |
-| 99999990      | Timeout, i.e. the consumer does not confirm the payment in the Vipps app in time. |
-| 99999989      | Cancellation by consumer in app.                                                  |
 
 ## Swish Test Data
 
