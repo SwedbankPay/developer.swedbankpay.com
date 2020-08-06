@@ -8,7 +8,7 @@
 
 {% capture body %}
 It is mandatory to set a [`callbackUrl`]({{
-callback_href }}) in the `POST` request creating the payment. If `callbackUrl`
+callback_href }}) in the `POST` request creating the payment. When `callbackUrl`
 is set, Swedbank Pay will send a `POST` request to this URL when the consumer
 has fulfilled the payment. Upon receiving this `POST` request, a subsequent
 `GET` request towards the `id` of the payment generated initially must be made
