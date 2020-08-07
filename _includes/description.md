@@ -57,7 +57,7 @@ Content-Type: application/json
                 "vatAmount": 0
             }
         ],
-        "description": "test purchase - orderNumber28749347",{% if documentation_section == "payment_menu" %}
+        "description": "Test - Reference1583419461",{% if documentation_section == "payment_menu" %}
         "generatePaymentToken": false,{% endif %}
         "generateRecurrenceToken": false,
         "userAgent": "Mozilla/5.0...",
