@@ -68,7 +68,7 @@ Content-Type: application/json
         },
         "transactions": {
             "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/transactions"
-        }{% unless api_resource == "swish" %},
+        }{% unless api_resource == "swish" or api_resource == "trustly" %},
         "authorizations": {
             "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/authorizations"
         }{% endunless %},
@@ -77,10 +77,10 @@ Content-Type: application/json
         },
         "reversals": {
             "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/reversals"
-        },
+        },{% unless api_resource == "trustly" %}
         "cancellations": {
             "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/cancellations"
-        }
+        }{% endunless %}
     },
     "operations": [ {%- case api_resource -%}
     {%- when "swish" -%}
@@ -174,7 +174,6 @@ for the given operation.
 | `update-payment-abort`   | `abort`s the payment order before any financial transactions are performed.                                               |
 | `redirect-authorization` | Contains the URI that is used to redirect the consumer to the Swedbank Pay Payments containing the card authorization UI. |
 | `create-capture`         | Creates a `capture` transaction in order to charge the reserved funds from the consumer.                                  |
-| `create-cancellation`    | Creates a `cancellation` transaction that cancels a created, but not yet captured payment.                                |
 | `paid-payment`           | Returns the information about a payment that has the status `paid`.                                                       |
 | `failed-payment`         | Returns the information about a payment that has the status `failed`.                                                     |
 | `view-sales`             | Contains the URI of the JavaScript used to create a Seamless View iframe directly for the `sale` transaction without redirecting the consumer to a separate payment page. |

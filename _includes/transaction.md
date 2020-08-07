@@ -53,7 +53,7 @@ Content-Type: application/json
         "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
         "created": "2016-09-14T01:01:01.01Z",
         "updated": "2016-09-14T01:01:01.03Z",
-        "type": "Capture",
+        "type": {% if documentation_section == "trustly" %} "Sale", {% else %} "Capture", {% endif %}
         "state": "Initialized",
         "number": 1234567890,
         "amount": 1000,

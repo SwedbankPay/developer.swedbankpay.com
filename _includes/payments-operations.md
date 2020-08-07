@@ -45,7 +45,7 @@ Content-Type: application/json
     "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/paid",
     "number": 1234567890,
     "transaction": {
-      "id": "/psp{{ api_resource }}/payments/{{ page.payment_id }}/transactions/{{ site.transaction_id }}",
+      "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/transactions/{{ site.transaction_id }}",
       "number" : 1234567891
     },
     "payeeReference": "CD123",
@@ -187,7 +187,7 @@ Content-Type: application/json
        "type": "{{ page.api_url }}/psp/errordetail/{{ api_resource }}/acquirererror",
        "title": "Operation failed",
        "status": 403,
-       "detail": "Unable to complete Authorization transaction, look at problem node!",
+       "detail": {% if documentation_section == "trustly" %} "Unable to complete operation, error calling 3rd party", {% else %} "Unable to complete Authorization transaction, look at problem node!", {% endif %}
        "problems": [
         {
           "name": "ExternalResponse",
