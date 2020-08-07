@@ -66,6 +66,7 @@ Content-Type: application/json
         "language": "sv-SE",
         "urls": {
             "completeUrl": "https://example.com/payment-completed",
+            "hostUrl": "https://example.com",
             "cancelUrl": "https://example.com/payment-canceled",
             "callbackUrl": "https://example.com/payment-callback",
             "logoUrl": "https://example.com/logo.png",

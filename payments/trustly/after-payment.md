@@ -114,48 +114,6 @@ sequenceDiagram
     deactivate SwedbankPay
 ```
 
-## Cancellations
-
-The `cancellations` resource lists the cancellation transactions on a
-specific payment.
-
-{:.code-header}
-**Request**
-
-```http
-GET /psp/trustly/payments/{{ page.payment_id }}/cancellations HTTP/1.1
-Host: {{ page.api_host }}
-Authorization: Bearer <AccessToken>
-Content-Type: application/json
-```
-
-{% include transaction-list-response.md api_resource="trustly"
-documentation_section="vipps" transaction="cancel" %}
-
-## Create cancellation transaction
-
-A payment may be cancelled if the operation `create-cancellation` is available.
-
-{:.code-header}
-**Request**
-
-```http
-POST /psp/trustly/payments/{{ page.payment_id }}/cancellations HTTP/1.1
-Host: {{ page.api_host }}
-Authorization: Bearer <AccessToken>
-Content-Type: application/json
-
-{
-    "transaction": {
-        "payeeReference": "testabc",
-        "description" : "description for transaction"
-    }
-}
-```
-
-{% include transaction-response.md api_resource="trustly"
-documentation_section="trustly" transaction="cancel" %}
-
 {% include iterator.html prev_href="seamless-view" prev_title="Back: Seamless View"
 next_href="other-features" next_title="Next: Other Features" %}
 
