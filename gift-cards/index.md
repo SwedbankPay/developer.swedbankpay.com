@@ -34,9 +34,7 @@ For implementation of the Gift Cards API, please read through the following
 documentation:
 
 *   [Test Client][test-client]
-*   [Swagger][swagger]
 *   [Operations][operations]
 
 [operations]: /gift-cards/operations
-[swagger]: https://stage-evc.payex.com/payment-api/swagger-ui.html
 [test-client]: /gift-cards/payment-client

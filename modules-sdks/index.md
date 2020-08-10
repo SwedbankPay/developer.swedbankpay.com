@@ -91,4 +91,4 @@ to solve one or a set of specific problems.
 
 [woocommerce]: https://woocommerce.com/
 [magento]: https://magento.com/
-[bjerkio-swedbank-pay-js]: https://github.com/bjerkio/swedbank-pay-js
+[bjerkio-swedbank-pay-js]: https://github.com/SwedbankPay/swedbank-pay-sdk-js
