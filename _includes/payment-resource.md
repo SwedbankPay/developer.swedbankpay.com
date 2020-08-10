@@ -92,7 +92,6 @@ Content-Type: application/json
         {% include api-operation.md api_resource=api_resource operation="create-sale" href_tail="sales" %},
         {% include api-operation.md api_resource=api_resource operation="redirect-sale" %},
         {% include api-operation.md api_resource=api_resource operation="view-sales" %},
-        {% include api-operation.md api_resource=api_resource operation="redirect-authorization" %},
         {%- when "invoice" -%}
         {% include api-operation.md api_resource=api_resource operation="create-authorization" href_tail="operation=authorize" %},
         {% include api-operation.md api_resource=api_resource operation="view-authorization" href_tail="operation=authorize" %},
@@ -172,7 +171,6 @@ for the given operation.
 | Operation                | Description                                                                                                               |
 | :----------------------- | :------------------------------------------------------------------------------------------------------------------------ |
 | `update-payment-abort`   | `abort`s the payment order before any financial transactions are performed.                                               |
-| `redirect-authorization` | Contains the URI that is used to redirect the consumer to the Swedbank Pay Payments containing the card authorization UI. |
 | `create-capture`         | Creates a `capture` transaction in order to charge the reserved funds from the consumer.                                  |
 | `paid-payment`           | Returns the information about a payment that has the status `paid`.                                                       |
 | `failed-payment`         | Returns the information about a payment that has the status `failed`.                                                     |
