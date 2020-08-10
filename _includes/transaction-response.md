@@ -37,7 +37,7 @@ Content-Type: application/json
         "acquirerTransactionTime": "2017-08-29T13:42:18Z",
         "authenticationStatus": "Y",{% endif %}
         "itemDescriptions": {
-            "id": "/psp/{{ api_resource }}/payments/{{ page.payemnt_id }}/transactions/{{ page.transaction_id }}/itemDescriptions"
+            "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}/itemDescriptions"
         },
         "transaction": {
             "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
