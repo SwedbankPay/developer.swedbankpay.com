@@ -137,7 +137,7 @@ Content-Type: application/json
         "intent": "Authorization",
         "state": "Ready",
         "currency": "DKK",
-        "amount": 3000,
+        "amount": 0,
         "description": "Test Purchase",
         "payerReference": "AB1234",
         "initiatingSystemUserAgent": "PostmanRuntime/7.2.0",

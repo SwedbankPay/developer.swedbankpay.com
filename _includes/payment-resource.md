@@ -92,7 +92,7 @@ Content-Type: application/json
         {% include api-operation.md api_resource=api_resource operation="create-sale" href_tail="sales" %},
         {% include api-operation.md api_resource=api_resource operation="redirect-sale" %},
         {% include api-operation.md api_resource=api_resource operation="view-sales" %},
-        {% include api-operation.md api_resource=api_resource operation="redirect-authorization" %}, 
+        {% include api-operation.md api_resource=api_resource operation="redirect-authorization" %},
         {%- when "invoice" -%}
         {% include api-operation.md api_resource=api_resource operation="create-authorization" href_tail="operation=authorize" %},
         {% include api-operation.md api_resource=api_resource operation="view-authorization" href_tail="operation=authorize" %},
@@ -191,8 +191,6 @@ for the given operation.
 | `create-cancellation`    | Creates a `cancellation` transaction that cancels a created, but not yet captured payment.                                |
 | `paid-payment`           | Returns the information about a payment that has the status `paid`.                                                       |
 | `failed-payment`         | Returns the information about a payment that has the status `failed`.                                                     |
-
-
 
 {% else %}
 

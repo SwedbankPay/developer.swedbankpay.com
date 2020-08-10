@@ -67,7 +67,7 @@ Content-Type: application/json
         "prices": [
             {
                 "type": "Invoice",
-                "amount": 4201,
+                "amount": 1500,
                 "vatAmount": 0
             }
         ],
