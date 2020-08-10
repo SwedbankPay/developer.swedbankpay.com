@@ -1,24 +1,13 @@
 ---
-title: Swedbank Pay Payment Menu – Payment Order
-sidebar:
-  navigation:
-  - title: Payment Menu
-    items:
-    - url: /payment-menu/
-      title: Introduction
-    - url: /payment-menu/payment-order
-      title: Payment Order
-    - url: /payment-menu/capture
-      title: Capture
-    - url: /payment-menu/after-payment
-      title: After Payment
-    - url: /payment-menu/other-features
-      title: Other Features
+title: Payment Order
+estimated_read: 15
+description: |
+  **Payment Order** lets the payer complete their purchase.
+menu_order: 300
+hide_from_sidebar: true
 ---
 
 {% assign view_payment_order_javascript_url = "{{ page.front_end_url }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token={{ page.payment_token }}&culture=sv-SE"%}
-
-{% include jumbotron.html body="**Payment Order** lets the payer complete their purchase." %}
 
 ## Step 1: Create Payment Order
 
@@ -27,19 +16,21 @@ order to create a Payment Order.
 
 {% include alert-risk-indicator.md %}
 
+{% include alert-gdpr-disclaimer.md %}
+
 {% include payment-url.md payment_order=true
 when="selecting the payment instrument Vipps or in the 3-D Secure verification
 for Credit Card Payments" %}
 
 ### Request
 
-{% include payment-order-purchase.md documentation_section="payment-menu" %}
+{% include payment-order-purchase.md %}
 
 ### Response
 
 The response back should look something like this (abbreviated for brevity):
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http
@@ -74,7 +65,7 @@ in your system to look up status on the completed payment later.
 
 {% include alert.html type="informative" icon="info" header="URL Storage"
 body="The `id` of the Payment Order should be stored for later retrieval. [Read
-more about URL usage](/home/technical-information#uri-usage)." %}
+more about URL usage](/introduction#uri-usage)." %}
 
 Then find the `view-paymentorder` operation and embed its `href` in a `<script>`
 element. That script will then load the Seamless View for the Payment Menu. We
@@ -97,7 +88,7 @@ to do a JavaScript-based integration below.
 
 First the minimum HTML required to initialize the Payment Menu:
 
-{:.code-header}
+{:.code-view-header}
 **HTML**
 
 ```html
@@ -117,7 +108,7 @@ First the minimum HTML required to initialize the Payment Menu:
 What happens inside `<Your-JavaScript-File>` should look something alike the
 following:
 
-{:.code-header}
+{:.code-view-header}
 **JavaScript**
 
 ```js
@@ -181,8 +172,8 @@ order.
 Below, you will see a complete overview of the payment menu process.
 Notice that there are two ways of performing the payment:
 
-*   Consumer perform payment **out** of `iframe`.
-*   Consumer perform payment **within** `iframe`.
+*   Payer performs payment **out** of `iframe`.
+*   Payer performs payment **within** `iframe`.
 
 {% include alert.html type="informative" icon="info" body="
 Note that in this diagram, the Payer refers to the merchant front-end
@@ -205,19 +196,19 @@ rect rgba(138, 205, 195, 0.1)
             deactivate SwedbankPay
             Merchant -->>- Payer: Display Payment Menu on Merchant Page
             activate Payer
-            Payer ->> Payer: Initiate Payment Menu Hosted View (open iframe)
+            Payer ->> Payer: Initiate Payment Menu Seamless View (open iframe)
             Payer -->>+ SwedbankPay: Show Payment UI page in iframe
             deactivate Payer
             SwedbankPay ->>+ Payer: Do payment logic
             deactivate SwedbankPay
 
-                opt Consumer perform payment out of iFrame
+                opt Payer perform payment out of iFrame
                     Payer ->> Payer: Redirect to 3rd party
                     Payer ->>+ 3rdParty: Redirect to 3rdPartyUrl URL
                     deactivate Payer
                     3rdParty -->>+ Payer: Redirect back to paymentUrl (merchant)
                     deactivate 3rdParty
-                    Payer ->> Payer: Initiate Payment Menu Hosted View (open iframe)
+                    Payer ->> Payer: Initiate Payment Menu Seamless View (open iframe)
                     Payer ->>+ SwedbankPay: Show Payment UI page in iframe
                     deactivate Payer
                     SwedbankPay ->> Payer: Do payment logic
@@ -274,9 +265,9 @@ rect rgba(138, 205, 195, 0.1)
 ```
 
 {% include iterator.html prev_href="index"
-                         prev_title="Back: Introduction"
+                         prev_title="Introduction"
                          next_href="capture"
-                         next_title="Next: Capture" %}
+                         next_title="Capture" %}
 
 [guest-payment-menu-image]: /assets/img/checkout/guest-payment-menu-450x850.png
 [login-payment-menu-image]: /assets/img/checkout/logged-in-payment-menu-450x900.png

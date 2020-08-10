@@ -1,19 +1,8 @@
 ---
-title: Gift Cards – Introduction
-sidebar:
-  navigation:
-  - title: Gift Cards
-    items:
-    - url: /gift-cards/
-      title: Introduction
-    - url: /gift-cards/operations
-      title: Operations
-    - url: /gift-cards/security
-      title: Security
-    - url: /gift-cards/payment-client
-      title: Test Client
-    - url: /gift-cards/other-features
-      title: Other Features
+section: Gift Cards
+title: Introduction
+estimated_read: 1
+menu_order: 500
 ---
 
 ## Overview
@@ -34,9 +23,10 @@ For implementation of the Gift Cards API, please read through the following
 documentation:
 
 *   [Test Client][test-client]
-*   [Swagger][swagger]
 *   [Operations][operations]
 
+{% include iterator.html next_href="operations"
+                         next_title="Operations" %}
+
 [operations]: /gift-cards/operations
-[swagger]: https://stage-evc.payex.com/payment-api/swagger-ui.html
-[test-client]: /gift-cards/payment-client
+[test-client]: /gift-cards/test-client

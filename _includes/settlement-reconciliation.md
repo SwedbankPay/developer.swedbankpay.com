@@ -1,4 +1,6 @@
-{% assign api_resource = include.api_resource | default: "creditcard" %}
+{% capture api_resource %}{% include api-resource.md %}{% endcapture %}
+{% capture documentation_section %}{% include documentation-section.md %}{% endcapture %}
+{% assign operation_title = include.operation_title %}
 
 ## Settlement and Reconciliation
 
@@ -23,7 +25,7 @@ inquiries regarding this.
 ### Settlement
 
 There are two main alternatives for settlement - either we handle the settlement
-process for you, or you handle the process yourself :
+process for you, or you handle the process yourself:
 
 #### Swedbank Pay handles the settlement process
 
@@ -32,7 +34,7 @@ Swedbank Pay handles the settlement process on your behalf, (_called
 
 ##### Swedbank Pay Checkout
 
-When choosing [Swedbank Pay Checkout][payex-checkout] we always handle the
+When choosing [Swedbank Pay Checkout][checkout] we always handle the
 settlement process for you, gathering all your eCommerce payments in one place.
 Straighforward and time efficient.
 
@@ -84,12 +86,11 @@ Solutions AB) that the merchant has the contract with, and the balance report
 number. The header fields contain a summary of the transactions displayed in the
 body.
 
-{:.code-header}
 **Header fields**
 
 {:.table .table-striped}
 | Field         | Type       | Description                                                                |
-|:--------------|:-----------|:---------------------------------------------------------------------------|
+| :------------ | :--------- | :------------------------------------------------------------------------- |
 | `Prefix`      | `String`   | The `Prefix` used for transactions, only eligible if merchant uses prefix. |
 | Currency      | `ISO 4217` | Settlement currency (e.g. `SEK, NOK, EUR`).                                |
 | `ServiceType` | `String`   | The service type of the service used (e.g. `Creditcard`).                  |
@@ -100,12 +101,11 @@ body.
 | `FromDate`    | `ISO 8601` | The earlistest transaction date, `YYYY-MM-DD`.                             |
 | `ToDate`      | `ISO 8601` | The latest transaction date, `YYYY-MM-DD`.                                 |
 
-{:.code-header}
 **Body fields**
 
 {:.table .table-striped}
 | Field                           | Type       | Description                                                                                                                                               |
-|:--------------------------------|:-----------|:----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| :------------------------------ | :--------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Swedbank Pay Batch Number`     | `Decimal`  | A batch number common to all types of transactions processed by Swedbank Pay.                                                                             |
 | `Transaction Number`            | `Decimal`  | A unique identifier of the transaction, can be traced in Swedbank Pay Admin user interface.                                                               |
 | `Order id`                      | `String`   | A unique identifier of the order, as sent from the merchant to Swedbank Pay. Transactions that are related to the same order are associated with this ID. |
@@ -167,7 +167,7 @@ In the input data for making a capture, you will set the `payeeReference`. The
 unique value of this field is the same as the field called `OrderID` in the
 reconciliation file.
 
-```js
+```json
 {
     "transaction": {
         "amount": 1500,
@@ -182,7 +182,7 @@ When you receive the response from Swedbank Pay, the response will include
 `transaction.number`. This is the same as the field called `TransactionNo` in
 the reconciliation file.
 
-```js
+```json
 {
     "payment": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
     "capture": {
@@ -211,6 +211,16 @@ the reconciliation file.
 *   `capture.transaction.number` returned from Swedbank Pay is equal to
     `TransactionNo` in reconciliation file.
 
+Below you will see the API mapping tables to the fields in the settlement
+report for {% if documentation_section == "swish" %}`Sale` {% else %} `Capture` {% endif %} and `Reversal`.
+
+{% if documentation_section == "swish" %}
+{% include pba-tables.md operation_title="sale" %}
+{% else %}
+{% include pba-tables.md operation_title="capture" %}
+{% endif %}
+{% include pba-tables.md operation_title="reversal" %}
+
 ### Samples
 
 The content of the files depends on the type of agreement you have made with
@@ -233,43 +243,42 @@ downloaded below.
 
 ### Split Settlement
 
-The prefix split is the easy way of doing settlements for companies with
-multiple sub merchants. With only a few easy steps, you can make the settlement
-process more efficient with regards to invoicing, payouts and setup for both
+The split settlement feature is the easy way of doing settlements for companies
+with multiple sub merchants. With a few easy steps, the settlement process
+becomes more efficient with regards to invoicing, payouts and setup for both
 your sub merchants and yourself.
 
 In short, it is a settlement feature where a company with a website or an app
-can attach specific prefix numbers to sub merchants selling their goods or
-services through the company. The prefix number is used to match the
-transactions and the merchant, so the settlement is automatically split between
-the sub merchants. If you run a site selling tickets to concerts, theatres,
-sporting events etc., each venue gets its own prefix number. If you run a
-funeral home, the sub merchants can be everything from flower delivery to
+can attach specific subsite numbers to sub merchants selling their goods or
+services through the company. The subsite number is used to match the
+transactions with the correct sub merchant, so the settlement is automatically
+split between them. If you run a site selling tickets to concerts, theatres,
+sporting events etc., each venue gets its own subsite number. If you run a
+funeral home, the sub merchants can be everything from flower shops to
 charities.
 
 #### What we need from you as a company
 
-*   Send us a KYC form for each sub merchant you want to include.
-    We will also do a KYC check on your sub merchants, providing extra security
-    for you.
-*   Give every sub merchant who sells goods/services at your website or in your
-    app a unique prefix number. This needs to be included in the KYC form you
-    send to us.
-    We recommend using the same customer number they have in your system.
-*   Attach the prefix number to all the goods/services the sub merchant
+*   Submit a KYC (Know Your Costumer) form for each sub merchant you want to
+    include. We will also do a KYC check on your sub merchants, providing extra
+    security for you.
+*   Give every sub merchant who sells goods/services through your website or in
+    your app a unique subsite number. This must be included in the KYC form. We
+    recommend using the same customer number they have in your system.
+*   Attach the subsite number to all the goods/services the sub merchant
     sells through your website or app, so the goods/services can be matched
     to the correct merchant in our back office system.
-*   A partner agreement is needed for the automatic deduction of revenue cuts
+*   A partner agreement is needed for automatic deduction of revenue cuts
     and fees.
 
 #### How it works
 
-1.  We set up the sub merchant prefix in our systems.
-2.  The prefix number is added in the subsite field in the API call when you
+1.  We set up the sub merchant subsite number in our systems.
+2.  That number is added in the requests subsite field in when you
     create the payment for the goods or service.
 3.  The customer selects payment instrument and completes the payment.
 4.  The payment goes into the client funds account.
-5.  Swedbank Pay matches the transaction and the merchant using the prefix
+5.  Swedbank Pay matches the transaction and the merchant using the subsite
     number.
 6.  The settlement is split and connected to the correct merchant.
 7.  Revenue cuts for the super merchant and fees from Swedbank Pay are deducted
@@ -278,21 +287,22 @@ charities.
 
 #### The upsides
 
-*   Since the sub merchants are connected to Swedbank Pay through the super
-    merchant instead of having separate setups, this means that you:
-*   Only need one agreement for credit card, Vipps, Swish,
-    MobilePay, invoice and payment gateway.
-*   Only need one acquiring agreement.
-*   Only need one Vipps/Swish certificate.
-*   Can add more payment instruments easily, as it only has to be done once.
-*   Can set up new sub merchants quickly, as the only thing needed is a KYC
-    form and a prefix number. This shortens the setup time for both you and us
+Sub merchants being connected to Swedbank Pay through the super merchant
+instead of having separate setups has a lot of pros:
+
+*   You only need one agreement for each payment instrument (credit card, Vipps,
+    Swish, MobilePay Online, invoice) and payment gateway.
+*   You only need one acquiring agreement.
+*   You only one Vipps or Swish certificate.
+*   You can add more payment instruments easily, as it only has to be done once.
+*   New sub merchants can be set up quickly, as the only thing needed is a KYC
+    form and a subsite number. This shortens the setup time for both you and us
     to a matter of hours.
 *   The automatic settlement split and deduction of fees and revenue cuts
     minimizes the work for your accounting department, as you do not have to
     invoice your sub merchants.
-*   The prefix split is available with all the payment instruments we offer on our
-    eCom platform.
+*   The subsite split is available for all the payment instruments we offer on
+    our eCom platform.
 
 #### Good to know
 
@@ -308,13 +318,14 @@ normal flow.
 ##### Reversals
 
 In cases where you need to do reversals, this will be performed by the super
-merchant. The reversal amount will be charged from the sub merchants prefix. If
-the sub merchants balance is 0 (zero), the super merchant will be invoiced. The
-super merchant will in turn have to invoice this amount to the sub merchant.
+merchant. The reversal amount will be charged from the sub merchants subsite
+number. If the sub merchants balance is 0 (zero), the super merchant will be
+invoiced. The super merchant will in turn have to invoice this amount to the sub
+merchant.
 
-[payex-checkout]: /checkout
 [attachement-1]: /assets/documents/testredovisning-payexcheckout.pdf
 [balance-report-sbp-pdf]: /assets/documents/r1234-0001-redov.service.pdf
+[checkout]: /checkout/
 [trans-list-sbp-xlsx]: /assets/documents/transaktionsstatistik-redovisningsservice.xlsx
 [trans-list-sbp-xml]: /assets/documents/transaktionsstatistik-redovisningsservice.xml
 [balance-report-pdf]: /assets/documents/balance-report.pdf

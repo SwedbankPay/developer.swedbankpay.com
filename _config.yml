@@ -4,7 +4,6 @@ exclude: ["Gemfile*", "Rakefile", ".elasticsearch-data"]
 plugins:
   - "jekyll-github-metadata"
   - jemoji
-  - jekyll-remote-theme
   - jekyll-material-icon-tag
   - "kramdown-plantuml"
   - searchyll
@@ -14,7 +13,10 @@ kramdown:
   syntax_highlighter_opts:
     guess_lang: true
     default_lang: html
-    css_class: 'highlight'
+    css_class: "code-view"
+    code_class: "code-view-code"
+    table_class: "code-view-table"
+    gutter_class: "code-view-numbers"
     block:
       line_numbers: true
       start_line: 1
@@ -26,7 +28,7 @@ opengraph:
   image: /assets/img/swedbank-pay-developer-portal.png
 design_guide:
   base_url: https://design.swedbankpay.com
-  version: 4.6.1
+  version: 5.0.1
 search:
   enabled: true
   url: /search
@@ -63,4 +65,7 @@ elasticsearch:
   number_of_shards: 1               # Optional. Default is 1 primary shard.
   number_of_replicas: 1             # Optional. Default is 1 replica.
   index_name: "developer"           # Optional. Default is "jekyll".
+  default_type: "post"              # Optional. Default type is "post".
+  environments:
+    - 'production'
   default_type: "post"              # Optional. Default type is "post".

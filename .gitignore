@@ -13,3 +13,5 @@ vendor/
 *.generated*
 commit-msg.txt
 *.generated*
+.gemrc
+.gem/credentials

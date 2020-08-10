@@ -1,5 +1,3 @@
-{% assign documentation_section = include.documentation_section %}
-
 ## Operations
 
 Most payment instruments are two-phase payments –
@@ -19,7 +17,7 @@ capture or cancel. For a full list of the available operations, see the
 To identify the operations that are available we need to do a `GET` request
 against the URI of `paymentorder.id`:
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -31,7 +29,7 @@ The (abbreviated) response containing an `updateorder`, `capture`,
 `cancellation`, and `reversal` operation should look similar to the response
 below:
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http
@@ -39,7 +37,7 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "paymentOrder": {
+    "paymentorder": {
         "id": "/psp/paymentorders/{{ page.payment_order_id }}"
     },
     "operations": [
@@ -80,13 +78,13 @@ Content-Type: application/json
 
 ## Cancel
 
-{% include payment-order-cancel.md documentation_section=documentation_section %}
+{% include payment-order-cancel.md %}
 
 ## Reversal
 
-{% include payment-order-reversal.md documentation_section=documentation_section %}
+{% include payment-order-reversal.md %}
 
 {% include alert.html type="informative" icon="info" body=" Note that all of the
 operations `Cancel`, `Capture` and `Reversal` must be implemented." %}
 
-[payment-order-operations]: /checkout/other-features#operations
+[payment-order-operations]: /checkout/features/technical-reference/payment-order-operations

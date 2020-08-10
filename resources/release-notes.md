@@ -1,37 +1,154 @@
 ---
 title: Release Notes
-sidebar:
-  navigation:
-  - title: Resources
-    items:
-    - url: /resources/
-      title: Introduction
-    - url: /resources/sdk-modules
-      title: SDKs and Modules
-    - url: /resources/test-data
-      title: Test Data
-    - url: /resources/demoshop
-      title: Demoshop
-    - url: /resources/development-guidelines
-      title: Open Source Development Guidelines
-    - url: /resources/release-notes
-      title: Release Notes
-    - url: /resources/terminology
-      title: Terminology
-    - url: /resources/data-protection
-      title: Data Protection
-    - url: /resources/public-migration-key
-      title: Public Migration Key
+estimated_read: 10
+description: |
+  The latest updates about our releases will be
+  published on this page.
 ---
-
-{% include jumbotron.html body="The latest updates about our releases will be
-published on this page." %}
 
 {% include alert.html type="informative" icon="info" header="Version numbers"
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
 
-## May 2020
+
+## 28 Jan 2021
+
+### Version 2.1.2
+
+* Updated Theme version to 1.9.9
+* Updated Design Guide Version to 5.0.1
+
+## 26 Jan 2021
+
+### Version 2.1.0
+
+* Updated theme with visual fixes
+* Search icon is now clickable
+* Various bug fixes
+* Various corrections and typo fixes
+* Re-worded [split settlement][split-settlement]
+* Clarified that [callback][callback] is a fail-safe
+* Updated tables and code examples with payerReference in various places, like [card purchase][card-purchase]
+* Updated Mobile SDK configurations for both [iOS][ios-configuration] and [Android][android-configuration] to include integration with custom backends
+* Updated GitHub references for Mobile SDK
+* Re-wrote [Prices][prices] section
+
+## 01 Dec 2020
+
+### Version 2.0.2
+
+* Various bug fixes
+* Various corrections and typo fixes
+* Corrected information about [3D-Secure][card-3ds-info]
+* Added paragraphs about different consumer flows in [Checkin][Checkin]
+* Added link to gift card on the [front page][frontpage]
+
+## 12 Nov 2020
+
+### Version 2.0.1
+
+* Added section for [MobilePay Seamless View][mobilepay-seamless-view]
+* Split [MobilePay Capture][mobilepay-capture] to a separate page
+* Code examples for digital products added in [Checkin][Checkin]
+
+## 11 Nov 2020
+
+### Version 2.0.0
+
+Launched new developer portal theme:
+*   New design
+*   New menu structure
+*   Reading time
+
+Other changes:
+*   Added GDPR disclaimer.
+*   Added custom 404 page.
+*   Added section about [Transaction on File][transaction-on-file]
+*   Added Seamless View for [Trustly][trustly-payments].
+*   Added documentation about payment and transaction states. See [Card Other Features][card-transaction-states] for example.
+*   Added event override warning for Seamless View Events, see [Card Seamless View Events][card-seamless-view] for example.
+*   Added section regarding [MOTO][moto-payment-card] in Card Other Features.
+*   Deleted Merchant Identified Payer in [Checkout][checkout].
+*   Renamed Merchant Authenticated Consumer to
+    [Delegated Strong Consumer Authentication][dsca].
+*   Updated `payer`/`consumer`/`end-user` naming for most sections.
+*   Updated expiry date for test cards in [test data][test-data].
+*   Updated [callback][checkout-callback] documentation.
+*   Updated regex pattern for `orderItems.class`.
+
+
+## 04 Sep 2020
+
+### Version 1.13.3
+
+*   Added documentation on deprecated operations in [Checkout][checkout-payment-order-purchase].
+*   Updated `instrument` description in [Checkout][checkout].
+*   Updated `payeeReference` description.
+*   Clarified `msisdn` and `shoplogoUrl` in [MobilePay Online Payments][mobile-pay].
+*   Updated [Test data][test-data] in [Resources][resources].
+*   Documented problems in [Trustly Payments][trustly-payments].
+*   Added an alert for two-phase payments in Capture pages.
+
+## 28 Aug 2020
+
+### Version 1.13.2
+
+*   Added description on `metadata` for all payment instruments.
+*   Updated files in [Settlement & Reconciliation][settlement-reconcilitation].
+*   Added information on token deletion in [Card Payments][card] and [Invoice Payments][invoice].
+*   Updated the documentation on `paymentRestrictedToAgeLimit` and
+    `paymentRestrictedToSocialSecurityNumber` in [Swish Payments][swish].
+*   Added documentation on guest checkout in [Checkout][checkout].
+*   Updated information about `logourl` in [Checkout][checkout].
+*   Added a list of accepted banks in [Trustly Payments][trustly-payments].
+*   Updated the `UpdateOrder` description in [Checkout][checkout].
+
+## 21 Aug 2020
+
+### Version 1.13.1
+
+*   Removed documentation for [Trustly Payments][trustly-payments] Seamless View.
+*   Updated `reOrderPurchaseIndicator` description.
+*   Updated [Other Features][trustly-other-features] in [Trustly Payments][trustly-payments].
+*   Updated [Test Data][test-data] for Vipps Payments.
+*   Added updated documentation on the `transaction` operation.
+
+## 17 Jul 2020
+
+### Version 1.13.0
+
+*   Added documentation on Mobile SDK in [Modules & SDKs][modules-sdks] section.
+*   Added tables for mapping API fields to settlement files in
+    [Settlement and Reconciliation][settlement-reconcilitation].
+
+## 10 Jul 2020
+
+### Version 1.12.1
+
+*   Corrected the documentation by removing `generatePaymentToken` and
+    `paymentToken` from [Checkout][checkout].
+
+## 07 Jul 2020
+
+### Version 1.12.0
+
+*   Added information on 3-D Secure 2 for [Checkout][checkout-3ds2] and
+    [Card Payments][card-3ds2].
+*   Updated reconciliation files in [Settlement &
+    Reconciliation][settlement-reconcilitation].
+*   Added test card for Forbrugsforeningen in [Test data][test-data].
+*   Documented `paid`, `failed` and `aborted` across all resources.
+*   Added additional information on `payerReference`, `generateRecurrenceToken`,
+    `paymentToken`, `generatePaymentToken`, `recurrenceToken` and
+    `instrument` for the `paymentorder` resource in [Checkout][checkout].
+*   Corrected and updated `view-` operations for all resources.
+*   Updated [Seamless View Events][seamless-view-events-card] for all resources.
+*   Described `nonPaymentToken` and `externalNonPaymentToken` in
+    [Card Payments][card].
+*   Small corrections to [Swish Payments][swish] documentation.
+*   Clarified the [`updateOrder`][update-order-checkout] documentation.
+
+## 04 Jun 2020
 
 ### Version 1.11.1
 
@@ -41,16 +158,22 @@ this very documentation, not to a version of any APIs described by it." %}
     Seamless View][card-seamless-view] sequence diagrams.
 *   Added [Abort][swish-abort] in [Swish Payments][swish].
 
+## 29 May 2020
+
 ### Version 1.11.0
 
 *   Added a new [Trustly Payments][trustly-payments] section.
 *   Added information about [Storing URIs][storing-uri] in the [Technical
     Information][home-technical-information] section.
 
+## 22 May 2020
+
 ### Version 1.10.1
 
 *   Updated [Swish Redirect][swish-redirect] requests.
 *   Added `orderReference` information in Payment Order Callback in [Checkout Other features][checkout-callback].
+
+## 14 May 2020
 
 ### Version 1.10.0
 
@@ -58,9 +181,11 @@ this very documentation, not to a version of any APIs described by it." %}
 *   Added a new section [Co-badge Card Choice for Dankort][co-badge-card] in
     [Card Payments][card-payment-url].
 
+## 07 May 2020
+
 ### Version 1.9.2
 
-*   Corrected table in [payments page][payments]
+*   Corrected table in [payments page][payments].
 
 ### Version 1.9.1
 
@@ -71,7 +196,7 @@ this very documentation, not to a version of any APIs described by it." %}
 *   The `language` field is now better described for all requests it's present in.
 *   All broken links should now be unbroken.
 
-## April 2020
+## 22 Apr 2020
 
 ### Version 1.9.0
 
@@ -82,13 +207,15 @@ this very documentation, not to a version of any APIs described by it." %}
 *   Flags now also sport a new look: {% flag no %} {% flag se %} {% flag dk %}
     {% flag fi %} {% flag lt %} {% flag lv %} {% flag ee %}
 
+## 15 Apr 2020
+
 ### Version 1.8.3
 
 *   Bug fixes to Mermaid diagram and alert styling, plus improvements to code
     block styling after the update to [Swedbank Pay Design Guide][design-guide]
     4.5.0.
-*   Added examples with screenshots of the effects of [Merchant Authenticated
-    Consumer][mac-checkout].
+*   Added examples with screenshots of the effects of [Delegated Strong Consumer
+    Authentication][dsca-checkout].
 
 ### Version 1.8.2
 
@@ -100,9 +227,9 @@ this very documentation, not to a version of any APIs described by it." %}
 *   Updated [Card Payments Direct][card-direct] to have a correct integration
     flow.
 *   Updated the [main page][frontpage] to be more welcoming.
-*   Updated information on [Merchant Authenticated Consumer][mac-checkout].
+*   Updated information on [Delegated Strong Consumer Authentication][dsca-checkout].
 
-## March 2020
+## 31 Mar 2020
 
 ### Version 1.8.1
 
@@ -117,6 +244,8 @@ this very documentation, not to a version of any APIs described by it." %}
 *   Updated `payeeReference` to have an unique description for Payment Order and
     every Payment Instrument.
 
+## 18 Mar 2020
+
 ### Version 1.8.0
 
 *   Updated [Invoice Payments Direct][invoice-direct] where
@@ -128,10 +257,14 @@ this very documentation, not to a version of any APIs described by it." %}
 
 This change contains build updates for the page. :octocat:
 
+## 04 Mar 2020
+
 ### Version 1.7.6
 
 *   Several links has been corrected. The chance of 404 is now much lower.
 *   Other small text changes and clarifications.
+
+## 03 Mar 2020
 
 ### Version 1.7.5
 
@@ -142,12 +275,13 @@ This change contains build updates for the page. :octocat:
 *   Swish error code reference got a face lift, check it out
     [here][swish-api-errors] :candy:.
 
-## February 2020
 
 ### Version 1.7.4
 
 *   Described the M-Commerce flow for [Swish Direct][swish-direct-mcom].
 *   Alphabetize the terms in [Terminology][terminology].
+
+## 27 Feb 2020
 
 ### Version 1.7.3
 
@@ -160,6 +294,8 @@ This change contains build updates for the page. :octocat:
 *   Mobile Pay Online was previously only refered to as Mobile Pay, this has been
     corrected.
 
+## 7 Feb 2020
+
 ### Version 1.7.2
 
 *   Removed several duplicate headers in other-features pages.
@@ -168,11 +304,13 @@ This change contains build updates for the page. :octocat:
 *   We have added card logos when selecting card in payment menu.
     See [updated screenshot of payment menu][checkout-payment-menu-frontend].
 
+## 6 Feb 2020
+
 ### Version 1.7.1
 
 All sections have been released. :trophy:
 
-### Version 1.7
+### Version 1.7.0
 
 *   README is updated with info about includes.
 *   Added  several includes.
@@ -189,7 +327,7 @@ All sections have been released. :trophy:
     [Swish Seamless View][swish-seamless-view]. Properties added in `Swish`.
 *   Added section about migration key in Resources section.
 
-## January 2020
+## 29 Jan 2020
 
 ### Version 1.6.3
 
@@ -210,18 +348,22 @@ All sections have been released. :trophy:
 *   `cardholder` added to [Card Payments Purchase requests][card-purchase].
 *   Various improvements and fixes.
 
-### Version 1.6
+## 27 Jan 2020
+
+### Version 1.6.0
 
 *   [Credit Payments][credit] (née "Credit Account") sections have been deleted
     from the Swedbank Pay Developer Portal.
 *   The [Swish Payments][swish] and [Vipps Payments][vipps] have received a few
     updates and are now ready for another round of review.
-*   [MobilePay Payments][mobile-pay] is now ready for review.
+*   [MobilePay Online Payments][mobile-pay] is now ready for review.
 *   `paymentAgeLimit` is now added in [Swish Payments][swish].
 *   The [Terminology page][terminology] is updated and _3-D Secure 2.0 (3DS2)_   ,
     _PSD2_   and _SCA_   explanations are added.
 *   Added descriptions for Payment States And Transaction States everywhere appropriate.
 *   Google Analytics has been added to Developer Portal.
+
+## 16 Jan 2020
 
 ### Version 1.5
 
@@ -231,9 +373,11 @@ All sections have been released. :trophy:
     to release.
 *   The [Swish Payments][swish] and [Vipps Payments][vipps] sections are ready for
     review.
-*   The Direct Debit, [MobilePay Payments][mobile-pay] and
+*   The Direct Debit, [MobilePay Online Payments][mobile-pay] and
     [Credit Payments][credit] (née "Credit Account") sections have received a few
     updates, inching them all closer to review.
+
+## 09 Jan 2020
 
 ### Version 1.4
 
@@ -250,7 +394,7 @@ All sections have been released. :trophy:
 *   Added description for the `onBillingDetailsAvailable` event in the
     [Checkin Front End section][checkout-checkin-front-end].
 
-## December 2019
+## 22 Dec 2019
 
 ### Update in checkin module
 
@@ -262,21 +406,21 @@ specify supported countries for shipment in a new input parameter,
 Updated API specification can be found [here][initiate-consumer-session].
 The parameters `language` and `shippingAddressRestrictedToCountryCodes` have replaced the former `consumerCountryCode`.
 
-The parameters `msisdn` and `email` have been made obsolete due to GDPR rules. This information cannot be sent in without an explicit consent from the consumer.
+The parameters `msisdn` and `email` have been made obsolete due to GDPR rules. This information cannot be sent in without the explicit consent of the payer.
 
 {% comment %}
 TODO: Release this when the Swish Redirect section is released with the correct screenshot. Change the link below when this is ready.
 
 ### Improved purchase experience in Swish
 
-We now show the flag connected to the origin of the phone number the consumer
+We now show the flag connected to the origin of the phone number the payer
 uses in Swish during payment. See updated screenshot of payment pages in [[Swish
 ecom
 redirect>>doc:Main.ecommerce.payex-payment-instruments.swish-payments.swish-e-commerce-redirect.WebHome]]
 model.
 {% endcomment %}
 
-## November 2019
+## 01 Nov 2019
 
 ### Welcome, Swedbank Pay Developer Portal
 
@@ -297,7 +441,7 @@ In redirect flow this is supported without any changes in your integration. But
 a configuration on your swish agreement needs to be updated. Contact our support
 in order to activate this.
 
-If you use our hosted view-solution we have added the URL field called
+If you use our seamless view-solution we have added the URL field called
 paymentUrl (previously added for CreditCard, Vipps and Payment Order), that will
 be used when the user is returned from the Swish application. See further
 information regarding paymentUrl at: [[PaymentUrl in
@@ -308,7 +452,7 @@ CreditCard>>doc:Main.ecommerce.release-information.WebHome||anchor="HPaymentUrlC
 
 We have added support for sending in international phone numbers in the request.
 Check our Swish documentation [here][swish-other-features].
-This is supported in API, and when consumer enters their phone number on the
+This is supported in API, and when payer's enter their phone number on the
 payment page.
 
 ### Order Items
@@ -328,7 +472,7 @@ updated documentation
 [[here>>doc:Main.ecommerce.technical-reference.payment-orders-resource.WebHome]]
 {% endcomment %}
 
-## October 2019
+## 01 Oct 2019
 
 ### Payment Url Credit Card
 
@@ -343,11 +487,11 @@ must be able to invoke the same JavaScript URL from the same Payment as the one
 that initiated the payment originally, so it should include some sort of state
 identifier in the URL. The state identifier is the ID of the order, shopping
 cart or similar that has the URL of the Payment stored. When the JavaScript is
-invoked after return of the consumer, the consumer will either be redirected to
+invoked after return of the payer, he or she will either be redirected to
 the `completeUrl` (event onPaymentCompleted) or if payment has failed, see an
 error-message and get the option to retry the payment.
 
-## August 2019
+## 01 Aug 2019
 
 ### Order Items in payment orders
 
@@ -360,22 +504,21 @@ removed from all requests as the two cannot be used simultaneously.
 
 ### Payment Url
 
-For our Seamless Views (currently
-[Vipps][vipps-payment-url]
-or in [Checkout][checkout-payment-url]),
-we have added a new URL field called `paymentUrl` that will be used when
-user is returned from 3rd party. The URL should represent the page of where the
-payment hosted view was hosted originally, such as the checkout page, shopping
-cart page, or similar. Basically, `paymentUrl` should be set to the same URL
-as that of the page where the JavaScript for the hosted payment view was added
-to in order to initiate the payment. Please note that the `paymentUrl` must be
-able to invoke the same JavaScript URL from the same Payment or Payment Order as
-the one that initiated the payment originally, so it should include some sort of
-state identifier in the URL. The state identifier is the ID of the order,
-shopping cart or similar that has the URL of the Payment or Payment Order
-stored. When the JavaScript is invoked after return of the consumer, the
-consumer will either be redirected to the `completeUrl`, or, if payment failed,
-see an error-message, and get the option to retry the payment.
+For our Seamless Views (currently [Vipps][vipps-payment-url] or in
+[Checkout][checkout-payment-url]), we have added a new URL field called
+`paymentUrl` that will be used when user is returned from 3rd party. The URL
+should represent the page of where the payment seamless view was hosted
+originally, such as the checkout page, shopping cart page, or similar.
+Basically, `paymentUrl` should be set to the same URL as that of the page where
+the JavaScript for the hosted payment view was added to in order to initiate the
+payment. Please note that the `paymentUrl` must be able to invoke the same
+JavaScript URL from the same Payment or Payment Order as the one that initiated
+the payment originally, so it should include some sort of state identifier in
+the URL. The state identifier is the ID of the order, shopping cart or similar
+that has the URL of the Payment or Payment Order stored. When the JavaScript is
+invoked after return of the payer, he or she will either be redirected to the
+`completeUrl`, or, if payment failed, see an error message and get the option
+to retry the payment.
 
 If `paymentUrl` is not implemented, retry of payments will not be possible in
 either individual payment instruments such as
@@ -386,51 +529,71 @@ creation of the payment or payment order needs to be performed again. With
 paymentUrl in place, the retry process becomes much more convenient for both the
 integration and the payer.
 
-[card-direct]: /payments/card/direct
-[card-payment-url]: /payments/card/other-features#payment-url
-[card-purchase]: /payments/card/redirect#step-1-create-a-purchase
-[card-unscheduled-purchase]: /payments/card/other-features#unscheduled-purchase
-[card]: /payments/card
-[card-redirect]: /payments/card/redirect
-[card-seamless-view]: /payments/card/seamless-view
+[android-configuration]: /modules-sdks/mobile-sdk/configuration#android
+[callback]: /payment-instruments/card/other-features#callback
+[card-direct]: /payment-instruments/card/direct
+[card-payment-url]: /payment-instruments/card/other-features#payment-url
+[card-purchase]: /payment-instruments/card/redirect#step-1-create-a-purchase
+[card-unscheduled-purchase]: /payment-instruments/card/other-features#unscheduled-purchase
+[card-transaction-states]: /payment-instruments/card/other-features#payment-and-transaction-states
+[card]: /payment-instruments/card
+[card-3ds-info]: /payment-instruments/card#purchase-flow
+[card-3ds2]: /payment-instruments/card/other-features#3-d-secure-2
+[card-redirect]: /payment-instruments/card/redirect
+[card-seamless-view]: /payment-instruments/card/seamless-view
+[checkin]: /checkout/checkin
 [checkout-capture]: /checkout/capture
-[checkout-checkin-front-end]: /checkout/checkin#step-1-initiate-session-for-consumer-identification
+[checkout-checkin-front-end]:/checkout/checkin#step-1-initiate-session-for-consumer-identification
 [checkout-payment-menu-frontend]: /checkout/checkin#step-2-display-swedbank-pay-checkin-module
 [checkout-payment-order-purchase]: /checkout/payment-menu#request
 [checkout-payment-orders]: /checkout/other-features#payment-orders
 [checkout-payment-url]: /checkout/other-features#payment-url
 [checkout]: /checkout
+[checkout-3ds2]: /checkout/other-features#3-d-secure-2
 [checkout-callback]: /checkout/other-features#callback
-[co-badge-card]: /payments/card/other-features#co-badge-card-choice-for-dankort
-[credit-card-abort]: /payments/card/after-payment#abort
-[credit]: /payments/card
+[co-badge-card]: /payment-instruments/card/other-features#co-badge-card-choice-for-dankort
+[credit-card-abort]: /payment-instruments/card/after-payment#abort
+[credit]: /payment-instruments/card
 [data-protection]: /resources/data-protection
 [design-guide]: https://design.swedbankpay.com/
+[dsca]: /checkout/other-features#delegated-strong-consumer-authentication
 [frontpage]: https://developer.swedbankpay.com/
 [gift-cards]: /gift-cards
-[home-technical-information]: /home/technical-information
+[home-technical-information]: /introduction
 [initiate-consumer-session]: /checkout/checkin#step-1-initiate-session-for-consumer-identification
-[invoice-direct]: /payments/invoice/direct
-[invoice]: /payments/invoice
-[mac-checkout]: /checkout/other-features#merchant-authenticated-consumer
-[mobile-pay]: /payments/mobile-pay
-[one-click]: /payments/card/other-features#one-click-payments
+[invoice-direct]: /payment-instruments/invoice/direct
+[invoice]: /payment-instruments/invoice
+[ios-configuration]: /modules-sdks/mobile-sdk/configuration#ios
+[dsca-checkout]: /checkout/other-features#delegated-strong-consumer-authentication
+[mobile-pay]: /payment-instruments/mobile-pay
+[mobilepay-seamless-view]: /payment-instruments/mobile-pay/seamless-view
+[mobilepay-capture]: /payment-instruments/mobile-pay/capture
+[modules-sdks]: /modules-sdks
+[moto-payment-card]: /payment-instruments/card/other-features#moto
+[one-click]: /payment-instruments/card/other-features#one-click-payments
 [payment-orders]: /checkout/other-features#creating-a-payment-order
-[payments]: /payments
-[settlement-reconcilitation]: /payments/card/other-features#settlement-and-reconciliation
-[sdk-modules]: /resources/sdk-modules
-[storing-uri]: /home/technical-information#storing-uris
-[swish-api-errors]: /payments/swish/other-features#swish-api-errors
-[swish-direct-mcom]: /payments/swish/direct#step-2b-create-m-commerce-sale-transaction
-[swish-direct]: /payments/swish/direct
-[swish-other-features]: /payments/swish/other-features
-[swish-redirect]: /payments/swish/redirect
-[swish-seamless-view]: /payments/swish/seamless-view
-[swish]: /payments/swish
-[swish-abort]: /payments/swish/after-payment#abort
+[payments]: /payment-instruments
+[prices]: /checkout/other-features#prices
+[update-order-checkout]: /checkout/other-features#update-order
+[resources]: /resources/
+[settlement-reconcilitation]: /payment-instruments/card/other-features#settlement-and-reconciliation
+[sdk-modules]: /modules-sdks
+[split-settlement]: /payment-instruments/card/other-features#split-settlement
+[storing-uri]: /introduction#storing-uris
+[swish-api-errors]: /payment-instruments/swish/other-features#problems
+[swish-direct-mcom]: /payment-instruments/swish/direct#step-2b-create-m-commerce-sale-transaction
+[swish-direct]: /payment-instruments/swish/direct
+[swish-other-features]: /payment-instruments/swish/other-features
+[swish-redirect]: /payment-instruments/swish/redirect
+[swish-seamless-view]: /payment-instruments/swish/seamless-view
+[seamless-view-events-card]: /payment-instruments/card/other-features#seamless-view-events
+[swish]: /payment-instruments/swish
+[swish-abort]: /payment-instruments/swish/after-payment#abort
 [terminology]: /resources/terminology
 [test-data]: /resources/test-data
-[trustly-payments]: /payments/trustly
-[vipps-payment-resource]: /payments/vipps/other-features#payment-resource
-[vipps-payment-url]: /payments/vipps/other-features#payment-url
-[vipps]: /payments/vipps
+[transaction-on-file]: /payment-instruments/card/other-features#transaction-on-file
+[trustly-payments]: /payment-instruments/trustly
+[trustly-other-features]: /payment-instruments/trustly/other-features
+[vipps-payment-resource]: /payment-instruments/vipps/other-features#payment-resource
+[vipps-payment-url]: /payment-instruments/vipps/other-features#payment-url
+[vipps]: /payment-instruments/vipps

@@ -1,10 +1,8 @@
-{% assign documentation_section = include.documentation_section %}
-
 If we want to cancel up to the total authorized (not captured) amount, we need
 to perform `create-paymentorder-cancel` against the accompanying `href` returned
 in the `operations` list. See the abbreviated request and response below:
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -25,13 +23,13 @@ Content-Type: application/json
 |     Required     | Field                    | Type         | Description                                                                                    |
 | :--------------: | :----------------------- | :----------- | :--------------------------------------------------------------------------------------------- |
 | {% icon check %} | `transaction`            | `object`     | The transaction object.                                                                        |
-| {% icon check %} | └➔&nbsp;`payeeReference` | `string(30)` | {% include field-description-payee-reference.md documentation_section=documentation_section %} |
+| {% icon check %} | └➔&nbsp;`payeeReference` | `string(30)` | {% include field-description-payee-reference.md %} |
 | {% icon check %} | └➔&nbsp;`description`    | `string`     | A textual description of why the transaction is cancelled.                                     |
 
 If the cancellation request succeeds, the response should be similar to the
 example below:
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http
@@ -71,6 +69,6 @@ Content-Type: application/json
 | └─➔&nbsp;`amount`         | `integer` | {% include field-description-amount.md %}                                                                                                                                                                    |
 | └─➔&nbsp;`vatAmount`      | `integer` | {% include field-description-vatamount.md %}                                                                                                                                                                 |
 | └─➔&nbsp;`description`    | `string`  | A human readable description of maximum 40 characters of the transaction.                                                                                                                                    |
-| └─➔&nbsp;`payeeReference` | `string`  | {% include field-description-payee-reference.md documentation_section=documentation_section describe_receipt=true %}                                                                                         |
+| └─➔&nbsp;`payeeReference` | `string`  | {% include field-description-payee-reference.md describe_receipt=true %}                                                                                         |
 
-[payee-reference]: /checkout/other-features#payee-reference
+[payee-reference]: /checkout/features/technical-reference/payee-reference

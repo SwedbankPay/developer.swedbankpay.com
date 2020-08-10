@@ -1,29 +1,15 @@
 ---
-title: Swedbank Pay Checkout – Checkin
-sidebar:
-  navigation:
-  - title: Checkout
-    items:
-    - url: /checkout/
-      title: Introduction
-    - url: /checkout/checkin
-      title: Checkin
-    - url: /checkout/payment-menu
-      title: Payment Menu
-    - url: /checkout/capture
-      title: Capture
-    - url: /checkout/after-payment
-      title: After Payment
-    - url: /checkout/other-features
-      title: Other Features
+title: Checkout – Checkin
+estimated_read: 8
+description: |
+  Swedbank Pay Checkout consists of two parts:
+  **Checkin** and **Payment Menu**. In the sections that follow you'll find
+  examples of the HTTP requests, responses and HTML code you will need to
+  implement in order to complete the Swedbank Pay Checkout integration. To
+  finalize Checkout you first have to Checkin. To check in, the payer needs
+  to be identified.
+menu_order: 200
 ---
-
-{% include jumbotron.html body="Swedbank Pay Checkout consists of two parts:
-**Checkin** and **Payment Menu**. In the sections that follow you'll find
-examples of the HTTP requests, responses and HTML code you will need to
-implement in order to complete the Swedbank Pay Checkout integration. To
-finalize Checkout you first have to Checkin. To check in, the payer needs to be
-identified." %}
 
 ## Step 1: Initiate session for consumer identification
 
@@ -31,7 +17,11 @@ The payer will be identified with the `consumers` resource and will be
 persisted to streamline future Payment Menu processes. Payer identification
 is done through the `initiate-consumer-session` operation.
 
-{:.code-header}
+{% include alert.html type="informative" icon="info" header="Guest Checkout"
+body="Note: If the payer is using the Payment Menu as a guest, you can go
+directly to step 3, which you will find on the next page." %}
+
+{:.code-view-header}
 **Request**
 
 ```http
@@ -43,7 +33,8 @@ Content-Type: application/json
 {
     "operation": "initiate-consumer-session",
     "language": "sv-SE",
-    "shippingAddressRestrictedToCountryCodes" : ["NO", "SE", "DK"]
+    "shippingAddressRestrictedToCountryCodes" : ["NO", "SE", "DK"],
+    "requireShippingAddress": true
 }
 ```
 
@@ -51,22 +42,20 @@ Content-Type: application/json
 |     Required     | Field                                     | Type     | Description                                                                                                                            |
 | :--------------: | :---------------------------------------- | :------- | :------------------------------------------------------------------------------------------------------------------------------------- |
 | {% icon check %} | `operation`                               | `string` | `initiate-consumer-session`, the operation to perform.                                                                                 |
-| {% icon check %} | `language`                                | `string` | Selected language to be used in Checkin. Supported values are {% include field-description-language.md api_resource="paymentorders" %} |
-| {% icon check %} | `shippingAddressRestrictedToCountryCodes` | `string` | List of supported shipping countries for merchant. Using ISO-3166 standard.                                                            |
+| {% icon check %} | `language`                                | `string` | Selected language to be used in Checkin. Supported values are {% include field-description-language.md %} |
+|                  | `shippingAddressRestrictedToCountryCodes` | `string` | List of supported shipping countries for merchant. Using [ISO-3166] standard. This is required unless `requireShippingAddress` is set to false.                                                           |
+|                  | `requireShippingAddress` | `bool` | Defaults to true. If set to false we will not collect a shipping address from the consumer.                                                            |
 
 When the request has been sent, a response containing an array of operations that can be acted upon will be returned:
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
+```jsonc
 {
     "token": "7e380fbb3196ea76cc45814c1d99d59b66db918ce2131b61f585645eff364871",
     "operations": [
-        {
+        {   // Deprecated operation. Do not use!
             "method": "GET",
             "rel": "redirect-consumer-identification",
             "href": "{{ page.front_end_url }}/consumers/sessions/7e380fbb3196ea76cc45814c1d99d59b66db918ce2131b61f585645eff364871",
@@ -114,7 +103,7 @@ operation is meant to be embedded in a `<script>` element in an HTML document.
                     environment as there is no simple way of retrieving the
                     `consumerProfileRef`."%}
 
-{:.code-header}
+{:.code-view-header}
 **HTML**
 
 ```html
@@ -140,7 +129,7 @@ In the HTML, you only need to add two `<div>` elements to place the
 check-in and payment menu inside of. The JavaScript will handle the rest when
 it comes to handling the check-in and payment menu.
 
-{:.code-header}
+{:.code-view-header}
 **JavaScript**
 
 ```js
@@ -201,10 +190,41 @@ With the scripts loading in after the entire page is loaded, we can access the
 After that has all loaded, you should see something like this:
 
 {:.text-center}
-![Consumer UI][checkin-image]{:width="564" height="293"}
+![Consumer UI Start Page][checkin-start]{:width="425" height="275"}
 
 As you can see, the payer's information is pre-filled as provided by the
-initial `POST`. With a `consumerProfileRef` safely tucked into our pocket,
+initial `POST`.
+
+From here, there are a three ways forward, depending on the consumer. If he or
+she is already registered with a profile at Swedbank Pay, the information
+already provided will be sufficient. The consumer can simply click proceed, and
+the profile will appear on the page (with sensitive data masked).
+
+If Swedbank Pay detects that the consumer hasn't registered any personal
+details, two options are provided: Store details for future purchases or proceed
+without storing details.
+
+{:.text-center}
+![Consumer UI New Consumer Options][checkin-options]{:width="425" height="475"}
+
+If he or she chooses to store details, the next step is to enter their SSN.
+
+{:.text-center}
+![Consumer UI SSN][checkin-ssn]{:width="425" height="250"}
+
+Once a valid SSN has been provided, a page for address details appears. When the
+consumer has entered their address, the profile box shown above will be
+displayed.
+
+{:.text-center}
+![Consumer UI Address][checkin-address]{:width="425" height="675"}
+
+If the consumer opts out of storing their details, they will be sent directly to
+the page for address details to enter their shipping address. This info is not
+stored for future purchases. Please note that this is **not** the same as
+shopping as a guest.
+
+With a `consumerProfileRef` safely tucked into our pocket,
 the Checkin is complete and we can move on to [Payment Menu][payment-menu].
 
 A complete overview of how the process of identifying the payer through Checkin
@@ -212,54 +232,58 @@ is illustrated in the sequence diagram below.
 
 ```mermaid
 sequenceDiagram
-    participant Payer
+    participant Consumer
     participant Merchant
     participant SwedbankPay as Swedbank Pay
 
         rect rgba(238, 112, 35, 0.05)
-            note left of Payer: Checkin
+            note left of Consumer: Checkin
 
-    Payer ->>+ Merchant: Start Checkin
+    Consumer ->>+ Merchant: Start Checkin
     Merchant ->>+ SwedbankPay: POST /psp/consumers
     deactivate Merchant
     SwedbankPay -->>+ Merchant: rel:view-consumer-identification ①
     deactivate SwedbankPay
-    Merchant -->>- Payer: Show Checkin on Merchant Page
+    Merchant -->>- Consumer: Show Checkin on Merchant Page
 
-    Payer ->>+ Payer: Initiate Consumer Hosted View (open iframe) ②
-    Payer ->>+ SwedbankPay: Show Consumer UI page in iframe ③
-    deactivate Payer
-    SwedbankPay ->>- Payer: Consumer identification process
-    activate Payer
-    Payer ->>+ SwedbankPay: Consumer identification process
-    deactivate Payer
-    SwedbankPay -->>- Payer: show consumer completed iframe
-    activate Payer
-    Payer ->> Payer: EVENT: onConsumerIdentified (consumerProfileRef) ④
-    deactivate Payer
+    Consumer ->>+ Consumer: Initiate Consumer Seamless View (open iframe) ②
+    Consumer ->>+ SwedbankPay: Show Consumer UI page in iframe ③
+    deactivate Consumer
+    SwedbankPay ->>- Consumer: Consumer identification process
+    activate Consumer
+    Consumer ->>+ SwedbankPay: Consumer identification process
+    deactivate Consumer
+    SwedbankPay -->>- Consumer: show consumer completed iframe
+    activate Consumer
+    Consumer ->> Consumer: EVENT: onConsumerIdentified (consumerProfileRef) ④
+    deactivate Consumer
     end
 ```
 
 If a browser refresh is performed after the payer has checked in, the payment
 menu must be shown even though `onConsumerIdentified` is not invoked.
 
-Additional events during Checkin  can also be implemented
-in the `configuration` object, such as `onConsumerIdentified`, `onShippingDetailsAvailable`and
-`onBillingDetailsAvailable`. Read more about these in the
-[Checkin events][checkin-events] section.
+Additional events during Checkin  can also be implemented in the `configuration`
+object, such as `onConsumerIdentified`, `onShippingDetailsAvailable`and
+`onBillingDetailsAvailable`. Read more about these in the [Checkin
+events][checkin-events] section.
 
 ### Note on consumer data
 
-During this stage some consumer data is stored.
-Read more about our [Data Protection Policy][data-protection] for details on which
-information we store and its duration.
+During this stage, some consumer data is stored. Read more about our [Data
+Protection Policy][data-protection] for details on which information we store
+and its duration.
 
 {% include iterator.html prev_href="./"
-                         prev_title="Back: Introduction"
+                         prev_title="Introduction"
                          next_href="payment-menu"
-                         next_title="Next: Payment Menu" %}
+                         next_title="Payment Menu" %}
 
-[checkin-image]: /assets/img/checkout/your-information.png
+[checkin-address]: /assets/img/checkout/checkin-address.png
+[checkin-start]: /assets/img/checkout/checkin-email-msisdn.png
+[checkin-options]: /assets/img/checkout/checkin-options.png
+[checkin-ssn]: /assets/img/checkout/checkin-ssn.png
 [checkin-events]: /checkout/other-features#checkin-events
 [data-protection]: /resources/data-protection#paymentorder-consumer-data
 [payment-menu]: payment-menu
+[iso-3166]: https://www.iso.org/iso-3166-country-codes.html

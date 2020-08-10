@@ -7,6 +7,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
+      - name: docker login
+        run: docker login https://docker.pkg.github.com -u SwedbankPay --password ${{ secrets.GITHUB_TOKEN }}
+
       - name: build
         run: |
           docker-compose run \
@@ -23,6 +27,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
+      - name: docker login
+        run: docker login https://docker.pkg.github.com -u SwedbankPay --password ${{ secrets.GITHUB_TOKEN }}
+
       - name: Verify build
         run: |
           docker-compose run \
@@ -32,7 +40,8 @@ jobs:
             --env=production \
             --verify \
             --ignore-url http://restcookbook.com/Basics/loggingin/ \
-            --ignore-url https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default
+            --ignore-url https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default \
+            --ignore-url https://zend18.zendesk.com/hc/en-us/articles/219131697-HowTo-Implement-TLS-1-2-Support-with-the-cURL-PHP-Extension-in-Zend-Server
 
       - name: Upload build output artifacts
         uses: actions/upload-artifact@v2

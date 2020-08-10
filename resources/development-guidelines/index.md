@@ -1,22 +1,8 @@
 ---
-title: Swedbank Pay Open Source Development Guidelines
-sidebar:
-  navigation:
-  - title: Swedbank Pay Development Guidelines
-    items:
-    - url: /resources/development-guidelines
-      title: Introduction
-    - url: /resources/development-guidelines/code-of-conduct
-      title: Code Of Conduct
-    - url: /resources/development-guidelines/contributing
-      title: Contributing
-    - url: /resources/development-guidelines/good-commit-practice
-      title: Good Commit Practice
-    - url: /resources/development-guidelines/license
-      title: License
+section: Open Source Development Guidelines
+title: Introduction
+estimated_read: 8
 ---
-
-## Introduction
 
 Swedbank Pay is committed to creating a vibrant community around its open
 source initiative on GitHub and will alongside its partners expose the Swedbank

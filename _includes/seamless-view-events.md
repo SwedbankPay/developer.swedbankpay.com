@@ -1,4 +1,4 @@
-{% assign api_resource = include.api_resource %}
+{% capture api_resource %}{% include api-resource.md %}{% endcapture %}
 
 {% if api_resource == "paymentorders" %}
     {% assign product="Payment Menu" %}
@@ -11,17 +11,27 @@
 During operation in the {{ product }}, several events can occur. They are
 described below.
 
+{% include alert.html type="warning" icon="info" header="Event Overrides"
+body="Adding an event
+handler to one of the following events **overrides** the default event handler,
+meaning your custom event handler will have to do what the default event handler
+did. If you don’t, the behaviour of the event is going to be undefined.
+Just adding an event handler for logging purposes is therefore not possible, the
+event handler will have to perform some functionality similar to the
+event handler you are overriding." %}
+
 ### `onPaymentPending`
+
 This events triggers when a payment enters a paying state ( `Sale`, `Authorize`,
 `Cancel`etc). The `onPaymentPending` event
-will be followed by either `onPaymentCompleted`, `onPaymentFailed` or 
+will be followed by either `onPaymentCompleted`, `onPaymentFailed` or
 `onPaymentTransactionFailed` based on the result of the payment. Read more about
-these events below. 
+these events below.
 
-{:.code-header}
-**`onPaymentPending` event object**
+{:.code-view-header}
+**onPaymentPending event object**
 
-```js
+```json
 {
     "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}"
 }
@@ -32,18 +42,16 @@ these events below.
 | :------------ | :------- | :-------------------------------------------------------------- |
 | `id`          | `string` | {% include field-description-id.md %}                           |
 
-
-
 ### `onPaymentCompleted`
 
 This event triggers when a payment has completed successfully.
 The `onPaymentCompleted` event is raised with the following event argument
 object:
 
-{:.code-header}
-**`onPaymentCompleted` event object**
+{:.code-view-header}
+**onPaymentCompleted event object**
 
-```js
+```json
 {
     "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
     "redirectUrl": "https://example.com/complete"
@@ -62,10 +70,10 @@ This event triggers when the user cancels the payment.
 The `onPaymentCanceled` event is raised with the following event argument
 object:
 
-{:.code-header}
-**`onPaymentCanceled` event object**
+{:.code-view-header}
+**onPaymentCanceled event object**
 
-```js
+```json
 {
     "id": "/psp/{{ api_resource }}payments/{{ page.payment_id }}",
     "redirectUrl": "https://example.com/canceled"
@@ -84,10 +92,10 @@ This event triggers when a payment has failed, disabling further attempts to
 perform a payment. The `onPaymentFailed` event is raised with the following
 event argument object:
 
-{:.code-header}
-**`onPaymentFailed` event object**
+{:.code-view-header}
+**onPaymentFailed event object**
 
-```js
+```json
 {
     "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
     "redirectUrl": "https://example.com/failed"
@@ -100,16 +108,16 @@ event argument object:
 | `id`          | `string` | {% include field-description-id.md %}                        |
 | `redirectUrl` | `string` | The URI the user will be redirect to after a failed payment. |
 
-### `onPaymentTermsOfService`
+### `onPaymentToS`
 
 This event triggers when the user clicks on the "Display terms and conditions"
-link. The `onPaymentTermsOfService` event is raised with the following event
+link. The `onPaymentToS` event is raised with the following event
 argument object:
 
-{:.code-header}
-**`onPaymentTermsOfService` event object**
+{:.code-view-header}
+**onPaymentToS event object**
 
-```js
+```json
 {
     "origin": "owner",
     "openUrl": "https://example.com/terms-of-service"
@@ -128,10 +136,10 @@ This event triggers during terminal errors or if the configuration fails
 validation. The `onError` event will be raised with the following event argument
 object:
 
-{:.code-header}
-**`onError` event object**
+{:.code-view-header}
+**onError event object**
 
-```js
+```json
 {
     "origin": "{{ api_resource }}",
     "messageId": "{{ page.transaction_id }}",
@@ -155,10 +163,10 @@ This event triggers when a user actively changes payment instrument in the
 Payment Menu. The `onPaymentMenuInstrumentSelected` event is raised with the
 following event argument object:
 
-{:.code-header}
-**`onPaymentMenuInstrumentSelected` event object**
+{:.code-view-header}
+**onPaymentMenuInstrumentSelected event object**
 
-```js
+```json
 {
     "name": "menu identifier",
     "instrument": "creditcard | vipps | swish | invoice",
@@ -177,10 +185,10 @@ This event triggers when a user has selected a payment instrument and actively
 attempts to perform a payment. The `onPaymentCreated` event is raised with the
 following event argument object:
 
-{:.code-header}
-**`onPaymentCreated` event object**
+{:.code-view-header}
+**onPaymentCreated event object**
 
-```js
+```json
 {
     "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
     "instrument": "creditcard",
@@ -197,14 +205,14 @@ following event argument object:
 
 This event triggers when a payment attempt fails, further attempts can be made
 for the payment. An error message will appear in the payment UI, and the
-consumer will be able to try again or choose another payment instrument. The
+payer will be able to try again or choose another payment instrument. The
 `onPaymentTransactionFailed` event is raised with the following event argument
 object:
 
-{:.code-header}
-**`onPaymentTransactionFailed` event object**
+{:.code-view-header}
+**onPaymentTransactionFailed event object**
 
-```js
+```json
 {
     "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
     "details": "[HttpCode ProblemTitle]"
@@ -223,10 +231,10 @@ This event triggers when a user is redirected to a separate web page, for
 example 3-D Secure or Bank ID signing. The `onExternalRedirect` event is raised
 with the following event argument object:
 
-{:.code-header}
-**`onExternalRedirect` event object**
+{:.code-view-header}
+**onExternalRedirect event object**
 
-```js
+```json
 {
     "redirectUrl": "https://external.example.com/"
 }
@@ -236,5 +244,11 @@ with the following event argument object:
 | Field         | Type     | Description                                                                         |
 | :------------ | :------- | :---------------------------------------------------------------------------------- |
 | `redirectUrl` | `string` | The URI the user will be redirected to when a third party requires additional data. |
+
+## Updating Payment Menu
+
+When the contents of the shopping cart changes or anything else that affects
+the amount occurs, the `paymentorder` must be updated and the Payment Menu
+must be `refresh`ed.
 
 {% endif %}
