@@ -56,7 +56,7 @@ Content-Type: application/json
             "type": "Capture",
             "state": "Completed",
             "number": 1234567890,
-            "amount": 0,
+            "amount": 1500,
             "vatAmount": 250,
             "description": "Test Capture",
             "payeeReference": "ABC123",
