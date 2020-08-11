@@ -91,7 +91,7 @@ task :test => :build do
       "https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default",
       "http://restcookbook.com/Basics/loggingin/",
     ],
-    :typhoeus_config => "{\"memoize\" = true, \"authorization\"=\"Bearer #{git_token}\"}"
+    :typhoeus_config => "{\"memoize\" : true, \"authorization\":\"Bearer #{git_token}\"}"
   }
   HTMLProofer.check_directory("./_site", options).run
 end
