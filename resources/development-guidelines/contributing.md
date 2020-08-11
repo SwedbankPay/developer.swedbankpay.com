@@ -55,7 +55,7 @@ If you choose option 3 (forking the repository), then please read on.
 *   Submit a [pull request][pull-request] for the pushed branch.
 
 [coc]: /resources/development-guidelines/code-of-conduct
-[github]: https://github.com/signup/free
+[github]: https://github.com/join
 [edit]: https://help.github.com/articles/editing-files-in-your-repository/
 [forking]: https://help.github.com/articles/fork-a-repo/
 [branching]: https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell
