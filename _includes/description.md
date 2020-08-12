@@ -49,8 +49,8 @@ Content-Type: application/json
 {
       "{{ api_resource_field_name }}": {
         "operation": "Purchase",
-        "intent": "Authorization",
-        "currency": "{{ currency }}",
+        "intent": {% if api_resource == "trustly" or api_resource == "swish" %} "Sale",{% else %} "Authorization", {% endif %}
+        "currency": "{{ currency }}",{% if api_resource == "creditcard" %}
         "prices": [{
                 "type": "CreditCard",
                 "amount": 1500,
