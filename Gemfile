@@ -17,5 +17,5 @@ gem 'jekyll-redirect-from'
 gem "kramdown", ">= 2.3.0"
 
 source "https://rubygems.pkg.github.com/swedbankpay" do
-  gem "swedbank-pay-design-guide-jekyll-theme", "1.6.1.pre.pullrequest0137.pre.0035"
+  gem "swedbank-pay-design-guide-jekyll-theme", "1.5.2.pre.conversion.pre.to.pre.gem.pre.theme013"
 end
