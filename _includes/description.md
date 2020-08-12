@@ -56,7 +56,7 @@ Content-Type: application/json
                 "amount": 1500,
                 "vatAmount": 0
             }
-        ],
+        ],{% endif %}
         "description": "Test - Reference1583419461",{% if documentation_section == "payment_menu" %}
         "generatePaymentToken": false,{% endif %}
         "generateRecurrenceToken": false,
