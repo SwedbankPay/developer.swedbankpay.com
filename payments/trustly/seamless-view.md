@@ -34,8 +34,7 @@ does not need to leave your webpage, since we are handling the payment in the
 
 ## Step 1: Create the payment
 
-A Trustly payment is a straightforward way to perform a direct-bank payment. It can be followed up by posting a cancellation or reversal
-transaction.
+A Trustly payment is a straightforward way to perform a direct-bank payment. 
 
 An example of an abbreviated `POST` request is provided below.
 Each individual field of the JSON document is described in the following section.
@@ -72,8 +71,8 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "urls": {
+            "hostUrls": "https://example.com",
             "completeUrl": "https://example.com/payment-completed",
-            "cancelUrl": "https://example.com/payment-canceled",
             "callbackUrl": "https://example.com/payment-callback",
             "logoUrl": "https://example.com/logo.png",
             "termsOfServiceUrl": "https://example.com/terms.pdf",
@@ -112,7 +111,6 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`urls`               | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                             |
 |                  | └─➔&nbsp;`hostUrl`           | `array`       | The array of URLs valid for embedding of Swedbank Pay Seamless View. If not supplied, view-operation will not be available.                                                                                                                                                                        |
 | {% icon check %} | └─➔&nbsp;`completeUrl`       | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. |
-|                  | └─➔&nbsp;`cancelUrl`         | `string`      | The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only `cancelUrl` or `paymentUrl` can be used, not both.                                                                                            |
 |                  | └─➔&nbsp;`callbackUrl`       | `string`      | The URL that Swedbank Pay will perform an HTTP `POST` against every time a transaction is created on the payment. See [callback][callback] for details.                                                                                                                                            |
 |                  | └─➔&nbsp;`logoUrl`           | `string`      | The URL that will be used for showing the customer logo. Must be a picture with maximum 50px height and 400px width. Require https.                                                                                                                                                                |
 |                  | └─➔&nbsp;`termsOfServiceUrl` | `string`      | {% include field-description-termsofserviceurl.md %}                                                                                                                                                                                                                                               |
@@ -263,8 +261,6 @@ sequenceDiagram
     activate Merchant
     note left of Merchant: First API request
     Merchant->>-SwedbankPay: POST /psp/trustly/payments
-    activate SwedbankPay
-    SwedbankPay-->>-Merchant: rel: view-authorization
     activate Merchant
     Merchant-->>-Consumer: Display all details and final price
     activate Consumer
@@ -288,15 +284,12 @@ sequenceDiagram
 next_href="after-payment" next_title="Next: After Payment" %}
 
 [after-payment]: /payments/trustly/after-payment
-[authorize]: /payments/trustly/other-features#authorizations
 [callback]: /payments/trustly/other-features#callback
-[cancel]: /payments/trustly/after-payment#cancellations
 [create-payment]: /payments/trustly/other-features#create-payment
 [financing-consumer]: /payments/trustly/other-features#financing-consumer
 [trustly-payment-embedded-view]: /assets/screenshots/trustly/consumer-information-input.png
 [payee-reference]: /payments/trustly/other-features#payee-reference
 [payment-resource]: /payments/trustly/other-features#payment-resource
-[price-resource]: /payments/trustly/other-features#prices
 [recur]: /payments/trustly/other-features#recur
 [setup-mail]: mailto:setup.ecom@PayEx.com
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
