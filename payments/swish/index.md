@@ -1,25 +1,10 @@
 ---
 title: Payments Swish
-sidebar:
-  navigation:
-  - title: Swish Payments
-    items:
-    - url: /payments/swish
-      title: Introduction
-    - url: /payments/swish/direct
-      title: Direct
-    - url: /payments/swish/redirect
-      title: Redirect
-    - url: /payments/swish/seamless-view
-      title: Seamless View
-    - url: /payments/swish/after-payment
-      title: After Payment
-    - url: /payments/swish/other-features
-      title: Other Features
+estimated_read: 30
+description: |
+  Swish is Sweden's main payment app and the
+  preferred online payment method with the highest convertion rates.
 ---
-
-{% include jumbotron.html body="Swish is Sweden's main payment app and the
-preferred online payment method with the highest convertion rates." %}
 
 Swish is the main Swedish payment app for mobile phones supported by all Swedish
 banks, making it one of the essential payment instruments for merchants

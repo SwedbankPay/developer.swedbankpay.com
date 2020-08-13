@@ -1,28 +1,13 @@
 ---
 title: Payments Swish Redirect
-sidebar:
-  navigation:
-  - title: Swish Payments
-    items:
-    - url: /payments/swish
-      title: Introduction
-    - url: /payments/swish/direct
-      title: Direct
-    - url: /payments/swish/redirect
-      title: Redirect
-    - url: /payments/swish/seamless-view
-      title: Seamless View
-    - url: /payments/swish/after-payment
-      title: After Payment
-    - url: /payments/swish/other-features
-      title: Other Features
+estimated_read: 30
+description: |
+  Swish is a one-phase payment instrument supported by the
+  major Swedish banks. **Swish Payments Redirect** is where Swedbank
+  Pay performs a payment that the payer confirms in the Swish mobile app.
+  The consumer initiates the payment by supplying the Swish registered mobile
+  number (msisdn), connected to the Swish app.
 ---
-
-{% include jumbotron.html body="Swish is a one-phase payment instrument supported by the
-major Swedish banks. **Swish Payments Redirect** is where Swedbank
-Pay performs a payment that the payer confirms in the Swish mobile app.
-The consumer initiates the payment by supplying the Swish registered mobile
-number (msisdn), connected to the Swish app." %}
 
 ## Introduction
 

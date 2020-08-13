@@ -1,28 +1,13 @@
 ---
 title: Payments Swish Seamless View
-sidebar:
-  navigation:
-  - title: Swish Payments
-    items:
-    - url: /payments/swish
-      title: Introduction
-    - url: /payments/swish/direct
-      title: Direct
-    - url: /payments/swish/redirect
-      title: Redirect
-    - url: /payments/swish/seamless-view
-      title: Seamless View
-    - url: /payments/swish/after-payment
-      title: After Payment
-    - url: /payments/swish/other-features
-      title: Other Features
+estimated_read: 30
+description: |
+  The **Seamless View** scenario gives your
+  customers the opportunity to pay with Swish directly
+  within your webshop. This gives the consumer a
+  frictionless experience as we are handling the
+  payment in the implemented `iframe` on your page.
 ---
-
-{% include jumbotron.html body="The **Seamless View** scenario gives your
-                          customers the opportunity to pay with Swish directly
-                          within your webshop. This gives the consumer a
-                          frictionless experience as we are handling the
-                          payment in the implemented `iframe` on your page" %}
 
 ## Swish Seamless View integration flow
 

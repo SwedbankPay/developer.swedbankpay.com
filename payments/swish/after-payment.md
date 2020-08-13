@@ -1,21 +1,6 @@
 ---
 title: Payments Swish After Payment
-sidebar:
-  navigation:
-  - title: Swish Payments
-    items:
-    - url: /payments/swish
-      title: Introduction
-    - url: /payments/swish/direct
-      title: Direct
-    - url: /payments/swish/redirect
-      title: Redirect
-    - url: /payments/swish/seamless-view
-      title: Seamless View
-    - url: /payments/swish/after-payment
-      title: After Payment
-    - url: /payments/swish/other-features
-      title: Other Features
+estimated_read: 30
 ---
 
 After the payment is confirmed, the consumer will be redirected from the Swish
