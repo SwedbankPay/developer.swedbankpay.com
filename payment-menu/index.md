@@ -1,25 +1,12 @@
 ---
 title: Payment Menu – Introduction
-sidebar:
-  navigation:
-  - title: Payment Menu
-    items:
-    - url: /payment-menu/
-      title: Introduction
-    - url: /payment-menu/payment-order
-      title: Payment Order
-    - url: /payment-menu/capture
-      title: Capture
-    - url: /payment-menu/after-payment
-      title: After Payment
-    - url: /payment-menu/other-features
-      title: Other Features
+estimated_read: 30
+description: |
+  The **Swedbank Pay Payment Menu** integrates
+  seamlessly into the merchant website, allowing the payer to choose between the
+  increasing number of payment instrument Swedbank Pay has on offer and
+  remembering which instrument they prefer and have paid with previously.
 ---
-
-{% include jumbotron.html body="The **Swedbank Pay Payment Menu** integrates
-seamlessly into the merchant website, allowing the payer to choose between the
-increasing number of payment instrument Swedbank Pay has on offer and
-remembering which instrument they prefer and have paid with previously." %}
 
 Swedbank Pay Payment Menu allows your customers to pay with their favorite payment
 instruments in just a few simple steps.

@@ -1,24 +1,11 @@
 ---
 title: Payment Menu – Payment Order
-sidebar:
-  navigation:
-  - title: Payment Menu
-    items:
-    - url: /payment-menu/
-      title: Introduction
-    - url: /payment-menu/payment-order
-      title: Payment Order
-    - url: /payment-menu/capture
-      title: Capture
-    - url: /payment-menu/after-payment
-      title: After Payment
-    - url: /payment-menu/other-features
-      title: Other Features
+estimated_read: 30
+description: |
+  **Payment Order** lets the payer complete their purchase.
 ---
 
 {% assign view_payment_order_javascript_url = "{{ page.front_end_url }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token={{ page.payment_token }}&culture=sv-SE"%}
-
-{% include jumbotron.html body="**Payment Order** lets the payer complete their purchase." %}
 
 ## Step 1: Create Payment Order
 
