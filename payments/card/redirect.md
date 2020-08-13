@@ -1,32 +1,14 @@
 ---
 title: Card Payments – Redirect
-sidebar:
-  navigation:
-  - title: Card Payments
-    items:
-    - url: /payments/card/
-      title: Introduction
-    - url: /payments/card/redirect
-      title: Redirect
-    - url: /payments/card/seamless-view
-      title: Seamless View
-    - url: /payments/card/direct
-      title: Direct
-    - url: /payments/card/capture
-      title: Capture
-    - url: /payments/card/mobile-card-payments
-      title: Mobile Card Payments
-    - url: /payments/card/after-payment
-      title: After Payment
-    - url: /payments/card/other-features
-      title: Other Features
+estimated_read: 30
+description: |
+  Redirect is the simplest integration that lets Swedbank Pay handle the
+  payments, while you handle your core activities.
+  When ready to pay, the consumer will be redirected to a secure Swedbank Pay
+  hosted site.
+  Finally, the consumer will be redirected back to your website after the
+  payment process.
 ---
-
-{% include jumbotron.html body="Redirect is the simplest integration that
-lets Swedbank Pay handle the payments, while
-you handle your core activities. When ready to pay, the consumer will be
-redirected to a secure Swedbank Pay hosted site. Finally, the consumer will be
-redirected back to your website after the payment process." %}
 
 When properly set up in your merchant/webshop site and the payer starts the
 purchase process, you need to make a POST request towards Swedbank Pay with

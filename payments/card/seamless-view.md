@@ -1,30 +1,11 @@
 ---
 title: Card Payments – Seamless View
-sidebar:
-  navigation:
-  - title: Card Payments
-    items:
-    - url: /payments/card/
-      title: Introduction
-    - url: /payments/card/redirect
-      title: Redirect
-    - url: /payments/card/seamless-view
-      title: Seamless View
-    - url: /payments/card/direct
-      title: Direct
-    - url: /payments/card/capture
-      title: Capture
-    - url: /payments/card/mobile-card-payments
-      title: Mobile Card Payments
-    - url: /payments/card/after-payment
-      title: After Payment
-    - url: /payments/card/other-features
-      title: Other Features
+estimated_read: 30
+description: |
+  The Seamless View purchase scenario
+  represents the opportunity to implement card payments
+  directly in your webshop.
 ---
-
-{% include jumbotron.html body="The Seamless View purchase scenario
-                          represents the opportunity to implement card payments
-                          directly in your webshop." %}
 
 ## Introduction
 

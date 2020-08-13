@@ -1,30 +1,11 @@
 ---
 title: Card Payments – Other Features
-sidebar:
-  navigation:
-  - title: Card Payments
-    items:
-    - url: /payments/card/
-      title: Introduction
-    - url: /payments/card/redirect
-      title: Redirect
-    - url: /payments/card/seamless-view
-      title: Seamless View
-    - url: /payments/card/direct
-      title: Direct
-    - url: /payments/card/capture
-      title: Capture
-    - url: /payments/card/mobile-card-payments
-      title: Mobile Card Payments
-    - url: /payments/card/after-payment
-      title: After Payment
-    - url: /payments/card/other-features
-      title: Other Features
+estimated_read: 30
+description: |
+  Welcome to Other Features - a subsection of Credit Card.
+  This section has extented code examples and features that were not
+  covered by the other subsections.
 ---
-
-{% include jumbotron.html body="Welcome to Other Features - a subsection of
-Credit Card. This section has extented code examples and features that were not
-covered by the other subsections." %}
 
 {% include payment-resource.md api_resource="creditcard"
 documentation_section="card" show_status_operations=true %}
