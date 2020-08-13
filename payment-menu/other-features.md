@@ -1,24 +1,12 @@
 ---
 title: Payment Menu – Other Features
-sidebar:
-  navigation:
-  - title: Payment Menu
-    items:
-    - url: /payment-menu/
-      title: Introduction
-    - url: /payment-menu/payment-order
-      title: Payment Order
-    - url: /payment-menu/capture
-      title: Capture
-    - url: /payment-menu/after-payment
-      title: After Payment
-    - url: /payment-menu/other-features
-      title: Other Features
+estimated_read: 30
+description: |
+  After a successful integration, it may be worth
+  investigating which **other features** are available in the Swedbank Pay 
+  Payment Menu.
+  They are listed on this very page.
 ---
-
-{% include jumbotron.html body="After a successful integration, it may be worth
-investigating which **other features** are available in the Swedbank Pay Payment Menu.
-They are listed on this very page." %}
 
 {% include payment-order-other-features.md documentation_section="payment-menu"
 operation_status_bool="true" %}
