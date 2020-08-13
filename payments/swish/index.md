@@ -1,5 +1,5 @@
 ---
-title: Swedbank Pay Payments Swish
+title: Payments Swish
 sidebar:
   navigation:
   - title: Swish Payments

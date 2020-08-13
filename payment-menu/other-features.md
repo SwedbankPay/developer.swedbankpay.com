@@ -1,5 +1,5 @@
 ---
-title: Swedbank Pay Payment Menu – Other Features
+title: Payment Menu – Other Features
 sidebar:
   navigation:
   - title: Payment Menu

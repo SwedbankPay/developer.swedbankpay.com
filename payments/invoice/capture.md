@@ -1,5 +1,5 @@
 ---
-title: Swedbank Pay Payments Invoice Capture
+title: Payments Invoice Capture
 sidebar:
   navigation:
   - title: Invoice Payments

@@ -2,7 +2,7 @@
 title: Contributing
 sidebar:
   navigation:
-  - title: Swedbank Pay Development Guidelines
+  - title: Development Guidelines
     items:
     - url: /resources/development-guidelines
       title: Introduction

@@ -1,5 +1,5 @@
 ---
-title: Swedbank Pay Invoice Payments – Seamless View
+title: Invoice Payments – Seamless View
 sidebar:
   navigation:
   - title: Invoice Payments

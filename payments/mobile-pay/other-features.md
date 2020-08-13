@@ -1,5 +1,5 @@
 ---
-title: Swedbank Pay MobilePay Online Payments – Other Features
+title: MobilePay Online Payments – Other Features
 sidebar:
   navigation:
   - title: MobilePay Online Payments

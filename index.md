@@ -1,5 +1,5 @@
 ---
-title: Swedbank Pay Developer Portal
+title: Developer Portal
 sidebar:
   navigation:
   - title: Home

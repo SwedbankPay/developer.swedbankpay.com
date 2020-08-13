@@ -1,5 +1,5 @@
 ---
-title: Swedbank Pay Card Payments – Mobile
+title: Card Payments – Mobile
 sidebar:
   navigation:
   - title: Card Payments

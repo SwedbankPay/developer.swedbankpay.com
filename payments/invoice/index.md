@@ -1,5 +1,5 @@
 ---
-title: Swedbank Pay Invoice Payments
+title: Invoice Payments
 sidebar:
   navigation:
   - title: Invoice Payments
