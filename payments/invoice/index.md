@@ -1,30 +1,12 @@
 ---
 title: Invoice Payments
-sidebar:
-  navigation:
-  - title: Invoice Payments
-    items:
-    - url: /payments/invoice
-      title: Introduction
-    - url: /payments/invoice/redirect
-      title: Redirect
-    - url: /payments/invoice/seamless-view
-      title: Seamless View
-    - url: /payments/invoice/direct
-      title: Direct
-    - url: /payments/invoice/capture
-      title: Capture
-    - url: /payments/invoice/after-payment
-      title: After Payment
-    - url: /payments/invoice/other-features
-      title: Other Features
+estimated_read: 30
+description: |
+  **Invoice Payments** is one of the easiest
+  payment service where Swedbank Pay helps improve cashflow by purchasing
+  merchant invoices. Choose between our **Direct**, **Redirect** and
+  **Seamless view** integration options.
 ---
-
-{% include jumbotron.html body="**Invoice Payments** is one of the easiest
-                                payment service where Swedbank Pay helps improve
-                                cashflow by purchasing merchant invoices. Choose
-                                between our **Direct**, **Redirect** and
-                                **Seamless view** integration options." %}
 
 {% include alert.html type="informative"
                       icon="open_in_browser"
@@ -68,9 +50,9 @@ The API requests are displayed in the purchase flow below.
 You can create an invoice payment with the following `operation`
 options:
 
-* [Financing Consumer][financing-consumer]
-* [Recur][recur]
-* [Verify][verify]
+*   [Financing Consumer][financing-consumer]
+*   [Recur][recur]
+*   [Verify][verify]
 
 Our `payment` example uses the [`FinancingConsumer`][financing-consumer]
 operation.
