@@ -1,26 +1,13 @@
 ---
 title: Payments Vipps Redirect
-sidebar:
-  navigation:
-  - title: Vipps Payments
-    items:
-    - url: /payments/vipps
-      title: Introduction
-    - url: /payments/vipps/redirect
-      title: Redirect
-    - url: /payments/vipps/seamless-view
-      title: Seamless View
-    - url: /payments/vipps/after-payment
-      title: After Payment
-    - url: /payments/vipps/other-features
-      title: Other Features
+estimated_read: 30
+description: |
+  **Vipps Payments** is a two-phase
+  payment instrument supported by the major Norwegian banks. In the redirect
+  scenario, Swedbank Pay receives a mobile number (msisdn)
+  from the payer through Swedbank Pay Payments. Swedbank Pay performs a payment
+  that the payer must confirm through the Vipps mobile app.
 ---
-
-{% include jumbotron.html body="**Vipps Payments** is a two-phase
-payment instrument supported by the major Norwegian banks. In the redirect
-scenario, Swedbank Pay receives a mobile number (msisdn)
-from the payer through Swedbank Pay Payments. Swedbank Pay performs a payment
-that the payer must confirm through the Vipps mobile app." %}
 
 ## Introduction
 

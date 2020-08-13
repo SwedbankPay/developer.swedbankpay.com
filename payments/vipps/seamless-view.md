@@ -1,26 +1,13 @@
 ---
 title: Payments Vipps Seamless View
-sidebar:
-  navigation:
-  - title: Vipps Payments
-    items:
-    - url: /payments/vipps
-      title: Introduction
-    - url: /payments/vipps/redirect
-      title: Redirect
-    - url: /payments/vipps/seamless-view
-      title: Seamless View
-    - url: /payments/vipps/after-payment
-      title: After Payment
-    - url: /payments/vipps/other-features
-      title: Other Features
+estimated_read: 30
+description: |
+  **Seamless View** scenario gives your
+  customers the opportunity to pay with Vipps directly within your webshop.
+  In the Seamless View scenario, Swedbank Pay receives a mobile number (MSISDN)
+  from the payer through Swedbank Pay Payments. Swedbank Pay performs a payment
+  that the payer must confirm through the Vipps mobile app.
 ---
-
-{% include jumbotron.html body="The **Seamless View** scenario gives your
-customers the opportunity to pay with Vipps directly within your webshop.
-In the Seamless View scenario, Swedbank Pay receives a mobile number (MSISDN)
-from the payer through Swedbank Pay Payments. Swedbank Pay performs a payment
-that the payer must confirm through the Vipps mobile app." %}
 
 ![steps of the vipps purchase flow][vipps-purchase-flow]{:width="1200px" :height="500px"}
 
