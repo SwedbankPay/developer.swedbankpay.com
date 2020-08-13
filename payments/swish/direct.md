@@ -1,30 +1,12 @@
 ---
 title: Payments Swish Direct
-sidebar:
-  navigation:
-  - title: Swish Payments
-    items:
-    - url: /payments/swish
-      title: Introduction
-    - url: /payments/swish/direct
-      title: Direct
-    - url: /payments/swish/redirect
-      title: Redirect
-    - url: /payments/swish/seamless-view
-      title: Seamless View
-    - url: /payments/swish/after-payment
-      title: After Payment
-    - url: /payments/swish/other-features
-      title: Other Features
+estimated_read: 30
+description: |
+  Swish is a one-phase payment instrument supported by the major Swedish banks.
+  In the Direct scenario, Swedbank Pay receives the Swish registered mobile 
+  number directly from the merchant UI. Swedbank Pay performs a payment that
+  the payer confirms using her Swish mobile app.
 ---
-
-{% include jumbotron.html
-                body="Swish is a one-phase payment instrument supported by the
-                major Swedish banks. In the Direct scenario,
-                Swedbank Pay receives the Swish registered mobile number
-                directly from the merchant UI. Swedbank Pay performs a
-                payment that the payer confirms using her Swish mobile
-                app." %}
 
 ## Payment Flow
 
