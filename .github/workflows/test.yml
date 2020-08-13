@@ -7,6 +7,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Add authenticaiton
+        run: |
+          FILE="~/.gem/credentials"
+
+          /bin/cat <<EOM >$FILE
+          ---
+            :github: Bearer ${{ secrets.GITHUB_TOKEN }}
+          EOM
+        with:
       - name: build
         run: |
           docker-compose run \
