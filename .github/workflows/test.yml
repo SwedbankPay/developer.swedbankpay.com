@@ -9,7 +9,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Add authenticaiton
         run: |
-          FILE=".gemrc"
+          FILE=".gem/credentials"
           touch $FILE
           echo '---' >> $FILE
           echo ':backtrace: false' >> $FILE
