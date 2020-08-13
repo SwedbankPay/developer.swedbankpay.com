@@ -1,29 +1,10 @@
 ---
 title: Release Notes
-sidebar:
-  navigation:
-  - title: Resources
-    items:
-    - url: /resources/
-      title: Introduction
-    - url: /resources/test-data
-      title: Test Data
-    - url: /resources/demoshop
-      title: Demoshop
-    - url: /resources/development-guidelines
-      title: Open Source Development Guidelines
-    - url: /resources/release-notes
-      title: Release Notes
-    - url: /resources/terminology
-      title: Terminology
-    - url: /resources/data-protection
-      title: Data Protection
-    - url: /resources/public-migration-key
-      title: Public Migration Key
+estimated_read: 30
+description: |
+  The latest updates about our releases will be
+  published on this page.
 ---
-
-{% include jumbotron.html body="The latest updates about our releases will be
-published on this page." %}
 
 {% include alert.html type="informative" icon="info" header="Version numbers"
 body="The version numbers used in headers on this page refers to the version of
