@@ -1,23 +1,9 @@
 ---
 title: Merchant Backend
-sidebar:
-  navigation:
-  - title: Mobile SDK
-    items:
-    - url: /modules-sdks/mobile-sdk/
-      title: Introduction
-    - url: /modules-sdks/mobile-sdk/merchant-backend
-      title: Merchant Backend
-    - url: /modules-sdks/mobile-sdk/merchant-backend-sample-code
-      title: Merchant Backend Sample Code
-    - url: /modules-sdks/mobile-sdk/android
-      title: Android
-    - url: /modules-sdks/mobile-sdk/ios
-      title: iOS
-    - url: /modules-sdks/mobile-sdk/process-diagrams
-      title: Process Diagrams
-    - url: /modules-sdks/mobile-sdk/plain-webview
-      title: Plain Webview
+estimated_read: 30
+description: |
+  To use the **Swedbank Pay Mobile SDK**, you must have a backend server
+  hosting the Mobile SDK API.
 ---
 
 {% capture disclaimer %}
@@ -29,8 +15,6 @@ However, if you need support, please wait for a future, stable release.
 
 {% include alert.html type="warning" icon="warning" header="Unsupported"
 body=disclaimer %}
-
-{% include jumbotron.html body="To use the **Swedbank Pay Mobile SDK**, you must have a backend server hosting the Mobile SDK API." %}
 
 The Mobile SDK Merchant Backend API contains a total of five endpoints, three of which have statically defined paths. An OpenAPI specification is [available][swagger]. (It may be easier to view it in the [Swagger Editor][swagger-editor].)
 
@@ -48,6 +32,7 @@ The root endpoint is used to discover the main API endpoints. The URL of the roo
 
 {:.code-header}
 **Request**
+
 ```http
 GET /swedbank-pay-mobile/ HTTP/1.1
 Host: example.com
@@ -68,10 +53,10 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Field                 | Type     | Description                                                                  |
-| :-------------------- | :------- | :--------------------------------------------------------------------------- |
-| `consumers`           | `string` | URL of the "consumers" endpoint. Resolved against the root endpoint URL.     |
-| `paymentorders`       | `string` | URL of the "paymentorders" endpoint. Resolved against the root endpoint URL. |
+| Field           | Type     | Description                                                                  |
+| :-------------- | :------- | :--------------------------------------------------------------------------- |
+| `consumers`     | `string` | URL of the "consumers" endpoint. Resolved against the root endpoint URL.     |
+| `paymentorders` | `string` | URL of the "paymentorders" endpoint. Resolved against the root endpoint URL. |
 
 N.B! The API as specified allows assigning endpoints to hosts other that the root endpoint host. However, as this seen to be an uncommon use case, the mobile component of the SDK is, by default, configured to only accept links to the domain of the root endpoint, or its subdomains. If your configuration uses other hosts, you must manually allow them in your mobile app's configuration.
 
@@ -179,9 +164,9 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-|     Required     | Field          | Type     | Description                                                  |
-| :--------------: | :------------- | :------- | :----------------------------------------------------------- |
-| {% icon check %} | `paymentorder` | `object` | The payment order to create                                  |
+|     Required     | Field          | Type     | Description                 |
+| :--------------: | :------------- | :------- | :-------------------------- |
+| {% icon check %} | `paymentorder` | `object` | The payment order to create |
 
 *   ① The contents of `paymentorder` are omitted here. See [Checkout Documentation][create-payment-order] for details.
 
@@ -353,11 +338,11 @@ Host: payment.url.trampoline.host
 ```
 
 {:.table .table-striped}
-|     Required     | Field      | Type      | Description                                            |
-| :--------------: | :--------- | :-------- | :----------------------------------------------------- |
-| {% icon check %} | `target`   | `string`  | The link to open when the button on the page is tapped |
-| {% icon check %} | `language` | `string`  | The language to use in the page                        |
-|                  | `app`      | `string`  | The application name to display in the page            |
+|     Required     | Field      | Type     | Description                                            |
+| :--------------: | :--------- | :------- | :----------------------------------------------------- |
+| {% icon check %} | `target`   | `string` | The link to open when the button on the page is tapped |
+| {% icon check %} | `language` | `string` | The language to use in the page                        |
+|                  | `app`      | `string` | The application name to display in the page            |
 
 {:.code-header}
 **Response**
