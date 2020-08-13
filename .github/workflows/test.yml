@@ -11,6 +11,8 @@ jobs:
         run: |
           FILE="~/.gem/credentials"
 
+          touch $FILE
+
           /bin/cat <<EOM >$FILE
           ---
             :github: Bearer ${{ secrets.GITHUB_TOKEN }}
