@@ -7,8 +7,6 @@ description: |
   suited for your business.
 ---
 
-{% include jumbotron.html body="" %}
-
 Is Card the only payment instrument you need? Go for Card only. Do you want Card
 and Invoice? Implement Card and Invoice. Want them all? Have them all. Each
 payment instrument is set up with a separate contract and integration.
