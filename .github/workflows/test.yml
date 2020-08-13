@@ -13,8 +13,6 @@ jobs:
 
           [ ! -d "~/.gem/" ] && mkdir ~/.gem/
 
-          > $FILE
-
           /bin/cat << EOF > $FILE
           ---
             :github: Bearer ${{ secrets.GITHUB_TOKEN }}
