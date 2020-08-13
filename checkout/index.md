@@ -1,29 +1,14 @@
 ---
 title: Checkout – Introduction
-sidebar:
-  navigation:
-  - title: Checkout
-    items:
-    - url: /checkout/
-      title: Introduction
-    - url: /checkout/checkin
-      title: Checkin
-    - url: /checkout/payment-menu
-      title: Payment Menu
-    - url: /checkout/capture
-      title: Capture
-    - url: /checkout/after-payment
-      title: After Payment
-    - url: /checkout/other-features
-      title: Other Features
----
-
-{% include jumbotron.html body="**Swedbank Pay Checkout** is a complete reimagination
+estimated_read: 30
+description: |
+  **Swedbank Pay Checkout** is a complete reimagination
 of the checkout experience, integrating seamlessly into the merchant website
 through highly customizable and flexible components.
 
 Visit our [demoshop](https://ecom.externalintegration.payex.com/pspdemoshop)
-and try out Swedbank Pay Checkout for yourself!" %}
+and try out Swedbank Pay Checkout for yourself!
+---
 
 Swedbank Pay Checkout allows your customers to be identified with Swedbank Pay,
 enabling existing Swedbank Pay Checkout users to pay with their favorite payment
