@@ -16,7 +16,7 @@ jobs:
           echo ':bulk_threshold: 1000' >> $FILE
           echo ':sources:' >> $FILE
           echo '- https://rubygems.org/' >> $FILE
-          echo '- https://${{ secrets.GITHUB_TOKEN }}@rubygems.pkg.github.com/swedbankpay/' >> $FILE
+          echo '- https://nullableint:${{ secrets.GITHUB_TOKEN }}@rubygems.pkg.github.com/swedbankpay/' >> $FILE
           echo ':update_sources: true' >> $FILE
           echo ':verbose: true' >> $FILE
       - name: build
