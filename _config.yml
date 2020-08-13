@@ -1,5 +1,5 @@
 repository: SwedbankPay/developer.swedbankpay.com
-remote_theme: SwedbankPay/swedbank-pay-design-guide-jekyll-theme@1.5
+theme: 'swedbank-pay-design-guide-jekyll-theme'
 exclude: ["Gemfile*", "Rakefile"]
 plugins:
   - "jekyll-github-metadata"
