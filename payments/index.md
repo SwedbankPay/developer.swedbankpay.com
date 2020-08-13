@@ -1,28 +1,13 @@
 ---
 title: Payments
-sidebar:
-  navigation:
-  - title: Payments
-    items:
-    - url: /payments/
-      title: Introduction
-    - url: /payments/card
-      title: Card Payments
-    - url: /payments/invoice
-      title: Invoice Payments
-    - url: /payments/swish
-      title: Swish Payments
-    - url: /payments/vipps
-      title: Vipps Payments
-    - url: /payments/mobile-pay
-      title: MobilePay Payments
-    - url: /payments/trustly
-      title: Trustly Payments
+estimated_read: 30
+description: |
+  Payments is our off-the-rack assortment of payment instruments.
+  You can pick and choose among them to tailor the instrument package best
+  suited for your business.
 ---
 
-{% include jumbotron.html body="Payments is our off-the-rack assortment of
-payment instruments. You can pick and choose among them to tailor the instrument
-package best suited for your business." %}
+{% include jumbotron.html body="" %}
 
 Is Card the only payment instrument you need? Go for Card only. Do you want Card
 and Invoice? Implement Card and Invoice. Want them all? Have them all. Each
@@ -104,10 +89,10 @@ distribution and send it to the consumer.
 
 The payment instruments that support two-phase payments are:
 
-* [Card][card]
-* [Invoice][invoice]
-* [MobilePay][invoice]
-* [Vipps][vipps]
+*   [Card][card]
+*   [Invoice][invoice]
+*   [MobilePay][invoice]
+*   [Vipps][vipps]
 
 ### One-Phase Payments
 
@@ -131,9 +116,9 @@ two-phase payments.
 
 The payment instruments that support one-phase payments are:
 
-* [Swish][swish]
-* [Card][card]
-* [Trustly][trustly]
+*   [Swish][swish]
+*   [Card][card]
+*   [Trustly][trustly]
 
 ## The Payment Object
 
@@ -154,6 +139,7 @@ After creating a payment, you can:
     `sale` or `autoCapture` transaction as described in the section above.
 
 Or:
+
 *   `Cancel` the authorized amount. Funds that are authorized but not yet captured,
     can be released back to the consumer. This is done by creating a cancel
     transaction. This is not available for one-phase payments.
