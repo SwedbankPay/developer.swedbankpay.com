@@ -1,19 +1,6 @@
 ---
 title: Gift Cards – Security
-sidebar:
-  navigation:
-  - title: Gift Cards
-    items:
-    - url: /gift-cards/
-      title: Introduction
-    - url: /gift-cards/operations
-      title: Operations
-    - url: /gift-cards/security
-      title: Security
-    - url: /gift-cards/payment-client
-      title: Test Client
-    - url: /gift-cards/other-features
-      title: Other Features
+estimated_read: 30
 ---
 
 ## OAuth2
@@ -220,10 +207,10 @@ function guid() {
 
 ## Security Documentation
 
-* [OAuth2][oauth2]
-* [Client Credentials][client-credentials]
-* [The RESTful CookBook: HMAC][restful-cookbook-hmac]
-* [HMAC - Wikipedia][hmac]
+*   [OAuth2][oauth2]
+*   [Client Credentials][client-credentials]
+*   [The RESTful CookBook: HMAC][restful-cookbook-hmac]
+*   [HMAC - Wikipedia][hmac]
 
 ## Test client
 
