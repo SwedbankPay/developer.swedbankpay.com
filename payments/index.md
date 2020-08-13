@@ -1,5 +1,5 @@
 ---
-title: Swedbank Pay Payments
+title: Payments
 sidebar:
   navigation:
   - title: Payments

@@ -1,5 +1,5 @@
 ---
-title: Swedbank Pay Resources
+title: Resources
 sidebar:
   navigation:
   - title: Resources

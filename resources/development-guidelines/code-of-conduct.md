@@ -1,8 +1,8 @@
 ---
-title: Swedbank Pay Code Of Conduct
+title: Code Of Conduct
 sidebar:
   navigation:
-  - title: Swedbank Pay Development Guidelines
+  - title: Development Guidelines
     items:
     - url: /resources/development-guidelines
       title: Introduction

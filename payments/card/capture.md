@@ -1,5 +1,5 @@
 ---
-title: Swedbank Pay Card Payments – Capture
+title: Card Payments – Capture
 sidebar:
   navigation:
   - title: Card Payments

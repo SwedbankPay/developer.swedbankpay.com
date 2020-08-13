@@ -1,5 +1,5 @@
 ---
-title: Swedbank Pay Payments Vipps
+title: Payments Vipps
 sidebar:
   navigation:
   - title: Vipps Payments

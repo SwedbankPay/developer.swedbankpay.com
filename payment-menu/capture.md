@@ -1,5 +1,5 @@
 ---
-title: Swedbank Pay Payment Menu – Capture
+title: Payment Menu – Capture
 sidebar:
   navigation:
   - title: Payment Menu

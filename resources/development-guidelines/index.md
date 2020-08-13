@@ -1,8 +1,8 @@
 ---
-title: Swedbank Pay Open Source Development Guidelines
+title: Open Source Development Guidelines
 sidebar:
   navigation:
-  - title: Swedbank Pay Development Guidelines
+  - title: Development Guidelines
     items:
     - url: /resources/development-guidelines
       title: Introduction

@@ -1,5 +1,5 @@
 ---
-title: Swedbank Pay Checkout – Capture
+title: Checkout – Capture
 sidebar:
   navigation:
   - title: Checkout

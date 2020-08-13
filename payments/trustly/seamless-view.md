@@ -1,5 +1,5 @@
 ---
-title: Trustly Payments – Other Features
+title: Trustly Payments – Seamless view
 sidebar:
   navigation:
   - title: Trustly Payments
@@ -8,28 +8,44 @@ sidebar:
       title: Introduction
     - url: /payments/trustly/redirect
       title: Redirect
+    - url: /payments/trustly/seamless-view
+      title: Seamless View
     - url: /payments/trustly/after-payment
       title: After Payment
     - url: /payments/trustly/other-features
       title: Other Features
 ---
 
-{% include payment-resource.md api_resource="trustly"
-documentation_section="trustly" %}
+{% include jumbotron.html body="The Seamless View scenario represents the
+                                opportunity to implement Trustly directly in
+                                your webshop." %}
 
-{% include alert-callback-url.md api_resource="trustly" %}s
+## Introduction
 
-{% include payment-transaction-states.md %}
+Seamless View provides an integration of the payment process directly on your
+website. This solution offers a smooth shopping experience with Swedbank Pay
+Payments seamlessly integrated in an `iframe` on your website. The payer
+does not need to leave your webpage, since we are handling the payment in the
+`iframe` on your website.
 
-{% include payments-operations.md api_resource="trustly" documentation_section="trustly" %}
+![screenshot of the Trustly payment window][trustly-payment-embedded-view]{:height="425px" width="700px"}
 
-## Create Payment
+{% include alert-callback-url.md api_resource="trustly" %}
 
-In Trustly Payments, you can create one type of payment and you can inspect and alter the details of the
-individual transactions within the payment.
+## Step 1: Create the payment
 
-To create a Trustly payment, you perform an HTTP `POST` against the `payments`
-resource. Trustly payments does currently only support the `Purchase` operation and `Sale` intent.
+A Trustly payment is a straightforward way to perform a direct-bank payment. It can be followed up by posting a cancellation or reversal
+transaction.
+
+An example of an abbreviated `POST` request is provided below.
+Each individual field of the JSON document is described in the following section.
+An example of an expanded `POST` request is available in [Payment resource]
+[payment-resource].
+
+When properly set up in your merchant/webshop site and the payer starts the
+payment process, you need to make a `POST` request towards Swedbank Pay with your
+payment information. This will generate a `payment` resource with a unique
+`id` URI. You will receive a **JavaScript source** in response.
 
 {:.code-header}
 **Request**
@@ -58,11 +74,9 @@ Content-Type: application/json
         "urls": {
             "completeUrl": "https://example.com/payment-completed",
             "cancelUrl": "https://example.com/payment-canceled",
-            "hostUrls": [ "https://example.com" ],
             "callbackUrl": "https://example.com/payment-callback",
             "logoUrl": "https://example.com/logo.png",
-            "termsOfServiceUrl": "https://example.com/terms.pdf",
-            "paymentUrl": "https://example.com/perform-payment"
+            "termsOfServiceUrl": "https://example.com/terms.pdf"
         },
         "payeeInfo": {
             "payeeId": "{{ page.merchant_id }}",
@@ -95,15 +109,12 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`userAgent`          | `string`      | The [`User-Agent` string][user-agent] of the consumer's web browser.                                                                                                                                                                                                                               |
 | {% icon check %} | └➔&nbsp;`language`           | `string`      | {% include field-description-language.md api_resource="trustly" %}                                                                                                                                                                                                                                 |
 | {% icon check %} | └➔&nbsp;`urls`               | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                             |
-| {% icon check %} | └─➔&nbsp;`completeUrl`       | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. 
-                                                                                            |
-| {% icon check %} | └─➔&nbsp;`cancelUrl`              | `string`      | The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios.
-                                                                                  |
 |                  | └─➔&nbsp;`hostUrl`           | `array`       | The array of URLs valid for embedding of Swedbank Pay Seamless View. If not supplied, view-operation will not be available.                                                                                                                                                                        |
+| {% icon check %} | └─➔&nbsp;`completeUrl`       | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. |
+|                  | └─➔&nbsp;`cancelUrl`         | `string`      | The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only `cancelUrl` or `paymentUrl` can be used, not both.                                                                                            |
 |                  | └─➔&nbsp;`callbackUrl`       | `string`      | The URL that Swedbank Pay will perform an HTTP `POST` against every time a transaction is created on the payment. See [callback][callback] for details.                                                                                                                                            |
 |                  | └─➔&nbsp;`logoUrl`           | `string`      | The URL that will be used for showing the customer logo. Must be a picture with maximum 50px height and 400px width. Require https.                                                                                                                                                                |
 |                  | └─➔&nbsp;`termsOfServiceUrl` | `string`      | {% include field-description-termsofserviceurl.md %}                                                                                                                                                                                                                                               |
-|                  | └─➔&nbsp;`paymentUrl`        | `string`      | The URI that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment.                                                                                                                                                 |
 | {% icon check %} | └➔&nbsp;`payeeInfo`          | `object`      | The `payeeInfo` contains information about the payee.                                                                                                                                                                                                                                              |
 | {% icon check %} | └─➔&nbsp;`payeeId`           | `string`      | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                                                                                                              |
 | {% icon check %} | └─➔&nbsp;`payeeReference`    | `string(30*)` | {% include field-description-payee-reference.md documentation_section="trustly" %}                                                                                                                                                                                                                 |
@@ -115,32 +126,176 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`firstName`         | `string`      | Prefilled value to put in the first name text box.                                                                                                                                                                                                                                                 |
 |                  | └─➔&nbsp;`lastName`          | `string`      | Prefilled value to put in the last name text box.                                                                                                                                                                                                                                                  |
 
-{% include transactions.md api_resource="trustly" documentation_section="trustly" %}
+{:.code-header}
+**Response**
 
-{% include callback-reference.md api_resource="trustly" %}
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
 
-{% include complete-url.md %}
+{
+    "payment": {
+        "id": "/psp/trustly/payments/{{ page.payment_id }}",
+        "number": 99590008046,
+        "created": "2020-05-26T12:31:19.3106483Z",
+        "updated": "2020-05-26T12:31:19.4513673Z",
+        "instrument": "Trustly",
+        "operation": "Purchase",
+        "intent": "Sale",
+        "state": "Ready",
+        "currency": "SEK",
+        "prices": {
+            "id": "/psp/trustly/payments/{{ page.payment_id }}/prices"
+        },
+        "amount": 0,
+        "description": "Test Purchase",
+        "payerReference": "SomeReference",
+        "initiatingSystemUserAgent": "PostmanRuntime/7.25.0",
+        "userAgent": "Mozilla/5.0...",
+        "language": "sv-SE",
+        "urls": {
+            "id": "/psp/trustly/payments/{{ page.payment_id }}/urls"
+        },
+        "payeeInfo": {
+            "id": "/psp/trustly/payments/{{ page.payment_id }}/payeeinfo"
+        },
+        "metadata": {
+            "id": "/psp/trustly/payments/{{ page.payment_id }}/metadata"
+        }
+    },
+    "operations": [
+        {
+            "method": "PATCH",
+            "href": "{{ page.api_url }}/psp/trustly/payments/{{ page.payment_id }}",
+            "rel": "update-payment-abort"
+        },
+        {
+            "method": "POST",
+            "href": "{{ page.api_url }}/psp/trustly/payments/{{ page.payment_id }}/sales",
+            "rel": "create-sale"
+        },
+        {
+            "method": "GET",
+            "href": "https://ecom.externalintegration.payex.com/trustly/payments/sales/8f3ba6c8f4e3f6125ae6c18bec15c612747cf2c35dc5cac35d4bebc10cf7317e",
+            "rel": "redirect-sale"
+        },
+        {
+            "method": "GET",
+            "href": "https://ecom.externalintegration.payex.com/trustly/core/scripts/client/px.trustly.client.js?token=8f3ba6c8f4e3f6125ae6c18bec15c612747cf2c35dc5cac35d4bebc10cf7317e&operation=sale",
+            "rel": "view-sales",
+            "contentType": "application/javascript"
+        }
+    ]
+}
+```
 
-{% include description.md api_resource = "trustly" %}
+The key information in the response is the `view-sales` operation. You
+will need to embed its `href` in a `<script>` element. The script will enable
+loading the payment page in an `iframe` in our next step.
 
-{% include payee-info.md api_resource="trustly" documentation_section="trustly" %}
+## Step 2: Display the Payment
 
-{% include settlement-reconciliation.md documentation_section="trustly" %}
+You need to embed the script source on your site to create a Seamless View in an
+`iframe`; so that the payer can enter the payment details in a secure Swedbank Pay
+hosted environment. A simplified integration has these following steps:
 
-{% include metadata.md api_resource="trustly" %}
+1.  Create a container that will contain the Seamless View iframe: `<div
+    id="swedbank-pay-seamless-view-page">`.
+2.  Create a `<script>` source within the container. Embed the `href` value
+    obtained in the `POST` request in the `<script>` element. Example:
 
-{% include problems/problems.md documentation_section="trustly" %}
+```html
+    <script id="payment-page-script" src="https://ecom.externalintegration.payex.com/trustly/core/ scripts/client/px.trustly.client.js"></script>
+```
 
-{% include seamless-view-events.md api_resource="trustly" %}
+The previous two steps gives this HTML:
 
-{% include iterator.html prev_href="after-payment" prev_title="Back: After
-Payment" %}
+{:.code-header}
+**HTML**
 
-[callback]: #callback
-[financing-consumer]: #financing-consumer
-[trustly-payment]: /assets/img/checkout/trustly-seamless-view.png
-[recur]: #recur
-[redirect]: /payments/trustly/redirect
-[seamless-view]: /payments/trustly/seamless-view
-[verification-flow]: #verification-flow
-[verify]: #verify
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Swedbank Pay Seamless View is Awesome!</title>
+        <!-- Here you can specify your own javascript file -->
+        <script src=<YourJavaScriptFileHere>></script>
+    </head>
+    <body>
+        <div id="swedbank-pay-seamless-view-page">
+          <script id="payment-page-script" src="https://ecom.externalintegration.payex.com/trustly/core/scripts/client/px.trustly.client.js"></script>
+        </div>
+    </body>
+</html>
+```
+
+Lastly, initiate the Seamless View with a JavaScript call to open the `iframe`
+embedded on your website.
+
+{:.code-header}
+**JavaScript**
+
+```js
+<script language="javascript">
+    payex.hostedView.trustly({
+        // The container specifies which id the script will look for to host the
+        // iframe component.
+        container: "swedbank-pay-seamless-view-page"
+    }).open();
+</script>
+```
+
+## Purchase Flow
+
+The sequence diagram below shows a high level description of the
+Trustly payment process.
+
+```mermaid
+sequenceDiagram
+    participant SwedbankPay as Swedbank Pay
+    participant Merchant
+    participant Consumer
+    participant Trustly
+
+    Consumer->>Merchant: Start purchase
+    activate Merchant
+    note left of Merchant: First API request
+    Merchant->>-SwedbankPay: POST /psp/trustly/payments
+    activate SwedbankPay
+    SwedbankPay-->>-Merchant: rel: view-authorization
+    activate Merchant
+    Merchant-->>-Consumer: Display all details and final price
+    activate Consumer
+    note left of Consumer: Open iframe ③
+    Consumer->>Consumer: Input first name and last name
+    Consumer->>-SwedbankPay: Confirm purchase
+    activate SwedbankPay
+    SwedbankPay->>-Trustly: Perform payment
+    activate Trustly
+    Trustly-->>-Merchant: Transaction result
+    activate Merchant
+    note left of Merchant: Second API request
+    Merchant->>-SwedbankPay: GET <payment.id>
+    activate SwedbankPay
+    SwedbankPay-->>-Merchant: payment resource
+    activate Merchant
+    Merchant-->>-Consumer: Display result
+```
+
+{% include iterator.html prev_href="redirect" prev_title="Back: Redirect"
+next_href="after-payment" next_title="Next: After Payment" %}
+
+[after-payment]: /payments/trustly/after-payment
+[authorize]: /payments/trustly/other-features#authorizations
+[callback]: /payments/trustly/other-features#callback
+[cancel]: /payments/trustly/after-payment#cancellations
+[create-payment]: /payments/trustly/other-features#create-payment
+[financing-consumer]: /payments/trustly/other-features#financing-consumer
+[trustly-payment-embedded-view]: /assets/screenshots/trustly/consumer-information-input.png
+[payee-reference]: /payments/trustly/other-features#payee-reference
+[payment-resource]: /payments/trustly/other-features#payment-resource
+[price-resource]: /payments/trustly/other-features#prices
+[recur]: /payments/trustly/other-features#recur
+[setup-mail]: mailto:setup.ecom@PayEx.com
+[user-agent]: https://en.wikipedia.org/wiki/User_agent
+[verify]: /payments/trustly/other-features#verify
