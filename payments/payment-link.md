@@ -1,12 +1,13 @@
 ---
 title: Payment Link
+estimated_read: 30
+description: |
+  The implementation sequence for this scenario is a variant of the purchase
+  sequence in a Hosted Payment Pages redirect scenario.
+  The consumer is not redirected to the payment pages directly but will instead
+  receive a payment link via mail/SMS.
+  When the consumer clicks on the link a payment window opens.
 ---
-
-{% include jumbotron.html body=" The implementation sequence for this scenario
-is a variant of the purchase sequence in a Hosted Payment Pages redirect
-scenario. The consumer is not redirected to the payment pages directly but will
-instead receive a payment link via mail/SMS. When the consumer clicks on the
-link a payment window opens." %}
 
 ### Introduction
 
