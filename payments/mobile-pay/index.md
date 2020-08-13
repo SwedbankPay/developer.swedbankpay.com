@@ -1,21 +1,10 @@
 ---
 title: MobilePay Online Payments
-sidebar:
-  navigation:
-  - title: MobilePay Online Payments
-    items:
-    - url: /payments/mobile-pay
-      title: Introduction
-    - url: /payments/mobile-pay/redirect
-      title: Redirect
-    - url: /payments/mobile-pay/after-payment
-      title: After Payment
-    - url: /payments/mobile-pay/other-features
-      title: Other Features
+estimated_read: 30
+description: |
+  MobilePay is the fast and simple way of
+  paying with your mobile phone, reaching more than 4 million Danish end-users.
 ---
-
-{% include jumbotron.html body="  MobilePay is the fast and simple way of
-paying with your mobile phone, reaching more than 4 million Danish end-users." %}
 
 MobilePay is the main Danish payment app for mobile phones, making it one of the
 essential payment instruments for merchants operating in Denmark. More than 4
