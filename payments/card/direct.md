@@ -1,25 +1,10 @@
 ---
 title: Card Payments – Direct
-sidebar:
-  navigation:
-  - title: Card Payments
-    items:
-    - url: /payments/card/
-      title: Introduction
-    - url: /payments/card/redirect
-      title: Redirect
-    - url: /payments/card/seamless-view
-      title: Seamless View
-    - url: /payments/card/direct
-      title: Direct
-    - url: /payments/card/capture
-      title: Capture
-    - url: /payments/card/mobile-card-payments
-      title: Mobile Card Payments
-    - url: /payments/card/after-payment
-      title: After Payment
-    - url: /payments/card/other-features
-      title: Other Features
+estimated_read: 30
+description: |
+  The Direct Card Payment scenario is used by
+  customers that are **compliant with PCI-DSS regulations**, and is a way to
+  implement Card Payments without using a Swedbank Pay hosted payment page.
 ---
 
 {% include alert.html type="warning"
@@ -27,10 +12,6 @@ sidebar:
                       header="Section under review"
                       body="This section of the Developer Portal is under
                       review and may be incomplete or contain minor errors." %}
-
-{% include jumbotron.html body="The Direct Card Payment scenario is used by
-customers that are **compliant with PCI-DSS regulations**, and is a way to
-implement Card Payments without using a Swedbank Pay hosted payment page." %}
 
 {% include alert.html type="informative" icon="info" header="Note on 3-D Secure
 Authentication" body="Although there is no need to redirect to a Swedbank Pay
