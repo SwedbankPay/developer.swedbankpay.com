@@ -1,13 +1,5 @@
 ---
 title: Developer Portal
-sidebar:
-  navigation:
-  - title: Home
-    items:
-    - url: /home/technical-information
-      title: Technical Information
-    - url: /modules-sdks
-      title: Modules & SDKs
 ---
 
 Hi! Welcome to the **Swedbank Pay Developer Portal**.
