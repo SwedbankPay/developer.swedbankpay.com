@@ -18,7 +18,7 @@ jobs:
           echo '- https://rubygems.org/' >> $FILE
           echo '- https://${{ secrets.GITHUB_TOKEN }}@rubygems.pkg.github.com/swedbankpay/' >> $FILE
           echo ':update_sources: true' >> $FILE
-          echo ':verbose: true'' >> $FILE
+          echo ':verbose: true' >> $FILE
       - name: build
         run: |
           docker-compose run \
