@@ -9,6 +9,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Add authenticaiton
         run: |
+          mkdir .gem
           FILE=".gem/credentials"
           touch $FILE
           echo '---' >> $FILE
