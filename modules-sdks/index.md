@@ -2,8 +2,8 @@
 title: Modules & SDKs Introduction
 estimated_read: 30
 description: |
-  We have multiple Open Source-based SDKs and
-Modules to use with Swedbank Pay APIs.
+  We have multiple Open Source-based SDKs and Modules to use with
+  Swedbank Pay APIs.
 ---
 
 {% assign active_repositories = site.github.public_repositories | where: 'archived', false %}

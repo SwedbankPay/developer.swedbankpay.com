@@ -3,11 +3,10 @@ title: Checkout – Introduction
 estimated_read: 30
 description: |
   **Swedbank Pay Checkout** is a complete reimagination
-of the checkout experience, integrating seamlessly into the merchant website
-through highly customizable and flexible components.
-
-Visit our [demoshop](https://ecom.externalintegration.payex.com/pspdemoshop)
-and try out Swedbank Pay Checkout for yourself!
+  of the checkout experience, integrating seamlessly into the merchant website
+  through highly customizable and flexible components.
+  Visit our [demoshop](https://ecom.externalintegration.payex.com/pspdemoshop)
+  and try out Swedbank Pay Checkout for yourself!
 ---
 
 Swedbank Pay Checkout allows your customers to be identified with Swedbank Pay,
