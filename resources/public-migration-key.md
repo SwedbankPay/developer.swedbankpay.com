@@ -1,32 +1,12 @@
 ---
 title: Public Migration Key
-sidebar:
-  navigation:
-  - title: Resources
-    items:
-    - url: /resources/
-      title: Introduction
-    - url: /resources/test-data
-      title: Test Data
-    - url: /resources/demoshop
-      title: Demoshop
-    - url: /resources/development-guidelines
-      title: Open Source Development Guidelines
-    - url: /resources/release-notes
-      title: Release Notes
-    - url: /resources/terminology
-      title: Terminology
-    - url: /resources/data-protection
-      title: Data Protection
-    - url: /resources/public-migration-key
-      title: Public Migration Key
+estimated_read: 30
+description: |
+  In order to send sensitive credit card data to Swedbank Pay, you need to use
+  our **Public Migration Key** to encrypt the data in transmission.
+  Contact our support at [support.ecom@payex.com](mailto:support.ecom@payex.com)
+  for more information regarding this procedure.
 ---
-
-{% include jumbotron.html body="In order to send sensitive credit card data to
-Swedbank Pay, you need to use our **Public Migration Key** to encrypt the data
-in transmission. Contact our support at
-[support.ecom@payex.com](mailto:support.ecom@payex.com) for more information regarding
-this procedure."  %}
 
 *   **Key size**: 4096 bits
 *   **RealName**: `SwedbankPay`
