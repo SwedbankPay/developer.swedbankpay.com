@@ -11,6 +11,7 @@ jobs:
         run: |
           FILE="~/.gem/credentials"
 
+          [ ! -d "~/.gem/" ] && mkdir ~/.gem/
           touch $FILE
 
           /bin/cat <<EOM >$FILE
