@@ -1,21 +1,11 @@
 ---
 title: Trustly Payments
-sidebar:
-  navigation:
-  - title: Trustly Payments
-    items:
-    - url: /payments/trustly
-      title: Introduction
-    - url: /payments/trustly/redirect
-      title: Redirect
-    - url: /payments/trustly/after-payment
-      title: After Payment
-    - url: /payments/trustly/other-features
-      title: Other Features
+estimated_read: 30
+description: |
+  **Trustly Payments** is the simplest way to
+  provide **Direct Bank** payments on your website. Choose between our
+  **Redirect** and **Seamless View** integration options.
 ---
-
-{% include jumbotron.html body="**Trustly Payments** is the simplest way to
-provide **Direct Bank** payments on your website." %}
 
 {% include alert.html type="informative"
                       icon="cached"
