@@ -1,28 +1,10 @@
 ---
 title: Invoice Payments – Seamless View
-sidebar:
-  navigation:
-  - title: Invoice Payments
-    items:
-    - url: /payments/invoice
-      title: Introduction
-    - url: /payments/invoice/redirect
-      title: Redirect
-    - url: /payments/invoice/seamless-view
-      title: Seamless View
-    - url: /payments/invoice/direct
-      title: Direct
-    - url: /payments/invoice/capture
-      title: Capture
-    - url: /payments/invoice/after-payment
-      title: After Payment
-    - url: /payments/invoice/other-features
-      title: Other Features
+estimated_read: 30
+description: |
+  The Seamless View scenario represents the opportunity to implement Invoice
+  directly in your webshop.
 ---
-
-{% include jumbotron.html body="The Seamless View scenario represents the
-                                opportunity to implement Invoice directly in
-                                your webshop." %}
 
 ## Introduction
 

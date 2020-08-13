@@ -1,33 +1,16 @@
 ---
 title: Payments Invoice Direct
-sidebar:
-  navigation:
-  - title: Invoice Payments
-    items:
-    - url: /payments/invoice
-      title: Introduction
-    - url: /payments/invoice/redirect
-      title: Redirect
-    - url: /payments/invoice/seamless-view
-      title: Seamless View
-    - url: /payments/invoice/direct
-      title: Direct
-    - url: /payments/invoice/capture
-      title: Capture
-    - url: /payments/invoice/after-payment
-      title: After Payment
-    - url: /payments/invoice/other-features
-      title: Other Features
+estimated_read: 30
+description: |
+  **Direct** is a payment service where Swedbank
+  Pay helps improve cashflow by purchasing merchant invoices. Swedbank Pay
+  receives invoice data, which is used to produce and distribute invoices to the
+  consumer/end-user.
 ---
 
 {% include alert.html type="informative" icon="report_problem" header="Disclaimer"
 body="Direct Invoice is about to be phased out. This section is only for
 merchants that currently have a contract with this integration." %}
-
-{% include jumbotron.html body="**Direct** is a payment service where Swedbank
-Pay helps improve cashflow by purchasing merchant invoices. Swedbank Pay
-receives invoice data, which is used to produce and distribute invoices to the
-consumer/end-user" %}
 
 ## Invoice Direct implementation flow
 
