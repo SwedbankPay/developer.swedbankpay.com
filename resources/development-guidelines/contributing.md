@@ -1,19 +1,6 @@
 ---
 title: Contributing
-sidebar:
-  navigation:
-  - title: Development Guidelines
-    items:
-    - url: /resources/development-guidelines
-      title: Introduction
-    - url: /resources/development-guidelines/code-of-conduct
-      title: Code Of Conduct
-    - url: /resources/development-guidelines/contributing
-      title: Contributing
-    - url: /resources/development-guidelines/good-commit-practice
-      title: Good Commit Practice
-    - url: /resources/development-guidelines/license
-      title: License
+estimated_read: 30
 ---
 
 To make it clear exactly how outside contributors should provide their
