@@ -2,8 +2,8 @@
 title: Checkout – Payment Menu
 estimated_read: 30
 description: |
-  **Payment Menu** begins where **Checkin** left
-off, letting the payer complete their purchase.
+  **Payment Menu** begins where **Checkin** left off,
+  letting the payer complete their purchase.
 ---
 
 ## Step 3: Create Payment Order
