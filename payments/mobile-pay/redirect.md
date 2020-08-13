@@ -1,24 +1,13 @@
 ---
 title: MobilePay Online Payments – Redirect
-sidebar:
-  navigation:
-  - title: MobilePay Online Payments
-    items:
-    - url: /payments/mobile-pay
-      title: Introduction
-    - url: /payments/mobile-pay/redirect
-      title: Redirect
-    - url: /payments/mobile-pay/after-payment
-      title: After Payment
-    - url: /payments/mobile-pay/other-features
-      title: Other Features
----
-
-{% include jumbotron.html body=" **MobilePay Online Payments** is a two-phase payment
+estimated_read: 30
+description: |
+  **MobilePay Online Payments** is a two-phase payment
 instrument which can be implemented by the supported redirect scenario.
 Swedbank Pay receives the MobilePay details from the payer through Swedbank Pay
 Payments. The payment will then be performed by Swedbank Pay and
-confirmed by the payer through the MobilePay app." %}
+confirmed by the payer through the MobilePay app.
+---
 
 ## MobilePay redirect integration flow
 

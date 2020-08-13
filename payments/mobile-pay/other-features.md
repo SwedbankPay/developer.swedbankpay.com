@@ -1,17 +1,6 @@
 ---
 title: MobilePay Online Payments – Other Features
-sidebar:
-  navigation:
-  - title: MobilePay Online Payments
-    items:
-    - url: /payments/mobile-pay
-      title: Introduction
-    - url: /payments/mobile-pay/redirect
-      title: Redirect
-    - url: /payments/mobile-pay/after-payment
-      title: After Payment
-    - url: /payments/mobile-pay/other-features
-      title: Other Features
+estimated_read: 30
 ---
 
 {% include payment-resource.md api_resource="mobilepay"
