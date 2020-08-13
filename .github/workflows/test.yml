@@ -13,10 +13,8 @@ jobs:
 
           [ ! -d "~/.gem/" ] && mkdir ~/.gem/
 
-          /bin/cat << EOF > $FILE
-          ---
-            :github: Bearer ${{ secrets.GITHUB_TOKEN }}
-          EOF
+          echo '---' >> $FILE
+          echo ':github: Bearer ${{ secrets.GITHUB_TOKEN }}' >> $FILE
       - name: build
         run: |
           docker-compose run \
