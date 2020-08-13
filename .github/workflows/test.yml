@@ -12,13 +12,13 @@ jobs:
           FILE="~/.gem/credentials"
 
           [ ! -d "~/.gem/" ] && mkdir ~/.gem/
-          
+
           > $FILE
 
-          /bin/cat <<EOM >$FILE
+          /bin/cat << EOF > $FILE
           ---
             :github: Bearer ${{ secrets.GITHUB_TOKEN }}
-          EOM
+          EOF
       - name: build
         run: |
           docker-compose run \
