@@ -1,23 +1,14 @@
 ---
 title: Plain Webview
-sidebar:
-  navigation:
-  - title: Mobile SDK
-    items:
-    - url: /modules-sdks/mobile-sdk/
-      title: Introduction
-    - url: /modules-sdks/mobile-sdk/merchant-backend
-      title: Merchant Backend
-    - url: /modules-sdks/mobile-sdk/merchant-backend-sample-code
-      title: Merchant Backend Sample Code
-    - url: /modules-sdks/mobile-sdk/android
-      title: Android
-    - url: /modules-sdks/mobile-sdk/ios
-      title: iOS
-    - url: /modules-sdks/mobile-sdk/process-diagrams
-      title: Process Diagrams
-    - url: /modules-sdks/mobile-sdk/plain-webview
-      title: Plain Webview
+estimated_read: 30
+description: |
+  The **Swedbank Pay Mobile SDK** aims to provide an easy way of integrating
+  Swedbank Pay Checkout into a mobile application.
+  It is, however, an opinionated library, and in particular is has no support
+  for Swedbank Pay Payments at this point.
+  Experience from developing the SDK may still be valuable for integrators
+  wishing to show Payments pages in a Web View inside a mobile application.
+  This page serves as a repository of that experience.
 ---
 
 {% capture disclaimer %}
@@ -27,8 +18,6 @@ and is not part of the Mobile SDK documentation proper.
 
 {% include alert.html type="warning" icon="warning" header="Unsupported"
 body=disclaimer %}
-
-{% include jumbotron.html body="The **Swedbank Pay Mobile SDK** aims to provide an easy way of integrating Swedbank Pay Checkout into a mobile application. It is, however, an opinionated library, and in particular is has no support for Swedbank Pay Payments at this point. Experience from developing the SDK may still be valuable for integrators wishing to show Payments pages in a Web View inside a mobile application. This page serves as a repository of that experience." %}
 
 ## The Mobile SDK And You
 
@@ -50,6 +39,7 @@ Swedbank Pay payments use JavaScript, so that needs to be enabled:
 
 {:.code-header}
 **iOS**
+
 ```swift
     // WKPreferences.javaScriptEnabled is true by default,
     // so usually there is no need to to do this.
@@ -66,6 +56,7 @@ Swedbank Pay payments use JavaScript, so that needs to be enabled:
 
 {:.code-header}
 **Android**
+
 ```kotlin
     val webView = WebView(context) // or get it from a layout
 
@@ -80,6 +71,7 @@ Some pages use the DOM Storage API, which must be enabled separately on Android:
 
 {:.code-header}
 **Android**
+
 ```kotlin
     webView.settings.domStorageEnabled = true
 ```
@@ -88,6 +80,7 @@ With this setup, you can load to the web view the page that shows the Payment Me
 
 {:.code-header}
 **iOS**
+
 ```swift
     let paymentUrl = URL(string: "https://example.com/perform-payment")!
     webView.load(URLRequest(url: paymentUrl))
@@ -95,6 +88,7 @@ With this setup, you can load to the web view the page that shows the Payment Me
 
 {:.code-header}
 **Android**
+
 ```kotlin
     webView.loadUrl("https://example.com/perform-payment")
 ```
@@ -109,11 +103,13 @@ The iOS `WKNavigationDelegate` protocol and Android `WebViewClient` class can be
 
 {:.code-header}
 **iOS**
+
 ```swift
     // This example uses Self as the delegate.
     // It could be a separate object also.
     webView.navigationDelegate = self
 ```
+
 ```swift
     extension MyClass : WKNavigationDelegate {
         // WKNavigationDelegate methods
@@ -122,6 +118,7 @@ The iOS `WKNavigationDelegate` protocol and Android `WebViewClient` class can be
 
 {:.code-header}
 **Android**
+
 ```kotlin
     webView.webViewClient = object : WebViewClient() {
         // WebViewClient methods
@@ -132,6 +129,7 @@ In the simplest case you could listen for a navigation to the `completeUrl` or `
 
 {:.code-header}
 **iOS**
+
 ```swift
     func webView(
         _ webView: WKWebView,
@@ -155,6 +153,7 @@ In the simplest case you could listen for a navigation to the `completeUrl` or `
 
 {:.code-header}
 **Android**
+
 ```kotlin
     override fun shouldOverrideUrlLoading(
         view: WebView?,
@@ -188,6 +187,7 @@ On iOS, JavaScript interfaces are added through the `WKUserContentController` of
 
 {:.code-header}
 **iOS**
+
 ```swift
     let userContentController = webView
         .configuration
@@ -201,6 +201,7 @@ On iOS, JavaScript interfaces are added through the `WKUserContentController` of
     userContentController.add(self, name: "completed")
     userContentController.add(self, name: "canceled")
 ```
+
 ```swift
     extension MyClass : WKScriptMessageHandler {
         func userContentController(
@@ -225,6 +226,7 @@ On iOS, the interfaces added by `WKUserContentController.add(_:name:)` are expos
 ```js
     window.webkit.messageHandlers.completed.postMessage("success")
 ```
+
 ```js
     window.webkit.messageHandlers.canceled.postMessage()
 ```
@@ -237,12 +239,14 @@ On Android, JavaScript interfaces are added by the `WebView.addJavascriptInterfa
 
 {:.code-header}
 **Android**
+
 ```kotlin
     webView.addJavascriptInterface(
         MyJsInterface(),
         "callbacks"
     )
 ```
+
 ```kotlin
     class MyJsInterface {
         // IMPORTANT!
@@ -272,6 +276,7 @@ On Android, the objects added by `WebView.addJavascriptInterface` are exposed as
 ```js
     callbacks.completed("success")
 ```
+
 ```js
     callbacks.canceled()
 ```
@@ -290,6 +295,7 @@ You cannot query the system for an arbitrary url to see if it can be opened – 
 
 {:.code-header}
 **iOS**
+
 ```swift
     func webView(
         _ webView: WKWebView,
@@ -353,6 +359,7 @@ On Android we can, and indeed should, query the system whether it can launch Act
 
 {:.code-header}
 **Android**
+
 ```kotlin
     override fun shouldOverrideUrlLoading(
         view: WebView?,
@@ -530,6 +537,7 @@ For reference, the way the SDK handles `paymentUrl`s on Android looks like this 
 
 {:.code-header}
 **Request**
+
 ```http
     GET /perform-payment
     Host: example.com
@@ -537,6 +545,7 @@ For reference, the way the SDK handles `paymentUrl`s on Android looks like this 
 
 {:.code-header}
 **Response**
+
 ```http
     HTTP/1.1 301 Moved Permanently
     Location: intent://example.com/perform-payment#Intent;scheme=https;action=com.swedbankpay.mobilesdk.VIEW_PAYMENTORDER;package=com.example.app;end;`;

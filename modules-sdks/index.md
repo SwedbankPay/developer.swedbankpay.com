@@ -1,20 +1,12 @@
 ---
 title: Modules & SDKs Introduction
-redirect_from: /resources/sdk-modules
-sidebar:
-  navigation:
-  - title: Modules & SDKs
-    items:
-    - url: /modules-sdks/index
-      title: Introduction
-    - url: /modules-sdks/mobile-sdk
-      title: Mobile SDK
+estimated_read: 30
+description: |
+  We have multiple Open Source-based SDKs and
+Modules to use with Swedbank Pay APIs.
 ---
 
 {% assign active_repositories = site.github.public_repositories | where: 'archived', false %}
-
-{% include jumbotron.html body="We have multiple Open Source-based SDKs and
-Modules to use with Swedbank Pay APIs." %}
 
 ## Introduction
 
