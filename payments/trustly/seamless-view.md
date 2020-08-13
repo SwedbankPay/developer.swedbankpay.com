@@ -1,24 +1,13 @@
 ---
 title: Trustly Payments – Seamless view
-sidebar:
-  navigation:
-  - title: Trustly Payments
-    items:
-    - url: /payments/trustly
-      title: Introduction
-    - url: /payments/trustly/redirect
-      title: Redirect
-    - url: /payments/trustly/seamless-view
-      title: Seamless View
-    - url: /payments/trustly/after-payment
-      title: After Payment
-    - url: /payments/trustly/other-features
-      title: Other Features
+estimated_read: 30
+description: |
+  The Seamless View scenario represents the
+  opportunity to implement Trustly directly in
+  your webshop.
 ---
 
-{% include jumbotron.html body="The Seamless View scenario represents the
-                                opportunity to implement Trustly directly in
-                                your webshop." %}
+{% include jumbotron.html body="" %}
 
 ## Introduction
 
