@@ -15,7 +15,6 @@ jobs:
           ---
             :github: Bearer ${{ secrets.GITHUB_TOKEN }}
           EOM
-        with:
       - name: build
         run: |
           docker-compose run \
