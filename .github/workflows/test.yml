@@ -7,19 +7,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Add authenticaiton
-        run: |
-          mkdir .gem
-          FILE=".gem/credentials"
-          touch $FILE
-          echo '---' >> $FILE
-          echo ':backtrace: false' >> $FILE
-          echo ':bulk_threshold: 1000' >> $FILE
-          echo ':sources:' >> $FILE
-          echo '- https://rubygems.org/' >> $FILE
-          echo '- https://nullableint:${{ secrets.GITHUB_TOKEN }}@rubygems.pkg.github.com/swedbankpay/' >> $FILE
-          echo ':update_sources: true' >> $FILE
-          echo ':verbose: true' >> $FILE
       - name: build
         run: |
           docker-compose run \

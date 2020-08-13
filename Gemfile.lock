@@ -1,6 +1,5 @@
 GEM
   remote: https://rubygems.org/
-  remote: https://rubygems.pkg.github.com/swedbankpay/
   specs:
     activesupport (6.0.3.2)
       concurrent-ruby (~> 1.0, >= 1.0.2)
@@ -140,7 +139,7 @@ GEM
     sprockets-sass (1.3.1)
       sprockets (~> 2.0)
       tilt (~> 1.1)
-    swedbank-pay-design-guide-jekyll-theme (1.5.2.pre.conversion.pre.to.pre.gem.pre.theme013)
+    swedbank-pay-design-guide-jekyll-theme (1.6.1.pre.PullRequest0137.pre.0037)
       faraday (>= 1.0.1)
       html-proofer
       jekyll (>= 3.7, < 5.0)
@@ -181,7 +180,7 @@ DEPENDENCIES
   kramdown (>= 2.3.0)
   kramdown-plantuml
   rake (~> 13.0.1)
-  swedbank-pay-design-guide-jekyll-theme (= 1.5.2.pre.conversion.pre.to.pre.gem.pre.theme013)!
+  swedbank-pay-design-guide-jekyll-theme (~> 1.6.1.pre.PullRequest0137.pre.0037)
 
 BUNDLED WITH
    2.1.4
