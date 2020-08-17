@@ -63,8 +63,6 @@ module Jekyll
         end
         File.open(filename, 'w') { |f| f.write(file.to_html(encoding: 'UTF-8')) }
       end
-
-      # File.open('_site/sidebar.html', 'w') { |f| f.write(sidebar) }
     end
 
     private
@@ -136,7 +134,6 @@ module Jekyll
         subgroups = merged.select { |subgroup_key, _subgroup_value| subgroup_key.include? key and subgroup_key != key and key != '/' }
 
         active = active?(filename, key)
-        # puts "#{filename}, #{key}" if active
         item_class = active ? 'nav-group active' : 'nav-group'
 
         child = "<li class=\"#{item_class}\">"
