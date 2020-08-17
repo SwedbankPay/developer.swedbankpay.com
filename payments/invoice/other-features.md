@@ -121,7 +121,7 @@ Content-Type: application/json
             "cancelUrl": "https://example.com/payment-canceled",
             "callbackUrl": "https://example.com/payment-callback",
             "logoUrl": "https://example.com/logo.png",
-            "termsOfServiceUrl": "http://fexample.com/terms.pdf"
+            "termsOfServiceUrl": "http://example.com/terms.pdf"
         },
         "payeeInfo": {
             "payeeId": "{{ page.merchant_id }}",
