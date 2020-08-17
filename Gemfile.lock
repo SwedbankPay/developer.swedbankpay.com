@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/NullableInt/searchyll.git
-  revision: 2a88c31371933e611a558782c685314495e1da1d
+  revision: 0a9a8a71817c4a75da5148a4f1c9dbd23876a1a9
   branch: feature/production_switch
   specs:
     searchyll (0.10.2)
@@ -82,8 +82,6 @@ GEM
       jekyll (>= 3.4, < 5.0)
       octokit (~> 4.0, != 4.4.0)
     jekyll-material-icon-tag (1.1.1)
-    jekyll-redirect-from (0.16.0)
-      jekyll (>= 3.3, < 5.0)
     jekyll-remote-theme (0.4.2)
       addressable (~> 2.0)
       jekyll (>= 3.5, < 5.0)
@@ -129,14 +127,8 @@ GEM
     parallel (1.20.1)
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
-<<<<<<< HEAD
-    public_suffix (4.0.6)
-    racc (1.5.2)
-    rack (2.1.4)
-=======
     public_suffix (4.0.5)
-    rack (1.6.13)
->>>>>>> 2db2ea7a... Update gems
+    rack (2.1.4)
     rainbow (3.0.0)
     rake (13.0.3)
     rb-fsevent (0.10.4)
@@ -171,7 +163,6 @@ GEM
       faraday (>= 1.0.1)
       html-proofer
       jekyll (>= 3.7, < 5.0)
-      jekyll-contentblocks
       jekyll-github-metadata
       jekyll-material-icon-tag
       jekyll-redirect-from
@@ -202,11 +193,9 @@ DEPENDENCIES
   jekyll-assets
   jekyll-github-metadata (~> 2.13)
   jekyll-material-icon-tag
-  jekyll-redirect-from
   jekyll-remote-theme
   jekyll_asset_pipeline
   jemoji
-  kramdown (>= 2.3.0)
   kramdown-plantuml
   rake (~> 13.0.1)
   searchyll!
