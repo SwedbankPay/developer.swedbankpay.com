@@ -1,5 +1,6 @@
 ---
 title: Developer Portal
+hide_from_sidebar: true
 ---
 
 Hi! Welcome to the **Swedbank Pay Developer Portal**.
