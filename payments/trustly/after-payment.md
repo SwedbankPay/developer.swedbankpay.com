@@ -8,8 +8,6 @@ sidebar:
       title: Introduction
     - url: /payments/trustly/redirect
       title: Redirect
-    - url: /payments/trustly/seamless-view
-      title: Seamless View
     - url: /payments/trustly/after-payment
       title: After Payment
     - url: /payments/trustly/other-features
@@ -114,7 +112,7 @@ sequenceDiagram
     deactivate SwedbankPay
 ```
 
-{% include iterator.html prev_href="seamless-view" prev_title="Back: Seamless View"
+{% include iterator.html prev_href="redirect" prev_title="Back: Redirect"
 next_href="other-features" next_title="Next: Other Features" %}
 
 ----------------------------------------------------------

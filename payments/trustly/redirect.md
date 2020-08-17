@@ -8,8 +8,6 @@ sidebar:
       title: Introduction
     - url: /payments/trustly/redirect
       title: Redirect
-    - url: /payments/trustly/seamless-view
-      title: Seamless View
     - url: /payments/trustly/after-payment
       title: After Payment
     - url: /payments/trustly/other-features
@@ -233,7 +231,7 @@ to see what you can do when a payment is completed.
 Here you will also find info on `Abort` and `Reversal`.
 
 {% include iterator.html prev_href="./" prev_title="Back: Introduction"
-next_href="seamless-view" next_title="Next: Seamless View" %}
+next_href="after-payment" next_title="Next: After Payment" %}
 
 [deposit]: https://trustly.com/en/developer/api#/deposit
 [after-payment]: /payments/trustly/after-payment
