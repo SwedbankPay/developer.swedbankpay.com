@@ -733,7 +733,7 @@ Content-Type: application/json
         "amount": 1000,
         "vatAmount": 250
       }
-    ],
+    ]
   }
 }
 ```

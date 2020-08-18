@@ -4,8 +4,7 @@
 ### Operation `paid-payment`
 
 The `paid-payment` operation confirms that the transaction has been successful
-and that the payment is completed. Under `details` you can see which card was
-used to complete the payment.
+and that the payment is completed. 
 
 A `paid-payment` operation looks like the following:
 
@@ -31,6 +30,7 @@ Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
+{% if documentation_section == "card" %}
 
 {:.code-header}
 **Response**
@@ -89,6 +89,31 @@ Content-Type: application/json
   }
 }
 ```
+{% else %}
+
+{:.code-header}
+**Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "payment": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
+  "paid": {
+    "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/paid",
+    "number": 1234567890,
+    "transaction": {
+      "id": "/psp{{ api_resource }}/payments/{{ page.payment_id }}/transactions/{{ site.transaction_id }}",
+      "number" : 1234567891
+    },
+    "payeeReference": "CD123",
+    "orderReference": "AB1234",
+    "amount": 1500,
+  }
+}
+```
+{% endif %}
 
 {:.table .table-striped}
 | Field                              | Type         | Description                                                                                                                                                                                                                                                                                          |
