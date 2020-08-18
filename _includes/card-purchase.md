@@ -262,7 +262,7 @@ Content-Type: application/json
         }
         {
             "rel": "direct-authorization",
-            "href": ""{{ page.front_end_url }}/creditcard/payments/{{ page.payment_token }}/authorizations",
+            "href": ""{{ page.api_url }}/psp/creditcard/confined/payments/{{ page.payment_id }}/authorizations",
             "method": "POST",
             "contentType": "application/json"
         }
