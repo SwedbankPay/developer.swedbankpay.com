@@ -68,4 +68,3 @@ elasticsearch:
   default_type: "post"              # Optional. Default type is "post".
   environments:
     - 'production'
-  default_type: "post"              # Optional. Default type is "post".
