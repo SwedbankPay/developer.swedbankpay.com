@@ -114,7 +114,7 @@ Content-Type: application/json
         "intent": "Authorization",
         "state": "Ready",
         "currency": "NOK",
-        "amount": 1500,
+        "amount": 0,
         "remainingCaptureAmount": 1500,
         "remainingCancellationAmount": 1500,
         "remainingReversalAmount": 0,
