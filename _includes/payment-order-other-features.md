@@ -1280,7 +1280,7 @@ menu and show only the instrument.
 
 Triggered on terminal errors, and when the configuration fails validation.
 
-{% include callback-reference.md payment_order=true api_resource="paymentorders" %}
+{% include callback-reference.md api_resource="paymentorders" %}
 
 {% comment %}
 Include parameters aren't scoped to the inside of the include, they are just

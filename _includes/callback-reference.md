@@ -1,4 +1,3 @@
-{% assign payment_order = include.payment_order | default: false %}
 {% assign api_resource = include.api_resource | default: "creditcard" %}
 
 ## Callback
@@ -40,7 +39,7 @@ three example scenarios of why this is important:
 *   The callback is sent from the following IP address: `82.115.146.1`
 *   A callback should return a `200 OK` response.
 
-{% if payment_order %}
+{% if api_resource == "paymentorders" %}
 {:.code-header}
 **Payment Order Callback**
 
