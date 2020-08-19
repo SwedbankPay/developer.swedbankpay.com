@@ -928,6 +928,42 @@ sequenceDiagram
     end
 ```
 
+Customers should be able to set `recurrenceToken` to deleted if the consumer 
+deletes their agreements with their customer. 
+Note that the value of `state` must be `Deleted` when deleting the token. 
+No other states are supported.
+
+{:.code-header}
+**Request**
+
+```http
+POST /psp/paymentorders/payments HTTP/1.1
+Host: {{ page.api_host }}
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+
+{
+  "state": "Deleted",
+  "comment": "Comment on why the deletion is happening"
+}
+```
+
+{:.code-header}
+**Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "instrumentData": {
+    "id": "/psp/paymentorders/payments/instrumentdata/{{ page.payment_id }}",
+    "payeeId": "{{ page.merchant_id }}",
+    "isDeleted": true
+  }
+}
+```
+
 ## Purchase Payments
 
 The `Purchase` operation is used in all common purchase scenarios.

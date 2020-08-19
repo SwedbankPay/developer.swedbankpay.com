@@ -177,6 +177,46 @@ Content-Type: application/json
 }
 ```
 
+Customers should be able to set `recurrenceToken` to deleted if the consumer 
+deletes their agreements with their customer. 
+Note that the value of `state` must be `Deleted` when deleting the token. 
+No other states are supported.
+
+{:.code-header}
+**Request**
+
+```http
+POST /psp/invoice/payments HTTP/1.1
+Host: {{ page.api_host }}
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+
+{
+  "state": "Deleted",
+  "comment": "Comment on why the deletion is happening"
+}
+```
+
+{:.code-header}
+**Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "instrumentData": {
+    "id": "/psp/invoice/payments/instrumentdata/{{ page.payment_id }}",
+    "paymentToken": "{{ page.payment_token }}",
+    "payeeId": "{{ page.merchant_id }}",
+    "isDeleted": true
+    "isPayeeToken": true,
+    "maskedSsn": "600307-****",
+    "tokenType" : "RecurrenceToken"
+  }
+}
+```
+
 ## Verify
 
 {% include alert.html type="informative" icon="info" body="The `Verify` operation
