@@ -260,6 +260,12 @@ Content-Type: application/json
             "method": "GET",
             "contentType": "application/javascript"
         }
+        {
+            "rel": "direct-authorization",
+            "href": ""{{ page.api_url }}/psp/creditcard/confined/payments/{{ page.payment_id }}/authorizations",
+            "method": "POST",
+            "contentType": "application/json"
+        }
     ]
 }
 ```
