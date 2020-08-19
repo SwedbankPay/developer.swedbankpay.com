@@ -88,7 +88,7 @@ Content-Type: application/json
             "preOrderPurchaseIndicator": "01",
             "shipIndicator": "01",
             "giftCardPurchase": false,
-            "reOrderItemsIndicator": "01",
+            "reOrderPurchaseIndicator": "01",
             "pickUpAddress": {
                 "name": "Olivia Nyhuus",
                 "streetAddress": "Saltnestoppen 43",
