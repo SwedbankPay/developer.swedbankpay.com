@@ -153,9 +153,28 @@ instrument instead of all configured on your merchant account. The Payment Order
 resource works just like it otherwise would, allowing you to remain largely
 indifferent to the payment instrument in use.
 
+If you do not want to use Swedbank Pay Payment Menu or do have multiple payment
+providers on your site we strongly recommend that you implement the "Instrument
+Mode" functionality. To use this feature you will need to add the `instrument`
+field to the request. This will make the  Swedbank Pay Payment Menu only render
+a single payment instrument. So even if Swedbank Pay is set up to provide more
+than one instrument you will be able to let it only show one at a time.
+
+It is important to use this feature if you want to build your own payment menu.
+In this case you should use the `instrument` field to enforce which payment
+instrument to show. If you have an agreement with Swedbank Pay for both Card and
+Swish/Vipps processing, when the consumer choose to pay with either of these
+instruments you should add the `instrument` parameter with the specific payment
+instrument. If the consumer later changes their mind and choose the other
+instrument you can make a call to Swedbank Pay to change the instrument on the
+active payment. This is important because we do not allow the creation of
+multiple payments with the same `orderReference`. So to ensure that you can
+still use the same `orderReference` you should only make one payment for a
+purchase and instead change the `instrument` to reflect what the consumer has
+chosen in your menu.
+
 The Payment Menu is switched to "Instrument Mode" by providing the request field
 `instrument` as described in the abbreviated example below.
-
 {:.code-header}
 **Request**
 
