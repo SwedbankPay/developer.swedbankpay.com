@@ -49,7 +49,7 @@ document is described in the following section.
 
 {% include complete-url.md %}
 
-{% include description.md %}
+{% include description.md api_resource = "creditcard" %}
 
 {% include recur.md %}
 

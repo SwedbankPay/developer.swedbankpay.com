@@ -535,7 +535,7 @@ transaction made towards a payment, as previously described.
 
 {% include complete-url.md %}
 
-{% include description.md %}
+{% include description.md api_resource = "invoice" %}
 
 {% include payee-info.md api_resource="invoice" documentation_section="invoice" %}
 
