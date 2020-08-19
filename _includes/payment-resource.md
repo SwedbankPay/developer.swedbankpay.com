@@ -46,7 +46,7 @@ Content-Type: application/json
         "updated": "2016-09-14T13:21:57.6627579Z",
         "state": "Ready",
         "operation": "Purchase",
-        "intent": "Authorization",
+        "intent": {% if documentation_section == "trustly" %}"Sale",{% else %}"Authroization", {% endif %}
         "currency": "{{ currency }}",
         "amount": 1500,
         "remainingCaptureAmount": 1500,
@@ -68,19 +68,19 @@ Content-Type: application/json
         },
         "transactions": {
             "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/transactions"
-        }{% unless api_resource == "swish" %},
+        }{% unless api_resource == "swish" or api_resource == "trustly" %},
         "authorizations": {
             "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/authorizations"
-        }{% endunless %},
+        }{% endunless %},{% unless api_resource == "trustly" %}
         "captures": {
             "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/captures"
-        },
+        },{% endunless %}
         "reversals": {
             "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/reversals"
-        },
+        },{% unless api_resource == "trustly" %}
         "cancellations": {
             "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/cancellations"
-        }
+        }{% endunless %}
     },
     "operations": [ {%- case api_resource -%}
     {%- when "swish" -%}
@@ -92,7 +92,9 @@ Content-Type: application/json
         {% include api-operation.md api_resource=api_resource operation="create-sale" href_tail="sales" %},
         {% include api-operation.md api_resource=api_resource operation="redirect-sale" %},
         {% include api-operation.md api_resource=api_resource operation="view-sales" %},
-        {% include api-operation.md api_resource=api_resource operation="redirect-authorization" %},
+        {% include api-operation.md api_resource=api_resource operation="update-payment-abort" %},
+        {% include api-operation.md api_resource=api_resource operation="paid-payment" href_tail="paid" %},
+        {% include api-operation.md api_resource=api_resource operation="failed-payment" href_tail="failed" %}
         {%- when "invoice" -%}
         {% include api-operation.md api_resource=api_resource operation="create-authorization" href_tail="operation=authorize" %},
         {% include api-operation.md api_resource=api_resource operation="view-authorization" href_tail="operation=authorize" %},
@@ -171,10 +173,7 @@ for the given operation.
 {:.table .table-striped}
 | Operation                | Description                                                                                                               |
 | :----------------------- | :------------------------------------------------------------------------------------------------------------------------ |
-| `update-payment-abort`   | `abort`s the payment order before any financial transactions are performed.                                               |
-| `redirect-authorization` | Contains the URI that is used to redirect the consumer to the Swedbank Pay Payments containing the card authorization UI. |
-| `create-capture`         | Creates a `capture` transaction in order to charge the reserved funds from the consumer.                                  |
-| `create-cancellation`    | Creates a `cancellation` transaction that cancels a created, but not yet captured payment.                                |
+| `update-payment-abort`   | `abort`s the payment order before any financial transactions are performed.                                               | 
 | `paid-payment`           | Returns the information about a payment that has the status `paid`.                                                       |
 | `failed-payment`         | Returns the information about a payment that has the status `failed`.                                                     |
 | `view-sales`             | Contains the URI of the JavaScript used to create a Seamless View iframe directly for the `sale` transaction without redirecting the consumer to a separate payment page. |
