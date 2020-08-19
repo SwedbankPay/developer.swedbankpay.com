@@ -28,7 +28,7 @@ Content-Type: application/json
             "cancelUrl": "https://example.com/payment-canceled",
             "paymentUrl": "https://example.com/perform-payment",
             "callbackUrl": "https://api.example.com/payment-callback",
-            "termsOfServiceUrl": "https://example.com/termsandconditoons.pdf"
+            "termsOfServiceUrl": "https://example.com/termsandconditoons.pdf",
             "logoUrl": "https://example.com/logo.png"
         },
         "payeeInfo": {
