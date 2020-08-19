@@ -1,4 +1,3 @@
-{% assign payment_order = include.payment_order | default: false %}
 {% assign api_resource = include.api_resource | default: "creditcard" %}
 
 ## Callback
@@ -40,14 +39,14 @@ three example scenarios of why this is important:
 *   The callback is sent from the following IP address: `82.115.146.1`
 *   A callback should return a `200 OK` response.
 
-{% if payment_order %}
+{% if api_resource == "paymentorders" %}
 {:.code-header}
 **Payment Order Callback**
 
 ```js
 {
     "paymentOrder": {
-        "id": "/psp/paymentorders/{{ page.payment_order_id }}",
+        "id": "/psp/{{ api_resource }}/{{ page.payment_id }}",
         "instrument": "{{ api_resource }}"
     },
     "payment": {
@@ -83,7 +82,8 @@ three example scenarios of why this is important:
 {:.table .table-striped}
 | Parameter            | Description                                                |
 | :------------------- | :--------------------------------------------------------- |
-| `<transaction type>` | `authorizations`, `captures`, `cancellations`, `reversals` |
+| `<transaction type>` | `authorizations`, `captures`, `cancellations`,`reversals` |
+| `<payment instrument>` | `creditcard`, `invoice`, `swish`, `vipps`,`mobilepay`, `callback` |
 
 The sequence diagram below shows the HTTP `POST` you will receive from Swedbank
 Pay, and the two `GET` requests that you make to get the updated status.
