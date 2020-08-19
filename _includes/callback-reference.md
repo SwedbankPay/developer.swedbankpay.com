@@ -47,7 +47,7 @@ three example scenarios of why this is important:
 ```js
 {
     "paymentOrder": {
-        "id": "/psp/<payment instrument>/{{ page.payment_order_id }}",
+        "id": "/psp/{{ api_resource }}/{{ page.payment_id }}",
         "instrument": "<payment instrument>"
     },
     "payment": {
