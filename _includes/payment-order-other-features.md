@@ -863,6 +863,9 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`amount`              | `integer`    | The total amount including VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 SEK` and `5000` equals `50.00 SEK`.                                                                                 |
 | {% icon check %} | └─➔&nbsp;`vatAmount`           | `integer`    | The total amount of VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 SEK` and `5000` equals `50.00 SEK`.                                                                                        |
 
+{% include delete-token.md api_resource="paymentorders"
+documentation_section="payment-menu" token_field_name="recurrenceToken" %}
+
 ### Purchase Flow
 
 ```mermaid
@@ -926,42 +929,6 @@ sequenceDiagram
         activate Merchant
         Merchant -->>- ConsumerSubscription: display purchase result
     end
-```
-
-Customers should be able to set `recurrenceToken` to deleted if the consumer 
-deletes their agreements with their customer. 
-Note that the value of `state` must be `Deleted` when deleting the token. 
-No other states are supported.
-
-{:.code-header}
-**Request**
-
-```http
-POST /psp/paymentorders/payments HTTP/1.1
-Host: {{ page.api_host }}
-Authorization: Bearer <AccessToken>
-Content-Type: application/json
-
-{
-  "state": "Deleted",
-  "comment": "Comment on why the deletion is happening"
-}
-```
-
-{:.code-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "instrumentData": {
-    "id": "/psp/paymentorders/payments/instrumentdata/{{ page.payment_id }}",
-    "payeeId": "{{ page.merchant_id }}",
-    "isDeleted": true
-  }
-}
 ```
 
 ## Purchase Payments

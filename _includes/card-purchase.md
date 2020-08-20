@@ -296,49 +296,8 @@ Content-Type: application/json
 | └─➔&nbsp;`href`                   | `string`     | The target URI to perform the operation against.                                                                                                                                                                                                                                                                                                           |
 | └─➔&nbsp;`rel`                    | `string`     | The name of the relation the operation has to the current resource.                                                                                                                                                                                                                                                                                        |
 
-
-Customers should be able to set `paymentToken` to deleted if the consumer 
-deletes their agreements with their customer. 
-Note that the value of `state` must be `Deleted` when deleting the token. 
-No other states are supported.
-
-{:.code-header}
-**Request**
-
-```http
-POST /psp/creditcard/payments HTTP/1.1
-Host: {{ page.api_host }}
-Authorization: Bearer <AccessToken>
-Content-Type: application/json
-
-{
-  "state": "Deleted",
-  "comment": "Comment on why the deletion is happening"
-  "tokenType" : "PaymentToken"
-}
-```
-
-{:.code-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "instrumentData": {
-    "id": "/psp/creditcard/payments/instrumentdata/{{ page.payment_id }}",
-    "paymentToken": "{{ page.payment_token }}",
-    "payeeId": "{{ page.merchant_id }}",
-    "isDeleted": true
-    "isPayeeToken": false,
-    "cardBrand": "Visa",
-    "maskedPan": "123456xxxxxx1111",
-    "expiryDate": "MM/YYYY",
-    "tokenType" : "PaymentToken"
-  }
-}
-```
+{% include delete-token.md api_resource="creditcard" documentation_section
+="card" token_field_name="paymentToken" %}
 
 
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
