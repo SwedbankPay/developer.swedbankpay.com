@@ -28,8 +28,6 @@ documentation_section="trustly" %}
 In Trustly Payments, you can create one type of payment and you can inspect and alter the details of the
 individual transactions within the payment.
 
-Hei
-
 To create a Trustly payment, you perform an HTTP `POST` against the `payments`
 resource. Trustly payments does currently only support the `Purchase` operation and `Sale` intent.
 
