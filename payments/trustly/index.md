@@ -45,6 +45,47 @@ operations][after-payment] and the [payment resource][payment-resource].
 
 The displayed languages that we currently support is English (`en-us`), Norwegian (`nb-no`), Swedish (`sv-se`), and Finish (`fi-fi`).
 
+## Banks
+
+Trustly is supported by the following Finnish and Swedish banks as of August 14.
+2020.
+
+### Finland {% flag fi %}
+
+{:.table .table-striped}
+| :------------ | :------------------- | :-------------------- |
+| Bank   | Supported in eCom as of August 2020  |  Instant Credit Notification  |
+| Nordea | {% icon check %}                | {% icon check %}                 | 
+| Aktia  | {% icon check %}   | {% icon check %}    |
+| OP-Pohjola  | {% icon check %}   | {% icon check %}    |
+| Säästöpankki  | {% icon check %}   | {% icon check %}    |
+| POP Pankki  | {% icon check %}   | {% icon check %}    |
+| Handelsbanken  | {% icon check %}   | {% icon check %}    |
+| Ålandsbanken  | {% icon check %}   | {% icon check %}    |
+| S-Pankki  | {% icon check %}   | {% icon check %}    |
+| Danske Bank (Sampo)  | {% icon check %}   | {% icon check %}    |
+| Oma Säästöpankki  | {% icon check %}   | {% icon check %}    |
+
+### Sweden {% flag se %}
+
+{:.table .table-striped}
+| :------------ | :------------------- | :-------------------- |
+| Bank   | Supported in eCom as of August 2020  |  Instant Credit Notification  |
+| Swedbank | {% icon check %}                | {% icon check %}                 |
+| Nordea  | {% icon check %}   | {% icon check %}    |
+| Handelsbanken  | {% icon check %}   | {% icon check %}    |
+| SEB  | {% icon check %}   | {% icon check %}    |
+| Danske Bank  |    | {% icon check %}*    |
+| Skandiabanken  | {% icon check %}   | {% icon check %}    |
+| Länsforsäkringar  | {% icon check %}   | {% icon check %}    |
+| ICA Banken  |    |     |
+| Forex  |    |     |
+| Sparbanken Syd  | {% icon check %}   | {% icon check %}    |
+| Marginalen Bank  | {% icon check %}   | {% icon check %}    |
+
+*Danske Bank in Sweden offers instant credit notifications up to SEK 2500.
+
+
 {% include iterator.html next_href="redirect" next_title="Next: Redirect" %}
 
 [after-payment]: /payments/trustly/after-payment
