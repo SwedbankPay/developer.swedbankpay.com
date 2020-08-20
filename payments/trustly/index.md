@@ -53,8 +53,8 @@ Trustly is supported by the following Finnish and Swedish banks as of August 14.
 ### Finland {% flag fi %}
 
 {:.table .table-striped}
-| :------------ | :------------------- | :-------------------- |
-| Bank   | Supported in eCom as of August 2020  |  Instant Credit Notification  |
+|  Bank  |  Supported in eCom as of August 2020  |  Instant Credit Notification  |
+| :-----: | :-----------------------------------------: | :-----------------------------: |
 | Nordea | {% icon check %}                | {% icon check %}                 | 
 | Aktia  | {% icon check %}   | {% icon check %}    |
 | OP-Pohjola  | {% icon check %}   | {% icon check %}    |
