@@ -1255,6 +1255,63 @@ Content-Type: application/json
 
 {% include prices.md api_resource="paymentorders" %}
 
+## Custom Logo
+
+There is now support for replacing SwedbankPay logo in the payment menu. 
+See the abbreviated example below with the added `logoUrl` in `PaymentOrder`
+purchase. To do this you will need a separate configuration on customer in ecom
+admin.
+*   If the configuration is activated and you send in a `logoUrl`, then the 
+    SwedbankPay logo is replaced with the logo sent in. And text is changes accordingly.
+
+*   If the configuration is activated and you do not send in a `logoUrl`, then 
+    no logo and no text is shown.
+
+*   If the configuration is deactivated, and you send in a `logoUrl`, this is 
+    not handled.
+
+{:.code-header}
+**Request**
+
+```http
+POST /psp/paymentorders HTTP/1.1
+Host: {{ page.api_host }}
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+
+{
+    "paymentorder": {
+        "operation": "Purchase",
+        "currency": "SEK",
+        "amount": 1500,
+        "vatAmount": 375,
+        "description": "Test Purchase",
+        "userAgent": "Mozilla/5.0...",
+        "language": "sv-SE",
+        "instrument": "CreditCard"
+        "generateRecurrenceToken": {{ operation_status_bool }},{% if include.documentation_section == "payment-menu" %}
+        "generatePaymentToken": {{ operation_status_bool }},{% endif %}
+        "urls": {
+            "hostUrls": [ "https://example.com", "https://example.net" ],
+            "completeUrl": "https://example.com/payment-completed",
+            "cancelUrl": "https://example.com/payment-canceled",
+            "paymentUrl": "https://example.com/perform-payment",
+            "callbackUrl": "https://api.example.com/payment-callback",
+            "termsOfServiceUrl": "https://example.com/termsandconditoons.pdf",
+            "logoUrl": "https://example.com/logo.png"
+        }
+    }
+}
+```
+
+![The intial SwedbankPay logo][swedbankpay-logo-payment]{:width="300px"
+:height="150px"}
+
+![The replaced custom logo][swapped-logo-payment]{:width="300px"
+:height="150px"}
+
+
+
 ### Payer Resource
 
 The `payer` resource contains payer information related to the payment order.
@@ -1457,6 +1514,8 @@ principle](https://en.wikipedia.org/wiki/Robustness_principle)." %}
 [payment-resource]: #payments-resource
 [settlement-and-reconciliation]: #settlement-and-reconciliation
 [split-settlement]: #split-settlement
+[swedbankpay-logo-payment]: /assets/screenshots/logourl/logourl-swedbank.png
+[swapped-logo-payment]: /assets/screenshots/logourl/logourl-swapped.png
 [transaction]: #transaction
 [urls]: #urls-resource
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
