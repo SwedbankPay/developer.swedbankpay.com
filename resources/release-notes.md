@@ -29,6 +29,17 @@ published on this page." %}
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
 
+## 21 Aug 2020
+
+### Version 1.13.1
+
+*   Removed documentation for [Trustly Payments][trustly-payments] Seamless View. 
+*   Updated `reOrderPurchaseIndicator` description.
+*   Updated [Other Features][trustly-other-features] in [Trustly Payments][trustly-payments]. 
+*   Added an updated description to [Instrument Mode][checkout-instrument-mode]. 
+*   Updated [Test Data][test-data] for Vipps Payments. 
+*   Added updated documentation on the `transaction` operation. 
+
 ## 17 July 2020
 
 ### Version 1.13.0
@@ -436,7 +447,8 @@ integration and the payer.
 [card-redirect]: /payments/card/redirect
 [card-seamless-view]: /payments/card/seamless-view
 [checkout-capture]: /checkout/capture
-[checkout-checkin-front-end]: /checkout/checkin#step-1-initiate-session-for-consumer-identification
+[checkout-checkin-front-end]:/checkout/checkin#step-1-initiate-session-for-consumer-identification
+[checkout-instrument-mode]: /checkout/other-features#instrument-mode
 [checkout-payment-menu-frontend]: /checkout/checkin#step-2-display-swedbank-pay-checkin-module
 [checkout-payment-order-purchase]: /checkout/payment-menu#request
 [checkout-payment-orders]: /checkout/other-features#payment-orders
@@ -477,6 +489,7 @@ integration and the payer.
 [terminology]: /resources/terminology
 [test-data]: /resources/test-data
 [trustly-payments]: /payments/trustly
+[trustly-other-features]: /payments/trustly/other-features
 [vipps-payment-resource]: /payments/vipps/other-features#payment-resource
 [vipps-payment-url]: /payments/vipps/other-features#payment-url
 [vipps]: /payments/vipps
