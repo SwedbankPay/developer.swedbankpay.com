@@ -42,6 +42,3 @@ Content-Type: application/json
   }
 }
 ```
-
-
-
