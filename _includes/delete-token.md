@@ -11,7 +11,7 @@ No other states are supported.
 **Request**
 
 ```http
-PATCH /psp/{{ api_resource }}/payments/{{ page.payment_id }} HTTP/1.1
+PATCH /psp/{{ api_resource }}/{% unless documentation_section == "payment-menu" %}payments/{% endunless %}{{ page.payment_id }} HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -30,7 +30,7 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 {
   "instrumentData": {
-    "id": "/psp/{{ api_resource }}/payments/instrumentdata/{{ page.payment_id }}",
+    "id": "/psp/{{ api_resource }}/{% unless documentation_section == "payment-menu" %}payments/{% endunless %}instrumentdata/{{ page.payment_id }}",
     "paymentToken": "{{ page.payment_token }}",
     "payeeId": "{{ page.merchant_id }}",
     "isDeleted": true {% if documentation_section == "card" %}
