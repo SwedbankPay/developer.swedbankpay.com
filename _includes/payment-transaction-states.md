@@ -1,9 +1,9 @@
-## Payment States And Transaction States
+## Payment And Transaction States
 
 Both payments and transactions can be in several different states during
 the course of a purchase. You can find a short description of each state below.
 
-### Payments
+### Payment States
 
 *   `ready` means that the payment has been created successfully, and is now
     ready for further transaction operations, like `authorization`, `sale` or
@@ -18,11 +18,20 @@ the course of a purchase. You can find a short description of each state below.
     has fulfilled the payment process. This is done by calling the `PATCH` function
     for abort operations.
 
-*   `pending` is the state of a payment when a transaction is in an `initialized`
-  state. See more below. As long as a payment is `pending`, no further
-  transactions can be done.
+*   `pending` is the state of a payment when a transaction is in an
+    `initialized` state. See more below. As long as a payment is `pending`, no
+    further transactions can be done.
 
-### Transactions
+{% capture alert %}
+If you want to inspect the transactional status of a payment, read about the
+[`paid-payment`](#operation-paid-payment),
+[`failed-payment`](#operation-failed-payment) and
+[`aborted-payment`](#operation-aborted-payment) operations.
+{% endcapture %}
+
+{% include alert.html type="informative" icon="info" body=alert %}
+
+### Transaction States
 
 *   `ìntialized` is the transaction state when something unexpected occured, and
    it is impossible to determine the exact status of the transaction.

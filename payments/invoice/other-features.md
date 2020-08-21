@@ -40,7 +40,7 @@ set to value `FinancingConsumer` are listed below.
 
 {% include alert-callback-url.md api_resource="invoice" %}
 
-{% include authorizations-resource.md api_resource="invoice" %}
+{% include authorizations-resource.md documentation_section="invoice" api_resource="invoice" %}
 
 {% include payment-resource.md api_resource="invoice"
 documentation_section="invoice" show_status_operations=true %}
@@ -121,7 +121,7 @@ Content-Type: application/json
             "cancelUrl": "https://example.com/payment-canceled",
             "callbackUrl": "https://example.com/payment-callback",
             "logoUrl": "https://example.com/logo.png",
-            "termsOfServiceUrl": "http://fexample.com/terms.pdf"
+            "termsOfServiceUrl": "http://example.com/terms.pdf"
         },
         "payeeInfo": {
             "payeeId": "{{ page.merchant_id }}",
@@ -527,8 +527,7 @@ Content-Type: application/json
 The `authorization` resource contains information about an authorization
 transaction made towards a payment, as previously described.
 
-{% include transactions-reference.md api_resource="invoice"
-documentation_section="invoice" %}
+{% include transactions.md api_resource="invoice" documentation_section="invoice" %}
 
 {% include callback-reference.md api_resource="invoice" %}
 
@@ -536,7 +535,7 @@ documentation_section="invoice" %}
 
 {% include complete-url.md %}
 
-{% include description.md %}
+{% include description.md api_resource = "invoice" %}
 
 {% include payee-info.md api_resource="invoice" documentation_section="invoice" %}
 
@@ -544,32 +543,7 @@ documentation_section="invoice" %}
 
 {% include settlement-reconciliation.md documentation_section="invoice" %}
 
-## Problems
-
-When performing unsuccessful operations, the eCommerce API will respond with a
-problem message. We generally use the problem message `type` and `status` code
-to identify the nature of the problem. The problem `name` and `description` will
-often help narrow down the specifics of the problem.
-
-### Error types from Swedbank Pay Invoice and third parties
-
-All invoice error types will have the following URI in front of type:
-`https://api.payex.com/psp/errordetail/invoice/<error-type>`
-
-{:.table .table-striped}
-| Type            | Status | Description                   |
-| :-------------- | :----: | :---------------------------- |
-| `externalerror` |  500   | No error code                 |
-| `inputerror`    |  400   | 10 - ValidationWarning        |
-| `inputerror`    |  400   | 30 - ValidationError          |
-| `inputerror`    |  400   | 3010 - ClientRequestInvalid   |
-| `externalerror` |  502   | 40 - Error                    |
-| `externalerror` |  502   | 60 - SystemError              |
-| `externalerror` |  502   | 50 - SystemConfigurationError |
-| `externalerror` |  502   | 9999 - ServerOtherServer      |
-| `forbidden`     |  403   | Any other error code          |
-
-{% include common-problem-types.md %}
+{% include problems/problems.md documentation_section="invoice" %}
 
 {% include seamless-view-events.md api_resource="invoice" %}
 

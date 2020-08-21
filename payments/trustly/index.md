@@ -8,8 +8,6 @@ sidebar:
       title: Introduction
     - url: /payments/trustly/redirect
       title: Redirect
-    - url: /payments/trustly/seamless-view
-      title: Seamless View
     - url: /payments/trustly/after-payment
       title: After Payment
     - url: /payments/trustly/other-features
@@ -17,8 +15,7 @@ sidebar:
 ---
 
 {% include jumbotron.html body="**Trustly Payments** is the simplest way to
-provide **Direct Bank** payments on your website. Choose between our
-**Redirect** and **Seamless View** integration options." %}
+provide **Direct Bank** payments on your website." %}
 
 {% include alert.html type="informative"
                       icon="cached"
@@ -28,11 +25,6 @@ provide **Direct Bank** payments on your website. Choose between our
                       secure transaction. The consumer will be redirected back
                       to your website after the completion of the payment." %}
 
-{% include alert.html type="informative" icon="branding_watermark"
-                      body="**Seamless View** is our solution for a payment
-                      experience that is integrated directly on your website.
-                      The payment process will be executed in an `iframe` on
-                      your page." %}
 
 ### Important steps before you launch Swedbank Pay Trustly Payments at your website
 

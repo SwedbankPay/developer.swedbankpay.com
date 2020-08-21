@@ -216,7 +216,7 @@ Content-Type: application/json
         "operation": "Purchase",
         "intent": "Authorization",
         "currency": "SEK",
-        "amount": 1500,
+        "amount": 0,
         "remainingCaptureAmount": 1500,
         "remainingCancellationAmount": 1500,
         "remainingReversalAmount": 0,
@@ -259,6 +259,12 @@ Content-Type: application/json
             "href": "{{ page.front_end_url }}/creditcard/core/scripts/client/px.creditcard.client.js?token={{ page.payment_token }}",
             "method": "GET",
             "contentType": "application/javascript"
+        }
+        {
+            "rel": "direct-authorization",
+            "href": ""{{ page.api_url }}/psp/creditcard/confined/payments/{{ page.payment_id }}/authorizations",
+            "method": "POST",
+            "contentType": "application/json"
         }
     ]
 }

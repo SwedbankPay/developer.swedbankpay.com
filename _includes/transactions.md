@@ -1,10 +1,21 @@
 {% assign api_resource = include.api_resource | default: 'creditcard' %}
 {% assign documentation_section = include.documentation_section %}
+{% assign header_level = include.header_level | default: 2 %}
+{% assign next_header_level = header_level | plus: 1 %}
+{% capture h %}{% for i in (1..header_level) %}#{% endfor %}{% endcapture %}
 
-A payment contains sub-resources in the form of `transactions`. Most operations
-performed on a payment ends up as a transaction. The different types of
-operations that alter the state of the payment by creating a transaction is
-described below.
+{{ h }} Transactions
+
+{% if api_resource == "paymentorders" -%}
+A payment order contains one or more `payment` sub-resources, which in turn
+contains sub-resources in the form of `transactions`.
+{% else -%}
+A payment contains sub-resources in the form of `transactions`.
+{% endif -%}
+
+Most operations performed on a payment ends up as a `transaction` resource. The
+different types of operations that alter the state of the payment by creating a
+transaction is described below.
 
 The `transactions` resource will list the transactions (one or more) on a
 specific payment.
@@ -19,5 +30,12 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{% include transaction-list-response.md api_resource=api_resource
-documentation_section=documentation_section transaction="transaction" %}
+{% include transaction-list-response.md
+    api_resource=api_resource
+    documentation_section=documentation_section
+    transaction="transaction" %}
+
+{% include transaction.md
+    api_resource=api_resource
+    documentation_section=documentation_section
+    header_level=next_header_level %}

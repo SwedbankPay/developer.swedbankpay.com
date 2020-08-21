@@ -158,7 +158,7 @@ Content-Type: application/json
         "operation": "Purchase",
         "intent": "Authorization",
         "currency": "SE",
-        "amount": 1500,
+        "amount": 0,
         "remainingCaptureAmount": 1500,
         "remainingCancellationAmount": 1500,
         "remainingReversalAmount": 0,

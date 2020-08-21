@@ -1,4 +1,5 @@
 {% assign api_resource = include.api_resource | default: creditcard %}
+{% assign documentation_section = include.documentation_section | default: creditcard %}
 
 ### Authorizations
 
@@ -15,61 +16,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{:.code-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "payment": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
-    "authorizations": {
-        "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/authorizations",
-        "authorizationList": [
-            {
-                "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id}}",
-                "consumer": {
-                    "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/consumer"
-                },
-                "legalAddress": {
-                    "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/legaladdress"
-                },
-                "billingAddress": {
-                    "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/billingaddress"
-                },
-                "transaction": {
-                    "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id}}",
-                    "created": "2016-09-14T01:01:01.01Z",
-                    "updated": "2016-09-14T01:01:01.03Z",
-                    "type": "Authorization",
-                    "state": "Initialized",
-                    "number": 1234567890,
-                    "amount": 1000,
-                    "vatAmount": 250,
-                    "description": "Test transaction",
-                    "payeeReference": "AH123456",
-                    "failedReason": "",
-                    "isOperational": false,
-                    "operations": [
-                        {
-                            "method": "POST",
-                            "href": "{{ page.api_url }}/psp/{{ api_resource }}/payments/{{ page.payment_id }}/authorizations",
-                            "rel": "create-authorization",
-                            "contentType": "application/json"
-                        },
-                        {
-                            "href": "{{ page.api_url }}/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
-                            "rel": "edit-authorization",
-                            "method": "PATCH"
-                        }
-                    ]
-                }
-            }
-        ]
-    }
-}
-```
+{% include transaction-list-response.md api_resource=api_resouce documentation_section=documentation_section transaction="authorization" %}
 
 #### Create Authorization transaction
 
@@ -177,7 +124,6 @@ Content-Type: application/json
             "vatAmount": 250,
             "description": "Test transaction",
             "payeeReference": "AH123456",
-            "failedReason": "",
             "isOperational": false,
             "operations": [
                 {

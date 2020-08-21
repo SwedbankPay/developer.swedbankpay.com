@@ -98,7 +98,7 @@ directly.
 **Request**
 
 ```http
-POST /psp/creditcard/payments/{{ page.payment_id }}/authorizations HTTP/1.1
+POST /psp/creditcard/confined/payments/{{ page.payment_id }}/authorizations HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -156,7 +156,7 @@ Content-Type: application/json
             "type": "Authorization",
             "state": "Completed",
             "number": 99100557070,
-            "amount": 4201,
+            "amount": 1500,
             "vatAmount": 0,
             "description": "Books & Ink",
             "payeeReference": "cyrusLibrary1586291679",
@@ -227,7 +227,7 @@ authentication. See the request and response examples below.
 **Request**
 
 ```http
-POST /psp/creditcard/payments/{{ page.payment_id }}/authorizations HTTP/1.1
+POST /psp/creditcard/confined/payments/{{ page.payment_id }}/authorizations HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -282,7 +282,7 @@ Content-Type: application/json
             "type": "Authorization",
             "state": "AwaitingActivity",
             "number": 70100366758,
-            "amount": 4201,
+            "amount": 1500,
             "vatAmount": 0,
             "description": "Test transaction",
             "payeeReference": "1583846100",

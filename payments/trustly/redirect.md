@@ -8,8 +8,6 @@ sidebar:
       title: Introduction
     - url: /payments/trustly/redirect
       title: Redirect
-    - url: /payments/trustly/seamless-view
-      title: Seamless View
     - url: /payments/trustly/after-payment
       title: After Payment
     - url: /payments/trustly/other-features
@@ -26,9 +24,9 @@ sidebar:
 *   You need to redirect the payer's browser to that specified URL so that the
     payer can enter the payment details in a secure Swedbank Pay environment.
 *   Swedbank Pay will redirect the payer's browser to one of two specified URLs,
-    depending on whether the payment session is followed through completely or
-    cancelled beforehand. Please note that both a successful and rejected payment
-    reach completion, in contrast to a cancelled payment.
+    depending on whether the payment session is followed through completely.
+    Please note that both a successful and rejected payment
+    reach completion.
 *   When you detect that the payer reach your `completeUrl`, you need to do a
     `GET` request to receive the state of the transaction, containing the
     `id` URI generated in the first step, to receive the state of the
@@ -66,7 +64,7 @@ Content-Type: application/json
         "language": "sv-SE",
         "urls": {
             "completeUrl": "https://example.com/payment-completed",
-            "cancelUrl": "https://example.com/payment-canceled",
+            "hostUrls": [ "https://example.com" ],
             "callbackUrl": "https://example.com/payment-callback",
             "logoUrl": "https://example.com/logo.png",
             "termsOfServiceUrl": "https://example.com/terms.pdf"
@@ -91,7 +89,7 @@ Content-Type: application/json
 | :--------------: | :--------------------------- | :------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | {% icon check %} | `payment`                    | `object`      | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                              |
 | {% icon check %} | └➔&nbsp;`operation`          | `string`      | The operation that the `payment` is supposed to perform. For Trustly, this will always be `Purchase` as it is currently the only available operation.                                                                                                                                              |
-| {% icon check %} | └➔&nbsp;`intent`             | `string`      | `Sale` is the only intent option for Trustly. Performs the payment when the end-user gets redirected and completes the payment, and is followed by a [cancellation][cancel] or [reversal][reversal] of funds.                                                                                      |
+| {% icon check %} | └➔&nbsp;`intent`             | `string`      | `Sale` is the only intent option for Trustly. Performs the payment when the end-user gets redirected and completes the payment, and is followed by a [reversal][reversal] of funds.                                                                                      |
 | {% icon check %} | └➔&nbsp;`currency`           | `string`      | `SEK`, `EUR`. The currency of the provided `amount`.                                                                                                                                                                                                                                               |
 | {% icon check %} | └➔&nbsp;`prices`             | `object`      | The `prices` resource lists the prices related to a specific payment.                                                                                                                                                                                                                              |
 | {% icon check %} | └─➔&nbsp;`type`              | `string`      | Use the `Trustly` type here                                                                                                                                                                                                                                                                        |
@@ -104,7 +102,6 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`urls`               | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                             |
 |                  | └─➔&nbsp;`hostUrl`           | `array`       | The array of URLs valid for embedding of Swedbank Pay Seamless View. If not supplied, view-operation will not be available.                                                                                                                                                                        |
 | {% icon check %} | └─➔&nbsp;`completeUrl`       | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. |
-|                  | └─➔&nbsp;`cancelUrl`         | `string`      | The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only `cancelUrl` or `paymentUrl` can be used, not both.                                                                                            |
 |                  | └─➔&nbsp;`callbackUrl`       | `string`      | The URL that Swedbank Pay will perform an HTTP `POST` against every time a transaction is created on the payment. See [callback][callback] for details.                                                                                                                                            |
 |                  | └─➔&nbsp;`logoUrl`           | `string`      | The URL that will be used for showing the customer logo. Must be a picture with maximum 50px height and 400px width. Require https.                                                                                                                                                                |
 |                  | └─➔&nbsp;`termsOfServiceUrl` | `string`      | {% include field-description-termsofserviceurl.md %}                                                                                                                                                                                                                                               |
@@ -231,15 +228,14 @@ sequenceDiagram
 
 Head over to [after payment][after-payment]
 to see what you can do when a payment is completed.
-Here you will also find info on `Cancel`, and `Reversal`.
+Here you will also find info on `Abort` and `Reversal`.
 
 {% include iterator.html prev_href="./" prev_title="Back: Introduction"
-next_href="seamless-view" next_title="Next: Seamless View" %}
+next_href="after-payment" next_title="Next: After Payment" %}
 
 [deposit]: https://trustly.com/en/developer/api#/deposit
 [after-payment]: /payments/trustly/after-payment
 [callback]: /payments/trustly/other-features#callback
-[cancel]: /payments/trustly/after-payment#cancellations
 [reversal]: /payments/trustly/after-payment#reversals
 [payee-reference]: /payments/trustly/other-features#payeeinfo
 [recur]: /payments/trustly/other-features#recur

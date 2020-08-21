@@ -80,6 +80,15 @@ end
 
 # Test generated output has valid HTML and links.
 task :test => :build do
+  git_token = "JEKYLL_GITHUB_TOKEN"
+  if ENV.has_key?("JEKYLL_GITHUB_TOKEN")
+    git_token = ENV["JEKYLL_GITHUB_TOKEN"].safe_strip
+    puts "Environment variable #{key} used with value: #{git_token}."
+  else
+    puts "No Environment variable for #{key} found."
+    return 0
+  end
+
   options = {
     :assume_extension => true,
     :check_html => true,
@@ -90,6 +99,8 @@ task :test => :build do
       "https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default",
       "http://restcookbook.com/Basics/loggingin/",
     ],
+    :typhoeus_config => "{\"memoize\" : true, \"authorization\":\"Bearer #{git_token}\"}",
+    :http_status_ignore => [429]
   }
   HTMLProofer.check_directory("./_site", options).run
 end

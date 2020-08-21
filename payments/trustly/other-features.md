@@ -8,8 +8,6 @@ sidebar:
       title: Introduction
     - url: /payments/trustly/redirect
       title: Redirect
-    - url: /payments/trustly/seamless-view
-      title: Seamless View
     - url: /payments/trustly/after-payment
       title: After Payment
     - url: /payments/trustly/other-features
@@ -17,11 +15,9 @@ sidebar:
 ---
 
 {% include payment-resource.md api_resource="trustly"
-documentation_section="trustly" show_status_operations=true %}
+documentation_section="trustly" %}
 
-{% include alert-callback-url.md api_resource="trustly" %}
-
-{% include authorizations-resource.md api_resource="trustly" %}
+{% include alert-callback-url.md api_resource="trustly" %}s
 
 {% include payment-transaction-states.md %}
 
@@ -61,10 +57,10 @@ Content-Type: application/json
         "language": "sv-SE",
         "urls": {
             "completeUrl": "https://example.com/payment-completed",
-            "cancelUrl": "https://example.com/payment-canceled",
             "callbackUrl": "https://example.com/payment-callback",
             "logoUrl": "https://example.com/logo.png",
-            "termsOfServiceUrl": "https://example.com/terms.pdf"
+            "termsOfServiceUrl": "https://example.com/terms.pdf",
+            "paymentUrl": "https://example.com/perform-payment"
         },
         "payeeInfo": {
             "payeeId": "{{ page.merchant_id }}",
@@ -94,15 +90,15 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`vatAmount`         | `integer`     | {% include field-description-vatamount.md %}                                                                                                                                                                                                                                                       |
 | {% icon check %} | └➔&nbsp;`description`        | `string(40)`  | {% include field-description-description.md documentation_section="trustly" %}                                                                                                                                                                                                                     |
 |                  | └➔&nbsp;`payerReference`     | `string`      | The reference to the payer (consumer/end user) from the merchant system. E.g mobile number, customer number etc.                                                                                                                                                                                   |
-| {% icon check %} | └➔&nbsp;`userAgent`           | `string`      | The [`User-Agent` string][user-agent] of the consumer's web browser.                                                                                                                                                                                                                                |
+| {% icon check %} | └➔&nbsp;`userAgent`          | `string`      | The [`User-Agent` string][user-agent] of the consumer's web browser.                                                                                                                                                                                                                               |
 | {% icon check %} | └➔&nbsp;`language`           | `string`      | {% include field-description-language.md api_resource="trustly" %}                                                                                                                                                                                                                                 |
 | {% icon check %} | └➔&nbsp;`urls`               | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                             |
 |                  | └─➔&nbsp;`hostUrl`           | `array`       | The array of URLs valid for embedding of Swedbank Pay Seamless View. If not supplied, view-operation will not be available.                                                                                                                                                                        |
 | {% icon check %} | └─➔&nbsp;`completeUrl`       | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. |
-|                  | └─➔&nbsp;`cancelUrl`         | `string`      | The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only `cancelUrl` or `paymentUrl` can be used, not both.                                                                                            |
 |                  | └─➔&nbsp;`callbackUrl`       | `string`      | The URL that Swedbank Pay will perform an HTTP `POST` against every time a transaction is created on the payment. See [callback][callback] for details.                                                                                                                                            |
 |                  | └─➔&nbsp;`logoUrl`           | `string`      | The URL that will be used for showing the customer logo. Must be a picture with maximum 50px height and 400px width. Require https.                                                                                                                                                                |
 |                  | └─➔&nbsp;`termsOfServiceUrl` | `string`      | {% include field-description-termsofserviceurl.md %}                                                                                                                                                                                                                                               |
+|                  | └─➔&nbsp;`paymentUrl`        | `string`      | The URI that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment.                                                                                                                                                 |
 | {% icon check %} | └➔&nbsp;`payeeInfo`          | `object`      | The `payeeInfo` contains information about the payee.                                                                                                                                                                                                                                              |
 | {% icon check %} | └─➔&nbsp;`payeeId`           | `string`      | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                                                                                                              |
 | {% icon check %} | └─➔&nbsp;`payeeReference`    | `string(30*)` | {% include field-description-payee-reference.md documentation_section="trustly" %}                                                                                                                                                                                                                 |
@@ -114,31 +110,19 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`firstName`         | `string`      | Prefilled value to put in the first name text box.                                                                                                                                                                                                                                                 |
 |                  | └─➔&nbsp;`lastName`          | `string`      | Prefilled value to put in the last name text box.                                                                                                                                                                                                                                                  |
 
-{% include transactions-reference.md api_resource="trustly"
-documentation_section="trustly" %}
+{% include transactions.md api_resource="trustly" documentation_section="trustly" %}
 
 {% include callback-reference.md api_resource="trustly" %}
 
-{% include payment-link.md show_3d_secure=false %}
-
 {% include complete-url.md %}
 
-{% include description.md %}
+{% include description.md api_resource = "trustly" %}
 
 {% include payee-info.md api_resource="trustly" documentation_section="trustly" %}
 
-{% include prices.md api_resource="trustly" %}
-
 {% include settlement-reconciliation.md documentation_section="trustly" %}
 
-## Problems
-
-When performing unsuccessful operations, the eCommerce API will respond with a
-problem message. We generally use the problem message `type` and `status` code
-to identify the nature of the problem. The problem `name` and `description` will
-often help narrow down the specifics of the problem.
-
-{% include common-problem-types.md %}
+{% include problems/problems.md documentation_section="trustly" %}
 
 {% include seamless-view-events.md api_resource="trustly" %}
 
@@ -146,7 +130,6 @@ often help narrow down the specifics of the problem.
 Payment" %}
 
 [callback]: #callback
-[cancel]: /payments/trustly/after-payment#cancellations
 [financing-consumer]: #financing-consumer
 [trustly-payment]: /assets/img/checkout/trustly-seamless-view.png
 [recur]: #recur

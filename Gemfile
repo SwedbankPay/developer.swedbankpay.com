@@ -14,3 +14,4 @@ gem 'rake', '~> 13.0.1'
 gem 'html-proofer'
 gem 'html-proofer-unrendered-markdown'
 gem 'jekyll-redirect-from'
+gem "kramdown", ">= 2.3.0"
