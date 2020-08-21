@@ -747,14 +747,6 @@ described here in the documentation</strong>. Always use the <code class="langua
 specified in the response by finding the appropriate operation based on its
 <code class="language-html highlighter-rouge">rel</code> value.</p>
     
-      <h3 id="payeereference">
-        
-        
-          PayeeReference <a href="#payeereference" class="header-anchor"></a>
-        
-        
-      </h3>
-    
       <h2 id="payee-reference">
         
         
@@ -872,7 +864,11 @@ seconds from the initial transaction time:
   <tbody>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge"><span class="nt">&lt;transaction</span> <span class="na">type</span><span class="nt">&gt;</span></code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">authorizations</code>, <code class="language-html highlighter-rouge">captures</code>, <code class="language-html highlighter-rouge">cancellations</code>, <code class="language-html highlighter-rouge">reversals</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">authorizations</code>, <code class="language-html highlighter-rouge">captures</code>, <code class="language-html highlighter-rouge">cancellations</code>,<code class="language-html highlighter-rouge">reversals</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge"><span class="nt">&lt;payment</span> <span class="na">instrument</span><span class="nt">&gt;</span></code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">creditcard</code>, <code class="language-html highlighter-rouge">invoice</code>, <code class="language-html highlighter-rouge">swish</code>, <code class="language-html highlighter-rouge">vipps</code>,<code class="language-html highlighter-rouge">mobilepay</code>, <code class="language-html highlighter-rouge">callback</code></td>
     </tr>
   </tbody>
 </table>
@@ -904,11 +900,16 @@ Pay, and the two <code class="language-html highlighter-rouge">GET</code> reques
         
       </h2>
 
-<p>When performing operations against the API, it will respond with a problem
-message that contain details of the error type if the request could not be
-successfully performed. Regardless of why the error occurred, the problem
-message will follow the same structure as specified in the
+<p>When performing operations against a resource in the Swedbank Pay API Platform,
+it will respond with a problem message that contain details of the error type if
+the request could not be successfully performed. Regardless of why the error
+occurred, the problem message will follow the same structure as specified in the
 <a href="https://tools.ietf.org/html/rfc7807">Problem Details for HTTP APIs (RFC 7807)</a> specification.</p>
+
+<p>We generally use the problem message <code class="language-html highlighter-rouge">type</code> and <code class="language-html highlighter-rouge">status</code> code to identify the
+nature of the problem. The <code class="language-html highlighter-rouge">problems</code> array contains objects with <code class="language-html highlighter-rouge">name</code> and
+<code class="language-html highlighter-rouge">description</code> that will often help narrow down the specifics of the problem,
+usually to the field in the request that was missing or contained invalid data.</p>
 
 <p>The structure of a problem message will look like this:</p>
 
@@ -927,7 +928,7 @@ message will follow the same structure as specified in the
 11
 12
 </pre></td><td class="rouge-code"><pre><span class="p">{</span>
-    <span class="dl">"</span><span class="s2">type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://api.payex.com/psp/errordetail/creditcard/inputerror</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://api.payex.com/psp/errordetail/&lt;resource&gt;/inputerror</span><span class="dl">"</span><span class="p">,</span>
     <span class="dl">"</span><span class="s2">title</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">There was an input error</span><span class="dl">"</span><span class="p">,</span>
     <span class="dl">"</span><span class="s2">detail</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Please correct the errors and retry the request</span><span class="dl">"</span><span class="p">,</span>
     <span class="dl">"</span><span class="s2">instance</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">ec2a9b09-601a-42ae-8e33-a5737e1cf177</span><span class="dl">"</span><span class="p">,</span>
@@ -1006,10 +1007,10 @@ message will follow the same structure as specified in the
       </h3>
 
 <p>All common problem types will have a URI in the format
-<code class="language-html highlighter-rouge">https://api.payex.com/psp/errordetail/<span class="nt">&lt;error-type&gt;</span></code>. The
-<strong>URI is an identifier</strong> that you can hard-code and implement logic around. It
-is currently not not possible to dereference this URI, although that might be
-possible in the future.</p>
+<code class="language-html highlighter-rouge">https://api.payex.com/psp/errordetail/<span class="nt">&lt;error-type&gt;</span></code>. The <strong>URI is an
+identifier</strong> that you can hard-code and implement logic around. It is currently
+not not possible to dereference this URI, although that might be possible in the
+future.</p>
 
 <table class="table table-striped">
   <thead>
@@ -1063,8 +1064,8 @@ can read more about the payment instrument specific problem messages below:</p>
 <ul>
   <li><a href="/payments/card/other-features#problems">Card Payments</a></li>
   <li><a href="/payments/invoice/other-features#problems">Invoice Payments</a></li>
-  <li><a href="/payments/swish/other-features#swish-api-errors">Swish Payments</a></li>
-  <li><a href="/payments/vipps/other-features#problem-messages">Vipps Payments</a></li>
+  <li><a href="/payments/swish/other-features#problems">Swish Payments</a></li>
+  <li><a href="/payments/vipps/other-features#problems">Vipps Payments</a></li>
 </ul>
                                     
                                 </div>

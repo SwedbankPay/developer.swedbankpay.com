@@ -308,7 +308,7 @@ possible to perform in the current state of the payment.</p>
         </span><span class="nl">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-14T13:21:57.6627579Z"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ready"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"operation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Purchase"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"intent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Authorization"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"intent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Authroization"</span><span class="p">,</span><span class="w"> 
         </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOK"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w">
         </span><span class="nl">"remainingCaptureAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w">
@@ -547,10 +547,10 @@ for the given operation.</p>
   </tbody>
 </table>
     
-      <h2 id="payment-states-and-transaction-states">
+      <h2 id="payment-and-transaction-states">
         
         
-          Payment States And Transaction States <a href="#payment-states-and-transaction-states" class="header-anchor"></a>
+          Payment And Transaction States <a href="#payment-and-transaction-states" class="header-anchor"></a>
         
         
       </h2>
@@ -558,10 +558,10 @@ for the given operation.</p>
 <p>Both payments and transactions can be in several different states during
 the course of a purchase. You can find a short description of each state below.</p>
     
-      <h3 id="payments">
+      <h3 id="payment-states">
         
         
-          Payments <a href="#payments" class="header-anchor"></a>
+          Payment States <a href="#payment-states" class="header-anchor"></a>
         
         
       </h3>
@@ -584,16 +584,33 @@ has fulfilled the payment process. This is done by calling the <code class="lang
 for abort operations.</p>
   </li>
   <li>
-    <p><code class="language-html highlighter-rouge">pending</code> is the state of a payment when a transaction is in an <code class="language-html highlighter-rouge">initialized</code>
-  state. See more below. As long as a payment is <code class="language-html highlighter-rouge">pending</code>, no further
-  transactions can be done.</p>
+    <p><code class="language-html highlighter-rouge">pending</code> is the state of a payment when a transaction is in an
+<code class="language-html highlighter-rouge">initialized</code> state. See more below. As long as a payment is <code class="language-html highlighter-rouge">pending</code>, no
+further transactions can be done.</p>
   </li>
 </ul>
+
+<div class="alert  alert-informative">
     
-      <h3 id="transactions">
+        
+            <i class="material-icons alert-icon">info</i>
+        
+    
+
+    
+        
+            <p>If you want to inspect the transactional status of a payment, read about the
+<a href="#operation-paid-payment"><code class="language-html highlighter-rouge">paid-payment</code></a>,
+<a href="#operation-failed-payment"><code class="language-html highlighter-rouge">failed-payment</code></a> and
+<a href="#operation-aborted-payment"><code class="language-html highlighter-rouge">aborted-payment</code></a> operations.</p>
+        
+    
+</div>
+    
+      <h3 id="transaction-states">
         
         
-          Transactions <a href="#transactions" class="header-anchor"></a>
+          Transaction States <a href="#transaction-states" class="header-anchor"></a>
         
         
       </h3>
@@ -637,8 +654,7 @@ payments.</p>
       </h3>
 
 <p>The <code class="language-html highlighter-rouge">paid-payment</code> operation confirms that the transaction has been successful
-and that the payment is completed. Under <code class="language-html highlighter-rouge">details</code> you can see which card was
-used to complete the payment.</p>
+and that the payment is completed.</p>
 
 <p>A <code class="language-html highlighter-rouge">paid-payment</code> operation looks like the following:</p>
 
@@ -649,7 +665,7 @@ used to complete the payment.</p>
 5
 6
 </pre></td><td class="rouge-code"><pre><span class="p">{</span><span class="w">
-   </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/vipps/payments//paid"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.externalintegration.payex.com/psp/vipps/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/paid"</span><span class="p">,</span><span class="w">
    </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paid-payment"</span><span class="p">,</span><span class="w">
    </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
    </span><span class="nl">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/json"</span><span class="w">
@@ -666,7 +682,7 @@ response look like is given below.</p>
 2
 3
 4
-</pre></td><td class="rouge-code"><pre><span class="nf">GET</span> <span class="nn">/psp/vipps/payments//paid</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</pre></td><td class="rouge-code"><pre><span class="nf">GET</span> <span class="nn">/psp/vipps/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/paid</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">api.externalintegration.payex.com</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
@@ -691,91 +707,21 @@ response look like is given below.</p>
 15
 16
 17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
 </pre></td><td class="rouge-code"><pre><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
 <span class="p">{</span><span class="w">
-  </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/vipps/payments/"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/vipps/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"paid"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/vipps/payments//paid"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/vipps/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/paid"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
     </span><span class="nl">"transaction"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/pspvipps/payments//transactions/"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/pspvipps/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions/"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1234567891</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CD123"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"orderReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AB1234"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"tokens"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"payment"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a17c24e-d459-4567-bbad-aa0f17a76119"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4925xxxxxx000004"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"expiryDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"mm/yyyy"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"recurrence"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a17c24e-d459-4567-bbad-aa0f17a76119"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4925xxxxxx000004"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"expiryDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"mm/yyyy"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"transactionsOnFile"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a17c24e-d459-4567-bbad-aa0f17a76119"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4925xxxxxx000004"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"expiryDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"mm/yyyy"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"details"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"cardBrand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Visa"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"MaskedPan"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4925xxxxxx000004"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"cardType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Credit"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"issuingBank"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UTL MAESTRO"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"countryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"999"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"acquirerTransactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3DSECURE"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"issuerAuthorizationApprovalCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"397136"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"acquirerStan"</span><span class="p">:</span><span class="w"> </span><span class="s2">"39736"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"acquirerTerminalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"39"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"acquirerTransactionTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-29T13:42:18Z"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"nonPaymentToken"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678-1234-1234-1234-1234567890AB"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"externalNonPaymentToken"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"transactionInitiator"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"MERCHANT"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></pre></td></tr></tbody></table></code></pre></div></div>
@@ -913,7 +859,7 @@ can be created if the payment is in this state.</p>
 5
 6
 </pre></td><td class="rouge-code"><pre><span class="p">{</span><span class="w">
-   </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/vipps/payments//failed"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.externalintegration.payex.com/psp/vipps/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/failed"</span><span class="p">,</span><span class="w">
    </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed-payment"</span><span class="p">,</span><span class="w">
    </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
    </span><span class="nl">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/problem+json"</span><span class="w">
@@ -935,7 +881,7 @@ error code.</p>
 2
 3
 4
-</pre></td><td class="rouge-code"><pre><span class="nf">GET</span> <span class="nn">/psp/vipps/payments//failed</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</pre></td><td class="rouge-code"><pre><span class="nf">GET</span> <span class="nn">/psp/vipps/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/failed</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">api.externalintegration.payex.com</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
@@ -966,10 +912,10 @@ error code.</p>
 
 <span class="p">{</span><span class="w">
    </span><span class="nl">"problem"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/errordetail/vipps/acquirererror"</span><span class="p">,</span><span class="w">
+       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.externalintegration.payex.com/psp/errordetail/vipps/acquirererror"</span><span class="p">,</span><span class="w">
        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Operation failed"</span><span class="p">,</span><span class="w">
        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">403</span><span class="p">,</span><span class="w">
-       </span><span class="nl">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unable to complete Authorization transaction, look at problem node!"</span><span class="p">,</span><span class="w">
+       </span><span class="nl">"detail"</span><span class="p">:</span><span class="w">  </span><span class="s2">"Unable to complete Authorization transaction, look at problem node!"</span><span class="p">,</span><span class="w"> 
        </span><span class="nl">"problems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ExternalResponse"</span><span class="p">,</span><span class="w">
@@ -1002,7 +948,7 @@ before the end user has fulfilled the payment process. You can see this under
 5
 6
 </pre></td><td class="rouge-code"><pre><span class="p">{</span><span class="w">
-    </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/creditcard/payments/&lt;paymentId&gt;/aborted"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.externalintegration.payex.com/psp/creditcard/payments/&lt;paymentId&gt;/aborted"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aborted-payment"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/json"</span><span class="w">
@@ -1019,7 +965,7 @@ response looks like is given below.</p>
 2
 3
 4
-</pre></td><td class="rouge-code"><pre><span class="nf">GET</span> <span class="nn">/psp/vipps/payments//aborted</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</pre></td><td class="rouge-code"><pre><span class="nf">GET</span> <span class="nn">/psp/vipps/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/aborted</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">api.externalintegration.payex.com</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
@@ -1040,7 +986,7 @@ response looks like is given below.</p>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
 <span class="p">{</span><span class="w">
-  </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/vipps/payments/"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/vipps/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"aborted"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"abortReason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aborted by consumer"</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -1742,31 +1688,19 @@ shown in the payment window, but it is still required in the initial request.</p
 15
 16
 17
-18
-19
-20
-21
-22
-23
-</pre></td><td class="rouge-code"><pre><span class="nf">POST</span> <span class="nn">/psp/creditcard/payments</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</pre></td><td class="rouge-code"><pre><span class="nf">POST</span> <span class="nn">/psp/vipps/payments</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
 <span class="p">{</span><span class="w">
-      </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"paymentorder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"operation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Purchase"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"intent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Authorization"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SEK"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"prices"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-                </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CreditCard"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"vatAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">],</span><span class="w">
-        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test purchase - orderNumber28749347"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"intent"</span><span class="p">:</span><span class="w">  </span><span class="s2">"Authorization"</span><span class="p">,</span><span class="w"> 
+        </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOK"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test - Reference1583419461"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"generateRecurrenceToken"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="nl">"userAgent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mozilla/5.0..."</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sv-SE"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nb-NO"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"urls"</span><span class="p">:</span><span class="w">
             </span><span class="nl">"hostUrls"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"https://example.com"</span><span class="p">]</span><span class="w">
         </span><span class="p">}</span><span class="w">
@@ -1935,18 +1869,18 @@ characters <strong>must be digits</strong>.</li>
   </li>
 </ul>
     
-      <h2 id="transactions-1">
+      <h2 id="transactions">
         
         
-          Transactions <a href="#transactions-1" class="header-anchor"></a>
+          Transactions <a href="#transactions" class="header-anchor"></a>
         
         
       </h2>
 
-<p>A payment contains sub-resources in the form of <code class="language-html highlighter-rouge">transactions</code>. Most operations
-performed on a payment ends up as a transaction. The different types of
-operations that alter the state of the payment by creating a transaction is
-described below.</p>
+<p>A payment contains sub-resources in the form of <code class="language-html highlighter-rouge">transactions</code>.
+Most operations performed on a payment ends up as a <code class="language-html highlighter-rouge">transaction</code> resource. The
+different types of operations that alter the state of the payment by creating a
+transaction is described below.</p>
 
 <p>The <code class="language-html highlighter-rouge">transactions</code> resource will list the transactions (one or more) on a
 specific payment.</p>
@@ -1996,7 +1930,6 @@ towards the specific transaction’s <code class="language-html highlighter-roug
 24
 25
 26
-27
 </pre></td><td class="rouge-code"><pre><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
@@ -2017,7 +1950,6 @@ towards the specific transaction’s <code class="language-html highlighter-roug
                 </span><span class="nl">"vatAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">250</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test transaction"</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AH123456"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"failedReason"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"isOperational"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
             </span><span class="p">}</span><span class="w">
@@ -2127,12 +2059,6 @@ towards the specific transaction’s <code class="language-html highlighter-roug
       <td> </td>
     </tr>
     <tr>
-      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">failedReason</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The human readable explanation of why the payment failed.</td>
-      <td> </td>
-    </tr>
-    <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">isOperational</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">bool</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">true</code> if the transaction is operational; otherwise <code class="language-html highlighter-rouge">false</code>.</td>
@@ -2218,7 +2144,7 @@ order gets the state <code class="language-html highlighter-rouge">failed</code>
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/vipps/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-14T01:01:01.01Z"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-14T01:01:01.03Z"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Capture"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w">  </span><span class="s2">"Capture"</span><span class="p">,</span><span class="w"> 
         </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Initialized"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
         </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
@@ -2231,90 +2157,222 @@ order gets the state <code class="language-html highlighter-rouge">failed</code>
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></pre></td></tr></tbody></table></code></pre></div></div>
+    
+      <h4 id="transaction-problems">
+        
+        
+          Transaction Problems <a href="#transaction-problems" class="header-anchor"></a>
+        
+        
+      </h4>
+
+<p>In the event that a transaction is <code class="language-html highlighter-rouge">failed</code>, the <code class="language-html highlighter-rouge">transaction</code> response will
+contain a <code class="language-html highlighter-rouge">problem</code> property as seen in the example below. To view all the
+problems that can occur due to an unsuccesful transaction, head over to the
+<a href="/payments/vipps/other-features#problems">problems section</a>.</p>
+
+<p>The created <code class="language-html highlighter-rouge">transaction</code> resource contains information about the
+<code class="language-html highlighter-rouge">transaction</code> transaction made against a <code class="language-html highlighter-rouge">vipps</code> payment.</p>
+
+<p class="code-header"><strong>Response</strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+</pre></td><td class="rouge-code"><pre><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/vipps/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"transaction"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/vipps/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"itemDescriptions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/vipps/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions/ec2a9b09-601a-42ae-8e33-a5737e1cf177/itemDescriptions"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"transaction"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/vipps/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-14T01:01:01.01Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-14T01:01:01.03Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Transaction"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Failed"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"vatAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">250</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test transaction"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AH123456"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"isOperational"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"problem"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.payex.com/psp/errordetail/vipps/3DSECUREERROR"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Error when complete authorization"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unable to complete 3DSecure verification!"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"problems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">]</span><span class="w"> 
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></pre></td></tr></tbody></table></code></pre></div></div>
 
 <table class="table table-striped">
   <thead>
     <tr>
-      <th style="text-align: left">Property</th>
+      <th style="text-align: left">Field</th>
       <th style="text-align: left">Type</th>
       <th style="text-align: left">Description</th>
+      <th> </th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">payment</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI of the payment this transaction belongs to.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">transaction</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">transaction</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">object</code></td>
-      <td style="text-align: left">The transaction object.</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The current <code class="language-html highlighter-rouge">transaction</code> transaction resource.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">id</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI of the current <code class="language-html highlighter-rouge">transaction</code> resource.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">transaction</code> resource this <code class="language-html highlighter-rouge">transaction</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td> </td>
     </tr>
     <tr>
-      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">created</code></td>
+      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">itemDescriptions</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">object</code></td>
+      <td style="text-align: left">The object representation of the <code class="language-html highlighter-rouge">itemDescriptions</code> resource.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">id</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">itemDescriptions</code> resource this <code class="language-html highlighter-rouge">transaction</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">transaction</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">object</code></td>
+      <td style="text-align: left">The object representation of the generic transaction resource.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">id</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">transaction</code> resource this <code class="language-html highlighter-rouge">transaction</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">created</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The ISO-8601 date and time of when the transaction was created.</td>
+      <td> </td>
     </tr>
     <tr>
-      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">updated</code></td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">updated</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The ISO-8601 date and time of when the transaction was updated.</td>
+      <td> </td>
     </tr>
     <tr>
-      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">type</code></td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">type</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">Indicates the transaction type.</td>
+      <td> </td>
     </tr>
     <tr>
-      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">state</code></td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">state</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">Initialized</code>, <code class="language-html highlighter-rouge">Completed</code> or <code class="language-html highlighter-rouge">Failed</code>. Indicates the state of the transaction.</td>
+      <td> </td>
     </tr>
     <tr>
-      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">number</code></td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">number</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The transaction <code class="language-html highlighter-rouge">number</code>, useful when there’s need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that <code class="language-html highlighter-rouge">id</code> should be used instead.</td>
+      <td> </td>
     </tr>
     <tr>
-      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">amount</code></td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">amount</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
       <td style="text-align: left">The amount (including VAT, if any) to charge the payer, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
+      <td> </td>
     </tr>
     <tr>
-      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">vatAmount</code></td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">vatAmount</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
       <td style="text-align: left">The amount of VAT to charge the payer, entered in the lowest monetary unit ofthe selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK. If the <code class="language-html highlighter-rouge">amount</code> given includes VAT, <code class="language-html highlighter-rouge">vatAmount</code> may be displayed for the user inthe payment page (redirect only). Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT amount charged.</td>
+      <td> </td>
     </tr>
     <tr>
-      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">description</code></td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">description</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">A 40 character length textual <a href="/payments/vipps/other-features#description">description</a> of the purchase.</td>
+      <td> </td>
     </tr>
     <tr>
-      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payments/vipps/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
+      <td> </td>
     </tr>
     <tr>
-      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">failedReason</code></td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">receiptReference</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">A unique reference for the transaction. This reference is used as an invoice/receipt number.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">failedReason</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The human readable explanation of why the payment failed.</td>
+      <td> </td>
     </tr>
     <tr>
-      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">isOperational</code></td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">isOperational</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">bool</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">true</code> if the transaction is operational; otherwise <code class="language-html highlighter-rouge">false</code>.</td>
+      <td> </td>
     </tr>
     <tr>
-      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">operations</code></td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">operations</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">array</code></td>
       <td style="text-align: left">The array of operations that are possible to perform on the transaction in its current state.</td>
+      <td> </td>
     </tr>
   </tbody>
 </table>
@@ -2405,7 +2463,11 @@ seconds from the initial transaction time:
   <tbody>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge"><span class="nt">&lt;transaction</span> <span class="na">type</span><span class="nt">&gt;</span></code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">authorizations</code>, <code class="language-html highlighter-rouge">captures</code>, <code class="language-html highlighter-rouge">cancellations</code>, <code class="language-html highlighter-rouge">reversals</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">authorizations</code>, <code class="language-html highlighter-rouge">captures</code>, <code class="language-html highlighter-rouge">cancellations</code>,<code class="language-html highlighter-rouge">reversals</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge"><span class="nt">&lt;payment</span> <span class="na">instrument</span><span class="nt">&gt;</span></code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">creditcard</code>, <code class="language-html highlighter-rouge">invoice</code>, <code class="language-html highlighter-rouge">swish</code>, <code class="language-html highlighter-rouge">vipps</code>,<code class="language-html highlighter-rouge">mobilepay</code>, <code class="language-html highlighter-rouge">callback</code></td>
     </tr>
   </tbody>
 </table>
@@ -2761,31 +2823,125 @@ URL when the consumer as fulfilled the payment.
 <a href="#callback">See the Callback API description here</a>.</li>
 </ul>
     
-      <h2 id="problem-messages">
+      <h2 id="problems">
         
         
-          Problem messages <a href="#problem-messages" class="header-anchor"></a>
+          Problems <a href="#problems" class="header-anchor"></a>
         
         
       </h2>
 
-<p>When performing unsuccessful operations, the eCommerce API will respond with a
-problem message.
-We generally use the problem message type and status code to identify the
-nature of the problem.
-The problem name and description will often help narrow down the specifics of
-the problem.</p>
+<p>When performing operations against a resource in the Swedbank Pay API Platform,
+it will respond with a problem message that contain details of the error type if
+the request could not be successfully performed. Regardless of why the error
+occurred, the problem message will follow the same structure as specified in the
+<a href="https://tools.ietf.org/html/rfc7807">Problem Details for HTTP APIs (RFC 7807)</a> specification.</p>
+
+<p>We generally use the problem message <code class="language-html highlighter-rouge">type</code> and <code class="language-html highlighter-rouge">status</code> code to identify the
+nature of the problem. The <code class="language-html highlighter-rouge">problems</code> array contains objects with <code class="language-html highlighter-rouge">name</code> and
+<code class="language-html highlighter-rouge">description</code> that will often help narrow down the specifics of the problem,
+usually to the field in the request that was missing or contained invalid data.</p>
+
+<p>The structure of a problem message will look like this:</p>
+
+<p class="code-header"><strong>Problem Example</strong></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre><span class="p">{</span>
+    <span class="dl">"</span><span class="s2">type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://api.payex.com/psp/errordetail/&lt;resource&gt;/inputerror</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">title</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">There was an input error</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">detail</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Please correct the errors and retry the request</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">instance</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">ec2a9b09-601a-42ae-8e33-a5737e1cf177</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">status</span><span class="dl">"</span><span class="p">:</span> <span class="mi">400</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">action</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">RetryNewData</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">problems</span><span class="dl">"</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">CreditCardParameters.Issuer</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">description</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">minimum one issuer must be enabled</span><span class="dl">"</span>
+    <span class="p">}]</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th style="text-align: left">Field</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">type</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The URI that identifies the error type. This is the <strong>only field usable for programmatic identification</strong> of the type of error! When dereferenced, it might lead you to a human readable description of the error and how it can be recovered from.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">title</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The title contains a human readable description of the error.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">detail</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">A detailed, human readable description of the error and how you can recover from it.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">instance</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The identifier of the error instance. This might be of use to Swedbank Pay support personnel in order to find the exact error and the context it occurred in.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">status</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
+      <td style="text-align: left">The HTTP status code that the problem was served with.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">action</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The <code class="language-html highlighter-rouge">action</code> indicates how the error can be recovered from.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">problems</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">array</code></td>
+      <td style="text-align: left">The array of problem detail objects.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">name</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The name of the field, header, object, entity or likewise that was erroneous.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">description</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The human readable description of what was wrong with the field, header, object, entity or likewise identified by <code class="language-html highlighter-rouge">name</code>.</td>
+    </tr>
+  </tbody>
+</table>
     
-      <h3 id="common-problem-types">
+      <h3 id="common-problems">
         
         
-          Common Problem Types <a href="#common-problem-types" class="header-anchor"></a>
+          Common Problems <a href="#common-problems" class="header-anchor"></a>
         
         
       </h3>
 
-<p>All common types will have the following URI in front of type:
-<code class="language-html highlighter-rouge">https://api.payex.com/psp/errordetail/<span class="nt">&lt;error-type&gt;</span></code></p>
+<p>All common problem types will have a URI in the format
+<code class="language-html highlighter-rouge">https://api.payex.com/psp/errordetail/<span class="nt">&lt;error-type&gt;</span></code>. The <strong>URI is an
+identifier</strong> that you can hard-code and implement logic around. It is currently
+not not possible to dereference this URI, although that might be possible in the
+future.</p>
 
 <table class="table table-striped">
   <thead>
@@ -2824,16 +2980,27 @@ the problem.</p>
   </tbody>
 </table>
     
-      <h3 id="error-types-from-vipps-init-call">
+      <h3 id="vipps-problems">
         
         
-          Error types from Vipps (Init-call) <a href="#error-types-from-vipps-init-call" class="header-anchor"></a>
+          Vipps Problems <a href="#vipps-problems" class="header-anchor"></a>
         
         
       </h3>
 
-<p>All Vipps error types will have the following URI in front of type:
-<code class="language-html highlighter-rouge">https://api.payex.com/psp/errordetail/vipps/<span class="nt">&lt;error-type&gt;</span></code></p>
+<p>There are a few problems specific to the <code class="language-html highlighter-rouge">vipps</code> resource that you may want to
+guard against in your integrations. All Vipps problem types will have the
+following URI structure:</p>
+
+<p><code class="language-html highlighter-rouge">https://api.payex.com/psp/errordetail/vipps/<span class="nt">&lt;error-type&gt;</span></code></p>
+    
+      <h4 id="problem-types-from-vipps-init-call">
+        
+        
+          Problem Types from Vipps (Init-call) <a href="#problem-types-from-vipps-init-call" class="header-anchor"></a>
+        
+        
+      </h4>
 
 <table class="table table-striped">
   <thead>
@@ -2845,23 +3012,20 @@ the problem.</p>
   </thead>
   <tbody>
     <tr>
-      <td style="text-align: left"><em>VIPPS_ERROR</em></td>
-      <td style="text-align: left">403</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">vipps_error</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">403</code></td>
       <td style="text-align: left">All errors</td>
     </tr>
   </tbody>
 </table>
     
-      <h3 id="error-types-from-vipps-callback">
+      <h4 id="problem-types-from-vipps-callback">
         
         
-          Error types from Vipps (Callback) <a href="#error-types-from-vipps-callback" class="header-anchor"></a>
+          Problem Types from Vipps (Callback) <a href="#problem-types-from-vipps-callback" class="header-anchor"></a>
         
         
-      </h3>
-
-<p>All Vipps error types will have the following URI in front of type:
-<code class="language-html highlighter-rouge">https://api.payex.com/psp/errordetail/vipps/<span class="nt">&lt;error-type&gt;</span></code></p>
+      </h4>
 
 <table class="table table-striped">
   <thead>
@@ -2873,23 +3037,20 @@ the problem.</p>
   </thead>
   <tbody>
     <tr>
-      <td style="text-align: left"><em>VIPPS_DECLINED</em></td>
-      <td style="text-align: left">400</td>
-      <td style="text-align: left">Any status that is not YES</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">vipps_declined</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">400</code></td>
+      <td style="text-align: left">Any status that is not successful</td>
     </tr>
   </tbody>
 </table>
     
-      <h3 id="error-types-from-acquirer">
+      <h4 id="problem-types-from-acquirer">
         
         
-          Error types from Acquirer <a href="#error-types-from-acquirer" class="header-anchor"></a>
+          Problem Types from Acquirer <a href="#problem-types-from-acquirer" class="header-anchor"></a>
         
         
-      </h3>
-
-<p>All Vipps error types will have the following URI in front of type:
-<code class="language-html highlighter-rouge">https://api.payex.com/psp/errordetail/vipps/<span class="nt">&lt;error-type&gt;</span></code></p>
+      </h4>
 
 <table class="table table-striped">
   <thead>
@@ -2900,71 +3061,71 @@ the problem.</p>
   </thead>
   <tbody>
     <tr>
-      <td style="text-align: left"><em><code class="language-html highlighter-rouge">CARD_BLACKLISTED</code></em></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">card_blacklisted</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">400</code></td>
     </tr>
     <tr>
-      <td style="text-align: left"><em><code class="language-html highlighter-rouge">PAYMENT_TOKEN_ERROR</code></em></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">payment_token_error</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">403</code></td>
     </tr>
     <tr>
-      <td style="text-align: left"><em><code class="language-html highlighter-rouge">CARD_DECLINED</code></em></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">card_declined</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">403</code></td>
     </tr>
     <tr>
-      <td style="text-align: left"><em><code class="language-html highlighter-rouge">ACQUIRER_ERROR</code></em></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">acquirer_error</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">403</code></td>
     </tr>
     <tr>
-      <td style="text-align: left"><em><code class="language-html highlighter-rouge">ACQUIRER_CARD_BLACKLISTED</code></em></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">acquirer_card_blacklisted</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">403</code></td>
     </tr>
     <tr>
-      <td style="text-align: left"><em><code class="language-html highlighter-rouge">ACQUIRER_CARD_EXPIRED</code></em></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">acquirer_card_expired</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">403</code></td>
     </tr>
     <tr>
-      <td style="text-align: left"><em><code class="language-html highlighter-rouge">ACQUIRER_CARD_STOLEN</code></em></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">acquirer_card_stolen</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">403</code></td>
     </tr>
     <tr>
-      <td style="text-align: left"><em><code class="language-html highlighter-rouge">ACQUIRER_INSUFFICIENT_FUNDS</code></em></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">acquirer_insufficient_funds</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">403</code></td>
     </tr>
     <tr>
-      <td style="text-align: left"><em><code class="language-html highlighter-rouge">ACQUIRER_INVALID_AMOUNT</code></em></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">acquirer_invalid_amount</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">403</code></td>
     </tr>
     <tr>
-      <td style="text-align: left"><em><code class="language-html highlighter-rouge">ACQUIRER_POSSIBLE_FRAUD</code></em></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">acquirer_possible_fraud</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">403</code></td>
     </tr>
     <tr>
-      <td style="text-align: left"><em><code class="language-html highlighter-rouge">FRAUD_DETECTED</code></em></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">fraud_detected</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">403</code></td>
     </tr>
     <tr>
-      <td style="text-align: left"><em><code class="language-html highlighter-rouge">BAD_REQUEST</code></em></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">bad_request</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">500</code></td>
     </tr>
     <tr>
-      <td style="text-align: left"><em><code class="language-html highlighter-rouge">INTERNAL_SERVER_ERROR</code></em></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">internal_server_error</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">500</code></td>
     </tr>
     <tr>
-      <td style="text-align: left"><em><code class="language-html highlighter-rouge">BAD_GATEWAY</code></em></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">bad_gateway</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">502</code></td>
     </tr>
     <tr>
-      <td style="text-align: left"><em><code class="language-html highlighter-rouge">ACQUIRER_GATEWAY_ERROR</code></em></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">acquirer_gateway_error</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">502</code></td>
     </tr>
     <tr>
-      <td style="text-align: left"><em><code class="language-html highlighter-rouge">ACQUIRER_GATEWAY_TIMEOUT</code></em></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">acquirer_gateway_timeout</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">504</code></td>
     </tr>
     <tr>
-      <td style="text-align: left"><em><code class="language-html highlighter-rouge">UNKNOWN_ERROR</code></em></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">unknown_error</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">500</code></td>
     </tr>
   </tbody>
@@ -3016,7 +3177,7 @@ these events below.</p>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">id</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">transactions</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">transaction</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
     </tr>
   </tbody>
 </table>
@@ -3057,7 +3218,7 @@ object:</p>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">id</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">transactions</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">transaction</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">redirectUrl</code></td>
@@ -3103,7 +3264,7 @@ object:</p>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">id</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">transactions</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">transaction</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">redirectUrl</code></td>
@@ -3149,7 +3310,7 @@ event argument object:</p>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">id</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">transactions</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">transaction</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">redirectUrl</code></td>
@@ -4252,7 +4413,7 @@ super merchant will in turn have to invoice this amount to the sub merchant.</p>
                                     <nav class="doc-toc">
                                         <ul>
   <li class="toc-2"><a href="#payment-resource">Payment Resource</a></li>
-  <li class="toc-2"><a href="#payment-states-and-transaction-states">Payment States And Transaction States</a></li>
+  <li class="toc-2"><a href="#payment-and-transaction-states">Payment And Transaction States</a></li>
   <li class="toc-2"><a href="#completeurl">CompleteUrl</a></li>
   <li class="toc-2"><a href="#payment-url">Payment Url</a></li>
   <li class="toc-2"><a href="#prices">Prices</a></li>
@@ -4260,10 +4421,10 @@ super merchant will in turn have to invoice this amount to the sub merchant.</p>
   <li class="toc-2"><a href="#payeeinfo">PayeeInfo</a></li>
   <li class="toc-2"><a href="#payee-reference">Payee Reference</a></li>
   <li class="toc-2"><a href="#payee-reference-1">Payee Reference</a></li>
-  <li class="toc-2"><a href="#transactions-1">Transactions</a></li>
+  <li class="toc-2"><a href="#transactions">Transactions</a></li>
   <li class="toc-2"><a href="#callback">Callback</a></li>
   <li class="toc-2"><a href="#payment-link">Payment Link</a></li>
-  <li class="toc-2"><a href="#problem-messages">Problem messages</a></li>
+  <li class="toc-2"><a href="#problems">Problems</a></li>
   <li class="toc-2"><a href="#seamless-view-events">Seamless View Events</a></li>
   <li class="toc-2"><a href="#settlement-and-reconciliation">Settlement and Reconciliation</a></li>
 </ul>

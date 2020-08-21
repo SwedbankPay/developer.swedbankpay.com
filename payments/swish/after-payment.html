@@ -243,6 +243,11 @@ on a specific payment.</p>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
+<p>The <code class="language-html highlighter-rouge">sale</code> resource contains information about the
+<code class="language-html highlighter-rouge">sale</code> transaction made against a swish payment. You can
+return a specific <code class="language-html highlighter-rouge">sale</code> transaction by performing a <code class="language-html highlighter-rouge">GET</code> request
+towards the specific transaction’s <code class="language-html highlighter-rouge">id</code>.</p>
+
 <p class="code-header"><strong>Response</strong></p>
 
 <div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
@@ -273,45 +278,150 @@ on a specific payment.</p>
 26
 27
 28
-29
-30
-31
-32
-33
 </pre></td><td class="rouge-code"><pre><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
 <span class="p">{</span><span class="w">
-  </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"sales"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/sale"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"saleList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8/13/2019 8:58:23 AM +00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"payerAlias"</span><span class="p">:</span><span class="w"> </span><span class="s2">"46739000001"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"swishPaymentReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8D0A30A7804E40479F88FFBA26111F04"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"swishStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PAID"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/sales/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"transaction"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-14T01:01:01.01Z"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-14T01:01:01.03Z"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sale"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Initialized"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"vatAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">250</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test transaction"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AH123456"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"isOperational"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"reconciliationNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">737283</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+    </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sales"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> 
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/sales"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"saleList"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/sales/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"swishPaymentReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8D0A30A7804E40479F88FFBA26111F04"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"swishStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PAID"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"transaction"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-14T01:01:01.01Z"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-14T01:01:01.03Z"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sale"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Completed"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"vatAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">250</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test transaction"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AH123456"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"isOperational"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></pre></td></tr></tbody></table></code></pre></div></div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th style="text-align: left">Field</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Required</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">payment</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">sales</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">sales</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">object</code></td>
+      <td style="text-align: left">The current <code class="language-html highlighter-rouge">sales</code> resource.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">id</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">sales</code> resource this <code class="language-html highlighter-rouge">sales</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">saleList</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">array</code></td>
+      <td style="text-align: left">The array of sale transaction objects.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">saleList[]</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">object</code></td>
+      <td style="text-align: left">The sale transaction object described in the <code class="language-html highlighter-rouge">sale</code> resource below.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">id</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">transaction</code> resource this <code class="language-html highlighter-rouge">sales</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">created</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The ISO-8601 date and time of when the transaction was created.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">updated</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The ISO-8601 date and time of when the transaction was updated.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">type</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">Indicates the transaction type.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">state</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">Initialized</code>, <code class="language-html highlighter-rouge">Completed</code> or <code class="language-html highlighter-rouge">Failed</code>. Indicates the state of the transaction.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">number</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The transaction <code class="language-html highlighter-rouge">number</code>, useful when there’s need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that <code class="language-html highlighter-rouge">id</code> should be used instead.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">amount</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
+      <td style="text-align: left">The amount (including VAT, if any) to charge the payer, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">vatAmount</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
+      <td style="text-align: left">The amount of VAT to charge the payer, entered in the lowest monetary unit ofthe selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK. If the <code class="language-html highlighter-rouge">amount</code> given includes VAT, <code class="language-html highlighter-rouge">vatAmount</code> may be displayed for the user inthe payment page (redirect only). Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT amount charged.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">description</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">A 40 character length textual <a href="/payments/swish/other-features#description">description</a> of the purchase.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payments/swish/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">isOperational</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">bool</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">true</code> if the transaction is operational; otherwise <code class="language-html highlighter-rouge">false</code>.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">operations</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">array</code></td>
+      <td style="text-align: left">The array of operations that are possible to perform on the transaction in its current state.</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
     
       <h3 id="create-sales-transaction">
         
@@ -576,6 +686,7 @@ towards the specific transaction’s <code class="language-html highlighter-roug
 25
 26
 27
+28
 </pre></td><td class="rouge-code"><pre><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
@@ -585,6 +696,8 @@ towards the specific transaction’s <code class="language-html highlighter-roug
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/reversals"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"reversalList"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
             </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/reversals/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"swishPaymentReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8D0A30A7804E40479F88FFBA26111F04"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"swishStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PAID"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"transaction"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-14T01:01:01.01Z"</span><span class="p">,</span><span class="w">
@@ -596,7 +709,6 @@ towards the specific transaction’s <code class="language-html highlighter-roug
                 </span><span class="nl">"vatAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">250</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test transaction"</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AH123456"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"failedReason"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"isOperational"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
             </span><span class="p">}</span><span class="w">
@@ -703,12 +815,6 @@ towards the specific transaction’s <code class="language-html highlighter-roug
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payments/swish/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">failedReason</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The human readable explanation of why the payment failed.</td>
       <td> </td>
     </tr>
     <tr>
@@ -851,6 +957,12 @@ Swedbank Pay.</p>
 32
 33
 34
+35
+36
+37
+38
+39
+40
 </pre></td><td class="rouge-code"><pre><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
@@ -859,7 +971,7 @@ Swedbank Pay.</p>
     </span><span class="nl">"reversal"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/reversals/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"itemDescriptions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swish/payments//transactions/ec2a9b09-601a-42ae-8e33-a5737e1cf177/itemDescriptions"</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions/ec2a9b09-601a-42ae-8e33-a5737e1cf177/itemDescriptions"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"transaction"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
@@ -872,8 +984,14 @@ Swedbank Pay.</p>
             </span><span class="nl">"vatAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">250</span><span class="p">,</span><span class="w">
             </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test transaction"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AH123456"</span><span class="p">,</span><span class="w"> 
-            </span><span class="nl">"failedReason"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
             </span><span class="nl">"isOperational"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"problem"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.payex.com/psp/errordetail/swish/3DSECUREERROR"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Error when complete authorization"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unable to complete 3DSecure verification!"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"problems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">]</span><span class="w"> 
             </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                 </span><span class="p">{</span><span class="w">
                     </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">

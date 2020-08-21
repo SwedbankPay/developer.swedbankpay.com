@@ -201,10 +201,9 @@ They are listed on this very page.</p>
 The <code class="language-html highlighter-rouge">paymentorders</code> resource and how you interact with it is described below.</p>
 
 <p>The <code class="language-html highlighter-rouge">paymentorders</code> resource is used when initiating a payment process through
-<a href="/payment-menu">Payment Menu</a> and <a href="/checkout/">Swedbank Pay Checkout</a>. The payment
-order is a container for the payment instrument object selected by the payer. This
-will generate a payment that is accessed through the sub-resources <code class="language-html highlighter-rouge">payments</code>
-and <code class="language-html highlighter-rouge">currentPayment</code>.</p>
+<a href="/payment-menu">Payment Menu</a>. The payment order is a container for the payment instrument
+object selected by the payer. This will generate a payment that is accessed
+through the sub-resources <code class="language-html highlighter-rouge">payments</code> and <code class="language-html highlighter-rouge">currentPayment</code>.</p>
 
 <p class="code-header"><strong>Request</strong></p>
 
@@ -379,7 +378,7 @@ and <code class="language-html highlighter-rouge">currentPayment</code>.</p>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">description</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string(40)</code></td>
-      <td style="text-align: left">A 40 character length textual <a href="/checkout/other-features#description">description</a> of the purchase.</td>
+      <td style="text-align: left">A 40 character length textual <a href="/payment-menu/other-features#description">description</a> of the purchase.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">userAgent</code></td>
@@ -800,6 +799,7 @@ and <code class="language-html highlighter-rouge">currentPayment</code>.</p>
       <th style="text-align: left">Field</th>
       <th style="text-align: left">Type</th>
       <th style="text-align: left">Description</th>
+      <th> </th>
     </tr>
   </thead>
   <tbody>
@@ -808,366 +808,427 @@ and <code class="language-html highlighter-rouge">currentPayment</code>.</p>
       <td style="text-align: left"><code class="language-html highlighter-rouge">paymentorder</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">object</code></td>
       <td style="text-align: left">The payment order object.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">operation</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The operation that the payment order is supposed to perform.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">currency</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The currency of the payment.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">amount</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
       <td style="text-align: left">The amount (including VAT, if any) to charge the payer, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">vatAmount</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
       <td style="text-align: left">The amount of VAT to charge the payer, entered in the lowest monetary unit ofthe selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK. If the <code class="language-html highlighter-rouge">amount</code> given includes VAT, <code class="language-html highlighter-rouge">vatAmount</code> may be displayed for the user inthe payment page (redirect only). Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT amount charged.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">description</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The description of the payment order.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">instrument</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The payment instrument used. Selected by using the <a href="/payment-menu/other-features#instrument-mode">Instrument Mode</a>.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">generateRecurrenceToken</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">bool</code></td>
       <td style="text-align: left">Determines whether a recurrence token should be generated. A recurrence token is primarily used to enable future <a href="/payment-menu/other-features#recurring-payments">recurring payments</a> – with the same token – through server-to-server calls. Default value is <code class="language-html highlighter-rouge">false</code>.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">generatePaymentToken</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">bool</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">true</code> or <code class="language-html highlighter-rouge">false</code>. Set this to <code class="language-html highlighter-rouge">true</code> if you want to create a <code class="language-html highlighter-rouge">paymentToken</code> to use in future <a href="/payment-menu/other-features#one-click-payments">One Click Payments</a>.</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">true</code> or <code class="language-html highlighter-rouge">false</code>. Set this to <code class="language-html highlighter-rouge">true</code> if you want to create a <code class="language-html highlighter-rouge">paymentToken</code> to use in future <a href="#one-click-payments">One Click Payments</a>.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">userAgent</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The user agent of the payer.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">language</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The language of the payer.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">urls</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">object</code></td>
       <td style="text-align: left">The <code class="language-html highlighter-rouge">urls</code> object, containing the URLs relevant for the payment order.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">hostUrls</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">array</code></td>
       <td style="text-align: left">The array of URIs valid for embedding of Swedbank Pay Hosted Views.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">completeUrl</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A <code class="language-html highlighter-rouge">GET</code> request needs to be performed on the payment order to inspect it further.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">cancelUrl</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The URI to redirect the payer to if the payment is canceled, either by the payer or by the merchant trough an <code class="language-html highlighter-rouge">abort</code> request of the <code class="language-html highlighter-rouge">payment</code> or <code class="language-html highlighter-rouge">paymentorder</code>.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">paymentUrl</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The URI that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">callbackUrl</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The URI to the API endpoint receiving <code class="language-html highlighter-rouge">POST</code> requests on transaction activity related to the payment order.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">termsOfServiceUrl</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The URI to the terms of service document the payer must accept in order to    complete the payment. Note that this field is not required    unless <code class="language-html highlighter-rouge">generateReferenceToken</code> or <code class="language-html highlighter-rouge">generateRecurrenceToken</code> is also submitted    in the request. This is the Merchants, not the Swedbank Pay Terms of    Service. <strong>HTTPS is a requirement</strong>.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payeeInfo</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The <code class="language-html highlighter-rouge">payeeInfo</code> object, containing information about the payee.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeId</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The ID of the payee, usually the merchant ID.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string(30)</code></td>
       <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payment-menu/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeName</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The name of the payee, usually the name of the merchant.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">productCategory</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">orderReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string(50)</code></td>
       <td style="text-align: left">The order reference should reflect the order reference found in the merchant’s systems.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">subsite</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">String(40)</code></td>
-      <td style="text-align: left">The subsite field can be used to perform <a href="/payment-menu/other-features#split-settlement">split settlement</a> on the payment. The subsites must be resolved with Swedbank Pay <a href="/payment-menu/other-features#settlement-and-reconciliation">reconciliation</a> before being used.</td>
+      <td style="text-align: left">The subsite field can be used to perform <a href="#split-settlement">split settlement</a> on the payment. The subsites must be resolved with Swedbank Pay <a href="#settlement-and-reconciliation">reconciliation</a> before being used.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payer</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">object</code></td>
       <td style="text-align: left">The <code class="language-html highlighter-rouge">payer</code> object containing information about the payer relevant for the payment order.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">email</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The e-mail address of the payer. Will be used to prefill the Checkin as well as on the payer’s profile, if not already set. Increases the chance for <a href="/payment-menu/other-features#3-d-secure-2">frictionless 3-D Secure 2 flow</a>.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">msisdn</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The mobile phone number of the Payer. Will be prefilled on Checkin page and used on the payer’s profile, if not already set. The mobile number must have a country code prefix and be 8 to 15 digits in length. The field is related to <a href="/payment-menu/other-features#3-d-secure-2">3-D Secure 2</a>.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">workPhoneNumber</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The work phone number of the payer. Optional (increased chance for frictionless flow if set) and is related to <a href="/payment-menu/other-features#3-d-secure-2">3-D Secure 2</a>.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">homePhoneNumber</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The home phone number of the payer. Optional (increased chance for frictionless flow if set) and is related to <a href="/payment-menu/other-features#3-d-secure-2">3-D Secure 2</a>.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">orderItems</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">array</code></td>
       <td style="text-align: left">The array of items being purchased with the order.    Used to print on invoices if the payer chooses to pay with invoice, among    other things. <code class="language-html highlighter-rouge">orderItems</code> is required in all requests.    In <code class="language-html highlighter-rouge">capture</code> requests it should only contain the items to be captured from the order.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">reference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">A reference that identifies the order item.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">name</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The name of the order item.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">type</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">PRODUCT</code>, <code class="language-html highlighter-rouge">SERVICE</code>, <code class="language-html highlighter-rouge">SHIPPING_FEE</code>, <code class="language-html highlighter-rouge">PAYMENT_FEE</code> <code class="language-html highlighter-rouge">DISCOUNT</code>, <code class="language-html highlighter-rouge">VALUE_CODE</code> or <code class="language-html highlighter-rouge">OTHER</code>. The type of the order item. <code class="language-html highlighter-rouge">PAYMENT_FEE</code> is the amount you are charged with when you are paying with invoice. The amount can be defined in the <code class="language-html highlighter-rouge">amount</code> field below.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">class</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The classification of the order item. Can be used for assigning the order item to a specific product category, such as <code class="language-html highlighter-rouge">MobilePhone</code>. Note that <code class="language-html highlighter-rouge">class</code> cannot contain spaces and must follow the regex pattern <code class="language-html highlighter-rouge">[\w]* (a-zA-Z0-9_)</code>. Swedbank Pay may use this field for statistics.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">itemUrl</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The URL to a page that can display the purchased item, product or similar.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center">︎︎︎</td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">imageUrl</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The URL to an image of the order item.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">description</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">A 40 character length textual <a href="/checkout/other-features#description">description</a> of the purchase.</td>
+      <td style="text-align: left">A 40 character length textual <a href="/payment-menu/other-features#description">description</a> of the purchase.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">discountDescription</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The human readable description of the possible discount.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">quantity</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
       <td style="text-align: left">The 4 decimal precision quantity of order items being purchased.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">quantityUnit</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The unit of the quantity, such as <code class="language-html highlighter-rouge">pcs</code>, <code class="language-html highlighter-rouge">grams</code>, or similar. This is a free-text field and is used for your own book keeping.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">unitPrice</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
       <td style="text-align: left">The price per unit of order item, including VAT.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">discountPrice</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
       <td style="text-align: left">If the order item is purchased at a discounted price. This field should contain that price, including VAT.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">vatPercent</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
       <td style="text-align: left">The percent value of the VAT multiplied by 100, so <code class="language-html highlighter-rouge">25%</code> becomes <code class="language-html highlighter-rouge">2500</code>.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">amount</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
       <td style="text-align: left">The amount (including VAT, if any) to charge the payer, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">vatAmount</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
       <td style="text-align: left">The amount of VAT to charge the payer, entered in the lowest monetary unit ofthe selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK. If the <code class="language-html highlighter-rouge">amount</code> given includes VAT, <code class="language-html highlighter-rouge">vatAmount</code> may be displayed for the user inthe payment page (redirect only). Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT amount charged.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">riskIndicator</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">array</code></td>
       <td style="text-align: left">This <strong>optional</strong> object consist of information that helps verifying the payer. Providing these fields decreases the likelihood of having to promt for <a href="/payment-menu/other-features#3-d-secure-2">3-D Secure authentication</a> of the payer when they are authenticating the purchase.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">deliveryEmailAdress</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">For electronic delivery, the email address to which the merchandise was delivered. Providing this field when appropriate decreases the likelyhood of a 3-D Secure authentication for the payer.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">deliveryTimeFrameIndicator</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">Indicates the merchandise delivery timeframe. <br /><code class="language-html highlighter-rouge">01</code> (Electronic Delivery) <br /><code class="language-html highlighter-rouge">02</code> (Same day shipping) <br /><code class="language-html highlighter-rouge">03</code> (Overnight shipping) <br /><code class="language-html highlighter-rouge">04</code> (Two-day or more shipping)</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">preOrderDate</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">For a pre-ordered purchase. The expected date that the merchandise will be available. Format: <code class="language-html highlighter-rouge">YYYYMMDD</code></td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">preOrderPurchaseIndicator</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">Indicates whether the payer is placing an order for merchandise with a future availability or release date. <br /><code class="language-html highlighter-rouge">01</code> (Merchandise available) <br /><code class="language-html highlighter-rouge">02</code> (Future availability)</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">shipIndicator</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">Indicates shipping method chosen for the transaction. <br /><code class="language-html highlighter-rouge">01</code> (Ship to cardholder’s billing address) <br /><code class="language-html highlighter-rouge">02</code> (Ship to another verified address on file with merchant)<br /><code class="language-html highlighter-rouge">03</code> (Ship to address that is different than cardholder’s billing address)<br /><code class="language-html highlighter-rouge">04</code> (Ship to Store / Pick-up at local store. Store address shall be populated in shipping address fields)<br /><code class="language-html highlighter-rouge">05</code> (Digital goods, includes online services, electronic giftcards and redemption codes) <br /><code class="language-html highlighter-rouge">06</code> (Travel and Event tickets, not shipped) <br /><code class="language-html highlighter-rouge">07</code> (Other, e.g. gaming, digital service)</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">giftCardPurchase</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">bool</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">true</code> if this is a purchase of a gift card.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">reOrderPurchaseIndicator</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">Indicates whether the payer is placing an order for merchandise with a future availability or release date. <br /><code class="language-html highlighter-rouge">01</code> (Merchandise available) <br /><code class="language-html highlighter-rouge">02</code> (Future availability)</td>
+      <td style="text-align: left">Indicates whether the cardholder is reordering previously purchased merchandise. <br /><code class="language-html highlighter-rouge">01</code> (First time ordered) <br /><code class="language-html highlighter-rouge">02</code> (Reordered).</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">pickUpAddress</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">object</code></td>
       <td style="text-align: left">If <code class="language-html highlighter-rouge">shipIndicator</code> set to <code class="language-html highlighter-rouge">04</code>, then prefill this with the payers <code class="language-html highlighter-rouge">pickUpAddress</code> of the purchase to decrease the risk factor of the purchase.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">name</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">If <code class="language-html highlighter-rouge">shipIndicator</code> set to <code class="language-html highlighter-rouge">04</code>, then prefill this with the payers <code class="language-html highlighter-rouge">name</code> of the purchase to decrease the risk factor of the purchase.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">streetAddress</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">If <code class="language-html highlighter-rouge">shipIndicator</code> set to <code class="language-html highlighter-rouge">04</code>, then prefill this with the payers <code class="language-html highlighter-rouge">streetAddress</code> of the purchase to decrease the risk factor of the purchase.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">coAddress</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">If <code class="language-html highlighter-rouge">shipIndicator</code> set to <code class="language-html highlighter-rouge">04</code>, then prefill this with the payers <code class="language-html highlighter-rouge">coAddress</code> of the purchase to decrease the risk factor of the purchase.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">city</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">If <code class="language-html highlighter-rouge">shipIndicator</code> set to <code class="language-html highlighter-rouge">04</code>, then prefill this with the payers <code class="language-html highlighter-rouge">city</code> of the purchase to decrease the risk factor of the purchase.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">zipCode</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">If <code class="language-html highlighter-rouge">shipIndicator</code> set to <code class="language-html highlighter-rouge">04</code>, then prefill this with the payers <code class="language-html highlighter-rouge">zipCode</code> of the purchase to decrease the risk factor of the purchase.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">countryCode</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">If <code class="language-html highlighter-rouge">shipIndicator</code> set to <code class="language-html highlighter-rouge">04</code>, then prefill this with the payers <code class="language-html highlighter-rouge">countryCode</code> of the purchase to decrease the risk factor of the purchase.</td>
+      <td> </td>
     </tr>
   </tbody>
 </table>
@@ -1178,6 +1239,7 @@ and <code class="language-html highlighter-rouge">currentPayment</code>.</p>
       <th style="text-align: left">Field</th>
       <th style="text-align: left">Type</th>
       <th style="text-align: left">Description</th>
+      <th> </th>
     </tr>
   </thead>
   <tbody>
@@ -1185,111 +1247,133 @@ and <code class="language-html highlighter-rouge">currentPayment</code>.</p>
       <td style="text-align: left"><code class="language-html highlighter-rouge">paymentorder</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">object</code></td>
       <td style="text-align: left">The payment order object.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">id</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">paymentorder</code> resource .    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">instrument</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The payment instrument used. Selected by using the <a href="/payment-menu/other-features#instrument-mode">Instrument Mode</a>.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">paymentToken</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The payment token created for the purchase used in the authorization to create <a href="/payment-menu/other-features#one-click-payments">One Click Payments</a>.</td>
+      <td style="text-align: left">The payment token created for the purchase used in the authorization to create <a href="#one-click-payments">One Click Payments</a>.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">created</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The ISO-8601 date of when the payment order was created.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">updated</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The ISO-8601 date of when the payment order was updated.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">operation</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">Purchase</code></td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">state</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">Ready</code>, <code class="language-html highlighter-rouge">Pending</code>, <code class="language-html highlighter-rouge">Failed</code> or <code class="language-html highlighter-rouge">Aborted</code>. Indicates the state of the payment order. Does not reflect the state of any ongoing payments initiated from the payment order. This field is only for status display purposes.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">currency</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The currency of the payment order.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">amount</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
       <td style="text-align: left">The amount (including VAT, if any) to charge the payer, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">vatAmount</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
       <td style="text-align: left">The amount of VAT to charge the payer, entered in the lowest monetary unit ofthe selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK. If the <code class="language-html highlighter-rouge">amount</code> given includes VAT, <code class="language-html highlighter-rouge">vatAmount</code> may be displayed for the user inthe payment page (redirect only). Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT amount charged.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">description</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string(40)</code></td>
-      <td style="text-align: left">A 40 character length textual <a href="/checkout/other-features#description">description</a> of the purchase.</td>
+      <td style="text-align: left">A 40 character length textual <a href="/payment-menu/other-features#description">description</a> of the purchase.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">userAgent</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The <a href="https://en.wikipedia.org/wiki/User_agent">user agent</a> string of the consumer’s browser.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">language</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">sv-SE</code>, <code class="language-html highlighter-rouge">nb-NO</code> or <code class="language-html highlighter-rouge">en-US</code>.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">urls</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The URI to the <code class="language-html highlighter-rouge">urls</code> resource where all URIs related to the payment order can be retrieved.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payeeInfo</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The URI to the <code class="language-html highlighter-rouge">payeeinfo</code> resource where the information about the payee of the payment order can be retrieved.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payers</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The URI to the <code class="language-html highlighter-rouge">payers</code> resource where information about the payee of the payment order can be retrieved.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">orderItems</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The URI to the <code class="language-html highlighter-rouge">orderItems</code> resource where information about the order items can be retrieved.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">metadata</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The URI to the <code class="language-html highlighter-rouge">payments</code> resource where information about all underlying payments can be retrieved.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payments</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The URI to the <code class="language-html highlighter-rouge">payments</code> resource where information about all underlying payments can be retrieved.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">currentPayment</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The URI to the <code class="language-html highlighter-rouge">currentPayment</code> resource where information about the current – and sole active – payment can be retrieved.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">operations</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">array</code></td>
       <td style="text-align: left">The array of possible operations to perform, given the state of the payment order. <a href="#operations">See Operations for details</a>.</td>
+      <td> </td>
     </tr>
   </tbody>
 </table>
@@ -1345,12 +1429,6 @@ shown in the payment window, but it is still required in the initial request.</p
 15
 16
 17
-18
-19
-20
-21
-22
-23
 </pre></td><td class="rouge-code"><pre><span class="nf">POST</span> <span class="nn">/psp/paymentorders/payments</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
@@ -1358,15 +1436,9 @@ shown in the payment window, but it is still required in the initial request.</p
 <span class="p">{</span><span class="w">
       </span><span class="nl">"paymentorder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"operation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Purchase"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"intent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Authorization"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"intent"</span><span class="p">:</span><span class="w">  </span><span class="s2">"Authorization"</span><span class="p">,</span><span class="w"> 
         </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SEK"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"prices"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-                </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CreditCard"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"vatAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">],</span><span class="w">
-        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test purchase - orderNumber28749347"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test - Reference1583419461"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"generateRecurrenceToken"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="nl">"userAgent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mozilla/5.0..."</span><span class="p">,</span><span class="w">
         </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sv-SE"</span><span class="p">,</span><span class="w">
@@ -1465,8 +1537,8 @@ underlying payments or transaction.</p>
 
 <p>For our Seamless Views, the field called <code class="language-html highlighter-rouge">paymentUrl</code> will be used when the
 consumer is redirected out of the Seamless View (the <code class="language-html highlighter-rouge">iframe</code>). The consumer is
-redirected out of frame when selecting the payment instrument Vipps or in the 3-D Secure verification
-for Credit Card Payments.</p>
+redirected out of frame when selecting the payment instrument Vipps or in the 3-D Secure
+verification for Credit Card Payments.</p>
 
 <p>The URL should represent the page of where the Payment Order Seamless View was
 hosted originally, such as the checkout page, shopping cart page, or similar.
@@ -1632,7 +1704,7 @@ contents.</p>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">callbackUrl</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The URI that Swedbank Pay will perform an HTTP <code class="language-html highlighter-rouge">POST</code> against every time a transaction is created on the payment. See <a href="/payment-menu/other-features#callback">callback</a> for details.</td>
+      <td style="text-align: left">The URI that Swedbank Pay will perform an HTTP <code class="language-html highlighter-rouge">POST</code> against every time a transaction is created on the payment. See <a href="#callback">callback</a>) for details.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">logoUrl</code></td>
@@ -1655,7 +1727,7 @@ contents.</p>
         
       </h3>
 
-<p>The <code class="language-html highlighter-rouge">orderItems</code> field of the <code class="language-html highlighter-rouge">paymentOrder</code> is an array containing the items being purchased with the order. Used to print on invoices if the payer chooses to pay with invoice, among other things. <code class="language-html highlighter-rouge">orderItems</code> is required in all requests. It should be specified on both payment order creation as well as on <a href="/payment-menu/capture">Capture</a>.</p>
+<p>The <code class="language-html highlighter-rouge">orderItems</code> field of the <code class="language-html highlighter-rouge">paymentOrder</code> is an array containing the items being purchased with the order. Used to print on invoices if the payer chooses to pay with invoice, among other things. <code class="language-html highlighter-rouge">orderItems</code> is required in all requests. It should be specified on both payment order creation as well as on <a href="./capture">Capture</a>.</p>
 
 <table class="table table-striped">
   <thead>
@@ -1847,7 +1919,7 @@ contents.</p>
 underlying <a href="#current-payment-resource">payments</a>,
 <a href="#current-payment-resource">the current payment active</a>,
 <a href="#payer-resource">payers</a> and <a href="#urls-resource">urls</a>.
-Common sub-resources like <a href="/payment-menu/other-features#payee-reference">payeeinfo</a>, that are
+Common sub-resources like <a href="#payee-reference">payeeinfo</a>, that are
 structurally identical for both payments and payments orders, are described in
 the <a href="#payments-resource">Payment Resources</a> section.</p>
     
@@ -1864,10 +1936,29 @@ instrument instead of all configured on your merchant account. The Payment Order
 resource works just like it otherwise would, allowing you to remain largely
 indifferent to the payment instrument in use.</p>
 
-<p>The Payment Menu is switched to “Instrument Mode” by providing the request field
-<code class="language-html highlighter-rouge">instrument</code> as described in the abbreviated example below.</p>
+<p>If you do not want to use Swedbank Pay Payment Menu or do have multiple payment
+providers on your site we strongly recommend that you implement the “Instrument
+Mode” functionality. To use this feature you will need to add the <code class="language-html highlighter-rouge">instrument</code>
+field to the request. This will make the  Swedbank Pay Payment Menu only render
+a single payment instrument. So even if Swedbank Pay is set up to provide more
+than one instrument you will be able to let it only show one at a time.</p>
 
-<p class="code-header"><strong>Request</strong></p>
+<p>It is important to use this feature if you want to build your own payment menu.
+In this case you should use the <code class="language-html highlighter-rouge">instrument</code> field to enforce which payment
+instrument to show. If you have an agreement with Swedbank Pay for both Card and
+Swish/Vipps processing, when the consumer choose to pay with either of these
+instruments you should add the <code class="language-html highlighter-rouge">instrument</code> parameter with the specific payment
+instrument. If the consumer later changes their mind and choose the other
+instrument you can make a call to Swedbank Pay to change the instrument on the
+active payment. This is important because we do not allow the creation of
+multiple payments with the same <code class="language-html highlighter-rouge">orderReference</code>. So to ensure that you can
+still use the same <code class="language-html highlighter-rouge">orderReference</code> you should only make one payment for a
+purchase and instead change the <code class="language-html highlighter-rouge">instrument</code> to reflect what the consumer has
+chosen in your menu.</p>
+
+<p class="code-header">The Payment Menu is switched to “Instrument Mode” by providing the request field
+<code class="language-html highlighter-rouge">instrument</code> as described in the abbreviated example below.</p>
+<p><strong>Request</strong></p>
 
 <div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
@@ -2749,7 +2840,7 @@ the new amount is shown to the payer.</p>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">description</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string(40)</code></td>
-      <td style="text-align: left">A 40 character length textual <a href="/payments/card/other-features#description">description</a> of the purchase.</td>
+      <td style="text-align: left">A 40 character length textual <a href="/payment-menu/other-features#description">description</a> of the purchase.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payerReference</code></td>
@@ -2801,7 +2892,7 @@ the new amount is shown to the payer.</p>
 
 <p>The response given when changing a payment order is equivalent to a <code class="language-html highlighter-rouge">GET</code>
 request towards the <code class="language-html highlighter-rouge">paymentorders</code> resource,
-<a href="/payment-menu/other-features#payment-orders">as displayed above</a>. Even though the fields are the
+<a href="#payment-orders">as displayed above</a>. Even though the fields are the
 same, the <code class="language-html highlighter-rouge">UpdateOrder</code> request will overwrite the fields thart were sent in
 the initial <code class="language-html highlighter-rouge">Purchase</code> request.</p>
     
@@ -3009,7 +3100,7 @@ in the <code class="language-html highlighter-rouge">operations</code> list. See
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string(30)</code></td>
-      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payments/card/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payment-menu/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.</td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
@@ -3140,7 +3231,7 @@ example below:</p>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payments/card/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payment-menu/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
     </tr>
   </tbody>
 </table>
@@ -3285,7 +3376,7 @@ example below:</p>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string(30)</code></td>
-      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payments/card/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payment-menu/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
@@ -3519,7 +3610,7 @@ example below:</p>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payments/card/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payment-menu/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">receiptReference</code></td>
@@ -3537,10 +3628,11 @@ example below:</p>
         
       </h3>
 
-<p>A payment contains sub-resources in the form of <code class="language-html highlighter-rouge">transactions</code>. Most operations
-performed on a payment ends up as a transaction. The different types of
-operations that alter the state of the payment by creating a transaction is
-described below.</p>
+<p>A payment order contains one or more <code class="language-html highlighter-rouge">payment</code> sub-resources, which in turn
+contains sub-resources in the form of <code class="language-html highlighter-rouge">transactions</code>.
+Most operations performed on a payment ends up as a <code class="language-html highlighter-rouge">transaction</code> resource. The
+different types of operations that alter the state of the payment by creating a
+transaction is described below.</p>
 
 <p>The <code class="language-html highlighter-rouge">transactions</code> resource will list the transactions (one or more) on a
 specific payment.</p>
@@ -3590,7 +3682,6 @@ towards the specific transaction’s <code class="language-html highlighter-roug
 24
 25
 26
-27
 </pre></td><td class="rouge-code"><pre><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
@@ -3611,7 +3702,6 @@ towards the specific transaction’s <code class="language-html highlighter-roug
                 </span><span class="nl">"vatAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">250</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test transaction"</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AH123456"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"failedReason"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"isOperational"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
             </span><span class="p">}</span><span class="w">
@@ -3711,19 +3801,13 @@ towards the specific transaction’s <code class="language-html highlighter-roug
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">description</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">A 40 character length textual <a href="/payments/card/other-features#description">description</a> of the purchase.</td>
+      <td style="text-align: left">A 40 character length textual <a href="/payment-menu/other-features#description">description</a> of the purchase.</td>
       <td> </td>
     </tr>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payments/card/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">failedReason</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The human readable explanation of why the payment failed.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payment-menu/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
       <td> </td>
     </tr>
     <tr>
@@ -3812,7 +3896,7 @@ order gets the state <code class="language-html highlighter-rouge">failed</code>
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/paymentorders/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-14T01:01:01.01Z"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-14T01:01:01.03Z"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Capture"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w">  </span><span class="s2">"Capture"</span><span class="p">,</span><span class="w"> 
         </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Initialized"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
         </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
@@ -3825,90 +3909,222 @@ order gets the state <code class="language-html highlighter-rouge">failed</code>
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></pre></td></tr></tbody></table></code></pre></div></div>
+    
+      <h5 id="transaction-problems">
+        
+        
+          Transaction Problems <a href="#transaction-problems" class="header-anchor"></a>
+        
+        
+      </h5>
+
+<p>In the event that a transaction is <code class="language-html highlighter-rouge">failed</code>, the <code class="language-html highlighter-rouge">transaction</code> response will
+contain a <code class="language-html highlighter-rouge">problem</code> property as seen in the example below. To view all the
+problems that can occur due to an unsuccesful transaction, head over to the
+<a href="/payment-menu/other-features#problems">problems section</a>.</p>
+
+<p>The created <code class="language-html highlighter-rouge">transaction</code> resource contains information about the
+<code class="language-html highlighter-rouge">transaction</code> transaction made against a <code class="language-html highlighter-rouge">paymentorders</code> payment.</p>
+
+<p class="code-header"><strong>Response</strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+</pre></td><td class="rouge-code"><pre><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/paymentorders/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"transaction"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/paymentorders/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"itemDescriptions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/paymentorders/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions/ec2a9b09-601a-42ae-8e33-a5737e1cf177/itemDescriptions"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"transaction"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/paymentorders/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-14T01:01:01.01Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-14T01:01:01.03Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Transaction"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Failed"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"vatAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">250</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test transaction"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AH123456"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"isOperational"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"problem"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.payex.com/psp/errordetail/paymentorders/3DSECUREERROR"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Error when complete authorization"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unable to complete 3DSecure verification!"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"problems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">]</span><span class="w"> 
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></pre></td></tr></tbody></table></code></pre></div></div>
 
 <table class="table table-striped">
   <thead>
     <tr>
-      <th style="text-align: left">Property</th>
+      <th style="text-align: left">Field</th>
       <th style="text-align: left">Type</th>
       <th style="text-align: left">Description</th>
+      <th> </th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">payment</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI of the payment this transaction belongs to.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">transaction</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">transaction</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">object</code></td>
-      <td style="text-align: left">The transaction object.</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The current <code class="language-html highlighter-rouge">transaction</code> transaction resource.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">id</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI of the current <code class="language-html highlighter-rouge">transaction</code> resource.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">transaction</code> resource this <code class="language-html highlighter-rouge">transaction</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td> </td>
     </tr>
     <tr>
-      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">created</code></td>
+      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">itemDescriptions</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">object</code></td>
+      <td style="text-align: left">The object representation of the <code class="language-html highlighter-rouge">itemDescriptions</code> resource.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">id</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">itemDescriptions</code> resource this <code class="language-html highlighter-rouge">transaction</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">transaction</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">object</code></td>
+      <td style="text-align: left">The object representation of the generic transaction resource.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">id</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">transaction</code> resource this <code class="language-html highlighter-rouge">transaction</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">created</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The ISO-8601 date and time of when the transaction was created.</td>
+      <td> </td>
     </tr>
     <tr>
-      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">updated</code></td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">updated</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The ISO-8601 date and time of when the transaction was updated.</td>
+      <td> </td>
     </tr>
     <tr>
-      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">type</code></td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">type</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">Indicates the transaction type.</td>
+      <td> </td>
     </tr>
     <tr>
-      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">state</code></td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">state</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">Initialized</code>, <code class="language-html highlighter-rouge">Completed</code> or <code class="language-html highlighter-rouge">Failed</code>. Indicates the state of the transaction.</td>
+      <td> </td>
     </tr>
     <tr>
-      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">number</code></td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">number</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The transaction <code class="language-html highlighter-rouge">number</code>, useful when there’s need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that <code class="language-html highlighter-rouge">id</code> should be used instead.</td>
+      <td> </td>
     </tr>
     <tr>
-      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">amount</code></td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">amount</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
       <td style="text-align: left">The amount (including VAT, if any) to charge the payer, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
+      <td> </td>
     </tr>
     <tr>
-      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">vatAmount</code></td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">vatAmount</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
       <td style="text-align: left">The amount of VAT to charge the payer, entered in the lowest monetary unit ofthe selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK. If the <code class="language-html highlighter-rouge">amount</code> given includes VAT, <code class="language-html highlighter-rouge">vatAmount</code> may be displayed for the user inthe payment page (redirect only). Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT amount charged.</td>
+      <td> </td>
     </tr>
     <tr>
-      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">description</code></td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">description</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">A 40 character length textual <a href="/payments/card/other-features#description">description</a> of the purchase.</td>
+      <td style="text-align: left">A 40 character length textual <a href="/payment-menu/other-features#description">description</a> of the purchase.</td>
+      <td> </td>
     </tr>
     <tr>
-      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payments/card/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payment-menu/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
+      <td> </td>
     </tr>
     <tr>
-      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">failedReason</code></td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">receiptReference</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">A unique reference for the transaction. This reference is used as an invoice/receipt number.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">failedReason</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The human readable explanation of why the payment failed.</td>
+      <td> </td>
     </tr>
     <tr>
-      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">isOperational</code></td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">isOperational</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">bool</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">true</code> if the transaction is operational; otherwise <code class="language-html highlighter-rouge">false</code>.</td>
+      <td> </td>
     </tr>
     <tr>
-      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">operations</code></td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">operations</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">array</code></td>
       <td style="text-align: left">The array of operations that are possible to perform on the transaction in its current state.</td>
+      <td> </td>
     </tr>
   </tbody>
 </table>
@@ -3941,7 +4157,7 @@ stored in the <a href="#transaction">authorization transaction</a> sub-resource 
 underlying payment resource.</li>
   <li>When initiating a <code class="language-html highlighter-rouge">Verify</code> payment order, a recurrence token will be
 generated automatically. This recurrence token is stored in the
-<a href="#verify-payments">verification</a>  sub-resource on the underlying
+<a href="#verify-payments">verification</a> sub-resource on the underlying
 payment resource.</li>
 </ul>
 
@@ -4064,7 +4280,7 @@ recurrence token during the initial payment order.</p>
         </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
         </span><span class="nl">"vatAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">250</span><span class="w">
       </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
+    </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></pre></td></tr></tbody></table></code></pre></div></div>
@@ -4119,7 +4335,7 @@ recurrence token during the initial payment order.</p>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">description</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">A 40 character length textual <a href="/checkout/other-features#description">description</a> of the purchase.</td>
+      <td style="text-align: left">A 40 character length textual <a href="/payment-menu/other-features#description">description</a> of the purchase.</td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
@@ -4143,7 +4359,7 @@ recurrence token during the initial payment order.</p>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">callbackUrl</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The URL that Swedbank Pay will perform an HTTP <code class="language-html highlighter-rouge">POST</code> against every time a transaction is created on the payment. See <a href="/payment-menu/other-features#callback">callback</a> for details.</td>
+      <td style="text-align: left">The URL that Swedbank Pay will perform an HTTP <code class="language-html highlighter-rouge">POST</code> against every time a transaction is created on the payment. See <a href="#callback">callback</a> for details.</td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
@@ -4161,7 +4377,7 @@ recurrence token during the initial payment order.</p>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string(30)</code></td>
-      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/checkout/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payment-menu/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
@@ -4191,7 +4407,7 @@ recurrence token during the initial payment order.</p>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">subsite</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">String(40)</code></td>
-      <td style="text-align: left">The subsite field can be used to perform <a href="/payment-menu/other-features#split-settlement">split settlement</a> on the payment. The subsites must be resolved with Swedbank Pay <a href="/payment-menu/other-features#settlement-and-reconciliation">reconciliation</a> before being used.</td>
+      <td style="text-align: left">The subsite field can be used to perform <a href="#split-settlement">split settlement</a> on the payment. The subsites must be resolved with Swedbank Pay <a href="#settlement-and-reconciliation">reconciliation</a> before being used.</td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
@@ -4393,7 +4609,7 @@ recurrence token during the initial payment order.</p>
 option is mainly used to initiate a recurring payment scenario where the card
 will be charged at a later date. The request body is equivalent to a <code class="language-html highlighter-rouge">Purchase</code>
 order with credit card as the selected item.
-A <a href="/payment-menu/other-features#payment-orders">recurrence token</a> will be generated automatically,
+A <a href="#payment-orders">recurrence token</a> will be generated automatically,
 rendering the parameter <code class="language-html highlighter-rouge">generateRecurrenceToken</code> unnecessary for this
 operation.</p>
 
@@ -4498,6 +4714,7 @@ operation.</p>
       <th style="text-align: left">Field</th>
       <th style="text-align: left">Type</th>
       <th style="text-align: left">Description</th>
+      <th> </th>
     </tr>
   </thead>
   <tbody>
@@ -4506,144 +4723,168 @@ operation.</p>
       <td style="text-align: left"><code class="language-html highlighter-rouge">paymentorder</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">object</code></td>
       <td style="text-align: left">The payment order object.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">operation</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The operation that the payment order is supposed to perform.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">currency</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The currency of the payment.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">amount</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
       <td style="text-align: left">The amount (including VAT, if any) to charge the payer, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">vatAmount</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
       <td style="text-align: left">The amount of VAT to charge the payer, entered in the lowest monetary unit ofthe selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK. If the <code class="language-html highlighter-rouge">amount</code> given includes VAT, <code class="language-html highlighter-rouge">vatAmount</code> may be displayed for the user inthe payment page (redirect only). Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT amount charged.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">description</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The description of the payment order.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">generatePaymentToken</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">bool</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">true</code> or <code class="language-html highlighter-rouge">false</code>. Set this to <code class="language-html highlighter-rouge">true</code> if you want to create a paymentToken for future use as <a href="/payment-menu/other-features#one-click-payments">One Click Payments</a>.</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">true</code> or <code class="language-html highlighter-rouge">false</code>. Set this to <code class="language-html highlighter-rouge">true</code> if you want to create a paymentToken for future use as <a href="#one-click-payments">One Click Payments</a>.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">userAgent</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The user agent of the payer.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">language</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The language of the payer.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">generateRecurrenceToken</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">bool</code></td>
-      <td style="text-align: left">Determines whether a recurrence token should be generated. A recurrence token is primarily used to enable future <a href="/payment-menu/other-features#recurring-payments">recurring payments</a> – with the same token – through server-to-server calls. Default value is <code class="language-html highlighter-rouge">false</code>.</td>
+      <td style="text-align: left">Determines whether a recurrence token should be generated. A recurrence token is primarily used to enable future <a href="#recurring-payments">recurring payments</a> – with the same token – through server-to-server calls. Default value is <code class="language-html highlighter-rouge">false</code>.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">urls</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">object</code></td>
       <td style="text-align: left">The <code class="language-html highlighter-rouge">urls</code> object, containing the URLs relevant for the payment order.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">hostUrls</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">array</code></td>
       <td style="text-align: left">The array of URIs valid for embedding of Swedbank Pay Hosted Views.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">completeUrl</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A <code class="language-html highlighter-rouge">GET</code> request needs to be performed on the payment order to inspect it further.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">cancelUrl</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The URI to redirect the payer to if the payment is canceled, either by the payer or by the merchant trough an <code class="language-html highlighter-rouge">abort</code> request of the <code class="language-html highlighter-rouge">payment</code> or <code class="language-html highlighter-rouge">paymentorder</code>.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">paymentUrl</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The URI that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">callbackUrl</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The URI to the API endpoint receiving <code class="language-html highlighter-rouge">POST</code> requests on transaction activity related to the payment order.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">termsOfServiceUrl</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The URI to the terms of service document the payer must accept in order to    complete the payment. Note that this field is not required    unless <code class="language-html highlighter-rouge">generateReferenceToken</code> or <code class="language-html highlighter-rouge">generateRecurrenceToken</code> is also submitted    in the request. This is the Merchants, not the Swedbank Pay Terms of    Service. <strong>HTTPS is a requirement</strong>.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payeeInfo</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The <code class="language-html highlighter-rouge">payeeInfo</code> object, containing information about the payee.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeId</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The ID of the payee, usually the merchant ID.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string(30)</code></td>
-      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/checkout/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payment-menu/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeName</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The name of the payee, usually the name of the merchant.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">productCategory</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">orderReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string(50)</code></td>
       <td style="text-align: left">The order reference should reflect the order reference found in the merchant’s systems.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">subsite</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">String(40)</code></td>
-      <td style="text-align: left">The subsite field can be used to perform <a href="/payment-menu/other-features#split-settlement">split settlement</a> on the payment. The subsites must be resolved with Swedbank Pay <a href="/payment-menu/other-features#settlement-and-reconciliation">reconciliation</a> before being used.</td>
+      <td style="text-align: left">The subsite field can be used to perform <a href="#split-settlement">split settlement</a> on the payment. The subsites must be resolved with Swedbank Pay <a href="#settlement-and-reconciliation">reconciliation</a> before being used.</td>
+      <td> </td>
     </tr>
   </tbody>
 </table>
@@ -4762,6 +5003,7 @@ operation.</p>
       <th style="text-align: left">Field</th>
       <th style="text-align: left">Data type</th>
       <th style="text-align: left">Description</th>
+      <th> </th>
     </tr>
   </thead>
   <tbody>
@@ -4769,91 +5011,109 @@ operation.</p>
       <td style="text-align: left"><code class="language-html highlighter-rouge">payment</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">object</code></td>
       <td style="text-align: left">The payment object contains information about the retrieved payment.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">id</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">transactions</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">transaction</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">paymentToken</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The payment token created for the purchase used in the authorization to create <a href="/payment-menu/other-features#one-click-payments">One Click Payments</a>.</td>
+      <td style="text-align: left">The payment token created for the purchase used in the authorization to create <a href="#one-click-payments">One Click Payments</a>.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">number</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
       <td style="text-align: left">The payment <code class="language-html highlighter-rouge">number</code>, useful when there’s need to reference the payment in human communication. Not usable for programmatic identification of the payment, for that <code class="language-html highlighter-rouge">id</code> should be used instead.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">created</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The ISO-8601 date of when the payment was created.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">updated</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The ISO-8601 date of when the payment was updated.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">instrument</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The instrument used</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">operation</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">Purchase</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">state</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">Ready</code>, <code class="language-html highlighter-rouge">Pending</code>, <code class="language-html highlighter-rouge">Failed</code> or <code class="language-html highlighter-rouge">Aborted</code>. Indicates the state of the payment. This field is only for status display purposes.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">currency</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The currency used</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">description</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string(40)</code></td>
-      <td style="text-align: left">A 40 character length textual <a href="/payments/mobile-pay/other-features#description">description</a> of the purchase.</td>
+      <td style="text-align: left">A 40 character length textual <a href="/payment-menu/other-features#description">description</a> of the purchase.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payerReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The reference to the payer (consumer/end-user) from the merchant system, like mobile number, customer number etc.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">initiatingSystemUserAgent</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The system user agent used</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">userAgent</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The <a href="https://en.wikipedia.org/wiki/User_agent">user agent</a> string of the consumer’s browser.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">language</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">sv-SE</code>, <code class="language-html highlighter-rouge">nb-NO</code>, <code class="language-html highlighter-rouge">da-DK</code>, <code class="language-html highlighter-rouge">fi-FI</code> or <code class="language-html highlighter-rouge">en-US</code>.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">urls</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The URI to the <code class="language-html highlighter-rouge">urls</code> resource where all URIs related to the payment can be retrieved.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payeeInfo</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The URI to the <code class="language-html highlighter-rouge">payeeinfo</code> resource where the information about the payee of the payment can be retrieved.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">operations</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">array</code></td>
       <td style="text-align: left">The array of possible operations to perform, given the state of the payment order. <a href="#operations">See Operations for details</a>.</td>
+      <td> </td>
     </tr>
   </tbody>
 </table>
@@ -4946,7 +5206,7 @@ should finish the purchase with a credit card payment instead.</p>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">id</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payments</code> resource this <code class="language-html highlighter-rouge">transactions</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payments</code> resource this <code class="language-html highlighter-rouge">transaction</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">paymentList</code></td>
@@ -4956,7 +5216,7 @@ should finish the purchase with a credit card payment instead.</p>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">id</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">transactions</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">transaction</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
     </tr>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">instrument</code></td>
@@ -5178,12 +5438,12 @@ payment order container.</p>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">description</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string(40)</code></td>
-      <td style="text-align: left">A 40 character length textual <a href="/checkout/other-features#description">description</a> of the purchase.</td>
+      <td style="text-align: left">A 40 character length textual <a href="/payment-menu/other-features#description">description</a> of the purchase.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payerReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The reference to the consumer from the merchant system, like mobile number,                 customer number etc. Used in <a href="/payment-menu/other-features#merchant-identified-payer">Merchant Identified Payer</a>.</td>
+      <td style="text-align: left">The reference to the consumer from the merchant system, like mobile number, customer number etc. Used in <a href="#merchant-identified-payer">Merchant Identified Payer</a>.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">userAgent</code></td>
@@ -5418,12 +5678,12 @@ to a card brand or bank respectively.</p>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">email</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">Payer’s registered email address. The field is related to <a href="/payment-menu/other-features#3-d-secure-2">3-D Secure 2</a>.</td>
+      <td style="text-align: left">Payer’s registered email address. The field is related to <a href="#3-d-secure-2">3-D Secure 2</a>.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">msisdn</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">Payer’s registered mobile phone number. The field is related to <a href="/payment-menu/other-features#3-d-secure-2">3-D Secure 2</a>.</td>
+      <td style="text-align: left">Payer’s registered mobile phone number. The field is related to <a href="#3-d-secure-2">3-D Secure 2</a>.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">shippingAddress</code></td>
@@ -6065,7 +6325,7 @@ seconds from the initial transaction time:
 14
 </pre></td><td class="rouge-code"><pre><span class="p">{</span>
     <span class="dl">"</span><span class="s2">paymentOrder</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
-        <span class="dl">"</span><span class="s2">id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">/psp/paymentorders/09ccd29a-7c4f-4752-9396-12100cbfecce</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">/psp/paymentorders/7e6cdfc3-1276-44e9-9992-7cf4419750e1</span><span class="dl">"</span><span class="p">,</span>
         <span class="dl">"</span><span class="s2">instrument</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">paymentorders</span><span class="dl">"</span>
     <span class="p">},</span>
     <span class="dl">"</span><span class="s2">payment</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
@@ -6089,7 +6349,11 @@ seconds from the initial transaction time:
   <tbody>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge"><span class="nt">&lt;transaction</span> <span class="na">type</span><span class="nt">&gt;</span></code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">authorizations</code>, <code class="language-html highlighter-rouge">captures</code>, <code class="language-html highlighter-rouge">cancellations</code>, <code class="language-html highlighter-rouge">reversals</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">authorizations</code>, <code class="language-html highlighter-rouge">captures</code>, <code class="language-html highlighter-rouge">cancellations</code>,<code class="language-html highlighter-rouge">reversals</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge"><span class="nt">&lt;payment</span> <span class="na">instrument</span><span class="nt">&gt;</span></code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">creditcard</code>, <code class="language-html highlighter-rouge">invoice</code>, <code class="language-html highlighter-rouge">swish</code>, <code class="language-html highlighter-rouge">vipps</code>,<code class="language-html highlighter-rouge">mobilepay</code>, <code class="language-html highlighter-rouge">callback</code></td>
     </tr>
   </tbody>
 </table>
@@ -6121,14 +6385,20 @@ Pay, and the two <code class="language-html highlighter-rouge">GET</code> reques
         
       </h2>
 
-<p>When performing operations against the API, it will respond with a problem
-message that contain details of the error type if the request could not be
-successfully performed.
-Regardless of why the error occurred, the problem message will follow the same
-structure as specified in the
-<a href="https://tools.ietf.org/html/rfc7807">Problem Details for HTTP APIs</a>] specification.</p>
+<p>When performing operations against a resource in the Swedbank Pay API Platform,
+it will respond with a problem message that contain details of the error type if
+the request could not be successfully performed. Regardless of why the error
+occurred, the problem message will follow the same structure as specified in the
+<a href="https://tools.ietf.org/html/rfc7807">Problem Details for HTTP APIs (RFC 7807)</a> specification.</p>
+
+<p>We generally use the problem message <code class="language-html highlighter-rouge">type</code> and <code class="language-html highlighter-rouge">status</code> code to identify the
+nature of the problem. The <code class="language-html highlighter-rouge">problems</code> array contains objects with <code class="language-html highlighter-rouge">name</code> and
+<code class="language-html highlighter-rouge">description</code> that will often help narrow down the specifics of the problem,
+usually to the field in the request that was missing or contained invalid data.</p>
 
 <p>The structure of a problem message will look like this:</p>
+
+<p class="code-header"><strong>Problem Example</strong></p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
@@ -6143,7 +6413,7 @@ structure as specified in the
 11
 12
 </pre></td><td class="rouge-code"><pre><span class="p">{</span>
-    <span class="dl">"</span><span class="s2">type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://api.payex.com/psp/errordetail/paymentorders/inputerror</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://api.payex.com/psp/errordetail/&lt;resource&gt;/inputerror</span><span class="dl">"</span><span class="p">,</span>
     <span class="dl">"</span><span class="s2">title</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">There was an input error</span><span class="dl">"</span><span class="p">,</span>
     <span class="dl">"</span><span class="s2">detail</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Please correct the errors and retry the request</span><span class="dl">"</span><span class="p">,</span>
     <span class="dl">"</span><span class="s2">instance</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">ec2a9b09-601a-42ae-8e33-a5737e1cf177</span><span class="dl">"</span><span class="p">,</span>
@@ -6151,7 +6421,7 @@ structure as specified in the
     <span class="dl">"</span><span class="s2">action</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">RetryNewData</span><span class="dl">"</span><span class="p">,</span>
     <span class="dl">"</span><span class="s2">problems</span><span class="dl">"</span><span class="p">:</span> <span class="p">[{</span>
         <span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">CreditCardParameters.Issuer</span><span class="dl">"</span><span class="p">,</span>
-        <span class="dl">"</span><span class="s2">description</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">minimum one issuer must be enabled </span><span class="dl">"</span>
+        <span class="dl">"</span><span class="s2">description</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">minimum one issuer must be enabled</span><span class="dl">"</span>
     <span class="p">}]</span>
 <span class="p">}</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
@@ -6178,7 +6448,7 @@ structure as specified in the
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">detail</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">A detailed, human readable description of the error.</td>
+      <td style="text-align: left">A detailed, human readable description of the error and how you can recover from it.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">instance</code></td>
@@ -6201,28 +6471,31 @@ structure as specified in the
       <td style="text-align: left">The array of problem detail objects.</td>
     </tr>
     <tr>
-      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">[].name</code></td>
+      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">name</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The name of the field, header, object, entity or likewise that was erroneous.</td>
     </tr>
     <tr>
-      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">[].description</code></td>
+      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">description</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The description of what was wrong with the field, header, object, entity or likewise identified by <code class="language-html highlighter-rouge">name</code>.</td>
+      <td style="text-align: left">The human readable description of what was wrong with the field, header, object, entity or likewise identified by <code class="language-html highlighter-rouge">name</code>.</td>
     </tr>
   </tbody>
 </table>
     
-      <h3 id="common-problem-types">
+      <h3 id="common-problems">
         
         
-          Common Problem Types <a href="#common-problem-types" class="header-anchor"></a>
+          Common Problems <a href="#common-problems" class="header-anchor"></a>
         
         
       </h3>
 
-<p>All common types will have the following URI in front of type:
-<code class="language-html highlighter-rouge">https://api.payex.com/psp/errordetail/<span class="nt">&lt;error-type&gt;</span></code></p>
+<p>All common problem types will have a URI in the format
+<code class="language-html highlighter-rouge">https://api.payex.com/psp/errordetail/<span class="nt">&lt;error-type&gt;</span></code>. The <strong>URI is an
+identifier</strong> that you can hard-code and implement logic around. It is currently
+not not possible to dereference this URI, although that might be possible in the
+future.</p>
 
 <table class="table table-striped">
   <thead>
@@ -6260,6 +6533,25 @@ structure as specified in the
     </tr>
   </tbody>
 </table>
+    
+      <h3 id="payment-instrument-specific-problems">
+        
+        
+          Payment Instrument Specific Problems <a href="#payment-instrument-specific-problems" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<p>Problem types for a specific payment instrument will have a URI in the format
+<code class="language-html highlighter-rouge">https://api.payex.com/psp/errordetail/<span class="nt">&lt;payment-instrument&gt;</span>/<span class="nt">&lt;error-type&gt;</span></code>. You
+can read more about the payment instrument specific problem messages below:</p>
+
+<ul>
+  <li><a href="/payments/card/other-features#problems">Card Payments</a></li>
+  <li><a href="/payments/invoice/other-features#problems">Invoice Payments</a></li>
+  <li><a href="/payments/swish/other-features#problems">Swish Payments</a></li>
+  <li><a href="/payments/vipps/other-features#problems">Vipps Payments</a></li>
+</ul>
     
       <h3 id="expansion">
         
@@ -6388,7 +6680,7 @@ a corporation etc) related to a specific payment.</p>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string(30)</code></td>
-      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/checkout/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payment-menu/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payeeName</code></td>
@@ -7658,7 +7950,7 @@ and can be seen in the abbreviated request example below.</p>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">reOrderPurchaseIndicator</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">Indicates whether the payer is placing an order for merchandise with a future availability or release date. <br /><code class="language-html highlighter-rouge">01</code> (Merchandise available) <br /><code class="language-html highlighter-rouge">02</code> (Future availability).</td>
+      <td style="text-align: left">Indicates whether the cardholder is reordering previously purchased merchandise. <br /><code class="language-html highlighter-rouge">01</code> (First time ordered) <br /><code class="language-html highlighter-rouge">02</code> (Reordered).</td>
     </tr>
   </tbody>
 </table>
@@ -7684,10 +7976,10 @@ must be <code class="language-html highlighter-rouge">refresh</code>ed.</p>
 
     
         
-            <p>Features that are not
-described in the previous sections must not be used, although they are
-available in the API. Flags that can be turned to <code class="language-html highlighter-rouge">true</code> must be kept
-<code class="language-html highlighter-rouge">false</code> as described in this standard setup documentation.</p>
+            <p>Features that are
+not described in the previous sections must not be used, although they are
+available in the API. Flags that can be turned to <code class="language-html highlighter-rouge">true</code> must be kept <code class="language-html highlighter-rouge">false</code> as
+described in this standard setup documentation.</p>
         
     
 </div>
@@ -7701,10 +7993,11 @@ available in the API. Flags that can be turned to <code class="language-html hig
 
     
         
-            <p>Your integration must be
-resilient to change. Properties, operations, headers, etc., that aren’t
+            <p>Your integration
+must be resilient to change. Properties, operations, headers, etc., that aren’t
 understood in any response <strong>must be ignored</strong>. Don’t expect a specific order of
-elements. When in doubt, please follow the <a href="https://en.wikipedia.org/wiki/Robustness_principle">robustness principle</a>.</p>
+elements. When in doubt, please follow the <a href="https://en.wikipedia.org/wiki/Robustness_principle">robustness
+principle</a>.</p>
         
     
 </div>

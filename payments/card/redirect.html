@@ -238,7 +238,7 @@ An example of an expanded <code class="language-html highlighter-rouge">POST</co
     
         
             <div class="alert-body">
-                <p>It is mandatory to set a <a href="/payments/card/other-features#callback"><code class="language-html highlighter-rouge">callbackUrl</code></a> in the <code class="language-html highlighter-rouge">POST</code> request creating the payment. If <code class="language-html highlighter-rouge">callbackUrl</code>
+                <p>It is mandatory to set a <a href="/payments/card/other-features#callback"><code class="language-html highlighter-rouge">callbackUrl</code></a> in the <code class="language-html highlighter-rouge">POST</code> request creating the payment. When <code class="language-html highlighter-rouge">callbackUrl</code>
 is set, Swedbank Pay will send a <code class="language-html highlighter-rouge">POST</code> request to this URL when the consumer
 has fulfilled the payment. Upon receiving this <code class="language-html highlighter-rouge">POST</code> request, a subsequent
 <code class="language-html highlighter-rouge">GET</code> request towards the <code class="language-html highlighter-rouge">id</code> of the payment generated initially must be made
@@ -815,7 +815,7 @@ object in the request below.</p>
       <td style="text-align: center"> </td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">reOrderPurchaseIndicator</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">Indicates whether the payer is placing an order for merchandise with a future availability or release date. <br /><code class="language-html highlighter-rouge">01</code> (Merchandise available) <br /><code class="language-html highlighter-rouge">02</code> (Future availability)</td>
+      <td style="text-align: left">Indicates whether the cardholder is reordering previously purchased merchandise. <br /><code class="language-html highlighter-rouge">01</code> (First time ordered) <br /><code class="language-html highlighter-rouge">02</code> (Reordered).</td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
@@ -924,6 +924,12 @@ object in the request below.</p>
 58
 59
 60
+61
+62
+63
+64
+65
+66
 </pre></td><td class="rouge-code"><pre><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
@@ -938,7 +944,7 @@ object in the request below.</p>
         </span><span class="nl">"operation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Purchase"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"intent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Authorization"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SEK"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="nl">"remainingCaptureAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w">
         </span><span class="nl">"remainingCancellationAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w">
         </span><span class="nl">"remainingReversalAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -982,8 +988,14 @@ object in the request below.</p>
             </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/javascript"</span><span class="w">
         </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"direct-authorization"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="err">https://api.externalintegration.payex.com/psp/creditcard/confined/payments/</span><span class="mi">7e6</span><span class="err">cdfc</span><span class="mi">3-1276-44e9-9992-7</span><span class="err">cf</span><span class="mi">4419750e1</span><span class="err">/authorizations</span><span class="s2">",
+            "</span><span class="err">method</span><span class="s2">": "</span><span class="err">POST</span><span class="s2">",
+            "</span><span class="err">contentType</span><span class="s2">": "</span><span class="err">application/json</span><span class="s2">"
+        }
+    ]
+}
 </span></pre></td></tr></tbody></table></code></pre></div></div>
 
 <table class="table table-striped">
@@ -1231,7 +1243,7 @@ directly inside the iframe.</p>
   request. Please note that both a successful and rejected payment reach
   completion, in contrast to a cancelled payment.</li>
   <li>⑥ Send a GET request with the <code class="language-html highlighter-rouge">paymentId</code> to check the state of the
-  transaction. Click the link for <a href="/payments/card/other-features#payment-states-and-transaction-states">a complete list of payment and transaction
+  transaction. Click the link for <a href="/payments/card/other-features#payment-and-transaction-states">a complete list of payment and transaction
   states</a>.</li>
 </ul>
     

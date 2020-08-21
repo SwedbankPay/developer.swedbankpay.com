@@ -160,9 +160,6 @@
                                                  href="/payments/trustly/redirect"><span>Redirect</span></a></li>
                                         
                                         
-                                        <li><a  href="/payments/trustly/seamless-view"><span>Seamless View</span></a></li>
-                                        
-                                        
                                         <li><a  href="/payments/trustly/after-payment"><span>After Payment</span></a></li>
                                         
                                         
@@ -200,9 +197,9 @@ page (<code class="language-html highlighter-rouge">redirect-sale</code> operati
   <li>You need to redirect the payer’s browser to that specified URL so that the
 payer can enter the payment details in a secure Swedbank Pay environment.</li>
   <li>Swedbank Pay will redirect the payer’s browser to one of two specified URLs,
-depending on whether the payment session is followed through completely or
-cancelled beforehand. Please note that both a successful and rejected payment
-reach completion, in contrast to a cancelled payment.</li>
+depending on whether the payment session is followed through completely.
+Please note that both a successful and rejected payment
+reach completion.</li>
   <li>When you detect that the payer reach your <code class="language-html highlighter-rouge">completeUrl</code>, you need to do a
 <code class="language-html highlighter-rouge">GET</code> request to receive the state of the transaction, containing the
 <code class="language-html highlighter-rouge">id</code> URI generated in the first step, to receive the state of the
@@ -233,7 +230,7 @@ transaction.</li>
     
         
             <div class="alert-body">
-                <p>It is mandatory to set a <a href="/payments/trustly/other-features#callback"><code class="language-html highlighter-rouge">callbackUrl</code></a> in the <code class="language-html highlighter-rouge">POST</code> request creating the payment. If <code class="language-html highlighter-rouge">callbackUrl</code>
+                <p>It is mandatory to set a <a href="/payments/trustly/other-features#callback"><code class="language-html highlighter-rouge">callbackUrl</code></a> in the <code class="language-html highlighter-rouge">POST</code> request creating the payment. When <code class="language-html highlighter-rouge">callbackUrl</code>
 is set, Swedbank Pay will send a <code class="language-html highlighter-rouge">POST</code> request to this URL when the consumer
 has fulfilled the payment. Upon receiving this <code class="language-html highlighter-rouge">POST</code> request, a subsequent
 <code class="language-html highlighter-rouge">GET</code> request towards the <code class="language-html highlighter-rouge">id</code> of the payment generated initially must be made
@@ -309,7 +306,7 @@ to receive the state of the transaction.</p>
         </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sv-SE"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"urls"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="nl">"completeUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/payment-completed"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"cancelUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/payment-canceled"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"hostUrls"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"https://example.com"</span><span class="w"> </span><span class="p">],</span><span class="w">
             </span><span class="nl">"callbackUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/payment-callback"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/logo.png"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"termsOfServiceUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/terms.pdf"</span><span class="w">
@@ -355,7 +352,7 @@ to receive the state of the transaction.</p>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">intent</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">Sale</code> is the only intent option for Trustly. Performs the payment when the end-user gets redirected and completes the payment, and is followed by a <a href="/payments/trustly/after-payment#cancellations">cancellation</a> or <a href="/payments/trustly/after-payment#reversals">reversal</a> of funds.</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">Sale</code> is the only intent option for Trustly. Performs the payment when the end-user gets redirected and completes the payment, and is followed by a <a href="/payments/trustly/after-payment#reversals">reversal</a> of funds.</td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
@@ -428,12 +425,6 @@ to receive the state of the transaction.</p>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">completeUrl</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A <code class="language-html highlighter-rouge">GET</code> request needs to be performed on the payment to inspect it further.</td>
-    </tr>
-    <tr>
-      <td style="text-align: center"> </td>
-      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">cancelUrl</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with <code class="language-html highlighter-rouge">paymentUrl</code>; only <code class="language-html highlighter-rouge">cancelUrl</code> or <code class="language-html highlighter-rouge">paymentUrl</code> can be used, not both.</td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
@@ -688,7 +679,7 @@ notification from Trustly that the payment has gone through yet.</p>
 
 <p>Head over to <a href="/payments/trustly/after-payment">after payment</a>
 to see what you can do when a payment is completed.
-Here you will also find info on <code class="language-html highlighter-rouge">Cancel</code>, and <code class="language-html highlighter-rouge">Reversal</code>.</p>
+Here you will also find info on <code class="language-html highlighter-rouge">Abort</code> and <code class="language-html highlighter-rouge">Reversal</code>.</p>
 
 <nav class="iterator d-flex">
     
@@ -698,8 +689,8 @@ Here you will also find info on <code class="language-html highlighter-rouge">Ca
     
 
     
-        <a class="ml-auto btn btn-executive" role="button" rel="next" href="seamless-view">
-            Next: Seamless View
+        <a class="ml-auto btn btn-executive" role="button" rel="next" href="after-payment">
+            Next: After Payment
         </a>
     
 </nav>
