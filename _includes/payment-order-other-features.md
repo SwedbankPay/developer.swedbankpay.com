@@ -1267,8 +1267,7 @@ below with the added `logoUrl` in the Payment Order Purchase request.
 *   If the configuration is activated and you do not send in a `logoUrl`, then 
     no logo and no text is shown.
 
-*   If the configuration is deactivated, and you send in a `logoUrl`, this is 
-    not handled.
+*   If the configuration is deactivated, sending in a `logoUrl` has no effect.
 
 {:.code-header}
 **Request**
