@@ -1,6 +1,5 @@
-{%- assign documentation_section = include.documentation_section -%}
-{%- assign description_url = documentation_section | prepend: "/" | append: "/other-features#description" -%}
-{%- if documentation_section != "checkout" and documentation_section != "payment-menu" -%}
+{%- assign description_url = include.documentation_section | prepend: "/" | append: "/other-features#description" -%}
+{%- if include.documentation_section != "checkout" and include.documentation_section != "payment-menu" -%}
     {%- assign description_url = description_url | prepend: "/payments" -%}
 {%- endif -%}
 {%- capture description -%}

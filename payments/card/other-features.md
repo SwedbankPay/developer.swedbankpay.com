@@ -49,9 +49,9 @@ document is described in the following section.
 
 {% include complete-url.md %}
 
-{% include description.md api_resource = "creditcard" %}
+{% include description.md api_resource="creditcard" %}
 
-{% include recur.md %}
+{% include recur.md documentation_section="card" %}
 
 {% include unscheduled-purchase.md %}
 

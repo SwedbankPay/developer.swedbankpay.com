@@ -1,7 +1,7 @@
 ## Recur
 
 A `recur` payment is a payment that references a `recurrenceToken` created
-through a previous payment in order to charge the same card. 
+through a previous payment in order to charge the same card.
 
 {:.code-header}
 **Request**
@@ -47,7 +47,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`currency`             | `string`     | The currency of the payment order.                                                                                                                                                                                                                                                    |
 | {% icon check %} | └➔&nbsp;`amount`               | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                                                                             |
 | {% icon check %} | └➔&nbsp;`vatAmount`            | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                                                                                          |
-| {% icon check %} | └➔&nbsp;`description`          | `string`     | {% include field-description-description.md documentation_section=include.documentation_section%}                                                                                                                                                                                     |
+| {% icon check %} | └➔&nbsp;`description`          | `string`     | {% include field-description-description.md documentation_section=include.documentation_section %}                                                                                                                                                                                     |
 | {% icon check %} | └─➔&nbsp;`userAgent`           | `string`     | The [`User-Agent` string][user-agent] of the consumer's web browser.                                                                                                                                                                                                                  |
 | {% icon check %} | └─➔&nbsp;`language`            | `string`     | {% include field-description-language.md api_resource="paymentorders" %}                                                                                                                                                                                                              |
 | {% icon check %} | └─➔&nbsp;`urls`                | `string`     | {he URI to the `urls` resource where all URIs related to the payment order can be retrieved.                                                                                                                                                                                          |

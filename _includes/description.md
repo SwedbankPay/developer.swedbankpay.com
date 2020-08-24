@@ -1,5 +1,4 @@
 {% assign api_resource = include.api_resource | default: "creditcard" %}
-{% assign documentation_section = include.documentation_section %}
 {% assign documentation_section_title = documentation_section | capitalize %}
 {% unless api_resource == "paymentorder" %}
   {% assign documentation_section_title = documentation_section_title | append: " Payments" %}
@@ -57,7 +56,7 @@ Content-Type: application/json
                 "vatAmount": 0
             }
         ],{% endif %}
-        "description": "Test - Reference1583419461",{% if documentation_section == "payment_menu" %}
+        "description": "Test - Reference1583419461",{% if include.documentation_section == "payment_menu" %}
         "generatePaymentToken": false,{% endif %}
         "generateRecurrenceToken": false,
         "userAgent": "Mozilla/5.0...",
