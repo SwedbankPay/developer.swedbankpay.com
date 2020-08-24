@@ -15,4 +15,4 @@ gem 'html-proofer'
 gem 'html-proofer-unrendered-markdown'
 gem 'jekyll-redirect-from'
 gem "kramdown", ">= 2.3.0"
-gem 'swedbank-pay-design-guide-jekyll-theme', '~> 1.6.1.pre.PullRequest0137.pre.0037'
+gem 'swedbank-pay-design-guide-jekyll-theme', '~> 1.6.1.pre.PullRequest0137.pre.0063'
