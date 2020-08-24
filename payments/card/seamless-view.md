@@ -36,13 +36,19 @@ does not need to leave your webpage, since we are handling the payment in the
 
 ![screenshot of the hosted view card payment page][hosted-view-card]{:height="250px" width="660px"}
 
+For payments in the currency SEK, radio buttons for selecting debit or credit
+card will appear.
+
+![screenshot of the swedish hosted view card payment page][swedish-hosted-view-card]{:height="315px" width="710px"}
+
 ## Step 1: Create Payment
 
 A `Purchase` payment is a straightforward way to charge the card of the payer.
 It is followed up by posting a capture, cancellation or reversal transaction.
 
-An example of an abbreviated `POST` request is provided below. Each individual field of the JSON document is described in the following section.
-An example of an expanded `POST` request is available in the
+An example of an abbreviated `POST` request is provided below. Each individual 
+field of the JSON document is described in the following section. An example of 
+an expanded `POST` request is available in the 
 [other features section][purchase].
 
 {% include alert-risk-indicator.md %}
@@ -187,7 +193,7 @@ sequenceDiagram
 
 Swedbank Pay will handle 3-D Secure authentication when this is required.
 When dealing with credit card payments, 3-D Secure authentication of the
-cardholder is an essential topic. There are two alternative outcome of a credit
+cardholder is an essential topic. There are two alternative outcomes of a credit
 card payment:
 
 1.  3-D Secure enabled - by default, 3-D Secure should be enabled, and Swedbank
@@ -207,8 +213,8 @@ card payment:
 *   ③ `Show Consumer UI page in iframe` displays the payment window as content
   inside of the iframe. The consumer can insert card information for
   authorization.
-*   ④ `Event: OnPaymentComplete` is when er payment is complete. Please note that
-  both a successful and rejected payment reach completion, in contrast to a
+*   ④ `Event: OnPaymentComplete` is when a payment is complete. Please note 
+  that both successful and rejected payments reach completion, in contrast to a
   cancelled payment.
 
 {% include iterator.html prev_href="redirect" prev_title="Redirect"
@@ -232,3 +238,4 @@ next_href="capture" next_title="Next: Capture" %}
 [create-payment]: /payments/card/other-features#create-payment
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
 [hosted-view-card]: /assets/img/payments/hosted-view-card.png
+[swedish-hosted-view-card]: /assets/img/payments/swedish-hosted-view-card.png
