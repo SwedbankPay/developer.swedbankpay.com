@@ -1257,10 +1257,10 @@ Content-Type: application/json
 
 ## Custom Logo
 
-There is now support for replacing SwedbankPay logo in the payment menu. 
-See the abbreviated example below with the added `logoUrl` in `PaymentOrder`
-purchase. To do this you will need a separate configuration on customer in ecom
-admin.
+With permission and activation on your contract, it is possible to replace the
+Swedbank Pay logo in the Payment Menu. See the abbreviated example
+below with the added `logoUrl` in the Payment Order Purchase request.
+
 *   If the configuration is activated and you send in a `logoUrl`, then the 
     SwedbankPay logo is replaced with the logo sent in. And text is changes accordingly.
 
