@@ -34,7 +34,11 @@ redirect in mobile apps or in mobile web pages.
 You will redirect the consumer/end-user to Swedbank Pay hosted pages to collect
 the card information.
 
-![Merchant implemented redirect][redirect-image]{:width="407" height="627"}
+![Mobile Redirect Payment Page][mobile-redirect-page]{:width="285" height="490"}
+
+Transactions in SEK will have an option for selecting debit or credit card:
+
+![Swedish Mobile Redirect Payment Page][swedish-mobile-redirect-page]{:width="280" height="405"}
 
 ## API Requests for Payments
 
@@ -155,6 +159,7 @@ next_href="after-payment" next_title="Next: After Payment" %}
 [create-payment]: /payments/card/other-features#create-payment
 [payout]: /payments/card/other-features#payout
 [purchase]: /payments/card/other-features#purchase
-[redirect-image]: /assets/img/checkout/disabled-payment-menu.png
+[mobile-redirect-page]: /assets/img/payments/mobile-card-page.png
+[swedish-mobile-redirect-page]: /assets/img/payments/swedish-mobile-card-page.png
 [recur]: /payments/card/other-features#recur
 [verify]: /payments/card/other-features#verify

@@ -73,6 +73,11 @@ card information.
 
 ![screenshot of the redirect card payment page][card-payment]{:height="500px" width="425px"}
 
+When shopping in SEK, the page will look like this.
+
+![screenshot of the swedish redirect card payment page][swedish-card-payment]{:height="600px" width="500px"}
+
+
 ## Operations
 
 The API requests are displayed in the [purchase flow][purchase].
@@ -195,6 +200,7 @@ sequenceDiagram
 {% include iterator.html  next_href="redirect" next_title="Next: Redirect" %}
 
 [card-payment]: /assets/img/payments/card-payment.png
+[swedish-card-payment]: /assets/img/payments/swedish-card-payment.png
 [cancel]: /payments/card/after-payment#cancellations
 [capture]: /payments/card/capture
 [redirect]: /payments/card/redirect
