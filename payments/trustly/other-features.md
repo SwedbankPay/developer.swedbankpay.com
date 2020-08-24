@@ -122,6 +122,8 @@ Content-Type: application/json
 
 {% include settlement-reconciliation.md documentation_section="trustly" %}
 
+{% include metadata.md api_resource="trustly" %}
+
 {% include problems/problems.md documentation_section="trustly" %}
 
 {% include seamless-view-events.md api_resource="trustly" %}

@@ -487,6 +487,8 @@ The response will be the `payment` resource with its `state` set to `Aborted`.
 
 {% include prices.md api_resource="mobilepay" %}
 
+{% include metadata.md api_resource="mobilepay" %}
+
 {% include payee-info.md api_resource="mobilepay" documentation_section="mobile-pay" %}
 
 {% include problems/problems.md documentation_section="mobile-pay" %}
