@@ -231,6 +231,74 @@ Content-Type: application/json
 }
 ```
 
+{% if include.documentation_section == "payment-menu" %}
+
+## Payer Aware Payment Menu
+
+To maximize the experience of your consumers, you should implement the Payer
+Aware Payment Menu by identifying each payer with a unique identifier. It is
+important that you enforce a good SCA (Strong Consumer Authentication) strategy
+when authenticating the consumer. The consumer identifier must then be sent with
+the creation of the payment order to Swedbank Pay. This will enable Swedbank Pay
+to render a unique payment menu experience for each consumer. It will also
+increase the chance for a frictionless payment.
+
+By identifying your payers, they are be able to store payment information for
+future payments by setting `generatePaymentToken` value to `true`. This will
+enable the Swedbank Pay Payment Menu to show stored payment instrument details
+for future purchases. The default is to ask the consumer if they want to store
+their payment details, so even with `generatePaymentToken` set to `true`, it is
+in the end up to the consumer if they their payment instrument details stored or
+not.
+
+{% include alert.html type="informative" icon="info" body="Please note that not
+all payment instruments provided by Swedbank Pay support Payer Awareness today."
+%}
+
+### BYO Payment Menu
+
+Payment Menu is versatile and can be configured in such a way that it functions
+like a single payment instrument. In such configuration, it is easy to Bring
+Your Own Payment Menu, i.e. building a customized payment menu in our own user
+interface.
+
+#### Add Stored Payment Instrument Details
+
+When building a custom payment menu, features like adding new stored payment
+instrument details (i.e. "Add new card") is something that needs to be provided
+in your UI.
+
+This can be achieved by forcing the creation of a `paymentToken` by setting
+`disableStoredPaymentDetails` to `true` in a Purchase payment (if you want
+to withdraw money and create the token in the same operation), or by performing
+a [Verify payment](#verify-payments) (without withdrawing any money).
+
+Setting `disableStoredPaymentDetails` to `true` will turn off all stored payment
+details for the current purchase. The consumer will also not be asked if they
+want to store the payment detail that will be part of the purchase. When you use
+this feature it is important that you in advance have asked the consumer if it
+is ok to store their payment details for later use.
+
+Most often you will use the `disableStoredPaymentDetails` when you combine this
+feature with the [Instrument Mode](#instrument-mode) capability. If you build
+your own menu and want to show stored payment details, you will need to set the
+`disableStoredPaymentDetails` to `true`. It is important that you then store the
+`paymentToken` in your system or call Swedbank Pay with the `payerReference` to
+get all active payment tokens registered on that consumer when building your
+menu.
+
+### GDPR
+
+Remember that you will have the responsibility to enforce GDPR requirements and
+let the consumer remove active payment tokens when they want. It is up to you
+how to implement this functionality on your side but Swedbank Pay will have the
+API needed for you to ensure that cleaning up old data is easy. It is possible
+to query for all active payment tokens registered on a specific
+`payerReference`. Then you can either remove all tokens for that consumer or
+only a subset of all tokens.
+
+{% endif %}
+
 ## Operations
 
 When a payment order resource is created and during its lifetime, it will have
