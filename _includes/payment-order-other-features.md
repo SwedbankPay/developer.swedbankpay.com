@@ -1316,47 +1316,6 @@ Content-Type: application/json
 | └─➔&nbsp;`city`           | `string` | Payer's city of residence                                                                      |
 | └─➔&nbsp;`countryCode`    | `string` | Country Code for country of residence.                                                         |
 
-## Enable or Disable Payment Menu
-
-It is possible to disable the payment menu when only one instrument exist by
-setting the `disablePaymentMenu` field to `true`. The default value is
-`false`, exemplified below.
-
-{:.code-header}
-**Request**
-
-```js
-{
-    "paymentorder": {
-        "disablePaymentMenu": false
-    {
-}
-```
-
-{:.text-center}
-![example disablePaymentMenu = false][image-enabled-payment-menu]{:width="450" :height="850"}
-
-Setting `disablePaymentMenu` field to `true` removes all other payment
-instruments, except the one that is available.
-This feature should be set to `true` if you have only one payment
-instrument available. Setting it to `true` will remove the frame around the
-menu and show only the instrument.
-
-{:.code-header}
-**Request**
-
-```js
-{
-    "paymentorder": {
-        "disablePaymentMenu": true
-    {
-}
-```
-
-{:.text-center}
-![example disablePaymentMenu = true][image-disabled-payment-menu]{:width="463"
-:height="553"}
-
 {% if include.documentation_section == "checkout" %}
     {%- include checkin-events.md %}
 {% endif  %}
