@@ -1262,7 +1262,7 @@ Swedbank Pay logo in the Payment Menu. See the abbreviated example
 below with the added `logoUrl` in the Payment Order Purchase request.
 
 *   If the configuration is activated and you send in a `logoUrl`, then the 
-    SwedbankPay logo is replaced with the logo sent in. And text is changes accordingly.
+    SwedbankPay logo is replaced with the logo sent in and the text is changed accordingly.
 
 *   If the configuration is activated and you do not send in a `logoUrl`, then 
     no logo and no text is shown.
