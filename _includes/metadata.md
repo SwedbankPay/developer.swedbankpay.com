@@ -7,7 +7,7 @@ Metadata should be used by the merchant who wants to store data on a payment
 that they can get out later when they make a `GET` request on that payment. See the
 abbreviated `GET` request below.
 SwedbankPay does not use this in the system other than to store the data and give
-back it to the merchant who needs them. An example of this is if the merchant has
+it back to the merchant who needs them. An example of this is if the merchant has
 several internal systems where the actual creation of a payment takes place in
 one system but post-purchase takes place in another system.
 The merchant may need to send more data between these systems if they do not talk
