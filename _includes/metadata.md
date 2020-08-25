@@ -1,18 +1,27 @@
 {% assign api_resource = include.api_resource %}
 {% assign documentation_section = include.documentation_section %}
 
+{% if api_resource == "paymentorders" %}
+  {% assign api_resource_title="payment order" %}
+{% else %}
+  {% assign api_resource_title="payment" %}
+{% endif %}
+
 ## Metadata
 
-Metadata should be used by the merchant who wants to store data on a payment
-that they can get out later when they make a `GET` request on that payment. See the
-abbreviated `GET` request below.
-SwedbankPay does not use this in the system other than to store the data and give
-it back to the merchant who needs them. An example of this is if the merchant has
-several internal systems where the actual creation of a payment takes place in
-one system but post-purchase takes place in another system.
-The merchant may need to send more data between these systems if they do not talk
-to each other internally. This can be done by using the `metadata` field as shown
-in the abbreviated `Purchase` request below.
+Metadata can be used to store data associated to a {{ api_resource_title }}
+that can be retrieved later by performing a `GET` on the
+{{ api_resource_title }}.
+Swedbank Pay does not use or process `metadata`, it is only stored on the
+{{ api_resource_title }} so it can be retrieved later alongside the
+{{ api_resource_title }}. An example where `metadata` might be useful is when
+several internal systems are involved in the payment process and the payment
+creation is done in one system and post-purchases take place in another.
+In order to transmit data between these two internal systems, the data can be
+stored in `metadata` on the {{ api_resource_title }} so the internal systems do
+not need to communicate with each other directly.
+The usage of `metadata` field is shown in the abbreviated `Purchase` request
+below.
 
 {:.code-header}
 **Request**
