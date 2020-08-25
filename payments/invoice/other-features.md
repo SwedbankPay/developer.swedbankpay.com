@@ -541,6 +541,8 @@ transaction made towards a payment, as previously described.
 
 {% include prices.md api_resource="invoice" %}
 
+{% include metadata.md api_resource="invoice" %}
+
 {% include settlement-reconciliation.md documentation_section="invoice" %}
 
 {% include problems/problems.md documentation_section="invoice" %}

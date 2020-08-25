@@ -191,6 +191,8 @@ be connected to a Swish account.
 
 {% include callback-reference.md api_resource="swish" %}
 
+{% include metadata.md api_resource="swish" %}
+
 {% include problems/problems.md documentation_section="swish" %}
 
 {% include seamless-view-events.md api_resource="swish" %}

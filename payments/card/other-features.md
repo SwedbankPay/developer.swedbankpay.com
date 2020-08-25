@@ -97,6 +97,8 @@ completing the payment.
 
 ![Co-badge Dankort cards with option to choose between Dankort and Visa before paying][card-badge]{:height="500px" width="425px"}
 
+{% include metadata.md api_resource="creditcard" %}
+
 {% include settlement-reconciliation.md documentation_section="card" %}
 
 {% include problems/problems.md documentation_section="card" %}
