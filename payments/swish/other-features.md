@@ -78,7 +78,9 @@ Content-Type: application/json
             "msisdn": "+46739000001"
         },
         "swish": {
-            "enableEcomOnly": false
+            "enableEcomOnly": false,
+            "paymentRestrictedToAgeLimit": 18,
+            "paymentRestrictedToSocialSecurityNumber": "{{ page.consumer_ssn_se }}"
         }
     }
 }
@@ -115,6 +117,8 @@ Content-Type: application/json
 |                  | └➔&nbsp;`subsite`              | `string(40)` | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.                                                                                               |
 |                  | └➔&nbsp;`prefillInfo.msisdn`   | `string`     | Number will be prefilled on payment page, if valid. The mobile number must have a country code prefix and be 8 to 15 digits in length.                                                                                                                    |
 |                  | └➔&nbsp;`swish.enableEcomOnly` | `boolean`    | `true` if to only enable Swish on browser based transactions.; otherwise `false` to also enable Swish transactions via mobile app.                                                                                                                        |
+|                  | └─➔&nbsp;`paymentRestrictedToAgeLimit`             | `integer`     | Positive number that sets the required age needed to fulfill the payment. To use this feature it has to be configured in the contract.                                                                                                                                                            |
+|                 | └─➔&nbsp;`paymentRestrictedToSocialSecurityNumber` | `string`      | When provided, the payment will be restricted to a specific social security number to make sure its the same logged in customer who is also the payer. Format: yyyyMMddxxxx. To use this feature it has to be configured in the contract.                                                                                                                             |
 
 {:.code-header}
 **Response**
