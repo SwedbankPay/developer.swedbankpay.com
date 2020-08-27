@@ -28,7 +28,8 @@ Content-Type: application/json
             "cancelUrl": "https://example.com/payment-canceled",
             "paymentUrl": "https://example.com/perform-payment",
             "callbackUrl": "https://api.example.com/payment-callback",
-            "termsOfServiceUrl": "https://example.com/termsandconditoons.pdf"
+            "termsOfServiceUrl": "https://example.com/termsandconditoons.pdf",
+            "logoUrl": "https://example.com/logo.png"
         },
         "payeeInfo": {
             "payeeId": "{{ page.merchant_id }}",
@@ -205,6 +206,7 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`paymentUrl`             | `string`     | The URI that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment.                                                                                                                                                       |
 | {% icon check %} | └─➔&nbsp;`callbackUrl`            | `string`     | The URI to the API endpoint receiving `POST` requests on transaction activity related to the payment order.                                                                                                                                                                                              |
 | {% icon check %} | └─➔&nbsp;`termsOfServiceUrl`      | `string`     | {% include field-description-termsofserviceurl.md %}                                                                                                                                                                                                                                                     |
+| {% icon check %} | └─➔&nbsp;`logoUrl`      | `string`     | With permission and activation on your contract, sending in a `logoUrl` will replace the Swedbank Pay logo with the logo sent in. If you do not send in a `logoUrl`, then no logo and no text is shown. Without permission or activation on your contract, sending in a `logoUrl` has no effect.                                                                                                                                                                                                          |
 | {% icon check %} | └➔&nbsp;`payeeInfo`               | `string`     | The `payeeInfo` object, containing information about the payee.                                                                                                                                                                                                                                          |
 | {% icon check %} | └─➔&nbsp;`payeeId`                | `string`     | The ID of the payee, usually the merchant ID.                                                                                                                                                                                                                                                            |
 | {% icon check %} | └─➔&nbsp;`payeeReference`         | `string(30)` | {% include field-description-payee-reference.md documentation_section=include.documentation_section describe_receipt=true %}                                                                                                                                                                             |
