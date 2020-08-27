@@ -1505,8 +1505,6 @@ principle](https://en.wikipedia.org/wiki/Robustness_principle)." %}
 [payment-resource]: #payments-resource
 [settlement-and-reconciliation]: #settlement-and-reconciliation
 [split-settlement]: #split-settlement
-[swedbankpay-logo-payment]: /assets/screenshots/logourl/logourl-swedbank.png
-[swapped-logo-payment]: /assets/screenshots/logourl/logourl-swapped.png
 [transaction]: #transaction
 [urls]: #urls-resource
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
