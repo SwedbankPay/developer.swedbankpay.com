@@ -1303,14 +1303,6 @@ Content-Type: application/json
 }
 ```
 
-![The intial SwedbankPay logo][swedbankpay-logo-payment]{:width="300px"
-:height="150px"}
-
-![The replaced custom logo][swapped-logo-payment]{:width="300px"
-:height="150px"}
-
-
-
 ### Payer Resource
 
 The `payer` resource contains payer information related to the payment order.
