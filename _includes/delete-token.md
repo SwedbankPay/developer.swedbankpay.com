@@ -3,7 +3,7 @@
 {% assign token_field_name = include.token_field_name %}
 
 Payers should be able to delete payment tokens that are associated to
-them. To delete a `{{ token_field_name }}`, view the example below.
+them. How to delete a `{{ token_field_name }}` is described in the example below.
 Note that the value of `state` must be `Deleted` when deleting the token. 
 No other states are supported.
 
