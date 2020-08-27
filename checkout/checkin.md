@@ -21,9 +21,9 @@ sidebar:
 {% include jumbotron.html body="Swedbank Pay Checkout consists of two parts:
 **Checkin** and **Payment Menu**. In the sections that follow you'll find
 examples of the HTTP requests, responses and HTML code you will need to
-implement in order to complete the Swedbank Pay Checkout integration. To
-finalize Checkout you first have to Checkin. To check in, the payer needs to be
-identified." %}
+implement in order to complete the Swedbank Pay Checkout integration. For the 
+full Checkout experience you first have to Checkin. To check in, the payer needs
+to be identified." %}
 
 ## Step 1: Initiate session for consumer identification
 
@@ -31,8 +31,9 @@ The payer will be identified with the `consumers` resource and will be
 persisted to streamline future Payment Menu processes. Payer identification
 is done through the `initiate-consumer-session` operation.
 
-If the end user is using the Payment Menu as a guest, you can go directly to
-step 3, which you will find on the next page.
+{% include alert.html type="informative" icon="info" body="
+Note: If the end user is using the Payment Menu as a guest, you can go directly 
+to step 3, which you will find on the next page." %}
 
 {:.code-header}
 **Request**
