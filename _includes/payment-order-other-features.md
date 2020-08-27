@@ -451,6 +451,10 @@ The `view-paymentorder` operation contains the URI of the JavaScript that needs 
 The `UpdateOrder` operation is used when there is a change in the amount, vat
 amount or there are added or removed order items in the payment order.
 
+{% include alert.html type="informative" icon="info" body="If you implement 
+`UpdateOrder` you need to `refresh()` the Payment Menu frontend after you have 
+called the `UpdateOrder` API from the backend." %}
+
 In case the shopping cart is changed in another browser tab, that should also lead to an
 `UpdateOrder`. On `window.onfocus` in the tab that had Payment Menu initialized,
 `refresh()` should be invoked so the correct amount is authorized.
