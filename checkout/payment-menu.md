@@ -28,7 +28,15 @@ using `consumerProfileRef` retrieved in the previous step.
 
 We start by performing a `POST` request towards the `paymentorder` resource
 with the payer information (such as `consumerProfileRef`) we obtained in the
-checkin process described above.
+checkin process described above. This information will appear prefilled in the
+Payment Menu.
+
+If you are sending a guest user `POST` request, simply leave out the 
+`consumerProfileRef` from the input, and your end user will be sent to an empty 
+Payment Menu. Information like `email`, `address` and `msisdn` can still be 
+added manually in the payer node. If added, it will appear prefilled in the 
+Payment Menu.
+
 Remember to read up on our [URL resource][urls].
 
 {% include alert-risk-indicator.md %}
@@ -71,7 +79,7 @@ Content-Type: application/json
 | Field          | Type     | Description                                                                        |
 | :------------- | :------- | :--------------------------------------------------------------------------------- |
 | `paymentorder` | `object` | The payment order object.                                                          |
-| └➔&nbsp;`id`   | `string` | {% include field-description-id.md resource="paymentorder" %}                      |
+| └➔&nbsp;`id`   | `string` | {% include field-description-id.md resource="paymentorder" %}                     |
 | `operations`   | `array`  | The array of possible operations to perform, given the state of the payment order. |
 
 The `paymentorder` object is abbreviated since it's just the `id` and
@@ -89,13 +97,16 @@ the order ID of the webshop or merchant website." %}
 
 ## Step 4: Display the Payment Menu
 
-To load the payment menu from the JavaScript URL obtained in the back end API
+To load the Payment Menu from the JavaScript URL obtained in the back end API
 response, it needs to be set as a `script` element's `src` attribute. You can
-cause a page reload and do this with static HTML or you can avoid the page
+cause a page reload and do this with static HTML, or you can avoid the page
 refresh by invoking the POST to create the payment order through Ajax and then
 create the script element with JavaScript, all inside the event handler for
 [`onConsumerIdentified`][technical-reference-onconsumer-identified].
 The HTML code will be unchanged in this example.
+
+For the guest Payment Menu, lines 23-44 in the JavaScript should be your main 
+focus. They contain what you need to display the Payment Menu without Checkin.
 
 {:.code-header}
 **JavaScript**
