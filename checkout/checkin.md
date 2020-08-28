@@ -31,9 +31,9 @@ The payer will be identified with the `consumers` resource and will be
 persisted to streamline future Payment Menu processes. Payer identification
 is done through the `initiate-consumer-session` operation.
 
-{% include alert.html type="informative" icon="info" body="
-Note: If the end user is using the Payment Menu as a guest, you can go directly 
-to step 3, which you will find on the next page." %}
+{% include alert.html type="informative" icon="info" header="Guest Checkout"
+body="Note: If the end user is using the Payment Menu as a guest, you can go
+directly to step 3, which you will find on the next page." %}
 
 {:.code-header}
 **Request**
