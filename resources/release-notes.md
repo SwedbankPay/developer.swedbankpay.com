@@ -29,6 +29,20 @@ published on this page." %}
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
 
+## 28 Aug 2020
+
+### Version 1.13.2
+ 
+*   Added description on `metadata` for all payment instruments. 
+*   Updated files in [Settlement & Reconciliation][settlement-reconcilitation].
+*   Added information on token deletion in [Card Payments][card] and [Invoice Payments][invoice]. 
+*   Updated the documentation on `paymentRestrictedToAgeLimit` and
+    `paymentRestrictedToSocialSecurityNumber` in [Swish Payments][swish]. 
+*   Added documentation on guest checkout in [Checkout][checkout]. 
+*   Updated information about `logourl` in [Checkout][checkout].
+*   Added a list of accepted banks in [Trustly Payments][trustly-payments].
+*   Updated the `UpdateOrder` description in [Checkout][checkout].
+
 ## 21 Aug 2020
 
 ### Version 1.13.1
