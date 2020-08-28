@@ -56,6 +56,11 @@ Content-Type: application/json
                 "amount": 1500,
                 "vatAmount": 0,
                 "FeeAmount": 10
+            },
+            {
+                "type": "MobilePay",
+                "amount": 1500,
+                "vatAmount": 0
             }
         ],
         "description": "Test Purchase",
@@ -486,6 +491,8 @@ The response will be the `payment` resource with its `state` set to `Aborted`.
 {% include transactions.md api_resource="mobilepay" documentation_section="mobile-pay" %}
 
 {% include prices.md api_resource="mobilepay" %}
+
+{% include metadata.md api_resource="mobilepay" %}
 
 {% include payee-info.md api_resource="mobilepay" documentation_section="mobile-pay" %}
 

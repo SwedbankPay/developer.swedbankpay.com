@@ -201,6 +201,8 @@ payment altogether or creating an authorization transaction through the
 
 {% include payment-link.md %}
 
+{% include metadata.md api_resource="vipps" %}
+
 {% include problems/problems.md documentation_section="vipps" %}
 
 {% include seamless-view-events.md api_resource="vipps" %}

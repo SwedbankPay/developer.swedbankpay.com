@@ -74,9 +74,14 @@ state of the transaction.
 If you have chosen Seamless View, the `completeUrl` and `cancelUrl` will display
 directly inside the iframe.
 
-This is how the payment window might look like:
+This is how the payment window might look:
 
 ![screenshot of the redirect card payment page][card-payment]{:height="500px" width="425px"}
+
+Transactions in the currency SEK might look like this, with a debit/credit
+selection available:
+
+![screenshot of the swedish redirect card payment page][swedish-card-payment]{:height="600px" width="500px"}
 
 ### Purchase flow
 
@@ -186,6 +191,7 @@ next_href="seamless-view" next_title="Next: Seamless View" %}
 [recur]: /payments/card/other-features#recur
 [reversal]: /payments/card/after-payment#reversals
 [card-payment]: /assets/img/payments/card-payment.png
+[swedish-card-payment]: /assets/img/payments/swedish-card-payment.png
 [verify]: /payments/card/other-features#verify
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
 [payment-transaction-states]: /payments/card/other-features#payment-and-transaction-states

@@ -176,6 +176,8 @@ Content-Type: application/json
     }
 }
 ```
+{% include delete-token.md api_resource="invoice"
+documentation_section="invoice" token_field_name="recurrenceToken" %}
 
 ## Verify
 
@@ -540,6 +542,8 @@ transaction made towards a payment, as previously described.
 {% include payee-info.md api_resource="invoice" documentation_section="invoice" %}
 
 {% include prices.md api_resource="invoice" %}
+
+{% include metadata.md api_resource="invoice" %}
 
 {% include settlement-reconciliation.md documentation_section="invoice" %}
 

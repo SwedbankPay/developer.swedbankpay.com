@@ -231,6 +231,74 @@ Content-Type: application/json
 }
 ```
 
+{% if include.documentation_section == "payment-menu" %}
+
+## Payer Aware Payment Menu
+
+To maximize the experience of your consumers, you should implement the Payer
+Aware Payment Menu by identifying each payer with a unique identifier. It is
+important that you enforce a good SCA (Strong Consumer Authentication) strategy
+when authenticating the consumer. The consumer identifier must then be sent with
+the creation of the payment order to Swedbank Pay. This will enable Swedbank Pay
+to render a unique payment menu experience for each consumer. It will also
+increase the chance for a frictionless payment.
+
+By identifying your payers, they are be able to store payment information for
+future payments by setting `generatePaymentToken` value to `true`. This will
+enable the Swedbank Pay Payment Menu to show stored payment instrument details
+for future purchases. The default is to ask the consumer if they want to store
+their payment details, so even with `generatePaymentToken` set to `true`, it is
+in the end up to the consumer if they their payment instrument details stored or
+not.
+
+{% include alert.html type="informative" icon="info" body="Please note that not
+all payment instruments provided by Swedbank Pay support Payer Awareness today."
+%}
+
+### BYO Payment Menu
+
+Payment Menu is versatile and can be configured in such a way that it functions
+like a single payment instrument. In such configuration, it is easy to Bring
+Your Own Payment Menu, i.e. building a customized payment menu in our own user
+interface.
+
+#### Add Stored Payment Instrument Details
+
+When building a custom payment menu, features like adding new stored payment
+instrument details (i.e. "Add new card") is something that needs to be provided
+in your UI.
+
+This can be achieved by forcing the creation of a `paymentToken` by setting
+`disableStoredPaymentDetails` to `true` in a Purchase payment (if you want
+to withdraw money and create the token in the same operation), or by performing
+a [Verify payment](#verify-payments) (without withdrawing any money).
+
+Setting `disableStoredPaymentDetails` to `true` will turn off all stored payment
+details for the current purchase. The consumer will also not be asked if they
+want to store the payment detail that will be part of the purchase. When you use
+this feature it is important that you in advance have asked the consumer if it
+is ok to store their payment details for later use.
+
+Most often you will use the `disableStoredPaymentDetails` when you combine this
+feature with the [Instrument Mode](#instrument-mode) capability. If you build
+your own menu and want to show stored payment details, you will need to set the
+`disableStoredPaymentDetails` to `true`. It is important that you then store the
+`paymentToken` in your system or call Swedbank Pay with the `payerReference` to
+get all active payment tokens registered on that consumer when building your
+menu.
+
+### GDPR
+
+Remember that you will have the responsibility to enforce GDPR requirements and
+let the consumer remove active payment tokens when they want. It is up to you
+how to implement this functionality on your side but Swedbank Pay will have the
+API needed for you to ensure that cleaning up old data is easy. It is possible
+to query for all active payment tokens registered on a specific
+`payerReference`. Then you can either remove all tokens for that consumer or
+only a subset of all tokens.
+
+{% endif %}
+
 ## Operations
 
 When a payment order resource is created and during its lifetime, it will have
@@ -383,16 +451,15 @@ The `view-paymentorder` operation contains the URI of the JavaScript that needs 
 The `UpdateOrder` operation is used when there is a change in the amount, vat
 amount or there are added or removed order items in the payment order.
 
-{% include alert.html type="informative" icon="info" body="If you implement
-`UpdateOrder` you need to `refresh()` the Payment Menu frontend
-if the payment order is updated asynchronously with AJAX or in another browser tab, so that
-the new amount is shown to the payer." %}
-
-If the page is refreshed by a full page reload, `refresh()` is not necessary.
+{% include alert.html type="informative" icon="info" body="If you implement 
+`UpdateOrder` you need to `refresh()` the Payment Menu frontend after you have 
+called the `UpdateOrder` API from the backend." %}
 
 In case the shopping cart is changed in another browser tab, that should also lead to an
 `UpdateOrder`. On `window.onfocus` in the tab that had Payment Menu initialized,
 `refresh()` should be invoked so the correct amount is authorized.
+
+If the page is refreshed by a full page reload, `refresh()` is not necessary.
 
 {:.code-header}
 **Request**
@@ -795,6 +862,9 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`amount`              | `integer`    | The total amount including VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 SEK` and `5000` equals `50.00 SEK`.                                                                                 |
 | {% icon check %} | └─➔&nbsp;`vatAmount`           | `integer`    | The total amount of VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 SEK` and `5000` equals `50.00 SEK`.                                                                                        |
 
+{% include delete-token.md api_resource="paymentorders"
+documentation_section="payment-menu" token_field_name="recurrenceToken" %}
+
 ### Purchase Flow
 
 ```mermaid
@@ -950,10 +1020,10 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`amount`                  | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                                                                                                |
 | {% icon check %} | └➔&nbsp;`vatAmount`               | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                                                                                                             |
 | {% icon check %} | └➔&nbsp;`description`             | `string`     | The description of the payment order.                                                                                                                                                                                                                                                                    | {% if include.documentation_section == "payment-menu" %} |
-| {% icon check %} | └➔&nbsp;`generatePaymentToken`    | `bool`       | `true` or `false`. Set this to `true` if you want to create a paymentToken for future use as [One Click Payments][one-click-payments].                                                                                                                                                                   | {% endif %}                                              |
+| {% icon check %} | └➔&nbsp;`generatePaymentToken`    | `bool`       | `true` or `false`. Set this to `true` if you want to create a payment token for future use as [One Click Payments][one-click-payments]. All payment instruments will still be availabe in the payment menu, but the payment token will only be generated if the instrument chosen by the consumer supports one click.                                                                                                                                       | {% endif %}                                              |
 | {% icon check %} | └➔&nbsp;`userAgent`               | `string`     | The user agent of the payer.                                                                                                                                                                                                                                                                             |
 | {% icon check %} | └➔&nbsp;`language`                | `string`     | The language of the payer.                                                                                                                                                                                                                                                                               |
-| {% icon check %} | └➔&nbsp;`generateRecurrenceToken` | `bool`       | Determines whether a recurrence token should be generated. A recurrence token is primarily used to enable future [recurring payments](#recurring-payments) – with the same token – through server-to-server calls. Default value is `false`.                                                             |
+| {% icon check %} | └➔&nbsp;`generateRecurrenceToken` | `bool`       | Determines whether a recurrence token should be generated. A recurrence token is primarily used to enable future [recurring payments](#recurring-payments) – with the same token – through server-to-server calls. Default value is `false`. If set to `true`, only payment instruments which support recurring payments will be visible in the payment menu.                                                         |
 | {% icon check %} | └➔&nbsp;`urls`                    | `object`     | The `urls` object, containing the URLs relevant for the payment order.                                                                                                                                                                                                                                   |
 | {% icon check %} | └─➔&nbsp;`hostUrls`               | `array`      | The array of URIs valid for embedding of Swedbank Pay Hosted Views.                                                                                                                                                                                                                                      |
 | {% icon check %} | └─➔&nbsp;`completeUrl`            | `string`     | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment order to inspect it further. |
@@ -1187,6 +1257,54 @@ Content-Type: application/json
 
 {% include prices.md api_resource="paymentorders" %}
 
+## Custom Logo
+
+With permission and activation on your contract, it is possible to replace the
+Swedbank Pay logo in the Payment Menu. See the abbreviated example
+below with the added `logoUrl` in the Payment Order Purchase request.
+
+*   If the configuration is activated and you send in a `logoUrl`, then the 
+    SwedbankPay logo is replaced with the logo sent in and the text is changed accordingly.
+
+*   If the configuration is activated and you do not send in a `logoUrl`, then 
+    no logo and no text is shown.
+
+*   If the configuration is deactivated, sending in a `logoUrl` has no effect.
+
+{:.code-header}
+**Request**
+
+```http
+POST /psp/paymentorders HTTP/1.1
+Host: {{ page.api_host }}
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+
+{
+    "paymentorder": {
+        "operation": "Purchase",
+        "currency": "SEK",
+        "amount": 1500,
+        "vatAmount": 375,
+        "description": "Test Purchase",
+        "userAgent": "Mozilla/5.0...",
+        "language": "sv-SE",
+        "instrument": "CreditCard"
+        "generateRecurrenceToken": {{ operation_status_bool }},{% if include.documentation_section == "payment-menu" %}
+        "generatePaymentToken": {{ operation_status_bool }},{% endif %}
+        "urls": {
+            "hostUrls": [ "https://example.com", "https://example.net" ],
+            "completeUrl": "https://example.com/payment-completed",
+            "cancelUrl": "https://example.com/payment-canceled",
+            "paymentUrl": "https://example.com/perform-payment",
+            "callbackUrl": "https://api.example.com/payment-callback",
+            "termsOfServiceUrl": "https://example.com/termsandconditoons.pdf",
+            "logoUrl": "https://example.com/logo.png"
+        }
+    }
+}
+```
+
 ### Payer Resource
 
 The `payer` resource contains payer information related to the payment order.
@@ -1248,47 +1366,6 @@ Content-Type: application/json
 | └─➔&nbsp;`city`           | `string` | Payer's city of residence                                                                      |
 | └─➔&nbsp;`countryCode`    | `string` | Country Code for country of residence.                                                         |
 
-## Enable or Disable Payment Menu
-
-It is possible to disable the payment menu when only one instrument exist by
-setting the `disablePaymentMenu` field to `true`. The default value is
-`false`, exemplified below.
-
-{:.code-header}
-**Request**
-
-```js
-{
-    "paymentorder": {
-        "disablePaymentMenu": false
-    {
-}
-```
-
-{:.text-center}
-![example disablePaymentMenu = false][image-enabled-payment-menu]{:width="450" :height="850"}
-
-Setting `disablePaymentMenu` field to `true` removes all other payment
-instruments, except the one that is available.
-This feature should be set to `true` if you have only one payment
-instrument available. Setting it to `true` will remove the frame around the
-menu and show only the instrument.
-
-{:.code-header}
-**Request**
-
-```js
-{
-    "paymentorder": {
-        "disablePaymentMenu": true
-    {
-}
-```
-
-{:.text-center}
-![example disablePaymentMenu = true][image-disabled-payment-menu]{:width="463"
-:height="553"}
-
 {% if include.documentation_section == "checkout" %}
     {%- include checkin-events.md %}
 {% endif  %}
@@ -1332,6 +1409,8 @@ and Jekyll upgrades to it, we should also upgrade and replace all `include` with
 {% endif %}
 
 {% include merchant-identified-payer.md documentation_section="checkout"%}
+
+{% include metadata.md api_resource="paymentorders" %}
 
 {% if include.documentation_section == "payment-menu" %}
 

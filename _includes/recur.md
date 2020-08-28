@@ -15,7 +15,7 @@ Content-Type: application/json
 {
     "payment": {
         "operation": "Recur",
-        "intent": "Authorization|AutoCapture",
+        "intent": "Authorization",
         "recurrenceToken": "{{ page.payment_id }}",
         "currency": "NOK",
         "amount": 1500,
@@ -37,3 +37,30 @@ Content-Type: application/json
     }
 }
 ```
+
+{:.table .table-striped}
+|     Required     | Field                          | Type         | Description                                                                                                                                                                                                                                                                           |
+| :--------------: | :----------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| {% icon check %} | `payment`                 | `object`     | The payment object.                                                                                                                                                                                                                                                                  |
+| {% icon check %} | `operation`                    | `object`     | `Recur`.                                                                                                                                                                                                                                                                              |
+| {% icon check %} | └➔&nbsp;`recurrenceToken`      | `string`     | The created recurrenceToken, if `operation: Verify`, `operation: Recur` or `generateRecurrenceToken: true` was used.                                                                                                                                                                  |
+| {% icon check %} | └➔&nbsp;`currency`             | `string`     | The currency of the payment order.                                                                                                                                                                                                                                                    |
+| {% icon check %} | └➔&nbsp;`amount`               | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                                                                             |
+| {% icon check %} | └➔&nbsp;`vatAmount`            | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                                                                                          |
+| {% icon check %} | └➔&nbsp;`description`          | `string`     | {% include field-description-description.md documentation_section=include.documentation_section %}                                                                                                                                                                                     |
+| {% icon check %} | └─➔&nbsp;`userAgent`           | `string`     | The [`User-Agent` string][user-agent] of the consumer's web browser.                                                                                                                                                                                                                  |
+| {% icon check %} | └─➔&nbsp;`language`            | `string`     | {% include field-description-language.md api_resource="paymentorders" %}                                                                                                                                                                                                              |
+| {% icon check %} | └─➔&nbsp;`urls`                | `string`     | {he URI to the `urls` resource where all URIs related to the payment order can be retrieved.                                                                                                                                                                                          |
+| {% icon check %} | └─➔&nbsp;`callbackUrl`         | `string`     | The URL that Swedbank Pay will perform an HTTP `POST` against every time a transaction is created on the payment. See [callback](#callback) for details.                                                                                                                              |
+| {% icon check %} | └➔&nbsp;`payeeInfo`            | `string`     | The `payeeInfo` object, containing information about the payee (the recipient of the money).                                                                                                                                                                                          |
+| {% icon check %} | └─➔&nbsp;`payeeId`             | `string`     | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                                                                                                 |
+| {% icon check %} | └➔&nbsp;`payeeReference`       | `string(30)` | {% include field-description-payee-reference.md documentation_section=include.documentation_section describe_receipt=true %}                                                                                                                                                          |
+|                  | └➔&nbsp;`receiptReference`     | `string(30)` | A unique reference from the merchant system. It is used to supplement `payeeReference` as an additional receipt number.                                                                                                                                                               |
+| {% icon check %} | └─➔&nbsp;`payeeName`           | `string`     | The payee name (like merchant name) that will be displayed to consumer when redirected to Swedbank Pay.                                                                                                                                                                               |
+| {% icon check %} | └─➔&nbsp;`productCategory`     | `string`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                        |
+| {% icon check %} | └─➔&nbsp;`orderReference`      | `String(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                               |
+| {% icon check %} | └─➔&nbsp;`subsite`             | `String(40)` | The subsite field can be used to perform [split settlement][split-settlement] on the payment. The subsites must be resolved with Swedbank Pay [reconciliation][settlement-and-reconciliation] before being used.                                                                      |
+
+{% include delete-token.md api_resource="creditcard"
+documentation_section="card" token_field_name="recurrenceToken" %}
+
