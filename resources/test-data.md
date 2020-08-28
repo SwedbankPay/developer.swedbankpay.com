@@ -135,9 +135,9 @@ To test a logged in user in the Demo Shop, please use the following test data:
 
 ## Failure Testing
 
-For testing errors in transactions there are two different methods. The first
-method is performed through 3-D Secure, and the second method is for testing
-errors thorugh spesific amounts.
+There are two different ways of testing Card Payments error scenarios. You can
+test 3-D Secure errors using our 3-D Secure emulator, or you can use specific 
+amounts set to trigger errors in our test environment.
 
 ### 3-D Secure Method
 
