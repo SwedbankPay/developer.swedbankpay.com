@@ -176,6 +176,8 @@ Content-Type: application/json
     }
 }
 ```
+{% include delete-token.md api_resource="invoice"
+documentation_section="invoice" token_field_name="recurrenceToken" %}
 
 ## Verify
 
