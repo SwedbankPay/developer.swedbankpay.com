@@ -1542,7 +1542,7 @@ object in the request below.</p>
       <td style="text-align: center"> </td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">logoUrl</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The URL that will be used for showing the customer logo. Must be a picture with maximum 50px height and 400px width. Require https.</td>
+      <td style="text-align: left">With permission and activation on your contract, sending in a <code class="language-html highlighter-rouge">logoUrl</code> will replace the Swedbank Pay logo with the logo sent in. If you do not send in a <code class="language-html highlighter-rouge">logoUrl</code>, then no logo and no text is shown. Without permission or activation on your contract, sending in a <code class="language-html highlighter-rouge">logoUrl</code> has no effect.</td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
@@ -2206,6 +2206,67 @@ object in the request below.</p>
     </tr>
   </tbody>
 </table>
+
+<p>Payers should be able to delete payment tokens that are associated to
+them. How to delete a <code class="language-html highlighter-rouge">paymentToken</code> is described in the example below.
+Note that the value of <code class="language-html highlighter-rouge">state</code> must be <code class="language-html highlighter-rouge">Deleted</code> when deleting the token. 
+No other states are supported.</p>
+
+<p class="code-header"><strong>Request</strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre><span class="nf">PATCH</span> <span class="nn">/psp/creditcard/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">api.externalintegration.payex.com</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="s">{</span>
+<span class="s">  "state": "Deleted",</span>
+<span class="s">  "comment": "Comment on why the deletion is happening"</span>
+<span class="s">  "tokenType" : "paymentToken"</span>
+<span class="s">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p class="code-header"><strong>Response</strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="rouge-code"><pre><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="s">{</span>
+<span class="s">  "instrumentData": {</span>
+<span class="s">    "id": "/psp/creditcard/payments/instrumentdata/7e6cdfc3-1276-44e9-9992-7cf4419750e1",</span>
+<span class="s">    "paymentToken": "5a17c24e-d459-4567-bbad-aa0f17a76119",</span>
+<span class="s">    "payeeId": "5cabf558-5283-482f-b252-4d58e06f6f3b",</span>
+<span class="s">    "isDeleted": true </span>
+<span class="s">    "isPayeeToken": false,</span>
+<span class="s">    "cardBrand": "Visa",</span>
+<span class="s">    "maskedPan": "123456xxxxxx1111",</span>
+<span class="s">    "expiryDate": "MM/YYYY",</span>
+<span class="s">    "tokenType" : "paymentToken" </span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
     
       <h2 id="completeurl">
         
@@ -2305,7 +2366,7 @@ shown in the payment window, but it is still required in the initial request.</p
 </span><span class="p">}</span><span class="w">
 </span></pre></td></tr></tbody></table></code></pre></div></div>
 
-<p><img src="/assets/screenshots/description-field/description-all-payments.png" alt="The description field as presented in  Payments" width="1200px" /></p>
+<p><img src="/assets/screenshots/description-field/description-all-payments.png" alt="The description field as presented in Card Payments" width="1200px" /></p>
     
       <h2 id="recur">
         
@@ -2357,7 +2418,7 @@ through a previous payment in order to charge the same card.</p>
 <span class="p">{</span><span class="w">
     </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"operation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Recur"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"intent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Authorization|AutoCapture"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"intent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Authorization"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"recurrenceToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOK"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w">
@@ -2379,6 +2440,194 @@ through a previous payment in order to charge the same card.</p>
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></pre></td></tr></tbody></table></code></pre></div></div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th style="text-align: center">Required</th>
+      <th style="text-align: left">Field</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">payment</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">object</code></td>
+      <td style="text-align: left">The payment object.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">operation</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">object</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">Recur</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">recurrenceToken</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The created recurrenceToken, if <code class="language-html highlighter-rouge">operation: Verify</code>, <code class="language-html highlighter-rouge">operation: Recur</code> or <code class="language-html highlighter-rouge">generateRecurrenceToken: true</code> was used.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">currency</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The currency of the payment order.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">amount</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
+      <td style="text-align: left">The amount (including VAT, if any) to charge the payer, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">vatAmount</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
+      <td style="text-align: left">The amount of VAT to charge the payer, entered in the lowest monetary unit ofthe selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK. If the <code class="language-html highlighter-rouge">amount</code> given includes VAT, <code class="language-html highlighter-rouge">vatAmount</code> may be displayed for the user inthe payment page (redirect only). Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT amount charged.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">description</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">A 40 character length textual <a href="/payments/card/other-features#description">description</a> of the purchase.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">userAgent</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The <a href="https://en.wikipedia.org/wiki/User_agent"><code class="language-html highlighter-rouge">User-Agent</code> string</a> of the consumer’s web browser.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">language</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">sv-SE</code>, <code class="language-html highlighter-rouge">nb-NO</code> or <code class="language-html highlighter-rouge">en-US</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">urls</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">{he URI to the <code class="language-html highlighter-rouge">urls</code> resource where all URIs related to the payment order can be retrieved.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">callbackUrl</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The URL that Swedbank Pay will perform an HTTP <code class="language-html highlighter-rouge">POST</code> against every time a transaction is created on the payment. See <a href="#callback">callback</a> for details.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payeeInfo</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The <code class="language-html highlighter-rouge">payeeInfo</code> object, containing information about the payee (the recipient of the money).</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeId</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string(30)</code></td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payments/card/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">receiptReference</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string(30)</code></td>
+      <td style="text-align: left">A unique reference from the merchant system. It is used to supplement <code class="language-html highlighter-rouge">payeeReference</code> as an additional receipt number.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeName</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The payee name (like merchant name) that will be displayed to consumer when redirected to Swedbank Pay.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">productCategory</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">orderReference</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">String(50)</code></td>
+      <td style="text-align: left">The order reference should reflect the order reference found in the merchant’s systems.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">subsite</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">String(40)</code></td>
+      <td style="text-align: left">The subsite field can be used to perform <a href="#split-settlement">split settlement</a> on the payment. The subsites must be resolved with Swedbank Pay <a href="#settlement-and-reconciliation">reconciliation</a> before being used.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Payers should be able to delete payment tokens that are associated to
+them. How to delete a <code class="language-html highlighter-rouge">recurrenceToken</code> is described in the example below.
+Note that the value of <code class="language-html highlighter-rouge">state</code> must be <code class="language-html highlighter-rouge">Deleted</code> when deleting the token. 
+No other states are supported.</p>
+
+<p class="code-header"><strong>Request</strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre><span class="nf">PATCH</span> <span class="nn">/psp/creditcard/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">api.externalintegration.payex.com</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="s">{</span>
+<span class="s">  "state": "Deleted",</span>
+<span class="s">  "comment": "Comment on why the deletion is happening"</span>
+<span class="s">  "tokenType" : "recurrenceToken"</span>
+<span class="s">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p class="code-header"><strong>Response</strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="rouge-code"><pre><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="s">{</span>
+<span class="s">  "instrumentData": {</span>
+<span class="s">    "id": "/psp/creditcard/payments/instrumentdata/7e6cdfc3-1276-44e9-9992-7cf4419750e1",</span>
+<span class="s">    "paymentToken": "5a17c24e-d459-4567-bbad-aa0f17a76119",</span>
+<span class="s">    "payeeId": "5cabf558-5283-482f-b252-4d58e06f6f3b",</span>
+<span class="s">    "isDeleted": true </span>
+<span class="s">    "isPayeeToken": false,</span>
+<span class="s">    "cardBrand": "Visa",</span>
+<span class="s">    "maskedPan": "123456xxxxxx1111",</span>
+<span class="s">    "expiryDate": "MM/YYYY",</span>
+<span class="s">    "tokenType" : "recurrenceToken" </span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
     
       <h2 id="unscheduled-purchase">
         
@@ -5492,22 +5741,167 @@ and can be seen in the abbreviated request example below.</p>
         
       </h2>
 
-<p>Due to new <a href="https://ec.europa.eu/commission/presscorner/detail/en/MEMO_16_2162">EU regulations from 2016-06-09</a> regarding cards that have
-more than one payment application, we have developed support for the end users
-of Dankort to be able to choose their preferred payment application on the
+<p>Due to new <a href="https://ec.europa.eu/commission/presscorner/detail/en/MEMO_16_2162">EU regulations from 2016-06-09</a> regarding cards that 
+have more than one payment application, we have developed support for the end 
+users of Dankort to be able to choose their preferred payment application on the
 Swedbank Pay payment page. If you are a Dankort user, read more about this
 feature at <a href="https://www.dankort.dk/Pages/Dankort-eller-Visa.aspx">Dankort</a>.</p>
 
 <p>As a merchant you are able to set a priority selection of payment application by
-contacting <a href="https://www.swedbankpay.se/support">SwedbankPay Support</a>. The end user will always
+contacting <a href="https://www.swedbankpay.se/support">Swedbank Pay Support</a>. The end user will always
 be able to override this priority selection on the payment page.</p>
 
 <p>If you want more information about Co-badge Card Choice for Dankort users please
-contact <a href="https://www.swedbankpay.se/support">SwedankPay Support</a>. The example below shows the
+contact <a href="https://www.swedbankpay.se/support">Swedbank Pay Support</a>. The example below shows the
 payment window where there payer can choose between Dankort or Visa before
 completing the payment.</p>
 
 <p><img src="/assets/img/card-badge.png" alt="Co-badge Dankort cards with option to choose between Dankort and Visa before paying" height="500px" width="425px" /></p>
+    
+      <h2 id="metadata">
+        
+        
+          Metadata <a href="#metadata" class="header-anchor"></a>
+        
+        
+      </h2>
+
+<p>Metadata can be used to store data associated to a payment
+that can be retrieved later by performing a <code class="language-html highlighter-rouge">GET</code> on the
+payment.
+Swedbank Pay does not use or process <code class="language-html highlighter-rouge">metadata</code>, it is only stored on the
+payment so it can be retrieved later alongside the
+payment. An example where <code class="language-html highlighter-rouge">metadata</code> might be useful is when
+several internal systems are involved in the payment process and the payment
+creation is done in one system and post-purchases take place in another.
+In order to transmit data between these two internal systems, the data can be
+stored in <code class="language-html highlighter-rouge">metadata</code> on the payment so the internal systems do
+not need to communicate with each other directly.
+The usage of <code class="language-html highlighter-rouge">metadata</code> field is shown in the abbreviated <code class="language-html highlighter-rouge">Purchase</code> request
+below.</p>
+
+<p class="code-header"><strong>Request</strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+</pre></td><td class="rouge-code"><pre><span class="nf">POST</span> <span class="nn">/psp/creditcard/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">api.externalintegration.payex.com</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="s">{</span>
+<span class="s">  "payment": {</span>
+<span class="s">    "operation": "Purchase",</span>
+<span class="s">    "intent":  "Authorization", </span>
+<span class="s">    "currency": "SEK",</span>
+<span class="s">    "description": "Test Purchase",</span>
+<span class="s">    "payerReference": "AB1234",</span>
+<span class="s">    "userAgent": "Mozilla/5.0...",</span>
+<span class="s">    "language": "sv-SE",</span>
+<span class="s">    "urls": {</span>
+<span class="s">      "hostUrls": ["https://example.com"],</span>
+<span class="s">      "completeUrl": "https://example.com/payment-completed"</span>
+<span class="s">    },</span>
+<span class="s">    "payeeInfo": {</span>
+<span class="s">      "payeeId": "5cabf558-5283-482f-b252-4d58e06f6f3b",</span>
+<span class="s">      "payeeReference": "CD1234",</span>
+<span class="s">    },</span>
+<span class="s">    "metadata": {</span>
+<span class="s">        "key1": "value1",</span>
+<span class="s">        "key2": 2,</span>
+<span class="s">        "key3": 3.1,</span>
+<span class="s">        "key4": false</span>
+<span class="s">    },</span>
+<span class="s">    "prefillInfo": {</span>
+<span class="s">        "msisdn": "+4798765432"</span>
+<span class="s">    }</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th style="text-align: left">Parameter</th>
+      <th style="text-align: left">Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">metadata</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code>, <code class="language-html highlighter-rouge">boolean</code>, <code class="language-html highlighter-rouge">integer</code>,<code class="language-html highlighter-rouge">decimal</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="code-header"><strong>Request</strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="nf">GET</span> <span class="nn">/psp/creditcard/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">api.externalintegration.payex.com</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p class="code-header"><strong>Response</strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="s">{</span>
+<span class="s">  "payment": "/psp/creditcard/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1",</span>
+<span class="s">  "metadata": {</span>
+<span class="s">    "id": "/psp/creditcard/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/metadata",</span>
+<span class="s">    "key1": "value1",</span>
+<span class="s">    "key2": 2,</span>
+<span class="s">    "key3": 3.1,</span>
+<span class="s">    "key4": false</span>
+<span class="s"> }</span>
+<span class="s">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
     
       <h2 id="settlement-and-reconciliation">
         
@@ -5951,243 +6345,146 @@ reconciliation file.</li>
 <code class="language-html highlighter-rouge">TransactionNo</code> in reconciliation file.</li>
 </ul>
 
-<p>Below you will see the API mapping tables to the fields in the settlement 
-report for <code class="language-html highlighter-rouge">Create payment</code>,  <code class="language-html highlighter-rouge">Capture</code>  and <code class="language-html highlighter-rouge">Reversal</code>.</p>
-
-<p class="code-header"><strong>Create Payment</strong></p>
-
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th style="text-align: left">XLSX</th>
-      <th style="text-align: left">XML</th>
-      <th style="text-align: left">API</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">Swedbank Pay Batch Number</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">SwedbankbatchNo</code></td>
-      <td style="text-align: left"> </td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">Transaction Number</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">TransactionNo</code></td>
-      <td style="text-align: left"> </td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">Order id</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">OrderId</code></td>
-      <td style="text-align: left"> </td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">Date Created</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">DateCreated</code></td>
-      <td style="text-align: left"> </td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">Date Modified</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">DateModified</code></td>
-      <td style="text-align: left"> </td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">Provider</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">Provider</code></td>
-      <td style="text-align: left"> </td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">Type</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">Type</code></td>
-      <td style="text-align: left"> </td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">Amount</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">Amount</code></td>
-      <td style="text-align: left"> </td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">Currency</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">Currency</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">payment.currency</code></td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">Product Number</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">MerchantProductNo</code></td>
-      <td style="text-align: left"> </td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">Description</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">Description</code></td>
-      <td style="text-align: left"> </td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">VAT Amount</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">VATAmount</code></td>
-      <td style="text-align: left"> </td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">VAT Percentage</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">VatoPercentage</code></td>
-      <td style="text-align: left"> </td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">Credit Card Batch Number</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">CreditCardBatchNo</code></td>
-      <td style="text-align: left"> </td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">Direct Debit Bank Reference</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">DirectDebitbankRef</code></td>
-      <td style="text-align: left"> </td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">Reference</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">Reference</code></td>
-      <td style="text-align: left"> </td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">Swedbank Account Number</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">SwedbankAccountNo</code></td>
-      <td style="text-align: left"> </td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">Referenced Transaction Number</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">ReferencedTransaction</code></td>
-      <td style="text-align: left"> </td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">Sales Channel</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">SalesChannel</code></td>
-      <td style="text-align: left"> </td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">Brand</code></td>
-      <td style="text-align: left"> </td>
-      <td style="text-align: left"> </td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">Point Of Sale</code></td>
-      <td style="text-align: left"> </td>
-      <td style="text-align: left"> </td>
-    </tr>
-  </tbody>
-</table>
+<p>Below you will see the API mapping tables to the fields in the settlement
+report for  <code class="language-html highlighter-rouge">Capture</code>  and <code class="language-html highlighter-rouge">Reversal</code>.</p>
 
 <p class="code-header"><strong>Capture</strong></p>
 
 <table class="table table-striped">
   <thead>
     <tr>
+      <th style="text-align: left">API</th>
       <th style="text-align: left">XLSX</th>
       <th style="text-align: left">XML</th>
-      <th style="text-align: left">API</th>
+      <th> </th>
     </tr>
   </thead>
   <tbody>
     <tr>
+      <td style="text-align: left"> </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">Swedbank Pay Batch Number</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">SwedbankbatchNo</code></td>
-      <td style="text-align: left"> </td>
+      <td> </td>
     </tr>
     <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">transaction.number</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">Transaction Number</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">TransactionNo</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">transaction.number</code></td>
+      <td> </td>
     </tr>
     <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">transaction.payeeReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">Order id</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">OrderId</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">transaction.payeeReference</code></td>
+      <td> </td>
     </tr>
     <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">transaction.created</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">Date Created</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">DateCreated</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">transaction.created</code></td>
+      <td> </td>
     </tr>
     <tr>
+      <td style="text-align: left"> </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">Date Modified</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">DateModified</code></td>
-      <td style="text-align: left"> </td>
+      <td> </td>
     </tr>
     <tr>
+      <td style="text-align: left"> </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">Provider</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">Provider</code></td>
-      <td style="text-align: left"> </td>
+      <td> </td>
     </tr>
     <tr>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">Type</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">Type</code></td>
       <td style="text-align: left"> </td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">Type</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">Type</code></td>
+      <td> </td>
     </tr>
     <tr>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">Amount</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">Amount</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">transaction.amount</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">Amount</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">Amount</code></td>
+      <td> </td>
     </tr>
     <tr>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">Currency</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">Currency</code></td>
       <td style="text-align: left"> </td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">Currency</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">Currency</code></td>
+      <td> </td>
     </tr>
     <tr>
+      <td style="text-align: left"> </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">Product Number</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">MerchantProductNo</code></td>
-      <td style="text-align: left"> </td>
+      <td> </td>
     </tr>
     <tr>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">Description</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">Description</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">transaction.description</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">Description</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">Description</code></td>
+      <td> </td>
     </tr>
     <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">transaction.vatAmount</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">VAT Amount</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">VATAmount</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">transaction.vatAmount</code></td>
+      <td> </td>
     </tr>
     <tr>
+      <td style="text-align: left"> </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">VAT Percentage</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">VatoPercentage</code></td>
-      <td style="text-align: left"> </td>
+      <td> </td>
     </tr>
     <tr>
+      <td style="text-align: left"> </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">Credit Card Batch Number</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">CreditCardBatchNo</code></td>
-      <td style="text-align: left"> </td>
+      <td> </td>
     </tr>
     <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">transaction.number</code> if DirectDebit</td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">Direct Debit Bank Reference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">DirectDebitbankRef</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">transaction.number</code> if DirectDebit</td>
+      <td> </td>
     </tr>
     <tr>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">Reference</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">Reference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">transaction.number</code> if DirectDebit</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">Reference</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">Reference</code></td>
+      <td> </td>
     </tr>
     <tr>
+      <td style="text-align: left"> </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">Swedbank Account Number</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">SwedbankAccountNo</code></td>
-      <td style="text-align: left"> </td>
+      <td> </td>
     </tr>
     <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">transaction.number</code> if reversed later</td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">Referenced Transaction Number</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">ReferencedTransaction</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">transaction.number</code> if reversed later</td>
+      <td> </td>
     </tr>
     <tr>
+      <td style="text-align: left"> </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">Sales Channel</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">SalesChannel</code></td>
-      <td style="text-align: left"> </td>
+      <td> </td>
     </tr>
     <tr>
+      <td style="text-align: left"> </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">Brand</code></td>
       <td style="text-align: left"> </td>
-      <td style="text-align: left"> </td>
+      <td> </td>
     </tr>
     <tr>
+      <td style="text-align: left"> </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">Point Of Sale</code></td>
       <td style="text-align: left"> </td>
-      <td style="text-align: left"> </td>
+      <td> </td>
     </tr>
   </tbody>
 </table>
@@ -6197,116 +6494,138 @@ report for <code class="language-html highlighter-rouge">Create payment</code>, 
 <table class="table table-striped">
   <thead>
     <tr>
+      <th style="text-align: left">API</th>
       <th style="text-align: left">XLSX</th>
       <th style="text-align: left">XML</th>
-      <th style="text-align: left">API</th>
+      <th> </th>
     </tr>
   </thead>
   <tbody>
     <tr>
+      <td style="text-align: left"> </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">Swedbank Pay Batch Number</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">SwedbankbatchNo</code></td>
-      <td style="text-align: left"> </td>
+      <td> </td>
     </tr>
     <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">transaction.number</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">Transaction Number</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">TransactionNo</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">transaction.number</code></td>
+      <td> </td>
     </tr>
     <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">transaction.payeeReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">Order id</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">OrderId</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">transaction.payeeReference</code></td>
+      <td> </td>
     </tr>
     <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">transaction.created</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">Date Created</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">DateCreated</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">transaction.created</code></td>
+      <td> </td>
     </tr>
     <tr>
+      <td style="text-align: left"> </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">Date Modified</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">DateModified</code></td>
-      <td style="text-align: left"> </td>
+      <td> </td>
     </tr>
     <tr>
+      <td style="text-align: left"> </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">Provider</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">Provider</code></td>
-      <td style="text-align: left"> </td>
+      <td> </td>
     </tr>
     <tr>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">Type</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">Type</code></td>
       <td style="text-align: left"> </td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">Type</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">Type</code></td>
+      <td> </td>
     </tr>
     <tr>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">Amount</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">Amount</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">transaction.amount</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">Amount</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">Amount</code></td>
+      <td> </td>
     </tr>
     <tr>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">Currency</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">Currency</code></td>
       <td style="text-align: left"> </td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">Currency</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">Currency</code></td>
+      <td> </td>
     </tr>
     <tr>
+      <td style="text-align: left"> </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">Product Number</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">MerchantProductNo</code></td>
-      <td style="text-align: left"> </td>
+      <td> </td>
     </tr>
     <tr>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">Description</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">Description</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">transaction.description</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">Description</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">Description</code></td>
+      <td> </td>
     </tr>
     <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">transaction.vatAmount</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">VAT Amount</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">VATAmount</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">transaction.vatAmount</code></td>
+      <td> </td>
     </tr>
     <tr>
+      <td style="text-align: left"> </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">VAT Percentage</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">VatoPercentage</code></td>
-      <td style="text-align: left"> </td>
+      <td> </td>
     </tr>
     <tr>
+      <td style="text-align: left"> </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">Credit Card Batch Number</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">CreditCardBatchNo</code></td>
-      <td style="text-align: left"> </td>
+      <td> </td>
     </tr>
     <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">transaction.number</code> if DirectDebit</td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">Direct Debit Bank Reference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">DirectDebitbankRef</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">transaction.number</code> if DirectDebit</td>
+      <td> </td>
     </tr>
     <tr>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">Reference</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">Reference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">transaction.number</code> if DirectDebit</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">Reference</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">Reference</code></td>
+      <td> </td>
     </tr>
     <tr>
+      <td style="text-align: left"> </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">Swedbank Account Number</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">SwedbankAccountNo</code></td>
-      <td style="text-align: left"> </td>
+      <td> </td>
     </tr>
     <tr>
+      <td style="text-align: left"> </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">Referenced Transaction Number</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">ReferencedTransaction</code></td>
-      <td style="text-align: left"> </td>
+      <td> </td>
     </tr>
     <tr>
+      <td style="text-align: left"> </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">Sales Channel</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">SalesChannel</code></td>
-      <td style="text-align: left"> </td>
+      <td> </td>
     </tr>
     <tr>
+      <td style="text-align: left"> </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">Brand</code></td>
       <td style="text-align: left"> </td>
-      <td style="text-align: left"> </td>
+      <td> </td>
     </tr>
     <tr>
+      <td style="text-align: left"> </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">Point Of Sale</code></td>
       <td style="text-align: left"> </td>
-      <td style="text-align: left"> </td>
+      <td> </td>
     </tr>
   </tbody>
 </table>
@@ -7163,6 +7482,7 @@ payment
   <li class="toc-2"><a href="#prices">Prices</a></li>
   <li class="toc-2"><a href="#3-d-secure-2">3-D Secure 2</a></li>
   <li class="toc-2"><a href="#co-badge-card-choice-for-dankort">Co-badge Card Choice for Dankort</a></li>
+  <li class="toc-2"><a href="#metadata">Metadata</a></li>
   <li class="toc-2"><a href="#settlement-and-reconciliation">Settlement and Reconciliation</a></li>
   <li class="toc-2"><a href="#problems">Problems</a></li>
   <li class="toc-2"><a href="#seamless-view-events">Seamless View Events</a></li>

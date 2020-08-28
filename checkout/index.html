@@ -229,12 +229,20 @@ both the <strong><code class="language-html highlighter-rouge">consumer</code></
 components and how they work together. Swedbank Pay Checkout consists of two
 related, but disconnected concepts: <strong>Checkin</strong> and <strong>Payment Menu</strong>. Checkin
 identifies the consumer in our Consumer API and Payment Menu authorizes the
-payment with our Payment Menu API. The next step is to <strong>Capture</strong> the payment.
-You can either capture the total amount, or do a part-capture (as described
-under <a href="/checkout/capture">After Payment</a>). Connect these steps and you have
+payment with our Payment Menu API.</p>
+
+<p>The next step is to <strong>Capture</strong> the payment. You can either capture the total 
+amount, or do a part-capture (as described under 
+<a href="/checkout/capture">After Payment</a>). Connect these steps and you have
 Swedbank Pay Checkout.</p>
 
-<p>Under, you will see a sequence diagram showing the sequence of a Swedbank Pay
+<p>While Checkin is a necessary component to store personal information and access 
+features like storing cards, it is not a mandatory step for the Checkout process
+to work. If the end user is from a country where we currently don’t support 
+Checkin, or if he or she opts not to store their data, that’s fine. The Payment 
+Menu can still be used as a <strong>guest</strong>.</p>
+
+<p>Below, you will see a sequence diagram showing the sequence of a Swedbank Pay
 checkout.</p>
 
 <div class="alert  alert-informative">

@@ -551,7 +551,7 @@ object in the request below.</p>
       <td style="text-align: center"> </td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">logoUrl</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The URL that will be used for showing the customer logo. Must be a picture with maximum 50px height and 400px width. Require https.</td>
+      <td style="text-align: left">With permission and activation on your contract, sending in a <code class="language-html highlighter-rouge">logoUrl</code> will replace the Swedbank Pay logo with the logo sent in. If you do not send in a <code class="language-html highlighter-rouge">logoUrl</code>, then no logo and no text is shown. Without permission or activation on your contract, sending in a <code class="language-html highlighter-rouge">logoUrl</code> has no effect.</td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
@@ -1120,6 +1120,67 @@ object in the request below.</p>
   </tbody>
 </table>
 
+<p>Payers should be able to delete payment tokens that are associated to
+them. How to delete a <code class="language-html highlighter-rouge">paymentToken</code> is described in the example below.
+Note that the value of <code class="language-html highlighter-rouge">state</code> must be <code class="language-html highlighter-rouge">Deleted</code> when deleting the token. 
+No other states are supported.</p>
+
+<p class="code-header"><strong>Request</strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre><span class="nf">PATCH</span> <span class="nn">/psp/creditcard/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">api.externalintegration.payex.com</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="s">{</span>
+<span class="s">  "state": "Deleted",</span>
+<span class="s">  "comment": "Comment on why the deletion is happening"</span>
+<span class="s">  "tokenType" : "paymentToken"</span>
+<span class="s">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p class="code-header"><strong>Response</strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="rouge-code"><pre><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="s">{</span>
+<span class="s">  "instrumentData": {</span>
+<span class="s">    "id": "/psp/creditcard/payments/instrumentdata/7e6cdfc3-1276-44e9-9992-7cf4419750e1",</span>
+<span class="s">    "paymentToken": "5a17c24e-d459-4567-bbad-aa0f17a76119",</span>
+<span class="s">    "payeeId": "5cabf558-5283-482f-b252-4d58e06f6f3b",</span>
+<span class="s">    "isDeleted": true </span>
+<span class="s">    "isPayeeToken": false,</span>
+<span class="s">    "cardBrand": "Visa",</span>
+<span class="s">    "maskedPan": "123456xxxxxx1111",</span>
+<span class="s">    "expiryDate": "MM/YYYY",</span>
+<span class="s">    "tokenType" : "paymentToken" </span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
 <p>When you receive the redirect url from Swedbank Pay, you redirect the
 payer there to complete the payment. This ensures that card details and other
 personal information is entered in a secure environment. Swedbank Pay handles
@@ -1156,9 +1217,14 @@ state of the transaction.</p>
 <p>If you have chosen Seamless View, the <code class="language-html highlighter-rouge">completeUrl</code> and <code class="language-html highlighter-rouge">cancelUrl</code> will display
 directly inside the iframe.</p>
 
-<p>This is how the payment window might look like:</p>
+<p>This is how the payment window might look:</p>
 
 <p><img src="/assets/img/payments/card-payment.png" alt="screenshot of the redirect card payment page" height="500px" width="425px" /></p>
+
+<p>Transactions in the currency SEK might look like this, with a debit/credit
+selection available:</p>
+
+<p><img src="/assets/img/payments/swedish-card-payment.png" alt="screenshot of the swedish redirect card payment page" height="600px" width="500px" /></p>
     
       <h3 id="purchase-flow">
         

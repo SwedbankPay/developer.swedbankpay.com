@@ -355,6 +355,7 @@ both the integration and the payer.</p>
 88
 89
 90
+91
 </pre></td><td class="rouge-code"><pre><span class="nf">POST</span> <span class="nn">/psp/paymentorders</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">api.externalintegration.payex.com</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
@@ -378,7 +379,8 @@ both the integration and the payer.</p>
             </span><span class="nl">"cancelUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/payment-canceled"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"paymentUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/perform-payment"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"callbackUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.example.com/payment-callback"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"termsOfServiceUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/termsandconditoons.pdf"</span><span class="w">
+            </span><span class="nl">"termsOfServiceUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/termsandconditoons.pdf"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/logo.png"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"payeeInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="nl">"payeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5cabf558-5283-482f-b252-4d58e06f6f3b"</span><span class="p">,</span><span class="w">
@@ -746,6 +748,13 @@ both the integration and the payer.</p>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">termsOfServiceUrl</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The URI to the terms of service document the payer must accept in order to    complete the payment. Note that this field is not required    unless <code class="language-html highlighter-rouge">generateReferenceToken</code> or <code class="language-html highlighter-rouge">generateRecurrenceToken</code> is also submitted    in the request. This is the Merchants, not the Swedbank Pay Terms of    Service. <strong>HTTPS is a requirement</strong>.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">logoUrl</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">With permission and activation on your contract, sending in a <code class="language-html highlighter-rouge">logoUrl</code> will replace the Swedbank Pay logo with the logo sent in. If you do not send in a <code class="language-html highlighter-rouge">logoUrl</code>, then no logo and no text is shown. Without permission or activation on your contract, sending in a <code class="language-html highlighter-rouge">logoUrl</code> has no effect.</td>
       <td> </td>
     </tr>
     <tr>

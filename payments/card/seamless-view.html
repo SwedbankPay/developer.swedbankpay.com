@@ -213,6 +213,11 @@ does not need to leave your webpage, since we are handling the payment in the
 <code class="language-html highlighter-rouge">iframe</code> on your page.</p>
 
 <p><img src="/assets/img/payments/hosted-view-card.png" alt="screenshot of the hosted view card payment page" height="250px" width="660px" /></p>
+
+<p>For payments in the currency SEK, radio buttons for selecting debit or credit
+card will appear.</p>
+
+<p><img src="/assets/img/payments/swedish-hosted-view-card.png" alt="screenshot of the swedish hosted view card payment page" height="315px" width="710px" /></p>
     
       <h2 id="step-1-create-payment">
         
@@ -225,8 +230,9 @@ does not need to leave your webpage, since we are handling the payment in the
 <p>A <code class="language-html highlighter-rouge">Purchase</code> payment is a straightforward way to charge the card of the payer.
 It is followed up by posting a capture, cancellation or reversal transaction.</p>
 
-<p>An example of an abbreviated <code class="language-html highlighter-rouge">POST</code> request is provided below. Each individual field of the JSON document is described in the following section.
-An example of an expanded <code class="language-html highlighter-rouge">POST</code> request is available in the
+<p>An example of an abbreviated <code class="language-html highlighter-rouge">POST</code> request is provided below. Each individual 
+field of the JSON document is described in the following section. An example of 
+an expanded <code class="language-html highlighter-rouge">POST</code> request is available in the 
 <a href="/payments/card/other-features#purchase">other features section</a>.</p>
 
 <div class="alert  alert-success">
@@ -541,7 +547,7 @@ Purchase information. This will generate a payment object with a unique
       <td style="text-align: center"> </td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">logoUrl</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The URL that will be used for showing the customer logo. Must be a picture with maximum 50px height and 400px width. Require https.</td>
+      <td style="text-align: left">With permission and activation on your contract, sending in a <code class="language-html highlighter-rouge">logoUrl</code> will replace the Swedbank Pay logo with the logo sent in. If you do not send in a <code class="language-html highlighter-rouge">logoUrl</code>, then no logo and no text is shown. Without permission or activation on your contract, sending in a <code class="language-html highlighter-rouge">logoUrl</code> has no effect.</td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
@@ -1110,6 +1116,67 @@ Purchase information. This will generate a payment object with a unique
   </tbody>
 </table>
 
+<p>Payers should be able to delete payment tokens that are associated to
+them. How to delete a <code class="language-html highlighter-rouge">paymentToken</code> is described in the example below.
+Note that the value of <code class="language-html highlighter-rouge">state</code> must be <code class="language-html highlighter-rouge">Deleted</code> when deleting the token. 
+No other states are supported.</p>
+
+<p class="code-header"><strong>Request</strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre><span class="nf">PATCH</span> <span class="nn">/psp/creditcard/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">api.externalintegration.payex.com</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="s">{</span>
+<span class="s">  "state": "Deleted",</span>
+<span class="s">  "comment": "Comment on why the deletion is happening"</span>
+<span class="s">  "tokenType" : "paymentToken"</span>
+<span class="s">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p class="code-header"><strong>Response</strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="rouge-code"><pre><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="s">{</span>
+<span class="s">  "instrumentData": {</span>
+<span class="s">    "id": "/psp/creditcard/payments/instrumentdata/7e6cdfc3-1276-44e9-9992-7cf4419750e1",</span>
+<span class="s">    "paymentToken": "5a17c24e-d459-4567-bbad-aa0f17a76119",</span>
+<span class="s">    "payeeId": "5cabf558-5283-482f-b252-4d58e06f6f3b",</span>
+<span class="s">    "isDeleted": true </span>
+<span class="s">    "isPayeeToken": false,</span>
+<span class="s">    "cardBrand": "Visa",</span>
+<span class="s">    "maskedPan": "123456xxxxxx1111",</span>
+<span class="s">    "expiryDate": "MM/YYYY",</span>
+<span class="s">    "tokenType" : "paymentToken" </span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
 <p>The key information in the response is the <code class="language-html highlighter-rouge">view-authorization</code> operation. You
 will need to embed its <code class="language-html highlighter-rouge">href</code> in a <code class="language-html highlighter-rouge"><span class="nt">&lt;script&gt;</span></code> element. The script will enable
 loading the payment page in an <code class="language-html highlighter-rouge">iframe</code> in our next step.</p>
@@ -1316,7 +1383,7 @@ the link in the sequence diagram below.</p>
 
 <p>Swedbank Pay will handle 3-D Secure authentication when this is required.
 When dealing with credit card payments, 3-D Secure authentication of the
-cardholder is an essential topic. There are two alternative outcome of a credit
+cardholder is an essential topic. There are two alternative outcomes of a credit
 card payment:</p>
 
 <ol>
@@ -1345,8 +1412,8 @@ card payment:</p>
   <li>③ <code class="language-html highlighter-rouge">Show Consumer UI page in iframe</code> displays the payment window as content
   inside of the iframe. The consumer can insert card information for
   authorization.</li>
-  <li>④ <code class="language-html highlighter-rouge">Event: OnPaymentComplete</code> is when er payment is complete. Please note that
-  both a successful and rejected payment reach completion, in contrast to a
+  <li>④ <code class="language-html highlighter-rouge">Event: OnPaymentComplete</code> is when a payment is complete. Please note 
+  that both successful and rejected payments reach completion, in contrast to a
   cancelled payment.</li>
 </ul>
 

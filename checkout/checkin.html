@@ -190,9 +190,9 @@
     <p>Swedbank Pay Checkout consists of two parts:
 <strong>Checkin</strong> and <strong>Payment Menu</strong>. In the sections that follow you’ll find
 examples of the HTTP requests, responses and HTML code you will need to
-implement in order to complete the Swedbank Pay Checkout integration. To
-finalize Checkout you first have to Checkin. To check in, the payer needs to be
-identified.</p>
+implement in order to complete the Swedbank Pay Checkout integration. For the 
+full Checkout experience you first have to Checkin. To check in, the payer needs
+to be identified.</p>
 
 </div>
       <h2 id="step-1-initiate-session-for-consumer-identification">
@@ -206,6 +206,29 @@ identified.</p>
 <p>The payer will be identified with the <code class="language-html highlighter-rouge">consumers</code> resource and will be
 persisted to streamline future Payment Menu processes. Payer identification
 is done through the <code class="language-html highlighter-rouge">initiate-consumer-session</code> operation.</p>
+
+<div class="alert alert-complex alert-informative">
+    <header class="alert-header">
+            
+                <i class="material-icons alert-icon">info</i>
+      <h3>
+        
+        
+          Guest Checkout
+        
+        
+      </header>
+    
+
+    
+        
+            <div class="alert-body">
+                <p>Note: If the end user is using the Payment Menu as a guest, you can go
+directly to step 3, which you will find on the next page.</p>
+            </div>
+        
+    
+</div>
 
 <p class="code-header"><strong>Request</strong></p>
 

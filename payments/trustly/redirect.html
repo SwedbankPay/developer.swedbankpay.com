@@ -284,6 +284,7 @@ to receive the state of the transaction.</p>
 38
 39
 40
+41
 </pre></td><td class="rouge-code"><pre><span class="nf">POST</span> <span class="nn">/psp/trustly/payments</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
@@ -306,6 +307,7 @@ to receive the state of the transaction.</p>
         </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sv-SE"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"urls"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="nl">"completeUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/payment-completed"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"cancelUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/payment-canceled"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"hostUrls"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"https://example.com"</span><span class="w"> </span><span class="p">],</span><span class="w">
             </span><span class="nl">"callbackUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/payment-callback"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/logo.png"</span><span class="p">,</span><span class="w">
@@ -415,94 +417,110 @@ to receive the state of the transaction.</p>
       <td style="text-align: left">The <code class="language-html highlighter-rouge">urls</code> resource lists urls that redirects users to relevant sites.</td>
     </tr>
     <tr>
-      <td style="text-align: center"> </td>
-      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">hostUrl</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">array</code></td>
-      <td style="text-align: left">The array of URLs valid for embedding of Swedbank Pay Seamless View. If not supplied, view-operation will not be available.</td>
-    </tr>
-    <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">completeUrl</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A <code class="language-html highlighter-rouge">GET</code> request needs to be performed on the payment to inspect it further.</td>
     </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
     <tr>
-      <td style="text-align: center"> </td>
-      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">callbackUrl</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The URL that Swedbank Pay will perform an HTTP <code class="language-html highlighter-rouge">POST</code> against every time a transaction is created on the payment. See <a href="/payments/trustly/other-features#callback">callback</a> for details.</td>
+      <td><i class="material-icons">check</i></td>
+      <td>└─➔ <code class="language-html highlighter-rouge">cancelUrl</code></td>
+      <td><code class="language-html highlighter-rouge">string</code></td>
+      <td>The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios.</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>└─➔ <code class="language-html highlighter-rouge">hostUrl</code></td>
+      <td><code class="language-html highlighter-rouge">array</code></td>
+      <td>The array of URLs valid for embedding of Swedbank Pay Seamless View. If not supplied, view-operation will not be available.</td>
     </tr>
     <tr>
-      <td style="text-align: center"> </td>
-      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">logoUrl</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The URL that will be used for showing the customer logo. Must be a picture with maximum 50px height and 400px width. Require https.</td>
+      <td> </td>
+      <td>└─➔ <code class="language-html highlighter-rouge">callbackUrl</code></td>
+      <td><code class="language-html highlighter-rouge">string</code></td>
+      <td>The URL that Swedbank Pay will perform an HTTP <code class="language-html highlighter-rouge">POST</code> against every time a transaction is created on the payment. See <a href="/payments/trustly/other-features#callback">callback</a> for details.</td>
     </tr>
     <tr>
-      <td style="text-align: center"> </td>
-      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">termsOfServiceUrl</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The URI to the terms of service document the payer must accept in order to    complete the payment. Note that this field is not required    unless <code class="language-html highlighter-rouge">generateReferenceToken</code> or <code class="language-html highlighter-rouge">generateRecurrenceToken</code> is also submitted    in the request. This is the Merchants, not the Swedbank Pay Terms of    Service. <strong>HTTPS is a requirement</strong>.</td>
+      <td> </td>
+      <td>└─➔ <code class="language-html highlighter-rouge">logoUrl</code></td>
+      <td><code class="language-html highlighter-rouge">string</code></td>
+      <td>The URL that will be used for showing the customer logo. Must be a picture with maximum 50px height and 400px width. Require https.</td>
     </tr>
     <tr>
-      <td style="text-align: center"><i class="material-icons">check</i></td>
-      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payeeInfo</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">object</code></td>
-      <td style="text-align: left">The <code class="language-html highlighter-rouge">payeeInfo</code> contains information about the payee.</td>
+      <td> </td>
+      <td>└─➔ <code class="language-html highlighter-rouge">termsOfServiceUrl</code></td>
+      <td><code class="language-html highlighter-rouge">string</code></td>
+      <td>The URI to the terms of service document the payer must accept in order to    complete the payment. Note that this field is not required    unless <code class="language-html highlighter-rouge">generateReferenceToken</code> or <code class="language-html highlighter-rouge">generateRecurrenceToken</code> is also submitted    in the request. This is the Merchants, not the Swedbank Pay Terms of    Service. <strong>HTTPS is a requirement</strong>.</td>
     </tr>
     <tr>
-      <td style="text-align: center"><i class="material-icons">check</i></td>
-      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeId</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.</td>
+      <td><i class="material-icons">check</i></td>
+      <td>└➔ <code class="language-html highlighter-rouge">payeeInfo</code></td>
+      <td><code class="language-html highlighter-rouge">object</code></td>
+      <td>The <code class="language-html highlighter-rouge">payeeInfo</code> contains information about the payee.</td>
     </tr>
     <tr>
-      <td style="text-align: center"><i class="material-icons">check</i></td>
-      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">string(30*)</code></td>
-      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payments/trustly/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.</td>
+      <td><i class="material-icons">check</i></td>
+      <td>└─➔ <code class="language-html highlighter-rouge">payeeId</code></td>
+      <td><code class="language-html highlighter-rouge">string</code></td>
+      <td>This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.</td>
     </tr>
     <tr>
-      <td style="text-align: center"> </td>
-      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeName</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The payee name (like merchant name) that will be displayed to consumer when redirected to Swedbank Pay.</td>
+      <td><i class="material-icons">check</i></td>
+      <td>└─➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
+      <td><code class="language-html highlighter-rouge">string(30*)</code></td>
+      <td>A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payments/trustly/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.</td>
     </tr>
     <tr>
-      <td style="text-align: center"> </td>
-      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">productCategory</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.</td>
+      <td> </td>
+      <td>└─➔ <code class="language-html highlighter-rouge">payeeName</code></td>
+      <td><code class="language-html highlighter-rouge">string</code></td>
+      <td>The payee name (like merchant name) that will be displayed to consumer when redirected to Swedbank Pay.</td>
     </tr>
     <tr>
-      <td style="text-align: center"> </td>
-      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">orderReference</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">String(50)</code></td>
-      <td style="text-align: left">The order reference should reflect the order reference found in the merchant’s systems.</td>
+      <td> </td>
+      <td>└─➔ <code class="language-html highlighter-rouge">productCategory</code></td>
+      <td><code class="language-html highlighter-rouge">string</code></td>
+      <td>A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.</td>
     </tr>
     <tr>
-      <td style="text-align: center"> </td>
-      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">subsite</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">String(40)</code></td>
-      <td style="text-align: left">The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.</td>
+      <td> </td>
+      <td>└─➔ <code class="language-html highlighter-rouge">orderReference</code></td>
+      <td><code class="language-html highlighter-rouge">String(50)</code></td>
+      <td>The order reference should reflect the order reference found in the merchant’s systems.</td>
     </tr>
     <tr>
-      <td style="text-align: center"> </td>
-      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">prefillInfo</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">object</code></td>
-      <td style="text-align: left">Object representing information of what the UI text fields should be populated with</td>
+      <td> </td>
+      <td>└─➔ <code class="language-html highlighter-rouge">subsite</code></td>
+      <td><code class="language-html highlighter-rouge">String(40)</code></td>
+      <td>The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.</td>
     </tr>
     <tr>
-      <td style="text-align: center"> </td>
-      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">firstName</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">Prefilled value to put in the first name text box.</td>
+      <td> </td>
+      <td>└─➔ <code class="language-html highlighter-rouge">prefillInfo</code></td>
+      <td><code class="language-html highlighter-rouge">object</code></td>
+      <td>Object representing information of what the UI text fields should be populated with</td>
     </tr>
     <tr>
-      <td style="text-align: center"> </td>
-      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">lastName</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">Prefilled value to put in the last name text box.</td>
+      <td> </td>
+      <td>└─➔ <code class="language-html highlighter-rouge">firstName</code></td>
+      <td><code class="language-html highlighter-rouge">string</code></td>
+      <td>Prefilled value to put in the first name text box.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>└─➔ <code class="language-html highlighter-rouge">lastName</code></td>
+      <td><code class="language-html highlighter-rouge">string</code></td>
+      <td>Prefilled value to put in the last name text box.</td>
     </tr>
   </tbody>
 </table>
