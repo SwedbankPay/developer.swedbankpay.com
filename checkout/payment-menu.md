@@ -184,14 +184,22 @@ request.send(JSON.stringify({
 }));
 ```
 
-This should bring up the Payment Menu in a Seamless View. It should look like
-this, depending on whether the payer is logged in (top) or a guest user (bottom):
+This should bring up the Payment Menu in a Seamless View looking like
+this, depending on whether the payer is logged in (top two) or a guest user 
+(bottom two). Payments done in SEK will have radio buttons for choosing debit
+or credit card. 
 
 {:.text-center}
-![Payment Menu with payer logged in and card payment opened][login-payment-menu-image]{:width="450" height="900"}
+![Payment Menu with payer logged in and card payment opened][login-payment-menu-image]{:width="460" height="770"}
 
 {:.text-center}
-![Payment Menu with guest payer and card payment opened][guest-payment-menu-image]{:width="450" height="850"}
+![Payment Menu with swedish payer logged in and card payment opened][swedish-login-payment-menu-image]{:width="460" height="1150"}
+
+{:.text-center}
+![Payment Menu with guest payer and card payment opened][guest-payment-menu-image]{:width="535" height="815"}
+
+{:.text-center}
+![Payment Menu with swedish guest payer and card payment opened][swedish-guest-payment-menu-image]{:width="535" height="930"}
 
 When the consumer completes the payment, the Payment Menu script will be
 signaled and a full redirect to the `completeUrl` sent in with the
@@ -308,8 +316,10 @@ finalizing the payment in the [After Payment section][after-payment].
                          next_title="Next: Capture" %}
 
 [after-payment]: after-payment
-[guest-payment-menu-image]: /assets/img/checkout/guest-payment-menu-450x850.png
-[login-payment-menu-image]: /assets/img/checkout/logged-in-payment-menu-450x900.png
+[guest-payment-menu-image]: /assets/img/checkout/guest-payment-menu.png
+[login-payment-menu-image]: /assets/img/checkout/loggedin-payment-menu.png
+[swedish-guest-payment-menu-image]: /assets/img/checkout/swedish-guest-payment-menu.png
+[swedish-login-payment-menu-image]: /assets/img/checkout/swedish-logged-in-payment-menu.png
 [payment-order-operations]: /checkout/after-payment#operations
 [technical-reference-onconsumer-identified]: /checkout/checkin#step-2-display-swedbank-pay-checkin-module
 [urls]: /checkout/other-features#urls-resource
