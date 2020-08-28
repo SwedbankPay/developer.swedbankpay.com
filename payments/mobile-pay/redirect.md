@@ -75,6 +75,11 @@ Content-Type: application/json
                 "amount": 1500,
                 "vatAmount": 0,
                 "FeeAmount": 10
+            },
+            {
+                "type": "MobilePay",
+                "amount": 1500,
+                "vatAmount": 0
             }
         ],
         "description": "Test Purchase",
