@@ -16,6 +16,8 @@ sidebar:
       title: Other Features
 ---
 
+{% include alert-two-phase-payments.md %}
+
 {% include payment-order-capture.md documentation_section="payment-menu"%}
 
 **Et voilà!** The payment should now be complete and
