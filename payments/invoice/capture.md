@@ -20,6 +20,8 @@ sidebar:
       title: Other Features
 ---
 
+{% include alert-two-phase-payments.md %}
+
 ## Capture
 
 The final step in the integration process for Invoice [Redirect][redirect],
