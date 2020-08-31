@@ -33,7 +33,7 @@ jobs:
           -c "chmod 777 /srv/jekyll && jekyll build --future"
 
       - name: Azure Login
-        uses: azure/login@v1
+        uses: azure/login@v1.1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS_DEV }}
 
@@ -41,4 +41,4 @@ jobs:
         uses: azure/CLI@v1
         with:
           inlineScript: |
-            az storage blob upload-batch -s dist -d \$web --account-name spaydevportalstoragedev
+            az storage blob upload-batch -s _site -d ${{ github.ref }} --account-name spaydevportalstoragedev
