@@ -154,7 +154,7 @@ browser. Use either the Visa or MasterCard shown below.
 After pressing the purchase button you will then be taken to a menu where you
 can select Authentication status.
 
-![3D-Secure Emulator without dropdown menu][3DS-emulator-no-dropdown]{:width="805px" :height="685px"}
+![3D-Secure Emulator without dropdown menu][3ds-emulator-no-dropdown]{:width="805px" :height="685px"}
 
 ![3D-Secure Emulator with dropdown menu][3DS-emulator-with-dropdown]{:width="805px" :height="685px"}
 
