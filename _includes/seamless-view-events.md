@@ -12,11 +12,12 @@ During operation in the {{ product }}, several events can occur. They are
 described below.
 
 ### `onPaymentPending`
+
 This events triggers when a payment enters a paying state ( `Sale`, `Authorize`,
 `Cancel`etc). The `onPaymentPending` event
-will be followed by either `onPaymentCompleted`, `onPaymentFailed` or 
+will be followed by either `onPaymentCompleted`, `onPaymentFailed` or
 `onPaymentTransactionFailed` based on the result of the payment. Read more about
-these events below. 
+these events below.
 
 {:.code-header}
 **`onPaymentPending` event object**
@@ -31,8 +32,6 @@ these events below.
 | Field         | Type     | Description                                                     |
 | :------------ | :------- | :-------------------------------------------------------------- |
 | `id`          | `string` | {% include field-description-id.md %}                           |
-
-
 
 ### `onPaymentCompleted`
 
@@ -149,6 +148,8 @@ object:
 
 {% if api_resource == "paymentorders" %}
 
+{% if documentation_section == "paymentorders" %}
+
 ### `onPaymentMenuInstrumentSelected`
 
 This event triggers when a user actively changes payment instrument in the
@@ -170,6 +171,8 @@ following event argument object:
 | :----------- | :------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `name`       | `string` | The name and identifier of specific instrument instances - i.e. if you deploy more than one type of credit card payments, they would be distinguished by `name`. |
 | `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The instrument selected by the user.                                                                                  |
+
+{% endif %}
 
 ### `onPaymentCreated`
 
