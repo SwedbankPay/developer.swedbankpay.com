@@ -156,7 +156,7 @@ can select Authentication status.
 
 ![3D-Secure Emulator without dropdown menu][3ds-emulator-no-dropdown]{:width="805px" :height="685px"}
 
-![3D-Secure Emulator with dropdown menu][3DS-emulator-with-dropdown]{:width="805px" :height="685px"}
+![3D-Secure Emulator with dropdown menu][3ds-emulator-with-dropdown]{:width="805px" :height="685px"}
 
 In this menu there are a few different options to choose from, choose the status
 you want to test. When selected, simply press the Continue button and the
