@@ -251,7 +251,7 @@ will be involved.
 
 Testing a successful Swish purchase (in our external integration test 
 environment) can be done by using any valid Swedish mobile number. E.g: 
-+46 739000001. As with Vipps, the external integration test environment uses a 
+`+46 739000001`. As with Vipps, the external integration test environment uses a 
 fake service with no app involved. To trigger an error message, set the 
 `description` value in `POST` Create Payment or `Create` Payment Order to one of
 the following values:
