@@ -265,4 +265,4 @@ the following values:
 
 [create-card-purchase]: /payments/card/redirect#step-1-create-a-purchase
 [3ds-emulator-no-dropdown]: /assets/img/3DS-emulator-no-dropdown.png
-[3DS-emulator-with-dropdown]: /assets/img/3DS-emulator-with-dropdown.png
+[3ds-emulator-with-dropdown]: /assets/img/3DS-emulator-with-dropdown.png
