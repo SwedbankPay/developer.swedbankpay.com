@@ -229,7 +229,7 @@ Use any name, address etc.
 
 Testing a successful Vipps purchase (in our external integration test 
 environment) can be done using any valid Norwegian mobile number, E.g: 
-+47 99999999 except within the range: **9999991-99999998**, as these will 
+`+47 99999999` except within the range: `9999991` - `99999998`, as these will 
 trigger errors according to the table below. Please note that the external 
 integration test environment is usinga fake service, which means that no app 
 will be involved.
