@@ -80,9 +80,6 @@ Content-Type: application/json
             "productCategory": "A123",
             "orderReference": "or-12456",
             "subsite": "MySubsite"
-        },
-        "prefillInfo": {
-            "msisdn": "+4522222222"
         }
     },
     "mobilepay": {
@@ -118,8 +115,7 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`productCategory`      | `string`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                            |
 |                  | └─➔&nbsp;`orderReference`       | `String(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                   |
 |                  | └─➔&nbsp;`subsite`              | `String(40)` | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.                                                                                               |
-| {% icon check %} | └➔&nbsp;`prefillInfo.msisdn`    | `string`     | Number will be prefilled on payment page, if valid.                                                                                                                                                                                                       |
-| {% icon check %} | └➔&nbsp;`mobilepay.shoplogoUrl` | `string`     | URI to logo that will be visible at MobilePay                                                                                                                                                                                                             |
+| {% icon check %} | └➔&nbsp;`mobilepay.shoplogoUrl` | `string`     | URI to logo that will be visible at MobilePay. For it to display correctly in MobilePay's app, the image must be 250x250 pixels, a png or jpg served over a secure connection using https, and publicly available                                                                                                                                                                                                              |                                                                                                                                                                                                           |
 
 {:.code-header}
 **Response**
