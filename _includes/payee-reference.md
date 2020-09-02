@@ -3,7 +3,7 @@
 {% if api_resource == "card" %}
   {% assign payee_reference_max_length = 50 %}
 {% else %}
-  {% assign payeeReferenceMaxLength = 30 %}
+  {% assign payee_reference_max_length = 30 %}
 {% endif %}
 
 ## Payee Reference
