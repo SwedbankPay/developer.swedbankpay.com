@@ -7,6 +7,7 @@ plugins:
   - jekyll-material-icon-tag
   - "kramdown-plantuml"
   - jekyll-redirect-from
+  - swedbank-pay-design-guide-jekyll-theme
 kramdown:
   input: GFM
   syntax_highlighter: rouge
