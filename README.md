@@ -38,6 +38,9 @@ The Docker installation is the one we recommend to use for its simplicity.
 1.  Install [docker][docker-install] for your operating system.
 2.  Run `docker-compose up`
 
+A known bug is that it will list `Server address: http://0.0.0.0:4000`, this is
+wrong as the server address is `http://localhost:4000`.
+
 ### Manual install
 
 1.  [Clone this repository][cloning].
