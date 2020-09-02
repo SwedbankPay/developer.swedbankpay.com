@@ -4,7 +4,6 @@ exclude: ["Gemfile*", "Rakefile"]
 plugins:
   - "jekyll-github-metadata"
   - jemoji
-  - jekyll-remote-theme
   - jekyll-material-icon-tag
   - "kramdown-plantuml"
   - jekyll-redirect-from
