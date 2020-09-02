@@ -15,7 +15,39 @@ intended to be a safe, welcoming space for collaboration, and contributors
 are expected to adhere to the [Contributor Covenant][ccov] code of conduct as
 well as [Swedbank Pay Open Source Development Guidelines][dev-guidelines].
 
-### Set up Git Hooks
+If you would like to perform development on the Developer Portal source code,
+you have two alternatives: to edit files directly through the GitHub website
+or to fork or clone the repository. These alternatives are described below.
+
+### Edit On GitHub
+
+It's possible to edit existing pages directly on GitHub. The easiest way to go
+about doing that is finding the page you want to edit on
+[developer.swedbankpay.com][dev-portal] and clicking the GitHub icon in the
+upper right corner. It will take you to the corresponding Markdown file inside
+this repository, which you can then [edit through the GitHub website][gh-edit].
+
+### Fork or Clone
+
+If you want to add new pages or do larger changes, working on the repository
+locally in an editor and previewing the result in a web browser is better. To
+do that, you will have to fork or clone the repository.
+
+If you **don't have write-access** to this repository, you need to [fork][fork]
+it and then [create a pull request from the fork][fork-pr] in order to
+contribute.
+
+If you **have write-access** to this repository (you know who you are), you
+should [clone][clone] it and submit pull requests from branches you push
+directly within this repository itself.
+
+After forking or cloning the repository, there's a few things you should set
+up locally before you can start coding, so please read on.
+
+#### Git Hooks
+
+After forking or cloning the repository, you need to set up the necessary
+Git hooks that ensure adherence to our development process.
 
 Open a terminal in the root of the project repository and run the following:
 
@@ -26,51 +58,56 @@ git config core.hooksPath .githooks
 This will set up a few checks to ensure your branch name and commit messages
 follow our standards.
 
-## Usage
+#### Spin It Up
 
-To view this website, browse to [developer.swedbankpay.com][swp-dp]. If you'd
-like to host it locally on your computer, you have two options;
-[docker][docker], or [manual][manual-install] install.
-The Docker installation is the one we recommend to use for its simplicity.
+Once the Git hooks are set up, you have two options for how to spin up the
+developer portal locally; [docker][docker], or [manual install][manual-install].
+The Docker installation is recommended for its simplicity.
 
-### Docker
+##### Docker
 
 1.  Install [docker][docker-install] for your operating system.
-2.  Run `docker-compose up`
+2.  Open up a terminal and `cd` into the directory in which you cloned (your
+    possible fork of) this repository.
+3.  Run `docker-compose up`.
+4.  After pulling the required Docker image and building the site, it should be
+    accessible on `http://localhost:4000`*.
 
-A known bug is that it will list `Server address: http://0.0.0.0:4000`, this is
-wrong as the server address is `http://localhost:4000`.
+*Ignore the fact that `Server address: http://0.0.0.0:4000` is written to the
+console; Jekyll is not aware of that it is executed within a Docker container.
 
-### Manual install
+##### Manual Install
 
-1.  [Clone this repository][cloning].
-2.  Jekyll is written in [Ruby][ruby], so you'll need to download and install
+1.  Jekyll is written in [Ruby][ruby], so you'll need to download and install
     that. If you're installing on Windows, choose setup with DevKit.
-3.  To install the [Ruby Gems][gems] this web site requires, you first need to
+2.  To install the [Ruby Gems][gems] this web site requires, you first need to
     install [Bundler][bundler].
-4.  Install [Graphviz][graphviz], this will require Java.
-5.  Once Ruby ,Bundler, and Graphviz, is in place, type `bundle install` inside the root
-    folder of this repository.
-6.  Run `bundle exec jekyll serve` to start the website.
-7.  Open `http://localhost:4000` in a browser.
+3.  Install [Graphviz][graphviz], this will require Java.
+4.  Once Ruby, Bundler, and Graphviz is in place, type `bundle install` inside
+    the root folder of this repository.
+5.  Run `bundle exec jekyll serve` to start the website.
+6.  Open `http://localhost:4000` in a browser.
 
-### Visual Studio Code plugins
+##### Visual Studio Code Plugins
 
-We use several [Visual Studio Code][vs-code] plugins to ensure quality and structure
-is as constistent between users as possible.
+We recommend [Visual Studio Code][vs-code] as an editor when developing on the
+developer portal. To ensure quality, structure and consistency between different
+developers and writers, we use a few Visual Studio Code plugins that you should
+install and configure:
 
-*   davidanson.vscode-markdownlint, to lint Markdown files according to our defined set of rules.
-*   `shd101wyy.markdown-preview-enhanced`, to render Markdown to HTML in a
-     preview window.
-*   `bpruitt-goddard.mermaid-markdown-syntax-highlighting`, to give syntax
-     highlighting to Mermaid diagrams in Markdown files.
-*   `yzhang.markdown-all-in-one`, to enable a plethora of Markdown features,
-     most importantly formatting of Markdown tables with VS Code's built-in
-     format functionality.
-*   `stkb.rewrap`, to make line-breaking text at 80 characters easier.
-*   `supperchong.pretty-json` to format selected JSON snippets in code
-     examples.
-*   `sissel.shopify-liquid` for syntax highlighting of [Liquid][liquid].
+*   [markdownlint][vsc-md-lint], to lint Markdown files according to our defined
+    set of rules.
+*   [Markdown Preview Enhanced][vsc-md-preview], to render Markdown to HTML in a
+    preview window.
+*   [Mermaid Markdown Syntax Highlighting][vsc-md-mermaid], to give syntax
+    highlighting to [Mermaid][mermaid] diagrams in Markdown files.
+*   [Markdown All in One][vsc-md-all-in-one], to enable a plethora of Markdown
+    features, most importantly formatting of Markdown tables with Visual Studio
+    Code's built-in format functionality.
+*   [Rewrap][vsc-rewrap], to make line-breaking text at 80 characters easier.
+*   [Pretty js/json][vsc-pretty-json] to format selected JSON snippets in code
+    examples.
+*   [Liquid][vsc-liquid] for syntax highlighting of [Liquid][liquid] code.
 
 Also in Visual Studio Code, [set up a ruler at 80 characters][vsc-ruler]
 by adding `"editor.rulers": [80]` to its configuration.
@@ -181,15 +218,18 @@ This website is available as open source under the terms of the
 
 [bundler]: https://bundler.io/
 [ccov]: http://contributor-covenant.org
-[cloning]: https://help.github.com/articles/cloning-a-repository/
+[clone]: https://help.github.com/articles/cloning-a-repository/
 [config-yml]: _config.yml
 [dev-guidelines]: https://developer.swedbankpay.com/resources/development-guidelines
 [dev-portal]: https://developer.swedbankpay.com/
 [docker-install]: https://www.docker.com/
 [docker]: #docker
+[fork-pr]: https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request-from-a-fork
+[fork]: https://docs.github.com/en/github/getting-started-with-github/fork-a-repo
 [gems]: https://rubygems.org/
 [gh-actions-badge]: https://github.com/SwedbankPay/developer.swedbankpay.com/workflows/Test/badge.svg
 [gh-actions]: https://github.com/SwedbankPay/developer.swedbankpay.com/actions
+[gh-edit]: https://docs.github.com/en/github/managing-files-in-a-repository/editing-files-in-your-repository
 [gh-pages]: https://pages.github.com/
 [github]: https://github.com/SwedbankPay/developer.swedbankpay.com/
 [graphviz]: https://graphviz.org/download/
@@ -201,8 +241,16 @@ This website is available as open source under the terms of the
 [manual-install]: #manual-install
 [mermaid-github]: https://github.com/mermaid-js/mermaid
 [mermaid-live-editor]: https://mermaidjs.github.io/mermaid-live-editor
+[mermaid]: https://mermaid-js.github.io/mermaid/
 [opengraph-image]: https://repository-images.githubusercontent.com/210605116/56fb0c00-53e9-11ea-9c5f-7fb8685cce87
 [ruby]: https://www.ruby-lang.org/en/
 [swp-dp]: https://developer.swedbankpay.com
 [vs-code]: https://code.visualstudio.com/
+[vsc-liquid]: https://marketplace.visualstudio.com/items?itemName=sissel.shopify-liquid
+[vsc-md-all-in-one]: https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one
+[vsc-md-lint]: https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint
+[vsc-md-mermaid]: https://marketplace.visualstudio.com/items?itemName=bpruitt-goddard.mermaid-markdown-syntax-highlighting
+[vsc-md-preview]: https://marketplace.visualstudio.com/items?itemName=shd101wyy.markdown-preview-enhanced
+[vsc-pretty-json]: https://marketplace.visualstudio.com/items?itemName=supperchong.pretty-json
+[vsc-rewrap]: https://marketplace.visualstudio.com/items?itemName=stkb.rewrap
 [vsc-ruler]: https://stackoverflow.com/a/29972073/61818
