@@ -190,16 +190,16 @@ this, depending on whether the payer is logged in (top two) or a guest user
 or credit card. 
 
 {:.text-center}
-![Payment Menu with payer logged in and card payment opened][login-payment-menu-image]{:width="460" height="770"}
+![Payment Menu with payer logged in and card payment opened][login-payment-menu-image]{:width="475" height="760"}
 
 {:.text-center}
-![Payment Menu with swedish payer logged in and card payment opened][swedish-login-payment-menu-image]{:width="460" height="1150"}
+![Payment Menu with swedish payer logged in and card payment opened][swedish-login-payment-menu-image]{:width="475" height="800"}
 
 {:.text-center}
-![Payment Menu with guest payer and card payment opened][guest-payment-menu-image]{:width="535" height="815"}
+![Payment Menu with guest payer and card payment opened][guest-payment-menu-image]{:width="475" height="710"}
 
 {:.text-center}
-![Payment Menu with swedish guest payer and card payment opened][swedish-guest-payment-menu-image]{:width="535" height="930"}
+![Payment Menu with swedish guest payer and card payment opened][swedish-guest-payment-menu-image]{:width="475" height="965"}
 
 When the consumer completes the payment, the Payment Menu script will be
 signaled and a full redirect to the `completeUrl` sent in with the
