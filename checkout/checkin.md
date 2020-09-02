@@ -205,7 +205,7 @@ With the scripts loading in after the entire page is loaded, we can access the
 After that has all loaded, you should see something like this:
 
 {:.text-center}
-![Consumer UI][checkin-image]{:width="564" height="293"}
+![Consumer UI][checkin-image]{:width="475" height="250"}
 
 As you can see, the payer's information is pre-filled as provided by the
 initial `POST`. With a `consumerProfileRef` safely tucked into our pocket,
@@ -247,16 +247,16 @@ sequenceDiagram
 If a browser refresh is performed after the payer has checked in, the payment
 menu must be shown even though `onConsumerIdentified` is not invoked.
 
-Additional events during Checkin  can also be implemented
-in the `configuration` object, such as `onConsumerIdentified`, `onShippingDetailsAvailable`and
-`onBillingDetailsAvailable`. Read more about these in the
-[Checkin events][checkin-events] section.
+Additional events during Checkin  can also be implemented in the `configuration`
+object, such as `onConsumerIdentified`, `onShippingDetailsAvailable`and
+`onBillingDetailsAvailable`. Read more about these in the [Checkin
+events][checkin-events] section.
 
 ### Note on consumer data
 
-During this stage some consumer data is stored.
-Read more about our [Data Protection Policy][data-protection] for details on which
-information we store and its duration.
+During this stage some consumer data is stored. Read more about our [Data
+Protection Policy][data-protection] for details on which information we store
+and its duration.
 
 {% include iterator.html prev_href="./"
                          prev_title="Back: Introduction"
