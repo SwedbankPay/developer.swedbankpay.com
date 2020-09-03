@@ -433,10 +433,10 @@ The `view-paymentorder` operation contains the URI of the JavaScript that needs 
                 },
                 onPaymentToS: function(paymentToSEvent) {
                     console.log(paymentToSEvent);
-                },{% if documentation_section == "payment-menu" %}
+                },
                 onPaymentMenuInstrumentSelected: function(paymentMenuInstrumentSelectedEvent) {
                     console.log(paymentMenuInstrumentSelectedEvent);
-                },{% endif %}
+                },
                 onError: function(error) {
                     console.error(error);
                 },
