@@ -148,8 +148,6 @@ object:
 
 {% if api_resource == "paymentorders" %}
 
-{% if documentation_section == "paymentorders" %}
-
 ### `onPaymentMenuInstrumentSelected`
 
 This event triggers when a user actively changes payment instrument in the
@@ -171,8 +169,6 @@ following event argument object:
 | :----------- | :------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `name`       | `string` | The name and identifier of specific instrument instances - i.e. if you deploy more than one type of credit card payments, they would be distinguished by `name`. |
 | `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The instrument selected by the user.                                                                                  |
-
-{% endif %}
 
 ### `onPaymentCreated`
 
