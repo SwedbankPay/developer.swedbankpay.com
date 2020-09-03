@@ -308,6 +308,16 @@ to do, the chosen payment instrument and its transactional states, etc.
 determine the available operations before the initial purchase.
 A list of possible operations and their explanation is given below.
 
+{% include alert.html type="informative" icon="info" header="Note on deprecated
+operations." body="Several operations have now the status deprecated.
+These operations are:
+`create-capture`
+`create-cancel`
+`create-reversal`
+Because they are still in use by the existing users, they will not be removed from
+the documentation yet. New users should not use these operations and these
+operations will be marked with `DEPRECATED DO NOT USE!`." %}
+
 {:.code-header}
 **Operations**
 
@@ -341,19 +351,19 @@ A list of possible operations and their explanation is given below.
             "rel": "view-paymentorder",
             "contentType": "application/javascript"
         },
-        {
+        {   `DEPRECATED DO NOT USE!`
             "method": "POST",
             "href": "{{ page.api_url }}/psp/paymentorders/{{ page.payment_order_id }}/captures",
             "rel": "create-paymentorder-capture",
             "contentType": "application/json"
         },
-        {
+        {   `DEPRECATED DO NOT USE!`
             "method": "POST",
             "href": "{{ page.api_url }}/psp/paymentorders/{{ page.payment_order_id }}/cancellations",
             "rel": "create-paymentorder-cancel",
             "contentType": "application/json"
         },
-        {
+        {   `DEPRECATED DO NOT USE!`
             "method": "POST",
             "href": "{{ page.api_url }}/psp/paymentorders/{{ page.payment_order_id }}/reversals",
             "rel": "create-paymentorder-reversal",
@@ -397,9 +407,9 @@ for the given operation.
 | `update-paymentorder-updateorder` | Updates the order with a change in the `amount` and/or `vatAmount`.                                                                                                                                                                                                            |
 | `redirect-paymentorder`           | Contains the URI that is used to redirect the consumer to the Swedbank Pay Payments containing the Payment Menu.                                                                                                                                                               |
 | `view-paymentorder`               | Contains the JavaScript `href` that is used to embed the Payment Menu UI directly on the webshop/merchant site.                                                                                                                                                                |
-| `create-paymentorder-capture`     | The second part of a two-phase transaction where the authorized amount is sent from the payer to the payee. It is possible to do a part-capture on a subset of the authorized amount. Several captures on the same payment are possible, up to the total authorization amount. |
-| `create-paymentorder-cancel`      | Used to cancel authorized and not yet captured transactions. If a cancellation is performed after doing a part-capture, it will only affect the not yet captured authorization amount.                                                                                         |
-| `create-paymentorder-reversal`    | Used to reverse a payment. It is only possible to reverse a payment that has been captured and not yet reversed.                                                                                                                                                               |
+| `create-paymentorder-capture`     | `DEPRECATED DO NOT USE!` The second part of a two-phase transaction where the authorized amount is sent from the payer to the payee. It is possible to do a part-capture on a subset of the authorized amount. Several captures on the same payment are possible, up to the total authorization amount. |
+| `create-paymentorder-cancel`      | `DEPRECATED DO NOT USE!` Used to cancel authorized and not yet captured transactions. If a cancellation is performed after doing a part-capture, it will only affect the not yet captured authorization amount.                                                                                         |
+| `create-paymentorder-reversal`    | `DEPRECATED DO NOT USE!` Used to reverse a payment. It is only possible to reverse a payment that has been captured and not yet reversed.                                                                                                                                                               |
 | `paid-paymentorder`               | Returns the information about a paymentorder that has the status `paid`.                                                                                                                                                                                                       |
 | `failed-paymentorder`             | Returns the information about a paymentorder that has the status `failed`.                                                                                                                                                                                                     |
 

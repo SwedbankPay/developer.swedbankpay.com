@@ -145,12 +145,6 @@ The only thing that should be hard coded in the client is the value of
 the `rel` and the request that will be sent in the HTTP body of the request
 for the given operation.
 
-{% include alert.html type="informative" icon="info" header="Note on `href`
-operations." body="All operations that contains a spesific payment instrument
-in the `href` value, should not be used by new users as they are deprecated. 
-Because they are still in use by the existing users, they will not be removed from 
-the response examples yet. New users should not use these operations." %}
-
 {% case api_resource %}
 
 {% when "creditaccount" %}
