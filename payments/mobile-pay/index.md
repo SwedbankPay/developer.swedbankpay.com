@@ -52,6 +52,8 @@ the `abort`, `cancel`, `capture` or `reversal` is done by the merchant at a
 later time. Read more about the [different operations][other-features] and the
 [payment resource][payment-resource].
 
+{% include alert-two-phase-payments.md %}
+
 ### Settlement
 
 MobilePay Online transactions are handled, processed and settled as card

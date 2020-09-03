@@ -18,6 +18,8 @@ sidebar:
       title: Other Features
 ---
 
+{% include alert-two-phase-payments.md %}
+
 {% include payment-order-capture.md documentation_section="checkout"%}
 
 **Et voilà!** Checkout should now be complete, the payment should be secure and
