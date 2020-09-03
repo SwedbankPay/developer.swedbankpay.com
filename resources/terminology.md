@@ -1,6 +1,7 @@
 ---
-title: Resources
+title: Terminology
 estimated_read: 30
+menu-order: 400
 ---
 
 ### A

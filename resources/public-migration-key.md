@@ -6,6 +6,7 @@ description: |
   our **Public Migration Key** to encrypt the data in transmission.
   Contact our support at [support.ecom@payex.com](mailto:support.ecom@payex.com)
   for more information regarding this procedure.
+menu-order: 300
 ---
 
 *   **Key size**: 4096 bits
