@@ -308,6 +308,12 @@ to do, the chosen payment instrument and its transactional states, etc.
 determine the available operations before the initial purchase.
 A list of possible operations and their explanation is given below.
 
+{% include alert.html type="informative" icon="info" header="Deprecated
+Operations." body="Payment instrument-specific operations are passed
+through Payment Order. These can be recognized by not having
+`paymentorder` in the `rel` value. They will be described and marked as
+deprecated in the operation list below." %}
+
 {:.code-header}
 **Operations**
 
@@ -371,6 +377,27 @@ A list of possible operations and their explanation is given below.
             "rel": "failed-paymentorder",
             "contentType": "application/problem+json"
         }
+        {
+            // Deprecated operation. Do not use!
+            "method": "POST",
+            "href": "{{ page.api_url }}/psp/creditcard/{{ page.payment_id }}/captures",
+            "rel": "create-capture",
+            "contentType": "application/json"
+        },
+        {
+            // Deprecated operation. Do not use!
+            "method": "POST",
+            "href": "{{ page.api_url }}/psp/creditcard/{{ page.payment_id }}/cancellations",
+            "rel": "create-cancel",
+            "contentType": "application/json"
+        },
+        {
+            // Deprecated operation. Do not use!
+            "method": "POST",
+            "href": "{{ page.api_url }}/psp/creditcard/{{ page.payment_id }}/reversals",
+            "rel": "create-reversal",
+            "contentType": "application/json"
+        }
     ]
 }
 ```
@@ -402,6 +429,9 @@ for the given operation.
 | `create-paymentorder-reversal`    | Used to reverse a payment. It is only possible to reverse a payment that has been captured and not yet reversed.                                                                                                                                                               |
 | `paid-paymentorder`               | Returns the information about a paymentorder that has the status `paid`.                                                                                                                                                                                                       |
 | `failed-paymentorder`             | Returns the information about a paymentorder that has the status `failed`.                                                                                                                                                                                                     |
+| `create-capture`                  | **Deprecated operation. Do not use!**                                                                                                                                                                                                                                                     |
+| `create-cancel`                   | **Deprecated operation. Do not use!**                                                                                                                                                                                                                                                     |
+| `create-cancel`                   | **Deprecated operation. Do not use!**                                                                                                                                                                                                                                                     |
 
 {% include complete-url.md %}
 
