@@ -109,7 +109,8 @@ Content-Type: application/json
 When redirecting to Swedbank Pay the payment page will be
 prefilled with the payer's card details. See example below." %}
 
-![One click payment page][one-click-image]{:height="450px" width="425px"}
+{:.text-center}
+![One click payment page][one-click-image]{:height="510px" width="475px"}
 
 ### Delete payment token
 

@@ -44,7 +44,8 @@ In the desktop intended e-commerce flow, the payer enters a Swish connected mobi
 phone number on Swedbank Pay's payment page (Redirect) or in the `iframe` (Seamless
 View) after the payment is created.
 
-![screenshot of the Swish redirect payment page with number input][swish-payment]{:height="500px" width="425px"}
+{:.text-center}
+![screenshot of the Swish redirect payment page with number input][swish-payment]{:height="400px" width="475px"}
 
 After pushing the pay button, the payer needs to open the Swish app and confirm
 the payment. If you are using the Redirect option, the payer will be

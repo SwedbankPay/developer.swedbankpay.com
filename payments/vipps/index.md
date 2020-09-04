@@ -29,12 +29,14 @@ platforms.
 After the payment is created, the consumer pushes the payment button on Swedbank Pay's
 payment page (redirect) or in the `iframe` (seamless view).
 
-![screenshot of the first Vipps redirect page][vipps-redirect]{:height="500px" width="425px"}
+{:.text-center}
+![screenshot of the first Vipps redirect page][vipps-redirect]{:height="375px" width="475px"}
 
 The payer is then redirected to Vipps' own payment
 page where the phone number is entered, and a push message is sent to the phone.
 
-![screenshot of the Vipps number input page][vipps-number-input]{:height="500px" width="450px"}
+{:.text-center}
+![screenshot of the Vipps number input page][vipps-number-input]{:height="500px" width="475px"}
 
 The payment request will appear in the app and can be confirmed by the consumer.
 If you are using the redirect option, the consumer will be redirected back to
@@ -61,9 +63,9 @@ acquirer agreement, so the two payment instruments are settled separately.
 As Vipps transactions are processed as card transactions, a 3-D Secure agreement
 is needed to complete the payment instrument setup. This information is provided
 to you by your acquirer when you set up your agreement with them. If you offer
-both Card Payments and Vipps, you will need two separate 3-D Secure agreements, one for
-each payment instrument. Apart from the agreement with the acquirer, no further
-3-D Secure compliance is required from you as a merchant in this regard.
+both Card Payments and Vipps, you will need two separate 3-D Secure agreements,
+one for each payment instrument. Apart from the agreement with the acquirer, no
+further 3-D Secure compliance is required from you as a merchant in this regard.
 
 ### Demoshop
 

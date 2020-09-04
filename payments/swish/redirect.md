@@ -47,8 +47,8 @@ to insert her phone number to initiate the sales transaction.
 Swish is a one-phase payment instrument that is based on sales transactions
 **not** involving `capture` or `cancellation` operations.
 
-![Consumer paying with Swish using Swedbank Pay]
-[swish-redirect-image]{:width="467px" height="364px"}
+{:.text-center}
+![Consumer paying with Swish using Swedbank Pay][swish-redirect-image]{:width="475px" height="400px"}
 
 {% include alert-callback-url.md api_resource="swish" %}
 
@@ -263,6 +263,6 @@ next_href="seamless-view" next_title="Next: Seamless View" %}
 [purchase]: /payments/swish/other-features#purchase-flow
 [redirect]: /payments/swish/redirect
 [seamless-view]: /payments/swish/seamless-view
-[swish-redirect-image]: /assets/screenshots/swish/redirect-view/view/windows-small-window.png
+[swish-redirect-image]: /assets/img/payments/swish-redirect-number-input-en.png
 [technical-reference-callback]: /payments/swish/other-features#callback
 [user-agent]: https://en.wikipedia.org/wiki/User_agent

@@ -34,12 +34,14 @@ payment pages seamlessly integrated in an `iframe` on your website. The payer
 does not need to leave your webpage, since we are handling the payment in the
 `iframe` on your page.
 
-![screenshot of the hosted view card payment page][hosted-view-card]{:height="250px" width="660px"}
+{:.text-center}
+![screenshot of the hosted view card payment page][hosted-view-card]{:height="255px" width="475px"}
 
 For payments in the currency SEK, radio buttons for selecting debit or credit
 card will appear.
 
-![screenshot of the swedish hosted view card payment page][swedish-hosted-view-card]{:height="315px" width="710px"}
+{:.text-center}
+![screenshot of the swedish hosted view card payment page][swedish-hosted-view-card]{:height="305px" width="475px"}
 
 ## Step 1: Create Payment
 
