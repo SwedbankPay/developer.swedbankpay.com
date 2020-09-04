@@ -280,7 +280,7 @@ possible to perform in the current state of the payment.</p>
         </span><span class="nl">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-14T13:21:57.6627579Z"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ready"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"operation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Purchase"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"intent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Authroization"</span><span class="p">,</span><span class="w"> 
+        </span><span class="nl">"intent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Authorization"</span><span class="p">,</span><span class="w"> 
         </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DKK"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w">
         </span><span class="nl">"remainingCaptureAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w">
@@ -400,7 +400,7 @@ possible to perform in the current state of the payment.</p>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">language</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">sv-SE</code>, <code class="language-html highlighter-rouge">nb-NO</code>, <code class="language-html highlighter-rouge">da-DK</code>, <code class="language-html highlighter-rouge">fi-FI</code> or <code class="language-html highlighter-rouge">en-US</code>.</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">da-DK</code>, <code class="language-html highlighter-rouge">fi-FI</code> or <code class="language-html highlighter-rouge">en-US</code>.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">urls</code></td>
@@ -913,9 +913,6 @@ expanded sub-resources inlined.</p>
 49
 50
 51
-52
-53
-54
 </pre></td><td class="rouge-code"><pre><span class="nf">POST</span> <span class="nn">/psp/mobilepay/payments</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
@@ -961,9 +958,6 @@ expanded sub-resources inlined.</p>
             </span><span class="nl">"productCategory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A123"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"orderReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"or-12456"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"subsite"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MySubsite"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"prefillInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"msisdn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+4522222222"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"mobilepay"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -979,6 +973,7 @@ expanded sub-resources inlined.</p>
       <th style="text-align: left">Field</th>
       <th style="text-align: left">Data type</th>
       <th style="text-align: left">Description</th>
+      <th> </th>
     </tr>
   </thead>
   <tbody>
@@ -987,156 +982,175 @@ expanded sub-resources inlined.</p>
       <td style="text-align: left"><code class="language-html highlighter-rouge">payment</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">object</code></td>
       <td style="text-align: left">The payment object.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">operation</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">Purchase</code></td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">intent</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">Authorization</code></td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">currency</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">NOK</code>, <code class="language-html highlighter-rouge">SEK</code>, <code class="language-html highlighter-rouge">DKK</code>, <code class="language-html highlighter-rouge">USD</code> or <code class="language-html highlighter-rouge">EUR</code>.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">prices</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">object</code></td>
       <td style="text-align: left">The prices object.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left"><i class="material-icons">check</i></td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">type</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">Visa</code> (for card type Visa), <code class="language-html highlighter-rouge">MC</code> (for card type Mastercard), <code class="language-html highlighter-rouge">MobilePay</code> (for all card types).</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left"><i class="material-icons">check</i></td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">amount</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
       <td style="text-align: left">The amount (including VAT, if any) to charge the payer, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> DKK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> DKK.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left"><i class="material-icons">check</i></td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">vatAmount</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
       <td style="text-align: left">The amount of VAT to charge the payer, entered in the lowest monetary unit ofthe selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> DKK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> DKK. If the <code class="language-html highlighter-rouge">amount</code> given includes VAT, <code class="language-html highlighter-rouge">vatAmount</code> may be displayed for the user inthe payment page (redirect only). Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT amount charged.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left"> </td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">feeAmount</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
       <td style="text-align: left">If the amount given includes Fee, this may be displayed for the user in the payment page (redirect only).</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">description</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string(40)</code></td>
       <td style="text-align: left">A 40 character length textual <a href="/payments/mobile-pay/other-features#description">description</a> of the purchase.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left"> </td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payerReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The reference to the payer (consumer/end-user) from the merchant system, like mobile number, customer number etc.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">userAgent</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The <a href="https://en.wikipedia.org/wiki/User_agent"><code class="language-html highlighter-rouge">User-Agent</code> string</a> of the consumer’s web browser.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">language</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">sv-SE</code>, <code class="language-html highlighter-rouge">nb-NO</code>, <code class="language-html highlighter-rouge">da-DK</code>, <code class="language-html highlighter-rouge">fi-FI</code> or <code class="language-html highlighter-rouge">en-US</code>.</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">da-DK</code>, <code class="language-html highlighter-rouge">fi-FI</code> or <code class="language-html highlighter-rouge">en-US</code>.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">urls</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">object</code></td>
       <td style="text-align: left">The URLs object containing the urls used for this payment.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left"><i class="material-icons">check</i></td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">completeUrl</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The URI that Swedbank Pay will redirect back to when the payment page is completed. This does not indicate a successful payment, only that it has reached a completion state. A <code class="language-html highlighter-rouge">GET</code> request needs to be performed on the payment to inspect it further.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left"><i class="material-icons">check</i></td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">cancelUrl</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The URI that Swedbank Pay will redirect back to when the user presses the cancel button in the payment page.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left"> </td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">callbackUrl</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The URI that Swedbank Pay will perform an HTTP <code class="language-html highlighter-rouge">POST</code> against every time a transaction is created on the payment. See <a href="#callback">callback</a> for details.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payeeInfo</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">object</code></td>
       <td style="text-align: left">This object contains the identificators of the payee of this payment.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left"><i class="material-icons">check</i></td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeId</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left"><i class="material-icons">check</i></td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string(50)</code></td>
       <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payments/mobile-pay/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left"> </td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeName</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The payee name (like merchant name) that will be displayed to consumer when redirected to Swedbank Pay.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left"> </td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">productCategory</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left"> </td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">orderReference</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">String(50)</code></td>
       <td style="text-align: left">The order reference should reflect the order reference found in the merchant’s systems.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left"> </td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">subsite</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">String(40)</code></td>
       <td style="text-align: left">The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><i class="material-icons">check</i></td>
-      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">prefillInfo.msisdn</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">Number will be prefilled on payment page, if valid.</td>
+      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">mobilepay.shoplogoUrl</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">URI to logo that will be visible at MobilePay</td>
+      <td style="text-align: left">URI to logo that will be visible at MobilePay. For it to display correctly in MobilePay’s app, the image must be 250x250 pixels, a png or jpg served over a secure connection using https, and publicly available</td>
+      <td> </td>
     </tr>
   </tbody>
 </table>
@@ -1319,7 +1333,7 @@ expanded sub-resources inlined.</p>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">language</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">sv-SE</code>, <code class="language-html highlighter-rouge">nb-NO</code>, <code class="language-html highlighter-rouge">da-DK</code>, <code class="language-html highlighter-rouge">fi-FI</code> or <code class="language-html highlighter-rouge">en-US</code>.</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">da-DK</code>, <code class="language-html highlighter-rouge">fi-FI</code> or <code class="language-html highlighter-rouge">en-US</code>.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">urls</code></td>
@@ -5638,9 +5652,10 @@ delivery of a transactional operation from the merchant system.</li>
 <code class="language-html highlighter-rouge">transaction.number</code> or the <code class="language-html highlighter-rouge">payeeReference</code> is sent to the acquirer.
     <ol>
       <li>If you select <em>Option A</em> in the settlement process (Swedbank Pay will
-handle the settlement), Swedbank Pay will send the <code class="language-html highlighter-rouge">transaction.number</code> to
-the acquirer and the <code class="language-html highlighter-rouge">payeeReference</code> must be in the format of characters
-<code class="language-html highlighter-rouge">A-Za-z0-9</code> (including <code class="language-html highlighter-rouge">-</code>) and <code class="language-html highlighter-rouge">string(30)</code>.</li>
+handle the settlement), Swedbank Pay will send the <code class="language-html highlighter-rouge">transaction.number</code>
+to the acquirer and the <code class="language-html highlighter-rouge">payeeReference</code> must be in the format of
+characters <code class="language-html highlighter-rouge">A-Za-z0-9</code> (including <code class="language-html highlighter-rouge">-</code>) and 
+<code class="language-html highlighter-rouge">string(30)</code>.</li>
       <li>If you select <em>Option B</em> in the settlement process (you will handle the
 settlement yourself), Swedbank Pay will send the <code class="language-html highlighter-rouge">payeeReference</code> to the
 acquirer and it will be limited to the format of <code class="language-html highlighter-rouge">string(12)</code> and all

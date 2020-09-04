@@ -536,7 +536,6 @@ through the sub-resources <code class="language-html highlighter-rouge">payments
 88
 89
 90
-91
 </pre></td><td class="rouge-code"><pre><span class="nf">POST</span> <span class="nn">/psp/paymentorders</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">api.externalintegration.payex.com</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
@@ -551,7 +550,6 @@ through the sub-resources <code class="language-html highlighter-rouge">payments
         </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test Purchase"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"userAgent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mozilla/5.0..."</span><span class="p">,</span><span class="w">
         </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sv-SE"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"instrument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CreditCard"</span><span class="w">
         </span><span class="nl">"generateRecurrenceToken"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="nl">"generatePaymentToken"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="nl">"urls"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -720,7 +718,7 @@ through the sub-resources <code class="language-html highlighter-rouge">payments
 <span class="w">
     </span><span class="nl">"paymentOrder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/paymentorders/09ccd29a-7c4f-4752-9396-12100cbfecce"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"instrument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CreditCard"</span><span class="w"> 
+        </span><span class="nl">"instrument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CreditCard"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"paymentToken"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5a17c24e-d459-4567-bbad-aa0f17a76119"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-06-22T10:56:56.2927632Z"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-06-22T10:56:56.4035291Z"</span><span class="p">,</span><span class="w">
@@ -2177,6 +2175,32 @@ to do, the chosen payment instrument and its transactional states, etc.
 determine the available operations before the initial purchase.
 A list of possible operations and their explanation is given below.</p>
 
+<div class="alert alert-complex alert-informative">
+    <header class="alert-header">
+            
+                <i class="material-icons alert-icon">info</i>
+      <h3>
+        
+        
+          Deprecated
+Operations.
+        
+        
+      </header>
+    
+
+    
+        
+            <div class="alert-body">
+                <p>Payment instrument-specific operations are passed
+through Payment Order. These can be recognized by not having
+<code class="language-html highlighter-rouge">paymentorder</code> in the <code class="language-html highlighter-rouge">rel</code> value. They will be described and marked as
+deprecated in the operation list below.</p>
+            </div>
+        
+    
+</div>
+
 <p class="code-header"><strong>Operations</strong></p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
@@ -2240,6 +2264,27 @@ A list of possible operations and their explanation is given below.</p>
 59
 60
 61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
 </pre></td><td class="rouge-code"><pre><span class="p">{</span>
     <span class="dl">"</span><span class="s2">paymentOrder</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
         <span class="dl">"</span><span class="s2">id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">/psp/paymentorders/09ccd29a-7c4f-4752-9396-12100cbfecce</span><span class="dl">"</span><span class="p">,</span>
@@ -2298,6 +2343,27 @@ A list of possible operations and their explanation is given below.</p>
             <span class="dl">"</span><span class="s2">href</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://api.externalintegration.payex.com/psp/paymentorders/09ccd29a-7c4f-4752-9396-12100cbfecce/failed</span><span class="dl">"</span><span class="p">,</span>
             <span class="dl">"</span><span class="s2">rel</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">failed-paymentorder</span><span class="dl">"</span><span class="p">,</span>
             <span class="dl">"</span><span class="s2">contentType</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">application/problem+json</span><span class="dl">"</span>
+        <span class="p">}</span>
+        <span class="p">{</span>
+            <span class="c1">// Deprecated operation. Do not use!</span>
+            <span class="dl">"</span><span class="s2">method</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span>
+            <span class="dl">"</span><span class="s2">href</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://api.externalintegration.payex.com/psp/creditcard/7e6cdfc3-1276-44e9-9992-7cf4419750e1/captures</span><span class="dl">"</span><span class="p">,</span>
+            <span class="dl">"</span><span class="s2">rel</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">create-capture</span><span class="dl">"</span><span class="p">,</span>
+            <span class="dl">"</span><span class="s2">contentType</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="c1">// Deprecated operation. Do not use!</span>
+            <span class="dl">"</span><span class="s2">method</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span>
+            <span class="dl">"</span><span class="s2">href</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://api.externalintegration.payex.com/psp/creditcard/7e6cdfc3-1276-44e9-9992-7cf4419750e1/cancellations</span><span class="dl">"</span><span class="p">,</span>
+            <span class="dl">"</span><span class="s2">rel</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">create-cancel</span><span class="dl">"</span><span class="p">,</span>
+            <span class="dl">"</span><span class="s2">contentType</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="c1">// Deprecated operation. Do not use!</span>
+            <span class="dl">"</span><span class="s2">method</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span>
+            <span class="dl">"</span><span class="s2">href</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://api.externalintegration.payex.com/psp/creditcard/7e6cdfc3-1276-44e9-9992-7cf4419750e1/reversals</span><span class="dl">"</span><span class="p">,</span>
+            <span class="dl">"</span><span class="s2">rel</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">create-reversal</span><span class="dl">"</span><span class="p">,</span>
+            <span class="dl">"</span><span class="s2">contentType</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span>
         <span class="p">}</span>
     <span class="p">]</span>
 <span class="p">}</span>
@@ -2385,6 +2451,18 @@ for the given operation.</p>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">failed-paymentorder</code></td>
       <td style="text-align: left">Returns the information about a paymentorder that has the status <code class="language-html highlighter-rouge">failed</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">create-capture</code></td>
+      <td style="text-align: left"><strong>Deprecated operation. Do not use!</strong></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">create-cancel</code></td>
+      <td style="text-align: left"><strong>Deprecated operation. Do not use!</strong></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">create-cancel</code></td>
+      <td style="text-align: left"><strong>Deprecated operation. Do not use!</strong></td>
     </tr>
   </tbody>
 </table>
@@ -2505,8 +2583,8 @@ amount or there are added or removed order items in the payment order.</p>
 
     
         
-            <p>If you implement 
-<code class="language-html highlighter-rouge">UpdateOrder</code> you need to <code class="language-html highlighter-rouge">refresh()</code> the Payment Menu frontend after you have 
+            <p>If you implement
+<code class="language-html highlighter-rouge">UpdateOrder</code> you need to <code class="language-html highlighter-rouge">refresh()</code> the Payment Menu frontend after you have
 called the <code class="language-html highlighter-rouge">UpdateOrder</code> API from the backend.</p>
         
     
@@ -5200,12 +5278,6 @@ operation.</p>
       <td> </td>
     </tr>
     <tr>
-      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">instrument</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The instrument used</td>
-      <td> </td>
-    </tr>
-    <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">operation</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">Purchase</td>
@@ -5250,7 +5322,7 @@ operation.</p>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">language</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">sv-SE</code>, <code class="language-html highlighter-rouge">nb-NO</code>, <code class="language-html highlighter-rouge">da-DK</code>, <code class="language-html highlighter-rouge">fi-FI</code> or <code class="language-html highlighter-rouge">en-US</code>.</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">da-DK</code>, <code class="language-html highlighter-rouge">fi-FI</code> or <code class="language-html highlighter-rouge">en-US</code>.</td>
       <td> </td>
     </tr>
     <tr>
@@ -5755,11 +5827,11 @@ below with the added <code class="language-html highlighter-rouge">logoUrl</code
 
 <ul>
   <li>
-    <p>If the configuration is activated and you send in a <code class="language-html highlighter-rouge">logoUrl</code>, then the 
+    <p>If the configuration is activated and you send in a <code class="language-html highlighter-rouge">logoUrl</code>, then the
 SwedbankPay logo is replaced with the logo sent in and the text is changed accordingly.</p>
   </li>
   <li>
-    <p>If the configuration is activated and you do not send in a <code class="language-html highlighter-rouge">logoUrl</code>, then 
+    <p>If the configuration is activated and you do not send in a <code class="language-html highlighter-rouge">logoUrl</code>, then
 no logo and no text is shown.</p>
   </li>
   <li>
@@ -5983,9 +6055,10 @@ described below.</p>
         
         
       </h3>
+
 <p>This events triggers when a payment enters a paying state ( <code class="language-html highlighter-rouge">Sale</code>, <code class="language-html highlighter-rouge">Authorize</code>,
 <code class="language-html highlighter-rouge">Cancel</code>etc). The <code class="language-html highlighter-rouge">onPaymentPending</code> event
-will be followed by either <code class="language-html highlighter-rouge">onPaymentCompleted</code>, <code class="language-html highlighter-rouge">onPaymentFailed</code> or 
+will be followed by either <code class="language-html highlighter-rouge">onPaymentCompleted</code>, <code class="language-html highlighter-rouge">onPaymentFailed</code> or
 <code class="language-html highlighter-rouge">onPaymentTransactionFailed</code> based on the result of the payment. Read more about
 these events below.</p>
 
@@ -6743,6 +6816,7 @@ can read more about the payment instrument specific problem messages below:</p>
   <li><a href="/payments/invoice/other-features#problems">Invoice Payments</a></li>
   <li><a href="/payments/swish/other-features#problems">Swish Payments</a></li>
   <li><a href="/payments/vipps/other-features#problems">Vipps Payments</a></li>
+  <li><a href="/payments/trustly/other-features#problems">Trustly Payments</a></li>
 </ul>
     
       <h3 id="expansion">
@@ -6910,9 +6984,10 @@ delivery of a transactional operation from the merchant system.</li>
 <code class="language-html highlighter-rouge">transaction.number</code> or the <code class="language-html highlighter-rouge">payeeReference</code> is sent to the acquirer.
     <ol>
       <li>If you select <em>Option A</em> in the settlement process (Swedbank Pay will
-handle the settlement), Swedbank Pay will send the <code class="language-html highlighter-rouge">transaction.number</code> to
-the acquirer and the <code class="language-html highlighter-rouge">payeeReference</code> must be in the format of characters
-<code class="language-html highlighter-rouge">A-Za-z0-9</code> (including <code class="language-html highlighter-rouge">-</code>) and <code class="language-html highlighter-rouge">string(30)</code>.</li>
+handle the settlement), Swedbank Pay will send the <code class="language-html highlighter-rouge">transaction.number</code>
+to the acquirer and the <code class="language-html highlighter-rouge">payeeReference</code> must be in the format of
+characters <code class="language-html highlighter-rouge">A-Za-z0-9</code> (including <code class="language-html highlighter-rouge">-</code>) and 
+<code class="language-html highlighter-rouge">string(30)</code>.</li>
       <li>If you select <em>Option B</em> in the settlement process (you will handle the
 settlement yourself), Swedbank Pay will send the <code class="language-html highlighter-rouge">payeeReference</code> to the
 acquirer and it will be limited to the format of <code class="language-html highlighter-rouge">string(12)</code> and all

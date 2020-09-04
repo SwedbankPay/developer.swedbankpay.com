@@ -308,7 +308,7 @@ possible to perform in the current state of the payment.</p>
         </span><span class="nl">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-14T13:21:57.6627579Z"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ready"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"operation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Purchase"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"intent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Authroization"</span><span class="p">,</span><span class="w"> 
+        </span><span class="nl">"intent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Authorization"</span><span class="p">,</span><span class="w"> 
         </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOK"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w">
         </span><span class="nl">"remainingCaptureAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w">
@@ -1829,9 +1829,10 @@ delivery of a transactional operation from the merchant system.</li>
 <code class="language-html highlighter-rouge">transaction.number</code> or the <code class="language-html highlighter-rouge">payeeReference</code> is sent to the acquirer.
     <ol>
       <li>If you select <em>Option A</em> in the settlement process (Swedbank Pay will
-handle the settlement), Swedbank Pay will send the <code class="language-html highlighter-rouge">transaction.number</code> to
-the acquirer and the <code class="language-html highlighter-rouge">payeeReference</code> must be in the format of characters
-<code class="language-html highlighter-rouge">A-Za-z0-9</code> (including <code class="language-html highlighter-rouge">-</code>) and <code class="language-html highlighter-rouge">string(30)</code>.</li>
+handle the settlement), Swedbank Pay will send the <code class="language-html highlighter-rouge">transaction.number</code>
+to the acquirer and the <code class="language-html highlighter-rouge">payeeReference</code> must be in the format of
+characters <code class="language-html highlighter-rouge">A-Za-z0-9</code> (including <code class="language-html highlighter-rouge">-</code>) and 
+<code class="language-html highlighter-rouge">string(30)</code>.</li>
       <li>If you select <em>Option B</em> in the settlement process (you will handle the
 settlement yourself), Swedbank Pay will send the <code class="language-html highlighter-rouge">payeeReference</code> to the
 acquirer and it will be limited to the format of <code class="language-html highlighter-rouge">string(12)</code> and all
@@ -1858,9 +1859,10 @@ delivery of a transactional operation from the merchant system.</li>
 <code class="language-html highlighter-rouge">transaction.number</code> or the <code class="language-html highlighter-rouge">payeeReference</code> is sent to the acquirer.
     <ol>
       <li>If you select <em>Option A</em> in the settlement process (Swedbank Pay will
-handle the settlement), Swedbank Pay will send the <code class="language-html highlighter-rouge">transaction.number</code> to
-the acquirer and the <code class="language-html highlighter-rouge">payeeReference</code> must be in the format of characters
-<code class="language-html highlighter-rouge">A-Za-z0-9</code> (including <code class="language-html highlighter-rouge">-</code>) and <code class="language-html highlighter-rouge">string(30)</code>.</li>
+handle the settlement), Swedbank Pay will send the <code class="language-html highlighter-rouge">transaction.number</code>
+to the acquirer and the <code class="language-html highlighter-rouge">payeeReference</code> must be in the format of
+characters <code class="language-html highlighter-rouge">A-Za-z0-9</code> (including <code class="language-html highlighter-rouge">-</code>) and 
+<code class="language-html highlighter-rouge">string(30)</code>.</li>
       <li>If you select <em>Option B</em> in the settlement process (you will handle the
 settlement yourself), Swedbank Pay will send the <code class="language-html highlighter-rouge">payeeReference</code> to the
 acquirer and it will be limited to the format of <code class="language-html highlighter-rouge">string(12)</code> and all
@@ -3294,9 +3296,10 @@ described below.</p>
         
         
       </h3>
+
 <p>This events triggers when a payment enters a paying state ( <code class="language-html highlighter-rouge">Sale</code>, <code class="language-html highlighter-rouge">Authorize</code>,
 <code class="language-html highlighter-rouge">Cancel</code>etc). The <code class="language-html highlighter-rouge">onPaymentPending</code> event
-will be followed by either <code class="language-html highlighter-rouge">onPaymentCompleted</code>, <code class="language-html highlighter-rouge">onPaymentFailed</code> or 
+will be followed by either <code class="language-html highlighter-rouge">onPaymentCompleted</code>, <code class="language-html highlighter-rouge">onPaymentFailed</code> or
 <code class="language-html highlighter-rouge">onPaymentTransactionFailed</code> based on the result of the payment. Read more about
 these events below.</p>
 

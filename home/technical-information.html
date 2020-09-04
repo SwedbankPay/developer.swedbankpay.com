@@ -765,9 +765,10 @@ delivery of a transactional operation from the merchant system.</li>
 <code class="language-html highlighter-rouge">transaction.number</code> or the <code class="language-html highlighter-rouge">payeeReference</code> is sent to the acquirer.
     <ol>
       <li>If you select <em>Option A</em> in the settlement process (Swedbank Pay will
-handle the settlement), Swedbank Pay will send the <code class="language-html highlighter-rouge">transaction.number</code> to
-the acquirer and the <code class="language-html highlighter-rouge">payeeReference</code> must be in the format of characters
-<code class="language-html highlighter-rouge">A-Za-z0-9</code> (including <code class="language-html highlighter-rouge">-</code>) and <code class="language-html highlighter-rouge">string(30)</code>.</li>
+handle the settlement), Swedbank Pay will send the <code class="language-html highlighter-rouge">transaction.number</code>
+to the acquirer and the <code class="language-html highlighter-rouge">payeeReference</code> must be in the format of
+characters <code class="language-html highlighter-rouge">A-Za-z0-9</code> (including <code class="language-html highlighter-rouge">-</code>) and 
+<code class="language-html highlighter-rouge">string(30)</code>.</li>
       <li>If you select <em>Option B</em> in the settlement process (you will handle the
 settlement yourself), Swedbank Pay will send the <code class="language-html highlighter-rouge">payeeReference</code> to the
 acquirer and it will be limited to the format of <code class="language-html highlighter-rouge">string(12)</code> and all
@@ -1066,6 +1067,7 @@ can read more about the payment instrument specific problem messages below:</p>
   <li><a href="/payments/invoice/other-features#problems">Invoice Payments</a></li>
   <li><a href="/payments/swish/other-features#problems">Swish Payments</a></li>
   <li><a href="/payments/vipps/other-features#problems">Vipps Payments</a></li>
+  <li><a href="/payments/trustly/other-features#problems">Trustly Payments</a></li>
 </ul>
                                     
                                 </div>

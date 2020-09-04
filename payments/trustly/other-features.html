@@ -2116,9 +2116,10 @@ delivery of a transactional operation from the merchant system.</li>
 <code class="language-html highlighter-rouge">transaction.number</code> or the <code class="language-html highlighter-rouge">payeeReference</code> is sent to the acquirer.
     <ol>
       <li>If you select <em>Option A</em> in the settlement process (Swedbank Pay will
-handle the settlement), Swedbank Pay will send the <code class="language-html highlighter-rouge">transaction.number</code> to
-the acquirer and the <code class="language-html highlighter-rouge">payeeReference</code> must be in the format of characters
-<code class="language-html highlighter-rouge">A-Za-z0-9</code> (including <code class="language-html highlighter-rouge">-</code>) and <code class="language-html highlighter-rouge">string(30)</code>.</li>
+handle the settlement), Swedbank Pay will send the <code class="language-html highlighter-rouge">transaction.number</code>
+to the acquirer and the <code class="language-html highlighter-rouge">payeeReference</code> must be in the format of
+characters <code class="language-html highlighter-rouge">A-Za-z0-9</code> (including <code class="language-html highlighter-rouge">-</code>) and 
+<code class="language-html highlighter-rouge">string(30)</code>.</li>
       <li>If you select <em>Option B</em> in the settlement process (you will handle the
 settlement yourself), Swedbank Pay will send the <code class="language-html highlighter-rouge">payeeReference</code> to the
 acquirer and it will be limited to the format of <code class="language-html highlighter-rouge">string(12)</code> and all
@@ -3327,6 +3328,37 @@ future.</p>
   </tbody>
 </table>
     
+      <h3 id="trustly-problems">
+        
+        
+          Trustly Problems <a href="#trustly-problems" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<p>There are a few problems specific to the <code class="language-html highlighter-rouge">trustly</code> resource that you may want to
+guard against in your integrations. All Trustly problem types will have the
+following URI structure:</p>
+
+<p><code class="language-html highlighter-rouge">https://api.payex.com/psp/errordetail/trustly/<span class="nt">&lt;error-type&gt;</span></code></p>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: center">Status</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">systemerror</code></td>
+      <td style="text-align: center"><code class="language-html highlighter-rouge">502</code></td>
+      <td style="text-align: left">Happens if Trustly is experiencing technical difficulties, a contract is configured with bad account name / password, or if the operation (i.e. reversal) is not allowed on the payment due to its current state on Trustly’s end.</td>
+    </tr>
+  </tbody>
+</table>
+    
       <h2 id="seamless-view-events">
         
         
@@ -3345,9 +3377,10 @@ described below.</p>
         
         
       </h3>
+
 <p>This events triggers when a payment enters a paying state ( <code class="language-html highlighter-rouge">Sale</code>, <code class="language-html highlighter-rouge">Authorize</code>,
 <code class="language-html highlighter-rouge">Cancel</code>etc). The <code class="language-html highlighter-rouge">onPaymentPending</code> event
-will be followed by either <code class="language-html highlighter-rouge">onPaymentCompleted</code>, <code class="language-html highlighter-rouge">onPaymentFailed</code> or 
+will be followed by either <code class="language-html highlighter-rouge">onPaymentCompleted</code>, <code class="language-html highlighter-rouge">onPaymentFailed</code> or
 <code class="language-html highlighter-rouge">onPaymentTransactionFailed</code> based on the result of the payment. Read more about
 these events below.</p>
 
