@@ -146,6 +146,8 @@ Common sub-resources like [payeeinfo][payee-reference], that are
 structurally identical for both payments and payments orders, are described in
 the [Payment Resources][payment-resource] section.
 
+{% if documentation_section == "payment-menu" %}
+
 ## Instrument Mode
 
 In "Instrument Mode" the Payment Menu will display only one specific payment
@@ -231,8 +233,6 @@ Content-Type: application/json
 }
 ```
 
-{% if include.documentation_section == "payment-menu" %}
-
 ## Payer Aware Payment Menu
 
 To maximize the experience of your consumers, you should implement the Payer
@@ -308,6 +308,12 @@ to do, the chosen payment instrument and its transactional states, etc.
 determine the available operations before the initial purchase.
 A list of possible operations and their explanation is given below.
 
+{% include alert.html type="informative" icon="info" header="Deprecated
+Operations." body="Payment instrument-specific operations are passed
+through Payment Order. These can be recognized by not having
+`paymentorder` in the `rel` value. They will be described and marked as
+deprecated in the operation list below." %}
+
 {:.code-header}
 **Operations**
 
@@ -371,6 +377,27 @@ A list of possible operations and their explanation is given below.
             "rel": "failed-paymentorder",
             "contentType": "application/problem+json"
         }
+        {
+            // Deprecated operation. Do not use!
+            "method": "POST",
+            "href": "{{ page.api_url }}/psp/creditcard/{{ page.payment_id }}/captures",
+            "rel": "create-capture",
+            "contentType": "application/json"
+        },
+        {
+            // Deprecated operation. Do not use!
+            "method": "POST",
+            "href": "{{ page.api_url }}/psp/creditcard/{{ page.payment_id }}/cancellations",
+            "rel": "create-cancel",
+            "contentType": "application/json"
+        },
+        {
+            // Deprecated operation. Do not use!
+            "method": "POST",
+            "href": "{{ page.api_url }}/psp/creditcard/{{ page.payment_id }}/reversals",
+            "rel": "create-reversal",
+            "contentType": "application/json"
+        }
     ]
 }
 ```
@@ -402,6 +429,9 @@ for the given operation.
 | `create-paymentorder-reversal`    | Used to reverse a payment. It is only possible to reverse a payment that has been captured and not yet reversed.                                                                                                                                                               |
 | `paid-paymentorder`               | Returns the information about a paymentorder that has the status `paid`.                                                                                                                                                                                                       |
 | `failed-paymentorder`             | Returns the information about a paymentorder that has the status `failed`.                                                                                                                                                                                                     |
+| `create-capture`                  | **Deprecated operation. Do not use!**                                                                                                                                                                                                                                                     |
+| `create-cancel`                   | **Deprecated operation. Do not use!**                                                                                                                                                                                                                                                     |
+| `create-cancel`                   | **Deprecated operation. Do not use!**                                                                                                                                                                                                                                                     |
 
 {% include complete-url.md %}
 
@@ -451,8 +481,8 @@ The `view-paymentorder` operation contains the URI of the JavaScript that needs 
 The `UpdateOrder` operation is used when there is a change in the amount, vat
 amount or there are added or removed order items in the payment order.
 
-{% include alert.html type="informative" icon="info" body="If you implement 
-`UpdateOrder` you need to `refresh()` the Payment Menu frontend after you have 
+{% include alert.html type="informative" icon="info" body="If you implement
+`UpdateOrder` you need to `refresh()` the Payment Menu frontend after you have
 called the `UpdateOrder` API from the backend." %}
 
 In case the shopping cart is changed in another browser tab, that should also lead to an
@@ -1106,7 +1136,6 @@ Content-Type: application/json
 | └➔&nbsp;`number`                    | `integer`    | The payment `number`, useful when there's need to reference the payment in human communication. Not usable for programmatic identification of the payment, for that `id` should be used instead. |
 | └➔&nbsp;`created`                   | `string`     | The ISO-8601 date of when the payment was created.                                                                                                                                               |
 | └➔&nbsp;`updated`                   | `string`     | The ISO-8601 date of when the payment was updated.                                                                                                                                               |
-| └➔&nbsp;`instrument`                | `string`     | The instrument used                                                                                                                                                                              |
 | └➔&nbsp;`operation`                 | `string`     | Purchase                                                                                                                                                                                         |
 | └➔&nbsp;`state`                     | `string`     | `Ready`, `Pending`, `Failed` or `Aborted`. Indicates the state of the payment. This field is only for status display purposes.                                                                   |
 | └➔&nbsp;`currency`                  | `string`     | The currency used                                                                                                                                                                                |
@@ -1197,8 +1226,8 @@ Content-Type: application/json
     "payment": {
         "recurrenceToken": "{{ page.payment_order_id }}",
         "id": "/psp/paymentorders/payments/{{ page.payment_order_id }}",
-        "number": 1234567890,
-        "instrument": "CreditCard",
+        "number": 1234567890,{% if include.documentation_section == "payment-menu" %}
+        "instrument": "CreditCard",{% endif %}
         "created": "2016-09-14T13:21:29.3182115Z",
         "updated": "2016-09-14T13:21:57.6627579Z",
         "operation": "Purchase",
@@ -1237,8 +1266,8 @@ Content-Type: application/json
 | `payment`                          | `object`     | The payment object.                                                                                                                                                                              |
 | └➔&nbsp;`recurrenceToken`          | `string`     | The created recurrenceToken, if `operation: Verify` or `generateRecurrenceToken: true` was used.                                                                                                 |
 | └➔&nbsp;`id`                       | `string`     | {% include field-description-id.md %}                                                                                                                                                            |
-| └➔&nbsp;`number`                   | `integer`    | The payment `number`, useful when there's need to reference the payment in human communication. Not usable for programmatic identification of the payment, for that `id` should be used instead. |
-| └➔&nbsp;`instrument`               | `string`     | The payment instrument used.                                                                                                                                                                     |
+| └➔&nbsp;`number`                   | `integer`    | The payment `number`, useful when there's need to reference the payment in human communication. Not usable for programmatic identification of the payment, for that `id` should be used instead. |{% if include.documentation_section == "payment-menu" %}
+| └➔&nbsp;`instrument`               | `string`     | The payment instrument used.                                                                                                                                                                     |{% endif %}
 | └➔&nbsp;`created`                  | `string`     | The ISO-8601 date of when the payment was created.                                                                                                                                               |
 | └➔&nbsp;`updated`                  | `string`     | The ISO-8601 date of when the payment was updated.                                                                                                                                               |
 | └➔&nbsp;`operation`                | `string`     | `Purchase`, `payout`, `Verify` or `recur.`The type of the initiated payment.                                                                                                                     |
@@ -1263,10 +1292,10 @@ With permission and activation on your contract, it is possible to replace the
 Swedbank Pay logo in the Payment Menu. See the abbreviated example
 below with the added `logoUrl` in the Payment Order Purchase request.
 
-*   If the configuration is activated and you send in a `logoUrl`, then the 
+*   If the configuration is activated and you send in a `logoUrl`, then the
     SwedbankPay logo is replaced with the logo sent in and the text is changed accordingly.
 
-*   If the configuration is activated and you do not send in a `logoUrl`, then 
+*   If the configuration is activated and you do not send in a `logoUrl`, then
     no logo and no text is shown.
 
 *   If the configuration is deactivated, sending in a `logoUrl` has no effect.
@@ -1288,8 +1317,8 @@ Content-Type: application/json
         "vatAmount": 375,
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0...",
-        "language": "sv-SE",
-        "instrument": "CreditCard"
+        "language": "sv-SE",{% if documentation_section == "payment-menu" %}
+        "instrument": "CreditCard"{% endif %}
         "generateRecurrenceToken": {{ operation_status_bool }},{% if include.documentation_section == "payment-menu" %}
         "generatePaymentToken": {{ operation_status_bool }},{% endif %}
         "urls": {
@@ -1370,7 +1399,7 @@ Content-Type: application/json
     {%- include checkin-events.md %}
 {% endif  %}
 
-{% include seamless-view-events.md api_resource="paymentorders" %}
+{% include seamless-view-events.md api_resource="paymentorders" documentation_section=include.documentation_section %}
 
 ### `onError`
 

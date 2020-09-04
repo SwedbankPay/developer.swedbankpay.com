@@ -8,7 +8,7 @@
 
 {% when "mobilepay" %}
 {%- capture language -%}
-`sv-SE`, `nb-NO`, `da-DK`, `fi-FI` or `en-US`.
+`da-DK`, `fi-FI` or `en-US`.
 {%- endcapture -%}
 
 {% else %}

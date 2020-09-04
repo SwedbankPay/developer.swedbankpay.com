@@ -22,6 +22,8 @@ sidebar:
       title: Other Features
 ---
 
+{% include alert-two-phase-payments.md %}
+
 {% include card-payments-capture.md %}
 
 **Et voilà!** The payment should now be complete, secure and

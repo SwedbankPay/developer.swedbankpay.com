@@ -8,8 +8,10 @@ can read more about the payment instrument specific problem messages below:
 *   [Invoice Payments][invoice-problems]
 *   [Swish Payments][swish-problems]
 *   [Vipps Payments][vipps-problems]
+*   [Trustly Payments][trustly-problems]
 
 [swish-problems]: /payments/swish/other-features#problems
 [vipps-problems]: /payments/vipps/other-features#problems
 [card-problems]: /payments/card/other-features#problems
 [invoice-problems]: /payments/invoice/other-features#problems
+[trustly-problems]: /payments/trustly/other-features#problems

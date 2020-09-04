@@ -50,6 +50,8 @@ done when the consumer successfully confirms in the app, and the `abort`,
 more about the [different operations][after-payment] and the [payment
 resource][payment-resource].
 
+{% include alert-two-phase-payments.md %}
+
 ### Settlement
 
 Vipps transactions are handled, processed and settled as card transactions in

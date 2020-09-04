@@ -70,18 +70,6 @@ SDKs are often used as a building block to construct a Module.
 
 {% include repository-table.md type='SDK' use_language=true %}
 
-## Unofficial SDKs
-
-{% include alert.html type="warning" icon="warning" header="Unsupported"
-body="Unofficial SDKs are offered as a convenience to speed up your development,
-but are not supported in any way by Swedbank Pay – not now, nor in the future."
-%}
-
-{:.table .table-striped}
-|              Platform               | Repository                                           | Status                                                                                             |
-| :---------------------------------: | :--------------------------------------------------- | :------------------------------------------------------------------------------------------------- |
-| {% include logo.md platform="js" %} | [`bjerkio/swedbank-pay-js`][bjerkio-swedbank-pay-js] | [![npm version](https://badge.fury.io/js/swedbank-pay.svg)](https://badge.fury.io/js/swedbank-pay) |
-
 ## Official Libraries
 
 **Software libraries** are bundles of code often used by an SDK or in a Module

@@ -46,7 +46,7 @@ Content-Type: application/json
         "updated": "2016-09-14T13:21:57.6627579Z",
         "state": "Ready",
         "operation": "Purchase",
-        "intent": {% if documentation_section == "trustly" %}"Sale",{% else %}"Authroization", {% endif %}
+        "intent": {% if documentation_section == "trustly" %}"Sale",{% else %}"Authorization", {% endif %}
         "currency": "{{ currency }}",
         "amount": 1500,
         "remainingCaptureAmount": 1500,

@@ -4,11 +4,15 @@
         {%- assign platform = "dotnet" -%}
     {%- when "kotlin" -%}
         {%- assign platform = "android" -%}
+    {%- when "typescript" -%}
+        {%- assign platform = "js" -%}
 {%- endcase -%}
 {%- assign file_name = platform | prepend: '/' | append: '.svg' -%}
 {%- for file in site.static_files -%}
     {%- if file.path contains '/assets/img/logos/' and file.path contains file_name -%}
 ![{{ include.platform }}](/assets/img/logos/{{ platform }}.svg)
+    {%- else -%}
+<!-- {{ include.platform }} -->
     {%- endif -%}
 {%- endfor -%}
 {%- comment -%}
