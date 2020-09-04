@@ -377,6 +377,24 @@ deprecated in the operation list below." %}
             "rel": "failed-paymentorder",
             "contentType": "application/problem+json"
         }
+        {`DEPRECATED DO NOT USE!`
+            "method": "POST",
+            "href": "{{ page.api_url }}/psp/paymentorders/{{ page.payment_order_id }}/captures",
+            "rel": "create-capture",
+            "contentType": "application/json"
+        },
+        {`DEPRECATED DO NOT USE!`
+            "method": "POST",
+            "href": "{{ page.api_url }}/psp/paymentorders/{{ page.payment_order_id }}/cancellations",
+            "rel": "create-cancel",
+            "contentType": "application/json"
+        },
+        {`DEPRECATED DO NOT USE!`
+            "method": "POST",
+            "href": "{{ page.api_url }}/psp/paymentorders/{{ page.payment_order_id }}/reversals",
+            "rel": "create-reversal",
+            "contentType": "application/json"
+        }
     ]
 }
 ```
@@ -408,6 +426,9 @@ for the given operation.
 | `create-paymentorder-reversal`    | Used to reverse a payment. It is only possible to reverse a payment that has been captured and not yet reversed.                                                                                                                                                               |
 | `paid-paymentorder`               | Returns the information about a paymentorder that has the status `paid`.                                                                                                                                                                                                       |
 | `failed-paymentorder`             | Returns the information about a paymentorder that has the status `failed`.                                                                                                                                                                                                     |
+| `create-capture`                  | `DEPRECATED DO NOT USE!`                                                                                                                                                                                                                                                       |
+| `create-cancel`                   | `DEPRECATED DO NOT USE!`                                                                                                                                                                                                                                                       |
+| `create-cancel`                   | `DEPRECATED DO NOT USE!`                                                                                                                                                                                                                                                       |
 
 {% include complete-url.md %}
 
