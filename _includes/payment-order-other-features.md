@@ -353,7 +353,7 @@ deprecated in the operation list below." %}
             "rel": "create-paymentorder-capture",
             "contentType": "application/json"
         },
-        {   `DEPRECATED DO NOT USE!`
+        {
             "method": "POST",
             "href": "{{ page.api_url }}/psp/paymentorders/{{ page.payment_order_id }}/cancellations",
             "rel": "create-paymentorder-cancel",
