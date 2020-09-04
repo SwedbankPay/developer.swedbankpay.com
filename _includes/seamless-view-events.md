@@ -12,11 +12,12 @@ During operation in the {{ product }}, several events can occur. They are
 described below.
 
 ### `onPaymentPending`
+
 This events triggers when a payment enters a paying state ( `Sale`, `Authorize`,
 `Cancel`etc). The `onPaymentPending` event
-will be followed by either `onPaymentCompleted`, `onPaymentFailed` or 
+will be followed by either `onPaymentCompleted`, `onPaymentFailed` or
 `onPaymentTransactionFailed` based on the result of the payment. Read more about
-these events below. 
+these events below.
 
 {:.code-header}
 **`onPaymentPending` event object**
@@ -31,8 +32,6 @@ these events below.
 | Field         | Type     | Description                                                     |
 | :------------ | :------- | :-------------------------------------------------------------- |
 | `id`          | `string` | {% include field-description-id.md %}                           |
-
-
 
 ### `onPaymentCompleted`
 
