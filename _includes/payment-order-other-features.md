@@ -380,21 +380,21 @@ deprecated in the operation list below." %}
         {
             // Deprecated operation. Do not use!
             "method": "POST",
-            "href": "{{ page.api_url }}/psp/paymentorders/{{ page.payment_order_id }}/captures",
+            "href": "{{ page.api_url }}/psp/creditcard/{{ page.payment_id }}/captures",
             "rel": "create-capture",
             "contentType": "application/json"
         },
         {
             // Deprecated operation. Do not use!
             "method": "POST",
-            "href": "{{ page.api_url }}/psp/paymentorders/{{ page.payment_order_id }}/cancellations",
+            "href": "{{ page.api_url }}/psp/creditcard/{{ page.payment_id }}/cancellations",
             "rel": "create-cancel",
             "contentType": "application/json"
         },
         {
             // Deprecated operation. Do not use!
             "method": "POST",
-            "href": "{{ page.api_url }}/psp/paymentorders/{{ page.payment_order_id }}/reversals",
+            "href": "{{ page.api_url }}/psp/creditcard/{{ page.payment_id }}/reversals",
             "rel": "create-reversal",
             "contentType": "application/json"
         }
