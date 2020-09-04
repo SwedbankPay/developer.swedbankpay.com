@@ -347,7 +347,7 @@ deprecated in the operation list below." %}
             "rel": "view-paymentorder",
             "contentType": "application/javascript"
         },
-        {   `DEPRECATED DO NOT USE!`
+        {
             "method": "POST",
             "href": "{{ page.api_url }}/psp/paymentorders/{{ page.payment_order_id }}/captures",
             "rel": "create-paymentorder-capture",
