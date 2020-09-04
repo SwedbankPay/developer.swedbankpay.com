@@ -60,6 +60,7 @@ Below you can see an example of how the payment window looks like with and
 without Merchant Authenticated Consumer. In the first image, the SSN is removed
 altogether because the payer is authenticated by the Merchant. In the bottom
 image, the last 4/5 digits of the SSN are required as usual.
+
 {:.text-center}
 ![One-Click Payments without SSN][mac-no-ssn]{:width="475" height="385"}
 {:.text-center}
