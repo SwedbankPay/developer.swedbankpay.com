@@ -28,8 +28,8 @@ The `description` field is a 40 character length textual summary of the
 purchase. It is needed to specify what payer is actually purchasing. Below you
 will find an abbreviated Card Payments `Purchase` request.
 
-As you can see the `description` field is set to be `Test - Reference1583419461`
-in the the code example. 
+As you can see the `description` field is set to be `Test Description`
+in the the code example.
 
 {% include alert.html type="informative" icon="info" body="Notice that for Redirect,
 the description will be shown as `Test - Reference1583419461`, as set
@@ -56,7 +56,7 @@ Content-Type: application/json
                 "vatAmount": 0
             }
         ],{% endif %}
-        "description": "Test - Reference1583419461",{% if include.documentation_section == "payment_menu" %}
+        "description": "Test Description",{% if include.documentation_section == "payment_menu" %}
         "generatePaymentToken": false,{% endif %}
         "generateRecurrenceToken": false,
         "userAgent": "Mozilla/5.0...",
@@ -68,13 +68,14 @@ Content-Type: application/json
 ```
 
 {% if api_resource == "paymentorders" %}
-![The description field as presented in the Payment Menu][description-paymentorders]{:width="600px"
-:height="300px"}
+{:.text-center}
+![The description field as presented in the Payment Menu][description-paymentorders]{:width="475px"
+:height="625px"}
 
 {% else %}
-
-![The description field as presented in {{ documentation_section_title }}][description-all-payments]{:width="1200px"
-:height="500px"}
+{:.text-center}
+![The description field as presented in {{ documentation_section_title }}][description-all-payments]{:width="475px"
+:height="620px"}
 
 {% endif %}
 

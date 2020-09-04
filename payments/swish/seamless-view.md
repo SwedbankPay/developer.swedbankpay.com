@@ -43,8 +43,7 @@ sidebar:
     dialogue is completed, and you will have to make a `GET` request to check
     the payment status.
 
-![screenshot of the seamless view swish payment
-page][seamless-view-img]{:height="250px" width="660px"}
+![screenshot of the seamless view swish payment page][seamless-view-img]{:height="215px" width="475px"}
 
 ## Step 1: Create a Purchase
 

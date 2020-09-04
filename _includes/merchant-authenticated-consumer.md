@@ -57,12 +57,13 @@ not require the last 4/5 digits in the payer's social security number (SSN), for
 instance.
 
 Below you can see an example of how the payment window looks like with and
-without Merchant Authenticated Consumer. To the left, the SSN is removed
-altogether because the payer is authenticated by the Merchant, and to the right
-the last 4/5 digits of the SSN required as usual.
-
-![One-Click Payments without SSN][mac-no-ssn]{:width="436" height="393"}
-![Payments with SSN][mac-with-ssn]{:width="436" height="393"}
+without Merchant Authenticated Consumer. In the first image, the SSN is removed
+altogether because the payer is authenticated by the Merchant. In the bottom
+image, the last 4/5 digits of the SSN are required as usual.
+{:.text-center}
+![One-Click Payments without SSN][mac-no-ssn]{:width="475" height="385"}
+{:.text-center}
+![Payments with SSN][mac-with-ssn]{:width="475" height="460"}
 
 [checkin]: /checkout/checkin
 [payment-menu]: /checkout/payment-menu

@@ -29,10 +29,10 @@ that the payer must confirm through the Vipps mobile app." %}
 When properly set up in your merchant/webshop site and the payer starts the
 purchase process, you need to make a `POST` request towards Swedbank Pay with
 your Purchase information. This will generate a payment object with a unique
-`paymentID`. An example of an abbreviated `POST` request is provided below.
-You will receive a response in which you can find the **JavaScript source**
-in the `view-payment` operation. An example of an expanded `POST` request is available in the
-[other features section][purchase].
+`paymentID`. An example of an abbreviated `POST` request is provided below. You
+will receive a response in which you can find the **JavaScript source** in the
+`view-payment` operation. An example of an expanded `POST` request is available
+in the [other features section][purchase].
 
 {% include payment-url.md when="selecting Vipps as payment instrument" %}
 
@@ -192,8 +192,9 @@ loading the payment page in an `iframe` in our next step.
 ## Step 2: Display the payment window
 
 You need to embed the script source on your site to create a hosted-view in an
-`iframe`; so that the payer can enter the required information in a secure Swedbank
-Pay hosted environment. A simplified integration has these following steps:
+`iframe`; so that the payer can enter the required information in a secure
+Swedbank Pay hosted environment. A simplified integration has these following
+steps:
 
 1.  Create a container that will contain the Seamless View iframe: `<div
     id="swedbank-pay-seamless-view-page">`.
@@ -241,11 +242,10 @@ embedded on your website.
 </script>
 ```
 
-This is how the payment might look like:
+This is what the result should look like:
 
-![Vipps mobile Payments]
-[Vipps-screenshot-1]{:width="426px" :height="632px"}
-![Vipps Payments][Vipps-screenshot-2]{:width="427px" :height="694px"}
+{:.text-center}
+![Vipps seamless view][Vipps-screenshot-1]{:width="475px" :height="150px"}
 
 ## Step 3: Create authorization transaction
 
@@ -413,5 +413,4 @@ sequenceDiagram
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
 [Vipps_flow_PaymentPages.png]: /assets/img/vipps-flow-paymentpages.png
 [vipps-purchase-flow]: /assets/img/payments/vipps-purchase-flow.png
-[Vipps-screenshot-1]: /assets/img/checkout/vipps-hosted-payment.png
-[Vipps-screenshot-2]: /assets/img/checkout/vipps-hosted-payment-no-paymenturl.png
+[Vipps-screenshot-1]: /assets/img/payments/vipps-seamless-view.png
