@@ -38,19 +38,19 @@ this very documentation, not to a version of any APIs described by it." %}
 *   Updated `payeeReference` description.
 *   Clarified `msisdn` and `shopogoUrl` in [Swish Payments][swish].
 *   Updated [Test data][test-data] in [Resources][resources].
-*   Documented problems in [Trustly Payments][trustly-other-features].
+*   Documented problems in [MobilePay Payments][mobile-pay].
 *   Added an alert for two-phase payments in Capture pages.
 
 ## 28 Aug 2020
 
 ### Version 1.13.2
 
-*   Added description on `metadata` for all payment instruments. 
+*   Added description on `metadata` for all payment instruments.
 *   Updated files in [Settlement & Reconciliation][settlement-reconcilitation].
-*   Added information on token deletion in [Card Payments][card] and [Invoice Payments][invoice]. 
+*   Added information on token deletion in [Card Payments][card] and [Invoice Payments][invoice].
 *   Updated the documentation on `paymentRestrictedToAgeLimit` and
-    `paymentRestrictedToSocialSecurityNumber` in [Swish Payments][swish]. 
-*   Added documentation on guest checkout in [Checkout][checkout]. 
+    `paymentRestrictedToSocialSecurityNumber` in [Swish Payments][swish].
+*   Added documentation on guest checkout in [Checkout][checkout].
 *   Updated information about `logourl` in [Checkout][checkout].
 *   Added a list of accepted banks in [Trustly Payments][trustly-payments].
 *   Updated the `UpdateOrder` description in [Checkout][checkout].
@@ -59,11 +59,11 @@ this very documentation, not to a version of any APIs described by it." %}
 
 ### Version 1.13.1
 
-*   Removed documentation for [Trustly Payments][trustly-payments] Seamless View. 
+*   Removed documentation for [Trustly Payments][trustly-payments] Seamless View.
 *   Updated `reOrderPurchaseIndicator` description.
-*   Updated [Other Features][trustly-other-features] in [Trustly Payments][trustly-payments]. 
-*   Updated [Test Data][test-data] for Vipps Payments. 
-*   Added updated documentation on the `transaction` operation. 
+*   Updated [Other Features][trustly-other-features] in [Trustly Payments][trustly-payments].
+*   Updated [Test Data][test-data] for Vipps Payments.
+*   Added updated documentation on the `transaction` operation.
 
 ## 17 July 2020
 
