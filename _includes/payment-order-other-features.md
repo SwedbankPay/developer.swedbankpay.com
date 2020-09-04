@@ -308,15 +308,11 @@ to do, the chosen payment instrument and its transactional states, etc.
 determine the available operations before the initial purchase.
 A list of possible operations and their explanation is given below.
 
-{% include alert.html type="informative" icon="info" header="Note on deprecated
-operations." body="Several operations have now the status deprecated.
-These operations are:
-`create-capture`
-`create-cancel`
-`create-reversal`
-Because they are still in use by the existing users, they will not be removed from
-the documentation yet. New users should not use these operations and these
-operations will be marked with `DEPRECATED DO NOT USE!`." %}
+{% include alert.html type="informative" icon="info" header="Deprecated
+Operations." body="Payment instrument-specific operations are passed
+through Payment Order. These can be recognized by not having
+`paymentorder` in the `rel` value. They will be described and marked as
+deprecated in the operation list below." %}
 
 {:.code-header}
 **Operations**
