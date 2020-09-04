@@ -384,7 +384,8 @@ deprecated in the operation list below." %}
             "rel": "create-capture",
             "contentType": "application/json"
         },
-        {`DEPRECATED DO NOT USE!`
+        {
+            // Deprecated operation. Do not use!
             "method": "POST",
             "href": "{{ page.api_url }}/psp/paymentorders/{{ page.payment_order_id }}/cancellations",
             "rel": "create-cancel",
