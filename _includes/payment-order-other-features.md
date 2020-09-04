@@ -377,7 +377,8 @@ deprecated in the operation list below." %}
             "rel": "failed-paymentorder",
             "contentType": "application/problem+json"
         }
-        {`DEPRECATED DO NOT USE!`
+        {
+            // Deprecated operation. Do not use!
             "method": "POST",
             "href": "{{ page.api_url }}/psp/paymentorders/{{ page.payment_order_id }}/captures",
             "rel": "create-capture",
