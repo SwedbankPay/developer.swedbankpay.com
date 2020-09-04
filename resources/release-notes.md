@@ -36,9 +36,9 @@ this very documentation, not to a version of any APIs described by it." %}
 *   Added documentation on deprecated operations in [Checkout][checkout-payment-order-purchase].
 *   Updated `instrument` description in [Checkout][checkout].
 *   Updated `payeeReference` description.
-*   Clarified `msisdn` and `shopogoUrl` in [Swish Payments][swish].
+*   Clarified `msisdn` and `shopogoUrl` in [MobilePay Payments][mobile-pay].
 *   Updated [Test data][test-data] in [Resources][resources].
-*   Documented problems in [MobilePay Payments][mobile-pay].
+*   Documented problems in [Trustly Payments][trustly-payments].
 *   Added an alert for two-phase payments in Capture pages.
 
 ## 28 Aug 2020
