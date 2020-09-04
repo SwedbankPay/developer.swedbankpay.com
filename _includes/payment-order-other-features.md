@@ -391,7 +391,8 @@ deprecated in the operation list below." %}
             "rel": "create-cancel",
             "contentType": "application/json"
         },
-        {`DEPRECATED DO NOT USE!`
+        {
+            // Deprecated operation. Do not use!
             "method": "POST",
             "href": "{{ page.api_url }}/psp/paymentorders/{{ page.payment_order_id }}/reversals",
             "rel": "create-reversal",
