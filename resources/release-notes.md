@@ -29,16 +29,28 @@ published on this page." %}
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
 
+## 04 Sep 2020
+
+### Version 1.13.3
+
+*   Added documentation on deprecated operations in [Checkout][checkout-payment-order-purchase].
+*   Updated `instrument` description in [Checkout][checkout].
+*   Updated `payeeReference` description.
+*   Clarified `msisdn` and `shoplogoUrl` in [MobilePay Payments][mobile-pay].
+*   Updated [Test data][test-data] in [Resources][resources].
+*   Documented problems in [Trustly Payments][trustly-payments].
+*   Added an alert for two-phase payments in Capture pages.
+
 ## 28 Aug 2020
 
 ### Version 1.13.2
- 
-*   Added description on `metadata` for all payment instruments. 
+
+*   Added description on `metadata` for all payment instruments.
 *   Updated files in [Settlement & Reconciliation][settlement-reconcilitation].
-*   Added information on token deletion in [Card Payments][card] and [Invoice Payments][invoice]. 
+*   Added information on token deletion in [Card Payments][card] and [Invoice Payments][invoice].
 *   Updated the documentation on `paymentRestrictedToAgeLimit` and
-    `paymentRestrictedToSocialSecurityNumber` in [Swish Payments][swish]. 
-*   Added documentation on guest checkout in [Checkout][checkout]. 
+    `paymentRestrictedToSocialSecurityNumber` in [Swish Payments][swish].
+*   Added documentation on guest checkout in [Checkout][checkout].
 *   Updated information about `logourl` in [Checkout][checkout].
 *   Added a list of accepted banks in [Trustly Payments][trustly-payments].
 *   Updated the `UpdateOrder` description in [Checkout][checkout].
@@ -47,11 +59,11 @@ this very documentation, not to a version of any APIs described by it." %}
 
 ### Version 1.13.1
 
-*   Removed documentation for [Trustly Payments][trustly-payments] Seamless View. 
+*   Removed documentation for [Trustly Payments][trustly-payments] Seamless View.
 *   Updated `reOrderPurchaseIndicator` description.
-*   Updated [Other Features][trustly-other-features] in [Trustly Payments][trustly-payments]. 
-*   Updated [Test Data][test-data] for Vipps Payments. 
-*   Added updated documentation on the `transaction` operation. 
+*   Updated [Other Features][trustly-other-features] in [Trustly Payments][trustly-payments].
+*   Updated [Test Data][test-data] for Vipps Payments.
+*   Added updated documentation on the `transaction` operation.
 
 ## 17 July 2020
 
@@ -486,6 +498,7 @@ integration and the payer.
 [payment-orders]: /checkout/other-features#creating-a-payment-order
 [payments]: /payments
 [update-order-checkout]: /checkout/other-features#update-order
+[resources]: /resources/
 [settlement-reconcilitation]: /payments/card/other-features#settlement-and-reconciliation
 [sdk-modules]: /modules-sdks
 [storing-uri]: /home/technical-information#storing-uris
