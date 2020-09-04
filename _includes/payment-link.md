@@ -85,6 +85,7 @@ set to `Purchase` are listed below.
 
 When clicking the payment link, the consumer will be directed to a payment
 page, similar to the examples below, where payment information can be entered.
+
 {:.text-center}
 ![screenshot of the redirect card payment page][card-payment]{:height="620px" width="475px"}
 
