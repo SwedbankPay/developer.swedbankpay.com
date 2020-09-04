@@ -139,7 +139,7 @@ Content-Type: application/json
 
 The operations should be performed as described in each response and not as
 described here in the documentation.
-Always use the `method` as specified in the response by finding
+Always use the `href` and `method` as specified in the response by finding
 the appropriate operation based on its `rel` value.
 The only thing that should be hard coded in the client is the value of
 the `rel` and the request that will be sent in the HTTP body of the request
