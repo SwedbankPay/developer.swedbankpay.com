@@ -32,7 +32,8 @@ jobs:
             --env=production \
             --verify \
             --ignore-url http://restcookbook.com/Basics/loggingin/ \
-            --ignore-url https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default
+            --ignore-url https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default \
+            --abort-on-container-exit
 
       - name: Upload build output artifacts
         uses: actions/upload-artifact@v2
