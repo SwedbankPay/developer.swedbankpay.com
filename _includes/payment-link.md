@@ -10,8 +10,8 @@ When the consumer clicks on the link, a payment window opens." %}
 
 ### Introduction
 
-The Payment Link can be implemented for payment instruments listed below, using the
-Redirect platform and Swedbank Pay hosted payment page.
+The Payment Link can be implemented for payment instruments listed below, using
+the Redirect platform and Swedbank Pay hosted payment page.
 
 * [Credit card][payment-instruments-card-payment-pages]
 * [MobilePay][payment-instruments-mobilepay-payment-pages]
@@ -59,12 +59,13 @@ We recommend that you include following information:
     consumer will pay for.
 *   Some order-id (or similar) that exists in the merchant order system.
 *   The price and currency.
-*   Details about shipping method and expected delivery (if physical goods will be
-    sent  to the payer).
-*   Directions to (a link to a page) the merchant's terms and conditions (such as
-    return policy) and information of how the consumer can contact the merchant.
-*   Details informing that the payer accepts the Terms & Conditions
-    when clicking on the Payment Link.
+*   Details about shipping method and expected delivery (if physical goods will
+    be sent to the payer).
+*   Directions to (a link to a page) the merchant's terms and conditions (such
+    as return policy) and information of how the consumer can contact the
+    merchant.
+*   Details informing that the payer accepts the Terms & Conditions when
+    clicking on the Payment Link.
 
 ### Receipt Recommendations
 
@@ -85,7 +86,8 @@ set to `Purchase` are listed below.
 When clicking the payment link, the consumer will be directed to a payment
 page, similar to the examples below, where payment information can be entered.
 
-![screenshot of the redirect card payment page][card-payment]{:height="500px" width="425px"}
+{:.text-center}
+![screenshot of the redirect card payment page][card-payment]{:height="620px" width="475px"}
 
 ### Options
 

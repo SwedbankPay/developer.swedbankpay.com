@@ -75,6 +75,9 @@ options:
 Our `payment` example uses the [`FinancingConsumer`][financing-consumer]
 operation.
 
+{:.text-center}
+![screenshot of the first Invoice redirect page][fincon-invoice-redirect]height="725px" width="475px"}
+
 {% include languages.md api_resource="invoice" %}
 
 ## Invoice flow
@@ -116,6 +119,7 @@ sequenceDiagram
 [callback-api]: /payments/invoice/other-features#callback
 [financing-consumer]: /payments/invoice/other-features#financing-consumer
 [optional-features]: /payments/invoice/optional-features
+[fincon-invoice-redirect]: /assets/img/payments/fincon-invoice-redirect-first-en.png
 [recur]: /payments/invoice/other-features#recur
 [redirect]: /payments/invoice/redirect
 [purchase]: /payments/invoice/other-features#create-payment

@@ -54,16 +54,16 @@ and global way to initate a transaction with a customer. Choose between our
   `paymentID`. You either receive a Redirect URL to a Swedbank Pay hosted
   page (Redirect integration) or a JavaScript source in response (Seamless View
   integration).
-*   You need to [redirect][redirect] the payer's browser to that specified URL, or
-  embed the script source on your site to create a Hosted View in an `iframe`;
-  so that the payer can enter the credit card details in a secure Swedbank Pay hosted
-  environment.
+*   You need to [redirect][redirect] the payer's browser to that specified URL,
+    or embed the script source on your site to create a Hosted View in an
+    `iframe`; so that the payer can enter the credit card details in a secure
+    Swedbank Pay hosted environment.
 *   Swedbank Pay will handle 3-D Secure authentication when this is required.
-*   Swedbank Pay will redirect the payer's browser to - or display directly in the
-  `iframe` - one of two specified URLs, depending on whether the payment session
-  is followed through completely or cancelled beforehand. Please note that both
-  a successful and rejected payment reach completion, in contrast to a cancelled
-  payment.
+*   Swedbank Pay will redirect the payer's browser to - or display directly in
+    the `iframe` - one of two specified URLs, depending on whether the payment
+    session is followed through completely or cancelled beforehand. Please note
+    that both a successful and rejected payment reach completion, in contrast to
+    a cancelled payment.
 *   When you detect that the payer reach your `completeUrl` , you need to do a
   `GET` request, containing the `id` of the payment generated in the first step,
   to receive the state of the transaction.
@@ -71,11 +71,13 @@ and global way to initate a transaction with a customer. Choose between our
 You will redirect the payer to Swedbank Pay hosted pages to collect the credit
 card information.
 
-![screenshot of the redirect card payment page][card-payment]{:height="500px" width="425px"}
+{:.text-center}
+![screenshot of the redirect card payment page][card-payment]{:height="570px" width="475px"}
 
 When shopping in SEK, the page will look like this.
 
-![screenshot of the swedish redirect card payment page][swedish-card-payment]{:height="600px" width="500px"}
+{:.text-center}
+![screenshot of the swedish redirect card payment page][swedish-card-payment]{:height="605px" width="475px"}
 
 
 ## Operations
@@ -108,14 +110,14 @@ When dealing with card payments, 3-D Secure authentication of the
 cardholder is an essential topic. There are three alternative outcome of a
 card payment:
 
-*   3-D Secure enabled - by default, 3-D Secure should be enabled, and Swedbank Pay
-  will check if the card is enrolled with 3-D Secure. This depends on the issuer
-  of the card. If the card is not enrolled with 3-D Secure, no authentication of
-  the cardholder is done.
-*   Card supports 3-D Secure - if the card is enrolled with 3-D Secure, Swedbank Pay
-  will redirect the cardholder to the autentication mechanism that is decided
-  by the issuing bank. Normally this will be done using BankID or Mobile
-  BankID.
+*   3-D Secure enabled - by default, 3-D Secure should be enabled, and Swedbank
+    Pay will check if the card is enrolled with 3-D Secure. This depends on the
+    issuer of the card. If the card is not enrolled with 3-D Secure, no
+    authentication of the cardholder is done.
+*   Card supports 3-D Secure - if the card is enrolled with 3-D Secure, Swedbank
+    Pay will redirect the cardholder to the autentication mechanism that is
+    decided by the issuing bank. Normally this will be done using BankID or
+    Mobile BankID.
 
 ```mermaid
 sequenceDiagram
