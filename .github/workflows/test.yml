@@ -16,7 +16,7 @@ jobs:
           docker-compose run \
             -e PAGES_REPO_NWO=${{ github.repository }} \
             -e JEKYLL_GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} \
-            portal build
+            portal build --profile
       - name: Upload site
         uses: actions/upload-artifact@v2
         with:
