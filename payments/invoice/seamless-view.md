@@ -32,7 +32,8 @@ payment pages seamlessly integrated in an `iframe` on your website. The costumer
 does not need to leave your webpage, since we are handling the payment in the
 `iframe` on your page.
 
-![screenshot of the invoice payment window][invoice-payment]{:height="425px" width="700px"}
+{:.text-center}
+![screenshot of the invoice payment window][invoice-payment]{:height="525px" width="475px"}
 
 {% include alert-callback-url.md api_resource="invoice" %}
 

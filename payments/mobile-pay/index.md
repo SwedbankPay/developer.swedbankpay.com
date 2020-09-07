@@ -28,7 +28,8 @@ After the payment is created, the consumer is redirected to MobilePay's
 own payment page where the phone number is entered, and a push message is sent
 to the phone.
 
-![screenshot of the MobilePay number input page][mobilepay-number-input]{:height="600px" width="425px"}
+{:.text-center}
+![screenshot of the MobilePay number input page][mobilepay-number-input]{:height="690px" width="475px"}
 
 A countdown is shown in the browser and the payment request will appear in the
 app, waiting to be confirmed by the consumer. If you are using the redirect

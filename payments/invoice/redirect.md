@@ -51,6 +51,12 @@ Our `payment` example below uses the [`FinancingConsumer`]
 operation equal to `FinancingConsumer`, are described in
 [other features][financing-consumer].
 
+{:.text-center}
+![screenshot of the first Invoice redirect page][fincon-invoice-redirect]height="725px" width="475px"}
+
+{:.text-center}
+![screenshot of the second Invoice redirect page][fincon-invoice-approve]height="500px" width="475px"}
+
 ### Financing Consumer
 
 {:.code-header}
@@ -261,3 +267,5 @@ next_href="seamless-view" next_title="Next: Seamless View" %}
 [recur]: /payments/invoice/other-features#recur
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
 [verify]: /payments/invoice/other-features#verify
+[fincon-invoice-redirect]: /assets/img/payments/fincon-invoice-redirect-first-en.png
+[fincon-invoice-approve]: /assets/img/payments/fincon-invoice-redirect-second-en.png

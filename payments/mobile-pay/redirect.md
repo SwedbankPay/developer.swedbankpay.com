@@ -34,9 +34,11 @@ confirmed by the payer through the MobilePay app." %}
     `paymentID` received in the first step, which will return the purchase
     result.
 
-![mobilepay enter number][mobilepay-screenshot-1]
+{:.text-center}
+![mobilepay enter number][mobilepay-screenshot-1]{:height="690px" width="475px"}
 
-![mobilepay approve payment][mobilepay-screenshot-2]
+{:.text-center}
+![mobilepay approve payment][mobilepay-screenshot-2]{:height="700px" width="475px"}
 
 {% include alert.html type="success" icon="link" body="**Defining
 `callbackUrl`**: When implementing a scenario, it is strongly recommended to set
@@ -192,8 +194,8 @@ Content-Type: application/json
 
 ## Step 2: Get the transaction status
 
-Finally you need to make a `GET` request towards Swedbank Pay with the
-`id` of the payment received in the first step, which will return the purchase result.
+Finally you need to make a `GET` request towards Swedbank Pay with the `id` of
+the payment received in the first step, which will return the purchase result.
 
 {:.code-header}
 **Request**
@@ -384,8 +386,8 @@ sequenceDiagram
                          next_title="Next: After Payment" %}
 
 [callback-reference]: /payments/mobile-pay/other-features#callback
-[mobilepay-screenshot-1]: /assets/img/mobilepay-screenshot-1.png
-[mobilepay-screenshot-2]: /assets/img/mobilepay-screenshot-2.png
+[mobilepay-screenshot-1]: /assets/img/payments/mobilepay-redirect-en.png
+[mobilepay-screenshot-2]: /assets/img/payments/mobilepay-approve-en.png
 [mobilepay-cancel]: /payments/mobile-pay/after-payment#cancellations
 [mobilepay-capture]: /payments/mobile-pay/after-payment#capture
 [payee-reference]: /payments/mobile-pay/other-features#payee-reference
