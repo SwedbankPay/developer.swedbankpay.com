@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
       - name: build
@@ -20,7 +20,7 @@ jobs:
           path: _site
 
   verify:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
       - name: Verify build
@@ -48,7 +48,7 @@ jobs:
         run: grep 'src="/assets/' $(pwd)/_site/index.html
 
   remark-lint:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
       - run: npm install
