@@ -7,6 +7,11 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
+
+      - name: Login docker
+        run: |
+          docker login https://docker.pkg.github.com -u SwedbankPay --password ${{ secrets.GITHUB_TOKEN }}
+
       - name: build
         run: |
           docker-compose run \
