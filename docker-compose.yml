@@ -3,8 +3,8 @@ version: "3.7"
 services:
   portal:
     container_name: developer_portal
-    image: swedbankpay/jekyll-plantuml:2.0.5
-    command: serve
+    image: docker.pkg.github.com/swedbankpay/jekyll-plantuml-docker/jekyll-plantuml:d04f3e10
+    command: build --verify --log-level=debug
     ports:
       - 4000:4000
       - 35729:35729
