@@ -1,29 +1,10 @@
 ---
 title: Test Data
-sidebar:
-  navigation:
-  - title: Resources
-    items:
-    - url: /resources/
-      title: Introduction
-    - url: /resources/test-data
-      title: Test Data
-    - url: /resources/demoshop
-      title: Demoshop
-    - url: /resources/development-guidelines
-      title: Open Source Development Guidelines
-    - url: /resources/release-notes
-      title: Release Notes
-    - url: /resources/terminology
-      title: Terminology
-    - url: /resources/data-protection
-      title: Data Protection
-    - url: /resources/public-migration-key
-      title: Public Migration Key
+estimated_read: 30
+description: |
+  Testing, are we? Good! Here's some data you can
+  use to test and verify your integration!
 ---
-
-{% include jumbotron.html body="Testing, are we? Good! Here's some data you can
-   use to test and verify your integration!" %}
 
 ## Swedbank Pay Checkout Test Data
 
@@ -84,9 +65,9 @@ To test a checked in user in the Demo Shop, please use the following test data:
 ### American Express
 
 {:.table .table-striped}
-| Card number       | Expiry                  | CVC    |
-| :---------------- | :---------------------- | :----- |
-| `377601000000000` | After the current month | `5252` |
+| Card number       | Expiry                  | CVC    | Type of test data |
+| :---------------- | :---------------------- | :----- | :---------------- |
+| `377601000000000` | After the current month | `5252` | Amex & loopback   |
 
 ### JCB
 
@@ -132,11 +113,10 @@ To test a checked in user in the Demo Shop, please use the following test data:
 | :----------------- | :----- | :---- |
 | `6007220000000004` | 12/22  | `123` |
 
-
 ## Failure Testing
 
 There are two different ways of testing Card Payments error scenarios. You can
-test 3-D Secure errors using our 3-D Secure emulator, or you can use specific 
+test 3-D Secure errors using our 3-D Secure emulator, or you can use specific
 amounts set to trigger errors in our test environment.
 
 ### 3-D Secure Method
@@ -164,10 +144,10 @@ status you selected will be sent with the payment.
 
 ### Amount Error Testing Method
 
-We have some preset amounts that will trigger error codes. When creating a 
-payment (operation `purchase`), enter one of the amounts from the list below in 
-the prices object (`"amount": <number>`) before submitting a payment. The error 
-message displayed behind the amounts will be sent with your payment in the test 
+We have some preset amounts that will trigger error codes. When creating a
+payment (operation `purchase`), enter one of the amounts from the list below in
+the prices object (`"amount": <number>`) before submitting a payment. The error
+message displayed behind the amounts will be sent with your payment in the test
 environment.
 
 The amounts that can be used to trigger error codes
@@ -227,11 +207,11 @@ Use any name, address etc.
 
 ## Vipps Test Data
 
-Testing a successful Vipps purchase (in our external integration test 
-environment) can be done using any valid Norwegian mobile number, E.g: 
-`+47 99999999` except within the range: `9999991` - `99999998`, as these will 
-trigger errors according to the table below. Please note that the external 
-integration test environment is usinga fake service, which means that no app 
+Testing a successful Vipps purchase (in our external integration test
+environment) can be done using any valid Norwegian mobile number, E.g:
+`+47 99999999` except within the range: `9999991` - `99999998`, as these will
+trigger errors according to the table below. Please note that the external
+integration test environment is usinga fake service, which means that no app
 will be involved.
 
 {:.table .table-striped}
@@ -246,13 +226,12 @@ will be involved.
 | 99999997      | User not Registered with Vipps                                  |
 | 99999998      | Merchant not available or active                                |
 
-
 ## Swish Test Data
 
-Testing a successful Swish purchase (in our external integration test 
-environment) can be done by using any valid Swedish mobile number. E.g: 
-`+46 739000001`. As with Vipps, the external integration test environment uses a 
-fake service with no app involved. To trigger an error message, set the 
+Testing a successful Swish purchase (in our external integration test
+environment) can be done by using any valid Swedish mobile number. E.g:
+`+46 739000001`. As with Vipps, the external integration test environment uses a
+fake service with no app involved. To trigger an error message, set the
 `description` value in `POST` Create Payment or `Create` Payment Order to one of
 the following values:
 

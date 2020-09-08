@@ -1,17 +1,6 @@
 ---
-title: Swedbank Pay MobilePay Online Payments – After Payment
-sidebar:
-  navigation:
-  - title: MobilePay Online Payments
-    items:
-    - url: /payments/mobile-pay
-      title: Introduction
-    - url: /payments/mobile-pay/redirect
-      title: Redirect
-    - url: /payments/mobile-pay/after-payment
-      title: After Payment
-    - url: /payments/mobile-pay/other-features
-      title: Other Features
+title: MobilePay Online Payments – After Payment
+estimated_read: 30
 ---
 
 ## Options after posting a payment

@@ -1,28 +1,13 @@
 ---
-title: Swedbank Pay Payments Swish Seamless View
-sidebar:
-  navigation:
-  - title: Swish Payments
-    items:
-    - url: /payments/swish
-      title: Introduction
-    - url: /payments/swish/direct
-      title: Direct
-    - url: /payments/swish/redirect
-      title: Redirect
-    - url: /payments/swish/seamless-view
-      title: Seamless View
-    - url: /payments/swish/after-payment
-      title: After Payment
-    - url: /payments/swish/other-features
-      title: Other Features
+title: Payments Swish Seamless View
+estimated_read: 30
+description: |
+  The **Seamless View** scenario gives your
+  customers the opportunity to pay with Swish directly
+  within your webshop. This gives the consumer a
+  frictionless experience as we are handling the
+  payment in the implemented `iframe` on your page.
 ---
-
-{% include jumbotron.html body="The **Seamless View** scenario gives your
-                          customers the opportunity to pay with Swish directly
-                          within your webshop. This gives the consumer a
-                          frictionless experience as we are handling the
-                          payment in the implemented `iframe` on your page" %}
 
 ## Swish Seamless View integration flow
 
@@ -123,7 +108,7 @@ Content-Type: application/json
 |                  | └➔&nbsp;`paymentAgeLimit`    | `integer`     | Positive number sets requried age limit to fulfill the payment.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | {% icon check %} | └➔&nbsp;`description`        | `string(40)`  | {% include field-description-description.md documentation_section="swish" %}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 |                  | └➔&nbsp;`payerReference`     | `string`      | The reference to the payer (consumer/end user) from the merchant system. E.g mobile number, customer number etc.                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| {% icon check %} | └➔&nbsp;`userAgent`          | `string`      | The [`User-Agent` string][user-agent] of the consumer's web browser.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| {% icon check %} | └➔&nbsp;`userAgent`          | `string`      | The [`User-Agent` string][user-agent] of the consumer's web browser.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | {% icon check %} | └➔&nbsp;`language`           | `string`      | {% include field-description-language.md api_resource="swish" %}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | {% icon check %} | └➔&nbsp;`urls`               | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 |                  | └─➔&nbsp;`hostUrls`          | `array`       | The array of URLs valid for embedding of Swedbank Pay Hosted Views. If not supplied, view-operation will not be available.                                                                                                                                                                                                                                                                                                                                                                                                                                                |

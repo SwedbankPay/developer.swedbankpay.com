@@ -1,33 +1,16 @@
 ---
-title: Swedbank Pay Payments Invoice Direct
-sidebar:
-  navigation:
-  - title: Invoice Payments
-    items:
-    - url: /payments/invoice
-      title: Introduction
-    - url: /payments/invoice/redirect
-      title: Redirect
-    - url: /payments/invoice/seamless-view
-      title: Seamless View
-    - url: /payments/invoice/direct
-      title: Direct
-    - url: /payments/invoice/capture
-      title: Capture
-    - url: /payments/invoice/after-payment
-      title: After Payment
-    - url: /payments/invoice/other-features
-      title: Other Features
+title: Payments Invoice Direct
+estimated_read: 30
+description: |
+  **Direct** is a payment service where Swedbank
+  Pay helps improve cashflow by purchasing merchant invoices. Swedbank Pay
+  receives invoice data, which is used to produce and distribute invoices to the
+  consumer/end-user.
 ---
 
 {% include alert.html type="informative" icon="report_problem" header="Disclaimer"
 body="Direct Invoice is about to be phased out. This section is only for
 merchants that currently have a contract with this integration." %}
-
-{% include jumbotron.html body="**Direct** is a payment service where Swedbank
-Pay helps improve cashflow by purchasing merchant invoices. Swedbank Pay
-receives invoice data, which is used to produce and distribute invoices to the
-consumer/end-user" %}
 
 ## Invoice Direct implementation flow
 
@@ -124,7 +107,7 @@ Content-Type: application/json
 | {% icon check %}︎︎︎︎︎ | └➔&nbsp;`description`             | `string(40)`  | {% include field-description-description.md documentation_section="invoice" %}                                                                                                                                                                                                                                         |
 |                  | └➔&nbsp;`payerReference`          | `string`      | The reference to the payer (consumer/end user) from the merchant system. E.g mobile number, customer number etc.                                                                                                                                                                                                       |
 |                  | └➔&nbsp;`generateRecurrenceToken` | `boolean`     | `true` or `false`. Set this to `true` if you want to create a recurrenceToken for future use Recurring purchases (subscription payments).                                                                                                                                                                              |
-| {% icon check %}︎︎︎︎︎ | └➔&nbsp;`userAgent`               | `string`      | The [`User-Agent` string][user-agent] of the consumer's web browser.                                                                                                                                                                                               |
+| {% icon check %}︎︎︎︎︎ | └➔&nbsp;`userAgent`               | `string`      | The [`User-Agent` string][user-agent] of the consumer's web browser.                                                                                                                                                                                                                                                   |
 | {% icon check %}︎︎︎︎︎ | └➔&nbsp;`language`                | `string`      | {% include field-description-language.md api_resource="invoice" %}                                                                                                                                                                                                                                                     |
 | {% icon check %}︎︎︎︎︎ | └➔&nbsp;`urls`                    | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                                                 |
 |                  | └─➔&nbsp;`hostUrl`                | `array`       | The array of URLs valid for embedding of Swedbank Pay Hosted Views. If not supplied, view-operation will not be available.                                                                                                                                                                                             |

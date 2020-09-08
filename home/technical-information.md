@@ -1,11 +1,8 @@
 ---
-title: Swedbank Pay Developer Portal
-sidebar:
-  navigation:
-  - title: Home
-    items:
-    - url: /home/technical-information
-      title: Technical Information
+title: Developer Portal
+estimated_read: 60
+description: |
+  General technical information that is good to know
 ---
 
 ## Connection and Protocol
