@@ -11,7 +11,8 @@
 During operation in the {{ product }}, several events can occur. They are
 described below.
 
-{% include alert.html type="informative" icon="info" body="Adding an event
+{% include alert.html type="warning" icon="info" header="Event Overrides"
+body="Adding an event
 handler to one of the following events **overrides** the default event handler,
 meaning your custom event handler will have to do what the default event handler
 did. If you don’t, the behaviour of the event is going to be undefined.
