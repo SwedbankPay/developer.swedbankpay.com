@@ -106,4 +106,4 @@ task :test => :build do
   HTMLProofer.check_directory("./_site", options).run
 end
 
-task :default => ["build"]
+task :default => ["test"]
