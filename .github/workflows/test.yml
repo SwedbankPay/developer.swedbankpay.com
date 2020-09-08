@@ -40,9 +40,7 @@ jobs:
       - name: Bundle install
         run: |
           bundle install
-      - name: Build site
-        run: |
-          bundle exec jekyll build
+
       - name: Verify build
         run: |
           bundle exec rake
