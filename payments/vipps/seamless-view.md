@@ -1,26 +1,13 @@
 ---
-title: Swedbank Pay Payments Vipps Seamless View
-sidebar:
-  navigation:
-  - title: Vipps Payments
-    items:
-    - url: /payments/vipps
-      title: Introduction
-    - url: /payments/vipps/redirect
-      title: Redirect
-    - url: /payments/vipps/seamless-view
-      title: Seamless View
-    - url: /payments/vipps/after-payment
-      title: After Payment
-    - url: /payments/vipps/other-features
-      title: Other Features
+title: Payments Vipps Seamless View
+estimated_read: 30
+description: |
+  **Seamless View** scenario gives your
+  customers the opportunity to pay with Vipps directly within your webshop.
+  In the Seamless View scenario, Swedbank Pay receives a mobile number (MSISDN)
+  from the payer through Swedbank Pay Payments. Swedbank Pay performs a payment
+  that the payer must confirm through the Vipps mobile app.
 ---
-
-{% include jumbotron.html body="The **Seamless View** scenario gives your
-customers the opportunity to pay with Vipps directly within your webshop.
-In the Seamless View scenario, Swedbank Pay receives a mobile number (MSISDN)
-from the payer through Swedbank Pay Payments. Swedbank Pay performs a payment
-that the payer must confirm through the Vipps mobile app." %}
 
 ![steps of the vipps purchase flow][vipps-purchase-flow]{:width="1200px" :height="500px"}
 
@@ -99,10 +86,10 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`amount`                 | `integer`     | {% include field-description-amount.md currency="NOK" %}                                                                                                                                                                                                                                           |
 | {% icon check %} | └─➔&nbsp;`vatAmount`              | `integer`     | {% include field-description-vatamount.md currency="NOK" %}                                                                                                                                                                                                                                        |
 | {% icon check %} | └➔&nbsp;`description`             | `string(40)`  | {% include field-description-description.md documentation_section="vipps" %}                                                                                                                                                                                                                       |
-|                  | └➔&nbsp;`payerReference`          | `string`      | The reference to the payer (consumer/end user) from the merchant system. E.g mobile number, customer number etc.                                                                                                                                                                              |
-|                  | └➔&nbsp;`generatePaymentToken`    | `boolean`     | `true` or `false`. Set this to `true` if you want to create a paymentToken for future use as One Click.                                                                                                                                                                                         |
+|                  | └➔&nbsp;`payerReference`          | `string`      | The reference to the payer (consumer/end user) from the merchant system. E.g mobile number, customer number etc.                                                                                                                                                                                   |
+|                  | └➔&nbsp;`generatePaymentToken`    | `boolean`     | `true` or `false`. Set this to `true` if you want to create a paymentToken for future use as One Click.                                                                                                                                                                                            |
 |                  | └➔&nbsp;`generateRecurrenceToken` | `boolean`     | `true` or `false`. Set this to `true` if you want to create a recurrenceToken for future use Recurring purchases (subscription payments).                                                                                                                                                          |
-| {% icon check %} | └➔&nbsp;`userAgent`               | `string`     | The [`User-Agent` string][user-agent] of the consumer's web browser.                                                                                                                                                                                                                                |
+| {% icon check %} | └➔&nbsp;`userAgent`               | `string`      | The [`User-Agent` string][user-agent] of the consumer's web browser.                                                                                                                                                                                                                               |
 | {% icon check %} | └➔&nbsp;`language`                | `string`      | {% include field-description-language.md api_resource="vipps" %}                                                                                                                                                                                                                                   |
 | {% icon check %} | └➔&nbsp;`urls`                    | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                             |
 |                  | └─➔&nbsp;`hostUrls`               | `array`       | The array of URLs valid for embedding of Swedbank Pay Hosted Views. If not supplied, view-operation will not be available.                                                                                                                                                                         |

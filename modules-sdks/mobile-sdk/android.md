@@ -1,23 +1,10 @@
 ---
 title: Android
-sidebar:
-  navigation:
-  - title: Mobile SDK
-    items:
-    - url: /modules-sdks/mobile-sdk/
-      title: Introduction
-    - url: /modules-sdks/mobile-sdk/merchant-backend
-      title: Merchant Backend
-    - url: /modules-sdks/mobile-sdk/merchant-backend-sample-code
-      title: Merchant Backend Sample Code
-    - url: /modules-sdks/mobile-sdk/android
-      title: Android
-    - url: /modules-sdks/mobile-sdk/ios
-      title: iOS
-    - url: /modules-sdks/mobile-sdk/process-diagrams
-      title: Process Diagrams
-    - url: /modules-sdks/mobile-sdk/plain-webview
-      title: Plain Webview
+estimated_read: 30
+description: |
+  With a Merchant Backend in place, we can start developing a mobile application
+  with Swedbank Pay payments.
+  Let us begin with Android.
 ---
 {% capture disclaimer %}
 The SDK is at an early stage of development
@@ -28,8 +15,6 @@ However, if you need support, please wait for a future, stable release.
 
 {% include alert.html type="warning" icon="warning" header="Unsupported"
 body=disclaimer %}
-
-{% include jumbotron.html body="With a Merchant Backend in place, we can start developing a mobile application with Swedbank Pay payments. Let us begin with Android." %}
 
 ## Installation
 

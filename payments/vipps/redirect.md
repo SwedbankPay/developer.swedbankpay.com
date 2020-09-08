@@ -1,26 +1,13 @@
 ---
-title: Swedbank Pay Payments Vipps Redirect
-sidebar:
-  navigation:
-  - title: Vipps Payments
-    items:
-    - url: /payments/vipps
-      title: Introduction
-    - url: /payments/vipps/redirect
-      title: Redirect
-    - url: /payments/vipps/seamless-view
-      title: Seamless View
-    - url: /payments/vipps/after-payment
-      title: After Payment
-    - url: /payments/vipps/other-features
-      title: Other Features
+title: Payments Vipps Redirect
+estimated_read: 30
+description: |
+  **Vipps Payments** is a two-phase
+  payment instrument supported by the major Norwegian banks. In the redirect
+  scenario, Swedbank Pay receives a mobile number (msisdn)
+  from the payer through Swedbank Pay Payments. Swedbank Pay performs a payment
+  that the payer must confirm through the Vipps mobile app.
 ---
-
-{% include jumbotron.html body="**Vipps Payments** is a two-phase
-payment instrument supported by the major Norwegian banks. In the redirect
-scenario, Swedbank Pay receives a mobile number (msisdn)
-from the payer through Swedbank Pay Payments. Swedbank Pay performs a payment
-that the payer must confirm through the Vipps mobile app." %}
 
 ## Introduction
 
@@ -180,8 +167,8 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`amount`          | `integer`     | {% include field-description-amount.md currency="NOK" %}                                                                                                                                                                                                                                           |
 | {% icon check %} | └─➔&nbsp;`vatAmount`       | `integer`     | {% include field-description-vatamount.md currency="NOK" %}                                                                                                                                                                                                                                        |
 | {% icon check %} | └➔&nbsp;`description`      | `string(40)`  | {% include field-description-description.md documentation_section="vipps" %}                                                                                                                                                                                                                       |
-|                  | └➔&nbsp;`payerReference`   | `string`      | The reference to the payer (consumer/end user) from the merchant system. E.g mobile number, customer number etc.                                                                                                                                                                               |
-| {% icon check %} | └➔&nbsp;`userAgent`         | `string`      | The [`User-Agent` string][user-agent] of the consumer's web browser.                                                                                                                                                                                                                              |
+|                  | └➔&nbsp;`payerReference`   | `string`      | The reference to the payer (consumer/end user) from the merchant system. E.g mobile number, customer number etc.                                                                                                                                                                                   |
+| {% icon check %} | └➔&nbsp;`userAgent`        | `string`      | The [`User-Agent` string][user-agent] of the consumer's web browser.                                                                                                                                                                                                                               |
 | {% icon check %} | └➔&nbsp;`language`         | `string`      | {% include field-description-language.md api_resource="vipps" %}                                                                                                                                                                                                                                   |
 | {% icon check %} | └➔&nbsp;`urls`             | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                             |
 | {% icon check %} | └─➔&nbsp;`completeUrl`     | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. |

@@ -1,28 +1,13 @@
 ---
-title: Swedbank Pay Payments Swish Redirect
-sidebar:
-  navigation:
-  - title: Swish Payments
-    items:
-    - url: /payments/swish
-      title: Introduction
-    - url: /payments/swish/direct
-      title: Direct
-    - url: /payments/swish/redirect
-      title: Redirect
-    - url: /payments/swish/seamless-view
-      title: Seamless View
-    - url: /payments/swish/after-payment
-      title: After Payment
-    - url: /payments/swish/other-features
-      title: Other Features
+title: Payments Swish Redirect
+estimated_read: 30
+description: |
+  Swish is a one-phase payment instrument supported by the
+  major Swedish banks. **Swish Payments Redirect** is where Swedbank
+  Pay performs a payment that the payer confirms in the Swish mobile app.
+  The consumer initiates the payment by supplying the Swish registered mobile
+  number (msisdn), connected to the Swish app.
 ---
-
-{% include jumbotron.html body="Swish is a one-phase payment instrument supported by the
-major Swedish banks. **Swish Payments Redirect** is where Swedbank
-Pay performs a payment that the payer confirms in the Swish mobile app.
-The consumer initiates the payment by supplying the Swish registered mobile
-number (msisdn), connected to the Swish app." %}
 
 ## Introduction
 
@@ -124,7 +109,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`description`        | `string(40)`  | {% include field-description-description.md documentation_section="swish" %}                                                                                                                                                                                                                       |
 |                  | └─➔&nbsp;`paymentAgeLimit`   | `integer`     | Positive number sets required age limit to fulfill the payment.                                                                                                                                                                                                                                    |
 |                  | └➔&nbsp;`payerReference`     | `string`      | The reference to the payer (consumer/end user) from the merchant system. E.g mobile number, customer number etc.                                                                                                                                                                                   |
-| {% icon check %} | └➔&nbsp;`userAgent`           | `string`      | The [`User-Agent` string][user-agent] of the consumer's web browser.                                                                                                                                                                                                                                |
+| {% icon check %} | └➔&nbsp;`userAgent`          | `string`      | The [`User-Agent` string][user-agent] of the consumer's web browser.                                                                                                                                                                                                                               |
 | {% icon check %} | └➔&nbsp;`language`           | `string`      | {% include field-description-language.md api_resource="swish" %}                                                                                                                                                                                                                                   |
 | {% icon check %} | └➔&nbsp;`urls`               | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                             |
 | {% icon check %} | └─➔&nbsp;`completeUrl`       | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. |

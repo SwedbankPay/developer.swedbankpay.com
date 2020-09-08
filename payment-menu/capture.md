@@ -1,19 +1,6 @@
 ---
-title: Swedbank Pay Payment Menu – Capture
-sidebar:
-  navigation:
-  - title: Payment Menu
-    items:
-    - url: /payment-menu/
-      title: Introduction
-    - url: /payment-menu/payment-order
-      title: Payment Order
-    - url: /payment-menu/capture
-      title: Capture 
-    - url: /payment-menu/after-payment
-      title: After Payment
-    - url: /payment-menu/other-features
-      title: Other Features
+title: Payment Menu – Capture
+estimated_read: 30
 ---
 
 {% include alert-two-phase-payments.md %}

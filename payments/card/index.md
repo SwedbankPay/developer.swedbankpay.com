@@ -1,30 +1,11 @@
 ---
-title: Swedbank Pay Card Payments – Introduction
-sidebar:
-  navigation:
-  - title: Card Payments
-    items:
-    - url: /payments/card/
-      title: Introduction
-    - url: /payments/card/redirect
-      title: Redirect
-    - url: /payments/card/seamless-view
-      title: Seamless View
-    - url: /payments/card/direct
-      title: Direct
-    - url: /payments/card/capture
-      title: Capture
-    - url: /payments/card/mobile-card-payments
-      title: Mobile Card Payments
-    - url: /payments/card/after-payment
-      title: After Payment
-    - url: /payments/card/other-features
-      title: Other Features
+title: Card Payments – Introduction
+estimated_read: 30
+description: |
+  **Card Payments** is the most popular, versatile
+  and global way to initate a transaction with a customer. Choose between our
+  **Seamless View**, **Redirect**, or **Direct** integration options.
 ---
-
-{% include jumbotron.html body="**Card Payments** is the most popular, versatile
-and global way to initate a transaction with a customer. Choose between our
-**Seamless View**, **Redirect**, or **Direct** integration options." %}
 
 {% include alert.html type="informative"
                       icon="branding_watermark"
@@ -86,11 +67,11 @@ The API requests are displayed in the [purchase flow][purchase].
 You can [create a card payment][create-payment] with following `operation`
 options:
 
-* [Purchase][purchase]
-* [Recur][recur]
-* [Payout][payout]
-* [Verify][verify]
-* [Unscheduled Purchase][unscheduled-purchase]
+*   [Purchase][purchase]
+*   [Recur][recur]
+*   [Payout][payout]
+*   [Verify][verify]
+*   [Unscheduled Purchase][unscheduled-purchase]
 
 Our `payment` example below uses the [`Purchase`][purchase] operation.
 

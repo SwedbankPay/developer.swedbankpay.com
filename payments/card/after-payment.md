@@ -1,25 +1,6 @@
 ---
-title: Swedbank Pay Card Payments – After Payment
-sidebar:
-  navigation:
-  - title: Card Payments
-    items:
-    - url: /payments/card/
-      title: Introduction
-    - url: /payments/card/redirect
-      title: Redirect
-    - url: /payments/card/seamless-view
-      title: Seamless View
-    - url: /payments/card/direct
-      title: Direct
-    - url: /payments/card/capture
-      title: Capture
-    - url: /payments/card/mobile-card-payments
-      title: Mobile Card Payments
-    - url: /payments/card/after-payment
-      title: After Payment
-    - url: /payments/card/other-features
-      title: Other Features
+title: Card Payments – After Payment
+estimated_read: 30
 ---
 
 ## Options after posting a payment

@@ -1,24 +1,14 @@
 ---
-title: Swedbank Pay MobilePay Online Payments – Redirect
-sidebar:
-  navigation:
-  - title: MobilePay Online Payments
-    items:
-    - url: /payments/mobile-pay
-      title: Introduction
-    - url: /payments/mobile-pay/redirect
-      title: Redirect
-    - url: /payments/mobile-pay/after-payment
-      title: After Payment
-    - url: /payments/mobile-pay/other-features
-      title: Other Features
+title: MobilePay Online Payments – Redirect
+estimated_read: 30
+description: |
+  **MobilePay Online Payments** is a two-phase payment instrument which can be
+  implemented by the supported redirect scenario.
+  Swedbank Pay receives the MobilePay details from the payer through Swedbank
+  Pay Payments.
+  The payment will then be performed by Swedbank Pay and confirmed by the payer
+  through the MobilePay app.
 ---
-
-{% include jumbotron.html body=" **MobilePay Online Payments** is a two-phase payment
-instrument which can be implemented by the supported redirect scenario.
-Swedbank Pay receives the MobilePay details from the payer through Swedbank Pay
-Payments. The payment will then be performed by Swedbank Pay and
-confirmed by the payer through the MobilePay app." %}
 
 ## MobilePay redirect integration flow
 
@@ -118,7 +108,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`intent`                | `string`     | `Authorization`                                                                                                                                                                                                                                           |
 | {% icon check %} | └➔&nbsp;`currency`              | `string`     | `NOK`, `SEK`, `DKK`, `USD` or `EUR`.                                                                                                                                                                                                                      |
 | {% icon check %} | └➔&nbsp;`prices`                | `object`     | The prices object.                                                                                                                                                                                                                                        |
-| {% icon check %} | └─➔&nbsp;`type`                 | `string`     | `Visa` (for card type Visa), `MC` (for card type Mastercard), `MobilePay` (for all card types).                                                                                                                                                                                              |
+| {% icon check %} | └─➔&nbsp;`type`                 | `string`     | `Visa` (for card type Visa), `MC` (for card type Mastercard), `MobilePay` (for all card types).                                                                                                                                                           |
 | {% icon check %} | └─➔&nbsp;`amount`               | `integer`    | {% include field-description-amount.md currency="DKK" %}                                                                                                                                                                                                  |
 | {% icon check %} | └─➔&nbsp;`vatAmount`            | `integer`    | {% include field-description-vatamount.md currency="DKK" %}                                                                                                                                                                                               |
 |                  | └─➔&nbsp;`feeAmount`            | `integer`    | If the amount given includes Fee, this may be displayed for the user in the payment page (redirect only).                                                                                                                                                 |

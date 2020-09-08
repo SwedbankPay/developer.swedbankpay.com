@@ -1,23 +1,13 @@
 ---
 title: Process Diagrams
-sidebar:
-  navigation:
-  - title: Mobile SDK
-    items:
-    - url: /modules-sdks/mobile-sdk/
-      title: Introduction
-    - url: /modules-sdks/mobile-sdk/merchant-backend
-      title: Merchant Backend
-    - url: /modules-sdks/mobile-sdk/merchant-backend-sample-code
-      title: Merchant Backend Sample Code
-    - url: /modules-sdks/mobile-sdk/android
-      title: Android
-    - url: /modules-sdks/mobile-sdk/ios
-      title: iOS
-    - url: /modules-sdks/mobile-sdk/process-diagrams
-      title: Process Diagrams
-    - url: /modules-sdks/mobile-sdk/plain-webview
-      title: Plain Webview
+estimated_read: 30
+description: |
+  The previous pages have dealt with each component. This page contains
+  flowcharts that illustrate the entire process, taking into account all the
+  components involved.
+  It is recommended to read through the earlier pages first.
+  This page can them help you keep a picture of the whole system in mind,
+  and serve as a quick reference to the different steps and components.
 ---
 
 {% capture disclaimer %}
@@ -29,10 +19,6 @@ However, if you need support, please wait for a future, stable release.
 
 {% include alert.html type="warning" icon="warning" header="Unsupported"
 body=disclaimer %}
-
-{% include jumbotron.html body="The previous pages have dealt with each component. This page contains flowcharts that illustrate the entire process, taking into account all the components involved.
-
-It is recommended to read through the earlier pages first. This page can them help you keep a picture of the whole system in mind, and serve as a quick reference to the different steps and components." %}
 
 ## Initialization
 
