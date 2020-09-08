@@ -100,7 +100,8 @@ task :test => :build do
       "http://restcookbook.com/Basics/loggingin/",
     ],
     :typhoeus_config => "{\"memoize\" : true, \"authorization\":\"Bearer #{git_token}\"}",
-    :http_status_ignore => [429]
+    :http_status_ignore => [429],
+    :disable_external => true
   }
   HTMLProofer.check_directory("./_site", options).run
 end
