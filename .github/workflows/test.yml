@@ -8,9 +8,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Login docker
-        run: |
-          docker login https://docker.pkg.github.com -u SwedbankPay --password ${{ secrets.GITHUB_TOKEN }}
+      - name: docker login
+        run: docker login https://docker.pkg.github.com -u SwedbankPay --password ${{ secrets.GITHUB_TOKEN }}
 
       - name: build
         run: |
