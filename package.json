@@ -85,7 +85,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "remark": "remark ./_site --quiet"
+    "remark": "remark . --quiet"
   },
   "repository": {
     "type": "git",
