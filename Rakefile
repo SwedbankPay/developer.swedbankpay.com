@@ -83,9 +83,9 @@ task :test => :build do
   git_token = "JEKYLL_GITHUB_TOKEN"
   if ENV.has_key?("JEKYLL_GITHUB_TOKEN")
     git_token = ENV["JEKYLL_GITHUB_TOKEN"].safe_strip
-    puts "Environment variable #{key} used with value: #{git_token}."
+    puts "Environment variable JEKYLL_GITHUB_TOKEN used with value: #{git_token}."
   else
-    puts "No Environment variable for #{key} found."
+    puts "No Environment variable for JEKYLL_GITHUB_TOKEN found."
     return 0
   end
 
