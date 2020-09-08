@@ -43,7 +43,7 @@ jobs:
 
       - name: Verify build
         run: |
-          bundle exec rake
+          bundle exec rake test
         with:
           JEKYLL_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
