@@ -29,32 +29,18 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@master
-        with:
-          node-version: ${{ matrix.node-version }}
-      - name: Install
-        run: npm install
-      - name: Test
-        run: npm run remark
-
-      - uses: actions/setup-ruby@v1
-        with:
-          ruby-version: '2.6'
-
-      - name: Install bundler
+      - name: Login docker
         run: |
-          gem install bundler
-      
-      - name: Bundle install
-        run: |
-          bundle install
-
+          docker login https://docker.pkg.github.com -u SwedbankPay --password ${{ secrets.GITHUB_TOKEN }}
       - name: Build
         run: |
-          bundle exec jekyll build
-        env:
-          - JEKYLL_ENV=production
+          docker-compose run \
+            -e PAGES_REPO_NWO=${{ github.repository }} \
+            -e JEKYLL_GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} \
+            portal build \
+            --env=production \
+            --ignore-url http://restcookbook.com/Basics/loggingin/ \
+            --ignore-url https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default
 
       - name: Upload build output artifacts
         uses: actions/upload-artifact@v2
