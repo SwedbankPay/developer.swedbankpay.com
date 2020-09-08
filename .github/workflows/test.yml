@@ -44,7 +44,7 @@ jobs:
       - name: Verify build
         run: |
           bundle exec rake test --backtrace
-        with:
+        env:
           JEKYLL_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload build output artifacts
