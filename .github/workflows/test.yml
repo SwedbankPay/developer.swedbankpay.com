@@ -29,6 +29,15 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Set up Node.js
+        uses: actions/setup-node@master
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install
+        run: npm install
+      - name: Test
+        run: npm run remark
+
       - uses: actions/setup-ruby@v1
         with:
           ruby-version: '2.6'
@@ -41,9 +50,9 @@ jobs:
         run: |
           bundle install
 
-      - name: Verify build
+      - name: Build
         run: |
-          bundle exec rake test --backtrace
+          bundle exec jekyll build
         env:
           JEKYLL_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
