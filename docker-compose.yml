@@ -4,7 +4,7 @@ services:
   portal:
     container_name: developer_portal
     image: swedbankpay/jekyll-plantuml:2.1.0
-    command: build --verify --log-level=debug
+    command: serve
     ports:
       - 4000:4000
       - 35729:35729
