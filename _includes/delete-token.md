@@ -11,13 +11,13 @@ No other states are supported.
 **Request**
 
 ```http
-PATCH /psp/{{ api_resource }}/{% unless api_resource == "paymentorders" %}payments/{% endunless %}{{ page.payment_id }} HTTP/1.1
+PATCH /psp/{{ api_resource }}/{% unless api_resource == "paymentorders" %}payments/instrumentdata/{% endunless %}{{ page.payment_id }} HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 {
   "state": "Deleted",
-  "comment": "Comment on why the deletion is happening"{% if documentation_section == "card" %}
+  "comment": "Comment on why the deletion is happening"{% if documentation_section == "card" %},
   "tokenType" : "{{ token_field_name }}"{% endif %}
 }
 ```
