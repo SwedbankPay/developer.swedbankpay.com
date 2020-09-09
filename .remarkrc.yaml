@@ -54,7 +54,6 @@ plugins:
   - "remark-lint-table-pipes"
   - "remark-lint-unordered-list-marker-style"
   - "remark-lint-list-item-indent"
-  - "remark-validate-links"
 settings:
   bullet: "*"
   emphasis: "_"
