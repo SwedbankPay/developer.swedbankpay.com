@@ -13,3 +13,4 @@ commit-msg.txt
 *.generated*
 .gemrc
 .gem/credentials
+node_modules
