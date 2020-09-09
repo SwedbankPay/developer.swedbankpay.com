@@ -4,10 +4,14 @@ services:
   portal:
     container_name: developer_portal
     image: swedbankpay/jekyll-plantuml:2.1.0
-    command: serve
+    command: build --verify --log-level=debug
     ports:
       - 4000:4000
       - 35729:35729
     volumes:
       - .:/srv/jekyll
       - .bundle:/usr/local/bundle
+    ulimits:
+      as:
+        hard: 2048000000
+        soft: 2048000000
