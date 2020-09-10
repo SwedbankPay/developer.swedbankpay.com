@@ -8,11 +8,11 @@ description: |
 
 ## Swedbank Pay Checkout Test Data
 
-During a Swedbank Pay Checkout implementation you can use the test data related
+During a Swedbank Pay Checkout implementation, you can use the test data related
 to the different payment instruments listed below. To see Swedbank Pay Checkout
 in action, please visit our [demoshop]({{ page.front_end_url }}/pspdemoshop)
 
-To test a checked in user in the Demo Shop, please use the following test data:
+To test a checked-in user in the Demo Shop, please use the following test data:
 
 ### Checkout test data for Norway
 
@@ -42,6 +42,13 @@ To test a checked in user in the Demo Shop, please use the following test data:
 | `Mobile number` | `+4522222222` | The mobile phone number of the payer. Format Denmark: `+45 22222222` |
 
 ## Credit Card Test Data
+
+With regards to card payments, our external integration test environment is
+connected to our POS system instead of a fake service. It is set up with an
+internal acquirer. This gives us a production-like test environment, while also
+giving us sandbox testing opportunities, such as 3-D Secure card enrollment and
+error scenarios. No payment information will be sent to other acquiring
+institutions. 
 
 ### Visa
 
@@ -113,6 +120,14 @@ To test a checked in user in the Demo Shop, please use the following test data:
 | :----------------- | :----- | :---- |
 | `6007220000000004` | 12/22  | `123` |
 
+# 3-D Secure
+
+{:.table .table-striped}
+| Card type  | Card number        | Expiry | CVC   | Type of test data   |
+| :--------- | :----------------- | :----- | :---- | :------------------ |
+| Visa       | `4761739001010416` | 12/22  | `268` | 3-D Secure enrolled |
+| MasterCard | `5226612199533406` | 09/28  | `602` | 3-D Secure enrolled |
+
 ## Failure Testing
 
 There are two different ways of testing Card Payments error scenarios. You can
@@ -123,13 +138,8 @@ amounts set to trigger errors in our test environment.
 
 First, [create a Card Payment][create-card-purchase] (operation `Purchase`) and
 visit the URL of the returned `redirect-authorization` operation in a web
-browser. Use either the Visa or MasterCard shown below.
-
-{:.table .table-striped}
-| Card type  | Card number        | Expiry | CVC   | Type of test data   |
-| :--------- | :----------------- | :----- | :---- | :------------------ |
-| Visa       | `4761739001010416` | 12/22  | `268` | 3-D Secure enrolled |
-| MasterCard | `5226612199533406` | 09/28  | `602` | 3-D Secure enrolled |
+browser. Use either the Visa or MasterCard listed under 3-D Secure right above 
+this section.
 
 After pressing the purchase button you will then be taken to a menu where you
 can select Authentication status.
@@ -138,13 +148,13 @@ can select Authentication status.
 
 ![3D-Secure Emulator with dropdown menu][3ds-emulator-with-dropdown]{:width="805px" :height="685px"}
 
-In this menu there are a few different options to choose from, choose the status
-you want to test. When selected, simply press the Continue button and the
+In this menu, there are a few different options to choose from. Choose the 
+status you want to test, click the Continue button and the
 status you selected will be sent with the payment.
 
 ### Amount Error Testing Method
 
-We have some preset amounts that will trigger error codes. When creating a
+We have some preset amounts that will trigger error codes. While creating a
 payment (operation `purchase`), enter one of the amounts from the list below in
 the prices object (`"amount": <number>`) before submitting a payment. The error
 message displayed behind the amounts will be sent with your payment in the test
@@ -211,7 +221,7 @@ Testing a successful Vipps purchase (in our external integration test
 environment) can be done using any valid Norwegian mobile number, E.g:
 `+47 99999999` except within the range: `9999991` - `99999998`, as these will
 trigger errors according to the table below. Please note that the external
-integration test environment is usinga fake service, which means that no app
+integration test environment is using a fake service, which means that no app
 will be involved.
 
 {:.table .table-striped}
