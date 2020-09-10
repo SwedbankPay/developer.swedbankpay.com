@@ -1,5 +1,5 @@
 ---
-title: Payments Invoice Redirect
+title: Invoice Payments - Redirect
 estimated_read: 30
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Payments Swish After Payment
+title: Swish Payments - After Payment
 estimated_read: 30
 ---
 

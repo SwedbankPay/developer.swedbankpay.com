@@ -1,5 +1,5 @@
 ---
-title: Payments Vipps After Payment
+title: Vipps Payments - After Payment
 estimated_read: 30
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Payments Swish Redirect
+title: Swish Payments - Redirect
 estimated_read: 30
 description: |
   Swish is a one-phase payment instrument supported by the

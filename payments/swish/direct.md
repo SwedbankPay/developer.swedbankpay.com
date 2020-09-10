@@ -1,5 +1,5 @@
 ---
-title: Payments Swish Direct
+title: Swish Payments - Direct
 estimated_read: 30
 description: |
   Swish is a one-phase payment instrument supported by the major Swedish banks.

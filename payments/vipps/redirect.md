@@ -1,5 +1,5 @@
 ---
-title: Payments Vipps Redirect
+title: Vipps Payments - Redirect
 estimated_read: 30
 description: |
   **Vipps Payments** is a two-phase

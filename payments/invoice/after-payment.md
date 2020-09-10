@@ -1,5 +1,5 @@
 ---
-title: Payments Invoice After Payment
+title: Invoice Payments - After Payment
 estimated_read: 30
 ---
 
