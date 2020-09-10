@@ -57,6 +57,7 @@ Content-Type: application/json
 {
     "token": "7e380fbb3196ea76cc45814c1d99d59b66db918ce2131b61f585645eff364871",
     "operations": [
+        // Deprecated operation. Do not use!
         {
             "method": "GET",
             "rel": "redirect-consumer-identification",
