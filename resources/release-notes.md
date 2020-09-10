@@ -46,7 +46,7 @@ this very documentation, not to a version of any APIs described by it." %}
 *   Updated [Test Data][test-data] for Vipps Payments.
 *   Added updated documentation on the `transaction` operation.
 
-## 17 July 2020
+## 17 Jul 2020
 
 ### Version 1.13.0
 
@@ -54,14 +54,14 @@ this very documentation, not to a version of any APIs described by it." %}
 *   Added tables for mapping API fields to settlement files in
     [Settlement and Reconciliation][settlement-reconcilitation].
 
-## 10 July 2020
+## 10 Jul 2020
 
 ### Version 1.12.1
 
 *   Corrected the documentation by removing `generatePaymentToken` and
     `paymentToken` from [Checkout][checkout].
 
-## 07 July 2020
+## 07 Jul 2020
 
 ### Version 1.12.0
 
@@ -81,7 +81,7 @@ this very documentation, not to a version of any APIs described by it." %}
 *   Small corrections to [Swish Payments][swish] documentation.
 *   Clarified the [`updateOrder`][update-order-checkout] documentation.
 
-## 04 June 2020
+## 04 Jun 2020
 
 ### Version 1.11.1
 
@@ -118,7 +118,7 @@ this very documentation, not to a version of any APIs described by it." %}
 
 ### Version 1.9.2
 
-*   Corrected table in [payments page][payments]
+*   Corrected table in [payments page][payments].
 
 ### Version 1.9.1
 
@@ -129,7 +129,7 @@ this very documentation, not to a version of any APIs described by it." %}
 *   The `language` field is now better described for all requests it's present in.
 *   All broken links should now be unbroken.
 
-## April 2020
+## 22 Apr 2020
 
 ### Version 1.9.0
 
@@ -139,6 +139,8 @@ this very documentation, not to a version of any APIs described by it." %}
 *   Required checkmarks have a new, fresh look: {% icon check %}
 *   Flags now also sport a new look: {% flag no %} {% flag se %} {% flag dk %}
     {% flag fi %} {% flag lt %} {% flag lv %} {% flag ee %}
+
+## 15 Apr 2020
 
 ### Version 1.8.3
 
@@ -160,7 +162,7 @@ this very documentation, not to a version of any APIs described by it." %}
 *   Updated the [main page][frontpage] to be more welcoming.
 *   Updated information on [Merchant Authenticated Consumer][mac-checkout].
 
-## March 2020
+## 31 Mar 2020
 
 ### Version 1.8.1
 
@@ -175,6 +177,8 @@ this very documentation, not to a version of any APIs described by it." %}
 *   Updated `payeeReference` to have an unique description for Payment Order and
     every Payment Instrument.
 
+## 18 Mar 2020
+
 ### Version 1.8.0
 
 *   Updated [Invoice Payments Direct][invoice-direct] where
@@ -186,10 +190,14 @@ this very documentation, not to a version of any APIs described by it." %}
 
 This change contains build updates for the page. :octocat:
 
+## 04 Mar 2020
+
 ### Version 1.7.6
 
 *   Several links has been corrected. The chance of 404 is now much lower.
 *   Other small text changes and clarifications.
+
+## 03 Mar 2020
 
 ### Version 1.7.5
 
@@ -200,12 +208,13 @@ This change contains build updates for the page. :octocat:
 *   Swish error code reference got a face lift, check it out
     [here][swish-api-errors] :candy:.
 
-## February 2020
 
 ### Version 1.7.4
 
 *   Described the M-Commerce flow for [Swish Direct][swish-direct-mcom].
 *   Alphabetize the terms in [Terminology][terminology].
+
+## 27 Feb 2020
 
 ### Version 1.7.3
 
@@ -218,6 +227,8 @@ This change contains build updates for the page. :octocat:
 *   Mobile Pay Online was previously only refered to as Mobile Pay, this has been
     corrected.
 
+## 7 Feb 2020
+
 ### Version 1.7.2
 
 *   Removed several duplicate headers in other-features pages.
@@ -226,11 +237,13 @@ This change contains build updates for the page. :octocat:
 *   We have added card logos when selecting card in payment menu.
     See [updated screenshot of payment menu][checkout-payment-menu-frontend].
 
+## 6 Feb 2020
+
 ### Version 1.7.1
 
 All sections have been released. :trophy:
 
-### Version 1.7
+### Version 1.7.0
 
 *   README is updated with info about includes.
 *   Added  several includes.
@@ -247,7 +260,7 @@ All sections have been released. :trophy:
     [Swish Seamless View][swish-seamless-view]. Properties added in `Swish`.
 *   Added section about migration key in Resources section.
 
-## January 2020
+## 29 Jan 2020
 
 ### Version 1.6.3
 
@@ -268,7 +281,9 @@ All sections have been released. :trophy:
 *   `cardholder` added to [Card Payments Purchase requests][card-purchase].
 *   Various improvements and fixes.
 
-### Version 1.6
+## 27 Jan 2020
+
+### Version 1.6.0
 
 *   [Credit Payments][credit] (née "Credit Account") sections have been deleted
     from the Swedbank Pay Developer Portal.
@@ -281,6 +296,8 @@ All sections have been released. :trophy:
 *   Added descriptions for Payment States And Transaction States everywhere appropriate.
 *   Google Analytics has been added to Developer Portal.
 
+## 16 Jan 2020
+
 ### Version 1.5
 
 *   The review of [Invoice Payments][invoice] is complete and as such the section
@@ -292,6 +309,8 @@ All sections have been released. :trophy:
 *   The Direct Debit, [MobilePay Payments][mobile-pay] and
     [Credit Payments][credit] (née "Credit Account") sections have received a few
     updates, inching them all closer to review.
+
+## 09 Jan 2020
 
 ### Version 1.4
 
@@ -308,7 +327,7 @@ All sections have been released. :trophy:
 *   Added description for the `onBillingDetailsAvailable` event in the
     [Checkin Front End section][checkout-checkin-front-end].
 
-## December 2019
+## 22 Dec 2019
 
 ### Update in checkin module
 
@@ -334,7 +353,7 @@ redirect>>doc:Main.ecommerce.payex-payment-instruments.swish-payments.swish-e-co
 model.
 {% endcomment %}
 
-## November 2019
+## 01 Nov 2019
 
 ### Welcome, Swedbank Pay Developer Portal
 
@@ -386,7 +405,7 @@ updated documentation
 [[here>>doc:Main.ecommerce.technical-reference.payment-orders-resource.WebHome]]
 {% endcomment %}
 
-## October 2019
+## 01 Oct 2019
 
 ### Payment Url Credit Card
 
@@ -405,7 +424,7 @@ invoked after return of the consumer, the consumer will either be redirected to
 the `completeUrl` (event onPaymentCompleted) or if payment has failed, see an
 error-message and get the option to retry the payment.
 
-## August 2019
+## 01 Aug 2019
 
 ### Order Items in payment orders
 
