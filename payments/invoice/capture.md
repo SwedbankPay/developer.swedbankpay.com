@@ -1,5 +1,5 @@
 ---
-title: Payments Invoice Capture
+title: Invoice Payments - Capture
 estimated_read: 30
 ---
 

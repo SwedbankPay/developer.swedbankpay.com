@@ -1,5 +1,5 @@
 ---
-title: Payments Vipps Other Features
+title: Vipps Payments - Other Features
 estimated_read: 30
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Payments Vipps Seamless View
+title: Vipps Payments - Seamless View
 estimated_read: 30
 description: |
   **Seamless View** scenario gives your

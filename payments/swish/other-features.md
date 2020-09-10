@@ -1,5 +1,5 @@
 ---
-title: Payments Swish Other Features
+title: Swish Payments - Other Features
 estimated_read: 30
 ---
 

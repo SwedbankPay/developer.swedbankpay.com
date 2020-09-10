@@ -1,5 +1,5 @@
 ---
-title: Payments Swish Seamless View
+title: Swish Payments - Seamless View
 estimated_read: 30
 description: |
   The **Seamless View** scenario gives your

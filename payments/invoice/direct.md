@@ -1,5 +1,5 @@
 ---
-title: Payments Invoice Direct
+title: Invoice Payments - Direct
 estimated_read: 30
 description: |
   **Direct** is a payment service where Swedbank
