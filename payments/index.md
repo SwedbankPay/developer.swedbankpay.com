@@ -1,5 +1,5 @@
 ---
-title: Payments 
+title: Payments
 estimated_read: 30
 description: |
   Payments is our off-the-rack assortment of payment instruments.
