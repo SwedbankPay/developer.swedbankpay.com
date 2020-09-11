@@ -1,6 +1,7 @@
 ---
-title: Swish Payments - After Payment
+title: After Payment
 estimated_read: 30
+menu-order: 800
 ---
 
 After the payment is confirmed, the consumer will be redirected from the Swish

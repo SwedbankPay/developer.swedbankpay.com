@@ -5,6 +5,7 @@ description: |
   The Seamless View purchase scenario
   represents the opportunity to implement card payments
   directly in your webshop.
+menu-order: 500
 ---
 
 ## Introduction

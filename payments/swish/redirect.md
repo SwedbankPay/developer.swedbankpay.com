@@ -1,5 +1,5 @@
 ---
-title: Swish Payments - Redirect
+title: Redirect
 estimated_read: 30
 description: |
   Swish is a one-phase payment instrument supported by the
@@ -7,6 +7,7 @@ description: |
   Pay performs a payment that the payer confirms in the Swish mobile app.
   The consumer initiates the payment by supplying the Swish registered mobile
   number (msisdn), connected to the Swish app.
+menu-order: 500
 ---
 
 ## Introduction
