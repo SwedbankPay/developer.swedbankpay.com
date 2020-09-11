@@ -11,7 +11,7 @@ No other states are supported.
 **Request**
 
 ```http
-PATCH /psp/{{ api_resource }}/{% unless api_resource == "paymentorders" %}payments/instrumentdata/{% endunless %}{{ page.payment_id }} HTTP/1.1
+PATCH /psp/{{ api_resource }}/{% unless api_resource == "paymentorders" %}payments/{% endunless %}instrumentdata/{{ page.payment_token }} HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -42,4 +42,3 @@ Content-Type: application/json
   }
 }
 ```
-
