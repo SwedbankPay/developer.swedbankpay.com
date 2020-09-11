@@ -1,6 +1,7 @@
 ---
-title: Invoice Payments - Redirect
+title: Redirect
 estimated_read: 30
+menu-order: 300
 ---
 
 ## Introduction

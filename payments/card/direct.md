@@ -5,6 +5,7 @@ description: |
   The Direct Card Payment scenario is used by
   customers that are **compliant with PCI-DSS regulations**, and is a way to
   implement Card Payments without using a Swedbank Pay hosted payment page.
+menu-order: 400
 ---
 
 {% include alert.html type="warning"

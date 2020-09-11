@@ -1,6 +1,7 @@
 ---
-title: Invoice Payments - After Payment
+title: After Payment
 estimated_read: 30
+menu-order: 700
 ---
 
 ## Options after posting a payment
