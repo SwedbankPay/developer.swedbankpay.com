@@ -1464,6 +1464,83 @@ with the request parameter `instrument`.
     api_resource="paymentorders"
     documentation_section=include.documentation_section %}
 
+## MOTO
+
+{% include alert-agreement-required.md %}
+
+Mail-Order Telephone-Order
+Notes to ourself: 
+- only supported by Purchase (not Verify), 
+- Is only supported by CreditCard
+- Only valid with 3DS 2.x
+- skips SCA
+- Should be Type = MOTO and acquirerTransactionType = MOTO on the response for GET payment under payment/transactions/{authorize}/activities/{authorize}
+
+
+{:.code-header}
+**Request**
+
+```http
+POST /psp/creditcard/payments HTTP/1.1
+Host: {{ page.api_host }}
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+
+{
+    "paymentorder": {
+        "operation": "Purchase",
+        "currency": "SEK",
+        "amount": 1500,
+        "generateMotoPayment": true,
+        "vatAmount": 375,
+        "description": "Test Moto Purchase",
+        "userAgent": "Mozilla/5.0...",
+        "language": "sv-SE",{% if documentation_section == "payment-menu" %}
+        "instrument": "CreditCard"{% endif %}
+        "urls": {
+            "hostUrls": [ "https://example.com", "https://example.net" ],
+            "completeUrl": "https://example.com/payment-completed",
+            "cancelUrl": "https://example.com/payment-canceled",
+            "callbackUrl": "https://api.example.com/payment-callback",
+            "termsOfServiceUrl": "https://example.com/termsandconditoons.pdf",
+            "logoUrl": "https://example.com/logo.png"
+        }
+    }
+}
+```
+
+{:.code-header}
+**Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "paymentorder": {
+    "id": "/psp/paymentorders/{{ page.payment_order_id }}",
+    "created": "2016-09-14T13:21:29.3182115Z",
+    "updated": "2016-09-14T13:21:57.6627579Z",
+    "state": "Ready",
+    "operation": "Purchase",
+    "currency": "NOK",
+    "amount": 1500,
+    "description": "Test Moto Purchase",
+    "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
+    "userAgent": "Mozilla/5.0...",
+    "language": "nb-NO",
+    "prices": { "id": "/psp/paymentorders/{{ page.payment_order_id }}/prices" },
+    "transactions": { "id": "/psp/paymentorders/{{ page.payment_order_id }}/transactions" },
+    "authorizations": { "id": "/psp/paymentorders/{{ page.payment_order_id }}/authorizations" },
+    "captures": { "id": "/psp/paymentorders/{{ page.payment_order_id }}/captures" },
+    "reversals": { "id": "/psp/paymentorders/{{ page.payment_order_id }}/reversals" },
+    "cancellations": { "id": "/psp/paymentorders/{{ page.payment_order_id }}/cancellations" },
+    "urls" : { "id": "/psp/paymentorders/{{ page.payment_order_id }}/urls" },
+    "payeeInfo" : { "id": "/psp/paymentorders/{{ page.payment_order_id }}/payeeInfo" }
+  }
+}
+```
+
 ## Updating Payment Menu
 
 When the contents of the shopping cart changes or anything else that affects
