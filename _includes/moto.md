@@ -4,11 +4,10 @@
 
 Mail-Order Telephone-Order
 Notes to ourself: 
-- only supported by Purchase (not Verify), 
-- Only valid with 3DS 2.x
-- skips SCA
-- Should be Type = MOTO and acquirerTransactionType = MOTO on the response for GET payment under payment/transactions/{authorize}/activities/{authorize}
-
+  * only supported by Purchase (not Verify), 
+  * Only valid with 3DS 2.x
+  * skips SCA
+  * Should be Type = MOTO and acquirerTransactionType = MOTO on the response for GET payment under payment/transactions/{authorize}/activities/{authorize}
 
 {:.code-header}
 **Request**
