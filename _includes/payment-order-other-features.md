@@ -1007,7 +1007,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
-    "payment": {
+    "paymentorder": {
         "operation": "Verify",
         "currency": "NOK",
         "description": "Test Verification",
@@ -1077,7 +1077,7 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": {
+    "paymentorder": {
         "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",{% if include.documentation_section == "payment-menu" %}
         "paymentToken" : "{{ page.payment_token }}",{% endif %}
         "number": 1234567890,
