@@ -1,6 +1,7 @@
 ---
 title: MobilePay Online Payments – Other Features
 estimated_read: 30
+menu-order: 800
 ---
 
 {% include payment-resource.md api_resource="mobilepay"

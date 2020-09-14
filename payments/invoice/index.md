@@ -6,6 +6,7 @@ description: |
   payment service where Swedbank Pay helps improve cashflow by purchasing
   merchant invoices. Choose between our **Direct**, **Redirect** and
   **Seamless view** integration options.
+menu-order: 200
 ---
 
 {% include alert.html type="informative"

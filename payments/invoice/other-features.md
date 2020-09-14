@@ -1,6 +1,7 @@
 ---
-title: Invoice Payments – Other Features
+title: Other Features
 estimated_read: 30
+menu-order: 800
 ---
 
 ## API requests

@@ -1,6 +1,7 @@
 ---
-title: Payments Swish Other Features
+title: Other Features
 estimated_read: 30
+menu-order: 900
 ---
 
 {% include payment-resource.md api_resource="swish"
