@@ -30,6 +30,7 @@ Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
+
 {% if documentation_section == "card" %}
 
 {:.code-header}

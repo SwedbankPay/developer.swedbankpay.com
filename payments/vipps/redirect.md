@@ -137,11 +137,6 @@ Content-Type: application/json
     },
     "operations": [
         {
-            "method": "POST",
-            "href": "{{ page.api_url }}/psp/vipps/payments/{{ page.transaction_id }}/authorizations",
-            "rel": "create-authorization"
-        },
-        {
             "method": "PATCH",
             "href": "{{ page.api_url }}/psp/vipps/payments/{{ page.transaction_id }}",
             "rel": "update-payment-abort"
