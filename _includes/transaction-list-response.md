@@ -88,5 +88,8 @@ Content-Type: application/json
 | └─➔&nbsp;`description`            | `string`  | {% include field-description-description.md documentation_section=documentation_section %}                                                                                                                   |
 | └─➔&nbsp;`payeeReference`         | `string`  | {% include field-description-payee-reference.md documentation_section=documentation_section describe_receipt=true %}                                                                                         | {% if api_resource == "invoice" %} |
 | └─➔&nbsp;`receiptReference`       | `string`  | A unique reference for the transaction. This reference is used as an invoice/receipt number.                                                                                                                 | {% endif %}                        |
-| └─➔&nbsp;`isOperational`          | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
-| └─➔&nbsp;`operations`             | `array`   | The array of operations that are possible to perform on the transaction in its current state.                                                                                                                |
+| └─➔&nbsp;`isOperational`          | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |{% if include.documentation_section == "vipps" %}
+| └─➔&nbsp;`operations`             | `array`   | The array of [`operations`][operations] that are possible to perform on the transaction in its current state.      
+                                                                                                          | {% endif %}
+
+[operations]: /payments/{{ include.documentation_section }}/other-features#operations

@@ -71,5 +71,4 @@ sequenceDiagram
   SwedbankPay-->>-Merchant: transaction resource
 ```
 
-[operations]: /payments/vipps/other-features#operations
 [transaction-resource]: /payments/vipps/other-features#transactions
