@@ -25,7 +25,7 @@ below.
 |     ![Vipps][vipps-logo]     | [Vipps][vipps]                  | {% icon check %} | {% icon check %} |                    | {% flag no %}                             |
 |     ![Swish][swish-logo]     | [Swish][swish]                  | {% icon check %} | {% icon check %} | {% icon check %}  ︎ | {% flag se %}                             |
 | ![MobilePay][mobilepay-logo] | [Mobile Pay][mobile-pay]        |                  | {% icon check %} |                    | {% flag dk %} {% flag fi %}               |
-|   ![Trustly][trustly-logo]   | [Trustly][trustly]              | {% icon check %} | {% icon check %} |                    | {% flag se %} {% flag fi %}               |
+|   ![Trustly][trustly-logo]   | [Trustly][trustly]              |                  | {% icon check %} |                    | {% flag se %} {% flag fi %}               |
 
 ## Prerequisites
 
