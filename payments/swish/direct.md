@@ -1,11 +1,12 @@
 ---
-title: Payments Swish Direct
+title: Direct
 estimated_read: 30
 description: |
   Swish is a one-phase payment instrument supported by the major Swedish banks.
   In the Direct scenario, Swedbank Pay receives the Swish registered mobile 
   number directly from the merchant UI. Swedbank Pay performs a payment that
   the payer confirms using her Swish mobile app.
+menu-order: 600
 ---
 
 ## Payment Flow

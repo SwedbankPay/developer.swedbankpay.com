@@ -1,5 +1,5 @@
 ---
-title: Payments Swish Seamless View
+title: Seamless View
 estimated_read: 30
 description: |
   The **Seamless View** scenario gives your
@@ -7,6 +7,7 @@ description: |
   within your webshop. This gives the consumer a
   frictionless experience as we are handling the
   payment in the implemented `iframe` on your page.
+menu-order: 700
 ---
 
 ## Swish Seamless View integration flow

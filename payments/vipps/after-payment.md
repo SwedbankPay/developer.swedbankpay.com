@@ -1,6 +1,7 @@
 ---
-title: Payments Vipps After Payment
+title: After Payment
 estimated_read: 30
+menu-order: 600
 ---
 
 ### Create Payment

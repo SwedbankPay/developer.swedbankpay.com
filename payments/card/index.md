@@ -1,10 +1,11 @@
 ---
-title: Card Payments – Introduction
+title: Card Payments 
 estimated_read: 30
 description: |
   **Card Payments** is the most popular, versatile
   and global way to initate a transaction with a customer. Choose between our
   **Seamless View**, **Redirect**, or **Direct** integration options.
+menu-order: 100
 ---
 
 {% include alert.html type="informative"

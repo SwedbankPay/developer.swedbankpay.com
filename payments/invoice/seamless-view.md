@@ -1,9 +1,10 @@
 ---
-title: Invoice Payments – Seamless View
+title: Seamless View
 estimated_read: 30
 description: |
   The Seamless View scenario represents the opportunity to implement Invoice
   directly in your webshop.
+menu-order: 500
 ---
 
 ## Introduction

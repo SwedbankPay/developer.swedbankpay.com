@@ -1,11 +1,12 @@
 ---
-title: Payments Invoice Direct
+title: Direct
 estimated_read: 30
 description: |
   **Direct** is a payment service where Swedbank
   Pay helps improve cashflow by purchasing merchant invoices. Swedbank Pay
   receives invoice data, which is used to produce and distribute invoices to the
   consumer/end-user.
+menu-order: 400
 ---
 
 {% include alert.html type="informative" icon="report_problem" header="Disclaimer"
