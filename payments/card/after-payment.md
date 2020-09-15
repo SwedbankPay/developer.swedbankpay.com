@@ -295,7 +295,7 @@ Content-Type: application/json
     "id": "/psp/creditcard/payments/instrumentdata/{{ page.payment_token }}",
     "paymentToken": "{{ page.payment_token }}",
     "payeeId": "{{ page.merchant_id }}",
-    "isDeleted": true|false,
+    "isDeleted": true,
     "isPayeeToken": false,
     "cardBrand": "MasterCard",
     "maskedPan": "123456xxxxxx1111",
