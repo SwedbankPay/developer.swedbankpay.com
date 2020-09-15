@@ -60,3 +60,4 @@ sequenceDiagram
     deactivate SwedbankPay
     deactivate Merchant
 ```
+
