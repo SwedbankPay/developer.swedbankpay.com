@@ -8,6 +8,7 @@ description: |
   implement in order to complete the Swedbank Pay Checkout integration. To
   finalize Checkout you first have to Checkin. To check in, the payer needs
   to be identified.
+menu-order: 200
 ---
 
 ## Step 1: Initiate session for consumer identification
