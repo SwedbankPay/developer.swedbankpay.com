@@ -9,15 +9,18 @@ plugins:
   - jekyll-redirect-from
   - swedbank-pay-design-guide-jekyll-theme
 kramdown:
-  input: GFM
-  syntax_highlighter: rouge
-  syntax_highlighter_opts:
-    guess_lang: true
-    default_lang: html
-    css_class: 'highlight'
-    block:
-      line_numbers: true
-      start_line: 1
+    input: GFM
+    syntax_highlighter: rouge
+    syntax_highlighter_opts:
+      guess_lang: true
+      default_lang: html
+      css_class: "code-view"
+      code_class: "code-view-code"
+      table_class: "code-view-table"
+      gutter_class: "code-view-numbers"
+      block:
+        line_numbers: true
+        start_line: 1
 tipue_search:
   include:
     pages: true

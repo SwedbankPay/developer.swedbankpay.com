@@ -20,8 +20,8 @@ is done through the `initiate-consumer-session` operation.
 body="Note: If the end user is using the Payment Menu as a guest, you can go
 directly to step 3, which you will find on the next page." %}
 
-{:.code-header}
-**Request**
+{:.code-view-header}
+Request
 
 ```http
 POST /psp/consumers HTTP/1.1
