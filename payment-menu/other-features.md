@@ -6,6 +6,7 @@ description: |
   investigating which **other features** are available in the Swedbank Pay 
   Payment Menu.
   They are listed on this very page.
+menu-order: 600
 ---
 
 {% include payment-order-other-features.md documentation_section="payment-menu"
