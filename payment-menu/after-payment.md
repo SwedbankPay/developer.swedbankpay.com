@@ -6,6 +6,7 @@ description: |
   with the Payment Menu, you need to implement the
   relevant **after-payment operations** in your order system. Which these
   operations are and how they are executed is described below."
+menu-order: 500
 ---
 
 {% include payment-order-after-payment.md documentation_section="payment-menu" %}
