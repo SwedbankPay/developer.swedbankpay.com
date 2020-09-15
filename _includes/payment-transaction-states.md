@@ -14,9 +14,9 @@ the course of a purchase. You can find a short description of each state below.
     Examples of possible failures are triggering of anti-fraud protection or if
     the payer reaches the maximum number of attempts for a given payment.
 
-*   `aborted` means that the merchant has aborted the payment before the end user
-    has fulfilled the payment process. This is done by calling the `PATCH` function
-    for abort operations.
+*   `aborted` means that the merchant has aborted the payment before the end
+    user has fulfilled the payment process. This is done by calling the `PATCH`
+    function for abort operations.
 
 *   `pending` is the state of a payment when a transaction is in an
     `initialized` state. See more below. As long as a payment is `pending`, no
