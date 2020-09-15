@@ -109,7 +109,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 
-    "paymentOrder": {
+    "paymentorder": {
         "id": "/psp/paymentorders/{{ page.payment_order_id }}",{% if include.documentation_section == "payment-menu" %}
         "instrument": "CreditCard",
         "paymentToken" : "{{ page.payment_token }}",{% endif %}
