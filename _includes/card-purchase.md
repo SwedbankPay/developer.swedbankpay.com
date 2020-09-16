@@ -259,10 +259,10 @@ Content-Type: application/json
             "href": "{{ page.front_end_url }}/creditcard/core/scripts/client/px.creditcard.client.js?token={{ page.payment_token }}",
             "method": "GET",
             "contentType": "application/javascript"
-        }
+        },
         {
             "rel": "direct-authorization",
-            "href": ""{{ page.api_url }}/psp/creditcard/confined/payments/{{ page.payment_id }}/authorizations",
+            "href": "{{ page.api_url }}/psp/creditcard/confined/payments/{{ page.payment_id }}/authorizations",
             "method": "POST",
             "contentType": "application/json"
         }

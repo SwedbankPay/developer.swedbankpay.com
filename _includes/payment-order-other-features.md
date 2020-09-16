@@ -69,7 +69,7 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "paymentorder": "/psp/payments/{{ page.payment_order_id }}",
+    "paymentorder": "/psp/paymentorders/{{ page.payment_order_id }}",
     "urls": {
         "id": "/psp/payments/{{ page.payment_order_id }}/urls",
         "hostUrls": [ "https://example.com", "https://example.net" ],
@@ -215,7 +215,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
-    "paymentOrder": {
+    "paymentorder": {
         "id": "/psp/paymentorders/{{ page.payment_order_id }}",
         "instrument": "CreditCard"{% if include.documentation_section == "payment-menu" %}
         "paymentToken" : "{{ page.payment_token }}",{% endif %}
@@ -319,7 +319,7 @@ deprecated in the operation list below." %}
 
 ```js
 {
-    "paymentOrder": {
+    "paymentorder": {
         "id": "/psp/paymentorders/{{ page.payment_order_id }}",
     }
     "operations": [
