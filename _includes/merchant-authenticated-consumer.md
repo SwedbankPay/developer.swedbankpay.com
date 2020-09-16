@@ -1,25 +1,24 @@
-## Merchant Authenticated Consumer
+## Delegated SCA (Strong Consumer Authentication)
 
 {% include jumbotron.html body="When the consumer is identified and
 authenticated by the merchant, the consumer's identity can be included in the
 Payment Order request." %}
 
-**Merchant Authenticated Consumer** is performed as an alternative to
-[Checkin][checkin] when creating the Payment Order upon the initializaiont of
-the [Payment Menu][payment-menu]. You can use Merchant Authenticated Consumer
-only if you have an agreement with Swedbank Pay. The additional
-`nationalIdentifier` field described below should be added to the
-`paymentorder.payer` object already in the Payment Order creation request, as
-an alternative to `consumerProfileRef`.
+**Delegated SCA** is performed as an alternative to [Checkin][checkin] when
+creating the Payment Order upon the initialization of the [Payment
+Menu][payment-menu]. You can only use Delegated SCA if you have an agreement
+with Swedbank Pay. The additional `nationalIdentifier` field described below
+should be added to the `paymentorder.payer` object already in the Payment Order
+creation request, as an alternative to `consumerProfileRef`.
 
 {% include alert.html type="warning" icon="warning" header="Bank ID
-authentication required" body="In order to use the Merchant Authenticated
-Consumer feature, you need a **legal agreement with Swedbank Pay** which
-mandates that the consumer identified by the `nationalIdentifier` is
-authenticated with **Bank ID** prior to the request." %}
+authentication required" body="In order to use the Delegated SCA feature, you
+need a **legal agreement with Swedbank Pay** which mandates that the consumer
+identified by the `nationalIdentifier` is authenticated with **Bank ID** prior
+to the request." %}
 
-An example of how a Merchant Authenticated Consumer request looks like is
-provided below (abbreviated for brevity):
+An example of how a Delegated SCA request looks is provided below (abbreviated
+for brevity):
 
 {:.code-view-header}
 **Request**
@@ -52,14 +51,14 @@ Content-Type: application/json
 |                  | └──➔&nbsp;`countryCode`          | `string` | The countrycode of the consumer.                                                                     |
 
 When the consumer is authenticated by the Merchant, some payment instruments
-will allow a more frictionless payment process. Invoice One-Click payments does
-not require the last 4/5 digits in the payer's social security number (SSN), for
-instance.
+will allow a more frictionless payment process. Invoice One-Click Payments does
+not require the last 4/5 digits of the payer's social security number (SSN),
+for instance.
 
 Below you can see an example of how the payment window looks like with and
-without Merchant Authenticated Consumer. In the first image, the SSN is removed
-altogether because the payer is authenticated by the Merchant. In the bottom
-image, the last 4/5 digits of the SSN are required as usual.
+without Delegated SCA. In the first image, the SSN is removed altogether because
+the payer is authenticated by the Merchant. In the bottom image, the last 4/5
+digits of the SSN are required as usual.
 
 {:.text-center}
 ![One-Click Payments without SSN][mac-no-ssn]{:width="475" height="385"}
