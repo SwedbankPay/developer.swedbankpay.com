@@ -245,7 +245,7 @@ next_href="seamless-view" next_title="Next: Seamless View" %}
 [abort]: /payments/invoice/after-payment#abort
 [after-payment]: /payments/invoice/after-payment
 [callback]: /payments/invoice/other-features#callback
-[paymentUrl]: /checkout/other-features#payment-url-1
+[paymenturl]: /checkout/other-features#payment-url-1
 [cancel]: /payments/invoice/after-payment#cancellations
 [capture]: /payments/invoice/capture
 [financing-consumer]: /payments/invoice/other-features#financing-consumer
