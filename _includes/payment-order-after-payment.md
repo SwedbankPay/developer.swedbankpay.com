@@ -39,7 +39,7 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "paymentOrder": {
+    "paymentorder": {
         "id": "/psp/paymentorders/{{ page.payment_order_id }}"
     },
     "operations": [
