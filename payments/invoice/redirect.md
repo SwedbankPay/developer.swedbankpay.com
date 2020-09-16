@@ -43,7 +43,7 @@ operation equal to `FinancingConsumer`, are described in
 
 ### Financing Consumer
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -120,7 +120,7 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`orderReference`         | `String(50)`  | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                               |
 |                  | └─➔&nbsp;`subsite`                | `String(40)`  | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.                                                                                                                                                           |
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http

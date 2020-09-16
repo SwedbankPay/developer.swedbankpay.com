@@ -41,7 +41,7 @@ a purchase. An example of an expanded `POST` request is available in the
 
 {% include payment-url.md  when="selecting Swish as payment instrument" %}
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -133,7 +133,7 @@ Content-Type: application/json
 |          | └─➔&nbsp;`paymentRestrictedToAgeLimit`             | `integer`     | Positive number that sets the required age  needed to fulfill the payment. To use this feature it has to be configured in the contract.                                                                                                                                                            |
 |                 | └─➔&nbsp;`paymentRestrictedToSocialSecurityNumber` | `string`      | When provided, the payment will be restricted to a specific social security number to make sure its the same logged in customer who is also the payer. Format: yyyyMMddxxxx. To use this feature it has to be configured in the contract.                                                                                                                             |
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http
@@ -224,7 +224,7 @@ Pay hosted environment. A simplified integration has these following steps:
 
 The previous two steps gives this HTML:
 
-{:.code-header}
+{:.code-view-header}
 **HTML**
 
 ```html
@@ -246,7 +246,7 @@ The previous two steps gives this HTML:
 Lastly, initiate the Seamless View with a JavaScript call to open the `iframe`
 embedded on your website.
 
-{:.code-header}
+{:.code-view-header}
 **JavaScript**
 
 ```js

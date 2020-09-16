@@ -1,16 +1,13 @@
-## Unscheduled Purchase
+## MOTO
 
 {% include alert-agreement-required.md %}
 
-An `unscheduled purchase`, also called a Merchant Initiated Transaction (MIT),
-is a payment which uses a `paymentToken` generated through a previous payment in
-order to charge the same card at a later time. They are done by the merchant
-without the cardholder being present.
-
-`unscheduled purchase`s differ from `recur` as they are not meant to be
-recurring, but occur as singular transactions. Examples of this can be car
-rental companies charging the payer's card for toll road expenses after the
-rental period.
+Mail-Order Telephone-Order
+Notes to ourself: 
+  * only supported by Purchase (not Verify), 
+  * Only valid with 3DS 2.x
+  * skips SCA
+  * Should be Type = MOTO and acquirerTransactionType = MOTO on the response for GET payment under payment/transactions/{authorize}/activities/{authorize}
 
 {:.code-view-header}
 **Request**
@@ -23,13 +20,13 @@ Content-Type: application/json
 
 {
     "payment": {
-        "operation": "UnscheduledPurchase",
+        "operation": "Purchase",
         "intent": "Authorization",
-        "paymentToken": "{{ page.payment_id }}",
+        "generateMotoPayment": true,
         "currency": "NOK",
         "amount": 1500,
         "vatAmount": 0,
-        "description": "Test Unscheduled",
+        "description": "Test Moto",
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",
         "urls": {
@@ -68,11 +65,10 @@ Content-Type: application/json
     "remainingCaptureAmount": 1500,
     "remainingCancellationAmount": 1500,
     "remainingReversalAmount": 0,
-    "description": "Test Unscheduled",
+    "description": "Test Moto",
     "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
     "userAgent": "Mozilla/5.0...",
     "language": "nb-NO",
-    "paymentToken": "{{ page.payment_id }}",
     "prices": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/prices" },
     "transactions": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/transactions" },
     "authorizations": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/authorizations" },

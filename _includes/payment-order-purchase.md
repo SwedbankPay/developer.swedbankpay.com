@@ -1,7 +1,7 @@
 {% assign operation_status_bool = include.operation_status_bool | default: "false" %}
 {% assign other_features_url = include.documentation_section | prepend: '/' | append: '/other-features' %}
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -99,7 +99,7 @@ Content-Type: application/json
 }
 ```
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http

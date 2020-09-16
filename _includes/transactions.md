@@ -20,7 +20,7 @@ transaction is described below.
 The `transactions` resource will list the transactions (one or more) on a
 specific payment.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http

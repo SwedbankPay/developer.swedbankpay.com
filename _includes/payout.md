@@ -21,7 +21,7 @@ The API requests are displayed in the [payout flow](#payout-flow).  You create
 a payout by performing a `POST` creditcard payments with key `operation` set to
 `payout`.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -56,7 +56,7 @@ Content-Type: application/json
 }
 ```
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http

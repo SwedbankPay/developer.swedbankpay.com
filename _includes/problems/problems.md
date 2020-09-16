@@ -15,7 +15,7 @@ usually to the field in the request that was missing or contained invalid data.
 
 The structure of a problem message will look like this:
 
-{:.code-header}
+{:.code-view-header}
 **Problem Example**
 
 ```js

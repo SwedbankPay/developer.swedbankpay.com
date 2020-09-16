@@ -21,7 +21,7 @@ individual transactions within the payment.
 To create a Trustly payment, you perform an HTTP `POST` against the `payments`
 resource. Trustly payments does currently only support the `Purchase` operation and `Sale` intent.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http

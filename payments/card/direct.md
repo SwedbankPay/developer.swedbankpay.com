@@ -76,7 +76,7 @@ the payer to be redirected to complete the 3-D Secure authentication." %}
 The `direct-authorization` operation creates an authorization transaction
 directly.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -107,7 +107,7 @@ Content-Type: application/json
 |                  | └➔&nbsp;`cardVerificationCode` | `string`  | Card verification code (CVC/CVV/CVC2), usually printed on the back of the card. |
 |                  | └➔&nbsp;`cardholderName`       | `string`  | Name of the cardholder, usually printed on the face of the card.                |
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http
@@ -205,7 +205,7 @@ authorization request will contain a `redirect-authentication` operation and the
 payer will have to be redirected to the issuer to complete the 3-D Secure
 authentication. See the request and response examples below.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -236,7 +236,7 @@ Content-Type: application/json
 |                  | └➔&nbsp;`cardVerificationCode` | `string`  | Card verification code (CVC/CVV/CVC2), usually printed on the back of the card. |
 |                  | └➔&nbsp;`cardholderName`       | `string`  | Name of the cardholder, usually printed on the face of the card.                |
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http

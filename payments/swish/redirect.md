@@ -43,7 +43,7 @@ Swish is a one-phase payment instrument that is based on sales transactions
 All valid options when posting in a payment with operation equal to `Purchase`.
 The `Purchase` example shown below.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -132,7 +132,7 @@ Content-Type: application/json
 |          | └─➔&nbsp;`paymentRestrictedToAgeLimit`             | `integer`     | Positive number that sets the required age  needed to fulfill the payment. To use this feature it has to be configured in the contract.                                                                                                                                                            |
 |                 | └─➔&nbsp;`paymentRestrictedToSocialSecurityNumber` | `string`      | When provided, the payment will be restricted to a specific social security number to make sure its the same logged in customer who is also the payer. Format: yyyyMMddxxxx. To use this feature it has to be configured in the contract.                                                                                                                             |
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http

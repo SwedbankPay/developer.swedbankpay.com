@@ -37,7 +37,7 @@ Let us assume that the urls of the payment are as follows:
 
 Swedbank Pay payments use JavaScript, so that needs to be enabled:
 
-{:.code-header}
+{:.code-view-header}
 **iOS**
 
 ```swift
@@ -54,7 +54,7 @@ Swedbank Pay payments use JavaScript, so that needs to be enabled:
     let webView = WKWebView(frame: .zero, configuration: configuration)
 ```
 
-{:.code-header}
+{:.code-view-header}
 **Android**
 
 ```kotlin
@@ -69,7 +69,7 @@ Swedbank Pay payments use JavaScript, so that needs to be enabled:
 
 Some pages use the DOM Storage API, which must be enabled separately on Android:
 
-{:.code-header}
+{:.code-view-header}
 **Android**
 
 ```kotlin
@@ -78,7 +78,7 @@ Some pages use the DOM Storage API, which must be enabled separately on Android:
 
 With this setup, you can load to the web view the page that shows the Payment Menu or the Payment Seamless View, and see what happens. You should be able to see the Swedbank Pay payment interface, and in many cases also complete a payment. It is not unlikely, though, that some payment methods will not work as expected. Also, you will be more or less stuck after the payment is complete.
 
-{:.code-header}
+{:.code-view-header}
 **iOS**
 
 ```swift
@@ -86,7 +86,7 @@ With this setup, you can load to the web view the page that shows the Payment Me
     webView.load(URLRequest(url: paymentUrl))
 ```
 
-{:.code-header}
+{:.code-view-header}
 **Android**
 
 ```kotlin
@@ -101,7 +101,7 @@ There are two ways of being notified of payment completion: listening for naviga
 
 The iOS `WKNavigationDelegate` protocol and Android `WebViewClient` class can be used to listen for navigations, and change their behaviour.
 
-{:.code-header}
+{:.code-view-header}
 **iOS**
 
 ```swift
@@ -116,7 +116,7 @@ The iOS `WKNavigationDelegate` protocol and Android `WebViewClient` class can be
     }
 ```
 
-{:.code-header}
+{:.code-view-header}
 **Android**
 
 ```kotlin
@@ -127,7 +127,7 @@ The iOS `WKNavigationDelegate` protocol and Android `WebViewClient` class can be
 
 In the simplest case you could listen for a navigation to the `completeUrl` or `cancelUrl`, and intercept it.
 
-{:.code-header}
+{:.code-view-header}
 **iOS**
 
 ```swift
@@ -151,7 +151,7 @@ In the simplest case you could listen for a navigation to the `completeUrl` or `
     }
 ```
 
-{:.code-header}
+{:.code-view-header}
 **Android**
 
 ```kotlin
@@ -185,7 +185,7 @@ On both iOS and Android, it is possible to add custom JavaScript interfaces to a
 
 On iOS, JavaScript interfaces are added through the `WKUserContentController` of the `WKWebView`. The `WKUserContentController` is set by the `WKWebViewConfiguration` used when creating the `WKWebView`; you cannot change the `WKUserContentController` of a `WKWebView`. You can, however, modify the `WKUserContentController` of a live `WKWebView`, if you want more fine-grained control on which interfaces are exposed at what time.
 
-{:.code-header}
+{:.code-view-header}
 **iOS**
 
 ```swift
@@ -237,7 +237,7 @@ On iOS, the interfaces added by `WKUserContentController.add(_:name:)` are expos
 
 On Android, JavaScript interfaces are added by the `WebView.addJavascriptInterface` method. Any public methods with the `@JavascriptInterface` annotation of the passed-in object are exposed in JavaScript.
 
-{:.code-header}
+{:.code-view-header}
 **Android**
 
 ```kotlin
@@ -293,7 +293,7 @@ Determining whether a url should launch an external app is straightforward, thou
 
 You cannot query the system for an arbitrary url to see if it can be opened – this is a deliberate privacy measure. What can be done, and what also happens to be exactly what we want to do, is to attempt to open a url and receive a callback telling us whether it succeeded. Nowadays, the recommended way of opening external applications is to use Universal Links, anyway, which are, on the surface, indistiguishable from web links.
 
-{:.code-header}
+{:.code-view-header}
 **iOS**
 
 ```swift
@@ -357,7 +357,7 @@ Each of these maps into an `Intent`. For custom-scheme and patterned http(s) lin
 
 On Android we can, and indeed should, query the system whether it can launch Activities from arbitrary Intents. We should note, however, that an Android system is likely to have an app that accepts all http(s) url, namely the browser. Hence, we should exercise a bit of discretion when choosing to launch activities in place of web view navigations.
 
-{:.code-header}
+{:.code-view-header}
 **Android**
 
 ```kotlin
@@ -535,7 +535,7 @@ The SDK does this by having `paymentUrl` return an http redirect response. This 
 
 For reference, the way the SDK handles `paymentUrl`s on Android looks like this from the perspective of the backend:
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -543,7 +543,7 @@ For reference, the way the SDK handles `paymentUrl`s on Android looks like this 
     Host: example.com
 ```
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http

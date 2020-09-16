@@ -7,7 +7,7 @@ them. How to delete a `{{ token_field_name }}` is described in the example below
 Note that the value of `state` must be `Deleted` when deleting the token. 
 No other states are supported.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -22,7 +22,7 @@ Content-Type: application/json
 }
 ```
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http

@@ -35,7 +35,7 @@ invoice process, you need to make a POST request towards Swedbank Pay with your
 invoice information. This will generate a payment object with a unique
 `paymentID`. You will receive a **JavaScript source** in response.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -114,7 +114,7 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`orderReference`         | `String(50)`  | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                                                        |
 | {% icon check %} | └─➔&nbsp;`invoiceType`            | `String`      | `PayExFinancingSe`, `PayExFinancingNo` or `PayExFinancingFi` depending on which country you're doing business with Swedbank Pay in. (Other external financing partner names must be agreed upon with Swedbank Pay.)                                                                                                                            |
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http
@@ -206,7 +206,7 @@ hosted environment. A simplified integration has these following steps:
 
 The previous two steps gives this HTML:
 
-{:.code-header}
+{:.code-view-header}
 **HTML**
 
 ```html
@@ -228,7 +228,7 @@ The previous two steps gives this HTML:
 Lastly, initiate the Seamless View with a JavaScript call to open the `iframe`
 embedded on your website.
 
-{:.code-header}
+{:.code-view-header}
 **JavaScript**
 
 ```js

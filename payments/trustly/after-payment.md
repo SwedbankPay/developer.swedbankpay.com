@@ -30,7 +30,7 @@ refund the amount to the consumer. To reverse a payment, perform the
 `create-reversal` operation. The HTTP body of the request should look as
 follows:
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -73,7 +73,7 @@ The `reversals` resource will list the reversal transactions
 (one or more) on a specific payment. The URI will be found on a `payment` that has a
 succesful `sale` operation.
 
-{:.code-header}
+{:.code-view-header}
 ***Request***
 
 ```http

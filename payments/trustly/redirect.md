@@ -28,7 +28,7 @@ menu-order: 700
 
 To initiate the payment process, you need to make a `POST` request to Swedbank Pay.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -110,7 +110,7 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`firstName`         | `string`      | Prefilled value to put in the first name text box.                                                                                                                                                                                                                                                 |
 |                  | └─➔&nbsp;`lastName`          | `string`      | Prefilled value to put in the last name text box.                                                                                                                                                                                                                                                  |
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http

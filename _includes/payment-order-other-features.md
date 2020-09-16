@@ -51,7 +51,7 @@ verification for Credit Card Payments"  %}
 It is possible to perform a `GET` request on the `urls` resource to retrieve its
 contents.
 
-{:.code-header}
+{:.code-view-header}
 Request
 
 ```http
@@ -61,7 +61,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{:.code-header}
+{:.code-view-header}
 Response
 
 ```http
@@ -177,7 +177,7 @@ chosen in your menu.
 
 The Payment Menu is switched to "Instrument Mode" by providing the request field
 `instrument` as described in the abbreviated example below.
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -205,7 +205,7 @@ Content-Type: application/json
 }
 ```
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http
@@ -314,7 +314,7 @@ through Payment Order. These can be recognized by not having
 `paymentorder` in the `rel` value. They will be described and marked as
 deprecated in the operation list below." %}
 
-{:.code-header}
+{:.code-view-header}
 **Operations**
 
 ```js
@@ -491,7 +491,7 @@ In case the shopping cart is changed in another browser tab, that should also le
 
 If the page is refreshed by a full page reload, `refresh()` is not necessary.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -565,7 +565,7 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`amount`              | `integer` | The total amount including VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `500`0 equals `50.00 NOK`.                                                                                 |
 | {% icon check %} | └─➔&nbsp;`vatAmount`           | `integer` | The total amount of VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `500`0 equals `50.00 NOK`.                                                                                        |
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http
@@ -671,7 +671,7 @@ To abort a payment order, perform the `update-paymentorder-abort` operation that
 is returned in the payment order response. You need to include the following
 in the request body:
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -688,7 +688,7 @@ Content-Type: application/json
 }
 ```
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http
@@ -786,7 +786,7 @@ other payment instrument properties, by [expanding the sub-resource][expanding]
 [`currentpayment`][current-payment] when doing a `GET` request on the
 `paymentorders` resource.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -801,7 +801,7 @@ token in a subsequent `Recur` payment order. This will be a server-to-server
 affair, as we have tied all necessary payment instrument details related to the
 recurrence token during the initial payment order.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -964,7 +964,7 @@ sequenceDiagram
 
 The `Purchase` operation is used in all common purchase scenarios.
 
-{:.code-header}
+{:.code-view-header}
 **Purchase**
 
 ```js
@@ -986,7 +986,7 @@ A [recurrence token][payment-orders-resource] will be generated automatically,
 rendering the parameter `generateRecurrenceToken` unnecessary for this
 operation.
 
-{:.code-header}
+{:.code-view-header}
 **Verify**
 
 ```js
@@ -997,7 +997,7 @@ operation.
 }
 ```
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -1069,7 +1069,7 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`orderReference`         | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                  |
 |                  | └─➔&nbsp;`subsite`                | `String(40)` | The subsite field can be used to perform [split settlement][split-settlement] on the payment. The subsites must be resolved with Swedbank Pay [reconciliation][settlement-and-reconciliation] before being used.                                                                                         |
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http
@@ -1158,7 +1158,7 @@ transaction will still be tied to that particular invoice payment resource. This
 payment resource will continue to exist, even if the consumer successfully
 should finish the purchase with a credit card payment instead.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -1203,7 +1203,7 @@ Content-Type: application/json
 The `currentpayment` resource displays the payment that are active within the
 payment order container.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -1213,7 +1213,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http
@@ -1300,7 +1300,7 @@ below with the added `logoUrl` in the Payment Order Purchase request.
 
 *   If the configuration is deactivated, sending in a `logoUrl` has no effect.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -1343,7 +1343,7 @@ The information is retrieved via a consumer profile token
 during login/checkin.
 {% endif %}
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -1353,7 +1353,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http

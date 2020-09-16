@@ -21,7 +21,7 @@ field of the JSON document is described in the following section. Use the
 [expand][expand] request parameter to get a response that includes one or more
 expanded sub-resources inlined.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -106,7 +106,7 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`paymentRestrictedToAgeLimit`             | `integer`     | Positive number that sets the required age needed to fulfill the payment. To use this feature it has to be configured in the contract.                                                                                                                                                            |
 |                 | └─➔&nbsp;`paymentRestrictedToSocialSecurityNumber` | `string`      | When provided, the payment will be restricted to a specific social security number to make sure its the same logged in customer who is also the payer. Format: yyyyMMddxxxx. To use this feature it has to be configured in the contract.                                                                                                                             |
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http

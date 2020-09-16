@@ -38,7 +38,7 @@ A `Purchase` payment is a straightforward way to charge the the payer. Below
 you will see the `POST` request you will need to send to collect the purchase
 information.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -84,7 +84,7 @@ Content-Type: application/json
 }
 ```
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http
@@ -196,7 +196,7 @@ The `GET`request below will give you the transaction state of the payment.
 The `paymentId` used below was provided in the fist step when creating a
 purchase.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -206,7 +206,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http

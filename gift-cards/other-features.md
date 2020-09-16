@@ -5,7 +5,7 @@ estimated_read: 30
 
 ## Purchase
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -81,7 +81,7 @@ Content-Type: application/json
 |                  | `repeat`                | `boolean` | Notifies this is a repeat message.                                                                                                                                                      |
 |                  | `stan`                  | `string`  | Systems trace audit number.                                                                                                                                                             |
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```json
@@ -145,7 +145,7 @@ Content-Type: application/json
 
 ## Deposit
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -202,7 +202,7 @@ Content-Type: application/json
 |                  | `repeat`                | `boolean` | Notifies this is a repeat message.                                                                                              |
 |                  | `stan`                  | `string`  | Systems trace audit number.                                                                                                     |
 
-{:.code-header}
+{:.code-view-header}
 **Response:**
 
 ```json
@@ -266,7 +266,7 @@ Content-Type: application/json
 
 ## Balance
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -300,7 +300,7 @@ Content-Type: application/json
 |                  | `securityCode`      | `string` | Card Security Code.                                                                                                             |
 |                  | `track2`            | `string` | Track 2 excluding start and end sentinel.                                                                                       |
 
-{:.code-header}
+{:.code-view-header}
 **Response:**
 
 ```json
@@ -338,7 +338,7 @@ Content-Type: application/json
 
 ## Authentication
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -395,7 +395,7 @@ Content-Type: application/json
 |                  | `repeat`                | `boolean` | Notifies this is a repeat message.                                                                                              |
 |                  | `stan`                  | `string`  | Systems trace audit number.                                                                                                     |
 
-{:.code-header}
+{:.code-view-header}
 **Response:**
 
 ```json

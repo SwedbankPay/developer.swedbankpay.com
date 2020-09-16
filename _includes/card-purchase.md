@@ -1,7 +1,7 @@
 {% assign seamless_view = include.seamless_view | default: false %}
 {% assign full_reference = include.full_reference | default: false %}
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -198,7 +198,7 @@ Content-Type: application/json
 |                  | └➔&nbsp;`noCvc`                           | `boolean`     | `true` if the CVC field should be disabled for this payment in the case a stored card is used; otherwise `false` per default. This feature is commonly used when [One-Click Payments][one-click-payments] is enabled. To use this feature it has to be enabled on the contract with Swedbank Pay.                                                                                                                                                                                                                                                                                 |
 {% endif %}
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http

@@ -21,7 +21,7 @@ authenticated with **Bank ID** prior to the request." %}
 An example of how a Merchant Authenticated Consumer request looks like is
 provided below (abbreviated for brevity):
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http

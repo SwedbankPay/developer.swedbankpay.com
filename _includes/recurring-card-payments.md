@@ -26,7 +26,7 @@ depending on if you want to make an initial charge or not:
 *   When posting a `Purchase` payment, you need to make sure that the field
     `generateRecurrenceToken` is set to `true`
 
-{:.code-header}
+{:.code-view-header}
 **Field**
 
 ```js
@@ -109,7 +109,7 @@ flow where you do not want to charge the consumer right away.
 Please note that all boolean credit card attributes involving rejection of
 certain card types are optional and set on contract level." %}
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -154,7 +154,7 @@ Content-Type: application/json
 }
 ```
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http

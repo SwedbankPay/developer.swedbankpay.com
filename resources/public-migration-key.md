@@ -18,7 +18,7 @@ menu-order: 300
 To encrypt files with Swedbank Pay's Public Migration Key, you need copy and
 paste it from below and save it to a file called `SwedbankPay.key`.
 
-{:.code-header}
+{:.code-view-header}
 **Public Key**
 
 ```pgp
@@ -78,7 +78,7 @@ leIbChSz+CL2HAm2+dQ+/mthKIbfJlef6Cc3mGWnTDPgizsoCim2xbaOMDCx6Y2U
 To encrypt files with Swedbank Pay's Public Migration Key, you must import it
 with the following command:
 
-{:.code-header}
+{:.code-view-header}
 **Import Key**
 
 ```sh
@@ -88,7 +88,7 @@ gpg2 --import SwedbankPay.key
 After this is imported, you should verify the key with comparing the fingerprint on key, with the fingerprint on this information site.
 If this is a match, you should mark the key as trusted with the following command:
 
-{:.code-header}
+{:.code-view-header}
 **Trust Key**
 
 ```sh
@@ -100,7 +100,7 @@ Select `trust` and `5`
 You can now encrypt files with Swedbank Pay's Public Migration Key with the
 following command:
 
-{:.code-header}
+{:.code-view-header}
 **Encrypt File**
 
 ```sh

@@ -12,7 +12,7 @@ The `paymentorders` resource is used when initiating a payment process through
 object selected by the payer. This will generate a payment that is accessed
 through the sub-resources `payments` and `currentPayment`.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -22,7 +22,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http

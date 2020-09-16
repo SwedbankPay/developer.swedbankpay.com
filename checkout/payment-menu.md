@@ -38,7 +38,7 @@ for Credit Card Payments" %}
 
 The response back should look something like this (abbreviated for brevity):
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http
@@ -93,7 +93,7 @@ The HTML code will be unchanged in this example.
 For the guest Payment Menu, lines 23-44 in the JavaScript should be your main 
 focus. They contain what you need to display the Payment Menu without Checkin.
 
-{:.code-header}
+{:.code-view-header}
 **JavaScript**
 
 ```js
