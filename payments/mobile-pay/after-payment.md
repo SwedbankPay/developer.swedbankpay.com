@@ -27,7 +27,7 @@ A `capture` transaction - to withdraw money from the payer's MobilePay - can be
 created after a completed authorization by performing the `create-capture`
 operation.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -89,7 +89,7 @@ specific payment.
 Perform the `create-cancel` operation to cancel a previously created payment.
 You can only cancel a payment - or part of payment - not yet captured.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -146,7 +146,7 @@ sequenceDiagram
 The `create-reversal` operation reverses a previously created and
 captured payment.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http

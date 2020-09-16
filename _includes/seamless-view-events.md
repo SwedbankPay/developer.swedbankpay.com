@@ -28,7 +28,7 @@ will be followed by either `onPaymentCompleted`, `onPaymentFailed` or
 `onPaymentTransactionFailed` based on the result of the payment. Read more about
 these events below.
 
-{:.code-header}
+{:.code-view-header}
 **`onPaymentPending` event object**
 
 ```js
@@ -48,7 +48,7 @@ This event triggers when a payment has completed successfully.
 The `onPaymentCompleted` event is raised with the following event argument
 object:
 
-{:.code-header}
+{:.code-view-header}
 **`onPaymentCompleted` event object**
 
 ```js
@@ -70,7 +70,7 @@ This event triggers when the user cancels the payment.
 The `onPaymentCanceled` event is raised with the following event argument
 object:
 
-{:.code-header}
+{:.code-view-header}
 **`onPaymentCanceled` event object**
 
 ```js
@@ -92,7 +92,7 @@ This event triggers when a payment has failed, disabling further attempts to
 perform a payment. The `onPaymentFailed` event is raised with the following
 event argument object:
 
-{:.code-header}
+{:.code-view-header}
 **`onPaymentFailed` event object**
 
 ```js
@@ -114,7 +114,7 @@ This event triggers when the user clicks on the "Display terms and conditions"
 link. The `onPaymentTermsOfService` event is raised with the following event
 argument object:
 
-{:.code-header}
+{:.code-view-header}
 **`onPaymentTermsOfService` event object**
 
 ```js
@@ -136,7 +136,7 @@ This event triggers during terminal errors or if the configuration fails
 validation. The `onError` event will be raised with the following event argument
 object:
 
-{:.code-header}
+{:.code-view-header}
 **`onError` event object**
 
 ```js
@@ -163,7 +163,7 @@ This event triggers when a user actively changes payment instrument in the
 Payment Menu. The `onPaymentMenuInstrumentSelected` event is raised with the
 following event argument object:
 
-{:.code-header}
+{:.code-view-header}
 **`onPaymentMenuInstrumentSelected` event object**
 
 ```js
@@ -185,7 +185,7 @@ This event triggers when a user has selected a payment instrument and actively
 attempts to perform a payment. The `onPaymentCreated` event is raised with the
 following event argument object:
 
-{:.code-header}
+{:.code-view-header}
 **`onPaymentCreated` event object**
 
 ```js
@@ -209,7 +209,7 @@ consumer will be able to try again or choose another payment instrument. The
 `onPaymentTransactionFailed` event is raised with the following event argument
 object:
 
-{:.code-header}
+{:.code-view-header}
 **`onPaymentTransactionFailed` event object**
 
 ```js
@@ -231,7 +231,7 @@ This event triggers when a user is redirected to a separate web page, for
 example 3-D Secure or Bank ID signing. The `onExternalRedirect` event is raised
 with the following event argument object:
 
-{:.code-header}
+{:.code-view-header}
 **`onExternalRedirect` event object**
 
 ```js

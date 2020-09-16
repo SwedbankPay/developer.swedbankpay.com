@@ -140,7 +140,7 @@ HmacSHA512 user:21a0213e-30eb-85ab-b355-a310d31af30e:oY5Q5Rf1anCz7DRm3GyWR0dvJDn
 
 In pre-request script copy/paste the following snippet.
 
-{:.code-header}
+{:.code-view-header}
 **JavaScript**
 
 ```javascript

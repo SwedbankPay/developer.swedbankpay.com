@@ -30,7 +30,7 @@ to see the available operations after posting a payment.
 Perform the `create-cancellation` operation to cancel a previously authorized
 or partially captured invoice payment.
 
-{:.code-header}
+{:.code-view-header}
 ***Request***
 
 ```http
@@ -66,7 +66,7 @@ documentation_section="invoice" transaction="cancel" %}
 The `cancellations` resource lists the cancellation transaction made on a
 specific payment.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -106,7 +106,7 @@ refund the amount to the consumer. To reverse a payment, perform the
 `create-reversal` operation. The HTTP body of the request should look as
 follows:
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -148,7 +148,7 @@ documentation_section="invoice" transaction="reversal" %}
 The `reversals` resource will list the reversal transactions
 (one or more) on a specific payment.
 
-{:.code-header}
+{:.code-view-header}
 ***Request***
 
 ```http

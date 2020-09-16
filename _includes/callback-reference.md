@@ -40,7 +40,7 @@ three example scenarios of why this is important:
 *   A callback should return a `200 OK` response.
 
 {% if api_resource == "paymentorders" %}
-{:.code-header}
+{:.code-view-header}
 **Payment Order Callback**
 
 ```js
@@ -61,7 +61,7 @@ three example scenarios of why this is important:
 ```
 
 {% else %}
-{:.code-header}
+{:.code-view-header}
 **Payment Instrument Callback**
 
 ```js

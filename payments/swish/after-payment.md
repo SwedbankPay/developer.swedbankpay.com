@@ -30,7 +30,7 @@ being.
 The `sales` resource lists the sales transactions (one or more)
 on a specific payment.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -54,7 +54,7 @@ browser based solutions. With mobile app based solutions, the consumer uses the
 device that hosts the Swish app to manage the purchase, making `msisdn`
 optional.
 
-{:.code-header}
+{:.code-view-header}
 **Browser-based Request**
 
 ```http
@@ -70,7 +70,7 @@ Content-Type: application/json
 }
 ```
 
-{:.code-header}
+{:.code-view-header}
 **Browser-based Response**
 
 ```http
@@ -101,7 +101,7 @@ Content-Type: application/json
 }
 ```
 
-{:.code-header}
+{:.code-view-header}
 **In-app Request**
 
 ```http
@@ -116,7 +116,7 @@ Content-Type: application/json
 }
 ```
 
-{:.code-header}
+{:.code-view-header}
 **In-app Response**
 
 ```http
@@ -178,7 +178,7 @@ sequenceDiagram
   SwedbankPay-->>-Merchant: transaction resource
 ```
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -200,7 +200,7 @@ performing a request to the `create-reversal` operation.
 A [callback][technical-reference-callback] request will follow from
 Swedbank Pay.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http

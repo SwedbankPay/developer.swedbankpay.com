@@ -32,7 +32,7 @@ transactions not involving `capture` or `cancellation` operations." %}
 
 A `Purchase` payment is created by performing the following request.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -122,7 +122,7 @@ Content-Type: application/json
 |          | └─➔&nbsp;`paymentRestrictedToAgeLimit`             | `integer`     | Positive number that sets the required age  needed to fulfill the payment. To use this feature it has to be configured in the contract.                                                                                                                                                            |
 |                 | └─➔&nbsp;`paymentRestrictedToSocialSecurityNumber` | `string`      | When provided, the payment will be restricted to a specific social security number to make sure its the same logged in customer who is also the payer. Format: yyyyMMddxxxx. To use this feature it has to be configured in the contract.                                                                                                                             |
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http
@@ -175,7 +175,7 @@ scenario. This is managed either by sending a `POST` request as seen below, or
 by directing the end-user to the hosted payment pages. Note that the `msisdn`
 value (the end-user's mobile number) is required in this request.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -250,7 +250,7 @@ by directing the end-user to the hosted payment pages. Note that the `msisdn`
 value (the end-user's mobile number) is left out in this request. The
 `redirect-app-swish` operation is only present in the m-commerce flow response.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -274,7 +274,7 @@ documentation_section="swish" transaction="sale" mcom=true %}
 
 ## Step 3: Get the payment status
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -284,7 +284,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http

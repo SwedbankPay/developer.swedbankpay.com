@@ -47,7 +47,7 @@ Our `payment` example below uses the [`FinancingConsumer`][financing-consumer] v
 
 ### Financing Consumer
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -125,7 +125,7 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`orderReference`         | `String(50)`  | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                                |
 |                  | └─➔&nbsp;`subsite`                | `String(40)`  | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.                                                                                                                                                            |
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http
@@ -232,7 +232,7 @@ Content-Type: application/json
 
 ## Step 2: Get `approvedLegalAddress` confirmation
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -249,7 +249,7 @@ Content-Type: application/json
 }
 ```
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http
@@ -270,7 +270,7 @@ Content-Type: application/json
 
 ## Step 3: Complete a Payment
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -300,7 +300,7 @@ Content-Type: application/json
 }
 ```
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http

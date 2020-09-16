@@ -10,7 +10,7 @@ possession. You must first do a `GET` request on the payment to find the
 To create a `capture` transaction to withdraw money from the payer's card, you
 need to perform the `create-capture` operation.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -38,7 +38,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`description`    | `string`      | A textual description of the capture transaction.                                                             |
 | {% icon check %} | └➔&nbsp;`payeeReference` | `string(30*)` | {% include field-description-payee-reference.md documentation_section="card" %}                               |
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http
@@ -91,7 +91,7 @@ Content-Type: application/json
 The `captures` resource list the capture transactions (one or more) on a
 specific payment.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http

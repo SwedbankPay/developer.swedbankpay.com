@@ -26,7 +26,7 @@ for Credit Card Payments" %}
 
 The response back should look something like this (abbreviated for brevity):
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http
@@ -84,7 +84,7 @@ to do a JavaScript-based integration below.
 
 First the minimum HTML required to initialize the Payment Menu:
 
-{:.code-header}
+{:.code-view-header}
 **HTML**
 
 ```html
@@ -104,7 +104,7 @@ First the minimum HTML required to initialize the Payment Menu:
 What happens inside `<Your-JavaScript-File>` should look something alike the
 following:
 
-{:.code-header}
+{:.code-view-header}
 **JavaScript**
 
 ```js

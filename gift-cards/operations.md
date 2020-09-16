@@ -9,7 +9,7 @@ For security and headers see [Security][security].
 
 ## Get New Gift Card
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -34,7 +34,7 @@ Content-Type: application/json
 |                  | `msisdn`    | `string`  | customers mobile number.                                                                   |
 |                  | `productId` | `string`  | A human readable and descriptive text of the error.                                        |
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http
@@ -66,7 +66,7 @@ Content-Type: application/json
 
 ## Pre Deposit
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -102,7 +102,7 @@ Content-Type: application/json
 |                  | `cvc`                     | `string`  | Card Verification Code.                                                                                                          |
 |                  | `expiryDate`              | `string`  | Expiry date on card (only applicable for PaymentInstrumentType ‘creditcard’) where expiry date is printed on card. Format MM/YY. |
 
-{:.code-header}
+{:.code-view-header}
 **Response:**
 
 ```json

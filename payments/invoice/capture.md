@@ -89,7 +89,7 @@ documentation_section="invoice" transaction="capture" %}
 The `captures` resource lists the capture transactions performed on a
 specific invoice payment.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -99,7 +99,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http

@@ -43,7 +43,7 @@ When the payer starts the purchase process, you make a `POST` request towards
 Swedbank Pay with the collected Purchase information. This will generate a
 payment with a unique `id`. See the `POST`request example below.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -131,7 +131,7 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`subsite`              | `String(40)` | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.                                                                                               |
 | {% icon check %} | └➔&nbsp;`mobilepay.shoplogoUrl` | `string`     | URI to logo that will be visible at MobilePay. For it to display correctly in MobilePay's app, the image must be 250x250 pixels, a png or jpg served over a secure connection using https, and be publicly available.                                                                                                                                                                                                              |
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http
@@ -188,7 +188,7 @@ Content-Type: application/json
 Finally you need to make a `GET` request towards Swedbank Pay with the `id` of
 the payment received in the first step, which will return the purchase result.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -198,7 +198,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http
