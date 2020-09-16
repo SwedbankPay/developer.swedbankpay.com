@@ -1,15 +1,16 @@
-## Delegated SCA (Strong Consumer Authentication)
+## Delegated Strong Consumer Authentication
 
 {% include jumbotron.html body="When the consumer is identified and
 authenticated by the merchant, the consumer's identity can be included in the
 Payment Order request." %}
 
-**Delegated SCA** is performed as an alternative to [Checkin][checkin] when
-creating the Payment Order upon the initialization of the [Payment
-Menu][payment-menu]. You can only use Delegated SCA if you have an agreement
-with Swedbank Pay. The additional `nationalIdentifier` field described below
-should be added to the `paymentorder.payer` object already in the Payment Order
-creation request, as an alternative to `consumerProfileRef`.
+**Delegated Strong Consumer Authentication** (hereby abbreviated as "Delegated
+SCA") is performed as an alternative to [Checkin][checkin] when creating the
+Payment Order upon the initialization of the [Payment Menu][payment-menu]. You
+can only use Delegated SCA if you have an agreement with Swedbank Pay. The
+additional `nationalIdentifier` field described below should be added to the
+`paymentorder.payer` object already in the Payment Order creation request, as an
+alternative to `consumerProfileRef`.
 
 {% include alert.html type="warning" icon="warning" header="Bank ID
 authentication required" body="In order to use the Delegated SCA feature, you
