@@ -15,5 +15,3 @@ cancellation and reversal operations described in After Payment.
                          prev_title="Back: Redirect"
                          next_href="after-payment"
                          next_title="Next: After Payment" %}
-                   
-                         
