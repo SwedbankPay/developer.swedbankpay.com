@@ -1,7 +1,7 @@
 ---
 title: Trustly Payments – Redirect
 estimated_read: 30
-menu-order: 700
+menu_order: 700
 ---
 
 ## Introduction

@@ -1,7 +1,7 @@
 ---
 title: Other Features
 estimated_read: 30
-menu-order: 700
+menu_order: 700
 ---
 
 {% include payment-resource.md  api_resource="vipps"

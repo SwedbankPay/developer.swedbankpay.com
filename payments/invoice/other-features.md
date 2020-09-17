@@ -1,7 +1,7 @@
 ---
 title: Other Features
 estimated_read: 30
-menu-order: 800
+menu_order: 800
 ---
 
 ## API requests

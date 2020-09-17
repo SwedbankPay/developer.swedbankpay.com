@@ -1,7 +1,7 @@
 ---
 title: Redirect
 estimated_read: 30
-menu-order: 300
+menu_order: 300
 ---
 
 ## Introduction

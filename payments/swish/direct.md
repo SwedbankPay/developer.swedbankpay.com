@@ -6,7 +6,7 @@ description: |
   In the Direct scenario, Swedbank Pay receives the Swish registered mobile 
   number directly from the merchant UI. Swedbank Pay performs a payment that
   the payer confirms using her Swish mobile app.
-menu-order: 600
+menu_order: 600
 ---
 
 ## Payment Flow

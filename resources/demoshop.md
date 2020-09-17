@@ -1,7 +1,7 @@
 ---
 title: Demoshop
 estimated_read: 30
-menu-order: 200
+menu_order: 200
 ---
 
 {% include jumbotron.html body=

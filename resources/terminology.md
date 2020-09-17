@@ -1,7 +1,7 @@
 ---
 title: Terminology
 estimated_read: 30
-menu-order: 400
+menu_order: 400
 ---
 
 ### A
