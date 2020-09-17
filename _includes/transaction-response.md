@@ -112,4 +112,6 @@ Content-Type: application/json
 | └─➔&nbsp;`receiptReference`       | `string`  | A unique reference for the transaction. This reference is used as an invoice/receipt number.                                                                                                                 |
 | └─➔&nbsp;`failedReason`           | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | └─➔&nbsp;`isOperational`          | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
-| └─➔&nbsp;`operations`             | `array`   | The array of operations that are possible to perform on the transaction in its current state.                                                                                                                |
+| └─➔&nbsp;`operations`             | `array`   | The array of [`operations`][operations] that are possible to perform on the transaction in its current state.                                                                                                |
+
+[operations]: /payments/{{ include.documentation_section }}/other-features#operations

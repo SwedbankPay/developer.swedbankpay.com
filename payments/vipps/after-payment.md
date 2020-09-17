@@ -230,50 +230,6 @@ Content-Type: application/json
 {% include transaction-response.md api_resource="vipps"
 documentation_section="vipps" transaction="authorization" %}
 
-## Captures
-
-The `captures` resource lists the capture transactions (one or more) on a specific payment.
-
-{:.code-view-header}
-**Request**
-
-```http
-GET /psp/vipps/vipps/{{ page.payment_id }}/captures HTTP/1.1
-Host: {{ page.api_host }}
-Authorization: Bearer <AccessToken>
-Content-Type: application/json
-```
-
-{% include transaction-list-response.md api_resource="vipps"
-documentation_section="vipps" transaction="capture" %}
-
-## Create capture transaction
-
-A `capture` transaction can be created after a completed authorization by
-finding the `rel` `create-capture`.
-
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/vipps/payments/{{ page.payment_id }}/captures HTTP/1.1
-Host: {{ page.api_host }}
-Authorization: Bearer <AccessToken>
-Content-Type: application/json
-
-{
-    "transaction": {
-        "amount": 1500,
-        "vatAmount": 250,
-        "payeeReference": "cpttimestamp",
-        "description" : "description for transaction"
-    }
-}
-```
-
-{% include transaction-response.md api_resource="vipps"
-documentation_section="vipps" transaction="capture" %}
-
 ## Cancellations
 
 The `cancellations` resource lists the cancellation transactions on a
@@ -294,10 +250,11 @@ documentation_section="vipps" transaction="cancel" %}
 
 ## Create cancellation transaction
 
-A payment may be cancelled if the `rel` `create-cancellation` is available.
-You can only cancel a payment, or part of it, if it has yet to be captured.
-To revert a capture, or part of a capture, you must perform a `reversal`.
-Performing a cancellation will cancel all remaning capture amounts on a payment.
+A payment may be cancelled if the `rel` `create-cancellation` is available. You
+can only cancel a payment, or part of it, if it has yet to be captured. To
+revert a capture, or part of a capture, you must perform a `reversal`.
+Performing a cancellation will cancel all the remaining authorized amount on a
+payment.
 
 {:.code-view-header}
 **Request**
@@ -364,7 +321,7 @@ Content-Type: application/json
 {:.table .table-striped}
 |     Required     | Field                    | Type         | Description                                                                      |
 | :--------------: | :----------------------- | :----------- | :------------------------------------------------------------------------------- |
-| {% icon check %} | `transaction`            | `object`     | The trnsaction object.                                                           |
+| {% icon check %} | `transaction`            | `object`     | The transaction object.                                                           |
 | {% icon check %} | └➔&nbsp;`amount`         | `integer`    | {% include field-description-amount.md currency="NOK" %}                         |
 | {% icon check %} | └➔&nbsp;`vatAmount`      | `integer`    | {% include field-description-vatamount.md currency="NOK" %}                      |
 | {% icon check %} | └➔&nbsp;`description`    | `string`     | A textual description of the capture                                             |
