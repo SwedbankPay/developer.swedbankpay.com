@@ -1,7 +1,7 @@
 ---
 title: Card Payments – After Payment
 estimated_read: 30
-menu-order: 800
+menu_order: 900
 ---
 
 ## Options after posting a payment
@@ -31,7 +31,7 @@ and the authorization amount.
 Perform the `create-cancel` operation to cancel a previously created - and not
 yet captured - payment.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -58,7 +58,7 @@ Content-Type: application/json
 The `cancel` resource contains information about a cancellation transaction
 made against a payment.
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http
@@ -111,7 +111,7 @@ Content-Type: application/json
 The `cancellations` resource lists the cancellation transactions on a specific
 payment.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -141,7 +141,7 @@ This transaction is used when a captured payment needs to be reversed.
 
 The `create-reversal` operation will reverse a previously captured payment.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -172,7 +172,7 @@ Content-Type: application/json
 The `reversal` resource contains information about the newly created reversal
 transaction.
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http
@@ -226,7 +226,7 @@ Content-Type: application/json
 The `reversals` resource lists the reversal transactions (one or more) on a
 specific payment.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -267,7 +267,7 @@ If you, for any reason, need to delete a paymentToken you use the
   [ehandelsetup@swedbankpay.se](mailto:ehandelsetup@swedbankpay.se); and supply
   them with the relevant transaction reference or payment token." %}
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -283,7 +283,7 @@ Content-Type: application/json
 }
 ```
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http

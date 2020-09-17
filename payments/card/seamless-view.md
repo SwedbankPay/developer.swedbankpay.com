@@ -5,7 +5,7 @@ description: |
   The Seamless View purchase scenario
   represents the opportunity to implement card payments
   directly in your webshop.
-menu-order: 500
+menu_order: 600
 ---
 
 ## Introduction
@@ -65,7 +65,7 @@ hosted environment. A simplified integration has these following steps:
 
 The previous two steps gives this HTML:
 
-{:.code-header}
+{:.code-view-header}
 **HTML**
 
 ```html
@@ -87,7 +87,7 @@ The previous two steps gives this HTML:
 Lastly, initiate the Seamless View with a JavaScript call to open the `iframe`
 embedded on your website.
 
-{:.code-header}
+{:.code-view-header}
 **JavaScript**
 
 ```html
@@ -103,7 +103,7 @@ embedded on your website.
 When a user actively attempts to perform a payment, the `onPaymentCreated` event
 is raised with the following event argument object:
 
-{:.code-header}
+{:.code-view-header}
 **`onPaymentCreated` event object**
 
 ```js

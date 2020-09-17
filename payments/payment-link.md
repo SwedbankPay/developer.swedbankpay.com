@@ -7,7 +7,7 @@ description: |
   The consumer is not redirected to the payment pages directly but will instead
   receive a payment link via mail/SMS.
   When the consumer clicks on the link a payment window opens.
-menu-order: 700
+menu_order: 900
 ---
 
 ### Introduction

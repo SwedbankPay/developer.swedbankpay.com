@@ -1,7 +1,7 @@
 ---
 title: Other Features
 estimated_read: 30
-menu-order: 700
+menu_order: 700
 ---
 
 {% include payment-resource.md  api_resource="vipps"
@@ -22,7 +22,7 @@ section.
 Use the [expand][technical-reference-expansion] request parameter to get a
 response that includes one or more expanded sub-resources inlined.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -103,7 +103,7 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`prefillInfo`       | `string`     | The mobile number that will be pre-filled in the Swedbank Pay Payments. The consumer may change this number in the UI.                                                                                                                                    |
 |                  | └─➔&nbsp;`subsite`           | `string(40)` | The `subsite` field can be used to perform split settlement on the payment. The `subsites` must be resolved with Swedbank Pay reconciliation before being used.                                                                                           |
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http
@@ -160,7 +160,7 @@ Posting a payment (operation `Purchase`) returns the options of aborting the
 payment altogether or creating an authorization transaction through the
 `redirect-authorization` hyperlink.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```js

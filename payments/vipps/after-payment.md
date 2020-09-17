@@ -1,7 +1,7 @@
 ---
 title: After Payment
 estimated_read: 30
-menu-order: 600
+menu_order: 600
 ---
 
 ### Create Payment
@@ -15,7 +15,7 @@ section.
 Use the [expand][expand-parameter] request parameter to get a
 response that includes one or more expanded sub-resources inlined.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -96,7 +96,7 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`prefillInfo`       | `string`     | The mobile number that will be pre-filled in the Swedbank Pay Payments. The consumer may change this number in the UI.                                                                                                                                    |
 |                  | └─➔&nbsp;`subsite`           | `string(40)` | The `subsite` field can be used to perform split settlement on the payment. The `subsites` must be resolved with Swedbank Pay reconciliation before being used.                                                                                           |
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http
@@ -153,7 +153,7 @@ Posting a payment (operation `Purchase`) returns the options of aborting the
 payment altogether or creating an authorization transaction through the
 `redirect-authorization` hyperlink.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```js
@@ -204,7 +204,7 @@ All Vipps after payment transactions are described below.
 The `authorizations` resource contains information about the authorization
 transactions made on a specific payment.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -217,7 +217,7 @@ Content-Type: application/json
 {% include transaction-response.md api_resource="vipps"
 documentation_section="vipps" transaction="authorization" %}
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -234,7 +234,7 @@ documentation_section="vipps" transaction="authorization" %}
 
 The `captures` resource lists the capture transactions (one or more) on a specific payment.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -252,7 +252,7 @@ documentation_section="vipps" transaction="capture" %}
 A `capture` transaction can be created after a completed authorization by
 finding the `rel` `create-capture`.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -279,7 +279,7 @@ documentation_section="vipps" transaction="capture" %}
 The `cancellations` resource lists the cancellation transactions on a
 specific payment.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -299,7 +299,7 @@ You can only cancel a payment, or part of it, if it has yet to be captured.
 To revert a capture, or part of a capture, you must perform a `reversal`.
 Performing a cancellation will cancel all remaning capture amounts on a payment.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -324,7 +324,7 @@ documentation_section="vipps" transaction="cancel" %}
 The `reversals` resource lists the reversal transactions (one or more)
 on a specific payment.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -342,7 +342,7 @@ documentation_section="vipps" transaction="reversal" %}
 A `reversal` transaction can be created if the `rel` `create-reversal` is
 available.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http

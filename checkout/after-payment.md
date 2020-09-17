@@ -6,6 +6,7 @@ description: |
   [Checkin](checkin) and [Payment Menu](payment-menu), you need to implement the
   relevant **after-payment operations** in your order system. Which these
   operations are and how they are executed is described below.
+menu_order: 500
 ---
 
 {% include payment-order-after-payment.md documentation_section="checkout" %}

@@ -5,7 +5,7 @@ transaction made towards a payment. To create a new `authorization` transaction,
 perform a `POST` towards the URI obtained from the `payment.authorization.id`
 from the `payment` resource below. The example is abbreviated for brevity.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -15,7 +15,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http
@@ -32,7 +32,7 @@ Content-Type: application/json
 }
 ```
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -53,7 +53,7 @@ Content-Type: application/json
 }
 ```
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http

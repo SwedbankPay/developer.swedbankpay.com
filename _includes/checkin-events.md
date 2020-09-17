@@ -36,7 +36,7 @@ if the Payment Menu is not loaded and in the DOM.
 The `onConsumerIdentified` event is raised with the following event argument
 object:
 
-{:.code-header}
+{:.code-view-header}
 **`onConsumerIdentified` event object**
 
 ```js
@@ -54,7 +54,7 @@ updated.
 completed before any shipping details are finalized, as the Checkin component
 provides shipping address via the `onShippingDetailsAvailable` event." %}
 
-{:.code-header}
+{:.code-view-header}
 **`onShippingDetailsAvailable` event object**
 
 ```js
@@ -68,7 +68,7 @@ provides shipping address via the `onShippingDetailsAvailable` event." %}
 
 Triggered when a consumer has been identified
 
-{:.code-header}
+{:.code-view-header}
 **`onBillingDetailsAvailable` event object**
 
 ```js
