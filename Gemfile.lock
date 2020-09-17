@@ -87,6 +87,7 @@ GEM
       jekyll (>= 3.0, < 5.0)
     kramdown (2.3.0)
       rexml
+    rouge (3.23.0)
     kramdown-parser-gfm (1.1.0)
       kramdown (~> 2.0)
     kramdown-plantuml (1.0.4)
