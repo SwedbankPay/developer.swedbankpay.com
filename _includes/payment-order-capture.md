@@ -8,12 +8,12 @@
 
 
 Capture can only be done on a payment with a successful authorized transaction,
-and if the authorization was not done on a one-phase payment instrument.
-Examples of one-phase payment instruments are [Swish][swish] and [Vipps][vipps],
- while payment instruments such as [Card Payments][card] are two-phase payments,
- requiring a `Capture` to be performed.
+and if the authorization was not done with a one-phase payment instrument.
+Examples of one-phase payment instruments are [Swish][swish] and
+[Trustly][trustly], while payment instruments such as [Card Payments][card] and
+[Vipps][vipps] are two-phase payments, requiring a `Capture` to be performed.
 
-It is possible to do a part-capture where you only capture a smaller amount
+It is possible to do a partial capture where you only capture a smaller amount
 than the authorized amount. You can later do more captures on the same payment
 up to the total authorization amount.
 
@@ -180,6 +180,7 @@ Content-Type: application/json
 | └─➔&nbsp;`receiptReference` | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation.  It is used to supplement `payeeReference` as an additional receipt number. |
 
 [card]: /payments/card
+[vipps]: /payments/vipps
 [payee-reference]: /checkout/other-features#payee-reference
 [swish]: /payments/swish/
-[vipps]: /payments/vipps/
+[trustly]: /payments/trustly/
