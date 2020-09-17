@@ -8,7 +8,7 @@ description: |
   hosted site.
   Finally, the consumer will be redirected back to your website after the
   payment process.
-menu_order: 300
+menu_order: 400
 ---
 
 When properly set up in your merchant/webshop site and the payer starts the
