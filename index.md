@@ -1,6 +1,6 @@
 ---
 title: Developer Portal
-layout: front_page
+layout: front-page
 hide_from_sidebar: true
 ---
 
