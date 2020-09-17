@@ -1,7 +1,7 @@
 ---
 title: Other Features
 estimated_read: 30
-menu-order: 900
+menu_order: 900
 ---
 
 {% include payment-resource.md api_resource="swish"

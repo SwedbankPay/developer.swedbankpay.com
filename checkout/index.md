@@ -7,7 +7,7 @@ description: |
   through highly customizable and flexible components.
   Visit our [demoshop](https://ecom.externalintegration.payex.com/pspdemoshop)
   and try out Swedbank Pay Checkout for yourself!
-menu-order: 100
+menu_order: 100
 ---
 
 Swedbank Pay Checkout allows your customers to be identified with Swedbank Pay,

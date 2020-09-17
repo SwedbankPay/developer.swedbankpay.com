@@ -7,7 +7,7 @@ description: |
   scenario, Swedbank Pay receives a mobile number (msisdn)
   from the payer through Swedbank Pay Payments. Swedbank Pay performs a payment
   that the payer must confirm through the Vipps mobile app.
-menu-order: 400
+menu_order: 400
 ---
 
 ## Introduction

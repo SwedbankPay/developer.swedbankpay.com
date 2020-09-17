@@ -5,7 +5,7 @@ description: |
   **Trustly Payments** is the simplest way to
   provide **Direct Bank** payments on your website. Choose between our
   **Redirect** and **Seamless View** integration options.
-menu-order: 600
+menu_order: 600
 ---
 
 {% include alert.html type="informative"
