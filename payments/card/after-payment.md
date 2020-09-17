@@ -1,7 +1,7 @@
 ---
 title: Card Payments – After Payment
 estimated_read: 30
-menu_order: 800
+menu_order: 900
 ---
 
 ## Options after posting a payment

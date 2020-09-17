@@ -5,7 +5,7 @@ description: |
   Welcome to Other Features - a subsection of Credit Card.
   This section has extented code examples and features that were not
   covered by the other subsections.
-menu_order: 900
+menu_order: 1000
 ---
 
 {% include payment-resource.md api_resource="creditcard"

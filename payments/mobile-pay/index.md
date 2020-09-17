@@ -4,7 +4,7 @@ estimated_read: 30
 description: |
   MobilePay is the fast and simple way of
   paying with your mobile phone, reaching more than 4 million Danish end-users.
-menu_order: 500
+menu_order: 700
 ---
 
 MobilePay is the main Danish payment app for mobile phones, making it one of the

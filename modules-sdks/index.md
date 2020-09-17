@@ -4,7 +4,7 @@ estimated_read: 30
 description: |
   We have multiple Open Source-based SDKs and Modules to use with
   Swedbank Pay APIs.
-menu_order: 500
+menu_order: 600
 ---
 
 {% assign active_repositories = site.github.public_repositories | where: 'archived', false %}
