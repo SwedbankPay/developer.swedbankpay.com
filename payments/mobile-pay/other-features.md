@@ -1,7 +1,7 @@
 ---
 title: MobilePay Online Payments – Other Features
 estimated_read: 30
-menu-order: 800
+menu_order: 800
 ---
 
 {% include payment-resource.md api_resource="mobilepay"
@@ -21,7 +21,7 @@ field of the JSON document is described in the following section. Use the
 [expand][expand] request parameter to get a response that includes one or more
 expanded sub-resources inlined.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -107,7 +107,7 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`subsite`              | `String(40)` | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.                                                                                               |
 | {% icon check %} | └➔&nbsp;`mobilepay.shoplogoUrl` | `string`     | URI to logo that will be visible at MobilePay. For it to display correctly in MobilePay's app, the image must be 250x250 pixels, a png or jpg served over a secure connection using https, and publicly available                                                                                                                                                                                                              |                                                                                                                                                                                                           |
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http
@@ -270,7 +270,7 @@ All MobilePay Online specific transactions are described below.
 
 ## Authorizations
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -299,7 +299,7 @@ A `capture` transaction - to withdraw money from the payer's MobilePay - can be
 created after a completed authorization by performing the `create-capture`
 operation.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -340,7 +340,7 @@ documentation_section="mobile-pay" transaction="cancellation" %}
 Perform the `create-cancel` operation to cancel a previously created payment.
 You can only cancel a payment - or part of payment - not yet captured.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -377,7 +377,7 @@ documentation_section="mobile-pay" transaction="reversal" %}
 The `create-reversal` operation reverses a previously created and captured
 payment.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http

@@ -1,7 +1,7 @@
 ---
 title: Capture
 estimated_read: 30
-menu-order: 600
+menu_order: 600
 ---
 
 {% include alert-two-phase-payments.md %}
@@ -89,7 +89,7 @@ documentation_section="invoice" transaction="capture" %}
 The `captures` resource lists the capture transactions performed on a
 specific invoice payment.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -99,7 +99,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http

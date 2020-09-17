@@ -8,6 +8,7 @@ description: |
   implement in order to complete the Swedbank Pay Checkout integration. To
   finalize Checkout you first have to Checkin. To check in, the payer needs
   to be identified.
+menu_order: 200
 ---
 
 ## Step 1: Initiate session for consumer identification
@@ -20,7 +21,7 @@ is done through the `initiate-consumer-session` operation.
 body="Note: If the end user is using the Payment Menu as a guest, you can go
 directly to step 3, which you will find on the next page." %}
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -45,7 +46,7 @@ Content-Type: application/json
 
 When the request has been sent, a response containing an array of operations that can be acted upon will be returned:
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http
@@ -103,7 +104,7 @@ operation is meant to be embedded in a `<script>` element in an HTML document.
                     environment as there is no simple way of retrieving the
                     `consumerProfileRef`."%}
 
-{:.code-header}
+{:.code-view-header}
 **HTML**
 
 ```html
@@ -129,7 +130,7 @@ In the HTML, you only need to add two `<div>` elements to place the
 check-in and payment menu inside of. The JavaScript will handle the rest when
 it comes to handling the check-in and payment menu.
 
-{:.code-header}
+{:.code-view-header}
 **JavaScript**
 
 ```js

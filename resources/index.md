@@ -4,7 +4,7 @@ estimated_read: 30
 description: |
   In this section you find various **resources** for Swedbank Pay's API
   Platform.
-menu-order: 100
+menu_order: 700
 ---
 
 ## Test Data

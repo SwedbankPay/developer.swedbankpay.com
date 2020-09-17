@@ -12,7 +12,7 @@
 The created `{{ transaction }}` resource contains information about the
 `{{ transaction }}` transaction made against a `{{ api_resource }}` payment.
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http

@@ -3,7 +3,7 @@
 
 {%- assign operation_title_field_name = operation_title | capitalize -%}
 
-{:.code-header}
+{:.code-view-header}
 **{{ operation_title_field_name }}**
 
 {:.table .table-striped}

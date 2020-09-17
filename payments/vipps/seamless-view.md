@@ -7,7 +7,7 @@ description: |
   In the Seamless View scenario, Swedbank Pay receives a mobile number (MSISDN)
   from the payer through Swedbank Pay Payments. Swedbank Pay performs a payment
   that the payer must confirm through the Vipps mobile app.
-menu-order: 500
+menu_order: 500
 ---
 
 ![steps of the vipps purchase flow][vipps-purchase-flow]{:width="1200px" :height="500px"}
@@ -26,7 +26,7 @@ in the [other features section][purchase].
 
 {% include alert-risk-indicator.md %}
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -110,7 +110,7 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`msisdn`                 | `string`      | Number will be prefilled on payment page, if valid. Only Norwegian phone numbers are supported. The country code prefix is +47                                                                                                                                                                     |
 |                  | └─➔&nbsp;`subsite`                | `String(40)`  | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.                                                                                                                                        |
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http
@@ -195,7 +195,7 @@ steps:
 
 The previous two steps gives this HTML:
 
-{:.code-header}
+{:.code-view-header}
 **HTML**
 
 ```html
@@ -217,7 +217,7 @@ The previous two steps gives this HTML:
 Lastly, initiate the Seamless View with a JavaScript call to open the `iframe`
 embedded on your website.
 
-{:.code-header}
+{:.code-view-header}
 **JavaScript**
 
 ```js

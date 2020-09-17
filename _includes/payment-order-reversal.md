@@ -4,7 +4,7 @@ If we want to reverse a previously captured amount, we need to perform
 `create-paymentorder-reversal` against the accompanying `href` returned in the
 `operations` list. See the abbreviated request and response below:
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -84,7 +84,7 @@ Content-Type: application/json
 
 If the reversal request succeeds, the response should be similar to the example below:
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http

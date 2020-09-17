@@ -13,7 +13,7 @@ The `{{ transaction }}` resource contains information about the
 return a specific `{{ transaction }}` transaction by performing a `GET` request
 towards the specific transaction's `id`.
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http

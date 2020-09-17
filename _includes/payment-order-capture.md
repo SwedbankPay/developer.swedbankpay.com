@@ -40,7 +40,7 @@ To capture the authorized payment, we need to perform
 `create-paymentorder-capture` against the accompanying `href` returned in the
 `operations` list. See the abbreviated request and response below:
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -135,7 +135,7 @@ Content-Type: application/json
 
 If the capture succeeds, it should respond with something like the following:
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http

@@ -20,7 +20,7 @@ You can do this either by by setting the `generatePaymentToken` field to
 `true` (see example below) when doing a card purchase, or set the initial
 operation to [`Verify`][verify].
 
-{:.code-header}
+{:.code-view-header}
 **`generatePaymentToken` field**
 
 ```js
@@ -37,7 +37,7 @@ resource (expanding either the authorizations or verifications sub-resource),
 after the consumer successfully has completed the purchase. The two examples are
 provided below.
 
-{:.code-header}
+{:.code-view-header}
 **Request Towards Authorizations Resource**
 
 ```http
@@ -46,7 +46,7 @@ Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 ```
 
-{:.code-header}
+{:.code-view-header}
 **Request Towards Verifications Resource**
 
 ```http
@@ -74,7 +74,7 @@ and [invoice][create-invoice-payment] payment.
 
 Abbreviated code example:
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -130,7 +130,7 @@ you use the `Delete payment token` request.
   [ehandelsetup@swedbankpay.se](mailto:ehandelsetup@swedbankpay.se);
   and supply them with the relevant transaction reference or payment token." %}
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -151,7 +151,7 @@ TODO: Remove pipes from the above code example and add a field table
       explaining each field here.
 {% endcomment %}
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http

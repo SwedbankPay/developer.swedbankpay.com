@@ -1,7 +1,7 @@
 ---
 title: Other Features
 estimated_read: 30
-menu-order: 800
+menu_order: 800
 ---
 
 ## API requests
@@ -47,7 +47,7 @@ There are four different kinds of payment that can be created. These are
 identified with the value of the `operation` field. Each kind are documented
 in their own section below.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -75,7 +75,7 @@ Content-Type: application/json
 
 A `FinancingConsumer` payment is an invoice.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -126,7 +126,7 @@ Content-Type: application/json
 A `recur` payment is a payment that references a `recurrenceToken` created
 through a previous payment in order to charge the same card.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -211,7 +211,7 @@ The API requests are displayed in the [Verification flow][verification-flow]. Th
 choose from when creating a payment with key operation set to Value Verify are
 listed below.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -255,7 +255,7 @@ Content-Type: application/json
 }
 ```
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http
@@ -381,7 +381,7 @@ sequenceDiagram
 The `redirect-authorization` operation redirects the consumer to
 Swedbank Pay Payments where the payment is authorized.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -443,7 +443,7 @@ Content-Type: application/json
 |                  | └➔&nbsp;`city`                 | `string` | The city name of the billing address adressee.                         |
 |                  | └➔&nbsp;`countryCode`          | `string` | The country code of the billing address adressee.                      |
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```json

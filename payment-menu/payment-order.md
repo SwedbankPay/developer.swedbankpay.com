@@ -3,6 +3,7 @@ title: Payment Menu – Payment Order
 estimated_read: 30
 description: |
   **Payment Order** lets the payer complete their purchase.
+menu_order: 300
 ---
 
 {% assign view_payment_order_javascript_url = "{{ page.front_end_url }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token={{ page.payment_token }}&culture=sv-SE"%}
@@ -26,7 +27,7 @@ for Credit Card Payments" %}
 
 The response back should look something like this (abbreviated for brevity):
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http
@@ -84,7 +85,7 @@ to do a JavaScript-based integration below.
 
 First the minimum HTML required to initialize the Payment Menu:
 
-{:.code-header}
+{:.code-view-header}
 **HTML**
 
 ```html
@@ -104,7 +105,7 @@ First the minimum HTML required to initialize the Payment Menu:
 What happens inside `<Your-JavaScript-File>` should look something alike the
 following:
 
-{:.code-header}
+{:.code-view-header}
 **JavaScript**
 
 ```js

@@ -1,6 +1,7 @@
 ---
 title: Payment Menu – Capture
 estimated_read: 30
+menu_order: 400
 ---
 
 {% include alert-two-phase-payments.md %}

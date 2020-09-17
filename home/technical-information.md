@@ -25,7 +25,7 @@ SSL Labs. Support for HTTP/2 in our APIs is being investigated.
 
 All requests against the API Platform should have a few common headers:
 
-{:.code-header}
+{:.code-view-header}
 **HTTP request**
 
 ```http
@@ -107,7 +107,7 @@ In order to find which operations you can perform on a resource and the URI of
 the operation to perform, you need to retrieve the resource with an HTTP `GET`
 request first and then find the operation in question within the `operations`
 field.
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -135,7 +135,7 @@ Content-Type: application/json
  }
 ```
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http
@@ -199,7 +199,7 @@ target resource including expanded properties.
 This example below add the `urls` and `authorizations` field inlines to the
 response, enabling you to access information from these sub-resources.
 
-{:.code-header}
+{:.code-view-header}
 **HTTP request with expansion**
 
 ```http
@@ -254,7 +254,7 @@ token is authorized to do, etc. A subset of possible operations are described
 below. Visit the technical reference page of a payment instrument for
 instrument specific operations.
 
-{:.code-header}
+{:.code-view-header}
 **JSON with Operations**
 
 ```js

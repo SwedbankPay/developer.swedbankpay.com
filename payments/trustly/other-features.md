@@ -1,7 +1,7 @@
 ---
 title: Trustly Payments – Other Features
 estimated_read: 30
-menu-order: 900
+menu_order: 900
 ---
 
 {% include payment-resource.md api_resource="trustly"
@@ -21,7 +21,7 @@ individual transactions within the payment.
 To create a Trustly payment, you perform an HTTP `POST` against the `payments`
 resource. Trustly payments does currently only support the `Purchase` operation and `Sale` intent.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http

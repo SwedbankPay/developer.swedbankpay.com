@@ -121,7 +121,7 @@ practice rules at some time or another. In addition the people who reviewed
 and approved these commits are just as guilty as the person who wrote/submitted
 them.
 
-{:.code-header}
+{:.code-view-header}
 **Example 1**
 
 ```http
@@ -158,7 +158,7 @@ What is the problem with this?
   identified as the culprit reasonably quickly, but a trivial revert is not
   possible, due to the wide variety of unrelated changes included.
 
-{:.code-header}
+{:.code-view-header}
 **Example 2**
 
 ```http
@@ -208,7 +208,7 @@ commits:
 
 ### Examples of good practice
 
-{:.code-header}
+{:.code-view-header}
 **Example 1**
 
 ```http
@@ -230,7 +230,7 @@ timers. The introduction of the new APIs for creating libvirt XML configuration
 have been clearly separated from the change to the KVM guest creation policy,
 which uses the new APIs.
 
-{:.code-header}
+{:.code-view-header}
 **Example 2**
 
 ```http
@@ -387,7 +387,7 @@ the stats tools to observe it when collecting statistics.
     the cursor is within the paragraph and typing `gqip`.
 *   Put external references at the very end of the commit message.
 
-{:.code-header}
+{:.code-view-header}
 For example:
 
 ```http
@@ -410,7 +410,7 @@ Change-Id: I4946a16d27f712ae2adf8441ce78e6c0bb0bb657
 Now for some illustrations from Nova history, again with authors names
 removed since no one person is to blame for these.
 
-{:.code-header}
+{:.code-view-header}
 **Example 1**
 
 ```http
@@ -435,7 +435,7 @@ description. e.g.:
     however exception has not been imported.
 ```
 
-{:.code-header}
+{:.code-view-header}
 **Example 2**
 
 ```http
@@ -471,7 +471,7 @@ Adds a template argument to ec2utils.id_to_ec2_id() calls
 Fixes bug 1013765
 ```
 
-{:.code-header}
+{:.code-view-header}
 **Example 3**
 
 ```http
@@ -504,7 +504,7 @@ the check fails. e.g.:
 
 ### Examples of good practice
 
-{:.code-header}
+{:.code-view-header}
 **Example 1**
 
 ```http
@@ -555,7 +555,7 @@ Some things to note about this example commit message
 *   It describes scope for future improvement (the possible per-OS type config)
 *   It uses the Closes-Bug notation
 
-{:.code-header}
+{:.code-view-header}
 **Example 2**
 
 ```http

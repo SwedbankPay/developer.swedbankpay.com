@@ -1,7 +1,7 @@
 ---
 title: Card Payments – Mobile
 estimated_read: 30
-menu-order: 700
+menu_order: 800
 ---
 
 ## Card Payments in Mobile Apps

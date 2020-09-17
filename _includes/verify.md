@@ -61,7 +61,7 @@ Redirect flow. Adding `paymentUrl` input will generate the response meant for
 Seamless View, which does not include the `redirect-verification`. The request
 below is the Redirect option.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -105,7 +105,7 @@ Content-Type: application/json
 }
 ```
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http
