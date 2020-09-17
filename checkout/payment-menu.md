@@ -4,7 +4,7 @@ estimated_read: 30
 description: |
   **Payment Menu** begins where **Checkin** left off,
   letting the payer complete their purchase.
-menu-order: 300
+menu_order: 300
 ---
 
 ## Step 3: Create Payment Order

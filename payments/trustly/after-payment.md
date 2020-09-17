@@ -1,7 +1,7 @@
 ---
 title: Trustly Payments – After Payment
 estimated_read: 30
-menu-order: 800
+menu_order: 800
 ---
 
 ## Options after posting a payment

@@ -5,7 +5,7 @@ description: |
   Payments is our off-the-rack assortment of payment instruments.
   You can pick and choose among them to tailor the instrument package best
   suited for your business.
-menu-order: 300
+menu_order: 300
 ---
 
 Is Card the only payment instrument you need? Go for Card only. Do you want Card

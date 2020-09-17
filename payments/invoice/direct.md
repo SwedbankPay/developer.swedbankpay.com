@@ -6,7 +6,7 @@ description: |
   Pay helps improve cashflow by purchasing merchant invoices. Swedbank Pay
   receives invoice data, which is used to produce and distribute invoices to the
   consumer/end-user.
-menu-order: 400
+menu_order: 400
 ---
 
 {% include alert.html type="informative" icon="report_problem" header="Disclaimer"

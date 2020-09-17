@@ -8,7 +8,7 @@ description: |
   Pay Payments.
   The payment will then be performed by Swedbank Pay and confirmed by the payer
   through the MobilePay app.
-menu-order: 600
+menu_order: 600
 ---
 
 ## MobilePay redirect integration flow

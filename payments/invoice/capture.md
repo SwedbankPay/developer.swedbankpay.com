@@ -1,7 +1,7 @@
 ---
 title: Capture
 estimated_read: 30
-menu-order: 600
+menu_order: 600
 ---
 
 {% include alert-two-phase-payments.md %}
