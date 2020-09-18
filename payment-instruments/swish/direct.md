@@ -1,5 +1,6 @@
 ---
 title: Direct
+redirect_from: /payments/swish/direct
 estimated_read: 30
 description: |
   Swish is a one-phase payment instrument supported by the major Swedish banks.

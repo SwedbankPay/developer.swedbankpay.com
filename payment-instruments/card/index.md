@@ -1,5 +1,6 @@
 ---
 title: Card Payments 
+redirect_from: /payments/card/
 estimated_read: 30
 description: |
   **Card Payments** is the most popular, versatile

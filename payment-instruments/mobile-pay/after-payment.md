@@ -1,5 +1,6 @@
 ---
 title: MobilePay Online Payments – After Payment
+redirect_from: /payments/mobile-pay/after-payment
 estimated_read: 30
 menu_order: 700
 ---

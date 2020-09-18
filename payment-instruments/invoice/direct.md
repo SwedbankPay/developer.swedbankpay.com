@@ -1,5 +1,6 @@
 ---
 title: Direct
+redirect_from: /payments/invoice/direct
 estimated_read: 30
 description: |
   **Direct** is a payment service where Swedbank

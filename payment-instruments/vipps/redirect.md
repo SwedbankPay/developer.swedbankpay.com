@@ -1,5 +1,6 @@
 ---
 title: Redirect
+redirect_from: /payments/vipps/redirect
 estimated_read: 30
 description: |
   **Vipps Payments** is a two-phase
