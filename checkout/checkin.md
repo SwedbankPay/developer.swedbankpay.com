@@ -33,7 +33,8 @@ Content-Type: application/json
 {
     "operation": "initiate-consumer-session",
     "language": "sv-SE",
-    "shippingAddressRestrictedToCountryCodes" : ["NO", "SE", "DK"]
+    "shippingAddressRestrictedToCountryCodes" : ["NO", "SE", "DK"],
+    "requireShippingAddress": true
 }
 ```
 
@@ -43,6 +44,7 @@ Content-Type: application/json
 | {% icon check %} | `operation`                               | `string` | `initiate-consumer-session`, the operation to perform.                                                                                 |
 | {% icon check %} | `language`                                | `string` | Selected language to be used in Checkin. Supported values are {% include field-description-language.md api_resource="paymentorders" %} |
 | {% icon check %} | `shippingAddressRestrictedToCountryCodes` | `string` | List of supported shipping countries for merchant. Using ISO-3166 standard.                                                            |
+|                  | `requireShippingAddress` | `bool` | Defaults to true. If set to false we wil not collect a shipping address from the consumer.                                                            |
 
 When the request has been sent, a response containing an array of operations that can be acted upon will be returned:
 
@@ -56,6 +58,7 @@ Content-Type: application/json
 {
     "token": "7e380fbb3196ea76cc45814c1d99d59b66db918ce2131b61f585645eff364871",
     "operations": [
+        // Deprecated operation. Do not use!
         {
             "method": "GET",
             "rel": "redirect-consumer-identification",
