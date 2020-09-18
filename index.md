@@ -21,7 +21,7 @@ hide_from_sidebar: true
       </div>
       <div class="{{ card_col_class }}">
         {% include card.html
-            title='Payments'
+            title='Payment Instruments'
             title_type="h2"
             text='Payments gives you a one-by-one integration with more
             customization for each payment method to build your own
