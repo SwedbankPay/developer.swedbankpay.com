@@ -179,8 +179,8 @@ Content-Type: application/json
 | └─➔&nbsp;`payeeReference`   | `string`     | {% include field-description-payee-reference.md documentation_section=documentation_section describe_receipt=true %}                                                                                              |
 | └─➔&nbsp;`receiptReference` | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation.  It is used to supplement `payeeReference` as an additional receipt number. |
 
-[card]: /payments/card
-[vipps]: /payments/vipps
+[card]: /payment-instruments/card
+[vipps]: /payment-instruments/vipps
 [payee-reference]: /checkout/other-features#payee-reference
-[swish]: /payments/swish/
-[trustly]: /payments/trustly/
+[swish]: /payment-instruments/swish/
+[trustly]: /payment-instruments/trustly/

@@ -227,13 +227,13 @@ sequenceDiagram
     [See the Callback API description here][technical-reference-callback].
 
 [card-payment]: /assets/img/payments/card-payment.png
-[abort]: /payments/card/after-payment#abort
-[credit-card]: /payments/card
-[mobile-pay]: /payments/mobile-pay
-[payment-instruments-card-payment-pages]: /payments/card/
-[payment-instruments-mobilepay-payment-pages]: /payments/mobile-pay/
-[purchase-flow]: /payments/card/other-features#purchase-flow
-[swish]: /payments/swish
+[abort]: /payment-instruments/card/after-payment#abort
+[credit-card]: /payment-instruments/card
+[mobile-pay]: /payment-instruments/mobile-pay
+[payment-instruments-card-payment-pages]: /payment-instruments/card/
+[payment-instruments-mobilepay-payment-pages]: /payment-instruments/mobile-pay/
+[purchase-flow]: /payment-instruments/card/other-features#purchase-flow
+[swish]: /payment-instruments/swish
 [technical-reference-callback]: #callback
 [card-payment]: /assets/img/payments/card-payment.png
-[vipps]: /payments/vipps
+[vipps]: /payment-instruments/vipps
