@@ -387,16 +387,16 @@ sequenceDiagram
 {% include iterator.html prev_href="seamless-view" prev_title="Back: Seamless View"
 next_href="mobile-card-payments" next_title="Next: Mobile Card Payments" %}
 
-[abort]: /payments/card/after-payment#abort
+[abort]: /payment-instruments/card/after-payment#abort
 [expansion]: /home/technical-information#expansion
-[callback]: /payments/card/other-features#callback
-[cancel]: /payments/card/after-payment#cancellations
-[capture]: /payments/card/capture
-[reversal]: /payments/card/after-payment#reversals
-[authorization]: /payments/card/other-features#card-authorization-transaction
-[other features]: /payments/card/other-features#purchase
-[purchase]:  /payments/card/other-features#purchase
-[recur]:  /payments/card/other-features#recur
-[payout]:  /payments/card/other-features#purchase
-[verify]: /payments/card/other-features#verify
-[create-payment]: /payments/card/other-features#create-payment
+[callback]: /payment-instruments/card/other-features#callback
+[cancel]: /payment-instruments/card/after-payment#cancellations
+[capture]: /payment-instruments/card/capture
+[reversal]: /payment-instruments/card/after-payment#reversals
+[authorization]: /payment-instruments/card/other-features#card-authorization-transaction
+[other features]: /payment-instruments/card/other-features#purchase
+[purchase]:  /payment-instruments/card/other-features#purchase
+[recur]:  /payment-instruments/card/other-features#recur
+[payout]:  /payment-instruments/card/other-features#purchase
+[verify]: /payment-instruments/card/other-features#verify
+[create-payment]: /payment-instruments/card/other-features#create-payment

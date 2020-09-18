@@ -164,20 +164,20 @@ card payment:
 {% include iterator.html prev_href="./" prev_title="Back: Introduction"
 next_href="seamless-view" next_title="Next: Seamless View" %}
 
-[abort]: /payments/card/other-features#abort
-[callback]: /payments/card/other-features#callback
-[cancel]: /payments/card/after-payment#cancellations
-[capture]: /payments/card/capture
-[create-payment]: /payments/card/other-features#create-payment
+[abort]: /payment-instruments/card/other-features#abort
+[callback]: /payment-instruments/card/other-features#callback
+[cancel]: /payment-instruments/card/after-payment#cancellations
+[capture]: /payment-instruments/card/capture
+[create-payment]: /payment-instruments/card/other-features#create-payment
 [expansion]: /home/technical-information#expansion
-[payee-reference]: /payments/card/other-features#payee-reference
-[payout]: /payments/card/other-features#payout
-[purchase]: /payments/card/other-features#purchase
-[price-resource]: /payments/card/other-features#prices
-[recur]: /payments/card/other-features#recur
-[reversal]: /payments/card/after-payment#reversals
+[payee-reference]: /payment-instruments/card/other-features#payee-reference
+[payout]: /payment-instruments/card/other-features#payout
+[purchase]: /payment-instruments/card/other-features#purchase
+[price-resource]: /payment-instruments/card/other-features#prices
+[recur]: /payment-instruments/card/other-features#recur
+[reversal]: /payment-instruments/card/after-payment#reversals
 [card-payment]: /assets/img/payments/card-payment.png
 [swedish-card-payment]: /assets/img/payments/swedish-card-payment.png
-[verify]: /payments/card/other-features#verify
+[verify]: /payment-instruments/card/other-features#verify
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
-[payment-transaction-states]: /payments/card/other-features#payment-and-transaction-states
+[payment-transaction-states]: /payment-instruments/card/other-features#payment-and-transaction-states

@@ -186,12 +186,12 @@ sequenceDiagram
 
 [card-payment]: /assets/img/payments/card-payment.png
 [swedish-card-payment]: /assets/img/payments/swedish-card-payment.png
-[cancel]: /payments/card/after-payment#cancellations
-[capture]: /payments/card/capture
-[redirect]: /payments/card/redirect
-[create-payment]: /payments/card/other-features#create-payment
-[purchase]: /payments/card/other-features#purchase
-[recur]: /payments/card/other-features#recur
-[payout]: /payments/card/other-features#payout
-[verify]: /payments/card/other-features#verify
-[unscheduled-purchase]: /payments/card/other-features#unscheduled-purchase
+[cancel]: /payment-instruments/card/after-payment#cancellations
+[capture]: /payment-instruments/card/capture
+[redirect]: /payment-instruments/card/redirect
+[create-payment]: /payment-instruments/card/other-features#create-payment
+[purchase]: /payment-instruments/card/other-features#purchase
+[recur]: /payment-instruments/card/other-features#recur
+[payout]: /payment-instruments/card/other-features#payout
+[verify]: /payment-instruments/card/other-features#verify
+[unscheduled-purchase]: /payment-instruments/card/other-features#unscheduled-purchase
